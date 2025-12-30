@@ -7,14 +7,14 @@ import fs from "fs";
 function runCommand(cmd: string): Promise<string> {
   return new Promise((resolve, reject) => {
     exec(cmd, { timeout: 20000 }, (_err, stdout, stderr) => {
-      if (_err) return reject(stderr || err.message);
+      if (_err) return reject(stderr || _err.message);
       resolve(stdout);
     });
   });
 }
 
 async function callPythonAnomalyService(
-  events: Array<{ timestamp: string; ip: string }>,
+  events: Array<{ timestamp: string; ip: string }>
 ) {
   // Call the Python microservice for anomaly detection
   const res = await fetch("http://localhost:5001/detect-anomaly", {
@@ -25,8 +25,9 @@ async function callPythonAnomalyService(
   return await res.json();
 }
 
-export default async function handler(req: NextApiRequest,
-  res: NextApiResponse,
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
 ) {
   const { action } = req.query;
   try {
@@ -36,7 +37,7 @@ export default async function handler(req: NextApiRequest,
         const output = await runCommand("iwlist scan 2>/dev/null");
         // Parse SSIDs and encryption
         const networks = Array.from(
-          output.matchAll(/ESSID:"([^"]+)"[\s\S]*?Encryption key:(on|off)/g),
+          output.matchAll(/ESSID:"([^"]+)"[\s\S]*?Encryption key:(on|off)/g)
         ).map((match) => ({
           ssid: match[1],
           encryption: match[2] === "on" ? "Secured" : "Open",
@@ -57,8 +58,8 @@ export default async function handler(req: NextApiRequest,
         // Parse failed logins
         const events = Array.from(
           log.matchAll(
-            /(\w{3} \d+ \d+:\d+:\d+) [^ ]+ sshd\[\d+\]: Failed password for .* from ([\d.]+)/g,
-          ),
+            /(\w{3} \d+ \d+:\d+:\d+) [^ ]+ sshd\[\d+\]: Failed password for .* from ([\d.]+)/g
+          )
         ).map((m) => ({
           timestamp: m[1],
           ip: m[2],
@@ -73,7 +74,7 @@ export default async function handler(req: NextApiRequest,
             alerts: [
               `Anomaly detected! Score: ${aiResult.score}`,
               ...Object.entries(aiResult.ip_counts).map(
-                ([ip, c]) => `IP ${ip}: ${c} attempts`,
+                ([ip, c]) => `IP ${ip}: ${c} attempts`
               ),
             ],
           });
@@ -88,7 +89,7 @@ export default async function handler(req: NextApiRequest,
         // Use nmap to scan local network for open ports
         const output = await runCommand("nmap -sn 192.168.1.0/24");
         const hosts = Array.from(
-          output.matchAll(/Nmap scan report for ([^\s]+)/g),
+          output.matchAll(/Nmap scan report for ([^\s]+)/g)
         ).map((m) => m[1]);
         return res.json({ result: "Scan complete", hosts });
       }
@@ -96,7 +97,7 @@ export default async function handler(req: NextApiRequest,
         // Wireless signal analysis: list signal strengths
         const output = await runCommand("iwlist scan 2>/dev/null");
         const signals = Array.from(
-          output.matchAll(/ESSID:"([^"]+)"[\s\S]*?Signal level=([\-\d]+)/g),
+          output.matchAll(/ESSID:"([^"]+)"[\s\S]*?Signal level=([\-\d]+)/g)
         ).map((match) => ({
           ssid: match[1],
           signal: match[2],
@@ -108,8 +109,8 @@ export default async function handler(req: NextApiRequest,
         const output = await runCommand("nmap -p 23,21 192.168.1.0/24");
         const risks = Array.from(
           output.matchAll(
-            /Nmap scan report for ([^\s]+)[\s\S]*?([23]{2,2}\/open)/g,
-          ),
+            /Nmap scan report for ([^\s]+)[\s\S]*?([23]{2,2}\/open)/g
+          )
         ).map((m) => ({
           host: m[1],
           open: m[2],
@@ -129,6 +130,6 @@ export default async function handler(req: NextApiRequest,
   } catch (_e) {
     return res
       .status(500)
-      .json({ error: (e as Error).message || "Internal error" });
+      .json({ error: (_e as Error).message || "Internal error" });
   }
 }

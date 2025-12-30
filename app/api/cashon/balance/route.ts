@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       return NextResponse.json(
         apiAuth.response?.body || { error: "Master access required" },
-        { status: apiAuth.response?.status || 401 },
+        { status: apiAuth.response?.status || 401 }
       );
     }
 
@@ -52,7 +52,7 @@ export async function GET(request: NextRequest) {
     console.error("Balance API error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
@@ -66,7 +66,7 @@ export async function POST(req: Request) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
         JSON.stringify({ error: "M-Pesa number not configured" }),
-        { status: 500 },
+        { status: 500 }
       );
     }
     // Simulate transfer logic here
@@ -77,7 +77,7 @@ export async function POST(req: Request) {
         status: 200,
       });
     } catch (_err) {
-      const errorMessage = err instanceof Error ? err.message : String(_err);
+      const errorMessage = _err instanceof Error ? _err.message : String(_err);
       logEvent("mpesa_sync_failed", { error: errorMessage });
       return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,

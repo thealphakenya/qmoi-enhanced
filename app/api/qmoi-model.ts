@@ -651,7 +651,8 @@ async function aiResearchQA(context: string, question: string) {
 }
 
 // --- API Handler --- Buffer, query?: string) {
-export default async function handler(req: NextApiRequest,
+export default async function handler(
+  req: NextApiRequest,
   res: NextApiResponse
 ) {
   loadLog();
@@ -762,7 +763,7 @@ export default async function handler(req: NextApiRequest,
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(req as any, async (_err: any, fields: any, files: any) => {
-        if (_err) return res.status(500).json({ error: err.message });
+        if (_err) return res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);

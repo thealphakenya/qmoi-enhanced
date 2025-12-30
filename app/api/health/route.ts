@@ -225,7 +225,7 @@ async function checkAPIHealth() {
   );
 
   const healthyCount = endpointChecks.filter(
-    (_e) => e.status === "healthy"
+    (_e) => _e.status === "healthy"
   ).length;
   const status =
     healthyCount === endpoints.length

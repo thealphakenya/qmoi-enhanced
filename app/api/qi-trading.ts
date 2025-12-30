@@ -114,7 +114,8 @@ async function calculateTradingConfidence(): Promise<number> {
 // In-memory log for master
 const tradeLog: Array<Record<string, any>> = [];
 
-export default async function handler(req: NextApiRequest,
+export default async function handler(
+  req: NextApiRequest,
   res: NextApiResponse
 ) {
   // Simple master auth (replace with real auth in production)
@@ -247,7 +248,7 @@ export default async function handler(req: NextApiRequest,
           });
           return res.json({ status: "trade-placed", order, confidence });
         } catch (_e) {
-          const errorMessage = e instanceof Error ? e.message : String(_e);
+          const errorMessage = _e instanceof Error ? _e.message : String(_e);
           return res.json({ status: "error", error: errorMessage });
         }
       }
@@ -313,7 +314,7 @@ export default async function handler(req: NextApiRequest,
         fs.writeFileSync(TRADING_LOG, JSON.stringify(trades, null, 2));
         return res.status(201).json(trade);
       } catch (_e) {
-        const errorMessage = e instanceof Error ? e.message : String(_e);
+        const errorMessage = _e instanceof Error ? _e.message : String(_e);
         return res
           .status(500)
           .json({ error: "Trade execution failed", details: errorMessage });
@@ -326,6 +327,6 @@ export default async function handler(req: NextApiRequest,
       return res.status(405).end();
     }
   } catch (_e: any) {
-    return res.status(500).json({ error: e.message });
+    return res.status(500).json({ error: _e?.message ?? String(_e) });
   }
 }

@@ -9,7 +9,7 @@ export async function GET() {
     const lines = data.split("\n").filter(Boolean);
     return NextResponse.json({ success: true, logs: lines });
   } catch (_e) {
-    const errorMessage = e instanceof Error ? e.message : String(_e);
+    const errorMessage = _e instanceof Error ? _e.message : String(_e);
     return NextResponse.json({ success: false, error: errorMessage });
   }
 }

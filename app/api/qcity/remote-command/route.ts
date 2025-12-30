@@ -11,7 +11,7 @@ const AUDIT_LOG = path.join(process.cwd(), "logs/qcity_audit.log");
 function logAudit(entry: any) {
   fs.appendFileSync(
     AUDIT_LOG,
-    JSON.stringify({ ...entry, timestamp: new Date().toISOString() }) + "\n",
+    JSON.stringify({ ...entry, timestamp: new Date().toISOString() }) + "\n"
   );
 }
 
@@ -19,8 +19,9 @@ function maskCommand(cmd: string) {
   return /pass|secret|token|key|rm|delete|reset/i.test(cmd) ? "[MASKED]" : cmd;
 }
 
-export default async function handler(req: NextApiRequest,
-  res: NextApiResponse,
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
 ) {
   if (req.method !== "POST") return res.status(405).end();
   const key = req.headers["x-qcity-admin-key"];
@@ -82,7 +83,7 @@ export default async function handler(req: NextApiRequest,
         res.status(200).json({ output, code });
       });
     } catch (_e) {
-      const errorMessage = e instanceof Error ? e.message : String(_e);
+      const errorMessage = _e instanceof Error ? _e.message : String(_e);
       logAudit({
         action: "run",
         cmd: maskCommand(cmd),
