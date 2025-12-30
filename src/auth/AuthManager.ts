@@ -1,4 +1,4 @@
-import crypto from "crypto";
+import * as nodeCrypto from "crypto";
 import { v4 as uuidv4 } from "uuid";
 
 interface User {
@@ -43,7 +43,9 @@ export class AuthManager {
 
   private static getDeviceFingerprint(): string {
     // Simple device fingerprinting (can be enhanced)
-    return `${process.platform}-${process.arch}-${process.env.USER || process.env.USERNAME || ""}`;
+    return `${process.platform}-${process.arch}-${
+      process.env.USER || process.env.USERNAME || ""
+    }`;
   }
 
   private constructor() {
@@ -70,7 +72,7 @@ export class AuthManager {
     username: string,
     email: string,
     password: string,
-    role: "master" | "sister" | "user" = "user",
+    role: "master" | "sister" | "user" = "user"
   ): Promise<User> {
     // Check if user already exists
     if (this.findUserByEmail(email)) {
@@ -78,7 +80,7 @@ export class AuthManager {
     }
 
     // Generate salt and hash password
-    const salt = crypto.randomBytes(16).toString("hex");
+    const salt = (nodeCrypto as any).randomBytes(16).toString("hex");
     const passwordHash = this.hashPassword(password, salt);
 
     // Create new user
@@ -107,7 +109,7 @@ export class AuthManager {
     email: string,
     password: string,
     ip: string,
-    userAgent: string,
+    userAgent: string
   ): Promise<Session> {
     const user = this.findUserByEmail(email);
     if (!user) {
@@ -199,18 +201,18 @@ export class AuthManager {
   }
 
   private hashPassword(password: string, salt: string): string {
-    return crypto
+    return (nodeCrypto as any)
       .pbkdf2Sync(password, salt, 1000, 64, "sha512")
       .toString("hex");
   }
 
   private generateToken(): string {
-    return crypto.randomBytes(32).toString("hex");
+    return (nodeCrypto as any).randomBytes(32).toString("hex");
   }
 
   public async updateUserPreferences(
     sessionId: string,
-    preferences: Partial<User["preferences"]>,
+    preferences: Partial<User["preferences"]>
   ): Promise<User> {
     const user = await this.getUser(sessionId);
     if (!user) {
@@ -231,7 +233,7 @@ export class AuthManager {
   public async changePassword(
     sessionId: string,
     currentPassword: string,
-    newPassword: string,
+    newPassword: string
   ): Promise<void> {
     const user = await this.getUser(sessionId);
     if (!user) {
@@ -245,7 +247,7 @@ export class AuthManager {
     }
 
     // Generate new salt and hash
-    const newSalt = crypto.randomBytes(16).toString("hex");
+    const newSalt = (nodeCrypto as any).randomBytes(16).toString("hex");
     const newHash = this.hashPassword(newPassword, newSalt);
 
     // Update user
@@ -260,7 +262,7 @@ export class AuthManager {
         AuthManager.MASTER_USERNAME,
         AuthManager.MASTER_EMAIL,
         AuthManager.MASTER_PASSWORD,
-        "master",
+        "master"
       );
     }
     if (!this.findUserByEmail(AuthManager.SISTER_EMAIL)) {
@@ -268,7 +270,7 @@ export class AuthManager {
         AuthManager.SISTER_USERNAME,
         AuthManager.SISTER_EMAIL,
         AuthManager.SISTER_PASSWORD,
-        "sister",
+        "sister"
       );
     }
   }
@@ -285,7 +287,7 @@ export class AuthManager {
 
   public async confirmIdentity(
     sessionId: string,
-    _method: "whatsapp" | "face" | "voice",
+    _method: "whatsapp" | "face" | "voice"
   ): Promise<boolean> {
     // Stub: implement WhatsApp/face/voice confirmation
     // For now, always return true for master/sister

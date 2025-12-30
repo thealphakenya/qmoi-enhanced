@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import type { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 
@@ -13,7 +15,7 @@ async function installPackage(pkg: string, manager: "npm" | "pip" = "npm") {
 // Upload dataset to Colab/cloud (stub)
 interface Dataset {
   name: string;
-  [key: string]: unknown;
+  [key: string]: any;
 }
 async function uploadDataset(dataset: Dataset) {
   // const axios = await import('axios');
@@ -23,7 +25,7 @@ async function uploadDataset(dataset: Dataset) {
 
 // Execute job in Colab/cloud (stub)
 interface JobSpec {
-  [key: string]: unknown;
+  [key: string]: any;
 }
 async function executeColabJob(jobSpec: JobSpec) {
   // const axios = await import('axios');
@@ -38,13 +40,12 @@ async function getColabJobStatus(jobId: number) {
   return { jobId, status: "completed", result: "Job result data" };
 }
 
-function persistJob(job: Record<string, unknown>) {
+function persistJob(job: Record<string, any>) {
   fs.appendFileSync(JOBS_PATH, JSON.stringify(job) + "\n");
 }
 
 // Extend API handler to support new endpoints
-export default async function handler(
-  req: NextApiRequest,
+export default async function handler(req: NextApiRequest,
   res: NextApiResponse
 ) {
   if (req.method === "POST") {

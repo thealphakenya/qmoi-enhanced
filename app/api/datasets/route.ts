@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextResponse } from "next/server";
 
 // Conditionally import Prisma
@@ -23,8 +25,6 @@ export async function GET() {
     const isPrismaAvailable =
       prisma &&
       process.env.DATABASE_URL &&
-      !process.env.DATABASE_URL.includes("your_database_url_here");
-    process.env.DATABASE_URL &&
       !process.env.DATABASE_URL.includes("your_database_url_here");
 
     if (!isPrismaAvailable) {

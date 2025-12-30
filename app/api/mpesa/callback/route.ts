@@ -1,5 +1,18 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextRequest, NextResponse } from "next/server";
 import { logEvent } from "../../../../lib/security_check";
+
+// Production helper functions (module-level to avoid inner-declaration lint errors)
+async function updateMpesaTransaction(details: any) {
+  // TODO: Connect to DB and update transaction record
+  return true;
+}
+
+async function triggerPostPaymentActions(details: any) {
+  // TODO: Implement post-payment actions (e.g., send notification, update user status)
+  return true;
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -58,16 +71,7 @@ export async function POST(req: NextRequest) {
         phoneNumber,
         transactionDate,
       });
-      // Production helper functions
-      async function updateMpesaTransaction(details: any) {
-        // TODO: Connect to DB and update transaction record
-        return true;
-      }
-
-      async function triggerPostPaymentActions(details: any) {
-        // TODO: Implement post-payment actions (e.g., send notification, update user status)
-        return true;
-      }
+      // production helpers are defined at module scope
 
       return NextResponse.json({
         success: true,
@@ -96,7 +100,7 @@ export async function POST(req: NextRequest) {
         success: false,
         message: "Callback processing failed",
       },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }

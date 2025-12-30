@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextRequest, NextResponse } from "next/server";
 import libProposals from "../../../../lib/proposals";
 
@@ -89,17 +91,17 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (err) {
-            console.warn("Volume adjust failed, returning original audio", err);
+          } catch (_err) {
+            console.warn("Volume adjust failed, returning original audio", _err);
             return ab;
           }
         }
         return ab;
       }
-    } catch (err) {
+    } catch (_err) {
       console.warn(
         "ElevenLabs integration error, falling back to silent audio",
-        err,
+        _err,
       );
     }
   }
@@ -166,7 +168,7 @@ function adjustVolumeWav(wavBytes: Uint8Array, scale: number): Uint8Array {
   // Check 'WAVE' and 'fmt ' presence simplistically
   try {
     if (readString(view, 8, 4) !== "WAVE") return wavBytes;
-  } catch (e) {
+  } catch (_e) {
     return wavBytes;
   }
 

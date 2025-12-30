@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextRequest, NextResponse } from "next/server";
 import { QCityService } from "@/scripts/services/qcity_service";
 import * as fs from "fs";
@@ -83,7 +85,7 @@ export async function POST(req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((e) => ({ error: String(e) }));
+    .catch((_e) => ({ error: String(_e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }

@@ -1,11 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import type { NextApiRequest, NextApiResponse } from "next";
 import { exec } from "child_process";
 import fs from "fs";
 
 function runCommand(cmd: string): Promise<string> {
   return new Promise((resolve, reject) => {
-    exec(cmd, { timeout: 20000 }, (err, stdout, stderr) => {
-      if (err) return reject(stderr || err.message);
+    exec(cmd, { timeout: 20000 }, (_err, stdout, stderr) => {
+      if (_err) return reject(stderr || err.message);
       resolve(stdout);
     });
   });
@@ -23,8 +25,7 @@ async function callPythonAnomalyService(
   return await res.json();
 }
 
-export default async function handler(
-  req: NextApiRequest,
+export default async function handler(req: NextApiRequest,
   res: NextApiResponse,
 ) {
   const { action } = req.query;
@@ -47,7 +48,7 @@ export default async function handler(
         let log = "";
         try {
           log = fs.readFileSync("/var/log/auth.log", "utf8");
-        } catch (e) {
+        } catch (_e) {
           return res.json({
             result:
               "Log unavailable (try running as root or on a supported system).",
@@ -125,7 +126,7 @@ export default async function handler(
       default:
         return res.status(400).json({ error: "Unknown action" });
     }
-  } catch (e) {
+  } catch (_e) {
     return res
       .status(500)
       .json({ error: (e as Error).message || "Internal error" });

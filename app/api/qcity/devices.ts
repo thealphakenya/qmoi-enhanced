@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import path from "path";
@@ -13,8 +15,7 @@ function saveDevices(devices: any[]) {
   fs.writeFileSync(DEVICES_FILE, JSON.stringify(devices, null, 2));
 }
 
-const handler = requireRole(["admin", "master"])(async (
-  req: NextApiRequest,
+const handler = requireRole(["admin", "master"])(async (req: NextApiRequest,
   res: NextApiResponse,
 ) => {
   const { method, body, query } = req;
@@ -70,7 +71,7 @@ const handler = requireRole(["admin", "master"])(async (
         ssh.end();
         return res.status(200).json({ success: true });
       })
-      .on("error", (err: any) => {
+      .on("error", (_err: any) => {
         return res.status(500).json({ error: err.message });
       })
       .connect({

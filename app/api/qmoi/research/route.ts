@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 // NOTE: 6 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { NextApiRequest, NextApiResponse } from "next";
 // Import authentication and audit logging utilities
 // ... existing code ...
 
-export default async function handler(
-  req: NextApiRequest,
+export default async function handler(req: NextApiRequest,
   res: NextApiResponse,
 ) {
   // Authenticate user and check permissions

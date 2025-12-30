@@ -1,0 +1,164 @@
+Report generated: 2025-12-30T09:54:25.506Z
+---
+Running ESLint...
+ESLint: 0 errors, 0 warnings (checked 0 files)
+ESLint raw output (truncated 10000 chars):
+[{"filePath":"/workspaces/qmoi-enhanced/app/api/account-automation/route.ts","messages":[{"ruleId":"@typescript-eslint/ban-ts-comment","severity":2,"message":"Do not use \"@ts-nocheck\" because it alters compilation errors.","line":1,"column":1,"nodeType":"Line","messageId":"tsDirectiveComment","endLine":1,"endColumn":15}],"suppressedMessages":[{"ruleId":"@typescript-eslint/no-unused-vars","severity":1,"message":"'Request' is defined but never used.","line":3,"column":11,"nodeType":"Program","messageId":"unusedVar","endLine":3,"endColumn":18,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"@typescript-eslint/no-unused-vars","severity":1,"message":"'Headers' is defined but never used.","line":3,"column":20,"nodeType":"Program","messageId":"unusedVar","endLine":3,"endColumn":27,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"@typescript-eslint/no-unused-vars","severity":1,"message":"'Buffer' is defined but never used.","line":3,"column":29,"nodeType":"Program","messageId":"unusedVar","endLine":3,"endColumn":35,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"@typescript-eslint/no-unused-vars","severity":1,"message":"'URLSearchParams' is defined but never used.","line":3,"column":37,"nodeType":"Program","messageId":"unusedVar","endLine":3,"endColumn":52,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"@typescript-eslint/no-unused-vars","severity":1,"message":"'TextDecoder' is defined but never used.","line":3,"column":54,"nodeType":"Program","messageId":"unusedVar","endLine":3,"endColumn":65,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"@typescript-eslint/no-unused-vars","severity":1,"message":"'TextEncoder' is defined but never used.","line":3,"column":67,"nodeType":"Program","messageId":"unusedVar","endLine":3,"endColumn":78,"suppressions":[{"kind":"directive","justification":""}]}],"errorCount":1,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"source":"// @ts-nocheck\n/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */\n/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */\nimport { NextRequest, NextResponse } from \"next/server\";\nimport libProposals from \"../../../lib/proposals\";\n\nexport const dynamic = \"force-dynamic\";\nexport const runtime = \"nodejs\";\n// import nodemailer from 'nodemailer'; // Uncomment and configure for real email\n\n// In-memory account store (replace with DB in production)\nconst accounts: unknown[] = [];\nlet idCounter = 1;\n\nexport async function POST_CREATE(req: NextRequest) {\n  const auth = libProposals.requireApiKey(req.headers);\n  if (!auth.ok) {\n    const r = auth.response;\n    if (r) return NextResponse.json(r.body, { status: r.status });\n    return NextResponse.json({ error: \"Unauthorized\" }, { status: 401 });\n  }\n  // Create new account\n  const body = await req.json();\n  const { username, email, platform } = body;\n  const account = {\n    id: idCounter++,\n    username,\n    email,\n    platform,\n    status: \"pending\",\n    createdAt: new Date().toISOString(),\n    verified: false,\n  };\n  accounts.push(account);\n  // TODO: Modular platform support (WhatsApp, Telegram, etc.)\n  return NextResponse.json({ success: true, account });\n}\n\nexport async function POST_LOGIN(req: NextRequest) {\n  const auth = libProposals.requireApiKey(req.headers);\n  if (!auth.ok) {\n    const r = auth.response;\n    if (r) return NextResponse.json(r.body, { status: r.status });\n    return NextResponse.json({ error: \"Unauthorized\" }, { status: 401 });\n  }\n  // Login (stub)\n  const body = await req.json();\n  const { username, platform } = body;\n  const account = accounts.find(\n    (a) => a.username === username && a.platform === platform,\n  );\n  if (!account)\n    return NextResponse.json({ error: \"Account not found\" }, { status: 404 });\n  // TODO: Add real authentication logic\n  return NextResponse.json({ success: true, account });\n}\n\nexport async function POST_VERIFY(req: NextRequest) {\n  const auth = libProposals.requireApiKey(req.headers);\n  if (!auth.ok) {\n    const r = auth.response;\n    if (r) return NextResponse.json(r.body, { status: r.status });\n    return NextResponse.json({ error: \"Unauthorized\" }, { status: 401 });\n  }\n  // Trigger verification (e.g. email)\n  const body = await req.json();\n  const { email, id } = body;\n  // TODO: Integrate with nodemailer and rovicviccy@gmail.com for email verification\n  // Example:\n  // let transporter = nodemailer.createTransport({ ... });\n  // await transporter.sendMail({ ... });\n  // For now, just mark as verified\n  const idx = accounts.findIndex((a) => a.id === id && a.email === email);\n  if (idx === -1)\n    return NextResponse.json({ error: \"Account not found\" }, { status: 404 });\n  accounts[idx].verified = true;\n  accounts[idx].status = \"verified\";\n  return NextResponse.json({ success: true, account: accounts[idx] });\n}\n\nexport async function GET_STATUS(req: NextRequest) {\n  // Get account status\n  const url = new URL(req.url);\n  const id = Number(url.searchParams.get(\"id\"));\n  const account = accounts.find((a) => a.id === id);\n  if (!account)\n    return NextResponse.json({ error: \"Account not found\" }, { status: 404 });\n  return NextResponse.json({\n    status: account.status,\n    verified: account.verified,\n  });\n}\n\n// TODO: Enhance shelling, VPN, and security features\n// TODO: Add modular automation for more platforms\n","usedDeprecatedRules":[{"ruleId":"no-extra-semi","replacedBy":[]},{"ruleId":"no-mixed-spaces-and-tabs","replacedBy":[]}]},{"filePath":"/workspaces/qmoi-enhanced/app/api/ai-anomaly-service/route.ts","messages":[{"ruleId":"@typescript-eslint/ban-ts-comment","severity":2,"message":"Do not use \"@ts-nocheck\" because it alters compilation errors.","line":1,"column":1,"nodeType":"Line","messageId":"tsDirectiveComment","endLine":1,"endColumn":15}],"suppressedMessages":[{"ruleId":"@typescript-eslint/no-unused-vars","severity":1,"message":"'Request' is defined but never used.","line":3,"column":11,"nodeType":"Program","messageId":"unusedVar","endLine":3,"endColumn":18,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"@typescript-eslint/no-unused-vars","severity":1,"message":"'Headers' is defined but never used.","line":3,"column":20,"nodeType":"Program","messageId":"unusedVar","endLine":3,"endColumn":27,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"@typescript-eslint/no-unused-vars","severity":1,"message":"'Buffer' is defined but never used.","line":3,"column":29,"nodeType":"Program","messageId":"unusedVar","endLine":3,"endColumn":35,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"@typescript-eslint/no-unused-vars","severity":1,"message":"'URLSearchParams' is defined but never used.","line":3,"column":37,"nodeType":"Program","messageId":"unusedVar","endLine":3,"endColumn":52,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"@typescript-eslint/no-unused-vars","severity":1,"message":"'TextDecoder' is defined but never used.","line":3,"column":54,"nodeType":"Program","messageId":"unusedVar","endLine":3,"endColumn":65,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"@typescript-eslint/no-unused-vars","severity":1,"message":"'TextEncoder' is defined but never used.","line":3,"column":67,"nodeType":"Program","messageId":"unusedVar","endLine":3,"endColumn":78,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"@typescript-eslint/no-unused-vars","severity":1,"message":"'AnomalyResponse' is defined but never used.","line":16,"column":11,"nodeType":null,"messageId":"unusedVar","endLine":16,"endColumn":26,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'e' is not defined.","line":50,"column":18,"nodeType":"Identifier","messageId":"undef","endLine":50,"endColumn":19,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'e' is not defined.","line":50,"column":39,"nodeType":"Identifier","messageId":"undef","endLine":50,"endColumn":40,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'e' is not defined.","line":78,"column":18,"nodeType":"Identifier","messageId":"undef","endLine":78,"endColumn":19,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'e' is not defined.","line":78,"column":39,"nodeType":"Identifier","messageId":"undef","endLine":78,"endColumn":40,"suppressions":[{"kind":"directive","justification":""}]}],"errorCount":1,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"source":"// @ts-nocheck\n/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */\n/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */\n// NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.\nimport { NextRequest, NextResponse } from \"next/server\";\nimport { requireApiKey } from \"../../../lib/proposals\";\n\nexport const dynamic = \"force-dynamic\";\nexport const runtime = \"nodejs\";\n\ninterface AnomalyError {\n  message: string;\n  count?: number;\n}\n\ninterface AnomalyResponse {\n  errors?: AnomalyError[];\n  status?: string;\n  error?: string;\n}\n\nexport async function GET(request: NextRequest) {\n  const apiAuth = requireApiKey(request.headers);\n  const adminToken = request.headers.get(\"x-admin-token\");\n  if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {\n    return NextResponse.json(apiAuth.response?.body || { error: \"Forbidden\" }, {\n      status: apiAuth.resp
+
+
+Running TypeScript check (tsc --noEmit)...
+TypeScript: 0 errors
+TypeScript raw output (truncated 10000 chars):
+(no output)
+
+
+Running npm build (if present)...
+Build ok: yes
+Build output (truncated 10000 chars):
+
+> qmoi-enhanced-system@2.0.0 build
+> next build
+
+   ▲ Next.js 15.5.9
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 23.5s
+   Skipping linting
+   Checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/67) ...
+   Generating static pages (16/67) 
+   Generating static pages (33/67) 
+   Generating static pages (50/67) 
+ ✓ Generating static pages (67/67)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                  Size  First Load JS
+┌ ○ /                                     62.4 kB         164 kB
+├ ○ /_not-found                             995 B         103 kB
+├ ƒ /api/account-automation                 363 B         102 kB
+├ ƒ /api/ai-anomaly-service                 363 B         102 kB
+├ ƒ /api/ai-health                          363 B         102 kB
+├ ƒ /api/ai-self-diagnostics                363 B         102 kB
+├ ƒ /api/ai/scan                            363 B         102 kB
+├ ƒ /api/automation/status                  363 B         102 kB
+├ ƒ /api/cashon                             363 B         102 kB
+├ ƒ /api/cashon/balance                     363 B         102 kB
+├ ƒ /api/cashon/deposit                     363 B         102 kB
+├ ƒ /api/cashon/signals                     363 B         102 kB
+├ ƒ /api/cashon/start-trading               363 B         102 kB
+├ ƒ /api/cashon/stop-trading                363 B         102 kB
+├ ƒ /api/cashon/trading-status              363 B         102 kB
+├ ƒ /api/datasets                           363 B         102 kB
+├ ƒ /api/datasets/settings                  363 B         102 kB
+├ ƒ /api/deploy                             363 B         102 kB
+├ ƒ /api/deploy/auto-redeploy               363 B         102 kB
+├ ƒ /api/deployment-status                  363 B         102 kB
+├ ƒ /api/device-fingerprint                 363 B         102 kB
+├ ƒ /api/document-backup                    363 B         102 kB
+├ ƒ /api/earning                            363 B         102 kB
+├ ƒ /api/employment                         363 B         102 kB
+├ ƒ /api/employment/megavault               363 B         102 kB
+├ ƒ /api/employment/payment                 363 B         102 kB
+├ ƒ /api/employment/revenue                 363 B         102 kB
+├ ƒ /api/financial/audit                    363 B         102 kB
+├ ƒ /api/financial/transactions             363 B         102 kB
+├ ƒ /api/financial/verify                   363 B         102 kB
+├ ƒ /api/git/branch                         363 B         102 kB
+├ ƒ /api/git/commit                         363 B         102 kB
+├ ƒ /api/git/pr                             363 B         102 kB
+├ ƒ /api/git/push                           363 B         102 kB
+├ ƒ /api/git/remote                         363 B         102 kB
+├ ƒ /api/git/status                         363 B         102 kB
+├ ƒ /api/health                             363 B         102 kB
+├ ƒ /api/media/generate                     363 B         102 kB
+├ ƒ /api/media/status                       363 B         102 kB
+├ ƒ /api/monitor/status                     363 B         102 kB
+├ ƒ /api/mpesa/callback                     363 B         102 kB
+├ ƒ /api/qapikey                            363 B         102 kB
+├ ƒ /api/qcity/audit-log                    363 B         102 kB
+├ ƒ /api/qcity/remote-command               363 B         102 kB
+├ ƒ /api/qcity/selfheal-npm                 363 B         102 kB
+├ ƒ /api/qcity/status                       363 B         102 kB
+├ ƒ /api/qi-trading                         363 B         102 kB
+├ ƒ /api/qmoi-database                      363 B         102 kB
+├ ƒ /api/qmoi-earning-enhanced              363 B         102 kB
+├ ƒ /api/qmoi-gitlab/deployments            363 B         102 kB
+├ ƒ /api/qmoi-gitlab/errors                 363 B         102 kB
+├ ƒ /api/qmoi-gitlab/jobs                   363 B         102 kB
+├ ƒ /api/qmoi-gitlab/pipelines              363 B         102 kB
+├ ƒ /api/qmoi-gitlab/trigger                363 B         102 kB
+├ ƒ /api/qmoi-model                         363 B         102 kB
+├ ƒ /api/qmoi/auto-fix/download-report      363 B         102 kB
+├ ƒ /api/qmoi/auto-fix/github-status        363 B         102 kB
+├ ƒ /api/qmoi/auto-fix/start                363 B         102 kB
+├ ƒ /api/qmoi/auto-fix/status               363 B         102 kB
+├ ƒ /api/qmoi/auto-fix/stop                 363 B         102 kB
+├ ƒ /api/qmoi/avatars                       363 B         102 kB
+├ ƒ /api/qmoi/backup                        363 B         102 kB
+├ ƒ /api/qmoi/chat                          363 B         102 kB
+├ ƒ /api/qmoi/language                      363 B         102 kB
+├ ƒ /api/qmoi/master-mode                   363 B         102 kB
+├ ƒ /api/qmoi/memory                        363 B         102 kB
+├ ƒ /api/qmoi/own-device-logs               363 B         102 kB
+├ ƒ /api/qmoi/own-device-logs/export        363 B         102 kB
+├ ƒ /api/qmoi/research                      363 B         102 kB
+├ ƒ /api/qmoi/revenue                       363 B         102 kB
+├ ƒ /api/qmoi/revenue-dashboard             363 B         102 kB
+├ ƒ /api/qmoi/revenue/reset                 363 B         102 kB
+├ ƒ /api/qmoi/revenue/start                 363 B         102 kB
+├ ƒ /api/qmoi/revenue/status                363 B         102 kB
+├ ƒ /api/qmoi/revenue/stop                  363 B         102 kB
+├ ƒ /api/qmoi/revenue/target                363 B         102 kB
+├ ƒ /api/qmoi/revenue/transactions          363 B         102 kB
+├ ƒ /api/qmoi/revenue/transfer              363 B         102 kB
+├ ƒ /api/qmoi/user                          363 B         102 kB
+├ ƒ /api/qmoi/voice-preview                 363 B         102 kB
+├ ƒ /api/qmoi/voice-profiles                363 B         102 kB
+├ ƒ /api/qnews                              363 B         102 kB
+├ ƒ /api/qradio                             363 B         102 kB
+├ ƒ /api/qvillage                           363 B         102 kB
+├ ƒ /api/social-automation                  363 B         102 kB
+├ ƒ /api/ssh/list                           363 B         102 kB
+├ ƒ /api/ssh/read                           363 B         102 kB
+├ ƒ /api/ssh/write                          363 B         102 kB
+├ ƒ /api/trading/status                     363 B         102 kB
+├ ƒ /api/version                            363 B         102 kB
+├ ƒ /api/webhooks/qvillage                  363 B         102 kB
+├ ƒ /api/whatsapp-bot                       363 B         102 kB
+├ ƒ /api/whatsapp-business                  363 B         102 kB
+├ ƒ /api/whatsapp/audit                     363 B         102 kB
+├ ƒ /api/whatsapp/verify                    363 B         102 kB
+├ ƒ /api/wifi                               363 B         102 kB
+├ ƒ /api/wifi-security                      363 B         102 kB
+├ ƒ /api/wifi/scan                          363 B         102 kB
+├ ○ /qcity                                 1.5 kB         104 kB
+└ ○ /test                                   363 B         102 kB
++ First Load JS shared by all              102 kB
+  ├ chunks/1255-9494d7e861e97d68.js       45.9 kB
+  ├ chunks/4bd1b696-f785427dddbba9fb.js   54.2 kB
+  └ other shared chunks (total)           1.93 kB
+
+Route (pages)                                Size  First Load JS
+─ ƒ /api/memory                               0 B        82.7 kB
++ First Load JS shared by all             82.7 kB
+  ├ chunks/framework-f31701c9d93f12a4.js  44.8 kB
+  ├ chunks/main-50df30d0767b2ca7.js         36 kB
+  └ other shared chunks (total)            1.9 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+
+
+
+Scanning app/api for @ts-nocheck...
+Files scanned under app/api: 121
+Files containing @ts-nocheck: 121
+
+
+
+Summary commands to re-run this report:
+node ./scripts/generate_problems_report.cjs
+---

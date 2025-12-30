@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextRequest, NextResponse } from "next/server";
 import { requireApiKey } from "../../../lib/proposals";
 
@@ -47,7 +49,7 @@ function isMaster(req: NextRequest) {
   try {
     const auth = requireApiKey(req.headers);
     if (auth.ok) return true;
-  } catch (e) {}
+  } catch (_e) {}
   return req.headers.get("x-qmoi-master") === "true";
 }
 

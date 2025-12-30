@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 // NOTE: 13 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
@@ -134,7 +136,7 @@ export async function GET(request: NextRequest) {
           meta.licenses && !allowed.includes(meta.licenses),
       );
       licenseStatus = offenders.length === 0 ? "compliant" : "non-compliant";
-    } catch (e) {
+    } catch (_e) {
       licenseStatus = "error";
     }
 

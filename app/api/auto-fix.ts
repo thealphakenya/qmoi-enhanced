@@ -1,26 +1,31 @@
 import { NextRequest, NextResponse } from "next/server";
+type AutoFixService = {
+  startContinuousAutoFix?: (getStatus: () => Promise<any>) => void;
+  stopContinuousAutoFix?: () => void;
+  startAutoFix?: (status: any) => Promise<any>;
+};
 
 // Try to import the service at module load time for TypeScript resolution;
 // if it fails at runtime, use the fallback shim defined below.
-let autoFixService: any;
+let autoFixService: AutoFixService | undefined;
 
-try {
-  // This will be resolved statically by TypeScript if the module exists
-  // eslint-disable-next-line global-require
-  autoFixService =
-    require("../../../scripts/services/auto_fix_service").autoFixService ||
-    require("../../../scripts/services/auto_fix_service").default;
-} catch (e) {
-  // Fallback shim for when the service is not available
-  autoFixService = {
-    startContinuousAutoFix: () => {},
-    stopContinuousAutoFix: () => {},
-    startAutoFix: async () => ({
-      success: false,
-      message: "autoFixService unavailable",
-    }),
-  };
-}
+// Try to dynamically import the auto-fix service to avoid require() usage
+(async () => {
+  try {
+    const mod = await import("../../scripts/services/auto_fix_service");
+    autoFixService =
+      (mod.autoFixService as AutoFixService) ?? (mod as AutoFixService);
+  } catch (_e) {
+    autoFixService = {
+      startContinuousAutoFix: () => {},
+      stopContinuousAutoFix: () => {},
+      startAutoFix: async () => ({
+        success: false,
+        message: "autoFixService unavailable",
+      }),
+    };
+  }
+})();
 
 // Helper to get current QCity status
 async function getStatus() {
@@ -52,7 +57,7 @@ export async function POST(req: NextRequest) {
   if (mode === "start") {
     if (!isContinuousRunning) {
       isContinuousRunning = true;
-      autoFixService.startContinuousAutoFix(getStatus);
+      autoFixService?.startContinuousAutoFix?.(getStatus);
       return NextResponse.json({ message: "Continuous auto-fix started." });
     } else {
       return NextResponse.json({
@@ -61,7 +66,7 @@ export async function POST(req: NextRequest) {
     }
   } else if (mode === "stop") {
     if (isContinuousRunning) {
-      autoFixService.stopContinuousAutoFix();
+      autoFixService?.stopContinuousAutoFix?.();
       isContinuousRunning = false;
       return NextResponse.json({ message: "Continuous auto-fix stopped." });
     } else {
@@ -74,7 +79,12 @@ export async function POST(req: NextRequest) {
   } else {
     // One-off fix (default)
     const status = await getStatus();
-    const result = await autoFixService.startAutoFix(status);
+    const result = await (autoFixService?.startAutoFix
+      ? autoFixService.startAutoFix(status)
+      : Promise.resolve({
+          success: false,
+          message: "autoFixService unavailable",
+        }));
     return NextResponse.json(result);
   }
 }

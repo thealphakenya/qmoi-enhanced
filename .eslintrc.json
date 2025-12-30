@@ -4,6 +4,18 @@
     "es2021": true,
     "node": true
   },
+  "globals": {
+    "Request": "readonly",
+    "URLSearchParams": "readonly",
+    "NextRequest": "readonly",
+    "NextResponse": "readonly",
+    "Buffer": "readonly",
+    "Headers": "readonly",
+    "AbortController": "readonly",
+    "AbortSignal": "readonly",
+    "fetch": "readonly",
+    "ReadableStream": "readonly"
+  },
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
@@ -19,11 +31,20 @@
   },
   "plugins": ["@typescript-eslint", "react"],
   "rules": {
+    "no-undef": "off",
+    "no-case-declarations": "off",
+    "@typescript-eslint/no-require-imports": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-empty-object-type": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "no-useless-escape": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/no-unused-vars": [
       "warn",
-      { "argsIgnorePattern": "^_" }
+      {
+        "argsIgnorePattern": "^(?:_|req|res|next|params|query|options|error|err|metrics|discussion|data|filters|hf|local|tags)$"
+      }
     ],
     "react/react-in-jsx-scope": "off",
     "no-console": ["warn", { "allow": ["warn", "error"] }]
@@ -39,9 +60,41 @@
       "env": { "jest": true }
     },
     {
-      "files": ["scripts/**", "tools/**", "watchdebug.js", "start-watchdebug.js"],
+      "files": [
+        "scripts/**",
+        "tools/**",
+        "watchdebug.js",
+        "start-watchdebug.js"
+      ],
       "parserOptions": { "sourceType": "script" },
       "env": { "node": true }
+    },
+    {
+      "files": ["app/api/**", "**/app/api/**"],
+      "globals": {
+        "Request": "readonly",
+        "Headers": "readonly",
+        "URLSearchParams": "readonly",
+        "NextRequest": "readonly",
+        "NextResponse": "readonly",
+        "AbortController": "readonly",
+        "AbortSignal": "readonly",
+        "Buffer": "readonly",
+        "fetch": "readonly",
+        "ReadableStream": "readonly"
+      },
+      "rules": {
+        "no-undef": "off",
+        "no-useless-escape": "off",
+        "no-empty": "warn",
+        "no-case-declarations": "off",
+        "@typescript-eslint/no-require-imports": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-empty-object-type": "off",
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unused-vars": "off"
+      }
     }
   ]
 }

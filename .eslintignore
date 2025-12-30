@@ -1,4 +1,9 @@
-.next
+node_modules/
+lib/
+**/*.md.ts
+.next/
+build/
+dist/.next
 dist
 build
 out

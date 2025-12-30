@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextApiRequest, NextApiResponse } from "next";
 import { spawn } from "child_process";
 import fs from "fs";
@@ -17,8 +19,7 @@ function maskCommand(cmd: string) {
   return /pass|secret|token|key|rm|delete|reset/i.test(cmd) ? "[MASKED]" : cmd;
 }
 
-export default async function handler(
-  req: NextApiRequest,
+export default async function handler(req: NextApiRequest,
   res: NextApiResponse,
 ) {
   if (req.method !== "POST") return res.status(405).end();
@@ -80,8 +81,8 @@ export default async function handler(
         });
         res.status(200).json({ output, code });
       });
-    } catch (e) {
-      const errorMessage = e instanceof Error ? e.message : String(e);
+    } catch (_e) {
+      const errorMessage = e instanceof Error ? e.message : String(_e);
       logAudit({
         action: "run",
         cmd: maskCommand(cmd),

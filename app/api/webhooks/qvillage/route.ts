@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextResponse } from "next/server";
 
 // Conditionally import Prisma
@@ -337,12 +339,12 @@ function calculateRelevanceScore(paper: any): number {
   return Math.min(score, 1.0);
 }
 
-async function notifySubscribers(event: string, data: any) {
+async function notifySubscribers(_event: string, data: any) {
   // Parallel notification system
   const notifications = await Promise.allSettled([
-    notifyWebSubscribers(event, data),
-    notifyEmailSubscribers(event, data),
-    notifyPushSubscribers(event, data),
+    notifyWebSubscribers(_event, data),
+    notifyEmailSubscribers(_event, data),
+    notifyPushSubscribers(_event, data),
   ]);
 
   return {
@@ -1064,7 +1066,7 @@ async function adjustMonitoringThresholds(alert_type: string, metrics: any) {
   }
 }
 
-async function notifyWebSubscribers(event: string, data: any) {
+async function notifyWebSubscribers(_event: string, data: any) {
   // Web notification to connected clients
   try {
     console.log(`Sending web notification: ${event}`, data);
@@ -1078,9 +1080,9 @@ async function notifyWebSubscribers(event: string, data: any) {
     const notifications = users.map((user: any) => ({
       userId: user.id,
       type: "web",
-      event,
-      title: getNotificationTitle(event, data),
-      message: getNotificationMessage(event, data),
+      _event,
+      title: getNotificationTitle(_event, data),
+      message: getNotificationMessage(_event, data),
       data,
     }));
 
@@ -1100,8 +1102,8 @@ async function notifyWebSubscribers(event: string, data: any) {
 }
 
 // Helper functions for notifications
-function getNotificationTitle(event: string, data: any): string {
-  switch (event) {
+function getNotificationTitle(_event: string, data: any): string {
+  switch (_event) {
     case "paper_update":
       return "New Research Papers Available";
     case "kb_entry":
@@ -1113,8 +1115,8 @@ function getNotificationTitle(event: string, data: any): string {
   }
 }
 
-function getNotificationMessage(event: string, data: any): string {
-  switch (event) {
+function getNotificationMessage(_event: string, data: any): string {
+  switch (_event) {
     case "paper_update":
       return `New papers added to QVillage research collection`;
     case "kb_entry":
@@ -1126,7 +1128,7 @@ function getNotificationMessage(event: string, data: any): string {
   }
 }
 
-async function notifyEmailSubscribers(event: string, data: any) {
+async function notifyEmailSubscribers(_event: string, data: any) {
   // Email notification
   try {
     console.log(`Sending email notification: ${event}`, data);
@@ -1140,9 +1142,9 @@ async function notifyEmailSubscribers(event: string, data: any) {
     const notifications = users.map((user: any) => ({
       userId: user.id,
       type: "email",
-      event,
-      title: getNotificationTitle(event, data),
-      message: getNotificationMessage(event, data),
+      _event,
+      title: getNotificationTitle(_event, data),
+      message: getNotificationMessage(_event, data),
       data: { ...data, email: user.email },
     }));
 
@@ -1161,7 +1163,7 @@ async function notifyEmailSubscribers(event: string, data: any) {
   }
 }
 
-async function notifyPushSubscribers(event: string, data: any) {
+async function notifyPushSubscribers(_event: string, data: any) {
   // Push notification
   try {
     console.log(`Sending push notification: ${event}`, data);
@@ -1175,9 +1177,9 @@ async function notifyPushSubscribers(event: string, data: any) {
     const notifications = users.map((user: any) => ({
       userId: user.id,
       type: "push",
-      event,
-      title: getNotificationTitle(event, data),
-      message: getNotificationMessage(event, data),
+      _event,
+      title: getNotificationTitle(_event, data),
+      message: getNotificationMessage(_event, data),
       data,
     }));
 

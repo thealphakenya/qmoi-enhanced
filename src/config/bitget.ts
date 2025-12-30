@@ -1,4 +1,5 @@
-import crypto from "crypto";
+import * as nodeCrypto from "crypto";
+const crypto: any = nodeCrypto as any;
 import { EventEmitter } from "events";
 
 interface SecurityMetrics {
@@ -994,7 +995,7 @@ export class BitgetManager extends EventEmitter {
 
       // Set next rotation date
       this.securityStatus.encryptionKeys.nextRotation = new Date(
-        now.getTime() + 7 * 24 * 60 * 60 * 1000,
+        now.getTime() + 7 * 24 * 60 * 60 * 1000
       );
 
       // Backup keys
@@ -1034,7 +1035,7 @@ export class BitgetManager extends EventEmitter {
         this.securityStatus.failedAttempts = 0;
       } else {
         throw new Error(
-          "Account is temporarily locked due to multiple failed attempts",
+          "Account is temporarily locked due to multiple failed attempts"
         );
       }
     }
@@ -1077,8 +1078,12 @@ export class BitgetManager extends EventEmitter {
   }
 
   public async encryptSensitiveData(data: string): Promise<string> {
-    const iv = crypto.randomBytes(16);
-    const cipher = crypto.createCipheriv("aes-256-gcm", this.encryptionKey, iv);
+    const iv = (nodeCrypto as any).randomBytes(16);
+    const cipher = (nodeCrypto as any).createCipheriv(
+      "aes-256-gcm",
+      this.encryptionKey,
+      iv
+    );
 
     let encrypted = cipher.update(data, "utf8", "hex");
     encrypted += cipher.final("hex");
@@ -1095,10 +1100,10 @@ export class BitgetManager extends EventEmitter {
   public async decryptSensitiveData(encryptedData: string): Promise<string> {
     const { iv, encrypted, authTag } = JSON.parse(encryptedData);
 
-    const decipher = crypto.createDecipheriv(
+    const decipher = (nodeCrypto as any).createDecipheriv(
       "aes-256-gcm",
       this.encryptionKey,
-      Buffer.from(iv, "hex"),
+      Buffer.from(iv, "hex")
     );
 
     decipher.setAuthTag(Buffer.from(authTag, "hex"));
@@ -1114,7 +1119,7 @@ export class BitgetManager extends EventEmitter {
   }
 
   public async updateSecurityConfig(
-    config: Partial<BitgetConfig["security"]>,
+    config: Partial<BitgetConfig["security"]>
   ): Promise<void> {
     this.config.security = {
       ...this.config.security,
@@ -1142,7 +1147,7 @@ export class BitgetManager extends EventEmitter {
   }
 
   public async updateConnectionStatus(
-    status: Partial<BitgetConfig["connectionStatus"]>,
+    status: Partial<BitgetConfig["connectionStatus"]>
   ): Promise<void> {
     this.connectionStatus = {
       ...this.connectionStatus,
@@ -1171,7 +1176,7 @@ export class BitgetManager extends EventEmitter {
   }
 
   public async updateAnomalyDetectionConfig(
-    config: Partial<AnomalyDetectionConfig>,
+    config: Partial<AnomalyDetectionConfig>
   ): Promise<void> {
     this.config.security.anomalyDetection = {
       ...this.config.security.anomalyDetection,

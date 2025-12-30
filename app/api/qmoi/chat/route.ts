@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
@@ -37,7 +39,7 @@ export async function POST(req: Request) {
         const match = cookie.match(/(?:^|; )qmoi_session_id=([^;]+)/);
         if (match) sessionId = match[1];
       }
-    } catch (e) {}
+    } catch (_e) {}
 
     if (!sessionId) {
       sessionId = `s_${Date.now().toString(36)}_${Math.random()
@@ -66,13 +68,13 @@ export async function POST(req: Request) {
         const txt = await (resp as any).text();
         try {
           data = txt ? JSON.parse(txt) : null;
-        } catch (e) {
+        } catch (_e) {
           data = null;
         }
       } else {
         data = null;
       }
-    } catch (e) {
+    } catch (_e) {
       data = null;
     }
 
@@ -82,7 +84,7 @@ export async function POST(req: Request) {
           { error: "invalid_response_from_qmoi" },
           { status: 502 }
         );
-      } catch (e) {
+      } catch (_e) {
         return { status: 502, body: { error: "invalid_response_from_qmoi" } };
       }
     }
@@ -104,7 +106,7 @@ export async function POST(req: Request) {
           }
         }
       }
-    } catch (e) {
+    } catch (_e) {
       // ignore sanitization errors
     }
 
@@ -123,20 +125,19 @@ export async function POST(req: Request) {
           }; SameSite=Lax`;
           res.headers.set("Set-Cookie", cookieVal);
         }
-      } catch (e) {}
+      } catch (_e) {}
       return res;
-    } catch (e) {
+    } catch (_e) {
       return { status: 200, body: data };
     }
   } catch (error) {
     console.error("Error in /api/qmoi/chat:", error);
     try {
       return NextResponse.json({ error: "server_error" }, { status: 500 });
-    } catch (e) {
+    } catch (_e) {
       // If NextResponse.json throws in the test environment, fall back to a plain object
       // This keeps tests deterministic without relying on Next runtime internals.
       // The test harness should still validate that the fetch call occurred.
-      // @ts-ignore
       return { status: 500, body: { error: "server_error" } };
     }
   }

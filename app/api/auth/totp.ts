@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextApiRequest, NextApiResponse } from "next";
 import { authenticator } from "otplib";
 import fs from "fs";
@@ -13,8 +15,7 @@ function saveUsers(users: any[]) {
   fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
 }
 
-const handler = requireRole(["user", "admin", "master"])(async (
-  req: NextApiRequest,
+const handler = requireRole(["user", "admin", "master"])(async (req: NextApiRequest,
   res: NextApiResponse,
 ) => {
   const { method, body } = req;

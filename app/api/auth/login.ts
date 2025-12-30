@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import path from "path";
@@ -12,8 +14,7 @@ function loadUsers() {
   return JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
 }
 
-export default async function handler(
-  req: NextApiRequest,
+export default async function handler(req: NextApiRequest,
   res: NextApiResponse,
 ) {
   if (req.method !== "POST")

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextRequest, NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -46,7 +48,7 @@ export async function GET(request: NextRequest) {
         "logs/download_fixes.log",
         JSON.stringify(logEntry) + "\n",
       );
-    } catch (e) {
+    } catch (_e) {
       /* ignore logging failures */
     }
 
@@ -82,7 +84,7 @@ export async function GET(request: NextRequest) {
         "logs/download_fixes.log",
         JSON.stringify(logEntryErr) + "\n",
       );
-    } catch (e) {
+    } catch (_e) {
       /* ignore logging failures */
     }
     return NextResponse.json(

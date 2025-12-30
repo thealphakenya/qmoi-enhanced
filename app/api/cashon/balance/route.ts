@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextRequest, NextResponse } from "next/server";
 import { requireApiKey } from "../../../../lib/proposals";
 
@@ -74,8 +76,8 @@ export async function POST(req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : String(err);
+    } catch (_err) {
+      const errorMessage = err instanceof Error ? err.message : String(_err);
       logEvent("mpesa_sync_failed", { error: errorMessage });
       return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,

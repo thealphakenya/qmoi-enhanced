@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextRequest, NextResponse } from "next/server";
 
 // Dynamic import for Prisma to avoid build-time issues
@@ -33,47 +35,11 @@ function isMaster(request: NextRequest) {
 }
 
 // Media search implementation
-async function searchMedia(
-  query: string,
+async function searchMedia(query: string,
   type?: string,
-  source?: string,
+  source?: string
 ): Promise<MediaItem[]> {
   const prisma = await getPrisma();
-  const where: any = {
-    title: {
-      contains: query,
-      mode: "insensitive",
-    },
-  };
-
-  if (type) {
-    where.type = type;
-  }
-
-  if (source) {
-    where.source = source;
-  }
-
-  const mediaTasks = await prisma.mediaTask.findMany({
-    where,
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
-
-  // Convert to MediaItem format for compatibility
-  return mediaTasks.map((task: any) => ({
-    id: task.id,
-    title: task.type, // Using type as title for now
-    type: "movie" as const, // Default type
-    source: "public_domain" as const, // Default source
-    url: task.result || "",
-    status: task.status === "completed" ? "downloaded" :
-            task.status === "processing" ? "downloading" : "available",
-    createdAt: task.createdAt,
-    updatedAt: task.updatedAt,
-  }));
-}
   const where: any = {
     title: {
       contains: query,

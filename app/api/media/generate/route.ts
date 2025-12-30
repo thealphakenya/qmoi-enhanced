@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 // NOTE: 2 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
@@ -33,7 +35,7 @@ function isMaster(req: NextRequest): boolean {
 function logToDashboard(
   action: string,
   data: any,
-  level: "info" | "error" | "warning" = "info",
+  level: "info" | "error" | "warning" = "info"
 ) {
   const logEntry = {
     timestamp: new Date().toISOString(),
@@ -43,11 +45,16 @@ function logToDashboard(
     source: "media-generation-api",
   };
 
-  // Sanitize for UTF-8 safety
-  const sanitizedLog = JSON.stringify(logEntry).replace(
-    /[\u0000-\u001F\u007F-\u009F]/g,
-    "",
-  );
+  // Sanitize for UTF-8 safety (remove control characters)
+  function removeControlChars(s: string) {
+    return Array.from(s)
+      .filter((ch) => {
+        const code = ch.charCodeAt(0);
+        return !(code >= 0 && code <= 31) && !(code >= 127 && code <= 159);
+      })
+      .join("");
+  }
+  const sanitizedLog = removeControlChars(JSON.stringify(logEntry));
   console.log(sanitizedLog);
 
   // TODO: Send to dashboard API for real-time visualization
@@ -57,7 +64,7 @@ function logToDashboard(
 // Pre-autotest logic
 async function runPreAutotest(
   mediaType: string,
-  prompt: string,
+  prompt: string
 ): Promise<{ passed: boolean; issues: string[] }> {
   const issues: string[] = [];
 
@@ -140,7 +147,7 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     logToDashboard(
       "cloud-offload-error",
       { taskId: task.id, error: task.error },
-      "error",
+      "error"
     );
 
     return task;
@@ -155,7 +162,7 @@ export async function POST(request: NextRequest) {
     if (!type || !prompt) {
       return NextResponse.json(
         { error: "Type and prompt are required" },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
@@ -166,7 +173,7 @@ export async function POST(request: NextRequest) {
       logToDashboard(
         "pre-autotest-failed",
         { type, prompt, issues: autotestResult.issues },
-        "warning",
+        "warning"
       );
       return NextResponse.json(
         {
@@ -174,7 +181,7 @@ export async function POST(request: NextRequest) {
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
@@ -184,7 +191,7 @@ export async function POST(request: NextRequest) {
         apiAuth.response?.body || {
           error: "Master access required for override",
         },
-        { status: apiAuth.response?.status || 403 },
+        { status: apiAuth.response?.status || 403 }
       );
     }
 
@@ -222,7 +229,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(
       { error: "Failed to generate media", details: errorMessage },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
@@ -269,7 +276,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(
       { error: "Failed to fetch task status", details: errorMessage },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }

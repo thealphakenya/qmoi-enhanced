@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextRequest, NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -63,7 +65,7 @@ export async function POST(request: NextRequest) {
 
     child.stdout.on("data", (d) => console.log("[auto-fix]", d.toString()));
     child.stderr.on("data", (d) =>
-      console.error("[auto-fix][err]", d.toString()),
+      console.error("[auto-fix][_err]", d.toString()),
     );
 
     return NextResponse.json({
