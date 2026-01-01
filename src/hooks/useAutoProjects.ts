@@ -103,8 +103,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
         await notifyMaster(
           `🆕 New project planned: ${newProject.name}\nType: ${newProject.type}\nPriority: ${newProject.priority}\nEstimated time: ${newProject.estimatedDuration} minutes`,
         );
-      } catch (error) {
-        console.error("Error creating project:", error);
+      } catch (_error) {
+        console.error("Error creating project:", _error);
       } finally {
         setIsLoading(false);
       }
@@ -149,8 +149,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
             `📊 Project status updated: ${project.name}\nNew status: ${status}${status === "completed" ? " ✅" : status === "in-progress" ? " 🔄" : " 📋"}`,
           );
         }
-      } catch (error) {
-        console.error("Error updating project status:", error);
+      } catch (_error) {
+        console.error("Error updating project status:", _error);
       } finally {
         setIsLoading(false);
       }
@@ -226,8 +226,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       await postToWhatsAppGroup(
         `📋 Daily Plan - ${plan.date}\n\nProjects planned: ${newProjects.length}\nEstimated time: ${Math.round(plan.totalEstimatedTime / 60)} hours\n\nProjects:\n${newProjects.map((p, i) => `${i + 1}. ${p.name} (${p.type}) - ${p.estimatedDuration}min`).join("\n")}`,
       );
-    } catch (error) {
-      console.error("Error generating daily plan:", error);
+    } catch (_error) {
+      console.error("Error generating daily plan:", _error);
     } finally {
       setIsLoading(false);
     }
@@ -244,8 +244,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({ message })
       // });
-    } catch (error) {
-      console.error("Error notifying master:", error);
+    } catch (_error) {
+      console.error("Error notifying master:", _error);
     }
   }, []);
 
@@ -263,8 +263,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //     description: 'Automated project updates and notifications'
       //   })
       // });
-    } catch (error) {
-      console.error("Error creating WhatsApp group:", error);
+    } catch (_error) {
+      console.error("Error creating WhatsApp group:", _error);
     }
   }, []);
 
@@ -279,8 +279,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({ message })
       // });
-    } catch (error) {
-      console.error("Error posting to WhatsApp group:", error);
+    } catch (_error) {
+      console.error("Error posting to WhatsApp group:", _error);
     }
   }, []);
 

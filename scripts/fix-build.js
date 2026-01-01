@@ -5,6 +5,6 @@ try {
   execSync("npm ci --legacy-peer-deps", { stdio: "inherit" });
   execSync("npm run build", { stdio: "inherit" });
   process.exit(0);
-} catch (e) {
+} catch (_e) {
   process.exit(1);
 }

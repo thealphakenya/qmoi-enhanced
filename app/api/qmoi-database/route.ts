@@ -3,7 +3,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // Dynamic import for Prisma to avoid build-time issues
-let prisma: any = null;
+let prisma: unknown = null;
 
 async function getPrisma() {
   if (!prisma) {
@@ -23,26 +23,26 @@ interface MediaItem {
   localPath?: string;
   duration?: number;
   size?: number;
-  status: "available" | "downloading" | "downloaded" | "error";
+  status: "available" | "downloading" | "downloaded" | "_error";
   createdAt: Date;
   updatedAt: Date;
 }
 
 // Master-only access check
-function isMaster(request: NextRequest) {
+function isMaster(_request: NextRequest) {
   // TODO: Implement real master auth logic
-  return request.headers.get("x-qmoi-master") === "true";
+  return _request.headers.get("x-qmoi-master") === "true";
 }
 
 // Media search implementation
-async function searchMedia(query: string,
+async function searchMedia(_query: string,
   type?: string,
   source?: string
 ): Promise<MediaItem[]> {
   const prisma = await getPrisma();
-  const where: any = {
+  const where: unknown = {
     title: {
-      contains: query,
+      contains: _query,
       mode: "insensitive",
     },
   };
@@ -63,7 +63,7 @@ async function searchMedia(query: string,
   });
 
   // Convert to MediaItem format for compatibility
-  return mediaTasks.map((task: any) => ({
+  return mediaTasks.map((task: unknown) => ({
     id: task.id,
     title: task.type, // Using type as title for now
     type: "movie" as const, // Default type
@@ -88,7 +88,7 @@ async function downloadMedia(mediaId: string) {
   });
 
   if (!mediaTask) {
-    return { success: false, message: "Media not found" };
+    return { success: fals_e, message: "Media not found" };
   }
 
   if (mediaTask.status === "completed") {
@@ -116,21 +116,21 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : String(error);
+  } catch (_error) {
+    const errorMessage = _error instanceof Error ? _error.message : String(_error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        error: errorMessage,
+        _error: errorMessage,
       },
     });
 
     return {
-      success: false,
+      success: fals_e,
       message: `Download failed: ${errorMessage}`,
-      error: errorMessage,
+      _error: errorMessage,
     };
   }
 }
@@ -141,7 +141,7 @@ async function getMediaLogs(filter?: {
   mediaId?: string;
   limit?: number;
 }) {
-  const where: any = {};
+  const where: unknown = {};
 
   if (filter?.action) {
     where.action = filter.action;
@@ -162,15 +162,15 @@ async function getMediaLogs(filter?: {
   return logs;
 }
 
-export async function GET(request: NextRequest) {
-  if (!isMaster(request)) {
+export async function GET(_request: NextRequest) {
+  if (!isMaster(_request)) {
     return NextResponse.json(
-      { error: "Master access required" },
+      { _error: "Master access required" },
       { status: 403 }
     );
   }
 
-  const { searchParams } = new URL(request.url);
+  const { searchParams } = new URL(_request.url);
 
   // Media search endpoint
   const searchQuery = searchParams.get("search");
@@ -182,9 +182,9 @@ export async function GET(request: NextRequest) {
         searchParams.get("source") || undefined
       );
       return NextResponse.json({ media: results });
-    } catch (error) {
+    } catch (_error) {
       return NextResponse.json(
-        { error: `Search failed: ${error}` },
+        { _error: `Search failed: ${_error}` },
         { status: 500 }
       );
     }
@@ -201,9 +201,9 @@ export async function GET(request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (error) {
+    } catch (_error) {
       return NextResponse.json(
-        { error: `Failed to get logs: ${error}` },
+        { _error: `Failed to get logs: ${_error}` },
         { status: 500 }
       );
     }
@@ -221,27 +221,27 @@ export async function GET(request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (error) {
+    } catch (_error) {
       return NextResponse.json(
-        { error: `Failed to get database info: ${error}` },
+        { _error: `Failed to get database info: ${_error}` },
         { status: 500 }
       );
     }
   }
 
-  return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
 }
 
-export async function POST(request: NextRequest) {
-  if (!isMaster(request)) {
+export async function POST(_request: NextRequest) {
+  if (!isMaster(_request)) {
     return NextResponse.json(
-      { error: "Master access required" },
+      { _error: "Master access required" },
       { status: 403 }
     );
   }
 
   try {
-    const body = await request.json();
+    const body = await _request.json();
 
     // Media download endpoint
     if (body.download) {
@@ -296,10 +296,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
-  } catch (error) {
+    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  } catch (_error) {
     return NextResponse.json(
-      { error: `Request failed: ${error}` },
+      { _error: `Request failed: ${_error}` },
       { status: 500 }
     );
   }

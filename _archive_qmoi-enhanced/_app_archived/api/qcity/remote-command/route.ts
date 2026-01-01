@@ -6,7 +6,7 @@ import path from "path";
 const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG = path.join(process.cwd(), "logs/qcity_audit.log");
 
-function logAudit(entry: any) {
+function logAudit(entry: unknown) {
   fs.appendFileSync(
     AUDIT_LOG,
     JSON.stringify({ ...entry, timestamp: new Date().toISOString() }) + "\n",

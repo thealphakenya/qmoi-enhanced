@@ -94,7 +94,7 @@ export default function AuditLogPanel() {
               </tr>
             </thead>
             <tbody>
-              {logs.map((l: any, i) => (
+              {logs.map((l: unknown, i) => (
                 <tr key={i}>
                   <td>{l.timestamp || ""}</td>
                   <td>{l.action || ""}</td>

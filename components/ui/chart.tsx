@@ -185,7 +185,7 @@ const ChartTooltipContent = React.forwardRef<
       >
         {!nestLabel ? tooltipLabel : null}
         <div className="grid gap-1.5">
-          {(payload as any[]).map((item: any, index: number) => {
+          {(payload as any[]).map((item: unknown, index: number) => {
             const key = `${nameKey || item.name || item.dataKey || "value"}`;
             const itemConfig = getPayloadConfigFromPayload(config, item, key);
             const indicatorColor = color || item.payload.fill || item.color;
@@ -285,7 +285,7 @@ const ChartLegendContent = React.forwardRef<
           className,
         )}
       >
-        {payload.map((item: any) => {
+        {payload.map((item: unknown) => {
           const key = `${nameKey || item.dataKey || "value"}`;
           const itemConfig = getPayloadConfigFromPayload(config, item, key);
 
@@ -373,7 +373,7 @@ import {
 } from "@/components/ui/recharts-shim";
 
 // Simple Chart component for bar/line/pie
-export function Chart({ type, data, ...props }: any) {
+export function Chart({ type, data, ...props }: unknown) {
   if (type === "bar") {
     return (
       <ResponsiveContainer width="100%" height={200}>

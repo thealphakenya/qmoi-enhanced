@@ -1,3 +1,4 @@
+/* eslint-env browser */
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -37,18 +38,18 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const res = await fetch("/api/qnews");
-    const data = await res.json();
+    const _res = await fetch("/api/qnews");
+    const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
   };
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const res = await fetch("/api/qnews/analytics", {
+    const _res = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
-    const data = await res.json();
+    const data = await _res.json();
     setAnalytics(data.analytics || []);
   };
 
@@ -145,24 +146,26 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
           <Input
             placeholder="Title"
             value={form.title}
-            onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
+            onChange={(_e) =>
+              setForm((f) => ({ ...f, title: _e.target.value }))
+            }
             className="mb-2"
           />
           <Input
             placeholder="Content"
             value={form.content}
-            onChange={(e) =>
-              setForm((f) => ({ ...f, content: e.target.value }))
+            onChange={(_e) =>
+              setForm((f) => ({ ...f, content: _e.target.value }))
             }
             className="mb-2"
           />
           {isMaster && (
             <>
               <Input
-                placeholder="Category (e.g. earning, project, marketing, global, local)"
+                placeholder="Category (_e.g. earning, project, marketing, global, local)"
                 value={form.category}
-                onChange={(e) =>
-                  setForm((f) => ({ ...f, category: e.target.value }))
+                onChange={(_e) =>
+                  setForm((f) => ({ ...f, category: _e.target.value }))
                 }
                 className="mb-2"
               />
@@ -170,12 +173,12 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
                 <Input
                   placeholder="Media URL"
                   value={mediaUrl}
-                  onChange={(e) => setMediaUrl(e.target.value)}
+                  onChange={(_e) => setMediaUrl(_e.target.value)}
                   className="flex-1"
                 />
                 <select
                   value={mediaType}
-                  onChange={(e) => setMediaType(e.target.value)}
+                  onChange={(_e) => setMediaType(_e.target.value)}
                   className="px-2 py-1 rounded border"
                 >
                   <option value="image">Image</option>
@@ -196,8 +199,8 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
           <Input
             placeholder="Schedule (ISO, optional)"
             value={form.scheduledAt}
-            onChange={(e) =>
-              setForm((f) => ({ ...f, scheduledAt: e.target.value }))
+            onChange={(_e) =>
+              setForm((f) => ({ ...f, scheduledAt: _e.target.value }))
             }
             className="mb-2"
           />
@@ -251,7 +254,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
                         onClick={() =>
                           handleSchedule(
                             item.id,
-                            prompt("Enter ISO date/time to schedule:") || "",
+                            prompt("Enter ISO date/time to schedule:") || ""
                           )
                         }
                       >
@@ -306,7 +309,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
                       {m.url}
                     </a>
                   </li>
-                ),
+                )
               )}
             </ul>
           </div>

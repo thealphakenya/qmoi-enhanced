@@ -11,7 +11,7 @@ export const QMoiSettingsPanel: React.FC = () => {
   });
   const fileInput = useRef<HTMLInputElement>(null);
 
-  function saveSettings(newSettings: any) {
+  function saveSettings(newSettings: unknown) {
     setSettings(newSettings);
     localStorage.setItem("qmoi-settings", JSON.stringify(newSettings));
   }

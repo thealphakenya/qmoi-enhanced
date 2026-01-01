@@ -123,8 +123,8 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
       try {
         const parsedState = JSON.parse(savedState);
         setState((prevState) => ({ ...prevState, ...parsedState }));
-      } catch (error) {
-        console.error("Error loading QMOI state:", error);
+      } catch (_error) {
+        console.error("Error loading QMOI state:", _error);
       }
     }
   }, []);
@@ -164,13 +164,13 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
       }));
 
       // Call API to switch avatar
-      const response = await fetch("/api/qmoi/avatars", {
+      const _response = await fetch("/api/qmoi/avatars", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", avatarId }),
       });
 
-      if (!response.ok) throw new Error("Failed to switch avatar");
+      if (!_response.ok) throw new Error("Failed to switch avatar");
 
       const avatar = avatarsConfig.find((a) => a.id === avatarId);
       setState((prev) => ({
@@ -187,8 +187,8 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
       if (compatibleVoice && compatibleVoice !== state.currentVoice) {
         await updateVoice(compatibleVoice);
       }
-    } catch (error) {
-      console.error("Error updating avatar:", error);
+    } catch (_error) {
+      console.error("Error updating avatar:", _error);
       setState((prev) => ({ ...prev, isProcessing: false, currentTask: null }));
     }
   };
@@ -202,13 +202,13 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
       }));
 
       // Call API to switch voice
-      const response = await fetch("/api/qmoi/voice-profiles", {
+      const _response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
       });
 
-      if (!response.ok) throw new Error("Failed to switch voice");
+      if (!_response.ok) throw new Error("Failed to switch voice");
 
       const voice = voiceProfiles.find((v) => v.id === voiceId);
       setState((prev) => ({
@@ -218,8 +218,8 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
         isProcessing: false,
         currentTask: null,
       }));
-    } catch (error) {
-      console.error("Error updating voice:", error);
+    } catch (_error) {
+      console.error("Error updating voice:", _error);
       setState((prev) => ({ ...prev, isProcessing: false, currentTask: null }));
     }
   };

@@ -86,13 +86,13 @@ export default async function handler(
         } else {
           details.push(`unknown_backend:${b}`);
         }
-      } catch (e: any) {
+      } catch (e: unknown) {
         details.push(`${b}:error:${e.message || String(e)}`);
       }
     }
 
     return res.status(200).json({ success: true, backupFile: dest, details });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Memory backup failed:", error);
     return res.status(500).json({ success: false, error: String(error) });
   }

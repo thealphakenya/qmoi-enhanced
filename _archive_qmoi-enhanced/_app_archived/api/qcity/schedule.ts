@@ -8,7 +8,7 @@ function loadSchedules() {
   if (!fs.existsSync(SCHEDULE_FILE)) return [];
   return JSON.parse(fs.readFileSync(SCHEDULE_FILE, "utf-8"));
 }
-function saveSchedules(schedules: any[]) {
+function saveSchedules(schedules: unknown[]) {
   fs.writeFileSync(SCHEDULE_FILE, JSON.stringify(schedules, null, 2));
 }
 
@@ -41,7 +41,7 @@ const handler = requireRole(["admin", "master"])(async (
   }
   if (method === "PUT") {
     const { id, ...update } = body;
-    const idx = schedules.findIndex((j: any) => j.id === id);
+    const idx = schedules.findIndex((j: unknown) => j.id === id);
     if (idx === -1) return res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
@@ -53,13 +53,13 @@ const handler = requireRole(["admin", "master"])(async (
   }
   if (method === "DELETE") {
     const { id } = body;
-    schedules = schedules.filter((j: any) => j.id !== id);
+    schedules = schedules.filter((j: unknown) => j.id !== id);
     saveSchedules(schedules);
     return res.status(200).json({ success: true });
   }
   if (method === "PATCH" && query.action === "run") {
     const { id } = body;
-    const job = schedules.find((j: any) => j.id === id);
+    const job = schedules.find((j: unknown) => j.id === id);
     if (!job) return res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);

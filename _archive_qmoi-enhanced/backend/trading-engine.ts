@@ -26,7 +26,7 @@ const DATASET_PATH = path.join(
 );
 const TRADING_LOG = path.join(__dirname, "../trading-log.json");
 
-function loadDataset(): any[] {
+function loadDataset(): unknown[] {
   const csv = fs.readFileSync(DATASET_PATH, "utf-8");
   return csvParse(csv, { columns: true });
 }

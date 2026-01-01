@@ -48,9 +48,9 @@ function createWebsite(projectName, template = 'nextjs') {
       // Use create-next-app for best-practice Next.js template
       try {
         execSync(`npx create-next-app@latest ${projectName} --use-npm --no-git --typescript --eslint --src-dir --app`, { stdio: 'inherit' });
-      } catch (err) {
-        logAction(`[ERROR] Failed to scaffold Next.js app: ${err}`);
-        throw err;
+      } catch (_err) {
+        logAction(`[ERROR] Failed to scaffold Next.js app: ${_err}`);
+        throw _err;
       }
     } else {
       fs.mkdirSync(projectDir);
@@ -65,20 +65,20 @@ async function auditAndEnhanceSite(projectDir) {
   // Accessibility: axe-core
   try {
     await execSync('npx axe-core audit ' + projectDir);
-  } catch (err) {
-    logAction(`[ERROR] Accessibility audit failed: ${err}`);
+  } catch (_err) {
+    logAction(`[ERROR] Accessibility audit failed: ${_err}`);
   }
   // Performance/SEO: Lighthouse
   try {
     await execSync('npx lighthouse ' + projectDir);
-  } catch (err) {
-    logAction(`[ERROR] Lighthouse audit failed: ${err}`);
+  } catch (_err) {
+    logAction(`[ERROR] Lighthouse audit failed: ${_err}`);
   }
   // Security: npm audit
   try {
     await execSync('npm audit', { cwd: projectDir });
-  } catch (err) {
-    logAction(`[ERROR] Security audit failed: ${err}`);
+  } catch (_err) {
+    logAction(`[ERROR] Security audit failed: ${_err}`);
   }
   // Simulate audit results
   const auditResults = {
@@ -122,9 +122,9 @@ async function provisionSSL(domain) {
   // Implementation: Let's Encrypt via Certbot
   try {
     await execSync(`certbot --nginx -d ${domain} --non-interactive --agree-tos -m admin@${domain}`);
-  } catch (err) {
-    logAction(`[ERROR] SSL provisioning failed: ${err}`);
-    throw err;
+  } catch (_err) {
+    logAction(`[ERROR] SSL provisioning failed: ${_err}`);
+    throw _err;
   }
   return { success: true, ssl: `SSL-for-${domain}` };
 }
@@ -170,8 +170,8 @@ async function submitToSearchEngines(domain) {
     await execSync(`curl -X POST https://indexing.googleapis.com/v3/urlNotifications:publish -H "Authorization: Bearer ${process.env.GOOGLE_TOKEN}" -H "Content-Type: application/json" --data "{\\"url\\": \\"https://${domain}\\", \\"type\\": \\"URL_UPDATED\\"}" 2>/dev/null`);
     // Bing
     await execSync(`curl -X POST "https://ssl.bing.com/webmaster/api.svc/json/SubmitUrl?apikey=${process.env.BING_API_KEY}" -H "Content-Type: application/json" -d "{\\"siteUrl\\":\\"https://${domain}\\"}" 2>/dev/null`);
-  } catch (err) {
-    logAction(`[ERROR] Search engine submission failed: ${err}`);
+  } catch (_err) {
+    logAction(`[ERROR] Search engine submission failed: ${_err}`);
   }
   return { success: true };
 }
@@ -189,8 +189,8 @@ async function syndicateContent(projectName, platforms = ['medium', 'substack'])
       } else if (platform === 'linkedin') {
         await syndicateToLinkedIn(projectName);
       }
-    } catch (err) {
-      logAction(`[ERROR] ${platform} syndication failed: ${err}`);
+    } catch (_err) {
+      logAction(`[ERROR] ${platform} syndication failed: ${_err}`);
     }
   }
   return { success: true };
@@ -209,8 +209,8 @@ async function createSocialProfiles(projectName, platforms = ['twitter', 'facebo
       } else if (platform === 'linkedin') {
         await createLinkedInProfile(projectName);
       }
-    } catch (err) {
-      logAction(`[ERROR] ${platform} profile creation failed: ${err}`);
+    } catch (_err) {
+      logAction(`[ERROR] ${platform} profile creation failed: ${_err}`);
     }
   }
   return { success: true };
@@ -227,8 +227,8 @@ async function integrateAnalytics(projectDir, tools = ['google-analytics']) {
       } else if (tool === 'facebook-pixel') {
         await integrateFacebookPixel(projectDir);
       }
-    } catch (err) {
-      logAction(`[ERROR] ${tool} integration failed: ${err}`);
+    } catch (_err) {
+      logAction(`[ERROR] ${tool} integration failed: ${_err}`);
     }
   }
   return { success: true };
@@ -262,7 +262,7 @@ const PROVIDERS = {
       const url = `https://vercel.app/${path.basename(projectDir)}`;
       try {
         execSync(`python scripts/gmail_notify.py --subject \"Vercel Deployment Complete\" --body \"Vercel deployment is live at: ${url}\"`);
-      } catch (e) { console.error('Vercel deployment notification failed:', e.message); }
+      } catch (_e) { console.error('Vercel deployment notification failed:', _e.message); }
       return { success: true, url };
     }
   },
@@ -299,13 +299,13 @@ async function retireAsset(assetId) {
 }
 
 // --- UNIVERSAL ERROR AUTO-FIXING SYSTEM ---
-async function autoFixError(context, error) {
-  logAction(`[ERROR] Context: ${context} | Error: ${error}`);
+async function autoFixError(context, _error) {
+  logAction(`[ERROR] Context: ${context} | Error: ${_error}`);
   // Self-healing/retry logic
   for (let attempt = 1; attempt <= 3; attempt++) {
-    logAction(`[AutoFix] Attempt ${attempt} to fix error in context: ${context}`);
+    logAction(`[AutoFix] Attempt ${attempt} to fix _error in context: ${context}`);
     try {
-      // [PRODUCTION IMPLEMENTATION REQUIRED]: try a generic fix (e.g., retry, reset, switch provider)
+      // [PRODUCTION IMPLEMENTATION REQUIRED]: try a generic fix (_e.g., retry, reset, switch provider)
       // TODO: Implement context-specific fix strategies
       if (attempt === 3) throw new Error('Max attempts reached');
       // Simulate fix success on 2nd attempt
@@ -320,7 +320,7 @@ async function autoFixError(context, error) {
   // Root cause analysis [PRODUCTION IMPLEMENTATION REQUIRED]
   logAction(`[AutoFix] Root cause analysis for context: ${context} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
   // Continuous learning [PRODUCTION IMPLEMENTATION REQUIRED]
-  logAction(`[AutoFix] Logging error for future learning: ${error}`);
+  logAction(`[AutoFix] Logging _error for future learning: ${_error}`);
   return { fixed: false };
 }
 
@@ -328,9 +328,9 @@ async function autoFixError(context, error) {
 async function safeRun(context, fn, ...args) {
   try {
     return await fn(...args);
-  } catch (err) {
-    const fixResult = await autoFixError(context, err);
-    if (!fixResult.fixed) throw err;
+  } catch (_err) {
+    const fixResult = await autoFixError(context, _err);
+    if (!fixResult.fixed) throw _err;
     // Optionally retry after fix
     return await fn(...args);
   }
@@ -338,7 +338,7 @@ async function safeRun(context, fn, ...args) {
 
 // --- ERROR-FIX SWEEP ACROSS ALL ASSETS/PROJECTS ---
 async function fixAllErrorsSweep() {
-  logAction('[AutoFix] Starting full error-fix sweep across all assets/projects');
+  logAction('[AutoFix] Starting full _error-fix sweep across all assets/projects');
   // Implementation: Error fixing
   const assets = await listAllAssets();
   for (const asset of assets) {
@@ -347,8 +347,8 @@ async function fixAllErrorsSweep() {
       if (assetStatus.hasErrors) {
         await autoFixError(asset.id, assetStatus.errors);
       }
-    } catch (err) {
-      logAction(`[ERROR] Error fix failed for ${asset.id}: ${err}`);
+    } catch (_err) {
+      logAction(`[ERROR] Error fix failed for ${asset.id}: ${_err}`);
     }
   }
   logAction('[AutoFix] Sweep complete');
@@ -511,7 +511,7 @@ async function main() {
       process.exit(1);
     }
     let records;
-    try { records = JSON.parse(recordsJson); } catch (e) { console.error('Invalid JSON for records'); process.exit(1); }
+    try { records = JSON.parse(recordsJson); } catch (_e) { console.error('Invalid JSON for records'); process.exit(1); }
     await manageDNS(domain, records);
     process.exit(0);
   }

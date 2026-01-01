@@ -73,7 +73,7 @@ class ComprehensiveTestRunner {
   async runAllTests(): Promise<{
     success: boolean;
     results: TestResult[];
-    summary: any;
+    summary: unknown;
   }> {
     this.results = [];
     const startTime = Date.now();
@@ -167,7 +167,7 @@ class ComprehensiveTestRunner {
         `[COMPREHENSIVE-TEST-RUNNER] ${suiteName} passed in ${duration}ms`,
       );
       return result;
-    } catch (error: any) {
+    } catch (error: unknown) {
       const duration = Date.now() - startTime;
 
       const result: TestResult = {
@@ -219,7 +219,7 @@ class ComprehensiveTestRunner {
             );
           }
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         logger.warn(
           `[COMPREHENSIVE-TEST-RUNNER] File check failed: ${file} - ${error.message}`,
         );
@@ -240,7 +240,7 @@ class ComprehensiveTestRunner {
             );
           }
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         logger.warn(
           `[COMPREHENSIVE-TEST-RUNNER] Directory check failed: ${dir} - ${error.message}`,
         );
@@ -282,7 +282,7 @@ class ComprehensiveTestRunner {
         logger.info(
           `[COMPREHENSIVE-TEST-RUNNER] QMOI test passed: ${test.name}`,
         );
-      } catch (error: any) {
+      } catch (error: unknown) {
         logger.warn(
           `[COMPREHENSIVE-TEST-RUNNER] QMOI test failed: ${test.name} - ${error.message}`,
         );
@@ -360,7 +360,7 @@ class ComprehensiveTestRunner {
             `API endpoint ${endpoint} returned ${response.status}`,
           );
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         // Don't fail the entire test suite for API issues
         logger.warn(
           `[COMPREHENSIVE-TEST-RUNNER] API test warning: ${endpoint} - ${error.message}`,
@@ -369,7 +369,7 @@ class ComprehensiveTestRunner {
     }
   }
 
-  private generateSummary(totalDuration: number): any {
+  private generateSummary(totalDuration: number): unknown {
     const passed = this.results.filter((r) => r.success).length;
     const failed = this.results.filter((r) => !r.success).length;
     const total = this.results.length;
@@ -396,7 +396,7 @@ class ComprehensiveTestRunner {
     return summary;
   }
 
-  async runQuickTest(): Promise<{ success: boolean; summary: any }> {
+  async runQuickTest(): Promise<{ success: boolean; summary: unknown }> {
     logger.info("[COMPREHENSIVE-TEST-RUNNER] Running quick test...");
 
     const quickTests = [
@@ -413,7 +413,7 @@ class ComprehensiveTestRunner {
         await execAsync(command, { timeout: 60000 }); // 1 minute timeout
         passed++;
         results.push({ command, success: true });
-      } catch (error: any) {
+      } catch (error: unknown) {
         results.push({ command, success: false, error: error.message });
       }
     }
@@ -436,13 +436,13 @@ export const comprehensiveTestRunner = new ComprehensiveTestRunner();
 
 // Simple logger for when the main logger is not available
 const logger = {
-  info: (message: string, ...args: any[]) => {
+  info: (message: string, ...args: unknown[]) => {
     console.log(`[INFO] ${message}`, ...args);
   },
-  warn: (message: string, ...args: any[]) => {
+  warn: (message: string, ...args: unknown[]) => {
     console.warn(`[WARN] ${message}`, ...args);
   },
-  error: (message: string, ...args: any[]) => {
+  error: (message: string, ...args: unknown[]) => {
     console.error(`[ERROR] ${message}`, ...args);
   },
 };

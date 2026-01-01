@@ -11,7 +11,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -25,12 +25,12 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const response = await fetch("/api/qcity/download-url");
-      if (!response.ok) {
+      const _response = await fetch("/api/qcity/download-url");
+      if (!_response.ok) {
         throw new Error("Failed to get download URL");
       }
 
-      const { url } = await response.json();
+      const { url } = await _response.json();
 
       // Start download
       const downloadResponse = await fetch(url);
@@ -48,8 +48,8 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An _error occurred");
     } finally {
       setDownloading(false);
     }
@@ -79,13 +79,13 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       </Button>
 
       <Snackbar
-        open={!!error}
+        open={!!_error}
         autoHideDuration={6000}
         onClose={() => setError(null)}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       >
-        <Alert onClose={() => setError(null)} severity="error">
-          {error}
+        <Alert onClose={() => setError(null)} severity="_error">
+          {_error}
         </Alert>
       </Snackbar>
     </div>

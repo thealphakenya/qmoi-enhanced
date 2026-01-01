@@ -110,7 +110,7 @@ export function useQVillage() {
   }, []);
 
   // Enhanced search with QMOI AI
-  const search = useCallback(async (query: string, filters: any = {}) => {
+  const search = useCallback(async (query: string, filters: unknown = {}) => {
     setLoading(true);
     try {
       const response = await fetch("/api/qvillage?endpoint=search", {
@@ -157,7 +157,7 @@ export function useQVillage() {
 
   // Enhanced analysis hook
   const analyze = useCallback(
-    async (content: string, type: string, options: any = {}) => {
+    async (content: string, type: string, options: unknown = {}) => {
       try {
         const response = await fetch("/api/qvillage?endpoint=analyze", {
           method: "POST",
@@ -357,7 +357,7 @@ export function useQVillageAccessibility() {
   });
 
   const updateSetting = useCallback(
-    (setting: string, value: any) => {
+    (setting: string, value: unknown) => {
       setAccessibilitySettings((prev) => ({
         ...prev,
         [setting]: value,
@@ -491,9 +491,9 @@ export function useQVillagePerformance() {
 export function useQVillageAutoHeal() {
   const [healthStatus, setHealthStatus] = useState<{
     overall: string;
-    components: any;
+    components: unknown;
     lastCheck: string | null;
-    autoFixes: any[];
+    autoFixes: unknown[];
   }>({
     overall: "healthy",
     components: {},
@@ -576,7 +576,7 @@ export function useQVillageNotifications() {
   const [notifications, setNotifications] = useState<any[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
 
-  const addNotification = useCallback((notification: any) => {
+  const addNotification = useCallback((notification: unknown) => {
     const newNotification = {
       id: Date.now(),
       timestamp: new Date().toISOString(),
@@ -598,7 +598,7 @@ export function useQVillageNotifications() {
     }, 3600000);
   }, []);
 
-  const markAsRead = useCallback((id: any) => {
+  const markAsRead = useCallback((id: unknown) => {
     setNotifications((prev) =>
       prev.map((n) => (n.id === id ? { ...n, read: true } : n))
     );

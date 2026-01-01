@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
         { status: 400 },
       );
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
       { error: "Failed to deploy", details: error.message },
       { status: 500 },

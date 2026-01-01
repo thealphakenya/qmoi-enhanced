@@ -6,8 +6,8 @@ const UI_BASE = process.env.QMOI_UI_BASE || 'http://127.0.0.1:3001';
 const HELPER_BASE = process.env.QMOI_TEST_BASE || 'http://127.0.0.1:8080';
 
 async function fetchJson(url, opts) {
-  const res = await fetch(url, opts);
-  const txt = await res.text();
+  const _res = await fetch(url, opts);
+  const txt = await _res.text();
   try { return JSON.parse(txt); } catch { return txt; }
 }
 
@@ -17,8 +17,8 @@ async function run() {
     const h = await fetchJson(`${HELPER_BASE}/health`);
     if (h.status !== 'ok') throw new Error('health not ok');
     console.log('helper health ok');
-  } catch (e) {
-    console.error('helper health failed', e);
+  } catch (_e) {
+    console.error('helper health failed', _e);
     process.exitCode = 2; return;
   }
 
@@ -28,8 +28,8 @@ async function run() {
     const content = r.choices?.[0]?.message?.content || r.choices?.[0]?.text || '';
     if (!content || !(/How are you|I'm doing well|How can I help/.test(content))) throw new Error('unexpected greeting reply: '+String(content).slice(0,120));
     console.log('helper greeting ok');
-  } catch (e) {
-    console.error('helper greeting check failed', e);
+  } catch (_e) {
+    console.error('helper greeting check failed', _e);
     process.exitCode = 2; return;
   }
 
@@ -39,8 +39,8 @@ async function run() {
     const content = r.choices?.[0]?.message?.content || '';
     if (!content) throw new Error('empty content from UI proxy');
     console.log('UI proxy returns content');
-  } catch (e) {
-    console.error('UI proxy check failed', e);
+  } catch (_e) {
+    console.error('UI proxy check failed', _e);
     process.exitCode = 2; return;
   }
 
@@ -62,8 +62,8 @@ async function run() {
     if (!data.includes('quick-test') && !data.includes('Created by qmoi agent')) throw new Error('file content unexpected');
     fs.unlinkSync(foundPath);
     console.log('file creation intent ok');
-  } catch (e) {
-    console.error('file creation check failed', e);
+  } catch (_e) {
+    console.error('file creation check failed', _e);
     process.exitCode = 2; return;
   }
 
@@ -75,9 +75,9 @@ async function run() {
     const rc = recall.choices?.[0]?.message?.content || '';
     if (!/strawberries|strawb/.test(rc)) throw new Error('memory recall failed: '+String(rc).slice(0,120));
     console.log('memory/recall behavior ok');
-  } catch (e) { console.error('memory/recall check failed', e); process.exitCode=2; return; }
+  } catch (_e) { console.error('memory/recall check failed', _e); process.exitCode=2; return; }
 
   console.log('All quick checks passed ✅');
 }
 
-run().catch((e)=>{ console.error(e); process.exitCode=2; });
+run().catch((_e)=>{ console.error(_e); process.exitCode=2; });

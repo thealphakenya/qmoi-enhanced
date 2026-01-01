@@ -17,12 +17,12 @@ const PORT_SPACE = 5000; // QMOI Space
 function serveStaticOrSPA(dir) {
   return [
     express.static(dir),
-    (req, res, next) => {
+    (_req, _res, _next) => {
       const indexPath = path.join(dir, "index.html");
       if (fs.existsSync(indexPath)) {
-        res.sendFile(indexPath);
+        _res.sendFile(indexPath);
       } else {
-        res.status(404).send("Not found");
+        _res.status(404).send("Not found");
       }
     },
   ];
@@ -31,8 +31,8 @@ function serveStaticOrSPA(dir) {
 // QMOI AI Main UI
 const mainApp = express();
 mainApp.use("/", ...serveStaticOrSPA(path.join(__dirname, "../public")));
-mainApp.get("/health", (req, res) =>
-  res.json({ status: "ok", service: "QMOI Main UI" }),
+mainApp.get("/health", (_req, _res) =>
+  _res.json({ status: "ok", service: "QMOI Main UI" }),
 );
 mainApp.listen(PORT_MAIN, async () => {
   console.log(`QMOI Main UI running at http://localhost:${PORT_MAIN}`);
@@ -44,8 +44,8 @@ mainApp.listen(PORT_MAIN, async () => {
 // QCity UI
 const qcityApp = express();
 qcityApp.use("/", ...serveStaticOrSPA(path.join(__dirname, "../public/qcity")));
-qcityApp.get("/health", (req, res) =>
-  res.json({ status: "ok", service: "QCity UI" }),
+qcityApp.get("/health", (_req, _res) =>
+  _res.json({ status: "ok", service: "QCity UI" }),
 );
 qcityApp.listen(PORT_QCITY, async () => {
   console.log(`QCity UI running at http://localhost:${PORT_QCITY}`);
@@ -60,8 +60,8 @@ spaceApp.use(
   "/",
   ...serveStaticOrSPA(path.join(__dirname, "../qmoi-space-pwa")),
 );
-spaceApp.get("/health", (req, res) =>
-  res.json({ status: "ok", service: "QMOI Space PWA" }),
+spaceApp.get("/health", (_req, _res) =>
+  _res.json({ status: "ok", service: "QMOI Space PWA" }),
 );
 spaceApp.listen(PORT_SPACE, async () => {
   console.log(`QMOI Space PWA running at http://localhost:${PORT_SPACE}`);
@@ -71,9 +71,9 @@ spaceApp.listen(PORT_SPACE, async () => {
 });
 
 // Reliability: Log errors
-process.on("uncaughtException", (err) => {
-  console.error("Uncaught:", err);
+process.on("uncaughtException", (_err) => {
+  console.error("Uncaught:", _err);
 });
-process.on("unhandledRejection", (err) => {
-  console.error("Unhandled:", err);
+process.on("unhandledRejection", (_err) => {
+  console.error("Unhandled:", _err);
 });

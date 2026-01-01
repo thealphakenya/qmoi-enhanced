@@ -1,7 +1,7 @@
 declare module "../../../scripts/services/auto_fix_service" {
   export type QCityStatus = {
-    errors: any[];
-    [k: string]: any;
+    errors: unknown[];
+    [k: string]: unknown;
   };
 
   export type AutoFixService = {
@@ -16,8 +16,8 @@ declare module "../../../scripts/services/auto_fix_service" {
 
 declare module "../../scripts/services/auto_fix_service" {
   export type QCityStatus = {
-    errors: any[];
-    [k: string]: any;
+    errors: unknown[];
+    [k: string]: unknown;
   };
 
   export type AutoFixService = {

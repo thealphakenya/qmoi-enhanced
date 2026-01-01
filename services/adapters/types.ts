@@ -78,7 +78,7 @@ export class ApprovalFlow {
     action: string,
     payload: unknown,
   ): Promise<ApprovalRequest> {
-    const request: ApprovalRequest = {
+    const _request: ApprovalRequest = {
       id: `${platformId}-${Date.now()}`,
       platformId,
       action,
@@ -87,7 +87,7 @@ export class ApprovalFlow {
       requestedAt: new Date(),
     };
 
-    this.approvals.set(request.id, request);
+    this.approvals.set(request.id, _request);
 
     // Log the request for human review
     console.log(`[APPROVAL REQUIRED] ${platformId}: ${action}`);
@@ -97,7 +97,7 @@ export class ApprovalFlow {
   }
 
   static async checkApproval(requestId: string): Promise<boolean> {
-    const request = this.approvals.get(requestId);
+    const _request = this.approvals.get(requestId);
     return request?.status === "approved";
   }
 
@@ -106,8 +106,8 @@ export class ApprovalFlow {
     requestId: string,
     approved = true,
   ): Promise<void> {
-    const request = this.approvals.get(requestId);
-    if (request) {
+    const _request = this.approvals.get(requestId);
+    if (_request) {
       request.status = approved ? "approved" : "rejected";
       request.reviewedAt = new Date();
       request.reviewedBy = "test-admin";

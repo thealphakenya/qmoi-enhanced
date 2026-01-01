@@ -13,8 +13,8 @@ const AUDIT_LOG = path.join(__dirname, "../logs/media_api_audit.log");
 if (!fs.existsSync(MEDIA_DIR)) fs.mkdirSync(MEDIA_DIR, { recursive: true });
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, MEDIA_DIR),
-  filename: (req, file, cb) => cb(null, file.originalname),
+  destination: (_req, file, cb) => cb(null, MEDIA_DIR),
+  filename: (_req, file, cb) => cb(null, file.originalname),
 });
 const upload = multer({ storage });
 
@@ -23,58 +23,58 @@ function logAudit(action, user = "QMOI") {
   fs.appendFileSync(AUDIT_LOG, `[${timestamp}] [${user}] ${action}\n`);
 }
 
-function requireAdmin(req, res, next) {
-  const key = req.headers["x-qmoi-admin"] || req.query.admin_key;
-  if (key !== ADMIN_KEY) return res.status(403).json({ error: "Forbidden" });
+function requireAdmin(_req, _res, _next) {
+  const key = _req.headers["x-qmoi-admin"] || _req._query.admin_key;
+  if (key !== ADMIN_KEY) return _res.status(403).json({ _error: "Forbidden" });
   next();
 }
 
-app.get("/api/health", (req, res) => {
-  res.json({ status: "ok", time: new Date().toISOString() });
+app.get("/api/health", (_req, _res) => {
+  _res.json({ status: "ok", time: new Date().toISOString() });
 });
 
-app.post("/api/media", requireAdmin, upload.single("file"), (req, res) => {
-  if (!req.file) return res.status(400).json({ error: "No file uploaded" });
+app.post("/api/media", requireAdmin, upload.single("file"), (_req, _res) => {
+  if (!_req.file) return _res.status(400).json({ _error: "No file uploaded" });
   const mediaItem = {
-    id: req.file.filename,
-    name: req.file.originalname,
-    type: req.file.mimetype.startsWith("image")
+    id: _req.file.filename,
+    name: _req.file.originalname,
+    type: _req.file.mimetype.startsWith("image")
       ? "image"
-      : req.file.mimetype.startsWith("video")
+      : _req.file.mimetype.startsWith("video")
         ? "video"
-        : req.file.mimetype.startsWith("audio")
+        : _req.file.mimetype.startsWith("audio")
           ? "audio"
           : "document",
-    size: `${(req.file.size / 1024 / 1024).toFixed(2)} MB`,
-    url: `/media/${req.file.filename}`,
+    size: `${(_req.file.size / 1024 / 1024).toFixed(2)} MB`,
+    url: `/media/${_req.file.filename}`,
     createdAt: new Date().toISOString().slice(0, 10),
     tags: [],
   };
   logAudit(`UPLOAD ${mediaItem.name}`);
-  res.json(mediaItem);
+  _res.json(mediaItem);
 });
 
-app.delete("/api/media/:id", requireAdmin, (req, res) => {
-  const file = path.join(MEDIA_DIR, req.params.id);
-  if (!fs.existsSync(file)) return res.status(404).json({ error: "Not found" });
+app.delete("/api/media/:id", requireAdmin, (_req, _res) => {
+  const file = path.join(MEDIA_DIR, _req._params.id);
+  if (!fs.existsSync(file)) return _res.status(404).json({ _error: "Not found" });
   fs.unlinkSync(file);
-  logAudit(`DELETE ${req.params.id}`);
-  res.json({ success: true });
+  logAudit(`DELETE ${_req._params.id}`);
+  _res.json({ success: true });
 });
 
-app.patch("/api/media/:id", requireAdmin, express.json(), (req, res) => {
+app.patch("/api/media/:id", requireAdmin, express.json(), (_req, _res) => {
   // For [PRODUCTION IMPLEMENTATION REQUIRED]: just log the tag update
-  logAudit(`TAG ${req.params.id} -> ${JSON.stringify(req.body.tags)}`);
-  res.json({ success: true });
+  logAudit(`TAG ${_req._params.id} -> ${JSON.stringify(_req.body.tags)}`);
+  _res.json({ success: true });
 });
 
-app.get("/api/media/logs", requireAdmin, (req, res) => {
-  if (!fs.existsSync(AUDIT_LOG)) return res.json({ logs: [] });
+app.get("/api/media/logs", requireAdmin, (_req, _res) => {
+  if (!fs.existsSync(AUDIT_LOG)) return _res.json({ logs: [] });
   const logs = fs.readFileSync(AUDIT_LOG, "utf-8").split("\n").filter(Boolean);
-  res.json({ logs });
+  _res.json({ logs });
 });
 
-app.get("/api/media", (req, res) => {
+app.get("/api/media", (_req, _res) => {
   const files = fs.readdirSync(MEDIA_DIR).map((filename) => {
     const stats = fs.statSync(path.join(MEDIA_DIR, filename));
     return {
@@ -93,7 +93,7 @@ app.get("/api/media", (req, res) => {
       tags: [],
     };
   });
-  res.json({ media: files });
+  _res.json({ media: files });
 });
 
 app.use("/media", express.static(MEDIA_DIR));

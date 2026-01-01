@@ -10,7 +10,7 @@ export function SisterProjects() {
   const [saved, setSaved] = useState<any[]>([]);
 
   useEffect(() => {
-    function handleSuggestions(e: any) {
+    function handleSuggestions(e: unknown) {
       setSuggested(e.detail || []);
     }
     window.addEventListener("ai-suggested-projects", handleSuggestions);
@@ -18,7 +18,7 @@ export function SisterProjects() {
       window.removeEventListener("ai-suggested-projects", handleSuggestions);
   }, []);
 
-  function saveProject(p: any) {
+  function saveProject(p: unknown) {
     setSaved((prev) => [...prev, p]);
     // Optionally persist to backend or localStorage
     window.dispatchEvent(

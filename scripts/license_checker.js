@@ -12,8 +12,8 @@ function generateReport() {
       shell: true,
     });
     return true;
-  } catch (e) {
-    console.error("Failed to generate license report:", e.message);
+  } catch (_e) {
+    console.error("Failed to generate license report:", _e.message);
     return false;
   }
 }
@@ -25,7 +25,7 @@ function checkCompliance() {
       shell: true,
     });
     return true;
-  } catch (e) {
+  } catch (_e) {
     return false;
   }
 }
@@ -47,13 +47,13 @@ function autoFix() {
       );
       try {
         execSync(`yarn remove ${pkg.split("@")[0]}`);
-      } catch (e) {
-        console.error(`Failed to remove ${pkg}:`, e.message);
+      } catch (_e) {
+        console.error(`Failed to remove ${pkg}:`, _e.message);
       }
     }
     return true;
-  } catch (e) {
-    console.error("Failed to parse license report:", e.message);
+  } catch (_e) {
+    console.error("Failed to parse license report:", _e.message);
     return false;
   }
 }

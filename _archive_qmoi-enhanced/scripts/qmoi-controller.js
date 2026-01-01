@@ -129,7 +129,7 @@ class QMOIController {
       reportingEnabled: true,
       notificationEnabled: true,
       fixStrategies: {
-        unusedImports: true,
+        _unusedImports: true,
         missingSemicolons: true,
         quoteStandardization: true,
         trailingSpaces: true,
@@ -392,7 +392,7 @@ class QMOIController {
     } else if (ruleLower.includes("prefer-const")) {
       return "Change 'let' to 'const'";
     } else if (ruleLower.includes("no-unused-vars")) {
-      return "Remove unused variable or prefix with underscore";
+      return "Remove _unused variable or prefix with underscore";
     } else if (ruleLower.includes("quotes")) {
       return "Standardize quote usage";
     } else if (ruleLower.includes("semi")) {

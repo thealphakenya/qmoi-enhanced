@@ -299,7 +299,7 @@ export default function AppManager() {
             <AlertDescription>
               Found {troubleshootingResults[app.id].length} issues.
               {troubleshootingResults[app.id].some(
-                (issue: any) => issue.severity === "high",
+                (issue: unknown) => issue.severity === "high",
               ) && " High priority issues detected."}
             </AlertDescription>
           </Alert>

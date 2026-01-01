@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 type Notification = {
-  type: "info" | "warning" | "error" | "success";
+  type: "info" | "warning" | "_error" | "success";
   message: string;
   actionLabel?: string;
   onAction?: () => void;
@@ -54,7 +54,7 @@ export default function QMoiToolbar() {
           }
           if (app.name === "QAutoDev") {
             // Simulate health status
-            const health = ["healthy", "warning", "error"][getRandomInt(0, 2)];
+            const health = ["healthy", "warning", "_error"][getRandomInt(0, 2)];
             return { ...app, status: health };
           }
           if (app.name === "QWifi") {
@@ -91,15 +91,15 @@ export default function QMoiToolbar() {
         const types: Notification["type"][] = [
           "info",
           "warning",
-          "error",
+          "_error",
           "success",
         ];
         const type = types[getRandomInt(0, 3)];
         let message = "";
         let actionLabel;
         let onAction;
-        if (type === "error") {
-          message = "QMOI: System error detected!";
+        if (type === "_error") {
+          message = "QMOI: System _error detected!";
           actionLabel = "Auto-Fix";
           onAction = () =>
             setNotification({
@@ -142,8 +142,8 @@ export default function QMoiToolbar() {
     setTimeout(() => setNotification(null), 2000);
   }
 
-  function showContextMenu(e: React.MouseEvent, appName: string) {
-    e.preventDefault();
+  function showContextMenu(_e: React.MouseEvent, appName: string) {
+    _e.preventDefault();
     if (appName === "QWifi") {
       setNotification({
         type: "info",
@@ -266,7 +266,7 @@ export default function QMoiToolbar() {
             left: 32,
             zIndex: 1100,
             background:
-              notification.type === "error"
+              notification.type === "_error"
                 ? "#f44336"
                 : notification.type === "warning"
                   ? "#ff9800"
@@ -350,7 +350,7 @@ export default function QMoiToolbar() {
                   style={{
                     fontWeight: 600,
                     color:
-                      n.type === "error"
+                      n.type === "_error"
                         ? "#f44336"
                         : n.type === "warning"
                           ? "#ff9800"
@@ -399,7 +399,7 @@ export default function QMoiToolbar() {
               padding: 4,
             }}
             onClick={() => openApp(app.name)}
-            onContextMenu={(e) => showContextMenu(e, app.name)}
+            onContextMenu={(_e) => showContextMenu(_e, app.name)}
           >
             <span>{app.icon}</span>
             <span
@@ -409,7 +409,7 @@ export default function QMoiToolbar() {
                 right: 0,
                 fontSize: 10,
                 background:
-                  app.status === "error"
+                  app.status === "_error"
                     ? "#f00"
                     : app.status === "warning"
                       ? "#ff0"

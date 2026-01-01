@@ -25,14 +25,14 @@ function log(message) {
 function syncToRemote(filePath) {
   const fileContent = fs.readFileSync(filePath);
   const fileName = path.basename(filePath);
-  const params = {
+  const _params = {
     Bucket: S3_BUCKET,
     Key: fileName,
     Body: fileContent,
   };
-  s3.upload(params, function (err, data) {
-    if (err) {
-      log(`S3 upload failed: ${fileName} - ${err}`);
+  s3.upload(_params, function (_err, data) {
+    if (_err) {
+      log(`S3 upload failed: ${fileName} - ${_err}`);
     } else {
       log(`S3 upload success: ${fileName} -> ${data.Location}`);
     }

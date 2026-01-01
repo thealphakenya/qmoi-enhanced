@@ -101,7 +101,7 @@ function getBatteryInfo(): Promise<number | null> {
     if (typeof navigator !== "undefined" && "getBattery" in navigator) {
       (navigator as any)
         .getBattery()
-        .then((battery: any) => {
+        .then((battery: unknown) => {
           resolve(battery.level * 100);
         })
         .catch(() => resolve(null));

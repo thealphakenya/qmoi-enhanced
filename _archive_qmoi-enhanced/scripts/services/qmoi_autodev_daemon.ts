@@ -8,8 +8,8 @@ import { unifiedCICDService } from "./unified_ci_cd_service";
 import * as path from "path";
 
 const execAsync = promisify(exec);
-let autoFixService: any = null;
-let qcityService: any = null;
+let autoFixService: unknown = null;
+let qcityService: unknown = null;
 
 // Initialize services with error handling
 function initializeServices() {
@@ -52,8 +52,8 @@ function initializeServices() {
 
 let running = false;
 let lastRun: string | null = null;
-let lastResult: any = null;
-const healthChecks: any[] = [];
+let lastResult: unknown = null;
+const healthChecks: unknown[] = [];
 const MAX_HEALTH_HISTORY = 20;
 let errorCount = 0;
 const MAX_ERRORS = 10;
@@ -72,7 +72,7 @@ class ErrorRecoverySystem {
     return ErrorRecoverySystem.instance;
   }
 
-  async attemptRecovery(error: any): Promise<boolean> {
+  async attemptRecovery(error: unknown): Promise<boolean> {
     this.recoveryAttempts++;
     logger.warn(
       `[QMOI-AUTODEV-DAEMON] Recovery attempt ${this.recoveryAttempts}/${this.maxRecoveryAttempts}`,
@@ -141,7 +141,7 @@ async function runTests(): Promise<any> {
       logger.info("[QMOI-AUTODEV-DAEMON] Test output:", stdout);
       if (stderr) logger.warn("[QMOI-AUTODEV-DAEMON] Test errors:", stderr);
       return { success: true, output: stdout, error: stderr, command: cmd };
-    } catch (error: any) {
+    } catch (error: unknown) {
       logger.warn(
         `[QMOI-AUTODEV-DAEMON] Test command ${cmd} failed:`,
         error.message,
@@ -188,7 +188,7 @@ async function runHealthChecks(): Promise<any[]> {
       clearTimeout(timeoutId);
       const duration = Date.now() - start;
       results.push({ url, status: res.status, ok: res.ok, duration });
-    } catch (e: any) {
+    } catch (e: unknown) {
       results.push({
         url,
         status: "error",
@@ -206,7 +206,7 @@ async function runHealthChecks(): Promise<any[]> {
 }
 
 // Enhanced error analytics
-function summarizeErrorAnalytics(errors: any[]): any {
+function summarizeErrorAnalytics(errors: unknown[]): unknown {
   const errorTypes: Record<string, number> = {};
   const fileErrors: Record<string, number> = {};
   const severityCounts: Record<string, number> = {};
@@ -253,7 +253,7 @@ async function checkFileSystem(): Promise<any> {
         modified: stats?.mtime || null,
         accessible: exists ? fs.accessSync(file, fs.constants.R_OK) : false,
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       results.push({
         file,
         exists: false,
@@ -335,7 +335,7 @@ async function daemonLoop(): Promise<void> {
     const testResult = await runTests();
 
     // CI/CD operations with enhanced error handling
-    let cicdResults: any = {};
+    let cicdResults: unknown = {};
     try {
       if (testResult.success) {
         logger.info(
@@ -414,7 +414,7 @@ async function daemonLoop(): Promise<void> {
     errorCount = 0;
     recoveryMode = false;
     ErrorRecoverySystem.getInstance().resetRecoveryAttempts();
-  } catch (error: any) {
+  } catch (error: unknown) {
     errorCount++;
     logger.error("[QMOI-AUTODEV-DAEMON] Error in daemon loop:", error);
 

@@ -211,7 +211,7 @@ export default async function handler(
       return res.status(405).end();
     }
     return res.status(400).json({ error: "Unknown action" });
-  } catch (e: any) {
+  } catch (e: unknown) {
     return res.status(500).json({ error: e.message });
   }
 }

@@ -53,8 +53,8 @@ function deployToCloud(target) {
   try {
     execSync(target.deployCmd, { stdio: "inherit" });
     log(`[QMOI] Deploy to ${target.name} succeeded.`);
-  } catch (e) {
-    log(`[QMOI] Deploy to ${target.name} failed: ${e.message}`);
+  } catch (_e) {
+    log(`[QMOI] Deploy to ${target.name} failed: ${_e.message}`);
     // Auto-fix and retry logic (simplified)
     if (target.optimize) {
       log(`[QMOI] Attempting auto-fix for ${target.name}...`);
@@ -71,7 +71,7 @@ function deployToCloud(target) {
 
 function optimizeCloudSpend() {
   log(
-    "[QMOI] Optimizing cloud spend: preferring free/ephemeral resources, cleaning up unused assets.",
+    "[QMOI] Optimizing cloud spend: preferring free/ephemeral resources, cleaning up _unused assets.",
   );
   // Example: clean up old clones
   if (fs.existsSync("clones")) {

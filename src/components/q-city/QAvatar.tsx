@@ -35,7 +35,7 @@ export default function QAvatar() {
   const [drag, setDrag] = useState({ x: 100, y: 100 });
   const ref = useRef<HTMLDivElement>(null);
 
-  function saveSettings(newSettings: any) {
+  function saveSettings(newSettings: unknown) {
     setSettings(newSettings);
     localStorage.setItem("qavatar-settings", JSON.stringify(newSettings));
   }
@@ -57,8 +57,8 @@ export default function QAvatar() {
       aria-label="Q-Avatar floating assistant"
       tabIndex={0}
       role="button"
-      onKeyDown={(e) => {
-        if (e.key === "Enter") setOpen((o) => !o);
+      onKeyDown={(_e) => {
+        if (_e.key === "Enter") setOpen((o) => !o);
       }}
     >
       <motion.div
@@ -89,8 +89,8 @@ export default function QAvatar() {
             Avatar Type
             <select
               value={settings.type || "human"}
-              onChange={(e) =>
-                saveSettings({ ...settings, type: e.target.value })
+              onChange={(_e) =>
+                saveSettings({ ...settings, type: _e.target.value })
               }
               className="ml-2 bg-gray-800 text-white"
             >
@@ -105,14 +105,14 @@ export default function QAvatar() {
             Environment
             <select
               value={settings.env || "Office"}
-              onChange={(e) =>
-                saveSettings({ ...settings, env: e.target.value })
+              onChange={(_e) =>
+                saveSettings({ ...settings, env: _e.target.value })
               }
               className="ml-2 bg-gray-800 text-white"
             >
-              {ENVIRONMENTS.map((e) => (
-                <option key={e} value={e}>
-                  {e}
+              {ENVIRONMENTS.map((_e) => (
+                <option key={_e} value={_e}>
+                  {_e}
                 </option>
               ))}
             </select>
@@ -121,8 +121,8 @@ export default function QAvatar() {
             Quality
             <select
               value={settings.quality || "high"}
-              onChange={(e) =>
-                saveSettings({ ...settings, quality: e.target.value })
+              onChange={(_e) =>
+                saveSettings({ ...settings, quality: _e.target.value })
               }
               className="ml-2 bg-gray-800 text-white"
             >

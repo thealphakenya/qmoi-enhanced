@@ -9,22 +9,22 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 // GET /api/cashon/balance
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     // Read endpoints respect API key when configured
-    const auth = libProposals.requireApiKey(request.headers);
+    const auth = libProposals.requireApiKey(_request.headers);
     if (!auth.ok) {
-      const r = auth.response;
+      const r = auth._response;
       if (!r)
         return NextResponse.json(
-          { error: "Unknown auth error" },
+          { _error: "Unknown auth _error" },
           { status: 500 },
         );
       return NextResponse.json(r.body, { status: r.status });
     }
 
     const masterToken = process.env.MASTER_TOKEN || "";
-    const url = new URL(request.url);
+    const url = new URL(_request.url);
     const path = url.pathname.split("/").pop();
 
     switch (path) {
@@ -55,29 +55,29 @@ export async function GET(request: NextRequest) {
 
       default:
         return NextResponse.json(
-          { error: "Invalid endpoint" },
+          { _error: "Invalid endpoint" },
           { status: 400 },
         );
     }
-  } catch (error) {
-    console.error("Cashon API error:", error);
+  } catch (_error) {
+    console.error("Cashon API _error:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server _error" },
       { status: 500 },
     );
   }
 }
 
 // POST /api/cashon/actions
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
     // API-key gating for mutating actions
-    const auth = libProposals.requireApiKey(request.headers);
+    const auth = libProposals.requireApiKey(_request.headers);
     if (!auth.ok) {
-      const r = auth.response;
+      const r = auth._response;
       if (!r)
         return NextResponse.json(
-          { error: "Unknown auth error" },
+          { _error: "Unknown auth _error" },
           { status: 500 },
         );
       return NextResponse.json(r.body, { status: r.status });
@@ -86,16 +86,16 @@ export async function POST(request: NextRequest) {
     const canRun = process.env.PRODUCTION_CONFIRMED === "true";
     const runtimeToken = process.env.MASTER_TOKEN || "";
 
-    const url = new URL(request.url);
+    const url = new URL(_request.url);
     const path = url.pathname.split("/").pop();
-    const body = await request.json();
+    const body = await _request.json();
 
     switch (path) {
       case "deposit": {
         const { amount } = body;
         if (!amount || amount < 10) {
           return NextResponse.json(
-            { error: "Invalid amount" },
+            { _error: "Invalid amount" },
             { status: 400 },
           );
         }
@@ -125,7 +125,7 @@ export async function POST(request: NextRequest) {
         const { transactionId } = body;
         if (!transactionId) {
           return NextResponse.json(
-            { error: "Transaction ID required" },
+            { _error: "Transaction ID required" },
             { status: 400 },
           );
         }
@@ -153,7 +153,7 @@ export async function POST(request: NextRequest) {
         const { withdrawAmount } = body;
         if (!withdrawAmount || withdrawAmount < 10) {
           return NextResponse.json(
-            { error: "Invalid amount" },
+            { _error: "Invalid amount" },
             { status: 400 },
           );
         }
@@ -223,7 +223,7 @@ export async function POST(request: NextRequest) {
         const { tradeAmount, asset, strategy, confidence } = body;
         if (!tradeAmount || !asset || !strategy || !confidence) {
           return NextResponse.json(
-            { error: "Missing trade parameters" },
+            { _error: "Missing trade parameters" },
             { status: 400 },
           );
         }
@@ -259,7 +259,7 @@ export async function POST(request: NextRequest) {
         const { tradeId: tradeToApprove } = body;
         if (!tradeToApprove) {
           return NextResponse.json(
-            { error: "Trade ID required" },
+            { _error: "Trade ID required" },
             { status: 400 },
           );
         }
@@ -278,52 +278,52 @@ export async function POST(request: NextRequest) {
         }
         const tradeApproved = await cashonWallet.approveTrade(
           tradeToApprove,
-          false,
+          fals_e,
         );
         return NextResponse.json({ success: tradeApproved });
       }
 
       default:
         return NextResponse.json(
-          { error: "Invalid endpoint" },
+          { _error: "Invalid endpoint" },
           { status: 400 },
         );
     }
-  } catch (error) {
-    console.error("Cashon API error:", error);
+  } catch (_error) {
+    console.error("Cashon API _error:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server _error" },
       { status: 500 },
     );
   }
 }
 
 // PUT /api/cashon/config
-export async function PUT(request: NextRequest) {
+export async function PUT(_request: NextRequest) {
   try {
     // API-key gating for config changes
-    const auth = libProposals.requireApiKey(request.headers);
+    const auth = libProposals.requireApiKey(_request.headers);
     if (!auth.ok) {
-      const r = auth.response;
+      const r = auth._response;
       if (!r)
         return NextResponse.json(
-          { error: "Unknown auth error" },
+          { _error: "Unknown auth _error" },
           { status: 500 },
         );
       return NextResponse.json(r.body, { status: r.status });
     }
 
     const canRun = process.env.PRODUCTION_CONFIRMED === "true";
-    const url = new URL(request.url);
+    const url = new URL(_request.url);
     const path = url.pathname.split("/").pop();
-    const body = await request.json();
+    const body = await _request.json();
 
     switch (path) {
       case "strategy": {
         const { strategyId, updates } = body;
         if (!strategyId || !updates) {
           return NextResponse.json(
-            { error: "Strategy ID and updates required" },
+            { _error: "Strategy ID and updates required" },
             { status: 400 },
           );
         }
@@ -346,14 +346,14 @@ export async function PUT(request: NextRequest) {
 
       default:
         return NextResponse.json(
-          { error: "Invalid endpoint" },
+          { _error: "Invalid endpoint" },
           { status: 400 },
         );
     }
-  } catch (error) {
-    console.error("Cashon API error:", error);
+  } catch (_error) {
+    console.error("Cashon API _error:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server _error" },
       { status: 500 },
     );
   }

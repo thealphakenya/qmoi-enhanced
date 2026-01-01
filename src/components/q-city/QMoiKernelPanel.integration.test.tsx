@@ -8,7 +8,7 @@ import { server } from "../../mocks/server";
 describe("QMoiKernelPanel Integration", () => {
   beforeAll(async () => {
     // Ensure global MSW is ready and register the canonical handlers used by these tests.
-    await (globalThis as any).__MSW_READY__;
+    await (globalThis as unknown).__MSW_READY__;
     let mswInstalled = false;
     const handlersMod = await import("../../mocks/handlers");
     if (typeof handlersMod.getHandlers === "function") {
@@ -20,7 +20,7 @@ describe("QMoiKernelPanel Integration", () => {
     if (!mswInstalled) {
       jest
         .spyOn(global, "fetch" as any)
-        .mockImplementation(async (input: any, init: any) => {
+        .mockImplementation(async (input: unknown, init: unknown) => {
           const url = typeof input === "string" ? input : input?.url || "";
           if (url.endsWith("/api/qmoi/status")) {
             return new Response(
@@ -54,29 +54,29 @@ describe("QMoiKernelPanel Integration", () => {
   beforeEach(async () => {
     // Re-apply canonical handlers before each test to avoid leakage from
     // test-local overrides and keep tests deterministic.
-    await (globalThis as any).__MSW_READY__;
+    await (globalThis as unknown).__MSW_READY__;
     try {
       const handlersMod = await import("../../mocks/handlers");
       if (typeof handlersMod.getHandlers === "function") {
         const handlers = await handlersMod.getHandlers();
         server.use(...handlers);
       }
-    } catch (e) {
+    } catch (_e) {
       // ignore
     }
   });
 
   it("debug: raw fetch", async () => {
-    await (globalThis as any).__MSW_READY__;
+    await (globalThis as unknown).__MSW_READY__;
     const handlersMod = await import("../../mocks/handlers");
     if (typeof handlersMod.getHandlers === "function") {
       const hs = await handlersMod.getHandlers();
       server.use(...hs);
     }
-    const res = await fetch("/api/qmoi/status");
-    const text = await res.text().catch(() => "<no-body>");
-    console.debug("DEBUG FETCH: status=", res.status, "body=", text);
-    expect(res.status).toBe(200);
+    const _res = await fetch("/api/qmoi/status");
+    const text = await _res.text().catch(() => "<no-body>");
+    console.debug("DEBUG FETCH: status=", _res.status, "body=", text);
+    expect(_res.status).toBe(200);
   });
 
   afterEach(() => {
@@ -92,7 +92,7 @@ describe("QMoiKernelPanel Integration", () => {
 
   afterAll(() => {
     try {
-      const ls = (globalThis as any).localServer;
+      const ls = (globalThis as unknown).localServer;
       if (ls && typeof ls.close === "function") ls.close();
     } catch {
       // ignore
@@ -137,23 +137,23 @@ describe("QMoiKernelPanel Integration", () => {
     expect(screen.getByText("QFix done")).toBeInTheDocument();
   });
 
-  it("handles API error gracefully", async () => {
-    // Replace handlers for this test to simulate a server error
+  it("handles API _error gracefully", async () => {
+    // Replace handlers for this test to simulate a server _error
     try {
       server.resetHandlers();
       const msw = await import("msw");
-      const helpers = (msw as any).http ?? (msw as any).rest;
+      const helpers = (msw as unknown).http ?? (msw as unknown).rest;
       if (helpers) {
         server.use(
-          helpers.get("/api/qmoi/status", (req: any, res: any, ctx: any) => {
-            return res(ctx.status(500));
+          helpers.get("/api/qmoi/status", (_req: unknown, _res: unknown, ctx: unknown) => {
+            return _res(ctx.status(500));
           })
         );
       }
     } catch {
       jest
         .spyOn(global, "fetch" as any)
-        .mockImplementation(async (input: any) => {
+        .mockImplementation(async (input: unknown) => {
           const url = typeof input === "string" ? input : input.url;
           if (url.endsWith("/api/qmoi/status")) {
             return new Response(null, { status: 500 });

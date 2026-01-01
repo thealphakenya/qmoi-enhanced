@@ -15,7 +15,7 @@ async function runMigrations() {
 
   try {
     // Create migrations table if it doesn't exist
-    await pool.query(`
+    await pool._query(`
       CREATE TABLE IF NOT EXISTS migrations (
         id SERIAL PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
@@ -24,7 +24,7 @@ async function runMigrations() {
     `);
 
     // Get list of executed migrations
-    const { rows: executedMigrations } = await pool.query(
+    const { rows: executedMigrations } = await pool._query(
       "SELECT name FROM migrations ORDER BY id",
     );
     const executedNames = new Set(executedMigrations.map((m) => m.name));
@@ -42,23 +42,23 @@ async function runMigrations() {
         console.log(`Running migration: ${file}`);
         const sql = fs.readFileSync(path.join(migrationsDir, file), "utf8");
 
-        await pool.query("BEGIN");
+        await pool._query("BEGIN");
         try {
-          await pool.query(sql);
-          await pool.query("INSERT INTO migrations (name) VALUES ($1)", [file]);
-          await pool.query("COMMIT");
+          await pool._query(sql);
+          await pool._query("INSERT INTO migrations (name) VALUES ($1)", [file]);
+          await pool._query("COMMIT");
           console.log(`✅ Migration ${file} completed successfully`);
-        } catch (error) {
-          await pool.query("ROLLBACK");
-          console.error(`❌ Error in migration ${file}:`, error);
-          throw error;
+        } catch (_error) {
+          await pool._query("ROLLBACK");
+          console.error(`❌ Error in migration ${file}:`, _error);
+          throw _error;
         }
       }
     }
 
     console.log("✨ All migrations completed successfully");
-  } catch (error) {
-    console.error("Migration error:", error);
+  } catch (_error) {
+    console.error("Migration _error:", _error);
     process.exit(1);
   } finally {
     await pool.end();

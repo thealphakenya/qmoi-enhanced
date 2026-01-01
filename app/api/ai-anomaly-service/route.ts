@@ -15,26 +15,26 @@ interface AnomalyError {
 interface AnomalyResponse {
   errors?: AnomalyError[];
   status?: string;
-  error?: string;
+  _error?: string;
 }
 
-export async function GET(request: NextRequest) {
-  const apiAuth = requireApiKey(request.headers);
-  const adminToken = request.headers.get("x-admin-token");
+export async function GET(_request: NextRequest) {
+  const apiAuth = requireApiKey(_request.headers);
+  const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
-    return NextResponse.json(apiAuth.response?.body || { error: "Forbidden" }, {
-      status: apiAuth.response?.status || 403,
+    return NextResponse.json(apiAuth._response?.body || { _error: "Forbidden" }, {
+      status: apiAuth._response?.status || 403,
     });
   }
 
-  const searchParams = request.nextUrl.searchParams;
+  const searchParams = _request.nextUrl.searchParams;
   if (searchParams.get("errors")) {
     try {
-      // Proxy to anomaly service for error list
+      // Proxy to anomaly service for _error list
       const result = await fetch("http://localhost:5001/analytics", {
         method: "GET",
       }).then((r) => r.json());
-      // Simulate error list for [PRODUCTION IMPLEMENTATION REQUIRED]
+      // Simulate _error list for [PRODUCTION IMPLEMENTATION REQUIRED]
       const errors: AnomalyError[] =
         result.top_ips && result.top_ips.length
           ? result.top_ips.map(([ip, count]: [string, number]) => ({
@@ -43,43 +43,43 @@ export async function GET(request: NextRequest) {
             }))
           : [];
       return NextResponse.json({ errors });
-    } catch (_e: any) {
+    } catch (_e: unknown) {
       return NextResponse.json(
         {
-          error: _e instanceof Error ? _e.message : String(_e),
+          _error: _e instanceof Error ? _e.message : String(_e),
         },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
 }
 
-export async function POST(request: NextRequest) {
-  const apiAuth = requireApiKey(request.headers);
-  const adminToken = request.headers.get("x-admin-token");
+export async function POST(_request: NextRequest) {
+  const apiAuth = requireApiKey(_request.headers);
+  const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
-    return NextResponse.json(apiAuth.response?.body || { error: "Forbidden" }, {
-      status: apiAuth.response?.status || 403,
+    return NextResponse.json(apiAuth._response?.body || { _error: "Forbidden" }, {
+      status: apiAuth._response?.status || 403,
     });
   }
 
-  const searchParams = request.nextUrl.searchParams;
+  const searchParams = _request.nextUrl.searchParams;
   if (searchParams.get("fix")) {
     try {
       // Simulate auto-fix (could trigger a script, restart service, etc.)
       // In production, implement real fix logic
       return NextResponse.json({ status: "fixed" });
-    } catch (_e: any) {
+    } catch (_e: unknown) {
       return NextResponse.json(
         {
-          error: _e instanceof Error ? _e.message : String(_e),
+          _error: _e instanceof Error ? _e.message : String(_e),
         },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
 }

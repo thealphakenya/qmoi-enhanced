@@ -6,8 +6,8 @@ const configPath = path.resolve(__dirname, "../test_config.json");
 let config;
 try {
   config = JSON.parse(fs.readFileSync(configPath, "utf-8"));
-} catch (e) {
-  console.error("Failed to read test_config.json:", e.message);
+} catch (_e) {
+  console.error("Failed to read test_config.json:", _e.message);
   process.exit(1);
 }
 

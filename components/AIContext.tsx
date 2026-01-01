@@ -87,7 +87,7 @@ interface DeviceHealth {
 }
 
 interface PersistentMemory {
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 interface AIContextType {

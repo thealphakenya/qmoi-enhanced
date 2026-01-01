@@ -1,10 +1,12 @@
+/* eslint-env browser */
+/* eslint-env browser */
 import React, { useState, useEffect } from "react";
 
 interface QMoiStateProps {
-  session?: any;
-  global?: any;
+  session?: unknown;
+  global?: unknown;
   minimized?: boolean;
-  aiHealth?: { status: string; lastCheck: string; error?: string };
+  aiHealth?: { status: string; lastCheck: string; _error?: string };
   isMaster?: boolean;
   isAdmin?: boolean;
 }
@@ -68,7 +70,7 @@ export function QMoiState({
 
     const activityTimer = setInterval(() => {
       setCurrentActivity(
-        activities[Math.floor(Math.random() * activities.length)],
+        activities[Math.floor(Math.random() * activities.length)]
       );
     }, 5000);
 
@@ -82,12 +84,12 @@ export function QMoiState({
     if (!isMaster && !isAdmin) return;
     setLoadingLogs(true);
     setLogError(null);
-    const params = new URLSearchParams({
+    const _params = new URLSearchParams({
       ...logFilters,
       page: String(page),
       pageSize: String(pageSize),
     });
-    fetch(`/api/qcity/audit-log?${params.toString()}`, {
+    fetch(`/api/qcity/audit-log?${_params.toString()}`, {
       headers: { Authorization: token ? `Bearer ${token}` : "" },
     })
       .then((r) => r.json())
@@ -96,8 +98,8 @@ export function QMoiState({
         setTotalPages(data.totalPages || 1);
         setLoadingLogs(false);
       })
-      .catch((e) => {
-        setLogError(e.message || "Failed to load logs");
+      .catch((_e) => {
+        setLogError(_e.message || "Failed to load logs");
         setLoadingLogs(false);
       });
   }, [logFilters, page, isMaster, isAdmin]);
@@ -153,9 +155,9 @@ export function QMoiState({
     }
   };
 
-  const exportToCSV = (logs: any[]) => {
+  const exportToCSV = (logs: unknown[]) => {
     const header = "Timestamp,User,Action,Device,Status,Command";
-    const rows = logs.map((log: any) =>
+    const rows = logs.map((log: unknown) =>
       [
         log.timestamp,
         log.user,
@@ -165,7 +167,7 @@ export function QMoiState({
         log.command.replace(/"/g, '""'),
       ]
         .map((x) => `"${x || ""}"`)
-        .join(","),
+        .join(",")
     );
     const csv = [header, ...rows].join("\n");
     const blob = new Blob([csv], { type: "text/csv" });
@@ -175,7 +177,7 @@ export function QMoiState({
     a.click();
   };
 
-  const exportToJSON = (logs: any[]) => {
+  const exportToJSON = (logs: unknown[]) => {
     const blob = new Blob([JSON.stringify(logs, null, 2)], {
       type: "application/json",
     });
@@ -234,7 +236,9 @@ export function QMoiState({
         <div className="flex items-center justify-between mb-2">
           <span className="text-sm text-gray-400">Status</span>
           <span
-            className={`text-sm font-bold ${getHealthColor(aiHealth?.status || "OK")}`}
+            className={`text-sm font-bold ${getHealthColor(
+              aiHealth?.status || "OK"
+            )}`}
           >
             {aiHealth?.status || "OK"} {aiHealth?.status === "OK" ? "🟢" : "🔴"}
           </span>
@@ -323,32 +327,32 @@ export function QMoiState({
               <input
                 placeholder="User"
                 value={logFilters.user}
-                onChange={(e) =>
-                  setLogFilters((f) => ({ ...f, user: e.target.value }))
+                onChange={(_e) =>
+                  setLogFilters((f) => ({ ...f, user: _e.target.value }))
                 }
                 className="px-2 py-1 rounded bg-gray-800 text-white"
               />
               <input
                 placeholder="Action"
                 value={logFilters.action}
-                onChange={(e) =>
-                  setLogFilters((f) => ({ ...f, action: e.target.value }))
+                onChange={(_e) =>
+                  setLogFilters((f) => ({ ...f, action: _e.target.value }))
                 }
                 className="px-2 py-1 rounded bg-gray-800 text-white"
               />
               <input
                 placeholder="Status"
                 value={logFilters.status}
-                onChange={(e) =>
-                  setLogFilters((f) => ({ ...f, status: e.target.value }))
+                onChange={(_e) =>
+                  setLogFilters((f) => ({ ...f, status: _e.target.value }))
                 }
                 className="px-2 py-1 rounded bg-gray-800 text-white"
               />
               <input
                 type="date"
                 value={logFilters.date}
-                onChange={(e) =>
-                  setLogFilters((f) => ({ ...f, date: e.target.value }))
+                onChange={(_e) =>
+                  setLogFilters((f) => ({ ...f, date: _e.target.value }))
                 }
                 className="px-2 py-1 rounded bg-gray-800 text-white"
               />

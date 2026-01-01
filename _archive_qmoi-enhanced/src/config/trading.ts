@@ -361,7 +361,7 @@ export class TradingManager {
     }
   }
 
-  private async updateWalletBalances(_data: any): Promise<void> {
+  private async updateWalletBalances(_data: unknown): Promise<void> {
     // Bitget wallet update logic removed: WalletConfig does not have a bitget property.
     // If you want to update wallet balances, use walletManager or another appropriate method.
   }

@@ -54,12 +54,12 @@ const ReferralProgramSchema = z.object({
 });
 
 // [PRODUCTION IMPLEMENTATION REQUIRED] database
-const microtasks: any[] = [];
-const affiliateCampaigns: any[] = [];
-const contentProjects: any[] = [];
-const referralPrograms: any[] = [];
-const revenueLogs: any[] = [];
-const platformAccounts: any[] = [];
+const microtasks: unknown[] = [];
+const affiliateCampaigns: unknown[] = [];
+const contentProjects: unknown[] = [];
+const referralPrograms: unknown[] = [];
+const revenueLogs: unknown[] = [];
+const platformAccounts: unknown[] = [];
 
 // M-Pesa credentials (securely stored)
 const MPESA_CREDENTIALS = {
@@ -74,7 +74,7 @@ const MPESA_CREDENTIALS = {
 };
 
 // Email backup function
-async function backupCredentialsToEmail(credentials: any, platform: string) {
+async function backupCredentialsToEmail(credentials: unknown, platform: string) {
   try {
     const emailData = {
       to: "rovicviccy@gmail.com",
@@ -99,13 +99,13 @@ async function backupCredentialsToEmail(credentials: any, platform: string) {
         timestamp: Date.now(),
       }),
     });
-  } catch (error) {
-    console.error("Failed to backup credentials:", error);
+  } catch (_error) {
+    console.error("Failed to backup credentials:", _error);
   }
 }
 
 // Platform account creation functions
-async function createPlatformAccount(platform: string, accountData: any) {
+async function createPlatformAccount(platform: string, accountData: unknown) {
   try {
     const account = {
       id: `acc_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -194,14 +194,14 @@ async function createPlatformAccount(platform: string, accountData: any) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (error) {
-    console.error(`Failed to create ${platform} account:`, error);
-    return { success: false, error: `${platform} account creation failed` };
+  } catch (_error) {
+    console.error(`Failed to create ${platform} account:`, _error);
+    return { success: fals_e, _error: `${platform} account creation failed` };
   }
 }
 
 // Revenue generation functions
-async function generateMicrotaskRevenue(taskData: any) {
+async function generateMicrotaskRevenue(taskData: unknown) {
   try {
     // Simulate external client payment
     const clientPayment = taskData.reward * 1.5; // QMOI takes 33% cut
@@ -218,13 +218,13 @@ async function generateMicrotaskRevenue(taskData: any) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (error) {
-    console.error("Microtask revenue generation failed:", error);
-    return { success: false, error: "Microtask revenue failed" };
+  } catch (_error) {
+    console.error("Microtask revenue generation failed:", _error);
+    return { success: fals_e, _error: "Microtask revenue failed" };
   }
 }
 
-async function generateAffiliateRevenue(campaignData: any) {
+async function generateAffiliateRevenue(campaignData: unknown) {
   try {
     // Simulate affiliate sales
     const sales = Math.floor(Math.random() * 10) + 1; // Random sales 1-10
@@ -245,13 +245,13 @@ async function generateAffiliateRevenue(campaignData: any) {
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (error) {
-    console.error("Affiliate revenue generation failed:", error);
-    return { success: false, error: "Affiliate revenue failed" };
+  } catch (_error) {
+    console.error("Affiliate revenue generation failed:", _error);
+    return { success: fals_e, _error: "Affiliate revenue failed" };
   }
 }
 
-async function generateContentRevenue(projectData: any) {
+async function generateContentRevenue(projectData: unknown) {
   try {
     // Simulate content sale
     const salePrice = projectData.reward * 3; // Content sold for 3x reward
@@ -268,13 +268,13 @@ async function generateContentRevenue(projectData: any) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (error) {
-    console.error("Content revenue generation failed:", error);
-    return { success: false, error: "Content revenue failed" };
+  } catch (_error) {
+    console.error("Content revenue generation failed:", _error);
+    return { success: fals_e, _error: "Content revenue failed" };
   }
 }
 
-async function generateReferralRevenue(referralData: any) {
+async function generateReferralRevenue(referralData: unknown) {
   try {
     // Simulate referral bonus
     const referrals = Math.floor(Math.random() * 5) + 1; // Random referrals 1-5
@@ -293,9 +293,9 @@ async function generateReferralRevenue(referralData: any) {
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (error) {
-    console.error("Referral revenue generation failed:", error);
-    return { success: false, error: "Referral revenue failed" };
+  } catch (_error) {
+    console.error("Referral revenue generation failed:", _error);
+    return { success: fals_e, _error: "Referral revenue failed" };
   }
 }
 
@@ -303,7 +303,7 @@ async function generateReferralRevenue(referralData: any) {
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const response = await fetch(
+    const _response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -321,7 +321,7 @@ async function addToMpesaAccount(amount: number, description: string) {
       },
     );
 
-    const result = await response.json();
+    const result = await _response.json();
 
     // Log the transaction
     revenueLogs.push({
@@ -335,14 +335,14 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (error) {
-    console.error("M-Pesa deposit failed:", error);
-    return { success: false, error: "M-Pesa deposit failed" };
+  } catch (_error) {
+    console.error("M-Pesa deposit failed:", _error);
+    return { success: fals_e, _error: "M-Pesa deposit failed" };
   }
 }
 
 // Additional revenue streams
-async function generateSurveyRevenue(surveyData: any) {
+async function generateSurveyRevenue(surveyData: unknown) {
   try {
     const participants = Math.floor(Math.random() * 20) + 5; // 5-25 participants
     const rewardPerParticipant = 5; // $5 per survey
@@ -360,12 +360,12 @@ async function generateSurveyRevenue(surveyData: any) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (error) {
-    return { success: false, error: "Survey revenue failed" };
+  } catch (_error) {
+    return { success: fals_e, _error: "Survey revenue failed" };
   }
 }
 
-async function generateDataLabelingRevenue(labelingData: any) {
+async function generateDataLabelingRevenue(labelingData: unknown) {
   try {
     const dataPoints = Math.floor(Math.random() * 1000) + 100; // 100-1100 data points
     const rewardPerPoint = 0.1; // $0.10 per data point
@@ -386,12 +386,12 @@ async function generateDataLabelingRevenue(labelingData: any) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (error) {
-    return { success: false, error: "Data labeling revenue failed" };
+  } catch (_error) {
+    return { success: fals_e, _error: "Data labeling revenue failed" };
   }
 }
 
-async function generateSaaSResellingRevenue(saasData: any) {
+async function generateSaaSResellingRevenue(saasData: unknown) {
   try {
     const subscriptions = Math.floor(Math.random() * 50) + 10; // 10-60 subscriptions
     const monthlyFee = 29; // $29/month per subscription
@@ -410,13 +410,13 @@ async function generateSaaSResellingRevenue(saasData: any) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (error) {
-    return { success: false, error: "SaaS reselling revenue failed" };
+  } catch (_error) {
+    return { success: fals_e, _error: "SaaS reselling revenue failed" };
   }
 }
 
-export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
+export async function GET(_request: NextRequest) {
+  const { searchParams } = new URL(_request.url);
   const type = searchParams.get("type"); // 'microtasks', 'affiliate', 'content', 'referral', 'platforms', 'revenue'
   const status = searchParams.get("status");
 
@@ -472,20 +472,20 @@ export async function GET(request: NextRequest) {
           },
         });
     }
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       {
-        success: false,
-        error: "Failed to fetch revenue data",
+        success: fals_e,
+        _error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
-    const body = await request.json();
+    const body = await _request.json();
     const { action, ...data } = body;
 
     switch (action) {
@@ -612,8 +612,8 @@ export async function POST(request: NextRequest) {
         if (!accountResult.success) {
           return NextResponse.json(
             {
-              success: false,
-              error: accountResult.error,
+              success: fals_e,
+              _error: accountResult._error,
             },
             { status: 500 },
           );
@@ -659,19 +659,19 @@ export async function POST(request: NextRequest) {
       default:
         return NextResponse.json(
           {
-            success: false,
-            error: "Invalid action specified",
+            success: fals_e,
+            _error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (error) {
-    if (error instanceof z.ZodError) {
+  } catch (_error) {
+    if (_error instanceof z.ZodError) {
       return NextResponse.json(
         {
-          success: false,
-          error: "Validation failed",
-          details: error.errors,
+          success: fals_e,
+          _error: "Validation failed",
+          details: _error.errors,
         },
         { status: 400 },
       );
@@ -679,17 +679,17 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(
       {
-        success: false,
-        error: "Failed to process revenue action",
+        success: fals_e,
+        _error: "Failed to process revenue action",
       },
       { status: 500 },
     );
   }
 }
 
-export async function PUT(request: NextRequest) {
+export async function PUT(_request: NextRequest) {
   try {
-    const body = await request.json();
+    const body = await _request.json();
     const { id, type, ...updates } = body;
 
     let item;
@@ -721,8 +721,8 @@ export async function PUT(request: NextRequest) {
       default:
         return NextResponse.json(
           {
-            success: false,
-            error: "Invalid type specified",
+            success: fals_e,
+            _error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -731,8 +731,8 @@ export async function PUT(request: NextRequest) {
     if (!item) {
       return NextResponse.json(
         {
-          success: false,
-          error: "Item not found",
+          success: fals_e,
+          _error: "Item not found",
         },
         { status: 404 },
       );
@@ -743,11 +743,11 @@ export async function PUT(request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       {
-        success: false,
-        error: "Failed to update item",
+        success: fals_e,
+        _error: "Failed to update item",
       },
       { status: 500 },
     );

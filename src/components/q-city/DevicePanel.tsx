@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 export default function DevicePanel() {
   const [devices, setDevices] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [_error, setError] = useState("");
   const [form, setForm] = useState({
     name: "",
     host: "",
@@ -25,7 +25,7 @@ export default function DevicePanel() {
     })
       .then((r) => r.json())
       .then((data) => setDevices(data.items || []))
-      .catch((e) => setError(e.message))
+      .catch((_e) => setError(_e.message))
       .finally(() => setLoading(false));
   };
 
@@ -55,7 +55,7 @@ export default function DevicePanel() {
         });
         setEditing(null);
       })
-      .catch((e) => setError(e.message))
+      .catch((_e) => setError(_e.message))
       .finally(() => setLoading(false));
   };
 
@@ -70,7 +70,7 @@ export default function DevicePanel() {
       body: JSON.stringify({ id }),
     })
       .then(fetchDevices)
-      .catch((e) => setError(e.message))
+      .catch((_e) => setError(_e.message))
       .finally(() => setLoading(false));
   };
 
@@ -86,61 +86,61 @@ export default function DevicePanel() {
     })
       .then((r) => r.json())
       .then((data) =>
-        setTestResult(data.success ? "Success" : data.error || "Failed"),
+        setTestResult(data.success ? "Success" : data._error || "Failed"),
       )
-      .catch((e) => setTestResult(e.message));
+      .catch((_e) => setTestResult(_e.message));
   };
 
   return (
     <div className="p-4 bg-gray-900 rounded-lg shadow-lg">
       <h2 className="text-xl font-bold mb-4 text-cyan-400">Devices</h2>
-      {error && <div className="text-red-400 mb-2">{error}</div>}
+      {_error && <div className="text-red-400 mb-2">{_error}</div>}
       <form
         className="mb-4 flex flex-wrap gap-2"
-        onSubmit={(e) => {
-          e.preventDefault();
+        onSubmit={(_e) => {
+          _e.preventDefault();
           save();
         }}
       >
         <input
           placeholder="Name"
           value={form.name}
-          onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+          onChange={(_e) => setForm((f) => ({ ...f, name: _e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
           placeholder="Host"
           value={form.host}
-          onChange={(e) => setForm((f) => ({ ...f, host: e.target.value }))}
+          onChange={(_e) => setForm((f) => ({ ...f, host: _e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
           placeholder="Port"
           type="number"
           value={form.port}
-          onChange={(e) =>
-            setForm((f) => ({ ...f, port: Number(e.target.value) }))
+          onChange={(_e) =>
+            setForm((f) => ({ ...f, port: Number(_e.target.value) }))
           }
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
           placeholder="Username"
           value={form.username}
-          onChange={(e) => setForm((f) => ({ ...f, username: e.target.value }))}
+          onChange={(_e) => setForm((f) => ({ ...f, username: _e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
           placeholder="Password"
           type="password"
           value={form.password}
-          onChange={(e) => setForm((f) => ({ ...f, password: e.target.value }))}
+          onChange={(_e) => setForm((f) => ({ ...f, password: _e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
           placeholder="Private Key"
           value={form.privateKey}
-          onChange={(e) =>
-            setForm((f) => ({ ...f, privateKey: e.target.value }))
+          onChange={(_e) =>
+            setForm((f) => ({ ...f, privateKey: _e.target.value }))
           }
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />

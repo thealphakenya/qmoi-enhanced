@@ -40,7 +40,7 @@ interface Task {
   duration?: number;
   workerId?: string;
   dependencies?: string[];
-  result?: any;
+  result?: unknown;
   error?: string;
 }
 

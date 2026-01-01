@@ -1,9 +1,9 @@
 // Mock implementations since we can't import the real types
 class SerialPortMock {
-  private options: any;
-  private listeners: { [key: string]: ((data: any) => void)[] } = {};
+  private options: unknown;
+  private listeners: { [key: string]: ((data: unknown) => void)[] } = {};
 
-  constructor(options: any) {
+  constructor(options: unknown) {
     this.options = options;
   }
 
@@ -11,7 +11,7 @@ class SerialPortMock {
     callback();
   }
 
-  on(event: string, listener: (data: any) => void): void {
+  on(event: string, listener: (data: unknown) => void): void {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
@@ -33,7 +33,7 @@ class SerialPortMock {
 
 class HIDMock {
   private path: string;
-  private listeners: { [key: string]: ((data: any) => void)[] } = {};
+  private listeners: { [key: string]: ((data: unknown) => void)[] } = {};
 
   constructor(path: string) {
     this.path = path;
@@ -41,7 +41,7 @@ class HIDMock {
 
   write(data: number[]): void {}
 
-  on(event: string, listener: (data: any) => void): void {
+  on(event: string, listener: (data: unknown) => void): void {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
@@ -63,10 +63,10 @@ class HIDMock {
 
 // Export interfaces for our device integrations
 export interface DeviceIntegration {
-  connect(creds?: any): Promise<boolean>;
+  connect(creds?: unknown): Promise<boolean>;
   sendCommand(command: string): Promise<any>;
   autoDetect(): Promise<boolean>;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 interface TVDecoderDevice extends DeviceIntegration {
@@ -80,7 +80,7 @@ export const TVDecoderIntegration: TVDecoderDevice = {
     try {
       const availablePorts = await SerialPortMock.list();
       const decoderPort = availablePorts.find(
-        (port: any) =>
+        (port: unknown) =>
           port.manufacturer?.includes("TVDecoder") ||
           port.vendorId === "0x0403", // FTDI chip used in most decoders
       );
@@ -137,7 +137,7 @@ export const TVDecoderIntegration: TVDecoderDevice = {
     try {
       const ports = await SerialPortMock.list();
       const hasDecoder = ports.some(
-        (port: any) =>
+        (port: unknown) =>
           port.manufacturer?.includes("TVDecoder") ||
           port.vendorId === "0x0403",
       );
@@ -374,11 +374,11 @@ export const MLPlatformIntegration: DeviceIntegration = {
 class CredentialStore {
   private static store = new Map<string, any>();
 
-  static set(key: string, value: any): void {
+  static set(key: string, value: unknown): void {
     this.store.set(key, value);
   }
 
-  static get(key: string): any {
+  static get(key: string): unknown {
     return this.store.get(key);
   }
 

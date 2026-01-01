@@ -17,19 +17,19 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const res = await fetch("/api/qradio/channels");
-    const data = await res.json();
+    const _res = await fetch("/api/qradio/channels");
+    const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const res = await fetch("/api/qradio/status");
-    const data = await res.json();
+    const _res = await fetch("/api/qradio/status");
+    const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const res = await fetch("/api/qradio/programs");
-    const data = await res.json();
+    const _res = await fetch("/api/qradio/programs");
+    const data = await _res.json();
     setPrograms(data.programs || []);
   };
   useEffect(() => {
@@ -78,7 +78,7 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
         <label>Switch Channel: </label>
         <select
           value={selectedChannel ?? ""}
-          onChange={(e) => setSelectedChannel(Number(e.target.value))}
+          onChange={(_e) => setSelectedChannel(Number(_e.target.value))}
           className="px-2 py-1 border rounded"
         >
           <option value="">Select Channel</option>
@@ -102,7 +102,7 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
           <div key={p.channel} className="mb-2">
             <b>{p.channel}</b>
             <ul className="ml-4">
-              {p.programs.map((pr: any, i: number) => (
+              {p.programs.map((pr: unknown, i: number) => (
                 <li key={i}>
                   {pr.time} - {pr.title} ({pr.type}) by {pr.presenter}
                 </li>
@@ -117,23 +117,23 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
         </h4>
         <div className="flex gap-2 mb-2">
           <Input
-            placeholder="Time (e.g. 10:00)"
+            placeholder="Time (_e.g. 10:00)"
             value={newProgram.time}
-            onChange={(e) =>
-              setNewProgram((np) => ({ ...np, time: e.target.value }))
+            onChange={(_e) =>
+              setNewProgram((np) => ({ ...np, time: _e.target.value }))
             }
           />
           <Input
             placeholder="Title"
             value={newProgram.title}
-            onChange={(e) =>
-              setNewProgram((np) => ({ ...np, title: e.target.value }))
+            onChange={(_e) =>
+              setNewProgram((np) => ({ ...np, title: _e.target.value }))
             }
           />
           <select
             value={newProgram.type}
-            onChange={(e) =>
-              setNewProgram((np) => ({ ...np, type: e.target.value }))
+            onChange={(_e) =>
+              setNewProgram((np) => ({ ...np, type: _e.target.value }))
             }
             className="px-2 py-1 border rounded"
           >

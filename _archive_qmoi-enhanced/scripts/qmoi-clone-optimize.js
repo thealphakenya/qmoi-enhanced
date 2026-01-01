@@ -71,7 +71,7 @@ function deployToCloud(target) {
 
 function optimizeCloudSpend() {
   log(
-    "[QMOI] Optimizing cloud spend: preferring free/ephemeral resources, cleaning up unused assets.",
+    "[QMOI] Optimizing cloud spend: preferring free/ephemeral resources, cleaning up _unused assets.",
   );
   // Example: clean up old clones
   if (fs.existsSync("clones")) {

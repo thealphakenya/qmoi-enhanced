@@ -67,7 +67,7 @@ async function determineFixStrategy(error: FixRequest["error"]) {
   };
 }
 
-async function applyFix(strategy: any, error: FixRequest["error"]) {
+async function applyFix(strategy: unknown, error: FixRequest["error"]) {
   // Implement the actual fix based on the strategy
   // This could involve:
   // 1. Modifying code files
@@ -85,7 +85,7 @@ async function applyFix(strategy: any, error: FixRequest["error"]) {
   };
 }
 
-async function updateErrorTracking(error: FixRequest["error"], fixResult: any) {
+async function updateErrorTracking(error: FixRequest["error"], fixResult: unknown) {
   // Update the error tracking system with the fix results
   // This could involve:
   // 1. Marking the error as resolved

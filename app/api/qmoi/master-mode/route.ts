@@ -7,8 +7,8 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 // Master authentication middleware
-const authenticateMaster = (request: NextRequest) => {
-  const authHeader = request.headers.get("authorization");
+const authenticateMaster = (_request: NextRequest) => {
+  const authHeader = _request.headers.get("authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return false;
   }
@@ -21,22 +21,22 @@ const authenticateMaster = (request: NextRequest) => {
 };
 
 // POST /api/qmoi/master-mode
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
     // Authenticate master access
-    const apiAuth = requireApiKey(request.headers);
-    if (!apiAuth.ok && !authenticateMaster(request)) {
+    const apiAuth = requireApiKey(_request.headers);
+    if (!apiAuth.ok && !authenticateMaster(_request)) {
       return NextResponse.json(
-        { error: "Master access required" },
+        { _error: "Master access required" },
         { status: 401 },
       );
     }
 
-    const { enabled } = await request.json();
+    const { enabled } = await _request.json();
 
     if (typeof enabled !== "boolean") {
       return NextResponse.json(
-        { error: "Invalid enabled parameter" },
+        { _error: "Invalid enabled parameter" },
         { status: 400 },
       );
     }
@@ -46,30 +46,30 @@ export async function POST(request: NextRequest) {
     // 2. Log the action for audit purposes
     // 3. Notify relevant systems of the change
 
-    // For now, return success response
+    // For now, return success _response
     return NextResponse.json({
       success: true,
       masterMode: enabled,
       timestamp: new Date().toISOString(),
       message: `Master mode ${enabled ? "enabled" : "disabled"} successfully`,
     });
-  } catch (error) {
-    console.error("Error managing master mode:", error);
+  } catch (_error) {
+    console.error("Error managing master mode:", _error);
     return NextResponse.json(
-      { error: "Failed to manage master mode" },
+      { _error: "Failed to manage master mode" },
       { status: 500 },
     );
   }
 }
 
 // GET /api/qmoi/master-mode
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     // Authenticate master access
-    const apiAuth = requireApiKey(request.headers);
-    if (!apiAuth.ok && !authenticateMaster(request)) {
+    const apiAuth = requireApiKey(_request.headers);
+    if (!apiAuth.ok && !authenticateMaster(_request)) {
       return NextResponse.json(
-        { error: "Master access required" },
+        { _error: "Master access required" },
         { status: 401 },
       );
     }
@@ -90,10 +90,10 @@ export async function GET(request: NextRequest) {
         vulnerabilityScanning: true,
       },
     });
-  } catch (error) {
-    console.error("Error fetching master mode status:", error);
+  } catch (_error) {
+    console.error("Error fetching master mode status:", _error);
     return NextResponse.json(
-      { error: "Failed to fetch master mode status" },
+      { _error: "Failed to fetch master mode status" },
       { status: 500 },
     );
   }

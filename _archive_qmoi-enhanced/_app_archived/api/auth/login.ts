@@ -22,7 +22,7 @@ export default async function handler(
   if (!username || !password)
     return res.status(400).json({ error: "Missing fields" });
   const users = loadUsers();
-  const user = users.find((u: any) => u.username === username);
+  const user = users.find((u: unknown) => u.username === username);
   if (!user) return res.status(401).json({ error: "Invalid credentials" });
   const valid = await bcrypt.compare(password, user.password);
   if (!valid) return res.status(401).json({ error: "Invalid credentials" });

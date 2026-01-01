@@ -8,7 +8,7 @@ import path from "path";
 const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG = path.join(process.cwd(), "logs/qcity_audit.log");
 
-function logAudit(entry: any) {
+function logAudit(entry: unknown) {
   fs.appendFileSync(
     AUDIT_LOG,
     JSON.stringify({ ...entry, timestamp: new Date().toISOString() }) + "\n"
@@ -20,51 +20,51 @@ function maskCommand(cmd: string) {
 }
 
 export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
+  _req: NextApiRequest,
+  _res: NextApiResponse
 ) {
-  if (req.method !== "POST") return res.status(405).end();
-  const key = req.headers["x-qcity-admin-key"];
+  if (_req.method !== "POST") return _res.status(405).end();
+  const key = _req.headers["x-qcity-admin-key"];
   if (key !== ADMIN_KEY) {
     logAudit({
       action: "unauthorized",
-      cmd: req.body?.cmd,
-      user: req.headers["x-user"] || "unknown",
+      cmd: _req.body?.cmd,
+      user: _req.headers["x-user"] || "unknown",
       status: "fail",
     });
-    return res.status(401).json({ error: "Unauthorized" });
+    return _res.status(401).json({ _error: "Unauthorized" });
   }
-  const { cmd, deviceId = "qcity", stream = false } = req.body;
-  if (!cmd) return res.status(400).json({ error: "Missing command" });
+  const { cmd, deviceId = "qcity", stream = false } = _req.body;
+  if (!cmd) return _res.status(400).json({ _error: "Missing command" });
   logAudit({
     action: "run",
     cmd: maskCommand(cmd),
     deviceId,
-    user: req.headers["x-user"] || "unknown",
+    user: _req.headers["x-user"] || "unknown",
     status: "start",
   });
   if (stream) {
-    res.writeHead(200, {
-      "Content-Type": "text/event-stream",
+    _res.writeHead(200, {
+      "Content-Type": "text/_event-stream",
       "Cache-Control": "no-cache",
       Connection: "keep-alive",
     });
     const child = spawn(cmd, { shell: true });
-    child.stdout.on("data", (data) => res.write(`data: ${data.toString()}\n`));
-    child.stderr.on("data", (data) => res.write(`data: ${data.toString()}\n`));
+    child.stdout.on("data", (data) => _res.write(`data: ${data.toString()}\n`));
+    child.stderr.on("data", (data) => _res.write(`data: ${data.toString()}\n`));
     child.on("close", (code) => {
-      res.write("data: [DONE]\n");
-      res.end();
+      _res.write("data: [DONE]\n");
+      _res.end();
       logAudit({
         action: "run",
         cmd: maskCommand(cmd),
         deviceId,
-        user: req.headers["x-user"] || "unknown",
+        user: _req.headers["x-user"] || "unknown",
         status: "done",
         code,
       });
     });
-    req.on("close", () => child.kill());
+    _req.on("close", () => child.kill());
   } else {
     try {
       const child = spawn(cmd, { shell: true });
@@ -76,11 +76,11 @@ export default async function handler(
           action: "run",
           cmd: maskCommand(cmd),
           deviceId,
-          user: req.headers["x-user"] || "unknown",
+          user: _req.headers["x-user"] || "unknown",
           status: "done",
           code,
         });
-        res.status(200).json({ output, code });
+        _res.status(200).json({ output, code });
       });
     } catch (_e) {
       const errorMessage = _e instanceof Error ? _e.message : String(_e);
@@ -88,11 +88,11 @@ export default async function handler(
         action: "run",
         cmd: maskCommand(cmd),
         deviceId,
-        user: req.headers["x-user"] || "unknown",
-        status: "error",
-        error: errorMessage,
+        user: _req.headers["x-user"] || "unknown",
+        status: "_error",
+        _error: errorMessage,
       });
-      res.status(500).json({ error: errorMessage });
+      _res.status(500).json({ _error: errorMessage });
     }
   }
 }

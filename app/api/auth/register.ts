@@ -11,21 +11,21 @@ function loadUsers() {
   if (!fs.existsSync(USERS_FILE)) return [];
   return JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
 }
-function saveUsers(users: any[]) {
+function saveUsers(users: unknown[]) {
   fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
 }
 
-export default async function handler(req: NextApiRequest,
-  res: NextApiResponse,
+export default async function handler(_req: NextApiRequest,
+  _res: NextApiRespons_e,
 ) {
-  if (req.method !== "POST")
-    return res.status(405).json({ error: "Method not allowed" });
-  const { username, password, role } = req.body;
+  if (_req.method !== "POST")
+    return _res.status(405).json({ _error: "Method not allowed" });
+  const { username, password, role } = _req.body;
   if (!username || !password || !role)
-    return res.status(400).json({ error: "Missing fields" });
+    return _res.status(400).json({ _error: "Missing fields" });
   const users = loadUsers();
-  if (users.find((u: any) => u.username === username))
-    return res.status(409).json({ error: "User exists" });
+  if (users.find((u: unknown) => u.username === username))
+    return _res.status(409).json({ _error: "User exists" });
   const hash = await bcrypt.hash(password, 10);
   const user = {
     id: `user_${Date.now()}`,
@@ -36,5 +36,5 @@ export default async function handler(req: NextApiRequest,
   };
   users.push(user);
   saveUsers(users);
-  res.status(201).json({ success: true });
+  _res.status(201).json({ success: true });
 }

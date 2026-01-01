@@ -3,7 +3,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { RELEASES } from "@/components/release-notes";
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   // Always return the latest release info
   return NextResponse.json({
     version: RELEASES[0].version,

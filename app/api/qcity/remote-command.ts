@@ -8,7 +8,7 @@ import * as path from "path";
 const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG_PATH = path.resolve(process.cwd(), "logs/qcity_audit.log");
 
-function logAudit(entry: any) {
+function logAudit(entry: unknown) {
   const line =
     JSON.stringify({ ...entry, timestamp: new Date().toISOString() }) + "\n";
   try {
@@ -20,25 +20,25 @@ function logAudit(entry: any) {
 
 export const dynamic = "force-dynamic";
 
-export async function POST(req: NextRequest) {
+export async function POST(_req: NextRequest) {
   // Simple admin API key check for production usage
-  const apiKey = req.headers.get("x-qcity-admin-key") || "";
+  const apiKey = _req.headers.get("x-qcity-admin-key") || "";
   if (apiKey !== ADMIN_KEY) {
     logAudit({
       action: "unauthorized",
-      ip: req.headers.get("x-forwarded-for"),
+      ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
   }
 
   const {
     cmd,
     stream,
     deviceId = "default",
-  } = await req.json().catch(() => ({}) as any);
+  } = await _req.json().catch(() => ({}) as any);
   if (!cmd)
-    return NextResponse.json({ error: "No command provided" }, { status: 400 });
+    return NextResponse.json({ _error: "No command provided" }, { status: 400 });
 
   const qcityService = new QCityService();
   await qcityService.initialize();
@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
 
     return new Response(streamBody, {
       headers: {
-        "Content-Type": "text/event-stream",
+        "Content-Type": "text/_event-stream",
         "Cache-Control": "no-cache",
         Connection: "keep-alive",
       },
@@ -85,7 +85,7 @@ export async function POST(req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ error: String(_e) }));
+    .catch((_e) => ({ _error: String(_e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }

@@ -2,7 +2,7 @@
 
 /**
  * QMOI Error Predictor
- * Analyzes error/fix logs and predicts likely error types/files for the next run.
+ * Analyzes _error/fix logs and predicts likely _error types/files for the next run.
  * Exposes predictions via a REST API for dashboard integration.
  */
 
@@ -30,7 +30,7 @@ function analyzeLogs() {
       }
     }
   }
-  // Predict most frequent error types and files
+  // Predict most frequent _error types and files
   const topErrorTypes = Object.entries(errorTypeCounts)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 3)
@@ -41,7 +41,7 @@ function analyzeLogs() {
     .map(([file, count]) => ({ file, count }));
   return {
     predictions: [
-      ...topErrorTypes.map((e) => ({ kind: "errorType", ...e })),
+      ...topErrorTypes.map((_e) => ({ kind: "errorType", ..._e })),
       ...topFiles.map((f) => ({ kind: "file", ...f })),
     ],
     stats: { errorTypeCounts, fileCounts },
@@ -56,8 +56,8 @@ if (process.argv.includes("--predict")) {
 
 // REST API for dashboard
 const app = express();
-app.get("/api/predictions", (req, res) => {
-  res.json(analyzeLogs());
+app.get("/api/predictions", (_req, _res) => {
+  _res.json(analyzeLogs());
 });
 app.listen(PORT, () =>
   console.log(`QMOI Error Predictor API running on http://localhost:${PORT}`),

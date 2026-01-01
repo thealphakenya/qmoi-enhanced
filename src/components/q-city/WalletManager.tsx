@@ -1,3 +1,4 @@
+/* eslint-env browser */
 import React, { useState, useEffect } from "react";
 import { useToast } from "../../../hooks/use-toast";
 import { Loader2 } from "lucide-react";
@@ -21,7 +22,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
 }) => {
   const [pendingRequests, setPendingRequests] = useState<WalletRequest[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
   const [walletRequested, setWalletRequested] = useState(false);
   const { getCurrentTime, currentTimezone } = useTimezone();
   const { toast } = useToast();
@@ -35,13 +36,13 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
   const fetchPendingRequests = async () => {
     try {
       setLoading(true);
-      const res = await fetch("/api/wallet?pending_wallets=1", {
+      const _res = await fetch("/api/wallet?pending_wallets=1", {
         headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });
-      if (!res.ok) throw new Error("Failed to fetch pending requests");
-      const data = await res.json();
+      if (!_res.ok) throw new Error("Failed to fetch pending requests");
+      const data = await _res.json();
       setPendingRequests(data);
-    } catch (err) {
+    } catch (_err) {
       setError("Failed to load pending requests");
       toast({
         title: "Error",
@@ -64,7 +65,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         throw new Error("Please complete your profile first");
       }
 
-      const res = await fetch("/api/wallet", {
+      const _res = await fetch("/api/wallet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -77,22 +78,22 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         }),
       });
 
-      const data = await res.json();
+      const data = await _res.json();
 
       if (data.status === "pending") {
         setWalletRequested(true);
         toast({
           title: "Success",
-          description: "Wallet request sent to master for approval",
+          description: "Wallet _request sent to master for approval",
         });
       } else {
-        throw new Error(data.error || "Failed to request wallet");
+        throw new Error(data._error || "Failed to _request wallet");
       }
-    } catch (err: any) {
-      setError(err.message);
+    } catch (_err: unknown) {
+      setError(_err.message);
       toast({
         title: "Error",
-        description: err.message,
+        description: _err.message,
         variant: "destructive",
       });
     } finally {
@@ -104,7 +105,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
     try {
       setLoading(true);
       setError(null);
-      const res = await fetch("/api/wallet", {
+      const _res = await fetch("/api/wallet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -117,7 +118,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         }),
       });
 
-      const data = await res.json();
+      const data = await _res.json();
 
       if (data.status === "approved") {
         setPendingRequests((prev) => prev.filter((r) => r.email !== email));
@@ -127,13 +128,13 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         });
         await fetchPendingRequests(); // Refresh the list
       } else {
-        throw new Error(data.error || "Failed to approve wallet");
+        throw new Error(data._error || "Failed to approve wallet");
       }
-    } catch (err: any) {
-      setError(err.message);
+    } catch (_err: unknown) {
+      setError(_err.message);
       toast({
         title: "Error",
-        description: err.message,
+        description: _err.message,
         variant: "destructive",
       });
     } finally {
@@ -152,12 +153,12 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         </div>
       </div>
 
-      {error && (
+      {_error && (
         <div
           className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded relative"
           role="alert"
         >
-          <span className="block sm:inline">{error}</span>
+          <span className="block sm:inline">{_error}</span>
         </div>
       )}
 
@@ -195,18 +196,18 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
               No pending requests
             </p>
           )}
-          {pendingRequests.map((req) => (
-            <Card key={req.email} className="p-4">
+          {pendingRequests.map((_req) => (
+            <Card key={_req.email} className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="font-medium">{req.username}</p>
-                  <p className="text-sm text-gray-500">{req.email}</p>
+                  <p className="font-medium">{_req.username}</p>
+                  <p className="text-sm text-gray-500">{_req.email}</p>
                   <p className="text-xs text-gray-400">
-                    Requested: {new Date(req.requestedAt).toLocaleString()}
+                    Requested: {new Date(_req.requestedAt).toLocaleString()}
                   </p>
                 </div>
                 <Button
-                  onClick={() => handleApproveWallet(req.email)}
+                  onClick={() => handleApproveWallet(_req.email)}
                   disabled={loading}
                 >
                   {loading ? (

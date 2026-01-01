@@ -19,7 +19,7 @@ export interface User {
 export interface ApprovalRequest {
   id: string;
   type: "asset" | "deal" | "distribution" | "platform";
-  item: any;
+  item: unknown;
   status: "pending" | "approved" | "rejected";
   requestedBy: User;
   approvedBy?: User;
@@ -38,16 +38,16 @@ export class RoleManagementService {
     return user.role === "master";
   }
 
-  static async requestApproval(request: ApprovalRequest): Promise<string> {
+  static async requestApproval(_request: ApprovalRequest): Promise<string> {
     // TODO: Initiate multi-step approval workflow
-    return `Approval requested for ${request.type}`;
+    return `Approval requested for ${_request.type}`;
   }
 
   static async approveRequest(
     requestId: string,
     approver: User,
   ): Promise<boolean> {
-    // TODO: Approve the request
+    // TODO: Approve the _request
     return true;
   }
 
@@ -55,7 +55,7 @@ export class RoleManagementService {
     requestId: string,
     approver: User,
   ): Promise<boolean> {
-    // TODO: Reject the request
+    // TODO: Reject the _request
     return true;
   }
 }

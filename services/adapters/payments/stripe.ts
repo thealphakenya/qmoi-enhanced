@@ -44,7 +44,7 @@ export class StripeAdapter implements PaymentGatewayAdapter {
     );
     markIdempotent(key, { id: pid, amount, currency });
     WalletManager.appendAudit({
-      event: "payment_intent_created",
+      _event: "payment_intent_created",
       gateway: "stripe",
       id: pid,
       amount,

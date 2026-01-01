@@ -2,9 +2,9 @@
 /* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function POST(_req: Request) {
   try {
-    const body = await req.json().catch(() => ({}));
+    const body = await _req.json().catch(() => ({}));
 
     const qbase = process.env.QMOI_API_BASE || "http://127.0.0.1:8080";
     const target = `${qbase}/memory/sync`;
@@ -22,7 +22,7 @@ export async function POST(req: Request) {
       headers,
       body: JSON.stringify(body),
     });
-    let data: any = null;
+    let data: unknown = null;
     try {
       data = await resp.json();
     } catch {
@@ -31,7 +31,7 @@ export async function POST(req: Request) {
     return NextResponse.json(data);
   } catch (_e) {
     return NextResponse.json(
-      { error: "memory_proxy_error", detail: String(_e) },
+      { _error: "memory_proxy_error", detail: String(_e) },
       { status: 500 }
     );
   }
@@ -47,7 +47,7 @@ export async function GET() {
     if (process.env.QMOI_MEMORY_SECRET)
       headers["X-QMOI-MEMORY-SECRET"] = process.env.QMOI_MEMORY_SECRET;
     const resp = await fetch(target, { method: "GET", headers });
-    let data: any = null;
+    let data: unknown = null;
     try {
       data = await resp.json();
     } catch {
@@ -56,7 +56,7 @@ export async function GET() {
     return NextResponse.json(data);
   } catch (_e) {
     return NextResponse.json(
-      { error: "memory_fetch_error", detail: String(_e) },
+      { _error: "memory_fetch_error", detail: String(_e) },
       { status: 500 }
     );
   }

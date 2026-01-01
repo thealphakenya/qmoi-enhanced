@@ -7,14 +7,14 @@ import { promises as fs } from "fs";
 import path from "path";
 import libProposals from "../../../../../lib/proposals";
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   // API key gating for status checks
-  const auth = libProposals.requireApiKey(request.headers);
+  const auth = libProposals.requireApiKey(_request.headers);
   if (!auth.ok) {
-    const r = auth.response;
+    const r = auth._response;
     if (!r)
       return NextResponse.json(
-        { error: "Unknown auth error" },
+        { _error: "Unknown auth _error" },
         { status: 500 },
       );
     return NextResponse.json(r.body, { status: r.status });
@@ -77,7 +77,7 @@ export async function GET(request: NextRequest) {
             if (logContent.includes("completed successfully")) {
               status.status = "success";
             } else if (
-              logContent.includes("error") ||
+              logContent.includes("_error") ||
               logContent.includes("failed")
             ) {
               status.status = "failure";
@@ -89,15 +89,15 @@ export async function GET(request: NextRequest) {
           }
         }
       }
-    } catch (error) {
-      console.log("Error checking logs:", error);
+    } catch (_error) {
+      console.log("Error checking logs:", _error);
     }
 
     return NextResponse.json(status);
-  } catch (error) {
-    console.error("Error getting GitHub status:", error);
+  } catch (_error) {
+    console.error("Error getting GitHub status:", _error);
     return NextResponse.json(
-      { error: "Failed to get GitHub status" },
+      { _error: "Failed to get GitHub status" },
       { status: 500 },
     );
   }

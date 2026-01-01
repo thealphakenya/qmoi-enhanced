@@ -15,15 +15,15 @@ export interface IntegrationConfig {
   type: PlatformType;
   apiKey?: string;
   authToken?: string;
-  credentials?: any;
-  extra?: any;
+  credentials?: unknown;
+  extra?: unknown;
 }
 
 export class PlatformIntegrationsService {
   static async publishProject(
     config: IntegrationConfig,
-    project: any,
-    assets: any,
+    project: unknown,
+    assets: unknown,
   ): Promise<string> {
     // TODO: Implement publishing logic for each platform type
     // Return a URL or status
@@ -32,8 +32,8 @@ export class PlatformIntegrationsService {
 
   static async updateProject(
     config: IntegrationConfig,
-    project: any,
-    assets: any,
+    project: unknown,
+    assets: unknown,
   ): Promise<string> {
     // TODO: Implement update logic
     return `Updated on ${config.platform}`;

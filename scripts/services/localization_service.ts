@@ -24,7 +24,7 @@ export class LocalizationService {
     return `[${targetLang}] ${text}`;
   }
 
-  static async localizeAsset(asset: any, targetLang: string): Promise<any> {
+  static async localizeAsset(asset: unknown, targetLang: string): Promise<any> {
     // TODO: Generate localized version of asset (doc, banner, ad, UI)
     return { ...asset, lang: targetLang };
   }

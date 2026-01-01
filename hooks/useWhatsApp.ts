@@ -39,7 +39,7 @@ export function useWhatsApp() {
     },
     {
       refetchInterval: 5000, // Poll every 5 seconds
-      onError: (err: any) => setError(err),
+      onError: (err: unknown) => setError(err),
     },
   );
 
@@ -54,7 +54,7 @@ export function useWhatsApp() {
       return response.data;
     },
     {
-      onError: (err: any) => setError(err),
+      onError: (err: unknown) => setError(err),
     },
   );
 
@@ -78,7 +78,7 @@ export function useWhatsApp() {
     },
     {
       onSuccess: () => refetchMessages(),
-      onError: (err: any) => setError(err),
+      onError: (err: unknown) => setError(err),
     },
   );
 
@@ -96,7 +96,7 @@ export function useWhatsApp() {
         refetchConfig();
         refetchMessages();
       },
-      onError: (err: any) => setError(err),
+      onError: (err: unknown) => setError(err),
     },
   );
 

@@ -34,13 +34,13 @@ async function fetchPublicIp() {
   // Prefer built-in fetch (Node 18+), fallback to python script if available
   try {
     if (typeof fetch !== "undefined") {
-      const res = await fetch("https://api.ipify.org");
-      const ip = (await res.text()).trim();
+      const _res = await fetch("https://api.ipify.org");
+      const ip = (await _res.text()).trim();
       const out = `Your public IP address is: ${ip}`;
       console.log(out);
       return out;
     }
-  } catch (e) {
+  } catch (_e) {
     // continue to python fallback
   }
 
@@ -51,7 +51,7 @@ async function fetchPublicIp() {
       .trim();
     console.log(out);
     return out;
-  } catch (e) {
+  } catch (_e) {
     throw new Error("Unable to fetch public IP");
   }
 }
@@ -73,7 +73,7 @@ async function main(argv = process.argv.slice(2)) {
   if (opts.has("--publicip") || opts.has("-p")) {
     try {
       await fetchPublicIp();
-    } catch (e) {
+    } catch (_e) {
       exitWithMessage("Could not fetch public IP (fallback failed).", 1);
     }
     return;
@@ -91,11 +91,11 @@ async function main(argv = process.argv.slice(2)) {
       if (!ipOut || !ipOut.includes("Your public IP address is:")) {
         exitWithMessage("Could not fetch public IP.", 1);
       }
-    } catch (e) {
+    } catch (_e) {
       exitWithMessage("Could not fetch public IP.", 1);
     }
-  } catch (e) {
-    exitWithMessage(`Setup failed: ${e.message}`, 1);
+  } catch (_e) {
+    exitWithMessage(`Setup failed: ${_e.message}`, 1);
   }
 
   console.log(
@@ -106,7 +106,7 @@ async function main(argv = process.argv.slice(2)) {
 
 if (require.main === module) {
   // run main and handle promise
-  main().catch((e) => exitWithMessage(e.message || String(e), 1));
+  main().catch((_e) => exitWithMessage(_e.message || String(_e), 1));
 }
 
 module.exports = {

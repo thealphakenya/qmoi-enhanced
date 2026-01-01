@@ -24,12 +24,12 @@ function log(msg) {
 function run(cmd, cwd = ".", opts = {}) {
   return new Promise((resolve, reject) => {
     log(`Running: ${cmd} (cwd: ${cwd})`);
-    const child = exec(cmd, { cwd, ...opts }, (err, stdout, stderr) => {
+    const child = exec(cmd, { cwd, ...opts }, (_err, stdout, stderr) => {
       if (stdout) log(stdout);
       if (stderr) log(stderr);
-      if (err) {
-        log(`Error: ${err.message}`);
-        return reject(err);
+      if (_err) {
+        log(`Error: ${_err.message}`);
+        return reject(_err);
       }
       resolve(stdout);
     });
@@ -51,10 +51,10 @@ async function learnFromOrganizations() {
     ];
     for (const org of orgs) {
       try {
-        const response = await axios.get(
+        const _response = await axios.get(
           `https://api.github.com/orgs/${org}/repos?sort=updated&per_page=10`,
         );
-        const repos = response.data;
+        const repos = _response.data;
 
         for (const repo of repos) {
           const learningData = {
@@ -72,15 +72,15 @@ async function learnFromOrganizations() {
 
           await saveLearningData(learningData);
         }
-      } catch (e) {
-        log(`Failed to learn from org ${org}: ${e.message}`);
+      } catch (_e) {
+        log(`Failed to learn from org ${org}: ${_e.message}`);
       }
     }
 
     log("Organization learning completed");
     return true;
-  } catch (e) {
-    log("Organization learning failed: " + e.message);
+  } catch (_e) {
+    log("Organization learning failed: " + _e.message);
     return false;
   }
 }
@@ -99,25 +99,25 @@ async function learnFromServers() {
 
     for (const server of servers) {
       try {
-        const response = await axios.get(server);
+        const _response = await axios.get(server);
         const serverData = {
           source: "server_api",
           server: server,
-          status: response.status,
-          headers: response.headers,
+          status: _response.status,
+          headers: _response.headers,
           timestamp: new Date().toISOString(),
         };
 
         await saveLearningData(serverData);
-      } catch (e) {
-        log(`Failed to learn from server ${server}: ${e.message}`);
+      } catch (_e) {
+        log(`Failed to learn from server ${server}: ${_e.message}`);
       }
     }
 
     log("Server learning completed");
     return true;
-  } catch (e) {
-    log("Server learning failed: " + e.message);
+  } catch (_e) {
+    log("Server learning failed: " + _e.message);
     return false;
   }
 }
@@ -137,25 +137,25 @@ async function learnFromClouds() {
 
     for (const service of cloudServices) {
       try {
-        const response = await axios.get(`https://${service}`);
+        const _response = await axios.get(`https://${service}`);
         const cloudData = {
           source: "cloud_service",
           service: service,
-          status: response.status,
-          contentLength: response.headers["content-length"],
+          status: _response.status,
+          contentLength: _response.headers["content-length"],
           timestamp: new Date().toISOString(),
         };
 
         await saveLearningData(cloudData);
-      } catch (e) {
-        log(`Failed to learn from cloud service ${service}: ${e.message}`);
+      } catch (_e) {
+        log(`Failed to learn from cloud service ${service}: ${_e.message}`);
       }
     }
 
     log("Cloud learning completed");
     return true;
-  } catch (e) {
-    log("Cloud learning failed: " + e.message);
+  } catch (_e) {
+    log("Cloud learning failed: " + _e.message);
     return false;
   }
 }
@@ -173,24 +173,24 @@ async function learnFromMovies() {
 
     for (const source of movieSources) {
       try {
-        const response = await axios.get(source);
+        const _response = await axios.get(source);
         const movieData = {
           source: "movie_api",
           api: source,
-          status: response.status,
+          status: _response.status,
           timestamp: new Date().toISOString(),
         };
 
         await saveLearningData(movieData);
-      } catch (e) {
-        log(`Failed to learn from movie source ${source}: ${e.message}`);
+      } catch (_e) {
+        log(`Failed to learn from movie source ${source}: ${_e.message}`);
       }
     }
 
     log("Movie learning completed");
     return true;
-  } catch (e) {
-    log("Movie learning failed: " + e.message);
+  } catch (_e) {
+    log("Movie learning failed: " + _e.message);
     return false;
   }
 }
@@ -224,8 +224,8 @@ async function confirmAndResearch() {
     await saveResearchData(researchResults);
     log("Research and confirmation completed");
     return true;
-  } catch (e) {
-    log("Research and confirmation failed: " + e.message);
+  } catch (_e) {
+    log("Research and confirmation failed: " + _e.message);
     return false;
   }
 }
@@ -259,16 +259,16 @@ async function generateRevenue() {
         revenueData.sources[source] = revenue;
         revenueData.totalRevenue += revenue.amount;
         revenueData.projections[source] = await projectRevenue(source);
-      } catch (e) {
-        log(`Failed to calculate revenue for ${source}: ${e.message}`);
+      } catch (_e) {
+        log(`Failed to calculate revenue for ${source}: ${_e.message}`);
       }
     }
 
     await saveRevenueData(revenueData);
     log("Revenue generation completed");
     return true;
-  } catch (e) {
-    log("Revenue generation failed: " + e.message);
+  } catch (_e) {
+    log("Revenue generation failed: " + _e.message);
     return false;
   }
 }
@@ -402,12 +402,12 @@ async function main() {
 
       // Wait before next cycle (1 hour)
       await new Promise((resolve) => setTimeout(resolve, 60 * 60 * 1000));
-    } catch (e) {
-      log("Learning and revenue generation cycle failed: " + e.message);
+    } catch (_e) {
+      log("Learning and revenue generation cycle failed: " + _e.message);
       // Wait before retry (30 minutes)
       await new Promise((resolve) => setTimeout(resolve, 30 * 60 * 1000));
     }
   }
 }
 
-main().catch((e) => log("Fatal error: " + e.message));
+main().catch((_e) => log("Fatal _error: " + _e.message));

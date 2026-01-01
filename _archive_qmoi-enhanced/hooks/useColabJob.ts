@@ -9,7 +9,7 @@ export function useColabJob() {
   const [jobId, setJobId] = useState<string | null>(null);
 
   // Enhanced: auto-retry, status, and notification
-  const startColabJob = useCallback(async (jobDetails: any) => {
+  const startColabJob = useCallback(async (jobDetails: unknown) => {
     setStatus("running");
     setError(null);
     setResult(null);
@@ -33,7 +33,7 @@ export function useColabJob() {
           new CustomEvent("colab-job-complete", { detail: data }),
         );
       }
-    } catch (e: any) {
+    } catch (e: unknown) {
       setError(e.message || "Colab job failed");
       setStatus("error");
       // Auto-retry after delay

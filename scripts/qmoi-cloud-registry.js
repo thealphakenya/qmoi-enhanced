@@ -22,7 +22,7 @@ class QMOIRegistry {
   async init() {
     try {
       this.config = await loadConfig(CONFIG_FILE);
-    } catch (err) {
+    } catch (_err) {
       this.config = { registryUrl: null, lastCheck: null };
       await this.saveConfig();
     }
@@ -38,7 +38,7 @@ class QMOIRegistry {
     // Validate URL format
     try {
       new URL(url);
-    } catch (err) {
+    } catch (_err) {
       throw new Error("Invalid registry URL format");
     }
 
@@ -62,14 +62,14 @@ class QMOIRegistry {
     for (let attempt = 1; attempt <= RETRY_ATTEMPTS; attempt++) {
       try {
         const startTime = Date.now();
-        const response = await this.client.get(`${targetUrl}/health`);
+        const _response = await this.client.get(`${targetUrl}/health`);
         const latency = Date.now() - startTime;
 
-        if (response.status !== 200) {
-          throw new Error(`Registry returned status ${response.status}`);
+        if (_response.status !== 200) {
+          throw new Error(`Registry returned status ${_response.status}`);
         }
 
-        const health = response.data;
+        const health = _response.data;
         return {
           status: "healthy",
           version: health.version,
@@ -78,10 +78,10 @@ class QMOIRegistry {
           replicationStatus: health.replication,
           storageUsage: health.storage,
         };
-      } catch (err) {
+      } catch (_err) {
         if (attempt === RETRY_ATTEMPTS) {
           throw new Error(
-            `Registry health check failed after ${RETRY_ATTEMPTS} attempts: ${err.message}`,
+            `Registry health check failed after ${RETRY_ATTEMPTS} attempts: ${_err.message}`,
           );
         }
         await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY));
@@ -118,8 +118,8 @@ class QMOIRegistry {
       console.log(
         `  Available: ${(health.storageUsage.available / 1024 / 1024).toFixed(2)} MB`,
       );
-    } catch (err) {
-      console.error("[REGISTRY] Error:", err.message);
+    } catch (_err) {
+      console.error("[REGISTRY] Error:", _err.message);
       process.exit(1);
     }
   }
@@ -141,8 +141,8 @@ async function main() {
         "Usage: node qmoi-cloud-registry.js set --url <url> | status",
       );
     }
-  } catch (err) {
-    console.error("[ERROR]", err.message);
+  } catch (_err) {
+    console.error("[ERROR]", _err.message);
     process.exit(1);
   }
 }

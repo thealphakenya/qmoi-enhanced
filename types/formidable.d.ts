@@ -1,4 +1,4 @@
 declare module "formidable" {
-  const formidable: any;
+  const formidable: unknown;
   export = formidable;
 }

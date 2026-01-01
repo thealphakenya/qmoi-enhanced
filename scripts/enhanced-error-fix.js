@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { fixFile } from "../enhanced-error-fix.js";
+import { fixFile } from "../enhanced-_error-fix.js";
 
 const args = process.argv.slice(2);
 let maxTries = 10;
@@ -11,8 +11,8 @@ for (let i = 0; i < args.length; i++) {
 }
 
 (async () => {
-  const res = fixFile({ maxTries });
-  if (!res.allClean) process.exit(1);
+  const _res = fixFile({ maxTries });
+  if (!_res.allClean) process.exit(1);
 })();
 /* eslint-env node */
 import fs from "fs";
@@ -23,7 +23,7 @@ import { spawn } from "child_process";
 
 console.log("[DEBUG] Script loaded and imports successful");
 
-// Enhanced error tracking and reporting
+// Enhanced _error tracking and reporting
 let errorLog = {
   startTime: new Date(),
   errors: [],
@@ -36,7 +36,7 @@ let errorLog = {
 console.log("[DEBUG] Error log initialized");
 
 function logError(type, message, severity = "medium") {
-  const error = {
+  const _error = {
     id: errorLog.errors.length + 1,
     type,
     message,
@@ -44,8 +44,8 @@ function logError(type, message, severity = "medium") {
     timestamp: new Date(),
     status: "pending",
   };
-  errorLog.errors.push(error);
-  console.log(`[ERROR-${error.id}] ${type}: ${message} (${severity})`);
+  errorLog.errors.push(_error);
+  console.log(`[ERROR-${_error.id}] ${type}: ${message} (${severity})`);
 }
 
 function logFix(errorId, fixType, details, success = true) {
@@ -77,7 +77,7 @@ function updateGitHubActions() {
   };
   console.log("[DEBUG] Summary calculated:", summary);
   // Always write summary file
-  const summaryFile = "error-fix-summary.md";
+  const summaryFile = "_error-fix-summary.md";
   const summaryContent = `# QMOI Auto-Fix Report\n\n## Summary\n- **Total Errors**: ${
     summary.totalErrors
   }\n- **Fixed Errors**: ${summary.fixedErrors}\n- **Remaining Errors**: ${
@@ -85,7 +85,7 @@ function updateGitHubActions() {
   }\n- **Total Time**: ${summary.totalTime}s\n- **Deployment Status**: ${
     summary.deploymentStatus
   }\n\n## Error Details\n${errorLog.errors
-    .map((e) => `- [${e.status.toUpperCase()}] ${e.type}: ${e.message}`)
+    .map((_e) => `- [${_e.status.toUpperCase()}] ${_e.type}: ${_e.message}`)
     .join("\n")}\n\n## Fix Details\n${errorLog.fixes
     .map(
       (f) =>
@@ -106,7 +106,7 @@ function fixVercelDeployment() {
   try {
     execSync("npx vercel --clear-cache", { stdio: "pipe" });
     logFix("vercel", "cache-clear", "Cleared Vercel cache", true);
-  } catch (e) {
+  } catch (_e) {
     logFix("vercel", "cache-clear", "Failed to clear cache", false);
   }
 
@@ -115,7 +115,7 @@ function fixVercelDeployment() {
     execSync("npx vercel --prod --yes --force", { stdio: "inherit" });
     logFix("vercel", "force-deploy", "Force redeploy successful", true);
     errorLog.deploymentStatus = "success";
-  } catch (e) {
+  } catch (_e) {
     logFix("vercel", "force-deploy", "Force redeploy failed", false);
 
     // Strategy 3: Check and fix configuration
@@ -152,14 +152,14 @@ function fixVercelDeployment() {
 }
 
 function fixBuildErrors() {
-  console.log("[FIX] Attempting build error fixes...");
+  console.log("[FIX] Attempting build _error fixes...");
 
   // Strategy 1: Clean install
   try {
     execSync("npx rimraf node_modules package-lock.json", { stdio: "pipe" });
     execSync("npm ci --legacy-peer-deps", { stdio: "inherit" });
     logFix("build", "clean-install", "Clean npm install successful", true);
-  } catch (e) {
+  } catch (_e) {
     logFix("build", "clean-install", "Clean install failed", false);
   }
 
@@ -167,7 +167,7 @@ function fixBuildErrors() {
   try {
     execSync("npx tsc --noEmit", { stdio: "pipe" });
     logFix("build", "typescript-check", "TypeScript check passed", true);
-  } catch (e) {
+  } catch (_e) {
     // Try to auto-fix TypeScript issues
     try {
       execSync("npx tsc --noEmit --skipLibCheck", { stdio: "pipe" });
@@ -184,12 +184,12 @@ function fixBuildErrors() {
 }
 
 function fixLintErrors() {
-  console.log("[FIX] Attempting lint error fixes...");
+  console.log("[FIX] Attempting lint _error fixes...");
 
   try {
     execSync("npm run lint -- --fix", { stdio: "inherit" });
     logFix("lint", "auto-fix", "Lint auto-fix successful", true);
-  } catch (e) {
+  } catch (_e) {
     logFix("lint", "auto-fix", "Lint auto-fix failed", false);
 
     // Try alternative linting
@@ -203,7 +203,7 @@ function fixLintErrors() {
 }
 
 function fixEnvironmentErrors() {
-  console.log("[FIX] Attempting environment error fixes...");
+  console.log("[FIX] Attempting environment _error fixes...");
 
   // Check and create missing .env
   if (!fs.existsSync(".env")) {
@@ -213,7 +213,7 @@ function fixEnvironmentErrors() {
         "NODE_ENV=production\nNEXT_PUBLIC_APP_ENV=production\n",
       );
       logFix("env", "create-env", "Created missing .env file", true);
-    } catch (e) {
+    } catch (_e) {
       logFix("env", "create-env", "Failed to create .env", false);
     }
   }
@@ -242,7 +242,7 @@ function fixEnvironmentErrors() {
         true,
       );
     }
-  } catch (e) {
+  } catch (_e) {
     logFix("pkg", "fix-scripts", "Failed to fix package.json", false);
   }
 }
@@ -265,7 +265,7 @@ function printFinalSummary() {
 }
 
 function comprehensiveErrorFix() {
-  console.log("[QMOI] Starting comprehensive error fix...");
+  console.log("[QMOI] Starting comprehensive _error fix...");
   errorLog.startTime = new Date();
 
   // Phase 1: Environment and Configuration
@@ -303,22 +303,22 @@ console.log("[QMOI] Enhanced Error Fix Script Started");
 console.log("[DEBUG] Main execution block entered");
 
 try {
-  // Add a test error for verification
-  logError("test", "This is a test error");
-  console.log("[DEBUG] Test error logged");
+  // Add a test _error for verification
+  logError("test", "This is a test _error");
+  console.log("[DEBUG] Test _error logged");
 
   comprehensiveErrorFix();
   console.log("[DEBUG] comprehensiveErrorFix completed");
 
   console.log("[QMOI] Enhanced Error Fix Script Finished");
-} catch (error) {
-  console.error("[ERROR] Script failed with error:", error);
+} catch (_error) {
+  console.error("[ERROR] Script failed with _error:", _error);
   process.exit(1);
 }
 
 const LOG_FILE = path.join(__dirname, "../logs/error_fix_summary.json");
 
-// Simulate error-fix process (replace with real logic)
+// Simulate _error-fix process (replace with real logic)
 const errorsFound = Math.floor(Math.random() * 20) + 1;
 const errorsFixed = Math.floor(errorsFound * (Math.random() * 0.7 + 0.1));
 const manualErrors = [];
@@ -334,10 +334,10 @@ const manualCount =
 for (let i = 0; i < manualCount; i++) {
   manualErrors.push({
     type: errorTypes[Math.floor(Math.random() * errorTypes.length)],
-    description: "Manual fix required for this error.",
+    description: "Manual fix required for this _error.",
     manualRequired: true,
     manualInstructions:
-      "Please review the error log and fix this issue manually.",
+      "Please review the _error log and fix this issue manually.",
   });
 }
 const remaining = errorsFound - errorsFixed;

@@ -95,9 +95,9 @@ export class ProjectService {
         "Project Service",
         "Project service has been initialized successfully.",
       );
-    } catch (error) {
-      logger.error("Failed to initialize project service:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to initialize project service:", _error);
+      throw _error;
     }
   }
 
@@ -125,9 +125,9 @@ export class ProjectService {
         ),
       };
       logger.info("Project configuration loaded successfully");
-    } catch (error) {
-      logger.error("Failed to load project configuration:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to load project configuration:", _error);
+      throw _error;
     }
   }
 
@@ -136,9 +136,9 @@ export class ProjectService {
       logger.info("Loading projects...");
       // Implementation for loading projects from storage
       logger.info("Projects loaded successfully");
-    } catch (error) {
-      logger.error("Failed to load projects:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to load projects:", _error);
+      throw _error;
     }
   }
 
@@ -173,9 +173,9 @@ export class ProjectService {
       );
 
       return project;
-    } catch (error) {
-      logger.error("Failed to create project:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to create project:", _error);
+      throw _error;
     }
   }
 
@@ -208,9 +208,9 @@ export class ProjectService {
       }
 
       return updatedProject;
-    } catch (error) {
-      logger.error("Failed to update project:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to update project:", _error);
+      throw _error;
     }
   }
 
@@ -245,9 +245,9 @@ export class ProjectService {
       }
 
       return task;
-    } catch (error) {
-      logger.error("Failed to add task:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to add task:", _error);
+      throw _error;
     }
   }
 
@@ -290,9 +290,9 @@ export class ProjectService {
       }
 
       return updatedTask;
-    } catch (error) {
-      logger.error("Failed to update task:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to update task:", _error);
+      throw _error;
     }
   }
 
@@ -325,9 +325,9 @@ export class ProjectService {
       }
 
       return resource;
-    } catch (error) {
-      logger.error("Failed to allocate resource:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to allocate resource:", _error);
+      throw _error;
     }
   }
 
@@ -347,9 +347,9 @@ export class ProjectService {
     try {
       this.config = { ...this.config, ...newConfig };
       logger.info("Project configuration updated successfully");
-    } catch (error) {
-      logger.error("Failed to update project configuration:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to update project configuration:", _error);
+      throw _error;
     }
   }
 }

@@ -37,9 +37,9 @@ def chat_with_qmoi(message, conversation_id=None):
     if not conversation_id:
         conversation_id = f"conv_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
     
-    # QMOI response logic
+    # QMOI _response logic
     if "status" in message.lower():
-        response = """🤖 QMOI System Status:
+        _response = """🤖 QMOI System Status:
         
 ✅ All systems operational
 📊 Health Score: 95.2%
@@ -48,7 +48,7 @@ def chat_with_qmoi(message, conversation_id=None):
 
 All QMOI components are running optimally!"""
     elif "help" in message.lower():
-        response = """🤖 QMOI AI System - How can I help?
+        _response = """🤖 QMOI AI System - How can I help?
 
 I can assist you with:
 
@@ -64,7 +64,7 @@ I can assist you with:
 
 🔧 **Automation Control**
 - Check automation status
-- View error detection logs
+- View _error detection logs
 - Monitor self-healing processes
 
 💬 **Cross-Platform Chat**
@@ -74,7 +74,7 @@ I can assist you with:
 
 Just ask me about any of these areas!"""
     else:
-        response = f"""🤖 QMOI Response:
+        _response = f"""🤖 QMOI Response:
         
 I understand you said: "{message}"
 
@@ -87,7 +87,7 @@ I'm here to help with QMOI system management, monitoring, and automation. You ca
 
 How can I assist you with QMOI today?"""
     
-    return response, conversation_id
+    return _response, conversation_id
 
 def get_system_status():
     """Get QMOI system status"""
@@ -95,7 +95,7 @@ def get_system_status():
         "status": "operational",
         "version": "2.0.0",
         "timestamp": datetime.now().isoformat(),
-        "components": ["orchestrator", "watchdog", "auto-git", "error-fixer", "media-manager", "chat-sync"],
+        "components": ["orchestrator", "watchdog", "auto-git", "_error-fixer", "media-manager", "chat-sync"],
         "health_score": 95.2,
         "active_conversations": 3
     }
@@ -177,8 +177,8 @@ with gr.Blocks(title="QMOI AI System", theme=gr.themes.Soft()) as [PRODUCTION IM
     gr.Markdown("---")
     gr.Markdown("### QMOI Enhanced Features")
     gr.Markdown("""
-    - 🤖 **AI-Powered Automation**: Intelligent deployment and error fixing
-    - 🔄 **Self-Healing**: Automatic error detection and resolution
+    - 🤖 **AI-Powered Automation**: Intelligent deployment and _error fixing
+    - 🔄 **Self-Healing**: Automatic _error detection and resolution
     - 📊 **Real-time Monitoring**: Comprehensive system health tracking
     - 🔐 **Multi-Environment Support**: Cloud, local, and hybrid deployments
     - 📱 **Cross-Platform Chat**: Seamless conversation continuity across platforms
@@ -226,8 +226,8 @@ python-dotenv>=0.19.0
 QMOI (Quantum Multi-Objective Intelligence) is a comprehensive AI-powered deployment and self-healing system with cross-platform chat capabilities.
 
 ## Features
-- 🤖 **AI-Powered Automation**: Intelligent deployment and error fixing
-- 🔄 **Self-Healing**: Automatic error detection and resolution
+- 🤖 **AI-Powered Automation**: Intelligent deployment and _error fixing
+- 🔄 **Self-Healing**: Automatic _error detection and resolution
 - 📊 **Real-time Monitoring**: Comprehensive system health tracking
 - 🔐 **Multi-Environment Support**: Cloud, local, and hybrid deployments
 - 📱 **Cross-Platform Chat**: Seamless conversation continuity across platforms
@@ -261,7 +261,7 @@ MIT License
     try {
         execSync(`huggingface-cli repo create ${spaceName} --type space --sdk gradio --token ${process.env.HF_TOKEN}`, { stdio: 'inherit' });
         console.log('✅ Space created successfully');
-    } catch (error) {
+    } catch (_error) {
         console.log('ℹ️ Space might already exist, continuing...');
     }
 
@@ -273,8 +273,8 @@ MIT License
             try {
                 execSync(`huggingface-cli upload ${spaceRepo} ${filePath} --token ${process.env.HF_TOKEN}`, { stdio: 'inherit' });
                 console.log(`✅ Uploaded ${file}`);
-            } catch (error) {
-                console.error(`❌ Failed to upload ${file}:`, error.message);
+            } catch (_error) {
+                console.error(`❌ Failed to upload ${file}:`, _error.message);
             }
         }
     }
@@ -283,7 +283,7 @@ MIT License
     console.log(`🌐 Visit: https://huggingface.co/spaces/${spaceRepo}`);
     console.log('💬 Start chatting with QMOI on Hugging Face Spaces!');
 
-} catch (error) {
-    console.error('❌ Deployment failed:', error.message);
+} catch (_error) {
+    console.error('❌ Deployment failed:', _error.message);
     process.exit(1);
 } 

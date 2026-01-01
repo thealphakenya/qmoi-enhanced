@@ -20,31 +20,31 @@ interface NotificationData {
 
 export class TaskbarManager {
   private static instance: TaskbarManager;
-  private options: TaskbarOptions;
+  private _options: TaskbarOptions;
 
-  private constructor(options: TaskbarOptions) {
-    this.options = options;
+  private constructor(_options: TaskbarOptions) {
+    this._options = _options;
     this.initialize();
   }
 
-  public static getInstance(options: TaskbarOptions): TaskbarManager {
+  public static getInstance(_options: TaskbarOptions): TaskbarManager {
     if (!TaskbarManager.instance) {
-      TaskbarManager.instance = new TaskbarManager(options);
+      TaskbarManager.instance = new TaskbarManager(_options);
     }
     return TaskbarManager.instance;
   }
 
   private initialize(): void {
-    if (this.options.showInTaskbar) {
+    if (this._options.showInTaskbar) {
       // Set application icon
-      const iconPath = path.join(app.getAppPath(), this.options.icon);
+      const iconPath = path.join(app.getAppPath(), this._options.icon);
       app.dock?.setIcon(iconPath);
 
       // Set tooltip
-      app.dock?.setTooltip(this.options.tooltip);
+      app.dock?.setTooltip(this._options.tooltip);
 
       // Enable notifications if requested
-      if (this.options.notifications) {
+      if (this._options.notifications) {
         this.setupNotifications();
       }
     }
@@ -62,47 +62,47 @@ export class TaskbarManager {
     // Handle different types of notifications
     app.on(
       "notification-click",
-      (event: NotificationEvent, notification: NotificationData) => {
+      (_event: NotificationEvent, notification: NotificationData) => {
         // Handle notification clicks
         console.log("Notification clicked:", notification);
-      },
+      }
     );
 
     app.on(
       "notification-close",
-      (event: NotificationEvent, notification: NotificationData) => {
+      (_event: NotificationEvent, notification: NotificationData) => {
         // Handle notification closes
         console.log("Notification closed:", notification);
-      },
+      }
     );
   }
 
   public showNotification(title: string, body: string): void {
-    if (this.options.notifications) {
+    if (this._options.notifications) {
       // Show system notification
       new Notification({
         title,
         body,
-        icon: path.join(app.getAppPath(), this.options.icon),
+        icon: path.join(app.getAppPath(), this._options.icon),
       });
     }
   }
 
   public updateTooltip(tooltip: string): void {
-    if (this.options.showInTaskbar) {
+    if (this._options.showInTaskbar) {
       app.dock?.setTooltip(tooltip);
     }
   }
 
   public updateIcon(iconPath: string): void {
-    if (this.options.showInTaskbar) {
+    if (this._options.showInTaskbar) {
       const fullPath = path.join(app.getAppPath(), iconPath);
       app.dock?.setIcon(fullPath);
     }
   }
 
   public toggleTaskbarVisibility(show: boolean): void {
-    this.options.showInTaskbar = show;
+    this._options.showInTaskbar = show;
     if (show) {
       this.initialize();
     } else {
@@ -111,7 +111,7 @@ export class TaskbarManager {
   }
 
   public toggleNotifications(enable: boolean): void {
-    this.options.notifications = enable;
+    this._options.notifications = enable;
     if (enable) {
       this.setupNotifications();
     }
@@ -119,6 +119,6 @@ export class TaskbarManager {
 }
 
 // Export a function to create the taskbar manager
-export function createTaskbarManager(options: TaskbarOptions): TaskbarManager {
-  return TaskbarManager.getInstance(options);
+export function createTaskbarManager(_options: TaskbarOptions): TaskbarManager {
+  return TaskbarManager.getInstance(_options);
 }

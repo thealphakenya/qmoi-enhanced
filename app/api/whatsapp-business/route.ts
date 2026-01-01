@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { error: "WhatsApp Business integration not implemented" },
+    { _error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }

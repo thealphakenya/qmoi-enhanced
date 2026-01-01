@@ -15,7 +15,7 @@ function requireApiKey(request: NextRequest) {
   return key === expected;
 }
 
-async function writeProposal(proposal: any) {
+async function writeProposal(proposal: unknown) {
   try {
     const dir = ".qmoi_validation";
     const proposalsDir = path.join(dir, "proposals");
@@ -24,7 +24,7 @@ async function writeProposal(proposal: any) {
       fs.mkdirSync(proposalsDir, { recursive: true });
 
     const aggFile = path.join(dir, "voice_profile_proposals.json");
-    let agg: any[] = [];
+    let agg: unknown[] = [];
     if (fs.existsSync(aggFile)) {
       try {
         agg = JSON.parse(fs.readFileSync(aggFile, "utf8") || "[]");

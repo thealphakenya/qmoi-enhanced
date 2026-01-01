@@ -13,14 +13,14 @@ interface MonitorStatus {
   } | null;
 }
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     // [PRODUCTION IMPLEMENTATION REQUIRED] monitoring status - replace with actual implementation
     const mockStatus: MonitorStatus = {
       enabled: true,
       interval: 60,
       last_result: {
-        anomaly: false,
+        anomaly: fals_e,
         msg: "No security threats detected",
         ip_counts: {
           "192.168.1.1": 5,
@@ -31,35 +31,35 @@ export async function GET(request: NextRequest) {
     };
 
     return NextResponse.json(mockStatus);
-  } catch (error) {
-    console.error("Error in monitor status endpoint:", error);
+  } catch (_error) {
+    console.error("Error in monitor status endpoint:", _error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 },
     );
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
-    const body = await request.json();
+    const body = await _request.json();
     const { enable, interval } = body;
 
     if (typeof enable !== "boolean") {
       return NextResponse.json(
-        { error: "Enable flag is required" },
+        { _error: "Enable flag is required" },
         { status: 400 },
       );
     }
 
     if (interval && (interval < 10 || interval > 3600)) {
       return NextResponse.json(
-        { error: "Interval must be between 10 and 3600 seconds" },
+        { _error: "Interval must be between 10 and 3600 seconds" },
         { status: 400 },
       );
     }
 
-    // [PRODUCTION IMPLEMENTATION REQUIRED] response - replace with actual implementation
+    // [PRODUCTION IMPLEMENTATION REQUIRED] _response - replace with actual implementation
     const updateStatus: MonitorStatus = {
       enabled: enable,
       interval: interval || 60,
@@ -67,10 +67,10 @@ export async function POST(request: NextRequest) {
     };
 
     return NextResponse.json(updateStatus);
-  } catch (error) {
-    console.error("Error in monitor control endpoint:", error);
+  } catch (_error) {
+    console.error("Error in monitor control endpoint:", _error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 },
     );
   }

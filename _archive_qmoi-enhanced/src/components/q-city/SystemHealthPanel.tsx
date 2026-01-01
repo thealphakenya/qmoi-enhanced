@@ -17,7 +17,7 @@ export default function SystemHealthPanel() {
       if (!res.ok) throw new Error("Failed to fetch");
       const json = await res.json();
       setData(json);
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError(err.message || "Unknown error");
     } finally {
       setLoading(false);

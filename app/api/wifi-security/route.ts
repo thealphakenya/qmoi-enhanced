@@ -40,9 +40,9 @@ interface SecurityStatus {
   };
 }
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
-    const searchParams = request.nextUrl.searchParams;
+    const searchParams = _request.nextUrl.searchParams;
     const status = searchParams.get("status");
     const threats = searchParams.get("threats");
 
@@ -98,21 +98,21 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: "Invalid query parameter" },
+      { _error: "Invalid _query parameter" },
       { status: 400 },
     );
-  } catch (error) {
-    console.error("Error in WiFi security endpoint:", error);
+  } catch (_error) {
+    console.error("Error in WiFi security endpoint:", _error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 },
     );
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
-    const body = await request.json();
+    const body = await _request.json();
     const { action, settings } = body;
 
     if (action === "start-monitoring") {
@@ -143,7 +143,7 @@ export async function POST(request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { error: "Settings are required" },
+          { _error: "Settings are required" },
           { status: 400 },
         );
       }
@@ -162,13 +162,13 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: "Invalid action specified" },
+      { _error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (error) {
-    console.error("Error in WiFi security action endpoint:", error);
+  } catch (_error) {
+    console.error("Error in WiFi security action endpoint:", _error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 },
     );
   }

@@ -1,5 +1,5 @@
 // Client-side adapters for production integrations with parallel execution support
-// Features: Caching, retry logic, background operations, request queuing, error recovery
+// Features: Caching, retry logic, background operations, _request queuing, _error recovery
 // These call backend API endpoints (preferred) which should implement real third-party integrations.
 // If the backend is not configured, these functions throw or return safe errors which the UI handles.
 
@@ -43,8 +43,8 @@ const RETRY_DELAY = 1000; // ms
 // UTILITY FUNCTIONS
 // ============================================================================
 
-function getCacheKey(endpoint: string, params?: any): string {
-  return `${endpoint}:${JSON.stringify(params || {})}`;
+function getCacheKey(endpoint: string, _params?: unknown): string {
+  return `${endpoint}:${JSON.stringify(_params || {})}`;
 }
 
 function isCacheValid<T>(entry: CacheEntry<T>): boolean {
@@ -78,12 +78,12 @@ async function withRetry<T>(
   endpoint: string,
   maxRetries = MAX_RETRIES,
 ): Promise<T> {
-  let lastError: any;
+  let lastError: unknown;
   for (let i = 0; i <= maxRetries; i++) {
     try {
       return await fn();
-    } catch (err) {
-      lastError = err;
+    } catch (_err) {
+      lastError = _err;
       if (i < maxRetries) {
         const delay = RETRY_DELAY * Math.pow(2, i); // exponential backoff
         console.warn(
@@ -101,7 +101,7 @@ async function deduplicateRequest<T>(
   fn: () => Promise<T>,
 ): Promise<T> {
   if (requestQueue.pending.has(key)) {
-    console.debug(`[Dedup] Reusing pending request: ${key}`);
+    console.debug(`[Dedup] Reusing pending _request: ${key}`);
     return requestQueue.pending.get(key) as Promise<T>;
   }
   const promise = fn().finally(() => {
@@ -126,26 +126,26 @@ export async function fetchMedia(forceRefresh = false): Promise<any[]> {
 
   return deduplicateRequest(cacheKey, async () => {
     return withRetry(async () => {
-      const res = await fetch(getEndpoint("media"), {
+      const _res = await fetch(getEndpoint("media"), {
         signal: AbortSignal.timeout(30000), // 30s timeout
       });
-      if (!res.ok) throw new Error(`media fetch failed: ${res.status}`);
-      const data = await res.json();
+      if (!_res.ok) throw new Error(`media fetch failed: ${_res.status}`);
+      const data = await _res.json();
       const items = data.items || [];
       setCache(cacheKey, items, "media");
       return items;
     }, "fetchMedia");
-  }).catch((err) => {
-    console.warn("fetchMedia error", err);
+  }).catch((_err) => {
+    console.warn("fetchMedia _error", _err);
     return [];
   });
 }
 
 export async function verifyProduct(
-  query: string,
+  _query: string,
   forceRefresh = false,
 ): Promise<string> {
-  const cacheKey = getCacheKey("verify", { query });
+  const cacheKey = getCacheKey("verify", { _query });
 
   if (!forceRefresh) {
     const cached = getFromCache<string>(cacheKey);
@@ -154,19 +154,19 @@ export async function verifyProduct(
 
   return deduplicateRequest(cacheKey, async () => {
     return withRetry(async () => {
-      const res = await fetch(
-        `${getEndpoint("verify")}?q=${encodeURIComponent(query)}`,
+      const _res = await fetch(
+        `${getEndpoint("verify")}?q=${encodeURIComponent(_query)}`,
         { signal: AbortSignal.timeout(30000) },
       );
-      if (!res.ok) throw new Error(`verify failed: ${res.status}`);
-      const data = await res.json();
+      if (!_res.ok) throw new Error(`verify failed: ${_res.status}`);
+      const data = await _res.json();
       const result = data.result || "No result";
       setCache(cacheKey, result, "verify");
       return result;
     }, "verifyProduct");
-  }).catch((err) => {
-    console.warn("verifyProduct error", err);
-    return `Verification unavailable: ${String(err)}`;
+  }).catch((_err) => {
+    console.warn("verifyProduct _error", _err);
+    return `Verification unavailable: ${String(_err)}`;
   });
 }
 
@@ -177,20 +177,20 @@ export async function sendMail(payload: {
 }): Promise<boolean> {
   return withRetry(
     async () => {
-      const res = await fetch(getEndpoint("mail"), {
+      const _res = await fetch(getEndpoint("mail"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
         signal: AbortSignal.timeout(30000),
       });
-      if (!res.ok) throw new Error(`mail failed: ${res.status}`);
+      if (!_res.ok) throw new Error(`mail failed: ${_res.status}`);
       return true;
     },
     "sendMail",
     2,
   ) // 2 retries for mail
-    .catch((err) => {
-      console.warn("sendMail error", err);
+    .catch((_err) => {
+      console.warn("sendMail _error", _err);
       return false;
     });
 }
@@ -198,40 +198,40 @@ export async function sendMail(payload: {
 export async function uploadFile(formData: FormData): Promise<any> {
   return withRetry(
     async () => {
-      const res = await fetch(getEndpoint("files"), {
+      const _res = await fetch(getEndpoint("files"), {
         method: "POST",
         body: formData,
         signal: AbortSignal.timeout(60000), // 60s timeout for large files
       });
-      if (!res.ok) throw new Error(`upload failed: ${res.status}`);
-      return await res.json();
+      if (!_res.ok) throw new Error(`upload failed: ${_res.status}`);
+      return await _res.json();
     },
     "uploadFile",
     2,
-  ).catch((err) => {
-    console.warn("uploadFile error", err);
-    return { success: false, error: String(err) };
+  ).catch((_err) => {
+    console.warn("uploadFile _error", _err);
+    return { success: false, _error: String(_err) };
   });
 }
 
 export async function emergencyAction(
   action: string,
-  payload: any,
+  payload: unknown,
 ): Promise<any> {
   // Emergency actions skip retry logic for speed
   try {
-    const res = await fetch(getEndpoint("emergency"), {
+    const _res = await fetch(getEndpoint("emergency"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ action, payload }),
       signal: AbortSignal.timeout(10000), // 10s timeout for emergency
     });
-    const result = await res.json();
+    const result = await _res.json();
     console.info(`[Emergency] Action ${action} executed:`, result);
     return result;
-  } catch (err) {
-    console.error("emergencyAction error", err);
-    return { ok: false, error: String(err) };
+  } catch (_err) {
+    console.error("emergencyAction _error", _err);
+    return { ok: false, _error: String(_err) };
   }
 }
 
@@ -243,20 +243,20 @@ export async function youtubeDownload(url: string): Promise<any> {
 
   return deduplicateRequest(cacheKey, async () => {
     return withRetry(async () => {
-      const res = await fetch(getEndpoint("youtube"), {
+      const _res = await fetch(getEndpoint("youtube"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url }),
         signal: AbortSignal.timeout(60000),
       });
-      if (!res.ok) throw new Error(`youtube download failed: ${res.status}`);
-      const data = await res.json();
+      if (!_res.ok) throw new Error(`youtube download failed: ${_res.status}`);
+      const data = await _res.json();
       setCache(cacheKey, data, "youtube");
       return data;
     }, "youtubeDownload");
-  }).catch((err) => {
-    console.warn("youtubeDownload error", err);
-    return { success: false, error: String(err) };
+  }).catch((_err) => {
+    console.warn("youtubeDownload _error", _err);
+    return { success: false, _error: String(_err) };
   });
 }
 
@@ -265,8 +265,8 @@ export async function youtubeDownload(url: string): Promise<any> {
 // ============================================================================
 
 export async function fetchAllInParallel(): Promise<{
-  media: any[];
-  health: any;
+  media: unknown[];
+  health: unknown;
 }> {
   console.debug("[Parallel] Fetching all resources in parallel...");
   const [media, health] = await Promise.allSettled([
@@ -286,14 +286,14 @@ export async function checkHealth(): Promise<{
   timestamp: string;
 }> {
   try {
-    const res = await fetch(getEndpoint("health"), {
+    const _res = await fetch(getEndpoint("health"), {
       signal: AbortSignal.timeout(5000),
     });
-    if (res.ok) {
+    if (_res.ok) {
       return { status: "healthy", timestamp: new Date().toISOString() };
     }
-  } catch (err) {
-    console.warn("Health check failed", err);
+  } catch (_err) {
+    console.warn("Health check failed", _err);
   }
   return { status: "degraded", timestamp: new Date().toISOString() };
 }

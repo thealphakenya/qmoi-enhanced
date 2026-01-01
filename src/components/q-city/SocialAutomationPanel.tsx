@@ -19,14 +19,14 @@ const SocialAutomationPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchContacts = async () => {
-    const res = await fetch("/api/social-automation/contacts");
-    const data = await res.json();
+    const _res = await fetch("/api/social-automation/contacts");
+    const data = await _res.json();
     setContacts(data.contacts || []);
   };
 
   const fetchFeatures = async () => {
-    const res = await fetch("/api/social-automation/features");
-    const data = await res.json();
+    const _res = await fetch("/api/social-automation/features");
+    const data = await _res.json();
     setFeatures(data.features || []);
   };
 
@@ -36,22 +36,22 @@ const SocialAutomationPanel: React.FC = () => {
   }, []);
 
   const postStatus = async () => {
-    const res = await fetch("/api/social-automation/post", {
+    const _res = await fetch("/api/social-automation/post", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ content, platform }),
     });
-    const data = await res.json();
+    const data = await _res.json();
     setStatus(data.success ? "Posted!" : "Post failed");
   };
 
   const tagContact = async (id: number) => {
-    const res = await fetch("/api/social-automation/tag", {
+    const _res = await fetch("/api/social-automation/tag", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, tag }),
     });
-    const data = await res.json();
+    const data = await _res.json();
     setStatus(data.success ? "Tagged!" : "Tag failed");
     fetchContacts();
   };
@@ -66,13 +66,13 @@ const SocialAutomationPanel: React.FC = () => {
           <Input
             placeholder="Status/News Content"
             value={content}
-            onChange={(e) => setContent(e.target.value)}
+            onChange={(_e) => setContent(_e.target.value)}
             className="mb-2"
           />
           <Input
             placeholder="Platform (WhatsApp, Telegram, etc.)"
             value={platform}
-            onChange={(e) => setPlatform(e.target.value)}
+            onChange={(_e) => setPlatform(_e.target.value)}
             className="mb-2"
           />
           <Button onClick={postStatus}>Post Status/News</Button>
@@ -98,7 +98,7 @@ const SocialAutomationPanel: React.FC = () => {
                     <Input
                       placeholder="Tag"
                       value={tag}
-                      onChange={(e) => setTag(e.target.value)}
+                      onChange={(_e) => setTag(_e.target.value)}
                       className="inline-block w-24 mr-2"
                     />
                     <Button size="sm" onClick={() => tagContact(c.id)}>

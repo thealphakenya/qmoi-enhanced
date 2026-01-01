@@ -4,7 +4,7 @@ import { useAuth } from "../../hooks/useAuth";
 interface ZeroRatedStatus {
   active: boolean;
   lastUsed: string;
-  logs: Array<{ time: string; event: string }>;
+  logs: Array<{ time: string; _event: string }>;
 }
 
 const fetchZeroRatedStatus = async (): Promise<ZeroRatedStatus> => {
@@ -13,10 +13,10 @@ const fetchZeroRatedStatus = async (): Promise<ZeroRatedStatus> => {
     active: true,
     lastUsed: new Date().toLocaleString(),
     logs: [
-      { time: new Date().toLocaleString(), event: "Zero-rated mode activated" },
+      { time: new Date().toLocaleString(), _event: "Zero-rated mode activated" },
       {
         time: new Date().toLocaleString(),
-        event: "Fallback to Wikipedia proxy",
+        _event: "Fallback to Wikipedia proxy",
       },
     ],
   };
@@ -64,7 +64,7 @@ export default function ZeroRatedPanel() {
           <ul>
             {status.logs.map((log, i) => (
               <li key={i}>
-                {log.time}: {log.event}
+                {log.time}: {log._event}
               </li>
             ))}
           </ul>

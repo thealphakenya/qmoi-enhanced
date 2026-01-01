@@ -273,7 +273,7 @@ export class VPNService {
     }
   }
 
-  private async generateVPNConfig(config: any): Promise<any> {
+  private async generateVPNConfig(config: unknown): Promise<any> {
     // Generate OpenVPN/WireGuard configuration
     const vpnConfig = {
       name: config.name,
@@ -298,7 +298,7 @@ export class VPNService {
     return vpnConfig;
   }
 
-  private async deployServers(serverIds: string[], config: any): Promise<void> {
+  private async deployServers(serverIds: string[], config: unknown): Promise<void> {
     for (const serverId of serverIds) {
       const server = this.servers.get(serverId);
       if (server) {
@@ -315,7 +315,7 @@ export class VPNService {
     logger.info(`Setup encryption: ${encryption}`);
   }
 
-  private async configureNetwork(config: any): Promise<void> {
+  private async configureNetwork(config: unknown): Promise<void> {
     // Simulate network configuration
     await this.sleep(1000);
     logger.info(`Configured network for ${config.name}`);
@@ -575,12 +575,12 @@ export class VPNService {
   }
 
   // Event listeners
-  public onNetworkCreationStarted(callback: (config: any) => void): void {
+  public onNetworkCreationStarted(callback: (config: unknown) => void): void {
     this.eventEmitter.on("networkCreationStarted", callback);
   }
 
   public onNetworkCreated(
-    callback: (data: { networkId: string; config: any }) => void,
+    callback: (data: { networkId: string; config: unknown }) => void,
   ): void {
     this.eventEmitter.on("networkCreated", callback);
   }

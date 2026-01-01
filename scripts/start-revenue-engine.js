@@ -36,13 +36,13 @@ class RevenueEngineStarter {
 
       if (!configValidation.success) {
         this.log(
-          `❌ Configuration validation failed: ${configValidation.error}`,
+          `❌ Configuration validation failed: ${configValidation._error}`,
         );
         this.log("🔧 Running auto-configuration...");
 
         const autoConfig = await qmoiAutoConfig.autoConfigureMpesa();
         if (!autoConfig.success) {
-          throw new Error(`Auto-configuration failed: ${autoConfig.error}`);
+          throw new Error(`Auto-configuration failed: ${autoConfig._error}`);
         }
 
         this.log("✅ Auto-configuration completed successfully");
@@ -57,14 +57,14 @@ class RevenueEngineStarter {
       if (mpesaTest.success) {
         this.log("✅ M-Pesa connectivity test passed");
       } else {
-        this.log(`⚠️  M-Pesa connectivity warning: ${mpesaTest.error}`);
+        this.log(`⚠️  M-Pesa connectivity warning: ${mpesaTest._error}`);
       }
 
       const airtelTest = await qmoiAutoConfig.testAirtelConnectivity();
       if (airtelTest.success) {
         this.log("✅ Airtel Money connectivity test passed");
       } else {
-        this.log(`⚠️  Airtel Money connectivity warning: ${airtelTest.error}`);
+        this.log(`⚠️  Airtel Money connectivity warning: ${airtelTest._error}`);
       }
 
       // Step 3: Enable master mode
@@ -117,9 +117,9 @@ class RevenueEngineStarter {
           `Failed to start revenue engine: ${startResult.message}`,
         );
       }
-    } catch (error) {
-      this.log(`❌ Failed to start revenue engine: ${error.message}`);
-      console.error(error);
+    } catch (_error) {
+      this.log(`❌ Failed to start revenue engine: ${_error.message}`);
+      console.error(_error);
       process.exit(1);
     }
   }
@@ -170,8 +170,8 @@ class RevenueEngineStarter {
           this.log("🎉 Combined daily target reached!");
           this.combinedTargetReached = true;
         }
-      } catch (error) {
-        this.log(`⚠️  Monitoring error: ${error.message}`);
+      } catch (_error) {
+        this.log(`⚠️  Monitoring _error: ${_error.message}`);
       }
     }, 30000); // Every 30 seconds
   }
@@ -181,7 +181,7 @@ class RevenueEngineStarter {
 QMOI Enhanced Revenue Engine Starter
 
 Usage:
-  node scripts/start-revenue-engine.js [options]
+  node scripts/start-revenue-engine.js [_options]
 
 Options:
   --help, -h          Show this help message
@@ -231,7 +231,7 @@ async function main() {
     starter.log(
       result.success
         ? "✅ Configuration completed"
-        : `❌ Configuration failed: ${result.error}`,
+        : `❌ Configuration failed: ${result._error}`,
     );
     return;
   }
@@ -242,7 +242,7 @@ async function main() {
     starter.log(
       result.success
         ? "✅ Configuration valid"
-        : `❌ Configuration invalid: ${result.error}`,
+        : `❌ Configuration invalid: ${result._error}`,
     );
     return;
   }
@@ -276,8 +276,8 @@ async function main() {
 
 // Run the main function
 if (require.main === module) {
-  main().catch((error) => {
-    console.error("❌ Fatal error:", error.message);
+  main().catch((_error) => {
+    console.error("❌ Fatal _error:", _error.message);
     process.exit(1);
   });
 }

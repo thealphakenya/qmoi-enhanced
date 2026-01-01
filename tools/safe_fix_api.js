@@ -8,16 +8,16 @@ const root = path.resolve(__dirname, "..");
 const target = path.join(root, "app", "api");
 
 const paramNames = [
-  "req",
-  "res",
-  "request",
-  "response",
-  "params",
-  "query",
-  "options",
-  "error",
-  "err",
-  "event",
+  "_req",
+  "_res",
+  "_request",
+  "_response",
+  "_params",
+  "_query",
+  "_options",
+  "_error",
+  "_err",
+  "_event",
 ];
 
 function walk(dir) {
@@ -40,13 +40,13 @@ function fixFile(file) {
   let src = fs.readFileSync(file, "utf8");
   const original = src;
 
-  // 1) replace parameter declarations like '( req:' or ', req:' with '(_req:'
+  // 1) replace parameter declarations like '( _req:' or ', _req:' with '(_req:'
   for (const name of paramNames) {
     const re = new RegExp("([\\(,s])(" + name + ")(s*[:=,)?])", "g");
     src = src.replace(re, (m, p1, p2, p3) => `${p1}_${p2}${p3}`);
   }
 
-  // 2) replace `: any` with `: unknown`
+  // 2) replace `: unknown` with `: unknown`
   src = src.replace(/:\s*any(\b)/g, ": unknown$1");
 
   if (src !== original) {
@@ -60,8 +60,8 @@ const files = walk(target);
 for (const f of files) {
   try {
     fixFile(f);
-  } catch (e) {
-    console.error("err", f, e.message);
+  } catch (_e) {
+    console.error("_err", f, _e.message);
   }
 }
 console.log("done");

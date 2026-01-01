@@ -53,7 +53,7 @@ export default function DeploymentStatusDashboard({
       setHistory(data.history || []);
       setEnvManagerStatus(data.envManagerStatus || null);
       setHuggingfaceStatus(data.huggingfaceStatus || null);
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError(err.message || "Unknown error");
     } finally {
       setLoading(false);

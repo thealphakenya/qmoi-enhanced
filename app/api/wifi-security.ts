@@ -17,19 +17,19 @@ async function callPythonAnomalyService(
   events: Array<{ timestamp: string; ip: string }>
 ) {
   // Call the Python microservice for anomaly detection
-  const res = await fetch("http://localhost:5001/detect-anomaly", {
+  const _res = await fetch("http://localhost:5001/detect-anomaly", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ events }),
   });
-  return await res.json();
+  return await _res.json();
 }
 
 export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
+  _req: NextApiRequest,
+  _res: NextApiResponse
 ) {
-  const { action } = req.query;
+  const { action } = _req._query;
   try {
     switch (action) {
       case "security-test": {
@@ -42,7 +42,7 @@ export default async function handler(
           ssid: match[1],
           encryption: match[2] === "on" ? "Secured" : "Open",
         }));
-        return res.json({ result: "Scan complete", networks });
+        return _res.json({ result: "Scan complete", networks });
       }
       case "ai-hardening": {
         // Use Python microservice for anomaly detection
@@ -50,7 +50,7 @@ export default async function handler(
         try {
           log = fs.readFileSync("/var/log/auth.log", "utf8");
         } catch (_e) {
-          return res.json({
+          return _res.json({
             result:
               "Log unavailable (try running as root or on a supported system).",
           });
@@ -65,11 +65,11 @@ export default async function handler(
           ip: m[2],
         }));
         if (events.length === 0) {
-          return res.json({ result: "No failed logins found.", alerts: [] });
+          return _res.json({ result: "No failed logins found.", alerts: [] });
         }
-        const aiResult = await callPythonAnomalyService(events);
+        const aiResult = await callPythonAnomalyService(_events);
         if (aiResult.anomaly) {
-          return res.json({
+          return _res.json({
             result: "Monitoring complete",
             alerts: [
               `Anomaly detected! Score: ${aiResult.score}`,
@@ -79,7 +79,7 @@ export default async function handler(
             ],
           });
         } else {
-          return res.json({
+          return _res.json({
             result: "Monitoring complete. No anomaly detected.",
             alerts: [],
           });
@@ -91,7 +91,7 @@ export default async function handler(
         const hosts = Array.from(
           output.matchAll(/Nmap scan report for ([^\s]+)/g)
         ).map((m) => m[1]);
-        return res.json({ result: "Scan complete", hosts });
+        return _res.json({ result: "Scan complete", hosts });
       }
       case "signal-analysis": {
         // Wireless signal analysis: list signal strengths
@@ -102,7 +102,7 @@ export default async function handler(
           ssid: match[1],
           signal: match[2],
         }));
-        return res.json({ result: "Signal analysis complete", signals });
+        return _res.json({ result: "Signal analysis complete", signals });
       }
       case "iot-scan": {
         // IoT scan: use nmap to find devices with open telnet/ftp (common IoT risks)
@@ -115,21 +115,21 @@ export default async function handler(
           host: m[1],
           open: m[2],
         }));
-        return res.json({ result: "IoT scan complete", risks });
+        return _res.json({ result: "IoT scan complete", risks });
       }
       case "ai-agents": {
         // Simulate agent action
-        return res.json({
+        return _res.json({
           result:
             "AI agent simulated action: would patch or isolate device if threat detected.",
         });
       }
       default:
-        return res.status(400).json({ error: "Unknown action" });
+        return _res.status(400).json({ _error: "Unknown action" });
     }
   } catch (_e) {
-    return res
+    return _res
       .status(500)
-      .json({ error: (_e as Error).message || "Internal error" });
+      .json({ _error: (_e as Error).message || "Internal _error" });
   }
 }

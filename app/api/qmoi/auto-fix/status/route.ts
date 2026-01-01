@@ -7,14 +7,14 @@ import { promises as fs } from "fs";
 import path from "path";
 import libProposals from "../../../../../lib/proposals";
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     // API key gating (read endpoints still respect API key when configured)
-    const auth = libProposals.requireApiKey(request.headers);
+    const auth = libProposals.requireApiKey(_request.headers);
     if (!auth.ok) {
-      const r = auth.response;
+      const r = auth._response;
       if (!r)
-        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
     const logsDir = path.join(process.cwd(), "logs");
@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
 
     let report = {
       timestamp: new Date().toISOString(),
-      status: "unknown" as "running" | "completed" | "error" | "unknown",
+      status: "unknown" as "running" | "completed" | "_error" | "unknown",
       summary: {
         md_files_processed: 0,
         claims_verified: 0,
@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
     try {
       const reportData = await fs.readFile(latestReportPath, "utf-8");
       report = JSON.parse(reportData);
-    } catch (error) {
+    } catch (_error) {
       console.log("No latest report found, using default");
     }
 
@@ -67,8 +67,8 @@ export async function GET(request: NextRequest) {
           }
         }
       }
-    } catch (error) {
-      console.log("Error checking running processes:", error);
+    } catch (_error) {
+      console.log("Error checking running process_es:", _error);
     }
 
     // Check deployment status
@@ -99,10 +99,10 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json(report);
-  } catch (error) {
-    console.error("Error getting auto-fix status:", error);
+  } catch (_error) {
+    console.error("Error getting auto-fix status:", _error);
     return NextResponse.json(
-      { error: "Failed to get auto-fix status" },
+      { _error: "Failed to get auto-fix status" },
       { status: 500 },
     );
   }

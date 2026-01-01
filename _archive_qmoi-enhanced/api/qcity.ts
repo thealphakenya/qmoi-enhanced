@@ -6,7 +6,7 @@ import fs from "fs";
 import path from "path";
 
 // Fix node-fetch import for both CommonJS and ESM
-let fetchInstance: (input: any, init?: any) => Promise<any>;
+let fetchInstance: (input: unknown, init?: unknown) => Promise<any>;
 (async () => {
   try {
     fetchInstance = (await import("node-fetch")).default;
@@ -49,7 +49,7 @@ const qcity = new QCityManagerImpl();
 const docker = new Docker();
 
 const AUDIT_LOG = path.resolve(process.cwd(), "logs/qcity_audit.log");
-function logAudit(entry: any) {
+function logAudit(entry: unknown) {
   fs.appendFileSync(AUDIT_LOG, JSON.stringify(entry) + "\n");
 }
 const notificationService = new NotificationService();
@@ -60,13 +60,13 @@ const GITPOD_API_TOKEN = process.env.GITPOD_API_TOKEN;
 async function gitpodRequest(
   endpoint: string,
   method = "GET",
-  body: any = null,
+  body: unknown = null,
 ) {
   const headers = {
     Authorization: `Bearer ${GITPOD_API_TOKEN}`,
     "Content-Type": "application/json",
   };
-  const options: any = {
+  const options: unknown = {
     method,
     headers,
     body: body ? JSON.stringify(body) : undefined,
@@ -239,7 +239,7 @@ export async function listWorkspaces(req: Request, res: Response) {
       status: "success",
     });
     res.json({ workspaces: data.workspaces });
-  } catch (error: any) {
+  } catch (error: unknown) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "list_gitpod_workspaces",
@@ -271,7 +271,7 @@ export async function startWorkspace(req: Request, res: Response) {
       `Gitpod workspace started: ${contextUrl}`,
     );
     res.json({ workspace: data });
-  } catch (error: any) {
+  } catch (error: unknown) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "start_gitpod_workspace",
@@ -448,7 +448,7 @@ export async function listLocalWorkspaces(req: Request, res: Response) {
         image: c.Image,
       })),
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "list_local_workspaces",
@@ -489,7 +489,7 @@ export async function startLocalWorkspace(req: Request, res: Response) {
       `Local workspace started: ${name}`,
     );
     res.json({ id: container.id, name });
-  } catch (error: any) {
+  } catch (error: unknown) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "start_local_workspace",
@@ -524,7 +524,7 @@ export async function stopLocalWorkspace(req: Request, res: Response) {
       `Local workspace stopped: ${id}`,
     );
     res.json({ success: true });
-  } catch (error: any) {
+  } catch (error: unknown) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "stop_local_workspace",

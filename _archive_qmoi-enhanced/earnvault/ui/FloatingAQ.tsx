@@ -411,7 +411,7 @@ export const FloatingAQ: React.FC = () => {
       else if (data.image)
         setImageUrl(data.image); // fallback
       else setImageError("No image returned.");
-    } catch (err: any) {
+    } catch (err: unknown) {
       setImageError("Failed to generate image. (Simulated)");
       // Simulate a placeholder image for demo
       setImageUrl("/placeholder.jpg");
@@ -1158,7 +1158,7 @@ export const FloatingAQ: React.FC = () => {
                             ? Array.isArray(walletBalance)
                               ? walletBalance
                                   .map(
-                                    (b: any) =>
+                                    (b: unknown) =>
                                       `${b.coin}: $${b.available || b.balance || 0}`,
                                   )
                                   .join(", ")
@@ -2317,7 +2317,7 @@ export const FloatingAQ: React.FC = () => {
 };
 
 // Wrap FloatingAQ in AIProvider for persistent context
-export default function FloatingAQWithProvider(props: any) {
+export default function FloatingAQWithProvider(props: unknown) {
   return (
     <AIProvider>
       <FloatingAQ {...props} />

@@ -19,15 +19,15 @@ test("QMOI dashboard loads and shows health", async ({ page }) => {
     });
   }
 
-  // Test navigation (e.g., to settings or help)
+  // Test navigation (_e.g., to settings or help)
   const navLink = page.locator('a:has-text("Settings")');
   if ((await navLink.count()) > 0) {
     await navLink.first().click();
     await expect(page.locator("text=Settings")).toBeVisible();
   }
 
-  // Test error message display (simulate error if possible)
-  // NOTE: Production adaptation required - customize this test to match your UI's error triggers
+  // Test _error message display (simulate _error if possible)
+  // NOTE: Production adaptation required - customize this test to match your UI's _error triggers
   // await page.click('button:has-text("Trigger Error")');
   // await expect(page.locator('text=Error')).toBeVisible();
 });

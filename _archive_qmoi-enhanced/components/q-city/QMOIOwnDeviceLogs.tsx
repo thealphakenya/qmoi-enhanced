@@ -55,7 +55,7 @@ interface DeviceOwnershipLog {
   timestamp: string;
   action: string;
   device_id: string;
-  device_info: any;
+  device_info: unknown;
   restriction_type?: string;
   organization?: string;
   severity?: string;
@@ -66,7 +66,7 @@ interface DeviceOwnershipLog {
   session_id: string;
   ip_address: string;
   user_agent: string;
-  additional_data: any;
+  additional_data: unknown;
 }
 
 interface UnlockLog {
@@ -79,7 +79,7 @@ interface UnlockLog {
   duration_ms: number;
   error_details?: string;
   bypass_techniques: string[];
-  verification_results: any;
+  verification_results: unknown;
 }
 
 interface MasterLog {
@@ -89,7 +89,7 @@ interface MasterLog {
   action: string;
   target_device?: string;
   success: boolean;
-  details: any;
+  details: unknown;
   session_id: string;
 }
 
@@ -116,7 +116,7 @@ interface Statistics {
 
 interface QMOIOwnDeviceLogsProps {
   isMaster: boolean;
-  onExport?: (data: any, type: string) => void;
+  onExport?: (data: unknown, type: string) => void;
 }
 
 export function QMOIOwnDeviceLogs({

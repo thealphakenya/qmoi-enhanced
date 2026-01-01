@@ -125,7 +125,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
   const [deviceSearch, setDeviceSearch] = useState("");
   const [deviceGroup, setDeviceGroup] = useState("all");
 
-  const [analytics, setAnalytics] = useState<{ events: any[] }>({ events: [] });
+  const [analytics, setAnalytics] = useState<{ events: unknown[] }>({ events: [] });
   const [auditLog, setAuditLog] = useState<string[]>([]);
 
   const [awsModalOpen, setAwsModalOpen] = useState(false);
@@ -233,7 +233,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
     // Schedule Optimization Suggestion Plugin every minute
     const optPlugin = pluginManager
       .getPlugins()
-      .find((p: any) => p.id === "optimization-suggestion");
+      .find((p: unknown) => p.id === "optimization-suggestion");
     if (optPlugin) {
       pluginManager.schedule(optPlugin, 60000);
       notify("Optimization Suggestion Plugin scheduled every 1 min", "info");
@@ -275,7 +275,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
     }
   };
 
-  const logEvent = (event: any) => {
+  const logEvent = (event: unknown) => {
     setAnalytics((a) => ({ events: [...a.events, event] }));
     setAuditLog((l) => [
       ...l,
@@ -854,7 +854,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
                         {pluginManager
                           .getPlugins()
                           .filter(
-                            (plugin: any) =>
+                            (plugin: unknown) =>
                               plugin.name
                                 .toLowerCase()
                                 .includes(pluginSearch.toLowerCase()) ||
@@ -862,14 +862,14 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
                                 .toLowerCase()
                                 .includes(pluginSearch.toLowerCase()),
                           )
-                          .filter((plugin: any) =>
+                          .filter((plugin: unknown) =>
                             pluginGroup === "all"
                               ? true
                               : pluginGroup === "active"
                                 ? pluginManager.getPluginStatus(plugin.id)
                                 : !pluginManager.getPluginStatus(plugin.id),
                           )
-                          .map((plugin: any) => (
+                          .map((plugin: unknown) => (
                             <li key={plugin.id} className="mb-2">
                               <strong>{plugin.name}</strong>:{" "}
                               {plugin.description}

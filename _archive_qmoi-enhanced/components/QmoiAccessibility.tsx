@@ -125,13 +125,13 @@ export const QmoiAccessibility: React.FC = () => {
       recognition.current.interimResults = false;
       recognition.current.lang = "en-US";
 
-      recognition.current.onresult = (event: any) => {
+      recognition.current.onresult = (event: unknown) => {
         const command =
           event.results[event.results.length - 1][0].transcript.toLowerCase();
         processVoiceCommand(command);
       };
 
-      recognition.current.onerror = (event: any) => {
+      recognition.current.onerror = (event: unknown) => {
         console.error("Speech recognition error:", event.error);
         speak("Voice recognition error. Please try again.");
       };

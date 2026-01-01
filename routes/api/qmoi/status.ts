@@ -32,7 +32,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       : null);
   const broken =
     (report?.apps || []).filter(
-      (a: any) => a.status && a.status.toLowerCase() !== "ok",
+      (a: unknown) => a.status && a.status.toLowerCase() !== "ok",
     ).length || 0;
   const total = (manifest?.assets || []).length || report?.total_apps || 0 || 0;
 

@@ -3,7 +3,7 @@
 import { NextRequest } from "next/server";
 import { QCityService } from "@/scripts/services/qcity_service";
 
-export async function GET(req: NextRequest) {
+export async function GET(_req: NextRequest) {
   const qcityService = new QCityService();
   await qcityService.initialize();
   const status = qcityService.getStatus();

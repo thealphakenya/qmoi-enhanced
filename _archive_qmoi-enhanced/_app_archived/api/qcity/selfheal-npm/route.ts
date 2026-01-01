@@ -19,7 +19,7 @@ function verifyJWT(token: string): { valid: boolean; role?: string } {
   }
 }
 
-function logAudit(action: string, user: string, options: any, status: string) {
+function logAudit(action: string, user: string, options: unknown, status: string) {
   const entry = {
     timestamp: new Date().toISOString(),
     action,
@@ -33,9 +33,9 @@ function logAudit(action: string, user: string, options: any, status: string) {
 function logDownloadFix(
   action: string,
   user: string,
-  options: any,
+  options: unknown,
   status: string,
-  error: any = null,
+  error: unknown = null,
 ) {
   const entry = {
     timestamp: new Date().toISOString(),

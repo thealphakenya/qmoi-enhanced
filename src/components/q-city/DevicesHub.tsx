@@ -38,7 +38,7 @@ const mockWhatsAppService = {
   requestApproval: async () => true,
 };
 
-const deviceService = new DeviceTrackingService(mockWhatsAppService as any);
+const deviceService = new DeviceTrackingService(mockWhatsAppService as unknown);
 
 export const DevicesHub: React.FC = () => {
   const [devices, setDevices] = useState<Device[]>([]);

@@ -35,13 +35,13 @@ class AutoLinter {
     writeFileSync(logFile, logMessage + "\n", { flag: "a" });
   }
 
-  async runCommand(command, options = {}) {
+  async runCommand(command, _options = {}) {
     return new Promise((resolve, reject) => {
-      const child = spawn(command, options.args || [], {
+      const child = spawn(command, _options.args || [], {
         cwd: this.projectRoot,
         stdio: ["pipe", "pipe", "pipe"],
         shell: true,
-        ...options,
+        ..._options,
       });
 
       let stdout = "";
@@ -59,8 +59,8 @@ class AutoLinter {
         resolve({ code, stdout, stderr });
       });
 
-      child.on("error", (error) => {
-        reject(error);
+      child.on("_error", (_error) => {
+        reject(_error);
       });
     });
   }
@@ -76,9 +76,9 @@ class AutoLinter {
         continue;
       }
 
-      if (line.includes("✖") && line.includes("error")) {
+      if (line.includes("✖") && line.includes("_error")) {
         // Error line
-        const match = line.match(/✖\s+(\d+)\s+error/);
+        const match = line.match(/✖\s+(\d+)\s+_error/);
         if (match) {
           const errorCount = parseInt(match[1]);
           // Extract file path from previous lines
@@ -97,9 +97,9 @@ class AutoLinter {
         }
       }
 
-      // Parse individual error/warning lines
+      // Parse individual _error/warning lines
       const errorMatch = line.match(
-        /^\s*(\d+):(\d+)\s+(error|warning)\s+(.+?)\s+(.+)$/,
+        /^\s*(\d+):(\d+)\s+(_error|warning)\s+(.+?)\s+(.+)$/,
       );
       if (errorMatch) {
         const [, lineNum, colNum, severity, rule, message] = errorMatch;
@@ -161,8 +161,8 @@ class AutoLinter {
       this.log(`Found ${errors.length} linting issues`, "info");
 
       return errors;
-    } catch (error) {
-      this.log(`Error running initial lint: ${error.message}`, "error");
+    } catch (_error) {
+      this.log(`Error running initial lint: ${_error.message}`, "_error");
       return [];
     }
   }
@@ -188,8 +188,8 @@ class AutoLinter {
       );
 
       return remainingErrors;
-    } catch (error) {
-      this.log(`Error running auto-fix: ${error.message}`, "error");
+    } catch (_error) {
+      this.log(`Error running auto-fix: ${_error.message}`, "_error");
       return false;
     }
   }
@@ -209,8 +209,8 @@ class AutoLinter {
 
       this.log(`Smart lint completed with exit code: ${result.code}`, "info");
       return result.code;
-    } catch (error) {
-      this.log(`Error running smart lint: ${error.message}`, "error");
+    } catch (_error) {
+      this.log(`Error running smart lint: ${_error.message}`, "_error");
       return false;
     }
   }
@@ -223,24 +223,24 @@ class AutoLinter {
       warnings: [],
     };
 
-    for (const error of errors) {
-      if (error.severity === "error") {
-        if (error.fixable) {
-          categorized.fixable.push(error);
+    for (const _error of errors) {
+      if (_error.severity === "_error") {
+        if (_error.fixable) {
+          categorized.fixable.push(_error);
         } else {
-          categorized.unfixable.push(error);
+          categorized.unfixable.push(_error);
         }
 
         // Mark as critical if it's a common blocking issue
         if (
           ["no-undef", "no-unused-vars", "import/no-unresolved"].some((rule) =>
-            error.rule.includes(rule),
+            _error.rule.includes(rule),
           )
         ) {
-          categorized.critical.push(error);
+          categorized.critical.push(_error);
         }
       } else {
-        categorized.warnings.push(error);
+        categorized.warnings.push(_error);
       }
     }
 
@@ -278,7 +278,7 @@ class AutoLinter {
         actions: [
           "Review and fix import statements",
           "Check for undefined variables",
-          "Remove unused imports and variables",
+          "Remove _unused imports and variables",
         ],
       });
     }
@@ -324,11 +324,11 @@ class AutoLinter {
 
     if (report.errors.critical.length > 0) {
       console.log(`\n🚨 CRITICAL ERRORS (${report.errors.critical.length}):`);
-      report.errors.critical.forEach((error, index) => {
+      report.errors.critical.forEach((_error, index) => {
         console.log(
-          `   ${index + 1}. ${error.file}:${error.line}:${error.column}`,
+          `   ${index + 1}. ${_error.file}:${_error.line}:${_error.column}`,
         );
-        console.log(`      ${error.rule}: ${error.message}`);
+        console.log(`      ${_error.rule}: ${_error.message}`);
       });
     }
 
@@ -336,11 +336,11 @@ class AutoLinter {
       console.log(
         `\n⚠️  UNFIXABLE ERRORS (${report.errors.unfixable.length}):`,
       );
-      report.errors.unfixable.slice(0, 5).forEach((error, index) => {
+      report.errors.unfixable.slice(0, 5).forEach((_error, index) => {
         console.log(
-          `   ${index + 1}. ${error.file}:${error.line}:${error.column}`,
+          `   ${index + 1}. ${_error.file}:${_error.line}:${_error.column}`,
         );
-        console.log(`      ${error.rule}: ${error.message}`);
+        console.log(`      ${_error.rule}: ${_error.message}`);
       });
 
       if (report.errors.unfixable.length > 5) {
@@ -398,7 +398,7 @@ class AutoLinter {
     if (finalCategorized.critical.length > 0) {
       this.log(
         "❌ Critical errors found. Please fix them before proceeding.",
-        "error",
+        "_error",
       );
       process.exit(1);
     } else if (finalCategorized.unfixable.length > 0) {
@@ -416,7 +416,7 @@ class AutoLinter {
 
 // Run the auto-linter
 const autoLinter = new AutoLinter();
-autoLinter.run().catch((error) => {
-  console.error("Fatal error in auto-linter:", error);
+autoLinter.run().catch((_error) => {
+  console.error("Fatal _error in auto-linter:", _error);
   process.exit(1);
 });

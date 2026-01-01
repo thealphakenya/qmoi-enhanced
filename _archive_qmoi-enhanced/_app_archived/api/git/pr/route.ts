@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
       { error: "Failed to create pull request", details: error.message },
       { status: 500 },

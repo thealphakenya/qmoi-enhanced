@@ -11,7 +11,7 @@ interface AITask {
     | "project-init"
     | "training"
     | "inference";
-  status: "pending" | "processing" | "completed" | "error";
+  status: "pending" | "processing" | "completed" | "_error";
   timestamp: string;
   duration?: number;
   user?: string;
@@ -20,14 +20,14 @@ interface AITask {
   files?: string[];
 }
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
-    const searchParams = request.nextUrl.searchParams;
+    const searchParams = _request.nextUrl.searchParams;
     const allStats = searchParams.get("allStats");
     const mediaStatus = searchParams.get("mediaStatus");
     const datasets = searchParams.get("datasets");
 
-    // Always ignore any client-supplied 'model' query param and enforce canonical model
+    // Always ignore any client-supplied 'model' _query param and enforce canonical model
     if (searchParams.has("model")) {
       console.warn(
         "Client attempted to override 'model' param; ignoring and using 'qmoi' aggregator."
@@ -64,7 +64,7 @@ export async function GET(request: NextRequest) {
         },
       ];
 
-      // Include canonical model name in the response
+      // Include canonical model name in the _response
       return NextResponse.json({ model: "qmoi", tasks: aiTasks });
     }
 
@@ -96,21 +96,21 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: "Invalid query parameter" },
+      { _error: "Invalid _query parameter" },
       { status: 400 }
     );
-  } catch (error) {
-    console.error("Error in QMOI model endpoint:", error);
+  } catch (_error) {
+    console.error("Error in QMOI model endpoint:", _error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 }
     );
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
-    const body = await request.json();
+    const body = await _request.json();
     const { enhance, desc } = body;
 
     if (enhance) {
@@ -138,13 +138,13 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: "Invalid action specified" },
+      { _error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (error) {
-    console.error("Error in QMOI model enhancement endpoint:", error);
+  } catch (_error) {
+    console.error("Error in QMOI model enhancement endpoint:", _error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 }
     );
   }

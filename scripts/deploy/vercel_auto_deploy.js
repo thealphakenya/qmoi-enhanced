@@ -87,8 +87,8 @@ function injectStaticExportFallback() {
   try {
     execSync("npx next export", { stdio: "inherit" });
     log("Static export completed.");
-  } catch (e) {
-    log("Static export failed: " + e.message);
+  } catch (_e) {
+    log("Static export failed: " + _e.message);
   }
 }
 
@@ -100,18 +100,18 @@ function injectDockerFallback() {
       stdio: "inherit",
     });
     log("Docker deployment completed.");
-  } catch (e) {
-    log("Docker deployment failed: " + e.message);
+  } catch (_e) {
+    log("Docker deployment failed: " + _e.message);
   }
 }
 
 async function autoFixErrors(errorMsg) {
-  log("Attempting AI-driven error fix...");
+  log("Attempting AI-driven _error fix...");
   try {
-    // Simplified error fixing - in a real implementation, this would call the ErrorFixingService
+    // Simplified _error fixing - in a real implementation, this would call the ErrorFixingService
     log("Auto-fix completed.");
-  } catch (e) {
-    log("Auto-fix failed: " + e.message);
+  } catch (_e) {
+    log("Auto-fix failed: " + _e.message);
   }
 }
 
@@ -122,7 +122,7 @@ function autoCommitAndPush() {
       execSync("git reset .env");
     } catch {}
     execSync("git add .");
-    execSync('git commit -m "Auto-fix: deploy error"');
+    execSync('git commit -m "Auto-fix: deploy _error"');
     let pushed = false;
     let attempts = 0;
     while (!pushed && attempts < 3) {
@@ -143,7 +143,7 @@ function autoCommitAndPush() {
     if (pushed) {
       log("Auto-committed and pushed fixes.");
     }
-  } catch (e) {
+  } catch (_e) {
     log("No changes to commit or push.");
   }
 }
@@ -155,7 +155,7 @@ async function deployToVercel() {
     // Ensure Vercel CLI is installed
     try {
       execSync("npx vercel --version", { stdio: "pipe" });
-    } catch (e) {
+    } catch (_e) {
       log("Installing Vercel CLI...");
       execSync("npm install -g vercel@latest", { stdio: "inherit" });
     }
@@ -164,19 +164,19 @@ async function deployToVercel() {
     try {
       execSync("npx vercel --clear-cache", { stdio: "pipe" });
       log("Vercel cache cleared.");
-    } catch (e) {
+    } catch (_e) {
       log("Cache clear failed, continuing...");
     }
 
-    // Deploy with enhanced options
+    // Deploy with enhanced _options
     const deployCommand = "npx vercel --prod --yes --force";
     log(`Executing: ${deployCommand}`);
     execSync(deployCommand, { stdio: "inherit" });
 
     log("Vercel deployment successful!");
     return true;
-  } catch (e) {
-    log(`Vercel deployment failed: ${e.message}`);
+  } catch (_e) {
+    log(`Vercel deployment failed: ${_e.message}`);
     return false;
   }
 }
@@ -190,8 +190,8 @@ async function deployToHeroku() {
     );
     log("Heroku deployment successful!");
     return true;
-  } catch (e) {
-    log(`Heroku deployment failed: ${e.message}`);
+  } catch (_e) {
+    log(`Heroku deployment failed: ${_e.message}`);
     return false;
   }
 }
@@ -205,8 +205,8 @@ function deployToAzure() {
     );
     log("Azure deployment successful!");
     return true;
-  } catch (e) {
-    log(`Azure deployment failed: ${e.message}`);
+  } catch (_e) {
+    log(`Azure deployment failed: ${_e.message}`);
     return false;
   }
 }
@@ -217,8 +217,8 @@ function deployToGCP() {
     execSync("gcloud app deploy --quiet", { stdio: "inherit" });
     log("GCP deployment successful!");
     return true;
-  } catch (e) {
-    log(`GCP deployment failed: ${e.message}`);
+  } catch (_e) {
+    log(`GCP deployment failed: ${_e.message}`);
     return false;
   }
 }
@@ -236,18 +236,18 @@ async function notifyByEmail(msg) {
 async function monitorHealth(url) {
   try {
     const { default: axios } = await import("axios");
-    const res = await axios.get(url, { timeout: 10000 });
-    if (res.status === 200) {
+    const _res = await axios.get(url, { timeout: 10000 });
+    if (_res.status === 200) {
       log("Health check passed.");
       return true;
     } else {
-      log("Health check failed: " + res.status);
-      await notifyMaster("Health check failed: " + res.status);
+      log("Health check failed: " + _res.status);
+      await notifyMaster("Health check failed: " + _res.status);
       return false;
     }
-  } catch (e) {
-    log("Health check error: " + e.message);
-    await notifyMaster("Health check error: " + e.message);
+  } catch (_e) {
+    log("Health check _error: " + _e.message);
+    await notifyMaster("Health check _error: " + _e.message);
     return false;
   }
 }
@@ -257,16 +257,16 @@ async function pingUptimeMonitor() {
   if (!url) return;
   try {
     const { default: axios } = await import("axios");
-    const res = await axios.get(url, { timeout: 10000 });
-    if (res.status === 200) {
+    const _res = await axios.get(url, { timeout: 10000 });
+    if (_res.status === 200) {
       log("Uptime monitor check passed.");
     } else {
-      log("Uptime monitor check failed: " + res.status);
-      await notifyMaster("Uptime monitor check failed: " + res.status);
+      log("Uptime monitor check failed: " + _res.status);
+      await notifyMaster("Uptime monitor check failed: " + _res.status);
     }
-  } catch (e) {
-    log("Uptime monitor error: " + e.message);
-    await notifyMaster("Uptime monitor error: " + e.message);
+  } catch (_e) {
+    log("Uptime monitor _error: " + _e.message);
+    await notifyMaster("Uptime monitor _error: " + _e.message);
   }
 }
 
@@ -277,8 +277,8 @@ async function notifySlack(message) {
     const { default: axios } = await import("axios");
     await axios.post(url, { text: message }, { timeout: 10000 });
     log("Slack notification sent.");
-  } catch (e) {
-    log("Slack notification failed: " + e.message);
+  } catch (_e) {
+    log("Slack notification failed: " + _e.message);
   }
 }
 
@@ -289,8 +289,8 @@ async function notifyDiscord(message) {
     const { default: axios } = await import("axios");
     await axios.post(url, { content: message }, { timeout: 10000 });
     log("Discord notification sent.");
-  } catch (e) {
-    log("Discord notification failed: " + e.message);
+  } catch (_e) {
+    log("Discord notification failed: " + _e.message);
   }
 }
 
@@ -308,8 +308,8 @@ async function notifySMS(message) {
       to: TWILIO_TO,
     });
     log("SMS notification sent.");
-  } catch (e) {
-    log("SMS notification failed: " + e.message);
+  } catch (_e) {
+    log("SMS notification failed: " + _e.message);
   }
 }
 
@@ -329,12 +329,12 @@ async function autoRollback() {
     await notifySMS("Auto-rollback performed. Redeploying previous version.");
     // Try redeploy (Vercel as example, extend for others as needed)
     await deployToVercel();
-  } catch (e) {
-    log("Auto-rollback failed: " + e.message);
-    await notifyMaster("Auto-rollback failed: " + e.message);
-    await notifySlack("Auto-rollback failed: " + e.message);
-    await notifyDiscord("Auto-rollback failed: " + e.message);
-    await notifySMS("Auto-rollback failed: " + e.message);
+  } catch (_e) {
+    log("Auto-rollback failed: " + _e.message);
+    await notifyMaster("Auto-rollback failed: " + _e.message);
+    await notifySlack("Auto-rollback failed: " + _e.message);
+    await notifyDiscord("Auto-rollback failed: " + _e.message);
+    await notifySMS("Auto-rollback failed: " + _e.message);
   }
 }
 
@@ -394,7 +394,7 @@ async function main() {
         log("Vercel deployment successful!");
       } else {
         log(`Vercel deployment failed, attempt ${retries + 1}/${MAX_RETRIES}`);
-        await autoFixErrors("Vercel deployment error");
+        await autoFixErrors("Vercel deployment _error");
         autoCommitAndPush();
         retries++;
         if (retries < MAX_RETRIES) {
@@ -412,7 +412,7 @@ async function main() {
         log("Heroku deployment successful!");
       } else {
         log(`Heroku deployment failed, attempt ${retries + 1}/${MAX_RETRIES}`);
-        await autoFixErrors("Heroku deployment error");
+        await autoFixErrors("Heroku deployment _error");
         autoCommitAndPush();
         retries++;
         if (retries < MAX_RETRIES) {
@@ -467,7 +467,7 @@ async function main() {
 }
 
 // Run main function
-main().catch((error) => {
-  log(`Fatal error in main: ${error.message}`);
+main().catch((_error) => {
+  log(`Fatal _error in main: ${_error.message}`);
   process.exit(1);
 });

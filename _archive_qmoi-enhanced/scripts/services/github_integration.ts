@@ -72,7 +72,7 @@ class GitHubIntegrationService {
     };
   }
 
-  private async commitAndPushFixes(fixResults: any) {
+  private async commitAndPushFixes(fixResults: unknown) {
     await execAsync("git add .");
     await execAsync('git commit -m "Auto-fix: Resolved issues automatically"');
     await execAsync("git push origin master");
@@ -80,7 +80,7 @@ class GitHubIntegrationService {
 
   private async sendNotification(
     payload: GitHubWebhookPayload,
-    fixResults: any,
+    fixResults: unknown,
   ) {
     const subject = "Q-city Auto Fix Results";
     const body = `

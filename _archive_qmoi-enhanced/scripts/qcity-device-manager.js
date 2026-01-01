@@ -355,7 +355,7 @@ class QCityDeviceManager {
   }
 
   async getHealth() {
-    // TODO: Return health info (unused, outdated, vulnerable packages)
+    // TODO: Return health info (_unused, outdated, vulnerable packages)
     return { healthy: true, issues: [] };
   }
 

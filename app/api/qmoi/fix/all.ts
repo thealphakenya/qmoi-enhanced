@@ -3,10 +3,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { spawn } from "child_process";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  spawn("node", ["scripts/enhanced-error-fix.js"], {
+export default function handler(_req: NextApiRequest, _res: NextApiRespons_e) {
+  spawn("node", ["scripts/enhanced-_error-fix.js"], {
     detached: true,
     stdio: "ignore",
   });
-  res.status(200).json({ ok: true, message: "All fixes triggered." });
+  _res.status(200).json({ ok: true, message: "All fixes triggered." });
 }

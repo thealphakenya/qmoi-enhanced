@@ -6,18 +6,18 @@ import { promisify } from "util";
 
 const execAsync = promisify(exec);
 
-export async function POST(req: NextRequest) {
+export async function POST(_req: NextRequest) {
   try {
     const {
       title,
       description,
       baseBranch = "main",
       headBranch,
-    } = await req.json();
+    } = await _req.json();
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { error: "Title and head branch are required" },
+        { _error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -38,9 +38,9 @@ export async function POST(req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (error: any) {
+  } catch (_error: unknown) {
     return NextResponse.json(
-      { error: "Failed to create pull request", details: error.message },
+      { _error: "Failed to create pull _request", details: _error.message },
       { status: 500 },
     );
   }

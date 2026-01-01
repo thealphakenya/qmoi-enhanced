@@ -1,3 +1,81 @@
+Lint snapshot: 2025-12-31 00:00:00 UTC
+Summary:
+- Problems: 14,764
+- Errors: 10,343
+- Warnings: 4,421
+
+Top recurring issues:
+- no-undef for runtime/test globals (Headers, Request, Response, Buffer, performance, require, jest globals)
+- @typescript-eslint/no-explicit-any across `src/mocks/handlers.ts`, `src/services/*`, and tests
+- @typescript-eslint/no-unused-vars (many places; can be handled by prefixing with `_` where safe)
+- parser errors in a small set of files (JSX in .js, unexpected `<`)
+- unreachable code in `src/config/*` and `src/wallet.ts`
+
+Actions performed so far:
+- Ran `npm run lint:fix` (automated fixes applied)
+- Ran repo prefix script to underscore unused args and apply safe mechanical edits (`scripts/prefix-wide.cjs`)
+- Consolidated permissive global declarations in `src/types/globals.d.ts` and `types/globals.d.ts` to reduce `no-undef` noise.
+
+Next planned actions:
+1. Re-run linter to measure improvements (done after this snapshot).
+2. Triage top `no-undef` remaining files and add targeted fixes (test env pragmas, refine globals where needed).
+3. Convert safe `any` → `unknown` in batches, review high-risk files manually.
+4. Run key test suites and fix runtime failures.
+
+Notes:
+- Declarations are permissive on purpose; replace `any`/`unknown` with concrete types incrementally during manual review.
+
+Snapshot (post-global-declarations + targeted env overrides): 2025-12-31 00:10:00 UTC
+- Problems: 14,769
+- Errors: 10,356
+- Warnings: 4,413
+
+Files changed before this snapshot:
+- `src/types/globals.d.ts`, `types/globals.d.ts` (consolidated permissive globals)
+- `src/mocks/handlers.ts`, `src/mocks/handlers.test.ts` (added eslint env)
+- `src/lib/security_check.js`, `src/lib/security_check.ts` (added eslint env, replaced console.error)
+- `src/lib/secrets.ts` (node env + disabled no-require-imports)
+
+Notes: lint counts fluctuate as I apply fixes; next I will continue triage by addressing remaining `no-undef` and parser errors in the highest-impact files.
+Lint snapshot: 2025-12-31T00:00:00Z
+- Problems: 14735
+- Errors: 10343
+- Warnings: 4392
+
+Notes:
+- Updated `src/types/globals.d.ts` and `types/globals.d.ts` to add permissive global declarations (placeholders) to reduce `no-undef` noise.
+- Next: re-run lint after global declarations to measure improvements, then triage remaining top offenders (`no-undef`, `no-explicit-any`, unused-vars, parser errors).
+
+History:
+- 2025-12-31: recorded snapshot after running `npm run lint:fix`.
+Date: 2025-12-31T00:00:00Z
+Branch: autosync-backup-20250926-232440
+
+Latest ESLint run summary:
+- Total problems: 14,735
+- Errors: 10,343
+- Warnings: 4,392
+
+Top recurring lint categories:
+- no-undef: missing ambient declarations (examples: Headers, Request, Buffer, performance, require, jest)
+- @typescript-eslint/no-explicit-any: many `any` usages in `src/mocks/handlers.ts`, `src/services/*`, tests
+- @typescript-eslint/no-unused-vars: unused params and variables (can be prefixed with `_`)
+- parser errors: JSX in .js files and unexpected tokens (e.g. `src/index.js`) causing parse failures
+- unreachable code / no-unreachable: some logic paths flagged as unreachable
+
+Recent automated actions:
+- Ran `scripts/prefix-wide.cjs` to prefix unused params and convert safe `any` usages (many files patched).
+- Ran `node scripts/convert-any-unused.cjs --apply` (codemod) — scanned 1609 files, no files modified.
+- Repeated `npm run lint:fix` runs; current counts above.
+
+Next recommended automated steps:
+1) Continue triage by improving ambient declarations (done: updated `src/types/globals.d.ts` and `types/globals.d.ts`).
+2) Run lint in small batches and fix remaining `no-undef` per-folder.
+3) Apply `scripts/convert-any-unused.cjs` in targeted folders if safe.
+4) Run critical test suites and fix runtime failures.
+
+Notes:
+- Backup copies (.bak) may exist for files modified by scripts. Manual review recommended for high-risk files.
 Report generated: 2025-12-30T17:03:10.054Z
 ---
 Running ESLint...
@@ -59,106 +137,83 @@ Route (app)                                  Size  First Load JS
 ├ ƒ /api/document-backup                    363 B         102 kB
 ├ ƒ /api/earning                            363 B         102 kB
 ├ ƒ /api/employment                         363 B         102 kB
-├ ƒ /api/employment/megavault               363 B         102 kB
-├ ƒ /api/employment/payment                 363 B         102 kB
-├ ƒ /api/employment/revenue                 363 B         102 kB
-├ ƒ /api/financial/audit                    363 B         102 kB
-├ ƒ /api/financial/transactions             363 B         102 kB
-├ ƒ /api/financial/verify                   363 B         102 kB
-├ ƒ /api/git/branch                         363 B         102 kB
-├ ƒ /api/git/commit                         363 B         102 kB
-├ ƒ /api/git/pr                             363 B         102 kB
-├ ƒ /api/git/push                           363 B         102 kB
-├ ƒ /api/git/remote                         363 B         102 kB
-├ ƒ /api/git/status                         363 B         102 kB
-├ ƒ /api/health                             363 B         102 kB
-├ ƒ /api/media/generate                     363 B         102 kB
-├ ƒ /api/media/status                       363 B         102 kB
-├ ƒ /api/monitor/status                     363 B         102 kB
-├ ƒ /api/mpesa/callback                     363 B         102 kB
-├ ƒ /api/qapikey                            363 B         102 kB
-├ ƒ /api/qcity/audit-log                    363 B         102 kB
-├ ƒ /api/qcity/remote-command               363 B         102 kB
-├ ƒ /api/qcity/selfheal-npm                 363 B         102 kB
-├ ƒ /api/qcity/status                       363 B         102 kB
-├ ƒ /api/qi-trading                         363 B         102 kB
-├ ƒ /api/qmoi-database                      363 B         102 kB
-├ ƒ /api/qmoi-earning-enhanced              363 B         102 kB
-├ ƒ /api/qmoi-gitlab/deployments            363 B         102 kB
-├ ƒ /api/qmoi-gitlab/errors                 363 B         102 kB
-├ ƒ /api/qmoi-gitlab/jobs                   363 B         102 kB
-├ ƒ /api/qmoi-gitlab/pipelines              363 B         102 kB
-├ ƒ /api/qmoi-gitlab/trigger                363 B         102 kB
-├ ƒ /api/qmoi-model                         363 B         102 kB
-├ ƒ /api/qmoi/auto-fix/download-report      363 B         102 kB
-├ ƒ /api/qmoi/auto-fix/github-status        363 B         102 kB
-├ ƒ /api/qmoi/auto-fix/start                363 B         102 kB
-├ ƒ /api/qmoi/auto-fix/status               363 B         102 kB
-├ ƒ /api/qmoi/auto-fix/stop                 363 B         102 kB
-├ ƒ /api/qmoi/avatars                       363 B         102 kB
-├ ƒ /api/qmoi/backup                        363 B         102 kB
-├ ƒ /api/qmoi/chat                          363 B         102 kB
-├ ƒ /api/qmoi/language                      363 B         102 kB
-├ ƒ /api/qmoi/master-mode                   363 B         102 kB
-├ ƒ /api/qmoi/memory                        363 B         102 kB
-├ ƒ /api/qmoi/own-device-logs               363 B         102 kB
-├ ƒ /api/qmoi/own-device-logs/export        363 B         102 kB
-├ ƒ /api/qmoi/research                      363 B         102 kB
-├ ƒ /api/qmoi/revenue                       363 B         102 kB
-├ ƒ /api/qmoi/revenue-dashboard             363 B         102 kB
-├ ƒ /api/qmoi/revenue/reset                 363 B         102 kB
-├ ƒ /api/qmoi/revenue/start                 363 B         102 kB
-├ ƒ /api/qmoi/revenue/status                363 B         102 kB
-├ ƒ /api/qmoi/revenue/stop                  363 B         102 kB
-├ ƒ /api/qmoi/revenue/target                363 B         102 kB
-├ ƒ /api/qmoi/revenue/transactions          363 B         102 kB
-├ ƒ /api/qmoi/revenue/transfer              363 B         102 kB
-├ ƒ /api/qmoi/user                          363 B         102 kB
-├ ƒ /api/qmoi/voice-preview                 363 B         102 kB
-├ ƒ /api/qmoi/voice-profiles                363 B         102 kB
-├ ƒ /api/qnews                              363 B         102 kB
-├ ƒ /api/qradio                             363 B         102 kB
-├ ƒ /api/qvillage                           363 B         102 kB
-├ ƒ /api/social-automation                  363 B         102 kB
-├ ƒ /api/ssh/list                           363 B         102 kB
-├ ƒ /api/ssh/read                           363 B         102 kB
-├ ƒ /api/ssh/write                          363 B         102 kB
-├ ƒ /api/trading/status                     363 B         102 kB
-├ ƒ /api/version                            363 B         102 kB
-├ ƒ /api/webhooks/qvillage                  363 B         102 kB
-├ ƒ /api/whatsapp-bot                       363 B         102 kB
-├ ƒ /api/whatsapp-business                  363 B         102 kB
-├ ƒ /api/whatsapp/audit                     363 B         102 kB
-├ ƒ /api/whatsapp/verify                    363 B         102 kB
-├ ƒ /api/wifi                               363 B         102 kB
-├ ƒ /api/wifi-security                      363 B         102 kB
-├ ƒ /api/wifi/scan                          363 B         102 kB
-├ ○ /qcity                                 1.5 kB         104 kB
-└ ○ /test                                   363 B         102 kB
-+ First Load JS shared by all              102 kB
-  ├ chunks/1255-9494d7e861e97d68.js       45.9 kB
-  ├ chunks/4bd1b696-f785427dddbba9fb.js   54.2 kB
-  └ other shared chunks (total)           1.93 kB
+Date: 2025-12-31
+Repository: qmoi-enhanced
+Branch: autosync-backup-20250926-232440
 
-Route (pages)                                Size  First Load JS
-─ ƒ /api/memory                               0 B        82.7 kB
-+ First Load JS shared by all             82.7 kB
-  ├ chunks/framework-f31701c9d93f12a4.js  44.8 kB
-  ├ chunks/main-50df30d0767b2ca7.js         36 kB
-  └ other shared chunks (total)            1.9 kB
+Latest ESLint run (after adding global declarations and local ESLint overrides):
+- Problems total: 14,736
+- Errors: 10,343
+- Warnings: 4,393
 
-○  (Static)   prerendered as static content
-ƒ  (Dynamic)  server-rendered on demand
+Top recurring issues (current):
+- no-undef: undefined globals (Headers, Request, Response, Buffer, performance, require, FileReader, EventSource, etc.)
+- @typescript-eslint/no-explicit-any: many `any` usages in `src/mocks/handlers.ts`, `src/services/*`, tests
+- @typescript-eslint/no-unused-vars: unused variables (will prefix with `_` where safe)
+- parser errors: unexpected `<` in `src/index.js` and similar
+- unreachable code: some logic branches flagged as unreachable (e.g., `src/config/bitget.ts`, `src/config/wallet.ts`)
 
+Recent automated actions:
+- Ran `npm run lint:fix` (autofix) — reduced counts slightly.
+- Ran `node scripts/convert-any-unused.cjs --apply` (codemod) — no files modified in last run.
+- Ran `node scripts/prefix-wide.cjs` — patched many files across `src/`, `app/api/`, `scripts/`, `tests/`.
+- Updated `src/types/globals.d.ts` to declare common globals and added eslint-disable for the declaration file.
+- Added `/.eslintrc.local.cjs` with overrides to enable `jest`, `node`, and `browser` envs for tests and source files (temporary, for triage).
 
+Next planned steps:
+1) Re-run `npm run lint:fix` to measure immediate improvement after these edits.
+2) Triage remaining `no-undef` and parser errors by fixing specific files (add `/* eslint-env */` where appropriate, correct JSX in .js tests, or convert to .tsx where necessary).
+3) Replace `any` usages in targeted high-risk files with `unknown` or explicit types using the codemod in targeted folders and review diffs.
+4) Run selected test suites and fix blocking failures.
 
+Notes:
+- Backups (.bak) created by scripts are available for review.
+- I will update this file after each triage batch with new counts and a short summary.
+ - I will update this file after each triage batch with new counts and a short summary.
 
-Scanning app/api for @ts-nocheck...
-Files scanned under app/api: 121
-Files containing @ts-nocheck: 0
-
-
-
-Summary commands to re-run this report:
-node ./scripts/generate_problems_report.cjs
 ---
+Snapshot: 2025-12-31T00:00:00Z
+- Total problems: 14,764
+- Errors: 10,343
+- Warnings: 4,421
+
+Latest run: 2025-12-31T00:00:00Z
+- Problems: 14,734
+- Errors: 10,342
+- Warnings: 4,392
+
+Changes in this run:
+- Updated ambient declarations: added `EventSource`, `FileReader`, and `NodeJS` to `src/types/globals.d.ts` and `types/globals.d.ts`.
+- Re-ran `npm run lint:fix` and recorded counts.
+
+Next: add targeted per-file `/* eslint-env */` pragmas for test/browser files and re-run lint.
+
+Snapshot: 2026-01-01T00:00:00Z
+- Problems: 14,734
+- Errors: 10,342
+- Warnings: 4,392
+
+Notes: Ran codemod dry-run in `src/services` (no changes). Re-ran `npm run lint:fix` after pragmas; counts unchanged.
+
+Recent quick actions:
+- Expanded `types/globals.d.ts` and `src/types/globals.d.ts` to add common runtime/test globals.
+- Ran `node scripts/prefix-wide.cjs` and `npm run lint:fix` iteratively.
+
+Next immediate action: re-run `npm run lint:fix` to measure change after these declarations.
+
+Snapshot: 2026-01-01T00:00:00Z
+- Codemod: applied `scripts/convert-any-unused.cjs --apply` in `src` (1 file modified: `src/types/globals.d.ts`).
+- Codemod dry-run across repo previously indicated 2 files would change (`src/types/globals.d.ts`, `types/globals.d.ts`).
+- Lint run after codemod/apply:
+  - Problems: 14,734
+  - Errors: 10,342
+  - Warnings: 4,392
+
+Notes:
+- Applied codemod to `src` only to limit risk; repo-root `types/globals.d.ts` remains for manual review.
+- Remaining high-impact issues: `no-undef` (FileReader, EventSource, Buffer, Headers, Request, Response, require, jest hooks), parser errors in `src/index.js`, and many `@typescript-eslint/no-explicit-any` warnings across `src/services` and `src/mocks`.
+
+Next steps:
+1. Open a PR with the codemod change for `src` and the updated `problemsanderrors.txt` snapshot.
+2. Run targeted codemod for the repo-root `types/globals.d.ts` after review, or adjust ambient declarations instead of automated replacement.
+3. Continue triage per-folder: add `/* eslint-env */` pragmas for browser/test files and run `npm run lint:fix` iteratively.

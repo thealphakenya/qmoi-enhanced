@@ -2,7 +2,7 @@
 
 /**
  * QMOI Registry Manager - Enhanced
- * Now supports feedback loops, advanced AI triggers, external API integration, auto-evolution, and advanced error/fix tracking.
+ * Now supports feedback loops, advanced AI triggers, external API integration, auto-evolution, and advanced _error/fix tracking.
  */
 
 const fs = require("fs").promises;
@@ -45,15 +45,15 @@ class QMOIRegistryManager {
       try {
         const data = await fs.readFile(this.registryPath, "utf8");
         this.registry = { ...this.registry, ...JSON.parse(data) };
-      } catch (error) {
+      } catch (_error) {
         console.log("Creating new QMOI registry...");
         await this.saveRegistry();
       }
       this.initializeAutoEnhancementRules();
       await this.registerCoreComponents();
       console.log("✅ QMOI Registry initialized successfully");
-    } catch (error) {
-      console.error("❌ Error initializing QMOI registry:", error.message);
+    } catch (_error) {
+      console.error("❌ Error initializing QMOI registry:", _error.message);
     }
   }
 
@@ -119,7 +119,7 @@ class QMOIRegistryManager {
         autoEnhancement: true,
         lastUpdated: new Date().toISOString(),
       },
-      "qmoi-error-handler": {
+      "qmoi-_error-handler": {
         type: "service",
         version: "1.0.0",
         status: "active",
@@ -261,18 +261,18 @@ class QMOIRegistryManager {
   }
 
   // --- EXTERNAL API INTEGRATION ---
-  async syncExternalAPI(name, url, params = {}) {
+  async syncExternalAPI(name, url, _params = {}) {
     try {
-      const response = await axios.get(url, { params });
+      const _response = await axios.get(url, { _params });
       this.registry.apiSync[name] = {
-        data: response.data,
+        data: _response.data,
         lastSync: new Date().toISOString(),
       };
       await this.saveRegistry();
       console.log(`🌐 Synced external API: ${name}`);
-      return response.data;
-    } catch (error) {
-      console.error(`❌ Failed to sync API ${name}:`, error.message);
+      return _response.data;
+    } catch (_error) {
+      console.error(`❌ Failed to sync API ${name}:`, _error.message);
       return null;
     }
   }
@@ -291,18 +291,18 @@ class QMOIRegistryManager {
     };
     this.registry.evolutionHistory.push(evolution);
     await this.saveRegistry();
-    // Example: trigger auto-enhancement, error fix, or self-update
+    // Example: trigger auto-enhancement, _error fix, or self-update
     // (In production, this could call scripts/qmoi-auto-enhancement-system.js or similar)
     console.log(`🔄 Auto-evolution triggered: ${reason}`);
     return evolution.id;
   }
 
   // --- ADVANCED ERROR/FIX TRACKING ---
-  async recordError(error, context = {}) {
+  async recordError(_error, context = {}) {
     const errorId = crypto.randomUUID();
     this.registry.errors[errorId] = {
       id: errorId,
-      error: error,
+      _error: _error,
       context: context,
       timestamp: new Date().toISOString(),
       status: "detected",
@@ -311,7 +311,7 @@ class QMOIRegistryManager {
       suggestions: [],
     };
     await this.saveRegistry();
-    console.log(`📝 Recorded error: ${errorId}`);
+    console.log(`📝 Recorded _error: ${errorId}`);
     return errorId;
   }
 
@@ -431,8 +431,8 @@ class QMOIRegistryManager {
       await this.saveRegistry();
       console.log("✅ Registry imported successfully");
       return true;
-    } catch (error) {
-      console.error("❌ Error importing registry:", error.message);
+    } catch (_error) {
+      console.error("❌ Error importing registry:", _error.message);
       return false;
     }
   }
@@ -455,8 +455,8 @@ class QMOIRegistryManager {
       await this.saveRegistry();
       console.log("✅ Registry restored successfully");
       return true;
-    } catch (error) {
-      console.error("❌ Error restoring registry:", error.message);
+    } catch (_error) {
+      console.error("❌ Error restoring registry:", _error.message);
       return false;
     }
   }
@@ -477,8 +477,8 @@ class QMOIRegistryManager {
             timestamp: new Date().toISOString(),
           });
           console.log(`✅ Auto-enhancement ${name}: ${result}`);
-        } catch (error) {
-          console.error(`❌ Auto-enhancement ${name} failed:`, error.message);
+        } catch (_error) {
+          console.error(`❌ Auto-enhancement ${name} failed:`, _error.message);
         }
       }
     }
@@ -573,9 +573,9 @@ class QMOIRegistryManager {
     const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
 
     // Clean up old errors
-    for (const [id, error] of Object.entries(this.registry.errors)) {
-      const errorDate = new Date(error.timestamp);
-      if (errorDate < thirtyDaysAgo && error.status === "fixed") {
+    for (const [id, _error] of Object.entries(this.registry.errors)) {
+      const errorDate = new Date(_error.timestamp);
+      if (errorDate < thirtyDaysAgo && _error.status === "fixed") {
         delete this.registry.errors[id];
       }
     }
@@ -597,8 +597,8 @@ class QMOIRegistryManager {
     // Analyze feedback and AI actions to suggest/trigger improvements
     const recentFeedback = this.registry.feedback.slice(-10);
     for (const fb of recentFeedback) {
-      if (fb.type === "error" && fb.data.critical) {
-        await this.triggerAutoEvolution("Critical error feedback", fb);
+      if (fb.type === "_error" && fb.data.critical) {
+        await this.triggerAutoEvolution("Critical _error feedback", fb);
       }
       if (fb.type === "user" && fb.data.suggestion) {
         await this.triggerAutoEvolution("User suggestion", fb);

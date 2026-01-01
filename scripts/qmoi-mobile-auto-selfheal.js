@@ -26,12 +26,12 @@ function log(msg) {
 function run(cmd, cwd = '.', opts = {}) {
   return new Promise((resolve, reject) => {
     log(`Running: ${cmd} (cwd: ${cwd})`);
-    const child = exec(cmd, { cwd, ...opts }, (err, stdout, stderr) => {
+    const child = exec(cmd, { cwd, ...opts }, (_err, stdout, stderr) => {
       if (stdout) log(stdout);
       if (stderr) log(stderr);
-      if (err) {
-        log(`Error: ${err.message}`);
-        return reject(err);
+      if (_err) {
+        log(`Error: ${_err.message}`);
+        return reject(_err);
       }
       resolve(stdout);
     });
@@ -42,7 +42,7 @@ async function ensureNpmInstall(dir) {
   try {
     await run('npm install', dir);
     log(`npm install successful in ${dir}`);
-  } catch (e) {
+  } catch (_e) {
     log(`npm install failed in ${dir}, attempting fix...`);
     await run('npm audit fix || true', dir);
     await run('npm install --legacy-peer-deps', dir);
@@ -57,8 +57,8 @@ async function startAvatarSystem() {
     });
     log('Avatar system started in master mode.');
     return avatarProc;
-  } catch (e) {
-    log('Failed to start avatar system: ' + e.message);
+  } catch (_e) {
+    log('Failed to start avatar system: ' + _e.message);
   }
 }
 
@@ -73,8 +73,8 @@ async function launchMobileApp() {
     const mobileProc = spawn(cmd, { cwd: 'mobile', stdio: 'inherit', shell: true });
     log('Mobile app launch command issued.');
     return mobileProc;
-  } catch (e) {
-    log('Failed to launch mobile app: ' + e.message);
+  } catch (_e) {
+    log('Failed to launch mobile app: ' + _e.message);
   }
 }
 
@@ -82,8 +82,8 @@ async function autoFixAll() {
   try {
     await run('npm run qmoi:always-fix-all');
     log('Ran qmoi:always-fix-all for auto-fixing.');
-  } catch (e) {
-    log('Auto-fix failed: ' + e.message);
+  } catch (_e) {
+    log('Auto-fix failed: ' + _e.message);
   }
 }
 
@@ -123,4 +123,4 @@ async function main() {
   }, 5 * 60 * 1000); // Every 5 minutes
 }
 
-main().catch(e => log('Fatal error: ' + e.message)); 
+main().catch(_e => log('Fatal _error: ' + _e.message)); 

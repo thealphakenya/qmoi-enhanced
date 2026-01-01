@@ -16,7 +16,7 @@ export function useExtensionManager() {
       await new Promise((res) => setTimeout(res, 1000));
       setExtensions((prev) => [...prev, ext]);
       setStatus("success");
-    } catch (e: any) {
+    } catch (e: unknown) {
       setError(e.message);
       setStatus("error");
     }

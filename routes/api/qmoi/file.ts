@@ -117,7 +117,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     }
 
     res.status(400).json({ success: false, error: "Unknown action" });
-  } catch (e: any) {
+  } catch (e: unknown) {
     logAudit({ ...entryBase, result: "error", error: e?.message });
     res
       .status(500)

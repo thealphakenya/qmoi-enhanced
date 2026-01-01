@@ -29,8 +29,8 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (e) {
-    console.warn("TTS playback failed", e);
+  } catch (_e) {
+    console.warn("TTS playback failed", _e);
     return false;
   }
 }

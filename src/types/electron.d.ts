@@ -1,8 +1,9 @@
 declare module "electron" {
-  export const app: any;
-  export const Notification: any;
-  export const BrowserWindow: any;
-  export const ipcMain: any;
-  export const ipcRenderer: any;
-  export default any;
+  export const app: unknown;
+  export const Notification: unknown;
+  export const BrowserWindow: unknown;
+  export const ipcMain: unknown;
+  export const ipcRenderer: unknown;
+  const _default: unknown;
+  export default _default;
 }

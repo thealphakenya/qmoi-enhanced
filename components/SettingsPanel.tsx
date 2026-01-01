@@ -145,11 +145,11 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
     setFontSettings((prev) => ({ ...prev, [key]: value }));
   };
 
-  const handleNetworkChange = (key: keyof NetworkSettings, value: any) => {
+  const handleNetworkChange = (key: keyof NetworkSettings, value: unknown) => {
     setNetworkSettings((prev) => ({ ...prev, [key]: value }));
   };
 
-  const handleAIChange = (key: keyof AISettings, value: any) => {
+  const handleAIChange = (key: keyof AISettings, value: unknown) => {
     setAISettings((prev) => ({ ...prev, [key]: value }));
   };
 

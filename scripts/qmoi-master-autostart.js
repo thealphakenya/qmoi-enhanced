@@ -42,9 +42,9 @@ class QMOIMasterAutoStart {
       });
       this.log(`Completed: ${description}`, "SUCCESS");
       return { success: true, output: result };
-    } catch (error) {
-      this.log(`Failed: ${description} - ${error.message}`, "ERROR");
-      return { success: false, error: error.message };
+    } catch (_error) {
+      this.log(`Failed: ${description} - ${_error.message}`, "ERROR");
+      return { success: false, _error: _error.message };
     }
   }
 
@@ -131,7 +131,7 @@ class QMOIMasterAutoStart {
     const commands = [
       {
         cmd: "npm run qmoi:fix:comprehensive",
-        desc: "Comprehensive error fixing",
+        desc: "Comprehensive _error fixing",
       },
       { cmd: "npm run qcity:auto-fix", desc: "QCity auto-fix" },
       { cmd: "npm run qserver:auto-fix", desc: "QServer auto-fix" },
@@ -359,8 +359,8 @@ jobs:
       this.log("🔒 Security measures active");
       this.log("💰 Revenue engine operational");
       this.log("=".repeat(80));
-    } catch (error) {
-      this.log(`❌ AutoStart failed: ${error.message}`, "ERROR");
+    } catch (_error) {
+      this.log(`❌ AutoStart failed: ${_error.message}`, "ERROR");
       process.exit(1);
     }
   }

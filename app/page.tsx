@@ -34,7 +34,7 @@ function MainPage() {
     checkAuth();
   }, []);
 
-  const handleLogin = (userData: any) => {
+  const handleLogin = (userData: unknown) => {
     setCurrentUser(userData);
     setIsAuthenticated(true);
     localStorage.setItem("qmoi_authenticated", "true");

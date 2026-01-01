@@ -373,7 +373,7 @@ import {
 } from "recharts";
 
 // Simple Chart component for bar/line/pie
-export function Chart({ type, data, ...props }: any) {
+export function Chart({ type, data, ...props }: unknown) {
   if (type === "bar") {
     return (
       <ResponsiveContainer width="100%" height={200}>

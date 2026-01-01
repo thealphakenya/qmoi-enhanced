@@ -20,8 +20,8 @@ if (!channel || !message) {
   try {
     await slack.chat.postMessage({ channel, text: message });
     console.log(`[SLACK] Message sent to ${channel}: ${message}`);
-  } catch (e) {
-    console.error("[SLACK] Error sending message:", e.message);
+  } catch (_e) {
+    console.error("[SLACK] Error sending message:", _e.message);
     process.exit(1);
   }
 })();

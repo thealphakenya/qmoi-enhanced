@@ -59,9 +59,9 @@ class DeploymentMonitor {
 
       this.log(`Deployment status: ${status.overall}`);
       return status;
-    } catch (error) {
-      this.log(`Error checking deployment status: ${error.message}`);
-      return { error: error.message, overall: "error" };
+    } catch (_error) {
+      this.log(`Error checking deployment status: ${_error.message}`);
+      return { _error: _error.message, overall: "_error" };
     }
   }
 
@@ -85,26 +85,26 @@ class DeploymentMonitor {
         if (url) {
           // Test the deployment
           try {
-            const response = await axios.get(url, { timeout: 10000 });
+            const _response = await axios.get(url, { timeout: 10000 });
             return {
               status: "healthy",
               url: url,
-              responseTime: response.headers["x-response-time"] || "unknown",
-              statusCode: response.status,
+              responseTime: _response.headers["x-_response-time"] || "unknown",
+              statusCode: _response.status,
             };
-          } catch (error) {
+          } catch (_error) {
             return {
               status: "unhealthy",
               url: url,
-              error: error.message,
+              _error: _error.message,
             };
           }
         }
       }
 
-      return { status: "unknown", error: "No deployment found" };
-    } catch (error) {
-      return { status: "error", error: error.message };
+      return { status: "unknown", _error: "No deployment found" };
+    } catch (_error) {
+      return { status: "_error", _error: _error.message };
     }
   }
 
@@ -112,13 +112,13 @@ class DeploymentMonitor {
     try {
       // Check if build directory exists
       if (!fs.existsSync("build")) {
-        return { status: "missing", error: "Build directory not found" };
+        return { status: "missing", _error: "Build directory not found" };
       }
 
       // Check build files
       const buildFiles = fs.readdirSync("build");
       if (buildFiles.length === 0) {
-        return { status: "empty", error: "Build directory is empty" };
+        return { status: "empty", _error: "Build directory is empty" };
       }
 
       // Check for critical files
@@ -130,13 +130,13 @@ class DeploymentMonitor {
       if (missingFiles.length > 0) {
         return {
           status: "incomplete",
-          error: `Missing critical files: ${missingFiles.join(", ")}`,
+          _error: `Missing critical files: ${missingFiles.join(", ")}`,
         };
       }
 
       return { status: "healthy", files: buildFiles.length };
-    } catch (error) {
-      return { status: "error", error: error.message };
+    } catch (_error) {
+      return { status: "_error", _error: _error.message };
     }
   }
 
@@ -146,7 +146,7 @@ class DeploymentMonitor {
       const envExists = fs.existsSync(envFile);
 
       if (!envExists) {
-        return { status: "missing", error: ".env file not found" };
+        return { status: "missing", _error: ".env file not found" };
       }
 
       const envContent = fs.readFileSync(envFile, "utf8");
@@ -158,13 +158,13 @@ class DeploymentMonitor {
       if (missingVars.length > 0) {
         return {
           status: "incomplete",
-          error: `Missing environment variables: ${missingVars.join(", ")}`,
+          _error: `Missing environment variables: ${missingVars.join(", ")}`,
         };
       }
 
       return { status: "healthy", variables: requiredVars.length };
-    } catch (error) {
-      return { status: "error", error: error.message };
+    } catch (_error) {
+      return { status: "_error", _error: _error.message };
     }
   }
 
@@ -172,12 +172,12 @@ class DeploymentMonitor {
     try {
       // Check if node_modules exists
       if (!fs.existsSync("node_modules")) {
-        return { status: "missing", error: "node_modules not found" };
+        return { status: "missing", _error: "node_modules not found" };
       }
 
       // Check package.json
       if (!fs.existsSync("package.json")) {
-        return { status: "missing", error: "package.json not found" };
+        return { status: "missing", _error: "package.json not found" };
       }
 
       // Check for critical dependencies
@@ -190,7 +190,7 @@ class DeploymentMonitor {
       if (missingDeps.length > 0) {
         return {
           status: "incomplete",
-          error: `Missing critical dependencies: ${missingDeps.join(", ")}`,
+          _error: `Missing critical dependencies: ${missingDeps.join(", ")}`,
         };
       }
 
@@ -198,8 +198,8 @@ class DeploymentMonitor {
         status: "healthy",
         dependencies: Object.keys(packageJson.dependencies || {}).length,
       };
-    } catch (error) {
-      return { status: "error", error: error.message };
+    } catch (_error) {
+      return { status: "_error", _error: _error.message };
     }
   }
 
@@ -208,7 +208,7 @@ class DeploymentMonitor {
       healthy: 3,
       incomplete: 2,
       missing: 1,
-      error: 0,
+      _error: 0,
       unknown: 1,
     };
     const scores = statuses.map((s) => statusMap[s.status] || 0);
@@ -230,8 +230,8 @@ class DeploymentMonitor {
       try {
         execSync("npm run build", { stdio: "inherit" });
         fixes.push("build");
-      } catch (error) {
-        this.log(`Build fix failed: ${error.message}`);
+      } catch (_error) {
+        this.log(`Build fix failed: ${_error.message}`);
       }
     }
 
@@ -246,8 +246,8 @@ class DeploymentMonitor {
         ].join("\n");
         fs.writeFileSync(".env", envContent);
         fixes.push("environment");
-      } catch (error) {
-        this.log(`Environment fix failed: ${error.message}`);
+      } catch (_error) {
+        this.log(`Environment fix failed: ${_error.message}`);
       }
     }
 
@@ -257,8 +257,8 @@ class DeploymentMonitor {
       try {
         execSync("npm ci --legacy-peer-deps", { stdio: "inherit" });
         fixes.push("dependencies");
-      } catch (error) {
-        this.log(`Dependency fix failed: ${error.message}`);
+      } catch (_error) {
+        this.log(`Dependency fix failed: ${_error.message}`);
       }
     }
 
@@ -279,10 +279,10 @@ class DeploymentMonitor {
       await notifyMaster(
         "QMOI deployment monitor: Redeployment successful after auto-fixes",
       );
-    } catch (error) {
-      this.log(`Redeployment failed: ${error.message}`);
+    } catch (_error) {
+      this.log(`Redeployment failed: ${_error.message}`);
       await notifyMaster(
-        `QMOI deployment monitor: Redeployment failed - ${error.message}`,
+        `QMOI deployment monitor: Redeployment failed - ${_error.message}`,
       );
     }
   }
@@ -310,8 +310,8 @@ class DeploymentMonitor {
         } else {
           this.log("Deployment status: Healthy");
         }
-      } catch (error) {
-        this.log(`Monitoring error: ${error.message}`);
+      } catch (_error) {
+        this.log(`Monitoring _error: ${_error.message}`);
       }
     };
 

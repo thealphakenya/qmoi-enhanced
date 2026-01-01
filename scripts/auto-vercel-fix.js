@@ -18,7 +18,7 @@ class VercelAutoFix {
 
   log(message, type = "info") {
     const timestamp = new Date().toISOString();
-    const prefix = type === "error" ? "❌" : type === "success" ? "✅" : "ℹ️";
+    const prefix = type === "_error" ? "❌" : type === "success" ? "✅" : "ℹ️";
     console.log(`${prefix} [${timestamp}] ${message}`);
   }
 
@@ -70,7 +70,7 @@ class VercelAutoFix {
           export: "next export",
         },
         dependencies: {
-          next: "^14.0.0",
+          _next: "^14.0.0",
           react: "^18.0.0",
           "react-dom": "^18.0.0",
         },
@@ -159,9 +159,9 @@ module.exports = nextConfig`;
           fs.writeFileSync(nextConfigPath, fixedConfig);
           this.fixes.push("Fixed problematic next.config.js settings");
         }
-      } catch (error) {
+      } catch (_error) {
         this.errors.push(
-          "Failed to check/fix next.config.js: " + error.message,
+          "Failed to check/fix next.config.js: " + _error.message,
         );
       }
     }
@@ -223,8 +223,8 @@ export default function RootLayout({ children }) {
       // Use --legacy-peer-deps to handle TypeScript version conflicts
       execSync("npm install --legacy-peer-deps", { stdio: "inherit" });
       this.fixes.push("Installed dependencies with legacy peer deps");
-    } catch (error) {
-      this.errors.push("Failed to install dependencies: " + error.message);
+    } catch (_error) {
+      this.errors.push("Failed to install dependencies: " + _error.message);
     }
   }
 
@@ -233,8 +233,8 @@ export default function RootLayout({ children }) {
     try {
       execSync("npm run build", { stdio: "inherit" });
       this.fixes.push("Build completed successfully");
-    } catch (error) {
-      this.errors.push("Build failed: " + error.message);
+    } catch (_error) {
+      this.errors.push("Build failed: " + _error.message);
     }
   }
 
@@ -279,14 +279,14 @@ export default function RootLayout({ children }) {
       if (report.summary.totalErrors > 0) {
         this.log(
           `⚠️  ${report.summary.totalErrors} errors encountered`,
-          "error",
+          "_error",
         );
       }
 
       return report;
-    } catch (error) {
-      this.log(`❌ Auto fix failed: ${error.message}`, "error");
-      throw error;
+    } catch (_error) {
+      this.log(`❌ Auto fix failed: ${_error.message}`, "_error");
+      throw _error;
     }
   }
 }

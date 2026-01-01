@@ -115,7 +115,7 @@ class AILintEngine {
     }
 
     if (prompt.includes("no-unused-vars")) {
-      return "Remove unused variable or prefix with underscore (_variable)";
+      return "Remove _unused variable or prefix with underscore (_variable)";
     }
 
     if (prompt.includes("import/no-unresolved")) {
@@ -176,7 +176,7 @@ Provide a specific fix that can be applied automatically.`;
         return false;
       }
 
-      if (aiResponse.suggestion.includes("Remove unused variable")) {
+      if (aiResponse.suggestion.includes("Remove _unused variable")) {
         // Remove the line if it's just a variable declaration
         if (originalLine.trim().match(/^(const|let|var)\s+\w+\s*=/)) {
           lines.splice(lineIndex, 1);
@@ -193,7 +193,7 @@ Provide a specific fix that can be applied automatically.`;
       }
 
       if (aiResponse.suggestion.includes("prefix with underscore")) {
-        // Add underscore prefix to unused variables
+        // Add underscore prefix to _unused variables
         const varMatch = originalLine.match(/(const|let|var)\s+(\w+)/);
         if (varMatch && !originalLine.includes("_")) {
           modifiedLine = originalLine.replace(varMatch[2], `_${varMatch[2]}`);

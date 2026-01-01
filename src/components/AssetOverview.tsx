@@ -31,7 +31,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -49,9 +49,9 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (err) {
+    } catch (_err) {
       setError(
-        err instanceof Error ? err.message : "Failed to fetch asset data",
+        _err instanceof Error ? _err.message : "Failed to fetch asset data",
       );
     } finally {
       setIsLoading(false);
@@ -98,7 +98,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       case "medium":
         return "warning";
       case "high":
-        return "error";
+        return "_error";
       default:
         return "default";
     }
@@ -132,9 +132,9 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
           </Box>
         </Box>
 
-        {error && (
-          <Alert severity="error" sx={{ mb: 2 }}>
-            {error}
+        {_error && (
+          <Alert severity="_error" sx={{ mb: 2 }}>
+            {_error}
           </Alert>
         )}
 

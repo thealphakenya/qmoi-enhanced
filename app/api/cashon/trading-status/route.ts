@@ -8,8 +8,8 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 // Verify master token
-function verifyMasterToken(request: NextRequest): string | null {
-  const authHeader = request.headers.get("authorization");
+function verifyMasterToken(_request: NextRequest): string | null {
+  const authHeader = _request.headers.get("authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return null;
   }
@@ -21,23 +21,23 @@ function verifyMasterToken(request: NextRequest): string | null {
 }
 
 // GET /api/cashon/trading-status
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
-    const apiAuth = requireApiKey(request.headers);
-    const masterToken = verifyMasterToken(request);
+    const apiAuth = requireApiKey(_request.headers);
+    const masterToken = verifyMasterToken(_request);
     if (!apiAuth.ok && !masterToken) {
       return NextResponse.json(
-        apiAuth.response?.body || { error: "Master access required" },
-        { status: apiAuth.response?.status || 401 },
+        apiAuth._response?.body || { _error: "Master access required" },
+        { status: apiAuth._response?.status || 401 },
       );
     }
 
     const status = await cashonWallet.getTradingStatus();
     return NextResponse.json(status);
-  } catch (error) {
-    console.error("Trading status API error:", error);
+  } catch (_error) {
+    console.error("Trading status API _error:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server _error" },
       { status: 500 },
     );
   }

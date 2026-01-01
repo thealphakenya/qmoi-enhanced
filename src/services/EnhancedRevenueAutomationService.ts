@@ -2,7 +2,7 @@ import { EventEmitter } from "events";
 
 interface RevenueProjectRequest {
   id: string;
-  type: "affiliate" | "e-commerce" | "saas" | "content" | "custom";
+  type: "affiliate" | "_e-commerce" | "saas" | "content" | "custom";
   targetPlatforms: string[];
   revenueGoal: number;
   marketingChannels: string[];
@@ -54,11 +54,13 @@ export class EnhancedRevenueAutomationService extends EventEmitter {
   }
 
   public async requestRevenueProject(
-    request: Omit<RevenueProjectRequest, "id" | "timestamp">,
+    _request: Omit<RevenueProjectRequest, "id" | "timestamp">
   ): Promise<string> {
-    const id = `revenue_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    const id = `revenue_${Date.now()}_${Math.random()
+      .toString(36)
+      .substr(2, 9)}`;
     const fullRequest: RevenueProjectRequest = {
-      ...request,
+      ..._request,
       id,
       timestamp: new Date().toISOString(),
     };
@@ -71,13 +73,13 @@ export class EnhancedRevenueAutomationService extends EventEmitter {
   private async processQueue(): Promise<void> {
     if (this.isProcessing || this.projectQueue.length === 0) return;
     this.isProcessing = true;
-    const request = this.projectQueue.shift();
-    if (request) {
+    const _request = this.projectQueue.shift();
+    if (_request) {
       try {
-        const result = await this.automateRevenueProject(request);
+        const result = await this.automateRevenueProject(_request);
         this.emit("revenueProjectAutomated", result);
-      } catch (error) {
-        this.emit("revenueProjectFailed", { request, error });
+      } catch (_error) {
+        this.emit("revenueProjectFailed", { _request, _error });
       } finally {
         this.isProcessing = false;
         this.processQueue();
@@ -88,27 +90,29 @@ export class EnhancedRevenueAutomationService extends EventEmitter {
   }
 
   private async automateRevenueProject(
-    request: RevenueProjectRequest,
+    _request: RevenueProjectRequest
   ): Promise<RevenueAutomationResult> {
     const logs: string[] = [];
     logs.push(
-      `Starting revenue automation for ${request.type} targeting platforms: ${request.targetPlatforms.join(", ")}`,
+      `Starting revenue automation for ${
+        _request.type
+      } targeting platforms: ${_request.targetPlatforms.join(", ")}`
     );
     // 1. Discover new platforms and deals
-    const deals: PlatformDeal[] = request.autoDiscoveryEnabled
-      ? this.discoverDeals(request.targetPlatforms)
+    const deals: PlatformDeal[] = _request.autoDiscoveryEnabled
+      ? this.discoverDeals(_request.targetPlatforms)
       : [];
     logs.push("Discovered deals:", JSON.stringify(deals));
     // 2. Auto-create and deploy site/project
     logs.push("Auto-creating and deploying site/project...");
     // 3. Automated marketing/syndication
-    const marketingStatus = request.autoSyndicationEnabled
+    const marketingStatus = _request.autoSyndicationEnabled
       ? "Syndicated to all channels"
       : "Manual marketing required";
     logs.push(`Marketing status: ${marketingStatus}`);
     // 4. Revenue tracking/optimization
     const revenueTracking: RevenueTracking = {
-      projectId: request.id,
+      projectId: _request.id,
       revenueStreams: [
         {
           source: "affiliate",
@@ -118,12 +122,12 @@ export class EnhancedRevenueAutomationService extends EventEmitter {
         { source: "ads", amount: 800, lastUpdated: new Date().toISOString() },
       ],
       totalRevenue: 2000,
-      goal: request.revenueGoal,
-      status: 2000 >= request.revenueGoal ? "on_track" : "below_target",
+      goal: _request.revenueGoal,
+      status: 2000 >= _request.revenueGoal ? "on_track" : "below_target",
     };
     logs.push("Revenue tracking:", JSON.stringify(revenueTracking));
     return {
-      projectId: request.id,
+      projectId: _request.id,
       deals,
       marketingStatus,
       revenueTracking,

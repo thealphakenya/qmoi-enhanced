@@ -86,7 +86,7 @@ export function useProjects() {
     },
     {
       refetchInterval: 5000, // Poll every 5 seconds
-      onError: (err: any) => setError(err),
+      onError: (err: unknown) => setError(err),
     },
   );
 
@@ -101,7 +101,7 @@ export function useProjects() {
       return response.data;
     },
     {
-      onError: (err: any) => setError(err),
+      onError: (err: unknown) => setError(err),
     },
   );
 
@@ -148,7 +148,7 @@ export function useProjects() {
           );
         }
       },
-      onError: (err: any) => setError(err),
+      onError: (err: unknown) => setError(err),
     },
   );
 
@@ -164,7 +164,7 @@ export function useProjects() {
     },
     {
       onSuccess: () => refetchProjects(),
-      onError: (err: any) => setError(err),
+      onError: (err: unknown) => setError(err),
     },
   );
 
@@ -186,7 +186,7 @@ export function useProjects() {
     },
     {
       onSuccess: () => refetchProjects(),
-      onError: (err: any) => setError(err),
+      onError: (err: unknown) => setError(err),
     },
   );
 
@@ -205,7 +205,7 @@ export function useProjects() {
     },
     {
       onSuccess: () => refetchProjects(),
-      onError: (err: any) => setError(err),
+      onError: (err: unknown) => setError(err),
     },
   );
 
@@ -223,7 +223,7 @@ export function useProjects() {
         refetchConfig();
         refetchProjects();
       },
-      onError: (err: any) => setError(err),
+      onError: (err: unknown) => setError(err),
     },
   );
 

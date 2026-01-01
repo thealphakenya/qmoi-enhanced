@@ -134,8 +134,8 @@ class ServiceRecoveryManager {
           `[Recovery] Successfully recovered ${service} on attempt ${attemptCount}`,
         );
         return true;
-      } catch (err) {
-        lastError = err as Error;
+      } catch (_err) {
+        lastError = _err as Error;
 
         if (i < strategy.maxAttempts - 1) {
           // Calculate backoff
@@ -181,8 +181,8 @@ class ServiceRecoveryManager {
     );
 
     const timer = setTimeout(() => {
-      this.recover(service, reason, recoveryFn).catch((err) => {
-        console.error(`[Recovery] Scheduled recovery failed: ${err}`);
+      this.recover(service, reason, recoveryFn).catch((_err) => {
+        console.error(`[Recovery] Scheduled recovery failed: ${_err}`);
       });
       this.activeRecoveries.delete(service);
     }, delayMs);
@@ -207,9 +207,9 @@ class ServiceRecoveryManager {
     console.info(`[Recovery] Recovering API connection to ${endpoint}`);
 
     // Attempt to fetch from endpoint
-    const response = await fetch(`${endpoint}/health`);
-    if (!response.ok) {
-      throw new Error(`API returned ${response.status}`);
+    const _response = await fetch(`${endpoint}/health`);
+    if (!_response.ok) {
+      throw new Error(`API returned ${_response.status}`);
     }
 
     console.info("[Recovery] API connection restored");
@@ -222,8 +222,8 @@ class ServiceRecoveryManager {
     try {
       // Import would go here - for now just validate
       console.info("[Recovery] Cache service recovered");
-    } catch (err) {
-      throw new Error(`Cache recovery failed: ${err}`);
+    } catch (_err) {
+      throw new Error(`Cache recovery failed: ${_err}`);
     }
   }
 
@@ -237,8 +237,8 @@ class ServiceRecoveryManager {
         throw new Error("Health check returned unhealthy status");
       }
       console.info("[Recovery] Health check service recovered");
-    } catch (err) {
-      throw new Error(`Health check recovery failed: ${err}`);
+    } catch (_err) {
+      throw new Error(`Health check recovery failed: ${_err}`);
     }
   }
 
@@ -249,8 +249,8 @@ class ServiceRecoveryManager {
     try {
       // Import and restart would go here
       console.info("[Recovery] Background services recovered");
-    } catch (err) {
-      throw new Error(`Background service recovery failed: ${err}`);
+    } catch (_err) {
+      throw new Error(`Background service recovery failed: ${_err}`);
     }
   }
 
@@ -258,8 +258,8 @@ class ServiceRecoveryManager {
   // HISTORY & MONITORING
   // ========================================================================
 
-  private recordRecoveryEvent(event: RecoveryEvent): void {
-    this.recoveryHistory.push(event);
+  private recordRecoveryEvent(_event: RecoveryEvent): void {
+    this.recoveryHistory.push(_event);
 
     if (this.recoveryHistory.length > this.maxHistorySize) {
       this.recoveryHistory = this.recoveryHistory.slice(-this.maxHistorySize);
@@ -286,9 +286,9 @@ class ServiceRecoveryManager {
       { attempts: number; successes: number; failures: number; rate: number }
     > = {};
 
-    for (const event of this.recoveryHistory) {
-      if (!byService[event.service]) {
-        byService[event.service] = {
+    for (const _event of this.recoveryHistory) {
+      if (!byService[_event.service]) {
+        byService[_event.service] = {
           attempts: 0,
           successes: 0,
           failures: 0,
@@ -296,11 +296,11 @@ class ServiceRecoveryManager {
         };
       }
 
-      byService[event.service].attempts++;
-      if (event.success) {
-        byService[event.service].successes++;
+      byService[_event.service].attempts++;
+      if (_event.success) {
+        byService[_event.service].successes++;
       } else {
-        byService[event.service].failures++;
+        byService[_event.service].failures++;
       }
     }
 
@@ -311,7 +311,7 @@ class ServiceRecoveryManager {
         stats.attempts > 0 ? (stats.successes / stats.attempts) * 100 : 0;
     }
 
-    const successful = this.recoveryHistory.filter((e) => e.success).length;
+    const successful = this.recoveryHistory.filter((_e) => _e.success).length;
     const failed = this.recoveryHistory.length - successful;
     const successRate =
       this.recoveryHistory.length > 0
@@ -367,7 +367,7 @@ class ServiceRecoveryManager {
     enabled: boolean;
     activeRecoveries: string[];
     historySize: number;
-    summary: any;
+    summary: unknown;
   } {
     return {
       enabled: this.enabled,

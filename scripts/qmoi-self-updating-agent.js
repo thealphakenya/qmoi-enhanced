@@ -25,12 +25,12 @@ function log(msg) {
 function run(cmd, cwd = ".", opts = {}) {
   return new Promise((resolve, reject) => {
     log(`Running: ${cmd} (cwd: ${cwd})`);
-    const child = exec(cmd, { cwd, ...opts }, (err, stdout, stderr) => {
+    const child = exec(cmd, { cwd, ...opts }, (_err, stdout, stderr) => {
       if (stdout) log(stdout);
       if (stderr) log(stderr);
-      if (err) {
-        log(`Error: ${err.message}`);
-        return reject(err);
+      if (_err) {
+        log(`Error: ${_err.message}`);
+        return reject(_err);
       }
       resolve(stdout);
     });
@@ -45,7 +45,7 @@ async function checkPermissions() {
     fs.unlinkSync(testFile);
     log("Permissions check passed");
     return true;
-  } catch (e) {
+  } catch (_e) {
     log("Permission check failed, requesting elevation...");
     return false;
   }
@@ -74,8 +74,8 @@ async function gitPull() {
     await run("git pull origin main");
     log("Git pull successful");
     return true;
-  } catch (e) {
-    log("Git pull failed: " + e.message);
+  } catch (_e) {
+    log("Git pull failed: " + _e.message);
     return false;
   }
 }
@@ -92,8 +92,8 @@ async function applyPRs() {
       log("No new PRs to apply");
     }
     return true;
-  } catch (e) {
-    log("PR application failed: " + e.message);
+  } catch (_e) {
+    log("PR application failed: " + _e.message);
     return false;
   }
 }
@@ -103,8 +103,8 @@ async function autoFixAll() {
     await run("npm run qmoi:always-fix-all");
     log("Auto-fix completed");
     return true;
-  } catch (e) {
-    log("Auto-fix failed: " + e.message);
+  } catch (_e) {
+    log("Auto-fix failed: " + _e.message);
     return false;
   }
 }
@@ -115,8 +115,8 @@ async function updateMobile() {
     await run("npx react-native start --reset-cache", "mobile");
     log("Mobile environment updated");
     return true;
-  } catch (e) {
-    log("Mobile update failed: " + e.message);
+  } catch (_e) {
+    log("Mobile update failed: " + _e.message);
     return false;
   }
 }
@@ -126,8 +126,8 @@ async function updateCloud() {
     await run("npm run qmoi:cloud:sync");
     log("Cloud environment updated");
     return true;
-  } catch (e) {
-    log("Cloud update failed: " + e.message);
+  } catch (_e) {
+    log("Cloud update failed: " + _e.message);
     return false;
   }
 }
@@ -140,8 +140,8 @@ async function updateCICD() {
     await run("git push origin main");
     log("CI/CD environment updated");
     return true;
-  } catch (e) {
-    log("CI/CD update failed: " + e.message);
+  } catch (_e) {
+    log("CI/CD update failed: " + _e.message);
     return false;
   }
 }
@@ -169,8 +169,8 @@ async function updateDocumentation() {
     }
     log("Documentation updated with current dates");
     return true;
-  } catch (e) {
-    log("Documentation update failed: " + e.message);
+  } catch (_e) {
+    log("Documentation update failed: " + _e.message);
     return false;
   }
 }
@@ -178,7 +178,7 @@ async function updateDocumentation() {
 async function main() {
   log("QMOI Self-Updating Agent started");
 
-  // Check permissions and request elevation if needed
+  // Check permissions and _request elevation if needed
   if (!(await checkPermissions())) {
     await requestElevation();
     return;
@@ -210,12 +210,12 @@ async function main() {
 
       // Wait before next cycle (5 minutes)
       await new Promise((resolve) => setTimeout(resolve, 5 * 60 * 1000));
-    } catch (e) {
-      log("Update cycle failed: " + e.message);
+    } catch (_e) {
+      log("Update cycle failed: " + _e.message);
       // Wait before retry (1 minute)
       await new Promise((resolve) => setTimeout(resolve, 60 * 1000));
     }
   }
 }
 
-main().catch((e) => log("Fatal error: " + e.message));
+main().catch((_e) => log("Fatal _error: " + _e.message));

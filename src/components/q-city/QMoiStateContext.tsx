@@ -6,7 +6,7 @@ type QMoiMood =
   | "thinking"
   | "teaching"
   | "celebrating"
-  | "error";
+  | "_error";
 
 interface QMoiState {
   mood: QMoiMood;

@@ -3,7 +3,7 @@
 import { NextResponse } from "next/server";
 
 // Conditionally import Prisma
-let prisma: any = null;
+let prisma: unknown = null;
 let prismaInitialized = false;
 
 async function getPrismaClient() {
@@ -12,7 +12,7 @@ async function getPrismaClient() {
   return {
     dataset: {
       findMany: async () => [],
-      create: async (data: any) => ({ id: "mock-dataset-id", ...data.data }),
+      create: async (data: unknown) => ({ id: "mock-dataset-id", ...data.data }),
     },
     $disconnect: async () => {},
   };
@@ -59,24 +59,24 @@ export async function GET() {
         message: "Database temporarily disabled for build compatibility",
       });
     }
-  } catch (error) {
-    console.error("Error fetching datasets:", error);
+  } catch (_error) {
+    console.error("Error fetching datasets:", _error);
     // Return mock data during build time or when database fails
     return NextResponse.json({
       datasets: [],
-      error: "Database connection failed - using mock data",
+      _error: "Database connection failed - using mock data",
     });
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   try {
-    const body = await request.json();
+    const body = await _request.json();
     const { name, description, type, metadata } = body;
 
     if (!name || !type) {
       return NextResponse.json(
-        { error: "Name and type are required" },
+        { _error: "Name and type are required" },
         { status: 400 }
       );
     }
@@ -108,10 +108,10 @@ export async function POST(request: Request) {
     };
 
     return NextResponse.json(mockDataset);
-  } catch (error) {
-    console.error("Error creating dataset:", error);
+  } catch (_error) {
+    console.error("Error creating dataset:", _error);
     return NextResponse.json(
-      { error: "Failed to create dataset" },
+      { _error: "Failed to create dataset" },
       { status: 500 }
     );
   }

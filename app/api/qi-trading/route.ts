@@ -69,13 +69,13 @@ async function executeTrade(trade: Trade): Promise<Trade> {
       profit: engineResult.profit || 0,
     });
     return updated || newTrade;
-  } catch (error) {
+  } catch (_error) {
     // If trade fails, update status
     await tradingService.updateTrade(newTrade.id || "", {
       status: "failed",
       profit: 0,
     });
-    throw error;
+    throw _error;
   }
 }
 
@@ -90,7 +90,7 @@ async function cancelTrade(
 
     if (!cancelled) {
       return {
-        success: false,
+        success: fals_e,
         message: "Trade not found or already completed/cancelled",
       };
     }
@@ -102,25 +102,25 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (error) {
-    console.error("Error cancelling trade:", error);
+  } catch (_error) {
+    console.error("Error cancelling trade:", _error);
     return {
-      success: false,
+      success: fals_e,
       message:
-        error instanceof Error
-          ? error.message
-          : "Unknown error cancelling trade",
+        _error instanceof Error
+          ? _error.message
+          : "Unknown _error cancelling trade",
     };
   }
 }
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   // Gate reads with API key as well
-  const auth = await requireApiKey(request.headers);
-  if (!auth.ok) return auth.response;
+  const auth = await requireApiKey(_request.headers);
+  if (!auth.ok) return auth._response;
 
   try {
-    const searchParams = request.nextUrl.searchParams;
+    const searchParams = _request.nextUrl.searchParams;
     const stats = searchParams.get("stats");
     const history = searchParams.get("history");
     const active = searchParams.get("active");
@@ -141,25 +141,25 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: "Invalid query parameter" },
+      { _error: "Invalid _query parameter" },
       { status: 400 },
     );
-  } catch (error) {
-    console.error("Error in QI trading endpoint:", error);
+  } catch (_error) {
+    console.error("Error in QI trading endpoint:", _error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 },
     );
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   // Mutating actions are proposal-first by default
-  const auth = await requireApiKey(request.headers);
-  if (!auth.ok) return auth.response;
+  const auth = await requireApiKey(_request.headers);
+  if (!auth.ok) return auth._response;
 
   try {
-    const body = await request.json();
+    const body = await _request.json();
     const { action, trade } = body;
 
     const canRun = process.env.PRODUCTION_CONFIRMED === "true";
@@ -204,20 +204,20 @@ export async function POST(request: NextRequest) {
 
       const cancelResult = await cancelTrade(trade.id);
       return NextResponse.json({
-        status: cancelResult.success ? "success" : "error",
+        status: cancelResult.success ? "success" : "_error",
         message: cancelResult.message,
         tradeId: trade.id,
       });
     }
 
     return NextResponse.json(
-      { error: "Invalid action specified" },
+      { _error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (error) {
-    console.error("Error in QI trading execution endpoint:", error);
+  } catch (_error) {
+    console.error("Error in QI trading execution endpoint:", _error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 },
     );
   }

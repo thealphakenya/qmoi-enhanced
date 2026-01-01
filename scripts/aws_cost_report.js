@@ -17,9 +17,9 @@ ce.getCostAndUsage(
     Granularity: "MONTHLY",
     Metrics: ["UnblendedCost"],
   },
-  (err, data) => {
-    if (err) {
-      console.error("[AWS Cost Report] Error:", err);
+  (_err, data) => {
+    if (_err) {
+      console.error("[AWS Cost Report] Error:", _err);
       process.exit(1);
     } else {
       const amount = parseFloat(

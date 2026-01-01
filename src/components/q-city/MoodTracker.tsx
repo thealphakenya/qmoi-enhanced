@@ -41,7 +41,7 @@ export const MoodTracker: React.FC = () => {
         <label style={{ marginRight: 8 }}>How are you feeling?</label>
         <select
           value={selectedMood}
-          onChange={(e) => setSelectedMood(e.target.value)}
+          onChange={(_e) => setSelectedMood(_e.target.value)}
           style={{ marginRight: 8 }}
         >
           <option value="">Select mood</option>

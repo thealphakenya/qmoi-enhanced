@@ -6,9 +6,9 @@ import { promisify } from "util";
 
 const execAsync = promisify(exec);
 
-export async function POST(req: NextRequest) {
+export async function POST(_req: NextRequest) {
   try {
-    const { branch = "main" } = await req.json();
+    const { branch = "main" } = await _req.json();
 
     // Push to the specified branch
     const { stdout: pushOutput } = await execAsync(`git push origin ${branch}`);
@@ -18,9 +18,9 @@ export async function POST(req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (error: any) {
+  } catch (_error: unknown) {
     return NextResponse.json(
-      { error: "Failed to push changes", details: error.message },
+      { _error: "Failed to push changes", details: _error.message },
       { status: 500 },
     );
   }

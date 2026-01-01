@@ -84,7 +84,7 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
       // Load memory entries
       const entries = localStorage.getItem("qmoi_memory_entries");
       if (entries) {
-        const parsedEntries = JSON.parse(entries).map((entry: any) => ({
+        const parsedEntries = JSON.parse(entries).map((entry: unknown) => ({
           ...entry,
           timestamp: new Date(entry.timestamp),
           lastAccessed: new Date(entry.lastAccessed),

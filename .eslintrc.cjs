@@ -1,4 +1,10 @@
 module.exports = {
+  // Temporary global env settings to reduce `no-undef` noise during triage.
+  env: {
+    node: true,
+    browser: true,
+    jest: true,
+  },
   overrides: [
     {
       files: [

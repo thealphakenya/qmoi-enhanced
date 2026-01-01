@@ -9,8 +9,8 @@ import { cashonWallet } from "../../../../lib/cashon-wallet";
 import { logEvent } from "../../../../lib/security_check";
 
 // Verify master token
-function verifyMasterToken(request: NextRequest): string | null {
-  const authHeader = request.headers.get("authorization");
+function verifyMasterToken(_request: NextRequest): string | null {
+  const authHeader = _request.headers.get("authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return null;
   }
@@ -22,19 +22,19 @@ function verifyMasterToken(request: NextRequest): string | null {
 }
 
 // GET /api/cashon/balance
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
-    const apiAuth = requireApiKey(request.headers);
-    const masterToken = verifyMasterToken(request);
+    const apiAuth = requireApiKey(_request.headers);
+    const masterToken = verifyMasterToken(_request);
     if (!apiAuth.ok && !masterToken) {
       return NextResponse.json(
-        apiAuth.response?.body || { error: "Master access required" },
-        { status: apiAuth.response?.status || 401 }
+        apiAuth._response?.body || { _error: "Master access required" },
+        { status: apiAuth._response?.status || 401 }
       );
     }
 
     const balance = await cashonWallet.getBalance(masterToken ?? "");
-    const url = new URL(request.url);
+    const url = new URL(_request.url);
     if (url.searchParams.get("mpesaInfo") === "true") {
       const mpesaNumber = process.env.CASHON_MPESA_NUMBER || "";
       const masked = mpesaNumber
@@ -44,28 +44,28 @@ export async function GET(request: NextRequest) {
     }
     if (url.searchParams.get("logs") === "true") {
       // TODO: Fetch logs from DB or file
-      const logs: any[] = [];
+      const logs: unknown[] = [];
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (error) {
-    console.error("Balance API error:", error);
+  } catch (_error) {
+    console.error("Balance API _error:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server _error" },
       { status: 500 }
     );
   }
 }
 
 // POST /api/cashon/balance
-export async function POST(req: Request) {
-  const { action } = await req.json();
+export async function POST(_req: Request) {
+  const { action } = await _req.json();
   if (action === "sync-mpesa") {
     const mpesaNumber = process.env.CASHON_MPESA_NUMBER;
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ error: "M-Pesa number not configured" }),
+        JSON.stringify({ _error: "M-Pesa number not configured" }),
         { status: 500 }
       );
     }
@@ -78,8 +78,8 @@ export async function POST(req: Request) {
       });
     } catch (_err) {
       const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { error: errorMessage });
-      return new Response(JSON.stringify({ error: errorMessage }), {
+      logEvent("mpesa_sync_failed", { _error: errorMessage });
+      return new Response(JSON.stringify({ _error: errorMessage }), {
         status: 500,
       });
     }

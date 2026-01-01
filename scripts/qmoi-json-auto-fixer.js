@@ -3,7 +3,7 @@
 /**
  * QMOI JSON Auto-Fixer
  * Automatically detects and fixes common JSON syntax errors
- * Enhanced with AI-powered error detection and correction
+ * Enhanced with AI-powered _error detection and correction
  */
 
 import { promises as fs } from "fs";
@@ -57,7 +57,7 @@ class QMOIJSONAutoFixer {
       'Unexpected token "]"': "Extra closing bracket",
       "Unexpected non-whitespace character": "Invalid character after JSON",
       "Unexpected end of JSON input": "Incomplete JSON",
-      "Unexpected token": "Syntax error",
+      "Unexpected token": "Syntax _error",
       "Property names must be double-quoted":
         "Missing quotes around property name",
       "Trailing comma": "Trailing comma not allowed",
@@ -112,21 +112,21 @@ class QMOIJSONAutoFixer {
         console.log(`⚠️ JSON still invalid after fixes: ${parseError.message}`);
         return await this.advancedFix(content, filePath, originalContent);
       }
-    } catch (error) {
-      console.error(`❌ Error auto-fixing ${filePath}:`, error.message);
-      return { success: false, error: error.message };
+    } catch (_error) {
+      console.error(`❌ Error auto-fixing ${filePath}:`, _error.message);
+      return { success: false, _error: _error.message };
     }
   }
 
   async advancedFix(content, filePath, originalContent) {
     console.log("🔍 Attempting advanced fixes...");
 
-    // Try to find the exact error location
+    // Try to find the exact _error location
     const lines = content.split("\n");
     let errorLine = -1;
     let errorColumn = -1;
 
-    // Look for common error patterns
+    // Look for common _error patterns
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
 
@@ -162,7 +162,7 @@ class QMOIJSONAutoFixer {
 
     if (errorLine !== -1) {
       console.log(
-        `📍 Found error at line ${errorLine + 1}, column ${errorColumn + 1}`,
+        `📍 Found _error at line ${errorLine + 1}, column ${errorColumn + 1}`,
       );
 
       // Apply targeted fixes
@@ -197,11 +197,11 @@ class QMOIJSONAutoFixer {
         };
       } catch (parseError) {
         console.log(`❌ Advanced fix failed: ${parseError.message}`);
-        return { success: false, error: parseError.message };
+        return { success: false, _error: parseError.message };
       }
     }
 
-    return { success: false, error: "Could not locate specific error" };
+    return { success: false, _error: "Could not locate specific _error" };
   }
 
   async validateFile(filePath) {
@@ -210,9 +210,9 @@ class QMOIJSONAutoFixer {
       JSON.parse(content);
       console.log(`✅ ${filePath} is valid JSON`);
       return { valid: true };
-    } catch (error) {
-      console.log(`❌ ${filePath} is invalid JSON: ${error.message}`);
-      return { valid: false, error: error.message };
+    } catch (_error) {
+      console.log(`❌ ${filePath} is invalid JSON: ${_error.message}`);
+      return { valid: false, _error: _error.message };
     }
   }
 
@@ -250,8 +250,8 @@ class QMOIJSONAutoFixer {
           files.push(fullPath);
         }
       }
-    } catch (error) {
-      console.log(`⚠️ Could not read directory ${directory}: ${error.message}`);
+    } catch (_error) {
+      console.log(`⚠️ Could not read directory ${directory}: ${_error.message}`);
     }
 
     return files;

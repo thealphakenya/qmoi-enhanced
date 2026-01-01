@@ -8,18 +8,18 @@ const root = path.resolve(__dirname, "..");
 const target = path.join(root, "app", "api");
 
 const paramNames = [
-  "req",
-  "res",
-  "request",
-  "response",
-  "params",
-  "query",
-  "options",
-  "error",
-  "err",
-  "e",
-  "ev",
-  "event",
+  "_req",
+  "_res",
+  "_request",
+  "_response",
+  "_params",
+  "_query",
+  "_options",
+  "_error",
+  "_err",
+  "_e",
+  "_ev",
+  "_event",
 ];
 
 function walk(dir) {
@@ -46,7 +46,7 @@ function fixFile(file) {
     const re = new RegExp("([(,s])" + name + "(s*[:=,)])", "g");
     src = src.replace(re, (m, p1, p2) => `${p1}_${name}${p2}`);
   }
-  // convert `: any` to `: unknown` (in parameter lists and var annotations)
+  // convert `: unknown` to `: unknown` (in parameter lists and var annotations)
   src = src.replace(/:\s*any(\b)/g, ": unknown$1");
 
   if (src !== original) {
@@ -60,8 +60,8 @@ const files = walk(target);
 for (const f of files) {
   try {
     fixFile(f);
-  } catch (e) {
-    console.error("error", f, e.message);
+  } catch (_e) {
+    console.error("_error", f, _e.message);
   }
 }
 

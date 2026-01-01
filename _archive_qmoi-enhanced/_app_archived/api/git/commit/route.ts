@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
       { error: "Failed to commit changes", details: error.message },
       { status: 500 },

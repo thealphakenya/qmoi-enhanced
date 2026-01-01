@@ -29,7 +29,7 @@ class DeploymentHealthCheck {
       // Check if Vercel CLI is available
       try {
         execSync("npx vercel --version", { stdio: "pipe" });
-      } catch (e) {
+      } catch (_e) {
         this.log("Installing Vercel CLI...");
         execSync("npm install -g vercel@latest", { stdio: "inherit" });
       }
@@ -49,25 +49,25 @@ class DeploymentHealthCheck {
         if (url) {
           // Test the deployment
           try {
-            const response = await axios.get(url, { timeout: 10000 });
+            const _response = await axios.get(url, { timeout: 10000 });
             this.log(
-              `✅ Vercel deployment healthy: ${url} (${response.status})`,
+              `✅ Vercel deployment healthy: ${url} (${_response.status})`,
             );
-            return { status: "healthy", url, statusCode: response.status };
-          } catch (error) {
+            return { status: "healthy", url, statusCode: _response.status };
+          } catch (_error) {
             this.log(
-              `❌ Vercel deployment unhealthy: ${url} - ${error.message}`,
+              `❌ Vercel deployment unhealthy: ${url} - ${_error.message}`,
             );
-            return { status: "unhealthy", url, error: error.message };
+            return { status: "unhealthy", url, _error: _error.message };
           }
         }
       }
 
       this.log("⚠️ No Vercel deployment found");
-      return { status: "unknown", error: "No deployment found" };
-    } catch (error) {
-      this.log(`❌ Vercel check failed: ${error.message}`);
-      return { status: "error", error: error.message };
+      return { status: "unknown", _error: "No deployment found" };
+    } catch (_error) {
+      this.log(`❌ Vercel check failed: ${_error.message}`);
+      return { status: "_error", _error: _error.message };
     }
   }
 
@@ -78,14 +78,14 @@ class DeploymentHealthCheck {
       // Check if build directory exists
       if (!fs.existsSync("build")) {
         this.log("❌ Build directory not found");
-        return { status: "missing", error: "Build directory not found" };
+        return { status: "missing", _error: "Build directory not found" };
       }
 
       // Check build files
       const buildFiles = fs.readdirSync("build");
       if (buildFiles.length === 0) {
         this.log("❌ Build directory is empty");
-        return { status: "empty", error: "Build directory is empty" };
+        return { status: "empty", _error: "Build directory is empty" };
       }
 
       // Check for critical files
@@ -98,15 +98,15 @@ class DeploymentHealthCheck {
         this.log(`❌ Missing critical build files: ${missingFiles.join(", ")}`);
         return {
           status: "incomplete",
-          error: `Missing critical files: ${missingFiles.join(", ")}`,
+          _error: `Missing critical files: ${missingFiles.join(", ")}`,
         };
       }
 
       this.log(`✅ Build status healthy (${buildFiles.length} files)`);
       return { status: "healthy", files: buildFiles.length };
-    } catch (error) {
-      this.log(`❌ Build check failed: ${error.message}`);
-      return { status: "error", error: error.message };
+    } catch (_error) {
+      this.log(`❌ Build check failed: ${_error.message}`);
+      return { status: "_error", _error: _error.message };
     }
   }
 
@@ -119,7 +119,7 @@ class DeploymentHealthCheck {
 
       if (!envExists) {
         this.log("❌ .env file not found");
-        return { status: "missing", error: ".env file not found" };
+        return { status: "missing", _error: ".env file not found" };
       }
 
       const envContent = fs.readFileSync(envFile, "utf8");
@@ -132,7 +132,7 @@ class DeploymentHealthCheck {
         this.log(`❌ Missing environment variables: ${missingVars.join(", ")}`);
         return {
           status: "incomplete",
-          error: `Missing environment variables: ${missingVars.join(", ")}`,
+          _error: `Missing environment variables: ${missingVars.join(", ")}`,
         };
       }
 
@@ -140,9 +140,9 @@ class DeploymentHealthCheck {
         `✅ Environment configuration healthy (${requiredVars.length} variables)`,
       );
       return { status: "healthy", variables: requiredVars.length };
-    } catch (error) {
-      this.log(`❌ Environment check failed: ${error.message}`);
-      return { status: "error", error: error.message };
+    } catch (_error) {
+      this.log(`❌ Environment check failed: ${_error.message}`);
+      return { status: "_error", _error: _error.message };
     }
   }
 
@@ -153,13 +153,13 @@ class DeploymentHealthCheck {
       // Check if node_modules exists
       if (!fs.existsSync("node_modules")) {
         this.log("❌ node_modules not found");
-        return { status: "missing", error: "node_modules not found" };
+        return { status: "missing", _error: "node_modules not found" };
       }
 
       // Check package.json
       if (!fs.existsSync("package.json")) {
         this.log("❌ package.json not found");
-        return { status: "missing", error: "package.json not found" };
+        return { status: "missing", _error: "package.json not found" };
       }
 
       // Check for critical dependencies
@@ -173,7 +173,7 @@ class DeploymentHealthCheck {
         this.log(`❌ Missing critical dependencies: ${missingDeps.join(", ")}`);
         return {
           status: "incomplete",
-          error: `Missing critical dependencies: ${missingDeps.join(", ")}`,
+          _error: `Missing critical dependencies: ${missingDeps.join(", ")}`,
         };
       }
 
@@ -184,9 +184,9 @@ class DeploymentHealthCheck {
         status: "healthy",
         dependencies: Object.keys(packageJson.dependencies || {}).length,
       };
-    } catch (error) {
-      this.log(`❌ Dependencies check failed: ${error.message}`);
-      return { status: "error", error: error.message };
+    } catch (_error) {
+      this.log(`❌ Dependencies check failed: ${_error.message}`);
+      return { status: "_error", _error: _error.message };
     }
   }
 
@@ -203,8 +203,8 @@ class DeploymentHealthCheck {
         execSync("npm run build", { stdio: "inherit" });
         fixes.push("build");
         this.log("✅ Build fix applied");
-      } catch (error) {
-        this.log(`❌ Build fix failed: ${error.message}`);
+      } catch (_error) {
+        this.log(`❌ Build fix failed: ${_error.message}`);
       }
     }
 
@@ -221,8 +221,8 @@ class DeploymentHealthCheck {
         fs.writeFileSync(".env", envContent);
         fixes.push("environment");
         this.log("✅ Environment fix applied");
-      } catch (error) {
-        this.log(`❌ Environment fix failed: ${error.message}`);
+      } catch (_error) {
+        this.log(`❌ Environment fix failed: ${_error.message}`);
       }
     }
 
@@ -234,8 +234,8 @@ class DeploymentHealthCheck {
         execSync("npm ci --legacy-peer-deps", { stdio: "inherit" });
         fixes.push("dependencies");
         this.log("✅ Dependencies fix applied");
-      } catch (error) {
-        this.log(`❌ Dependencies fix failed: ${error.message}`);
+      } catch (_error) {
+        this.log(`❌ Dependencies fix failed: ${_error.message}`);
       }
     }
 
@@ -245,8 +245,8 @@ class DeploymentHealthCheck {
       try {
         execSync("npx vercel --prod --yes --force", { stdio: "inherit" });
         this.log("✅ Redeployment successful");
-      } catch (error) {
-        this.log(`❌ Redeployment failed: ${error.message}`);
+      } catch (_error) {
+        this.log(`❌ Redeployment failed: ${_error.message}`);
       }
     }
 

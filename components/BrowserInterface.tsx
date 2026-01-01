@@ -113,48 +113,48 @@ export default function BrowserInterface() {
   };
 
   const setupEventListeners = () => {
-    // browserService.onTabCreated((tab: any) => {
+    // browserService.onTabCreated((tab: unknown) => {
     //   setTabs(prev => [...prev, tab]);
     // });
-    // browserService.onTabActivated(({ tabId }: any) => {
+    // browserService.onTabActivated(({ tabId }: unknown) => {
     //   setActiveTabId(tabId);
     //   setTabs(prev => prev.map(tab => ({ ...tab, isActive: tab.id === tabId })));
     // });
-    // browserService.onTabClosed(({ tabId }: any) => {
+    // browserService.onTabClosed(({ tabId }: unknown) => {
     //   setTabs(prev => prev.filter(tab => tab.id !== tabId));
     // });
-    // browserService.onNavigationStarted(({ tabId, url }: any) => {
+    // browserService.onNavigationStarted(({ tabId, url }: unknown) => {
     //   setTabs(prev => prev.map(tab =>
     //     tab.id === tabId ? { ...tab, isLoading: true, url } : tab
     //   ));
     // });
-    // browserService.onNavigationCompleted(({ tabId, url }: any) => {
+    // browserService.onNavigationCompleted(({ tabId, url }: unknown) => {
     //   setTabs(prev => prev.map(tab =>
     //     tab.id === tabId ? { ...tab, isLoading: false, url } : tab
     //   ));
     //   setUrlInput(url);
     // });
-    // browserService.onSearchSuggestions(({ tabId, suggestions }: any) => {
+    // browserService.onSearchSuggestions(({ tabId, suggestions }: unknown) => {
     //   setSearchSuggestions(suggestions);
     // });
-    // browserService.onContentSummary(({ tabId, summary }: any) => {
+    // browserService.onContentSummary(({ tabId, summary }: unknown) => {
     //   setContentSummary(summary);
     // });
-    // browserService.onLiveContent(({ tabId, content }: any) => {
+    // browserService.onLiveContent(({ tabId, content }: unknown) => {
     //   setLiveContent(content);
     // });
-    // browserService.onBookmarkAdded((bookmark: any) => {
+    // browserService.onBookmarkAdded((bookmark: unknown) => {
     //   setBookmarks(prev => [...prev, bookmark]);
     // });
-    // browserService.onDownloadStarted((download: any) => {
+    // browserService.onDownloadStarted((download: unknown) => {
     //   setDownloads(prev => [...prev, download]);
     // });
-    // browserService.onDownloadProgress(({ downloadId, progress }: any) => {
+    // browserService.onDownloadProgress(({ downloadId, progress }: unknown) => {
     //   setDownloads(prev => prev.map(d =>
     //     d.id === downloadId ? { ...d, progress } : d
     //   ));
     // });
-    // browserService.onDownloadCompleted((download: any) => {
+    // browserService.onDownloadCompleted((download: unknown) => {
     //   setDownloads(prev => prev.map(d =>
     //     d.id === download.id ? { ...d, status: 'completed' } : d
     //   ));
@@ -249,12 +249,12 @@ export default function BrowserInterface() {
     }
   };
 
-  const handleUpdateSettings = (newSettings: any) => {
+  const handleUpdateSettings = (newSettings: unknown) => {
     // browserService.updateSettings(newSettings);
     setSettings({ ...settings, ...newSettings });
   };
 
-  const handleUpdateAIFeature = (featureId: string, updates: any) => {
+  const handleUpdateAIFeature = (featureId: string, updates: unknown) => {
     // browserService.updateAIFeature(featureId, updates);
     setAiFeatures((prev) =>
       prev.map((f) => (f.id === featureId ? { ...f, ...updates } : f)),
@@ -286,7 +286,7 @@ export default function BrowserInterface() {
         size="sm"
         variant="ghost"
         className="h-6 w-6 p-0 hover:bg-red-100 hover:text-red-600"
-        onClick={(e: any) => {
+        onClick={(e: unknown) => {
           e.stopPropagation();
           handleCloseTab(tab.id);
         }}

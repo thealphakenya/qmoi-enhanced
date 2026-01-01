@@ -421,7 +421,7 @@ class LintReporter {
         message: "Critical issues detected that may cause runtime errors",
         actions: [
           "Fix undefined variables and imports",
-          "Remove unused variables and imports",
+          "Remove _unused variables and imports",
           "Resolve module resolution issues",
         ],
       });

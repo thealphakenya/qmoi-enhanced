@@ -17,7 +17,7 @@ if (!fs.existsSync(FINGERPRINTS_FILE)) {
   fs.writeFileSync(FINGERPRINTS_FILE, JSON.stringify([]));
 }
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   const headersList = await headers();
   const userAgent = headersList.get("user-agent") || "";
   const acceptLanguage = headersList.get("accept-language") || "";
@@ -33,9 +33,9 @@ export async function GET(request: NextRequest) {
   return NextResponse.json(fingerprint);
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
-    const body = await request.json();
+    const body = await _request.json();
     const { fingerprint, user, deviceInfo, location } = body;
 
     const fingerprints = JSON.parse(
@@ -52,9 +52,9 @@ export async function POST(request: NextRequest) {
     fs.writeFileSync(FINGERPRINTS_FILE, JSON.stringify(fingerprints, null, 2));
 
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 },
     );
   }

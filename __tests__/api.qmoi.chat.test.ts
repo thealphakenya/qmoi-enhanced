@@ -23,8 +23,8 @@ describe("/api/qmoi/chat route", () => {
       body: JSON.stringify({ messages: [{ role: "user", content: "hello" }] }),
     });
 
-    const res: any = await POST(req as any);
-    let body: any;
+    const res: unknown = await POST(req as any);
+    let body: unknown;
     if (res && typeof res.json === "function") {
       body = await res.json();
     } else if (res && res.body) {
@@ -52,8 +52,8 @@ describe("/api/qmoi/chat route", () => {
       body: JSON.stringify({ messages: [{ role: "user", content: "hello" }] }),
     });
 
-    const res: any = await POST(req as any);
-    let data: any;
+    const res: unknown = await POST(req as any);
+    let data: unknown;
     if (res && typeof res.json === "function") {
       data = await res.json();
     } else if (res && res.body) {

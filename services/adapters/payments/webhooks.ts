@@ -9,7 +9,7 @@ import { verifyWebhookSignature, markIdempotent, getIdempotent } from "./utils";
  */
 
 export async function handlePaymentWebhook(
-  req: {
+  _req: {
     headers: Record<string, string | undefined>;
     rawBody: Buffer | string;
   },
@@ -28,15 +28,15 @@ export async function handlePaymentWebhook(
     secret,
   );
   if (!ok) {
-    WalletManager.appendAudit({ event: "webhook_signature_invalid", gateway });
+    WalletManager.appendAudit({ _event: "webhook_signature_invalid", gateway });
     throw new Error("invalid webhook signature");
   }
 
   // Parse payload (best-effort) and enforce idempotency
-  let body: any;
+  let body: unknown;
   try {
     body = JSON.parse(payload);
-  } catch (e) {
+  } catch (_e) {
     body = { raw: payload };
   }
 
@@ -47,7 +47,7 @@ export async function handlePaymentWebhook(
   const existing = getIdempotent(idempotencyKey);
   if (existing) {
     WalletManager.appendAudit({
-      event: "webhook_duplicate",
+      _event: "webhook_duplicate",
       gateway,
       idempotencyKey,
     });
@@ -56,7 +56,7 @@ export async function handlePaymentWebhook(
 
   markIdempotent(idempotencyKey, { gateway, body });
   WalletManager.appendAudit({
-    event: "webhook_received",
+    _event: "webhook_received",
     gateway,
     idempotencyKey,
     body,
@@ -67,7 +67,7 @@ export async function handlePaymentWebhook(
     body.txId || (body.payment && body.payment.txId) || idempotencyKey;
   const result = await WalletManager.settleTransaction(txId);
   WalletManager.appendAudit({
-    event: "webhook_settle_result",
+    _event: "webhook_settle_result",
     gateway,
     txId,
     result,

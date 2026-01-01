@@ -41,7 +41,7 @@ async function testLanguagePlaceholders(languageHandler) {
   console.log("Testing qmoi/language placeholder behavior and gating...");
   process.env.NODE_ENV = "production";
   delete process.env.API_KEY;
-  const res = {
+  const _res = {
     status(code) {
       this.statusCode = code;
       return this;
@@ -53,10 +53,10 @@ async function testLanguagePlaceholders(languageHandler) {
   };
   await languageHandler(
     { method: "POST", body: { action: "translate" }, headers: {} },
-    res,
+    _res,
   );
   assert(
-    res.statusCode === 401 || (res.body && res.body.error),
+    _res.statusCode === 401 || (_res.body && _res.body._error),
     "language route should 401 without key",
   );
   process.env.API_KEY = "test-api";
@@ -84,8 +84,8 @@ async function testLanguagePlaceholders(languageHandler) {
   assert(
     res2.statusCode === 501 ||
       (res2.body &&
-        res2.body.error &&
-        res2.body.error.includes("Not implemented")),
+        res2.body._error &&
+        res2.body._error.includes("Not implemented")),
     "language route should return 501 despite key because placeholder",
   );
   console.log("language placeholder gating tests passed");
@@ -101,7 +101,7 @@ async function testQNewsGating(qnewsPOST) {
     json: async () => body,
   });
   assert(
-    resNoAuth?.status === 401 || (resNoAuth?.body && resNoAuth.body.error),
+    resNoAuth?.status === 401 || (resNoAuth?.body && resNoAuth.body._error),
     "qnews POST should be 401 without key",
   );
   process.env.API_KEY = "test-api";
@@ -174,10 +174,10 @@ async function runAll() {
     await testQNewsGating(qnewsPOST);
     console.log("All endpoint gating tests passed.");
     process.exit(0);
-  } catch (e) {
+  } catch (_e) {
     console.error(
       "Endpoint gating tests failed:",
-      e instanceof Error ? e.stack : e,
+      _e instanceof Error ? _e.stack : _e,
     );
     process.exit(1);
   }

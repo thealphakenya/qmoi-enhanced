@@ -2,7 +2,7 @@ import { EventEmitter } from "events";
 
 interface SiteGenerationRequest {
   id: string;
-  type: "affiliate" | "e-commerce" | "saas" | "content" | "custom";
+  type: "affiliate" | "_e-commerce" | "saas" | "content" | "custom";
   template: string;
   contentPreferences?: Record<string, any>;
   designPreferences?: Record<string, any>;
@@ -57,11 +57,11 @@ export class EnhancedSiteGenerationService extends EventEmitter {
   }
 
   public async requestSiteGeneration(
-    request: Omit<SiteGenerationRequest, "id" | "timestamp">,
+    _request: Omit<SiteGenerationRequest, "id" | "timestamp">
   ): Promise<string> {
     const id = `site_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     const fullRequest: SiteGenerationRequest = {
-      ...request,
+      ..._request,
       id,
       timestamp: new Date().toISOString(),
     };
@@ -74,13 +74,13 @@ export class EnhancedSiteGenerationService extends EventEmitter {
   private async processQueue(): Promise<void> {
     if (this.isProcessing || this.siteQueue.length === 0) return;
     this.isProcessing = true;
-    const request = this.siteQueue.shift();
-    if (request) {
+    const _request = this.siteQueue.shift();
+    if (_request) {
       try {
-        const result = await this.generateSite(request);
+        const result = await this.generateSite(_request);
         this.emit("siteGenerated", result);
-      } catch (error) {
-        this.emit("siteGenerationFailed", { request, error });
+      } catch (_error) {
+        this.emit("siteGenerationFailed", { _request, _error });
       } finally {
         this.isProcessing = false;
         this.processQueue();
@@ -91,11 +91,11 @@ export class EnhancedSiteGenerationService extends EventEmitter {
   }
 
   private async generateSite(
-    request: SiteGenerationRequest,
+    _request: SiteGenerationRequest
   ): Promise<SiteGenerationResult> {
     const logs: string[] = [];
     logs.push(
-      `Starting site generation for ${request.type} using template ${request.template}`,
+      `Starting site generation for ${_request.type} using template ${_request.template}`
     );
     // 1. Use best-practice template
     // 2. Optionally use AI for content/design
@@ -129,14 +129,14 @@ export class EnhancedSiteGenerationService extends EventEmitter {
         changes: ["Reduced JS bundle size by 30%"],
       },
     ];
-    if (request.aiContentEnabled) {
+    if (_request.aiContentEnabled) {
       enhancements.push({
         description: "AI-generated content",
         changes: [],
         aiContent: "High-quality AI-generated text",
       });
     }
-    if (request.aiDesignEnabled) {
+    if (_request.aiDesignEnabled) {
       enhancements.push({
         description: "AI-generated design",
         changes: [],
@@ -145,10 +145,10 @@ export class EnhancedSiteGenerationService extends EventEmitter {
     }
     logs.push("Enhancements applied:", JSON.stringify(enhancements));
     // Simulate site deployment
-    const url = `https://qcity-sites.com/${request.id}`;
+    const url = `https://qcity-sites.com/${_request.id}`;
     logs.push(`Site deployed at ${url}`);
     return {
-      siteId: request.id,
+      siteId: _request.id,
       url,
       audit,
       enhancements,

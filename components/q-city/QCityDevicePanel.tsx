@@ -175,11 +175,11 @@ export default function QCityDevicePanel() {
     Promise.all([
       axios
         .get("/api/qcity/listWorkspaces")
-        .then((res: any) => setGitpodWorkspaces(res.data.workspaces))
+        .then((res: unknown) => setGitpodWorkspaces(res.data.workspaces))
         .catch(() => setGitpodWorkspaces([])),
       axios
         .get("/api/qcity/listLocalWorkspaces")
-        .then((res: any) => setLocalWorkspaces(res.data.workspaces))
+        .then((res: unknown) => setLocalWorkspaces(res.data.workspaces))
         .catch(() => setLocalWorkspaces([])),
     ])
       .catch((err) => setWorkspaceError("Failed to fetch workspaces"))
@@ -211,10 +211,10 @@ export default function QCityDevicePanel() {
       const [gp, lp] = await Promise.all([
         axios
           .get("/api/qcity/listWorkspaces")
-          .then((res: any) => res.data.workspaces),
+          .then((res: unknown) => res.data.workspaces),
         axios
           .get("/api/qcity/listLocalWorkspaces")
-          .then((res: any) => res.data.workspaces),
+          .then((res: unknown) => res.data.workspaces),
       ]);
       setGitpodWorkspaces(gp);
       setLocalWorkspaces(lp);

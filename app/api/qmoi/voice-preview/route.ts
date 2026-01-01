@@ -10,15 +10,15 @@ interface PreviewBody {
   volume?: number; // percent 0-200
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
-    const body = (await request.json()) as PreviewBody;
+    const body = (await _request.json()) as PreviewBody;
     const { voiceId, text } = body;
     let { quality = "medium", volume = 100 } = body;
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { error: "Voice ID and text are required" },
+        { _error: "Voice ID and text are required" },
         { status: 400 },
       );
     }
@@ -41,10 +41,10 @@ export async function POST(request: NextRequest) {
     headers.set("Content-Length", String(audioContent.length));
 
     return new NextResponse(audioContent, { status: 200, headers });
-  } catch (error) {
-    console.error("Error generating voice preview:", error);
+  } catch (_error) {
+    console.error("Error generating voice preview:", _error);
     return NextResponse.json(
-      { error: "Failed to generate voice preview" },
+      { _error: "Failed to generate voice preview" },
       { status: 500 },
     );
   }
@@ -82,7 +82,7 @@ async function generateTTSAudio(
 
       if (!resp.ok) {
         console.warn(
-          "ElevenLabs TTS request failed, falling back to local silent audio",
+          "ElevenLabs TTS _request failed, falling back to local silent audio",
           await resp.text(),
         );
       } else {
@@ -100,7 +100,7 @@ async function generateTTSAudio(
       }
     } catch (_err) {
       console.warn(
-        "ElevenLabs integration error, falling back to silent audio",
+        "ElevenLabs integration _error, falling back to silent audio",
         _err,
       );
     }

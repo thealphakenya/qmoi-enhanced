@@ -27,8 +27,8 @@ const Q = require("../qmoi-friendship-integration.js");
       "Dry-run test completed. Check .qmoi_validation for proposals.",
     );
     process.exit(0);
-  } catch (err) {
-    console.error("Test failed:", err && err.stack ? err.stack : err);
+  } catch (_err) {
+    console.error("Test failed:", _err && _err.stack ? _err.stack : _err);
     process.exit(2);
   }
 })();

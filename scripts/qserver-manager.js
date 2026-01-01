@@ -15,7 +15,7 @@ class QServerManager {
   loadConfig() {
     try {
       return JSON.parse(fs.readFileSync("config/qserver-config.json", "utf8"));
-    } catch (error) {
+    } catch (_error) {
       console.log("QServer config not found, using defaults");
       return {
         qserver: {
@@ -55,7 +55,7 @@ class QServerManager {
     }
   }
 
-  async startServer(options = {}) {
+  async startServer(_options = {}) {
     if (!this.qserverEnabled) {
       console.log("QServer not enabled");
       return { success: false, reason: "QServer disabled" };
@@ -76,17 +76,17 @@ class QServerManager {
 
     // AI optimization
     if (this.aiOptimization.enabled) {
-      result.aiOptimization = await this.applyAIOptimization("start", options);
+      result.aiOptimization = await this.applyAIOptimization("start", _options);
     }
 
     // Auto-scaling setup
     if (this.autoScaling.enabled) {
-      result.autoScaling = await this.setupAutoScaling(options);
+      result.autoScaling = await this.setupAutoScaling(_options);
     }
 
     // Self-healing initialization
     if (this.selfHealing.enabled) {
-      result.selfHealing = await this.initializeSelfHealing(options);
+      result.selfHealing = await this.initializeSelfHealing(_options);
     }
 
     this.logToQServer("start", result);
@@ -108,7 +108,7 @@ class QServerManager {
     return this.startServer({ zeroDowntime: true });
   }
 
-  async applyAIOptimization(operation, options) {
+  async applyAIOptimization(operation, _options) {
     console.log("Applying AI optimization to QServer...");
     return {
       predictiveAllocation: true,
@@ -121,7 +121,7 @@ class QServerManager {
     };
   }
 
-  async setupAutoScaling(options) {
+  async setupAutoScaling(_options) {
     console.log("Setting up QServer auto-scaling...");
     return {
       horizontalScaling: true,
@@ -133,7 +133,7 @@ class QServerManager {
     };
   }
 
-  async initializeSelfHealing(options) {
+  async initializeSelfHealing(_options) {
     console.log("Initializing QServer self-healing...");
     return {
       errorDetection: true,
@@ -145,10 +145,10 @@ class QServerManager {
     };
   }
 
-  async executeInQServer(command, options = {}) {
+  async executeInQServer(command, _options = {}) {
     if (!this.qserverEnabled) {
       console.log("QServer not enabled, executing locally");
-      return this.executeLocally(command, options);
+      return this.executeLocally(command, _options);
     }
 
     console.log(`Executing in QServer with unlimited resources: ${command}`);
@@ -314,9 +314,9 @@ class QServerManager {
       });
       this.logToQServer("test-downloads", { output });
       return { success: true, output };
-    } catch (e) {
-      this.logToQServer("test-downloads-error", { error: e.toString() });
-      return { success: false, error: e.toString() };
+    } catch (_e) {
+      this.logToQServer("test-downloads-_error", { _error: _e.toString() });
+      return { success: false, _error: _e.toString() };
     }
   }
 
@@ -335,7 +335,7 @@ class QServerManager {
     console.log("QServer log (unlimited storage):", logEntry);
   }
 
-  executeLocally(command, options) {
+  executeLocally(command, _options) {
     console.log(`Executing locally: ${command}`);
     return {
       success: true,
@@ -421,8 +421,8 @@ if (process.argv[1] === new URL(import.meta.url).pathname) {
         );
       }
     })
-    .catch((error) => {
-      console.error("Error:", error);
+    .catch((_error) => {
+      console.error("Error:", _error);
       process.exit(1);
     });
 }

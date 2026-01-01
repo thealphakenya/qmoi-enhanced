@@ -16,24 +16,24 @@ const analytics = {
   errors: 0,
 };
 
-export async function GET_STRATEGIES(req: NextRequest) {
+export async function GET_STRATEGIES(_req: NextRequest) {
   // List earning strategies
   return NextResponse.json({ strategies });
 }
 
-export async function POST_MONITOR(req: NextRequest) {
+export async function POST_MONITOR(_req: NextRequest) {
   // Start/stop monitoring
-  const body = await req.json();
+  const body = await _req.json();
   monitoring = !!body.monitor;
   return NextResponse.json({ monitoring });
 }
 
-export async function GET_ANALYTICS(req: NextRequest) {
+export async function GET_ANALYTICS(_req: NextRequest) {
   // Get earning analytics
   return NextResponse.json({ analytics });
 }
 
-export async function POST_SELF_HEAL(req: NextRequest) {
+export async function POST_SELF_HEAL(_req: NextRequest) {
   // Trigger self-healing (stub)
   // TODO: Implement real self-healing logic
   analytics.errors = 0;

@@ -109,31 +109,31 @@ function triggerAIActions(reason) {
   fs.appendFileSync(ALERT_LOG, msg + '\n');
   console.log(msg);
   // Example: trigger project generation and marketing
-  exec('node scripts/qmoi-auto-enhancement-system.js --enhance-features', (err, stdout, stderr) => {
-    if (err) {
-      logAlert(`[AUTO] Failed to trigger project generation: ${err.message}`);
+  exec('node scripts/qmoi-auto-enhancement-system.js --enhance-features', (_err, stdout, stderr) => {
+    if (_err) {
+      logAlert(`[AUTO] Failed to trigger project generation: ${_err.message}`);
     } else {
       logAlert(`[AUTO] Project generation triggered. Output: ${stdout}`);
     }
   });
-  exec('node scripts/qmoi-auto-enhancement-system.js --enhance-ai', (err, stdout, stderr) => {
-    if (err) {
-      logAlert(`[AUTO] Failed to trigger AI enhancement: ${err.message}`);
+  exec('node scripts/qmoi-auto-enhancement-system.js --enhance-ai', (_err, stdout, stderr) => {
+    if (_err) {
+      logAlert(`[AUTO] Failed to trigger AI enhancement: ${_err.message}`);
     } else {
       logAlert(`[AUTO] AI enhancement triggered. Output: ${stdout}`);
     }
   });
-  exec('node scripts/qmoi-auto-enhancement-system.js --enhance-performance', (err, stdout, stderr) => {
-    if (err) {
-      logAlert(`[AUTO] Failed to trigger performance enhancement: ${err.message}`);
+  exec('node scripts/qmoi-auto-enhancement-system.js --enhance-performance', (_err, stdout, stderr) => {
+    if (_err) {
+      logAlert(`[AUTO] Failed to trigger performance enhancement: ${_err.message}`);
     } else {
       logAlert(`[AUTO] Performance enhancement triggered. Output: ${stdout}`);
     }
   });
   // Optionally, trigger marketing/distribution
-  exec('node scripts/qmoi-auto-enhancement-system.js --enhance-security', (err, stdout, stderr) => {
-    if (err) {
-      logAlert(`[AUTO] Failed to trigger security enhancement: ${err.message}`);
+  exec('node scripts/qmoi-auto-enhancement-system.js --enhance-security', (_err, stdout, stderr) => {
+    if (_err) {
+      logAlert(`[AUTO] Failed to trigger security enhancement: ${_err.message}`);
     } else {
       logAlert(`[AUTO] Security enhancement triggered. Output: ${stdout}`);
     }

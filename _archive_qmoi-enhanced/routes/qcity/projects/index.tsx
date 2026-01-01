@@ -7,7 +7,7 @@ export default function ProjectsPage() {
   const [showNewProjectForm, setShowNewProjectForm] = useState(false);
   const { projects, createProject } = useProjects();
 
-  const handleCreateProject = async (projectData: any) => {
+  const handleCreateProject = async (projectData: unknown) => {
     try {
       await createProject(projectData);
       setShowNewProjectForm(false);

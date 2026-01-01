@@ -1,4 +1,5 @@
 "use client";
+/* eslint-env browser */
 
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -83,13 +84,13 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const response = await fetch("/api/qmoi/voice-profiles", {
+      const _response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
       });
 
-      if (!response.ok) throw new Error("Failed to switch voice");
+      if (!_response.ok) throw new Error("Failed to switch voice");
 
       // Notify parent component
       onVoiceChange?.(voiceId);
@@ -100,7 +101,7 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -119,7 +120,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const response = await fetch("/api/qmoi/voice-preview", {
+      const _response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -130,11 +131,11 @@ export function VoiceSelector({
         }),
       });
 
-      if (!response.ok) throw new Error("Failed to play preview");
+      if (!_response.ok) throw new Error("Failed to play preview");
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -251,7 +252,7 @@ export function VoiceSelector({
               <label className="text-sm font-medium">Preview Text</label>
               <textarea
                 value={previewText}
-                onChange={(e) => setPreviewText(e.target.value)}
+                onChange={(_e) => setPreviewText(_e.target.value)}
                 className="w-full p-3 border rounded-md resize-none"
                 rows={3}
                 placeholder="Enter text to preview the voice..."

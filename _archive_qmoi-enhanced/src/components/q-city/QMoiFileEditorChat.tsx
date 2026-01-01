@@ -124,7 +124,7 @@ export default function QMoiFileEditorChat({
       } else {
         response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (e: any) {
+    } catch (e: unknown) {
       response = `Error: ${e.message}`;
     }
     setMessages((msgs) => [
@@ -146,7 +146,7 @@ export default function QMoiFileEditorChat({
       });
       const data = await res.json();
       response = data.success ? "Rollback successful." : `Error: ${data.error}`;
-    } catch (e: any) {
+    } catch (e: unknown) {
       response = `Error: ${e.message}`;
     }
     setMessages((msgs) => [
@@ -174,7 +174,7 @@ export default function QMoiFileEditorChat({
       response = data.success
         ? highlightCode(data.suggestion)
         : `Error: ${data.error}`;
-    } catch (e: any) {
+    } catch (e: unknown) {
       response = `Error: ${e.message}`;
     }
     setMessages((msgs) => [
@@ -200,7 +200,7 @@ export default function QMoiFileEditorChat({
       });
       const data = await res.json();
       response = data.success ? "Batch edit complete." : `Error: ${data.error}`;
-    } catch (e: any) {
+    } catch (e: unknown) {
       response = `Error: ${e.message}`;
     }
     setMessages((msgs) => [

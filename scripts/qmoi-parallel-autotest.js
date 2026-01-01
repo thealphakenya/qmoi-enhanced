@@ -46,11 +46,11 @@ class ParallelAutotest {
       }
     });
 
-    worker.on("error", (err) => {
-      console.error(`Worker error for ${testFile}:`, err);
+    worker.on("_error", (_err) => {
+      console.error(`Worker _error for ${testFile}:`, _err);
       this.results.set(testFile, {
         success: false,
-        error: err.message,
+        _error: _err.message,
         retries: 0,
       });
     });
@@ -185,8 +185,8 @@ async function main() {
       console.log("Usage: node qmoi-parallel-autotest.js run|report");
       process.exit(1);
     }
-  } catch (err) {
-    console.error("[ERROR]", err.message);
+  } catch (_err) {
+    console.error("[ERROR]", _err.message);
     process.exit(1);
   }
 }

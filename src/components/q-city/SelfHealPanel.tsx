@@ -1,3 +1,4 @@
+/* eslint-env browser */
 import React, { useState, useRef } from "react";
 import { useAuth } from "../../hooks/useAuth";
 
@@ -11,9 +12,9 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
-  const [options, setOptions] = useState({
+  const [_options, setOptions] = useState({
     forceClean: false,
     essentialsOnly: false,
     diagnosticsOnly: false,
@@ -44,35 +45,35 @@ const SelfHealPanel: React.FC = () => {
           "?token=" +
           encodeURIComponent(token) +
           "&opts=" +
-          encodeURIComponent(JSON.stringify(options)),
+          encodeURIComponent(JSON.stringify(_options)),
       );
       eventSourceRef.current = es;
       let logBuffer = "";
-      es.onmessage = (event) => {
-        if (event.data === "[DONE]") {
+      es.onmessage = (_event) => {
+        if (_event.data === "[DONE]") {
           es.close();
           setRunning(false);
           setSuccess(!logBuffer.includes("[ERROR]"));
           const entry = {
             ts: new Date().toISOString(),
             log: logBuffer,
-            options,
+            _options,
           };
           const newHistory = [entry, ...history].slice(0, 10);
           setHistory(newHistory);
           localStorage.setItem("selfHealHistory", JSON.stringify(newHistory));
         } else {
-          logBuffer += event.data + "\n";
+          logBuffer += _event.data + "\n";
           setLog(logBuffer);
         }
       };
-      es.onerror = (e) => {
-        setError("Stream error");
+      es.onerror = (_e) => {
+        setError("Stream _error");
         setRunning(false);
         es.close();
       };
-    } catch (err: any) {
-      setError(err.message || "Request failed");
+    } catch (_err: unknown) {
+      setError(_err.message || "Request failed");
       setSuccess(false);
       setRunning(false);
     }
@@ -122,7 +123,7 @@ const SelfHealPanel: React.FC = () => {
         <label>
           <input
             type="checkbox"
-            checked={options.forceClean}
+            checked={_options.forceClean}
             onChange={() => handleOptionChange("forceClean")}
           />{" "}
           Force Clean
@@ -130,7 +131,7 @@ const SelfHealPanel: React.FC = () => {
         <label style={{ marginLeft: 12 }}>
           <input
             type="checkbox"
-            checked={options.essentialsOnly}
+            checked={_options.essentialsOnly}
             onChange={() => handleOptionChange("essentialsOnly")}
           />{" "}
           Essentials Only
@@ -138,7 +139,7 @@ const SelfHealPanel: React.FC = () => {
         <label style={{ marginLeft: 12 }}>
           <input
             type="checkbox"
-            checked={options.diagnosticsOnly}
+            checked={_options.diagnosticsOnly}
             onChange={() => handleOptionChange("diagnosticsOnly")}
           />{" "}
           Diagnostics Only
@@ -162,8 +163,8 @@ const SelfHealPanel: React.FC = () => {
           Self-heal completed successfully.
         </div>
       )}
-      {error && (
-        <div style={{ color: "red", marginTop: 8 }}>Error: {error}</div>
+      {_error && (
+        <div style={{ color: "red", marginTop: 8 }}>Error: {_error}</div>
       )}
       {log && (
         <div style={{ marginTop: 16 }}>
@@ -198,7 +199,7 @@ const SelfHealPanel: React.FC = () => {
           >
             {history.map((h, i) => (
               <li key={i} style={{ marginBottom: 6 }}>
-                <b>{h.ts}</b> - <span>{JSON.stringify(h.options)}</span>
+                <b>{h.ts}</b> - <span>{JSON.stringify(h._options)}</span>
                 <button style={{ marginLeft: 8 }} onClick={() => setLog(h.log)}>
                   View Log
                 </button>

@@ -2,7 +2,7 @@ import nodemailer from "nodemailer";
 import axios from "axios";
 import { logger } from "../utils/logger";
 
-let twilioClient: any = null;
+let twilioClient: unknown = null;
 if (process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN) {
   twilioClient = require("twilio")(
     process.env.TWILIO_ACCOUNT_SID,
@@ -113,9 +113,9 @@ export class NotificationService {
         text: body,
       });
       logger.info("Email notification sent successfully");
-    } catch (error) {
-      logger.error("Failed to send email notification:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to send email notification:", _error);
+      throw _error;
     }
   }
 
@@ -125,9 +125,9 @@ export class NotificationService {
     try {
       await axios.post(this.config.slack.webhookUrl, { text: message });
       logger.info("Slack notification sent successfully");
-    } catch (error) {
-      logger.error("Failed to send Slack notification:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to send Slack notification:", _error);
+      throw _error;
     }
   }
 
@@ -137,9 +137,9 @@ export class NotificationService {
     try {
       await axios.post(this.config.discord.webhookUrl, { content: message });
       logger.info("Discord notification sent successfully");
-    } catch (error) {
-      logger.error("Failed to send Discord notification:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to send Discord notification:", _error);
+      throw _error;
     }
   }
 
@@ -153,9 +153,9 @@ export class NotificationService {
         text: message,
       });
       logger.info("Telegram notification sent successfully");
-    } catch (error) {
-      logger.error("Failed to send Telegram notification:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to send Telegram notification:", _error);
+      throw _error;
     }
   }
 
@@ -170,9 +170,9 @@ export class NotificationService {
         });
       }
       logger.info("WhatsApp notification sent successfully");
-    } catch (error) {
-      logger.error("Failed to send WhatsApp notification:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to send WhatsApp notification:", _error);
+      throw _error;
     }
   }
 
@@ -199,9 +199,9 @@ export class NotificationService {
     try {
       await Promise.all(notifications);
       logger.info("All notifications sent successfully");
-    } catch (error) {
-      logger.error("Some notifications failed to send:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Some notifications failed to send:", _error);
+      throw _error;
     }
   }
 
@@ -216,6 +216,6 @@ export class NotificationService {
     else if (eventType === "deploy_success") subject += "Deployment Success";
     else subject += eventType;
     await this.sendNotification(subject, details);
-    logger.info(`Critical event notification sent: ${eventType}`);
+    logger.info(`Critical _event notification sent: ${eventType}`);
   }
 }

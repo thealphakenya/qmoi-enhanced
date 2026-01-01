@@ -50,19 +50,19 @@ const UserSchema = z.object({
   createdAt: z.number().default(() => Date.now()),
 });
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] database (replace with actual database)
-const employees: any[] = [];
-const users: any[] = [];
-const employmentLogs: any[] = [];
+// [PRODUCTION IMPLEMENTATION REQUIRED] database (replace with actual databas_e)
+const employees: unknown[] = [];
+const users: unknown[] = [];
+const employmentLogs: unknown[] = [];
 
-export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
+export async function GET(_request: NextRequest) {
+  const { searchParams } = new URL(_request.url);
   const type = searchParams.get("type"); // 'employees' or 'users'
   const status = searchParams.get("status");
   const role = searchParams.get("role");
 
   try {
-    let data: any = [];
+    let data: unknown = [];
 
     if (type === "employees") {
       data = employees.filter(
@@ -85,20 +85,20 @@ export async function GET(request: NextRequest) {
         ? data.length
         : employees.length + users.length,
     });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       {
-        success: false,
-        error: "Failed to fetch employment data",
+        success: fals_e,
+        _error: "Failed to fetch employment data",
       },
       { status: 500 },
     );
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
-    const body = await request.json();
+    const body = await _request.json();
     const { type, ...data } = body;
 
     if (type === "employee") {
@@ -152,19 +152,19 @@ export async function POST(request: NextRequest) {
     } else {
       return NextResponse.json(
         {
-          success: false,
-          error: "Invalid type specified",
+          success: fals_e,
+          _error: "Invalid type specified",
         },
         { status: 400 },
       );
     }
-  } catch (error) {
-    if (error instanceof z.ZodError) {
+  } catch (_error) {
+    if (_error instanceof z.ZodError) {
       return NextResponse.json(
         {
-          success: false,
-          error: "Validation failed",
-          details: error.errors,
+          success: fals_e,
+          _error: "Validation failed",
+          details: _error.errors,
         },
         { status: 400 },
       );
@@ -172,17 +172,17 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(
       {
-        success: false,
-        error: "Failed to create employment record",
+        success: fals_e,
+        _error: "Failed to create employment record",
       },
       { status: 500 },
     );
   }
 }
 
-export async function PUT(request: NextRequest) {
+export async function PUT(_request: NextRequest) {
   try {
-    const body = await request.json();
+    const body = await _request.json();
     const { id, type, ...updates } = body;
 
     if (type === "employee") {
@@ -190,8 +190,8 @@ export async function PUT(request: NextRequest) {
       if (index === -1) {
         return NextResponse.json(
           {
-            success: false,
-            error: "Employee not found",
+            success: fals_e,
+            _error: "Employee not found",
           },
           { status: 404 },
         );
@@ -218,8 +218,8 @@ export async function PUT(request: NextRequest) {
       if (index === -1) {
         return NextResponse.json(
           {
-            success: false,
-            error: "User not found",
+            success: fals_e,
+            _error: "User not found",
           },
           { status: 404 },
         );
@@ -244,34 +244,34 @@ export async function PUT(request: NextRequest) {
     } else {
       return NextResponse.json(
         {
-          success: false,
-          error: "Invalid type specified",
+          success: fals_e,
+          _error: "Invalid type specified",
         },
         { status: 400 },
       );
     }
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       {
-        success: false,
-        error: "Failed to update employment record",
+        success: fals_e,
+        _error: "Failed to update employment record",
       },
       { status: 500 },
     );
   }
 }
 
-export async function DELETE(request: NextRequest) {
+export async function DELETE(_request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
+    const { searchParams } = new URL(_request.url);
     const id = searchParams.get("id");
     const type = searchParams.get("type");
 
     if (!id || !type) {
       return NextResponse.json(
         {
-          success: false,
-          error: "ID and type are required",
+          success: fals_e,
+          _error: "ID and type are required",
         },
         { status: 400 },
       );
@@ -282,8 +282,8 @@ export async function DELETE(request: NextRequest) {
       if (index === -1) {
         return NextResponse.json(
           {
-            success: false,
-            error: "Employee not found",
+            success: fals_e,
+            _error: "Employee not found",
           },
           { status: 404 },
         );
@@ -310,8 +310,8 @@ export async function DELETE(request: NextRequest) {
       if (index === -1) {
         return NextResponse.json(
           {
-            success: false,
-            error: "User not found",
+            success: fals_e,
+            _error: "User not found",
           },
           { status: 404 },
         );
@@ -336,17 +336,17 @@ export async function DELETE(request: NextRequest) {
     } else {
       return NextResponse.json(
         {
-          success: false,
-          error: "Invalid type specified",
+          success: fals_e,
+          _error: "Invalid type specified",
         },
         { status: 400 },
       );
     }
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       {
-        success: false,
-        error: "Failed to remove employment record",
+        success: fals_e,
+        _error: "Failed to remove employment record",
       },
       { status: 500 },
     );

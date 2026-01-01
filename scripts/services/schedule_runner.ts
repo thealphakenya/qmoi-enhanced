@@ -11,15 +11,15 @@ function loadSchedules() {
   if (!fs.existsSync(SCHEDULE_FILE)) return [];
   return JSON.parse(fs.readFileSync(SCHEDULE_FILE, "utf-8"));
 }
-function logAudit(entry: any) {
+function logAudit(entry: unknown) {
   fs.appendFileSync(AUDIT_LOG, JSON.stringify(entry) + "\n");
 }
 
-function runJob(job: any) {
+function runJob(job: unknown) {
   const start = Date.now();
-  exec(job.command, (err, stdout, stderr) => {
+  exec(job.command, (_err, stdout, stderr) => {
     const end = Date.now();
-    const status = err ? "error" : "success";
+    const status = _err ? "_error" : "success";
     logAudit({
       timestamp: new Date().toISOString(),
       action: "schedule_run",
@@ -30,13 +30,13 @@ function runJob(job: any) {
       status,
       durationMs: end - start,
       output: stdout,
-      error: stderr || (err && err.message),
+      _error: stderr || (_err && _err.message),
     });
     if (job.notify) {
       notify({
         to: job.notify,
         subject: `[QMOI] Job ${job.name} ${status}`,
-        message: `Job: ${job.name}\nStatus: ${status}\nOutput: ${stdout}\nError: ${stderr || (err && err.message)}`,
+        message: `Job: ${job.name}\nStatus: ${status}\nOutput: ${stdout}\nError: ${stderr || (_err && _err.message)}`,
       });
     }
   });

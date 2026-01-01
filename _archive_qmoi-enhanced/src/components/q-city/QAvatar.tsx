@@ -35,7 +35,7 @@ export default function QAvatar() {
   const [drag, setDrag] = useState({ x: 100, y: 100 });
   const ref = useRef<HTMLDivElement>(null);
 
-  function saveSettings(newSettings: any) {
+  function saveSettings(newSettings: unknown) {
     setSettings(newSettings);
     localStorage.setItem("qavatar-settings", JSON.stringify(newSettings));
   }

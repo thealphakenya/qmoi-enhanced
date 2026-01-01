@@ -49,7 +49,7 @@ interface UserProfile {
   id: string;
   name: string;
   faceData: FaceData[];
-  preferences: any;
+  preferences: unknown;
   lastSeen: Date;
   isActive: boolean;
 }
@@ -67,7 +67,7 @@ export class FaceRecognitionService {
   private detectionInterval: Timeout | null = null;
   private knownFaces: Map<string, UserProfile> = new Map();
   private currentFaces: FaceData[] = [];
-  private faceApi: any; // face-api.js or similar
+  private faceApi: unknown; // face-api.js or similar
   private consentGiven = false;
   // persistenceEnabled was removed; persistence respects consent and is
   // controlled by `consentGiven` and higher-level settings.
@@ -148,7 +148,7 @@ export class FaceRecognitionService {
               .withAgeAndGender()
               .withFaceDescriptor();
 
-            return detections.map((d: any) => ({
+            return detections.map((d: unknown) => ({
               box: d.detection.box,
               confidence: d.detection.score,
               landmarks: (d.landmarks && d.landmarks.positions) || [],
@@ -158,9 +158,9 @@ export class FaceRecognitionService {
               descriptor: d.descriptor || null,
             }));
           },
-          detectEmotions: async (det: any) => det.expressions || {},
-          estimateAge: async (det: any) => det.age || 0,
-          estimateGender: async (det: any) => det.gender || "unknown",
+          detectEmotions: async (det: unknown) => det.expressions || {},
+          estimateAge: async (det: unknown) => det.age || 0,
+          estimateGender: async (det: unknown) => det.gender || "unknown",
         };
 
         await this.faceApi.loadModels();
@@ -173,13 +173,13 @@ export class FaceRecognitionService {
         );
         this.faceApi = {
           loadModels: async () => true,
-          detectFaces: async (_: any) => [],
-          detectEmotions: async (_: any) => ({
+          detectFaces: async (_: unknown) => [],
+          detectEmotions: async (_: unknown) => ({
             neutral: 1,
             dominant: "neutral",
           }),
-          estimateAge: async (_: any) => 0,
-          estimateGender: async (_: any) => "unknown",
+          estimateAge: async (_: unknown) => 0,
+          estimateGender: async (_: unknown) => "unknown",
         };
       }
     } catch (error) {
@@ -282,7 +282,7 @@ export class FaceRecognitionService {
     await this.identifyFaces(processedFaces);
   }
 
-  private async processFaceDetection(detection: any): Promise<FaceData | null> {
+  private async processFaceDetection(detection: unknown): Promise<FaceData | null> {
     try {
       const faceData: FaceData = {
         id: `face-${Date.now()}-${Math.random()}`,
@@ -308,7 +308,7 @@ export class FaceRecognitionService {
     }
   }
 
-  private async detectEmotions(face: any): Promise<EmotionData> {
+  private async detectEmotions(face: unknown): Promise<EmotionData> {
     if (!this.config.enableEmotionDetection) {
       return {
         happy: 0,
@@ -349,7 +349,7 @@ export class FaceRecognitionService {
     }
   }
 
-  private async estimateAge(face: any): Promise<number> {
+  private async estimateAge(face: unknown): Promise<number> {
     if (!this.config.enableAgeEstimation) return 0;
 
     try {
@@ -360,7 +360,7 @@ export class FaceRecognitionService {
     }
   }
 
-  private async estimateGender(face: any): Promise<string> {
+  private async estimateGender(face: unknown): Promise<string> {
     if (!this.config.enableGenderDetection) return "unknown";
 
     try {

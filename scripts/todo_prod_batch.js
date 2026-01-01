@@ -63,7 +63,7 @@ function isAmbiguousLine(line) {
     let stat;
     try {
       stat = await fs.promises.stat(f);
-    } catch (e) {
+    } catch (_e) {
       continue;
     }
     results.scannedFiles++;

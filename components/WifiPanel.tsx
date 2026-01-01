@@ -185,7 +185,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
             "Failed to connect. Please check your password and try again.",
         );
       }
-    } catch (e: any) {
+    } catch (e: unknown) {
       setError(
         e.message ||
           "Failed to connect. Please check your network and try again.",
@@ -291,7 +291,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
           ? { ...s, enabled: false }
           : { enabled: false, interval: monitorInterval, last_result: null },
       );
-    } catch (e: any) {
+    } catch (e: unknown) {
       setError("Failed to stop monitoring.");
       addLog("Failed to stop monitoring.");
     }
@@ -527,7 +527,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                     alert(data.result);
                     addLog(data.result);
                   }
-                } catch (e: any) {
+                } catch (e: unknown) {
                   setError("Security test failed.");
                   addLog("Security test failed.");
                 }
@@ -626,7 +626,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                     alert(data.result);
                     addLog(data.result);
                   }
-                } catch (e: any) {
+                } catch (e: unknown) {
                   setError("Network scan failed.");
                   addLog("Network scan failed.");
                 }
@@ -661,7 +661,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                     alert(data.result);
                     addLog(data.result);
                   }
-                } catch (e: any) {
+                } catch (e: unknown) {
                   setError("Signal analysis failed.");
                   addLog("Signal analysis failed.");
                 }
@@ -694,7 +694,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                     alert(data.result);
                     addLog(data.result);
                   }
-                } catch (e: any) {
+                } catch (e: unknown) {
                   setError("IoT scan failed.");
                   addLog("IoT scan failed.");
                 }
@@ -719,7 +719,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                   const data = await res.json();
                   alert(data.result);
                   addLog(data.result);
-                } catch (e: any) {
+                } catch (e: unknown) {
                   setError("AI agent activation failed.");
                   addLog("AI agent activation failed.");
                 }

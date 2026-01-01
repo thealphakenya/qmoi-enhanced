@@ -48,7 +48,7 @@ export class ContextEngine {
     }
   }
 
-  learnFromInteraction(userId: string, interaction: any) {
+  learnFromInteraction(userId: string, interaction: unknown) {
     // Analyze interaction and update context
     // Example: sentiment analysis, mood tracking
     if (this.contexts[userId]) {

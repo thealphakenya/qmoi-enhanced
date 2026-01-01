@@ -49,7 +49,7 @@ export class WhatsAppService {
     new Map();
   private pendingApprovals: Map<
     string,
-    { message: Message; resolve: (approved: boolean) => void }
+    { message: Message | null; resolve: (approved: boolean) => void }
   > = new Map();
 
   private constructor() {
@@ -237,11 +237,11 @@ Time: ${this.qrCodeStatus.timestamp.toLocaleString()}`;
 
       // Send backup verification
       await this.sendBackupVerification();
-    } catch (error) {
-      console.error("Error sending QR code notifications:", error);
+    } catch (_error) {
+      console.error("Error sending QR code notifications:", _error);
       this.qrCodeStatus.notifications.status = "failed";
       const errorMessage =
-        error instanceof Error ? error.message : "Unknown error";
+        _error instanceof Error ? _error.message : "Unknown _error";
       await this.sendErrorNotification(
         "Failed to send QR notifications",
         errorMessage
@@ -277,9 +277,9 @@ Time: ${new Date().toLocaleString()}`;
       console.log(`📨 Received message from ${message.from}: ${message.body}`);
 
       // Check for auto-responders
-      const response = await this.processAutoResponders(message);
-      if (response) {
-        await message.reply(response);
+      const _response = await this.processAutoResponders(message);
+      if (_response) {
+        await message.reply(_response);
         return;
       }
 
@@ -293,11 +293,11 @@ Time: ${new Date().toLocaleString()}`;
       if (this.shouldForwardToMaster(message)) {
         await this.forwardToMaster(message);
       }
-    } catch (error) {
-      console.error("Error handling incoming message:", error);
+    } catch (_error) {
+      console.error("Error handling incoming message:", _error);
       const errorMessage =
-        error instanceof Error ? error.message : "Unknown error";
-      await this.sendErrorNotification("Message handling error", errorMessage);
+        _error instanceof Error ? _error.message : "Unknown _error";
+      await this.sendErrorNotification("Message handling _error", errorMessage);
     }
   }
 
@@ -306,22 +306,22 @@ Time: ${new Date().toLocaleString()}`;
   ): Promise<string | null> {
     const body = message.body.toLowerCase();
 
-    // Balance query
+    // Balance _query
     if (body.includes("balance") || body.includes("pesapal")) {
       return await this.getBalanceResponse();
     }
 
-    // Status query
+    // Status _query
     if (body.includes("status") || body.includes("system")) {
       return await this.getSystemStatusResponse();
     }
 
-    // Earnings query
+    // Earnings _query
     if (body.includes("earnings") || body.includes("profit")) {
       return await this.getEarningsResponse();
     }
 
-    // Help query
+    // Help _query
     if (body.includes("help") || body.includes("commands")) {
       return this.getHelpResponse();
     }
@@ -462,7 +462,7 @@ Time: ${new Date().toLocaleString()}`;
     const keywords = [
       "urgent",
       "emergency",
-      "error",
+      "_error",
       "problem",
       "issue",
       "help",
@@ -493,7 +493,7 @@ Message: ${message.body}
 💳 Account Status: Active
 📊 Last Updated: ${new Date().toLocaleString()}
 🔄 Auto-withdrawal: Enabled`;
-    } catch (error) {
+    } catch (_error) {
       return "❌ Unable to fetch balance at this time.";
     }
   }
@@ -607,9 +607,9 @@ Master Commands:
     try {
       console.log("🚀 Starting WhatsApp service...");
       await this.client.initialize();
-    } catch (error) {
-      console.error("Error starting WhatsApp service:", error);
-      throw error;
+    } catch (_error) {
+      console.error("Error starting WhatsApp service:", _error);
+      throw _error;
     }
   }
 
@@ -618,8 +618,8 @@ Master Commands:
       console.log("🛑 Stopping WhatsApp service...");
       await this.client.destroy();
       this.isConnected = false;
-    } catch (error) {
-      console.error("Error stopping WhatsApp service:", error);
+    } catch (_error) {
+      console.error("Error stopping WhatsApp service:", _error);
     }
   }
 
@@ -632,9 +632,9 @@ Master Commands:
       const chatId = to.includes("@c.us") ? to : `${to}@c.us`;
       await this.client.sendMessage(chatId, message);
       console.log(`📤 Message sent to ${to}`);
-    } catch (error) {
-      console.error("Error sending WhatsApp message:", error);
-      throw error;
+    } catch (_error) {
+      console.error("Error sending WhatsApp message:", _error);
+      throw _error;
     }
   }
 
@@ -658,8 +658,8 @@ Master Commands:
       try {
         await this.sendMessage(contact, message);
         await this.sleep(1000); // Delay between messages
-      } catch (error) {
-        console.error(`Error broadcasting to ${contact}:`, error);
+      } catch (_error) {
+        console.error(`Error broadcasting to ${contact}:`, _error);
       }
     }
   }
@@ -728,14 +728,14 @@ Master Commands:
 
   public async requestApproval(
     userId: string,
-    request: string
+    _request: string
   ): Promise<boolean> {
     // Always auto-approve master/sister
     if (userId === this.config.masterPhone || userId === this.config.leahPhone)
       return true;
-    // Send approval request to master
+    // Send approval _request to master
     const approvalId = `${userId}-${Date.now()}`;
-    const approvalMessage = `⚠️ Approval Required\nUser: ${userId}\nRequest: ${request}\nReply with /approve ${approvalId} or /deny ${approvalId}`;
+    const approvalMessage = `⚠️ Approval Required\nUser: ${userId}\nRequest: ${_request}\nReply with /approve ${approvalId} or /deny ${approvalId}`;
     await this.sendMessage(this.config.masterPhone, approvalMessage);
     return new Promise((resolve) => {
       this.pendingApprovals.set(approvalId, { message: null, resolve });
@@ -765,7 +765,7 @@ Master Commands:
     this.pendingApprovals.set(approvalId, {
       message: {
         from: userId,
-        body: `Wallet request for ${username} (${email})`,
+        body: `Wallet _request for ${username} (${email})`,
       },
       resolve: (approved: boolean) => {
         // Integrate with backend: approve/deny wallet creation
@@ -773,18 +773,18 @@ Master Commands:
         if (approved) {
           this.sendMessage(
             userId,
-            "✅ Your wallet request has been approved by the master."
+            "✅ Your wallet _request has been approved by the master."
           );
         } else {
           this.sendMessage(
             userId,
-            "❌ Your wallet request was denied by the master."
+            "❌ Your wallet _request was denied by the master."
           );
         }
       },
     });
     await this
-      .sendMessageToMaster(`👤 Wallet request from ${username} (${email}).
+      .sendMessageToMaster(`👤 Wallet _request from ${username} (${email}).
 Reply with /approve ${approvalId} or /deny ${approvalId}.`);
     // Log action
   }
@@ -799,7 +799,7 @@ Reply with /approve ${approvalId} or /deny ${approvalId}.`);
     this.pendingApprovals.set(approvalId, {
       message: {
         from: userId,
-        body: `Fund transfer request: ${amount} via ${platform}`,
+        body: `Fund transfer _request: ${amount} via ${platform}`,
       },
       resolve: (approved: boolean) => {
         // Integrate with backend: approve/deny transfer
@@ -812,13 +812,13 @@ Reply with /approve ${approvalId} or /deny ${approvalId}.`);
         } else {
           this.sendMessage(
             userId,
-            `❌ Your fund transfer request was denied by the master.`
+            `❌ Your fund transfer _request was denied by the master.`
           );
         }
       },
     });
     await this
-      .sendMessageToMaster(`💸 Fund transfer request from user ${userId}: ${amount} via ${platform}.
+      .sendMessageToMaster(`💸 Fund transfer _request from user ${userId}: ${amount} via ${platform}.
 Reply with /approve ${approvalId} or /deny ${approvalId}.`);
     // Log action
   }

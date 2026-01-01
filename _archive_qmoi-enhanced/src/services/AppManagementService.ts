@@ -590,7 +590,7 @@ export class AppManagementService {
     return Math.random() > 0.2; // 80% chance of having permission
   }
 
-  private async fixIssue(app: AppInfo, issue: any): Promise<void> {
+  private async fixIssue(app: AppInfo, issue: unknown): Promise<void> {
     // Simulate fixing issues
     await this.sleep(1000);
 
@@ -717,7 +717,7 @@ export class AppManagementService {
   }
 
   public onTroubleshootingCompleted(
-    callback: (data: { appId: string; issues: any[] }) => void,
+    callback: (data: { appId: string; issues: unknown[] }) => void,
   ): void {
     this.eventEmitter.on("troubleshootingCompleted", callback);
   }

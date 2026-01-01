@@ -127,7 +127,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
       recognitionRef.current.interimResults = true;
       recognitionRef.current.lang = language === "sw" ? "sw-KE" : "en-US";
 
-      recognitionRef.current.onresult = (event: any) => {
+      recognitionRef.current.onresult = (event: unknown) => {
         let finalTranscript = "";
         for (let i = event.resultIndex; i < event.results.length; i++) {
           if (event.results[i].isFinal) {
@@ -139,7 +139,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
         }
       };
 
-      recognitionRef.current.onerror = (event: any) => {
+      recognitionRef.current.onerror = (event: unknown) => {
         console.error("Speech recognition error:", event.error);
         setIsListening(false);
       };

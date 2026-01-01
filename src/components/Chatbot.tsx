@@ -46,7 +46,7 @@ export function Chatbot() {
     setInput("");
     setLoading(true);
 
-    // Call model endpoint and request speak (SSML) when supported
+    // Call model endpoint and _request speak (SSML) when supported
     try {
       const wantSpeak = supportsSpeechSynthesis();
       const { postModel } = await import("../services/qmoiApi");
@@ -81,7 +81,7 @@ export function Chatbot() {
         // best-effort playback
         playSSML(data.ssml);
       }
-    } catch (err) {
+    } catch (_err) {
       const botMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         text: "Error: could not reach QMOI backend",
@@ -125,8 +125,8 @@ export function Chatbot() {
           type="text"
           placeholder="Type your message..."
           value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
+          onChange={(_e) => setInput(_e.target.value)}
+          onKeyPress={(_e) => _e.key === "Enter" && handleSendMessage()}
           disabled={loading}
         />
         <button onClick={handleSendMessage} disabled={loading || !input.trim()}>

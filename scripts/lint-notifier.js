@@ -29,8 +29,8 @@ class LintNotifier {
     try {
       const content = readFileSync(this.errorLogFile, "utf8");
       return JSON.parse(content);
-    } catch (error) {
-      this.log(`Error reading error log: ${error.message}`, "error");
+    } catch (_error) {
+      this.log(`Error reading _error log: ${_error.message}`, "_error");
       return null;
     }
   }
@@ -47,14 +47,14 @@ class LintNotifier {
       } else if (process.platform === "darwin") {
         // macOS notification
         execSync(
-          `osascript -e 'display notification "${message}" with title "${title}"'`,
+          `osascript -_e 'display notification "${message}" with title "${title}"'`,
           { stdio: "ignore" },
         );
       } else {
         // Linux notification
         execSync(`notify-send "${title}" "${message}"`, { stdio: "ignore" });
       }
-    } catch (error) {
+    } catch (_error) {
       // Fallback to console output
       console.log(`\n🔔 NOTIFICATION: ${title}`);
       console.log(`   ${message}\n`);
@@ -76,10 +76,10 @@ class LintNotifier {
           stdio: "ignore",
         });
       }
-    } catch (error) {
+    } catch (_error) {
       this.log(
-        `Error sending WhatsApp notification: ${error.message}`,
-        "error",
+        `Error sending WhatsApp notification: ${_error.message}`,
+        "_error",
       );
     }
   }
@@ -103,7 +103,7 @@ class LintNotifier {
 
     const report = this.readErrorLog();
     if (!report) {
-      this.log("No error report found. Run yarn lint:auto first.", "warning");
+      this.log("No _error report found. Run yarn lint:auto first.", "warning");
       return;
     }
 
@@ -126,9 +126,9 @@ class LintNotifier {
 
     if (report.summary.critical > 0) {
       console.log("\n🚨 Critical Issues:");
-      report.errors.critical.slice(0, 3).forEach((error, index) => {
+      report.errors.critical.slice(0, 3).forEach((_error, index) => {
         console.log(
-          `   ${index + 1}. ${error.file}:${error.line}:${error.column} - ${error.rule}`,
+          `   ${index + 1}. ${_error.file}:${_error.line}:${_error.column} - ${_error.rule}`,
         );
       });
     }
@@ -150,7 +150,7 @@ class LintNotifier {
 
 // Run the notifier
 const notifier = new LintNotifier();
-notifier.run().catch((error) => {
-  console.error("Fatal error in notifier:", error);
+notifier.run().catch((_error) => {
+  console.error("Fatal _error in notifier:", _error);
   process.exit(1);
 });

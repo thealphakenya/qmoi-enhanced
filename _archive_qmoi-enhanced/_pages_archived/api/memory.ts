@@ -8,10 +8,10 @@ function readMemory(user?: string) {
   if (!fs.existsSync(MEMORY_FILE)) return [];
   const all = JSON.parse(fs.readFileSync(MEMORY_FILE, "utf-8"));
   if (!user) return all;
-  return all.filter((entry: any) => entry.user === user);
+  return all.filter((entry: unknown) => entry.user === user);
 }
 
-function saveMemory(entry: any) {
+function saveMemory(entry: unknown) {
   let all = [];
   if (fs.existsSync(MEMORY_FILE)) {
     all = JSON.parse(fs.readFileSync(MEMORY_FILE, "utf-8"));

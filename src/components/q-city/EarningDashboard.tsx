@@ -22,14 +22,14 @@ const EarningDashboard: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchStrategies = async () => {
-    const res = await fetch("/api/earning/strategies");
-    const data = await res.json();
+    const _res = await fetch("/api/earning/strategies");
+    const data = await _res.json();
     setStrategies(data.strategies || []);
   };
 
   const fetchAnalytics = async () => {
-    const res = await fetch("/api/earning/analytics");
-    const data = await res.json();
+    const _res = await fetch("/api/earning/analytics");
+    const data = await _res.json();
     setAnalytics(data.analytics || null);
   };
 
@@ -39,21 +39,21 @@ const EarningDashboard: React.FC = () => {
   }, []);
 
   const toggleMonitoring = async () => {
-    const res = await fetch("/api/earning/monitor", {
+    const _res = await fetch("/api/earning/monitor", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ monitor: !monitoring }),
     });
-    const data = await res.json();
+    const data = await _res.json();
     setMonitoring(data.monitoring);
     setStatus(data.monitoring ? "Monitoring started" : "Monitoring stopped");
   };
 
   const selfHeal = async () => {
-    const res = await fetch("/api/earning/self-heal", {
+    const _res = await fetch("/api/earning/self-heal", {
       method: "POST",
     });
-    const data = await res.json();
+    const data = await _res.json();
     setStatus(data.message || "Self-healing triggered");
     fetchAnalytics();
   };

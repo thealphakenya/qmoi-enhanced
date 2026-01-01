@@ -41,8 +41,8 @@ class LintReporter {
         stdio: "pipe",
       });
       return { success: true, output: "" };
-    } catch (error) {
-      return { success: false, output: error.stdout || error.stderr || "" };
+    } catch (_error) {
+      return { success: false, output: _error.stdout || _error.stderr || "" };
     }
   }
 
@@ -59,9 +59,9 @@ class LintReporter {
         continue;
       }
 
-      // Parse error details
+      // Parse _error details
       const errorMatch = line.match(
-        /^\s*(\d+):(\d+)\s+(error|warning)\s+(.+?)\s+(.+)$/,
+        /^\s*(\d+):(\d+)\s+(_error|warning)\s+(.+?)\s+(.+)$/,
       );
       if (errorMatch) {
         const [, lineNum, colNum, severity, rule, message] = errorMatch;
@@ -92,8 +92,8 @@ class LintReporter {
       accessibility: [],
     };
 
-    for (const error of errors) {
-      const rule = error.rule.toLowerCase();
+    for (const _error of errors) {
+      const rule = _error.rule.toLowerCase();
 
       // Critical errors
       if (
@@ -101,7 +101,7 @@ class LintReporter {
         rule.includes("import/no-unresolved") ||
         rule.includes("no-unused-vars")
       ) {
-        categories.critical.push(error);
+        categories.critical.push(_error);
       }
       // Security issues
       else if (
@@ -109,7 +109,7 @@ class LintReporter {
         rule.includes("no-eval") ||
         rule.includes("no-implied-eval")
       ) {
-        categories.security.push(error);
+        categories.security.push(_error);
       }
       // Performance issues
       else if (
@@ -117,11 +117,11 @@ class LintReporter {
         rule.includes("no-console") ||
         rule.includes("no-debugger")
       ) {
-        categories.performance.push(error);
+        categories.performance.push(_error);
       }
       // Accessibility issues
       else if (rule.includes("jsx-a11y") || rule.includes("accessibility")) {
-        categories.accessibility.push(error);
+        categories.accessibility.push(_error);
       }
       // High priority
       else if (
@@ -129,7 +129,7 @@ class LintReporter {
         rule.includes("no-debugger") ||
         rule.includes("no-alert")
       ) {
-        categories.high.push(error);
+        categories.high.push(_error);
       }
       // Style issues
       else if (
@@ -138,7 +138,7 @@ class LintReporter {
         rule.includes("indent") ||
         rule.includes("trailing-spaces")
       ) {
-        categories.style.push(error);
+        categories.style.push(_error);
       }
       // Medium priority
       else if (
@@ -146,11 +146,11 @@ class LintReporter {
         rule.includes("no-var") ||
         rule.includes("eqeqeq")
       ) {
-        categories.medium.push(error);
+        categories.medium.push(_error);
       }
       // Low priority
       else {
-        categories.low.push(error);
+        categories.low.push(_error);
       }
     }
 
@@ -233,24 +233,24 @@ class LintReporter {
             border-bottom: 2px solid #667eea;
             padding-bottom: 10px;
         }
-        .error-item {
+        ._error-item {
             background: #f8f9fa;
             margin: 10px 0;
             padding: 15px;
             border-radius: 5px;
             border-left: 4px solid #667eea;
         }
-        .error-file {
+        ._error-file {
             font-weight: bold;
             color: #333;
             margin-bottom: 5px;
         }
-        .error-details {
+        ._error-details {
             color: #666;
             font-family: 'Courier New', monospace;
             font-size: 0.9em;
         }
-        .error-message {
+        ._error-message {
             color: #dc3545;
             margin-top: 5px;
         }
@@ -303,11 +303,11 @@ class LintReporter {
             <h2>🚨 Critical Issues (${categories.critical.length})</h2>
             ${categories.critical
               .map(
-                (error) => `
-                <div class="error-item">
-                    <div class="error-file">${error.file}:${error.line}:${error.column}</div>
-                    <div class="error-details">${error.rule}</div>
-                    <div class="error-message">${error.message}</div>
+                (_error) => `
+                <div class="_error-item">
+                    <div class="_error-file">${_error.file}:${_error.line}:${_error.column}</div>
+                    <div class="_error-details">${_error.rule}</div>
+                    <div class="_error-message">${_error.message}</div>
                 </div>
             `,
               )
@@ -324,11 +324,11 @@ class LintReporter {
             <h2>⚠️ High Priority Issues (${categories.high.length})</h2>
             ${categories.high
               .map(
-                (error) => `
-                <div class="error-item">
-                    <div class="error-file">${error.file}:${error.line}:${error.column}</div>
-                    <div class="error-details">${error.rule}</div>
-                    <div class="error-message">${error.message}</div>
+                (_error) => `
+                <div class="_error-item">
+                    <div class="_error-file">${_error.file}:${_error.line}:${_error.column}</div>
+                    <div class="_error-details">${_error.rule}</div>
+                    <div class="_error-message">${_error.message}</div>
                 </div>
             `,
               )
@@ -345,11 +345,11 @@ class LintReporter {
             <h2>📝 Medium Priority Issues (${categories.medium.length})</h2>
             ${categories.medium
               .map(
-                (error) => `
-                <div class="error-item">
-                    <div class="error-file">${error.file}:${error.line}:${error.column}</div>
-                    <div class="error-details">${error.rule}</div>
-                    <div class="error-message">${error.message}</div>
+                (_error) => `
+                <div class="_error-item">
+                    <div class="_error-file">${_error.file}:${_error.line}:${_error.column}</div>
+                    <div class="_error-details">${_error.rule}</div>
+                    <div class="_error-message">${_error.message}</div>
                 </div>
             `,
               )
@@ -366,11 +366,11 @@ class LintReporter {
             <h2>💡 Low Priority Issues (${categories.low.length})</h2>
             ${categories.low
               .map(
-                (error) => `
-                <div class="error-item">
-                    <div class="error-file">${error.file}:${error.line}:${error.column}</div>
-                    <div class="error-details">${error.rule}</div>
-                    <div class="error-message">${error.message}</div>
+                (_error) => `
+                <div class="_error-item">
+                    <div class="_error-file">${_error.file}:${_error.line}:${_error.column}</div>
+                    <div class="_error-details">${_error.rule}</div>
+                    <div class="_error-message">${_error.message}</div>
                 </div>
             `,
               )
@@ -421,7 +421,7 @@ class LintReporter {
         message: "Critical issues detected that may cause runtime errors",
         actions: [
           "Fix undefined variables and imports",
-          "Remove unused variables and imports",
+          "Remove _unused variables and imports",
           "Resolve module resolution issues",
         ],
       });
@@ -519,9 +519,9 @@ class LintReporter {
 
     if (categories.critical.length > 0) {
       console.log("\n🚨 Critical Issues:");
-      categories.critical.slice(0, 3).forEach((error, index) => {
+      categories.critical.slice(0, 3).forEach((_error, index) => {
         console.log(
-          `   ${index + 1}. ${error.file}:${error.line}:${error.column} - ${error.rule}`,
+          `   ${index + 1}. ${_error.file}:${_error.line}:${_error.column} - ${_error.rule}`,
         );
       });
       if (categories.critical.length > 3) {
@@ -537,7 +537,7 @@ class LintReporter {
     if (categories.critical.length > 0) {
       this.log(
         "❌ Critical errors found. Please fix them before proceeding.",
-        "error",
+        "_error",
       );
       process.exit(1);
     } else if (categories.high.length > 0) {
@@ -558,7 +558,7 @@ class LintReporter {
 
 // Run the reporter
 const reporter = new LintReporter();
-reporter.run().catch((error) => {
-  console.error("Fatal error in lint reporter:", error);
+reporter.run().catch((_error) => {
+  console.error("Fatal _error in lint reporter:", _error);
   process.exit(1);
 });

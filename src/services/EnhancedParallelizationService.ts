@@ -14,8 +14,8 @@ interface ParallelTask {
   estimatedDuration: number;
   startTime?: string;
   endTime?: string;
-  result?: any;
-  error?: string;
+  result?: unknown;
+  _error?: string;
 }
 
 interface ParallelExecutionConfig {
@@ -39,7 +39,7 @@ interface DashboardData {
   activeTasks: ParallelTask[];
   systemHealth: SystemHealth;
   taskQueue: ParallelTask[];
-  recentResults: any[];
+  recentResults: unknown[];
   performanceMetrics: {
     tasksPerMinute: number;
     successRate: number;
@@ -55,7 +55,7 @@ export class EnhancedParallelizationService extends EventEmitter {
   private config: ParallelExecutionConfig;
   private systemHealth: SystemHealth;
   private isRunning = false;
-  private healthCheckInterval?: NodeJS.Timeout;
+  private healthCheckInterval?: ReturnType<typeof setInterval>;
 
   private constructor() {
     super();
@@ -92,7 +92,7 @@ export class EnhancedParallelizationService extends EventEmitter {
   public async submitTask(
     taskType: ParallelTask["type"],
     priority: ParallelTask["priority"] = "medium",
-    data?: any,
+    data?: unknown
   ): Promise<string> {
     const task: ParallelTask = {
       id: `task_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -164,12 +164,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (error) {
+    } catch (_error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(error);
-      task.error = errMsg;
+      const errMsg = _error instanceof Error ? _error.message : String(_error);
+      task._error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, error: errMsg });
+      this.emit("taskFailed", { task, _error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -185,8 +185,8 @@ export class EnhancedParallelizationService extends EventEmitter {
       const timeout = setTimeout(() => {
         reject(
           new Error(
-            `Task ${task.id} timed out after ${this.config.taskTimeout}ms`,
-          ),
+            `Task ${task.id} timed out after ${this.config.taskTimeout}ms`
+          )
         );
       }, this.config.taskTimeout);
 
@@ -195,9 +195,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((error) => {
+        .catch((_error) => {
           clearTimeout(timeout);
-          reject(error);
+          reject(_error);
         });
     });
   }
@@ -211,7 +211,7 @@ export class EnhancedParallelizationService extends EventEmitter {
       this.emit("taskProgress", { taskId: task.id, progress });
 
       await new Promise((resolve) =>
-        setTimeout(resolve, task.estimatedDuration / 10),
+        setTimeout(resolve, task.estimatedDuration / 10)
       );
     }
 

@@ -6,13 +6,13 @@ import { promisify } from "util";
 
 const execAsync = promisify(exec);
 
-export async function POST(req: NextRequest) {
+export async function POST(_req: NextRequest) {
   try {
-    const { message, files = ["*"] } = await req.json();
+    const { message, files = ["*"] } = await _req.json();
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { error: "Commit message is required" },
+        { _error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -40,9 +40,9 @@ export async function POST(req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (error: any) {
+  } catch (_error: unknown) {
     return NextResponse.json(
-      { error: "Failed to commit changes", details: error.message },
+      { _error: "Failed to commit changes", details: _error.message },
       { status: 500 },
     );
   }

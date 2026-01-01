@@ -23,7 +23,7 @@ class CloudEnvironmentManager {
   async loadState() {
     try {
       return await loadConfig(ENV_STATE_FILE);
-    } catch (err) {
+    } catch (_err) {
       return { environments: {} };
     }
   }
@@ -44,7 +44,7 @@ class CloudEnvironmentManager {
       }
 
       if (status.state === "FAILED") {
-        throw new Error(`Operation failed: ${status.error}`);
+        throw new Error(`Operation failed: ${status._error}`);
       }
 
       if (Date.now() - startTime > OPERATION_TIMEOUT) {
@@ -112,12 +112,12 @@ class CloudEnvironmentManager {
       }
 
       return environment;
-    } catch (err) {
+    } catch (_err) {
       console.error(
         `[ERROR] Failed to create environment for ${project}:`,
-        err.message,
+        _err.message,
       );
-      throw err;
+      throw _err;
     }
   }
 
@@ -151,12 +151,12 @@ class CloudEnvironmentManager {
       await this.saveState(state);
 
       console.log(`[CLOUD ENV] Environment for ${project} destroyed.`);
-    } catch (err) {
+    } catch (_err) {
       console.error(
         `[ERROR] Failed to destroy environment for ${project}:`,
-        err.message,
+        _err.message,
       );
-      throw err;
+      throw _err;
     }
   }
 
@@ -194,15 +194,15 @@ async function main() {
     } else if (args[0] === "list") {
       await manager.listEnvs();
     } else {
-      console.log("Usage: node qmoi-cloud-env-manager.js <command> [options]");
+      console.log("Usage: node qmoi-cloud-env-manager.js <command> [_options]");
       console.log("\nCommands:");
       console.log("  create --project <name>    Create new environment");
       console.log("  destroy --project <name>   Destroy environment");
       console.log("  list                       List active environments");
       process.exit(1);
     }
-  } catch (err) {
-    console.error("[ERROR]", err.message);
+  } catch (_err) {
+    console.error("[ERROR]", _err.message);
     process.exit(1);
   }
 }

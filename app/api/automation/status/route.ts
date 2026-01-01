@@ -3,7 +3,7 @@
 // NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     // [PRODUCTION IMPLEMENTATION REQUIRED] automation status - replace with real implementation later
     const status = {
@@ -45,12 +45,12 @@ export async function GET(request: NextRequest) {
     };
 
     return NextResponse.json(status);
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       {
-        error:
-          error instanceof Error
-            ? error.message
+        _error:
+          _error instanceof Error
+            ? _error.message
             : "Failed to get automation status",
       },
       { status: 500 },

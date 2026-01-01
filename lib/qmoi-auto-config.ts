@@ -7,7 +7,7 @@ import { logEvent } from './security_check';
 interface AutoConfigResult {
   success: boolean;
   message: string;
-  details?: any;
+  details?: unknown;
 }
 
 class QMOIAutoConfig {
@@ -92,7 +92,7 @@ class QMOIAutoConfig {
     return crypto.randomBytes(32).toString('hex');
   }
 
-  private generateEnvContent(config: any): string {
+  private generateEnvContent(config: unknown): string {
     return `# QMOI Production Environment Variables - Auto-Configured
 
 # M-Pesa Configuration

@@ -51,8 +51,8 @@ class AILintEngine {
         this.log("QMOI AI not found, using fallback mode", "warning");
         return false;
       }
-    } catch (error) {
-      this.log(`Error initializing QMOI AI: ${error.message}`, "error");
+    } catch (_error) {
+      this.log(`Error initializing QMOI AI: ${_error.message}`, "_error");
       return false;
     }
   }
@@ -83,25 +83,25 @@ class AILintEngine {
       });
 
       return JSON.parse(result);
-    } catch (error) {
-      this.log(`QMOI AI call failed: ${error.message}`, "error");
+    } catch (_error) {
+      this.log(`QMOI AI call failed: ${_error.message}`, "_error");
       return this.fallbackAIResponse(prompt, context);
     }
   }
 
   fallbackAIResponse(prompt, context) {
     // Fallback AI logic for when QMOI AI is not available
-    const response = {
+    const _response = {
       success: true,
       suggestion: this.generateFallbackSuggestion(prompt, context),
       confidence: 0.7,
       reasoning: "Generated using fallback AI logic",
     };
-    return response;
+    return _response;
   }
 
   generateFallbackSuggestion(prompt, context) {
-    // Intelligent fallback suggestions based on error patterns
+    // Intelligent fallback suggestions based on _error patterns
     if (prompt.includes("no-undef")) {
       if (prompt.includes("require")) {
         return 'Add "require" to globals or convert to ES6 import';
@@ -115,7 +115,7 @@ class AILintEngine {
     }
 
     if (prompt.includes("no-unused-vars")) {
-      return "Remove unused variable or prefix with underscore (_variable)";
+      return "Remove _unused variable or prefix with underscore (_variable)";
     }
 
     if (prompt.includes("import/no-unresolved")) {
@@ -129,22 +129,22 @@ class AILintEngine {
     return "Review code logic and fix according to ESLint rules";
   }
 
-  async analyzeError(error) {
-    const prompt = `Analyze this ESLint error and provide a fix:
-File: ${error.file}
-Line: ${error.line}
-Column: ${error.column}
-Rule: ${error.rule}
-Message: ${error.message}
+  async analyzeError(_error) {
+    const prompt = `Analyze this ESLint _error and provide a fix:
+File: ${_error.file}
+Line: ${_error.line}
+Column: ${_error.column}
+Rule: ${_error.rule}
+Message: ${_error.message}
 
 Provide a specific fix that can be applied automatically.`;
 
     const context = {
-      file: error.file,
-      line: error.line,
-      column: error.column,
-      rule: error.rule,
-      message: error.message,
+      file: _error.file,
+      line: _error.line,
+      column: _error.column,
+      rule: _error.rule,
+      message: _error.message,
       projectType: "typescript-react",
       framework: "nextjs",
     };
@@ -152,7 +152,7 @@ Provide a specific fix that can be applied automatically.`;
     return await this.callQMOIAI(prompt, context);
   }
 
-  async applyAIFix(filePath, error, aiResponse) {
+  async applyAIFix(filePath, _error, aiResponse) {
     if (!aiResponse.success || !aiResponse.suggestion) {
       return false;
     }
@@ -160,7 +160,7 @@ Provide a specific fix that can be applied automatically.`;
     try {
       const content = readFileSync(filePath, "utf8");
       const lines = content.split("\n");
-      const lineIndex = error.line - 1;
+      const lineIndex = _error.line - 1;
 
       if (lineIndex < 0 || lineIndex >= lines.length) {
         return false;
@@ -176,7 +176,7 @@ Provide a specific fix that can be applied automatically.`;
         return false;
       }
 
-      if (aiResponse.suggestion.includes("Remove unused variable")) {
+      if (aiResponse.suggestion.includes("Remove _unused variable")) {
         // Remove the line if it's just a variable declaration
         if (originalLine.trim().match(/^(const|let|var)\s+\w+\s*=/)) {
           lines.splice(lineIndex, 1);
@@ -193,7 +193,7 @@ Provide a specific fix that can be applied automatically.`;
       }
 
       if (aiResponse.suggestion.includes("prefix with underscore")) {
-        // Add underscore prefix to unused variables
+        // Add underscore prefix to _unused variables
         const varMatch = originalLine.match(/(const|let|var)\s+(\w+)/);
         if (varMatch && !originalLine.includes("_")) {
           modifiedLine = originalLine.replace(varMatch[2], `_${varMatch[2]}`);
@@ -215,24 +215,24 @@ Provide a specific fix that can be applied automatically.`;
       }
 
       return false;
-    } catch (error) {
+    } catch (_error) {
       this.log(
-        `Error applying AI fix to ${filePath}: ${error.message}`,
-        "error",
+        `Error applying AI fix to ${filePath}: ${_error.message}`,
+        "_error",
       );
       return false;
     }
   }
 
   async fixComplexErrors(errors) {
-    this.log("Starting AI-powered complex error fixing...", "info");
+    this.log("Starting AI-powered complex _error fixing...", "info");
 
     const errorsByFile = {};
-    for (const error of errors) {
-      if (!errorsByFile[error.file]) {
-        errorsByFile[error.file] = [];
+    for (const _error of errors) {
+      if (!errorsByFile[_error.file]) {
+        errorsByFile[_error.file] = [];
       }
-      errorsByFile[error.file].push(error);
+      errorsByFile[_error.file].push(_error);
     }
 
     let totalFixes = 0;
@@ -244,12 +244,12 @@ Provide a specific fix that can be applied automatically.`;
         continue;
       }
 
-      for (const error of fileErrors) {
-        // Analyze error with AI
-        const aiResponse = await this.analyzeError(error);
+      for (const _error of fileErrors) {
+        // Analyze _error with AI
+        const aiResponse = await this.analyzeError(_error);
 
         // Apply AI fix
-        const fixApplied = await this.applyAIFix(fullPath, error, aiResponse);
+        const fixApplied = await this.applyAIFix(fullPath, _error, aiResponse);
 
         if (fixApplied) {
           totalFixes++;
@@ -275,8 +275,8 @@ Provide a specific fix that can be applied automatically.`;
         stdio: "pipe",
       });
       return { success: true, output: "" };
-    } catch (error) {
-      return { success: false, output: error.stdout || error.stderr || "" };
+    } catch (_error) {
+      return { success: false, output: _error.stdout || _error.stderr || "" };
     }
   }
 
@@ -293,9 +293,9 @@ Provide a specific fix that can be applied automatically.`;
         continue;
       }
 
-      // Parse error details
+      // Parse _error details
       const errorMatch = line.match(
-        /^\s*(\d+):(\d+)\s+(error|warning)\s+(.+?)\s+(.+)$/,
+        /^\s*(\d+):(\d+)\s+(_error|warning)\s+(.+?)\s+(.+)$/,
       );
       if (errorMatch) {
         const [, lineNum, colNum, severity, rule, message] = errorMatch;
@@ -322,8 +322,8 @@ Provide a specific fix that can be applied automatically.`;
       warnings: [],
     };
 
-    for (const error of errors) {
-      if (error.severity === "error") {
+    for (const _error of errors) {
+      if (_error.severity === "_error") {
         // AI can potentially fix these
         if (
           [
@@ -331,23 +331,23 @@ Provide a specific fix that can be applied automatically.`;
             "no-unused-vars",
             "no-console",
             "import/no-unresolved",
-          ].some((rule) => error.rule.includes(rule))
+          ].some((rule) => _error.rule.includes(rule))
         ) {
-          categories.aiFixable.push(error);
+          categories.aiFixable.push(_error);
         } else {
-          categories.manualFix.push(error);
+          categories.manualFix.push(_error);
         }
 
         // Mark as critical
         if (
           ["no-undef", "import/no-unresolved"].some((rule) =>
-            error.rule.includes(rule),
+            _error.rule.includes(rule),
           )
         ) {
-          categories.critical.push(error);
+          categories.critical.push(_error);
         }
       } else {
-        categories.warnings.push(error);
+        categories.warnings.push(_error);
       }
     }
 
@@ -397,9 +397,9 @@ Provide a specific fix that can be applied automatically.`;
 
       // Display remaining errors
       console.log("\n📋 Remaining Issues:");
-      remainingErrors.slice(0, 10).forEach((error, index) => {
+      remainingErrors.slice(0, 10).forEach((_error, index) => {
         console.log(
-          `   ${index + 1}. ${error.file}:${error.line}:${error.column} - ${error.rule}: ${error.message}`,
+          `   ${index + 1}. ${_error.file}:${_error.line}:${_error.column} - ${_error.rule}: ${_error.message}`,
         );
       });
 
@@ -421,7 +421,7 @@ Provide a specific fix that can be applied automatically.`;
 
 // Run the AI lint engine
 const aiLintEngine = new AILintEngine();
-aiLintEngine.run().catch((error) => {
-  console.error("Fatal error in AI lint engine:", error);
+aiLintEngine.run().catch((_error) => {
+  console.error("Fatal _error in AI lint engine:", _error);
   process.exit(1);
 });

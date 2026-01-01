@@ -4,7 +4,7 @@
 import { NextResponse } from "next/server";
 
 // Conditionally import Prisma
-let prisma: any = null;
+let prisma: unknown = null;
 let prismaInitialized = false;
 
 async function getPrismaClient() {
@@ -63,10 +63,10 @@ export async function GET() {
         message: "Database temporarily disabled for build compatibility",
       });
     }
-  } catch (error) {
-    console.error("Error fetching media status:", error);
+  } catch (_error) {
+    console.error("Error fetching media status:", _error);
     return NextResponse.json(
-      { error: "Failed to fetch media status" },
+      { _error: "Failed to fetch media status" },
       { status: 500 }
     );
   }

@@ -8,15 +8,15 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 // POST /api/cashon/deposit
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
-    const auth = libProposals.requireApiKey(request.headers);
+    const auth = libProposals.requireApiKey(_request.headers);
     if (!auth.ok) {
-      const r = auth.response;
+      const r = auth._response;
       if (r) {
         return NextResponse.json(r.body, { status: r.status });
       }
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
     }
 
     const canRun =
@@ -24,12 +24,12 @@ export async function POST(request: NextRequest) {
       process.argv.indexOf("--real") !== -1;
     const runtimeToken = process.env.MASTER_TOKEN || "";
 
-    const body = await request.json();
+    const body = await _request.json();
     const { amount } = body;
 
     if (!amount || amount < 10) {
       return NextResponse.json(
-        { error: "Invalid amount - minimum KES 10" },
+        { _error: "Invalid amount - minimum KES 10" },
         { status: 400 },
       );
     }
@@ -55,12 +55,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       depositId,
-      message: `Deposit request initiated for KES ${amount}`,
+      message: `Deposit _request initiated for KES ${amount}`,
     });
-  } catch (error) {
-    console.error("Deposit API error:", error);
+  } catch (_error) {
+    console.error("Deposit API _error:", _error);
     return NextResponse.json(
-      { error: "Failed to initiate deposit" },
+      { _error: "Failed to initiate deposit" },
       { status: 500 },
     );
   }

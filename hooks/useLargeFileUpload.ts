@@ -19,7 +19,7 @@ export function useLargeFileUpload() {
         setProgress(i * 10);
       }
       setStatus("success");
-    } catch (e: any) {
+    } catch (e: unknown) {
       setError(e.message);
       setStatus("error");
     }

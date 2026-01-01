@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
       { error: "Failed to push changes", details: error.message },
       { status: 500 },

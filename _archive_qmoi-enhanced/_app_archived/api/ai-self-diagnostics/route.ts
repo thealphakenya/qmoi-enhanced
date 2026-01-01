@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
 
   const searchParams = request.nextUrl.searchParams;
   if (searchParams.get("fix")) {
-    const results: any[] = [];
+    const results: unknown[] = [];
     try {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>

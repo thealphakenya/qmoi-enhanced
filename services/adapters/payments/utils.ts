@@ -28,10 +28,10 @@ export function verifyWebhookSignature(
   );
 }
 
-export function markIdempotent(key: string, record: any) {
+export function markIdempotent(key: string, record: unknown) {
   const raw = fs.readFileSync(IDEMPOTENCY_FILE, "utf-8");
   const arr = JSON.parse(raw);
-  if (arr.find((r: any) => r.key === key)) return false; // already exists
+  if (arr.find((r: unknown) => r.key === key)) return false; // already exists
   arr.push({ key, record, ts: new Date().toISOString() });
   fs.writeFileSync(IDEMPOTENCY_FILE, JSON.stringify(arr, null, 2), "utf-8");
   return true;
@@ -40,5 +40,5 @@ export function markIdempotent(key: string, record: any) {
 export function getIdempotent(key: string) {
   const raw = fs.readFileSync(IDEMPOTENCY_FILE, "utf-8");
   const arr = JSON.parse(raw);
-  return arr.find((r: any) => r.key === key);
+  return arr.find((r: unknown) => r.key === key);
 }

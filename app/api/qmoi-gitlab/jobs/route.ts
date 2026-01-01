@@ -4,12 +4,12 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     const logsDir = path.join(process.cwd(), "logs");
     const jobLogFile = path.join(logsDir, "qmoi_gitlab_ci_cd.log");
 
-    let jobs: any[] = [];
+    let jobs: unknown[] = [];
 
     if (fs.existsSync(jobLogFile)) {
       const logContent = fs.readFileSync(jobLogFile, "utf-8");
@@ -38,8 +38,8 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json({ jobs });
-  } catch (error) {
-    console.error("Error fetching jobs:", error);
+  } catch (_error) {
+    console.error("Error fetching jobs:", _error);
     return NextResponse.json({ jobs: [] }, { status: 500 });
   }
 }

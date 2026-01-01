@@ -23,18 +23,18 @@ export async function GET() {
       profiles: profilesWithMetadata,
       total: profilesWithMetadata.length,
     });
-  } catch (error) {
-    console.error("Error fetching voice profiles:", error);
+  } catch (_error) {
+    console.error("Error fetching voice profiles:", _error);
     return NextResponse.json(
-      { error: "Failed to fetch voice profiles" },
+      { _error: "Failed to fetch voice profiles" },
       { status: 500 }
     );
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
-    const body = await request.json();
+    const body = await _request.json();
     const { action, voiceId, text, quality, volume } = body;
 
     switch (action) {
@@ -51,12 +51,12 @@ export async function POST(request: NextRequest) {
         return await upgradeVoice(voiceId);
 
       default:
-        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
     }
-  } catch (error) {
-    console.error("Error in voice profiles API:", error);
+  } catch (_error) {
+    console.error("Error in voice profiles API:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server _error" },
       { status: 500 }
     );
   }
@@ -67,7 +67,7 @@ async function switchVoice(voiceId: string) {
     // Validate voice ID
     const voiceProfile = voiceProfiles.find((v) => v.id === voiceId);
     if (!voiceProfile) {
-      return NextResponse.json({ error: "Invalid voice ID" }, { status: 400 });
+      return NextResponse.json({ _error: "Invalid voice ID" }, { status: 400 });
     }
 
     // Update QMOI's current voice (, this would update the AI model)
@@ -86,10 +86,10 @@ async function switchVoice(voiceId: string) {
       message: `Voice switched to ${voiceProfile.name}`,
       voice: voiceProfile,
     });
-  } catch (error) {
-    console.error("Error switching voice:", error);
+  } catch (_error) {
+    console.error("Error switching voice:", _error);
     return NextResponse.json(
-      { error: "Failed to switch voice" },
+      { _error: "Failed to switch voice" },
       { status: 500 }
     );
   }
@@ -109,7 +109,7 @@ async function previewVoice(
 
     const voiceProfile = voiceProfiles.find((v) => v.id === voiceId);
     if (!voiceProfile) {
-      return NextResponse.json({ error: "Invalid voice ID" }, { status: 400 });
+      return NextResponse.json({ _error: "Invalid voice ID" }, { status: 400 });
     }
 
     // Simulate TTS processing
@@ -121,10 +121,10 @@ async function previewVoice(
       duration: Math.random() * 5 + 2, // Simulated duration
       voice: voiceProfile,
     });
-  } catch (error) {
-    console.error("Error previewing voice:", error);
+  } catch (_error) {
+    console.error("Error previewing voice:", _error);
     return NextResponse.json(
-      { error: "Failed to generate voice preview" },
+      { _error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -151,10 +151,10 @@ async function enhanceVoice(voiceId: string) {
         "clarity_enhancement",
       ],
     });
-  } catch (error) {
-    console.error("Error enhancing voice:", error);
+  } catch (_error) {
+    console.error("Error enhancing voice:", _error);
     return NextResponse.json(
-      { error: "Failed to enhance voice" },
+      { _error: "Failed to enhance voice" },
       { status: 500 }
     );
   }
@@ -183,10 +183,10 @@ async function upgradeVoice(voiceId: string) {
         "faster_processing",
       ],
     });
-  } catch (error) {
-    console.error("Error upgrading voice:", error);
+  } catch (_error) {
+    console.error("Error upgrading voice:", _error);
     return NextResponse.json(
-      { error: "Failed to upgrade voice" },
+      { _error: "Failed to upgrade voice" },
       { status: 500 }
     );
   }

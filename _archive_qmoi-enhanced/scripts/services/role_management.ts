@@ -19,7 +19,7 @@ export interface User {
 export interface ApprovalRequest {
   id: string;
   type: "asset" | "deal" | "distribution" | "platform";
-  item: any;
+  item: unknown;
   status: "pending" | "approved" | "rejected";
   requestedBy: User;
   approvedBy?: User;

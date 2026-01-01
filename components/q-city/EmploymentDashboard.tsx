@@ -67,12 +67,12 @@ interface Payment {
 }
 
 interface RevenueData {
-  microtasks: any[];
-  affiliateCampaigns: any[];
-  contentProjects: any[];
-  referralPrograms: any[];
-  platformAccounts: any[];
-  revenueLogs: any[];
+  microtasks: unknown[];
+  affiliateCampaigns: unknown[];
+  contentProjects: unknown[];
+  referralPrograms: unknown[];
+  platformAccounts: unknown[];
+  revenueLogs: unknown[];
 }
 
 interface MegavaultData {
@@ -81,7 +81,7 @@ interface MegavaultData {
   totalOutflow: number;
   totalProfit: number;
   totalDividends: number;
-  transactions: any[];
+  transactions: unknown[];
 }
 
 const EmploymentDashboard: React.FC = () => {
@@ -179,7 +179,7 @@ const EmploymentDashboard: React.FC = () => {
   );
 
   // Handle employee enrollment
-  const handleEmployeeEnrollment = async (formData: any) => {
+  const handleEmployeeEnrollment = async (formData: unknown) => {
     try {
       const response = await fetch("/api/employment", {
         method: "POST",
@@ -215,7 +215,7 @@ const EmploymentDashboard: React.FC = () => {
   };
 
   // Handle user enrollment
-  const handleUserEnrollment = async (formData: any) => {
+  const handleUserEnrollment = async (formData: unknown) => {
     try {
       const response = await fetch("/api/employment", {
         method: "POST",
@@ -251,7 +251,7 @@ const EmploymentDashboard: React.FC = () => {
   };
 
   // Handle payment processing
-  const handlePaymentProcessing = async (formData: any) => {
+  const handlePaymentProcessing = async (formData: unknown) => {
     try {
       const response = await fetch("/api/employment/payment", {
         method: "POST",
@@ -287,7 +287,7 @@ const EmploymentDashboard: React.FC = () => {
   };
 
   // Handle revenue generation
-  const handleRevenueGeneration = async (formData: any) => {
+  const handleRevenueGeneration = async (formData: unknown) => {
     try {
       const response = await fetch("/api/employment/revenue", {
         method: "POST",

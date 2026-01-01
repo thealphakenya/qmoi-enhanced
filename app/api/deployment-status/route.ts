@@ -3,7 +3,7 @@
 // NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest) {
+export async function GET(_req: NextRequest) {
   // [PRODUCTION IMPLEMENTATION REQUIRED] deployment status data
   return NextResponse.json({
     status: "Healthy",

@@ -7,11 +7,11 @@ function waitForUrl(url, timeout = 30000) {
   return new Promise((resolve, reject) => {
     (function poll() {
       http
-        .get(url, (res) => {
-          resolve(res.statusCode);
+        .get(url, (_res) => {
+          resolve(_res.statusCode);
         })
-        .on("error", (err) => {
-          if (Date.now() - start > timeout) return reject(err);
+        .on("_error", (_err) => {
+          if (Date.now() - start > timeout) return reject(_err);
           setTimeout(poll, 500);
         });
     })();
@@ -27,9 +27,9 @@ async function run() {
     env: { ...process.env, NODE_ENV: "production" },
   });
 
-  proc.stdout?.on("data", (d) => console.log("[next]", d.toString().trim()));
+  proc.stdout?.on("data", (d) => console.log("[_next]", d.toString().trim()));
   proc.stderr?.on("data", (d) =>
-    console.error("[next-err]", d.toString().trim())
+    console.error("[next-_err]", d.toString().trim())
   );
 
   try {
@@ -53,8 +53,8 @@ async function run() {
     console.log("Smoke check succeeded");
     proc.kill();
     process.exit(0);
-  } catch (err) {
-    console.error("Smoke check failed:", err);
+  } catch (_err) {
+    console.error("Smoke check failed:", _err);
     proc.kill();
     process.exit(2);
   }
@@ -67,7 +67,7 @@ import path from "path";
 function exists(p) {
   try {
     return fs.existsSync(p);
-  } catch (e) {
+  } catch (_e) {
     return false;
   }
 }

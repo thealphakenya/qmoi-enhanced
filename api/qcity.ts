@@ -6,7 +6,7 @@ import fs from "fs";
 import path from "path";
 
 // Fix node-fetch import for both CommonJS and ESM
-let fetchInstance: (input: any, init?: any) => Promise<any>;
+let fetchInstance: (input: unknown, init?: unknown) => Promise<any>;
 (async () => {
   try {
     fetchInstance = (await import("node-fetch")).default;
@@ -49,7 +49,7 @@ const qcity = new QCityManagerImpl();
 const docker = new Docker();
 
 const AUDIT_LOG = path.resolve(process.cwd(), "logs/qcity_audit.log");
-function logAudit(entry: any) {
+function logAudit(entry: unknown) {
   fs.appendFileSync(AUDIT_LOG, JSON.stringify(entry) + "\n");
 }
 const notificationService = new NotificationService();
@@ -60,13 +60,13 @@ const GITPOD_API_TOKEN = process.env.GITPOD_API_TOKEN;
 async function gitpodRequest(
   endpoint: string,
   method = "GET",
-  body: any = null,
+  body: unknown = null,
 ) {
   const headers = {
     Authorization: `Bearer ${GITPOD_API_TOKEN}`,
     "Content-Type": "application/json",
   };
-  const options: any = {
+  const options: unknown = {
     method,
     headers,
     body: body ? JSON.stringify(body) : undefined,
@@ -250,7 +250,7 @@ export async function listWorkspaces(req: Request, res: Response) {
       status: "success",
     });
     res.json({ workspaces: data.workspaces });
-  } catch (error: any) {
+  } catch (error: unknown) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "list_gitpod_workspaces",
@@ -282,7 +282,7 @@ export async function startWorkspace(req: Request, res: Response) {
       `Gitpod workspace started: ${contextUrl}`,
     );
     res.json({ workspace: data });
-  } catch (error: any) {
+  } catch (error: unknown) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "start_gitpod_workspace",
@@ -397,7 +397,7 @@ export async function syncWorkspace(req: Request, res: Response) {
         return res.status(404).json({ error: "Container not found" });
       // Export container filesystem as tar stream (Dockerode v3+ returns a Promise)
       const tarStream = await new Promise((resolve, reject) => {
-        container.export({}, (err: any, stream: any) => {
+        container.export({}, (err: unknown, stream: unknown) => {
           if (err) reject(err);
           else resolve(stream);
         });
@@ -442,10 +442,10 @@ export async function syncWorkspace(req: Request, res: Response) {
 // List QMOI-local Docker workspaces
 export async function listLocalWorkspaces(req: Request, res: Response) {
   try {
-    const containers: any[] = await new Promise((resolve, reject) => {
+    const containers: unknown[] = await new Promise((resolve, reject) => {
       docker.listContainers(
         { all: true, filters: { label: ["qmoi-local-workspace"] } },
-        (err: any, containers: any[]) => {
+        (err: unknown, containers: unknown[]) => {
           if (err) reject(err);
           else resolve(containers);
         },
@@ -458,7 +458,7 @@ export async function listLocalWorkspaces(req: Request, res: Response) {
       status: "success",
     });
     res.json({
-      workspaces: containers.map((c: any) => ({
+      workspaces: containers.map((c: unknown) => ({
         id: c.Id,
         name: c.Names[0],
         status: c.Status,
@@ -466,7 +466,7 @@ export async function listLocalWorkspaces(req: Request, res: Response) {
         image: c.Image,
       })),
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "list_local_workspaces",
@@ -495,14 +495,14 @@ export async function startLocalWorkspace(req: Request, res: Response) {
             /* mirror Gitpod env vars here if needed */
           ],
         },
-        (err: any, container: any) => {
+        (err: unknown, container: unknown) => {
           if (err) reject(err);
           else resolve(container);
         },
       );
     });
     await new Promise((resolve, reject) => {
-      (container as any).start((err: any) => {
+      (container as any).start((err: unknown) => {
         if (err) reject(err);
         else resolve(true);
       });
@@ -520,7 +520,7 @@ export async function startLocalWorkspace(req: Request, res: Response) {
       `Local workspace started: ${name}`,
     );
     res.json({ id: (container as any).id, name });
-  } catch (error: any) {
+  } catch (error: unknown) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "start_local_workspace",
@@ -543,7 +543,7 @@ export async function stopLocalWorkspace(req: Request, res: Response) {
     if (!id) return res.status(400).json({ error: "id required" });
     const container = docker.getContainer(id);
     await new Promise((resolve, reject) => {
-      container.stop({}, (err: any, data: any) => {
+      container.stop({}, (err: unknown, data: unknown) => {
         if (err) reject(err);
         else resolve(data);
       });
@@ -560,7 +560,7 @@ export async function stopLocalWorkspace(req: Request, res: Response) {
       `Local workspace stopped: ${id}`,
     );
     res.json({ success: true });
-  } catch (error: any) {
+  } catch (error: unknown) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "stop_local_workspace",

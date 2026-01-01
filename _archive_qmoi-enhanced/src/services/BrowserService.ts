@@ -58,7 +58,7 @@ interface NetworkRequest {
   duration: number;
   timestamp: Date;
   headers: Record<string, string>;
-  response?: any;
+  response?: unknown;
 }
 
 interface DOMElement {
@@ -669,7 +669,7 @@ export class BrowserService {
     return this.history;
   }
 
-  public getDownloads(): any[] {
+  public getDownloads(): unknown[] {
     return this.downloads;
   }
 
@@ -784,7 +784,7 @@ export class BrowserService {
     this.eventEmitter.on("bookmarkAdded", callback);
   }
 
-  public onDownloadStarted(callback: (download: any) => void): void {
+  public onDownloadStarted(callback: (download: unknown) => void): void {
     this.eventEmitter.on("downloadStarted", callback);
   }
 
@@ -794,7 +794,7 @@ export class BrowserService {
     this.eventEmitter.on("downloadProgress", callback);
   }
 
-  public onDownloadCompleted(callback: (download: any) => void): void {
+  public onDownloadCompleted(callback: (download: unknown) => void): void {
     this.eventEmitter.on("downloadCompleted", callback);
   }
 
@@ -811,7 +811,7 @@ export class BrowserService {
   }
 
   public onLiveContent(
-    callback: (data: { tabId: string; content: any }) => void,
+    callback: (data: { tabId: string; content: unknown }) => void,
   ): void {
     this.eventEmitter.on("liveContent", callback);
   }

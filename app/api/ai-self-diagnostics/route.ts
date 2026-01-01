@@ -22,16 +22,16 @@ interface DiagnosticResponse {
   problems: DiagnosticProblem[];
 }
 
-export async function GET(request: NextRequest) {
-  const apiAuth = requireApiKey(request.headers);
-  const adminToken = request.headers.get("x-admin-token");
+export async function GET(_request: NextRequest) {
+  const apiAuth = requireApiKey(_request.headers);
+  const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
-    return NextResponse.json(apiAuth.response?.body || { error: "Forbidden" }, {
-      status: apiAuth.response?.status || 403,
+    return NextResponse.json(apiAuth._response?.body || { _error: "Forbidden" }, {
+      status: apiAuth._response?.status || 403,
     });
   }
 
-  const searchParams = request.nextUrl.searchParams;
+  const searchParams = _request.nextUrl.searchParams;
   if (searchParams.get("problems")) {
     const problems: DiagnosticProblem[] = [];
     try {
@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
         exec("npx tsc --noEmit", (_e, out, _err) => resolve(String(out) + String(_err))),
       );
       tsc.split("\n").forEach((line) => {
-        if (line.includes("error"))
+        if (line.includes("_error"))
           problems.push({ type: "tsc", message: line });
       });
       // Python
@@ -59,37 +59,37 @@ export async function GET(request: NextRequest) {
         exec("npx eslint .", (_e, out, _err) => resolve(String(out) + String(_err))),
       );
       eslint.split("\n").forEach((line) => {
-        if (line.includes("error"))
+        if (line.includes("_error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: any) {
+    } catch (_e: unknown) {
       problems.push({
         type: "system",
         message: _e instanceof Error ? _e.message : String(_e),
       });
     }
-    const response: DiagnosticResponse = {
+    const _respons_e: DiagnosticResponse = {
       status: "diagnostics-complete",
       problems,
     };
-    return NextResponse.json(response);
+    return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
 }
 
-export async function POST(request: NextRequest) {
-  const apiAuth = requireApiKey(request.headers);
-  const adminToken = request.headers.get("x-admin-token");
+export async function POST(_request: NextRequest) {
+  const apiAuth = requireApiKey(_request.headers);
+  const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
-    return NextResponse.json(apiAuth.response?.body || { error: "Forbidden" }, {
-      status: apiAuth.response?.status || 403,
+    return NextResponse.json(apiAuth._response?.body || { _error: "Forbidden" }, {
+      status: apiAuth._response?.status || 403,
     });
   }
 
-  const searchParams = request.nextUrl.searchParams;
+  const searchParams = _request.nextUrl.searchParams;
   if (searchParams.get("fix")) {
-    const results: any[] = [];
+    const results: unknown[] = [];
     try {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
@@ -123,7 +123,7 @@ export async function POST(request: NextRequest) {
         exec("npx tsc --noEmit", (_e, out, _err) => resolve(String(out) + String(_err))),
       );
       problemsRes.split("\n").forEach((line) => {
-        const match = line.match(/error TS2307: Cannot find module '(.+?)'/);
+        const match = line.match(/_error TS2307: Cannot find module '(.+?)'/);
         if (match) {
           const missingFile = match[1];
           if (!fs.existsSync(missingFile)) {
@@ -132,7 +132,7 @@ export async function POST(request: NextRequest) {
           }
         }
       });
-    } catch (_e: any) {
+    } catch (_e: unknown) {
       results.push({
         type: "system",
         message: _e instanceof Error ? _e.message : String(_e),
@@ -141,5 +141,5 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
 }

@@ -66,8 +66,8 @@ class QMOIGitHubIntegration {
       } else {
         throw new Error("Could not parse GitHub repository URL");
       }
-    } catch (error) {
-      throw new Error(`Failed to get repository info: ${error.message}`);
+    } catch (_error) {
+      throw new Error(`Failed to get repository info: ${_error.message}`);
     }
   }
 
@@ -75,7 +75,7 @@ class QMOIGitHubIntegration {
     console.log(`📝 Creating issue: ${title}`);
 
     try {
-      const response = await this.githubApi.post(
+      const _response = await this.githubApi.post(
         `/repos/${this.repoInfo.owner}/${this.repoInfo.repo}/issues`,
         {
           title,
@@ -84,7 +84,7 @@ class QMOIGitHubIntegration {
         },
       );
 
-      const issue = response.data;
+      const issue = _response.data;
       this.operations.push({
         type: "create_issue",
         id: issue.id,
@@ -109,17 +109,17 @@ class QMOIGitHubIntegration {
       );
 
       return issue;
-    } catch (error) {
-      console.error("Failed to create issue:", error.message);
-      throw error;
+    } catch (_error) {
+      console.error("Failed to create issue:", _error.message);
+      throw _error;
     }
   }
 
   async createPullRequest(title, body, head, base = "main") {
-    console.log(`🔀 Creating pull request: ${title}`);
+    console.log(`🔀 Creating pull _request: ${title}`);
 
     try {
-      const response = await this.githubApi.post(
+      const _response = await this.githubApi.post(
         `/repos/${this.repoInfo.owner}/${this.repoInfo.repo}/pulls`,
         {
           title,
@@ -129,7 +129,7 @@ class QMOIGitHubIntegration {
         },
       );
 
-      const pr = response.data;
+      const pr = _response.data;
       this.operations.push({
         type: "create_pull_request",
         id: pr.id,
@@ -154,9 +154,9 @@ class QMOIGitHubIntegration {
       );
 
       return pr;
-    } catch (error) {
-      console.error("Failed to create pull request:", error.message);
-      throw error;
+    } catch (_error) {
+      console.error("Failed to create pull _request:", _error.message);
+      throw _error;
     }
   }
 
@@ -198,9 +198,9 @@ class QMOIGitHubIntegration {
       );
 
       return { success: true, backupPath };
-    } catch (error) {
-      console.error("Failed to update workflow:", error.message);
-      throw error;
+    } catch (_error) {
+      console.error("Failed to update workflow:", _error.message);
+      throw _error;
     }
   }
 
@@ -213,7 +213,7 @@ class QMOIGitHubIntegration {
       const sha = stdout.trim();
 
       // Create branch via GitHub API
-      const response = await this.githubApi.post(
+      const _response = await this.githubApi.post(
         `/repos/${this.repoInfo.owner}/${this.repoInfo.repo}/git/refs`,
         {
           ref: `refs/heads/${branchName}`,
@@ -239,10 +239,10 @@ class QMOIGitHubIntegration {
         },
       );
 
-      return response.data;
-    } catch (error) {
-      console.error("Failed to create branch:", error.message);
-      throw error;
+      return _response.data;
+    } catch (_error) {
+      console.error("Failed to create branch:", _error.message);
+      throw _error;
     }
   }
 
@@ -266,17 +266,17 @@ class QMOIGitHubIntegration {
       });
 
       return { success: true };
-    } catch (error) {
-      console.error("Failed to commit and push:", error.message);
-      throw error;
+    } catch (_error) {
+      console.error("Failed to commit and push:", _error.message);
+      throw _error;
     }
   }
 
   async mergePullRequest(prNumber, mergeMethod = "squash") {
-    console.log(`🔀 Merging pull request #${prNumber}`);
+    console.log(`🔀 Merging pull _request #${prNumber}`);
 
     try {
-      const response = await this.githubApi.put(
+      const _response = await this.githubApi.put(
         `/repos/${this.repoInfo.owner}/${this.repoInfo.repo}/pulls/${prNumber}/merge`,
         {
           merge_method: mergeMethod,
@@ -301,10 +301,10 @@ class QMOIGitHubIntegration {
         },
       );
 
-      return response.data;
-    } catch (error) {
-      console.error("Failed to merge pull request:", error.message);
-      throw error;
+      return _response.data;
+    } catch (_error) {
+      console.error("Failed to merge pull _request:", _error.message);
+      throw _error;
     }
   }
 
@@ -312,7 +312,7 @@ class QMOIGitHubIntegration {
     console.log(`🏷️ Creating release: ${tagName}`);
 
     try {
-      const response = await this.githubApi.post(
+      const _response = await this.githubApi.post(
         `/repos/${this.repoInfo.owner}/${this.repoInfo.repo}/releases`,
         {
           tag_name: tagName,
@@ -323,7 +323,7 @@ class QMOIGitHubIntegration {
         },
       );
 
-      const release = response.data;
+      const release = _response.data;
       this.operations.push({
         type: "create_release",
         tagName,
@@ -347,9 +347,9 @@ class QMOIGitHubIntegration {
       );
 
       return release;
-    } catch (error) {
-      console.error("Failed to create release:", error.message);
-      throw error;
+    } catch (_error) {
+      console.error("Failed to create release:", _error.message);
+      throw _error;
     }
   }
 
@@ -357,7 +357,7 @@ class QMOIGitHubIntegration {
     console.log("⚙️ Updating repository settings...");
 
     try {
-      const response = await this.githubApi.patch(
+      const _response = await this.githubApi.patch(
         `/repos/${this.repoInfo.owner}/${this.repoInfo.repo}`,
         settings,
       );
@@ -379,10 +379,10 @@ class QMOIGitHubIntegration {
         },
       );
 
-      return response.data;
-    } catch (error) {
-      console.error("Failed to update repository settings:", error.message);
-      throw error;
+      return _response.data;
+    } catch (_error) {
+      console.error("Failed to update repository settings:", _error.message);
+      throw _error;
     }
   }
 
@@ -426,9 +426,9 @@ class QMOIGitHubIntegration {
       );
 
       return { success: true };
-    } catch (error) {
-      console.error("Failed to enable security features:", error.message);
-      throw error;
+    } catch (_error) {
+      console.error("Failed to enable security features:", _error.message);
+      throw _error;
     }
   }
 
@@ -562,9 +562,9 @@ class QMOIGitHubIntegration {
       };
 
       return status;
-    } catch (error) {
-      console.error("Failed to get repository status:", error.message);
-      throw error;
+    } catch (_error) {
+      console.error("Failed to get repository status:", _error.message);
+      throw _error;
     }
   }
 
@@ -636,7 +636,7 @@ QMOI GitHub Integration
 
 Usage:
   node qmoi-github-integration.js --create-issue <title> [body]     # Create issue
-  node qmoi-github-integration.js --create-pr <title> [body] [head] # Create pull request
+  node qmoi-github-integration.js --create-pr <title> [body] [head] # Create pull _request
   node qmoi-github-integration.js --create-workflow [name]          # Create workflow
   node qmoi-github-integration.js --enable-security                # Enable security features
   node qmoi-github-integration.js --status                         # Get repository status

@@ -811,7 +811,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                 <label className="text-sm font-medium">Avatar Type</label>
                 <Select
                   value={config.type}
-                  onValueChange={(value: any) =>
+                  onValueChange={(value: unknown) =>
                     setConfig((prev) => ({ ...prev, type: value }))
                   }
                 >
@@ -836,7 +836,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                 <label className="text-sm font-medium">Environment</label>
                 <Select
                   value={config.environment}
-                  onValueChange={(value: any) =>
+                  onValueChange={(value: unknown) =>
                     setConfig((prev) => ({ ...prev, environment: value }))
                   }
                 >
@@ -863,7 +863,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                 <label className="text-sm font-medium">Weather</label>
                 <Select
                   value={config.weather}
-                  onValueChange={(value: any) =>
+                  onValueChange={(value: unknown) =>
                     setConfig((prev) => ({ ...prev, weather: value }))
                   }
                 >
@@ -887,7 +887,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                 <label className="text-sm font-medium">Floating Behavior</label>
                 <Select
                   value={config.floatingBehavior}
-                  onValueChange={(value: any) =>
+                  onValueChange={(value: unknown) =>
                     setConfig((prev) => ({ ...prev, floatingBehavior: value }))
                   }
                 >
@@ -908,7 +908,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                 <label className="text-sm font-medium">Quality</label>
                 <Select
                   value={config.quality}
-                  onValueChange={(value: any) =>
+                  onValueChange={(value: unknown) =>
                     setConfig((prev) => ({ ...prev, quality: value }))
                   }
                 >
@@ -1506,7 +1506,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
         if (res.ok) {
           const data = await res.json();
           setAvailableDevices(
-            (data.devices || []).map((dev: any) => ({
+            (data.devices || []).map((dev: unknown) => ({
               id: dev.id,
               name: dev.name,
             })),
@@ -1576,7 +1576,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
               </pre>
               <div className="font-medium mb-1">Active Devices:</div>
               <ul className="list-disc pl-5 text-xs">
-                {qcityStatus?.devices?.map((dev: any) => (
+                {qcityStatus?.devices?.map((dev: unknown) => (
                   <li key={dev.id} className="mb-1">
                     <span className="font-semibold">{dev.name}</span> -{" "}
                     {dev.status} - CPU: {dev.cpu}% Mem: {dev.memory}MB
@@ -1942,7 +1942,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
 
   // Export/import command history and settings
   function exportSettings() {
-    let data: any = {};
+    let data: unknown = {};
     if (exportScope === "all") {
       data = {
         commandHistory,
@@ -2061,7 +2061,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
       const data = await res.json();
       setAuditLogs(data.logs || []);
       setAuditTotal(data.total || 0);
-    } catch (e: any) {
+    } catch (e: unknown) {
       setAuditError(e.message || "Failed to fetch audit logs");
     } finally {
       setAuditLoading(false);

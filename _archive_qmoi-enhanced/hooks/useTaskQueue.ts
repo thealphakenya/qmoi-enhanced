@@ -6,13 +6,13 @@ export interface Task {
   status: "pending" | "running" | "completed" | "failed" | "cancelled";
   priority: "low" | "medium" | "high" | "critical";
   progress: number;
-  result?: any;
+  result?: unknown;
   error?: string;
   createdAt: string;
   startedAt?: string;
   completedAt?: string;
   metadata: {
-    [key: string]: any;
+    [key: string]: unknown;
   };
 }
 

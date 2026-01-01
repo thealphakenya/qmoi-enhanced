@@ -23,8 +23,8 @@ function syncFromCloud(target) {
       stdio: "inherit",
     });
     console.log(`[QMOI] Synced: ${target}`);
-  } catch (e) {
-    console.error(`[QMOI] Failed to sync ${target}:`, e.message);
+  } catch (_e) {
+    console.error(`[QMOI] Failed to sync ${target}:`, _e.message);
   }
 }
 

@@ -46,7 +46,7 @@ if (generated.length) {
   // Optionally sync with GitLab
   try {
     require("./qmoi-gitlab-sync");
-  } catch (e) {
+  } catch (_e) {
     console.warn("QMOI: GitLab sync not run (optional).");
   }
 }

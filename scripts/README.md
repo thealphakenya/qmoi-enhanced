@@ -1,3 +1,21 @@
+Codemod scripts
+
+- `convert-any-unused.js` — a small codemod that:
+  - replaces `: any` with `: unknown` across TypeScript/JS files
+  - prefixes declared or parameter identifiers starting with `unused` with an underscore (`_unused`)
+
+Usage:
+
+```bash
+# Dry run (prints affected files, does not write):
+npm run fix:types:dry
+
+# Apply changes (writes files):
+npm run fix:types
+```
+
+Review changes (git diff) before committing.
+
 # Trading Automation Scripts
 
 Utilities to manage local trading setup checks.

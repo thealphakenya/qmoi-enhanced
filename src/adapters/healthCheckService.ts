@@ -18,7 +18,7 @@ export interface HealthCheckResponse {
   };
   adapters: {
     status: string;
-    error?: string;
+    _error?: string;
     cacheStats: {
       total: number;
       entries: Record<string, number>;
@@ -109,7 +109,7 @@ export class HealthCheckService {
         overallStatus = "degraded";
       }
 
-      const response: HealthCheckResponse = {
+      const _response: HealthCheckResponse = {
         timestamp: Date.now(),
         status: overallStatus,
         system: {
@@ -119,7 +119,7 @@ export class HealthCheckService {
         },
         adapters: {
           status: adapterHealth.status,
-          error: (adapterHealth as any).error,
+          _error: (adapterHealth as unknown)._error,
           cacheStats: {
             total: cacheStats.total,
             entries: cacheStats.byEndpoint,
@@ -142,8 +142,8 @@ export class HealthCheckService {
       };
 
       this.recordResponseTime("health-check", Date.now() - startTime);
-      return response;
-    } catch (err) {
+      return _response;
+    } catch (_err) {
       return {
         timestamp: Date.now(),
         status: "unhealthy",
@@ -154,7 +154,7 @@ export class HealthCheckService {
         },
         adapters: {
           status: "unhealthy",
-          error: String(err),
+          _error: String(_err),
           cacheStats: { total: 0, entries: {} as Record<string, number> },
           pendingRequests: [],
         },

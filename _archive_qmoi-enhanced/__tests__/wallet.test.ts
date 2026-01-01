@@ -2,7 +2,7 @@ import WalletService, { MockAdapter, TestnetAdapter } from "../../src/wallet";
 
 describe("WalletService with TestnetAdapter and MockAdapter", () => {
   const stateDir = ".qmoi_state_test";
-  let svc: any;
+  let svc: unknown;
 
   beforeAll(() => {
     svc = new WalletService(stateDir);

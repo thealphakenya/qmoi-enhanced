@@ -96,8 +96,8 @@ interface MasterControlRequest {
   command: string;
   filePath?: string;
   content?: string;
-  revenueIdea?: any;
-  financialOperation?: any;
+  revenueIdea?: unknown;
+  financialOperation?: unknown;
   timestamp: Date;
   status: "pending" | "approved" | "rejected" | "implemented";
 }
@@ -164,13 +164,13 @@ interface SystemHealth {
 }
 
 interface BiometricAuthProps {
-  onAuthSuccess: (userData: any) => void;
+  onAuthSuccess: (userData: unknown) => void;
   onAuthFailure: (error: string) => void;
   onBiometricSaved: (biometricData: BiometricData) => void;
   onMasterControl?: (request: MasterControlRequest) => Promise<boolean>;
   onRevenueGeneration?: () => Promise<RevenueStrategy[]>;
   onPaymentConfirmation?: (payment: PaymentConfirmation) => Promise<boolean>;
-  onFinancialOperation?: (operation: any) => Promise<any>;
+  onFinancialOperation?: (operation: unknown) => Promise<any>;
   onSystemHealth?: () => Promise<SystemHealth>;
 }
 
@@ -349,7 +349,7 @@ export default function BiometricAuth({
     }
   };
 
-  const performFinancialOperation = async (operation: any) => {
+  const performFinancialOperation = async (operation: unknown) => {
     if (!onFinancialOperation) return null;
 
     try {

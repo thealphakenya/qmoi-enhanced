@@ -11,6 +11,8 @@
     "build": "next build",
     "lint": "eslint \"**/*.{js,ts,tsx}\" --max-warnings=0 || true",
     "lint:fix": "eslint \"**/*.{js,ts,tsx}\" --fix || true",
+    "fix:types:dry": "node scripts/convert-any-unused.cjs",
+    "fix:types": "node scripts/convert-any-unused.cjs --apply",
     "ci:build": "NODE_OPTIONS=--max-old-space-size=8192 CI=false next build",
     "test:coverage": "jest --config=jest.config.cjs --coverage --runInBand --colors",
     "prod:start": "./scripts/prod-start.sh",

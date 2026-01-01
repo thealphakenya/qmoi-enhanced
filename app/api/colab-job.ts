@@ -15,7 +15,7 @@ async function installPackage(pkg: string, manager: "npm" | "pip" = "npm") {
 // Upload dataset to Colab/cloud (stub)
 interface Dataset {
   name: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 async function uploadDataset(dataset: Dataset) {
   // const axios = await import('axios');
@@ -25,7 +25,7 @@ async function uploadDataset(dataset: Dataset) {
 
 // Execute job in Colab/cloud (stub)
 interface JobSpec {
-  [key: string]: any;
+  [key: string]: unknown;
 }
 async function executeColabJob(jobSpec: JobSpec) {
   // const axios = await import('axios');
@@ -45,32 +45,32 @@ function persistJob(job: Record<string, any>) {
 }
 
 // Extend API handler to support new endpoints
-export default async function handler(req: NextApiRequest,
-  res: NextApiResponse
+export default async function handler(_req: NextApiRequest,
+  _res: NextApiResponse
 ) {
-  if (req.method === "POST") {
-    if (req.query.installPackage) {
-      const { pkg, manager } = req.body;
+  if (_req.method === "POST") {
+    if (_req._query.installPackage) {
+      const { pkg, manager } = _req.body;
       const result = await installPackage(pkg, manager);
-      return res.json(result);
+      return _res.json(result);
     }
-    if (req.query.uploadDataset) {
-      const { dataset } = req.body;
+    if (_req._query.uploadDataset) {
+      const { dataset } = _req.body;
       const result = await uploadDataset(dataset);
-      return res.json(result);
+      return _res.json(result);
     }
-    if (req.query.executeJob) {
-      const { jobSpec } = req.body;
+    if (_req._query.executeJob) {
+      const { jobSpec } = _req.body;
       const result = await executeColabJob(jobSpec);
-      return res.json(result);
+      return _res.json(result);
     }
-    if (req.query.jobStatus) {
-      const { jobId } = req.body;
+    if (_req._query.jobStatus) {
+      const { jobId } = _req.body;
       const result = await getColabJobStatus(jobId);
-      return res.json(result);
+      return _res.json(result);
     }
-    if (req.query.startProjectJob) {
-      const { projectId, projectType, projectName } = req.body;
+    if (_req._query.startProjectJob) {
+      const { projectId, projectType, projectName } = _req.body;
       const jobSpec = {
         projectId,
         projectType,
@@ -79,9 +79,9 @@ export default async function handler(req: NextApiRequest,
       };
       const result = await executeColabJob(jobSpec);
       persistJob({ ...result, type: projectType, name: projectName });
-      return res.json(result);
+      return _res.json(result);
     }
-    const { type, name } = req.body;
+    const { type, name } = _req.body;
     // Simulate Colab job execution (replace with real Colab API integration)
     const job = {
       id: Date.now(),
@@ -93,9 +93,9 @@ export default async function handler(req: NextApiRequest,
       result: `Simulated Colab job for ${type}: ${name}`,
     };
     persistJob(job);
-    return res.json(job);
+    return _res.json(job);
   }
-  if (req.method === "GET") {
+  if (_req.method === "GET") {
     // Return all jobs
     if (fs.existsSync(JOBS_PATH)) {
       const jobs = fs
@@ -103,9 +103,9 @@ export default async function handler(req: NextApiRequest,
         .split("\n")
         .filter(Boolean)
         .map((line) => JSON.parse(line));
-      return res.json(jobs);
+      return _res.json(jobs);
     }
-    return res.json([]);
+    return _res.json([]);
   }
-  res.status(405).json({ error: "Method not allowed" });
+  _res.status(405).json({ _error: "Method not allowed" });
 }

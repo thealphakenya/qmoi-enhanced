@@ -14,7 +14,7 @@ interface ParallelTask {
   estimatedDuration: number;
   startTime?: string;
   endTime?: string;
-  result?: any;
+  result?: unknown;
   error?: string;
 }
 
@@ -39,7 +39,7 @@ interface DashboardData {
   activeTasks: ParallelTask[];
   systemHealth: SystemHealth;
   taskQueue: ParallelTask[];
-  recentResults: any[];
+  recentResults: unknown[];
   performanceMetrics: {
     tasksPerMinute: number;
     successRate: number;
@@ -92,7 +92,7 @@ export class EnhancedParallelizationService extends EventEmitter {
   public async submitTask(
     taskType: ParallelTask["type"],
     priority: ParallelTask["priority"] = "medium",
-    data?: any,
+    data?: unknown,
   ): Promise<string> {
     const task: ParallelTask = {
       id: `task_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,

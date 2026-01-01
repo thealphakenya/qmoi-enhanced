@@ -30,8 +30,8 @@ class AutomationManager {
         resolve(code);
       });
 
-      child.on('error', (error) => {
-        this.log(`Error running ${command}: ${error.message}`, 'error');
+      child.on('_error', (_error) => {
+        this.log(`Error running ${command}: ${_error.message}`, '_error');
         resolve(1);
       });
     });
@@ -100,7 +100,7 @@ class AutomationManager {
 
 // Run the automation
 const automationManager = new AutomationManager();
-automationManager.runAutomation().catch(error => {
-  console.error('Fatal error in automation process:', error);
+automationManager.runAutomation().catch(_error => {
+  console.error('Fatal _error in automation process:', _error);
   process.exit(1);
 }); 

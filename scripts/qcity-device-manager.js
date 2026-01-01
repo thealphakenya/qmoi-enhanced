@@ -15,7 +15,7 @@ class QCityDeviceManager {
   loadConfig() {
     try {
       return JSON.parse(fs.readFileSync('config/qcity-device-config.json', 'utf8'));
-    } catch (error) {
+    } catch (_error) {
       console.log('QCity config not found, using defaults');
       return { 
         qcity_device: { 
@@ -48,10 +48,10 @@ class QCityDeviceManager {
     }
   }
 
-  async executeInQCity(command, options = {}) {
+  async executeInQCity(command, _options = {}) {
     if (!this.qcityEnabled) {
       console.log('QCity device not enabled, running locally');
-      return this.executeLocally(command, options);
+      return this.executeLocally(command, _options);
     }
 
     console.log(`Executing in QCity with unlimited resources: ${command}`);
@@ -68,12 +68,12 @@ class QCityDeviceManager {
 
     // AI optimization
     if (this.aiOptimization.enabled) {
-      result.aiOptimization = await this.applyAIOptimization(command, options);
+      result.aiOptimization = await this.applyAIOptimization(command, _options);
     }
 
     // Multi-device execution
     if (this.multiDevice.enabled) {
-      result.multiDevice = await this.executeOnMultipleDevices(command, options);
+      result.multiDevice = await this.executeOnMultipleDevices(command, _options);
     }
 
     // Log to QCity storage
@@ -82,7 +82,7 @@ class QCityDeviceManager {
     return result;
   }
 
-  async applyAIOptimization(command, options) {
+  async applyAIOptimization(command, _options) {
     console.log('Applying AI optimization...');
     return {
       predictiveAllocation: true,
@@ -93,7 +93,7 @@ class QCityDeviceManager {
     };
   }
 
-  async executeOnMultipleDevices(command, options) {
+  async executeOnMultipleDevices(command, _options) {
     console.log('Executing on multiple QCity devices...');
     return {
       deviceClustering: true,
@@ -234,7 +234,7 @@ class QCityDeviceManager {
   async autoFix() {
     console.log('Running advanced auto-fix in QCity with AI...');
     await this.executeInQCity('npm run lint:fix');
-    await this.executeInQCity('node scripts/error/error_fixer.py');
+    await this.executeInQCity('node scripts/_error/error_fixer.py');
     await this.executeInQCity('qcity:ai-fix');
     console.log('Advanced auto-fix completed in QCity with AI optimization');
   }
@@ -254,7 +254,7 @@ class QCityDeviceManager {
     console.log('QCity log (unlimited storage):', logEntry);
   }
 
-  executeLocally(command, options) {
+  executeLocally(command, _options) {
     console.log(`Executing locally: ${command}`);
     return {
       success: true,
@@ -355,7 +355,7 @@ class QCityDeviceManager {
   }
 
   async getHealth() {
-    // TODO: Return health info (unused, outdated, vulnerable packages)
+    // TODO: Return health info (_unused, outdated, vulnerable packages)
     return { healthy: true, issues: [] };
   }
 
@@ -395,7 +395,7 @@ class QCityDeviceManager {
         return this.executeInQCity(command, { offload: true });
       } else {
         // Throttle: delay or lower priority
-        await new Promise(res => setTimeout(res, 10000));
+        await new Promise(_res => setTimeout(_res, 10000));
         return this.runIsolated(command, { nice: 10, cpulimit: 50 });
       }
     } else {
@@ -464,8 +464,8 @@ if (command) {
         console.log('Command completed successfully with unlimited resources');
       }
     })
-    .catch(error => {
-      console.error('Error:', error);
+    .catch(_error => {
+      console.error('Error:', _error);
       process.exit(1);
     });
 } else {

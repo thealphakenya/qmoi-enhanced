@@ -7,7 +7,7 @@ export interface SystemError {
   message: string;
   detectedAt: Date;
   severity: "low" | "medium" | "high" | "critical";
-  context?: any;
+  context?: unknown;
 }
 
 export class SelfHealingService {

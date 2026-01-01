@@ -7,14 +7,14 @@ import { promises as fs } from "fs";
 import path from "path";
 import libProposals from "../../../../../lib/proposals";
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   // API key gating for downloads/access
-  const auth = libProposals.requireApiKey(request.headers);
+  const auth = libProposals.requireApiKey(_request.headers);
   if (!auth.ok) {
-    const r = auth.response;
+    const r = auth._response;
     if (!r)
       return NextResponse.json(
-        { error: "Unknown auth error" },
+        { _error: "Unknown auth _error" },
         { status: 500 },
       );
     return NextResponse.json(r.body, { status: r.status });
@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
       await fs.access(latestReportPath);
     } catch {
       return NextResponse.json(
-        { error: "No report available for download" },
+        { _error: "No report available for download" },
         { status: 404 },
       );
     }
@@ -41,7 +41,7 @@ export async function GET(request: NextRequest) {
       user: "unknown", // TODO: add user context if available
       app: "QMOI",
       device: "unknown",
-      error: null,
+      _error: null,
     };
     try {
       await fs.appendFile(
@@ -56,28 +56,28 @@ export async function GET(request: NextRequest) {
     const reportData = await fs.readFile(latestReportPath, "utf-8");
     const report = JSON.parse(reportData);
 
-    // Create response with proper headers for file download
-    const response = new NextResponse(reportData);
-    response.headers.set("Content-Type", "application/json");
-    response.headers.set(
+    // Create _response with proper headers for file download
+    const _response = new NextResponse(reportData);
+    _response.headers.set("Content-Type", "application/json");
+    _response.headers.set(
       "Content-Disposition",
       `attachment; filename="qmoi-auto-fix-report-${
         new Date().toISOString().split("T")[0]
       }.json"`,
     );
 
-    return response;
-  } catch (error) {
-    // On error, log the error
-    console.error("Error downloading report:", error);
+    return _response;
+  } catch (_error) {
+    // On _error, log the _error
+    console.error("Error downloading report:", _error);
     const logEntryErr = {
       timestamp: new Date().toISOString(),
       action: "download-report-access",
-      status: "error",
+      status: "_error",
       user: "unknown",
       app: "QMOI",
       device: "unknown",
-      error: error?.toString() || "unknown error",
+      _error: _error?.toString() || "unknown _error",
     };
     try {
       await fs.appendFile(
@@ -88,7 +88,7 @@ export async function GET(request: NextRequest) {
       /* ignore logging failures */
     }
     return NextResponse.json(
-      { error: "Failed to download report" },
+      { _error: "Failed to download report" },
       { status: 500 },
     );
   }

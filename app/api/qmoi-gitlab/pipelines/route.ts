@@ -4,12 +4,12 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     const logsDir = path.join(process.cwd(), "logs");
     const pipelineLogFile = path.join(logsDir, "qmoi_gitlab_ci_cd.log");
 
-    let pipelines: any[] = [];
+    let pipelines: unknown[] = [];
 
     if (fs.existsSync(pipelineLogFile)) {
       const logContent = fs.readFileSync(pipelineLogFile, "utf-8");
@@ -36,8 +36,8 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json({ pipelines });
-  } catch (error) {
-    console.error("Error fetching pipelines:", error);
+  } catch (_error) {
+    console.error("Error fetching pipelines:", _error);
     return NextResponse.json({ pipelines: [] }, { status: 500 });
   }
 }

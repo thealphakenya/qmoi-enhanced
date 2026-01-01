@@ -1,3 +1,4 @@
+/* eslint-env jest, browser */
 import React from "react";
 import { render } from "@testing-library/react";
 import QMoiKernelPanel from "./QMoiKernelPanel";

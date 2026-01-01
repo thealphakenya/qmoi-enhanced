@@ -23,12 +23,12 @@ function log(msg) {
 function run(cmd, cwd = ".", opts = {}) {
   return new Promise((resolve, reject) => {
     log(`Running: ${cmd} (cwd: ${cwd})`);
-    const child = exec(cmd, { cwd, ...opts }, (err, stdout, stderr) => {
+    const child = exec(cmd, { cwd, ...opts }, (_err, stdout, stderr) => {
       if (stdout) log(stdout);
       if (stderr) log(stderr);
-      if (err) {
-        log(`Error: ${err.message}`);
-        return reject(err);
+      if (_err) {
+        log(`Error: ${_err.message}`);
+        return reject(_err);
       }
       resolve(stdout);
     });
@@ -92,8 +92,8 @@ async function offloadBuild() {
     await run("npm run qmoi:cloud:build");
     log("Build offloaded successfully");
     return true;
-  } catch (e) {
-    log("Build offload failed: " + e.message);
+  } catch (_e) {
+    log("Build offload failed: " + _e.message);
     return false;
   }
 }
@@ -104,20 +104,20 @@ async function offloadTest() {
     await run("npm run qmoi:cloud:test");
     log("Tests offloaded successfully");
     return true;
-  } catch (e) {
-    log("Test offload failed: " + e.message);
+  } catch (_e) {
+    log("Test offload failed: " + _e.message);
     return false;
   }
 }
 
 async function offloadErrorFix() {
   try {
-    log("Offloading error fixing to cloud...");
+    log("Offloading _error fixing to cloud...");
     await run("npm run qmoi:cloud:fix");
     log("Error fixing offloaded successfully");
     return true;
-  } catch (e) {
-    log("Error fix offload failed: " + e.message);
+  } catch (_e) {
+    log("Error fix offload failed: " + _e.message);
     return false;
   }
 }
@@ -128,8 +128,8 @@ async function offloadMobileBuild() {
     await run("npm run qmoi:cloud:mobile:build", "mobile");
     log("Mobile build offloaded successfully");
     return true;
-  } catch (e) {
-    log("Mobile build offload failed: " + e.message);
+  } catch (_e) {
+    log("Mobile build offload failed: " + _e.message);
     return false;
   }
 }
@@ -140,8 +140,8 @@ async function syncFromCloud() {
     await run("npm run qmoi:cloud:sync");
     log("Cloud sync completed");
     return true;
-  } catch (e) {
-    log("Cloud sync failed: " + e.message);
+  } catch (_e) {
+    log("Cloud sync failed: " + _e.message);
     return false;
   }
 }
@@ -159,8 +159,8 @@ async function optimizeForLightweight() {
 
     log("Lightweight optimization completed");
     return true;
-  } catch (e) {
-    log("Lightweight optimization failed: " + e.message);
+  } catch (_e) {
+    log("Lightweight optimization failed: " + _e.message);
     return false;
   }
 }
@@ -198,12 +198,12 @@ async function main() {
 
       // Wait before next check (30 seconds)
       await new Promise((resolve) => setTimeout(resolve, 30 * 1000));
-    } catch (e) {
-      log("Monitoring cycle failed: " + e.message);
+    } catch (_e) {
+      log("Monitoring cycle failed: " + _e.message);
       // Wait before retry (1 minute)
       await new Promise((resolve) => setTimeout(resolve, 60 * 1000));
     }
   }
 }
 
-main().catch((e) => log("Fatal error: " + e.message));
+main().catch((_e) => log("Fatal _error: " + _e.message));

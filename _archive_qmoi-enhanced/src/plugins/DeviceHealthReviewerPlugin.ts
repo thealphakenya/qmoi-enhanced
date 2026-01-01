@@ -21,7 +21,7 @@ export const DeviceHealthReviewerPlugin: QmoiPlugin = {
     const suggestions = [
       stats.cpu > 70 ? "Consider offloading tasks to Colab/Dagshub." : null,
       stats.memory > 65 ? "Enable Data Saver mode to reduce memory usage." : null,
-      stats.disk > 80 ? "Clean up unused files or increase storage quota." : null,
+      stats.disk > 80 ? "Clean up _unused files or increase storage quota." : null,
       stats.network > 50 ? "Monitor network usage for large syncs." : null,
     ].filter(Boolean);
     return (

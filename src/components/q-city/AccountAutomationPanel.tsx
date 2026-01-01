@@ -20,18 +20,18 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const res = await fetch("/api/account-automation/create", {
+    const _res = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
     });
-    const data = await res.json();
+    const data = await _res.json();
     if (data.account) setAccounts((a) => [...a, data.account]);
     setStatus(data.success ? "Account created" : "Error creating account");
   };
 
   const login = async () => {
-    const res = await fetch("/api/account-automation/login", {
+    const _res = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -39,25 +39,25 @@ const AccountAutomationPanel: React.FC = () => {
         platform: form.platform,
       }),
     });
-    const data = await res.json();
+    const data = await _res.json();
     setStatus(data.success ? "Login successful" : "Login failed");
   };
 
   const verify = async (id: number, email: string) => {
-    const res = await fetch("/api/account-automation/verify", {
+    const _res = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
     });
-    const data = await res.json();
+    const data = await _res.json();
     setStatus(data.success ? "Verification triggered" : "Verification failed");
     if (data.account)
       setAccounts((accs) => accs.map((a) => (a.id === id ? data.account : a)));
   };
 
   const checkStatus = async () => {
-    const res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
-    const data = await res.json();
+    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const data = await _res.json();
     setStatus(
       data.status
         ? `Status: ${data.status}, Verified: ${data.verified}`
@@ -75,22 +75,22 @@ const AccountAutomationPanel: React.FC = () => {
           <Input
             placeholder="Username"
             value={form.username}
-            onChange={(e) =>
-              setForm((f) => ({ ...f, username: e.target.value }))
+            onChange={(_e) =>
+              setForm((f) => ({ ...f, username: _e.target.value }))
             }
             className="mb-2"
           />
           <Input
             placeholder="Email"
             value={form.email}
-            onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+            onChange={(_e) => setForm((f) => ({ ...f, email: _e.target.value }))}
             className="mb-2"
           />
           <Input
-            placeholder="Platform (e.g. WhatsApp, Telegram)"
+            placeholder="Platform (_e.g. WhatsApp, Telegram)"
             value={form.platform}
-            onChange={(e) =>
-              setForm((f) => ({ ...f, platform: e.target.value }))
+            onChange={(_e) =>
+              setForm((f) => ({ ...f, platform: _e.target.value }))
             }
             className="mb-2"
           />
@@ -105,7 +105,7 @@ const AccountAutomationPanel: React.FC = () => {
           <Input
             placeholder="Account ID to check status"
             value={idToCheck}
-            onChange={(e) => setIdToCheck(e.target.value)}
+            onChange={(_e) => setIdToCheck(_e.target.value)}
             className="mb-2"
           />
           <Button onClick={checkStatus}>Check Status</Button>

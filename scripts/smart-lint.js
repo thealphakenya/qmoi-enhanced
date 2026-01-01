@@ -40,8 +40,8 @@ class SmartLinter {
         stdio: "pipe",
       });
       return { success: true, output: "" };
-    } catch (error) {
-      return { success: false, output: error.stdout || error.stderr || "" };
+    } catch (_error) {
+      return { success: false, output: _error.stdout || _error.stderr || "" };
     }
   }
 
@@ -58,9 +58,9 @@ class SmartLinter {
         continue;
       }
 
-      // Parse error details
+      // Parse _error details
       const errorMatch = line.match(
-        /^\s*(\d+):(\d+)\s+(error|warning)\s+(.+?)\s+(.+)$/,
+        /^\s*(\d+):(\d+)\s+(_error|warning)\s+(.+?)\s+(.+)$/,
       );
       if (errorMatch) {
         const [, lineNum, colNum, severity, rule, message] = errorMatch;
@@ -81,8 +81,8 @@ class SmartLinter {
   readFile(filePath) {
     try {
       return readFileSync(filePath, "utf8");
-    } catch (error) {
-      this.log(`Error reading file ${filePath}: ${error.message}`, "error");
+    } catch (_error) {
+      this.log(`Error reading file ${filePath}: ${_error.message}`, "_error");
       return null;
     }
   }
@@ -93,8 +93,8 @@ class SmartLinter {
       this.filesModified.add(filePath);
       this.log(`Fixed file: ${filePath}`, "success");
       return true;
-    } catch (error) {
-      this.log(`Error writing file ${filePath}: ${error.message}`, "error");
+    } catch (_error) {
+      this.log(`Error writing file ${filePath}: ${_error.message}`, "_error");
       return false;
     }
   }
@@ -103,22 +103,22 @@ class SmartLinter {
     const content = this.readFile(filePath);
     if (!content) return false;
 
-    const unusedImportErrors = errors.filter(
-      (e) =>
-        e.file === filePath &&
-        (e.rule.includes("no-unused-vars") ||
-          e.rule.includes("import/no-unused-modules")),
+    const _unusedImportErrors = errors.filter(
+      (_e) =>
+        _e.file === filePath &&
+        (_e.rule.includes("no-unused-vars") ||
+          _e.rule.includes("import/no-unused-modules")),
     );
 
-    if (unusedImportErrors.length === 0) return false;
+    if (_unusedImportErrors.length === 0) return false;
 
     let modified = false;
     let newContent = content;
 
-    // Remove unused imports
-    for (const error of unusedImportErrors) {
+    // Remove _unused imports
+    for (const _error of _unusedImportErrors) {
       const lines = newContent.split("\n");
-      const lineIndex = error.line - 1;
+      const lineIndex = _error.line - 1;
 
       if (lineIndex >= 0 && lineIndex < lines.length) {
         const line = lines[lineIndex];
@@ -146,7 +146,7 @@ class SmartLinter {
     if (!content) return false;
 
     const semicolonErrors = errors.filter(
-      (e) => e.file === filePath && e.rule.includes("semi"),
+      (_e) => _e.file === filePath && _e.rule.includes("semi"),
     );
 
     if (semicolonErrors.length === 0) return false;
@@ -154,9 +154,9 @@ class SmartLinter {
     let modified = false;
     let newContent = content;
 
-    for (const error of semicolonErrors) {
+    for (const _error of semicolonErrors) {
       const lines = newContent.split("\n");
-      const lineIndex = error.line - 1;
+      const lineIndex = _error.line - 1;
 
       if (lineIndex >= 0 && lineIndex < lines.length) {
         const line = lines[lineIndex];
@@ -187,7 +187,7 @@ class SmartLinter {
     if (!content) return false;
 
     const quoteErrors = errors.filter(
-      (e) => e.file === filePath && e.rule.includes("quotes"),
+      (_e) => _e.file === filePath && _e.rule.includes("quotes"),
     );
 
     if (quoteErrors.length === 0) return false;
@@ -195,9 +195,9 @@ class SmartLinter {
     let modified = false;
     let newContent = content;
 
-    for (const error of quoteErrors) {
+    for (const _error of quoteErrors) {
       const lines = newContent.split("\n");
-      const lineIndex = error.line - 1;
+      const lineIndex = _error.line - 1;
 
       if (lineIndex >= 0 && lineIndex < lines.length) {
         const line = lines[lineIndex];
@@ -225,7 +225,7 @@ class SmartLinter {
     if (!content) return false;
 
     const trailingSpaceErrors = errors.filter(
-      (e) => e.file === filePath && e.rule.includes("trailing-spaces"),
+      (_e) => _e.file === filePath && _e.rule.includes("trailing-spaces"),
     );
 
     if (trailingSpaceErrors.length === 0) return false;
@@ -257,7 +257,7 @@ class SmartLinter {
     if (!content) return false;
 
     const eolErrors = errors.filter(
-      (e) => e.file === filePath && e.rule.includes("eol-last"),
+      (_e) => _e.file === filePath && _e.rule.includes("eol-last"),
     );
 
     if (eolErrors.length === 0) return false;
@@ -279,7 +279,7 @@ class SmartLinter {
     if (!content) return false;
 
     const indentErrors = errors.filter(
-      (e) => e.file === filePath && e.rule.includes("indent"),
+      (_e) => _e.file === filePath && _e.rule.includes("indent"),
     );
 
     if (indentErrors.length === 0) return false;
@@ -344,11 +344,11 @@ class SmartLinter {
 
     // Group errors by file
     const errorsByFile = {};
-    for (const error of errors) {
-      if (!errorsByFile[error.file]) {
-        errorsByFile[error.file] = [];
+    for (const _error of errors) {
+      if (!errorsByFile[_error.file]) {
+        errorsByFile[_error.file] = [];
       }
-      errorsByFile[error.file].push(error);
+      errorsByFile[_error.file].push(_error);
     }
 
     // Apply fixes for each file
@@ -402,9 +402,9 @@ class SmartLinter {
 
       // Display remaining errors
       console.log("\n📋 Remaining Issues:");
-      remainingErrors.forEach((error, index) => {
+      remainingErrors.forEach((_error, index) => {
         console.log(
-          `   ${index + 1}. ${error.file}:${error.line}:${error.column} - ${error.rule}: ${error.message}`,
+          `   ${index + 1}. ${_error.file}:${_error.line}:${_error.column} - ${_error.rule}: ${_error.message}`,
         );
       });
     }
@@ -421,7 +421,7 @@ class SmartLinter {
 
 // Run the smart linter
 const smartLinter = new SmartLinter();
-smartLinter.run().catch((error) => {
-  console.error("Fatal error in smart linter:", error);
+smartLinter.run().catch((_error) => {
+  console.error("Fatal _error in smart linter:", _error);
   process.exit(1);
 });

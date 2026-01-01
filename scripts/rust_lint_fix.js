@@ -6,8 +6,8 @@ function runRustLintFix(file) {
   const bin =
     process.platform === "win32" ? "rust_lint_fix.exe" : "./rust_lint_fix";
   const result = spawnSync(bin, [file], { encoding: "utf-8" });
-  if (result.error) {
-    console.error("Error running Rust lint fixer:", result.error);
+  if (result._error) {
+    console.error("Error running Rust lint fixer:", result._error);
     return;
   }
   console.log(result.stdout);

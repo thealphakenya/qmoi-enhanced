@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 interface ScanResult {
   threats: {
     id: string;
-    type: "error" | "warning" | "info";
+    type: "_error" | "warning" | "info";
     message: string;
     severity: "low" | "medium" | "high";
     location?: string;
@@ -19,7 +19,7 @@ interface ScanResult {
   };
 }
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     // Stub scan results
     const Result: ScanResult = {
@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
         },
         {
           id: "2",
-          type: "error",
+          type: "_error",
           message: "Failed to connect to backup service",
           severity: "high",
           location: "backup-service",
@@ -49,18 +49,18 @@ export async function GET(request: NextRequest) {
     };
 
     return NextResponse.json(Result);
-  } catch (error) {
-    console.error("Error in AI scan endpoint:", error);
+  } catch (_error) {
+    console.error("Error in AI scan endpoint:", _error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 },
     );
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
-    const body = await request.json();
+    const body = await _request.json();
     const { action } = body;
 
     if (action === "self-heal") {
@@ -88,13 +88,13 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: "Invalid action specified" },
+      { _error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (error) {
-    console.error("Error in AI self-heal endpoint:", error);
+  } catch (_error) {
+    console.error("Error in AI self-heal endpoint:", _error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 },
     );
   }

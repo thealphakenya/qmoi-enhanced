@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
     const logsDir = path.join(process.cwd(), "logs");
     const triggerLogFile = path.join(logsDir, "qmoi_gitlab_ci_cd.log");
@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
       fs.mkdirSync(logsDir, { recursive: true });
     }
 
-    // Log the trigger event
+    // Log the trigger _event
     const timestamp = new Date().toISOString();
     const triggerLog = `[${timestamp}] INFO: Pipeline triggered successfully via QMOI GitLab Clone UI\n`;
 
@@ -30,11 +30,11 @@ export async function POST(request: NextRequest) {
       pipelineId,
       message: "Pipeline triggered successfully",
     });
-  } catch (error) {
-    console.error("Error triggering pipeline:", error);
+  } catch (_error) {
+    console.error("Error triggering pipeline:", _error);
     return NextResponse.json(
       {
-        success: false,
+        success: fals_e,
         message: "Failed to trigger pipeline",
       },
       { status: 500 },

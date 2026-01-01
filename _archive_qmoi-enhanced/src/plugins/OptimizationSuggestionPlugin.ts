@@ -22,7 +22,7 @@ export const OptimizationSuggestionPlugin: QmoiPlugin = {
       !state.dataSaver ? "Enable Data Saver mode to reduce data usage." : null,
       !state.offloading ? "Offload heavy tasks to Colab/Dagshub for better performance." : null,
       state.storageFree < 15 ? "Free up storage space for optimal operation." : null,
-      state.backgroundApps > 5 ? "Close unused background apps to save memory." : null,
+      state.backgroundApps > 5 ? "Close _unused background apps to save memory." : null,
     ].filter(Boolean);
     return (
       <div>

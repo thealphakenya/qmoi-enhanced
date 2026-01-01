@@ -8,18 +8,18 @@ export const runtime = "nodejs";
 // import nodemailer from 'nodemailer'; // Uncomment and configure for real email
 
 // In-memory account store (replace with DB in production)
-const accounts: any[] = [];
+const accounts: unknown[] = [];
 let idCounter = 1;
 
-export async function POST_CREATE(req: NextRequest) {
-  const auth = libProposals.requireApiKey(req.headers);
+export async function POST_CREATE(_req: NextRequest) {
+  const auth = libProposals.requireApiKey(_req.headers);
   if (!auth.ok) {
-    const r = auth.response;
+    const r = auth._response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
   }
   // Create new account
-  const body = await req.json();
+  const body = await _req.json();
   const { username, email, platform } = body;
   const account = {
     id: idCounter++,
@@ -28,41 +28,41 @@ export async function POST_CREATE(req: NextRequest) {
     platform,
     status: "pending",
     createdAt: new Date().toISOString(),
-    verified: false,
+    verified: fals_e,
   };
   accounts.push(account);
   // TODO: Modular platform support (WhatsApp, Telegram, etc.)
   return NextResponse.json({ success: true, account });
 }
 
-export async function POST_LOGIN(req: NextRequest) {
-  const auth = libProposals.requireApiKey(req.headers);
+export async function POST_LOGIN(_req: NextRequest) {
+  const auth = libProposals.requireApiKey(_req.headers);
   if (!auth.ok) {
-    const r = auth.response;
+    const r = auth._response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
   }
   // Login (stub)
-  const body = await req.json();
+  const body = await _req.json();
   const { username, platform } = body;
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
   // TODO: Add real authentication logic
   return NextResponse.json({ success: true, account });
 }
 
-export async function POST_VERIFY(req: NextRequest) {
-  const auth = libProposals.requireApiKey(req.headers);
+export async function POST_VERIFY(_req: NextRequest) {
+  const auth = libProposals.requireApiKey(_req.headers);
   if (!auth.ok) {
-    const r = auth.response;
+    const r = auth._response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
   }
-  // Trigger verification (e.g. email)
-  const body = await req.json();
+  // Trigger verification (_e.g. email)
+  const body = await _req.json();
   const { email, id } = body;
   // TODO: Integrate with nodemailer and rovicviccy@gmail.com for email verification
   // Example:
@@ -71,19 +71,19 @@ export async function POST_VERIFY(req: NextRequest) {
   // For now, just mark as verified
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
   return NextResponse.json({ success: true, account: accounts[idx] });
 }
 
-export async function GET_STATUS(req: NextRequest) {
+export async function GET_STATUS(_req: NextRequest) {
   // Get account status
-  const url = new URL(req.url);
+  const url = new URL(_req.url);
   const id = Number(url.searchParams.get("id"));
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,

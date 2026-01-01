@@ -197,7 +197,7 @@ async function createProject(
 }
 
 // Helper to auto-generate docs and packaging for a project/package/extension
-async function generateDocsAndPackaging(projectName: string, files: any[]) {
+async function generateDocsAndPackaging(projectName: string, files: unknown[]) {
   const docs = `# ${projectName} Documentation\n\nAuto-generated docs for project: ${projectName}`;
   const readmePath = `/workspaces/Alpha-Q-ai/projects/${projectName}/README.md`;
   fs.write;
@@ -207,7 +207,7 @@ async function generateDocsAndPackaging(projectName: string, files: any[]) {
 }
 
 // --- Enhanced Creative Generators ---
-async function enhancedGameGen(details: any) {
+async function enhancedGameGen(details: unknown) {
   // Add more thorough logic, error checking, and asset generation
   // ...
   return {
@@ -216,15 +216,15 @@ async function enhancedGameGen(details: any) {
     assets: ["game.js", "assets/", "README.md"],
   };
 }
-async function enhancedAppDev(details: any) {
+async function enhancedAppDev(details: unknown) {
   // ...
   return { status: "success", details, files: ["app.js", "README.md"] };
 }
-async function enhancedMusicGen(details: any) {
+async function enhancedMusicGen(details: unknown) {
   // ...
   return { status: "success", details, files: ["track.wav", "README.md"] };
 }
-async function enhancedArchitectureGen(details: any) {
+async function enhancedArchitectureGen(details: unknown) {
   // ...
   return { status: "success", details, files: ["model.obj", "README.md"] };
 }
@@ -708,7 +708,7 @@ export default async function handler(
     }
   } else if (req.method === "POST") {
     const form = require("formidable");
-    form.parse(req, async (err: any, fields: any, files: any) => {
+    form.parse(req, async (err: unknown, fields: unknown, files: unknown) => {
       if (err) return res.status(500).json({ error: err.message });
       if (files.file) {
         const file = files.file[0];
@@ -738,7 +738,7 @@ export default async function handler(
 }
 
 // Add endpoint to save sister projects (simple in-memory for now)
-const sisterProjects: any[] = [];
+const sisterProjects: unknown[] = [];
 
 export async function POST(req: Request) {
   const url = new URL(req.url);

@@ -6,7 +6,7 @@ import { promisify } from "util";
 
 const execAsync = promisify(exec);
 
-export async function GET(req: NextRequest) {
+export async function GET(_req: NextRequest) {
   try {
     // Get current branch
     const { stdout: branchOutput } = await execAsync(
@@ -37,9 +37,9 @@ export async function GET(req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (error: any) {
+  } catch (_error: unknown) {
     return NextResponse.json(
-      { error: "Failed to get Git status", details: error.message },
+      { _error: "Failed to get Git status", details: _error.message },
       { status: 500 },
     );
   }

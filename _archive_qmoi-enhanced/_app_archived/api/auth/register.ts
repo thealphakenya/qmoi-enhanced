@@ -9,7 +9,7 @@ function loadUsers() {
   if (!fs.existsSync(USERS_FILE)) return [];
   return JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
 }
-function saveUsers(users: any[]) {
+function saveUsers(users: unknown[]) {
   fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
 }
 
@@ -23,7 +23,7 @@ export default async function handler(
   if (!username || !password || !role)
     return res.status(400).json({ error: "Missing fields" });
   const users = loadUsers();
-  if (users.find((u: any) => u.username === username))
+  if (users.find((u: unknown) => u.username === username))
     return res.status(409).json({ error: "User exists" });
   const hash = await bcrypt.hash(password, 10);
   const user = {

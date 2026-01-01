@@ -80,7 +80,7 @@ export class AuthManager {
     }
 
     // Generate salt and hash password
-    const salt = (nodeCrypto as any).randomBytes(16).toString("hex");
+    const salt = (nodeCrypto as unknown).randomBytes(16).toString("hex");
     const passwordHash = this.hashPassword(password, salt);
 
     // Create new user
@@ -201,13 +201,13 @@ export class AuthManager {
   }
 
   private hashPassword(password: string, salt: string): string {
-    return (nodeCrypto as any)
+    return (nodeCrypto as unknown)
       .pbkdf2Sync(password, salt, 1000, 64, "sha512")
       .toString("hex");
   }
 
   private generateToken(): string {
-    return (nodeCrypto as any).randomBytes(32).toString("hex");
+    return (nodeCrypto as unknown).randomBytes(32).toString("hex");
   }
 
   public async updateUserPreferences(
@@ -247,7 +247,7 @@ export class AuthManager {
     }
 
     // Generate new salt and hash
-    const newSalt = (nodeCrypto as any).randomBytes(16).toString("hex");
+    const newSalt = (nodeCrypto as unknown).randomBytes(16).toString("hex");
     const newHash = this.hashPassword(newPassword, newSalt);
 
     // Update user

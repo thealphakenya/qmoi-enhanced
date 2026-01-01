@@ -52,12 +52,12 @@ const ReferralProgramSchema = z.object({
 });
 
 // [PRODUCTION IMPLEMENTATION REQUIRED] database
-const microtasks: any[] = [];
-const affiliateCampaigns: any[] = [];
-const contentProjects: any[] = [];
-const referralPrograms: any[] = [];
-const revenueLogs: any[] = [];
-const platformAccounts: any[] = [];
+const microtasks: unknown[] = [];
+const affiliateCampaigns: unknown[] = [];
+const contentProjects: unknown[] = [];
+const referralPrograms: unknown[] = [];
+const revenueLogs: unknown[] = [];
+const platformAccounts: unknown[] = [];
 
 // M-Pesa credentials (securely stored)
 const MPESA_CREDENTIALS = {
@@ -72,7 +72,7 @@ const MPESA_CREDENTIALS = {
 };
 
 // Email backup function
-async function backupCredentialsToEmail(credentials: any, platform: string) {
+async function backupCredentialsToEmail(credentials: unknown, platform: string) {
   try {
     const emailData = {
       to: "rovicviccy@gmail.com",
@@ -99,7 +99,7 @@ async function backupCredentialsToEmail(credentials: any, platform: string) {
 }
 
 // Platform account creation functions
-async function createPlatformAccount(platform: string, accountData: any) {
+async function createPlatformAccount(platform: string, accountData: unknown) {
   try {
     const account = {
       id: `acc_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -195,7 +195,7 @@ async function createPlatformAccount(platform: string, accountData: any) {
 }
 
 // Revenue generation functions
-async function generateMicrotaskRevenue(taskData: any) {
+async function generateMicrotaskRevenue(taskData: unknown) {
   try {
     // Simulate external client payment
     const clientPayment = taskData.reward * 1.5; // QMOI takes 33% cut
@@ -218,7 +218,7 @@ async function generateMicrotaskRevenue(taskData: any) {
   }
 }
 
-async function generateAffiliateRevenue(campaignData: any) {
+async function generateAffiliateRevenue(campaignData: unknown) {
   try {
     // Simulate affiliate sales
     const sales = Math.floor(Math.random() * 10) + 1; // Random sales 1-10
@@ -245,7 +245,7 @@ async function generateAffiliateRevenue(campaignData: any) {
   }
 }
 
-async function generateContentRevenue(projectData: any) {
+async function generateContentRevenue(projectData: unknown) {
   try {
     // Simulate content sale
     const salePrice = projectData.reward * 3; // Content sold for 3x reward
@@ -268,7 +268,7 @@ async function generateContentRevenue(projectData: any) {
   }
 }
 
-async function generateReferralRevenue(referralData: any) {
+async function generateReferralRevenue(referralData: unknown) {
   try {
     // Simulate referral bonus
     const referrals = Math.floor(Math.random() * 5) + 1; // Random referrals 1-5
@@ -336,7 +336,7 @@ async function addToMpesaAccount(amount: number, description: string) {
 }
 
 // Additional revenue streams
-async function generateSurveyRevenue(surveyData: any) {
+async function generateSurveyRevenue(surveyData: unknown) {
   try {
     const participants = Math.floor(Math.random() * 20) + 5; // 5-25 participants
     const rewardPerParticipant = 5; // $5 per survey
@@ -359,7 +359,7 @@ async function generateSurveyRevenue(surveyData: any) {
   }
 }
 
-async function generateDataLabelingRevenue(labelingData: any) {
+async function generateDataLabelingRevenue(labelingData: unknown) {
   try {
     const dataPoints = Math.floor(Math.random() * 1000) + 100; // 100-1100 data points
     const rewardPerPoint = 0.1; // $0.10 per data point
@@ -385,7 +385,7 @@ async function generateDataLabelingRevenue(labelingData: any) {
   }
 }
 
-async function generateSaaSResellingRevenue(saasData: any) {
+async function generateSaaSResellingRevenue(saasData: unknown) {
   try {
     const subscriptions = Math.floor(Math.random() * 50) + 10; // 10-60 subscriptions
     const monthlyFee = 29; // $29/month per subscription

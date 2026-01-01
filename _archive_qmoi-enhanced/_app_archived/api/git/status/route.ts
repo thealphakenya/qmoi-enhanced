@@ -35,7 +35,7 @@ export async function GET(req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
       { error: "Failed to get Git status", details: error.message },
       { status: 500 },

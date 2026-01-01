@@ -8,18 +8,18 @@ const root = path.resolve(__dirname, "..");
 const target = path.join(root, "app", "api");
 
 const paramNames = [
-  "req",
-  "res",
-  "request",
-  "response",
-  "params",
-  "query",
-  "options",
-  "error",
-  "err",
-  "e",
-  "ev",
-  "event",
+  "_req",
+  "_res",
+  "_request",
+  "_response",
+  "_params",
+  "_query",
+  "_options",
+  "_error",
+  "_err",
+  "_e",
+  "_ev",
+  "_event",
 ];
 
 function walk(dir) {
@@ -52,8 +52,8 @@ const files = walk(target);
 for (const f of files) {
   try {
     fixFile(f);
-  } catch (e) {
-    console.error("err", f, e.message);
+  } catch (_e) {
+    console.error("_err", f, _e.message);
   }
 }
 console.log("done");

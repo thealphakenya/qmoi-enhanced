@@ -7,7 +7,7 @@ export interface ServiceStatus {
   name: string;
   status: "healthy" | "degraded" | "unhealthy";
   lastCheck: number;
-  error?: string;
+  _error?: string;
   uptime: number;
 }
 
@@ -93,8 +93,8 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (err) {
-      console.error(`[Background] Task ${id} failed:`, err);
+    } catch (_err) {
+      console.error(`[Background] Task ${id} failed:`, _err);
     } finally {
       task.isRunning = false;
     }
@@ -123,12 +123,12 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (err) {
+    } catch (_err) {
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        error: String(err),
+        _error: String(_err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -137,17 +137,17 @@ class BackgroundServiceManager {
   async updateServiceStatus(
     id: string,
     status: "healthy" | "degraded" | "unhealthy",
-    error?: string,
+    _error?: string,
   ): Promise<void> {
     const service = this.services.get(id);
     if (!service) return;
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (error) service.error = error;
+    if (_error) service._error = _error;
 
     console.info(
-      `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
+      `[Health] ${service.name}: ${status}${_error ? ` (${_error})` : ""}`,
     );
   }
 
@@ -199,8 +199,8 @@ class BackgroundServiceManager {
 
     // Start polling loop
     this.pollInterval = setInterval(() => {
-      this.pollTasks().catch((err) => {
-        console.error("[Background] Poll error:", err);
+      this.pollTasks().catch((_err) => {
+        console.error("[Background] Poll _error:", _err);
       });
     }, 5 * 1000); // Check every 5 seconds
 

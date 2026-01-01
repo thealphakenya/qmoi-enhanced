@@ -1,3 +1,5 @@
+/* eslint-env jest,node */
+/* eslint-disable no-undef, no-console */
 const fs = require("fs");
 const path = require("path");
 const { execSync } = require("child_process");
@@ -16,10 +18,14 @@ describe("auto_trading script", () => {
     // cleanup
     try {
       fs.unlinkSync(pubKey);
-    } catch (e) {}
+    } catch (_e) {
+      void _e;
+    }
     try {
       fs.unlinkSync(privKey);
-    } catch (e) {}
+    } catch (_e) {
+      void _e;
+    }
   });
 
   test("generateKeys writes key files", () => {
@@ -63,7 +69,7 @@ describe("auto_trading script", () => {
         throw new Error("no python");
       };
       await expect(fetchPublicIp()).rejects.toThrow(
-        "Unable to fetch public IP",
+        "Unable to fetch public IP"
       );
     } finally {
       require("child_process").execSync = origExec;

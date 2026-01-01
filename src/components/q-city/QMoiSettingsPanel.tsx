@@ -1,3 +1,5 @@
+/* eslint-env browser */
+/* eslint-env browser */
 import React, { useRef } from "react";
 
 export const QMoiSettingsPanel: React.FC = () => {
@@ -11,7 +13,7 @@ export const QMoiSettingsPanel: React.FC = () => {
   });
   const fileInput = useRef<HTMLInputElement>(null);
 
-  function saveSettings(newSettings: any) {
+  function saveSettings(newSettings: unknown) {
     setSettings(newSettings);
     localStorage.setItem("qmoi-settings", JSON.stringify(newSettings));
   }
@@ -32,25 +34,25 @@ export const QMoiSettingsPanel: React.FC = () => {
     a.click();
     URL.revokeObjectURL(url);
   }
-  function importSettings(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
+  function importSettings(_e: React.ChangeEvent<HTMLInputElement>) {
+    const file = _e.target.files?.[0];
     if (!file) return;
     const reader = new FileReader();
-    reader.onload = (ev) => {
+    reader.onload = (_ev) => {
       try {
-        const data = JSON.parse(ev.target?.result as string);
+        const data = JSON.parse(_ev.target?.result as string);
         if (data.settings) saveSettings(data.settings);
         if (data.cmdHistory)
           localStorage.setItem(
             "qcity-cmd-history",
-            JSON.stringify(data.cmdHistory),
+            JSON.stringify(data.cmdHistory)
           );
         if (data.pinned)
           localStorage.setItem("qcity-cmd-pinned", JSON.stringify(data.pinned));
         if (data.qavatar)
           localStorage.setItem(
             "qavatar-settings",
-            JSON.stringify(data.qavatar),
+            JSON.stringify(data.qavatar)
           );
         alert("Settings imported!");
       } catch {
@@ -69,8 +71,8 @@ export const QMoiSettingsPanel: React.FC = () => {
           Autonomy Level
           <select
             value={settings.autonomy || "manual"}
-            onChange={(e) =>
-              saveSettings({ ...settings, autonomy: e.target.value })
+            onChange={(_e) =>
+              saveSettings({ ...settings, autonomy: _e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
           >
@@ -84,11 +86,11 @@ export const QMoiSettingsPanel: React.FC = () => {
           <input
             type="text"
             value={settings.allowedActions || ""}
-            onChange={(e) =>
-              saveSettings({ ...settings, allowedActions: e.target.value })
+            onChange={(_e) =>
+              saveSettings({ ...settings, allowedActions: _e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
-            placeholder="e.g. build,deploy,test"
+            placeholder="_e.g. build,deploy,test"
           />
         </label>
         <label className="block mb-2">
@@ -96,11 +98,11 @@ export const QMoiSettingsPanel: React.FC = () => {
           <input
             type="text"
             value={settings.mediaPerms || ""}
-            onChange={(e) =>
-              saveSettings({ ...settings, mediaPerms: e.target.value })
+            onChange={(_e) =>
+              saveSettings({ ...settings, mediaPerms: _e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
-            placeholder="e.g. images,docs,code"
+            placeholder="_e.g. images,docs,code"
           />
         </label>
       </div>

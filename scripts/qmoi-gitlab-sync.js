@@ -27,8 +27,8 @@ async function upsertVariable(key, value) {
       { headers: { "PRIVATE-TOKEN": GITLAB_TOKEN } },
     );
     console.log(`QMOI: Updated GitLab variable ${key}`);
-  } catch (err) {
-    if (err.response && err.response.status === 404) {
+  } catch (_err) {
+    if (_err._response && _err._response.status === 404) {
       // Create if not found
       await axios.post(
         `${GITLAB_API_URL}/projects/${encodeURIComponent(GITLAB_PROJECT_ID)}/variables`,
@@ -37,7 +37,7 @@ async function upsertVariable(key, value) {
       );
       console.log(`QMOI: Created GitLab variable ${key}`);
     } else {
-      console.error(`QMOI: Failed to upsert variable ${key}:`, err.message);
+      console.error(`QMOI: Failed to upsert variable ${key}:`, _err.message);
     }
   }
 }

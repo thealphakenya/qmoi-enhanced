@@ -50,7 +50,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [_error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -69,12 +69,12 @@ export default function PluginPanel() {
     fetch("/api/qcity/plugins")
       .then((r) => r.json())
       .then((data) => setPlugins(data.plugins || []))
-      .catch((e) => setError(e.message))
+      .catch((_e) => setError(_e.message))
       .finally(() => setLoading(false));
   }
 
-  async function handleUpload(e: React.FormEvent) {
-    e.preventDefault();
+  async function handleUpload(_e: React.FormEvent) {
+    _e.preventDefault();
     if (!pluginFile) return;
     setUploading(true);
     // Stubbed upload
@@ -126,9 +126,9 @@ export default function PluginPanel() {
         Plugins
         <HelpLink href="/docs/PLUGINS.md" label="Plugin System Documentation" />
       </h2>
-      {error && (
+      {_error && (
         <div className="text-red-400 mb-2" role="alert">
-          {error}
+          {_error}
         </div>
       )}
       <form
@@ -143,7 +143,7 @@ export default function PluginPanel() {
           id="plugin-upload"
           type="file"
           accept=".js,.ts"
-          onChange={(e) => setPluginFile(e.target.files?.[0] || null)}
+          onChange={(_e) => setPluginFile(_e.target.files?.[0] || null)}
           aria-label="Select plugin file to upload"
           className="text-xs text-gray-200 bg-gray-800 border rounded px-2 py-1"
         />
@@ -187,8 +187,8 @@ export default function PluginPanel() {
               {configuring === p && (
                 <form
                   className="flex flex-col gap-1 mt-2"
-                  onSubmit={(e) => {
-                    e.preventDefault();
+                  onSubmit={(_e) => {
+                    _e.preventDefault();
                     handleConfig(p);
                   }}
                   aria-label={`Config form for ${p}`}
@@ -204,10 +204,10 @@ export default function PluginPanel() {
                     type="text"
                     className="border rounded px-2 py-1 text-xs bg-gray-900 text-gray-100"
                     value={pluginConfig[p] || ""}
-                    onChange={(e) =>
+                    onChange={(_e) =>
                       setPluginConfig((cfg) => ({
                         ...cfg,
-                        [p]: e.target.value,
+                        [p]: _e.target.value,
                       }))
                     }
                     aria-label={`Config value for ${p}`}

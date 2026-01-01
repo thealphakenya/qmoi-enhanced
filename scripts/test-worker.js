@@ -18,18 +18,18 @@ async function runTest() {
       duration: result.duration,
       retries: 0,
     });
-  } catch (err) {
+  } catch (_err) {
     parentPort.postMessage({
       file: path.relative(process.cwd(), workerData.testFile),
       success: false,
-      error: err.message,
-      stack: err.stack,
+      _error: _err.message,
+      stack: _err.stack,
       retries: 0,
     });
   }
 }
 
-runTest().catch((err) => {
-  console.error(`Worker error in ${workerData.testFile}:`, err);
+runTest().catch((_err) => {
+  console.error(`Worker _error in ${workerData.testFile}:`, _err);
   process.exit(1);
 });

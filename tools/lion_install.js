@@ -22,7 +22,7 @@ function hasNode() {
   try {
     execSync("node -v", { stdio: "ignore" });
     return true;
-  } catch (e) {
+  } catch (_e) {
     return false;
   }
 }
@@ -33,8 +33,8 @@ function runInstall(pm) {
     if (pm === "yarn") execSync("yarn install", { stdio: "inherit" });
     else execSync("npm install", { stdio: "inherit" });
     console.log("[lion_install] install complete");
-  } catch (e) {
-    console.error("[lion_install] install failed", e);
+  } catch (_e) {
+    console.error("[lion_install] install failed", _e);
     process.exit(1);
   }
 }

@@ -14,7 +14,7 @@ export interface QCityStatus {
     gpu?: number;
     battery?: number;
   };
-  tasks: any[];
+  tasks: unknown[];
   errors: {
     id: string;
     appId: string;
@@ -106,7 +106,7 @@ export function useQCity() {
     },
     {
       refetchInterval: 5000, // Poll every 5 seconds
-      onError: (err: any) => setError(err as QCityError),
+      onError: (err: unknown) => setError(err as QCityError),
     },
   );
 
@@ -121,7 +121,7 @@ export function useQCity() {
       return response.data;
     },
     {
-      onError: (err: any) => setError(err as QCityError),
+      onError: (err: unknown) => setError(err as QCityError),
     },
   );
 
@@ -133,7 +133,7 @@ export function useQCity() {
     },
     {
       onSuccess: () => refetchStatus(),
-      onError: (err: any) => setError(err as QCityError),
+      onError: (err: unknown) => setError(err as QCityError),
     },
   );
 
@@ -145,7 +145,7 @@ export function useQCity() {
     },
     {
       onSuccess: () => refetchStatus(),
-      onError: (err: any) => setError(err as QCityError),
+      onError: (err: unknown) => setError(err as QCityError),
     },
   );
 
@@ -167,7 +167,7 @@ export function useQCity() {
         refetchConfig();
         refetchStatus();
       },
-      onError: (err: any) => setError(err as QCityError),
+      onError: (err: unknown) => setError(err as QCityError),
     },
   );
 
@@ -184,7 +184,7 @@ export function useQCity() {
         refetchConfig();
         refetchStatus();
       },
-      onError: (err: any) => setError(err as QCityError),
+      onError: (err: unknown) => setError(err as QCityError),
     },
   );
 
@@ -196,7 +196,7 @@ export function useQCity() {
     },
     {
       onSuccess: () => refetchStatus(),
-      onError: (err: any) => setError(err as QCityError),
+      onError: (err: unknown) => setError(err as QCityError),
     },
   );
 
@@ -208,7 +208,7 @@ export function useQCity() {
     },
     {
       onSuccess: () => refetchStatus(),
-      onError: (err: any) => setError(err as QCityError),
+      onError: (err: unknown) => setError(err as QCityError),
     },
   );
 
@@ -224,7 +224,7 @@ export function useQCity() {
     },
     {
       onSuccess: () => refetchStatus(),
-      onError: (err: any) => setError(err as QCityError),
+      onError: (err: unknown) => setError(err as QCityError),
     },
   );
 
@@ -236,7 +236,7 @@ export function useQCity() {
     },
     {
       onSuccess: () => refetchStatus(),
-      onError: (err: any) => setError(err as QCityError),
+      onError: (err: unknown) => setError(err as QCityError),
     },
   );
 

@@ -40,7 +40,7 @@ async function setupMpesa() {
   console.log("\n🔑 Let's configure your M-Pesa credentials:\n");
 
   const mpesaNumber = await question(
-    "M-Pesa Phone Number (e.g., 0725382624): ",
+    "M-Pesa Phone Number (_e.g., 0725382624): ",
   );
   const consumerKey = await question("M-Pesa Consumer Key: ");
   const consumerSecret = await question("M-Pesa Consumer Secret: ");
@@ -54,7 +54,7 @@ async function setupMpesa() {
   );
   const masterToken = await question("QMOI Master Token: ");
   const appUrl = await question(
-    "App URL (e.g., https://your-app.vercel.app): ",
+    "App URL (_e.g., https://your-app.vercel.app): ",
   );
 
   console.log("\n📝 Generating .env.production file...\n");
@@ -86,8 +86,8 @@ NEXT_PUBLIC_APP_URL=${appUrl}
   try {
     fs.writeFileSync(envPath, envContent);
     console.log("✅ .env.production file created successfully!");
-  } catch (error) {
-    console.error("❌ Failed to create .env.production file:", error.message);
+  } catch (_error) {
+    console.error("❌ Failed to create .env.production file:", _error.message);
     rl.close();
     return;
   }
@@ -128,7 +128,7 @@ NEXT_PUBLIC_APP_URL=${appUrl}
   console.log("- Monitor transactions for suspicious activity");
 
   console.log("\n📞 Support:");
-  console.log("- Check logs for detailed error information");
+  console.log("- Check logs for detailed _error information");
   console.log("- Test in sandbox before going live");
   console.log("- Contact Safaricom support for API issues");
 

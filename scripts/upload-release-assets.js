@@ -21,7 +21,7 @@ if (!fs.existsSync(releaseInfoPath)) {
 const releaseInfo = JSON.parse(fs.readFileSync(releaseInfoPath));
 
 async function createRelease() {
-  const res = await axios.post(
+  const _res = await axios.post(
     `https://api.github.com/repos/${OWNER}/${REPO}/releases`,
     {
       tag_name: releaseInfo.version,
@@ -37,7 +37,7 @@ async function createRelease() {
       },
     },
   );
-  return res.data.upload_url.split("{")[0];
+  return _res.data.upload_url.split("{")[0];
 }
 
 async function uploadAsset(uploadUrl, filePath) {

@@ -1,11 +1,11 @@
 jest.mock("next/server", () => ({
-  NextResponse: { json: (payload: any) => payload },
+  NextResponse: { json: (payload: unknown) => payload },
 }));
 import { GET } from "../app/api/qmoi-model/route";
 
 describe("QMOI model route", () => {
   test("ignores client-supplied model param and returns canonical 'qmoi'", async () => {
-    const req: any = {
+    const req: unknown = {
       nextUrl: {
         searchParams: new URLSearchParams("allStats=1&model=malicious-model"),
       },
@@ -13,7 +13,7 @@ describe("QMOI model route", () => {
 
     const warnSpy = jest.spyOn(console, "warn").mockImplementation(() => {});
 
-    const res: any = await GET(req);
+    const res: unknown = await GET(req);
 
     // Restore spy now so assertion shows up nicely on failure
     warnSpy.mockRestore();

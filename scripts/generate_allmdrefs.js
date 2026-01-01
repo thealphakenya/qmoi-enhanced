@@ -3,19 +3,19 @@ const fs = require("fs");
 const path = require("path");
 
 function walk(dir) {
-  const res = [];
+  const _res = [];
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   for (const entry of entries) {
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) {
       // skip node_modules hidden vendor dirs under project root? keep everything to be thorough
-      res.push(...walk(full));
+      _res.push(...walk(full));
     } else if (entry.isFile() && full.endsWith(".md")) {
       // make path relative to repo root
-      res.push(path.relative(process.cwd(), full).replace(/\\\\/g, "/"));
+      _res.push(path.relative(process.cwd(), full).replace(/\\\\/g, "/"));
     }
   }
-  return res;
+  return _res;
 }
 
 const repoRoot = process.cwd();

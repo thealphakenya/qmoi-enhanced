@@ -8,8 +8,8 @@ const glob = require("glob");
 // Utility: Run a shell command and return a promise
 function run(cmd) {
   return new Promise((resolve, reject) => {
-    exec(cmd, { maxBuffer: 1024 * 1024 * 10 }, (err, stdout, stderr) => {
-      if (err) reject(stderr || stdout);
+    exec(cmd, { maxBuffer: 1024 * 1024 * 10 }, (_err, stdout, stderr) => {
+      if (_err) reject(stderr || stdout);
       else resolve(stdout);
     });
   });
@@ -75,7 +75,7 @@ async function main() {
   console.log("All environments are up-to-date, healthy, and optimized.");
 }
 
-main().catch((e) => {
-  console.error(e);
+main().catch((_e) => {
+  console.error(_e);
   process.exit(1);
 });

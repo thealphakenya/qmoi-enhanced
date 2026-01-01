@@ -4,7 +4,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 const JWT_SECRET = process.env.JWT_SECRET || "changeme";
 
 export function requireRole(roles: string[]) {
-  return (handler: any) =>
+  return (handler: unknown) =>
     async (req: NextApiRequest, res: NextApiResponse) => {
       const auth = req.headers.authorization;
       if (!auth || !auth.startsWith("Bearer "))

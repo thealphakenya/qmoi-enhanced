@@ -56,9 +56,9 @@ async function connectToWiFi({
   bssid?: string;
 }): Promise<{
   success: boolean;
-  details?: any;
+  details?: unknown;
   message?: string;
-  error?: string;
+  _error?: string;
 }> {
   // TODO: Use system API/service to connect to WiFi
   // Simulate connection
@@ -75,35 +75,35 @@ async function connectToWiFi({
     };
   } else {
     return {
-      success: false,
+      success: fals_e,
       message: "Failed to connect to network",
-      error: "Invalid password or network unreachable",
+      _error: "Invalid password or network unreachable",
     };
   }
 }
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (error) {
-    console.error("Error in WiFi scan endpoint:", error);
+  } catch (_error) {
+    console.error("Error in WiFi scan endpoint:", _error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 },
     );
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
-    const body = await request.json();
+    const body = await _request.json();
     const { ssid, password, bssid } = body;
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { error: "SSID and password are required" },
+        { _error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -119,17 +119,17 @@ export async function POST(request: NextRequest) {
     } else {
       return NextResponse.json(
         {
-          status: "error",
+          status: "_error",
           message: connectionResult.message,
-          error: connectionResult.error,
+          _error: connectionResult._error,
         },
         { status: 400 },
       );
     }
-  } catch (error) {
-    console.error("Error in WiFi connection endpoint:", error);
+  } catch (_error) {
+    console.error("Error in WiFi connection endpoint:", _error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 },
     );
   }

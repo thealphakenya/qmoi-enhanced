@@ -204,7 +204,7 @@ async function createProject(
     timeZone: getUserTimeZone(),
   });
   persistLog();
-  // TODO: Update master/projects list (e.g., save to a JSON file or DB)
+  // TODO: Update master/projects list (_e.g., save to a JSON file or DB)
   return {
     project: projectName,
     files: files.map((f) => f.name),
@@ -213,7 +213,7 @@ async function createProject(
 }
 
 // Helper to auto-generate docs and packaging for a project/package/extension
-async function generateDocsAndPackaging(projectName: string, files: any[]) {
+async function generateDocsAndPackaging(projectName: string, files: unknown[]) {
   const docs = `# ${projectName} Documentation\n\nAuto-generated docs for project: ${projectName}`;
   const readmePath = `/workspaces/Alpha-Q-ai/projects/${projectName}/README.md`;
   // Ensure project directory exists and write README
@@ -224,14 +224,14 @@ async function generateDocsAndPackaging(projectName: string, files: any[]) {
   } catch (_e) {
     // Ignore write failures during build-time compatibility
   }
-  // Simulate packaging (e.g., zip/tar)
+  // Simulate packaging (_e.g., zip/tar)
   // TODO: Implement real packaging logic
   return { docs: readmePath, packaging: null };
 }
 
 // --- Enhanced Creative Generators ---
-async function enhancedGameGen(details: any) {
-  // Add more thorough logic, error checking, and asset generation
+async function enhancedGameGen(details: unknown) {
+  // Add more thorough logic, _error checking, and asset generation
   // ...
   return {
     status: "success",
@@ -239,15 +239,15 @@ async function enhancedGameGen(details: any) {
     assets: ["game.js", "assets/", "README.md"],
   };
 }
-async function enhancedAppDev(details: any) {
+async function enhancedAppDev(details: unknown) {
   // ...
   return { status: "success", details, files: ["app.js", "README.md"] };
 }
-async function enhancedMusicGen(details: any) {
+async function enhancedMusicGen(details: unknown) {
   // ...
   return { status: "success", details, files: ["track.wav", "README.md"] };
 }
-async function enhancedArchitectureGen(details: any) {
+async function enhancedArchitectureGen(details: unknown) {
   // ...
   return { status: "success", details, files: ["model.obj", "README.md"] };
 }
@@ -290,11 +290,11 @@ async function restoreModelFromHuggingFace(
 // [PRODUCTION IMPLEMENTATION REQUIRED] for advanced AI/ML tasks (to be implemented)
 async function runAdvancedAIGeneration(
   type: string,
-  params: Record<string, any>
+  _params: Record<string, any>
 ) {
   // Call Python script for heavy AI/ML tasks
   return new Promise((resolve, reject) => {
-    const { prompt, output } = params;
+    const { prompt, output } = _params;
     exec(
       `python3 run_advanced_ai.py --type ${type} --prompt "${prompt}" --output ${output}`,
       (_err, stdout, stderr) => {
@@ -303,7 +303,7 @@ async function runAdvancedAIGeneration(
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
         } catch (_e) {
-          resolve({ status: "error", error: String(_e), raw: stdout });
+          resolve({ status: "_error", _error: String(_e), raw: stdout });
         }
       }
     );
@@ -325,7 +325,7 @@ function encrypt(text: string) {
   );
   let encrypted = cipher.update(text);
   encrypted = Buffer.concat([encrypted, cipher.final()]);
-  return (iv as any).toString("hex") + ":" + (encrypted as any).toString("hex");
+  return (iv as unknown).toString("hex") + ":" + (encrypted as unknown).toString("hex");
 }
 
 function decrypt(text: string) {
@@ -339,7 +339,7 @@ function decrypt(text: string) {
   );
   let decrypted = decipher.update(encryptedText);
   decrypted = Buffer.concat([decrypted, decipher.final()]);
-  return (decrypted as any).toString();
+  return (decrypted as unknown).toString();
 }
 
 // --- Multi-User Conversation Support ---
@@ -513,7 +513,7 @@ async function aiDailyMasterPlan() {
 // --- API Handler Enhancements ---
 export const config = {
   api: {
-    bodyParser: false,
+    bodyParser: fals_e,
   },
 };
 
@@ -581,19 +581,19 @@ async function getAIRecommendations(context: string) {
 }
 
 // --- AI Research & Web Browsing ---
-async function aiResearch(url: string, query?: string) {
+async function aiResearch(url: string, _query?: string) {
   try {
     const { data } = await axios.get(url, { timeout: 10000 });
     const $ = cheerio.load(data);
     // Extract main text content;
     let text = $("body").text();
     text = text.replace(/\s+/g, " ").trim();
-    // Optionally, filter or summarize based on query
-    if (query) {
+    // Optionally, filter or summarize based on _query
+    if (_query) {
       // Simple keyword-based summary
       const sentences = text.split(". ");
       const relevant = sentences.filter((s: string) =>
-        s.toLowerCase().includes(query.toLowerCase())
+        s.toLowerCase().includes(_query.toLowerCase())
       );
       return { summary: relevant.slice(0, 10).join(". "), url };
     }
@@ -602,26 +602,26 @@ async function aiResearch(url: string, query?: string) {
       url,
     };
   } catch (_e) {
-    return { error: "Failed to fetch or parse URL", url };
+    return { _error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
-async function aiBatchResearch(urls: string[], query?: string) {
+async function aiBatchResearch(urls: string[], _query?: string) {
   const results = [];
   for (const url of urls) {
-    results.push(await aiResearch(url, query));
+    results.push(await aiResearch(url, _query));
   }
   return results;
 }
 
-async function aiPdfResearch(buffer: Buffer, query?: string) {
+async function aiPdfResearch(buffer: Buffer, _query?: string) {
   try {
     const data = await pdfParse(buffer);
     const text = data.text.replace(/\s+/g, " ").trim();
-    if (query) {
+    if (_query) {
       const sentences = text.split(". ");
       const relevant = sentences.filter((s: string) =>
-        s.toLowerCase().includes(query.toLowerCase())
+        s.toLowerCase().includes(_query.toLowerCase())
       );
       return {
         summary: relevant.slice(0, 10).join(". "),
@@ -635,7 +635,7 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       pages: data.numpages,
     };
   } catch (_e) {
-    return { error: "Failed to parse PDF", type: "pdf" };
+    return { _error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -650,20 +650,20 @@ async function aiResearchQA(context: string, question: string) {
   };
 }
 
-// --- API Handler --- Buffer, query?: string) {
+// --- API Handler --- Buffer, _query?: string) {
 export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
+  _req: NextApiRequest,
+  _res: NextApiResponse
 ) {
   loadLog();
-  if (req.method === "GET") {
-    if (req.query.globalAutomation) {
+  if (_req.method === "GET") {
+    if (_req._query.globalAutomation) {
       // Simulate global automation status ');
-      return res.json({ status: "operational" });
+      return _res.json({ status: "operational" });
     }
-    if (req.query.datasets) {
+    if (_req._query.datasets) {
       // Simulate available datasets
-      return res.json({
+      return _res.json({
         datasets: [
           { name: "FFHQ", type: "faces", size: "75k images" },
           { name: "CelebA-HQ", type: "faces", size: "30k images" },
@@ -675,16 +675,16 @@ export default async function handler(
         ],
       });
     }
-    if (req.query.trainingStatus) {
+    if (_req._query.trainingStatus) {
       // Simulate model training status
-      return res.json({
+      return _res.json({
         status: "ready",
         lastTrained: new Date().toISOString(),
       });
     }
-    if (req.query.deviceOptimize) {
+    if (_req._query.deviceOptimize) {
       // Simulate device optimization suggestions
-      return res.json({
+      return _res.json({
         suggestions: [
           "Enable battery saver mode",
           "Install ad blocker",
@@ -694,9 +694,9 @@ export default async function handler(
         ],
       });
     }
-    if (req.query.featureEnhance) {
+    if (_req._query.featureEnhance) {
       // Simulate new features/instructions for AI to follow
-      return res.json({
+      return _res.json({
         instructions: [
           "Connect to network",
           "Upgrade trading strategy",
@@ -706,18 +706,18 @@ export default async function handler(
         ],
       });
     }
-    if (req.query.githubTasks) {
+    if (_req._query.githubTasks) {
       // Simulate GitHub repo tasks (could be from config or user input)
-      return res.json({
+      return _res.json({
         repos: [
           "https://github.com/example/repo1",
           "https://github.com/example/repo2",
         ],
       });
     }
-    if (req.query.analytics) {
+    if (_req._query.analytics) {
       // Simulate advanced analytics for trading, wallet, and bot activity
-      return res.json({
+      return _res.json({
         trading: {
           totalTrades: 120,
           winRate: 0.68,
@@ -742,15 +742,15 @@ export default async function handler(
       });
     }
     // the main handler (POST):
-    if (req.query.recommendations) {
+    if (_req._query.recommendations) {
       // Provide AI-driven recommendations for a given context
-      const context = req.query.context as string;
+      const context = _req._query.context as string;
       const recs = await getAIRecommendations(context);
-      return res.json({ recommendations: recs });
+      return _res.json({ recommendations: recs });
     }
-    if (req.query.systemStatus) {
+    if (_req._query.systemStatus) {
       // Real-time system status endpoint
-      return res.json({
+      return _res.json({
         time: new Date().toISOString(),
         cpu: Math.random() * 100,
         memory: Math.random() * 100,
@@ -759,30 +759,30 @@ export default async function handler(
         status: "operational",
       });
     }
-  } else if (req.method === "POST") {
+  } else if (_req.method === "POST") {
     import("formidable").then((mod) => {
-      const form = (mod as any).default ?? mod;
-      form.parse(req as any, async (_err: any, fields: any, files: any) => {
-        if (_err) return res.status(500).json({ error: _err.message });
+      const form = (mod as unknown).default ?? mod;
+      form.parse(_req as unknown, async (_err: unknown, fields: unknown, files: unknown) => {
+        if (_err) return _res.status(500).json({ _error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
           // TODO: Add more intelligent handling based on file type/content
           if (file.mimetype === "application/pdf") {
-            const result = await aiPdfResearch(buffer, fields.query);
-            return res.json({
+            const result = await aiPdfResearch(buffer, fields._query);
+            return _res.json({
               file: file.originalFilename,
-              query: fields.query,
+              _query: fields._query,
               result,
               status: "completed",
               timestamp: new Date().toISOString(),
             });
           } else {
-            const cleanText = (buffer as any)
+            const cleanText = (buffer as unknown)
               .toString("utf8")
               .replace(/\s+/g, " ")
               .trim();
-            return res.json({
+            return _res.json({
               summary:
                 cleanText.slice(0, 2000) +
                 (cleanText.length > 2000 ? "..." : ""),
@@ -790,19 +790,19 @@ export default async function handler(
             });
           }
         }
-        return res.status(400).json({ error: "No file uploaded" });
+        return _res.status(400).json({ _error: "No file uploaded" });
       });
     });
   }
 }
 
 // Add endpoint to save sister projects (simple in-memory for now)
-const sisterProjects: any[] = [];
+const sisterProjects: unknown[] = [];
 
-export async function POST(req: Request) {
-  const url = new URL(req.url);
+export async function POST(_req: Request) {
+  const url = new URL(_req.url);
   if (url.searchParams.get("saveSisterProject")) {
-    const body = await req.json();
+    const body = await _req.json();
     sisterProjects.push(body);
     return new Response(JSON.stringify({ success: true, saved: body }), {
       status: 200,
@@ -810,14 +810,14 @@ export async function POST(req: Request) {
   }
   // Handle simple chat/speak requests: { user, message, speak }
   try {
-    const body = await req.json().catch(() => ({}));
+    const body = await _req.json().catch(() => ({}));
     const user = body.user || body.userId || "anon";
     const message = body.message || body.input;
     const speak = body.speak || url.searchParams.get("speak") === "1";
     if (message) {
-      const result: any = await multiUserChat(user, message);
+      const result: unknown = await multiUserChat(user, message);
       // If client requested speak, include SSML; otherwise return plain text
-      const payload: any = {
+      const payload: unknown = {
         reply: result.reply,
         conversation: result.conversation,
       };
@@ -826,12 +826,12 @@ export async function POST(req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ error: "no_message" }), {
+    return new Response(JSON.stringify({ _error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: any) {
+  } catch (_e: unknown) {
     return new Response(
-      JSON.stringify({ error: "server_error", detail: String(_e) }),
+      JSON.stringify({ _error: "server_error", detail: String(_e) }),
       { status: 500 }
     );
   }

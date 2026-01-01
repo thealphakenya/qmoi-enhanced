@@ -20,15 +20,15 @@ function requireApiKey(headers) {
       return { ok: true };
     return {
       ok: false,
-      response: {
-        body: { error: "Unauthorized - Invalid API key" },
+      _response: {
+        body: { _error: "Unauthorized - Invalid API key" },
         status: 401,
       },
     };
-  } catch (err) {
+  } catch (_err) {
     return {
       ok: false,
-      response: { body: { error: "Authentication error" }, status: 500 },
+      _response: { body: { _error: "Authentication _error" }, status: 500 },
     };
   }
 }
@@ -47,21 +47,21 @@ class FakeHeaders {
   console.log("Running requireApiKey smoke tests...");
   process.env.NODE_ENV = "development";
   let headers = new FakeHeaders();
-  let res = requireApiKey(headers);
-  assert(res.ok, "Development mode should allow requests");
+  let _res = requireApiKey(headers);
+  assert(_res.ok, "Development mode should allow requests");
   process.env.NODE_ENV = "production";
   process.env.MASTER_TOKEN = "master-123";
   headers = new FakeHeaders({ authorization: "Bearer master-123" });
-  res = requireApiKey(headers);
-  assert(res.ok, "MASTER_TOKEN via Authorization should be accepted");
+  _res = requireApiKey(headers);
+  assert(_res.ok, "MASTER_TOKEN via Authorization should be accepted");
   process.env.API_KEY = "api-456";
   headers = new FakeHeaders({ "x-api-key": "api-456" });
-  res = requireApiKey(headers);
-  assert(res.ok, "API_KEY via x-api-key should be accepted");
+  _res = requireApiKey(headers);
+  assert(_res.ok, "API_KEY via x-api-key should be accepted");
   headers = new FakeHeaders({ authorization: "Bearer wrong" });
-  res = requireApiKey(headers);
+  _res = requireApiKey(headers);
   assert(
-    !res.ok && res.response?.status === 401,
+    !_res.ok && _res._response?.status === 401,
     "Invalid key should be rejected with 401",
   );
   console.log("All requireApiKey smoke tests passed.");

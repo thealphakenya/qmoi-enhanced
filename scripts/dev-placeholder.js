@@ -7,8 +7,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 const host = process.env.HOST || "0.0.0.0";
 
-app.get("/", (req, res) => {
-  res.type("html").send(`
+app.get("/", (_req, _res) => {
+  _res.type("html").send(`
     <html>
       <head><title>QMOI - Placeholder</title></head>
       <body style="font-family: system-ui, sans-serif; padding: 2rem;">
@@ -21,8 +21,8 @@ app.get("/", (req, res) => {
   `);
 });
 
-app.get("/health", (req, res) =>
-  res.json({ ok: true, time: new Date().toISOString() })
+app.get("/health", (_req, _res) =>
+  _res.json({ ok: true, time: new Date().toISOString() })
 );
 
 app.listen(port, host, () => {

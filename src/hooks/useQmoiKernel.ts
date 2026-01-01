@@ -21,7 +21,7 @@ export function useQmoiKernel() {
     logs: [],
   });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
   const [lastAction, setLastAction] = useState<QMoiKernelActionResult | null>(
     null
   );
@@ -31,12 +31,12 @@ export function useQmoiKernel() {
     setError(null);
     try {
       console.debug("HOOK: fetchStatus - calling /api/qmoi/status");
-      const res = await fetch("/api/qmoi/status", {
+      const _res = await fetch("/api/qmoi/status", {
         headers: getSessionHeaders(),
       });
-      console.debug("HOOK: fetchStatus - response status", res && res.status);
-      if (!res.ok) throw new Error("Failed to fetch status");
-      const data = await res.json();
+      console.debug("HOOK: fetchStatus - _response status", _res && _res.status);
+      if (!_res.ok) throw new Error("Failed to fetch status");
+      const data = await _res.json();
       console.debug("HOOK: fetchStatus - parsed data", data);
       setStatus({
         status: data.status,
@@ -44,8 +44,8 @@ export function useQmoiKernel() {
         mutationCount: data.mutation_count,
         logs: data.logs || [],
       });
-    } catch (err: any) {
-      setError(err.message || "Unknown error");
+    } catch (_err: unknown) {
+      setError(_err.message || "Unknown _error");
     } finally {
       setLoading(false);
     }
@@ -57,22 +57,22 @@ export function useQmoiKernel() {
       setError(null);
       setLastAction(null);
       try {
-        const res = await fetch(`/api/qmoi/payload?${action}`, {
+        const _res = await fetch(`/api/qmoi/payload?${action}`, {
           method: "POST",
           headers: getSessionHeaders(),
         });
-        if (!res.ok) throw new Error(`Failed to run ${action}`);
-        const data = await res.json().catch(() => ({}));
+        if (!_res.ok) throw new Error(`Failed to run ${action}`);
+        const data = await _res.json().catch(() => ({}));
         setLastAction({
           success: true,
           message: data.message || `${action} completed successfully`,
         });
         await fetchStatus();
-      } catch (err: any) {
-        setError(err.message || "Unknown error");
+      } catch (_err: unknown) {
+        setError(_err.message || "Unknown _error");
         setLastAction({
           success: false,
-          message: err.message || "Unknown error",
+          message: _err.message || "Unknown _error",
         });
       } finally {
         setLoading(false);
@@ -85,11 +85,11 @@ export function useQmoiKernel() {
     () => ({
       status,
       loading,
-      error,
+      _error,
       lastAction,
       fetchStatus,
       runAction,
     }),
-    [status, loading, error, lastAction, fetchStatus, runAction]
+    [status, loading, _error, lastAction, fetchStatus, runAction]
   );
 }

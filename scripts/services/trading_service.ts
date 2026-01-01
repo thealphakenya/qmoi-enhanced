@@ -60,9 +60,9 @@ export class TradingService {
         "Trading Service",
         "Trading service has been initialized successfully.",
       );
-    } catch (error) {
-      logger.error("Failed to initialize trading service:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to initialize trading service:", _error);
+      throw _error;
     }
   }
 
@@ -83,9 +83,9 @@ export class TradingService {
         takeProfit: parseFloat(process.env.TRADING_TAKE_PROFIT || "5"),
       };
       logger.info("Trading configuration loaded successfully");
-    } catch (error) {
-      logger.error("Failed to load trading configuration:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to load trading configuration:", _error);
+      throw _error;
     }
   }
 
@@ -97,9 +97,9 @@ export class TradingService {
         await this.initializeExchange(exchange);
       }
       logger.info("Trading exchanges initialized successfully");
-    } catch (error) {
-      logger.error("Failed to initialize trading exchanges:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to initialize trading exchanges:", _error);
+      throw _error;
     }
   }
 
@@ -116,9 +116,9 @@ export class TradingService {
         await this.initializeStrategy(strategy);
       }
       logger.info("Trading strategies initialized successfully");
-    } catch (error) {
-      logger.error("Failed to initialize trading strategies:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to initialize trading strategies:", _error);
+      throw _error;
     }
   }
 
@@ -166,9 +166,9 @@ export class TradingService {
       );
 
       return position;
-    } catch (error) {
-      logger.error("Failed to open position:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to open position:", _error);
+      throw _error;
     }
   }
 
@@ -189,9 +189,9 @@ export class TradingService {
         "Position Closed",
         `Closed ${position.type} position for ${position.symbol} with PnL ${position.pnl}`,
       );
-    } catch (error) {
-      logger.error("Failed to close position:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to close position:", _error);
+      throw _error;
     }
   }
 
@@ -217,9 +217,9 @@ export class TradingService {
     try {
       this.config = { ...this.config, ...newConfig };
       logger.info("Trading configuration updated successfully");
-    } catch (error) {
-      logger.error("Failed to update trading configuration:", error);
-      throw error;
+    } catch (_error) {
+      logger._error("Failed to update trading configuration:", _error);
+      throw _error;
     }
   }
 }

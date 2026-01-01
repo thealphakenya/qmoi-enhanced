@@ -11,18 +11,18 @@ export function FloatingAQ() {
 
   // keyboard shortcut: Ctrl+Shift+, opens settings
   useEffect(() => {
-    function onKey(e: KeyboardEvent) {
-      if (e.ctrlKey && e.shiftKey && e.key === ",") {
+    function onKey(_e: KeyboardEvent) {
+      if (_e.ctrlKey && _e.shiftKey && _e.key === ",") {
         if (typeof window !== "undefined") {
           window.dispatchEvent(new CustomEvent("qmoi:open-settings"));
         }
       }
-      if (e.ctrlKey && e.shiftKey && (e.key === "h" || e.key === "H")) {
+      if (_e.ctrlKey && _e.shiftKey && (_e.key === "h" || _e.key === "H")) {
         if (typeof window !== "undefined") {
           window.dispatchEvent(new CustomEvent("qmoi:toggle-high-contrast"));
         }
       }
-      if (e.ctrlKey && e.shiftKey && (e.key === "m" || e.key === "M")) {
+      if (_e.ctrlKey && _e.shiftKey && (_e.key === "m" || _e.key === "M")) {
         if (typeof window !== "undefined") {
           window.dispatchEvent(new CustomEvent("qmoi:toggle-reduce-motion"));
         }
@@ -110,7 +110,7 @@ export function FloatingAQ() {
           <div style={{ marginBottom: 8 }}>Ask Q (floating)</div>
           <input
             value={value}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(_e) => setValue(_e.target.value)}
             placeholder="Ask a question..."
             style={{ width: "100%", padding: 8, marginBottom: 8 }}
           />

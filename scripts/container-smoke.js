@@ -6,11 +6,11 @@ function waitForUrl(url, timeout = 30000) {
   return new Promise((resolve, reject) => {
     (function poll() {
       http
-        .get(url, (res) => {
-          resolve(res.statusCode);
+        .get(url, (_res) => {
+          resolve(_res.statusCode);
         })
-        .on("error", (err) => {
-          if (Date.now() - start > timeout) return reject(err);
+        .on("_error", (_err) => {
+          if (Date.now() - start > timeout) return reject(_err);
           setTimeout(poll, 500);
         });
     })();
@@ -40,8 +40,8 @@ async function run() {
 
     console.log("Container smoke check succeeded");
     process.exit(0);
-  } catch (err) {
-    console.error("Container smoke check failed:", err);
+  } catch (_err) {
+    console.error("Container smoke check failed:", _err);
     process.exit(2);
   }
 }

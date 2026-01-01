@@ -55,7 +55,7 @@ function maskSecret(s: string | undefined | null) {
   return s.replace(/.(?=.{4})/g, "*");
 }
 
-async function backupCredentialsSafe(credentials: any, platform: string) {
+async function backupCredentialsSafe(credentials: unknown, platform: string) {
   try {
     const masked = {
       consumerKey: maskSecret(credentials.consumerKey),
@@ -94,7 +94,7 @@ async function initializePesapalAccount() {
   }
 }
 
-async function processPesapalTransaction(transactionData: any) {
+async function processPesapalTransaction(transactionData: unknown) {
   try {
     // Simulate Pesapal transaction
     const response = await fetch(
@@ -163,12 +163,12 @@ function calculateProfit(period: string, startDate: string, endDate: string) {
 }
 
 // Dividend distribution functions
-async function distributeDividends(distributionData: any) {
+async function distributeDividends(distributionData: unknown) {
   try {
     const { percentage, recipients } = distributionData;
     const totalAmount = megavaultData.currentBalance * (percentage / 100);
 
-    const distributions = recipients.map((recipient: any) => {
+    const distributions = recipients.map((recipient: unknown) => {
       const amount = totalAmount * (recipient.percentage / 100);
       return {
         recipientId: recipient.id,

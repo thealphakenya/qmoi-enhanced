@@ -45,30 +45,30 @@ let nowPlaying = {
 };
 const listeners = 3;
 
-function isMaster(req: NextRequest) {
+function isMaster(_req: NextRequest) {
   try {
-    const auth = requireApiKey(req.headers);
+    const auth = requireApiKey(_req.headers);
     if (auth.ok) return true;
   } catch (_e) {}
-  return req.headers.get("x-qmoi-master") === "true";
+  return _req.headers.get("x-qmoi-master") === "true";
 }
 
-export async function GET_CHANNELS(req: NextRequest) {
+export async function GET_CHANNELS(_req: NextRequest) {
   return NextResponse.json({ channels });
 }
 
-export async function GET_PROGRAMS(req: NextRequest) {
+export async function GET_PROGRAMS(_req: NextRequest) {
   return NextResponse.json({
     programs: channels.map((c) => ({ channel: c.name, programs: c.programs })),
   });
 }
 
-export async function POST_PLAY(req: NextRequest) {
-  const body = await req.json();
+export async function POST_PLAY(_req: NextRequest) {
+  const body = await _req.json();
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ error: "Not found" }, { status: 404 });
+    return NextResponse.json({ _error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -78,26 +78,26 @@ export async function POST_PLAY(req: NextRequest) {
   return NextResponse.json({ success: true, nowPlaying });
 }
 
-export async function GET_STATUS(req: NextRequest) {
+export async function GET_STATUS(_req: NextRequest) {
   return NextResponse.json({ nowPlaying, listeners });
 }
 
-export async function POST_PROGRAM(req: NextRequest) {
-  const auth = requireApiKey(req.headers);
-  if (!auth.ok && !isMaster(req))
-    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
-      status: auth.response?.status || 403,
+export async function POST_PROGRAM(_req: NextRequest) {
+  const auth = requireApiKey(_req.headers);
+  if (!auth.ok && !isMaster(_req))
+    return NextResponse.json(auth._response?.body || { _error: "Forbidden" }, {
+      status: auth._response?.status || 403,
     });
-  const body = await req.json();
+  const body = await _req.json();
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ error: "Not found" }, { status: 404 });
+    return NextResponse.json({ _error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
 
-export async function GET_LISTENERS(req: NextRequest) {
+export async function GET_LISTENERS(_req: NextRequest) {
   return NextResponse.json({ listeners });
 }
 // TODO: FM/AM integration, automation, QMOI as DJ/presenter, auto-programming

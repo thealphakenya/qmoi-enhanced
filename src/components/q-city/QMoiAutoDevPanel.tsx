@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getSessionHeaders } from "../../services/qmoiSession";
 
-function exportToCSV(logs: any[]) {
+function exportToCSV(logs: unknown[]) {
   const header = "Timestamp,Action,Result\n";
   const rows = logs
     .map(
@@ -19,7 +19,7 @@ function exportToCSV(logs: any[]) {
   URL.revokeObjectURL(url);
 }
 
-function exportToJSON(logs: any[]) {
+function exportToJSON(logs: unknown[]) {
   const blob = new Blob([JSON.stringify(logs, null, 2)], {
     type: "application/json",
   });
@@ -49,7 +49,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null
   );
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<any[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -61,15 +61,15 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/qmoi/autodev", {
+      const _res = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
-      const data = await res.json();
+      const data = await _res.json();
       setStatus(data);
-    } catch (e: any) {
-      setError(e.message);
+    } catch (_e: unknown) {
+      setError(_e.message);
     }
     setLoading(false);
   }
@@ -78,7 +78,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const res = await fetch("/api/qmoi/autodev", {
+      const _res = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -88,14 +88,14 @@ export default function QMoiAutoDevPanel({
               : "continuous_autofix_stop",
         }),
       });
-      const data = await res.json();
-      setStatus((prev: any) => ({
+      const data = await _res.json();
+      setStatus((prev: unknown) => ({
         ...prev,
         daemon: data.status,
         running: data.status?.running,
       }));
-    } catch (e: any) {
-      setError(e.message);
+    } catch (_e: unknown) {
+      setError(_e.message);
     }
     setDaemonAction(null);
   }
@@ -107,7 +107,7 @@ export default function QMoiAutoDevPanel({
       if (status?.lastResult?.fixResults) {
         const logEntries = [];
         if (status.lastResult.fixResults.length > 0) {
-          status.lastResult.fixResults.forEach((fix: any, idx: number) => {
+          status.lastResult.fixResults.forEach((fix: unknown, idx: number) => {
             logEntries.push({
               timestamp: status.lastRun,
               action: `Fix Cycle #${idx + 1}`,
@@ -128,8 +128,8 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (e: any) {
-      setError(e.message);
+    } catch (_e: unknown) {
+      setError(_e.message);
     }
     setLogsLoading(false);
   }
@@ -139,17 +139,17 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const res = await fetch("/api/qmoi/autodev", {
+      const _res = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
       });
-      const data = await res.json();
+      const data = await _res.json();
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (e: any) {
-      setError(e.message);
+    } catch (_e: unknown) {
+      setError(_e.message);
     }
     setForceRunLoading(false);
   }
@@ -237,7 +237,7 @@ export default function QMoiAutoDevPanel({
         </label>
         <select
           value={deployPlatform}
-          onChange={(e) => setDeployPlatform(e.target.value)}
+          onChange={(_e) => setDeployPlatform(_e.target.value)}
           style={{
             background: "#111",
             color: "#0ff",
@@ -287,8 +287,8 @@ export default function QMoiAutoDevPanel({
       )}
       {loading ? (
         <p>Loading...</p>
-      ) : error ? (
-        <p style={{ color: "#f66" }}>{error}</p>
+      ) : _error ? (
+        <p style={{ color: "#f66" }}>{_error}</p>
       ) : (
         <div style={{ background: "#222", padding: 12, borderRadius: 8 }}>
           <div>
@@ -434,7 +434,7 @@ export default function QMoiAutoDevPanel({
           <label style={{ marginLeft: 16, color: "#ccc" }}>Filter: </label>
           <select
             value={logFilter}
-            onChange={(e) => setLogFilter(e.target.value as any)}
+            onChange={(_e) => setLogFilter(_e.target.value as unknown)}
             style={{
               background: "#111",
               color: "#0ff",

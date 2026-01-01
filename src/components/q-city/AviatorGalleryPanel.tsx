@@ -60,7 +60,7 @@ export default function AviatorGalleryPanel() {
 
   useEffect(() => {
     fetch("/api/qmoi/avatars", { headers: getSessionHeaders() })
-      .then((res) => res.json())
+      .then((_res) => _res.json())
       .then((data) => setAvatars(data.avatars || []));
   }, []);
   const handleSelect = (id: string) => {
@@ -71,23 +71,23 @@ export default function AviatorGalleryPanel() {
       body: JSON.stringify({ action: "switch", avatarId: id }),
     });
   };
-  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0] || null;
+  const handleAvatarChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = _e.target.files?.[0] || null;
     setAvatarFile(file);
     setPreviewUrl(file ? URL.createObjectURL(file) : null);
   };
-  const handleVoiceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setVoiceFile(e.target.files?.[0] || null);
+  const handleVoiceChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    setVoiceFile(_e.target.files?.[0] || null);
   };
-  const handleUpload = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleUpload = (_e: React.FormEvent) => {
+    _e.preventDefault();
     if (!avatarFile && !voiceFile) return;
     setUploading(true);
     // Stubbed upload
     setTimeout(() => {
       toast({
         title: "Upload Submitted",
-        description: "Your avatar/voice request has been submitted for review.",
+        description: "Your avatar/voice _request has been submitted for review.",
         variant: "default",
       });
       setAvatarFile(null);
@@ -113,8 +113,8 @@ export default function AviatorGalleryPanel() {
             style={{ cursor: "pointer" }}
             tabIndex={0}
             aria-label={`Select avatar ${avatar.name}`}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") handleSelect(avatar.id);
+            onKeyDown={(_e) => {
+              if (_e.key === "Enter" || _e.key === " ") handleSelect(avatar.id);
             }}
           >
             <img
@@ -179,7 +179,7 @@ export default function AviatorGalleryPanel() {
           type="submit"
           className="px-4 py-2 bg-cyan-700 text-white rounded mt-2"
           disabled={uploading || (!avatarFile && !voiceFile)}
-          aria-label="Submit avatar or voice upload request"
+          aria-label="Submit avatar or voice upload _request"
         >
           {uploading ? "Uploading..." : "Submit Upload/Request"}
         </button>

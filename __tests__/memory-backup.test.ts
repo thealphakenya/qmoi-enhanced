@@ -29,15 +29,15 @@ describe("memory-backup API", () => {
 
   test("creates a timestamped backup and returns success", async () => {
     let statusCode = 0;
-    let payload: any = null;
+    let payload: unknown = null;
 
-    const req: any = { method: "POST" };
-    const res: any = {
+    const req: unknown = { method: "POST" };
+    const res: unknown = {
       status: (code: number) => {
         statusCode = code;
         return res;
       },
-      json: (p: any) => {
+      json: (p: unknown) => {
         payload = p;
         return p;
       },

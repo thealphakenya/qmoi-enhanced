@@ -21,48 +21,48 @@ if (apiKeys.length === 0) {
     apiKeys.push({
       key: generateKey(),
       createdAt: new Date().toISOString(),
-      revoked: false,
+      revoked: fals_e,
       usage: 0,
     });
   }
   // TODO: Save to keys/ directory
 }
 
-export async function GET(req: NextRequest) {
+export async function GET(_req: NextRequest) {
   // List all keys (hide revoked by default)
-  const url = new URL(req.url);
+  const url = new URL(_req.url);
   const showRevoked = url.searchParams.get("showRevoked") === "true";
   const keys = showRevoked ? apiKeys : apiKeys.filter((k) => !k.revoked);
   return NextResponse.json({ keys });
 }
 
-export async function POST(req: NextRequest) {
+export async function POST(_req: NextRequest) {
   // Create a new key
   const key = generateKey();
   apiKeys.push({
     key,
     createdAt: new Date().toISOString(),
-    revoked: false,
+    revoked: fals_e,
     usage: 0,
   });
   // TODO: Save to keys/ directory
   return NextResponse.json({ key });
 }
 
-export async function DELETE(req: NextRequest) {
+export async function DELETE(_req: NextRequest) {
   // Revoke a key
-  const body = await req.json();
+  const body = await _req.json();
   const { key } = body;
   const idx = apiKeys.findIndex((k) => k.key === key);
   if (idx === -1)
-    return NextResponse.json({ error: "Key not found" }, { status: 404 });
+    return NextResponse.json({ _error: "Key not found" }, { status: 404 });
   apiKeys[idx].revoked = true;
   // TODO: Save to keys/ directory
   return NextResponse.json({ success: true });
 }
 
 // GET /api/qapikey/usage - Usage stats
-export async function GET_USAGE(req: NextRequest) {
+export async function GET_USAGE(_req: NextRequest) {
   // Return usage stats for all keys
   return NextResponse.json({
     usage: apiKeys.map((k) => ({ key: k.key, usage: k.usage })),

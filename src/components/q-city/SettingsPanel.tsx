@@ -4,9 +4,9 @@ export default function SettingsPanel() {
   const [zeroRatedEnabled, setZeroRatedEnabled] = useState(() => {
     return localStorage.getItem("qmoizeroRatedEnabled") === "true";
   });
-  const handleZeroRatedChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setZeroRatedEnabled(e.target.checked);
-    localStorage.setItem("qmoizeroRatedEnabled", String(e.target.checked));
+  const handleZeroRatedChange = (_e: ChangeEvent<HTMLInputElement>) => {
+    setZeroRatedEnabled(_e.target.checked);
+    localStorage.setItem("qmoizeroRatedEnabled", String(_e.target.checked));
   };
   return (
     <div className="settings-panel">

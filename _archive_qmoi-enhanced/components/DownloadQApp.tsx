@@ -24,7 +24,7 @@ const DownloadQApp: React.FC = () => {
   const [downloadProgress, setDownloadProgress] = useState(0);
   const [isDownloading, setIsDownloading] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
-  // userAgent state removed (was unused)
+  // userAgent state removed (was _unused)
 
   useEffect(() => {
     // Check if app is already installed

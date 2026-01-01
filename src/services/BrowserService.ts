@@ -41,7 +41,7 @@ interface DeveloperTools {
 
 interface ConsoleMessage {
   id: string;
-  type: "log" | "info" | "warn" | "error";
+  type: "log" | "info" | "warn" | "_error";
   message: string;
   timestamp: Date;
   source: string;
@@ -58,7 +58,7 @@ interface NetworkRequest {
   duration: number;
   timestamp: Date;
   headers: Record<string, string>;
-  response?: any;
+  _response?: unknown;
 }
 
 interface DOMElement {
@@ -371,16 +371,16 @@ export class BrowserService {
 
       // AI features processing
       await this.processAIFeatures(tab, url);
-    } catch (error) {
+    } catch (_error) {
       tab.isLoading = false;
-      const errMsg = error instanceof Error ? error.message : String(error);
+      const errMsg = _error instanceof Error ? _error.message : String(_error);
       this.eventEmitter.emit("navigationError", {
         tabId,
         url,
-        error: errMsg,
+        _error: errMsg,
       });
-      logger.error(`Navigation failed for tab ${tabId}:`, error);
-      throw error;
+      logger._error(`Navigation failed for tab ${tabId}:`, _error);
+      throw _error;
     }
   }
 
@@ -406,10 +406,10 @@ export class BrowserService {
               await this.processLiveTV(tab, url);
               break;
           }
-        } catch (error) {
+        } catch (_error) {
           const errDetails =
-            error instanceof Error ? error.message : String(error);
-          logger.error(`AI feature ${feature.id} failed: ${errDetails}`);
+            _error instanceof Error ? _error.message : String(_error);
+          logger._error(`AI feature ${feature.id} failed: ${errDetails}`);
         }
       }
     }
@@ -417,7 +417,7 @@ export class BrowserService {
 
   private async processSmartSearch(
     tab: BrowserTab,
-    url: string,
+    url: string
   ): Promise<void> {
     // Simulate smart search processing
     const suggestions = await this.generateSearchSuggestions(url);
@@ -426,7 +426,7 @@ export class BrowserService {
 
   private async processContentSummary(
     tab: BrowserTab,
-    url: string,
+    url: string
   ): Promise<void> {
     // Simulate content summary generation
     const summary = await this.generateContentSummary(url);
@@ -435,7 +435,7 @@ export class BrowserService {
 
   private async processTranslation(
     tab: BrowserTab,
-    url: string,
+    url: string
   ): Promise<void> {
     // Simulate translation processing
     const translation = await this.translateContent(url);
@@ -462,13 +462,13 @@ export class BrowserService {
     }
   }
 
-  private async generateSearchSuggestions(query: string): Promise<string[]> {
+  private async generateSearchSuggestions(_query: string): Promise<string[]> {
     // Simulate AI-powered search suggestions
     return [
-      `${query} latest news`,
-      `${query} tutorial`,
-      `${query} reviews`,
-      `${query} download`,
+      `${_query} latest news`,
+      `${_query} tutorial`,
+      `${_query} reviews`,
+      `${_query} download`,
     ];
   }
 
@@ -478,7 +478,7 @@ export class BrowserService {
   }
 
   private async translateContent(
-    url: string,
+    url: string
   ): Promise<{ original: string; translated: string; language: string }> {
     // Simulate translation
     return {
@@ -489,7 +489,7 @@ export class BrowserService {
   }
 
   private async analyzeSecurity(
-    url: string,
+    url: string
   ): Promise<{ isSafe: boolean; threats: string[]; score: number }> {
     // Simulate security analysis
     return {
@@ -595,7 +595,7 @@ export class BrowserService {
     const tab = this.tabs.get(tabId);
     if (!tab) return;
 
-    tab.developerTools.activePanel = panel as any;
+    tab.developerTools.activePanel = panel as unknown;
     this.eventEmitter.emit("developerPanelChanged", { tabId, panel });
   }
 
@@ -603,7 +603,7 @@ export class BrowserService {
     tabId: string,
     title: string,
     url: string,
-    folder = "Bookmarks",
+    folder = "Bookmarks"
   ): void {
     const bookmark: Bookmark = {
       id: this.generateId(),
@@ -653,12 +653,12 @@ export class BrowserService {
 
       download.status = "completed";
       this.eventEmitter.emit("downloadCompleted", download);
-    } catch (error) {
+    } catch (_error) {
       download.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(error);
+      const errMsg = _error instanceof Error ? _error.message : String(_error);
       this.eventEmitter.emit("downloadFailed", {
         downloadId,
-        error: errMsg,
+        _error: errMsg,
       });
     }
   }
@@ -679,7 +679,7 @@ export class BrowserService {
     return this.history;
   }
 
-  public getDownloads(): any[] {
+  public getDownloads(): unknown[] {
     return this.downloads;
   }
 
@@ -767,25 +767,25 @@ export class BrowserService {
   }
 
   public onNavigationStarted(
-    callback: (data: { tabId: string; url: string }) => void,
+    callback: (data: { tabId: string; url: string }) => void
   ): void {
     this.eventEmitter.on("navigationStarted", callback);
   }
 
   public onNavigationCompleted(
-    callback: (data: { tabId: string; url: string }) => void,
+    callback: (data: { tabId: string; url: string }) => void
   ): void {
     this.eventEmitter.on("navigationCompleted", callback);
   }
 
   public onNavigationError(
-    callback: (data: { tabId: string; url: string; error: string }) => void,
+    callback: (data: { tabId: string; url: string; _error: string }) => void
   ): void {
     this.eventEmitter.on("navigationError", callback);
   }
 
   public onDeveloperToolsToggled(
-    callback: (data: { tabId: string; isOpen: boolean }) => void,
+    callback: (data: { tabId: string; isOpen: boolean }) => void
   ): void {
     this.eventEmitter.on("developerToolsToggled", callback);
   }
@@ -794,34 +794,34 @@ export class BrowserService {
     this.eventEmitter.on("bookmarkAdded", callback);
   }
 
-  public onDownloadStarted(callback: (download: any) => void): void {
+  public onDownloadStarted(callback: (download: unknown) => void): void {
     this.eventEmitter.on("downloadStarted", callback);
   }
 
   public onDownloadProgress(
-    callback: (data: { downloadId: string; progress: number }) => void,
+    callback: (data: { downloadId: string; progress: number }) => void
   ): void {
     this.eventEmitter.on("downloadProgress", callback);
   }
 
-  public onDownloadCompleted(callback: (download: any) => void): void {
+  public onDownloadCompleted(callback: (download: unknown) => void): void {
     this.eventEmitter.on("downloadCompleted", callback);
   }
 
   public onSearchSuggestions(
-    callback: (data: { tabId: string; suggestions: string[] }) => void,
+    callback: (data: { tabId: string; suggestions: string[] }) => void
   ): void {
     this.eventEmitter.on("searchSuggestions", callback);
   }
 
   public onContentSummary(
-    callback: (data: { tabId: string; summary: string }) => void,
+    callback: (data: { tabId: string; summary: string }) => void
   ): void {
     this.eventEmitter.on("contentSummary", callback);
   }
 
   public onLiveContent(
-    callback: (data: { tabId: string; content: any }) => void,
+    callback: (data: { tabId: string; content: unknown }) => void
   ): void {
     this.eventEmitter.on("liveContent", callback);
   }

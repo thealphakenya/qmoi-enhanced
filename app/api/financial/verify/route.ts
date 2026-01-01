@@ -3,23 +3,23 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { exec } from "child_process";
 
-export default async function handler(req: NextApiRequest,
-  res: NextApiResponse,
+export default async function handler(_req: NextApiRequest,
+  _res: NextApiRespons_e,
 ) {
-  if (req.method !== "POST") {
-    res.status(405).json({ error: "Method not allowed" });
+  if (_req.method !== "POST") {
+    _res.status(405).json({ _error: "Method not allowed" });
     return;
   }
-  const { service, account } = req.body;
+  const { service, account } = _req.body;
   exec(
     `python scripts/financial_verification.py ${service} ${account}`,
-    (error, stdout, stderr) => {
-      if (error) {
-        res
+    (_error, stdout, stderr) => {
+      if (_error) {
+        _res
           .status(500)
-          .json({ success: false, error: stderr || error.message });
+          .json({ success: fals_e, _error: stderr || _error.message });
       } else {
-        res.status(200).json({ success: true, result: stdout });
+        _res.status(200).json({ success: true, result: stdout });
       }
     },
   );

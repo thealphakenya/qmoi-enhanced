@@ -49,9 +49,9 @@ const UserSchema = z.object({
 });
 
 // [PRODUCTION IMPLEMENTATION REQUIRED] database (replace with actual database)
-const employees: any[] = [];
-const users: any[] = [];
-const employmentLogs: any[] = [];
+const employees: unknown[] = [];
+const users: unknown[] = [];
+const employmentLogs: unknown[] = [];
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);

@@ -38,7 +38,7 @@ export function useQmoiKernel() {
         mutationCount: data.mutation_count,
         logs: data.logs || [],
       });
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError(err.message || "Unknown error");
     } finally {
       setLoading(false);
@@ -61,7 +61,7 @@ export function useQmoiKernel() {
           message: data.message || `${action} completed successfully`,
         });
         await fetchStatus();
-      } catch (err: any) {
+      } catch (err: unknown) {
         setError(err.message || "Unknown error");
         setLastAction({
           success: false,

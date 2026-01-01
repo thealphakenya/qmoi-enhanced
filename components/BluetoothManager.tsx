@@ -28,7 +28,7 @@ export const BluetoothManager: React.FC = () => {
         optionalServices: ["battery_service"],
       });
       setDevices((prev) => [...prev, device]);
-    } catch (e: any) {
+    } catch (e: unknown) {
       setError(e.message || "Bluetooth scan failed.");
     }
     setConnecting(false);
@@ -48,7 +48,7 @@ export const BluetoothManager: React.FC = () => {
       }
       // Simulate AI giving directions
       setDirections("Head north for 2km, then turn right.");
-    } catch (e: any) {
+    } catch (e: unknown) {
       setError(e.message || "Connection failed.");
     }
     setConnecting(false);

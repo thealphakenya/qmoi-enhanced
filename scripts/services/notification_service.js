@@ -23,8 +23,8 @@ class NotificationService {
       if (fs.existsSync(configPath)) {
         return JSON.parse(fs.readFileSync(configPath, "utf8"));
       }
-    } catch (error) {
-      console.warn("Failed to load notification config:", error.message);
+    } catch (_error) {
+      console.warn("Failed to load notification config:", _error.message);
     }
 
     // Default config
@@ -53,8 +53,8 @@ class NotificationService {
 
     try {
       fs.appendFileSync(this.logFile, logEntry);
-    } catch (error) {
-      console.warn("Failed to write to notification log:", error.message);
+    } catch (_error) {
+      console.warn("Failed to write to notification log:", _error.message);
     }
   }
 
@@ -80,9 +80,9 @@ Sent by QMOI AI Automation System
       await this.log(`Email notification sent: ${title}`);
       console.log(`[EMAIL] ${title}: ${message}`);
       return true;
-    } catch (error) {
+    } catch (_error) {
       await this.log(
-        `Failed to send email notification: ${error.message}`,
+        `Failed to send email notification: ${_error.message}`,
         "ERROR",
       );
       return false;
@@ -106,9 +106,9 @@ Sent by QMOI AI Automation System
       console.log(`[SLACK] ${title}: ${message}`);
       await this.log(`Slack notification sent: ${title}`);
       return true;
-    } catch (error) {
+    } catch (_error) {
       await this.log(
-        `Failed to send Slack notification: ${error.message}`,
+        `Failed to send Slack notification: ${_error.message}`,
         "ERROR",
       );
       return false;
@@ -142,9 +142,9 @@ Sent by QMOI AI Automation System
       console.log(`[DISCORD] ${title}: ${message}`);
       await this.log(`Discord notification sent: ${title}`);
       return true;
-    } catch (error) {
+    } catch (_error) {
       await this.log(
-        `Failed to send Discord notification: ${error.message}`,
+        `Failed to send Discord notification: ${_error.message}`,
         "ERROR",
       );
       return false;
@@ -202,17 +202,17 @@ Sent by QMOI AI Automation System
         `Notification sent: ${title} (${results.filter((r) => r.success).length}/${results.length} channels)`,
       );
       return notification;
-    } catch (error) {
+    } catch (_error) {
       notification.status = "failed";
-      notification.error = error.message;
-      await this.log(`Failed to send notification: ${error.message}`, "ERROR");
+      notification._error = _error.message;
+      await this.log(`Failed to send notification: ${_error.message}`, "ERROR");
       return notification;
     }
   }
 
-  async sendErrorNotification(error, context = "") {
+  async sendErrorNotification(_error, context = "") {
     const title = "QMOI Error Alert";
-    const message = `Error: ${error.message}\nContext: ${context}\nTimestamp: ${new Date().toISOString()}`;
+    const message = `Error: ${_error.message}\nContext: ${context}\nTimestamp: ${new Date().toISOString()}`;
 
     return await this.sendNotification(title, message, ["console", "email"]);
   }

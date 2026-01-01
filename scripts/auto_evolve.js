@@ -16,8 +16,8 @@ function runEvolutionCycle() {
     );
     // Notify master (console for now)
     console.log("[Auto-Evolve] Master notified of evolution cycle.");
-  } catch (e) {
-    console.error("[Auto-Evolve] Evolution cycle failed:", e.message);
+  } catch (_e) {
+    console.error("[Auto-Evolve] Evolution cycle failed:", _e.message);
   }
 }
 

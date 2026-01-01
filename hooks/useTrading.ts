@@ -42,7 +42,7 @@ export function useTrading() {
     },
     {
       refetchInterval: 5000, // Poll every 5 seconds
-      onError: (err: any) => setError(err),
+      onError: (err: unknown) => setError(err),
     },
   );
 
@@ -57,7 +57,7 @@ export function useTrading() {
       return response.data;
     },
     {
-      onError: (err: any) => setError(err),
+      onError: (err: unknown) => setError(err),
     },
   );
 
@@ -77,7 +77,7 @@ export function useTrading() {
     },
     {
       onSuccess: () => refetchPositions(),
-      onError: (err: any) => setError(err),
+      onError: (err: unknown) => setError(err),
     },
   );
 
@@ -91,7 +91,7 @@ export function useTrading() {
     },
     {
       onSuccess: () => refetchPositions(),
-      onError: (err: any) => setError(err),
+      onError: (err: unknown) => setError(err),
     },
   );
 
@@ -106,7 +106,7 @@ export function useTrading() {
         refetchConfig();
         refetchPositions();
       },
-      onError: (err: any) => setError(err),
+      onError: (err: unknown) => setError(err),
     },
   );
 

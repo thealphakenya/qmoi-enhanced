@@ -250,7 +250,7 @@ export default function EnhancedTradingPanel() {
     enhancedTradingService.setAIEnabled(!aiEnabled);
   };
 
-  const handleUpdateRiskManagement = (updates: any) => {
+  const handleUpdateRiskManagement = (updates: unknown) => {
     enhancedTradingService.updateRiskManagement(updates);
   };
 

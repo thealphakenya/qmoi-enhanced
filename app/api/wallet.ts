@@ -8,7 +8,7 @@ import { createHmac } from "crypto";
 import { WhatsAppService } from "../../src/services/WhatsAppService";
 
 // Conditionally import Prisma
-let prisma: any = null;
+let prisma: unknown = null;
 let prismaInitialized = false;
 
 async function getPrismaClient() {
@@ -17,15 +17,15 @@ async function getPrismaClient() {
   return {
     wallet: {
       findFirst: async () => null,
-      create: async (data: any) => ({ id: "mock-wallet-id", ...data.data }),
-      update: async (data: any) => data.data,
+      create: async (data: unknown) => ({ id: "mock-wallet-id", ...data.data }),
+      update: async (data: unknown) => data.data,
     },
     transaction: {
-      create: async (data: any) => ({
+      create: async (data: unknown) => ({
         id: "mock-transaction-id",
         ...data.data,
       }),
-      findMany: async (options?: any) => [],
+      findMany: async (_options?: unknown) => [],
     },
   };
 }
@@ -44,8 +44,8 @@ interface PlatformResult {
   amount: number;
   transactionId?: string;
   message?: string;
-  error?: string;
-  [key: string]: any;
+  _error?: string;
+  [key: string]: unknown;
 }
 
 // Constants
@@ -67,9 +67,9 @@ function readWalletRequests() {
   }
 }
 
-function writeWalletRequests(requests: WalletRequest[]) {
+function writeWalletRequests(_requests: WalletRequest[]) {
   fs.mkdirSync(path.dirname(REQUESTS_FILE), { recursive: true });
-  fs.writeFileSync(REQUESTS_FILE, JSON.stringify(requests, null, 2));
+  fs.writeFileSync(REQUESTS_FILE, JSON.stringify(_requests, null, 2));
 }
 
 // Initialize WhatsApp service
@@ -113,9 +113,9 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (error) {
-    console.error("Failed to get/create wallet:", error);
-    throw error;
+  } catch (_error) {
+    console.error("Failed to get/create wallet:", _error);
+    throw _error;
   }
 }
 
@@ -150,9 +150,9 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (error) {
-    console.error("Failed to create transaction:", error);
-    throw error;
+  } catch (_error) {
+    console.error("Failed to create transaction:", _error);
+    throw _error;
   }
 }
 
@@ -241,7 +241,7 @@ async function processMpesa(
         type,
         amount,
         phoneNumber,
-        _response: stkData,
+        _respons_e: stkData,
       });
 
       return {
@@ -274,10 +274,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (error) {
-    console.error("Mpesa processing error:", error);
-    const errorMsg = error instanceof Error ? error.message : String(error);
-    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
+  } catch (_error) {
+    console.error("Mpesa processing _error:", _error);
+    const errorMsg = _error instanceof Error ? _error.message : String(_error);
+    return { status: "_error", platform: "Mpesa", amount, _error: errorMsg };
   }
 }
 
@@ -349,7 +349,7 @@ async function processBinance(
         message: `Deposit ${amount} ${currency} to ${depositData.address}`,
       };
     } else {
-      // For withdrawals, we need wallet balance check and withdrawal request
+      // For withdrawals, we need wallet balance check and withdrawal _request
       // This is simplified - in production you'd check balances first
       const withdrawResponse = await fetch(
         `${binanceConfig.baseUrl}/sapi/v1/capital/withdraw/apply?coin=${currency}&address=${process.env.BINANCE_WITHDRAWAL_ADDRESS}&amount=${amount}&${queryString}&signature=${signature}`,
@@ -374,7 +374,7 @@ async function processBinance(
         type,
         amount,
         currency,
-        _response: withdrawData,
+        _respons_e: withdrawData,
       });
 
       return {
@@ -386,10 +386,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (error) {
-    console.error("Binance processing error:", error);
-    const errorMsg = error instanceof Error ? error.message : String(error);
-    return { status: "error", platform: "Binance", amount, error: errorMsg };
+  } catch (_error) {
+    console.error("Binance processing _error:", _error);
+    const errorMsg = _error instanceof Error ? _error.message : String(_error);
+    return { status: "_error", platform: "Binance", amount, _error: errorMsg };
   }
 }
 
@@ -414,7 +414,7 @@ async function processPesapal(amount: number, type: string) {
 
     // In a real implementation, you would:
     // 1. Authenticate with Pesapal
-    // 2. Create payment request
+    // 2. Create payment _request
     // 3. Redirect user to Pesapal payment page
     // 4. Handle IPN callbacks
 
@@ -435,16 +435,16 @@ async function processPesapal(amount: number, type: string) {
       amount,
       transactionId,
       message:
-        type === "deposit" ? "Payment request created" : "Withdrawal initiated",
+        type === "deposit" ? "Payment _request created" : "Withdrawal initiated",
     };
-  } catch (error) {
-    console.error("Pesapal processing error:", error);
-    const errorMsg = error instanceof Error ? error.message : String(error);
+  } catch (_error) {
+    console.error("Pesapal processing _error:", _error);
+    const errorMsg = _error instanceof Error ? _error.message : String(_error);
     return {
-      status: "error",
+      status: "_error",
       platform: "Pesapal",
       amount,
-      error: errorMsg,
+      _error: errorMsg,
     };
   }
 }
@@ -455,7 +455,7 @@ async function processBitget(amount: number, type: string) {
     const bitgetConfig = {
       apiKey: process.env.BITGET_API_KEY,
       secretKey: process.env.BITGET_SECRET_KEY,
-      passphrase: process.env.BITGET_PASSPHRASE,
+      passphras_e: process.env.BITGET_PASSPHRASE,
       testnet: process.env.NODE_ENV !== "production",
     };
 
@@ -496,65 +496,65 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (error) {
-    console.error("Bitget processing error:", error);
-    const errorMsg = error instanceof Error ? error.message : String(error);
+  } catch (_error) {
+    console.error("Bitget processing _error:", _error);
+    const errorMsg = _error instanceof Error ? _error.message : String(_error);
     return {
-      status: "error",
+      status: "_error",
       platform: "Bitget",
       amount,
-      error: errorMsg,
+      _error: errorMsg,
     };
   }
 }
 
 const platformHandlers: Record<
   string,
-  (...args: any[]) => Promise<unknown>
+  (...args: unknown[]) => Promise<unknown>
 > = {
-  Mpesa: processMpesa as (...args: any[]) => Promise<unknown>,
-  Binance: processBinance as (...args: any[]) => Promise<unknown>,
-  Pesapal: processPesapal as (...args: any[]) => Promise<unknown>,
-  Bitget: processBitget as (...args: any[]) => Promise<unknown>,
+  Mpesa: processMpesa as (...args: unknown[]) => Promise<unknown>,
+  Binance: processBinance as (...args: unknown[]) => Promise<unknown>,
+  Pesapal: processPesapal as (...args: unknown[]) => Promise<unknown>,
+  Bitget: processBitget as (...args: unknown[]) => Promise<unknown>,
   Cashon: (async (_amount: number, _type?: string) => ({
     status: "success",
     platform: "Cashon",
     amount: _amount,
-  })) as (...args: any[]) => Promise<unknown>,
+  })) as (...args: unknown[]) => Promise<unknown>,
 };
 
 // Helper: Check if user is master (simulate for now)
-function isMaster(req: NextApiRequest): boolean {
+function isMaster(_req: NextApiRequest): boolean {
   // In production, check session/user role from auth/session
-  return req.headers["x-master-token"] === process.env.MASTER_TOKEN;
+  return _req.headers["x-master-token"] === process.env.MASTER_TOKEN;
 }
 
-// Enhanced error handling wrapper
-const handleApiRequest = async (req: NextApiRequest,
-  res: NextApiResponse,
+// Enhanced _error handling wrapper
+const handleApiRequest = async (_req: NextApiRequest,
+  _res: NextApiRespons_e,
   handler: () => Promise<unknown>
 ) => {
   try {
     const result = await handler();
-    return res.json(result);
-  } catch (error: any) {
-    const errorMsg = error instanceof Error ? error.message : String(error);
-    logAction("error", {
-      error: errorMsg,
-      path: req.url,
-      method: req.method,
+    return _res.json(result);
+  } catch (_error: unknown) {
+    const errorMsg = _error instanceof Error ? _error.message : String(_error);
+    logAction("_error", {
+      _error: errorMsg,
+      path: _req.url,
+      method: _req.method,
     });
-    return res.status(500).json({ error: errorMsg || "Internal server error" });
+    return _res.status(500).json({ _error: errorMsg || "Internal server _error" });
   }
 };
 
-export default async function handler(req: NextApiRequest,
-  res: NextApiResponse
+export default async function handler(_req: NextApiRequest,
+  _res: NextApiResponse
 ) {
-  const adminToken = req.headers["x-admin-token"];
+  const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
-    logAction("unauthorized_access", { path: req.url, method: req.method });
-    return res.status(403).json({ error: "Forbidden" });
+    logAction("unauthorized_access", { path: _req.url, method: _req.method });
+    return _res.status(403).json({ _error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -564,21 +564,21 @@ export default async function handler(req: NextApiRequest,
     process.env.DATABASE_URL &&
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
-    return res.status(503).json({
-      error: "Database not configured",
+    return _res.status(503).json({
+      _error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
 
-  if (req.method === "GET") {
-    return handleApiRequest(req, res, async () => {
-      if (req.query.pending_wallets) {
+  if (_req.method === "GET") {
+    return handleApiRequest(_req, _res, async () => {
+      if (_req._query.pending_wallets) {
         const requests = readWalletRequests();
         return requests.filter((r: WalletRequest) => r.status === "pending");
       }
-      if (req.query.balance) {
+      if (_req._query.balance) {
         // Get user's wallet balance - for now using a default user ID
-        const userId = (req.query.userId as string) || "default-user";
+        const userId = (_req._query.userId as string) || "default-user";
         const wallet = await getOrCreateWallet(userId);
         return {
           balance: wallet.balance,
@@ -586,14 +586,14 @@ export default async function handler(req: NextApiRequest,
           transactions: wallet.transactions.slice(0, 10),
         };
       }
-      if (req.query.logs && isMaster(req)) {
+      if (_req._query.logs && isMaster(_req)) {
         const logs = fs.existsSync(LOGS_FILE)
           ? JSON.parse(fs.readFileSync(LOGS_FILE, "utf-8"))
           : [];
         return logs;
       }
-      if (req.query.transactions) {
-        const userId = (req.query.userId as string) || "default-user";
+      if (_req._query.transactions) {
+        const userId = (_req._query.userId as string) || "default-user";
         const wallet = await getOrCreateWallet(userId);
         const transactions = await prisma.transaction.findMany({
           where: { walletId: wallet.id },
@@ -606,21 +606,21 @@ export default async function handler(req: NextApiRequest,
     });
   }
 
-  if (req.method === "POST") {
-    return handleApiRequest(req, res, async () => {
+  if (_req.method === "POST") {
+    return handleApiRequest(_req, _res, async () => {
       const { amount, platform, action, email, username, userId, phoneNumber } =
-        req.body;
+        _req.body;
       const userIdToUse = userId || "default-user";
 
       // Get or create wallet for user
-      const wallet = await getOrCreateWallet(userIdToUse);
+      const wallet = await getOrCreateWallet(userIdToUs_e);
 
-      if (req.query.deposit) {
-        if (!isMaster(req)) {
+      if (_req._query.deposit) {
+        if (!isMaster(_req)) {
           logAction("unauthorized_deposit", {
             amount,
             platform,
-            userId: userIdToUse,
+            userId: userIdToUs_e,
           });
           throw new Error("Only master can deposit funds.");
         }
@@ -651,7 +651,7 @@ export default async function handler(req: NextApiRequest,
         }
 
         // Get updated wallet
-        const updatedWallet = await getOrCreateWallet(userIdToUse);
+        const updatedWallet = await getOrCreateWallet(userIdToUs_e);
         return {
           status: result.status,
           balance: updatedWallet.balance,
@@ -659,12 +659,12 @@ export default async function handler(req: NextApiRequest,
         };
       }
 
-      if (req.query.withdraw) {
-        if (!isMaster(req)) {
+      if (_req._query.withdraw) {
+        if (!isMaster(_req)) {
           logAction("unauthorized_withdrawal", {
             amount,
             platform,
-            userId: userIdToUse,
+            userId: userIdToUs_e,
           });
           throw new Error("Only master can withdraw funds.");
         }
@@ -699,7 +699,7 @@ export default async function handler(req: NextApiRequest,
         }
 
         // Get updated wallet
-        const updatedWallet = await getOrCreateWallet(userIdToUse);
+        const updatedWallet = await getOrCreateWallet(userIdToUs_e);
         return {
           status: result.status,
           balance: updatedWallet.balance,
@@ -707,7 +707,7 @@ export default async function handler(req: NextApiRequest,
         };
       }
 
-      if (req.query.request) {
+      if (_req._query._request) {
         // Handle wallet creation requests
         const requests = readWalletRequests();
         const newRequest = {
@@ -718,33 +718,33 @@ export default async function handler(req: NextApiRequest,
           createdAt: new Date().toISOString(),
         };
         requests.push(newRequest);
-        writeWalletRequests(requests);
+        writeWalletRequests(_requests);
         logAction("wallet_request", newRequest);
-        return { status: "requested", request: newRequest };
+        return { status: "requested", _request: newRequest };
       }
 
       if (action === "approve_wallet") {
-        if (!isMaster(req)) {
+        if (!isMaster(_req)) {
           logAction("unauthorized_wallet_approval", { email });
           throw new Error("Only master can approve wallet requests.");
         }
-        const { email: approveEmail } = req.body;
+        const { email: approveEmail } = _req.body;
         const requests = readWalletRequests();
         const idx = requests.findIndex(
           (r: WalletRequest) =>
             r.email === approveEmail && r.status === "pending"
         );
-        if (idx === -1) throw new Error("No pending request for this email.");
+        if (idx === -1) throw new Error("No pending _request for this email.");
 
         requests[idx].status = "approved";
         requests[idx].approvedAt = new Date().toISOString();
-        writeWalletRequests(requests);
+        writeWalletRequests(_requests);
         logAction("wallet_approved", requests[idx]);
 
         // Notify user via WhatsApp
         await whatsappService.sendMessage(
           requests[idx].email,
-          "✅ Your wallet request has been approved!"
+          "✅ Your wallet _request has been approved!"
         );
         await whatsappService.sendMessageToMaster(
           `✅ Wallet approved for ${requests[idx].username} (${approveEmail})`
@@ -760,5 +760,5 @@ export default async function handler(req: NextApiRequest,
     });
   }
 
-  return res.status(405).json({ error: "Method not allowed" });
+  return _res.status(405).json({ _error: "Method not allowed" });
 }

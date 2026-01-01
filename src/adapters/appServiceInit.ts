@@ -32,9 +32,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (err) {
-    console.error("[Init] Service initialization failed:", err);
-    throw err;
+  } catch (_err) {
+    console.error("[Init] Service initialization failed:", _err);
+    throw _err;
   }
 }
 
@@ -46,17 +46,17 @@ function setupRecoveryListeners(): void {
 
   // Listen for API failures and trigger recovery
   const originalFetch = window.fetch;
-  window.fetch = async (...args: any[]) => {
+  window.fetch = async (...args: unknown[]) => {
     try {
-      const response = await originalFetch.apply(window, args as any);
+      const _response = await originalFetch.apply(window, args as unknown);
 
-      if (!response.ok && response.status >= 500) {
+      if (!_response.ok && _response.status >= 500) {
         // 5xx errors might indicate service issues
-        console.warn(`[Init] API error detected: ${response.status}`);
+        console.warn(`[Init] API _error detected: ${_response.status}`);
 
         recoveryManager.scheduleRecovery(
           "api-endpoint",
-          `HTTP ${response.status}`,
+          `HTTP ${_response.status}`,
           async () => {
             await checkHealth();
           },
@@ -64,21 +64,21 @@ function setupRecoveryListeners(): void {
         );
       }
 
-      return response;
-    } catch (err) {
-      console.error("[Init] Fetch error:", err);
+      return _response;
+    } catch (_err) {
+      console.error("[Init] Fetch _error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(err),
+        String(_err),
         async () => {
           await checkHealth();
         },
         3000,
       );
 
-      throw err;
+      throw _err;
     }
   };
 }
@@ -116,8 +116,8 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (err) {
-      console.error("[Monitor] Health monitoring error:", err);
+    } catch (_err) {
+      console.error("[Monitor] Health monitoring _error:", _err);
     }
   }, 60 * 1000);
 }
@@ -175,15 +175,15 @@ export function enableDebugLogging(): void {
   const originalWarn = console.warn;
   const originalError = console.error;
 
-  console.log = (...args: any[]) => {
+  console.log = (...args: unknown[]) => {
     originalLog(`[${new Date().toISOString()}]`, ...args);
   };
 
-  console.warn = (...args: any[]) => {
+  console.warn = (...args: unknown[]) => {
     originalWarn(`[${new Date().toISOString()}]`, ...args);
   };
 
-  console.error = (...args: any[]) => {
+  console.error = (...args: unknown[]) => {
     originalError(`[${new Date().toISOString()}]`, ...args);
   };
 }

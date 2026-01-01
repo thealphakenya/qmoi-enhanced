@@ -24,7 +24,7 @@ try {
     log("Metrics did not pass thresholds.");
     process.exit(1);
   }
-} catch (e) {
+} catch (_e) {
   log("Metrics file missing or invalid. Failing check.");
   process.exit(1);
 }

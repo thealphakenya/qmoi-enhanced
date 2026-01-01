@@ -15,9 +15,9 @@ function parseLogLine(line: string) {
   }
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const key = req.headers["x-qcity-admin-key"];
-  if (key !== ADMIN_KEY) return res.status(401).json({ error: "Unauthorized" });
+export default function handler(_req: NextApiRequest, _res: NextApiRespons_e) {
+  const key = _req.headers["x-qcity-admin-key"];
+  if (key !== ADMIN_KEY) return _res.status(401).json({ _error: "Unauthorized" });
   const {
     format = "json",
     limit = 100,
@@ -26,8 +26,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     user,
     deviceId,
     status,
-  } = req.query;
-  if (!fs.existsSync(AUDIT_LOG)) return res.status(200).json({ logs: [] });
+  } = _req._query;
+  if (!fs.existsSync(AUDIT_LOG)) return _res.status(200).json({ logs: [] });
   const lines = fs.readFileSync(AUDIT_LOG, "utf-8").split("\n").filter(Boolean);
   let logs = lines.map(parseLogLine).filter(Boolean);
   if (action) logs = logs.filter((l) => l.action === action);
@@ -43,8 +43,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         keys.map((k) => JSON.stringify(l[k] || "")).join(","),
       ),
     ].join("\n");
-    res.setHeader("Content-Type", "text/csv");
-    return res.status(200).send(csv);
+    _res.setHeader("Content-Type", "text/csv");
+    return _res.status(200).send(csv);
   }
-  res.status(200).json({ logs: paged, total: logs.length });
+  _res.status(200).json({ logs: paged, total: logs.length });
 }

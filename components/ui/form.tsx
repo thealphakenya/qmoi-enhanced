@@ -33,7 +33,7 @@ const FormField = <
   TName extends string = string,
 >({
   ...props
-}: any) => {
+}: unknown) => {
   return (
     <FormFieldContext.Provider value={{ name: props.name }}>
       <Controller {...props} />

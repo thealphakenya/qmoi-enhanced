@@ -24,19 +24,19 @@ export default function QMoiDatabaseDashboard({
     fetch("/api/qmoi-database/route?tables=true", {
       headers: { "x-qmoi-master": "true", ...getSessionHeaders() },
     })
-      .then((res) => res.json())
+      .then((_res) => _res.json())
       .then((data) => setTables(data.tables || []));
     fetch("/api/qmoi-database/route?schema=true", {
       headers: { "x-qmoi-master": "true", ...getSessionHeaders() },
     })
-      .then((res) => res.json())
+      .then((_res) => _res.json())
       .then((data) => setSchema(data.schema || []));
   }, [isMaster]);
 
   const handleCreateTable = async () => {
     if (!newTable) return;
     const sql = `CREATE TABLE IF NOT EXISTS ${newTable} (id INTEGER PRIMARY KEY AUTOINCREMENT)`;
-    const res = await fetch("/api/qmoi-database/route", {
+    const _res = await fetch("/api/qmoi-database/route", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,8 +45,8 @@ export default function QMoiDatabaseDashboard({
       },
       body: JSON.stringify({ createTable: sql }),
     });
-    const data = await res.json();
-    setStatus(data.status || data.error);
+    const data = await _res.json();
+    setStatus(data.status || data._error);
     setNewTable("");
   };
 
@@ -57,7 +57,7 @@ export default function QMoiDatabaseDashboard({
       <div>
         <input
           value={newTable}
-          onChange={(e) => setNewTable(e.target.value)}
+          onChange={(_e) => setNewTable(_e.target.value)}
           placeholder="New table name"
         />
         <button onClick={handleCreateTable}>Create Table</button>

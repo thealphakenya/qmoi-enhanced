@@ -51,11 +51,11 @@ export default function CommandPanel() {
         `/api/qcity/remote-command?body=${encodeURIComponent(body)}`,
       );
       eventSourceRef.current = es;
-      es.onmessage = (e) => {
-        if (e.data === "[DONE]") {
+      es.onmessage = (_e) => {
+        if (_e.data === "[DONE]") {
           es.close();
           setLoading(false);
-        } else setOutput((o) => o + e.data);
+        } else setOutput((o) => o + _e.data);
       };
       es.onerror = () => {
         es.close();
@@ -65,8 +65,8 @@ export default function CommandPanel() {
     } else {
       fetch("/api/qcity/remote-command", { method: "POST", headers, body })
         .then((r) => r.json())
-        .then((res) => {
-          setOutput(res.output || res.error);
+        .then((_res) => {
+          setOutput(_res.output || _res._error);
           setLoading(false);
         });
     }
@@ -94,13 +94,13 @@ export default function CommandPanel() {
       <div className="flex gap-2 mb-2">
         <input
           value={cmd}
-          onChange={(e) => setCmd(e.target.value)}
+          onChange={(_e) => setCmd(_e.target.value)}
           className="flex-1 bg-gray-800 p-2 rounded"
           placeholder="Enter command..."
         />
         <select
           value={deviceId}
-          onChange={(e) => setDeviceId(e.target.value)}
+          onChange={(_e) => setDeviceId(_e.target.value)}
           className="bg-gray-800 p-2 rounded"
         >
           <option value="qcity">QCity</option>
@@ -127,7 +127,7 @@ export default function CommandPanel() {
       </div>
       <div className="mb-2">
         <span className="font-bold">Pinned:</span>
-        {pinned.map((c: any, i: number) => (
+        {pinned.map((c: unknown, i: number) => (
           <button
             key={i}
             onClick={() => setCmd(c)}
@@ -139,7 +139,7 @@ export default function CommandPanel() {
       </div>
       <div className="mb-2">
         <span className="font-bold">History:</span>
-        {history.map((h: any, i: number) => (
+        {history.map((h: unknown, i: number) => (
           <button
             key={i}
             onClick={() => setCmd(h.cmd)}

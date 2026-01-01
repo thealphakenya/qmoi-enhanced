@@ -16,7 +16,7 @@ export interface QmoiPlugin {
   getSettingsPanel?(): React.ReactNode;
 }
 
-export type PluginEvent = { type: string; payload?: any };
+export type PluginEvent = { type: string; payload?: unknown };
 
 export type AutomationRule = {
   id: string;
@@ -28,12 +28,12 @@ export type AutomationRule = {
 export class PluginManager {
   private plugins: QmoiPlugin[] = [];
   private pluginStatus: { [id: string]: boolean } = {};
-  private eventListeners: { [eventType: string]: ((payload: any) => void)[] } =
+  private eventListeners: { [eventType: string]: ((payload: unknown) => void)[] } =
     {};
   private scheduledPlugins: {
     plugin: QmoiPlugin;
     interval: number;
-    timer?: any;
+    timer?: unknown;
   }[] = [];
   private automationRules: AutomationRule[] = [];
 
@@ -69,7 +69,7 @@ export class PluginManager {
     return this.plugins;
   }
 
-  on(eventType: string, listener: (payload: any) => void) {
+  on(eventType: string, listener: (payload: unknown) => void) {
     if (!this.eventListeners[eventType]) this.eventListeners[eventType] = [];
     this.eventListeners[eventType].push(listener);
   }

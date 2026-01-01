@@ -3,23 +3,23 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // In-memory document store (replace with DB/cloud in production)
-const documents: any[] = [];
+const documents: unknown[] = [];
 let docId = 1;
 
 // Production helper functions
-async function uploadDocumentToCloud(doc: any) {
+async function uploadDocumentToCloud(doc: unknown) {
   // TODO: Implement upload logic to GDrive, S3, HuggingFace
   return true;
 }
 
-async function restoreDocumentFromCloud(doc: any) {
+async function restoreDocumentFromCloud(doc: unknown) {
   // TODO: Implement restore logic from GDrive, S3, HuggingFace
   return true;
 }
 
-export async function POST_UPLOAD(req: NextRequest) {
+export async function POST_UPLOAD(_req: NextRequest) {
   // Upload document (stub)
-  const body = await req.json();
+  const body = await _req.json();
   const { name, type, content } = body;
   const doc = {
     id: docId++,
@@ -34,9 +34,9 @@ export async function POST_UPLOAD(req: NextRequest) {
   return NextResponse.json({ success: true, doc });
 }
 
-export async function GET_SEARCH(req: NextRequest) {
+export async function GET_SEARCH(_req: NextRequest) {
   // Search documents by name/type
-  const url = new URL(req.url);
+  const url = new URL(_req.url);
   const q = url.searchParams.get("q")?.toLowerCase() || "";
   const type = url.searchParams.get("type");
   let results = documents.filter((d) => d.name.toLowerCase().includes(q));
@@ -44,18 +44,18 @@ export async function GET_SEARCH(req: NextRequest) {
   return NextResponse.json({ results });
 }
 
-export async function POST_RESTORE(req: NextRequest) {
+export async function POST_RESTORE(_req: NextRequest) {
   // Restore document (stub)
-  const body = await req.json();
+  const body = await _req.json();
   const { id } = body;
   const doc = documents.find((d) => d.id === id);
   // Production: Restore from GDrive, S3, HuggingFace
   await restoreDocumentFromCloud(doc);
-  if (!doc) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  if (!doc) return NextResponse.json({ _error: "Not found" }, { status: 404 });
   return NextResponse.json({ success: true, doc });
 }
 
-export async function GET_LIST(req: NextRequest) {
+export async function GET_LIST(_req: NextRequest) {
   // List all documents
   return NextResponse.json({ documents });
 }

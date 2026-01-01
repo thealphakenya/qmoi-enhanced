@@ -88,7 +88,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       } else {
         throw new Error(data.error || "Failed to request wallet");
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError(err.message);
       toast({
         title: "Error",
@@ -129,7 +129,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       } else {
         throw new Error(data.error || "Failed to approve wallet");
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError(err.message);
       toast({
         title: "Error",

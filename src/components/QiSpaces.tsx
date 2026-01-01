@@ -17,7 +17,7 @@ export function QiSpaces() {
       <div style={{ marginTop: 8 }}>
         <input
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(_e) => setName(_e.target.value)}
           placeholder="Add new space..."
         />
         <button onClick={add} style={{ marginLeft: 8 }}>

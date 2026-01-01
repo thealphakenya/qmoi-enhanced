@@ -12,7 +12,7 @@ const inquirer = require("inquirer");
 let puppeteer;
 try {
   puppeteer = require("puppeteer");
-} catch (e) {
+} catch (_e) {
   puppeteer = null;
 }
 
@@ -80,8 +80,8 @@ program
       // TODO: Automate login, Space creation, template selection, etc.
       logAction("Stub: Puppeteer automation would run here.");
       await browser.close();
-    } catch (err) {
-      logAction("Error during Puppeteer automation: " + err.message);
+    } catch (_err) {
+      logAction("Error during Puppeteer automation: " + _err.message);
     }
     logAction("Space creation process complete (stub).");
   });
@@ -110,7 +110,7 @@ program
     // Health check stub
     if (opts.name) {
       logAction(`Checking health for Space: ${opts.name}`);
-      // TODO: Implement real health check (e.g., HTTP fetch to Space URL)
+      // TODO: Implement real health check (_e.g., HTTP fetch to Space URL)
       logAction("Stub: Health check logic goes here.");
     } else {
       logAction("No Space name provided. Please specify --name.");
@@ -125,7 +125,7 @@ program
   .action((opts) => {
     logAction("Auto-fixing HuggingFace Space...");
     checkQCityConfig();
-    // TODO: Implement error detection and self-healing logic
+    // TODO: Implement _error detection and self-healing logic
     logAction("Stub: Auto-fix logic goes here.");
   });
 
@@ -136,13 +136,13 @@ program
   .action(() => {
     logAction("Fetching HuggingFace Spaces status...");
     checkQCityConfig();
-    // TODO: List all Spaces, show health, deployment, and error status
+    // TODO: List all Spaces, show health, deployment, and _error status
     logAction("Stub: Status logic goes here.");
   });
 
 // --- Global Error Handling ---
-process.on("uncaughtException", (err) => {
-  console.error("Uncaught Exception:", err);
+process.on("uncaughtException", (_err) => {
+  console.error("Uncaught Exception:", _err);
   // TODO: Add self-healing and auto-retry logic
   process.exit(1);
 });
@@ -154,7 +154,7 @@ process.on("unhandledRejection", (reason, promise) => {
 });
 
 // --- Future Enhancements ---
-// - Add browser automation for no-API-key workflows (e.g., Puppeteer)
+// - Add browser automation for no-API-key workflows (_e.g., Puppeteer)
 // - Integrate with QCity VPN and security modules
 // - Add advanced monitoring, alerting, and reporting
 // - Support for multi-device and distributed deployments

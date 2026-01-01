@@ -9,14 +9,14 @@ import libProposals from "../../../../../lib/proposals";
 
 const execAsync = promisify(exec);
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
     // API key gating
-    const auth = libProposals.requireApiKey(request.headers);
+    const auth = libProposals.requireApiKey(_request.headers);
     if (!auth.ok) {
-      const r = auth.response;
+      const r = auth._response;
       if (!r)
-        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -59,8 +59,8 @@ export async function POST(request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (error) {
-              console.log(`Failed to kill process ${pid}:`, error);
+            } catch (_error) {
+              console.log(`Failed to kill process ${pid}:`, _error);
             }
           }
         }
@@ -76,8 +76,8 @@ export async function POST(request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (error) {
-              console.log(`Failed to kill process ${pid}:`, error);
+            } catch (_error) {
+              console.log(`Failed to kill process ${pid}:`, _error);
             }
           }
         }
@@ -87,12 +87,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       status: "stopped",
       message: `Stopped ${killedProcesses} auto-fix processes`,
-      killedProcesses,
+      killedProcess_es,
     });
-  } catch (error) {
-    console.error("Error stopping auto-fix process:", error);
+  } catch (_error) {
+    console.error("Error stopping auto-fix process:", _error);
     return NextResponse.json(
-      { error: "Failed to stop auto-fix process" },
+      { _error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }

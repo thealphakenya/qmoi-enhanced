@@ -17,14 +17,14 @@ interface CloudTask {
   cloudProvider: "colab" | "dagshub" | "cloud-runner";
   createdAt: string;
   updatedAt: string;
-  result?: any;
-  error?: string;
+  result?: unknown;
+  _error?: string;
 }
 
 // Master authentication
-function isMaster(req: NextRequest): boolean {
-  const masterToken = req.headers.get("x-master-token");
-  const adminKey = req.headers.get("x-qmoi-admin-key");
+function isMaster(_req: NextRequest): boolean {
+  const masterToken = _req.headers.get("x-master-token");
+  const adminKey = _req.headers.get("x-qmoi-admin-key");
   return (
     masterToken === process.env.MASTER_TOKEN ||
     adminKey === process.env.ADMIN_KEY
@@ -34,8 +34,8 @@ function isMaster(req: NextRequest): boolean {
 // UTF-8 safe logging
 function logToDashboard(
   action: string,
-  data: any,
-  level: "info" | "error" | "warning" = "info"
+  data: unknown,
+  level: "info" | "_error" | "warning" = "info"
 ) {
   const logEntry = {
     timestamp: new Date().toISOString(),
@@ -139,29 +139,29 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (error) {
+  } catch (_error) {
     task.status = "failed";
-    task.error = error instanceof Error ? error.message : "Unknown error";
+    task._error = _error instanceof Error ? _error.message : "Unknown _error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
-      "cloud-offload-error",
-      { taskId: task.id, error: task.error },
-      "error"
+      "cloud-offload-_error",
+      { taskId: task.id, _error: task._error },
+      "_error"
     );
 
     return task;
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
-    const body = await request.json();
+    const body = await _request.json();
     const { type, prompt, quality = "high", masterOverride = false } = body;
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { error: "Type and prompt are required" },
+        { _error: "Type and prompt are required" },
         { status: 400 }
       );
     }
@@ -177,7 +177,7 @@ export async function POST(request: NextRequest) {
       );
       return NextResponse.json(
         {
-          error: "Pre-autotest failed",
+          _error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -185,13 +185,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiAuth = requireApiKey(request.headers);
-    if (masterOverride && !apiAuth.ok && !isMaster(request)) {
+    const apiAuth = requireApiKey(_request.headers);
+    if (masterOverride && !apiAuth.ok && !isMaster(_request)) {
       return NextResponse.json(
-        apiAuth.response?.body || {
-          error: "Master access required for override",
+        apiAuth._response?.body || {
+          _error: "Master access required for override",
         },
-        { status: apiAuth.response?.status || 403 }
+        { status: apiAuth._response?.status || 403 }
       );
     }
 
@@ -222,26 +222,26 @@ export async function POST(request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (error) {
+  } catch (_error) {
     const errorMessage =
-      error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { error: errorMessage }, "error");
+      _error instanceof Error ? _error.message : "Unknown _error";
+    logToDashboard("media-generation-_error", { _error: errorMessage }, "_error");
 
     return NextResponse.json(
-      { error: "Failed to generate media", details: errorMessage },
+      { _error: "Failed to generate media", details: errorMessage },
       { status: 500 }
     );
   }
 }
 
 // GET endpoint for task status
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
+    const { searchParams } = new URL(_request.url);
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
     }
 
     // TODO: Fetch actual task status from database/cloud
@@ -269,13 +269,13 @@ export async function GET(request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (error) {
+  } catch (_error) {
     const errorMessage =
-      error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { error: errorMessage }, "error");
+      _error instanceof Error ? _error.message : "Unknown _error";
+    logToDashboard("media-status-_error", { _error: errorMessage }, "_error");
 
     return NextResponse.json(
-      { error: "Failed to fetch task status", details: errorMessage },
+      { _error: "Failed to fetch task status", details: errorMessage },
       { status: 500 }
     );
   }

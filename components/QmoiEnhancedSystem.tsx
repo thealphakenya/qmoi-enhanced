@@ -269,13 +269,13 @@ export const QmoiEnhancedSystem: React.FC = () => {
       recognition.interimResults = false;
       recognition.lang = "en-US";
 
-      recognition.onresult = (event: any) => {
+      recognition.onresult = (event: unknown) => {
         const command =
           event.results[event.results.length - 1][0].transcript.toLowerCase();
         processVoiceCommand(command);
       };
 
-      recognition.onerror = (event: any) => {
+      recognition.onerror = (event: unknown) => {
         console.error("Speech recognition error:", event.error);
         speak("Voice recognition error. Please try again.");
       };
@@ -334,7 +334,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
       recognition.interimResults = false;
       recognition.lang = "en-US";
 
-      recognition.onresult = (event: any) => {
+      recognition.onresult = (event: unknown) => {
         const command =
           event.results[event.results.length - 1][0].transcript.toLowerCase();
         processVoiceCommand(command);

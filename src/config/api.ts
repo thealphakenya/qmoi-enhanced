@@ -27,7 +27,7 @@ export interface ApiConfig {
 function getCurrentEnvironment(): Environment {
   if (typeof window !== "undefined") {
     // Browser environment
-    const env = (globalThis as any).__ENV__ || process.env.NEXT_PUBLIC_ENV;
+    const env = (globalThis as unknown).__ENV__ || process.env.NEXT_PUBLIC_ENV;
     return (env as Environment) || "development";
   }
   // Server environment

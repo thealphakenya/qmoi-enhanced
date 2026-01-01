@@ -18,19 +18,19 @@ const devices = [
 ];
 let offloading = true;
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === "GET") {
-    return res.status(200).json({
+export default function handler(_req: NextApiRequest, _res: NextApiRespons_e) {
+  if (_req.method === "GET") {
+    return _res.status(200).json({
       devices,
       offloading,
       activeDevices: devices.filter((d) => d.status === "online"),
       timestamp: new Date().toISOString(),
     });
   }
-  if (req.method === "POST") {
-    if (typeof req.body?.offloading === "boolean")
-      offloading = req.body.offloading;
-    return res.status(200).json({ offloading });
+  if (_req.method === "POST") {
+    if (typeof _req.body?.offloading === "boolean")
+      offloading = _req.body.offloading;
+    return _res.status(200).json({ offloading });
   }
-  res.status(405).end();
+  _res.status(405).end();
 }

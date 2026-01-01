@@ -125,7 +125,7 @@ export const QmoiAutoDistribution: React.FC = () => {
         `Git commit: ${response.data.commitId} at ${new Date().toLocaleString()}`,
         ...prev,
       ]);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Git commit failed:", error);
     } finally {
       setGitLoading(false);
@@ -143,7 +143,7 @@ export const QmoiAutoDistribution: React.FC = () => {
         `Git push to ${gitBranch} at ${new Date().toLocaleString()}`,
         ...prev,
       ]);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Git push failed:", error);
     } finally {
       setGitLoading(false);
@@ -166,7 +166,7 @@ export const QmoiAutoDistribution: React.FC = () => {
         `Created PR: ${response.data.prNumber} at ${new Date().toLocaleString()}`,
         ...prev,
       ]);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("PR creation failed:", error);
     } finally {
       setGitLoading(false);
@@ -188,7 +188,7 @@ export const QmoiAutoDistribution: React.FC = () => {
         `Vercel deployment: ${response.data.deploymentId} at ${new Date().toLocaleString()}`,
         ...prev,
       ]);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Vercel deployment failed:", error);
     } finally {
       setVercelLoading(false);
@@ -205,7 +205,7 @@ export const QmoiAutoDistribution: React.FC = () => {
         `Auto-redeploy ${autoRedeploy ? "enabled" : "disabled"} at ${new Date().toLocaleString()}`,
         ...prev,
       ]);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Auto-redeploy toggle failed:", error);
     } finally {
       setVercelLoading(false);
@@ -258,7 +258,7 @@ export const QmoiAutoDistribution: React.FC = () => {
     try {
       const res = await axios.post("/api/auto-fix");
       setAutoFixResult(res.data);
-    } catch (err: any) {
+    } catch (err: unknown) {
       setAutoFixError(err.message || "Auto-fix failed");
     } finally {
       setAutoFixLoading(false);

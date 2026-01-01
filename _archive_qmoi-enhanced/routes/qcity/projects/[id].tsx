@@ -34,7 +34,7 @@ export default function ProjectDetailPage() {
     );
   }
 
-  const handleUpdateProject = async (updates: any) => {
+  const handleUpdateProject = async (updates: unknown) => {
     try {
       await updateProject(project.id, updates);
       setShowEditForm(false);

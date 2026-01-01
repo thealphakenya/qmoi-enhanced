@@ -26,13 +26,13 @@ const Onboarding: React.FC = () => {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+    _e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+    setForm((f) => ({ ...f, [_e.target.name]: _e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (_e: React.FormEvent) => {
+    _e.preventDefault();
     // TODO: Save user details and preferences
     setStep(3);
   };
@@ -104,7 +104,7 @@ const Onboarding: React.FC = () => {
       {step === 2 && (
         <div>
           <h3>Set Your Preferences</h3>
-          {/* TODO: Add preference options */}
+          {/* TODO: Add preference _options */}
           <button
             style={{ width: "100%", marginTop: 16 }}
             onClick={() => setStep(3)}

@@ -83,13 +83,13 @@ export function AvatarSelector({
       setSelectedAvatar(avatarId);
 
       // Call API to switch avatar
-      const response = await fetch("/api/qmoi/avatars", {
+      const _response = await fetch("/api/qmoi/avatars", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", avatarId }),
       });
 
-      if (!response.ok) throw new Error("Failed to switch avatar");
+      if (!_response.ok) throw new Error("Failed to switch avatar");
 
       // Notify parent component
       onAvatarChange?.(avatarId);
@@ -100,7 +100,7 @@ export function AvatarSelector({
           avatarsConfig.find((a) => a.id === avatarId)?.name
         } avatar.`,
       });
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Error",
         description: "Failed to switch avatar. Please try again.",
@@ -114,19 +114,19 @@ export function AvatarSelector({
   const handleUpgrade = async (avatarId: string) => {
     setIsLoading(true);
     try {
-      const response = await fetch("/api/qmoi/avatars", {
+      const _response = await fetch("/api/qmoi/avatars", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "upgrade", avatarId }),
       });
 
-      if (!response.ok) throw new Error("Failed to upgrade avatar");
+      if (!_response.ok) throw new Error("Failed to upgrade avatar");
 
       toast({
         title: "Avatar Upgraded",
         description: "Avatar has been successfully upgraded with new features.",
       });
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Upgrade Error",
         description: "Failed to upgrade avatar. Please try again.",
@@ -141,7 +141,7 @@ export function AvatarSelector({
     setIsLoading(true);
     try {
       const avatar = avatarsConfig.find((a) => a.id === avatarId);
-      const response = await fetch("/api/qmoi/avatars", {
+      const _response = await fetch("/api/qmoi/avatars", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -152,14 +152,14 @@ export function AvatarSelector({
         }),
       });
 
-      if (!response.ok) throw new Error("Failed to enhance avatar");
+      if (!_response.ok) throw new Error("Failed to enhance avatar");
 
       toast({
         title: "Avatar Enhanced",
         description:
           "Avatar has been enhanced with improved quality and features.",
       });
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: "Enhancement Error",
         description: "Failed to enhance avatar. Please try again.",
@@ -356,8 +356,8 @@ export function AvatarSelector({
                     <Button
                       size="sm"
                       variant="outline"
-                      onClick={(e) => {
-                        e.stopPropagation();
+                      onClick={(_e) => {
+                        _e.stopPropagation();
                         handleUpgrade(avatar.id);
                       }}
                       disabled={isLoading}
@@ -368,8 +368,8 @@ export function AvatarSelector({
                     <Button
                       size="sm"
                       variant="outline"
-                      onClick={(e) => {
-                        e.stopPropagation();
+                      onClick={(_e) => {
+                        _e.stopPropagation();
                         handleEnhance(avatar.id);
                       }}
                       disabled={isLoading}
@@ -505,7 +505,7 @@ export function AvatarSelector({
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm">
-                      Emotion detection and response
+                      Emotion detection and _response
                     </span>
                     <Switch defaultChecked />
                   </div>

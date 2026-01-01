@@ -19,20 +19,20 @@ interface ExportRequest {
   date_to?: string;
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
-    const body: ExportRequest = await request.json();
+    const body: ExportRequest = await _request.json();
     const { type, device_id, date_from, date_to } = body;
 
     // Prefer API keys / MASTER token when available
-    const apiAuth = requireApiKey(request.headers);
-    const isMaster = apiAuth.ok || (await checkMasterAccess(request));
+    const apiAuth = requireApiKey(_request.headers);
+    const isMaster = apiAuth.ok || (await checkMasterAccess(_request));
     if (!isMaster) {
       return NextResponse.json(
         apiAuth.ok
-          ? { error: "Master access required" }
-          : apiAuth.response?.body || { error: "Master access required" },
-        { status: apiAuth.ok ? 403 : apiAuth.response?.status || 403 },
+          ? { _error: "Master access required" }
+          : apiAuth._response?.body || { _error: "Master access required" },
+        { status: apiAuth.ok ? 403 : apiAuth._response?.status || 403 },
       );
     }
 
@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
     const validTypes = ["ownership", "unlock", "master", "all", "statistics"];
     if (!validTypes.includes(type)) {
       return NextResponse.json(
-        { error: "Invalid export type" },
+        { _error: "Invalid export type" },
         { status: 400 },
       );
     }
@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
     // Check if logger script exists
     if (!fs.existsSync(loggerScript)) {
       return NextResponse.json(
-        { error: "QMOI Own Device Logger not found" },
+        { _error: "QMOI Own Device Logger not found" },
         { status: 404 },
       );
     }
@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
     } catch (parseError) {
       console.error("Failed to parse export data:", parseError);
       return NextResponse.json(
-        { error: "Failed to parse export data" },
+        { _error: "Failed to parse export data" },
         { status: 500 },
       );
     }
@@ -109,19 +109,19 @@ export async function POST(request: NextRequest) {
         "Content-Disposition": `attachment; filename="${filename}"`,
       },
     });
-  } catch (error) {
-    console.error("QMOI Own Device Export API error:", error);
+  } catch (_error) {
+    console.error("QMOI Own Device Export API _error:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server _error" },
       { status: 500 },
     );
   }
 }
 
-async function checkMasterAccess(request: NextRequest): Promise<boolean> {
+async function checkMasterAccess(_request: NextRequest): Promise<boolean> {
   try {
     // Get authorization header
-    const authHeader = request.headers.get("authorization");
+    const authHeader = _request.headers.get("authorization");
     if (!authHeader) {
       return false;
     }
@@ -136,7 +136,7 @@ async function checkMasterAccess(request: NextRequest): Promise<boolean> {
     }
 
     // Check for master session in cookies
-    const cookies = request.headers.get("cookie");
+    const cookies = _request.headers.get("cookie");
     if (
       cookies &&
       (cookies.includes("master=true") || cookies.includes("admin=true"))
@@ -145,8 +145,8 @@ async function checkMasterAccess(request: NextRequest): Promise<boolean> {
     }
 
     return false;
-  } catch (error) {
-    console.error("Master access check error:", error);
+  } catch (_error) {
+    console.error("Master access check _error:", _error);
     return false;
   }
 }

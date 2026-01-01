@@ -2,7 +2,7 @@ import nodemailer from "nodemailer";
 import axios from "axios";
 import { logger } from "../utils/logger";
 
-let twilioClient: any = null;
+let twilioClient: unknown = null;
 if (process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN) {
   twilioClient = require("twilio")(
     process.env.TWILIO_ACCOUNT_SID,

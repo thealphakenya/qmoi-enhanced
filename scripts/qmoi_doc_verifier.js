@@ -54,33 +54,33 @@ function logAutoFix(action, details) {
   fs.appendFileSync(AUTO_FIX_LOG, entry);
 }
 
-function autoSuggestFix(error) {
+function autoSuggestFix(_error) {
   const config = loadAutoFixConfig();
   if (!config.enable) return;
   
-  console.log(`[QMOI AUTO-FIX] Detected error: ${error.message}`);
+  console.log(`[QMOI AUTO-FIX] Detected _error: ${_error.message}`);
   
-  if (error.message && error.message.includes('Unexpected identifier')) {
-    console.error('[QMOI AUTO-FIX] Fixing syntax error...');
+  if (_error.message && _error.message.includes('Unexpected identifier')) {
+    console.error('[QMOI AUTO-FIX] Fixing syntax _error...');
     logAutoFix('auto', 'Unexpected identifier - fixing syntax');
     // Auto-fix syntax errors
     try {
       execSync('npx eslint . --fix', { stdio: 'pipe' });
       console.log('[QMOI AUTO-FIX] Syntax fixed with ESLint');
-    } catch (e) {
-      console.error('[QMOI AUTO-FIX] ESLint fix failed:', e.message);
+    } catch (_e) {
+      console.error('[QMOI AUTO-FIX] ESLint fix failed:', _e.message);
   }
   }
   
-  if (error.message && error.message.includes('Cannot find module')) {
+  if (_error.message && _error.message.includes('Cannot find module')) {
     console.error('[QMOI AUTO-FIX] Running npm install...');
     logAutoFix('auto', 'npm install triggered for missing module');
     if (config.autoNpmInstall) {
       try { 
         execSync('npm install', { stdio: 'inherit' }); 
         console.log('[QMOI AUTO-FIX] npm install completed');
-      } catch (e) { 
-        console.error('[QMOI AUTO-FIX] npm install failed:', e.message);
+      } catch (_e) { 
+        console.error('[QMOI AUTO-FIX] npm install failed:', _e.message);
         // Try alternative fix
         try {
           execSync('npx rimraf node_modules package-lock.json && npm install', { stdio: 'inherit' });
@@ -92,72 +92,72 @@ function autoSuggestFix(error) {
     }
   }
   
-  if (error.message && error.message.match(/SyntaxError: Unexpected token|missing (\)|\]|\}|;|,)/i)) {
-    console.error('[QMOI AUTO-FIX] Fixing syntax error...');
+  if (_error.message && _error.message.match(/SyntaxError: Unexpected token|missing (\)|\]|\}|;|,)/i)) {
+    console.error('[QMOI AUTO-FIX] Fixing syntax _error...');
     logAutoFix('auto', 'SyntaxError - fixing brackets/commas/semicolons');
     try {
       execSync('npx prettier --write .', { stdio: 'pipe' });
       execSync('npx eslint . --fix', { stdio: 'pipe' });
       console.log('[QMOI AUTO-FIX] Syntax fixed with Prettier and ESLint');
-    } catch (e) {
-      console.error('[QMOI AUTO-FIX] Syntax fix failed:', e.message);
+    } catch (_e) {
+      console.error('[QMOI AUTO-FIX] Syntax fix failed:', _e.message);
   }
   }
   
-  if (error.message && error.message.includes('ReferenceError')) {
-    console.error('[QMOI AUTO-FIX] Fixing reference error...');
+  if (_error.message && _error.message.includes('ReferenceError')) {
+    console.error('[QMOI AUTO-FIX] Fixing reference _error...');
     logAutoFix('auto', 'ReferenceError - fixing variable/function names');
     try {
       execSync('npx tsc --noEmit', { stdio: 'pipe' });
       console.log('[QMOI AUTO-FIX] TypeScript check completed');
-    } catch (e) {
-      console.error('[QMOI AUTO-FIX] TypeScript check failed:', e.message);
+    } catch (_e) {
+      console.error('[QMOI AUTO-FIX] TypeScript check failed:', _e.message);
   }
   }
   
-  if (error.message && error.message.includes('TypeError')) {
-    console.error('[QMOI AUTO-FIX] Fixing type error...');
+  if (_error.message && _error.message.includes('TypeError')) {
+    console.error('[QMOI AUTO-FIX] Fixing type _error...');
     logAutoFix('auto', 'TypeError - fixing function/object usage');
     try {
       execSync('npx tsc --noEmit', { stdio: 'pipe' });
       console.log('[QMOI AUTO-FIX] TypeScript check completed');
-    } catch (e) {
-      console.error('[QMOI AUTO-FIX] TypeScript check failed:', e.message);
+    } catch (_e) {
+      console.error('[QMOI AUTO-FIX] TypeScript check failed:', _e.message);
   }
   }
   
-  if (error.message && error.message.match(/EACCES|EPERM|permission denied/i)) {
-    console.error('[QMOI AUTO-FIX] Fixing permission error...');
-    logAutoFix('auto', 'Permission error - fixing file permissions');
+  if (_error.message && _error.message.match(/EACCES|EPERM|permission denied/i)) {
+    console.error('[QMOI AUTO-FIX] Fixing permission _error...');
+    logAutoFix('auto', 'Permission _error - fixing file permissions');
     if (config.autoPermissionFix) {
       try {
         execSync('chmod -R 755 .', { stdio: 'pipe' });
         console.log('[QMOI AUTO-FIX] Permissions fixed');
-      } catch (e) {
-        console.error('[QMOI AUTO-FIX] Permission fix failed:', e.message);
+      } catch (_e) {
+        console.error('[QMOI AUTO-FIX] Permission fix failed:', _e.message);
     }
   }
   }
   
-  if (error.message && error.message.match(/out of memory/i)) {
+  if (_error.message && _error.message.match(/out of memory/i)) {
     console.error('[QMOI AUTO-FIX] Fixing memory issue...');
     logAutoFix('auto', 'Out of memory - optimizing memory usage');
     try {
       execSync('node --max-old-space-size=4096 scripts/qmoi_doc_verifier.js verify', { stdio: 'inherit' });
       console.log('[QMOI AUTO-FIX] Memory optimized run completed');
-    } catch (e) {
-      console.error('[QMOI AUTO-FIX] Memory optimization failed:', e.message);
+    } catch (_e) {
+      console.error('[QMOI AUTO-FIX] Memory optimization failed:', _e.message);
   }
   }
   
-  if (error.message && error.message.match(/EADDRINUSE|port.*in use/i)) {
+  if (_error.message && _error.message.match(/EADDRINUSE|port.*in use/i)) {
     console.error('[QMOI AUTO-FIX] Fixing port conflict...');
     logAutoFix('auto', 'Port in use - killing conflicting processes');
     try {
       execSync('pkill -f node', { stdio: 'pipe' });
       console.log('[QMOI AUTO-FIX] Conflicting processes killed');
-    } catch (e) {
-      console.error('[QMOI AUTO-FIX] Process kill failed:', e.message);
+    } catch (_e) {
+      console.error('[QMOI AUTO-FIX] Process kill failed:', _e.message);
     }
   }
 }
@@ -167,27 +167,27 @@ function runStaticAnalysisAndFix() {
     console.log('[QMOI] Running ESLint with --fix...');
     execSync('npx eslint . --fix', { stdio: 'inherit' });
     logAutoFix('auto', 'eslint --fix run');
-  } catch (e) { logAutoFix('error', 'eslint --fix failed: ' + e.message); }
+  } catch (_e) { logAutoFix('_error', 'eslint --fix failed: ' + _e.message); }
   try {
     console.log('[QMOI] Running TypeScript check...');
     execSync('npx tsc --noEmit', { stdio: 'inherit' });
     logAutoFix('auto', 'tsc --noEmit run');
-  } catch (e) { logAutoFix('error', 'tsc --noEmit failed: ' + e.message); }
+  } catch (_e) { logAutoFix('_error', 'tsc --noEmit failed: ' + _e.message); }
 }
 
 function healDependencies() {
   try {
-    console.log('[QMOI] Checking for unused dependencies...');
+    console.log('[QMOI] Checking for _unused dependencies...');
     execSync('npx depcheck', { stdio: 'inherit' });
-    // Optionally auto-remove unused deps (manual step for safety)
-    logAutoFix('suggest', 'depcheck run - review unused deps');
-  } catch (e) { logAutoFix('error', 'depcheck failed: ' + e.message); }
+    // Optionally auto-remove _unused deps (manual step for safety)
+    logAutoFix('suggest', 'depcheck run - review _unused deps');
+  } catch (_e) { logAutoFix('_error', 'depcheck failed: ' + _e.message); }
   try {
     console.log('[QMOI] Updating outdated dependencies...');
     execSync('npx npm-check-updates -u', { stdio: 'inherit' });
     execSync('npm install', { stdio: 'inherit' });
     logAutoFix('auto', 'npm-check-updates run and npm install');
-  } catch (e) { logAutoFix('error', 'npm-check-updates failed: ' + e.message); }
+  } catch (_e) { logAutoFix('_error', 'npm-check-updates failed: ' + _e.message); }
 }
 
 function healConfigsAndEnv() {
@@ -217,7 +217,7 @@ function healSecretsAndPermissions() {
       try {
         fs.chmodSync(fullPath, 0o600);
         logAutoFix('auto', `Set permissions 600 for ${fileOrDir}`);
-      } catch (e) { logAutoFix('error', `Failed to set permissions for ${fileOrDir}: ${e.message}`); }
+      } catch (_e) { logAutoFix('_error', `Failed to set permissions for ${fileOrDir}: ${_e.message}`); }
     }
   }
 }
@@ -269,7 +269,7 @@ function autoOptimizeImages() {
           sharp(file).resize({ width: 1920 }).toFile(out);
           optimized.push({ from: file, to: out });
           logAutoFix('auto', `Optimized large image ${file} to ${out}`);
-        } catch (e) { logAutoFix('error', `Failed to optimize ${file}: ${e.message}`); }
+        } catch (_e) { logAutoFix('_error', `Failed to optimize ${file}: ${_e.message}`); }
       }
     }
   }
@@ -312,22 +312,22 @@ function autoRemoveUnusedDeps() {
   if (!config.autoRemoveUnusedDeps) return;
   try {
     const depcheck = require('depcheck');
-    depcheck(process.cwd(), {}, (unused) => {
-      if (unused.dependencies && unused.dependencies.length > 0) {
-        for (const dep of unused.dependencies) {
+    depcheck(process.cwd(), {}, (_unused) => {
+      if (_unused.dependencies && _unused.dependencies.length > 0) {
+        for (const dep of _unused.dependencies) {
           execSync(`npm uninstall ${dep}`, { stdio: 'inherit' });
-          logAutoFix('auto', `Removed unused dependency ${dep}`);
+          logAutoFix('auto', `Removed _unused dependency ${dep}`);
         }
       }
     });
-  } catch (e) { logAutoFix('error', 'depcheck auto-remove failed: ' + e.message); }
+  } catch (_e) { logAutoFix('_error', 'depcheck auto-remove failed: ' + _e.message); }
 }
 
 function autoUpdateVulnerableDeps() {
   try {
     execSync('npm audit fix', { stdio: 'inherit' });
     logAutoFix('auto', 'npm audit fix run');
-  } catch (e) { logAutoFix('error', 'npm audit fix failed: ' + e.message); }
+  } catch (_e) { logAutoFix('_error', 'npm audit fix failed: ' + _e.message); }
 }
 
 function autoSyncEnvExample() {
@@ -397,7 +397,7 @@ function autoGenerateWebpImages() {
       try {
         sharp(file).webp().toFile(out);
         logAutoFix('auto', `Generated webp image for ${file}`);
-      } catch (e) { logAutoFix('error', `Failed to generate webp for ${file}: ${e.message}`); }
+      } catch (_e) { logAutoFix('_error', `Failed to generate webp for ${file}: ${_e.message}`); }
     }
   }
 }
@@ -431,8 +431,8 @@ function autoRunTestsAndRevertOnFailure() {
   try {
     execSync('npm test', { stdio: 'inherit' });
     logAutoFix('auto', 'All tests passed after healing.');
-  } catch (e) {
-    logAutoFix('error', 'Tests failed after healing. Consider reverting last change.');
+  } catch (_e) {
+    logAutoFix('_error', 'Tests failed after healing. Consider reverting last change.');
     // Stub: In real use, auto-revert last change
   }
 }
@@ -489,14 +489,14 @@ class QmoiDocVerifier {
 ### Request
 \`\`\`json
 {
-  "example": "request"
+  "example": "_request"
 }
 \`\`\`
 
 ### Response
 \`\`\`json
 {
-  "example": "response"
+  "example": "_response"
 }
 \`\`\`
 
@@ -804,7 +804,7 @@ python scripts/{SCRIPT_NAME}.py
           workerData: { dir: task.dir, excludeDirs, depth: task.depth, maxDepth }
         });
         worker.on('message', (data) => resolve(data));
-        worker.on('error', (err) => { errors.push(err); resolve([]); });
+        worker.on('_error', (_err) => { errors.push(_err); resolve([]); });
         worker.on('exit', () => {});
       });
     }
@@ -813,8 +813,8 @@ python scripts/{SCRIPT_NAME}.py
       const batch = queue.splice(0, maxWorkers);
       const promises = batch.map(task => runWorker(task));
       const batchResults = await Promise.all(promises);
-      for (const res of batchResults) {
-        for (const entry of res) {
+      for (const _res of batchResults) {
+        for (const entry of _res) {
           if (entry.isDir) {
             queue.push({ dir: entry.dir, depth: (task.depth || 0) + 1 });
           } else if (entry.file) {
@@ -837,15 +837,15 @@ python scripts/{SCRIPT_NAME}.py
         const { files, errors: errs } = await parallelScanDirs(this.projectRoot, excludeDirs);
         allFiles = files;
         errors = errs;
-      } catch (e) {
+      } catch (_e) {
         // Fallback to serial scan
         allFiles = this.getFilesRecursively(this.projectRoot, excludeDirs);
-        errors = [e];
+        errors = [_e];
       }
     } else {
       // Worker thread: run scanDirWorker and send result
-      const res = scanDirWorker(workerData);
-      parentPort.postMessage(res);
+      const _res = scanDirWorker(workerData);
+      parentPort.postMessage(_res);
       return;
     }
     const mdFiles = allFiles.filter(file =>
@@ -890,13 +890,13 @@ python scripts/{SCRIPT_NAME}.py
       fs.writeFileSync(feature.docPath, content);
       this.autoCreated.push(feature);
       console.log(`✅ Created ${feature.docPath}`);
-    } catch (error) {
-      console.error(`❌ Failed to create ${feature.docPath}:`, error.message);
+    } catch (_error) {
+      console.error(`❌ Failed to create ${feature.docPath}:`, _error.message);
     }
   }
 
   async runSelfTests() {
-    console.log('🧪 Running self-tests for manual error simulation...');
+    console.log('🧪 Running self-tests for manual _error simulation...');
     
     const tests = [
       {
@@ -934,29 +934,29 @@ python scripts/{SCRIPT_NAME}.py
           name: test.name,
           status: 'PASS',
           output: result,
-          error: null
+          _error: null
         });
         
         console.log(`✅ ${test.name}: PASS`);
-      } catch (error) {
+      } catch (_error) {
         const status = test.expectedError ? 'PASS' : 'FAIL';
         this.testResults.push({
           name: test.name,
           status,
-          output: error.stdout || '',
-          error: error.stderr || error.message
+          output: _error.stdout || '',
+          _error: _error.stderr || _error.message
         });
         
         console.log(`${status === 'PASS' ? '✅' : '❌'} ${test.name}: ${status}`);
         if (status === 'FAIL') {
-          console.log(`   Error: ${error.message}`);
+          console.log(`   Error: ${_error.message}`);
         }
       }
     }
   }
 
   async simulateManualErrors() {
-    console.log('🎭 Simulating manual error scenarios...');
+    console.log('🎭 Simulating manual _error scenarios...');
     
     const scenarios = [
       {
@@ -1001,7 +1001,7 @@ python scripts/{SCRIPT_NAME}.py
       try {
         console.log(`\n🎬 Simulating: ${scenario.name}`);
         
-        // Apply the error
+        // Apply the _error
         scenario.action();
         
         // Try to detect and fix
@@ -1011,8 +1011,8 @@ python scripts/{SCRIPT_NAME}.py
         scenario.fix();
         
         console.log(`✅ ${scenario.name}: Simulated and fixed`);
-      } catch (error) {
-        console.error(`❌ ${scenario.name}: Failed - ${error.message}`);
+      } catch (_error) {
+        console.error(`❌ ${scenario.name}: Failed - ${_error.message}`);
         // Ensure cleanup
         try {
           scenario.fix();
@@ -1024,7 +1024,7 @@ python scripts/{SCRIPT_NAME}.py
   }
 
   async detectAndFixErrors() {
-    // Simulate error detection and fixing
+    // Simulate _error detection and fixing
     await new Promise(resolve => setTimeout(resolve, 1000));
     
     // Check for common issues
@@ -1036,7 +1036,7 @@ python scripts/{SCRIPT_NAME}.py
       if (!packageJson.dependencies.react) {
         issues.push('Missing React dependency');
       }
-    } catch (error) {
+    } catch (_error) {
       issues.push('Invalid package.json');
     }
     
@@ -1045,7 +1045,7 @@ python scripts/{SCRIPT_NAME}.py
     for (const file of jsonFiles) {
       try {
         JSON.parse(fs.readFileSync(file, 'utf8'));
-      } catch (error) {
+      } catch (_error) {
         issues.push(`Invalid JSON in ${file}`);
       }
     }
@@ -1110,7 +1110,7 @@ python scripts/{SCRIPT_NAME}.py
     // Notify start
     try {
       execSync('python scripts/gmail_notify.py --subject "QMOI Doc Fixing Started" --body "Documentation fixing has started."');
-    } catch (e) { console.error('Start notification failed:', e.message); }
+    } catch (_e) { console.error('Start notification failed:', _e.message); }
     console.log('\uD83D\uDE80 Starting QMOI Enhanced Documentation Verifier...\n');
     try {
       // Ensure docs directory exists
@@ -1127,30 +1127,30 @@ python scripts/{SCRIPT_NAME}.py
         if (processed % 10 === 0) {
           try {
             execSync(`python scripts/gmail_notify.py --subject \"QMOI Doc Fixing Progress\" --body \"${processed} documentation files processed.\"`);
-          } catch (e) { console.error('Progress notification failed:', e.message); }
+          } catch (_e) { console.error('Progress notification failed:', _e.message); }
         }
       }
       // Run self-tests
       await this.runSelfTests();
       // Simulate manual errors
       await this.simulateManualErrors();
-      // Simulate permission error
+      // Simulate permission _error
       try {
         fs.writeFileSync('/root/should_fail.txt', 'test');
-      } catch (e) {
-        this.issues.push('Simulated permission error: ' + e.message);
+      } catch (_e) {
+        this.issues.push('Simulated permission _error: ' + _e.message);
       }
       // Simulate corrupted file
       try {
         fs.writeFileSync(path.join(this.docsDir, 'corrupted.md'), '\0\0\0corrupted');
-      } catch (e) {
-        this.issues.push('Simulated file corruption: ' + e.message);
+      } catch (_e) {
+        this.issues.push('Simulated file corruption: ' + _e.message);
       }
       // Simulate missing directory
       try {
         fs.readdirSync('/nonexistent/dir');
-      } catch (e) {
-        this.issues.push('Simulated missing directory: ' + e.message);
+      } catch (_e) {
+        this.issues.push('Simulated missing directory: ' + _e.message);
       }
       // Generate comprehensive report
       const report = this.generateReport();
@@ -1159,19 +1159,19 @@ python scripts/{SCRIPT_NAME}.py
       // Completion notification
       try {
         execSync(`python scripts/gmail_notify.py --subject \"QMOI Doc Fixing Complete\" --body \"Documentation fixing complete. ${processed} files processed. Issues found: ${this.issues.length}.\"`);
-      } catch (e) { console.error('Completion notification failed:', e.message); }
+      } catch (_e) { console.error('Completion notification failed:', _e.message); }
       // Notification trigger (stub)
       if (this.issues.length > 0) {
         try {
           execSync('python scripts/gmail_notify.py --subject "QMOI Doc Verifier issues detected" --body "Issues were detected during documentation verification."');
-        } catch (e) {
-          console.error('Notification trigger failed:', e.message);
+        } catch (_e) {
+          console.error('Notification trigger failed:', _e.message);
         }
       }
       console.log('\n\uD83C\uDF89 QMOI Documentation Verification Complete!');
       return report;
-    } catch (error) {
-      console.error('\u274C Verification failed:', error.message);
+    } catch (_error) {
+      console.error('\u274C Verification failed:', _error.message);
       // Fallback: run Python verifier
       try {
         execSync('python scripts/doc_verifier.py --fix', { stdio: 'inherit' });
@@ -1179,11 +1179,11 @@ python scripts/{SCRIPT_NAME}.py
       } catch (fallbackError) {
         console.error('\u274C Python verifier also failed:', fallbackError.message);
         process.exitCode = 1;
-        return { error: error.message, fallbackError: fallbackError.message };
+        return { _error: _error.message, fallbackError: fallbackError.message };
       }
       // Only exit non-zero for true system errors
       process.exitCode = 0;
-      return { error: error.message };
+      return { _error: _error.message };
     }
     // Always exit 0 for doc mismatches (auto-fixed above)
     process.exitCode = 0;
@@ -1225,15 +1225,15 @@ autoGenerateCoverageReport();
 
   switch (command) {
     case 'verify':
-      verifier.run().catch(error => {
-        console.error('[QMOI ERROR] Verification failed:', error);
-        autoSuggestFix(error);
+      verifier.run().catch(_error => {
+        console.error('[QMOI ERROR] Verification failed:', _error);
+        autoSuggestFix(_error);
         if (loadAutoFixConfig().autoRerun) {
           console.log('[QMOI AUTO-FIX] Re-running verifier after auto-fix...');
           try { 
             execSync('node scripts/qmoi_doc_verifier.js verify', { stdio: 'inherit' }); 
-          } catch (e) { 
-            console.error('[QMOI AUTO-FIX] Auto-rerun failed:', e.message);
+          } catch (_e) { 
+            console.error('[QMOI AUTO-FIX] Auto-rerun failed:', _e.message);
             process.exit(1);
           }
         }

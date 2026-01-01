@@ -8,7 +8,7 @@ export interface AIRequest {
   whatsappId?: string;
   source: AIRequestSource;
   message: string;
-  context?: any;
+  context?: unknown;
 }
 
 export class AIRequestRouter {

@@ -32,7 +32,7 @@ interface MediaItem {
 }
 
 // Initialize media tables
-async function initializeMediaTables(db: any) {
+async function initializeMediaTables(db: unknown) {
   await db.exec(`
     CREATE TABLE IF NOT EXISTS media_items (
       id TEXT PRIMARY KEY,
@@ -85,7 +85,7 @@ async function searchMedia(
   sql += " ORDER BY created_at DESC";
 
   const results = await db.all(sql, params);
-  return results.map((row: any) => ({
+  return results.map((row: unknown) => ({
     id: row.id,
     title: row.title,
     type: row.type,
@@ -200,7 +200,7 @@ async function getMediaLogs(filter?: {
   const db = await getDb();
 
   let sql = "SELECT * FROM media_logs";
-  const params: any[] = [];
+  const params: unknown[] = [];
 
   if (filter?.action || filter?.mediaId) {
     sql += " WHERE";

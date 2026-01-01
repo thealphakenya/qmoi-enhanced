@@ -9,7 +9,7 @@ function loadDevices() {
   if (!fs.existsSync(DEVICES_FILE)) return [];
   return JSON.parse(fs.readFileSync(DEVICES_FILE, "utf-8"));
 }
-function saveDevices(devices: any[]) {
+function saveDevices(devices: unknown[]) {
   fs.writeFileSync(DEVICES_FILE, JSON.stringify(devices, null, 2));
 }
 
@@ -43,7 +43,7 @@ const handler = requireRole(["admin", "master"])(async (
   }
   if (method === "PUT") {
     const { id, ...update } = body;
-    const idx = devices.findIndex((d: any) => d.id === id);
+    const idx = devices.findIndex((d: unknown) => d.id === id);
     if (idx === -1) return res.status(404).json({ error: "Not found" });
     devices[idx] = {
       ...devices[idx],
@@ -55,13 +55,13 @@ const handler = requireRole(["admin", "master"])(async (
   }
   if (method === "DELETE") {
     const { id } = body;
-    devices = devices.filter((d: any) => d.id !== id);
+    devices = devices.filter((d: unknown) => d.id !== id);
     saveDevices(devices);
     return res.status(200).json({ success: true });
   }
   if (method === "POST" && query.action === "test") {
     const { id } = body;
-    const device = devices.find((d: any) => d.id === id);
+    const device = devices.find((d: unknown) => d.id === id);
     if (!device) return res.status(404).json({ error: "Not found" });
     // Test SSH connection
     const ssh = new SSHClient();

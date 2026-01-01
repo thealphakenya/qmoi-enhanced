@@ -1,3 +1,5 @@
+/* eslint-env node */
+/* eslint-disable no-undef, no-console */
 const m = require("jest-environment-jsdom");
 console.log("typeof m", typeof m);
 console.log("m keys", Object.keys(m));

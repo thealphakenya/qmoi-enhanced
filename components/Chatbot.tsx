@@ -4,8 +4,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { useMaster } from "./MasterContext";
 
 interface ChatbotProps {
-  chatHistory: any[];
-  setChatHistory: (history: any[] | ((prev: any[]) => any[])) => void;
+  chatHistory: unknown[];
+  setChatHistory: (history: unknown[] | ((prev: unknown[]) => any[])) => void;
   // Model selection is deprecated and optional — the system enforces 'qmoi' as canonical
   selectedModel?: string;
   setSelectedModel?: (model: string) => void;

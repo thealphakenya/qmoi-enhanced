@@ -4,12 +4,12 @@ const os = require("os");
 const fs = require("fs");
 const path = require("path");
 
-function execCmd(cmd, options = {}) {
+function execCmd(cmd, _options = {}) {
   try {
-    execSync(cmd, { stdio: "inherit", ...options });
+    execSync(cmd, { stdio: "inherit", ..._options });
     return true;
-  } catch (err) {
-    console.warn(`⚠️ Command failed: ${cmd}\n${err.message}`);
+  } catch (_err) {
+    console.warn(`⚠️ Command failed: ${cmd}\n${_err.message}`);
     return false;
   }
 }

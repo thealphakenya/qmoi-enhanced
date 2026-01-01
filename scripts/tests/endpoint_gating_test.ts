@@ -19,12 +19,12 @@ function makeNextUrl(url = "http://localhost") {
   } as any;
 }
 
-async function testAiHealthGating(aiHealthGET: any) {
+async function testAiHealthGating(aiHealthGET: unknown) {
   console.log("Testing ai-health GET gating...");
   process.env.NODE_ENV = "production";
   delete process.env.API_KEY;
   // No header -> expect 401
-  const res1: any = await aiHealthGET({
+  const res1: unknown = await aiHealthGET({
     headers: makeHeaders(),
     nextUrl: makeNextUrl(),
   } as any);
@@ -37,7 +37,7 @@ async function testAiHealthGating(aiHealthGET: any) {
 
   // With API key -> 200
   process.env.API_KEY = "test-api";
-  const res2: any = await aiHealthGET({
+  const res2: unknown = await aiHealthGET({
     headers: makeHeaders({ "x-api-key": "test-api" }),
     nextUrl: makeNextUrl(),
   } as any);
@@ -48,18 +48,18 @@ async function testAiHealthGating(aiHealthGET: any) {
   console.log("ai-health gating tests passed");
 }
 
-async function testLanguagePlaceholders(languageHandler: any) {
+async function testLanguagePlaceholders(languageHandler: unknown) {
   console.log("Testing qmoi/language placeholder behavior and gating...");
   process.env.NODE_ENV = "production";
   delete process.env.API_KEY;
 
-  // Mock req/res for NextApi handler
-  const res: any = {
+  // Mock _req/_res for NextApi handler
+  const _res: unknown = {
     status(code: number) {
       this.statusCode = code;
       return this;
     },
-    json(obj: any) {
+    json(obj: unknown) {
       this.body = obj;
       return this;
     },
@@ -72,23 +72,23 @@ async function testLanguagePlaceholders(languageHandler: any) {
       body: { action: "translate" },
       headers: makeHeaders(),
     } as any,
-    res as any,
+    _res as unknown,
   );
   assert(
-    res.statusCode === 401 || (res.body && res.body.error),
+    _res.statusCode === 401 || (_res.body && _res.body._error),
     "language route should 401 without key",
   );
 
   // With key -> 501 placeholder
   process.env.API_KEY = "test-api";
-  const res2: any = {
+  const res2: unknown = {
     statusCode: 0,
     body: null,
     status(code: number) {
       this.statusCode = code;
       return this;
     },
-    json(obj: any) {
+    json(obj: unknown) {
       this.body = obj;
       return this;
     },
@@ -99,37 +99,37 @@ async function testLanguagePlaceholders(languageHandler: any) {
       body: { action: "translate" },
       headers: makeHeaders({ "x-api-key": "test-api" }),
     } as any,
-    res2 as any,
+    res2 as unknown,
   );
   assert(
     res2.statusCode === 501 ||
       (res2.body &&
-        res2.body.error &&
-        res2.body.error.includes("Not implemented")),
+        res2.body._error &&
+        res2.body._error.includes("Not implemented")),
     "language route should return 501 despite key because placeholder",
   );
   console.log("language placeholder gating tests passed");
 }
 
-async function testQNewsGating(qnewsPOST: any) {
+async function testQNewsGating(qnewsPOST: unknown) {
   console.log("Testing qnews gating and master fallback...");
   process.env.NODE_ENV = "production";
   delete process.env.API_KEY;
 
   // POST creating news requires key or master
   const body = { title: "Test", content: "x" };
-  const resNoAuth: any = await qnewsPOST({
+  const resNoAuth: unknown = await qnewsPOST({
     headers: makeHeaders(),
     json: async () => body,
   } as any);
   assert(
-    resNoAuth?.status === 401 || (resNoAuth?.body && resNoAuth.body.error),
+    resNoAuth?.status === 401 || (resNoAuth?.body && resNoAuth.body._error),
     "qnews POST should be 401 without key",
   );
 
   // With API key: success
   process.env.API_KEY = "test-api";
-  const resKey: any = await qnewsPOST({
+  const resKey: unknown = await qnewsPOST({
     headers: makeHeaders({ "x-api-key": "test-api" }),
     json: async () => body,
   } as any);
@@ -141,9 +141,9 @@ async function testQNewsGating(qnewsPOST: any) {
 async function runAll() {
   try {
     // Dynamically import route modules so we can handle import errors gracefully
-    let aiHealthGET: any;
-    let languageHandler: any;
-    let qnewsPOST: any;
+    let aiHealthGET: unknown;
+    let languageHandler: unknown;
+    let qnewsPOST: unknown;
     try {
       // Prefer compiled server route if it exists (from `next build`), otherwise import source TS file.
       const compiledAiHealth = path.resolve(
@@ -208,10 +208,10 @@ async function runAll() {
     await testQNewsGating(qnewsPOST);
     console.log("All endpoint gating tests passed.");
     process.exit(0);
-  } catch (e) {
+  } catch (_e) {
     console.error(
       "Endpoint gating tests failed:",
-      e instanceof Error ? e.stack : e,
+      _e instanceof Error ? _e.stack : _e,
     );
     process.exit(1);
   }

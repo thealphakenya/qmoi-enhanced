@@ -8,7 +8,7 @@ import { requireRole } from "../auth/rbac";
 const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG_PATH = path.resolve(process.cwd(), "logs/qcity_audit.log");
 
-function logAudit(entry: any) {
+function logAudit(entry: unknown) {
   const line =
     JSON.stringify({ ...entry, timestamp: new Date().toISOString() }) + "\n";
   fs.appendFileSync(AUDIT_LOG_PATH, line);

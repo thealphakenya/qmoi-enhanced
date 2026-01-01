@@ -1,5 +1,6 @@
 // QMOI Plugin Manager Stub
 
+import React from "react";
 import { DeviceHealthReviewerPlugin } from "./DeviceHealthReviewerPlugin";
 import { OptimizationSuggestionPlugin } from "./OptimizationSuggestionPlugin";
 import { AIReviewPlugin } from "./AIReviewPlugin";
@@ -16,24 +17,25 @@ export interface QmoiPlugin {
   getSettingsPanel?(): React.ReactNode;
 }
 
-export type PluginEvent = { type: string; payload?: any };
+export type PluginEvent = { type: string; payload?: unknown };
 
 export type AutomationRule = {
   id: string;
   description: string;
-  trigger: (event: PluginEvent) => boolean;
+  trigger: (_event: PluginEvent) => boolean;
   action: () => void;
 };
 
 export class PluginManager {
   private plugins: QmoiPlugin[] = [];
   private pluginStatus: { [id: string]: boolean } = {};
-  private eventListeners: { [eventType: string]: ((payload: any) => void)[] } =
-    {};
+  private eventListeners: {
+    [eventType: string]: ((payload: unknown) => void)[];
+  } = {};
   private scheduledPlugins: {
     plugin: QmoiPlugin;
     interval: number;
-    timer?: any;
+    timer?: unknown;
   }[] = [];
   private automationRules: AutomationRule[] = [];
 
@@ -69,15 +71,17 @@ export class PluginManager {
     return this.plugins;
   }
 
-  on(eventType: string, listener: (payload: any) => void) {
+  on(eventType: string, listener: (payload: unknown) => void) {
     if (!this.eventListeners[eventType]) this.eventListeners[eventType] = [];
     this.eventListeners[eventType].push(listener);
   }
 
-  emit(event: PluginEvent) {
-    (this.eventListeners[event.type] || []).forEach((fn) => fn(event.payload));
+  emit(_event: PluginEvent) {
+    (this.eventListeners[_event.type] || []).forEach((fn) =>
+      fn(_event.payload)
+    );
     this.automationRules.forEach((rule) => {
-      if (rule.trigger(event)) rule.action();
+      if (rule.trigger(_event)) rule.action();
     });
   }
 
@@ -124,7 +128,7 @@ export class PluginManager {
   // pluginManager.addAutomationRule({
   //   id: 'cpu-offload',
   //   description: 'Offload to cloud if CPU > 80%',
-  //   trigger: (event) => event.type === 'deviceHealthChange' && event.payload.cpu > 80,
+  //   trigger: (_event) => _event.type === 'deviceHealthChange' && _event.payload.cpu > 80,
   //   action: () => { /* offload logic */ },
   // });
 }

@@ -1,3 +1,4 @@
+/* eslint-env jest, browser */
 import { test, expect } from "@jest/globals";
 
 // Simple test that doesn't require JSX or React components

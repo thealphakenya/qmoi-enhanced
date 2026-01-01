@@ -57,7 +57,7 @@ export const QConverse: React.FC<QConverseProps> = ({
     recognitionRef.current.lang = language === "sw" ? "sw-KE" : "en-US";
 
     recognitionRef.current.onstart = () => setIsListening(true);
-    recognitionRef.current.onresult = (event: any) => {
+    recognitionRef.current.onresult = (event: unknown) => {
       let finalTranscript = "";
       for (let i = event.resultIndex; i < event.results.length; i++) {
         if (event.results[i].isFinal) {

@@ -6,9 +6,9 @@ import { promisify } from "util";
 
 const execAsync = promisify(exec);
 
-export async function POST(req: NextRequest) {
+export async function POST(_req: NextRequest) {
   try {
-    const { enabled = true } = await req.json();
+    const { enabled = true } = await _req.json();
 
     if (enabled) {
       // Enable auto-redeploy by setting up webhooks or CI/CD
@@ -28,14 +28,14 @@ export async function POST(req: NextRequest) {
       // Disable auto-redeploy
       return NextResponse.json({
         success: true,
-        autoRedeploy: false,
+        autoRedeploy: fals_e,
         message: "Auto-redeploy disabled. Manual deployments required.",
         output: "Auto-redeploy configuration removed",
       });
     }
-  } catch (error: any) {
+  } catch (_error: unknown) {
     return NextResponse.json(
-      { error: "Failed to configure auto-redeploy", details: error.message },
+      { _error: "Failed to configure auto-redeploy", details: _error.message },
       { status: 500 },
     );
   }

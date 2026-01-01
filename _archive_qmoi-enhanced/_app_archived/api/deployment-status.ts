@@ -8,8 +8,8 @@ export async function GET() {
   let health = "";
   let logs: string[] = [];
   let history: { timestamp: string; status: string; version: string }[] = [];
-  let envManagerStatus: any = null;
-  let huggingfaceStatus: any = null;
+  let envManagerStatus: unknown = null;
+  let huggingfaceStatus: unknown = null;
   try {
     const logData = fs
       .readFileSync("logs/vercel_auto_deploy.log", "utf-8")

@@ -96,7 +96,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
       const response = await fetch("/api/qmoi-database?logs=true&limit=100");
       if (response.ok) {
         const data = await response.json();
-        const parsedLogs = data.logs.map((log: any) => ({
+        const parsedLogs = data.logs.map((log: unknown) => ({
           ...log,
           timestamp: new Date(log.timestamp),
           details: JSON.parse(log.details || "{}"),

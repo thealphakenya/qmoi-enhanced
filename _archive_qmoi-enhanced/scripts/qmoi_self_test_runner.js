@@ -158,12 +158,12 @@ const test: Test = {
   }
 
   async setupUnusedVariables() {
-    console.log('  🧹 Setting up unused variables test...');
+    console.log('  🧹 Setting up _unused variables test...');
     
     const testFile = path.join(this.projectRoot, 'test-unused.ts');
     const codeWithUnused = `
 const usedVariable = 'used';
-const unusedVariable = 'unused'; // This will trigger lint error
+const _unusedVariable = 'unused'; // This will trigger lint error
 
 console.log(usedVariable);
 `;

@@ -9,11 +9,11 @@ const HEADER = `/* eslint-disable @typescript-eslint/no-explicit-any, @typescrip
 
 function walk(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
-  for (const e of entries) {
-    const full = path.join(dir, e.name);
-    if (e.isDirectory()) {
+  for (const _e of entries) {
+    const full = path.join(dir, _e.name);
+    if (_e.isDirectory()) {
       walk(full);
-    } else if (/\.(ts|tsx|js|jsx)$/.test(e.name)) {
+    } else if (/\.(ts|tsx|js|jsx)$/.test(_e.name)) {
       patchFile(full);
     }
   }

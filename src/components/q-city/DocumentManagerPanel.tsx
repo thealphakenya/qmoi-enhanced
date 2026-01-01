@@ -19,8 +19,8 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const res = await fetch("/api/document-backup/list");
-    const data = await res.json();
+    const _res = await fetch("/api/document-backup/list");
+    const data = await _res.json();
     setDocuments(data.documents || []);
   };
 
@@ -29,31 +29,31 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const res = await fetch("/api/document-backup/upload", {
+    const _res = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
     });
-    const data = await res.json();
+    const data = await _res.json();
     setStatus(data.success ? "Uploaded!" : "Upload failed");
     fetchDocuments();
   };
 
   const searchDocs = async () => {
-    const res = await fetch(
+    const _res = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
-    const data = await res.json();
+    const data = await _res.json();
     setResults(data.results || []);
   };
 
   const restore = async (id: number) => {
-    const res = await fetch("/api/document-backup/restore", {
+    const _res = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
     });
-    const data = await res.json();
+    const data = await _res.json();
     setStatus(data.success ? "Restored!" : "Restore failed");
   };
 
@@ -67,20 +67,20 @@ const DocumentManagerPanel: React.FC = () => {
           <Input
             placeholder="Document Name"
             value={form.name}
-            onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+            onChange={(_e) => setForm((f) => ({ ...f, name: _e.target.value }))}
             className="mb-2"
           />
           <Input
             placeholder="Type (pdf, docx, etc.)"
             value={form.type}
-            onChange={(e) => setForm((f) => ({ ...f, type: e.target.value }))}
+            onChange={(_e) => setForm((f) => ({ ...f, type: _e.target.value }))}
             className="mb-2"
           />
           <Input
             placeholder="Content (or file data)"
             value={form.content}
-            onChange={(e) =>
-              setForm((f) => ({ ...f, content: e.target.value }))
+            onChange={(_e) =>
+              setForm((f) => ({ ...f, content: _e.target.value }))
             }
             className="mb-2"
           />
@@ -90,7 +90,7 @@ const DocumentManagerPanel: React.FC = () => {
           <Input
             placeholder="Search documents..."
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(_e) => setSearch(_e.target.value)}
             className="mb-2"
           />
           <Button onClick={searchDocs}>Search</Button>

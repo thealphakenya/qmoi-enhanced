@@ -9,9 +9,9 @@ function runCheck(command, label) {
     const output = execSync(command, { encoding: "utf-8" });
     console.log(`✅ ${label} OK:\n${output.trim()}`);
     return `✅ ${label}: ${output.trim()}`;
-  } catch (err) {
-    console.error(`❌ ${label} FAILED:\n${err.message}`);
-    return `❌ ${label}: ${err.message}`;
+  } catch (_err) {
+    console.error(`❌ ${label} FAILED:\n${_err.message}`);
+    return `❌ ${label}: ${_err.message}`;
   }
 }
 
@@ -32,8 +32,8 @@ function sendTelegramReport(message) {
       parse_mode: "Markdown",
     })
     .then(() => console.log("📤 Telegram report sent successfully."))
-    .catch((e) =>
-      console.warn("❌ Failed to send Telegram report:", e.message),
+    .catch((_e) =>
+      console.warn("❌ Failed to send Telegram report:", _e.message),
     );
 }
 

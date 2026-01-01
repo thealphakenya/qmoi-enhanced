@@ -4,7 +4,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import path from "path";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default function handler(_req: NextApiRequest, _res: NextApiRespons_e) {
   const logsDir = path.join(process.cwd(), "logs");
   let preActivity = null,
     connectivity = null,
@@ -46,7 +46,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     }
   } catch {}
 
-  res
+  _res
     .status(200)
     .json({ status, last_check, preActivity, connectivity, cloud });
 }

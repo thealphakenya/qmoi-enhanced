@@ -17,8 +17,8 @@ export const logger = winston.createLogger({
   transports: [
     new winston.transports.Console(),
     new winston.transports.File({
-      filename: "logs/error.log",
-      level: "error",
+      filename: "logs/_error.log",
+      level: "_error",
       maxsize: 5242880, // 5MB
       maxFiles: 5,
     }),

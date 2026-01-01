@@ -146,7 +146,7 @@ const AlphaQAiSystem = () => {
               <input
                 type="checkbox"
                 checked={autoUpdate}
-                onChange={(e) => setAutoUpdate(e.target.checked)}
+                onChange={(_e) => setAutoUpdate(_e.target.checked)}
               />
             </div>
             <div className="setting-item">

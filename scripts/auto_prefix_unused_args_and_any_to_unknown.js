@@ -9,11 +9,11 @@ const targetExt = new Set([".ts", ".tsx", ".js", ".jsx"]);
 
 function walk(dir, files = []) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
-  for (const e of entries) {
-    const p = path.join(dir, e.name);
-    if (e.isDirectory()) {
+  for (const _e of entries) {
+    const p = path.join(dir, _e.name);
+    if (_e.isDirectory()) {
       walk(p, files);
-    } else if (targetExt.has(path.extname(e.name))) {
+    } else if (targetExt.has(path.extname(_e.name))) {
       files.push(p);
     }
   }
@@ -24,27 +24,27 @@ function processFile(file) {
   let s = fs.readFileSync(file, "utf8");
   const original = s;
 
-  // replace ': any' -> ': unknown'
+  // replace ': unknown' -> ': unknown'
   s = s.replace(/:\s*any\b/g, ": unknown");
   // replace ' as any' -> ' as unknown'
   s = s.replace(/\b as\s+any\b/g, " as unknown");
 
-  // prefix common unused param names with _ when declared in parameter lists
-  const params = [
-    "req",
-    "res",
+  // prefix common _unused param names with _ when declared in parameter lists
+  const _params = [
+    "_req",
+    "_res",
     "next",
-    "params",
-    "query",
-    "options",
-    "error",
-    "err",
-    "e",
-    "event",
-    "request",
-    "response",
+    "_params",
+    "_query",
+    "_options",
+    "_error",
+    "_err",
+    "_e",
+    "_event",
+    "_request",
+    "_response",
   ];
-  const paramsPattern = params.join("|");
+  const paramsPattern = _params.join("|");
   // match '(', '[' or ',' followed by optional spaces then the param name and a lookahead for :, comma, ), ] or =
   const re = new RegExp(
     "([\\(\\[,]\\s*)(" + paramsPattern + ")(?=\\s*[:,\\)\\]\\=])",
@@ -69,8 +69,8 @@ function main() {
   for (const f of files) {
     try {
       if (processFile(f)) changed++;
-    } catch (err) {
-      console.error("error processing", f, err && err.message);
+    } catch (_err) {
+      console.error("_error processing", f, _err && _err.message);
     }
   }
   console.log(`Processed ${files.length} files, modified ${changed} files.`);

@@ -39,7 +39,7 @@ function applySettings(s: UISettingsState) {
   try {
     root.setAttribute("data-qmoi-high-contrast", s.highContrast ? "1" : "0");
     root.setAttribute("data-qmoi-reduce-motion", s.reduceMotion ? "1" : "0");
-  } catch (e) {}
+  } catch (_e) {}
 }
 
 export const UISettings: React.FC = () => {
@@ -56,31 +56,31 @@ export const UISettings: React.FC = () => {
       } else {
         applySettings(DEFAULTS);
       }
-    } catch (e) {
+    } catch (_e) {
       applySettings(DEFAULTS);
     }
   }, []);
 
-  // quick-toggle event listeners (high contrast / reduce motion)
+  // quick-toggle _event listeners (high contrast / reduce motion)
   useEffect(() => {
     function onToggleHigh() {
       setSettings((prev) => {
-        const next = { ...prev, highContrast: !prev.highContrast };
-        applySettings(next);
+        const _next = { ...prev, highContrast: !prev.highContrast };
+        applySettings(_next);
         try {
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-        } catch (e) {}
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(_next));
+        } catch (_e) {}
         return next;
       });
     }
 
     function onToggleReduce() {
       setSettings((prev) => {
-        const next = { ...prev, reduceMotion: !prev.reduceMotion };
-        applySettings(next);
+        const _next = { ...prev, reduceMotion: !prev.reduceMotion };
+        applySettings(_next);
         try {
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-        } catch (e) {}
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(_next));
+        } catch (_e) {}
         return next;
       });
     }
@@ -109,7 +109,7 @@ export const UISettings: React.FC = () => {
     };
   }, []);
 
-  // Listen for a global event to open the settings from other UI parts
+  // Listen for a global _event to open the settings from other UI parts
   useEffect(() => {
     function handleOpenEvent() {
       setOpen(true);
@@ -131,12 +131,12 @@ export const UISettings: React.FC = () => {
   }, []);
 
   const save = (partial: Partial<UISettingsState>) => {
-    const next = { ...settings, ...partial };
-    setSettings(next);
-    applySettings(next);
+    const _next = { ...settings, ...partial };
+    setSettings(_next);
+    applySettings(_next);
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-    } catch (e) {}
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(_next));
+    } catch (_e) {}
   };
 
   const reset = () => {
@@ -144,7 +144,7 @@ export const UISettings: React.FC = () => {
     applySettings(DEFAULTS);
     try {
       localStorage.removeItem(STORAGE_KEY);
-    } catch (e) {}
+    } catch (_e) {}
   };
 
   return (
@@ -190,7 +190,7 @@ export const UISettings: React.FC = () => {
                   min={12}
                   max={28}
                   value={settings.fontSize}
-                  onChange={(e) => save({ fontSize: Number(e.target.value) })}
+                  onChange={(_e) => save({ fontSize: Number(_e.target.value) })}
                 />
               </div>
 
@@ -200,7 +200,7 @@ export const UISettings: React.FC = () => {
                 </label>
                 <select
                   value={settings.fontFamily}
-                  onChange={(e) => save({ fontFamily: e.target.value })}
+                  onChange={(_e) => save({ fontFamily: _e.target.value })}
                   className="w-full p-2 border rounded bg-white dark:bg-gray-800 text-sm"
                 >
                   <option value={DEFAULTS.fontFamily}>System / Inter</option>
@@ -219,7 +219,7 @@ export const UISettings: React.FC = () => {
                 <input
                   type="color"
                   value={settings.fontColor}
-                  onChange={(e) => save({ fontColor: e.target.value })}
+                  onChange={(_e) => save({ fontColor: _e.target.value })}
                 />
               </div>
 
@@ -230,7 +230,7 @@ export const UISettings: React.FC = () => {
                 <input
                   type="color"
                   value={settings.backgroundColor}
-                  onChange={(e) => save({ backgroundColor: e.target.value })}
+                  onChange={(_e) => save({ backgroundColor: _e.target.value })}
                 />
               </div>
 
@@ -244,7 +244,7 @@ export const UISettings: React.FC = () => {
                   max={2}
                   step={0.05}
                   value={settings.lineHeight}
-                  onChange={(e) => save({ lineHeight: Number(e.target.value) })}
+                  onChange={(_e) => save({ lineHeight: Number(_e.target.value) })}
                 />
               </div>
 
@@ -261,7 +261,7 @@ export const UISettings: React.FC = () => {
                   <input
                     type="checkbox"
                     checked={settings.highContrast}
-                    onChange={(e) => save({ highContrast: e.target.checked })}
+                    onChange={(_e) => save({ highContrast: _e.target.checked })}
                     className="mr-2"
                   />
                 </label>
@@ -280,7 +280,7 @@ export const UISettings: React.FC = () => {
                   <input
                     type="checkbox"
                     checked={settings.reduceMotion}
-                    onChange={(e) => save({ reduceMotion: e.target.checked })}
+                    onChange={(_e) => save({ reduceMotion: _e.target.checked })}
                     className="mr-2"
                   />
                 </label>

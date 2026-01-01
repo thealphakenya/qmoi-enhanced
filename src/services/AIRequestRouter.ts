@@ -8,7 +8,7 @@ export interface AIRequest {
   whatsappId?: string;
   source: AIRequestSource;
   message: string;
-  context?: any;
+  context?: unknown;
 }
 
 export class AIRequestRouter {
@@ -17,96 +17,96 @@ export class AIRequestRouter {
 
   constructor(
     sessionManager: MultiUserSessionManager,
-    contextEngine: ContextEngine,
+    contextEngine: ContextEngine
   ) {
     this.sessionManager = sessionManager;
     this.contextEngine = contextEngine;
   }
 
   // Main entry point for all requests
-  async handleRequest(request: AIRequest): Promise<any> {
+  async handleRequest(_request: AIRequest): Promise<any> {
     let user: User | undefined;
-    if (request.whatsappId) {
-      user = this.sessionManager.getUserByWhatsAppId(request.whatsappId);
-      if (!user && request.userId) {
+    if (_request.whatsappId) {
+      user = this.sessionManager.getUserByWhatsAppId(_request.whatsappId);
+      if (!user && _request.userId) {
         // Link WhatsApp to user if not already linked
         this.sessionManager.linkWhatsAppToUser(
-          request.whatsappId,
-          request.userId,
+          _request.whatsappId,
+          _request.userId
         );
-        user = this.sessionManager.getUser(request.userId);
+        user = this.sessionManager.getUser(_request.userId);
       }
-    } else if (request.userId) {
-      user = this.sessionManager.getUser(request.userId);
+    } else if (_request.userId) {
+      user = this.sessionManager.getUser(_request.userId);
     }
     if (!user) {
-      throw new Error("User not found for request");
+      throw new Error("User not found for _request");
     }
 
     // Sync context if provided
-    if (request.context) {
-      this.sessionManager.updateUserContext(user.id, request.context);
+    if (_request.context) {
+      this.sessionManager.updateUserContext(user.id, _request.context);
       this.contextEngine.saveUserContext({
         userId: user.id,
-        ...request.context,
+        ...(_request.context as object),
       });
     }
 
-    // Route request based on message content
-    if (/file|edit|modify|save|rollback/i.test(request.message)) {
-      return this.handleFileRequest(user, request);
+    // Route _request based on message content
+    if (/file|edit|modify|save|rollback/i.test(_request.message)) {
+      return this.handleFileRequest(user, _request);
     }
-    if (/project|task|switch|continue/i.test(request.message)) {
-      return this.handleProjectRequest(user, request);
+    if (/project|task|switch|continue/i.test(_request.message)) {
+      return this.handleProjectRequest(user, _request);
     }
     if (
       /wallet|fund|mpesa|airtel|pesapal|finance|transaction/i.test(
-        request.message,
+        _request.message
       )
     ) {
-      return this.handleFinancialRequest(user, request);
+      return this.handleFinancialRequest(user, _request);
     }
-    if (/version|changelog|update|release/i.test(request.message)) {
-      return this.handleVersionRequest(user, request);
+    if (/version|changelog|update|release/i.test(_request.message)) {
+      return this.handleVersionRequest(user, _request);
     }
     // Default: chat/AI conversation
-    return this.handleChatRequest(user, request);
+    return this.handleChatRequest(user, _request);
   }
 
-  private async handleFileRequest(user: User, request: AIRequest) {
+  private async handleFileRequest(user: User, _request: AIRequest) {
     // TODO: Implement file editing, preview, commit/rollback logic
-    return { status: "file-handled", user: user.id, message: request.message };
+    return { status: "file-handled", user: user.id, message: _request.message };
   }
 
-  private async handleProjectRequest(user: User, request: AIRequest) {
+  private async handleProjectRequest(user: User, _request: AIRequest) {
     // TODO: Implement project/task switching/continuation logic
     return {
       status: "project-handled",
       user: user.id,
-      message: request.message,
+      message: _request.message,
     };
   }
 
-  private async handleFinancialRequest(user: User, request: AIRequest) {
+  private async handleFinancialRequest(user: User, _request: AIRequest) {
     // TODO: Integrate with wallet, Mpesa, Airtel, Pesapal, etc.
     return {
       status: "financial-handled",
       user: user.id,
-      message: request.message,
+      message: _request.message,
     };
   }
 
-  private async handleVersionRequest(user: User, request: AIRequest) {
+  private async handleVersionRequest(user: User, _request: AIRequest) {
     // TODO: Return version info, changelog, etc.
     return {
       status: "version-handled",
       user: user.id,
-      message: request.message,
+      message: _request.message,
     };
   }
 
-  private async handleChatRequest(user: User, request: AIRequest) {
-    // TODO: Integrate with AI chat/response engine
-    return { status: "chat-handled", user: user.id, message: request.message };
+  private async handleChatRequest(user: User, _request: AIRequest) {
+    // TODO: Integrate with AI chat/_response engine
+    return { status: "chat-handled", user: user.id, message: _request.message };
   }
 }

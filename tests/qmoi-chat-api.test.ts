@@ -9,15 +9,15 @@ describe("QMOI /api/qmoi/chat proxy", () => {
   maybeIt(
     "should proxy a greeting and return assistant content",
     async () => {
-      const res = await fetch(`${BASE}/api/qmoi/chat`, {
+      const _res = await fetch(`${BASE}/api/qmoi/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: [{ role: "user", content: "How are you" }],
         }),
       });
-      expect(res.status).toBe(200);
-      const js = await res.json();
+      expect(_res.status).toBe(200);
+      const js = await _res.json();
       const content =
         js.choices &&
         js.choices[0] &&

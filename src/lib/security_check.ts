@@ -1,3 +1,4 @@
+/* eslint-env browser,node */
 // Security check module for QMOI system
 export let isTampered = false;
 
@@ -19,8 +20,8 @@ export function runSecurityCheck(): void {
 
     // Additional security checks can be added here
     checkForTampering();
-  } catch (error) {
-    console.error("Security check failed:", error);
+  } catch (_error) {
+    console.error("Security check failed:", _error);
     isTampered = true;
   }
 }
@@ -54,11 +55,11 @@ export function showDecoyInfo(): { message: string; warning: string } {
   };
 }
 
-export function logEvent(event: string, data?: unknown): void {
+export function logEvent(_event: string, data?: unknown): void {
   try {
     const logEntry = {
       timestamp: new Date().toISOString(),
-      event,
+      _event,
       data,
       userAgent: navigator.userAgent,
       url: window.location.href,
@@ -76,7 +77,7 @@ export function logEvent(event: string, data?: unknown): void {
     }
 
     localStorage.setItem("qmoi_logs", JSON.stringify(logs));
-  } catch (error) {
-    console.error("Failed to log event:", error);
+  } catch (_error) {
+    console.error("Failed to log _event:", _error);
   }
 }

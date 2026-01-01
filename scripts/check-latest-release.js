@@ -5,13 +5,13 @@ const repo = "thealphakenya/Alpha-Q-ai";
 
 async function checkRelease() {
   try {
-    const res = await axios.get(
+    const _res = await axios.get(
       `https://api.github.com/repos/${repo}/releases/latest`,
     );
-    const latest = res.data.tag_name || res.data.name;
+    const latest = _res.data.tag_name || _res.data.name;
     console.log(`🚀 Latest QMOI Release: ${latest}`);
-  } catch (e) {
-    console.error("❌ Could not fetch release info:", e.message);
+  } catch (_e) {
+    console.error("❌ Could not fetch release info:", _e.message);
   }
 }
 

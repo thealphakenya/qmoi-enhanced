@@ -5,37 +5,37 @@ import { NextApiRequest, NextApiResponse } from "next";
 // Import authentication and audit logging utilities
 // ... existing code ...
 
-export default async function handler(req: NextApiRequest,
-  res: NextApiResponse,
+export default async function handler(_req: NextApiRequest,
+  _res: NextApiRespons_e,
 ) {
   // Authenticate user and check permissions
   // Log action for audit
-  const { method, body } = req;
+  const { method, body } = _req;
   switch (method) {
     case "POST": {
       const { action } = body;
       switch (action) {
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
-          return res.status(501).json({
-            error: "Not implemented - production integration required",
+          return _res.status(501).json({
+            _error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
-          return res.status(501).json({
-            error: "Not implemented - production integration required",
+          return _res.status(501).json({
+            _error: "Not implemented - production integration required",
           });
         default:
-          return res.status(400).json({ error: "Unknown action" });
+          return _res.status(400).json({ _error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
-      return res
+      return _res
         .status(501)
-        .json({ error: "Not implemented - production integration required" });
+        .json({ _error: "Not implemented - production integration required" });
     }
     default:
-      return res.status(405).json({ error: "Method not allowed" });
+      return _res.status(405).json({ _error: "Method not allowed" });
   }
 }

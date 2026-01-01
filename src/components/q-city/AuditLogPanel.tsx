@@ -15,8 +15,8 @@ export default function AuditLogPanel() {
   }, [filter]);
   function fetchLogs() {
     setLoading(true);
-    const params = new URLSearchParams({ ...filter, format });
-    fetch(`/api/qcity/audit-log?${params.toString()}`, {
+    const _params = new URLSearchParams({ ...filter, format });
+    fetch(`/api/qcity/audit-log?${_params.toString()}`, {
       headers: {
         "x-qcity-admin-key": localStorage.getItem("qcity-admin-key") || "",
       },
@@ -42,27 +42,27 @@ export default function AuditLogPanel() {
         <input
           placeholder="Action"
           value={filter.action}
-          onChange={(e) => setFilter((f) => ({ ...f, action: e.target.value }))}
+          onChange={(_e) => setFilter((f) => ({ ...f, action: _e.target.value }))}
           className="bg-gray-800 p-1 rounded"
         />
         <input
           placeholder="User"
           value={filter.user}
-          onChange={(e) => setFilter((f) => ({ ...f, user: e.target.value }))}
+          onChange={(_e) => setFilter((f) => ({ ...f, user: _e.target.value }))}
           className="bg-gray-800 p-1 rounded"
         />
         <input
           placeholder="Device"
           value={filter.deviceId}
-          onChange={(e) =>
-            setFilter((f) => ({ ...f, deviceId: e.target.value }))
+          onChange={(_e) =>
+            setFilter((f) => ({ ...f, deviceId: _e.target.value }))
           }
           className="bg-gray-800 p-1 rounded"
         />
         <input
           placeholder="Status"
           value={filter.status}
-          onChange={(e) => setFilter((f) => ({ ...f, status: e.target.value }))}
+          onChange={(_e) => setFilter((f) => ({ ...f, status: _e.target.value }))}
           className="bg-gray-800 p-1 rounded"
         />
         <button
@@ -94,7 +94,7 @@ export default function AuditLogPanel() {
               </tr>
             </thead>
             <tbody>
-              {logs.map((l: any, i) => (
+              {logs.map((l: unknown, i) => (
                 <tr key={i}>
                   <td>{l.timestamp || ""}</td>
                   <td>{l.action || ""}</td>

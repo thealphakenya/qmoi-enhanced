@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 interface QMoiStateProps {
-  session?: any;
-  global?: any;
+  session?: unknown;
+  global?: unknown;
   minimized?: boolean;
   aiHealth?: { status: string; lastCheck: string; error?: string };
   isMaster?: boolean;
@@ -153,9 +153,9 @@ export function QMoiState({
     }
   };
 
-  const exportToCSV = (logs: any[]) => {
+  const exportToCSV = (logs: unknown[]) => {
     const header = "Timestamp,User,Action,Device,Status,Command";
-    const rows = logs.map((log: any) =>
+    const rows = logs.map((log: unknown) =>
       [
         log.timestamp,
         log.user,
@@ -175,7 +175,7 @@ export function QMoiState({
     a.click();
   };
 
-  const exportToJSON = (logs: any[]) => {
+  const exportToJSON = (logs: unknown[]) => {
     const blob = new Blob([JSON.stringify(logs, null, 2)], {
       type: "application/json",
     });

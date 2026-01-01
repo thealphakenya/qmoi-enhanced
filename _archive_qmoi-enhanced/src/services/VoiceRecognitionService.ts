@@ -14,7 +14,7 @@ interface VoiceConfig {
 interface VoiceCommand {
   id: string;
   phrase: string;
-  action: (params: any) => Promise<void>;
+  action: (params: unknown) => Promise<void>;
   priority: "low" | "medium" | "high";
   context: string[];
 }
@@ -56,8 +56,8 @@ interface UserVoicePreferences {
 export class VoiceRecognitionService {
   private static instance: VoiceRecognitionService;
   private eventEmitter: EventEmitter;
-  private recognition: any; // SpeechRecognition
-  private synthesis: any; // SpeechSynthesis
+  private recognition: unknown; // SpeechRecognition
+  private synthesis: unknown; // SpeechSynthesis
   private config: VoiceConfig;
   private commands: Map<string, VoiceCommand> = new Map();
   private isListening: boolean = false;
@@ -302,7 +302,7 @@ export class VoiceRecognitionService {
     this.saveUserSettings();
   }
 
-  public onVoiceSelectionRequired(callback: (data: any) => void): void {
+  public onVoiceSelectionRequired(callback: (data: unknown) => void): void {
     this.eventEmitter.on("voiceSelectionRequired", callback);
   }
 
@@ -515,7 +515,7 @@ export class VoiceRecognitionService {
     this.registerCommand({
       id: "create-group",
       phrase: "create whatsapp group",
-      action: async (params: any) => {
+      action: async (params: unknown) => {
         const { name, members } = params;
         await this.createWhatsAppGroup(name, members);
         this.speak(`WhatsApp group ${name} created successfully`);
@@ -528,7 +528,7 @@ export class VoiceRecognitionService {
     this.registerCommand({
       id: "change-language",
       phrase: "change language",
-      action: async (params: any) => {
+      action: async (params: unknown) => {
         const { language } = params;
         this.setLanguage(language);
         this.speak(`Language changed to ${language}`);
@@ -540,7 +540,7 @@ export class VoiceRecognitionService {
     this.registerCommand({
       id: "adjust-volume",
       phrase: "adjust volume",
-      action: async (params: any) => {
+      action: async (params: unknown) => {
         const { level } = params;
         this.setVolume(level);
         this.speak(`Volume adjusted to ${level}%`);
@@ -695,7 +695,7 @@ export class VoiceRecognitionService {
     }
   }
 
-  public speak(text: string, options: any = {}): void {
+  public speak(text: string, options: unknown = {}): void {
     if (!this.synthesis) {
       console.error("Speech synthesis not available");
       return;
@@ -712,7 +712,7 @@ export class VoiceRecognitionService {
       utterance.voice =
         this.synthesis
           .getVoices()
-          .find((v: any) => v.name === this.currentVoice!.voiceURI) || null;
+          .find((v: unknown) => v.name === this.currentVoice!.voiceURI) || null;
       utterance.pitch = this.userSettings.voiceSettings.pitch;
       utterance.rate = this.userSettings.voiceSettings.rate;
       utterance.volume = this.userSettings.voiceSettings.volume;
@@ -869,7 +869,7 @@ export class VoiceRecognitionService {
     this.eventEmitter.on("synthesisEnd", callback);
   }
 
-  public onCommandExecuted(callback: (data: any) => void): void {
+  public onCommandExecuted(callback: (data: unknown) => void): void {
     this.eventEmitter.on("commandExecuted", callback);
   }
 

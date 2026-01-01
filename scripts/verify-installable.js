@@ -31,8 +31,8 @@ function testInstall(filePath) {
     console.log(`🧪 Installing ${filePath}...`);
     execSync(cmd, { stdio: "inherit" });
     console.log(`✅ Install test passed: ${filePath}`);
-  } catch (err) {
-    console.error(`❌ Install failed: ${filePath}\n`, err.message);
+  } catch (_err) {
+    console.error(`❌ Install failed: ${filePath}\n`, _err.message);
   }
 }
 

@@ -14,25 +14,25 @@ function loadUsers() {
   return JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
 }
 
-export default async function handler(req: NextApiRequest,
-  res: NextApiResponse,
+export default async function handler(_req: NextApiRequest,
+  _res: NextApiRespons_e,
 ) {
-  if (req.method !== "POST")
-    return res.status(405).json({ error: "Method not allowed" });
-  const { username, password } = req.body;
+  if (_req.method !== "POST")
+    return _res.status(405).json({ _error: "Method not allowed" });
+  const { username, password } = _req.body;
   if (!username || !password)
-    return res.status(400).json({ error: "Missing fields" });
+    return _res.status(400).json({ _error: "Missing fields" });
   const users = loadUsers();
-  const user = users.find((u: any) => u.username === username);
-  if (!user) return res.status(401).json({ error: "Invalid credentials" });
+  const user = users.find((u: unknown) => u.username === username);
+  if (!user) return _res.status(401).json({ _error: "Invalid credentials" });
   const valid = await bcrypt.compare(password, user.password);
-  if (!valid) return res.status(401).json({ error: "Invalid credentials" });
+  if (!valid) return _res.status(401).json({ _error: "Invalid credentials" });
   const token = jwt.sign(
     { id: user.id, username: user.username, role: user.role },
     JWT_SECRET,
     { expiresIn: "8h" },
   );
-  res.status(200).json({
+  _res.status(200).json({
     token,
     user: { id: user.id, username: user.username, role: user.role },
   });

@@ -278,7 +278,7 @@ class AutoLinter {
         actions: [
           "Review and fix import statements",
           "Check for undefined variables",
-          "Remove unused imports and variables",
+          "Remove _unused imports and variables",
         ],
       });
     }

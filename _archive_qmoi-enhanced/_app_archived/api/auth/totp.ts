@@ -9,7 +9,7 @@ function loadUsers() {
   if (!fs.existsSync(USERS_FILE)) return [];
   return JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
 }
-function saveUsers(users: any[]) {
+function saveUsers(users: unknown[]) {
   fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
 }
 
@@ -20,7 +20,7 @@ const handler = requireRole(["user", "admin", "master"])(async (
   const { method, body } = req;
   const { id } = (req as any).user || {};
   const users = loadUsers();
-  const userIdx = users.findIndex((u: any) => u.id === id);
+  const userIdx = users.findIndex((u: unknown) => u.id === id);
   if (userIdx === -1) return res.status(404).json({ error: "User not found" });
   if (method === "POST" && body.action === "setup") {
     const secret = authenticator.generateSecret();

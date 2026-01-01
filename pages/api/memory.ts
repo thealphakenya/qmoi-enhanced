@@ -4,17 +4,21 @@ import fs from "fs";
 
 const MEMORY_FILE = path.resolve(process.cwd(), "qmoi_memory.json");
 
-function readMemory(user?: string) {
+type MemoryEntry = { user?: string; [key: string]: unknown };
+
+function readMemory(user?: string): MemoryEntry[] {
   if (!fs.existsSync(MEMORY_FILE)) return [];
-  const all = JSON.parse(fs.readFileSync(MEMORY_FILE, "utf-8"));
+  const all = JSON.parse(
+    fs.readFileSync(MEMORY_FILE, "utf-8")
+  ) as MemoryEntry[];
   if (!user) return all;
-  return all.filter((entry: any) => entry.user === user);
+  return all.filter((entry) => entry.user === user);
 }
 
-function saveMemory(entry: any) {
-  let all = [];
+function saveMemory(entry: MemoryEntry) {
+  let all: MemoryEntry[] = [];
   if (fs.existsSync(MEMORY_FILE)) {
-    all = JSON.parse(fs.readFileSync(MEMORY_FILE, "utf-8"));
+    all = JSON.parse(fs.readFileSync(MEMORY_FILE, "utf-8")) as MemoryEntry[];
   }
   all.push(entry);
   fs.writeFileSync(MEMORY_FILE, JSON.stringify(all, null, 2));
@@ -22,11 +26,13 @@ function saveMemory(entry: any) {
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "GET") {
-    const user = req.query.user as string | undefined;
+    const user = Array.isArray(req.query.user)
+      ? req.query.user[0]
+      : (req.query.user as string | undefined);
     return res.status(200).json(readMemory(user));
   }
   if (req.method === "POST") {
-    const entry = req.body;
+    const entry = req.body as MemoryEntry;
     saveMemory(entry);
     return res.status(201).json({ success: true });
   }

@@ -44,9 +44,9 @@ class JSONConfigFixer {
             jsonFiles.push(fullPath);
           }
         }
-      } catch (error) {
+      } catch (_error) {
         this.log(
-          `Error reading directory ${currentDir}: ${error.message}`,
+          `Error reading directory ${currentDir}: ${_error.message}`,
           "WARN",
         );
       }
@@ -61,8 +61,8 @@ class JSONConfigFixer {
       const content = fs.readFileSync(filePath, "utf8");
       JSON.parse(content);
       return { valid: true, errors: [] };
-    } catch (error) {
-      return { valid: false, errors: [error.message] };
+    } catch (_error) {
+      return { valid: false, errors: [_error.message] };
     }
   }
 
@@ -122,11 +122,11 @@ class JSONConfigFixer {
           `Failed to fix JSON file ${filePath}: ${parseError.message}`,
           "ERROR",
         );
-        return { success: false, error: parseError.message };
+        return { success: false, _error: parseError.message };
       }
-    } catch (error) {
-      this.log(`Error fixing JSON file ${filePath}: ${error.message}`, "ERROR");
-      return { success: false, error: error.message };
+    } catch (_error) {
+      this.log(`Error fixing JSON file ${filePath}: ${_error.message}`, "ERROR");
+      return { success: false, _error: _error.message };
     }
   }
 
@@ -163,7 +163,7 @@ class JSONConfigFixer {
           devDependencies: {
             "@testing-library/react": "^13.0.0",
             "@testing-library/jest-dom": "^5.16.0",
-            "@testing-library/user-event": "^14.0.0",
+            "@testing-library/user-_event": "^14.0.0",
             jest: "^27.0.0",
             "jest-environment-jsdom": "^27.0.0",
           },
@@ -258,7 +258,7 @@ class JSONConfigFixer {
       const essentialDevDeps = {
         "@testing-library/react": "^13.0.0",
         "@testing-library/jest-dom": "^5.16.0",
-        "@testing-library/user-event": "^14.0.0",
+        "@testing-library/user-_event": "^14.0.0",
         jest: "^27.0.0",
         "jest-environment-jsdom": "^27.0.0",
       };
@@ -288,9 +288,9 @@ class JSONConfigFixer {
 
       this.log(`package.json fixed successfully with ${fixes.length} fixes`);
       return { success: true, fixes };
-    } catch (error) {
-      this.log(`Failed to fix package.json: ${error.message}`, "ERROR");
-      return { success: false, error: error.message };
+    } catch (_error) {
+      this.log(`Failed to fix package.json: ${_error.message}`, "ERROR");
+      return { success: false, _error: _error.message };
     }
   }
 
@@ -336,7 +336,7 @@ class JSONConfigFixer {
         fixes.push("Added compilerOptions section");
       }
 
-      // Add missing essential compiler options
+      // Add missing essential compiler _options
       const essentialOptions = {
         target: "es5",
         lib: ["dom", "dom.iterable", "es6"],
@@ -373,9 +373,9 @@ class JSONConfigFixer {
 
       this.log(`tsconfig.json fixed successfully with ${fixes.length} fixes`);
       return { success: true, fixes };
-    } catch (error) {
-      this.log(`Failed to fix tsconfig.json: ${error.message}`, "ERROR");
-      return { success: false, error: error.message };
+    } catch (_error) {
+      this.log(`Failed to fix tsconfig.json: ${_error.message}`, "ERROR");
+      return { success: false, _error: _error.message };
     }
   }
 
@@ -415,9 +415,9 @@ class JSONConfigFixer {
 
       this.log("jest.config.js exists, validating...");
       return { success: true, fixes: ["jest.config.js validated"] };
-    } catch (error) {
-      this.log(`Failed to fix jest.config.js: ${error.message}`, "ERROR");
-      return { success: false, error: error.message };
+    } catch (_error) {
+      this.log(`Failed to fix jest.config.js: ${_error.message}`, "ERROR");
+      return { success: false, _error: _error.message };
     }
   }
 
@@ -469,9 +469,9 @@ class JSONConfigFixer {
 
       this.log(`.eslintrc.json fixed successfully with ${fixes.length} fixes`);
       return { success: true, fixes };
-    } catch (error) {
-      this.log(`Failed to fix .eslintrc.json: ${error.message}`, "ERROR");
-      return { success: false, error: error.message };
+    } catch (_error) {
+      this.log(`Failed to fix .eslintrc.json: ${_error.message}`, "ERROR");
+      return { success: false, _error: _error.message };
     }
   }
 
@@ -512,8 +512,8 @@ class JSONConfigFixer {
               results.errors++;
               results.details.push({
                 file: filePath,
-                status: "error",
-                error: fixResult.error,
+                status: "_error",
+                _error: fixResult._error,
               });
             }
           } else {
@@ -523,12 +523,12 @@ class JSONConfigFixer {
               fixes: [],
             });
           }
-        } catch (error) {
+        } catch (_error) {
           results.errors++;
           results.details.push({
             file: filePath,
-            status: "error",
-            error: error.message,
+            status: "_error",
+            _error: _error.message,
           });
         }
       }
@@ -553,8 +553,8 @@ class JSONConfigFixer {
           results.errors++;
           results.details.push({
             file: "Configuration file",
-            status: "error",
-            error: fix.error,
+            status: "_error",
+            _error: fix._error,
           });
         }
       }
@@ -563,9 +563,9 @@ class JSONConfigFixer {
         `JSON fixing completed: ${results.fixed} fixed, ${results.errors} errors`,
       );
       return results;
-    } catch (error) {
-      this.log(`Failed to fix JSON files: ${error.message}`, "ERROR");
-      throw error;
+    } catch (_error) {
+      this.log(`Failed to fix JSON files: ${_error.message}`, "ERROR");
+      throw _error;
     }
   }
 }
@@ -627,8 +627,8 @@ async function main() {
         console.log("  --validate <path>            Validate JSON file");
         break;
     }
-  } catch (error) {
-    fixer.log(`JSON config fixer failed: ${error.message}`, "ERROR");
+  } catch (_error) {
+    fixer.log(`JSON config fixer failed: ${_error.message}`, "ERROR");
     process.exit(1);
   }
 }

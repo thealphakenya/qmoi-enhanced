@@ -29,7 +29,7 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
     const id = `pp-${Date.now()}`;
     markIdempotent(key, { id, amount, currency });
     WalletManager.appendAudit({
-      event: "payment_intent_created",
+      _event: "payment_intent_created",
       gateway: "paypal",
       id,
       amount,

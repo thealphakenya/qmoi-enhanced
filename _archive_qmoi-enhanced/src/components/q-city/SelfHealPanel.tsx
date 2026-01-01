@@ -66,7 +66,7 @@ const SelfHealPanel: React.FC = () => {
         setRunning(false);
         es.close();
       };
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError(err.message || "Request failed");
       setSuccess(false);
       setRunning(false);

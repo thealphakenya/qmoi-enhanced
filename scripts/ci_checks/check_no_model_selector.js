@@ -22,7 +22,7 @@ function scanPaths(paths, patterns) {
             matches.push({ file: p, pattern: pat });
           }
         }
-      } catch (e) {
+      } catch (_e) {
         // ignore binary
       }
     }
@@ -64,7 +64,7 @@ function scanPaths(paths, patterns) {
       const searchRoots = ["components", "app", "pages", "src", "earnvault"];
       const matches = scanPaths(searchRoots, patterns);
       // Refine matches: for <select> occurrences, ensure the word 'model' appears within
-      // a small context window (e.g., 300 chars) around the select to reduce false positives.
+      // a small context window (_e.g., 300 chars) around the select to reduce false positives.
       const refined = [];
       for (const m of matches) {
         try {
@@ -84,7 +84,7 @@ function scanPaths(paths, patterns) {
             // For explicit phrases like 'Select model' or 'Choose model', accept match
             refined.push(m);
           }
-        } catch (e) {
+        } catch (_e) {
           refined.push(m);
         }
       }
@@ -103,8 +103,8 @@ function scanPaths(paths, patterns) {
     }
     console.log("No model-selector artifacts found.");
     process.exit(0);
-  } catch (e) {
-    console.error("Error while checking for model selector:", e);
+  } catch (_e) {
+    console.error("Error while checking for model selector:", _e);
     process.exit(1);
   }
 })();

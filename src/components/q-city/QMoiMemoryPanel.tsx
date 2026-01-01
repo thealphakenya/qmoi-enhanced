@@ -1,3 +1,4 @@
+/* eslint-env browser */
 import React, { useEffect, useState } from "react";
 import {
   fetchMemory as fetchMemoryApi,
@@ -18,8 +19,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem);
-    } catch (e) {
-      console.warn("fetchMemory failed", e);
+    } catch (_e) {
+      console.warn("fetchMemory failed", _e);
     }
   }
 
@@ -31,7 +32,7 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (e) {
+    } catch (_e) {
       setMessage("Error submitting feedback.");
     }
   }
@@ -41,7 +42,7 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (e) {
+    } catch (_e) {
       setMessage("Backup failed.");
     }
   }
@@ -74,7 +75,7 @@ export default function QMoiMemoryPanel({
           <ul>
             {(memory.master_feedback || [])
               .slice(-5)
-              .map((f: any, i: number) => (
+              .map((f: unknown, i: number) => (
                 <li key={i}>{JSON.stringify(f)}</li>
               ))}
           </ul>
@@ -82,7 +83,7 @@ export default function QMoiMemoryPanel({
             <b>Recent Interactions:</b>
           </p>
           <ul>
-            {(memory.history || []).slice(-5).map((h: any, i: number) => (
+            {(memory.history || []).slice(-5).map((h: unknown, i: number) => (
               <li key={i}>
                 {h.input} ({h.emotion})
               </li>
@@ -95,13 +96,13 @@ export default function QMoiMemoryPanel({
       <div style={{ marginTop: 12 }}>
         <input
           value={feedback}
-          onChange={(e) => setFeedback(e.target.value)}
+          onChange={(_e) => setFeedback(_e.target.value)}
           placeholder="Feedback (praise/correction)"
           style={{ marginRight: 8 }}
         />
         <input
           value={correction}
-          onChange={(e) => setCorrection(e.target.value)}
+          onChange={(_e) => setCorrection(_e.target.value)}
           placeholder="Correction (optional)"
           style={{ marginRight: 8 }}
         />

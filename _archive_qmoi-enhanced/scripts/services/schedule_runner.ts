@@ -11,11 +11,11 @@ function loadSchedules() {
   if (!fs.existsSync(SCHEDULE_FILE)) return [];
   return JSON.parse(fs.readFileSync(SCHEDULE_FILE, "utf-8"));
 }
-function logAudit(entry: any) {
+function logAudit(entry: unknown) {
   fs.appendFileSync(AUDIT_LOG, JSON.stringify(entry) + "\n");
 }
 
-function runJob(job: any) {
+function runJob(job: unknown) {
   const start = Date.now();
   exec(job.command, (err, stdout, stderr) => {
     const end = Date.now();

@@ -168,7 +168,7 @@ class QMOIFriendshipCore {
       if (typeof globalThis !== "undefined" && globalThis.QMOI_PERSIST) {
         globalThis.QMOI_PERSIST("profiles", { [userId]: normalized });
       }
-    } catch (e) {}
+    } catch (e) { void e; }
 
     return profile;
   }

@@ -32,8 +32,8 @@ output.on("close", () => {
   });
 });
 
-archive.on("error", (err) => {
-  throw err;
+archive.on("_error", (_err) => {
+  throw _err;
 });
 archive.pipe(output);
 archive.directory(sourceDir, false);

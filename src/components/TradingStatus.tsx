@@ -37,7 +37,7 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [walletBalances, setWalletBalances] = useState<WalletBalance[]>([]);
   const [lastUpdate, setLastUpdate] = useState<Date>(new Date());
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
 
   const fetchStatus = async () => {
     try {
@@ -58,8 +58,8 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
       }
 
       setLastUpdate(new Date());
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to fetch status");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "Failed to fetch status");
     } finally {
       setIsLoading(false);
     }
@@ -105,7 +105,7 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
             <Chip
               icon={isConnected ? <Wifi /> : <WifiOff />}
               label={isConnected ? "Connected" : "Disconnected"}
-              color={isConnected ? "success" : "error"}
+              color={isConnected ? "success" : "_error"}
               size="small"
             />
             <Tooltip title="Refresh Status">
@@ -124,10 +124,10 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
           <Box display="flex" justifyContent="center" p={2}>
             <CircularProgress size={24} />
           </Box>
-        ) : error ? (
-          <Box display="flex" alignItems="center" gap={1} color="error.main">
+        ) : _error ? (
+          <Box display="flex" alignItems="center" gap={1} color="_error.main">
             <Warning fontSize="small" />
-            <Typography variant="body2">{error}</Typography>
+            <Typography variant="body2">{_error}</Typography>
           </Box>
         ) : (
           <>

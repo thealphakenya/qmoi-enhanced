@@ -366,7 +366,7 @@ export { QMOIRevenueEngine, type RevenueStream, type RevenueTransaction };
 // Provide CommonJS-compatible exports for modules that `require()` the file
 try {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const cjs: any =
+  const cjs: unknown =
     (globalThis as any).module || typeof module !== "undefined"
       ? module
       : undefined;

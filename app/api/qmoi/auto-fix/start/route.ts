@@ -8,15 +8,15 @@ import path from "path";
 import fs from "fs";
 import libProposals from "../../../../../lib/proposals";
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
     // API key gating
-    const auth = libProposals.requireApiKey(request.headers);
+    const auth = libProposals.requireApiKey(_request.headers);
     if (!auth.ok) {
-      const r = auth.response;
+      const r = auth._response;
       if (!r)
         return NextResponse.json(
-          { error: "Unknown auth error" },
+          { _error: "Unknown auth _error" },
           { status: 500 },
         );
       return NextResponse.json(r.body, { status: r.status });
@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
 
     if (!fs.existsSync(scriptPath)) {
       return NextResponse.json(
-        { error: "Auto-fix script not found" },
+        { _error: "Auto-fix script not found" },
         { status: 404 },
       );
     }
@@ -73,10 +73,10 @@ export async function POST(request: NextRequest) {
       message: "Auto-fix process started",
       pid: child.pid,
     });
-  } catch (error) {
-    console.error("Error starting auto-fix process:", error);
+  } catch (_error) {
+    console.error("Error starting auto-fix process:", _error);
     return NextResponse.json(
-      { error: "Failed to start auto-fix process" },
+      { _error: "Failed to start auto-fix process" },
       { status: 500 },
     );
   }

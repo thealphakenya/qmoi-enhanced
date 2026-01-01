@@ -10,13 +10,13 @@ const mockTransactions = [
 ];
 
 export async function GET() {
-  // In real use, fetch from DB or API
+  // In real us_e, fetch from DB or API
   return NextResponse.json({ success: true, transactions: mockTransactions });
 }
 
-export async function POST(req: NextRequest) {
-  const { id, action } = await req.json();
-  // In real use, update DB or call API
+export async function POST(_req: NextRequest) {
+  const { id, action } = await _req.json();
+  // In real us_e, update DB or call API
   const log = `Transaction ${id} ${action} by master at ${new Date().toISOString()}`;
   fs.appendFileSync("logs/financial_verification.log", log + "\n");
   return NextResponse.json({ success: true, message: log });

@@ -8,8 +8,8 @@ interface DashboardData {
   errorFixing: {
     activeErrors: number;
     fixedErrors: number;
-    systemHealth: any;
-    queueStatus: any;
+    systemHealth: unknown;
+    queueStatus: unknown;
   };
   siteGeneration: {
     activeSites: number;
@@ -23,9 +23,9 @@ interface DashboardData {
     dealsDiscovered: number;
   };
   parallelization: {
-    activeTasks: any[];
-    systemHealth: any;
-    performanceMetrics: any;
+    activeTasks: unknown[];
+    systemHealth: unknown;
+    performanceMetrics: unknown;
   };
 }
 
@@ -59,7 +59,7 @@ export default function EnhancedQMOIDashboard({
     if (!isMaster) return;
 
     const updateDashboard = () => {
-      // Update error fixing data
+      // Update _error fixing data
       const errorHealth = enhancedErrorFixingService.getSystemHealth();
       const errorQueue = enhancedErrorFixingService.getQueueStatus();
 
@@ -99,35 +99,35 @@ export default function EnhancedQMOIDashboard({
       "taskProgress",
     ];
 
-    errorEvents.forEach((event) => {
-      enhancedErrorFixingService.on(event, updateDashboard);
+    errorEvents.forEach((_event) => {
+      enhancedErrorFixingService.on(_event, updateDashboard);
     });
 
-    siteEvents.forEach((event) => {
-      enhancedSiteGenerationService.on(event, updateDashboard);
+    siteEvents.forEach((_event) => {
+      enhancedSiteGenerationService.on(_event, updateDashboard);
     });
 
-    revenueEvents.forEach((event) => {
-      enhancedRevenueAutomationService.on(event, updateDashboard);
+    revenueEvents.forEach((_event) => {
+      enhancedRevenueAutomationService.on(_event, updateDashboard);
     });
 
-    parallelEvents.forEach((event) => {
-      enhancedParallelizationService.on(event, updateDashboard);
+    parallelEvents.forEach((_event) => {
+      enhancedParallelizationService.on(_event, updateDashboard);
     });
 
     return () => {
       clearInterval(interval);
-      errorEvents.forEach((event) => {
-        enhancedErrorFixingService.off(event, updateDashboard);
+      errorEvents.forEach((_event) => {
+        enhancedErrorFixingService.off(_event, updateDashboard);
       });
-      siteEvents.forEach((event) => {
-        enhancedSiteGenerationService.off(event, updateDashboard);
+      siteEvents.forEach((_event) => {
+        enhancedSiteGenerationService.off(_event, updateDashboard);
       });
-      revenueEvents.forEach((event) => {
-        enhancedRevenueAutomationService.off(event, updateDashboard);
+      revenueEvents.forEach((_event) => {
+        enhancedRevenueAutomationService.off(_event, updateDashboard);
       });
-      parallelEvents.forEach((event) => {
-        enhancedParallelizationService.off(event, updateDashboard);
+      parallelEvents.forEach((_event) => {
+        enhancedParallelizationService.off(_event, updateDashboard);
       });
     };
   }, [isMaster]);

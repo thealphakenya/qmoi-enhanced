@@ -39,7 +39,7 @@ export function useBitgetTrader() {
       setLastTradeResult(data);
       setTradingError(null);
       return data;
-    } catch (e: any) {
+    } catch (e: unknown) {
       setTradingError(e.message || "Unknown error");
       setBitgetStatus("error");
       return null;

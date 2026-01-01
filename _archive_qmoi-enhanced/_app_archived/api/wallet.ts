@@ -20,7 +20,7 @@ try {
 }
 
 // Enhanced logging
-function logAction(action: string, details: any) {
+function logAction(action: string, details: unknown) {
   try {
     const logs = fs.existsSync(LOGS_FILE)
       ? JSON.parse(fs.readFileSync(LOGS_FILE, "utf-8"))
@@ -75,7 +75,7 @@ function readWalletRequests() {
   }
 }
 
-function writeWalletRequests(requests: any[]) {
+function writeWalletRequests(requests: unknown[]) {
   fs.mkdirSync(path.dirname(REQUESTS_FILE), { recursive: true });
   fs.writeFileSync(REQUESTS_FILE, JSON.stringify(requests, null, 2));
 }
@@ -321,7 +321,7 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return res.json(result);
-  } catch (error: any) {
+  } catch (error: unknown) {
     logAction("error", {
       error: error.message,
       path: req.url,

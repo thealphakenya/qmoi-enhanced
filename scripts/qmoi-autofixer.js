@@ -55,7 +55,7 @@ function repairMissingFile(file) {
   try {
     console.warn(`⚠️ Attempting to recover missing file: ${file}`);
     execSync(`git checkout -- "${file}"`, { stdio: "inherit" });
-  } catch (err) {
+  } catch (_err) {
     console.error(`❌ Recovery failed for: ${file}`);
   }
 }

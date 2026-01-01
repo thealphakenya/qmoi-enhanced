@@ -8,14 +8,14 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 // POST /api/cashon/stop-trading
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
-    const auth = libProposals.requireApiKey(request.headers);
+    const auth = libProposals.requireApiKey(_request.headers);
     if (!auth.ok) {
-      const r = auth.response;
+      const r = auth._response;
       if (!r)
         return NextResponse.json(
-          { error: "Unknown auth error" },
+          { _error: "Unknown auth _error" },
           { status: 500 },
         );
       return NextResponse.json(r.body, { status: r.status });
@@ -41,10 +41,10 @@ export async function POST(request: NextRequest) {
       success: true,
       message: "AI trading stopped successfully",
     });
-  } catch (error) {
-    console.error("Stop trading API error:", error);
+  } catch (_error) {
+    console.error("Stop trading API _error:", _error);
     return NextResponse.json(
-      { error: "Failed to stop trading" },
+      { _error: "Failed to stop trading" },
       { status: 500 },
     );
   }

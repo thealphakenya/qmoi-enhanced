@@ -25,12 +25,12 @@ function verifyJWT(token: string): { valid: boolean; role?: string } {
   }
 }
 
-function logAudit(action: string, user: string, options: any, status: string) {
+function logAudit(action: string, user: string, _options: unknown, status: string) {
   const entry = {
     timestamp: new Date().toISOString(),
     action,
     user,
-    options,
+    _options,
     status,
   };
   fs.appendFileSync("logs/qcity_audit.log", JSON.stringify(entry) + "\n");
@@ -39,29 +39,29 @@ function logAudit(action: string, user: string, options: any, status: string) {
 function logDownloadFix(
   action: string,
   user: string,
-  options: any,
+  _options: unknown,
   status: string,
-  error: any = null,
+  _error: unknown = null,
 ) {
   const entry = {
     timestamp: new Date().toISOString(),
     action,
     user,
     app: "QCity",
-    device: options.device || "unknown",
+    device: _options.device || "unknown",
     status,
-    error,
+    _error,
   };
   fs.appendFileSync("logs/download_fixes.log", JSON.stringify(entry) + "\n");
 }
 
-export async function POST(req: NextRequest) {
-  const apiAuth = requireApiKey(req.headers);
-  let jwt: any = { valid: false };
+export async function POST(_req: NextRequest) {
+  const apiAuth = requireApiKey(_req.headers);
+  let jwt: unknown = { valid: false };
   if (apiAuth.ok) {
     jwt.valid = true; // allow API key or master token
   } else {
-    const auth = req.headers.get("authorization");
+    const auth = _req.headers.get("authorization");
     if (!auth || !auth.startsWith("Bearer ")) {
       return new Response("Authentication required", { status: 401 });
     }
@@ -72,9 +72,9 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  let options: any = {};
+  let _options: unknown = {};
   try {
-    options = await req.json();
+    _options = await _req.json();
   } catch {}
 
   // Determine script and args
@@ -87,17 +87,17 @@ export async function POST(req: NextRequest) {
       "-File",
       "scripts/qcity_npm_selfheal.ps1",
     ];
-    if (options.forceClean) args.push("-ForceClean");
-    if (options.essentialsOnly) args.push("-EssentialsOnly");
-    if (options.upgradeAll) args.push("-UpgradeAll");
-    if (options.diagnosticsOnly) args.push("-DiagnosticsOnly");
+    if (_options.forceClean) args.push("-ForceClean");
+    if (_options.essentialsOnly) args.push("-EssentialsOnly");
+    if (_options.upgradeAll) args.push("-UpgradeAll");
+    if (_options.diagnosticsOnly) args.push("-DiagnosticsOnly");
   } else {
     script = "bash";
     args = ["scripts/qcity_npm_selfheal.sh"];
-    if (options.forceClean) args.push("--force-clean");
-    if (options.essentialsOnly) args.push("--essentials-only");
-    if (options.upgradeAll) args.push("--upgrade-all");
-    if (options.diagnosticsOnly) args.push("--diagnostics-only");
+    if (_options.forceClean) args.push("--force-clean");
+    if (_options.essentialsOnly) args.push("--essentials-only");
+    if (_options.upgradeAll) args.push("--upgrade-all");
+    if (_options.diagnosticsOnly) args.push("--diagnostics-only");
   }
 
   // SSE streaming
@@ -107,8 +107,8 @@ export async function POST(req: NextRequest) {
 
   const ps = spawn(script, args);
   const user = jwt.role || "unknown";
-  logAudit("selfheal-trigger", user, options, "started");
-  logDownloadFix("selfheal-trigger", user, options, "started");
+  logAudit("selfheal-trigger", user, _options, "started");
+  logDownloadFix("selfheal-trigger", user, _options, "started");
 
   ps.stdout.on("data", (data) => {
     writer.write(encoder.encode(`data: ${data.toString()}\n`));
@@ -122,20 +122,20 @@ export async function POST(req: NextRequest) {
     logAudit(
       "selfheal-complete",
       user,
-      options,
-      code === 0 ? "success" : "error",
+      _options,
+      code === 0 ? "success" : "_error",
     );
     logDownloadFix(
       "selfheal-complete",
       user,
-      options,
-      code === 0 ? "success" : "error",
+      _options,
+      code === 0 ? "success" : "_error",
     );
   });
 
   return new Response(readable, {
     headers: {
-      "Content-Type": "text/event-stream",
+      "Content-Type": "text/_event-stream",
       "Cache-Control": "no-cache",
       Connection: "keep-alive",
     },

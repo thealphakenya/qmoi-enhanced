@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function exportToCSV(logs: any[]) {
+function exportToCSV(logs: unknown[]) {
   const header = "Timestamp,Action,Result\n";
   const rows = logs
     .map(
@@ -18,7 +18,7 @@ function exportToCSV(logs: any[]) {
   URL.revokeObjectURL(url);
 }
 
-function exportToJSON(logs: any[]) {
+function exportToJSON(logs: unknown[]) {
   const blob = new Blob([JSON.stringify(logs, null, 2)], {
     type: "application/json",
   });
@@ -67,7 +67,7 @@ export default function QMoiAutoDevPanel({
       });
       const data = await res.json();
       setStatus(data);
-    } catch (e: any) {
+    } catch (e: unknown) {
       setError(e.message);
     }
     setLoading(false);
@@ -88,12 +88,12 @@ export default function QMoiAutoDevPanel({
         }),
       });
       const data = await res.json();
-      setStatus((prev: any) => ({
+      setStatus((prev: unknown) => ({
         ...prev,
         daemon: data.status,
         running: data.status?.running,
       }));
-    } catch (e: any) {
+    } catch (e: unknown) {
       setError(e.message);
     }
     setDaemonAction(null);
@@ -106,7 +106,7 @@ export default function QMoiAutoDevPanel({
       if (status?.lastResult?.fixResults) {
         const logEntries = [];
         if (status.lastResult.fixResults.length > 0) {
-          status.lastResult.fixResults.forEach((fix: any, idx: number) => {
+          status.lastResult.fixResults.forEach((fix: unknown, idx: number) => {
             logEntries.push({
               timestamp: status.lastRun,
               action: `Fix Cycle #${idx + 1}`,
@@ -127,7 +127,7 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (e: any) {
+    } catch (e: unknown) {
       setError(e.message);
     }
     setLogsLoading(false);
@@ -147,7 +147,7 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (e: any) {
+    } catch (e: unknown) {
       setError(e.message);
     }
     setForceRunLoading(false);

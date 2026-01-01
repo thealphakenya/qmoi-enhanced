@@ -2,16 +2,16 @@ import fetch from "node-fetch";
 
 async function testUrl(url) {
   try {
-    const res = await fetch(url, { timeout: 10000 });
-    if (res.ok) {
+    const _res = await fetch(url, { timeout: 10000 });
+    if (_res.ok) {
       console.log(`✅ ${url} OK`);
       return true;
     } else {
-      console.log(`❌ ${url} BAD STATUS: ${res.status}`);
+      console.log(`❌ ${url} BAD STATUS: ${_res.status}`);
       return false;
     }
-  } catch (e) {
-    console.log(`❌ ${url} ERROR: ${e.message}`);
+  } catch (_e) {
+    console.log(`❌ ${url} ERROR: ${_e.message}`);
     return false;
   }
 }

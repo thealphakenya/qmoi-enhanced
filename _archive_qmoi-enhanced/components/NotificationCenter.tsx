@@ -9,7 +9,7 @@ export function NotificationCenter() {
   const [notifications, setNotifications] = useState<any[]>([]);
 
   useEffect(() => {
-    function handleColabJobComplete(e: any) {
+    function handleColabJobComplete(e: unknown) {
       setNotifications((prev) => [
         {
           type: "colab",

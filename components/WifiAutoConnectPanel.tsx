@@ -58,7 +58,7 @@ export const WifiAutoConnectPanel: React.FC = () => {
       if (!res.ok) throw new Error("Failed to scan networks");
       const data = await res.json();
       setNetworks(
-        data.networks.map((net: any) => ({
+        data.networks.map((net: unknown) => ({
           ...net,
           encryption: net.secure ? "WPA2" : "None",
           zeroRated: false, // This would be determined by your zero-rated network detection logic

@@ -80,13 +80,13 @@ class QMOIGitHubActionsFixer {
         `✅ GitHub Actions fixes completed: ${fixReport.summary.successfulFixes}/${fixReport.summary.totalWorkflows} workflows fixed`,
       );
       return fixReport;
-    } catch (error) {
-      console.error("❌ GitHub Actions fix failed:", error.message);
+    } catch (_error) {
+      console.error("❌ GitHub Actions fix failed:", _error.message);
       await this.sendErrorNotification(
         "GitHub Actions Fix Failed",
-        error.message,
+        _error.message,
       );
-      throw error;
+      throw _error;
     }
   }
 
@@ -104,7 +104,7 @@ class QMOIGitHubActionsFixer {
         workflow = yaml.load(content);
       } catch (parseError) {
         console.log(
-          `⚠️ YAML parse error in ${workflowPath}: ${parseError.message}`,
+          `⚠️ YAML parse _error in ${workflowPath}: ${parseError.message}`,
         );
         return await this.fixYAMLSyntax(content, workflowPath, originalContent);
       }
@@ -204,10 +204,10 @@ class QMOIGitHubActionsFixer {
         fixes: fixes,
         backupPath,
       };
-    } catch (error) {
+    } catch (_error) {
       return {
         success: false,
-        error: error.message,
+        _error: _error.message,
       };
     }
   }
@@ -277,10 +277,10 @@ class QMOIGitHubActionsFixer {
         backupPath,
         method: "yaml_syntax_fix",
       };
-    } catch (error) {
+    } catch (_error) {
       return {
         success: false,
-        error: `YAML syntax fix failed: ${error.message}`,
+        _error: `YAML syntax fix failed: ${_error.message}`,
         attemptedFixes: fixes,
       };
     }
@@ -302,8 +302,8 @@ class QMOIGitHubActionsFixer {
           files.push(path.join(this.workflowPath, item.name));
         }
       }
-    } catch (error) {
-      console.log(`⚠️ Could not read workflow directory: ${error.message}`);
+    } catch (_error) {
+      console.log(`⚠️ Could not read workflow directory: ${_error.message}`);
     }
 
     return files;
@@ -349,10 +349,10 @@ class QMOIGitHubActionsFixer {
       }
 
       return validation;
-    } catch (error) {
+    } catch (_error) {
       return {
         valid: false,
-        errors: [error.message],
+        errors: [_error.message],
         warnings: [],
       };
     }
@@ -452,7 +452,7 @@ ${
 ❌ Failed Fixes:
 ${failedFixes
   .slice(0, 3)
-  .map((w) => `• ${path.basename(w.file)}: ${w.error}`)
+  .map((w) => `• ${path.basename(w.file)}: ${w._error}`)
   .join("\n")}
 ${failedFixes.length > 3 ? `... and ${failedFixes.length - 3} more` : ""}
 `
@@ -475,14 +475,14 @@ ${failedFixes.length > 3 ? `... and ${failedFixes.length - 3} more` : ""}
     );
   }
 
-  async sendErrorNotification(title, error) {
+  async sendErrorNotification(title, _error) {
     await this.notificationSystem.sendNotification(
-      "error",
+      "_error",
       title,
-      `QMOI GitHub Actions Fixer encountered an error: ${error}`,
+      `QMOI GitHub Actions Fixer encountered an _error: ${_error}`,
       {
         details: {
-          error,
+          _error,
           timestamp: new Date().toISOString(),
         },
       },
@@ -525,10 +525,10 @@ Usage:
   node qmoi-github-actions-fixer.js --create-template [name]     # Create workflow template
 
 Features:
-  • YAML syntax error detection and fixing
+  • YAML syntax _error detection and fixing
   • Workflow structure validation and repair
   • Automatic permission and environment setup
-  • Comprehensive error reporting
+  • Comprehensive _error reporting
   • Integration with QMOI notification system
 
 Examples:

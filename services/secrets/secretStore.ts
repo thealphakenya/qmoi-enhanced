@@ -24,8 +24,8 @@ export class LocalSecretStore implements SecretStore {
       const raw = fs.readFileSync(SECRETS_FILE, "utf-8");
       const obj = JSON.parse(raw || "{}");
       return obj[key];
-    } catch (e) {
-      console.error("LocalSecretStore.getSecret failed", e);
+    } catch (_e) {
+      console.error("LocalSecretStore.getSecret failed", _e);
       return undefined;
     }
   }
@@ -35,8 +35,8 @@ export class LocalSecretStore implements SecretStore {
       const obj = JSON.parse(raw || "{}");
       obj[key] = value;
       fs.writeFileSync(SECRETS_FILE, JSON.stringify(obj, null, 2), "utf-8");
-    } catch (e) {
-      console.error("LocalSecretStore.setSecret failed", e);
+    } catch (_e) {
+      console.error("LocalSecretStore.setSecret failed", _e);
     }
   }
 }

@@ -14,7 +14,7 @@ export interface QCityStatus {
     gpu?: number;
     battery?: number;
   };
-  tasks: any[];
+  tasks: unknown[];
   errors: {
     id: string;
     appId: string;

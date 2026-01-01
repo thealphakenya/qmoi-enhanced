@@ -10,8 +10,8 @@ import { promises as fs } from "fs";
 import path from "path";
 
 // Master authentication middleware
-const authenticateMaster = (request: NextRequest) => {
-  const authHeader = request.headers.get("authorization");
+const authenticateMaster = (_request: NextRequest) => {
+  const authHeader = _request.headers.get("authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return false;
   }
@@ -24,13 +24,13 @@ const authenticateMaster = (request: NextRequest) => {
 };
 
 // GET /api/qmoi/revenue-dashboard
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     // Authenticate master access (API key preferred)
-    const apiAuth = requireApiKey(request.headers);
-    if (!apiAuth.ok && !authenticateMaster(request)) {
+    const apiAuth = requireApiKey(_request.headers);
+    if (!apiAuth.ok && !authenticateMaster(_request)) {
       return NextResponse.json(
-        { error: "Master access required" },
+        { _error: "Master access required" },
         { status: 401 },
       );
     }
@@ -48,7 +48,7 @@ export async function GET(request: NextRequest) {
       const dashboardData = JSON.parse(dashboardContent);
 
       return NextResponse.json(dashboardData);
-    } catch (error) {
+    } catch (_error) {
       // If dashboard file doesn't exist, return mock data for development
       const mockDashboardData = {
         revenue: {
@@ -418,28 +418,28 @@ export async function GET(request: NextRequest) {
 
       return NextResponse.json(mockDashboardData);
     }
-  } catch (error) {
-    console.error("Error fetching dashboard data:", error);
+  } catch (_error) {
+    console.error("Error fetching dashboard data:", _error);
     return NextResponse.json(
-      { error: "Failed to fetch dashboard data" },
+      { _error: "Failed to fetch dashboard data" },
       { status: 500 },
     );
   }
 }
 
 // POST /api/qmoi/revenue-dashboard/export
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
     // Authenticate master access (API key preferred)
-    const apiAuth = requireApiKey(request.headers);
-    if (!apiAuth.ok && !authenticateMaster(request)) {
+    const apiAuth = requireApiKey(_request.headers);
+    if (!apiAuth.ok && !authenticateMaster(_request)) {
       return NextResponse.json(
-        { error: "Master access required" },
+        { _error: "Master access required" },
         { status: 401 },
       );
     }
 
-    const { action } = await request.json();
+    const { action } = await _request.json();
 
     if (action === "export") {
       // Generate export data
@@ -580,21 +580,21 @@ export async function POST(request: NextRequest) {
       await fs.writeFile(exportPath, JSON.stringify(exportData, null, 2));
 
       // Return the export data as downloadable file
-      const response = new NextResponse(JSON.stringify(exportData, null, 2));
-      response.headers.set("Content-Type", "application/json");
-      response.headers.set(
+      const _response = new NextResponse(JSON.stringify(exportData, null, 2));
+      _response.headers.set("Content-Type", "application/json");
+      _response.headers.set(
         "Content-Disposition",
         `attachment; filename="qmoi-revenue-dashboard-${new Date().toISOString()}.json"`,
       );
 
-      return response;
+      return _response;
     }
 
-    return NextResponse.json({ error: "Invalid action" }, { status: 400 });
-  } catch (error) {
-    console.error("Error exporting dashboard data:", error);
+    return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+  } catch (_error) {
+    console.error("Error exporting dashboard data:", _error);
     return NextResponse.json(
-      { error: "Failed to export dashboard data" },
+      { _error: "Failed to export dashboard data" },
       { status: 500 },
     );
   }

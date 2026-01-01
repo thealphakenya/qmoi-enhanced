@@ -28,8 +28,8 @@ function ensureElasticStorage() {
           stdio: "inherit",
         });
         console.log(`[QMOI] Synced ${dir} to elastic cloud storage.`);
-      } catch (e) {
-        console.error(`[QMOI] Cloud sync failed for ${dir}:`, e.message);
+      } catch (_e) {
+        console.error(`[QMOI] Cloud sync failed for ${dir}:`, _e.message);
       }
     }
   }

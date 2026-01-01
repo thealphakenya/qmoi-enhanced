@@ -9,13 +9,13 @@ const DASHBOARD_URL =
 const STATUS_FILE = "./logs/github_status.json";
 
 async function checkWorkflowStatus() {
-  const res = await fetch(
+  const _res = await fetch(
     `https://api.github.com/repos/${REPO}/actions/runs?per_page=1`,
     {
       headers: { Authorization: `token ${GITHUB_TOKEN}` },
     },
   );
-  const data = await res.json();
+  const data = await _res.json();
   const latest = data.workflow_runs[0];
   const status = latest.conclusion;
   const time = new Date().toISOString();
@@ -29,8 +29,8 @@ async function checkWorkflowStatus() {
     try {
       await fetch(DASHBOARD_URL, { method: "POST" });
       fs.appendFileSync(STATUS_FILE, `\nTriggered local fix at ${time}`);
-    } catch (err) {
-      fs.appendFileSync(STATUS_FILE, `\nFailed to trigger local fix: ${err}`);
+    } catch (_err) {
+      fs.appendFileSync(STATUS_FILE, `\nFailed to trigger local fix: ${_err}`);
     }
   } else {
     console.log("Latest GitHub Actions run succeeded.");

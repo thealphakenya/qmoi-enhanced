@@ -5,7 +5,7 @@ export function Analytics() {
     // Minimal analytics stub: log pageview for local dev/tests
     try {
       console.info("Analytics: pageview");
-    } catch (e) {
+    } catch (_e) {
       // ignore
     }
   }, []);

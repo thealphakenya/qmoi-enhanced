@@ -13,7 +13,7 @@ interface AutoInteractionContextType {
   addInteraction: (interaction: AutoInteraction) => void;
   removeInteraction: (id: string) => void;
   getComponentState: (componentId: string) => any;
-  setComponentState: (componentId: string, state: any) => void;
+  setComponentState: (componentId: string, state: unknown) => void;
   qmoiControlEnabled: boolean;
   toggleQMOIControl: () => void;
 }
@@ -23,9 +23,9 @@ interface AutoInteraction {
   type: "click" | "input" | "scroll" | "hover" | "drag" | "custom";
   target: string; // CSS selector or component ID
   action: string;
-  parameters?: any;
+  parameters?: unknown;
   priority: number;
-  condition?: (context: any) => boolean;
+  condition?: (context: unknown) => boolean;
   qmoiInitiated: boolean;
   timestamp: number;
 }
@@ -136,7 +136,7 @@ export function useQMOIAutoInteraction() {
     return componentStates[componentId];
   };
 
-  const setComponentState = (componentId: string, state: any) => {
+  const setComponentState = (componentId: string, state: unknown) => {
     setComponentStates((prev) => ({
       ...prev,
       [componentId]: state,
@@ -148,7 +148,7 @@ export function useQMOIAutoInteraction() {
   };
 
   // QMOI AI autonomous interaction generation
-  const generateQMOIInteractions = async (context: any) => {
+  const generateQMOIInteractions = async (context: unknown) => {
     const qmoiInteractions: AutoInteraction[] = [];
 
     // Analyze UI state and generate optimal interactions

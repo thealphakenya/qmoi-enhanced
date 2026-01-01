@@ -3,9 +3,9 @@
 // NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { NextResponse } from "next/server";
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   try {
-    const body = await request.json();
+    const body = await _request.json();
     const {
       maxConcurrentProcessing,
       autoBackup,
@@ -19,14 +19,14 @@ export async function POST(request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { error: "maxConcurrentProcessing must be between 1 and 10" },
+        { _error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { error: "defaultFormat must be one of: json, csv, parquet" },
+        { _error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -36,12 +36,12 @@ export async function POST(request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { error: "storageLocation must be one of: local, cloud, hybrid" },
+        { _error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
 
-    // [PRODUCTION IMPLEMENTATION REQUIRED] response for now - replace with actual implementation
+    // [PRODUCTION IMPLEMENTATION REQUIRED] _response for now - replace with actual implementation
     const updatedSettings = {
       maxConcurrentProcessing: maxConcurrentProcessing || 2,
       autoBackup: autoBackup ?? true,
@@ -56,10 +56,10 @@ export async function POST(request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (error) {
-    console.error("Error in dataset settings endpoint:", error);
+  } catch (_error) {
+    console.error("Error in dataset settings endpoint:", _error);
     return NextResponse.json(
-      { error: "Failed to update dataset settings" },
+      { _error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }

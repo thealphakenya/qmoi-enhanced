@@ -46,7 +46,7 @@ export class WalletManager {
       createdAt: new Date().toISOString(),
     };
     persistWallet(rec);
-    WalletManager.appendAudit({ event: "wallet_created", walletId: id, meta });
+    WalletManager.appendAudit({ _event: "wallet_created", walletId: id, meta });
     console.log("[WalletManager] created wallet", id);
     return rec;
   }
@@ -68,13 +68,13 @@ export class WalletManager {
     verify.end();
     try {
       return verify.verify(publicKeyPem, signature, "base64");
-    } catch (e) {
-      console.error("verifySignature failed", e);
+    } catch (_e) {
+      console.error("verifySignature failed", _e);
       return false;
     }
   }
 
-  static antiFraudCheck(tx: any) {
+  static antiFraudCheck(tx: unknown) {
     // Lightweight heuristics: amount thresholds, velocity, to/from blacklist
     if (!tx) return false;
     if (tx.amount && tx.amount > 1_000_000) return false; // block extremely large amounts by default
@@ -87,8 +87,8 @@ export class WalletManager {
       const line =
         JSON.stringify({ ts: new Date().toISOString(), ...entry }) + "\n";
       fs.appendFileSync(p, line, "utf-8");
-    } catch (e) {
-      console.error("appendAudit failed", e);
+    } catch (_e) {
+      console.error("appendAudit failed", _e);
     }
   }
 
@@ -112,18 +112,18 @@ export class WalletManager {
       status: "created",
       createdAt: new Date().toISOString(),
     };
-    this.appendAudit({ event: "tx_created", tx });
+    this.appendAudit({ _event: "tx_created", tx });
     // In production: perform multi-sig, sign with HSM, queue for settlement
     return tx;
   }
 
   static async settleTransaction(txId: string) {
     // Placeholder: would call payment adapters and wallet settlement logic, verify confirmations
-    this.appendAudit({ event: "tx_settle_attempt", txId });
+    this.appendAudit({ _event: "tx_settle_attempt", txId });
     return { txId, settled: true };
   }
 
-  static reconcile(transactions: any[]) {
+  static reconcile(transactions: unknown[]) {
     // Simple reconciliation placeholder: mark unsettled
     return transactions.map((t) => ({
       ...t,

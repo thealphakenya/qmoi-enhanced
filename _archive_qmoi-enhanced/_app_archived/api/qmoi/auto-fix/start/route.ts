@@ -12,12 +12,12 @@ function requireApiKey(request: NextRequest) {
   return key === expected;
 }
 
-async function writeProposal(proposal: any) {
+async function writeProposal(proposal: unknown) {
   try {
     const dir = ".qmoi_validation";
     if (!fs.existsSync(dir)) fs.mkdirSync(dir);
     const file = path.join(dir, "auto_fix_proposals.json");
-    let agg: any[] = [];
+    let agg: unknown[] = [];
     if (fs.existsSync(file)) {
       try {
         agg = JSON.parse(fs.readFileSync(file, "utf8") || "[]");

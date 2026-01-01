@@ -4,12 +4,12 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     const logsDir = path.join(process.cwd(), "logs");
     const deploymentLogFile = path.join(logsDir, "qmoi_gitlab_deployment.log");
 
-    let deployments: any[] = [];
+    let deployments: unknown[] = [];
 
     if (fs.existsSync(deploymentLogFile)) {
       const logContent = fs.readFileSync(deploymentLogFile, "utf-8");
@@ -43,8 +43,8 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (error) {
-    console.error("Error fetching deployments:", error);
+  } catch (_error) {
+    console.error("Error fetching deployments:", _error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }

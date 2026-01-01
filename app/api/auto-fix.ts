@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 type AutoFixService = {
   startContinuousAutoFix?: (getStatus: () => Promise<any>) => void;
   stopContinuousAutoFix?: () => void;
-  startAutoFix?: (status: any) => Promise<any>;
+  startAutoFix?: (status: unknown) => Promise<any>;
 };
 
 // Try to import the service at module load time for TypeScript resolution;
@@ -20,7 +20,7 @@ let autoFixService: AutoFixService | undefined;
       startContinuousAutoFix: () => {},
       stopContinuousAutoFix: () => {},
       startAutoFix: async () => ({
-        success: false,
+        success: fals_e,
         message: "autoFixService unavailable",
       }),
     };
@@ -51,8 +51,8 @@ async function getStatus() {
 
 let isContinuousRunning = false;
 
-export async function POST(req: NextRequest) {
-  const { mode } = await req.json();
+export async function POST(_req: NextRequest) {
+  const { mode } = await _req.json();
 
   if (mode === "start") {
     if (!isContinuousRunning) {
@@ -82,7 +82,7 @@ export async function POST(req: NextRequest) {
     const result = await (autoFixService?.startAutoFix
       ? autoFixService.startAutoFix(status)
       : Promise.resolve({
-          success: false,
+          success: fals_e,
           message: "autoFixService unavailable",
         }));
     return NextResponse.json(result);

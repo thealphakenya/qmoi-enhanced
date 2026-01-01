@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
         output: "Auto-redeploy configuration removed",
       });
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
       { error: "Failed to configure auto-redeploy", details: error.message },
       { status: 500 },

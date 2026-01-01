@@ -892,7 +892,7 @@ export class BitgetManager extends EventEmitter {
     }
   }
 
-  private async detectAnomalies(request: any): Promise<void> {
+  private async detectAnomalies(request: unknown): Promise<void> {
     if (!this.anomalyDetectionEnabled) return;
 
     const config = this.config.security.anomalyDetection;
@@ -930,7 +930,7 @@ export class BitgetManager extends EventEmitter {
     }
   }
 
-  private matchesSuspiciousPattern(request: any, pattern: string): boolean {
+  private matchesSuspiciousPattern(request: unknown, pattern: string): boolean {
     switch (pattern) {
       case "rapid_balance_change":
         return this.checkRapidBalanceChange(request);
@@ -945,12 +945,12 @@ export class BitgetManager extends EventEmitter {
     }
   }
 
-  private checkRapidBalanceChange(_request: any): boolean {
+  private checkRapidBalanceChange(_request: unknown): boolean {
     // Implement balance change detection logic
     return false;
   }
 
-  private checkUnusualTradingVolume(_request: any): boolean {
+  private checkUnusualTradingVolume(_request: unknown): boolean {
     // Implement trading volume detection logic
     return false;
   }
@@ -968,7 +968,7 @@ export class BitgetManager extends EventEmitter {
     return this.securityStatus.failedAttempts > config.maxFailedAttempts;
   }
 
-  private logSuspiciousActivity(type: string, details: any): void {
+  private logSuspiciousActivity(type: string, details: unknown): void {
     this.securityStatus.securityMetrics.suspiciousActivities.push({
       type,
       timestamp: new Date(),
@@ -1023,7 +1023,7 @@ export class BitgetManager extends EventEmitter {
     }
   }
 
-  public async validateRequest(request: any): Promise<boolean> {
+  public async validateRequest(request: unknown): Promise<boolean> {
     // Check if account is locked
     if (this.securityStatus.isLocked) {
       if (
@@ -1066,7 +1066,7 @@ export class BitgetManager extends EventEmitter {
     return true;
   }
 
-  private async validateRequestSignature(_request: any): Promise<boolean> {
+  private async validateRequestSignature(_request: unknown): Promise<boolean> {
     try {
       // Implement request signature validation logic
       return true;

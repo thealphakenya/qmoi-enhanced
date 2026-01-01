@@ -8,11 +8,11 @@ import { unifiedCICDService } from "../../../scripts/services/unified_ci_cd_serv
 const qcityService = new QCityService();
 
 // --- Audit log helper ---
-function auditLog(action: string, params: any, result: any) {
+function auditLog(action: string, params: unknown, result: unknown) {
   logger.info(`[QMOI-AUTODEV][AUDIT] Action: ${action}`, { params, result });
 }
 
-function withMessage(result: any, defaultMsg = "") {
+function withMessage(result: unknown, defaultMsg = "") {
   return {
     message: result?.message ?? defaultMsg,
     ...result,
@@ -29,7 +29,7 @@ export default async function handler(
     }
     const { action, platform = "vercel", ...params } = req.body;
     logger.info(`[QMOI-AUTODEV] Action: ${action}`, params);
-    let result: any = { success: false, message: "Not implemented", logs: [] };
+    let result: unknown = { success: false, message: "Not implemented", logs: [] };
     switch (action) {
       case "force_run": {
         let fixResults = [];
@@ -55,7 +55,7 @@ export default async function handler(
               const execAsync = promisify(exec);
               const { stdout, stderr } = await execAsync("npm test");
               return { success: true, output: stdout, error: stderr };
-            } catch (e: any) {
+            } catch (e: unknown) {
               return { success: false, error: e.message };
             }
           })();
@@ -103,7 +103,7 @@ export default async function handler(
               platform: usedPlatform,
             };
           }
-        } catch (e: any) {
+        } catch (e: unknown) {
           result = {
             success: false,
             message: e.message,
@@ -223,8 +223,8 @@ export default async function handler(
       case "delete_unused": {
         result = {
           success: true,
-          message: "Delete unused files executed (stub)",
-          logs: ["Checked and deleted unused files if any."],
+          message: "Delete _unused files executed (stub)",
+          logs: ["Checked and deleted _unused files if any."],
         };
         break;
       }
@@ -301,7 +301,7 @@ export default async function handler(
     }
     auditLog(action, params, result);
     return res.status(200).json(result);
-  } catch (error: any) {
+  } catch (error: unknown) {
     logger.error("[QMOI-AUTODEV] Error:", error);
     auditLog("error", req.body, { error: error.message });
     return res.status(500).json({ success: false, error: error.message });

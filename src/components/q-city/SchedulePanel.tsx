@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+/* eslint-env browser */
 
 export default function SchedulePanel() {
   const [schedules, setSchedules] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [_error, setError] = useState("");
   const [form, setForm] = useState({
     name: "",
     command: "",
@@ -23,7 +24,7 @@ export default function SchedulePanel() {
     })
       .then((r) => r.json())
       .then((data) => setSchedules(data.items || []))
-      .catch((e) => setError(e.message))
+      .catch((_e) => setError(_e.message))
       .finally(() => setLoading(false));
   };
 
@@ -46,7 +47,7 @@ export default function SchedulePanel() {
         setForm({ name: "", command: "", cron: "", deviceId: "", notify: "" });
         setEditing(null);
       })
-      .catch((e) => setError(e.message))
+      .catch((_e) => setError(_e.message))
       .finally(() => setLoading(false));
   };
 
@@ -61,7 +62,7 @@ export default function SchedulePanel() {
       body: JSON.stringify({ id }),
     })
       .then(fetchSchedules)
-      .catch((e) => setError(e.message))
+      .catch((_e) => setError(_e.message))
       .finally(() => setLoading(false));
   };
 
@@ -76,49 +77,49 @@ export default function SchedulePanel() {
       body: JSON.stringify({ id }),
     })
       .then(fetchSchedules)
-      .catch((e) => setError(e.message))
+      .catch((_e) => setError(_e.message))
       .finally(() => setLoading(false));
   };
 
   return (
     <div className="p-4 bg-gray-900 rounded-lg shadow-lg">
       <h2 className="text-xl font-bold mb-4 text-cyan-400">Schedules</h2>
-      {error && <div className="text-red-400 mb-2">{error}</div>}
+      {_error && <div className="text-red-400 mb-2">{_error}</div>}
       <form
         className="mb-4 flex flex-wrap gap-2"
-        onSubmit={(e) => {
-          e.preventDefault();
+        onSubmit={(_e) => {
+          _e.preventDefault();
           save();
         }}
       >
         <input
           placeholder="Name"
           value={form.name}
-          onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+          onChange={(_e) => setForm((f) => ({ ...f, name: _e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
           placeholder="Command"
           value={form.command}
-          onChange={(e) => setForm((f) => ({ ...f, command: e.target.value }))}
+          onChange={(_e) => setForm((f) => ({ ...f, command: _e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
           placeholder="Cron"
           value={form.cron}
-          onChange={(e) => setForm((f) => ({ ...f, cron: e.target.value }))}
+          onChange={(_e) => setForm((f) => ({ ...f, cron: _e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
           placeholder="Device ID"
           value={form.deviceId}
-          onChange={(e) => setForm((f) => ({ ...f, deviceId: e.target.value }))}
+          onChange={(_e) => setForm((f) => ({ ...f, deviceId: _e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
           placeholder="Notify"
           value={form.notify}
-          onChange={(e) => setForm((f) => ({ ...f, notify: e.target.value }))}
+          onChange={(_e) => setForm((f) => ({ ...f, notify: _e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <button

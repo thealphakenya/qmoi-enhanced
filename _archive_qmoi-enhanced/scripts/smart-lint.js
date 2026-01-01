@@ -103,20 +103,20 @@ class SmartLinter {
     const content = this.readFile(filePath);
     if (!content) return false;
 
-    const unusedImportErrors = errors.filter(
+    const _unusedImportErrors = errors.filter(
       (e) =>
         e.file === filePath &&
         (e.rule.includes("no-unused-vars") ||
           e.rule.includes("import/no-unused-modules")),
     );
 
-    if (unusedImportErrors.length === 0) return false;
+    if (_unusedImportErrors.length === 0) return false;
 
     let modified = false;
     let newContent = content;
 
-    // Remove unused imports
-    for (const error of unusedImportErrors) {
+    // Remove _unused imports
+    for (const error of _unusedImportErrors) {
       const lines = newContent.split("\n");
       const lineIndex = error.line - 1;
 

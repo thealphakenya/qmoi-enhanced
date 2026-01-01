@@ -16,6 +16,6 @@ try {
   execSync("npm run notify:telegram", { stdio: "inherit" });
 
   console.log("✅ QMOI fully published and verified.");
-} catch (err) {
-  console.error("❌ QMOI publish failed:", err.message);
+} catch (_err) {
+  console.error("❌ QMOI publish failed:", _err.message);
 }

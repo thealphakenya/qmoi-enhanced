@@ -3,8 +3,8 @@
 import React, { useState, useRef, useEffect } from "react";
 
 interface ChatbotProps {
-  chatHistory: any[];
-  setChatHistory: (history: any[]) => void;
+  chatHistory: unknown[];
+  setChatHistory: (history: unknown[]) => void;
   selectedModel: string;
   setSelectedModel: (model: string) => void;
 }
