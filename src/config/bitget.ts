@@ -1,3 +1,4 @@
+/* eslint-env node */
 import * as nodeCrypto from "crypto";
 const crypto: unknown = nodeCrypto as unknown;
 import { EventEmitter } from "events";
@@ -931,7 +932,10 @@ export class BitgetManager extends EventEmitter {
     }
   }
 
-  private matchesSuspiciousPattern(_request: unknown, pattern: string): boolean {
+  private matchesSuspiciousPattern(
+    _request: unknown,
+    pattern: string
+  ): boolean {
     switch (pattern) {
       case "rapid_balance_change":
         return this.checkRapidBalanceChange(_request);

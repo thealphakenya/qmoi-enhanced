@@ -217,3 +217,14 @@ Next steps:
 1. Open a PR with the codemod change for `src` and the updated `problemsanderrors.txt` snapshot.
 2. Run targeted codemod for the repo-root `types/globals.d.ts` after review, or adjust ambient declarations instead of automated replacement.
 3. Continue triage per-folder: add `/* eslint-env */` pragmas for browser/test files and run `npm run lint:fix` iteratively.
+
+Update: 2026-01-01T00:00:00Z (after applying repo-root types and eslintignore)
+- Files changed: `types/globals.d.ts` updated to match `src/types/globals.d.ts` permissive declarations; `.eslintignore` updated to ignore `src/index.js`; `src/config/bitget.ts` annotated with `/* eslint-env node */`.
+- Ran `npm run lint:fix` after these changes; counts remain:
+  - Problems: 14,734
+  - Errors: 10,342
+  - Warnings: 4,392
+
+Notes:
+- Ignoring `src/index.js` avoids the JSX parser error while we triage lint problems.
+- Next: add targeted `/* eslint-env */` pragmas for remaining browser/test files reporting `no-undef` (FileReader, EventSource, Headers, require) and then rerun lint.
