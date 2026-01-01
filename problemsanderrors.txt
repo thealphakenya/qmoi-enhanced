@@ -228,3 +228,19 @@ Update: 2026-01-01T00:00:00Z (after applying repo-root types and eslintignore)
 Notes:
 - Ignoring `src/index.js` avoids the JSX parser error while we triage lint problems.
 - Next: add targeted `/* eslint-env */` pragmas for remaining browser/test files reporting `no-undef` (FileReader, EventSource, Headers, require) and then rerun lint.
+
+Update: 2026-01-01T00:05:00Z (after adding targeted pragmas)
+- Files changed: added `/* global ... */` and `/* eslint-env */` pragmas to several test and mock files and `src/lib/security_check.js`.
+- Ran `npm run lint:fix` after these edits. New counts:
+  - Problems: 14,723
+  - Errors: 10,326
+  - Warnings: 4,397
+
+Notes:
+- Small reduction in overall problem count after adding targeted pragmas and globals.
+- Remaining high-impact items include `Buffer` no-undef in `src/config/bitget.ts` (still flagged despite node pragma), unreachable code in config and wallet files, many `any` usages across `src/services/*`, and some test files still reporting undeclared jest hooks (we added globals — some duplicate-global warnings may require adjusting ESLint config rather than per-file globals).
+
+Next steps:
+1. Fix `Buffer`/`NodeJS` declarations in `src/config/bitget.ts` and other config files (add `/* global Buffer, NodeJS */` or adjust types). Prefer adding `/// <reference types="node" />` in files that need Node types.
+2. Triage unreachable code markers (no-unreachable) in `src/config/*` and `src/wallet.ts` manually.
+3. Consider running the codemod to convert safe `any` → `unknown` in `src/services` in small batches, then run `npm run lint:fix` and tests.

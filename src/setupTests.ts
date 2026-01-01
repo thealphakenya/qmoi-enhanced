@@ -1,4 +1,5 @@
 /* eslint-env node, jest */
+/* global require */
 import "@testing-library/jest-dom";
 import "whatwg-fetch";
 import { TextEncoder, TextDecoder } from "util";

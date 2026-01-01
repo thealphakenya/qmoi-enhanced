@@ -1,4 +1,5 @@
 /* eslint-env jest */
+/* global jest, afterEach, describe, test, expect */
 import { jest } from "@jest/globals";
 
 describe("getHandlers", () => {

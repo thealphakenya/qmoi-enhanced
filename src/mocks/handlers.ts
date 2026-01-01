@@ -1,4 +1,5 @@
 /* eslint-env node,jest,browser */
+/* global Headers, Response, Request, URL, URLSearchParams */
 // Provide handlers through an async getter so MSW (ESM) is imported at runtime
 export async function getHandlers() {
   const TEST_VERBOSE = process.env.TEST_VERBOSE === "1" || false;

@@ -1,4 +1,5 @@
 /* eslint-env browser,node */
+/* global localStorage, navigator, performance, window, console */
 // Security check module for QMOI system
 export let isTampered = false;
 
