@@ -41,7 +41,7 @@ export async function GET(_request: NextRequest) {
           : 0,
     });
   } catch (_error) {
-    console.error("Error fetching _error statistics:", _error);
+    console._error("Error fetching _error statistics:", _error);
     return NextResponse.json(
       {
         errorCount: 0,

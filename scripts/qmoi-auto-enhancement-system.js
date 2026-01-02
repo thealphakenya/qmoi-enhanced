@@ -115,7 +115,7 @@ class QMOIAutoEnhancementSystem {
       console.log('✅ Performance enhancement completed');
       return { success: true, message: 'Performance enhanced' };
     } catch (_error) {
-      console.error('❌ Performance enhancement failed:', _error.message);
+      console._error('❌ Performance enhancement failed:', _error.message);
       return { success: false, message: _error.message };
     }
   }
@@ -199,7 +199,7 @@ class QMOIAutoEnhancementSystem {
       console.log('✅ Memory optimization completed');
       return { success: true, message: 'Memory optimized' };
     } catch (_error) {
-      console.error('❌ Memory optimization failed:', _error.message);
+      console._error('❌ Memory optimization failed:', _error.message);
       return { success: false, message: _error.message };
     }
   }
@@ -243,7 +243,7 @@ class QMOIAutoEnhancementSystem {
       console.log('✅ Security enhancement completed');
       return { success: true, message: 'Security enhanced' };
     } catch (_error) {
-      console.error('❌ Security enhancement failed:', _error.message);
+      console._error('❌ Security enhancement failed:', _error.message);
       return { success: false, message: _error.message };
     }
   }
@@ -287,7 +287,7 @@ class QMOIAutoEnhancementSystem {
       console.log('✅ Feature enhancement completed');
       return { success: true, message: 'Features enhanced' };
     } catch (_error) {
-      console.error('❌ Feature enhancement failed:', _error.message);
+      console._error('❌ Feature enhancement failed:', _error.message);
       return { success: false, message: _error.message };
     }
   }
@@ -331,7 +331,7 @@ class QMOIAutoEnhancementSystem {
       console.log('✅ AI enhancement completed');
       return { success: true, message: 'AI enhanced' };
     } catch (_error) {
-      console.error('❌ AI enhancement failed:', _error.message);
+      console._error('❌ AI enhancement failed:', _error.message);
       return { success: false, message: _error.message };
     }
   }
@@ -375,7 +375,7 @@ class QMOIAutoEnhancementSystem {
       console.log('✅ Auto-evolution completed');
       return { success: true, message: 'Auto-evolution completed', results };
     } catch (_error) {
-      console.error('❌ Auto-evolution failed:', _error.message);
+      console._error('❌ Auto-evolution failed:', _error.message);
       return { success: false, message: _error.message };
     }
   }
@@ -463,7 +463,7 @@ class QMOIAutoEnhancementSystem {
       console.log('✅ Auto-upgrade completed');
       return { success: true, message: 'Auto-upgrade completed', results };
     } catch (_error) {
-      console.error('❌ Auto-upgrade failed:', _error.message);
+      console._error('❌ Auto-upgrade failed:', _error.message);
       return { success: false, message: _error.message };
     }
   }
@@ -556,7 +556,7 @@ class QMOIAutoEnhancementSystem {
         }
       }
     } catch (_error) {
-      console.error('❌ Monitoring _error:', _error.message);
+      console._error('❌ Monitoring _error:', _error.message);
     }
   }
 
@@ -593,7 +593,7 @@ class QMOIAutoEnhancementSystem {
       
       console.log('✅ Daily enhancement completed');
     } catch (_error) {
-      console.error('❌ Daily enhancement failed:', _error.message);
+      console._error('❌ Daily enhancement failed:', _error.message);
     }
   }
 
@@ -612,7 +612,7 @@ class QMOIAutoEnhancementSystem {
       
       console.log('✅ Weekly enhancement completed');
     } catch (_error) {
-      console.error('❌ Weekly enhancement failed:', _error.message);
+      console._error('❌ Weekly enhancement failed:', _error.message);
     }
   }
 
@@ -639,7 +639,7 @@ class QMOIAutoEnhancementSystem {
       const registry = Object.fromEntries(this.enhancementRegistry);
       await fs.writeFile(registryPath, JSON.stringify(registry, null, 2));
     } catch (_error) {
-      console.error('❌ Failed to save enhancement registry:', _error.message);
+      console._error('❌ Failed to save enhancement registry:', _error.message);
     }
   }
 
@@ -840,7 +840,7 @@ Usage:
     }
   }
 
-  main().catch(console.error);
+  main().catch(console._error);
 }
 
 module.exports = QMOIAutoEnhancementSystem; 

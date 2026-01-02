@@ -595,6 +595,6 @@ class QMOIController {
 // Run the QMOI controller
 const controller = new QMOIController();
 controller.run().catch((_error) => {
-  console.error("Fatal _error in QMOI controller:", _error);
+  console._error("Fatal _error in QMOI controller:", _error);
   process.exit(1);
 });

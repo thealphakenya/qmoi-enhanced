@@ -110,7 +110,7 @@ if (typeof window === "undefined") {
           debugLog("SETUP_TESTS: handlers resolved length=", handlers.length);
         } catch (_err) {
           // Fail fast: handlers must initialize correctly for tests to be valid
-          console.error("SETUP_TESTS: handlersMod.getHandlers() threw:", _err);
+          console._error("SETUP_TESTS: handlersMod.getHandlers() threw:", _err);
           throw _err;
         }
       } else {
@@ -131,7 +131,7 @@ if (typeof window === "undefined") {
         onUnhandledRequest: (_req) => {
           try {
             if (process.env.SHOW_MSW_UNHANDLED === "1") {
-              console.error(
+              console._error(
                 "MSW UNHANDLED REQUEST:",
                 (_req as any).method,
                 String((_req as any).url)
@@ -156,11 +156,11 @@ if (typeof window === "undefined") {
       );
     } catch (_e) {
       // Log errors to surface them in CI/dev runs
-      console.error("setupTests failed to initialize MSW:", _e);
+      console._error("setupTests failed to initialize MSW:", _e);
       // Fallback: if MSW cannot be initialized (ESM/loader issues), install a
       // minimal fetch-based mock so tests don't hit the network. This mirrors
       // the most common handlers used in tests.
-      console.error(
+      console._error(
         "SETUP_TESTS: Falling back to simple fetch mock server for tests"
       );
 
@@ -230,7 +230,7 @@ if (typeof window === "undefined") {
           return (originalFetch as unknown).apply(globalThis, [input, init]);
         } as any;
       } catch (er) {
-        console.error("SETUP_TESTS: failed to install fetch fallback:", er);
+        console._error("SETUP_TESTS: failed to install fetch fallback:", er);
       }
 
       // Provide a minimal server object with the same interface used elsewhere
@@ -281,7 +281,7 @@ afterEach(() => {
   try {
     if (server) server.resetHandlers();
   } catch (_e) {
-    console.error("SETUP_TESTS: server.resetHandlers() failed:", _e);
+    console._error("SETUP_TESTS: server.resetHandlers() failed:", _e);
   }
 });
 afterAll(() => {
@@ -313,5 +313,5 @@ global.console = {
   info: jest.fn(),
   warn: jest.fn(),
   // keep errors visible so setup failures surface in CI and dev runs
-  _error: console.error,
+  _error: console._error,
 };

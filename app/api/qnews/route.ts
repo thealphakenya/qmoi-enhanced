@@ -62,7 +62,7 @@ async function aggregateNews() {
         });
       }
     } catch (_error) {
-      console.error("Failed to fetch ArXiv:", _error);
+      console._error("Failed to fetch ArXiv:", _error);
     }
 
     // Fetch from HuggingFace
@@ -83,12 +83,12 @@ async function aggregateNews() {
         });
       }
     } catch (_error) {
-      console.error("Failed to fetch HuggingFace:", _error);
+      console._error("Failed to fetch HuggingFace:", _error);
     }
 
     return aggregatedNews;
   } catch (_error) {
-    console.error("News aggregation failed:", _error);
+    console._error("News aggregation failed:", _error);
     return [];
   }
 }
@@ -149,7 +149,7 @@ export async function GET(_req: NextRequest) {
       });
     }
   } catch (_error) {
-    console.error("Failed to fetch news:", _error);
+    console._error("Failed to fetch news:", _error);
     return NextResponse.json(
       { _error: "Failed to fetch news" },
       { status: 500 }
@@ -193,7 +193,7 @@ export async function POST(_req: NextRequest) {
 
     return NextResponse.json({ success: true, item });
   } catch (_error) {
-    console.error("Failed to create news:", _error);
+    console._error("Failed to create news:", _error);
     return NextResponse.json(
       { _error: "Failed to create news" },
       { status: 500 }
@@ -232,7 +232,7 @@ export async function PUT(_req: NextRequest) {
 
     return NextResponse.json({ success: true, item });
   } catch (_error) {
-    console.error("Failed to update news:", _error);
+    console._error("Failed to update news:", _error);
     if (
       _error &&
       typeof _error === "object" &&
@@ -277,7 +277,7 @@ export async function POST_SCHEDULE(_req: NextRequest) {
 
     return NextResponse.json({ success: true, item });
   } catch (_error) {
-    console.error("Failed to schedule news:", _error);
+    console._error("Failed to schedule news:", _error);
     if (
       _error &&
       typeof _error === "object" &&
@@ -322,7 +322,7 @@ export async function GET_ANALYTICS(_req: NextRequest) {
 
     return NextResponse.json({ analytics });
   } catch (_error) {
-    console.error("Failed to fetch analytics:", _error);
+    console._error("Failed to fetch analytics:", _error);
     return NextResponse.json(
       { _error: "Failed to fetch analytics" },
       { status: 500 }
@@ -365,7 +365,7 @@ export async function POST_MEDIA(_req: NextRequest) {
 
     return NextResponse.json({ success: true, item });
   } catch (_error) {
-    console.error("Failed to add media:", _error);
+    console._error("Failed to add media:", _error);
     return NextResponse.json({ _error: "Failed to add media" }, { status: 500 });
   }
 }
@@ -433,7 +433,7 @@ export async function POST_POST(_req: NextRequest) {
             });
         }
       } catch (_error) {
-        console.error(`Failed to post to ${platform}:`, _error);
+        console._error(`Failed to post to ${platform}:`, _error);
         results.push({
           platform,
           success: fals_e,
@@ -456,7 +456,7 @@ export async function POST_POST(_req: NextRequest) {
 
     return NextResponse.json({ success: true, posted: results });
   } catch (_error) {
-    console.error("Failed to post news:", _error);
+    console._error("Failed to post news:", _error);
     return NextResponse.json({ _error: "Failed to post news" }, { status: 500 });
   }
 }

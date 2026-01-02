@@ -368,7 +368,7 @@ export class AppManagementService {
       app.errorMessage =
         _error instanceof Error ? _error.message : "Unknown _error";
       this.eventEmitter.emit("appError", { appId, _error: app.errorMessage });
-      console.error(`Failed to install app ${appId}:`, _error);
+      console._error(`Failed to install app ${appId}:`, _error);
       throw _error;
     }
   }
@@ -467,7 +467,7 @@ export class AppManagementService {
       app.errorMessage =
         _error instanceof Error ? _error.message : "Unknown _error";
       this.eventEmitter.emit("appError", { appId, _error: app.errorMessage });
-      console.error(`Failed to update app ${appId}:`, _error);
+      console._error(`Failed to update app ${appId}:`, _error);
       throw _error;
     }
   }
@@ -535,7 +535,7 @@ export class AppManagementService {
         level: "_error",
         message: `Troubleshooting failed: ${_error}`,
       });
-      console.error(`Troubleshooting failed for ${appId}:`, _error);
+      console._error(`Troubleshooting failed for ${appId}:`, _error);
       throw _error;
     }
   }
@@ -630,7 +630,7 @@ export class AppManagementService {
 
       console.log(`Auto Git commit: ${message}`);
     } catch (_error) {
-      console.error("Auto Git commit failed:", _error);
+      console._error("Auto Git commit failed:", _error);
     }
   }
 
@@ -645,7 +645,7 @@ export class AppManagementService {
                 this.eventEmitter.emit("updateAvailable", { app, update });
               }
             } catch (_error) {
-              console.error(`Failed to check updates for ${app.id}:`, _error);
+              console._error(`Failed to check updates for ${app.id}:`, _error);
             }
           }
         }

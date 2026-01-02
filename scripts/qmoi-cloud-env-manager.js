@@ -113,7 +113,7 @@ class CloudEnvironmentManager {
 
       return environment;
     } catch (_err) {
-      console.error(
+      console._error(
         `[ERROR] Failed to create environment for ${project}:`,
         _err.message,
       );
@@ -152,7 +152,7 @@ class CloudEnvironmentManager {
 
       console.log(`[CLOUD ENV] Environment for ${project} destroyed.`);
     } catch (_err) {
-      console.error(
+      console._error(
         `[ERROR] Failed to destroy environment for ${project}:`,
         _err.message,
       );
@@ -202,7 +202,7 @@ async function main() {
       process.exit(1);
     }
   } catch (_err) {
-    console.error("[ERROR]", _err.message);
+    console._error("[ERROR]", _err.message);
     process.exit(1);
   }
 }

@@ -42,7 +42,7 @@ class QMOIEnvironmentSetup {
       this.setupComplete = true;
       console.log("✅ QMOI Environment Setup completed successfully");
     } catch (_error) {
-      console.error("❌ QMOI Environment Setup failed:", _error.message);
+      console._error("❌ QMOI Environment Setup failed:", _error.message);
       throw _error;
     }
   }
@@ -212,7 +212,7 @@ class QMOIEnvironmentSetup {
       await fs.writeFile(this.envFile, envContent);
       console.log("✅ Environment variables file created");
     } catch (_error) {
-      console.error("❌ Failed to create environment file:", _error.message);
+      console._error("❌ Failed to create environment file:", _error.message);
       throw _error;
     }
   }
@@ -305,7 +305,7 @@ class QMOIEnvironmentSetup {
       await fs.writeFile(this.configFile, JSON.stringify(qmoiConfig, null, 2));
       console.log("✅ QMOI configuration file created");
     } catch (_error) {
-      console.error("❌ Failed to create configuration file:", _error.message);
+      console._error("❌ Failed to create configuration file:", _error.message);
       throw _error;
     }
 
@@ -329,7 +329,7 @@ class QMOIEnvironmentSetup {
       );
       console.log("✅ Avatar configuration file created");
     } catch (_error) {
-      console.error("❌ Failed to create avatar configuration:", _error.message);
+      console._error("❌ Failed to create avatar configuration:", _error.message);
     }
 
     // Music production configuration
@@ -383,7 +383,7 @@ class QMOIEnvironmentSetup {
       );
       console.log("✅ Music configuration file created");
     } catch (_error) {
-      console.error("❌ Failed to create music configuration:", _error.message);
+      console._error("❌ Failed to create music configuration:", _error.message);
     }
   }
 
@@ -647,7 +647,7 @@ class QMOIEnvironmentSetup {
       await fs.writeFile("package.json", JSON.stringify(packageJson, null, 2));
       console.log("✅ Package.json created with all dependencies");
     } catch (_error) {
-      console.error("❌ Failed to create package.json:", _error.message);
+      console._error("❌ Failed to create package.json:", _error.message);
       throw _error;
     }
   }
@@ -696,7 +696,7 @@ node scripts/qmoi-master-system.js "$@"
       await fs.chmod("start-qmoi.sh", 0o755);
       console.log("✅ Startup script created");
     } catch (_error) {
-      console.error("❌ Failed to create startup script:", _error.message);
+      console._error("❌ Failed to create startup script:", _error.message);
     }
 
     // Create Windows batch file
@@ -745,7 +745,7 @@ pause
       await fs.writeFile("start-qmoi.bat", windowsScript);
       console.log("✅ Windows startup script created");
     } catch (_error) {
-      console.error(
+      console._error(
         "❌ Failed to create Windows startup script:",
         _error.message,
       );
@@ -768,7 +768,7 @@ pause
         await fs.access(validation.path);
         console.log(`✅ ${validation.name} exists`);
       } catch (_error) {
-        console.error(`❌ ${validation.name} missing: ${validation.path}`);
+        console._error(`❌ ${validation.name} missing: ${validation.path}`);
       }
     }
 
@@ -786,7 +786,7 @@ pause
         await fs.access(dir);
         console.log(`✅ Directory exists: ${dir}`);
       } catch (_error) {
-        console.error(`❌ Directory missing: ${dir}`);
+        console._error(`❌ Directory missing: ${dir}`);
       }
     }
   }
@@ -885,7 +885,7 @@ Examples:
     await setup.displaySetupInstructions();
   }
 
-  main().catch(console.error);
+  main().catch(console._error);
 }
 
 export default QMOIEnvironmentSetup;

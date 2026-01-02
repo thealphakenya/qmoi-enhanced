@@ -91,7 +91,7 @@ export async function POST(_req: NextRequest) {
       });
     }
   } catch (_error) {
-    console.error("M-Pesa callback processing failed:", _error);
+    console._error("M-Pesa callback processing failed:", _error);
     const errorMessage = _error instanceof Error ? _error.message : String(_error);
     logEvent("mpesa_callback_error", { _error: errorMessage });
 

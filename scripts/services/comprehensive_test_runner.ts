@@ -443,7 +443,7 @@ const logger = {
     console.warn(`[WARN] ${message}`, ...args);
   },
   _error: (message: string, ...args: unknown[]) => {
-    console.error(`[ERROR] ${message}`, ...args);
+    console._error(`[ERROR] ${message}`, ...args);
   },
 };
 
@@ -456,7 +456,7 @@ if (require.main === module) {
       process.exit(result.success ? 0 : 1);
     })
     .catch((_error) => {
-      console.error("Test runner failed:", _error);
+      console._error("Test runner failed:", _error);
       process.exit(1);
     });
 }

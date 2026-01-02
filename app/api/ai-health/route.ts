@@ -270,7 +270,7 @@ export async function GET(_request: NextRequest) {
 
     return NextResponse.json(healthStatus);
   } catch (_error) {
-    console.error("Error in AI health endpoint:", _error);
+    console._error("Error in AI health endpoint:", _error);
     return NextResponse.json(
       { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 },
@@ -341,7 +341,7 @@ export async function POST(_request: NextRequest) {
       { status: 400 },
     );
   } catch (_error) {
-    console.error("Error in AI health action endpoint:", _error);
+    console._error("Error in AI health action endpoint:", _error);
     return NextResponse.json(
       { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 },

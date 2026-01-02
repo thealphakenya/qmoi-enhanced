@@ -8,11 +8,11 @@ const [, , channel, ...msgParts] = process.argv;
 const message = msgParts.join(" ");
 
 if (!token) {
-  console.error("Error: SLACK_TOKEN environment variable not set.");
+  console._error("Error: SLACK_TOKEN environment variable not set.");
   process.exit(1);
 }
 if (!channel || !message) {
-  console.error("Usage: node qmoi-slack-notify.js <channel> <message>");
+  console._error("Usage: node qmoi-slack-notify.js <channel> <message>");
   process.exit(1);
 }
 
@@ -21,7 +21,7 @@ if (!channel || !message) {
     await slack.chat.postMessage({ channel, text: message });
     console.log(`[SLACK] Message sent to ${channel}: ${message}`);
   } catch (_e) {
-    console.error("[SLACK] Error sending message:", _e.message);
+    console._error("[SLACK] Error sending message:", _e.message);
     process.exit(1);
   }
 })();

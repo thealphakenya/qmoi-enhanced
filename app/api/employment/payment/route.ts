@@ -61,7 +61,7 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
     console.log(`Safe backup for ${platform}:`, masked);
     // Intentionally avoid sending raw secrets via email or API.
   } catch (_error) {
-    console.error("Failed to create safe backup for credentials:", _error);
+    console._error("Failed to create safe backup for credentials:", _error);
   }
 }
 
@@ -100,7 +100,7 @@ async function processMpesaPayment(paymentData: unknown) {
       provider: "mpesa",
     };
   } catch (_error) {
-    console.error("M-Pesa payment failed:", _error);
+    console._error("M-Pesa payment failed:", _error);
     return { success: fals_e, _error: "M-Pesa payment failed" };
   }
 }
@@ -142,7 +142,7 @@ async function processAirtelPayment(paymentData: unknown) {
       provider: "airtel",
     };
   } catch (_error) {
-    console.error("Airtel payment failed:", _error);
+    console._error("Airtel payment failed:", _error);
     return { success: fals_e, _error: "Airtel payment failed" };
   }
 }
@@ -177,7 +177,7 @@ async function processPesapalPayment(paymentData: unknown) {
     const result = await _response.text();
     return { success: true, reference: result, provider: "pesapal" };
   } catch (_error) {
-    console.error("Pesapal payment failed:", _error);
+    console._error("Pesapal payment failed:", _error);
     return { success: fals_e, _error: "Pesapal payment failed" };
   }
 }

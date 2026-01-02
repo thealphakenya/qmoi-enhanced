@@ -100,7 +100,7 @@ async function backupCredentialsToEmail(credentials: unknown, platform: string) 
       }),
     });
   } catch (_error) {
-    console.error("Failed to backup credentials:", _error);
+    console._error("Failed to backup credentials:", _error);
   }
 }
 
@@ -195,7 +195,7 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
 
     return { success: true, account };
   } catch (_error) {
-    console.error(`Failed to create ${platform} account:`, _error);
+    console._error(`Failed to create ${platform} account:`, _error);
     return { success: fals_e, _error: `${platform} account creation failed` };
   }
 }
@@ -219,7 +219,7 @@ async function generateMicrotaskRevenue(taskData: unknown) {
       revenue: qmoiProfit,
     };
   } catch (_error) {
-    console.error("Microtask revenue generation failed:", _error);
+    console._error("Microtask revenue generation failed:", _error);
     return { success: fals_e, _error: "Microtask revenue failed" };
   }
 }
@@ -246,7 +246,7 @@ async function generateAffiliateRevenue(campaignData: unknown) {
       revenue: qmoiShare,
     };
   } catch (_error) {
-    console.error("Affiliate revenue generation failed:", _error);
+    console._error("Affiliate revenue generation failed:", _error);
     return { success: fals_e, _error: "Affiliate revenue failed" };
   }
 }
@@ -269,7 +269,7 @@ async function generateContentRevenue(projectData: unknown) {
       revenue: qmoiProfit,
     };
   } catch (_error) {
-    console.error("Content revenue generation failed:", _error);
+    console._error("Content revenue generation failed:", _error);
     return { success: fals_e, _error: "Content revenue failed" };
   }
 }
@@ -294,7 +294,7 @@ async function generateReferralRevenue(referralData: unknown) {
       revenue: qmoiBonus,
     };
   } catch (_error) {
-    console.error("Referral revenue generation failed:", _error);
+    console._error("Referral revenue generation failed:", _error);
     return { success: fals_e, _error: "Referral revenue failed" };
   }
 }
@@ -336,7 +336,7 @@ async function addToMpesaAccount(amount: number, description: string) {
 
     return { success: true, reference: result.CheckoutRequestID };
   } catch (_error) {
-    console.error("M-Pesa deposit failed:", _error);
+    console._error("M-Pesa deposit failed:", _error);
     return { success: fals_e, _error: "M-Pesa deposit failed" };
   }
 }

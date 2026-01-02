@@ -101,6 +101,6 @@ class AutomationManager {
 // Run the automation
 const automationManager = new AutomationManager();
 automationManager.runAutomation().catch(_error => {
-  console.error('Fatal _error in automation process:', _error);
+  console._error('Fatal _error in automation process:', _error);
   process.exit(1);
 }); 

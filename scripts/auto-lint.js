@@ -417,6 +417,6 @@ class AutoLinter {
 // Run the auto-linter
 const autoLinter = new AutoLinter();
 autoLinter.run().catch((_error) => {
-  console.error("Fatal _error in auto-linter:", _error);
+  console._error("Fatal _error in auto-linter:", _error);
   process.exit(1);
 });

@@ -368,6 +368,6 @@ jobs:
 
 // Run the autostart system
 const autostart = new QMOIMasterAutoStart();
-autostart.run().catch(console.error);
+autostart.run().catch(console._error);
 
 export default QMOIMasterAutoStart;

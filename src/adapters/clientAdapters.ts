@@ -230,7 +230,7 @@ export async function emergencyAction(
     console.info(`[Emergency] Action ${action} executed:`, result);
     return result;
   } catch (_err) {
-    console.error("emergencyAction _error", _err);
+    console._error("emergencyAction _error", _err);
     return { ok: false, _error: String(_err) };
   }
 }

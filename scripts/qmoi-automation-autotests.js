@@ -39,7 +39,7 @@ class QMOIAutomationAutotests {
 
       console.log("✅ QMOI Automation Autotests initialized");
     } catch (_error) {
-      console.error("❌ Test initialization failed:", _error.message);
+      console._error("❌ Test initialization failed:", _error.message);
       throw _error;
     }
   }
@@ -152,7 +152,7 @@ class QMOIAutomationAutotests {
 
       return testReport;
     } catch (_error) {
-      console.error("❌ Test execution failed:", _error.message);
+      console._error("❌ Test execution failed:", _error.message);
       await this.handleTestError(_error);
       throw _error;
     }
@@ -668,7 +668,7 @@ class QMOIAutomationAutotests {
   }
 
   async handleTestError(_error) {
-    console.error("❌ Test execution _error:", _error.message);
+    console._error("❌ Test execution _error:", _error.message);
 
     await this.notificationSystem.sendNotification(
       "_error",
@@ -692,7 +692,7 @@ async function main() {
       process.exit(0);
     }
   } catch (_error) {
-    console.error("💥 Fatal test _error:", _error.message);
+    console._error("💥 Fatal test _error:", _error.message);
     process.exit(1);
   }
 }

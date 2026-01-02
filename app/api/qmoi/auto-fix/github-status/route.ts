@@ -95,7 +95,7 @@ export async function GET(_request: NextRequest) {
 
     return NextResponse.json(status);
   } catch (_error) {
-    console.error("Error getting GitHub status:", _error);
+    console._error("Error getting GitHub status:", _error);
     return NextResponse.json(
       { _error: "Failed to get GitHub status" },
       { status: 500 },

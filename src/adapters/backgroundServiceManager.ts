@@ -94,7 +94,7 @@ class BackgroundServiceManager {
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
     } catch (_err) {
-      console.error(`[Background] Task ${id} failed:`, _err);
+      console._error(`[Background] Task ${id} failed:`, _err);
     } finally {
       task.isRunning = false;
     }
@@ -200,7 +200,7 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        console.error("[Background] Poll _error:", _err);
+        console._error("[Background] Poll _error:", _err);
       });
     }, 5 * 1000); // Check every 5 seconds
 

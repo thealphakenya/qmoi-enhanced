@@ -651,8 +651,7 @@ async function aiResearchQA(context: string, question: string) {
 }
 
 // --- API Handler --- Buffer, _query?: string) {
-export default async function handler(
-  _req: NextApiRequest,
+export default async function handler(_req: NextApiRequest,
   _res: NextApiResponse
 ) {
   loadLog();

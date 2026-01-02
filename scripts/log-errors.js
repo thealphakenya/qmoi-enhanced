@@ -7,7 +7,7 @@ if (!fs.existsSync("logs")) fs.mkdirSync("logs");
 process.on("uncaughtException", (_err) => {
   const logEntry = `\n[${new Date().toISOString()}] Uncaught Exception:\n${_err.stack}\n`;
   fs.appendFileSync(logPath, logEntry);
-  console.error("🚨 Error logged:", _err.message);
+  console._error("🚨 Error logged:", _err.message);
 });
 
 console.log("📡 QMOI Error logger activated. Listening for crashes...");

@@ -104,7 +104,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
           `🆕 New project planned: ${newProject.name}\nType: ${newProject.type}\nPriority: ${newProject.priority}\nEstimated time: ${newProject.estimatedDuration} minutes`,
         );
       } catch (_error) {
-        console.error("Error creating project:", _error);
+        console._error("Error creating project:", _error);
       } finally {
         setIsLoading(false);
       }
@@ -150,7 +150,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
           );
         }
       } catch (_error) {
-        console.error("Error updating project status:", _error);
+        console._error("Error updating project status:", _error);
       } finally {
         setIsLoading(false);
       }
@@ -227,7 +227,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
         `📋 Daily Plan - ${plan.date}\n\nProjects planned: ${newProjects.length}\nEstimated time: ${Math.round(plan.totalEstimatedTime / 60)} hours\n\nProjects:\n${newProjects.map((p, i) => `${i + 1}. ${p.name} (${p.type}) - ${p.estimatedDuration}min`).join("\n")}`,
       );
     } catch (_error) {
-      console.error("Error generating daily plan:", _error);
+      console._error("Error generating daily plan:", _error);
     } finally {
       setIsLoading(false);
     }
@@ -245,7 +245,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   body: JSON.stringify({ message })
       // });
     } catch (_error) {
-      console.error("Error notifying master:", _error);
+      console._error("Error notifying master:", _error);
     }
   }, []);
 
@@ -264,7 +264,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   })
       // });
     } catch (_error) {
-      console.error("Error creating WhatsApp group:", _error);
+      console._error("Error creating WhatsApp group:", _error);
     }
   }, []);
 
@@ -280,7 +280,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   body: JSON.stringify({ message })
       // });
     } catch (_error) {
-      console.error("Error posting to WhatsApp group:", _error);
+      console._error("Error posting to WhatsApp group:", _error);
     }
   }, []);
 

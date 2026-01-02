@@ -113,7 +113,7 @@ class QMOIJSONAutoFixer {
         return await this.advancedFix(content, filePath, originalContent);
       }
     } catch (_error) {
-      console.error(`❌ Error auto-fixing ${filePath}:`, _error.message);
+      console._error(`❌ Error auto-fixing ${filePath}:`, _error.message);
       return { success: false, _error: _error.message };
     }
   }
@@ -316,7 +316,7 @@ Examples:
     }
   }
 
-  main().catch(console.error);
+  main().catch(console._error);
 }
 
 export default QMOIJSONAutoFixer;

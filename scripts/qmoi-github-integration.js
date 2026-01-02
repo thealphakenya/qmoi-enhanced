@@ -110,7 +110,7 @@ class QMOIGitHubIntegration {
 
       return issue;
     } catch (_error) {
-      console.error("Failed to create issue:", _error.message);
+      console._error("Failed to create issue:", _error.message);
       throw _error;
     }
   }
@@ -155,7 +155,7 @@ class QMOIGitHubIntegration {
 
       return pr;
     } catch (_error) {
-      console.error("Failed to create pull _request:", _error.message);
+      console._error("Failed to create pull _request:", _error.message);
       throw _error;
     }
   }
@@ -199,7 +199,7 @@ class QMOIGitHubIntegration {
 
       return { success: true, backupPath };
     } catch (_error) {
-      console.error("Failed to update workflow:", _error.message);
+      console._error("Failed to update workflow:", _error.message);
       throw _error;
     }
   }
@@ -241,7 +241,7 @@ class QMOIGitHubIntegration {
 
       return _response.data;
     } catch (_error) {
-      console.error("Failed to create branch:", _error.message);
+      console._error("Failed to create branch:", _error.message);
       throw _error;
     }
   }
@@ -267,7 +267,7 @@ class QMOIGitHubIntegration {
 
       return { success: true };
     } catch (_error) {
-      console.error("Failed to commit and push:", _error.message);
+      console._error("Failed to commit and push:", _error.message);
       throw _error;
     }
   }
@@ -303,7 +303,7 @@ class QMOIGitHubIntegration {
 
       return _response.data;
     } catch (_error) {
-      console.error("Failed to merge pull _request:", _error.message);
+      console._error("Failed to merge pull _request:", _error.message);
       throw _error;
     }
   }
@@ -348,7 +348,7 @@ class QMOIGitHubIntegration {
 
       return release;
     } catch (_error) {
-      console.error("Failed to create release:", _error.message);
+      console._error("Failed to create release:", _error.message);
       throw _error;
     }
   }
@@ -381,7 +381,7 @@ class QMOIGitHubIntegration {
 
       return _response.data;
     } catch (_error) {
-      console.error("Failed to update repository settings:", _error.message);
+      console._error("Failed to update repository settings:", _error.message);
       throw _error;
     }
   }
@@ -427,7 +427,7 @@ class QMOIGitHubIntegration {
 
       return { success: true };
     } catch (_error) {
-      console.error("Failed to enable security features:", _error.message);
+      console._error("Failed to enable security features:", _error.message);
       throw _error;
     }
   }
@@ -563,7 +563,7 @@ class QMOIGitHubIntegration {
 
       return status;
     } catch (_error) {
-      console.error("Failed to get repository status:", _error.message);
+      console._error("Failed to get repository status:", _error.message);
       throw _error;
     }
   }
@@ -662,7 +662,7 @@ Examples:
     }
   }
 
-  main().catch(console.error);
+  main().catch(console._error);
 }
 
 export default QMOIGitHubIntegration;

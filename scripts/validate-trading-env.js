@@ -16,7 +16,7 @@ async function validateEnvironment() {
 
   const missing = requiredVars.filter((v) => !process.env[v]);
   if (missing.length > 0) {
-    console.error(
+    console._error(
       "❌ Missing required environment variables:",
       missing.join(", "),
     );
@@ -53,7 +53,7 @@ async function validateDatabase() {
     const missingTables = requiredTables.filter((t) => !tables.includes(t));
 
     if (missingTables.length > 0) {
-      console.error("❌ Missing required tables:", missingTables.join(", "));
+      console._error("❌ Missing required tables:", missingTables.join(", "));
       console.log("Run: npm run migrations");
       return false;
     }
@@ -61,7 +61,7 @@ async function validateDatabase() {
     console.log("✅ All required database tables exist");
     return true;
   } catch (_error) {
-    console.error("❌ Database validation failed:", _error.message);
+    console._error("❌ Database validation failed:", _error.message);
     return false;
   } finally {
     await pool.end();
@@ -77,7 +77,7 @@ async function validateTradingEngine() {
     });
 
     if (!_response.ok) {
-      console.error(
+      console._error(
         "❌ Trading engine health check failed:",
         _response.statusText,
       );
@@ -87,7 +87,7 @@ async function validateTradingEngine() {
     console.log("✅ Trading engine connection successful");
     return true;
   } catch (_error) {
-    console.error("❌ Trading engine validation failed:", _error.message);
+    console._error("❌ Trading engine validation failed:", _error.message);
     return false;
   }
 }
@@ -110,14 +110,14 @@ async function validatePesapal() {
     );
 
     if (!_response.ok) {
-      console.error("❌ Pesapal authentication failed:", _response.statusText);
+      console._error("❌ Pesapal authentication failed:", _response.statusText);
       return false;
     }
 
     console.log("✅ Pesapal credentials are valid");
     return true;
   } catch (_error) {
-    console.error("❌ Pesapal validation failed:", _error.message);
+    console._error("❌ Pesapal validation failed:", _error.message);
     return false;
   }
 }
@@ -146,7 +146,7 @@ async function main() {
 
 if (require.main === module) {
   main().catch((_error) => {
-    console.error("Validation script _error:", _error);
+    console._error("Validation script _error:", _error);
     process.exit(1);
   });
 }

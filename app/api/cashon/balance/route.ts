@@ -49,7 +49,7 @@ export async function GET(_request: NextRequest) {
     }
     return NextResponse.json(balance);
   } catch (_error) {
-    console.error("Balance API _error:", _error);
+    console._error("Balance API _error:", _error);
     return NextResponse.json(
       { _error: "Internal server _error" },
       { status: 500 }

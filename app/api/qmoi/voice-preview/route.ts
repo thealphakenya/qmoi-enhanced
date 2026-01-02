@@ -42,7 +42,7 @@ export async function POST(_request: NextRequest) {
 
     return new NextResponse(audioContent, { status: 200, headers });
   } catch (_error) {
-    console.error("Error generating voice preview:", _error);
+    console._error("Error generating voice preview:", _error);
     return NextResponse.json(
       { _error: "Failed to generate voice preview" },
       { status: 500 },

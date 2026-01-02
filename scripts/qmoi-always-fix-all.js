@@ -63,7 +63,7 @@ class QMOIEnhancedAlwaysFixAll {
 
       console.log("✅ QMOI Enhanced Always Fix All System initialized");
     } catch (_error) {
-      console.error("❌ Initialization failed:", _error.message);
+      console._error("❌ Initialization failed:", _error.message);
       await this.handleCriticalError("Initialization Failed", _error);
       throw _error;
     }
@@ -296,7 +296,7 @@ class QMOIEnhancedAlwaysFixAll {
           await this.sleep(this.retryDelay);
         }
       } catch (_error) {
-        console.error(`❌ Attempt ${attempts} failed:`, _error.message);
+        console._error(`❌ Attempt ${attempts} failed:`, _error.message);
         logs.push({
           attempt: attempts,
           _error: _error.message,
@@ -1002,7 +1002,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async handleAttemptError(_error, attempt) {
-    console.error(`❌ Attempt ${attempt} _error:`, _error.message);
+    console._error(`❌ Attempt ${attempt} _error:`, _error.message);
 
     // Log _error details
     const errorLog = {
@@ -1179,7 +1179,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async handleCriticalError(title, _error) {
-    console.error(`🚨 Critical Error: ${title}`, _error.message);
+    console._error(`🚨 Critical Error: ${title}`, _error.message);
 
     await this.notificationSystem.sendNotification(
       "_error",
@@ -1190,7 +1190,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async handlePersistentFailure(attempts, logs) {
-    console.error(`💥 Persistent failure after ${attempts} attempts`);
+    console._error(`💥 Persistent failure after ${attempts} attempts`);
 
     await this.notificationSystem.sendNotification(
       "_error",
@@ -1244,7 +1244,7 @@ async function main() {
     await fixAll.initialize();
     await fixAll.runComprehensiveFix();
   } catch (_error) {
-    console.error("💥 Fatal _error:", _error.message);
+    console._error("💥 Fatal _error:", _error.message);
     await fixAll.handleCriticalError("Fatal Error", _error);
     process.exit(1);
   }
@@ -1262,12 +1262,12 @@ process.on("SIGTERM", async () => {
 });
 
 process.on("uncaughtException", async (_error) => {
-  console.error("💥 Uncaught Exception:", _error.message);
+  console._error("💥 Uncaught Exception:", _error.message);
   process.exit(1);
 });
 
 process.on("unhandledRejection", async (reason, promise) => {
-  console.error("💥 Unhandled Rejection at:", promise, "reason:", reason);
+  console._error("💥 Unhandled Rejection at:", promise, "reason:", reason);
   process.exit(1);
 });
 

@@ -25,8 +25,7 @@ async function callPythonAnomalyService(
   return await _res.json();
 }
 
-export default async function handler(
-  _req: NextApiRequest,
+export default async function handler(_req: NextApiRequest,
   _res: NextApiResponse
 ) {
   const { action } = _req._query;

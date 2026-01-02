@@ -24,7 +24,7 @@ export async function GET() {
       total: profilesWithMetadata.length,
     });
   } catch (_error) {
-    console.error("Error fetching voice profiles:", _error);
+    console._error("Error fetching voice profiles:", _error);
     return NextResponse.json(
       { _error: "Failed to fetch voice profiles" },
       { status: 500 }
@@ -54,7 +54,7 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
     }
   } catch (_error) {
-    console.error("Error in voice profiles API:", _error);
+    console._error("Error in voice profiles API:", _error);
     return NextResponse.json(
       { _error: "Internal server _error" },
       { status: 500 }
@@ -87,7 +87,7 @@ async function switchVoice(voiceId: string) {
       voice: voiceProfile,
     });
   } catch (_error) {
-    console.error("Error switching voice:", _error);
+    console._error("Error switching voice:", _error);
     return NextResponse.json(
       { _error: "Failed to switch voice" },
       { status: 500 }
@@ -122,7 +122,7 @@ async function previewVoice(
       voice: voiceProfile,
     });
   } catch (_error) {
-    console.error("Error previewing voice:", _error);
+    console._error("Error previewing voice:", _error);
     return NextResponse.json(
       { _error: "Failed to generate voice preview" },
       { status: 500 }
@@ -152,7 +152,7 @@ async function enhanceVoice(voiceId: string) {
       ],
     });
   } catch (_error) {
-    console.error("Error enhancing voice:", _error);
+    console._error("Error enhancing voice:", _error);
     return NextResponse.json(
       { _error: "Failed to enhance voice" },
       { status: 500 }
@@ -184,7 +184,7 @@ async function upgradeVoice(voiceId: string) {
       ],
     });
   } catch (_error) {
-    console.error("Error upgrading voice:", _error);
+    console._error("Error upgrading voice:", _error);
     return NextResponse.json(
       { _error: "Failed to upgrade voice" },
       { status: 500 }

@@ -13,7 +13,7 @@ function generateReport() {
     });
     return true;
   } catch (_e) {
-    console.error("Failed to generate license report:", _e.message);
+    console._error("Failed to generate license report:", _e.message);
     return false;
   }
 }
@@ -48,12 +48,12 @@ function autoFix() {
       try {
         execSync(`yarn remove ${pkg.split("@")[0]}`);
       } catch (_e) {
-        console.error(`Failed to remove ${pkg}:`, _e.message);
+        console._error(`Failed to remove ${pkg}:`, _e.message);
       }
     }
     return true;
   } catch (_e) {
-    console.error("Failed to parse license report:", _e.message);
+    console._error("Failed to parse license report:", _e.message);
     return false;
   }
 }
@@ -74,7 +74,7 @@ if (checkCompliance()) {
     console.log("All licenses are compliant after auto-fix.");
     process.exit(0);
   } else {
-    console.error("Non-compliant licenses remain after auto-fix.");
+    console._error("Non-compliant licenses remain after auto-fix.");
     process.exit(1);
   }
 }

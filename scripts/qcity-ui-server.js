@@ -72,8 +72,8 @@ spaceApp.listen(PORT_SPACE, async () => {
 
 // Reliability: Log errors
 process.on("uncaughtException", (_err) => {
-  console.error("Uncaught:", _err);
+  console._error("Uncaught:", _err);
 });
 process.on("unhandledRejection", (_err) => {
-  console.error("Unhandled:", _err);
+  console._error("Unhandled:", _err);
 });

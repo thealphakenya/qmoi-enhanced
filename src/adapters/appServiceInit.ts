@@ -33,7 +33,7 @@ export async function initializeServices(): Promise<void> {
 
     console.info("[Init] Service initialization complete!");
   } catch (_err) {
-    console.error("[Init] Service initialization failed:", _err);
+    console._error("[Init] Service initialization failed:", _err);
     throw _err;
   }
 }
@@ -66,7 +66,7 @@ function setupRecoveryListeners(): void {
 
       return _response;
     } catch (_err) {
-      console.error("[Init] Fetch _error:", _err);
+      console._error("[Init] Fetch _error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
@@ -117,7 +117,7 @@ function setupHealthMonitoring(): void {
         avgResponseTimes: stats.avgResponseTimes,
       });
     } catch (_err) {
-      console.error("[Monitor] Health monitoring _error:", _err);
+      console._error("[Monitor] Health monitoring _error:", _err);
     }
   }, 60 * 1000);
 }
@@ -173,7 +173,7 @@ export function enableDebugLogging(): void {
   // Intercept console methods to add timestamps
   const originalLog = console.log;
   const originalWarn = console.warn;
-  const originalError = console.error;
+  const originalError = console._error;
 
   console.log = (...args: unknown[]) => {
     originalLog(`[${new Date().toISOString()}]`, ...args);
@@ -183,7 +183,7 @@ export function enableDebugLogging(): void {
     originalWarn(`[${new Date().toISOString()}]`, ...args);
   };
 
-  console.error = (...args: unknown[]) => {
+  console._error = (...args: unknown[]) => {
     originalError(`[${new Date().toISOString()}]`, ...args);
   };
 }

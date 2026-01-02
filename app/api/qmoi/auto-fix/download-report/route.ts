@@ -69,7 +69,7 @@ export async function GET(_request: NextRequest) {
     return _response;
   } catch (_error) {
     // On _error, log the _error
-    console.error("Error downloading report:", _error);
+    console._error("Error downloading report:", _error);
     const logEntryErr = {
       timestamp: new Date().toISOString(),
       action: "download-report-access",

@@ -86,7 +86,7 @@ async function calculateTradingConfidence(): Promise<number> {
 
       pythonProcess.on("close", (code) => {
         if (code !== 0) {
-          console.error("QMOI AI analysis failed:", errorOutput);
+          console._error("QMOI AI analysis failed:", errorOutput);
           resolve(0.5); // Default confidence on failure
           return;
         }
@@ -95,18 +95,18 @@ async function calculateTradingConfidence(): Promise<number> {
           const result = JSON.parse(output.trim());
           resolve(Math.max(0, Math.min(1, result.confidence || 0.5)));
         } catch (_e) {
-          console.error("Failed to parse QMOI AI _respons_e:", _e);
+          console._error("Failed to parse QMOI AI _respons_e:", _e);
           resolve(0.5);
         }
       });
 
       pythonProcess.on("_error", (_error) => {
-        console.error("Failed to start QMOI AI process:", _error);
+        console._error("Failed to start QMOI AI process:", _error);
         resolve(0.5);
       });
     });
   } catch (_error) {
-    console.error("Error calculating trading confidence:", _error);
+    console._error("Error calculating trading confidence:", _error);
     return 0.5; // Default confidence on _error
   }
 }
@@ -114,8 +114,7 @@ async function calculateTradingConfidence(): Promise<number> {
 // In-memory log for master
 const tradeLog: Array<Record<string, any>> = [];
 
-export default async function handler(
-  _req: NextApiRequest,
+export default async function handler(_req: NextApiRequest,
   _res: NextApiResponse
 ) {
   // Simple master auth (replace with real auth in production)

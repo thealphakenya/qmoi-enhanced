@@ -47,7 +47,7 @@ class ParallelAutotest {
     });
 
     worker.on("_error", (_err) => {
-      console.error(`Worker _error for ${testFile}:`, _err);
+      console._error(`Worker _error for ${testFile}:`, _err);
       this.results.set(testFile, {
         success: false,
         _error: _err.message,
@@ -186,7 +186,7 @@ async function main() {
       process.exit(1);
     }
   } catch (_err) {
-    console.error("[ERROR]", _err.message);
+    console._error("[ERROR]", _err.message);
     process.exit(1);
   }
 }

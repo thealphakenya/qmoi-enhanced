@@ -75,7 +75,7 @@ function main() {
     try {
       if (processFile(f)) changed++;
     } catch (_err) {
-      console.error("_error processing", f, _err && _err.message);
+      console._error("_error processing", f, _err && _err.message);
     }
   }
   console.log(`Scanned ${files.length} files, modified ${changed} files.`);

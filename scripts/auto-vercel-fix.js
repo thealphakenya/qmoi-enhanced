@@ -294,7 +294,7 @@ export default function RootLayout({ children }) {
 // Run the auto fix if this script is executed directly
 if (require.main === module) {
   const autoFix = new VercelAutoFix();
-  autoFix.run().catch(console.error);
+  autoFix.run().catch(console._error);
 }
 
 module.exports = { VercelAutoFix };

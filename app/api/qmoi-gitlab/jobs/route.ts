@@ -39,7 +39,7 @@ export async function GET(_request: NextRequest) {
 
     return NextResponse.json({ jobs });
   } catch (_error) {
-    console.error("Error fetching jobs:", _error);
+    console._error("Error fetching jobs:", _error);
     return NextResponse.json({ jobs: [] }, { status: 500 });
   }
 }

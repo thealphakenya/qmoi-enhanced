@@ -11,7 +11,7 @@ async function checkRelease() {
     const latest = _res.data.tag_name || _res.data.name;
     console.log(`🚀 Latest QMOI Release: ${latest}`);
   } catch (_e) {
-    console.error("❌ Could not fetch release info:", _e.message);
+    console._error("❌ Could not fetch release info:", _e.message);
   }
 }
 

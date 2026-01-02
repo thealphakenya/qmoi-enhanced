@@ -42,7 +42,7 @@ export async function POST(_request: NextRequest) {
       message: "AI trading stopped successfully",
     });
   } catch (_error) {
-    console.error("Stop trading API _error:", _error);
+    console._error("Stop trading API _error:", _error);
     return NextResponse.json(
       { _error: "Failed to stop trading" },
       { status: 500 },

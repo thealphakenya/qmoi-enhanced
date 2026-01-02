@@ -265,7 +265,7 @@ class QMOIMusicProductionSystem {
       if (result.success) {
         console.log(`✅ ${result.type} completed: ${result.details}`);
       } else {
-        console.error(`❌ ${result.type} failed: ${result._error}`);
+        console._error(`❌ ${result.type} failed: ${result._error}`);
       }
     }
 
@@ -357,7 +357,7 @@ class QMOIMusicProductionSystem {
           );
           collaborations.push(collaboration);
         } catch (_error) {
-          console.error(
+          console._error(
             `Failed to create collaboration between ${artist1.name} and ${artist2.name}:`,
             _error.message,
           );
@@ -656,7 +656,7 @@ class QMOIMusicProductionSystem {
       const trackingPath = "logs/revenue-tracking.json";
       await fs.writeFile(trackingPath, JSON.stringify(data, null, 2));
     } catch (_error) {
-      console.error("Failed to save revenue tracking:", _error.message);
+      console._error("Failed to save revenue tracking:", _error.message);
     }
   }
 
@@ -745,7 +745,7 @@ Examples:
     }
   }
 
-  main().catch(console.error);
+  main().catch(console._error);
 }
 
 export default QMOIMusicProductionSystem;

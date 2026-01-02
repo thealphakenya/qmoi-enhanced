@@ -87,7 +87,7 @@ NEXT_PUBLIC_APP_URL=${appUrl}
     fs.writeFileSync(envPath, envContent);
     console.log("✅ .env.production file created successfully!");
   } catch (_error) {
-    console.error("❌ Failed to create .env.production file:", _error.message);
+    console._error("❌ Failed to create .env.production file:", _error.message);
     rl.close();
     return;
   }
@@ -135,4 +135,4 @@ NEXT_PUBLIC_APP_URL=${appUrl}
   rl.close();
 }
 
-setupMpesa().catch(console.error);
+setupMpesa().catch(console._error);

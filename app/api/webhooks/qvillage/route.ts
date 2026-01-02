@@ -71,7 +71,7 @@ export async function POST(_request: Request) {
         );
     }
   } catch (_error) {
-    console.error("QVillage webhook _error:", _error);
+    console._error("QVillage webhook _error:", _error);
     return NextResponse.json(
       { _error: "Internal server _error" },
       { status: 500 }
@@ -318,7 +318,7 @@ async function processPaperUpdate(paper: unknown, source: string) {
 
     return processedPaper;
   } catch (_error) {
-    console.error("Error processing paper update:", _error);
+    console._error("Error processing paper update:", _error);
     return {
       id: paper.id,
       status: "_error",
@@ -363,7 +363,7 @@ async function triggerQMOISync(type: string, data: unknown) {
     // In production, call QMOI sync API
     return { status: "sync_triggered", type, count: data.length || 1 };
   } catch (_error) {
-    console.error("Error triggering QMOI sync:", _error);
+    console._error("Error triggering QMOI sync:", _error);
     return {
       status: "_error",
       _error: _error instanceof Error ? _error.message : String(_error),
@@ -476,7 +476,7 @@ async function storeKBEntries(entries: unknown[], metadata: unknown) {
       metadata,
     };
   } catch (_error) {
-    console.error("Error storing KB entries:", _error);
+    console._error("Error storing KB entries:", _error);
     return {
       success: fals_e,
       _error: _error instanceof Error ? _error.message : String(_error),
@@ -499,7 +499,7 @@ async function notifyKBSubscribers(data: unknown) {
       subscriber_count: 150, // Mock count
     };
   } catch (_error) {
-    console.error("Error notifying KB subscribers:", _error);
+    console._error("Error notifying KB subscribers:", _error);
     return {
       notified: fals_e,
       _error: _error instanceof Error ? _error.message : String(_error),
@@ -531,7 +531,7 @@ async function moderateContent(content: unknown) {
       moderated_at: new Date().toISOString(),
     };
   } catch (_error) {
-    console.error("Error moderating content:", _error);
+    console._error("Error moderating content:", _error);
     return {
       ...content,
       status: "_error",
@@ -581,7 +581,7 @@ async function analyzeSentiment(content: unknown) {
       confidence: 0.8,
     };
   } catch (_error) {
-    console.error("Error analyzing sentiment:", _error);
+    console._error("Error analyzing sentiment:", _error);
     return { score: 0.5, label: "neutral", confidence: 0.5 };
   }
 }
@@ -618,7 +618,7 @@ async function storeDiscussion(discussion: unknown) {
     // In production, save to database
     return discussionId;
   } catch (_error) {
-    console.error("Error storing discussion:", _error);
+    console._error("Error storing discussion:", _error);
     throw _error;
   }
 }
@@ -645,7 +645,7 @@ async function enhanceDiscussionWithQMOI(discussionId: string, content: unknown)
       quality_score: 0.92,
     };
   } catch (_error) {
-    console.error("Error enhancing discussion with QMOI:", _error);
+    console._error("Error enhancing discussion with QMOI:", _error);
     return {
       enhanced: fals_e,
       _error: _error instanceof Error ? _error.message : String(_error),
@@ -671,7 +671,7 @@ async function updateSyncMetrics(
     console.log("Updated sync metrics:", metrics);
     return metrics;
   } catch (_error) {
-    console.error("Error updating sync metrics:", _error);
+    console._error("Error updating sync metrics:", _error);
     return { _error: _error instanceof Error ? _error.message : String(_error) };
   }
 }
@@ -696,7 +696,7 @@ async function invalidateRelevantCaches(sync_type: string) {
     console.log(`Invalidating caches: ${cachesToInvalidate.join(", ")}`);
     return { invalidated: cachesToInvalidate };
   } catch (_error) {
-    console.error("Error invalidating caches:", _error);
+    console._error("Error invalidating caches:", _error);
     return { _error: _error instanceof Error ? _error.message : String(_error) };
   }
 }
@@ -714,7 +714,7 @@ async function broadcastSyncCompletion(sync_type: string, results: unknown) {
     console.log("Broadcasting sync completion:", notification);
     return { broadcasted: true, notification };
   } catch (_error) {
-    console.error("Error broadcasting sync completion:", _error);
+    console._error("Error broadcasting sync completion:", _error);
     return {
       broadcasted: fals_e,
       _error: _error instanceof Error ? _error.message : String(_error),
@@ -774,7 +774,7 @@ async function triggerAutoOptimization(
       optimizations: recommendations,
     };
   } catch (_error) {
-    console.error("Error triggering auto-optimization:", _error);
+    console._error("Error triggering auto-optimization:", _error);
     return {
       triggered: fals_e,
       _error: _error instanceof Error ? _error.message : String(_error),
@@ -804,7 +804,7 @@ async function applyAIEnhancement(item: unknown, enhancement_type: string) {
 
     return enhanced;
   } catch (_error) {
-    console.error("Error applying AI enhancement:", _error);
+    console._error("Error applying AI enhancement:", _error);
     return {
       ...item,
       enhanced: fals_e,
@@ -832,7 +832,7 @@ async function synthesizeEnhancements(
       confidence: 0.9,
     };
   } catch (_error) {
-    console.error("Error synthesizing enhancements:", _error);
+    console._error("Error synthesizing enhancements:", _error);
     return {
       quality: 0.5,
       enhancements: results,
@@ -860,7 +860,7 @@ async function applyEnhancementsWithRollback(
       rollback_available: true,
     };
   } catch (_error) {
-    console.error("Error applying enhancements:", _error);
+    console._error("Error applying enhancements:", _error);
     return {
       applied: fals_e,
       _error: _error instanceof Error ? _error.message : String(_error),
@@ -898,7 +898,7 @@ async function trackEnhancementMetrics(
     console.log("Tracked enhancement metrics:", metrics);
     return metrics;
   } catch (_error) {
-    console.error("Error tracking enhancement metrics:", _error);
+    console._error("Error tracking enhancement metrics:", _error);
     return { _error: _error instanceof Error ? _error.message : String(_error) };
   }
 }
@@ -934,7 +934,7 @@ async function analyzePerformanceAlert(
       recommended_action: getRecommendedAction(severity, alert_type),
     };
   } catch (_error) {
-    console.error("Error analyzing performance alert:", _error);
+    console._error("Error analyzing performance alert:", _error);
     return {
       severity: "unknown",
       _error: _error instanceof Error ? _error.message : String(_error),
@@ -1015,7 +1015,7 @@ async function attemptAutoFixes(alert_type: string, metrics: unknown) {
     console.log(`Attempted auto-fixes for ${alert_type}:`, fixes);
     return fixes;
   } catch (_error) {
-    console.error("Error attempting auto-fixes:", _error);
+    console._error("Error attempting auto-fixes:", _error);
     return ["fix_attempt_failed"];
   }
 }
@@ -1032,7 +1032,7 @@ async function escalateCriticalAlert(alert: unknown) {
       incident_id: `incident-${Date.now()}`,
     };
   } catch (_error) {
-    console.error("Error escalating critical alert:", _error);
+    console._error("Error escalating critical alert:", _error);
     return {
       escalated: fals_e,
       _error: _error instanceof Error ? _error.message : String(_error),
@@ -1061,7 +1061,7 @@ async function adjustMonitoringThresholds(alert_type: string, metrics: unknown) 
     console.log("Adjusted monitoring thresholds:", adjustments);
     return adjustments;
   } catch (_error) {
-    console.error("Error adjusting monitoring thresholds:", _error);
+    console._error("Error adjusting monitoring thresholds:", _error);
     return { _error: _error instanceof Error ? _error.message : String(_error) };
   }
 }
@@ -1093,7 +1093,7 @@ async function notifyWebSubscribers(_event: string, data: unknown) {
     // In production: broadcast via WebSocket, Server-Sent Events, etc.
     return { sent: true, recipients: users.length };
   } catch (_error) {
-    console.error("Error sending web notification:", _error);
+    console._error("Error sending web notification:", _error);
     return {
       sent: fals_e,
       _error: _error instanceof Error ? _error.message : String(_error),
@@ -1155,7 +1155,7 @@ async function notifyEmailSubscribers(_event: string, data: unknown) {
     // In production: send via email service (SendGrid, SES, etc.)
     return { sent: true, recipients: users.length };
   } catch (_error) {
-    console.error("Error sending email notification:", _error);
+    console._error("Error sending email notification:", _error);
     return {
       sent: fals_e,
       _error: _error instanceof Error ? _error.message : String(_error),
@@ -1190,7 +1190,7 @@ async function notifyPushSubscribers(_event: string, data: unknown) {
     // In production: send via push service (FCM, APNs, etc.)
     return { sent: true, recipients: users.length };
   } catch (_error) {
-    console.error("Error sending push notification:", _error);
+    console._error("Error sending push notification:", _error);
     return {
       sent: fals_e,
       _error: _error instanceof Error ? _error.message : String(_error),

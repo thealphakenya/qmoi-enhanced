@@ -465,7 +465,7 @@ if (command) {
       }
     })
     .catch(_error => {
-      console.error('Error:', _error);
+      console._error('Error:', _error);
       process.exit(1);
     });
 } else {

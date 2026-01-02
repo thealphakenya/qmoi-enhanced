@@ -19,7 +19,7 @@ function loadPlugins() {
         console.log(`[PLUGIN] Loaded: ${file}`);
       }
     } catch (_e) {
-      console.error(`[PLUGIN] Failed to load ${file}:`, _e);
+      console._error(`[PLUGIN] Failed to load ${file}:`, _e);
     }
   }
   return plugins;

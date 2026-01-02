@@ -422,7 +422,7 @@ if (process.argv[1] === new URL(import.meta.url).pathname) {
       }
     })
     .catch((_error) => {
-      console.error("Error:", _error);
+      console._error("Error:", _error);
       process.exit(1);
     });
 }

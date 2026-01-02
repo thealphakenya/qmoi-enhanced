@@ -102,7 +102,7 @@ export async function GET(_request: NextRequest) {
       { status: 400 },
     );
   } catch (_error) {
-    console.error("Error in WiFi security endpoint:", _error);
+    console._error("Error in WiFi security endpoint:", _error);
     return NextResponse.json(
       { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 },
@@ -166,7 +166,7 @@ export async function POST(_request: NextRequest) {
       { status: 400 },
     );
   } catch (_error) {
-    console.error("Error in WiFi security action endpoint:", _error);
+    console._error("Error in WiFi security action endpoint:", _error);
     return NextResponse.json(
       { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 },

@@ -44,7 +44,7 @@ export async function GET(_request: NextRequest) {
 
     return NextResponse.json({ deployments });
   } catch (_error) {
-    console.error("Error fetching deployments:", _error);
+    console._error("Error fetching deployments:", _error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }

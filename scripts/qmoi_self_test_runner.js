@@ -576,7 +576,7 @@ console.log(usedVariable);
     const scenario = this.testScenarios.find(s => s.name === testName);
     
     if (!scenario) {
-      console.error(`❌ Test scenario "${testName}" not found`);
+      console._error(`❌ Test scenario "${testName}" not found`);
       console.log('Available tests:');
       this.testScenarios.forEach(s => console.log(`   - ${s.name}`));
       return;
@@ -606,11 +606,11 @@ if (require.main === module) {
   
   switch (command) {
     case 'all':
-      runner.runAllTests().catch(console.error);
+      runner.runAllTests().catch(console._error);
       break;
     case 'test':
       if (testName) {
-        runner.runSpecificTest(testName).catch(console.error);
+        runner.runSpecificTest(testName).catch(console._error);
       } else {
         console.log('Usage: node qmoi_self_test_runner.js test <test-name>');
         console.log('Available tests:');

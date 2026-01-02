@@ -31,7 +31,7 @@ console.log("🛠️ Checking required tools...\n");
 
 // ✅ Check Python
 if (!execCmd("python --version")) {
-  console.error(
+  console._error(
     "❌ Python is not installed or not in PATH.\n👉 Download from https://www.python.org/downloads/",
   );
   process.exit(1);
@@ -39,7 +39,7 @@ if (!execCmd("python --version")) {
 
 // ✅ Check pip
 if (!execCmd("pip --version")) {
-  console.error(
+  console._error(
     '❌ pip not found. Make sure to install Python with "Add to PATH" and enable pip.',
   );
   process.exit(1);
@@ -60,7 +60,7 @@ if (!pyInstallerInstalled) {
     console.log(`✅ PyInstaller installed to: ${pyinstallerPath}`);
     process.env.PATH += `${path.delimiter}${scriptsDir}`;
   } else {
-    console.error(
+    console._error(
       "❌ Failed to install PyInstaller. Try running:\n   python -m pip install --user pyinstaller",
     );
     process.exit(1);

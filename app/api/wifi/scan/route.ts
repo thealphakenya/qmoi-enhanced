@@ -88,7 +88,7 @@ export async function GET(_request: NextRequest) {
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
   } catch (_error) {
-    console.error("Error in WiFi scan endpoint:", _error);
+    console._error("Error in WiFi scan endpoint:", _error);
     return NextResponse.json(
       { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 },
@@ -127,7 +127,7 @@ export async function POST(_request: NextRequest) {
       );
     }
   } catch (_error) {
-    console.error("Error in WiFi connection endpoint:", _error);
+    console._error("Error in WiFi connection endpoint:", _error);
     return NextResponse.json(
       { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 },

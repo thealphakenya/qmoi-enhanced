@@ -36,7 +36,7 @@ export async function POST(_request: NextRequest) {
 
     return NextResponse.json(result);
   } catch (_error) {
-    console.error("Reset daily earnings _error:", _error);
+    console._error("Reset daily earnings _error:", _error);
     return NextResponse.json(
       { _error: "Failed to reset daily earnings" },
       { status: 500 },

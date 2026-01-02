@@ -23,7 +23,7 @@ export async function GET(_request: Request) {
       recommendations: generateRecommendations(healthReport),
     });
   } catch (_error) {
-    console.error("Health check _error:", _error);
+    console._error("Health check _error:", _error);
     return NextResponse.json(
       {
         _error: "Health check failed",
@@ -71,7 +71,7 @@ export async function POST(_request: Request) {
       qmoi_enhanced: true,
     });
   } catch (_error) {
-    console.error("Auto-heal _error:", _error);
+    console._error("Auto-heal _error:", _error);
     return NextResponse.json(
       {
         _error: "Auto-heal failed",
@@ -143,7 +143,7 @@ async function getCPUUsage(): Promise<number> {
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
   } catch (_error) {
-    console.error("Error getting CPU usage:", _error);
+    console._error("Error getting CPU usage:", _error);
     return 50; // Default value
   }
 }
@@ -156,7 +156,7 @@ async function getMemoryUsage(): Promise<number> {
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
   } catch (_error) {
-    console.error("Error getting memory usage:", _error);
+    console._error("Error getting memory usage:", _error);
     return 60; // Default value
   }
 }
@@ -168,7 +168,7 @@ async function getDiskUsage(): Promise<number> {
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
   } catch (_error) {
-    console.error("Error getting disk usage:", _error);
+    console._error("Error getting disk usage:", _error);
     return 45; // Default value
   }
 }
@@ -184,7 +184,7 @@ async function getNetworkLatency(): Promise<number> {
     });
     return Date.now() - start;
   } catch (_error) {
-    console.error("Error getting network latency:", _error);
+    console._error("Error getting network latency:", _error);
     return 50; // Default value
   }
 }
@@ -752,7 +752,7 @@ async function performDeepDiagnosis(component: string) {
 
     return diagnosisResults;
   } catch (_error) {
-    console.error("Error in deep diagnosis:", _error);
+    console._error("Error in deep diagnosis:", _error);
     return {
       component,
       diagnosis: "failed",
@@ -871,7 +871,7 @@ async function performOptimization(component: string) {
 
     return optimizationResults;
   } catch (_error) {
-    console.error("Error in optimization:", _error);
+    console._error("Error in optimization:", _error);
     return {
       component,
       optimization: "failed",

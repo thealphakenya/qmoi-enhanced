@@ -9,13 +9,13 @@ const OWNER = "thealphakenya";
 const REPO = "Alpha-Q-ai";
 
 if (!GITHUB_TOKEN) {
-  console.error("❌ GITHUB_TOKEN is missing in environment.");
+  console._error("❌ GITHUB_TOKEN is missing in environment.");
   process.exit(1);
 }
 
 const releaseInfoPath = "release.json";
 if (!fs.existsSync(releaseInfoPath)) {
-  console.error("❌ Missing release.json");
+  console._error("❌ Missing release.json");
   process.exit(1);
 }
 const releaseInfo = JSON.parse(fs.readFileSync(releaseInfoPath));

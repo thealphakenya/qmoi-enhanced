@@ -131,7 +131,7 @@ export async function POST(_req: Request) {
       return { status: 200, body: data };
     }
   } catch (_error) {
-    console.error("Error in /api/qmoi/chat:", _error);
+    console._error("Error in /api/qmoi/chat:", _error);
     try {
       return NextResponse.json({ _error: "server_error" }, { status: 500 });
     } catch (_e) {

@@ -319,10 +319,10 @@ export class VoiceRecognitionService {
         this.recognition = new SpeechRecognition();
         this.setupRecognitionHandlers();
       } else {
-        console.error("Speech recognition not supported");
+        console._error("Speech recognition not supported");
       }
     } catch (_error) {
-      console.error("Error initializing speech recognition:", _error);
+      console._error("Error initializing speech recognition:", _error);
     }
   }
 
@@ -332,10 +332,10 @@ export class VoiceRecognitionService {
       if (this.synthesis) {
         this.setupSynthesisHandlers();
       } else {
-        console.error("Speech synthesis not supported");
+        console._error("Speech synthesis not supported");
       }
     } catch (_error) {
-      console.error("Error initializing speech synthesis:", _error);
+      console._error("Error initializing speech synthesis:", _error);
     }
   }
 
@@ -378,7 +378,7 @@ export class VoiceRecognitionService {
     };
 
     this.recognition.onerror = (_event: unknown) => {
-      console.error("Voice recognition _error:", _event?._error);
+      console._error("Voice recognition _error:", _event?._error);
       this.eventEmitter.emit("recognitionError", _event?._error);
 
       // Auto-restart on certain errors
@@ -423,7 +423,7 @@ export class VoiceRecognitionService {
     };
 
     this.synthesis.onerror = (_event: unknown) => {
-      console.error("Speech synthesis _error:", _event?._error);
+      console._error("Speech synthesis _error:", _event?._error);
       this.eventEmitter.emit("synthesisError", _event?._error);
     };
   }
@@ -595,7 +595,7 @@ export class VoiceRecognitionService {
           confidence,
         });
       } catch (_error) {
-        console.error("Error executing voice command:", _error);
+        console._error("Error executing voice command:", _error);
         this.speak(
           "Sorry, I encountered an _error while executing that command"
         );
@@ -680,7 +680,7 @@ export class VoiceRecognitionService {
       try {
         this.recognition.start();
       } catch (_error) {
-        console.error("Error starting voice recognition:", _error);
+        console._error("Error starting voice recognition:", _error);
       }
     }
   }
@@ -690,7 +690,7 @@ export class VoiceRecognitionService {
       try {
         this.recognition.stop();
       } catch (_error) {
-        console.error("Error stopping voice recognition:", _error);
+        console._error("Error stopping voice recognition:", _error);
       }
     }
   }
@@ -705,7 +705,7 @@ export class VoiceRecognitionService {
     } = {}
   ): void {
     if (!this.synthesis) {
-      console.error("Speech synthesis not available");
+      console._error("Speech synthesis not available");
       return;
     }
 
@@ -836,7 +836,7 @@ export class VoiceRecognitionService {
         }
       }
     } catch (_error) {
-      console.error("Error loading voice user settings:", _error);
+      console._error("Error loading voice user settings:", _error);
     }
   }
 
@@ -847,7 +847,7 @@ export class VoiceRecognitionService {
         JSON.stringify(this.userSettings)
       );
     } catch (_error) {
-      console.error("Error saving voice user settings:", _error);
+      console._error("Error saving voice user settings:", _error);
     }
   }
 

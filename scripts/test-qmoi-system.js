@@ -43,7 +43,7 @@ class QMOISystemTester {
 
       console.log("✅ QMOI System Tester initialized");
     } catch (_error) {
-      console.error(
+      console._error(
         "❌ Failed to initialize QMOI System Tester:",
         _error.message,
       );
@@ -104,7 +104,7 @@ class QMOISystemTester {
 
       console.log("✅ All tests completed successfully");
     } catch (_error) {
-      console.error("❌ Test execution failed:", _error.message);
+      console._error("❌ Test execution failed:", _error.message);
       await this.generateTestReport();
       throw _error;
     }
@@ -895,7 +895,7 @@ Examples:
     await tester.runAllTests();
   }
 
-  main().catch(console.error);
+  main().catch(console._error);
 }
 
 export default QMOISystemTester;

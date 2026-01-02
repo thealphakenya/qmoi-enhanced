@@ -53,7 +53,7 @@ class QMOIRegistryManager {
       await this.registerCoreComponents();
       console.log("✅ QMOI Registry initialized successfully");
     } catch (_error) {
-      console.error("❌ Error initializing QMOI registry:", _error.message);
+      console._error("❌ Error initializing QMOI registry:", _error.message);
     }
   }
 
@@ -272,7 +272,7 @@ class QMOIRegistryManager {
       console.log(`🌐 Synced external API: ${name}`);
       return _response.data;
     } catch (_error) {
-      console.error(`❌ Failed to sync API ${name}:`, _error.message);
+      console._error(`❌ Failed to sync API ${name}:`, _error.message);
       return null;
     }
   }
@@ -432,7 +432,7 @@ class QMOIRegistryManager {
       console.log("✅ Registry imported successfully");
       return true;
     } catch (_error) {
-      console.error("❌ Error importing registry:", _error.message);
+      console._error("❌ Error importing registry:", _error.message);
       return false;
     }
   }
@@ -456,7 +456,7 @@ class QMOIRegistryManager {
       console.log("✅ Registry restored successfully");
       return true;
     } catch (_error) {
-      console.error("❌ Error restoring registry:", _error.message);
+      console._error("❌ Error restoring registry:", _error.message);
       return false;
     }
   }
@@ -478,7 +478,7 @@ class QMOIRegistryManager {
           });
           console.log(`✅ Auto-enhancement ${name}: ${result}`);
         } catch (_error) {
-          console.error(`❌ Auto-enhancement ${name} failed:`, _error.message);
+          console._error(`❌ Auto-enhancement ${name} failed:`, _error.message);
         }
       }
     }
@@ -666,7 +666,7 @@ Usage:
     }
   }
 
-  main().catch(console.error);
+  main().catch(console._error);
 }
 
 module.exports = QMOIRegistryManager;

@@ -628,7 +628,7 @@ class QMOIRevenueDashboard {
       const dashboardPath = "dashboard/data/current-dashboard.json";
       await fs.writeFile(dashboardPath, JSON.stringify(data, null, 2));
     } catch (_error) {
-      console.error("Failed to save dashboard data:", _error.message);
+      console._error("Failed to save dashboard data:", _error.message);
     }
   }
 
@@ -656,7 +656,7 @@ class QMOIRevenueDashboard {
     try {
       await fs.appendFile(this.logPath, JSON.stringify(logEntry) + "\n");
     } catch (_error) {
-      console.error("Failed to save activity log:", _error.message);
+      console._error("Failed to save activity log:", _error.message);
     }
   }
 
@@ -808,7 +808,7 @@ Examples:
     }
   }
 
-  main().catch(console.error);
+  main().catch(console._error);
 }
 
 export default QMOIRevenueDashboard;

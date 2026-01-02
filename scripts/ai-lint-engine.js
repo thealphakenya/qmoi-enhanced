@@ -422,6 +422,6 @@ Provide a specific fix that can be applied automatically.`;
 // Run the AI lint engine
 const aiLintEngine = new AILintEngine();
 aiLintEngine.run().catch((_error) => {
-  console.error("Fatal _error in AI lint engine:", _error);
+  console._error("Fatal _error in AI lint engine:", _error);
   process.exit(1);
 });

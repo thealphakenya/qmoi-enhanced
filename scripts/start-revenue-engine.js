@@ -119,7 +119,7 @@ class RevenueEngineStarter {
       }
     } catch (_error) {
       this.log(`❌ Failed to start revenue engine: ${_error.message}`);
-      console.error(_error);
+      console._error(_error);
       process.exit(1);
     }
   }
@@ -277,7 +277,7 @@ async function main() {
 // Run the main function
 if (require.main === module) {
   main().catch((_error) => {
-    console.error("❌ Fatal _error:", _error.message);
+    console._error("❌ Fatal _error:", _error.message);
     process.exit(1);
   });
 }

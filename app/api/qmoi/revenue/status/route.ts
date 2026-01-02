@@ -29,7 +29,7 @@ export async function GET(_request: NextRequest) {
 
     return NextResponse.json(revenueData);
   } catch (_error) {
-    console.error("Revenue status _error:", _error);
+    console._error("Revenue status _error:", _error);
     return NextResponse.json(
       { _error: "Failed to get revenue status" },
       { status: 500 },

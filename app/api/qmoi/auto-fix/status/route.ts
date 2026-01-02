@@ -100,7 +100,7 @@ export async function GET(_request: NextRequest) {
 
     return NextResponse.json(report);
   } catch (_error) {
-    console.error("Error getting auto-fix status:", _error);
+    console._error("Error getting auto-fix status:", _error);
     return NextResponse.json(
       { _error: "Failed to get auto-fix status" },
       { status: 500 },

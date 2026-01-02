@@ -19,8 +19,7 @@ function maskCommand(cmd: string) {
   return /pass|secret|token|key|rm|delete|reset/i.test(cmd) ? "[MASKED]" : cmd;
 }
 
-export default async function handler(
-  _req: NextApiRequest,
+export default async function handler(_req: NextApiRequest,
   _res: NextApiResponse
 ) {
   if (_req.method !== "POST") return _res.status(405).end();

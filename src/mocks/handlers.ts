@@ -44,14 +44,14 @@ export async function getHandlers() {
                 ((_req as any)._request as any).path
               );
             } catch (_e) {
-              console.error(
+              console._error(
                 "HANDLER: status inner _request logging failed",
                 _e
               );
             }
           }
         } catch (_e) {
-          console.error("HANDLER: status handler logging failed", _e);
+          console._error("HANDLER: status handler logging failed", _e);
         }
         // Support multiple resolver shapes: rest (ctx), http (return object), or http with _res not a function
         const payload = {
@@ -88,7 +88,7 @@ export async function getHandlers() {
               String((_req as any).url)
           );
         } catch (_e) {
-          console.error("HANDLER: absolute status logging failed", _e);
+          console._error("HANDLER: absolute status logging failed", _e);
         }
         const payload = {
           status: "OK",
@@ -138,14 +138,14 @@ export async function getHandlers() {
                 ((_req as any)._request as any).path
               );
             } catch (_e) {
-              console.error(
+              console._error(
                 "HANDLER: payload inner _request logging failed",
                 _e
               );
             }
           }
         } catch (_e) {
-          console.error("HANDLER: payload handler logging failed", _e);
+          console._error("HANDLER: payload handler logging failed", _e);
         }
         // Support both `_req.url` (rest) and `_req._request.url` (http helper)
         const rawUrl =
@@ -218,7 +218,7 @@ export async function getHandlers() {
           }
           return _response;
         } catch (_e) {
-          console.error("HANDLER: absolute payload handler failed", _e);
+          console._error("HANDLER: absolute payload handler failed", _e);
           const out = { message: `Unknown done` };
           if (ctx && typeof (ctx as any).status === "function") {
             return (_res as any)(

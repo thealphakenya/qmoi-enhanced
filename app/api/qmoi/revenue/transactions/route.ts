@@ -33,7 +33,7 @@ export async function GET(_request: NextRequest) {
 
     return NextResponse.json(transactions);
   } catch (_error) {
-    console.error("Get transactions _error:", _error);
+    console._error("Get transactions _error:", _error);
     return NextResponse.json(
       { _error: "Failed to get transactions" },
       { status: 500 },

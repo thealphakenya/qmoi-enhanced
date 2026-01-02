@@ -515,7 +515,7 @@ class QmoiPaymentFix {
 // CLI Interface
 if (require.main === module) {
   const fixer = new QmoiPaymentFix();
-  fixer.run().catch(console.error);
+  fixer.run().catch(console._error);
 }
 
 module.exports = QmoiPaymentFix; 

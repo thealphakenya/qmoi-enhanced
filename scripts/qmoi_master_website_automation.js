@@ -262,7 +262,7 @@ const PROVIDERS = {
       const url = `https://vercel.app/${path.basename(projectDir)}`;
       try {
         execSync(`python scripts/gmail_notify.py --subject \"Vercel Deployment Complete\" --body \"Vercel deployment is live at: ${url}\"`);
-      } catch (_e) { console.error('Vercel deployment notification failed:', _e.message); }
+      } catch (_e) { console._error('Vercel deployment notification failed:', _e.message); }
       return { success: true, url };
     }
   },
@@ -358,7 +358,7 @@ async function fixAllErrorsSweep() {
 // --- CLI: AUDIT/ENHANCE PROJECT ---
 async function auditProjectCLI(projectDir) {
   if (!projectDir) {
-    console.error('Usage: audit-project <projectDir>');
+    console._error('Usage: audit-project <projectDir>');
     process.exit(1);
   }
   await auditAndEnhanceSite(projectDir);
@@ -394,7 +394,7 @@ async function autoProject({ projectName, domain, template, provider }) {
 // --- EXTENDED CLI ---
 async function main() {
   if (!isMasterUser()) {
-    console.error('Error: Only master users can run this script.');
+    console._error('Error: Only master users can run this script.');
     process.exit(1);
   }
 
@@ -407,7 +407,7 @@ async function main() {
   if (cmd === 'create') {
     const [projectName, domain, template, provider] = args;
     if (!projectName || !domain) {
-      console.error('Usage: create <projectName> <domain> [template] [provider]');
+      console._error('Usage: create <projectName> <domain> [template] [provider]');
       process.exit(1);
     }
     logAction(`--- QMOI Master Automation: Creating website '${projectName}' with domain '${domain}' ---`);
@@ -430,7 +430,7 @@ async function main() {
   if (cmd === 'autoproj') {
     const [projectName, domain, template, provider] = args;
     if (!projectName || !domain) {
-      console.error('Usage: autoproj <projectName> <domain> [template] [provider]');
+      console._error('Usage: autoproj <projectName> <domain> [template] [provider]');
       process.exit(1);
     }
     await autoProject({ projectName, domain, template, provider });
@@ -440,7 +440,7 @@ async function main() {
   if (cmd === 'update-asset') {
     const [assetId] = args;
     if (!assetId) {
-      console.error('Usage: update-asset <assetId>');
+      console._error('Usage: update-asset <assetId>');
       process.exit(1);
     }
     await updateAsset(assetId);
@@ -449,7 +449,7 @@ async function main() {
   if (cmd === 'migrate-asset') {
     const [assetId, toProvider] = args;
     if (!assetId || !toProvider) {
-      console.error('Usage: migrate-asset <assetId> <toProvider>');
+      console._error('Usage: migrate-asset <assetId> <toProvider>');
       process.exit(1);
     }
     await migrateAsset(assetId, toProvider);
@@ -458,7 +458,7 @@ async function main() {
   if (cmd === 'backup-asset') {
     const [assetId] = args;
     if (!assetId) {
-      console.error('Usage: backup-asset <assetId>');
+      console._error('Usage: backup-asset <assetId>');
       process.exit(1);
     }
     await backupAsset(assetId);
@@ -467,7 +467,7 @@ async function main() {
   if (cmd === 'retire-asset') {
     const [assetId] = args;
     if (!assetId) {
-      console.error('Usage: retire-asset <assetId>');
+      console._error('Usage: retire-asset <assetId>');
       process.exit(1);
     }
     await retireAsset(assetId);
@@ -477,7 +477,7 @@ async function main() {
   if (cmd === 'provision-server') {
     const [projectName, provider] = args;
     if (!projectName) {
-      console.error('Usage: provision-server <projectName> [provider]');
+      console._error('Usage: provision-server <projectName> [provider]');
       process.exit(1);
     }
     await provisionServer(projectName, provider);
@@ -487,7 +487,7 @@ async function main() {
   if (cmd === 'ssl') {
     const [domain] = args;
     if (!domain) {
-      console.error('Usage: ssl <domain>');
+      console._error('Usage: ssl <domain>');
       process.exit(1);
     }
     await provisionSSL(domain);
@@ -497,7 +497,7 @@ async function main() {
   if (cmd === 'search-domain') {
     const [domain] = args;
     if (!domain) {
-      console.error('Usage: search-domain <domain>');
+      console._error('Usage: search-domain <domain>');
       process.exit(1);
     }
     await searchAndPurchaseDomain(domain);
@@ -507,11 +507,11 @@ async function main() {
   if (cmd === 'dns') {
     const [domain, recordsJson] = args;
     if (!domain || !recordsJson) {
-      console.error('Usage: dns <domain> <recordsJson>');
+      console._error('Usage: dns <domain> <recordsJson>');
       process.exit(1);
     }
     let records;
-    try { records = JSON.parse(recordsJson); } catch (_e) { console.error('Invalid JSON for records'); process.exit(1); }
+    try { records = JSON.parse(recordsJson); } catch (_e) { console._error('Invalid JSON for records'); process.exit(1); }
     await manageDNS(domain, records);
     process.exit(0);
   }
@@ -519,7 +519,7 @@ async function main() {
   if (cmd === 'seo') {
     const [domain] = args;
     if (!domain) {
-      console.error('Usage: seo <domain>');
+      console._error('Usage: seo <domain>');
       process.exit(1);
     }
     await submitToSearchEngines(domain);
@@ -529,7 +529,7 @@ async function main() {
   if (cmd === 'syndicate') {
     const [projectName, platformsCsv] = args;
     if (!projectName) {
-      console.error('Usage: syndicate <projectName> [platformsCsv]');
+      console._error('Usage: syndicate <projectName> [platformsCsv]');
       process.exit(1);
     }
     const platforms = platformsCsv ? platformsCsv.split(',') : undefined;
@@ -540,7 +540,7 @@ async function main() {
   if (cmd === 'social') {
     const [projectName, platformsCsv] = args;
     if (!projectName) {
-      console.error('Usage: social <projectName> [platformsCsv]');
+      console._error('Usage: social <projectName> [platformsCsv]');
       process.exit(1);
     }
     const platforms = platformsCsv ? platformsCsv.split(',') : undefined;
@@ -551,7 +551,7 @@ async function main() {
   if (cmd === 'analytics') {
     const [projectDir, toolsCsv] = args;
     if (!projectDir) {
-      console.error('Usage: analytics <projectDir> [toolsCsv]');
+      console._error('Usage: analytics <projectDir> [toolsCsv]');
       process.exit(1);
     }
     const tools = toolsCsv ? toolsCsv.split(',') : undefined;
@@ -569,7 +569,7 @@ async function main() {
     await auditProjectCLI(projectDir);
   }
 
-  console.error('Unknown command. Use help for usage.');
+  console._error('Unknown command. Use help for usage.');
   process.exit(1);
 }
 

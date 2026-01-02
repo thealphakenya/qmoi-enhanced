@@ -58,7 +58,7 @@ export async function GET(_request: Request) {
         );
     }
   } catch (_error) {
-    console.error("QVillage API _error:", _error);
+    console._error("QVillage API _error:", _error);
     return NextResponse.json(
       { _error: "Internal server _error" },
       { status: 500 }
@@ -87,7 +87,7 @@ export async function POST(_request: Request) {
         );
     }
   } catch (_error) {
-    console.error("QVillage API _error:", _error);
+    console._error("QVillage API _error:", _error);
     return NextResponse.json(
       { _error: "Internal server _error" },
       { status: 500 }
@@ -318,7 +318,7 @@ async function fetchArxivPapers(_params: URLSearchParams) {
       relevanceScore: Math.random() * 0.3 + 0.7, // Enhanced scoring
     }));
   } catch (_error) {
-    console.error("Error fetching arXiv papers:", _error);
+    console._error("Error fetching arXiv papers:", _error);
     return [];
   }
 }
@@ -356,7 +356,7 @@ async function fetchHuggingFacePapers(_params: URLSearchParams) {
       likes: model.likes,
     }));
   } catch (_error) {
-    console.error("Error fetching Hugging Face papers:", _error);
+    console._error("Error fetching Hugging Face papers:", _error);
     return [];
   }
 }
@@ -684,7 +684,7 @@ async function searchDiscussions(_query: string, filters: unknown) {
       relevanceScore: disc.relevanceScore,
     }));
   } catch (_error) {
-    console.error("Error searching discussions:", _error);
+    console._error("Error searching discussions:", _error);
     return [];
   }
 }
@@ -796,7 +796,7 @@ async function syncWithQMOI(direction: string) {
       data: qmoiData,
     };
   } catch (_error) {
-    console.error("Error syncing with QMOI:", _error);
+    console._error("Error syncing with QMOI:", _error);
     return {
       count: 0,
       status: "_error",
@@ -846,7 +846,7 @@ async function syncLocalData(direction: string) {
       data: localData,
     };
   } catch (_error) {
-    console.error("Error syncing local data:", _error);
+    console._error("Error syncing local data:", _error);
     return {
       count: 0,
       status: "_error",
@@ -917,7 +917,7 @@ async function analyzeWithQMOI(content: unknown, type: string, _options: unknown
       analysis_quality: "excellent",
     };
   } catch (_error) {
-    console.error("Error in QMOI analysis:", _error);
+    console._error("Error in QMOI analysis:", _error);
     return {
       insights: [],
       confidence: 0.5,
@@ -982,7 +982,7 @@ async function analyzeWithHuggingFace(
       models_used: ["distilbert-base-uncased-finetuned-sst-2-english"],
     };
   } catch (_error) {
-    console.error("Error in Hugging Face analysis:", _error);
+    console._error("Error in Hugging Face analysis:", _error);
     return {
       insights: [],
       confidence: 0.5,
@@ -1063,7 +1063,7 @@ async function analyzeLocally(content: unknown, type: string, _options: unknown)
       analysis_quality: "good",
     };
   } catch (_error) {
-    console.error("Error in local analysis:", _error);
+    console._error("Error in local analysis:", _error);
     return {
       insights: [],
       confidence: 0.5,
@@ -1130,7 +1130,7 @@ function parseArxivXML(xmlText: string) {
       }
     }
   } catch (_error) {
-    console.error("Error parsing arXiv XML:", _error);
+    console._error("Error parsing arXiv XML:", _error);
   }
 
   return papers;
@@ -1171,7 +1171,7 @@ async function performSemanticSearch(_query: string) {
       relevanceScore: entry.relevanceScore,
     }));
   } catch (_error) {
-    console.error("Error performing semantic search:", _error);
+    console._error("Error performing semantic search:", _error);
     return [];
   }
 }
@@ -1207,7 +1207,7 @@ async function searchByTags(tags: string[]) {
       relevanceScore: entry.relevanceScore,
     }));
   } catch (_error) {
-    console.error("Error searching by tags:", _error);
+    console._error("Error searching by tags:", _error);
     return [];
   }
 }
@@ -1238,7 +1238,7 @@ async function getRecentEntries() {
       relevanceScore: entry.relevanceScore,
     }));
   } catch (_error) {
-    console.error("Error fetching recent entries:", _error);
+    console._error("Error fetching recent entries:", _error);
     return [];
   }
 }
