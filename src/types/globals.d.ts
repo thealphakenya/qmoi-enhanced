@@ -28,6 +28,24 @@ declare global {
   var URLSearchParams: unknown;
   var EventSource: unknown;
   var FileReader: unknown;
+  var AbortController: unknown;
+  var XMLHttpRequest: unknown;
+  var Document: unknown;
+  var Element: unknown;
+  var Node: unknown;
+  var MutationObserver: unknown;
+  var CustomEvent: unknown;
+  var fetch: unknown;
+  var ReadableStream: unknown;
+  var WritableStream: unknown;
+  var TextEncoder: unknown;
+  var TextDecoder: unknown;
+  var crypto: unknown;
+  var structuredClone: unknown;
+  var setTimeout: unknown;
+  var clearTimeout: unknown;
+  var setInterval: unknown;
+  var clearInterval: unknown;
 
   // Node bridging
   var Buffer: unknown;
