@@ -244,3 +244,14 @@ Next steps:
 1. Fix `Buffer`/`NodeJS` declarations in `src/config/bitget.ts` and other config files (add `/* global Buffer, NodeJS */` or adjust types). Prefer adding `/// <reference types="node" />` in files that need Node types.
 2. Triage unreachable code markers (no-unreachable) in `src/config/*` and `src/wallet.ts` manually.
 3. Consider running the codemod to convert safe `any` → `unknown` in `src/services` in small batches, then run `npm run lint:fix` and tests.
+
+Update: 2026-01-02T00:00:00Z
+- Codemod: ran `scripts/convert-any-unused.cjs --apply` on `src/services` (scanned 23 files, 0 files modified).
+- Lint: ran `npm run lint:fix` after codemod; new counts:
+  - Problems: 14,712
+  - Errors: 10,314
+  - Warnings: 4,398
+
+Notes:
+- Small improvement after targeted pragmas and node-type adjustments. Major remaining categories: `no-undef` (EventSource, FileReader, URLSearchParams, Headers), many `@typescript-eslint/no-explicit-any` warnings across `src/services` and UI components, and `no-unreachable` in config/wallet.
+- Next: run codemod in controlled batches for `src/services` subfolders (e.g., `src/services/auth`, `src/services/*`), or proceed with manual typing for high-risk files.
