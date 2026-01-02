@@ -273,3 +273,9 @@ Invalid option '--ext' - perhaps you meant '-c'?
 You're using eslint.config.js, some command line flags are no longer available. Please see https://eslint.org/docs/latest/use/command-line-interface for details.
 
 === END SNAPSHOT ===
+
+=== LINT SNAPSHOT 2026-01-02T06:20:41Z ===
+Invalid option '--ext' - perhaps you meant '-c'?
+You're using eslint.config.js, some command line flags are no longer available. Please see https://eslint.org/docs/latest/use/command-line-interface for details.
+
+=== END SNAPSHOT ===
