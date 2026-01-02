@@ -1,3 +1,5 @@
+/* eslint-env node */
+/// <reference types="node" />
 import axios from "axios";
 import { EventEmitter } from "events";
 
@@ -114,7 +116,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 
   public async reportError(
-    report: Omit<ErrorReport, "id" | "timestamp" | "retryCount" | "fixHistory">,
+    report: Omit<ErrorReport, "id" | "timestamp" | "retryCount" | "fixHistory">
   ): Promise<string> {
     const errorId = this.generateErrorId();
     const errorReport: ErrorReport = {
@@ -169,7 +171,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
           // Apply fix with retry logic
           const fixResult = await this.applyFixWithRetry(
             errorReport,
-            fixSuggestion,
+            fixSuggestion
           );
 
           // Learn from the fix attempt
@@ -235,7 +237,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    _error: ErrorReport
   ): Promise<FixSuggestion | null> {
     console.log("🧠 AI analyzing _error:", _error);
 
@@ -272,7 +274,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async handleLicenseError(
     _error: ErrorReport,
     confidence: number,
-    strategy: string,
+    strategy: string
   ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
@@ -294,7 +296,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async handleVercelDeployError(
     _error: ErrorReport,
     confidence: number,
-    strategy: string,
+    strategy: string
   ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
@@ -317,7 +319,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async handleHerokuDeployError(
     _error: ErrorReport,
     confidence: number,
-    strategy: string,
+    strategy: string
   ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
@@ -340,7 +342,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async handleNetworkError(
     _error: ErrorReport,
     confidence: number,
-    strategy: string,
+    strategy: string
   ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
@@ -362,7 +364,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async handleDependencyError(
     _error: ErrorReport,
     confidence: number,
-    strategy: string,
+    strategy: string
   ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
@@ -387,7 +389,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async handleSyntaxError(
     _error: ErrorReport,
     confidence: number,
-    strategy: string,
+    strategy: string
   ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
@@ -415,7 +417,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async handlePermissionError(
     _error: ErrorReport,
     confidence: number,
-    strategy: string,
+    strategy: string
   ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
@@ -433,7 +435,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async handleSystemResourceError(
     _error: ErrorReport,
     confidence: number,
-    strategy: string,
+    strategy: string
   ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
@@ -455,7 +457,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async handleGenericError(
     _error: ErrorReport,
     confidence: number,
-    strategy: string,
+    strategy: string
   ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
@@ -472,7 +474,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
 
   private async applyFixWithRetry(
     _error: ErrorReport,
-    fixSuggestion: FixSuggestion,
+    fixSuggestion: FixSuggestion
   ): Promise<FixAttempt> {
     const fixAttempt: FixAttempt = {
       id: `attempt_${Date.now()}`,
@@ -490,7 +492,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
     for (let attempt = 1; attempt <= this.maxRetries; attempt++) {
       try {
         console.log(
-          `🔄 Attempt ${attempt}/${this.maxRetries} for fix: ${fixSuggestion.id}`,
+          `🔄 Attempt ${attempt}/${this.maxRetries} for fix: ${fixSuggestion.id}`
         );
 
         // Apply code changes
@@ -511,7 +513,8 @@ export class EnhancedErrorFixingService extends EventEmitter {
         console.log("✅ Fix applied successfully");
         break;
       } catch (_error) {
-        const errMsg = _error instanceof Error ? _error.message : String(_error);
+        const errMsg =
+          _error instanceof Error ? _error.message : String(_error);
         lastError = errMsg;
         console.warn(`⚠️ Fix attempt ${attempt} failed:`, errMsg);
 
@@ -531,7 +534,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 
   private async applyCodeChange(
-    change: FixSuggestion["codeChanges"][0],
+    change: FixSuggestion["codeChanges"][0]
   ): Promise<AppliedChange> {
     const result: AppliedChange = {
       type: "code",
@@ -577,7 +580,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async learnFromFixAttempt(
     _error: ErrorReport,
     fixSuggestion: FixSuggestion,
-    fixResult: FixAttempt,
+    fixResult: FixAttempt
   ): Promise<void> {
     const learningKey = _error.type;
     let learningData = this.learningDatabase.get(learningKey);
@@ -624,7 +627,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
       this.systemHealth.fixedErrors++;
       this.systemHealth.activeErrors = Math.max(
         0,
-        this.systemHealth.activeErrors - 1,
+        this.systemHealth.activeErrors - 1
       );
     }
 

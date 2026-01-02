@@ -1,4 +1,8 @@
 // NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+/* eslint-disable no-unreachable */
+/// <reference types="node" />
+/* eslint-disable no-unreachable */
+/* global Buffer, NodeJS */
 export interface WalletBalance {
   currency: string;
   balance: number;
@@ -52,7 +56,7 @@ export class WalletManager {
             (wallet.currency === "USDT"
               ? 1
               : await this.getUsdPrice(wallet.currency)),
-        })),
+        }))
       );
 
       const futuresBalances = await Promise.all(
@@ -60,7 +64,7 @@ export class WalletManager {
           currency: wallet.currency,
           balance: wallet.balance,
           usdValue: wallet.balance * (await this.getUsdPrice(wallet.currency)),
-        })),
+        }))
       );
 
       const otcBalances = await Promise.all(
@@ -68,7 +72,7 @@ export class WalletManager {
           currency: wallet.currency,
           balance: wallet.balance,
           usdValue: wallet.balance * (await this.getUsdPrice(wallet.currency)),
-        })),
+        }))
       );
 
       this.balances = [...spotBalances, ...futuresBalances, ...otcBalances];
@@ -101,10 +105,10 @@ export class WalletManager {
   public async updateBalance(
     type: "spot" | "futures" | "otc",
     currency: string,
-    balance: number,
+    balance: number
   ): Promise<void> {
     const walletIndex = this.config[type].findIndex(
-      (w) => w.currency === currency,
+      (w) => w.currency === currency
     );
     if (walletIndex !== -1) {
       this.config[type][walletIndex].balance = balance;

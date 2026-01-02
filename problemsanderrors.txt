@@ -255,3 +255,9 @@ Update: 2026-01-02T00:00:00Z
 Notes:
 - Small improvement after targeted pragmas and node-type adjustments. Major remaining categories: `no-undef` (EventSource, FileReader, URLSearchParams, Headers), many `@typescript-eslint/no-explicit-any` warnings across `src/services` and UI components, and `no-unreachable` in config/wallet.
 - Next: run codemod in controlled batches for `src/services` subfolders (e.g., `src/services/auth`, `src/services/*`), or proceed with manual typing for high-risk files.
+
+=== LINT SNAPSHOT 2026-01-02T06:08:53Z ===
+Invalid option '--ext' - perhaps you meant '-c'?
+You're using eslint.config.js, some command line flags are no longer available. Please see https://eslint.org/docs/latest/use/command-line-interface for details.
+
+=== END SNAPSHOT ===

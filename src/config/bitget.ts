@@ -1,4 +1,7 @@
 /* eslint-env node */
+/// <reference types="node" />
+/* eslint-disable no-unreachable */
+/* global Buffer, NodeJS */
 import * as nodeCrypto from "crypto";
 const crypto: unknown = nodeCrypto as unknown;
 import { EventEmitter } from "events";
