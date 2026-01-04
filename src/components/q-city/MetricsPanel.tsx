@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 export default function MetricsPanel() {
-  const [metrics, setMetrics] = useState<unknown>(null);
+  const [metrics, setMetrics] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [_error, setError] = useState("");
   const token =
@@ -14,7 +14,7 @@ export default function MetricsPanel() {
     })
       .then((r) => r.json())
       .then((data) => setMetrics(data))
-      .catch((_e) => setError(_e.message))
+      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
       .finally(() => setLoading(false));
   }, []);
 

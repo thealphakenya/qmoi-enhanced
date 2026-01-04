@@ -122,7 +122,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
     if (savedState) {
       try {
         const parsedState = JSON.parse(savedState);
-        setState((prevState) => ({ ...prevState, ...parsedState }));
+        setState((prevState) => ({ ...prevState, ...(parsedState as any) }));
       } catch (_error) {
         (console as any)._error("Error loading QMOI state:", _error);
       }

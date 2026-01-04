@@ -59,21 +59,20 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
       setError(null);
 
       const tradingManager = TradingManager.getInstance();
-      const history = (await tradingManager.getTradingHistory()).map(
-        (trade: unknown) => ({
-          ...trade,
-          timestamp: new Date(trade.timestamp),
-        }),
-      );
-      setTrades(history);
+      const rawHistory = (await tradingManager.getTradingHistory()) as any[];
+      const history = rawHistory.map((trade: any) => ({
+        ...trade,
+        timestamp: new Date(trade?.timestamp),
+      }));
+      setTrades(history as Trade[]);
 
       // Calculate statistics
       const successfulTrades = history.filter(
-        (t: Trade) => t.status === "completed",
+        (t: Trade) => t.status === "completed"
       );
       const totalProfit = successfulTrades.reduce(
         (sum: number, trade: Trade) => sum + (trade.profit || 0),
-        0,
+        0
       );
       const winRate = (successfulTrades.length / history.length) * 100;
 
@@ -83,9 +82,10 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) { void _err;
+    } catch (_err) {
+      void _err;
       setError(
-        _err instanceof Error ? _err.message : "Failed to fetch trading history",
+        _err instanceof Error ? _err.message : "Failed to fetch trading history"
       );
     } finally {
       setIsLoading(false);
@@ -142,7 +142,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         </Box>
 
         {_error && (
-          <Alert severity="_error" sx={{ mb: 2 }}>
+          <Alert severity="error" sx={{ mb: 2 }}>
             {_error}
           </Alert>
         )}
@@ -171,7 +171,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
               </Typography>
               <Typography
                 variant="h6"
-                color={stats.totalProfit >= 0 ? "success.main" : "_error.main"}
+                color={stats.totalProfit >= 0 ? "success.main" : "error.main"}
               >
                 {formatCurrency(stats.totalProfit)}
               </Typography>
@@ -222,7 +222,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
                           )
                         }
                         label={trade.type.toUpperCase()}
-                        color={trade.type === "buy" ? "success" : "_error"}
+                        color={trade.type === "buy" ? "success" : "error"}
                         variant="outlined"
                       />
                     </TableCell>
@@ -237,7 +237,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
                       {trade.profit !== undefined && (
                         <Typography
                           color={
-                            trade.profit >= 0 ? "success.main" : "_error.main"
+                            trade.profit >= 0 ? "success.main" : "error.main"
                           }
                         >
                           {formatCurrency(trade.profit)}
@@ -252,8 +252,8 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
                           trade.status === "completed"
                             ? "success"
                             : trade.status === "failed"
-                              ? "_error"
-                              : "warning"
+                            ? "error"
+                            : "warning"
                         }
                       />
                     </TableCell>

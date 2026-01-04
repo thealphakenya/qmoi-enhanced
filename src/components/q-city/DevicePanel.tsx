@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 export default function DevicePanel() {
-  const [devices, setDevices] = useState<unknown[]>([]);
+  const [devices, setDevices] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
-  const [form, setForm] = useState({
+  const [_error, setError] = useState<string>("");
+  const [form, setForm] = useState<any>({
     name: "",
     host: "",
     port: 22,
@@ -12,7 +12,7 @@ export default function DevicePanel() {
     password: "",
     privateKey: "",
   });
-  const [editing, setEditing] = useState<unknown>(null);
+  const [editing, setEditing] = useState<any>(null);
   const [testResult, setTestResult] = useState("");
 
   const token =
@@ -25,7 +25,7 @@ export default function DevicePanel() {
     })
       .then((r) => r.json())
       .then((data) => setDevices(data.items || []))
-      .catch((_e) => setError(_e.message))
+      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
       .finally(() => setLoading(false));
   };
 
@@ -55,7 +55,7 @@ export default function DevicePanel() {
         });
         setEditing(null);
       })
-      .catch((_e) => setError(_e.message))
+      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
       .finally(() => setLoading(false));
   };
 
@@ -70,7 +70,7 @@ export default function DevicePanel() {
       body: JSON.stringify({ id }),
     })
       .then(fetchDevices)
-      .catch((_e) => setError(_e.message))
+      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
       .finally(() => setLoading(false));
   };
 
@@ -86,9 +86,9 @@ export default function DevicePanel() {
     })
       .then((r) => r.json())
       .then((data) =>
-        setTestResult(data.success ? "Success" : data._error || "Failed"),
+        setTestResult(data.success ? "Success" : data._error || "Failed")
       )
-      .catch((_e) => setTestResult(_e.message));
+      .catch((_e: any) => setTestResult((_e as any).message ?? String(_e)));
   };
 
   return (
@@ -126,14 +126,18 @@ export default function DevicePanel() {
         <input
           placeholder="Username"
           value={form.username}
-          onChange={(_e) => setForm((f) => ({ ...f, username: _e.target.value }))}
+          onChange={(_e) =>
+            setForm((f) => ({ ...f, username: _e.target.value }))
+          }
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
           placeholder="Password"
           type="password"
           value={form.password}
-          onChange={(_e) => setForm((f) => ({ ...f, password: _e.target.value }))}
+          onChange={(_e) =>
+            setForm((f) => ({ ...f, password: _e.target.value }))
+          }
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input

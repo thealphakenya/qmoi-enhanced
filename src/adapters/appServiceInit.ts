@@ -32,8 +32,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) { void _err;
-    (console as any)._error("[Init] Service initialization failed:", _err);
+  } catch (_err) {
+    void _err;
+    console.error("[Init] Service initialization failed:", _err);
     throw _err;
   }
 }
@@ -60,13 +61,14 @@ function setupRecoveryListeners(): void {
           async () => {
             await checkHealth();
           },
-          2000,
+          2000
         );
       }
 
       return _response;
-    } catch (_err) { void _err;
-      (console as any)._error("[Init] Fetch _error:", _err);
+    } catch (_err) {
+      void _err;
+      console.error("[Init] Fetch _error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
@@ -75,7 +77,7 @@ function setupRecoveryListeners(): void {
         async () => {
           await checkHealth();
         },
-        3000,
+        3000
       );
 
       throw _err;
@@ -103,7 +105,7 @@ function setupHealthMonitoring(): void {
           async () => {
             await checkHealth();
           },
-          1000,
+          1000
         );
       } else if (health.status === "degraded") {
         console.warn("[Monitor] Health check returned degraded");
@@ -116,8 +118,9 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) { void _err;
-      (console as any)._error("[Monitor] Health monitoring _error:", _err);
+    } catch (_err) {
+      void _err;
+      console.error("[Monitor] Health monitoring _error:", _err);
     }
   }, 60 * 1000);
 }

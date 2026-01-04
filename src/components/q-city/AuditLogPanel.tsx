@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 export default function AuditLogPanel() {
-  const [logs, setLogs] = useState([]);
+  const [logs, setLogs] = useState<any[]>([]);
   const [filter, setFilter] = useState({
     action: "",
     user: "",
@@ -26,7 +26,7 @@ export default function AuditLogPanel() {
         setLogs(
           format === "csv"
             ? data.split("\n").map((l: string) => l.split(","))
-            : data.logs || [],
+            : data.logs || []
         );
         setLoading(false);
       });
@@ -42,7 +42,9 @@ export default function AuditLogPanel() {
         <input
           placeholder="Action"
           value={filter.action}
-          onChange={(_e) => setFilter((f) => ({ ...f, action: _e.target.value }))}
+          onChange={(_e) =>
+            setFilter((f) => ({ ...f, action: _e.target.value }))
+          }
           className="bg-gray-800 p-1 rounded"
         />
         <input
@@ -62,7 +64,9 @@ export default function AuditLogPanel() {
         <input
           placeholder="Status"
           value={filter.status}
-          onChange={(_e) => setFilter((f) => ({ ...f, status: _e.target.value }))}
+          onChange={(_e) =>
+            setFilter((f) => ({ ...f, status: _e.target.value }))
+          }
           className="bg-gray-800 p-1 rounded"
         />
         <button
@@ -94,7 +98,7 @@ export default function AuditLogPanel() {
               </tr>
             </thead>
             <tbody>
-              {logs.map((l: unknown, i) => (
+              {logs.map((l: any, i) => (
                 <tr key={i}>
                   <td>{l.timestamp || ""}</td>
                   <td>{l.action || ""}</td>

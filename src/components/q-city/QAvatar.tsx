@@ -25,9 +25,11 @@ const ENVIRONMENTS = [
 
 export default function QAvatar() {
   const [open, setOpen] = useState(true);
-  const [settings, setSettings] = useState(() => {
+  const [settings, setSettings] = useState<Record<string, any>>(() => {
     try {
-      return JSON.parse(localStorage.getItem("qavatar-settings") || "{}");
+      return JSON.parse(
+        localStorage.getItem("qavatar-settings") || "{}"
+      ) as Record<string, any>;
     } catch {
       return {};
     }
@@ -35,9 +37,9 @@ export default function QAvatar() {
   const [drag, setDrag] = useState({ x: 100, y: 100 });
   const ref = useRef<HTMLDivElement>(null);
 
-  function saveSettings(newSettings: unknown) {
-    setSettings(newSettings);
-    localStorage.setItem("qavatar-settings", JSON.stringify(newSettings));
+  function saveSettings(arg: any) {
+    setSettings(arg);
+    localStorage.setItem("qavatar-settings", JSON.stringify(arg));
   }
 
   return (

@@ -39,12 +39,12 @@ export default function QMoiFileEditorChat({
       if (cmd.startsWith("/view ")) {
         const filePath = cmd.replace("/view ", "").trim();
         const { postModel } = await import("../../services/qmoiApi");
-        const data = await postModel({ action: "file:read", filePath });
-        if (data.success) {
+        const data: any = await postModel({ action: "file:read", filePath });
+        if (data && data.success) {
           setLastView(data.data);
           _response = highlightCode(data.data);
         } else {
-          _response = `Error: ${data._error}`;
+          _response = `Error: ${data?._error}`;
         }
       } else if (cmd.startsWith("/edit ")) {
         const [_, filePath, ...contentArr] = cmd.split(" ");
@@ -53,31 +53,32 @@ export default function QMoiFileEditorChat({
         const before = lastView;
         const after = content;
         const { postModel } = await import("../../services/qmoiApi");
-        const data = await postModel({
+        const data: any = await postModel({
           action: "file:write",
           filePath,
           content,
         });
-        _response = data.success ? (
-          <div>
-            <div>File {filePath} updated.</div>
-            <div style={{ marginTop: 8 }}>
-              <b>Before:</b>
-              {highlightCode(before)}
+        _response =
+          data && data.success ? (
+            <div>
+              <div>File {filePath} updated.</div>
+              <div style={{ marginTop: 8 }}>
+                <b>Before:</b>
+                {highlightCode(before)}
+              </div>
+              <div style={{ marginTop: 8 }}>
+                <b>After:</b>
+                {highlightCode(after)}
+              </div>
             </div>
-            <div style={{ marginTop: 8 }}>
-              <b>After:</b>
-              {highlightCode(after)}
-            </div>
-          </div>
-        ) : (
-          `Error: ${data._error}`
-        );
+          ) : (
+            `Error: ${data._error}`
+          );
       } else if (cmd.startsWith("/append ")) {
         const [_, filePath, ...contentArr] = cmd.split(" ");
         const content = contentArr.join(" ");
         const { postModel } = await import("../../services/qmoiApi");
-        const data = await postModel({
+        const data: any = await postModel({
           action: "file:append",
           filePath,
           content,
@@ -92,7 +93,7 @@ export default function QMoiFileEditorChat({
         const before = lastView;
         const after = before.replace(search, content);
         const { postModel } = await import("../../services/qmoiApi");
-        const data = await postModel({
+        const data: any = await postModel({
           action: "file:replace",
           filePath,
           replace: search,
@@ -116,8 +117,8 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
-      _response = `Error: ${_e.message}`;
+    } catch (_e: any) {
+      _response = `Error: ${_e?.message ?? String(_e)}`;
     }
     setMessages((msgs) => [
       ...msgs,
@@ -132,10 +133,14 @@ export default function QMoiFileEditorChat({
     let _response: string | React.ReactElement = "";
     try {
       const { postModel } = await import("../../services/qmoiApi");
-      const data = await postModel({ action: "autodev:rollback" });
-      _response = data.success ? "Rollback successful." : `Error: ${data._error}`;
-    } catch (_e: unknown) {
-      _response = `Error: ${_e.message}`;
+      const data: any = await postModel({ action: "autodev:rollback" });
+      _response =
+        data && data.success
+          ? "Rollback successful."
+          : `Error: ${data?._error}`;
+    } catch (_e: any) {
+      const err: any = _e;
+      _response = `Error: ${err?.message ?? String(err)}`;
     }
     setMessages((msgs) => [
       ...msgs,
@@ -150,16 +155,18 @@ export default function QMoiFileEditorChat({
     let _response: string | React.ReactElement = "";
     try {
       const { postModel } = await import("../../services/qmoiApi");
-      const data = await postModel({
+      const data: any = await postModel({
         action: "autodev:ai_suggest",
         filePath: "",
         context: lastView,
       });
-      _response = data.success
-        ? highlightCode(data.suggestion)
-        : `Error: ${data._error}`;
-    } catch (_e: unknown) {
-      _response = `Error: ${_e.message}`;
+      _response =
+        data && data.success
+          ? highlightCode(data.suggestion)
+          : `Error: ${data?._error}`;
+    } catch (_e: any) {
+      const err: any = _e;
+      _response = `Error: ${err?.message ?? String(err)}`;
     }
     setMessages((msgs) => [
       ...msgs,
@@ -174,14 +181,18 @@ export default function QMoiFileEditorChat({
     let _response: string | React.ReactElement = "";
     try {
       const { postModel } = await import("../../services/qmoiApi");
-      const data = await postModel({
+      const data: any = await postModel({
         action: "autodev:batch_edit",
         files: files.split(","),
         operation: op,
       });
-      _response = data.success ? "Batch edit complete." : `Error: ${data._error}`;
-    } catch (_e: unknown) {
-      _response = `Error: ${_e.message}`;
+      _response =
+        data && data.success
+          ? "Batch edit complete."
+          : `Error: ${data?._error}`;
+    } catch (_e: any) {
+      const err: any = _e;
+      _response = `Error: ${err?.message ?? String(err)}`;
     }
     setMessages((msgs) => [
       ...msgs,

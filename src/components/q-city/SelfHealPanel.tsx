@@ -19,9 +19,11 @@ const SelfHealPanel: React.FC = () => {
     essentialsOnly: false,
     diagnosticsOnly: false,
   });
-  const [history, setHistory] = useState<unknown[]>(() => {
+  const [history, setHistory] = useState<any[]>(() => {
     try {
-      return JSON.parse(localStorage.getItem("selfHealHistory") || "[]");
+      return JSON.parse(
+        localStorage.getItem("selfHealHistory") || "[]"
+      ) as any[];
     } catch {
       return [];
     }
@@ -45,11 +47,11 @@ const SelfHealPanel: React.FC = () => {
           "?token=" +
           encodeURIComponent(token) +
           "&opts=" +
-          encodeURIComponent(JSON.stringify(_options)),
+          encodeURIComponent(JSON.stringify(_options))
       );
       eventSourceRef.current = es;
       let logBuffer = "";
-      es.onmessage = (_event) => {
+      es.onmessage = (_event: any) => {
         if (_event.data === "[DONE]") {
           es.close();
           setRunning(false);
@@ -67,13 +69,14 @@ const SelfHealPanel: React.FC = () => {
           setLog(logBuffer);
         }
       };
-      es.onerror = (_e) => {
+      es.onerror = (_e: any) => {
         setError("Stream _error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      setError(_err.message || "Request failed");
+    } catch (_err: any) {
+      const err: any = _err;
+      setError((err && err.message) || "Request failed");
       setSuccess(false);
       setRunning(false);
     }
@@ -197,7 +200,7 @@ const SelfHealPanel: React.FC = () => {
               padding: 8,
             }}
           >
-            {history.map((h, i) => (
+            {history.map((h: any, i) => (
               <li key={i} style={{ marginBottom: 6 }}>
                 <b>{h.ts}</b> - <span>{JSON.stringify(h._options)}</span>
                 <button style={{ marginLeft: 8 }} onClick={() => setLog(h.log)}>

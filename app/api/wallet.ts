@@ -79,7 +79,7 @@ let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
 } catch (_e) {
-  (console as any)._error("Failed to initialize WhatsApp service:", _e);
+  console.error("Failed to initialize WhatsApp service:", _e);
 }
 
 // Enhanced logging
@@ -95,7 +95,7 @@ function logAction(action: string, details: Record<string, any>) {
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
   } catch (_e) {
-    (console as any)._error("Failed to log action:", _e);
+    console.error("Failed to log action:", _e);
   }
 }
 
@@ -116,7 +116,7 @@ async function getOrCreateWallet(userId: string) {
 
     return wallet;
   } catch (_error) {
-    (console as any)._error("Failed to get/create wallet:", _error);
+    console.error("Failed to get/create wallet:", _error);
     throw _error;
   }
 }
@@ -153,7 +153,7 @@ async function createTransaction(
 
     return transaction;
   } catch (_error) {
-    (console as any)._error("Failed to create transaction:", _error);
+    console.error("Failed to create transaction:", _error);
     throw _error;
   }
 }
@@ -277,7 +277,7 @@ async function processMpesa(
       };
     }
   } catch (_error) {
-    (console as any)._error("Mpesa processing _error:", _error);
+    console.error("Mpesa processing _error:", _error);
     const errorMsg = _error instanceof Error ? _error.message : String(_error);
     return { status: "_error", platform: "Mpesa", amount, _error: errorMsg };
   }

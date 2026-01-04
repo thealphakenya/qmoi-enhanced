@@ -55,16 +55,17 @@ export function Chatbot() {
         message: input,
         speak: wantSpeak,
       });
+      const dataAny = data as any;
       let replyText = "";
-      if (data && data.reply) replyText = data.reply;
+      if (dataAny && dataAny.reply) replyText = dataAny.reply;
       else if (
-        data &&
-        data.choices &&
-        Array.isArray(data.choices) &&
-        data.choices[0]
+        dataAny &&
+        dataAny.choices &&
+        Array.isArray(dataAny.choices) &&
+        dataAny.choices[0]
       ) {
         replyText =
-          data.choices[0].message?.content || data.choices[0]?.text || "";
+          dataAny.choices[0].message?.content || dataAny.choices[0]?.text || "";
       } else {
         replyText = "Sorry, I could not get a reply.";
       }
@@ -77,11 +78,12 @@ export function Chatbot() {
       setMessages((prev) => [...prev, botMessage]);
 
       // Play SSML if provided
-      if (data && data.ssml) {
+      if (dataAny && dataAny.ssml) {
         // best-effort playback
-        playSSML(data.ssml);
+        playSSML(dataAny.ssml);
       }
-    } catch (_err) { void _err;
+    } catch (_err) {
+      void _err;
       const botMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         text: "Error: could not reach QMOI backend",

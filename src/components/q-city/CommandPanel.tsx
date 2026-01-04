@@ -17,16 +17,26 @@ export default function CommandPanel() {
   const [deviceId, setDeviceId] = useState("qcity");
   const [output, setOutput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [history, setHistory] = useState(() => {
+  const [history, setHistory] = useState<
+    Array<{ cmd: string; deviceId: string; ts: number }>
+  >(() => {
     try {
-      return JSON.parse(localStorage.getItem("qcity-cmd-history") || "[]");
+      return JSON.parse(
+        localStorage.getItem("qcity-cmd-history") || "[]"
+      ) as Array<{
+        cmd: string;
+        deviceId: string;
+        ts: number;
+      }>;
     } catch {
       return [];
     }
   });
-  const [pinned, setPinned] = useState(() => {
+  const [pinned, setPinned] = useState<string[]>(() => {
     try {
-      return JSON.parse(localStorage.getItem("qcity-cmd-pinned") || "[]");
+      return JSON.parse(
+        localStorage.getItem("qcity-cmd-pinned") || "[]"
+      ) as string[];
     } catch {
       return [];
     }
@@ -48,7 +58,7 @@ export default function CommandPanel() {
     };
     if (stream) {
       const es = new EventSource(
-        `/api/qcity/remote-command?body=${encodeURIComponent(body)}`,
+        `/api/qcity/remote-command?body=${encodeURIComponent(body)}`
       );
       eventSourceRef.current = es;
       es.onmessage = (_e) => {
@@ -127,25 +137,25 @@ export default function CommandPanel() {
       </div>
       <div className="mb-2">
         <span className="font-bold">Pinned:</span>
-        {pinned.map((c: unknown, i: number) => (
+        {pinned.map((item: any, i: number) => (
           <button
             key={i}
-            onClick={() => setCmd(c)}
+            onClick={() => setCmd(item)}
             className="ml-2 px-2 py-1 bg-cyan-800 rounded text-xs"
           >
-            {c}
+            {item}
           </button>
         ))}
       </div>
       <div className="mb-2">
         <span className="font-bold">History:</span>
-        {history.map((h: unknown, i: number) => (
+        {history.map((item: any, i: number) => (
           <button
             key={i}
-            onClick={() => setCmd(h.cmd)}
+            onClick={() => setCmd(item.cmd)}
             className="ml-2 px-2 py-1 bg-gray-700 rounded text-xs"
           >
-            {h.cmd}
+            {item.cmd}
           </button>
         ))}
         <button

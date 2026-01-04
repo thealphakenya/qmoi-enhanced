@@ -56,7 +56,7 @@ export default function PluginPanel() {
   const [configuring, setConfiguring] = useState<string | null>(null);
   const [pluginFile, setPluginFile] = useState<File | null>(null);
   const [pluginConfig, setPluginConfig] = useState<{ [key: string]: string }>(
-    {},
+    {}
   );
   const { toast } = useToast();
 
@@ -69,7 +69,7 @@ export default function PluginPanel() {
     fetch("/api/qcity/plugins")
       .then((r) => r.json())
       .then((data) => setPlugins(data.plugins || []))
-      .catch((_e) => setError(_e.message))
+      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
       .finally(() => setLoading(false));
   }
 

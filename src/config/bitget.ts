@@ -3,7 +3,7 @@
 /* eslint-disable no-unreachable */
 /* global Buffer, NodeJS */
 import * as nodeCrypto from "crypto";
-const crypto: unknown = nodeCrypto as any;
+const crypto = nodeCrypto as any;
 import { EventEmitter } from "events";
 
 interface SecurityMetrics {
@@ -1105,7 +1105,7 @@ export class BitgetManager extends EventEmitter {
   }
 
   public async decryptSensitiveData(encryptedData: string): Promise<string> {
-    const { iv, encrypted, authTag } = JSON.parse(encryptedData);
+    const { iv, encrypted, authTag } = JSON.parse(encryptedData) as any;
 
     const decipher = (nodeCrypto as any).createDecipheriv(
       "aes-256-gcm",
@@ -1173,7 +1173,10 @@ export class BitgetManager extends EventEmitter {
       // Implement API credential validation logic here
       return true;
     } catch (_error) {
-      (console as any)._error("Error validating Bitget API credentials:", _error);
+      (console as any)._error(
+        "Error validating Bitget API credentials:",
+        _error
+      );
       return false;
     }
   }

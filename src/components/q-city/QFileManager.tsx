@@ -37,7 +37,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [sortBy, setSortBy] = useState<"name" | "date" | "size" | "type">(
-    "name",
+    "name"
   );
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
   const [isLoading, setIsLoading] = useState(false);
@@ -64,11 +64,16 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
       if (!_res.ok) throw new Error("Failed to fetch pending requests");
       const data = await _res.json();
       setPendingRequests(data);
-    } catch (_err) { void _err;
-      setError("Failed to load pending requests");
+    } catch (_err: any) {
+      const err = _err as any;
+      setError(
+        "Failed to load pending requests: " + (err?.message ?? String(_err))
+      );
       toast({
         title: "Error",
-        description: "Failed to load pending wallet requests",
+        description:
+          "Failed to load pending wallet requests: " +
+          (err?.message ?? String(_err)),
         variant: "destructive",
       });
     } finally {
@@ -144,7 +149,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
     const matchesSearch =
       file.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       file.tags.some((tag) =>
-        tag.toLowerCase().includes(searchQuery.toLowerCase()),
+        tag.toLowerCase().includes(searchQuery.toLowerCase())
       );
     const matchesCategory =
       selectedCategory === "all" || file.category === selectedCategory;
@@ -179,7 +184,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
       prev.map((file) => ({
         ...file,
         isSelected: file.id === id ? !file.isSelected : file.isSelected,
-      })),
+      }))
     );
   }, []);
 
@@ -197,7 +202,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
 
     if (
       confirm(
-        `Are you sure you want to delete ${selectedFiles.length} item(s)?`,
+        `Are you sure you want to delete ${selectedFiles.length} item(s)?`
       )
     ) {
       setIsLoading(true);
@@ -224,7 +229,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
         prev.map((file) => ({
           ...file,
           tags: [...file.tags, "organized"],
-        })),
+        }))
       );
     } catch (_error) {
       (console as any)._error("Error organizing files:", _error);
@@ -308,11 +313,12 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
       } else {
         throw new Error(data._error || "Failed to _request wallet");
       }
-    } catch (_err: unknown) {
-      setError(_err.message);
+    } catch (_err: any) {
+      const err = _err as any;
+      setError(err?.message ?? String(_err));
       toast({
         title: "Error",
-        description: _err.message,
+        description: err?.message ?? String(_err),
         variant: "destructive",
       });
     } finally {
@@ -348,11 +354,12 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
       } else {
         throw new Error(data._error || "Failed to approve wallet");
       }
-    } catch (_err: unknown) {
-      setError(_err.message);
+    } catch (_err: any) {
+      const err = _err as any;
+      setError(err?.message ?? String(_err));
       toast({
         title: "Error",
-        description: _err.message,
+        description: err?.message ?? String(_err),
         variant: "destructive",
       });
     } finally {
@@ -469,7 +476,11 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
 
       {/* File Grid/List */}
       <div
-        className={`grid gap-4 ${viewMode === "grid" ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" : "grid-cols-1"}`}
+        className={`grid gap-4 ${
+          viewMode === "grid"
+            ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+            : "grid-cols-1"
+        }`}
       >
         {sortedFiles.map((file) => (
           <div

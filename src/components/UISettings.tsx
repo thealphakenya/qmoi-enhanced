@@ -70,7 +70,7 @@ export const UISettings: React.FC = () => {
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(_next));
         } catch (_e) {}
-        return next;
+        return _next;
       });
     }
 
@@ -81,7 +81,7 @@ export const UISettings: React.FC = () => {
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(_next));
         } catch (_e) {}
-        return next;
+        return _next;
       });
     }
 
@@ -244,7 +244,9 @@ export const UISettings: React.FC = () => {
                   max={2}
                   step={0.05}
                   value={settings.lineHeight}
-                  onChange={(_e) => save({ lineHeight: Number(_e.target.value) })}
+                  onChange={(_e) =>
+                    save({ lineHeight: Number(_e.target.value) })
+                  }
                 />
               </div>
 

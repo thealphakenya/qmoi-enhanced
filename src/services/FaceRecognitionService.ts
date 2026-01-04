@@ -112,10 +112,7 @@ export class FaceRecognitionService {
       await (this.faceApi as any).loadModels();
       console.log("✅ Face recognition API initialized");
     } catch (_error) {
-      (console as any)._error(
-        "Error initializing face recognition API:",
-        _error
-      );
+      console.error("Error initializing face recognition API:", _error);
     }
   }
 
@@ -163,7 +160,7 @@ export class FaceRecognitionService {
       try {
         await this.detectFaces();
       } catch (_error) {
-        (console as any)._error("Error in face detection loop:", _error);
+        console.error("Error in face detection loop:", _error);
       }
     }, this.config.detectionInterval);
   }
@@ -232,7 +229,7 @@ export class FaceRecognitionService {
 
       return faceData;
     } catch (_error) {
-      (console as any)._error("Error processing face detection:", _error);
+      console.error("Error processing face detection:", _error);
       return null;
     }
   }
@@ -265,7 +262,7 @@ export class FaceRecognitionService {
         dominant,
       };
     } catch (_error) {
-      (console as any)._error("Error detecting emotions:", _error);
+      console.error("Error detecting emotions:", _error);
       return {
         happy: 0,
         sad: 0,
@@ -285,7 +282,7 @@ export class FaceRecognitionService {
     try {
       return await (this.faceApi as any).estimateAge(face);
     } catch (_error) {
-      (console as any)._error("Error estimating age:", _error);
+      console.error("Error estimating age:", _error);
       return 0;
     }
   }
@@ -296,7 +293,7 @@ export class FaceRecognitionService {
     try {
       return await (this.faceApi as any).estimateGender(face);
     } catch (_error) {
-      (console as any)._error("Error estimating gender:", _error);
+      console.error("Error estimating gender:", _error);
       return "unknown";
     }
   }
@@ -447,7 +444,7 @@ export class FaceRecognitionService {
         console.log(`📚 Loaded ${this.knownFaces.size} known faces`);
       }
     } catch (_error) {
-      (console as any)._error("Error loading known faces:", _error);
+      console.error("Error loading known faces:", _error);
     }
   }
 
@@ -459,7 +456,7 @@ export class FaceRecognitionService {
       }
       localStorage.setItem("qmoi-known-faces", JSON.stringify(facesData));
     } catch (_error) {
-      (console as any)._error("Error saving known faces:", _error);
+      console.error("Error saving known faces:", _error);
     }
   }
 

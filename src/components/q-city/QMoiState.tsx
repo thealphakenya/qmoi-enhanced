@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from "react";
 
 interface QMoiStateProps {
-  session?: unknown;
-  global?: unknown;
+  session?: any;
+  global?: any;
   minimized?: boolean;
   aiHealth?: { status: string; lastCheck: string; _error?: string };
   isMaster?: boolean;
@@ -24,7 +24,7 @@ export function QMoiState({
   const [currentEmotion, setCurrentEmotion] = useState("focused");
   const [currentActivity, setCurrentActivity] = useState("processing");
   const [showActivityLog, setShowActivityLog] = useState(false);
-  const [auditLogs, setAuditLogs] = useState<unknown[]>([]);
+  const [auditLogs, setAuditLogs] = useState<any[]>([]);
   const [loadingLogs, setLoadingLogs] = useState(false);
   const [logError, setLogError] = useState<string | null>(null);
   const [logFilters, setLogFilters] = useState({
@@ -94,12 +94,12 @@ export function QMoiState({
     })
       .then((r) => r.json())
       .then((data) => {
-        setAuditLogs(data.items || []);
+        setAuditLogs((data && data.items) || []);
         setTotalPages(data.totalPages || 1);
         setLoadingLogs(false);
       })
-      .catch((_e) => {
-        setLogError(_e.message || "Failed to load logs");
+      .catch((err: any) => {
+        setLogError(err?.message || "Failed to load logs");
         setLoadingLogs(false);
       });
   }, [logFilters, page, isMaster, isAdmin]);
@@ -155,16 +155,16 @@ export function QMoiState({
     }
   };
 
-  const exportToCSV = (logs: unknown[]) => {
+  const exportToCSV = (logs: any[]) => {
     const header = "Timestamp,User,Action,Device,Status,Command";
-    const rows = logs.map((log: unknown) =>
+    const rows = logs.map((log: any) =>
       [
         log.timestamp,
         log.user,
         log.action,
         log.deviceId,
         log.status,
-        log.command.replace(/"/g, '""'),
+        (log.command || "").toString().replace(/"/g, '""'),
       ]
         .map((x) => `"${x || ""}"`)
         .join(",")
@@ -177,8 +177,8 @@ export function QMoiState({
     a.click();
   };
 
-  const exportToJSON = (logs: unknown[]) => {
-    const blob = new Blob([JSON.stringify(logs, null, 2)], {
+  const exportToJSON = (arr: any[]) => {
+    const blob = new Blob([JSON.stringify(arr, null, 2)], {
       type: "application/json",
     });
     const a = document.createElement("a");
@@ -386,7 +386,7 @@ export function QMoiState({
                   </tr>
                 </thead>
                 <tbody>
-                  {auditLogs.map((log, i) => (
+                  {auditLogs.map((log: any, i) => (
                     <tr key={i}>
                       <td className="px-2 py-1">{log.timestamp}</td>
                       <td className="px-2 py-1">{log.user}</td>

@@ -68,7 +68,7 @@ export default function QMoiAutoDevPanel({
       });
       const data = await _res.json();
       setStatus(data);
-    } catch (_e: unknown) {
+    } catch (_e: any) {
       const err = _e as any;
       setError(err?.message ?? String(_e));
     }
@@ -90,12 +90,12 @@ export default function QMoiAutoDevPanel({
         }),
       });
       const data = await _res.json();
-      setStatus((prev: unknown) => ({
+      setStatus((prev: any) => ({
         ...prev,
         daemon: data.status,
         running: data.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (_e: any) {
       const err = _e as any;
       setError(err?.message ?? String(_e));
     }
@@ -109,12 +109,12 @@ export default function QMoiAutoDevPanel({
       if (status?.lastResult?.fixResults) {
         const logEntries = [];
         if (status.lastResult.fixResults.length > 0) {
-          status.lastResult.fixResults.forEach((fix: unknown, idx: number) => {
+          status.lastResult.fixResults.forEach((item: any, idx: number) => {
             logEntries.push({
               timestamp: status.lastRun,
               action: `Fix Cycle #${idx + 1}`,
               type: "fix",
-              result: JSON.stringify(fix, null, 2),
+              result: JSON.stringify(item, null, 2),
             });
           });
         }
@@ -130,7 +130,7 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (_e: any) {
       const err = _e as any;
       setError(err?.message ?? String(_e));
     }
@@ -151,8 +151,9 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
-      setError(_e.message);
+    } catch (_e: any) {
+      const err = _e as any;
+      setError(err?.message ?? String(_e));
     }
     setForceRunLoading(false);
   }

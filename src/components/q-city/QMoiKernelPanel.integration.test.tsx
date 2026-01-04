@@ -20,7 +20,7 @@ describe("QMoiKernelPanel Integration", () => {
     if (!mswInstalled) {
       jest
         .spyOn(global, "fetch" as any)
-        .mockImplementation(async (input: unknown, init: unknown) => {
+        .mockImplementation(async (input: any, init: unknown) => {
           const url = typeof input === "string" ? input : input?.url || "";
           if (url.endsWith("/api/qmoi/status")) {
             return new Response(
@@ -145,7 +145,7 @@ describe("QMoiKernelPanel Integration", () => {
       const helpers = (msw as any).http ?? (msw as any).rest;
       if (helpers) {
         server.use(
-          helpers.get("/api/qmoi/status", (_req: unknown, _res: unknown, ctx: unknown) => {
+          helpers.get("/api/qmoi/status", (_req: any, _res: any, ctx: any) => {
             return _res(ctx.status(500));
           })
         );
@@ -153,8 +153,8 @@ describe("QMoiKernelPanel Integration", () => {
     } catch {
       jest
         .spyOn(global, "fetch" as any)
-        .mockImplementation(async (input: unknown) => {
-          const url = typeof input === "string" ? input : input.url;
+        .mockImplementation(async (arg: any) => {
+          const url = typeof arg === "string" ? arg : (arg as any)?.url;
           if (url.endsWith("/api/qmoi/status")) {
             return new Response(null, { status: 500 });
           }
