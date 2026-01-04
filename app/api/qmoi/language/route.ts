@@ -11,7 +11,7 @@ export const runtime = "nodejs";
 export default async function handler(_req: NextApiRequest,
   _res: NextApiRespons_e,
 ) {
-  const auth = requireApiKey(new Headers(_req.headers as unknown) as any);
+  const auth = requireApiKey(new Headers(_req.headers as any) as any);
   if (!auth.ok) {
     return _res
       .status(auth._response?.status || 401)

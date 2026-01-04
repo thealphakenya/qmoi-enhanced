@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
-  const [channels, setChannels] = useState<any[]>([]);
-  const [current, setCurrent] = useState<any>(null);
-  const [programs, setPrograms] = useState<any[]>([]);
+  const [channels, setChannels] = useState<unknown[]>([]);
+  const [current, setCurrent] = useState<unknown>(null);
+  const [programs, setPrograms] = useState<unknown[]>([]);
   const [listeners, setListeners] = useState(0);
   const [selectedChannel, setSelectedChannel] = useState<number | null>(null);
   const [newProgram, setNewProgram] = useState({

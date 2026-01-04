@@ -16,12 +16,12 @@ interface CacheEntry<T> {
 }
 
 interface RequestQueue {
-  pending: Map<string, Promise<any>>;
+  pending: Map<string, Promise<unknown>>;
   retries: Map<string, number>;
 }
 
 // In-memory cache for adapter results (TTL-based)
-const cache = new Map<string, CacheEntry<any>>();
+const cache = new Map<string, CacheEntry<unknown>>();
 const requestQueue: RequestQueue = {
   pending: new Map(),
   retries: new Map(),
@@ -82,7 +82,7 @@ async function withRetry<T>(
   for (let i = 0; i <= maxRetries; i++) {
     try {
       return await fn();
-    } catch (_err) {
+    } catch (_err) { void _err;
       lastError = _err;
       if (i < maxRetries) {
         const delay = RETRY_DELAY * Math.pow(2, i); // exponential backoff
@@ -115,12 +115,12 @@ async function deduplicateRequest<T>(
 // ADAPTER FUNCTIONS - WITH PARALLEL & BACKGROUND SUPPORT
 // ============================================================================
 
-export async function fetchMedia(forceRefresh = false): Promise<any[]> {
+export async function fetchMedia(forceRefresh = false): Promise<unknown[]> {
   const cacheKey = getCacheKey("media");
 
   // Check cache first (unless force refresh)
   if (!forceRefresh) {
-    const cached = getFromCache<any[]>(cacheKey);
+    const cached = getFromCache<unknown[]>(cacheKey);
     if (cached) return cached;
   }
 
@@ -195,7 +195,7 @@ export async function sendMail(payload: {
     });
 }
 
-export async function uploadFile(formData: FormData): Promise<any> {
+export async function uploadFile(formData: FormData): Promise<unknown> {
   return withRetry(
     async () => {
       const _res = await fetch(getEndpoint("files"), {
@@ -217,7 +217,7 @@ export async function uploadFile(formData: FormData): Promise<any> {
 export async function emergencyAction(
   action: string,
   payload: unknown,
-): Promise<any> {
+): Promise<unknown> {
   // Emergency actions skip retry logic for speed
   try {
     const _res = await fetch(getEndpoint("emergency"), {
@@ -229,16 +229,16 @@ export async function emergencyAction(
     const result = await _res.json();
     console.info(`[Emergency] Action ${action} executed:`, result);
     return result;
-  } catch (_err) {
-    console._error("emergencyAction _error", _err);
+  } catch (_err) { void _err;
+    (console as any)._error("emergencyAction _error", _err);
     return { ok: false, _error: String(_err) };
   }
 }
 
-export async function youtubeDownload(url: string): Promise<any> {
+export async function youtubeDownload(url: string): Promise<unknown> {
   const cacheKey = getCacheKey("youtube", { url });
 
-  const cached = getFromCache<any>(cacheKey);
+  const cached = getFromCache<unknown>(cacheKey);
   if (cached) return cached;
 
   return deduplicateRequest(cacheKey, async () => {
@@ -292,7 +292,7 @@ export async function checkHealth(): Promise<{
     if (_res.ok) {
       return { status: "healthy", timestamp: new Date().toISOString() };
     }
-  } catch (_err) {
+  } catch (_err) { void _err;
     console.warn("Health check failed", _err);
   }
   return { status: "degraded", timestamp: new Date().toISOString() };

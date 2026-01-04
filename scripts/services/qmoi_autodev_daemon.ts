@@ -496,7 +496,7 @@ export const QmoiAutodevDaemon: DaemonControl = {
 
   stop() {
     if (this.intervalId) {
-      clearInterval(this.intervalId);
+      clearInterval(this.intervalId as any);
       this.intervalId = null;
       running = false;
       logger.info("[QMOI-AUTODEV-DAEMON] Stopped continuous auto-fix daemon.");

@@ -30,7 +30,7 @@ export class QCityService {
       await this.notificationService.sendNotification(
         "Q-City Initialization Error",
         `Failed to initialize Q-City service: ${
-          (_error as unknown)?.message || String(_error)
+          (_error as any)?.message || String(_error)
         }`,
       );
       throw _error;

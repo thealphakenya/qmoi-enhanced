@@ -5,7 +5,7 @@ export default function LanguageLabPanel() {
     <div>
       <h2 className="text-2xl font-bold mb-4">Language Lab</h2>
       <p>
-        Practice, learn, and master any language. (UI and features coming soon)
+        Practice, learn, and master unknown language. (UI and features coming soon)
       </p>
       <ul className="mt-4 list-disc ml-6">
         <li>Multilingual chat and speech</li>

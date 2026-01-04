@@ -10,7 +10,7 @@ export default function QMoiMemoryPanel({
 }: {
   isMaster?: boolean;
 }) {
-  const [memory, setMemory] = useState<any>(null);
+  const [memory, setMemory] = useState<unknown>(null);
   const [feedback, setFeedback] = useState("");
   const [correction, setCorrection] = useState("");
   const [message, setMessage] = useState("");

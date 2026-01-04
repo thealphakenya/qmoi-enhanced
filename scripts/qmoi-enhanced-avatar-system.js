@@ -500,7 +500,7 @@ class QMOIEnhancedAvatarSystem {
       await fs.appendFile(this.logPath, JSON.stringify(logEntry) + '\n');
       this.activities = []; // Clear after saving
     } catch (_error) {
-      console._error('Failed to save activity log:', _error.message);
+      (console as any)._error('Failed to save activity log:', _error.message);
     }
   }
 

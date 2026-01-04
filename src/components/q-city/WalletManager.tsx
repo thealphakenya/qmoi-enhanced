@@ -42,7 +42,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       if (!_res.ok) throw new Error("Failed to fetch pending requests");
       const data = await _res.json();
       setPendingRequests(data);
-    } catch (_err) {
+    } catch (_err) { void _err;
       setError("Failed to load pending requests");
       toast({
         title: "Error",

@@ -83,7 +83,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (_err) { void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch trading history",
       );

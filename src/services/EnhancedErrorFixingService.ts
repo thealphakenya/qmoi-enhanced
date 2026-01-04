@@ -17,7 +17,7 @@ interface ErrorReport {
   retryCount: number;
   fixHistory: FixAttempt[];
   rootCause?: string;
-  learningData?: Record<string, any>;
+  learningData?: Record<string, unknown>;
 }
 
 interface FixAttempt {
@@ -187,7 +187,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
           this.emit("noFixAvailable", errorReport);
         }
       } catch (_error) {
-        console._error("❌ Failed to process _error:", _error);
+        (console as any)._error("❌ Failed to process _error:", _error);
         this.emit("processingError", { errorReport, _error });
       } finally {
         this.isProcessing = false;
@@ -526,7 +526,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
 
     if (!fixAttempt.success) {
       fixAttempt._error = lastError;
-      console._error("❌ All fix attempts failed");
+      (console as any)._error("❌ All fix attempts failed");
     }
 
     fixAttempt.duration = Date.now() - startTime;
@@ -659,7 +659,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   public stopContinuousMonitoring(): void {
     this.continuousMonitoring = false;
     if (this.monitoringInterval) {
-      clearInterval(this.monitoringInterval);
+      clearInterval(this.monitoringInterval as any);
     }
     console.log("🛑 Stopped continuous _error monitoring");
     this.emit("monitoringStopped");

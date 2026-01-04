@@ -85,7 +85,7 @@ class LintWatcher {
 
   debouncedLint() {
     if (this.debounceTimer) {
-      clearTimeout(this.debounceTimer);
+      clearTimeout(this.debounceTimer as any);
     }
 
     this.debounceTimer = setTimeout(() => {
@@ -120,7 +120,7 @@ class LintWatcher {
 
   stop() {
     if (this.debounceTimer) {
-      clearTimeout(this.debounceTimer);
+      clearTimeout(this.debounceTimer as any);
     }
     this.log("Stopping file watcher...", "info");
     process.exit(0);

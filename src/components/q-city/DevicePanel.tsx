@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 export default function DevicePanel() {
-  const [devices, setDevices] = useState<any[]>([]);
+  const [devices, setDevices] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(false);
   const [_error, setError] = useState("");
   const [form, setForm] = useState({
@@ -12,7 +12,7 @@ export default function DevicePanel() {
     password: "",
     privateKey: "",
   });
-  const [editing, setEditing] = useState<any>(null);
+  const [editing, setEditing] = useState<unknown>(null);
   const [testResult, setTestResult] = useState("");
 
   const token =

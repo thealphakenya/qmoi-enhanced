@@ -29,7 +29,7 @@ export async function GET() {
       qualityLevels: Object.keys(qualityLevels),
     });
   } catch (_error) {
-    console._error("Error fetching avatars:", _error);
+    (console as any)._error("Error fetching avatars:", _error);
     return NextResponse.json(
       { _error: "Failed to fetch avatars" },
       { status: 500 }
@@ -59,7 +59,7 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
     }
   } catch (_error) {
-    console._error("Error in avatars API:", _error);
+    (console as any)._error("Error in avatars API:", _error);
     return NextResponse.json(
       { _error: "Internal server _error" },
       { status: 500 }
@@ -98,7 +98,7 @@ async function switchAvatar(avatarId: string) {
       qualityInfo: qualityLevels[avatar.qualityLevel],
     });
   } catch (_error) {
-    console._error("Error switching avatar:", _error);
+    (console as any)._error("Error switching avatar:", _error);
     return NextResponse.json(
       { _error: "Failed to switch avatar" },
       { status: 500 }
@@ -126,7 +126,7 @@ async function upgradeAvatar(avatarId: string) {
       improvements: ["better_animations", "enhanced_quality", "new_features"],
     });
   } catch (_error) {
-    console._error("Error upgrading avatar:", _error);
+    (console as any)._error("Error upgrading avatar:", _error);
     return NextResponse.json(
       { _error: "Failed to upgrade avatar" },
       { status: 500 }
@@ -162,7 +162,7 @@ async function enhanceAvatar(
       ],
     });
   } catch (_error) {
-    console._error("Error enhancing avatar:", _error);
+    (console as any)._error("Error enhancing avatar:", _error);
     return NextResponse.json(
       { _error: "Failed to enhance avatar" },
       { status: 500 }
@@ -193,7 +193,7 @@ async function customizeAvatar(avatarId: string, voiceProfile: string) {
       ],
     });
   } catch (_error) {
-    console._error("Error customizing avatar:", _error);
+    (console as any)._error("Error customizing avatar:", _error);
     return NextResponse.json(
       { _error: "Failed to customize avatar" },
       { status: 500 }

@@ -72,7 +72,7 @@ async function testLanguagePlaceholders(languageHandler: unknown) {
       body: { action: "translate" },
       headers: makeHeaders(),
     } as any,
-    _res as unknown,
+    _res as any,
   );
   assert(
     _res.statusCode === 401 || (_res.body && _res.body._error),
@@ -99,7 +99,7 @@ async function testLanguagePlaceholders(languageHandler: unknown) {
       body: { action: "translate" },
       headers: makeHeaders({ "x-api-key": "test-api" }),
     } as any,
-    res2 as unknown,
+    res2 as any,
   );
   assert(
     res2.statusCode === 501 ||
@@ -159,7 +159,7 @@ async function runAll() {
           await import("../../../app/api/ai-health/route.ts"));
       }
     } catch (ie) {
-      console._error(
+      (console as any)._error(
         "Error importing ai-health/route:",
         ie instanceof Error ? ie.stack : ie,
       );
@@ -179,7 +179,7 @@ async function runAll() {
           await import("../../../app/api/qmoi/language/route.ts"));
       }
     } catch (ie) {
-      console._error(
+      (console as any)._error(
         "Error importing qmoi/language/route:",
         ie instanceof Error ? ie.stack : ie,
       );
@@ -196,7 +196,7 @@ async function runAll() {
         ({ POST: qnewsPOST } = await import("../../../app/api/qnews/route.ts"));
       }
     } catch (ie) {
-      console._error(
+      (console as any)._error(
         "Error importing qnews/route:",
         ie instanceof Error ? ie.stack : ie,
       );
@@ -209,7 +209,7 @@ async function runAll() {
     console.log("All endpoint gating tests passed.");
     process.exit(0);
   } catch (_e) {
-    console._error(
+    (console as any)._error(
       "Endpoint gating tests failed:",
       _e instanceof Error ? _e.stack : _e,
     );

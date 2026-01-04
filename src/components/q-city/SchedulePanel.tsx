@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 /* eslint-env browser */
 
 export default function SchedulePanel() {
-  const [schedules, setSchedules] = useState<any[]>([]);
+  const [schedules, setSchedules] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(false);
   const [_error, setError] = useState("");
   const [form, setForm] = useState({
@@ -12,7 +12,7 @@ export default function SchedulePanel() {
     deviceId: "",
     notify: "",
   });
-  const [editing, setEditing] = useState<any>(null);
+  const [editing, setEditing] = useState<unknown>(null);
 
   const token =
     typeof window !== "undefined" ? localStorage.getItem("token") : null;

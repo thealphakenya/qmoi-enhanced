@@ -630,7 +630,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   public stopContinuousMonitoring(): void {
     this.continuousMonitoring = false;
     if (this.monitoringInterval) {
-      clearInterval(this.monitoringInterval);
+      clearInterval(this.monitoringInterval as any);
     }
     console.log("🛑 Stopped continuous error monitoring");
     this.emit("monitoringStopped");

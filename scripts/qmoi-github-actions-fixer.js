@@ -81,7 +81,7 @@ class QMOIGitHubActionsFixer {
       );
       return fixReport;
     } catch (_error) {
-      console._error("❌ GitHub Actions fix failed:", _error.message);
+      (console as any)._error("❌ GitHub Actions fix failed:", _error.message);
       await this.sendErrorNotification(
         "GitHub Actions Fix Failed",
         _error.message,

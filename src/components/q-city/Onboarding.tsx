@@ -6,7 +6,7 @@ type OnboardingForm = {
   email: string;
   googleConnected: boolean;
   role: string;
-  preferences: Record<string, any>;
+  preferences: Record<string, unknown>;
 };
 
 const Onboarding: React.FC = () => {

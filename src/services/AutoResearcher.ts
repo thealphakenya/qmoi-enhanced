@@ -1,26 +1,40 @@
 // AutoResearcher: Detects knowledge gaps, researches, and updates knowledge base
 export class AutoResearcher {
-  private knowledgeBase: Record<string, string> = {};
+  private knowledgeBase: Record<string, string>;
 
-  constructor() {
-    // Initialize auto-researcher
+  constructor(initial?: Record<string, string>) {
+    this.knowledgeBase = initial ?? {};
   }
 
+  /**
+   * Returns true when a topic is not present in the knowledge base.
+   */
   detectKnowledgeGap(topic: string): boolean {
-    return !this.knowledgeBase[topic];
+    return !(topic in this.knowledgeBase) || this.knowledgeBase[topic] === "";
   }
 
+  /**
+   * Research a topic and store result in the knowledge base.
+   * Placeholder implementation — integrate search/AI later.
+   */
   async researchTopic(topic: string): Promise<string> {
-    // TODO: Integrate with web search or AI research APIs
     const research = `Auto-researched content for ${topic}`;
     this.knowledgeBase[topic] = research;
     this.notifyImprovements(topic);
     return research;
   }
 
-  notifyImprovements(topic: string) {
-    // Notify user/master of new learnings or improvements
-    // TODO: Integrate with notification system
-    console.log(`New knowledge added for ${topic}`);
+  /**
+   * Notify about improvements. Make this a no-op for now but keep typing.
+   */
+  notifyImprovements(topic: string): void {
+    // TODO: integrate with system notification service
+    // Use console.info which is safe in TS projects
+    console.info(`New knowledge added for ${topic}`);
+  }
+
+  /** Get stored knowledge for a topic (or undefined). */
+  getKnowledge(topic: string): string | undefined {
+    return this.knowledgeBase[topic];
   }
 }

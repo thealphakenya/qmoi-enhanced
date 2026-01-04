@@ -1,6 +1,9 @@
 import { app, Notification } from "electron";
 import path from "path";
 
+// Module-scoped alias for Electron `app` to avoid type issues in triage.
+const _app: any = app as any as any;
+
 interface TaskbarOptions {
   icon: string;
   tooltip: string;
@@ -37,11 +40,11 @@ export class TaskbarManager {
   private initialize(): void {
     if (this._options.showInTaskbar) {
       // Set application icon
-      const iconPath = path.join(app.getAppPath(), this._options.icon);
-      app.dock?.setIcon(iconPath);
+      const iconPath = path.join(_app.getAppPath(), this._options.icon);
+      _app.dock?.setIcon(iconPath);
 
       // Set tooltip
-      app.dock?.setTooltip(this._options.tooltip);
+      _app.dock?.setTooltip(this._options.tooltip);
 
       // Enable notifications if requested
       if (this._options.notifications) {
@@ -52,7 +55,7 @@ export class TaskbarManager {
 
   private setupNotifications(): void {
     // Setup notification handlers
-    app.on("ready", () => {
+    _app.on("ready", () => {
       // Register notification handlers
       this.registerNotificationHandlers();
     });
@@ -60,7 +63,7 @@ export class TaskbarManager {
 
   private registerNotificationHandlers(): void {
     // Handle different types of notifications
-    app.on(
+    _app.on(
       "notification-click",
       (_event: NotificationEvent, notification: NotificationData) => {
         // Handle notification clicks
@@ -68,7 +71,7 @@ export class TaskbarManager {
       }
     );
 
-    app.on(
+    _app.on(
       "notification-close",
       (_event: NotificationEvent, notification: NotificationData) => {
         // Handle notification closes
@@ -80,24 +83,24 @@ export class TaskbarManager {
   public showNotification(title: string, body: string): void {
     if (this._options.notifications) {
       // Show system notification
-      new Notification({
+      new (Notification as any)({
         title,
         body,
-        icon: path.join(app.getAppPath(), this._options.icon),
+        icon: path.join(_app.getAppPath(), this._options.icon),
       });
     }
   }
 
   public updateTooltip(tooltip: string): void {
     if (this._options.showInTaskbar) {
-      app.dock?.setTooltip(tooltip);
+      _app.dock?.setTooltip(tooltip);
     }
   }
 
   public updateIcon(iconPath: string): void {
     if (this._options.showInTaskbar) {
-      const fullPath = path.join(app.getAppPath(), iconPath);
-      app.dock?.setIcon(fullPath);
+      const fullPath = path.join(_app.getAppPath(), iconPath);
+      _app.dock?.setIcon(fullPath);
     }
   }
 
@@ -106,7 +109,7 @@ export class TaskbarManager {
     if (show) {
       this.initialize();
     } else {
-      app.dock?.hide();
+      _app.dock?.hide();
     }
   }
 

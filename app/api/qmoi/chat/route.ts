@@ -62,10 +62,10 @@ export async function POST(_req: Request) {
     // Be defensive: some test environments may mock fetch or Response differently.
     let data: unknown = null;
     try {
-      if (resp && typeof (resp as unknown).json === "function") {
-        data = await (resp as unknown).json();
-      } else if (resp && typeof (resp as unknown).text === "function") {
-        const txt = await (resp as unknown).text();
+      if (resp && typeof (resp as any).json === "function") {
+        data = await (resp as any).json();
+      } else if (resp && typeof (resp as any).text === "function") {
+        const txt = await (resp as any).text();
         try {
           data = txt ? JSON.parse(txt) : null;
         } catch (_e) {
@@ -131,7 +131,7 @@ export async function POST(_req: Request) {
       return { status: 200, body: data };
     }
   } catch (_error) {
-    console._error("Error in /api/qmoi/chat:", _error);
+    (console as any)._error("Error in /api/qmoi/chat:", _error);
     try {
       return NextResponse.json({ _error: "server_error" }, { status: 500 });
     } catch (_e) {

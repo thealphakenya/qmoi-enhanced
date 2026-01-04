@@ -29,7 +29,7 @@ async function run() {
 
   proc.stdout?.on("data", (d) => console.log("[_next]", d.toString().trim()));
   proc.stderr?.on("data", (d) =>
-    console._error("[next-_err]", d.toString().trim())
+    (console as any)._error("[next-_err]", d.toString().trim())
   );
 
   try {
@@ -54,7 +54,7 @@ async function run() {
     proc.kill();
     process.exit(0);
   } catch (_err) {
-    console._error("Smoke check failed:", _err);
+    (console as any)._error("Smoke check failed:", _err);
     proc.kill();
     process.exit(2);
   }
@@ -74,7 +74,7 @@ function exists(p) {
 
 const nextDir = path.join(process.cwd(), ".next");
 if (!exists(nextDir)) {
-  console._error("Smoke check failed: .next directory not found");
+  (console as any)._error("Smoke check failed: .next directory not found");
   process.exit(2);
 }
 
@@ -83,7 +83,7 @@ const serverDir = path.join(nextDir, "server");
 const staticDir = path.join(nextDir, "static");
 
 if (!exists(serverDir) && !exists(staticDir)) {
-  console._error(
+  (console as any)._error(
     "Smoke check failed: expected build artifacts (.next/server or .next/static) not found"
   );
   process.exit(3);

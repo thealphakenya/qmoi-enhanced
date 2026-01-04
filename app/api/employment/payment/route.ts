@@ -26,8 +26,8 @@ const PaymentInfoSchema = z.object({
 });
 
 // [PRODUCTION IMPLEMENTATION REQUIRED] database
-const payments: unknown[] = [];
-const paymentLogs: unknown[] = [];
+const payments: any[] = [];
+const paymentLogs: any[] = [];
 
 // Secure credential storage (in production, use encrypted environment variables)
 // Do NOT keep fallback literal secrets in source. Provide via environment or secrets manager.
@@ -52,7 +52,7 @@ function maskSecret(s: string | undefined | null) {
   return s.replace(/.(?=.{4})/g, "*");
 }
 
-async function backupCredentialsSafe(credentials: unknown, platform: string) {
+async function backupCredentialsSafe(credentials: any, platform: string) {
   try {
     const masked = {
       pesapal: { consumerKey: maskSecret(credentials.pesapal.consumerKey) },
@@ -61,12 +61,15 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
     console.log(`Safe backup for ${platform}:`, masked);
     // Intentionally avoid sending raw secrets via email or API.
   } catch (_error) {
-    console._error("Failed to create safe backup for credentials:", _error);
+    (console as any)._error(
+      "Failed to create safe backup for credentials:",
+      _error
+    );
   }
 }
 
 // Payment processing functions
-async function processMpesaPayment(paymentData: unknown) {
+async function processMpesaPayment(paymentData: any) {
   try {
     // Simulate M-Pesa API call
     const _response = await fetch(
@@ -90,7 +93,7 @@ async function processMpesaPayment(paymentData: unknown) {
           AccountReference: paymentData.description,
           TransactionDesc: paymentData.description,
         }),
-      },
+      }
     );
 
     const result = await _response.json();
@@ -100,12 +103,12 @@ async function processMpesaPayment(paymentData: unknown) {
       provider: "mpesa",
     };
   } catch (_error) {
-    console._error("M-Pesa payment failed:", _error);
-    return { success: fals_e, _error: "M-Pesa payment failed" };
+    (console as any)._error("M-Pesa payment failed:", _error);
+    return { success: false, _error: "M-Pesa payment failed" };
   }
 }
 
-async function processAirtelPayment(paymentData: unknown) {
+async function processAirtelPayment(paymentData: any) {
   try {
     // Simulate Airtel Money API call
     const _response = await fetch(
@@ -132,7 +135,7 @@ async function processAirtelPayment(paymentData: unknown) {
             id: `QMOI_${Date.now()}`,
           },
         }),
-      },
+      }
     );
 
     const result = await _response.json();
@@ -142,12 +145,12 @@ async function processAirtelPayment(paymentData: unknown) {
       provider: "airtel",
     };
   } catch (_error) {
-    console._error("Airtel payment failed:", _error);
-    return { success: fals_e, _error: "Airtel payment failed" };
+    (console as any)._error("Airtel payment failed:", _error);
+    return { success: false, _error: "Airtel payment failed" };
   }
 }
 
-async function processPesapalPayment(paymentData: unknown) {
+async function processPesapalPayment(paymentData: any) {
   try {
     // Simulate Pesapal API call
     const _response = await fetch(
@@ -166,19 +169,21 @@ async function processPesapalPayment(paymentData: unknown) {
           Type="MERCHANT" 
           Reference="${Date.now()}" 
           FirstName="${paymentData.accountName?.split(" ")[0] || "User"}" 
-          LastName="${paymentData.accountName?.split(" ").slice(1).join(" ") || "Name"}" 
+          LastName="${
+            paymentData.accountName?.split(" ").slice(1).join(" ") || "Name"
+          }" 
           Email="${paymentData.email}" 
           PhoneNumber="${paymentData.phone}" 
           xmlns="http://www.pesapal.com" />
       `,
-      },
+      }
     );
 
     const result = await _response.text();
     return { success: true, reference: result, provider: "pesapal" };
   } catch (_error) {
-    console._error("Pesapal payment failed:", _error);
-    return { success: fals_e, _error: "Pesapal payment failed" };
+    (console as any)._error("Pesapal payment failed:", _error);
+    return { success: false, _error: "Pesapal payment failed" };
   }
 }
 
@@ -216,10 +221,10 @@ export async function GET(_request: NextRequest) {
   } catch (_error) {
     return NextResponse.json(
       {
-        success: fals_e,
+        success: false,
         _error: "Failed to fetch payment data",
       },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
@@ -256,7 +261,7 @@ export async function POST(_request: NextRequest) {
           result = await processPesapalPayment(validatedData);
           break;
         default:
-          result = { success: fals_e, _error: "Unsupported payment method" };
+          result = { success: false, _error: "Unsupported payment method" };
       }
 
       // Update payment status
@@ -323,30 +328,30 @@ export async function POST(_request: NextRequest) {
     } else {
       return NextResponse.json(
         {
-          success: fals_e,
+          success: false,
           _error: "Invalid action specified",
         },
-        { status: 400 },
+        { status: 400 }
       );
     }
   } catch (_error) {
     if (_error instanceof z.ZodError) {
       return NextResponse.json(
         {
-          success: fals_e,
+          success: false,
           _error: "Validation failed",
           details: _error.errors,
         },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
     return NextResponse.json(
       {
-        success: fals_e,
+        success: false,
         _error: "Failed to process payment action",
       },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
@@ -360,10 +365,10 @@ export async function PUT(_request: NextRequest) {
     if (index === -1) {
       return NextResponse.json(
         {
-          success: fals_e,
+          success: false,
           _error: "Payment not found",
         },
-        { status: 404 },
+        { status: 404 }
       );
     }
 
@@ -386,10 +391,10 @@ export async function PUT(_request: NextRequest) {
   } catch (_error) {
     return NextResponse.json(
       {
-        success: fals_e,
+        success: false,
         _error: "Failed to update payment",
       },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }

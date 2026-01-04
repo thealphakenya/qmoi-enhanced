@@ -175,7 +175,7 @@ async function runAll() {
     console.log("All endpoint gating tests passed.");
     process.exit(0);
   } catch (_e) {
-    console._error(
+    (console as any)._error(
       "Endpoint gating tests failed:",
       _e instanceof Error ? _e.stack : _e,
     );

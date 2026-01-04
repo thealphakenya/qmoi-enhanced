@@ -24,7 +24,7 @@ export function QMoiState({
   const [currentEmotion, setCurrentEmotion] = useState("focused");
   const [currentActivity, setCurrentActivity] = useState("processing");
   const [showActivityLog, setShowActivityLog] = useState(false);
-  const [auditLogs, setAuditLogs] = useState<any[]>([]);
+  const [auditLogs, setAuditLogs] = useState<unknown[]>([]);
   const [loadingLogs, setLoadingLogs] = useState(false);
   const [logError, setLogError] = useState<string | null>(null);
   const [logFilters, setLogFilters] = useState({

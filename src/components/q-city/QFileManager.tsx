@@ -64,7 +64,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
       if (!_res.ok) throw new Error("Failed to fetch pending requests");
       const data = await _res.json();
       setPendingRequests(data);
-    } catch (_err) {
+    } catch (_err) { void _err;
       setError("Failed to load pending requests");
       toast({
         title: "Error",
@@ -206,7 +206,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
         await new Promise((resolve) => setTimeout(resolve, 1000));
         setFiles((prev) => prev.filter((file) => !file.isSelected));
       } catch (_error) {
-        console._error("Error deleting files:", _error);
+        (console as any)._error("Error deleting files:", _error);
       } finally {
         setIsLoading(false);
       }
@@ -227,7 +227,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
         })),
       );
     } catch (_error) {
-      console._error("Error organizing files:", _error);
+      (console as any)._error("Error organizing files:", _error);
     } finally {
       setIsLoading(false);
     }
@@ -409,7 +409,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
 
         <select
           value={sortBy}
-          onChange={(_e) => setSortBy(_e.target.value as unknown)}
+          onChange={(_e) => setSortBy(_e.target.value as any)}
           className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         >
           <option value="name">📝 Name</option>

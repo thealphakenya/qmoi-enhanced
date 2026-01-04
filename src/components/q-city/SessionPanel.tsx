@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 export default function SessionPanel() {
-  const [sessions, setSessions] = useState<any[]>([]);
+  const [sessions, setSessions] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(false);
   const [_error, setError] = useState("");
   const token =

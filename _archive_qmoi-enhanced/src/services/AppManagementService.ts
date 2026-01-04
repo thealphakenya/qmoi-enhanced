@@ -603,7 +603,7 @@ export class AppManagementService {
 
   private startAutoGitCommit(): void {
     if (this.gitCommitInterval) {
-      clearInterval(this.gitCommitInterval);
+      clearInterval(this.gitCommitInterval as any);
     }
 
     this.gitCommitInterval = setInterval(
@@ -667,7 +667,7 @@ export class AppManagementService {
     if (enabled) {
       this.startAutoGitCommit();
     } else if (this.gitCommitInterval) {
-      clearInterval(this.gitCommitInterval);
+      clearInterval(this.gitCommitInterval as any);
       this.gitCommitInterval = null;
     }
   }

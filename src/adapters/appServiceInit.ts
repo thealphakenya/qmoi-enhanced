@@ -32,8 +32,8 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
-    console._error("[Init] Service initialization failed:", _err);
+  } catch (_err) { void _err;
+    (console as any)._error("[Init] Service initialization failed:", _err);
     throw _err;
   }
 }
@@ -48,7 +48,7 @@ function setupRecoveryListeners(): void {
   const originalFetch = window.fetch;
   window.fetch = async (...args: unknown[]) => {
     try {
-      const _response = await originalFetch.apply(window, args as unknown);
+      const _response = await originalFetch.apply(window, args as any);
 
       if (!_response.ok && _response.status >= 500) {
         // 5xx errors might indicate service issues
@@ -65,8 +65,8 @@ function setupRecoveryListeners(): void {
       }
 
       return _response;
-    } catch (_err) {
-      console._error("[Init] Fetch _error:", _err);
+    } catch (_err) { void _err;
+      (console as any)._error("[Init] Fetch _error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
@@ -116,8 +116,8 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
-      console._error("[Monitor] Health monitoring _error:", _err);
+    } catch (_err) { void _err;
+      (console as any)._error("[Monitor] Health monitoring _error:", _err);
     }
   }, 60 * 1000);
 }

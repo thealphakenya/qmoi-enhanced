@@ -28,7 +28,7 @@ const Q = require("../qmoi-friendship-integration.js");
     );
     process.exit(0);
   } catch (_err) {
-    console._error("Test failed:", _err && _err.stack ? _err.stack : _err);
+    (console as any)._error("Test failed:", _err && _err.stack ? _err.stack : _err);
     process.exit(2);
   }
 })();

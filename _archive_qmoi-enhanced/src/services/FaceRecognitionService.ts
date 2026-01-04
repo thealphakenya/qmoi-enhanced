@@ -216,7 +216,7 @@ export class FaceRecognitionService {
     this.isRunning = false;
 
     if (this.detectionInterval) {
-      clearInterval(this.detectionInterval);
+      clearInterval(this.detectionInterval as any);
       this.detectionInterval = null;
     }
 

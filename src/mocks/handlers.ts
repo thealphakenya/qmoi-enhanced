@@ -9,7 +9,7 @@ export async function getHandlers() {
   debug("handlers.getHandlers: called");
   const msw = await import("msw");
   // Prefer `rest` helpers when available, otherwise fall back to `http` helpers
-  const { rest, http } = msw as unknown;
+  const { rest, http } = msw as any;
   const helpers = rest ?? http;
   debug(
     "handlers.getHandlers: using helper=",
@@ -44,14 +44,14 @@ export async function getHandlers() {
                 ((_req as any)._request as any).path
               );
             } catch (_e) {
-              console._error(
+              (console as any)._error(
                 "HANDLER: status inner _request logging failed",
                 _e
               );
             }
           }
         } catch (_e) {
-          console._error("HANDLER: status handler logging failed", _e);
+          (console as any)._error("HANDLER: status handler logging failed", _e);
         }
         // Support multiple resolver shapes: rest (ctx), http (return object), or http with _res not a function
         const payload = {
@@ -88,7 +88,7 @@ export async function getHandlers() {
               String((_req as any).url)
           );
         } catch (_e) {
-          console._error("HANDLER: absolute status logging failed", _e);
+          (console as any)._error("HANDLER: absolute status logging failed", _e);
         }
         const payload = {
           status: "OK",
@@ -138,19 +138,19 @@ export async function getHandlers() {
                 ((_req as any)._request as any).path
               );
             } catch (_e) {
-              console._error(
+              (console as any)._error(
                 "HANDLER: payload inner _request logging failed",
                 _e
               );
             }
           }
         } catch (_e) {
-          console._error("HANDLER: payload handler logging failed", _e);
+          (console as any)._error("HANDLER: payload handler logging failed", _e);
         }
         // Support both `_req.url` (rest) and `_req._request.url` (http helper)
         const rawUrl =
           (_req && _req.url) ||
-          (_req && _req._request && (_req._request as unknown).url) ||
+          (_req && _req._request && (_req._request as any).url) ||
           "";
         const urlObj =
           typeof rawUrl === "string"
@@ -218,7 +218,7 @@ export async function getHandlers() {
           }
           return _response;
         } catch (_e) {
-          console._error("HANDLER: absolute payload handler failed", _e);
+          (console as any)._error("HANDLER: absolute payload handler failed", _e);
           const out = { message: `Unknown done` };
           if (ctx && typeof (ctx as any).status === "function") {
             return (_res as any)(

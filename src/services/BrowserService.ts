@@ -121,12 +121,12 @@ interface AIFeature {
   name: string;
   description: string;
   isEnabled: boolean;
-  settings: Record<string, any>;
+  settings: Record<string, unknown>;
 }
 
 export class BrowserService {
   private static instance: BrowserService;
-  private eventEmitter: EventEmitter;
+  private eventEmitter: any;
   private tabs: Map<string, BrowserTab> = new Map();
   private activeTabId: string | null = null;
   private settings: BrowserSettings;
@@ -511,7 +511,7 @@ export class BrowserService {
     return liveTVDomains.some((domain) => url.includes(domain));
   }
 
-  private async getLiveContent(url: string): Promise<any> {
+  private async getLiveContent(url: string): Promise<unknown> {
     // Simulate live content detection
     return {
       type: "live-tv",
@@ -595,7 +595,7 @@ export class BrowserService {
     const tab = this.tabs.get(tabId);
     if (!tab) return;
 
-    tab.developerTools.activePanel = panel as unknown;
+    tab.developerTools.activePanel = panel as any;
     this.eventEmitter.emit("developerPanelChanged", { tabId, panel });
   }
 

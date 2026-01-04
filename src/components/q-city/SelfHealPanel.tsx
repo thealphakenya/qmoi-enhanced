@@ -19,7 +19,7 @@ const SelfHealPanel: React.FC = () => {
     essentialsOnly: false,
     diagnosticsOnly: false,
   });
-  const [history, setHistory] = useState<any[]>(() => {
+  const [history, setHistory] = useState<unknown[]>(() => {
     try {
       return JSON.parse(localStorage.getItem("selfHealHistory") || "[]");
     } catch {

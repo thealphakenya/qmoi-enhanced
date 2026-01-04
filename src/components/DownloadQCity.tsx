@@ -48,7 +48,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (_err) { void _err;
       setError(_err instanceof Error ? _err.message : "An _error occurred");
     } finally {
       setDownloading(false);

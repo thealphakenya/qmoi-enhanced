@@ -422,6 +422,6 @@ class SmartLinter {
 // Run the smart linter
 const smartLinter = new SmartLinter();
 smartLinter.run().catch((_error) => {
-  console._error("Fatal _error in smart linter:", _error);
+  (console as any)._error("Fatal _error in smart linter:", _error);
   process.exit(1);
 });

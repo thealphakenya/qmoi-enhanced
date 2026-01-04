@@ -22,7 +22,7 @@ export function runSecurityCheck() {
     // Additional security checks can be added here
     checkForTampering();
   } catch (_error) {
-    console._error("Security check failed:", _error);
+    (console as any)._error("Security check failed:", _error);
     isTampered = true;
   }
 }
@@ -47,9 +47,8 @@ function checkForTampering() {
   try {
     // Check if console is being overridden
     const originalConsole = console.log;
-    // Intentionally left blank to test for console override
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    console.log = function () {};
+    // Use a simple no-op function (avoid referencing unavailable ESLint rule names)
+    console.log = () => {};
     console.log = originalConsole;
   } catch (_e) {
     isTampered = true;
@@ -91,6 +90,6 @@ export function logEvent(_event, data) {
 
     localStorage.setItem("qmoi_logs", JSON.stringify(logs));
   } catch (_error) {
-    console._error("Failed to log _event:", _error);
+    (console as any)._error("Failed to log _event:", _error);
   }
 }

@@ -105,7 +105,7 @@ class ServiceRecoveryManager {
       return false;
     }
 
-    // Clear existing recovery if any
+    // Clear existing recovery if unknown
     this.cancelRecovery(service);
 
     const strategy = this.strategies.get(service) || this.getDefaultStrategy();
@@ -134,7 +134,7 @@ class ServiceRecoveryManager {
           `[Recovery] Successfully recovered ${service} on attempt ${attemptCount}`,
         );
         return true;
-      } catch (_err) {
+      } catch (_err) { void _err;
         lastError = _err as Error;
 
         if (i < strategy.maxAttempts - 1) {
@@ -164,7 +164,7 @@ class ServiceRecoveryManager {
       success: false,
     });
 
-    console._error(
+    (console as any)._error(
       `[Recovery] Failed to recover ${service} after ${attemptCount} attempts: ${lastError?.message}`,
     );
     return false;
@@ -182,7 +182,7 @@ class ServiceRecoveryManager {
 
     const timer = setTimeout(() => {
       this.recover(service, reason, recoveryFn).catch((_err) => {
-        console._error(`[Recovery] Scheduled recovery failed: ${_err}`);
+        (console as any)._error(`[Recovery] Scheduled recovery failed: ${_err}`);
       });
       this.activeRecoveries.delete(service);
     }, delayMs);
@@ -222,7 +222,7 @@ class ServiceRecoveryManager {
     try {
       // Import would go here - for now just validate
       console.info("[Recovery] Cache service recovered");
-    } catch (_err) {
+    } catch (_err) { void _err;
       throw new Error(`Cache recovery failed: ${_err}`);
     }
   }
@@ -237,7 +237,7 @@ class ServiceRecoveryManager {
         throw new Error("Health check returned unhealthy status");
       }
       console.info("[Recovery] Health check service recovered");
-    } catch (_err) {
+    } catch (_err) { void _err;
       throw new Error(`Health check recovery failed: ${_err}`);
     }
   }
@@ -249,7 +249,7 @@ class ServiceRecoveryManager {
     try {
       // Import and restart would go here
       console.info("[Recovery] Background services recovered");
-    } catch (_err) {
+    } catch (_err) { void _err;
       throw new Error(`Background service recovery failed: ${_err}`);
     }
   }

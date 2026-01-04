@@ -81,7 +81,7 @@ interface SecurityReport {
 
 export class VPNService {
   private static instance: VPNService;
-  private eventEmitter: EventEmitter;
+  private eventEmitter: any;
   private servers: Map<string, VPNServer> = new Map();
   private connections: Map<string, VPNConnection> = new Map();
   private settings: VPNSettings;
@@ -280,7 +280,7 @@ export class VPNService {
     encryption: string;
     servers: string[];
     maxUsers: number;
-  }): Promise<any> {
+  }): Promise<unknown> {
     // Generate OpenVPN/WireGuard configuration
     const vpnConfig = {
       name: config.name,
@@ -654,7 +654,7 @@ export class VPNService {
   }
 
   /**
-   * Call this before any sensitive operation to ensure VPN is active.
+   * Call this before unknown sensitive operation to ensure VPN is active.
    */
   public static async ensureSecureConnection(): Promise<void> {
     const vpn = VPNService.getInstance();

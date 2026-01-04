@@ -32,7 +32,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
     media: [] as { type: string; url: string }[],
   });
   const [editingId, setEditingId] = useState<number | null>(null);
-  const [analytics, setAnalytics] = useState<any[]>([]);
+  const [analytics, setAnalytics] = useState<unknown[]>([]);
   const [mediaUrl, setMediaUrl] = useState("");
   const [mediaType, setMediaType] = useState("image");
 

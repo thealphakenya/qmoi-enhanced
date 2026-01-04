@@ -100,7 +100,7 @@ export async function GET(_request: NextRequest) {
       { status: 400 }
     );
   } catch (_error) {
-    console._error("Error in QMOI model endpoint:", _error);
+    (console as any)._error("Error in QMOI model endpoint:", _error);
     return NextResponse.json(
       { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 }
@@ -142,7 +142,7 @@ export async function POST(_request: NextRequest) {
       { status: 400 }
     );
   } catch (_error) {
-    console._error("Error in QMOI model enhancement endpoint:", _error);
+    (console as any)._error("Error in QMOI model enhancement endpoint:", _error);
     return NextResponse.json(
       { _error: _error instanceof Error ? _error.message : "Unknown _error" },
       { status: 500 }

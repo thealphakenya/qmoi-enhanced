@@ -24,7 +24,7 @@ export class AIRequestRouter {
   }
 
   // Main entry point for all requests
-  async handleRequest(_request: AIRequest): Promise<any> {
+  async handleRequest(_request: AIRequest): Promise<unknown> {
     let user: User | undefined;
     if (_request.whatsappId) {
       user = this.sessionManager.getUserByWhatsAppId(_request.whatsappId);

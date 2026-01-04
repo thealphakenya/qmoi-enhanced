@@ -77,7 +77,7 @@ class QMOIMasterSystem {
         await fs.writeFile(dashboardTracksPath, updated, 'utf-8');
       }
     } catch (_err) {
-      console._error('Failed to log activity:', _err.message);
+      (console as any)._error('Failed to log activity:', _err.message);
     }
   }
 
@@ -196,7 +196,7 @@ class QMOIMasterSystem {
       console.log('🎉 QMOI Master System fully initialized and operational');
       
     } catch (_error) {
-      console._error('❌ Failed to initialize QMOI Master System:', _error.message);
+      (console as any)._error('❌ Failed to initialize QMOI Master System:', _error.message);
       await this.notificationSystem.sendNotification(
         '_error',
         'QMOI Master System Initialization Failed',
@@ -244,7 +244,7 @@ class QMOIMasterSystem {
       return true;
       
     } catch (_error) {
-      console._error('❌ Failed to enable master mode:', _error.message);
+      (console as any)._error('❌ Failed to enable master mode:', _error.message);
       await this.notificationSystem.sendNotification(
         '_error',
         'Master Mode Enable Failed',
@@ -291,7 +291,7 @@ class QMOIMasterSystem {
       return true;
       
     } catch (_error) {
-      console._error('❌ Failed to disable master mode:', _error.message);
+      (console as any)._error('❌ Failed to disable master mode:', _error.message);
       await this.handleError(_error, { phase: 'disableMasterMode' });
       return false;
     }
@@ -336,7 +336,7 @@ class QMOIMasterSystem {
       return true;
       
     } catch (_error) {
-      console._error('❌ Failed to enable parallel processing:', _error.message);
+      (console as any)._error('❌ Failed to enable parallel processing:', _error.message);
       return false;
     }
   }
@@ -582,7 +582,7 @@ class QMOIMasterSystem {
       await fs.appendFile(this.logPath, JSON.stringify(logEntry) + '\n');
       this.activities = []; // Clear after saving
     } catch (_error) {
-      console._error('Failed to save activity log:', _error.message);
+      (console as any)._error('Failed to save activity log:', _error.message);
     }
   }
 
@@ -730,7 +730,7 @@ class QMOIMasterSystem {
       return true;
       
     } catch (_error) {
-      console._error('❌ System enhancement failed:', _error.message);
+      (console as any)._error('❌ System enhancement failed:', _error.message);
       return false;
     }
   }
@@ -787,7 +787,7 @@ class QMOIMasterSystem {
       return true;
       
     } catch (_error) {
-      console._error('❌ Auto-evolution failed:', _error.message);
+      (console as any)._error('❌ Auto-evolution failed:', _error.message);
       return false;
     }
   }

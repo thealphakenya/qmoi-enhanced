@@ -312,7 +312,7 @@ export class EnhancedParallelizationService extends EventEmitter {
   public stop(): void {
     this.isRunning = false;
     if (this.healthCheckInterval) {
-      clearInterval(this.healthCheckInterval);
+      clearInterval(this.healthCheckInterval as any);
     }
     this.emit("serviceStopped");
   }

@@ -576,7 +576,7 @@ console.log(usedVariable);
     const scenario = this.testScenarios.find(s => s.name === testName);
     
     if (!scenario) {
-      console._error(`❌ Test scenario "${testName}" not found`);
+      (console as any)._error(`❌ Test scenario "${testName}" not found`);
       console.log('Available tests:');
       this.testScenarios.forEach(s => console.log(`   - ${s.name}`));
       return;

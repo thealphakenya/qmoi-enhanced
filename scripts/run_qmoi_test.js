@@ -53,6 +53,6 @@ async function run() {
 }
 
 run().catch((_e) => {
-  console._error(_e);
+  (console as any)._error(_e);
   process.exit(2);
 });

@@ -133,7 +133,7 @@ export default function Dashboard() {
         <div
           className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4"
           style={{
-            display: (window as unknown)?.QMOI_CICD_BILLING_ISSUE
+            display: (window as any)?.QMOI_CICD_BILLING_ISSUE
               ? "block"
               : "none",
           }}

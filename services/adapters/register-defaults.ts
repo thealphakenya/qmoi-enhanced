@@ -13,16 +13,16 @@ import PayPalAdapter from "./payments/paypal";
 // Register default adapter instances in dry-run/sandbox mode.
 export function registerDefaults() {
   try {
-    registry.registerAdapter("facebook", new (FacebookAdapter as unknown)());
-    registry.registerAdapter("instagram", new (InstagramAdapter as unknown)());
-    registry.registerAdapter("whatsapp", new (WhatsAppAdapter as unknown)());
-    registry.registerAdapter("linkedin", new (LinkedInAdapter as unknown)());
-    registry.registerAdapter("twitter", new (TwitterAdapter as unknown)());
-    registry.registerAdapter("youtube", new (YouTubeAdapter as unknown)());
-    registry.registerAdapter("tubidy", new (TubidyAdapter as unknown)());
-    registry.registerAdapter("amazon", new (AmazonAdapter as unknown)());
-    registry.registerAdapter("stripe", new (StripeAdapter as unknown)());
-    registry.registerAdapter("paypal", new (PayPalAdapter as unknown)());
+    registry.registerAdapter("facebook", new (FacebookAdapter as any)());
+    registry.registerAdapter("instagram", new (InstagramAdapter as any)());
+    registry.registerAdapter("whatsapp", new (WhatsAppAdapter as any)());
+    registry.registerAdapter("linkedin", new (LinkedInAdapter as any)());
+    registry.registerAdapter("twitter", new (TwitterAdapter as any)());
+    registry.registerAdapter("youtube", new (YouTubeAdapter as any)());
+    registry.registerAdapter("tubidy", new (TubidyAdapter as any)());
+    registry.registerAdapter("amazon", new (AmazonAdapter as any)());
+    registry.registerAdapter("stripe", new (StripeAdapter as any)());
+    registry.registerAdapter("paypal", new (PayPalAdapter as any)());
     console.log("[registerDefaults] adapters registered (dry-run)");
   } catch (_e) {
     console.warn("[registerDefaults] registration partially failed", _e);

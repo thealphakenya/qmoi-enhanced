@@ -113,7 +113,7 @@ class QMOIJSONAutoFixer {
         return await this.advancedFix(content, filePath, originalContent);
       }
     } catch (_error) {
-      console._error(`❌ Error auto-fixing ${filePath}:`, _error.message);
+      (console as any)._error(`❌ Error auto-fixing ${filePath}:`, _error.message);
       return { success: false, _error: _error.message };
     }
   }

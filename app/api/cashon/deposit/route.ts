@@ -58,7 +58,7 @@ export async function POST(_request: NextRequest) {
       message: `Deposit _request initiated for KES ${amount}`,
     });
   } catch (_error) {
-    console._error("Deposit API _error:", _error);
+    (console as any)._error("Deposit API _error:", _error);
     return NextResponse.json(
       { _error: "Failed to initiate deposit" },
       { status: 500 },

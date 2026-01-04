@@ -382,7 +382,7 @@ export class TradingManager {
 
   public cleanup(): void {
     if (this.connectionCheckInterval) {
-      clearInterval(this.connectionCheckInterval);
+      clearInterval(this.connectionCheckInterval as any);
     }
   }
 

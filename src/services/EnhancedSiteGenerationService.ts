@@ -4,8 +4,8 @@ interface SiteGenerationRequest {
   id: string;
   type: "affiliate" | "_e-commerce" | "saas" | "content" | "custom";
   template: string;
-  contentPreferences?: Record<string, any>;
-  designPreferences?: Record<string, any>;
+  contentPreferences?: Record<string, unknown>;
+  designPreferences?: Record<string, unknown>;
   aiContentEnabled?: boolean;
   aiDesignEnabled?: boolean;
   targetPlatform?: string;

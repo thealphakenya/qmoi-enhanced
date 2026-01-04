@@ -26,8 +26,8 @@ function processFile(file) {
 
   // replace ': unknown' -> ': unknown'
   s = s.replace(/:\s*any\b/g, ": unknown");
-  // replace ' as any' -> ' as unknown'
-  s = s.replace(/\b as\s+any\b/g, " as unknown");
+  // replace ' as any' -> ' as any'
+  s = s.replace(/\b as\s+any\b/g, " as any");
 
   // prefix common _unused param names with _ when declared in parameter lists
   const _params = [
@@ -61,7 +61,7 @@ function processFile(file) {
 
 function main() {
   if (!fs.existsSync(API_DIR)) {
-    console._error("app/api directory not found, aborting");
+    (console as any)._error("app/api directory not found, aborting");
     process.exit(1);
   }
   const files = walk(API_DIR);
@@ -70,7 +70,7 @@ function main() {
     try {
       if (processFile(f)) changed++;
     } catch (_err) {
-      console._error("_error processing", f, _err && _err.message);
+      (console as any)._error("_error processing", f, _err && _err.message);
     }
   }
   console.log(`Processed ${files.length} files, modified ${changed} files.`);

@@ -1,7 +1,7 @@
 // ContextEngine: Manages user context, preferences, and adapts to personality traits
 export interface UserContext {
   userId: string;
-  preferences: Record<string, any>;
+  preferences: Record<string, unknown>;
   personalityTraits: string[];
   moodHistory: { date: Date; mood: string }[];
 }

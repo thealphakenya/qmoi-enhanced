@@ -8,7 +8,7 @@ import { server } from "../../mocks/server";
 describe("QMoiKernelPanel Integration", () => {
   beforeAll(async () => {
     // Ensure global MSW is ready and register the canonical handlers used by these tests.
-    await (globalThis as unknown).__MSW_READY__;
+    await (globalThis as any).__MSW_READY__;
     let mswInstalled = false;
     const handlersMod = await import("../../mocks/handlers");
     if (typeof handlersMod.getHandlers === "function") {
@@ -54,7 +54,7 @@ describe("QMoiKernelPanel Integration", () => {
   beforeEach(async () => {
     // Re-apply canonical handlers before each test to avoid leakage from
     // test-local overrides and keep tests deterministic.
-    await (globalThis as unknown).__MSW_READY__;
+    await (globalThis as any).__MSW_READY__;
     try {
       const handlersMod = await import("../../mocks/handlers");
       if (typeof handlersMod.getHandlers === "function") {
@@ -67,7 +67,7 @@ describe("QMoiKernelPanel Integration", () => {
   });
 
   it("debug: raw fetch", async () => {
-    await (globalThis as unknown).__MSW_READY__;
+    await (globalThis as any).__MSW_READY__;
     const handlersMod = await import("../../mocks/handlers");
     if (typeof handlersMod.getHandlers === "function") {
       const hs = await handlersMod.getHandlers();
@@ -80,7 +80,7 @@ describe("QMoiKernelPanel Integration", () => {
   });
 
   afterEach(() => {
-    // Reset any runtime handler overrides and clear mock call history between
+    // Reset unknown runtime handler overrides and clear mock call history between
     // tests so each test runs in a clean environment.
     try {
       server.resetHandlers();
@@ -92,19 +92,19 @@ describe("QMoiKernelPanel Integration", () => {
 
   afterAll(() => {
     try {
-      const ls = (globalThis as unknown).localServer;
+      const ls = (globalThis as any).localServer;
       if (ls && typeof ls.close === "function") ls.close();
     } catch {
       // ignore
     }
     try {
-      // Reset any runtime handlers and stop the server when the suite finishes
+      // Reset unknown runtime handlers and stop the server when the suite finishes
       server.resetHandlers();
       server.close();
     } catch {
       // ignore
     }
-    // Restore any mocked globals now that the suite has finished
+    // Restore unknown mocked globals now that the suite has finished
     jest.restoreAllMocks();
   });
 
@@ -142,7 +142,7 @@ describe("QMoiKernelPanel Integration", () => {
     try {
       server.resetHandlers();
       const msw = await import("msw");
-      const helpers = (msw as unknown).http ?? (msw as unknown).rest;
+      const helpers = (msw as any).http ?? (msw as any).rest;
       if (helpers) {
         server.use(
           helpers.get("/api/qmoi/status", (_req: unknown, _res: unknown, ctx: unknown) => {

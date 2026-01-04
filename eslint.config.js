@@ -29,6 +29,16 @@ export default [
         setTimeout: "readonly",
         clearTimeout: "readonly",
         CustomEvent: "readonly",
+        AbortController: "readonly",
+        AbortSignal: "readonly",
+        Headers: "readonly",
+        Request: "readonly",
+        URLSearchParams: "readonly",
+        EventSource: "readonly",
+        FileReader: "readonly",
+        EventListener: "readonly",
+        KeyboardEvent: "readonly",
+        performance: "readonly",
         SpeechSynthesisUtterance: "readonly",
         HTMLVideoElement: "readonly",
         HTMLCanvasElement: "readonly",
@@ -79,6 +89,8 @@ export default [
     },
     rules: {
       ...typescript.configs.recommended.rules,
+      // TypeScript does its own undefined/global checks; disable ESLint `no-undef` for TS files
+      "no-undef": "off",
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off",
@@ -185,5 +197,5 @@ export default [
         console: "readonly",
       },
     },
-  }
+  },
 ];

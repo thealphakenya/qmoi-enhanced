@@ -10,11 +10,11 @@ async function runAutoConfig() {
       console.log("✅ Auto-configuration completed successfully!");
       process.exit(0);
     } else {
-      console._error("❌ Auto-configuration failed:", result._error);
+      (console as any)._error("❌ Auto-configuration failed:", result._error);
       process.exit(1);
     }
   } catch (_error) {
-    console._error("❌ Auto-configuration _error:", _error.message);
+    (console as any)._error("❌ Auto-configuration _error:", _error.message);
     process.exit(1);
   }
 }

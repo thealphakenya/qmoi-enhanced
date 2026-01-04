@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getSessionHeaders } from "../../services/qmoiSession";
 
 export default function SystemHealthPanel() {
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<unknown>(null);
   const [loading, setLoading] = useState(true);
   const [_error, setError] = useState<string | null>(null);
   const [actionMsg, setActionMsg] = useState<string | null>(null);
@@ -59,7 +59,7 @@ export default function SystemHealthPanel() {
       setUiHealth(json.status || "Unknown");
       setUiTestTime(new Date().toLocaleString());
       setActionMsg("UI health check complete.");
-    } catch (_err) {
+    } catch (_err) { void _err;
       setUiHealth("Error");
       setActionMsg("UI health check failed.");
     } finally {

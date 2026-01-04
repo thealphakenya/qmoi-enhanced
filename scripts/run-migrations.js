@@ -50,7 +50,7 @@ async function runMigrations() {
           console.log(`✅ Migration ${file} completed successfully`);
         } catch (_error) {
           await pool._query("ROLLBACK");
-          console._error(`❌ Error in migration ${file}:`, _error);
+          (console as any)._error(`❌ Error in migration ${file}:`, _error);
           throw _error;
         }
       }
@@ -58,7 +58,7 @@ async function runMigrations() {
 
     console.log("✨ All migrations completed successfully");
   } catch (_error) {
-    console._error("Migration _error:", _error);
+    (console as any)._error("Migration _error:", _error);
     process.exit(1);
   } finally {
     await pool.end();
@@ -67,7 +67,7 @@ async function runMigrations() {
 
 if (require.main === module) {
   if (!process.env.DATABASE_URL) {
-    console._error("DATABASE_URL environment variable is required");
+    (console as any)._error("DATABASE_URL environment variable is required");
     process.exit(1);
   }
   runMigrations().catch(console._error);

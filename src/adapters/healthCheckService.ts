@@ -119,7 +119,7 @@ export class HealthCheckService {
         },
         adapters: {
           status: adapterHealth.status,
-          _error: (adapterHealth as unknown)._error,
+          _error: (adapterHealth as any)._error,
           cacheStats: {
             total: cacheStats.total,
             entries: cacheStats.byEndpoint,
@@ -143,7 +143,7 @@ export class HealthCheckService {
 
       this.recordResponseTime("health-check", Date.now() - startTime);
       return _response;
-    } catch (_err) {
+    } catch (_err) { void _err;
       return {
         timestamp: Date.now(),
         status: "unhealthy",

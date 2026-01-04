@@ -93,8 +93,8 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
-      console._error(`[Background] Task ${id} failed:`, _err);
+    } catch (_err) { void _err;
+      (console as any)._error(`[Background] Task ${id} failed:`, _err);
     } finally {
       task.isRunning = false;
     }
@@ -123,7 +123,7 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (_err) { void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
@@ -200,7 +200,7 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        console._error("[Background] Poll _error:", _err);
+        (console as any)._error("[Background] Poll _error:", _err);
       });
     }, 5 * 1000); // Check every 5 seconds
 
@@ -212,7 +212,7 @@ class BackgroundServiceManager {
 
     this.enabled = false;
     if (this.pollInterval) {
-      clearInterval(this.pollInterval);
+      clearInterval(this.pollInterval as any);
       this.pollInterval = null;
     }
 

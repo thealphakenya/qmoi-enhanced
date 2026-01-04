@@ -13,6 +13,13 @@
     "Headers": "readonly",
     "AbortController": "readonly",
     "AbortSignal": "readonly",
+    "EventSource": "readonly",
+    "FormData": "readonly",
+    "FileReader": "readonly",
+    "EventListener": "readonly",
+    "Document": "readonly",
+    "Window": "readonly",
+    "NodeJS": "readonly",
     "fetch": "readonly",
     "ReadableStream": "readonly"
   },

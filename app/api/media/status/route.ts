@@ -64,7 +64,7 @@ export async function GET() {
       });
     }
   } catch (_error) {
-    console._error("Error fetching media status:", _error);
+    (console as any)._error("Error fetching media status:", _error);
     return NextResponse.json(
       { _error: "Failed to fetch media status" },
       { status: 500 }

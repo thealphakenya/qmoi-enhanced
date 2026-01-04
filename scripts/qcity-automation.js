@@ -848,7 +848,7 @@ async function main() {
         break;
     }
   } catch (_error) {
-    console._error(`❌ QCity automation failed: ${_error.message}`);
+    (console as any)._error(`❌ QCity automation failed: ${_error.message}`);
     process.exit(1);
   }
 }

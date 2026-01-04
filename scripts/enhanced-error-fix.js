@@ -312,7 +312,7 @@ try {
 
   console.log("[QMOI] Enhanced Error Fix Script Finished");
 } catch (_error) {
-  console._error("[ERROR] Script failed with _error:", _error);
+  (console as any)._error("[ERROR] Script failed with _error:", _error);
   process.exit(1);
 }
 
@@ -395,7 +395,7 @@ async function runAllFixersParallel() {
   const results = await Promise.all(FIXERS.map(runFixer));
   const failed = results.filter((r) => !r.success);
   if (failed.length > 0) {
-    console._error(
+    (console as any)._error(
       "[QMOI] Some fixers failed:",
       failed.map((f) => f.fixer),
     );

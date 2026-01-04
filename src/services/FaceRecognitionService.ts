@@ -59,7 +59,7 @@ type Timeout = ReturnType<typeof setTimeout>;
 
 export class FaceRecognitionService {
   private static instance: FaceRecognitionService;
-  private eventEmitter: EventEmitter;
+  private eventEmitter: any;
   private config: FaceConfig;
   private videoElement: HTMLVideoElement | null = null;
   private canvasElement: HTMLCanvasElement | null = null;
@@ -109,10 +109,13 @@ export class FaceRecognitionService {
         estimateGender: async (face: unknown) => "unknown",
       };
 
-      await this.faceApi.loadModels();
+      await (this.faceApi as any).loadModels();
       console.log("✅ Face recognition API initialized");
     } catch (_error) {
-      console._error("Error initializing face recognition API:", _error);
+      (console as any)._error(
+        "Error initializing face recognition API:",
+        _error
+      );
     }
   }
 
@@ -145,7 +148,7 @@ export class FaceRecognitionService {
     this.isRunning = false;
 
     if (this.detectionInterval) {
-      clearInterval(this.detectionInterval);
+      clearInterval(this.detectionInterval as any);
       this.detectionInterval = null;
     }
 
@@ -160,7 +163,7 @@ export class FaceRecognitionService {
       try {
         await this.detectFaces();
       } catch (_error) {
-        console._error("Error in face detection loop:", _error);
+        (console as any)._error("Error in face detection loop:", _error);
       }
     }, this.config.detectionInterval);
   }
@@ -206,28 +209,30 @@ export class FaceRecognitionService {
     await this.identifyFaces(processedFaces);
   }
 
-  private async processFaceDetection(detection: unknown): Promise<FaceData | null> {
+  private async processFaceDetection(
+    detection: unknown
+  ): Promise<FaceData | null> {
     try {
       const faceData: FaceData = {
         id: `face-${Date.now()}-${Math.random()}`,
         name: "Unknown",
-        confidence: detection.confidence,
+        confidence: (detection as any).confidence,
         boundingBox: {
-          x: detection.box.x,
-          y: detection.box.y,
-          width: detection.box.width,
-          height: detection.box.height,
+          x: (detection as any).box?.x,
+          y: (detection as any).box?.y,
+          width: (detection as any).box?.width,
+          height: (detection as any).box?.height,
         },
-        landmarks: detection.landmarks || [],
-        emotions: await this.detectEmotions(detection),
-        age: await this.estimateAge(detection),
-        gender: await this.estimateGender(detection),
+        landmarks: (detection as any).landmarks || [],
+        emotions: await this.detectEmotions(detection as any),
+        age: await this.estimateAge(detection as any),
+        gender: await this.estimateGender(detection as any),
         timestamp: new Date(),
       };
 
       return faceData;
     } catch (_error) {
-      console._error("Error processing face detection:", _error);
+      (console as any)._error("Error processing face detection:", _error);
       return null;
     }
   }
@@ -247,19 +252,20 @@ export class FaceRecognitionService {
     }
 
     try {
-      const emotions = await this.faceApi.detectEmotions(face);
+      const emotions: any = await (this.faceApi as any).detectEmotions(face);
 
       // Find dominant emotion
-      const dominant = Object.entries(emotions).reduce((a, b) =>
-        emotions[a[0]] > emotions[b[0]] ? a : b,
+      const dominant = Object.entries(emotions as any).reduce(
+        (a: any, b: any) =>
+          (emotions as any)[a[0]] > (emotions as any)[b[0]] ? a : b
       )[0];
 
       return {
-        ...emotions,
+        ...(emotions as any),
         dominant,
       };
     } catch (_error) {
-      console._error("Error detecting emotions:", _error);
+      (console as any)._error("Error detecting emotions:", _error);
       return {
         happy: 0,
         sad: 0,
@@ -277,9 +283,9 @@ export class FaceRecognitionService {
     if (!this.config.enableAgeEstimation) return 0;
 
     try {
-      return await this.faceApi.estimateAge(face);
+      return await (this.faceApi as any).estimateAge(face);
     } catch (_error) {
-      console._error("Error estimating age:", _error);
+      (console as any)._error("Error estimating age:", _error);
       return 0;
     }
   }
@@ -288,9 +294,9 @@ export class FaceRecognitionService {
     if (!this.config.enableGenderDetection) return "unknown";
 
     try {
-      return await this.faceApi.estimateGender(face);
+      return await (this.faceApi as any).estimateGender(face);
     } catch (_error) {
-      console._error("Error estimating gender:", _error);
+      (console as any)._error("Error estimating gender:", _error);
       return "unknown";
     }
   }
@@ -337,7 +343,7 @@ export class FaceRecognitionService {
 
     const minLandmarks = Math.min(
       face1.landmarks.length,
-      face2.landmarks.length,
+      face2.landmarks.length
     );
     let totalDistance = 0;
 
@@ -346,7 +352,7 @@ export class FaceRecognitionService {
       const point2 = face2.landmarks[i];
 
       const distance = Math.sqrt(
-        Math.pow(point1.x - point2.x, 2) + Math.pow(point1.y - point2.y, 2),
+        Math.pow(point1.x - point2.x, 2) + Math.pow(point1.y - point2.y, 2)
       );
 
       totalDistance += distance;
@@ -355,7 +361,7 @@ export class FaceRecognitionService {
     const averageDistance = totalDistance / minLandmarks;
     const maxDistance = Math.sqrt(
       Math.pow(face1.boundingBox.width, 2) +
-        Math.pow(face1.boundingBox.height, 2),
+        Math.pow(face1.boundingBox.height, 2)
     );
 
     return Math.max(0, 1 - averageDistance / maxDistance);
@@ -364,7 +370,7 @@ export class FaceRecognitionService {
   public async addKnownFace(
     userId: string,
     name: string,
-    faceData: FaceData,
+    faceData: FaceData
   ): Promise<void> {
     const userProfile: UserProfile = {
       id: userId,
@@ -420,7 +426,7 @@ export class FaceRecognitionService {
 
     // Return the dominant emotion from the most confident face
     const primaryFace = this.currentFaces.reduce((a, b) =>
-      a.confidence > b.confidence ? a : b,
+      a.confidence > b.confidence ? a : b
     );
 
     return primaryFace.emotions;
@@ -434,14 +440,14 @@ export class FaceRecognitionService {
     try {
       const savedFaces = localStorage.getItem("qmoi-known-faces");
       if (savedFaces) {
-        const facesData = JSON.parse(savedFaces);
-        for (const [userId, userData] of Object.entries(facesData)) {
+        const facesData: any = JSON.parse(savedFaces);
+        for (const [userId, userData] of Object.entries(facesData as any)) {
           this.knownFaces.set(userId, userData as UserProfile);
         }
         console.log(`📚 Loaded ${this.knownFaces.size} known faces`);
       }
     } catch (_error) {
-      console._error("Error loading known faces:", _error);
+      (console as any)._error("Error loading known faces:", _error);
     }
   }
 
@@ -453,7 +459,7 @@ export class FaceRecognitionService {
       }
       localStorage.setItem("qmoi-known-faces", JSON.stringify(facesData));
     } catch (_error) {
-      console._error("Error saving known faces:", _error);
+      (console as any)._error("Error saving known faces:", _error);
     }
   }
 
@@ -475,7 +481,7 @@ export class FaceRecognitionService {
   }
 
   public onUserIdentified(
-    callback: (data: { user: UserProfile; face: FaceData }) => void,
+    callback: (data: { user: UserProfile; face: FaceData }) => void
   ): void {
     this.eventEmitter.on("userIdentified", callback);
   }

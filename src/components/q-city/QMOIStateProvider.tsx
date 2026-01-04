@@ -70,8 +70,8 @@ interface QMOIContextType {
       Pick<QMOIState, "autoUpgrade" | "autoEnhance" | "dataSaver">
     >
   ) => void;
-  getAvatarInfo: (avatarId: string) => any;
-  getVoiceInfo: (voiceId: string) => any;
+  getAvatarInfo: (avatarId: string) => unknown;
+  getVoiceInfo: (voiceId: string) => unknown;
   getCompatibleVoice: (avatarId: string) => string;
   getCompatibleAvatar: (voiceId: string) => string;
 }
@@ -124,7 +124,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
         const parsedState = JSON.parse(savedState);
         setState((prevState) => ({ ...prevState, ...parsedState }));
       } catch (_error) {
-        console._error("Error loading QMOI state:", _error);
+        (console as any)._error("Error loading QMOI state:", _error);
       }
     }
   }, []);
@@ -188,7 +188,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
         await updateVoice(compatibleVoice);
       }
     } catch (_error) {
-      console._error("Error updating avatar:", _error);
+      (console as any)._error("Error updating avatar:", _error);
       setState((prev) => ({ ...prev, isProcessing: false, currentTask: null }));
     }
   };
@@ -219,7 +219,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
         currentTask: null,
       }));
     } catch (_error) {
-      console._error("Error updating voice:", _error);
+      (console as any)._error("Error updating voice:", _error);
       setState((prev) => ({ ...prev, isProcessing: false, currentTask: null }));
     }
   };

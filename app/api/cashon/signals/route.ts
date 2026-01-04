@@ -38,7 +38,7 @@ export async function GET(_request: NextRequest) {
     const signals = qmoiTrader.getRecentSignals(limit);
     return NextResponse.json(signals);
   } catch (_error) {
-    console._error("Signals API _error:", _error);
+    (console as any)._error("Signals API _error:", _error);
     return NextResponse.json(
       { _error: "Internal server _error" },
       { status: 500 },

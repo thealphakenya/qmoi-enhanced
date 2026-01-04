@@ -32,7 +32,7 @@ interface AppInfo {
   errorMessage?: string;
   dependencies: string[];
   permissions: string[];
-  settings: Record<string, any>;
+  settings: Record<string, unknown>;
   troubleshooting: {
     commonIssues: Array<{
       issue: string;
@@ -73,7 +73,7 @@ type Timeout = ReturnType<typeof setTimeout>;
 
 export class AppManagementService {
   private static instance: AppManagementService;
-  private eventEmitter: EventEmitter;
+  private eventEmitter: any;
   private apps: Map<string, AppInfo> = new Map();
   private isAutoGitEnabled = true;
   private gitCommitInterval: Timeout | null = null;
@@ -368,7 +368,7 @@ export class AppManagementService {
       app.errorMessage =
         _error instanceof Error ? _error.message : "Unknown _error";
       this.eventEmitter.emit("appError", { appId, _error: app.errorMessage });
-      console._error(`Failed to install app ${appId}:`, _error);
+      (console as any)._error(`Failed to install app ${appId}:`, _error);
       throw _error;
     }
   }
@@ -398,7 +398,7 @@ export class AppManagementService {
       await this.sleep(500);
       this.eventEmitter.emit("installationProgress", {
         appId: app.id,
-        stage: stage.stage as unknown,
+        stage: stage.stage as any,
         progress: stage.progress,
         message: stage.message,
       });
@@ -456,7 +456,7 @@ export class AppManagementService {
       // Auto Git commit
       if (this.isAutoGitEnabled) {
         await this.autoGitCommit(
-          `Update ${app.displayName} to v${app.version}`,
+          `Update ${app.displayName} to v${app.version}`
         );
       }
 
@@ -467,7 +467,7 @@ export class AppManagementService {
       app.errorMessage =
         _error instanceof Error ? _error.message : "Unknown _error";
       this.eventEmitter.emit("appError", { appId, _error: app.errorMessage });
-      console._error(`Failed to update app ${appId}:`, _error);
+      (console as any)._error(`Failed to update app ${appId}:`, _error);
       throw _error;
     }
   }
@@ -535,12 +535,12 @@ export class AppManagementService {
         level: "_error",
         message: `Troubleshooting failed: ${_error}`,
       });
-      console._error(`Troubleshooting failed for ${appId}:`, _error);
+      (console as any)._error(`Troubleshooting failed for ${appId}:`, _error);
       throw _error;
     }
   }
 
-  private async runDiagnostics(app: AppInfo): Promise<any[]> {
+  private async runDiagnostics(app: AppInfo): Promise<unknown[]> {
     // Simulate running diagnostics
     const issues = [];
 
@@ -603,17 +603,14 @@ export class AppManagementService {
 
   private startAutoGitCommit(): void {
     if (this.gitCommitInterval) {
-      clearInterval(this.gitCommitInterval);
+      clearInterval(this.gitCommitInterval as any);
     }
 
-    this.gitCommitInterval = setInterval(
-      async () => {
-        if (this.isAutoGitEnabled) {
-          await this.autoGitCommit("Auto-commit: App management changes");
-        }
-      },
-      5 * 60 * 1000,
-    ); // Every 5 minutes
+    this.gitCommitInterval = setInterval(async () => {
+      if (this.isAutoGitEnabled) {
+        await this.autoGitCommit("Auto-commit: App management changes");
+      }
+    }, 5 * 60 * 1000); // Every 5 minutes
   }
 
   private async autoGitCommit(message: string): Promise<void> {
@@ -630,28 +627,25 @@ export class AppManagementService {
 
       console.log(`Auto Git commit: ${message}`);
     } catch (_error) {
-      console._error("Auto Git commit failed:", _error);
+      (console as any)._error("Auto Git commit failed:", _error);
     }
   }
 
   private startUpdateChecker(): void {
-    setInterval(
-      async () => {
-        for (const app of this.apps.values()) {
-          if (app.isInstalled && app.settings.autoUpdate) {
-            try {
-              const update = await this.checkForUpdates(app.id);
-              if (update) {
-                this.eventEmitter.emit("updateAvailable", { app, update });
-              }
-            } catch (_error) {
-              console._error(`Failed to check updates for ${app.id}:`, _error);
+    setInterval(async () => {
+      for (const app of this.apps.values()) {
+        if (app.isInstalled && app.settings.autoUpdate) {
+          try {
+            const update = await this.checkForUpdates(app.id);
+            if (update) {
+              this.eventEmitter.emit("updateAvailable", { app, update });
             }
+          } catch (_error) {
+            (console as any)._error(`Failed to check updates for ${app.id}:`, _error);
           }
         }
-      },
-      60 * 60 * 1000,
-    ); // Check every hour
+      }
+    }, 60 * 60 * 1000); // Check every hour
   }
 
   public getApps(): AppInfo[] {
@@ -667,13 +661,13 @@ export class AppManagementService {
     if (enabled) {
       this.startAutoGitCommit();
     } else if (this.gitCommitInterval) {
-      clearInterval(this.gitCommitInterval);
+      clearInterval(this.gitCommitInterval as any);
       this.gitCommitInterval = null;
     }
   }
 
   public onAppStatusChanged(
-    callback: (data: { appId: string; status: string }) => void,
+    callback: (data: { appId: string; status: string }) => void
   ): void {
     this.eventEmitter.on("appStatusChanged", callback);
   }
@@ -683,13 +677,13 @@ export class AppManagementService {
       appId: string;
       progress: number;
       message: string;
-    }) => void,
+    }) => void
   ): void {
     this.eventEmitter.on("downloadProgress", callback);
   }
 
   public onInstallationProgress(
-    callback: (data: InstallationProgress) => void,
+    callback: (data: InstallationProgress) => void
   ): void {
     this.eventEmitter.on("installationProgress", callback);
   }
@@ -699,25 +693,25 @@ export class AppManagementService {
   }
 
   public onAppUpdated(
-    callback: (data: { app: AppInfo; updateInfo: UpdateInfo }) => void,
+    callback: (data: { app: AppInfo; updateInfo: UpdateInfo }) => void
   ): void {
     this.eventEmitter.on("appUpdated", callback);
   }
 
   public onAppError(
-    callback: (data: { appId: string; _error: string }) => void,
+    callback: (data: { appId: string; _error: string }) => void
   ): void {
     this.eventEmitter.on("appError", callback);
   }
 
   public onUpdateAvailable(
-    callback: (data: { app: AppInfo; update: UpdateInfo }) => void,
+    callback: (data: { app: AppInfo; update: UpdateInfo }) => void
   ): void {
     this.eventEmitter.on("updateAvailable", callback);
   }
 
   public onTroubleshootingCompleted(
-    callback: (data: { appId: string; issues: unknown[] }) => void,
+    callback: (data: { appId: string; issues: unknown[] }) => void
   ): void {
     this.eventEmitter.on("troubleshootingCompleted", callback);
   }

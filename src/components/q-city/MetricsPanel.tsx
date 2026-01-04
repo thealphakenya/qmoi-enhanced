@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 export default function MetricsPanel() {
-  const [metrics, setMetrics] = useState<any>(null);
+  const [metrics, setMetrics] = useState<unknown>(null);
   const [loading, setLoading] = useState(false);
   const [_error, setError] = useState("");
   const token =

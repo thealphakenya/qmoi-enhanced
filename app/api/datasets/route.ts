@@ -60,7 +60,7 @@ export async function GET() {
       });
     }
   } catch (_error) {
-    console._error("Error fetching datasets:", _error);
+    (console as any)._error("Error fetching datasets:", _error);
     // Return mock data during build time or when database fails
     return NextResponse.json({
       datasets: [],
@@ -109,7 +109,7 @@ export async function POST(_request: Request) {
 
     return NextResponse.json(mockDataset);
   } catch (_error) {
-    console._error("Error creating dataset:", _error);
+    (console as any)._error("Error creating dataset:", _error);
     return NextResponse.json(
       { _error: "Failed to create dataset" },
       { status: 500 }

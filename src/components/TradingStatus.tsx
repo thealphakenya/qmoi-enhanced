@@ -58,7 +58,7 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
       }
 
       setLastUpdate(new Date());
-    } catch (_err) {
+    } catch (_err) { void _err;
       setError(_err instanceof Error ? _err.message : "Failed to fetch status");
     } finally {
       setIsLoading(false);

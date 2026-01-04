@@ -6,9 +6,9 @@ import { TextEncoder, TextDecoder } from "util";
 
 // Node may not expose TextEncoder/TextDecoder in older runtimes; ensure they're available
 if (typeof global.TextEncoder === "undefined")
-  (global as unknown).TextEncoder = TextEncoder as unknown;
+  (global as any).TextEncoder = TextEncoder as any;
 if (typeof global.TextDecoder === "undefined")
-  (global as unknown).TextDecoder = TextDecoder as unknown;
+  (global as any).TextDecoder = TextDecoder as any;
 
 import { jest, beforeAll, afterAll, afterEach } from "@jest/globals";
 // Verify hook availability (kept minimal)
@@ -21,10 +21,10 @@ debugLog(
   "SETUP_TESTS: hooks -> beforeAll:",
   typeof beforeAll,
   "global.beforeAll:",
-  typeof (globalThis as unknown).beforeAll
+  typeof (globalThis as any).beforeAll
 );
 // Delay importing MSW until after early polyfills (setupFiles) run
-let server: unknown;
+let server: any;
 let mswReady = false;
 
 declare global {
@@ -33,18 +33,25 @@ declare global {
   var console: Console;
 }
 
+// Augment Console with a non-standard `_error` helper used in test setup
+declare global {
+  interface Console {
+    _error?: (...args: unknown[]) => void;
+  }
+}
+
 // Ensure fetch exists; if not, provide a Jest mock (MSW will set up an implementation)
 if (!global.fetch) {
   // jest.fn() typing is not compatible with the global fetch signature; coerce
   // to any for test setup.
-  (global as unknown).fetch = jest.fn() as any;
+  (global as any).fetch = jest.fn() as any;
 }
 
 // MSW server lifecycle: initialize at module load so interceptors are active
-// before any test modules run. When running under Node (no `window`) we skip
+// before unknown test modules run. When running under Node (no `window`) we skip
 // MSW initialization to avoid ESM/loader issues and unnecessary browser
 // polyfills for node-only integration tests.
-let mswInitPromise: Promise<any>;
+let mswInitPromise: Promise<unknown>;
 if (typeof window === "undefined") {
   debugLog(
     "SETUP_TESTS: detected Node test environment; skipping MSW initialization"
@@ -58,7 +65,7 @@ if (typeof window === "undefined") {
     resetHandlers: () => undefined,
   } as any;
   // Expose readiness promise for compatibility
-  (globalThis as unknown).__MSW_READY__ = mswInitPromise;
+  (globalThis as any).__MSW_READY__ = mswInitPromise;
 } else {
   // Initialize MSW only in environments that look like browsers/jsdom
   mswInitPromise = (async function initializeMswAtLoad() {
@@ -72,15 +79,15 @@ if (typeof window === "undefined") {
         WritableStream,
       } = require("web-streams-polyfill");
       /* eslint-enable @typescript-eslint/no-require-imports */
-      if (typeof global.TransformStream === "undefined")
-        global.TransformStream = TransformStream;
-      if (typeof global.ReadableStream === "undefined")
-        global.ReadableStream = ReadableStream;
-      if (typeof global.WritableStream === "undefined")
-        global.WritableStream = WritableStream;
+      if (typeof (global as any).TransformStream === "undefined")
+        (global as any).TransformStream = TransformStream;
+      if (typeof (global as any).ReadableStream === "undefined")
+        (global as any).ReadableStream = ReadableStream;
+      if (typeof (global as any).WritableStream === "undefined")
+        (global as any).WritableStream = WritableStream;
       if (typeof globalThis !== "undefined") {
-        if (typeof globalThis.TransformStream === "undefined")
-          globalThis.TransformStream = TransformStream;
+        if (typeof (globalThis as any).TransformStream === "undefined")
+          (globalThis as any).TransformStream = TransformStream;
       }
     } catch (_e) {
       // ignore
@@ -106,24 +113,27 @@ if (typeof window === "undefined") {
       if (typeof handlersMod.getHandlers === "function") {
         try {
           debugLog("SETUP_TESTS: invoking handlersMod.getHandlers()");
-          handlers = await handlersMod.getHandlers();
+          handlers = await (handlersMod as any).getHandlers();
           debugLog("SETUP_TESTS: handlers resolved length=", handlers.length);
         } catch (_err) {
+          void _err;
           // Fail fast: handlers must initialize correctly for tests to be valid
-          console._error("SETUP_TESTS: handlersMod.getHandlers() threw:", _err);
+          (console as any)._error(
+            "SETUP_TESTS: handlersMod.getHandlers() threw:",
+            _err
+          );
           throw _err;
         }
       } else {
         handlers =
-          (handlersMod as unknown).handlers ||
-          (handlersMod as unknown).default ||
-          [];
+          (handlersMod as any).handlers || (handlersMod as any).default || [];
         debugLog("SETUP_TESTS: handlers (sync) length=", handlers.length);
       }
 
       // Register handlers on the shared server and start it
       debugLog("SETUP_TESTS: registering handlers on server", handlers.length);
-      if (handlers.length) importedServer.use(...handlers);
+      if ((handlers as any[]).length)
+        (importedServer as any).use(...(handlers as any));
       // Log unhandled requests to aid debugging when handlers don't match. By
       // default we suppress these unless explicitly enabled in CI/dev by
       // setting SHOW_MSW_UNHANDLED=1.
@@ -131,7 +141,7 @@ if (typeof window === "undefined") {
         onUnhandledRequest: (_req) => {
           try {
             if (process.env.SHOW_MSW_UNHANDLED === "1") {
-              console._error(
+              (console as any)._error(
                 "MSW UNHANDLED REQUEST:",
                 (_req as any).method,
                 String((_req as any).url)
@@ -144,6 +154,7 @@ if (typeof window === "undefined") {
               );
             }
           } catch (_err) {
+            void _err;
             // ignore malformed _request objects
           }
         },
@@ -156,11 +167,11 @@ if (typeof window === "undefined") {
       );
     } catch (_e) {
       // Log errors to surface them in CI/dev runs
-      console._error("setupTests failed to initialize MSW:", _e);
+      (console as any)._error("setupTests failed to initialize MSW:", _e);
       // Fallback: if MSW cannot be initialized (ESM/loader issues), install a
       // minimal fetch-based mock so tests don't hit the network. This mirrors
       // the most common handlers used in tests.
-      console._error(
+      (console as any)._error(
         "SETUP_TESTS: Falling back to simple fetch mock server for tests"
       );
 
@@ -210,27 +221,31 @@ if (typeof window === "undefined") {
 
       // Replace global.fetch with a simple router that matches the fallback handlers.
       try {
-        const originalFetch = global.fetch;
-        (global as unknown).fetch = async function fetchFallback(
+        const originalFetch = (global as any).fetch;
+        (global as any).fetch = async function fetchFallback(
           input: unknown,
           init: unknown
         ) {
           try {
-            const url = typeof input === "string" ? input : input?.url || "";
+            const url =
+              typeof input === "string" ? input : (input as any)?.url || "";
             const u = new URL(url, "http://localhost");
-            const method = (init && init.method) || "GET";
+            const method = ((init as any) && (init as any).method) || "GET";
             for (const h of fallbackHandlers) {
               if (h.method === method && h.path === u.pathname) {
-                return h.handler(u);
+                return (h as any).handler(u);
               }
             }
           } catch (er) {
             // ignore parsing errors and fall through to original fetch
           }
-          return (originalFetch as unknown).apply(globalThis, [input, init]);
+          return (originalFetch as any).apply(globalThis, [input, init]);
         } as any;
       } catch (er) {
-        console._error("SETUP_TESTS: failed to install fetch fallback:", er);
+        (console as any)._error(
+          "SETUP_TESTS: failed to install fetch fallback:",
+          er
+        );
       }
 
       // Provide a minimal server object with the same interface used elsewhere
@@ -245,9 +260,9 @@ if (typeof window === "undefined") {
 }
 
 // Expose readiness promise so tests can explicitly await MSW initialization
-(globalThis as unknown).__MSW_READY__ = mswInitPromise;
+(globalThis as any).__MSW_READY__ = mswInitPromise;
 
-// Ensure Jest waits for MSW to finish initializing before any tests run.
+// Ensure Jest waits for MSW to finish initializing before unknown tests run.
 // This ensures XHR requests (which bypass our fetch wrapper) won't race ahead.
 beforeAll(async () => {
   await mswInitPromise;
@@ -258,19 +273,20 @@ beforeAll(async () => {
 try {
   const originalFetch = global.fetch;
   if (typeof originalFetch === "function") {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (global as unknown).fetch = async function fetchWithMswReady(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-unknown
+    (global as any).fetch = async function fetchWithMswReady(
       ...args: unknown[]
     ) {
       await mswInitPromise.catch(() => {});
       try {
         const input = args[0];
-        const url = typeof input === "string" ? input : input?.url || "";
+        const url =
+          typeof input === "string" ? input : (input as any)?.url || "";
         debugLog("FETCH CALL:", url);
       } catch (_e) {
         // ignore
       }
-      return (originalFetch as unknown).apply(globalThis, args);
+      return (originalFetch as any).apply(globalThis, args);
     } as any;
   }
 } catch (_e) {
@@ -279,14 +295,14 @@ try {
 
 afterEach(() => {
   try {
-    if (server) server.resetHandlers();
+    if (server) (server as any).resetHandlers();
   } catch (_e) {
-    console._error("SETUP_TESTS: server.resetHandlers() failed:", _e);
+    (console as any)._error("SETUP_TESTS: server.resetHandlers() failed:", _e);
   }
 });
 afterAll(() => {
   try {
-    if (server) server.close();
+    if (server) (server as any).close();
   } catch (_e) {
     // Non-fatal: avoid failing the test run due to cleanup errors. If you'd
     // like to see these details, set SHOW_MSW_UNHANDLED=1 to surface them.
@@ -303,9 +319,11 @@ const sessionStorageMock = {
   key: jest.fn(),
   length: 0,
 };
-global.sessionStorage = sessionStorageMock as unknown as Storage;
+global.sessionStorage = sessionStorageMock as any as Storage;
 
 // Mock console methods to reduce noise in tests
+// Ensure `_error` exists on console (fall back to `console.error`)
+if (!(console as any)._error) (console as any)._error = console.error;
 global.console = {
   ...console,
   log: jest.fn(),
@@ -313,5 +331,5 @@ global.console = {
   info: jest.fn(),
   warn: jest.fn(),
   // keep errors visible so setup failures surface in CI and dev runs
-  _error: console._error,
+  _error: (console as any)._error,
 };

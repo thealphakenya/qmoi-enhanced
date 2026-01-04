@@ -81,7 +81,7 @@ export function Chatbot() {
         // best-effort playback
         playSSML(data.ssml);
       }
-    } catch (_err) {
+    } catch (_err) { void _err;
       const botMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         text: "Error: could not reach QMOI backend",

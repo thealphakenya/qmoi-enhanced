@@ -49,8 +49,8 @@ function processFile(file) {
 
   // Replace ': unknown' -> ': unknown' (conservative)
   s = s.replace(/:\s*any\b/g, ": unknown");
-  // replace ' as any' -> ' as unknown'
-  s = s.replace(/\b as\s+any\b/g, " as unknown");
+  // replace ' as any' -> ' as any'
+  s = s.replace(/\b as\s+any\b/g, " as any");
 
   // convert 'PluginEvent = { type: string; payload?: unknown }' payload any -> unknown
   s = s.replace(/payload\?:\s*any\b/g, "payload?: unknown");
@@ -75,7 +75,7 @@ function main() {
     try {
       if (processFile(f)) changed++;
     } catch (_err) {
-      console._error("_error processing", f, _err && _err.message);
+      (console as any)._error("_error processing", f, _err && _err.message);
     }
   }
   console.log(`Scanned ${files.length} files, modified ${changed} files.`);

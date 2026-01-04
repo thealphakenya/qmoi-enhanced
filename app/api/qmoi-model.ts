@@ -230,7 +230,7 @@ async function generateDocsAndPackaging(projectName: string, files: unknown[]) {
 }
 
 // --- Enhanced Creative Generators ---
-async function enhancedGameGen(details: unknown) {
+async function enhancedGameGen(details: any) {
   // Add more thorough logic, _error checking, and asset generation
   // ...
   return {
@@ -325,7 +325,7 @@ function encrypt(text: string) {
   );
   let encrypted = cipher.update(text);
   encrypted = Buffer.concat([encrypted, cipher.final()]);
-  return (iv as unknown).toString("hex") + ":" + (encrypted as unknown).toString("hex");
+  return (iv as any).toString("hex") + ":" + (encrypted as any).toString("hex");
 }
 
 function decrypt(text: string) {
@@ -339,7 +339,7 @@ function decrypt(text: string) {
   );
   let decrypted = decipher.update(encryptedText);
   decrypted = Buffer.concat([decrypted, decipher.final()]);
-  return (decrypted as unknown).toString();
+  return (decrypted as any).toString();
 }
 
 // --- Multi-User Conversation Support ---
@@ -513,7 +513,7 @@ async function aiDailyMasterPlan() {
 // --- API Handler Enhancements ---
 export const config = {
   api: {
-    bodyParser: fals_e,
+    bodyParser: false,
   },
 };
 
@@ -651,7 +651,8 @@ async function aiResearchQA(context: string, question: string) {
 }
 
 // --- API Handler --- Buffer, _query?: string) {
-export default async function handler(_req: NextApiRequest,
+export default async function handler(
+  _req: NextApiRequest,
   _res: NextApiResponse
 ) {
   loadLog();
@@ -760,37 +761,40 @@ export default async function handler(_req: NextApiRequest,
     }
   } else if (_req.method === "POST") {
     import("formidable").then((mod) => {
-      const form = (mod as unknown).default ?? mod;
-      form.parse(_req as unknown, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
-        if (files.file) {
-          const file = files.file[0];
-          const buffer = fs.readFileSync(file.filepath);
-          // TODO: Add more intelligent handling based on file type/content
-          if (file.mimetype === "application/pdf") {
-            const result = await aiPdfResearch(buffer, fields._query);
-            return _res.json({
-              file: file.originalFilename,
-              _query: fields._query,
-              result,
-              status: "completed",
-              timestamp: new Date().toISOString(),
-            });
-          } else {
-            const cleanText = (buffer as unknown)
-              .toString("utf8")
-              .replace(/\s+/g, " ")
-              .trim();
-            return _res.json({
-              summary:
-                cleanText.slice(0, 2000) +
-                (cleanText.length > 2000 ? "..." : ""),
-              type: "txt",
-            });
+      const form = (mod as any).default ?? mod;
+      form.parse(
+        _req as any,
+        async (_err: unknown, fields: unknown, files: unknown) => {
+          if (_err) return _res.status(500).json({ _error: _err.message });
+          if (files.file) {
+            const file = files.file[0];
+            const buffer = fs.readFileSync(file.filepath);
+            // TODO: Add more intelligent handling based on file type/content
+            if (file.mimetype === "application/pdf") {
+              const result = await aiPdfResearch(buffer, fields._query);
+              return _res.json({
+                file: file.originalFilename,
+                _query: fields._query,
+                result,
+                status: "completed",
+                timestamp: new Date().toISOString(),
+              });
+            } else {
+              const cleanText = (buffer as any)
+                .toString("utf8")
+                .replace(/\s+/g, " ")
+                .trim();
+              return _res.json({
+                summary:
+                  cleanText.slice(0, 2000) +
+                  (cleanText.length > 2000 ? "..." : ""),
+                type: "txt",
+              });
+            }
           }
+          return _res.status(400).json({ _error: "No file uploaded" });
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
-      });
+      );
     });
   }
 }

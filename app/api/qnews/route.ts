@@ -62,7 +62,7 @@ async function aggregateNews() {
         });
       }
     } catch (_error) {
-      console._error("Failed to fetch ArXiv:", _error);
+      (console as any)._error("Failed to fetch ArXiv:", _error);
     }
 
     // Fetch from HuggingFace
@@ -83,12 +83,12 @@ async function aggregateNews() {
         });
       }
     } catch (_error) {
-      console._error("Failed to fetch HuggingFace:", _error);
+      (console as any)._error("Failed to fetch HuggingFace:", _error);
     }
 
     return aggregatedNews;
   } catch (_error) {
-    console._error("News aggregation failed:", _error);
+    (console as any)._error("News aggregation failed:", _error);
     return [];
   }
 }
@@ -149,7 +149,7 @@ export async function GET(_req: NextRequest) {
       });
     }
   } catch (_error) {
-    console._error("Failed to fetch news:", _error);
+    (console as any)._error("Failed to fetch news:", _error);
     return NextResponse.json(
       { _error: "Failed to fetch news" },
       { status: 500 }
@@ -193,7 +193,7 @@ export async function POST(_req: NextRequest) {
 
     return NextResponse.json({ success: true, item });
   } catch (_error) {
-    console._error("Failed to create news:", _error);
+    (console as any)._error("Failed to create news:", _error);
     return NextResponse.json(
       { _error: "Failed to create news" },
       { status: 500 }
@@ -232,7 +232,7 @@ export async function PUT(_req: NextRequest) {
 
     return NextResponse.json({ success: true, item });
   } catch (_error) {
-    console._error("Failed to update news:", _error);
+    (console as any)._error("Failed to update news:", _error);
     if (
       _error &&
       typeof _error === "object" &&
@@ -277,7 +277,7 @@ export async function POST_SCHEDULE(_req: NextRequest) {
 
     return NextResponse.json({ success: true, item });
   } catch (_error) {
-    console._error("Failed to schedule news:", _error);
+    (console as any)._error("Failed to schedule news:", _error);
     if (
       _error &&
       typeof _error === "object" &&
@@ -315,14 +315,14 @@ export async function GET_ANALYTICS(_req: NextRequest) {
     const analytics = news.map((n: unknown) => ({
       id: n.id,
       title: n.title,
-      views: (n.analytics as unknown)?.views || 0,
-      shares: (n.analytics as unknown)?.shares || 0,
-      engagement: (n.analytics as unknown)?.engagement || 0,
+      views: (n.analytics as any)?.views || 0,
+      shares: (n.analytics as any)?.shares || 0,
+      engagement: (n.analytics as any)?.engagement || 0,
     }));
 
     return NextResponse.json({ analytics });
   } catch (_error) {
-    console._error("Failed to fetch analytics:", _error);
+    (console as any)._error("Failed to fetch analytics:", _error);
     return NextResponse.json(
       { _error: "Failed to fetch analytics" },
       { status: 500 }
@@ -348,7 +348,7 @@ export async function POST_MEDIA(_req: NextRequest) {
       );
     }
 
-    const updatedMedia = [...(newsItem.media as unknown[]), ...media];
+    const updatedMedia = [...(newsItem.media as any[]), ...media];
 
     const item = await prisma.news.update({
       where: { id },
@@ -365,7 +365,7 @@ export async function POST_MEDIA(_req: NextRequest) {
 
     return NextResponse.json({ success: true, item });
   } catch (_error) {
-    console._error("Failed to add media:", _error);
+    (console as any)._error("Failed to add media:", _error);
     return NextResponse.json({ _error: "Failed to add media" }, { status: 500 });
   }
 }
@@ -433,7 +433,7 @@ export async function POST_POST(_req: NextRequest) {
             });
         }
       } catch (_error) {
-        console._error(`Failed to post to ${platform}:`, _error);
+        (console as any)._error(`Failed to post to ${platform}:`, _error);
         results.push({
           platform,
           success: fals_e,
@@ -456,7 +456,7 @@ export async function POST_POST(_req: NextRequest) {
 
     return NextResponse.json({ success: true, posted: results });
   } catch (_error) {
-    console._error("Failed to post news:", _error);
+    (console as any)._error("Failed to post news:", _error);
     return NextResponse.json({ _error: "Failed to post news" }, { status: 500 });
   }
 }

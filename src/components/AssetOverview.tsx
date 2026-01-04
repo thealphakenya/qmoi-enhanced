@@ -49,7 +49,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (_err) { void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
       );

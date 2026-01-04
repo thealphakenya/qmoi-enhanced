@@ -180,7 +180,7 @@ export class EnhancedParallelizationService extends EventEmitter {
     }
   }
 
-  private async runTaskWithTimeout(task: ParallelTask): Promise<any> {
+  private async runTaskWithTimeout(task: ParallelTask): Promise<unknown> {
     return new Promise((resolve, reject) => {
       const timeout = setTimeout(() => {
         reject(
@@ -202,7 +202,7 @@ export class EnhancedParallelizationService extends EventEmitter {
     });
   }
 
-  private async simulateTaskExecution(task: ParallelTask): Promise<any> {
+  private async simulateTaskExecution(task: ParallelTask): Promise<unknown> {
     const startTime = Date.now();
 
     // Simulate task execution with progress updates
@@ -313,7 +313,7 @@ export class EnhancedParallelizationService extends EventEmitter {
   public stop(): void {
     this.isRunning = false;
     if (this.healthCheckInterval) {
-      clearInterval(this.healthCheckInterval);
+      clearInterval(this.healthCheckInterval as any);
     }
     this.emit("serviceStopped");
   }

@@ -47,7 +47,7 @@ function processFile(file) {
   const original = s;
 
   s = s.replace(/:\s*any\b/g, ": unknown");
-  s = s.replace(/\b as\s+any\b/g, " as unknown");
+  s = s.replace(/\b as\s+any\b/g, " as any");
   s = s.replace(/payload\?:\s*any\b/g, "payload?: unknown");
   s = s.replace(paramsRe, (m, lead, name) => `${lead}_${name}`);
 

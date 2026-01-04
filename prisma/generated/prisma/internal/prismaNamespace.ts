@@ -1474,7 +1474,7 @@ export type Datasources = {
   db?: Datasource
 }
 
-export const defineExtension = runtime.Extensions.defineExtension as unknown as runtime.Types.Extensions.ExtendsHook<"define", TypeMapCb, runtime.Types.Extensions.DefaultArgs>
+export const defineExtension = runtime.Extensions.defineExtension as any as runtime.Types.Extensions.ExtendsHook<"define", TypeMapCb, runtime.Types.Extensions.DefaultArgs>
 export type DefaultPrismaClient = PrismaClient
 export type ErrorFormat = 'pretty' | 'colorless' | 'minimal'
 export interface PrismaClientOptions {

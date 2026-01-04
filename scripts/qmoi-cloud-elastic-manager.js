@@ -29,7 +29,7 @@ function ensureElasticStorage() {
         });
         console.log(`[QMOI] Synced ${dir} to elastic cloud storage.`);
       } catch (_e) {
-        console._error(`[QMOI] Cloud sync failed for ${dir}:`, _e.message);
+        (console as any)._error(`[QMOI] Cloud sync failed for ${dir}:`, _e.message);
       }
     }
   }

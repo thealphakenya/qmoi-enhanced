@@ -12,7 +12,7 @@ const requiredEnvVars = ['HF_TOKEN', 'HF_USERNAME'];
 const missingVars = requiredEnvVars.filter(varName => !process.env[varName]);
 
 if (missingVars.length > 0) {
-    console._error('❌ Missing required environment variables:', missingVars.join(', '));
+    (console as any)._error('❌ Missing required environment variables:', missingVars.join(', '));
     console.log('Please set the following environment variables:');
     missingVars.forEach(varName => {
         console.log(`  export ${varName}="your-value"`);
@@ -274,7 +274,7 @@ MIT License
                 execSync(`huggingface-cli upload ${spaceRepo} ${filePath} --token ${process.env.HF_TOKEN}`, { stdio: 'inherit' });
                 console.log(`✅ Uploaded ${file}`);
             } catch (_error) {
-                console._error(`❌ Failed to upload ${file}:`, _error.message);
+                (console as any)._error(`❌ Failed to upload ${file}:`, _error.message);
             }
         }
     }
@@ -284,6 +284,6 @@ MIT License
     console.log('💬 Start chatting with QMOI on Hugging Face Spaces!');
 
 } catch (_error) {
-    console._error('❌ Deployment failed:', _error.message);
+    (console as any)._error('❌ Deployment failed:', _error.message);
     process.exit(1);
 } 

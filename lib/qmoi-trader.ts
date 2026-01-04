@@ -131,7 +131,7 @@ export class QmoiTrader {
 
     this.isRunning = false;
     if (this.tradingLoop) {
-      clearInterval(this.tradingLoop);
+      clearInterval(this.tradingLoop as any);
       this.tradingLoop = null;
     }
 

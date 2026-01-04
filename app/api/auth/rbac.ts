@@ -16,7 +16,7 @@ export function requireRole(roles: string[]) {
         const user = jwt.verify(token, JWT_SECRET) as any;
         if (!roles.includes(user.role))
           return _res.status(403).json({ _error: "Forbidden" });
-        (_req as unknown).user = user;
+        (_req as any).user = user;
         return handler(_req, _res);
       } catch {
         return _res.status(401).json({ _error: "Invalid token" });

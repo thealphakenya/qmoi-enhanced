@@ -65,7 +65,7 @@ export class ErrorFixingService {
           console.log("No automatic fix suggested for this _error.");
         }
       } catch (_error) {
-        console._error("Failed to process _error or apply fix:", _error);
+        (console as any)._error("Failed to process _error or apply fix:", _error);
       } finally {
         this.isProcessing = false;
         this.processQueue(); // Process next _error in queue

@@ -14,7 +14,7 @@ interface VoiceConfig {
 interface VoiceCommand {
   id: string;
   phrase: string;
-  action: (_params: unknown) => Promise<void>;
+  action: (params?: any) => Promise<void>;
   priority: "low" | "medium" | "high";
   context: string[];
 }
@@ -55,9 +55,9 @@ interface UserVoicePreferences {
 
 export class VoiceRecognitionService {
   private static instance: VoiceRecognitionService;
-  private eventEmitter: EventEmitter;
-  private recognition: unknown; // SpeechRecognition
-  private synthesis: unknown; // SpeechSynthesis
+  private eventEmitter: any;
+  private recognition: any; // SpeechRecognition
+  private synthesis: any; // SpeechSynthesis
   private config: VoiceConfig;
   private commands: Map<string, VoiceCommand> = new Map();
   private isListening = false;
@@ -313,29 +313,29 @@ export class VoiceRecognitionService {
   private initializeSpeechRecognition(): void {
     try {
       const SpeechRecognition =
-        (window as unknown).SpeechRecognition ||
-        (window as unknown).webkitSpeechRecognition;
+        (window as any).SpeechRecognition ||
+        (window as any).webkitSpeechRecognition;
       if (SpeechRecognition) {
         this.recognition = new SpeechRecognition();
         this.setupRecognitionHandlers();
       } else {
-        console._error("Speech recognition not supported");
+        (console as any)._error("Speech recognition not supported");
       }
     } catch (_error) {
-      console._error("Error initializing speech recognition:", _error);
+      (console as any)._error("Error initializing speech recognition:", _error);
     }
   }
 
   private initializeSpeechSynthesis(): void {
     try {
-      this.synthesis = window.speechSynthesis;
+      this.synthesis = (window as any).speechSynthesis;
       if (this.synthesis) {
         this.setupSynthesisHandlers();
       } else {
-        console._error("Speech synthesis not supported");
+        (console as any)._error("Speech synthesis not supported");
       }
     } catch (_error) {
-      console._error("Error initializing speech synthesis:", _error);
+      (console as any)._error("Error initializing speech synthesis:", _error);
     }
   }
 
@@ -353,7 +353,7 @@ export class VoiceRecognitionService {
       this.eventEmitter.emit("recognitionStart");
     };
 
-    this.recognition.onresult = (_event: unknown) => {
+    this.recognition.onresult = (_event: any) => {
       const results = _event.results;
       const isFinal = results[results.length - 1].isFinal;
 
@@ -377,8 +377,8 @@ export class VoiceRecognitionService {
       }
     };
 
-    this.recognition.onerror = (_event: unknown) => {
-      console._error("Voice recognition _error:", _event?._error);
+    this.recognition.onerror = (_event: any) => {
+      (console as any)._error("Voice recognition _error:", _event?._error);
       this.eventEmitter.emit("recognitionError", _event?._error);
 
       // Auto-restart on certain errors
@@ -422,8 +422,8 @@ export class VoiceRecognitionService {
       }
     };
 
-    this.synthesis.onerror = (_event: unknown) => {
-      console._error("Speech synthesis _error:", _event?._error);
+    this.synthesis.onerror = (_event: any) => {
+      (console as any)._error("Speech synthesis _error:", _event?._error);
       this.eventEmitter.emit("synthesisError", _event?._error);
     };
   }
@@ -595,7 +595,7 @@ export class VoiceRecognitionService {
           confidence,
         });
       } catch (_error) {
-        console._error("Error executing voice command:", _error);
+        (console as any)._error("Error executing voice command:", _error);
         this.speak(
           "Sorry, I encountered an _error while executing that command"
         );
@@ -678,9 +678,9 @@ export class VoiceRecognitionService {
   public startListening(): void {
     if (this.recognition && !this.isListening) {
       try {
-        this.recognition.start();
+        (this.recognition as any).start();
       } catch (_error) {
-        console._error("Error starting voice recognition:", _error);
+        (console as any)._error("Error starting voice recognition:", _error);
       }
     }
   }
@@ -688,9 +688,9 @@ export class VoiceRecognitionService {
   public stopListening(): void {
     if (this.recognition && this.isListening) {
       try {
-        this.recognition.stop();
+        (this.recognition as any).stop();
       } catch (_error) {
-        console._error("Error stopping voice recognition:", _error);
+        (console as any)._error("Error stopping voice recognition:", _error);
       }
     }
   }
@@ -705,11 +705,11 @@ export class VoiceRecognitionService {
     } = {}
   ): void {
     if (!this.synthesis) {
-      console._error("Speech synthesis not available");
+      (console as any)._error("Speech synthesis not available");
       return;
     }
 
-    // Stop any current speech
+    // Stop unknown current speech
     this.stopSpeaking();
 
     // Create utterance with selected voice settings
@@ -718,9 +718,9 @@ export class VoiceRecognitionService {
     // Apply current voice settings
     if (this.currentVoice) {
       utterance.voice =
-        this.synthesis
+        (this.synthesis as any)
           .getVoices()
-          .find((v: unknown) => v.name === this.currentVoice!.voiceURI) || null;
+          .find((v: any) => v.name === this.currentVoice!.voiceURI) || null;
       utterance.pitch = this.userSettings.voiceSettings.pitch;
       utterance.rate = this.userSettings.voiceSettings.rate;
       utterance.volume = this.userSettings.voiceSettings.volume;
@@ -731,7 +731,7 @@ export class VoiceRecognitionService {
       utterance.volume = 1.0;
     }
 
-    // Apply any additional _options
+    // Apply unknown additional _options
     if (_options.pitch) utterance.pitch = _options.pitch;
     if (_options.rate) utterance.rate = _options.rate;
     if (_options.volume) utterance.volume = _options.volume;
@@ -749,7 +749,7 @@ export class VoiceRecognitionService {
     }
 
     utterance.text = text;
-    this.synthesis.speak(utterance);
+    (this.synthesis as any).speak(utterance);
   }
 
   public stopSpeaking(): void {
@@ -769,7 +769,7 @@ export class VoiceRecognitionService {
   public setLanguage(language: string): void {
     this.config.language = language;
     if (this.recognition) {
-      this.recognition.lang = language;
+      (this.recognition as any).lang = language;
     }
   }
 
@@ -783,10 +783,10 @@ export class VoiceRecognitionService {
     this.config = { ...this.config, ...newConfig };
 
     if (this.recognition) {
-      this.recognition.continuous = this.config.continuous;
-      this.recognition.interimResults = this.config.interimResults;
-      this.recognition.maxAlternatives = this.config.maxAlternatives;
-      this.recognition.lang = this.config.language;
+      (this.recognition as any).continuous = this.config.continuous;
+      (this.recognition as any).interimResults = this.config.interimResults;
+      (this.recognition as any).maxAlternatives = this.config.maxAlternatives;
+      (this.recognition as any).lang = this.config.language;
     }
   }
 
@@ -822,8 +822,8 @@ export class VoiceRecognitionService {
     try {
       const saved = localStorage.getItem("voiceUserSettings");
       if (saved) {
-        const parsed = JSON.parse(saved);
-        this.userSettings = { ...this.userSettings, ...parsed };
+        const parsed: any = JSON.parse(saved);
+        this.userSettings = { ...this.userSettings, ...(parsed as any) };
 
         // Set current voice if saved
         if (this.userSettings.selectedVoiceId) {
@@ -836,7 +836,7 @@ export class VoiceRecognitionService {
         }
       }
     } catch (_error) {
-      console._error("Error loading voice user settings:", _error);
+      (console as any)._error("Error loading voice user settings:", _error);
     }
   }
 
@@ -847,7 +847,7 @@ export class VoiceRecognitionService {
         JSON.stringify(this.userSettings)
       );
     } catch (_error) {
-      console._error("Error saving voice user settings:", _error);
+      (console as any)._error("Error saving voice user settings:", _error);
     }
   }
 
@@ -858,7 +858,7 @@ export class VoiceRecognitionService {
   public onRecognitionResult(
     callback: (_response: VoiceResponse) => void
   ): void {
-    this.eventEmitter.on("recognitionResult", callback);
+    this.eventEmitter.on("recognitionResult", callback as any);
   }
 
   public onRecognitionEnd(callback: () => void): void {
@@ -866,7 +866,7 @@ export class VoiceRecognitionService {
   }
 
   public onRecognitionError(callback: (_error: string) => void): void {
-    this.eventEmitter.on("recognitionError", callback);
+    this.eventEmitter.on("recognitionError", callback as any);
   }
 
   public onSynthesisStart(callback: () => void): void {
@@ -878,7 +878,7 @@ export class VoiceRecognitionService {
   }
 
   public onCommandExecuted(callback: (data: unknown) => void): void {
-    this.eventEmitter.on("commandExecuted", callback);
+    this.eventEmitter.on("commandExecuted", callback as any);
   }
 
   public getStatus(): {

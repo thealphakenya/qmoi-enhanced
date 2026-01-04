@@ -61,7 +61,7 @@ for (const f of files) {
   try {
     fixFile(f);
   } catch (_e) {
-    console._error("_error", f, _e.message);
+    (console as any)._error("_error", f, _e.message);
   }
 }
 

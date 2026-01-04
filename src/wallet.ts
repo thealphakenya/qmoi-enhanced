@@ -12,7 +12,7 @@ export interface WalletAdapter {
     amount: number,
     asset: string,
     strategy?: string,
-    confidence?: number,
+    confidence?: number
   ) => Promise<string>;
   approveTrade?: (tradeId: string, auto?: boolean) => Promise<boolean>;
 }
@@ -36,9 +36,9 @@ export class MockAdapter implements WalletAdapter {
 export class TestnetAdapter implements WalletAdapter {
   name: string;
   isTestnet = true;
-  private opts: unknown;
+  private opts: any;
 
-  constructor(name: string, opts?: unknown) {
+  constructor(name: string, opts?: any) {
     this.name = name;
     this.opts = opts || {};
   }
@@ -54,13 +54,8 @@ export class TestnetAdapter implements WalletAdapter {
     }
 
     // If API key present, adapters may implement a live testnet call. Keep this minimal and safe.
-    try {
-      // Placeholder for real SDK integration. Return a small testnet balance by default.
-      return { amount: 100.0, currency: "USDT" };
-    } catch (_err) {
-      // Fall back to safe deterministic mock on failure
-      return { amount: 0, currency: "USD" };
-    }
+    // Placeholder for real SDK integration. Return a small testnet balance by default.
+    return { amount: 100.0, currency: "USDT" };
   }
 
   // Optional: simulate trade _request on testnet (returns a fake trade id)
@@ -68,15 +63,23 @@ export class TestnetAdapter implements WalletAdapter {
     amount: number,
     asset: string,
     strategy?: string,
-    confidence?: number,
+    confidence?: number
   ) {
-    const id = `test-${this.name}-${Date.now()}-${Math.floor(Math.random() * 10000)}`;
+    void amount;
+    void asset;
+    void strategy;
+    void confidence;
+
+    const id = `test-${this.name}-${Date.now()}-${Math.floor(
+      Math.random() * 10000
+    )}`;
     // In a real adapter, you would call the testnet SDK here. We persist a lightweight entry in state if available.
     return id;
   }
 
   async approveTrade(tradeId: string, auto = false) {
     // Simulate approval always true on testnet adapter
+    void auto;
     return true;
   }
 }
@@ -102,11 +105,12 @@ export class CashonAdapter implements WalletAdapter {
 
   async getBalance() {
     const apiKey =
-      this.opts.apiKey ||
+      (this.opts as any).apiKey ||
       process.env.CASHON_API_KEY ||
       process.env.WALLET_CASHON_API_KEY ||
       null;
-    const apiUrl = this.opts.apiUrl || process.env.CASHON_API_URL || null;
+    const apiUrl =
+      (this.opts as any).apiUrl || process.env.CASHON_API_URL || null;
 
     if (!apiKey) {
       // deterministic mock when no credentials available
@@ -145,12 +149,12 @@ export class CashonAdapter implements WalletAdapter {
 
     // If allowed, attempt a minimal fetch if global fetch exists; otherwise return a network_not_available status
     try {
-      if (typeof (global as unknown).fetch === "function") {
+      if (typeof (global as any).fetch === "function") {
         const url = apiUrl || "https://api.cashon.example/v1/balance";
-        const r = await (global as unknown).fetch(url, {
+        const r = await (global as any).fetch(url, {
           headers: { Authorization: `Bearer ${apiKey}` },
         });
-        const j = await r.json();
+        const j: any = await r.json();
         // Expecting { balance: number, currency: string }
         return {
           amount: j.balance || 0,
@@ -160,6 +164,7 @@ export class CashonAdapter implements WalletAdapter {
       }
       return { amount: 0, currency: "USD", status: "network_not_available" };
     } catch (_err) {
+      void _err;
       return {
         amount: 0,
         currency: "USD",
@@ -174,20 +179,21 @@ export class CashonAdapter implements WalletAdapter {
 export class MegavaultAdapter implements WalletAdapter {
   name: string;
   isTestnet = false;
-  private opts: unknown;
+  private opts: any;
 
-  constructor(name = "megavault", opts?: unknown) {
+  constructor(name = "megavault", opts?: any) {
     this.name = name;
     this.opts = opts || {};
   }
 
   async getBalance() {
     const apiKey =
-      this.opts.apiKey ||
+      (this.opts as any).apiKey ||
       process.env.MEGAVAULT_API_KEY ||
       process.env.WALLET_MEGAVAULT_API_KEY ||
       null;
-    const apiUrl = this.opts.apiUrl || process.env.MEGAVAULT_API_URL || null;
+    const apiUrl =
+      (this.opts as any).apiUrl || process.env.MEGAVAULT_API_URL || null;
 
     if (!apiKey) {
       // deterministic mock when no credentials available
@@ -223,12 +229,12 @@ export class MegavaultAdapter implements WalletAdapter {
     }
 
     try {
-      if (typeof (global as unknown).fetch === "function") {
+      if (typeof (global as any).fetch === "function") {
         const url = apiUrl || "https://api.megavault.example/v1/balance";
-        const r = await (global as unknown).fetch(url, {
+        const r = await (global as any).fetch(url, {
           headers: { Authorization: `Bearer ${apiKey}` },
         });
-        const j = await r.json();
+        const j: any = await r.json();
         return {
           amount: j.balance || 0,
           currency: j.currency || "USD",
@@ -237,6 +243,7 @@ export class MegavaultAdapter implements WalletAdapter {
       }
       return { amount: 0, currency: "USD", status: "network_not_available" };
     } catch (_err) {
+      void _err;
       return {
         amount: 0,
         currency: "USD",
@@ -261,7 +268,7 @@ export class WalletService {
     if (!fs.existsSync(this.stateFile))
       fs.writeFileSync(
         this.stateFile,
-        JSON.stringify({ wallets: {} }, null, 2),
+        JSON.stringify({ wallets: {} }, null, 2)
       );
   }
 
@@ -273,8 +280,8 @@ export class WalletService {
     return this.adapters.get(name);
   }
 
-  async getAllBalances(): Promise<Record<string, any>> {
-    const out: Record<string, any> = {};
+  async getAllBalances(): Promise<Record<string, unknown>> {
+    const out: Record<string, unknown> = {};
     for (const [name, adapter] of this.adapters.entries()) {
       try {
         const b = await adapter.getBalance();
@@ -284,6 +291,7 @@ export class WalletService {
           canonical,
         };
       } catch (_err) {
+        void _err;
         out[name] = { _error: String(_err) };
       }
     }
@@ -304,21 +312,24 @@ export class WalletService {
     return { amount: amount * rate, currency: "USD" };
   }
 
-  persistSnapshot(snapshot: Record<string, any>) {
+  persistSnapshot(snapshot: Record<string, unknown>) {
     try {
-      const data = JSON.parse(fs.readFileSync(this.stateFile, "utf8") || "{}");
+      const data: any = JSON.parse(
+        fs.readFileSync(this.stateFile, "utf8") || "{}"
+      );
       if (!data.history) data.history = [];
       data.history.push({ ts: new Date().toISOString(), snapshot });
       fs.writeFileSync(this.stateFile, JSON.stringify(data, null, 2), "utf8");
     } catch (_err) {
+      void _err;
       fs.writeFileSync(
         this.stateFile,
         JSON.stringify(
           { history: [{ ts: new Date().toISOString(), snapshot }] },
           null,
-          2,
+          2
         ),
-        "utf8",
+        "utf8"
       );
     }
   }
@@ -330,16 +341,19 @@ export class WalletService {
     if (key) return { apiKey: key };
 
     try {
-      const s = JSON.parse(fs.readFileSync(this.stateFile, "utf8") || "{}");
+      const s: any = JSON.parse(
+        fs.readFileSync(this.stateFile, "utf8") || "{}"
+      );
       return s.wallets && s.wallets[name] ? s.wallets[name].creds : null;
     } catch (_err) {
+      void _err;
       return null;
     }
   }
 
   saveWalletState(name: string, meta: unknown) {
     const raw = fs.readFileSync(this.stateFile, "utf8") || "{}";
-    const data = JSON.parse(raw || "{}");
+    const data: any = JSON.parse(raw || "{}");
     data.wallets = data.wallets || {};
     data.wallets[name] = meta;
     fs.writeFileSync(this.stateFile, JSON.stringify(data, null, 2), "utf8");

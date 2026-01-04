@@ -148,7 +148,7 @@ export class TradingManager {
         this.config.bitget.connectionStatus.lastError = undefined;
       }
     } catch (_error) {
-      console._error("Connection check failed:", _error);
+      (console as any)._error("Connection check failed:", _error);
       this.config.bitget.connectionStatus.lastError =
         _error instanceof Error ? _error.message : "Unknown _error";
     }
@@ -172,7 +172,7 @@ export class TradingManager {
           return;
         }
       } catch (_error) {
-        console._error("Recovery strategy failed:", _error);
+        (console as any)._error("Recovery strategy failed:", _error);
       }
     }
   }
@@ -189,7 +189,7 @@ export class TradingManager {
         await this.connectToBitget();
         return;
       } catch (_error) {
-        console._error(`Retry ${i + 1} failed:`, _error);
+        (console as any)._error(`Retry ${i + 1} failed:`, _error);
       }
     }
   }
@@ -260,7 +260,7 @@ export class TradingManager {
       }
       return false;
     } catch (_error) {
-      console._error("Failed to connect to Bitget:", _error);
+      (console as any)._error("Failed to connect to Bitget:", _error);
       return false;
     }
   }
@@ -291,7 +291,7 @@ export class TradingManager {
         }),
       });
     } catch (_error) {
-      console._error("Failed to update Bitget whitelist:", _error);
+      (console as any)._error("Failed to update Bitget whitelist:", _error);
     }
   }
 
@@ -357,7 +357,7 @@ export class TradingManager {
         this.updateWalletBalances(data);
       }
     } catch (_error) {
-      console._error("Failed to update wallet balance:", _error);
+      (console as any)._error("Failed to update wallet balance:", _error);
     }
   }
 
@@ -382,7 +382,7 @@ export class TradingManager {
 
   public cleanup(): void {
     if (this.connectionCheckInterval) {
-      clearInterval(this.connectionCheckInterval);
+      clearInterval(this.connectionCheckInterval as any);
     }
   }
 

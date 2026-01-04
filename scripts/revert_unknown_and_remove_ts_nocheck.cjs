@@ -26,7 +26,7 @@ for (const file of files) {
   out = out.replace(/:\s*unknown\b/g, ": any");
   // unknown[] -> any[]
   out = out.replace(/unknown\[\]/g, "any[]");
-  // as unknown -> as any
+  // as any -> as any
   out = out.replace(/\bas\s+unknown\b/g, "as any");
   // const x: Record<string, unknown> -> Record<string, any>
   out = out.replace(/Record<([^,>]+),\s*unknown>/g, "Record<$1, any>");

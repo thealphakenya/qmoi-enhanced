@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getSessionHeaders } from "../../services/qmoiSession";
 
-function exportToCSV(logs: unknown[]) {
+function exportToCSV(logs: any[]) {
   const header = "Timestamp,Action,Result\n";
   const rows = logs
     .map(
@@ -19,7 +19,7 @@ function exportToCSV(logs: unknown[]) {
   URL.revokeObjectURL(url);
 }
 
-function exportToJSON(logs: unknown[]) {
+function exportToJSON(logs: any[]) {
   const blob = new Blob([JSON.stringify(logs, null, 2)], {
     type: "application/json",
   });
@@ -69,7 +69,8 @@ export default function QMoiAutoDevPanel({
       const data = await _res.json();
       setStatus(data);
     } catch (_e: unknown) {
-      setError(_e.message);
+      const err = _e as any;
+      setError(err?.message ?? String(_e));
     }
     setLoading(false);
   }
@@ -95,7 +96,8 @@ export default function QMoiAutoDevPanel({
         running: data.status?.running,
       }));
     } catch (_e: unknown) {
-      setError(_e.message);
+      const err = _e as any;
+      setError(err?.message ?? String(_e));
     }
     setDaemonAction(null);
   }
@@ -129,7 +131,8 @@ export default function QMoiAutoDevPanel({
         setLogs([]);
       }
     } catch (_e: unknown) {
-      setError(_e.message);
+      const err = _e as any;
+      setError(err?.message ?? String(_e));
     }
     setLogsLoading(false);
   }
@@ -237,7 +240,9 @@ export default function QMoiAutoDevPanel({
         </label>
         <select
           value={deployPlatform}
-          onChange={(_e) => setDeployPlatform(_e.target.value)}
+          onChange={(e) =>
+            setDeployPlatform((e.target as HTMLSelectElement).value)
+          }
           style={{
             background: "#111",
             color: "#0ff",
@@ -434,7 +439,9 @@ export default function QMoiAutoDevPanel({
           <label style={{ marginLeft: 16, color: "#ccc" }}>Filter: </label>
           <select
             value={logFilter}
-            onChange={(_e) => setLogFilter(_e.target.value as unknown)}
+            onChange={(e) =>
+              setLogFilter((e.target as HTMLSelectElement).value as any)
+            }
             style={{
               background: "#111",
               color: "#0ff",

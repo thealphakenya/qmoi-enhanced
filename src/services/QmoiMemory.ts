@@ -57,7 +57,9 @@ export class QmoiMemory {
           }),
         }).catch(() => {});
       }
-    } catch (_e) { void _e; }
+    } catch (_e) {
+      void _e;
+    }
   }
 
   static get(key: string, user?: string, project?: string) {
@@ -80,7 +82,7 @@ export class QmoiMemory {
             if (data && data.profiles) {
               // merge conversations if present
               if (Array.isArray(data.conversations)) {
-                data.conversations.forEach((c: unknown) => {
+                data.conversations.forEach((c: any) => {
                   memoryStore.push({
                     id: recordId++,
                     key: "conversation",
@@ -95,7 +97,9 @@ export class QmoiMemory {
           })
           .catch(() => {});
       }
-    } catch (_e) { void _e; }
+    } catch (_e) {
+      void _e;
+    }
 
     return memoryStore
       .filter(

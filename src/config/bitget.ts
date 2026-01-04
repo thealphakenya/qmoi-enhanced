@@ -3,7 +3,7 @@
 /* eslint-disable no-unreachable */
 /* global Buffer, NodeJS */
 import * as nodeCrypto from "crypto";
-const crypto: unknown = nodeCrypto as unknown;
+const crypto: unknown = nodeCrypto as any;
 import { EventEmitter } from "events";
 
 interface SecurityMetrics {
@@ -1079,14 +1079,14 @@ export class BitgetManager extends EventEmitter {
       // Implement _request signature validation logic
       return true;
     } catch (_error) {
-      console._error("Error validating _request signature:", _error);
+      (console as any)._error("Error validating _request signature:", _error);
       return false;
     }
   }
 
   public async encryptSensitiveData(data: string): Promise<string> {
-    const iv = (nodeCrypto as unknown).randomBytes(16);
-    const cipher = (nodeCrypto as unknown).createCipheriv(
+    const iv = (nodeCrypto as any).randomBytes(16);
+    const cipher = (nodeCrypto as any).createCipheriv(
       "aes-256-gcm",
       this.encryptionKey,
       iv
@@ -1107,7 +1107,7 @@ export class BitgetManager extends EventEmitter {
   public async decryptSensitiveData(encryptedData: string): Promise<string> {
     const { iv, encrypted, authTag } = JSON.parse(encryptedData);
 
-    const decipher = (nodeCrypto as unknown).createDecipheriv(
+    const decipher = (nodeCrypto as any).createDecipheriv(
       "aes-256-gcm",
       this.encryptionKey,
       Buffer.from(iv, "hex")
@@ -1173,7 +1173,7 @@ export class BitgetManager extends EventEmitter {
       // Implement API credential validation logic here
       return true;
     } catch (_error) {
-      console._error("Error validating Bitget API credentials:", _error);
+      (console as any)._error("Error validating Bitget API credentials:", _error);
       return false;
     }
   }
