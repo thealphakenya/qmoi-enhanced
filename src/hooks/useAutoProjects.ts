@@ -264,15 +264,11 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
 
   const notifyMaster = useCallback(async (message: string) => {
     try {
-      // Simulate WhatsApp notification to master
-      console.log("📱 WhatsApp notification to master:", message);
-
-      // In real implementation, this would call the WhatsApp API
-      // await fetch('/api/whatsapp/notify-master', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ message })
-      // });
+      const { sendWhatsApp } = await import("../services/NotificationService");
+      await sendWhatsApp(
+        process.env.NEXT_PUBLIC_MASTER_WHATSAPP || "",
+        message
+      );
     } catch (_error) {
       (console as any)._error("Error notifying master:", _error);
     }
@@ -280,18 +276,11 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
 
   const createWhatsAppGroup = useCallback(async () => {
     try {
-      // Simulate creating WhatsApp group
-      console.log('📱 Creating "Qmoi Auto Projects" WhatsApp group');
-
-      // In real implementation, this would call the WhatsApp API
-      // await fetch('/api/whatsapp/create-group', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({
-      //     name: 'Qmoi Auto Projects',
-      //     description: 'Automated project updates and notifications'
-      //   })
-      // });
+      const { sendWhatsApp } = await import("../services/NotificationService");
+      await sendWhatsApp(
+        process.env.NEXT_PUBLIC_MASTER_WHATSAPP || "",
+        "Creating QMOI Auto Projects group (please approve)"
+      );
     } catch (_error) {
       (console as any)._error("Error creating WhatsApp group:", _error);
     }
@@ -299,15 +288,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
 
   const postToWhatsAppGroup = useCallback(async (message: string) => {
     try {
-      // Simulate posting to WhatsApp group
-      console.log("📱 Posting to WhatsApp group:", message);
-
-      // In real implementation, this would call the WhatsApp API
-      // await fetch('/api/whatsapp/post-to-group', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ message })
-      // });
+      const { sendWhatsApp } = await import("../services/NotificationService");
+      await sendWhatsApp(process.env.NEXT_PUBLIC_WHATSAPP_GROUP || "", message);
     } catch (_error) {
       (console as any)._error("Error posting to WhatsApp group:", _error);
     }

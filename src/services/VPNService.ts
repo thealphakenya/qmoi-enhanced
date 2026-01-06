@@ -238,22 +238,29 @@ export class VPNService {
       this.isCreatingNetwork = true;
       this.eventEmitter.emit("networkCreationStarted", config);
 
-      // Simulate network creation process
-      await this.sleep(2000);
+      // In production, delegate to an external controller/service to provision VPN networks
+      const controllerUrl = process.env.VPN_CONTROLLER_URL;
+      if (!process.env.PRODUCTION_CONFIRMED || !controllerUrl) {
+        throw new Error(
+          "Creating VPN networks requires PRODUCTION_CONFIRMED=true and VPN_CONTROLLER_URL configured"
+        );
+      }
 
-      const networkId = `vpn_network_${Date.now()}`;
-
-      // Create VPN configuration
       const vpnConfig = await this.generateVPNConfig(config);
 
-      // Deploy servers
-      await this.deployServers(config.servers, vpnConfig);
+      const resp = await fetch(`${controllerUrl}/create-network`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ config: vpnConfig }),
+      });
 
-      // Setup encryption and security
-      await this.setupEncryption(config.encryption);
+      if (!resp.ok) {
+        const text = await resp.text();
+        throw new Error(`Controller error: ${resp.status} ${text}`);
+      }
 
-      // Configure routing and firewall
-      await this.configureNetwork(config);
+      const body = await resp.json();
+      const networkId = body.networkId || `vpn_network_${Date.now()}`;
 
       // Setup monitoring and logging
       await this.setupMonitoring(networkId);
@@ -312,23 +319,51 @@ export class VPNService {
     for (const serverId of serverIds) {
       const server = this.servers.get(serverId);
       if (server) {
-        // Simulate server deployment
-        await this.sleep(1000);
-        logger.info(`Deployed server ${server.name} for VPN network`);
+        // In production, call controller to provision server
+        const controllerUrl = process.env.VPN_CONTROLLER_URL;
+        if (!process.env.PRODUCTION_CONFIRMED || !controllerUrl) {
+          throw new Error(
+            "Server deployment requires PRODUCTION_CONFIRMED and VPN_CONTROLLER_URL"
+          );
+        }
+        await fetch(`${controllerUrl}/deploy-server`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ serverId }),
+        });
+        logger.info(`Requested deployment for server ${server.name}`);
       }
     }
   }
 
   private async setupEncryption(encryption: string): Promise<void> {
-    // Simulate encryption setup
-    await this.sleep(500);
-    logger.info(`Setup encryption: ${encryption}`);
+    // In production, delegate encryption setup to controller
+    if (!process.env.PRODUCTION_CONFIRMED || !process.env.VPN_CONTROLLER_URL) {
+      throw new Error(
+        "Encryption setup requires PRODUCTION_CONFIRMED and VPN_CONTROLLER_URL"
+      );
+    }
+    await fetch(`${process.env.VPN_CONTROLLER_URL}/setup-encryption`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ encryption }),
+    });
+    logger.info(`Requested encryption setup: ${encryption}`);
   }
 
   private async configureNetwork(_config: { name?: string }): Promise<void> {
-    // Simulate network configuration
-    await this.sleep(1000);
-    logger.info(`Configured network for ${_config.name}`);
+    // In production, delegate networking to controller
+    if (!process.env.PRODUCTION_CONFIRMED || !process.env.VPN_CONTROLLER_URL) {
+      throw new Error(
+        "Network configuration requires PRODUCTION_CONFIRMED and VPN_CONTROLLER_URL"
+      );
+    }
+    await fetch(`${process.env.VPN_CONTROLLER_URL}/configure-network`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ config: _config }),
+    });
+    logger.info(`Requested network configure for ${_config.name}`);
   }
 
   private async setupMonitoring(networkId: string): Promise<void> {
@@ -365,8 +400,21 @@ export class VPNService {
       this.currentConnection = connection;
       this.eventEmitter.emit("connectionStarted", connection);
 
-      // Simulate connection process
-      await this.sleep(2000);
+      // In production, use a system VPN client or controller
+      if (!process.env.PRODUCTION_CONFIRMED) {
+        throw new Error("Connecting to VPN requires PRODUCTION_CONFIRMED=true");
+      }
+
+      const clientCmd = process.env.VPN_CLIENT_CMD;
+      if (!clientCmd) {
+        throw new Error("VPN_CLIENT_CMD not configured");
+      }
+
+      const { tryRunShellCommand } = await import("./OperationRunner");
+      const run = await tryRunShellCommand(`${clientCmd} connect ${server.ip}`);
+      if ((run as any).error) {
+        throw new Error((run as any).error);
+      }
 
       connection.status = "connected";
       connection.startTime = new Date();
@@ -377,7 +425,7 @@ export class VPNService {
       // Start monitoring connection
       this.startConnectionMonitoring(connectionId);
 
-      logger.info(`Connected to VPN server: ${server.name}`);
+      logger.info(`Requested connect to VPN server: ${server.name}`);
     } catch (_error) {
       const errorMessage =
         _error instanceof Error ? _error.message : "Unknown _error";

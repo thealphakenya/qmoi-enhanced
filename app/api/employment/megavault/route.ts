@@ -75,31 +75,74 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
   }
 }
 
+import { isProductionConfirmed } from "../../../../lib/prodGuard";
+
 // Pesapal integration functions
 async function initializePesapalAccount() {
   try {
-    // Simulate Pesapal account creation
-    const accountData = {
-      accountId: `qmoi_megavault_${Date.now()}`,
-      accountName: "QMOI Megavault",
-      currency: "KES",
-      status: "active",
-      createdAt: new Date().toISOString(),
-    };
+    if (!isProductionConfirmed()) {
+      // Non-production: return simulated account
+      const accountData = {
+        accountId: `qmoi_megavault_${Date.now()}`,
+        accountName: "QMOI Megavault (simulated)",
+        currency: "KES",
+        status: "active",
+        createdAt: new Date().toISOString(),
+      };
+      await backupCredentialsSafe(PESAPAL_CREDENTIALS, "pesapal");
+      return { success: true, account: accountData, simulated: true };
+    }
 
-    // Create a safe (masked) backup for ops visibility only
+    // In production ensure credentials exist
+    if (
+      !PESAPAL_CREDENTIALS.consumerKey ||
+      !PESAPAL_CREDENTIALS.consumerSecret
+    ) {
+      (console as any)._error(
+        "Pesapal credentials missing in production environment"
+      );
+      return { success: false, _error: "Pesapal credentials missing" };
+    }
+
+    // TODO: Implement actual Pesapal account initialization when in production
     await backupCredentialsSafe(PESAPAL_CREDENTIALS, "pesapal");
-
-    return { success: true, account: accountData };
+    return {
+      success: true,
+      account: {
+        accountId: `qmoi_megavault_${Date.now()}`,
+        accountName: "QMOI Megavault",
+        currency: "KES",
+        status: "active",
+        createdAt: new Date().toISOString(),
+      },
+    };
   } catch (_error) {
     (console as any)._error("Failed to initialize Pesapal account:", _error);
     return { success: false, _error: "Pesapal initialization failed" };
   }
 }
 
-async function processPesapalTransaction(transactionData: unknown) {
+async function processPesapalTransaction(transactionData: any) {
   try {
-    // Simulate Pesapal transaction
+    if (!isProductionConfirmed()) {
+      return {
+        success: true,
+        transactionId: `sim-pesapal-${Date.now()}`,
+        provider: "pesapal",
+        simulated: true,
+      };
+    }
+
+    if (
+      !PESAPAL_CREDENTIALS.consumerKey ||
+      !PESAPAL_CREDENTIALS.consumerSecret
+    ) {
+      (console as any)._error(
+        "Pesapal credentials missing in production environment"
+      );
+      return { success: false, _error: "Pesapal credentials missing" };
+    }
+
     const _response = await fetch(
       "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
       {

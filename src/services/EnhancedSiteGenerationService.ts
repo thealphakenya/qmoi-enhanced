@@ -35,7 +35,7 @@ interface SiteGenerationResult {
   url: string;
   audit: SiteAuditResult;
   enhancements: SiteEnhancement[];
-  status: "success" | "failed";
+  status: "success" | "failed" | "preview";
   logs: string[];
 }
 
@@ -144,8 +144,44 @@ export class EnhancedSiteGenerationService extends EventEmitter {
       });
     }
     logs.push("Enhancements applied:", JSON.stringify(enhancements));
-    // Simulate site deployment
-    const url = `https://qcity-sites.com/${_request.id}`;
+    const deployHook = process.env.SITE_DEPLOY_HOOK;
+    if (!process.env.PRODUCTION_CONFIRMED || !deployHook) {
+      const preview = `https://preview.qcity-sites.local/${_request.id}`;
+      logs.push(
+        `Preview available at ${preview} (set PRODUCTION_CONFIRMED and SITE_DEPLOY_HOOK to push live)`
+      );
+      return {
+        siteId: _request.id,
+        url: preview,
+        audit,
+        enhancements,
+        status: "preview",
+        logs,
+      };
+    }
+
+    // Push to deploy hook
+    const resp = await fetch(deployHook, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: _request.id, enhancements, audit }),
+    });
+
+    if (!resp.ok) {
+      const text = await resp.text();
+      logs.push(`Deploy hook failed: ${resp.status} ${text}`);
+      return {
+        siteId: _request.id,
+        url: null,
+        audit,
+        enhancements,
+        status: "failed",
+        logs,
+      };
+    }
+
+    const body = await resp.json();
+    const url = body.url || `https://qcity-sites.com/${_request.id}`;
     logs.push(`Site deployed at ${url}`);
     return {
       siteId: _request.id,

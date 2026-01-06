@@ -583,6 +583,7 @@ export function useQVillageNotifications() {
       timestamp: new Date().toISOString(),
       read: false,
       ...n,
+    };
 
     setNotifications((prev) => [newNotification, ...prev.slice(0, 49)]); // Keep last 50
     setUnreadCount((prev) => prev + 1);

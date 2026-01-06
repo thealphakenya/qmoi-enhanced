@@ -735,7 +735,8 @@ export class VoiceRecognitionService {
     if (_options.pitch) utterance.pitch = _options.pitch;
     if (_options.rate) utterance.rate = _options.rate;
     if (_options.volume) utterance.volume = _options.volume;
-    if (_options.voice) utterance.voice = _options.voice as SpeechSynthesisVoice;
+    if (_options.voice)
+      utterance.voice = _options.voice as SpeechSynthesisVoice;
 
     // Add user's preferred name to the text if available
     if (this.userSettings.preferredNames.length > 0) {
@@ -804,18 +805,30 @@ export class VoiceRecognitionService {
     recipient: string,
     message: string
   ): Promise<void> {
-    // [PRODUCTION IMPLEMENTATION REQUIRED] implementation - would integrate with WhatsAppService
-    console.log(`Sending WhatsApp message to ${recipient}: ${message}`);
+    try {
+      const { sendWhatsApp } = await import("./NotificationService");
+      await sendWhatsApp(recipient, message);
+    } catch (_error) {
+      (console as any)._error("Failed to send WhatsApp message:", _error);
+    }
   }
 
   private async createWhatsAppGroup(
     name: string,
     members: string[]
   ): Promise<void> {
-    // [PRODUCTION IMPLEMENTATION REQUIRED] implementation - would integrate with WhatsAppService
-    console.log(
-      `Creating WhatsApp group ${name} with members: ${members.join(", ")}`
-    );
+    try {
+      const { sendWhatsApp } = await import("./NotificationService");
+      await sendWhatsApp(
+        process.env.NEXT_PUBLIC_MASTER_WHATSAPP || "",
+        `Create group ${name}: members ${members.join(", ")}`
+      );
+    } catch (_error) {
+      (console as any)._error(
+        "Failed to request WhatsApp group creation:",
+        _error
+      );
+    }
   }
 
   private loadUserSettings(): void {

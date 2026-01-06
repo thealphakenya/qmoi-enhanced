@@ -463,40 +463,104 @@ export class BrowserService {
   }
 
   private async generateSearchSuggestions(_query: string): Promise<string[]> {
-    // Simulate AI-powered search suggestions
+    // Basic keyword-based suggestions
+    const keywords = _query
+      .split(/[\s,-]+/)
+      .slice(0, 4)
+      .filter(Boolean);
+    const base = keywords.join(" ") || _query;
     return [
-      `${_query} latest news`,
-      `${_query} tutorial`,
-      `${_query} reviews`,
-      `${_query} download`,
+      `${base} latest news`,
+      `${base} tutorial`,
+      `${base} reviews`,
+      `${base} best practices`,
     ];
   }
 
   private async generateContentSummary(url: string): Promise<string> {
-    // Simulate AI content summarization
-    return `AI-generated summary of the content on ${url}. This page contains relevant information about the topic.`;
+    try {
+      const res = await fetch(url, { method: "GET", redirect: "follow" });
+      const text = await res.text();
+      // Naive extraction: title and meta description
+      const titleMatch = text.match(/<title>(.*?)<\/title>/i);
+      const descMatch = text.match(
+        /<meta\s+name=["']description["']\s+content=["'](.*?)["']\s*\/?>/i
+      );
+      const title = titleMatch ? titleMatch[1] : undefined;
+      const desc = descMatch ? descMatch[1] : undefined;
+      if (title || desc) {
+        return `Summary: ${title ? title + ". " : ""}${desc ? desc : ""}`;
+      }
+
+      // Fallback: extract visible text (very naive)
+      const bodyText = text
+        .replace(/<script[\s\S]*?<\/script>/gi, "")
+        .replace(/<style[\s\S]*?<\/style>/gi, "");
+      const stripped = bodyText
+        .replace(/<[^>]+>/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+      return stripped.slice(0, 500) + (stripped.length > 500 ? "..." : "");
+    } catch (e) {
+      return `Failed to summarize ${url}`;
+    }
   }
 
   private async translateContent(
     url: string
   ): Promise<{ original: string; translated: string; language: string }> {
-    // Simulate translation
-    return {
-      original: "Original content",
-      translated: "Translated content",
-      language: "en",
-    };
+    // If a translation service is configured, call it, otherwise fetch content and return original
+    const translateUrl = process.env.LIBRETRANSLATE_URL;
+    try {
+      const res = await fetch(url);
+      const original = (await res.text()).slice(0, 2000);
+
+      if (translateUrl) {
+        const r = await fetch(`${translateUrl}/translate`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ q: original, source: "auto", target: "en" }),
+        });
+        const j = await r.json();
+        return {
+          original: original.slice(0, 500),
+          translated: j.translatedText || original.slice(0, 500),
+          language: j.detectedLanguage || "en",
+        };
+      }
+
+      return {
+        original: original.slice(0, 500),
+        translated: original.slice(0, 500),
+        language: "unknown",
+      };
+    } catch (e) {
+      return { original: "", translated: "", language: "unknown" };
+    }
   }
 
   private async analyzeSecurity(
     url: string
   ): Promise<{ isSafe: boolean; threats: string[]; score: number }> {
-    // Simulate security analysis
-    return {
-      isSafe: Math.random() > 0.1,
-      threats: [],
-      score: Math.floor(Math.random() * 100),
-    };
+    try {
+      const res = await fetch(url, { method: "GET" });
+      const text = await res.text();
+      const threats: string[] = [];
+      if (/eval\(/i.test(text)) threats.push("eval detected");
+      if (/document\.cookie/i.test(text))
+        threats.push("cookie access detected");
+      const score = Math.max(
+        0,
+        100 - threats.length * 30 - (res.status >= 400 ? 30 : 0)
+      );
+      return {
+        isSafe: threats.length === 0 && res.status < 400,
+        threats,
+        score,
+      };
+    } catch (e) {
+      return { isSafe: false, threats: ["fetch_failed"], score: 10 };
+    }
   }
 
   private isLiveTVUrl(url: string): boolean {

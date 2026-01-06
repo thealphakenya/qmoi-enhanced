@@ -69,121 +69,89 @@ async function backupCredentialsSafe(credentials: any, platform: string) {
 }
 
 // Payment processing functions
+import { isProductionConfirmed } from "../../../../lib/prodGuard";
+
 async function processMpesaPayment(paymentData: any) {
   try {
-    // Simulate M-Pesa API call
-    const _response = await fetch(
-      "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${PAYMENT_CREDENTIALS.mpesa.consumerKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          BusinessShortCode: "174379",
-          Password: PAYMENT_CREDENTIALS.mpesa.passkey,
-          Timestamp: new Date().toISOString(),
-          TransactionType: "CustomerPayBillOnline",
-          Amount: paymentData.amount,
-          PartyA: paymentData.mpesaNumber,
-          PartyB: "174379",
-          PhoneNumber: paymentData.mpesaNumber,
-          CallBackURL: "https://your-callback-url.com/mpesa",
-          AccountReference: paymentData.description,
-          TransactionDesc: paymentData.description,
-        }),
-      }
+    const MpesaService = (
+      await import("../../../../src/services/payments/MpesaService")
+    ).default;
+    const svc = new MpesaService();
+
+    const phone = paymentData.mpesaNumber || paymentData.accountNumber || "";
+    const amount = paymentData.amount || 0;
+    const accountRef = paymentData.description || "QMOI_TX";
+
+    const result = await svc.stkPush(
+      phone,
+      amount,
+      accountRef,
+      paymentData.description
     );
 
-    const result = await _response.json();
-    return {
-      success: true,
-      reference: result.CheckoutRequestID,
-      provider: "mpesa",
-    };
+    if (!result.success) {
+      return { success: false, _error: result.error };
+    }
+
+    return { success: true, reference: result.reference, provider: "mpesa" };
   } catch (_error) {
     (console as any)._error("M-Pesa payment failed:", _error);
-    return { success: false, _error: "M-Pesa payment failed" };
+    const err = _error instanceof Error ? _error.message : String(_error);
+    return { success: false, _error: err };
   }
 }
 
 async function processAirtelPayment(paymentData: any) {
   try {
-    // Simulate Airtel Money API call
-    const _response = await fetch(
-      "https://openapiuat.airtel.africa/merchant/v1/payments/",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${PAYMENT_CREDENTIALS.airtel.clientId}`,
-          "Content-Type": "application/json",
-          "X-Country": "KE",
-          "X-Currency": "KES",
-        },
-        body: JSON.stringify({
-          reference: `QMOI_${Date.now()}`,
-          subscriber: {
-            country: "KE",
-            currency: "KES",
-            msisdn: paymentData.airtelNumber,
-          },
-          transaction: {
-            amount: paymentData.amount,
-            country: "KE",
-            currency: "KES",
-            id: `QMOI_${Date.now()}`,
-          },
-        }),
-      }
-    );
+    const AirtelService = (
+      await import("../../../../src/services/payments/AirtelService")
+    ).default;
+    const svc = new AirtelService();
 
-    const result = await _response.json();
-    return {
-      success: true,
-      reference: result.data.transaction.id,
-      provider: "airtel",
-    };
+    const msisdn = paymentData.airtelNumber || paymentData.accountNumber || "";
+    const amount = paymentData.amount || 0;
+
+    const result = await svc.sendPayment(msisdn, amount);
+
+    if (!result.success) return { success: false, _error: result.error };
+
+    return { success: true, reference: result.reference, provider: "airtel" };
   } catch (_error) {
     (console as any)._error("Airtel payment failed:", _error);
-    return { success: false, _error: "Airtel payment failed" };
+    const err = _error instanceof Error ? _error.message : String(_error);
+    return { success: false, _error: err };
   }
 }
 
 async function processPesapalPayment(paymentData: any) {
   try {
-    // Simulate Pesapal API call
-    const _response = await fetch(
-      "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/xml",
-        },
-        body: `
-        <PesapalDirectOrderInfo 
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-          xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-          Amount="${paymentData.amount}" 
-          Description="${paymentData.description}" 
-          Type="MERCHANT" 
-          Reference="${Date.now()}" 
-          FirstName="${paymentData.accountName?.split(" ")[0] || "User"}" 
-          LastName="${
-            paymentData.accountName?.split(" ").slice(1).join(" ") || "Name"
-          }" 
-          Email="${paymentData.email}" 
-          PhoneNumber="${paymentData.phone}" 
-          xmlns="http://www.pesapal.com" />
-      `,
-      }
+    const PesapalService = (
+      await import("../../../../src/services/payments/PesapalService")
+    ).default;
+    const svc = new PesapalService();
+
+    const amount = paymentData.amount || 0;
+    const description = paymentData.description || "QMOI payment";
+    const firstName = paymentData.accountName?.split(" ")[0] || "User";
+    const lastName =
+      paymentData.accountName?.split(" ").slice(1).join(" ") || "";
+
+    const res = await svc.createOrder(
+      amount,
+      description,
+      firstName,
+      lastName,
+      paymentData.email || "",
+      paymentData.phone || ""
     );
 
-    const result = await _response.text();
-    return { success: true, reference: result, provider: "pesapal" };
+    if (!res.success) return { success: false, _error: res.error };
+
+    return { success: true, reference: res.transactionId, provider: "pesapal" };
   } catch (_error) {
     (console as any)._error("Pesapal payment failed:", _error);
-    return { success: false, _error: "Pesapal payment failed" };
+    const err = _error instanceof Error ? _error.message : String(_error);
+    return { success: false, _error: err };
   }
 }
 

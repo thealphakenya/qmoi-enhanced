@@ -334,25 +334,52 @@ export class AppManagementService {
       app.status = "downloading";
       this.eventEmitter.emit("appStatusChanged", { appId, status: app.status });
 
-      // Simulate download progress
-      for (let progress = 0; progress <= 100; progress += 10) {
-        await this.sleep(200);
-        this.eventEmitter.emit("downloadProgress", {
-          appId,
-          progress,
-          message: `Downloading ${app.displayName}...`,
-        });
+      // Download (production only)
+      const downloadUrl = app.downloadUrl;
+      if (!downloadUrl) throw new Error("No download URL for app");
+
+      const installDir = process.env.APP_INSTALL_DIR || "/opt/qmoi/apps";
+
+      if (!process.env.PRODUCTION_CONFIRMED) {
+        throw new Error("Downloading apps requires PRODUCTION_CONFIRMED=true");
       }
+
+      this.eventEmitter.emit("downloadStarted", { appId, url: downloadUrl });
+
+      const { tryRunShellCommand } = await import("./OperationRunner");
+      const fname = `${installDir}/${app.id}-${Date.now()}.pkg`;
+      const cmd = `mkdir -p ${installDir} && curl -L -f -o ${fname} ${downloadUrl}`;
+      this.eventEmitter.emit("downloadProgress", {
+        appId,
+        progress: 10,
+        message: `Starting download for ${app.displayName}`,
+      });
+      const downloadResult = await tryRunShellCommand(cmd);
+      if ((downloadResult as any).error) {
+        throw new Error((downloadResult as any).error);
+      }
+
+      this.eventEmitter.emit("downloadProgress", {
+        appId,
+        progress: 60,
+        message: `Download completed for ${app.displayName}`,
+      });
 
       app.status = "installing";
       this.eventEmitter.emit("appStatusChanged", { appId, status: app.status });
 
-      // Simulate installation
-      await this.installApp(app);
+      // Install
+      await this.installApp(app, fname);
 
       app.isInstalled = true;
       app.status = "installed";
       app.lastUpdate = new Date();
+
+      this.eventEmitter.emit("downloadProgress", {
+        appId,
+        progress: 100,
+        message: `Installed ${app.displayName}`,
+      });
 
       this.eventEmitter.emit("appInstalled", app);
       this.eventEmitter.emit("appStatusChanged", { appId, status: app.status });
@@ -373,39 +400,78 @@ export class AppManagementService {
     }
   }
 
-  private async installApp(app: AppInfo): Promise<void> {
-    // Simulate installation process
-    const stages = [
-      { stage: "extracting", progress: 20, message: "Extracting files..." },
-      {
-        stage: "installing",
-        progress: 50,
-        message: "Installing components...",
-      },
-      {
-        stage: "configuring",
-        progress: 80,
-        message: "Configuring settings...",
-      },
-      {
-        stage: "finalizing",
-        progress: 100,
-        message: "Finalizing installation...",
-      },
-    ];
+  private async installApp(app: AppInfo, artifactPath?: string): Promise<void> {
+    // In production, extract and run install scripts when available
+    const installDir = process.env.APP_INSTALL_DIR || "/opt/qmoi/apps";
+    const targetDir = `${installDir}/${app.id}`;
 
-    for (const stage of stages) {
-      await this.sleep(500);
+    const { tryRunShellCommand } = await import("./OperationRunner");
+
+    // Try to extract common archive formats
+    if (artifactPath) {
       this.eventEmitter.emit("installationProgress", {
         appId: app.id,
-        stage: stage.stage as any,
-        progress: stage.progress,
-        message: stage.message,
+        stage: "extracting",
+        progress: 40,
+        message: "Extracting files...",
       });
+      // Try tar
+      let res = await tryRunShellCommand(
+        `mkdir -p ${targetDir} && tar -xzf ${artifactPath} -C ${targetDir}`
+      );
+      if ((res as any).error) {
+        // Try unzip
+        res = await tryRunShellCommand(
+          `mkdir -p ${targetDir} && unzip -o ${artifactPath} -d ${targetDir}`
+        );
+      }
+      if ((res as any).error) {
+        // If extraction failed, fallback to moving file
+        await tryRunShellCommand(
+          `mkdir -p ${targetDir} && mv ${artifactPath} ${targetDir}/`
+        );
+      }
     }
 
-    // Create app shortcut with Q-Alpha branding
-    await this.createAppShortcut(app);
+    // Run install if package.json exists
+    const checkPkg = await tryRunShellCommand(
+      `test -f ${targetDir}/package.json && echo ok || echo missing`
+    );
+    if ((checkPkg as any).stdout && (checkPkg as any).stdout.includes("ok")) {
+      this.eventEmitter.emit("installationProgress", {
+        appId: app.id,
+        stage: "installing",
+        progress: 60,
+        message: "Running npm install...",
+      });
+      await tryRunShellCommand(`npm install --production`, targetDir);
+      this.eventEmitter.emit("installationProgress", {
+        appId: app.id,
+        stage: "installing",
+        progress: 75,
+        message: "Running build...",
+      });
+      await tryRunShellCommand(`npm run build --if-present`, targetDir);
+    }
+
+    // Apply configuration if required
+    if (app.settings && (app.settings as any).autoConfigure) {
+      this.eventEmitter.emit("installationProgress", {
+        appId: app.id,
+        stage: "configuring",
+        progress: 90,
+        message: "Applying configuration...",
+      });
+      // TODO: apply actual configuration steps here
+    }
+
+    // Finalize
+    this.eventEmitter.emit("installationProgress", {
+      appId: app.id,
+      stage: "finalizing",
+      progress: 100,
+      message: "Installation complete",
+    });
   }
 
   private async createAppShortcut(app: AppInfo): Promise<void> {
@@ -540,9 +606,7 @@ export class AppManagementService {
     }
   }
 
-  private async runDiagnostics(
-    app: AppInfo
-  ): Promise<
+  private async runDiagnostics(app: AppInfo): Promise<
     Array<{
       issue: string;
       solution: string;
