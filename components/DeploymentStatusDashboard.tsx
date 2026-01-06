@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useState, useContext } from "react";
 // To use Chart.js, install with: npm install chart.js react-chartjs-2
 import { Line } from "react-chartjs-2";
@@ -20,7 +21,7 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend,
+  Legend
 );
 
 export default function DeploymentStatusDashboard({

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 /* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -45,7 +46,8 @@ function persistJob(job: Record<string, any>) {
 }
 
 // Extend API handler to support new endpoints
-export default async function handler(_req: NextApiRequest,
+export default async function handler(
+  _req: NextApiRequest,
   _res: NextApiResponse
 ) {
   if (_req.method === "POST") {

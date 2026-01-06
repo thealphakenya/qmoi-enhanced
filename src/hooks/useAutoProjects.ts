@@ -37,11 +37,11 @@ interface UseAutoProjectsReturn {
   dailyPlan: DailyPlan | null;
   isLoading: boolean;
   createProject: (
-    project: Omit<AutoProject, "id" | "status" | "startedAt">,
+    project: Omit<AutoProject, "id" | "status" | "startedAt">
   ) => Promise<void>;
   updateProjectStatus: (
     id: string,
-    status: AutoProject["status"],
+    status: AutoProject["status"]
   ) => Promise<void>;
   generateDailyPlan: () => Promise<void>;
   notifyMaster: (message: string) => Promise<void>;
@@ -65,12 +65,20 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
   useEffect(() => {
     const savedProjects = localStorage.getItem("qmoi-auto-projects");
     if (savedProjects) {
-      setProjects(JSON.parse(savedProjects));
+      try {
+        setProjects(JSON.parse(savedProjects) as AutoProject[]);
+      } catch (_e) {
+        console.error("Failed to parse saved projects:", _e);
+      }
     }
 
     const savedDailyPlan = localStorage.getItem("qmoi-daily-plan");
     if (savedDailyPlan) {
-      setDailyPlan(JSON.parse(savedDailyPlan));
+      try {
+        setDailyPlan(JSON.parse(savedDailyPlan) as DailyPlan);
+      } catch (_e) {
+        console.error("Failed to parse saved daily plan:", _e);
+      }
     }
   }, []);
 
@@ -101,7 +109,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
 
         // Notify master about new project
         await notifyMaster(
-          `🆕 New project planned: ${newProject.name}\nType: ${newProject.type}\nPriority: ${newProject.priority}\nEstimated time: ${newProject.estimatedDuration} minutes`,
+          `🆕 New project planned: ${newProject.name}\nType: ${newProject.type}\nPriority: ${newProject.priority}\nEstimated time: ${newProject.estimatedDuration} minutes`
         );
       } catch (_error) {
         (console as any)._error("Error creating project:", _error);
@@ -109,7 +117,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
         setIsLoading(false);
       }
     },
-    [],
+    []
   );
 
   const updateProjectStatus = useCallback(
@@ -131,7 +139,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
                   const startTime = new Date(project.startedAt).getTime();
                   const endTime = new Date().getTime();
                   updatedProject.actualDuration = Math.round(
-                    (endTime - startTime) / (1000 * 60),
+                    (endTime - startTime) / (1000 * 60)
                   ); // Convert to minutes
                 }
               }
@@ -139,14 +147,20 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
               return updatedProject;
             }
             return project;
-          }),
+          })
         );
 
         // Notify master about status change
         const project = projects.find((p) => p.id === id);
         if (project) {
           await notifyMaster(
-            `📊 Project status updated: ${project.name}\nNew status: ${status}${status === "completed" ? " ✅" : status === "in-progress" ? " 🔄" : " 📋"}`,
+            `📊 Project status updated: ${project.name}\nNew status: ${status}${
+              status === "completed"
+                ? " ✅"
+                : status === "in-progress"
+                ? " 🔄"
+                : " 📋"
+            }`
           );
         }
       } catch (_error) {
@@ -155,7 +169,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
         setIsLoading(false);
       }
     },
-    [projects],
+    [projects]
   );
 
   const generateDailyPlan = useCallback(async () => {
@@ -185,7 +199,9 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
         const project: AutoProject = {
           id: `daily-project-${Date.now()}-${i}`,
           name: `Auto Project ${i + 1}`,
-          description: `Automatically generated project ${i + 1} for daily plan`,
+          description: `Automatically generated project ${
+            i + 1
+          } for daily plan`,
           status: "planned",
           type: projectTypes[Math.floor(Math.random() * projectTypes.length)],
           priority: priorities[Math.floor(Math.random() * priorities.length)],
@@ -209,7 +225,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
         projects: newProjects,
         totalEstimatedTime: newProjects.reduce(
           (sum, p) => sum + p.estimatedDuration,
-          0,
+          0
         ),
         status: "active",
       };
@@ -219,12 +235,25 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
 
       // Notify master about daily plan
       await notifyMaster(
-        `📅 Daily plan generated for ${plan.date}\nTotal projects: ${newProjects.length}\nEstimated time: ${Math.round(plan.totalEstimatedTime / 60)} hours\nStatus: ${plan.status}`,
+        `📅 Daily plan generated for ${plan.date}\nTotal projects: ${
+          newProjects.length
+        }\nEstimated time: ${Math.round(
+          plan.totalEstimatedTime / 60
+        )} hours\nStatus: ${plan.status}`
       );
 
       // Post to WhatsApp group
       await postToWhatsAppGroup(
-        `📋 Daily Plan - ${plan.date}\n\nProjects planned: ${newProjects.length}\nEstimated time: ${Math.round(plan.totalEstimatedTime / 60)} hours\n\nProjects:\n${newProjects.map((p, i) => `${i + 1}. ${p.name} (${p.type}) - ${p.estimatedDuration}min`).join("\n")}`,
+        `📋 Daily Plan - ${plan.date}\n\nProjects planned: ${
+          newProjects.length
+        }\nEstimated time: ${Math.round(
+          plan.totalEstimatedTime / 60
+        )} hours\n\nProjects:\n${newProjects
+          .map(
+            (p, i) =>
+              `${i + 1}. ${p.name} (${p.type}) - ${p.estimatedDuration}min`
+          )
+          .join("\n")}`
       );
     } catch (_error) {
       (console as any)._error("Error generating daily plan:", _error);
@@ -288,7 +317,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
     const total = projects.length;
     const completed = projects.filter((p) => p.status === "completed").length;
     const inProgress = projects.filter(
-      (p) => p.status === "in-progress",
+      (p) => p.status === "in-progress"
     ).length;
     const planned = projects.filter((p) => p.status === "planned").length;
     const successRate = total > 0 ? Math.round((completed / total) * 100) : 0;

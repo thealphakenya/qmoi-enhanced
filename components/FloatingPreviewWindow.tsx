@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useRef, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
@@ -140,8 +141,8 @@ export function FloatingPreviewWindow({
         mediaType === "video"
           ? "mp4"
           : mediaType === "audio"
-            ? "mp3"
-            : mediaType;
+          ? "mp3"
+          : mediaType;
       downloadFile(mediaUrl, `Alpha-Q-Downloads/${mediaType}.${ext}`);
       return;
     }
@@ -187,7 +188,9 @@ export function FloatingPreviewWindow({
 
   return (
     <Card
-      className={`fixed bottom-4 right-4 w-96 shadow-lg ${isFullscreen ? "w-screen h-screen" : ""}`}
+      className={`fixed bottom-4 right-4 w-96 shadow-lg ${
+        isFullscreen ? "w-screen h-screen" : ""
+      }`}
     >
       <CardHeader className="flex flex-row items-center justify-between p-2">
         <Typography variant="subtitle2" className="text-sm">

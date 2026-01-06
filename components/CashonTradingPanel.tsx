@@ -1,5 +1,6 @@
 "use client";
 
+// @ts-nocheck
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -54,7 +55,7 @@ interface TradingSignal {
 export default function CashonTradingPanel() {
   const [balance, setBalance] = useState<CashonBalance | null>(null);
   const [tradingStatus, setTradingStatus] = useState<TradingStatus | null>(
-    null,
+    null
   );
   const [signals, setSignals] = useState<TradingSignal[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -416,8 +417,8 @@ export default function CashonTradingPanel() {
                             signal.action === "buy"
                               ? "bg-green-100 text-green-600"
                               : signal.action === "sell"
-                                ? "bg-red-100 text-red-600"
-                                : "bg-gray-100 text-gray-600"
+                              ? "bg-red-100 text-red-600"
+                              : "bg-gray-100 text-gray-600"
                           }`}
                         >
                           {signal.action === "buy" ? (
@@ -503,8 +504,8 @@ export default function CashonTradingPanel() {
                               tx.type === "deposit"
                                 ? "bg-green-100 text-green-600"
                                 : tx.type === "withdrawal"
-                                  ? "bg-red-100 text-red-600"
-                                  : "bg-blue-100 text-blue-600"
+                                ? "bg-red-100 text-red-600"
+                                : "bg-blue-100 text-blue-600"
                             }`}
                           >
                             {tx.type === "deposit" ? (

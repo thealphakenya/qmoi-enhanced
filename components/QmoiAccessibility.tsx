@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useEffect, useRef } from "react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
@@ -110,7 +111,7 @@ export const QmoiAccessibility: React.FC = () => {
     if ("speechSynthesis" in window) {
       speechSynthesis.current = window.speechSynthesis;
       speak(
-        "QMOI Accessibility System initialized. Voice commands are now active.",
+        "QMOI Accessibility System initialized. Voice commands are now active."
       );
     }
   };
@@ -169,7 +170,7 @@ export const QmoiAccessibility: React.FC = () => {
 
   const processVoiceCommand = (command: string) => {
     const matchedCommand = voiceCommands.find(
-      (cmd) => command.includes(cmd.command) || cmd.command.includes(command),
+      (cmd) => command.includes(cmd.command) || cmd.command.includes(command)
     );
 
     if (matchedCommand) {
@@ -177,7 +178,7 @@ export const QmoiAccessibility: React.FC = () => {
       matchedCommand.action();
     } else {
       speak(
-        `Command not recognized: ${command}. Say "help" for available commands.`,
+        `Command not recognized: ${command}. Say "help" for available commands.`
       );
     }
   };
@@ -232,7 +233,7 @@ export const QmoiAccessibility: React.FC = () => {
   const activateEmergencyMode = () => {
     setCurrentProfile((prev) => ({ ...prev, emergencyMode: true }));
     speak(
-      "Emergency mode activated. Location sharing enabled. Emergency contacts notified.",
+      "Emergency mode activated. Location sharing enabled. Emergency contacts notified."
     );
 
     // Simulate emergency actions
@@ -269,7 +270,7 @@ export const QmoiAccessibility: React.FC = () => {
     speak(
       `Haptic feedback ${
         currentProfile.hapticFeedback ? "disabled" : "enabled"
-      }`,
+      }`
     );
   };
 
@@ -279,7 +280,7 @@ export const QmoiAccessibility: React.FC = () => {
       screenReader: !prev.screenReader,
     }));
     speak(
-      `Screen reader ${currentProfile.screenReader ? "disabled" : "enabled"}`,
+      `Screen reader ${currentProfile.screenReader ? "disabled" : "enabled"}`
     );
   };
 

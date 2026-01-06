@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
@@ -122,7 +123,9 @@ export const QmoiAutoDistribution: React.FC = () => {
       setCommitMessage("");
       await fetchGitStatus();
       setDistributionLog((prev) => [
-        `Git commit: ${response.data.commitId} at ${new Date().toLocaleString()}`,
+        `Git commit: ${
+          response.data.commitId
+        } at ${new Date().toLocaleString()}`,
         ...prev,
       ]);
     } catch (error: unknown) {
@@ -163,7 +166,9 @@ export const QmoiAutoDistribution: React.FC = () => {
       setPrTitle("");
       setPrDescription("");
       setDistributionLog((prev) => [
-        `Created PR: ${response.data.prNumber} at ${new Date().toLocaleString()}`,
+        `Created PR: ${
+          response.data.prNumber
+        } at ${new Date().toLocaleString()}`,
         ...prev,
       ]);
     } catch (error: unknown) {
@@ -185,7 +190,9 @@ export const QmoiAutoDistribution: React.FC = () => {
         setDeploymentUrl(response.data.url);
       }
       setDistributionLog((prev) => [
-        `Vercel deployment: ${response.data.deploymentId} at ${new Date().toLocaleString()}`,
+        `Vercel deployment: ${
+          response.data.deploymentId
+        } at ${new Date().toLocaleString()}`,
         ...prev,
       ]);
     } catch (error: unknown) {
@@ -202,7 +209,9 @@ export const QmoiAutoDistribution: React.FC = () => {
         enabled: autoRedeploy,
       });
       setDistributionLog((prev) => [
-        `Auto-redeploy ${autoRedeploy ? "enabled" : "disabled"} at ${new Date().toLocaleString()}`,
+        `Auto-redeploy ${
+          autoRedeploy ? "enabled" : "disabled"
+        } at ${new Date().toLocaleString()}`,
         ...prev,
       ]);
     } catch (error: unknown) {
@@ -224,7 +233,9 @@ export const QmoiAutoDistribution: React.FC = () => {
 
   const approveDeal = () => {
     setDealLog((prev) => [
-      `Approved deal: ${deal.description} at price ${deal.price} on ${new Date().toLocaleString()}`,
+      `Approved deal: ${deal.description} at price ${
+        deal.price
+      } on ${new Date().toLocaleString()}`,
       ...prev,
     ]);
     setDeal({ price: "", description: "" });

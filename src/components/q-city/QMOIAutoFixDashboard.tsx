@@ -36,7 +36,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
   const [errors, setErrors] = useState<ErrorItem[]>([]);
   const [fixes, setFixes] = useState<FixItem[]>([]);
   const [githubStatus, setGitHubStatus] = useState<GitHubActionStatus | null>(
-    null,
+    null
   );
   const [isRunning, setIsRunning] = useState(false);
   const [lastUpdate, setLastUpdate] = useState<string>("");
@@ -71,7 +71,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       ];
       setErrors(mockErrors);
     } catch (_error) {
-      (console as any)._error("Failed to fetch _error log:", _error);
+      console.error("Failed to fetch _error log:", _error);
     }
   };
 
@@ -105,7 +105,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       ];
       setFixes(mockFixes);
     } catch (_error) {
-      (console as any)._error("Failed to fetch fix history:", _error);
+      console.error("Failed to fetch fix history:", _error);
     }
   };
 
@@ -121,7 +121,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       };
       setGitHubStatus(mockStatus);
     } catch (_error) {
-      (console as any)._error("Failed to fetch GitHub status:", _error);
+      console.error("Failed to fetch GitHub status:", _error);
     }
   };
 
@@ -143,7 +143,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       fetchGitHubStatus();
       setLastUpdate(new Date().toISOString());
     } catch (_error) {
-      (console as any)._error("Auto-fix failed:", _error);
+      console.error("Auto-fix failed:", _error);
     } finally {
       setIsRunning(false);
     }
@@ -296,7 +296,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
                 <div className="flex items-center gap-2">
                   <Badge
                     className={getStatusColor(
-                      fix.success ? "success" : "failed",
+                      fix.success ? "success" : "failed"
                     )}
                   >
                     {fix.success ? "SUCCESS" : "FAILED"}

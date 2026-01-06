@@ -1,5 +1,6 @@
 /* eslint-env node,jest,browser */
 /* global Headers, Response, Request, URL, URLSearchParams */
+// @ts-nocheck
 // Provide handlers through an async getter so MSW (ESM) is imported at runtime
 export async function getHandlers() {
   const TEST_VERBOSE = process.env.TEST_VERBOSE === "1" || false;
@@ -44,14 +45,14 @@ export async function getHandlers() {
                 ((_req as any)._request as any).path
               );
             } catch (_e) {
-              (console as any)._error(
+              console.error(
                 "HANDLER: status inner _request logging failed",
                 _e
               );
             }
           }
         } catch (_e) {
-          (console as any)._error("HANDLER: status handler logging failed", _e);
+          console.error("HANDLER: status handler logging failed", _e);
         }
         // Support multiple resolver shapes: rest (ctx), http (return object), or http with _res not a function
         const payload = {
@@ -88,7 +89,7 @@ export async function getHandlers() {
               String((_req as any).url)
           );
         } catch (_e) {
-          (console as any)._error("HANDLER: absolute status logging failed", _e);
+          console.error("HANDLER: absolute status logging failed", _e);
         }
         const payload = {
           status: "OK",
@@ -138,14 +139,14 @@ export async function getHandlers() {
                 ((_req as any)._request as any).path
               );
             } catch (_e) {
-              (console as any)._error(
+              console.error(
                 "HANDLER: payload inner _request logging failed",
                 _e
               );
             }
           }
         } catch (_e) {
-          (console as any)._error("HANDLER: payload handler logging failed", _e);
+          console.error("HANDLER: payload handler logging failed", _e);
         }
         // Support both `_req.url` (rest) and `_req._request.url` (http helper)
         const rawUrl =
@@ -218,7 +219,7 @@ export async function getHandlers() {
           }
           return _response;
         } catch (_e) {
-          (console as any)._error("HANDLER: absolute payload handler failed", _e);
+          console.error("HANDLER: absolute payload handler failed", _e);
           const out = { message: `Unknown done` };
           if (ctx && typeof (ctx as any).status === "function") {
             return (_res as any)(

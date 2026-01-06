@@ -139,7 +139,7 @@ export class WhatsAppService {
 
     // Authentication failure
     this.client.on("auth_failure", async (message: string) => {
-      (console as any)._error("❌ WhatsApp authentication failed:", message);
+      console.error("❌ WhatsApp authentication failed:", message);
       this.isConnected = false;
       await this.sendErrorNotification(
         "WhatsApp authentication failed",
@@ -238,7 +238,7 @@ Time: ${this.qrCodeStatus.timestamp.toLocaleString()}`;
       // Send backup verification
       await this.sendBackupVerification();
     } catch (_error) {
-      (console as any)._error("Error sending QR code notifications:", _error);
+      console.error("Error sending QR code notifications:", _error);
       this.qrCodeStatus.notifications.status = "failed";
       const errorMessage =
         _error instanceof Error ? _error.message : "Unknown _error";
@@ -294,7 +294,7 @@ Time: ${new Date().toLocaleString()}`;
         await this.forwardToMaster(message);
       }
     } catch (_error) {
-      (console as any)._error("Error handling incoming message:", _error);
+      console.error("Error handling incoming message:", _error);
       const errorMessage =
         _error instanceof Error ? _error.message : "Unknown _error";
       await this.sendErrorNotification("Message handling _error", errorMessage);

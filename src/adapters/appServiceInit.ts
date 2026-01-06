@@ -47,9 +47,9 @@ function setupRecoveryListeners(): void {
 
   // Listen for API failures and trigger recovery
   const originalFetch = window.fetch;
-  window.fetch = async (...args: unknown[]) => {
+  (window as any).fetch = async (...args: any[]) => {
     try {
-      const _response = await originalFetch.apply(window, args as any);
+      const _response = await (originalFetch as any).apply(window, args);
 
       if (!_response.ok && _response.status >= 500) {
         // 5xx errors might indicate service issues
@@ -176,7 +176,7 @@ export function enableDebugLogging(): void {
   // Intercept console methods to add timestamps
   const originalLog = console.log;
   const originalWarn = console.warn;
-  const originalError = console._error;
+  const originalError = console.error;
 
   console.log = (...args: unknown[]) => {
     originalLog(`[${new Date().toISOString()}]`, ...args);
@@ -186,7 +186,7 @@ export function enableDebugLogging(): void {
     originalWarn(`[${new Date().toISOString()}]`, ...args);
   };
 
-  console._error = (...args: unknown[]) => {
+  console.error = (...args: unknown[]) => {
     originalError(`[${new Date().toISOString()}]`, ...args);
   };
 }

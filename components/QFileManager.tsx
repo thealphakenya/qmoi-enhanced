@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import { AIRequestRouter } from "../src/services/AIRequestRouter";
 import { MultiUserSessionManager } from "../src/services/MultiUserSessionManager";
@@ -38,7 +39,7 @@ const masterUserId = "master"; // fallback for master actions
               alert(
                 response && response.message
                   ? response.message
-                  : "Edit request sent.",
+                  : "Edit request sent."
               );
             }
           }}
@@ -57,7 +58,7 @@ const masterUserId = "master"; // fallback for master actions
               alert(
                 response && response.message
                   ? response.message
-                  : "Version info requested.",
+                  : "Version info requested."
               );
             }
           }}

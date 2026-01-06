@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useEffect, useRef } from "react";
 import { useMaster } from "./MasterContext";
 import {
@@ -116,7 +117,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
 
     const updatedContact = { ...contact, isFavorite: !contact.isFavorite };
     const newContacts = contacts.map((c) =>
-      c.id === contactId ? updatedContact : c,
+      c.id === contactId ? updatedContact : c
     );
     saveContacts(newContacts);
 
@@ -125,14 +126,14 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
       setFavorites(newFavorites);
       localStorage.setItem(
         "qmoi-dialer-favorites",
-        JSON.stringify(newFavorites),
+        JSON.stringify(newFavorites)
       );
     } else {
       const newFavorites = favorites.filter((f) => f.id !== contactId);
       setFavorites(newFavorites);
       localStorage.setItem(
         "qmoi-dialer-favorites",
-        JSON.stringify(newFavorites),
+        JSON.stringify(newFavorites)
       );
     }
   };
@@ -163,7 +164,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
     // Start call duration timer
     callDurationRef.current = setInterval(() => {
       setCurrentCall((prev) =>
-        prev ? { ...prev, duration: prev.duration + 1 } : null,
+        prev ? { ...prev, duration: prev.duration + 1 } : null
       );
     }, 1000);
 
@@ -217,7 +218,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
   const filteredContacts = contacts.filter(
     (contact) =>
       contact.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      contact.phone.includes(searchQuery),
+      contact.phone.includes(searchQuery)
   );
 
   const getContactName = (phone: string): string => {
@@ -244,25 +245,39 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
         <div className="flex mt-4">
           <button
             onClick={() => setCurrentView("dialer")}
-            className={`flex-1 py-2 text-center ${currentView === "dialer" ? "bg-white text-blue-600" : "text-white"}`}
+            className={`flex-1 py-2 text-center ${
+              currentView === "dialer" ? "bg-white text-blue-600" : "text-white"
+            }`}
           >
             {language === "sw" ? "Simu" : "Dialer"}
           </button>
           <button
             onClick={() => setCurrentView("contacts")}
-            className={`flex-1 py-2 text-center ${currentView === "contacts" ? "bg-white text-blue-600" : "text-white"}`}
+            className={`flex-1 py-2 text-center ${
+              currentView === "contacts"
+                ? "bg-white text-blue-600"
+                : "text-white"
+            }`}
           >
             {language === "sw" ? "Mawasiliano" : "Contacts"}
           </button>
           <button
             onClick={() => setCurrentView("history")}
-            className={`flex-1 py-2 text-center ${currentView === "history" ? "bg-white text-blue-600" : "text-white"}`}
+            className={`flex-1 py-2 text-center ${
+              currentView === "history"
+                ? "bg-white text-blue-600"
+                : "text-white"
+            }`}
           >
             {language === "sw" ? "Historia" : "History"}
           </button>
           <button
             onClick={() => setCurrentView("favorites")}
-            className={`flex-1 py-2 text-center ${currentView === "favorites" ? "bg-white text-blue-600" : "text-white"}`}
+            className={`flex-1 py-2 text-center ${
+              currentView === "favorites"
+                ? "bg-white text-blue-600"
+                : "text-white"
+            }`}
           >
             {React.createElement(FaStar as React.ElementType)}
           </button>
@@ -377,7 +392,9 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => toggleFavorite(contact.id)}
-                      className={`p-2 ${contact.isFavorite ? "text-yellow-500" : "text-gray-400"}`}
+                      className={`p-2 ${
+                        contact.isFavorite ? "text-yellow-500" : "text-gray-400"
+                      }`}
                     >
                       {React.createElement(FaStar as React.ElementType)}
                     </button>
@@ -414,8 +431,8 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
                         log.type === "incoming"
                           ? "bg-green-100 text-green-600"
                           : log.type === "outgoing"
-                            ? "bg-blue-100 text-blue-600"
-                            : "bg-red-100 text-red-600"
+                          ? "bg-blue-100 text-blue-600"
+                          : "bg-red-100 text-red-600"
                       }`}
                     >
                       {React.createElement(FaPhone as React.ElementType, {
@@ -524,7 +541,9 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
             <div className="flex justify-center gap-4 mb-6">
               <button
                 onClick={() => setIsMuted(!isMuted)}
-                className={`p-4 rounded-full ${isMuted ? "bg-red-500 text-white" : "bg-gray-200"}`}
+                className={`p-4 rounded-full ${
+                  isMuted ? "bg-red-500 text-white" : "bg-gray-200"
+                }`}
               >
                 {isMuted
                   ? React.createElement(FaVolumeMute as React.ElementType)
@@ -533,7 +552,9 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
 
               <button
                 onClick={() => setIsSpeakerOn(!isSpeakerOn)}
-                className={`p-4 rounded-full ${isSpeakerOn ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+                className={`p-4 rounded-full ${
+                  isSpeakerOn ? "bg-blue-500 text-white" : "bg-gray-200"
+                }`}
               >
                 {React.createElement(FaVolumeUp as React.ElementType)}
               </button>

@@ -187,7 +187,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
           this.emit("noFixAvailable", errorReport);
         }
       } catch (_error) {
-        (console as any)._error("❌ Failed to process _error:", _error);
+        console.error("❌ Failed to process _error:", _error);
         this.emit("processingError", { errorReport, _error });
       } finally {
         this.isProcessing = false;

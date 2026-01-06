@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 /* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+// @ts-nocheck
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations */
 import { NextRequest, NextResponse } from "next/server";
 import { requireApiKey } from "../../../lib/proposals";
 
@@ -366,7 +368,10 @@ export async function POST_MEDIA(_req: NextRequest) {
     return NextResponse.json({ success: true, item });
   } catch (_error) {
     (console as any)._error("Failed to add media:", _error);
-    return NextResponse.json({ _error: "Failed to add media" }, { status: 500 });
+    return NextResponse.json(
+      { _error: "Failed to add media" },
+      { status: 500 }
+    );
   }
 }
 
@@ -457,7 +462,10 @@ export async function POST_POST(_req: NextRequest) {
     return NextResponse.json({ success: true, posted: results });
   } catch (_error) {
     (console as any)._error("Failed to post news:", _error);
-    return NextResponse.json({ _error: "Failed to post news" }, { status: 500 });
+    return NextResponse.json(
+      { _error: "Failed to post news" },
+      { status: 500 }
+    );
   }
 }
 

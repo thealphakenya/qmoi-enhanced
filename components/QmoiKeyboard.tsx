@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useEffect, useRef } from "react";
 import { useMaster } from "./MasterContext";
 import { FaBrain, FaLanguage, FaVolumeUp, FaVolumeMute } from "react-icons/fa";

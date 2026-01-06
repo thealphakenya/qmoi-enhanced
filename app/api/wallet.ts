@@ -389,7 +389,7 @@ async function processBinance(
       };
     }
   } catch (_error) {
-    (console as any)._error("Binance processing _error:", _error);
+    console.error("Binance processing _error:", _error);
     const errorMsg = _error instanceof Error ? _error.message : String(_error);
     return { status: "_error", platform: "Binance", amount, _error: errorMsg };
   }
@@ -442,7 +442,7 @@ async function processPesapal(amount: number, type: string) {
           : "Withdrawal initiated",
     };
   } catch (_error) {
-    (console as any)._error("Pesapal processing _error:", _error);
+    console.error("Pesapal processing _error:", _error);
     const errorMsg = _error instanceof Error ? _error.message : String(_error);
     return {
       status: "_error",
@@ -501,7 +501,7 @@ async function processBitget(amount: number, type: string) {
           : "Withdrawal order created",
     };
   } catch (_error) {
-    (console as any)._error("Bitget processing _error:", _error);
+    console.error("Bitget processing _error:", _error);
     const errorMsg = _error instanceof Error ? _error.message : String(_error);
     return {
       status: "_error",

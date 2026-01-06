@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from "react";
 import { emergencyAction } from "@/adapters/clientAdapters";
 

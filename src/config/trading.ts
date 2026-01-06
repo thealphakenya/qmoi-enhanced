@@ -148,7 +148,7 @@ export class TradingManager {
         this.config.bitget.connectionStatus.lastError = undefined;
       }
     } catch (_error) {
-      (console as any)._error("Connection check failed:", _error);
+      console.error("Connection check failed:", _error);
       this.config.bitget.connectionStatus.lastError =
         _error instanceof Error ? _error.message : "Unknown _error";
     }
@@ -172,7 +172,7 @@ export class TradingManager {
           return;
         }
       } catch (_error) {
-        (console as any)._error("Recovery strategy failed:", _error);
+        console.error("Recovery strategy failed:", _error);
       }
     }
   }
@@ -189,7 +189,7 @@ export class TradingManager {
         await this.connectToBitget();
         return;
       } catch (_error) {
-        (console as any)._error(`Retry ${i + 1} failed:`, _error);
+        console.error(`Retry ${i + 1} failed:`, _error);
       }
     }
   }
@@ -251,7 +251,7 @@ export class TradingManager {
             "ACCESS-TIMESTAMP": timestamp.toString(),
             "ACCESS-PASSPHRASE": this.config.bitget.passphrase,
           },
-        },
+        }
       );
 
       if (_response.ok) {
@@ -260,7 +260,7 @@ export class TradingManager {
       }
       return false;
     } catch (_error) {
-      (console as any)._error("Failed to connect to Bitget:", _error);
+      console.error("Failed to connect to Bitget:", _error);
       return false;
     }
   }
@@ -291,7 +291,7 @@ export class TradingManager {
         }),
       });
     } catch (_error) {
-      (console as any)._error("Failed to update Bitget whitelist:", _error);
+      console.error("Failed to update Bitget whitelist:", _error);
     }
   }
 
@@ -349,7 +349,7 @@ export class TradingManager {
             "ACCESS-TIMESTAMP": timestamp.toString(),
             "ACCESS-PASSPHRASE": this.config.bitget.passphrase,
           },
-        },
+        }
       );
 
       if (_response.ok) {
@@ -357,7 +357,7 @@ export class TradingManager {
         this.updateWalletBalances(data);
       }
     } catch (_error) {
-      (console as any)._error("Failed to update wallet balance:", _error);
+      console.error("Failed to update wallet balance:", _error);
     }
   }
 
@@ -399,7 +399,7 @@ export class TradingManager {
 
   public async canUserTrade(
     userId: string,
-    userRole: string,
+    userRole: string
   ): Promise<boolean> {
     if (userRole === "master") {
       return true;
@@ -411,11 +411,11 @@ export class TradingManager {
   }
 
   public async validateTrade(
-    trade: Omit<Trade, "id" | "timestamp" | "total" | "profit">,
+    trade: Omit<Trade, "id" | "timestamp" | "total" | "profit">
   ): Promise<TradeValidationResult> {
     const balances = await this.walletManager.getBalances();
     const sourceBalance = balances.find(
-      (b) => b.currency === trade.sourceCurrency,
+      (b) => b.currency === trade.sourceCurrency
     );
 
     if (!sourceBalance) {
@@ -451,7 +451,7 @@ export class TradingManager {
   }
 
   private async addTrade(
-    trade: Omit<Trade, "id" | "timestamp" | "total" | "profit">,
+    trade: Omit<Trade, "id" | "timestamp" | "total" | "profit">
   ): Promise<Trade> {
     const newTrade: Trade = {
       ...trade,
@@ -467,7 +467,7 @@ export class TradingManager {
   public async updateTradeStatus(
     tradeId: string,
     status: Trade["status"],
-    profit?: number,
+    profit?: number
   ): Promise<void> {
     const trade = this.tradingHistory.find((t) => t.id === tradeId);
     if (trade) {
@@ -480,7 +480,7 @@ export class TradingManager {
   }
 
   public async executeTrade(
-    trade: Omit<Trade, "id" | "timestamp" | "total" | "profit">,
+    trade: Omit<Trade, "id" | "timestamp" | "total" | "profit">
   ): Promise<TradeExecutionResult> {
     try {
       // Validate trade
@@ -503,7 +503,7 @@ export class TradingManager {
         trade.sourceCurrency,
         validation.availableBalance !== undefined
           ? validation.availableBalance - trade.amount
-          : 0,
+          : 0
       );
 
       return {
@@ -525,11 +525,11 @@ export class TradingManager {
 
   public getTradeHistory(): TradeHistory {
     const successfulTrades = this.tradingHistory.filter(
-      (t) => t.status === "completed",
+      (t) => t.status === "completed"
     );
     const totalProfit = successfulTrades.reduce(
       (sum, t) => sum + (t.profit ?? 0),
-      0,
+      0
     );
 
     return {
