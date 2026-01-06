@@ -1,6 +1,6 @@
 app/api/account-automation/route.ts(17,20): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
-app/api/account-automation/route.ts(31,15): error TS2304: Cannot find name 'fals_e'.
+app/api/account-automation/route.ts(31,15): error TS2304: Cannot find name 'false'.
 app/api/account-automation/route.ts(41,20): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/account-automation/route.ts(49,14): error TS2339: Property 'username' does not exist on type 'unknown'.
@@ -38,17 +38,17 @@ app/api/ai-self-diagnostics/route.ts(85,38): error TS2339: Property '_response' 
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/ai-self-diagnostics/route.ts(86,23): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
-app/api/auth/login.ts(18,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/auth/login.ts(18,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/auth/login.ts(22,11): error TS2339: Property 'username' does not exist on type '{}'.
 app/api/auth/login.ts(22,21): error TS2339: Property 'password' does not exist on type '{}'.
 app/api/auth/login.ts(26,22): error TS2339: Property 'find' does not exist on type 'unknown'.
 app/api/auth/login.ts(26,45): error TS2339: Property 'username' does not exist on type 'unknown'.
-app/api/auth/logout.ts(4,61): error TS2304: Cannot find name 'NextApiRespons_e'.
-app/api/auth/me.ts(8,61): error TS2304: Cannot find name 'NextApiRespons_e'.
-app/api/auth/rbac.ts(10,40): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/auth/logout.ts(4,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/auth/me.ts(8,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/auth/rbac.ts(10,40): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/auth/rbac.ts(20,16): error TS2349: This expression is not callable.
   Type '{}' has no call signatures.
-app/api/auth/register.ts(19,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/auth/register.ts(19,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/auth/register.ts(23,11): error TS2339: Property 'username' does not exist on type '{}'.
 app/api/auth/register.ts(23,21): error TS2339: Property 'password' does not exist on type '{}'.
 app/api/auth/register.ts(23,31): error TS2339: Property 'role' does not exist on type '{}'.
@@ -57,10 +57,10 @@ app/api/auth/register.ts(27,36): error TS2339: Property 'username' does not exis
 app/api/auth/register.ts(37,9): error TS2339: Property 'push' does not exist on type 'unknown'.
 app/api/auth/register.ts(38,13): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
   Type '{}' is missing the following properties from type 'unknown[]': length, pop, push, concat, and 28 more.
-app/api/auth/session.ts(12,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/auth/session.ts(12,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/auth/session.ts(23,33): error TS2339: Property 'action' does not exist on type 'unknown'.
 app/api/auth/session.ts(24,13): error TS2339: Property 'sid' does not exist on type '{}'.
-app/api/auth/totp.ts(19,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/auth/totp.ts(19,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/auth/totp.ts(24,25): error TS2339: Property 'findIndex' does not exist on type 'unknown'.
 app/api/auth/totp.ts(24,53): error TS2339: Property 'id' does not exist on type 'unknown'.
 app/api/auth/totp.ts(26,33): error TS2339: Property 'action' does not exist on type 'unknown'.
@@ -73,8 +73,8 @@ app/api/auth/totp.ts(39,15): error TS2345: Argument of type 'unknown' is not ass
 app/api/auth/totp.ts(42,33): error TS2339: Property 'action' does not exist on type 'unknown'.
 app/api/auth/totp.ts(44,15): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
   Type '{}' is missing the following properties from type 'unknown[]': length, pop, push, concat, and 28 more.
-app/api/auto-fix.ts(23,18): error TS2304: Cannot find name 'fals_e'.
-app/api/auto-fix.ts(85,20): error TS2304: Cannot find name 'fals_e'.
+app/api/auto-fix.ts(23,18): error TS2304: Cannot find name 'false'.
+app/api/auto-fix.ts(85,20): error TS2304: Cannot find name 'false'.
 app/api/cashon/balance/route.ts(31,17): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/cashon/balance/route.ts(32,27): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
@@ -85,7 +85,7 @@ app/api/cashon/route.ts(17,22): error TS2339: Property '_response' does not exis
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/cashon/route.ts(77,22): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
-app/api/cashon/route.ts(281,11): error TS2304: Cannot find name 'fals_e'.
+app/api/cashon/route.ts(281,11): error TS2304: Cannot find name 'false'.
 app/api/cashon/route.ts(307,22): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/cashon/signals/route.ts(30,17): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
@@ -116,7 +116,7 @@ app/api/colab-job.ts(73,39): error TS2339: Property 'projectName' does not exist
 app/api/colab-job.ts(84,13): error TS2339: Property 'type' does not exist on type '{}'.
 app/api/colab-job.ts(84,19): error TS2339: Property 'name' does not exist on type '{}'.
 app/api/datasets/route.ts(15,74): error TS2339: Property 'data' does not exist on type 'unknown'.
-app/api/deploy/auto-redeploy/route.ts(31,23): error TS2304: Cannot find name 'fals_e'.
+app/api/deploy/auto-redeploy/route.ts(31,23): error TS2304: Cannot find name 'false'.
 app/api/deploy/auto-redeploy/route.ts(38,70): error TS2339: Property 'message' does not exist on type 'unknown'.
 app/api/deploy/route.ts(44,53): error TS2339: Property 'message' does not exist on type 'unknown'.
 app/api/device-fingerprint/route.ts(44,18): error TS2339: Property 'push' does not exist on type 'unknown'.
@@ -126,11 +126,11 @@ app/api/document-backup/route.ts(51,39): error TS2339: Property 'id' does not ex
 app/api/employment/megavault/route.ts(63,43): error TS2339: Property 'consumerKey' does not exist on type 'unknown'.
 app/api/employment/megavault/route.ts(64,46): error TS2339: Property 'consumerSecret' does not exist on type 'unknown'.
 app/api/employment/megavault/route.ts(65,32): error TS2339: Property 'environment' does not exist on type 'unknown'.
-app/api/employment/megavault/route.ts(95,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/megavault/route.ts(95,23): error TS2304: Cannot find name 'false'.
 app/api/employment/megavault/route.ts(114,37): error TS2339: Property 'amount' does not exist on type 'unknown'.
 app/api/employment/megavault/route.ts(115,42): error TS2339: Property 'description' does not exist on type 'unknown'.
 app/api/employment/megavault/route.ts(117,40): error TS2339: Property 'reference' does not exist on type 'unknown'.
-app/api/employment/megavault/route.ts(131,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/megavault/route.ts(131,23): error TS2304: Cannot find name 'false'.
 app/api/employment/megavault/route.ts(170,13): error TS2339: Property 'percentage' does not exist on type '{}'.
 app/api/employment/megavault/route.ts(170,25): error TS2339: Property 'recipients' does not exist on type '{}'.
 app/api/employment/megavault/route.ts(174,47): error TS2339: Property 'percentage' does not exist on type 'unknown'.
@@ -138,16 +138,16 @@ app/api/employment/megavault/route.ts(176,32): error TS2339: Property 'id' does 
 app/api/employment/megavault/route.ts(177,34): error TS2339: Property 'type' does not exist on type 'unknown'.
 app/api/employment/megavault/route.ts(179,31): error TS2339: Property 'percentage' does not exist on type 'unknown'.
 app/api/employment/megavault/route.ts(193,9): error TS2698: Spread types may only be created from object types.
-app/api/employment/megavault/route.ts(211,23): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/megavault/route.ts(284,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/megavault/route.ts(304,24): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/megavault/route.ts(362,24): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/megavault/route.ts(381,24): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/megavault/route.ts(422,22): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/megavault/route.ts(432,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/megavault/route.ts(442,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/megavault/route.ts(462,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/megavault/route.ts(483,18): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/megavault/route.ts(211,23): error TS2304: Cannot find name 'false'.
+app/api/employment/megavault/route.ts(284,18): error TS2304: Cannot find name 'false'.
+app/api/employment/megavault/route.ts(304,24): error TS2304: Cannot find name 'false'.
+app/api/employment/megavault/route.ts(362,24): error TS2304: Cannot find name 'false'.
+app/api/employment/megavault/route.ts(381,24): error TS2304: Cannot find name 'false'.
+app/api/employment/megavault/route.ts(422,22): error TS2304: Cannot find name 'false'.
+app/api/employment/megavault/route.ts(432,20): error TS2304: Cannot find name 'false'.
+app/api/employment/megavault/route.ts(442,18): error TS2304: Cannot find name 'false'.
+app/api/employment/megavault/route.ts(462,20): error TS2304: Cannot find name 'false'.
+app/api/employment/megavault/route.ts(483,18): error TS2304: Cannot find name 'false'.
 app/api/employment/payment/route.ts(58,54): error TS2339: Property 'pesapal' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(59,48): error TS2339: Property 'mpesa' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(85,31): error TS2339: Property 'amount' does not exist on type 'unknown'.
@@ -155,105 +155,105 @@ app/api/employment/payment/route.ts(86,31): error TS2339: Property 'mpesaNumber'
 app/api/employment/payment/route.ts(88,36): error TS2339: Property 'mpesaNumber' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(90,41): error TS2339: Property 'description' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(91,40): error TS2339: Property 'description' does not exist on type 'unknown'.
-app/api/employment/payment/route.ts(104,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(104,23): error TS2304: Cannot find name 'false'.
 app/api/employment/payment/route.ts(126,33): error TS2339: Property 'airtelNumber' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(129,33): error TS2339: Property 'amount' does not exist on type 'unknown'.
-app/api/employment/payment/route.ts(146,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(146,23): error TS2304: Cannot find name 'false'.
 app/api/employment/payment/route.ts(164,33): error TS2339: Property 'amount' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(165,38): error TS2339: Property 'description' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(168,36): error TS2339: Property 'accountName' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(169,35): error TS2339: Property 'accountName' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(170,32): error TS2339: Property 'email' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(171,38): error TS2339: Property 'phone' does not exist on type 'unknown'.
-app/api/employment/payment/route.ts(181,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(181,23): error TS2304: Cannot find name 'false'.
 app/api/employment/payment/route.ts(194,47): error TS2339: Property 'status' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(195,52): error TS2339: Property 'recipientId' does not exist on type 'unknown'.
-app/api/employment/payment/route.ts(219,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/payment/route.ts(259,31): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(219,18): error TS2304: Cannot find name 'false'.
+app/api/employment/payment/route.ts(259,31): error TS2304: Cannot find name 'false'.
 app/api/employment/payment/route.ts(263,56): error TS2339: Property 'id' does not exist on type 'unknown'.
 app/api/employment/payment/route.ts(266,11): error TS2698: Spread types may only be created from object types.
-app/api/employment/payment/route.ts(326,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/payment/route.ts(336,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/payment/route.ts(346,18): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(326,20): error TS2304: Cannot find name 'false'.
+app/api/employment/payment/route.ts(336,20): error TS2304: Cannot find name 'false'.
+app/api/employment/payment/route.ts(346,18): error TS2304: Cannot find name 'false'.
 app/api/employment/payment/route.ts(359,47): error TS2339: Property 'id' does not exist on type 'unknown'.
-app/api/employment/payment/route.ts(363,20): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(363,20): error TS2304: Cannot find name 'false'.
 app/api/employment/payment/route.ts(370,25): error TS2698: Spread types may only be created from object types.
-app/api/employment/payment/route.ts(389,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/revenue/route.ts(199,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(389,18): error TS2304: Cannot find name 'false'.
+app/api/employment/revenue/route.ts(199,23): error TS2304: Cannot find name 'false'.
 app/api/employment/revenue/route.ts(207,36): error TS2339: Property 'reward' does not exist on type 'unknown'.
 app/api/employment/revenue/route.ts(208,34): error TS2339: Property 'reward' does not exist on type 'unknown'.
 app/api/employment/revenue/route.ts(212,64): error TS2339: Property 'title' does not exist on type 'unknown'.
-app/api/employment/revenue/route.ts(223,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/revenue/route.ts(223,23): error TS2304: Cannot find name 'false'.
 app/api/employment/revenue/route.ts(232,53): error TS2339: Property 'commission' does not exist on type 'unknown'.
 app/api/employment/revenue/route.ts(237,67): error TS2339: Property 'name' does not exist on type 'unknown'.
-app/api/employment/revenue/route.ts(250,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/revenue/route.ts(250,23): error TS2304: Cannot find name 'false'.
 app/api/employment/revenue/route.ts(257,35): error TS2339: Property 'reward' does not exist on type 'unknown'.
 app/api/employment/revenue/route.ts(258,37): error TS2339: Property 'reward' does not exist on type 'unknown'.
 app/api/employment/revenue/route.ts(262,65): error TS2339: Property 'title' does not exist on type 'unknown'.
-app/api/employment/revenue/route.ts(273,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/revenue/route.ts(273,23): error TS2304: Cannot find name 'false'.
 app/api/employment/revenue/route.ts(281,49): error TS2339: Property 'bonus' does not exist on type 'unknown'.
 app/api/employment/revenue/route.ts(286,66): error TS2339: Property 'name' does not exist on type 'unknown'.
-app/api/employment/revenue/route.ts(298,23): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/revenue/route.ts(340,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/revenue/route.ts(298,23): error TS2304: Cannot find name 'false'.
+app/api/employment/revenue/route.ts(340,23): error TS2304: Cannot find name 'false'.
 app/api/employment/revenue/route.ts(353,63): error TS2339: Property 'title' does not exist on type 'unknown'.
-app/api/employment/revenue/route.ts(364,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/revenue/route.ts(364,23): error TS2304: Cannot find name 'false'.
 app/api/employment/revenue/route.ts(378,38): error TS2339: Property 'project' does not exist on type 'unknown'.
-app/api/employment/revenue/route.ts(390,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/revenue/route.ts(390,23): error TS2304: Cannot find name 'false'.
 app/api/employment/revenue/route.ts(403,69): error TS2339: Property 'service' does not exist on type 'unknown'.
-app/api/employment/revenue/route.ts(414,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/revenue/route.ts(414,23): error TS2304: Cannot find name 'false'.
 app/api/employment/revenue/route.ts(427,51): error TS2339: Property 'status' does not exist on type 'unknown'.
 app/api/employment/revenue/route.ts(432,59): error TS2339: Property 'status' does not exist on type 'unknown'.
 app/api/employment/revenue/route.ts(437,57): error TS2339: Property 'status' does not exist on type 'unknown'.
 app/api/employment/revenue/route.ts(442,57): error TS2339: Property 'status' does not exist on type 'unknown'.
-app/api/employment/revenue/route.ts(478,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/revenue/route.ts(615,24): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/revenue/route.ts(662,22): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/revenue/route.ts(672,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/revenue/route.ts(682,18): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/revenue/route.ts(478,18): error TS2304: Cannot find name 'false'.
+app/api/employment/revenue/route.ts(615,24): error TS2304: Cannot find name 'false'.
+app/api/employment/revenue/route.ts(662,22): error TS2304: Cannot find name 'false'.
+app/api/employment/revenue/route.ts(672,20): error TS2304: Cannot find name 'false'.
+app/api/employment/revenue/route.ts(682,18): error TS2304: Cannot find name 'false'.
 app/api/employment/revenue/route.ts(698,41): error TS2339: Property 'id' does not exist on type 'unknown'.
 app/api/employment/revenue/route.ts(704,49): error TS2339: Property 'id' does not exist on type 'unknown'.
 app/api/employment/revenue/route.ts(710,46): error TS2339: Property 'id' does not exist on type 'unknown'.
 app/api/employment/revenue/route.ts(716,47): error TS2339: Property 'id' does not exist on type 'unknown'.
-app/api/employment/revenue/route.ts(724,22): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/revenue/route.ts(734,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/revenue/route.ts(749,18): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/revenue/route.ts(724,22): error TS2304: Cannot find name 'false'.
+app/api/employment/revenue/route.ts(734,20): error TS2304: Cannot find name 'false'.
+app/api/employment/revenue/route.ts(749,18): error TS2304: Cannot find name 'false'.
 app/api/employment/route.ts(70,27): error TS2339: Property 'status' does not exist on type 'unknown'.
 app/api/employment/route.ts(70,63): error TS2339: Property 'role' does not exist on type 'unknown'.
 app/api/employment/route.ts(75,28): error TS2339: Property 'status' does not exist on type 'unknown'.
 app/api/employment/route.ts(75,65): error TS2339: Property 'role' does not exist on type 'unknown'.
-app/api/employment/route.ts(91,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/route.ts(155,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/route.ts(165,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/route.ts(175,18): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(91,18): error TS2304: Cannot find name 'false'.
+app/api/employment/route.ts(155,20): error TS2304: Cannot find name 'false'.
+app/api/employment/route.ts(165,20): error TS2304: Cannot find name 'false'.
+app/api/employment/route.ts(175,18): error TS2304: Cannot find name 'false'.
 app/api/employment/route.ts(189,54): error TS2339: Property 'id' does not exist on type 'unknown'.
-app/api/employment/route.ts(193,22): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(193,22): error TS2304: Cannot find name 'false'.
 app/api/employment/route.ts(200,28): error TS2698: Spread types may only be created from object types.
 app/api/employment/route.ts(207,47): error TS2339: Property 'name' does not exist on type 'unknown'.
 app/api/employment/route.ts(217,52): error TS2339: Property 'id' does not exist on type 'unknown'.
-app/api/employment/route.ts(221,22): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(221,22): error TS2304: Cannot find name 'false'.
 app/api/employment/route.ts(228,24): error TS2698: Spread types may only be created from object types.
 app/api/employment/route.ts(235,39): error TS2339: Property 'name' does not exist on type 'unknown'.
-app/api/employment/route.ts(247,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/route.ts(256,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/route.ts(273,20): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(247,20): error TS2304: Cannot find name 'false'.
+app/api/employment/route.ts(256,18): error TS2304: Cannot find name 'false'.
+app/api/employment/route.ts(273,20): error TS2304: Cannot find name 'false'.
 app/api/employment/route.ts(281,54): error TS2339: Property 'id' does not exist on type 'unknown'.
-app/api/employment/route.ts(285,22): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(285,22): error TS2304: Cannot find name 'false'.
 app/api/employment/route.ts(300,39): error TS2339: Property 'name' does not exist on type 'unknown'.
 app/api/employment/route.ts(309,52): error TS2339: Property 'id' does not exist on type 'unknown'.
-app/api/employment/route.ts(313,22): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(313,22): error TS2304: Cannot find name 'false'.
 app/api/employment/route.ts(328,31): error TS2339: Property 'name' does not exist on type 'unknown'.
-app/api/employment/route.ts(339,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/route.ts(348,18): error TS2304: Cannot find name 'fals_e'.
-app/api/financial/audit/route.ts(13,41): error TS2304: Cannot find name 'fals_e'.
-app/api/financial/verify/route.ts(7,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/employment/route.ts(339,20): error TS2304: Cannot find name 'false'.
+app/api/employment/route.ts(348,18): error TS2304: Cannot find name 'false'.
+app/api/financial/audit/route.ts(13,41): error TS2304: Cannot find name 'false'.
+app/api/financial/verify/route.ts(7,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/financial/verify/route.ts(13,11): error TS2339: Property 'service' does not exist on type '{}'.
 app/api/financial/verify/route.ts(13,20): error TS2339: Property 'account' does not exist on type '{}'.
-app/api/financial/verify/route.ts(20,28): error TS2304: Cannot find name 'fals_e'.
+app/api/financial/verify/route.ts(20,28): error TS2304: Cannot find name 'false'.
 app/api/git/commit/route.ts(45,61): error TS2339: Property 'message' does not exist on type 'unknown'.
 app/api/git/pr/route.ts(43,67): error TS2339: Property 'message' does not exist on type 'unknown'.
 app/api/git/push/route.ts(23,59): error TS2339: Property 'message' does not exist on type 'unknown'.
 app/api/git/status/route.ts(42,61): error TS2339: Property 'message' does not exist on type 'unknown'.
-app/api/health/route.ts(32,24): error TS2304: Cannot find name 'fals_e'.
+app/api/health/route.ts(32,24): error TS2304: Cannot find name 'false'.
 app/api/health/route.ts(484,20): error TS2339: Property 'system' does not exist on type 'unknown'.
 app/api/health/route.ts(485,22): error TS2339: Property 'system' does not exist on type 'unknown'.
 app/api/health/route.ts(494,22): error TS2339: Property 'system' does not exist on type 'unknown'.
@@ -263,15 +263,15 @@ app/api/media/generate/route.ts(191,17): error TS2339: Property '_response' does
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/media/generate/route.ts(194,27): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
-app/api/monitor/status/route.ts(23,18): error TS2304: Cannot find name 'fals_e'.
+app/api/monitor/status/route.ts(23,18): error TS2304: Cannot find name 'false'.
 app/api/mpesa/callback/route.ts(40,47): error TS2339: Property 'Name' does not exist on type 'unknown'.
 app/api/mpesa/callback/route.ts(42,47): error TS2339: Property 'Name' does not exist on type 'unknown'.
 app/api/mpesa/callback/route.ts(45,47): error TS2339: Property 'Name' does not exist on type 'unknown'.
 app/api/mpesa/callback/route.ts(48,47): error TS2339: Property 'Name' does not exist on type 'unknown'.
-app/api/mpesa/callback/route.ts(89,18): error TS2304: Cannot find name 'fals_e'.
-app/api/mpesa/callback/route.ts(100,18): error TS2304: Cannot find name 'fals_e'.
-app/api/qapikey/route.ts(24,16): error TS2304: Cannot find name 'fals_e'.
-app/api/qapikey/route.ts(45,14): error TS2304: Cannot find name 'fals_e'.
+app/api/mpesa/callback/route.ts(89,18): error TS2304: Cannot find name 'false'.
+app/api/mpesa/callback/route.ts(100,18): error TS2304: Cannot find name 'false'.
+app/api/qapikey/route.ts(24,16): error TS2304: Cannot find name 'false'.
+app/api/qapikey/route.ts(45,14): error TS2304: Cannot find name 'false'.
 app/api/qcity/audit-log.ts(11,11): error TS2339: Property 'method' does not exist on type '{}'.
 app/api/qcity/audit-log.ts(11,19): error TS2339: Property '_query' does not exist on type '{}'.
 app/api/qcity/audit-log.ts(13,17): error TS2339: Property 'status' does not exist on type 'unknown'.
@@ -297,13 +297,13 @@ app/api/qcity/audit-log.ts(70,10): error TS2339: Property 'setHeader' does not e
 app/api/qcity/audit-log.ts(71,10): error TS2339: Property 'setHeader' does not exist on type 'unknown'.
 app/api/qcity/audit-log.ts(75,17): error TS2339: Property 'status' does not exist on type 'unknown'.
 app/api/qcity/audit-log.ts(77,8): error TS2339: Property 'status' does not exist on type 'unknown'.
-app/api/qcity/audit-log/route.ts(18,61): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qcity/audit-log/route.ts(18,61): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qcity/audit-log/route.ts(29,12): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
 app/api/qcity/audit-log/route.ts(33,43): error TS2339: Property 'action' does not exist on type 'unknown'.
 app/api/qcity/audit-log/route.ts(34,41): error TS2339: Property 'user' does not exist on type 'unknown'.
 app/api/qcity/audit-log/route.ts(35,45): error TS2339: Property 'deviceId' does not exist on type 'unknown'.
 app/api/qcity/audit-log/route.ts(36,43): error TS2339: Property 'status' does not exist on type 'unknown'.
-app/api/qcity/devices.ts(19,38): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qcity/devices.ts(19,38): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qcity/devices.ts(20,27): error TS2339: Property '_query' does not exist on type 'NextApiRequest'.
 app/api/qcity/devices.ts(26,15): error TS2339: Property 'name' does not exist on type '{}'.
 app/api/qcity/devices.ts(26,21): error TS2339: Property 'host' does not exist on type '{}'.
@@ -329,15 +329,15 @@ app/api/qcity/devices.ts(63,15): error TS2339: Property 'id' does not exist on t
 app/api/qcity/devices.ts(64,30): error TS2339: Property 'find' does not exist on type 'unknown'.
 app/api/qcity/devices.ts(64,53): error TS2339: Property 'id' does not exist on type 'unknown'.
 app/api/qcity/devices.ts(74,55): error TS2339: Property 'message' does not exist on type 'unknown'.
-app/api/qcity/metrics.ts(8,9): error TS2304: Cannot find name 'NextApiRespons_e'.
-app/api/qcity/plugins.ts(11,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qcity/metrics.ts(8,9): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qcity/plugins.ts(11,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qcity/remote-command.ts(13,22): error TS2698: Spread types may only be created from object types.
 app/api/qcity/remote-command/route.ts(14,22): error TS2698: Spread types may only be created from object types.
 app/api/qcity/remote-command/route.ts(30,23): error TS2339: Property 'cmd' does not exist on type 'unknown'.
 app/api/qcity/remote-command/route.ts(36,11): error TS2339: Property 'cmd' does not exist on type '{}'.
 app/api/qcity/remote-command/route.ts(36,16): error TS2339: Property 'deviceId' does not exist on type '{}'.
 app/api/qcity/remote-command/route.ts(36,36): error TS2339: Property 'stream' does not exist on type '{}'.
-app/api/qcity/schedule.ts(18,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qcity/schedule.ts(18,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qcity/schedule.ts(20,25): error TS2339: Property '_query' does not exist on type 'NextApiRequest'.
 app/api/qcity/schedule.ts(26,13): error TS2339: Property 'name' does not exist on type '{}'.
 app/api/qcity/schedule.ts(26,19): error TS2339: Property 'command' does not exist on type '{}'.
@@ -377,17 +377,17 @@ app/api/qcity/selfheal-npm/route.ts(98,18): error TS2339: Property 'essentialsOn
 app/api/qcity/selfheal-npm/route.ts(99,18): error TS2339: Property 'upgradeAll' does not exist on type 'unknown'.
 app/api/qcity/selfheal-npm/route.ts(100,18): error TS2339: Property 'diagnosticsOnly' does not exist on type 'unknown'.
 app/api/qcity/selfheal-npm/route.ts(109,20): error TS2339: Property 'role' does not exist on type 'unknown'.
-app/api/qcity/status/route.ts(21,61): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qcity/status/route.ts(21,61): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qcity/status/route.ts(31,27): error TS2339: Property 'offloading' does not exist on type 'unknown'.
 app/api/qcity/status/route.ts(32,30): error TS2339: Property 'offloading' does not exist on type 'unknown'.
 app/api/qi-trading.ts(96,50): error TS2339: Property 'confidence' does not exist on type 'unknown'.
 app/api/qi-trading.ts(125,27): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
 app/api/qi-trading.ts(182,9): error TS2740: Type '{}' is missing the following properties from type 'any[]': length, pop, push, concat, and 28 more.
-app/api/qi-trading.ts(204,45): error TS2304: Cannot find name 'fals_e'.
+app/api/qi-trading.ts(204,45): error TS2304: Cannot find name 'false'.
 app/api/qi-trading.ts(310,11): error TS2740: Type '{}' is missing the following properties from type 'any[]': length, pop, push, concat, and 28 more.
 app/api/qi-trading.ts(329,48): error TS2339: Property 'message' does not exist on type 'unknown'.
-app/api/qi-trading/route.ts(93,18): error TS2304: Cannot find name 'fals_e'.
-app/api/qi-trading/route.ts(108,16): error TS2304: Cannot find name 'fals_e'.
+app/api/qi-trading/route.ts(93,18): error TS2304: Cannot find name 'false'.
+app/api/qi-trading/route.ts(108,16): error TS2304: Cannot find name 'false'.
 app/api/qi-trading/route.ts(120,29): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/qi-trading/route.ts(159,29): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
@@ -404,11 +404,11 @@ app/api/qmoi-database/route.ts(75,16): error TS2339: Property 'status' does not 
 app/api/qmoi-database/route.ts(78,21): error TS2339: Property 'createdAt' does not exist on type 'unknown'.
 app/api/qmoi-database/route.ts(79,21): error TS2339: Property 'updatedAt' does not exist on type 'unknown'.
 app/api/qmoi-database/route.ts(86,34): error TS2339: Property 'mediaTask' does not exist on type 'unknown'.
-app/api/qmoi-database/route.ts(91,23): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi-database/route.ts(91,23): error TS2304: Cannot find name 'false'.
 app/api/qmoi-database/route.ts(100,18): error TS2339: Property 'mediaTask' does not exist on type 'unknown'.
 app/api/qmoi-database/route.ts(107,18): error TS2339: Property 'mediaTask' does not exist on type 'unknown'.
 app/api/qmoi-database/route.ts(122,18): error TS2339: Property 'mediaTask' does not exist on type 'unknown'.
-app/api/qmoi-database/route.ts(131,16): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi-database/route.ts(131,16): error TS2304: Cannot find name 'false'.
 app/api/qmoi-database/route.ts(147,11): error TS2339: Property 'action' does not exist on type 'unknown'.
 app/api/qmoi-database/route.ts(151,11): error TS2339: Property 'resource' does not exist on type 'unknown'.
 app/api/qmoi-database/route.ts(154,29): error TS2339: Property 'auditLog' does not exist on type 'unknown'.
@@ -417,7 +417,7 @@ app/api/qmoi-database/route.ts(216,42): error TS2339: Property 'auditLog' does n
 app/api/qmoi-database/route.ts(217,43): error TS2339: Property 'mediaTask' does not exist on type 'unknown'.
 app/api/qmoi-database/route.ts(254,38): error TS2339: Property 'mediaTask' does not exist on type 'unknown'.
 app/api/qmoi-database/route.ts(283,37): error TS2339: Property 'auditLog' does not exist on type 'unknown'.
-app/api/qmoi-gitlab/trigger/route.ts(37,18): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi-gitlab/trigger/route.ts(37,18): error TS2304: Cannot find name 'false'.
 app/api/qmoi-model.ts(69,5): error TS2322: Type 'unknown[]' is not assignable to type 'AITaskLogEntry[]'.
   Type '{}' is missing the following properties from type 'AITaskLogEntry': id, type, status, timestamp
 app/api/qmoi-model.ts(323,12): error TS2339: Property 'from' does not exist on type 'unknown'.
@@ -426,7 +426,7 @@ app/api/qmoi-model.ts(333,21): error TS2339: Property 'from' does not exist on t
 app/api/qmoi-model.ts(334,32): error TS2339: Property 'from' does not exist on type 'unknown'.
 app/api/qmoi-model.ts(337,12): error TS2339: Property 'from' does not exist on type 'unknown'.
 app/api/qmoi-model.ts(341,22): error TS2339: Property 'concat' does not exist on type 'unknown'.
-app/api/qmoi-model.ts(516,17): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi-model.ts(516,17): error TS2304: Cannot find name 'false'.
 app/api/qmoi-model.ts(659,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
 app/api/qmoi-model.ts(663,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
 app/api/qmoi-model.ts(677,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
@@ -460,13 +460,13 @@ app/api/qmoi/auto-fix/status/route.ts(44,7): error TS2739: Type '{}' is missing 
 app/api/qmoi/auto-fix/stop/route.ts(17,22): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/qmoi/auto-fix/stop/route.ts(90,7): error TS18004: No value exists in scope for the shorthand property 'killedProcess_es'. Either declare one or provide an initializer.
-app/api/qmoi/backup/route.ts(9,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qmoi/backup/route.ts(9,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qmoi/backup/route.ts(16,15): error TS2339: Property 'action' does not exist on type '{}'.
 app/api/qmoi/chat/route.ts(24,51): error TS2304: Cannot find name 'qbas_e'.
 app/api/qmoi/chat/route.ts(94,28): error TS2339: Property 'choices' does not exist on type 'unknown'.
-app/api/qmoi/fix/all.ts(6,61): error TS2304: Cannot find name 'NextApiRespons_e'.
-app/api/qmoi/fix/connectivity.ts(6,61): error TS2304: Cannot find name 'NextApiRespons_e'.
-app/api/qmoi/language/route.ts(12,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qmoi/fix/all.ts(6,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qmoi/fix/connectivity.ts(6,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qmoi/language/route.ts(12,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qmoi/language/route.ts(17,20): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/qmoi/language/route.ts(18,18): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
@@ -485,7 +485,7 @@ app/api/qmoi/own-device-logs/route.ts(125,21): error TS2339: Property '_response
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/qmoi/own-device-logs/route.ts(126,46): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
-app/api/qmoi/research/route.ts(9,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qmoi/research/route.ts(9,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qmoi/research/route.ts(16,15): error TS2339: Property 'action' does not exist on type '{}'.
 app/api/qmoi/revenue/reset/route.ts(20,17): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
@@ -495,7 +495,7 @@ app/api/qmoi/revenue/reset/route.ts(30,27): error TS2339: Property 'setMasterMod
 app/api/qmoi/revenue/reset/route.ts(31,25): error TS2339: Property 'setMasterMode' does not exist on type 'unknown'.
 app/api/qmoi/revenue/reset/route.ts(33,38): error TS2339: Property 'executeMasterCommand' does not exist on type 'unknown'.
 app/api/qmoi/revenue/reset/route.ts(34,33): error TS2339: Property 'executeMasterCommand' does not exist on type 'unknown'.
-app/api/qmoi/revenue/reset/route.ts(35,20): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi/revenue/reset/route.ts(35,20): error TS2304: Cannot find name 'false'.
 app/api/qmoi/revenue/route.ts(34,44): error TS2339: Property 'getTotalEarnings' does not exist on type 'QMOIRevenueEngine | typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
   Property 'getTotalEarnings' does not exist on type 'typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
 app/api/qmoi/revenue/route.ts(35,44): error TS2339: Property 'getDailyProgress' does not exist on type 'QMOIRevenueEngine | typeof import("/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine")'.
@@ -519,7 +519,7 @@ app/api/qmoi/revenue/route.ts(96,29): error TS2339: Property 'stop' does not exi
 app/api/qmoi/revenue/route.ts(107,42): error TS2339: Property 'getTotalEarnings' does not exist on type 'unknown'.
 app/api/qmoi/revenue/route.ts(110,33): error TS2339: Property 'transferToMpesa' does not exist on type 'unknown'.
 app/api/qmoi/revenue/route.ts(111,37): error TS2339: Property 'transferToMpesa' does not exist on type 'unknown'.
-app/api/qmoi/revenue/route.ts(119,22): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi/revenue/route.ts(119,22): error TS2304: Cannot find name 'false'.
 app/api/qmoi/revenue/start/route.ts(20,17): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/qmoi/revenue/start/route.ts(21,27): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
@@ -528,7 +528,7 @@ app/api/qmoi/revenue/start/route.ts(30,27): error TS2339: Property 'setMasterMod
 app/api/qmoi/revenue/start/route.ts(31,25): error TS2339: Property 'setMasterMode' does not exist on type 'unknown'.
 app/api/qmoi/revenue/start/route.ts(33,38): error TS2339: Property 'startRevenueEngine' does not exist on type 'unknown'.
 app/api/qmoi/revenue/start/route.ts(34,33): error TS2339: Property 'startRevenueEngine' does not exist on type 'unknown'.
-app/api/qmoi/revenue/start/route.ts(35,20): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi/revenue/start/route.ts(35,20): error TS2304: Cannot find name 'false'.
 app/api/qmoi/revenue/status/route.ts(20,17): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/qmoi/revenue/status/route.ts(21,27): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
@@ -541,7 +541,7 @@ app/api/qmoi/revenue/stop/route.ts(21,27): error TS2339: Property '_response' do
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/qmoi/revenue/stop/route.ts(28,38): error TS2339: Property 'stopRevenueEngine' does not exist on type 'unknown'.
 app/api/qmoi/revenue/stop/route.ts(29,33): error TS2339: Property 'stopRevenueEngine' does not exist on type 'unknown'.
-app/api/qmoi/revenue/stop/route.ts(30,20): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi/revenue/stop/route.ts(30,20): error TS2304: Cannot find name 'false'.
 app/api/qmoi/revenue/target/route.ts(20,17): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/qmoi/revenue/target/route.ts(21,27): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
@@ -550,7 +550,7 @@ app/api/qmoi/revenue/target/route.ts(39,27): error TS2339: Property 'setMasterMo
 app/api/qmoi/revenue/target/route.ts(40,25): error TS2339: Property 'setMasterMode' does not exist on type 'unknown'.
 app/api/qmoi/revenue/target/route.ts(42,38): error TS2339: Property 'executeMasterCommand' does not exist on type 'unknown'.
 app/api/qmoi/revenue/target/route.ts(43,33): error TS2339: Property 'executeMasterCommand' does not exist on type 'unknown'.
-app/api/qmoi/revenue/target/route.ts(47,20): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi/revenue/target/route.ts(47,20): error TS2304: Cannot find name 'false'.
 app/api/qmoi/revenue/transactions/route.ts(20,17): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/qmoi/revenue/transactions/route.ts(21,27): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
@@ -567,9 +567,9 @@ app/api/qmoi/revenue/transfer/route.ts(39,27): error TS2339: Property 'setMaster
 app/api/qmoi/revenue/transfer/route.ts(40,25): error TS2339: Property 'setMasterMode' does not exist on type 'unknown'.
 app/api/qmoi/revenue/transfer/route.ts(42,38): error TS2339: Property 'executeMasterCommand' does not exist on type 'unknown'.
 app/api/qmoi/revenue/transfer/route.ts(43,33): error TS2339: Property 'executeMasterCommand' does not exist on type 'unknown'.
-app/api/qmoi/revenue/transfer/route.ts(47,20): error TS2304: Cannot find name 'fals_e'.
-app/api/qmoi/status.ts(7,61): error TS2304: Cannot find name 'NextApiRespons_e'.
-app/api/qmoi/user/route.ts(11,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qmoi/revenue/transfer/route.ts(47,20): error TS2304: Cannot find name 'false'.
+app/api/qmoi/status.ts(7,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qmoi/user/route.ts(11,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qmoi/user/route.ts(16,20): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/qmoi/user/route.ts(17,18): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
@@ -592,8 +592,8 @@ app/api/qnews/route.ts(320,22): error TS2339: Property 'analytics' does not exis
 app/api/qnews/route.ts(343,35): error TS2339: Property 'news' does not exist on type 'unknown'.
 app/api/qnews/route.ts(353,31): error TS2339: Property 'news' does not exist on type 'unknown'.
 app/api/qnews/route.ts(383,35): error TS2339: Property 'news' does not exist on type 'unknown'.
-app/api/qnews/route.ts(431,24): error TS2304: Cannot find name 'fals_e'.
-app/api/qnews/route.ts(439,20): error TS2304: Cannot find name 'fals_e'.
+app/api/qnews/route.ts(431,24): error TS2304: Cannot find name 'false'.
+app/api/qnews/route.ts(439,20): error TS2304: Cannot find name 'false'.
 app/api/qnews/route.ts(447,20): error TS2339: Property 'news' does not exist on type 'unknown'.
 app/api/qnews/route.ts(473,32): error TS2339: Property 'title' does not exist on type 'unknown'.
 app/api/qnews/route.ts(473,54): error TS2339: Property 'content' does not exist on type 'unknown'.
@@ -621,13 +621,13 @@ app/api/qvillage/route.ts(351,28): error TS2339: Property 'createdAt' does not e
 app/api/qvillage/route.ts(352,19): error TS2339: Property 'tags' does not exist on type 'unknown'.
 app/api/qvillage/route.ts(355,24): error TS2339: Property 'downloads' does not exist on type 'unknown'.
 app/api/qvillage/route.ts(356,20): error TS2339: Property 'likes' does not exist on type 'unknown'.
-app/api/qvillage/route.ts(392,14): error TS2304: Cannot find name 'fals_e'.
+app/api/qvillage/route.ts(392,14): error TS2304: Cannot find name 'false'.
 app/api/qvillage/route.ts(399,34): error TS2339: Property 'relevanceScore' does not exist on type 'unknown'.
 app/api/qvillage/route.ts(399,53): error TS2339: Property 'relevanceScore' does not exist on type 'unknown'.
 app/api/qvillage/route.ts(486,29): error TS2339: Property 'id' does not exist on type 'unknown'.
 app/api/qvillage/route.ts(489,25): error TS2339: Property 'id' does not exist on type 'unknown'.
-app/api/qvillage/route.ts(547,21): error TS2304: Cannot find name 'fals_e'.
-app/api/qvillage/route.ts(549,16): error TS2304: Cannot find name 'fals_e'.
+app/api/qvillage/route.ts(547,21): error TS2304: Cannot find name 'false'.
+app/api/qvillage/route.ts(549,16): error TS2304: Cannot find name 'false'.
 app/api/qvillage/route.ts(616,16): error TS2339: Property 'tags' does not exist on type 'unknown'.
 app/api/qvillage/route.ts(616,32): error TS2339: Property 'tags' does not exist on type 'unknown'.
 app/api/qvillage/route.ts(618,15): error TS2339: Property 'tags' does not exist on type 'unknown'.
@@ -697,7 +697,7 @@ app/api/wallet.ts(135,38): error TS2339: Property 'transaction' does not exist o
 app/api/wallet.ts(147,18): error TS2339: Property 'wallet' does not exist on type 'unknown'.
 app/api/wallet.ts(184,42): error TS2339: Property 'from' does not exist on type 'unknown'.
 app/api/wallet.ts(204,31): error TS2339: Property 'from' does not exist on type 'unknown'.
-app/api/wallet.ts(534,9): error TS2552: Cannot find name 'NextApiRespons_e'. Did you mean 'NextApiResponse'?
+app/api/wallet.ts(534,9): error TS2552: Cannot find name 'NextApiResponse'. Did you mean 'NextApiResponse'?
 app/api/wallet.ts(575,16): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
 app/api/wallet.ts(577,25): error TS2339: Property 'filter' does not exist on type 'unknown'.
 app/api/wallet.ts(579,16): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
@@ -766,9 +766,9 @@ app/api/webhooks/qvillage/route.ts(419,45): error TS2339: Property 'content' doe
 app/api/webhooks/qvillage/route.ts(465,7): error TS2698: Spread types may only be created from object types.
 app/api/webhooks/qvillage/route.ts(468,29): error TS2339: Property 'semanticTags' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(469,28): error TS2339: Property 'autoCategories' does not exist on type 'unknown'.
-app/api/webhooks/qvillage/route.ts(481,16): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(481,16): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(492,46): error TS2339: Property 'entries' does not exist on type 'unknown'.
-app/api/webhooks/qvillage/route.ts(504,17): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(504,17): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(515,56): error TS2339: Property 'content' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(516,25): error TS2339: Property 'content' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(517,58): error TS2339: Property 'content' does not exist on type 'unknown'.
@@ -777,22 +777,22 @@ app/api/webhooks/qvillage/route.ts(536,7): error TS2698: Spread types may only b
 app/api/webhooks/qvillage/route.ts(546,26): error TS2339: Property 'content' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(591,27): error TS2339: Property 'title' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(591,50): error TS2339: Property 'content' does not exist on type 'unknown'.
-app/api/webhooks/qvillage/route.ts(650,17): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(650,17): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(666,29): error TS2339: Property 'success_count' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(666,53): error TS2339: Property 'total_count' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(667,27): error TS2339: Property 'total_count' does not exist on type 'unknown'.
-app/api/webhooks/qvillage/route.ts(719,20): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(719,20): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(727,31): error TS2339: Property 'success_count' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(727,55): error TS2339: Property 'total_count' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(728,30): error TS2339: Property 'total_count' does not exist on type 'unknown'.
-app/api/webhooks/qvillage/route.ts(779,18): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(779,18): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(788,24): error TS2698: Spread types may only be created from object types.
 app/api/webhooks/qvillage/route.ts(797,35): error TS2339: Property 'tags' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(809,7): error TS2698: Spread types may only be created from object types.
-app/api/webhooks/qvillage/route.ts(810,17): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(810,17): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(823,16): error TS2339: Property 'quality_score' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(823,35): error TS2339: Property 'relevance_score' does not exist on type 'unknown'.
-app/api/webhooks/qvillage/route.ts(865,16): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(865,16): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(891,45): error TS2339: Property 'enhanced' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(893,9): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
 app/api/webhooks/qvillage/route.ts(893,45): error TS2339: Property 'quality_score' does not exist on type 'unknown'.
@@ -810,13 +810,13 @@ app/api/webhooks/qvillage/route.ts(926,21): error TS2339: Property 'throughput' 
 app/api/webhooks/qvillage/route.ts(926,44): error TS2339: Property 'critical' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(927,26): error TS2339: Property 'throughput' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(927,49): error TS2339: Property 'warning' does not exist on type 'unknown'.
-app/api/webhooks/qvillage/route.ts(1037,18): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(1037,18): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(1054,49): error TS2339: Property 'latency' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(1057,47): error TS2339: Property 'error_rate' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(1075,32): error TS2339: Property 'user' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(1081,20): error TS2339: Property 'id' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(1089,18): error TS2339: Property 'notification' does not exist on type 'unknown'.
-app/api/webhooks/qvillage/route.ts(1098,13): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(1098,13): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(1123,48): error TS2339: Property 'title' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(1125,38): error TS2339: Property 'title' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(1137,32): error TS2339: Property 'user' does not exist on type 'unknown'.
@@ -824,18 +824,18 @@ app/api/webhooks/qvillage/route.ts(1143,20): error TS2339: Property 'id' does no
 app/api/webhooks/qvillage/route.ts(1148,15): error TS2698: Spread types may only be created from object types.
 app/api/webhooks/qvillage/route.ts(1148,36): error TS2339: Property 'email' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(1151,18): error TS2339: Property 'notification' does not exist on type 'unknown'.
-app/api/webhooks/qvillage/route.ts(1160,13): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(1160,13): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(1172,32): error TS2339: Property 'user' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(1178,20): error TS2339: Property 'id' does not exist on type 'unknown'.
 app/api/webhooks/qvillage/route.ts(1186,18): error TS2339: Property 'notification' does not exist on type 'unknown'.
-app/api/webhooks/qvillage/route.ts(1195,13): error TS2304: Cannot find name 'fals_e'.
-app/api/whatsapp/audit/route.ts(13,41): error TS2304: Cannot find name 'fals_e'.
-app/api/whatsapp/verify/route.ts(7,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/webhooks/qvillage/route.ts(1195,13): error TS2304: Cannot find name 'false'.
+app/api/whatsapp/audit/route.ts(13,41): error TS2304: Cannot find name 'false'.
+app/api/whatsapp/verify/route.ts(7,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/whatsapp/verify/route.ts(13,11): error TS2339: Property 'phone' does not exist on type '{}'.
-app/api/whatsapp/verify/route.ts(20,28): error TS2304: Cannot find name 'fals_e'.
+app/api/whatsapp/verify/route.ts(20,28): error TS2304: Cannot find name 'false'.
 app/api/wifi-security.ts(31,27): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
 app/api/wifi-security.ts(69,57): error TS2304: Cannot find name '_events'.
-app/api/wifi/scan/route.ts(78,16): error TS2304: Cannot find name 'fals_e'.
+app/api/wifi/scan/route.ts(78,16): error TS2304: Cannot find name 'false'.
 app/page.tsx(29,26): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<{ id: string; name: string; email: string; role: string; avatar: any; }>'.
 app/page.tsx(38,20): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<{ id: string; name: string; email: string; role: string; avatar: any; }>'.
 components/AIContext.tsx(119,65): error TS2345: Argument of type '() => unknown' is not assignable to parameter of type 'ChatMessage[] | (() => ChatMessage[])'.

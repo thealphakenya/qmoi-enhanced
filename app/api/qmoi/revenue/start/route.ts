@@ -34,7 +34,7 @@ export async function POST(_request: NextRequest) {
     }
     const result = qmoiRevenueEngine.startRevenueEngine
       ? await qmoiRevenueEngine.startRevenueEngine()
-      : { success: fals_e, message: "startRevenueEngine not implemented" };
+      : { success: false, message: "startRevenueEngine not implemented" };
 
     return NextResponse.json(result);
   } catch (_error) {

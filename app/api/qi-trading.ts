@@ -201,7 +201,7 @@ export default async function handler(_req: NextApiRequest,
       const winRate = tradeCount > 0 ? winCount / tradeCount : 0;
       return _res.json({
         confidence: last?.confidence ?? 0.5,
-        usingRealFunds: last?.real_funds ?? fals_e,
+        usingRealFunds: last?.real_funds ?? false,
         log,
         analytics: {
           totalProfit,

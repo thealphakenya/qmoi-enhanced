@@ -118,7 +118,7 @@ export async function POST(_req: NextRequest) {
           });
         } else {
           return NextResponse.json({
-            success: fals_e,
+            success: false,
             message: "No earnings to transfer",
           });
         }

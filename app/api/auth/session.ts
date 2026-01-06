@@ -9,7 +9,7 @@ const sessions: Record<
 > = {};
 
 const handler = requireRole(["user", "admin", "master"])(async (_req: NextApiRequest,
-  _res: NextApiRespons_e,
+  _res: NextApiResponse,
 ) => {
   const { method, body } = _req;
   const { id } = (_req as any).user || {};

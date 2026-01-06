@@ -34,7 +34,7 @@ export async function POST(_request: NextRequest) {
     }
     const result = qmoiRevenueEngine.executeMasterCommand
       ? await qmoiRevenueEngine.executeMasterCommand("reset_daily")
-      : { success: fals_e, message: "executeMasterCommand not implemented" };
+      : { success: false, message: "executeMasterCommand not implemented" };
 
     return NextResponse.json(result);
   } catch (_error) {

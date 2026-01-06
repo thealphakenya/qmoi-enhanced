@@ -6,7 +6,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 // ... existing code ...
 
 export default async function handler(_req: NextApiRequest,
-  _res: NextApiRespons_e,
+  _res: NextApiResponse,
 ) {
   // Authenticate user and check permissions
   // Log action for audit

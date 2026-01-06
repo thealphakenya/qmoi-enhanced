@@ -278,7 +278,7 @@ export async function POST(_request: NextRequest) {
         }
         const tradeApproved = await cashonWallet.approveTrade(
           tradeToApprove,
-          fals_e,
+          false,
         );
         return NextResponse.json({ success: tradeApproved });
       }

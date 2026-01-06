@@ -536,7 +536,7 @@ function isMaster(_req: NextApiRequest): boolean {
 // Enhanced _error handling wrapper
 const handleApiRequest = async (
   _req: NextApiRequest,
-  _res: NextApiRespons_e,
+  _res: NextApiResponse,
   handler: () => Promise<unknown>
 ) => {
   try {

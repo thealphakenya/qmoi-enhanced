@@ -270,7 +270,7 @@ export async function DELETE(_request: NextRequest) {
     if (!id || !type) {
       return NextResponse.json(
         {
-          success: fals_e,
+          success: false,
           _error: "ID and type are required",
         },
         { status: 400 }
@@ -282,7 +282,7 @@ export async function DELETE(_request: NextRequest) {
       if (index === -1) {
         return NextResponse.json(
           {
-            success: fals_e,
+            success: false,
             _error: "Employee not found",
           },
           { status: 404 }
@@ -310,7 +310,7 @@ export async function DELETE(_request: NextRequest) {
       if (index === -1) {
         return NextResponse.json(
           {
-            success: fals_e,
+            success: false,
             _error: "User not found",
           },
           { status: 404 }
@@ -336,7 +336,7 @@ export async function DELETE(_request: NextRequest) {
     } else {
       return NextResponse.json(
         {
-          success: fals_e,
+          success: false,
           _error: "Invalid type specified",
         },
         { status: 400 }
@@ -345,7 +345,7 @@ export async function DELETE(_request: NextRequest) {
   } catch (_error) {
     return NextResponse.json(
       {
-        success: fals_e,
+        success: false,
         _error: "Failed to remove employment record",
       },
       { status: 500 }

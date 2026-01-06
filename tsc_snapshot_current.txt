@@ -1,5 +1,5 @@
 app/api/account-automation/route.ts(17,20): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
-app/api/account-automation/route.ts(31,15): error TS2304: Cannot find name 'fals_e'.
+app/api/account-automation/route.ts(31,15): error TS2304: Cannot find name 'false'.
 app/api/account-automation/route.ts(41,20): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/account-automation/route.ts(49,12): error TS18046: 'a' is of type 'unknown'.
 app/api/account-automation/route.ts(49,39): error TS18046: 'a' is of type 'unknown'.
@@ -28,16 +28,16 @@ app/api/ai-self-diagnostics/route.ts(29,38): error TS2551: Property '_response' 
 app/api/ai-self-diagnostics/route.ts(30,23): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/ai-self-diagnostics/route.ts(85,38): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/ai-self-diagnostics/route.ts(86,23): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
-app/api/auth/login.ts(18,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/auth/login.ts(18,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/auth/login.ts(22,11): error TS2339: Property 'username' does not exist on type 'unknown'.
 app/api/auth/login.ts(22,21): error TS2339: Property 'password' does not exist on type 'unknown'.
 app/api/auth/login.ts(26,16): error TS18046: 'users' is of type 'unknown'.
 app/api/auth/login.ts(26,43): error TS18046: 'u' is of type 'unknown'.
-app/api/auth/logout.ts(4,61): error TS2304: Cannot find name 'NextApiRespons_e'.
-app/api/auth/me.ts(8,61): error TS2304: Cannot find name 'NextApiRespons_e'.
-app/api/auth/rbac.ts(10,40): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/auth/logout.ts(4,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/auth/me.ts(8,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/auth/rbac.ts(10,40): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/auth/rbac.ts(20,16): error TS18046: 'handler' is of type 'unknown'.
-app/api/auth/register.ts(19,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/auth/register.ts(19,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/auth/register.ts(23,11): error TS2339: Property 'username' does not exist on type 'unknown'.
 app/api/auth/register.ts(23,21): error TS2339: Property 'password' does not exist on type 'unknown'.
 app/api/auth/register.ts(23,31): error TS2339: Property 'role' does not exist on type 'unknown'.
@@ -45,10 +45,10 @@ app/api/auth/register.ts(27,7): error TS18046: 'users' is of type 'unknown'.
 app/api/auth/register.ts(27,34): error TS18046: 'u' is of type 'unknown'.
 app/api/auth/register.ts(37,3): error TS18046: 'users' is of type 'unknown'.
 app/api/auth/register.ts(38,13): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
-app/api/auth/session.ts(12,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/auth/session.ts(12,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/auth/session.ts(23,28): error TS18046: 'body' is of type 'unknown'.
 app/api/auth/session.ts(24,13): error TS2339: Property 'sid' does not exist on type 'unknown'.
-app/api/auth/totp.ts(19,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/auth/totp.ts(19,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/auth/totp.ts(24,19): error TS18046: 'users' is of type 'unknown'.
 app/api/auth/totp.ts(24,51): error TS18046: 'u' is of type 'unknown'.
 app/api/auth/totp.ts(26,28): error TS18046: 'body' is of type 'unknown'.
@@ -62,14 +62,14 @@ app/api/auth/totp.ts(39,15): error TS2345: Argument of type 'unknown' is not ass
 app/api/auth/totp.ts(42,28): error TS18046: 'body' is of type 'unknown'.
 app/api/auth/totp.ts(43,5): error TS18046: 'users' is of type 'unknown'.
 app/api/auth/totp.ts(44,15): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
-app/api/auto-fix.ts(23,18): error TS2304: Cannot find name 'fals_e'.
-app/api/auto-fix.ts(85,20): error TS2304: Cannot find name 'fals_e'.
+app/api/auto-fix.ts(23,18): error TS2304: Cannot find name 'false'.
+app/api/auto-fix.ts(85,20): error TS2304: Cannot find name 'false'.
 app/api/cashon/balance/route.ts(31,17): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/cashon/balance/route.ts(32,27): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/cashon/deposit/route.ts(15,22): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/cashon/route.ts(17,22): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/cashon/route.ts(77,22): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
-app/api/cashon/route.ts(281,11): error TS2304: Cannot find name 'fals_e'.
+app/api/cashon/route.ts(281,11): error TS2304: Cannot find name 'false'.
 app/api/cashon/route.ts(307,22): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/cashon/signals/route.ts(30,17): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/cashon/signals/route.ts(31,27): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
@@ -93,7 +93,7 @@ app/api/colab-job.ts(73,39): error TS2339: Property 'projectName' does not exist
 app/api/colab-job.ts(84,13): error TS2339: Property 'type' does not exist on type 'unknown'.
 app/api/colab-job.ts(84,19): error TS2339: Property 'name' does not exist on type 'unknown'.
 app/api/datasets/route.ts(15,69): error TS18046: 'data' is of type 'unknown'.
-app/api/deploy/auto-redeploy/route.ts(31,23): error TS2304: Cannot find name 'fals_e'.
+app/api/deploy/auto-redeploy/route.ts(31,23): error TS2304: Cannot find name 'false'.
 app/api/deploy/auto-redeploy/route.ts(38,63): error TS18046: '_error' is of type 'unknown'.
 app/api/deploy/route.ts(44,46): error TS18046: '_error' is of type 'unknown'.
 app/api/device-fingerprint/route.ts(44,5): error TS18046: 'fingerprints' is of type 'unknown'.
@@ -103,11 +103,11 @@ app/api/document-backup/route.ts(51,37): error TS18046: 'd' is of type 'unknown'
 app/api/employment/megavault/route.ts(63,31): error TS18046: 'credentials' is of type 'unknown'.
 app/api/employment/megavault/route.ts(64,34): error TS18046: 'credentials' is of type 'unknown'.
 app/api/employment/megavault/route.ts(65,20): error TS18046: 'credentials' is of type 'unknown'.
-app/api/employment/megavault/route.ts(95,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/megavault/route.ts(95,23): error TS2304: Cannot find name 'false'.
 app/api/employment/megavault/route.ts(114,21): error TS18046: 'transactionData' is of type 'unknown'.
 app/api/employment/megavault/route.ts(115,26): error TS18046: 'transactionData' is of type 'unknown'.
 app/api/employment/megavault/route.ts(117,24): error TS18046: 'transactionData' is of type 'unknown'.
-app/api/employment/megavault/route.ts(131,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/megavault/route.ts(131,23): error TS2304: Cannot find name 'false'.
 app/api/employment/megavault/route.ts(170,13): error TS2339: Property 'percentage' does not exist on type 'unknown'.
 app/api/employment/megavault/route.ts(170,25): error TS2339: Property 'recipients' does not exist on type 'unknown'.
 app/api/employment/megavault/route.ts(174,37): error TS18046: 'recipient' is of type 'unknown'.
@@ -115,16 +115,16 @@ app/api/employment/megavault/route.ts(176,22): error TS18046: 'recipient' is of 
 app/api/employment/megavault/route.ts(177,24): error TS18046: 'recipient' is of type 'unknown'.
 app/api/employment/megavault/route.ts(179,21): error TS18046: 'recipient' is of type 'unknown'.
 app/api/employment/megavault/route.ts(193,9): error TS2698: Spread types may only be created from object types.
-app/api/employment/megavault/route.ts(211,23): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/megavault/route.ts(284,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/megavault/route.ts(304,24): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/megavault/route.ts(362,24): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/megavault/route.ts(381,24): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/megavault/route.ts(422,22): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/megavault/route.ts(432,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/megavault/route.ts(442,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/megavault/route.ts(462,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/megavault/route.ts(483,18): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/megavault/route.ts(211,23): error TS2304: Cannot find name 'false'.
+app/api/employment/megavault/route.ts(284,18): error TS2304: Cannot find name 'false'.
+app/api/employment/megavault/route.ts(304,24): error TS2304: Cannot find name 'false'.
+app/api/employment/megavault/route.ts(362,24): error TS2304: Cannot find name 'false'.
+app/api/employment/megavault/route.ts(381,24): error TS2304: Cannot find name 'false'.
+app/api/employment/megavault/route.ts(422,22): error TS2304: Cannot find name 'false'.
+app/api/employment/megavault/route.ts(432,20): error TS2304: Cannot find name 'false'.
+app/api/employment/megavault/route.ts(442,18): error TS2304: Cannot find name 'false'.
+app/api/employment/megavault/route.ts(462,20): error TS2304: Cannot find name 'false'.
+app/api/employment/megavault/route.ts(483,18): error TS2304: Cannot find name 'false'.
 app/api/employment/payment/route.ts(58,42): error TS18046: 'credentials' is of type 'unknown'.
 app/api/employment/payment/route.ts(59,36): error TS18046: 'credentials' is of type 'unknown'.
 app/api/employment/payment/route.ts(85,19): error TS18046: 'paymentData' is of type 'unknown'.
@@ -132,105 +132,105 @@ app/api/employment/payment/route.ts(86,19): error TS18046: 'paymentData' is of t
 app/api/employment/payment/route.ts(88,24): error TS18046: 'paymentData' is of type 'unknown'.
 app/api/employment/payment/route.ts(90,29): error TS18046: 'paymentData' is of type 'unknown'.
 app/api/employment/payment/route.ts(91,28): error TS18046: 'paymentData' is of type 'unknown'.
-app/api/employment/payment/route.ts(104,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(104,23): error TS2304: Cannot find name 'false'.
 app/api/employment/payment/route.ts(126,21): error TS18046: 'paymentData' is of type 'unknown'.
 app/api/employment/payment/route.ts(129,21): error TS18046: 'paymentData' is of type 'unknown'.
-app/api/employment/payment/route.ts(146,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(146,23): error TS2304: Cannot find name 'false'.
 app/api/employment/payment/route.ts(164,21): error TS18046: 'paymentData' is of type 'unknown'.
 app/api/employment/payment/route.ts(165,26): error TS18046: 'paymentData' is of type 'unknown'.
 app/api/employment/payment/route.ts(168,24): error TS18046: 'paymentData' is of type 'unknown'.
 app/api/employment/payment/route.ts(169,23): error TS18046: 'paymentData' is of type 'unknown'.
 app/api/employment/payment/route.ts(170,20): error TS18046: 'paymentData' is of type 'unknown'.
 app/api/employment/payment/route.ts(171,26): error TS18046: 'paymentData' is of type 'unknown'.
-app/api/employment/payment/route.ts(181,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(181,23): error TS2304: Cannot find name 'false'.
 app/api/employment/payment/route.ts(194,45): error TS18046: 'p' is of type 'unknown'.
 app/api/employment/payment/route.ts(195,50): error TS18046: 'p' is of type 'unknown'.
-app/api/employment/payment/route.ts(219,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/payment/route.ts(259,31): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(219,18): error TS2304: Cannot find name 'false'.
+app/api/employment/payment/route.ts(259,31): error TS2304: Cannot find name 'false'.
 app/api/employment/payment/route.ts(263,54): error TS18046: 'p' is of type 'unknown'.
 app/api/employment/payment/route.ts(266,11): error TS2698: Spread types may only be created from object types.
-app/api/employment/payment/route.ts(326,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/payment/route.ts(336,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/payment/route.ts(346,18): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(326,20): error TS2304: Cannot find name 'false'.
+app/api/employment/payment/route.ts(336,20): error TS2304: Cannot find name 'false'.
+app/api/employment/payment/route.ts(346,18): error TS2304: Cannot find name 'false'.
 app/api/employment/payment/route.ts(359,45): error TS18046: 'p' is of type 'unknown'.
-app/api/employment/payment/route.ts(363,20): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(363,20): error TS2304: Cannot find name 'false'.
 app/api/employment/payment/route.ts(370,25): error TS2698: Spread types may only be created from object types.
-app/api/employment/payment/route.ts(389,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/revenue/route.ts(199,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/payment/route.ts(389,18): error TS2304: Cannot find name 'false'.
+app/api/employment/revenue/route.ts(199,23): error TS2304: Cannot find name 'false'.
 app/api/employment/revenue/route.ts(207,27): error TS18046: 'taskData' is of type 'unknown'.
 app/api/employment/revenue/route.ts(208,25): error TS18046: 'taskData' is of type 'unknown'.
 app/api/employment/revenue/route.ts(212,55): error TS18046: 'taskData' is of type 'unknown'.
-app/api/employment/revenue/route.ts(223,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/revenue/route.ts(223,23): error TS2304: Cannot find name 'false'.
 app/api/employment/revenue/route.ts(232,40): error TS18046: 'campaignData' is of type 'unknown'.
 app/api/employment/revenue/route.ts(237,54): error TS18046: 'campaignData' is of type 'unknown'.
-app/api/employment/revenue/route.ts(250,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/revenue/route.ts(250,23): error TS2304: Cannot find name 'false'.
 app/api/employment/revenue/route.ts(257,23): error TS18046: 'projectData' is of type 'unknown'.
 app/api/employment/revenue/route.ts(258,25): error TS18046: 'projectData' is of type 'unknown'.
 app/api/employment/revenue/route.ts(262,53): error TS18046: 'projectData' is of type 'unknown'.
-app/api/employment/revenue/route.ts(273,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/revenue/route.ts(273,23): error TS2304: Cannot find name 'false'.
 app/api/employment/revenue/route.ts(281,36): error TS18046: 'referralData' is of type 'unknown'.
 app/api/employment/revenue/route.ts(286,53): error TS18046: 'referralData' is of type 'unknown'.
-app/api/employment/revenue/route.ts(298,23): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/revenue/route.ts(340,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/revenue/route.ts(298,23): error TS2304: Cannot find name 'false'.
+app/api/employment/revenue/route.ts(340,23): error TS2304: Cannot find name 'false'.
 app/api/employment/revenue/route.ts(353,52): error TS18046: 'surveyData' is of type 'unknown'.
-app/api/employment/revenue/route.ts(364,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/revenue/route.ts(364,23): error TS2304: Cannot find name 'false'.
 app/api/employment/revenue/route.ts(378,25): error TS18046: 'labelingData' is of type 'unknown'.
-app/api/employment/revenue/route.ts(390,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/revenue/route.ts(390,23): error TS2304: Cannot find name 'false'.
 app/api/employment/revenue/route.ts(403,60): error TS18046: 'saasData' is of type 'unknown'.
-app/api/employment/revenue/route.ts(414,23): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/revenue/route.ts(414,23): error TS2304: Cannot find name 'false'.
 app/api/employment/revenue/route.ts(427,49): error TS18046: 't' is of type 'unknown'.
 app/api/employment/revenue/route.ts(432,57): error TS18046: 'c' is of type 'unknown'.
 app/api/employment/revenue/route.ts(437,55): error TS18046: 'p' is of type 'unknown'.
 app/api/employment/revenue/route.ts(442,55): error TS18046: 'p' is of type 'unknown'.
-app/api/employment/revenue/route.ts(478,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/revenue/route.ts(615,24): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/revenue/route.ts(662,22): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/revenue/route.ts(672,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/revenue/route.ts(682,18): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/revenue/route.ts(478,18): error TS2304: Cannot find name 'false'.
+app/api/employment/revenue/route.ts(615,24): error TS2304: Cannot find name 'false'.
+app/api/employment/revenue/route.ts(662,22): error TS2304: Cannot find name 'false'.
+app/api/employment/revenue/route.ts(672,20): error TS2304: Cannot find name 'false'.
+app/api/employment/revenue/route.ts(682,18): error TS2304: Cannot find name 'false'.
 app/api/employment/revenue/route.ts(698,39): error TS18046: 't' is of type 'unknown'.
 app/api/employment/revenue/route.ts(704,47): error TS18046: 'c' is of type 'unknown'.
 app/api/employment/revenue/route.ts(710,44): error TS18046: 'p' is of type 'unknown'.
 app/api/employment/revenue/route.ts(716,45): error TS18046: 'r' is of type 'unknown'.
-app/api/employment/revenue/route.ts(724,22): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/revenue/route.ts(734,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/revenue/route.ts(749,18): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/revenue/route.ts(724,22): error TS2304: Cannot find name 'false'.
+app/api/employment/revenue/route.ts(734,20): error TS2304: Cannot find name 'false'.
+app/api/employment/revenue/route.ts(749,18): error TS2304: Cannot find name 'false'.
 app/api/employment/route.ts(70,23): error TS18046: 'emp' is of type 'unknown'.
 app/api/employment/route.ts(70,59): error TS18046: 'emp' is of type 'unknown'.
 app/api/employment/route.ts(75,23): error TS18046: 'user' is of type 'unknown'.
 app/api/employment/route.ts(75,60): error TS18046: 'user' is of type 'unknown'.
-app/api/employment/route.ts(91,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/route.ts(155,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/route.ts(165,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/route.ts(175,18): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(91,18): error TS2304: Cannot find name 'false'.
+app/api/employment/route.ts(155,20): error TS2304: Cannot find name 'false'.
+app/api/employment/route.ts(165,20): error TS2304: Cannot find name 'false'.
+app/api/employment/route.ts(175,18): error TS2304: Cannot find name 'false'.
 app/api/employment/route.ts(189,50): error TS18046: 'emp' is of type 'unknown'.
-app/api/employment/route.ts(193,22): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(193,22): error TS2304: Cannot find name 'false'.
 app/api/employment/route.ts(200,28): error TS2698: Spread types may only be created from object types.
 app/api/employment/route.ts(207,30): error TS2571: Object is of type 'unknown'.
 app/api/employment/route.ts(217,47): error TS18046: 'user' is of type 'unknown'.
-app/api/employment/route.ts(221,22): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(221,22): error TS2304: Cannot find name 'false'.
 app/api/employment/route.ts(228,24): error TS2698: Spread types may only be created from object types.
 app/api/employment/route.ts(235,26): error TS2571: Object is of type 'unknown'.
-app/api/employment/route.ts(247,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/route.ts(256,18): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/route.ts(273,20): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(247,20): error TS2304: Cannot find name 'false'.
+app/api/employment/route.ts(256,18): error TS2304: Cannot find name 'false'.
+app/api/employment/route.ts(273,20): error TS2304: Cannot find name 'false'.
 app/api/employment/route.ts(281,50): error TS18046: 'emp' is of type 'unknown'.
-app/api/employment/route.ts(285,22): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(285,22): error TS2304: Cannot find name 'false'.
 app/api/employment/route.ts(300,30): error TS18046: 'employee' is of type 'unknown'.
 app/api/employment/route.ts(309,47): error TS18046: 'user' is of type 'unknown'.
-app/api/employment/route.ts(313,22): error TS2304: Cannot find name 'fals_e'.
+app/api/employment/route.ts(313,22): error TS2304: Cannot find name 'false'.
 app/api/employment/route.ts(328,26): error TS18046: 'user' is of type 'unknown'.
-app/api/employment/route.ts(339,20): error TS2304: Cannot find name 'fals_e'.
-app/api/employment/route.ts(348,18): error TS2304: Cannot find name 'fals_e'.
-app/api/financial/audit/route.ts(13,41): error TS2304: Cannot find name 'fals_e'.
-app/api/financial/verify/route.ts(7,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/employment/route.ts(339,20): error TS2304: Cannot find name 'false'.
+app/api/employment/route.ts(348,18): error TS2304: Cannot find name 'false'.
+app/api/financial/audit/route.ts(13,41): error TS2304: Cannot find name 'false'.
+app/api/financial/verify/route.ts(7,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/financial/verify/route.ts(13,11): error TS2339: Property 'service' does not exist on type 'unknown'.
 app/api/financial/verify/route.ts(13,20): error TS2339: Property 'account' does not exist on type 'unknown'.
-app/api/financial/verify/route.ts(20,28): error TS2304: Cannot find name 'fals_e'.
+app/api/financial/verify/route.ts(20,28): error TS2304: Cannot find name 'false'.
 app/api/git/commit/route.ts(45,54): error TS18046: '_error' is of type 'unknown'.
 app/api/git/pr/route.ts(43,60): error TS18046: '_error' is of type 'unknown'.
 app/api/git/push/route.ts(23,52): error TS18046: '_error' is of type 'unknown'.
 app/api/git/status/route.ts(42,54): error TS18046: '_error' is of type 'unknown'.
-app/api/health/route.ts(32,24): error TS2304: Cannot find name 'fals_e'.
+app/api/health/route.ts(32,24): error TS2304: Cannot find name 'false'.
 app/api/health/route.ts(393,45): error TS2769: No overload matches this call.
   Overload 1 of 2, '(o: ArrayLike<unknown> | { [s: string]: unknown; }): [string, unknown][]', gave the following error.
     Argument of type 'unknown' is not assignable to parameter of type 'ArrayLike<unknown> | { [s: string]: unknown; }'.
@@ -246,15 +246,15 @@ app/api/health/route.ts(506,7): error TS18046: 'healthReport' is of type 'unknow
 app/api/health/route.ts(517,7): error TS18046: 'healthReport' is of type 'unknown'.
 app/api/media/generate/route.ts(191,17): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/media/generate/route.ts(194,27): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
-app/api/monitor/status/route.ts(23,18): error TS2304: Cannot find name 'fals_e'.
+app/api/monitor/status/route.ts(23,18): error TS2304: Cannot find name 'false'.
 app/api/mpesa/callback/route.ts(40,42): error TS18046: 'item' is of type 'unknown'.
 app/api/mpesa/callback/route.ts(42,42): error TS18046: 'item' is of type 'unknown'.
 app/api/mpesa/callback/route.ts(45,42): error TS18046: 'item' is of type 'unknown'.
 app/api/mpesa/callback/route.ts(48,42): error TS18046: 'item' is of type 'unknown'.
-app/api/mpesa/callback/route.ts(89,18): error TS2304: Cannot find name 'fals_e'.
-app/api/mpesa/callback/route.ts(100,18): error TS2304: Cannot find name 'fals_e'.
-app/api/qapikey/route.ts(24,16): error TS2304: Cannot find name 'fals_e'.
-app/api/qapikey/route.ts(45,14): error TS2304: Cannot find name 'fals_e'.
+app/api/mpesa/callback/route.ts(89,18): error TS2304: Cannot find name 'false'.
+app/api/mpesa/callback/route.ts(100,18): error TS2304: Cannot find name 'false'.
+app/api/qapikey/route.ts(24,16): error TS2304: Cannot find name 'false'.
+app/api/qapikey/route.ts(45,14): error TS2304: Cannot find name 'false'.
 app/api/qcity/audit-log.ts(11,11): error TS2339: Property 'method' does not exist on type 'unknown'.
 app/api/qcity/audit-log.ts(11,19): error TS2339: Property '_query' does not exist on type 'unknown'.
 app/api/qcity/audit-log.ts(13,12): error TS18046: '_res' is of type 'unknown'.
@@ -280,14 +280,14 @@ app/api/qcity/audit-log.ts(70,5): error TS18046: '_res' is of type 'unknown'.
 app/api/qcity/audit-log.ts(71,5): error TS18046: '_res' is of type 'unknown'.
 app/api/qcity/audit-log.ts(75,12): error TS18046: '_res' is of type 'unknown'.
 app/api/qcity/audit-log.ts(77,3): error TS18046: '_res' is of type 'unknown'.
-app/api/qcity/audit-log/route.ts(18,61): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qcity/audit-log/route.ts(18,61): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qcity/audit-log/route.ts(29,12): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
 app/api/qcity/audit-log/route.ts(33,41): error TS18046: 'l' is of type 'unknown'.
 app/api/qcity/audit-log/route.ts(34,39): error TS18046: 'l' is of type 'unknown'.
 app/api/qcity/audit-log/route.ts(35,43): error TS18046: 'l' is of type 'unknown'.
 app/api/qcity/audit-log/route.ts(36,41): error TS18046: 'l' is of type 'unknown'.
 app/api/qcity/audit-log/route.ts(43,40): error TS18046: 'l' is of type 'unknown'.
-app/api/qcity/devices.ts(19,38): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qcity/devices.ts(19,38): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qcity/devices.ts(20,27): error TS2339: Property '_query' does not exist on type 'NextApiRequest'.
 app/api/qcity/devices.ts(26,15): error TS2339: Property 'name' does not exist on type 'unknown'.
 app/api/qcity/devices.ts(26,21): error TS2339: Property 'host' does not exist on type 'unknown'.
@@ -313,8 +313,8 @@ app/api/qcity/devices.ts(63,15): error TS2339: Property 'id' does not exist on t
 app/api/qcity/devices.ts(64,22): error TS18046: 'devices' is of type 'unknown'.
 app/api/qcity/devices.ts(64,51): error TS18046: 'd' is of type 'unknown'.
 app/api/qcity/devices.ts(74,50): error TS18046: '_err' is of type 'unknown'.
-app/api/qcity/metrics.ts(8,9): error TS2304: Cannot find name 'NextApiRespons_e'.
-app/api/qcity/plugins.ts(11,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qcity/metrics.ts(8,9): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qcity/plugins.ts(11,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qcity/remote-command.ts(13,22): error TS2698: Spread types may only be created from object types.
 app/api/qcity/remote-command/route.ts(14,22): error TS2698: Spread types may only be created from object types.
 app/api/qcity/remote-command/route.ts(30,23): error TS2339: Property 'cmd' does not exist on type '{}'.
@@ -325,7 +325,7 @@ app/api/qcity/remote-command/route.ts(52,59): error TS18046: 'data' is of type '
 app/api/qcity/remote-command/route.ts(53,59): error TS18046: 'data' is of type 'unknown'.
 app/api/qcity/remote-command/route.ts(71,52): error TS18046: 'data' is of type 'unknown'.
 app/api/qcity/remote-command/route.ts(72,52): error TS18046: 'data' is of type 'unknown'.
-app/api/qcity/schedule.ts(18,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qcity/schedule.ts(18,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qcity/schedule.ts(20,25): error TS2339: Property '_query' does not exist on type 'NextApiRequest'.
 app/api/qcity/schedule.ts(26,13): error TS2339: Property 'name' does not exist on type 'unknown'.
 app/api/qcity/schedule.ts(26,19): error TS2339: Property 'command' does not exist on type 'unknown'.
@@ -367,7 +367,7 @@ app/api/qcity/selfheal-npm/route.ts(100,9): error TS18046: '_options' is of type
 app/api/qcity/selfheal-npm/route.ts(109,16): error TS18046: 'jwt' is of type 'unknown'.
 app/api/qcity/selfheal-npm/route.ts(114,42): error TS18046: 'data' is of type 'unknown'.
 app/api/qcity/selfheal-npm/route.ts(117,50): error TS18046: 'data' is of type 'unknown'.
-app/api/qcity/status/route.ts(21,61): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qcity/status/route.ts(21,61): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qcity/status/route.ts(31,27): error TS2339: Property 'offloading' does not exist on type '{}'.
 app/api/qcity/status/route.ts(32,30): error TS2339: Property 'offloading' does not exist on type '{}'.
 app/api/qi-trading.ts(80,19): error TS18046: 'data' is of type 'unknown'.
@@ -375,11 +375,11 @@ app/api/qi-trading.ts(84,24): error TS18046: 'data' is of type 'unknown'.
 app/api/qi-trading.ts(96,43): error TS18046: 'result' is of type 'unknown'.
 app/api/qi-trading.ts(125,27): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
 app/api/qi-trading.ts(182,9): error TS2322: Type 'unknown' is not assignable to type 'any[]'.
-app/api/qi-trading.ts(204,45): error TS2304: Cannot find name 'fals_e'.
+app/api/qi-trading.ts(204,45): error TS2304: Cannot find name 'false'.
 app/api/qi-trading.ts(310,11): error TS2322: Type 'unknown' is not assignable to type 'any[]'.
 app/api/qi-trading.ts(329,48): error TS2339: Property 'message' does not exist on type '{}'.
-app/api/qi-trading/route.ts(93,18): error TS2304: Cannot find name 'fals_e'.
-app/api/qi-trading/route.ts(108,16): error TS2304: Cannot find name 'fals_e'.
+app/api/qi-trading/route.ts(93,18): error TS2304: Cannot find name 'false'.
+app/api/qi-trading/route.ts(108,16): error TS2304: Cannot find name 'false'.
 app/api/qi-trading/route.ts(120,29): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qi-trading/route.ts(159,29): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi-database/route.ts(10,51): error TS2307: Cannot find module '@/lib/prisma' or its corresponding type declarations.
@@ -394,11 +394,11 @@ app/api/qmoi-database/route.ts(75,11): error TS18046: 'task' is of type 'unknown
 app/api/qmoi-database/route.ts(78,16): error TS18046: 'task' is of type 'unknown'.
 app/api/qmoi-database/route.ts(79,16): error TS18046: 'task' is of type 'unknown'.
 app/api/qmoi-database/route.ts(86,27): error TS18046: 'prisma' is of type 'unknown'.
-app/api/qmoi-database/route.ts(91,23): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi-database/route.ts(91,23): error TS2304: Cannot find name 'false'.
 app/api/qmoi-database/route.ts(100,11): error TS18046: 'prisma' is of type 'unknown'.
 app/api/qmoi-database/route.ts(107,11): error TS18046: 'prisma' is of type 'unknown'.
 app/api/qmoi-database/route.ts(122,11): error TS18046: 'prisma' is of type 'unknown'.
-app/api/qmoi-database/route.ts(131,16): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi-database/route.ts(131,16): error TS2304: Cannot find name 'false'.
 app/api/qmoi-database/route.ts(147,5): error TS18046: 'where' is of type 'unknown'.
 app/api/qmoi-database/route.ts(151,5): error TS18046: 'where' is of type 'unknown'.
 app/api/qmoi-database/route.ts(154,22): error TS18046: 'prisma' is of type 'unknown'.
@@ -407,7 +407,7 @@ app/api/qmoi-database/route.ts(216,35): error TS18046: 'prisma' is of type 'unkn
 app/api/qmoi-database/route.ts(217,36): error TS18046: 'prisma' is of type 'unknown'.
 app/api/qmoi-database/route.ts(254,31): error TS18046: 'prisma' is of type 'unknown'.
 app/api/qmoi-database/route.ts(283,30): error TS18046: 'prisma' is of type 'unknown'.
-app/api/qmoi-gitlab/trigger/route.ts(37,18): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi-gitlab/trigger/route.ts(37,18): error TS2304: Cannot find name 'false'.
 app/api/qmoi-model.ts(69,5): error TS2322: Type 'unknown[]' is not assignable to type 'AITaskLogEntry[]'.
   Type 'unknown' is not assignable to type 'AITaskLogEntry'.
 app/api/qmoi-model.ts(323,5): error TS18046: 'Buffer' is of type 'unknown'.
@@ -416,7 +416,7 @@ app/api/qmoi-model.ts(333,14): error TS18046: 'Buffer' is of type 'unknown'.
 app/api/qmoi-model.ts(334,25): error TS18046: 'Buffer' is of type 'unknown'.
 app/api/qmoi-model.ts(337,5): error TS18046: 'Buffer' is of type 'unknown'.
 app/api/qmoi-model.ts(341,15): error TS18046: 'Buffer' is of type 'unknown'.
-app/api/qmoi-model.ts(516,17): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi-model.ts(516,17): error TS2304: Cannot find name 'false'.
 app/api/qmoi-model.ts(659,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
 app/api/qmoi-model.ts(663,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
 app/api/qmoi-model.ts(677,14): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
@@ -447,13 +447,13 @@ app/api/qmoi/auto-fix/status/route.ts(15,22): error TS2551: Property '_response'
 app/api/qmoi/auto-fix/status/route.ts(44,7): error TS2322: Type 'unknown' is not assignable to type '{ timestamp: string; status: "running" | "completed" | "_error" | "unknown"; summary: { md_files_processed: number; claims_verified: number; claims_fixed: number; errors_fixed: number; manual_errors_fixed: number; new_features_documented: number; }; deployment: { ...; }; details: never[]; }'.
 app/api/qmoi/auto-fix/stop/route.ts(17,22): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/auto-fix/stop/route.ts(90,7): error TS18004: No value exists in scope for the shorthand property 'killedProcess_es'. Either declare one or provide an initializer.
-app/api/qmoi/backup/route.ts(9,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qmoi/backup/route.ts(9,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qmoi/backup/route.ts(16,15): error TS2339: Property 'action' does not exist on type 'unknown'.
 app/api/qmoi/chat/route.ts(24,51): error TS2304: Cannot find name 'qbas_e'.
 app/api/qmoi/chat/route.ts(94,28): error TS2339: Property 'choices' does not exist on type '{}'.
-app/api/qmoi/fix/all.ts(6,61): error TS2304: Cannot find name 'NextApiRespons_e'.
-app/api/qmoi/fix/connectivity.ts(6,61): error TS2304: Cannot find name 'NextApiRespons_e'.
-app/api/qmoi/language/route.ts(12,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qmoi/fix/all.ts(6,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qmoi/fix/connectivity.ts(6,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qmoi/language/route.ts(12,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qmoi/language/route.ts(17,20): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/language/route.ts(18,18): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/language/route.ts(22,25): error TS2339: Property '_query' does not exist on type 'NextApiRequest'.
@@ -464,7 +464,7 @@ app/api/qmoi/own-device-logs/route.ts(48,21): error TS2551: Property '_response'
 app/api/qmoi/own-device-logs/route.ts(49,46): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/own-device-logs/route.ts(125,21): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/own-device-logs/route.ts(126,46): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
-app/api/qmoi/research/route.ts(9,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qmoi/research/route.ts(9,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qmoi/research/route.ts(16,15): error TS2339: Property 'action' does not exist on type 'unknown'.
 app/api/qmoi/revenue/reset/route.ts(20,17): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/revenue/reset/route.ts(21,27): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
@@ -472,7 +472,7 @@ app/api/qmoi/revenue/reset/route.ts(30,9): error TS18046: 'qmoiRevenueEngine' is
 app/api/qmoi/revenue/reset/route.ts(31,7): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
 app/api/qmoi/revenue/reset/route.ts(33,20): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
 app/api/qmoi/revenue/reset/route.ts(34,15): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
-app/api/qmoi/revenue/reset/route.ts(35,20): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi/revenue/reset/route.ts(35,20): error TS2304: Cannot find name 'false'.
 app/api/qmoi/revenue/route.ts(83,13): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
 app/api/qmoi/revenue/route.ts(84,17): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
 app/api/qmoi/revenue/route.ts(95,13): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
@@ -480,28 +480,28 @@ app/api/qmoi/revenue/route.ts(96,11): error TS18046: 'qmoiRevenueEngine' is of t
 app/api/qmoi/revenue/route.ts(107,24): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
 app/api/qmoi/revenue/route.ts(110,15): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
 app/api/qmoi/revenue/route.ts(111,19): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
-app/api/qmoi/revenue/route.ts(119,22): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi/revenue/route.ts(119,22): error TS2304: Cannot find name 'false'.
 app/api/qmoi/revenue/start/route.ts(20,17): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/revenue/start/route.ts(21,27): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/revenue/start/route.ts(30,9): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
 app/api/qmoi/revenue/start/route.ts(31,7): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
 app/api/qmoi/revenue/start/route.ts(33,20): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
 app/api/qmoi/revenue/start/route.ts(34,15): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
-app/api/qmoi/revenue/start/route.ts(35,20): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi/revenue/start/route.ts(35,20): error TS2304: Cannot find name 'false'.
 app/api/qmoi/revenue/status/route.ts(20,17): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/revenue/status/route.ts(21,27): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/revenue/stop/route.ts(20,17): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/revenue/stop/route.ts(21,27): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/revenue/stop/route.ts(28,20): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
 app/api/qmoi/revenue/stop/route.ts(29,15): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
-app/api/qmoi/revenue/stop/route.ts(30,20): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi/revenue/stop/route.ts(30,20): error TS2304: Cannot find name 'false'.
 app/api/qmoi/revenue/target/route.ts(20,17): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/revenue/target/route.ts(21,27): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/revenue/target/route.ts(39,9): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
 app/api/qmoi/revenue/target/route.ts(40,7): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
 app/api/qmoi/revenue/target/route.ts(42,20): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
 app/api/qmoi/revenue/target/route.ts(43,15): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
-app/api/qmoi/revenue/target/route.ts(47,20): error TS2304: Cannot find name 'fals_e'.
+app/api/qmoi/revenue/target/route.ts(47,20): error TS2304: Cannot find name 'false'.
 app/api/qmoi/revenue/transactions/route.ts(20,17): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/revenue/transactions/route.ts(21,27): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/revenue/transactions/route.ts(28,26): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
@@ -514,12 +514,12 @@ app/api/qmoi/revenue/transfer/route.ts(39,9): error TS18046: 'qmoiRevenueEngine'
 app/api/qmoi/revenue/transfer/route.ts(40,7): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
 app/api/qmoi/revenue/transfer/route.ts(42,20): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
 app/api/qmoi/revenue/transfer/route.ts(43,15): error TS18046: 'qmoiRevenueEngine' is of type 'unknown'.
-app/api/qmoi/revenue/transfer/route.ts(47,20): error TS2304: Cannot find name 'fals_e'.
-app/api/qmoi/status.ts(7,61): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qmoi/revenue/transfer/route.ts(47,20): error TS2304: Cannot find name 'false'.
+app/api/qmoi/status.ts(7,61): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qmoi/status.ts(20,9): error TS18046: 'preActivity' is of type 'unknown'.
 app/api/qmoi/status.ts(20,46): error TS18046: 'preActivity' is of type 'unknown'.
 app/api/qmoi/status.ts(23,20): error TS18046: 'preActivity' is of type 'unknown'.
-app/api/qmoi/user/route.ts(11,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qmoi/user/route.ts(11,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qmoi/user/route.ts(16,20): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/user/route.ts(17,18): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/user/route.ts(30,15): error TS2339: Property 'action' does not exist on type 'unknown'.
@@ -540,8 +540,8 @@ app/api/qnews/route.ts(320,20): error TS18046: 'n' is of type 'unknown'.
 app/api/qnews/route.ts(343,28): error TS18046: 'prisma' is of type 'unknown'.
 app/api/qnews/route.ts(353,24): error TS18046: 'prisma' is of type 'unknown'.
 app/api/qnews/route.ts(383,28): error TS18046: 'prisma' is of type 'unknown'.
-app/api/qnews/route.ts(431,24): error TS2304: Cannot find name 'fals_e'.
-app/api/qnews/route.ts(439,20): error TS2304: Cannot find name 'fals_e'.
+app/api/qnews/route.ts(431,24): error TS2304: Cannot find name 'false'.
+app/api/qnews/route.ts(439,20): error TS2304: Cannot find name 'false'.
 app/api/qnews/route.ts(447,13): error TS18046: 'prisma' is of type 'unknown'.
 app/api/qnews/route.ts(473,23): error TS18046: 'newsItem' is of type 'unknown'.
 app/api/qnews/route.ts(473,45): error TS18046: 'newsItem' is of type 'unknown'.
@@ -567,13 +567,13 @@ app/api/qvillage/route.ts(351,22): error TS18046: 'model' is of type 'unknown'.
 app/api/qvillage/route.ts(352,13): error TS18046: 'model' is of type 'unknown'.
 app/api/qvillage/route.ts(355,18): error TS18046: 'model' is of type 'unknown'.
 app/api/qvillage/route.ts(356,14): error TS18046: 'model' is of type 'unknown'.
-app/api/qvillage/route.ts(392,14): error TS2304: Cannot find name 'fals_e'.
+app/api/qvillage/route.ts(392,14): error TS2304: Cannot find name 'false'.
 app/api/qvillage/route.ts(399,32): error TS18046: 'b' is of type 'unknown'.
 app/api/qvillage/route.ts(399,51): error TS18046: 'a' is of type 'unknown'.
 app/api/qvillage/route.ts(486,18): error TS18046: 'discussion' is of type 'unknown'.
 app/api/qvillage/route.ts(489,14): error TS18046: 'discussion' is of type 'unknown'.
-app/api/qvillage/route.ts(547,21): error TS2304: Cannot find name 'fals_e'.
-app/api/qvillage/route.ts(549,16): error TS2304: Cannot find name 'fals_e'.
+app/api/qvillage/route.ts(547,21): error TS2304: Cannot find name 'false'.
+app/api/qvillage/route.ts(549,16): error TS2304: Cannot find name 'false'.
 app/api/qvillage/route.ts(616,16): error TS2339: Property 'tags' does not exist on type '{}'.
 app/api/qvillage/route.ts(616,32): error TS2339: Property 'tags' does not exist on type '{}'.
 app/api/qvillage/route.ts(618,15): error TS2339: Property 'tags' does not exist on type '{}'.
@@ -643,7 +643,7 @@ app/api/wallet.ts(135,31): error TS18046: 'prisma' is of type 'unknown'.
 app/api/wallet.ts(147,11): error TS18046: 'prisma' is of type 'unknown'.
 app/api/wallet.ts(184,35): error TS18046: 'Buffer' is of type 'unknown'.
 app/api/wallet.ts(204,24): error TS18046: 'Buffer' is of type 'unknown'.
-app/api/wallet.ts(534,9): error TS2552: Cannot find name 'NextApiRespons_e'. Did you mean 'NextApiResponse'?
+app/api/wallet.ts(534,9): error TS2552: Cannot find name 'NextApiResponse'. Did you mean 'NextApiResponse'?
 app/api/wallet.ts(575,16): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
 app/api/wallet.ts(577,16): error TS18046: 'requests' is of type 'unknown'.
 app/api/wallet.ts(579,16): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
@@ -717,9 +717,9 @@ app/api/webhooks/qvillage/route.ts(419,39): error TS18046: 'entry' is of type 'u
 app/api/webhooks/qvillage/route.ts(465,7): error TS2698: Spread types may only be created from object types.
 app/api/webhooks/qvillage/route.ts(468,20): error TS18046: 'metadata' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(469,19): error TS18046: 'metadata' is of type 'unknown'.
-app/api/webhooks/qvillage/route.ts(481,16): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(481,16): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(492,41): error TS18046: 'data' is of type 'unknown'.
-app/api/webhooks/qvillage/route.ts(504,17): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(504,17): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(515,48): error TS18046: 'content' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(516,17): error TS18046: 'content' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(517,50): error TS18046: 'content' is of type 'unknown'.
@@ -728,22 +728,22 @@ app/api/webhooks/qvillage/route.ts(536,7): error TS2698: Spread types may only b
 app/api/webhooks/qvillage/route.ts(546,18): error TS18046: 'content' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(591,19): error TS18046: 'content' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(591,42): error TS18046: 'content' is of type 'unknown'.
-app/api/webhooks/qvillage/route.ts(650,17): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(650,17): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(666,21): error TS18046: 'results' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(666,45): error TS18046: 'results' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(667,19): error TS18046: 'results' is of type 'unknown'.
-app/api/webhooks/qvillage/route.ts(719,20): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(719,20): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(727,23): error TS18046: 'results' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(727,47): error TS18046: 'results' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(728,22): error TS18046: 'results' is of type 'unknown'.
-app/api/webhooks/qvillage/route.ts(779,18): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(779,18): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(788,24): error TS2698: Spread types may only be created from object types.
 app/api/webhooks/qvillage/route.ts(797,30): error TS18046: 'item' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(809,7): error TS2698: Spread types may only be created from object types.
-app/api/webhooks/qvillage/route.ts(810,17): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(810,17): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(823,14): error TS18046: 'r' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(823,33): error TS18046: 'r' is of type 'unknown'.
-app/api/webhooks/qvillage/route.ts(865,16): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(865,16): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(891,43): error TS18046: 'r' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(893,9): error TS2571: Object is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(893,43): error TS18046: 'r' is of type 'unknown'.
@@ -761,13 +761,13 @@ app/api/webhooks/qvillage/route.ts(926,13): error TS18046: 'metrics' is of type 
 app/api/webhooks/qvillage/route.ts(926,34): error TS18046: 'threshold' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(927,18): error TS18046: 'metrics' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(927,39): error TS18046: 'threshold' is of type 'unknown'.
-app/api/webhooks/qvillage/route.ts(1037,18): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(1037,18): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(1054,41): error TS18046: 'metrics' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(1057,39): error TS18046: 'metrics' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(1075,25): error TS18046: 'prisma' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(1081,15): error TS18046: 'user' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(1089,11): error TS18046: 'prisma' is of type 'unknown'.
-app/api/webhooks/qvillage/route.ts(1098,13): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(1098,13): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(1123,43): error TS18046: 'data' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(1125,33): error TS18046: 'data' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(1137,25): error TS18046: 'prisma' is of type 'unknown'.
@@ -775,18 +775,18 @@ app/api/webhooks/qvillage/route.ts(1143,15): error TS18046: 'user' is of type 'u
 app/api/webhooks/qvillage/route.ts(1148,15): error TS2698: Spread types may only be created from object types.
 app/api/webhooks/qvillage/route.ts(1148,31): error TS18046: 'user' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(1151,11): error TS18046: 'prisma' is of type 'unknown'.
-app/api/webhooks/qvillage/route.ts(1160,13): error TS2304: Cannot find name 'fals_e'.
+app/api/webhooks/qvillage/route.ts(1160,13): error TS2304: Cannot find name 'false'.
 app/api/webhooks/qvillage/route.ts(1172,25): error TS18046: 'prisma' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(1178,15): error TS18046: 'user' is of type 'unknown'.
 app/api/webhooks/qvillage/route.ts(1186,11): error TS18046: 'prisma' is of type 'unknown'.
-app/api/webhooks/qvillage/route.ts(1195,13): error TS2304: Cannot find name 'fals_e'.
-app/api/whatsapp/audit/route.ts(13,41): error TS2304: Cannot find name 'fals_e'.
-app/api/whatsapp/verify/route.ts(7,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/webhooks/qvillage/route.ts(1195,13): error TS2304: Cannot find name 'false'.
+app/api/whatsapp/audit/route.ts(13,41): error TS2304: Cannot find name 'false'.
+app/api/whatsapp/verify/route.ts(7,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/whatsapp/verify/route.ts(13,11): error TS2339: Property 'phone' does not exist on type 'unknown'.
-app/api/whatsapp/verify/route.ts(20,28): error TS2304: Cannot find name 'fals_e'.
+app/api/whatsapp/verify/route.ts(20,28): error TS2304: Cannot find name 'false'.
 app/api/wifi-security.ts(31,27): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
 app/api/wifi-security.ts(69,57): error TS2304: Cannot find name '_events'.
-app/api/wifi/scan/route.ts(78,16): error TS2304: Cannot find name 'fals_e'.
+app/api/wifi/scan/route.ts(78,16): error TS2304: Cannot find name 'false'.
 app/page.tsx(29,26): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<{ id: string; name: string; email: string; role: string; avatar: undefined; }>'.
 app/page.tsx(38,20): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'SetStateAction<{ id: string; name: string; email: string; role: string; avatar: undefined; }>'.
 components/AIContext.tsx(119,65): error TS2345: Argument of type '() => unknown' is not assignable to parameter of type 'ChatMessage[] | (() => ChatMessage[])'.

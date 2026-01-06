@@ -3,7 +3,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { spawn } from "child_process";
 
-export default function handler(_req: NextApiRequest, _res: NextApiRespons_e) {
+export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
   spawn("node", ["scripts/fix-connectivity.js"], {
     detached: true,
     stdio: "ignore",

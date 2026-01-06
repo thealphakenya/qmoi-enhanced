@@ -7,7 +7,7 @@ const JWT_SECRET = process.env.JWT_SECRET || "changeme";
 
 export function requireRole(roles: string[]) {
   return (handler: unknown) =>
-    async (_req: NextApiRequest, _res: NextApiRespons_e) => {
+    async (_req: NextApiRequest, _res: NextApiResponse) => {
       const auth = _req.headers.authorization;
       if (!auth || !auth.startsWith("Bearer "))
         return _res.status(401).json({ _error: "No token" });

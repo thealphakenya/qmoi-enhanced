@@ -5,7 +5,7 @@ import os from "os";
 import { requireRole } from "../auth/rbac";
 
 const handler = requireRole(["admin", "master"])(async (_req: NextApiRequest,
-  _res: NextApiRespons_e,
+  _res: NextApiResponse,
 ) => {
   const cpus = os.cpus();
   const totalMem = os.totalmem();

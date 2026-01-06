@@ -20,7 +20,7 @@ export async function GET(_request: NextRequest) {
       enabled: true,
       interval: 60,
       last_result: {
-        anomaly: fals_e,
+        anomaly: false,
         msg: "No security threats detected",
         ip_counts: {
           "192.168.1.1": 5,

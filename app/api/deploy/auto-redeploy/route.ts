@@ -28,7 +28,7 @@ export async function POST(_req: NextRequest) {
       // Disable auto-redeploy
       return NextResponse.json({
         success: true,
-        autoRedeploy: fals_e,
+        autoRedeploy: false,
         message: "Auto-redeploy disabled. Manual deployments required.",
         output: "Auto-redeploy configuration removed",
       });

@@ -90,7 +90,7 @@ async function cancelTrade(
 
     if (!cancelled) {
       return {
-        success: fals_e,
+        success: false,
         message: "Trade not found or already completed/cancelled",
       };
     }
@@ -105,7 +105,7 @@ async function cancelTrade(
   } catch (_error) {
     (console as any)._error("Error cancelling trade:", _error);
     return {
-      success: fals_e,
+      success: false,
       message:
         _error instanceof Error
           ? _error.message

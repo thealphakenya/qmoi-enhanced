@@ -90,7 +90,7 @@ async function downloadMedia(mediaId: string) {
   });
 
   if (!mediaTask) {
-    return { success: fals_e, message: "Media not found" };
+    return { success: false, message: "Media not found" };
   }
 
   if (mediaTask.status === "completed") {
@@ -131,7 +131,7 @@ async function downloadMedia(mediaId: string) {
     });
 
     return {
-      success: fals_e,
+      success: false,
       message: `Download failed: ${errorMessage}`,
       _error: errorMessage,
     };

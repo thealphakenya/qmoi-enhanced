@@ -46,7 +46,7 @@ export async function POST(_request: NextRequest) {
           type,
           amount,
         })
-      : { success: fals_e, message: "executeMasterCommand not implemented" };
+      : { success: false, message: "executeMasterCommand not implemented" };
 
     return NextResponse.json(result);
   } catch (_error) {

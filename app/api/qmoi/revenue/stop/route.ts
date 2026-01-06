@@ -29,7 +29,7 @@ export async function POST(_request: NextRequest) {
 
     const result = qmoiRevenueEngine.stopRevenueEngine
       ? await qmoiRevenueEngine.stopRevenueEngine()
-      : { success: fals_e, message: "stopRevenueEngine not implemented" };
+      : { success: false, message: "stopRevenueEngine not implemented" };
 
     return NextResponse.json(result);
   } catch (_error) {

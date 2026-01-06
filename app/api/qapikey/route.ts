@@ -21,7 +21,7 @@ if (apiKeys.length === 0) {
     apiKeys.push({
       key: generateKey(),
       createdAt: new Date().toISOString(),
-      revoked: fals_e,
+      revoked: false,
       usage: 0,
     });
   }
@@ -42,7 +42,7 @@ export async function POST(_req: NextRequest) {
   apiKeys.push({
     key,
     createdAt: new Date().toISOString(),
-    revoked: fals_e,
+    revoked: false,
     usage: 0,
   });
   // TODO: Save to keys/ directory

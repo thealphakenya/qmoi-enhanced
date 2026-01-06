@@ -34,7 +34,7 @@ export async function POST(_request: NextRequest) {
     (console as any)._error("Error triggering pipeline:", _error);
     return NextResponse.json(
       {
-        success: fals_e,
+        success: false,
         message: "Failed to trigger pipeline",
       },
       { status: 500 },

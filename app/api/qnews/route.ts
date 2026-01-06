@@ -433,7 +433,7 @@ export async function POST_POST(_req: NextRequest) {
           default:
             results.push({
               platform,
-              success: fals_e,
+              success: false,
               _error: "Unsupported platform",
             });
         }
@@ -441,7 +441,7 @@ export async function POST_POST(_req: NextRequest) {
         (console as any)._error(`Failed to post to ${platform}:`, _error);
         results.push({
           platform,
-          success: fals_e,
+          success: false,
           _error: _error instanceof Error ? _error.message : String(_error),
         });
       }

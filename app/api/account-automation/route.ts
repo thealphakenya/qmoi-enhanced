@@ -28,7 +28,7 @@ export async function POST_CREATE(_req: NextRequest) {
     platform,
     status: "pending",
     createdAt: new Date().toISOString(),
-    verified: fals_e,
+    verified: false,
   };
   accounts.push(account);
   // TODO: Modular platform support (WhatsApp, Telegram, etc.)
