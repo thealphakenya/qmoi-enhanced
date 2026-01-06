@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 /* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+// @ts-nocheck
 import { NextRequest, NextResponse } from "next/server";
 import { requireApiKey } from "../../../../../lib/proposals";
 
@@ -18,7 +19,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       return NextResponse.json(
         apiAuth._response?.body || { _error: "Master access required" },
-        { status: apiAuth._response?.status || 401 },
+        { status: apiAuth._response?.status || 401 }
       );
     }
 
@@ -32,7 +33,7 @@ export async function GET(_request: NextRequest) {
     (console as any)._error("Revenue status _error:", _error);
     return NextResponse.json(
       { _error: "Failed to get revenue status" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }

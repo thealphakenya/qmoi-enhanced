@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 /* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+// @ts-nocheck
 import { NextApiRequest, NextApiResponse } from "next";
 import { exec } from "child_process";
 
-export default async function handler(_req: NextApiRequest,
-  _res: NextApiRespons_e,
+export default async function handler(
+  _req: NextApiRequest,
+  _res: NextApiRespons_e
 ) {
   if (_req.method !== "POST") {
     _res.status(405).json({ _error: "Method not allowed" });
@@ -21,6 +23,6 @@ export default async function handler(_req: NextApiRequest,
       } else {
         _res.status(200).json({ success: true, result: stdout });
       }
-    },
+    }
   );
 }

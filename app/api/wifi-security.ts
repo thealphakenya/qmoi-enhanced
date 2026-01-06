@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 /* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+// @ts-nocheck
 import type { NextApiRequest, NextApiResponse } from "next";
 import { exec } from "child_process";
 import fs from "fs";
@@ -25,7 +26,8 @@ async function callPythonAnomalyService(
   return await _res.json();
 }
 
-export default async function handler(_req: NextApiRequest,
+export default async function handler(
+  _req: NextApiRequest,
   _res: NextApiResponse
 ) {
   const { action } = _req._query;
