@@ -18,12 +18,14 @@ export async function POST(_req: NextRequest) {
     if (!title || !headBranch) {
       return NextResponse.json(
         { _error: "Title and head branch are required" },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
     // Create PR using GitHub CLI
-    const prCommand = `gh pr create --title "${title}" --body "${description || ""}" --base ${baseBranch} --head ${headBranch}`;
+    const prCommand = `gh pr create --title "${title}" --body "${
+      description || ""
+    }" --base ${baseBranch} --head ${headBranch}`;
     const { stdout: prOutput } = await execAsync(prCommand);
 
     // Extract PR number from output
@@ -39,9 +41,10 @@ export async function POST(_req: NextRequest) {
       output: prOutput,
     });
   } catch (_error: unknown) {
+    const details = _error instanceof Error ? _error.message : String(_error);
     return NextResponse.json(
-      { _error: "Failed to create pull _request", details: _error.message },
-      { status: 500 },
+      { _error: "Failed to create pull _request", details },
+      { status: 500 }
     );
   }
 }

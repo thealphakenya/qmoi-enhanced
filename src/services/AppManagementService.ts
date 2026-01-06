@@ -540,9 +540,21 @@ export class AppManagementService {
     }
   }
 
-  private async runDiagnostics(app: AppInfo): Promise<unknown[]> {
+  private async runDiagnostics(
+    app: AppInfo
+  ): Promise<
+    Array<{
+      issue: string;
+      solution: string;
+      severity: "low" | "medium" | "high";
+    }>
+  > {
     // Simulate running diagnostics
-    const issues = [];
+    const issues: Array<{
+      issue: string;
+      solution: string;
+      severity: "low" | "medium" | "high";
+    }> = [];
 
     // Check if app is running
     if (!app.isInstalled) {
@@ -590,7 +602,14 @@ export class AppManagementService {
     return Math.random() > 0.2; // 80% chance of having permission
   }
 
-  private async fixIssue(app: AppInfo, issue: unknown): Promise<void> {
+  private async fixIssue(
+    app: AppInfo,
+    issue: {
+      issue: string;
+      solution: string;
+      severity: "low" | "medium" | "high";
+    }
+  ): Promise<void> {
     // Simulate fixing issues
     await this.sleep(1000);
 
@@ -641,7 +660,10 @@ export class AppManagementService {
               this.eventEmitter.emit("updateAvailable", { app, update });
             }
           } catch (_error) {
-            (console as any)._error(`Failed to check updates for ${app.id}:`, _error);
+            (console as any)._error(
+              `Failed to check updates for ${app.id}:`,
+              _error
+            );
           }
         }
       }
@@ -699,7 +721,7 @@ export class AppManagementService {
   }
 
   public onAppError(
-    callback: (data: { appId: string; _error: string }) => void
+    callback: (data: { appId: string; _error?: string; error?: string }) => void
   ): void {
     this.eventEmitter.on("appError", callback);
   }
@@ -711,7 +733,14 @@ export class AppManagementService {
   }
 
   public onTroubleshootingCompleted(
-    callback: (data: { appId: string; issues: unknown[] }) => void
+    callback: (data: {
+      appId: string;
+      issues: Array<{
+        issue: string;
+        solution: string;
+        severity: "low" | "medium" | "high";
+      }>;
+    }) => void
   ): void {
     this.eventEmitter.on("troubleshootingCompleted", callback);
   }

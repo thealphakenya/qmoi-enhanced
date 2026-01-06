@@ -34,7 +34,10 @@ export function useQmoiKernel() {
       const _res = await fetch("/api/qmoi/status", {
         headers: getSessionHeaders(),
       });
-      console.debug("HOOK: fetchStatus - _response status", _res && _res.status);
+      console.debug(
+        "HOOK: fetchStatus - _response status",
+        _res && _res.status
+      );
       if (!_res.ok) throw new Error("Failed to fetch status");
       const data = await _res.json();
       console.debug("HOOK: fetchStatus - parsed data", data);
@@ -45,7 +48,9 @@ export function useQmoiKernel() {
         logs: data.logs || [],
       });
     } catch (_err: unknown) {
-      setError(_err.message || "Unknown _error");
+      const msg =
+        _err instanceof Error ? _err.message : String(_err) || "Unknown _error";
+      setError(msg);
     } finally {
       setLoading(false);
     }
@@ -69,10 +74,14 @@ export function useQmoiKernel() {
         });
         await fetchStatus();
       } catch (_err: unknown) {
-        setError(_err.message || "Unknown _error");
+        const msg =
+          _err instanceof Error
+            ? _err.message
+            : String(_err) || "Unknown _error";
+        setError(msg);
         setLastAction({
           success: false,
-          message: _err.message || "Unknown _error",
+          message: msg,
         });
       } finally {
         setLoading(false);

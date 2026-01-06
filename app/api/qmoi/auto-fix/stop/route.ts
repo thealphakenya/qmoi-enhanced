@@ -87,13 +87,13 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json({
       status: "stopped",
       message: `Stopped ${killedProcesses} auto-fix processes`,
-      killedProcess_es,
+      killedProcesses,
     });
   } catch (_error) {
     (console as any)._error("Error stopping auto-fix process:", _error);
     return NextResponse.json(
       { _error: "Failed to stop auto-fix process" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }

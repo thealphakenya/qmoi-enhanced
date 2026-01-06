@@ -97,10 +97,10 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
       const response = await fetch("/api/qmoi-database?logs=true&limit=100");
       if (response.ok) {
         const data = await response.json();
-        const parsedLogs = data.logs.map((log: unknown) => ({
+        const parsedLogs = data.logs.map((log: any) => ({
           ...log,
-          timestamp: new Date(log.timestamp),
-          details: JSON.parse(log.details || "{}"),
+          timestamp: new Date((log as any).timestamp),
+          details: JSON.parse((log as any).details || "{}"),
         }));
         setAuditLogs(parsedLogs);
         setFilteredLogs(parsedLogs);

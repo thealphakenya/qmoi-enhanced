@@ -174,7 +174,7 @@ export class FaceRecognitionService {
     this.context.drawImage(this.videoElement, 0, 0);
 
     // Detect faces
-    const detections = await this.faceApi.detectFaces(this.canvasElement);
+    const detections = await (this.faceApi as any).detectFaces(this.canvasElement);
 
     if (detections.length === 0) {
       if (this.currentFaces.length > 0) {

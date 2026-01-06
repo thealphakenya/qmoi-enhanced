@@ -19,9 +19,10 @@ export async function POST(_req: NextRequest) {
       output: pushOutput,
     });
   } catch (_error: unknown) {
+    const details = _error instanceof Error ? _error.message : String(_error);
     return NextResponse.json(
-      { _error: "Failed to push changes", details: _error.message },
-      { status: 500 },
+      { _error: "Failed to push changes", details },
+      { status: 500 }
     );
   }
 }

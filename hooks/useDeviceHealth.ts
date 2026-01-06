@@ -102,7 +102,7 @@ function getBatteryInfo(): Promise<number | null> {
       (navigator as any)
         .getBattery()
         .then((battery: unknown) => {
-          resolve(battery.level * 100);
+          resolve((battery as any).level * 100);
         })
         .catch(() => resolve(null));
     } else {

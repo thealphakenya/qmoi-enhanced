@@ -114,15 +114,21 @@ async function calculateTradingConfidence(): Promise<number> {
 // In-memory log for master
 const tradeLog: Array<Record<string, any>> = [];
 
-export default async function handler(_req: NextApiRequest,
-  _res: NextApiResponse
+export default async function handler(
+  _req: NextApiRequest & {
+    headers?: any;
+    method?: string;
+    _query?: any;
+    body?: any;
+  },
+  _res: NextApiResponse & { status?: any; json?: any; end?: any }
 ) {
   // Simple master auth (replace with real auth in production)
-  const masterToken = _req.headers["x-master-token"];
+  const masterToken = (_req.headers || {})["x-master-token"];
   if (masterToken !== process.env.MASTER_TOKEN)
     return _res.status(403).json({ _error: "Forbidden" });
 
-  const { action } = _req._query;
+  const { action } = _req._query || {};
   try {
     if (action === "account") {
       // Get Bitget account balance
@@ -326,6 +332,7 @@ export default async function handler(_req: NextApiRequest,
       return _res.status(405).end();
     }
   } catch (_e: unknown) {
-    return _res.status(500).json({ _error: _e?.message ?? String(_e) });
+    const msg = _e instanceof Error ? _e.message : String(_e);
+    return _res.status(500).json({ _error: msg });
   }
 }

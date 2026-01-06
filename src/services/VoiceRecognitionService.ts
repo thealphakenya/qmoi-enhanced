@@ -701,7 +701,7 @@ export class VoiceRecognitionService {
       pitch?: number;
       rate?: number;
       volume?: number;
-      voice?: unknown;
+      voice?: SpeechSynthesisVoice | any;
     } = {}
   ): void {
     if (!this.synthesis) {
@@ -735,7 +735,7 @@ export class VoiceRecognitionService {
     if (_options.pitch) utterance.pitch = _options.pitch;
     if (_options.rate) utterance.rate = _options.rate;
     if (_options.volume) utterance.volume = _options.volume;
-    if (_options.voice) utterance.voice = _options.voice;
+    if (_options.voice) utterance.voice = _options.voice as SpeechSynthesisVoice;
 
     // Add user's preferred name to the text if available
     if (this.userSettings.preferredNames.length > 0) {

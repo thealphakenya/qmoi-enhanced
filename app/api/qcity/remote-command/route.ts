@@ -8,7 +8,7 @@ import path from "path";
 const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG = path.join(process.cwd(), "logs/qcity_audit.log");
 
-function logAudit(entry: unknown) {
+function logAudit(entry: Record<string, any>) {
   fs.appendFileSync(
     AUDIT_LOG,
     JSON.stringify({ ...entry, timestamp: new Date().toISOString() }) + "\n"
@@ -19,21 +19,33 @@ function maskCommand(cmd: string) {
   return /pass|secret|token|key|rm|delete|reset/i.test(cmd) ? "[MASKED]" : cmd;
 }
 
-export default async function handler(_req: NextApiRequest,
-  _res: NextApiResponse
+export default async function handler(
+  _req: NextApiRequest & {
+    method?: string;
+    headers?: any;
+    body?: any;
+    on?: any;
+  },
+  _res: NextApiResponse & {
+    write?: any;
+    writeHead?: any;
+    end?: any;
+    status?: any;
+    json?: any;
+  }
 ) {
   if (_req.method !== "POST") return _res.status(405).end();
-  const key = _req.headers["x-qcity-admin-key"];
+  const key = (_req.headers || {})["x-qcity-admin-key"];
   if (key !== ADMIN_KEY) {
     logAudit({
       action: "unauthorized",
       cmd: _req.body?.cmd,
-      user: _req.headers["x-user"] || "unknown",
+      user: (_req.headers || {})["x-user"] || "unknown",
       status: "fail",
     });
     return _res.status(401).json({ _error: "Unauthorized" });
   }
-  const { cmd, deviceId = "qcity", stream = false } = _req.body;
+  const { cmd, deviceId = "qcity", stream = false } = _req.body || {};
   if (!cmd) return _res.status(400).json({ _error: "Missing command" });
   logAudit({
     action: "run",

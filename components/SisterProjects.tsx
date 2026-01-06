@@ -9,7 +9,8 @@ export function SisterProjects() {
 
   useEffect(() => {
     function handleSuggestions(e: unknown) {
-      setSuggested(e.detail || []);
+      const detail = (e as any)?.detail ?? [];
+      setSuggested(detail);
     }
     window.addEventListener("ai-suggested-projects", handleSuggestions);
     return () =>

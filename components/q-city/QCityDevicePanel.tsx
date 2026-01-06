@@ -175,11 +175,11 @@ export default function QCityDevicePanel() {
     Promise.all([
       axios
         .get("/api/qcity/listWorkspaces")
-        .then((res: unknown) => setGitpodWorkspaces(res.data.workspaces))
+        .then((res: any) => setGitpodWorkspaces(res.data?.workspaces || []))
         .catch(() => setGitpodWorkspaces([])),
       axios
         .get("/api/qcity/listLocalWorkspaces")
-        .then((res: unknown) => setLocalWorkspaces(res.data.workspaces))
+        .then((res: any) => setLocalWorkspaces(res.data?.workspaces || []))
         .catch(() => setLocalWorkspaces([])),
     ])
       .catch((err) => setWorkspaceError("Failed to fetch workspaces"))
@@ -191,7 +191,7 @@ export default function QCityDevicePanel() {
     type: "gitpod" | "local",
     id: string,
     action: "stop" | "clone" | "sync" | "start",
-    extra: Record<string, any> = {},
+    extra: Record<string, any> = {}
   ) => {
     setWorkspaceError("");
     setLoading(true);
@@ -211,10 +211,10 @@ export default function QCityDevicePanel() {
       const [gp, lp] = await Promise.all([
         axios
           .get("/api/qcity/listWorkspaces")
-          .then((res: unknown) => res.data.workspaces),
+          .then((res: any) => res.data?.workspaces || []),
         axios
           .get("/api/qcity/listLocalWorkspaces")
-          .then((res: unknown) => res.data.workspaces),
+          .then((res: any) => res.data?.workspaces || []),
       ]);
       setGitpodWorkspaces(gp);
       setLocalWorkspaces(lp);
@@ -229,7 +229,9 @@ export default function QCityDevicePanel() {
   const fetchLogs = async (type: "gitpod" | "local", id: string) => {
     setLogs((l) => ({ ...l, [id]: "Loading logs..." }));
     const eventSource = new EventSource(
-      `/api/qcity/workspace-logs?id=${encodeURIComponent(id)}&type=${encodeURIComponent(type)}`,
+      `/api/qcity/workspace-logs?id=${encodeURIComponent(
+        id
+      )}&type=${encodeURIComponent(type)}`
     );
     const logLines: string[] = [];
     eventSource.onmessage = (event) => {
@@ -682,10 +684,10 @@ export default function QCityDevicePanel() {
               {selfCheckStatus === "idle"
                 ? "Idle"
                 : selfCheckStatus === "checking"
-                  ? "Checking..."
-                  : selfCheckStatus === "fixed"
-                    ? "Fixed"
-                    : "Error"}
+                ? "Checking..."
+                : selfCheckStatus === "fixed"
+                ? "Fixed"
+                : "Error"}
             </span>
           </div>
           <div className="flex items-center gap-4">

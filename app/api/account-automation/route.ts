@@ -8,7 +8,16 @@ export const runtime = "nodejs";
 // import nodemailer from 'nodemailer'; // Uncomment and configure for real email
 
 // In-memory account store (replace with DB in production)
-const accounts: unknown[] = [];
+interface Account {
+  id: number;
+  username?: string;
+  email?: string;
+  platform?: string;
+  status?: string;
+  createdAt?: string;
+  verified?: boolean;
+}
+const accounts: Account[] = [];
 let idCounter = 1;
 
 export async function POST_CREATE(_req: NextRequest) {
@@ -46,7 +55,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   const body = await _req.json();
   const { username, platform } = body;
   const account = accounts.find(
-    (a) => a.username === username && a.platform === platform,
+    (a) => a.username === username && a.platform === platform
   );
   if (!account)
     return NextResponse.json({ _error: "Account not found" }, { status: 404 });

@@ -2,9 +2,11 @@
 import * as fs from "fs";
 import * as path from "path";
 
+type ApiCheckResponse = { status: number; body?: unknown };
+
 type ApiCheckResult =
-  | { ok: true }
-  | { ok: false; response?: { status: number; body?: unknown } };
+  | { ok: true; response?: ApiCheckResponse; _response?: ApiCheckResponse }
+  | { ok: false; response?: ApiCheckResponse; _response?: ApiCheckResponse };
 
 function requireApiKey(headers: unknown): ApiCheckResult {
   // Support Next.js Headers and plain object headers
@@ -22,10 +24,13 @@ function requireApiKey(headers: unknown): ApiCheckResult {
     return { ok: true };
   }
 
+  const unauthorized = { status: 401, body: { error: "Unauthorized" } };
+
   if (!key)
     return {
       ok: false,
-      response: { status: 401, body: { error: "Unauthorized" } },
+      response: unauthorized,
+      _response: unauthorized,
     };
 
   // Accept Bearer tokens or raw keys
@@ -35,7 +40,8 @@ function requireApiKey(headers: unknown): ApiCheckResult {
   if (normalized === master) return { ok: true };
   return {
     ok: false,
-    response: { status: 401, body: { error: "Unauthorized" } },
+    response: unauthorized,
+    _response: unauthorized,
   };
 }
 

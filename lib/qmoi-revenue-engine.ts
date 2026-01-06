@@ -119,7 +119,9 @@ class QMOIRevenueEngine {
         await this.sleep(300000); // 5 minutes between cycles
       } catch (error) {
         console.error("Revenue generation cycle failed:", error);
-        logEvent("revenue_cycle_failed", { error: (error as any)?.message || String(error) });
+        logEvent("revenue_cycle_failed", {
+          error: (error as any)?.message || String(error),
+        });
         await this.sleep(60000); // Wait 1 minute before retry
       }
     }
@@ -243,7 +245,10 @@ class QMOIRevenueEngine {
 
   private getMarketConditions(): "bull" | "bear" | "neutral" {
     const conditions = ["bull", "bear", "neutral"];
-    return conditions[Math.floor(Math.random() * conditions.length)] as "bull" | "bear" | "neutral";
+    return conditions[Math.floor(Math.random() * conditions.length)] as
+      | "bull"
+      | "bear"
+      | "neutral";
   }
 
   private addTransaction(transaction: RevenueTransaction) {
@@ -266,7 +271,9 @@ class QMOIRevenueEngine {
         }
       } catch (error) {
         console.error("Periodic transfer failed:", error);
-        logEvent("periodic_transfer_failed", { error: (error as any)?.message || String(error) });
+        logEvent("periodic_transfer_failed", {
+          error: (error as any)?.message || String(error),
+        });
       }
     }, 3600000); // Check every hour
   }
@@ -308,11 +315,15 @@ class QMOIRevenueEngine {
             });
           }
         } catch (error) {
-          logEvent("mpesa_status_check_failed", { error: (error as any)?.message || String(error) });
+          logEvent("mpesa_status_check_failed", {
+            error: (error as any)?.message || String(error),
+          });
         }
       }, 30000); // Check after 30 seconds
     } catch (error) {
-      logEvent("mpesa_transfer_failed", { error: (error as any)?.message || String(error) });
+      logEvent("mpesa_transfer_failed", {
+        error: (error as any)?.message || String(error),
+      });
       throw error;
     }
   }
@@ -366,13 +377,11 @@ export { QMOIRevenueEngine, type RevenueStream, type RevenueTransaction };
 // Provide CommonJS-compatible exports for modules that `require()` the file
 try {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const cjs: unknown =
+  const cjs: any =
     (globalThis as any).module || typeof module !== "undefined"
       ? module
       : undefined;
-  if (typeof cjs !== "undefined" && cjs.exports) {
-    cjs.exports = qmoiRevenueEngine;
-    cjs.exports.qmoiRevenueEngine = qmoiRevenueEngine;
+  if (cjs && cjs.exports) {
     cjs.exports.QMOIRevenueEngine = QMOIRevenueEngine;
   }
 } catch (e) {

@@ -3,7 +3,14 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // In-memory document store (replace with DB/cloud in production)
-const documents: unknown[] = [];
+interface Document {
+  id: number;
+  name: string;
+  type?: string;
+  content?: any;
+  createdAt: string;
+}
+const documents: Document[] = [];
 let docId = 1;
 
 // Production helper functions

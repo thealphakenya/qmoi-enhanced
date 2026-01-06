@@ -12,7 +12,10 @@ async function getPrismaClient() {
   return {
     dataset: {
       findMany: async () => [],
-      create: async (data: unknown) => ({ id: "mock-dataset-id", ...data.data }),
+      create: async (data: Record<string, any>) => ({
+        id: "mock-dataset-id",
+        ...data,
+      }),
     },
     $disconnect: async () => {},
   };

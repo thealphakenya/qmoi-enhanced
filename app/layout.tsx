@@ -1,5 +1,6 @@
 import type React from "react";
-import type { Metadata } from "next";
+// Metadata type may not be exported in all Next versions; fallback to any for compatibility
+type Metadata = any;
 import "./globals.css";
 import "./global.css";
 import { ThemeProvider } from "../src/components/theme-provider";
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: { 
+}: {
   children: React.ReactNode;
 }) {
   return (

@@ -24,11 +24,14 @@ function saveMemory(entry: MemoryEntry) {
   fs.writeFileSync(MEMORY_FILE, JSON.stringify(all, null, 2));
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default function handler(
+  req: NextApiRequest & { method?: string; query?: any; body?: any },
+  res: NextApiResponse
+) {
   if (req.method === "GET") {
-    const user = Array.isArray(req.query.user)
+    const user = Array.isArray(req.query?.user)
       ? req.query.user[0]
-      : (req.query.user as string | undefined);
+      : (req.query?.user as string | undefined);
     return res.status(200).json(readMemory(user));
   }
   if (req.method === "POST") {

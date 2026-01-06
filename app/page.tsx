@@ -8,7 +8,14 @@ import { NotificationPanel } from "../components/NotificationPanel";
 function MainPage() {
   const { isMaster, setRole } = useMaster();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [currentUser, setCurrentUser] = useState({
+  interface User {
+    id: string;
+    name: string;
+    email: string;
+    role: string;
+    avatar?: any;
+  }
+  const [currentUser, setCurrentUser] = useState<User>({
     id: "1",
     name: "Victor Kwemoi",
     email: "victor@qmoi.com",
@@ -34,8 +41,8 @@ function MainPage() {
     checkAuth();
   }, []);
 
-  const handleLogin = (userData: unknown) => {
-    setCurrentUser(userData);
+  const handleLogin = (userData: Partial<User> | User) => {
+    setCurrentUser((prev) => ({ ...prev, ...(userData as Partial<User>) }));
     setIsAuthenticated(true);
     localStorage.setItem("qmoi_authenticated", "true");
     localStorage.setItem("qmoi_user", JSON.stringify(userData));

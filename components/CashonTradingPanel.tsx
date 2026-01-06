@@ -493,7 +493,7 @@ export default function CashonTradingPanel() {
                 <div className="space-y-3">
                   {balance?.transactionHistory
                     ?.slice(-5)
-                    .map((tx: unknown, index: number) => (
+                    .map((tx: any, index: number) => (
                       <div
                         key={index}
                         className="flex items-center justify-between p-3 border rounded-lg"

@@ -10,13 +10,13 @@ export async function GET(_req: NextRequest) {
   try {
     // Get current branch
     const { stdout: branchOutput } = await execAsync(
-      "git branch --show-current",
+      "git branch --show-current"
     );
     const currentBranch = branchOutput.trim();
 
     // Get last commit
     const { stdout: commitOutput } = await execAsync(
-      'git log -1 --pretty=format:"%H|%s|%an|%ad" --date=short',
+      'git log -1 --pretty=format:"%H|%s|%an|%ad" --date=short'
     );
     const [commitId, message, author, date] = commitOutput.split("|");
 
@@ -38,9 +38,10 @@ export async function GET(_req: NextRequest) {
         .length,
     });
   } catch (_error: unknown) {
+    const details = _error instanceof Error ? _error.message : String(_error);
     return NextResponse.json(
-      { _error: "Failed to get Git status", details: _error.message },
-      { status: 500 },
+      { _error: "Failed to get Git status", details },
+      { status: 500 }
     );
   }
 }

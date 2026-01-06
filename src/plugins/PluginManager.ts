@@ -35,7 +35,7 @@ export class PluginManager {
   private scheduledPlugins: {
     plugin: QmoiPlugin;
     interval: number;
-    timer?: unknown;
+    timer?: ReturnType<typeof setInterval>;
   }[] = [];
   private automationRules: AutomationRule[] = [];
 

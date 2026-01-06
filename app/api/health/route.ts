@@ -9,7 +9,7 @@ export async function GET(_request: Request) {
   const checkType = searchParams.get("type") || "full";
 
   try {
-    const healthReport = await performHealthCheck(checkType);
+    const healthReport = (await performHealthCheck(checkType)) as any;
 
     // Determine overall health status
     const overallHealth = calculateOverallHealth(healthReport);
@@ -477,8 +477,8 @@ function calculateOverallHealth(healthReport: unknown) {
   return { status, score: Math.round(averageScore) };
 }
 
-function generateRecommendations(healthReport: unknown) {
-  const recommendations = [];
+function generateRecommendations(healthReport: any) {
+  const recommendations = []; 
 
   // System recommendations
   if (healthReport.system?.status !== "healthy") {

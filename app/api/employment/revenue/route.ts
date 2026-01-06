@@ -54,12 +54,52 @@ const ReferralProgramSchema = z.object({
 });
 
 // [PRODUCTION IMPLEMENTATION REQUIRED] database
-const microtasks: any[] = [];
-const affiliateCampaigns: any[] = [];
-const contentProjects: any[] = [];
-const referralPrograms: any[] = [];
-const revenueLogs: any[] = [];
-const platformAccounts: any[] = [];
+type Microtask = z.infer<typeof MicrotaskSchema>;
+type AffiliateCampaign = z.infer<typeof AffiliateCampaignSchema>;
+type ContentProject = z.infer<typeof ContentProjectSchema>;
+type ReferralProgram = z.infer<typeof ReferralProgramSchema>;
+type Survey = { title?: string };
+type LabelingData = { project?: string };
+type SaasData = { service?: string };
+
+const microtasks: Array<
+  Microtask & {
+    id: string;
+    status?: string;
+    createdAt?: number;
+    completedAt?: number | null;
+    revenue?: number | null;
+  }
+> = [];
+const affiliateCampaigns: Array<
+  AffiliateCampaign & {
+    id: string;
+    status?: string;
+    createdAt?: number;
+    totalSales?: number;
+    totalRevenue?: number;
+  }
+> = [];
+const contentProjects: Array<
+  ContentProject & {
+    id: string;
+    status?: string;
+    createdAt?: number;
+    completedAt?: number | null;
+    revenue?: number | null;
+  }
+> = [];
+const referralPrograms: Array<
+  ReferralProgram & {
+    id: string;
+    status?: string;
+    createdAt?: number;
+    totalReferrals?: number;
+    totalBonus?: number;
+  }
+> = [];
+const revenueLogs: Array<Record<string, any>> = [];
+const platformAccounts: Array<Record<string, any>> = [];
 
 // M-Pesa credentials (securely stored)
 const MPESA_CREDENTIALS = {
@@ -201,7 +241,7 @@ async function createPlatformAccount(platform: string, accountData: any) {
 }
 
 // Revenue generation functions
-async function generateMicrotaskRevenue(taskData: unknown) {
+async function generateMicrotaskRevenue(taskData: Microtask) {
   try {
     // Simulate external client payment
     const clientPayment = taskData.reward * 1.5; // QMOI takes 33% cut
@@ -224,7 +264,7 @@ async function generateMicrotaskRevenue(taskData: unknown) {
   }
 }
 
-async function generateAffiliateRevenue(campaignData: unknown) {
+async function generateAffiliateRevenue(campaignData: AffiliateCampaign) {
   try {
     // Simulate affiliate sales
     const sales = Math.floor(Math.random() * 10) + 1; // Random sales 1-10
@@ -251,7 +291,7 @@ async function generateAffiliateRevenue(campaignData: unknown) {
   }
 }
 
-async function generateContentRevenue(projectData: unknown) {
+async function generateContentRevenue(projectData: ContentProject) {
   try {
     // Simulate content sale
     const salePrice = projectData.reward * 3; // Content sold for 3x reward
@@ -274,7 +314,7 @@ async function generateContentRevenue(projectData: unknown) {
   }
 }
 
-async function generateReferralRevenue(referralData: unknown) {
+async function generateReferralRevenue(referralData: ReferralProgram) {
   try {
     // Simulate referral bonus
     const referrals = Math.floor(Math.random() * 5) + 1; // Random referrals 1-5
@@ -342,7 +382,7 @@ async function addToMpesaAccount(amount: number, description: string) {
 }
 
 // Additional revenue streams
-async function generateSurveyRevenue(surveyData: unknown) {
+async function generateSurveyRevenue(surveyData: Survey) {
   try {
     const participants = Math.floor(Math.random() * 20) + 5; // 5-25 participants
     const rewardPerParticipant = 5; // $5 per survey
@@ -350,7 +390,10 @@ async function generateSurveyRevenue(surveyData: unknown) {
     const clientPayment = totalCost * 1.4; // Client pays 40% premium
     const qmoiProfit = clientPayment - totalCost;
 
-    await addToMpesaAccount(qmoiProfit, `Survey: ${surveyData.title}`);
+    await addToMpesaAccount(
+      qmoiProfit,
+      `Survey: ${surveyData.title ?? "survey"}`
+    );
 
     return {
       success: true,
@@ -365,7 +408,7 @@ async function generateSurveyRevenue(surveyData: unknown) {
   }
 }
 
-async function generateDataLabelingRevenue(labelingData: unknown) {
+async function generateDataLabelingRevenue(labelingData: LabelingData) {
   try {
     const dataPoints = Math.floor(Math.random() * 1000) + 100; // 100-1100 data points
     const rewardPerPoint = 0.1; // $0.10 per data point
@@ -375,7 +418,7 @@ async function generateDataLabelingRevenue(labelingData: unknown) {
 
     await addToMpesaAccount(
       qmoiProfit,
-      `Data Labeling: ${labelingData.project}`
+      `Data Labeling: ${labelingData.project ?? "project"}`
     );
 
     return {
@@ -391,7 +434,7 @@ async function generateDataLabelingRevenue(labelingData: unknown) {
   }
 }
 
-async function generateSaaSResellingRevenue(saasData: unknown) {
+async function generateSaaSResellingRevenue(saasData: SaasData) {
   try {
     const subscriptions = Math.floor(Math.random() * 50) + 10; // 10-60 subscriptions
     const monthlyFee = 29; // $29/month per subscription
@@ -400,7 +443,10 @@ async function generateSaaSResellingRevenue(saasData: unknown) {
     const totalCost = subscriptions * costPerSubscription;
     const qmoiProfit = totalRevenue - totalCost;
 
-    await addToMpesaAccount(qmoiProfit, `SaaS Reselling: ${saasData.service}`);
+    await addToMpesaAccount(
+      qmoiProfit,
+      `SaaS Reselling: ${saasData.service ?? "saas"}`
+    );
 
     return {
       success: true,

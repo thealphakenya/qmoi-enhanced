@@ -30,12 +30,12 @@ declare global {
   var FileReader: unknown;
 
   // Node bridging
-  var Buffer: unknown;
-  var require: unknown;
-  var module: unknown;
-  var process: unknown;
+  var Buffer: any;
+  var require: any;
+  var module: any;
+  var process: any;
   var console: Console;
-  var NodeJS: unknown;
+  var NodeJS: any;
 
   // Jest test globals
   const jest: unknown;

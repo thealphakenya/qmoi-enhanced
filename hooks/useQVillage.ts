@@ -577,12 +577,12 @@ export function useQVillageNotifications() {
   const [unreadCount, setUnreadCount] = useState(0);
 
   const addNotification = useCallback((notification: unknown) => {
+    const n = (notification as Record<string, any>) || {};
     const newNotification = {
       id: Date.now(),
       timestamp: new Date().toISOString(),
       read: false,
-      ...notification,
-    };
+      ...n,
 
     setNotifications((prev) => [newNotification, ...prev.slice(0, 49)]); // Keep last 50
     setUnreadCount((prev) => prev + 1);

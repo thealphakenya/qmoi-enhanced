@@ -13,7 +13,7 @@ export async function POST(_req: NextRequest) {
     if (!message || !message.trim()) {
       return NextResponse.json(
         { _error: "Commit message is required" },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
@@ -27,7 +27,7 @@ export async function POST(_req: NextRequest) {
 
     // Commit with message
     const { stdout: commitOutput } = await execAsync(
-      `git commit -m "${message}"`,
+      `git commit -m "${message}"`
     );
 
     // Extract commit ID from output
@@ -41,9 +41,10 @@ export async function POST(_req: NextRequest) {
       output: commitOutput,
     });
   } catch (_error: unknown) {
+    const details = _error instanceof Error ? _error.message : String(_error);
     return NextResponse.json(
-      { _error: "Failed to commit changes", details: _error.message },
-      { status: 500 },
+      { _error: "Failed to commit changes", details },
+      { status: 500 }
     );
   }
 }
