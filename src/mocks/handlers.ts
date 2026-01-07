@@ -201,17 +201,25 @@ export async function getHandlers() {
         }
         const rawUrl =
           (_req && (_req as any).url) ||
+          (_req && (_req as any).request && (_req as any).request.url) ||
           (_req &&
             (_req as any)._request &&
             ((_req as any)._request as any).url) ||
           "";
         // Temporary unconditional dump to capture actual request shape for debugging
         try {
-          console.log("HANDLER DUMP UNCOND:", {
+          const dump = {
             keys: Object.keys(_req || {}),
             url: (_req as any).url,
             _request: (_req as any)._request,
-          });
+            request: (_req as any).request,
+            requestKeys: (_req as any).request
+              ? Object.keys((_req as any).request)
+              : undefined,
+          };
+          try {
+            (console as any)._error("HANDLER DUMP UNCOND:", dump);
+          } catch (_er) {}
         } catch (_e) {}
         debug(
           "HANDLER: payload rawUrl=",
@@ -266,6 +274,9 @@ export async function getHandlers() {
         try {
           const rawUrl =
             ((_req as any) && (_req as any).url) ||
+            ((_req as any) &&
+              (_req as any).request &&
+              (_req as any).request.url) ||
             ((_req as any) &&
               (_req as any)._request &&
               ((_req as any)._request as any).url) ||

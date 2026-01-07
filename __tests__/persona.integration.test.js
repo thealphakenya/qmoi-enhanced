@@ -9,6 +9,7 @@ jest.setTimeout(30000);
 const net = require("net");
 
 function waitForServer(url, timeout = 20000, interval = 250) {
+  // Fast TCP check: open a socket to host:port. Avoids HTTP interception in test environment.
   const u = new URL(url);
   const host = u.hostname;
   const port = Number(u.port || 80);
@@ -47,13 +48,51 @@ function waitForServer(url, timeout = 20000, interval = 250) {
 
 const child_process = require("child_process");
 let SKIP_PERSONA = false;
+let PERSONA_RUNTIME = null; // 'python' or 'node'
+let PERSONA_SCRIPT = null;
 try {
   child_process.execSync('python3 -c "import flask"', { stdio: "ignore" });
+  PERSONA_RUNTIME = "python";
 } catch (e) {
-  SKIP_PERSONA = true;
+  try {
+    child_process.execSync("node -v", { stdio: "ignore" });
+    // Use Node fallback if a Node helper script exists (.cjs preferred for "type: module" projects)
+    const nodeScriptCjs = path.join(
+      process.cwd(),
+      "scripts",
+      "qmoi_local_server.cjs"
+    );
+    const nodeScriptJs = path.join(
+      process.cwd(),
+      "scripts",
+      "qmoi_local_server.js"
+    );
+    if (fs.existsSync(nodeScriptCjs)) {
+      PERSONA_RUNTIME = "node";
+      PERSONA_SCRIPT = nodeScriptCjs;
+    } else if (fs.existsSync(nodeScriptJs)) {
+      PERSONA_RUNTIME = "node";
+      PERSONA_SCRIPT = nodeScriptJs;
+    } else {
+      SKIP_PERSONA = true;
+    }
+  } catch (e2) {
+    SKIP_PERSONA = true;
+  }
 }
 
-const describeIf = SKIP_PERSONA ? describe.skip : describe;
+console.debug(
+  "PERSONA DETECTION: SKIP_PERSONA=",
+  SKIP_PERSONA,
+  "PERSONA_RUNTIME=",
+  PERSONA_RUNTIME,
+  "PERSONA_SCRIPT=",
+  typeof PERSONA_SCRIPT !== "undefined" ? PERSONA_SCRIPT : null
+);
+const describeIf =
+  PERSONA_RUNTIME === "python" || PERSONA_RUNTIME === "node"
+    ? describe
+    : describe.skip;
 
 describeIf("QM OI helper server (integration)", () => {
   const serverScript = path.join(
@@ -67,6 +106,12 @@ describeIf("QM OI helper server (integration)", () => {
   let memoryFileInScripts;
   let serverProc = null;
   let backupPath = null;
+  // MSW control helpers (may not exist in node-only runs)
+  let mswServer = null;
+  let mswWasActive = false;
+  // Capture helper server logs for debugging
+  let outBuf = "";
+  let errBuf = "";
 
   beforeAll(async () => {
     // Choose a port (env overrides) or pick a free ephemeral port to avoid collisions
@@ -95,35 +140,92 @@ describeIf("QM OI helper server (integration)", () => {
     // Ensure scripts dir exists
     fs.mkdirSync(path.dirname(memoryFileInScripts), { recursive: true });
 
-    // Start python server unbuffered (-u) so logs appear promptly
-    serverProc = spawn("python3", ["-u", serverScript], {
-      stdio: ["ignore", "pipe", "pipe"],
-      env: Object.assign({}, process.env, {
-        QMOI_LOCAL_PORT: String(port),
-        QMOI_SYNC_INTERVAL_SECONDS: "0",
-        QMOI_MEMORY_FILE: memoryFileInScripts,
-      }),
-    });
+    // Start helper server using Python or Node fallback
+    if (PERSONA_RUNTIME === "python") {
+      // Start python server unbuffered (-u) so logs appear promptly
+      serverProc = spawn("python3", ["-u", serverScript], {
+        stdio: ["ignore", "pipe", "pipe"],
+        env: Object.assign({}, process.env, {
+          QMOI_LOCAL_PORT: String(port),
+          QMOI_SYNC_INTERVAL_SECONDS: "0",
+          QMOI_MEMORY_FILE: memoryFileInScripts,
+        }),
+      });
+    } else if (PERSONA_RUNTIME === "node") {
+      const nodeScript =
+        PERSONA_SCRIPT ||
+        path.join(process.cwd(), "scripts", "qmoi_local_server.cjs");
+      serverProc = spawn("node", [nodeScript], {
+        stdio: ["ignore", "pipe", "pipe"],
+        env: Object.assign({}, process.env, {
+          QMOI_LOCAL_PORT: String(port),
+          QMOI_SYNC_INTERVAL_SECONDS: "0",
+          QMOI_MEMORY_FILE: memoryFileInScripts,
+        }),
+      });
+    } else {
+      throw new Error("No persona helper runtime available");
+    }
 
-    // Optional: capture output for debugging
+    // Optional: capture output for debugging (also buffer small amount for failure reports)
+    let outBuf = "";
+    let errBuf = "";
     serverProc.stdout.on("data", (d) => {
-      console.log("[qmoi-server]", d.toString());
+      const s = d.toString();
+      outBuf += s;
+      if (outBuf.length > 4096) outBuf = outBuf.slice(-4096);
+      console.log("[qmoi-server]", s);
     });
     serverProc.stderr.on("data", (d) => {
-      console.error("[qmoi-server-err]", d.toString());
+      const s = d.toString();
+      errBuf += s;
+      if (errBuf.length > 4096) errBuf = errBuf.slice(-4096);
+      console.error("[qmoi-server-err]", s);
     });
     serverProc.on("error", (e) => console.error("[qmoi-server-error]", e));
     serverProc.on("exit", (code, sig) =>
       console.log("[qmoi-server-exit]", code, sig)
     );
 
-    // Wait for /health endpoint
-    await waitForServer(baseUrl + "/health", 10000, 200);
+    // Wait for /health endpoint but also fail early if child exits
+    const exitPromise = new Promise((_, reject) => {
+      serverProc.on("exit", (code, sig) => {
+        const msg = `[qmoi-server] exited early code=${code} sig=${sig} stdout=${outBuf} stderr=${errBuf}`;
+        reject(new Error(msg));
+      });
+    });
+    await Promise.race([
+      waitForServer(baseUrl + "/health", 10000, 200),
+      exitPromise,
+    ]);
+    // If MSW server is running in this process, stop it temporarily so our
+    // helper server receives real HTTP requests instead of being intercepted.
+    try {
+      mswServer = require("../src/mocks/server").server;
+      if (mswServer) {
+        try {
+          mswServer.close();
+          mswWasActive = true;
+          console.log("[persona.test] disabled MSW server for helper test");
+        } catch (e) {
+          // ignore close errors
+        }
+      }
+    } catch (e) {
+      // MSW may not be present/active; ignore
+    }
   });
 
   afterAll(() => {
     try {
       if (serverProc) serverProc.kill();
+    } catch (e) {}
+    // Restore MSW if we disabled it
+    try {
+      if (mswWasActive && mswServer && typeof mswServer.listen === "function") {
+        mswServer.listen();
+        console.log("[persona.test] restored MSW server after helper test");
+      }
     } catch (e) {}
     // Restore backup
     if (backupPath && fs.existsSync(backupPath)) {
@@ -183,6 +285,15 @@ describeIf("QM OI helper server (integration)", () => {
     };
 
     const r = await postJson(baseUrl + "/v1/chat/completions", payload, 5000);
+    if (r.status !== 200) {
+      throw new Error(
+        `unexpected status ${
+          r.status
+        } from helper server\nstdout:\n${outBuf}\nstderr:\n${errBuf}\nresponse body:\n${JSON.stringify(
+          r.data
+        )}`
+      );
+    }
     expect(r.status).toBe(200);
     expect(r.data).toBeDefined();
     expect(r.data.choices).toBeDefined();

@@ -71,7 +71,9 @@ def chat_completions():
                 mem = json.load(f) or {}
         convs = mem.get('conversations', [])
         if last_user:
-            convs.append({'role': 'user', 'content': last_user, 'ts': datetime.utcnow().isoformat()})
+            persona = system_mode or 'user'
+            convs.append({'role': 'user', 'content': last_user,
+                         'ts': datetime.utcnow().isoformat(), 'persona': persona})
             mem['conversations'] = convs
             atomic_write_json(MEMORY_FILE, mem)
     except Exception:
