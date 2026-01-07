@@ -616,6 +616,51 @@ export class VPNService {
     };
   }
 
+  /**
+   * Non-destructive controller validation.
+   * Returns success=false with a readable message when misconfigured or unreachable.
+   */
+  public async validateController(): Promise<{
+    success: boolean;
+    status?: number;
+    ok?: boolean;
+    message?: string;
+  }> {
+    const controllerUrl = process.env.VPN_CONTROLLER_URL;
+    if (!controllerUrl) {
+      return { success: false, message: "VPN_CONTROLLER_URL not configured" };
+    }
+
+    try {
+      const ac = new AbortController();
+      const timeout = setTimeout(() => ac.abort(), 5000);
+      // Prefer a health endpoint if available
+      const testUrl = controllerUrl.replace(/\/\/$/, "") + "/health";
+      const res = await fetch(testUrl, {
+        method: "GET",
+        signal: ac.signal as any,
+      });
+      clearTimeout(timeout);
+      if (!res.ok) {
+        const txt = await res.text().catch(() => "");
+        return {
+          success: false,
+          status: res.status,
+          message: `Controller returned ${res.status}: ${txt}`,
+        };
+      }
+      return {
+        success: true,
+        status: res.status,
+        ok: true,
+        message: "reachable",
+      };
+    } catch (_err) {
+      const msg = _err instanceof Error ? _err.message : String(_err);
+      return { success: false, message: `fetch error: ${msg}` };
+    }
+  }
+
   public async getRecommendedServer(): Promise<VPNServer | null> {
     const onlineServers = Array.from(this.servers.values()).filter(
       (s) => s.isOnline

@@ -3,38 +3,50 @@ const { spawn } = require("child_process");
 
 jest.setTimeout(30000);
 
-describe("QM OI helper server integration", () => {
+const child_process = require("child_process");
+let SKIP_PERSONA = false;
+try {
+  child_process.execSync('python3 -c "import flask"', { stdio: "ignore" });
+} catch (e) {
+  SKIP_PERSONA = true;
+}
+
+const describeIf = SKIP_PERSONA ? describe.skip : describe;
+
+describeIf("QM OI helper server integration", () => {
   let child = null;
 
   async function waitForReady(childProcess, port, timeout = 20000) {
     // Use a TCP connect-based readiness check to avoid CORS/XHR fetch races
-    const net = require('net');
+    const net = require("net");
     const start = Date.now();
     return new Promise((resolve, reject) => {
       function check() {
         const socket = new net.Socket();
         let settled = false;
         socket.setTimeout(1000);
-        socket.on('connect', () => {
+        socket.on("connect", () => {
           settled = true;
           socket.destroy();
           resolve(true);
         });
-        socket.on('timeout', () => {
+        socket.on("timeout", () => {
           if (!settled) {
             socket.destroy();
-            if (Date.now() - start > timeout) return reject(new Error('timeout waiting for server'));
+            if (Date.now() - start > timeout)
+              return reject(new Error("timeout waiting for server"));
             setTimeout(check, 200);
           }
         });
-        socket.on('error', () => {
+        socket.on("error", () => {
           if (!settled) {
             socket.destroy();
-            if (Date.now() - start > timeout) return reject(new Error('timeout waiting for server'));
+            if (Date.now() - start > timeout)
+              return reject(new Error("timeout waiting for server"));
             setTimeout(check, 200);
           }
         });
-        socket.connect(port, '127.0.0.1');
+        socket.connect(port, "127.0.0.1");
       }
       check();
     });
@@ -42,18 +54,18 @@ describe("QM OI helper server integration", () => {
 
   beforeAll(async () => {
     // Choose a free ephemeral port to avoid collisions in parallel runs
-    const net = require('net');
+    const net = require("net");
     let port;
     if (process.env.QMOI_LOCAL_PORT) {
       port = Number(process.env.QMOI_LOCAL_PORT);
     } else {
       port = await new Promise((resolve, reject) => {
         const s = net.createServer();
-        s.listen(0, '127.0.0.1', () => {
+        s.listen(0, "127.0.0.1", () => {
           const p = s.address().port;
           s.close(() => resolve(p));
         });
-        s.on('error', reject);
+        s.on("error", reject);
       });
     }
     child = spawn("python3", ["-u", "scripts/qmoi_local_server.py"], {
@@ -115,7 +127,9 @@ describe("QM OI helper server integration", () => {
     expect(typeof msg).toBe("string");
     expect(msg.startsWith("[Master Mode]")).toBe(true);
 
-    const memResp = await fetch(`http://127.0.0.1:${child._qmoi_test_port}/memory`);
+    const memResp = await fetch(
+      `http://127.0.0.1:${child._qmoi_test_port}/memory`
+    );
     expect(memResp.status).toBe(200);
     const mem = await memResp.json();
     expect(Array.isArray(mem.conversations)).toBe(true);

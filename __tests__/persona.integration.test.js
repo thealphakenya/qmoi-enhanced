@@ -45,7 +45,17 @@ function waitForServer(url, timeout = 20000, interval = 250) {
   });
 }
 
-describe("QM OI helper server (integration)", () => {
+const child_process = require("child_process");
+let SKIP_PERSONA = false;
+try {
+  child_process.execSync('python3 -c "import flask"', { stdio: "ignore" });
+} catch (e) {
+  SKIP_PERSONA = true;
+}
+
+const describeIf = SKIP_PERSONA ? describe.skip : describe;
+
+describeIf("QM OI helper server (integration)", () => {
   const serverScript = path.join(
     process.cwd(),
     "scripts",

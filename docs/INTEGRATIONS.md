@@ -31,6 +31,13 @@ This document describes how to provision real provider credentials and enable pr
 - Optional: `AIRTEL_API_URL` (defaults to `https://openapiuat.airtel.africa`)
 - Notes: The Airtel adapter uses the Airtel merchant payments endpoint when `PRODUCTION_CONFIRMED` is set; in non-production the adapter simulates and returns a safe `sim-airtel-...` reference.
 
+## VPN Controller (optional)
+
+- Env vars: `VPN_CONTROLLER_URL` (URL to the controller's API). Optionally `VPN_CLIENT_CMD` if you run local client commands for connections.
+- Validation: The integrations validation endpoint supports `provider=vpn` which performs a non-destructive `/health` GET against the controller URL to verify reachability.
+- Runbook: See `docs/RUNBOOKS/VPN.md` for steps to provision the `VPN_CONTROLLER_URL` secret and run the guarded GitHub Actions workflow.
+- Notes: No provisioning or destructive actions are performed by the validation endpoint. Live provisioning and client command execution require `PRODUCTION_CONFIRMED=1` and careful operational controls.
+
 ## Production safety
 
 - To perform any live side-effectful action, set `PRODUCTION_CONFIRMED=1` in your production environment.

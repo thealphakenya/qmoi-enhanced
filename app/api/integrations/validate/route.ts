@@ -1,6 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isProductionConfirmed } from "../../../../lib/prodGuard";
 
+function safeJson(obj: unknown, opts?: { status?: number }) {
+  try {
+    return NextResponse.json(obj as any, opts as any);
+  } catch (_err) {
+    const status = opts?.status || 200;
+    return new Response(JSON.stringify(obj), {
+      status,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+}
+
 /**
  * Validate configured credentials for a given provider.
  * Query param: provider=mpesa|pesapal|airtel|twilio|whatsapp_cloud
@@ -36,7 +48,7 @@ export async function GET(req: NextRequest) {
         });
         if (!res.ok) {
           const txt = await res.text();
-          return NextResponse.json(
+          return safeJson(
             {
               success: false,
               _error: `M-Pesa oauth error ${res.status}: ${txt}`,
@@ -44,14 +56,14 @@ export async function GET(req: NextRequest) {
             { status: 502 }
           );
         }
-        return NextResponse.json({ success: true, provider: "mpesa" });
+        return safeJson({ success: true, provider: "mpesa" });
       }
 
       case "pesapal": {
         const key = process.env.PESAPAL_CONSUMER_KEY;
         const secret = process.env.PESAPAL_CONSUMER_SECRET;
         if (!key || !secret)
-          return NextResponse.json(
+          return safeJson(
             { success: false, _error: "Pesapal credentials missing" },
             { status: 400 }
           );
@@ -67,7 +79,7 @@ export async function GET(req: NextRequest) {
         });
         if (res.status !== 200 && res.status !== 404) {
           const txt = await res.text();
-          return NextResponse.json(
+          return safeJson(
             {
               success: false,
               _error: `Pesapal connectivity error ${res.status}: ${txt}`,
@@ -75,13 +87,13 @@ export async function GET(req: NextRequest) {
             { status: 502 }
           );
         }
-        return NextResponse.json({ success: true, provider: "pesapal" });
+        return safeJson({ success: true, provider: "pesapal" });
       }
 
       case "airtel": {
         const cid = process.env.AIRTEL_CLIENT_ID;
         if (!cid)
-          return NextResponse.json(
+          return safeJson(
             { success: false, _error: "Airtel credentials missing" },
             { status: 400 }
           );
@@ -94,7 +106,7 @@ export async function GET(req: NextRequest) {
         });
         if (!res.ok) {
           const txt = await res.text();
-          return NextResponse.json(
+          return safeJson(
             {
               success: false,
               _error: `Airtel connectivity error ${res.status}: ${txt}`,
@@ -102,14 +114,14 @@ export async function GET(req: NextRequest) {
             { status: 502 }
           );
         }
-        return NextResponse.json({ success: true, provider: "airtel" });
+        return safeJson({ success: true, provider: "airtel" });
       }
 
       case "twilio": {
         const sid = process.env.TWILIO_ACCOUNT_SID;
         const token = process.env.TWILIO_AUTH_TOKEN;
         if (!sid || !token)
-          return NextResponse.json(
+          return safeJson(
             { success: false, _error: "Twilio credentials missing" },
             { status: 400 }
           );
@@ -127,7 +139,7 @@ export async function GET(req: NextRequest) {
         );
         if (!res.ok) {
           const txt = await res.text();
-          return NextResponse.json(
+          return safeJson(
             {
               success: false,
               _error: `Twilio connectivity error ${res.status}: ${txt}`,
@@ -135,14 +147,14 @@ export async function GET(req: NextRequest) {
             { status: 502 }
           );
         }
-        return NextResponse.json({ success: true, provider: "twilio" });
+        return safeJson({ success: true, provider: "twilio" });
       }
 
       case "whatsapp_cloud": {
         const token = process.env.WHATSAPP_CLOUD_TOKEN;
         const phoneId = process.env.WHATSAPP_PHONE_NUMBER_ID;
         if (!token || !phoneId)
-          return NextResponse.json(
+          return safeJson(
             { success: false, _error: "WhatsApp Cloud credentials missing" },
             { status: 400 }
           );
@@ -152,7 +164,7 @@ export async function GET(req: NextRequest) {
         );
         if (!res.ok) {
           const txt = await res.text();
-          return NextResponse.json(
+          return safeJson(
             {
               success: false,
               _error: `WhatsApp Cloud connectivity error ${res.status}: ${txt}`,
@@ -160,17 +172,42 @@ export async function GET(req: NextRequest) {
             { status: 502 }
           );
         }
-        return NextResponse.json({ success: true, provider: "whatsapp_cloud" });
+        return safeJson({ success: true, provider: "whatsapp_cloud" });
+      }
+
+      case "vpn": {
+        const controllerUrl = process.env.VPN_CONTROLLER_URL;
+        if (!controllerUrl)
+          return safeJson(
+            { success: false, _error: "VPN_CONTROLLER_URL missing" },
+            { status: 400 }
+          );
+
+        // Use the VPN service's non-destructive validation method
+        const { vpnService } = await import(
+          "../../../../src/services/VPNService"
+        );
+        const result = await vpnService.validateController();
+        if (!result.success)
+          return safeJson(
+            {
+              success: false,
+              _error: result.message || "VPN validation failed",
+              details: result,
+            },
+            { status: 502 }
+          );
+        return safeJson({ success: true, provider: "vpn", details: result });
       }
 
       default:
-        return NextResponse.json(
+        return safeJson(
           { success: false, _error: "Unknown provider" },
           { status: 400 }
         );
     }
   } catch (_err) {
     const msg = _err instanceof Error ? _err.message : String(_err);
-    return NextResponse.json({ success: false, _error: msg }, { status: 500 });
+    return safeJson({ success: false, _error: msg }, { status: 500 });
   }
 }

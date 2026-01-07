@@ -59,6 +59,43 @@ export default class MpesaService {
     return data.access_token;
   }
 
+  /**
+   * Non-destructive validation that the OAuth endpoint is reachable and credentials look valid.
+   */
+  public async validate(): Promise<{
+    success: boolean;
+    status?: number;
+    message?: string;
+  }> {
+    const cfgErr = this.validateConfig();
+    if (cfgErr) return { success: false, message: cfgErr };
+
+    try {
+      const ac = new AbortController();
+      const timeout = setTimeout(() => ac.abort(), 5000);
+      const res = await fetch(this.oauthUrl, {
+        method: "GET",
+        headers: {
+          Authorization: `Basic ${Buffer.from(
+            `${this.consumerKey}:${this.consumerSecret}`
+          ).toString("base64")}`,
+        },
+        signal: ac.signal as any,
+      });
+      clearTimeout(timeout);
+
+      if (!res.ok) {
+        const txt = await res.text().catch(() => "");
+        return { success: false, status: res.status, message: txt };
+      }
+
+      return { success: true, status: res.status, message: "ok" };
+    } catch (_err) {
+      const msg = _err instanceof Error ? _err.message : String(_err);
+      return { success: false, message: `fetch error: ${msg}` };
+    }
+  }
+
   public async stkPush(
     phone: string,
     amount: number,

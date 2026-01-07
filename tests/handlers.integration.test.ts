@@ -29,4 +29,13 @@ describe("handlers integration", () => {
     const json = await _res.json();
     expect(json.message).toMatch(/QFix/i);
   });
+
+  test("POST absolute http://localhost/api/qmoi/payload?qfix returns QFix message", async () => {
+    const _res = await fetch("http://localhost/api/qmoi/payload?qfix=1", {
+      method: "POST",
+    });
+    expect(_res.status).toBe(200);
+    const json = await _res.json();
+    expect(json.message).toMatch(/QFix/i);
+  });
 });

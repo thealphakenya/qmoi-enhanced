@@ -53,4 +53,51 @@ describe("MpesaService tests", () => {
 
     mockFetch.mockRestore();
   });
+
+  test("validate returns error when credentials missing", async () => {
+    delete process.env.MPESA_CONSUMER_KEY;
+    delete process.env.MPESA_CONSUMER_SECRET;
+
+    const svc = new MpesaService();
+    const res = await svc.validate();
+    expect(res.success).toBe(false);
+    expect(res.message).toMatch(/MPESA_CONSUMER_KEY or MPESA_CONSUMER_SECRET/);
+  });
+
+  test("validate returns success when oauth reachable", async () => {
+    process.env.MPESA_CONSUMER_KEY = "ckey";
+    process.env.MPESA_CONSUMER_SECRET = "csecret";
+
+    const mockFetch = jest
+      .spyOn(global, "fetch" as any)
+      .mockImplementationOnce(
+        async () => ({ ok: true, status: 200, text: async () => "ok" } as any)
+      );
+
+    const svc = new MpesaService();
+    const res = await svc.validate();
+    expect(res.success).toBe(true);
+    expect(res.status).toBe(200);
+
+    mockFetch.mockRestore();
+  });
+
+  test("validate returns failure when oauth returns non-ok", async () => {
+    process.env.MPESA_CONSUMER_KEY = "ckey";
+    process.env.MPESA_CONSUMER_SECRET = "csecret";
+
+    const mockFetch = jest
+      .spyOn(global, "fetch" as any)
+      .mockImplementationOnce(
+        async () =>
+          ({ ok: false, status: 401, text: async () => "unauthorized" } as any)
+      );
+
+    const svc = new MpesaService();
+    const res = await svc.validate();
+    expect(res.success).toBe(false);
+    expect(res.status).toBe(401);
+
+    mockFetch.mockRestore();
+  });
 });

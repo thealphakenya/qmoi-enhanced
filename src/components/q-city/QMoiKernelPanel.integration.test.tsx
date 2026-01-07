@@ -35,11 +35,11 @@ describe("QMoiKernelPanel Integration", () => {
           }
           if (url.includes("/api/qmoi/payload")) {
             const u = new URL(url, "http://localhost");
-            const action = u.searchParams.get("qfix")
+            const action = u.searchParams.has("qfix")
               ? "QFix"
-              : u.searchParams.get("qoptimize")
+              : u.searchParams.has("qoptimize")
               ? "QOptimize"
-              : u.searchParams.get("qsecure")
+              : u.searchParams.has("qsecure")
               ? "QSecure"
               : "Unknown";
             return new Response(JSON.stringify({ message: `${action} done` }), {

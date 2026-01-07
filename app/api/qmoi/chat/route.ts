@@ -81,11 +81,11 @@ export async function POST(_req: Request) {
     if (!data) {
       try {
         return NextResponse.json(
-          { _error: "invalid_response_from_qmoi" },
+          { _error: "invalid_response_from_qmoi", error: "invalid_response_from_qmoi" },
           { status: 502 }
         );
       } catch (_e) {
-        return { status: 502, body: { _error: "invalid_response_from_qmoi" } };
+        return { status: 502, body: { _error: "invalid_response_from_qmoi", error: "invalid_response_from_qmoi" } };
       }
     }
 
