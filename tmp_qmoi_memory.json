@@ -1,0 +1,10 @@
+{
+  "conversations": [
+    {
+      "role": "user",
+      "content": "How are you doing today?",
+      "ts": "2026-01-07T14:36:58.469Z",
+      "persona": "master"
+    }
+  ]
+}

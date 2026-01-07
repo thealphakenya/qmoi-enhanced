@@ -112,7 +112,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
           `🆕 New project planned: ${newProject.name}\nType: ${newProject.type}\nPriority: ${newProject.priority}\nEstimated time: ${newProject.estimatedDuration} minutes`
         );
       } catch (_error) {
-        (console as any)._error("Error creating project:", _error);
+        console.error("Error creating project:", _error);
       } finally {
         setIsLoading(false);
       }
@@ -164,7 +164,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
           );
         }
       } catch (_error) {
-        (console as any)._error("Error updating project status:", _error);
+        console.error("Error updating project status:", _error);
       } finally {
         setIsLoading(false);
       }
@@ -256,7 +256,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
           .join("\n")}`
       );
     } catch (_error) {
-      (console as any)._error("Error generating daily plan:", _error);
+      console.error("Error generating daily plan:", _error);
     } finally {
       setIsLoading(false);
     }
@@ -270,7 +270,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
         message
       );
     } catch (_error) {
-      (console as any)._error("Error notifying master:", _error);
+      console.error("Error notifying master:", _error);
     }
   }, []);
 

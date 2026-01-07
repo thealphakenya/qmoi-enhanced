@@ -608,7 +608,7 @@ Master Commands:
       console.log("🚀 Starting WhatsApp service...");
       await this.client.initialize();
     } catch (_error) {
-      (console as any)._error("Error starting WhatsApp service:", _error);
+      console.error("Error starting WhatsApp service:", _error);
       throw _error;
     }
   }
@@ -619,7 +619,7 @@ Master Commands:
       await this.client.destroy();
       this.isConnected = false;
     } catch (_error) {
-      (console as any)._error("Error stopping WhatsApp service:", _error);
+      console.error("Error stopping WhatsApp service:", _error);
     }
   }
 
@@ -633,7 +633,7 @@ Master Commands:
       await this.client.sendMessage(chatId, message);
       console.log(`📤 Message sent to ${to}`);
     } catch (_error) {
-      (console as any)._error("Error sending WhatsApp message:", _error);
+      console.error("Error sending WhatsApp message:", _error);
       throw _error;
     }
   }
@@ -659,7 +659,7 @@ Master Commands:
         await this.sendMessage(contact, message);
         await this.sleep(1000); // Delay between messages
       } catch (_error) {
-        (console as any)._error(`Error broadcasting to ${contact}:`, _error);
+        console.error(`Error broadcasting to ${contact}:`, _error);
       }
     }
   }

@@ -218,7 +218,7 @@ export async function getHandlers() {
               : undefined,
           };
           try {
-            (console as any)._error("HANDLER DUMP UNCOND:", dump);
+            console.error("HANDLER DUMP UNCOND:", dump);
           } catch (_er) {}
         } catch (_e) {}
         debug(

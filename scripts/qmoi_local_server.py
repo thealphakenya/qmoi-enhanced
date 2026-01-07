@@ -59,9 +59,13 @@ def chat_completions():
     payload = request.get_json(silent=True) or {}
     messages = payload.get("messages") or []
     last_user = ""
+    system_mode = ""
     for m in reversed(messages):
-        if m.get("role") == "user":
+        if not last_user and m.get("role") == "user":
             last_user = m.get("content", "")
+        if not system_mode and m.get("role") == "system" and m.get("content"):
+            system_mode = m.get("content")
+        if last_user and system_mode:
             break
     # Simple memory write: append last user message to conversations
     try:

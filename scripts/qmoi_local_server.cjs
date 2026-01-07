@@ -11,6 +11,20 @@ const MEMORY_FILE =
   process.env.QMOI_MEMORY_FILE || path.join(__dirname, "qmoi_memory.json");
 const QMOI_SYNC_API_KEY = process.env.QMOI_SYNC_API_KEY;
 
+// Persistent server-side debug log (helps tests inspect server-side events)
+const LOG_FILE = String(MEMORY_FILE) + ".server.log";
+function appendLog(msg) {
+  try {
+    const ts = new Date().toISOString();
+    const line = typeof msg === "string" ? msg : JSON.stringify(msg);
+    fs.appendFileSync(LOG_FILE, `[${ts}] ${String(line)}\n`, {
+      encoding: "utf-8",
+    });
+  } catch (e) {
+    // ignore logging failures
+  }
+}
+
 function readJsonSafe(p) {
   try {
     if (!fs.existsSync(p)) return {};
@@ -53,6 +67,9 @@ function parseBody(req) {
 
 function sendJson(res, obj, status = 200) {
   const s = JSON.stringify(obj);
+  try {
+    appendLog(`[sendJson] status=${status} body=${s}`);
+  } catch (e) {}
   res.writeHead(status, { "Content-Type": "application/json" });
   res.end(s);
 }
@@ -60,6 +77,22 @@ function sendJson(res, obj, status = 200) {
 const server = http.createServer(async (req, res) => {
   const u = url.parse(req.url || "", true);
   const pathname = u.pathname || "/";
+
+  // Log every incoming request early to aid debugging in test harnesses
+  try {
+    const note = {
+      event: "request-start",
+      method: req.method,
+      url: req.url,
+      headers: req.headers,
+    };
+    console.log(
+      `[qmoi_local_server] request start: ${req.method} ${
+        req.url
+      } headers=${JSON.stringify(req.headers)}`
+    );
+    appendLog(note);
+  } catch (e) {}
 
   if (req.method === "GET" && (pathname === "/" || pathname === "/health")) {
     return sendJson(res, { status: "ok", model: "qmoi" });
@@ -102,10 +135,11 @@ const server = http.createServer(async (req, res) => {
           atomicWriteJson(MEMORY_FILE, mem);
         }
       } catch (e) {
-        console.error(
-          "[qmoi_local_server] memory append error",
-          e && e.stack ? e.stack : String(e)
-        );
+        const errStr = e && e.stack ? e.stack : String(e);
+        console.error("[qmoi_local_server] memory append error", errStr);
+        try {
+          appendLog({ event: "memory-append-error", error: errStr });
+        } catch (e2) {}
       }
 
       const lu = (last_user || "").toLowerCase();
@@ -172,8 +206,23 @@ const server = http.createServer(async (req, res) => {
         ],
         usage: { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 },
       };
+      try {
+        appendLog({
+          event: "response",
+          status: 200,
+          path: pathname,
+          bodySize: JSON.stringify(response).length,
+        });
+      } catch (e) {}
       return sendJson(res, response);
     } catch (e) {
+      try {
+        appendLog({
+          event: "handler-error",
+          path: pathname,
+          error: e && e.stack ? e.stack : String(e),
+        });
+      } catch (ee) {}
       console.error(
         "[qmoi_local_server] handler error",
         e && e.stack ? e.stack : String(e)
@@ -185,6 +234,9 @@ const server = http.createServer(async (req, res) => {
           500
         );
       } catch (_e2) {
+        try {
+          appendLog({ event: "handler-error-cant-write", path: pathname });
+        } catch (ee) {}
         res.writeHead(500, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ error: "server error" }));
       }
@@ -247,10 +299,102 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
+// Global error handlers to ensure exceptions are logged for test harnesses
+process.on("uncaughtException", (err) => {
+  try {
+    console.error(
+      "[qmoi_local_server] uncaughtException",
+      err && err.stack ? err.stack : String(err)
+    );
+  } catch (e) {
+    // ignore
+  }
+});
+process.on("unhandledRejection", (reason) => {
+  try {
+    console.error(
+      "[qmoi_local_server] unhandledRejection",
+      reason && reason.stack ? reason.stack : String(reason)
+    );
+  } catch (e) {
+    // ignore
+  }
+});
+
+// TCP-level connection logging so tests can observe if a TCP socket reaches this process
+server.on("connection", (socket) => {
+  try {
+    appendLog({
+      event: "tcp-connection",
+      remoteAddress: socket.remoteAddress,
+      remotePort: socket.remotePort,
+    });
+  } catch (e) {}
+  try {
+    socket.on("close", (hadErr) => {
+      try {
+        appendLog({
+          event: "tcp-close",
+          remoteAddress: socket.remoteAddress,
+          remotePort: socket.remotePort,
+          hadErr,
+        });
+      } catch (e) {}
+    });
+    try {
+      socket.on("data", (chunk) => {
+        try {
+          appendLog({
+            event: "socket-data",
+            len: chunk.length,
+            prefixHex: chunk.slice(0, 64).toString("hex"),
+          });
+        } catch (e) {}
+      });
+    } catch (e) {}
+  } catch (e) {}
+});
+
+// Additional server-level events to capture request parsing errors and request events
+server.on("request", (req, res) => {
+  try {
+    appendLog({
+      event: "request-event",
+      method: req.method,
+      url: req.url,
+      headers: req.headers,
+    });
+  } catch (e) {}
+});
+server.on("clientError", (err, socket) => {
+  try {
+    appendLog({
+      event: "client-error",
+      error: err && err.stack ? err.stack : String(err),
+    });
+  } catch (e) {}
+  try {
+    socket.end("HTTP/1.1 400 Bad Request\\r\\n\\r\\n");
+  } catch (e) {}
+});
+server.on("close", () => {
+  try {
+    appendLog({ event: "server-close" });
+  } catch (e) {}
+});
+
 server.listen(PORT, HOST, () => {
   console.log(
     `qmoi_local_server.cjs listening on http://${HOST}:${PORT} (memory=${MEMORY_FILE})`
   );
+  try {
+    appendLog({
+      event: "listening",
+      host: HOST,
+      port: PORT,
+      memory: MEMORY_FILE,
+    });
+  } catch (e) {}
 });
 
 // Graceful shutdown

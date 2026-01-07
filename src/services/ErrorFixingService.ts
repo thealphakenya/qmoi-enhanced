@@ -65,7 +65,7 @@ export class ErrorFixingService {
           console.log("No automatic fix suggested for this _error.");
         }
       } catch (_error) {
-        (console as any)._error("Failed to process _error or apply fix:", _error);
+        console.error("Failed to process _error or apply fix:", _error);
       } finally {
         this.isProcessing = false;
         this.processQueue(); // Process next _error in queue
@@ -76,7 +76,7 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    _error: ErrorReport
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.

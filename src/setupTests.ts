@@ -139,7 +139,7 @@ if (typeof window === "undefined") {
         onUnhandledRequest: (_req) => {
           try {
             if (process.env.SHOW_MSW_UNHANDLED === "1") {
-              (console as any)._error(
+              console.error(
                 "MSW UNHANDLED REQUEST:",
                 (_req as any).method,
                 String((_req as any).url)
@@ -318,7 +318,7 @@ global.sessionStorage = sessionStorageMock as any as Storage;
 
 // Mock console methods to reduce noise in tests
 // Ensure `_error` exists on console (fall back to `console.error`)
-if (!(console as any)._error) (console as any)._error = console.error;
+if (!console._error) console._error = console.error;
 global.console = {
   ...console,
   log: jest.fn(),
@@ -326,5 +326,5 @@ global.console = {
   info: jest.fn(),
   warn: jest.fn(),
   // keep errors visible so setup failures surface in CI and dev runs
-  _error: (console as any)._error,
+  _error: console._error,
 };

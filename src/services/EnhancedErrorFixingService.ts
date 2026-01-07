@@ -526,7 +526,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
 
     if (!fixAttempt.success) {
       fixAttempt._error = lastError;
-      (console as any)._error("❌ All fix attempts failed");
+      console.error("❌ All fix attempts failed");
     }
 
     fixAttempt.duration = Date.now() - startTime;

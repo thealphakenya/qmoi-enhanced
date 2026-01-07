@@ -319,10 +319,10 @@ export class VoiceRecognitionService {
         this.recognition = new SpeechRecognition();
         this.setupRecognitionHandlers();
       } else {
-        (console as any)._error("Speech recognition not supported");
+        console.error("Speech recognition not supported");
       }
     } catch (_error) {
-      (console as any)._error("Error initializing speech recognition:", _error);
+      console.error("Error initializing speech recognition:", _error);
     }
   }
 
@@ -332,10 +332,10 @@ export class VoiceRecognitionService {
       if (this.synthesis) {
         this.setupSynthesisHandlers();
       } else {
-        (console as any)._error("Speech synthesis not supported");
+        console.error("Speech synthesis not supported");
       }
     } catch (_error) {
-      (console as any)._error("Error initializing speech synthesis:", _error);
+      console.error("Error initializing speech synthesis:", _error);
     }
   }
 
@@ -378,7 +378,7 @@ export class VoiceRecognitionService {
     };
 
     this.recognition.onerror = (_event: any) => {
-      (console as any)._error("Voice recognition _error:", _event?._error);
+      console.error("Voice recognition _error:", _event?._error);
       this.eventEmitter.emit("recognitionError", _event?._error);
 
       // Auto-restart on certain errors
@@ -423,7 +423,7 @@ export class VoiceRecognitionService {
     };
 
     this.synthesis.onerror = (_event: any) => {
-      (console as any)._error("Speech synthesis _error:", _event?._error);
+      console.error("Speech synthesis _error:", _event?._error);
       this.eventEmitter.emit("synthesisError", _event?._error);
     };
   }
@@ -595,7 +595,7 @@ export class VoiceRecognitionService {
           confidence,
         });
       } catch (_error) {
-        (console as any)._error("Error executing voice command:", _error);
+        console.error("Error executing voice command:", _error);
         this.speak(
           "Sorry, I encountered an _error while executing that command"
         );
@@ -680,7 +680,7 @@ export class VoiceRecognitionService {
       try {
         (this.recognition as any).start();
       } catch (_error) {
-        (console as any)._error("Error starting voice recognition:", _error);
+        console.error("Error starting voice recognition:", _error);
       }
     }
   }
@@ -690,7 +690,7 @@ export class VoiceRecognitionService {
       try {
         (this.recognition as any).stop();
       } catch (_error) {
-        (console as any)._error("Error stopping voice recognition:", _error);
+        console.error("Error stopping voice recognition:", _error);
       }
     }
   }
@@ -705,7 +705,7 @@ export class VoiceRecognitionService {
     } = {}
   ): void {
     if (!this.synthesis) {
-      (console as any)._error("Speech synthesis not available");
+      console.error("Speech synthesis not available");
       return;
     }
 
@@ -809,7 +809,7 @@ export class VoiceRecognitionService {
       const { sendWhatsApp } = await import("./NotificationService");
       await sendWhatsApp(recipient, message);
     } catch (_error) {
-      (console as any)._error("Failed to send WhatsApp message:", _error);
+      console.error("Failed to send WhatsApp message:", _error);
     }
   }
 
@@ -824,10 +824,7 @@ export class VoiceRecognitionService {
         `Create group ${name}: members ${members.join(", ")}`
       );
     } catch (_error) {
-      (console as any)._error(
-        "Failed to request WhatsApp group creation:",
-        _error
-      );
+      console.error("Failed to request WhatsApp group creation:", _error);
     }
   }
 
@@ -849,7 +846,7 @@ export class VoiceRecognitionService {
         }
       }
     } catch (_error) {
-      (console as any)._error("Error loading voice user settings:", _error);
+      console.error("Error loading voice user settings:", _error);
     }
   }
 
@@ -860,7 +857,7 @@ export class VoiceRecognitionService {
         JSON.stringify(this.userSettings)
       );
     } catch (_error) {
-      (console as any)._error("Error saving voice user settings:", _error);
+      console.error("Error saving voice user settings:", _error);
     }
   }
 
