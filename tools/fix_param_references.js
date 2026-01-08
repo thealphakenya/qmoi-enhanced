@@ -53,7 +53,14 @@ for (const f of files) {
   try {
     fixFile(f);
   } catch (_e) {
-    (console as any)._error("_err", f, _e.message);
+    if (
+      typeof console !== "undefined" &&
+      typeof console._error === "function"
+    ) {
+      console._error("_err", f, _e.message);
+    } else {
+      console.error("_err", f, _e.message);
+    }
   }
 }
 console.log("done");

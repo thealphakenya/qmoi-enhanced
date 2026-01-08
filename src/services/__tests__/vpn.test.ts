@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { vpnService } from "../VPNService";
 
 describe("VPNService validateController", () => {

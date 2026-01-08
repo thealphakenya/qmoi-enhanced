@@ -1,6 +1,6 @@
 /* eslint-env node, jest */
 /* global require */
-// @ts-nocheck
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars */
 import "@testing-library/jest-dom";
 import "whatwg-fetch";
 import { TextEncoder, TextDecoder } from "util";
@@ -268,7 +268,6 @@ beforeAll(async () => {
 try {
   const originalFetch = global.fetch;
   if (typeof originalFetch === "function") {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-unknown
     (global as any).fetch = async function fetchWithMswReady(
       ...args: unknown[]
     ) {

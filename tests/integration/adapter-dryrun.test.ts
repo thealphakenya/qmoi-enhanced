@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Simple integration-style dry-run checks for adapters and wallet manager.
 import FacebookAdapter from "../../services/adapters/social/facebook";
 import { PlatformConfig } from "../../services/adapters/types";

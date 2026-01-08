@@ -51,7 +51,7 @@ async function startQMOIMonitoring() {
     monitor.logError("uncaught_exception", error.message);
   });
 
-  process.on("unhandledRejection", (reason, promise) => {
+  process.on("unhandledRejection", (reason) => {
     console.error("❌ Unhandled rejection:", reason);
     monitor.logError("unhandled_rejection", reason);
   });

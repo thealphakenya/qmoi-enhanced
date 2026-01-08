@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Global augment to ensure handlers can call .status/.json/.end on NextApiResponse
 // This is a pragmatic triage to reduce type errors across many legacy handlers.
 declare global {

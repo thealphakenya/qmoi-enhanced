@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare const Request: unknown;
 declare const URLSearchParams: unknown;
 declare const NextRequest: unknown;

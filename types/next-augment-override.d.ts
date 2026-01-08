@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Minimal augmentation to ensure `status`, `json`, and `end` are available on NextApiResponse
 // This avoids regressions caused by earlier lightweight augmentations.
 declare module "next" {

@@ -35,11 +35,32 @@ export default class MpesaService {
     return null;
   }
 
+  private async fetchWithRetry(
+    url: string,
+    options: RequestInit,
+    retries = 2
+  ): Promise<Response> {
+    let attempt = 0;
+    let lastError: unknown = null;
+    while (attempt <= retries) {
+      try {
+        const res = await fetch(url, options);
+        return res;
+      } catch (err) {
+        lastError = err;
+        attempt++;
+        const wait = Math.pow(2, attempt) * 100;
+        await new Promise((r) => setTimeout(r, wait));
+      }
+    }
+    throw lastError;
+  }
+
   private async getAccessToken(): Promise<string> {
     const cfgErr = this.validateConfig();
     if (cfgErr) throw new Error(cfgErr);
 
-    const res = await fetch(this.oauthUrl, {
+    const res = await this.fetchWithRetry(this.oauthUrl, {
       method: "GET",
       headers: {
         Authorization: `Basic ${Buffer.from(
@@ -49,7 +70,7 @@ export default class MpesaService {
     });
 
     if (!res.ok) {
-      const txt = await res.text();
+      const txt = await res.text().catch(() => "");
       throw new Error(
         `Failed to obtain M-Pesa access token: ${res.status} ${txt}`
       );
@@ -80,7 +101,7 @@ export default class MpesaService {
             `${this.consumerKey}:${this.consumerSecret}`
           ).toString("base64")}`,
         },
-        signal: ac.signal as any,
+        signal: ac.signal,
       });
       clearTimeout(timeout);
 
@@ -94,6 +115,23 @@ export default class MpesaService {
       const msg = _err instanceof Error ? _err.message : String(_err);
       return { success: false, message: `fetch error: ${msg}` };
     }
+  }
+
+  private generateTimestamp(): string {
+    return new Date()
+      .toISOString()
+      .replace(/[-T:.Z]/g, "")
+      .slice(0, 14);
+  }
+
+  private generatePassword(
+    timestamp: string,
+    businessShortCode: string,
+    passkey: string
+  ): string {
+    return Buffer.from(`${businessShortCode}${passkey}${timestamp}`).toString(
+      "base64"
+    );
   }
 
   public async stkPush(
@@ -112,24 +150,25 @@ export default class MpesaService {
 
       const token = await this.getAccessToken();
 
+      const timestamp = this.generateTimestamp();
+      const businessShortCode =
+        process.env.MPESA_BUSINESS_SHORTCODE || "174379";
+      const passkey = process.env.MPESA_PASSKEY || "";
       const payload = {
-        BusinessShortCode: process.env.MPESA_BUSINESS_SHORTCODE || "174379",
-        Password: process.env.MPESA_PASSKEY || "",
-        Timestamp: new Date()
-          .toISOString()
-          .replace(/[-T:\.Z]/g, "")
-          .slice(0, 14),
+        BusinessShortCode: businessShortCode,
+        Password: this.generatePassword(timestamp, businessShortCode, passkey),
+        Timestamp: timestamp,
         TransactionType: "CustomerPayBillOnline",
         Amount: Math.round(amount),
         PartyA: phone,
-        PartyB: process.env.MPESA_BUSINESS_SHORTCODE || "174379",
+        PartyB: businessShortCode,
         PhoneNumber: phone,
         CallBackURL: process.env.MPESA_CALLBACK_URL || "",
         AccountReference: accountRef,
         TransactionDesc: description,
       };
 
-      const res = await fetch(this.stkUrl, {
+      const res = await this.fetchWithRetry(this.stkUrl, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -147,13 +186,49 @@ export default class MpesaService {
       }
 
       const data = await res.json();
-      return {
-        success: true,
-        reference:
-          data.CheckoutRequestID ||
-          data.CheckoutRequestID ||
-          String(Date.now()),
+
+      // Attempt to extract CheckoutRequestID from common locations in the payload
+      const findCheckoutId = (obj: unknown): string | undefined => {
+        if (!obj || typeof obj !== "object") return undefined;
+        const o = obj as Record<string, unknown>;
+        if (o.CheckoutRequestID) return String(o.CheckoutRequestID as unknown);
+        if (o.Response && typeof o.Response === "object") {
+          const r = o.Response as Record<string, unknown>;
+          if (r.CheckoutRequestID)
+            return String(r.CheckoutRequestID as unknown);
+        }
+        if (o.Result && typeof o.Result === "object") {
+          const r = o.Result as Record<string, unknown>;
+          if (r.CheckoutRequestID)
+            return String(r.CheckoutRequestID as unknown);
+        }
+        // Pesky nested result structures
+        for (const k of Object.keys(o)) {
+          const val = o[k];
+          if (val && typeof val === "object") {
+            const found = findCheckoutId(val);
+            if (found) return found;
+          }
+        }
+        // Some MPESA responses include a `Body.StkCallback.CheckoutRequestID` nested path
+        if (
+          o.Body &&
+          typeof o.Body === "object" &&
+          (o.Body as Record<string, unknown>).stkCallback &&
+          typeof (o.Body as Record<string, unknown>).stkCallback === "object"
+        ) {
+          const cb = (o.Body as Record<string, unknown>).stkCallback as Record<
+            string,
+            unknown
+          >;
+          if (cb.CheckoutRequestID)
+            return String(cb.CheckoutRequestID as unknown);
+        }
+        return undefined;
       };
+
+      const checkout = findCheckoutId(data) || String(Date.now());
+      return { success: true, reference: checkout };
     } catch (_error) {
       const err = _error instanceof Error ? _error.message : String(_error);
       return { success: false, error: err };

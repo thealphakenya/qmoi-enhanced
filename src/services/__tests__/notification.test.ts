@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as notif from "../NotificationService";
 
 describe("NotificationService basic tests", () => {
@@ -28,12 +29,10 @@ describe("NotificationService basic tests", () => {
     process.env.WHATSAPP_CLOUD_TOKEN = "TEST_TOKEN";
     process.env.WHATSAPP_PHONE_NUMBER_ID = "12345";
 
-    const mockFetch = jest
-      .spyOn(global, "fetch" as any)
-      .mockResolvedValueOnce({
-        ok: true,
-        json: async () => ({ id: "msg_1" }),
-      } as any);
+    const mockFetch = jest.spyOn(global, "fetch" as any).mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ id: "msg_1" }),
+    } as any);
 
     const res = await notif.sendWhatsApp("254700000000", "cloud hello");
     expect(res.success).toBe(true);

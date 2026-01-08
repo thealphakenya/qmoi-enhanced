@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare module "electron" {
   export const app: unknown;
   export const Notification: unknown;

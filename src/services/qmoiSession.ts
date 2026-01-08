@@ -18,10 +18,12 @@ export function getSessionId(): string {
         document.cookie = `qmoi_session_id=${encodeURIComponent(
           sid
         )}; Path=/; Max-Age=${60 * 60 * 24 * 365}; SameSite=Lax`;
-      } catch (_e) { void _e; }
+      } catch (_e) {
+        void _e;
+      }
     }
     return sid;
-  } catch (_e) {
+  } catch {
     return `s_${Date.now().toString(36)}`;
   }
 }
@@ -41,7 +43,9 @@ export function getSessionHeaders(): Record<string, string> {
         ? localStorage.getItem("qmoi_user")
         : undefined;
     if (user) headers["X-QMOI-USER"] = user;
-  } catch (_e) { void _e; }
+  } catch {
+    void 0;
+  }
   return headers;
 }
 
@@ -54,5 +58,7 @@ export function setProfile(profile: {
     if (profile.role) localStorage.setItem("qmoi_role", profile.role);
     if (profile.name) localStorage.setItem("qmoi_user", profile.name);
     if (profile.userId) localStorage.setItem("qmoi_userid", profile.userId);
-  } catch (_e) { void _e; }
+  } catch {
+    void 0;
+  }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GET as validateRoute } from "../../../app/api/integrations/validate/route";
 
 const providers = [

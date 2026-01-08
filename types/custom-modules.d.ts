@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare module "bcryptjs";
 declare module "dockerode";
 declare module "node-ssh";

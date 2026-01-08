@@ -167,7 +167,7 @@ export class WhatsAppService {
     });
   }
 
-  private async handleQRCodeGenerated(qr: string): Promise<void> {
+  private async handleQRCodeGenerated(_qr: string): Promise<void> {
     console.log("📱 QR Code generated, waiting for scan...");
 
     // Store QR code for potential retry
@@ -494,6 +494,7 @@ Message: ${message.body}
 📊 Last Updated: ${new Date().toLocaleString()}
 🔄 Auto-withdrawal: Enabled`;
     } catch (_error) {
+      void _error;
       return "❌ Unable to fetch balance at this time.";
     }
   }

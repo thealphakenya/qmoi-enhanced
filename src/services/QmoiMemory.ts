@@ -12,6 +12,14 @@ interface MemoryRecord {
 let memoryStore: MemoryRecord[] = [];
 let recordId = 1;
 
+// Test helper: reset in-memory store when running tests
+export function _resetQmoiMemoryForTests() {
+  if (process.env.NODE_ENV === "test") {
+    memoryStore = [];
+    recordId = 1;
+  }
+}
+
 export class QmoiMemory {
   static save(key: string, value: unknown, user?: string, project?: string) {
     const existing = memoryStore.findIndex(
@@ -78,11 +86,22 @@ export class QmoiMemory {
       if (typeof fetch === "function") {
         fetch("/api/qmoi/memory", { headers: getSessionHeaders() })
           .then((r) => r.json())
-          .then((data) => {
-            if (data && data.profiles) {
+          .then((data: unknown) => {
+            if (data && typeof data === "object" && "profiles" in data) {
+              const d = data as {
+                conversations?: unknown;
+                profiles?: unknown;
+                [k: string]: unknown;
+              };
               // merge conversations if present
-              if (Array.isArray(data.conversations)) {
-                data.conversations.forEach((c: any) => {
+              if (Array.isArray(d.conversations)) {
+                (
+                  d.conversations as Array<{
+                    role?: string;
+                    timestamp?: string;
+                    [k: string]: unknown;
+                  }>
+                ).forEach((c) => {
                   memoryStore.push({
                     id: recordId++,
                     key: "conversation",

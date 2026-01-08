@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare module "../../../scripts/services/auto_fix_service" {
   export type QCityStatus = {
     errors: unknown[];

@@ -638,7 +638,7 @@ export class VPNService {
       const testUrl = controllerUrl.replace(/\/\/$/, "") + "/health";
       const res = await fetch(testUrl, {
         method: "GET",
-        signal: ac.signal as any,
+        signal: ac.signal,
       });
       clearTimeout(timeout);
       if (!res.ok) {

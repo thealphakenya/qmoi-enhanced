@@ -32,6 +32,27 @@ export default class PesapalService {
     return null;
   }
 
+  private async fetchWithRetry(
+    url: string,
+    options: RequestInit,
+    retries = 2
+  ): Promise<Response> {
+    let attempt = 0;
+    let lastError: unknown = null;
+    while (attempt <= retries) {
+      try {
+        const res = await fetch(url, options);
+        return res;
+      } catch (err) {
+        lastError = err;
+        attempt++;
+        const wait = Math.pow(2, attempt) * 100;
+        await new Promise((r) => setTimeout(r, wait));
+      }
+    }
+    throw lastError;
+  }
+
   public async createOrder(
     amount: number,
     description = "QMOI payment",
@@ -63,7 +84,7 @@ export default class PesapalService {
       const url = `${this.baseUrl}/api/PostPesapalDirectOrderV4`;
 
       // Conservative: use consumerKey as bearer if present (implementation may differ by Pesapal version)
-      const res = await fetch(url, {
+      const res = await this.fetchWithRetry(url, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${this.consumerKey}`,
@@ -82,8 +103,23 @@ export default class PesapalService {
 
       const body = await res.text();
 
-      // Pesapal may return a form or HTML with a redirect URL; attempt to parse a transaction or return raw body as transaction id
-      // Conservative approach: return the raw body as transactionId
+      // Pesapal may return a form or HTML with a redirect URL; attempt to parse a transaction id or redirect URL.
+      // Heuristic parsing: look for a form action URL first, otherwise any HTTP(S) URL, else return the raw body.
+      const actionMatch = body.match(/action=["']([^"']+)["']/i);
+      if (actionMatch) {
+        return {
+          success: true,
+          transactionId: body,
+          redirectUrl: actionMatch[1],
+        };
+      }
+
+      const urlMatch = body.match(/https?:\/\/[^\s"']+/i);
+      if (urlMatch) {
+        return { success: true, transactionId: body, redirectUrl: urlMatch[0] };
+      }
+
+      // Fallback: return the raw body as transactionId
       return { success: true, transactionId: body };
     } catch (_error) {
       const err = _error instanceof Error ? _error.message : String(_error);
@@ -92,7 +128,7 @@ export default class PesapalService {
   }
 
   private escapeXml(s: string) {
-    return String(s || "").replace(/[<>&'\"]+/g, (c) => {
+    return String(s || "").replace(/[<>&'"]+/g, (c) => {
       switch (c) {
         case "<":
           return "&lt;";

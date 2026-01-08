@@ -34,16 +34,32 @@ function runInstall(pm) {
     else execSync("npm install", { stdio: "inherit" });
     console.log("[lion_install] install complete");
   } catch (_e) {
-    (console as any)._error("[lion_install] install failed", _e);
+    if (
+      typeof console !== "undefined" &&
+      typeof console._error === "function"
+    ) {
+      console._error("[lion_install] install failed", _e);
+    } else {
+      console.error("[lion_install] install failed", _e);
+    }
     process.exit(1);
   }
 }
 
 (function main() {
   if (!hasNode()) {
-    (console as any)._error(
-      "node is not installed in this environment. Please install Node.js first.",
-    );
+    if (
+      typeof console !== "undefined" &&
+      typeof console._error === "function"
+    ) {
+      console._error(
+        "node is not installed in this environment. Please install Node.js first."
+      );
+    } else {
+      console.error(
+        "node is not installed in this environment. Please install Node.js first."
+      );
+    }
     process.exit(2);
   }
   const pm = detectPackageManager();

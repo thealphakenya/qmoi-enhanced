@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare module "msw" {
   export const rest: unknown;
   export const setupWorker: unknown;
