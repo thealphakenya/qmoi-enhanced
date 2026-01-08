@@ -36,7 +36,7 @@ export async function POST(_req: NextRequest) {
     cmd,
     stream,
     deviceId = "default",
-  } = await _req.json().catch(() => ({}) as any);
+  } = (await _req.json() as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json({ _error: "No command provided" }, { status: 400 });
 

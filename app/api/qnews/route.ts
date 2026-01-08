@@ -168,7 +168,7 @@ export async function POST(_req: NextRequest) {
       return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
     }
 
-    const body = await _req.json();
+    const body = (await _req.json() as any);
     const isMasterUser = isMaster(_req);
 
     // For now, authorId is null - could be enhanced with user authentication later
@@ -210,7 +210,7 @@ export async function PUT(_req: NextRequest) {
     if (!auth.ok && !isMaster(_req))
       return NextResponse.json({ _error: "Forbidden" }, { status: 403 });
 
-    const body = await _req.json();
+    const body = (await _req.json() as any);
     const { id, ...updates } = body;
 
     const updateData: unknown = {
@@ -260,7 +260,7 @@ export async function POST_SCHEDULE(_req: NextRequest) {
     if (!auth.ok && !isMaster(_req))
       return NextResponse.json({ _error: "Forbidden" }, { status: 403 });
 
-    const body = await _req.json();
+    const body = (await _req.json() as any);
     const { id, scheduledAt } = body;
 
     const item = await prisma.news.update({
@@ -339,7 +339,7 @@ export async function POST_MEDIA(_req: NextRequest) {
     if (!auth.ok && !isMaster(_req))
       return NextResponse.json({ _error: "Forbidden" }, { status: 403 });
 
-    const body = await _req.json();
+    const body = (await _req.json() as any);
     const { id, media } = body;
 
     const newsItem = await prisma.news.findUnique({ where: { id } });
@@ -382,7 +382,7 @@ export async function POST_POST(_req: NextRequest) {
     if (!auth.ok && !isMaster(_req))
       return NextResponse.json({ _error: "Forbidden" }, { status: 403 });
 
-    const body = await _req.json();
+    const body = (await _req.json() as any);
     const { id, platforms } = body; // platforms: ['whatsapp', 'telegram', 'twitter', etc.]
 
     const newsItem = await prisma.news.findUnique({
@@ -433,7 +433,7 @@ export async function POST_POST(_req: NextRequest) {
           default:
             results.push({
               platform,
-              success: fals_e,
+              success: false,
               _error: "Unsupported platform",
             });
         }
@@ -441,7 +441,7 @@ export async function POST_POST(_req: NextRequest) {
         (console as any)._error(`Failed to post to ${platform}:`, _error);
         results.push({
           platform,
-          success: fals_e,
+          success: false,
           _error: _error instanceof Error ? _error.message : String(_error),
         });
       }

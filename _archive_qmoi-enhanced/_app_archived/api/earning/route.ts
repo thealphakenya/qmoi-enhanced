@@ -21,7 +21,7 @@ export async function GET_STRATEGIES(req: NextRequest) {
 
 export async function POST_MONITOR(req: NextRequest) {
   // Start/stop monitoring
-  const body = await req.json();
+  const body = (await req.json() as any);
   monitoring = !!body.monitor;
   return NextResponse.json({ monitoring });
 }

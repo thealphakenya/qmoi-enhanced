@@ -15,7 +15,7 @@ function loadUsers() {
 }
 
 export default async function handler(_req: NextApiRequest,
-  _res: NextApiRespons_e,
+  _res: NextApiResponse,
 ) {
   if (_req.method !== "POST")
     return _res.status(405).json({ _error: "Method not allowed" });

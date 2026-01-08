@@ -80,7 +80,7 @@ export async function POST(_req: NextRequest) {
 
   let _options: unknown = {};
   try {
-    _options = await _req.json();
+    _options = (await _req.json() as any);
   } catch {}
 
   // Determine script and args

@@ -14,7 +14,7 @@ export async function POST(_request: NextRequest) {
     // API key gating
     const auth = libProposals.requireApiKey(_request.headers);
     if (!auth.ok) {
-      const r = auth._response;
+      const r = auth.response;
       if (!r)
         return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });

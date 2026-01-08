@@ -19,7 +19,7 @@ async function restoreDocumentFromCloud(doc: unknown) {
 
 export async function POST_UPLOAD(_req: NextRequest) {
   // Upload document (stub)
-  const body = await _req.json();
+  const body = (await _req.json() as any);
   const { name, type, content } = body;
   const doc = {
     id: docId++,
@@ -46,7 +46,7 @@ export async function GET_SEARCH(_req: NextRequest) {
 
 export async function POST_RESTORE(_req: NextRequest) {
   // Restore document (stub)
-  const body = await _req.json();
+  const body = (await _req.json() as any);
   const { id } = body;
   const doc = documents.find((d) => d.id === id);
   // Production: Restore from GDrive, S3, HuggingFace

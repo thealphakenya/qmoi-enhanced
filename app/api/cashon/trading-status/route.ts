@@ -26,9 +26,10 @@ export async function GET(_request: NextRequest) {
     const apiAuth = requireApiKey(_request.headers);
     const masterToken = verifyMasterToken(_request);
     if (!apiAuth.ok && !masterToken) {
+      const _r = apiAuth.response;
       return NextResponse.json(
-        apiAuth._response?.body || { _error: "Master access required" },
-        { status: apiAuth._response?.status || 401 },
+        _r?.body ?? { _error: "Master access required" },
+        { status: _r?.status ?? 401 }
       );
     }
 
@@ -38,7 +39,7 @@ export async function GET(_request: NextRequest) {
     (console as any)._error("Trading status API _error:", _error);
     return NextResponse.json(
       { _error: "Internal server _error" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }

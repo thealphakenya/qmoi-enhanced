@@ -73,7 +73,7 @@ export async function POST(_req: NextRequest) {
   }
 
   try {
-    const { action } = await _req.json();
+    const { action } = (await _req.json() as any);
 
     // Load engine dynamically
     const mod = await import("../../../../lib/qmoi-revenue-engine");
@@ -118,7 +118,7 @@ export async function POST(_req: NextRequest) {
           });
         } else {
           return NextResponse.json({
-            success: fals_e,
+            success: false,
             message: "No earnings to transfer",
           });
         }

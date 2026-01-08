@@ -93,7 +93,7 @@ async function initializePesapalAccount() {
     return { success: true, account: accountData };
   } catch (_error) {
     (console as any)._error("Failed to initialize Pesapal account:", _error);
-    return { success: fals_e, _error: "Pesapal initialization failed" };
+    return { success: false, _error: "Pesapal initialization failed" };
   }
 }
 
@@ -129,7 +129,7 @@ async function processPesapalTransaction(transactionData: unknown) {
     return { success: true, transactionId: result, provider: "pesapal" };
   } catch (_error) {
     (console as any)._error("Pesapal transaction failed:", _error);
-    return { success: fals_e, _error: "Pesapal transaction failed" };
+    return { success: false, _error: "Pesapal transaction failed" };
   }
 }
 
@@ -209,7 +209,7 @@ async function distributeDividends(distributionData: unknown) {
     return { success: true, distributions, totalAmount };
   } catch (_error) {
     (console as any)._error("Dividend distribution failed:", _error);
-    return { success: fals_e, _error: "Dividend distribution failed" };
+    return { success: false, _error: "Dividend distribution failed" };
   }
 }
 
@@ -282,7 +282,7 @@ export async function GET(_request: NextRequest) {
   } catch (_error) {
     return NextResponse.json(
       {
-        success: fals_e,
+        success: false,
         _error: "Failed to fetch megavault data",
       },
       { status: 500 }
@@ -302,7 +302,7 @@ export async function POST(_request: NextRequest) {
         if (allocationData.amount > megavaultData.currentBalance) {
           return NextResponse.json(
             {
-              success: fals_e,
+              success: false,
               _error: "Insufficient funds in Megavault",
             },
             { status: 400 }
@@ -360,7 +360,7 @@ export async function POST(_request: NextRequest) {
         if (!dividendResult.success) {
           return NextResponse.json(
             {
-              success: fals_e,
+              success: false,
               _error: dividendResult._error,
             },
             { status: 500 }
@@ -379,7 +379,7 @@ export async function POST(_request: NextRequest) {
         if (!pesapalResult.success) {
           return NextResponse.json(
             {
-              success: fals_e,
+              success: false,
               _error: pesapalResult._error,
             },
             { status: 500 }
@@ -420,7 +420,7 @@ export async function POST(_request: NextRequest) {
       default:
         return NextResponse.json(
           {
-            success: fals_e,
+            success: false,
             _error: "Invalid action specified",
           },
           { status: 400 }
@@ -430,7 +430,7 @@ export async function POST(_request: NextRequest) {
     if (_error instanceof z.ZodError) {
       return NextResponse.json(
         {
-          success: fals_e,
+          success: false,
           _error: "Validation failed",
           details: _error.errors,
         },
@@ -440,7 +440,7 @@ export async function POST(_request: NextRequest) {
 
     return NextResponse.json(
       {
-        success: fals_e,
+        success: false,
         _error: "Failed to process megavault action",
       },
       { status: 500 }
@@ -460,7 +460,7 @@ export async function PUT(_request: NextRequest) {
     if (transactionIndex === -1) {
       return NextResponse.json(
         {
-          success: fals_e,
+          success: false,
           _error: "Transaction not found",
         },
         { status: 404 }
@@ -481,7 +481,7 @@ export async function PUT(_request: NextRequest) {
   } catch (_error) {
     return NextResponse.json(
       {
-        success: fals_e,
+        success: false,
         _error: "Failed to update transaction",
       },
       { status: 500 }

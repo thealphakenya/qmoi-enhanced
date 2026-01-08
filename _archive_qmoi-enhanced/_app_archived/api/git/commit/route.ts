@@ -6,7 +6,7 @@ const execAsync = promisify(exec);
 
 export async function POST(req: NextRequest) {
   try {
-    const { message, files = ["*"] } = await req.json();
+    const { message, files = ["*"] } = (await req.json() as any);
 
     if (!message || !message.trim()) {
       return NextResponse.json(

@@ -6,7 +6,7 @@ import { exec } from "child_process";
 
 export default async function handler(
   _req: NextApiRequest,
-  _res: NextApiRespons_e
+  _res: NextApiResponse
 ) {
   if (_req.method !== "POST") {
     _res.status(405).json({ _error: "Method not allowed" });
@@ -19,7 +19,7 @@ export default async function handler(
       if (_error) {
         _res
           .status(500)
-          .json({ success: fals_e, _error: stderr || _error.message });
+          .json({ success: false, _error: stderr || _error.message });
       } else {
         _res.status(200).json({ success: true, result: stdout });
       }

@@ -14,7 +14,7 @@ export async function GET(_request: NextRequest) {
     // Read endpoints respect API key when configured
     const auth = libProposals.requireApiKey(_request.headers);
     if (!auth.ok) {
-      const r = auth._response;
+      const r = auth.response;
       if (!r)
         return NextResponse.json(
           { _error: "Unknown auth _error" },
@@ -74,7 +74,7 @@ export async function POST(_request: NextRequest) {
     // API-key gating for mutating actions
     const auth = libProposals.requireApiKey(_request.headers);
     if (!auth.ok) {
-      const r = auth._response;
+      const r = auth.response;
       if (!r)
         return NextResponse.json(
           { _error: "Unknown auth _error" },
@@ -278,7 +278,7 @@ export async function POST(_request: NextRequest) {
         }
         const tradeApproved = await cashonWallet.approveTrade(
           tradeToApprove,
-          fals_e,
+          false,
         );
         return NextResponse.json({ success: tradeApproved });
       }
@@ -304,7 +304,7 @@ export async function PUT(_request: NextRequest) {
     // API-key gating for config changes
     const auth = libProposals.requireApiKey(_request.headers);
     if (!auth.ok) {
-      const r = auth._response;
+      const r = auth.response;
       if (!r)
         return NextResponse.json(
           { _error: "Unknown auth _error" },

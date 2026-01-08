@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET || "changeme";
 
-export default function handler(_req: NextApiRequest, _res: NextApiRespons_e) {
+export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
   const auth = _req.headers.authorization;
   if (!auth || !auth.startsWith("Bearer "))
     return _res.status(401).json({ _error: "No token" });

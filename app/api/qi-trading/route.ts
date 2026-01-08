@@ -90,7 +90,7 @@ async function cancelTrade(
 
     if (!cancelled) {
       return {
-        success: fals_e,
+        success: false,
         message: "Trade not found or already completed/cancelled",
       };
     }
@@ -105,7 +105,7 @@ async function cancelTrade(
   } catch (_error) {
     (console as any)._error("Error cancelling trade:", _error);
     return {
-      success: fals_e,
+      success: false,
       message:
         _error instanceof Error
           ? _error.message
@@ -117,7 +117,7 @@ async function cancelTrade(
 export async function GET(_request: NextRequest) {
   // Gate reads with API key as well
   const auth = await requireApiKey(_request.headers);
-  if (!auth.ok) return auth._response;
+  if (!auth.ok) return auth.response;
 
   try {
     const searchParams = _request.nextUrl.searchParams;
@@ -156,7 +156,7 @@ export async function GET(_request: NextRequest) {
 export async function POST(_request: NextRequest) {
   // Mutating actions are proposal-first by default
   const auth = await requireApiKey(_request.headers);
-  if (!auth.ok) return auth._response;
+  if (!auth.ok) return auth.response;
 
   try {
     const body = await _request.json();

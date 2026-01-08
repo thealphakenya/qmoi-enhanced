@@ -6,7 +6,7 @@ const execAsync = promisify(exec);
 
 export async function POST(req: NextRequest) {
   try {
-    const { platform = "vercel", autoRedeploy = true } = await req.json();
+    const { platform = "vercel", autoRedeploy = true } = (await req.json() as any);
 
     if (platform === "vercel") {
       // Deploy to Vercel using Vercel CLI

@@ -30,7 +30,7 @@ export default async function handler(
   _req: NextApiRequest,
   _res: NextApiResponse
 ) {
-  const { action } = _req._query;
+  const { action } = _req.query;
   try {
     switch (action) {
       case "security-test": {

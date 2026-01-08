@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   // Submit new news item (master only for advanced fields)
-  const body = await req.json();
+  const body = (await req.json() as any);
   const isMasterUser = isMaster(req);
   const item = {
     id: idCounter++,
@@ -50,7 +50,7 @@ export async function PUT(req: NextRequest) {
   // Approve, edit, or schedule news (master only)
   if (!isMaster(req))
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-  const body = await req.json();
+  const body = (await req.json() as any);
   const { id, ...updates } = body;
   const idx = newsStore.findIndex((n) => n.id === id);
   if (idx === -1)
@@ -67,7 +67,7 @@ export async function POST_SCHEDULE(req: NextRequest) {
   // Schedule news (master only)
   if (!isMaster(req))
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-  const body = await req.json();
+  const body = (await req.json() as any);
   const { id, scheduledAt } = body;
   const idx = newsStore.findIndex((n) => n.id === id);
   if (idx === -1)
@@ -95,7 +95,7 @@ export async function POST_MEDIA(req: NextRequest) {
   // Add media to news (master only)
   if (!isMaster(req))
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-  const body = await req.json();
+  const body = (await req.json() as any);
   const { id, media } = body;
   const idx = newsStore.findIndex((n) => n.id === id);
   if (idx === -1)
@@ -107,7 +107,7 @@ export async function POST_MEDIA(req: NextRequest) {
 // POST /api/qnews/post - Post news to external platforms
 export async function POST_POST(req: NextRequest) {
   // TODO: Implement posting to WhatsApp, Telegram, etc.
-  const body = await req.json();
+  const body = (await req.json() as any);
   // Simulate post
   return NextResponse.json({ success: true, posted: body });
 }

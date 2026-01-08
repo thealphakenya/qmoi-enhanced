@@ -27,7 +27,7 @@ async function getStatus() {
 let isContinuousRunning = false;
 
 export async function POST(req: NextRequest) {
-  const { mode } = await req.json();
+  const { mode } = (await req.json() as any);
   if (mode === "start") {
     if (!isContinuousRunning) {
       isContinuousRunning = true;

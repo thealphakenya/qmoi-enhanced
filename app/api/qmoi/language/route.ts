@@ -9,13 +9,13 @@ export const runtime = "nodejs";
 // ... existing code ...
 
 export default async function handler(_req: NextApiRequest,
-  _res: NextApiRespons_e,
+  _res: NextApiResponse,
 ) {
   const auth = requireApiKey(new Headers(_req.headers as any) as any);
   if (!auth.ok) {
     return _res
-      .status(auth._response?.status || 401)
-      .json(auth._response?.body || { _error: "Unauthorized" });
+      .status(auth.response?.status || 401)
+      .json(auth.response?.body || { _error: "Unauthorized" });
   }
   // Authenticate user and check permissions
   // Log action for audit

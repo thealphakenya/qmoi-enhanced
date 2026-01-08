@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(_req: Request) {
   try {
-    const body = await _req.json().catch(() => ({}));
+    const body = (await _req.json() as any).catch(() => ({}));
     // Accept both {messages: [...] } and {input: 'text'} convenience
     let messages = body.messages;
     if (!messages && body.input) {

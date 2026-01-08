@@ -17,7 +17,7 @@ function saveDevices(devices: unknown[]) {
 }
 
 const handler = requireRole(["admin", "master"])(
-  async (_req: NextApiRequest, _res: NextApiRespons_e) => {
+  async (_req: NextApiRequest, _res: NextApiResponse) => {
     const { method, body, _query } = _req;
     let devices = loadDevices();
     if (method === "GET") {

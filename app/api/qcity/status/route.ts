@@ -19,7 +19,7 @@ const devices = [
 ];
 let offloading = true;
 
-export default function handler(_req: NextApiRequest, _res: NextApiRespons_e) {
+export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
   if (_req.method === "GET") {
     return _res.status(200).json({
       devices,

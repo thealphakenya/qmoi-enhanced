@@ -76,8 +76,8 @@ interface AIHealthStatus {
 export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
-    return NextResponse.json(auth._response?.body || { _error: "Unauthorized" }, {
-      status: auth._response?.status || 401,
+    return NextResponse.json(auth.response?.body || { _error: "Unauthorized" }, {
+      status: auth.response?.status || 401,
     });
   }
   try {
@@ -281,8 +281,8 @@ export async function GET(_request: NextRequest) {
 export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
-    return NextResponse.json(auth._response?.body || { _error: "Unauthorized" }, {
-      status: auth._response?.status || 401,
+    return NextResponse.json(auth.response?.body || { _error: "Unauthorized" }, {
+      status: auth.response?.status || 401,
     });
   }
   try {

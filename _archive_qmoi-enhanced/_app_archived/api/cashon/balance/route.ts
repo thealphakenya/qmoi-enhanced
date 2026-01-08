@@ -52,7 +52,7 @@ export async function GET(request: NextRequest) {
 
 // POST /api/cashon/balance
 export async function POST(req: Request) {
-  const { action } = await req.json();
+  const { action } = (await req.json() as any);
   if (action === "sync-mpesa") {
     const mpesaNumber = process.env.CASHON_MPESA_NUMBER;
     if (!mpesaNumber) {

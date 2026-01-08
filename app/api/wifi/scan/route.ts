@@ -75,7 +75,7 @@ async function connectToWiFi({
     };
   } else {
     return {
-      success: fals_e,
+      success: false,
       message: "Failed to connect to network",
       _error: "Invalid password or network unreachable",
     };

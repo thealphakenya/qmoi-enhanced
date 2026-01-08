@@ -486,7 +486,7 @@ async function storeKBEntries(entries: unknown[], metadata: unknown) {
   } catch (_error) {
     (console as any)._error("Error storing KB entries:", _error);
     return {
-      success: fals_e,
+      success: false,
       _error: _error instanceof Error ? _error.message : String(_error),
     };
   }
@@ -509,7 +509,7 @@ async function notifyKBSubscribers(data: unknown) {
   } catch (_error) {
     (console as any)._error("Error notifying KB subscribers:", _error);
     return {
-      notified: fals_e,
+      notified: false,
       _error: _error instanceof Error ? _error.message : String(_error),
     };
   }
@@ -658,7 +658,7 @@ async function enhanceDiscussionWithQMOI(
   } catch (_error) {
     (console as any)._error("Error enhancing discussion with QMOI:", _error);
     return {
-      enhanced: fals_e,
+      enhanced: false,
       _error: _error instanceof Error ? _error.message : String(_error),
     };
   }
@@ -731,7 +731,7 @@ async function broadcastSyncCompletion(sync_type: string, results: unknown) {
   } catch (_error) {
     (console as any)._error("Error broadcasting sync completion:", _error);
     return {
-      broadcasted: fals_e,
+      broadcasted: false,
       _error: _error instanceof Error ? _error.message : String(_error),
     };
   }
@@ -791,7 +791,7 @@ async function triggerAutoOptimization(
   } catch (_error) {
     (console as any)._error("Error triggering auto-optimization:", _error);
     return {
-      triggered: fals_e,
+      triggered: false,
       _error: _error instanceof Error ? _error.message : String(_error),
     };
   }
@@ -822,7 +822,7 @@ async function applyAIEnhancement(item: unknown, enhancement_type: string) {
     (console as any)._error("Error applying AI enhancement:", _error);
     return {
       ...item,
-      enhanced: fals_e,
+      enhanced: false,
       _error: _error instanceof Error ? _error.message : String(_error),
     };
   }
@@ -877,7 +877,7 @@ async function applyEnhancementsWithRollback(
   } catch (_error) {
     (console as any)._error("Error applying enhancements:", _error);
     return {
-      applied: fals_e,
+      applied: false,
       _error: _error instanceof Error ? _error.message : String(_error),
     };
   }
@@ -1051,7 +1051,7 @@ async function escalateCriticalAlert(alert: unknown) {
   } catch (_error) {
     (console as any)._error("Error escalating critical alert:", _error);
     return {
-      escalated: fals_e,
+      escalated: false,
       _error: _error instanceof Error ? _error.message : String(_error),
     };
   }
@@ -1117,7 +1117,7 @@ async function notifyWebSubscribers(_event: string, data: unknown) {
   } catch (_error) {
     (console as any)._error("Error sending web notification:", _error);
     return {
-      sent: fals_e,
+      sent: false,
       _error: _error instanceof Error ? _error.message : String(_error),
     };
   }
@@ -1179,7 +1179,7 @@ async function notifyEmailSubscribers(_event: string, data: unknown) {
   } catch (_error) {
     (console as any)._error("Error sending email notification:", _error);
     return {
-      sent: fals_e,
+      sent: false,
       _error: _error instanceof Error ? _error.message : String(_error),
     };
   }
@@ -1214,7 +1214,7 @@ async function notifyPushSubscribers(_event: string, data: unknown) {
   } catch (_error) {
     (console as any)._error("Error sending push notification:", _error);
     return {
-      sent: fals_e,
+      sent: false,
       _error: _error instanceof Error ? _error.message : String(_error),
     };
   }

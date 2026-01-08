@@ -65,7 +65,7 @@ export async function GET_PROGRAMS(_req: NextRequest) {
 }
 
 export async function POST_PLAY(_req: NextRequest) {
-  const body = await _req.json();
+  const body = (await _req.json() as any);
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
@@ -86,10 +86,10 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth._response?.body || { _error: "Forbidden" }, {
-      status: auth._response?.status || 403,
+    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+      status: auth.response?.status || 403,
     });
-  const body = await _req.json();
+  const body = (await _req.json() as any);
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)

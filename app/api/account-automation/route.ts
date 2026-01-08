@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+/* eslint-disable @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 /* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextRequest, NextResponse } from "next/server";
 import libProposals from "../../../lib/proposals";
@@ -8,82 +8,128 @@ export const runtime = "nodejs";
 // import nodemailer from 'nodemailer'; // Uncomment and configure for real email
 
 // In-memory account store (replace with DB in production)
-const accounts: unknown[] = [];
+interface Account {
+  id: number;
+  username: string;
+  email: string;
+  platform?: string;
+  status: string;
+  createdAt: string;
+  verified: boolean;
+}
+
+const accounts: Account[] = [];
 let idCounter = 1;
 
-export async function POST_CREATE(_req: NextRequest) {
-  const auth = libProposals.requireApiKey(_req.headers);
+export async function POST_CREATE(req: NextRequest) {
+  const auth = libProposals.requireApiKey(req.headers);
   if (!auth.ok) {
-    const r = auth._response;
+    const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
+
   // Create new account
-  const body = await _req.json();
-  const { username, email, platform } = body;
-  const account = {
+  const body = ((await req.json() as any)) as Partial<
+    Pick<Account, "username" | "email" | "platform">
+  >;
+  const username = body.username ? String(body.username) : undefined;
+  const email = body.email ? String(body.email) : undefined;
+
+  if (!username || !email) {
+    return NextResponse.json(
+      { error: "Missing username or email" },
+      { status: 400 }
+    );
+  }
+
+  const account: Account = {
     id: idCounter++,
     username,
     email,
-    platform,
+    platform: body.platform ?? "unknown",
     status: "pending",
     createdAt: new Date().toISOString(),
-    verified: fals_e,
+    verified: false,
   };
+
   accounts.push(account);
+
   // TODO: Modular platform support (WhatsApp, Telegram, etc.)
   return NextResponse.json({ success: true, account });
 }
 
-export async function POST_LOGIN(_req: NextRequest) {
-  const auth = libProposals.requireApiKey(_req.headers);
+export async function POST_LOGIN(req: NextRequest) {
+  const auth = libProposals.requireApiKey(req.headers);
   if (!auth.ok) {
-    const r = auth._response;
+    const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
+
   // Login (stub)
-  const body = await _req.json();
-  const { username, platform } = body;
+  const body = ((await req.json() as any)) as Partial<
+    Pick<Account, "username" | "platform">
+  >;
+  const username = body.username ? String(body.username) : undefined;
+  const platform = body.platform ?? undefined;
+
+  if (!username)
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
+
   const account = accounts.find(
-    (a) => a.username === username && a.platform === platform,
+    (a) => a.username === username && a.platform === platform
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
-  // TODO: Add real authentication logic
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
+
+  // TODO: Add real authentication logic (passwords, tokens, rate limiting)
   return NextResponse.json({ success: true, account });
 }
 
-export async function POST_VERIFY(_req: NextRequest) {
-  const auth = libProposals.requireApiKey(_req.headers);
+export async function POST_VERIFY(req: NextRequest) {
+  const auth = libProposals.requireApiKey(req.headers);
   if (!auth.ok) {
-    const r = auth._response;
+    const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  // Trigger verification (_e.g. email)
-  const body = await _req.json();
-  const { email, id } = body;
-  // TODO: Integrate with nodemailer and rovicviccy@gmail.com for email verification
-  // Example:
-  // let transporter = nodemailer.createTransport({ ... });
-  // await transporter.sendMail({ ... });
-  // For now, just mark as verified
+
+  // Trigger verification (e.g. send email)
+  const body = ((await req.json() as any)) as Partial<Pick<Account, "email" | "id">> & {
+    id?: number;
+  };
+  const email = body.email ? String(body.email) : undefined;
+  const id = typeof body.id === "number" ? body.id : Number(body.id || NaN);
+
+  if (!email || !Number.isFinite(id)) {
+    return NextResponse.json({ error: "Missing email or id" }, { status: 400 });
+  }
+
+  // TODO: Integrate with a real email provider (nodemailer, SES, SendGrid). Do not hardcode credentials here.
+
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
+
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
   return NextResponse.json({ success: true, account: accounts[idx] });
 }
 
-export async function GET_STATUS(_req: NextRequest) {
+export async function GET_STATUS(req: NextRequest) {
   // Get account status
-  const url = new URL(_req.url);
+  const url = new URL(req.url);
   const id = Number(url.searchParams.get("id"));
+  if (!Number.isFinite(id))
+    return NextResponse.json(
+      { error: "Missing or invalid id" },
+      { status: 400 }
+    );
+
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,

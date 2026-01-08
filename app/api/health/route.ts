@@ -29,7 +29,7 @@ export async function GET(_request: Request) {
         _error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
-        qmoi_superior: fals_e,
+        qmoi_superior: false,
       },
       { status: 500 }
     );

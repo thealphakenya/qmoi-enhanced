@@ -28,11 +28,12 @@ export async function POST(_request: NextRequest) {
     const apiAuth = requireApiKey(_request.headers);
     const isMaster = apiAuth.ok || (await checkMasterAccess(_request));
     if (!isMaster) {
+      const _r = apiAuth.response;
       return NextResponse.json(
         apiAuth.ok
           ? { _error: "Master access required" }
-          : apiAuth._response?.body || { _error: "Master access required" },
-        { status: apiAuth.ok ? 403 : apiAuth._response?.status || 403 },
+          : _r?.body ?? { _error: "Master access required" },
+        { status: apiAuth.ok ? 403 : _r?.status ?? 403 }
       );
     }
 
@@ -41,7 +42,7 @@ export async function POST(_request: NextRequest) {
     if (!validTypes.includes(type)) {
       return NextResponse.json(
         { _error: "Invalid export type" },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
@@ -50,14 +51,14 @@ export async function POST(_request: NextRequest) {
     const loggerScript = path.join(
       projectRoot,
       "scripts",
-      "qmoi_own_device_logger.py",
+      "qmoi_own_device_logger.py"
     );
 
     // Check if logger script exists
     if (!fs.existsSync(loggerScript)) {
       return NextResponse.json(
         { _error: "QMOI Own Device Logger not found" },
-        { status: 404 },
+        { status: 404 }
       );
     }
 
@@ -79,7 +80,7 @@ export async function POST(_request: NextRequest) {
     // Execute the logger script with export
     const { stdout, stderr } = await execAsync(
       `python "${loggerScript}" ${args.join(" ")}`,
-      { cwd: projectRoot },
+      { cwd: projectRoot }
     );
 
     if (stderr) {
@@ -94,7 +95,7 @@ export async function POST(_request: NextRequest) {
       (console as any)._error("Failed to parse export data:", parseError);
       return NextResponse.json(
         { _error: "Failed to parse export data" },
-        { status: 500 },
+        { status: 500 }
       );
     }
 
@@ -113,7 +114,7 @@ export async function POST(_request: NextRequest) {
     (console as any)._error("QMOI Own Device Export API _error:", _error);
     return NextResponse.json(
       { _error: "Internal server _error" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }

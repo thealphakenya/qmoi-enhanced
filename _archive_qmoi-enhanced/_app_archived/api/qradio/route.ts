@@ -54,7 +54,7 @@ export async function GET_PROGRAMS(req: NextRequest) {
 }
 
 export async function POST_PLAY(req: NextRequest) {
-  const body = await req.json();
+  const body = (await req.json() as any);
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
@@ -75,7 +75,7 @@ export async function GET_STATUS(req: NextRequest) {
 export async function POST_PROGRAM(req: NextRequest) {
   if (!isMaster(req))
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-  const body = await req.json();
+  const body = (await req.json() as any);
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)

@@ -187,11 +187,12 @@ export async function POST(_request: NextRequest) {
 
     const apiAuth = requireApiKey(_request.headers);
     if (masterOverride && !apiAuth.ok && !isMaster(_request)) {
+      const _r = apiAuth.response;
       return NextResponse.json(
-        apiAuth._response?.body || {
+        _r?.body ?? {
           _error: "Master access required for override",
         },
-        { status: apiAuth._response?.status || 403 }
+        { status: _r?.status ?? 403 }
       );
     }
 
@@ -225,7 +226,11 @@ export async function POST(_request: NextRequest) {
   } catch (_error) {
     const errorMessage =
       _error instanceof Error ? _error.message : "Unknown _error";
-    logToDashboard("media-generation-_error", { _error: errorMessage }, "_error");
+    logToDashboard(
+      "media-generation-_error",
+      { _error: errorMessage },
+      "_error"
+    );
 
     return NextResponse.json(
       { _error: "Failed to generate media", details: errorMessage },

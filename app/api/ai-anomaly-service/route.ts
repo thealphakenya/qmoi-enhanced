@@ -22,8 +22,9 @@ export async function GET(_request: NextRequest) {
   const apiAuth = requireApiKey(_request.headers);
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
-    return NextResponse.json(apiAuth._response?.body || { _error: "Forbidden" }, {
-      status: apiAuth._response?.status || 403,
+    const _r = apiAuth.response;
+    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+      status: _r?.status ?? 403,
     });
   }
 
@@ -48,7 +49,7 @@ export async function GET(_request: NextRequest) {
         {
           _error: _e instanceof Error ? _e.message : String(_e),
         },
-        { status: 500 },
+        { status: 500 }
       );
     }
   }
@@ -60,8 +61,9 @@ export async function POST(_request: NextRequest) {
   const apiAuth = requireApiKey(_request.headers);
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
-    return NextResponse.json(apiAuth._response?.body || { _error: "Forbidden" }, {
-      status: apiAuth._response?.status || 403,
+    const _r = apiAuth.response;
+    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+      status: _r?.status ?? 403,
     });
   }
 
@@ -76,7 +78,7 @@ export async function POST(_request: NextRequest) {
         {
           _error: _e instanceof Error ? _e.message : String(_e),
         },
-        { status: 500 },
+        { status: 500 }
       );
     }
   }

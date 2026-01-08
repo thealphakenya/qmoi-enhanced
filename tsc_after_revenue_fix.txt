@@ -38,17 +38,17 @@ app/api/ai-self-diagnostics/route.ts(85,38): error TS2339: Property '_response' 
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/ai-self-diagnostics/route.ts(86,23): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
-app/api/auth/login.ts(18,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/auth/login.ts(18,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/auth/login.ts(22,11): error TS2339: Property 'username' does not exist on type '{}'.
 app/api/auth/login.ts(22,21): error TS2339: Property 'password' does not exist on type '{}'.
 app/api/auth/login.ts(26,22): error TS2339: Property 'find' does not exist on type 'unknown'.
 app/api/auth/login.ts(26,45): error TS2339: Property 'username' does not exist on type 'unknown'.
-app/api/auth/logout.ts(4,61): error TS2304: Cannot find name 'NextApiRespons_e'.
-app/api/auth/me.ts(8,61): error TS2304: Cannot find name 'NextApiRespons_e'.
-app/api/auth/rbac.ts(10,40): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/auth/logout.ts(4,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/auth/me.ts(8,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/auth/rbac.ts(10,40): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/auth/rbac.ts(20,16): error TS2349: This expression is not callable.
   Type '{}' has no call signatures.
-app/api/auth/register.ts(19,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/auth/register.ts(19,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/auth/register.ts(23,11): error TS2339: Property 'username' does not exist on type '{}'.
 app/api/auth/register.ts(23,21): error TS2339: Property 'password' does not exist on type '{}'.
 app/api/auth/register.ts(23,31): error TS2339: Property 'role' does not exist on type '{}'.
@@ -57,10 +57,10 @@ app/api/auth/register.ts(27,36): error TS2339: Property 'username' does not exis
 app/api/auth/register.ts(37,9): error TS2339: Property 'push' does not exist on type 'unknown'.
 app/api/auth/register.ts(38,13): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'unknown[]'.
   Type '{}' is missing the following properties from type 'unknown[]': length, pop, push, concat, and 28 more.
-app/api/auth/session.ts(12,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/auth/session.ts(12,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/auth/session.ts(23,33): error TS2339: Property 'action' does not exist on type 'unknown'.
 app/api/auth/session.ts(24,13): error TS2339: Property 'sid' does not exist on type '{}'.
-app/api/auth/totp.ts(19,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/auth/totp.ts(19,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/auth/totp.ts(24,25): error TS2339: Property 'findIndex' does not exist on type 'unknown'.
 app/api/auth/totp.ts(24,53): error TS2339: Property 'id' does not exist on type 'unknown'.
 app/api/auth/totp.ts(26,33): error TS2339: Property 'action' does not exist on type 'unknown'.
@@ -220,7 +220,7 @@ app/api/employment/route.ts(328,31): error TS2339: Property 'name' does not exis
 app/api/employment/route.ts(339,20): error TS2304: Cannot find name 'fals_e'.
 app/api/employment/route.ts(348,18): error TS2304: Cannot find name 'fals_e'.
 app/api/financial/audit/route.ts(13,41): error TS2304: Cannot find name 'fals_e'.
-app/api/financial/verify/route.ts(7,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/financial/verify/route.ts(7,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/financial/verify/route.ts(13,11): error TS2339: Property 'service' does not exist on type '{}'.
 app/api/financial/verify/route.ts(13,20): error TS2339: Property 'account' does not exist on type '{}'.
 app/api/financial/verify/route.ts(20,28): error TS2304: Cannot find name 'fals_e'.
@@ -272,13 +272,13 @@ app/api/qcity/audit-log.ts(70,10): error TS2339: Property 'setHeader' does not e
 app/api/qcity/audit-log.ts(71,10): error TS2339: Property 'setHeader' does not exist on type 'unknown'.
 app/api/qcity/audit-log.ts(75,17): error TS2339: Property 'status' does not exist on type 'unknown'.
 app/api/qcity/audit-log.ts(77,8): error TS2339: Property 'status' does not exist on type 'unknown'.
-app/api/qcity/audit-log/route.ts(18,61): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qcity/audit-log/route.ts(18,61): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qcity/audit-log/route.ts(29,12): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?
 app/api/qcity/audit-log/route.ts(33,43): error TS2339: Property 'action' does not exist on type 'unknown'.
 app/api/qcity/audit-log/route.ts(34,41): error TS2339: Property 'user' does not exist on type 'unknown'.
 app/api/qcity/audit-log/route.ts(35,45): error TS2339: Property 'deviceId' does not exist on type 'unknown'.
 app/api/qcity/audit-log/route.ts(36,43): error TS2339: Property 'status' does not exist on type 'unknown'.
-app/api/qcity/devices.ts(19,38): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qcity/devices.ts(19,38): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qcity/devices.ts(20,27): error TS2339: Property '_query' does not exist on type 'NextApiRequest'.
 app/api/qcity/devices.ts(26,15): error TS2339: Property 'name' does not exist on type '{}'.
 app/api/qcity/devices.ts(26,21): error TS2339: Property 'host' does not exist on type '{}'.
@@ -304,15 +304,15 @@ app/api/qcity/devices.ts(63,15): error TS2339: Property 'id' does not exist on t
 app/api/qcity/devices.ts(64,30): error TS2339: Property 'find' does not exist on type 'unknown'.
 app/api/qcity/devices.ts(64,53): error TS2339: Property 'id' does not exist on type 'unknown'.
 app/api/qcity/devices.ts(74,55): error TS2339: Property 'message' does not exist on type 'unknown'.
-app/api/qcity/metrics.ts(8,9): error TS2304: Cannot find name 'NextApiRespons_e'.
-app/api/qcity/plugins.ts(11,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qcity/metrics.ts(8,9): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qcity/plugins.ts(11,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qcity/remote-command.ts(13,22): error TS2698: Spread types may only be created from object types.
 app/api/qcity/remote-command/route.ts(14,22): error TS2698: Spread types may only be created from object types.
 app/api/qcity/remote-command/route.ts(30,23): error TS2339: Property 'cmd' does not exist on type 'unknown'.
 app/api/qcity/remote-command/route.ts(36,11): error TS2339: Property 'cmd' does not exist on type '{}'.
 app/api/qcity/remote-command/route.ts(36,16): error TS2339: Property 'deviceId' does not exist on type '{}'.
 app/api/qcity/remote-command/route.ts(36,36): error TS2339: Property 'stream' does not exist on type '{}'.
-app/api/qcity/schedule.ts(18,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qcity/schedule.ts(18,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qcity/schedule.ts(20,25): error TS2339: Property '_query' does not exist on type 'NextApiRequest'.
 app/api/qcity/schedule.ts(26,13): error TS2339: Property 'name' does not exist on type '{}'.
 app/api/qcity/schedule.ts(26,19): error TS2339: Property 'command' does not exist on type '{}'.
@@ -352,7 +352,7 @@ app/api/qcity/selfheal-npm/route.ts(98,18): error TS2339: Property 'essentialsOn
 app/api/qcity/selfheal-npm/route.ts(99,18): error TS2339: Property 'upgradeAll' does not exist on type 'unknown'.
 app/api/qcity/selfheal-npm/route.ts(100,18): error TS2339: Property 'diagnosticsOnly' does not exist on type 'unknown'.
 app/api/qcity/selfheal-npm/route.ts(109,20): error TS2339: Property 'role' does not exist on type 'unknown'.
-app/api/qcity/status/route.ts(21,61): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qcity/status/route.ts(21,61): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qcity/status/route.ts(31,27): error TS2339: Property 'offloading' does not exist on type 'unknown'.
 app/api/qcity/status/route.ts(32,30): error TS2339: Property 'offloading' does not exist on type 'unknown'.
 app/api/qi-trading.ts(96,50): error TS2339: Property 'confidence' does not exist on type 'unknown'.
@@ -435,13 +435,13 @@ app/api/qmoi/auto-fix/status/route.ts(44,7): error TS2739: Type '{}' is missing 
 app/api/qmoi/auto-fix/stop/route.ts(17,22): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/qmoi/auto-fix/stop/route.ts(90,7): error TS18004: No value exists in scope for the shorthand property 'killedProcess_es'. Either declare one or provide an initializer.
-app/api/qmoi/backup/route.ts(9,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qmoi/backup/route.ts(9,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qmoi/backup/route.ts(16,15): error TS2339: Property 'action' does not exist on type '{}'.
 app/api/qmoi/chat/route.ts(24,51): error TS2304: Cannot find name 'qbas_e'.
 app/api/qmoi/chat/route.ts(94,28): error TS2339: Property 'choices' does not exist on type 'unknown'.
-app/api/qmoi/fix/all.ts(6,61): error TS2304: Cannot find name 'NextApiRespons_e'.
-app/api/qmoi/fix/connectivity.ts(6,61): error TS2304: Cannot find name 'NextApiRespons_e'.
-app/api/qmoi/language/route.ts(12,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qmoi/fix/all.ts(6,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qmoi/fix/connectivity.ts(6,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qmoi/language/route.ts(12,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qmoi/language/route.ts(17,20): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/qmoi/language/route.ts(18,18): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
@@ -460,7 +460,7 @@ app/api/qmoi/own-device-logs/route.ts(125,21): error TS2339: Property '_response
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/qmoi/own-device-logs/route.ts(126,46): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
-app/api/qmoi/research/route.ts(9,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qmoi/research/route.ts(9,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qmoi/research/route.ts(16,15): error TS2339: Property 'action' does not exist on type '{}'.
 app/api/qmoi/revenue/reset/route.ts(20,17): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
@@ -543,8 +543,8 @@ app/api/qmoi/revenue/transfer/route.ts(40,25): error TS2339: Property 'setMaster
 app/api/qmoi/revenue/transfer/route.ts(42,38): error TS2339: Property 'executeMasterCommand' does not exist on type 'unknown'.
 app/api/qmoi/revenue/transfer/route.ts(43,33): error TS2339: Property 'executeMasterCommand' does not exist on type 'unknown'.
 app/api/qmoi/revenue/transfer/route.ts(47,20): error TS2304: Cannot find name 'fals_e'.
-app/api/qmoi/status.ts(7,61): error TS2304: Cannot find name 'NextApiRespons_e'.
-app/api/qmoi/user/route.ts(11,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/qmoi/status.ts(7,61): error TS2304: Cannot find name 'NextApiResponse'.
+app/api/qmoi/user/route.ts(11,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/qmoi/user/route.ts(16,20): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/qmoi/user/route.ts(17,18): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
@@ -582,7 +582,7 @@ app/api/social-automation/route.ts(37,43): error TS2339: Property 'id' does not 
 app/api/social-automation/route.ts(40,22): error TS2339: Property 'tags' does not exist on type 'unknown'.
 app/api/social-automation/route.ts(40,56): error TS2339: Property 'tags' does not exist on type 'unknown'.
 app/api/whatsapp/audit/route.ts(13,41): error TS2304: Cannot find name 'fals_e'.
-app/api/whatsapp/verify/route.ts(7,9): error TS2304: Cannot find name 'NextApiRespons_e'.
+app/api/whatsapp/verify/route.ts(7,9): error TS2304: Cannot find name 'NextApiResponse'.
 app/api/whatsapp/verify/route.ts(13,11): error TS2339: Property 'phone' does not exist on type '{}'.
 app/api/whatsapp/verify/route.ts(20,28): error TS2304: Cannot find name 'fals_e'.
 app/api/wifi-security.ts(31,27): error TS2551: Property '_query' does not exist on type 'NextApiRequest'. Did you mean 'query'?

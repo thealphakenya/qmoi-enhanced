@@ -391,7 +391,7 @@ async function fetchLocalPapers(_params: URLSearchParams) {
       tags: ["UI", "Automation", "AI"],
       relevanceScore: 0.92,
       source: "local",
-      saved: fals_e,
+      saved: false,
     },
   ];
 }
@@ -546,9 +546,9 @@ async function checkSystemStatus() {
 async function checkIntegrationsStatus() {
   // Real integration status checks
   const integrations = {
-    hf_integration: fals_e,
+    hf_integration: false,
     qmoi_connection: true,
-    arxiv_api: fals_e,
+    arxiv_api: false,
     parallel_processing: true,
     database_connection: true,
   };

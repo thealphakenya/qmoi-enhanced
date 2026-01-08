@@ -23,7 +23,7 @@ export async function GET_STRATEGIES(_req: NextRequest) {
 
 export async function POST_MONITOR(_req: NextRequest) {
   // Start/stop monitoring
-  const body = await _req.json();
+  const body = (await _req.json() as any);
   monitoring = !!body.monitor;
   return NextResponse.json({ monitoring });
 }

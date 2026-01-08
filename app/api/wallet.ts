@@ -536,7 +536,7 @@ function isMaster(_req: NextApiRequest): boolean {
 // Enhanced _error handling wrapper
 const handleApiRequest = async (
   _req: NextApiRequest,
-  _res: NextApiRespons_e,
+  _res: NextApiResponse,
   handler: () => Promise<unknown>
 ) => {
   try {
@@ -580,13 +580,13 @@ export default async function handler(
 
   if (_req.method === "GET") {
     return handleApiRequest(_req, _res, async () => {
-      if (_req._query.pending_wallets) {
+      if (_req.query.pending_wallets) {
         const requests = readWalletRequests();
         return requests.filter((r: WalletRequest) => r.status === "pending");
       }
-      if (_req._query.balance) {
+      if (_req.query.balance) {
         // Get user's wallet balance - for now using a default user ID
-        const userId = (_req._query.userId as string) || "default-user";
+        const userId = (_req.query.userId as string) || "default-user";
         const wallet = await getOrCreateWallet(userId);
         return {
           balance: wallet.balance,
@@ -594,14 +594,14 @@ export default async function handler(
           transactions: wallet.transactions.slice(0, 10),
         };
       }
-      if (_req._query.logs && isMaster(_req)) {
+      if (_req.query.logs && isMaster(_req)) {
         const logs = fs.existsSync(LOGS_FILE)
           ? JSON.parse(fs.readFileSync(LOGS_FILE, "utf-8"))
           : [];
         return logs;
       }
-      if (_req._query.transactions) {
-        const userId = (_req._query.userId as string) || "default-user";
+      if (_req.query.transactions) {
+        const userId = (_req.query.userId as string) || "default-user";
         const wallet = await getOrCreateWallet(userId);
         const transactions = await prisma.transaction.findMany({
           where: { walletId: wallet.id },
@@ -623,7 +623,7 @@ export default async function handler(
       // Get or create wallet for user
       const wallet = await getOrCreateWallet(userIdToUs_e);
 
-      if (_req._query.deposit) {
+      if (_req.query.deposit) {
         if (!isMaster(_req)) {
           logAction("unauthorized_deposit", {
             amount,
@@ -667,7 +667,7 @@ export default async function handler(
         };
       }
 
-      if (_req._query.withdraw) {
+      if (_req.query.withdraw) {
         if (!isMaster(_req)) {
           logAction("unauthorized_withdrawal", {
             amount,
@@ -715,7 +715,7 @@ export default async function handler(
         };
       }
 
-      if (_req._query._request) {
+      if (_req.query._request) {
         // Handle wallet creation requests
         const requests = readWalletRequests();
         const newRequest = {

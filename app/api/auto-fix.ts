@@ -20,7 +20,7 @@ let autoFixService: AutoFixService | undefined;
       startContinuousAutoFix: () => {},
       stopContinuousAutoFix: () => {},
       startAutoFix: async () => ({
-        success: fals_e,
+        success: false,
         message: "autoFixService unavailable",
       }),
     };
@@ -52,7 +52,7 @@ async function getStatus() {
 let isContinuousRunning = false;
 
 export async function POST(_req: NextRequest) {
-  const { mode } = await _req.json();
+  const { mode } = (await _req.json() as any);
 
   if (mode === "start") {
     if (!isContinuousRunning) {
@@ -82,7 +82,7 @@ export async function POST(_req: NextRequest) {
     const result = await (autoFixService?.startAutoFix
       ? autoFixService.startAutoFix(status)
       : Promise.resolve({
-          success: fals_e,
+          success: false,
           message: "autoFixService unavailable",
         }));
     return NextResponse.json(result);

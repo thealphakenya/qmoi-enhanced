@@ -16,7 +16,7 @@ async function triggerPostPaymentActions(details: any) {
 
 export async function POST(_req: NextRequest) {
   try {
-    const body: any = await _req.json();
+    const body: any = (await _req.json() as any);
 
     // Log the callback for debugging
     console.log("M-Pesa Callback received:", body);

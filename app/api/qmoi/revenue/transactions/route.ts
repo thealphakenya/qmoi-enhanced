@@ -18,9 +18,10 @@ export async function GET(_request: NextRequest) {
         ? authHeader.substring(7)
         : null;
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
+      const _r = apiAuth.response;
       return NextResponse.json(
-        apiAuth._response?.body || { _error: "Master access required" },
-        { status: apiAuth._response?.status || 401 }
+        _r?.body ?? { _error: "Master access required" },
+        { status: _r?.status ?? 401 }
       );
     }
 

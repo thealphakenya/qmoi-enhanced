@@ -21,7 +21,7 @@ if (apiKeys.length === 0) {
     apiKeys.push({
       key: generateKey(),
       createdAt: new Date().toISOString(),
-      revoked: fals_e,
+      revoked: false,
       usage: 0,
     });
   }
@@ -42,7 +42,7 @@ export async function POST(_req: NextRequest) {
   apiKeys.push({
     key,
     createdAt: new Date().toISOString(),
-    revoked: fals_e,
+    revoked: false,
     usage: 0,
   });
   // TODO: Save to keys/ directory
@@ -51,7 +51,7 @@ export async function POST(_req: NextRequest) {
 
 export async function DELETE(_req: NextRequest) {
   // Revoke a key
-  const body = await _req.json();
+  const body = (await _req.json() as any);
   const { key } = body;
   const idx = apiKeys.findIndex((k) => k.key === key);
   if (idx === -1)

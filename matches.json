@@ -19338,13 +19338,13 @@
     "line": 91,
     "snippet": "// TODO: Implement posting to WhatsApp, Telegram, etc.",
     "context_before": "// POST /api/qnews/post - Post news to external platforms\nexport async function POST_POST(req: NextRequest) {",
-    "context_after": "  const body = await req.json();\n  // Simulate post"
+    "context_after": "  const body = (await req.json() as any);\n  // Simulate post"
   },
   {
     "file": "app/api/qnews/route.ts",
     "line": 93,
     "snippet": "// Simulate post",
-    "context_before": "  // TODO: Implement posting to WhatsApp, Telegram, etc.\n  const body = await req.json();",
+    "context_before": "  // TODO: Implement posting to WhatsApp, Telegram, etc.\n  const body = (await req.json() as any);",
     "context_after": "  return NextResponse.json({ success: true, posted: body });\n} "
   },
   {
@@ -19436,7 +19436,7 @@
     "line": 27,
     "snippet": "// Login (stub)",
     "context_before": "\nexport async function POST_LOGIN(req: NextRequest) {",
-    "context_after": "  const body = await req.json();\n  const { username, platform } = body;"
+    "context_after": "  const body = (await req.json() as any);\n  const { username, platform } = body;"
   },
   {
     "file": "app/api/account-automation/route.ts",
@@ -19449,7 +19449,7 @@
     "file": "app/api/account-automation/route.ts",
     "line": 40,
     "snippet": "// TODO: Integrate with nodemailer and rovicviccy@gmail.com for email verification",
-    "context_before": "  const body = await req.json();\n  const { email, id } = body;",
+    "context_before": "  const body = (await req.json() as any);\n  const { email, id } = body;",
     "context_after": "  // Example:\n  // let transporter = nodemailer.createTransport({ ... });"
   },
   {
@@ -20121,7 +20121,7 @@
     "file": "app/api/social-automation/route.ts",
     "line": 15,
     "snippet": "// TODO: Integrate with WhatsApp, Telegram, etc.",
-    "context_before": "  const body = await req.json();\n  const { content, platform } = body;",
+    "context_before": "  const body = (await req.json() as any);\n  const { content, platform } = body;",
     "context_after": "  const post = { id: postId++, content, platform, createdAt: new Date().toISOString() };\n  posts.push(post);"
   },
   {
@@ -20178,14 +20178,14 @@
     "line": 8,
     "snippet": "// Upload document (stub)",
     "context_before": "\nexport async function POST_UPLOAD(req: NextRequest) {",
-    "context_after": "  const body = await req.json();\n  const { name, type, content } = body;"
+    "context_after": "  const body = (await req.json() as any);\n  const { name, type, content } = body;"
   },
   {
     "file": "app/api/document-backup/route.ts",
     "line": 29,
     "snippet": "// Restore document (stub)",
     "context_before": "\nexport async function POST_RESTORE(req: NextRequest) {",
-    "context_after": "  const body = await req.json();\n  const { id } = body;"
+    "context_after": "  const body = (await req.json() as any);\n  const { id } = body;"
   },
   {
     "file": "app/api/document-backup/route.ts",
@@ -105536,13 +105536,13 @@
     "line": 91,
     "snippet": "// TODO: Implement posting to WhatsApp, Telegram, etc.",
     "context_before": "// POST /api/qnews/post - Post news to external platforms\nexport async function POST_POST(req: NextRequest) {",
-    "context_after": "  const body = await req.json();\n  // Simulate post"
+    "context_after": "  const body = (await req.json() as any);\n  // Simulate post"
   },
   {
     "file": "qmoi-enhanced/app/api/qnews/route.ts",
     "line": 93,
     "snippet": "// Simulate post",
-    "context_before": "  // TODO: Implement posting to WhatsApp, Telegram, etc.\n  const body = await req.json();",
+    "context_before": "  // TODO: Implement posting to WhatsApp, Telegram, etc.\n  const body = (await req.json() as any);",
     "context_after": "  return NextResponse.json({ success: true, posted: body });\n} "
   },
   {
@@ -105599,7 +105599,7 @@
     "line": 27,
     "snippet": "// Login (stub)",
     "context_before": "\nexport async function POST_LOGIN(req: NextRequest) {",
-    "context_after": "  const body = await req.json();\n  const { username, platform } = body;"
+    "context_after": "  const body = (await req.json() as any);\n  const { username, platform } = body;"
   },
   {
     "file": "qmoi-enhanced/app/api/account-automation/route.ts",
@@ -105612,7 +105612,7 @@
     "file": "qmoi-enhanced/app/api/account-automation/route.ts",
     "line": 40,
     "snippet": "// TODO: Integrate with nodemailer and rovicviccy@gmail.com for email verification",
-    "context_before": "  const body = await req.json();\n  const { email, id } = body;",
+    "context_before": "  const body = (await req.json() as any);\n  const { email, id } = body;",
     "context_after": "  // Example:\n  // let transporter = nodemailer.createTransport({ ... });"
   },
   {
@@ -106186,7 +106186,7 @@
     "file": "qmoi-enhanced/app/api/social-automation/route.ts",
     "line": 15,
     "snippet": "// TODO: Integrate with WhatsApp, Telegram, etc.",
-    "context_before": "  const body = await req.json();\n  const { content, platform } = body;",
+    "context_before": "  const body = (await req.json() as any);\n  const { content, platform } = body;",
     "context_after": "  const post = { id: postId++, content, platform, createdAt: new Date().toISOString() };\n  posts.push(post);"
   },
   {
@@ -106299,7 +106299,7 @@
     "line": 8,
     "snippet": "// Upload document (stub)",
     "context_before": "\nexport async function POST_UPLOAD(req: NextRequest) {",
-    "context_after": "  const body = await req.json();\n  const { name, type, content } = body;"
+    "context_after": "  const body = (await req.json() as any);\n  const { name, type, content } = body;"
   },
   {
     "file": "qmoi-enhanced/app/api/document-backup/route.ts",
@@ -106313,7 +106313,7 @@
     "line": 28,
     "snippet": "// Restore document (stub)",
     "context_before": "\nexport async function POST_RESTORE(req: NextRequest) {",
-    "context_after": "  const body = await req.json();\n  const { id } = body;"
+    "context_after": "  const body = (await req.json() as any);\n  const { id } = body;"
   },
   {
     "file": "qmoi-enhanced/app/api/document-backup/route.ts",

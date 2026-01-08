@@ -743,7 +743,7 @@ const sisterProjects: unknown[] = [];
 export async function POST(req: Request) {
   const url = new URL(req.url);
   if (url.searchParams.get("saveSisterProject")) {
-    const body = await req.json();
+    const body = (await req.json() as any);
     sisterProjects.push(body);
     return new Response(JSON.stringify({ success: true, saved: body }), {
       status: 200,

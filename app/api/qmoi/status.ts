@@ -5,7 +5,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import path from "path";
 
-export default function handler(_req: NextApiRequest, _res: NextApiRespons_e) {
+export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
   const logsDir = path.join(process.cwd(), "logs");
   let preActivity = null,
     connectivity = null,
