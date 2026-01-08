@@ -1,5 +1,5 @@
-const msw = require("msw");
-const helpers = msw.rest || msw.http;
+import * as msw from "msw";
+const helpers = (msw as any).rest || (msw as any).http;
 import { server } from "../../../mocks/server";
 import PesapalService from "../PesapalService";
 import * as prodGuard from "../../../../lib/prodGuard";
