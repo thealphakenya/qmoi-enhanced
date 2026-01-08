@@ -99,7 +99,7 @@ export default function AppManager() {
   const setupEventListeners = () => {
     appManagementService.onAppStatusChanged(({ appId, status }) => {
       setApps((prev) =>
-        prev.map((app) => (app.id === appId ? { ...app, status } : app)),
+        prev.map((app) => (app.id === appId ? { ...app, status } : app))
       );
     });
 
@@ -114,10 +114,8 @@ export default function AppManager() {
     appManagementService.onAppInstalled((app) => {
       setApps((prev) =>
         prev.map((a) =>
-          a.id === app.id
-            ? { ...a, isInstalled: true, status: "installed" }
-            : a,
-        ),
+          a.id === app.id ? { ...a, isInstalled: true, status: "installed" } : a
+        )
       );
     });
 
@@ -126,19 +124,21 @@ export default function AppManager() {
         prev.map((a) =>
           a.id === app.id
             ? { ...a, version: updateInfo.newVersion, isUpdating: false }
-            : a,
-        ),
+            : a
+        )
       );
     });
 
-    appManagementService.onAppError(({ appId, error }) => {
-      console.error(`App error for ${appId}:`, error);
+    appManagementService.onAppError((payload: any) => {
+      const appId = payload?.appId;
+      const err = payload?._error ?? payload?.error ?? "Unknown error";
+      console.error(`App error for ${appId}:`, err);
     });
 
     appManagementService.onUpdateAvailable(({ app, update }) => {
       // Show update notification
       console.log(
-        `Update available for ${app.displayName}: v${update.newVersion}`,
+        `Update available for ${app.displayName}: v${update.newVersion}`
       );
     });
 
@@ -158,7 +158,7 @@ export default function AppManager() {
       filtered = filtered.filter(
         (app) =>
           app.displayName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          app.description.toLowerCase().includes(searchQuery.toLowerCase()),
+          app.description.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
 
@@ -298,9 +298,10 @@ export default function AppManager() {
             <Wrench className="h-4 w-4" />
             <AlertDescription>
               Found {troubleshootingResults[app.id].length} issues.
-              {troubleshootingResults[app.id].some(
-                (issue: unknown) => issue.severity === "high",
-              ) && " High priority issues detected."}
+              {troubleshootingResults[app.id].some((issue: unknown) => {
+                const s = (issue as Record<string, any>)?.severity;
+                return s === "high";
+              }) && " High priority issues detected."}
             </AlertDescription>
           </Alert>
         )}
@@ -500,7 +501,7 @@ export default function AppManager() {
               <div className="space-y-4">
                 {apps
                   .filter(
-                    (app) => app.isInstalled && app.status === "available",
+                    (app) => app.isInstalled && app.status === "available"
                   )
                   .map((app) => (
                     <div
@@ -526,7 +527,7 @@ export default function AppManager() {
                   ))}
 
                 {apps.filter(
-                  (app) => app.isInstalled && app.status === "available",
+                  (app) => app.isInstalled && app.status === "available"
                 ).length === 0 && (
                   <div className="text-center py-8">
                     <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />

@@ -91,7 +91,23 @@ export class PluginManager {
   }
 
   clearSchedules() {
-    this.scheduledPlugins.forEach((s) => clearInterval(s.timer));
+    this.scheduledPlugins.forEach((s) => {
+      try {
+        // timer may be number or NodeJS.Timeout depending on environment
+        const t = s.timer as unknown;
+        if (typeof t === "number") {
+          clearInterval(t);
+        } else if (t && typeof (t as any).unref === "function") {
+          // NodeJS.Timeout-like
+          clearInterval(t as any);
+        } else {
+          // fallback
+          clearInterval(t as any);
+        }
+      } catch (e) {
+        // ignore any errors clearing timers
+      }
+    });
     this.scheduledPlugins = [];
   }
 

@@ -43,7 +43,7 @@ interface AuditLog {
   username: string;
   action: string;
   resource: string;
-  details: string; // JSON string from database
+  details: string | Record<string, any>; // JSON string from database or parsed object
   ipAddress?: string;
   userAgent?: string;
   riskLevel: "low" | "medium" | "high" | "critical";
@@ -91,17 +91,37 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
   const [dateRange, setDateRange] = useState({ start: "", end: "" });
   const { toast } = useToast();
 
+  const safeParse = (s: unknown) => {
+    try {
+      return typeof s === "string" ? JSON.parse(s || "{}") : s || {};
+    } catch (_e) {
+      return {};
+    }
+  };
+
   // Load audit logs from API
   const loadAuditLogs = useCallback(async () => {
     try {
       const response = await fetch("/api/qmoi-database?logs=true&limit=100");
       if (response.ok) {
         const data = await response.json();
-        const parsedLogs = data.logs.map((log: unknown) => ({
-          ...log,
-          timestamp: new Date(log.timestamp),
-          details: JSON.parse(log.details || "{}"),
-        }));
+        const parsedLogs = (data.logs || []).map((log: unknown) => {
+          const entry = (log as Record<string, any>) || {};
+          return {
+            id: String(entry.id || `log-${Date.now()}`),
+            timestamp: entry.timestamp ? new Date(entry.timestamp) : new Date(),
+            userId: String(entry.userId || entry.username || "unknown"),
+            username: String(entry.username || entry.userId || "unknown"),
+            action: String(entry.action || "unknown"),
+            resource: String(entry.resource || "unknown"),
+            details: safeParse(entry.details),
+            ipAddress: entry.ipAddress,
+            userAgent: entry.userAgent,
+            riskLevel: (entry.riskLevel as any) || "low",
+            status: (entry.status as any) || "success",
+            sessionId: entry.sessionId,
+          } as AuditLog;
+        });
         setAuditLogs(parsedLogs);
         setFilteredLogs(parsedLogs);
         calculateMetrics(parsedLogs);
@@ -256,12 +276,34 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
 
         // Check for anomalies
         if (enableRealTimeMonitoring) {
-          const newLog = result.log;
-          detectAnomalies({
-            ...newLog,
-            timestamp: new Date(newLog.timestamp),
-            details: JSON.parse(newLog.details || "{}"),
-          });
+          const newLogRaw = result.log as unknown;
+          const newLog = (() => {
+            const e = (newLogRaw as Record<string, any>) || {};
+            return {
+              id: String(e.id || `log-${Date.now()}`),
+              timestamp: e.timestamp ? new Date(e.timestamp) : new Date(),
+              userId: String(e.userId || e.username || "anonymous"),
+              username: String(e.username || e.userId || "anonymous"),
+              action: String(e.action || "unknown"),
+              resource: String(e.resource || "unknown"),
+              details:
+                typeof e.details === "string"
+                  ? (function (s) {
+                      try {
+                        return JSON.parse(s || "{}");
+                      } catch {
+                        return {};
+                      }
+                    })(e.details)
+                  : e.details || {},
+              ipAddress: e.ipAddress,
+              userAgent: e.userAgent,
+              riskLevel: (e.riskLevel as any) || "low",
+              status: (e.status as any) || "success",
+              sessionId: e.sessionId,
+            } as AuditLog;
+          })();
+          detectAnomalies(newLog);
         }
       } else {
         console.error("Failed to log action to database");
@@ -577,7 +619,10 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                       </div>
                       {(() => {
                         try {
-                          const details = JSON.parse(log.details);
+                          const details =
+                            typeof log.details === "string"
+                              ? safeParse(log.details)
+                              : log.details || {};
                           return (
                             details.description && (
                               <p className="text-sm text-gray-700 mt-1">

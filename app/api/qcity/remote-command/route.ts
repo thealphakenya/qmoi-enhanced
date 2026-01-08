@@ -9,9 +9,10 @@ const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG = path.join(process.cwd(), "logs/qcity_audit.log");
 
 function logAudit(entry: unknown) {
+  const e = (entry as Record<string, unknown>) || {};
   fs.appendFileSync(
     AUDIT_LOG,
-    JSON.stringify({ ...entry, timestamp: new Date().toISOString() }) + "\n"
+    JSON.stringify({ ...e, timestamp: new Date().toISOString() }) + "\n"
   );
 }
 
@@ -19,7 +20,8 @@ function maskCommand(cmd: string) {
   return /pass|secret|token|key|rm|delete|reset/i.test(cmd) ? "[MASKED]" : cmd;
 }
 
-export default async function handler(_req: NextApiRequest,
+export default async function handler(
+  _req: NextApiRequest,
   _res: NextApiResponse
 ) {
   if (_req.method !== "POST") return _res.status(405).end();

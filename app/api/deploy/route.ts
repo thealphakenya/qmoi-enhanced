@@ -8,7 +8,8 @@ const execAsync = promisify(exec);
 
 export async function POST(_req: NextRequest) {
   try {
-    const { platform = "vercel", autoRedeploy = true } = (await _req.json() as any);
+    const { platform = "vercel", autoRedeploy = true } =
+      (await _req.json()) as any;
 
     if (platform === "vercel") {
       // Deploy to Vercel using Vercel CLI
@@ -36,13 +37,14 @@ export async function POST(_req: NextRequest) {
     } else {
       return NextResponse.json(
         { _error: "Unsupported platform", supported: ["vercel"] },
-        { status: 400 },
+        { status: 400 }
       );
     }
   } catch (_error: unknown) {
+    const details = _error instanceof Error ? _error.message : String(_error);
     return NextResponse.json(
-      { _error: "Failed to deploy", details: _error.message },
-      { status: 500 },
+      { _error: "Failed to deploy", details },
+      { status: 500 }
     );
   }
 }

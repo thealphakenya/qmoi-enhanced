@@ -201,15 +201,20 @@ async function createPlatformAccount(platform: string, accountData: any) {
 }
 
 // Revenue generation functions
-async function generateMicrotaskRevenue(taskData: unknown) {
+async function generateMicrotaskRevenue(
+  taskData: z.infer<typeof MicrotaskSchema>
+) {
   try {
     // Simulate external client payment
-    const clientPayment = taskData.reward * 1.5; // QMOI takes 33% cut
-    const userPayment = taskData.reward;
+    const clientPayment = (taskData.reward || 0) * 1.5; // QMOI takes 33% cut
+    const userPayment = taskData.reward || 0;
     const qmoiProfit = clientPayment - userPayment;
 
     // Add to M-Pesa account
-    await addToMpesaAccount(qmoiProfit, `Microtask: ${taskData.title}`);
+    await addToMpesaAccount(
+      qmoiProfit,
+      `Microtask: ${taskData.title || "microtask"}`
+    );
 
     return {
       success: true,
@@ -224,17 +229,22 @@ async function generateMicrotaskRevenue(taskData: unknown) {
   }
 }
 
-async function generateAffiliateRevenue(campaignData: unknown) {
+async function generateAffiliateRevenue(
+  campaignData: z.infer<typeof AffiliateCampaignSchema>
+) {
   try {
     // Simulate affiliate sales
     const sales = Math.floor(Math.random() * 10) + 1; // Random sales 1-10
     const totalRevenue = sales * 100; // Assume $100 per sale
-    const commission = totalRevenue * (campaignData.commission / 100);
+    const commission = totalRevenue * ((campaignData.commission || 0) / 100);
     const userShare = commission * 0.7; // User gets 70% of commission
     const qmoiShare = commission * 0.3; // QMOI gets 30%
 
     // Add to M-Pesa account
-    await addToMpesaAccount(qmoiShare, `Affiliate: ${campaignData.name}`);
+    await addToMpesaAccount(
+      qmoiShare,
+      `Affiliate: ${campaignData.name || "affiliate"}`
+    );
 
     return {
       success: true,
@@ -251,15 +261,20 @@ async function generateAffiliateRevenue(campaignData: unknown) {
   }
 }
 
-async function generateContentRevenue(projectData: unknown) {
+async function generateContentRevenue(
+  projectData: z.infer<typeof ContentProjectSchema>
+) {
   try {
     // Simulate content sale
-    const salePrice = projectData.reward * 3; // Content sold for 3x reward
-    const userPayment = projectData.reward;
+    const salePrice = (projectData.reward || 0) * 3; // Content sold for 3x reward
+    const userPayment = projectData.reward || 0;
     const qmoiProfit = salePrice - userPayment;
 
     // Add to M-Pesa account
-    await addToMpesaAccount(qmoiProfit, `Content: ${projectData.title}`);
+    await addToMpesaAccount(
+      qmoiProfit,
+      `Content: ${projectData.title || "content"}`
+    );
 
     return {
       success: true,
@@ -274,16 +289,21 @@ async function generateContentRevenue(projectData: unknown) {
   }
 }
 
-async function generateReferralRevenue(referralData: unknown) {
+async function generateReferralRevenue(
+  referralData: z.infer<typeof ReferralProgramSchema>
+) {
   try {
     // Simulate referral bonus
     const referrals = Math.floor(Math.random() * 5) + 1; // Random referrals 1-5
-    const totalBonus = referrals * referralData.bonus;
+    const totalBonus = referrals * (referralData.bonus || 0);
     const userBonus = totalBonus * 0.8; // User gets 80%
     const qmoiBonus = totalBonus * 0.2; // QMOI gets 20%
 
     // Add to M-Pesa account
-    await addToMpesaAccount(qmoiBonus, `Referral: ${referralData.name}`);
+    await addToMpesaAccount(
+      qmoiBonus,
+      `Referral: ${referralData.name || "referral"}`
+    );
 
     return {
       success: true,
@@ -342,7 +362,7 @@ async function addToMpesaAccount(amount: number, description: string) {
 }
 
 // Additional revenue streams
-async function generateSurveyRevenue(surveyData: unknown) {
+async function generateSurveyRevenue(surveyData: { title?: string }) {
   try {
     const participants = Math.floor(Math.random() * 20) + 5; // 5-25 participants
     const rewardPerParticipant = 5; // $5 per survey
@@ -350,7 +370,10 @@ async function generateSurveyRevenue(surveyData: unknown) {
     const clientPayment = totalCost * 1.4; // Client pays 40% premium
     const qmoiProfit = clientPayment - totalCost;
 
-    await addToMpesaAccount(qmoiProfit, `Survey: ${surveyData.title}`);
+    await addToMpesaAccount(
+      qmoiProfit,
+      `Survey: ${surveyData.title || "survey"}`
+    );
 
     return {
       success: true,
@@ -365,7 +388,7 @@ async function generateSurveyRevenue(surveyData: unknown) {
   }
 }
 
-async function generateDataLabelingRevenue(labelingData: unknown) {
+async function generateDataLabelingRevenue(labelingData: { project?: string }) {
   try {
     const dataPoints = Math.floor(Math.random() * 1000) + 100; // 100-1100 data points
     const rewardPerPoint = 0.1; // $0.10 per data point
@@ -375,7 +398,7 @@ async function generateDataLabelingRevenue(labelingData: unknown) {
 
     await addToMpesaAccount(
       qmoiProfit,
-      `Data Labeling: ${labelingData.project}`
+      `Data Labeling: ${labelingData.project || "data-labeling"}`
     );
 
     return {
@@ -391,7 +414,7 @@ async function generateDataLabelingRevenue(labelingData: unknown) {
   }
 }
 
-async function generateSaaSResellingRevenue(saasData: unknown) {
+async function generateSaaSResellingRevenue(saasData: { service?: string }) {
   try {
     const subscriptions = Math.floor(Math.random() * 50) + 10; // 10-60 subscriptions
     const monthlyFee = 29; // $29/month per subscription
@@ -400,7 +423,10 @@ async function generateSaaSResellingRevenue(saasData: unknown) {
     const totalCost = subscriptions * costPerSubscription;
     const qmoiProfit = totalRevenue - totalCost;
 
-    await addToMpesaAccount(qmoiProfit, `SaaS Reselling: ${saasData.service}`);
+    await addToMpesaAccount(
+      qmoiProfit,
+      `SaaS Reselling: ${saasData.service || "saas"}`
+    );
 
     return {
       success: true,

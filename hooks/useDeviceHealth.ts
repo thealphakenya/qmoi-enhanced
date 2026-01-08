@@ -49,7 +49,7 @@ class PerformanceMonitor {
   getLoadTime(): number {
     if (typeof performance !== "undefined") {
       const navigation = performance.getEntriesByType(
-        "navigation",
+        "navigation"
       )[0] as PerformanceNavigationTiming;
       return navigation
         ? navigation.loadEventEnd - navigation.loadEventStart
@@ -61,7 +61,7 @@ class PerformanceMonitor {
   getResponseTime(): number {
     if (typeof performance !== "undefined") {
       const navigation = performance.getEntriesByType(
-        "navigation",
+        "navigation"
       )[0] as PerformanceNavigationTiming;
       return navigation ? navigation.responseEnd - navigation.requestStart : 0;
     }
@@ -102,7 +102,8 @@ function getBatteryInfo(): Promise<number | null> {
       (navigator as any)
         .getBattery()
         .then((battery: unknown) => {
-          resolve(battery.level * 100);
+          const b = battery as { level?: number } | null;
+          resolve(typeof b?.level === "number" ? b.level * 100 : null);
         })
         .catch(() => resolve(null));
     } else {

@@ -1,17 +1,19 @@
-// @ts-nocheck
 import * as fs from "fs";
 import * as path from "path";
 
-type ApiCheckResult =
-  | { ok: true }
-  | { ok: false; response?: { status: number; body?: unknown } };
+// ApiCheckResult now always allows accessing `.response` safely (it may be undefined)
+export type ApiCheckResult = {
+  ok: boolean;
+  response?: { status?: number; body?: unknown };
+};
 
-function requireApiKey(headers: unknown): ApiCheckResult {
+function requireApiKey(headers: any): ApiCheckResult {
   // Support Next.js Headers and plain object headers
   const get = (k: string) => {
     if (!headers) return undefined;
-    if (typeof headers.get === "function") return headers.get(k);
-    return headers[k.toLowerCase()] || headers[k];
+    if (headers && typeof headers.get === "function") return headers.get(k);
+    const h = headers || {};
+    return h[k.toLowerCase()] || h[k];
   };
 
   const key = get("x-api-key") || get("authorization") || get("Authorization");
@@ -39,13 +41,15 @@ function requireApiKey(headers: unknown): ApiCheckResult {
   };
 }
 
-async function writeProposal(payload: unknown) {
+async function writeProposal(payload: any) {
   try {
     const dir = path.join(process.cwd(), ".qmoi_validation");
     await fs.promises.mkdir(dir, { recursive: true });
     const id = payload?.id || `proposal-${Date.now()}`;
     const file = path.join(dir, `${id}.json`);
-    const body = { ...payload, createdAt: new Date().toISOString() };
+    const body = Object.assign({}, payload || {}, {
+      createdAt: new Date().toISOString(),
+    });
     await fs.promises.writeFile(file, JSON.stringify(body, null, 2), "utf8");
     return { ok: true, file, id };
   } catch (err) {

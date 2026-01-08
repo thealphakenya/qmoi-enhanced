@@ -577,11 +577,18 @@ export function useQVillageNotifications() {
   const [unreadCount, setUnreadCount] = useState(0);
 
   const addNotification = useCallback((notification: unknown) => {
+    const safePayload =
+      notification &&
+      typeof notification === "object" &&
+      !Array.isArray(notification)
+        ? (notification as Record<string, unknown>)
+        : { message: String(notification) };
+
     const newNotification = {
       id: Date.now(),
       timestamp: new Date().toISOString(),
       read: false,
-      ...notification,
+      ...safePayload,
     };
 
     setNotifications((prev) => [newNotification, ...prev.slice(0, 49)]); // Keep last 50

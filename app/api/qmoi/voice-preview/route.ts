@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 /* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextRequest, NextResponse } from "next/server";
+import { Buffer } from "buffer";
 import libProposals from "../../../../lib/proposals";
 
 interface PreviewBody {
@@ -19,7 +20,7 @@ export async function POST(_request: NextRequest) {
     if (!voiceId || !text) {
       return NextResponse.json(
         { _error: "Voice ID and text are required" },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
@@ -35,17 +36,18 @@ export async function POST(_request: NextRequest) {
     // Convert to Buffer for NextResponse
     const audioContent =
       audioData instanceof Uint8Array
-        ? Buffer.from(audioData)
-        : Buffer.from(audioData);
+        ? audioData
+        : new Uint8Array(audioData as ArrayBuffer);
 
-    headers.set("Content-Length", String(audioContent.length));
+    const bodyArray = audioContent.slice();
+    headers.set("Content-Length", String(bodyArray.byteLength));
 
-    return new NextResponse(audioContent, { status: 200, headers });
+    return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
   } catch (_error) {
     (console as any)._error("Error generating voice preview:", _error);
     return NextResponse.json(
       { _error: "Failed to generate voice preview" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
@@ -54,7 +56,7 @@ async function generateTTSAudio(
   voiceId: string,
   text: string,
   quality: string,
-  volume: number,
+  volume: number
 ): Promise<ArrayBuffer | Uint8Array> {
   // Provider selection: prefer environment configured provider
   const provider = (
@@ -67,7 +69,7 @@ async function generateTTSAudio(
     try {
       const elevenKey = process.env.ELEVENLABS_API_KEY as string;
       const url = `https://api.elevenlabs.io/v1/text-to-speech/${encodeURIComponent(
-        voiceId,
+        voiceId
       )}`;
       const payload = { text, voice: voiceId, quality };
 
@@ -83,7 +85,7 @@ async function generateTTSAudio(
       if (!resp.ok) {
         console.warn(
           "ElevenLabs TTS _request failed, falling back to local silent audio",
-          await resp.text(),
+          await resp.text()
         );
       } else {
         const ab = await resp.arrayBuffer();
@@ -92,7 +94,10 @@ async function generateTTSAudio(
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
           } catch (_err) {
-            console.warn("Volume adjust failed, returning original audio", _err);
+            console.warn(
+              "Volume adjust failed, returning original audio",
+              _err
+            );
             return ab;
           }
         }
@@ -101,7 +106,7 @@ async function generateTTSAudio(
     } catch (_err) {
       console.warn(
         "ElevenLabs integration _error, falling back to silent audio",
-        _err,
+        _err
       );
     }
   }
@@ -112,7 +117,7 @@ async function generateTTSAudio(
 
 function generateSilentWAV(
   sampleRate = 22050,
-  durationSeconds = 1,
+  durationSeconds = 1
 ): Uint8Array {
   const numSamples = Math.floor(sampleRate * durationSeconds);
   const bytesPerSample = 2; // 16-bit PCM
@@ -162,7 +167,7 @@ function adjustVolumeWav(wavBytes: Uint8Array, scale: number): Uint8Array {
   const view = new DataView(
     wavBytes.buffer,
     wavBytes.byteOffset,
-    wavBytes.byteLength,
+    wavBytes.byteLength
   );
 
   // Check 'WAVE' and 'fmt ' presence simplistically

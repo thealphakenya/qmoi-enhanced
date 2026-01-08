@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 /* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextResponse } from "next/server";
+import { createHmac } from "crypto";
 
 // Conditionally import Prisma
 let prisma: unknown = null;
@@ -86,7 +87,10 @@ export async function POST(_request: Request) {
 
 // Enhanced webhook handlers with parallel processing
 async function handlePaperUpdate(body: unknown) {
-  const { papers, source, timestamp } = body;
+  const payload: any = body ?? {};
+  const papers: any[] = Array.isArray(payload.papers) ? payload.papers : [];
+  const source: string = payload.source ?? "unknown";
+  const timestamp: string = payload.timestamp ?? new Date().toISOString();
 
   // Parallel processing of paper updates
   const updateTasks = papers.map((paper: unknown) =>
@@ -273,7 +277,7 @@ async function handlePerformanceAlert(body: unknown) {
 
   // Critical alert escalation
   if (analysis.severity === "critical") {
-    await escalateCriticalAlert(alertRespons_e);
+    await escalateCriticalAlert(alertResponse);
   }
 
   // Proactive monitoring adjustment
@@ -294,41 +298,68 @@ function verifyWebhookSignature(
   body: unknown,
   signature: string | null
 ): boolean {
-  // Superior signature verification with QMOI security
+  // Require signature and a configured secret
   if (!signature) return false;
 
-  // In production, implement proper HMAC verification
-  const expectedSignature = `qmoi-${Date.now()}`; // Placeholder
-  return signature === expectedSignature;
+  const secret = process.env.QVILLAGE_WEBHOOK_SECRET;
+  if (!secret) {
+    console.warn(
+      "QVILLAGE_WEBHOOK_SECRET not set; rejecting webhook for security"
+    );
+    return false;
+  }
+
+  let payloadString: string;
+  try {
+    payloadString =
+      typeof body === "string" ? body : JSON.stringify(body ?? "");
+  } catch (_e) {
+    payloadString = String(body ?? "");
+  }
+
+  try {
+    const expected = createHmac("sha256", secret)
+      .update(payloadString)
+      .digest("hex");
+    // Accept either raw hex or a "sha256=<hex>" form
+    if (signature === expected || signature === `sha256=${expected}`)
+      return true;
+    return false;
+  } catch (_e) {
+    (console as any)._error("Signature verification _error:", _e);
+    return false;
+  }
 }
 
 async function processPaperUpdate(paper: unknown, source: string) {
   // Enhanced paper processing with QMOI AI
   try {
+    const p: any = paper ?? {};
     // Validate paper data
-    if (!paper.id || !paper.title) {
+    if (!p.id || !p.title) {
       throw new Error("Invalid paper data");
     }
 
     // Process metadata
     const processedPaper = {
-      ...paper,
+      ...p,
       source,
       processed_at: new Date().toISOString(),
       qmoi_enhanced: true,
-      relevance_score: calculateRelevanceScore(paper),
-      tags: paper.tags || [],
+      relevance_score: calculateRelevanceScore(p),
+      tags: p.tags || [],
       status: "processed",
     };
 
     // In production, save to database
-    console.log(`Processed paper: ${paper.id} from ${source}`);
+    console.log(`Processed paper: ${p.id} from ${source}`);
 
     return processedPaper;
   } catch (_error) {
     (console as any)._error("Error processing paper update:", _error);
+    const p: any = paper ?? {};
     return {
-      id: paper.id,
+      id: p.id ?? null,
       status: "_error",
       _error: _error instanceof Error ? _error.message : String(_error),
     };
@@ -338,11 +369,14 @@ async function processPaperUpdate(paper: unknown, source: string) {
 function calculateRelevanceScore(paper: unknown): number {
   // Simple relevance scoring based on content
   let score = 0.5;
+  const title = String((paper as any)?.title || "").toLowerCase();
+  const abstract = String((paper as any)?.abstract || "").toLowerCase();
+  const tags = Array.isArray((paper as any)?.tags) ? (paper as any).tags : [];
 
-  if (paper.title?.toLowerCase().includes("ai")) score += 0.2;
-  if (paper.title?.toLowerCase().includes("consciousness")) score += 0.15;
-  if (paper.abstract?.toLowerCase().includes("parallel")) score += 0.1;
-  if (paper.tags?.includes("AI")) score += 0.1;
+  if (title.includes("ai")) score += 0.2;
+  if (title.includes("consciousness")) score += 0.15;
+  if (abstract.includes("parallel")) score += 0.1;
+  if (tags.includes("AI")) score += 0.1;
 
   return Math.min(score, 1.0);
 }
@@ -369,7 +403,11 @@ async function triggerQMOISync(type: string, data: unknown) {
     console.log(`Triggering QMOI sync for ${type}`, data);
 
     // In production, call QMOI sync API
-    return { status: "sync_triggered", type, count: data.length || 1 };
+    return {
+      status: "sync_triggered",
+      type,
+      count: Array.isArray(data) ? data.length : 1,
+    };
   } catch (_error) {
     (console as any)._error("Error triggering QMOI sync:", _error);
     return {
@@ -1094,9 +1132,9 @@ async function notifyWebSubscribers(_event: string, data: unknown) {
     console.log(`Sending web notification: ${_event}`, data);
 
     // Get all users for web notifications
-    const users = await prisma.user.findMany({
-      select: { id: true },
-    });
+    const _prisma = await getPrismaClient();
+    const users =
+      (await (_prisma as any).user.findMany({ select: { id: true } })) || [];
 
     // Create notifications in database
     const notifications = users.map((user: unknown) => ({
@@ -1142,9 +1180,9 @@ function getNotificationMessage(_event: string, data: unknown): string {
     case "paper_update":
       return `New papers added to QVillage research collection`;
     case "kb_entry":
-      return `New knowledge base entry: ${data.title || "Untitled"}`;
+      return `New knowledge base entry: ${(data as any).title || "Untitled"}`;
     case "discussion_post":
-      return `New discussion: ${data.title || "Untitled"}`;
+      return `New discussion: ${(data as any).title || "Untitled"}`;
     default:
       return "Check out the latest updates in QVillage";
   }
@@ -1156,9 +1194,11 @@ async function notifyEmailSubscribers(_event: string, data: unknown) {
     console.log(`Sending email notification: ${_event}`, data);
 
     // Get users who have email notifications enabled (assuming all users for now)
-    const users = await prisma.user.findMany({
-      select: { id: true, email: true },
-    });
+    const _prisma = await getPrismaClient();
+    const users =
+      (await (_prisma as any).user.findMany({
+        select: { id: true, email: true },
+      })) || [];
 
     // Create email notifications in database
     const notifications = users.map((user: unknown) => ({
@@ -1191,9 +1231,9 @@ async function notifyPushSubscribers(_event: string, data: unknown) {
     console.log(`Sending push notification: ${_event}`, data);
 
     // Get users who have push notifications enabled (assuming all users for now)
-    const users = await prisma.user.findMany({
-      select: { id: true },
-    });
+    const _prisma = await getPrismaClient();
+    const users =
+      (await (_prisma as any).user.findMany({ select: { id: true } })) || [];
 
     // Create push notifications in database
     const notifications = users.map((user: unknown) => ({

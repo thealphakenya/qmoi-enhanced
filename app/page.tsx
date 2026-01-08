@@ -5,10 +5,18 @@ import QMOIDashboard from "../components/QMOIDashboard";
 import { MasterProvider, useMaster } from "../components/MasterContext";
 import { NotificationPanel } from "../components/NotificationPanel";
 
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  avatar?: any;
+}
+
 function MainPage() {
   const { isMaster, setRole } = useMaster();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [currentUser, setCurrentUser] = useState({
+  const [currentUser, setCurrentUser] = useState<User>({
     id: "1",
     name: "Victor Kwemoi",
     email: "victor@qmoi.com",
@@ -35,7 +43,14 @@ function MainPage() {
   }, []);
 
   const handleLogin = (userData: unknown) => {
-    setCurrentUser(userData);
+    const u = (userData as Partial<User>) || {};
+    setCurrentUser({
+      id: String(u.id || "1"),
+      name: String(u.name || "Unknown"),
+      email: String(u.email || "unknown@qmoi"),
+      role: String(u.role || "User"),
+      avatar: u.avatar,
+    });
     setIsAuthenticated(true);
     localStorage.setItem("qmoi_authenticated", "true");
     localStorage.setItem("qmoi_user", JSON.stringify(userData));

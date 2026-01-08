@@ -114,7 +114,8 @@ async function calculateTradingConfidence(): Promise<number> {
 // In-memory log for master
 const tradeLog: Array<Record<string, any>> = [];
 
-export default async function handler(_req: NextApiRequest,
+export default async function handler(
+  _req: NextApiRequest,
   _res: NextApiResponse
 ) {
   // Simple master auth (replace with real auth in production)
@@ -326,6 +327,7 @@ export default async function handler(_req: NextApiRequest,
       return _res.status(405).end();
     }
   } catch (_e: unknown) {
-    return _res.status(500).json({ _error: _e?.message ?? String(_e) });
+    const msg = _e instanceof Error ? _e.message : String(_e);
+    return _res.status(500).json({ _error: msg });
   }
 }

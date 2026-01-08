@@ -60,7 +60,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
   const [logs, setLogs] = useState<string[]>([]);
   const [logFilter, setLogFilter] = useState("");
   const [monitorStatus, setMonitorStatus] = useState<MonitorStatus | null>(
-    null,
+    null
   );
   const [monitorInterval, setMonitorInterval] = useState(60);
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
@@ -136,7 +136,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
       const res = await fetch("/api/wifi/scan");
       if (!res.ok)
         throw new Error(
-          "Failed to scan networks. Please check your Wi-Fi adapter.",
+          "Failed to scan networks. Please check your Wi-Fi adapter."
         );
       const data = await res.json();
       setNetworks(data.networks);
@@ -154,7 +154,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
     if (autoConnect && networks.length > 0) {
       // Find the highest-priority available network not already connected
       const sorted = [...networks].sort(
-        (a, b) => (priorities[b.ssid] || 1) - (priorities[a.ssid] || 1),
+        (a, b) => (priorities[b.ssid] || 1) - (priorities[a.ssid] || 1)
       );
       const best = sorted.find((n) => !n.connected);
       if (best && (!connected || best.ssid !== connected)) {
@@ -177,18 +177,18 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
       if (data.success) {
         setConnected(ssid);
         setNetworks((nets) =>
-          nets.map((n) => ({ ...n, connected: n.ssid === ssid })),
+          nets.map((n) => ({ ...n, connected: n.ssid === ssid }))
         );
       } else {
         setError(
           data.error ||
-            "Failed to connect. Please check your password and try again.",
+            "Failed to connect. Please check your password and try again."
         );
       }
     } catch (e: unknown) {
+      const message = e instanceof Error ? e.message : String(e);
       setError(
-        e.message ||
-          "Failed to connect. Please check your network and try again.",
+        message || "Failed to connect. Please check your network and try again."
       );
     }
     setLoading(false);
@@ -289,7 +289,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
       setMonitorStatus((s) =>
         s
           ? { ...s, enabled: false }
-          : { enabled: false, interval: monitorInterval, last_result: null },
+          : { enabled: false, interval: monitorInterval, last_result: null }
       );
     } catch (e: unknown) {
       setError("Failed to stop monitoring.");
@@ -387,7 +387,9 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
           {networks.map((net) => (
             <li
               key={net.ssid}
-              className={`flex items-center justify-between py-1 ${net.connected ? "font-bold text-green-600" : ""}`}
+              className={`flex items-center justify-between py-1 ${
+                net.connected ? "font-bold text-green-600" : ""
+              }`}
             >
               <span>
                 {net.ssid} {net.secure ? "🔒" : "🔓"} ({net.signal}%)
@@ -512,7 +514,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                 setError(null);
                 try {
                   const res = await fetch(
-                    "/api/wifi-security?action=security-test",
+                    "/api/wifi-security?action=security-test"
                   );
                   const data = await res.json();
                   if (data.networks) {
@@ -569,7 +571,9 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
               <span className="text-xs text-gray-500">Interval (s)</span>
               {monitorStatus && (
                 <span
-                  className={`text-xs ml-2 ${monitorStatus.enabled ? "text-green-600" : "text-gray-400"}`}
+                  className={`text-xs ml-2 ${
+                    monitorStatus.enabled ? "text-green-600" : "text-gray-400"
+                  }`}
                 >
                   {monitorStatus.enabled
                     ? `Active (every ${monitorStatus.interval}s)`
@@ -597,7 +601,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                           <li key={ip}>
                             {ip}: {String(count)}
                           </li>
-                        ),
+                        )
                       )}
                     </ul>
                   </div>
@@ -615,7 +619,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                 setError(null);
                 try {
                   const res = await fetch(
-                    "/api/wifi-security?action=network-scan",
+                    "/api/wifi-security?action=network-scan"
                   );
                   const data = await res.json();
                   if (data.hosts) {
@@ -646,7 +650,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                 setError(null);
                 try {
                   const res = await fetch(
-                    "/api/wifi-security?action=signal-analysis",
+                    "/api/wifi-security?action=signal-analysis"
                   );
                   const data = await res.json();
                   if (data.signals) {
@@ -714,7 +718,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                 setError(null);
                 try {
                   const res = await fetch(
-                    "/api/wifi-security?action=ai-agents",
+                    "/api/wifi-security?action=ai-agents"
                   );
                   const data = await res.json();
                   alert(data.result);
@@ -750,7 +754,9 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement("a");
                 a.href = url;
-                a.download = `wifi-security-logs-${new Date().toISOString().slice(0, 10)}.txt`;
+                a.download = `wifi-security-logs-${new Date()
+                  .toISOString()
+                  .slice(0, 10)}.txt`;
                 a.click();
                 URL.revokeObjectURL(url);
               }}
@@ -769,13 +775,13 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
             {logs.length === 0 ? (
               <span className="text-gray-400">No logs yet.</span>
             ) : logs.filter((log) =>
-                log.toLowerCase().includes(logFilter.toLowerCase()),
+                log.toLowerCase().includes(logFilter.toLowerCase())
               ).length === 0 ? (
               <span className="text-gray-400">No logs match filter.</span>
             ) : (
               logs
                 .filter((log) =>
-                  log.toLowerCase().includes(logFilter.toLowerCase()),
+                  log.toLowerCase().includes(logFilter.toLowerCase())
                 )
                 .map((log, i) => <div key={i}>{log}</div>)
             )}

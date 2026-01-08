@@ -8,8 +8,9 @@ export const runtime = "nodejs";
 // Import authentication and audit logging utilities
 // ... existing code ...
 
-export default async function handler(_req: NextApiRequest,
-  _res: NextApiResponse,
+export default async function handler(
+  _req: NextApiRequest,
+  _res: NextApiResponse
 ) {
   const auth = requireApiKey(new Headers(_req.headers as any) as any);
   if (!auth.ok) {
@@ -19,7 +20,7 @@ export default async function handler(_req: NextApiRequest,
   }
   // Authenticate user and check permissions
   // Log action for audit
-  const { method, body, _query } = _req;
+  const { method, body } = _req;
   switch (method) {
     case "POST": {
       // Route by action type

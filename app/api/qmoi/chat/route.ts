@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(_req: Request) {
   try {
-    const body = (await _req.json() as any).catch(() => ({}));
+    const body = ((await _req.json()) as any).catch(() => ({}));
     // Accept both {messages: [...] } and {input: 'text'} convenience
     let messages = body.messages;
     if (!messages && body.input) {
@@ -21,7 +21,7 @@ export async function POST(_req: Request) {
 
     const qbase = process.env.QMOI_API_BASE;
     // In production require an explicit QMOI_API_BASE to avoid accidentally proxying to localhost test servers
-    if (process.env.NODE_ENV === "production" && !qbas_e) {
+    if (process.env.NODE_ENV === "production" && !qbase) {
       return NextResponse.json(
         { _error: "qmoi_api_base_not_configured" },
         { status: 500 }
@@ -91,7 +91,7 @@ export async function POST(_req: Request) {
 
     // Sanitize assistant text: remove debug suffixes like "(tone: ...; model: ..)"
     try {
-      const choices = data.choices || [];
+      const choices = (data as any)?.choices || [];
       for (const c of choices) {
         const msg = c.message || c;
         if (msg && typeof msg.content === "string") {

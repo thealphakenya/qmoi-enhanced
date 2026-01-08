@@ -9,18 +9,25 @@ export function SisterProjects() {
 
   useEffect(() => {
     function handleSuggestions(e: unknown) {
-      setSuggested(e.detail || []);
+      const detail = (e as CustomEvent)?.detail ?? [];
+      setSuggested(Array.isArray(detail) ? detail : [detail]);
     }
-    window.addEventListener("ai-suggested-projects", handleSuggestions);
+    window.addEventListener(
+      "ai-suggested-projects",
+      handleSuggestions as EventListener
+    );
     return () =>
-      window.removeEventListener("ai-suggested-projects", handleSuggestions);
+      window.removeEventListener(
+        "ai-suggested-projects",
+        handleSuggestions as EventListener
+      );
   }, []);
 
   function saveProject(p: unknown) {
     setSaved((prev) => [...prev, p]);
     // Optionally persist to backend or localStorage
     window.dispatchEvent(
-      new CustomEvent("sister-project-saved", { detail: p }),
+      new CustomEvent("sister-project-saved", { detail: p })
     );
   }
 

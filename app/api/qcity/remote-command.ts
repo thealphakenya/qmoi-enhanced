@@ -8,9 +8,13 @@ import * as path from "path";
 const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG_PATH = path.resolve(process.cwd(), "logs/qcity_audit.log");
 
-function logAudit(entry: unknown) {
+function logAudit(entry: Record<string, unknown> | unknown) {
+  const payload =
+    typeof entry === "object" && entry !== null
+      ? { ...(entry as any) }
+      : { message: String(entry) };
   const line =
-    JSON.stringify({ ...entry, timestamp: new Date().toISOString() }) + "\n";
+    JSON.stringify({ ...payload, timestamp: new Date().toISOString() }) + "\n";
   try {
     fs.appendFileSync(AUDIT_LOG_PATH, line);
   } catch {
@@ -36,9 +40,12 @@ export async function POST(_req: NextRequest) {
     cmd,
     stream,
     deviceId = "default",
-  } = (await _req.json() as any).catch(() => ({}) as any);
+  } = ((await _req.json()) as any).catch(() => ({} as any));
   if (!cmd)
-    return NextResponse.json({ _error: "No command provided" }, { status: 400 });
+    return NextResponse.json(
+      { _error: "No command provided" },
+      { status: 400 }
+    );
 
   const qcityService = new QCityService();
   await qcityService.initialize();
@@ -54,7 +61,7 @@ export async function POST(_req: NextRequest) {
         function push() {
           if (i < 5) {
             controller.enqueue(
-              encoder.encode(`data: [${deviceId}] Log line ${i + 1}\n\n`),
+              encoder.encode(`data: [${deviceId}] Log line ${i + 1}\n\n`)
             );
             i++;
             setTimeout(push, 300);

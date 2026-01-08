@@ -477,8 +477,13 @@ function calculateOverallHealth(healthReport: unknown) {
   return { status, score: Math.round(averageScore) };
 }
 
-function generateRecommendations(healthReport: unknown) {
-  const recommendations = [];
+function generateRecommendations(healthReport: any) {
+  const recommendations: Array<{
+    component: string;
+    priority: string;
+    action: string;
+    description: string;
+  }> = [];
 
   // System recommendations
   if (healthReport.system?.status !== "healthy") {
