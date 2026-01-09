@@ -96,7 +96,10 @@
                     "checks": {
                       "type": "object",
                       "properties": {
-                        "timestamp": { "type": "string", "format": "date-time" },
+                        "timestamp": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
                         "service": {
                           "type": "object",
                           "properties": {
@@ -159,7 +162,10 @@
                     "monitoring": {
                       "type": "object",
                       "properties": {
-                        "timestamp": { "type": "string", "format": "date-time" },
+                        "timestamp": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
                         "system": {
                           "type": "object",
                           "properties": {
@@ -187,8 +193,15 @@
                             "type": "object"
                           }
                         },
-                        "healthScore": { "type": "integer", "minimum": 0, "maximum": 100 },
-                        "status": { "type": "string", "enum": ["healthy", "degraded", "critical"] }
+                        "healthScore": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 100
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": ["healthy", "degraded", "critical"]
+                        }
                       }
                     }
                   }
@@ -323,7 +336,10 @@
                           "requestCount": { "type": "integer" },
                           "limit": { "type": "integer" },
                           "percentageUsed": { "type": "integer" },
-                          "status": { "type": "string", "enum": ["normal", "warning", "exceeded"] }
+                          "status": {
+                            "type": "string",
+                            "enum": ["normal", "warning", "exceeded"]
+                          }
                         }
                       }
                     },
@@ -409,7 +425,10 @@
             "name": "action",
             "in": "query",
             "description": "Filter by action type",
-            "schema": { "type": "string", "enum": ["CREATE", "UPDATE", "DELETE", "LOGIN", "LOGOUT"] }
+            "schema": {
+              "type": "string",
+              "enum": ["CREATE", "UPDATE", "DELETE", "LOGIN", "LOGOUT"]
+            }
           },
           {
             "name": "userId",
@@ -421,7 +440,10 @@
             "name": "resource",
             "in": "query",
             "description": "Filter by resource type",
-            "schema": { "type": "string", "enum": ["user", "wallet", "transaction", "payment", "setting"] }
+            "schema": {
+              "type": "string",
+              "enum": ["user", "wallet", "transaction", "payment", "setting"]
+            }
           },
           {
             "name": "startDate",
@@ -445,7 +467,12 @@
             "name": "take",
             "in": "query",
             "description": "Results per page",
-            "schema": { "type": "integer", "default": 50, "minimum": 1, "maximum": 100 }
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "minimum": 1,
+              "maximum": 100
+            }
           }
         ],
         "responses": {
@@ -577,7 +604,14 @@
           "actionable": { "type": "boolean" },
           "suggestedAction": { "type": "string" }
         },
-        "required": ["id", "type", "severity", "component", "message", "timestamp"]
+        "required": [
+          "id",
+          "type",
+          "severity",
+          "component",
+          "message",
+          "timestamp"
+        ]
       },
       "AuditLog": {
         "type": "object",
@@ -625,7 +659,10 @@
                 "error": {
                   "type": "object",
                   "properties": {
-                    "message": { "type": "string", "example": "Missing authorization token" },
+                    "message": {
+                      "type": "string",
+                      "example": "Missing authorization token"
+                    },
                     "code": { "type": "string", "example": "NO_TOKEN" }
                   }
                 }
@@ -644,7 +681,10 @@
                 "error": {
                   "type": "object",
                   "properties": {
-                    "message": { "type": "string", "example": "Insufficient permissions" },
+                    "message": {
+                      "type": "string",
+                      "example": "Insufficient permissions"
+                    },
                     "code": { "type": "string", "example": "FORBIDDEN" }
                   }
                 }
