@@ -9,28 +9,8 @@ import { Buffer } from "buffer";
 import { createHmac } from "crypto";
 import { WhatsAppService } from "../../src/services/WhatsAppService";
 
-// Conditionally import Prisma
-let prisma: unknown = null;
-let prismaInitialized = false;
-
-async function getPrismaClient() {
-  // Return a mock Prisma client for build compatibility
-  // TODO: Replace with real Prisma client when database is configured
-  return {
-    wallet: {
-      findFirst: async () => null,
-      create: async (data: unknown) => ({ id: "mock-wallet-id", ...data.data }),
-      update: async (data: unknown) => data.data,
-    },
-    transaction: {
-      create: async (data: unknown) => ({
-        id: "mock-transaction-id",
-        ...data.data,
-      }),
-      findMany: async (_options?: unknown) => [],
-    },
-  };
-}
+// Import real Prisma client
+import prismaModule from "../../lib/db";
 
 interface WalletRequest {
   id: string;
