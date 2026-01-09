@@ -31,6 +31,7 @@ All error responses follow this format:
 ```
 
 Common status codes:
+
 - `400` - Bad Request
 - `401` - Unauthorized
 - `403` - Forbidden
@@ -49,6 +50,7 @@ Common status codes:
 Register a new user account.
 
 **Request:**
+
 ```json
 {
   "email": "user@example.com",
@@ -58,6 +60,7 @@ Register a new user account.
 ```
 
 **Response:** `201 Created`
+
 ```json
 {
   "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
@@ -73,11 +76,13 @@ Register a new user account.
 ```
 
 **Validation Rules:**
+
 - Email must be valid format and unique
 - Username must be 3-20 characters
 - Password must be 8+ characters with uppercase, lowercase, number, and special character
 
 **Error Codes:**
+
 - `USER_EXISTS` - User with email already exists
 - `INVALID_EMAIL` - Invalid email format
 - `WEAK_PASSWORD` - Password doesn't meet requirements
@@ -90,6 +95,7 @@ Register a new user account.
 Authenticate user with credentials.
 
 **Request:**
+
 ```json
 {
   "email": "user@example.com",
@@ -98,6 +104,7 @@ Authenticate user with credentials.
 ```
 
 **Response:** `200 OK`
+
 ```json
 {
   "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
@@ -112,6 +119,7 @@ Authenticate user with credentials.
 ```
 
 **Error Codes:**
+
 - `INVALID_CREDENTIALS` - Email or password incorrect
 - `USER_NOT_FOUND` - User doesn't exist
 - `ACCOUNT_LOCKED` - Account locked due to security measures
@@ -123,6 +131,7 @@ Authenticate user with credentials.
 Get new access token using refresh token.
 
 **Request:**
+
 ```json
 {
   "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
@@ -130,6 +139,7 @@ Get new access token using refresh token.
 ```
 
 **Response:** `200 OK`
+
 ```json
 {
   "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
@@ -145,6 +155,7 @@ Get new access token using refresh token.
 Logout user and invalidate tokens.
 
 **Request:**
+
 ```json
 {
   "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
@@ -152,6 +163,7 @@ Logout user and invalidate tokens.
 ```
 
 **Response:** `200 OK`
+
 ```json
 {
   "message": "Logged out successfully"
@@ -167,12 +179,14 @@ Logout user and invalidate tokens.
 Get authenticated user's profile.
 
 **Request:**
+
 ```bash
 GET /api/users/profile
 Authorization: Bearer {accessToken}
 ```
 
 **Response:** `200 OK`
+
 ```json
 {
   "id": "uuid",
@@ -197,6 +211,7 @@ Authorization: Bearer {accessToken}
 Update user profile information.
 
 **Request:**
+
 ```json
 {
   "firstName": "John",
@@ -208,6 +223,7 @@ Update user profile information.
 ```
 
 **Response:** `200 OK`
+
 ```json
 {
   "message": "Profile updated successfully",
@@ -229,17 +245,20 @@ Update user profile information.
 List all wallets for authenticated user.
 
 **Query Parameters:**
+
 - `skip` (number, default: 0) - Number of records to skip
 - `take` (number, default: 10) - Number of records to return
 - `currency` (string, optional) - Filter by currency
 
 **Request:**
+
 ```bash
 GET /api/wallets?skip=0&take=10&currency=KES
 Authorization: Bearer {accessToken}
 ```
 
 **Response:** `200 OK`
+
 ```json
 {
   "wallets": [
@@ -247,7 +266,7 @@ Authorization: Bearer {accessToken}
       "id": "wallet-uuid",
       "userId": "user-uuid",
       "currency": "KES",
-      "balance": 50000.00,
+      "balance": 50000.0,
       "publicKey": "pk_live_abc123...",
       "status": "active",
       "createdAt": "2024-01-01T00:00:00Z",
@@ -271,6 +290,7 @@ Authorization: Bearer {accessToken}
 Create a new wallet.
 
 **Request:**
+
 ```json
 {
   "currency": "KES",
@@ -281,12 +301,13 @@ Create a new wallet.
 ```
 
 **Response:** `201 Created`
+
 ```json
 {
   "id": "wallet-uuid",
   "userId": "user-uuid",
   "currency": "KES",
-  "balance": 0.00,
+  "balance": 0.0,
   "publicKey": "pk_live_abc123...",
   "status": "active",
   "createdAt": "2024-01-15T11:00:00Z"
@@ -294,6 +315,7 @@ Create a new wallet.
 ```
 
 **Validation:**
+
 - Supported currencies: KES, USD, EUR, GBP, UGX, TZS
 - User can have max 1 wallet per currency
 
@@ -304,18 +326,20 @@ Create a new wallet.
 Get specific wallet details.
 
 **Request:**
+
 ```bash
 GET /api/wallets/wallet-uuid
 Authorization: Bearer {accessToken}
 ```
 
 **Response:** `200 OK`
+
 ```json
 {
   "id": "wallet-uuid",
   "userId": "user-uuid",
   "currency": "KES",
-  "balance": 50000.00,
+  "balance": 50000.0,
   "publicKey": "pk_live_abc123...",
   "status": "active",
   "createdAt": "2024-01-01T00:00:00Z",
@@ -324,7 +348,7 @@ Authorization: Bearer {accessToken}
     {
       "id": "txn-uuid",
       "type": "credit",
-      "amount": 5000.00,
+      "amount": 5000.0,
       "status": "completed",
       "createdAt": "2024-01-15T10:00:00Z"
     }
@@ -339,6 +363,7 @@ Authorization: Bearer {accessToken}
 Update wallet metadata.
 
 **Request:**
+
 ```json
 {
   "metadata": {
@@ -349,6 +374,7 @@ Update wallet metadata.
 ```
 
 **Response:** `200 OK`
+
 ```json
 {
   "id": "wallet-uuid",
@@ -367,12 +393,14 @@ Update wallet metadata.
 Delete a wallet (only if balance is 0).
 
 **Request:**
+
 ```bash
 DELETE /api/wallets/wallet-uuid
 Authorization: Bearer {accessToken}
 ```
 
 **Response:** `200 OK`
+
 ```json
 {
   "message": "Wallet deleted successfully",
@@ -381,6 +409,7 @@ Authorization: Bearer {accessToken}
 ```
 
 **Error Codes:**
+
 - `WALLET_NOT_EMPTY` - Cannot delete wallet with balance > 0
 - `WALLET_NOT_FOUND` - Wallet doesn't exist
 - `UNAUTHORIZED` - You don't own this wallet
@@ -394,6 +423,7 @@ Authorization: Bearer {accessToken}
 List transactions for authenticated user.
 
 **Query Parameters:**
+
 - `skip` (number, default: 0)
 - `take` (number, default: 20)
 - `walletId` (string, optional) - Filter by wallet
@@ -403,12 +433,14 @@ List transactions for authenticated user.
 - `endDate` (string, optional) - ISO date format
 
 **Request:**
+
 ```bash
 GET /api/transactions?skip=0&take=20&status=completed&type=credit
 Authorization: Bearer {accessToken}
 ```
 
 **Response:** `200 OK`
+
 ```json
 {
   "transactions": [
@@ -416,7 +448,7 @@ Authorization: Bearer {accessToken}
       "id": "txn-uuid",
       "walletId": "wallet-uuid",
       "type": "credit",
-      "amount": 5000.00,
+      "amount": 5000.0,
       "currency": "KES",
       "status": "completed",
       "description": "M-Pesa deposit",
@@ -442,10 +474,11 @@ Authorization: Bearer {accessToken}
 Initiate a payment with a provider.
 
 **Request:**
+
 ```json
 {
   "walletId": "wallet-uuid",
-  "amount": 100.00,
+  "amount": 100.0,
   "phoneNumber": "+254700000000",
   "paymentMethod": "mpesa",
   "description": "Payment for services"
@@ -453,12 +486,13 @@ Initiate a payment with a provider.
 ```
 
 **Response:** `200 OK`
+
 ```json
 {
   "transactionId": "txn-uuid",
   "reference": "TXN20240115001",
   "status": "pending",
-  "amount": 100.00,
+  "amount": 100.0,
   "currency": "KES",
   "paymentMethod": "mpesa",
   "stkSessionId": "abc123def456",
@@ -467,6 +501,7 @@ Initiate a payment with a provider.
 ```
 
 **Supported Methods:**
+
 - `mpesa` - Safaricom M-Pesa
 - `pesapal` - Pesapal gateway
 - `stripe` - Stripe payment processor
@@ -478,6 +513,7 @@ Initiate a payment with a provider.
 M-Pesa payment callback (called by M-Pesa API).
 
 **Request (from M-Pesa):**
+
 ```json
 {
   "Body": {
@@ -504,6 +540,7 @@ M-Pesa payment callback (called by M-Pesa API).
 ```
 
 **Response:** `200 OK`
+
 ```json
 {
   "message": "Webhook received"
@@ -514,29 +551,31 @@ M-Pesa payment callback (called by M-Pesa API).
 
 ## Status Codes Summary
 
-| Code | Meaning |
-|------|---------|
-| 200 | OK - Request succeeded |
-| 201 | Created - Resource created |
-| 400 | Bad Request - Invalid input |
-| 401 | Unauthorized - Missing/invalid token |
-| 403 | Forbidden - Insufficient permissions |
-| 404 | Not Found - Resource not found |
-| 409 | Conflict - Resource already exists |
-| 422 | Unprocessable - Validation failed |
-| 429 | Too Many Requests - Rate limit exceeded |
-| 500 | Server Error - Internal error |
+| Code | Meaning                                 |
+| ---- | --------------------------------------- |
+| 200  | OK - Request succeeded                  |
+| 201  | Created - Resource created              |
+| 400  | Bad Request - Invalid input             |
+| 401  | Unauthorized - Missing/invalid token    |
+| 403  | Forbidden - Insufficient permissions    |
+| 404  | Not Found - Resource not found          |
+| 409  | Conflict - Resource already exists      |
+| 422  | Unprocessable - Validation failed       |
+| 429  | Too Many Requests - Rate limit exceeded |
+| 500  | Server Error - Internal error           |
 
 ---
 
 ## Rate Limiting
 
 All endpoints are rate limited:
+
 - **Default**: 100 requests per 15 minutes per user
 - **Auth endpoints**: 5 attempts per 15 minutes
 - **Payment endpoints**: 10 requests per minute
 
 Response headers include:
+
 - `X-RateLimit-Limit` - Max requests allowed
 - `X-RateLimit-Remaining` - Requests remaining
 - `X-RateLimit-Reset` - Unix timestamp when limit resets
@@ -616,6 +655,7 @@ GET /api/transactions?status=completed&startDate=2024-01-01&endDate=2024-01-31
 Webhooks are sent for important events:
 
 **Events:**
+
 - `payment.completed` - Payment successfully processed
 - `payment.failed` - Payment processing failed
 - `wallet.created` - New wallet created
@@ -623,13 +663,14 @@ Webhooks are sent for important events:
 - `user.registered` - New user registered
 
 **Webhook Structure:**
+
 ```json
 {
   "event": "payment.completed",
   "timestamp": "2024-01-15T10:00:00Z",
   "data": {
     "transactionId": "txn-uuid",
-    "amount": 100.00,
+    "amount": 100.0,
     "status": "completed"
   },
   "signature": "sha256=abc123..."
@@ -643,6 +684,7 @@ Configure webhook URL in dashboard settings.
 ## Support
 
 For API issues or questions:
+
 - 📧 Email: api-support@qmoi.app
 - 📖 Docs: https://docs.qmoi.app
 - 💬 Support: https://support.qmoi.app
