@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface UserProfile {
   id: string;
@@ -19,15 +19,15 @@ export function UserProfile() {
   const router = useRouter();
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
-    dateOfBirth: '',
-    bio: '',
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    dateOfBirth: "",
+    bio: "",
   });
 
   useEffect(() => {
@@ -37,38 +37,38 @@ export function UserProfile() {
   const fetchProfile = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem("accessToken");
       if (!token) {
-        router.push('/login');
+        router.push("/login");
         return;
       }
 
-      const response = await fetch('/api/users/profile', {
+      const response = await fetch("/api/users/profile", {
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
       if (!response.ok) {
         if (response.status === 401) {
-          router.push('/login');
+          router.push("/login");
           return;
         }
-        setError('Failed to load profile');
+        setError("Failed to load profile");
         return;
       }
 
       const data = await response.json();
       setProfile(data);
       setFormData({
-        firstName: data.firstName || '',
-        lastName: data.lastName || '',
-        phoneNumber: data.phoneNumber || '',
-        dateOfBirth: data.dateOfBirth || '',
-        bio: data.bio || '',
+        firstName: data.firstName || "",
+        lastName: data.lastName || "",
+        phoneNumber: data.phoneNumber || "",
+        dateOfBirth: data.dateOfBirth || "",
+        bio: data.bio || "",
       });
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      setError(err instanceof Error ? err.message : "An error occurred");
     } finally {
       setLoading(false);
     }
@@ -89,23 +89,23 @@ export function UserProfile() {
     setSaving(true);
 
     try {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem("accessToken");
       if (!token) {
-        router.push('/login');
+        router.push("/login");
         return;
       }
 
-      const response = await fetch('/api/users/profile', {
-        method: 'PUT',
+      const response = await fetch("/api/users/profile", {
+        method: "PUT",
         headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
-        setError('Failed to update profile');
+        setError("Failed to update profile");
         return;
       }
 
@@ -113,7 +113,7 @@ export function UserProfile() {
       setProfile(updatedProfile);
       setEditing(false);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      setError(err instanceof Error ? err.message : "An error occurred");
     } finally {
       setSaving(false);
     }
@@ -151,17 +151,13 @@ export function UserProfile() {
                   <label className="text-sm font-medium text-gray-600">
                     First Name
                   </label>
-                  <p className="mt-1 text-lg">
-                    {profile.firstName || '—'}
-                  </p>
+                  <p className="mt-1 text-lg">{profile.firstName || "—"}</p>
                 </div>
                 <div>
                   <label className="text-sm font-medium text-gray-600">
                     Last Name
                   </label>
-                  <p className="mt-1 text-lg">
-                    {profile.lastName || '—'}
-                  </p>
+                  <p className="mt-1 text-lg">{profile.lastName || "—"}</p>
                 </div>
               </div>
 
@@ -169,9 +165,7 @@ export function UserProfile() {
                 <label className="text-sm font-medium text-gray-600">
                   Phone Number
                 </label>
-                <p className="mt-1 text-lg">
-                  {profile.phoneNumber || '—'}
-                </p>
+                <p className="mt-1 text-lg">{profile.phoneNumber || "—"}</p>
               </div>
 
               <div>
@@ -179,17 +173,15 @@ export function UserProfile() {
                   Date of Birth
                 </label>
                 <p className="mt-1 text-lg">
-                  {profile.dateOfBirth ? new Date(profile.dateOfBirth).toLocaleDateString() : '—'}
+                  {profile.dateOfBirth
+                    ? new Date(profile.dateOfBirth).toLocaleDateString()
+                    : "—"}
                 </p>
               </div>
 
               <div>
-                <label className="text-sm font-medium text-gray-600">
-                  Bio
-                </label>
-                <p className="mt-1 text-lg">
-                  {profile.bio || '—'}
-                </p>
+                <label className="text-sm font-medium text-gray-600">Bio</label>
+                <p className="mt-1 text-lg">{profile.bio || "—"}</p>
               </div>
 
               <div className="pt-4">
@@ -212,7 +204,10 @@ export function UserProfile() {
             <form onSubmit={handleSave} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium mb-1">
+                  <label
+                    htmlFor="firstName"
+                    className="block text-sm font-medium mb-1"
+                  >
                     First Name
                   </label>
                   <input
@@ -225,7 +220,10 @@ export function UserProfile() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium mb-1">
+                  <label
+                    htmlFor="lastName"
+                    className="block text-sm font-medium mb-1"
+                  >
                     Last Name
                   </label>
                   <input
@@ -240,7 +238,10 @@ export function UserProfile() {
               </div>
 
               <div>
-                <label htmlFor="phoneNumber" className="block text-sm font-medium mb-1">
+                <label
+                  htmlFor="phoneNumber"
+                  className="block text-sm font-medium mb-1"
+                >
                   Phone Number
                 </label>
                 <input
@@ -254,7 +255,10 @@ export function UserProfile() {
               </div>
 
               <div>
-                <label htmlFor="dateOfBirth" className="block text-sm font-medium mb-1">
+                <label
+                  htmlFor="dateOfBirth"
+                  className="block text-sm font-medium mb-1"
+                >
                   Date of Birth
                 </label>
                 <input
@@ -287,7 +291,7 @@ export function UserProfile() {
                   disabled={saving}
                   className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 disabled:bg-gray-400 transition"
                 >
-                  {saving ? 'Saving...' : 'Save Changes'}
+                  {saving ? "Saving..." : "Save Changes"}
                 </button>
                 <button
                   type="button"

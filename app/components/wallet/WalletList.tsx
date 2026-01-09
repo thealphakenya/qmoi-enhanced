@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface Wallet {
   id: string;
@@ -14,9 +14,9 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
-  const [newCurrency, setNewCurrency] = useState('KES');
+  const [newCurrency, setNewCurrency] = useState("KES");
 
   useEffect(() => {
     fetchWallets();
@@ -25,31 +25,31 @@ export function WalletList() {
   const fetchWallets = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem("accessToken");
       if (!token) {
-        router.push('/login');
+        router.push("/login");
         return;
       }
 
-      const response = await fetch('/api/wallets', {
+      const response = await fetch("/api/wallets", {
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
       if (!response.ok) {
         if (response.status === 401) {
-          router.push('/login');
+          router.push("/login");
           return;
         }
-        setError('Failed to load wallets');
+        setError("Failed to load wallets");
         return;
       }
 
       const data = await response.json();
       setWallets(data.wallets || []);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      setError(err instanceof Error ? err.message : "An error occurred");
     } finally {
       setLoading(false);
     }
@@ -60,31 +60,31 @@ export function WalletList() {
     setCreatingWallet(true);
 
     try {
-      const token = localStorage.getItem('accessToken');
+      const token = localStorage.getItem("accessToken");
       if (!token) {
-        router.push('/login');
+        router.push("/login");
         return;
       }
 
-      const response = await fetch('/api/wallets', {
-        method: 'POST',
+      const response = await fetch("/api/wallets", {
+        method: "POST",
         headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ currency: newCurrency }),
       });
 
       if (!response.ok) {
-        setError('Failed to create wallet');
+        setError("Failed to create wallet");
         return;
       }
 
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
-      setNewCurrency('KES');
+      setNewCurrency("KES");
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      setError(err instanceof Error ? err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
     }
@@ -111,7 +111,9 @@ export function WalletList() {
             key={wallet.id}
             className="border rounded-lg p-6 hover:shadow-lg transition"
           >
-            <h3 className="text-lg font-semibold mb-2">{wallet.currency} Wallet</h3>
+            <h3 className="text-lg font-semibold mb-2">
+              {wallet.currency} Wallet
+            </h3>
             <p className="text-3xl font-bold text-blue-600 mb-2">
               {wallet.balance.toFixed(2)} {wallet.currency}
             </p>
@@ -133,7 +135,10 @@ export function WalletList() {
       )}
 
       {/* Create Wallet Form */}
-      <form onSubmit={handleCreateWallet} className="border rounded-lg p-6 bg-gray-50">
+      <form
+        onSubmit={handleCreateWallet}
+        className="border rounded-lg p-6 bg-gray-50"
+      >
         <h3 className="text-lg font-semibold mb-4">Create New Wallet</h3>
         <div className="flex gap-2">
           <select
@@ -153,7 +158,7 @@ export function WalletList() {
             disabled={creatingWallet}
             className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 disabled:bg-gray-400 transition"
           >
-            {creatingWallet ? 'Creating...' : 'Create'}
+            {creatingWallet ? "Creating..." : "Create"}
           </button>
         </div>
       </form>

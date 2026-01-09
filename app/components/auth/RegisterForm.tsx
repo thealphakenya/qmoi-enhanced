@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export function RegisterForm() {
   const router = useRouter();
   const [formData, setFormData] = useState({
-    email: '',
-    username: '',
-    password: '',
-    confirmPassword: '',
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,28 +24,28 @@ export function RegisterForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setLoading(true);
 
     try {
       // Validate form
       if (!formData.email || !formData.username || !formData.password) {
-        setError('All fields are required');
+        setError("All fields are required");
         setLoading(false);
         return;
       }
 
       if (formData.password !== formData.confirmPassword) {
-        setError('Passwords do not match');
+        setError("Passwords do not match");
         setLoading(false);
         return;
       }
 
       // Call registration API
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           email: formData.email,
@@ -56,7 +56,7 @@ export function RegisterForm() {
 
       if (!response.ok) {
         const data = await response.json();
-        setError(data.error || 'Registration failed');
+        setError(data.error || "Registration failed");
         setLoading(false);
         return;
       }
@@ -64,13 +64,13 @@ export function RegisterForm() {
       const { accessToken, user } = await response.json();
 
       // Store token
-      localStorage.setItem('accessToken', accessToken);
-      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
 
       // Redirect to dashboard
-      router.push('/dashboard');
+      router.push("/dashboard");
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      setError(err instanceof Error ? err.message : "An error occurred");
       setLoading(false);
     }
   };
@@ -137,7 +137,10 @@ export function RegisterForm() {
       </div>
 
       <div>
-        <label htmlFor="confirmPassword" className="block text-sm font-medium mb-1">
+        <label
+          htmlFor="confirmPassword"
+          className="block text-sm font-medium mb-1"
+        >
           Confirm Password
         </label>
         <input
@@ -157,11 +160,11 @@ export function RegisterForm() {
         disabled={loading}
         className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition"
       >
-        {loading ? 'Creating account...' : 'Create Account'}
+        {loading ? "Creating account..." : "Create Account"}
       </button>
 
       <p className="text-center text-sm text-gray-600">
-        Already have an account?{' '}
+        Already have an account?{" "}
         <a href="/login" className="text-blue-600 hover:underline">
           Sign in
         </a>
