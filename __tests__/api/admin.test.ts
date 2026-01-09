@@ -1,7 +1,7 @@
-import { db } from '@/lib/db/prisma';
-import authService from '@/lib/auth/service';
+import { db } from "@/lib/db/prisma";
+import authService from "@/lib/auth/service";
 
-describe('Admin Endpoints', () => {
+describe("Admin Endpoints", () => {
   let adminToken: string;
   let regularUserToken: string;
   let adminId: string;
@@ -11,10 +11,10 @@ describe('Admin Endpoints', () => {
     // Create admin user
     const adminUser = await db.prisma.user.create({
       data: {
-        email: 'admin@test.com',
-        username: 'admin_test',
-        passwordHash: 'hashed_password',
-        role: 'admin',
+        email: "admin@test.com",
+        username: "admin_test",
+        passwordHash: "hashed_password",
+        role: "admin",
         emailVerified: true,
       },
     });
@@ -23,18 +23,21 @@ describe('Admin Endpoints', () => {
     // Create regular user
     const regularUser = await db.prisma.user.create({
       data: {
-        email: 'user@test.com',
-        username: 'regular_user',
-        passwordHash: 'hashed_password',
-        role: 'user',
+        email: "user@test.com",
+        username: "regular_user",
+        passwordHash: "hashed_password",
+        role: "user",
         emailVerified: true,
       },
     });
     regularUserId = regularUser.id;
 
     // Generate tokens
-    adminToken = authService.generateToken({ userId: adminId, role: 'admin' });
-    regularUserToken = authService.generateToken({ userId: regularUserId, role: 'user' });
+    adminToken = authService.generateToken({ userId: adminId, role: "admin" });
+    regularUserToken = authService.generateToken({
+      userId: regularUserId,
+      role: "user",
+    });
   });
 
   afterAll(async () => {
@@ -42,27 +45,27 @@ describe('Admin Endpoints', () => {
     await db.prisma.user.deleteMany();
   });
 
-  describe('Dashboard Endpoint', () => {
-    it('should deny access to non-admin users', () => {
+  describe("Dashboard Endpoint", () => {
+    it("should deny access to non-admin users", () => {
       // In real scenario, would make HTTP request
       expect(() => {
         authService.verifyToken(regularUserToken);
       }).not.toThrow();
     });
 
-    it('should allow admin users to access dashboard', () => {
+    it("should allow admin users to access dashboard", () => {
       expect(() => {
         const decoded = authService.verifyToken(adminToken);
         expect(decoded.userId).toBe(adminId);
       }).not.toThrow();
     });
 
-    it('should return dashboard statistics', async () => {
+    it("should return dashboard statistics", async () => {
       // Create test data
       const wallet = await db.prisma.wallet.create({
         data: {
           userId: regularUserId,
-          currency: 'KES',
+          currency: "KES",
           balance: 100,
         },
       });
@@ -70,10 +73,10 @@ describe('Admin Endpoints', () => {
       const transaction = await db.prisma.transaction.create({
         data: {
           walletId: wallet.id,
-          type: 'credit',
+          type: "credit",
           amount: 100,
-          status: 'completed',
-          reference: 'TEST001',
+          status: "completed",
+          reference: "TEST001",
         },
       });
 
@@ -88,8 +91,8 @@ describe('Admin Endpoints', () => {
     });
   });
 
-  describe('Analytics Endpoints', () => {
-    it('should aggregate transaction data correctly', async () => {
+  describe("Analytics Endpoints", () => {
+    it("should aggregate transaction data correctly", async () => {
       const wallet = await db.prisma.wallet.findFirst();
       if (!wallet) return;
 
@@ -100,7 +103,7 @@ describe('Admin Endpoints', () => {
       expect(Array.isArray(transactions)).toBe(true);
     });
 
-    it('should filter transactions by date range', async () => {
+    it("should filter transactions by date range", async () => {
       const startDate = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
       const endDate = new Date();
 
@@ -116,17 +119,17 @@ describe('Admin Endpoints', () => {
       expect(Array.isArray(transactions)).toBe(true);
     });
 
-    it('should calculate wallet statistics', async () => {
+    it("should calculate wallet statistics", async () => {
       const wallets = await db.prisma.wallet.findMany();
       const totalBalance = wallets.reduce((sum, w) => sum + w.balance, 0);
 
-      expect(typeof totalBalance).toBe('number');
+      expect(typeof totalBalance).toBe("number");
       expect(totalBalance).toBeGreaterThanOrEqual(0);
     });
   });
 
-  describe('User Management Endpoints', () => {
-    it('should list all users with pagination', async () => {
+  describe("User Management Endpoints", () => {
+    it("should list all users with pagination", async () => {
       const users = await db.prisma.user.findMany({
         skip: 0,
         take: 20,
@@ -143,32 +146,32 @@ describe('Admin Endpoints', () => {
       expect(users.length).toBeGreaterThan(0);
     });
 
-    it('should update user information', async () => {
+    it("should update user information", async () => {
       const updated = await db.prisma.user.update({
         where: { id: regularUserId },
-        data: { role: 'moderator' },
+        data: { role: "moderator" },
         select: { id: true, role: true },
       });
 
-      expect(updated.role).toBe('moderator');
+      expect(updated.role).toBe("moderator");
 
       // Restore
       await db.prisma.user.update({
         where: { id: regularUserId },
-        data: { role: 'user' },
+        data: { role: "user" },
       });
     });
 
-    it('should prevent admin self-deletion', () => {
+    it("should prevent admin self-deletion", () => {
       // Check that current user cannot delete themselves
       expect(adminId).toBeDefined();
       expect(adminId).not.toBe(null);
     });
 
-    it('should search users by email', async () => {
+    it("should search users by email", async () => {
       const users = await db.prisma.user.findMany({
         where: {
-          email: { contains: 'admin', mode: 'insensitive' },
+          email: { contains: "admin", mode: "insensitive" },
         },
       });
 
