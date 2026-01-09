@@ -1,0 +1,92 @@
+import { NextRequest, NextResponse } from "next/server";
+import db from "@/lib/db/services";
+import authService from "@/lib/auth/service";
+import { emailService } from "@/lib/email/service";
+
+// GET /api/users/profile - Get current user profile
+export async function GET(request: NextRequest) {
+  try {
+    const authHeader = request.headers.get("authorization");
+    if (!authHeader?.startsWith("Bearer ")) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const token = authHeader.substring(7);
+    let decoded;
+    try {
+      decoded = authService.verifyToken(token) as { userId?: string };
+    } catch {
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+    }
+
+    if (!decoded?.userId) {
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+    }
+
+    const user = await db.userService.getById(decoded.userId);
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    // Remove sensitive data
+    const { passwordHash, ...safeUser } = user;
+    return NextResponse.json(safeUser);
+  } catch (error) {
+    console.error("GET /api/users/profile error:", error);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}
+
+// PUT /api/users/profile - Update user profile
+export async function PUT(request: NextRequest) {
+  try {
+    const authHeader = request.headers.get("authorization");
+    if (!authHeader?.startsWith("Bearer ")) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const token = authHeader.substring(7);
+    let decoded;
+    try {
+      decoded = authService.verifyToken(token) as { userId?: string };
+    } catch {
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+    }
+
+    if (!decoded?.userId) {
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+    }
+
+    const body = (await request.json()) as {
+      firstName?: string;
+      lastName?: string;
+      email?: string;
+      phoneNumber?: string;
+      dateOfBirth?: string;
+      bio?: string;
+      [key: string]: unknown;
+    };
+
+    // Validate update data
+    const updateData: Record<string, unknown> = {};
+    if (body.firstName) updateData.firstName = body.firstName;
+    if (body.lastName) updateData.lastName = body.lastName;
+    if (body.phoneNumber) updateData.phoneNumber = body.phoneNumber;
+    if (body.dateOfBirth) updateData.dateOfBirth = new Date(body.dateOfBirth);
+    if (body.bio) updateData.bio = body.bio;
+
+    const updated = await db.userService.update(decoded.userId, updateData);
+    const { passwordHash, ...safeUser } = updated;
+
+    return NextResponse.json(safeUser);
+  } catch (error) {
+    console.error("PUT /api/users/profile error:", error);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}

@@ -1,0 +1,47 @@
+import { NextRequest, NextResponse } from "next/server";
+import db from "@/lib/db/services";
+import authService from "@/lib/auth/service";
+import { notificationService } from "@/lib/notifications/service";
+
+// GET /api/transactions - List user transactions
+export async function GET(request: NextRequest) {
+  try {
+    const authHeader = request.headers.get("authorization");
+    if (!authHeader?.startsWith("Bearer ")) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const token = authHeader.substring(7);
+    let decoded;
+    try {
+      decoded = authService.verifyToken(token) as { userId?: string };
+    } catch {
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+    }
+
+    if (!decoded?.userId) {
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+    }
+
+    const query = new URL(request.url);
+    const skip = parseInt(query.searchParams.get("skip") || "0");
+    const take = parseInt(query.searchParams.get("take") || "10");
+    const status = query.searchParams.get("status");
+
+    // Build query filters
+    const filters: Record<string, unknown> = {};
+    if (status) filters.status = status;
+
+    // Get transactions (would be implemented in transactionService)
+    return NextResponse.json({
+      transactions: [],
+      pagination: { skip, take, total: 0 },
+    });
+  } catch (error) {
+    console.error("GET /api/transactions error:", error);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}
