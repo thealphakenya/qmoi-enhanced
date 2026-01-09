@@ -1,53 +1,218 @@
-name: CI / Build / Publish
+name: CI/CD Pipeline
 
 on:
   push:
-    branches: [main, autosync-backup-20250926-232440]
+    branches: [ main, develop, autosync-backup-20250926-232440 ]
     tags:
       - "v*"
+  pull_request:
+    branches: [ main, develop ]
   workflow_dispatch:
+
+env:
+  NODE_VERSION: '18'
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
 
 permissions:
   contents: read
   packages: write
   id-token: write
+  security-events: write
 
 jobs:
-  build-and-test:
+  # Code Quality Checks
+  quality:
     runs-on: ubuntu-latest
+    name: Code Quality & Linting
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
-          cache: "npm"
-      - name: Install
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
         run: npm ci
+
+      - name: TypeScript Check
+        run: npx tsc --noEmit
+
+      - name: Lint code
+        run: npm run lint --if-present
+
+  # Unit & Integration Tests
+  test:
+    runs-on: ubuntu-latest
+    name: Tests & Coverage
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: qmoi_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
       - name: Run tests
         run: npx jest --config=jest.config.cjs -i --runInBand --colors --verbose
-      - name: Run coverage (do not fail job for thresholds)
-        run: |
-          set -o pipefail
-          # Run coverage but don't fail the job if thresholds are not met (we still upload it)
-          npx jest --config=jest.config.cjs --coverage --coverageDirectory=coverage -i --runInBand --colors --verbose || true
+
+      - name: Generate coverage report
+        run: npx jest --config=jest.config.cjs --coverage --coverageDirectory=coverage -i --runInBand --colors --verbose || true
+
       - name: Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: coverage
+
       - name: Upload coverage to Codecov
         if: ${{ secrets.CODECOV_TOKEN != '' }}
         uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage/**/lcov.info
-      - name: Build
+
+  # Build & Security
+  build:
+    needs: [quality, test]
+    runs-on: ubuntu-latest
+    name: Build & Security Scan
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
         run: npm run ci:build
+
+      - name: Security audit
+        run: npm audit --audit-level=moderate || true
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: 'javascript'
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v2
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+
+  # Docker Build & Push
+  docker:
+    needs: build
+    runs-on: ubuntu-latest
+    name: Build & Push Docker Image
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/tags/v'))
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Log in to Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
           context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+  # Deploy to Staging
+  deploy-staging:
+    needs: docker
+    runs-on: ubuntu-latest
+    name: Deploy to Staging
+    environment:
+      name: staging
+      url: https://staging.qmoi.app
+    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to staging
+        run: bash scripts/deploy-docker.sh staging
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          STAGING_HOST: ${{ secrets.STAGING_HOST }}
+          STAGING_USER: ${{ secrets.STAGING_USER }}
+
+      - name: Smoke tests
+        run: |
+          sleep 30
+          curl -f https://staging.qmoi.app/health || exit 1
+
+  # Deploy to Production
+  deploy-production:
+    needs: docker
+    runs-on: ubuntu-latest
+    name: Deploy to Production
+    environment:
+      name: production
+      url: https://qmoi.app
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to production
+        run: bash scripts/deploy-prod.sh
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          PROD_HOST: ${{ secrets.PROD_HOST }}
+          PROD_USER: ${{ secrets.PROD_USER }}
+
+      - name: Post-deployment tests
+        run: |
+          sleep 30
+          curl -f https://qmoi.app/health || exit 1
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ghcr.io/${{ github.repository }}:latest
