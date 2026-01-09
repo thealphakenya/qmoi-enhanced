@@ -515,7 +515,8 @@ export class AppManagementService {
 
       // Fix common issues automatically
       for (const issue of issues) {
-        if (issue.severity === "low" || issue.severity === "medium") {
+        const i = issue as { severity?: string } | null;
+        if (i?.severity === "low" || i?.severity === "medium") {
           await this.fixIssue(app, issue);
         }
       }
@@ -594,10 +595,11 @@ export class AppManagementService {
     // Simulate fixing issues
     await this.sleep(1000);
 
+    const i = issue as { issue?: string } | null;
     app.troubleshooting.logs.push({
       timestamp: new Date(),
       level: "info",
-      message: `Fixed issue: ${issue.issue}`,
+      message: `Fixed issue: ${i?.issue ?? "unknown"}`,
     });
   }
 
@@ -641,7 +643,10 @@ export class AppManagementService {
               this.eventEmitter.emit("updateAvailable", { app, update });
             }
           } catch (_error) {
-            (console as any)._error(`Failed to check updates for ${app.id}:`, _error);
+            (console as any)._error(
+              `Failed to check updates for ${app.id}:`,
+              _error
+            );
           }
         }
       }

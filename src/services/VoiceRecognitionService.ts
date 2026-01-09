@@ -732,10 +732,16 @@ export class VoiceRecognitionService {
     }
 
     // Apply unknown additional _options
-    if (_options.pitch) utterance.pitch = _options.pitch;
-    if (_options.rate) utterance.rate = _options.rate;
-    if (_options.volume) utterance.volume = _options.volume;
-    if (_options.voice) utterance.voice = _options.voice;
+    const opts = _options as {
+      pitch?: number;
+      rate?: number;
+      volume?: number;
+      voice?: SpeechSynthesisVoice;
+    } | null;
+    if (opts?.pitch !== undefined) utterance.pitch = opts.pitch;
+    if (opts?.rate !== undefined) utterance.rate = opts.rate;
+    if (opts?.volume !== undefined) utterance.volume = opts.volume;
+    if (opts?.voice) utterance.voice = opts.voice;
 
     // Add user's preferred name to the text if available
     if (this.userSettings.preferredNames.length > 0) {

@@ -828,7 +828,7 @@ export class BitgetManager extends EventEmitter {
       lastBackup: new Date(),
       encryptionKeys: {
         current: this.generateEncryptionKey(),
-        previous: Buffer.alloc(0),
+        previous: (Buffer as any).alloc(0),
         nextRotation: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
       },
     };
@@ -1110,10 +1110,10 @@ export class BitgetManager extends EventEmitter {
     const decipher = (nodeCrypto as any).createDecipheriv(
       "aes-256-gcm",
       this.encryptionKey,
-      Buffer.from(iv, "hex")
+      (Buffer as any).from(iv, "hex")
     );
 
-    decipher.setAuthTag(Buffer.from(authTag, "hex"));
+    decipher.setAuthTag((Buffer as any).from(authTag, "hex"));
 
     let decrypted = decipher.update(encrypted, "hex", "utf8");
     decrypted += decipher.final("utf8");
