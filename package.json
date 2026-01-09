@@ -36,7 +36,13 @@
     "ci:full": "npm run ci:build && SKIP_COVERAGE_THRESHOLD=true npm run test:coverage --if-present && npm run ci:smoke",
     "docker:build": "docker build -t qmoi-enhanced:latest .",
     "ci:verify": "npm run ci:build && npm run lint && npm run test:coverage",
-    "serve:static": "node scripts/serve-static.js"
+    "serve:static": "node scripts/serve-static.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "e2e": "cypress open",
+    "e2e:run": "cypress run",
+    "e2e:headless": "cypress run --headless",
+    "e2e:ci": "cypress run --record --parallel"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -115,6 +121,7 @@
     "@typescript-eslint/parser": "^8.50.0",
     "autoprefixer": "^10.4.14",
     "babel-jest": "^30.2.0",
+    "cypress": "^13.6.0",
     "esbuild": "^0.27.1",
     "esbuild-register": "^3.6.0",
     "eslint": "^8.48.0",

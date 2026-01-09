@@ -9,18 +9,19 @@ This guide covers performance optimization strategies for QMOI Enhanced across f
 ### Code Splitting
 
 **Next.js Dynamic Imports:**
-```typescript
-import dynamic from 'next/dynamic';
 
-const WalletList = dynamic(() => import('@/components/wallet/WalletList'), {
-  loading: () => <div>Loading...</div>
+```typescript
+import dynamic from "next/dynamic";
+
+const WalletList = dynamic(() => import("@/components/wallet/WalletList"), {
+  loading: () => <div>Loading...</div>,
 });
 ```
 
 ### Image Optimization
 
 ```typescript
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function UserProfile({ user }) {
   return (
@@ -45,19 +46,23 @@ npm run analyze
 ### Caching
 
 **Browser Cache:**
+
 ```typescript
 // Cache static assets for 1 year
-app.use(express.static('public', {
-  maxAge: '1y',
-  etag: false
-}));
+app.use(
+  express.static("public", {
+    maxAge: "1y",
+    etag: false,
+  })
+);
 ```
 
 **API Response Caching:**
+
 ```typescript
 // Cache user profile for 5 minutes
-app.get('/api/users/profile', (req, res) => {
-  res.set('Cache-Control', 'public, max-age=300');
+app.get("/api/users/profile", (req, res) => {
+  res.set("Cache-Control", "public, max-age=300");
   // ... handler
 });
 ```
@@ -67,22 +72,24 @@ app.get('/api/users/profile', (req, res) => {
 ### Database Query Optimization
 
 **Avoid N+1 Queries:**
+
 ```typescript
 // ❌ Bad - N+1 queries
 const users = await prisma.user.findMany();
 for (const user of users) {
   const wallets = await prisma.wallet.findMany({
-    where: { userId: user.id }
+    where: { userId: user.id },
   });
 }
 
 // ✓ Good - single query
 const users = await prisma.user.findMany({
-  include: { wallets: true }
+  include: { wallets: true },
 });
 ```
 
 **Index Strategy:**
+
 ```sql
 -- Add indexes for frequently queried fields
 CREATE INDEX idx_user_email ON users(email);
@@ -91,24 +98,27 @@ CREATE INDEX idx_wallet_user_id ON wallets(user_id);
 ```
 
 **Query Timeout:**
+
 ```typescript
 // Set query timeout to 30 seconds
 const db = new Prisma({
   datasources: {
     db: { url: process.env.DATABASE_URL },
-    log: ['query']
-  }
+    log: ["query"],
+  },
 });
 ```
 
 ### Connection Pooling
 
 **Prisma Connection Pool:**
+
 ```
 DATABASE_URL="postgresql://user:password@host/db?schema=public&statement_cache_size=200&statement_timeout=15000"
 ```
 
 Configuration:
+
 - `statement_cache_size`: 200 (SQL caching)
 - `statement_timeout`: 15000ms (15 second timeout)
 - Pool size: 10 (default)
@@ -116,8 +126,9 @@ Configuration:
 ### Caching Strategy
 
 **Redis Caching:**
+
 ```typescript
-const redis = require('redis');
+const redis = require("redis");
 const client = redis.createClient(process.env.REDIS_URL);
 
 // Get from cache or fetch
@@ -128,27 +139,24 @@ async function getUserWithCache(userId: string) {
 
   // Fetch from database
   const user = await prisma.user.findUnique({
-    where: { id: userId }
+    where: { id: userId },
   });
 
   // Store in cache for 1 hour
-  await client.setex(
-    `user:${userId}`,
-    3600,
-    JSON.stringify(user)
-  );
+  await client.setex(`user:${userId}`, 3600, JSON.stringify(user));
 
   return user;
 }
 ```
 
 **Cache Invalidation:**
+
 ```typescript
 // Invalidate on update
 async function updateUser(userId: string, data: any) {
   const updated = await prisma.user.update({
     where: { id: userId },
-    data
+    data,
   });
 
   // Clear cache
@@ -163,20 +171,21 @@ async function updateUser(userId: string, data: any) {
 ### Pagination
 
 **Cursor-Based Pagination:**
+
 ```typescript
 // More efficient than offset
 const transactions = await prisma.transaction.findMany({
   where: { walletId },
   take: 10,
   skip: 1, // Skip cursor
-  orderBy: { createdAt: 'desc' }
+  orderBy: { createdAt: "desc" },
 });
 ```
 
 ### Response Compression
 
 ```typescript
-const compression = require('compression');
+const compression = require("compression");
 app.use(compression());
 ```
 
@@ -184,7 +193,7 @@ app.use(compression());
 
 ```typescript
 // Link preload headers
-res.setHeader('Link', '</styles/main.css>; rel=preload; as=style');
+res.setHeader("Link", "</styles/main.css>; rel=preload; as=style");
 ```
 
 ## Database Performance
@@ -192,6 +201,7 @@ res.setHeader('Link', '</styles/main.css>; rel=preload; as=style');
 ### Query Optimization
 
 **Analyze Query Plans:**
+
 ```sql
 EXPLAIN ANALYZE
 SELECT * FROM transactions WHERE status = 'completed'
@@ -200,12 +210,14 @@ LIMIT 10;
 ```
 
 **Query Results:**
+
 ```
 Seq Scan on transactions (cost=0.00..1234.00 rows=100)
   -> Filter: (status = 'completed')
 ```
 
 Add index if full table scan:
+
 ```sql
 CREATE INDEX idx_transactions_status ON transactions(status);
 ```
@@ -215,13 +227,13 @@ CREATE INDEX idx_transactions_status ON transactions(status);
 ```typescript
 // Batch inserts for better performance
 const transactions = [
-  { walletId: '1', amount: 1000 },
-  { walletId: '2', amount: 2000 }
+  { walletId: "1", amount: 1000 },
+  { walletId: "2", amount: 2000 },
 ];
 
 const inserted = await prisma.transaction.createMany({
   data: transactions,
-  skipDuplicates: true
+  skipDuplicates: true,
 });
 ```
 
@@ -235,9 +247,9 @@ async function archiveOldTransactions() {
   const archived = await prisma.transaction.updateMany({
     where: {
       createdAt: { lt: cutoffDate },
-      archived: false
+      archived: false,
     },
-    data: { archived: true }
+    data: { archived: true },
   });
 
   console.log(`Archived ${archived.count} transactions`);
@@ -249,6 +261,7 @@ async function archiveOldTransactions() {
 ### Performance Metrics
 
 **Key Metrics to Monitor:**
+
 - Page load time: < 3 seconds
 - API response time: < 200ms
 - Database query time: < 100ms
@@ -258,16 +271,16 @@ async function archiveOldTransactions() {
 ### Using Datadog
 
 ```typescript
-const statsd = require('node-dogstatsd').StatsD;
+const statsd = require("node-dogstatsd").StatsD;
 
 const dogstatsd = new statsd();
 
 // Track API response time
 app.use((req, res, next) => {
   const start = Date.now();
-  res.on('finish', () => {
+  res.on("finish", () => {
     const duration = Date.now() - start;
-    dogstatsd.timing('api.response_time', duration);
+    dogstatsd.timing("api.response_time", duration);
   });
   next();
 });
@@ -276,7 +289,7 @@ app.use((req, res, next) => {
 ### Using New Relic
 
 ```typescript
-require('newrelic');
+require("newrelic");
 
 // Automatic monitoring of:
 // - HTTP requests
@@ -297,6 +310,7 @@ npm run load-test
 ```
 
 **Load Test Configuration:**
+
 ```yaml
 config:
   target: "http://localhost:3000"
@@ -335,7 +349,7 @@ node --prof-process isolate-*.log > profile.txt
 ### Memory Profiling
 
 ```typescript
-const heapdump = require('heapdump');
+const heapdump = require("heapdump");
 
 // Dump heap every 60 seconds
 setInterval(() => {
@@ -360,6 +374,7 @@ if (duration > 1000) {
 ### Container Optimization
 
 **Dockerfile optimization:**
+
 ```dockerfile
 # Use smaller base image
 FROM node:20-alpine
@@ -387,28 +402,28 @@ spec:
   minReplicas: 2
   maxReplicas: 10
   metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 70
-  - type: Resource
-    resource:
-      name: memory
-      target:
-        type: Utilization
-        averageUtilization: 80
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80
 ```
 
 ### CDN Configuration
 
 ```typescript
 // Serve static content from CDN
-const cdnUrl = 'https://cdn.qmoi.app';
+const cdnUrl = "https://cdn.qmoi.app";
 
 app.use((req, res, next) => {
-  res.setHeader('Link', `<${cdnUrl}/assets/>; rel=preconnect`);
+  res.setHeader("Link", `<${cdnUrl}/assets/>; rel=preconnect`);
   next();
 });
 ```
@@ -443,6 +458,7 @@ app.use((req, res, next) => {
 ## Support
 
 For performance issues:
+
 - Check monitoring dashboard
 - Run load tests locally
 - Profile application
