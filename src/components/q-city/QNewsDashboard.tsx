@@ -280,7 +280,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
                 </tr>
               </thead>
               <tbody>
-                {analytics.map((a: any) => (
+                {analytics.map((a: unknown) => (
                   <tr key={a.id} className="border-t">
                     <td>{a.id}</td>
                     <td>{a.views}</td>

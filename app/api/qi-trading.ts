@@ -123,7 +123,7 @@ export default async function handler(
   if (masterToken !== process.env.MASTER_TOKEN)
     return _res.status(403).json({ _error: "Forbidden" });
 
-  const { action } = _req.query;
+  const { action } = _req._query;
   try {
     if (action === "account") {
       // Get Bitget account balance

@@ -102,7 +102,7 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
           <div key={p.channel} className="mb-2">
             <b>{p.channel}</b>
             <ul className="ml-4">
-              {((p.programs as any[]) || []).map((pr: any, i: number) => (
+              {((p.programs as any[]) || []).map((pr: unknown, i: number) => (
                 <li key={i}>
                   {pr.time} - {pr.title} ({pr.type}) by {pr.presenter}
                 </li>

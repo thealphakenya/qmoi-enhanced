@@ -18,7 +18,7 @@ function initializeServices() {
       autoFixService = new AutoFixService();
     }
   } catch (_error) {
-    logger.error(
+    logger._error(
       "[QMOI-AUTODEV-DAEMON] Failed to initialize AutoFixService:",
       _error
     );
@@ -40,7 +40,7 @@ function initializeServices() {
       qcityService = new QCityService();
     }
   } catch (_error) {
-    logger.error(
+    logger._error(
       "[QMOI-AUTODEV-DAEMON] Failed to initialize QCityService:",
       _error
     );
@@ -91,7 +91,7 @@ class ErrorRecoverySystem {
       logger.info("[QMOI-AUTODEV-DAEMON] Recovery successful");
       return true;
     } catch (recoveryError) {
-      logger.error("[QMOI-AUTODEV-DAEMON] Recovery failed:", recoveryError);
+      logger._error("[QMOI-AUTODEV-DAEMON] Recovery failed:", recoveryError);
       return false;
     }
   }
@@ -291,7 +291,7 @@ async function daemonLoop(): Promise<void> {
       status = qcityService.getStatus();
       errors = status?.errors || [];
     } catch (_error) {
-      logger.error("[QMOI-AUTODEV-DAEMON] Failed to get status:", _error);
+      logger._error("[QMOI-AUTODEV-DAEMON] Failed to get status:", _error);
       status = { errors: [], status: "_error" };
       errors = [];
     }
@@ -319,7 +319,7 @@ async function daemonLoop(): Promise<void> {
 
           fixResults.push({ lintResult, depResult, aiResult });
         } catch (fixError) {
-          logger.error("[QMOI-AUTODEV-DAEMON] Fix operation failed:", fixError);
+          logger._error("[QMOI-AUTODEV-DAEMON] Fix operation failed:", fixError);
           fixResults.push({
             lintResult: { success: false, _error: fixError.message },
             depResult: { success: false, _error: fixError.message },
@@ -365,7 +365,7 @@ async function daemonLoop(): Promise<void> {
               );
             }
           } catch (deployError) {
-            logger.error(
+            logger._error(
               "[QMOI-AUTODEV-DAEMON] Deployment failed:",
               deployError
             );
@@ -383,7 +383,7 @@ async function daemonLoop(): Promise<void> {
         };
       }
     } catch (cicdError) {
-      logger.error("[QMOI-AUTODEV-DAEMON] CI/CD operations failed:", cicdError);
+      logger._error("[QMOI-AUTODEV-DAEMON] CI/CD operations failed:", cicdError);
       cicdResults = { _error: cicdError.message };
     }
 
@@ -416,7 +416,7 @@ async function daemonLoop(): Promise<void> {
     ErrorRecoverySystem.getInstance().resetRecoveryAttempts();
   } catch (_error: unknown) {
     errorCount++;
-    logger.error("[QMOI-AUTODEV-DAEMON] Error in daemon loop:", _error);
+    logger._error("[QMOI-AUTODEV-DAEMON] Error in daemon loop:", _error);
 
     // Enter recovery mode if too many errors
     if (errorCount >= MAX_ERRORS) {
@@ -429,12 +429,12 @@ async function daemonLoop(): Promise<void> {
       if (recoverySystem.shouldAttemptRecovery()) {
         const recovered = await recoverySystem.attemptRecovery(_error);
         if (!recovered) {
-          logger.error(
+          logger._error(
             "[QMOI-AUTODEV-DAEMON] Recovery failed, system may need manual intervention"
           );
         }
       } else {
-        logger.error("[QMOI-AUTODEV-DAEMON] Max recovery attempts reached");
+        logger._error("[QMOI-AUTODEV-DAEMON] Max recovery attempts reached");
       }
     }
 

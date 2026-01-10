@@ -13,7 +13,7 @@ export const QMoiSettingsPanel: React.FC = () => {
   });
   const fileInput = useRef<HTMLInputElement>(null);
 
-  function saveSettings(newSettings: any) {
+  function saveSettings(newSettings: unknown) {
     setSettings(newSettings);
     localStorage.setItem("qmoi-settings", JSON.stringify(newSettings));
   }
@@ -46,7 +46,7 @@ export const QMoiSettingsPanel: React.FC = () => {
     const reader = new FileReader();
     reader.onload = (_ev) => {
       try {
-        const data: any = JSON.parse(_ev.target?.result as string);
+        const data: unknown = JSON.parse(_ev.target?.result as string);
         if (data && data.settings) saveSettings(data.settings);
         if (data && data.cmdHistory)
           localStorage.setItem(
@@ -61,7 +61,7 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(data.qavatar)
           );
         alert("Settings imported!");
-      } catch (err: any) {
+      } catch (_err: unknown) {
         alert("Invalid settings file.");
       }
     };

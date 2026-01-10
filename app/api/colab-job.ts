@@ -51,27 +51,27 @@ export default async function handler(
   _res: NextApiResponse
 ) {
   if (_req.method === "POST") {
-    if (_req.query.installPackage) {
+    if (_req._query.installPackage) {
       const { pkg, manager } = _req.body;
       const result = await installPackage(pkg, manager);
       return _res.json(result);
     }
-    if (_req.query.uploadDataset) {
+    if (_req._query.uploadDataset) {
       const { dataset } = _req.body;
       const result = await uploadDataset(dataset);
       return _res.json(result);
     }
-    if (_req.query.executeJob) {
+    if (_req._query.executeJob) {
       const { jobSpec } = _req.body;
       const result = await executeColabJob(jobSpec);
       return _res.json(result);
     }
-    if (_req.query.jobStatus) {
+    if (_req._query.jobStatus) {
       const { jobId } = _req.body;
       const result = await getColabJobStatus(jobId);
       return _res.json(result);
     }
-    if (_req.query.startProjectJob) {
+    if (_req._query.startProjectJob) {
       const { projectId, projectType, projectName } = _req.body;
       const jobSpec = {
         projectId,

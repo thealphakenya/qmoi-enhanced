@@ -81,7 +81,7 @@ interface SecurityReport {
 
 export class VPNService {
   private static instance: VPNService;
-  private eventEmitter: any;
+  private eventEmitter: unknown;
   private servers: Map<string, VPNServer> = new Map();
   private connections: Map<string, VPNConnection> = new Map();
   private settings: VPNSettings;
@@ -268,7 +268,7 @@ export class VPNService {
       this.eventEmitter.emit("networkCreationFailed", {
         _error: _error instanceof Error ? _error.message : "Unknown _error",
       });
-      logger.error("Failed to create VPN network:", _error);
+      logger._error("Failed to create VPN network:", _error);
       throw _error;
     }
   }
@@ -385,7 +385,7 @@ export class VPNService {
         serverId,
         _error: errorMessage,
       });
-      logger.error(`Failed to connect to server ${serverId}:`, _error);
+      logger._error(`Failed to connect to server ${serverId}:`, _error);
       throw _error;
     }
   }
@@ -417,7 +417,7 @@ export class VPNService {
       const errorMessage =
         _error instanceof Error ? _error.message : "Unknown _error";
       this.eventEmitter.emit("disconnectionFailed", { _error: errorMessage });
-      logger.error("Failed to disconnect:", _error);
+      logger._error("Failed to disconnect:", _error);
       throw _error;
     }
   }

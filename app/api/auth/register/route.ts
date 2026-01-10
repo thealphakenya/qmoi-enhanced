@@ -3,9 +3,9 @@ import { userService, walletService } from "@/lib/db/services";
 import { authService } from "@/lib/auth/service";
 import { emailService } from "@/lib/email/service";
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
-    const body = (await request.json()) as {
+    const body = (await _request.json()) as {
       email?: string;
       username?: string;
       password?: string;
@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
     // Validate input
     if (!body.email || !body.username || !body.password) {
       return NextResponse.json(
-        { error: "Missing required fields" },
+        { _error: "Missing required fields" },
         { status: 400 }
       );
     }
@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     // Validate email format
     if (!authService.validateEmail(body.email)) {
       return NextResponse.json(
-        { error: "Invalid email format" },
+        { _error: "Invalid email format" },
         { status: 400 }
       );
     }
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
     );
     if (!passwordValidation.isStrong) {
       return NextResponse.json(
-        { error: "Password too weak", details: passwordValidation.errors },
+        { _error: "Password too weak", details: passwordValidation.errors },
         { status: 400 }
       );
     }
@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     const existingUser = await userService.getByEmail(body.email);
     if (existingUser) {
       return NextResponse.json(
-        { error: "Email already registered" },
+        { _error: "Email already registered" },
         { status: 409 }
       );
     }
@@ -72,7 +72,7 @@ export async function POST(request: NextRequest) {
       });
     } catch (emailError) {
       console.warn("Failed to send welcome email:", emailError);
-      // Don't fail the request if email fails
+      // Don't fail the _request if email fails
     }
 
     return NextResponse.json(
@@ -88,8 +88,8 @@ export async function POST(request: NextRequest) {
       },
       { status: 201 }
     );
-  } catch (error) {
-    console.error("Registration error:", error);
-    return NextResponse.json({ error: "Registration failed" }, { status: 500 });
+  } catch (_error) {
+    console._error("Registration _error:", _error);
+    return NextResponse.json({ _error: "Registration failed" }, { status: 500 });
   }
 }

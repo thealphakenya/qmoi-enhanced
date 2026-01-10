@@ -477,7 +477,7 @@ function calculateOverallHealth(healthReport: unknown) {
   return { status, score: Math.round(averageScore) };
 }
 
-function generateRecommendations(healthReport: any) {
+function generateRecommendations(healthReport: unknown) {
   const recommendations: Array<{
     component: string;
     priority: string;

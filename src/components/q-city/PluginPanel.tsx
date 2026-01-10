@@ -69,7 +69,7 @@ export default function PluginPanel() {
     fetch("/api/qcity/plugins")
       .then((r) => r.json())
       .then((data) => setPlugins(data.plugins || []))
-      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
+      .catch((_e: unknown) => setError((_e as any).message ?? String(_e)))
       .finally(() => setLoading(false));
   }
 

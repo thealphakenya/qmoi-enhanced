@@ -4,11 +4,11 @@ import authService from "@/lib/auth/service";
 import { notificationService } from "@/lib/notifications/service";
 
 // GET /api/transactions - List user transactions
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
-    const authHeader = request.headers.get("authorization");
+    const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -16,19 +16,19 @@ export async function GET(request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch {
-      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
     }
 
-    const query = new URL(request.url);
-    const skip = parseInt(query.searchParams.get("skip") || "0");
-    const take = parseInt(query.searchParams.get("take") || "10");
-    const status = query.searchParams.get("status");
+    const _query = new URL(_request.url);
+    const skip = parseInt(_query.searchParams.get("skip") || "0");
+    const take = parseInt(_query.searchParams.get("take") || "10");
+    const status = _query.searchParams.get("status");
 
-    // Build query filters
+    // Build _query filters
     const filters: Record<string, unknown> = {};
     if (status) filters.status = status;
 
@@ -37,10 +37,10 @@ export async function GET(request: NextRequest) {
       transactions: [],
       pagination: { skip, take, total: 0 },
     });
-  } catch (error) {
-    console.error("GET /api/transactions error:", error);
+  } catch (_error) {
+    console._error("GET /api/transactions _error:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server _error" },
       { status: 500 }
     );
   }

@@ -14,7 +14,7 @@ export default function SessionPanel() {
     })
       .then((r) => r.json())
       .then((data) => setSessions((data && data.sessions) || []))
-      .catch((err: any) => setError(err?.message || String(err)))
+      .catch((_err: unknown) => setError(_err?.message || String(_err)))
       .finally(() => setLoading(false));
   };
 
@@ -33,7 +33,7 @@ export default function SessionPanel() {
       body: JSON.stringify({ action: "revoke", sid }),
     })
       .then(fetchSessions)
-      .catch((err: any) => setError(err?.message || String(err)))
+      .catch((_err: unknown) => setError(_err?.message || String(_err)))
       .finally(() => setLoading(false));
   };
 
@@ -54,7 +54,7 @@ export default function SessionPanel() {
             </tr>
           </thead>
           <tbody>
-            {sessions.map((s: any, i) => (
+            {sessions.map((s: unknown, i) => (
               <tr key={i}>
                 <td>{s.sid}</td>
                 <td>{s.createdAt}</td>

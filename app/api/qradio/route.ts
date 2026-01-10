@@ -86,8 +86,8 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
-      status: auth.response?.status || 403,
+    return NextResponse.json(auth._response?.body || { _error: "Forbidden" }, {
+      status: auth._response?.status || 403,
     });
   const body = (await _req.json() as any);
   const { channelId, program } = body;

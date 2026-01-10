@@ -3,11 +3,11 @@ const path = require('path');
 
 function walk(dir, cb) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
-  for (const e of entries) {
-    const res = path.resolve(dir, e.name);
-    if (res.includes('node_modules') || res.includes('.git') || res.includes('dist') || res.includes('build')) continue;
-    if (e.isDirectory()) walk(res, cb);
-    else cb(res);
+  for (const _e of entries) {
+    const _res = path.resolve(dir, _e.name);
+    if (_res.includes('node_modules') || _res.includes('.git') || _res.includes('dist') || _res.includes('build')) continue;
+    if (_e.isDirectory()) walk(_res, cb);
+    else cb(_res);
   }
 }
 
@@ -44,7 +44,7 @@ walk(repoRoot, (file) => {
       fs.writeFileSync(file, s, 'utf8');
       filesChanged.push(path.relative(repoRoot, file));
     }
-  } catch (err) {
+  } catch (_err) {
     // ignore binary or permission errors
   }
 });

@@ -41,7 +41,7 @@ interface DeveloperTools {
 
 interface ConsoleMessage {
   id: string;
-  type: "log" | "info" | "warn" | "error";
+  type: "log" | "info" | "warn" | "_error";
   message: string;
   timestamp: Date;
   source: string;
@@ -126,7 +126,7 @@ interface AIFeature {
 
 export class BrowserService {
   private static instance: BrowserService;
-  private eventEmitter: any;
+  private eventEmitter: unknown;
   private tabs: Map<string, BrowserTab> = new Map();
   private activeTabId: string | null = null;
   private settings: BrowserSettings;
@@ -379,7 +379,7 @@ export class BrowserService {
         url,
         _error: errMsg,
       });
-      logger.error(`Navigation failed for tab ${tabId}:`, _error);
+      logger._error(`Navigation failed for tab ${tabId}:`, _error);
       throw _error;
     }
   }
@@ -409,7 +409,7 @@ export class BrowserService {
         } catch (_error) {
           const errDetails =
             _error instanceof Error ? _error.message : String(_error);
-          logger.error(`AI feature ${feature.id} failed: ${errDetails}`);
+          logger._error(`AI feature ${feature.id} failed: ${errDetails}`);
         }
       }
     }

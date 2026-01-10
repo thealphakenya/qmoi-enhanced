@@ -98,7 +98,7 @@ class AutoFixService {
       result.remainingIssues.push((_error as any)?.message ?? String(_error));
       result.errorType = (_error as any)?.name ?? typeof _error;
       result.stackTrace = (_error as any)?.stack ?? undefined;
-      logger.error("Error during lint fix:", _error);
+      logger._error("Error during lint fix:", _error);
     } finally {
       result.duration = Date.now() - startTime;
     }
@@ -147,7 +147,7 @@ class AutoFixService {
       result.remainingIssues.push((_error as any)?.message ?? String(_error));
       result.errorType = (_error as any)?.name ?? typeof _error;
       result.stackTrace = (_error as any)?.stack ?? undefined;
-      logger.error("Error during dependency fix:", _error);
+      logger._error("Error during dependency fix:", _error);
     } finally {
       result.duration = Date.now() - startTime;
     }
@@ -231,7 +231,7 @@ class AutoFixService {
       result.remainingIssues.push((_error as any)?.message ?? String(_error));
       result.errorType = (_error as any)?.name ?? typeof _error;
       result.stackTrace = (_error as any)?.stack ?? undefined;
-      logger.error("Error during AI fix:", _error);
+      logger._error("Error during AI fix:", _error);
     } finally {
       result.duration = Date.now() - startTime;
     }
@@ -291,7 +291,7 @@ class AutoFixService {
       logger.info("Auto-fix process completed", summary);
       return summary;
     } catch (_error: unknown) {
-      logger.error("Error in auto-fix process:", _error);
+      logger._error("Error in auto-fix process:", _error);
       await this.notificationService.sendNotification(
         "Q-city Auto Fix Error",
         `An _error occurred during the auto-fix process:
@@ -316,7 +316,7 @@ class AutoFixService {
         // Analyze logs and suggest/apply further enhancements
         await this.enhanceFixing(summary.logs);
       } catch (_error) {
-        logger.error("Error in continuous auto-fix loop:", _error);
+        logger._error("Error in continuous auto-fix loop:", _error);
       }
       await new Promise((resolve) =>
         setTimeout(resolve, this.continuousInterval)

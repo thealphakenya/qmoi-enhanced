@@ -19,7 +19,7 @@ export function UserProfile() {
   const router = useRouter();
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [_error, setError] = useState("");
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [formData, setFormData] = useState({
@@ -43,14 +43,14 @@ export function UserProfile() {
         return;
       }
 
-      const response = await fetch("/api/users/profile", {
+      const _response = await fetch("/api/users/profile", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-      if (!response.ok) {
-        if (response.status === 401) {
+      if (!_response.ok) {
+        if (_response.status === 401) {
           router.push("/login");
           return;
         }
@@ -58,7 +58,7 @@ export function UserProfile() {
         return;
       }
 
-      const data = await response.json();
+      const data = await _response.json();
       setProfile(data);
       setFormData({
         firstName: data.firstName || "",
@@ -67,25 +67,25 @@ export function UserProfile() {
         dateOfBirth: data.dateOfBirth || "",
         bio: data.bio || "",
       });
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An _error occurred");
     } finally {
       setLoading(false);
     }
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    _e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target;
+    const { name, value } = _e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  const handleSave = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSave = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
     setSaving(true);
 
     try {
@@ -95,7 +95,7 @@ export function UserProfile() {
         return;
       }
 
-      const response = await fetch("/api/users/profile", {
+      const _response = await fetch("/api/users/profile", {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -104,16 +104,16 @@ export function UserProfile() {
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) {
+      if (!_response.ok) {
         setError("Failed to update profile");
         return;
       }
 
-      const updatedProfile = await response.json();
+      const updatedProfile = await _response.json();
       setProfile(updatedProfile);
       setEditing(false);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An _error occurred");
     } finally {
       setSaving(false);
     }
@@ -136,9 +136,9 @@ export function UserProfile() {
           <p className="text-gray-600">{profile.email}</p>
         </div>
 
-        {error && (
+        {_error && (
           <div className="bg-red-50 border-b border-red-200 text-red-700 px-6 py-3">
-            {error}
+            {_error}
           </div>
         )}
 

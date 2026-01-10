@@ -17,7 +17,7 @@ export async function GET(_request: NextRequest) {
         ? authHeader.substring(7)
         : null;
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
-      const _r = apiAuth.response;
+      const _r = apiAuth._response;
       return NextResponse.json(
         _r?.body ?? { _error: "Master access required" },
         { status: _r?.status ?? 401 }

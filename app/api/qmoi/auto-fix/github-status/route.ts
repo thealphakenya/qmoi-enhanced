@@ -11,7 +11,7 @@ export async function GET(_request: NextRequest) {
   // API key gating for status checks
   const auth = libProposals.requireApiKey(_request.headers);
   if (!auth.ok) {
-    const r = auth.response;
+    const r = auth._response;
     if (!r)
       return NextResponse.json(
         { _error: "Unknown auth _error" },

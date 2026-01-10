@@ -30,12 +30,12 @@ declare global {
   var FileReader: unknown;
 
   // Node bridging
-  var Buffer: any; // relaxed type to allow Buffer.* usage in mixed envs
-  var require: any;
-  var module: any;
-  var process: any;
+  var Buffer: unknown; // relaxed type to allow Buffer.* usage in mixed envs
+  var require: unknown;
+  var module: unknown;
+  var process: unknown;
   var console: Console;
-  var NodeJS: any;
+  var NodeJS: unknown;
 
   // Jest test globals
   const jest: unknown;

@@ -7,13 +7,13 @@ import { db } from "@/lib/db/prisma";
  * View audit logs with filtering
  * Admin only
  */
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
-    const token = request.headers.get("Authorization")?.replace("Bearer ", "");
+    const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
     if (!token) {
       return NextResponse.json(
-        { error: { message: "Missing authorization token", code: "NO_TOKEN" } },
+        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
         { status: 401 }
       );
     }
@@ -21,9 +21,9 @@ export async function GET(request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (error) {
+    } catch (_error) {
       return NextResponse.json(
-        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 }
       );
     }
@@ -32,12 +32,12 @@ export async function GET(request: NextRequest) {
     const user = await db.userService.findById(decoded.userId);
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 }
       );
     }
 
-    const { searchParams } = new URL(request.url);
+    const { searchParams } = new URL(_request.url);
     const action = searchParams.get("action");
     const userId = searchParams.get("userId");
     const resource = searchParams.get("resource");
@@ -46,8 +46,8 @@ export async function GET(request: NextRequest) {
     const skip = parseInt(searchParams.get("skip") || "0");
     const take = Math.min(parseInt(searchParams.get("take") || "50"), 100);
 
-    // Build query filters
-    const filters: any = {};
+    // Build _query filters
+    const filters: unknown = {};
 
     if (action) filters.action = action;
     if (userId) filters.userId = userId;
@@ -101,10 +101,10 @@ export async function GET(request: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (error) {
-    console.error("Audit logs error:", error);
+  } catch (_error) {
+    console._error("Audit logs _error:", _error);
     return NextResponse.json(
-      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
       { status: 500 }
     );
   }
@@ -144,8 +144,8 @@ export async function createAuditLog({
         timestamp: new Date(),
       },
     });
-  } catch (error) {
-    console.error("Error creating audit log:", error);
+  } catch (_error) {
+    console._error("Error creating audit log:", _error);
     // Don't throw - audit logging should not break main flow
   }
 }
@@ -153,13 +153,13 @@ export async function createAuditLog({
 /**
  * Audit log export endpoint
  */
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
-    const token = request.headers.get("Authorization")?.replace("Bearer ", "");
+    const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
     if (!token) {
       return NextResponse.json(
-        { error: { message: "Missing authorization token", code: "NO_TOKEN" } },
+        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
         { status: 401 }
       );
     }
@@ -167,9 +167,9 @@ export async function POST(request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (error) {
+    } catch (_error) {
       return NextResponse.json(
-        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 }
       );
     }
@@ -178,18 +178,18 @@ export async function POST(request: NextRequest) {
     const user = await db.userService.findById(decoded.userId);
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 }
       );
     }
 
-    const body = await request.json();
+    const body = await _request.json();
     const { format, filters } = body;
 
     if (!["csv", "json", "pdf"].includes(format)) {
       return NextResponse.json(
         {
-          error: {
+          _error: {
             message: "Invalid format. Use csv, json, or pdf",
             code: "INVALID_FORMAT",
           },
@@ -234,16 +234,16 @@ export async function POST(request: NextRequest) {
         "Content-Disposition": `attachment; filename="${filename}"`,
       },
     });
-  } catch (error) {
-    console.error("Audit log export error:", error);
+  } catch (_error) {
+    console._error("Audit log export _error:", _error);
     return NextResponse.json(
-      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
       { status: 500 }
     );
   }
 }
 
-function convertLogsToCSV(logs: any[]): string {
+function convertLogsToCSV(logs: unknown[]): string {
   if (logs.length === 0) return "No data";
 
   const headers = [

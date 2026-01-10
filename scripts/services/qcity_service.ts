@@ -26,7 +26,7 @@ export class QCityService {
         "Q-City service has been initialized successfully."
       );
     } catch (_error) {
-      logger.error("Failed to initialize Q-City service:", _error);
+      logger._error("Failed to initialize Q-City service:", _error);
       await this.notificationService.sendNotification(
         "Q-City Initialization Error",
         `Failed to initialize Q-City service: ${
@@ -92,7 +92,7 @@ export class QCityService {
       };
       logger.info("Configuration loaded successfully");
     } catch (_error) {
-      logger.error("Failed to load configuration:", _error);
+      logger._error("Failed to load configuration:", _error);
       throw _error;
     }
   }
@@ -118,7 +118,7 @@ export class QCityService {
       }
       logger.info("Platforms initialized successfully");
     } catch (_error) {
-      logger.error("Failed to initialize platforms:", _error);
+      logger._error("Failed to initialize platforms:", _error);
       throw _error;
     }
   }
@@ -156,7 +156,7 @@ export class QCityService {
       }
       logger.info("Features initialized successfully");
     } catch (_error) {
-      logger.error("Failed to initialize features:", _error);
+      logger._error("Failed to initialize features:", _error);
       throw _error;
     }
   }
@@ -188,7 +188,7 @@ export class QCityService {
       };
       logger.info("Resources initialized successfully");
     } catch (_error) {
-      logger.error("Failed to initialize resources:", _error);
+      logger._error("Failed to initialize resources:", _error);
       throw _error;
     }
   }
@@ -284,7 +284,7 @@ export class QCityService {
         "Q-City configuration has been updated successfully."
       );
     } catch (_error) {
-      logger.error("Failed to update configuration:", _error);
+      logger._error("Failed to update configuration:", _error);
       throw _error;
     }
   }
@@ -299,7 +299,7 @@ export class QCityService {
         "Q-City service has been shut down successfully."
       );
     } catch (_error) {
-      logger.error("Failed to shut down Q-City service:", _error);
+      logger._error("Failed to shut down Q-City service:", _error);
       throw _error;
     }
   }

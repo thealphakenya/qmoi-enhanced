@@ -26,7 +26,7 @@ export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
     user,
     deviceId,
     status,
-  } = _req.query;
+  } = _req._query;
   if (!fs.existsSync(AUDIT_LOG)) return _res.status(200).json({ logs: [] });
   const lines = fs.readFileSync(AUDIT_LOG, "utf-8").split("\n").filter(Boolean);
   let logs = lines.map(parseLogLine).filter(Boolean);

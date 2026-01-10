@@ -20,7 +20,7 @@ export default function SystemHealthPanel() {
       if (!_res.ok) throw new Error("Failed to fetch");
       const json = await _res.json();
       setData(json);
-    } catch (_err: any) {
+    } catch (_err: unknown) {
       setError((_err && _err.message) || "Unknown _error");
     } finally {
       setLoading(false);
@@ -59,7 +59,7 @@ export default function SystemHealthPanel() {
       setUiHealth((json && json.status) || "Unknown");
       setUiTestTime(new Date().toLocaleString());
       setActionMsg("UI health check complete.");
-    } catch (_err: any) {
+    } catch (_err: unknown) {
       void _err;
       setUiHealth("Error");
       setActionMsg("UI health check failed.");

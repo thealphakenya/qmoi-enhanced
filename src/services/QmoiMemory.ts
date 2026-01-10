@@ -82,7 +82,7 @@ export class QmoiMemory {
             if (data && data.profiles) {
               // merge conversations if present
               if (Array.isArray(data.conversations)) {
-                data.conversations.forEach((c: any) => {
+                data.conversations.forEach((c: unknown) => {
                   memoryStore.push({
                     id: recordId++,
                     key: "conversation",

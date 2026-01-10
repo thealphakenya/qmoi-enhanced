@@ -7,13 +7,13 @@ import authService from "@/lib/auth/service";
  * List all users with filtering and pagination
  * Admin only
  */
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
-    const token = request.headers.get("Authorization")?.replace("Bearer ", "");
+    const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
     if (!token) {
       return NextResponse.json(
-        { error: { message: "Missing authorization token", code: "NO_TOKEN" } },
+        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
         { status: 401 }
       );
     }
@@ -21,9 +21,9 @@ export async function GET(request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (error) {
+    } catch (_error) {
       return NextResponse.json(
-        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 }
       );
     }
@@ -32,20 +32,20 @@ export async function GET(request: NextRequest) {
     const user = await db.userService.findById(decoded.userId);
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 }
       );
     }
 
-    // Get query parameters
-    const { searchParams } = new URL(request.url);
+    // Get _query parameters
+    const { searchParams } = new URL(_request.url);
     const skip = parseInt(searchParams.get("skip") || "0");
     const take = parseInt(searchParams.get("take") || "20");
     const status = searchParams.get("status");
     const search = searchParams.get("search");
 
     // Build filter
-    const where: any = {};
+    const where: unknown = {};
     if (status) {
       where.emailVerified = status === "verified";
     }
@@ -95,10 +95,10 @@ export async function GET(request: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (error) {
-    console.error("Admin users error:", error);
+  } catch (_error) {
+    console._error("Admin users _error:", _error);
     return NextResponse.json(
-      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
       { status: 500 }
     );
   }
@@ -108,13 +108,13 @@ export async function GET(request: NextRequest) {
  * PUT /api/admin/users/:userId
  * Update user information (admin only)
  */
-export async function PUT(request: NextRequest) {
+export async function PUT(_request: NextRequest) {
   try {
-    const token = request.headers.get("Authorization")?.replace("Bearer ", "");
+    const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
     if (!token) {
       return NextResponse.json(
-        { error: { message: "Missing authorization token", code: "NO_TOKEN" } },
+        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
         { status: 401 }
       );
     }
@@ -122,9 +122,9 @@ export async function PUT(request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (error) {
+    } catch (_error) {
       return NextResponse.json(
-        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 }
       );
     }
@@ -133,23 +133,23 @@ export async function PUT(request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 }
       );
     }
 
     // Get userId from URL
-    const url = new URL(request.url);
+    const url = new URL(_request.url);
     const userId = url.pathname.split("/").pop();
 
     if (!userId) {
       return NextResponse.json(
-        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 }
       );
     }
 
-    const body = await request.json();
+    const body = await _request.json();
     const { role, emailVerified, twoFactorEnabled } = body;
 
     // Update user
@@ -177,17 +177,17 @@ export async function PUT(request: NextRequest) {
       resourceType: "User",
       resourceId: userId,
       details: { changes: body },
-      ipAddress: request.headers.get("x-forwarded-for") || "unknown",
+      ipAddress: _request.headers.get("x-forwarded-for") || "unknown",
     });
 
     return NextResponse.json(
       { message: "User updated successfully", user: updatedUser },
       { status: 200 }
     );
-  } catch (error) {
-    console.error("Update user error:", error);
+  } catch (_error) {
+    console._error("Update user _error:", _error);
     return NextResponse.json(
-      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
       { status: 500 }
     );
   }
@@ -197,13 +197,13 @@ export async function PUT(request: NextRequest) {
  * DELETE /api/admin/users/:userId
  * Delete a user account (admin only)
  */
-export async function DELETE(request: NextRequest) {
+export async function DELETE(_request: NextRequest) {
   try {
-    const token = request.headers.get("Authorization")?.replace("Bearer ", "");
+    const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
     if (!token) {
       return NextResponse.json(
-        { error: { message: "Missing authorization token", code: "NO_TOKEN" } },
+        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
         { status: 401 }
       );
     }
@@ -211,9 +211,9 @@ export async function DELETE(request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (error) {
+    } catch (_error) {
       return NextResponse.json(
-        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 }
       );
     }
@@ -222,18 +222,18 @@ export async function DELETE(request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 }
       );
     }
 
     // Get userId from URL
-    const url = new URL(request.url);
+    const url = new URL(_request.url);
     const userId = url.pathname.split("/").pop();
 
     if (!userId) {
       return NextResponse.json(
-        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 }
       );
     }
@@ -242,7 +242,7 @@ export async function DELETE(request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          error: {
+          _error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -262,17 +262,17 @@ export async function DELETE(request: NextRequest) {
       action: "USER_DELETED",
       resourceType: "User",
       resourceId: userId,
-      ipAddress: request.headers.get("x-forwarded-for") || "unknown",
+      ipAddress: _request.headers.get("x-forwarded-for") || "unknown",
     });
 
     return NextResponse.json(
       { message: "User deleted successfully" },
       { status: 200 }
     );
-  } catch (error) {
-    console.error("Delete user error:", error);
+  } catch (_error) {
+    console._error("Delete user _error:", _error);
     return NextResponse.json(
-      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
       { status: 500 }
     );
   }

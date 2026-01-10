@@ -7,13 +7,13 @@ import authService from "@/lib/auth/service";
  * Get admin dashboard statistics
  * Requires authentication and admin role
  */
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
-    const token = request.headers.get("Authorization")?.replace("Bearer ", "");
+    const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
     if (!token) {
       return NextResponse.json(
-        { error: { message: "Missing authorization token", code: "NO_TOKEN" } },
+        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
         { status: 401 }
       );
     }
@@ -22,9 +22,9 @@ export async function GET(request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (error) {
+    } catch (_error) {
       return NextResponse.json(
-        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 }
       );
     }
@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
     const user = await db.userService.findById(decoded.userId);
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 }
       );
     }
@@ -115,10 +115,10 @@ export async function GET(request: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (error) {
-    console.error("Dashboard error:", error);
+  } catch (_error) {
+    console._error("Dashboard _error:", _error);
     return NextResponse.json(
-      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
       { status: 500 }
     );
   }

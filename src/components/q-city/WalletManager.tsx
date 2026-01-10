@@ -42,7 +42,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       if (!_res.ok) throw new Error("Failed to fetch pending requests");
       const data = await _res.json();
       setPendingRequests(data as WalletRequest[]);
-    } catch (_err: any) {
+    } catch (_err: unknown) {
       setError((_err && _err.message) || "Failed to load pending requests");
       toast({
         title: "Error",
@@ -89,7 +89,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       } else {
         throw new Error(data._error || "Failed to _request wallet");
       }
-    } catch (_err: any) {
+    } catch (_err: unknown) {
       setError((_err && _err.message) || String(_err));
       toast({
         title: "Error",
@@ -130,7 +130,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       } else {
         throw new Error(data._error || "Failed to approve wallet");
       }
-    } catch (_err: any) {
+    } catch (_err: unknown) {
       setError((_err && _err.message) || String(_err));
       toast({
         title: "Error",

@@ -231,7 +231,7 @@ async function generateDocsAndPackaging(projectName: string, files: unknown[]) {
 }
 
 // --- Enhanced Creative Generators ---
-async function enhancedGameGen(details: any) {
+async function enhancedGameGen(details: unknown) {
   // Add more thorough logic, _error checking, and asset generation
   // ...
   return {
@@ -658,11 +658,11 @@ export default async function handler(
 ) {
   loadLog();
   if (_req.method === "GET") {
-    if (_req.query.globalAutomation) {
+    if (_req._query.globalAutomation) {
       // Simulate global automation status ');
       return _res.json({ status: "operational" });
     }
-    if (_req.query.datasets) {
+    if (_req._query.datasets) {
       // Simulate available datasets
       return _res.json({
         datasets: [
@@ -676,14 +676,14 @@ export default async function handler(
         ],
       });
     }
-    if (_req.query.trainingStatus) {
+    if (_req._query.trainingStatus) {
       // Simulate model training status
       return _res.json({
         status: "ready",
         lastTrained: new Date().toISOString(),
       });
     }
-    if (_req.query.deviceOptimize) {
+    if (_req._query.deviceOptimize) {
       // Simulate device optimization suggestions
       return _res.json({
         suggestions: [
@@ -695,7 +695,7 @@ export default async function handler(
         ],
       });
     }
-    if (_req.query.featureEnhance) {
+    if (_req._query.featureEnhance) {
       // Simulate new features/instructions for AI to follow
       return _res.json({
         instructions: [
@@ -707,7 +707,7 @@ export default async function handler(
         ],
       });
     }
-    if (_req.query.githubTasks) {
+    if (_req._query.githubTasks) {
       // Simulate GitHub repo tasks (could be from config or user input)
       return _res.json({
         repos: [
@@ -716,7 +716,7 @@ export default async function handler(
         ],
       });
     }
-    if (_req.query.analytics) {
+    if (_req._query.analytics) {
       // Simulate advanced analytics for trading, wallet, and bot activity
       return _res.json({
         trading: {
@@ -743,13 +743,13 @@ export default async function handler(
       });
     }
     // the main handler (POST):
-    if (_req.query.recommendations) {
+    if (_req._query.recommendations) {
       // Provide AI-driven recommendations for a given context
-      const context = _req.query.context as string;
+      const context = _req._query.context as string;
       const recs = await getAIRecommendations(context);
       return _res.json({ recommendations: recs });
     }
-    if (_req.query.systemStatus) {
+    if (_req._query.systemStatus) {
       // Real-time system status endpoint
       return _res.json({
         time: new Date().toISOString(),

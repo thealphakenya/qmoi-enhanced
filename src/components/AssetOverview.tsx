@@ -99,7 +99,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       case "medium":
         return "warning";
       case "high":
-        return "error";
+        return "_error";
       default:
         return "default";
     }
@@ -134,7 +134,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
         </Box>
 
         {_error && (
-          <Alert severity="error" sx={{ mb: 2 }}>
+          <Alert severity="_error" sx={{ mb: 2 }}>
             {_error}
           </Alert>
         )}

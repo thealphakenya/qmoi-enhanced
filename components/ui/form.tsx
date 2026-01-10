@@ -22,7 +22,7 @@ const FormFieldContext = React.createContext<FormFieldContextValue>(
   {} as FormFieldContextValue
 );
 
-const FormField = (props: any) => {
+const FormField = (props: unknown) => {
   const name = props?.name ?? "";
 
   return (

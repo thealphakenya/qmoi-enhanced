@@ -12,7 +12,7 @@ export async function GET(_request: NextRequest) {
     // API key gating (read endpoints still respect API key when configured)
     const auth = libProposals.requireApiKey(_request.headers);
     if (!auth.ok) {
-      const r = auth.response;
+      const r = auth._response;
       if (!r)
         return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });

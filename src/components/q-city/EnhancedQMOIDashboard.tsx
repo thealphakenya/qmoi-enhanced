@@ -8,8 +8,8 @@ interface DashboardData {
   errorFixing: {
     activeErrors: number;
     fixedErrors: number;
-    systemHealth: any;
-    queueStatus: any;
+    systemHealth: unknown;
+    queueStatus: unknown;
   };
   siteGeneration: {
     activeSites: number;
@@ -23,9 +23,9 @@ interface DashboardData {
     dealsDiscovered: number;
   };
   parallelization: {
-    activeTasks: any[];
-    systemHealth: any;
-    performanceMetrics: any;
+    activeTasks: unknown[];
+    systemHealth: unknown;
+    performanceMetrics: unknown;
   };
 }
 

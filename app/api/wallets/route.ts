@@ -3,11 +3,11 @@ import db from "@/lib/db/services";
 import authService from "@/lib/auth/service";
 
 // GET /api/wallets - List user's wallets
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
-    const authHeader = request.headers.get("authorization");
+    const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -15,39 +15,39 @@ export async function GET(request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch {
-      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
-    const query = new URL(request.url);
-    const skip = parseInt(query.searchParams.get("skip") || "0");
-    const take = parseInt(query.searchParams.get("take") || "10");
+    const _query = new URL(_request.url);
+    const skip = parseInt(_query.searchParams.get("skip") || "0");
+    const take = parseInt(_query.searchParams.get("take") || "10");
 
-    // Prisma query would need implementation in userService
+    // Prisma _query would need implementation in userService
     // For now, returning success structure
     return NextResponse.json({
       wallets: [],
       pagination: { skip, take, total: 0 },
     });
-  } catch (error) {
-    console.error("GET /api/wallets error:", error);
+  } catch (_error) {
+    console._error("GET /api/wallets _error:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server _error" },
       { status: 500 }
     );
   }
 }
 
 // POST /api/wallets - Create a new wallet
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
-    const authHeader = request.headers.get("authorization");
+    const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -55,23 +55,23 @@ export async function POST(request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch {
-      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
     }
 
-    const body = (await request.json()) as { currency?: string; name?: string };
+    const body = (await _request.json()) as { currency?: string; name?: string };
     const currency = body.currency || "KES";
 
     const wallet = await db.walletService.create(decoded.userId, currency);
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (error) {
-    console.error("POST /api/wallets error:", error);
+  } catch (_error) {
+    console._error("POST /api/wallets _error:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server _error" },
       { status: 500 }
     );
   }

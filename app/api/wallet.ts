@@ -59,7 +59,7 @@ let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
 } catch (_e) {
-  console.error("Failed to initialize WhatsApp service:", _e);
+  console._error("Failed to initialize WhatsApp service:", _e);
 }
 
 // Enhanced logging
@@ -75,7 +75,7 @@ function logAction(action: string, details: Record<string, any>) {
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
   } catch (_e) {
-    console.error("Failed to log action:", _e);
+    console._error("Failed to log action:", _e);
   }
 }
 
@@ -96,7 +96,7 @@ async function getOrCreateWallet(userId: string) {
 
     return wallet;
   } catch (_error) {
-    console.error("Failed to get/create wallet:", _error);
+    console._error("Failed to get/create wallet:", _error);
     throw _error;
   }
 }
@@ -133,7 +133,7 @@ async function createTransaction(
 
     return transaction;
   } catch (_error) {
-    console.error("Failed to create transaction:", _error);
+    console._error("Failed to create transaction:", _error);
     throw _error;
   }
 }
@@ -257,7 +257,7 @@ async function processMpesa(
       };
     }
   } catch (_error) {
-    console.error("Mpesa processing _error:", _error);
+    console._error("Mpesa processing _error:", _error);
     const errorMsg = _error instanceof Error ? _error.message : String(_error);
     return { status: "_error", platform: "Mpesa", amount, _error: errorMsg };
   }
@@ -369,7 +369,7 @@ async function processBinance(
       };
     }
   } catch (_error) {
-    console.error("Binance processing _error:", _error);
+    console._error("Binance processing _error:", _error);
     const errorMsg = _error instanceof Error ? _error.message : String(_error);
     return { status: "_error", platform: "Binance", amount, _error: errorMsg };
   }
@@ -422,7 +422,7 @@ async function processPesapal(amount: number, type: string) {
           : "Withdrawal initiated",
     };
   } catch (_error) {
-    console.error("Pesapal processing _error:", _error);
+    console._error("Pesapal processing _error:", _error);
     const errorMsg = _error instanceof Error ? _error.message : String(_error);
     return {
       status: "_error",
@@ -481,7 +481,7 @@ async function processBitget(amount: number, type: string) {
           : "Withdrawal order created",
     };
   } catch (_error) {
-    console.error("Bitget processing _error:", _error);
+    console._error("Bitget processing _error:", _error);
     const errorMsg = _error instanceof Error ? _error.message : String(_error);
     return {
       status: "_error",
@@ -560,13 +560,13 @@ export default async function handler(
 
   if (_req.method === "GET") {
     return handleApiRequest(_req, _res, async () => {
-      if (_req.query.pending_wallets) {
+      if (_req._query.pending_wallets) {
         const requests = readWalletRequests();
         return requests.filter((r: WalletRequest) => r.status === "pending");
       }
-      if (_req.query.balance) {
+      if (_req._query.balance) {
         // Get user's wallet balance - for now using a default user ID
-        const userId = (_req.query.userId as string) || "default-user";
+        const userId = (_req._query.userId as string) || "default-user";
         const wallet = await getOrCreateWallet(userId);
         return {
           balance: wallet.balance,
@@ -574,14 +574,14 @@ export default async function handler(
           transactions: wallet.transactions.slice(0, 10),
         };
       }
-      if (_req.query.logs && isMaster(_req)) {
+      if (_req._query.logs && isMaster(_req)) {
         const logs = fs.existsSync(LOGS_FILE)
           ? JSON.parse(fs.readFileSync(LOGS_FILE, "utf-8"))
           : [];
         return logs;
       }
-      if (_req.query.transactions) {
-        const userId = (_req.query.userId as string) || "default-user";
+      if (_req._query.transactions) {
+        const userId = (_req._query.userId as string) || "default-user";
         const wallet = await getOrCreateWallet(userId);
         const transactions = await prisma.transaction.findMany({
           where: { walletId: wallet.id },
@@ -603,7 +603,7 @@ export default async function handler(
       // Get or create wallet for user
       const wallet = await getOrCreateWallet(userIdToUs_e);
 
-      if (_req.query.deposit) {
+      if (_req._query.deposit) {
         if (!isMaster(_req)) {
           logAction("unauthorized_deposit", {
             amount,
@@ -647,7 +647,7 @@ export default async function handler(
         };
       }
 
-      if (_req.query.withdraw) {
+      if (_req._query.withdraw) {
         if (!isMaster(_req)) {
           logAction("unauthorized_withdrawal", {
             amount,
@@ -695,7 +695,7 @@ export default async function handler(
         };
       }
 
-      if (_req.query._request) {
+      if (_req._query._request) {
         // Handle wallet creation requests
         const requests = readWalletRequests();
         const newRequest = {

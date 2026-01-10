@@ -12,7 +12,7 @@ export async function POST(_request: NextRequest) {
   try {
     const auth = libProposals.requireApiKey(_request.headers);
     if (!auth.ok) {
-      const r = auth.response;
+      const r = auth._response;
       if (!r)
         return NextResponse.json(
           { _error: "Unknown auth _error" },

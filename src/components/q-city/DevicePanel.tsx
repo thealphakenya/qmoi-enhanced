@@ -25,7 +25,7 @@ export default function DevicePanel() {
     })
       .then((r) => r.json())
       .then((data) => setDevices(data.items || []))
-      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
+      .catch((_e: unknown) => setError((_e as any).message ?? String(_e)))
       .finally(() => setLoading(false));
   };
 
@@ -55,7 +55,7 @@ export default function DevicePanel() {
         });
         setEditing(null);
       })
-      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
+      .catch((_e: unknown) => setError((_e as any).message ?? String(_e)))
       .finally(() => setLoading(false));
   };
 
@@ -70,7 +70,7 @@ export default function DevicePanel() {
       body: JSON.stringify({ id }),
     })
       .then(fetchDevices)
-      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
+      .catch((_e: unknown) => setError((_e as any).message ?? String(_e)))
       .finally(() => setLoading(false));
   };
 
@@ -88,7 +88,7 @@ export default function DevicePanel() {
       .then((data) =>
         setTestResult(data.success ? "Success" : data._error || "Failed")
       )
-      .catch((_e: any) => setTestResult((_e as any).message ?? String(_e)));
+      .catch((_e: unknown) => setTestResult((_e as any).message ?? String(_e)));
   };
 
   return (

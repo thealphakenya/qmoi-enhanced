@@ -20,13 +20,13 @@ const DEFAULT_LIMIT = 100; // requests per minute
  * View rate limit configuration and current usage
  * Admin only
  */
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
-    const token = request.headers.get("Authorization")?.replace("Bearer ", "");
+    const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
     if (!token) {
       return NextResponse.json(
-        { error: { message: "Missing authorization token", code: "NO_TOKEN" } },
+        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
         { status: 401 }
       );
     }
@@ -34,9 +34,9 @@ export async function GET(request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (error) {
+    } catch (_error) {
       return NextResponse.json(
-        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 }
       );
     }
@@ -45,12 +45,12 @@ export async function GET(request: NextRequest) {
     const user = await db.userService.findById(decoded.userId);
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 }
       );
     }
 
-    const { searchParams } = new URL(request.url);
+    const { searchParams } = new URL(_request.url);
     const userId = searchParams.get("userId");
 
     // Get rate limit stats
@@ -83,10 +83,10 @@ export async function GET(request: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (error) {
-    console.error("Rate limits error:", error);
+  } catch (_error) {
+    console._error("Rate limits _error:", _error);
     return NextResponse.json(
-      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
       { status: 500 }
     );
   }
@@ -97,13 +97,13 @@ export async function GET(request: NextRequest) {
  * Update rate limit for specific user or endpoint
  * Admin only
  */
-export async function PUT(request: NextRequest) {
+export async function PUT(_request: NextRequest) {
   try {
-    const token = request.headers.get("Authorization")?.replace("Bearer ", "");
+    const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
     if (!token) {
       return NextResponse.json(
-        { error: { message: "Missing authorization token", code: "NO_TOKEN" } },
+        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
         { status: 401 }
       );
     }
@@ -111,9 +111,9 @@ export async function PUT(request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (error) {
+    } catch (_error) {
       return NextResponse.json(
-        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 }
       );
     }
@@ -122,18 +122,18 @@ export async function PUT(request: NextRequest) {
     const user = await db.userService.findById(decoded.userId);
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 }
       );
     }
 
-    const body = await request.json();
+    const body = await _request.json();
     const { userId, endpoint, newLimit, action } = body;
 
     if (!userId || !endpoint || (!newLimit && action !== "reset")) {
       return NextResponse.json(
         {
-          error: {
+          _error: {
             message: "Missing required fields: userId, endpoint, newLimit",
             code: "MISSING_FIELDS",
           },
@@ -180,10 +180,10 @@ export async function PUT(request: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (error) {
-    console.error("Rate limit update error:", error);
+  } catch (_error) {
+    console._error("Rate limit update _error:", _error);
     return NextResponse.json(
-      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
       { status: 500 }
     );
   }

@@ -106,7 +106,7 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
             <Chip
               icon={isConnected ? <Wifi /> : <WifiOff />}
               label={isConnected ? "Connected" : "Disconnected"}
-              color={isConnected ? "success" : "error"}
+              color={isConnected ? "success" : "_error"}
               size="small"
             />
             <Tooltip title="Refresh Status">
@@ -126,7 +126,7 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
             <CircularProgress size={24} />
           </Box>
         ) : _error ? (
-          <Box display="flex" alignItems="center" gap={1} color="error.main">
+          <Box display="flex" alignItems="center" gap={1} color="_error.main">
             <Warning fontSize="small" />
             <Typography variant="body2">{_error}</Typography>
           </Box>

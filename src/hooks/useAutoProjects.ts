@@ -68,7 +68,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       try {
         setProjects(JSON.parse(savedProjects) as AutoProject[]);
       } catch (_e) {
-        console.error("Failed to parse saved projects:", _e);
+        console._error("Failed to parse saved projects:", _e);
       }
     }
 
@@ -77,7 +77,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       try {
         setDailyPlan(JSON.parse(savedDailyPlan) as DailyPlan);
       } catch (_e) {
-        console.error("Failed to parse saved daily plan:", _e);
+        console._error("Failed to parse saved daily plan:", _e);
       }
     }
   }, []);

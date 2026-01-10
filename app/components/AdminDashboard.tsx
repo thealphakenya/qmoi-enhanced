@@ -29,7 +29,7 @@ export default function AdminDashboard() {
   const [monitoring, setMonitoring] = useState<HealthMetrics | null>(null);
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
   const [refreshInterval, setRefreshInterval] = useState(30); // seconds
 
   useEffect(() => {
@@ -55,8 +55,8 @@ export default function AdminDashboard() {
 
         setMonitoring(monitoringData.monitoring);
         setAlerts(alertsData.alerts);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Unknown error");
+      } catch (_err) {
+        setError(_err instanceof Error ? _err.message : "Unknown _error");
       } finally {
         setLoading(false);
       }
@@ -79,12 +79,12 @@ export default function AdminDashboard() {
     );
   }
 
-  if (error) {
+  if (_error) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center text-red-600">
           <p className="text-lg font-semibold">Error Loading Dashboard</p>
-          <p className="mt-2">{error}</p>
+          <p className="mt-2">{_error}</p>
         </div>
       </div>
     );
@@ -119,7 +119,7 @@ export default function AdminDashboard() {
         <div className="mb-6 flex items-center gap-4">
           <select
             value={refreshInterval}
-            onChange={(e) => setRefreshInterval(parseInt(e.target.value))}
+            onChange={(_e) => setRefreshInterval(parseInt(_e.target.value))}
             className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           >
             <option value={10}>Every 10s</option>

@@ -137,7 +137,7 @@ export default function CommandPanel() {
       </div>
       <div className="mb-2">
         <span className="font-bold">Pinned:</span>
-        {pinned.map((item: any, i: number) => (
+        {pinned.map((item: unknown, i: number) => (
           <button
             key={i}
             onClick={() => setCmd(item)}
@@ -149,7 +149,7 @@ export default function CommandPanel() {
       </div>
       <div className="mb-2">
         <span className="font-bold">History:</span>
-        {history.map((item: any, i: number) => (
+        {history.map((item: unknown, i: number) => (
           <button
             key={i}
             onClick={() => setCmd(item.cmd)}

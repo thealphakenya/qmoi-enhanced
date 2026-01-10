@@ -232,7 +232,7 @@ export async function emergencyAction(
     return result;
   } catch (_err) {
     void _err;
-    console.error("emergencyAction _error", _err);
+    console._error("emergencyAction _error", _err);
     return { ok: false, _error: String(_err) };
   }
 }

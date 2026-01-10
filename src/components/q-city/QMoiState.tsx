@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from "react";
 
 interface QMoiStateProps {
-  session?: any;
-  global?: any;
+  session?: unknown;
+  global?: unknown;
   minimized?: boolean;
   aiHealth?: { status: string; lastCheck: string; _error?: string };
   isMaster?: boolean;
@@ -98,8 +98,8 @@ export function QMoiState({
         setTotalPages(data.totalPages || 1);
         setLoadingLogs(false);
       })
-      .catch((err: any) => {
-        setLogError(err?.message || "Failed to load logs");
+      .catch((_err: unknown) => {
+        setLogError(_err?.message || "Failed to load logs");
         setLoadingLogs(false);
       });
   }, [logFilters, page, isMaster, isAdmin]);
@@ -155,9 +155,9 @@ export function QMoiState({
     }
   };
 
-  const exportToCSV = (logs: any[]) => {
+  const exportToCSV = (logs: unknown[]) => {
     const header = "Timestamp,User,Action,Device,Status,Command";
-    const rows = logs.map((log: any) =>
+    const rows = logs.map((log: unknown) =>
       [
         log.timestamp,
         log.user,
@@ -177,7 +177,7 @@ export function QMoiState({
     a.click();
   };
 
-  const exportToJSON = (arr: any[]) => {
+  const exportToJSON = (arr: unknown[]) => {
     const blob = new Blob([JSON.stringify(arr, null, 2)], {
       type: "application/json",
     });
@@ -386,7 +386,7 @@ export function QMoiState({
                   </tr>
                 </thead>
                 <tbody>
-                  {auditLogs.map((log: any, i) => (
+                  {auditLogs.map((log: unknown, i) => (
                     <tr key={i}>
                       <td className="px-2 py-1">{log.timestamp}</td>
                       <td className="px-2 py-1">{log.user}</td>

@@ -187,7 +187,7 @@ export async function POST(_request: NextRequest) {
 
     const apiAuth = requireApiKey(_request.headers);
     if (masterOverride && !apiAuth.ok && !isMaster(_request)) {
-      const _r = apiAuth.response;
+      const _r = apiAuth._response;
       return NextResponse.json(
         _r?.body ?? {
           _error: "Master access required for override",

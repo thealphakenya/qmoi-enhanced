@@ -60,7 +60,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
 
       const tradingManager = TradingManager.getInstance();
       const rawHistory = (await tradingManager.getTradingHistory()) as any[];
-      const history = rawHistory.map((trade: any) => ({
+      const history = rawHistory.map((trade: unknown) => ({
         ...trade,
         timestamp: new Date(trade?.timestamp),
       }));
@@ -142,7 +142,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         </Box>
 
         {_error && (
-          <Alert severity="error" sx={{ mb: 2 }}>
+          <Alert severity="_error" sx={{ mb: 2 }}>
             {_error}
           </Alert>
         )}
@@ -171,7 +171,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
               </Typography>
               <Typography
                 variant="h6"
-                color={stats.totalProfit >= 0 ? "success.main" : "error.main"}
+                color={stats.totalProfit >= 0 ? "success.main" : "_error.main"}
               >
                 {formatCurrency(stats.totalProfit)}
               </Typography>
@@ -222,7 +222,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
                           )
                         }
                         label={trade.type.toUpperCase()}
-                        color={trade.type === "buy" ? "success" : "error"}
+                        color={trade.type === "buy" ? "success" : "_error"}
                         variant="outlined"
                       />
                     </TableCell>
@@ -237,7 +237,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
                       {trade.profit !== undefined && (
                         <Typography
                           color={
-                            trade.profit >= 0 ? "success.main" : "error.main"
+                            trade.profit >= 0 ? "success.main" : "_error.main"
                           }
                         >
                           {formatCurrency(trade.profit)}
@@ -252,7 +252,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
                           trade.status === "completed"
                             ? "success"
                             : trade.status === "failed"
-                            ? "error"
+                            ? "_error"
                             : "warning"
                         }
                       />

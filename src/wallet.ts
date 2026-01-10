@@ -36,9 +36,9 @@ export class MockAdapter implements WalletAdapter {
 export class TestnetAdapter implements WalletAdapter {
   name: string;
   isTestnet = true;
-  private opts: any;
+  private opts: unknown;
 
-  constructor(name: string, opts?: any) {
+  constructor(name: string, opts?: unknown) {
     this.name = name;
     this.opts = opts || {};
   }
@@ -154,7 +154,7 @@ export class CashonAdapter implements WalletAdapter {
         const r = await (global as any).fetch(url, {
           headers: { Authorization: `Bearer ${apiKey}` },
         });
-        const j: any = await r.json();
+        const j: unknown = await r.json();
         // Expecting { balance: number, currency: string }
         return {
           amount: j.balance || 0,
@@ -179,9 +179,9 @@ export class CashonAdapter implements WalletAdapter {
 export class MegavaultAdapter implements WalletAdapter {
   name: string;
   isTestnet = false;
-  private opts: any;
+  private opts: unknown;
 
-  constructor(name = "megavault", opts?: any) {
+  constructor(name = "megavault", opts?: unknown) {
     this.name = name;
     this.opts = opts || {};
   }
@@ -234,7 +234,7 @@ export class MegavaultAdapter implements WalletAdapter {
         const r = await (global as any).fetch(url, {
           headers: { Authorization: `Bearer ${apiKey}` },
         });
-        const j: any = await r.json();
+        const j: unknown = await r.json();
         return {
           amount: j.balance || 0,
           currency: j.currency || "USD",
@@ -314,7 +314,7 @@ export class WalletService {
 
   persistSnapshot(snapshot: Record<string, unknown>) {
     try {
-      const data: any = JSON.parse(
+      const data: unknown = JSON.parse(
         fs.readFileSync(this.stateFile, "utf8") || "{}"
       );
       if (!data.history) data.history = [];
@@ -341,7 +341,7 @@ export class WalletService {
     if (key) return { apiKey: key };
 
     try {
-      const s: any = JSON.parse(
+      const s: unknown = JSON.parse(
         fs.readFileSync(this.stateFile, "utf8") || "{}"
       );
       return s.wallets && s.wallets[name] ? s.wallets[name].creds : null;
@@ -353,7 +353,7 @@ export class WalletService {
 
   saveWalletState(name: string, meta: unknown) {
     const raw = fs.readFileSync(this.stateFile, "utf8") || "{}";
-    const data: any = JSON.parse(raw || "{}");
+    const data: unknown = JSON.parse(raw || "{}");
     data.wallets = data.wallets || {};
     data.wallets[name] = meta;
     fs.writeFileSync(this.stateFile, JSON.stringify(data, null, 2), "utf8");

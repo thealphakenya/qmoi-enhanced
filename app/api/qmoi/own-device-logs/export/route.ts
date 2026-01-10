@@ -28,7 +28,7 @@ export async function POST(_request: NextRequest) {
     const apiAuth = requireApiKey(_request.headers);
     const isMaster = apiAuth.ok || (await checkMasterAccess(_request));
     if (!isMaster) {
-      const _r = apiAuth.response;
+      const _r = apiAuth._response;
       return NextResponse.json(
         apiAuth.ok
           ? { _error: "Master access required" }

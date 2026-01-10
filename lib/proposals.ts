@@ -7,7 +7,7 @@ export type ApiCheckResult = {
   response?: { status?: number; body?: unknown };
 };
 
-function requireApiKey(headers: any): ApiCheckResult {
+function requireApiKey(headers: unknown): ApiCheckResult {
   // Support Next.js Headers and plain object headers
   const get = (k: string) => {
     if (!headers) return undefined;
@@ -41,7 +41,7 @@ function requireApiKey(headers: any): ApiCheckResult {
   };
 }
 
-async function writeProposal(payload: any) {
+async function writeProposal(payload: unknown) {
   try {
     const dir = path.join(process.cwd(), ".qmoi_validation");
     await fs.promises.mkdir(dir, { recursive: true });

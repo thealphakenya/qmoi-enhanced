@@ -75,7 +75,7 @@ export default function QMoiMemoryPanel({
           <ul>
             {((memory && memory.master_feedback) || [])
               .slice(-5)
-              .map((f: any, i: number) => (
+              .map((f: unknown, i: number) => (
                 <li key={i}>{JSON.stringify(f)}</li>
               ))}
           </ul>
@@ -85,7 +85,7 @@ export default function QMoiMemoryPanel({
           <ul>
             {((memory && memory.history) || [])
               .slice(-5)
-              .map((h: any, i: number) => (
+              .map((h: unknown, i: number) => (
                 <li key={i}>
                   {h.input} ({h.emotion})
                 </li>

@@ -50,7 +50,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       window.URL.revokeObjectURL(downloadUrl);
     } catch (_err) {
       void _err;
-      setError(_err instanceof Error ? _err.message : "An error occurred");
+      setError(_err instanceof Error ? _err.message : "An _error occurred");
     } finally {
       setDownloading(false);
     }
@@ -85,7 +85,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
         onClose={() => setError(null)}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       >
-        <Alert onClose={() => setError(null)} severity="error">
+        <Alert onClose={() => setError(null)} severity="_error">
           {_error}
         </Alert>
       </Snackbar>

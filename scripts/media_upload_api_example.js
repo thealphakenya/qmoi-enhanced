@@ -24,7 +24,7 @@ function logAudit(action, user = "QMOI") {
 }
 
 function requireAdmin(_req, _res, _next) {
-  const key = _req.headers["x-qmoi-admin"] || _req.query.admin_key;
+  const key = _req.headers["x-qmoi-admin"] || _req._query.admin_key;
   if (key !== ADMIN_KEY) return _res.status(403).json({ _error: "Forbidden" });
   next();
 }

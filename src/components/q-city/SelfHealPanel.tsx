@@ -51,7 +51,7 @@ const SelfHealPanel: React.FC = () => {
       );
       eventSourceRef.current = es;
       let logBuffer = "";
-      es.onmessage = (_event: any) => {
+      es.onmessage = (_event: unknown) => {
         if (_event.data === "[DONE]") {
           es.close();
           setRunning(false);
@@ -69,14 +69,14 @@ const SelfHealPanel: React.FC = () => {
           setLog(logBuffer);
         }
       };
-      es.onerror = (_e: any) => {
+      es.onerror = (_e: unknown) => {
         setError("Stream _error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: any) {
-      const err: any = _err;
-      setError((err && err.message) || "Request failed");
+    } catch (_err: unknown) {
+      const _err: unknown = _err;
+      setError((_err && _err.message) || "Request failed");
       setSuccess(false);
       setRunning(false);
     }
@@ -200,7 +200,7 @@ const SelfHealPanel: React.FC = () => {
               padding: 8,
             }}
           >
-            {history.map((h: any, i) => (
+            {history.map((h: unknown, i) => (
               <li key={i} style={{ marginBottom: 6 }}>
                 <b>{h.ts}</b> - <span>{JSON.stringify(h._options)}</span>
                 <button style={{ marginLeft: 8 }} onClick={() => setLog(h.log)}>

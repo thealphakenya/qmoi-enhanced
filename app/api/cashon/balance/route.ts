@@ -27,7 +27,7 @@ export async function GET(_request: NextRequest) {
     const apiAuth = requireApiKey(_request.headers);
     const masterToken = verifyMasterToken(_request);
     if (!apiAuth.ok && !masterToken) {
-      const _r = apiAuth.response;
+      const _r = apiAuth._response;
       return NextResponse.json(
         _r?.body ?? { _error: "Master access required" },
         { status: _r?.status ?? 401 }

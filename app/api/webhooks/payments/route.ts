@@ -21,15 +21,15 @@ function verifyWebhookSignature(
   return computed === signature;
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
-    const body = await request.text();
-    const signature = request.headers.get("x-webhook-signature");
+    const body = await _request.text();
+    const signature = _request.headers.get("x-webhook-signature");
 
     // Verify signature
     if (!verifyWebhookSignature(body, signature)) {
       console.warn("Invalid webhook signature");
-      return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+      return NextResponse.json({ _error: "Invalid signature" }, { status: 401 });
     }
 
     const data = JSON.parse(body) as {
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
     if (!transactionId) {
       console.warn("No transaction ID in webhook");
       return NextResponse.json(
-        { error: "Invalid webhook data" },
+        { _error: "Invalid webhook data" },
         { status: 400 }
       );
     }
@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
     if (!transaction) {
       console.warn(`Transaction not found: ${transactionId}`);
       return NextResponse.json(
-        { error: "Transaction not found" },
+        { _error: "Transaction not found" },
         { status: 404 }
       );
     }
@@ -104,16 +104,16 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Return success response
+    // Return success _response
     return NextResponse.json({
       success: true,
       transaction: updatedTxn,
       processed: true,
     });
-  } catch (error) {
-    console.error("Webhook processing error:", error);
+  } catch (_error) {
+    console._error("Webhook processing _error:", _error);
     return NextResponse.json(
-      { error: "Webhook processing failed" },
+      { _error: "Webhook processing failed" },
       { status: 500 }
     );
   }

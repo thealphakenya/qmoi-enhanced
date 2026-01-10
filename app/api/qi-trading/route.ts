@@ -117,7 +117,7 @@ async function cancelTrade(
 export async function GET(_request: NextRequest) {
   // Gate reads with API key as well
   const auth = await requireApiKey(_request.headers);
-  if (!auth.ok) return auth.response;
+  if (!auth.ok) return auth._response;
 
   try {
     const searchParams = _request.nextUrl.searchParams;
@@ -156,7 +156,7 @@ export async function GET(_request: NextRequest) {
 export async function POST(_request: NextRequest) {
   // Mutating actions are proposal-first by default
   const auth = await requireApiKey(_request.headers);
-  if (!auth.ok) return auth.response;
+  if (!auth.ok) return auth._response;
 
   try {
     const body = await _request.json();

@@ -9,7 +9,7 @@ import jwt from "jsonwebtoken";
 const USERS_FILE = path.resolve(process.cwd(), "data", "users.json");
 const JWT_SECRET = process.env.JWT_SECRET || "changeme";
 
-function loadUsers(): any[] {
+function loadUsers(): unknown[] {
   if (!fs.existsSync(USERS_FILE)) return [];
   try {
     return JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
@@ -28,7 +28,7 @@ export default async function handler(
   if (!username || !password)
     return _res.status(400).json({ _error: "Missing fields" });
   const users = loadUsers();
-  const user = users.find((u: any) => u.username === username);
+  const user = users.find((u: unknown) => u.username === username);
   if (!user) return _res.status(401).json({ _error: "Invalid credentials" });
   const valid = await bcrypt.compare(password, user.password);
   if (!valid) return _res.status(401).json({ _error: "Invalid credentials" });

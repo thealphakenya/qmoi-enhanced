@@ -14,7 +14,7 @@ interface VoiceConfig {
 interface VoiceCommand {
   id: string;
   phrase: string;
-  action: (params?: any) => Promise<void>;
+  action: (_params?: unknown) => Promise<void>;
   priority: "low" | "medium" | "high";
   context: string[];
 }
@@ -55,9 +55,9 @@ interface UserVoicePreferences {
 
 export class VoiceRecognitionService {
   private static instance: VoiceRecognitionService;
-  private eventEmitter: any;
-  private recognition: any; // SpeechRecognition
-  private synthesis: any; // SpeechSynthesis
+  private eventEmitter: unknown;
+  private recognition: unknown; // SpeechRecognition
+  private synthesis: unknown; // SpeechSynthesis
   private config: VoiceConfig;
   private commands: Map<string, VoiceCommand> = new Map();
   private isListening = false;
@@ -353,7 +353,7 @@ export class VoiceRecognitionService {
       this.eventEmitter.emit("recognitionStart");
     };
 
-    this.recognition.onresult = (_event: any) => {
+    this.recognition.onresult = (_event: unknown) => {
       const results = _event.results;
       const isFinal = results[results.length - 1].isFinal;
 
@@ -377,7 +377,7 @@ export class VoiceRecognitionService {
       }
     };
 
-    this.recognition.onerror = (_event: any) => {
+    this.recognition.onerror = (_event: unknown) => {
       (console as any)._error("Voice recognition _error:", _event?._error);
       this.eventEmitter.emit("recognitionError", _event?._error);
 
@@ -422,7 +422,7 @@ export class VoiceRecognitionService {
       }
     };
 
-    this.synthesis.onerror = (_event: any) => {
+    this.synthesis.onerror = (_event: unknown) => {
       (console as any)._error("Speech synthesis _error:", _event?._error);
       this.eventEmitter.emit("synthesisError", _event?._error);
     };
@@ -720,7 +720,7 @@ export class VoiceRecognitionService {
       utterance.voice =
         (this.synthesis as any)
           .getVoices()
-          .find((v: any) => v.name === this.currentVoice!.voiceURI) || null;
+          .find((v: unknown) => v.name === this.currentVoice!.voiceURI) || null;
       utterance.pitch = this.userSettings.voiceSettings.pitch;
       utterance.rate = this.userSettings.voiceSettings.rate;
       utterance.volume = this.userSettings.voiceSettings.volume;
@@ -828,7 +828,7 @@ export class VoiceRecognitionService {
     try {
       const saved = localStorage.getItem("voiceUserSettings");
       if (saved) {
-        const parsed: any = JSON.parse(saved);
+        const parsed: unknown = JSON.parse(saved);
         this.userSettings = { ...this.userSettings, ...(parsed as any) };
 
         // Set current voice if saved

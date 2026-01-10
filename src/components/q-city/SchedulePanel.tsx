@@ -24,7 +24,7 @@ export default function SchedulePanel() {
     })
       .then((r) => r.json())
       .then((data) => setSchedules((data && data.items) || []))
-      .catch((err: any) => setError(err?.message || String(err)))
+      .catch((_err: unknown) => setError(_err?.message || String(_err)))
       .finally(() => setLoading(false));
   };
 
@@ -47,7 +47,7 @@ export default function SchedulePanel() {
         setForm({ name: "", command: "", cron: "", deviceId: "", notify: "" });
         setEditing(null);
       })
-      .catch((err: any) => setError(err?.message || String(err)))
+      .catch((_err: unknown) => setError(_err?.message || String(_err)))
       .finally(() => setLoading(false));
   };
 
@@ -62,7 +62,7 @@ export default function SchedulePanel() {
       body: JSON.stringify({ id }),
     })
       .then(fetchSchedules)
-      .catch((err: any) => setError(err?.message || String(err)))
+      .catch((_err: unknown) => setError(_err?.message || String(_err)))
       .finally(() => setLoading(false));
   };
 
@@ -77,7 +77,7 @@ export default function SchedulePanel() {
       body: JSON.stringify({ id }),
     })
       .then(fetchSchedules)
-      .catch((err: any) => setError(err?.message || String(err)))
+      .catch((_err: unknown) => setError(_err?.message || String(_err)))
       .finally(() => setLoading(false));
   };
 
@@ -166,7 +166,7 @@ export default function SchedulePanel() {
             </tr>
           </thead>
           <tbody>
-            {schedules.map((job: any, i) => (
+            {schedules.map((job: unknown, i) => (
               <tr key={i}>
                 <td>{job.name}</td>
                 <td>{job.command}</td>

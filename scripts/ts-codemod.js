@@ -72,7 +72,7 @@ for (const file of files) {
   let src;
   try {
     src = fs.readFileSync(file, "utf8");
-  } catch (e) {
+  } catch (_e) {
     continue;
   }
   let out = src;

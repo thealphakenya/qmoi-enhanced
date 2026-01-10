@@ -39,7 +39,7 @@ export default function QMoiFileEditorChat({
       if (cmd.startsWith("/view ")) {
         const filePath = cmd.replace("/view ", "").trim();
         const { postModel } = await import("../../services/qmoiApi");
-        const data: any = await postModel({ action: "file:read", filePath });
+        const data: unknown = await postModel({ action: "file:read", filePath });
         if (data && data.success) {
           setLastView(data.data);
           _response = highlightCode(data.data);
@@ -53,7 +53,7 @@ export default function QMoiFileEditorChat({
         const before = lastView;
         const after = content;
         const { postModel } = await import("../../services/qmoiApi");
-        const data: any = await postModel({
+        const data: unknown = await postModel({
           action: "file:write",
           filePath,
           content,
@@ -78,7 +78,7 @@ export default function QMoiFileEditorChat({
         const [_, filePath, ...contentArr] = cmd.split(" ");
         const content = contentArr.join(" ");
         const { postModel } = await import("../../services/qmoiApi");
-        const data: any = await postModel({
+        const data: unknown = await postModel({
           action: "file:append",
           filePath,
           content,
@@ -93,7 +93,7 @@ export default function QMoiFileEditorChat({
         const before = lastView;
         const after = before.replace(search, content);
         const { postModel } = await import("../../services/qmoiApi");
-        const data: any = await postModel({
+        const data: unknown = await postModel({
           action: "file:replace",
           filePath,
           replace: search,
@@ -117,7 +117,7 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: any) {
+    } catch (_e: unknown) {
       _response = `Error: ${_e?.message ?? String(_e)}`;
     }
     setMessages((msgs) => [
@@ -133,14 +133,14 @@ export default function QMoiFileEditorChat({
     let _response: string | React.ReactElement = "";
     try {
       const { postModel } = await import("../../services/qmoiApi");
-      const data: any = await postModel({ action: "autodev:rollback" });
+      const data: unknown = await postModel({ action: "autodev:rollback" });
       _response =
         data && data.success
           ? "Rollback successful."
           : `Error: ${data?._error}`;
-    } catch (_e: any) {
-      const err: any = _e;
-      _response = `Error: ${err?.message ?? String(err)}`;
+    } catch (_e: unknown) {
+      const _err: unknown = _e;
+      _response = `Error: ${_err?.message ?? String(_err)}`;
     }
     setMessages((msgs) => [
       ...msgs,
@@ -155,7 +155,7 @@ export default function QMoiFileEditorChat({
     let _response: string | React.ReactElement = "";
     try {
       const { postModel } = await import("../../services/qmoiApi");
-      const data: any = await postModel({
+      const data: unknown = await postModel({
         action: "autodev:ai_suggest",
         filePath: "",
         context: lastView,
@@ -164,9 +164,9 @@ export default function QMoiFileEditorChat({
         data && data.success
           ? highlightCode(data.suggestion)
           : `Error: ${data?._error}`;
-    } catch (_e: any) {
-      const err: any = _e;
-      _response = `Error: ${err?.message ?? String(err)}`;
+    } catch (_e: unknown) {
+      const _err: unknown = _e;
+      _response = `Error: ${_err?.message ?? String(_err)}`;
     }
     setMessages((msgs) => [
       ...msgs,
@@ -181,7 +181,7 @@ export default function QMoiFileEditorChat({
     let _response: string | React.ReactElement = "";
     try {
       const { postModel } = await import("../../services/qmoiApi");
-      const data: any = await postModel({
+      const data: unknown = await postModel({
         action: "autodev:batch_edit",
         files: files.split(","),
         operation: op,
@@ -190,9 +190,9 @@ export default function QMoiFileEditorChat({
         data && data.success
           ? "Batch edit complete."
           : `Error: ${data?._error}`;
-    } catch (_e: any) {
-      const err: any = _e;
-      _response = `Error: ${err?.message ?? String(err)}`;
+    } catch (_e: unknown) {
+      const _err: unknown = _e;
+      _response = `Error: ${_err?.message ?? String(_err)}`;
     }
     setMessages((msgs) => [
       ...msgs,

@@ -19,22 +19,22 @@ export default function AdminPage() {
         }
 
         // Verify admin access by trying to fetch monitoring dashboard
-        const response = await fetch("/api/admin/monitoring", {
+        const _response = await fetch("/api/admin/monitoring", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
-        if (response.status === 403) {
+        if (_response.status === 403) {
           router.push("/dashboard");
           return;
         }
 
-        if (response.ok) {
+        if (_response.ok) {
           setIsAdmin(true);
         } else {
           router.push("/login");
         }
-      } catch (error) {
-        console.error("Error checking admin status:", error);
+      } catch (_error) {
+        console._error("Error checking admin status:", _error);
         router.push("/login");
       } finally {
         setLoading(false);

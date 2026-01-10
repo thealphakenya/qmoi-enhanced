@@ -11,19 +11,19 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [error, setError] = useState("");
+  const [_error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+  const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = _e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
     setError("");
     setLoading(true);
 
@@ -42,7 +42,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const response = await fetch("/api/auth/register", {
+      const _response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -54,14 +54,14 @@ export function RegisterForm() {
         }),
       });
 
-      if (!response.ok) {
-        const data = await response.json();
-        setError(data.error || "Registration failed");
+      if (!_response.ok) {
+        const data = await _response.json();
+        setError(data._error || "Registration failed");
         setLoading(false);
         return;
       }
 
-      const { accessToken, user } = await response.json();
+      const { accessToken, user } = await _response.json();
 
       // Store token
       localStorage.setItem("accessToken", accessToken);
@@ -69,8 +69,8 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An _error occurred");
       setLoading(false);
     }
   };
@@ -79,9 +79,9 @@ export function RegisterForm() {
     <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
       <h1 className="text-2xl font-bold mb-6">Create Account</h1>
 
-      {error && (
+      {_error && (
         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
-          {error}
+          {_error}
         </div>
       )}
 

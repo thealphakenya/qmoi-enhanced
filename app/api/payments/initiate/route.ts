@@ -3,9 +3,9 @@ import { paymentService } from "@/lib/payments/service";
 import { transactionService, walletService } from "@/lib/db/services";
 import { notificationService } from "@/lib/notifications/service";
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
-    const body = (await request.json()) as {
+    const body = (await _request.json()) as {
       walletId?: string;
       amount?: number;
       currency?: string;
@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
     // Validate input
     if (!body.walletId || !body.amount || body.amount <= 0) {
       return NextResponse.json(
-        { error: "Invalid payment parameters" },
+        { _error: "Invalid payment parameters" },
         { status: 400 }
       );
     }
@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
       await transactionService.updateStatus(transaction.id, "failed");
 
       return NextResponse.json(
-        { error: paymentResponse.message },
+        { _error: paymentResponse.message },
         { status: 400 }
       );
     }
@@ -107,10 +107,10 @@ export async function POST(request: NextRequest) {
         redirectUrl: paymentResponse.redirectUrl,
       },
     });
-  } catch (error) {
-    console.error("Payment initiation error:", error);
+  } catch (_error) {
+    console._error("Payment initiation _error:", _error);
     return NextResponse.json(
-      { error: "Payment initiation failed" },
+      { _error: "Payment initiation failed" },
       { status: 500 }
     );
   }

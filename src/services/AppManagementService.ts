@@ -73,7 +73,7 @@ type Timeout = ReturnType<typeof setTimeout>;
 
 export class AppManagementService {
   private static instance: AppManagementService;
-  private eventEmitter: any;
+  private eventEmitter: unknown;
   private apps: Map<string, AppInfo> = new Map();
   private isAutoGitEnabled = true;
   private gitCommitInterval: Timeout | null = null;

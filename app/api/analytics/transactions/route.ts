@@ -6,13 +6,13 @@ import authService from "@/lib/auth/service";
  * GET /api/analytics/transactions
  * Get transaction analytics with filters
  */
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
-    const token = request.headers.get("Authorization")?.replace("Bearer ", "");
+    const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
     if (!token) {
       return NextResponse.json(
-        { error: { message: "Missing authorization token", code: "NO_TOKEN" } },
+        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
         { status: 401 }
       );
     }
@@ -20,15 +20,15 @@ export async function GET(request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (error) {
+    } catch (_error) {
       return NextResponse.json(
-        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 }
       );
     }
 
-    // Get query parameters
-    const { searchParams } = new URL(request.url);
+    // Get _query parameters
+    const { searchParams } = new URL(_request.url);
     const startDate = searchParams.get("startDate");
     const endDate = searchParams.get("endDate");
     const groupBy = searchParams.get("groupBy") || "day"; // day, week, month
@@ -82,17 +82,17 @@ export async function GET(request: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (error) {
-    console.error("Analytics error:", error);
+  } catch (_error) {
+    console._error("Analytics _error:", _error);
     return NextResponse.json(
-      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
       { status: 500 }
     );
   }
 }
 
 function groupTransactions(
-  transactions: any[],
+  transactions: unknown[],
   groupBy: string
 ): Record<string, any[]> {
   const grouped: Record<string, any[]> = {};
@@ -120,7 +120,7 @@ function groupTransactions(
   return grouped;
 }
 
-function calculateStats(transactions: any[]) {
+function calculateStats(transactions: unknown[]) {
   const stats = {
     totalTransactions: transactions.length,
     totalAmount: 0,

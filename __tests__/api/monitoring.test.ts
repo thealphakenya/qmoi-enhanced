@@ -4,8 +4,8 @@ import { errorTracker } from "@/lib/monitoring/error-tracker";
 
 describe("Admin Monitoring APIs", () => {
   let adminToken: string;
-  let adminUser: any;
-  let regularUser: any;
+  let adminUser: unknown;
+  let regularUser: unknown;
   let regularToken: string;
 
   beforeAll(async () => {

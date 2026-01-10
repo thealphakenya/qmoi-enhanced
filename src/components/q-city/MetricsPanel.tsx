@@ -14,7 +14,7 @@ export default function MetricsPanel() {
     })
       .then((r) => r.json())
       .then((data) => setMetrics(data))
-      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
+      .catch((_e: unknown) => setError((_e as any).message ?? String(_e)))
       .finally(() => setLoading(false));
   }, []);
 

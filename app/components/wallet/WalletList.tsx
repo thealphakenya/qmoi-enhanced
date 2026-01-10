@@ -14,7 +14,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [_error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -31,14 +31,14 @@ export function WalletList() {
         return;
       }
 
-      const response = await fetch("/api/wallets", {
+      const _response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-      if (!response.ok) {
-        if (response.status === 401) {
+      if (!_response.ok) {
+        if (_response.status === 401) {
           router.push("/login");
           return;
         }
@@ -46,17 +46,17 @@ export function WalletList() {
         return;
       }
 
-      const data = await response.json();
+      const data = await _response.json();
       setWallets(data.wallets || []);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An _error occurred");
     } finally {
       setLoading(false);
     }
   };
 
-  const handleCreateWallet = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleCreateWallet = async (_e: React.FormEvent<HTMLFormElement>) => {
+    _e.preventDefault();
     setCreatingWallet(true);
 
     try {
@@ -66,7 +66,7 @@ export function WalletList() {
         return;
       }
 
-      const response = await fetch("/api/wallets", {
+      const _response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -75,16 +75,16 @@ export function WalletList() {
         body: JSON.stringify({ currency: newCurrency }),
       });
 
-      if (!response.ok) {
+      if (!_response.ok) {
         setError("Failed to create wallet");
         return;
       }
 
-      const newWallet = await response.json();
+      const newWallet = await _response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+    } catch (_err) {
+      setError(_err instanceof Error ? _err.message : "An _error occurred");
     } finally {
       setCreatingWallet(false);
     }
@@ -98,9 +98,9 @@ export function WalletList() {
     <div className="space-y-6">
       <h2 className="text-2xl font-bold">My Wallets</h2>
 
-      {error && (
+      {_error && (
         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
-          {error}
+          {_error}
         </div>
       )}
 
@@ -143,7 +143,7 @@ export function WalletList() {
         <div className="flex gap-2">
           <select
             value={newCurrency}
-            onChange={(e) => setNewCurrency(e.target.value)}
+            onChange={(_e) => setNewCurrency(_e.target.value)}
             className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="KES">KES (Kenyan Shilling)</option>

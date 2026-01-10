@@ -104,7 +104,7 @@ export class PluginManager {
           // fallback
           clearInterval(t as any);
         }
-      } catch (e) {
+      } catch (_e) {
         // ignore any errors clearing timers
       }
     });

@@ -115,7 +115,7 @@ export class NotificationService {
       });
       logger.info("Email notification sent successfully");
     } catch (_error) {
-      logger.error("Failed to send email notification:", _error);
+      logger._error("Failed to send email notification:", _error);
       throw _error;
     }
   }
@@ -127,7 +127,7 @@ export class NotificationService {
       await axios.post(this.config.slack.webhookUrl, { text: message });
       logger.info("Slack notification sent successfully");
     } catch (_error) {
-      logger.error("Failed to send Slack notification:", _error);
+      logger._error("Failed to send Slack notification:", _error);
       throw _error;
     }
   }
@@ -139,7 +139,7 @@ export class NotificationService {
       await axios.post(this.config.discord.webhookUrl, { content: message });
       logger.info("Discord notification sent successfully");
     } catch (_error) {
-      logger.error("Failed to send Discord notification:", _error);
+      logger._error("Failed to send Discord notification:", _error);
       throw _error;
     }
   }
@@ -155,7 +155,7 @@ export class NotificationService {
       });
       logger.info("Telegram notification sent successfully");
     } catch (_error) {
-      logger.error("Failed to send Telegram notification:", _error);
+      logger._error("Failed to send Telegram notification:", _error);
       throw _error;
     }
   }
@@ -172,7 +172,7 @@ export class NotificationService {
       }
       logger.info("WhatsApp notification sent successfully");
     } catch (_error) {
-      logger.error("Failed to send WhatsApp notification:", _error);
+      logger._error("Failed to send WhatsApp notification:", _error);
       throw _error;
     }
   }
@@ -201,7 +201,7 @@ export class NotificationService {
       await Promise.all(notifications);
       logger.info("All notifications sent successfully");
     } catch (_error) {
-      logger.error("Some notifications failed to send:", _error);
+      logger._error("Some notifications failed to send:", _error);
       throw _error;
     }
   }

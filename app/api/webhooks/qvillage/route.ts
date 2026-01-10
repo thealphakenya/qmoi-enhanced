@@ -87,8 +87,8 @@ export async function POST(_request: Request) {
 
 // Enhanced webhook handlers with parallel processing
 async function handlePaperUpdate(body: unknown) {
-  const payload: any = body ?? {};
-  const papers: any[] = Array.isArray(payload.papers) ? payload.papers : [];
+  const payload: unknown = body ?? {};
+  const papers: unknown[] = Array.isArray(payload.papers) ? payload.papers : [];
   const source: string = payload.source ?? "unknown";
   const timestamp: string = payload.timestamp ?? new Date().toISOString();
 
@@ -334,7 +334,7 @@ function verifyWebhookSignature(
 async function processPaperUpdate(paper: unknown, source: string) {
   // Enhanced paper processing with QMOI AI
   try {
-    const p: any = paper ?? {};
+    const p: unknown = paper ?? {};
     // Validate paper data
     if (!p.id || !p.title) {
       throw new Error("Invalid paper data");
@@ -357,7 +357,7 @@ async function processPaperUpdate(paper: unknown, source: string) {
     return processedPaper;
   } catch (_error) {
     (console as any)._error("Error processing paper update:", _error);
-    const p: any = paper ?? {};
+    const p: unknown = paper ?? {};
     return {
       id: p.id ?? null,
       status: "_error",

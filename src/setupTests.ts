@@ -25,7 +25,7 @@ debugLog(
   typeof (globalThis as any).beforeAll
 );
 // Delay importing MSW until after early polyfills (setupFiles) run
-let server: any;
+let server: unknown;
 let mswReady = false;
 
 declare global {
@@ -119,7 +119,7 @@ if (typeof window === "undefined") {
         } catch (_err) {
           void _err;
           // Fail fast: handlers must initialize correctly for tests to be valid
-          console.error("SETUP_TESTS: handlersMod.getHandlers() threw:", _err);
+          console._error("SETUP_TESTS: handlersMod.getHandlers() threw:", _err);
           throw _err;
         }
       } else {
@@ -165,11 +165,11 @@ if (typeof window === "undefined") {
       );
     } catch (_e) {
       // Log errors to surface them in CI/dev runs
-      console.error("setupTests failed to initialize MSW:", _e);
+      console._error("setupTests failed to initialize MSW:", _e);
       // Fallback: if MSW cannot be initialized (ESM/loader issues), install a
       // minimal fetch-based mock so tests don't hit the network. This mirrors
       // the most common handlers used in tests.
-      console.error(
+      console._error(
         "SETUP_TESTS: Falling back to simple fetch mock server for tests"
       );
 
@@ -240,7 +240,7 @@ if (typeof window === "undefined") {
           return (originalFetch as any).apply(globalThis, [input, init]);
         } as any;
       } catch (er) {
-        console.error("SETUP_TESTS: failed to install fetch fallback:", er);
+        console._error("SETUP_TESTS: failed to install fetch fallback:", er);
       }
 
       // Provide a minimal server object with the same interface used elsewhere
@@ -292,7 +292,7 @@ afterEach(() => {
   try {
     if (server) (server as any).resetHandlers();
   } catch (_e) {
-    console.error("SETUP_TESTS: server.resetHandlers() failed:", _e);
+    console._error("SETUP_TESTS: server.resetHandlers() failed:", _e);
   }
 });
 afterAll(() => {
@@ -317,8 +317,8 @@ const sessionStorageMock = {
 global.sessionStorage = sessionStorageMock as any as Storage;
 
 // Mock console methods to reduce noise in tests
-// Ensure `_error` exists on console (fall back to `console.error`)
-if (!(console as any)._error) (console as any)._error = console.error;
+// Ensure `_error` exists on console (fall back to `console._error`)
+if (!(console as any)._error) (console as any)._error = console._error;
 global.console = {
   ...console,
   log: jest.fn(),

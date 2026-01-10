@@ -9,10 +9,10 @@ const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG = path.join(process.cwd(), "logs/qcity_audit.log");
 
 function logAudit(entry: unknown) {
-  const e = (entry as Record<string, unknown>) || {};
+  const _e = (entry as Record<string, unknown>) || {};
   fs.appendFileSync(
     AUDIT_LOG,
-    JSON.stringify({ ...e, timestamp: new Date().toISOString() }) + "\n"
+    JSON.stringify({ ..._e, timestamp: new Date().toISOString() }) + "\n"
   );
 }
 

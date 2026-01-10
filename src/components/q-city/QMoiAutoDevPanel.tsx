@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getSessionHeaders } from "../../services/qmoiSession";
 
-function exportToCSV(logs: any[]) {
+function exportToCSV(logs: unknown[]) {
   const header = "Timestamp,Action,Result\n";
   const rows = logs
     .map(
@@ -19,7 +19,7 @@ function exportToCSV(logs: any[]) {
   URL.revokeObjectURL(url);
 }
 
-function exportToJSON(logs: any[]) {
+function exportToJSON(logs: unknown[]) {
   const blob = new Blob([JSON.stringify(logs, null, 2)], {
     type: "application/json",
   });
@@ -68,9 +68,9 @@ export default function QMoiAutoDevPanel({
       });
       const data = await _res.json();
       setStatus(data);
-    } catch (_e: any) {
-      const err = _e as any;
-      setError(err?.message ?? String(_e));
+    } catch (_e: unknown) {
+      const _err = _e as any;
+      setError(_err?.message ?? String(_e));
     }
     setLoading(false);
   }
@@ -90,14 +90,14 @@ export default function QMoiAutoDevPanel({
         }),
       });
       const data = await _res.json();
-      setStatus((prev: any) => ({
+      setStatus((prev: unknown) => ({
         ...prev,
         daemon: data.status,
         running: data.status?.running,
       }));
-    } catch (_e: any) {
-      const err = _e as any;
-      setError(err?.message ?? String(_e));
+    } catch (_e: unknown) {
+      const _err = _e as any;
+      setError(_err?.message ?? String(_e));
     }
     setDaemonAction(null);
   }
@@ -109,7 +109,7 @@ export default function QMoiAutoDevPanel({
       if (status?.lastResult?.fixResults) {
         const logEntries = [];
         if (status.lastResult.fixResults.length > 0) {
-          status.lastResult.fixResults.forEach((item: any, idx: number) => {
+          status.lastResult.fixResults.forEach((item: unknown, idx: number) => {
             logEntries.push({
               timestamp: status.lastRun,
               action: `Fix Cycle #${idx + 1}`,
@@ -130,9 +130,9 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: any) {
-      const err = _e as any;
-      setError(err?.message ?? String(_e));
+    } catch (_e: unknown) {
+      const _err = _e as any;
+      setError(_err?.message ?? String(_e));
     }
     setLogsLoading(false);
   }
@@ -151,9 +151,9 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: any) {
-      const err = _e as any;
-      setError(err?.message ?? String(_e));
+    } catch (_e: unknown) {
+      const _err = _e as any;
+      setError(_err?.message ?? String(_e));
     }
     setForceRunLoading(false);
   }
@@ -241,8 +241,8 @@ export default function QMoiAutoDevPanel({
         </label>
         <select
           value={deployPlatform}
-          onChange={(e) =>
-            setDeployPlatform((e.target as HTMLSelectElement).value)
+          onChange={(_e) =>
+            setDeployPlatform((_e.target as HTMLSelectElement).value)
           }
           style={{
             background: "#111",
@@ -440,8 +440,8 @@ export default function QMoiAutoDevPanel({
           <label style={{ marginLeft: 16, color: "#ccc" }}>Filter: </label>
           <select
             value={logFilter}
-            onChange={(e) =>
-              setLogFilter((e.target as HTMLSelectElement).value as any)
+            onChange={(_e) =>
+              setLogFilter((_e.target as HTMLSelectElement).value as any)
             }
             style={{
               background: "#111",
