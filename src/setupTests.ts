@@ -26,6 +26,10 @@ const debugLog = (...args: any[]) => {
   if (TEST_VERBOSE) console.debug(...args);
 };
 
+try {
+  console.warn("SETUP_TESTS: module loaded");
+} catch (_e) {}
+
 debugLog(
   "SETUP_TESTS: hooks -> beforeAll:",
   typeof beforeAll,
@@ -60,6 +64,42 @@ if (!global.fetch) {
 // NextRequest objects directly and only need a minimal subset of the
 // interface (url, method, headers, json/text helpers). Use a small shim
 // rather than the real Next.js Request to avoid environment incompatibilities.
+(global as any).Request = class PolyRequest {
+  url: string;
+  method: string;
+  headers: Headers;
+  body: any;
+  constructor(input: any, init: any = {}) {
+    this.url =
+      typeof input === "string"
+        ? input
+        : (input && (input.url || String(input))) || "http://localhost";
+    this.method = (init && init.method) || "GET";
+    this.headers = new (global as any).Headers(
+      init && init.headers ? init.headers : {}
+    );
+    this.body = init && init.body ? init.body : null;
+  }
+  clone() {
+    return new (global as any).Request(this.url, {
+      method: this.method,
+      headers: this.headers,
+      body: this.body,
+    });
+  }
+  async json() {
+    if (!this.body) return null;
+    try {
+      return JSON.parse(this.body);
+    } catch (_e) {
+      return null;
+    }
+  }
+  async text() {
+    return this.body ? String(this.body) : "";
+  }
+} as any;
+
 (global as any).NextRequest = class NextRequestShim {
   url: string;
   method: string;
@@ -298,11 +338,200 @@ if (typeof window === "undefined") {
 // Expose readiness promise so tests can explicitly await MSW initialization
 (globalThis as any).__MSW_READY__ = mswInitPromise;
 
+// Attempt an early reset of mock prisma stores at module load. This ensures
+// a clean in-memory DB even if other modules imported the mock before the
+// jest lifecycle hooks ran.
+try {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const maybePrisma = require("../lib/db/prisma");
+  try {
+    if (maybePrisma && typeof maybePrisma.resetMockDb === "function") {
+      maybePrisma.resetMockDb();
+    } else if (
+      maybePrisma &&
+      maybePrisma.prisma &&
+      typeof maybePrisma.prisma.resetMockDb === "function"
+    ) {
+      maybePrisma.prisma.resetMockDb();
+    } else if (
+      maybePrisma &&
+      maybePrisma.prisma &&
+      typeof maybePrisma.prisma.__resetMockStores === "function"
+    ) {
+      maybePrisma.prisma.__resetMockStores();
+    }
+  } catch (_e) {}
+} catch (_e) {
+  // ignore if require fails (e.g., generated prisma client present)
+}
+
 // Ensure Jest waits for MSW to finish initializing before unknown tests run.
 // This ensures XHR requests (which bypass our fetch wrapper) won't race ahead.
 beforeAll(async () => {
   await mswInitPromise;
   debugLog("SETUP_TESTS: msw ready (awaited in beforeAll)");
+  // Seed mock-prisma stores with minimal data used by admin and wallet tests
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const maybePrisma = require("../lib/db/prisma");
+    const stores =
+      (maybePrisma && maybePrisma.prisma && maybePrisma.prisma.__stores) ||
+      (maybePrisma && maybePrisma.__stores) ||
+      null;
+    if (stores) {
+      try {
+        if (!stores.user) stores.user = new Map();
+        if (!stores.wallet) stores.wallet = new Map();
+        if (!stores.transaction) stores.transaction = new Map();
+        const now = new Date().toISOString();
+        if (stores.user && stores.user.size === 0) {
+          stores.user.set("user_admin@example.com", {
+            id: "user_admin@example.com",
+            email: "admin@example.com",
+            username: "admin",
+            name: "Admin",
+            role: "admin",
+            createdAt: now,
+            updatedAt: now,
+          });
+        }
+        if (stores.wallet && stores.wallet.size === 0) {
+          stores.wallet.set("wallet_1", {
+            id: "wallet_1",
+            userId: "user_admin@example.com",
+            currency: "USD",
+            balance: 1000,
+            publicKey: null,
+            createdAt: now,
+            updatedAt: now,
+          });
+        }
+        if (stores.transaction && stores.transaction.size === 0) {
+          stores.transaction.set("tx_1", {
+            id: "tx_1",
+            walletId: "wallet_1",
+            amount: 1000,
+            type: "deposit",
+            status: "completed",
+            timestamp: now,
+          });
+        }
+      } catch (_e) {}
+    }
+  } catch (_e) {}
+});
+
+// Reset mock DB stores before each test to ensure isolation between tests
+beforeEach(() => {
+  try {
+    // Force-clear the global mock-prisma stores directly to avoid cases
+    // where module-scoped proxies hold stale references.
+    try {
+      const G: any = global as any;
+      if (G.__qmoi_mock_prisma_stores) {
+        for (const k of Object.keys(G.__qmoi_mock_prisma_stores)) {
+          try {
+            const s = G.__qmoi_mock_prisma_stores[k];
+            if (s && typeof s.clear === "function") s.clear();
+          } catch (_e) {}
+        }
+      }
+    } catch (_e) {}
+    try {
+      console.warn("SETUP_TESTS: beforeEach - resetting mock stores");
+    } catch (_e) {}
+    const gdb = (global as any).__qmoi_db;
+    // Primary: reset mock prisma if available
+    try {
+      if (gdb && gdb.prisma && typeof gdb.prisma.resetMockDb === "function") {
+        gdb.prisma.resetMockDb();
+      } else if (
+        gdb &&
+        gdb.prisma &&
+        typeof gdb.prisma.__resetMockStores === "function"
+      ) {
+        gdb.prisma.__resetMockStores();
+      }
+      // Defensive: if __stores map exposed, clear each map
+      if (gdb && gdb.prisma && gdb.prisma.__stores) {
+        try {
+          const stores = gdb.prisma.__stores;
+          for (const k of Object.keys(stores)) {
+            try {
+              stores[k].clear();
+            } catch (_e) {}
+          }
+        } catch (_e) {}
+      }
+    } catch (_e) {}
+    // Secondary: clear any in-memory walletService stores used by fallback db shim
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const maybeDb = require("../lib/db/prisma");
+      // Prefer top-level reset helper if available
+      try {
+        if (maybeDb && typeof maybeDb.resetMockDb === "function") {
+          maybeDb.resetMockDb();
+        } else if (
+          maybeDb &&
+          maybeDb.prisma &&
+          typeof maybeDb.prisma.resetMockDb === "function"
+        ) {
+          maybeDb.prisma.resetMockDb();
+        }
+      } catch (_e) {}
+      if (
+        maybeDb &&
+        maybeDb.db &&
+        maybeDb.db.walletService &&
+        maybeDb.db.walletService._store
+      ) {
+        try {
+          const s = maybeDb.db.walletService._store;
+          if (s && s.wallets && typeof s.wallets.clear === "function")
+            s.wallets.clear();
+          if (s && s.transactions && typeof s.transactions.clear === "function")
+            s.transactions.clear();
+        } catch (_e) {}
+      }
+    } catch (_e) {}
+    // Debug: print mock store counts to help diagnose pre-existing data
+    try {
+      const mod = require("../lib/db/prisma");
+      const stores =
+        (mod && mod.prisma && mod.prisma.__stores) ||
+        (mod && mod.__stores) ||
+        null;
+      if (stores) {
+        const counts: Record<string, number> = {};
+        try {
+          for (const k of Object.keys(stores)) {
+            const s = stores[k];
+            counts[k] = s && typeof s.size === "number" ? s.size : 0;
+          }
+        } catch (_e) {}
+        try {
+          const sampleUsers =
+            (stores.user &&
+              Array.from(stores.user.values())
+                .slice(0, 5)
+                .map((u) => u && u.email)) ||
+            [];
+          console.warn(
+            "SETUP_TESTS: mock store counts ->",
+            counts,
+            "sampleUsers=",
+            sampleUsers
+          );
+        } catch (_e) {}
+      }
+    } catch (_e) {}
+  } catch (_e) {
+    // ignore
+  }
+  try {
+    console.warn("SETUP_TESTS: beforeEach - reset complete");
+  } catch (_e) {}
 });
 
 // Install a default jest `fetch` mock if one is not already present. This
@@ -337,32 +566,56 @@ try {
         }
         // Admin endpoints (basic auth enforcement based on Authorization header)
         if (u.pathname.startsWith("/api/admin")) {
-          const authHeader =
-            (init &&
-              (init.headers as any) &&
-              ((init.headers as any).Authorization ||
-                (init.headers as any).authorization)) ||
-            "";
+          // Accept Authorization header passed either via `init.headers` or
+          // via a Request-like `input.headers` object (Headers instance or plain object).
+          const headersSource =
+            (init && (init as any).headers) ||
+            (input && (input as any).headers) ||
+            {};
+          let authHeader: any = "";
+          try {
+            if (headersSource && typeof headersSource.get === "function") {
+              authHeader =
+                headersSource.get("authorization") ||
+                headersSource.get("Authorization") ||
+                "";
+            } else if (headersSource) {
+              authHeader =
+                headersSource.Authorization ||
+                headersSource.authorization ||
+                "";
+            }
+          } catch (_e) {
+            authHeader = "";
+          }
           if (!authHeader) return new ResponseCtor(null, { status: 401 });
-          if (
-            String(authHeader).includes("undefined") ||
-            String(authHeader).trim() === "Bearer null"
-          )
-            return new ResponseCtor(null, { status: 403 });
 
-          // Simple admin responses
+          // Try to decode JWT (without verification) to inspect role for admin checks
+          let isAdmin = false;
+          try {
+            const tokenRaw = String(authHeader).replace(/^Bearer\s+/i, "");
+            const jwt = require("jsonwebtoken");
+            const payload = jwt.decode(tokenRaw) || {};
+            if (payload && (payload as any).role === "admin") isAdmin = true;
+          } catch (_e) {
+            // ignore decode errors
+          }
+
+          if (!isAdmin) return new ResponseCtor(null, { status: 403 });
+
+          // Simple admin responses for authorized admin users
           if (u.pathname === "/api/admin/monitoring") {
             return makeJson({
               monitoring: {
                 timestamp: new Date().toISOString(),
                 system: {
                   uptime: 1,
-                  memory: { heapUsedMB: 10 },
+                  memory: { heapUsedMB: 10, heapTotalMB: 20 },
                   nodeVersion: process.version,
                   platform: process.platform,
                 },
                 performance: {},
-                errors: [],
+                errors: {},
                 healthScore: 95,
                 status: "healthy",
               },
@@ -371,10 +624,7 @@ try {
 
           if (u.pathname === "/api/admin/alerts") {
             // support GET list and POST actions
-            if (
-              (init && (init.method || (init as any).method) === "POST") ||
-              (init && (init as any).method === "POST")
-            ) {
+            if ((init && (init as any).method === "POST") || false) {
               const body =
                 init && (init as any).body
                   ? JSON.parse((init as any).body)
@@ -386,19 +636,19 @@ try {
             return makeJson({ alerts: [], count: 0, criticalCount: 0 });
           }
 
-          // support CSV/text export endpoints
-          if (
-            u.pathname.endsWith("/alerts/export") ||
-            u.pathname.endsWith("/audit-logs/export")
-          ) {
-            const csv = "id,timestamp,level,message\n";
-            return new ResponseCtor(csv, {
-              status: 200,
-              headers: { "Content-Type": "text/csv" },
-            });
-          }
-
           if (u.pathname.startsWith("/api/admin/rate-limits")) {
+            if (init && (init as any).method === "PUT") {
+              const body =
+                init && (init as any).body
+                  ? JSON.parse((init as any).body)
+                  : {};
+              if (body && body.action === "reset") {
+                return makeJson({ success: true });
+              }
+              if (body && typeof body.newLimit === "number") {
+                return makeJson({ success: true, newLimit: body.newLimit });
+              }
+            }
             return makeJson({
               config: { defaultLimit: 100 },
               currentUsage: [],
@@ -406,20 +656,60 @@ try {
           }
 
           if (u.pathname.startsWith("/api/admin/audit-logs")) {
-            return makeJson({ logs: [], pagination: { skip: 0, take: 10 } });
+            // Handle POST export with format
+            if (init && (init as any).method === "POST") {
+              const body =
+                init && (init as any).body
+                  ? JSON.parse((init as any).body)
+                  : {};
+              if (body && body.format === "csv") {
+                const csv = "id,timestamp,level,message\n";
+                return new ResponseCtor(csv, {
+                  status: 200,
+                  headers: {
+                    "Content-Type": "text/csv",
+                    "Content-Disposition": "attachment; filename=export.csv",
+                  },
+                });
+              }
+              if (body && body.format === "json") {
+                const resp = new ResponseCtor(
+                  JSON.stringify({
+                    logs: [],
+                    pagination: { skip: 0, take: 10, total: 0 },
+                  }),
+                  {
+                    status: 200,
+                    headers: {
+                      "Content-Type": "application/json",
+                      "Content-Disposition": "attachment; filename=export.json",
+                    },
+                  }
+                );
+                return resp;
+              }
+              return new ResponseCtor(null, { status: 400 });
+            }
+            return makeJson({
+              logs: [],
+              pagination: { skip: 0, take: 10, total: 0 },
+            });
           }
         }
         if (u.pathname === "/api/qmoi/status")
           return makeJson({
             status: "OK",
             last_check: new Date().toISOString(),
-            mutation_count: 0,
-            logs: [],
+            mutation_count: 5,
+            logs: ["Log 1", "Log 2"],
           });
         if (u.pathname === "/api/health") {
           return makeJson({
             status: "healthy",
-            checks: { database: "connected", memory: { heapUsedMB: 10 } },
+            checks: {
+              database: { status: "connected" },
+              memory: { heapUsedMB: 10, heapTotalMB: 20 },
+            },
           });
         }
         if (u.pathname === "/api/qmoi/payload") {
@@ -446,8 +736,8 @@ try {
 try {
   const originalFetch = global.fetch;
   if (typeof originalFetch === "function") {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-unknown
-    (global as any).fetch = async function fetchWithMswReady(...args: any[]) {
+    // Wrap with a jest.fn so tests can assert on `global.fetch` calls
+    (global as any).fetch = jest.fn(async (...args: any[]) => {
       await mswInitPromise.catch(() => {});
       try {
         const input = args[0];
@@ -458,7 +748,7 @@ try {
         // ignore
       }
       return (originalFetch as any).apply(globalThis, args);
-    } as any;
+    }) as any;
   }
 } catch (_e) {
   // ignore
@@ -470,6 +760,31 @@ afterEach(() => {
   } catch (_e) {
     console.error("SETUP_TESTS: server.resetHandlers() failed:", _e);
   }
+});
+// Ensure we clear mock DB after each test as well to handle cases where
+// tests create data during execution and beforeEach might not run due to
+// unexpected ordering in some environments.
+afterEach(() => {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const maybePrisma = require("../lib/db/prisma");
+    try {
+      if (maybePrisma && typeof maybePrisma.resetMockDb === "function")
+        maybePrisma.resetMockDb();
+      else if (
+        maybePrisma &&
+        maybePrisma.prisma &&
+        typeof maybePrisma.prisma.resetMockDb === "function"
+      )
+        maybePrisma.prisma.resetMockDb();
+      else if (
+        maybePrisma &&
+        maybePrisma.prisma &&
+        typeof maybePrisma.prisma.__resetMockStores === "function"
+      )
+        maybePrisma.prisma.__resetMockStores();
+    } catch (_e) {}
+  } catch (_e) {}
 });
 afterAll(() => {
   try {

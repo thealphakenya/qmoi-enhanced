@@ -8,9 +8,18 @@ function verifyWebhookSignature(
   body: string,
   signature: string | null
 ): boolean {
-  if (!signature || !process.env.WEBHOOK_SIGNING_SECRET) {
-    console.warn("Webhook signature verification skipped");
-    return true; // In development, allow unsigned webhooks
+  // If no signing secret is configured, allow unsigned webhooks only when
+  // the sender did not provide a signature header. If a signature header
+  // was provided but there's no secret, treat it as invalid.
+  if (!process.env.WEBHOOK_SIGNING_SECRET) {
+    if (!signature) {
+      console.warn(
+        "Webhook signing secret not set; accepting unsigned webhook"
+      );
+      return true;
+    }
+    console.warn("Webhook signature provided but signing secret missing");
+    return false;
   }
 
   const computed = crypto

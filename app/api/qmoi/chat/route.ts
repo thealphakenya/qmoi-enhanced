@@ -4,7 +4,12 @@ import { NextResponse } from "next/server";
 
 export async function POST(_req: Request) {
   try {
-    const body = ((await _req.json()) as any).catch(() => ({}));
+    let body: any = {};
+    try {
+      body = await _req.json();
+    } catch (_e) {
+      body = {};
+    }
     // Accept both {messages: [...] } and {input: 'text'} convenience
     let messages = body.messages;
     if (!messages && body.input) {
@@ -52,7 +57,8 @@ export async function POST(_req: Request) {
     const timeout = Number(process.env.QMOI_PROXY_TIMEOUT_MS || 2000); // Reduced to 2000ms for faster responses
     const timer = setTimeout(() => controller.abort(), timeout);
 
-    const resp = await fetch(`${target}/v1/chat/completions`, {
+    const fetchFn = (globalThis as any).fetch || fetch;
+    const resp = await fetchFn(`${target}/v1/chat/completions`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ model, messages, sessionId }),

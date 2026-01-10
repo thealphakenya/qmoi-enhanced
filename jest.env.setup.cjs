@@ -93,5 +93,33 @@ try {
   // console.error("EARLY_MSW failed to initialize:", e);
 }
 
+// Early reset of in-memory mock prisma stores to avoid leftover data from
+// previous runs or module-initialization side-effects. This runs before
+// other modules are imported by tests.
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const maybePrisma = require("./lib/db/prisma");
+  // Prefer an exported helper if present, otherwise fall back to internal API
+  try {
+    if (maybePrisma && typeof maybePrisma.resetMockDb === "function") {
+      maybePrisma.resetMockDb();
+    } else if (
+      maybePrisma &&
+      maybePrisma.prisma &&
+      typeof maybePrisma.prisma.resetMockDb === "function"
+    ) {
+      maybePrisma.prisma.resetMockDb();
+    } else if (
+      maybePrisma &&
+      maybePrisma.prisma &&
+      typeof maybePrisma.prisma.__resetMockStores === "function"
+    ) {
+      maybePrisma.prisma.__resetMockStores();
+    }
+  } catch (_e) {}
+} catch (_e) {
+  // ignore if not available or if real prisma client exists
+}
+
 // No early MSW fallback here. MSW is initialized in `src/setupTests.ts`
 // to ensure ESM imports and polyfills are applied in the correct order.

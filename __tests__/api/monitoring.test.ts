@@ -1,4 +1,5 @@
 import { db } from "@/lib/db/prisma";
+import authService from "@/lib/auth/service";
 import { monitor } from "@/lib/monitoring/performance";
 import { errorTracker } from "@/lib/monitoring/error-tracker";
 
@@ -31,6 +32,20 @@ describe("Admin Monitoring APIs", () => {
         role: "user",
         status: "active",
       },
+    });
+
+    // Generate tokens for authorization tests
+    adminToken = authService.generateToken({
+      userId: (adminUser as any).id,
+      email: (adminUser as any).email || "admin@qmoi.app",
+      username: (adminUser as any).username || "admin",
+      role: "admin",
+    });
+    regularToken = authService.generateToken({
+      userId: (regularUser as any).id,
+      email: (regularUser as any).email || "user@qmoi.app",
+      username: (regularUser as any).username || "regularuser",
+      role: "user",
     });
   });
 
