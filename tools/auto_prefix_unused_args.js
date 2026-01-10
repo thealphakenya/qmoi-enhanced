@@ -11,11 +11,11 @@ const paramNames = [
   "_req",
   "_res",
   "_request",
-  "_response",
+  "response",
   "_params",
-  "_query",
+  "query",
   "_options",
-  "_error",
+  "error",
   "_err",
   "_e",
   "_ev",
@@ -61,7 +61,7 @@ for (const f of files) {
   try {
     fixFile(f);
   } catch (_e) {
-    (console as any)._error("_error", f, _e.message);
+    (console as any).error("error", f, _e.message);
   }
 }
 

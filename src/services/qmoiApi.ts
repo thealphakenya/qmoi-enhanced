@@ -9,7 +9,7 @@ async function safeJson(resp: Response) {
   }
 }
 
-export async function postChat(payload: unknown) {
+export async function postChat(payload: any) {
   const headers = {
     "Content-Type": "application/json",
     ...getSessionHeaders(),
@@ -22,7 +22,7 @@ export async function postChat(payload: unknown) {
   return safeJson(resp);
 }
 
-export async function postModel(payload: unknown) {
+export async function postModel(payload: any) {
   const headers = {
     "Content-Type": "application/json",
     ...getSessionHeaders(),
@@ -41,7 +41,7 @@ export async function fetchMemory() {
   return safeJson(resp);
 }
 
-export async function syncMemory(body: unknown) {
+export async function syncMemory(body: any) {
   const headers = {
     "Content-Type": "application/json",
     ...getSessionHeaders(),

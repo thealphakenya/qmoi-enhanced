@@ -17,7 +17,7 @@ export interface QmoiPlugin {
   getSettingsPanel?(): React.ReactNode;
 }
 
-export type PluginEvent = { type: string; payload?: unknown };
+export type PluginEvent = { type: string; payload?: any };
 
 export type AutomationRule = {
   id: string;
@@ -30,12 +30,12 @@ export class PluginManager {
   private plugins: QmoiPlugin[] = [];
   private pluginStatus: { [id: string]: boolean } = {};
   private eventListeners: {
-    [eventType: string]: ((payload: unknown) => void)[];
+    [eventType: string]: ((payload: any) => void)[];
   } = {};
   private scheduledPlugins: {
     plugin: QmoiPlugin;
     interval: number;
-    timer?: unknown;
+    timer?: any;
   }[] = [];
   private automationRules: AutomationRule[] = [];
 
@@ -71,7 +71,7 @@ export class PluginManager {
     return this.plugins;
   }
 
-  on(eventType: string, listener: (payload: unknown) => void) {
+  on(eventType: string, listener: (payload: any) => void) {
     if (!this.eventListeners[eventType]) this.eventListeners[eventType] = [];
     this.eventListeners[eventType].push(listener);
   }
@@ -94,7 +94,7 @@ export class PluginManager {
     this.scheduledPlugins.forEach((s) => {
       try {
         // timer may be number or NodeJS.Timeout depending on environment
-        const t = s.timer as unknown;
+        const t = s.timer as any;
         if (typeof t === "number") {
           clearInterval(t);
         } else if (t && typeof (t as any).unref === "function") {

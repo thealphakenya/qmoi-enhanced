@@ -22,7 +22,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
 }) => {
   const [pendingRequests, setPendingRequests] = useState<WalletRequest[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [walletRequested, setWalletRequested] = useState(false);
   const { getCurrentTime, currentTimezone } = useTimezone();
   const { toast } = useToast();
@@ -42,7 +42,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       if (!_res.ok) throw new Error("Failed to fetch pending requests");
       const data = await _res.json();
       setPendingRequests(data as WalletRequest[]);
-    } catch (_err: unknown) {
+    } catch (_err: any) {
       setError((_err && _err.message) || "Failed to load pending requests");
       toast({
         title: "Error",
@@ -87,9 +87,9 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
           description: "Wallet _request sent to master for approval",
         });
       } else {
-        throw new Error(data._error || "Failed to _request wallet");
+        throw new Error(data.error || "Failed to _request wallet");
       }
-    } catch (_err: unknown) {
+    } catch (_err: any) {
       setError((_err && _err.message) || String(_err));
       toast({
         title: "Error",
@@ -128,9 +128,9 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         });
         await fetchPendingRequests(); // Refresh the list
       } else {
-        throw new Error(data._error || "Failed to approve wallet");
+        throw new Error(data.error || "Failed to approve wallet");
       }
-    } catch (_err: unknown) {
+    } catch (_err: any) {
       setError((_err && _err.message) || String(_err));
       toast({
         title: "Error",
@@ -153,12 +153,12 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         </div>
       </div>
 
-      {_error && (
+      {error && (
         <div
           className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded relative"
           role="alert"
         >
-          <span className="block sm:inline">{_error}</span>
+          <span className="block sm:inline">{error}</span>
         </div>
       )}
 

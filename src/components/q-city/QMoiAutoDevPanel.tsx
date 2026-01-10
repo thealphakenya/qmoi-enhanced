@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getSessionHeaders } from "../../services/qmoiSession";
 
-function exportToCSV(logs: unknown[]) {
+function exportToCSV(logs: any[]) {
   const header = "Timestamp,Action,Result\n";
   const rows = logs
     .map(
@@ -19,7 +19,7 @@ function exportToCSV(logs: unknown[]) {
   URL.revokeObjectURL(url);
 }
 
-function exportToJSON(logs: unknown[]) {
+function exportToJSON(logs: any[]) {
   const blob = new Blob([JSON.stringify(logs, null, 2)], {
     type: "application/json",
   });
@@ -49,7 +49,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<any[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -68,7 +68,7 @@ export default function QMoiAutoDevPanel({
       });
       const data = await _res.json();
       setStatus(data);
-    } catch (_e: unknown) {
+    } catch (_e: any) {
       const _err = _e as any;
       setError(_err?.message ?? String(_e));
     }
@@ -90,12 +90,12 @@ export default function QMoiAutoDevPanel({
         }),
       });
       const data = await _res.json();
-      setStatus((prev: unknown) => ({
+      setStatus((prev: any) => ({
         ...prev,
         daemon: data.status,
         running: data.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (_e: any) {
       const _err = _e as any;
       setError(_err?.message ?? String(_e));
     }
@@ -109,7 +109,7 @@ export default function QMoiAutoDevPanel({
       if (status?.lastResult?.fixResults) {
         const logEntries = [];
         if (status.lastResult.fixResults.length > 0) {
-          status.lastResult.fixResults.forEach((item: unknown, idx: number) => {
+          status.lastResult.fixResults.forEach((item: any, idx: number) => {
             logEntries.push({
               timestamp: status.lastRun,
               action: `Fix Cycle #${idx + 1}`,
@@ -130,7 +130,7 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (_e: any) {
       const _err = _e as any;
       setError(_err?.message ?? String(_e));
     }
@@ -151,7 +151,7 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (_e: any) {
       const _err = _e as any;
       setError(_err?.message ?? String(_e));
     }
@@ -293,8 +293,8 @@ export default function QMoiAutoDevPanel({
       )}
       {loading ? (
         <p>Loading...</p>
-      ) : _error ? (
-        <p style={{ color: "#f66" }}>{_error}</p>
+      ) : error ? (
+        <p style={{ color: "#f66" }}>{error}</p>
       ) : (
         <div style={{ background: "#222", padding: 12, borderRadius: 8 }}>
           <div>

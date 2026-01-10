@@ -79,8 +79,8 @@ export class EnhancedSiteGenerationService extends EventEmitter {
       try {
         const result = await this.generateSite(_request);
         this.emit("siteGenerated", result);
-      } catch (_error) {
-        this.emit("siteGenerationFailed", { _request, _error });
+      } catch (error) {
+        this.emit("siteGenerationFailed", { _request, error });
       } finally {
         this.isProcessing = false;
         this.processQueue();

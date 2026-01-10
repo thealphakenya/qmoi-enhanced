@@ -128,7 +128,7 @@ class QMOISetup {
   async createLogFiles() {
     const logFiles = [
       "logs/qmoi.log",
-      "logs/_error.log",
+      "logs/error.log",
       "logs/audit.log",
       "logs/notification.log",
     ];
@@ -149,9 +149,9 @@ class QMOISetup {
       execSync("npm install", { stdio: "inherit" });
       await this.log("Dependencies installed successfully");
       return true;
-    } catch (_error) {
+    } catch (error) {
       await this.log(
-        `Failed to install dependencies: ${_error.message}`,
+        `Failed to install dependencies: ${error.message}`,
         "ERROR",
       );
       return false;
@@ -173,7 +173,7 @@ class QMOISetup {
         name: "pre-commit",
         content: `#!/bin/sh
 echo "Running QMOI pre-commit checks..."
-npm run qmoi-_error-recovery || exit 1
+npm run qmoi-error-recovery || exit 1
 echo "Pre-commit checks completed"
 `,
       },
@@ -258,8 +258,8 @@ echo "Post-commit actions completed"
       execSync("npm test", { stdio: "inherit" });
       await this.log("Tests passed successfully");
       return true;
-    } catch (_error) {
-      await this.log(`Tests failed: ${_error.message}`, "WARN");
+    } catch (error) {
+      await this.log(`Tests failed: ${error.message}`, "WARN");
       return false;
     }
   }
@@ -270,9 +270,9 @@ echo "Post-commit actions completed"
         "QMOI Setup Completed",
         "QMOI AI Automation System has been successfully set up and is ready to use.",
       );
-    } catch (_error) {
+    } catch (error) {
       await this.log(
-        `Failed to send setup notification: ${_error.message}`,
+        `Failed to send setup notification: ${error.message}`,
         "WARN",
       );
     }
@@ -320,14 +320,14 @@ echo "Post-commit actions completed"
       await this.log("  npm start          - Start QMOI server");
       await this.log("  npm run dev        - Start QMOI in development mode");
       await this.log("  npm run qmoi-auto-push - Run auto-push functionality");
-      await this.log("  npm run qmoi-_error-recovery - Run _error recovery");
+      await this.log("  npm run qmoi-error-recovery - Run error recovery");
 
       return true;
-    } catch (_error) {
-      await this.log(`Setup failed: ${_error.message}`, "ERROR");
+    } catch (error) {
+      await this.log(`Setup failed: ${error.message}`, "ERROR");
       await this.notificationService.sendNotification(
         "QMOI Setup Failed",
-        _error.message,
+        error.message,
       );
       return false;
     }

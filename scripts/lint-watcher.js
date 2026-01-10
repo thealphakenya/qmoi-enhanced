@@ -75,9 +75,9 @@ class LintWatcher {
         resolve(code);
       });
 
-      child.on("_error", (_error) => {
+      child.on("error", (error) => {
         this.isRunning = false;
-        this.log(`Lint _error: ${_error.message}`, "_error");
+        this.log(`Lint error: ${error.message}`, "error");
         resolve(1);
       });
     });

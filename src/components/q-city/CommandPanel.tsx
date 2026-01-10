@@ -76,7 +76,7 @@ export default function CommandPanel() {
       fetch("/api/qcity/remote-command", { method: "POST", headers, body })
         .then((r) => r.json())
         .then((_res) => {
-          setOutput(_res.output || _res._error);
+          setOutput(_res.output || _res.error);
           setLoading(false);
         });
     }
@@ -137,7 +137,7 @@ export default function CommandPanel() {
       </div>
       <div className="mb-2">
         <span className="font-bold">Pinned:</span>
-        {pinned.map((item: unknown, i: number) => (
+        {pinned.map((item: any, i: number) => (
           <button
             key={i}
             onClick={() => setCmd(item)}
@@ -149,7 +149,7 @@ export default function CommandPanel() {
       </div>
       <div className="mb-2">
         <span className="font-bold">History:</span>
-        {history.map((item: unknown, i: number) => (
+        {history.map((item: any, i: number) => (
           <button
             key={i}
             onClick={() => setCmd(item.cmd)}

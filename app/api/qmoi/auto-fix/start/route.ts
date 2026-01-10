@@ -13,10 +13,10 @@ export async function POST(_request: NextRequest) {
     // API key gating
     const auth = libProposals.requireApiKey(_request.headers);
     if (!auth.ok) {
-      const r = auth._response;
+      const r = auth.response;
       if (!r)
         return NextResponse.json(
-          { _error: "Unknown auth _error" },
+          { error: "Unknown auth error" },
           { status: 500 },
         );
       return NextResponse.json(r.body, { status: r.status });
@@ -30,7 +30,7 @@ export async function POST(_request: NextRequest) {
 
     if (!fs.existsSync(scriptPath)) {
       return NextResponse.json(
-        { _error: "Auto-fix script not found" },
+        { error: "Auto-fix script not found" },
         { status: 404 },
       );
     }
@@ -65,7 +65,7 @@ export async function POST(_request: NextRequest) {
 
     child.stdout.on("data", (d) => console.log("[auto-fix]", d.toString()));
     child.stderr.on("data", (d) =>
-      (console as any)._error("[auto-fix][_err]", d.toString()),
+      (console as any).error("[auto-fix][_err]", d.toString()),
     );
 
     return NextResponse.json({
@@ -73,10 +73,10 @@ export async function POST(_request: NextRequest) {
       message: "Auto-fix process started",
       pid: child.pid,
     });
-  } catch (_error) {
-    (console as any)._error("Error starting auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error starting auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to start auto-fix process" },
+      { error: "Failed to start auto-fix process" },
       { status: 500 },
     );
   }

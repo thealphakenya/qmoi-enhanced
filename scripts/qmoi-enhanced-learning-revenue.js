@@ -51,10 +51,10 @@ async function learnFromOrganizations() {
     ];
     for (const org of orgs) {
       try {
-        const _response = await axios.get(
+        const response = await axios.get(
           `https://api.github.com/orgs/${org}/repos?sort=updated&per_page=10`,
         );
-        const repos = _response.data;
+        const repos = response.data;
 
         for (const repo of repos) {
           const learningData = {
@@ -99,12 +99,12 @@ async function learnFromServers() {
 
     for (const server of servers) {
       try {
-        const _response = await axios.get(server);
+        const response = await axios.get(server);
         const serverData = {
           source: "server_api",
           server: server,
-          status: _response.status,
-          headers: _response.headers,
+          status: response.status,
+          headers: response.headers,
           timestamp: new Date().toISOString(),
         };
 
@@ -137,12 +137,12 @@ async function learnFromClouds() {
 
     for (const service of cloudServices) {
       try {
-        const _response = await axios.get(`https://${service}`);
+        const response = await axios.get(`https://${service}`);
         const cloudData = {
           source: "cloud_service",
           service: service,
-          status: _response.status,
-          contentLength: _response.headers["content-length"],
+          status: response.status,
+          contentLength: response.headers["content-length"],
           timestamp: new Date().toISOString(),
         };
 
@@ -173,11 +173,11 @@ async function learnFromMovies() {
 
     for (const source of movieSources) {
       try {
-        const _response = await axios.get(source);
+        const response = await axios.get(source);
         const movieData = {
           source: "movie_api",
           api: source,
-          status: _response.status,
+          status: response.status,
           timestamp: new Date().toISOString(),
         };
 
@@ -410,4 +410,4 @@ async function main() {
   }
 }
 
-main().catch((_e) => log("Fatal _error: " + _e.message));
+main().catch((_e) => log("Fatal error: " + _e.message));

@@ -53,7 +53,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -62,13 +62,13 @@ export class ErrorFixingService {
           await this.applyFix(fixSuggestion);
           console.log("Fix applied successfully.");
         } else {
-          console.log("No automatic fix suggested for this _error.");
+          console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (console as any)._error("Failed to process _error or apply fix:", _error);
+      } catch (error) {
+        (console as any).error("Failed to process error or apply fix:", error);
       } finally {
         this.isProcessing = false;
-        this.processQueue(); // Process next _error in queue
+        this.processQueue(); // Process next error in queue
       }
     } else {
       this.isProcessing = false;
@@ -76,22 +76,22 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
-    // License compliance _error handling
+    // License compliance error handling
     if (
-      _error.message.includes("Non-compliant license found") ||
-      _error.type === "LicenseError"
+      error.message.includes("Non-compliant license found") ||
+      error.type === "LicenseError"
     ) {
       // Attempt to parse the offending package from logs (if available)
       // Suggest removing or replacing the package, or adding a license override
       return {
         description:
-          "Attempting to fix license compliance _error. Will try to remove or replace non-compliant packages, or add override if safe.",
+          "Attempting to fix license compliance error. Will try to remove or replace non-compliant packages, or add override if safe.",
         codeChanges: [],
         commands: [
           // Try to auto-remove the last installed package (as a fallback)
@@ -103,15 +103,15 @@ export class ErrorFixingService {
       };
     }
 
-    // Vercel/Deployment _error handling
+    // Vercel/Deployment error handling
     if (
-      _error.message.includes("Vercel deployment failed") ||
-      _error.type === "VercelDeployError"
+      error.message.includes("Vercel deployment failed") ||
+      error.type === "VercelDeployError"
     ) {
-      // Try to parse the _error and suggest fixes
+      // Try to parse the error and suggest fixes
       return {
         description:
-          "Attempting to fix Vercel deployment _error. Will retry with cache clear, check env, and auto-fix common issues.",
+          "Attempting to fix Vercel deployment error. Will retry with cache clear, check env, and auto-fix common issues.",
         codeChanges: [],
         commands: [
           "npx vercel --prod --force --yes",
@@ -121,22 +121,22 @@ export class ErrorFixingService {
       };
     }
 
-    // Heroku/Other deployment _error handling
+    // Heroku/Other deployment error handling
     if (
-      _error.message.includes("Heroku deployment failed") ||
-      _error.type === "HerokuDeployError"
+      error.message.includes("Heroku deployment failed") ||
+      error.type === "HerokuDeployError"
     ) {
       return {
         description:
-          "Attempting to fix Heroku deployment _error. Will retry push and check env.",
+          "Attempting to fix Heroku deployment error. Will retry push and check env.",
         codeChanges: [],
         commands: ["git push heroku main --force"],
       };
     }
 
     // Existing logic...
-    if (_error.message.includes("Cannot find module") && _error.filePath) {
-      const moduleName = _error.message.split("'")[1];
+    if (error.message.includes("Cannot find module") && error.filePath) {
+      const moduleName = error.message.split("'")[1];
       return {
         description: `Attempting to fix missing import for module: ${moduleName}`,
         codeChanges: [], // Real fix would involve dynamically generating code to add import
@@ -145,26 +145,26 @@ export class ErrorFixingService {
     }
 
     if (
-      _error.message.includes("linter _error") &&
-      _error.filePath &&
-      _error.lineNumber
+      error.message.includes("linter error") &&
+      error.filePath &&
+      error.lineNumber
     ) {
       return {
-        description: `Attempting to fix linter _error at ${_error.filePath}:${_error.lineNumber}`,
+        description: `Attempting to fix linter error at ${error.filePath}:${error.lineNumber}`,
         codeChanges: [], // Real fix would involve fetching file content, applying linter fix
       };
     }
 
-    // Example for a hypothetical GitHub push _error
-    if (_error.type === "GitHubPushError") {
+    // Example for a hypothetical GitHub push error
+    if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${_error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
     }
 
-    // [PRODUCTION IMPLEMENTATION REQUIRED] for other _error types
+    // [PRODUCTION IMPLEMENTATION REQUIRED] for other error types
     return null;
   }
 

@@ -8,12 +8,12 @@ const JWT_SECRET = process.env.JWT_SECRET || "changeme";
 export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
   const auth = _req.headers.authorization;
   if (!auth || !auth.startsWith("Bearer "))
-    return _res.status(401).json({ _error: "No token" });
+    return _res.status(401).json({ error: "No token" });
   try {
     const token = auth.slice(7);
     const user = jwt.verify(token, JWT_SECRET);
     _res.status(200).json({ user });
   } catch {
-    _res.status(401).json({ _error: "Invalid token" });
+    _res.status(401).json({ error: "Invalid token" });
   }
 }

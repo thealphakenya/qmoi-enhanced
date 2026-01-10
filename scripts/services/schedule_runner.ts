@@ -19,7 +19,7 @@ function runJob(job: unknown) {
   const start = Date.now();
   exec(job.command, (_err, stdout, stderr) => {
     const end = Date.now();
-    const status = _err ? "_error" : "success";
+    const status = _err ? "error" : "success";
     logAudit({
       timestamp: new Date().toISOString(),
       action: "schedule_run",
@@ -30,7 +30,7 @@ function runJob(job: unknown) {
       status,
       durationMs: end - start,
       output: stdout,
-      _error: stderr || (_err && _err.message),
+      error: stderr || (_err && _err.message),
     });
     if (job.notify) {
       notify({

@@ -21,7 +21,7 @@ export function useQmoiKernel() {
     logs: [],
   });
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [lastAction, setLastAction] = useState<QMoiKernelActionResult | null>(
     null
   );
@@ -35,7 +35,7 @@ export function useQmoiKernel() {
         headers: getSessionHeaders(),
       });
       console.debug(
-        "HOOK: fetchStatus - _response status",
+        "HOOK: fetchStatus - response status",
         _res && _res.status
       );
       if (!_res.ok) throw new Error("Failed to fetch status");
@@ -47,12 +47,12 @@ export function useQmoiKernel() {
         mutationCount: data.mutation_count,
         logs: data.logs || [],
       });
-    } catch (_err: unknown) {
+    } catch (_err: any) {
       const message =
         _err && typeof _err === "object" && "message" in _err
           ? String((_err as any).message)
           : String(_err);
-      setError(message || "Unknown _error");
+      setError(message || "Unknown error");
     } finally {
       setLoading(false);
     }
@@ -75,15 +75,15 @@ export function useQmoiKernel() {
           message: data.message || `${action} completed successfully`,
         });
         await fetchStatus();
-      } catch (_err: unknown) {
+      } catch (_err: any) {
         const message =
           _err && typeof _err === "object" && "message" in _err
             ? String((_err as any).message)
             : String(_err);
-        setError(message || "Unknown _error");
+        setError(message || "Unknown error");
         setLastAction({
           success: false,
-          message: message || "Unknown _error",
+          message: message || "Unknown error",
         });
       } finally {
         setLoading(false);
@@ -96,11 +96,11 @@ export function useQmoiKernel() {
     () => ({
       status,
       loading,
-      _error,
+      error,
       lastAction,
       fetchStatus,
       runAction,
     }),
-    [status, loading, _error, lastAction, fetchStatus, runAction]
+    [status, loading, error, lastAction, fetchStatus, runAction]
   );
 }

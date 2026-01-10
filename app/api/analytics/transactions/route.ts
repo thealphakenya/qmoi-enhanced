@@ -12,7 +12,7 @@ export async function GET(_request: NextRequest) {
 
     if (!token) {
       return NextResponse.json(
-        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
+        { error: { message: "Missing authorization token", code: "NO_TOKEN" } },
         { status: 401 }
       );
     }
@@ -20,14 +20,14 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 }
       );
     }
 
-    // Get _query parameters
+    // Get query parameters
     const { searchParams } = new URL(_request.url);
     const startDate = searchParams.get("startDate");
     const endDate = searchParams.get("endDate");
@@ -82,17 +82,17 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (_error) {
-    console._error("Analytics _error:", _error);
+  } catch (error) {
+    console.error("Analytics error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }
     );
   }
 }
 
 function groupTransactions(
-  transactions: unknown[],
+  transactions: any[],
   groupBy: string
 ): Record<string, any[]> {
   const grouped: Record<string, any[]> = {};
@@ -120,7 +120,7 @@ function groupTransactions(
   return grouped;
 }
 
-function calculateStats(transactions: unknown[]) {
+function calculateStats(transactions: any[]) {
   const stats = {
     totalTransactions: transactions.length,
     totalAmount: 0,

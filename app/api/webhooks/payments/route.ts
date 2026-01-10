@@ -29,7 +29,7 @@ export async function POST(_request: NextRequest) {
     // Verify signature
     if (!verifyWebhookSignature(body, signature)) {
       console.warn("Invalid webhook signature");
-      return NextResponse.json({ _error: "Invalid signature" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
     }
 
     const data = JSON.parse(body) as {
@@ -45,7 +45,7 @@ export async function POST(_request: NextRequest) {
     if (!transactionId) {
       console.warn("No transaction ID in webhook");
       return NextResponse.json(
-        { _error: "Invalid webhook data" },
+        { error: "Invalid webhook data" },
         { status: 400 }
       );
     }
@@ -54,7 +54,7 @@ export async function POST(_request: NextRequest) {
     if (!transaction) {
       console.warn(`Transaction not found: ${transactionId}`);
       return NextResponse.json(
-        { _error: "Transaction not found" },
+        { error: "Transaction not found" },
         { status: 404 }
       );
     }
@@ -104,16 +104,16 @@ export async function POST(_request: NextRequest) {
       }
     }
 
-    // Return success _response
+    // Return success response
     return NextResponse.json({
       success: true,
       transaction: updatedTxn,
       processed: true,
     });
-  } catch (_error) {
-    console._error("Webhook processing _error:", _error);
+  } catch (error) {
+    console.error("Webhook processing error:", error);
     return NextResponse.json(
-      { _error: "Webhook processing failed" },
+      { error: "Webhook processing failed" },
       { status: 500 }
     );
   }

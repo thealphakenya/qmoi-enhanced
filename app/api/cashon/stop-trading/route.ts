@@ -12,10 +12,10 @@ export async function POST(_request: NextRequest) {
   try {
     const auth = libProposals.requireApiKey(_request.headers);
     if (!auth.ok) {
-      const r = auth._response;
+      const r = auth.response;
       if (!r)
         return NextResponse.json(
-          { _error: "Unknown auth _error" },
+          { error: "Unknown auth error" },
           { status: 500 },
         );
       return NextResponse.json(r.body, { status: r.status });
@@ -41,10 +41,10 @@ export async function POST(_request: NextRequest) {
       success: true,
       message: "AI trading stopped successfully",
     });
-  } catch (_error) {
-    (console as any)._error("Stop trading API _error:", _error);
+  } catch (error) {
+    (console as any).error("Stop trading API error:", error);
     return NextResponse.json(
-      { _error: "Failed to stop trading" },
+      { error: "Failed to stop trading" },
       { status: 500 },
     );
   }

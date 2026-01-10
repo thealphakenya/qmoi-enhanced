@@ -30,8 +30,8 @@ export async function POST(_request: NextRequest) {
       pipelineId,
       message: "Pipeline triggered successfully",
     });
-  } catch (_error) {
-    (console as any)._error("Error triggering pipeline:", _error);
+  } catch (error) {
+    (console as any).error("Error triggering pipeline:", error);
     return NextResponse.json(
       {
         success: false,

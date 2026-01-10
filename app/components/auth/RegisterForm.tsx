@@ -11,7 +11,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +42,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -54,14 +54,14 @@ export function RegisterForm() {
         }),
       });
 
-      if (!_response.ok) {
-        const data = await _response.json();
-        setError(data._error || "Registration failed");
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
         setLoading(false);
         return;
       }
 
-      const { accessToken, user } = await _response.json();
+      const { accessToken, user } = await response.json();
 
       // Store token
       localStorage.setItem("accessToken", accessToken);
@@ -70,7 +70,7 @@ export function RegisterForm() {
       // Redirect to dashboard
       router.push("/dashboard");
     } catch (_err) {
-      setError(_err instanceof Error ? _err.message : "An _error occurred");
+      setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
   };
@@ -79,9 +79,9 @@ export function RegisterForm() {
     <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
       <h1 className="text-2xl font-bold mb-6">Create Account</h1>
 
-      {_error && (
+      {error && (
         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
-          {_error}
+          {error}
         </div>
       )}
 

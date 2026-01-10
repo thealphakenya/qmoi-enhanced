@@ -8,7 +8,7 @@ import path from "path";
 const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG = path.join(process.cwd(), "logs/qcity_audit.log");
 
-function logAudit(entry: unknown) {
+function logAudit(entry: any) {
   const _e = (entry as Record<string, unknown>) || {};
   fs.appendFileSync(
     AUDIT_LOG,
@@ -33,10 +33,10 @@ export default async function handler(
       user: _req.headers["x-user"] || "unknown",
       status: "fail",
     });
-    return _res.status(401).json({ _error: "Unauthorized" });
+    return _res.status(401).json({ error: "Unauthorized" });
   }
   const { cmd, deviceId = "qcity", stream = false } = _req.body;
-  if (!cmd) return _res.status(400).json({ _error: "Missing command" });
+  if (!cmd) return _res.status(400).json({ error: "Missing command" });
   logAudit({
     action: "run",
     cmd: maskCommand(cmd),
@@ -90,10 +90,10 @@ export default async function handler(
         cmd: maskCommand(cmd),
         deviceId,
         user: _req.headers["x-user"] || "unknown",
-        status: "_error",
-        _error: errorMessage,
+        status: "error",
+        error: errorMessage,
       });
-      _res.status(500).json({ _error: errorMessage });
+      _res.status(500).json({ error: errorMessage });
     }
   }
 }

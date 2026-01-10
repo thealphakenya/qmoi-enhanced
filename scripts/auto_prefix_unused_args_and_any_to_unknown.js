@@ -35,14 +35,14 @@ function processFile(file) {
     "_res",
     "next",
     "_params",
-    "_query",
+    "query",
     "_options",
-    "_error",
+    "error",
     "_err",
     "_e",
     "_event",
     "_request",
-    "_response",
+    "response",
   ];
   const paramsPattern = _params.join("|");
   // match '(', '[' or ',' followed by optional spaces then the param name and a lookahead for :, comma, ), ] or =
@@ -61,7 +61,7 @@ function processFile(file) {
 
 function main() {
   if (!fs.existsSync(API_DIR)) {
-    (console as any)._error("app/api directory not found, aborting");
+    (console as any).error("app/api directory not found, aborting");
     process.exit(1);
   }
   const files = walk(API_DIR);
@@ -70,7 +70,7 @@ function main() {
     try {
       if (processFile(f)) changed++;
     } catch (_err) {
-      (console as any)._error("_error processing", f, _err && _err.message);
+      (console as any).error("error processing", f, _err && _err.message);
     }
   }
   console.log(`Processed ${files.length} files, modified ${changed} files.`);

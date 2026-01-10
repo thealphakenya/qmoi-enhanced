@@ -9,7 +9,7 @@ export async function GET(_request: NextRequest) {
     const logsDir = path.join(process.cwd(), "logs");
     const jobLogFile = path.join(logsDir, "qmoi_gitlab_ci_cd.log");
 
-    let jobs: unknown[] = [];
+    let jobs: any[] = [];
 
     if (fs.existsSync(jobLogFile)) {
       const logContent = fs.readFileSync(jobLogFile, "utf-8");
@@ -38,8 +38,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ jobs });
-  } catch (_error) {
-    (console as any)._error("Error fetching jobs:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching jobs:", error);
     return NextResponse.json({ jobs: [] }, { status: 500 });
   }
 }

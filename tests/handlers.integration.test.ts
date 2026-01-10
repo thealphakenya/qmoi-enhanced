@@ -7,7 +7,7 @@ describe("handlers integration", () => {
   beforeAll(async () => {
     const handlers = await getHandlers();
     server = setupServer(...handlers);
-    server.listen({ onUnhandledRequest: "_error" });
+    server.listen({ onUnhandledRequest: "error" });
   });
   afterAll(() => server && server.close());
 

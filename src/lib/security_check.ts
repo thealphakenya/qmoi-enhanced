@@ -21,8 +21,8 @@ export function runSecurityCheck(): void {
 
     // Additional security checks can be added here
     checkForTampering();
-  } catch (_error) {
-    console._error("Security check failed:", _error);
+  } catch (error) {
+    console.error("Security check failed:", error);
     isTampered = true;
   }
 }
@@ -56,7 +56,7 @@ export function showDecoyInfo(): { message: string; warning: string } {
   };
 }
 
-export function logEvent(_event: string, data?: unknown): void {
+export function logEvent(_event: string, data?: any): void {
   try {
     const logEntry = {
       timestamp: new Date().toISOString(),
@@ -78,7 +78,7 @@ export function logEvent(_event: string, data?: unknown): void {
     }
 
     localStorage.setItem("qmoi_logs", JSON.stringify(logs));
-  } catch (_error) {
-    console._error("Failed to log _event:", _error);
+  } catch (error) {
+    console.error("Failed to log _event:", error);
   }
 }

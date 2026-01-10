@@ -48,9 +48,9 @@ class GitHubIntegrationService {
 
       // Send notification
       await this.sendNotification(payload, fixResults);
-    } catch (_error) {
-      (console as any)._error("Error handling push _event:", _error);
-      await this.sendErrorNotification(_error);
+    } catch (error) {
+      (console as any).error("Error handling push _event:", error);
+      await this.sendErrorNotification(error);
     }
   }
 
@@ -101,13 +101,13 @@ class GitHubIntegrationService {
     await autoFixService.sendEmailNotification(subject, body);
   }
 
-  private async sendErrorNotification(_error: Error) {
+  private async sendErrorNotification(error: Error) {
     const subject = "Q-city Auto Fix Error";
     const body = `
-      An _error occurred during the auto-fix process:
+      An error occurred during the auto-fix process:
       
-      Error: ${_error.message}
-      Stack: ${_error.stack}
+      Error: ${error.message}
+      Stack: ${error.stack}
     `;
 
     await autoFixService.sendEmailNotification(subject, body);

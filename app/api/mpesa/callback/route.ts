@@ -4,19 +4,19 @@ import { NextRequest, NextResponse } from "next/server";
 import { logEvent } from "../../../../lib/security_check";
 
 // Production helper functions (module-level to avoid inner-declaration lint errors)
-async function updateMpesaTransaction(details: unknown) {
+async function updateMpesaTransaction(details: any) {
   // TODO: Connect to DB and update transaction record
   return true;
 }
 
-async function triggerPostPaymentActions(details: unknown) {
+async function triggerPostPaymentActions(details: any) {
   // TODO: Implement post-payment actions (_e.g., send notification, update user status)
   return true;
 }
 
 export async function POST(_req: NextRequest) {
   try {
-    const body: unknown = (await _req.json() as any);
+    const body: any = (await _req.json() as any);
 
     // Log the callback for debugging
     console.log("M-Pesa Callback received:", body);
@@ -35,17 +35,17 @@ export async function POST(_req: NextRequest) {
 
     if (ResultCode === "0") {
       // Payment successful
-      const metadata: unknown[] = CallbackMetadata?.Item || [];
+      const metadata: any[] = CallbackMetadata?.Item || [];
       const amount =
-        metadata.find((item: unknown) => item.Name === "Amount")?.Value || 0;
+        metadata.find((item: any) => item.Name === "Amount")?.Value || 0;
       const mpesaReceiptNumber =
-        metadata.find((item: unknown) => item.Name === "MpesaReceiptNumber")
+        metadata.find((item: any) => item.Name === "MpesaReceiptNumber")
           ?.Value || "";
       const transactionDate =
-        metadata.find((item: unknown) => item.Name === "TransactionDate")?.Value ||
+        metadata.find((item: any) => item.Name === "TransactionDate")?.Value ||
         "";
       const phoneNumber =
-        metadata.find((item: unknown) => item.Name === "PhoneNumber")?.Value || "";
+        metadata.find((item: any) => item.Name === "PhoneNumber")?.Value || "";
 
       logEvent("mpesa_payment_success", {
         checkoutRequestId: CheckoutRequestID,
@@ -90,11 +90,11 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    console._error("M-Pesa callback processing failed:", _error);
+  } catch (error) {
+    console.error("M-Pesa callback processing failed:", error);
     const errorMessage =
-      _error instanceof Error ? _error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {

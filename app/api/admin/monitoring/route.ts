@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import authService from "@/lib/auth/service";
 import { db } from "@/lib/db/prisma";
 import { monitor } from "@/lib/monitoring/performance";
-import { errorTracker } from "@/lib/monitoring/_error-tracker";
+import { errorTracker } from "@/lib/monitoring/error-tracker";
 
 /**
  * GET /api/admin/monitoring
@@ -15,7 +15,7 @@ export async function GET(_request: NextRequest) {
 
     if (!token) {
       return NextResponse.json(
-        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
+        { error: { message: "Missing authorization token", code: "NO_TOKEN" } },
         { status: 401 }
       );
     }
@@ -23,9 +23,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 }
       );
     }
@@ -34,7 +34,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(decoded.userId);
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 }
       );
     }
@@ -77,16 +77,16 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (_error) {
-    console._error("Monitoring _error:", _error);
+  } catch (error) {
+    console.error("Monitoring error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }
     );
   }
 }
 
-function calculateHealthScore(monitoring: unknown): number {
+function calculateHealthScore(monitoring: any): number {
   let score = 100;
 
   // Check memory usage
@@ -99,7 +99,7 @@ function calculateHealthScore(monitoring: unknown): number {
 
   // Check errors
   const totalErrors = (Object.values(monitoring.errors || {}) as any[]).reduce(
-    (sum: number, _err: unknown) => sum + (_err.count || 0),
+    (sum: number, _err: any) => sum + (_err.count || 0),
     0
   );
   if (totalErrors > 10) {
@@ -109,7 +109,7 @@ function calculateHealthScore(monitoring: unknown): number {
   // Check performance
   const metrics = Object.values(monitoring.performance || {}) as any[];
   const failedMetrics = metrics.filter(
-    (m: unknown) => m && parseFloat(m.successRate) < 95
+    (m: any) => m && parseFloat(m.successRate) < 95
   );
   if (failedMetrics.length > 0) {
     score -= failedMetrics.length * 5;

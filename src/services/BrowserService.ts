@@ -41,7 +41,7 @@ interface DeveloperTools {
 
 interface ConsoleMessage {
   id: string;
-  type: "log" | "info" | "warn" | "_error";
+  type: "log" | "info" | "warn" | "error";
   message: string;
   timestamp: Date;
   source: string;
@@ -58,7 +58,7 @@ interface NetworkRequest {
   duration: number;
   timestamp: Date;
   headers: Record<string, string>;
-  _response?: unknown;
+  response?: any;
 }
 
 interface DOMElement {
@@ -126,7 +126,7 @@ interface AIFeature {
 
 export class BrowserService {
   private static instance: BrowserService;
-  private eventEmitter: unknown;
+  private eventEmitter: any;
   private tabs: Map<string, BrowserTab> = new Map();
   private activeTabId: string | null = null;
   private settings: BrowserSettings;
@@ -371,16 +371,16 @@ export class BrowserService {
 
       // AI features processing
       await this.processAIFeatures(tab, url);
-    } catch (_error) {
+    } catch (error) {
       tab.isLoading = false;
-      const errMsg = _error instanceof Error ? _error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       this.eventEmitter.emit("navigationError", {
         tabId,
         url,
-        _error: errMsg,
+        error: errMsg,
       });
-      logger._error(`Navigation failed for tab ${tabId}:`, _error);
-      throw _error;
+      logger.error(`Navigation failed for tab ${tabId}:`, error);
+      throw error;
     }
   }
 
@@ -406,10 +406,10 @@ export class BrowserService {
               await this.processLiveTV(tab, url);
               break;
           }
-        } catch (_error) {
+        } catch (error) {
           const errDetails =
-            _error instanceof Error ? _error.message : String(_error);
-          logger._error(`AI feature ${feature.id} failed: ${errDetails}`);
+            error instanceof Error ? error.message : String(error);
+          logger.error(`AI feature ${feature.id} failed: ${errDetails}`);
         }
       }
     }
@@ -462,13 +462,13 @@ export class BrowserService {
     }
   }
 
-  private async generateSearchSuggestions(_query: string): Promise<string[]> {
+  private async generateSearchSuggestions(query: string): Promise<string[]> {
     // Simulate AI-powered search suggestions
     return [
-      `${_query} latest news`,
-      `${_query} tutorial`,
-      `${_query} reviews`,
-      `${_query} download`,
+      `${query} latest news`,
+      `${query} tutorial`,
+      `${query} reviews`,
+      `${query} download`,
     ];
   }
 
@@ -653,12 +653,12 @@ export class BrowserService {
 
       download.status = "completed";
       this.eventEmitter.emit("downloadCompleted", download);
-    } catch (_error) {
+    } catch (error) {
       download.status = "failed";
-      const errMsg = _error instanceof Error ? _error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       this.eventEmitter.emit("downloadFailed", {
         downloadId,
-        _error: errMsg,
+        error: errMsg,
       });
     }
   }
@@ -679,7 +679,7 @@ export class BrowserService {
     return this.history;
   }
 
-  public getDownloads(): unknown[] {
+  public getDownloads(): any[] {
     return this.downloads;
   }
 
@@ -779,7 +779,7 @@ export class BrowserService {
   }
 
   public onNavigationError(
-    callback: (data: { tabId: string; url: string; _error: string }) => void
+    callback: (data: { tabId: string; url: string; error: string }) => void
   ): void {
     this.eventEmitter.on("navigationError", callback);
   }
@@ -794,7 +794,7 @@ export class BrowserService {
     this.eventEmitter.on("bookmarkAdded", callback);
   }
 
-  public onDownloadStarted(callback: (download: unknown) => void): void {
+  public onDownloadStarted(callback: (download: any) => void): void {
     this.eventEmitter.on("downloadStarted", callback);
   }
 
@@ -804,7 +804,7 @@ export class BrowserService {
     this.eventEmitter.on("downloadProgress", callback);
   }
 
-  public onDownloadCompleted(callback: (download: unknown) => void): void {
+  public onDownloadCompleted(callback: (download: any) => void): void {
     this.eventEmitter.on("downloadCompleted", callback);
   }
 
@@ -821,7 +821,7 @@ export class BrowserService {
   }
 
   public onLiveContent(
-    callback: (data: { tabId: string; content: unknown }) => void
+    callback: (data: { tabId: string; content: any }) => void
   ): void {
     this.eventEmitter.on("liveContent", callback);
   }

@@ -114,9 +114,9 @@ class QMOIAutoEnhancementSystem {
       
       console.log('✅ Performance enhancement completed');
       return { success: true, message: 'Performance enhanced' };
-    } catch (_error) {
-      (console as any)._error('❌ Performance enhancement failed:', _error.message);
-      return { success: false, message: _error.message };
+    } catch (error) {
+      (console as any).error('❌ Performance enhancement failed:', error.message);
+      return { success: false, message: error.message };
     }
   }
 
@@ -134,7 +134,7 @@ class QMOIAutoEnhancementSystem {
       try {
         await this.applyCodeOptimization(optimization);
         console.log(`✅ Applied: ${optimization}`);
-      } catch (_error) {
+      } catch (error) {
         console.log(`⚠️ Failed to apply: ${optimization}`);
       }
     }
@@ -154,7 +154,7 @@ class QMOIAutoEnhancementSystem {
       try {
         await this.applyDatabaseOptimization(optimization);
         console.log(`✅ Applied: ${optimization}`);
-      } catch (_error) {
+      } catch (error) {
         console.log(`⚠️ Failed to apply: ${optimization}`);
       }
     }
@@ -174,7 +174,7 @@ class QMOIAutoEnhancementSystem {
       try {
         await this.applyNetworkOptimization(optimization);
         console.log(`✅ Applied: ${optimization}`);
-      } catch (_error) {
+      } catch (error) {
         console.log(`⚠️ Failed to apply: ${optimization}`);
       }
     }
@@ -198,9 +198,9 @@ class QMOIAutoEnhancementSystem {
       
       console.log('✅ Memory optimization completed');
       return { success: true, message: 'Memory optimized' };
-    } catch (_error) {
-      (console as any)._error('❌ Memory optimization failed:', _error.message);
-      return { success: false, message: _error.message };
+    } catch (error) {
+      (console as any).error('❌ Memory optimization failed:', error.message);
+      return { success: false, message: error.message };
     }
   }
 
@@ -218,7 +218,7 @@ class QMOIAutoEnhancementSystem {
       try {
         await this.applyLeakDetectionStrategy(strategy);
         console.log(`✅ Applied: ${strategy}`);
-      } catch (_error) {
+      } catch (error) {
         console.log(`⚠️ Failed to apply: ${strategy}`);
       }
     }
@@ -242,9 +242,9 @@ class QMOIAutoEnhancementSystem {
       
       console.log('✅ Security enhancement completed');
       return { success: true, message: 'Security enhanced' };
-    } catch (_error) {
-      (console as any)._error('❌ Security enhancement failed:', _error.message);
-      return { success: false, message: _error.message };
+    } catch (error) {
+      (console as any).error('❌ Security enhancement failed:', error.message);
+      return { success: false, message: error.message };
     }
   }
 
@@ -262,7 +262,7 @@ class QMOIAutoEnhancementSystem {
       try {
         await this.performVulnerabilityScan(scan);
         console.log(`✅ Completed: ${scan}`);
-      } catch (_error) {
+      } catch (error) {
         console.log(`⚠️ Failed: ${scan}`);
       }
     }
@@ -286,9 +286,9 @@ class QMOIAutoEnhancementSystem {
       
       console.log('✅ Feature enhancement completed');
       return { success: true, message: 'Features enhanced' };
-    } catch (_error) {
-      (console as any)._error('❌ Feature enhancement failed:', _error.message);
-      return { success: false, message: _error.message };
+    } catch (error) {
+      (console as any).error('❌ Feature enhancement failed:', error.message);
+      return { success: false, message: error.message };
     }
   }
 
@@ -306,7 +306,7 @@ class QMOIAutoEnhancementSystem {
       try {
         await this.applyFeatureEnhancement(enhancement);
         console.log(`✅ Applied: ${enhancement}`);
-      } catch (_error) {
+      } catch (error) {
         console.log(`⚠️ Failed to apply: ${enhancement}`);
       }
     }
@@ -330,9 +330,9 @@ class QMOIAutoEnhancementSystem {
       
       console.log('✅ AI enhancement completed');
       return { success: true, message: 'AI enhanced' };
-    } catch (_error) {
-      (console as any)._error('❌ AI enhancement failed:', _error.message);
-      return { success: false, message: _error.message };
+    } catch (error) {
+      (console as any).error('❌ AI enhancement failed:', error.message);
+      return { success: false, message: error.message };
     }
   }
 
@@ -350,7 +350,7 @@ class QMOIAutoEnhancementSystem {
       try {
         await this.applyAIOptimization(optimization);
         console.log(`✅ Applied: ${optimization}`);
-      } catch (_error) {
+      } catch (error) {
         console.log(`⚠️ Failed to apply: ${optimization}`);
       }
     }
@@ -374,9 +374,9 @@ class QMOIAutoEnhancementSystem {
       
       console.log('✅ Auto-evolution completed');
       return { success: true, message: 'Auto-evolution completed', results };
-    } catch (_error) {
-      (console as any)._error('❌ Auto-evolution failed:', _error.message);
-      return { success: false, message: _error.message };
+    } catch (error) {
+      (console as any).error('❌ Auto-evolution failed:', error.message);
+      return { success: false, message: error.message };
     }
   }
 
@@ -436,8 +436,8 @@ class QMOIAutoEnhancementSystem {
       try {
         const result = await this.applyEvolutionaryChange(opportunity);
         results.push({ opportunity, result, success: true });
-      } catch (_error) {
-        results.push({ opportunity, _error: _error.message, success: false });
+      } catch (error) {
+        results.push({ opportunity, error: error.message, success: false });
       }
     }
 
@@ -462,9 +462,9 @@ class QMOIAutoEnhancementSystem {
       
       console.log('✅ Auto-upgrade completed');
       return { success: true, message: 'Auto-upgrade completed', results };
-    } catch (_error) {
-      (console as any)._error('❌ Auto-upgrade failed:', _error.message);
-      return { success: false, message: _error.message };
+    } catch (error) {
+      (console as any).error('❌ Auto-upgrade failed:', error.message);
+      return { success: false, message: error.message };
     }
   }
 
@@ -493,7 +493,7 @@ class QMOIAutoEnhancementSystem {
           if (isCompatible) {
             compatibleUpgrades[type].push(upgrade);
           }
-        } catch (_error) {
+        } catch (error) {
           console.log(`⚠️ Upgrade compatibility check failed: ${upgrade.name}`);
         }
       }
@@ -510,8 +510,8 @@ class QMOIAutoEnhancementSystem {
         try {
           const result = await this.applyUpgrade(upgrade);
           results.push({ type, upgrade, result, success: true });
-        } catch (_error) {
-          results.push({ type, upgrade, _error: _error.message, success: false });
+        } catch (error) {
+          results.push({ type, upgrade, error: error.message, success: false });
         }
       }
     }
@@ -555,8 +555,8 @@ class QMOIAutoEnhancementSystem {
           });
         }
       }
-    } catch (_error) {
-      (console as any)._error('❌ Monitoring _error:', _error.message);
+    } catch (error) {
+      (console as any).error('❌ Monitoring error:', error.message);
     }
   }
 
@@ -592,8 +592,8 @@ class QMOIAutoEnhancementSystem {
       await this.performDailyAILearning();
       
       console.log('✅ Daily enhancement completed');
-    } catch (_error) {
-      (console as any)._error('❌ Daily enhancement failed:', _error.message);
+    } catch (error) {
+      (console as any).error('❌ Daily enhancement failed:', error.message);
     }
   }
 
@@ -611,8 +611,8 @@ class QMOIAutoEnhancementSystem {
       await this.autoUpgrade();
       
       console.log('✅ Weekly enhancement completed');
-    } catch (_error) {
-      (console as any)._error('❌ Weekly enhancement failed:', _error.message);
+    } catch (error) {
+      (console as any).error('❌ Weekly enhancement failed:', error.message);
     }
   }
 
@@ -627,7 +627,7 @@ class QMOIAutoEnhancementSystem {
       }
       
       console.log('✅ Enhancement registry loaded');
-    } catch (_error) {
+    } catch (error) {
       console.log('📝 Creating new enhancement registry');
       await this.saveEnhancementRegistry();
     }
@@ -638,14 +638,14 @@ class QMOIAutoEnhancementSystem {
       const registryPath = path.join(process.cwd(), 'config', 'enhancement-registry.json');
       const registry = Object.fromEntries(this.enhancementRegistry);
       await fs.writeFile(registryPath, JSON.stringify(registry, null, 2));
-    } catch (_error) {
-      (console as any)._error('❌ Failed to save enhancement registry:', _error.message);
+    } catch (error) {
+      (console as any).error('❌ Failed to save enhancement registry:', error.message);
     }
   }
 
   // Helper methods for metrics collection
   async measureResponseTime() {
-    // Simulate _response time measurement
+    // Simulate response time measurement
     return Math.random() * 2000;
   }
 
@@ -840,7 +840,7 @@ Usage:
     }
   }
 
-  main().catch(console._error);
+  main().catch(console.error);
 }
 
 module.exports = QMOIAutoEnhancementSystem; 

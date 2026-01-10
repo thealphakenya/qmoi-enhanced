@@ -164,7 +164,7 @@ class ServiceRecoveryManager {
       success: false,
     });
 
-    (console as any)._error(
+    (console as any).error(
       `[Recovery] Failed to recover ${service} after ${attemptCount} attempts: ${lastError?.message}`,
     );
     return false;
@@ -182,7 +182,7 @@ class ServiceRecoveryManager {
 
     const timer = setTimeout(() => {
       this.recover(service, reason, recoveryFn).catch((_err) => {
-        (console as any)._error(`[Recovery] Scheduled recovery failed: ${_err}`);
+        (console as any).error(`[Recovery] Scheduled recovery failed: ${_err}`);
       });
       this.activeRecoveries.delete(service);
     }, delayMs);
@@ -207,9 +207,9 @@ class ServiceRecoveryManager {
     console.info(`[Recovery] Recovering API connection to ${endpoint}`);
 
     // Attempt to fetch from endpoint
-    const _response = await fetch(`${endpoint}/health`);
-    if (!_response.ok) {
-      throw new Error(`API returned ${_response.status}`);
+    const response = await fetch(`${endpoint}/health`);
+    if (!response.ok) {
+      throw new Error(`API returned ${response.status}`);
     }
 
     console.info("[Recovery] API connection restored");
@@ -367,7 +367,7 @@ class ServiceRecoveryManager {
     enabled: boolean;
     activeRecoveries: string[];
     historySize: number;
-    summary: unknown;
+    summary: any;
   } {
     return {
       enabled: this.enabled,

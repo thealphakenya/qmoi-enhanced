@@ -12,7 +12,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -51,7 +51,7 @@ const SelfHealPanel: React.FC = () => {
       );
       eventSourceRef.current = es;
       let logBuffer = "";
-      es.onmessage = (_event: unknown) => {
+      es.onmessage = (_event: any) => {
         if (_event.data === "[DONE]") {
           es.close();
           setRunning(false);
@@ -69,14 +69,14 @@ const SelfHealPanel: React.FC = () => {
           setLog(logBuffer);
         }
       };
-      es.onerror = (_e: unknown) => {
-        setError("Stream _error");
+      es.onerror = (_e: any) => {
+        setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      const _err: unknown = _err;
-      setError((_err && _err.message) || "Request failed");
+    } catch (_err: any) {
+      const err = _err as any;
+      setError((err && err.message) || "Request failed");
       setSuccess(false);
       setRunning(false);
     }
@@ -166,8 +166,8 @@ const SelfHealPanel: React.FC = () => {
           Self-heal completed successfully.
         </div>
       )}
-      {_error && (
-        <div style={{ color: "red", marginTop: 8 }}>Error: {_error}</div>
+      {error && (
+        <div style={{ color: "red", marginTop: 8 }}>Error: {error}</div>
       )}
       {log && (
         <div style={{ marginTop: 16 }}>
@@ -200,7 +200,7 @@ const SelfHealPanel: React.FC = () => {
               padding: 8,
             }}
           >
-            {history.map((h: unknown, i) => (
+            {history.map((h: any, i) => (
               <li key={i} style={{ marginBottom: 6 }}>
                 <b>{h.ts}</b> - <span>{JSON.stringify(h._options)}</span>
                 <button style={{ marginLeft: 8 }} onClick={() => setLog(h.log)}>

@@ -16,7 +16,7 @@ class QMOIErrorRecovery {
     this.recoveryLog = [];
     this.fixesApplied = new Set();
     this.maxRetries = 3;
-    this.backupDir = path.join(process.cwd(), "backups", "_error-recovery");
+    this.backupDir = path.join(process.cwd(), "backups", "error-recovery");
   }
 
   async log(message, level = "INFO") {
@@ -36,9 +36,9 @@ class QMOIErrorRecovery {
       fs.copyFileSync(filePath, backupPath);
       await this.log(`Backup created: ${backupPath}`);
       return backupPath;
-    } catch (_error) {
+    } catch (error) {
       await this.log(
-        `Failed to create backup for ${filePath}: ${_error.message}`,
+        `Failed to create backup for ${filePath}: ${error.message}`,
         "ERROR",
       );
     }
@@ -49,8 +49,8 @@ class QMOIErrorRecovery {
       fs.copyFileSync(backupPath, originalPath);
       await this.log(`Restored from backup: ${originalPath}`);
       return true;
-    } catch (_error) {
-      await this.log(`Failed to restore backup: ${_error.message}`, "ERROR");
+    } catch (error) {
+      await this.log(`Failed to restore backup: ${error.message}`, "ERROR");
       return false;
     }
   }
@@ -100,7 +100,7 @@ class QMOIErrorRecovery {
         test: 'echo "No tests specified"',
         build: 'echo "No build specified"',
         "qmoi-auto-push": "node scripts/qmoi-auto-push.js",
-        "qmoi-_error-recovery": "node scripts/qmoi-_error-recovery.js",
+        "qmoi-error-recovery": "node scripts/qmoi-error-recovery.js",
         "qmoi-setup": "node scripts/qmoi-setup.js",
       };
 
@@ -139,8 +139,8 @@ class QMOIErrorRecovery {
       }
 
       return false;
-    } catch (_error) {
-      await this.log(`Error fixing package.json: ${_error.message}`, "ERROR");
+    } catch (error) {
+      await this.log(`Error fixing package.json: ${error.message}`, "ERROR");
       return false;
     }
   }
@@ -212,11 +212,11 @@ qmoi-auto-push:
     - main
   when: manual
 
-qmoi-_error-recovery:
+qmoi-error-recovery:
   stage: deploy
   script:
-    - echo "Running QMOI _error recovery"
-    - npm run qmoi-_error-recovery
+    - echo "Running QMOI error recovery"
+    - npm run qmoi-error-recovery
   only:
     - main
   when: manual
@@ -296,11 +296,11 @@ qmoi-auto-push:
     - main
   when: manual
 
-qmoi-_error-recovery:
+qmoi-error-recovery:
   stage: deploy
   script:
-    - echo "Running QMOI _error recovery"
-    - npm run qmoi-_error-recovery
+    - echo "Running QMOI error recovery"
+    - npm run qmoi-error-recovery
   only:
     - main
   when: manual
@@ -321,8 +321,8 @@ after_script:
       }
 
       return false;
-    } catch (_error) {
-      await this.log(`Error fixing .gitlab-ci.yml: ${_error.message}`, "ERROR");
+    } catch (error) {
+      await this.log(`Error fixing .gitlab-ci.yml: ${error.message}`, "ERROR");
       return false;
     }
   }
@@ -369,9 +369,9 @@ after_script:
       }
 
       return false;
-    } catch (_error) {
+    } catch (error) {
       await this.log(
-        `Error fixing syntax in ${filePath}: ${_error.message}`,
+        `Error fixing syntax in ${filePath}: ${error.message}`,
         "ERROR",
       );
       return false;
@@ -451,9 +451,9 @@ console.log('QMOI setup completed');`,
       execSync("npm install", { stdio: "inherit" });
       await this.log("Dependencies installed successfully");
       return true;
-    } catch (_error) {
+    } catch (error) {
       await this.log(
-        `Failed to install dependencies: ${_error.message}`,
+        `Failed to install dependencies: ${error.message}`,
         "ERROR",
       );
       return false;
@@ -466,8 +466,8 @@ console.log('QMOI setup completed');`,
       execSync("npm test", { stdio: "inherit" });
       await this.log("Tests passed");
       return true;
-    } catch (_error) {
-      await this.log(`Tests failed: ${_error.message}`, "WARN");
+    } catch (error) {
+      await this.log(`Tests failed: ${error.message}`, "WARN");
       return false;
     }
   }
@@ -478,7 +478,7 @@ console.log('QMOI setup completed');`,
       ".gitlab-ci.yml",
       "index.js",
       "scripts/qmoi-auto-push.js",
-      "scripts/qmoi-_error-recovery.js",
+      "scripts/qmoi-error-recovery.js",
     ];
 
     for (const file of filesToValidate) {
@@ -494,8 +494,8 @@ console.log('QMOI setup completed');`,
             require(filePath);
           }
           await this.log(`✓ ${file} is valid`);
-        } catch (_error) {
-          await this.log(`✗ ${file} has errors: ${_error.message}`, "ERROR");
+        } catch (error) {
+          await this.log(`✗ ${file} has errors: ${error.message}`, "ERROR");
           return false;
         }
       }
@@ -520,7 +520,7 @@ console.log('QMOI setup completed');`,
       const jsFiles = [
         "index.js",
         "scripts/qmoi-auto-push.js",
-        "scripts/qmoi-_error-recovery.js",
+        "scripts/qmoi-error-recovery.js",
         "scripts/services/notification_service.js",
       ];
 
@@ -551,11 +551,11 @@ console.log('QMOI setup completed');`,
 
       await this.log(`Error recovery completed. Fixed ${fixCount} issues.`);
       return true;
-    } catch (_error) {
-      await this.log(`Error recovery failed: ${_error.message}`, "ERROR");
+    } catch (error) {
+      await this.log(`Error recovery failed: ${error.message}`, "ERROR");
       await this.notificationService.sendNotification(
         "QMOI Error Recovery Failed",
-        _error.message,
+        error.message,
       );
       return false;
     }

@@ -26,8 +26,8 @@ export async function GET(_request: NextRequest) {
   const apiAuth = requireApiKey(_request.headers);
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
-    const _r = apiAuth._response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    const _r = apiAuth.response;
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -43,7 +43,7 @@ export async function GET(_request: NextRequest) {
         )
       );
       tsc.split("\n").forEach((line) => {
-        if (line.includes("_error"))
+        if (line.includes("error"))
           problems.push({ type: "tsc", message: line });
       });
       // Python
@@ -66,10 +66,10 @@ export async function GET(_request: NextRequest) {
         )
       );
       eslint.split("\n").forEach((line) => {
-        if (line.includes("_error"))
+        if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (_e: any) {
       problems.push({
         type: "system",
         message: _e instanceof Error ? _e.message : String(_e),
@@ -82,22 +82,22 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   const apiAuth = requireApiKey(_request.headers);
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
-    const _r = apiAuth._response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    const _r = apiAuth.response;
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
 
   const searchParams = _request.nextUrl.searchParams;
   if (searchParams.get("fix")) {
-    const results: unknown[] = [];
+    const results: any[] = [];
     try {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
@@ -137,7 +137,7 @@ export async function POST(_request: NextRequest) {
         )
       );
       problemsRes.split("\n").forEach((line) => {
-        const match = line.match(/_error TS2307: Cannot find module '(.+?)'/);
+        const match = line.match(/error TS2307: Cannot find module '(.+?)'/);
         if (match) {
           const missingFile = match[1];
           if (!fs.existsSync(missingFile)) {
@@ -146,7 +146,7 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (_e: any) {
       results.push({
         type: "system",
         message: _e instanceof Error ? _e.message : String(_e),
@@ -155,5 +155,5 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }

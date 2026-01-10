@@ -28,14 +28,14 @@ const _params = [
   "_res",
   "next",
   "_params",
-  "_query",
+  "query",
   "_options",
-  "_error",
+  "error",
   "_err",
   "_e",
   "_event",
   "_request",
-  "_response",
+  "response",
 ];
 const paramsPattern = _params.join("|");
 const paramsRe = new RegExp(
@@ -75,7 +75,7 @@ function main() {
     try {
       if (processFile(f)) changed++;
     } catch (_err) {
-      (console as any)._error("_error processing", f, _err && _err.message);
+      (console as any).error("error processing", f, _err && _err.message);
     }
   }
   console.log(`Scanned ${files.length} files, modified ${changed} files.`);

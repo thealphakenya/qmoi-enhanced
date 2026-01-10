@@ -68,7 +68,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       try {
         setProjects(JSON.parse(savedProjects) as AutoProject[]);
       } catch (_e) {
-        console._error("Failed to parse saved projects:", _e);
+        console.error("Failed to parse saved projects:", _e);
       }
     }
 
@@ -77,7 +77,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       try {
         setDailyPlan(JSON.parse(savedDailyPlan) as DailyPlan);
       } catch (_e) {
-        console._error("Failed to parse saved daily plan:", _e);
+        console.error("Failed to parse saved daily plan:", _e);
       }
     }
   }, []);
@@ -111,8 +111,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
         await notifyMaster(
           `🆕 New project planned: ${newProject.name}\nType: ${newProject.type}\nPriority: ${newProject.priority}\nEstimated time: ${newProject.estimatedDuration} minutes`
         );
-      } catch (_error) {
-        (console as any)._error("Error creating project:", _error);
+      } catch (error) {
+        (console as any).error("Error creating project:", error);
       } finally {
         setIsLoading(false);
       }
@@ -163,8 +163,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
             }`
           );
         }
-      } catch (_error) {
-        (console as any)._error("Error updating project status:", _error);
+      } catch (error) {
+        (console as any).error("Error updating project status:", error);
       } finally {
         setIsLoading(false);
       }
@@ -255,8 +255,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
           )
           .join("\n")}`
       );
-    } catch (_error) {
-      (console as any)._error("Error generating daily plan:", _error);
+    } catch (error) {
+      (console as any).error("Error generating daily plan:", error);
     } finally {
       setIsLoading(false);
     }
@@ -273,8 +273,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({ message })
       // });
-    } catch (_error) {
-      (console as any)._error("Error notifying master:", _error);
+    } catch (error) {
+      (console as any).error("Error notifying master:", error);
     }
   }, []);
 
@@ -292,8 +292,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //     description: 'Automated project updates and notifications'
       //   })
       // });
-    } catch (_error) {
-      (console as any)._error("Error creating WhatsApp group:", _error);
+    } catch (error) {
+      (console as any).error("Error creating WhatsApp group:", error);
     }
   }, []);
 
@@ -308,8 +308,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({ message })
       // });
-    } catch (_error) {
-      (console as any)._error("Error posting to WhatsApp group:", _error);
+    } catch (error) {
+      (console as any).error("Error posting to WhatsApp group:", error);
     }
   }, []);
 

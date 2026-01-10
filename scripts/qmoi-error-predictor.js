@@ -2,7 +2,7 @@
 
 /**
  * QMOI Error Predictor
- * Analyzes _error/fix logs and predicts likely _error types/files for the next run.
+ * Analyzes error/fix logs and predicts likely error types/files for the next run.
  * Exposes predictions via a REST API for dashboard integration.
  */
 
@@ -30,7 +30,7 @@ function analyzeLogs() {
       }
     }
   }
-  // Predict most frequent _error types and files
+  // Predict most frequent error types and files
   const topErrorTypes = Object.entries(errorTypeCounts)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 3)

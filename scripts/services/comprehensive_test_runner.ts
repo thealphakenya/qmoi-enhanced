@@ -8,7 +8,7 @@ const execAsync = promisify(exec);
 interface TestResult {
   success: boolean;
   output: string;
-  _error?: string;
+  error?: string;
   command: string;
   duration: number;
   timestamp: string;
@@ -157,7 +157,7 @@ class ComprehensiveTestRunner {
       const result: TestResult = {
         success: true,
         output: stdout,
-        _error: stderr || undefined,
+        error: stderr || undefined,
         command,
         duration,
         timestamp: new Date().toISOString(),
@@ -167,13 +167,13 @@ class ComprehensiveTestRunner {
         `[COMPREHENSIVE-TEST-RUNNER] ${suiteName} passed in ${duration}ms`,
       );
       return result;
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const duration = Date.now() - startTime;
 
       const result: TestResult = {
         success: false,
-        output: _error.stdout || "",
-        _error: _error.stderr || _error.message,
+        output: error.stdout || "",
+        error: error.stderr || error.message,
         command,
         duration,
         timestamp: new Date().toISOString(),
@@ -181,7 +181,7 @@ class ComprehensiveTestRunner {
 
       logger.warn(
         `[COMPREHENSIVE-TEST-RUNNER] ${suiteName} failed:`,
-        _error.message,
+        error.message,
       );
       return result;
     }
@@ -219,9 +219,9 @@ class ComprehensiveTestRunner {
             );
           }
         }
-      } catch (_error: unknown) {
+      } catch (error: unknown) {
         logger.warn(
-          `[COMPREHENSIVE-TEST-RUNNER] File check failed: ${file} - ${_error.message}`,
+          `[COMPREHENSIVE-TEST-RUNNER] File check failed: ${file} - ${error.message}`,
         );
       }
     }
@@ -240,9 +240,9 @@ class ComprehensiveTestRunner {
             );
           }
         }
-      } catch (_error: unknown) {
+      } catch (error: unknown) {
         logger.warn(
-          `[COMPREHENSIVE-TEST-RUNNER] Directory check failed: ${dir} - ${_error.message}`,
+          `[COMPREHENSIVE-TEST-RUNNER] Directory check failed: ${dir} - ${error.message}`,
         );
       }
     }
@@ -282,9 +282,9 @@ class ComprehensiveTestRunner {
         logger.info(
           `[COMPREHENSIVE-TEST-RUNNER] QMOI test passed: ${test.name}`,
         );
-      } catch (_error: unknown) {
+      } catch (error: unknown) {
         logger.warn(
-          `[COMPREHENSIVE-TEST-RUNNER] QMOI test failed: ${test.name} - ${_error.message}`,
+          `[COMPREHENSIVE-TEST-RUNNER] QMOI test failed: ${test.name} - ${error.message}`,
         );
       }
     }
@@ -349,21 +349,21 @@ class ComprehensiveTestRunner {
 
     for (const endpoint of apiEndpoints) {
       try {
-        const _response = await fetch(`http://localhost:3000${endpoint}`, {
+        const response = await fetch(`http://localhost:3000${endpoint}`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ action: "status" }),
         });
 
-        if (!_response.ok) {
+        if (!response.ok) {
           throw new Error(
-            `API endpoint ${endpoint} returned ${_response.status}`,
+            `API endpoint ${endpoint} returned ${response.status}`,
           );
         }
-      } catch (_error: unknown) {
+      } catch (error: unknown) {
         // Don't fail the entire test suite for API issues
         logger.warn(
-          `[COMPREHENSIVE-TEST-RUNNER] API test warning: ${endpoint} - ${_error.message}`,
+          `[COMPREHENSIVE-TEST-RUNNER] API test warning: ${endpoint} - ${error.message}`,
         );
       }
     }
@@ -389,7 +389,7 @@ class ComprehensiveTestRunner {
         command: r.command,
         success: r.success,
         duration: r.duration,
-        _error: r._error,
+        error: r.error,
       })),
     };
 
@@ -413,8 +413,8 @@ class ComprehensiveTestRunner {
         await execAsync(command, { timeout: 60000 }); // 1 minute timeout
         passed++;
         results.push({ command, success: true });
-      } catch (_error: unknown) {
-        results.push({ command, success: false, _error: _error.message });
+      } catch (error: unknown) {
+        results.push({ command, success: false, error: error.message });
       }
     }
 
@@ -442,8 +442,8 @@ const logger = {
   warn: (message: string, ...args: unknown[]) => {
     console.warn(`[WARN] ${message}`, ...args);
   },
-  _error: (message: string, ...args: unknown[]) => {
-    (console as any)._error(`[ERROR] ${message}`, ...args);
+  error: (message: string, ...args: unknown[]) => {
+    (console as any).error(`[ERROR] ${message}`, ...args);
   },
 };
 
@@ -455,8 +455,8 @@ if (require.main === module) {
       console.log("Test Results:", result);
       process.exit(result.success ? 0 : 1);
     })
-    .catch((_error) => {
-      (console as any)._error("Test runner failed:", _error);
+    .catch((error) => {
+      (console as any).error("Test runner failed:", error);
       process.exit(1);
     });
 }

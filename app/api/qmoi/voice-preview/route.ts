@@ -19,7 +19,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -43,10 +43,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any)._error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -105,7 +105,7 @@ async function generateTTSAudio(
       }
     } catch (_err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }

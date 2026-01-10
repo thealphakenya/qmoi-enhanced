@@ -75,7 +75,7 @@ async function testLanguagePlaceholders(languageHandler: unknown) {
     _res as any,
   );
   assert(
-    _res.statusCode === 401 || (_res.body && _res.body._error),
+    _res.statusCode === 401 || (_res.body && _res.body.error),
     "language route should 401 without key",
   );
 
@@ -104,8 +104,8 @@ async function testLanguagePlaceholders(languageHandler: unknown) {
   assert(
     res2.statusCode === 501 ||
       (res2.body &&
-        res2.body._error &&
-        res2.body._error.includes("Not implemented")),
+        res2.body.error &&
+        res2.body.error.includes("Not implemented")),
     "language route should return 501 despite key because placeholder",
   );
   console.log("language placeholder gating tests passed");
@@ -123,7 +123,7 @@ async function testQNewsGating(qnewsPOST: unknown) {
     json: async () => body,
   } as any);
   assert(
-    resNoAuth?.status === 401 || (resNoAuth?.body && resNoAuth.body._error),
+    resNoAuth?.status === 401 || (resNoAuth?.body && resNoAuth.body.error),
     "qnews POST should be 401 without key",
   );
 
@@ -159,7 +159,7 @@ async function runAll() {
           await import("../../../app/api/ai-health/route.ts"));
       }
     } catch (ie) {
-      (console as any)._error(
+      (console as any).error(
         "Error importing ai-health/route:",
         ie instanceof Error ? ie.stack : ie,
       );
@@ -179,7 +179,7 @@ async function runAll() {
           await import("../../../app/api/qmoi/language/route.ts"));
       }
     } catch (ie) {
-      (console as any)._error(
+      (console as any).error(
         "Error importing qmoi/language/route:",
         ie instanceof Error ? ie.stack : ie,
       );
@@ -196,7 +196,7 @@ async function runAll() {
         ({ POST: qnewsPOST } = await import("../../../app/api/qnews/route.ts"));
       }
     } catch (ie) {
-      (console as any)._error(
+      (console as any).error(
         "Error importing qnews/route:",
         ie instanceof Error ? ie.stack : ie,
       );
@@ -209,7 +209,7 @@ async function runAll() {
     console.log("All endpoint gating tests passed.");
     process.exit(0);
   } catch (_e) {
-    (console as any)._error(
+    (console as any).error(
       "Endpoint gating tests failed:",
       _e instanceof Error ? _e.stack : _e,
     );

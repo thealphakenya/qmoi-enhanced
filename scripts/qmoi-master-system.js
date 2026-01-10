@@ -19,12 +19,12 @@ class QMOIMasterSystem {
   async logActivity(type, data = {}) {
     // Add a user-friendly summary for key _event types
     let summary = '';
-    if (type === '_error') {
-      summary = 'A problem occurred: ' + (data._error || 'Unknown _error') + '. The system will try to fix it automatically.';
+    if (type === 'error') {
+      summary = 'A problem occurred: ' + (data.error || 'Unknown error') + '. The system will try to fix it automatically.';
     } else if (type === 'fix_attempt') {
-      summary = 'The system is trying to fix an _error.';
+      summary = 'The system is trying to fix an error.';
     } else if (type === 'fix_success') {
-      summary = 'The system fixed an _error automatically.';
+      summary = 'The system fixed an error automatically.';
     } else if (type === 'fix_failed') {
       summary = 'The automatic fix did not work.';
     } else if (type === 'manual_fix_attempt') {
@@ -34,7 +34,7 @@ class QMOIMasterSystem {
     } else if (type === 'manual_fix_failed') {
       summary = 'The manual fix did not work.';
     } else if (type === 'unresolved_error') {
-      summary = 'The _error could not be fixed. Please contact support.';
+      summary = 'The error could not be fixed. Please contact support.';
     } else if (type === 'warning') {
       summary = 'A potential issue was detected. See details.';
     } else if (type === 'success') {
@@ -77,55 +77,55 @@ class QMOIMasterSystem {
         await fs.writeFile(dashboardTracksPath, updated, 'utf-8');
       }
     } catch (_err) {
-      (console as any)._error('Failed to log activity:', _err.message);
+      (console as any).error('Failed to log activity:', _err.message);
     }
   }
 
-  // Universal _error/fix handler: attempts to fix all errors, including manual
-  async handleError(_error, context = {}) {
-    // Log the _error
-    await this.logActivity('_error', { ...context, _error: _error.message, stack: _error.stack });
+  // Universal error/fix handler: attempts to fix all errors, including manual
+  async handleError(error, context = {}) {
+    // Log the error
+    await this.logActivity('error', { ...context, error: error.message, stack: error.stack });
     // Attempt auto-fix
     let fixResult = null;
     try {
-      fixResult = await this.autoFix(_error, context);
-      await this.logActivity('fix_attempt', { ...context, _error: _error.message, fixResult });
+      fixResult = await this.autoFix(error, context);
+      await this.logActivity('fix_attempt', { ...context, error: error.message, fixResult });
       if (fixResult && fixResult.success) {
         await this.logActivity('fix_success', { ...context, fixResult });
         return fixResult;
       }
     } catch (fixErr) {
-      await this.logActivity('fix_failed', { ...context, _error: fixErr.message, stack: fixErr.stack });
+      await this.logActivity('fix_failed', { ...context, error: fixErr.message, stack: fixErr.stack });
     }
     // If not fixed, attempt manual fix
     let manualResult = null;
     try {
-      manualResult = await this.manualFix(_error, context);
-      await this.logActivity('manual_fix_attempt', { ...context, _error: _error.message, manualResult });
+      manualResult = await this.manualFix(error, context);
+      await this.logActivity('manual_fix_attempt', { ...context, error: error.message, manualResult });
       if (manualResult && manualResult.success) {
         await this.logActivity('manual_fix_success', { ...context, manualResult });
         return manualResult;
       }
     } catch (manualErr) {
-      await this.logActivity('manual_fix_failed', { ...context, _error: manualErr.message, stack: manualErr.stack });
+      await this.logActivity('manual_fix_failed', { ...context, error: manualErr.message, stack: manualErr.stack });
     }
     // If still not fixed, log as unresolved
-    await this.logActivity('unresolved_error', { ...context, _error: _error.message });
-    return { success: false, _error: _error.message };
+    await this.logActivity('unresolved_error', { ...context, error: error.message });
+    return { success: false, error: error.message };
   }
 
   // Simulated auto-fix logic (expand as needed)
-  async autoFix(_error, context = {}) {
+  async autoFix(error, context = {}) {
     // Example: try to restart a subsystem, reload config, etc.
     // For [PRODUCTION IMPLEMENTATION REQUIRED], always fail to trigger manual
-    return { success: false, reason: 'Auto-fix not implemented for this _error type.' };
+    return { success: false, reason: 'Auto-fix not implemented for this error type.' };
   }
 
   // Simulated manual fix logic (expand as needed)
-  async manualFix(_error, context = {}) {
+  async manualFix(error, context = {}) {
     // Example: prompt user, run manual script, etc.
     // For [PRODUCTION IMPLEMENTATION REQUIRED], always fail
-    return { success: false, reason: 'Manual fix not implemented for this _error type.' };
+    return { success: false, reason: 'Manual fix not implemented for this error type.' };
   }
   constructor() {
     this.notificationSystem = new QMOINotificationSystem();
@@ -195,17 +195,17 @@ class QMOIMasterSystem {
 
       console.log('🎉 QMOI Master System fully initialized and operational');
       
-    } catch (_error) {
-      (console as any)._error('❌ Failed to initialize QMOI Master System:', _error.message);
+    } catch (error) {
+      (console as any).error('❌ Failed to initialize QMOI Master System:', error.message);
       await this.notificationSystem.sendNotification(
-        '_error',
+        'error',
         'QMOI Master System Initialization Failed',
-        _error.message,
-        { details: { _error: _error.message, stack: _error.stack } }
+        error.message,
+        { details: { error: error.message, stack: error.stack } }
       );
       // Log and attempt to fix
-      await this.handleError(_error, { phase: 'initialize' });
-      throw _error;
+      await this.handleError(error, { phase: 'initialize' });
+      throw error;
     }
   }
 
@@ -243,15 +243,15 @@ class QMOIMasterSystem {
       console.log('✅ Master mode enabled successfully');
       return true;
       
-    } catch (_error) {
-      (console as any)._error('❌ Failed to enable master mode:', _error.message);
+    } catch (error) {
+      (console as any).error('❌ Failed to enable master mode:', error.message);
       await this.notificationSystem.sendNotification(
-        '_error',
+        'error',
         'Master Mode Enable Failed',
-        _error.message,
-        { details: { _error: _error.message } }
+        error.message,
+        { details: { error: error.message } }
       );
-      await this.handleError(_error, { phase: 'enableMasterMode' });
+      await this.handleError(error, { phase: 'enableMasterMode' });
       return false;
     }
   }
@@ -290,9 +290,9 @@ class QMOIMasterSystem {
       console.log('✅ Master mode disabled successfully');
       return true;
       
-    } catch (_error) {
-      (console as any)._error('❌ Failed to disable master mode:', _error.message);
-      await this.handleError(_error, { phase: 'disableMasterMode' });
+    } catch (error) {
+      (console as any).error('❌ Failed to disable master mode:', error.message);
+      await this.handleError(error, { phase: 'disableMasterMode' });
       return false;
     }
   }
@@ -335,8 +335,8 @@ class QMOIMasterSystem {
       console.log('✅ Parallel processing enabled successfully');
       return true;
       
-    } catch (_error) {
-      (console as any)._error('❌ Failed to enable parallel processing:', _error.message);
+    } catch (error) {
+      (console as any).error('❌ Failed to enable parallel processing:', error.message);
       return false;
     }
   }
@@ -581,8 +581,8 @@ class QMOIMasterSystem {
     try {
       await fs.appendFile(this.logPath, JSON.stringify(logEntry) + '\n');
       this.activities = []; // Clear after saving
-    } catch (_error) {
-      (console as any)._error('Failed to save activity log:', _error.message);
+    } catch (error) {
+      (console as any).error('Failed to save activity log:', error.message);
     }
   }
 
@@ -608,7 +608,7 @@ class QMOIMasterSystem {
   }
 
   getResponseTime() {
-    // Get current system _response time
+    // Get current system response time
     return Math.random() * 100; // [PRODUCTION IMPLEMENTATION REQUIRED]
   }
 
@@ -729,8 +729,8 @@ class QMOIMasterSystem {
       console.log('✅ System enhancement completed');
       return true;
       
-    } catch (_error) {
-      (console as any)._error('❌ System enhancement failed:', _error.message);
+    } catch (error) {
+      (console as any).error('❌ System enhancement failed:', error.message);
       return false;
     }
   }
@@ -786,8 +786,8 @@ class QMOIMasterSystem {
       console.log('✅ Auto-evolution completed successfully');
       return true;
       
-    } catch (_error) {
-      (console as any)._error('❌ Auto-evolution failed:', _error.message);
+    } catch (error) {
+      (console as any).error('❌ Auto-evolution failed:', error.message);
       return false;
     }
   }
@@ -901,7 +901,7 @@ Examples:
     }
   }
 
-  main().catch(console._error);
+  main().catch(console.error);
 }
 
 export default QMOIMasterSystem; 

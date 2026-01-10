@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 export default function MetricsPanel() {
   const [metrics, setMetrics] = useState<any>(null);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const token =
     typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
@@ -14,14 +14,14 @@ export default function MetricsPanel() {
     })
       .then((r) => r.json())
       .then((data) => setMetrics(data))
-      .catch((_e: unknown) => setError((_e as any).message ?? String(_e)))
+      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
       .finally(() => setLoading(false));
   }, []);
 
   return (
     <div className="p-4 bg-gray-900 rounded-lg shadow-lg">
       <h2 className="text-xl font-bold mb-4 text-cyan-400">System Metrics</h2>
-      {_error && <div className="text-red-400 mb-2">{_error}</div>}
+      {error && <div className="text-red-400 mb-2">{error}</div>}
       {loading ? (
         <div className="text-gray-400">Loading...</div>
       ) : (

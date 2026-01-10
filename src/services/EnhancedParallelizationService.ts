@@ -14,8 +14,8 @@ interface ParallelTask {
   estimatedDuration: number;
   startTime?: string;
   endTime?: string;
-  result?: unknown;
-  _error?: string;
+  result?: any;
+  error?: string;
 }
 
 interface ParallelExecutionConfig {
@@ -39,7 +39,7 @@ interface DashboardData {
   activeTasks: ParallelTask[];
   systemHealth: SystemHealth;
   taskQueue: ParallelTask[];
-  recentResults: unknown[];
+  recentResults: any[];
   performanceMetrics: {
     tasksPerMinute: number;
     successRate: number;
@@ -92,7 +92,7 @@ export class EnhancedParallelizationService extends EventEmitter {
   public async submitTask(
     taskType: ParallelTask["type"],
     priority: ParallelTask["priority"] = "medium",
-    data?: unknown
+    data?: any
   ): Promise<string> {
     const task: ParallelTask = {
       id: `task_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -164,12 +164,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = _error instanceof Error ? _error.message : String(_error);
-      task._error = errMsg;
+      const errMsg = error instanceof Error ? error.message : String(error);
+      task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -195,9 +195,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }

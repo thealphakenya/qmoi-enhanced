@@ -31,7 +31,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -99,7 +99,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       case "medium":
         return "warning";
       case "high":
-        return "_error";
+        return "error";
       default:
         return "default";
     }
@@ -133,9 +133,9 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
           </Box>
         </Box>
 
-        {_error && (
-          <Alert severity="_error" sx={{ mb: 2 }}>
-            {_error}
+        {error && (
+          <Alert severity="error" sx={{ mb: 2 }}>
+            {error}
           </Alert>
         )}
 

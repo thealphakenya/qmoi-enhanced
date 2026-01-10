@@ -76,9 +76,9 @@ export class WalletManager {
       );
 
       this.balances = [...spotBalances, ...futuresBalances, ...otcBalances];
-    } catch (_error) {
-      (console as any)._error("Error updating wallet balances:", _error);
-      throw _error;
+    } catch (error) {
+      (console as any).error("Error updating wallet balances:", error);
+      throw error;
     }
   }
 
@@ -87,8 +87,8 @@ export class WalletManager {
     try {
       // Implement price fetching logic here
       return 0; // [PRODUCTION IMPLEMENTATION REQUIRED]
-    } catch (_error) {
-      (console as any)._error(`Error fetching USD price for ${currency}:`, _error);
+    } catch (error) {
+      (console as any).error(`Error fetching USD price for ${currency}:`, error);
       return 0;
     }
   }

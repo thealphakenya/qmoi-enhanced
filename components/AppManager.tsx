@@ -129,9 +129,9 @@ export default function AppManager() {
       );
     });
 
-    appManagementService.onAppError((payload: unknown) => {
+    appManagementService.onAppError((payload: any) => {
       const appId = payload?.appId;
-      const err = payload?._error ?? payload?.error ?? "Unknown error";
+      const err = payload?.error ?? "Unknown error";
       console.error(`App error for ${appId}:`, err);
     });
 

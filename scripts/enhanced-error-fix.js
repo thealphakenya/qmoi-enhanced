@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { fixFile } from "../enhanced-_error-fix.js";
+import { fixFile } from "../enhanced-error-fix.js";
 
 const args = process.argv.slice(2);
 let maxTries = 10;
@@ -23,7 +23,7 @@ import { spawn } from "child_process";
 
 console.log("[DEBUG] Script loaded and imports successful");
 
-// Enhanced _error tracking and reporting
+// Enhanced error tracking and reporting
 let errorLog = {
   startTime: new Date(),
   errors: [],
@@ -36,7 +36,7 @@ let errorLog = {
 console.log("[DEBUG] Error log initialized");
 
 function logError(type, message, severity = "medium") {
-  const _error = {
+  const error = {
     id: errorLog.errors.length + 1,
     type,
     message,
@@ -44,8 +44,8 @@ function logError(type, message, severity = "medium") {
     timestamp: new Date(),
     status: "pending",
   };
-  errorLog.errors.push(_error);
-  console.log(`[ERROR-${_error.id}] ${type}: ${message} (${severity})`);
+  errorLog.errors.push(error);
+  console.log(`[ERROR-${error.id}] ${type}: ${message} (${severity})`);
 }
 
 function logFix(errorId, fixType, details, success = true) {
@@ -77,7 +77,7 @@ function updateGitHubActions() {
   };
   console.log("[DEBUG] Summary calculated:", summary);
   // Always write summary file
-  const summaryFile = "_error-fix-summary.md";
+  const summaryFile = "error-fix-summary.md";
   const summaryContent = `# QMOI Auto-Fix Report\n\n## Summary\n- **Total Errors**: ${
     summary.totalErrors
   }\n- **Fixed Errors**: ${summary.fixedErrors}\n- **Remaining Errors**: ${
@@ -152,7 +152,7 @@ function fixVercelDeployment() {
 }
 
 function fixBuildErrors() {
-  console.log("[FIX] Attempting build _error fixes...");
+  console.log("[FIX] Attempting build error fixes...");
 
   // Strategy 1: Clean install
   try {
@@ -184,7 +184,7 @@ function fixBuildErrors() {
 }
 
 function fixLintErrors() {
-  console.log("[FIX] Attempting lint _error fixes...");
+  console.log("[FIX] Attempting lint error fixes...");
 
   try {
     execSync("npm run lint -- --fix", { stdio: "inherit" });
@@ -203,7 +203,7 @@ function fixLintErrors() {
 }
 
 function fixEnvironmentErrors() {
-  console.log("[FIX] Attempting environment _error fixes...");
+  console.log("[FIX] Attempting environment error fixes...");
 
   // Check and create missing .env
   if (!fs.existsSync(".env")) {
@@ -265,7 +265,7 @@ function printFinalSummary() {
 }
 
 function comprehensiveErrorFix() {
-  console.log("[QMOI] Starting comprehensive _error fix...");
+  console.log("[QMOI] Starting comprehensive error fix...");
   errorLog.startTime = new Date();
 
   // Phase 1: Environment and Configuration
@@ -303,22 +303,22 @@ console.log("[QMOI] Enhanced Error Fix Script Started");
 console.log("[DEBUG] Main execution block entered");
 
 try {
-  // Add a test _error for verification
-  logError("test", "This is a test _error");
-  console.log("[DEBUG] Test _error logged");
+  // Add a test error for verification
+  logError("test", "This is a test error");
+  console.log("[DEBUG] Test error logged");
 
   comprehensiveErrorFix();
   console.log("[DEBUG] comprehensiveErrorFix completed");
 
   console.log("[QMOI] Enhanced Error Fix Script Finished");
-} catch (_error) {
-  (console as any)._error("[ERROR] Script failed with _error:", _error);
+} catch (error) {
+  (console as any).error("[ERROR] Script failed with error:", error);
   process.exit(1);
 }
 
 const LOG_FILE = path.join(__dirname, "../logs/error_fix_summary.json");
 
-// Simulate _error-fix process (replace with real logic)
+// Simulate error-fix process (replace with real logic)
 const errorsFound = Math.floor(Math.random() * 20) + 1;
 const errorsFixed = Math.floor(errorsFound * (Math.random() * 0.7 + 0.1));
 const manualErrors = [];
@@ -334,10 +334,10 @@ const manualCount =
 for (let i = 0; i < manualCount; i++) {
   manualErrors.push({
     type: errorTypes[Math.floor(Math.random() * errorTypes.length)],
-    description: "Manual fix required for this _error.",
+    description: "Manual fix required for this error.",
     manualRequired: true,
     manualInstructions:
-      "Please review the _error log and fix this issue manually.",
+      "Please review the error log and fix this issue manually.",
   });
 }
 const remaining = errorsFound - errorsFixed;
@@ -395,7 +395,7 @@ async function runAllFixersParallel() {
   const results = await Promise.all(FIXERS.map(runFixer));
   const failed = results.filter((r) => !r.success);
   if (failed.length > 0) {
-    (console as any)._error(
+    (console as any).error(
       "[QMOI] Some fixers failed:",
       failed.map((f) => f.fixer),
     );

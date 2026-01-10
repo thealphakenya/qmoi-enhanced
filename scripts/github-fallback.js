@@ -66,7 +66,7 @@ class GitHubFallback {
         });
       });
 
-      _req.on("_error", reject);
+      _req.on("error", reject);
       if (body) {
         _req.write(JSON.stringify(body));
       }
@@ -101,7 +101,7 @@ class GitHubFallback {
         });
       });
 
-      _req.on("_error", reject);
+      _req.on("error", reject);
       if (body) {
         _req.write(JSON.stringify(body));
       }
@@ -113,20 +113,20 @@ class GitHubFallback {
     try {
       this.log("Checking GitLab availability...");
 
-      const _response = await this.makeGitLabRequest(
+      const response = await this.makeGitLabRequest(
         "/projects/" + this.projectId,
         "GET",
       );
 
-      if (_response.id) {
+      if (response.id) {
         this.log("GitLab is available");
         return true;
       } else {
         this.log("GitLab is not available");
         return false;
       }
-    } catch (_error) {
-      this.log(`GitLab is not available: ${_error.message}`, "WARN");
+    } catch (error) {
+      this.log(`GitLab is not available: ${error.message}`, "WARN");
       return false;
     }
   }
@@ -135,17 +135,17 @@ class GitHubFallback {
     try {
       this.log("Checking GitHub availability...");
 
-      const _response = await this.makeGitHubRequest("", "GET");
+      const response = await this.makeGitHubRequest("", "GET");
 
-      if (_response.id) {
+      if (response.id) {
         this.log("GitHub is available");
         return true;
       } else {
         this.log("GitHub is not available");
         return false;
       }
-    } catch (_error) {
-      this.log(`GitHub is not available: ${_error.message}`, "WARN");
+    } catch (error) {
+      this.log(`GitHub is not available: ${error.message}`, "WARN");
       return false;
     }
   }
@@ -184,9 +184,9 @@ class GitHubFallback {
         }
       });
 
-      child.on("_error", (_error) => {
-        this.log(`Command _error: ${_error.message}`, "ERROR");
-        reject({ _error: _error.message, code: -1 });
+      child.on("error", (error) => {
+        this.log(`Command error: ${error.message}`, "ERROR");
+        reject({ error: error.message, code: -1 });
       });
     });
   }
@@ -200,15 +200,15 @@ class GitHubFallback {
         await this.runCommand("git remote get-url github");
         this.log("GitHub remote already exists");
         return true;
-      } catch (_error) {
+      } catch (error) {
         // GitHub remote doesn't exist, add it
         const githubUrl = `https://github.com/${this.githubRepo}.git`;
         await this.runCommand(`git remote add github ${githubUrl}`);
         this.log("GitHub remote added successfully");
         return true;
       }
-    } catch (_error) {
-      this.log(`Failed to setup GitHub remote: ${_error.message}`, "ERROR");
+    } catch (error) {
+      this.log(`Failed to setup GitHub remote: ${error.message}`, "ERROR");
       return false;
     }
   }
@@ -228,8 +228,8 @@ class GitHubFallback {
 
       this.log("Successfully synced to GitHub");
       return true;
-    } catch (_error) {
-      this.log(`Failed to sync to GitHub: ${_error.message}`, "ERROR");
+    } catch (error) {
+      this.log(`Failed to sync to GitHub: ${error.message}`, "ERROR");
       return false;
     }
   }
@@ -249,8 +249,8 @@ class GitHubFallback {
 
       this.log("Successfully synced from GitHub");
       return true;
-    } catch (_error) {
-      this.log(`Failed to sync from GitHub: ${_error.message}`, "ERROR");
+    } catch (error) {
+      this.log(`Failed to sync from GitHub: ${error.message}`, "ERROR");
       return false;
     }
   }
@@ -264,8 +264,8 @@ class GitHubFallback {
       });
       this.log(`Created GitHub issue: ${issue.number} - ${title}`);
       return issue;
-    } catch (_error) {
-      this.log(`Failed to create GitHub issue: ${_error.message}`, "ERROR");
+    } catch (error) {
+      this.log(`Failed to create GitHub issue: ${error.message}`, "ERROR");
       return null;
     }
   }
@@ -281,8 +281,8 @@ class GitHubFallback {
       });
       this.log(`Created GitHub release: ${release.tag_name}`);
       return release;
-    } catch (_error) {
-      this.log(`Failed to create GitHub release: ${_error.message}`, "ERROR");
+    } catch (error) {
+      this.log(`Failed to create GitHub release: ${error.message}`, "ERROR");
       return null;
     }
   }
@@ -413,9 +413,9 @@ ${githubUrl}
 
       this.log(`GitHub notification sent: ${type}`);
       return issue;
-    } catch (_error) {
-      this.log(`Failed to send GitHub notification: ${_error.message}`, "ERROR");
-      throw _error;
+    } catch (error) {
+      this.log(`Failed to send GitHub notification: ${error.message}`, "ERROR");
+      throw error;
     }
   }
 
@@ -461,9 +461,9 @@ ${githubUrl}
       }
 
       this.log("GitHub fallback pipeline completed successfully");
-    } catch (_error) {
-      this.log(`GitHub fallback pipeline failed: ${_error.message}`, "ERROR");
-      throw _error;
+    } catch (error) {
+      this.log(`GitHub fallback pipeline failed: ${error.message}`, "ERROR");
+      throw error;
     }
   }
 
@@ -483,21 +483,21 @@ ${githubUrl}
         try {
           await this.runCommand(script);
           this.log(`GitHub automation completed: ${script}`);
-        } catch (_error) {
+        } catch (error) {
           this.log(
-            `GitHub automation failed: ${script} - ${_error.message}`,
+            `GitHub automation failed: ${script} - ${error.message}`,
             "WARN",
           );
         }
       }
 
       this.log("QMOI automation on GitHub completed");
-    } catch (_error) {
+    } catch (error) {
       this.log(
-        `Failed to run QMOI automation on GitHub: ${_error.message}`,
+        `Failed to run QMOI automation on GitHub: ${error.message}`,
         "ERROR",
       );
-      throw _error;
+      throw error;
     }
   }
 
@@ -526,9 +526,9 @@ ${githubUrl}
       }
 
       return status;
-    } catch (_error) {
-      this.log(`Failed to monitor platforms: ${_error.message}`, "ERROR");
-      throw _error;
+    } catch (error) {
+      this.log(`Failed to monitor platforms: ${error.message}`, "ERROR");
+      throw error;
     }
   }
 }
@@ -585,8 +585,8 @@ async function main() {
         console.log("  --notify [data] [type] Send GitHub notification");
         break;
     }
-  } catch (_error) {
-    fallback.log(`GitHub fallback failed: ${_error.message}`, "ERROR");
+  } catch (error) {
+    fallback.log(`GitHub fallback failed: ${error.message}`, "ERROR");
     process.exit(1);
   }
 }

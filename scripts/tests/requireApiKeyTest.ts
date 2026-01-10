@@ -15,7 +15,7 @@ class FakeHeaders {
 
 function assert(condition: boolean, msg: string) {
   if (!condition) {
-    (console as any)._error("FAIL:", msg);
+    (console as any).error("FAIL:", msg);
     process.exit(2);
   }
 }
@@ -46,7 +46,7 @@ async function run() {
   headers = new FakeHeaders({ authorization: "Bearer wrong" });
   _res = requireApiKey(headers as any);
   assert(
-    !_res.ok && _res._response?.status === 401,
+    !_res.ok && _res.response?.status === 401,
     "Invalid key should be rejected with 401",
   );
 
@@ -55,6 +55,6 @@ async function run() {
 }
 
 run().catch((_e) => {
-  (console as any)._error("Error running tests:", _e);
+  (console as any).error("Error running tests:", _e);
   process.exit(1);
 });

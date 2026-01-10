@@ -265,7 +265,7 @@ class QMOIMusicProductionSystem {
       if (result.success) {
         console.log(`✅ ${result.type} completed: ${result.details}`);
       } else {
-        (console as any)._error(`❌ ${result.type} failed: ${result._error}`);
+        (console as any).error(`❌ ${result.type} failed: ${result.error}`);
       }
     }
 
@@ -283,7 +283,7 @@ class QMOIMusicProductionSystem {
     if (!artist) {
       return {
         success: false,
-        _error: "Artist not found",
+        error: "Artist not found",
         type: "song-creation",
       };
     }
@@ -331,10 +331,10 @@ class QMOIMusicProductionSystem {
           distribution: distributionResults,
         },
       };
-    } catch (_error) {
+    } catch (error) {
       return {
         success: false,
-        _error: _error.message,
+        error: error.message,
         type: "song-creation",
       };
     }
@@ -356,10 +356,10 @@ class QMOIMusicProductionSystem {
             artist2,
           );
           collaborations.push(collaboration);
-        } catch (_error) {
-          (console as any)._error(
+        } catch (error) {
+          (console as any).error(
             `Failed to create collaboration between ${artist1.name} and ${artist2.name}:`,
-            _error.message,
+            error.message,
           );
         }
       }
@@ -485,8 +485,8 @@ class QMOIMusicProductionSystem {
         try {
           const result = await this.uploadToChannel(channelId, track, video);
           results[channelId] = result;
-        } catch (_error) {
-          results[channelId] = { success: false, _error: _error.message };
+        } catch (error) {
+          results[channelId] = { success: false, error: error.message };
         }
       }
     }
@@ -655,8 +655,8 @@ class QMOIMusicProductionSystem {
     try {
       const trackingPath = "logs/revenue-tracking.json";
       await fs.writeFile(trackingPath, JSON.stringify(data, null, 2));
-    } catch (_error) {
-      (console as any)._error("Failed to save revenue tracking:", _error.message);
+    } catch (error) {
+      (console as any).error("Failed to save revenue tracking:", error.message);
     }
   }
 
@@ -745,7 +745,7 @@ Examples:
     }
   }
 
-  main().catch(console._error);
+  main().catch(console.error);
 }
 
 export default QMOIMusicProductionSystem;

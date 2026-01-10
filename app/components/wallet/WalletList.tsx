@@ -14,7 +14,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -31,14 +31,14 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-      if (!_response.ok) {
-        if (_response.status === 401) {
+      if (!response.ok) {
+        if (response.status === 401) {
           router.push("/login");
           return;
         }
@@ -46,10 +46,10 @@ export function WalletList() {
         return;
       }
 
-      const data = await _response.json();
+      const data = await response.json();
       setWallets(data.wallets || []);
     } catch (_err) {
-      setError(_err instanceof Error ? _err.message : "An _error occurred");
+      setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
     }
@@ -66,7 +66,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -75,16 +75,16 @@ export function WalletList() {
         body: JSON.stringify({ currency: newCurrency }),
       });
 
-      if (!_response.ok) {
+      if (!response.ok) {
         setError("Failed to create wallet");
         return;
       }
 
-      const newWallet = await _response.json();
+      const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
     } catch (_err) {
-      setError(_err instanceof Error ? _err.message : "An _error occurred");
+      setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
     }
@@ -98,9 +98,9 @@ export function WalletList() {
     <div className="space-y-6">
       <h2 className="text-2xl font-bold">My Wallets</h2>
 
-      {_error && (
+      {error && (
         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
-          {_error}
+          {error}
         </div>
       )}
 

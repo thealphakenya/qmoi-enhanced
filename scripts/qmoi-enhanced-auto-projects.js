@@ -142,9 +142,9 @@ class QMOITimeLocationManager {
         location: this.location,
         timezone: this.timezone,
       });
-    } catch (_error) {
-      (console as any)._error("Error initializing time/location:", _error);
-      this.handleError(_error, "TimeLocationInit");
+    } catch (error) {
+      (console as any).error("Error initializing time/location:", error);
+      this.handleError(error, "TimeLocationInit");
     }
   }
 
@@ -171,8 +171,8 @@ class QMOITimeLocationManager {
       }
 
       return new Date();
-    } catch (_error) {
-      (console as any)._error("Error getting precise time:", _error);
+    } catch (error) {
+      (console as any).error("Error getting precise time:", error);
       return new Date();
     }
   }
@@ -188,9 +188,9 @@ class QMOITimeLocationManager {
             timestamp: position.timestamp,
           });
         },
-        (_error) => {
-          (console as any)._error("GPS location _error:", _error);
-          reject(_error);
+        (error) => {
+          (console as any).error("GPS location error:", error);
+          reject(error);
         },
         {
           enableHighAccuracy: true,
@@ -203,8 +203,8 @@ class QMOITimeLocationManager {
 
   async getLocationByIP() {
     try {
-      const _response = await fetch("https://ipapi.co/json/");
-      const data = await _response.json();
+      const response = await fetch("https://ipapi.co/json/");
+      const data = await response.json();
       return {
         latitude: data.latitude,
         longitude: data.longitude,
@@ -213,8 +213,8 @@ class QMOITimeLocationManager {
         timezone: data.timezone,
         source: "IP",
       };
-    } catch (_error) {
-      (console as any)._error("Error getting IP location:", _error);
+    } catch (error) {
+      (console as any).error("Error getting IP location:", error);
       return null;
     }
   }
@@ -236,7 +236,7 @@ class QMOITimeLocationManager {
   }
 }
 
-// Enhanced _error handling and self-healing system
+// Enhanced error handling and self-healing system
 class QMOIErrorHandler {
   constructor() {
     this.errorLog = [];
@@ -253,12 +253,12 @@ class QMOIErrorHandler {
       // Set up recovery strategies
       this.setupRecoveryStrategies();
 
-      // Enable global _error handling
+      // Enable global error handling
       this.enableGlobalErrorHandling();
 
       console.log("QMOI Error Handler initialized");
-    } catch (_error) {
-      (console as any)._error("Error initializing _error handler:", _error);
+    } catch (error) {
+      (console as any).error("Error initializing error handler:", error);
     }
   }
 
@@ -269,15 +269,15 @@ class QMOIErrorHandler {
         this.githubActionsEnabled = true;
         console.log("GitHub Actions integration enabled");
       }
-    } catch (_error) {
-      (console as any)._error("GitHub Actions initialization _error:", _error);
+    } catch (error) {
+      (console as any).error("GitHub Actions initialization error:", error);
     }
   }
 
   setupRecoveryStrategies() {
     // Network errors
-    this.recoveryStrategies.set("NetworkError", async (_error) => {
-      console.log("Attempting network _error recovery...");
+    this.recoveryStrategies.set("NetworkError", async (error) => {
+      console.log("Attempting network error recovery...");
       await this.retryWithBackoff(async () => {
         // Retry the failed operation
         return true;
@@ -285,8 +285,8 @@ class QMOIErrorHandler {
     });
 
     // API errors
-    this.recoveryStrategies.set("APIError", async (_error) => {
-      console.log("Attempting API _error recovery...");
+    this.recoveryStrategies.set("APIError", async (error) => {
+      console.log("Attempting API error recovery...");
       await this.retryWithBackoff(async () => {
         // Retry API call with exponential backoff
         return true;
@@ -294,20 +294,20 @@ class QMOIErrorHandler {
     });
 
     // Database errors
-    this.recoveryStrategies.set("DatabaseError", async (_error) => {
-      console.log("Attempting database _error recovery...");
+    this.recoveryStrategies.set("DatabaseError", async (error) => {
+      console.log("Attempting database error recovery...");
       await this.reconnectDatabase();
     });
 
     // Memory errors
-    this.recoveryStrategies.set("MemoryError", async (_error) => {
-      console.log("Attempting memory _error recovery...");
+    this.recoveryStrategies.set("MemoryError", async (error) => {
+      console.log("Attempting memory error recovery...");
       await this.cleanupMemory();
     });
 
     // Authentication errors
-    this.recoveryStrategies.set("AuthError", async (_error) => {
-      console.log("Attempting authentication _error recovery...");
+    this.recoveryStrategies.set("AuthError", async (error) => {
+      console.log("Attempting authentication error recovery...");
       await this.refreshAuthentication();
     });
   }
@@ -319,13 +319,13 @@ class QMOIErrorHandler {
     });
 
     // Global uncaught exception handler
-    process.on("uncaughtException", (_error) => {
-      this.handleError(_error, "UncaughtException");
+    process.on("uncaughtException", (error) => {
+      this.handleError(error, "UncaughtException");
     });
 
-    // Global _error handler
-    window.addEventListener("_error", (_event) => {
-      this.handleError(_event._error, "GlobalError", {
+    // Global error handler
+    window.addEventListener("error", (_event) => {
+      this.handleError(_event.error, "GlobalError", {
         filename: _event.filename,
         lineno: _event.lineno,
         colno: _event.colno,
@@ -333,18 +333,18 @@ class QMOIErrorHandler {
     });
   }
 
-  async handleError(_error, context, metadata = {}) {
+  async handleError(error, context, metadata = {}) {
     const errorInfo = {
       timestamp: new Date().toISOString(),
-      _error: _error.message || _error,
-      stack: _error.stack,
+      error: error.message || error,
+      stack: error.stack,
       context,
       metadata,
-      severity: this.calculateSeverity(_error),
+      severity: this.calculateSeverity(error),
     };
 
     this.errorLog.push(errorInfo);
-    (console as any)._error("QMOI Error:", errorInfo);
+    (console as any).error("QMOI Error:", errorInfo);
 
     // Log to external service
     await this.logErrorToExternalService(errorInfo);
@@ -365,29 +365,29 @@ class QMOIErrorHandler {
     }
   }
 
-  calculateSeverity(_error) {
+  calculateSeverity(error) {
     if (
-      _error.message?.includes("critical") ||
-      _error.message?.includes("fatal")
+      error.message?.includes("critical") ||
+      error.message?.includes("fatal")
     ) {
       return "critical";
     }
-    if (_error.message?.includes("warning")) {
+    if (error.message?.includes("warning")) {
       return "warning";
     }
-    return "_error";
+    return "error";
   }
 
   async logErrorToExternalService(errorInfo) {
     try {
       // Log to external monitoring service
-      await fetch("/api/qmoi/_error-log", {
+      await fetch("/api/qmoi/error-log", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(errorInfo),
       });
-    } catch (_error) {
-      (console as any)._error("Failed to log _error to external service:", _error);
+    } catch (error) {
+      (console as any).error("Failed to log error to external service:", error);
     }
   }
 
@@ -395,17 +395,17 @@ class QMOIErrorHandler {
     try {
       const strategy = this.recoveryStrategies.get(errorInfo.context);
       if (strategy) {
-        await strategy(errorInfo._error);
+        await strategy(errorInfo.error);
         console.log("Auto-fix attempted for:", errorInfo.context);
       }
-    } catch (_error) {
-      (console as any)._error("Auto-fix failed:", _error);
+    } catch (error) {
+      (console as any).error("Auto-fix failed:", error);
     }
   }
 
   async triggerGitHubActions(errorInfo) {
     try {
-      // Trigger GitHub Actions workflow for _error handling
+      // Trigger GitHub Actions workflow for error handling
       await fetch(
         `https://api.github.com/repos/${process.env.GITHUB_REPOSITORY}/dispatches`,
         {
@@ -417,13 +417,13 @@ class QMOIErrorHandler {
           body: JSON.stringify({
             event_type: "qmoi_error_handling",
             client_payload: {
-              _error: errorInfo,
+              error: errorInfo,
             },
           }),
         },
       );
-    } catch (_error) {
-      (console as any)._error("Failed to trigger GitHub Actions:", _error);
+    } catch (error) {
+      (console as any).error("Failed to trigger GitHub Actions:", error);
     }
   }
 
@@ -435,11 +435,11 @@ class QMOIErrorHandler {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           type: "critical_error",
-          _error: errorInfo,
+          error: errorInfo,
         }),
       });
-    } catch (_error) {
-      (console as any)._error("Failed to notify master user:", _error);
+    } catch (error) {
+      (console as any).error("Failed to notify master user:", error);
     }
   }
 
@@ -447,8 +447,8 @@ class QMOIErrorHandler {
     for (let i = 0; i < maxRetries; i++) {
       try {
         return await operation();
-      } catch (_error) {
-        if (i === maxRetries - 1) throw _error;
+      } catch (error) {
+        if (i === maxRetries - 1) throw error;
         await new Promise((resolve) =>
           setTimeout(resolve, Math.pow(2, i) * 1000),
         );
@@ -834,8 +834,8 @@ class QMOIEnhancedAutoProjects {
         );
         this.currentRevenue += result.revenue;
       } else {
-        (console as any)._error(
-          `❌ ${result.type} project generation failed: ${result._error}`,
+        (console as any).error(
+          `❌ ${result.type} project generation failed: ${result.error}`,
         );
       }
     }
@@ -859,8 +859,8 @@ class QMOIEnhancedAutoProjects {
         const project = await this.createAnimationProject(type);
         projects.push(project);
         totalRevenue += project.estimatedRevenue;
-      } catch (_error) {
-        (console as any)._error(`Failed to create ${type} animation:`, _error.message);
+      } catch (error) {
+        (console as any).error(`Failed to create ${type} animation:`, error.message);
       }
     }
 
@@ -923,8 +923,8 @@ class QMOIEnhancedAutoProjects {
         const project = await this.createAppProject(type);
         projects.push(project);
         totalRevenue += project.estimatedRevenue;
-      } catch (_error) {
-        (console as any)._error(`Failed to create ${type} app:`, _error.message);
+      } catch (error) {
+        (console as any).error(`Failed to create ${type} app:`, error.message);
       }
     }
 
@@ -988,8 +988,8 @@ class QMOIEnhancedAutoProjects {
         const project = await this.createContentProject(type);
         projects.push(project);
         totalRevenue += project.estimatedRevenue;
-      } catch (_error) {
-        (console as any)._error(`Failed to create ${type} content:`, _error.message);
+      } catch (error) {
+        (console as any).error(`Failed to create ${type} content:`, error.message);
       }
     }
 
@@ -1052,8 +1052,8 @@ class QMOIEnhancedAutoProjects {
         const project = await this.createServiceProject(type);
         projects.push(project);
         totalRevenue += project.estimatedRevenue;
-      } catch (_error) {
-        (console as any)._error(`Failed to create ${type} service:`, _error.message);
+      } catch (error) {
+        (console as any).error(`Failed to create ${type} service:`, error.message);
       }
     }
 
@@ -1412,8 +1412,8 @@ class QMOIEnhancedAutoProjects {
           const result = await this.uploadToPlatform(project, platform);
           distributionResults.push(result);
         }
-      } catch (_error) {
-        (console as any)._error(`Failed to distribute to ${platformId}:`, _error.message);
+      } catch (error) {
+        (console as any).error(`Failed to distribute to ${platformId}:`, error.message);
       }
     }
 
@@ -1480,8 +1480,8 @@ class QMOIEnhancedAutoProjects {
     try {
       const trackingPath = "revenue/daily-tracking.json";
       await fs.writeFile(trackingPath, JSON.stringify(data, null, 2));
-    } catch (_error) {
-      (console as any)._error("Failed to save revenue tracking:", _error.message);
+    } catch (error) {
+      (console as any).error("Failed to save revenue tracking:", error.message);
     }
   }
 
@@ -1515,8 +1515,8 @@ class QMOIEnhancedAutoProjects {
     try {
       await fs.appendFile(this.logPath, JSON.stringify(logEntry) + "\n");
       this.activities = []; // Clear after saving
-    } catch (_error) {
-      (console as any)._error("Failed to save activity log:", _error.message);
+    } catch (error) {
+      (console as any).error("Failed to save activity log:", error.message);
     }
   }
 
@@ -1548,7 +1548,7 @@ class QMOIEnhancedAutoProjects {
         .split("\n")
         .filter((line) => line.trim())
         .map((line) => JSON.parse(line));
-    } catch (_error) {
+    } catch (error) {
       return [];
     }
   }
@@ -1566,7 +1566,7 @@ async function initializeQMOISystem() {
     // Initialize time and location tracking
     await timeLocationManager.initialize();
 
-    // Initialize _error handling
+    // Initialize error handling
     await errorHandler.initialize();
 
     // Initialize existing systems
@@ -1578,9 +1578,9 @@ async function initializeQMOISystem() {
 
     // Start monitoring
     startSystemMonitoring();
-  } catch (_error) {
-    (console as any)._error("Error initializing QMOI system:", _error);
-    await errorHandler.handleError(_error, "SystemInitialization");
+  } catch (error) {
+    (console as any).error("Error initializing QMOI system:", error);
+    await errorHandler.handleError(error, "SystemInitialization");
   }
 }
 
@@ -1598,16 +1598,16 @@ function startSystemMonitoring() {
       const recentErrors = errorHandler
         .getErrorLog()
         .filter(
-          (_error) => new Date(_error.timestamp) > new Date(Date.now() - 60000),
+          (error) => new Date(error.timestamp) > new Date(Date.now() - 60000),
         );
 
       if (recentErrors.length > 0) {
         console.log("Recent errors detected:", recentErrors.length);
         await attemptSystemRecovery(recentErrors);
       }
-    } catch (_error) {
-      (console as any)._error("System monitoring _error:", _error);
-      await errorHandler.handleError(_error, "SystemMonitoring");
+    } catch (error) {
+      (console as any).error("System monitoring error:", error);
+      await errorHandler.handleError(error, "SystemMonitoring");
     }
   }, 30000); // Check every 30 seconds
 }
@@ -1634,11 +1634,11 @@ async function monitorSystemHealth() {
 async function attemptSystemRecovery(errors) {
   console.log("Attempting system recovery...");
 
-  for (const _error of errors) {
+  for (const error of errors) {
     try {
-      await errorHandler.attemptAutoFix(_error);
+      await errorHandler.attemptAutoFix(error);
     } catch (recoveryError) {
-      (console as any)._error("Recovery failed for _error:", _error, recoveryError);
+      (console as any).error("Recovery failed for error:", error, recoveryError);
     }
   }
 }
@@ -1693,7 +1693,7 @@ Examples:
     }
   }
 
-  main().catch(console._error);
+  main().catch(console.error);
 }
 
 export default QMOIEnhancedAutoProjects;

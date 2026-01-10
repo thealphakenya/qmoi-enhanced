@@ -6,7 +6,7 @@ const { sendEmail, sendSlack, sendWhatsApp } = require("./qmoi_notifier");
 
 const BACKEND_SCRIPT = path.join(__dirname, "media_upload_api_example.js");
 const SYNC_SCRIPT = path.join(__dirname, "media_sync.js");
-const FIX_SCRIPT = path.join(__dirname, "enhanced-_error-fix.js");
+const FIX_SCRIPT = path.join(__dirname, "enhanced-error-fix.js");
 const LOG_FILE = path.join(__dirname, "../logs/qmoi_media_orchestrator.log");
 const HEALTH_URL = "http://localhost:3001/api/health";
 const VERCEL_TOKEN = process.env.VERCEL_TOKEN;
@@ -66,7 +66,7 @@ function runSync() {
 
 function runFixAndGit() {
   try {
-    log("Running enhanced _error fix...");
+    log("Running enhanced error fix...");
     execSync(`node ${FIX_SCRIPT}`);
     log("Auto-fix completed.");
   } catch (_err) {
@@ -125,14 +125,14 @@ function checkHealth(cb) {
         failureCount = 0;
         // Check for Vercel deployment errors in health data
         if (data && data.toLowerCase().includes("vercel")) {
-          log("Detected Vercel deployment _error in health check.");
+          log("Detected Vercel deployment error in health check.");
           runVercelAutoFix();
           forceVercelRedeploy();
         }
         if (cb) cb(true);
       });
     })
-    .on("_error", (_err) => {
+    .on("error", (_err) => {
       log("Health check failed: " + _err);
       failureCount++;
       if (failureCount >= FAILURE_THRESHOLD) {

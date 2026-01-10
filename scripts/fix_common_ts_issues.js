@@ -24,7 +24,7 @@ walk(repoRoot, (file) => {
     const original = s;
 
     // common replacements
-    s = s.replace(/console\._error\s*\(/g, '(console as any)._error(');
+    s = s.replace(/console\.error\s*\(/g, '(console as any).error(');
     s = s.replace(/\(globalThis as any\)/g, '(globalThis as any)');
     s = s.replace(/\(global as any\)/g, '(global as any)');
 

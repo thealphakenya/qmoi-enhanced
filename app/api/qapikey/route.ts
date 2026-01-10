@@ -55,7 +55,7 @@ export async function DELETE(_req: NextRequest) {
   const { key } = body;
   const idx = apiKeys.findIndex((k) => k.key === key);
   if (idx === -1)
-    return NextResponse.json({ _error: "Key not found" }, { status: 404 });
+    return NextResponse.json({ error: "Key not found" }, { status: 404 });
   apiKeys[idx].revoked = true;
   // TODO: Save to keys/ directory
   return NextResponse.json({ success: true });

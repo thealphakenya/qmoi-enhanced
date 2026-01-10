@@ -13,7 +13,7 @@ let memoryStore: MemoryRecord[] = [];
 let recordId = 1;
 
 export class QmoiMemory {
-  static save(key: string, value: unknown, user?: string, project?: string) {
+  static save(key: string, value: any, user?: string, project?: string) {
     const existing = memoryStore.findIndex(
       (r) =>
         r.key === key &&
@@ -82,7 +82,7 @@ export class QmoiMemory {
             if (data && data.profiles) {
               // merge conversations if present
               if (Array.isArray(data.conversations)) {
-                data.conversations.forEach((c: unknown) => {
+                data.conversations.forEach((c: any) => {
                   memoryStore.push({
                     id: recordId++,
                     key: "conversation",

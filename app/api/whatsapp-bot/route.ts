@@ -9,20 +9,20 @@ export async function POST(_request: NextRequest) {
 
     if (!message || !phoneNumber) {
       return NextResponse.json(
-        { _error: "Message and phone number are required" },
+        { error: "Message and phone number are required" },
         { status: 400 },
       );
     }
 
     // Here you would implement the actual WhatsApp message sending logic
-    // For now, we'll just return a success _response
+    // For now, we'll just return a success response
     return NextResponse.json({
       status: "success",
       message: `Message sent to ${phoneNumber} successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: _error instanceof Error ? _error.message : "Unknown _error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }

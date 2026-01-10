@@ -123,4 +123,4 @@ async function main() {
   }, 5 * 60 * 1000); // Every 5 minutes
 }
 
-main().catch(_e => log('Fatal _error: ' + _e.message)); 
+main().catch(_e => log('Fatal error: ' + _e.message)); 

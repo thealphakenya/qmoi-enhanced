@@ -5,7 +5,7 @@
 import { NextResponse } from "next/server";
 
 // Conditionally import Prisma
-let prisma: unknown = null;
+let prisma: any = null;
 let prismaInitialized = false;
 
 async function getPrismaClient() {
@@ -37,7 +37,7 @@ export async function GET(_request: Request) {
 
     if (!isPrismaAvailable) {
       return NextResponse.json({
-        _error: "Database not configured",
+        error: "Database not configured",
         message: "Using mock data - database not configured",
       });
     }
@@ -55,14 +55,14 @@ export async function GET(_request: Request) {
         return await getStatus();
       default:
         return NextResponse.json(
-          { _error: "Invalid endpoint" },
+          { error: "Invalid endpoint" },
           { status: 400 }
         );
     }
-  } catch (_error) {
-    (console as any)._error("QVillage API _error:", _error);
+  } catch (error) {
+    (console as any).error("QVillage API error:", error);
     return NextResponse.json(
-      { _error: "Internal server _error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -84,14 +84,14 @@ export async function POST(_request: Request) {
         return await performAnalysis(body);
       default:
         return NextResponse.json(
-          { _error: "Invalid endpoint" },
+          { error: "Invalid endpoint" },
           { status: 400 }
         );
     }
-  } catch (_error) {
-    (console as any)._error("QVillage API _error:", _error);
+  } catch (error) {
+    (console as any).error("QVillage API error:", error);
     return NextResponse.json(
-      { _error: "Internal server _error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -111,7 +111,7 @@ async function getPapers(_params: URLSearchParams) {
   // Enhanced ranking with QMOI AI
   const rankedPapers = await rankPapersWithQMOI(
     allPapers,
-    _params.get("_query") || ""
+    _params.get("query") || ""
   );
 
   return NextResponse.json({
@@ -125,11 +125,11 @@ async function getPapers(_params: URLSearchParams) {
 
 async function getKnowledgeBase(_params: URLSearchParams) {
   // Parallel KB search with semantic understanding
-  const _query = _params.get("_query") || "";
+  const query = _params.get("query") || "";
   const tags = _params.get("tags")?.split(",") || [];
 
   const [semanticResults, tagResults, recentResults] = await Promise.all([
-    performSemanticSearch(_query),
+    performSemanticSearch(query),
     searchByTags(tags),
     getRecentEntries(),
   ]);
@@ -208,14 +208,14 @@ async function getStatus() {
   });
 }
 
-async function performSearch(body: unknown) {
-  const { _query, type, filters } = body;
+async function performSearch(body: any) {
+  const { query, type, filters } = body;
 
   // Parallel search across all QVillage components
   const [paperResults, kbResults, discussionResults] = await Promise.all([
-    searchPapers(_query, filters),
-    searchKnowledgeBase(_query, filters),
-    searchDiscussions(_query, filters),
+    searchPapers(query, filters),
+    searchKnowledgeBase(query, filters),
+    searchDiscussions(query, filters),
   ]);
 
   // Enhanced result ranking with QMOI AI
@@ -225,7 +225,7 @@ async function performSearch(body: unknown) {
       kb: kbResults,
       discussions: discussionResults,
     },
-    _query
+    query
   );
 
   return NextResponse.json({
@@ -238,7 +238,7 @@ async function performSearch(body: unknown) {
   });
 }
 
-async function performSync(body: unknown) {
+async function performSync(body: any) {
   const { target, direction } = body;
 
   // Parallel sync operations
@@ -267,7 +267,7 @@ async function performSync(body: unknown) {
   });
 }
 
-async function performAnalysis(body: unknown) {
+async function performAnalysis(body: any) {
   const { content, type, _options } = body;
 
   // Parallel analysis with multiple AI models
@@ -296,22 +296,22 @@ async function performAnalysis(body: unknown) {
 // Helper functions for parallel processing
 async function fetchArxivPapers(_params: URLSearchParams) {
   try {
-    const _query = _params.get("_query") || "artificial intelligence";
+    const query = _params.get("query") || "artificial intelligence";
     const maxResults = parseInt(_params.get("limit") || "10");
 
     // Real arXiv API call
-    const _response = await fetch(
-      `http://export.arxiv.org/api/_query?search_query=all:${encodeURIComponent(
-        _query
+    const response = await fetch(
+      `http://export.arxiv.org/api/query?search_query=all:${encodeURIComponent(
+        query
       )}&start=0&max_results=${maxResults}&sortBy=submittedDate&sortOrder=descending`
     );
 
-    if (!_response.ok) {
+    if (!response.ok) {
       console.warn("arXiv API unavailable, returning empty results");
       return [];
     }
 
-    const xmlText = await _response.text();
+    const xmlText = await response.text();
     const papers = parseArxivXML(xmlText);
 
     return papers.map((paper) => ({
@@ -319,32 +319,32 @@ async function fetchArxivPapers(_params: URLSearchParams) {
       source: "arxiv",
       relevanceScore: Math.random() * 0.3 + 0.7, // Enhanced scoring
     }));
-  } catch (_error) {
-    (console as any)._error("Error fetching arXiv papers:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching arXiv papers:", error);
     return [];
   }
 }
 
 async function fetchHuggingFacePapers(_params: URLSearchParams) {
   try {
-    const _query = _params.get("_query") || "machine learning";
+    const query = _params.get("query") || "machine learning";
     const maxResults = parseInt(_params.get("limit") || "10");
 
     // Real Hugging Face Hub API call
-    const _response = await fetch(
+    const response = await fetch(
       `https://huggingface.co/api/models?search=${encodeURIComponent(
-        _query
+        query
       )}&limit=${maxResults}&sort=downloads&direction=-1`
     );
 
-    if (!_response.ok) {
+    if (!response.ok) {
       console.warn("Hugging Face API unavailable, returning empty results");
       return [];
     }
 
-    const models = await _response.json();
+    const models = await response.json();
 
-    return models.map((model: unknown) => ({
+    return models.map((model: any) => ({
       id: `hf-${model.id}`,
       title: model.id,
       authors: [model.author],
@@ -357,8 +357,8 @@ async function fetchHuggingFacePapers(_params: URLSearchParams) {
       downloads: model.downloads,
       likes: model.likes,
     }));
-  } catch (_error) {
-    (console as any)._error("Error fetching Hugging Face papers:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching Hugging Face papers:", error);
     return [];
   }
 }
@@ -396,7 +396,7 @@ async function fetchLocalPapers(_params: URLSearchParams) {
   ];
 }
 
-async function rankPapersWithQMOI(papers: unknown[], _query: string) {
+async function rankPapersWithQMOI(papers: any[], query: string) {
   // QMOI-enhanced paper ranking
   return papers.sort((a, b) => b.relevanceScore - a.relevanceScore);
 }
@@ -481,7 +481,7 @@ async function fetchUserDiscussions(user?: string | null) {
   ];
 }
 
-function deduplicateDiscussions(discussions: unknown[]) {
+function deduplicateDiscussions(discussions: any[]) {
   // Remove duplicates based on ID
   const seen = new Set();
   return discussions.filter((discussion) => {
@@ -564,17 +564,17 @@ async function checkIntegrationsStatus() {
       }
     );
     integrations.hf_integration = hfResponse.ok;
-  } catch (_error) {
+  } catch (error) {
     integrations.hf_integration = false;
   }
 
   // Check arXiv API
   try {
     const arxivResponse = await fetch(
-      "http://export.arxiv.org/api/_query?search_query=test&start=0&max_results=1"
+      "http://export.arxiv.org/api/query?search_query=test&start=0&max_results=1"
     );
     integrations.arxiv_api = arxivResponse.ok;
-  } catch (_error) {
+  } catch (error) {
     integrations.arxiv_api = false;
   }
 
@@ -603,12 +603,12 @@ async function checkPerformanceStatus() {
   };
 }
 
-async function searchPapers(_query: string, filters: unknown) {
+async function searchPapers(query: string, filters: any) {
   // Real paper search with parallel API calls
   const [arxivResults, hfResults, localResults] = await Promise.all([
-    fetchArxivPapers(new URLSearchParams({ _query, limit: "20" })),
-    fetchHuggingFacePapers(new URLSearchParams({ _query, limit: "20" })),
-    fetchLocalPapers(new URLSearchParams({ _query, limit: "20" })),
+    fetchArxivPapers(new URLSearchParams({ query, limit: "20" })),
+    fetchHuggingFacePapers(new URLSearchParams({ query, limit: "20" })),
+    fetchLocalPapers(new URLSearchParams({ query, limit: "20" })),
   ]);
 
   const allPapers = [...arxivResults, ...hfResults, ...localResults];
@@ -638,10 +638,10 @@ async function searchPapers(_query: string, filters: unknown) {
   return filteredPapers;
 }
 
-async function searchKnowledgeBase(_query: string, filters: unknown) {
+async function searchKnowledgeBase(query: string, filters: any) {
   // Real knowledge base search with parallel processing
   const [semanticResults, tagResults, recentResults] = await Promise.all([
-    performSemanticSearch(_query),
+    performSemanticSearch(query),
     filters?.tags ? searchByTags(filters.tags) : Promise.resolve([]),
     getRecentEntries(),
   ]);
@@ -649,15 +649,15 @@ async function searchKnowledgeBase(_query: string, filters: unknown) {
   return mergeAndRankKBResults(semanticResults, tagResults, recentResults);
 }
 
-async function searchDiscussions(_query: string, filters: unknown) {
+async function searchDiscussions(query: string, filters: any) {
   try {
     // Real discussion search using database
     const discussions = await prisma.discussion.findMany({
       where: {
         OR: [
-          { title: { contains: _query, mode: "insensitive" } },
-          { content: { contains: _query, mode: "insensitive" } },
-          { tags: { hasSome: [_query] } },
+          { title: { contains: query, mode: "insensitive" } },
+          { content: { contains: query, mode: "insensitive" } },
+          { tags: { hasSome: [query] } },
         ],
       },
       include: {
@@ -675,7 +675,7 @@ async function searchDiscussions(_query: string, filters: unknown) {
       take: 20,
     });
 
-    return discussions.map((disc: unknown) => ({
+    return discussions.map((disc: any) => ({
       id: disc.id,
       title: disc.title,
       content: disc.content,
@@ -685,26 +685,26 @@ async function searchDiscussions(_query: string, filters: unknown) {
       tags: disc.tags,
       relevanceScore: disc.relevanceScore,
     }));
-  } catch (_error) {
-    (console as any)._error("Error searching discussions:", _error);
+  } catch (error) {
+    (console as any).error("Error searching discussions:", error);
     return [];
   }
 }
 
-async function rankSearchResultsWithQMOI(results: unknown, _query: string) {
+async function rankSearchResultsWithQMOI(results: any, query: string) {
   // Real ranking with QMOI AI - combine and rank all results
   const allResults = [
-    ...results.papers.map((p: unknown) => ({
+    ...results.papers.map((p: any) => ({
       ...p,
       type: "paper",
       source: "arxiv",
     })),
-    ...results.kb.map((k: unknown) => ({
+    ...results.kb.map((k: any) => ({
       ...k,
       type: "kb",
       source: "knowledge_base",
     })),
-    ...results.discussions.map((d: unknown) => ({
+    ...results.discussions.map((d: any) => ({
       ...d,
       type: "discussion",
       source: "community",
@@ -715,15 +715,15 @@ async function rankSearchResultsWithQMOI(results: unknown, _query: string) {
   const ranked = allResults.map((item) => {
     let score = item.relevanceScore || 0.5;
 
-    // Boost score based on content relevance to _query
-    if (item.title?.toLowerCase().includes(_query.toLowerCase())) score += 0.3;
-    if (item.content?.toLowerCase().includes(_query.toLowerCase()))
+    // Boost score based on content relevance to query
+    if (item.title?.toLowerCase().includes(query.toLowerCase())) score += 0.3;
+    if (item.content?.toLowerCase().includes(query.toLowerCase()))
       score += 0.2;
-    if (item.abstract?.toLowerCase().includes(_query.toLowerCase()))
+    if (item.abstract?.toLowerCase().includes(query.toLowerCase()))
       score += 0.25;
     if (
       item.tags?.some((tag: string) =>
-        tag.toLowerCase().includes(_query.toLowerCase())
+        tag.toLowerCase().includes(query.toLowerCase())
       )
     )
       score += 0.15;
@@ -798,12 +798,12 @@ async function syncWithQMOI(direction: string) {
       status: "success",
       data: qmoiData,
     };
-  } catch (_error) {
-    (console as any)._error("Error syncing with QMOI:", _error);
+  } catch (error) {
+    (console as any).error("Error syncing with QMOI:", error);
     return {
       count: 0,
-      status: "_error",
-      _error: _error instanceof Error ? _error.message : String(_error),
+      status: "error",
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -848,20 +848,20 @@ async function syncLocalData(direction: string) {
       status: "success",
       data: localData,
     };
-  } catch (_error) {
-    (console as any)._error("Error syncing local data:", _error);
+  } catch (error) {
+    (console as any).error("Error syncing local data:", error);
     return {
       count: 0,
-      status: "_error",
-      _error: _error instanceof Error ? _error.message : String(_error),
+      status: "error",
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
 
 async function analyzeWithQMOI(
-  content: unknown,
+  content: any,
   type: string,
-  _options: unknown
+  _options: any
 ) {
   try {
     // Real QMOI analysis - superior AI processing
@@ -894,7 +894,7 @@ async function analyzeWithQMOI(
           "Scalable architecture design",
         ],
         recommendations: [
-          "Add comprehensive _error handling",
+          "Add comprehensive error handling",
           "Implement performance monitoring",
           "Enhance security measures",
         ],
@@ -923,20 +923,20 @@ async function analyzeWithQMOI(
       processing_method: "qmoi_superior_analysis",
       analysis_quality: "excellent",
     };
-  } catch (_error) {
-    (console as any)._error("Error in QMOI analysis:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI analysis:", error);
     return {
       insights: [],
       confidence: 0.5,
-      _error: _error instanceof Error ? _error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
 
 async function analyzeWithHuggingFace(
-  content: unknown,
+  content: any,
   type: string,
-  _options: unknown
+  _options: any
 ) {
   try {
     // Real Hugging Face API integration for analysis
@@ -944,7 +944,7 @@ async function analyzeWithHuggingFace(
 
     if (type === "text") {
       // Use a text analysis model from Hugging Face
-      const _response = await fetch(
+      const response = await fetch(
         "https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english",
         {
           method: "POST",
@@ -958,12 +958,12 @@ async function analyzeWithHuggingFace(
         }
       );
 
-      if (_response.ok) {
-        const result = await _response.json();
+      if (response.ok) {
+        const result = await response.json();
         insights.push({
           type: "sentiment_analysis",
           confidence: 0.85,
-          findings: result.map((r: unknown) => ({
+          findings: result.map((r: any) => ({
             label: r.label,
             score: r.score,
           })),
@@ -988,20 +988,20 @@ async function analyzeWithHuggingFace(
       processing_method: "huggingface_model_analysis",
       models_used: ["distilbert-base-uncased-finetuned-sst-2-english"],
     };
-  } catch (_error) {
-    (console as any)._error("Error in Hugging Face analysis:", _error);
+  } catch (error) {
+    (console as any).error("Error in Hugging Face analysis:", error);
     return {
       insights: [],
       confidence: 0.5,
-      _error: _error instanceof Error ? _error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
 
 async function analyzeLocally(
-  content: unknown,
+  content: any,
   type: string,
-  _options: unknown
+  _options: any
 ) {
   try {
     // Real local analysis processing
@@ -1073,20 +1073,20 @@ async function analyzeLocally(
       processing_method: "local_computational_analysis",
       analysis_quality: "good",
     };
-  } catch (_error) {
-    (console as any)._error("Error in local analysis:", _error);
+  } catch (error) {
+    (console as any).error("Error in local analysis:", error);
     return {
       insights: [],
       confidence: 0.5,
-      _error: _error instanceof Error ? _error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
 
 async function synthesizeAnalysisResults(
-  qmoi: unknown,
-  hf: unknown,
-  local: unknown
+  qmoi: any,
+  hf: any,
+  local: any
 ) {
   return {
     superior_insights: qmoi.insights,
@@ -1097,7 +1097,7 @@ async function synthesizeAnalysisResults(
 
 // XML parsing function for arXiv API
 function parseArxivXML(xmlText: string) {
-  const papers: unknown[] = [];
+  const papers: any[] = [];
   try {
     // Simple XML parsing - in production, use a proper XML parser
     const entryRegex = /<entry>(.*?)<\/entry>/gs;
@@ -1144,24 +1144,24 @@ function parseArxivXML(xmlText: string) {
         });
       }
     }
-  } catch (_error) {
-    (console as any)._error("Error parsing arXiv XML:", _error);
+  } catch (error) {
+    (console as any).error("Error parsing arXiv XML:", error);
   }
 
   return papers;
 }
 
 // Enhanced semantic search implementation
-async function performSemanticSearch(_query: string) {
+async function performSemanticSearch(query: string) {
   try {
     // Real semantic search using database with text matching
     // TODO: Implement vector embeddings for true semantic search
     const results = await prisma.knowledgeBaseEntry.findMany({
       where: {
         OR: [
-          { title: { contains: _query, mode: "insensitive" } },
-          { content: { contains: _query, mode: "insensitive" } },
-          { tags: { hasSome: [_query] } },
+          { title: { contains: query, mode: "insensitive" } },
+          { content: { contains: query, mode: "insensitive" } },
+          { tags: { hasSome: [query] } },
         ],
       },
       include: {
@@ -1178,15 +1178,15 @@ async function performSemanticSearch(_query: string) {
       take: 20,
     });
 
-    return results.map((entry: unknown) => ({
+    return results.map((entry: any) => ({
       id: entry.id,
       title: entry.title,
       content: entry.content,
       tags: entry.tags,
       relevanceScore: entry.relevanceScore,
     }));
-  } catch (_error) {
-    (console as any)._error("Error performing semantic search:", _error);
+  } catch (error) {
+    (console as any).error("Error performing semantic search:", error);
     return [];
   }
 }
@@ -1214,15 +1214,15 @@ async function searchByTags(tags: string[]) {
       take: 20,
     });
 
-    return results.map((entry: unknown) => ({
+    return results.map((entry: any) => ({
       id: entry.id,
       title: entry.title,
       content: entry.content,
       tags: entry.tags,
       relevanceScore: entry.relevanceScore,
     }));
-  } catch (_error) {
-    (console as any)._error("Error searching by tags:", _error);
+  } catch (error) {
+    (console as any).error("Error searching by tags:", error);
     return [];
   }
 }
@@ -1245,23 +1245,23 @@ async function getRecentEntries() {
       take: 10,
     });
 
-    return entries.map((entry: unknown) => ({
+    return entries.map((entry: any) => ({
       id: entry.id,
       title: entry.title,
       content: entry.content,
       tags: entry.tags,
       relevanceScore: entry.relevanceScore,
     }));
-  } catch (_error) {
-    (console as any)._error("Error fetching recent entries:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching recent entries:", error);
     return [];
   }
 }
 
 function mergeAndRankKBResults(
-  semantic: unknown[],
-  tags: unknown[],
-  recent: unknown[]
+  semantic: any[],
+  tags: any[],
+  recent: any[]
 ) {
   const all = [...semantic, ...tags, ...recent];
   // Remove duplicates and rank by relevance

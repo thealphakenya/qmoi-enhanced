@@ -32,7 +32,7 @@ output.on("close", () => {
   });
 });
 
-archive.on("_error", (_err) => {
+archive.on("error", (_err) => {
   throw _err;
 });
 archive.pipe(output);

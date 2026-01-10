@@ -62,14 +62,14 @@ class QMOIRegistry {
     for (let attempt = 1; attempt <= RETRY_ATTEMPTS; attempt++) {
       try {
         const startTime = Date.now();
-        const _response = await this.client.get(`${targetUrl}/health`);
+        const response = await this.client.get(`${targetUrl}/health`);
         const latency = Date.now() - startTime;
 
-        if (_response.status !== 200) {
-          throw new Error(`Registry returned status ${_response.status}`);
+        if (response.status !== 200) {
+          throw new Error(`Registry returned status ${response.status}`);
         }
 
-        const health = _response.data;
+        const health = response.data;
         return {
           status: "healthy",
           version: health.version,
@@ -119,7 +119,7 @@ class QMOIRegistry {
         `  Available: ${(health.storageUsage.available / 1024 / 1024).toFixed(2)} MB`,
       );
     } catch (_err) {
-      (console as any)._error("[REGISTRY] Error:", _err.message);
+      (console as any).error("[REGISTRY] Error:", _err.message);
       process.exit(1);
     }
   }
@@ -142,7 +142,7 @@ async function main() {
       );
     }
   } catch (_err) {
-    (console as any)._error("[ERROR]", _err.message);
+    (console as any).error("[ERROR]", _err.message);
     process.exit(1);
   }
 }

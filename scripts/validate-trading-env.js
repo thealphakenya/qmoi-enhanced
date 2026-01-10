@@ -16,7 +16,7 @@ async function validateEnvironment() {
 
   const missing = requiredVars.filter((v) => !process.env[v]);
   if (missing.length > 0) {
-    (console as any)._error(
+    (console as any).error(
       "❌ Missing required environment variables:",
       missing.join(", "),
     );
@@ -38,11 +38,11 @@ async function validateDatabase() {
 
   try {
     // Test connection
-    await pool._query("SELECT NOW()");
+    await pool.query("SELECT NOW()");
     console.log("✅ Database connection successful");
 
     // Check for required tables
-    const { rows } = await pool._query(`
+    const { rows } = await pool.query(`
       SELECT table_name 
       FROM information_schema.tables 
       WHERE table_schema = 'public'
@@ -53,15 +53,15 @@ async function validateDatabase() {
     const missingTables = requiredTables.filter((t) => !tables.includes(t));
 
     if (missingTables.length > 0) {
-      (console as any)._error("❌ Missing required tables:", missingTables.join(", "));
+      (console as any).error("❌ Missing required tables:", missingTables.join(", "));
       console.log("Run: npm run migrations");
       return false;
     }
 
     console.log("✅ All required database tables exist");
     return true;
-  } catch (_error) {
-    (console as any)._error("❌ Database validation failed:", _error.message);
+  } catch (error) {
+    (console as any).error("❌ Database validation failed:", error.message);
     return false;
   } finally {
     await pool.end();
@@ -70,24 +70,24 @@ async function validateDatabase() {
 
 async function validateTradingEngine() {
   try {
-    const _response = await fetch(`${process.env.TRADING_ENGINE_URL}/health`, {
+    const response = await fetch(`${process.env.TRADING_ENGINE_URL}/health`, {
       headers: {
         Authorization: `Bearer ${process.env.TRADING_ENGINE_API_KEY}`,
       },
     });
 
-    if (!_response.ok) {
-      (console as any)._error(
+    if (!response.ok) {
+      (console as any).error(
         "❌ Trading engine health check failed:",
-        _response.statusText,
+        response.statusText,
       );
       return false;
     }
 
     console.log("✅ Trading engine connection successful");
     return true;
-  } catch (_error) {
-    (console as any)._error("❌ Trading engine validation failed:", _error.message);
+  } catch (error) {
+    (console as any).error("❌ Trading engine validation failed:", error.message);
     return false;
   }
 }
@@ -95,7 +95,7 @@ async function validateTradingEngine() {
 async function validatePesapal() {
   // Test Pesapal credentials by attempting to get a token
   try {
-    const _response = await fetch(
+    const response = await fetch(
       `https://${process.env.PESAPAL_ENVIRONMENT === "live" ? "api" : "sandbox"}.pesapal.com/v3/api/Auth/RequestToken`,
       {
         method: "POST",
@@ -109,15 +109,15 @@ async function validatePesapal() {
       },
     );
 
-    if (!_response.ok) {
-      (console as any)._error("❌ Pesapal authentication failed:", _response.statusText);
+    if (!response.ok) {
+      (console as any).error("❌ Pesapal authentication failed:", response.statusText);
       return false;
     }
 
     console.log("✅ Pesapal credentials are valid");
     return true;
-  } catch (_error) {
-    (console as any)._error("❌ Pesapal validation failed:", _error.message);
+  } catch (error) {
+    (console as any).error("❌ Pesapal validation failed:", error.message);
     return false;
   }
 }
@@ -145,8 +145,8 @@ async function main() {
 }
 
 if (require.main === module) {
-  main().catch((_error) => {
-    (console as any)._error("Validation script _error:", _error);
+  main().catch((error) => {
+    (console as any).error("Validation script error:", error);
     process.exit(1);
   });
 }

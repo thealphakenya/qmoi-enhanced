@@ -32,16 +32,16 @@ describe("useQmoiKernel", () => {
     expect(result.current.status.lastCheck).toBe("2024-06-01T12:00:00Z");
     expect(result.current.status.mutationCount).toBe(5);
     expect(result.current.status.logs).toEqual(["Log 1", "Log 2"]);
-    expect(result.current._error).toBeNull();
+    expect(result.current.error).toBeNull();
   });
 
-  it("handles fetch status _error", async () => {
+  it("handles fetch status error", async () => {
     mockFetch.mockResolvedValueOnce({ ok: false });
     const { result } = renderHook(() => useQmoiKernel());
     await act(async () => {
       await result.current.fetchStatus();
     });
-    expect(result.current._error).toMatch(/Failed to fetch status/);
+    expect(result.current.error).toMatch(/Failed to fetch status/);
   });
 
   it("runs action and updates status", async () => {
@@ -70,13 +70,13 @@ describe("useQmoiKernel", () => {
     expect(result.current.status.logs).toEqual(["Log 3"]);
   });
 
-  it("handles action _error", async () => {
+  it("handles action error", async () => {
     mockFetch.mockResolvedValueOnce({ ok: false });
     const { result } = renderHook(() => useQmoiKernel());
     await act(async () => {
       await result.current.runAction("qfix");
     });
     expect(result.current.lastAction?.success).toBe(false);
-    expect(result.current._error).toMatch(/Failed to run qfix/);
+    expect(result.current.error).toMatch(/Failed to run qfix/);
   });
 });

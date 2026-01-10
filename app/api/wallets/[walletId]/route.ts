@@ -10,7 +10,7 @@ export async function GET(
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -18,30 +18,30 @@ export async function GET(
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const { walletId } = await _params;
     const wallet = await db.walletService.getById(walletId);
 
     if (!wallet) {
-      return NextResponse.json({ _error: "Wallet not found" }, { status: 404 });
+      return NextResponse.json({ error: "Wallet not found" }, { status: 404 });
     }
 
     // Verify ownership
     if (wallet.userId !== decoded.userId) {
-      return NextResponse.json({ _error: "Forbidden" }, { status: 403 });
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
     return NextResponse.json(wallet);
-  } catch (_error) {
-    console._error("GET /api/wallets/:walletId _error:", _error);
+  } catch (error) {
+    console.error("GET /api/wallets/:walletId error:", error);
     return NextResponse.json(
-      { _error: "Internal server _error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -55,7 +55,7 @@ export async function PUT(
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -63,32 +63,32 @@ export async function PUT(
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const { walletId } = await _params;
     const wallet = await db.walletService.getById(walletId);
 
     if (!wallet) {
-      return NextResponse.json({ _error: "Wallet not found" }, { status: 404 });
+      return NextResponse.json({ error: "Wallet not found" }, { status: 404 });
     }
 
     if (wallet.userId !== decoded.userId) {
-      return NextResponse.json({ _error: "Forbidden" }, { status: 403 });
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
     const body = (await _request.json()) as { name?: string };
 
     // Update wallet (Prisma update would go here)
     return NextResponse.json({ ...wallet, name: body.name || wallet.name });
-  } catch (_error) {
-    console._error("PUT /api/wallets/:walletId _error:", _error);
+  } catch (error) {
+    console.error("PUT /api/wallets/:walletId error:", error);
     return NextResponse.json(
-      { _error: "Internal server _error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -102,7 +102,7 @@ export async function DELETE(
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -110,38 +110,38 @@ export async function DELETE(
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const { walletId } = await _params;
     const wallet = await db.walletService.getById(walletId);
 
     if (!wallet) {
-      return NextResponse.json({ _error: "Wallet not found" }, { status: 404 });
+      return NextResponse.json({ error: "Wallet not found" }, { status: 404 });
     }
 
     if (wallet.userId !== decoded.userId) {
-      return NextResponse.json({ _error: "Forbidden" }, { status: 403 });
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
     // Check if wallet has balance
     if (wallet.balance > 0) {
       return NextResponse.json(
-        { _error: "Cannot delete wallet with balance" },
+        { error: "Cannot delete wallet with balance" },
         { status: 400 }
       );
     }
 
     // Delete wallet (Prisma delete would go here)
     return NextResponse.json({ success: true });
-  } catch (_error) {
-    console._error("DELETE /api/wallets/:walletId _error:", _error);
+  } catch (error) {
+    console.error("DELETE /api/wallets/:walletId error:", error);
     return NextResponse.json(
-      { _error: "Internal server _error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }

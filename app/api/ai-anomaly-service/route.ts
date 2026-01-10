@@ -15,15 +15,15 @@ interface AnomalyError {
 interface AnomalyResponse {
   errors?: AnomalyError[];
   status?: string;
-  _error?: string;
+  error?: string;
 }
 
 export async function GET(_request: NextRequest) {
   const apiAuth = requireApiKey(_request.headers);
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
-    const _r = apiAuth._response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    const _r = apiAuth.response;
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -31,11 +31,11 @@ export async function GET(_request: NextRequest) {
   const searchParams = _request.nextUrl.searchParams;
   if (searchParams.get("errors")) {
     try {
-      // Proxy to anomaly service for _error list
+      // Proxy to anomaly service for error list
       const result = await fetch("http://localhost:5001/analytics", {
         method: "GET",
       }).then((r) => r.json());
-      // Simulate _error list for [PRODUCTION IMPLEMENTATION REQUIRED]
+      // Simulate error list for [PRODUCTION IMPLEMENTATION REQUIRED]
       const errors: AnomalyError[] =
         result.top_ips && result.top_ips.length
           ? result.top_ips.map(([ip, count]: [string, number]) => ({
@@ -44,25 +44,25 @@ export async function GET(_request: NextRequest) {
             }))
           : [];
       return NextResponse.json({ errors });
-    } catch (_e: unknown) {
+    } catch (_e: any) {
       return NextResponse.json(
         {
-          _error: _e instanceof Error ? _e.message : String(_e),
+          error: _e instanceof Error ? _e.message : String(_e),
         },
         { status: 500 }
       );
     }
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   const apiAuth = requireApiKey(_request.headers);
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
-    const _r = apiAuth._response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    const _r = apiAuth.response;
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -73,15 +73,15 @@ export async function POST(_request: NextRequest) {
       // Simulate auto-fix (could trigger a script, restart service, etc.)
       // In production, implement real fix logic
       return NextResponse.json({ status: "fixed" });
-    } catch (_e: unknown) {
+    } catch (_e: any) {
       return NextResponse.json(
         {
-          _error: _e instanceof Error ? _e.message : String(_e),
+          error: _e instanceof Error ? _e.message : String(_e),
         },
         { status: 500 }
       );
     }
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }

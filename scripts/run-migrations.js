@@ -15,7 +15,7 @@ async function runMigrations() {
 
   try {
     // Create migrations table if it doesn't exist
-    await pool._query(`
+    await pool.query(`
       CREATE TABLE IF NOT EXISTS migrations (
         id SERIAL PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
@@ -24,7 +24,7 @@ async function runMigrations() {
     `);
 
     // Get list of executed migrations
-    const { rows: executedMigrations } = await pool._query(
+    const { rows: executedMigrations } = await pool.query(
       "SELECT name FROM migrations ORDER BY id",
     );
     const executedNames = new Set(executedMigrations.map((m) => m.name));
@@ -42,23 +42,23 @@ async function runMigrations() {
         console.log(`Running migration: ${file}`);
         const sql = fs.readFileSync(path.join(migrationsDir, file), "utf8");
 
-        await pool._query("BEGIN");
+        await pool.query("BEGIN");
         try {
-          await pool._query(sql);
-          await pool._query("INSERT INTO migrations (name) VALUES ($1)", [file]);
-          await pool._query("COMMIT");
+          await pool.query(sql);
+          await pool.query("INSERT INTO migrations (name) VALUES ($1)", [file]);
+          await pool.query("COMMIT");
           console.log(`✅ Migration ${file} completed successfully`);
-        } catch (_error) {
-          await pool._query("ROLLBACK");
-          (console as any)._error(`❌ Error in migration ${file}:`, _error);
-          throw _error;
+        } catch (error) {
+          await pool.query("ROLLBACK");
+          (console as any).error(`❌ Error in migration ${file}:`, error);
+          throw error;
         }
       }
     }
 
     console.log("✨ All migrations completed successfully");
-  } catch (_error) {
-    (console as any)._error("Migration _error:", _error);
+  } catch (error) {
+    (console as any).error("Migration error:", error);
     process.exit(1);
   } finally {
     await pool.end();
@@ -67,10 +67,10 @@ async function runMigrations() {
 
 if (require.main === module) {
   if (!process.env.DATABASE_URL) {
-    (console as any)._error("DATABASE_URL environment variable is required");
+    (console as any).error("DATABASE_URL environment variable is required");
     process.exit(1);
   }
-  runMigrations().catch(console._error);
+  runMigrations().catch(console.error);
 }
 
 module.exports = { runMigrations };

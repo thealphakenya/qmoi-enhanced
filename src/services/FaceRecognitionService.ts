@@ -50,7 +50,7 @@ interface UserProfile {
   id: string;
   name: string;
   faceData: FaceData[];
-  preferences: unknown;
+  preferences: any;
   lastSeen: Date;
   isActive: boolean;
 }
@@ -59,7 +59,7 @@ type Timeout = ReturnType<typeof setTimeout>;
 
 export class FaceRecognitionService {
   private static instance: FaceRecognitionService;
-  private eventEmitter: unknown;
+  private eventEmitter: any;
   private config: FaceConfig;
   private videoElement: HTMLVideoElement | null = null;
   private canvasElement: HTMLCanvasElement | null = null;
@@ -68,7 +68,7 @@ export class FaceRecognitionService {
   private detectionInterval: Timeout | null = null;
   private knownFaces: Map<string, UserProfile> = new Map();
   private currentFaces: FaceData[] = [];
-  private faceApi: unknown; // face-api.js or similar
+  private faceApi: any; // face-api.js or similar
 
   private constructor() {
     this.eventEmitter = new EventEmitter();
@@ -103,16 +103,16 @@ export class FaceRecognitionService {
       // [PRODUCTION IMPLEMENTATION REQUIRED] initialization for now
       this.faceApi = {
         loadModels: async () => true,
-        detectFaces: async (input: unknown) => [],
-        detectEmotions: async (face: unknown) => ({}),
-        estimateAge: async (face: unknown) => 25,
-        estimateGender: async (face: unknown) => "unknown",
+        detectFaces: async (input: any) => [],
+        detectEmotions: async (face: any) => ({}),
+        estimateAge: async (face: any) => 25,
+        estimateGender: async (face: any) => "unknown",
       };
 
       await (this.faceApi as any).loadModels();
       console.log("✅ Face recognition API initialized");
-    } catch (_error) {
-      console._error("Error initializing face recognition API:", _error);
+    } catch (error) {
+      console.error("Error initializing face recognition API:", error);
     }
   }
 
@@ -159,8 +159,8 @@ export class FaceRecognitionService {
 
       try {
         await this.detectFaces();
-      } catch (_error) {
-        console._error("Error in face detection loop:", _error);
+      } catch (error) {
+        console.error("Error in face detection loop:", error);
       }
     }, this.config.detectionInterval);
   }
@@ -175,7 +175,7 @@ export class FaceRecognitionService {
 
     // Detect faces
     const faceApiSafe = this.faceApi as {
-      detectFaces?: (el: unknown) => Promise<any[]>;
+      detectFaces?: (el: any) => Promise<any[]>;
     } | null;
     const detections = await (faceApiSafe?.detectFaces?.(this.canvasElement) ??
       []);
@@ -211,7 +211,7 @@ export class FaceRecognitionService {
   }
 
   private async processFaceDetection(
-    detection: unknown
+    detection: any
   ): Promise<FaceData | null> {
     try {
       const faceData: FaceData = {
@@ -232,13 +232,13 @@ export class FaceRecognitionService {
       };
 
       return faceData;
-    } catch (_error) {
-      console._error("Error processing face detection:", _error);
+    } catch (error) {
+      console.error("Error processing face detection:", error);
       return null;
     }
   }
 
-  private async detectEmotions(face: unknown): Promise<EmotionData> {
+  private async detectEmotions(face: any): Promise<EmotionData> {
     if (!this.config.enableEmotionDetection) {
       return {
         happy: 0,
@@ -253,11 +253,11 @@ export class FaceRecognitionService {
     }
 
     try {
-      const emotions: unknown = await (this.faceApi as any).detectEmotions(face);
+      const emotions: any = await (this.faceApi as any).detectEmotions(face);
 
       // Find dominant emotion
       const dominant = Object.entries(emotions as any).reduce(
-        (a: unknown, b: unknown) =>
+        (a: any, b: any) =>
           (emotions as any)[a[0]] > (emotions as any)[b[0]] ? a : b
       )[0];
 
@@ -265,8 +265,8 @@ export class FaceRecognitionService {
         ...(emotions as any),
         dominant,
       };
-    } catch (_error) {
-      console._error("Error detecting emotions:", _error);
+    } catch (error) {
+      console.error("Error detecting emotions:", error);
       return {
         happy: 0,
         sad: 0,
@@ -280,24 +280,24 @@ export class FaceRecognitionService {
     }
   }
 
-  private async estimateAge(face: unknown): Promise<number> {
+  private async estimateAge(face: any): Promise<number> {
     if (!this.config.enableAgeEstimation) return 0;
 
     try {
       return await (this.faceApi as any).estimateAge(face);
-    } catch (_error) {
-      console._error("Error estimating age:", _error);
+    } catch (error) {
+      console.error("Error estimating age:", error);
       return 0;
     }
   }
 
-  private async estimateGender(face: unknown): Promise<string> {
+  private async estimateGender(face: any): Promise<string> {
     if (!this.config.enableGenderDetection) return "unknown";
 
     try {
       return await (this.faceApi as any).estimateGender(face);
-    } catch (_error) {
-      console._error("Error estimating gender:", _error);
+    } catch (error) {
+      console.error("Error estimating gender:", error);
       return "unknown";
     }
   }
@@ -441,14 +441,14 @@ export class FaceRecognitionService {
     try {
       const savedFaces = localStorage.getItem("qmoi-known-faces");
       if (savedFaces) {
-        const facesData: unknown = JSON.parse(savedFaces);
+        const facesData: any = JSON.parse(savedFaces);
         for (const [userId, userData] of Object.entries(facesData as any)) {
           this.knownFaces.set(userId, userData as UserProfile);
         }
         console.log(`📚 Loaded ${this.knownFaces.size} known faces`);
       }
-    } catch (_error) {
-      console._error("Error loading known faces:", _error);
+    } catch (error) {
+      console.error("Error loading known faces:", error);
     }
   }
 
@@ -459,8 +459,8 @@ export class FaceRecognitionService {
         facesData[userId] = user;
       }
       localStorage.setItem("qmoi-known-faces", JSON.stringify(facesData));
-    } catch (_error) {
-      console._error("Error saving known faces:", _error);
+    } catch (error) {
+      console.error("Error saving known faces:", error);
     }
   }
 

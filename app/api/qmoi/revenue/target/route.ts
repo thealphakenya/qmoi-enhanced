@@ -17,9 +17,9 @@ export async function POST(_request: NextRequest) {
         ? authHeader.substring(7)
         : null;
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
-      const _r = apiAuth._response;
+      const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 }
       );
     }
@@ -29,13 +29,13 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !amount) {
       return NextResponse.json(
-        { _error: "Type and amount are required" },
+        { error: "Type and amount are required" },
         { status: 400 }
       );
     }
 
     const mod = await import("../../../../../lib/qmoi-revenue-engine");
-    const qmoiRevenueEngine: unknown =
+    const qmoiRevenueEngine: any =
       mod.qmoiRevenueEngine || mod.default || mod;
 
     // Enable master mode and execute command
@@ -50,10 +50,10 @@ export async function POST(_request: NextRequest) {
       : { success: false, message: "executeMasterCommand not implemented" };
 
     return NextResponse.json(result);
-  } catch (_error) {
-    (console as any)._error("Set target _error:", _error);
+  } catch (error) {
+    (console as any).error("Set target error:", error);
     return NextResponse.json(
-      { _error: "Failed to set target" },
+      { error: "Failed to set target" },
       { status: 500 }
     );
   }

@@ -112,7 +112,7 @@ async function offloadTest() {
 
 async function offloadErrorFix() {
   try {
-    log("Offloading _error fixing to cloud...");
+    log("Offloading error fixing to cloud...");
     await run("npm run qmoi:cloud:fix");
     log("Error fixing offloaded successfully");
     return true;
@@ -206,4 +206,4 @@ async function main() {
   }
 }
 
-main().catch((_e) => log("Fatal _error: " + _e.message));
+main().catch((_e) => log("Fatal error: " + _e.message));

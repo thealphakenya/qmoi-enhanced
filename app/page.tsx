@@ -10,7 +10,7 @@ interface User {
   name: string;
   email: string;
   role: string;
-  avatar?: unknown;
+  avatar?: any;
 }
 
 function MainPage() {
@@ -42,7 +42,7 @@ function MainPage() {
     checkAuth();
   }, []);
 
-  const handleLogin = (userData: unknown) => {
+  const handleLogin = (userData: any) => {
     const u = (userData as Partial<User>) || {};
     setCurrentUser({
       id: String(u.id || "1"),

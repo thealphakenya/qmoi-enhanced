@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 export default function SchedulePanel() {
   const [schedules, setSchedules] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [form, setForm] = useState({
     name: "",
     command: "",
@@ -24,7 +24,7 @@ export default function SchedulePanel() {
     })
       .then((r) => r.json())
       .then((data) => setSchedules((data && data.items) || []))
-      .catch((_err: unknown) => setError(_err?.message || String(_err)))
+      .catch((_err: any) => setError(_err?.message || String(_err)))
       .finally(() => setLoading(false));
   };
 
@@ -47,7 +47,7 @@ export default function SchedulePanel() {
         setForm({ name: "", command: "", cron: "", deviceId: "", notify: "" });
         setEditing(null);
       })
-      .catch((_err: unknown) => setError(_err?.message || String(_err)))
+      .catch((_err: any) => setError(_err?.message || String(_err)))
       .finally(() => setLoading(false));
   };
 
@@ -62,7 +62,7 @@ export default function SchedulePanel() {
       body: JSON.stringify({ id }),
     })
       .then(fetchSchedules)
-      .catch((_err: unknown) => setError(_err?.message || String(_err)))
+      .catch((_err: any) => setError(_err?.message || String(_err)))
       .finally(() => setLoading(false));
   };
 
@@ -77,14 +77,14 @@ export default function SchedulePanel() {
       body: JSON.stringify({ id }),
     })
       .then(fetchSchedules)
-      .catch((_err: unknown) => setError(_err?.message || String(_err)))
+      .catch((_err: any) => setError(_err?.message || String(_err)))
       .finally(() => setLoading(false));
   };
 
   return (
     <div className="p-4 bg-gray-900 rounded-lg shadow-lg">
       <h2 className="text-xl font-bold mb-4 text-cyan-400">Schedules</h2>
-      {_error && <div className="text-red-400 mb-2">{_error}</div>}
+      {error && <div className="text-red-400 mb-2">{error}</div>}
       <form
         className="mb-4 flex flex-wrap gap-2"
         onSubmit={(_e) => {
@@ -166,7 +166,7 @@ export default function SchedulePanel() {
             </tr>
           </thead>
           <tbody>
-            {schedules.map((job: unknown, i) => (
+            {schedules.map((job: any, i) => (
               <tr key={i}>
                 <td>{job.name}</td>
                 <td>{job.command}</td>

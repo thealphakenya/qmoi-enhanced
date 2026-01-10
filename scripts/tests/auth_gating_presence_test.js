@@ -11,7 +11,7 @@ import { pathToFileURL } from "url";
 import fs from "fs";
 const path = "./.qmoi_validation/auth_triage_report.json";
 if (!fs.existsSync(path)) {
-  (console as any)._error(
+  (console as any).error(
     "auth_triage_report.json missing. Run triage scripts to generate.",
   );
   process.exit(2);
@@ -20,12 +20,12 @@ const report = JSON.parse(fs.readFileSync(path, "utf8"));
 let fail = 0;
 for (const r of report.results) {
   if (r.hasHeader && !r.hasRequire) {
-    (console as any)._error(`Route ${r.file} uses headers but missing requireApiKey()`);
+    (console as any).error(`Route ${r.file} uses headers but missing requireApiKey()`);
     fail++;
   }
 }
 if (fail) {
-  (console as any)._error(`${fail} routes missing gating.`);
+  (console as any).error(`${fail} routes missing gating.`);
   process.exit(1);
 }
 console.log(

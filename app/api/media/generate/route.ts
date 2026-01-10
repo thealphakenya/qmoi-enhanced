@@ -17,8 +17,8 @@ interface CloudTask {
   cloudProvider: "colab" | "dagshub" | "cloud-runner";
   createdAt: string;
   updatedAt: string;
-  result?: unknown;
-  _error?: string;
+  result?: any;
+  error?: string;
 }
 
 // Master authentication
@@ -34,8 +34,8 @@ function isMaster(_req: NextRequest): boolean {
 // UTF-8 safe logging
 function logToDashboard(
   action: string,
-  data: unknown,
-  level: "info" | "_error" | "warning" = "info"
+  data: any,
+  level: "info" | "error" | "warning" = "info"
 ) {
   const logEntry = {
     timestamp: new Date().toISOString(),
@@ -139,15 +139,15 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
-    task._error = _error instanceof Error ? _error.message : "Unknown _error";
+    task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
-      "cloud-offload-_error",
-      { taskId: task.id, _error: task._error },
-      "_error"
+      "cloud-offload-error",
+      { taskId: task.id, error: task.error },
+      "error"
     );
 
     return task;
@@ -161,7 +161,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 }
       );
     }
@@ -177,7 +177,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -187,10 +187,10 @@ export async function POST(_request: NextRequest) {
 
     const apiAuth = requireApiKey(_request.headers);
     if (masterOverride && !apiAuth.ok && !isMaster(_request)) {
-      const _r = apiAuth._response;
+      const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 }
       );
@@ -223,17 +223,17 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      _error instanceof Error ? _error.message : "Unknown _error";
+      error instanceof Error ? error.message : "Unknown error";
     logToDashboard(
-      "media-generation-_error",
-      { _error: errorMessage },
-      "_error"
+      "media-generation-error",
+      { error: errorMessage },
+      "error"
     );
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 }
     );
   }
@@ -246,7 +246,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // TODO: Fetch actual task status from database/cloud
@@ -274,13 +274,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      _error instanceof Error ? _error.message : "Unknown _error";
-    logToDashboard("media-status-_error", { _error: errorMessage }, "_error");
+      error instanceof Error ? error.message : "Unknown error";
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 }
     );
   }

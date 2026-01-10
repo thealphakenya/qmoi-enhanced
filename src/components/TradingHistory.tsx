@@ -45,7 +45,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -60,7 +60,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
 
       const tradingManager = TradingManager.getInstance();
       const rawHistory = (await tradingManager.getTradingHistory()) as any[];
-      const history = rawHistory.map((trade: unknown) => ({
+      const history = rawHistory.map((trade: any) => ({
         ...trade,
         timestamp: new Date(trade?.timestamp),
       }));
@@ -141,9 +141,9 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
           </Box>
         </Box>
 
-        {_error && (
-          <Alert severity="_error" sx={{ mb: 2 }}>
-            {_error}
+        {error && (
+          <Alert severity="error" sx={{ mb: 2 }}>
+            {error}
           </Alert>
         )}
 
@@ -171,7 +171,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
               </Typography>
               <Typography
                 variant="h6"
-                color={stats.totalProfit >= 0 ? "success.main" : "_error.main"}
+                color={stats.totalProfit >= 0 ? "success.main" : "error.main"}
               >
                 {formatCurrency(stats.totalProfit)}
               </Typography>
@@ -222,7 +222,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
                           )
                         }
                         label={trade.type.toUpperCase()}
-                        color={trade.type === "buy" ? "success" : "_error"}
+                        color={trade.type === "buy" ? "success" : "error"}
                         variant="outlined"
                       />
                     </TableCell>
@@ -237,7 +237,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
                       {trade.profit !== undefined && (
                         <Typography
                           color={
-                            trade.profit >= 0 ? "success.main" : "_error.main"
+                            trade.profit >= 0 ? "success.main" : "error.main"
                           }
                         >
                           {formatCurrency(trade.profit)}
@@ -252,7 +252,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
                           trade.status === "completed"
                             ? "success"
                             : trade.status === "failed"
-                            ? "_error"
+                            ? "error"
                             : "warning"
                         }
                       />

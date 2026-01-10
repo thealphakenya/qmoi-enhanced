@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "Earning enhanced API not implemented" },
+    { error: "Earning enhanced API not implemented" },
     { status: 501 },
   );
 }

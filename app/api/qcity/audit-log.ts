@@ -9,10 +9,10 @@ const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG_PATH = path.resolve(process.cwd(), "logs/qcity_audit.log");
 
 const handler = requireRole(["admin", "master"])(
-  async (_req: unknown, _res: unknown) => {
-    const { method, _query } = _req;
+  async (_req: any, _res: any) => {
+    const { method, query } = _req;
     if (method !== "GET")
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
     if (!fs.existsSync(AUDIT_LOG_PATH))
       return _res
         .status(200)
@@ -29,32 +29,32 @@ const handler = requireRole(["admin", "master"])(
       })
       .filter(Boolean);
     // Filtering
-    if (_query.user)
+    if (query.user)
       logs = logs.filter(
-        (l: unknown) => l.user && l.user.includes(_query.user)
+        (l: any) => l.user && l.user.includes(query.user)
       );
-    if (_query.action)
+    if (query.action)
       logs = logs.filter(
-        (l: unknown) => l.action && l.action.includes(_query.action)
+        (l: any) => l.action && l.action.includes(query.action)
       );
-    if (_query.status)
+    if (query.status)
       logs = logs.filter(
-        (l: unknown) => l.status && l.status.includes(_query.status)
+        (l: any) => l.status && l.status.includes(query.status)
       );
-    if (_query.date)
+    if (query.date)
       logs = logs.filter(
-        (l: unknown) => l.timestamp && l.timestamp.startsWith(_query.date)
+        (l: any) => l.timestamp && l.timestamp.startsWith(query.date)
       );
     // Pagination
-    const page = parseInt(_query.page) || 1;
-    const pageSize = parseInt(_query.pageSize) || 50;
+    const page = parseInt(query.page) || 1;
+    const pageSize = parseInt(query.pageSize) || 50;
     const total = logs.length;
     const totalPages = Math.max(1, Math.ceil(total / pageSize));
     const items = logs.slice((page - 1) * pageSize, page * pageSize);
     // Export
-    if (_query.export === "csv") {
+    if (query.export === "csv") {
       const header = "Timestamp,User,Action,Device,Status,Command";
-      const rows = items.map((log: unknown) =>
+      const rows = items.map((log: any) =>
         [
           log.timestamp,
           log.user,
@@ -74,7 +74,7 @@ const handler = requireRole(["admin", "master"])(
       );
       return _res.status(200).send(csv);
     }
-    if (_query.export === "json") {
+    if (query.export === "json") {
       _res.setHeader("Content-Type", "application/json");
       _res.setHeader(
         "Content-Disposition",

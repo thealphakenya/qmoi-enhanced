@@ -17,15 +17,15 @@ export async function POST(_request: NextRequest) {
         ? authHeader.substring(7)
         : null;
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
-      const _r = apiAuth._response;
+      const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 }
       );
     }
 
     const mod = await import("../../../../../lib/qmoi-revenue-engine");
-    const qmoiRevenueEngine: unknown =
+    const qmoiRevenueEngine: any =
       mod.qmoiRevenueEngine || mod.default || mod;
 
     const result = qmoiRevenueEngine.stopRevenueEngine
@@ -33,10 +33,10 @@ export async function POST(_request: NextRequest) {
       : { success: false, message: "stopRevenueEngine not implemented" };
 
     return NextResponse.json(result);
-  } catch (_error) {
-    (console as any)._error("Stop revenue engine _error:", _error);
+  } catch (error) {
+    (console as any).error("Stop revenue engine error:", error);
     return NextResponse.json(
-      { _error: "Failed to stop revenue engine" },
+      { error: "Failed to stop revenue engine" },
       { status: 500 }
     );
   }

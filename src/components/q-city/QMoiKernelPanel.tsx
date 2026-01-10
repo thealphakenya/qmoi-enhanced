@@ -3,7 +3,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -99,9 +99,9 @@ function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
             Refresh
           </button>
         </div>
-        {_error && (
+        {error && (
           <div style={{ color: "#ff8888", marginTop: 8 }}>
-            <b>Error:</b> {_error}
+            <b>Error:</b> {error}
           </div>
         )}
         {lastAction && (

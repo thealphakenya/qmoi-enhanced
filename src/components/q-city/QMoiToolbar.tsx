@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 type Notification = {
-  type: "info" | "warning" | "_error" | "success";
+  type: "info" | "warning" | "error" | "success";
   message: string;
   actionLabel?: string;
   onAction?: () => void;
@@ -54,7 +54,7 @@ export default function QMoiToolbar() {
           }
           if (app.name === "QAutoDev") {
             // Simulate health status
-            const health = ["healthy", "warning", "_error"][getRandomInt(0, 2)];
+            const health = ["healthy", "warning", "error"][getRandomInt(0, 2)];
             return { ...app, status: health };
           }
           if (app.name === "QWifi") {
@@ -77,7 +77,7 @@ export default function QMoiToolbar() {
             return { ...app, status: health };
           }
           return app;
-        }),
+        })
       );
     }, 1000);
     return () => clearInterval(interval);
@@ -91,15 +91,15 @@ export default function QMoiToolbar() {
         const types: Notification["type"][] = [
           "info",
           "warning",
-          "_error",
+          "error",
           "success",
         ];
         const type = types[getRandomInt(0, 3)];
         let message = "";
         let actionLabel;
         let onAction;
-        if (type === "_error") {
-          message = "QMOI: System _error detected!";
+        if (type === "error") {
+          message = "QMOI: System error detected!";
           actionLabel = "Auto-Fix";
           onAction = () =>
             setNotification({
@@ -266,13 +266,13 @@ export default function QMoiToolbar() {
             left: 32,
             zIndex: 1100,
             background:
-              notification.type === "_error"
+              notification.type === "error"
                 ? "#f44336"
                 : notification.type === "warning"
-                  ? "#ff9800"
-                  : notification.type === "success"
-                    ? "#4caf50"
-                    : "#333",
+                ? "#ff9800"
+                : notification.type === "success"
+                ? "#4caf50"
+                : "#333",
             color: "#fff",
             padding: "10px 20px",
             borderRadius: 10,
@@ -350,13 +350,13 @@ export default function QMoiToolbar() {
                   style={{
                     fontWeight: 600,
                     color:
-                      n.type === "_error"
+                      n.type === "error"
                         ? "#f44336"
                         : n.type === "warning"
-                          ? "#ff9800"
-                          : n.type === "success"
-                            ? "#4caf50"
-                            : "#e0ffe0",
+                        ? "#ff9800"
+                        : n.type === "success"
+                        ? "#4caf50"
+                        : "#e0ffe0",
                   }}
                 >
                   {n.message}
@@ -409,11 +409,11 @@ export default function QMoiToolbar() {
                 right: 0,
                 fontSize: 10,
                 background:
-                  app.status === "_error"
+                  app.status === "error"
                     ? "#f00"
                     : app.status === "warning"
-                      ? "#ff0"
-                      : "#0f0",
+                    ? "#ff0"
+                    : "#0f0",
                 color: "#111",
                 borderRadius: 8,
                 padding: "0 4px",

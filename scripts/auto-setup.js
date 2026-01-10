@@ -38,9 +38,9 @@ function runCommand(command, _options = {}) {
     const result = execSync(command, finalOptions);
     log(`✅ Success: ${command}`);
     return { success: true, output: result };
-  } catch (_error) {
-    log(`❌ Failed: ${command} - ${_error.message}`, "_error");
-    return { success: false, _error: _error.message };
+  } catch (error) {
+    log(`❌ Failed: ${command} - ${error.message}`, "error");
+    return { success: false, error: error.message };
   }
 }
 
@@ -57,7 +57,7 @@ function runCommandWithRetry(command, maxRetries = config.retryAttempts) {
       execSync("sleep 5", { stdio: "ignore" });
     }
   }
-  return { success: false, _error: `Failed after ${maxRetries} attempts` };
+  return { success: false, error: `Failed after ${maxRetries} attempts` };
 }
 
 // Check if we're in the right directory
@@ -69,7 +69,7 @@ function checkProjectStructure() {
   const missingFiles = requiredFiles.filter((file) => !fs.existsSync(file));
 
   if (missingFiles.length > 0) {
-    log(`Missing required files: ${missingFiles.join(", ")}`, "_error");
+    log(`Missing required files: ${missingFiles.join(", ")}`, "error");
     process.exit(1);
   }
 
@@ -86,7 +86,7 @@ function installDependencies() {
   // Install npm dependencies with auto-yes
   const npmResult = runCommandWithRetry("npm install --yes --legacy-peer-deps");
   if (!npmResult.success) {
-    log("Failed to install npm dependencies", "_error");
+    log("Failed to install npm dependencies", "error");
     return false;
   }
 
@@ -108,7 +108,7 @@ function installDependencies() {
     `npm install --save-dev --yes ${testDeps.join(" ")}`,
   );
   if (!testResult.success) {
-    log("Failed to install testing dependencies", "_error");
+    log("Failed to install testing dependencies", "error");
     return false;
   }
 
@@ -353,7 +353,7 @@ async function main() {
     // Install dependencies
     const installSuccess = installDependencies();
     if (!installSuccess) {
-      log("Failed to install dependencies", "_error");
+      log("Failed to install dependencies", "error");
       process.exit(1);
     }
 
@@ -372,8 +372,8 @@ async function main() {
     log("  npm run build        # Build for production");
     log("  npm run test:ui      # Run UI tests");
     log("  npm run qmoi:health:check  # Run health checks");
-  } catch (_error) {
-    log(`Fatal _error: ${_error.message}`, "_error");
+  } catch (error) {
+    log(`Fatal error: ${error.message}`, "error");
     process.exit(1);
   }
 }

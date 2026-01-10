@@ -46,7 +46,7 @@ export default function QMoiDatabaseDashboard({
       body: JSON.stringify({ createTable: sql }),
     });
     const data = await _res.json();
-    setStatus(data.status || data._error);
+    setStatus(data.status || data.error);
     setNewTable("");
   };
 

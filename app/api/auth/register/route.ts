@@ -15,7 +15,7 @@ export async function POST(_request: NextRequest) {
     // Validate input
     if (!body.email || !body.username || !body.password) {
       return NextResponse.json(
-        { _error: "Missing required fields" },
+        { error: "Missing required fields" },
         { status: 400 }
       );
     }
@@ -23,7 +23,7 @@ export async function POST(_request: NextRequest) {
     // Validate email format
     if (!authService.validateEmail(body.email)) {
       return NextResponse.json(
-        { _error: "Invalid email format" },
+        { error: "Invalid email format" },
         { status: 400 }
       );
     }
@@ -34,7 +34,7 @@ export async function POST(_request: NextRequest) {
     );
     if (!passwordValidation.isStrong) {
       return NextResponse.json(
-        { _error: "Password too weak", details: passwordValidation.errors },
+        { error: "Password too weak", details: passwordValidation.errors },
         { status: 400 }
       );
     }
@@ -43,7 +43,7 @@ export async function POST(_request: NextRequest) {
     const existingUser = await userService.getByEmail(body.email);
     if (existingUser) {
       return NextResponse.json(
-        { _error: "Email already registered" },
+        { error: "Email already registered" },
         { status: 409 }
       );
     }
@@ -88,8 +88,8 @@ export async function POST(_request: NextRequest) {
       },
       { status: 201 }
     );
-  } catch (_error) {
-    console._error("Registration _error:", _error);
-    return NextResponse.json({ _error: "Registration failed" }, { status: 500 });
+  } catch (error) {
+    console.error("Registration error:", error);
+    return NextResponse.json({ error: "Registration failed" }, { status: 500 });
   }
 }

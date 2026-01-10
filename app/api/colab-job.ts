@@ -16,7 +16,7 @@ async function installPackage(pkg: string, manager: "npm" | "pip" = "npm") {
 // Upload dataset to Colab/cloud (stub)
 interface Dataset {
   name: string;
-  [key: string]: unknown;
+  [key: string]: any;
 }
 async function uploadDataset(dataset: Dataset) {
   // const axios = await import('axios');
@@ -26,7 +26,7 @@ async function uploadDataset(dataset: Dataset) {
 
 // Execute job in Colab/cloud (stub)
 interface JobSpec {
-  [key: string]: unknown;
+  [key: string]: any;
 }
 async function executeColabJob(jobSpec: JobSpec) {
   // const axios = await import('axios');
@@ -51,27 +51,27 @@ export default async function handler(
   _res: NextApiResponse
 ) {
   if (_req.method === "POST") {
-    if (_req._query.installPackage) {
+    if (_req.query.installPackage) {
       const { pkg, manager } = _req.body;
       const result = await installPackage(pkg, manager);
       return _res.json(result);
     }
-    if (_req._query.uploadDataset) {
+    if (_req.query.uploadDataset) {
       const { dataset } = _req.body;
       const result = await uploadDataset(dataset);
       return _res.json(result);
     }
-    if (_req._query.executeJob) {
+    if (_req.query.executeJob) {
       const { jobSpec } = _req.body;
       const result = await executeColabJob(jobSpec);
       return _res.json(result);
     }
-    if (_req._query.jobStatus) {
+    if (_req.query.jobStatus) {
       const { jobId } = _req.body;
       const result = await getColabJobStatus(jobId);
       return _res.json(result);
     }
-    if (_req._query.startProjectJob) {
+    if (_req.query.startProjectJob) {
       const { projectId, projectType, projectName } = _req.body;
       const jobSpec = {
         projectId,
@@ -109,5 +109,5 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }

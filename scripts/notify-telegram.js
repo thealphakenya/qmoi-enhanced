@@ -59,7 +59,7 @@ async function sendMessageToAll() {
     } catch (_err) {
       console.warn(
         `❌ Failed to send message to ${chat_id}:`,
-        _err?._response?.data || _err.message,
+        _err?.response?.data || _err.message,
       );
     }
   }
@@ -93,7 +93,7 @@ async function sendFilesToAll() {
       } catch (_err) {
         console.warn(
           `❌ Error uploading ${file}:`,
-          _err?._response?.data || _err.message,
+          _err?.response?.data || _err.message,
         );
       }
     }
@@ -122,7 +122,7 @@ async function sendImagePreview() {
   } catch (_err) {
     console.warn(
       `⚠️ Failed to send preview image:`,
-      _err?._response?.data || _err.message,
+      _err?.response?.data || _err.message,
     );
   }
 }

@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 interface ScanResult {
   threats: {
     id: string;
-    type: "_error" | "warning" | "info";
+    type: "error" | "warning" | "info";
     message: string;
     severity: "low" | "medium" | "high";
     location?: string;
@@ -34,7 +34,7 @@ export async function GET(_request: NextRequest) {
         },
         {
           id: "2",
-          type: "_error",
+          type: "error",
           message: "Failed to connect to backup service",
           severity: "high",
           location: "backup-service",
@@ -49,11 +49,11 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(Result);
-  } catch (_error) {
-    (console as any)._error("Error in AI scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI scan endpoint:", error);
     return NextResponse.json(
-      { _error: _error instanceof Error ? _error.message : "Unknown _error" },
-      { status: 500 },
+      { error: error instanceof Error ? error.message : "Unknown error" },
+      { status: 500 }
     );
   }
 }
@@ -88,14 +88,14 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
-      { status: 400 },
+      { error: "Invalid action specified" },
+      { status: 400 }
     );
-  } catch (_error) {
-    (console as any)._error("Error in AI self-heal endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI self-heal endpoint:", error);
     return NextResponse.json(
-      { _error: _error instanceof Error ? _error.message : "Unknown _error" },
-      { status: 500 },
+      { error: error instanceof Error ? error.message : "Unknown error" },
+      { status: 500 }
     );
   }
 }

@@ -34,17 +34,17 @@ export default function QMoiFileEditorChat({
 
   async function handleCommand(cmd: string) {
     setLoading(true);
-    let _response: string | React.ReactElement = "";
+    let response: string | React.ReactElement = "";
     try {
       if (cmd.startsWith("/view ")) {
         const filePath = cmd.replace("/view ", "").trim();
         const { postModel } = await import("../../services/qmoiApi");
-        const data: unknown = await postModel({ action: "file:read", filePath });
+        const data: any = await postModel({ action: "file:read", filePath });
         if (data && data.success) {
           setLastView(data.data);
-          _response = highlightCode(data.data);
+          response = highlightCode(data.data);
         } else {
-          _response = `Error: ${data?._error}`;
+          response = `Error: ${data?.error}`;
         }
       } else if (cmd.startsWith("/edit ")) {
         const [_, filePath, ...contentArr] = cmd.split(" ");
@@ -53,12 +53,12 @@ export default function QMoiFileEditorChat({
         const before = lastView;
         const after = content;
         const { postModel } = await import("../../services/qmoiApi");
-        const data: unknown = await postModel({
+        const data: any = await postModel({
           action: "file:write",
           filePath,
           content,
         });
-        _response =
+        response =
           data && data.success ? (
             <div>
               <div>File {filePath} updated.</div>
@@ -72,20 +72,20 @@ export default function QMoiFileEditorChat({
               </div>
             </div>
           ) : (
-            `Error: ${data._error}`
+            `Error: ${data.error}`
           );
       } else if (cmd.startsWith("/append ")) {
         const [_, filePath, ...contentArr] = cmd.split(" ");
         const content = contentArr.join(" ");
         const { postModel } = await import("../../services/qmoiApi");
-        const data: unknown = await postModel({
+        const data: any = await postModel({
           action: "file:append",
           filePath,
           content,
         });
-        _response = data.success
+        response = data.success
           ? `Appended to ${filePath}.`
-          : `Error: ${data._error}`;
+          : `Error: ${data.error}`;
       } else if (cmd.startsWith("/replace ")) {
         const [_, filePath, search, ...replaceArr] = cmd.split(" ");
         const content = replaceArr.join(" ");
@@ -93,13 +93,13 @@ export default function QMoiFileEditorChat({
         const before = lastView;
         const after = before.replace(search, content);
         const { postModel } = await import("../../services/qmoiApi");
-        const data: unknown = await postModel({
+        const data: any = await postModel({
           action: "file:replace",
           filePath,
           replace: search,
           content,
         });
-        _response = data.success ? (
+        response = data.success ? (
           <div>
             <div>Replaced in {filePath}.</div>
             <div style={{ marginTop: 8 }}>
@@ -112,92 +112,92 @@ export default function QMoiFileEditorChat({
             </div>
           </div>
         ) : (
-          `Error: ${data._error}`
+          `Error: ${data.error}`
         );
       } else {
-        _response = "Unknown command. Use /view, /edit, /append, /replace.";
+        response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
-      _response = `Error: ${_e?.message ?? String(_e)}`;
+    } catch (_e: any) {
+      response = `Error: ${_e?.message ?? String(_e)}`;
     }
     setMessages((msgs) => [
       ...msgs,
       { user: "master", text: cmd },
-      { user: "qmoi", text: _response },
+      { user: "qmoi", text: response },
     ]);
     setLoading(false);
   }
 
   async function handleRollback() {
     setLoading(true);
-    let _response: string | React.ReactElement = "";
+    let response: string | React.ReactElement = "";
     try {
       const { postModel } = await import("../../services/qmoiApi");
-      const data: unknown = await postModel({ action: "autodev:rollback" });
-      _response =
+      const data: any = await postModel({ action: "autodev:rollback" });
+      response =
         data && data.success
           ? "Rollback successful."
-          : `Error: ${data?._error}`;
-    } catch (_e: unknown) {
-      const _err: unknown = _e;
-      _response = `Error: ${_err?.message ?? String(_err)}`;
+          : `Error: ${data?.error}`;
+    } catch (_e: any) {
+      const _err: any = _e;
+      response = `Error: ${_err?.message ?? String(_err)}`;
     }
     setMessages((msgs) => [
       ...msgs,
       { user: "master", text: "[Rollback]" },
-      { user: "qmoi", text: _response },
+      { user: "qmoi", text: response },
     ]);
     setLoading(false);
   }
 
   async function handleAISuggest() {
     setLoading(true);
-    let _response: string | React.ReactElement = "";
+    let response: string | React.ReactElement = "";
     try {
       const { postModel } = await import("../../services/qmoiApi");
-      const data: unknown = await postModel({
+      const data: any = await postModel({
         action: "autodev:ai_suggest",
         filePath: "",
         context: lastView,
       });
-      _response =
+      response =
         data && data.success
           ? highlightCode(data.suggestion)
-          : `Error: ${data?._error}`;
-    } catch (_e: unknown) {
-      const _err: unknown = _e;
-      _response = `Error: ${_err?.message ?? String(_err)}`;
+          : `Error: ${data?.error}`;
+    } catch (_e: any) {
+      const _err: any = _e;
+      response = `Error: ${_err?.message ?? String(_err)}`;
     }
     setMessages((msgs) => [
       ...msgs,
       { user: "master", text: "[AI Suggest]" },
-      { user: "qmoi", text: _response },
+      { user: "qmoi", text: response },
     ]);
     setLoading(false);
   }
 
   async function handleBatchEdit(files: string, op: string) {
     setLoading(true);
-    let _response: string | React.ReactElement = "";
+    let response: string | React.ReactElement = "";
     try {
       const { postModel } = await import("../../services/qmoiApi");
-      const data: unknown = await postModel({
+      const data: any = await postModel({
         action: "autodev:batch_edit",
         files: files.split(","),
         operation: op,
       });
-      _response =
+      response =
         data && data.success
           ? "Batch edit complete."
-          : `Error: ${data?._error}`;
-    } catch (_e: unknown) {
-      const _err: unknown = _e;
-      _response = `Error: ${_err?.message ?? String(_err)}`;
+          : `Error: ${data?.error}`;
+    } catch (_e: any) {
+      const _err: any = _e;
+      response = `Error: ${_err?.message ?? String(_err)}`;
     }
     setMessages((msgs) => [
       ...msgs,
       { user: "master", text: `[Batch Edit: ${op}]` },
-      { user: "qmoi", text: _response },
+      { user: "qmoi", text: response },
     ]);
     setLoading(false);
     setShowBatch(false);

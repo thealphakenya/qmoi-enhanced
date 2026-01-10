@@ -18,23 +18,23 @@ export default async function handler(_req: NextApiRequest,
         case "research":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle research
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "verify":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle verification
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "earning-opportunities":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle earning opportunities
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }

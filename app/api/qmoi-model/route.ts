@@ -11,7 +11,7 @@ interface AITask {
     | "project-init"
     | "training"
     | "inference";
-  status: "pending" | "processing" | "completed" | "_error";
+  status: "pending" | "processing" | "completed" | "error";
   timestamp: string;
   duration?: number;
   user?: string;
@@ -27,7 +27,7 @@ export async function GET(_request: NextRequest) {
     const mediaStatus = searchParams.get("mediaStatus");
     const datasets = searchParams.get("datasets");
 
-    // Always ignore any client-supplied 'model' _query param and enforce canonical model
+    // Always ignore any client-supplied 'model' query param and enforce canonical model
     if (searchParams.has("model")) {
       console.warn(
         "Client attempted to override 'model' param; ignoring and using 'qmoi' aggregator."
@@ -64,7 +64,7 @@ export async function GET(_request: NextRequest) {
         },
       ];
 
-      // Include canonical model name in the _response
+      // Include canonical model name in the response
       return NextResponse.json({ model: "qmoi", tasks: aiTasks });
     }
 
@@ -96,13 +96,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid _query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any)._error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: _error instanceof Error ? _error.message : "Unknown _error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -138,13 +138,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any)._error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: _error instanceof Error ? _error.message : "Unknown _error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }

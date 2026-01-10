@@ -34,7 +34,7 @@ export async function initializeServices(): Promise<void> {
     console.info("[Init] Service initialization complete!");
   } catch (_err) {
     void _err;
-    console._error("[Init] Service initialization failed:", _err);
+    console.error("[Init] Service initialization failed:", _err);
     throw _err;
   }
 }
@@ -47,17 +47,17 @@ function setupRecoveryListeners(): void {
 
   // Listen for API failures and trigger recovery
   const originalFetch = window.fetch;
-  (window as any).fetch = async (...args: unknown[]) => {
+  (window as any).fetch = async (...args: any[]) => {
     try {
-      const _response = await (originalFetch as any).apply(window, args);
+      const response = await (originalFetch as any).apply(window, args);
 
-      if (!_response.ok && _response.status >= 500) {
+      if (!response.ok && response.status >= 500) {
         // 5xx errors might indicate service issues
-        console.warn(`[Init] API _error detected: ${_response.status}`);
+        console.warn(`[Init] API error detected: ${response.status}`);
 
         recoveryManager.scheduleRecovery(
           "api-endpoint",
-          `HTTP ${_response.status}`,
+          `HTTP ${response.status}`,
           async () => {
             await checkHealth();
           },
@@ -65,10 +65,10 @@ function setupRecoveryListeners(): void {
         );
       }
 
-      return _response;
+      return response;
     } catch (_err) {
       void _err;
-      console._error("[Init] Fetch _error:", _err);
+      console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
@@ -120,7 +120,7 @@ function setupHealthMonitoring(): void {
       });
     } catch (_err) {
       void _err;
-      console._error("[Monitor] Health monitoring _error:", _err);
+      console.error("[Monitor] Health monitoring error:", _err);
     }
   }, 60 * 1000);
 }
@@ -176,17 +176,17 @@ export function enableDebugLogging(): void {
   // Intercept console methods to add timestamps
   const originalLog = console.log;
   const originalWarn = console.warn;
-  const originalError = console._error;
+  const originalError = console.error;
 
-  console.log = (...args: unknown[]) => {
+  console.log = (...args: any[]) => {
     originalLog(`[${new Date().toISOString()}]`, ...args);
   };
 
-  console.warn = (...args: unknown[]) => {
+  console.warn = (...args: any[]) => {
     originalWarn(`[${new Date().toISOString()}]`, ...args);
   };
 
-  console._error = (...args: unknown[]) => {
+  console.error = (...args: any[]) => {
     originalError(`[${new Date().toISOString()}]`, ...args);
   };
 }

@@ -40,8 +40,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any)._error("Error fetching _error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,

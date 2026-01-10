@@ -6,74 +6,74 @@
 
 declare global {
   // common runtime/test placeholders
-  var localServer: unknown;
-  var _request: unknown;
-  var _response: unknown;
-  var _req: unknown;
-  var _res: unknown;
+  var localServer: any;
+  var _request: any;
+  var response: any;
+  var _req: any;
+  var _res: any;
   var __dirname: string;
   var __filename: string;
-  var global: unknown;
-  var window: unknown;
-  var navigator: unknown;
-  var localStorage: unknown;
-  var performance: unknown;
+  var global: any;
+  var window: any;
+  var navigator: any;
+  var localStorage: any;
+  var performance: any;
 
   // Fetch / Web API types (permissive)
-  var Headers: unknown;
+  var Headers: any;
   type Request = any;
   type Response = any;
-  var FormData: unknown;
-  var URL: unknown;
-  var URLSearchParams: unknown;
-  var EventSource: unknown;
-  var FileReader: unknown;
-  var AbortSignal: unknown;
-  var EventListener: unknown;
-  var KeyboardEvent: unknown;
-  var AbortController: unknown;
-  var XMLHttpRequest: unknown;
-  var Document: unknown;
+  var FormData: any;
+  var URL: any;
+  var URLSearchParams: any;
+  var EventSource: any;
+  var FileReader: any;
+  var AbortSignal: any;
+  var EventListener: any;
+  var KeyboardEvent: any;
+  var AbortController: any;
+  var XMLHttpRequest: any;
+  var Document: any;
   type Window = any;
-  var Element: unknown;
-  var Node: unknown;
-  var MutationObserver: unknown;
-  var CustomEvent: unknown;
-  var fetch: unknown;
-  var ReadableStream: unknown;
-  var WritableStream: unknown;
-  var TextEncoder: unknown;
-  var TextDecoder: unknown;
-  var crypto: unknown;
-  var structuredClone: unknown;
-  var setTimeout: unknown;
-  var clearTimeout: unknown;
-  var setInterval: unknown;
-  var clearInterval: unknown;
+  var Element: any;
+  var Node: any;
+  var MutationObserver: any;
+  var CustomEvent: any;
+  var fetch: any;
+  var ReadableStream: any;
+  var WritableStream: any;
+  var TextEncoder: any;
+  var TextDecoder: any;
+  var crypto: any;
+  var structuredClone: any;
+  var setTimeout: any;
+  var clearTimeout: any;
+  var setInterval: any;
+  var clearInterval: any;
 
   // Node bridging
-  var Buffer: unknown;
-  var require: unknown;
-  var module: unknown;
-  var process: unknown;
+  var Buffer: any;
+  var require: any;
+  var module: any;
+  var process: any;
   var console: Console;
-  var NodeJS: unknown;
+  var NodeJS: any;
 
   // Jest test globals
-  const jest: unknown;
-  function describe(name: string, fn: (...args: unknown[]) => any): void;
-  function it(name: string, fn: (...args: unknown[]) => any): void;
-  function test(name: string, fn: (...args: unknown[]) => any): void;
-  function beforeAll(fn: (...args: unknown[]) => any): void;
-  function afterAll(fn: (...args: unknown[]) => any): void;
-  function beforeEach(fn: (...args: unknown[]) => any): void;
-  function afterEach(fn: (...args: unknown[]) => any): void;
-  var expect: unknown;
+  const jest: any;
+  function describe(name: string, fn: (...args: any[]) => any): void;
+  function it(name: string, fn: (...args: any[]) => any): void;
+  function test(name: string, fn: (...args: any[]) => any): void;
+  function beforeAll(fn: (...args: any[]) => any): void;
+  function afterAll(fn: (...args: any[]) => any): void;
+  function beforeEach(fn: (...args: any[]) => any): void;
+  function afterEach(fn: (...args: any[]) => any): void;
+  var expect: any;
 }
 
 declare global {
   interface Console {
-    _error?: (...args: unknown[]) => void;
+    error?: (...args: any[]) => void;
   }
 }
 

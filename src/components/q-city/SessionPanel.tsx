@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 export default function SessionPanel() {
   const [sessions, setSessions] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const token =
     typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
@@ -14,7 +14,7 @@ export default function SessionPanel() {
     })
       .then((r) => r.json())
       .then((data) => setSessions((data && data.sessions) || []))
-      .catch((_err: unknown) => setError(_err?.message || String(_err)))
+      .catch((_err: any) => setError(_err?.message || String(_err)))
       .finally(() => setLoading(false));
   };
 
@@ -33,14 +33,14 @@ export default function SessionPanel() {
       body: JSON.stringify({ action: "revoke", sid }),
     })
       .then(fetchSessions)
-      .catch((_err: unknown) => setError(_err?.message || String(_err)))
+      .catch((_err: any) => setError(_err?.message || String(_err)))
       .finally(() => setLoading(false));
   };
 
   return (
     <div className="p-4 bg-gray-900 rounded-lg shadow-lg">
       <h2 className="text-xl font-bold mb-4 text-cyan-400">Sessions</h2>
-      {_error && <div className="text-red-400 mb-2">{_error}</div>}
+      {error && <div className="text-red-400 mb-2">{error}</div>}
       {loading ? (
         <div className="text-gray-400">Loading...</div>
       ) : (
@@ -54,7 +54,7 @@ export default function SessionPanel() {
             </tr>
           </thead>
           <tbody>
-            {sessions.map((s: unknown, i) => (
+            {sessions.map((s: any, i) => (
               <tr key={i}>
                 <td>{s.sid}</td>
                 <td>{s.createdAt}</td>

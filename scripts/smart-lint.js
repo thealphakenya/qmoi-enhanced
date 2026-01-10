@@ -40,8 +40,8 @@ class SmartLinter {
         stdio: "pipe",
       });
       return { success: true, output: "" };
-    } catch (_error) {
-      return { success: false, output: _error.stdout || _error.stderr || "" };
+    } catch (error) {
+      return { success: false, output: error.stdout || error.stderr || "" };
     }
   }
 
@@ -58,9 +58,9 @@ class SmartLinter {
         continue;
       }
 
-      // Parse _error details
+      // Parse error details
       const errorMatch = line.match(
-        /^\s*(\d+):(\d+)\s+(_error|warning)\s+(.+?)\s+(.+)$/,
+        /^\s*(\d+):(\d+)\s+(error|warning)\s+(.+?)\s+(.+)$/,
       );
       if (errorMatch) {
         const [, lineNum, colNum, severity, rule, message] = errorMatch;
@@ -81,8 +81,8 @@ class SmartLinter {
   readFile(filePath) {
     try {
       return readFileSync(filePath, "utf8");
-    } catch (_error) {
-      this.log(`Error reading file ${filePath}: ${_error.message}`, "_error");
+    } catch (error) {
+      this.log(`Error reading file ${filePath}: ${error.message}`, "error");
       return null;
     }
   }
@@ -93,8 +93,8 @@ class SmartLinter {
       this.filesModified.add(filePath);
       this.log(`Fixed file: ${filePath}`, "success");
       return true;
-    } catch (_error) {
-      this.log(`Error writing file ${filePath}: ${_error.message}`, "_error");
+    } catch (error) {
+      this.log(`Error writing file ${filePath}: ${error.message}`, "error");
       return false;
     }
   }
@@ -116,9 +116,9 @@ class SmartLinter {
     let newContent = content;
 
     // Remove _unused imports
-    for (const _error of _unusedImportErrors) {
+    for (const error of _unusedImportErrors) {
       const lines = newContent.split("\n");
-      const lineIndex = _error.line - 1;
+      const lineIndex = error.line - 1;
 
       if (lineIndex >= 0 && lineIndex < lines.length) {
         const line = lines[lineIndex];
@@ -154,9 +154,9 @@ class SmartLinter {
     let modified = false;
     let newContent = content;
 
-    for (const _error of semicolonErrors) {
+    for (const error of semicolonErrors) {
       const lines = newContent.split("\n");
-      const lineIndex = _error.line - 1;
+      const lineIndex = error.line - 1;
 
       if (lineIndex >= 0 && lineIndex < lines.length) {
         const line = lines[lineIndex];
@@ -195,9 +195,9 @@ class SmartLinter {
     let modified = false;
     let newContent = content;
 
-    for (const _error of quoteErrors) {
+    for (const error of quoteErrors) {
       const lines = newContent.split("\n");
-      const lineIndex = _error.line - 1;
+      const lineIndex = error.line - 1;
 
       if (lineIndex >= 0 && lineIndex < lines.length) {
         const line = lines[lineIndex];
@@ -344,11 +344,11 @@ class SmartLinter {
 
     // Group errors by file
     const errorsByFile = {};
-    for (const _error of errors) {
-      if (!errorsByFile[_error.file]) {
-        errorsByFile[_error.file] = [];
+    for (const error of errors) {
+      if (!errorsByFile[error.file]) {
+        errorsByFile[error.file] = [];
       }
-      errorsByFile[_error.file].push(_error);
+      errorsByFile[error.file].push(error);
     }
 
     // Apply fixes for each file
@@ -402,9 +402,9 @@ class SmartLinter {
 
       // Display remaining errors
       console.log("\n📋 Remaining Issues:");
-      remainingErrors.forEach((_error, index) => {
+      remainingErrors.forEach((error, index) => {
         console.log(
-          `   ${index + 1}. ${_error.file}:${_error.line}:${_error.column} - ${_error.rule}: ${_error.message}`,
+          `   ${index + 1}. ${error.file}:${error.line}:${error.column} - ${error.rule}: ${error.message}`,
         );
       });
     }
@@ -421,7 +421,7 @@ class SmartLinter {
 
 // Run the smart linter
 const smartLinter = new SmartLinter();
-smartLinter.run().catch((_error) => {
-  (console as any)._error("Fatal _error in smart linter:", _error);
+smartLinter.run().catch((error) => {
+  (console as any).error("Fatal error in smart linter:", error);
   process.exit(1);
 });

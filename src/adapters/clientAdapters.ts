@@ -1,5 +1,5 @@
 // Client-side adapters for production integrations with parallel execution support
-// Features: Caching, retry logic, background operations, _request queuing, _error recovery
+// Features: Caching, retry logic, background operations, _request queuing, error recovery
 // These call backend API endpoints (preferred) which should implement real third-party integrations.
 // If the backend is not configured, these functions throw or return safe errors which the UI handles.
 
@@ -43,7 +43,7 @@ const RETRY_DELAY = 1000; // ms
 // UTILITY FUNCTIONS
 // ============================================================================
 
-function getCacheKey(endpoint: string, _params?: unknown): string {
+function getCacheKey(endpoint: string, _params?: any): string {
   return `${endpoint}:${JSON.stringify(_params || {})}`;
 }
 
@@ -78,7 +78,7 @@ async function withRetry<T>(
   endpoint: string,
   maxRetries = MAX_RETRIES
 ): Promise<T> {
-  let lastError: unknown;
+  let lastError: any;
   for (let i = 0; i <= maxRetries; i++) {
     try {
       return await fn();
@@ -116,12 +116,12 @@ async function deduplicateRequest<T>(
 // ADAPTER FUNCTIONS - WITH PARALLEL & BACKGROUND SUPPORT
 // ============================================================================
 
-export async function fetchMedia(forceRefresh = false): Promise<unknown[]> {
+export async function fetchMedia(forceRefresh = false): Promise<any[]> {
   const cacheKey = getCacheKey("media");
 
   // Check cache first (unless force refresh)
   if (!forceRefresh) {
-    const cached = getFromCache<unknown[]>(cacheKey);
+    const cached = getFromCache<any[]>(cacheKey);
     if (cached) return cached;
   }
 
@@ -137,16 +137,16 @@ export async function fetchMedia(forceRefresh = false): Promise<unknown[]> {
       return items;
     }, "fetchMedia");
   }).catch((_err) => {
-    console.warn("fetchMedia _error", _err);
+    console.warn("fetchMedia error", _err);
     return [];
   });
 }
 
 export async function verifyProduct(
-  _query: string,
+  query: string,
   forceRefresh = false
 ): Promise<string> {
-  const cacheKey = getCacheKey("verify", { _query });
+  const cacheKey = getCacheKey("verify", { query });
 
   if (!forceRefresh) {
     const cached = getFromCache<string>(cacheKey);
@@ -156,7 +156,7 @@ export async function verifyProduct(
   return deduplicateRequest(cacheKey, async () => {
     return withRetry(async () => {
       const _res = await fetch(
-        `${getEndpoint("verify")}?q=${encodeURIComponent(_query)}`,
+        `${getEndpoint("verify")}?q=${encodeURIComponent(query)}`,
         { signal: AbortSignal.timeout(30000) }
       );
       if (!_res.ok) throw new Error(`verify failed: ${_res.status}`);
@@ -166,7 +166,7 @@ export async function verifyProduct(
       return result;
     }, "verifyProduct");
   }).catch((_err) => {
-    console.warn("verifyProduct _error", _err);
+    console.warn("verifyProduct error", _err);
     return `Verification unavailable: ${String(_err)}`;
   });
 }
@@ -191,7 +191,7 @@ export async function sendMail(payload: {
     2
   ) // 2 retries for mail
     .catch((_err) => {
-      console.warn("sendMail _error", _err);
+      console.warn("sendMail error", _err);
       return false;
     });
 }
@@ -210,14 +210,14 @@ export async function uploadFile(formData: FormData): Promise<unknown> {
     "uploadFile",
     2
   ).catch((_err) => {
-    console.warn("uploadFile _error", _err);
-    return { success: false, _error: String(_err) };
+    console.warn("uploadFile error", _err);
+    return { success: false, error: String(_err) };
   });
 }
 
 export async function emergencyAction(
   action: string,
-  payload: unknown
+  payload: any
 ): Promise<unknown> {
   // Emergency actions skip retry logic for speed
   try {
@@ -232,8 +232,8 @@ export async function emergencyAction(
     return result;
   } catch (_err) {
     void _err;
-    console._error("emergencyAction _error", _err);
-    return { ok: false, _error: String(_err) };
+    console.error("emergencyAction error", _err);
+    return { ok: false, error: String(_err) };
   }
 }
 
@@ -257,8 +257,8 @@ export async function youtubeDownload(url: string): Promise<unknown> {
       return data;
     }, "youtubeDownload");
   }).catch((_err) => {
-    console.warn("youtubeDownload _error", _err);
-    return { success: false, _error: String(_err) };
+    console.warn("youtubeDownload error", _err);
+    return { success: false, error: String(_err) };
   });
 }
 
@@ -267,8 +267,8 @@ export async function youtubeDownload(url: string): Promise<unknown> {
 // ============================================================================
 
 export async function fetchAllInParallel(): Promise<{
-  media: unknown[];
-  health: unknown;
+  media: any[];
+  health: any;
 }> {
   console.debug("[Parallel] Fetching all resources in parallel...");
   const [media, health] = await Promise.allSettled([

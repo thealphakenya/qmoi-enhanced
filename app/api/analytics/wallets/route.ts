@@ -12,7 +12,7 @@ export async function GET(_request: NextRequest) {
 
     if (!token) {
       return NextResponse.json(
-        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
+        { error: { message: "Missing authorization token", code: "NO_TOKEN" } },
         { status: 401 }
       );
     }
@@ -20,9 +20,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 }
       );
     }
@@ -77,7 +77,7 @@ export async function GET(_request: NextRequest) {
     }
 
     // Calculate averages
-    Object.values(stats.currencyDistribution).forEach((dist: unknown) => {
+    Object.values(stats.currencyDistribution).forEach((dist: any) => {
       dist.averageBalance = dist.totalBalance / dist.walletCount;
     });
 
@@ -130,10 +130,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (_error) {
-    console._error("Wallet analytics _error:", _error);
+  } catch (error) {
+    console.error("Wallet analytics error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }
     );
   }

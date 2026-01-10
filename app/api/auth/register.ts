@@ -7,7 +7,7 @@ import bcrypt from "bcryptjs";
 
 const USERS_FILE = path.resolve(process.cwd(), "data", "users.json");
 
-function loadUsers(): unknown[] {
+function loadUsers(): any[] {
   if (!fs.existsSync(USERS_FILE)) return [];
   try {
     return JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
@@ -15,7 +15,7 @@ function loadUsers(): unknown[] {
     return [];
   }
 }
-function saveUsers(users: unknown[]) {
+function saveUsers(users: any[]) {
   fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
 }
 
@@ -24,13 +24,13 @@ export default async function handler(
   _res: NextApiResponse
 ) {
   if (_req.method !== "POST")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   const { username, password, role } = _req.body;
   if (!username || !password || !role)
-    return _res.status(400).json({ _error: "Missing fields" });
+    return _res.status(400).json({ error: "Missing fields" });
   const users = loadUsers();
-  if (users.find((u: unknown) => u.username === username))
-    return _res.status(409).json({ _error: "User exists" });
+  if (users.find((u: any) => u.username === username))
+    return _res.status(409).json({ error: "User exists" });
   const hash = await bcrypt.hash(password, 10);
   const user = {
     id: `user_${Date.now()}`,

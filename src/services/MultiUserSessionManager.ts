@@ -65,7 +65,7 @@ export class MultiUserSessionManager extends EventEmitter {
   private sessions: Map<string, Session> = new Map();
   private userSessions: Map<string, string> = new Map(); // userId -> sessionId
   private whatsappToUserId: Map<string, string> = new Map(); // whatsappId -> userId
-  private globalContext: unknown = {};
+  private globalContext: any = {};
 
   constructor() {
     super();
@@ -274,7 +274,7 @@ export class MultiUserSessionManager extends EventEmitter {
     this.emit("contextChanged", { userId, context: user.context, sessionId });
   }
 
-  getSharedContext(groupId: string): unknown {
+  getSharedContext(groupId: string): any {
     const group = this.findGroup(groupId);
     if (!group || !group.settings.sharedContext) return null;
 
@@ -286,7 +286,7 @@ export class MultiUserSessionManager extends EventEmitter {
     return session.activeContexts.get(groupId) || {};
   }
 
-  updateSharedContext(groupId: string, context: unknown): void {
+  updateSharedContext(groupId: string, context: any): void {
     const group = this.findGroup(groupId);
     if (!group || !group.settings.sharedContext) return;
 
@@ -302,7 +302,7 @@ export class MultiUserSessionManager extends EventEmitter {
   }
 
   // AI Relationship Management
-  getAIRelationshipContext(userId: string, targetUserId?: string): unknown {
+  getAIRelationshipContext(userId: string, targetUserId?: string): any {
     const user = this.getUser(userId);
     if (!user) return null;
 

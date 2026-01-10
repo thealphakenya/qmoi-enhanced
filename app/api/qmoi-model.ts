@@ -214,7 +214,7 @@ async function createProject(
 }
 
 // Helper to auto-generate docs and packaging for a project/package/extension
-async function generateDocsAndPackaging(projectName: string, files: unknown[]) {
+async function generateDocsAndPackaging(projectName: string, files: any[]) {
   const docs = `# ${projectName} Documentation\n\nAuto-generated docs for project: ${projectName}`;
   const readmePath = `/workspaces/Alpha-Q-ai/projects/${projectName}/README.md`;
   // Ensure project directory exists and write README
@@ -231,8 +231,8 @@ async function generateDocsAndPackaging(projectName: string, files: unknown[]) {
 }
 
 // --- Enhanced Creative Generators ---
-async function enhancedGameGen(details: unknown) {
-  // Add more thorough logic, _error checking, and asset generation
+async function enhancedGameGen(details: any) {
+  // Add more thorough logic, error checking, and asset generation
   // ...
   return {
     status: "success",
@@ -240,15 +240,15 @@ async function enhancedGameGen(details: unknown) {
     assets: ["game.js", "assets/", "README.md"],
   };
 }
-async function enhancedAppDev(details: unknown) {
+async function enhancedAppDev(details: any) {
   // ...
   return { status: "success", details, files: ["app.js", "README.md"] };
 }
-async function enhancedMusicGen(details: unknown) {
+async function enhancedMusicGen(details: any) {
   // ...
   return { status: "success", details, files: ["track.wav", "README.md"] };
 }
-async function enhancedArchitectureGen(details: unknown) {
+async function enhancedArchitectureGen(details: any) {
   // ...
   return { status: "success", details, files: ["model.obj", "README.md"] };
 }
@@ -304,7 +304,7 @@ async function runAdvancedAIGeneration(
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
         } catch (_e) {
-          resolve({ status: "_error", _error: String(_e), raw: stdout });
+          resolve({ status: "error", error: String(_e), raw: stdout });
         }
       }
     );
@@ -582,19 +582,19 @@ async function getAIRecommendations(context: string) {
 }
 
 // --- AI Research & Web Browsing ---
-async function aiResearch(url: string, _query?: string) {
+async function aiResearch(url: string, query?: string) {
   try {
     const { data } = await axios.get(url, { timeout: 10000 });
     const $ = cheerio.load(data);
     // Extract main text content;
     let text = $("body").text();
     text = text.replace(/\s+/g, " ").trim();
-    // Optionally, filter or summarize based on _query
-    if (_query) {
+    // Optionally, filter or summarize based on query
+    if (query) {
       // Simple keyword-based summary
       const sentences = text.split(". ");
       const relevant = sentences.filter((s: string) =>
-        s.toLowerCase().includes(_query.toLowerCase())
+        s.toLowerCase().includes(query.toLowerCase())
       );
       return { summary: relevant.slice(0, 10).join(". "), url };
     }
@@ -603,26 +603,26 @@ async function aiResearch(url: string, _query?: string) {
       url,
     };
   } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
-async function aiBatchResearch(urls: string[], _query?: string) {
+async function aiBatchResearch(urls: string[], query?: string) {
   const results = [];
   for (const url of urls) {
-    results.push(await aiResearch(url, _query));
+    results.push(await aiResearch(url, query));
   }
   return results;
 }
 
-async function aiPdfResearch(buffer: Buffer, _query?: string) {
+async function aiPdfResearch(buffer: Buffer, query?: string) {
   try {
     const data = await pdfParse(buffer);
     const text = data.text.replace(/\s+/g, " ").trim();
-    if (_query) {
+    if (query) {
       const sentences = text.split(". ");
       const relevant = sentences.filter((s: string) =>
-        s.toLowerCase().includes(_query.toLowerCase())
+        s.toLowerCase().includes(query.toLowerCase())
       );
       return {
         summary: relevant.slice(0, 10).join(". "),
@@ -636,7 +636,7 @@ async function aiPdfResearch(buffer: Buffer, _query?: string) {
       pages: data.numpages,
     };
   } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -651,18 +651,18 @@ async function aiResearchQA(context: string, question: string) {
   };
 }
 
-// --- API Handler --- Buffer, _query?: string) {
+// --- API Handler --- Buffer, query?: string) {
 export default async function handler(
   _req: NextApiRequest,
   _res: NextApiResponse
 ) {
   loadLog();
   if (_req.method === "GET") {
-    if (_req._query.globalAutomation) {
+    if (_req.query.globalAutomation) {
       // Simulate global automation status ');
       return _res.json({ status: "operational" });
     }
-    if (_req._query.datasets) {
+    if (_req.query.datasets) {
       // Simulate available datasets
       return _res.json({
         datasets: [
@@ -676,14 +676,14 @@ export default async function handler(
         ],
       });
     }
-    if (_req._query.trainingStatus) {
+    if (_req.query.trainingStatus) {
       // Simulate model training status
       return _res.json({
         status: "ready",
         lastTrained: new Date().toISOString(),
       });
     }
-    if (_req._query.deviceOptimize) {
+    if (_req.query.deviceOptimize) {
       // Simulate device optimization suggestions
       return _res.json({
         suggestions: [
@@ -695,7 +695,7 @@ export default async function handler(
         ],
       });
     }
-    if (_req._query.featureEnhance) {
+    if (_req.query.featureEnhance) {
       // Simulate new features/instructions for AI to follow
       return _res.json({
         instructions: [
@@ -707,7 +707,7 @@ export default async function handler(
         ],
       });
     }
-    if (_req._query.githubTasks) {
+    if (_req.query.githubTasks) {
       // Simulate GitHub repo tasks (could be from config or user input)
       return _res.json({
         repos: [
@@ -716,7 +716,7 @@ export default async function handler(
         ],
       });
     }
-    if (_req._query.analytics) {
+    if (_req.query.analytics) {
       // Simulate advanced analytics for trading, wallet, and bot activity
       return _res.json({
         trading: {
@@ -743,13 +743,13 @@ export default async function handler(
       });
     }
     // the main handler (POST):
-    if (_req._query.recommendations) {
+    if (_req.query.recommendations) {
       // Provide AI-driven recommendations for a given context
-      const context = _req._query.context as string;
+      const context = _req.query.context as string;
       const recs = await getAIRecommendations(context);
       return _res.json({ recommendations: recs });
     }
-    if (_req._query.systemStatus) {
+    if (_req.query.systemStatus) {
       // Real-time system status endpoint
       return _res.json({
         time: new Date().toISOString(),
@@ -765,17 +765,17 @@ export default async function handler(
       const form = (mod as any).default ?? mod;
       form.parse(
         _req as any,
-        async (_err: unknown, fields: unknown, files: unknown) => {
-          if (_err) return _res.status(500).json({ _error: _err.message });
+        async (_err: any, fields: any, files: any) => {
+          if (_err) return _res.status(500).json({ error: _err.message });
           if (files.file) {
             const file = files.file[0];
             const buffer = fs.readFileSync(file.filepath);
             // TODO: Add more intelligent handling based on file type/content
             if (file.mimetype === "application/pdf") {
-              const result = await aiPdfResearch(buffer, fields._query);
+              const result = await aiPdfResearch(buffer, fields.query);
               return _res.json({
                 file: file.originalFilename,
-                _query: fields._query,
+                query: fields.query,
                 result,
                 status: "completed",
                 timestamp: new Date().toISOString(),
@@ -793,7 +793,7 @@ export default async function handler(
               });
             }
           }
-          return _res.status(400).json({ _error: "No file uploaded" });
+          return _res.status(400).json({ error: "No file uploaded" });
         }
       );
     });
@@ -801,7 +801,7 @@ export default async function handler(
 }
 
 // Add endpoint to save sister projects (simple in-memory for now)
-const sisterProjects: unknown[] = [];
+const sisterProjects: any[] = [];
 
 export async function POST(_req: Request) {
   const url = new URL(_req.url);
@@ -819,9 +819,9 @@ export async function POST(_req: Request) {
     const message = body.message || body.input;
     const speak = body.speak || url.searchParams.get("speak") === "1";
     if (message) {
-      const result: unknown = await multiUserChat(user, message);
+      const result: any = await multiUserChat(user, message);
       // If client requested speak, include SSML; otherwise return plain text
-      const payload: unknown = {
+      const payload: any = {
         reply: result.reply,
         conversation: result.conversation,
       };
@@ -830,12 +830,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (_e: any) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(_e) }),
       { status: 500 }
     );
   }

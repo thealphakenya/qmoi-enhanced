@@ -22,7 +22,7 @@ export async function POST(_req: Request) {
       headers,
       body: JSON.stringify(body),
     });
-    let data: unknown = null;
+    let data: any = null;
     try {
       data = await resp.json();
     } catch {
@@ -31,7 +31,7 @@ export async function POST(_req: Request) {
     return NextResponse.json(data);
   } catch (_e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(_e) },
       { status: 500 }
     );
   }
@@ -47,7 +47,7 @@ export async function GET() {
     if (process.env.QMOI_MEMORY_SECRET)
       headers["X-QMOI-MEMORY-SECRET"] = process.env.QMOI_MEMORY_SECRET;
     const resp = await fetch(target, { method: "GET", headers });
-    let data: unknown = null;
+    let data: any = null;
     try {
       data = await resp.json();
     } catch {
@@ -56,7 +56,7 @@ export async function GET() {
     return NextResponse.json(data);
   } catch (_e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(_e) },
       { status: 500 }
     );
   }

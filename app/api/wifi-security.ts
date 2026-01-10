@@ -30,7 +30,7 @@ export default async function handler(
   _req: NextApiRequest,
   _res: NextApiResponse
 ) {
-  const { action } = _req._query;
+  const { action } = _req.query;
   try {
     switch (action) {
       case "security-test": {
@@ -126,11 +126,11 @@ export default async function handler(
         });
       }
       default:
-        return _res.status(400).json({ _error: "Unknown action" });
+        return _res.status(400).json({ error: "Unknown action" });
     }
   } catch (_e) {
     return _res
       .status(500)
-      .json({ _error: (_e as Error).message || "Internal _error" });
+      .json({ error: (_e as Error).message || "Internal error" });
   }
 }

@@ -861,8 +861,8 @@ export class BitgetManager extends EventEmitter {
       // Implement IP whitelist validation logic
       this.securityStatus.lastIpCheck = new Date();
       this.emit("ipCheck", { timestamp: new Date(), status: "success" });
-    } catch (_error) {
-      this.emit("ipCheck", { timestamp: new Date(), status: "failed", _error });
+    } catch (error) {
+      this.emit("ipCheck", { timestamp: new Date(), status: "failed", error });
       throw new Error("IP whitelist validation failed");
     }
   }
@@ -897,7 +897,7 @@ export class BitgetManager extends EventEmitter {
     }
   }
 
-  private async detectAnomalies(_request: unknown): Promise<void> {
+  private async detectAnomalies(_request: any): Promise<void> {
     if (!this.anomalyDetectionEnabled) return;
 
     const config = this.config.security.anomalyDetection;
@@ -936,7 +936,7 @@ export class BitgetManager extends EventEmitter {
   }
 
   private matchesSuspiciousPattern(
-    _request: unknown,
+    _request: any,
     pattern: string
   ): boolean {
     switch (pattern) {
@@ -953,12 +953,12 @@ export class BitgetManager extends EventEmitter {
     }
   }
 
-  private checkRapidBalanceChange(_request: unknown): boolean {
+  private checkRapidBalanceChange(_request: any): boolean {
     // Implement balance change detection logic
     return false;
   }
 
-  private checkUnusualTradingVolume(_request: unknown): boolean {
+  private checkUnusualTradingVolume(_request: any): boolean {
     // Implement trading volume detection logic
     return false;
   }
@@ -976,7 +976,7 @@ export class BitgetManager extends EventEmitter {
     return this.securityStatus.failedAttempts > config.maxFailedAttempts;
   }
 
-  private logSuspiciousActivity(type: string, details: unknown): void {
+  private logSuspiciousActivity(type: string, details: any): void {
     this.securityStatus.securityMetrics.suspiciousActivities.push({
       type,
       timestamp: new Date(),
@@ -1022,16 +1022,16 @@ export class BitgetManager extends EventEmitter {
       this.emit("keysBackedUp", {
         timestamp: this.securityStatus.lastBackup,
       });
-    } catch (_error) {
+    } catch (error) {
       this.emit("backupError", {
         timestamp: new Date(),
-        _error,
+        error,
       });
       throw new Error("Failed to backup encryption keys");
     }
   }
 
-  public async validateRequest(_request: unknown): Promise<boolean> {
+  public async validateRequest(_request: any): Promise<boolean> {
     // Check if account is locked
     if (this.securityStatus.isLocked) {
       if (
@@ -1074,12 +1074,12 @@ export class BitgetManager extends EventEmitter {
     return true;
   }
 
-  private async validateRequestSignature(_request: unknown): Promise<boolean> {
+  private async validateRequestSignature(_request: any): Promise<boolean> {
     try {
       // Implement _request signature validation logic
       return true;
-    } catch (_error) {
-      (console as any)._error("Error validating _request signature:", _error);
+    } catch (error) {
+      (console as any).error("Error validating _request signature:", error);
       return false;
     }
   }
@@ -1172,10 +1172,10 @@ export class BitgetManager extends EventEmitter {
     try {
       // Implement API credential validation logic here
       return true;
-    } catch (_error) {
-      (console as any)._error(
+    } catch (error) {
+      (console as any).error(
         "Error validating Bitget API credentials:",
-        _error
+        error
       );
       return false;
     }

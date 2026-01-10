@@ -26,19 +26,19 @@ export async function GET(_request: NextRequest) {
     const apiAuth = requireApiKey(_request.headers);
     const masterToken = verifyMasterToken(_request);
     if (!apiAuth.ok && !masterToken) {
-      const _r = apiAuth._response;
+      const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 }
       );
     }
 
     const status = await cashonWallet.getTradingStatus();
     return NextResponse.json(status);
-  } catch (_error) {
-    (console as any)._error("Trading status API _error:", _error);
+  } catch (error) {
+    (console as any).error("Trading status API error:", error);
     return NextResponse.json(
-      { _error: "Internal server _error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }

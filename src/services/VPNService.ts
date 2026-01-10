@@ -25,7 +25,7 @@ interface VPNConnection {
     | "connecting"
     | "connected"
     | "disconnecting"
-    | "_error";
+    | "error";
   startTime?: Date;
   endTime?: Date;
   bytesReceived: number;
@@ -81,7 +81,7 @@ interface SecurityReport {
 
 export class VPNService {
   private static instance: VPNService;
-  private eventEmitter: unknown;
+  private eventEmitter: any;
   private servers: Map<string, VPNServer> = new Map();
   private connections: Map<string, VPNConnection> = new Map();
   private settings: VPNSettings;
@@ -263,13 +263,13 @@ export class VPNService {
 
       logger.info(`VPN network ${config.name} created successfully`);
       return networkId;
-    } catch (_error) {
+    } catch (error) {
       this.isCreatingNetwork = false;
       this.eventEmitter.emit("networkCreationFailed", {
-        _error: _error instanceof Error ? _error.message : "Unknown _error",
+        error: error instanceof Error ? error.message : "Unknown error",
       });
-      logger._error("Failed to create VPN network:", _error);
-      throw _error;
+      logger.error("Failed to create VPN network:", error);
+      throw error;
     }
   }
 
@@ -307,7 +307,7 @@ export class VPNService {
 
   private async deployServers(
     serverIds: string[],
-    _config: unknown
+    _config: any
   ): Promise<void> {
     for (const serverId of serverIds) {
       const server = this.servers.get(serverId);
@@ -378,15 +378,15 @@ export class VPNService {
       this.startConnectionMonitoring(connectionId);
 
       logger.info(`Connected to VPN server: ${server.name}`);
-    } catch (_error) {
+    } catch (error) {
       const errorMessage =
-        _error instanceof Error ? _error.message : "Unknown _error";
+        error instanceof Error ? error.message : "Unknown error";
       this.eventEmitter.emit("connectionFailed", {
         serverId,
-        _error: errorMessage,
+        error: errorMessage,
       });
-      logger._error(`Failed to connect to server ${serverId}:`, _error);
-      throw _error;
+      logger.error(`Failed to connect to server ${serverId}:`, error);
+      throw error;
     }
   }
 
@@ -413,12 +413,12 @@ export class VPNService {
       this.currentConnection = null;
 
       logger.info("Disconnected from VPN");
-    } catch (_error) {
+    } catch (error) {
       const errorMessage =
-        _error instanceof Error ? _error.message : "Unknown _error";
-      this.eventEmitter.emit("disconnectionFailed", { _error: errorMessage });
-      logger._error("Failed to disconnect:", _error);
-      throw _error;
+        error instanceof Error ? error.message : "Unknown error";
+      this.eventEmitter.emit("disconnectionFailed", { error: errorMessage });
+      logger.error("Failed to disconnect:", error);
+      throw error;
     }
   }
 
@@ -587,18 +587,18 @@ export class VPNService {
   }
 
   // Event listeners
-  public onNetworkCreationStarted(callback: (config: unknown) => void): void {
+  public onNetworkCreationStarted(callback: (config: any) => void): void {
     this.eventEmitter.on("networkCreationStarted", callback);
   }
 
   public onNetworkCreated(
-    callback: (data: { networkId: string; config: unknown }) => void
+    callback: (data: { networkId: string; config: any }) => void
   ): void {
     this.eventEmitter.on("networkCreated", callback);
   }
 
   public onNetworkCreationFailed(
-    callback: (data: { _error: string }) => void
+    callback: (data: { error: string }) => void
   ): void {
     this.eventEmitter.on("networkCreationFailed", callback);
   }
@@ -616,7 +616,7 @@ export class VPNService {
   }
 
   public onConnectionFailed(
-    callback: (data: { serverId: string; _error: string }) => void
+    callback: (data: { serverId: string; error: string }) => void
   ): void {
     this.eventEmitter.on("connectionFailed", callback);
   }

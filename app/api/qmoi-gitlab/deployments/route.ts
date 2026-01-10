@@ -9,7 +9,7 @@ export async function GET(_request: NextRequest) {
     const logsDir = path.join(process.cwd(), "logs");
     const deploymentLogFile = path.join(logsDir, "qmoi_gitlab_deployment.log");
 
-    let deployments: unknown[] = [];
+    let deployments: any[] = [];
 
     if (fs.existsSync(deploymentLogFile)) {
       const logContent = fs.readFileSync(deploymentLogFile, "utf-8");
@@ -43,8 +43,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any)._error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }

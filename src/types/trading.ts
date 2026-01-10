@@ -17,13 +17,13 @@ export interface Trade {
 export interface TradeExecutionResult {
   trade: Trade | null;
   success: boolean;
-  _error?: string;
+  error?: string;
   timestamp: number;
 }
 
 export interface TradeValidationResult {
   isValid: boolean;
-  _error?: string;
+  error?: string;
   availableBalance?: number;
   requiredBalance?: number;
 }

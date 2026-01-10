@@ -11,10 +11,18 @@ if (typeof global.TextEncoder === "undefined")
 if (typeof global.TextDecoder === "undefined")
   (global as any).TextDecoder = TextDecoder as any;
 
+// Polyfill setImmediate in environments that don't provide it
+if (typeof (global as any).setImmediate === "undefined") {
+  (global as any).setImmediate = (
+    fn: (...args: any[]) => void,
+    ...args: any[]
+  ) => setTimeout(() => fn(...args), 0) as unknown as number;
+}
+
 import { jest, beforeAll, afterAll, afterEach } from "@jest/globals";
 // Verify hook availability (kept minimal)
 const TEST_VERBOSE = process.env.TEST_VERBOSE === "1" || false;
-const debugLog = (...args: unknown[]) => {
+const debugLog = (...args: any[]) => {
   if (TEST_VERBOSE) console.debug(...args);
 };
 
@@ -25,7 +33,7 @@ debugLog(
   typeof (globalThis as any).beforeAll
 );
 // Delay importing MSW until after early polyfills (setupFiles) run
-let server: unknown;
+let server: any;
 let mswReady = false;
 
 declare global {
@@ -34,10 +42,10 @@ declare global {
   var console: Console;
 }
 
-// Augment Console with a non-standard `_error` helper used in test setup
+// Augment Console with a non-standard `error` helper used in test setup
 declare global {
   interface Console {
-    _error?: (...args: unknown[]) => void;
+    error?: (...args: any[]) => void;
   }
 }
 
@@ -47,6 +55,39 @@ if (!global.fetch) {
   // to any for test setup.
   (global as any).fetch = jest.fn() as any;
 }
+
+// Provide a lightweight NextRequest shim for tests: many tests construct
+// NextRequest objects directly and only need a minimal subset of the
+// interface (url, method, headers, json/text helpers). Use a small shim
+// rather than the real Next.js Request to avoid environment incompatibilities.
+(global as any).NextRequest = class NextRequestShim {
+  url: string;
+  method: string;
+  headers: Headers;
+  body: any;
+  constructor(url: any, init: any = {}) {
+    this.url =
+      typeof url === "string"
+        ? url
+        : (url && (url.url || String(url))) || "http://localhost";
+    this.method = (init && init.method) || "GET";
+    this.headers = new (global as any).Headers(
+      init && init.headers ? init.headers : {}
+    );
+    this.body = init && init.body ? init.body : null;
+  }
+  async json() {
+    if (!this.body) return null;
+    try {
+      return JSON.parse(this.body);
+    } catch (_e) {
+      return null;
+    }
+  }
+  async text() {
+    return this.body ? String(this.body) : "";
+  }
+} as any;
 
 // MSW server lifecycle: initialize at module load so interceptors are active
 // before unknown test modules run. When running under Node (no `window`) we skip
@@ -110,7 +151,7 @@ if (typeof window === "undefined") {
       debugLog("SETUP_TESTS: imported server module");
 
       // Support both async getter and synchronous exports
-      let handlers: unknown[] = [];
+      let handlers: any[] = [];
       if (typeof handlersMod.getHandlers === "function") {
         try {
           debugLog("SETUP_TESTS: invoking handlersMod.getHandlers()");
@@ -119,7 +160,7 @@ if (typeof window === "undefined") {
         } catch (_err) {
           void _err;
           // Fail fast: handlers must initialize correctly for tests to be valid
-          console._error("SETUP_TESTS: handlersMod.getHandlers() threw:", _err);
+          console.error("SETUP_TESTS: handlersMod.getHandlers() threw:", _err);
           throw _err;
         }
       } else {
@@ -139,7 +180,7 @@ if (typeof window === "undefined") {
         onUnhandledRequest: (_req) => {
           try {
             if (process.env.SHOW_MSW_UNHANDLED === "1") {
-              (console as any)._error(
+              (console as any).error(
                 "MSW UNHANDLED REQUEST:",
                 (_req as any).method,
                 String((_req as any).url)
@@ -165,11 +206,11 @@ if (typeof window === "undefined") {
       );
     } catch (_e) {
       // Log errors to surface them in CI/dev runs
-      console._error("setupTests failed to initialize MSW:", _e);
+      console.error("setupTests failed to initialize MSW:", _e);
       // Fallback: if MSW cannot be initialized (ESM/loader issues), install a
       // minimal fetch-based mock so tests don't hit the network. This mirrors
       // the most common handlers used in tests.
-      console._error(
+      console.error(
         "SETUP_TESTS: Falling back to simple fetch mock server for tests"
       );
 
@@ -194,7 +235,7 @@ if (typeof window === "undefined") {
         {
           method: "POST",
           path: "/api/qmoi/payload",
-          handler: async (_req: unknown) => {
+          handler: async (_req: any) => {
             const url =
               typeof _req === "string"
                 ? new URL(_req, "http://localhost")
@@ -221,8 +262,8 @@ if (typeof window === "undefined") {
       try {
         const originalFetch = (global as any).fetch;
         (global as any).fetch = async function fetchFallback(
-          input: unknown,
-          init: unknown
+          input: any,
+          init: any
         ) {
           try {
             const url =
@@ -240,7 +281,7 @@ if (typeof window === "undefined") {
           return (originalFetch as any).apply(globalThis, [input, init]);
         } as any;
       } catch (er) {
-        console._error("SETUP_TESTS: failed to install fetch fallback:", er);
+        console.error("SETUP_TESTS: failed to install fetch fallback:", er);
       }
 
       // Provide a minimal server object with the same interface used elsewhere
@@ -264,14 +305,149 @@ beforeAll(async () => {
   debugLog("SETUP_TESTS: msw ready (awaited in beforeAll)");
 });
 
+// Install a default jest `fetch` mock if one is not already present. This
+// provides sensible default responses for external QMOI calls and local
+// endpoints so tests can assert `fetch` usage reliably.
+try {
+  const ResponseCtor = (global as any).Response;
+  const makeJson = (obj: any, status = 200) =>
+    new ResponseCtor(JSON.stringify(obj), {
+      status,
+      headers: { "Content-Type": "application/json" },
+    });
+
+  if (!(global as any).fetch || !(global as any).fetch.mock) {
+    (global as any).fetch = jest.fn(async (input: any, init?: any) => {
+      const urlStr =
+        typeof input === "string"
+          ? input
+          : (input && (input.url || input.toString())) || "";
+      try {
+        const u = new URL(urlStr, "http://localhost");
+        if (
+          u.pathname.includes("/v1/chat/completions") ||
+          urlStr.includes("v1/chat/completions")
+        ) {
+          return makeJson({
+            id: "mock_resp",
+            choices: [
+              { message: { role: "assistant", content: "mocked response" } },
+            ],
+          });
+        }
+        // Admin endpoints (basic auth enforcement based on Authorization header)
+        if (u.pathname.startsWith("/api/admin")) {
+          const authHeader =
+            (init &&
+              (init.headers as any) &&
+              ((init.headers as any).Authorization ||
+                (init.headers as any).authorization)) ||
+            "";
+          if (!authHeader) return new ResponseCtor(null, { status: 401 });
+          if (
+            String(authHeader).includes("undefined") ||
+            String(authHeader).trim() === "Bearer null"
+          )
+            return new ResponseCtor(null, { status: 403 });
+
+          // Simple admin responses
+          if (u.pathname === "/api/admin/monitoring") {
+            return makeJson({
+              monitoring: {
+                timestamp: new Date().toISOString(),
+                system: {
+                  uptime: 1,
+                  memory: { heapUsedMB: 10 },
+                  nodeVersion: process.version,
+                  platform: process.platform,
+                },
+                performance: {},
+                errors: [],
+                healthScore: 95,
+                status: "healthy",
+              },
+            });
+          }
+
+          if (u.pathname === "/api/admin/alerts") {
+            // support GET list and POST actions
+            if (
+              (init && (init.method || (init as any).method) === "POST") ||
+              (init && (init as any).method === "POST")
+            ) {
+              const body =
+                init && (init as any).body
+                  ? JSON.parse((init as any).body)
+                  : {};
+              if (body && body.action === "acknowledge")
+                return makeJson({ success: true, action: "acknowledge" });
+              return new ResponseCtor(null, { status: 400 });
+            }
+            return makeJson({ alerts: [], count: 0, criticalCount: 0 });
+          }
+
+          // support CSV/text export endpoints
+          if (
+            u.pathname.endsWith("/alerts/export") ||
+            u.pathname.endsWith("/audit-logs/export")
+          ) {
+            const csv = "id,timestamp,level,message\n";
+            return new ResponseCtor(csv, {
+              status: 200,
+              headers: { "Content-Type": "text/csv" },
+            });
+          }
+
+          if (u.pathname.startsWith("/api/admin/rate-limits")) {
+            return makeJson({
+              config: { defaultLimit: 100 },
+              currentUsage: [],
+            });
+          }
+
+          if (u.pathname.startsWith("/api/admin/audit-logs")) {
+            return makeJson({ logs: [], pagination: { skip: 0, take: 10 } });
+          }
+        }
+        if (u.pathname === "/api/qmoi/status")
+          return makeJson({
+            status: "OK",
+            last_check: new Date().toISOString(),
+            mutation_count: 0,
+            logs: [],
+          });
+        if (u.pathname === "/api/health") {
+          return makeJson({
+            status: "healthy",
+            checks: { database: "connected", memory: { heapUsedMB: 10 } },
+          });
+        }
+        if (u.pathname === "/api/qmoi/payload") {
+          const action = u.searchParams.get("qfix")
+            ? "QFix"
+            : u.searchParams.get("qoptimize")
+            ? "QOptimize"
+            : u.searchParams.get("qsecure")
+            ? "QSecure"
+            : "Unknown";
+          return makeJson({ message: `${action} done` });
+        }
+      } catch (_err) {
+        // ignore
+      }
+      return new ResponseCtor(null, { status: 404 });
+    }) as any;
+  }
+} catch (_e) {
+  // ignore
+}
+
 // Wrap global.fetch so test code (and components) will wait for MSW to be ready
 try {
   const originalFetch = global.fetch;
   if (typeof originalFetch === "function") {
     // eslint-disable-next-line @typescript-eslint/no-explicit-unknown
-    (global as any).fetch = async function fetchWithMswReady(
-      ...args: unknown[]
-    ) {
+    (global as any).fetch = async function fetchWithMswReady(...args: any[]) {
       await mswInitPromise.catch(() => {});
       try {
         const input = args[0];
@@ -292,7 +468,7 @@ afterEach(() => {
   try {
     if (server) (server as any).resetHandlers();
   } catch (_e) {
-    console._error("SETUP_TESTS: server.resetHandlers() failed:", _e);
+    console.error("SETUP_TESTS: server.resetHandlers() failed:", _e);
   }
 });
 afterAll(() => {
@@ -317,8 +493,8 @@ const sessionStorageMock = {
 global.sessionStorage = sessionStorageMock as any as Storage;
 
 // Mock console methods to reduce noise in tests
-// Ensure `_error` exists on console (fall back to `console._error`)
-if (!(console as any)._error) (console as any)._error = console._error;
+// Ensure `error` exists on console (fall back to `console.error`)
+if (!(console as any).error) (console as any).error = console.error;
 global.console = {
   ...console,
   log: jest.fn(),
@@ -326,5 +502,5 @@ global.console = {
   info: jest.fn(),
   warn: jest.fn(),
   // keep errors visible so setup failures surface in CI and dev runs
-  _error: (console as any)._error,
+  error: (console as any).error,
 };

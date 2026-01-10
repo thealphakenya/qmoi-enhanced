@@ -52,9 +52,9 @@ export async function POST(_request: NextRequest) {
     fs.writeFileSync(FINGERPRINTS_FILE, JSON.stringify(fingerprints, null, 2));
 
     return NextResponse.json({ success: true });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: _error instanceof Error ? _error.message : "Unknown _error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }

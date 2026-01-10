@@ -29,7 +29,7 @@ function verifyJWT(token: string): { valid: boolean; role?: string } {
 function logAudit(
   action: string,
   user: string,
-  _options: unknown,
+  _options: any,
   status: string
 ) {
   const entry = {
@@ -45,9 +45,9 @@ function logAudit(
 function logDownloadFix(
   action: string,
   user: string,
-  _options: unknown,
+  _options: any,
   status: string,
-  _error: unknown = null
+  error: any = null
 ) {
   const entry = {
     timestamp: new Date().toISOString(),
@@ -56,14 +56,14 @@ function logDownloadFix(
     app: "QCity",
     device: _options.device || "unknown",
     status,
-    _error,
+    error,
   };
   fs.appendFileSync("logs/download_fixes.log", JSON.stringify(entry) + "\n");
 }
 
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
-  let jwt: unknown = { valid: false };
+  let jwt: any = { valid: false };
   if (apiAuth.ok) {
     jwt.valid = true; // allow API key or master token
   } else {
@@ -78,7 +78,7 @@ export async function POST(_req: NextRequest) {
     }
   }
 
-  let _options: unknown = {};
+  let _options: any = {};
   try {
     _options = (await _req.json() as any);
   } catch {}
@@ -129,13 +129,13 @@ export async function POST(_req: NextRequest) {
       "selfheal-complete",
       user,
       _options,
-      code === 0 ? "success" : "_error"
+      code === 0 ? "success" : "error"
     );
     logDownloadFix(
       "selfheal-complete",
       user,
       _options,
-      code === 0 ? "success" : "_error"
+      code === 0 ? "success" : "error"
     );
   });
 

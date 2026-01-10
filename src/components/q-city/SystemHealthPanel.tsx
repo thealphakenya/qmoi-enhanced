@@ -4,7 +4,7 @@ import { getSessionHeaders } from "../../services/qmoiSession";
 export default function SystemHealthPanel() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [actionMsg, setActionMsg] = useState<string | null>(null);
   const [uiHealth, setUiHealth] = useState<string>("Unknown");
   const [uiTestTime, setUiTestTime] = useState<string>("Never");
@@ -20,8 +20,8 @@ export default function SystemHealthPanel() {
       if (!_res.ok) throw new Error("Failed to fetch");
       const json = await _res.json();
       setData(json);
-    } catch (_err: unknown) {
-      setError((_err && _err.message) || "Unknown _error");
+    } catch (_err: any) {
+      setError((_err && _err.message) || "Unknown error");
     } finally {
       setLoading(false);
     }
@@ -59,7 +59,7 @@ export default function SystemHealthPanel() {
       setUiHealth((json && json.status) || "Unknown");
       setUiTestTime(new Date().toLocaleString());
       setActionMsg("UI health check complete.");
-    } catch (_err: unknown) {
+    } catch (_err: any) {
       void _err;
       setUiHealth("Error");
       setActionMsg("UI health check failed.");
@@ -85,7 +85,7 @@ export default function SystemHealthPanel() {
   }, []);
 
   if (loading) return <div>Loading system health...</div>;
-  if (_error) return <div style={{ color: "red" }}>Error: {_error}</div>;
+  if (error) return <div style={{ color: "red" }}>Error: {error}</div>;
 
   return (
     <div

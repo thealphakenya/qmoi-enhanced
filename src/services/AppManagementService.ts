@@ -27,7 +27,7 @@ interface AppInfo {
     | "downloading"
     | "installing"
     | "installed"
-    | "_error"
+    | "error"
     | "updating";
   errorMessage?: string;
   dependencies: string[];
@@ -41,7 +41,7 @@ interface AppInfo {
     }>;
     logs: Array<{
       timestamp: Date;
-      level: "info" | "warning" | "_error";
+      level: "info" | "warning" | "error";
       message: string;
     }>;
   };
@@ -73,7 +73,7 @@ type Timeout = ReturnType<typeof setTimeout>;
 
 export class AppManagementService {
   private static instance: AppManagementService;
-  private eventEmitter: unknown;
+  private eventEmitter: any;
   private apps: Map<string, AppInfo> = new Map();
   private isAutoGitEnabled = true;
   private gitCommitInterval: Timeout | null = null;
@@ -363,13 +363,13 @@ export class AppManagementService {
       }
 
       console.log(`App ${app.displayName} installed successfully`);
-    } catch (_error) {
-      app.status = "_error";
+    } catch (error) {
+      app.status = "error";
       app.errorMessage =
-        _error instanceof Error ? _error.message : "Unknown _error";
-      this.eventEmitter.emit("appError", { appId, _error: app.errorMessage });
-      (console as any)._error(`Failed to install app ${appId}:`, _error);
-      throw _error;
+        error instanceof Error ? error.message : "Unknown error";
+      this.eventEmitter.emit("appError", { appId, error: app.errorMessage });
+      (console as any).error(`Failed to install app ${appId}:`, error);
+      throw error;
     }
   }
 
@@ -461,14 +461,14 @@ export class AppManagementService {
       }
 
       console.log(`App ${app.displayName} updated to v${app.version}`);
-    } catch (_error) {
+    } catch (error) {
       app.isUpdating = false;
-      app.status = "_error";
+      app.status = "error";
       app.errorMessage =
-        _error instanceof Error ? _error.message : "Unknown _error";
-      this.eventEmitter.emit("appError", { appId, _error: app.errorMessage });
-      (console as any)._error(`Failed to update app ${appId}:`, _error);
-      throw _error;
+        error instanceof Error ? error.message : "Unknown error";
+      this.eventEmitter.emit("appError", { appId, error: app.errorMessage });
+      (console as any).error(`Failed to update app ${appId}:`, error);
+      throw error;
     }
   }
 
@@ -530,18 +530,18 @@ export class AppManagementService {
 
       this.eventEmitter.emit("troubleshootingCompleted", { appId, issues });
       console.log(`Troubleshooting completed for ${app.displayName}`);
-    } catch (_error) {
+    } catch (error) {
       app.troubleshooting.logs.push({
         timestamp: new Date(),
-        level: "_error",
-        message: `Troubleshooting failed: ${_error}`,
+        level: "error",
+        message: `Troubleshooting failed: ${error}`,
       });
-      (console as any)._error(`Troubleshooting failed for ${appId}:`, _error);
-      throw _error;
+      (console as any).error(`Troubleshooting failed for ${appId}:`, error);
+      throw error;
     }
   }
 
-  private async runDiagnostics(app: AppInfo): Promise<unknown[]> {
+  private async runDiagnostics(app: AppInfo): Promise<any[]> {
     // Simulate running diagnostics
     const issues = [];
 
@@ -591,7 +591,7 @@ export class AppManagementService {
     return Math.random() > 0.2; // 80% chance of having permission
   }
 
-  private async fixIssue(app: AppInfo, issue: unknown): Promise<void> {
+  private async fixIssue(app: AppInfo, issue: any): Promise<void> {
     // Simulate fixing issues
     await this.sleep(1000);
 
@@ -628,8 +628,8 @@ export class AppManagementService {
       // await exec('git push');
 
       console.log(`Auto Git commit: ${message}`);
-    } catch (_error) {
-      (console as any)._error("Auto Git commit failed:", _error);
+    } catch (error) {
+      (console as any).error("Auto Git commit failed:", error);
     }
   }
 
@@ -642,10 +642,10 @@ export class AppManagementService {
             if (update) {
               this.eventEmitter.emit("updateAvailable", { app, update });
             }
-          } catch (_error) {
-            (console as any)._error(
+          } catch (error) {
+            (console as any).error(
               `Failed to check updates for ${app.id}:`,
-              _error
+              error
             );
           }
         }
@@ -704,7 +704,7 @@ export class AppManagementService {
   }
 
   public onAppError(
-    callback: (data: { appId: string; _error: string }) => void
+    callback: (data: { appId: string; error: string }) => void
   ): void {
     this.eventEmitter.on("appError", callback);
   }
@@ -716,7 +716,7 @@ export class AppManagementService {
   }
 
   public onTroubleshootingCompleted(
-    callback: (data: { appId: string; issues: unknown[] }) => void
+    callback: (data: { appId: string; issues: any[] }) => void
   ): void {
     this.eventEmitter.on("troubleshootingCompleted", callback);
   }

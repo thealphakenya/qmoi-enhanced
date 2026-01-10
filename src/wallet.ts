@@ -36,9 +36,9 @@ export class MockAdapter implements WalletAdapter {
 export class TestnetAdapter implements WalletAdapter {
   name: string;
   isTestnet = true;
-  private opts: unknown;
+  private opts: any;
 
-  constructor(name: string, opts?: unknown) {
+  constructor(name: string, opts?: any) {
     this.name = name;
     this.opts = opts || {};
   }
@@ -96,9 +96,9 @@ function _maskSecret(s: string | null | undefined) {
 export class CashonAdapter implements WalletAdapter {
   name: string;
   isTestnet = false;
-  private opts: unknown;
+  private opts: any;
 
-  constructor(name = "cashon", opts?: unknown) {
+  constructor(name = "cashon", opts?: any) {
     this.name = name;
     this.opts = opts || {};
   }
@@ -154,7 +154,7 @@ export class CashonAdapter implements WalletAdapter {
         const r = await (global as any).fetch(url, {
           headers: { Authorization: `Bearer ${apiKey}` },
         });
-        const j: unknown = await r.json();
+        const j: any = await r.json();
         // Expecting { balance: number, currency: string }
         return {
           amount: j.balance || 0,
@@ -169,7 +169,7 @@ export class CashonAdapter implements WalletAdapter {
         amount: 0,
         currency: "USD",
         status: "network_failed",
-        _error: String(_err),
+        error: String(_err),
       };
     }
   }
@@ -179,9 +179,9 @@ export class CashonAdapter implements WalletAdapter {
 export class MegavaultAdapter implements WalletAdapter {
   name: string;
   isTestnet = false;
-  private opts: unknown;
+  private opts: any;
 
-  constructor(name = "megavault", opts?: unknown) {
+  constructor(name = "megavault", opts?: any) {
     this.name = name;
     this.opts = opts || {};
   }
@@ -234,7 +234,7 @@ export class MegavaultAdapter implements WalletAdapter {
         const r = await (global as any).fetch(url, {
           headers: { Authorization: `Bearer ${apiKey}` },
         });
-        const j: unknown = await r.json();
+        const j: any = await r.json();
         return {
           amount: j.balance || 0,
           currency: j.currency || "USD",
@@ -248,7 +248,7 @@ export class MegavaultAdapter implements WalletAdapter {
         amount: 0,
         currency: "USD",
         status: "network_failed",
-        _error: String(_err),
+        error: String(_err),
       };
     }
   }
@@ -292,7 +292,7 @@ export class WalletService {
         };
       } catch (_err) {
         void _err;
-        out[name] = { _error: String(_err) };
+        out[name] = { error: String(_err) };
       }
     }
     // persist snapshot
@@ -314,7 +314,7 @@ export class WalletService {
 
   persistSnapshot(snapshot: Record<string, unknown>) {
     try {
-      const data: unknown = JSON.parse(
+      const data: any = JSON.parse(
         fs.readFileSync(this.stateFile, "utf8") || "{}"
       );
       if (!data.history) data.history = [];
@@ -341,7 +341,7 @@ export class WalletService {
     if (key) return { apiKey: key };
 
     try {
-      const s: unknown = JSON.parse(
+      const s: any = JSON.parse(
         fs.readFileSync(this.stateFile, "utf8") || "{}"
       );
       return s.wallets && s.wallets[name] ? s.wallets[name].creds : null;
@@ -351,9 +351,9 @@ export class WalletService {
     }
   }
 
-  saveWalletState(name: string, meta: unknown) {
+  saveWalletState(name: string, meta: any) {
     const raw = fs.readFileSync(this.stateFile, "utf8") || "{}";
-    const data: unknown = JSON.parse(raw || "{}");
+    const data: any = JSON.parse(raw || "{}");
     data.wallets = data.wallets || {};
     data.wallets[name] = meta;
     fs.writeFileSync(this.stateFile, JSON.stringify(data, null, 2), "utf8");

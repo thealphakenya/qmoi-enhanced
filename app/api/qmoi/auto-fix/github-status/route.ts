@@ -11,10 +11,10 @@ export async function GET(_request: NextRequest) {
   // API key gating for status checks
   const auth = libProposals.requireApiKey(_request.headers);
   if (!auth.ok) {
-    const r = auth._response;
+    const r = auth.response;
     if (!r)
       return NextResponse.json(
-        { _error: "Unknown auth _error" },
+        { error: "Unknown auth error" },
         { status: 500 },
       );
     return NextResponse.json(r.body, { status: r.status });
@@ -77,7 +77,7 @@ export async function GET(_request: NextRequest) {
             if (logContent.includes("completed successfully")) {
               status.status = "success";
             } else if (
-              logContent.includes("_error") ||
+              logContent.includes("error") ||
               logContent.includes("failed")
             ) {
               status.status = "failure";
@@ -89,15 +89,15 @@ export async function GET(_request: NextRequest) {
           }
         }
       }
-    } catch (_error) {
-      console.log("Error checking logs:", _error);
+    } catch (error) {
+      console.log("Error checking logs:", error);
     }
 
     return NextResponse.json(status);
-  } catch (_error) {
-    (console as any)._error("Error getting GitHub status:", _error);
+  } catch (error) {
+    (console as any).error("Error getting GitHub status:", error);
     return NextResponse.json(
-      { _error: "Failed to get GitHub status" },
+      { error: "Failed to get GitHub status" },
       { status: 500 },
     );
   }

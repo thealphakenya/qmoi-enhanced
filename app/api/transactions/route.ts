@@ -8,7 +8,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -16,19 +16,19 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
-    const _query = new URL(_request.url);
-    const skip = parseInt(_query.searchParams.get("skip") || "0");
-    const take = parseInt(_query.searchParams.get("take") || "10");
-    const status = _query.searchParams.get("status");
+    const query = new URL(_request.url);
+    const skip = parseInt(query.searchParams.get("skip") || "0");
+    const take = parseInt(query.searchParams.get("take") || "10");
+    const status = query.searchParams.get("status");
 
-    // Build _query filters
+    // Build query filters
     const filters: Record<string, unknown> = {};
     if (status) filters.status = status;
 
@@ -37,10 +37,10 @@ export async function GET(_request: NextRequest) {
       transactions: [],
       pagination: { skip, take, total: 0 },
     });
-  } catch (_error) {
-    console._error("GET /api/transactions _error:", _error);
+  } catch (error) {
+    console.error("GET /api/transactions error:", error);
     return NextResponse.json(
-      { _error: "Internal server _error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }

@@ -15,7 +15,7 @@ class QCityDeviceManager {
   loadConfig() {
     try {
       return JSON.parse(fs.readFileSync('config/qcity-device-config.json', 'utf8'));
-    } catch (_error) {
+    } catch (error) {
       console.log('QCity config not found, using defaults');
       return { 
         qcity_device: { 
@@ -234,7 +234,7 @@ class QCityDeviceManager {
   async autoFix() {
     console.log('Running advanced auto-fix in QCity with AI...');
     await this.executeInQCity('npm run lint:fix');
-    await this.executeInQCity('node scripts/_error/error_fixer.py');
+    await this.executeInQCity('node scripts/error/error_fixer.py');
     await this.executeInQCity('qcity:ai-fix');
     console.log('Advanced auto-fix completed in QCity with AI optimization');
   }
@@ -464,8 +464,8 @@ if (command) {
         console.log('Command completed successfully with unlimited resources');
       }
     })
-    .catch(_error => {
-      (console as any)._error('Error:', _error);
+    .catch(error => {
+      (console as any).error('Error:', error);
       process.exit(1);
     });
 } else {

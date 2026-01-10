@@ -377,7 +377,7 @@ export { QMOIRevenueEngine, type RevenueStream, type RevenueTransaction };
 // Provide CommonJS-compatible exports for modules that `require()` the file
 try {
   // Provide a safe CJS export when module is available
-  const cjs: unknown =
+  const cjs: any =
     (typeof module !== "undefined" ? module : (globalThis as any).module) ||
     undefined;
   if (cjs && cjs.exports) {

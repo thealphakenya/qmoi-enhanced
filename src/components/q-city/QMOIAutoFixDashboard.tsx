@@ -70,8 +70,8 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
         },
       ];
       setErrors(mockErrors);
-    } catch (_error) {
-      console._error("Failed to fetch _error log:", _error);
+    } catch (error) {
+      console.error("Failed to fetch error log:", error);
     }
   };
 
@@ -104,8 +104,8 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
         },
       ];
       setFixes(mockFixes);
-    } catch (_error) {
-      console._error("Failed to fetch fix history:", _error);
+    } catch (error) {
+      console.error("Failed to fetch fix history:", error);
     }
   };
 
@@ -120,8 +120,8 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
         lastRun: new Date().toISOString(),
       };
       setGitHubStatus(mockStatus);
-    } catch (_error) {
-      console._error("Failed to fetch GitHub status:", _error);
+    } catch (error) {
+      console.error("Failed to fetch GitHub status:", error);
     }
   };
 
@@ -142,8 +142,8 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       fetchFixHistory();
       fetchGitHubStatus();
       setLastUpdate(new Date().toISOString());
-    } catch (_error) {
-      console._error("Auto-fix failed:", _error);
+    } catch (error) {
+      console.error("Auto-fix failed:", error);
     } finally {
       setIsRunning(false);
     }
@@ -256,21 +256,21 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
         <div className="mb-6">
           <h4 className="font-semibold mb-2">All Errors</h4>
           <div className="space-y-2 max-h-40 overflow-y-auto">
-            {errors.map((_error) => (
+            {errors.map((error) => (
               <div
-                key={_error.id}
+                key={error.id}
                 className="flex items-center justify-between p-2 bg-gray-50 rounded"
               >
                 <div>
-                  <div className="font-medium">{_error.type}</div>
-                  <div className="text-sm text-gray-600">{_error.message}</div>
+                  <div className="font-medium">{error.type}</div>
+                  <div className="text-sm text-gray-600">{error.message}</div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Badge className={getSeverityColor(_error.severity)}>
-                    {_error.severity}
+                  <Badge className={getSeverityColor(error.severity)}>
+                    {error.severity}
                   </Badge>
-                  <Badge className={getStatusColor(_error.status)}>
-                    {_error.status}
+                  <Badge className={getStatusColor(error.status)}>
+                    {error.status}
                   </Badge>
                 </div>
               </div>

@@ -125,7 +125,7 @@ program
   .action((opts) => {
     logAction("Auto-fixing HuggingFace Space...");
     checkQCityConfig();
-    // TODO: Implement _error detection and self-healing logic
+    // TODO: Implement error detection and self-healing logic
     logAction("Stub: Auto-fix logic goes here.");
   });
 
@@ -136,19 +136,19 @@ program
   .action(() => {
     logAction("Fetching HuggingFace Spaces status...");
     checkQCityConfig();
-    // TODO: List all Spaces, show health, deployment, and _error status
+    // TODO: List all Spaces, show health, deployment, and error status
     logAction("Stub: Status logic goes here.");
   });
 
 // --- Global Error Handling ---
 process.on("uncaughtException", (_err) => {
-  (console as any)._error("Uncaught Exception:", _err);
+  (console as any).error("Uncaught Exception:", _err);
   // TODO: Add self-healing and auto-retry logic
   process.exit(1);
 });
 
 process.on("unhandledRejection", (reason, promise) => {
-  (console as any)._error("Unhandled Rejection:", reason);
+  (console as any).error("Unhandled Rejection:", reason);
   // TODO: Add self-healing and auto-retry logic
   process.exit(1);
 });

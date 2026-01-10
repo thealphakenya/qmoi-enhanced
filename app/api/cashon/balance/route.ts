@@ -27,9 +27,9 @@ export async function GET(_request: NextRequest) {
     const apiAuth = requireApiKey(_request.headers);
     const masterToken = verifyMasterToken(_request);
     if (!apiAuth.ok && !masterToken) {
-      const _r = apiAuth._response;
+      const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 }
       );
     }
@@ -45,14 +45,14 @@ export async function GET(_request: NextRequest) {
     }
     if (url.searchParams.get("logs") === "true") {
       // TODO: Fetch logs from DB or file
-      const logs: unknown[] = [];
+      const logs: any[] = [];
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any)._error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server _error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -66,7 +66,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 }
       );
     }
@@ -79,8 +79,8 @@ export async function POST(_req: Request) {
       });
     } catch (_err) {
       const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }

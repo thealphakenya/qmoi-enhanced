@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import authService from "@/lib/auth/service";
 import { db } from "@/lib/db/prisma";
-import { errorTracker } from "@/lib/monitoring/_error-tracker";
+import { errorTracker } from "@/lib/monitoring/error-tracker";
 import { monitor } from "@/lib/monitoring/performance";
 
 /**
@@ -15,7 +15,7 @@ export async function GET(_request: NextRequest) {
 
     if (!token) {
       return NextResponse.json(
-        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
+        { error: { message: "Missing authorization token", code: "NO_TOKEN" } },
         { status: 401 }
       );
     }
@@ -23,9 +23,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 }
       );
     }
@@ -34,7 +34,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(decoded.userId);
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 }
       );
     }
@@ -51,10 +51,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (_error) {
-    console._error("Alerts _error:", _error);
+  } catch (error) {
+    console.error("Alerts error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }
     );
   }
@@ -71,7 +71,7 @@ export async function POST(_request: NextRequest) {
 
     if (!token) {
       return NextResponse.json(
-        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
+        { error: { message: "Missing authorization token", code: "NO_TOKEN" } },
         { status: 401 }
       );
     }
@@ -79,9 +79,9 @@ export async function POST(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 }
       );
     }
@@ -90,7 +90,7 @@ export async function POST(_request: NextRequest) {
     const user = await db.userService.findById(decoded.userId);
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 }
       );
     }
@@ -101,7 +101,7 @@ export async function POST(_request: NextRequest) {
     if (!action || !alertId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Missing required fields: action, alertId",
             code: "MISSING_FIELDS",
           },
@@ -112,7 +112,7 @@ export async function POST(_request: NextRequest) {
 
     if (!["acknowledge", "dismiss", "escalate"].includes(action)) {
       return NextResponse.json(
-        { _error: { message: "Invalid action", code: "INVALID_ACTION" } },
+        { error: { message: "Invalid action", code: "INVALID_ACTION" } },
         { status: 400 }
       );
     }
@@ -127,10 +127,10 @@ export async function POST(_request: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (_error) {
-    console._error("Alert action _error:", _error);
+  } catch (error) {
+    console.error("Alert action error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }
     );
   }
@@ -142,7 +142,7 @@ function generateAlerts() {
   const errors = errorTracker.getErrorStats();
   const metrics = monitor.getAllMetrics();
 
-  // Check for high _error rates
+  // Check for high error rates
   for (const [errorType, stats] of Object.entries(errors || {})) {
     const errorStats = stats as any;
     if (errorStats.lastHour > 5) {
@@ -151,12 +151,12 @@ function generateAlerts() {
         type: "HIGH_ERROR_RATE",
         severity: errorStats.lastHour > 20 ? "critical" : "warning",
         component: "Application Errors",
-        message: `High _error rate detected: ${errorType} (${errorStats.lastHour} in last hour)`,
+        message: `High error rate detected: ${errorType} (${errorStats.lastHour} in last hour)`,
         errorType,
         count: errorStats.lastHour,
         timestamp: now.toISOString(),
         actionable: true,
-        suggestedAction: "Review _error logs and escalate to engineering",
+        suggestedAction: "Review error logs and escalate to engineering",
       });
     }
   }

@@ -12,7 +12,7 @@ function startServer() {
     app.use(express.json());
 
     app.post("/api/qmoi/chat", (_req, _res) => {
-      // Minimal plausible _response for the test
+      // Minimal plausible response for the test
       _res.json({
         choices: [
           { message: { content: "I'm doing well, thanks! How can I help?" } },
@@ -53,6 +53,6 @@ async function run() {
 }
 
 run().catch((_e) => {
-  (console as any)._error(_e);
+  (console as any).error(_e);
   process.exit(2);
 });

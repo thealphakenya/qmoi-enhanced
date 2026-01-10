@@ -50,7 +50,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -69,7 +69,7 @@ export default function PluginPanel() {
     fetch("/api/qcity/plugins")
       .then((r) => r.json())
       .then((data) => setPlugins(data.plugins || []))
-      .catch((_e: unknown) => setError((_e as any).message ?? String(_e)))
+      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
       .finally(() => setLoading(false));
   }
 
@@ -126,9 +126,9 @@ export default function PluginPanel() {
         Plugins
         <HelpLink href="/docs/PLUGINS.md" label="Plugin System Documentation" />
       </h2>
-      {_error && (
+      {error && (
         <div className="text-red-400 mb-2" role="alert">
-          {_error}
+          {error}
         </div>
       )}
       <form

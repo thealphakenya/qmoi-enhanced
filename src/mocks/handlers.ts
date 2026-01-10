@@ -4,7 +4,7 @@
 // Provide handlers through an async getter so MSW (ESM) is imported at runtime
 export async function getHandlers() {
   const TEST_VERBOSE = process.env.TEST_VERBOSE === "1" || false;
-  const debug = (...args: unknown[]) => {
+  const debug = (...args: any[]) => {
     if (TEST_VERBOSE) console.debug(...args);
   };
   debug("handlers.getHandlers: called");
@@ -22,7 +22,7 @@ export async function getHandlers() {
   const handlers = [
     helpers.get(
       "/api/qmoi/status",
-      (_req: unknown, _res: unknown, ctx: unknown) => {
+      (_req: any, _res: any, ctx: any) => {
         try {
           debug(
             "HANDLER: status handler invoked, keys=",
@@ -45,14 +45,14 @@ export async function getHandlers() {
                 ((_req as any)._request as any).path
               );
             } catch (_e) {
-              console._error(
+              console.error(
                 "HANDLER: status inner _request logging failed",
                 _e
               );
             }
           }
         } catch (_e) {
-          console._error("HANDLER: status handler logging failed", _e);
+          console.error("HANDLER: status handler logging failed", _e);
         }
         // Support multiple resolver shapes: rest (ctx), http (return object), or http with _res not a function
         const payload = {
@@ -67,21 +67,21 @@ export async function getHandlers() {
             (ctx as any).json(payload)
           );
         }
-        const _response = new Response(JSON.stringify(payload), {
+        const response = new Response(JSON.stringify(payload), {
           status: 200,
           headers: new Headers({ "content-type": "application/json" }),
         });
         if (typeof _res === "function") {
-          return (_res as any)(_response);
+          return (_res as any)(response);
         }
-        return _response;
+        return response;
       }
     ),
     // Also register absolute-url forms to ensure matching regardless of how
     // the _request is represented by the underlying interceptor.
     helpers.get(
       "http://localhost/api/qmoi/status",
-      (_req: unknown, _res: unknown, ctx: unknown) => {
+      (_req: any, _res: any, ctx: any) => {
         try {
           debug(
             "HANDLER: absolute status handler invoked, url=",
@@ -89,7 +89,7 @@ export async function getHandlers() {
               String((_req as any).url)
           );
         } catch (_e) {
-          console._error("HANDLER: absolute status logging failed", _e);
+          console.error("HANDLER: absolute status logging failed", _e);
         }
         const payload = {
           status: "OK",
@@ -103,19 +103,19 @@ export async function getHandlers() {
             (ctx as any).json(payload)
           );
         }
-        const _response = new Response(JSON.stringify(payload), {
+        const response = new Response(JSON.stringify(payload), {
           status: 200,
           headers: new Headers({ "content-type": "application/json" }),
         });
         if (typeof _res === "function") {
-          return (_res as any)(_response);
+          return (_res as any)(response);
         }
-        return _response;
+        return response;
       }
     ),
     helpers.post(
       "/api/qmoi/payload",
-      (_req: unknown, _res: unknown, ctx: unknown) => {
+      (_req: any, _res: any, ctx: any) => {
         // in rest handlers, _req.url is a URL instance
         try {
           debug(
@@ -139,14 +139,14 @@ export async function getHandlers() {
                 ((_req as any)._request as any).path
               );
             } catch (_e) {
-              console._error(
+              console.error(
                 "HANDLER: payload inner _request logging failed",
                 _e
               );
             }
           }
         } catch (_e) {
-          console._error("HANDLER: payload handler logging failed", _e);
+          console.error("HANDLER: payload handler logging failed", _e);
         }
         // Support both `_req.url` (rest) and `_req._request.url` (http helper)
         const rawUrl =
@@ -171,19 +171,19 @@ export async function getHandlers() {
             (ctx as any).json(out)
           );
         }
-        const _response = new Response(JSON.stringify(out), {
+        const response = new Response(JSON.stringify(out), {
           status: 200,
           headers: new Headers({ "content-type": "application/json" }),
         });
         if (typeof _res === "function") {
-          return (_res as any)(_response);
+          return (_res as any)(response);
         }
-        return _response;
+        return response;
       }
     ),
     helpers.post(
       "http://localhost/api/qmoi/payload",
-      (_req: unknown, _res: unknown, ctx: unknown) => {
+      (_req: any, _res: any, ctx: any) => {
         // Mirror logic for absolute URL form
         try {
           const rawUrl =
@@ -210,16 +210,16 @@ export async function getHandlers() {
               (ctx as any).json(out)
             );
           }
-          const _response = new Response(JSON.stringify(out), {
+          const response = new Response(JSON.stringify(out), {
             status: 200,
             headers: new Headers({ "content-type": "application/json" }),
           });
           if (typeof _res === "function") {
-            return (_res as any)(_response);
+            return (_res as any)(response);
           }
-          return _response;
+          return response;
         } catch (_e) {
-          console._error("HANDLER: absolute payload handler failed", _e);
+          console.error("HANDLER: absolute payload handler failed", _e);
           const out = { message: `Unknown done` };
           if (ctx && typeof (ctx as any).status === "function") {
             return (_res as any)(

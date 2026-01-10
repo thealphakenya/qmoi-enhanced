@@ -4,7 +4,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { spawn } from "child_process";
 
 export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
-  spawn("node", ["scripts/enhanced-_error-fix.js"], {
+  spawn("node", ["scripts/enhanced-error-fix.js"], {
     detached: true,
     stdio: "ignore",
   });

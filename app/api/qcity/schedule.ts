@@ -11,13 +11,13 @@ function loadSchedules() {
   if (!fs.existsSync(SCHEDULE_FILE)) return [];
   return JSON.parse(fs.readFileSync(SCHEDULE_FILE, "utf-8"));
 }
-function saveSchedules(schedules: unknown[]) {
+function saveSchedules(schedules: any[]) {
   fs.writeFileSync(SCHEDULE_FILE, JSON.stringify(schedules, null, 2));
 }
 
 const handler = requireRole(["admin", "master"])(
   async (_req: NextApiRequest, _res: NextApiResponse) => {
-    const { method, body, _query } = _req;
+    const { method, body, query } = _req;
     let schedules = loadSchedules();
     if (method === "GET") {
       return _res.status(200).json({ items: schedules });
@@ -25,7 +25,7 @@ const handler = requireRole(["admin", "master"])(
     if (method === "POST") {
       const { name, command, cron, deviceId, notify } = body;
       if (!name || !command || !cron)
-        return _res.status(400).json({ _error: "Missing fields" });
+        return _res.status(400).json({ error: "Missing fields" });
       const job = {
         id: `job_${Date.now()}`,
         name,
@@ -42,8 +42,8 @@ const handler = requireRole(["admin", "master"])(
     }
     if (method === "PUT") {
       const { id, ...update } = body;
-      const idx = schedules.findIndex((j: unknown) => j.id === id);
-      if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+      const idx = schedules.findIndex((j: any) => j.id === id);
+      if (idx === -1) return _res.status(404).json({ error: "Not found" });
       schedules[idx] = {
         ...schedules[idx],
         ...update,
@@ -54,19 +54,19 @@ const handler = requireRole(["admin", "master"])(
     }
     if (method === "DELETE") {
       const { id } = body;
-      schedules = schedules.filter((j: unknown) => j.id !== id);
+      schedules = schedules.filter((j: any) => j.id !== id);
       saveSchedules(schedules);
       return _res.status(200).json({ success: true });
     }
-    if (method === "PATCH" && _query.action === "run") {
+    if (method === "PATCH" && query.action === "run") {
       const { id } = body;
-      const job = schedules.find((j: unknown) => j.id === id);
-      if (!job) return _res.status(404).json({ _error: "Not found" });
+      const job = schedules.find((j: any) => j.id === id);
+      if (!job) return _res.status(404).json({ error: "Not found" });
       // For now, just log the command to be run
       console.log(`[SCHEDULED RUN]`, job);
       return _res.status(200).json({ success: true });
     }
-    _res.status(405).json({ _error: "Method not allowed" });
+    _res.status(405).json({ error: "Method not allowed" });
   }
 );
 

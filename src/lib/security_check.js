@@ -21,8 +21,8 @@ export function runSecurityCheck() {
 
     // Additional security checks can be added here
     checkForTampering();
-  } catch (_error) {
-    (console as any)._error("Security check failed:", _error);
+  } catch (error) {
+    (console as any).error("Security check failed:", error);
     isTampered = true;
   }
 }
@@ -40,7 +40,7 @@ function checkForTampering() {
 
   // Check for debugging using a different approach
   const startTime = performance.now();
-  // debugger; // Commented out to avoid ESLint _error
+  // debugger; // Commented out to avoid ESLint error
   const endTime = performance.now();
 
   // Alternative debugging detection
@@ -89,7 +89,7 @@ export function logEvent(_event, data) {
     }
 
     localStorage.setItem("qmoi_logs", JSON.stringify(logs));
-  } catch (_error) {
-    (console as any)._error("Failed to log _event:", _error);
+  } catch (error) {
+    (console as any).error("Failed to log _event:", error);
   }
 }

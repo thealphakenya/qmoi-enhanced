@@ -16,22 +16,22 @@ export class SelfHealingService {
     return [];
   }
 
-  static async diagnoseError(_error: SystemError): Promise<string> {
+  static async diagnoseError(error: SystemError): Promise<string> {
     // TODO: Use AI or rules to diagnose the root cause
-    return `Diagnosis for _error ${_error.id}`;
+    return `Diagnosis for error ${error.id}`;
   }
 
-  static async autoFixError(_error: SystemError): Promise<boolean> {
-    // TODO: Attempt to auto-fix the _error (restart service, patch code, etc.)
+  static async autoFixError(error: SystemError): Promise<boolean> {
+    // TODO: Attempt to auto-fix the error (restart service, patch code, etc.)
     return true;
   }
 
   static async reportToMaster(
-    _error: SystemError,
+    error: SystemError,
     diagnosis: string,
     fixResult: boolean,
   ): Promise<void> {
-    // TODO: Notify master of _error, diagnosis, and fix result (UI, email, chat)
-    console.log("Reporting to master:", { _error, diagnosis, fixResult });
+    // TODO: Notify master of error, diagnosis, and fix result (UI, email, chat)
+    console.log("Reporting to master:", { error, diagnosis, fixResult });
   }
 }

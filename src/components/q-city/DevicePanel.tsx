@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 export default function DevicePanel() {
   const [devices, setDevices] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<any>({
     name: "",
     host: "",
@@ -25,7 +25,7 @@ export default function DevicePanel() {
     })
       .then((r) => r.json())
       .then((data) => setDevices(data.items || []))
-      .catch((_e: unknown) => setError((_e as any).message ?? String(_e)))
+      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
       .finally(() => setLoading(false));
   };
 
@@ -55,7 +55,7 @@ export default function DevicePanel() {
         });
         setEditing(null);
       })
-      .catch((_e: unknown) => setError((_e as any).message ?? String(_e)))
+      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
       .finally(() => setLoading(false));
   };
 
@@ -70,7 +70,7 @@ export default function DevicePanel() {
       body: JSON.stringify({ id }),
     })
       .then(fetchDevices)
-      .catch((_e: unknown) => setError((_e as any).message ?? String(_e)))
+      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
       .finally(() => setLoading(false));
   };
 
@@ -86,15 +86,15 @@ export default function DevicePanel() {
     })
       .then((r) => r.json())
       .then((data) =>
-        setTestResult(data.success ? "Success" : data._error || "Failed")
+        setTestResult(data.success ? "Success" : data.error || "Failed")
       )
-      .catch((_e: unknown) => setTestResult((_e as any).message ?? String(_e)));
+      .catch((_e: any) => setTestResult((_e as any).message ?? String(_e)));
   };
 
   return (
     <div className="p-4 bg-gray-900 rounded-lg shadow-lg">
       <h2 className="text-xl font-bold mb-4 text-cyan-400">Devices</h2>
-      {_error && <div className="text-red-400 mb-2">{_error}</div>}
+      {error && <div className="text-red-400 mb-2">{error}</div>}
       <form
         className="mb-4 flex flex-wrap gap-2"
         onSubmit={(_e) => {

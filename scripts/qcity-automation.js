@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * QCity Automation System
- * Comprehensive automation with notifications, _error recovery, and self-healing
+ * Comprehensive automation with notifications, error recovery, and self-healing
  */
 
 const fs = require("fs");
@@ -28,7 +28,7 @@ class QCityAutomation {
     // Initialize notification system
     this.notificationSystem = new QCityNotificationSystem(this);
 
-    // Initialize _error recovery
+    // Initialize error recovery
     this.errorRecovery = new QCityErrorRecovery(this);
 
     // Initialize health monitoring
@@ -119,9 +119,9 @@ class QCityAutomation {
 
       this.log("✅ QCity Automation System initialized successfully");
       return true;
-    } catch (_error) {
-      this.log(`❌ QCity initialization failed: ${_error.message}`, "ERROR");
-      await this.errorRecovery.handleError(_error);
+    } catch (error) {
+      this.log(`❌ QCity initialization failed: ${error.message}`, "ERROR");
+      await this.errorRecovery.handleError(error);
       return false;
     }
   }
@@ -135,7 +135,7 @@ class QCityAutomation {
     // Initialize notification channels
     await this.notificationSystem.initialize();
 
-    // Initialize _error recovery
+    // Initialize error recovery
     await this.errorRecovery.initialize();
 
     // Initialize health monitoring
@@ -159,7 +159,7 @@ class QCityAutomation {
   async ensureRequiredFiles() {
     const requiredFiles = [
       "scripts/qmoi-enhanced-automation.py",
-      "scripts/qmoi-_error-handler.py",
+      "scripts/qmoi-error-handler.py",
       "scripts/qmoi-performance-optimizer.py",
       "scripts/qmoi-master-notifications.py",
     ];
@@ -209,7 +209,7 @@ if __name__ == "__main__":
 
     // Initialize Python scripts
     await this.runPythonScript("qmoi-enhanced-automation.py", ["--initialize"]);
-    await this.runPythonScript("qmoi-_error-handler.py", ["--initialize"]);
+    await this.runPythonScript("qmoi-error-handler.py", ["--initialize"]);
     await this.runPythonScript("qmoi-performance-optimizer.py", [
       "--initialize",
     ]);
@@ -234,8 +234,8 @@ if __name__ == "__main__":
       } else {
         this.log(`⚠️ Script not found: ${scriptName}`);
       }
-    } catch (_error) {
-      this.log(`❌ Error running ${scriptName}: ${_error.message}`, "ERROR");
+    } catch (error) {
+      this.log(`❌ Error running ${scriptName}: ${error.message}`, "ERROR");
     }
   }
 
@@ -264,14 +264,14 @@ if __name__ == "__main__":
       // Validate notification system
       await this.notificationSystem.validate();
 
-      // Validate _error recovery
+      // Validate error recovery
       await this.errorRecovery.validate();
 
       this.log("✅ QCity validation completed successfully");
       return true;
-    } catch (_error) {
-      this.log(`❌ QCity validation failed: ${_error.message}`, "ERROR");
-      await this.errorRecovery.handleError(_error);
+    } catch (error) {
+      this.log(`❌ QCity validation failed: ${error.message}`, "ERROR");
+      await this.errorRecovery.handleError(error);
       return false;
     }
   }
@@ -299,7 +299,7 @@ if __name__ == "__main__":
 
     const scripts = [
       "qmoi-enhanced-automation.py",
-      "qmoi-_error-handler.py",
+      "qmoi-error-handler.py",
       "qmoi-performance-optimizer.py",
     ];
 
@@ -323,14 +323,14 @@ if __name__ == "__main__":
       // Test notification integration
       await this.notificationSystem.testIntegration();
 
-      // Test _error recovery integration
+      // Test error recovery integration
       await this.errorRecovery.testIntegration();
 
       this.log("✅ QCity test integration completed successfully");
       return true;
-    } catch (_error) {
-      this.log(`❌ QCity test integration failed: ${_error.message}`, "ERROR");
-      await this.errorRecovery.handleError(_error);
+    } catch (error) {
+      this.log(`❌ QCity test integration failed: ${error.message}`, "ERROR");
+      await this.errorRecovery.handleError(error);
       return false;
     }
   }
@@ -360,9 +360,9 @@ if __name__ == "__main__":
 
       this.log("✅ QCity build integration completed");
       return true;
-    } catch (_error) {
-      this.log(`❌ QCity build integration failed: ${_error.message}`, "ERROR");
-      await this.errorRecovery.handleError(_error);
+    } catch (error) {
+      this.log(`❌ QCity build integration failed: ${error.message}`, "ERROR");
+      await this.errorRecovery.handleError(error);
       return false;
     }
   }
@@ -382,12 +382,12 @@ if __name__ == "__main__":
 
       this.log("✅ QCity deployment integration completed");
       return true;
-    } catch (_error) {
+    } catch (error) {
       this.log(
-        `❌ QCity deployment integration failed: ${_error.message}`,
+        `❌ QCity deployment integration failed: ${error.message}`,
         "ERROR",
       );
-      await this.errorRecovery.handleError(_error);
+      await this.errorRecovery.handleError(error);
       return false;
     }
   }
@@ -425,7 +425,7 @@ if __name__ == "__main__":
     // Check if all automation scripts are available
     const scripts = [
       "qmoi-enhanced-automation.py",
-      "qmoi-_error-handler.py",
+      "qmoi-error-handler.py",
       "qmoi-performance-optimizer.py",
     ];
 
@@ -481,9 +481,9 @@ if __name__ == "__main__":
 
       this.log("✅ QCity full pipeline completed successfully");
       return true;
-    } catch (_error) {
-      this.log(`❌ QCity full pipeline failed: ${_error.message}`, "ERROR");
-      await this.errorRecovery.handleError(_error);
+    } catch (error) {
+      this.log(`❌ QCity full pipeline failed: ${error.message}`, "ERROR");
+      await this.errorRecovery.handleError(error);
       return false;
     }
   }
@@ -540,9 +540,9 @@ class QCityNotificationSystem {
         try {
           await channel.send(message, type);
           this.qcity.log(`✅ Notification sent via ${channelName}`);
-        } catch (_error) {
+        } catch (error) {
           this.qcity.log(
-            `❌ Failed to send notification via ${channelName}: ${_error.message}`,
+            `❌ Failed to send notification via ${channelName}: ${error.message}`,
             "ERROR",
           );
         }
@@ -558,9 +558,9 @@ class QCityNotificationSystem {
       try {
         await channel.test();
         this.qcity.log(`✅ ${name} notification channel validated`);
-      } catch (_error) {
+      } catch (error) {
         this.qcity.log(
-          `❌ ${name} notification channel validation failed: ${_error.message}`,
+          `❌ ${name} notification channel validation failed: ${error.message}`,
           "ERROR",
         );
       }
@@ -585,60 +585,60 @@ class QCityErrorRecovery {
   }
 
   async initialize() {
-    this.qcity.log("🛠️ Initializing QCity _error recovery...");
+    this.qcity.log("🛠️ Initializing QCity error recovery...");
 
-    // Initialize _error recovery mechanisms
+    // Initialize error recovery mechanisms
     await this.initializeErrorRecoveryMechanisms();
 
     this.qcity.log("✅ Error recovery initialized");
   }
 
   async initializeErrorRecoveryMechanisms() {
-    // Initialize _error recovery scripts
-    await this.qcity.runPythonScript("qmoi-_error-handler.py", ["--initialize"]);
+    // Initialize error recovery scripts
+    await this.qcity.runPythonScript("qmoi-error-handler.py", ["--initialize"]);
   }
 
-  async handleError(_error) {
-    this.qcity.log(`🚨 Handling _error: ${_error.message}`, "ERROR");
+  async handleError(error) {
+    this.qcity.log(`🚨 Handling error: ${error.message}`, "ERROR");
 
     try {
-      // Log _error details
-      this.logErrorDetails(_error);
+      // Log error details
+      this.logErrorDetails(error);
 
       // Attempt automatic recovery
-      await this.attemptRecovery(_error);
+      await this.attemptRecovery(error);
 
-      // Send _error notification
+      // Send error notification
       await this.qcity.notificationSystem.sendNotification(
-        `Error occurred: ${_error.message}`,
-        "_error",
+        `Error occurred: ${error.message}`,
+        "error",
       );
     } catch (recoveryError) {
       this.qcity.log(
         `❌ Error recovery failed: ${recoveryError.message}`,
         "ERROR",
       );
-      await this.escalateError(_error, recoveryError);
+      await this.escalateError(error, recoveryError);
     }
   }
 
-  logErrorDetails(_error) {
+  logErrorDetails(error) {
     const errorLog = {
       timestamp: new Date().toISOString(),
-      message: _error.message,
-      stack: _error.stack,
-      type: _error.constructor.name,
+      message: error.message,
+      stack: error.stack,
+      type: error.constructor.name,
     };
 
     const errorLogPath = path.join(this.qcity.logsDir, "qcity-errors.log");
     fs.appendFileSync(errorLogPath, JSON.stringify(errorLog) + "\n");
   }
 
-  async attemptRecovery(_error) {
-    this.qcity.log("🔄 Attempting _error recovery...");
+  async attemptRecovery(error) {
+    this.qcity.log("🔄 Attempting error recovery...");
 
-    // Run _error recovery script
-    await this.qcity.runPythonScript("qmoi-_error-handler.py", [
+    // Run error recovery script
+    await this.qcity.runPythonScript("qmoi-error-handler.py", [
       "--comprehensive",
     ]);
 
@@ -646,7 +646,7 @@ class QCityErrorRecovery {
   }
 
   async escalateError(originalError, recoveryError) {
-    this.qcity.log("🚨 Escalating _error to master...");
+    this.qcity.log("🚨 Escalating error to master...");
 
     // Send escalation notification
     await this.qcity.notificationSystem.sendNotification(
@@ -656,22 +656,22 @@ class QCityErrorRecovery {
   }
 
   async validate() {
-    this.qcity.log("🔍 Validating _error recovery...");
+    this.qcity.log("🔍 Validating error recovery...");
 
-    // Test _error recovery mechanisms
-    await this.qcity.runPythonScript("qmoi-_error-handler.py", ["--test"]);
+    // Test error recovery mechanisms
+    await this.qcity.runPythonScript("qmoi-error-handler.py", ["--test"]);
 
     this.qcity.log("✅ Error recovery validated");
   }
 
   async testIntegration() {
-    this.qcity.log("🧪 Testing _error recovery integration...");
+    this.qcity.log("🧪 Testing error recovery integration...");
 
-    // Simulate _error and test recovery
+    // Simulate error and test recovery
     try {
-      throw new Error("Test _error for integration testing");
-    } catch (_error) {
-      await this.handleError(_error);
+      throw new Error("Test error for integration testing");
+    } catch (error) {
+      await this.handleError(error);
     }
 
     this.qcity.log("✅ Error recovery integration tested");
@@ -713,9 +713,9 @@ class QCityHealthMonitor {
       await this.checkNotificationHealth();
 
       this.qcity.log("✅ Health check completed");
-    } catch (_error) {
-      this.qcity.log(`❌ Health check failed: ${_error.message}`, "ERROR");
-      await this.qcity.errorRecovery.handleError(_error);
+    } catch (error) {
+      this.qcity.log(`❌ Health check failed: ${error.message}`, "ERROR");
+      await this.qcity.errorRecovery.handleError(error);
     }
   }
 
@@ -735,7 +735,7 @@ class QCityHealthMonitor {
     // Check if automation scripts are working
     const scripts = [
       "qmoi-enhanced-automation.py",
-      "qmoi-_error-handler.py",
+      "qmoi-error-handler.py",
       "qmoi-performance-optimizer.py",
     ];
 
@@ -847,8 +847,8 @@ async function main() {
         console.log("  --full-pipeline   Run full pipeline");
         break;
     }
-  } catch (_error) {
-    (console as any)._error(`❌ QCity automation failed: ${_error.message}`);
+  } catch (error) {
+    (console as any).error(`❌ QCity automation failed: ${error.message}`);
     process.exit(1);
   }
 }

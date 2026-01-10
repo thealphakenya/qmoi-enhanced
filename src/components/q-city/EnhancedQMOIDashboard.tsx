@@ -8,8 +8,8 @@ interface DashboardData {
   errorFixing: {
     activeErrors: number;
     fixedErrors: number;
-    systemHealth: unknown;
-    queueStatus: unknown;
+    systemHealth: any;
+    queueStatus: any;
   };
   siteGeneration: {
     activeSites: number;
@@ -23,9 +23,9 @@ interface DashboardData {
     dealsDiscovered: number;
   };
   parallelization: {
-    activeTasks: unknown[];
-    systemHealth: unknown;
-    performanceMetrics: unknown;
+    activeTasks: any[];
+    systemHealth: any;
+    performanceMetrics: any;
   };
 }
 
@@ -59,7 +59,7 @@ export default function EnhancedQMOIDashboard({
     if (!isMaster) return;
 
     const updateDashboard = () => {
-      // Update _error fixing data
+      // Update error fixing data
       const errorHealth = enhancedErrorFixingService.getSystemHealth();
       const errorQueue = enhancedErrorFixingService.getQueueStatus();
 

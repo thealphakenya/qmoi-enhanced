@@ -36,14 +36,14 @@ export async function POST(_req: NextRequest) {
       });
     } else {
       return NextResponse.json(
-        { _error: "Unsupported platform", supported: ["vercel"] },
+        { error: "Unsupported platform", supported: ["vercel"] },
         { status: 400 }
       );
     }
-  } catch (_error: unknown) {
-    const details = _error instanceof Error ? _error.message : String(_error);
+  } catch (error: any) {
+    const details = error instanceof Error ? error.message : String(error);
     return NextResponse.json(
-      { _error: "Failed to deploy", details },
+      { error: "Failed to deploy", details },
       { status: 500 }
     );
   }

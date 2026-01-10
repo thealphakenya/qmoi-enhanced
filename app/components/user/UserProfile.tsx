@@ -19,7 +19,7 @@ export function UserProfile() {
   const router = useRouter();
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [formData, setFormData] = useState({
@@ -43,14 +43,14 @@ export function UserProfile() {
         return;
       }
 
-      const _response = await fetch("/api/users/profile", {
+      const response = await fetch("/api/users/profile", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-      if (!_response.ok) {
-        if (_response.status === 401) {
+      if (!response.ok) {
+        if (response.status === 401) {
           router.push("/login");
           return;
         }
@@ -58,7 +58,7 @@ export function UserProfile() {
         return;
       }
 
-      const data = await _response.json();
+      const data = await response.json();
       setProfile(data);
       setFormData({
         firstName: data.firstName || "",
@@ -68,7 +68,7 @@ export function UserProfile() {
         bio: data.bio || "",
       });
     } catch (_err) {
-      setError(_err instanceof Error ? _err.message : "An _error occurred");
+      setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
     }
@@ -95,7 +95,7 @@ export function UserProfile() {
         return;
       }
 
-      const _response = await fetch("/api/users/profile", {
+      const response = await fetch("/api/users/profile", {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -104,16 +104,16 @@ export function UserProfile() {
         body: JSON.stringify(formData),
       });
 
-      if (!_response.ok) {
+      if (!response.ok) {
         setError("Failed to update profile");
         return;
       }
 
-      const updatedProfile = await _response.json();
+      const updatedProfile = await response.json();
       setProfile(updatedProfile);
       setEditing(false);
     } catch (_err) {
-      setError(_err instanceof Error ? _err.message : "An _error occurred");
+      setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setSaving(false);
     }
@@ -136,9 +136,9 @@ export function UserProfile() {
           <p className="text-gray-600">{profile.email}</p>
         </div>
 
-        {_error && (
+        {error && (
           <div className="bg-red-50 border-b border-red-200 text-red-700 px-6 py-3">
-            {_error}
+            {error}
           </div>
         )}
 

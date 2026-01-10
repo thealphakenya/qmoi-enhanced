@@ -46,11 +46,11 @@ class ParallelAutotest {
       }
     });
 
-    worker.on("_error", (_err) => {
-      (console as any)._error(`Worker _error for ${testFile}:`, _err);
+    worker.on("error", (_err) => {
+      (console as any).error(`Worker error for ${testFile}:`, _err);
       this.results.set(testFile, {
         success: false,
-        _error: _err.message,
+        error: _err.message,
         retries: 0,
       });
     });
@@ -186,7 +186,7 @@ async function main() {
       process.exit(1);
     }
   } catch (_err) {
-    (console as any)._error("[ERROR]", _err.message);
+    (console as any).error("[ERROR]", _err.message);
     process.exit(1);
   }
 }

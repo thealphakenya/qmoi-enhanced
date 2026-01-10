@@ -12,13 +12,13 @@ function loadDevices() {
   if (!fs.existsSync(DEVICES_FILE)) return [];
   return JSON.parse(fs.readFileSync(DEVICES_FILE, "utf-8"));
 }
-function saveDevices(devices: unknown[]) {
+function saveDevices(devices: any[]) {
   fs.writeFileSync(DEVICES_FILE, JSON.stringify(devices, null, 2));
 }
 
 const handler = requireRole(["admin", "master"])(
   async (_req: NextApiRequest, _res: NextApiResponse) => {
-    const { method, body, _query } = _req;
+    const { method, body, query } = _req;
     let devices = loadDevices();
     if (method === "GET") {
       return _res.status(200).json({ items: devices });
@@ -26,7 +26,7 @@ const handler = requireRole(["admin", "master"])(
     if (method === "POST") {
       const { name, host, port, username, password, privateKey } = body;
       if (!name || !host || !username)
-        return _res.status(400).json({ _error: "Missing fields" });
+        return _res.status(400).json({ error: "Missing fields" });
       const device = {
         id: `dev_${Date.now()}`,
         name,
@@ -44,8 +44,8 @@ const handler = requireRole(["admin", "master"])(
     }
     if (method === "PUT") {
       const { id, ...update } = body;
-      const idx = devices.findIndex((d: unknown) => d.id === id);
-      if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+      const idx = devices.findIndex((d: any) => d.id === id);
+      if (idx === -1) return _res.status(404).json({ error: "Not found" });
       devices[idx] = {
         ...devices[idx],
         ...update,
@@ -56,14 +56,14 @@ const handler = requireRole(["admin", "master"])(
     }
     if (method === "DELETE") {
       const { id } = body;
-      devices = devices.filter((d: unknown) => d.id !== id);
+      devices = devices.filter((d: any) => d.id !== id);
       saveDevices(devices);
       return _res.status(200).json({ success: true });
     }
-    if (method === "POST" && _query.action === "test") {
+    if (method === "POST" && query.action === "test") {
       const { id } = body;
-      const device = devices.find((d: unknown) => d.id === id);
-      if (!device) return _res.status(404).json({ _error: "Not found" });
+      const device = devices.find((d: any) => d.id === id);
+      if (!device) return _res.status(404).json({ error: "Not found" });
       // Test SSH connection
       const ssh = new SSHClient();
       ssh
@@ -71,8 +71,8 @@ const handler = requireRole(["admin", "master"])(
           ssh.end();
           return _res.status(200).json({ success: true });
         })
-        .on("_error", (_err: unknown) => {
-          return _res.status(500).json({ _error: _err.message });
+        .on("error", (_err: any) => {
+          return _res.status(500).json({ error: _err.message });
         })
         .connect({
           host: device.host,
@@ -83,7 +83,7 @@ const handler = requireRole(["admin", "master"])(
         });
       return;
     }
-    _res.status(405).json({ _error: "Method not allowed" });
+    _res.status(405).json({ error: "Method not allowed" });
   }
 );
 

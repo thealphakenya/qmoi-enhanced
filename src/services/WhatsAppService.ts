@@ -139,7 +139,7 @@ export class WhatsAppService {
 
     // Authentication failure
     this.client.on("auth_failure", async (message: string) => {
-      console._error("❌ WhatsApp authentication failed:", message);
+      console.error("❌ WhatsApp authentication failed:", message);
       this.isConnected = false;
       await this.sendErrorNotification(
         "WhatsApp authentication failed",
@@ -237,11 +237,11 @@ Time: ${this.qrCodeStatus.timestamp.toLocaleString()}`;
 
       // Send backup verification
       await this.sendBackupVerification();
-    } catch (_error) {
-      console._error("Error sending QR code notifications:", _error);
+    } catch (error) {
+      console.error("Error sending QR code notifications:", error);
       this.qrCodeStatus.notifications.status = "failed";
       const errorMessage =
-        _error instanceof Error ? _error.message : "Unknown _error";
+        error instanceof Error ? error.message : "Unknown error";
       await this.sendErrorNotification(
         "Failed to send QR notifications",
         errorMessage
@@ -277,9 +277,9 @@ Time: ${new Date().toLocaleString()}`;
       console.log(`📨 Received message from ${message.from}: ${message.body}`);
 
       // Check for auto-responders
-      const _response = await this.processAutoResponders(message);
-      if (_response) {
-        await message.reply(_response);
+      const response = await this.processAutoResponders(message);
+      if (response) {
+        await message.reply(response);
         return;
       }
 
@@ -293,11 +293,11 @@ Time: ${new Date().toLocaleString()}`;
       if (this.shouldForwardToMaster(message)) {
         await this.forwardToMaster(message);
       }
-    } catch (_error) {
-      console._error("Error handling incoming message:", _error);
+    } catch (error) {
+      console.error("Error handling incoming message:", error);
       const errorMessage =
-        _error instanceof Error ? _error.message : "Unknown _error";
-      await this.sendErrorNotification("Message handling _error", errorMessage);
+        error instanceof Error ? error.message : "Unknown error";
+      await this.sendErrorNotification("Message handling error", errorMessage);
     }
   }
 
@@ -306,22 +306,22 @@ Time: ${new Date().toLocaleString()}`;
   ): Promise<string | null> {
     const body = message.body.toLowerCase();
 
-    // Balance _query
+    // Balance query
     if (body.includes("balance") || body.includes("pesapal")) {
       return await this.getBalanceResponse();
     }
 
-    // Status _query
+    // Status query
     if (body.includes("status") || body.includes("system")) {
       return await this.getSystemStatusResponse();
     }
 
-    // Earnings _query
+    // Earnings query
     if (body.includes("earnings") || body.includes("profit")) {
       return await this.getEarningsResponse();
     }
 
-    // Help _query
+    // Help query
     if (body.includes("help") || body.includes("commands")) {
       return this.getHelpResponse();
     }
@@ -462,7 +462,7 @@ Time: ${new Date().toLocaleString()}`;
     const keywords = [
       "urgent",
       "emergency",
-      "_error",
+      "error",
       "problem",
       "issue",
       "help",
@@ -493,7 +493,7 @@ Message: ${message.body}
 💳 Account Status: Active
 📊 Last Updated: ${new Date().toLocaleString()}
 🔄 Auto-withdrawal: Enabled`;
-    } catch (_error) {
+    } catch (error) {
       return "❌ Unable to fetch balance at this time.";
     }
   }
@@ -607,9 +607,9 @@ Master Commands:
     try {
       console.log("🚀 Starting WhatsApp service...");
       await this.client.initialize();
-    } catch (_error) {
-      (console as any)._error("Error starting WhatsApp service:", _error);
-      throw _error;
+    } catch (error) {
+      (console as any).error("Error starting WhatsApp service:", error);
+      throw error;
     }
   }
 
@@ -618,8 +618,8 @@ Master Commands:
       console.log("🛑 Stopping WhatsApp service...");
       await this.client.destroy();
       this.isConnected = false;
-    } catch (_error) {
-      (console as any)._error("Error stopping WhatsApp service:", _error);
+    } catch (error) {
+      (console as any).error("Error stopping WhatsApp service:", error);
     }
   }
 
@@ -632,9 +632,9 @@ Master Commands:
       const chatId = to.includes("@c.us") ? to : `${to}@c.us`;
       await this.client.sendMessage(chatId, message);
       console.log(`📤 Message sent to ${to}`);
-    } catch (_error) {
-      (console as any)._error("Error sending WhatsApp message:", _error);
-      throw _error;
+    } catch (error) {
+      (console as any).error("Error sending WhatsApp message:", error);
+      throw error;
     }
   }
 
@@ -658,8 +658,8 @@ Master Commands:
       try {
         await this.sendMessage(contact, message);
         await this.sleep(1000); // Delay between messages
-      } catch (_error) {
-        (console as any)._error(`Error broadcasting to ${contact}:`, _error);
+      } catch (error) {
+        (console as any).error(`Error broadcasting to ${contact}:`, error);
       }
     }
   }

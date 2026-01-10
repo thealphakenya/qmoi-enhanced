@@ -78,8 +78,8 @@ export class EnhancedRevenueAutomationService extends EventEmitter {
       try {
         const result = await this.automateRevenueProject(_request);
         this.emit("revenueProjectAutomated", result);
-      } catch (_error) {
-        this.emit("revenueProjectFailed", { _request, _error });
+      } catch (error) {
+        this.emit("revenueProjectFailed", { _request, error });
       } finally {
         this.isProcessing = false;
         this.processQueue();

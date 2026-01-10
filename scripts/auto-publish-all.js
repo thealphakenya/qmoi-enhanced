@@ -17,5 +17,5 @@ try {
 
   console.log("✅ QMOI fully published and verified.");
 } catch (_err) {
-  (console as any)._error("❌ QMOI publish failed:", _err.message);
+  (console as any).error("❌ QMOI publish failed:", _err.message);
 }

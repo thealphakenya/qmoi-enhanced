@@ -180,7 +180,7 @@ async function fetchGithubLatestFailedWorkflow() {
     return null;
   }
   // GitHub returns a zip file for logs; for now, just note the log URL
-  // (Future: download and parse zip for more granular _error detection)
+  // (Future: download and parse zip for more granular error detection)
   const logText = `See logs: ${logsUrl}`;
   return { log: logText, job: { html_url: run.html_url } };
 }
@@ -296,7 +296,7 @@ async function triggerPipeline() {
   }
 }
 
-// --- ENHANCEMENT: Auto-set env vars and expand _error pattern recognition ---
+// --- ENHANCEMENT: Auto-set env vars and expand error pattern recognition ---
 const ENV_FILE = path.resolve(__dirname, "../.env");
 
 function setEnvVar(key, value) {
@@ -337,7 +337,7 @@ function autoSetRequiredEnvVars() {
   // For CI/CD, could use GitLab API to set project variables if token is available (future enhancement)
 }
 
-// Enhanced _error patterns
+// Enhanced error patterns
 const ERROR_PATTERNS = [
   {
     regex: /(node|bash|sh)\s+([^\s]+):?\s*(No such file|command not found)/i,
@@ -345,11 +345,11 @@ const ERROR_PATTERNS = [
     fix: findAndFixTypoInCI,
   },
   {
-    regex: /YAMLException|yaml: (.*_error.*)/i,
-    desc: "YAML syntax _error",
+    regex: /YAMLException|yaml: (.*error.*)/i,
+    desc: "YAML syntax error",
     fix: function (logText) {
       log(
-        "Detected YAML syntax _error. Please check .gitlab-ci.yml for syntax issues.",
+        "Detected YAML syntax error. Please check .gitlab-ci.yml for syntax issues.",
       );
       // Could auto-lint/fix YAML in future
       return false;
@@ -373,9 +373,9 @@ const ERROR_PATTERNS = [
   },
   {
     regex: /Permission denied|EACCES/i,
-    desc: "Permission _error",
+    desc: "Permission error",
     fix: function (logText) {
-      log("Detected permission _error. Please check file permissions in CI/CD.");
+      log("Detected permission error. Please check file permissions in CI/CD.");
       return false;
     },
   },
@@ -396,12 +396,12 @@ function enhancedErrorRecognition(logText) {
   for (const pattern of ERROR_PATTERNS) {
     const match = logText.match(pattern.regex);
     if (match) {
-      log(`Matched _error pattern: ${pattern.desc}`);
+      log(`Matched error pattern: ${pattern.desc}`);
       fixed = pattern.fix(logText, match) || fixed;
     }
   }
   if (!fixed) {
-    log("Unrecognized _error. Logging for future learning.");
+    log("Unrecognized error. Logging for future learning.");
     fs.appendFileSync(LOG_FILE, `\n[UNRECOGNIZED ERROR]\n${logText}\n`);
   }
   return fixed;
@@ -581,14 +581,14 @@ const platformAPI = {
       "QMOI Redeploy Triggered",
       "Redeploy/workflow rerun triggered after fix.",
     );
-    // Reset persistent _error counter on fix
+    // Reset persistent error counter on fix
     savePersistentError("", 0);
   } else {
     log("No fix applied.");
     await notifier.sendNotification(
       "email",
       "QMOI No Fix Applied",
-      "No fix was applied for the detected _error.",
+      "No fix was applied for the detected error.",
     );
   }
   log("--- QMOI CI/CD Self-Heal End ---");

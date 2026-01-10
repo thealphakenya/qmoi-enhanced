@@ -106,9 +106,9 @@ function injectDockerFallback() {
 }
 
 async function autoFixErrors(errorMsg) {
-  log("Attempting AI-driven _error fix...");
+  log("Attempting AI-driven error fix...");
   try {
-    // Simplified _error fixing - in a real implementation, this would call the ErrorFixingService
+    // Simplified error fixing - in a real implementation, this would call the ErrorFixingService
     log("Auto-fix completed.");
   } catch (_e) {
     log("Auto-fix failed: " + _e.message);
@@ -122,7 +122,7 @@ function autoCommitAndPush() {
       execSync("git reset .env");
     } catch {}
     execSync("git add .");
-    execSync('git commit -m "Auto-fix: deploy _error"');
+    execSync('git commit -m "Auto-fix: deploy error"');
     let pushed = false;
     let attempts = 0;
     while (!pushed && attempts < 3) {
@@ -246,8 +246,8 @@ async function monitorHealth(url) {
       return false;
     }
   } catch (_e) {
-    log("Health check _error: " + _e.message);
-    await notifyMaster("Health check _error: " + _e.message);
+    log("Health check error: " + _e.message);
+    await notifyMaster("Health check error: " + _e.message);
     return false;
   }
 }
@@ -265,8 +265,8 @@ async function pingUptimeMonitor() {
       await notifyMaster("Uptime monitor check failed: " + _res.status);
     }
   } catch (_e) {
-    log("Uptime monitor _error: " + _e.message);
-    await notifyMaster("Uptime monitor _error: " + _e.message);
+    log("Uptime monitor error: " + _e.message);
+    await notifyMaster("Uptime monitor error: " + _e.message);
   }
 }
 
@@ -394,7 +394,7 @@ async function main() {
         log("Vercel deployment successful!");
       } else {
         log(`Vercel deployment failed, attempt ${retries + 1}/${MAX_RETRIES}`);
-        await autoFixErrors("Vercel deployment _error");
+        await autoFixErrors("Vercel deployment error");
         autoCommitAndPush();
         retries++;
         if (retries < MAX_RETRIES) {
@@ -412,7 +412,7 @@ async function main() {
         log("Heroku deployment successful!");
       } else {
         log(`Heroku deployment failed, attempt ${retries + 1}/${MAX_RETRIES}`);
-        await autoFixErrors("Heroku deployment _error");
+        await autoFixErrors("Heroku deployment error");
         autoCommitAndPush();
         retries++;
         if (retries < MAX_RETRIES) {
@@ -467,7 +467,7 @@ async function main() {
 }
 
 // Run main function
-main().catch((_error) => {
-  log(`Fatal _error in main: ${_error.message}`);
+main().catch((error) => {
+  log(`Fatal error in main: ${error.message}`);
   process.exit(1);
 });

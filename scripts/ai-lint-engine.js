@@ -51,8 +51,8 @@ class AILintEngine {
         this.log("QMOI AI not found, using fallback mode", "warning");
         return false;
       }
-    } catch (_error) {
-      this.log(`Error initializing QMOI AI: ${_error.message}`, "_error");
+    } catch (error) {
+      this.log(`Error initializing QMOI AI: ${error.message}`, "error");
       return false;
     }
   }
@@ -83,25 +83,25 @@ class AILintEngine {
       });
 
       return JSON.parse(result);
-    } catch (_error) {
-      this.log(`QMOI AI call failed: ${_error.message}`, "_error");
+    } catch (error) {
+      this.log(`QMOI AI call failed: ${error.message}`, "error");
       return this.fallbackAIResponse(prompt, context);
     }
   }
 
   fallbackAIResponse(prompt, context) {
     // Fallback AI logic for when QMOI AI is not available
-    const _response = {
+    const response = {
       success: true,
       suggestion: this.generateFallbackSuggestion(prompt, context),
       confidence: 0.7,
       reasoning: "Generated using fallback AI logic",
     };
-    return _response;
+    return response;
   }
 
   generateFallbackSuggestion(prompt, context) {
-    // Intelligent fallback suggestions based on _error patterns
+    // Intelligent fallback suggestions based on error patterns
     if (prompt.includes("no-undef")) {
       if (prompt.includes("require")) {
         return 'Add "require" to globals or convert to ES6 import';
@@ -129,22 +129,22 @@ class AILintEngine {
     return "Review code logic and fix according to ESLint rules";
   }
 
-  async analyzeError(_error) {
-    const prompt = `Analyze this ESLint _error and provide a fix:
-File: ${_error.file}
-Line: ${_error.line}
-Column: ${_error.column}
-Rule: ${_error.rule}
-Message: ${_error.message}
+  async analyzeError(error) {
+    const prompt = `Analyze this ESLint error and provide a fix:
+File: ${error.file}
+Line: ${error.line}
+Column: ${error.column}
+Rule: ${error.rule}
+Message: ${error.message}
 
 Provide a specific fix that can be applied automatically.`;
 
     const context = {
-      file: _error.file,
-      line: _error.line,
-      column: _error.column,
-      rule: _error.rule,
-      message: _error.message,
+      file: error.file,
+      line: error.line,
+      column: error.column,
+      rule: error.rule,
+      message: error.message,
       projectType: "typescript-react",
       framework: "nextjs",
     };
@@ -152,7 +152,7 @@ Provide a specific fix that can be applied automatically.`;
     return await this.callQMOIAI(prompt, context);
   }
 
-  async applyAIFix(filePath, _error, aiResponse) {
+  async applyAIFix(filePath, error, aiResponse) {
     if (!aiResponse.success || !aiResponse.suggestion) {
       return false;
     }
@@ -160,7 +160,7 @@ Provide a specific fix that can be applied automatically.`;
     try {
       const content = readFileSync(filePath, "utf8");
       const lines = content.split("\n");
-      const lineIndex = _error.line - 1;
+      const lineIndex = error.line - 1;
 
       if (lineIndex < 0 || lineIndex >= lines.length) {
         return false;
@@ -215,24 +215,24 @@ Provide a specific fix that can be applied automatically.`;
       }
 
       return false;
-    } catch (_error) {
+    } catch (error) {
       this.log(
-        `Error applying AI fix to ${filePath}: ${_error.message}`,
-        "_error",
+        `Error applying AI fix to ${filePath}: ${error.message}`,
+        "error",
       );
       return false;
     }
   }
 
   async fixComplexErrors(errors) {
-    this.log("Starting AI-powered complex _error fixing...", "info");
+    this.log("Starting AI-powered complex error fixing...", "info");
 
     const errorsByFile = {};
-    for (const _error of errors) {
-      if (!errorsByFile[_error.file]) {
-        errorsByFile[_error.file] = [];
+    for (const error of errors) {
+      if (!errorsByFile[error.file]) {
+        errorsByFile[error.file] = [];
       }
-      errorsByFile[_error.file].push(_error);
+      errorsByFile[error.file].push(error);
     }
 
     let totalFixes = 0;
@@ -244,12 +244,12 @@ Provide a specific fix that can be applied automatically.`;
         continue;
       }
 
-      for (const _error of fileErrors) {
-        // Analyze _error with AI
-        const aiResponse = await this.analyzeError(_error);
+      for (const error of fileErrors) {
+        // Analyze error with AI
+        const aiResponse = await this.analyzeError(error);
 
         // Apply AI fix
-        const fixApplied = await this.applyAIFix(fullPath, _error, aiResponse);
+        const fixApplied = await this.applyAIFix(fullPath, error, aiResponse);
 
         if (fixApplied) {
           totalFixes++;
@@ -275,8 +275,8 @@ Provide a specific fix that can be applied automatically.`;
         stdio: "pipe",
       });
       return { success: true, output: "" };
-    } catch (_error) {
-      return { success: false, output: _error.stdout || _error.stderr || "" };
+    } catch (error) {
+      return { success: false, output: error.stdout || error.stderr || "" };
     }
   }
 
@@ -293,9 +293,9 @@ Provide a specific fix that can be applied automatically.`;
         continue;
       }
 
-      // Parse _error details
+      // Parse error details
       const errorMatch = line.match(
-        /^\s*(\d+):(\d+)\s+(_error|warning)\s+(.+?)\s+(.+)$/,
+        /^\s*(\d+):(\d+)\s+(error|warning)\s+(.+?)\s+(.+)$/,
       );
       if (errorMatch) {
         const [, lineNum, colNum, severity, rule, message] = errorMatch;
@@ -322,8 +322,8 @@ Provide a specific fix that can be applied automatically.`;
       warnings: [],
     };
 
-    for (const _error of errors) {
-      if (_error.severity === "_error") {
+    for (const error of errors) {
+      if (error.severity === "error") {
         // AI can potentially fix these
         if (
           [
@@ -331,23 +331,23 @@ Provide a specific fix that can be applied automatically.`;
             "no-unused-vars",
             "no-console",
             "import/no-unresolved",
-          ].some((rule) => _error.rule.includes(rule))
+          ].some((rule) => error.rule.includes(rule))
         ) {
-          categories.aiFixable.push(_error);
+          categories.aiFixable.push(error);
         } else {
-          categories.manualFix.push(_error);
+          categories.manualFix.push(error);
         }
 
         // Mark as critical
         if (
           ["no-undef", "import/no-unresolved"].some((rule) =>
-            _error.rule.includes(rule),
+            error.rule.includes(rule),
           )
         ) {
-          categories.critical.push(_error);
+          categories.critical.push(error);
         }
       } else {
-        categories.warnings.push(_error);
+        categories.warnings.push(error);
       }
     }
 
@@ -397,9 +397,9 @@ Provide a specific fix that can be applied automatically.`;
 
       // Display remaining errors
       console.log("\n📋 Remaining Issues:");
-      remainingErrors.slice(0, 10).forEach((_error, index) => {
+      remainingErrors.slice(0, 10).forEach((error, index) => {
         console.log(
-          `   ${index + 1}. ${_error.file}:${_error.line}:${_error.column} - ${_error.rule}: ${_error.message}`,
+          `   ${index + 1}. ${error.file}:${error.line}:${error.column} - ${error.rule}: ${error.message}`,
         );
       });
 
@@ -421,7 +421,7 @@ Provide a specific fix that can be applied automatically.`;
 
 // Run the AI lint engine
 const aiLintEngine = new AILintEngine();
-aiLintEngine.run().catch((_error) => {
-  (console as any)._error("Fatal _error in AI lint engine:", _error);
+aiLintEngine.run().catch((error) => {
+  (console as any).error("Fatal error in AI lint engine:", error);
   process.exit(1);
 });

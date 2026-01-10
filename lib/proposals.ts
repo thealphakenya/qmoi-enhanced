@@ -7,7 +7,7 @@ export type ApiCheckResult = {
   response?: { status?: number; body?: unknown };
 };
 
-function requireApiKey(headers: unknown): ApiCheckResult {
+function requireApiKey(headers: any): ApiCheckResult {
   // Support Next.js Headers and plain object headers
   const get = (k: string) => {
     if (!headers) return undefined;
@@ -41,11 +41,12 @@ function requireApiKey(headers: unknown): ApiCheckResult {
   };
 }
 
-async function writeProposal(payload: unknown) {
+async function writeProposal(payload: any) {
   try {
     const dir = path.join(process.cwd(), ".qmoi_validation");
     await fs.promises.mkdir(dir, { recursive: true });
-    const id = payload?.id || `proposal-${Date.now()}`;
+    const id =
+      (payload && (payload.id || payload.name)) || `proposal-${Date.now()}`;
     const file = path.join(dir, `${id}.json`);
     const body = Object.assign({}, payload || {}, {
       createdAt: new Date().toISOString(),

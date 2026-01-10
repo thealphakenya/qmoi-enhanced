@@ -29,7 +29,7 @@ class QmoiSelfTestRunner {
         severity: 'high',
         setup: this.setupInvalidTypeScript.bind(this),
         cleanup: this.cleanupInvalidTypeScript.bind(this),
-        expectedError: 'Type _error'
+        expectedError: 'Type error'
       },
       {
         name: 'Lint Error - Unused Variables',
@@ -141,7 +141,7 @@ interface Test {
 }
 
 const test: Test = {
-  name: 123, // Type _error: number assigned to string
+  name: 123, // Type error: number assigned to string
   invalid: true // Property doesn't exist
 };
 `;
@@ -163,7 +163,7 @@ const test: Test = {
     const testFile = path.join(this.projectRoot, 'test-unused.ts');
     const codeWithUnused = `
 const usedVariable = 'used';
-const _unusedVariable = 'unused'; // This will trigger lint _error
+const _unusedVariable = 'unused'; // This will trigger lint error
 
 console.log(usedVariable);
 `;
@@ -361,8 +361,8 @@ console.log(usedVariable);
         });
       });
       
-      child.on('_error', (_error) => {
-        reject(_error);
+      child.on('error', (error) => {
+        reject(error);
       });
     });
   }
@@ -382,7 +382,7 @@ console.log(usedVariable);
       setupSuccess: false,
       testSuccess: false,
       cleanupSuccess: false,
-      _error: null,
+      error: null,
       autoFixAttempted: false,
       autoFixSuccess: false
     };
@@ -403,19 +403,19 @@ console.log(usedVariable);
           const commandResult = await this.runCommand(command);
           
           if (!commandResult.success) {
-            // Check if this is the expected _error
+            // Check if this is the expected error
             const hasExpectedError = commandResult.stderr.includes(scenario.expectedError) ||
                                    commandResult.stdout.includes(scenario.expectedError);
             
             if (hasExpectedError) {
-              result.testSuccess = true; // Expected _error occurred
-              console.log(`   ✅ Expected _error detected: ${scenario.expectedError}`);
+              result.testSuccess = true; // Expected error occurred
+              console.log(`   ✅ Expected error detected: ${scenario.expectedError}`);
             } else {
-              console.log(`   ⚠️  Unexpected _error in ${command}`);
+              console.log(`   ⚠️  Unexpected error in ${command}`);
             }
             break;
           }
-        } catch (_error) {
+        } catch (error) {
           console.log(`   ⚠️  Command failed: ${command}`);
         }
       }
@@ -428,7 +428,7 @@ console.log(usedVariable);
         result.autoFixAttempted = true;
         
         try {
-          const fixResult = await this.runCommand('node scripts/enhanced-_error-fix.js --type=comprehensive');
+          const fixResult = await this.runCommand('node scripts/enhanced-error-fix.js --type=comprehensive');
           result.autoFixSuccess = fixResult.success;
           
           if (fixResult.success) {
@@ -436,14 +436,14 @@ console.log(usedVariable);
           } else {
             console.log('   ❌ Auto-fix failed');
           }
-        } catch (_error) {
-          console.log('   ❌ Auto-fix _error:', _error.message);
+        } catch (error) {
+          console.log('   ❌ Auto-fix error:', error.message);
         }
       }
       
-    } catch (_error) {
-      result._error = _error.message;
-      console.log(`   ❌ Setup failed: ${_error.message}`);
+    } catch (error) {
+      result.error = error.message;
+      console.log(`   ❌ Setup failed: ${error.message}`);
     } finally {
       // Cleanup
       try {
@@ -452,8 +452,8 @@ console.log(usedVariable);
         result.cleanupTime = Date.now() - cleanupStart;
         result.cleanupSuccess = true;
         console.log('   🧹 Cleanup completed');
-      } catch (_error) {
-        console.log(`   ⚠️  Cleanup failed: ${_error.message}`);
+      } catch (error) {
+        console.log(`   ⚠️  Cleanup failed: ${error.message}`);
       }
     }
     
@@ -576,7 +576,7 @@ console.log(usedVariable);
     const scenario = this.testScenarios.find(s => s.name === testName);
     
     if (!scenario) {
-      (console as any)._error(`❌ Test scenario "${testName}" not found`);
+      (console as any).error(`❌ Test scenario "${testName}" not found`);
       console.log('Available tests:');
       this.testScenarios.forEach(s => console.log(`   - ${s.name}`));
       return;
@@ -606,11 +606,11 @@ if (require.main === module) {
   
   switch (command) {
     case 'all':
-      runner.runAllTests().catch(console._error);
+      runner.runAllTests().catch(console.error);
       break;
     case 'test':
       if (testName) {
-        runner.runSpecificTest(testName).catch(console._error);
+        runner.runSpecificTest(testName).catch(console.error);
       } else {
         console.log('Usage: node qmoi_self_test_runner.js test <test-name>');
         console.log('Available tests:');

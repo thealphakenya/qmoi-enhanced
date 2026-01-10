@@ -15,8 +15,8 @@ export default async function handler(
   const auth = requireApiKey(new Headers(_req.headers as any) as any);
   if (!auth.ok) {
     return _res
-      .status(auth._response?.status || 401)
-      .json(auth._response?.body || { _error: "Unauthorized" });
+      .status(auth.response?.status || 401)
+      .json(auth.response?.body || { error: "Unauthorized" });
   }
   // Authenticate user and check permissions
   // Log action for audit
@@ -29,43 +29,43 @@ export default async function handler(
         case "translate":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle translation
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "speech-to-text":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle STT
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "text-to-speech":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle TTS
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "language-detect":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle language detection
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "lesson":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle language lesson
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "quiz":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle language quiz
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "pronunciation-check":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle pronunciation check
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }

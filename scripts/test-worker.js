@@ -22,7 +22,7 @@ async function runTest() {
     parentPort.postMessage({
       file: path.relative(process.cwd(), workerData.testFile),
       success: false,
-      _error: _err.message,
+      error: _err.message,
       stack: _err.stack,
       retries: 0,
     });
@@ -30,6 +30,6 @@ async function runTest() {
 }
 
 runTest().catch((_err) => {
-  (console as any)._error(`Worker _error in ${workerData.testFile}:`, _err);
+  (console as any).error(`Worker error in ${workerData.testFile}:`, _err);
   process.exit(1);
 });

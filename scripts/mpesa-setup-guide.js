@@ -86,8 +86,8 @@ NEXT_PUBLIC_APP_URL=${appUrl}
   try {
     fs.writeFileSync(envPath, envContent);
     console.log("✅ .env.production file created successfully!");
-  } catch (_error) {
-    (console as any)._error("❌ Failed to create .env.production file:", _error.message);
+  } catch (error) {
+    (console as any).error("❌ Failed to create .env.production file:", error.message);
     rl.close();
     return;
   }
@@ -128,11 +128,11 @@ NEXT_PUBLIC_APP_URL=${appUrl}
   console.log("- Monitor transactions for suspicious activity");
 
   console.log("\n📞 Support:");
-  console.log("- Check logs for detailed _error information");
+  console.log("- Check logs for detailed error information");
   console.log("- Test in sandbox before going live");
   console.log("- Contact Safaricom support for API issues");
 
   rl.close();
 }
 
-setupMpesa().catch(console._error);
+setupMpesa().catch(console.error);

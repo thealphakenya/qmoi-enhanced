@@ -29,9 +29,9 @@ function walk(dir) {
 
 const rules = [
   {
-    name: "console._error -> (console as any)._error",
-    re: /console\._error\(/g,
-    repl: "(console as any)._error(",
+    name: "console.error -> (console as any).error",
+    re: /console\.error\(/g,
+    repl: "(console as any).error(",
   },
   {
     name: "(globalThis as any) -> (globalThis as any)",

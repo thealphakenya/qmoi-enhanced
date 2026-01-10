@@ -13,7 +13,7 @@ export async function GET(_request: NextRequest) {
 
     if (!token) {
       return NextResponse.json(
-        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
+        { error: { message: "Missing authorization token", code: "NO_TOKEN" } },
         { status: 401 }
       );
     }
@@ -21,9 +21,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 }
       );
     }
@@ -32,12 +32,12 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(decoded.userId);
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 }
       );
     }
 
-    // Get _query parameters
+    // Get query parameters
     const { searchParams } = new URL(_request.url);
     const skip = parseInt(searchParams.get("skip") || "0");
     const take = parseInt(searchParams.get("take") || "20");
@@ -45,7 +45,7 @@ export async function GET(_request: NextRequest) {
     const search = searchParams.get("search");
 
     // Build filter
-    const where: unknown = {};
+    const where: any = {};
     if (status) {
       where.emailVerified = status === "verified";
     }
@@ -95,10 +95,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (_error) {
-    console._error("Admin users _error:", _error);
+  } catch (error) {
+    console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }
     );
   }
@@ -114,7 +114,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!token) {
       return NextResponse.json(
-        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
+        { error: { message: "Missing authorization token", code: "NO_TOKEN" } },
         { status: 401 }
       );
     }
@@ -122,9 +122,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 }
       );
     }
@@ -133,7 +133,7 @@ export async function PUT(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 }
       );
     }
@@ -144,7 +144,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 }
       );
     }
@@ -184,10 +184,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 }
     );
-  } catch (_error) {
-    console._error("Update user _error:", _error);
+  } catch (error) {
+    console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }
     );
   }
@@ -203,7 +203,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!token) {
       return NextResponse.json(
-        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
+        { error: { message: "Missing authorization token", code: "NO_TOKEN" } },
         { status: 401 }
       );
     }
@@ -211,9 +211,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 }
       );
     }
@@ -222,7 +222,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 }
       );
     }
@@ -233,7 +233,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 }
       );
     }
@@ -242,7 +242,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -269,10 +269,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 }
     );
-  } catch (_error) {
-    console._error("Delete user _error:", _error);
+  } catch (error) {
+    console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }
     );
   }

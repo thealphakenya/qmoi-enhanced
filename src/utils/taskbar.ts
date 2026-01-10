@@ -2,7 +2,7 @@ import { app, Notification } from "electron";
 import path from "path";
 
 // Module-scoped alias for Electron `app` to avoid type issues in triage.
-const _app: unknown = app as any as any;
+const _app: any = app as any as any;
 
 interface TaskbarOptions {
   icon: string;

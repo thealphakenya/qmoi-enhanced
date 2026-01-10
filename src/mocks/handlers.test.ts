@@ -12,8 +12,8 @@ describe("getHandlers", () => {
     // Mock msw to expose `rest` helpers
     jest.doMock("msw", () => ({
       rest: {
-        get: jest.fn((...args: unknown[]) => ({ type: "rest-get", args })),
-        post: jest.fn((...args: unknown[]) => ({ type: "rest-post", args })),
+        get: jest.fn((...args: any[]) => ({ type: "rest-get", args })),
+        post: jest.fn((...args: any[]) => ({ type: "rest-post", args })),
       },
     }));
 
@@ -28,8 +28,8 @@ describe("getHandlers", () => {
     // Mock msw to expose `http` helpers instead of rest
     jest.doMock("msw", () => ({
       http: {
-        get: jest.fn((...args: unknown[]) => ({ type: "http-get", args })),
-        post: jest.fn((...args: unknown[]) => ({ type: "http-post", args })),
+        get: jest.fn((...args: any[]) => ({ type: "http-get", args })),
+        post: jest.fn((...args: any[]) => ({ type: "http-post", args })),
       },
     }));
 

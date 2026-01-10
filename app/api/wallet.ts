@@ -26,8 +26,8 @@ interface PlatformResult {
   amount: number;
   transactionId?: string;
   message?: string;
-  _error?: string;
-  [key: string]: unknown;
+  error?: string;
+  [key: string]: any;
 }
 
 // Constants
@@ -59,7 +59,7 @@ let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
 } catch (_e) {
-  console._error("Failed to initialize WhatsApp service:", _e);
+  console.error("Failed to initialize WhatsApp service:", _e);
 }
 
 // Enhanced logging
@@ -75,7 +75,7 @@ function logAction(action: string, details: Record<string, any>) {
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
   } catch (_e) {
-    console._error("Failed to log action:", _e);
+    console.error("Failed to log action:", _e);
   }
 }
 
@@ -95,9 +95,9 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    console._error("Failed to get/create wallet:", _error);
-    throw _error;
+  } catch (error) {
+    console.error("Failed to get/create wallet:", error);
+    throw error;
   }
 }
 
@@ -132,9 +132,9 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    console._error("Failed to create transaction:", _error);
-    throw _error;
+  } catch (error) {
+    console.error("Failed to create transaction:", error);
+    throw error;
   }
 }
 
@@ -256,10 +256,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    console._error("Mpesa processing _error:", _error);
-    const errorMsg = _error instanceof Error ? _error.message : String(_error);
-    return { status: "_error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -368,10 +368,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    console._error("Binance processing _error:", _error);
-    const errorMsg = _error instanceof Error ? _error.message : String(_error);
-    return { status: "_error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -421,14 +421,14 @@ async function processPesapal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    console._error("Pesapal processing _error:", _error);
-    const errorMsg = _error instanceof Error ? _error.message : String(_error);
+  } catch (error) {
+    console.error("Pesapal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
-      status: "_error",
+      status: "error",
       platform: "Pesapal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -480,31 +480,31 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    console._error("Bitget processing _error:", _error);
-    const errorMsg = _error instanceof Error ? _error.message : String(_error);
+  } catch (error) {
+    console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
-      status: "_error",
+      status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
 
 const platformHandlers: Record<
   string,
-  (...args: unknown[]) => Promise<unknown>
+  (...args: any[]) => Promise<unknown>
 > = {
-  Mpesa: processMpesa as (...args: unknown[]) => Promise<unknown>,
-  Binance: processBinance as (...args: unknown[]) => Promise<unknown>,
-  Pesapal: processPesapal as (...args: unknown[]) => Promise<unknown>,
-  Bitget: processBitget as (...args: unknown[]) => Promise<unknown>,
+  Mpesa: processMpesa as (...args: any[]) => Promise<unknown>,
+  Binance: processBinance as (...args: any[]) => Promise<unknown>,
+  Pesapal: processPesapal as (...args: any[]) => Promise<unknown>,
+  Bitget: processBitget as (...args: any[]) => Promise<unknown>,
   Cashon: (async (_amount: number, _type?: string) => ({
     status: "success",
     platform: "Cashon",
     amount: _amount,
-  })) as (...args: unknown[]) => Promise<unknown>,
+  })) as (...args: any[]) => Promise<unknown>,
 };
 
 // Helper: Check if user is master (simulate for now)
@@ -513,7 +513,7 @@ function isMaster(_req: NextApiRequest): boolean {
   return _req.headers["x-master-token"] === process.env.MASTER_TOKEN;
 }
 
-// Enhanced _error handling wrapper
+// Enhanced error handling wrapper
 const handleApiRequest = async (
   _req: NextApiRequest,
   _res: NextApiResponse,
@@ -522,16 +522,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = _error instanceof Error ? _error.message : String(_error);
-    logAction("_error", {
-      _error: errorMsg,
+  } catch (error: any) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logAction("error", {
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server _error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -542,7 +542,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -553,20 +553,20 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
 
   if (_req.method === "GET") {
     return handleApiRequest(_req, _res, async () => {
-      if (_req._query.pending_wallets) {
+      if (_req.query.pending_wallets) {
         const requests = readWalletRequests();
         return requests.filter((r: WalletRequest) => r.status === "pending");
       }
-      if (_req._query.balance) {
+      if (_req.query.balance) {
         // Get user's wallet balance - for now using a default user ID
-        const userId = (_req._query.userId as string) || "default-user";
+        const userId = (_req.query.userId as string) || "default-user";
         const wallet = await getOrCreateWallet(userId);
         return {
           balance: wallet.balance,
@@ -574,14 +574,14 @@ export default async function handler(
           transactions: wallet.transactions.slice(0, 10),
         };
       }
-      if (_req._query.logs && isMaster(_req)) {
+      if (_req.query.logs && isMaster(_req)) {
         const logs = fs.existsSync(LOGS_FILE)
           ? JSON.parse(fs.readFileSync(LOGS_FILE, "utf-8"))
           : [];
         return logs;
       }
-      if (_req._query.transactions) {
-        const userId = (_req._query.userId as string) || "default-user";
+      if (_req.query.transactions) {
+        const userId = (_req.query.userId as string) || "default-user";
         const wallet = await getOrCreateWallet(userId);
         const transactions = await prisma.transaction.findMany({
           where: { walletId: wallet.id },
@@ -603,7 +603,7 @@ export default async function handler(
       // Get or create wallet for user
       const wallet = await getOrCreateWallet(userIdToUs_e);
 
-      if (_req._query.deposit) {
+      if (_req.query.deposit) {
         if (!isMaster(_req)) {
           logAction("unauthorized_deposit", {
             amount,
@@ -647,7 +647,7 @@ export default async function handler(
         };
       }
 
-      if (_req._query.withdraw) {
+      if (_req.query.withdraw) {
         if (!isMaster(_req)) {
           logAction("unauthorized_withdrawal", {
             amount,
@@ -695,7 +695,7 @@ export default async function handler(
         };
       }
 
-      if (_req._query._request) {
+      if (_req.query._request) {
         // Handle wallet creation requests
         const requests = readWalletRequests();
         const newRequest = {
@@ -748,5 +748,5 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }

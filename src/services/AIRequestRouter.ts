@@ -9,7 +9,7 @@ export interface AIRequest {
   whatsappId?: string;
   source: AIRequestSource;
   message: string;
-  context?: unknown;
+  context?: any;
 }
 
 export class AIRequestRouter {
@@ -107,7 +107,7 @@ export class AIRequestRouter {
   }
 
   private async handleChatRequest(user: User, _request: AIRequest) {
-    // TODO: Integrate with AI chat/_response engine
+    // TODO: Integrate with AI chat/response engine
     return { status: "chat-handled", user: user.id, message: _request.message };
   }
 }

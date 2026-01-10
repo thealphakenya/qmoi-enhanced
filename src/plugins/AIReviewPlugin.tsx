@@ -15,7 +15,7 @@ export const AIReviewPlugin: QmoiPlugin = {
       { type: "edit", file: "main.py", time: "2m ago" },
       { type: "run", file: "main.py", time: "1m ago" },
       {
-        type: "_error",
+        type: "error",
         file: "main.py",
         time: "1m ago",
         message: "SyntaxError: invalid syntax",
@@ -23,7 +23,7 @@ export const AIReviewPlugin: QmoiPlugin = {
     ];
     const feedback = [
       "Consider running tests after editing code.",
-      "Fix the syntax _error in main.py to proceed.",
+      "Fix the syntax error in main.py to proceed.",
       "Use the auto-fix feature for common errors.",
     ];
     return (

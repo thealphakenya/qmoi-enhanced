@@ -10,6 +10,6 @@ export async function GET() {
     return NextResponse.json({ success: true, logs: lines });
   } catch (_e) {
     const errorMessage = _e instanceof Error ? _e.message : String(_e);
-    return NextResponse.json({ success: false, _error: errorMessage });
+    return NextResponse.json({ success: false, error: errorMessage });
   }
 }

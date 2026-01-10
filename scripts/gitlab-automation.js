@@ -61,7 +61,7 @@ class GitLabAutomation {
         });
       });
 
-      _req.on('_error', reject);
+      _req.on('error', reject);
       if (body) {
         _req.write(JSON.stringify(body));
       }
@@ -79,8 +79,8 @@ class GitLabAutomation {
       });
       this.log(`Created GitLab issue: ${issue.iid} - ${title}`);
       return issue;
-    } catch (_error) {
-      this.log(`Failed to create GitLab issue: ${_error.message}`, 'ERROR');
+    } catch (error) {
+      this.log(`Failed to create GitLab issue: ${error.message}`, 'ERROR');
       return null;
     }
   }
@@ -93,8 +93,8 @@ class GitLabAutomation {
         target_url: `${this.gitlabUrl}/${this.projectId}/-/jobs/${this.jobId}`
       });
       this.log(`Updated GitLab status: ${status} - ${description}`);
-    } catch (_error) {
-      this.log(`Failed to update GitLab status: ${_error.message}`, 'ERROR');
+    } catch (error) {
+      this.log(`Failed to update GitLab status: ${error.message}`, 'ERROR');
     }
   }
 
@@ -104,8 +104,8 @@ class GitLabAutomation {
         body: comment
       });
       this.log(`Added GitLab comment to MR ${this.pipelineId}`);
-    } catch (_error) {
-      this.log(`Failed to add GitLab comment: ${_error.message}`, 'ERROR');
+    } catch (error) {
+      this.log(`Failed to add GitLab comment: ${error.message}`, 'ERROR');
     }
   }
 
@@ -143,15 +143,15 @@ class GitLabAutomation {
         }
       });
 
-      child.on('_error', (_error) => {
-        this.log(`Command _error: ${_error.message}`, 'ERROR');
-        reject({ _error: _error.message, code: -1 });
+      child.on('error', (error) => {
+        this.log(`Command error: ${error.message}`, 'ERROR');
+        reject({ error: error.message, code: -1 });
       });
     });
   }
 
   async fixCommonErrors() {
-    this.log('Starting common _error fixes...');
+    this.log('Starting common error fixes...');
     
     const fixes = [
       {
@@ -186,10 +186,10 @@ class GitLabAutomation {
         this.log(`Applying fix: ${fix.name}`);
         await this.runCommand(fix.command);
         this.log(`Fix applied successfully: ${fix.name}`);
-      } catch (_error) {
-        this.log(`Fix failed: ${fix.name} - ${_error.message}`, 'WARN');
+      } catch (error) {
+        this.log(`Fix failed: ${fix.name} - ${error.message}`, 'WARN');
         if (!fix.continueOnError) {
-          throw _error;
+          throw error;
         }
       }
     }
@@ -227,11 +227,11 @@ class GitLabAutomation {
         ['qmoi', 'success', 'auto-setup']
       );
       
-    } catch (_error) {
-      this.log(`Auto-setup failed: ${_error.message}`, 'ERROR');
+    } catch (error) {
+      this.log(`Auto-setup failed: ${error.message}`, 'ERROR');
       await this.updateGitLabStatus('failed', 'QMOI auto-setup failed');
       
-      // Create _error notification with recovery steps
+      // Create error notification with recovery steps
       await this.createGitLabIssue(
         'QMOI Auto-Setup Failed - Recovery Required',
         `## QMOI Auto-Setup Error Report\n\n` +
@@ -240,7 +240,7 @@ class GitLabAutomation {
         `🔗 **Pipeline**: ${this.gitlabUrl}/${this.projectId}/-/pipelines/${this.pipelineId}\n` +
         `📋 **Job**: ${this.gitlabUrl}/${this.projectId}/-/jobs/${this.jobId}\n\n` +
         `### Error Details:\n` +
-        `\`\`\`\n${_error.message}\n\`\`\`\n\n` +
+        `\`\`\`\n${error.message}\n\`\`\`\n\n` +
         `### Recovery Steps:\n` +
         `1. **Manual Fix**: Run \`npm run auto:setup\` locally\n` +
         `2. **Clean Install**: \`npx rimraf node_modules && npm install\`\n` +
@@ -254,10 +254,10 @@ class GitLabAutomation {
         `- Fix ESLint issues: \`npx eslint --fix src/\`\n\n` +
         `### Automated Recovery:\n` +
         `The system will attempt automatic recovery on the next pipeline run.`,
-        ['qmoi', '_error', 'auto-setup', 'needs-attention']
+        ['qmoi', 'error', 'auto-setup', 'needs-attention']
       );
       
-      throw _error;
+      throw error;
     }
   }
 
@@ -274,8 +274,8 @@ class GitLabAutomation {
       this.log('All tests completed successfully');
       await this.updateGitLabStatus('success', 'QMOI tests passed');
       
-    } catch (_error) {
-      this.log(`Tests failed: ${_error.message}`, 'ERROR');
+    } catch (error) {
+      this.log(`Tests failed: ${error.message}`, 'ERROR');
       await this.updateGitLabStatus('failed', 'QMOI tests failed');
       
       // Create test failure notification
@@ -287,7 +287,7 @@ class GitLabAutomation {
         `🔗 **Pipeline**: ${this.gitlabUrl}/${this.projectId}/-/pipelines/${this.pipelineId}\n` +
         `📋 **Job**: ${this.gitlabUrl}/${this.projectId}/-/jobs/${this.jobId}\n\n` +
         `### Error Details:\n` +
-        `\`\`\`\n${_error.message}\n\`\`\`\n\n` +
+        `\`\`\`\n${error.message}\n\`\`\`\n\n` +
         `### Test Categories:\n` +
         `- Unit Tests: \`npm test\`\n` +
         `- UI Tests: \`npm run test:ui\`\n` +
@@ -302,10 +302,10 @@ class GitLabAutomation {
         `- Environment configuration issues\n` +
         `- Async test timing problems\n` +
         `- [PRODUCTION IMPLEMENTATION REQUIRED]/stub configuration errors`,
-        ['qmoi', '_error', 'tests', 'needs-review']
+        ['qmoi', 'error', 'tests', 'needs-review']
       );
       
-      throw _error;
+      throw error;
     }
   }
 
@@ -320,8 +320,8 @@ class GitLabAutomation {
       this.log('Build completed successfully');
       await this.updateGitLabStatus('success', 'QMOI build completed');
       
-    } catch (_error) {
-      this.log(`Build failed: ${_error.message}`, 'ERROR');
+    } catch (error) {
+      this.log(`Build failed: ${error.message}`, 'ERROR');
       await this.updateGitLabStatus('failed', 'QMOI build failed');
       
       // Create build failure notification
@@ -333,7 +333,7 @@ class GitLabAutomation {
         `🔗 **Pipeline**: ${this.gitlabUrl}/${this.projectId}/-/pipelines/${this.pipelineId}\n` +
         `📋 **Job**: ${this.gitlabUrl}/${this.projectId}/-/jobs/${this.jobId}\n\n` +
         `### Error Details:\n` +
-        `\`\`\`\n${_error.message}\n\`\`\`\n\n` +
+        `\`\`\`\n${error.message}\n\`\`\`\n\n` +
         `### Build Process:\n` +
         `- TypeScript compilation\n` +
         `- Bundle generation\n` +
@@ -350,10 +350,10 @@ class GitLabAutomation {
         `- Import/export issues\n` +
         `- Asset loading problems\n` +
         `- Environment variable issues`,
-        ['qmoi', '_error', 'build', 'needs-fix']
+        ['qmoi', 'error', 'build', 'needs-fix']
       );
       
-      throw _error;
+      throw error;
     }
   }
 
@@ -377,7 +377,7 @@ class GitLabAutomation {
                     `- Ready for deployment\n\n` +
                     `### Changes:\n` +
                     `- Enhanced GitLab integration\n` +
-                    `- Improved _error handling\n` +
+                    `- Improved error handling\n` +
                     `- Automated notifications\n` +
                     `- Self-healing capabilities`,
         assets: {
@@ -421,8 +421,8 @@ class GitLabAutomation {
         ['qmoi', 'success', 'deployment', 'completed']
       );
       
-    } catch (_error) {
-      this.log(`Deployment failed: ${_error.message}`, 'ERROR');
+    } catch (error) {
+      this.log(`Deployment failed: ${error.message}`, 'ERROR');
       await this.updateGitLabStatus('failed', 'QMOI deployment failed');
       
       // Create deployment failure notification
@@ -434,7 +434,7 @@ class GitLabAutomation {
         `🔗 **Pipeline**: ${this.gitlabUrl}/${this.projectId}/-/pipelines/${this.pipelineId}\n` +
         `📋 **Job**: ${this.gitlabUrl}/${this.projectId}/-/jobs/${this.jobId}\n\n` +
         `### Error Details:\n` +
-        `\`\`\`\n${_error.message}\n\`\`\`\n\n` +
+        `\`\`\`\n${error.message}\n\`\`\`\n\n` +
         `### Immediate Actions:\n` +
         `1. **Rollback**: Revert to previous stable version\n` +
         `2. **Investigate**: Check deployment logs\n` +
@@ -447,10 +447,10 @@ class GitLabAutomation {
         `- Network connectivity\n` +
         `- Permission issues\n` +
         `- Build artifact problems`,
-        ['qmoi', '_error', 'deployment', 'needs-rollback']
+        ['qmoi', 'error', 'deployment', 'needs-rollback']
       );
       
-      throw _error;
+      throw error;
     }
   }
 
@@ -470,9 +470,9 @@ class GitLabAutomation {
         await stepFn();
         await notify('success', `${stepName} succeeded on attempt ${attempt + 1}`);
         return;
-      } catch (_error) {
-        lastError = _error;
-        await notify('_error', `${stepName} failed on attempt ${attempt + 1}: ${_error.message}`);
+      } catch (error) {
+        lastError = error;
+        await notify('error', `${stepName} failed on attempt ${attempt + 1}: ${error.message}`);
         attempt++;
         if (attempt < MAX_RETRIES) {
           const delay = BASE_DELAY * Math.pow(2, attempt);
@@ -480,7 +480,7 @@ class GitLabAutomation {
         }
       }
     }
-    await notify('_error', `${stepName} failed after ${MAX_RETRIES} attempts.`);
+    await notify('error', `${stepName} failed after ${MAX_RETRIES} attempts.`);
     throw lastError;
   }
 
@@ -524,8 +524,8 @@ class GitLabAutomation {
         `🔗 **Pipeline**: ${this.gitlabUrl}/${this.projectId}/-/pipelines/${this.pipelineId}`
       );
       
-    } catch (_error) {
-      this.log(`Full pipeline failed: ${_error.message}`, 'ERROR');
+    } catch (error) {
+      this.log(`Full pipeline failed: ${error.message}`, 'ERROR');
       
       // Add failure comment to merge _request
       await this.addGitLabComment(
@@ -533,20 +533,20 @@ class GitLabAutomation {
         `❌ **Status**: Pipeline Failed\n` +
         `📅 **Timestamp**: ${new Date().toISOString()}\n\n` +
         `### Error Details:\n` +
-        `\`\`\`\n${_error.message}\n\`\`\`\n\n` +
+        `\`\`\`\n${error.message}\n\`\`\`\n\n` +
         `### Recovery Actions:\n` +
         `1. Check the automation logs\n` +
         `2. Review the created GitLab issues\n` +
         `3. Fix the identified problems\n` +
         `4. Re-run the pipeline\n\n` +
         `### Support:\n` +
-        `- Check the automation logs for detailed _error information\n` +
+        `- Check the automation logs for detailed error information\n` +
         `- Review the created GitLab issues for specific fixes\n` +
         `- Contact the development team if needed\n\n` +
         `🔗 **Pipeline**: ${this.gitlabUrl}/${this.projectId}/-/pipelines/${this.pipelineId}`
       );
       
-      throw _error;
+      throw error;
     }
   }
 }
@@ -564,8 +564,8 @@ async function main() {
     // Run the full pipeline
     await automation.runFullPipeline();
     
-  } catch (_error) {
-    automation.log(`Pipeline execution failed: ${_error.message}`, 'ERROR');
+  } catch (error) {
+    automation.log(`Pipeline execution failed: ${error.message}`, 'ERROR');
     process.exit(1);
   }
 }

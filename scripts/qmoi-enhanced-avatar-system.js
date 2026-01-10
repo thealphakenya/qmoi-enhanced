@@ -499,8 +499,8 @@ class QMOIEnhancedAvatarSystem {
     try {
       await fs.appendFile(this.logPath, JSON.stringify(logEntry) + '\n');
       this.activities = []; // Clear after saving
-    } catch (_error) {
-      (console as any)._error('Failed to save activity log:', _error.message);
+    } catch (error) {
+      (console as any).error('Failed to save activity log:', error.message);
     }
   }
 
@@ -677,7 +677,7 @@ Examples:
     }
   }
 
-  main().catch(console._error);
+  main().catch(console.error);
 }
 
 export default QMOIEnhancedAvatarSystem; 
