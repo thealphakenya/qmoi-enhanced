@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import db from "@/lib/db/services";
+import { db as fullDb } from "@/lib/db/prisma";
 import authService from "@/lib/auth/service";
 
 // GET /api/wallets - List user's wallets
@@ -23,15 +24,25 @@ export async function GET(_request: NextRequest) {
     }
 
     // Get wallets for the user
-    const query = new URL(_request.url);
-    const skip = parseInt(query.searchParams.get("skip") || "0");
-    const take = parseInt(query.searchParams.get("take") || "10");
+    let skip = 0;
+    let take = 10;
+    try {
+      const query = new URL(String(_request.url || "http://localhost"));
+      skip = parseInt(query.searchParams.get("skip") || "0");
+      take = parseInt(query.searchParams.get("take") || "10");
+    } catch (_e) {
+      // ignore parse errors and keep defaults
+    }
 
-    // Prisma query would need implementation in userService
-    // For now, returning success structure
+    // Use prisma facade to find wallets for this user
+    const allWallets = await (fullDb as any).prisma.wallet.findMany({
+      where: { userId: decoded.userId },
+    });
+    const wallets = allWallets.slice(skip, skip + take);
+
     return NextResponse.json({
-      wallets: [],
-      pagination: { skip, take, total: 0 },
+      wallets,
+      pagination: { skip, take, total: allWallets.length },
     });
   } catch (error) {
     console.error("GET /api/wallets error:", error);
@@ -62,7 +73,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
-    const body = (await _request.json()) as { currency?: string; name?: string };
+    const body = (await _request.json()) as {
+      currency?: string;
+      name?: string;
+    };
     const currency = body.currency || "KES";
 
     const wallet = await db.walletService.create(decoded.userId, currency);

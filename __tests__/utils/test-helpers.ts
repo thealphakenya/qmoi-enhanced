@@ -196,3 +196,10 @@ export function generateTestPaymentData(method: string = "mpesa") {
 export function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+// Some test runner setups expect a test file to export at least one test.
+// Add a skipped placeholder test so Jest does not fail when importing this
+// helpers module directly as a test in some environments.
+if (typeof test === "function") {
+  test.skip("helpers placeholder", () => {});
+}

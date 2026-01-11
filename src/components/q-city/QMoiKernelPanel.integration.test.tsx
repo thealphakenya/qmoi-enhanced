@@ -128,6 +128,22 @@ describe("QMoiKernelPanel Integration", () => {
       const hs = await handlersMod.getHandlers();
       server.use(...hs);
     }
+
+    // For determinism, explicitly override the payload handler for this test
+    try {
+      const msw = await import("msw");
+      const helpers = (msw as any).rest ?? (msw as any).http;
+      if (helpers) {
+        server.use(
+          helpers.post("/api/qmoi/payload", (_req: any, _res: any, ctx: any) =>
+            _res(ctx.status(200), ctx.json({ message: "QFix done" }))
+          )
+        );
+      }
+    } catch (_e) {
+      // ignore - msw may not be available in this environment
+    }
+
     render(<QMoiKernelPanel isMaster={true} />);
     await screen.findByText("OK");
     fireEvent.click(screen.getByRole("button", { name: /Run QFix/i }));

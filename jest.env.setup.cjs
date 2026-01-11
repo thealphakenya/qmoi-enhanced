@@ -123,3 +123,57 @@ try {
 
 // No early MSW fallback here. MSW is initialized in `src/setupTests.ts`
 // to ensure ESM imports and polyfills are applied in the correct order.
+
+// Provide a simple require-cache-based mock for `next/server` so that modules
+// importing it during test initialization receive consistent shims.
+try {
+  const mockNextServer = {
+    NextRequest: class NextRequest {
+      constructor(url, init = {}) {
+        this.url =
+          typeof url === "string"
+            ? url
+            : (url && (url.url || String(url))) || "http://localhost";
+        this.method = (init && init.method) || "GET";
+        this.headers = new (global.Headers ||
+          function (h) {
+            this._map = h || {};
+          })(init && init.headers ? init.headers : {});
+        this.body = init && init.body ? init.body : null;
+      }
+      async json() {
+        if (!this.body) return null;
+        try {
+          return JSON.parse(this.body);
+        } catch (_e) {
+          return null;
+        }
+      }
+    },
+    NextResponse: {
+      json(body, opts = {}) {
+        return {
+          status: opts?.status || 200,
+          ok: (opts?.status || 200) >= 200 && (opts?.status || 200) < 300,
+          headers: opts?.headers || {},
+          json: async () => body,
+          text: async () =>
+            typeof body === "string" ? body : JSON.stringify(body),
+        };
+      },
+    },
+  };
+  try {
+    const resolved = require.resolve("next/server");
+    require.cache[resolved] = {
+      id: resolved,
+      filename: resolved,
+      loaded: true,
+      exports: mockNextServer,
+    };
+  } catch (_e) {
+    // ignore if next/server cannot be resolved in this environment
+  }
+} catch (e) {
+  // ignore
+}

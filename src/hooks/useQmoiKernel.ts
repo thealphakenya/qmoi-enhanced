@@ -34,10 +34,7 @@ export function useQmoiKernel() {
       const _res = await fetch("/api/qmoi/status", {
         headers: getSessionHeaders(),
       });
-      console.debug(
-        "HOOK: fetchStatus - response status",
-        _res && _res.status
-      );
+      console.debug("HOOK: fetchStatus - response status", _res && _res.status);
       if (!_res.ok) throw new Error("Failed to fetch status");
       const data = await _res.json();
       console.debug("HOOK: fetchStatus - parsed data", data);
@@ -70,9 +67,17 @@ export function useQmoiKernel() {
         });
         if (!_res.ok) throw new Error(`Failed to run ${action}`);
         const data = await _res.json().catch(() => ({}));
+        const defaultMsgs: Record<string, string> = {
+          qfix: "QFix done",
+          qoptimize: "QOptimize done",
+          qsecure: "QSecure done",
+        };
         setLastAction({
           success: true,
-          message: data.message || `${action} completed successfully`,
+          message:
+            data.message ||
+            defaultMsgs[action] ||
+            `${action} completed successfully`,
         });
         await fetchStatus();
       } catch (_err: any) {

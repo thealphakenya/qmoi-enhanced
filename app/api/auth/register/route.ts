@@ -52,9 +52,16 @@ export async function POST(_request: NextRequest) {
       );
     }
 
-    // Create user and rely on Prisma/mock unique constraint (P2002)
-    // to signal duplicates. This avoids races between existence checks
-    // and creates across different module instances in tests.
+    // Basic pre-check for duplicates to provide clear status codes in tests
+    const existing = await userService.getByEmail(body.email);
+    if (existing) {
+      return NextResponse.json(
+        { error: "Email already exists" },
+        { status: 409 }
+      );
+    }
+
+    // Create user (may still throw unique constraint in race conditions)
     const user = await userService.create({
       email: body.email,
       username: body.username,

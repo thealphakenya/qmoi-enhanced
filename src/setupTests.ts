@@ -70,15 +70,36 @@ if (!global.fetch) {
   headers: Headers;
   body: any;
   constructor(input: any, init: any = {}) {
-    this.url =
+    const _url =
       typeof input === "string"
         ? input
         : (input && (input.url || String(input))) || "http://localhost";
-    this.method = (init && init.method) || "GET";
-    this.headers = new (global as any).Headers(
-      init && init.headers ? init.headers : {}
-    );
-    this.body = init && init.body ? init.body : null;
+    Object.defineProperty(this, "url", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: _url,
+    });
+    Object.defineProperty(this, "method", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: (init && init.method) || "GET",
+    });
+    Object.defineProperty(this, "headers", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: new (global as any).Headers(
+        init && init.headers ? init.headers : {}
+      ),
+    });
+    Object.defineProperty(this, "body", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: init && init.body ? init.body : null,
+    });
   }
   clone() {
     return new (global as any).Request(this.url, {
@@ -106,15 +127,36 @@ if (!global.fetch) {
   headers: Headers;
   body: any;
   constructor(url: any, init: any = {}) {
-    this.url =
+    const _url =
       typeof url === "string"
         ? url
         : (url && (url.url || String(url))) || "http://localhost";
-    this.method = (init && init.method) || "GET";
-    this.headers = new (global as any).Headers(
-      init && init.headers ? init.headers : {}
-    );
-    this.body = init && init.body ? init.body : null;
+    Object.defineProperty(this, "url", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: _url,
+    });
+    Object.defineProperty(this, "method", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: (init && init.method) || "GET",
+    });
+    Object.defineProperty(this, "headers", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: new (global as any).Headers(
+        init && init.headers ? init.headers : {}
+      ),
+    });
+    Object.defineProperty(this, "body", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: init && init.body ? init.body : null,
+    });
   }
   async json() {
     if (!this.body) return null;
@@ -128,6 +170,24 @@ if (!global.fetch) {
     return this.body ? String(this.body) : "";
   }
 } as any;
+
+// Minimal NextResponse shim for tests that call NextResponse.json()
+if (typeof (global as any).NextResponse === "undefined") {
+  (global as any).NextResponse = {
+    json(body: any, opts: any = {}) {
+      // Return a plain object that mimics the minimal interface used in tests
+      return {
+        status: opts?.status || 200,
+        ok: (opts?.status || 200) >= 200 && (opts?.status || 200) < 300,
+        json: async () => body,
+        // also support text for completeness
+        text: async () =>
+          typeof body === "string" ? body : JSON.stringify(body),
+        headers: opts?.headers || {},
+      } as any;
+    },
+  } as any;
+}
 
 // MSW server lifecycle: initialize at module load so interceptors are active
 // before unknown test modules run. When running under Node (no `window`) we skip
@@ -283,11 +343,11 @@ if (typeof window === "undefined") {
             const q =
               typeof url === "string" ? new URL(url, "http://localhost") : url;
             const action =
-              q.searchParams && q.searchParams.get("qfix")
+              q.searchParams && q.searchParams.has("qfix")
                 ? "QFix"
-                : q.searchParams && q.searchParams.get("qoptimize")
+                : q.searchParams && q.searchParams.has("qoptimize")
                 ? "QOptimize"
-                : q.searchParams && q.searchParams.get("qsecure")
+                : q.searchParams && q.searchParams.has("qsecure")
                 ? "QSecure"
                 : "Unknown";
             return new Response(JSON.stringify({ message: `${action} done` }), {
@@ -534,6 +594,59 @@ beforeEach(() => {
   } catch (_e) {}
 });
 
+// Ensure a minimal global Response implementation exists (used by NextResponse plumbing)
+try {
+  const needsImpl =
+    typeof (global as any).Response === "undefined" ||
+    typeof (global as any).Response.prototype.json !== "function";
+  if (needsImpl) {
+    class ResponseMock {
+      _body: any;
+      status: number;
+      headers: any;
+      constructor(body: any = null, init: any = {}) {
+        this._body = body;
+        this.status = init.status || 200;
+        this.headers = new (global as any).Headers(init.headers || {});
+      }
+      async json() {
+        if (
+          this._body === null ||
+          this._body === undefined ||
+          this._body === ""
+        )
+          return null;
+        try {
+          return JSON.parse(this._body);
+        } catch (_e) {
+          return this._body;
+        }
+      }
+      async text() {
+        if (this._body === null || this._body === undefined) return "";
+        return typeof this._body === "string"
+          ? this._body
+          : JSON.stringify(this._body);
+      }
+      static json(body: any, init: any = {}) {
+        return new ResponseMock(JSON.stringify(body), init);
+      }
+    }
+    (global as any).Response = ResponseMock as any;
+  } else if (
+    (global as any).Response &&
+    typeof (global as any).Response.json !== "function"
+  ) {
+    (global as any).Response.json = function (body: any, init: any = {}) {
+      const headers = (init && init.headers) || {};
+      return new (global as any).Response(JSON.stringify(body), {
+        status: init.status || 200,
+        headers: { "Content-Type": "application/json", ...headers },
+      });
+    } as any;
+  }
+} catch (_e) {}
+
 // Install a default jest `fetch` mock if one is not already present. This
 // provides sensible default responses for external QMOI calls and local
 // endpoints so tests can assert `fetch` usage reliably.
@@ -713,13 +826,18 @@ try {
           });
         }
         if (u.pathname === "/api/qmoi/payload") {
-          const action = u.searchParams.get("qfix")
-            ? "QFix"
-            : u.searchParams.get("qoptimize")
-            ? "QOptimize"
-            : u.searchParams.get("qsecure")
-            ? "QSecure"
-            : "Unknown";
+          const action =
+            u.searchParams &&
+            (u.searchParams.has("qfix") || u.searchParams.get("qfix"))
+              ? "QFix"
+              : u.searchParams &&
+                (u.searchParams.has("qoptimize") ||
+                  u.searchParams.get("qoptimize"))
+              ? "QOptimize"
+              : u.searchParams &&
+                (u.searchParams.has("qsecure") || u.searchParams.get("qsecure"))
+              ? "QSecure"
+              : "Unknown";
           return makeJson({ message: `${action} done` });
         }
       } catch (_err) {

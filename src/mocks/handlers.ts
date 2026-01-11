@@ -20,63 +20,57 @@ export async function getHandlers() {
     throw new Error("MSW helpers (rest or http) not found on msw import");
 
   const handlers = [
-    helpers.get(
-      "/api/qmoi/status",
-      (_req: any, _res: any, ctx: any) => {
-        try {
-          debug(
-            "HANDLER: status handler invoked, keys=",
-            Object.keys(_req),
-            "method=",
-            (_req as any).method,
-            "path=",
-            (_req as any).path,
-            "url=",
-            String((_req as any).url)
-          );
-          if ((_req as any) && (_req as any)._request) {
-            try {
-              debug(
-                "HANDLER: status inner _request keys=",
-                Object.keys((_req as any)._request),
-                "_request.url=",
-                ((_req as any)._request as any).url,
-                "_request.path=",
-                ((_req as any)._request as any).path
-              );
-            } catch (_e) {
-              console.error(
-                "HANDLER: status inner _request logging failed",
-                _e
-              );
-            }
+    helpers.get("/api/qmoi/status", (_req: any, _res: any, ctx: any) => {
+      try {
+        debug(
+          "HANDLER: status handler invoked, keys=",
+          Object.keys(_req),
+          "method=",
+          (_req as any).method,
+          "path=",
+          (_req as any).path,
+          "url=",
+          String((_req as any).url)
+        );
+        if ((_req as any) && (_req as any)._request) {
+          try {
+            debug(
+              "HANDLER: status inner _request keys=",
+              Object.keys((_req as any)._request),
+              "_request.url=",
+              ((_req as any)._request as any).url,
+              "_request.path=",
+              ((_req as any)._request as any).path
+            );
+          } catch (_e) {
+            console.error("HANDLER: status inner _request logging failed", _e);
           }
-        } catch (_e) {
-          console.error("HANDLER: status handler logging failed", _e);
         }
-        // Support multiple resolver shapes: rest (ctx), http (return object), or http with _res not a function
-        const payload = {
-          status: "OK",
-          last_check: "2024-06-01T12:00:00Z",
-          mutation_count: 5,
-          logs: ["Log 1", "Log 2"],
-        };
-        if (ctx && typeof (ctx as any).status === "function") {
-          return (_res as any)(
-            (ctx as any).status(200),
-            (ctx as any).json(payload)
-          );
-        }
-        const response = new Response(JSON.stringify(payload), {
-          status: 200,
-          headers: new Headers({ "content-type": "application/json" }),
-        });
-        if (typeof _res === "function") {
-          return (_res as any)(response);
-        }
-        return response;
+      } catch (_e) {
+        console.error("HANDLER: status handler logging failed", _e);
       }
-    ),
+      // Support multiple resolver shapes: rest (ctx), http (return object), or http with _res not a function
+      const payload = {
+        status: "OK",
+        last_check: "2024-06-01T12:00:00Z",
+        mutation_count: 5,
+        logs: ["Log 1", "Log 2"],
+      };
+      if (ctx && typeof (ctx as any).status === "function") {
+        return (_res as any)(
+          (ctx as any).status(200),
+          (ctx as any).json(payload)
+        );
+      }
+      const response = new Response(JSON.stringify(payload), {
+        status: 200,
+        headers: new Headers({ "content-type": "application/json" }),
+      });
+      if (typeof _res === "function") {
+        return (_res as any)(response);
+      }
+      return response;
+    }),
     // Also register absolute-url forms to ensure matching regardless of how
     // the _request is represented by the underlying interceptor.
     helpers.get(
@@ -113,74 +107,89 @@ export async function getHandlers() {
         return response;
       }
     ),
-    helpers.post(
-      "/api/qmoi/payload",
-      (_req: any, _res: any, ctx: any) => {
-        // in rest handlers, _req.url is a URL instance
-        try {
-          debug(
-            "HANDLER: payload handler invoked, keys=",
-            Object.keys(_req),
-            "method=",
-            (_req as any).method,
-            "path=",
-            (_req as any).path,
-            "url=",
-            String((_req as any).url)
-          );
-          if ((_req as any) && (_req as any)._request) {
-            try {
-              debug(
-                "HANDLER: payload inner _request keys=",
-                Object.keys((_req as any)._request),
-                "_request.url=",
-                ((_req as any)._request as any).url,
-                "_request.path=",
-                ((_req as any)._request as any).path
-              );
-            } catch (_e) {
-              console.error(
-                "HANDLER: payload inner _request logging failed",
-                _e
-              );
-            }
+    helpers.post("/api/qmoi/payload", (_req: any, _res: any, ctx: any) => {
+      // in rest handlers, _req.url is a URL instance
+      try {
+        debug(
+          "HANDLER: payload handler invoked, keys=",
+          Object.keys(_req),
+          "method=",
+          (_req as any).method,
+          "path=",
+          (_req as any).path,
+          "url=",
+          String((_req as any).url)
+        );
+        if ((_req as any) && (_req as any)._request) {
+          try {
+            debug(
+              "HANDLER: payload inner _request keys=",
+              Object.keys((_req as any)._request),
+              "_request.url=",
+              ((_req as any)._request as any).url,
+              "_request.path=",
+              ((_req as any)._request as any).path
+            );
+          } catch (_e) {
+            console.error("HANDLER: payload inner _request logging failed", _e);
           }
-        } catch (_e) {
-          console.error("HANDLER: payload handler logging failed", _e);
         }
-        // Support both `_req.url` (rest) and `_req._request.url` (http helper)
-        const rawUrl =
-          (_req && _req.url) ||
-          (_req && _req._request && (_req._request as any).url) ||
-          "";
-        const urlObj =
-          typeof rawUrl === "string"
-            ? new URL(rawUrl, "http://localhost")
-            : rawUrl;
-        const action = urlObj.searchParams.has("qfix")
-          ? "QFix"
-          : urlObj.searchParams.has("qoptimize")
-          ? "QOptimize"
-          : urlObj.searchParams.has("qsecure")
-          ? "QSecure"
-          : "Unknown";
-        const out = { message: `${action} done` };
-        if (ctx && typeof (ctx as any).status === "function") {
-          return (_res as any)(
-            (ctx as any).status(200),
-            (ctx as any).json(out)
-          );
-        }
-        const response = new Response(JSON.stringify(out), {
-          status: 200,
-          headers: new Headers({ "content-type": "application/json" }),
-        });
-        if (typeof _res === "function") {
-          return (_res as any)(response);
-        }
-        return response;
+      } catch (_e) {
+        console.error("HANDLER: payload handler logging failed", _e);
       }
-    ),
+      // Support both `_req.url` (rest) and `_req._request.url` (http helper)
+      const rawUrl =
+        (_req && _req.url) ||
+        (_req && _req._request && (_req._request as any).url) ||
+        "";
+      const urlObj =
+        typeof rawUrl === "string"
+          ? new URL(rawUrl, "http://localhost")
+          : rawUrl;
+      const hasFlag = (flag: string) => {
+        try {
+          if (typeof rawUrl === "string" && rawUrl.includes(`?${flag}`))
+            return true;
+          if (urlObj && typeof urlObj.searchParams?.has === "function") {
+            if ((urlObj as any).searchParams.has(flag)) return true;
+          }
+          if (typeof rawUrl === "string" && rawUrl.includes(flag)) return true;
+        } catch (_e) {
+          // ignore
+        }
+        return false;
+      };
+      // Debug log to aid tests when query flags are not detected
+      try {
+        console.log(
+          "PAYLOAD HANDLER: rawUrl=",
+          rawUrl,
+          "urlObjSearch=",
+          urlObj?.search || null,
+          "hasQfix=",
+          hasFlag("qfix")
+        );
+      } catch (e) {}
+      const action = hasFlag("qfix")
+        ? "QFix"
+        : hasFlag("qoptimize")
+        ? "QOptimize"
+        : hasFlag("qsecure")
+        ? "QSecure"
+        : "Unknown";
+      const out = { message: `${action} done` };
+      if (ctx && typeof (ctx as any).status === "function") {
+        return (_res as any)((ctx as any).status(200), (ctx as any).json(out));
+      }
+      const response = new Response(JSON.stringify(out), {
+        status: 200,
+        headers: new Headers({ "content-type": "application/json" }),
+      });
+      if (typeof _res === "function") {
+        return (_res as any)(response);
+      }
+      return response;
+    }),
     helpers.post(
       "http://localhost/api/qmoi/payload",
       (_req: any, _res: any, ctx: any) => {
@@ -196,11 +205,38 @@ export async function getHandlers() {
             typeof rawUrl === "string"
               ? new URL(rawUrl, "http://localhost")
               : rawUrl;
-          const action = urlObj.searchParams.has("qfix")
+          const hasFlag = (flag: string) => {
+            try {
+              if (typeof rawUrl === "string" && rawUrl.includes(`?${flag}`))
+                return true;
+              if (
+                urlObj &&
+                typeof (urlObj as any).searchParams?.has === "function"
+              ) {
+                if ((urlObj as any).searchParams.has(flag)) return true;
+              }
+              if (typeof rawUrl === "string" && rawUrl.includes(flag))
+                return true;
+            } catch (_e) {
+              // ignore
+            }
+            return false;
+          };
+          try {
+            console.log(
+              "ABS PAYLOAD HANDLER: rawUrl=",
+              rawUrl,
+              "urlObjSearch=",
+              urlObj?.search || null,
+              "hasQfix=",
+              hasFlag("qfix")
+            );
+          } catch (e) {}
+          const action = hasFlag("qfix")
             ? "QFix"
-            : urlObj.searchParams.has("qoptimize")
+            : hasFlag("qoptimize")
             ? "QOptimize"
-            : urlObj.searchParams.has("qsecure")
+            : hasFlag("qsecure")
             ? "QSecure"
             : "Unknown";
           const out = { message: `${action} done` };
