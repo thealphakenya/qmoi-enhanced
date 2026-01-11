@@ -167,11 +167,30 @@ describe("QMoiKernelPanel Integration", () => {
         );
       }
     } catch {
+      // ignore
+    }
+
+    // Ensure the override actually returns 500; if it doesn't (e.g., MSW
+    // isn't active), mock fetch as a deterministic fallback for this test.
+    try {
+      const check = await fetch("/api/qmoi/status");
+      if (check.status !== 500) {
+        jest
+          .spyOn(global, "fetch" as any)
+          .mockImplementation(async (arg: any) => {
+            const url = typeof arg === "string" ? arg : (arg as any)?.url;
+            if (url && url.toString().endsWith("/api/qmoi/status")) {
+              return new Response(null, { status: 500 });
+            }
+            return Promise.reject(new Error("Unexpected fetch in test"));
+          });
+      }
+    } catch {
       jest
         .spyOn(global, "fetch" as any)
         .mockImplementation(async (arg: any) => {
           const url = typeof arg === "string" ? arg : (arg as any)?.url;
-          if (url.endsWith("/api/qmoi/status")) {
+          if (url && url.toString().endsWith("/api/qmoi/status")) {
             return new Response(null, { status: 500 });
           }
           return Promise.reject(new Error("Unexpected fetch in test"));

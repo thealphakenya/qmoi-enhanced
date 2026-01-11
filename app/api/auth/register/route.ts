@@ -55,6 +55,7 @@ export async function POST(_request: NextRequest) {
     // Basic pre-check for duplicates to provide clear status codes in tests
     const existing = await userService.getByEmail(body.email);
     if (existing) {
+      console.warn("REGISTER: existing found for", body.email, existing);
       return NextResponse.json(
         { error: "Email already exists" },
         { status: 409 }
