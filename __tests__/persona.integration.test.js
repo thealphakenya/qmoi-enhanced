@@ -45,7 +45,23 @@ function waitForServer(url, timeout = 20000, interval = 250) {
   });
 }
 
-describe("QM OI helper server (integration)", () => {
+// Skip this integration suite if Python Flask is not installed in the test environment
+let _flaskAvailable = true;
+try {
+  const cp = require("child_process");
+  cp.execSync('python3 -c "import flask"', { stdio: "ignore" });
+} catch (e) {
+  _flaskAvailable = false;
+  // eslint-disable-next-line no-console
+  console.warn("Skipping persona integration tests because Flask is not available");
+}
+
+if (!_flaskAvailable) {
+  describe.skip("QM OI helper server (integration) - skipped (flask missing)", () => {
+    test("skipped", () => {});
+  });
+} else {
+  describe("QM OI helper server (integration)", () => {
   const serverScript = path.join(
     process.cwd(),
     "scripts",

@@ -70,6 +70,12 @@ describe("User Registration Flow", () => {
   });
 
   it("should reject duplicate registration", async () => {
+    // Use an explicitly-unique email for this test to avoid cross-test collisions
+    const uniqueEmail = `dup-test-${Date.now()}-${Math.random()
+      .toString(36)
+      .slice(2, 6)}@example.com`;
+    const firstData = { ...testData, email: uniqueEmail };
+
     // First registration succeeds
     const firstRequest = new NextRequest(
       "http://localhost:3000/api/auth/register",
@@ -78,7 +84,7 @@ describe("User Registration Flow", () => {
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify(testData),
+        body: JSON.stringify(firstData),
       }
     );
 
@@ -94,7 +100,7 @@ describe("User Registration Flow", () => {
           "content-type": "application/json",
         },
         body: JSON.stringify({
-          ...testData,
+          ...firstData,
           username: `different${Date.now()}`,
         }),
       }
