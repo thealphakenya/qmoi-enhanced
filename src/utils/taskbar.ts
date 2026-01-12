@@ -1,8 +1,20 @@
 import { app, Notification } from "electron";
 import path from "path";
 
-// Module-scoped alias for Electron `app` to avoid type issues in triage.
-const _app: any = app as any as any;
+// Module-scoped alias for Electron `app` with conservative typing to avoid misuse.
+type ElectronDockLike = {
+  setIcon?: (p: string) => void;
+  setTooltip?: (t: string) => void;
+  hide?: () => void;
+};
+
+type ElectronAppLike = {
+  dock?: ElectronDockLike;
+  getAppPath?: () => string;
+  on?: (event: string, handler: (...args: unknown[]) => void) => void;
+};
+
+const _app = app as unknown as ElectronAppLike;
 
 interface TaskbarOptions {
   icon: string;
@@ -40,7 +52,7 @@ export class TaskbarManager {
   private initialize(): void {
     if (this._options.showInTaskbar) {
       // Set application icon
-      const iconPath = path.join(_app.getAppPath(), this._options.icon);
+      const iconPath = path.join(_app.getAppPath?.() ?? "", this._options.icon);
       _app.dock?.setIcon(iconPath);
 
       // Set tooltip
@@ -82,11 +94,15 @@ export class TaskbarManager {
 
   public showNotification(title: string, body: string): void {
     if (this._options.notifications) {
-      // Show system notification
-      new (Notification as any)({
+      // Show system notification using a conservatively-typed constructor
+      const NotificationConstructor = Notification as unknown as {
+        new (data: NotificationData): unknown;
+      };
+      // Provide a safe icon path even if getAppPath is unavailable
+      new NotificationConstructor({
         title,
         body,
-        icon: path.join(_app.getAppPath(), this._options.icon),
+        icon: path.join(_app.getAppPath?.() ?? "", this._options.icon),
       });
     }
   }
@@ -99,7 +115,7 @@ export class TaskbarManager {
 
   public updateIcon(iconPath: string): void {
     if (this._options.showInTaskbar) {
-      const fullPath = path.join(_app.getAppPath(), iconPath);
+      const fullPath = path.join(_app.getAppPath?.() ?? "", iconPath);
       _app.dock?.setIcon(fullPath);
     }
   }
