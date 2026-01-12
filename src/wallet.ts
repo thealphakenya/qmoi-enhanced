@@ -36,9 +36,9 @@ export class MockAdapter implements WalletAdapter {
 export class TestnetAdapter implements WalletAdapter {
   name: string;
   isTestnet = true;
-  private opts: any;
+  private opts: Record<string, unknown>;
 
-  constructor(name: string, opts?: any) {
+  constructor(name: string, opts?: Record<string, unknown>) {
     this.name = name;
     this.opts = opts || {};
   }
@@ -96,21 +96,23 @@ function _maskSecret(s: string | null | undefined) {
 export class CashonAdapter implements WalletAdapter {
   name: string;
   isTestnet = false;
-  private opts: any;
+  private opts: Record<string, unknown>;
 
-  constructor(name = "cashon", opts?: any) {
+  constructor(name = "cashon", opts?: Record<string, unknown>) {
     this.name = name;
     this.opts = opts || {};
   }
 
   async getBalance() {
     const apiKey =
-      (this.opts as any).apiKey ||
+      ((this.opts as Record<string, unknown>).apiKey as string | undefined) ||
       process.env.CASHON_API_KEY ||
       process.env.WALLET_CASHON_API_KEY ||
       null;
     const apiUrl =
-      (this.opts as any).apiUrl || process.env.CASHON_API_URL || null;
+      ((this.opts as Record<string, unknown>).apiUrl as string | undefined) ||
+      process.env.CASHON_API_URL ||
+      null;
 
     if (!apiKey) {
       // deterministic mock when no credentials available
@@ -149,16 +151,21 @@ export class CashonAdapter implements WalletAdapter {
 
     // If allowed, attempt a minimal fetch if global fetch exists; otherwise return a network_not_available status
     try {
-      if (typeof (global as any).fetch === "function") {
+      const maybeFetch = (global as unknown as { fetch?: unknown }).fetch;
+      if (typeof maybeFetch === "function") {
         const url = apiUrl || "https://api.cashon.example/v1/balance";
-        const r = await (global as any).fetch(url, {
+        const r = await (
+          maybeFetch as (...args: unknown[]) => Promise<unknown>
+        )(url, {
           headers: { Authorization: `Bearer ${apiKey}` },
         });
-        const j: any = await r.json();
+        const j = await (
+          r as { json: () => Promise<Record<string, unknown>> }
+        ).json();
         // Expecting { balance: number, currency: string }
         return {
-          amount: j.balance || 0,
-          currency: j.currency || "USD",
+          amount: (j.balance as number) || 0,
+          currency: (j.currency as string) || "USD",
           status: "ok",
         };
       }
@@ -179,21 +186,23 @@ export class CashonAdapter implements WalletAdapter {
 export class MegavaultAdapter implements WalletAdapter {
   name: string;
   isTestnet = false;
-  private opts: any;
+  private opts: Record<string, unknown>;
 
-  constructor(name = "megavault", opts?: any) {
+  constructor(name = "megavault", opts?: Record<string, unknown>) {
     this.name = name;
     this.opts = opts || {};
   }
 
   async getBalance() {
     const apiKey =
-      (this.opts as any).apiKey ||
+      ((this.opts as Record<string, unknown>).apiKey as string | undefined) ||
       process.env.MEGAVAULT_API_KEY ||
       process.env.WALLET_MEGAVAULT_API_KEY ||
       null;
     const apiUrl =
-      (this.opts as any).apiUrl || process.env.MEGAVAULT_API_URL || null;
+      ((this.opts as Record<string, unknown>).apiUrl as string | undefined) ||
+      process.env.MEGAVAULT_API_URL ||
+      null;
 
     if (!apiKey) {
       // deterministic mock when no credentials available
@@ -229,15 +238,20 @@ export class MegavaultAdapter implements WalletAdapter {
     }
 
     try {
-      if (typeof (global as any).fetch === "function") {
+      const maybeFetch = (global as unknown as { fetch?: unknown }).fetch;
+      if (typeof maybeFetch === "function") {
         const url = apiUrl || "https://api.megavault.example/v1/balance";
-        const r = await (global as any).fetch(url, {
+        const r = await (
+          maybeFetch as (...args: unknown[]) => Promise<unknown>
+        )(url, {
           headers: { Authorization: `Bearer ${apiKey}` },
         });
-        const j: any = await r.json();
+        const j = await (
+          r as { json: () => Promise<Record<string, unknown>> }
+        ).json();
         return {
-          amount: j.balance || 0,
-          currency: j.currency || "USD",
+          amount: (j.balance as number) || 0,
+          currency: (j.currency as string) || "USD",
           status: "ok",
         };
       }
@@ -314,12 +328,23 @@ export class WalletService {
 
   persistSnapshot(snapshot: Record<string, unknown>) {
     try {
-      const data: any = JSON.parse(
-        fs.readFileSync(this.stateFile, "utf8") || "{}"
+      const raw = fs.readFileSync(this.stateFile, "utf8") || "{}";
+      const parsed: unknown = JSON.parse(raw || "{}");
+      const dataObj =
+        parsed && typeof parsed === "object" && parsed !== null
+          ? (parsed as Record<string, unknown>)
+          : {};
+      const dataObjSafe = dataObj as Record<string, unknown>;
+      if (!Array.isArray(dataObjSafe.history)) dataObjSafe.history = [];
+      (dataObjSafe.history as unknown[]).push({
+        ts: new Date().toISOString(),
+        snapshot,
+      });
+      fs.writeFileSync(
+        this.stateFile,
+        JSON.stringify(dataObjSafe, null, 2),
+        "utf8"
       );
-      if (!data.history) data.history = [];
-      data.history.push({ ts: new Date().toISOString(), snapshot });
-      fs.writeFileSync(this.stateFile, JSON.stringify(data, null, 2), "utf8");
     } catch (_err) {
       void _err;
       fs.writeFileSync(
@@ -341,22 +366,34 @@ export class WalletService {
     if (key) return { apiKey: key };
 
     try {
-      const s: any = JSON.parse(
+      const s: unknown = JSON.parse(
         fs.readFileSync(this.stateFile, "utf8") || "{}"
       );
-      return s.wallets && s.wallets[name] ? s.wallets[name].creds : null;
+      if (s && typeof s === "object") {
+        const sObj = s as Record<string, unknown>;
+        if (sObj.wallets && typeof sObj.wallets === "object") {
+          const wallets = sObj.wallets as Record<string, unknown>;
+          const entry = wallets[name] as Record<string, unknown> | undefined;
+          return entry ? (entry.creds as Record<string, unknown> | null) : null;
+        }
+      }
+      return null;
     } catch (_err) {
       void _err;
       return null;
     }
   }
 
-  saveWalletState(name: string, meta: any) {
+  saveWalletState(name: string, meta: Record<string, unknown>) {
     const raw = fs.readFileSync(this.stateFile, "utf8") || "{}";
-    const data: any = JSON.parse(raw || "{}");
-    data.wallets = data.wallets || {};
-    data.wallets[name] = meta;
-    fs.writeFileSync(this.stateFile, JSON.stringify(data, null, 2), "utf8");
+    const parsed: unknown = JSON.parse(raw || "{}");
+    const dataObj =
+      parsed && typeof parsed === "object" && parsed !== null
+        ? (parsed as Record<string, unknown>)
+        : {};
+    dataObj.wallets = dataObj.wallets || {};
+    (dataObj.wallets as Record<string, unknown>)[name] = meta;
+    fs.writeFileSync(this.stateFile, JSON.stringify(dataObj, null, 2), "utf8");
   }
 }
 
