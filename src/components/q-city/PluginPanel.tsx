@@ -64,12 +64,25 @@ export default function PluginPanel() {
     fetchPlugins();
   }, []);
 
+  const extractMessage = (_e: unknown) =>
+    _e && typeof _e === "object" && "message" in _e
+      ? String((_e as { message?: unknown }).message)
+      : String(_e);
+
+  const getPluginsFromData = (d: unknown): string[] => {
+    if (d && typeof d === "object" && "plugins" in d) {
+      const p = (d as Record<string, unknown>)["plugins"];
+      if (Array.isArray(p)) return p.map(String);
+    }
+    return [];
+  };
+
   function fetchPlugins() {
     setLoading(true);
     fetch("/api/qcity/plugins")
       .then((r) => r.json())
-      .then((data) => setPlugins(data.plugins || []))
-      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
+      .then((data: unknown) => setPlugins(getPluginsFromData(data)))
+      .catch((e: unknown) => setError(extractMessage(e)))
       .finally(() => setLoading(false));
   }
 

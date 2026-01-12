@@ -4,31 +4,35 @@ import React, { useRef } from "react";
 
 export const QMoiSettingsPanel: React.FC = () => {
   // Settings state (stubbed for now)
-  const [settings, setSettings] = React.useState<any>(() => {
-    try {
-      return JSON.parse(localStorage.getItem("qmoi-settings") || "{}") as any;
-    } catch {
-      return {};
+  const [settings, setSettings] = React.useState<Record<string, unknown>>(
+    () => {
+      try {
+        return JSON.parse(
+          localStorage.getItem("qmoi-settings") || "{}"
+        ) as Record<string, unknown>;
+      } catch {
+        return {} as Record<string, unknown>;
+      }
     }
-  });
+  );
   const fileInput = useRef<HTMLInputElement>(null);
 
-  function saveSettings(newSettings: any) {
+  function saveSettings(newSettings: Record<string, unknown>) {
     setSettings(newSettings);
     localStorage.setItem("qmoi-settings", JSON.stringify(newSettings));
   }
   function exportSettings() {
-    const data = {
+    const data: Record<string, unknown> = {
       settings,
       cmdHistory: JSON.parse(
         localStorage.getItem("qcity-cmd-history") || "[]"
-      ) as any,
+      ) as unknown,
       pinned: JSON.parse(
         localStorage.getItem("qcity-cmd-pinned") || "[]"
-      ) as any,
+      ) as unknown,
       qavatar: JSON.parse(
         localStorage.getItem("qavatar-settings") || "{}"
-      ) as any,
+      ) as unknown,
     };
     const blob = new Blob([JSON.stringify(data, null, 2)], {
       type: "application/json",
@@ -44,24 +48,43 @@ export const QMoiSettingsPanel: React.FC = () => {
     const file = _e.target.files?.[0];
     if (!file) return;
     const reader = new FileReader();
-    reader.onload = (_ev) => {
+    reader.onload = (_ev: ProgressEvent<FileReader>) => {
       try {
-        const data: any = JSON.parse(_ev.target?.result as string);
-        if (data && data.settings) saveSettings(data.settings);
-        if (data && data.cmdHistory)
+        const data = JSON.parse(String(_ev.target?.result));
+        const importedData = data as Record<string, unknown>;
+        // safely apply imported fields
+        if (
+          importedData &&
+          "settings" in importedData &&
+          importedData["settings"]
+        )
+          saveSettings(importedData["settings"] as Record<string, unknown>);
+        if (
+          importedData &&
+          "cmdHistory" in importedData &&
+          importedData["cmdHistory"]
+        )
           localStorage.setItem(
             "qcity-cmd-history",
-            JSON.stringify(data.cmdHistory)
+            JSON.stringify(importedData["cmdHistory"])
           );
-        if (data && data.pinned)
-          localStorage.setItem("qcity-cmd-pinned", JSON.stringify(data.pinned));
-        if (data && data.qavatar)
+        if (importedData && "pinned" in importedData && importedData["pinned"])
+          localStorage.setItem(
+            "qcity-cmd-pinned",
+            JSON.stringify(importedData["pinned"])
+          );
+        if (
+          importedData &&
+          "qavatar" in importedData &&
+          importedData["qavatar"]
+        )
           localStorage.setItem(
             "qavatar-settings",
-            JSON.stringify(data.qavatar)
+            JSON.stringify(importedData["qavatar"])
           );
         alert("Settings imported!");
-      } catch (_err: any) {
+      } catch (_err: unknown) {
+        console.warn("importSettings failed", String(_err));
         alert("Invalid settings file.");
       }
     };

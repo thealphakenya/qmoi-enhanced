@@ -21,14 +21,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Switch } from "@/components/ui/switch";
 import {
   User,
-  Settings,
   Star,
   Zap,
   Eye,
   Play,
   Download,
   RefreshCw,
-  Palette,
   Volume2,
   Sparkles,
 } from "lucide-react";
@@ -100,7 +98,8 @@ export function AvatarSelector({
           avatarsConfig.find((a) => a.id === avatarId)?.name
         } avatar.`,
       });
-    } catch (error) {
+    } catch (_e: unknown) {
+      console.warn(String(_e));
       toast({
         title: "Error",
         description: "Failed to switch avatar. Please try again.",
@@ -126,7 +125,8 @@ export function AvatarSelector({
         title: "Avatar Upgraded",
         description: "Avatar has been successfully upgraded with new features.",
       });
-    } catch (error) {
+    } catch (_e: unknown) {
+      console.warn(String(_e));
       toast({
         title: "Upgrade Error",
         description: "Failed to upgrade avatar. Please try again.",
@@ -159,7 +159,8 @@ export function AvatarSelector({
         description:
           "Avatar has been enhanced with improved quality and features.",
       });
-    } catch (error) {
+    } catch (_e: unknown) {
+      console.warn(String(_e));
       toast({
         title: "Enhancement Error",
         description: "Failed to enhance avatar. Please try again.",

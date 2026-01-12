@@ -4,12 +4,38 @@ import { enhancedSiteGenerationService } from "../../services/EnhancedSiteGenera
 import { enhancedRevenueAutomationService } from "../../services/EnhancedRevenueAutomationService";
 import { enhancedParallelizationService } from "../../services/EnhancedParallelizationService";
 
+interface SystemHealth {
+  averageResponseTime?: number;
+  activeErrors?: number;
+  fixedErrors?: number;
+  systemStatus?: string;
+  cpuUsage?: number;
+  memoryUsage?: number;
+}
+
+interface QueueStatus {
+  queueLength?: number;
+  isProcessing?: boolean;
+}
+
+interface ActiveTask {
+  id: string;
+  type?: string;
+  status?: string;
+  progress?: number;
+}
+
+interface PerformanceMetrics {
+  successRate?: number;
+  tasksPerMinute?: number;
+}
+
 interface DashboardData {
   errorFixing: {
     activeErrors: number;
     fixedErrors: number;
-    systemHealth: any;
-    queueStatus: any;
+    systemHealth: SystemHealth;
+    queueStatus: QueueStatus;
   };
   siteGeneration: {
     activeSites: number;
@@ -23,9 +49,9 @@ interface DashboardData {
     dealsDiscovered: number;
   };
   parallelization: {
-    activeTasks: any[];
-    systemHealth: any;
-    performanceMetrics: any;
+    activeTasks: ActiveTask[];
+    systemHealth: SystemHealth;
+    performanceMetrics: PerformanceMetrics;
   };
 }
 

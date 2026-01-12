@@ -10,7 +10,7 @@ export default function QMoiMemoryPanel({
 }: {
   isMaster?: boolean;
 }) {
-  const [memory, setMemory] = useState<any>(null);
+  const [memory, setMemory] = useState<Record<string, unknown> | null>(null);
   const [feedback, setFeedback] = useState("");
   const [correction, setCorrection] = useState("");
   const [message, setMessage] = useState("");
@@ -18,9 +18,9 @@ export default function QMoiMemoryPanel({
   async function fetchMemory() {
     try {
       const mem = await fetchMemoryApi();
-      setMemory(mem);
-    } catch (_e) {
-      console.warn("fetchMemory failed", _e);
+      setMemory(mem as Record<string, unknown> | null);
+    } catch (_e: unknown) {
+      console.warn("fetchMemory failed", String(_e));
     }
   }
 
@@ -32,7 +32,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e) {
+    } catch (_e: unknown) {
+      console.warn("submitFeedback failed", String(_e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -42,7 +43,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e) {
+    } catch (_e: unknown) {
+      console.warn("backupMemory failed", String(_e));
       setMessage("Backup failed.");
     }
   }
@@ -73,9 +75,9 @@ export default function QMoiMemoryPanel({
             <b>Recent Feedback:</b>
           </p>
           <ul>
-            {((memory && memory.master_feedback) || [])
+            {((memory?.master_feedback ?? []) as unknown[])
               .slice(-5)
-              .map((f: any, i: number) => (
+              .map((f: unknown, i: number) => (
                 <li key={i}>{JSON.stringify(f)}</li>
               ))}
           </ul>
@@ -83,13 +85,16 @@ export default function QMoiMemoryPanel({
             <b>Recent Interactions:</b>
           </p>
           <ul>
-            {((memory && memory.history) || [])
+            {((memory?.history ?? []) as unknown[])
               .slice(-5)
-              .map((h: any, i: number) => (
-                <li key={i}>
-                  {h.input} ({h.emotion})
-                </li>
-              ))}
+              .map((h: unknown, i: number) => {
+                const rec = h as Record<string, unknown>;
+                return (
+                  <li key={i}>
+                    {String(rec.input)} ({String(rec.emotion)})
+                  </li>
+                );
+              })}
           </ul>
         </>
       ) : (

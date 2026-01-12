@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 
+export interface SessionItem {
+  sid: string;
+  createdAt?: string;
+  expiresAt?: string;
+}
+
 export default function SessionPanel() {
-  const [sessions, setSessions] = useState<any[]>([]);
+  const [sessions, setSessions] = useState<SessionItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const token =
@@ -13,8 +19,19 @@ export default function SessionPanel() {
       headers: { Authorization: token ? `Bearer ${token}` : "" },
     })
       .then((r) => r.json())
-      .then((data) => setSessions((data && data.sessions) || []))
-      .catch((_err: any) => setError(_err?.message || String(_err)))
+      .then((data: unknown) => {
+        const d = data as Record<string, unknown>;
+        const items = (d.sessions ?? []) as unknown[];
+        setSessions(items as SessionItem[]);
+      })
+      .catch((_err: unknown) => {
+        console.warn("fetch sessions failed", String(_err));
+        setError(
+          typeof _err === "object" && _err && "message" in _err
+            ? String((_err as { message?: unknown }).message)
+            : String(_err)
+        );
+      })
       .finally(() => setLoading(false));
   };
 
@@ -33,7 +50,14 @@ export default function SessionPanel() {
       body: JSON.stringify({ action: "revoke", sid }),
     })
       .then(fetchSessions)
-      .catch((_err: any) => setError(_err?.message || String(_err)))
+      .catch((_err: unknown) => {
+        console.warn("revoke session failed", String(_err));
+        setError(
+          typeof _err === "object" && _err && "message" in _err
+            ? String((_err as { message?: unknown }).message)
+            : String(_err)
+        );
+      })
       .finally(() => setLoading(false));
   };
 
@@ -54,7 +78,7 @@ export default function SessionPanel() {
             </tr>
           </thead>
           <tbody>
-            {sessions.map((s: any, i) => (
+            {sessions.map((s: SessionItem, i) => (
               <tr key={i}>
                 <td>{s.sid}</td>
                 <td>{s.createdAt}</td>

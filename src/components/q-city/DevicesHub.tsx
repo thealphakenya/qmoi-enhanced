@@ -4,6 +4,7 @@ import {
   DeviceTrackingService,
   Device,
 } from "../../services/DeviceTrackingService";
+import { WhatsAppService } from "../../services/WhatsAppService";
 
 // Simulate master check (replace with real auth logic)
 const isMaster = true;
@@ -38,7 +39,9 @@ const mockWhatsAppService = {
   requestApproval: async () => true,
 };
 
-const deviceService = new DeviceTrackingService(mockWhatsAppService as any);
+const deviceService = new DeviceTrackingService(
+  mockWhatsAppService as unknown as WhatsAppService
+);
 
 export const DevicesHub: React.FC = () => {
   const [devices, setDevices] = useState<Device[]>([]);
@@ -90,8 +93,8 @@ export const DevicesHub: React.FC = () => {
                     device.status === "online"
                       ? "green"
                       : device.status === "lost"
-                        ? "red"
-                        : "#888",
+                      ? "red"
+                      : "#888",
                 }}
               >
                 ({device.status})

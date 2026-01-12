@@ -19,13 +19,13 @@ const SelfHealPanel: React.FC = () => {
     essentialsOnly: false,
     diagnosticsOnly: false,
   });
-  const [history, setHistory] = useState<any[]>(() => {
+  const [history, setHistory] = useState<Record<string, unknown>[]>(() => {
     try {
       return JSON.parse(
         localStorage.getItem("selfHealHistory") || "[]"
-      ) as any[];
+      ) as Record<string, unknown>[];
     } catch {
-      return [];
+      return [] as Record<string, unknown>[];
     }
   });
   const eventSourceRef = useRef<EventSource | null>(null);
@@ -51,12 +51,12 @@ const SelfHealPanel: React.FC = () => {
       );
       eventSourceRef.current = es;
       let logBuffer = "";
-      es.onmessage = (_event: any) => {
+      es.onmessage = (_event: MessageEvent) => {
         if (_event.data === "[DONE]") {
           es.close();
           setRunning(false);
           setSuccess(!logBuffer.includes("[ERROR]"));
-          const entry = {
+          const entry: Record<string, unknown> = {
             ts: new Date().toISOString(),
             log: logBuffer,
             _options,
@@ -65,18 +65,23 @@ const SelfHealPanel: React.FC = () => {
           setHistory(newHistory);
           localStorage.setItem("selfHealHistory", JSON.stringify(newHistory));
         } else {
-          logBuffer += _event.data + "\n";
+          logBuffer += String(_event.data) + "\n";
           setLog(logBuffer);
         }
       };
-      es.onerror = (_e: any) => {
+      es.onerror = (_e: Event) => {
+        console.warn("SelfHeal event stream error", String(_e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: any) {
-      const err = _err as any;
-      setError((err && err.message) || "Request failed");
+    } catch (_err: unknown) {
+      console.warn("SelfHeal request failed", String(_err));
+      const errMsg =
+        typeof _err === "object" && _err && "message" in _err
+          ? String((_err as { message?: unknown }).message)
+          : "Request failed";
+      setError(errMsg);
       setSuccess(false);
       setRunning(false);
     }
@@ -200,10 +205,14 @@ const SelfHealPanel: React.FC = () => {
               padding: 8,
             }}
           >
-            {history.map((h: any, i) => (
+            {history.map((h: Record<string, unknown>, i) => (
               <li key={i} style={{ marginBottom: 6 }}>
-                <b>{h.ts}</b> - <span>{JSON.stringify(h._options)}</span>
-                <button style={{ marginLeft: 8 }} onClick={() => setLog(h.log)}>
+                <b>{String(h.ts)}</b> -{" "}
+                <span>{JSON.stringify(h._options)}</span>
+                <button
+                  style={{ marginLeft: 8 }}
+                  onClick={() => setLog(String(h.log))}
+                >
                   View Log
                 </button>
               </li>

@@ -17,17 +17,12 @@ export default function CommandPanel() {
   const [deviceId, setDeviceId] = useState("qcity");
   const [output, setOutput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [history, setHistory] = useState<
-    Array<{ cmd: string; deviceId: string; ts: number }>
-  >(() => {
+  type HistoryItem = { cmd: string; deviceId: string; ts: number };
+  const [history, setHistory] = useState<HistoryItem[]>(() => {
     try {
       return JSON.parse(
         localStorage.getItem("qcity-cmd-history") || "[]"
-      ) as Array<{
-        cmd: string;
-        deviceId: string;
-        ts: number;
-      }>;
+      ) as HistoryItem[];
     } catch {
       return [];
     }
@@ -61,13 +56,14 @@ export default function CommandPanel() {
         `/api/qcity/remote-command?body=${encodeURIComponent(body)}`
       );
       eventSourceRef.current = es;
-      es.onmessage = (_e) => {
-        if (_e.data === "[DONE]") {
+      es.onmessage = (ev: MessageEvent) => {
+        if (ev.data === "[DONE]") {
           es.close();
           setLoading(false);
-        } else setOutput((o) => o + _e.data);
+        } else setOutput((o) => o + String(ev.data));
       };
-      es.onerror = () => {
+      es.onerror = (_err: Event) => {
+        console.warn(String(_err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -75,9 +71,15 @@ export default function CommandPanel() {
     } else {
       fetch("/api/qcity/remote-command", { method: "POST", headers, body })
         .then((r) => r.json())
-        .then((_res) => {
-          setOutput(_res.output || _res.error);
+        .then((res: unknown) => {
+          const _res = res as Record<string, unknown>;
+          setOutput(String(_res.output ?? _res.error ?? ""));
           setLoading(false);
+        })
+        .catch((_e: unknown) => {
+          console.warn(String(_e));
+          setLoading(false);
+          setOutput((o) => o + "\n[Error]");
         });
     }
     const newHistory = [
@@ -87,11 +89,7 @@ export default function CommandPanel() {
     setHistory(newHistory);
     localStorage.setItem("qcity-cmd-history", JSON.stringify(newHistory));
   }
-  function pinCommand(c: string) {
-    const newPinned = [...new Set([c, ...pinned])].slice(0, 5);
-    setPinned(newPinned);
-    localStorage.setItem("qcity-cmd-pinned", JSON.stringify(newPinned));
-  }
+
   function clearHistory() {
     setHistory([]);
     localStorage.removeItem("qcity-cmd-history");
@@ -137,7 +135,7 @@ export default function CommandPanel() {
       </div>
       <div className="mb-2">
         <span className="font-bold">Pinned:</span>
-        {pinned.map((item: any, i: number) => (
+        {pinned.map((item: string, i: number) => (
           <button
             key={i}
             onClick={() => setCmd(item)}
@@ -149,7 +147,7 @@ export default function CommandPanel() {
       </div>
       <div className="mb-2">
         <span className="font-bold">History:</span>
-        {history.map((item: any, i: number) => (
+        {history.map((item: HistoryItem, i: number) => (
           <button
             key={i}
             onClick={() => setCmd(item.cmd)}

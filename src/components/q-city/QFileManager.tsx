@@ -48,6 +48,11 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
   const [error, setError] = useState<string | null>(null);
   const { toast } = useToast();
 
+  const extractMessage = (_e: unknown) =>
+    _e && typeof _e === "object" && "message" in _e
+      ? String((_e as { message?: unknown }).message)
+      : String(_e);
+
   // Fetch pending requests for master
   useEffect(() => {
     if (isMaster) {
@@ -64,16 +69,12 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
       if (!_res.ok) throw new Error("Failed to fetch pending requests");
       const data = await _res.json();
       setPendingRequests(data);
-    } catch (_err: any) {
-      const err = _err as any;
-      setError(
-        "Failed to load pending requests: " + (err?.message ?? String(err))
-      );
+    } catch (_e: unknown) {
+      const msg = extractMessage(_e);
+      setError("Failed to load pending requests: " + msg);
       toast({
         title: "Error",
-        description:
-          "Failed to load pending wallet requests: " +
-          (err?.message ?? String(err)),
+        description: "Failed to load pending wallet requests: " + msg,
         variant: "destructive",
       });
     } finally {
@@ -210,8 +211,8 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
         // Simulate deletion
         await new Promise((resolve) => setTimeout(resolve, 1000));
         setFiles((prev) => prev.filter((file) => !file.isSelected));
-      } catch (error) {
-        console.error("Error deleting files:", error);
+      } catch (_e: unknown) {
+        console.error("Error deleting files:", extractMessage(_e));
       } finally {
         setIsLoading(false);
       }
@@ -313,12 +314,12 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
       } else {
         throw new Error(data.error || "Failed to _request wallet");
       }
-    } catch (_err: any) {
-      const err = _err as any;
-      setError(err?.message ?? String(err));
+    } catch (_e: unknown) {
+      const msg = extractMessage(_e);
+      setError(msg);
       toast({
         title: "Error",
-        description: err?.message ?? String(err),
+        description: msg,
         variant: "destructive",
       });
     } finally {
@@ -354,12 +355,12 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
       } else {
         throw new Error(data.error || "Failed to approve wallet");
       }
-    } catch (_err: any) {
-      const err = _err as any;
-      setError(err?.message ?? String(err));
+    } catch (_e: unknown) {
+      const msg = extractMessage(_e);
+      setError(msg);
       toast({
         title: "Error",
-        description: err?.message ?? String(err),
+        description: msg,
         variant: "destructive",
       });
     } finally {
@@ -416,7 +417,9 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
 
         <select
           value={sortBy}
-          onChange={(_e) => setSortBy(_e.target.value as any)}
+          onChange={(_e) =>
+            setSortBy(_e.target.value as "name" | "date" | "size" | "type")
+          }
           className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         >
           <option value="name">📝 Name</option>

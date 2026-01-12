@@ -23,13 +23,22 @@ const ENVIRONMENTS = [
   "Home",
 ];
 
+interface AvatarSettings {
+  type?: string;
+  env?: string;
+  quality?: string;
+  [key: string]: unknown;
+}
+
 export default function QAvatar() {
   const [open, setOpen] = useState(true);
-  const [settings, setSettings] = useState<Record<string, any>>(() => {
+  const [settings, setSettings] = useState<AvatarSettings>(() => {
     try {
-      return JSON.parse(
-        localStorage.getItem("qavatar-settings") || "{}"
-      ) as Record<string, any>;
+      return (
+        (JSON.parse(localStorage.getItem("qavatar-settings") || "{}") as
+          | AvatarSettings
+          | undefined) || {}
+      );
     } catch {
       return {};
     }
@@ -37,7 +46,7 @@ export default function QAvatar() {
   const [drag, setDrag] = useState({ x: 100, y: 100 });
   const ref = useRef<HTMLDivElement>(null);
 
-  function saveSettings(arg: any) {
+  function saveSettings(arg: AvatarSettings) {
     setSettings(arg);
     localStorage.setItem("qavatar-settings", JSON.stringify(arg));
   }

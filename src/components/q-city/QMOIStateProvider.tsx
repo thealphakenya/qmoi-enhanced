@@ -122,7 +122,10 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
     if (savedState) {
       try {
         const parsedState = JSON.parse(savedState);
-        setState((prevState) => ({ ...prevState, ...(parsedState as any) }));
+        setState((prevState) => ({
+          ...prevState,
+          ...(parsedState as unknown as Partial<QMOIState>),
+        }));
       } catch (error) {
         console.error("Error loading QMOI state:", error);
       }
@@ -188,7 +191,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
         await updateVoice(compatibleVoice);
       }
     } catch (error) {
-      (console as any).error("Error updating avatar:", error);
+      console.error("Error updating avatar:", error);
       setState((prev) => ({ ...prev, isProcessing: false, currentTask: null }));
     }
   };
@@ -218,8 +221,12 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
         isProcessing: false,
         currentTask: null,
       }));
-    } catch (error) {
-      (console as any).error("Error updating voice:", error);
+    } catch (error: unknown) {
+      const msg =
+        error && typeof error === "object" && "message" in error
+          ? String((error as { message?: unknown }).message)
+          : String(error);
+      console.error("Error updating voice:", msg);
       setState((prev) => ({ ...prev, isProcessing: false, currentTask: null }));
     }
   };
@@ -271,7 +278,6 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
   };
 
   const getCompatibleAvatar = (voiceId: string) => {
-    const voice = voiceProfiles.find((v) => v.id === voiceId);
     const compatibleAvatar = avatarsConfig.find(
       (a) => a.voiceProfile === voiceId
     );

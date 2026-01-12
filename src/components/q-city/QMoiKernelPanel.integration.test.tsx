@@ -8,7 +8,8 @@ import { server } from "../../mocks/server";
 describe("QMoiKernelPanel Integration", () => {
   beforeAll(async () => {
     // Ensure global MSW is ready and register the canonical handlers used by these tests.
-    await (globalThis as any).__MSW_READY__;
+    await (globalThis as unknown as { __MSW_READY__?: Promise<void> })
+      .__MSW_READY__;
     let mswInstalled = false;
     const handlersMod = await import("../../mocks/handlers");
     if (typeof handlersMod.getHandlers === "function") {
@@ -19,9 +20,12 @@ describe("QMoiKernelPanel Integration", () => {
     // Ensure tests are deterministic even if MSW isn't intercepting for some reason.
     if (!mswInstalled) {
       jest
-        .spyOn(global, "fetch" as any)
-        .mockImplementation(async (input: any, init: any) => {
-          const url = typeof input === "string" ? input : input?.url || "";
+        .spyOn(global as unknown as { fetch: typeof fetch }, "fetch")
+        .mockImplementation(async (input: unknown, _init: unknown) => {
+          const url =
+            typeof input === "string"
+              ? input
+              : (input as { url?: string })?.url || "";
           if (url.endsWith("/api/qmoi/status")) {
             return new Response(
               JSON.stringify({
@@ -54,20 +58,22 @@ describe("QMoiKernelPanel Integration", () => {
   beforeEach(async () => {
     // Re-apply canonical handlers before each test to avoid leakage from
     // test-local overrides and keep tests deterministic.
-    await (globalThis as any).__MSW_READY__;
+    await (globalThis as unknown as { __MSW_READY__?: Promise<void> })
+      .__MSW_READY__;
     try {
       const handlersMod = await import("../../mocks/handlers");
       if (typeof handlersMod.getHandlers === "function") {
         const handlers = await handlersMod.getHandlers();
         server.use(...handlers);
       }
-    } catch (_e) {
-      // ignore
+    } catch (_e: unknown) {
+      void _e; /* ignore */
     }
   });
 
   it("debug: raw fetch", async () => {
-    await (globalThis as any).__MSW_READY__;
+    await (globalThis as unknown as { __MSW_READY__?: Promise<void> })
+      .__MSW_READY__;
     const handlersMod = await import("../../mocks/handlers");
     if (typeof handlersMod.getHandlers === "function") {
       const hs = await handlersMod.getHandlers();
@@ -92,7 +98,9 @@ describe("QMoiKernelPanel Integration", () => {
 
   afterAll(() => {
     try {
-      const ls = (globalThis as any).localServer;
+      const ls = (
+        globalThis as unknown as { localServer?: { close?: () => void } }
+      ).localServer;
       if (ls && typeof ls.close === "function") ls.close();
     } catch {
       // ignore
@@ -132,16 +140,28 @@ describe("QMoiKernelPanel Integration", () => {
     // For determinism, explicitly override the payload handler for this test
     try {
       const msw = await import("msw");
-      const helpers = (msw as any).rest ?? (msw as any).http;
+      type MswHelpers = { rest?: unknown; http?: unknown };
+      const helpers =
+        (msw as unknown as MswHelpers).rest ??
+        (msw as unknown as MswHelpers).http;
       if (helpers) {
-        server.use(
-          helpers.post("/api/qmoi/payload", (_req: any, _res: any, ctx: any) =>
-            _res(ctx.status(200), ctx.json({ message: "QFix done" }))
-          )
-        );
+        const helpersObj = helpers as unknown as {
+          post?: (...args: unknown[]) => unknown;
+        };
+        if (helpersObj.post) {
+          const handler = helpersObj.post(
+            "/api/qmoi/payload",
+            () =>
+              new Response(JSON.stringify({ message: "QFix done" }), {
+                status: 200,
+              })
+          );
+          if (handler)
+            server.use(handler as unknown as Parameters<typeof server.use>[0]);
+        }
       }
-    } catch (_e) {
-      // ignore - msw may not be available in this environment
+    } catch (_e: unknown) {
+      void _e; /* ignore - msw may not be available in this environment */
     }
 
     render(<QMoiKernelPanel isMaster={true} />);
@@ -158,13 +178,22 @@ describe("QMoiKernelPanel Integration", () => {
     try {
       server.resetHandlers();
       const msw = await import("msw");
-      const helpers = (msw as any).http ?? (msw as any).rest;
+      type MswHelpers = { rest?: unknown; http?: unknown };
+      const helpers =
+        (msw as unknown as MswHelpers).http ??
+        (msw as unknown as MswHelpers).rest;
       if (helpers) {
-        server.use(
-          helpers.get("/api/qmoi/status", (_req: any, _res: any, ctx: any) => {
-            return _res(ctx.status(500));
-          })
-        );
+        const helpersObj = helpers as unknown as {
+          get?: (...args: unknown[]) => unknown;
+        };
+        if (helpersObj.get) {
+          const handler = helpersObj.get(
+            "/api/qmoi/status",
+            () => new Response(null, { status: 500 })
+          );
+          if (handler)
+            server.use(handler as unknown as Parameters<typeof server.use>[0]);
+        }
       }
     } catch {
       // ignore
@@ -176,9 +205,10 @@ describe("QMoiKernelPanel Integration", () => {
       const check = await fetch("/api/qmoi/status");
       if (check.status !== 500) {
         jest
-          .spyOn(global, "fetch" as any)
-          .mockImplementation(async (arg: any) => {
-            const url = typeof arg === "string" ? arg : (arg as any)?.url;
+          .spyOn(global as unknown as { fetch: typeof fetch }, "fetch")
+          .mockImplementation(async (arg: unknown) => {
+            const url =
+              typeof arg === "string" ? arg : (arg as { url?: string })?.url;
             if (url && url.toString().endsWith("/api/qmoi/status")) {
               return new Response(null, { status: 500 });
             }
@@ -187,9 +217,10 @@ describe("QMoiKernelPanel Integration", () => {
       }
     } catch {
       jest
-        .spyOn(global, "fetch" as any)
-        .mockImplementation(async (arg: any) => {
-          const url = typeof arg === "string" ? arg : (arg as any)?.url;
+        .spyOn(global as unknown as { fetch: typeof fetch }, "fetch")
+        .mockImplementation(async (arg: unknown) => {
+          const url =
+            typeof arg === "string" ? arg : (arg as { url?: string })?.url;
           if (url && url.toString().endsWith("/api/qmoi/status")) {
             return new Response(null, { status: 500 });
           }

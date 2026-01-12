@@ -42,8 +42,13 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       if (!_res.ok) throw new Error("Failed to fetch pending requests");
       const data = await _res.json();
       setPendingRequests(data as WalletRequest[]);
-    } catch (_err: any) {
-      setError((_err && _err.message) || "Failed to load pending requests");
+    } catch (_e: unknown) {
+      const msg =
+        _e && typeof _e === "object" && "message" in _e
+          ? String((_e as { message?: unknown }).message)
+          : String(_e);
+      console.warn(msg);
+      setError(msg || "Failed to load pending requests");
       toast({
         title: "Error",
         description: "Failed to load pending wallet requests",
@@ -89,11 +94,16 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       } else {
         throw new Error(data.error || "Failed to _request wallet");
       }
-    } catch (_err: any) {
-      setError((_err && _err.message) || String(_err));
+    } catch (_e: unknown) {
+      const msg =
+        _e && typeof _e === "object" && "message" in _e
+          ? String((_e as { message?: unknown }).message)
+          : String(_e);
+      console.warn(msg);
+      setError(msg);
       toast({
         title: "Error",
-        description: (_err && _err.message) || String(_err),
+        description: msg,
         variant: "destructive",
       });
     } finally {
@@ -130,11 +140,16 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       } else {
         throw new Error(data.error || "Failed to approve wallet");
       }
-    } catch (_err: any) {
-      setError((_err && _err.message) || String(_err));
+    } catch (_e: unknown) {
+      const msg =
+        _e && typeof _e === "object" && "message" in _e
+          ? String((_e as { message?: unknown }).message)
+          : String(_e);
+      console.warn(msg);
+      setError(msg);
       toast({
         title: "Error",
-        description: (_err && _err.message) || String(_err),
+        description: msg,
         variant: "destructive",
       });
     } finally {

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 export default function AuditLogPanel() {
-  const [logs, setLogs] = useState<any[]>([]);
+  type AuditRow = Record<string, unknown> | string[];
+  const [logs, setLogs] = useState<AuditRow[]>([]);
   const [filter, setFilter] = useState({
     action: "",
     user: "",
@@ -26,8 +27,12 @@ export default function AuditLogPanel() {
         setLogs(
           format === "csv"
             ? data.split("\n").map((l: string) => l.split(","))
-            : data.logs || []
+            : (data.logs as Record<string, unknown>[]) || []
         );
+        setLoading(false);
+      })
+      .catch((_e: unknown) => {
+        console.warn(String(_e));
         setLoading(false);
       });
   }
@@ -98,14 +103,39 @@ export default function AuditLogPanel() {
               </tr>
             </thead>
             <tbody>
-              {logs.map((l: any, i) => (
+              {logs.map((l: AuditRow, i) => (
                 <tr key={i}>
-                  <td>{l.timestamp || ""}</td>
-                  <td>{l.action || ""}</td>
-                  <td>{l.user || ""}</td>
-                  <td>{l.deviceId || ""}</td>
-                  <td>{l.status || ""}</td>
-                  <td>{l.cmd || ""}</td>
+                  {Array.isArray(l) ? (
+                    <>
+                      <td>{l[0] ?? ""}</td>
+                      <td>{l[1] ?? ""}</td>
+                      <td>{l[2] ?? ""}</td>
+                      <td>{l[3] ?? ""}</td>
+                      <td>{l[4] ?? ""}</td>
+                      <td>{l[5] ?? ""}</td>
+                    </>
+                  ) : (
+                    <>
+                      <td>
+                        {String((l as Record<string, unknown>).timestamp ?? "")}
+                      </td>
+                      <td>
+                        {String((l as Record<string, unknown>).action ?? "")}
+                      </td>
+                      <td>
+                        {String((l as Record<string, unknown>).user ?? "")}
+                      </td>
+                      <td>
+                        {String((l as Record<string, unknown>).deviceId ?? "")}
+                      </td>
+                      <td>
+                        {String((l as Record<string, unknown>).status ?? "")}
+                      </td>
+                      <td>
+                        {String((l as Record<string, unknown>).cmd ?? "")}
+                      </td>
+                    </>
+                  )}
                 </tr>
               ))}
             </tbody>

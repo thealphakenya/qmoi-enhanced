@@ -1,7 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { getSessionHeaders } from "../../services/qmoiSession";
 
-function exportToCSV(logs: any[]) {
+type LogEntry = {
+  timestamp: string;
+  action: string;
+  type?: "fix" | "cicd" | string;
+  result: string;
+};
+
+type AutoDevStatus = {
+  running?: boolean;
+  lastRun?: string;
+  lastResult?: {
+    fixResults?: unknown[];
+    cicdResults?: Record<string, unknown>;
+    errors?: unknown[];
+    testResult?: { success?: boolean };
+  };
+  daemon?: Record<string, unknown>;
+} | null;
+
+function exportToCSV(logs: LogEntry[]) {
   const header = "Timestamp,Action,Result\n";
   const rows = logs
     .map(
@@ -19,7 +38,7 @@ function exportToCSV(logs: any[]) {
   URL.revokeObjectURL(url);
 }
 
-function exportToJSON(logs: any[]) {
+function exportToJSON(logs: LogEntry[]) {
   const blob = new Blob([JSON.stringify(logs, null, 2)], {
     type: "application/json",
   });
@@ -44,18 +63,21 @@ export default function QMoiAutoDevPanel({
 }: {
   isMaster?: boolean;
 }) {
-  const [status, setStatus] = useState<any>(null);
+  const [status, setStatus] = useState<AutoDevStatus>(null);
   const [loading, setLoading] = useState(true);
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null
   );
   const [error, setError] = useState<string | null>(null);
-  const [logs, setLogs] = useState<any[]>([]);
+  const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
   const [deployPlatform, setDeployPlatform] = useState("vercel");
   const [forceRunLoading, setForceRunLoading] = useState(false);
-  const [forceRunResult, setForceRunResult] = useState<any>(null);
+  const [forceRunResult, setForceRunResult] = useState<Record<
+    string,
+    unknown
+  > | null>(null);
 
   async function fetchStatus() {
     setLoading(true);
@@ -66,11 +88,14 @@ export default function QMoiAutoDevPanel({
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
-      const data = await _res.json();
-      setStatus(data);
-    } catch (_e: any) {
-      const _err = _e as any;
-      setError(_err?.message ?? String(_e));
+      const data: unknown = await _res.json();
+      setStatus(data as AutoDevStatus);
+    } catch (_e: unknown) {
+      const msg =
+        _e && typeof _e === "object" && "message" in _e
+          ? String((_e as { message?: unknown }).message)
+          : String(_e);
+      setError(msg);
     }
     setLoading(false);
   }
@@ -89,15 +114,19 @@ export default function QMoiAutoDevPanel({
               : "continuous_autofix_stop",
         }),
       });
-      const data = await _res.json();
-      setStatus((prev: any) => ({
-        ...prev,
-        daemon: data.status,
-        running: data.status?.running,
+      const data: unknown = await _res.json();
+      const d = data as { status?: { running?: boolean } };
+      setStatus((prev) => ({
+        ...(prev ?? {}),
+        daemon: d.status,
+        running: d.status?.running,
       }));
-    } catch (_e: any) {
-      const _err = _e as any;
-      setError(_err?.message ?? String(_e));
+    } catch (_e: unknown) {
+      const msg =
+        _e && typeof _e === "object" && "message" in _e
+          ? String((_e as { message?: unknown }).message)
+          : String(_e);
+      setError(msg);
     }
     setDaemonAction(null);
   }
@@ -107,11 +136,11 @@ export default function QMoiAutoDevPanel({
     setError(null);
     try {
       if (status?.lastResult?.fixResults) {
-        const logEntries = [];
+        const logEntries: LogEntry[] = [];
         if (status.lastResult.fixResults.length > 0) {
-          status.lastResult.fixResults.forEach((item: any, idx: number) => {
+          status.lastResult.fixResults.forEach((item: unknown, idx: number) => {
             logEntries.push({
-              timestamp: status.lastRun,
+              timestamp: status.lastRun as string,
               action: `Fix Cycle #${idx + 1}`,
               type: "fix",
               result: JSON.stringify(item, null, 2),
@@ -130,9 +159,12 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: any) {
-      const _err = _e as any;
-      setError(_err?.message ?? String(_e));
+    } catch (_e: unknown) {
+      const msg =
+        _e && typeof _e === "object" && "message" in _e
+          ? String((_e as { message?: unknown }).message)
+          : String(_e);
+      setError(msg);
     }
     setLogsLoading(false);
   }
@@ -151,9 +183,12 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: any) {
-      const _err = _e as any;
-      setError(_err?.message ?? String(_e));
+    } catch (_e: unknown) {
+      const msg =
+        _e && typeof _e === "object" && "message" in _e
+          ? String((_e as { message?: unknown }).message)
+          : String(_e);
+      setError(msg);
     }
     setForceRunLoading(false);
   }
@@ -441,7 +476,9 @@ export default function QMoiAutoDevPanel({
           <select
             value={logFilter}
             onChange={(_e) =>
-              setLogFilter((_e.target as HTMLSelectElement).value as any)
+              setLogFilter(
+                (_e.target as HTMLSelectElement).value as "all" | "fix" | "cicd"
+              )
             }
             style={{
               background: "#111",

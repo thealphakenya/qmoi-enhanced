@@ -23,6 +23,11 @@ export default function Dashboard() {
   React.useEffect(() => {
     document.body.className = theme === "dark" ? "bg-gray-950" : "bg-white";
   }, [theme]);
+
+  const showBillingIssue =
+    typeof window !== "undefined" &&
+    !!(window as unknown as Record<string, unknown>).QMOI_CICD_BILLING_ISSUE;
+
   return (
     <div
       className={
@@ -133,9 +138,7 @@ export default function Dashboard() {
         <div
           className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4"
           style={{
-            display: (window as any)?.QMOI_CICD_BILLING_ISSUE
-              ? "block"
-              : "none",
+            display: showBillingIssue ? "block" : "none",
           }}
         >
           <strong>⚠️ CI/CD Billing Issue Detected:</strong> Your CI/CD jobs are

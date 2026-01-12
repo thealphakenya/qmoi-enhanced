@@ -21,26 +21,10 @@ import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Volume2,
-  Play,
-  Pause,
-  Settings,
-  Star,
-  Zap,
-  Mic,
-  Headphones,
-} from "lucide-react";
+import { Volume2, Play, Pause, Star, Zap, Mic, Headphones } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { avatarsConfig, voiceProfiles, qualityLevels } from "./avatarsConfig";
 import { getSessionHeaders } from "../../services/qmoiSession";
-
-interface VoiceProfile {
-  id: string;
-  name: string;
-  type: string;
-  quality: string;
-}
 
 interface VoiceSelectorProps {
   currentAvatarId?: string;
@@ -101,7 +85,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (error) {
+    } catch (_e: unknown) {
+      console.warn(String(_e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -135,7 +120,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (error) {
+    } catch (_e: unknown) {
+      console.warn(String(_e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",

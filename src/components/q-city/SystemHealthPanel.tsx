@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getSessionHeaders } from "../../services/qmoiSession";
 
 export default function SystemHealthPanel() {
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<Record<string, unknown> | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [actionMsg, setActionMsg] = useState<string | null>(null);
@@ -19,9 +19,14 @@ export default function SystemHealthPanel() {
       });
       if (!_res.ok) throw new Error("Failed to fetch");
       const json = await _res.json();
-      setData(json);
-    } catch (_err: any) {
-      setError((_err && _err.message) || "Unknown error");
+      setData(json as Record<string, unknown>);
+    } catch (_err: unknown) {
+      console.warn("fetchStatus failed", String(_err));
+      const msg =
+        typeof _err === "object" && _err && "message" in _err
+          ? String((_err as { message?: unknown }).message)
+          : "Unknown error";
+      setError(msg);
     } finally {
       setLoading(false);
     }
@@ -55,12 +60,13 @@ export default function SystemHealthPanel() {
         method: "POST",
         headers: getSessionHeaders(),
       });
-      const json = await _res.json();
-      setUiHealth((json && json.status) || "Unknown");
+      const json: unknown = await _res.json();
+      const status = (json as Record<string, unknown>).status;
+      setUiHealth(String(status || "Unknown"));
       setUiTestTime(new Date().toLocaleString());
       setActionMsg("UI health check complete.");
-    } catch (_err: any) {
-      void _err;
+    } catch (_err: unknown) {
+      console.warn("UI health check failed", String(_err));
       setUiHealth("Error");
       setActionMsg("UI health check failed.");
     } finally {
@@ -99,10 +105,10 @@ export default function SystemHealthPanel() {
     >
       <h2>QMOI System Health</h2>
       <p>
-        <b>Status:</b> {data.status}
+        <b>Status:</b> {String((data && data.status) || "")}
       </p>
       <p>
-        <b>Last Check:</b> {data.last_check}
+        <b>Last Check:</b> {String((data && data.last_check) || "")}
       </p>
       <div style={{ margin: "12px 0" }}>
         <button
@@ -143,7 +149,7 @@ export default function SystemHealthPanel() {
           overflowY: "auto",
         }}
       >
-        {JSON.stringify(data.preActivity, null, 2)}
+        {JSON.stringify((data && data.preActivity) || {}, null, 2)}
       </pre>
       <h3>Connectivity Status</h3>
       <pre
@@ -156,7 +162,7 @@ export default function SystemHealthPanel() {
           overflowY: "auto",
         }}
       >
-        {JSON.stringify(data.connectivity, null, 2)}
+        {JSON.stringify((data && data.connectivity) || {}, null, 2)}
       </pre>
       <h3>Cloud Status</h3>
       <pre
@@ -169,7 +175,7 @@ export default function SystemHealthPanel() {
           overflowY: "auto",
         }}
       >
-        {JSON.stringify(data.cloud, null, 2)}
+        {JSON.stringify((data && data.cloud) || {}, null, 2)}
       </pre>
       <div>
         <h3 className="font-semibold mb-2">UI Health Status</h3>

@@ -1,13 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -18,12 +12,7 @@ import {
   Activity,
   Settings,
   Zap,
-  Star,
   TrendingUp,
-  Cpu,
-  Server,
-  HardDrive,
-  Wifi,
   Battery,
   Heart,
   Brain,
@@ -135,8 +124,7 @@ export function QMOIDashboard() {
                     : state.currentAvatar
                         .split("-")
                         .map(
-                          (word) =>
-                            word.charAt(0).toUpperCase() + word.slice(1),
+                          (word) => word.charAt(0).toUpperCase() + word.slice(1)
                         )
                         .join(" ")}
                 </div>
@@ -181,7 +169,11 @@ export function QMOIDashboard() {
                 >
                   {state.mood.charAt(0).toUpperCase() + state.mood.slice(1)}
                 </div>
-                <p className="text-xs text-muted-foreground">
+                <p
+                  className={`text-xs text-muted-foreground ${getEnergyColor(
+                    state.energy
+                  )}`}
+                >
                   Energy: {state.energy}%
                 </p>
               </CardContent>

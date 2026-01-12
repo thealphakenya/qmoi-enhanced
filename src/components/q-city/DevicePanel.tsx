@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react";
 
 export default function DevicePanel() {
-  const [devices, setDevices] = useState<any[]>([]);
+  type Device = {
+    id?: string;
+    name: string;
+    host: string;
+    port: number;
+    username: string;
+    password?: string;
+    privateKey?: string;
+  };
+  const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>("");
-  const [form, setForm] = useState<any>({
+  const [form, setForm] = useState<Device>({
     name: "",
     host: "",
     port: 22,
@@ -12,7 +21,7 @@ export default function DevicePanel() {
     password: "",
     privateKey: "",
   });
-  const [editing, setEditing] = useState<any>(null);
+  const [editing, setEditing] = useState<Device | null>(null);
   const [testResult, setTestResult] = useState("");
 
   const token =
@@ -24,8 +33,15 @@ export default function DevicePanel() {
       headers: { Authorization: token ? `Bearer ${token}` : "" },
     })
       .then((r) => r.json())
-      .then((data) => setDevices(data.items || []))
-      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
+      .then((data) => setDevices((data.items as Device[]) || []))
+      .catch((_e: unknown) => {
+        const msg =
+          _e && typeof _e === "object" && "message" in _e
+            ? String((_e as { message?: unknown }).message)
+            : String(_e);
+        console.warn(msg);
+        setError(msg);
+      })
       .finally(() => setLoading(false));
   };
 
@@ -55,7 +71,14 @@ export default function DevicePanel() {
         });
         setEditing(null);
       })
-      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
+      .catch((_e: unknown) => {
+        const msg =
+          _e && typeof _e === "object" && "message" in _e
+            ? String((_e as { message?: unknown }).message)
+            : String(_e);
+        console.warn(msg);
+        setError(msg);
+      })
       .finally(() => setLoading(false));
   };
 
@@ -70,7 +93,14 @@ export default function DevicePanel() {
       body: JSON.stringify({ id }),
     })
       .then(fetchDevices)
-      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
+      .catch((_e: unknown) => {
+        const msg =
+          _e && typeof _e === "object" && "message" in _e
+            ? String((_e as { message?: unknown }).message)
+            : String(_e);
+        console.warn(msg);
+        setError(msg);
+      })
       .finally(() => setLoading(false));
   };
 
@@ -85,10 +115,20 @@ export default function DevicePanel() {
       body: JSON.stringify({ id }),
     })
       .then((r) => r.json())
-      .then((data) =>
-        setTestResult(data.success ? "Success" : data.error || "Failed")
-      )
-      .catch((_e: any) => setTestResult((_e as any).message ?? String(_e)));
+      .then((res: unknown) => {
+        const data = res as Record<string, unknown>;
+        setTestResult(
+          data.success ? "Success" : String(data.error ?? "Failed")
+        );
+      })
+      .catch((_e: unknown) => {
+        const msg =
+          _e && typeof _e === "object" && "message" in _e
+            ? String((_e as { message?: unknown }).message)
+            : String(_e);
+        console.warn(msg);
+        setTestResult(msg);
+      });
   };
 
   return (
@@ -191,7 +231,7 @@ export default function DevicePanel() {
             </tr>
           </thead>
           <tbody>
-            {devices.map((dev, i) => (
+            {devices.map((dev: Device, i: number) => (
               <tr key={i}>
                 <td>{dev.name}</td>
                 <td>{dev.host}</td>
@@ -208,13 +248,13 @@ export default function DevicePanel() {
                     Edit
                   </button>
                   <button
-                    onClick={() => del(dev.id)}
+                    onClick={() => del(dev.id ?? "")}
                     className="px-2 py-1 bg-red-700 rounded text-white mr-1"
                   >
                     Delete
                   </button>
                   <button
-                    onClick={() => test(dev.id)}
+                    onClick={() => test(dev.id ?? "")}
                     className="px-2 py-1 bg-cyan-700 rounded text-white"
                   >
                     Test

@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from "react";
 
 interface QMoiStateProps {
-  session?: any;
-  global?: any;
+  session?: Record<string, unknown>;
+  global?: Record<string, unknown>;
   minimized?: boolean;
   aiHealth?: { status: string; lastCheck: string; error?: string };
   isMaster?: boolean;
@@ -24,7 +24,7 @@ export function QMoiState({
   const [currentEmotion, setCurrentEmotion] = useState("focused");
   const [currentActivity, setCurrentActivity] = useState("processing");
   const [showActivityLog, setShowActivityLog] = useState(false);
-  const [auditLogs, setAuditLogs] = useState<any[]>([]);
+  const [auditLogs, setAuditLogs] = useState<unknown[]>([]);
   const [loadingLogs, setLoadingLogs] = useState(false);
   const [logError, setLogError] = useState<string | null>(null);
   const [logFilters, setLogFilters] = useState({
@@ -98,8 +98,14 @@ export function QMoiState({
         setTotalPages(data.totalPages || 1);
         setLoadingLogs(false);
       })
-      .catch((_err: any) => {
-        setLogError(_err?.message || "Failed to load logs");
+      .catch((_err: unknown) => {
+        console.warn("fetch audit logs failed", String(_err));
+        if (typeof _err === "object" && _err && "message" in _err) {
+          const msg = (_err as { message?: unknown }).message;
+          setLogError(msg ? String(msg) : "Failed to load logs");
+        } else {
+          setLogError("Failed to load logs");
+        }
         setLoadingLogs(false);
       });
   }, [logFilters, page, isMaster, isAdmin]);
@@ -155,29 +161,30 @@ export function QMoiState({
     }
   };
 
-  const exportToCSV = (logs: any[]) => {
+  const exportToCSV = (logs: unknown[]) => {
     const header = "Timestamp,User,Action,Device,Status,Command";
-    const rows = logs.map((log: any) =>
-      [
-        log.timestamp,
-        log.user,
-        log.action,
-        log.deviceId,
-        log.status,
-        (log.command || "").toString().replace(/"/g, '""'),
+    const rows = logs.map((log: unknown) => {
+      const rec = log as Record<string, unknown>;
+      return [
+        String(rec.timestamp || ""),
+        String(rec.user || ""),
+        String(rec.action || ""),
+        String(rec.deviceId || ""),
+        String(rec.status || ""),
+        String(rec.command || "").replace(/"/g, '""'),
       ]
         .map((x) => `"${x || ""}"`)
-        .join(",")
-    );
+        .join(",");
+    });
     const csv = [header, ...rows].join("\n");
     const blob = new Blob([csv], { type: "text/csv" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = "qmoi_audit_log.csv";
+    a.download = "qmoi_audit_unknown.csv";
     a.click();
   };
 
-  const exportToJSON = (arr: any[]) => {
+  const exportToJSON = (arr: unknown[]) => {
     const blob = new Blob([JSON.stringify(arr, null, 2)], {
       type: "application/json",
     });
@@ -386,16 +393,29 @@ export function QMoiState({
                   </tr>
                 </thead>
                 <tbody>
-                  {auditLogs.map((log: any, i) => (
-                    <tr key={i}>
-                      <td className="px-2 py-1">{log.timestamp}</td>
-                      <td className="px-2 py-1">{log.user}</td>
-                      <td className="px-2 py-1">{log.action}</td>
-                      <td className="px-2 py-1">{log.deviceId}</td>
-                      <td className="px-2 py-1">{log.status}</td>
-                      <td className="px-2 py-1">{log.command}</td>
-                    </tr>
-                  ))}
+                  {auditLogs.map((log: unknown, i) => {
+                    const rec = log as Record<string, unknown>;
+                    return (
+                      <tr key={i}>
+                        <td className="px-2 py-1">
+                          {String(rec.timestamp || "")}
+                        </td>
+                        <td className="px-2 py-1">{String(rec.user || "")}</td>
+                        <td className="px-2 py-1">
+                          {String(rec.action || "")}
+                        </td>
+                        <td className="px-2 py-1">
+                          {String(rec.deviceId || "")}
+                        </td>
+                        <td className="px-2 py-1">
+                          {String(rec.status || "")}
+                        </td>
+                        <td className="px-2 py-1">
+                          {String(rec.command || "")}
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             )}

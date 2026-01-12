@@ -23,7 +23,7 @@ interface QNewsDashboardProps {
 
 const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
   const [news, setNews] = useState<NewsItem[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [_loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     title: "",
     content: "",
@@ -32,7 +32,14 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
     media: [] as { type: string; url: string }[],
   });
   const [editingId, setEditingId] = useState<number | null>(null);
-  const [analytics, setAnalytics] = useState<any[]>([]);
+  interface Analytics {
+    id: number;
+    views: number;
+    shares: number;
+    engagement: number;
+  }
+
+  const [analytics, setAnalytics] = useState<Analytics[]>([]);
   const [mediaUrl, setMediaUrl] = useState("");
   const [mediaType, setMediaType] = useState("image");
 
@@ -209,6 +216,9 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
           </Button>
         </div>
         <div>
+          {_loading && (
+            <div className="mb-2 text-sm text-gray-600">Loading...</div>
+          )}
           <table className="w-full text-sm">
             <thead>
               <tr>
@@ -280,7 +290,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
                 </tr>
               </thead>
               <tbody>
-                {analytics.map((a: any) => (
+                {analytics.map((a: Analytics) => (
                   <tr key={a.id} className="border-t">
                     <td>{a.id}</td>
                     <td>{a.views}</td>

@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from "react";
 /* eslint-env browser */
 
+export interface Schedule {
+  id?: string;
+  name: string;
+  command: string;
+  cron: string;
+  deviceId: string;
+  notify: string;
+}
+
 export default function SchedulePanel() {
-  const [schedules, setSchedules] = useState<any[]>([]);
+  const [schedules, setSchedules] = useState<Schedule[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<Schedule>({
     name: "",
     command: "",
     cron: "",
     deviceId: "",
     notify: "",
-  });
-  const [editing, setEditing] = useState<any>(null);
+  } as Schedule);
+  const [editing, setEditing] = useState<Schedule | null>(null);
 
   const token =
     typeof window !== "undefined" ? localStorage.getItem("token") : null;
@@ -23,8 +32,15 @@ export default function SchedulePanel() {
       headers: { Authorization: token ? `Bearer ${token}` : "" },
     })
       .then((r) => r.json())
-      .then((data) => setSchedules((data && data.items) || []))
-      .catch((_err: any) => setError(_err?.message || String(_err)))
+      .then((data) => setSchedules((data && data.items) || ([] as Schedule[])))
+      .catch((_err: unknown) => {
+        console.warn("fetchSchedules failed", String(_err));
+        setError(
+          typeof _err === "object" && _err && "message" in _err
+            ? String((_err as { message?: unknown }).message)
+            : String(_err)
+        );
+      })
       .finally(() => setLoading(false));
   };
 
@@ -44,10 +60,23 @@ export default function SchedulePanel() {
     })
       .then(fetchSchedules)
       .then(() => {
-        setForm({ name: "", command: "", cron: "", deviceId: "", notify: "" });
+        setForm({
+          name: "",
+          command: "",
+          cron: "",
+          deviceId: "",
+          notify: "",
+        } as Schedule);
         setEditing(null);
       })
-      .catch((_err: any) => setError(_err?.message || String(_err)))
+      .catch((_err: unknown) => {
+        console.warn("save schedule failed", String(_err));
+        setError(
+          typeof _err === "object" && _err && "message" in _err
+            ? String((_err as { message?: unknown }).message)
+            : String(_err)
+        );
+      })
       .finally(() => setLoading(false));
   };
 
@@ -62,7 +91,14 @@ export default function SchedulePanel() {
       body: JSON.stringify({ id }),
     })
       .then(fetchSchedules)
-      .catch((_err: any) => setError(_err?.message || String(_err)))
+      .catch((_err: unknown) => {
+        console.warn("delete schedule failed", String(_err));
+        setError(
+          typeof _err === "object" && _err && "message" in _err
+            ? String((_err as { message?: unknown }).message)
+            : String(_err)
+        );
+      })
       .finally(() => setLoading(false));
   };
 
@@ -77,7 +113,14 @@ export default function SchedulePanel() {
       body: JSON.stringify({ id }),
     })
       .then(fetchSchedules)
-      .catch((_err: any) => setError(_err?.message || String(_err)))
+      .catch((_err: unknown) => {
+        console.warn("runNow failed", String(_err));
+        setError(
+          typeof _err === "object" && _err && "message" in _err
+            ? String((_err as { message?: unknown }).message)
+            : String(_err)
+        );
+      })
       .finally(() => setLoading(false));
   };
 
@@ -166,7 +209,7 @@ export default function SchedulePanel() {
             </tr>
           </thead>
           <tbody>
-            {schedules.map((job: any, i) => (
+            {schedules.map((job: Schedule, i) => (
               <tr key={i}>
                 <td>{job.name}</td>
                 <td>{job.command}</td>
@@ -176,8 +219,8 @@ export default function SchedulePanel() {
                 <td>
                   <button
                     onClick={() => {
-                      setEditing(job);
-                      setForm(job as any);
+                      setEditing(job as Schedule);
+                      setForm(job as Schedule);
                     }}
                     className="px-2 py-1 bg-gray-700 rounded text-white mr-1"
                   >

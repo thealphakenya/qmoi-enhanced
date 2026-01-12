@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from "react";
 
 export default function MetricsPanel() {
-  const [metrics, setMetrics] = useState<any>(null);
+  type Metrics = {
+    hostname?: string;
+    platform?: string;
+    arch?: string;
+    uptime?: number;
+    cpus?: unknown[];
+    load?: number[];
+    totalMem?: number;
+    freeMem?: number;
+  };
+  const [metrics, setMetrics] = useState<Metrics | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const token =
@@ -13,8 +23,15 @@ export default function MetricsPanel() {
       headers: { Authorization: token ? `Bearer ${token}` : "" },
     })
       .then((r) => r.json())
-      .then((data) => setMetrics(data))
-      .catch((_e: any) => setError((_e as any).message ?? String(_e)))
+      .then((data: unknown) => setMetrics(data as Metrics))
+      .catch((_e: unknown) => {
+        const msg =
+          _e && typeof _e === "object" && "message" in _e
+            ? String((_e as { message?: unknown }).message)
+            : String(_e);
+        console.warn(msg);
+        setError(msg);
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -27,15 +44,24 @@ export default function MetricsPanel() {
       ) : (
         metrics && (
           <div className="text-xs text-gray-300">
-            <div>Hostname: {metrics.hostname}</div>
+            <div>Hostname: {metrics.hostname ?? ""}</div>
             <div>
-              Platform: {metrics.platform} ({metrics.arch})
+              Platform: {metrics.platform ?? ""} ({metrics.arch ?? ""})
             </div>
-            <div>Uptime: {Math.round(metrics.uptime / 60)} min</div>
-            <div>CPU Cores: {metrics.cpus.length}</div>
-            <div>Load Avg: {metrics.load.join(", ")}</div>
-            <div>Total Mem: {(metrics.totalMem / 1e9).toFixed(2)} GB</div>
-            <div>Free Mem: {(metrics.freeMem / 1e9).toFixed(2)} GB</div>
+            <div>
+              Uptime: {metrics.uptime ? Math.round(metrics.uptime / 60) : 0} min
+            </div>
+            <div>CPU Cores: {metrics.cpus ? metrics.cpus.length : 0}</div>
+            <div>Load Avg: {metrics.load ? metrics.load.join(", ") : ""}</div>
+            <div>
+              Total Mem:{" "}
+              {metrics.totalMem ? (metrics.totalMem / 1e9).toFixed(2) : "0.00"}{" "}
+              GB
+            </div>
+            <div>
+              Free Mem:{" "}
+              {metrics.freeMem ? (metrics.freeMem / 1e9).toFixed(2) : "0.00"} GB
+            </div>
           </div>
         )
       )}
