@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { MultiUserSessionManager, User } from "./MultiUserSessionManager";
 import { ContextEngine } from "./ContextEngine";
 
@@ -9,7 +8,7 @@ export interface AIRequest {
   whatsappId?: string;
   source: AIRequestSource;
   message: string;
-  context?: any;
+  context?: Record<string, unknown>;
 }
 
 export class AIRequestRouter {
@@ -49,7 +48,7 @@ export class AIRequestRouter {
       this.sessionManager.updateUserContext(user.id, _request.context);
       this.contextEngine.saveUserContext({
         userId: user.id,
-        ...(_request.context as object),
+        ...(_request.context ?? {}),
       });
     }
 

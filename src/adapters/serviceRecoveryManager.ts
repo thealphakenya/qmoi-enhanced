@@ -98,7 +98,7 @@ class ServiceRecoveryManager {
   async recover(
     service: string,
     reason: string,
-    recoveryFn: () => Promise<void>,
+    recoveryFn: () => Promise<void>
   ): Promise<boolean> {
     if (!this.enabled) {
       console.warn("[Recovery] Recovery attempted but manager is disabled");
@@ -131,10 +131,11 @@ class ServiceRecoveryManager {
         });
 
         console.info(
-          `[Recovery] Successfully recovered ${service} on attempt ${attemptCount}`,
+          `[Recovery] Successfully recovered ${service} on attempt ${attemptCount}`
         );
         return true;
-      } catch (_err) { void _err;
+      } catch (_err) {
+        void _err;
         lastError = _err as Error;
 
         if (i < strategy.maxAttempts - 1) {
@@ -145,8 +146,8 @@ class ServiceRecoveryManager {
 
           console.warn(
             `[Recovery] Attempt ${attemptCount} failed, retrying in ${Math.round(
-              backoff,
-            )}ms: ${lastError.message}`,
+              backoff
+            )}ms: ${lastError.message}`
           );
 
           // Wait before next attempt
@@ -164,8 +165,8 @@ class ServiceRecoveryManager {
       success: false,
     });
 
-    (console as any).error(
-      `[Recovery] Failed to recover ${service} after ${attemptCount} attempts: ${lastError?.message}`,
+    console.error(
+      `[Recovery] Failed to recover ${service} after ${attemptCount} attempts: ${lastError?.message}`
     );
     return false;
   }
@@ -174,15 +175,15 @@ class ServiceRecoveryManager {
     service: string,
     reason: string,
     recoveryFn: () => Promise<void>,
-    delayMs: number,
+    delayMs: number
   ): void {
     console.debug(
-      `[Recovery] Scheduling recovery of ${service} in ${delayMs}ms`,
+      `[Recovery] Scheduling recovery of ${service} in ${delayMs}ms`
     );
 
     const timer = setTimeout(() => {
       this.recover(service, reason, recoveryFn).catch((_err) => {
-        (console as any).error(`[Recovery] Scheduled recovery failed: ${_err}`);
+        console.error(`[Recovery] Scheduled recovery failed: ${_err}`);
       });
       this.activeRecoveries.delete(service);
     }, delayMs);
@@ -222,7 +223,8 @@ class ServiceRecoveryManager {
     try {
       // Import would go here - for now just validate
       console.info("[Recovery] Cache service recovered");
-    } catch (_err) { void _err;
+    } catch (_err) {
+      void _err;
       throw new Error(`Cache recovery failed: ${_err}`);
     }
   }
@@ -237,7 +239,8 @@ class ServiceRecoveryManager {
         throw new Error("Health check returned unhealthy status");
       }
       console.info("[Recovery] Health check service recovered");
-    } catch (_err) { void _err;
+    } catch (_err) {
+      void _err;
       throw new Error(`Health check recovery failed: ${_err}`);
     }
   }
@@ -249,7 +252,8 @@ class ServiceRecoveryManager {
     try {
       // Import and restart would go here
       console.info("[Recovery] Background services recovered");
-    } catch (_err) { void _err;
+    } catch (_err) {
+      void _err;
       throw new Error(`Background service recovery failed: ${_err}`);
     }
   }

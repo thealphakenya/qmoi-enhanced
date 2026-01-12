@@ -73,7 +73,7 @@ type Timeout = ReturnType<typeof setTimeout>;
 
 export class AppManagementService {
   private static instance: AppManagementService;
-  private eventEmitter: any;
+  private eventEmitter: EventEmitter;
   private apps: Map<string, AppInfo> = new Map();
   private isAutoGitEnabled = true;
   private gitCommitInterval: Timeout | null = null;
@@ -368,7 +368,7 @@ export class AppManagementService {
       app.errorMessage =
         error instanceof Error ? error.message : "Unknown error";
       this.eventEmitter.emit("appError", { appId, error: app.errorMessage });
-      (console as any).error(`Failed to install app ${appId}:`, error);
+      console.error(`Failed to install app ${appId}:`, error);
       throw error;
     }
   }
@@ -398,7 +398,7 @@ export class AppManagementService {
       await this.sleep(500);
       this.eventEmitter.emit("installationProgress", {
         appId: app.id,
-        stage: stage.stage as any,
+        stage: stage.stage,
         progress: stage.progress,
         message: stage.message,
       });
@@ -467,7 +467,7 @@ export class AppManagementService {
       app.errorMessage =
         error instanceof Error ? error.message : "Unknown error";
       this.eventEmitter.emit("appError", { appId, error: app.errorMessage });
-      (console as any).error(`Failed to update app ${appId}:`, error);
+      console.error(`Failed to update app ${appId}:`, error);
       throw error;
     }
   }
@@ -536,14 +536,16 @@ export class AppManagementService {
         level: "error",
         message: `Troubleshooting failed: ${error}`,
       });
-      (console as any).error(`Troubleshooting failed for ${appId}:`, error);
+      console.error(`Troubleshooting failed for ${appId}:`, error);
       throw error;
     }
   }
 
-  private async runDiagnostics(app: AppInfo): Promise<any[]> {
+  private async runDiagnostics(
+    app: AppInfo
+  ): Promise<Record<string, unknown>[]> {
     // Simulate running diagnostics
-    const issues = [];
+    const issues: Record<string, unknown>[] = [];
 
     // Check if app is running
     if (!app.isInstalled) {
@@ -555,24 +557,24 @@ export class AppManagementService {
     }
 
     // Check dependencies
-    for (const dependency of app.dependencies) {
-      const isInstalled = await this.checkDependency(dependency);
+    for (const _dependency of app.dependencies) {
+      const isInstalled = await this.checkDependency(_dependency);
       if (!isInstalled) {
         issues.push({
-          issue: `Missing dependency: ${dependency}`,
-          solution: `Install ${dependency}`,
+          issue: `Missing dependency: ${_dependency}`,
+          solution: `Install ${_dependency}`,
           severity: "high",
         });
       }
     }
 
     // Check permissions
-    for (const permission of app.permissions) {
-      const hasPermission = await this.checkPermission(permission);
+    for (const _permission of app.permissions) {
+      const hasPermission = await this.checkPermission(_permission);
       if (!hasPermission) {
         issues.push({
-          issue: `Missing permission: ${permission}`,
-          solution: `Grant ${permission} permission`,
+          issue: `Missing permission: ${_permission}`,
+          solution: `Grant ${_permission} permission`,
           severity: "medium",
         });
       }
@@ -581,17 +583,17 @@ export class AppManagementService {
     return issues;
   }
 
-  private async checkDependency(dependency: string): Promise<boolean> {
+  private async checkDependency(_dependency: string): Promise<boolean> {
     // Simulate dependency check
     return Math.random() > 0.3; // 70% chance of being installed
   }
 
-  private async checkPermission(permission: string): Promise<boolean> {
+  private async checkPermission(_permission: string): Promise<boolean> {
     // Simulate permission check
     return Math.random() > 0.2; // 80% chance of having permission
   }
 
-  private async fixIssue(app: AppInfo, issue: any): Promise<void> {
+  private async fixIssue(app: AppInfo, issue: unknown): Promise<void> {
     // Simulate fixing issues
     await this.sleep(1000);
 
@@ -605,7 +607,11 @@ export class AppManagementService {
 
   private startAutoGitCommit(): void {
     if (this.gitCommitInterval) {
-      clearInterval(this.gitCommitInterval as any);
+      if (typeof this.gitCommitInterval === "number") {
+        clearInterval(this.gitCommitInterval);
+      } else {
+        clearInterval(this.gitCommitInterval as unknown as NodeJS.Timeout);
+      }
     }
 
     this.gitCommitInterval = setInterval(async () => {
@@ -629,7 +635,7 @@ export class AppManagementService {
 
       console.log(`Auto Git commit: ${message}`);
     } catch (error) {
-      (console as any).error("Auto Git commit failed:", error);
+      console.error("Auto Git commit failed:", error);
     }
   }
 
@@ -643,10 +649,7 @@ export class AppManagementService {
               this.eventEmitter.emit("updateAvailable", { app, update });
             }
           } catch (error) {
-            (console as any).error(
-              `Failed to check updates for ${app.id}:`,
-              error
-            );
+            console.error(`Failed to check updates for ${app.id}:`, error);
           }
         }
       }
@@ -666,7 +669,11 @@ export class AppManagementService {
     if (enabled) {
       this.startAutoGitCommit();
     } else if (this.gitCommitInterval) {
-      clearInterval(this.gitCommitInterval as any);
+      if (typeof this.gitCommitInterval === "number") {
+        clearInterval(this.gitCommitInterval);
+      } else {
+        clearInterval(this.gitCommitInterval as unknown as NodeJS.Timeout);
+      }
       this.gitCommitInterval = null;
     }
   }
@@ -716,7 +723,10 @@ export class AppManagementService {
   }
 
   public onTroubleshootingCompleted(
-    callback: (data: { appId: string; issues: any[] }) => void
+    callback: (data: {
+      appId: string;
+      issues: Record<string, unknown>[];
+    }) => void
   ): void {
     this.eventEmitter.on("troubleshootingCompleted", callback);
   }

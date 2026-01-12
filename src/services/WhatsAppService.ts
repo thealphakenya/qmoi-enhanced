@@ -167,7 +167,7 @@ export class WhatsAppService {
     });
   }
 
-  private async handleQRCodeGenerated(qr: string): Promise<void> {
+  private async handleQRCodeGenerated(_qr: string): Promise<void> {
     console.log("📱 QR Code generated, waiting for scan...");
 
     // Store QR code for potential retry
@@ -608,7 +608,7 @@ Master Commands:
       console.log("🚀 Starting WhatsApp service...");
       await this.client.initialize();
     } catch (error) {
-      (console as any).error("Error starting WhatsApp service:", error);
+      console.error("Error starting WhatsApp service:", error);
       throw error;
     }
   }
@@ -619,7 +619,7 @@ Master Commands:
       await this.client.destroy();
       this.isConnected = false;
     } catch (error) {
-      (console as any).error("Error stopping WhatsApp service:", error);
+      console.error("Error stopping WhatsApp service:", error);
     }
   }
 
@@ -633,7 +633,7 @@ Master Commands:
       await this.client.sendMessage(chatId, message);
       console.log(`📤 Message sent to ${to}`);
     } catch (error) {
-      (console as any).error("Error sending WhatsApp message:", error);
+      console.error("Error sending WhatsApp message:", error);
       throw error;
     }
   }
@@ -659,7 +659,7 @@ Master Commands:
         await this.sendMessage(contact, message);
         await this.sleep(1000); // Delay between messages
       } catch (error) {
-        (console as any).error(`Error broadcasting to ${contact}:`, error);
+        console.error(`Error broadcasting to ${contact}:`, error);
       }
     }
   }

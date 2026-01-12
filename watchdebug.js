@@ -430,7 +430,7 @@ class QMOIWatchDebug {
     }
   }
 
-  async fixPerformanceIssues(issues, metrics) {
+  async fixPerformanceIssues(issues, _metrics) {
     console.log("🔧 Fixing performance issues...");
 
     for (const issue of issues) {
@@ -628,39 +628,39 @@ class QMOIWatchDebug {
     console.log(`🔧 Manual Vercel fix for deployment ${deployment.id}`);
   }
 
-  async fixCoreAIError(error) {
+  async fixCoreAIError(_error) {
     console.log("🔧 Fixing Core AI error...");
   }
 
-  async fixDeviceControllerError(error) {
+  async fixDeviceControllerError(_error) {
     console.log("🔧 Fixing Device Controller error...");
   }
 
-  async fixBettingSystemError(error) {
+  async fixBettingSystemError(_error) {
     console.log("🔧 Fixing Betting System error...");
   }
 
-  async fixGitLabAutomationError(error) {
+  async fixGitLabAutomationError(_error) {
     console.log("🔧 Fixing GitLab automation error...");
   }
 
-  async fixQuantumCloudError(error) {
+  async fixQuantumCloudError(_error) {
     console.log("🔧 Fixing Quantum Cloud error...");
   }
 
-  async fixFriendshipSystemError(error) {
+  async fixFriendshipSystemError(_error) {
     console.log("🔧 Fixing Friendship System error...");
   }
 
-  async fixHighSeverityError(error) {
+  async fixHighSeverityError(_error) {
     console.log("🔧 Fixing high severity error...");
   }
 
-  async fixMediumSeverityError(error) {
+  async fixMediumSeverityError(_error) {
     console.log("🔧 Fixing medium severity error...");
   }
 
-  async fixLowSeverityError(error) {
+  async fixLowSeverityError(_error) {
     console.log("🔧 Fixing low severity error...");
   }
 

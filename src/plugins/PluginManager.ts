@@ -17,12 +17,12 @@ export interface QmoiPlugin {
   getSettingsPanel?(): React.ReactNode;
 }
 
-export type PluginEvent = { type: string; payload?: any };
+export type PluginEvent = { type: string; payload?: unknown };
 
 export type AutomationRule = {
   id: string;
   description: string;
-  trigger: (_event: PluginEvent) => boolean;
+  trigger: (event: PluginEvent) => boolean;
   action: () => void;
 };
 
@@ -30,12 +30,12 @@ export class PluginManager {
   private plugins: QmoiPlugin[] = [];
   private pluginStatus: { [id: string]: boolean } = {};
   private eventListeners: {
-    [eventType: string]: ((payload: any) => void)[];
+    [eventType: string]: ((payload: unknown) => void)[];
   } = {};
   private scheduledPlugins: {
     plugin: QmoiPlugin;
     interval: number;
-    timer?: any;
+    timer?: number | NodeJS.Timeout;
   }[] = [];
   private automationRules: AutomationRule[] = [];
 
@@ -71,17 +71,15 @@ export class PluginManager {
     return this.plugins;
   }
 
-  on(eventType: string, listener: (payload: any) => void) {
+  on(eventType: string, listener: (payload: unknown) => void) {
     if (!this.eventListeners[eventType]) this.eventListeners[eventType] = [];
     this.eventListeners[eventType].push(listener);
   }
 
-  emit(_event: PluginEvent) {
-    (this.eventListeners[_event.type] || []).forEach((fn) =>
-      fn(_event.payload)
-    );
+  emit(event: PluginEvent) {
+    (this.eventListeners[event.type] || []).forEach((fn) => fn(event.payload));
     this.automationRules.forEach((rule) => {
-      if (rule.trigger(_event)) rule.action();
+      if (rule.trigger(event)) rule.action();
     });
   }
 
@@ -93,19 +91,14 @@ export class PluginManager {
   clearSchedules() {
     this.scheduledPlugins.forEach((s) => {
       try {
-        // timer may be number or NodeJS.Timeout depending on environment
-        const t = s.timer as any;
+        const t = s.timer;
         if (typeof t === "number") {
           clearInterval(t);
-        } else if (t && typeof (t as any).unref === "function") {
-          // NodeJS.Timeout-like
-          clearInterval(t as any);
-        } else {
-          // fallback
-          clearInterval(t as any);
+        } else if (t) {
+          clearInterval(t as unknown as NodeJS.Timeout);
         }
-      } catch (_e) {
-        // ignore any errors clearing timers
+      } catch {
+        // ignore errors clearing timers
       }
     });
     this.scheduledPlugins = [];

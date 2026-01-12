@@ -1,6 +1,5 @@
 /* eslint-env node */
 /// <reference types="node" />
-import axios from "axios";
 import { EventEmitter } from "events";
 
 interface ErrorReport {
@@ -274,7 +273,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async handleLicenseError(
     error: ErrorReport,
     confidence: number,
-    strategy: string
+    _strategy: string
   ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
@@ -296,7 +295,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async handleVercelDeployError(
     error: ErrorReport,
     confidence: number,
-    strategy: string
+    _strategy: string
   ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
@@ -319,7 +318,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async handleHerokuDeployError(
     error: ErrorReport,
     confidence: number,
-    strategy: string
+    _strategy: string
   ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
@@ -342,7 +341,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async handleNetworkError(
     error: ErrorReport,
     confidence: number,
-    strategy: string
+    _strategy: string
   ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
@@ -364,7 +363,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async handleDependencyError(
     error: ErrorReport,
     confidence: number,
-    strategy: string
+    _strategy: string
   ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
@@ -389,7 +388,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async handleSyntaxError(
     error: ErrorReport,
     confidence: number,
-    strategy: string
+    _strategy: string
   ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
@@ -417,7 +416,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async handlePermissionError(
     error: ErrorReport,
     confidence: number,
-    strategy: string
+    _strategy: string
   ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
@@ -435,7 +434,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async handleSystemResourceError(
     error: ErrorReport,
     confidence: number,
-    strategy: string
+    _strategy: string
   ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
@@ -457,7 +456,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async handleGenericError(
     error: ErrorReport,
     confidence: number,
-    strategy: string
+    _strategy: string
   ): Promise<FixSuggestion> {
     return {
       id: `fix_${Date.now()}`,
@@ -513,8 +512,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
         console.log("✅ Fix applied successfully");
         break;
       } catch (error) {
-        const errMsg =
-          error instanceof Error ? error.message : String(error);
+        const errMsg = error instanceof Error ? error.message : String(error);
         lastError = errMsg;
         console.warn(`⚠️ Fix attempt ${attempt} failed:`, errMsg);
 
@@ -526,7 +524,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
 
     if (!fixAttempt.success) {
       fixAttempt.error = lastError;
-      (console as any).error("❌ All fix attempts failed");
+      console.error("❌ All fix attempts failed");
     }
 
     fixAttempt.duration = Date.now() - startTime;
@@ -659,7 +657,9 @@ export class EnhancedErrorFixingService extends EventEmitter {
   public stopContinuousMonitoring(): void {
     this.continuousMonitoring = false;
     if (this.monitoringInterval) {
-      clearInterval(this.monitoringInterval as any);
+      clearInterval(
+        this.monitoringInterval as unknown as number | NodeJS.Timeout
+      );
     }
     console.log("🛑 Stopped continuous error monitoring");
     this.emit("monitoringStopped");

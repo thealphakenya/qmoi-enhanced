@@ -1,34 +1,53 @@
 /* eslint-env node, jest */
 /* global require */
-// @ts-nocheck
+
+/* eslint-disable no-empty, @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any, @typescript-eslint/ban-ts-comment */
 import "@testing-library/jest-dom";
 import "whatwg-fetch";
 import { TextEncoder, TextDecoder } from "util";
 
+// Helper to set/get global test shims without using `any`
+const setGlobal = (k: string, v: unknown) => {
+  (globalThis as unknown as Record<string, unknown>)[k] = v;
+};
+const getGlobal = <T = unknown>(k: string) =>
+  (globalThis as unknown as Record<string, unknown>)[k] as T;
+
 // Node may not expose TextEncoder/TextDecoder in older runtimes; ensure they're available
-if (typeof global.TextEncoder === "undefined")
-  (global as any).TextEncoder = TextEncoder as any;
-if (typeof global.TextDecoder === "undefined")
-  (global as any).TextDecoder = TextDecoder as any;
+if (
+  typeof (globalThis as unknown as Record<string, unknown>).TextEncoder ===
+  "undefined"
+)
+  setGlobal("TextEncoder", TextEncoder);
+if (
+  typeof (globalThis as unknown as Record<string, unknown>).TextDecoder ===
+  "undefined"
+)
+  setGlobal("TextDecoder", TextDecoder);
 
 // Polyfill setImmediate in environments that don't provide it
-if (typeof (global as any).setImmediate === "undefined") {
-  (global as any).setImmediate = (
-    fn: (...args: any[]) => void,
-    ...args: any[]
-  ) => setTimeout(() => fn(...args), 0) as unknown as number;
+if (
+  typeof (globalThis as unknown as Record<string, unknown>).setImmediate ===
+  "undefined"
+) {
+  setGlobal("setImmediate", ((
+    fn: (...args: unknown[]) => void,
+    ...args: unknown[]
+  ) => setTimeout(() => fn(...(args as unknown[])), 0)) as unknown);
 }
 
 import { jest, beforeAll, afterAll, afterEach } from "@jest/globals";
 // Verify hook availability (kept minimal)
 const TEST_VERBOSE = process.env.TEST_VERBOSE === "1" || false;
-const debugLog = (...args: any[]) => {
-  if (TEST_VERBOSE) console.debug(...args);
+const debugLog = (...args: unknown[]) => {
+  if (TEST_VERBOSE) console.debug(...(args as unknown[]));
 };
 
 try {
   console.warn("SETUP_TESTS: module loaded");
-} catch (_e) {}
+} catch (_e) {
+  void _e; /* ignore */
+}
 
 debugLog(
   "SETUP_TESTS: hooks -> beforeAll:",
@@ -37,7 +56,7 @@ debugLog(
   typeof (globalThis as any).beforeAll
 );
 // Delay importing MSW until after early polyfills (setupFiles) run
-let server: any;
+let server: unknown;
 let mswReady = false;
 
 declare global {
@@ -49,7 +68,7 @@ declare global {
 // Augment Console with a non-standard `error` helper used in test setup
 declare global {
   interface Console {
-    error?: (...args: any[]) => void;
+    error?: (...args: unknown[]) => void;
   }
 }
 
@@ -68,12 +87,13 @@ if (!global.fetch) {
   url: string;
   method: string;
   headers: Headers;
-  body: any;
-  constructor(input: any, init: any = {}) {
+  body: unknown;
+  constructor(input: unknown, init: Record<string, unknown> = {}) {
     const _url =
       typeof input === "string"
         ? input
-        : (input && (input.url || String(input))) || "http://localhost";
+        : (input && ((input as any).url || String(input))) ||
+          "http://localhost";
     Object.defineProperty(this, "url", {
       configurable: true,
       enumerable: true,
@@ -125,12 +145,12 @@ if (!global.fetch) {
   url: string;
   method: string;
   headers: Headers;
-  body: any;
-  constructor(url: any, init: any = {}) {
+  body: unknown;
+  constructor(url: unknown, init: Record<string, unknown> = {}) {
     const _url =
       typeof url === "string"
         ? url
-        : (url && (url.url || String(url))) || "http://localhost";
+        : (url && ((url as any).url || String(url))) || "http://localhost";
     Object.defineProperty(this, "url", {
       configurable: true,
       enumerable: true,
@@ -174,7 +194,7 @@ if (!global.fetch) {
 // Minimal NextResponse shim for tests that call NextResponse.json()
 if (typeof (global as any).NextResponse === "undefined") {
   (global as any).NextResponse = {
-    json(body: any, opts: any = {}) {
+    json(body: unknown, opts: Record<string, unknown> = {}) {
       // Return a plain object that mimics the minimal interface used in tests
       return {
         status: opts?.status || 200,
@@ -207,20 +227,19 @@ if (typeof window === "undefined") {
     resetHandlers: () => undefined,
   } as any;
   // Expose readiness promise for compatibility
-  (globalThis as any).__MSW_READY__ = mswInitPromise;
+  setGlobal("__MSW_READY__", mswInitPromise);
 } else {
   // Initialize MSW only in environments that look like browsers/jsdom
   mswInitPromise = (async function initializeMswAtLoad() {
     debugLog("SETUP_TESTS: initializing MSW at module load");
     // Ensure stream polyfills are available in this module scope before importing MSW
     try {
-      /* eslint-disable @typescript-eslint/no-require-imports */
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const {
         TransformStream,
         ReadableStream,
         WritableStream,
       } = require("web-streams-polyfill");
-      /* eslint-enable @typescript-eslint/no-require-imports */
       if (typeof (global as any).TransformStream === "undefined")
         (global as any).TransformStream = TransformStream;
       if (typeof (global as any).ReadableStream === "undefined")
@@ -232,7 +251,7 @@ if (typeof window === "undefined") {
           (globalThis as any).TransformStream = TransformStream;
       }
     } catch (_e) {
-      // ignore
+      void _e; /* ignore */
     }
 
     // MSW readiness flag (used by the fetch fallback)
@@ -251,50 +270,60 @@ if (typeof window === "undefined") {
       debugLog("SETUP_TESTS: imported server module");
 
       // Support both async getter and synchronous exports
-      let handlers: any[] = [];
+      let handlers: unknown[] = [];
       if (typeof handlersMod.getHandlers === "function") {
         try {
           debugLog("SETUP_TESTS: invoking handlersMod.getHandlers()");
           handlers = await (handlersMod as any).getHandlers();
           debugLog("SETUP_TESTS: handlers resolved length=", handlers.length);
         } catch (_err) {
-          void _err;
-          // Fail fast: handlers must initialize correctly for tests to be valid
+          void _err; /* fail fast */
           console.error("SETUP_TESTS: handlersMod.getHandlers() threw:", _err);
           throw _err;
         }
       } else {
         handlers =
-          (handlersMod as any).handlers || (handlersMod as any).default || [];
+          (
+            handlersMod as unknown as {
+              handlers?: unknown[];
+              default?: unknown[];
+            }
+          ).handlers ||
+          (
+            handlersMod as unknown as {
+              handlers?: unknown[];
+              default?: unknown[];
+            }
+          ).default ||
+          [];
         debugLog("SETUP_TESTS: handlers (sync) length=", handlers.length);
       }
 
       // Register handlers on the shared server and start it
       debugLog("SETUP_TESTS: registering handlers on server", handlers.length);
-      if ((handlers as any[]).length)
-        (importedServer as any).use(...(handlers as any));
+      if ((handlers as unknown[]).length)
+        (
+          importedServer as unknown as { use: (...args: unknown[]) => void }
+        ).use(...(handlers as unknown[]));
       // Log unhandled requests to aid debugging when handlers don't match. By
       // default we suppress these unless explicitly enabled in CI/dev by
       // setting SHOW_MSW_UNHANDLED=1.
       importedServer.listen({
-        onUnhandledRequest: (_req) => {
+        onUnhandledRequest: (_req: unknown) => {
           try {
+            const req = _req as unknown as { method?: string; url?: unknown };
+            const urlStr = String(req.url || "");
             if (process.env.SHOW_MSW_UNHANDLED === "1") {
-              (console as any).error(
-                "MSW UNHANDLED REQUEST:",
-                (_req as any).method,
-                String((_req as any).url)
-              );
+              console.error("MSW UNHANDLED REQUEST:", req.method, urlStr);
             } else {
               debugLog(
                 "MSW UNHANDLED REQUEST (suppressed):",
-                (_req as any).method,
-                String((_req as any).url)
+                req.method,
+                urlStr
               );
             }
           } catch (_err) {
-            void _err;
-            // ignore malformed _request objects
+            void _err; /* ignore malformed request */
           }
         },
       });
@@ -335,19 +364,22 @@ if (typeof window === "undefined") {
         {
           method: "POST",
           path: "/api/qmoi/payload",
-          handler: async (_req: any) => {
+          handler: async (_req: unknown) => {
             const url =
               typeof _req === "string"
                 ? new URL(_req, "http://localhost")
-                : (_req as any)?.url || "http://localhost";
+                : (_req as unknown as { url?: string })?.url ||
+                  "http://localhost";
             const q =
               typeof url === "string" ? new URL(url, "http://localhost") : url;
             const action =
-              q.searchParams && q.searchParams.has("qfix")
+              (q as any).searchParams && (q as any).searchParams.has("qfix")
                 ? "QFix"
-                : q.searchParams && q.searchParams.has("qoptimize")
+                : (q as any).searchParams &&
+                  (q as any).searchParams.has("qoptimize")
                 ? "QOptimize"
-                : q.searchParams && q.searchParams.has("qsecure")
+                : (q as any).searchParams &&
+                  (q as any).searchParams.has("qsecure")
                 ? "QSecure"
                 : "Unknown";
             return new Response(JSON.stringify({ message: `${action} done` }), {
@@ -360,26 +392,38 @@ if (typeof window === "undefined") {
 
       // Replace global.fetch with a simple router that matches the fallback handlers.
       try {
-        const originalFetch = (global as any).fetch;
-        (global as any).fetch = async function fetchFallback(
-          input: any,
-          init: any
+        const originalFetch = getGlobal<unknown>("fetch");
+        setGlobal("fetch", async function fetchFallback(
+          input: unknown,
+          init: unknown
         ) {
           try {
             const url =
-              typeof input === "string" ? input : (input as any)?.url || "";
+              typeof input === "string"
+                ? input
+                : (input as unknown as { url?: string })?.url || "";
             const u = new URL(url, "http://localhost");
-            const method = ((init as any) && (init as any).method) || "GET";
+            const method =
+              (init as unknown as { method?: string })?.method || "GET";
             for (const h of fallbackHandlers) {
-              if (h.method === method && h.path === u.pathname) {
-                return (h as any).handler(u);
+              const handler = h as unknown as {
+                method: string;
+                path: string;
+                handler: (arg?: unknown) => Promise<Response> | Response;
+              };
+              if (handler.method === method && handler.path === u.pathname) {
+                return handler.handler(u);
               }
             }
           } catch (er) {
             // ignore parsing errors and fall through to original fetch
           }
-          return (originalFetch as any).apply(globalThis, [input, init]);
-        } as any;
+          return (
+            originalFetch as unknown as (
+              ...args: unknown[]
+            ) => Promise<Response>
+          ).apply(globalThis, [input, init]);
+        } as unknown);
       } catch (er) {
         console.error("SETUP_TESTS: failed to install fetch fallback:", er);
       }
@@ -390,13 +434,13 @@ if (typeof window === "undefined") {
         listen: () => undefined,
         close: () => undefined,
         resetHandlers: () => undefined,
-      } as any;
+      } as unknown;
     }
   })();
 }
 
 // Expose readiness promise so tests can explicitly await MSW initialization
-(globalThis as any).__MSW_READY__ = mswInitPromise;
+setGlobal("__MSW_READY__", mswInitPromise);
 
 // Attempt an early reset of mock prisma stores at module load. This ensures
 // a clean in-memory DB even if other modules imported the mock before the
@@ -432,7 +476,7 @@ beforeAll(async () => {
   debugLog("SETUP_TESTS: msw ready (awaited in beforeAll)");
   // Seed mock-prisma stores with minimal data used by admin and wallet tests
   try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
     const maybePrisma = require("../lib/db/prisma");
     const stores =
       (maybePrisma && maybePrisma.prisma && maybePrisma.prisma.__stores) ||
@@ -487,7 +531,7 @@ beforeEach(() => {
     // Force-clear the global mock-prisma stores directly to avoid cases
     // where module-scoped proxies hold stale references.
     try {
-      const G: any = global as any;
+      const G = globalThis as unknown as Record<string, unknown>;
       if (G.__qmoi_mock_prisma_stores) {
         for (const k of Object.keys(G.__qmoi_mock_prisma_stores)) {
           try {
@@ -519,14 +563,16 @@ beforeEach(() => {
           for (const k of Object.keys(stores)) {
             try {
               stores[k].clear();
-            } catch (_e) {}
+            } catch (_e) {
+              /* ignore */
+            }
           }
         } catch (_e) {}
       }
     } catch (_e) {}
     // Secondary: clear any in-memory walletService stores used by fallback db shim
     try {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
       const maybeDb = require("../lib/db/prisma");
       // Prefer top-level reset helper if available
       try {
@@ -557,6 +603,7 @@ beforeEach(() => {
     } catch (_e) {}
     // Debug: print mock store counts to help diagnose pre-existing data
     try {
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const mod = require("../lib/db/prisma");
       const stores =
         (mod && mod.prisma && mod.prisma.__stores) ||
@@ -601,13 +648,18 @@ try {
     typeof (global as any).Response.prototype.json !== "function";
   if (needsImpl) {
     class ResponseMock {
-      _body: any;
+      _body: unknown;
       status: number;
-      headers: any;
-      constructor(body: any = null, init: any = {}) {
+      headers: unknown;
+      constructor(body: unknown = null, init: Record<string, unknown> = {}) {
         this._body = body;
-        this.status = init.status || 200;
-        this.headers = new (global as any).Headers(init.headers || {});
+        this.status = (init as Record<string, unknown>)?.status || 200;
+        const HeadersCtor = getGlobal<unknown>("Headers") as unknown as new (
+          h?: unknown
+        ) => unknown;
+        this.headers = new HeadersCtor(
+          (init as Record<string, unknown>)?.headers || {}
+        );
       }
       async json() {
         if (
@@ -617,8 +669,9 @@ try {
         )
           return null;
         try {
-          return JSON.parse(this._body);
+          return JSON.parse(this._body as string);
         } catch (_e) {
+          void _e;
           return this._body;
         }
       }
@@ -628,22 +681,29 @@ try {
           ? this._body
           : JSON.stringify(this._body);
       }
-      static json(body: any, init: any = {}) {
+      static json(body: unknown, init: Record<string, unknown> = {}) {
         return new ResponseMock(JSON.stringify(body), init);
       }
     }
-    (global as any).Response = ResponseMock as any;
+    setGlobal("Response", ResponseMock as unknown);
   } else if (
-    (global as any).Response &&
-    typeof (global as any).Response.json !== "function"
+    getGlobal<unknown>("Response") &&
+    typeof (getGlobal<unknown>("Response") as any).json !== "function"
   ) {
-    (global as any).Response.json = function (body: any, init: any = {}) {
-      const headers = (init && init.headers) || {};
-      return new (global as any).Response(JSON.stringify(body), {
-        status: init.status || 200,
+    (getGlobal<unknown>("Response") as any).json = function (
+      body: unknown,
+      init: Record<string, unknown> = {}
+    ) {
+      const headers = (init && (init as Record<string, unknown>).headers) || {};
+      const RespCtor = getGlobal<unknown>("Response") as unknown as new (
+        s: string,
+        o?: Record<string, unknown>
+      ) => unknown;
+      return new RespCtor(JSON.stringify(body), {
+        status: (init as Record<string, unknown>)?.status || 200,
         headers: { "Content-Type": "application/json", ...headers },
       });
-    } as any;
+    } as unknown;
   }
 } catch (_e) {}
 
@@ -651,200 +711,246 @@ try {
 // provides sensible default responses for external QMOI calls and local
 // endpoints so tests can assert `fetch` usage reliably.
 try {
-  const ResponseCtor = (global as any).Response;
-  const makeJson = (obj: any, status = 200) =>
+  const ResponseCtor = getGlobal<unknown>("Response") as unknown as new (
+    s: string,
+    o?: Record<string, unknown>
+  ) => unknown;
+  const makeJson = (obj: unknown, status = 200) =>
     new ResponseCtor(JSON.stringify(obj), {
       status,
       headers: { "Content-Type": "application/json" },
     });
 
-  if (!(global as any).fetch || !(global as any).fetch.mock) {
-    (global as any).fetch = jest.fn(async (input: any, init?: any) => {
-      const urlStr =
-        typeof input === "string"
-          ? input
-          : (input && (input.url || input.toString())) || "";
-      try {
-        const u = new URL(urlStr, "http://localhost");
-        if (
-          u.pathname.includes("/v1/chat/completions") ||
-          urlStr.includes("v1/chat/completions")
-        ) {
-          return makeJson({
-            id: "mock_resp",
-            choices: [
-              { message: { role: "assistant", content: "mocked response" } },
-            ],
-          });
-        }
-        // Admin endpoints (basic auth enforcement based on Authorization header)
-        if (u.pathname.startsWith("/api/admin")) {
-          // Accept Authorization header passed either via `init.headers` or
-          // via a Request-like `input.headers` object (Headers instance or plain object).
-          const headersSource =
-            (init && (init as any).headers) ||
-            (input && (input as any).headers) ||
-            {};
-          let authHeader: any = "";
+  if (
+    !getGlobal("fetch") ||
+    !(getGlobal("fetch") as unknown as { mock?: unknown }).mock
+  ) {
+    setGlobal(
+      "fetch",
+      jest.fn(async (input: unknown, init?: unknown) => {
+        const toUrlString = (v: unknown) => {
+          if (typeof v === "string") return v;
           try {
-            if (headersSource && typeof headersSource.get === "function") {
-              authHeader =
-                headersSource.get("authorization") ||
-                headersSource.get("Authorization") ||
-                "";
-            } else if (headersSource) {
-              authHeader =
-                headersSource.Authorization ||
-                headersSource.authorization ||
-                "";
-            }
-          } catch (_e) {
-            authHeader = "";
+            const obj = v as { url?: unknown; toString?: () => string };
+            if (obj.url) return String(obj.url);
+            if (typeof obj.toString === "function") return obj.toString();
+          } catch {
+            /* ignore */
           }
-          if (!authHeader) return new ResponseCtor(null, { status: 401 });
-
-          // Try to decode JWT (without verification) to inspect role for admin checks
-          let isAdmin = false;
-          try {
-            const tokenRaw = String(authHeader).replace(/^Bearer\s+/i, "");
-            const jwt = require("jsonwebtoken");
-            const payload = jwt.decode(tokenRaw) || {};
-            if (payload && (payload as any).role === "admin") isAdmin = true;
-          } catch (_e) {
-            // ignore decode errors
-          }
-
-          if (!isAdmin) return new ResponseCtor(null, { status: 403 });
-
-          // Simple admin responses for authorized admin users
-          if (u.pathname === "/api/admin/monitoring") {
+          return "";
+        };
+        const urlStr = toUrlString(input);
+        try {
+          const u = new URL(urlStr, "http://localhost");
+          if (
+            u.pathname.includes("/v1/chat/completions") ||
+            urlStr.includes("v1/chat/completions")
+          ) {
             return makeJson({
-              monitoring: {
-                timestamp: new Date().toISOString(),
-                system: {
-                  uptime: 1,
-                  memory: { heapUsedMB: 10, heapTotalMB: 20 },
-                  nodeVersion: process.version,
-                  platform: process.platform,
+              id: "mock_resp",
+              choices: [
+                { message: { role: "assistant", content: "mocked response" } },
+              ],
+            });
+          }
+          // Admin endpoints (basic auth enforcement based on Authorization header)
+          if (u.pathname.startsWith("/api/admin")) {
+            // Accept Authorization header passed either via `init.headers` or
+            // via a Request-like `input.headers` object (Headers instance or plain object).
+            const headersSource =
+              (init as unknown as { headers?: unknown })?.headers ??
+              (input as unknown as { headers?: unknown })?.headers ??
+              {};
+            let authHeader = "";
+            try {
+              const accessor = headersSource as unknown as {
+                get?: (k: string) => unknown;
+              };
+              if (accessor && typeof accessor.get === "function") {
+                authHeader = String(
+                  accessor.get!("authorization") ||
+                    accessor.get!("Authorization") ||
+                    ""
+                );
+              } else if (headersSource && typeof headersSource === "object") {
+                const h = headersSource as Record<string, unknown>;
+                authHeader = String(
+                  h["authorization"] || h["Authorization"] || ""
+                );
+              }
+            } catch (err) {
+              void err;
+            }
+            if (!authHeader) return new ResponseCtor(null, { status: 401 });
+
+            // Try to decode JWT (without verification) to inspect role for admin checks
+            let isAdmin = false;
+            try {
+              const tokenRaw = String(authHeader).replace(/^Bearer\s+/i, "");
+              // eslint-disable-next-line @typescript-eslint/no-require-imports
+              // eslint-disable-next-line @typescript-eslint/no-require-imports
+              const jwt = require("jsonwebtoken");
+              const payload = jwt.decode(tokenRaw) || {};
+              if (
+                payload &&
+                String((payload as unknown as { role?: unknown })?.role) ===
+                  "admin"
+              )
+                isAdmin = true;
+            } catch (_e) {
+              // ignore decode errors
+            }
+
+            if (!isAdmin) return new ResponseCtor(null, { status: 403 });
+
+            // Simple admin responses for authorized admin users
+            if (u.pathname === "/api/admin/monitoring") {
+              return makeJson({
+                monitoring: {
+                  timestamp: new Date().toISOString(),
+                  system: {
+                    uptime: 1,
+                    memory: { heapUsedMB: 10, heapTotalMB: 20 },
+                    nodeVersion: process.version,
+                    platform: process.platform,
+                  },
+                  performance: {},
+                  errors: {},
+                  healthScore: 95,
+                  status: "healthy",
                 },
-                performance: {},
-                errors: {},
-                healthScore: 95,
-                status: "healthy",
+              });
+            }
+
+            if (u.pathname === "/api/admin/alerts") {
+              // support GET list and POST actions
+              if (
+                (init &&
+                  (init as unknown as { method?: string }).method === "POST") ||
+                false
+              ) {
+                const body =
+                  init && (init as unknown as { body?: unknown })?.body
+                    ? JSON.parse(
+                        String((init as unknown as { body?: unknown })!.body)
+                      )
+                    : {};
+                if (body && body.action === "acknowledge")
+                  return makeJson({ success: true, action: "acknowledge" });
+                return new ResponseCtor(null, { status: 400 });
+              }
+              return makeJson({ alerts: [], count: 0, criticalCount: 0 });
+            }
+
+            if (u.pathname.startsWith("/api/admin/rate-limits")) {
+              if (
+                init &&
+                (init as unknown as { method?: string }).method === "PUT"
+              ) {
+                const body =
+                  init && (init as unknown as { body?: unknown })?.body
+                    ? JSON.parse(
+                        String((init as unknown as { body?: unknown })!.body)
+                      )
+                    : {};
+                if (body && body.action === "reset") {
+                  return makeJson({ success: true });
+                }
+                if (body && typeof body.newLimit === "number") {
+                  return makeJson({ success: true, newLimit: body.newLimit });
+                }
+              }
+              return makeJson({
+                config: { defaultLimit: 100 },
+                currentUsage: [],
+              });
+            }
+
+            if (u.pathname.startsWith("/api/admin/audit-logs")) {
+              // Handle POST export with format
+              if (
+                init &&
+                (init as unknown as { method?: string }).method === "POST"
+              ) {
+                const body =
+                  init && (init as unknown as { body?: unknown })?.body
+                    ? JSON.parse(
+                        String((init as unknown as { body?: unknown })!.body)
+                      )
+                    : {};
+                if (body && body.format === "csv") {
+                  const csv = "id,timestamp,level,message\n";
+                  return new ResponseCtor(csv, {
+                    status: 200,
+                    headers: {
+                      "Content-Type": "text/csv",
+                      "Content-Disposition": "attachment; filename=export.csv",
+                    },
+                  });
+                }
+                if (body && body.format === "json") {
+                  const resp = new ResponseCtor(
+                    JSON.stringify({
+                      logs: [],
+                      pagination: { skip: 0, take: 10, total: 0 },
+                    }),
+                    {
+                      status: 200,
+                      headers: {
+                        "Content-Type": "application/json",
+                        "Content-Disposition":
+                          "attachment; filename=export.json",
+                      },
+                    }
+                  );
+                  return resp;
+                }
+                return new ResponseCtor(null, { status: 400 });
+              }
+              return makeJson({
+                logs: [],
+                pagination: { skip: 0, take: 10, total: 0 },
+              });
+            }
+          }
+          if (u.pathname === "/api/qmoi/status")
+            return makeJson({
+              status: "OK",
+              last_check: new Date().toISOString(),
+              mutation_count: 5,
+              logs: ["Log 1", "Log 2"],
+            });
+          if (u.pathname === "/api/health") {
+            return makeJson({
+              status: "healthy",
+              checks: {
+                database: { status: "connected" },
+                memory: { heapUsedMB: 10, heapTotalMB: 20 },
               },
             });
           }
-
-          if (u.pathname === "/api/admin/alerts") {
-            // support GET list and POST actions
-            if ((init && (init as any).method === "POST") || false) {
-              const body =
-                init && (init as any).body
-                  ? JSON.parse((init as any).body)
-                  : {};
-              if (body && body.action === "acknowledge")
-                return makeJson({ success: true, action: "acknowledge" });
-              return new ResponseCtor(null, { status: 400 });
-            }
-            return makeJson({ alerts: [], count: 0, criticalCount: 0 });
+          if (u.pathname === "/api/qmoi/payload") {
+            const action =
+              u.searchParams &&
+              (u.searchParams.has("qfix") || u.searchParams.get("qfix"))
+                ? "QFix"
+                : u.searchParams &&
+                  (u.searchParams.has("qoptimize") ||
+                    u.searchParams.get("qoptimize"))
+                ? "QOptimize"
+                : u.searchParams &&
+                  (u.searchParams.has("qsecure") ||
+                    u.searchParams.get("qsecure"))
+                ? "QSecure"
+                : "Unknown";
+            return makeJson({ message: `${action} done` });
           }
-
-          if (u.pathname.startsWith("/api/admin/rate-limits")) {
-            if (init && (init as any).method === "PUT") {
-              const body =
-                init && (init as any).body
-                  ? JSON.parse((init as any).body)
-                  : {};
-              if (body && body.action === "reset") {
-                return makeJson({ success: true });
-              }
-              if (body && typeof body.newLimit === "number") {
-                return makeJson({ success: true, newLimit: body.newLimit });
-              }
-            }
-            return makeJson({
-              config: { defaultLimit: 100 },
-              currentUsage: [],
-            });
-          }
-
-          if (u.pathname.startsWith("/api/admin/audit-logs")) {
-            // Handle POST export with format
-            if (init && (init as any).method === "POST") {
-              const body =
-                init && (init as any).body
-                  ? JSON.parse((init as any).body)
-                  : {};
-              if (body && body.format === "csv") {
-                const csv = "id,timestamp,level,message\n";
-                return new ResponseCtor(csv, {
-                  status: 200,
-                  headers: {
-                    "Content-Type": "text/csv",
-                    "Content-Disposition": "attachment; filename=export.csv",
-                  },
-                });
-              }
-              if (body && body.format === "json") {
-                const resp = new ResponseCtor(
-                  JSON.stringify({
-                    logs: [],
-                    pagination: { skip: 0, take: 10, total: 0 },
-                  }),
-                  {
-                    status: 200,
-                    headers: {
-                      "Content-Type": "application/json",
-                      "Content-Disposition": "attachment; filename=export.json",
-                    },
-                  }
-                );
-                return resp;
-              }
-              return new ResponseCtor(null, { status: 400 });
-            }
-            return makeJson({
-              logs: [],
-              pagination: { skip: 0, take: 10, total: 0 },
-            });
-          }
+        } catch (_err) {
+          // ignore
         }
-        if (u.pathname === "/api/qmoi/status")
-          return makeJson({
-            status: "OK",
-            last_check: new Date().toISOString(),
-            mutation_count: 5,
-            logs: ["Log 1", "Log 2"],
-          });
-        if (u.pathname === "/api/health") {
-          return makeJson({
-            status: "healthy",
-            checks: {
-              database: { status: "connected" },
-              memory: { heapUsedMB: 10, heapTotalMB: 20 },
-            },
-          });
-        }
-        if (u.pathname === "/api/qmoi/payload") {
-          const action =
-            u.searchParams &&
-            (u.searchParams.has("qfix") || u.searchParams.get("qfix"))
-              ? "QFix"
-              : u.searchParams &&
-                (u.searchParams.has("qoptimize") ||
-                  u.searchParams.get("qoptimize"))
-              ? "QOptimize"
-              : u.searchParams &&
-                (u.searchParams.has("qsecure") || u.searchParams.get("qsecure"))
-              ? "QSecure"
-              : "Unknown";
-          return makeJson({ message: `${action} done` });
-        }
-      } catch (_err) {
-        // ignore
-      }
-      return new ResponseCtor(null, { status: 404 });
-    }) as any;
+        return new ResponseCtor(null, { status: 404 });
+      }) as unknown
+    );
   }
 } catch (_e) {
   // ignore
@@ -855,18 +961,25 @@ try {
   const originalFetch = global.fetch;
   if (typeof originalFetch === "function") {
     // Wrap with a jest.fn so tests can assert on `global.fetch` calls
-    (global as any).fetch = jest.fn(async (...args: any[]) => {
-      await mswInitPromise.catch(() => {});
-      try {
-        const input = args[0];
-        const url =
-          typeof input === "string" ? input : (input as any)?.url || "";
-        debugLog("FETCH CALL:", url);
-      } catch (_e) {
-        // ignore
-      }
-      return (originalFetch as any).apply(globalThis, args);
-    }) as any;
+    setGlobal(
+      "fetch",
+      jest.fn(async (...args: unknown[]) => {
+        await mswInitPromise.catch(() => {});
+        try {
+          const input = args[0];
+          const url =
+            typeof input === "string"
+              ? input
+              : (input as unknown as { url?: string })?.url || "";
+          debugLog("FETCH CALL:", url);
+        } catch (_e) {
+          void _e;
+        }
+        return (
+          originalFetch as unknown as (...a: unknown[]) => Promise<Response>
+        ).apply(globalThis, args);
+      }) as unknown
+    );
   }
 } catch (_e) {
   // ignore
@@ -874,7 +987,8 @@ try {
 
 afterEach(() => {
   try {
-    if (server) (server as any).resetHandlers();
+    if (server)
+      (server as unknown as { resetHandlers?: () => void }).resetHandlers?.();
   } catch (_e) {
     console.error("SETUP_TESTS: server.resetHandlers() failed:", _e);
   }
@@ -884,7 +998,7 @@ afterEach(() => {
 // unexpected ordering in some environments.
 afterEach(() => {
   try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
     const maybePrisma = require("../lib/db/prisma");
     try {
       if (maybePrisma && typeof maybePrisma.resetMockDb === "function")
@@ -906,7 +1020,7 @@ afterEach(() => {
 });
 afterAll(() => {
   try {
-    if (server) (server as any).close();
+    if (server) (server as unknown as { close?: () => void }).close?.();
   } catch (_e) {
     // Non-fatal: avoid failing the test run due to cleanup errors. If you'd
     // like to see these details, set SHOW_MSW_UNHANDLED=1 to surface them.
@@ -923,11 +1037,13 @@ const sessionStorageMock = {
   key: jest.fn(),
   length: 0,
 };
-global.sessionStorage = sessionStorageMock as any as Storage;
+global.sessionStorage = sessionStorageMock as unknown as Storage;
 
 // Mock console methods to reduce noise in tests
 // Ensure `error` exists on console (fall back to `console.error`)
-if (!(console as any).error) (console as any).error = console.error;
+if (!console.error)
+  (console as unknown as { error?: (...args: unknown[]) => void }).error =
+    console.error;
 global.console = {
   ...console,
   log: jest.fn(),
@@ -935,5 +1051,5 @@ global.console = {
   info: jest.fn(),
   warn: jest.fn(),
   // keep errors visible so setup failures surface in CI and dev runs
-  error: (console as any).error,
+  error: console.error,
 };

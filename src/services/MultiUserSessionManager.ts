@@ -65,7 +65,7 @@ export class MultiUserSessionManager extends EventEmitter {
   private sessions: Map<string, Session> = new Map();
   private userSessions: Map<string, string> = new Map(); // userId -> sessionId
   private whatsappToUserId: Map<string, string> = new Map(); // whatsappId -> userId
-  private globalContext: any = {};
+  private globalContext: Record<string, unknown> = {};
 
   constructor() {
     super();
@@ -73,10 +73,10 @@ export class MultiUserSessionManager extends EventEmitter {
   }
 
   private setupEventHandlers() {
-    this.on("userJoined", this.handleUserJoined.bind(this) as any);
-    this.on("userLeft", this.handleUserLeft.bind(this) as any);
-    this.on("groupCreated", this.handleGroupCreated.bind(this) as any);
-    this.on("contextChanged", this.handleContextChanged.bind(this) as any);
+    this.on("userJoined", this.handleUserJoined.bind(this));
+    this.on("userLeft", this.handleUserLeft.bind(this));
+    this.on("groupCreated", this.handleGroupCreated.bind(this));
+    this.on("contextChanged", this.handleContextChanged.bind(this));
   }
 
   // Session Management
@@ -274,7 +274,7 @@ export class MultiUserSessionManager extends EventEmitter {
     this.emit("contextChanged", { userId, context: user.context, sessionId });
   }
 
-  getSharedContext(groupId: string): any {
+  getSharedContext(groupId: string): Record<string, unknown> | null {
     const group = this.findGroup(groupId);
     if (!group || !group.settings.sharedContext) return null;
 
@@ -283,10 +283,12 @@ export class MultiUserSessionManager extends EventEmitter {
     const session = this.sessions.get(sessionId);
     if (!session) return null;
 
-    return session.activeContexts.get(groupId) || {};
+    return (
+      (session.activeContexts.get(groupId) as Record<string, unknown>) || {}
+    );
   }
 
-  updateSharedContext(groupId: string, context: any): void {
+  updateSharedContext(groupId: string, context: Record<string, unknown>): void {
     const group = this.findGroup(groupId);
     if (!group || !group.settings.sharedContext) return;
 
@@ -302,7 +304,10 @@ export class MultiUserSessionManager extends EventEmitter {
   }
 
   // AI Relationship Management
-  getAIRelationshipContext(userId: string, targetUserId?: string): any {
+  getAIRelationshipContext(
+    userId: string,
+    targetUserId?: string
+  ): Record<string, unknown> | null {
     const user = this.getUser(userId);
     if (!user) return null;
 

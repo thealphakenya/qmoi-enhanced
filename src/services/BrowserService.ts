@@ -58,7 +58,7 @@ interface NetworkRequest {
   duration: number;
   timestamp: Date;
   headers: Record<string, string>;
-  response?: any;
+  response?: unknown;
 }
 
 interface DOMElement {
@@ -77,6 +77,14 @@ interface SourceFile {
   content: string;
   language: string;
   isModified: boolean;
+}
+
+interface Download {
+  id: string;
+  filename: string;
+  url: string;
+  progress: number;
+  status: "pending" | "downloading" | "completed" | "failed";
 }
 
 interface BrowserSettings {
@@ -126,7 +134,7 @@ interface AIFeature {
 
 export class BrowserService {
   private static instance: BrowserService;
-  private eventEmitter: any;
+  private eventEmitter: EventEmitter;
   private tabs: Map<string, BrowserTab> = new Map();
   private activeTabId: string | null = null;
   private settings: BrowserSettings;
@@ -134,13 +142,7 @@ export class BrowserService {
   private isIncognito = false;
   private history: string[] = [];
   private bookmarks: Bookmark[] = [];
-  private downloads: Array<{
-    id: string;
-    filename: string;
-    url: string;
-    progress: number;
-    status: "pending" | "downloading" | "completed" | "failed";
-  }> = [];
+  private downloads: Download[] = [];
 
   private constructor() {
     this.eventEmitter = new EventEmitter();
@@ -478,7 +480,7 @@ export class BrowserService {
   }
 
   private async translateContent(
-    url: string
+    _url: string
   ): Promise<{ original: string; translated: string; language: string }> {
     // Simulate translation
     return {
@@ -489,7 +491,7 @@ export class BrowserService {
   }
 
   private async analyzeSecurity(
-    url: string
+    _url: string
   ): Promise<{ isSafe: boolean; threats: string[]; score: number }> {
     // Simulate security analysis
     return {
@@ -511,7 +513,7 @@ export class BrowserService {
     return liveTVDomains.some((domain) => url.includes(domain));
   }
 
-  private async getLiveContent(url: string): Promise<unknown> {
+  private async getLiveContent(_url: string): Promise<unknown> {
     // Simulate live content detection
     return {
       type: "live-tv",
@@ -595,7 +597,8 @@ export class BrowserService {
     const tab = this.tabs.get(tabId);
     if (!tab) return;
 
-    tab.developerTools.activePanel = panel as any;
+    tab.developerTools.activePanel =
+      panel as BrowserTab["developerTools"]["activePanel"];
     this.eventEmitter.emit("developerPanelChanged", { tabId, panel });
   }
 
@@ -679,7 +682,7 @@ export class BrowserService {
     return this.history;
   }
 
-  public getDownloads(): any[] {
+  public getDownloads(): Download[] {
     return this.downloads;
   }
 
@@ -794,7 +797,7 @@ export class BrowserService {
     this.eventEmitter.on("bookmarkAdded", callback);
   }
 
-  public onDownloadStarted(callback: (download: any) => void): void {
+  public onDownloadStarted(callback: (download: Download) => void): void {
     this.eventEmitter.on("downloadStarted", callback);
   }
 
@@ -804,7 +807,7 @@ export class BrowserService {
     this.eventEmitter.on("downloadProgress", callback);
   }
 
-  public onDownloadCompleted(callback: (download: any) => void): void {
+  public onDownloadCompleted(callback: (download: Download) => void): void {
     this.eventEmitter.on("downloadCompleted", callback);
   }
 
@@ -821,7 +824,7 @@ export class BrowserService {
   }
 
   public onLiveContent(
-    callback: (data: { tabId: string; content: any }) => void
+    callback: (data: { tabId: string; content: unknown }) => void
   ): void {
     this.eventEmitter.on("liveContent", callback);
   }

@@ -112,7 +112,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
           `🆕 New project planned: ${newProject.name}\nType: ${newProject.type}\nPriority: ${newProject.priority}\nEstimated time: ${newProject.estimatedDuration} minutes`
         );
       } catch (error) {
-        (console as any).error("Error creating project:", error);
+        console.error("Error creating project:", error);
       } finally {
         setIsLoading(false);
       }
@@ -164,7 +164,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
           );
         }
       } catch (error) {
-        (console as any).error("Error updating project status:", error);
+        console.error("Error updating project status:", error);
       } finally {
         setIsLoading(false);
       }
@@ -256,7 +256,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
           .join("\n")}`
       );
     } catch (error) {
-      (console as any).error("Error generating daily plan:", error);
+      console.error("Error generating daily plan:", error);
     } finally {
       setIsLoading(false);
     }
@@ -293,7 +293,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   })
       // });
     } catch (error) {
-      (console as any).error("Error creating WhatsApp group:", error);
+      console.error("Error creating WhatsApp group:", error);
     }
   }, []);
 
@@ -309,7 +309,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   body: JSON.stringify({ message })
       // });
     } catch (error) {
-      (console as any).error("Error posting to WhatsApp group:", error);
+      console.error("Error posting to WhatsApp group:", error);
     }
   }, []);
 

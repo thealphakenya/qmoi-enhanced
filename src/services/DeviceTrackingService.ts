@@ -44,13 +44,13 @@ export class DeviceTrackingService {
     return true;
   }
 
-  notifyMaster(action: string, deviceId: string) {
+  notifyMaster(action: "find" | "lock" | "wipe", deviceId: string): void {
     // Send real-time alert to master via WhatsApp
     const device = this.devices.find((d) => d.id === deviceId);
     if (device) {
-      this.whatsapp.sendMessageToMaster(
-        `Device action: ${action} on ${device.name} (${device.id})`,
-      );
+      const message = `Device action: ${action} on ${device.name} (${device.id})`;
+      // intentionally not awaiting to avoid blocking callers
+      void this.whatsapp.sendMessageToMaster(message);
     }
   }
 }

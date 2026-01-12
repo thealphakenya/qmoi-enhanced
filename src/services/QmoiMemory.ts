@@ -13,7 +13,7 @@ let memoryStore: MemoryRecord[] = [];
 let recordId = 1;
 
 export class QmoiMemory {
-  static save(key: string, value: any, user?: string, project?: string) {
+  static save(key: string, value: unknown, user?: string, project?: string) {
     const existing = memoryStore.findIndex(
       (r) =>
         r.key === key &&
@@ -82,14 +82,23 @@ export class QmoiMemory {
             if (data && data.profiles) {
               // merge conversations if present
               if (Array.isArray(data.conversations)) {
-                data.conversations.forEach((c: any) => {
+                data.conversations.forEach((c: unknown) => {
+                  const conv = c as Record<string, unknown>;
+                  const user =
+                    typeof conv["role"] === "string"
+                      ? (conv["role"] as string)
+                      : "";
+                  const timestamp =
+                    typeof conv["timestamp"] === "string"
+                      ? (conv["timestamp"] as string)
+                      : new Date().toISOString();
                   memoryStore.push({
                     id: recordId++,
                     key: "conversation",
-                    user: c.role || "",
+                    user,
                     project: "",
-                    value: JSON.stringify(c),
-                    timestamp: c.timestamp || new Date().toISOString(),
+                    value: JSON.stringify(conv),
+                    timestamp,
                   });
                 });
               }

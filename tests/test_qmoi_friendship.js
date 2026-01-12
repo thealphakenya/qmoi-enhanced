@@ -20,15 +20,15 @@ const Q = require("../qmoi-friendship-integration.js");
     const gitRes = await inst.performGitOperations();
     console.log(
       "performGitOperations result:",
-      JSON.stringify(gitRes, null, 2),
+      JSON.stringify(gitRes, null, 2)
     );
 
     console.log(
-      "Dry-run test completed. Check .qmoi_validation for proposals.",
+      "Dry-run test completed. Check .qmoi_validation for proposals."
     );
     process.exit(0);
   } catch (_err) {
-    (console as any).error("Test failed:", _err && _err.stack ? _err.stack : _err);
+    console.error("Test failed:", _err && _err.stack ? _err.stack : _err);
     process.exit(2);
   }
 })();

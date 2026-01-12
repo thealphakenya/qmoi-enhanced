@@ -76,7 +76,9 @@ export async function POST(_request: NextRequest) {
       const fresh = await userService.getByEmail(user.email);
       if (fresh && (fresh as any).createdAt)
         createdAt = (fresh as any).createdAt;
-    } catch (_e) {}
+    } catch (_e) {
+      void _e; /* ignore */
+    }
 
     // Create default wallet (USD)
     await walletService.create(user.id, "USD");
@@ -129,7 +131,9 @@ export async function POST(_request: NextRequest) {
           { status: 409 }
         );
       }
-    } catch (_e) {}
+    } catch (_e) {
+      void _e; /* ignore */
+    }
     console.error("Registration error:", error);
     return NextResponse.json(
       { error: "Internal server error" },

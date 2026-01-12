@@ -492,10 +492,7 @@ async function processBitget(amount: number, type: string) {
   }
 }
 
-const platformHandlers: Record<
-  string,
-  (...args: any[]) => Promise<unknown>
-> = {
+const platformHandlers: Record<string, (...args: any[]) => Promise<unknown>> = {
   Mpesa: processMpesa as (...args: any[]) => Promise<unknown>,
   Binance: processBinance as (...args: any[]) => Promise<unknown>,
   Pesapal: processPesapal as (...args: any[]) => Promise<unknown>,
@@ -522,7 +519,7 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (error: any) {
+  } catch (error: unknown) {
     const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
       error: errorMsg,

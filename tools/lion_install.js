@@ -34,15 +34,15 @@ function runInstall(pm) {
     else execSync("npm install", { stdio: "inherit" });
     console.log("[lion_install] install complete");
   } catch (_e) {
-    (console as any).error("[lion_install] install failed", _e);
+    console.error("[lion_install] install failed", _e);
     process.exit(1);
   }
 }
 
 (function main() {
   if (!hasNode()) {
-    (console as any).error(
-      "node is not installed in this environment. Please install Node.js first.",
+    console.error(
+      "node is not installed in this environment. Please install Node.js first."
     );
     process.exit(2);
   }

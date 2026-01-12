@@ -3,7 +3,7 @@
 /* eslint-disable no-unreachable */
 /* global Buffer, NodeJS */
 import * as nodeCrypto from "crypto";
-const crypto = nodeCrypto as any;
+const crypto = nodeCrypto;
 import { EventEmitter } from "events";
 
 interface SecurityMetrics {
@@ -828,7 +828,7 @@ export class BitgetManager extends EventEmitter {
       lastBackup: new Date(),
       encryptionKeys: {
         current: this.generateEncryptionKey(),
-        previous: (Buffer as any).alloc(0),
+        previous: Buffer.alloc(0),
         nextRotation: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
       },
     };
@@ -897,13 +897,13 @@ export class BitgetManager extends EventEmitter {
     }
   }
 
-  private async detectAnomalies(_request: any): Promise<void> {
+  private async detectAnomalies(_request: unknown): Promise<void> {
     if (!this.anomalyDetectionEnabled) return;
 
     const config = this.config.security.anomalyDetection;
     const metrics = this.securityStatus.securityMetrics;
 
-    // Check _request frequency
+    // Check request frequency
     if (metrics.requestCount > config.maxRequestPerMinute) {
       this.logSuspiciousActivity("high_request_frequency", {
         count: metrics.requestCount,
@@ -936,7 +936,7 @@ export class BitgetManager extends EventEmitter {
   }
 
   private matchesSuspiciousPattern(
-    _request: any,
+    _request: unknown,
     pattern: string
   ): boolean {
     switch (pattern) {
@@ -953,12 +953,12 @@ export class BitgetManager extends EventEmitter {
     }
   }
 
-  private checkRapidBalanceChange(_request: any): boolean {
+  private checkRapidBalanceChange(_request: unknown): boolean {
     // Implement balance change detection logic
     return false;
   }
 
-  private checkUnusualTradingVolume(_request: any): boolean {
+  private checkUnusualTradingVolume(_request: unknown): boolean {
     // Implement trading volume detection logic
     return false;
   }
@@ -976,7 +976,7 @@ export class BitgetManager extends EventEmitter {
     return this.securityStatus.failedAttempts > config.maxFailedAttempts;
   }
 
-  private logSuspiciousActivity(type: string, details: any): void {
+  private logSuspiciousActivity(type: string, details: unknown): void {
     this.securityStatus.securityMetrics.suspiciousActivities.push({
       type,
       timestamp: new Date(),
@@ -1031,7 +1031,7 @@ export class BitgetManager extends EventEmitter {
     }
   }
 
-  public async validateRequest(_request: any): Promise<boolean> {
+  public async validateRequest(_request: unknown): Promise<boolean> {
     // Check if account is locked
     if (this.securityStatus.isLocked) {
       if (
@@ -1074,19 +1074,19 @@ export class BitgetManager extends EventEmitter {
     return true;
   }
 
-  private async validateRequestSignature(_request: any): Promise<boolean> {
+  private async validateRequestSignature(_request: unknown): Promise<boolean> {
     try {
       // Implement _request signature validation logic
       return true;
     } catch (error) {
-      (console as any).error("Error validating _request signature:", error);
+      console.error("Error validating _request signature:", error);
       return false;
     }
   }
 
   public async encryptSensitiveData(data: string): Promise<string> {
-    const iv = (nodeCrypto as any).randomBytes(16);
-    const cipher = (nodeCrypto as any).createCipheriv(
+    const iv = nodeCrypto.randomBytes(16);
+    const cipher = nodeCrypto.createCipheriv(
       "aes-256-gcm",
       this.encryptionKey,
       iv
@@ -1105,15 +1105,22 @@ export class BitgetManager extends EventEmitter {
   }
 
   public async decryptSensitiveData(encryptedData: string): Promise<string> {
-    const { iv, encrypted, authTag } = JSON.parse(encryptedData) as any;
+    const parsed = JSON.parse(encryptedData) as unknown;
+    const parsedObj =
+      parsed && typeof parsed === "object"
+        ? (parsed as Record<string, unknown>)
+        : {};
+    const iv = (parsedObj["iv"] as string) || "";
+    const encrypted = (parsedObj["encrypted"] as string) || "";
+    const authTag = (parsedObj["authTag"] as string) || "";
 
-    const decipher = (nodeCrypto as any).createDecipheriv(
+    const decipher = nodeCrypto.createDecipheriv(
       "aes-256-gcm",
       this.encryptionKey,
-      (Buffer as any).from(iv, "hex")
+      Buffer.from(iv, "hex")
     );
 
-    decipher.setAuthTag((Buffer as any).from(authTag, "hex"));
+    decipher.setAuthTag(Buffer.from(authTag, "hex"));
 
     let decrypted = decipher.update(encrypted, "hex", "utf8");
     decrypted += decipher.final("utf8");
@@ -1173,10 +1180,7 @@ export class BitgetManager extends EventEmitter {
       // Implement API credential validation logic here
       return true;
     } catch (error) {
-      (console as any).error(
-        "Error validating Bitget API credentials:",
-        error
-      );
+      console.error("Error validating Bitget API credentials:", error);
       return false;
     }
   }

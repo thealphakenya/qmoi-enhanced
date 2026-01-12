@@ -40,7 +40,7 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
         error: "Failed to create pull _request",

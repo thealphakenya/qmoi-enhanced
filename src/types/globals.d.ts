@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars, no-undef, @typescript-eslint/no-unsafe-function-type */
+/* eslint-disable @typescript-eslint/no-unused-vars, no-undef, @typescript-eslint/no-unsafe-function-type, @typescript-eslint/no-explicit-any */
 /// <reference types="node" />
 // Consolidated permissive global declarations to reduce `no-undef` noise
 // during triage. These are intentionally permissive (use `any`) so they don't

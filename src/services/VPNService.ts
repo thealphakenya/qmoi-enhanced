@@ -79,9 +79,18 @@ interface SecurityReport {
   recommendations: string[];
 }
 
+export interface VPNCreateConfig {
+  name: string;
+  type: "personal" | "business" | "gaming" | "streaming";
+  servers: string[];
+  encryption: string;
+  protocol: string;
+  maxUsers: number;
+}
+
 export class VPNService {
   private static instance: VPNService;
-  private eventEmitter: any;
+  private eventEmitter: EventEmitter;
   private servers: Map<string, VPNServer> = new Map();
   private connections: Map<string, VPNConnection> = new Map();
   private settings: VPNSettings;
@@ -226,14 +235,7 @@ export class VPNService {
     });
   }
 
-  public async createVPNNetwork(config: {
-    name: string;
-    type: "personal" | "business" | "gaming" | "streaming";
-    servers: string[];
-    encryption: string;
-    protocol: string;
-    maxUsers: number;
-  }): Promise<string> {
+  public async createVPNNetwork(config: VPNCreateConfig): Promise<string> {
     try {
       this.isCreatingNetwork = true;
       this.eventEmitter.emit("networkCreationStarted", config);
@@ -263,24 +265,17 @@ export class VPNService {
 
       logger.info(`VPN network ${config.name} created successfully`);
       return networkId;
-    } catch (error) {
+    } catch (error: unknown) {
       this.isCreatingNetwork = false;
       this.eventEmitter.emit("networkCreationFailed", {
         error: error instanceof Error ? error.message : "Unknown error",
       });
-      logger.error("Failed to create VPN network:", error);
+      logger.error("Failed to create VPN network:", String(error));
       throw error;
     }
   }
 
-  private async generateVPNConfig(config: {
-    name: string;
-    type: "personal" | "business" | "gaming" | "streaming";
-    protocol: string;
-    encryption: string;
-    servers: string[];
-    maxUsers: number;
-  }): Promise<unknown> {
+  private async generateVPNConfig(config: VPNCreateConfig): Promise<unknown> {
     // Generate OpenVPN/WireGuard configuration
     const vpnConfig = {
       name: config.name,
@@ -307,7 +302,7 @@ export class VPNService {
 
   private async deployServers(
     serverIds: string[],
-    _config: any
+    _config: unknown
   ): Promise<void> {
     for (const serverId of serverIds) {
       const server = this.servers.get(serverId);
@@ -378,14 +373,14 @@ export class VPNService {
       this.startConnectionMonitoring(connectionId);
 
       logger.info(`Connected to VPN server: ${server.name}`);
-    } catch (error) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error";
       this.eventEmitter.emit("connectionFailed", {
         serverId,
         error: errorMessage,
       });
-      logger.error(`Failed to connect to server ${serverId}:`, error);
+      logger.error(`Failed to connect to server ${serverId}:`, String(error));
       throw error;
     }
   }
@@ -413,11 +408,11 @@ export class VPNService {
       this.currentConnection = null;
 
       logger.info("Disconnected from VPN");
-    } catch (error) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error";
       this.eventEmitter.emit("disconnectionFailed", { error: errorMessage });
-      logger.error("Failed to disconnect:", error);
+      logger.error("Failed to disconnect:", String(error));
       throw error;
     }
   }
@@ -445,7 +440,7 @@ export class VPNService {
     }, 1000);
   }
 
-  private stopConnectionMonitoring(connectionId: string): void {
+  private stopConnectionMonitoring(_connectionId: string): void {
     // Stop monitoring logic would go here
   }
 
@@ -455,7 +450,7 @@ export class VPNService {
     )}.${Math.floor(Math.random() * 255)}`;
   }
 
-  private async generateSecurityReport(networkId: string): Promise<void> {
+  private async generateSecurityReport(_networkId: string): Promise<void> {
     const report: SecurityReport = {
       timestamp: new Date(),
       threats: [],
@@ -587,12 +582,14 @@ export class VPNService {
   }
 
   // Event listeners
-  public onNetworkCreationStarted(callback: (config: any) => void): void {
+  public onNetworkCreationStarted(
+    callback: (config: VPNCreateConfig) => void
+  ): void {
     this.eventEmitter.on("networkCreationStarted", callback);
   }
 
   public onNetworkCreated(
-    callback: (data: { networkId: string; config: any }) => void
+    callback: (data: { networkId: string; config: VPNCreateConfig }) => void
   ): void {
     this.eventEmitter.on("networkCreated", callback);
   }

@@ -198,8 +198,12 @@ export function sleep(ms: number): Promise<void> {
 }
 
 // Some test runner setups expect a test file to export at least one test.
-// Add a skipped placeholder test so Jest does not fail when importing this
-// helpers module directly as a test in some environments.
+// Provide a lightweight sanity test so the helpers module can be imported safely in test runs.
 if (typeof test === "function") {
-  test.skip("helpers placeholder", () => {});
+  test("helpers module sanity", () => {
+    expect(typeof createAuthenticatedRequest).toBe("function");
+    expect(typeof createTestUser).toBe("function");
+    expect(typeof createTestWallet).toBe("function");
+    expect(typeof mockRequest).toBe("function");
+  });
 }

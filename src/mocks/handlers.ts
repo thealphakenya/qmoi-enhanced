@@ -4,8 +4,8 @@
 // Provide handlers through an async getter so MSW (ESM) is imported at runtime
 export async function getHandlers() {
   const TEST_VERBOSE = process.env.TEST_VERBOSE === "1" || false;
-  const debug = (...args: any[]) => {
-    if (TEST_VERBOSE) console.debug(...args);
+  const debug = (...args: unknown[]) => {
+    if (TEST_VERBOSE) console.debug(...(args as any));
   };
   debug("handlers.getHandlers: called");
   const msw = await import("msw");
@@ -169,7 +169,10 @@ export async function getHandlers() {
           "hasQfix=",
           hasFlag("qfix")
         );
-      } catch (e) {}
+      } catch (e) {
+        void e;
+        /* ignore */ void e; /* ignore logging errors */
+      }
       const action = hasFlag("qfix")
         ? "QFix"
         : hasFlag("qoptimize")
@@ -231,7 +234,9 @@ export async function getHandlers() {
               "hasQfix=",
               hasFlag("qfix")
             );
-          } catch (e) {}
+          } catch (e) {
+            /* ignore */
+          }
           const action = hasFlag("qfix")
             ? "QFix"
             : hasFlag("qoptimize")

@@ -33,7 +33,7 @@ export async function POST(_req: NextRequest) {
         output: "Auto-redeploy configuration removed",
       });
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     const details = error instanceof Error ? error.message : String(error);
     return NextResponse.json(
       { error: "Failed to configure auto-redeploy", details },
