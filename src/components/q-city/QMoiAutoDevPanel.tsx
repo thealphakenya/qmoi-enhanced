@@ -18,9 +18,9 @@ type AutoDevStatus = {
   running?: boolean;
   lastRun?: string;
   lastResult?: {
-    fixResults?: any[];
+    fixResults?: unknown[];
     cicdResults?: CICDResult;
-    errors?: any[];
+    errors?: unknown[];
     testResult?: { success?: boolean };
   };
   daemon?: Record<string, unknown>;
@@ -80,10 +80,7 @@ export default function QMoiAutoDevPanel({
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
   const [deployPlatform, setDeployPlatform] = useState("vercel");
   const [forceRunLoading, setForceRunLoading] = useState(false);
-  const [forceRunResult, setForceRunResult] = useState<Record<
-    string,
-    any
-  > | null>(null);
+  const [forceRunResult, setForceRunResult] = useState<Record<string, unknown> | null>(null);
 
   async function fetchStatus() {
     setLoading(true);
