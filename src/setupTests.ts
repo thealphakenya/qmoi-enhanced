@@ -68,7 +68,8 @@ declare global {
 // Augment Console with a non-standard `error` helper used in test setup
 declare global {
   interface Console {
-    error?: (...args: unknown[]) => void;
+    // Keep signature compatible with standard Console.error
+    error(...data: any[]): void;
   }
 }
 
@@ -130,11 +131,14 @@ if (!global.fetch) {
   }
   async json() {
     if (!this.body) return null;
-    try {
-      return JSON.parse(this.body);
-    } catch (_e) {
-      return null;
+    if (typeof this.body === "string") {
+      try {
+        return JSON.parse(this.body);
+      } catch (_e) {
+        return null;
+      }
     }
+    return this.body;
   }
   async text() {
     return this.body ? String(this.body) : "";
@@ -180,11 +184,14 @@ if (!global.fetch) {
   }
   async json() {
     if (!this.body) return null;
-    try {
-      return JSON.parse(this.body);
-    } catch (_e) {
-      return null;
+    if (typeof this.body === "string") {
+      try {
+        return JSON.parse(this.body);
+      } catch (_e) {
+        return null;
+      }
     }
+    return this.body;
   }
   async text() {
     return this.body ? String(this.body) : "";
@@ -196,14 +203,22 @@ if (typeof (global as any).NextResponse === "undefined") {
   (global as any).NextResponse = {
     json(body: unknown, opts: Record<string, unknown> = {}) {
       // Return a plain object that mimics the minimal interface used in tests
+      const status = Number(
+        (opts && (opts as Record<string, unknown>).status) ?? 200
+      );
+      const headersObj =
+        ((opts && (opts as Record<string, unknown>).headers) as Record<
+          string,
+          unknown
+        >) || {};
       return {
-        status: opts?.status || 200,
-        ok: (opts?.status || 200) >= 200 && (opts?.status || 200) < 300,
+        status,
+        ok: status >= 200 && status < 300,
         json: async () => body,
         // also support text for completeness
         text: async () =>
           typeof body === "string" ? body : JSON.stringify(body),
-        headers: opts?.headers || {},
+        headers: headersObj,
       } as any;
     },
   } as any;
@@ -446,27 +461,33 @@ setGlobal("__MSW_READY__", mswInitPromise);
 // a clean in-memory DB even if other modules imported the mock before the
 // jest lifecycle hooks ran.
 try {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const maybePrisma = require("../lib/db/prisma");
-  try {
-    if (maybePrisma && typeof maybePrisma.resetMockDb === "function") {
-      maybePrisma.resetMockDb();
-    } else if (
-      maybePrisma &&
-      maybePrisma.prisma &&
-      typeof maybePrisma.prisma.resetMockDb === "function"
-    ) {
-      maybePrisma.prisma.resetMockDb();
-    } else if (
-      maybePrisma &&
-      maybePrisma.prisma &&
-      typeof maybePrisma.prisma.__resetMockStores === "function"
-    ) {
-      maybePrisma.prisma.__resetMockStores();
-    }
-  } catch (_e) {}
+  import("@/lib/db/prisma")
+    .then((mod) => {
+      const maybePrisma = (mod && (mod as any).default) || mod;
+      try {
+        if (
+          maybePrisma &&
+          typeof (maybePrisma as any).resetMockDb === "function"
+        ) {
+          (maybePrisma as any).resetMockDb();
+        } else if (
+          maybePrisma &&
+          (maybePrisma as any).prisma &&
+          typeof (maybePrisma as any).prisma.resetMockDb === "function"
+        ) {
+          (maybePrisma as any).prisma.resetMockDb();
+        } else if (
+          maybePrisma &&
+          (maybePrisma as any).prisma &&
+          typeof (maybePrisma as any).prisma.__resetMockStores === "function"
+        ) {
+          (maybePrisma as any).prisma.__resetMockStores();
+        }
+      } catch (_e) {}
+    })
+    .catch(() => {});
 } catch (_e) {
-  // ignore if require fails (e.g., generated prisma client present)
+  // ignore if import fails (e.g., generated prisma client present)
 }
 
 // Ensure Jest waits for MSW to finish initializing before unknown tests run.
@@ -476,57 +497,61 @@ beforeAll(async () => {
   debugLog("SETUP_TESTS: msw ready (awaited in beforeAll)");
   // Seed mock-prisma stores with minimal data used by admin and wallet tests
   try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
-    const maybePrisma = require("../lib/db/prisma");
+    const maybePrismaModule = await import("@/lib/db/prisma");
+    const maybePrisma =
+      (maybePrismaModule && (maybePrismaModule as any).default) ||
+      maybePrismaModule;
     const stores =
-      (maybePrisma && maybePrisma.prisma && maybePrisma.prisma.__stores) ||
-      (maybePrisma && maybePrisma.__stores) ||
+      (maybePrisma &&
+        (maybePrisma as any).prisma &&
+        (maybePrisma as any).prisma.__stores) ||
+      (maybePrisma && (maybePrisma as any).__stores) ||
       null;
     if (stores) {
       try {
         if (!stores.user) stores.user = new Map();
         if (!stores.wallet) stores.wallet = new Map();
         if (!stores.transaction) stores.transaction = new Map();
-        const now = new Date().toISOString();
-        if (stores.user && stores.user.size === 0) {
-          stores.user.set("user_admin@example.com", {
-            id: "user_admin@example.com",
-            email: "admin@example.com",
-            username: "admin",
-            name: "Admin",
-            role: "admin",
-            createdAt: now,
-            updatedAt: now,
-          });
-        }
-        if (stores.wallet && stores.wallet.size === 0) {
-          stores.wallet.set("wallet_1", {
-            id: "wallet_1",
-            userId: "user_admin@example.com",
-            currency: "USD",
-            balance: 1000,
-            publicKey: null,
-            createdAt: now,
-            updatedAt: now,
-          });
-        }
-        if (stores.transaction && stores.transaction.size === 0) {
-          stores.transaction.set("tx_1", {
-            id: "tx_1",
-            walletId: "wallet_1",
-            amount: 1000,
-            type: "deposit",
-            status: "completed",
-            timestamp: now,
-          });
-        }
       } catch (_e) {}
+      const now = new Date().toISOString();
+      if (stores.user && stores.user.size === 0) {
+        stores.user.set("user_admin@example.com", {
+          id: "user_admin@example.com",
+          email: "admin@example.com",
+          username: "admin",
+          name: "Admin",
+          role: "admin",
+          createdAt: now,
+          updatedAt: now,
+        });
+      }
+      if (stores.wallet && stores.wallet.size === 0) {
+        stores.wallet.set("wallet_1", {
+          id: "wallet_1",
+          userId: "user_admin@example.com",
+          currency: "USD",
+          balance: 1000,
+          publicKey: null,
+          createdAt: now,
+          updatedAt: now,
+        });
+      }
+      if (stores.transaction && stores.transaction.size === 0) {
+        stores.transaction.set("tx_1", {
+          id: "tx_1",
+          walletId: "wallet_1",
+          amount: 1000,
+          type: "deposit",
+          status: "completed",
+          timestamp: now,
+        });
+      }
     }
   } catch (_e) {}
 });
 
 // Reset mock DB stores before each test to ensure isolation between tests
-beforeEach(() => {
+beforeEach(async () => {
   try {
     // Force-clear the global mock-prisma stores directly to avoid cases
     // where module-scoped proxies hold stale references.
@@ -572,66 +597,75 @@ beforeEach(() => {
     } catch (_e) {}
     // Secondary: clear any in-memory walletService stores used by fallback db shim
     try {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
-      const maybeDb = require("../lib/db/prisma");
-      // Prefer top-level reset helper if available
       try {
-        if (maybeDb && typeof maybeDb.resetMockDb === "function") {
-          maybeDb.resetMockDb();
-        } else if (
+        const maybeDbModule = await import("@/lib/db/prisma");
+        const maybeDb =
+          (maybeDbModule && (maybeDbModule as any).default) || maybeDbModule;
+        // Prefer top-level reset helper if available
+        try {
+          if (maybeDb && typeof (maybeDb as any).resetMockDb === "function") {
+            (maybeDb as any).resetMockDb();
+          } else if (
+            maybeDb &&
+            (maybeDb as any).prisma &&
+            typeof (maybeDb as any).prisma.resetMockDb === "function"
+          ) {
+            (maybeDb as any).prisma.resetMockDb();
+          }
+        } catch (_e) {}
+        if (
           maybeDb &&
-          maybeDb.prisma &&
-          typeof maybeDb.prisma.resetMockDb === "function"
+          (maybeDb as any).db &&
+          (maybeDb as any).db.walletService &&
+          (maybeDb as any).db.walletService._store
         ) {
-          maybeDb.prisma.resetMockDb();
+          try {
+            const s = (maybeDb as any).db.walletService._store;
+            if (s && s.wallets && typeof s.wallets.clear === "function")
+              s.wallets.clear();
+            if (
+              s &&
+              s.transactions &&
+              typeof s.transactions.clear === "function"
+            )
+              s.transactions.clear();
+          } catch (_e) {}
         }
       } catch (_e) {}
-      if (
-        maybeDb &&
-        maybeDb.db &&
-        maybeDb.db.walletService &&
-        maybeDb.db.walletService._store
-      ) {
-        try {
-          const s = maybeDb.db.walletService._store;
-          if (s && s.wallets && typeof s.wallets.clear === "function")
-            s.wallets.clear();
-          if (s && s.transactions && typeof s.transactions.clear === "function")
-            s.transactions.clear();
-        } catch (_e) {}
-      }
     } catch (_e) {}
     // Debug: print mock store counts to help diagnose pre-existing data
     try {
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
-      const mod = require("../lib/db/prisma");
-      const stores =
-        (mod && mod.prisma && mod.prisma.__stores) ||
-        (mod && mod.__stores) ||
-        null;
-      if (stores) {
-        const counts: Record<string, number> = {};
-        try {
-          for (const k of Object.keys(stores)) {
-            const s = stores[k];
-            counts[k] = s && typeof s.size === "number" ? s.size : 0;
-          }
-        } catch (_e) {}
-        try {
-          const sampleUsers =
-            (stores.user &&
-              Array.from(stores.user.values())
-                .slice(0, 5)
-                .map((u) => u && u.email)) ||
-            [];
-          console.warn(
-            "SETUP_TESTS: mock store counts ->",
-            counts,
-            "sampleUsers=",
-            sampleUsers
-          );
-        } catch (_e) {}
-      }
+      try {
+        const modModule = await import("@/lib/db/prisma");
+        const mod = (modModule && (modModule as any).default) || modModule;
+        const stores =
+          (mod && (mod as any).prisma && (mod as any).prisma.__stores) ||
+          (mod && (mod as any).__stores) ||
+          null;
+        if (stores) {
+          const counts: Record<string, number> = {};
+          try {
+            for (const k of Object.keys(stores)) {
+              const s = stores[k];
+              counts[k] = s && typeof s.size === "number" ? s.size : 0;
+            }
+          } catch (_e) {}
+          try {
+            const sampleUsers =
+              (stores.user &&
+                Array.from(stores.user.values())
+                  .slice(0, 5)
+                  .map((u: any) => u && (u as any).email)) ||
+              [];
+            console.warn(
+              "SETUP_TESTS: mock store counts ->",
+              counts,
+              "sampleUsers=",
+              sampleUsers
+            );
+          } catch (_e) {}
+        }
+      } catch (_e) {}
     } catch (_e) {}
   } catch (_e) {
     // ignore
@@ -653,13 +687,16 @@ try {
       headers: unknown;
       constructor(body: unknown = null, init: Record<string, unknown> = {}) {
         this._body = body;
-        this.status = (init as Record<string, unknown>)?.status || 200;
+        this.status = Number((init as Record<string, unknown>)?.status ?? 200);
+        const headersInit =
+          ((init as Record<string, unknown>)?.headers as Record<
+            string,
+            unknown
+          >) || {};
         const HeadersCtor = getGlobal<unknown>("Headers") as unknown as new (
           h?: unknown
         ) => unknown;
-        this.headers = new HeadersCtor(
-          (init as Record<string, unknown>)?.headers || {}
-        );
+        this.headers = new HeadersCtor(headersInit);
       }
       async json() {
         if (
@@ -669,7 +706,7 @@ try {
         )
           return null;
         try {
-          return JSON.parse(this._body as string);
+          return JSON.parse(String(this._body));
         } catch (_e) {
           void _e;
           return this._body;
@@ -694,14 +731,18 @@ try {
       body: unknown,
       init: Record<string, unknown> = {}
     ) {
-      const headers = (init && (init as Record<string, unknown>).headers) || {};
+      const headersObj =
+        ((init && (init as Record<string, unknown>).headers) as Record<
+          string,
+          unknown
+        >) || {};
       const RespCtor = getGlobal<unknown>("Response") as unknown as new (
         s: string,
         o?: Record<string, unknown>
       ) => unknown;
       return new RespCtor(JSON.stringify(body), {
-        status: (init as Record<string, unknown>)?.status || 200,
-        headers: { "Content-Type": "application/json", ...headers },
+        status: Number((init as Record<string, unknown>)?.status ?? 200),
+        headers: { "Content-Type": "application/json", ...headersObj },
       });
     } as unknown;
   }

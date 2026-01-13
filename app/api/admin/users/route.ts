@@ -28,8 +28,20 @@ export async function GET(_request: NextRequest) {
       );
     }
 
+    if (!decoded || !decoded.userId) {
+      return NextResponse.json(
+        {
+          error: {
+            message: "Invalid token (missing userId)",
+            code: "INVALID_TOKEN",
+          },
+        },
+        { status: 401 }
+      );
+    }
+
     // Check admin role
-    const user = await db.userService.findById(decoded.userId);
+    const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
         { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
@@ -129,9 +141,21 @@ export async function PUT(_request: NextRequest) {
       );
     }
 
+    if (!decoded || !decoded.userId) {
+      return NextResponse.json(
+        {
+          error: {
+            message: "Invalid token (missing userId)",
+            code: "INVALID_TOKEN",
+          },
+        },
+        { status: 401 }
+      );
+    }
+
     // Check admin role
-    const admin = await db.userService.findById(decoded.userId);
-    if (!admin || admin.role !== "admin") {
+    const user = await db.userService.findById(String(decoded.userId));
+    if (!user || user.role !== "admin") {
       return NextResponse.json(
         { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 }
@@ -172,12 +196,14 @@ export async function PUT(_request: NextRequest) {
 
     // Log audit trail
     await db.auditLogService.create({
-      userId: decoded.userId,
-      action: "USER_UPDATED",
-      resourceType: "User",
-      resourceId: userId,
-      details: { changes: body },
-      ipAddress: _request.headers.get("x-forwarded-for") || "unknown",
+      data: {
+        userId: String(decoded.userId),
+        action: "USER_UPDATED",
+        resourceType: "User",
+        resourceId: userId,
+        details: { changes: body },
+        ipAddress: _request.headers.get("x-forwarded-for") || "unknown",
+      },
     });
 
     return NextResponse.json(
@@ -258,11 +284,13 @@ export async function DELETE(_request: NextRequest) {
 
     // Log audit trail
     await db.auditLogService.create({
-      userId: decoded.userId,
-      action: "USER_DELETED",
-      resourceType: "User",
-      resourceId: userId,
-      ipAddress: _request.headers.get("x-forwarded-for") || "unknown",
+      data: {
+        userId: String(decoded.userId),
+        action: "USER_DELETED",
+        resourceType: "User",
+        resourceId: userId,
+        ipAddress: _request.headers.get("x-forwarded-for") || "unknown",
+      },
     });
 
     return NextResponse.json(

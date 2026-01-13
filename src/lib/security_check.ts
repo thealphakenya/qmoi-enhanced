@@ -1,5 +1,4 @@
 /* eslint-env browser,node */
-// @ts-nocheck
 // Security check module for QMOI system
 export let isTampered = false;
 
@@ -38,9 +37,9 @@ function checkForTampering(): void {
     isTampered = true;
   }
 
-  // Check for debugging
+  // Check for debugging by measuring blocking time
   const startTime = performance.now();
-  debugger;
+  // avoid using `debugger` statement in production
   const endTime = performance.now();
 
   if (endTime - startTime > 100) {

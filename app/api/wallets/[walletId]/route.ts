@@ -129,7 +129,11 @@ export async function DELETE(
     }
 
     // Check if wallet has balance
-    if (wallet.balance > 0) {
+    const balance =
+      typeof wallet.balance === "number"
+        ? wallet.balance
+        : Number(wallet.balance || 0);
+    if (balance > 0) {
       return NextResponse.json(
         { error: "Cannot delete wallet with balance" },
         { status: 400 }

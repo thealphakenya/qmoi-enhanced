@@ -8,13 +8,19 @@ type LogEntry = {
   result: string;
 };
 
+type CICDResult = {
+  commitResult?: { success?: boolean; message?: string };
+  deployResult?: { success?: boolean; message?: string };
+  monitorResult?: { success?: boolean; message?: string };
+};
+
 type AutoDevStatus = {
   running?: boolean;
   lastRun?: string;
   lastResult?: {
-    fixResults?: unknown[];
-    cicdResults?: Record<string, unknown>;
-    errors?: unknown[];
+    fixResults?: any[];
+    cicdResults?: CICDResult;
+    errors?: any[];
     testResult?: { success?: boolean };
   };
   daemon?: Record<string, unknown>;
@@ -76,7 +82,7 @@ export default function QMoiAutoDevPanel({
   const [forceRunLoading, setForceRunLoading] = useState(false);
   const [forceRunResult, setForceRunResult] = useState<Record<
     string,
-    unknown
+    any
   > | null>(null);
 
   async function fetchStatus() {

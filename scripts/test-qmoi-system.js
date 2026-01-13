@@ -827,7 +827,7 @@ if (isMainModule) {
   const tester = new QMOISystemTester();
   const args = process.argv.slice(2);
 
-  async function main() {
+  const main = async () => {
     if (args.includes("--help") || args.includes("-h")) {
       console.log(`
 QMOI System Test Script

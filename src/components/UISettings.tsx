@@ -72,7 +72,9 @@ export const UISettings: React.FC = () => {
         applySettings(_next);
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(_next));
-        } catch (_e) {}
+        } catch (_e) {
+          void _e;
+        }
         return _next;
       });
     }
@@ -83,7 +85,9 @@ export const UISettings: React.FC = () => {
         applySettings(_next);
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(_next));
-        } catch (_e) {}
+        } catch (_e) {
+          void _e;
+        }
         return _next;
       });
     }
@@ -149,7 +153,9 @@ export const UISettings: React.FC = () => {
     applySettings(DEFAULTS);
     try {
       localStorage.removeItem(STORAGE_KEY);
-    } catch (_e) {}
+    } catch (_e) {
+      void _e;
+    }
   };
 
   return (

@@ -53,10 +53,23 @@ interface UserVoicePreferences {
   rememberChoices: boolean;
 }
 
+interface SpeechRecognitionLike {
+  continuous?: boolean;
+  interimResults?: boolean;
+  maxAlternatives?: number;
+  lang?: string;
+  onstart?: () => void;
+  onresult?: (evt: unknown) => void;
+  onerror?: (evt: unknown) => void;
+  onend?: () => void;
+  start?: () => void;
+  stop?: () => void;
+}
+
 export class VoiceRecognitionService {
   private static instance: VoiceRecognitionService;
   private eventEmitter: EventEmitter;
-  private recognition: unknown; // SpeechRecognition
+  private recognition: SpeechRecognitionLike | null = null; // SpeechRecognition
   private synthesis: SpeechSynthesis | null = null;
   private config: VoiceConfig;
   private commands: Map<string, VoiceCommand> = new Map();
@@ -314,11 +327,16 @@ export class VoiceRecognitionService {
     try {
       const win = window as unknown as Record<string, unknown>;
       const ctor = (win["SpeechRecognition"] ??
-        win["webkitSpeechRecognition"]) as unknown;
+        win["webkitSpeechRecognition"]) as any;
 
       if (typeof ctor === "function") {
-        this.recognition = (ctor as new () => unknown)();
-        this.setupRecognitionHandlers();
+        try {
+          // Use `new` to construct the recognition object if available in the environment
+          this.recognition = new ctor() as SpeechRecognitionLike;
+          this.setupRecognitionHandlers();
+        } catch (err) {
+          console.error("Failed to construct SpeechRecognition instance:", err);
+        }
       } else {
         console.error("Speech recognition not supported");
       }

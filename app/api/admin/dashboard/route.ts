@@ -29,8 +29,15 @@ export async function GET(_request: NextRequest) {
       );
     }
 
+    if (!decoded || !decoded.userId) {
+      return NextResponse.json(
+        { error: { message: "Invalid token (missing userId)", code: "INVALID_TOKEN" } },
+        { status: 401 }
+      );
+    }
+
     // Check if user is admin
-    const user = await db.userService.findById(decoded.userId);
+    const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
         { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },

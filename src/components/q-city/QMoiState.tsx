@@ -2,9 +2,20 @@
 /* eslint-env browser */
 import React, { useState, useEffect } from "react";
 
+interface SessionState {
+  tasks?: number;
+  projects?: number;
+  errors?: number;
+  [k: string]: unknown;
+}
+interface GlobalState {
+  totalTasks?: number;
+  successRate?: number;
+  [k: string]: unknown;
+}
 interface QMoiStateProps {
-  session?: Record<string, unknown>;
-  global?: Record<string, unknown>;
+  session?: SessionState;
+  global?: GlobalState;
   minimized?: boolean;
   aiHealth?: { status: string; lastCheck: string; error?: string };
   isMaster?: boolean;

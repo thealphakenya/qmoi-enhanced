@@ -27,15 +27,36 @@ export async function GET(_request: NextRequest) {
       );
     }
 
+    if (!decoded || !decoded.userId) {
+      return NextResponse.json(
+        {
+          error: {
+            message: "Invalid token (missing userId)",
+            code: "INVALID_TOKEN",
+          },
+        },
+        { status: 401 }
+      );
+    }
+
+    const userId = String(decoded.userId);
+
     // Get all user wallets
-    const wallets = await db.prisma.wallet.findMany({
-      where: { userId: decoded.userId },
+    const wallets = (await db.prisma.wallet.findMany({
+      where: { userId },
       include: {
         _count: {
           select: { transactions: true },
         },
       },
-    });
+    })) as Array<{
+      id: string;
+      currency?: unknown;
+      balance?: unknown;
+      createdAt?: unknown;
+      status?: unknown;
+      _count?: { transactions?: number };
+    }>;
 
     // Get wallet statistics
     const stats = {
@@ -52,27 +73,28 @@ export async function GET(_request: NextRequest) {
     const transactionsByWallet: Record<string, any[]> = {};
 
     for (const wallet of wallets) {
-      stats.totalBalance += wallet.balance;
+      const bal = Number(wallet.balance ?? 0);
+      stats.totalBalance += bal;
 
-      if (!stats.currencyDistribution[wallet.currency]) {
-        stats.currencyDistribution[wallet.currency] = {
-          currency: wallet.currency,
+      const cur = String(wallet.currency ?? "UNKNOWN");
+      if (!stats.currencyDistribution[cur]) {
+        stats.currencyDistribution[cur] = {
+          currency: cur,
           walletCount: 0,
           totalBalance: 0,
           averageBalance: 0,
         };
       }
 
-      stats.currencyDistribution[wallet.currency].walletCount += 1;
-      stats.currencyDistribution[wallet.currency].totalBalance +=
-        wallet.balance;
+      stats.currencyDistribution[cur].walletCount += 1;
+      stats.currencyDistribution[cur].totalBalance += bal;
 
       // Get wallet transactions
-      const walletTxns = await db.prisma.transaction.findMany({
-        where: { walletId: wallet.id },
-      });
+      const walletTxns = (await db.prisma.transaction.findMany({
+        where: { walletId: String(wallet.id) },
+      })) as Array<Record<string, unknown>>;
 
-      transactionsByWallet[wallet.id] = walletTxns;
+      transactionsByWallet[String(wallet.id)] = walletTxns;
       stats.transactionStats.totalTransactions += walletTxns.length;
     }
 
@@ -98,14 +120,14 @@ export async function GET(_request: NextRequest) {
     const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
     const recentWallets = await db.prisma.wallet.count({
       where: {
-        userId: decoded.userId,
+        userId,
         createdAt: { gte: thirtyDaysAgo },
       },
     });
 
     const recentTransactions = await db.prisma.transaction.count({
       where: {
-        wallet: { userId: decoded.userId },
+        wallet: { userId },
         createdAt: { gte: thirtyDaysAgo },
       },
     });

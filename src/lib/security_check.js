@@ -22,7 +22,7 @@ export function runSecurityCheck() {
     // Additional security checks can be added here
     checkForTampering();
   } catch (error) {
-    (console as any).error("Security check failed:", error);
+    console.error("Security check failed:", error);
     isTampered = true;
   }
 }
@@ -90,6 +90,6 @@ export function logEvent(_event, data) {
 
     localStorage.setItem("qmoi_logs", JSON.stringify(logs));
   } catch (error) {
-    (console as any).error("Failed to log _event:", error);
+    console.error("Failed to log _event:", error);
   }
 }

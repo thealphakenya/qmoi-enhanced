@@ -29,7 +29,7 @@ function verifyJWT(token: string): { valid: boolean; role?: string } {
 function logAudit(
   action: string,
   user: string,
-  _options: any,
+  _options: Record<string, unknown>,
   status: string
 ) {
   const entry = {
@@ -45,16 +45,16 @@ function logAudit(
 function logDownloadFix(
   action: string,
   user: string,
-  _options: any,
+  _options: Record<string, unknown>,
   status: string,
-  error: any = null
+  error?: unknown
 ) {
   const entry = {
     timestamp: new Date().toISOString(),
     action,
     user,
     app: "QCity",
-    device: _options.device || "unknown",
+    device: (_options as any).device || "unknown",
     status,
     error,
   };
@@ -63,7 +63,7 @@ function logDownloadFix(
 
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
-  let jwt: any = { valid: false };
+  let jwt: { valid: boolean; role?: string } = { valid: false };
   if (apiAuth.ok) {
     jwt.valid = true; // allow API key or master token
   } else {
@@ -78,9 +78,9 @@ export async function POST(_req: NextRequest) {
     }
   }
 
-  let _options: any = {};
+  let _options: Record<string, unknown> = {};
   try {
-    _options = (await _req.json() as any);
+    _options = (await _req.json()) as Record<string, unknown>;
   } catch {}
 
   // Determine script and args

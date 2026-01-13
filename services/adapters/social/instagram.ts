@@ -1,43 +1,3 @@
-import { SocialPlatformAdapter, PlatformConfig, ApprovalFlow } from "../types";
-
-export class InstagramAdapter implements SocialPlatformAdapter {
-  platformId = "instagram";
-  private config?: PlatformConfig;
-
-  async initialize(config: PlatformConfig) {
-    this.config = config;
-    console.log("[InstagramAdapter] initialized (dryRun=%s)", !!config.dryRun);
-  }
-
-  async validateCredentials() {
-    return !!this.config?.credentials?.accessToken;
-  }
-  async requestApproval(action: string, payload: unknown) {
-    return ApprovalFlow.requestApproval(this.platformId, action, payload);
-  }
-  async isApproved(requestId: string) {
-    return ApprovalFlow.checkApproval(requestId);
-  }
-  async getAnalytics() {
-    return { followers: 0 };
-  }
-  async createPost(content: unknown, approval = true) {
-    if (approval || this.config?.requireMasterApproval) {
-      const r = await this.requestApproval("createPost", { content });
-      return `approval:${r.id}`;
-    }
-    return `ig-post-${Date.now()}`;
-  }
-  async deletePost(postId: string) {
-    console.log("[InstagramAdapter] dry delete", postId);
-    return true;
-  }
-  async getEngagementMetrics(postId: string) {
-    return { likes: 0, comments: 0 };
-  }
-}
-
-export default InstagramAdapter;
 import { z } from "zod";
 import {
   PlatformConfig,
@@ -203,7 +163,9 @@ export class InstagramAdapter implements SocialPlatformAdapter {
           .fill(null)
           .map((_, i) => ({
             id: `mock-post-${i}`,
-            type: this.config?.mediaTypes[0],
+            type: this.config?.mediaTypes
+              ? this.config.mediaTypes[0]
+              : undefined,
             reach: Math.floor(Math.random() * 5000),
             engagement: Math.floor(Math.random() * 2000),
           })),
@@ -214,3 +176,5 @@ export class InstagramAdapter implements SocialPlatformAdapter {
     throw new Error("Production analytics fetching not yet implemented");
   }
 }
+
+export default InstagramAdapter;

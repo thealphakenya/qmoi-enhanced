@@ -1,3 +1,4 @@
+/* global URL */
 import fs from "fs";
 import path from "path";
 import { pathToFileURL } from "url";
@@ -23,7 +24,7 @@ async function testAiHealthGating(aiHealthGET) {
     res1?.status === 401 ||
       (res1?.status === undefined &&
         JSON.stringify(res1)?.includes("Unauthorized")),
-    "ai-health should 401 without API key",
+    "ai-health should 401 without API key"
   );
   process.env.API_KEY = "test-api";
   const res2 = await aiHealthGET({
@@ -32,7 +33,7 @@ async function testAiHealthGating(aiHealthGET) {
   });
   assert(
     res2?.status === 200 || res2?.status === undefined,
-    "ai-health should allow valid API key",
+    "ai-health should allow valid API key"
   );
   console.log("ai-health gating tests passed");
 }
@@ -53,11 +54,11 @@ async function testLanguagePlaceholders(languageHandler) {
   };
   await languageHandler(
     { method: "POST", body: { action: "translate" }, headers: {} },
-    _res,
+    _res
   );
   assert(
     _res.statusCode === 401 || (_res.body && _res.body.error),
-    "language route should 401 without key",
+    "language route should 401 without key"
   );
   process.env.API_KEY = "test-api";
   const res2 = {
@@ -78,7 +79,7 @@ async function testLanguagePlaceholders(languageHandler) {
       body: { action: "translate" },
       headers: { "x-api-key": "test-api" },
     },
-    res2,
+    res2
   );
   console.log("language handler res2:", JSON.stringify(res2, null, 2));
   assert(
@@ -86,7 +87,7 @@ async function testLanguagePlaceholders(languageHandler) {
       (res2.body &&
         res2.body.error &&
         res2.body.error.includes("Not implemented")),
-    "language route should return 501 despite key because placeholder",
+    "language route should return 501 despite key because placeholder"
   );
   console.log("language placeholder gating tests passed");
 }
@@ -102,7 +103,7 @@ async function testQNewsGating(qnewsPOST) {
   });
   assert(
     resNoAuth?.status === 401 || (resNoAuth?.body && resNoAuth.body.error),
-    "qnews POST should be 401 without key",
+    "qnews POST should be 401 without key"
   );
   process.env.API_KEY = "test-api";
   const resKey = await qnewsPOST({
@@ -122,7 +123,7 @@ async function runAll() {
 
     let aiHealthGET, languageHandler, qnewsPOST;
 
-    function extractHandler(mod, method) {
+    const extractHandler = (mod, method) => {
       if (!mod) return undefined;
       const userland = mod?.default?.routeModule?.userland;
       if (userland) {
@@ -133,7 +134,7 @@ async function runAll() {
         return mod[method] ?? mod?.default?.[method];
       if (mod?.default) return mod.default;
       return undefined;
-    }
+    };
 
     if (fs.existsSync(aiHealthPath)) {
       const mod = await import(pathToFileURL(aiHealthPath).href);
@@ -153,7 +154,7 @@ async function runAll() {
       await import("esbuild-register");
       ({ default: languageHandler } = await import(
         pathToFileURL(
-          path.resolve(process.cwd(), "app/api/qmoi/language/route.ts"),
+          path.resolve(process.cwd(), "app/api/qmoi/language/route.ts")
         ).href
       ));
     }
@@ -175,9 +176,9 @@ async function runAll() {
     console.log("All endpoint gating tests passed.");
     process.exit(0);
   } catch (_e) {
-    (console as any).error(
+    console.error(
       "Endpoint gating tests failed:",
-      _e instanceof Error ? _e.stack : _e,
+      _e instanceof Error ? _e.stack : _e
     );
     process.exit(1);
   }

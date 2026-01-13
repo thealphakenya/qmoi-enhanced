@@ -1,0 +1,53 @@
+QMOI-ENHANCED: FINAL INSTRUCTIONS & ONBOARDING
+
+❗ Purpose
+These notes capture the tasks, decisions, and next steps for making this repository production-ready. Use them as a checklist when opening this project in a new Codespace or developer environment.
+
+1) High-level goals
+- Fix all TypeScript build errors and ESLint issues (especially `no-undef` and `@typescript-eslint/no-explicit-any`).
+- Replace placeholders, simulations, and TODO_PROD stubs with real production implementations.
+- Replace mocks and test-only shims with robust integration (prisma, real services) as deployment environment allows.
+- Add comprehensive tests (unit/integration/e2e), CI gates, and release notes.
+
+2) Immediate tasks (next actions)
+- Re-run `npm run lint` and `npx tsc --noEmit` after each batch of fixes.
+- Address token handling: ensure `authService.verifyToken` is used safely; check `decoded.userId` before DB lookups (done for major admin routes).
+- Replace permissive `unknown` with concrete types in high-impact areas: `src/services/*`, `app/api/*` routes, `src/components/*`.
+- Introduce explicit types for DB returns (Prisma facade replaced with strongly-typed implementations when `DATABASE_URL` set).
+- Triage and replace placeholder modules listed in `reports/placeholders.json` and `reports/suggestions.json`.
+
+3) How to continue
+- Use `npx tsc --noEmit` and `npm run lint:fix` iteratively.
+- Prefer making small, self-contained commits for each family of fixes (e.g., route auth checks, db typing, component props).
+- Add tests for any behavior you change; update `problemsanderrors.txt` with snapshots after each triage batch.
+- When replacing a placeholder implementation, add integration tests and environment variable checks that fail fast with clear errors.
+
+4) Where to look next (high-impact files discovered)
+- `app/api/*` routes (admin, analytics, auth, metrics)
+- `src/services/*` (VoiceRecognitionService, AIRequestRouter, ContextEngine)
+- `src/components/q-city/*` (type errors stemming from `unknown` props)
+- `src/lib/db/prisma.ts` and `src/lib/db/services.ts` (tighten return types and error handling)
+- `reports/placeholders.json` and `.qmoi_validation/placeholder_fix_report.txt` (list of placeholders to replace)
+
+5) Environment & commands
+- `npm run lint` and `npm run lint:fix`
+- `npx tsc --noEmit`
+- `npm test` or CI `npm run ci:full`
+- `npm run build` (Next.js build)
+
+6) If you open a new Codespace
+- Set required env vars: `JWT_SECRET`, `DATABASE_URL` (if running DB), `NEXT_PUBLIC_API_URL` for email links.
+- Run `npm ci` then `npm run lint` and `npx tsc --noEmit` to reproduce current diagnostics.
+
+7) Notes from prior runs
+- See `problemsanderrors.txt` for a running audit and snapshots; update it after each triage batch.
+- Be cautious applying large codemods repository-wide; prefer small batches with code review.
+
+---
+Author: GitHub Copilot (Raptor mini Preview)
+Date: 2026-01-13
+
+User instructions (original request):
+"go through problemsanderrors.txt and fix all thoroughly while also going through all its files doing all todos and all things required for real implementations meant for production. Also replace all placeholders and simulations , placeholders and mocks with actual real implementations meant for production"
+
+Keep this file updated as you make progress.

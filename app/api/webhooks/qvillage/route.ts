@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 import { createHmac } from "crypto";
 
 // Conditionally import Prisma
-let prisma: any = null;
+let prisma: unknown = null;
 let prismaInitialized = false;
 
 async function getPrismaClient() {
@@ -77,7 +77,7 @@ export async function POST(_request: Request) {
         );
     }
   } catch (error) {
-    (console as any).error("QVillage webhook error:", error);
+    console.error("QVillage webhook error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
@@ -86,11 +86,11 @@ export async function POST(_request: Request) {
 }
 
 // Enhanced webhook handlers with parallel processing
-async function handlePaperUpdate(body: any) {
-  const payload: any = body ?? {};
-  const papers: any[] = Array.isArray(payload.papers) ? payload.papers : [];
-  const source: string = payload.source ?? "unknown";
-  const timestamp: string = payload.timestamp ?? new Date().toISOString();
+async function handlePaperUpdate(body: unknown) {
+  const payload: Record<string, unknown> = (body ?? {}) as Record<string, unknown>;
+  const papers: unknown[] = Array.isArray((payload as any).papers) ? (payload as any).papers : [];
+  const source: string = (payload as any).source ?? "unknown";
+  const timestamp: string = (payload as any).timestamp ?? new Date().toISOString();
 
   // Parallel processing of paper updates
   const updateTasks = papers.map((paper: any) =>

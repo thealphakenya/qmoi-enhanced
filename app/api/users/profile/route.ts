@@ -79,7 +79,10 @@ export async function PUT(_request: NextRequest) {
     if (body.bio) updateData.bio = body.bio;
 
     const updated = await db.userService.update(decoded.userId, updateData);
-    const { passwordHash, ...safeUser } = updated;
+    if (!updated) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+    const { passwordHash, ...safeUser } = updated as Record<string, unknown>;
 
     return NextResponse.json(safeUser);
   } catch (error) {

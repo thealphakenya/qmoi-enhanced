@@ -48,6 +48,16 @@ export class AIRequestRouter {
       this.sessionManager.updateUserContext(user.id, _request.context);
       this.contextEngine.saveUserContext({
         userId: user.id,
+        preferences:
+          ((_request.context as any)?.preferences as Record<string, unknown>) ||
+          {},
+        personalityTraits:
+          ((_request.context as any)?.personalityTraits as string[]) || [],
+        moodHistory:
+          ((_request.context as any)?.moodHistory as {
+            date: Date;
+            mood: string;
+          }[]) || [],
         ...(_request.context ?? {}),
       });
     }

@@ -6,6 +6,7 @@
   },
   "globals": {
     "Request": "readonly",
+    "URL": "readonly",
     "URLSearchParams": "readonly",
     "NextRequest": "readonly",
     "NextResponse": "readonly",
@@ -18,6 +19,7 @@
     "FileReader": "readonly",
     "EventListener": "readonly",
     "Document": "readonly",
+    "document": "readonly",
     "Window": "readonly",
     "NodeJS": "readonly",
     "fetch": "readonly",
@@ -74,7 +76,8 @@
         "start-watchdebug.js"
       ],
       "parserOptions": { "sourceType": "script" },
-      "env": { "node": true }
+      "env": { "node": true },
+      "globals": { "fetch": "readonly", "URL": "readonly" }
     },
     {
       "files": ["app/api/**", "**/app/api/**"],

@@ -68,6 +68,8 @@ export async function POST(_request: NextRequest) {
       );
     }
 
+    const txn = transaction as Record<string, unknown>;
+
     // Update transaction status based on callback
     const newStatus =
       data.status === "success" || data.status === "completed"
@@ -82,10 +84,10 @@ export async function POST(_request: NextRequest) {
     );
 
     // If successful, update wallet balance
-    if (newStatus === "completed" && transaction.amount) {
+    if (newStatus === "completed" && txn.amount) {
       await walletService.updateBalance(
-        transaction.walletId,
-        transaction.amount
+        String(txn.walletId),
+        Number(txn.amount)
       );
 
       // Send success notification to user

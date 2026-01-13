@@ -2,19 +2,24 @@
 /* eslint-env browser */
 import React, { useRef } from "react";
 
+type QSettings = {
+  autonomy?: string;
+  allowedActions?: string;
+  mediaPerms?: string;
+  [key: string]: unknown;
+};
+
 export const QMoiSettingsPanel: React.FC = () => {
   // Settings state (stubbed for now)
-  const [settings, setSettings] = React.useState<Record<string, unknown>>(
-    () => {
-      try {
-        return JSON.parse(
-          localStorage.getItem("qmoi-settings") || "{}"
-        ) as Record<string, unknown>;
-      } catch {
-        return {} as Record<string, unknown>;
-      }
+  const [settings, setSettings] = React.useState<QSettings>(() => {
+    try {
+      return JSON.parse(
+        localStorage.getItem("qmoi-settings") || "{}"
+      ) as QSettings;
+    } catch {
+      return {} as QSettings;
     }
-  );
+  });
   const fileInput = useRef<HTMLInputElement>(null);
 
   function saveSettings(newSettings: Record<string, unknown>) {
