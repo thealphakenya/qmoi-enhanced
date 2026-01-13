@@ -1,6 +1,4 @@
-// @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import path from "path";
@@ -12,7 +10,7 @@ function loadDevices() {
   if (!fs.existsSync(DEVICES_FILE)) return [];
   return JSON.parse(fs.readFileSync(DEVICES_FILE, "utf-8"));
 }
-function saveDevices(devices: any[]) {
+function saveDevices(devices: unknown[]) {
   fs.writeFileSync(DEVICES_FILE, JSON.stringify(devices, null, 2));
 }
 
@@ -44,7 +42,10 @@ const handler = requireRole(["admin", "master"])(
     }
     if (method === "PUT") {
       const { id, ...update } = body;
-      const idx = devices.findIndex((d: any) => d.id === id);
+      const idx = devices.findIndex(
+        (d: Record<string, unknown>) =>
+          String((d as Record<string, unknown>).id) === id
+      );
       if (idx === -1) return _res.status(404).json({ error: "Not found" });
       devices[idx] = {
         ...devices[idx],

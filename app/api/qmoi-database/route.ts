@@ -1,10 +1,8 @@
-// @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
 import { NextRequest, NextResponse } from "next/server";
 
 // Dynamic import for Prisma to avoid build-time issues
-let prisma: any = null;
+let prisma: unknown = null;
 
 async function getPrisma() {
   if (!prisma) {
@@ -42,7 +40,7 @@ async function searchMedia(
   source?: string
 ): Promise<MediaItem[]> {
   const prisma = await getPrisma();
-  const where: any = {
+  const where: Record<string, unknown> = {
     title: {
       contains: query,
       mode: "insensitive",
@@ -119,8 +117,7 @@ async function downloadMedia(mediaId: string) {
       message: "Media downloaded successfully",
     };
   } catch (error) {
-    const errorMessage =
-      error instanceof Error ? error.message : String(error);
+    const errorMessage = error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
