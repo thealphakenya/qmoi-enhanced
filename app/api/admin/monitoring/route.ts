@@ -23,7 +23,7 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (error) {
+    } catch {
       return NextResponse.json(
         { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 }
@@ -102,7 +102,11 @@ function calculateHealthScore(monitoring: Record<string, unknown>): number {
   let score = 100;
 
   // Check memory usage (safe access)
-  const heapUsed = (monitoring as any)?.system?.memory?.heapUsed;
+  const system = monitoring["system"] as Record<string, unknown> | undefined;
+  const memory = system
+    ? (system["memory"] as { heapUsed?: number } | undefined)
+    : undefined;
+  const heapUsed = memory?.heapUsed;
   if (typeof heapUsed === "number") {
     const heapUsedMB = Math.round(heapUsed / 1024 / 1024);
     if (heapUsedMB > 500) {
@@ -111,9 +115,13 @@ function calculateHealthScore(monitoring: Record<string, unknown>): number {
   }
 
   // Check errors
-  const errorsObj = (monitoring as any)?.errors || {};
-  const totalErrors = Object.values(errorsObj as Record<string, any>).reduce(
-    (sum: number, _err: any) => sum + (Number(_err?.count) || 0),
+  const errorsObj = (monitoring["errors"] as Record<string, unknown>) || {};
+  const totalErrors = (
+    Object.values(errorsObj as Record<string, { count?: number }>) as Array<{
+      count?: number;
+    }>
+  ).reduce(
+    (sum: number, _err: { count?: number }) => sum + (Number(_err.count) || 0),
     0
   );
   if (totalErrors > 10) {
@@ -121,12 +129,15 @@ function calculateHealthScore(monitoring: Record<string, unknown>): number {
   }
 
   // Check performance
-  const metrics = Object.values(
-    (monitoring as any)?.performance || {}
-  ) as any[];
-  const failedMetrics = metrics.filter(
-    (m: any) => m && Number(m.successRate) && parseFloat(m.successRate) < 95
-  );
+  type PerfMetric = { successRate?: string | number } & Record<string, unknown>;
+  const perfObj = (monitoring["performance"] as Record<string, unknown>) || {};
+  const metrics: PerfMetric[] = Object.values(perfObj) as PerfMetric[];
+  const failedMetrics = metrics.filter((m: PerfMetric) => {
+    if (!m) return false;
+    const sr = m.successRate;
+    const parsed = typeof sr === "string" ? parseFloat(sr) : Number(sr);
+    return !Number.isNaN(parsed) && parsed < 95;
+  });
   if (failedMetrics.length > 0) {
     score -= failedMetrics.length * 5;
   }
