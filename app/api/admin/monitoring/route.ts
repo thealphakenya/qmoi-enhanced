@@ -98,20 +98,22 @@ export async function GET(_request: NextRequest) {
   }
 }
 
-function calculateHealthScore(monitoring: any): number {
+function calculateHealthScore(monitoring: Record<string, unknown>): number {
   let score = 100;
 
-  // Check memory usage
-  const heapUsedMB = Math.round(
-    monitoring.system.memory.heapUsed / 1024 / 1024
-  );
-  if (heapUsedMB > 500) {
-    score -= 10; // High memory usage
+  // Check memory usage (safe access)
+  const heapUsed = (monitoring as any)?.system?.memory?.heapUsed;
+  if (typeof heapUsed === "number") {
+    const heapUsedMB = Math.round(heapUsed / 1024 / 1024);
+    if (heapUsedMB > 500) {
+      score -= 10; // High memory usage
+    }
   }
 
   // Check errors
-  const totalErrors = (Object.values(monitoring.errors || {}) as any[]).reduce(
-    (sum: number, _err: any) => sum + (_err.count || 0),
+  const errorsObj = (monitoring as any)?.errors || {};
+  const totalErrors = Object.values(errorsObj as Record<string, any>).reduce(
+    (sum: number, _err: any) => sum + (Number(_err?.count) || 0),
     0
   );
   if (totalErrors > 10) {
@@ -119,9 +121,11 @@ function calculateHealthScore(monitoring: any): number {
   }
 
   // Check performance
-  const metrics = Object.values(monitoring.performance || {}) as any[];
+  const metrics = Object.values(
+    (monitoring as any)?.performance || {}
+  ) as any[];
   const failedMetrics = metrics.filter(
-    (m: any) => m && parseFloat(m.successRate) < 95
+    (m: any) => m && Number(m.successRate) && parseFloat(m.successRate) < 95
   );
   if (failedMetrics.length > 0) {
     score -= failedMetrics.length * 5;

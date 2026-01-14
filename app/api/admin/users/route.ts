@@ -57,12 +57,12 @@ export async function GET(_request: NextRequest) {
     const search = searchParams.get("search");
 
     // Build filter
-    const where: any = {};
+    const where: Record<string, unknown> = {};
     if (status) {
-      where.emailVerified = status === "verified";
+      (where as any).emailVerified = status === "verified";
     }
     if (search) {
-      where.OR = [
+      (where as any).OR = [
         { email: { contains: search, mode: "insensitive" } },
         { username: { contains: search, mode: "insensitive" } },
       ];

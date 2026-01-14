@@ -59,16 +59,17 @@ export async function GET(_request: NextRequest) {
     const take = Math.min(parseInt(searchParams.get("take") || "50"), 100);
 
     // Build query filters
-    const filters: any = {};
+    const filters: Record<string, unknown> = {};
 
-    if (action) filters.action = action;
-    if (userId) filters.userId = userId;
-    if (resource) filters.resource = resource;
+    if (action) (filters as Record<string, unknown>)["action"] = action;
+    if (userId) (filters as Record<string, unknown>)["userId"] = userId;
+    if (resource) (filters as Record<string, unknown>)["resource"] = resource;
 
     if (startDate || endDate) {
-      filters.timestamp = {};
-      if (startDate) filters.timestamp.gte = new Date(startDate);
-      if (endDate) filters.timestamp.lte = new Date(endDate);
+      const ts: Record<string, Date> = {};
+      if (startDate) ts.gte = new Date(startDate);
+      if (endDate) ts.lte = new Date(endDate);
+      (filters as Record<string, unknown>)["timestamp"] = ts;
     }
 
     // Fetch audit logs
@@ -113,8 +114,8 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (error) {
-    console.error("Audit logs error:", error);
+  } catch (_error) {
+    console.error("Audit logs error:", _error);
     return NextResponse.json(
       { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }
@@ -139,7 +140,7 @@ export async function createAuditLog({
   action: string;
   resource: string;
   resourceId?: string;
-  changes?: Record<string, any>;
+  changes?: Record<string, unknown>;
   ipAddress?: string;
   userAgent?: string;
 }) {
@@ -207,8 +208,11 @@ export async function POST(_request: NextRequest) {
       );
     }
 
-    const body = await _request.json();
-    const { format, filters } = body;
+    const body = (await _request.json()) as Record<string, unknown>;
+    const format = (body as any).format as string;
+    const filters = (body as any).filters as
+      | Record<string, unknown>
+      | undefined;
 
     if (!["csv", "json", "pdf"].includes(format)) {
       return NextResponse.json(
@@ -267,7 +271,7 @@ export async function POST(_request: NextRequest) {
   }
 }
 
-function convertLogsToCSV(logs: any[]): string {
+function convertLogsToCSV(logs: Record<string, unknown>[]): string {
   if (logs.length === 0) return "No data";
 
   const headers = [
@@ -280,13 +284,13 @@ function convertLogsToCSV(logs: any[]): string {
     "Timestamp",
   ];
   const rows = logs.map((log) => [
-    log.id,
-    log.userId,
-    log.action,
-    log.resource,
-    log.resourceId || "",
-    log.ipAddress || "",
-    log.timestamp,
+    (log as any).id,
+    (log as any).userId,
+    (log as any).action,
+    (log as any).resource,
+    (log as any).resourceId || "",
+    (log as any).ipAddress || "",
+    (log as any).timestamp,
   ]);
 
   const csv = [
