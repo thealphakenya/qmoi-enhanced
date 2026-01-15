@@ -3,18 +3,20 @@ import { POST as webhookHandler } from "@/app/api/webhooks/payments/route";
 import { NextRequest } from "next/server";
 import { userService, walletService } from "@/lib/db/services";
 import { paymentService } from "@/lib/payments/service";
+import { authService } from "@/lib/auth/service";
 
 describe("Payment API", () => {
   let testUserId: string;
   let testWalletId: string;
 
   beforeAll(async () => {
-    // Setup: Create test user and wallet
+    // Setup: Hash password and create test user
+    const hashedPassword = await authService.hashPassword("Payment@123456");
     const user = await userService.create({
       email: "payment-test@example.com",
       username: "paymenttest",
       name: "Payment Test User",
-      passwordHash: "hashed-password",
+      passwordHash: hashedPassword,
     });
     testUserId = (user as { id: string }).id;
 

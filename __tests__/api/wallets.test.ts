@@ -12,12 +12,13 @@ describe("Wallet API", () => {
   let testWalletId: string;
 
   beforeAll(async () => {
-    // Setup: Create test user
+    // Setup: Hash password and create test user
+    const hashedPassword = await authService.hashPassword("Wallet@123456");
     const user = await userService.create({
       email: "wallet-test@example.com",
       username: "wallettest",
       name: "Wallet Test User",
-      passwordHash: "hashed-password",
+      passwordHash: hashedPassword,
     });
     testUserId = (user as { id: string }).id;
 
@@ -94,7 +95,7 @@ describe("Wallet API", () => {
       const data = await response.json();
       expect(data).toHaveProperty("id");
       expect(data.currency).toBe("USD");
-      expect(data.balance).toBe(0);
+      expect(parseFloat(data.balance)).toBe(0);
     });
 
     it("should create wallet with default currency", async () => {
@@ -164,7 +165,6 @@ describe("Wallet API", () => {
       const wallet = await walletService.getById(testWalletId);
       expect(wallet).toBeTruthy();
       expect(parseFloat((wallet as { balance: string }).balance)).toBe(1100);
-      );
     });
 
     it("should handle multiple concurrent balance updates", async () => {

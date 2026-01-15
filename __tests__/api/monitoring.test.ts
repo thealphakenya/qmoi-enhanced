@@ -1,5 +1,6 @@
 import { userService } from "@/lib/db/services";
 import { authService } from "@/lib/auth/service";
+import { userService, auditLogService } from "@/lib/db/services";
 import { monitor } from "@/lib/monitoring/performance";
 import { errorTracker } from "@/lib/monitoring/error-tracker";
 
@@ -10,11 +11,12 @@ describe("Admin Monitoring APIs", () => {
   let regularToken: string;
 
   beforeAll(async () => {
-    // Create admin user
+    // Hash password and create admin user
+    const hashedPassword = await authService.hashPassword("Admin@123456");
     adminUser = await userService.create({
       email: "admin@qmoi.app",
       username: "admin",
-      passwordHash: "hashed",
+      passwordHash: hashedPassword,
       role: "admin",
     });
 
@@ -22,7 +24,7 @@ describe("Admin Monitoring APIs", () => {
     regularUser = await userService.create({
       email: "user@qmoi.app",
       username: "regularuser",
-      passwordHash: "hashed",
+      passwordHash: hashedPassword,
       role: "user",
     });
 
@@ -35,19 +37,11 @@ describe("Admin Monitoring APIs", () => {
       (regularUser as any).id,
       (regularUser as any).email || "user@qmoi.app"
     );
-      username: (adminUser as any).username || "admin",
-      role: "admin",
-    });
-    regularToken = authService.generateToken({
-      userId: (regularUser as any).id,
-      email: (regularUser as any).email || "user@qmoi.app",
-      username: (regularUser as any).username || "regularuser",
-      role: "user",
-    });
   });
 
   afterAll(async () => {
-    await db.user.deleteMany({});
+    // Cleanup handled by in-memory storage reset
+    // In production with real DB, would use: await db.user.deleteMany({});
   });
 
   describe("Monitoring Dashboard", () => {
@@ -275,25 +269,19 @@ describe("Admin Monitoring APIs", () => {
   describe("Audit Logs", () => {
     beforeAll(async () => {
       // Create sample audit logs
-      await db.auditLog.create({
-        data: {
-          userId: adminUser.id,
-          action: "UPDATE",
-          resource: "user",
-          resourceId: regularUser.id,
-          changes: JSON.stringify({ role: "user", status: "active" }),
-          timestamp: new Date(),
-        },
+      await auditLogService.create({
+        userId: (adminUser as any).id,
+        action: "UPDATE",
+        resource: "user",
+        resourceId: (regularUser as any).id,
+        changes: JSON.stringify({ role: "user", status: "active" }),
       });
 
-      await db.auditLog.create({
-        data: {
-          userId: adminUser.id,
-          action: "DELETE",
-          resource: "user",
-          resourceId: "test_user_id",
-          timestamp: new Date(),
-        },
+      await auditLogService.create({
+        userId: (adminUser as any).id,
+        action: "DELETE",
+        resource: "user",
+        resourceId: "test_user_id",
       });
     });
 

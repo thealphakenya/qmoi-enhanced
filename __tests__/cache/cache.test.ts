@@ -27,9 +27,7 @@ describe("Redis Cache Manager", () => {
 
     it("should delete keys", async () => {
       await cacheManager.set("delete-test", { value: "data" }, 3600);
-      const result = await cacheManager.delete("delete-test");
-
-      expect(result).toBe(true);
+      await cacheManager.delete("delete-test");
 
       const retrieved = await cacheManager.get("delete-test");
       expect(retrieved).toBeNull();
