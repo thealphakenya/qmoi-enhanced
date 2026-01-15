@@ -13,7 +13,7 @@ beforeAll(() => {
 
 afterAll(() => {
   // restore
-  // @ts-ignore
+  // @ts-expect-error - Intentionally deleting prototype property
   delete Element.prototype.scrollIntoView;
 });
 test("Chatbot shows canonical model label and no interactive selector", () => {

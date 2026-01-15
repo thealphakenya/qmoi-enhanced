@@ -3,6 +3,17 @@ import typescript from "@typescript-eslint/eslint-plugin";
 import typescriptParser from "@typescript-eslint/parser";
 
 export default [
+  {
+    ignores: [
+      ".next/**",
+      "build/**",
+      "dist/**",
+      "node_modules/**",
+      ".out/**",
+      "coverage/**",
+      "*.md.ts",
+    ],
+  },
   js.configs.recommended,
   {
     files: [
@@ -152,6 +163,7 @@ export default [
   {
     files: [
       "**/__tests__/**/*.{js,ts,tsx}",
+      "**/__mocks__/**/*.{js,ts,tsx}",
       "**/tests/**/*.{js,ts}",
       "**/*.spec.{js,ts}",
       "**/*.test.{js,ts,tsx}",
@@ -173,6 +185,7 @@ export default [
         Buffer: "readonly",
         console: "readonly",
         process: "readonly",
+        module: "writable",
       },
     },
   },

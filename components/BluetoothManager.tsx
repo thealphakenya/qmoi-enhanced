@@ -22,7 +22,7 @@ export const BluetoothManager: React.FC = () => {
     setError(null);
     setConnecting(true);
     try {
-      // @ts-ignore
+      // @ts-expect-error - Bluetooth API not available in all environments
       const device = await navigator.bluetooth.requestDevice({
         acceptAllDevices: true,
         optionalServices: ["battery_service"],

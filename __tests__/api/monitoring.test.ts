@@ -1,6 +1,5 @@
-import { userService } from "@/lib/db/services";
-import { authService } from "@/lib/auth/service";
 import { userService, auditLogService } from "@/lib/db/services";
+import { authService } from "@/lib/auth/service";
 import { monitor } from "@/lib/monitoring/performance";
 import { errorTracker } from "@/lib/monitoring/error-tracker";
 

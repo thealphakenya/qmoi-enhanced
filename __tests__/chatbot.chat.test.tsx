@@ -16,7 +16,7 @@ describe("Chatbot integration (API proxy)", () => {
     Element.prototype.scrollIntoView = jest.fn();
   });
   afterAll(() => {
-    // @ts-ignore
+    // @ts-expect-error - Intentionally deleting prototype property
     delete Element.prototype.scrollIntoView;
   });
 
@@ -42,11 +42,11 @@ describe("Chatbot integration (API proxy)", () => {
     const SpeechSynthesisUtteranceMock = jest
       .fn()
       .mockImplementation(function (text: string) {
-        // @ts-ignore
+        // @ts-expect-error - Setting mock properties
         this.text = text;
-        // @ts-ignore
+        // @ts-expect-error - Setting mock properties
         this.onend = undefined;
-        // @ts-ignore
+        // @ts-expect-error - Setting mock properties
         this.onerror = undefined;
       });
     (global as any).SpeechSynthesisUtterance =
