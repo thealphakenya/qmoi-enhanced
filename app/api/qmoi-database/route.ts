@@ -2,7 +2,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // Dynamic import for Prisma to avoid build-time issues
-let prisma: unknown = null;
+let prisma: any = null;
 
 async function getPrisma() {
   if (!prisma) {

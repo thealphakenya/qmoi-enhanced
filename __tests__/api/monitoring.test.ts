@@ -1,5 +1,5 @@
-import { db } from "@/lib/db/prisma";
-import authService from "@/lib/auth/service";
+import { userService } from "@/lib/db/services";
+import { authService } from "@/lib/auth/service";
 import { monitor } from "@/lib/monitoring/performance";
 import { errorTracker } from "@/lib/monitoring/error-tracker";
 
@@ -11,33 +11,30 @@ describe("Admin Monitoring APIs", () => {
 
   beforeAll(async () => {
     // Create admin user
-    adminUser = await db.user.create({
-      data: {
-        id: "admin_user_123",
-        email: "admin@qmoi.app",
-        username: "admin",
-        passwordHash: "hashed",
-        role: "admin",
-        status: "active",
-      },
+    adminUser = await userService.create({
+      email: "admin@qmoi.app",
+      username: "admin",
+      passwordHash: "hashed",
+      role: "admin",
     });
 
     // Create regular user
-    regularUser = await db.user.create({
-      data: {
-        id: "regular_user_123",
-        email: "user@qmoi.app",
-        username: "regularuser",
-        passwordHash: "hashed",
-        role: "user",
-        status: "active",
-      },
+    regularUser = await userService.create({
+      email: "user@qmoi.app",
+      username: "regularuser",
+      passwordHash: "hashed",
+      role: "user",
     });
 
     // Generate tokens for authorization tests
-    adminToken = authService.generateToken({
-      userId: (adminUser as any).id,
-      email: (adminUser as any).email || "admin@qmoi.app",
+    adminToken = authService.generateToken(
+      (adminUser as any).id,
+      (adminUser as any).email || "admin@qmoi.app"
+    );
+    regularToken = authService.generateToken(
+      (regularUser as any).id,
+      (regularUser as any).email || "user@qmoi.app"
+    );
       username: (adminUser as any).username || "admin",
       role: "admin",
     });

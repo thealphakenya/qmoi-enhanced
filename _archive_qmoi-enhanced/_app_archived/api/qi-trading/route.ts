@@ -120,7 +120,7 @@ export async function GET(request: NextRequest) {
       { status: 400 },
     );
   } catch (error) {
-    console.error("Error in QI trading endpoint:", error);
+    (globalThis.console as any)?.error?.("Error in QI trading endpoint:", error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
@@ -214,7 +214,7 @@ export async function POST(request: NextRequest) {
       { status: 400 },
     );
   } catch (error) {
-    console.error("Error in QI trading execution endpoint:", error);
+    (globalThis.console as any)?.error?.("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },

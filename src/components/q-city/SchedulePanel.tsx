@@ -227,13 +227,13 @@ export default function SchedulePanel() {
                     Edit
                   </button>
                   <button
-                    onClick={() => del(job.id)}
+                    onClick={() => job.id && del(job.id)}
                     className="px-2 py-1 bg-red-700 rounded text-white mr-1"
                   >
                     Delete
                   </button>
                   <button
-                    onClick={() => runNow(job.id)}
+                    onClick={() => job.id && runNow(job.id)}
                     className="px-2 py-1 bg-cyan-700 rounded text-white"
                   >
                     Run Now

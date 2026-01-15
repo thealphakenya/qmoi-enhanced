@@ -120,7 +120,7 @@ export class FaceRecognitionService {
       await this.faceApi?.loadModels?.();
       console.log("✅ Face recognition API initialized");
     } catch (error: unknown) {
-      console.error("Error initializing face recognition API:", String(error));
+      (globalThis.console as any)?.error?.("Error initializing face recognition API:", String(error));
     }
   }
 
@@ -168,7 +168,7 @@ export class FaceRecognitionService {
       try {
         await this.detectFaces();
       } catch (error: unknown) {
-        console.error("Error in face detection loop:", String(error));
+        (globalThis.console as any)?.error?.("Error in face detection loop:", String(error));
       }
     }, this.config.detectionInterval);
   }
@@ -198,9 +198,9 @@ export class FaceRecognitionService {
     const processedFaces: FaceData[] = [];
 
     for (const detection of detections.slice(0, this.config.maxFaces)) {
-      if (detection.confidence < this.config.confidenceThreshold) continue;
+      if ((detection as any).confidence < this.config.confidenceThreshold) continue;
 
-      const faceData = await this.processFaceDetection(detection);
+      const faceData = await this.processFaceDetection(detection as any);
       if (faceData) {
         processedFaces.push(faceData);
       }
@@ -253,7 +253,7 @@ export class FaceRecognitionService {
 
       return faceData;
     } catch (error: unknown) {
-      console.error("Error processing face detection:", String(error));
+      (globalThis.console as any)?.error?.("Error processing face detection:", String(error));
       return null;
     }
   }
@@ -335,7 +335,7 @@ export class FaceRecognitionService {
         dominant,
       };
     } catch (error: unknown) {
-      console.error("Error detecting emotions:", String(error));
+      (globalThis.console as any)?.error?.("Error detecting emotions:", String(error));
       return {
         happy: 0,
         sad: 0,
@@ -355,7 +355,7 @@ export class FaceRecognitionService {
     try {
       return await (this.faceApi?.estimateAge?.(face) ?? 0);
     } catch (error: unknown) {
-      console.error("Error estimating age:", String(error));
+      (globalThis.console as any)?.error?.("Error estimating age:", String(error));
       return 0;
     }
   }
@@ -366,7 +366,7 @@ export class FaceRecognitionService {
     try {
       return await (this.faceApi?.estimateGender?.(face) ?? "unknown");
     } catch (error: unknown) {
-      console.error("Error estimating gender:", String(error));
+      (globalThis.console as any)?.error?.("Error estimating gender:", String(error));
       return "unknown";
     }
   }
@@ -517,7 +517,7 @@ export class FaceRecognitionService {
         console.log(`📚 Loaded ${this.knownFaces.size} known faces`);
       }
     } catch (error: unknown) {
-      console.error("Error loading known faces:", String(error));
+      (globalThis.console as any)?.error?.("Error loading known faces:", String(error));
     }
   }
 
@@ -529,7 +529,7 @@ export class FaceRecognitionService {
       }
       localStorage.setItem("qmoi-known-faces", JSON.stringify(facesData));
     } catch (error: unknown) {
-      console.error("Error saving known faces:", String(error));
+      (globalThis.console as any)?.error?.("Error saving known faces:", String(error));
     }
   }
 

@@ -133,7 +133,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
 
       return { success: !!credential, confidence: 0.95 };
     } catch (error) {
-      console.error("WebAuthn authentication failed:", error);
+      (globalThis.console as any)?.error?.("WebAuthn authentication failed:", error);
       return { success: false, confidence: 0 };
     }
   };
@@ -179,7 +179,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
         setTimeout(() => recorder.stop(), 2000);
       });
     } catch (error) {
-      console.error("Voice authentication failed:", error);
+      (globalThis.console as any)?.error?.("Voice authentication failed:", error);
       return { success: false, confidence: 0 };
     }
   };
@@ -218,7 +218,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
 
       return { success: confidence > requiredConfidence, confidence };
     } catch (error) {
-      console.error("Device fingerprint authentication failed:", error);
+      (globalThis.console as any)?.error?.("Device fingerprint authentication failed:", error);
       return { success: false, confidence: 0 };
     }
   };
@@ -243,7 +243,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
 
       return { success: confidence > requiredConfidence, confidence };
     } catch (error) {
-      console.error("Behavioral authentication failed:", error);
+      (globalThis.console as any)?.error?.("Behavioral authentication failed:", error);
       return { success: false, confidence: 0 };
     }
   };
@@ -253,12 +253,12 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
     setIsAuthenticating(true);
     setConfidence(0);
 
-    const results = [];
+    const results: any[] = [];
     let totalConfidence = 0;
     let methodCount = 0;
 
     // Run enabled biometric methods in parallel
-    const authPromises = [];
+    const authPromises: Promise<any>[] = [];
 
     if (enabledBiometrics.fingerprint || enabledBiometrics.facial) {
       authPromises.push(authenticateWebAuthn());
@@ -315,7 +315,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
         });
       }
     } catch (error) {
-      console.error("Authentication error:", error);
+      (globalThis.console as any)?.error?.("Authentication error:", error);
       onFailed("Authentication system error");
 
       toast({

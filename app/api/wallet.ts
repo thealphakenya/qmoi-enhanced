@@ -59,7 +59,7 @@ let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
 } catch (_e) {
-  console.error("Failed to initialize WhatsApp service:", _e);
+  (globalThis.console as any)?.error?.("Failed to initialize WhatsApp service:", _e);
 }
 
 // Enhanced logging
@@ -75,7 +75,7 @@ function logAction(action: string, details: Record<string, any>) {
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
   } catch (_e) {
-    console.error("Failed to log action:", _e);
+    (globalThis.console as any)?.error?.("Failed to log action:", _e);
   }
 }
 
@@ -96,7 +96,7 @@ async function getOrCreateWallet(userId: string) {
 
     return wallet;
   } catch (error) {
-    console.error("Failed to get/create wallet:", error);
+    (globalThis.console as any)?.error?.("Failed to get/create wallet:", error);
     throw error;
   }
 }
@@ -133,7 +133,7 @@ async function createTransaction(
 
     return transaction;
   } catch (error) {
-    console.error("Failed to create transaction:", error);
+    (globalThis.console as any)?.error?.("Failed to create transaction:", error);
     throw error;
   }
 }
@@ -257,7 +257,7 @@ async function processMpesa(
       };
     }
   } catch (error) {
-    console.error("Mpesa processing error:", error);
+    (globalThis.console as any)?.error?.("Mpesa processing error:", error);
     const errorMsg = error instanceof Error ? error.message : String(error);
     return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
@@ -369,7 +369,7 @@ async function processBinance(
       };
     }
   } catch (error) {
-    console.error("Binance processing error:", error);
+    (globalThis.console as any)?.error?.("Binance processing error:", error);
     const errorMsg = error instanceof Error ? error.message : String(error);
     return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
@@ -422,7 +422,7 @@ async function processPesapal(amount: number, type: string) {
           : "Withdrawal initiated",
     };
   } catch (error) {
-    console.error("Pesapal processing error:", error);
+    (globalThis.console as any)?.error?.("Pesapal processing error:", error);
     const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
@@ -481,7 +481,7 @@ async function processBitget(amount: number, type: string) {
           : "Withdrawal order created",
     };
   } catch (error) {
-    console.error("Bitget processing error:", error);
+    (globalThis.console as any)?.error?.("Bitget processing error:", error);
     const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",

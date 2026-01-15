@@ -127,7 +127,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
           ...(parsedState as unknown as Partial<QMOIState>),
         }));
       } catch (error) {
-        console.error("Error loading QMOI state:", error);
+        (globalThis.console as any)?.error?.("Error loading QMOI state:", error);
       }
     }
   }, []);
@@ -191,7 +191,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
         await updateVoice(compatibleVoice);
       }
     } catch (error) {
-      console.error("Error updating avatar:", error);
+      (globalThis.console as any)?.error?.("Error updating avatar:", error);
       setState((prev) => ({ ...prev, isProcessing: false, currentTask: null }));
     }
   };
@@ -226,7 +226,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
         error && typeof error === "object" && "message" in error
           ? String((error as { message?: unknown }).message)
           : String(error);
-      console.error("Error updating voice:", msg);
+      (globalThis.console as any)?.error?.("Error updating voice:", msg);
       setState((prev) => ({ ...prev, isProcessing: false, currentTask: null }));
     }
   };

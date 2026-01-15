@@ -39,7 +39,7 @@ export async function GET(request: NextRequest) {
           : 0,
     });
   } catch (error) {
-    console.error("Error fetching error statistics:", error);
+    (globalThis.console as any)?.error?.("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,

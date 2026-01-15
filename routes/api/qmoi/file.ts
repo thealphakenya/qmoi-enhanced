@@ -10,7 +10,7 @@ function logAudit(entry: Record<string, any>) {
     fs.appendFileSync(AUDIT_LOG, JSON.stringify(entry) + "\n", "utf-8");
   } catch (e) {
     // best-effort logging; do not break primary flow
-    console.error("Failed to write audit log", e.message);
+    (globalThis.console as any)?.error?.("Failed to write audit log", e.message);
   }
 }
 

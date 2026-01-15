@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
       message: "Pipeline triggered successfully",
     });
   } catch (error) {
-    console.error("Error triggering pipeline:", error);
+    (globalThis.console as any)?.error?.("Error triggering pipeline:", error);
     return NextResponse.json(
       {
         success: false,

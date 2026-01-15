@@ -175,7 +175,7 @@ export class QmoiTrader {
 
       console.log(`📊 Updated market data for ${symbols.length} symbols`);
     } catch (error) {
-      console.error("Failed to update market data:", error);
+      (globalThis.console as any)?.error?.("Failed to update market data:", error);
     }
   }
 
@@ -228,7 +228,7 @@ export class QmoiTrader {
           `🚀 Trade requested: ${signal.symbol} ${signal.action} KES ${positionSize}`
         );
       } catch (error) {
-        console.error(`Failed to execute signal for ${signal.symbol}:`, error);
+        (globalThis.console as any)?.error?.(`Failed to execute signal for ${signal.symbol}:`, error);
       }
     }
   }
@@ -384,7 +384,7 @@ export class QmoiTrader {
       );
       return balance.availableBalance;
     } catch (error) {
-      console.error("Failed to get balance:", error);
+      (globalThis.console as any)?.error?.("Failed to get balance:", error);
       return 0;
     }
   }
@@ -394,7 +394,7 @@ export class QmoiTrader {
     try {
       await cashonWallet.enableAutonomousTrading();
     } catch (error) {
-      console.error("Failed to enable Cashon trading:", error);
+      (globalThis.console as any)?.error?.("Failed to enable Cashon trading:", error);
     }
   }
 
@@ -403,7 +403,7 @@ export class QmoiTrader {
     try {
       await cashonWallet.disableAutonomousTrading();
     } catch (error) {
-      console.error("Failed to disable Cashon trading:", error);
+      (globalThis.console as any)?.error?.("Failed to disable Cashon trading:", error);
     }
   }
 
@@ -427,7 +427,7 @@ export class QmoiTrader {
         // Log status
         console.log(`🧠 QMOI: Generated ${signals.length} signals`);
       } catch (error) {
-        console.error("Trading loop error:", error);
+        (globalThis.console as any)?.error?.("Trading loop error:", error);
       }
     }, 5 * 60 * 1000); // Every 5 minutes
   }

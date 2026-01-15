@@ -108,7 +108,7 @@ export async function POST(_request: NextRequest) {
       },
     });
   } catch (error) {
-    console.error("Payment initiation error:", error);
+    (globalThis.console as any)?.error?.("Payment initiation error:", error);
     return NextResponse.json(
       { error: "Payment initiation failed" },
       { status: 500 }

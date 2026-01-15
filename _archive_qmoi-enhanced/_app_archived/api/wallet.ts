@@ -16,7 +16,7 @@ let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
 } catch (e) {
-  console.error("Failed to initialize WhatsApp service:", e);
+  (globalThis.console as any)?.error?.("Failed to initialize WhatsApp service:", e);
 }
 
 // Enhanced logging
@@ -32,7 +32,7 @@ function logAction(action: string, details: unknown) {
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
   } catch (e) {
-    console.error("Failed to log action:", e);
+    (globalThis.console as any)?.error?.("Failed to log action:", e);
   }
 }
 
@@ -125,7 +125,7 @@ async function processMpesa(amount: number, type: string) {
         type === "deposit" ? "STK push sent to phone" : "Withdrawal initiated",
     };
   } catch (error) {
-    console.error("Mpesa processing error:", error);
+    (globalThis.console as any)?.error?.("Mpesa processing error:", error);
     return { status: "error", platform: "Mpesa", amount, error: error.message };
   }
 }
@@ -175,7 +175,7 @@ async function processBinance(amount: number, type: string) {
           : "Withdrawal order created",
     };
   } catch (error) {
-    console.error("Binance processing error:", error);
+    (globalThis.console as any)?.error?.("Binance processing error:", error);
     return {
       status: "error",
       platform: "Binance",
@@ -228,7 +228,7 @@ async function processPesapal(amount: number, type: string) {
         type === "deposit" ? "Payment request created" : "Withdrawal initiated",
     };
   } catch (error) {
-    console.error("Pesapal processing error:", error);
+    (globalThis.console as any)?.error?.("Pesapal processing error:", error);
     return {
       status: "error",
       platform: "Pesapal",
@@ -284,7 +284,7 @@ async function processBitget(amount: number, type: string) {
           : "Withdrawal order created",
     };
   } catch (error) {
-    console.error("Bitget processing error:", error);
+    (globalThis.console as any)?.error?.("Bitget processing error:", error);
     return {
       status: "error",
       platform: "Bitget",

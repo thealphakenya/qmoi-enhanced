@@ -192,7 +192,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
 
       setIsLoading(false);
     } catch (error) {
-      console.error("Error sending message:", error);
+      (globalThis.console as any)?.error?.("Error sending message:", error);
       setIsLoading(false);
     }
   };

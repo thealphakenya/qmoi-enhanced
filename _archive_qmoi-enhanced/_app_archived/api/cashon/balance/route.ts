@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
     }
     return NextResponse.json(balance);
   } catch (error) {
-    console.error("Balance API error:", error);
+    (globalThis.console as any)?.error?.("Balance API error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },

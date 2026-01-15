@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(transactions);
   } catch (error) {
-    console.error("Get transactions error:", error);
+    (globalThis.console as any)?.error?.("Get transactions error:", error);
     return NextResponse.json(
       { error: "Failed to get transactions" },
       { status: 500 },

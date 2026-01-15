@@ -74,7 +74,7 @@ export function useTaskQueue() {
         const data = await response.json();
         setQueue(data);
       } catch (error) {
-        console.error("Failed to fetch task queue:", error);
+        (globalThis.console as any)?.error?.("Failed to fetch task queue:", error);
       }
     }
 
@@ -111,7 +111,7 @@ export function useTaskQueue() {
 
       return task;
     } catch (error) {
-      console.error("Failed to add task:", error);
+      (globalThis.console as any)?.error?.("Failed to add task:", error);
       throw error;
     }
   };
@@ -137,7 +137,7 @@ export function useTaskQueue() {
 
       return true;
     } catch (error) {
-      console.error("Failed to cancel task:", error);
+      (globalThis.console as any)?.error?.("Failed to cancel task:", error);
       throw error;
     }
   };
@@ -162,7 +162,7 @@ export function useTaskQueue() {
 
       return task;
     } catch (error) {
-      console.error("Failed to retry task:", error);
+      (globalThis.console as any)?.error?.("Failed to retry task:", error);
       throw error;
     }
   };
@@ -196,7 +196,7 @@ export function useTaskQueue() {
 
       return data;
     } catch (error) {
-      console.error("Failed to update settings:", error);
+      (globalThis.console as any)?.error?.("Failed to update settings:", error);
       throw error;
     }
   };

@@ -140,11 +140,11 @@ export async function GET(_request: NextRequest) {
             newWalletsLast30Days: recentWallets,
             transactionsLast30Days: recentTransactions,
           },
-          wallets: wallets.map((w) => ({
+          wallets: wallets.map((w: any) => ({
             id: w.id,
             currency: w.currency,
             balance: w.balance,
-            transactionCount: w._count.transactions,
+            transactionCount: w._count?.transactions ?? 0,
             createdAt: w.createdAt,
             status: w.status,
           })),
@@ -153,7 +153,7 @@ export async function GET(_request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Wallet analytics error:", error);
+    (globalThis.console as any)?.error?.("Wallet analytics error:", error);
     return NextResponse.json(
       { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }

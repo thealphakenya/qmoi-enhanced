@@ -39,7 +39,7 @@ export async function GET(
 
     return NextResponse.json(wallet);
   } catch (error) {
-    console.error("GET /api/wallets/:walletId error:", error);
+    (globalThis.console as any)?.error?.("GET /api/wallets/:walletId error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
@@ -86,7 +86,7 @@ export async function PUT(
     // Update wallet (Prisma update would go here)
     return NextResponse.json({ ...wallet, name: body.name || wallet.name });
   } catch (error) {
-    console.error("PUT /api/wallets/:walletId error:", error);
+    (globalThis.console as any)?.error?.("PUT /api/wallets/:walletId error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
@@ -143,7 +143,7 @@ export async function DELETE(
     // Delete wallet (Prisma delete would go here)
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("DELETE /api/wallets/:walletId error:", error);
+    (globalThis.console as any)?.error?.("DELETE /api/wallets/:walletId error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

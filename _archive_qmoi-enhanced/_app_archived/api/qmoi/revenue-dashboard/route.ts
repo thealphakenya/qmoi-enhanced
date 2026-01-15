@@ -412,7 +412,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json(dashboardData);
     }
   } catch (error) {
-    console.error("Error fetching dashboard data:", error);
+    (globalThis.console as any)?.error?.("Error fetching dashboard data:", error);
     return NextResponse.json(
       { error: "Failed to fetch dashboard data" },
       { status: 500 },
@@ -584,7 +584,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ error: "Invalid action" }, { status: 400 });
   } catch (error) {
-    console.error("Error exporting dashboard data:", error);
+    (globalThis.console as any)?.error?.("Error exporting dashboard data:", error);
     return NextResponse.json(
       { error: "Failed to export dashboard data" },
       { status: 500 },

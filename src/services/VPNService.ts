@@ -491,7 +491,7 @@ export class VPNService {
   }
 
   private async checkForLeaks(): Promise<void> {
-    const leaks = [];
+    const leaks: string[] = [];
 
     // Check DNS leaks
     if (!this.settings.leakProtection.dns) {

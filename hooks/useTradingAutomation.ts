@@ -51,7 +51,7 @@ export function useTradingAutomation() {
         const data = await res.json();
         setStatus(data);
       } catch (error) {
-        console.error("Failed to fetch trading status:", error);
+        (globalThis.console as any)?.error?.("Failed to fetch trading status:", error);
       }
     };
 
@@ -76,7 +76,7 @@ export function useTradingAutomation() {
         settings: { ...prev.settings, ...data },
       }));
     } catch (error) {
-      console.error("Failed to update trading settings:", error);
+      (globalThis.console as any)?.error?.("Failed to update trading settings:", error);
     }
   };
 
@@ -91,7 +91,7 @@ export function useTradingAutomation() {
       const data = await res.json();
       setStatus((prev) => ({ ...prev, isActive: data.isActive }));
     } catch (error) {
-      console.error("Failed to toggle auto-trading:", error);
+      (globalThis.console as any)?.error?.("Failed to toggle auto-trading:", error);
     }
   };
 

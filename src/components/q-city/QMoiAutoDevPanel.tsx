@@ -152,7 +152,7 @@ export default function QMoiAutoDevPanel({
         }
         if (status.lastResult.cicdResults) {
           logEntries.push({
-            timestamp: status.lastRun,
+            timestamp: status.lastRun ?? new Date().toISOString(),
             action: "CI/CD",
             type: "cicd",
             result: JSON.stringify(status.lastResult.cicdResults, null, 2),
@@ -321,10 +321,10 @@ export default function QMoiAutoDevPanel({
             marginBottom: 8,
           }}
         >
-          <b>Force Run Result:</b> {forceRunResult.message}
-          {forceRunResult.platform && (
+          <b>Force Run Result:</b> {String((forceRunResult as any)?.message)}
+          {(forceRunResult as any)?.platform && (
             <span style={{ marginLeft: 8, color: "#0ff" }}>
-              ({forceRunResult.platform})
+              ({String((forceRunResult as any)?.platform)})
             </span>
           )}
         </div>

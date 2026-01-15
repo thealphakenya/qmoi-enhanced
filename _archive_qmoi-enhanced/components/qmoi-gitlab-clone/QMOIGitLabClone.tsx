@@ -88,7 +88,7 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
         setPipelines(data.pipelines || []);
       }
     } catch (error) {
-      console.error("Error fetching pipelines:", error);
+      (globalThis.console as any)?.error?.("Error fetching pipelines:", error);
     }
   };
 
@@ -100,7 +100,7 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
         setJobs(data.jobs || []);
       }
     } catch (error) {
-      console.error("Error fetching jobs:", error);
+      (globalThis.console as any)?.error?.("Error fetching jobs:", error);
     }
   };
 
@@ -112,7 +112,7 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
         setDeployments(data.deployments || []);
       }
     } catch (error) {
-      console.error("Error fetching deployments:", error);
+      (globalThis.console as any)?.error?.("Error fetching deployments:", error);
     }
   };
 
@@ -125,7 +125,7 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
         setSuccessCount(data.successCount || 0);
       }
     } catch (error) {
-      console.error("Error checking errors:", error);
+      (globalThis.console as any)?.error?.("Error checking errors:", error);
     }
   };
 
@@ -145,7 +145,7 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
         setTimeout(() => setSyncStatus("idle"), 3000);
       }
     } catch (error) {
-      console.error("Error triggering pipeline:", error);
+      (globalThis.console as any)?.error?.("Error triggering pipeline:", error);
       setSyncStatus("error");
       setTimeout(() => setSyncStatus("idle"), 3000);
     }

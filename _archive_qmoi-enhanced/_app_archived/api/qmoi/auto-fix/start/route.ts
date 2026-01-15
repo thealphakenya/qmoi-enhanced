@@ -28,7 +28,7 @@ async function writeProposal(proposal: unknown) {
     agg.push(proposal);
     fs.writeFileSync(file, JSON.stringify(agg, null, 2), "utf8");
   } catch (err) {
-    console.error(
+    (globalThis.console as any)?.error?.(
       "Failed to write auto-fix proposal:",
       err && (err as any).message ? (err as any).message : err,
     );
@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
 
     child.stdout.on("data", (d) => console.log("[auto-fix]", d.toString()));
     child.stderr.on("data", (d) =>
-      console.error("[auto-fix][err]", d.toString()),
+      (globalThis.console as any)?.error?.("[auto-fix][err]", d.toString()),
     );
 
     return NextResponse.json({
@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
       pid: child.pid,
     });
   } catch (error) {
-    console.error("Error starting auto-fix process:", error);
+    (globalThis.console as any)?.error?.("Error starting auto-fix process:", error);
     return NextResponse.json(
       { error: "Failed to start auto-fix process" },
       { status: 500 },

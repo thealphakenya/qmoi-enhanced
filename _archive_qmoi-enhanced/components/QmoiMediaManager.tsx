@@ -121,7 +121,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
 
       setMediaItems(filtered);
     } catch (error) {
-      console.error("Search failed:", error);
+      (globalThis.console as any)?.error?.("Search failed:", error);
     } finally {
       setIsLoading(false);
     }
@@ -147,7 +147,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
 
       console.log(`Downloaded: ${item.name}`);
     } catch (error) {
-      console.error("Download failed:", error);
+      (globalThis.console as any)?.error?.("Download failed:", error);
     } finally {
       setDownloadProgress((prev) => ({ ...prev, [item.id]: 0 }));
     }
@@ -208,7 +208,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
         setLogs(data.logs || []);
       }
     } catch (error) {
-      console.error("Failed to fetch logs:", error);
+      (globalThis.console as any)?.error?.("Failed to fetch logs:", error);
     }
   };
 

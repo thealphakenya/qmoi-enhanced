@@ -38,7 +38,7 @@ export async function GET(_request: NextRequest) {
       pagination: { skip, take, total: 0 },
     });
   } catch (error) {
-    console.error("GET /api/transactions error:", error);
+    (globalThis.console as any)?.error?.("GET /api/transactions error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

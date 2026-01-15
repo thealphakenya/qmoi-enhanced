@@ -139,7 +139,7 @@ export class WhatsAppService {
 
     // Authentication failure
     this.client.on("auth_failure", async (message: string) => {
-      console.error("❌ WhatsApp authentication failed:", message);
+      (globalThis.console as any)?.error?.("❌ WhatsApp authentication failed:", message);
       this.isConnected = false;
       await this.sendErrorNotification(
         "WhatsApp authentication failed",
@@ -238,7 +238,7 @@ Time: ${this.qrCodeStatus.timestamp.toLocaleString()}`;
       // Send backup verification
       await this.sendBackupVerification();
     } catch (error) {
-      console.error("Error sending QR code notifications:", error);
+      (globalThis.console as any)?.error?.("Error sending QR code notifications:", error);
       this.qrCodeStatus.notifications.status = "failed";
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error";
@@ -294,7 +294,7 @@ Time: ${new Date().toLocaleString()}`;
         await this.forwardToMaster(message);
       }
     } catch (error) {
-      console.error("Error handling incoming message:", error);
+      (globalThis.console as any)?.error?.("Error handling incoming message:", error);
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error";
       await this.sendErrorNotification("Message handling error", errorMessage);
@@ -608,7 +608,7 @@ Master Commands:
       console.log("🚀 Starting WhatsApp service...");
       await this.client.initialize();
     } catch (error) {
-      console.error("Error starting WhatsApp service:", error);
+      (globalThis.console as any)?.error?.("Error starting WhatsApp service:", error);
       throw error;
     }
   }
@@ -619,7 +619,7 @@ Master Commands:
       await this.client.destroy();
       this.isConnected = false;
     } catch (error) {
-      console.error("Error stopping WhatsApp service:", error);
+      (globalThis.console as any)?.error?.("Error stopping WhatsApp service:", error);
     }
   }
 
@@ -633,7 +633,7 @@ Master Commands:
       await this.client.sendMessage(chatId, message);
       console.log(`📤 Message sent to ${to}`);
     } catch (error) {
-      console.error("Error sending WhatsApp message:", error);
+      (globalThis.console as any)?.error?.("Error sending WhatsApp message:", error);
       throw error;
     }
   }
@@ -659,7 +659,7 @@ Master Commands:
         await this.sendMessage(contact, message);
         await this.sleep(1000); // Delay between messages
       } catch (error) {
-        console.error(`Error broadcasting to ${contact}:`, error);
+        (globalThis.console as any)?.error?.(`Error broadcasting to ${contact}:`, error);
       }
     }
   }

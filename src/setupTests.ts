@@ -293,7 +293,7 @@ if (typeof window === "undefined") {
           debugLog("SETUP_TESTS: handlers resolved length=", handlers.length);
         } catch (_err) {
           void _err; /* fail fast */
-          console.error("SETUP_TESTS: handlersMod.getHandlers() threw:", _err);
+          (globalThis.console as any)?.error?.("SETUP_TESTS: handlersMod.getHandlers() threw:", _err);
           throw _err;
         }
       } else {
@@ -329,7 +329,7 @@ if (typeof window === "undefined") {
             const req = _req as unknown as { method?: string; url?: unknown };
             const urlStr = String(req.url || "");
             if (process.env.SHOW_MSW_UNHANDLED === "1") {
-              console.error("MSW UNHANDLED REQUEST:", req.method, urlStr);
+              (globalThis.console as any)?.error?.("MSW UNHANDLED REQUEST:", req.method, urlStr);
             } else {
               debugLog(
                 "MSW UNHANDLED REQUEST (suppressed):",
@@ -350,11 +350,11 @@ if (typeof window === "undefined") {
       );
     } catch (_e) {
       // Log errors to surface them in CI/dev runs
-      console.error("setupTests failed to initialize MSW:", _e);
+      (globalThis.console as any)?.error?.("setupTests failed to initialize MSW:", _e);
       // Fallback: if MSW cannot be initialized (ESM/loader issues), install a
       // minimal fetch-based mock so tests don't hit the network. This mirrors
       // the most common handlers used in tests.
-      console.error(
+      (globalThis.console as any)?.error?.(
         "SETUP_TESTS: Falling back to simple fetch mock server for tests"
       );
 
@@ -440,7 +440,7 @@ if (typeof window === "undefined") {
           ).apply(globalThis, [input, init]);
         } as unknown);
       } catch (er) {
-        console.error("SETUP_TESTS: failed to install fetch fallback:", er);
+        (globalThis.console as any)?.error?.("SETUP_TESTS: failed to install fetch fallback:", er);
       }
 
       // Provide a minimal server object with the same interface used elsewhere
@@ -822,7 +822,7 @@ try {
             } catch (err) {
               void err;
             }
-            if (!authHeader) return new ResponseCtor(null, { status: 401 });
+            if (!authHeader) return new ResponseCtor(JSON.stringify({ error: "Unauthorized" }), { status: 401 });
 
             // Try to decode JWT (without verification) to inspect role for admin checks
             let isAdmin = false;
@@ -842,7 +842,7 @@ try {
               // ignore decode errors
             }
 
-            if (!isAdmin) return new ResponseCtor(null, { status: 403 });
+            if (!isAdmin) return new ResponseCtor(JSON.stringify({ error: "Invalid request" }), { status: 403 });
 
             // Simple admin responses for authorized admin users
             if (u.pathname === "/api/admin/monitoring") {
@@ -878,7 +878,7 @@ try {
                     : {};
                 if (body && body.action === "acknowledge")
                   return makeJson({ success: true, action: "acknowledge" });
-                return new ResponseCtor(null, { status: 400 });
+                return new ResponseCtor(JSON.stringify({ error: "Invalid request" }), { status: 400 });
               }
               return makeJson({ alerts: [], count: 0, criticalCount: 0 });
             }
@@ -946,7 +946,7 @@ try {
                   );
                   return resp;
                 }
-                return new ResponseCtor(null, { status: 400 });
+                return new ResponseCtor(JSON.stringify({ error: "Invalid request" }), { status: 400 });
               }
               return makeJson({
                 logs: [],
@@ -989,7 +989,7 @@ try {
         } catch (_err) {
           // ignore
         }
-        return new ResponseCtor(null, { status: 404 });
+        return new ResponseCtor(JSON.stringify({ error: "Invalid request" }), { status: 404 });
       }) as unknown
     );
   }
@@ -1031,7 +1031,7 @@ afterEach(() => {
     if (server)
       (server as unknown as { resetHandlers?: () => void }).resetHandlers?.();
   } catch (_e) {
-    console.error("SETUP_TESTS: server.resetHandlers() failed:", _e);
+    (globalThis.console as any)?.error?.("SETUP_TESTS: server.resetHandlers() failed:", _e);
   }
 });
 // Ensure we clear mock DB after each test as well to handle cases where

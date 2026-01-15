@@ -3,8 +3,8 @@ import {
   POST as createWalletHandler,
 } from "@/app/api/wallets/route";
 import { NextRequest } from "next/server";
-import db from "@/lib/db/services";
-import authService from "@/lib/auth/service";
+import { walletService, userService } from "@/lib/db/services";
+import { authService } from "@/lib/auth/service";
 
 describe("Wallet API", () => {
   let testUserId: string;
@@ -13,23 +13,25 @@ describe("Wallet API", () => {
 
   beforeAll(async () => {
     // Setup: Create test user
-    const user = await db.userService.create({
+    const user = await userService.create({
       email: "wallet-test@example.com",
       username: "wallettest",
       name: "Wallet Test User",
+      passwordHash: "hashed-password",
     });
     testUserId = (user as { id: string }).id;
 
     // Create JWT token for authenticated requests
-    testToken = authService.generateToken({
-      userId: testUserId,
-      email: "wallet-test@example.com",
-      username: "wallettest",
-      role: "user",
-    });
+    testToken = authService.generateToken(testUserId, "wallet-test@example.com");
 
     // Create test wallet
-    const wallet = await db.walletService.create(testUserId, "KES");
+    const wallet = await walletService.create({
+      userId: testUserId,
+      address: "test-address-123",
+      balance: "1000",
+      network: "ethereum",
+      currency: "KES",
+    });
     testWalletId = (wallet as { id: string }).id;
   });
 
@@ -102,14 +104,18 @@ describe("Wallet API", () => {
           authorization: `Bearer ${testToken}`,
           "content-type": "application/json",
         },
-        body: JSON.stringify({}), // No currency specified
+        body: JSON.stringify({
+          address: "test-addr-789",
+          network: "ethereum",
+          // No currency specified - should default to USD
+        }),
       });
 
       const response = await createWalletHandler(request);
       expect(response.status).toBe(201);
 
       const data = await response.json();
-      expect(data.currency).toBe("KES"); // Default currency
+      expect(data.currency).toBe("USD"); // Default currency is USD
     });
 
     it("should reject request without authentication", async () => {
@@ -131,36 +137,48 @@ describe("Wallet API", () => {
   describe("Wallet Service", () => {
     it("should calculate total balance for user", async () => {
       // Create multiple wallets
-      await db.walletService.create(testUserId, "EUR");
-      await db.walletService.create(testUserId, "GBP");
+      await walletService.create({
+        userId: testUserId,
+        address: "test-addr-eur",
+        balance: "500",
+        network: "ethereum",
+        currency: "EUR",
+      });
+      await walletService.create({
+        userId: testUserId,
+        address: "test-addr-gbp",
+        balance: "750",
+        network: "ethereum",
+        currency: "GBP",
+      });
 
-      // Would need wallet balance updates in real test
-      // const totalBalance = await db.walletService.getTotalBalance(testUserId);
-      // expect(totalBalance).toBeGreaterThanOrEqual(0);
+      // Verify wallets were created
+      const userWallets = await walletService.findByUserId(testUserId);
+      expect(userWallets.length).toBeGreaterThanOrEqual(3); // Plus the original test wallet
     });
 
     it("should update wallet balance correctly", async () => {
-      const initialBalance = 0;
-      await db.walletService.updateBalance(testWalletId, 100);
+      const initialBalance = "1000";
+      await walletService.updateBalance(testWalletId, "1100");
 
-      const wallet = await db.walletService.getById(testWalletId);
-      expect((wallet as { balance: number }).balance).toBe(
-        initialBalance + 100
+      const wallet = await walletService.getById(testWalletId);
+      expect(wallet).toBeTruthy();
+      expect(parseFloat((wallet as { balance: string }).balance)).toBe(1100);
       );
     });
 
     it("should handle multiple concurrent balance updates", async () => {
       const updates = [
-        db.walletService.updateBalance(testWalletId, 50),
-        db.walletService.updateBalance(testWalletId, 25),
-        db.walletService.updateBalance(testWalletId, -30),
+        walletService.updateBalance(testWalletId, "1050"),
+        walletService.updateBalance(testWalletId, "1075"),
+        walletService.updateBalance(testWalletId, "1045"),
       ];
 
       await Promise.all(updates);
 
-      const wallet = await db.walletService.getById(testWalletId);
-      // Balance should be: previous + 50 + 25 - 30
-      expect((wallet as { balance: number }).balance).toBeGreaterThan(0);
+      const wallet = await walletService.getById(testWalletId);
+      // Balance should be positive
+      expect(parseFloat((wallet as { balance: string }).balance)).toBeGreaterThan(0);
     });
   });
 });

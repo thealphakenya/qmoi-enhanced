@@ -232,7 +232,7 @@ export async function emergencyAction(
     return result;
   } catch (_err) {
     void _err;
-    console.error("emergencyAction error", _err);
+    (globalThis.console as any)?.error?.("emergencyAction error", _err);
     return { ok: false, error: String(_err) };
   }
 }

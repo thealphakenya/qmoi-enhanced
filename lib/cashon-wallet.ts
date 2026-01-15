@@ -347,7 +347,7 @@ export class CashonWallet {
         this.balance.lastUpdated = new Date();
       }
     } catch (error) {
-      console.error("Failed to update balance:", error);
+      (globalThis.console as any)?.error?.("Failed to update balance:", error);
     }
   }
 
@@ -388,7 +388,7 @@ export class CashonWallet {
         reference: data.reference,
       };
     } catch (error) {
-      console.error("Pesapal STK initiation failed:", error);
+      (globalThis.console as any)?.error?.("Pesapal STK initiation failed:", error);
       return { success: false };
     }
   }
@@ -459,7 +459,7 @@ export class CashonWallet {
           this.balance.availableBalance
         );
       } catch (error) {
-        console.error("Trading loop error:", error);
+        (globalThis.console as any)?.error?.("Trading loop error:", error);
       }
     }, 5 * 60 * 1000); // Every 5 minutes
   }

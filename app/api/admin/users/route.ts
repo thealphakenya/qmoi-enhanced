@@ -108,7 +108,7 @@ export async function GET(_request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Admin users error:", error);
+    (globalThis.console as any)?.error?.("Admin users error:", error);
     return NextResponse.json(
       { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }
@@ -211,7 +211,7 @@ export async function PUT(_request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Update user error:", error);
+    (globalThis.console as any)?.error?.("Update user error:", error);
     return NextResponse.json(
       { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }
@@ -298,7 +298,7 @@ export async function DELETE(_request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Delete user error:", error);
+    (globalThis.console as any)?.error?.("Delete user error:", error);
     return NextResponse.json(
       { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }

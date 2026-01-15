@@ -212,7 +212,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
         await new Promise((resolve) => setTimeout(resolve, 1000));
         setFiles((prev) => prev.filter((file) => !file.isSelected));
       } catch (_e: unknown) {
-        console.error("Error deleting files:", extractMessage(_e));
+        (globalThis.console as any)?.error?.("Error deleting files:", extractMessage(_e));
       } finally {
         setIsLoading(false);
       }
@@ -233,7 +233,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
         }))
       );
     } catch (error) {
-      console.error("Error organizing files:", error);
+      (globalThis.console as any)?.error?.("Error organizing files:", error);
     } finally {
       setIsLoading(false);
     }

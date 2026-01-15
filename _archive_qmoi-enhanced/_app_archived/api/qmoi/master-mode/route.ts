@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
       message: `Master mode ${enabled ? "enabled" : "disabled"} successfully`,
     });
   } catch (error) {
-    console.error("Error managing master mode:", error);
+    (globalThis.console as any)?.error?.("Error managing master mode:", error);
     return NextResponse.json(
       { error: "Failed to manage master mode" },
       { status: 500 },
@@ -83,7 +83,7 @@ export async function GET(request: NextRequest) {
       },
     });
   } catch (error) {
-    console.error("Error fetching master mode status:", error);
+    (globalThis.console as any)?.error?.("Error fetching master mode status:", error);
     return NextResponse.json(
       { error: "Failed to fetch master mode status" },
       { status: 500 },

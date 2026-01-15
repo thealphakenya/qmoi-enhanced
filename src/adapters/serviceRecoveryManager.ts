@@ -165,7 +165,7 @@ class ServiceRecoveryManager {
       success: false,
     });
 
-    console.error(
+    (globalThis.console as any)?.error?.(
       `[Recovery] Failed to recover ${service} after ${attemptCount} attempts: ${lastError?.message}`
     );
     return false;
@@ -183,7 +183,7 @@ class ServiceRecoveryManager {
 
     const timer = setTimeout(() => {
       this.recover(service, reason, recoveryFn).catch((_err) => {
-        console.error(`[Recovery] Scheduled recovery failed: ${_err}`);
+        (globalThis.console as any)?.error?.(`[Recovery] Scheduled recovery failed: ${_err}`);
       });
       this.activeRecoveries.delete(service);
     }, delayMs);

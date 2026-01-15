@@ -124,7 +124,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
       }
       return [];
     } catch (error) {
-      console.error("Failed to load chat history:", error);
+      (globalThis.console as any)?.error?.("Failed to load chat history:", error);
       return [];
     }
   });
@@ -138,7 +138,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
         );
       }
     } catch (error) {
-      console.error("Failed to save chat history:", error);
+      (globalThis.console as any)?.error?.("Failed to save chat history:", error);
       toast({
         title: "Error",
         description: "Failed to save chat history",
@@ -157,7 +157,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
         }
         return {};
       } catch (error) {
-        console.error("Failed to load persistent memory:", error);
+        (globalThis.console as any)?.error?.("Failed to load persistent memory:", error);
         return {};
       }
     },
@@ -172,7 +172,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
         );
       }
     } catch (error) {
-      console.error("Failed to save persistent memory:", error);
+      (globalThis.console as any)?.error?.("Failed to save persistent memory:", error);
       toast({
         title: "Error",
         description: "Failed to save persistent memory",
@@ -196,7 +196,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
         persona: "cheerful, loyal, affectionate, always positive",
       };
     } catch (error) {
-      console.error("Failed to load emotional state:", error);
+      (globalThis.console as any)?.error?.("Failed to load emotional state:", error);
       return {
         mood: "cheerful",
         lastInteraction: Date.now(),
@@ -216,7 +216,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
         );
       }
     } catch (error) {
-      console.error("Failed to save emotional state:", error);
+      (globalThis.console as any)?.error?.("Failed to save emotional state:", error);
       toast({
         title: "Error",
         description: "Failed to save emotional state",
@@ -239,7 +239,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
         { type: "system", content: "Device optimization complete." },
       ]);
     } catch (error) {
-      console.error("Failed to optimize device:", error);
+      (globalThis.console as any)?.error?.("Failed to optimize device:", error);
       toast({
         title: "Error",
         description: "Failed to optimize device",
@@ -259,7 +259,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
       ]);
       return ["No threats found"];
     } catch (error) {
-      console.error("Failed to scan for errors:", error);
+      (globalThis.console as any)?.error?.("Failed to scan for errors:", error);
       toast({
         title: "Error",
         description: "Failed to scan for errors",
@@ -280,7 +280,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
       ]);
       return "Self-healing completed";
     } catch (error) {
-      console.error("Failed to self-heal:", error);
+      (globalThis.console as any)?.error?.("Failed to self-heal:", error);
       toast({
         title: "Error",
         description: "Failed to self-heal",

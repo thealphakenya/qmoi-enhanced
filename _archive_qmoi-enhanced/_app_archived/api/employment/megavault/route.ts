@@ -65,7 +65,7 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
     console.log(`Safe backup for ${platform}:`, masked);
     // Intentionally do not send raw credentials anywhere.
   } catch (error) {
-    console.error(
+    (globalThis.console as any)?.error?.(
       "Failed to create safe backup for megavault credentials:",
       error,
     );
@@ -89,7 +89,7 @@ async function initializePesapalAccount() {
 
     return { success: true, account: accountData };
   } catch (error) {
-    console.error("Failed to initialize Pesapal account:", error);
+    (globalThis.console as any)?.error?.("Failed to initialize Pesapal account:", error);
     return { success: false, error: "Pesapal initialization failed" };
   }
 }
@@ -125,7 +125,7 @@ async function processPesapalTransaction(transactionData: unknown) {
     const result = await response.text();
     return { success: true, transactionId: result, provider: "pesapal" };
   } catch (error) {
-    console.error("Pesapal transaction failed:", error);
+    (globalThis.console as any)?.error?.("Pesapal transaction failed:", error);
     return { success: false, error: "Pesapal transaction failed" };
   }
 }
@@ -205,7 +205,7 @@ async function distributeDividends(distributionData: unknown) {
 
     return { success: true, distributions, totalAmount };
   } catch (error) {
-    console.error("Dividend distribution failed:", error);
+    (globalThis.console as any)?.error?.("Dividend distribution failed:", error);
     return { success: false, error: "Dividend distribution failed" };
   }
 }

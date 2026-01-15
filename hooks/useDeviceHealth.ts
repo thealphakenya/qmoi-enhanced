@@ -212,7 +212,7 @@ export function useDeviceHealth(): DeviceHealth {
           warnings,
         });
       } catch (error) {
-        console.error("Device health check failed:", error);
+        (globalThis.console as any)?.error?.("Device health check failed:", error);
         setHealth({
           status: "degraded",
           lastCheck: Date.now(),

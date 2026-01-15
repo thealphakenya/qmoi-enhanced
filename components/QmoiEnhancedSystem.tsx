@@ -277,7 +277,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
       };
 
       recognition.onerror = (event: unknown) => {
-        console.error("Speech recognition error:", event.error);
+        (globalThis.console as any)?.error?.("Speech recognition error:", event.error);
         speak("Voice recognition error. Please try again.");
       };
     }

@@ -149,7 +149,7 @@ export function useMediaGenerationStatus() {
           ...data,
         }));
       } catch (error) {
-        console.error("Failed to fetch media status:", error);
+        (globalThis.console as any)?.error?.("Failed to fetch media status:", error);
       }
     }
 

@@ -11,7 +11,7 @@ export const EmergencyPanel: React.FC = () => {
       const res = await emergencyAction("sos", { timestamp: Date.now() });
       setStatus(res?.message || "SOS sent");
     } catch (err) {
-      console.error("SOS failed", err);
+      (globalThis.console as any)?.error?.("SOS failed", err);
       setStatus("SOS failed");
     }
   };
@@ -21,7 +21,7 @@ export const EmergencyPanel: React.FC = () => {
       const res = await emergencyAction("lockdown", { timestamp: Date.now() });
       setStatus(res?.message || "Lockdown command issued");
     } catch (err) {
-      console.error("Lockdown failed", err);
+      (globalThis.console as any)?.error?.("Lockdown failed", err);
       setStatus("Lockdown failed");
     }
   };
@@ -31,7 +31,7 @@ export const EmergencyPanel: React.FC = () => {
       const res = await emergencyAction("wipe", { timestamp: Date.now() });
       setStatus(res?.message || "Wipe command issued");
     } catch (err) {
-      console.error("Wipe failed", err);
+      (globalThis.console as any)?.error?.("Wipe failed", err);
       setStatus("Wipe failed");
     }
   };
@@ -41,7 +41,7 @@ export const EmergencyPanel: React.FC = () => {
       const res = await emergencyAction("alert", { timestamp: Date.now() });
       setStatus(res?.message || "Alert sent");
     } catch (err) {
-      console.error("Alert failed", err);
+      (globalThis.console as any)?.error?.("Alert failed", err);
       setStatus("Alert failed");
     }
   };

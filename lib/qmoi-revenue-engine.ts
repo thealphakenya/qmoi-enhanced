@@ -118,7 +118,7 @@ class QMOIRevenueEngine {
         await this.generateRevenueFromAllStreams();
         await this.sleep(300000); // 5 minutes between cycles
       } catch (error) {
-        console.error("Revenue generation cycle failed:", error);
+        (globalThis.console as any)?.error?.("Revenue generation cycle failed:", error);
         logEvent("revenue_cycle_failed", {
           error: (error as any)?.message || String(error),
         });
@@ -180,7 +180,7 @@ class QMOIRevenueEngine {
         });
       }
     } catch (error) {
-      console.error(`Failed to generate revenue from ${stream.name}:`, error);
+      (globalThis.console as any)?.error?.(`Failed to generate revenue from ${stream.name}:`, error);
       stream.status = "failed";
       logEvent("revenue_stream_failed", {
         stream: stream.name,
@@ -270,7 +270,7 @@ class QMOIRevenueEngine {
           this.resetEarnings();
         }
       } catch (error) {
-        console.error("Periodic transfer failed:", error);
+        (globalThis.console as any)?.error?.("Periodic transfer failed:", error);
         logEvent("periodic_transfer_failed", {
           error: (error as any)?.message || String(error),
         });

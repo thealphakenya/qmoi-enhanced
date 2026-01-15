@@ -54,7 +54,7 @@ async function writeProposal(payload: any) {
     await fs.promises.writeFile(file, JSON.stringify(body, null, 2), "utf8");
     return { ok: true, file, id };
   } catch (err) {
-    console.error("Failed to write proposal:", err);
+    (globalThis.console as any)?.error?.("Failed to write proposal:", err);
     return { ok: false, error: String(err) };
   }
 }

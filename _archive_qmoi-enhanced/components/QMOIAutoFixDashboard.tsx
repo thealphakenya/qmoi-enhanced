@@ -82,7 +82,7 @@ export default function QMOIAutoFixDashboard() {
         setReport(data);
       }
     } catch (error) {
-      console.error("Error fetching report:", error);
+      (globalThis.console as any)?.error?.("Error fetching report:", error);
     }
   };
 
@@ -137,7 +137,7 @@ export default function QMOIAutoFixDashboard() {
         setGitHubStatus(data);
       }
     } catch (error) {
-      console.error("Error fetching GitHub status:", error);
+      (globalThis.console as any)?.error?.("Error fetching GitHub status:", error);
     }
   };
 
@@ -150,7 +150,7 @@ export default function QMOIAutoFixDashboard() {
         setDeploymentStatus(data.status);
       }
     } catch (error) {
-      console.error("Error fetching deployment status:", error);
+      (globalThis.console as any)?.error?.("Error fetching deployment status:", error);
     }
   };
 

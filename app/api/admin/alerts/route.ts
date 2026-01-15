@@ -52,7 +52,7 @@ export async function GET(_request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Alerts error:", error);
+    (globalThis.console as any)?.error?.("Alerts error:", error);
     return NextResponse.json(
       { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }
@@ -128,7 +128,7 @@ export async function POST(_request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Alert action error:", error);
+    (globalThis.console as any)?.error?.("Alert action error:", error);
     return NextResponse.json(
       { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }
@@ -137,43 +137,39 @@ export async function POST(_request: NextRequest) {
 }
 
 function generateAlerts() {
-  const alerts = [];
+  const alerts: any[] = [];
   const now = new Date();
-  const errors = errorTracker.getErrorStats();
+  const errorStats = errorTracker.getErrorStats();
   const metrics = monitor.getAllMetrics();
 
-  // Check for high error rates
-  for (const [errorType, stats] of Object.entries(errors || {})) {
-    const errorStats = stats as any;
-    if (errorStats.lastHour > 5) {
-      alerts.push({
-        id: `error_${errorType}_${now.getTime()}`,
-        type: "HIGH_ERROR_RATE",
-        severity: errorStats.lastHour > 20 ? "critical" : "warning",
-        component: "Application Errors",
-        message: `High error rate detected: ${errorType} (${errorStats.lastHour} in last hour)`,
-        errorType,
-        count: errorStats.lastHour,
-        timestamp: now.toISOString(),
-        actionable: true,
-        suggestedAction: "Review error logs and escalate to engineering",
-      });
-    }
+  // Check for high error rates - use error stats
+  if (errorStats.total > 10) {
+    alerts.push({
+      id: `error_high_${now.getTime()}`,
+      type: "HIGH_ERROR_RATE",
+      severity: errorStats.total > 50 ? "critical" : "warning",
+      component: "Application Errors",
+      message: `High error rate detected: ${errorStats.total} errors logged`,
+      count: errorStats.total,
+      timestamp: now.toISOString(),
+      actionable: true,
+      suggestedAction: "Review error logs and escalate to engineering",
+    });
   }
 
-  // Check for performance degradation
-  for (const [metricName, metric] of Object.entries(metrics || {})) {
-    const metricData = metric as any;
-    if (metricData.successRate && parseFloat(metricData.successRate) < 95) {
+  // Check for performance degradation based on metrics
+  if (metrics && metrics.length > 0) {
+    const avgResponseTime =
+      metrics.reduce((sum: number, m: any) => sum + m.duration, 0) /
+      metrics.length;
+    if (avgResponseTime > 1000) {
       alerts.push({
-        id: `perf_${metricName}_${now.getTime()}`,
+        id: `perf_response_${now.getTime()}`,
         type: "PERFORMANCE_DEGRADATION",
-        severity:
-          parseFloat(metricData.successRate) < 85 ? "critical" : "warning",
-        component: `Performance: ${metricName}`,
-        message: `Performance degradation: ${metricName} success rate is ${metricData.successRate}%`,
-        metric: metricName,
-        successRate: metricData.successRate,
+        severity: avgResponseTime > 5000 ? "critical" : "warning",
+        component: "API Response Times",
+        message: `High response times detected: avg ${Math.round(avgResponseTime)}ms`,
+        responseTime: Math.round(avgResponseTime),
         timestamp: now.toISOString(),
         actionable: true,
         suggestedAction: "Check system load and optimize queries",

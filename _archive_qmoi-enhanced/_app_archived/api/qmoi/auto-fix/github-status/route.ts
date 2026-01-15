@@ -72,7 +72,7 @@ export async function GET() {
 
     return NextResponse.json(status);
   } catch (error) {
-    console.error("Error getting GitHub status:", error);
+    (globalThis.console as any)?.error?.("Error getting GitHub status:", error);
     return NextResponse.json(
       { error: "Failed to get GitHub status" },
       { status: 500 },

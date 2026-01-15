@@ -187,7 +187,7 @@ class QIErrorBoundary extends React.Component<
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
-    console.error("QI Error:", error, errorInfo);
+    (globalThis.console as any)?.error?.("QI Error:", error, errorInfo);
   }
 
   render(): React.ReactNode {
@@ -226,7 +226,7 @@ function isMasterOrSister(): boolean {
     const email = localStorage.getItem("userEmail") || "";
     return MASTER_EMAILS.includes(email);
   } catch (error) {
-    console.error("Failed to check master/sister status:", error);
+    (globalThis.console as any)?.error?.("Failed to check master/sister status:", error);
     return false;
   }
 }
@@ -309,7 +309,7 @@ function QIComponent() {
           setAiTasks(aiData.tasks || []);
         }
       } catch (error) {
-        console.error("Failed to fetch data:", error);
+        (globalThis.console as any)?.error?.("Failed to fetch data:", error);
         if (isMounted) {
           setError(
             error instanceof Error ? error.message : "Failed to fetch data"
@@ -358,7 +358,7 @@ function QIComponent() {
 
       if (!response.ok) throw new Error("Failed to trigger enhancement");
     } catch (error) {
-      console.error("Failed to trigger enhancement:", error);
+      (globalThis.console as any)?.error?.("Failed to trigger enhancement:", error);
       toast({
         title: "Error",
         description: "Failed to trigger enhancement",
@@ -411,7 +411,7 @@ function QIComponent() {
           URL.revokeObjectURL(url);
         }
       } catch (error) {
-        console.error("Failed to export tasks:", error);
+        (globalThis.console as any)?.error?.("Failed to export tasks:", error);
         toast({
           title: "Error",
           description: "Failed to export tasks",
@@ -451,7 +451,7 @@ function QIComponent() {
       a.click();
       URL.revokeObjectURL(url);
     } catch (error) {
-      console.error("Failed to download data:", error);
+      (globalThis.console as any)?.error?.("Failed to download data:", error);
       toast({
         title: "Error",
         description: "Failed to download data",

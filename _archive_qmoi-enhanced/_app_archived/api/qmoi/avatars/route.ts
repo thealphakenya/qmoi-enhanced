@@ -28,7 +28,7 @@ export async function GET() {
       qualityLevels: Object.keys(qualityLevels),
     });
   } catch (error) {
-    console.error("Error fetching avatars:", error);
+    (globalThis.console as any)?.error?.("Error fetching avatars:", error);
     return NextResponse.json(
       { error: "Failed to fetch avatars" },
       { status: 500 },
@@ -127,7 +127,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
   } catch (error) {
-    console.error("Error in avatars API:", error);
+    (globalThis.console as any)?.error?.("Error in avatars API:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },
@@ -166,7 +166,7 @@ async function switchAvatar(avatarId: string) {
       qualityInfo: qualityLevels[avatar.qualityLevel],
     });
   } catch (error) {
-    console.error("Error switching avatar:", error);
+    (globalThis.console as any)?.error?.("Error switching avatar:", error);
     return NextResponse.json(
       { error: "Failed to switch avatar" },
       { status: 500 },
@@ -194,7 +194,7 @@ async function upgradeAvatar(avatarId: string) {
       improvements: ["better_animations", "enhanced_quality", "new_features"],
     });
   } catch (error) {
-    console.error("Error upgrading avatar:", error);
+    (globalThis.console as any)?.error?.("Error upgrading avatar:", error);
     return NextResponse.json(
       { error: "Failed to upgrade avatar" },
       { status: 500 },
@@ -230,7 +230,7 @@ async function enhanceAvatar(
       ],
     });
   } catch (error) {
-    console.error("Error enhancing avatar:", error);
+    (globalThis.console as any)?.error?.("Error enhancing avatar:", error);
     return NextResponse.json(
       { error: "Failed to enhance avatar" },
       { status: 500 },
@@ -261,7 +261,7 @@ async function customizeAvatar(avatarId: string, voiceProfile: string) {
       ],
     });
   } catch (error) {
-    console.error("Error customizing avatar:", error);
+    (globalThis.console as any)?.error?.("Error customizing avatar:", error);
     return NextResponse.json(
       { error: "Failed to customize avatar" },
       { status: 500 },

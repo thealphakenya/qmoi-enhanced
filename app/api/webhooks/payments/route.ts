@@ -68,7 +68,7 @@ export async function POST(_request: NextRequest) {
       );
     }
 
-    const txn = transaction as Record<string, unknown>;
+    const txn = transaction as unknown as Record<string, unknown>;
 
     // Update transaction status based on callback
     const newStatus =
@@ -85,18 +85,15 @@ export async function POST(_request: NextRequest) {
 
     // If successful, update wallet balance
     if (newStatus === "completed" && txn.amount) {
-      await walletService.updateBalance(
-        String(txn.walletId),
-        Number(txn.amount)
-      );
+      const walletId = String(txn.walletId || transaction.walletId);
+      const amount = String(txn.amount);
+      await walletService.updateBalance(walletId, amount);
 
-      // Send success notification to user
+      // Send success notification to admins
       try {
-        await notificationService.notifyAdmins({
-          title: "Payment Completed",
-          message: `Transaction ${transaction.id} of ${transaction.amount} ${transaction.currency} completed successfully.`,
-          severity: "low",
-        });
+        await notificationService.notifyAdmins(
+          `Payment Completed: Transaction ${transaction.id} of ${transaction.amount} ${transaction.currency} completed successfully.`
+        );
       } catch (notifyError) {
         console.warn("Failed to send admin notification:", notifyError);
       }
@@ -105,11 +102,9 @@ export async function POST(_request: NextRequest) {
     // If failed, notify admins
     if (newStatus === "failed") {
       try {
-        await notificationService.notifyAdmins({
-          title: "Payment Failed",
-          message: `Transaction ${transaction.id} of ${transaction.amount} ${transaction.currency} failed.`,
-          severity: "high",
-        });
+        await notificationService.notifyAdmins(
+          `Payment Failed: Transaction ${transaction.id} of ${transaction.amount} ${transaction.currency} failed.`
+        );
       } catch (notifyError) {
         console.warn("Failed to send admin notification:", notifyError);
       }
@@ -122,7 +117,7 @@ export async function POST(_request: NextRequest) {
       processed: true,
     });
   } catch (error) {
-    console.error("Webhook processing error:", error);
+    (globalThis.console as any)?.error?.("Webhook processing error:", error);
     return NextResponse.json(
       { error: "Webhook processing failed" },
       { status: 500 }

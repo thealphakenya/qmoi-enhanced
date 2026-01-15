@@ -123,7 +123,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
         const parsedState = JSON.parse(savedState);
         setState((prevState) => ({ ...prevState, ...parsedState }));
       } catch (error) {
-        console.error("Error loading QMOI state:", error);
+        (globalThis.console as any)?.error?.("Error loading QMOI state:", error);
       }
     }
   }, []);
@@ -187,7 +187,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
         await updateVoice(compatibleVoice);
       }
     } catch (error) {
-      console.error("Error updating avatar:", error);
+      (globalThis.console as any)?.error?.("Error updating avatar:", error);
       setState((prev) => ({ ...prev, isProcessing: false, currentTask: null }));
     }
   };
@@ -218,7 +218,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
         currentTask: null,
       }));
     } catch (error) {
-      console.error("Error updating voice:", error);
+      (globalThis.console as any)?.error?.("Error updating voice:", error);
       setState((prev) => ({ ...prev, isProcessing: false, currentTask: null }));
     }
   };

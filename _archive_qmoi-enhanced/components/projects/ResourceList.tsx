@@ -23,7 +23,7 @@ export function ResourceList({ projectId }: ResourceListProps) {
       );
       await updateProject(projectId, { resources: updatedResources });
     } catch (error) {
-      console.error("Failed to update resource status:", error);
+      (globalThis.console as any)?.error?.("Failed to update resource status:", error);
     }
   };
 

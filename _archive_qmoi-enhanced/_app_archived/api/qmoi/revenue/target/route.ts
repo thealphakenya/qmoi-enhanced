@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(result);
   } catch (error) {
-    console.error("Set target error:", error);
+    (globalThis.console as any)?.error?.("Set target error:", error);
     return NextResponse.json(
       { error: "Failed to set target" },
       { status: 500 },

@@ -186,7 +186,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
           this.emit("noFixAvailable", errorReport);
         }
       } catch (error) {
-        console.error("❌ Failed to process error:", error);
+        (globalThis.console as any)?.error?.("❌ Failed to process error:", error);
         this.emit("processingError", { errorReport, error });
       } finally {
         this.isProcessing = false;
@@ -524,7 +524,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
 
     if (!fixAttempt.success) {
       fixAttempt.error = lastError;
-      console.error("❌ All fix attempts failed");
+      (globalThis.console as any)?.error?.("❌ All fix attempts failed");
     }
 
     fixAttempt.duration = Date.now() - startTime;

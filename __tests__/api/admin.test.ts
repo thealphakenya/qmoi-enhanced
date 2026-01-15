@@ -1,5 +1,5 @@
-import { db } from "@/lib/db/prisma";
-import authService from "@/lib/auth/service";
+import { userService } from "@/lib/db/services";
+import { authService } from "@/lib/auth/service";
 
 describe("Admin Endpoints", () => {
   let adminToken: string;
@@ -9,35 +9,26 @@ describe("Admin Endpoints", () => {
 
   beforeAll(async () => {
     // Create admin user
-    const adminUser = await db.prisma.user.create({
-      data: {
-        email: "admin@test.com",
-        username: "admin_test",
-        passwordHash: "hashed_password",
-        role: "admin",
-        emailVerified: true,
-      },
+    const adminUser = await userService.create({
+      email: "admin@test.com",
+      username: "admin_test",
+      passwordHash: "hashed_password",
+      role: "admin",
     });
-    adminId = adminUser.id;
+    adminId = (adminUser as { id: string }).id;
 
     // Create regular user
-    const regularUser = await db.prisma.user.create({
-      data: {
-        email: "user@test.com",
-        username: "regular_user",
-        passwordHash: "hashed_password",
-        role: "user",
-        emailVerified: true,
-      },
-    });
-    regularUserId = regularUser.id;
-
-    // Generate tokens
-    adminToken = authService.generateToken({ userId: adminId, role: "admin" });
-    regularUserToken = authService.generateToken({
-      userId: regularUserId,
+    const regularUser = await userService.create({
+      email: "user@test.com",
+      username: "regular_user",
+      passwordHash: "hashed_password",
       role: "user",
     });
+    regularUserId = (regularUser as { id: string }).id;
+
+    // Generate tokens
+    adminToken = authService.generateToken(adminId, "admin@test.com");
+    regularUserToken = authService.generateToken(regularUserId, "user@test.com");
   });
 
   afterAll(async () => {

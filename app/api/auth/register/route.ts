@@ -63,10 +63,12 @@ export async function POST(_request: NextRequest) {
     }
 
     // Create user (may still throw unique constraint in race conditions)
+    const passwordHash = await authService.hashPassword(body.password);
     const user = await userService.create({
       email: body.email,
       username: body.username,
       name: body.name,
+      passwordHash,
       role: "user",
     });
 
@@ -81,10 +83,15 @@ export async function POST(_request: NextRequest) {
     }
 
     // Create default wallet (USD)
-    await walletService.create(user.id, "USD");
+    await walletService.create({
+      userId: user.id,
+      address: `wallet_${user.id}`,
+      balance: '0',
+      network: 'USD',
+    });
 
     // Generate auth tokens
-    const tokens = await authService.createAuthTokens(user.id);
+    const tokens = await authService.createAuthTokens(user.id, user.email);
 
     // Send welcome email
     try {
@@ -134,7 +141,7 @@ export async function POST(_request: NextRequest) {
     } catch (_e) {
       void _e; /* ignore */
     }
-    console.error("Registration error:", error);
+    (globalThis.console as any)?.error?.("Registration error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

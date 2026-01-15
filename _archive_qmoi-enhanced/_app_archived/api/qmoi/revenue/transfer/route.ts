@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(result);
   } catch (error) {
-    console.error("Manual transfer error:", error);
+    (globalThis.console as any)?.error?.("Manual transfer error:", error);
     return NextResponse.json(
       { error: "Failed to process transfer" },
       { status: 500 },

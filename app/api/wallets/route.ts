@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import db from "@/lib/db/services";
+import { walletService } from "@/lib/db/services";
 import { db as fullDb } from "@/lib/db/prisma";
 import authService from "@/lib/auth/service";
 
@@ -45,7 +46,7 @@ export async function GET(_request: NextRequest) {
       pagination: { skip, take, total: allWallets.length },
     });
   } catch (error) {
-    console.error("GET /api/wallets error:", error);
+    (globalThis.console as any)?.error?.("GET /api/wallets error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
@@ -79,11 +80,17 @@ export async function POST(_request: NextRequest) {
     };
     const currency = body.currency || "KES";
 
-    const wallet = await db.walletService.create(decoded.userId, currency);
+    const wallet = await walletService.create({
+      userId: decoded.userId,
+      address: `wallet_${Date.now()}`,
+      balance: '0',
+      network: currency,
+      name: body.name,
+    });
 
     return NextResponse.json(wallet, { status: 201 });
   } catch (error) {
-    console.error("POST /api/wallets error:", error);
+    (globalThis.console as any)?.error?.("POST /api/wallets error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

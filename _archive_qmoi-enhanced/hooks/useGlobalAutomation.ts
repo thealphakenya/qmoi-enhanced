@@ -48,7 +48,7 @@ export function useGlobalAutomation() {
         const data = await res.json();
         setStatus(data);
       } catch (error) {
-        console.error("Failed to fetch automation status:", error);
+        (globalThis.console as any)?.error?.("Failed to fetch automation status:", error);
       }
     };
 
@@ -73,7 +73,7 @@ export function useGlobalAutomation() {
         settings: { ...prev.settings, ...data },
       }));
     } catch (error) {
-      console.error("Failed to update automation settings:", error);
+      (globalThis.console as any)?.error?.("Failed to update automation settings:", error);
     }
   };
 
@@ -93,7 +93,7 @@ export function useGlobalAutomation() {
         ),
       }));
     } catch (error) {
-      console.error("Failed to toggle task:", error);
+      (globalThis.console as any)?.error?.("Failed to toggle task:", error);
     }
   };
 
@@ -111,7 +111,7 @@ export function useGlobalAutomation() {
         tasks: [...prev.tasks, data],
       }));
     } catch (error) {
-      console.error("Failed to create task:", error);
+      (globalThis.console as any)?.error?.("Failed to create task:", error);
     }
   };
 

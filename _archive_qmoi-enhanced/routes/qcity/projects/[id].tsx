@@ -39,7 +39,7 @@ export default function ProjectDetailPage() {
       await updateProject(project.id, updates);
       setShowEditForm(false);
     } catch (error) {
-      console.error("Failed to update project:", error);
+      (globalThis.console as any)?.error?.("Failed to update project:", error);
     }
   };
 

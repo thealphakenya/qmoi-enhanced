@@ -65,7 +65,7 @@ class MpesaAPI {
 
       return this.accessToken || "";
     } catch (error) {
-      console.error("Failed to get M-Pesa access token:", error);
+      (globalThis.console as any)?.error?.("Failed to get M-Pesa access token:", error);
       throw new Error("M-Pesa authentication failed");
     }
   }
@@ -128,7 +128,7 @@ class MpesaAPI {
         MerchantRequestID: response.data.MerchantRequestID,
       };
     } catch (error) {
-      console.error("STK Push failed:", error);
+      (globalThis.console as any)?.error?.("STK Push failed:", error);
       throw new Error("Failed to initiate M-Pesa payment");
     }
   }
@@ -171,7 +171,7 @@ class MpesaAPI {
         timestamp: new Date().toISOString(),
       };
     } catch (error) {
-      console.error("Transaction status check failed:", error);
+      (globalThis.console as any)?.error?.("Transaction status check failed:", error);
       throw new Error("Failed to check transaction status");
     }
   }
@@ -213,7 +213,7 @@ class MpesaAPI {
 
       return response.data.ResultCode === "0";
     } catch (error) {
-      console.error("Transaction reversal failed:", error);
+      (globalThis.console as any)?.error?.("Transaction reversal failed:", error);
       return false;
     }
   }

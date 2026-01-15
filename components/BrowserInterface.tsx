@@ -181,7 +181,7 @@ export default function BrowserInterface() {
     try {
       // await browserService.navigateToUrl(activeTabId, urlInput);
     } catch (error) {
-      console.error("Navigation failed:", error);
+      (globalThis.console as any)?.error?.("Navigation failed:", error);
     }
   };
 
@@ -246,7 +246,7 @@ export default function BrowserInterface() {
     try {
       // await browserService.downloadFile(url, filename);
     } catch (error) {
-      console.error("Download failed:", error);
+      (globalThis.console as any)?.error?.("Download failed:", error);
     }
   };
 

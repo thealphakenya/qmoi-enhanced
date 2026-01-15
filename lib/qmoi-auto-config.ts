@@ -70,7 +70,7 @@ class QMOIAutoConfig {
       };
 
     } catch (error) {
-      console.error('❌ Auto-configuration failed:', error);
+      (globalThis.console as any)?.error?.('❌ Auto-configuration failed:', error);
       logEvent('mpesa_auto_config_failed', { error: (error as any)?.message || String(error) });
       
       return {

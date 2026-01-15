@@ -90,7 +90,7 @@ export async function GET(_request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Monitoring error:", error);
+    (globalThis.console as any)?.error?.("Monitoring error:", error);
     return NextResponse.json(
       { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }

@@ -1,7 +1,7 @@
 import { POST as initiatePaymentHandler } from "@/app/api/payments/initiate/route";
 import { POST as webhookHandler } from "@/app/api/webhooks/payments/route";
 import { NextRequest } from "next/server";
-import db from "@/lib/db/services";
+import { userService, walletService } from "@/lib/db/services";
 import { paymentService } from "@/lib/payments/service";
 
 describe("Payment API", () => {
@@ -10,14 +10,21 @@ describe("Payment API", () => {
 
   beforeAll(async () => {
     // Setup: Create test user and wallet
-    const user = await db.userService.create({
+    const user = await userService.create({
       email: "payment-test@example.com",
       username: "paymenttest",
       name: "Payment Test User",
+      passwordHash: "hashed-password",
     });
     testUserId = (user as { id: string }).id;
 
-    const wallet = await db.walletService.create(testUserId, "KES");
+    const wallet = await walletService.create({
+      userId: testUserId,
+      address: "test-address-456",
+      balance: "5000",
+      network: "ethereum",
+      currency: "KES",
+    });
     testWalletId = (wallet as { id: string }).id;
   });
 

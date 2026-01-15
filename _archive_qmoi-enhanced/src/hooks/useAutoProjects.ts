@@ -104,7 +104,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
           `🆕 New project planned: ${newProject.name}\nType: ${newProject.type}\nPriority: ${newProject.priority}\nEstimated time: ${newProject.estimatedDuration} minutes`,
         );
       } catch (error) {
-        console.error("Error creating project:", error);
+        (globalThis.console as any)?.error?.("Error creating project:", error);
       } finally {
         setIsLoading(false);
       }
@@ -150,7 +150,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
           );
         }
       } catch (error) {
-        console.error("Error updating project status:", error);
+        (globalThis.console as any)?.error?.("Error updating project status:", error);
       } finally {
         setIsLoading(false);
       }
@@ -227,7 +227,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
         `📋 Daily Plan - ${plan.date}\n\nProjects planned: ${newProjects.length}\nEstimated time: ${Math.round(plan.totalEstimatedTime / 60)} hours\n\nProjects:\n${newProjects.map((p, i) => `${i + 1}. ${p.name} (${p.type}) - ${p.estimatedDuration}min`).join("\n")}`,
       );
     } catch (error) {
-      console.error("Error generating daily plan:", error);
+      (globalThis.console as any)?.error?.("Error generating daily plan:", error);
     } finally {
       setIsLoading(false);
     }
@@ -245,7 +245,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   body: JSON.stringify({ message })
       // });
     } catch (error) {
-      console.error("Error notifying master:", error);
+      (globalThis.console as any)?.error?.("Error notifying master:", error);
     }
   }, []);
 
@@ -264,7 +264,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   })
       // });
     } catch (error) {
-      console.error("Error creating WhatsApp group:", error);
+      (globalThis.console as any)?.error?.("Error creating WhatsApp group:", error);
     }
   }, []);
 
@@ -280,7 +280,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   body: JSON.stringify({ message })
       // });
     } catch (error) {
-      console.error("Error posting to WhatsApp group:", error);
+      (globalThis.console as any)?.error?.("Error posting to WhatsApp group:", error);
     }
   }, []);
 

@@ -96,25 +96,20 @@ describe("Authentication API", () => {
 
   describe("Auth Service", () => {
     it("should generate valid JWT token", () => {
-      const token = authService.generateToken({
-        userId: "test-id",
-        email: "test@example.com",
-        username: "testuser",
-        role: "user",
-      });
+      const token = authService.generateToken("test-id", "test@example.com");
 
       expect(token).toBeTruthy();
       expect(typeof token).toBe("string");
 
       const decoded = authService.verifyToken(token);
-      expect(decoded.userId).toBe("test-id");
-      expect(decoded.email).toBe("test@example.com");
+      expect(decoded).toBeTruthy();
+      expect((decoded as any).userId).toBe("test-id");
+      expect((decoded as any).email).toBe("test@example.com");
     });
 
     it("should reject invalid token", () => {
-      expect(() => {
-        authService.verifyToken("invalid-token");
-      }).toThrow();
+      const decoded = authService.verifyToken("invalid-token");
+      expect(decoded).toBeNull();
     });
 
     it("should validate email format", () => {

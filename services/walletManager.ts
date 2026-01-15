@@ -69,7 +69,7 @@ export class WalletManager {
     try {
       return verify.verify(publicKeyPem, signature, "base64");
     } catch (_e) {
-      console.error("verifySignature failed", _e);
+      (globalThis.console as any)?.error?.("verifySignature failed", _e);
       return false;
     }
   }
@@ -88,7 +88,7 @@ export class WalletManager {
         JSON.stringify({ ts: new Date().toISOString(), ...entry }) + "\n";
       fs.appendFileSync(p, line, "utf-8");
     } catch (_e) {
-      console.error("appendAudit failed", _e);
+      (globalThis.console as any)?.error?.("appendAudit failed", _e);
     }
   }
 

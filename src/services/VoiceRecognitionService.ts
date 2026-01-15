@@ -335,13 +335,13 @@ export class VoiceRecognitionService {
           this.recognition = new ctor() as SpeechRecognitionLike;
           this.setupRecognitionHandlers();
         } catch (err) {
-          console.error("Failed to construct SpeechRecognition instance:", err);
+          (globalThis.console as any)?.error?.("Failed to construct SpeechRecognition instance:", err);
         }
       } else {
-        console.error("Speech recognition not supported");
+        (globalThis.console as any)?.error?.("Speech recognition not supported");
       }
     } catch (error) {
-      console.error("Error initializing speech recognition:", error);
+      (globalThis.console as any)?.error?.("Error initializing speech recognition:", error);
     }
   }
 
@@ -353,10 +353,10 @@ export class VoiceRecognitionService {
       if (this.synthesis) {
         this.setupSynthesisHandlers();
       } else {
-        console.error("Speech synthesis not supported");
+        (globalThis.console as any)?.error?.("Speech synthesis not supported");
       }
     } catch (error) {
-      console.error("Error initializing speech synthesis:", error);
+      (globalThis.console as any)?.error?.("Error initializing speech synthesis:", error);
     }
   }
 
@@ -422,7 +422,7 @@ export class VoiceRecognitionService {
 
     this.recognition.onerror = (evt: unknown) => {
       const err = (evt as Record<string, unknown>)?.["error"];
-      console.error("Voice recognition error:", err);
+      (globalThis.console as any)?.error?.("Voice recognition error:", err);
       this.eventEmitter.emit("recognitionError", String(err ?? ""));
 
       // Auto-restart on certain errors
@@ -479,7 +479,7 @@ export class VoiceRecognitionService {
       evt?: unknown
     ) => {
       const err = (evt as Record<string, unknown>)?.["error"];
-      console.error("Speech synthesis error:", err);
+      (globalThis.console as any)?.error?.("Speech synthesis error:", err);
       this.eventEmitter.emit("synthesisError", String(err ?? ""));
     };
   }
@@ -651,7 +651,7 @@ export class VoiceRecognitionService {
           confidence,
         });
       } catch (error) {
-        console.error("Error executing voice command:", error);
+        (globalThis.console as any)?.error?.("Error executing voice command:", error);
         this.speak(
           "Sorry, I encountered an error while executing that command"
         );
@@ -704,7 +704,7 @@ export class VoiceRecognitionService {
   }
 
   private levenshteinDistance(str1: string, str2: string): number {
-    const matrix = [];
+    const matrix: number[][] = [];
 
     for (let i = 0; i <= str2.length; i++) {
       matrix[i] = [i];
@@ -736,7 +736,7 @@ export class VoiceRecognitionService {
       try {
         this.recognition?.start?.();
       } catch (error) {
-        console.error("Error starting voice recognition:", error);
+        (globalThis.console as any)?.error?.("Error starting voice recognition:", error);
       }
     }
   }
@@ -746,7 +746,7 @@ export class VoiceRecognitionService {
       try {
         this.recognition?.stop?.();
       } catch (error) {
-        console.error("Error stopping voice recognition:", error);
+        (globalThis.console as any)?.error?.("Error stopping voice recognition:", error);
       }
     }
   }
@@ -761,7 +761,7 @@ export class VoiceRecognitionService {
     } = {}
   ): void {
     if (!this.synthesis) {
-      console.error("Speech synthesis not available");
+      (globalThis.console as any)?.error?.("Speech synthesis not available");
       return;
     }
 
@@ -910,7 +910,7 @@ export class VoiceRecognitionService {
         }
       }
     } catch (error) {
-      console.error("Error loading voice user settings:", error);
+      (globalThis.console as any)?.error?.("Error loading voice user settings:", error);
     }
   }
 
@@ -921,7 +921,7 @@ export class VoiceRecognitionService {
         JSON.stringify(this.userSettings)
       );
     } catch (error) {
-      console.error("Error saving voice user settings:", error);
+      (globalThis.console as any)?.error?.("Error saving voice user settings:", error);
     }
   }
 

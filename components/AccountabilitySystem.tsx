@@ -130,7 +130,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
         generateSampleLogs();
       }
     } catch (error) {
-      console.error("Failed to load audit logs:", error);
+      (globalThis.console as any)?.error?.("Failed to load audit logs:", error);
       generateSampleLogs();
     }
   }, []);
@@ -205,7 +205,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
           }),
         });
       } catch (error) {
-        console.error("Failed to save sample log:", error);
+        (globalThis.console as any)?.error?.("Failed to save sample log:", error);
       }
     }
 
@@ -306,7 +306,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
           detectAnomalies(newLog);
         }
       } else {
-        console.error("Failed to log action to database");
+        (globalThis.console as any)?.error?.("Failed to log action to database");
         // Fallback to local state update
         const newLog: AuditLog = {
           id: `log-${Date.now()}`,
@@ -322,7 +322,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
         setAuditLogs((prev) => [newLog, ...prev]);
       }
     } catch (error) {
-      console.error("Error logging action:", error);
+      (globalThis.console as any)?.error?.("Error logging action:", error);
       // Fallback to local state
       const newLog: AuditLog = {
         id: `log-${Date.now()}`,

@@ -115,7 +115,7 @@ export async function GET(_request: NextRequest) {
       { status: 200 }
     );
   } catch (_error) {
-    console.error("Audit logs error:", _error);
+    (globalThis.console as any)?.error?.("Audit logs error:", _error);
     return NextResponse.json(
       { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }
@@ -158,7 +158,7 @@ export async function createAuditLog({
       },
     });
   } catch (error) {
-    console.error("Error creating audit log:", error);
+    (globalThis.console as any)?.error?.("Error creating audit log:", error);
     // Don't throw - audit logging should not break main flow
   }
 }
@@ -263,7 +263,7 @@ export async function POST(_request: NextRequest) {
       },
     });
   } catch (error) {
-    console.error("Audit log export error:", error);
+    (globalThis.console as any)?.error?.("Audit log export error:", error);
     return NextResponse.json(
       { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }

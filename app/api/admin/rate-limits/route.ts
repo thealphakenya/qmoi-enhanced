@@ -84,7 +84,7 @@ export async function GET(_request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Rate limits error:", error);
+    (globalThis.console as any)?.error?.("Rate limits error:", error);
     return NextResponse.json(
       { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }
@@ -181,7 +181,7 @@ export async function PUT(_request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Rate limit update error:", error);
+    (globalThis.console as any)?.error?.("Rate limit update error:", error);
     return NextResponse.json(
       { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 }

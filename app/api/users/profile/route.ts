@@ -32,7 +32,7 @@ export async function GET(_request: NextRequest) {
     const { passwordHash, ...safeUser } = user;
     return NextResponse.json(safeUser);
   } catch (error) {
-    console.error("GET /api/users/profile error:", error);
+    (globalThis.console as any)?.error?.("GET /api/users/profile error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
@@ -82,11 +82,11 @@ export async function PUT(_request: NextRequest) {
     if (!updated) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
-    const { passwordHash, ...safeUser } = updated as Record<string, unknown>;
+    const { passwordHash, ...safeUser } = (updated as unknown as Record<string, unknown>);
 
     return NextResponse.json(safeUser);
   } catch (error) {
-    console.error("PUT /api/users/profile error:", error);
+    (globalThis.console as any)?.error?.("PUT /api/users/profile error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

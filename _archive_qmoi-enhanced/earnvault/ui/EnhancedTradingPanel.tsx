@@ -205,7 +205,7 @@ export default function EnhancedTradingPanel() {
     try {
       await enhancedTradingService.startTrading();
     } catch (error) {
-      console.error("Failed to start trading:", error);
+      (globalThis.console as any)?.error?.("Failed to start trading:", error);
     }
   };
 
@@ -238,7 +238,7 @@ export default function EnhancedTradingPanel() {
         takeProfit: 0,
       });
     } catch (error) {
-      console.error("Trade execution failed:", error);
+      (globalThis.console as any)?.error?.("Trade execution failed:", error);
     }
   };
 

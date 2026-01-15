@@ -140,7 +140,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
       };
 
       recognitionRef.current.onerror = (event: unknown) => {
-        console.error("Speech recognition error:", event.error);
+        (globalThis.console as any)?.error?.("Speech recognition error:", event.error);
         setIsListening(false);
       };
     }

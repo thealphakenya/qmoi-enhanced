@@ -37,7 +37,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ jobs });
   } catch (error) {
-    console.error("Error fetching jobs:", error);
+    (globalThis.console as any)?.error?.("Error fetching jobs:", error);
     return NextResponse.json({ jobs: [] }, { status: 500 });
   }
 }

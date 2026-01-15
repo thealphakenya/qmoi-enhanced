@@ -85,7 +85,7 @@ export async function POST(_request: Request) {
 
 // Enhanced health check functions
 async function performHealthCheck(checkType: string) {
-  const checks = [];
+  const checks: Promise<any>[] = [];
 
   // Always perform basic checks
   checks.push(checkSystemHealth());

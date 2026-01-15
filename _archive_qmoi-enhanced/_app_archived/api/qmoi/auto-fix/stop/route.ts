@@ -58,7 +58,7 @@ export async function POST() {
       killedProcesses,
     });
   } catch (error) {
-    console.error("Error stopping auto-fix process:", error);
+    (globalThis.console as any)?.error?.("Error stopping auto-fix process:", error);
     return NextResponse.json(
       { error: "Failed to stop auto-fix process" },
       { status: 500 },

@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
     );
 
     if (stderr) {
-      console.error("Logger script stderr:", stderr);
+      (globalThis.console as any)?.error?.("Logger script stderr:", stderr);
     }
 
     // Parse the output
@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
     try {
       logs = JSON.parse(stdout);
     } catch (parseError) {
-      console.error("Failed to parse logger output:", parseError);
+      (globalThis.console as any)?.error?.("Failed to parse logger output:", parseError);
       return NextResponse.json(
         { error: "Failed to parse log data" },
         { status: 500 },
@@ -96,7 +96,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(logs);
   } catch (error) {
-    console.error("QMOI Own Device Logs API error:", error);
+    (globalThis.console as any)?.error?.("QMOI Own Device Logs API error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },
@@ -139,7 +139,7 @@ export async function GET(request: NextRequest) {
     try {
       stats = JSON.parse(stdout);
     } catch (parseError) {
-      console.error("Failed to parse statistics:", parseError);
+      (globalThis.console as any)?.error?.("Failed to parse statistics:", parseError);
       return NextResponse.json(
         { error: "Failed to parse statistics" },
         { status: 500 },
@@ -148,7 +148,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(stats);
   } catch (error) {
-    console.error("QMOI Own Device Statistics API error:", error);
+    (globalThis.console as any)?.error?.("QMOI Own Device Statistics API error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },
@@ -184,7 +184,7 @@ async function checkMasterAccess(request: NextRequest): Promise<boolean> {
 
     return false;
   } catch (error) {
-    console.error("Master access check error:", error);
+    (globalThis.console as any)?.error?.("Master access check error:", error);
     return false;
   }
 }

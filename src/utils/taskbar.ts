@@ -53,10 +53,10 @@ export class TaskbarManager {
     if (this._options.showInTaskbar) {
       // Set application icon
       const iconPath = path.join(_app.getAppPath?.() ?? "", this._options.icon);
-      _app.dock?.setIcon(iconPath);
+      ((globalThis as any)._app?.dock as any)?.setIcon?.(iconPath);
 
       // Set tooltip
-      _app.dock?.setTooltip(this._options.tooltip);
+      ((globalThis as any)._app?.dock as any)?.setTooltip?.(this._options.tooltip);
 
       // Enable notifications if requested
       if (this._options.notifications) {
@@ -67,7 +67,7 @@ export class TaskbarManager {
 
   private setupNotifications(): void {
     // Setup notification handlers
-    _app.on("ready", () => {
+    (_app as any).on?.("ready", () => {
       // Register notification handlers
       this.registerNotificationHandlers();
     });
@@ -75,7 +75,7 @@ export class TaskbarManager {
 
   private registerNotificationHandlers(): void {
     // Handle different types of notifications
-    _app.on(
+    (globalThis as any)._app?.on?.(
       "notification-click",
       (_event: NotificationEvent, notification: NotificationData) => {
         // Handle notification clicks
@@ -83,7 +83,7 @@ export class TaskbarManager {
       }
     );
 
-    _app.on(
+    (globalThis as any)._app?.on?.(
       "notification-close",
       (_event: NotificationEvent, notification: NotificationData) => {
         // Handle notification closes
@@ -109,14 +109,14 @@ export class TaskbarManager {
 
   public updateTooltip(tooltip: string): void {
     if (this._options.showInTaskbar) {
-      _app.dock?.setTooltip(tooltip);
+      (globalThis as any)._app?.dock?.setTooltip(tooltip);
     }
   }
 
   public updateIcon(iconPath: string): void {
     if (this._options.showInTaskbar) {
       const fullPath = path.join(_app.getAppPath?.() ?? "", iconPath);
-      _app.dock?.setIcon(fullPath);
+      (globalThis as any)._app?.dock?.setIcon(fullPath);
     }
   }
 
@@ -125,7 +125,7 @@ export class TaskbarManager {
     if (show) {
       this.initialize();
     } else {
-      _app.dock?.hide();
+      (globalThis as any)._app?.dock?.hide();
     }
   }
 

@@ -34,7 +34,7 @@ export async function initializeServices(): Promise<void> {
     console.info("[Init] Service initialization complete!");
   } catch (_err) {
     void _err;
-    console.error("[Init] Service initialization failed:", _err);
+    (globalThis.console as any)?.error?.("[Init] Service initialization failed:", _err);
     throw _err;
   }
 }
@@ -68,7 +68,7 @@ function setupRecoveryListeners(): void {
       return response;
     } catch (_err) {
       void _err;
-      console.error("[Init] Fetch error:", _err);
+      (globalThis.console as any)?.error?.("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
@@ -120,7 +120,7 @@ function setupHealthMonitoring(): void {
       });
     } catch (_err) {
       void _err;
-      console.error("[Monitor] Health monitoring error:", _err);
+      (globalThis.console as any)?.error?.("[Monitor] Health monitoring error:", _err);
     }
   }, 60 * 1000);
 }
@@ -174,20 +174,20 @@ export function enableDebugLogging(): void {
   console.info("[Debug] Debug logging enabled");
 
   // Intercept console methods to add timestamps
-  const originalLog = console.log;
-  const originalWarn = console.warn;
-  const originalError = console.error;
+  const originalLog = (console as any).log;
+  const originalWarn = (console as any).warn;
+  const originalError = (console as any).error;
 
-  console.log = (...args: unknown[]) => {
-    originalLog(`[${new Date().toISOString()}]`, ...(args as any));
+  (console as any).log = (...args: unknown[]) => {
+    originalLog?.(`[${new Date().toISOString()}]`, ...(args as any));
   };
 
-  console.warn = (...args: unknown[]) => {
-    originalWarn(`[${new Date().toISOString()}]`, ...(args as any));
+  (console as any).warn = (...args: unknown[]) => {
+    originalWarn?.(`[${new Date().toISOString()}]`, ...(args as any));
   };
 
-  console.error = (...args: unknown[]) => {
-    originalError(`[${new Date().toISOString()}]`, ...(args as any));
+  (console as any).error = (...args: unknown[]) => {
+    originalError?.(`[${new Date().toISOString()}]`, ...(args as any));
   };
 }
 

@@ -41,7 +41,7 @@ export function TaskForm({ projectId, task, onSuccess }: TaskFormProps) {
       }
       onSuccess?.();
     } catch (error) {
-      console.error("Failed to save task:", error);
+      (globalThis.console as any)?.error?.("Failed to save task:", error);
     }
   };
 

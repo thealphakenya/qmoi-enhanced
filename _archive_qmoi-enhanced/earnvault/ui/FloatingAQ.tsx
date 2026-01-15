@@ -91,7 +91,7 @@ export const FloatingAQ: React.FC = () => {
       }
       return false;
     } catch (error) {
-      console.error("Failed to load always-on setting:", error);
+      (globalThis.console as any)?.error?.("Failed to load always-on setting:", error);
       return false;
     }
   });
@@ -103,7 +103,7 @@ export const FloatingAQ: React.FC = () => {
       }
       return false;
     } catch (error) {
-      console.error("Failed to load auto-start setting:", error);
+      (globalThis.console as any)?.error?.("Failed to load auto-start setting:", error);
       return false;
     }
   });
@@ -118,7 +118,7 @@ export const FloatingAQ: React.FC = () => {
         }
         return null;
       } catch (error) {
-        console.error("Failed to load voice URI setting:", error);
+        (globalThis.console as any)?.error?.("Failed to load voice URI setting:", error);
         return null;
       }
     },
@@ -133,7 +133,7 @@ export const FloatingAQ: React.FC = () => {
       }
       return false;
     } catch (error) {
-      console.error("Failed to load dark mode setting:", error);
+      (globalThis.console as any)?.error?.("Failed to load dark mode setting:", error);
       return false;
     }
   });
@@ -152,7 +152,7 @@ export const FloatingAQ: React.FC = () => {
         localStorage.setItem("aq-auto-start", autoStart ? "true" : "false");
       }
     } catch (error) {
-      console.error("Failed to save settings:", error);
+      (globalThis.console as any)?.error?.("Failed to save settings:", error);
       toast({
         title: "Error",
         description: "Failed to save settings",
@@ -169,7 +169,7 @@ export const FloatingAQ: React.FC = () => {
         document.body.classList.toggle("aq-dark", darkMode);
       }
     } catch (error) {
-      console.error("Failed to save dark mode setting:", error);
+      (globalThis.console as any)?.error?.("Failed to save dark mode setting:", error);
       toast({
         title: "Error",
         description: "Failed to save dark mode setting",
@@ -213,7 +213,7 @@ export const FloatingAQ: React.FC = () => {
         localStorage.setItem("aq-voice-uri", selectedVoiceURI);
       }
     } catch (error) {
-      console.error("Failed to save voice URI:", error);
+      (globalThis.console as any)?.error?.("Failed to save voice URI:", error);
       toast({
         title: "Error",
         description: "Failed to save voice setting",
@@ -237,7 +237,7 @@ export const FloatingAQ: React.FC = () => {
       if (voice) utter.voice = voice;
 
       utter.onerror = (event) => {
-        console.error("Speech synthesis error:", event);
+        (globalThis.console as any)?.error?.("Speech synthesis error:", event);
         toast({
           title: "Error",
           description: "Failed to speak text",

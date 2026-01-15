@@ -21,7 +21,7 @@ export class MLTradingStrategy implements TradingStrategy {
       this.model = await tf.loadLayersModel('indexeddb://trading-model');
       this.isModelLoaded = true;
     } catch (error) {
-      console.error('Failed to load model, creating new one:', error);
+      (globalThis.console as any)?.error?.('Failed to load model, creating new one:', error);
       this.createNewModel();
     }
   }

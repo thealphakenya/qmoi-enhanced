@@ -18,7 +18,7 @@ export function TaskList({ projectId }: TaskListProps) {
     try {
       await updateTask(projectId, taskId, { status: newStatus });
     } catch (error) {
-      console.error("Failed to update task status:", error);
+      (globalThis.console as any)?.error?.("Failed to update task status:", error);
     }
   };
 

@@ -26,7 +26,7 @@ export default function ProjectConfigPage() {
     try {
       await updateConfig(formData);
     } catch (error) {
-      console.error("Failed to update project configuration:", error);
+      (globalThis.console as any)?.error?.("Failed to update project configuration:", error);
     }
   };
 
