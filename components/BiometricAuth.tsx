@@ -106,32 +106,69 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
     try {
       setCurrentBiometric("fingerprint/facial");
 
-      // Create a challenge
-      const challenge = new Uint8Array(32);
-      crypto.getRandomValues(challenge);
+      // Try to get an assertion first (login)
+      try {
+        const getChallenge = new Uint8Array(32);
+        crypto.getRandomValues(getChallenge);
+        const assertion = await navigator.credentials.get({
+          publicKey: {
+            challenge: getChallenge,
+            timeout: 60000,
+            userVerification: "preferred",
+          } as any,
+        });
 
-      const credential = await navigator.credentials.create({
-        publicKey: {
-          challenge,
-          rp: { name: "QMOI Enhanced System", id: window.location.hostname },
-          user: {
-            id: new Uint8Array(16),
-            name: "qmoi-user",
-            displayName: "QMOI User",
-          },
-          pubKeyCredParams: [
-            { alg: -7, type: "public-key" }, // ES256
-            { alg: -257, type: "public-key" }, // RS256
-          ],
-          authenticatorSelection: {
-            authenticatorAttachment: "platform",
-            userVerification: "required",
-          },
-          timeout: 60000,
-        },
-      });
+        // Send assertion to server to validate
+        try {
+          await fetch("/api/auth/webauthn/authenticate", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username: "qmoi-user", assertion }),
+          });
+        } catch (e) {
+          console.warn("WebAuthn authenticate POST failed", e);
+        }
 
-      return { success: !!credential, confidence: 0.95 };
+        return { success: !!assertion, confidence: 0.95 };
+      } catch (e) {
+        // If no assertion, perform credential creation (enrollment)
+        const challenge = new Uint8Array(32);
+        crypto.getRandomValues(challenge);
+
+        const credential = await navigator.credentials.create({
+          publicKey: {
+            challenge,
+            rp: { name: "QMOI Enhanced System", id: window.location.hostname },
+            user: {
+              id: new Uint8Array(16),
+              name: "qmoi-user",
+              displayName: "QMOI User",
+            },
+            pubKeyCredParams: [
+              { alg: -7, type: "public-key" }, // ES256
+              { alg: -257, type: "public-key" }, // RS256
+            ],
+            authenticatorSelection: {
+              authenticatorAttachment: "platform",
+              userVerification: "required",
+            },
+            timeout: 60000,
+          },
+        });
+
+        // Send credential to server to register
+        try {
+          await fetch("/api/auth/webauthn/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username: "qmoi-user", credential }),
+          });
+        } catch (er) {
+          console.warn("WebAuthn register POST failed", er);
+        }
+
+        return { success: !!credential, confidence: 0.95 };
+      }
     } catch (error) {
       (globalThis.console as any)?.error?.("WebAuthn authentication failed:", error);
       return { success: false, confidence: 0 };

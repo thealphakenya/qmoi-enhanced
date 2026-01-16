@@ -30,7 +30,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
     scrollToBottom();
   }, [chatHistory]);
 
-  const { isMaster } = useMaster();
+  const { isMaster, currentUser, qmoiMemory, updateQMOIMemory } = useMaster();
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   const [speakResponses, setSpeakResponses] = useState<boolean>(() => {
@@ -49,6 +49,19 @@ const Chatbot: React.FC<ChatbotProps> = ({
         localStorage.setItem("speakResponses", String(speakResponses));
     } catch (e) {}
   }, [speakResponses]);
+
+  // Track conversation with QMOI memory
+  useEffect(() => {
+    if (chatHistory && chatHistory.length > 0) {
+      updateQMOIMemory({
+        conversations: chatHistory.length,
+        contextHistory: [
+          ...(qmoiMemory.contextHistory || []),
+          `Chat with ${currentUser?.name || "user"}`,
+        ].slice(-10),
+      });
+    }
+  }, [chatHistory, currentUser, qmoiMemory, updateQMOIMemory]);
 
   const [profileName, setProfileName] = useState<string | null>(null);
 

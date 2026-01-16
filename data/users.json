@@ -1,1 +1,37 @@
-[]
+[
+  {
+    "id": "1",
+    "username": "master",
+    "password": "$2b$10$E9mqCDjH/4TVChz14mnFPO7RwTDnl0K3uKu0vGqt524d4noGjgY2i",
+    "role": "Master Administrator",
+    "email": "master@qmoi.com"
+  },
+  {
+    "id": "2",
+    "username": "admin",
+    "password": "$2b$10$E9mqCDjH/4TVChz14mnFPO7RwTDnl0K3uKu0vGqt524d4noGjgY2i",
+    "role": "Administrator",
+    "email": "admin@qmoi.com"
+  },
+  {
+    "id": "3",
+    "username": "sister",
+    "password": "$2b$10$E9mqCDjH/4TVChz14mnFPO7RwTDnl0K3uKu0vGqt524d4noGjgY2i",
+    "role": "Sister",
+    "email": "sister@qmoi.com"
+  },
+  {
+    "id": "4",
+    "username": "user",
+    "password": "$2b$10$E9mqCDjH/4TVChz14mnFPO7RwTDnl0K3uKu0vGqt524d4noGjgY2i",
+    "role": "User",
+    "email": "user@qmoi.com"
+  },
+  {
+    "id": "5",
+    "username": "sponsored",
+    "password": "$2b$10$E9mqCDjH/4TVChz14mnFPO7RwTDnl0K3uKu0vGqt524d4noGjgY2i",
+    "role": "Sponsored User",
+    "email": "sponsored@qmoi.com"
+  }
+]

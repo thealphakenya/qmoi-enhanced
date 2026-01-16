@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Switch } from "./ui/switch";
 import { Label } from "./ui/label";
+import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 import {
   Mic,
   MicOff,
@@ -15,6 +16,7 @@ import {
   Users,
   Smile,
 } from "lucide-react";
+import { useMaster } from "./MasterContext";
 
 interface QConverseProps {
   isEnabled: boolean;
@@ -27,6 +29,8 @@ export const QConverse: React.FC<QConverseProps> = ({
   onToggle,
   userId,
 }) => {
+  const { currentUser, updateQMOIMemory } = useMaster();
+  
   // ensure session id available and fetch profile display name
   const getOrCreateSessionId = (): string => {
     try {

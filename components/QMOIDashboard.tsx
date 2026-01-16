@@ -34,16 +34,31 @@ import {
   TrendingUp,
   Calendar,
   Clock,
+  MessageSquare,
+  Volume2,
+  Mic,
+  FileText,
+  Grid,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useMaster } from "./MasterContext";
 
 // Import our enhanced components
 import BiometricAuth from "./BiometricAuth";
-import UserAccessControl from "./UserAccessControl";
+import UserAccessControl, { AccessControlProvider } from "./UserAccessControl";
 import MemoryAwareness from "./MemoryAwareness";
 import ParallelProcessing from "./ParallelProcessing";
 import AccountabilitySystem from "./AccountabilitySystem";
 import SystemHealthMonitor from "./SystemHealthMonitor";
+import Chatbot from "./Chatbot";
+import { QConverse } from "./QConverse";
+import { TradingPanel } from "./TradingPanel";
+import QVillage from "./QVillage";
+import { FinancialManager } from "./FinancialManager";
+import QmoiMediaManager from "./QmoiMediaManager";
+import FileExplorer from "./FileExplorer";
+import { NotificationCenter } from "./NotificationCenter";
+import QmoiAutoDistribution from "./QmoiAutoDistribution";
 
 interface DashboardProps {
   user?: {
@@ -72,7 +87,21 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
   const [systemStatus, setSystemStatus] = useState<
     "healthy" | "warning" | "critical"
   >("healthy");
+  const [chatHistory, setChatHistory] = useState<unknown[]>([]);
   const { toast } = useToast();
+  const { setCurrentUser, setRole, updateQMOIMemory, qmoiMemory, currentRole } = useMaster();
+
+  // Validate tab access on role change
+  useEffect(() => {
+    const accessibleTabs = getAccessibleTabs(currentRole);
+    if (!accessibleTabs.has(activeTab)) {
+      // Redirect to first accessible tab
+      const firstAccessible = Array.from(accessibleTabs)[0];
+      if (firstAccessible) {
+        setActiveTab(firstAccessible);
+      }
+    }
+  }, [currentRole]);
 
   // Mock system stats
   const systemStats = {
@@ -134,8 +163,44 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
   };
 
   // Navigation items
-  const navigationItems = [
+  const getAccessibleTabs = (role: string): Set<string> => {
+    // Normalize role - map display names to internal codes
+    const normalizedRole = role.toLowerCase().includes("master") ? "master" :
+                          role.toLowerCase().includes("sister") ? "admin" :
+                          role.toLowerCase().includes("admin") ? "admin" :
+                          role.toLowerCase().includes("user") ? "user" :
+                          role.toLowerCase().includes("sponsored") ? "sponsored" :
+                          "guest";
+    
+    const tabAccess: Record<string, string[]> = {
+      master: [
+        "overview", "chat", "qconverse", "biometric", "access", "memory",
+        "parallel", "accountability", "health", "trading", "financial",
+        "qvillage", "media", "files", "notifications", "settings"
+      ],
+      admin: [
+        "overview", "chat", "qconverse", "biometric", "access", "memory",
+        "parallel", "accountability", "health", "trading", "financial",
+        "qvillage", "media", "files", "notifications", "settings"
+      ],
+      user: [
+        "overview", "chat", "qconverse", "biometric", "memory",
+        "trading", "media", "files", "notifications", "settings"
+      ],
+      sponsored: [
+        "chat", "trading", "notifications", "settings"
+      ],
+      guest: []
+    };
+    return new Set(tabAccess[normalizedRole] || []);
+  };
+
+  const accessibleTabs = getAccessibleTabs(currentRole);
+
+  const allNavigationItems = [
     { id: "overview", label: "Overview", icon: Home, badge: null },
+    { id: "chat", label: "Chat with QMOI", icon: MessageSquare, badge: null },
+    { id: "qconverse", label: "QConverse (Voice)", icon: Wifi, badge: "NEW" },
     { id: "biometric", label: "Biometric Auth", icon: Shield, badge: null },
     { id: "access", label: "Access Control", icon: Lock, badge: null },
     { id: "memory", label: "Memory Awareness", icon: Brain, badge: null },
@@ -147,8 +212,19 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
       badge: null,
     },
     { id: "health", label: "System Health", icon: Activity, badge: null },
+    { id: "trading", label: "Trading & Revenue", icon: TrendingUp, badge: null },
+    { id: "financial", label: "Financial Manager", icon: BarChart3, badge: null },
+    { id: "qvillage", label: "QVillage", icon: Database, badge: "ENTERPRISE" },
+    { id: "media", label: "Media Manager", icon: MessageSquare, badge: null },
+    { id: "files", label: "File Explorer", icon: Database, badge: null },
+    { id: "notifications", label: "Notifications", icon: Bell, badge: notifications > 0 ? String(notifications) : null },
     { id: "settings", label: "Settings", icon: Settings, badge: null },
   ];
+
+  // Filter navigation items based on role access
+  const navigationItems = allNavigationItems.filter(item => 
+    accessibleTabs.has(item.id)
+  );
 
   const getActivityIcon = (type: string) => {
     switch (type) {
@@ -462,13 +538,50 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
               </div>
             )}
 
+            {/* Chat Tab */}
+            {activeTab === "chat" && (
+              <Chatbot
+                chatHistory={chatHistory}
+                setChatHistory={setChatHistory}
+              />
+            )}
+
             {/* Component Tabs */}
             {activeTab === "biometric" && (
               <BiometricAuth
                 onAuthenticated={(userId, confidence) => {
+                  // Update global user context so QMOI becomes aware
+                  const userProfile = {
+                    id: String(userId),
+                    name: `Biometric User ${String(userId)}`,
+                    email: `${String(userId)}@qmoi`,
+                    role: "user",
+                    avatar: undefined,
+                  };
+                  try {
+                    setCurrentUser(userProfile as any);
+                    setRole("user");
+                    updateQMOIMemory({
+                      conversations: (qmoiMemory?.conversations || 0) + 1,
+                      preferences: {
+                        ...(qmoiMemory?.preferences || {}),
+                        lastAuthMethod: "biometric",
+                        lastAuthConfidence: confidence,
+                      },
+                      contextHistory: [
+                        `Biometric login by ${userProfile.name} (${(
+                          confidence * 100
+                        ).toFixed(1)}%)`,
+                      ],
+                    });
+                  } catch (e) {
+                    // safe fallback if context not available
+                    console.warn("Could not update MasterContext on biometric auth", e);
+                  }
+
                   toast({
                     title: "Authentication Successful",
-                    description: `User ${userId} authenticated with ${confidence}% confidence`,
+                    description: `User ${userId} authenticated with ${(confidence * 100).toFixed(1)}% confidence`,
                   });
                 }}
                 onFailed={(reason) => {
@@ -480,12 +593,118 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
                 }}
               />
             )}
-            {activeTab === "access" && <UserAccessControl />}
+            {activeTab === "access" && (
+              <AccessControlProvider>
+                <UserAccessControl />
+              </AccessControlProvider>
+            )}
             {activeTab === "memory" && <MemoryAwareness />}
             {activeTab === "parallel" && <ParallelProcessing />}
             {activeTab === "accountability" && <AccountabilitySystem />}
             {activeTab === "health" && (
               <SystemHealthMonitor onHealthChange={handleHealthChange} />
+            )}
+
+            {/* QConverse Tab */}
+            {activeTab === "qconverse" && (
+              <QConverse
+                isEnabled={true}
+                onToggle={() => {}}
+                userId={user?.id || "1"}
+              />
+            )}
+
+            {/* Trading Panel Tab */}
+            {activeTab === "trading" && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <TrendingUp className="w-5 h-5" />
+                    Trading & Revenue Dashboard
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <TradingPanel />
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Financial Manager Tab */}
+            {activeTab === "financial" && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <BarChart3 className="w-5 h-5" />
+                    Financial Manager
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <FinancialManager />
+                </CardContent>
+              </Card>
+            )}
+
+            {/* QVillage Tab */}
+            {activeTab === "qvillage" && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Database className="w-5 h-5" />
+                    QVillage Enterprise
+                  </CardTitle>
+                  <CardDescription>
+                    Master-only AI/ML infrastructure management
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <QVillage />
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Media Manager Tab */}
+            {activeTab === "media" && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Grid className="w-5 h-5" />
+                    Media Manager
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <QmoiMediaManager />
+                </CardContent>
+              </Card>
+            )}
+
+            {/* File Explorer Tab */}
+            {activeTab === "files" && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <FileText className="w-5 h-5" />
+                    File Explorer
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <FileExplorer />
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Notifications Tab */}
+            {activeTab === "notifications" && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Bell className="w-5 h-5" />
+                    Notification Center
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <NotificationCenter />
+                </CardContent>
+              </Card>
             )}
 
             {/* Settings Tab */}

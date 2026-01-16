@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import QMOIDashboard from "../components/QMOIDashboard";
+import BiometricAuth from "../components/BiometricAuth";
 import { MasterProvider, useMaster } from "../components/MasterContext";
 import { NotificationPanel } from "../components/NotificationPanel";
 
@@ -14,7 +15,7 @@ interface User {
 }
 
 function MainPage() {
-  const { isMaster, setRole } = useMaster();
+  const { isMaster, setRole, setCurrentUser: setMasterUser, updateQMOIMemory } = useMaster();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState<User>({
     id: "1",
@@ -23,6 +24,11 @@ function MainPage() {
     role: "Master Administrator",
     avatar: undefined,
   });
+  const [loginMode, setLoginMode] = useState<"form" | "quick">("quick");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   // Check authentication status
   useEffect(() => {
@@ -34,26 +40,107 @@ function MainPage() {
         // Load user data from localStorage or API
         const storedUser = localStorage.getItem("qmoi_user");
         if (storedUser) {
-          setCurrentUser(JSON.parse(storedUser));
+          const userData = JSON.parse(storedUser);
+          setCurrentUser(userData);
+          // Update QMOI awareness with user context
+          setMasterUser(userData);
+          updateQMOIMemory({
+            conversations: (Math.random() * 100) | 0,
+            preferences: {
+              language: "en",
+              timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            },
+            contextHistory: [`User ${userData.name} authenticated`],
+          });
         }
       }
     };
 
     checkAuth();
-  }, []);
+  }, [setMasterUser, updateQMOIMemory]);
 
   const handleLogin = (userData: unknown) => {
     const u = (userData as Partial<User>) || {};
-    setCurrentUser({
+    const roleString = String(u.role || "User");
+    const roleMap: Record<string, "master" | "admin" | "user" | "sponsored" | "guest"> = {
+      "Master Administrator": "master",
+      Administrator: "admin",
+      "Sister": "admin",
+      User: "user",
+      "Sponsored User": "sponsored",
+      Master: "master",
+      Admin: "admin",
+      Sponsored: "sponsored",
+    };
+    const mappedRole = roleMap[roleString] || "user";
+    
+    const user: User = {
       id: String(u.id || "1"),
       name: String(u.name || "Unknown"),
       email: String(u.email || "unknown@qmoi"),
-      role: String(u.role || "User"),
+      role: roleString,
       avatar: u.avatar,
-    });
+    };
+    
+    setCurrentUser(user);
     setIsAuthenticated(true);
+    
+    // Update QMOI awareness with user context - cast to UserProfile type
+    setMasterUser({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: mappedRole,
+      avatar: user.avatar,
+    });
+    setRole(mappedRole);
+    
+    // Update QMOI memory with user interaction
+    updateQMOIMemory({
+      conversations: (Math.random() * 50) | 0,
+      preferences: {
+        language: "en",
+        avatar: user.avatar,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      },
+      contextHistory: [`User ${user.name} (${user.role}) logged in`],
+    });
+    
     localStorage.setItem("qmoi_authenticated", "true");
-    localStorage.setItem("qmoi_user", JSON.stringify(userData));
+    localStorage.setItem("qmoi_user", JSON.stringify(user));
+  };
+
+  const handleEmailLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: email, password }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Login failed");
+        setIsLoading(false);
+        return;
+      }
+
+      const data = await response.json();
+      handleLogin({
+        id: data.user.id,
+        name: data.user.username,
+        email: email,
+        role: data.user.role || "User",
+      });
+    } catch (err: unknown) {
+      setError("Network error. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleLogout = () => {
@@ -83,50 +170,183 @@ function MainPage() {
                 QMOI Enhanced
               </h1>
               <p className="text-gray-600 mt-2">Advanced AI System Access</p>
+              <p className="text-xs text-blue-600 font-semibold mt-3">
+                🔐 Master Administrator (Victor Kwemoi) - System Admin
+              </p>
             </div>
 
-            <div className="space-y-4">
+            {/* Mode Toggle */}
+            <div className="flex gap-2 mb-6 bg-gray-100 p-1 rounded-lg">
               <button
-                onClick={() =>
-                  handleLogin({
-                    id: "1",
-                    name: "Victor Kwemoi",
-                    email: "victor@qmoi.com",
-                    role: "Master Administrator",
-                  })
-                }
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-4 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-colors"
+                onClick={() => setLoginMode("form")}
+                className={`flex-1 py-2 rounded-md font-medium transition-colors ${
+                  loginMode === "form"
+                    ? "bg-white text-blue-600 shadow-sm"
+                    : "text-gray-600"
+                }`}
               >
-                Login as Master Administrator
+                Email Login
               </button>
-
               <button
-                onClick={() =>
-                  handleLogin({
-                    id: "2",
-                    name: "Leah Chebet",
-                    email: "leah@qmoi.com",
-                    role: "Administrator",
-                  })
-                }
-                className="w-full bg-gray-100 text-gray-900 py-3 px-4 rounded-lg font-medium hover:bg-gray-200 transition-colors"
+                onClick={() => setLoginMode("quick")}
+                className={`flex-1 py-2 rounded-md font-medium transition-colors ${
+                  loginMode === "quick"
+                    ? "bg-white text-blue-600 shadow-sm"
+                    : "text-gray-600"
+                }`}
               >
-                Login as Administrator
+                Quick Access
               </button>
+            </div>
 
-              <button
-                onClick={() =>
+            {/* Email/Password Login Form */}
+            {loginMode === "form" && (
+              <form onSubmit={handleEmailLogin} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Email or Username
+                  </label>
+                  <input
+                    type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="admin"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="••••••••"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                {error && (
+                  <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-2 rounded-lg text-sm">
+                    {error}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-4 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-colors disabled:opacity-50"
+                >
+                  {isLoading ? "Logging in..." : "Login"}
+                </button>
+
+                <div className="text-xs text-gray-500 text-center mt-4">
+                  <p className="font-semibold">Demo Credentials:</p>
+                  <p>👑 Master: master / adminpass</p>
+                  <p>👩‍💼 Sister: sister / adminpass</p>
+                  <p>📋 Admin: admin / adminpass</p>
+                  <p>👤 User: user / adminpass</p>
+                  <p className="text-blue-600 font-semibold mt-2">Master is System Admin</p>
+                </div>
+              </form>
+            )}
+
+            {/* Quick Login Buttons */}
+            {loginMode === "quick" && (
+              <div className="space-y-4">
+                <button
+                  onClick={() =>
+                    handleLogin({
+                      id: "1",
+                      name: "Victor Kwemoi",
+                      email: "victor@qmoi.com",
+                      role: "Master Administrator",
+                    })
+                  }
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-4 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-colors"
+                >
+                  🔐 Master Admin - Victor Kwemoi
+                </button>
+
+                <button
+                  onClick={() =>
+                    handleLogin({
+                      id: "3",
+                      name: "Leah Chebet",
+                      email: "sister@qmoi.com",
+                      role: "Sister",
+                    })
+                  }
+                  className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 px-4 rounded-lg font-medium hover:from-purple-600 hover:to-pink-600 transition-colors"
+                >
+                  👩‍💼 Sister (Admin) - Leah Chebet
+                </button>
+
+                <button
+                  onClick={() =>
+                    handleLogin({
+                      id: "2",
+                      name: "Admin User",
+                      email: "admin@qmoi.com",
+                      role: "Administrator",
+                    })
+                  }
+                  className="w-full bg-gray-100 text-gray-900 py-3 px-4 rounded-lg font-medium hover:bg-gray-200 transition-colors"
+                >
+                  📋 Administrator
+                </button>
+
+                <button
+                  onClick={() =>
+                    handleLogin({
+                      id: "4",
+                      name: "Demo User",
+                      email: "demo@qmoi.com",
+                      role: "User",
+                    })
+                  }
+                  className="w-full bg-gray-100 text-gray-900 py-3 px-4 rounded-lg font-medium hover:bg-gray-200 transition-colors"
+                >
+                  👤 Demo User
+                </button>
+              </div>
+            )}
+
+            {/* Biometric Login (alternative) */}
+            <div className="mt-6">
+              <h3 className="text-sm font-medium text-gray-700 mb-2">
+                Biometric Login
+              </h3>
+              <BiometricAuth
+                onAuthenticated={async (userId, confidence) => {
+                  // Create QMOI session with biometric context
+                  try {
+                    await fetch("/api/qmoi/session", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        userId,
+                        username: `biometric-user-${userId}`,
+                        role: "User",
+                        biometricMethods: ["fingerprint", "face", "voice"],
+                      }),
+                    });
+                  } catch (e) {
+                    console.warn("Could not create session", e);
+                  }
                   handleLogin({
-                    id: "3",
-                    name: "Demo User",
-                    email: "demo@qmoi.com",
+                    id: userId,
+                    name: `Biometric User ${userId}`,
+                    email: `biometric+${userId}@qmoi`,
                     role: "User",
-                  })
-                }
-                className="w-full bg-gray-100 text-gray-900 py-3 px-4 rounded-lg font-medium hover:bg-gray-200 transition-colors"
-              >
-                Login as Demo User
-              </button>
+                  });
+                }}
+                onFailed={(reason) => setError(String(reason))}
+              />
             </div>
 
             <div className="mt-8 text-center text-sm text-gray-500">
