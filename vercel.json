@@ -5,20 +5,11 @@
   "buildCommand": "npm run build",
   "installCommand": "npm install",
   "functions": {
-    "app/api/**/*.js": {
+    "app/api/**/route.ts": {
       "maxDuration": 30
     }
   },
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/app/api/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
+  "routes": [],
   "env": {
     "NODE_ENV": "production"
   },
