@@ -31,7 +31,12 @@ export async function GET(_request: NextRequest) {
 
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
-        { error: { message: "Invalid token (missing userId)", code: "INVALID_TOKEN" } },
+        {
+          error: {
+            message: "Invalid token (missing userId)",
+            code: "INVALID_TOKEN",
+          },
+        },
         { status: 401 }
       );
     }
@@ -116,7 +121,7 @@ export async function GET(_request: NextRequest) {
             id: u.id,
             username: u.username,
             email: u.email,
-            transactionCount: u._count.transactions,
+            transactionCount: u._count?.transactions || 0,
           })),
         },
       },

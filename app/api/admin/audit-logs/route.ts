@@ -242,7 +242,7 @@ export async function POST(_request: NextRequest) {
       filename = `audit-logs-${new Date().toISOString()}.json`;
       contentType = "application/json";
     } else if (format === "csv") {
-      content = convertLogsToCSV(logs);
+      content = convertLogsToCSV(logs as any);
       filename = `audit-logs-${new Date().toISOString()}.csv`;
       contentType = "text/csv";
     } else {

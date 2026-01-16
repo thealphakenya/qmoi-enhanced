@@ -100,8 +100,8 @@ export async function GET(_request: NextRequest) {
       {
         users: users.map((u) => ({
           ...u,
-          walletCount: u._count.wallets,
-          transactionCount: u._count.transactions,
+          walletCount: u._count?.wallets || 0,
+          transactionCount: u._count?.transactions || 0,
         })),
         pagination: { skip, take, total },
       },

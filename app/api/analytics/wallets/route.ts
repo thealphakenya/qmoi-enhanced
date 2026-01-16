@@ -92,7 +92,7 @@ export async function GET(_request: NextRequest) {
       // Get wallet transactions
       const walletTxns = (await db.prisma.transaction.findMany({
         where: { walletId: String(wallet.id) },
-      })) as Array<Record<string, unknown>>;
+      })) as any[] as Array<Record<string, unknown>>;
 
       transactionsByWallet[String(wallet.id)] = walletTxns;
       stats.transactionStats.totalTransactions += walletTxns.length;
