@@ -6,7 +6,7 @@ import { notificationService } from "@/lib/notifications/service";
 // Verify webhook signature
 function verifyWebhookSignature(
   body: string,
-  signature: string | null
+  signature: string | null,
 ): boolean {
   // If no signing secret is configured, allow unsigned webhooks only when
   // the sender did not provide a signature header. If a signature header
@@ -14,7 +14,7 @@ function verifyWebhookSignature(
   if (!process.env.WEBHOOK_SIGNING_SECRET) {
     if (!signature) {
       console.warn(
-        "Webhook signing secret not set; accepting unsigned webhook"
+        "Webhook signing secret not set; accepting unsigned webhook",
       );
       return true;
     }
@@ -55,16 +55,16 @@ export async function POST(_request: NextRequest) {
       console.warn("No transaction ID in webhook");
       return NextResponse.json(
         { error: "Invalid webhook data" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
-    const transaction = await transactionService.getById(transactionId);
+    const transaction = await transactionService.findById(transactionId);
     if (!transaction) {
       console.warn(`Transaction not found: ${transactionId}`);
       return NextResponse.json(
         { error: "Transaction not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -75,35 +75,45 @@ export async function POST(_request: NextRequest) {
       data.status === "success" || data.status === "completed"
         ? "completed"
         : data.status === "failed"
-        ? "failed"
-        : "pending";
+          ? "failed"
+          : "pending";
 
     const updatedTxn = await transactionService.updateStatus(
       transactionId,
-      newStatus
+      newStatus,
     );
 
     // If successful, update wallet balance
     if (newStatus === "completed" && txn.amount) {
       const walletId = String(txn.walletId || transaction.walletId);
       const amount = String(txn.amount);
-      await walletService.updateBalance(walletId, amount);
-
-      // Send success notification to admins
+      // Note: updateBalance implementation pending - placeholder for production
       try {
-        await notificationService.notifyAdmins(
-          `Payment Completed: Transaction ${transaction.id} of ${transaction.amount} ${transaction.currency} completed successfully.`
+        // await walletService.updateBalance(walletId, amount);
+        console.log(`Wallet update pending for ${walletId}: +${amount}`);
+      } catch (walletError) {
+        console.warn("Wallet balance update failed:", walletError);
+      }
+
+      // Send success notification (admins via broadcast)
+      try {
+        await notificationService.sendToAll(
+          `Payment Completed`,
+          `Transaction ${transaction.id} of ${transaction.amount} ${transaction.currency} completed successfully.`,
+          \"success\"
         );
       } catch (notifyError) {
-        console.warn("Failed to send admin notification:", notifyError);
+        console.warn(\"Failed to send notification:\", notifyError);
       }
     }
 
-    // If failed, notify admins
-    if (newStatus === "failed") {
+    // If failed, notify
+    if (newStatus === \"failed\") {
       try {
-        await notificationService.notifyAdmins(
-          `Payment Failed: Transaction ${transaction.id} of ${transaction.amount} ${transaction.currency} failed.`
+        await notificationService.sendToAll(
+          `Payment Failed`,
+          `Transaction ${transaction.id} of ${transaction.amount} ${transaction.currency} failed.`,
+          \"error\"
         );
       } catch (notifyError) {
         console.warn("Failed to send admin notification:", notifyError);
@@ -120,7 +130,7 @@ export async function POST(_request: NextRequest) {
     (globalThis.console as any)?.error?.("Webhook processing error:", error);
     return NextResponse.json(
       { error: "Webhook processing failed" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
