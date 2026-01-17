@@ -24,7 +24,7 @@
     }
   },
   "functions": {
-    "app/api/**/route.ts": {
+    "app/api/**/route.js": {
       "maxDuration": 30,
       "memory": 3008
     }
