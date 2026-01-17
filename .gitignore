@@ -100,7 +100,7 @@ logs/
 *.sqlite3
 
 # Lock files
-package-lock.json
+# package-lock.json  # KEEP: Required for npm ci in GitHub Actions
 yarn.lock
 pnpm-lock.yaml
 
