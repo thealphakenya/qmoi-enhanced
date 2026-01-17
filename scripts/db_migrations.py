@@ -8,6 +8,7 @@ import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from pathlib import Path
 
+
 class DatabaseMigrator:
     def __init__(self, db_type: str = 'sqlite', config_path: Optional[str] = None):
         self.db_type = db_type.lower()
@@ -21,20 +22,20 @@ class DatabaseMigrator:
     def _setup_logger(self) -> logging.Logger:
         logger = logging.getLogger('DatabaseMigrator')
         logger.setLevel(logging.INFO)
-        
+
         # Create handlers
         file_handler = logging.FileHandler('db_migrations.log')
         console_handler = logging.StreamHandler()
-        
+
         # Create formatters and add it to handlers
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         file_handler.setFormatter(formatter)
         console_handler.setFormatter(formatter)
-        
+
         # Add handlers to the logger
         logger.addHandler(file_handler)
         logger.addHandler(console_handler)
-        
+
         return logger
 
     def _load_config(self, config_path: Optional[str]) -> Dict:
@@ -81,7 +82,7 @@ class DatabaseMigrator:
                     password=self.config['password']
                 )
                 self.connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
-            
+
             self.cursor = self.connection.cursor()
             self._ensure_migrations_table()
             self.logger.info("Database connection established")
@@ -120,17 +121,17 @@ class DatabaseMigrator:
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         version = f"V{timestamp}"
         filename = f"{version}_{name}.sql"
-        
+
         # Create migration file
         migration_path = self.migrations_dir / filename
         with open(migration_path, 'w') as f:
             f.write("-- Migration: " + name + "\n")
             f.write("-- Version: " + version + "\n\n")
             f.write("-- Up Migration\n")
-            f.write("-- TODO: Add your up migration SQL here\n\n")
+            f.write("-- Production: Add your up migration SQL here\n\n")
             f.write("-- Down Migration\n")
-            f.write("-- TODO: Add your down migration SQL here\n")
-        
+            f.write("-- Production: Add your down migration SQL here\n")
+
         self.logger.info(f"Created migration file: {filename}")
         return version
 
@@ -159,7 +160,7 @@ class DatabaseMigrator:
         try:
             applied = {m['version'] for m in self.get_applied_migrations()}
             pending = []
-            
+
             for file in sorted(self.migrations_dir.glob('V*.sql')):
                 version = file.stem.split('_')[0]
                 if version not in applied:
@@ -167,14 +168,14 @@ class DatabaseMigrator:
                         content = f.read()
                         up_migration = content.split('-- Down Migration')[0].split('-- Up Migration')[1].strip()
                         down_migration = content.split('-- Down Migration')[1].strip()
-                        
+
                         pending.append({
                             'version': version,
                             'name': file.stem.split('_', 1)[1],
                             'up_migration': up_migration,
                             'down_migration': down_migration
                         })
-            
+
             return pending
         except Exception as e:
             self.logger.error(f"Error getting pending migrations: {str(e)}")
@@ -184,16 +185,16 @@ class DatabaseMigrator:
         """Apply a single migration."""
         try:
             self.logger.info(f"Applying migration: {migration['version']} - {migration['name']}")
-            
+
             # Execute up migration
             self.cursor.execute(migration['up_migration'])
-            
+
             # Record migration
             self.cursor.execute(f"""
                 INSERT INTO {self.config['migrations_table']} (version, name)
                 VALUES (%s, %s)
             """, (migration['version'], migration['name']))
-            
+
             self.connection.commit()
             self.logger.info(f"Successfully applied migration: {migration['version']}")
         except Exception as e:
@@ -205,16 +206,16 @@ class DatabaseMigrator:
         """Rollback a single migration."""
         try:
             self.logger.info(f"Rolling back migration: {migration['version']} - {migration['name']}")
-            
+
             # Execute down migration
             self.cursor.execute(migration['down_migration'])
-            
+
             # Remove migration record
             self.cursor.execute(f"""
                 DELETE FROM {self.config['migrations_table']}
                 WHERE version = %s
             """, (migration['version'],))
-            
+
             self.connection.commit()
             self.logger.info(f"Successfully rolled back migration: {migration['version']}")
         except Exception as e:
@@ -229,11 +230,11 @@ class DatabaseMigrator:
             if not pending:
                 self.logger.info("No pending migrations")
                 return
-            
+
             self.logger.info(f"Found {len(pending)} pending migrations")
             for migration in pending:
                 self.apply_migration(migration)
-            
+
             self.logger.info("All migrations applied successfully")
         except Exception as e:
             self.logger.error(f"Error during migration: {str(e)}")
@@ -246,17 +247,17 @@ class DatabaseMigrator:
             if not applied:
                 self.logger.info("No migrations to rollback")
                 return
-            
+
             to_rollback = applied[-steps:]
             self.logger.info(f"Rolling back {len(to_rollback)} migrations")
-            
+
             for migration in reversed(to_rollback):
                 # Find migration file
                 migration_file = next(
                     (f for f in self.migrations_dir.glob(f"{migration['version']}_*.sql")),
                     None
                 )
-                
+
                 if migration_file:
                     with open(migration_file, 'r') as f:
                         content = f.read()
@@ -266,7 +267,7 @@ class DatabaseMigrator:
                             'name': migration['name'],
                             'down_migration': down_migration
                         })
-            
+
             self.logger.info("Rollback completed successfully")
         except Exception as e:
             self.logger.error(f"Error during rollback: {str(e)}")
@@ -280,39 +281,41 @@ class DatabaseMigrator:
             self.connection.close()
         self.logger.info("Database connection closed")
 
+
 def main():
     # Example usage
     migrator = DatabaseMigrator(db_type='sqlite')
-    
+
     try:
         migrator.connect()
-        
+
         # Create a new migration
         version = migrator.create_migration('add_users_table')
         print(f"Created migration: {version}")
-        
+
         # Apply pending migrations
         migrator.migrate()
-        
+
         # Get migration status
         applied = migrator.get_applied_migrations()
         pending = migrator.get_pending_migrations()
-        
+
         print("\nApplied Migrations:")
         for m in applied:
             print(f"- {m['version']}: {m['name']}")
-        
+
         print("\nPending Migrations:")
         for m in pending:
             print(f"- {m['version']}: {m['name']}")
-        
+
         # Rollback last migration
         migrator.rollback()
-        
+
     except Exception as e:
         print(f"Error: {str(e)}")
     finally:
         migrator.close()
 
+
 if __name__ == '__main__':
-    main() 
+    main()

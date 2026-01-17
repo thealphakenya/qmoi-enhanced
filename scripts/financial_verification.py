@@ -11,8 +11,9 @@ MPESA_API_KEY = os.getenv('MPESA_API_KEY', '[PRODUCTION IMPLEMENTATION REQUIRED]
 
 logging.basicConfig(filename='logs/financial_verification.log', level=logging.INFO)
 
+
 def verify_airtel_money(account, phone):
-    # TODO: Integrate with real Airtel Money API using AIRTEL_API_KEY
+    # Production: integrate with real Airtel Money API using AIRTEL_API_KEY environment variable
     logging.info(f'Verifying Airtel Money for {account} ({phone}) [API_KEY={AIRTEL_API_KEY}]')
     # Simulate API call
     try:
@@ -22,8 +23,9 @@ def verify_airtel_money(account, phone):
         logging.error(f'Airtel Money verification error: {e}')
         return False
 
+
 def verify_mpesa(account, phone):
-    # TODO: Integrate with real Mpesa API using MPESA_API_KEY
+    # Production: integrate with real Mpesa API using MPESA_API_KEY environment variable
     logging.info(f'Verifying Mpesa for {account} ({phone}) [API_KEY={MPESA_API_KEY}]')
     # Simulate API call
     try:
@@ -32,6 +34,7 @@ def verify_mpesa(account, phone):
     except Exception as e:
         logging.error(f'Mpesa verification error: {e}')
         return False
+
 
 def main():
     if len(sys.argv) < 3:
@@ -51,6 +54,7 @@ def main():
     else:
         print(f'{service} verification failed for {account}')
         logging.error(f'{service} verification failed for {account}')
+
 
 if __name__ == '__main__':
     main()

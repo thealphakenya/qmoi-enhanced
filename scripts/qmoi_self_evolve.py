@@ -11,6 +11,7 @@ except Exception as e:
     codegen = None
     print(f"[QMOI Self-Evolve] Could not load HuggingFace model: {e}")
 
+
 def analyze_codebase(path):
     print(f"[QMOI Self-Evolve] Analyzing codebase at: {path}")
     suggestions = []
@@ -34,9 +35,12 @@ def analyze_codebase(path):
                     })
     return suggestions
 
+
 def log_to_memory(suggestions):
     print(f"[QMOI Self-Evolve] Logging suggestions to QmoiMemory: {suggestions}")
-    # TODO: Implement real logging
+    # Production: implement real logging to persistent memory/vector DB
+    # Currently: prints to console (stub)
+
 
 def main():
     codebase_path = sys.argv[1] if len(sys.argv) > 1 else '.'
@@ -46,5 +50,6 @@ def main():
     log_to_memory(suggestions)
     print(f"[QMOI Self-Evolve] Evolution cycle complete at {datetime.now()}")
 
+
 if __name__ == '__main__':
-    main() 
+    main()
