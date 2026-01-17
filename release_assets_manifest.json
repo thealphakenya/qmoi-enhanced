@@ -1,15 +1,6 @@
 {
   "assets": [
     {
-      "path": "raspberrypi/latest/qmoi_ai.img",
-      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/raspberrypi/latest/qmoi_ai.img",
-      "size": 2048,
-      "sha256": "0766f562fecb25b62ef496b4a8a9f90159135ce4fe0ef2e0888d9612d26f968c",
-      "platform": "raspberrypi",
-      "placeholder": true,
-      "placeholder_note": "Small stub created by scripts/create_release_placeholders.py \u2014 replace with real artifact and update manifest."
-    },
-    {
       "path": "linux/latest/qmoi_ai.AppImage",
       "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.AppImage",
       "size": 6291456,
@@ -17,132 +8,11 @@
       "platform": "Linux"
     },
     {
-      "path": "linux/latest/qmoi_ai.deb",
-      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.deb",
-      "size": 756,
-      "sha256": "f01b10d9940b41fdd3ca1118bce8198511fab239b3b71138f02d523547074796",
-      "platform": "Linux"
-    },
-    {
-      "path": "web/latest/qmoi.zip",
-      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/qmoi.zip",
-      "size": 2048,
-      "sha256": "d14fb031144e48b05faaeed3dbffec9a9e8d37c34aee763b4f9a405c5ccfb680",
-      "platform": "web",
-      "placeholder": true,
-      "placeholder_note": "Small stub created by scripts/create_release_placeholders.py \u2014 replace with real artifact and update manifest."
-    },
-    {
-      "path": "web/latest/admin.zip",
-      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/admin.zip",
-      "size": 2048,
-      "sha256": "fa3098453de2768ef8a7ff6214ca41a5c2c3ce44aa6b5aeba0a1083b2bb4acfd",
-      "platform": "web",
-      "placeholder": true,
-      "placeholder_note": "Small stub created by scripts/create_release_placeholders.py \u2014 replace with real artifact and update manifest."
-    },
-    {
-      "path": "web/latest/deals.zip",
-      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/deals.zip",
-      "size": 2048,
-      "sha256": "1573f2eb6a563c860e56eb89222211839bd9d3ec43480d98f0baf99af184a64c",
-      "platform": "web",
-      "placeholder": true,
-      "placeholder_note": "Small stub created by scripts/create_release_placeholders.py \u2014 replace with real artifact and update manifest."
-    },
-    {
-      "path": "web/latest/qmoi-ai.zip",
-      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/qmoi-ai.zip",
-      "size": 2048,
-      "sha256": "640cf15bddcccb7781c2b5b9d2066160955f8476245e7380d91e4bf95fb97c65",
-      "platform": "web",
-      "placeholder": true,
-      "placeholder_note": "Small stub created by scripts/create_release_placeholders.py \u2014 replace with real artifact and update manifest."
-    },
-    {
-      "path": "web/latest/q-alpha.zip",
-      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/q-alpha.zip",
-      "size": 2048,
-      "sha256": "4222ab30396c1f3ac4c47a88b2019b03d9865ad3cf767fde0cf0c91dd376dc20",
-      "platform": "web",
-      "placeholder": true,
-      "placeholder_note": "Small stub created by scripts/create_release_placeholders.py \u2014 replace with real artifact and update manifest."
-    },
-    {
-      "path": "web/latest/qmoi-space.zip",
-      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/web/latest/qmoi-space.zip",
-      "size": 2048,
-      "sha256": "ee8ae03c0f99436924a57c5c5a071de6a88fa344491a82b3644fa177778bde00",
-      "platform": "web",
-      "placeholder": true,
-      "placeholder_note": "Small stub created by scripts/create_release_placeholders.py \u2014 replace with real artifact and update manifest."
-    },
-    {
-      "path": "ios/latest/qmoi_ai.ipa",
-      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa",
-      "size": 1568,
-      "sha256": "d2f99969a9ebcad6b1ad4233fb848804ec9ba70ca19be25345cb81b46d8ee233",
-      "platform": "iOS"
-    },
-    {
-      "path": "chromebook/latest/qmoi_ai_chromebook.zip",
-      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/chromebook/latest/qmoi_ai_chromebook.zip",
-      "size": 1196,
-      "sha256": "eb8e2456d6529fe24ea81eb81341743d80c7b472b90fe1a5b87a49dff09f87b0",
-      "platform": "Chromebook"
-    },
-    {
       "path": "mac/latest/qmoi_ai.dmg",
       "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/mac/latest/qmoi_ai.dmg",
       "size": 8388608,
       "sha256": "fb214458d6f0bb27f18ef94f700f4e43860d6dc4aad81d16d876fbed2942e52b",
       "platform": "macOS"
-    },
-    {
-      "path": "qcity/latest/checksums.txt",
-      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/qcity/latest/checksums.txt",
-      "size": 2048,
-      "sha256": "8922d59f97ccf64062c74c0d7e52250e5d89f017b9dd1fab19b6833f15422036",
-      "platform": "QCity",
-      "placeholder": true,
-      "placeholder_note": "Small stub created by scripts/create_release_placeholders.py \u2014 replace with real artifact and update manifest."
-    },
-    {
-      "path": "qcity/latest/qcity_package.zip",
-      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/qcity/latest/qcity_package.zip",
-      "size": 2252,
-      "sha256": "1ef6cb8d88dba2b433eefb84c71f1d16097dbd8550201b0c005ffe346d05b639",
-      "platform": "QCity"
-    },
-    {
-      "path": "android/latest/qmoi_ai.apk",
-      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/android/latest/qmoi_ai.apk",
-      "size": 1222,
-      "sha256": "fc55397b23639ba31a29264b6435bc488bf7b7cb73d5cefe87eda0c843eb8a01",
-      "platform": "Android"
-    },
-    {
-      "path": "smarttv/latest/qmoi_ai_smarttv.apk",
-      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/smarttv/latest/qmoi_ai_smarttv.apk",
-      "size": 912,
-      "sha256": "8a9c5192de2ce39b788f27d5909600e04fe287d314b88afc3020f96e814d1f6c",
-      "platform": "SmartTV"
-    },
-    {
-      "path": "windows/latest/checksums.txt",
-      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/windows/latest/checksums.txt",
-      "size": 2048,
-      "sha256": "ecdd07338940df145e49a79ecee69eaac3cf6586530800b89bea11948871f068",
-      "platform": "Windows",
-      "placeholder": true,
-      "placeholder_note": "Small stub created by scripts/create_release_placeholders.py \u2014 replace with real artifact and update manifest."
-    },
-    {
-      "path": "windows/latest/qmoi_ai.exe.sha256",
-      "abs_path": "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe.sha256",
-      "size": 78,
-      "sha256": "38db80cc5c95943005aad25ac7292039757de4412f67c431939cdd6e15203068",
-      "platform": "Windows"
     },
     {
       "path": "windows/latest/qmoi_ai.exe",
