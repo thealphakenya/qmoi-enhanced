@@ -100,23 +100,23 @@ export async function POST(_request: NextRequest) {
         await notificationService.sendToAll(
           `Payment Completed`,
           `Transaction ${transaction.id} of ${transaction.amount} ${transaction.currency} completed successfully.`,
-          \"success\"
+          "success",
         );
       } catch (notifyError) {
-        console.warn(\"Failed to send notification:\", notifyError);
+        console.warn("Failed to send notification:", notifyError);
       }
     }
 
     // If failed, notify
-    if (newStatus === \"failed\") {
+    if (newStatus === "failed") {
       try {
         await notificationService.sendToAll(
           `Payment Failed`,
           `Transaction ${transaction.id} of ${transaction.amount} ${transaction.currency} failed.`,
-          \"error\"
+          "error",
         );
       } catch (notifyError) {
-        console.warn("Failed to send admin notification:", notifyError);
+        console.warn("Failed to send notification:", notifyError);
       }
     }
 
