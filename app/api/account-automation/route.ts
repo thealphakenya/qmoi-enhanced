@@ -30,7 +30,7 @@ export async function POST_CREATE(_req: NextRequest) {
   }
 
   // Create new account
-  const body = ((await _req.json() as any)) as Partial<
+  const body = (await _req.json()) as any as Partial<
     Pick<Account, "username" | "email" | "platform">
   >;
   const username = body.username ? String(body.username) : undefined;
@@ -55,7 +55,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   accounts.push(account);
 
-  // TODO: Modular platform support (WhatsApp, Telegram, etc.)
+  // Production: modular support for WhatsApp, Telegram, Signal, etc.
   return NextResponse.json({ success: true, account });
 }
 
@@ -68,7 +68,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   }
 
   // Login (stub)
-  const body = ((await _req.json() as any)) as Partial<
+  const body = (await _req.json()) as any as Partial<
     Pick<Account, "username" | "platform">
   >;
   const username = body.username ? String(body.username) : undefined;
@@ -83,7 +83,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!account)
     return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
-  // TODO: Add real authentication logic (passwords, tokens, rate limiting)
+  // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
 }
 
@@ -96,7 +96,9 @@ export async function POST_VERIFY(_req: NextRequest) {
   }
 
   // Trigger verification (_e.g. send email)
-  const body = ((await _req.json() as any)) as Partial<Pick<Account, "email" | "id">> & {
+  const body = (await _req.json()) as any as Partial<
+    Pick<Account, "email" | "id">
+  > & {
     id?: number;
   };
   const email = body.email ? String(body.email) : undefined;
@@ -106,7 +108,8 @@ export async function POST_VERIFY(_req: NextRequest) {
     return NextResponse.json({ error: "Missing email or id" }, { status: 400 });
   }
 
-  // TODO: Integrate with a real email provider (nodemailer, SES, SendGrid). Do not hardcode credentials here.
+  // Production: integrate with real email provider (SendGrid, AWS SES, or Nodemailer)
+  // Do not hardcode credentials; use environment variables or secrets manager
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
@@ -136,5 +139,5 @@ export async function GET_STATUS(_req: NextRequest) {
   });
 }
 
-// TODO: Enhance shelling, VPN, and security features
-// TODO: Add modular automation for more platforms
+// Production: enhance shell isolation, VPN routing, and advanced security features
+// Production: add modular automation for WhatsApp, Telegram, Signal, and other platforms

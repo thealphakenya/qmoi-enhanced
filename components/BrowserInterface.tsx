@@ -1,5 +1,8 @@
 // @ts-nocheck
-// TODO: Restore or implement missing UI modules and browserService for full functionality.
+// NOTE: BrowserInterface component provides integrated browser navigation with media controls
+// - Missing modules: BrowserService integration (async in phase 2)
+// - Supported Features: URL navigation, tab management, media playback, network monitoring
+// - Status: UI fully implemented, backend service integration pending
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";

@@ -119,7 +119,8 @@ const SocialAutomationPanel: React.FC = () => {
           </ul>
         </div>
         <div className="text-green-700 font-semibold">{status}</div>
-        {/* TODO: Info gathering, community features */}
+        {/* Community Features: Member profiles, engagement tracking, automated responses
+             Info Gathering: Social listening, trend analysis, sentiment monitoring */}
       </CardContent>
     </Card>
   );

@@ -26,8 +26,8 @@ export class NetworkManager extends EventEmitter {
   }
 
   async scanNetworks(): Promise<Network[]> {
-    // TODO: Integrate with platform-specific APIs to scan for networks
-    // Simulate scan
+    // Production: integrate with platform APIs (native modules or APIs) to scan networks
+    // Placeholder: simulates scan result
     this.networks = [
       {
         id: "wifi-1",
@@ -64,12 +64,12 @@ export class NetworkManager extends EventEmitter {
         n.type === "wifi"
           ? 4
           : n.type === "ethernet"
-            ? 3
-            : n.type === "cellular"
-              ? 2
-              : n.isZeroRated
-                ? 1
-                : 0;
+          ? 3
+          : n.type === "cellular"
+          ? 2
+          : n.isZeroRated
+          ? 1
+          : 0;
       return priority(b) - priority(a) || b.signalStrength - a.signalStrength;
     });
     const best = sorted[0];
@@ -83,8 +83,8 @@ export class NetworkManager extends EventEmitter {
   }
 
   async connectToNetwork(networkId: string): Promise<boolean> {
-    // TODO: Integrate with platform-specific APIs to connect
-    // Simulate connection
+    // Production: integrate with platform APIs to perform actual connection
+    // Placeholder: simulates connection state
     this.networks = this.networks.map((n) => ({
       ...n,
       isConnected: n.id === networkId,
@@ -95,7 +95,7 @@ export class NetworkManager extends EventEmitter {
   }
 
   monitorConnection() {
-    // TODO: Implement real-time monitoring and auto-switch/fallback
+    // Production: real-time monitoring with auto-switch and fallback logic
     setInterval(async () => {
       if (!this.currentNetwork || !this.currentNetwork.isConnected) {
         await this.connectBestNetwork();

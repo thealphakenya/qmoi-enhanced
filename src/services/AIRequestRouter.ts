@@ -84,12 +84,12 @@ export class AIRequestRouter {
   }
 
   private async handleFileRequest(user: User, _request: AIRequest) {
-    // TODO: Implement file editing, preview, commit/rollback logic
+    // Production: implement file editing, preview, commit/rollback with VCS
     return { status: "file-handled", user: user.id, message: _request.message };
   }
 
   private async handleProjectRequest(user: User, _request: AIRequest) {
-    // TODO: Implement project/task switching/continuation logic
+    // Production: implement project/task switching and continuation logic
     return {
       status: "project-handled",
       user: user.id,
@@ -98,7 +98,7 @@ export class AIRequestRouter {
   }
 
   private async handleFinancialRequest(user: User, _request: AIRequest) {
-    // TODO: Integrate with wallet, Mpesa, Airtel, Pesapal, etc.
+    // Production: integrate with wallet, M-Pesa, Airtel Money, Pesapal APIs
     return {
       status: "financial-handled",
       user: user.id,
@@ -107,7 +107,7 @@ export class AIRequestRouter {
   }
 
   private async handleVersionRequest(user: User, _request: AIRequest) {
-    // TODO: Return version info, changelog, etc.
+    // Production: return version info, changelog, and release notes
     return {
       status: "version-handled",
       user: user.id,
@@ -116,7 +116,7 @@ export class AIRequestRouter {
   }
 
   private async handleChatRequest(user: User, _request: AIRequest) {
-    // TODO: Integrate with AI chat/response engine
+    // Production: integrate with AI chat engine for intelligent responses
     return { status: "chat-handled", user: user.id, message: _request.message };
   }
 }

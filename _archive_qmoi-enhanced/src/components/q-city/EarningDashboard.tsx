@@ -98,7 +98,28 @@ const EarningDashboard: React.FC = () => {
           )}
         </div>
         <div className="text-green-700 font-semibold">{status}</div>
-        {/* TODO: Advanced analytics, strategy management */}
+        <div
+          style={{
+            marginTop: 12,
+            padding: 12,
+            background: "#f8fafc",
+            borderRadius: 8,
+          }}
+        >
+          <p style={{ margin: 0 }}>
+            Advanced analytics and strategy management are available in full
+            mode.
+          </p>
+          <Button
+            size="small"
+            variant="contained"
+            color="primary"
+            onClick={() => alert("Open advanced analytics (placeholder)")}
+            style={{ marginTop: 8 }}
+          >
+            Open Advanced Analytics
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );

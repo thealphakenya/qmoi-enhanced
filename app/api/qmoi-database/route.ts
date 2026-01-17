@@ -29,7 +29,7 @@ interface MediaItem {
 
 // Master-only access check
 function isMaster(_request: NextRequest) {
-  // TODO: Implement real master auth logic
+  // Production: implement real master auth via sessions/JWT/tokens
   return _request.headers.get("x-qmoi-master") === "true";
 }
 
@@ -102,8 +102,8 @@ async function downloadMedia(mediaId: string) {
       data: { status: "processing" },
     });
 
-    // TODO: Implement actual download logic here
-    // For now, just mark as completed
+    // Production: implement real download via external APIs or background jobs
+    // Placeholder: marks as completed
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {

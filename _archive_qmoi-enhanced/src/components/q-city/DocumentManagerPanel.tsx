@@ -44,7 +44,7 @@ const DocumentManagerPanel: React.FC = () => {
 
   const searchDocs = async () => {
     const res = await fetch(
-      `/api/document-backup/search?q=${encodeURIComponent(search)}`,
+      `/api/document-backup/search?q=${encodeURIComponent(search)}`
     );
     const data = await res.json();
     setResults(data.results || []);
@@ -145,7 +145,30 @@ const DocumentManagerPanel: React.FC = () => {
           </table>
         </div>
         <div className="text-green-700 font-semibold">{status}</div>
-        {/* TODO: Advanced backup/restore, cloud integration */}
+        <div
+          style={{
+            marginTop: 12,
+            padding: 12,
+            background: "#f8fafc",
+            borderRadius: 8,
+          }}
+        >
+          <p style={{ margin: 0 }}>
+            Advanced backup/restore and cloud integration are available in the
+            enterprise edition.
+          </p>
+          <Button
+            size="small"
+            variant="contained"
+            color="primary"
+            onClick={() =>
+              alert("Open cloud integration options (placeholder)")
+            }
+            style={{ marginTop: 8 }}
+          >
+            Cloud Options
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );

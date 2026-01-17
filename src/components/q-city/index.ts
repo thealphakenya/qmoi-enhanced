@@ -1,7 +1,7 @@
 export { default as QMoiDatabaseDashboard } from "./QMoiDatabaseDashboard";
-export * from "./QMoiMediaManager"; // TODO: Implement
-export * from "./QMoiProjectDashboard"; // TODO: Implement
-export * from "./QMoiSettingsPanel"; // TODO: Implement
+export * from "./QMoiMediaManager"; // Placeholder: basic UI implemented
+export * from "./QMoiProjectDashboard"; // Placeholder: basic UI implemented
+export * from "./QMoiSettingsPanel"; // Placeholder: basic UI implemented
 export { default as QMoiKernelPanel } from "./QMoiKernelPanel";
 export { default as QMoiMemoryPanel } from "./QMoiMemoryPanel";
 export { default as QMoiToolbar } from "./QMoiToolbar";

@@ -135,8 +135,11 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
     fetchNews();
   };
 
-  // TODO: Analytics, engagement, post history
-  // TODO: Post to WhatsApp, Telegram, etc.
+  // Small placeholders for advanced features
+  const exportEngagement = () =>
+    alert("Export engagement analytics (placeholder)");
+  const shareToChannels = () =>
+    alert("Share to WhatsApp/Telegram (placeholder)");
 
   return (
     <Card className="space-y-4">
@@ -273,7 +276,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
                         onClick={() =>
                           handleSchedule(
                             item.id,
-                            prompt("Enter ISO date/time to schedule:") || "",
+                            prompt("Enter ISO date/time to schedule:") || ""
                           )
                         }
                       >
@@ -328,7 +331,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
                       {m.url}
                     </a>
                   </li>
-                ),
+                )
               )}
             </ul>
           </div>

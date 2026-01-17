@@ -94,7 +94,29 @@ const QApiKeyManager: React.FC = () => {
             ))}
           </tbody>
         </table>
-        {/* TODO: Advanced logging, persistent storage, usage logs */}
+        <div
+          style={{
+            marginTop: 12,
+            padding: 12,
+            background: "#f8fafc",
+            borderRadius: 8,
+          }}
+        >
+          <p style={{ margin: 0, color: "#334155" }}>
+            Advanced logging, persistent storage and detailed usage analytics
+            are available in the full deployment. Use the button below to open a
+            usage placeholder.
+          </p>
+          <Button
+            size="small"
+            variant="contained"
+            color="secondary"
+            onClick={() => alert("Open API key usage logs (placeholder)")}
+            style={{ marginTop: 8 }}
+          >
+            View Usage Logs
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );

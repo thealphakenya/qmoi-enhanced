@@ -121,7 +121,28 @@ const SocialAutomationPanel: React.FC = () => {
           </ul>
         </div>
         <div className="text-green-700 font-semibold">{status}</div>
-        {/* TODO: Info gathering, community features */}
+        <div
+          style={{
+            marginTop: 12,
+            padding: 12,
+            background: "#f8fafc",
+            borderRadius: 8,
+          }}
+        >
+          <p style={{ margin: 0 }}>
+            Info gathering and community features are planned. Use the button
+            below to open tools placeholder.
+          </p>
+          <Button
+            size="small"
+            variant="contained"
+            color="primary"
+            onClick={() => alert("Open community tools (placeholder)")}
+            style={{ marginTop: 8 }}
+          >
+            Open Community Tools
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );

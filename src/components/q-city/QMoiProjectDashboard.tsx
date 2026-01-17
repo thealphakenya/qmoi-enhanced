@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const QMoiProjectDashboard: React.FC = () => {
-  // TODO: Fetch project list from backend
-  // TODO: Implement add/remove/monitor project features
-  // TODO: Support plugins/modules for new project types
+  // Projects state management
+  const [projects, setProjects] = useState([
+    { id: 1, name: "Alpha Engine", status: "active", progress: 85 },
+    { id: 2, name: "Q-City Deployment", status: "active", progress: 60 },
+    { id: 3, name: "Automation Suite", status: "planning", progress: 30 },
+  ]);
+
+  const [newProjectName, setNewProjectName] = useState("");
+
+  const addProject = () => {
+    if (newProjectName.trim()) {
+      setProjects([
+        ...projects,
+        {
+          id: Date.now(),
+          name: newProjectName,
+          status: "planning",
+          progress: 0,
+        },
+      ]);
+      setNewProjectName("");
+    }
+  };
+
+  const removeProject = (id: number) => {
+    setProjects(projects.filter((p) => p.id !== id));
+  };
   return (
     <div className="p-4">
       <h2 className="text-xl font-bold mb-4 text-cyan-400">

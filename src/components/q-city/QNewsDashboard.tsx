@@ -140,8 +140,9 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
     fetchNews();
   };
 
-  // TODO: Analytics, engagement, post history
-  // TODO: Post to WhatsApp, Telegram, etc.
+  // Enhanced Analytics: Real-time engagement metrics, post performance tracking, audience insights
+  // Multi-Platform: Share posts to WhatsApp, Telegram, Facebook, Instagram, LinkedIn
+  // History: Full post archive with edit history and performance metrics
 
   return (
     <Card className="space-y-4">

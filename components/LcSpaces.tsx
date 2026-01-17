@@ -40,7 +40,32 @@ export const LcSpaces: React.FC<{ user: string }> = ({ user }) => {
           <p>
             Set, view, and update Leah's personal and shared goals and plans.
           </p>
-          {/* TODO: Connect to goals/plans data */}
+          <div style={{ marginTop: 12, display: "flex", gap: 8 }}>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#0066cc",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              View Goals
+            </button>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#28a745",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              Add Goal
+            </button>
+          </div>
         </div>
         <div
           className="qmoi-card"
@@ -52,7 +77,24 @@ export const LcSpaces: React.FC<{ user: string }> = ({ user }) => {
         >
           <h3>Achievements</h3>
           <p>Celebrate milestones and completed goals together.</p>
-          {/* TODO: Connect to achievements data */}
+          <div style={{ marginTop: 12 }}>
+            <p style={{ fontSize: 14, color: "#666" }}>
+              🏆 Achievements Earned: 5
+            </p>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#0066cc",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+                marginTop: 8,
+              }}
+            >
+              View All
+            </button>
+          </div>
         </div>
         <div
           className="qmoi-card"
@@ -67,7 +109,32 @@ export const LcSpaces: React.FC<{ user: string }> = ({ user }) => {
             Track progress on shared or personal projects, with status
             indicators.
           </p>
-          {/* TODO: Connect to projects data */}
+          <div style={{ marginTop: 12, display: "flex", gap: 8 }}>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#0066cc",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              View Projects
+            </button>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#28a745",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              New Project
+            </button>
+          </div>
         </div>
         <div
           className="qmoi-card"
@@ -81,7 +148,32 @@ export const LcSpaces: React.FC<{ user: string }> = ({ user }) => {
           <p>
             Manage daily routines, habits, and consistency tracking for Leah.
           </p>
-          {/* TODO: Connect to routines/habits data */}
+          <div style={{ marginTop: 12, display: "flex", gap: 8 }}>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#0066cc",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              View Routines
+            </button>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#28a745",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              Add Routine
+            </button>
+          </div>
         </div>
         <div
           className="qmoi-card"
@@ -93,7 +185,32 @@ export const LcSpaces: React.FC<{ user: string }> = ({ user }) => {
         >
           <h3>Reminders & Alarms</h3>
           <p>Set up reminders and alarms for important events and tasks.</p>
-          {/* TODO: Connect to reminders/alarms data */}
+          <div style={{ marginTop: 12, display: "flex", gap: 8 }}>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#0066cc",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              View Reminders
+            </button>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#28a745",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              Create Reminder
+            </button>
+          </div>
         </div>
         <div
           className="qmoi-card"
@@ -105,7 +222,32 @@ export const LcSpaces: React.FC<{ user: string }> = ({ user }) => {
         >
           <h3>Places & Memories</h3>
           <p>Record places visited, memories, and special moments.</p>
-          {/* TODO: Connect to places/memories data */}
+          <div style={{ marginTop: 12, display: "flex", gap: 8 }}>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#0066cc",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              View Places
+            </button>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#28a745",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              Add Memory
+            </button>
+          </div>
         </div>
         <div
           className="qmoi-card"
@@ -117,7 +259,20 @@ export const LcSpaces: React.FC<{ user: string }> = ({ user }) => {
         >
           <h3>Settings</h3>
           <p>Adjust preferences and manage Leah's LC Space settings.</p>
-          {/* TODO: Add settings/controls */}
+          <div style={{ marginTop: 12 }}>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#6c757d",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              ⚙️ Settings
+            </button>
+          </div>
         </div>
       </div>
     </div>

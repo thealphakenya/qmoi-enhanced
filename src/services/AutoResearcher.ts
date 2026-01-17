@@ -28,8 +28,8 @@ export class AutoResearcher {
    * Notify about improvements. Make this a no-op for now but keep typing.
    */
   notifyImprovements(topic: string): void {
-    // TODO: integrate with system notification service
-    // Use console.info which is safe in TS projects
+    // Production: integrate with system notification service for real alerts
+    // Placeholder: logs to console
     console.info(`New knowledge added for ${topic}`);
   }
 

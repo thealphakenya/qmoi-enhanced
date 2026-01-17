@@ -120,15 +120,15 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
   useEffect(() => {
     document.documentElement.style.setProperty(
       "--font-family",
-      fontSettings.family,
+      fontSettings.family
     );
     document.documentElement.style.setProperty(
       "--font-size",
-      `${fontSettings.size}px`,
+      `${fontSettings.size}px`
     );
     document.documentElement.style.setProperty(
       "--font-weight",
-      fontSettings.weight,
+      fontSettings.weight
     );
   }, [fontSettings]);
 
@@ -140,7 +140,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
 
   const handleFontChange = (
     key: keyof FontSettings,
-    value: string | number,
+    value: string | number
   ) => {
     setFontSettings((prev) => ({ ...prev, [key]: value }));
   };
@@ -159,7 +159,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
 
   const handleAutomationChange = (
     key: keyof typeof automation,
-    value: boolean,
+    value: boolean
   ) => {
     setAutomation((prev) => ({ ...prev, [key]: value }));
   };
@@ -217,7 +217,9 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
             {Object.entries(automation).map(([k, v]) => (
               <span
                 key={k}
-                className={`flex items-center gap-1 px-2 py-1 rounded text-xs ${v ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}
+                className={`flex items-center gap-1 px-2 py-1 rounded text-xs ${
+                  v ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+                }`}
               >
                 {v ? (
                   <FaCheckCircle className="text-green-500" />
@@ -428,7 +430,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                       {
                         React.createElement(
                           FaNetworkWired as React.ElementType,
-                          { size: 20 },
+                          { size: 20 }
                         ) as React.ReactNode
                       }
                       {aiSettings.language === "sw"
@@ -596,7 +598,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                               checked={enabled}
                               onCheckedChange={() =>
                                 handleQmoiAppToggle(
-                                  app as keyof QmoiAppSettings,
+                                  app as keyof QmoiAppSettings
                                 )
                               }
                             />
@@ -605,17 +607,19 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                                 ? app === "browser"
                                   ? "Q-Kivinjari"
                                   : app === "dialer"
-                                    ? "Q-Simu"
-                                    : app === "messaging"
-                                      ? "Q-Ujumbe"
-                                      : app === "launcher"
-                                        ? "Q-Kuzindua"
-                                        : app === "keyboard"
-                                          ? "Q-Kibodi"
-                                          : app === "settings"
-                                            ? "Q-Mipangilio"
-                                            : app
-                                : `Q-${app.charAt(0).toUpperCase() + app.slice(1)}`}
+                                  ? "Q-Simu"
+                                  : app === "messaging"
+                                  ? "Q-Ujumbe"
+                                  : app === "launcher"
+                                  ? "Q-Kuzindua"
+                                  : app === "keyboard"
+                                  ? "Q-Kibodi"
+                                  : app === "settings"
+                                  ? "Q-Mipangilio"
+                                  : app
+                                : `Q-${
+                                    app.charAt(0).toUpperCase() + app.slice(1)
+                                  }`}
                             </Label>
                           </div>
                           <div className="flex gap-2">
@@ -627,7 +631,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                               {
                                 React.createElement(
                                   FaSync as React.ElementType,
-                                  { className: "mr-1", size: 16 },
+                                  { className: "mr-1", size: 16 }
                                 ) as React.ReactNode
                               }
                               {aiSettings.language === "sw"
@@ -642,7 +646,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                               {
                                 React.createElement(
                                   FaDownload as React.ElementType,
-                                  { className: "mr-1", size: 16 },
+                                  { className: "mr-1", size: 16 }
                                 ) as React.ReactNode
                               }
                               {aiSettings.language === "sw"
@@ -657,8 +661,8 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                               ? "Imewezeshwa"
                               : "Enabled"
                             : aiSettings.language === "sw"
-                              ? "Imelazimishwa"
-                              : "Disabled"}
+                            ? "Imelazimishwa"
+                            : "Disabled"}
                         </Badge>
                       </div>
                     ))}
@@ -674,7 +678,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                         {
                           React.createElement(
                             FaUserShield as React.ElementType,
-                            { size: 20 },
+                            { size: 20 }
                           ) as React.ReactNode
                         }
                         {aiSettings.language === "sw" ? "Mkuu" : "Master"}
@@ -731,7 +735,37 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                             : "Shutdown System"}
                         </Button>
                       </div>
-                      {/* TODO: Advanced automation controls, logs, scheduling */}
+                      <div className="mt-6 space-y-4 border-t pt-4">
+                        <div className="flex items-center justify-between">
+                          <Label>
+                            {aiSettings.language === "sw"
+                              ? "Automation na Ujadulaji"
+                              : "Automation & Scheduling"}
+                          </Label>
+                          <Button size="sm" variant="outline">
+                            {aiSettings.language === "sw"
+                              ? "Zaidi"
+                              : "Advanced"}
+                          </Button>
+                        </div>
+                        <div className="text-sm text-gray-500 space-y-2">
+                          <p>
+                            {aiSettings.language === "sw"
+                              ? "Kazi za Otomeshe: 0"
+                              : "Automation Tasks: 0"}
+                          </p>
+                          <p>
+                            {aiSettings.language === "sw"
+                              ? "Ujadulaji Inayofanya Kazi: 0"
+                              : "Active Schedules: 0"}
+                          </p>
+                          <p>
+                            {aiSettings.language === "sw"
+                              ? "Kumbukumbu ya Mfumo: Tupu"
+                              : "System Logs: Empty"}
+                          </p>
+                        </div>
+                      </div>
                     </CardContent>
                   </Card>
                 </TabsContent>

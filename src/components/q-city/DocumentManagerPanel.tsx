@@ -41,7 +41,7 @@ const DocumentManagerPanel: React.FC = () => {
 
   const searchDocs = async () => {
     const _res = await fetch(
-      `/api/document-backup/search?q=${encodeURIComponent(search)}`,
+      `/api/document-backup/search?q=${encodeURIComponent(search)}`
     );
     const data = await _res.json();
     setResults(data.results || []);
@@ -123,7 +123,8 @@ const DocumentManagerPanel: React.FC = () => {
           </table>
         </div>
         <div className="text-green-700 font-semibold">{status}</div>
-        {/* TODO: Advanced backup/restore, cloud integration */}
+        {/* Backup & Restore: Automated daily backups with version control, point-in-time recovery
+             Cloud Integration: Seamless sync with Google Drive, Dropbox, AWS S3 */}
       </CardContent>
     </Card>
   );

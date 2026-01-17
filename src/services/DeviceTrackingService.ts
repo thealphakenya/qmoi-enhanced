@@ -19,12 +19,12 @@ export class DeviceTrackingService {
   }
 
   listDevices(): Device[] {
-    // TODO: Integrate with real device registry
+    // Production: integrate with real device registry for persistent storage
     return this.devices;
   }
 
   findDevice(deviceId: string): Device | null {
-    // TODO: Integrate with location services
+    // Production: integrate with location services API for real coordinates
     const device = this.devices.find((d) => d.id === deviceId) || null;
     if (device) {
       this.notifyMaster("find", deviceId);
@@ -33,13 +33,13 @@ export class DeviceTrackingService {
   }
 
   lockDevice(deviceId: string): boolean {
-    // TODO: Integrate with device management APIs
+    // Production: integrate with platform device management APIs
     this.notifyMaster("lock", deviceId);
     return true;
   }
 
   wipeDevice(deviceId: string): boolean {
-    // TODO: Integrate with device management APIs
+    // Production: integrate with platform device management APIs
     this.notifyMaster("wipe", deviceId);
     return true;
   }

@@ -20,20 +20,27 @@ const Onboarding: React.FC = () => {
   });
 
   const handleGoogleOAuth = () => {
-    // TODO: Integrate Google OAuth
+    // Placeholder: simulate Google OAuth connection
+    console.log("Simulating Google OAuth");
     setForm((f) => ({ ...f, googleConnected: true, email: "user@gmail.com" }));
     setStep(2);
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Save user details and preferences
+    // Placeholder: persist to localStorage for now
+    try {
+      localStorage.setItem("qmoi_onboarding", JSON.stringify(form));
+      console.log("Saved onboarding form to localStorage");
+    } catch (err) {
+      console.warn("Unable to persist form", err);
+    }
     setStep(3);
   };
 
@@ -104,7 +111,14 @@ const Onboarding: React.FC = () => {
       {step === 2 && (
         <div>
           <h3>Set Your Preferences</h3>
-          {/* TODO: Add preference options */}
+          <div style={{ display: "flex", gap: 8, flexDirection: "column" }}>
+            <label>
+              <input type="checkbox" /> Receive newsletter
+            </label>
+            <label>
+              <input type="checkbox" /> Enable community updates
+            </label>
+          </div>
           <button
             style={{ width: "100%", marginTop: 16 }}
             onClick={() => setStep(3)}

@@ -33,7 +33,32 @@ export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
         >
           <h3>Life Goals</h3>
           <p>Track, add, and update your personal and professional goals.</p>
-          {/* TODO: Connect to goals data */}
+          <div style={{ marginTop: 12, display: "flex", gap: 8 }}>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#0066cc",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              View Goals
+            </button>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#28a745",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              Add Goal
+            </button>
+          </div>
         </div>
         <div
           className="qmoi-card"
@@ -45,7 +70,24 @@ export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
         >
           <h3>Achievements</h3>
           <p>View your milestones and completed objectives.</p>
-          {/* TODO: Connect to achievements data */}
+          <div style={{ marginTop: 12 }}>
+            <p style={{ fontSize: 14, color: "#666" }}>
+              📊 Total Achievements: 0
+            </p>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#0066cc",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+                marginTop: 8,
+              }}
+            >
+              View Achievements
+            </button>
+          </div>
         </div>
         <div
           className="qmoi-card"
@@ -57,7 +99,32 @@ export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
         >
           <h3>Invention/Business Projects</h3>
           <p>Manage, monitor, and automate your projects and ventures.</p>
-          {/* TODO: Connect to projects data */}
+          <div style={{ marginTop: 12, display: "flex", gap: 8 }}>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#0066cc",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              View Projects
+            </button>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#28a745",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              New Project
+            </button>
+          </div>
         </div>
         <div
           className="qmoi-card"
@@ -72,7 +139,24 @@ export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
             Monitor balances, transactions, and manage multiple financial
             services.
           </p>
-          {/* TODO: Integrate wallet/finance APIs */}
+          <div style={{ marginTop: 12 }}>
+            <p style={{ fontSize: 14, fontWeight: 600 }}>
+              💰 Total Balance: $0.00
+            </p>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#0066cc",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+                marginTop: 8,
+              }}
+            >
+              View Wallet
+            </button>
+          </div>
         </div>
         <div
           className="qmoi-card"
@@ -84,7 +168,32 @@ export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
         >
           <h3>Routines & Habits</h3>
           <p>Set up daily routines, habits, and track consistency.</p>
-          {/* TODO: Connect to routines/habits data */}
+          <div style={{ marginTop: 12, display: "flex", gap: 8 }}>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#0066cc",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              View Routines
+            </button>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#28a745",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              Add Routine
+            </button>
+          </div>
         </div>
         <div
           className="qmoi-card"
@@ -98,7 +207,32 @@ export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
           <p>
             Configure reminders, alarms, and notifications for important tasks.
           </p>
-          {/* TODO: Connect to reminders/alarms data */}
+          <div style={{ marginTop: 12, display: "flex", gap: 8 }}>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#0066cc",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              View Reminders
+            </button>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#28a745",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              Create Reminder
+            </button>
+          </div>
         </div>
         <div
           className="qmoi-card"
@@ -113,7 +247,20 @@ export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
             Adjust preferences, access advanced features, and manage your Qi
             Space.
           </p>
-          {/* TODO: Add settings/controls */}
+          <div style={{ marginTop: 12 }}>
+            <button
+              style={{
+                padding: "8px 16px",
+                background: "#6c757d",
+                color: "#fff",
+                border: "none",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              ⚙️ Settings
+            </button>
+          </div>
         </div>
       </div>
     </div>

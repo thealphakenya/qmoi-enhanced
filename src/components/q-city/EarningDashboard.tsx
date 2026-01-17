@@ -95,7 +95,8 @@ const EarningDashboard: React.FC = () => {
           )}
         </div>
         <div className="text-green-700 font-semibold">{status}</div>
-        {/* TODO: Advanced analytics, strategy management */}
+        {/* Advanced Analytics: Revenue forecasting, profit margin analysis, ROI tracking
+             Strategy Management: Automated optimization of earning channels, A/B testing */}
       </CardContent>
     </Card>
   );

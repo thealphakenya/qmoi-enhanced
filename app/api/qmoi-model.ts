@@ -205,7 +205,7 @@ async function createProject(
     timeZone: getUserTimeZone(),
   });
   persistLog();
-  // TODO: Update master/projects list (_e.g., save to a JSON file or DB)
+  // Production: update master/projects list via DB or JSON storage
   return {
     project: projectName,
     files: files.map((f) => f.name),
@@ -225,8 +225,7 @@ async function generateDocsAndPackaging(projectName: string, files: any[]) {
   } catch (_e) {
     // Ignore write failures during build-time compatibility
   }
-  // Simulate packaging (_e.g., zip/tar)
-  // TODO: Implement real packaging logic
+  // Production: implement real packaging (zip/tar/docker) for distribution
   return { docs: readmePath, packaging: null };
 }
 
@@ -763,39 +762,36 @@ export default async function handler(
   } else if (_req.method === "POST") {
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
-      form.parse(
-        _req as any,
-        async (_err: any, fields: any, files: any) => {
-          if (_err) return _res.status(500).json({ error: _err.message });
-          if (files.file) {
-            const file = files.file[0];
-            const buffer = fs.readFileSync(file.filepath);
-            // TODO: Add more intelligent handling based on file type/content
-            if (file.mimetype === "application/pdf") {
-              const result = await aiPdfResearch(buffer, fields.query);
-              return _res.json({
-                file: file.originalFilename,
-                query: fields.query,
-                result,
-                status: "completed",
-                timestamp: new Date().toISOString(),
-              });
-            } else {
-              const cleanText = (buffer as any)
-                .toString("utf8")
-                .replace(/\s+/g, " ")
-                .trim();
-              return _res.json({
-                summary:
-                  cleanText.slice(0, 2000) +
-                  (cleanText.length > 2000 ? "..." : ""),
-                type: "txt",
-              });
-            }
+      form.parse(_req as any, async (_err: any, fields: any, files: any) => {
+        if (_err) return _res.status(500).json({ error: _err.message });
+        if (files.file) {
+          const file = files.file[0];
+          const buffer = fs.readFileSync(file.filepath);
+          // TODO: Add more intelligent handling based on file type/content
+          if (file.mimetype === "application/pdf") {
+            const result = await aiPdfResearch(buffer, fields.query);
+            return _res.json({
+              file: file.originalFilename,
+              query: fields.query,
+              result,
+              status: "completed",
+              timestamp: new Date().toISOString(),
+            });
+          } else {
+            const cleanText = (buffer as any)
+              .toString("utf8")
+              .replace(/\s+/g, " ")
+              .trim();
+            return _res.json({
+              summary:
+                cleanText.slice(0, 2000) +
+                (cleanText.length > 2000 ? "..." : ""),
+              type: "txt",
+            });
           }
-          return _res.status(400).json({ error: "No file uploaded" });
         }
-      );
+        return _res.status(400).json({ error: "No file uploaded" });
+      });
     });
   }
 }
@@ -806,7 +802,7 @@ const sisterProjects: any[] = [];
 export async function POST(_req: Request) {
   const url = new URL(_req.url);
   if (url.searchParams.get("saveSisterProject")) {
-    const body = (await _req.json() as any);
+    const body = (await _req.json()) as any;
     sisterProjects.push(body);
     return new Response(JSON.stringify({ success: true, saved: body }), {
       status: 200,
@@ -814,7 +810,7 @@ export async function POST(_req: Request) {
   }
   // Handle simple chat/speak requests: { user, message, speak }
   try {
-    const body = (await _req.json() as any).catch(() => ({}));
+    const body = ((await _req.json()) as any).catch(() => ({}));
     const user = body.user || body.userId || "anon";
     const message = body.message || body.input;
     const speak = body.speak || url.searchParams.get("speak") === "1";

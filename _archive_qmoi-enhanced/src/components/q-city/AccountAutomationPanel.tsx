@@ -64,7 +64,7 @@ const AccountAutomationPanel: React.FC = () => {
     setStatus(
       data.status
         ? `Status: ${data.status}, Verified: ${data.verified}`
-        : "Status check failed",
+        : "Status check failed"
     );
   };
 
@@ -154,7 +154,24 @@ const AccountAutomationPanel: React.FC = () => {
           </table>
         </div>
         <div className="text-green-700 font-semibold">{status}</div>
-        {/* TODO: Modular platform support, shell/VPN/security enhancements */}
+        <div className="mt-4 p-3 bg-gray-50 rounded">
+          <p className="text-sm text-gray-700">
+            Modular platform support and advanced security integrations are
+            planned. Use the button below to open the advanced settings
+            placeholder.
+          </p>
+          <Button
+            size="small"
+            variant="contained"
+            color="primary"
+            onClick={() =>
+              alert("Open advanced account automation settings (placeholder)")
+            }
+            style={{ marginTop: 8 }}
+          >
+            Open Advanced Settings
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );

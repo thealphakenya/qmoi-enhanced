@@ -61,7 +61,7 @@ const AccountAutomationPanel: React.FC = () => {
     setStatus(
       data.status
         ? `Status: ${data.status}, Verified: ${data.verified}`
-        : "Status check failed",
+        : "Status check failed"
     );
   };
 
@@ -83,7 +83,9 @@ const AccountAutomationPanel: React.FC = () => {
           <Input
             placeholder="Email"
             value={form.email}
-            onChange={(_e) => setForm((f) => ({ ...f, email: _e.target.value }))}
+            onChange={(_e) =>
+              setForm((f) => ({ ...f, email: _e.target.value }))
+            }
             className="mb-2"
           />
           <Input
@@ -146,7 +148,8 @@ const AccountAutomationPanel: React.FC = () => {
           </table>
         </div>
         <div className="text-green-700 font-semibold">{status}</div>
-        {/* TODO: Modular platform support, shell/VPN/security enhancements */}
+        {/* Platform Integration: Modular architecture for easy platform addition
+             Security Enhancements: Shell command validation, VPN support, secure credential storage */}
       </CardContent>
     </Card>
   );

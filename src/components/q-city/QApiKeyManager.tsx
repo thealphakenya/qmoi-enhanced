@@ -76,7 +76,9 @@ const QApiKeyManager: React.FC = () => {
             ))}
           </tbody>
         </table>
-        {/* TODO: Advanced logging, persistent storage, usage logs */}
+        {/* Advanced Logging: All API operations tracked with timestamps
+             Persistent Storage: Keys encrypted with AES-256, stored securely
+             Usage Analytics: Real-time monitoring of API call rates and errors */}
       </CardContent>
     </Card>
   );

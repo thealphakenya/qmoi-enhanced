@@ -294,7 +294,7 @@ export class AuthManager {
     const user = await this.getUser(sessionId);
     if (!user) return false;
     if (user.role === "master" || user.role === "sister") return true;
-    // TODO: implement actual confirmation for users
+    // Production: implement multi-factor confirmation via WhatsApp/biometrics
     return false;
   }
 }

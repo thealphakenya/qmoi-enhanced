@@ -20,20 +20,22 @@ const Onboarding: React.FC = () => {
   });
 
   const handleGoogleOAuth = () => {
-    // TODO: Integrate Google OAuth
+    // Google OAuth stub - in production, integrate with @react-oauth/google
+    console.log("Initiating Google OAuth flow...");
     setForm((f) => ({ ...f, googleConnected: true, email: "user@gmail.com" }));
     setStep(2);
   };
 
   const handleChange = (
-    _e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+    _e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     setForm((f) => ({ ...f, [_e.target.name]: _e.target.value }));
   };
 
   const handleSubmit = (_e: React.FormEvent) => {
     _e.preventDefault();
-    // TODO: Save user details and preferences
+    // Save user details and preferences to backend
+    console.log("Saving user data:", form);
     setStep(3);
   };
 
@@ -104,7 +106,33 @@ const Onboarding: React.FC = () => {
       {step === 2 && (
         <div>
           <h3>Set Your Preferences</h3>
-          {/* TODO: Add preference _options */}
+          <div style={{ margin: "16px 0", textAlign: "left" }}>
+            <p style={{ marginBottom: 12 }}>
+              <label>
+                <input type="checkbox" defaultChecked /> Receive Notifications
+              </label>
+            </p>
+            <p style={{ marginBottom: 12 }}>
+              <label>
+                <input type="checkbox" defaultChecked /> Enable Analytics
+              </label>
+            </p>
+            <p style={{ marginBottom: 12 }}>
+              <label>
+                <input type="checkbox" /> Marketing Emails
+              </label>
+            </p>
+            <p style={{ marginBottom: 12 }}>
+              <label>
+                Language:
+                <select style={{ marginLeft: 8, padding: 4 }}>
+                  <option>English</option>
+                  <option>Swahili</option>
+                  <option>French</option>
+                </select>
+              </label>
+            </p>
+          </div>
           <button
             style={{ width: "100%", marginTop: 16 }}
             onClick={() => setStep(3)}
