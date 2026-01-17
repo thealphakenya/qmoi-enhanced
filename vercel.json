@@ -1,21 +1,49 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "name": "qmoi-alpha-ai",
+  "name": "qmoi-enhanced",
   "buildCommand": "npm run build",
-  "installCommand": "npm install",
-  "functions": {
-    "app/api/**/route.ts": {
-      "maxDuration": 30
-    }
-  },
-  "routes": [],
+  "installCommand": "npm install --legacy-peer-deps",
   "env": {
-    "NODE_ENV": "production"
+    "NODE_ENV": "production",
+    "QMOI_AUTO_SETUP_ENABLED": "true",
+    "QMOI_AUTO_FIX_ENABLED": "true",
+    "QMOI_AUTODEV_ENABLED": "true",
+    "QMOI_AUTO_MONITORING_ENABLED": "true",
+    "QMOI_AUTO_HEALTH_CHECK_ENABLED": "true",
+    "QMOI_AUTO_RECOVERY_ENABLED": "true",
+    "VERCEL_AUTO_DEPLOY": "true",
+    "VERCEL_AUTO_SCALE": "true",
+    "VERCEL_AUTO_ROLLBACK": "true"
   },
   "build": {
     "env": {
-      "NODE_ENV": "production"
+      "NODE_ENV": "production",
+      "NEXT_PUBLIC_APP_ENV": "production",
+      "QMOI_AUTO_SETUP_ENABLED": "true"
     }
-  }
+  },
+  "functions": {
+    "app/api/**/route.ts": {
+      "maxDuration": 30,
+      "memory": 3008
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-QMOI-Auto-Deploy",
+          "value": "true"
+        },
+        {
+          "key": "X-Auto-Setup-Enabled",
+          "value": "true"
+        }
+      ]
+    }
+  ],
+  "regions": ["sfo1", "lhr1", "sgp1"],
+  "public": true
 }
