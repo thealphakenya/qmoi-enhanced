@@ -193,3 +193,4 @@ Qmoi_downloaded_apps/**
 loaded_apps/**
 
 /generated/prisma
+v1.2.5_release/*.zip
