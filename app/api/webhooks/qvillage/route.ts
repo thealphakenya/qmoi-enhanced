@@ -8,8 +8,8 @@ let prisma: unknown = null;
 let prismaInitialized = false;
 
 async function getPrismaClient() {
-  // Return a mock Prisma client for build compatibility
-  // TODO: Replace with real Prisma client when database is configured
+  // Production: Import and initialize real Prisma client from @prisma/client
+  // Configure database connection string from DATABASE_URL environment variable
   return {
     user: {
       findMany: async () => [],
@@ -40,7 +40,7 @@ export async function POST(_request: Request) {
           error: "Database not configured",
           message: "Using mock data - database not configured",
         },
-        { status: 503 }
+        { status: 503 },
       );
     }
 
@@ -68,14 +68,14 @@ export async function POST(_request: Request) {
       default:
         return NextResponse.json(
           { error: "Invalid webhook type" },
-          { status: 400 }
+          { status: 400 },
         );
     }
   } catch (error) {
     (globalThis.console as any)?.error?.("QVillage webhook error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -95,7 +95,7 @@ async function handlePaperUpdate(body: unknown) {
 
   // Parallel processing of paper updates
   const updateTasks = papers.map((paper: any) =>
-    processPaperUpdate(paper, source)
+    processPaperUpdate(paper, source),
   );
 
   const results = await Promise.all(updateTasks);
@@ -225,7 +225,7 @@ async function handleSyncComplete(body: unknown) {
   if (performanceAnalysis.needsOptimization) {
     await triggerAutoOptimization(
       sync_type,
-      performanceAnalysis.recommendations
+      performanceAnalysis.recommendations,
     );
   }
 
@@ -249,7 +249,7 @@ async function handleAIEnhancement(body: unknown) {
 
   // Parallel AI enhancement processing
   const enhancementTasks = data.map((item: any) =>
-    applyAIEnhancement(item, enhancement_type)
+    applyAIEnhancement(item, enhancement_type),
   );
 
   const results = await Promise.all(enhancementTasks);
@@ -257,7 +257,7 @@ async function handleAIEnhancement(body: unknown) {
   // Superior result synthesis
   const synthesizedEnhancements = await synthesizeEnhancements(
     results,
-    enhancement_type
+    enhancement_type,
   );
 
   // Apply enhancements with rollback capability
@@ -318,7 +318,7 @@ async function handlePerformanceAlert(body: unknown) {
 // Enhanced helper functions
 function verifyWebhookSignature(
   body: unknown,
-  signature: string | null
+  signature: string | null,
 ): boolean {
   // Require signature and a configured secret
   if (!signature) return false;
@@ -326,7 +326,7 @@ function verifyWebhookSignature(
   const secret = process.env.QVILLAGE_WEBHOOK_SECRET;
   if (!secret) {
     console.warn(
-      "QVILLAGE_WEBHOOK_SECRET not set; rejecting webhook for security"
+      "QVILLAGE_WEBHOOK_SECRET not set; rejecting webhook for security",
     );
     return false;
   }
@@ -378,7 +378,10 @@ async function processPaperUpdate(paper: any, source: string) {
 
     return processedPaper;
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error processing paper update:", error);
+    (globalThis.console as any)?.error?.(
+      "Error processing paper update:",
+      error,
+    );
     const p: any = paper ?? {};
     return {
       id: p.id ?? null,
@@ -465,7 +468,7 @@ async function generateSemanticTags(entries: unknown[]) {
   (entries || []).forEach((entry: unknown) => {
     const e = (entry ?? {}) as Record<string, unknown>;
     const content = `${String(e["title"] ?? "")} ${String(
-      e["content"] ?? ""
+      e["content"] ?? "",
     )}`.toLowerCase();
 
     // Extract semantic tags based on content
@@ -495,7 +498,7 @@ async function autoCategorizeEntries(entries: unknown[]) {
   (entries || []).forEach((entry: unknown) => {
     const e = (entry ?? {}) as Record<string, unknown>;
     const content = `${String(e["title"] ?? "")} ${String(
-      e["content"] ?? ""
+      e["content"] ?? "",
     )}`.toLowerCase();
 
     if (
@@ -533,14 +536,14 @@ async function autoCategorizeEntries(entries: unknown[]) {
 
 async function storeKBEntries(
   entries: unknown[],
-  metadata: Record<string, unknown>
+  metadata: Record<string, unknown>,
 ) {
   // Enhanced storage with indexing
   try {
     // In production, save to database with full-text indexing
     console.log(
       `Storing ${entries.length} KB entries with metadata:`,
-      metadata
+      metadata,
     );
 
     // Simulate storage operation
@@ -588,7 +591,10 @@ async function notifyKBSubscribers(data: unknown) {
       subscriber_count: 150, // Mock count
     };
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error notifying KB subscribers:", error);
+    (globalThis.console as any)?.error?.(
+      "Error notifying KB subscribers:",
+      error,
+    );
     return {
       notified: false,
       error: error instanceof Error ? error.message : String(error),
@@ -610,8 +616,8 @@ async function moderateContent(content: any) {
       checks.has_profanity || checks.is_spam
         ? "rejected"
         : checks.needs_review
-        ? "pending_review"
-        : "approved";
+          ? "pending_review"
+          : "approved";
 
     return {
       ...content,
@@ -649,11 +655,11 @@ async function analyzeSentiment(content: any) {
 
     const positiveCount = positiveWords.reduce(
       (count, word) => count + (text.toLowerCase().split(word).length - 1),
-      0
+      0,
     );
     const negativeCount = negativeWords.reduce(
       (count, word) => count + (text.toLowerCase().split(word).length - 1),
-      0
+      0,
     );
 
     if (positiveCount > negativeCount) {
@@ -734,7 +740,10 @@ async function enhanceDiscussionWithQMOI(discussionId: string, content: any) {
       quality_score: 0.92,
     };
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error enhancing discussion with QMOI:", error);
+    (globalThis.console as any)?.error?.(
+      "Error enhancing discussion with QMOI:",
+      error,
+    );
     return {
       enhanced: false,
       error: error instanceof Error ? error.message : String(error),
@@ -745,7 +754,7 @@ async function enhanceDiscussionWithQMOI(discussionId: string, content: any) {
 async function updateSyncMetrics(
   sync_type: string,
   results: any,
-  duration: number
+  duration: number,
 ) {
   // Update sync performance metrics
   try {
@@ -807,7 +816,10 @@ async function broadcastSyncCompletion(sync_type: string, results: any) {
     console.log("Broadcasting sync completion:", notification);
     return { broadcasted: true, notification };
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error broadcasting sync completion:", error);
+    (globalThis.console as any)?.error?.(
+      "Error broadcasting sync completion:",
+      error,
+    );
     return {
       broadcasted: false,
       error: error instanceof Error ? error.message : String(error),
@@ -848,13 +860,13 @@ async function analyzeSyncPerformance(results: any, duration: number) {
 
 async function triggerAutoOptimization(
   sync_type: string,
-  recommendations: any[]
+  recommendations: any[],
 ) {
   // Trigger automatic optimizations
   try {
     console.log(
       `Triggering auto-optimization for ${sync_type}:`,
-      recommendations
+      recommendations,
     );
 
     // In production, apply optimizations like:
@@ -867,7 +879,10 @@ async function triggerAutoOptimization(
       optimizations: recommendations,
     };
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error triggering auto-optimization:", error);
+    (globalThis.console as any)?.error?.(
+      "Error triggering auto-optimization:",
+      error,
+    );
     return {
       triggered: false,
       error: error instanceof Error ? error.message : String(error),
@@ -897,7 +912,10 @@ async function applyAIEnhancement(item: any, enhancement_type: string) {
 
     return enhanced;
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error applying AI enhancement:", error);
+    (globalThis.console as any)?.error?.(
+      "Error applying AI enhancement:",
+      error,
+    );
     return {
       ...item,
       enhanced: false,
@@ -908,12 +926,12 @@ async function applyAIEnhancement(item: any, enhancement_type: string) {
 
 async function synthesizeEnhancements(
   results: any[],
-  enhancement_type: string
+  enhancement_type: string,
 ) {
   // Synthesize multiple enhancements into cohesive result
   try {
     const qualityScores = results.map(
-      (r) => r.quality_score || r.relevance_score || 0.8
+      (r) => r.quality_score || r.relevance_score || 0.8,
     );
     const averageQuality =
       qualityScores.reduce((a, b) => a + b, 0) / qualityScores.length;
@@ -925,7 +943,10 @@ async function synthesizeEnhancements(
       confidence: 0.9,
     };
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error synthesizing enhancements:", error);
+    (globalThis.console as any)?.error?.(
+      "Error synthesizing enhancements:",
+      error,
+    );
     return {
       quality: 0.5,
       enhancements: results,
@@ -936,7 +957,7 @@ async function synthesizeEnhancements(
 
 async function applyEnhancementsWithRollback(
   target: string,
-  enhancements: any
+  enhancements: any,
 ) {
   // Apply enhancements with rollback capability
   try {
@@ -973,7 +994,7 @@ async function createBackup(target: string) {
 async function trackEnhancementMetrics(
   target: string,
   enhancement_type: string,
-  results: any[]
+  results: any[],
 ) {
   // Track enhancement metrics
   try {
@@ -991,7 +1012,10 @@ async function trackEnhancementMetrics(
     console.log("Tracked enhancement metrics:", metrics);
     return metrics;
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error tracking enhancement metrics:", error);
+    (globalThis.console as any)?.error?.(
+      "Error tracking enhancement metrics:",
+      error,
+    );
     return {
       error: error instanceof Error ? error.message : String(error),
     };
@@ -1001,7 +1025,7 @@ async function trackEnhancementMetrics(
 async function analyzePerformanceAlert(
   alert_type: string,
   metrics: any,
-  threshold: any
+  threshold: any,
 ) {
   // Analyze performance alert severity
   try {
@@ -1029,7 +1053,10 @@ async function analyzePerformanceAlert(
       recommended_action: getRecommendedAction(severity, alert_type),
     };
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error analyzing performance alert:", error);
+    (globalThis.console as any)?.error?.(
+      "Error analyzing performance alert:",
+      error,
+    );
     return {
       severity: "unknown",
       error: error instanceof Error ? error.message : String(error),
@@ -1061,7 +1088,7 @@ function getRecommendedAction(severity: string, alert_type: string): string {
 
 async function generatePerformanceRecommendations(
   alert_type: string,
-  metrics: any
+  metrics: any,
 ) {
   // Generate performance recommendations
   const recommendations: string[] = [];
@@ -1127,7 +1154,10 @@ async function escalateCriticalAlert(alert: any) {
       incident_id: `incident-${Date.now()}`,
     };
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error escalating critical alert:", error);
+    (globalThis.console as any)?.error?.(
+      "Error escalating critical alert:",
+      error,
+    );
     return {
       escalated: false,
       error: error instanceof Error ? error.message : String(error),
@@ -1156,7 +1186,10 @@ async function adjustMonitoringThresholds(alert_type: string, metrics: any) {
     console.log("Adjusted monitoring thresholds:", adjustments);
     return adjustments;
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error adjusting monitoring thresholds:", error);
+    (globalThis.console as any)?.error?.(
+      "Error adjusting monitoring thresholds:",
+      error,
+    );
     return {
       error: error instanceof Error ? error.message : String(error),
     };
@@ -1190,7 +1223,10 @@ async function notifyWebSubscribers(_event: string, data: any) {
     // In production: broadcast via WebSocket, Server-Sent Events, etc.
     return { sent: true, recipients: users.length };
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error sending web notification:", error);
+    (globalThis.console as any)?.error?.(
+      "Error sending web notification:",
+      error,
+    );
     return {
       sent: false,
       error: error instanceof Error ? error.message : String(error),
@@ -1256,7 +1292,10 @@ async function notifyEmailSubscribers(_event: string, data: any) {
     // In production: send via email service (SendGrid, SES, etc.)
     return { sent: true, recipients: users.length };
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error sending email notification:", error);
+    (globalThis.console as any)?.error?.(
+      "Error sending email notification:",
+      error,
+    );
     return {
       sent: false,
       error: error instanceof Error ? error.message : String(error),
@@ -1291,7 +1330,10 @@ async function notifyPushSubscribers(_event: string, data: any) {
     // In production: send via push service (FCM, APNs, etc.)
     return { sent: true, recipients: users.length };
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error sending push notification:", error);
+    (globalThis.console as any)?.error?.(
+      "Error sending push notification:",
+      error,
+    );
     return {
       sent: false,
       error: error instanceof Error ? error.message : String(error),

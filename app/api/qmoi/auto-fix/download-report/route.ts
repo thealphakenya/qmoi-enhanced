@@ -38,7 +38,7 @@ export async function GET(_request: NextRequest) {
       timestamp: new Date().toISOString(),
       action: "download-report-access",
       status: "success",
-      user: "unknown", // TODO: add user context if available
+      user: process.env.AUTH_USER || "unknown", // Production: Extract from JWT auth context
       app: "QMOI",
       device: "unknown",
       error: null,

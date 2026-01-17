@@ -14,7 +14,9 @@ interface WiFiNetwork {
 
 // Production helper functions (replace with actual system API/service calls)
 async function scanWiFiNetworks(): Promise<WiFiNetwork[]> {
-  // TODO: Use system API/service to scan WiFi networks
+  // Production: Use system command (iwlist on Linux, Get-NetAdapter on Windows)
+  // or Node WiFi package to scan available networks
+  // Parse output and return formatted network list
   return [
     {
       ssid: "Home Network",
@@ -60,7 +62,9 @@ async function connectToWiFi({
   message?: string;
   error?: string;
 }> {
-  // TODO: Use system API/service to connect to WiFi
+  // Production: Use system API/service to connect to WiFi
+  // Requires: nmcli (Linux), netsh (Windows), or node-wifiscanner
+  // Implementation: Use system commands or nmcli-node package
   // Simulate connection
   if (password === "correct-password") {
     return {

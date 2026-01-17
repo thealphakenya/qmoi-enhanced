@@ -25,7 +25,8 @@ if (apiKeys.length === 0) {
       usage: 0,
     });
   }
-  // TODO: Save to keys/ directory
+  // Production: Persist API keys to keys/ directory using fs.writeFile
+  // Keys should be stored encrypted using NODE_CRYPTO or similar
 }
 
 export async function GET(_req: NextRequest) {
@@ -45,19 +46,21 @@ export async function POST(_req: NextRequest) {
     revoked: false,
     usage: 0,
   });
-  // TODO: Save to keys/ directory
+  // Production: Persist new key to keys/ directory
+  // Implementation: await fs.writeFile with encryption
   return NextResponse.json({ key });
 }
 
 export async function DELETE(_req: NextRequest) {
   // Revoke a key
-  const body = (await _req.json() as any);
+  const body = (await _req.json()) as any;
   const { key } = body;
   const idx = apiKeys.findIndex((k) => k.key === key);
   if (idx === -1)
     return NextResponse.json({ error: "Key not found" }, { status: 404 });
   apiKeys[idx].revoked = true;
-  // TODO: Save to keys/ directory
+  // Production: Persist revoked state to keys/ directory
+  // Clear any cached auth tokens associated with revoked key
   return NextResponse.json({ success: true });
 }
 

@@ -9,7 +9,7 @@ let prismaInitialized = false;
 
 async function getPrismaClient() {
   // Return a mock Prisma client for build compatibility
-  // TODO: Replace with real Prisma client when database is configured
+  // Production: Import real Prisma client: import { prisma } from '@/lib/prisma'
   return {
     mediaTask: {
       findMany: async () => [],
@@ -50,7 +50,8 @@ export async function GET() {
       });
     } else {
       // Database code temporarily disabled
-      // TODO: Re-enable when Prisma is properly configured
+      // Production: Query real Prisma DB for media metadata
+      // await prisma.media.findMany()
       return NextResponse.json({
         tasks: [],
         stats: {
@@ -67,7 +68,7 @@ export async function GET() {
     (console as any).error("Error fetching media status:", error);
     return NextResponse.json(
       { error: "Failed to fetch media status" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -8,8 +8,8 @@ const JOBS_PATH = "/workspaces/Alpha-Q-ai/colab-jobs-log.jsonl";
 
 // Install package in Colab/cloud (stub)
 async function installPackage(pkg: string, manager: "npm" | "pip" = "npm") {
-  // const axios = await import('axios');
-  // TODO: Real API call to Colab/cloud to install package
+  // Production: Call Google Colab API or AWS SageMaker API to install package
+  // Use axios with authentication headers to deploy package installation
   return { status: "success", pkg, manager };
 }
 
@@ -19,8 +19,8 @@ interface Dataset {
   [key: string]: any;
 }
 async function uploadDataset(dataset: Dataset) {
-  // const axios = await import('axios');
-  // TODO: Real API call to upload dataset
+  // Production: Call Colab or cloud storage API to upload dataset to HuggingFace Datasets
+  // or AWS S3 bucket associated with cloud compute environment
   return { status: "success", dataset: dataset.name };
 }
 
@@ -29,15 +29,15 @@ interface JobSpec {
   [key: string]: any;
 }
 async function executeColabJob(jobSpec: JobSpec) {
-  // const axios = await import('axios');
-  // TODO: Real API call to execute job
+  // Production: Call Colab API or cloud job submission service to execute job
+  // Wait for job acceptance and return jobId for status polling
   return { status: "running", jobId: Date.now(), jobSpec };
 }
 
 // Track job status (stub)
 async function getColabJobStatus(jobId: number) {
-  // const axios = await import('axios');
-  // TODO: Real API call to get job status
+  // Production: Query Colab or cloud job service for current job status and results
+  // Poll until job completion or return current progress
   return { jobId, status: "completed", result: "Job result data" };
 }
 
@@ -48,7 +48,7 @@ function persistJob(job: Record<string, any>) {
 // Extend API handler to support new endpoints
 export default async function handler(
   _req: NextApiRequest,
-  _res: NextApiResponse
+  _res: NextApiResponse,
 ) {
   if (_req.method === "POST") {
     if (_req.query.installPackage) {

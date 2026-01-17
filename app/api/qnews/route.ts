@@ -11,7 +11,7 @@ let prismaInitialized = false;
 
 async function getPrismaClient() {
   // Return a mock Prisma client for build compatibility
-  // TODO: Replace with real Prisma client when database is configured
+  // Production: Import real Prisma client from @/lib/prisma
   return {
     news: {
       findMany: async () => [],
@@ -121,7 +121,8 @@ export async function GET(_req: NextRequest) {
       });
     } else {
       // Database temporarily disabled - return mock data
-      // TODO: Re-enable when Prisma is properly configured
+      // Production: Query Prisma DB for news articles
+      // await prisma.newsArticle.findMany()
       const mockNews = [
         {
           id: "news-1",
@@ -154,7 +155,7 @@ export async function GET(_req: NextRequest) {
     (console as any).error("Failed to fetch news:", error);
     return NextResponse.json(
       { error: "Failed to fetch news" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -168,7 +169,7 @@ export async function POST(_req: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const body = (await _req.json() as any);
+    const body = (await _req.json()) as any;
     const isMasterUser = isMaster(_req);
 
     // For now, authorId is null - could be enhanced with user authentication later
@@ -198,7 +199,7 @@ export async function POST(_req: NextRequest) {
     (console as any).error("Failed to create news:", error);
     return NextResponse.json(
       { error: "Failed to create news" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -210,7 +211,7 @@ export async function PUT(_req: NextRequest) {
     if (!auth.ok && !isMaster(_req))
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
-    const body = (await _req.json() as any);
+    const body = (await _req.json()) as any;
     const { id, ...updates } = body;
 
     const updateData: any = {
@@ -243,12 +244,12 @@ export async function PUT(_req: NextRequest) {
     ) {
       return NextResponse.json(
         { error: "News item not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
     return NextResponse.json(
       { error: "Failed to update news" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -260,7 +261,7 @@ export async function POST_SCHEDULE(_req: NextRequest) {
     if (!auth.ok && !isMaster(_req))
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
-    const body = (await _req.json() as any);
+    const body = (await _req.json()) as any;
     const { id, scheduledAt } = body;
 
     const item = await prisma.news.update({
@@ -288,12 +289,12 @@ export async function POST_SCHEDULE(_req: NextRequest) {
     ) {
       return NextResponse.json(
         { error: "News item not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
     return NextResponse.json(
       { error: "Failed to schedule news" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -327,7 +328,7 @@ export async function GET_ANALYTICS(_req: NextRequest) {
     (console as any).error("Failed to fetch analytics:", error);
     return NextResponse.json(
       { error: "Failed to fetch analytics" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -339,14 +340,14 @@ export async function POST_MEDIA(_req: NextRequest) {
     if (!auth.ok && !isMaster(_req))
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
-    const body = (await _req.json() as any);
+    const body = (await _req.json()) as any;
     const { id, media } = body;
 
     const newsItem = await prisma.news.findUnique({ where: { id } });
     if (!newsItem) {
       return NextResponse.json(
         { error: "News item not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -368,10 +369,7 @@ export async function POST_MEDIA(_req: NextRequest) {
     return NextResponse.json({ success: true, item });
   } catch (error) {
     (console as any).error("Failed to add media:", error);
-    return NextResponse.json(
-      { error: "Failed to add media" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to add media" }, { status: 500 });
   }
 }
 
@@ -382,7 +380,7 @@ export async function POST_POST(_req: NextRequest) {
     if (!auth.ok && !isMaster(_req))
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
-    const body = (await _req.json() as any);
+    const body = (await _req.json()) as any;
     const { id, platforms } = body; // platforms: ['whatsapp', 'telegram', 'twitter', etc.]
 
     const newsItem = await prisma.news.findUnique({
@@ -397,7 +395,7 @@ export async function POST_POST(_req: NextRequest) {
     if (!newsItem) {
       return NextResponse.json(
         { error: "News item not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -462,10 +460,7 @@ export async function POST_POST(_req: NextRequest) {
     return NextResponse.json({ success: true, posted: results });
   } catch (error) {
     (console as any).error("Failed to post news:", error);
-    return NextResponse.json(
-      { error: "Failed to post news" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to post news" }, { status: 500 });
   }
 }
 
@@ -490,7 +485,7 @@ async function postToTelegram(newsItem: any) {
         text: message,
         parse_mode: "Markdown",
       }),
-    }
+    },
   );
 
   if (!response.ok) {

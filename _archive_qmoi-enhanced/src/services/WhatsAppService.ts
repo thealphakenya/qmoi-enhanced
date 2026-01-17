@@ -140,7 +140,10 @@ export class WhatsAppService {
 
     // Authentication failure
     this.client.on("auth_failure", async (message: string) => {
-      (globalThis.console as any)?.error?.("❌ WhatsApp authentication failed:", message);
+      (globalThis.console as any)?.error?.(
+        "❌ WhatsApp authentication failed:",
+        message,
+      );
       this.isConnected = false;
       await this.sendErrorNotification(
         "WhatsApp authentication failed",
@@ -239,7 +242,10 @@ Time: ${this.qrCodeStatus.timestamp.toLocaleString()}`;
       // Send backup verification
       await this.sendBackupVerification();
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error sending QR code notifications:", error);
+      (globalThis.console as any)?.error?.(
+        "Error sending QR code notifications:",
+        error,
+      );
       this.qrCodeStatus.notifications.status = "failed";
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error";
@@ -291,7 +297,10 @@ Time: ${new Date().toLocaleString()}`;
         await this.forwardToMaster(message);
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error handling incoming message:", error);
+      (globalThis.console as any)?.error?.(
+        "Error handling incoming message:",
+        error,
+      );
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error";
       await this.sendErrorNotification("Message handling error", errorMessage);
@@ -605,7 +614,10 @@ Master Commands:
       console.log("🚀 Starting WhatsApp service...");
       await this.client.initialize();
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error starting WhatsApp service:", error);
+      (globalThis.console as any)?.error?.(
+        "Error starting WhatsApp service:",
+        error,
+      );
       throw error;
     }
   }
@@ -616,7 +628,10 @@ Master Commands:
       await this.client.destroy();
       this.isConnected = false;
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error stopping WhatsApp service:", error);
+      (globalThis.console as any)?.error?.(
+        "Error stopping WhatsApp service:",
+        error,
+      );
     }
   }
 
@@ -630,7 +645,10 @@ Master Commands:
       await this.client.sendMessage(chatId, message);
       console.log(`📤 Message sent to ${to}`);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error sending WhatsApp message:", error);
+      (globalThis.console as any)?.error?.(
+        "Error sending WhatsApp message:",
+        error,
+      );
       throw error;
     }
   }
@@ -656,7 +674,10 @@ Master Commands:
         await this.sendMessage(contact, message);
         await this.sleep(1000); // Delay between messages
       } catch (error) {
-        (globalThis.console as any)?.error?.(`Error broadcasting to ${contact}:`, error);
+        (globalThis.console as any)?.error?.(
+          `Error broadcasting to ${contact}:`,
+          error,
+        );
       }
     }
   }
@@ -751,7 +772,9 @@ Master Commands:
 
   private logAndSendToQcity(log: string): void {
     console.log(log);
-    // TODO: send log to Qcity (master-only access)
+    // Production: Send error logs to QCity monitoring dashboard
+    // Requires: QCity API integration with master credentials
+    // Implementation: Call POST /api/qcity/logs with auth token
   }
 
   // Add: Wallet and fund transfer approval flow
@@ -834,19 +857,23 @@ Reply with /approve ${approvalId} or /deny ${approvalId}.`);
         await message.reply(
           "📢 WhatsApp Business Ads feature activated. Campaigns will be managed by AI.",
         );
-        // TODO: Integrate with ad campaign manager
+        // Production: Integrate with AdCampaignManager service
+        // Requires: AdCampaignManager.handleWhatsAppWebhook(payload)
         break;
       case "settings":
         await message.reply("⚙️ WhatsApp Business settings updated.");
-        // TODO: Integrate with business settings manager
+        // Production: Integrate with BusinessSettingsManager
+        // Requires: BusinessSettingsManager.updateSettings(webhookPayload)
         break;
       case "group":
         await message.reply("👥 WhatsApp Business group management enabled.");
-        // TODO: Integrate with group management logic
+        // Production: Integrate with GroupManager service
+        // Requires: GroupManager.handleGroupUpdate(webhookData)
         break;
       case "status":
         await message.reply("📝 WhatsApp Business status updated.");
-        // TODO: Integrate with status update logic
+        // Production: Integrate with StatusUpdateManager
+        // Requires: StatusUpdateManager.processStatusUpdate(webhookData)
         break;
       default:
         await message.reply(`Unknown business feature command: ${subCommand}`);

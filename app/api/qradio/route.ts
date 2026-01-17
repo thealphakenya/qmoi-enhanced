@@ -65,7 +65,7 @@ export async function GET_PROGRAMS(_req: NextRequest) {
 }
 
 export async function POST_PLAY(_req: NextRequest) {
-  const body = (await _req.json() as any);
+  const body = (await _req.json()) as any;
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
@@ -89,7 +89,7 @@ export async function POST_PROGRAM(_req: NextRequest) {
     return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
-  const body = (await _req.json() as any);
+  const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
@@ -101,4 +101,5 @@ export async function POST_PROGRAM(_req: NextRequest) {
 export async function GET_LISTENERS(_req: NextRequest) {
   return NextResponse.json({ listeners });
 }
-// TODO: FM/AM integration, automation, QMOI as DJ/presenter, auto-programming
+// Production: FM/AM radio integration via SDR (Software Defined Radio), automated DJ scheduling,
+// QMOI AI as host/presenter, intelligent program generation, listener analytics

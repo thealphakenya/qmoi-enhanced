@@ -1,3 +1,4 @@
+
 /* eslint-env node */
 /// <reference types="node" />
 import { EventEmitter } from "events";

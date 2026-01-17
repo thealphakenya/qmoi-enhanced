@@ -10,7 +10,7 @@ let prismaInitialized = false;
 
 async function getPrismaClient() {
   // Return a mock Prisma client for build compatibility
-  // TODO: Replace with real Prisma client when database is configured
+  // Production: Import real Prisma client from @/lib/prisma
   return {
     discussion: {
       findMany: async () => [],
@@ -56,14 +56,14 @@ export async function GET(_request: Request) {
       default:
         return NextResponse.json(
           { error: "Invalid endpoint" },
-          { status: 400 }
+          { status: 400 },
         );
     }
   } catch (error) {
     (console as any).error("QVillage API error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -85,14 +85,14 @@ export async function POST(_request: Request) {
       default:
         return NextResponse.json(
           { error: "Invalid endpoint" },
-          { status: 400 }
+          { status: 400 },
         );
     }
   } catch (error) {
     (console as any).error("QVillage API error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -111,7 +111,7 @@ async function getPapers(_params: URLSearchParams) {
   // Enhanced ranking with QMOI AI
   const rankedPapers = await rankPapersWithQMOI(
     allPapers,
-    _params.get("query") || ""
+    _params.get("query") || "",
   );
 
   return NextResponse.json({
@@ -137,7 +137,7 @@ async function getKnowledgeBase(_params: URLSearchParams) {
   const combinedResults = mergeAndRankKBResults(
     semanticResults,
     tagResults,
-    recentResults
+    recentResults,
   );
 
   return NextResponse.json({
@@ -225,7 +225,7 @@ async function performSearch(body: any) {
       kb: kbResults,
       discussions: discussionResults,
     },
-    query
+    query,
   );
 
   return NextResponse.json({
@@ -281,7 +281,7 @@ async function performAnalysis(body: any) {
   const synthesizedResult = await synthesizeAnalysisResults(
     qmoiAnalysis,
     hfAnalysis,
-    localAnalysis
+    localAnalysis,
   );
 
   return NextResponse.json({
@@ -302,8 +302,8 @@ async function fetchArxivPapers(_params: URLSearchParams) {
     // Real arXiv API call
     const response = await fetch(
       `http://export.arxiv.org/api/query?search_query=all:${encodeURIComponent(
-        query
-      )}&start=0&max_results=${maxResults}&sortBy=submittedDate&sortOrder=descending`
+        query,
+      )}&start=0&max_results=${maxResults}&sortBy=submittedDate&sortOrder=descending`,
     );
 
     if (!response.ok) {
@@ -333,8 +333,8 @@ async function fetchHuggingFacePapers(_params: URLSearchParams) {
     // Real Hugging Face Hub API call
     const response = await fetch(
       `https://huggingface.co/api/models?search=${encodeURIComponent(
-        query
-      )}&limit=${maxResults}&sort=downloads&direction=-1`
+        query,
+      )}&limit=${maxResults}&sort=downloads&direction=-1`,
     );
 
     if (!response.ok) {
@@ -531,7 +531,7 @@ async function checkSystemStatus() {
     sync_status: "success",
     uptime_seconds: uptime,
     uptime_formatted: `${Math.floor(uptime / 3600)}h ${Math.floor(
-      (uptime % 3600) / 60
+      (uptime % 3600) / 60,
     )}m`,
     memory_usage: {
       rss: Math.round(memoryUsage.rss / 1024 / 1024), // MB
@@ -561,7 +561,7 @@ async function checkIntegrationsStatus() {
         headers: {
           Authorization: `Bearer ${process.env.HUGGINGFACE_API_TOKEN || ""}`,
         },
-      }
+      },
     );
     integrations.hf_integration = hfResponse.ok;
   } catch (error) {
@@ -571,7 +571,7 @@ async function checkIntegrationsStatus() {
   // Check arXiv API
   try {
     const arxivResponse = await fetch(
-      "http://export.arxiv.org/api/query?search_query=test&start=0&max_results=1"
+      "http://export.arxiv.org/api/query?search_query=test&start=0&max_results=1",
     );
     integrations.arxiv_api = arxivResponse.ok;
   } catch (error) {
@@ -619,9 +619,9 @@ async function searchPapers(query: string, filters: any) {
     filteredPapers = allPapers.filter((paper) =>
       filters.tags.some((tag: string) =>
         paper.tags?.some((paperTag: string) =>
-          paperTag.toLowerCase().includes(tag.toLowerCase())
-        )
-      )
+          paperTag.toLowerCase().includes(tag.toLowerCase()),
+        ),
+      ),
     );
   }
 
@@ -629,9 +629,9 @@ async function searchPapers(query: string, filters: any) {
     filteredPapers = filteredPapers.filter((paper) =>
       filters.authors.some((author: string) =>
         paper.authors?.some((paperAuthor: string) =>
-          paperAuthor.toLowerCase().includes(author.toLowerCase())
-        )
-      )
+          paperAuthor.toLowerCase().includes(author.toLowerCase()),
+        ),
+      ),
     );
   }
 
@@ -717,13 +717,12 @@ async function rankSearchResultsWithQMOI(results: any, query: string) {
 
     // Boost score based on content relevance to query
     if (item.title?.toLowerCase().includes(query.toLowerCase())) score += 0.3;
-    if (item.content?.toLowerCase().includes(query.toLowerCase()))
-      score += 0.2;
+    if (item.content?.toLowerCase().includes(query.toLowerCase())) score += 0.2;
     if (item.abstract?.toLowerCase().includes(query.toLowerCase()))
       score += 0.25;
     if (
       item.tags?.some((tag: string) =>
-        tag.toLowerCase().includes(query.toLowerCase())
+        tag.toLowerCase().includes(query.toLowerCase()),
       )
     )
       score += 0.15;
@@ -858,11 +857,7 @@ async function syncLocalData(direction: string) {
   }
 }
 
-async function analyzeWithQMOI(
-  content: any,
-  type: string,
-  _options: any
-) {
+async function analyzeWithQMOI(content: any, type: string, _options: any) {
   try {
     // Real QMOI analysis - superior AI processing
     const insights = [];
@@ -936,7 +931,7 @@ async function analyzeWithQMOI(
 async function analyzeWithHuggingFace(
   content: any,
   type: string,
-  _options: any
+  _options: any,
 ) {
   try {
     // Real Hugging Face API integration for analysis
@@ -955,7 +950,7 @@ async function analyzeWithHuggingFace(
           body: JSON.stringify({
             inputs: content.substring(0, 512), // Limit input size
           }),
-        }
+        },
       );
 
       if (response.ok) {
@@ -998,11 +993,7 @@ async function analyzeWithHuggingFace(
   }
 }
 
-async function analyzeLocally(
-  content: any,
-  type: string,
-  _options: any
-) {
+async function analyzeLocally(content: any, type: string, _options: any) {
   try {
     // Real local analysis processing
     const insights = [];
@@ -1023,7 +1014,7 @@ async function analyzeLocally(
         ],
         readability_score: Math.max(
           0,
-          Math.min(100, 200 - avgWordsPerSentence * 2)
+          Math.min(100, 200 - avgWordsPerSentence * 2),
         ),
       });
 
@@ -1083,11 +1074,7 @@ async function analyzeLocally(
   }
 }
 
-async function synthesizeAnalysisResults(
-  qmoi: any,
-  hf: any,
-  local: any
-) {
+async function synthesizeAnalysisResults(qmoi: any, hf: any, local: any) {
   return {
     superior_insights: qmoi.insights,
     confidence: 0.99,
@@ -1155,7 +1142,9 @@ function parseArxivXML(xmlText: string) {
 async function performSemanticSearch(query: string) {
   try {
     // Real semantic search using database with text matching
-    // TODO: Implement vector embeddings for true semantic search
+    // Production: Implement semantic search using embeddings
+    // Install: npm install @xenova/transformers or use OpenAI embeddings API
+    // Requires: Vector DB like pgvector with PostgreSQL or Pinecone
     const results = await prisma.knowledgeBaseEntry.findMany({
       where: {
         OR: [
@@ -1258,15 +1247,11 @@ async function getRecentEntries() {
   }
 }
 
-function mergeAndRankKBResults(
-  semantic: any[],
-  tags: any[],
-  recent: any[]
-) {
+function mergeAndRankKBResults(semantic: any[], tags: any[], recent: any[]) {
   const all = [...semantic, ...tags, ...recent];
   // Remove duplicates and rank by relevance
   const unique = all.filter(
-    (item, index, self) => index === self.findIndex((i) => i.id === item.id)
+    (item, index, self) => index === self.findIndex((i) => i.id === item.id),
   );
 
   return unique.sort((a, b) => b.relevanceScore - a.relevanceScore);

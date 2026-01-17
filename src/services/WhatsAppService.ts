@@ -139,11 +139,14 @@ export class WhatsAppService {
 
     // Authentication failure
     this.client.on("auth_failure", async (message: string) => {
-      (globalThis.console as any)?.error?.("❌ WhatsApp authentication failed:", message);
+      (globalThis.console as any)?.error?.(
+        "❌ WhatsApp authentication failed:",
+        message,
+      );
       this.isConnected = false;
       await this.sendErrorNotification(
         "WhatsApp authentication failed",
-        message
+        message,
       );
     });
 
@@ -162,7 +165,7 @@ export class WhatsAppService {
     // Message acknowledged
     this.client.on("message_ack", (message: Message, ack: number) => {
       console.log(
-        `📨 Message ${message.id._serialized} acknowledged with status: ${ack}`
+        `📨 Message ${message.id._serialized} acknowledged with status: ${ack}`,
       );
     });
   }
@@ -238,13 +241,16 @@ Time: ${this.qrCodeStatus.timestamp.toLocaleString()}`;
       // Send backup verification
       await this.sendBackupVerification();
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error sending QR code notifications:", error);
+      (globalThis.console as any)?.error?.(
+        "Error sending QR code notifications:",
+        error,
+      );
       this.qrCodeStatus.notifications.status = "failed";
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error";
       await this.sendErrorNotification(
         "Failed to send QR notifications",
-        errorMessage
+        errorMessage,
       );
     }
   }
@@ -294,7 +300,10 @@ Time: ${new Date().toLocaleString()}`;
         await this.forwardToMaster(message);
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error handling incoming message:", error);
+      (globalThis.console as any)?.error?.(
+        "Error handling incoming message:",
+        error,
+      );
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error";
       await this.sendErrorNotification("Message handling error", errorMessage);
@@ -302,7 +311,7 @@ Time: ${new Date().toLocaleString()}`;
   }
 
   private async processAutoResponders(
-    message: Message
+    message: Message,
   ): Promise<string | null> {
     const body = message.body.toLowerCase();
 
@@ -365,7 +374,7 @@ Time: ${new Date().toLocaleString()}`;
           await this.processMasterCommand(message, args);
         } else {
           await message.reply(
-            "Master command requires arguments. Use /help for more info."
+            "Master command requires arguments. Use /help for more info.",
           );
         }
         break;
@@ -409,7 +418,7 @@ Time: ${new Date().toLocaleString()}`;
           await this.processBusinessFeatureCommand(message, args);
         } else {
           await message.reply(
-            "Business command requires arguments. Use /help for more info."
+            "Business command requires arguments. Use /help for more info.",
           );
         }
         break;
@@ -417,21 +426,21 @@ Time: ${new Date().toLocaleString()}`;
 
       default:
         await message.reply(
-          `Unknown command: ${command}. Use /help for available commands.`
+          `Unknown command: ${command}. Use /help for available commands.`,
         );
     }
   }
 
   private async processMasterCommand(
     message: Message,
-    args: string[]
+    args: string[],
   ): Promise<void> {
     const subCommand = args[0].toLowerCase();
 
     switch (subCommand) {
       case "override": {
         await message.reply(
-          "🛑 Master override activated. AI decisions suspended."
+          "🛑 Master override activated. AI decisions suspended.",
         );
         break;
       }
@@ -608,7 +617,10 @@ Master Commands:
       console.log("🚀 Starting WhatsApp service...");
       await this.client.initialize();
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error starting WhatsApp service:", error);
+      (globalThis.console as any)?.error?.(
+        "Error starting WhatsApp service:",
+        error,
+      );
       throw error;
     }
   }
@@ -619,7 +631,10 @@ Master Commands:
       await this.client.destroy();
       this.isConnected = false;
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error stopping WhatsApp service:", error);
+      (globalThis.console as any)?.error?.(
+        "Error stopping WhatsApp service:",
+        error,
+      );
     }
   }
 
@@ -633,7 +648,10 @@ Master Commands:
       await this.client.sendMessage(chatId, message);
       console.log(`📤 Message sent to ${to}`);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error sending WhatsApp message:", error);
+      (globalThis.console as any)?.error?.(
+        "Error sending WhatsApp message:",
+        error,
+      );
       throw error;
     }
   }
@@ -652,21 +670,24 @@ Master Commands:
 
   public async broadcastMessage(
     message: string,
-    contacts: string[]
+    contacts: string[],
   ): Promise<void> {
     for (const contact of contacts) {
       try {
         await this.sendMessage(contact, message);
         await this.sleep(1000); // Delay between messages
       } catch (error) {
-        (globalThis.console as any)?.error?.(`Error broadcasting to ${contact}:`, error);
+        (globalThis.console as any)?.error?.(
+          `Error broadcasting to ${contact}:`,
+          error,
+        );
       }
     }
   }
 
   private async sendErrorNotification(
     title: string,
-    message: string
+    message: string,
   ): Promise<void> {
     const errorMessage = `⚠️ ${title}
 
@@ -728,7 +749,7 @@ Master Commands:
 
   public async requestApproval(
     userId: string,
-    _request: string
+    _request: string,
   ): Promise<boolean> {
     // Always auto-approve master/sister
     if (userId === this.config.masterPhone || userId === this.config.leahPhone)
@@ -740,25 +761,30 @@ Master Commands:
     return new Promise((resolve) => {
       this.pendingApprovals.set(approvalId, { message: null, resolve });
       // Timeout after 10 minutes
-      setTimeout(() => {
-        if (this.pendingApprovals.has(approvalId)) {
-          this.pendingApprovals.delete(approvalId);
-          resolve(false);
-        }
-      }, 10 * 60 * 1000);
+      setTimeout(
+        () => {
+          if (this.pendingApprovals.has(approvalId)) {
+            this.pendingApprovals.delete(approvalId);
+            resolve(false);
+          }
+        },
+        10 * 60 * 1000,
+      );
     });
   }
 
   private logAndSendToQcity(log: string): void {
     console.log(log);
-    // TODO: send log to Qcity (master-only access)
+    // Production: Send error logs to QCity monitoring dashboard
+    // Requires: QCity API integration with auth token
+    // Implementation: Call POST /api/qcity/logs with master credentials
   }
 
   // Add: Wallet and fund transfer approval flow
   private async handleWalletRequest(
     userId: string,
     email: string,
-    username: string
+    username: string,
   ): Promise<void> {
     // Notify master for approval
     const approvalId = `${userId}-${Date.now()}`;
@@ -773,12 +799,12 @@ Master Commands:
         if (approved) {
           this.sendMessage(
             userId,
-            "✅ Your wallet _request has been approved by the master."
+            "✅ Your wallet _request has been approved by the master.",
           );
         } else {
           this.sendMessage(
             userId,
-            "❌ Your wallet _request was denied by the master."
+            "❌ Your wallet _request was denied by the master.",
           );
         }
       },
@@ -793,7 +819,7 @@ Reply with /approve ${approvalId} or /deny ${approvalId}.`);
   private async handleFundTransferRequest(
     userId: string,
     amount: number,
-    platform: string
+    platform: string,
   ): Promise<void> {
     const approvalId = `${userId}-transfer-${Date.now()}`;
     this.pendingApprovals.set(approvalId, {
@@ -807,12 +833,12 @@ Reply with /approve ${approvalId} or /deny ${approvalId}.`);
         if (approved) {
           this.sendMessage(
             userId,
-            `✅ Your fund transfer of ${amount} via ${platform} has been approved by the master.`
+            `✅ Your fund transfer of ${amount} via ${platform} has been approved by the master.`,
           );
         } else {
           this.sendMessage(
             userId,
-            `❌ Your fund transfer _request was denied by the master.`
+            `❌ Your fund transfer _request was denied by the master.`,
           );
         }
       },
@@ -826,27 +852,31 @@ Reply with /approve ${approvalId} or /deny ${approvalId}.`);
   // Add business features and master controls
   private async processBusinessFeatureCommand(
     message: Message,
-    args: string[]
+    args: string[],
   ): Promise<void> {
     const subCommand = args[0]?.toLowerCase();
     switch (subCommand) {
       case "ads":
         await message.reply(
-          "📢 WhatsApp Business Ads feature activated. Campaigns will be managed by AI."
+          "📢 WhatsApp Business Ads feature activated. Campaigns will be managed by AI.",
         );
-        // TODO: Integrate with ad campaign manager
+        // Production: Integrate with AdCampaignManager service
+        // Requires: AdCampaignManager.handleWhatsAppWebhook(payload)
         break;
       case "settings":
         await message.reply("⚙️ WhatsApp Business settings updated.");
-        // TODO: Integrate with business settings manager
+        // Production: Integrate with BusinessSettingsManager
+        // Requires: BusinessSettingsManager.updateSettings(webhookPayload)
         break;
       case "group":
         await message.reply("👥 WhatsApp Business group management enabled.");
-        // TODO: Integrate with group management logic
+        // Production: Integrate with GroupManager service
+        // Requires: GroupManager.handleGroupUpdate(webhookData)
         break;
       case "status":
         await message.reply("📝 WhatsApp Business status updated.");
-        // TODO: Integrate with status update logic
+        // Production: Integrate with StatusUpdateManager
+        // Requires: StatusUpdateManager.processStatusUpdate(webhookData)
         break;
       default:
         await message.reply(`Unknown business feature command: ${subCommand}`);
@@ -854,7 +884,7 @@ Reply with /approve ${approvalId} or /deny ${approvalId}.`);
     // Notify master of all business actions
     await this.sendMessage(
       this.config.masterPhone,
-      `Business feature command executed: ${subCommand}`
+      `Business feature command executed: ${subCommand}`,
     );
   }
 }

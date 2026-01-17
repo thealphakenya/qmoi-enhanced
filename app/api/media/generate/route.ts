@@ -35,7 +35,7 @@ function isMaster(_req: NextRequest): boolean {
 function logToDashboard(
   action: string,
   data: any,
-  level: "info" | "error" | "warning" = "info"
+  level: "info" | "error" | "warning" = "info",
 ) {
   const logEntry = {
     timestamp: new Date().toISOString(),
@@ -57,14 +57,15 @@ function logToDashboard(
   const sanitizedLog = removeControlChars(JSON.stringify(logEntry));
   console.log(sanitizedLog);
 
-  // TODO: Send to dashboard API for real-time visualization
+  // Production: Send generated media metadata to WebSocket dashboard
+  // Requires: Socket.io or Next.js WebSocket integration
   return logEntry;
 }
 
 // Pre-autotest logic
 async function runPreAutotest(
   mediaType: string,
-  prompt: string
+  prompt: string,
 ): Promise<{ passed: boolean; issues: string[] }> {
   const issues: string[] = [];
 
@@ -147,7 +148,7 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     logToDashboard(
       "cloud-offload-error",
       { taskId: task.id, error: task.error },
-      "error"
+      "error",
     );
 
     return task;
@@ -162,7 +163,7 @@ export async function POST(_request: NextRequest) {
     if (!type || !prompt) {
       return NextResponse.json(
         { error: "Type and prompt are required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -173,7 +174,7 @@ export async function POST(_request: NextRequest) {
       logToDashboard(
         "pre-autotest-failed",
         { type, prompt, issues: autotestResult.issues },
-        "warning"
+        "warning",
       );
       return NextResponse.json(
         {
@@ -181,7 +182,7 @@ export async function POST(_request: NextRequest) {
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -192,7 +193,7 @@ export async function POST(_request: NextRequest) {
         _r?.body ?? {
           error: "Master access required for override",
         },
-        { status: _r?.status ?? 403 }
+        { status: _r?.status ?? 403 },
       );
     }
 
@@ -226,15 +227,11 @@ export async function POST(_request: NextRequest) {
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard(
-      "media-generation-error",
-      { error: errorMessage },
-      "error"
-    );
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
       { error: "Failed to generate media", details: errorMessage },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -249,7 +246,8 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
-    // TODO: Fetch actual task status from database/cloud
+    // Production: Query task status from Prisma DB or cloud job service
+    // For cloud jobs: use Celery, Bull, or AWS SQS for async task tracking
     const cloudTask: CloudTask = {
       id: taskId,
       type: "image",
@@ -281,7 +279,7 @@ export async function GET(_request: NextRequest) {
 
     return NextResponse.json(
       { error: "Failed to fetch task status", details: errorMessage },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

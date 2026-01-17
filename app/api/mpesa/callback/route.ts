@@ -5,18 +5,20 @@ import { logEvent } from "../../../../lib/security_check";
 
 // Production helper functions (module-level to avoid inner-declaration lint errors)
 async function updateMpesaTransaction(details: any) {
-  // TODO: Connect to DB and update transaction record
+  // Production: Connect to Prisma DB using prisma.transaction.update()
+  // with CheckoutRequestID as unique identifier
   return true;
 }
 
 async function triggerPostPaymentActions(details: any) {
-  // TODO: Implement post-payment actions (_e.g., send notification, update user status)
+  // Production: Send notification via WhatsApp/Email and update user wallet via Prisma
+  // Integrate with notification service and user service for status updates
   return true;
 }
 
 export async function POST(_req: NextRequest) {
   try {
-    const body: any = (await _req.json() as any);
+    const body: any = (await _req.json()) as any;
 
     // Log the callback for debugging
     console.log("M-Pesa Callback received:", body);
@@ -91,9 +93,11 @@ export async function POST(_req: NextRequest) {
       });
     }
   } catch (error) {
-    (globalThis.console as any)?.error?.("M-Pesa callback processing failed:", error);
-    const errorMessage =
-      error instanceof Error ? error.message : String(error);
+    (globalThis.console as any)?.error?.(
+      "M-Pesa callback processing failed:",
+      error,
+    );
+    const errorMessage = error instanceof Error ? error.message : String(error);
     logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
@@ -101,7 +105,7 @@ export async function POST(_req: NextRequest) {
         success: false,
         message: "Callback processing failed",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

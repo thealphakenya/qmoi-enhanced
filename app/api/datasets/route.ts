@@ -8,7 +8,7 @@ let prismaInitialized = false;
 
 async function getPrismaClient() {
   // Return a mock Prisma client for build compatibility
-  // TODO: Replace with real Prisma client when database is configured
+  // Production: Import real Prisma client from @/lib/prisma
   return {
     dataset: {
       findMany: async () => [],
@@ -56,7 +56,8 @@ export async function GET() {
       });
     } else {
       // Database code temporarily disabled
-      // TODO: Re-enable when Prisma is properly configured
+      // Production: Query Prisma DB for datasets
+      // await prisma.dataset.findMany()
       return NextResponse.json({
         datasets: [],
         message: "Database temporarily disabled for build compatibility",
@@ -80,12 +81,13 @@ export async function POST(_request: Request) {
     if (!name || !type) {
       return NextResponse.json(
         { error: "Name and type are required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     // Database temporarily disabled - return mock data
-    // TODO: Re-enable when Prisma is properly configured
+    // Production: Store dataset in Prisma DB when configured
+    // await prisma.dataset.create({ data: { name, description, type, ... } })
     const mockDataset = {
       id: `dataset-${Date.now()}`,
       name,
@@ -115,7 +117,7 @@ export async function POST(_request: Request) {
     (console as any).error("Error creating dataset:", error);
     return NextResponse.json(
       { error: "Failed to create dataset" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

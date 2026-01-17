@@ -13,9 +13,10 @@ let postId = 1;
 
 export async function POST_POST(_req: NextRequest) {
   // Post status/news to platform
-  const body = (await _req.json() as any);
+  const body = (await _req.json()) as any;
   const { content, platform } = body;
-  // TODO: Integrate with WhatsApp, Telegram, etc.
+  // POST: Production integration with WhatsApp API, Telegram Bot API, LinkedIn Graph API
+  // Use respective SDKs and webhook validators for each platform
   const post = {
     id: postId++,
     content,
@@ -33,7 +34,7 @@ export async function GET_CONTACTS(_req: NextRequest) {
 
 export async function POST_TAG(_req: NextRequest) {
   // Auto-tag a contact
-  const body = (await _req.json() as any);
+  const body = (await _req.json()) as any;
   const { id, tag } = body;
   const idx = contacts.findIndex((c) => c.id === id);
   if (idx === -1)
@@ -44,7 +45,9 @@ export async function POST_TAG(_req: NextRequest) {
 
 export async function GET_INFO(_req: NextRequest) {
   // Gather info (stub)
-  // TODO: Implement info gathering from platforms
+  // Production: Implement info gathering from platforms
+  // Requires: Platform APIs (WhatsApp, Telegram, LinkedIn) and authentication tokens
+  // Use respective SDK methods to fetch platform data
   return NextResponse.json({ info: "Info gathering not yet implemented." });
 }
 

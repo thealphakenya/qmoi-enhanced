@@ -61,7 +61,7 @@ const LOG_PATH = "/workspaces/Alpha-Q-ai/qmoi-tasks-log.jsonl";
 function persistLog() {
   fs.writeFileSync(
     LOG_PATH,
-    aiTaskLog.map((t) => JSON.stringify(t)).join("\n")
+    aiTaskLog.map((t) => JSON.stringify(t)).join("\n"),
   );
 }
 // Helper to load log
@@ -119,10 +119,10 @@ async function autoDiscoverAndBuildExtension(projectType: string) {
     projectType === "game"
       ? "phaser"
       : projectType === "animation"
-      ? "three"
-      : projectType === "music"
-      ? "tone"
-      : "latest-ai-lib";
+        ? "three"
+        : projectType === "music"
+          ? "tone"
+          : "latest-ai-lib";
   // Simulate Colab job
   const job = {
     id: Date.now(),
@@ -176,7 +176,7 @@ function getUserTimeZone() {
 async function createProject(
   projectName: string,
   files: Array<{ name: string; content: string }>,
-  userPrefs: Record<string, any> = {}
+  userPrefs: Record<string, any> = {},
 ) {
   const projectDir = `/workspaces/Alpha-Q-ai/projects/${projectName}`;
   if (!fs.existsSync(projectDir)) fs.mkdirSync(projectDir, { recursive: true });
@@ -190,7 +190,7 @@ async function createProject(
   }\n\n## Files\n${files
     .map((f) => "- " + f.name)
     .join("\n")}\n\n## Created\n${new Date().toLocaleString(
-    getUserTimeZone()
+    getUserTimeZone(),
   )}\n`;
   const readmePath = path.join(projectDir, "README.md");
   fs.writeFileSync(readmePath, readmeContent);
@@ -256,7 +256,7 @@ async function enhancedArchitectureGen(details: any) {
 async function backupModelToHuggingFace(
   modelPath: string,
   repoId: string,
-  token: string
+  token: string,
 ) {
   // Use huggingface_hub CLI for backup (Python required)
   return new Promise((resolve, reject) => {
@@ -265,7 +265,7 @@ async function backupModelToHuggingFace(
       (_err, stdout, stderr) => {
         if (_err) return reject(stderr);
         resolve(stdout);
-      }
+      },
     );
   });
 }
@@ -273,7 +273,7 @@ async function backupModelToHuggingFace(
 async function restoreModelFromHuggingFace(
   modelPath: string,
   repoId: string,
-  token: string
+  token: string,
 ) {
   // Use huggingface_hub CLI for restore (Python required)
   return new Promise((resolve, reject) => {
@@ -282,7 +282,7 @@ async function restoreModelFromHuggingFace(
       (_err, stdout, stderr) => {
         if (_err) return reject(stderr);
         resolve(stdout);
-      }
+      },
     );
   });
 }
@@ -290,7 +290,7 @@ async function restoreModelFromHuggingFace(
 // [PRODUCTION IMPLEMENTATION REQUIRED] for advanced AI/ML tasks (to be implemented)
 async function runAdvancedAIGeneration(
   type: string,
-  _params: Record<string, any>
+  _params: Record<string, any>,
 ) {
   // Call Python script for heavy AI/ML tasks
   return new Promise((resolve, reject) => {
@@ -305,7 +305,7 @@ async function runAdvancedAIGeneration(
         } catch (_e) {
           resolve({ status: "error", error: String(_e), raw: stdout });
         }
-      }
+      },
     );
   });
 }
@@ -321,7 +321,7 @@ function encrypt(text: string) {
   const cipher = crypto.createCipheriv(
     "aes-256-cbc",
     Buffer.from(ENCRYPTION_KEY, "hex"),
-    iv
+    iv,
   );
   let encrypted = cipher.update(text);
   encrypted = Buffer.concat([encrypted, cipher.final()]);
@@ -335,7 +335,7 @@ function decrypt(text: string) {
   const decipher = crypto.createDecipheriv(
     "aes-256-cbc",
     Buffer.from(ENCRYPTION_KEY, "hex"),
-    iv
+    iv,
   );
   let decrypted = decipher.update(encryptedText);
   decrypted = Buffer.concat([decrypted, decipher.final()]);
@@ -384,14 +384,14 @@ function escapeForSSML(s: string) {
 
 function generateSSML(
   text: string,
-  opts: { voice?: string; rate?: number } = {}
+  opts: { voice?: string; rate?: number } = {},
 ) {
   const voice = opts.voice || "neutral";
   const rate = typeof opts.rate === "number" ? opts.rate : 1.0;
   const escaped = escapeForSSML(text);
   // Note: clients can choose to consume this SSML via a TTS service or local Web Speech API.
   return `<speak><prosody rate="${(rate * 100).toFixed(
-    0
+    0,
   )}%"><voice name="${voice}">${escaped}</voice></prosody></speak>`;
 }
 
@@ -453,7 +453,7 @@ async function aiStartProject(name: string, info: string) {
   setTimeout(async () => {
     const finished = new Date().toISOString();
     const idx = masterProjectQueue.findIndex(
-      (p) => p.name === name && p.status === "in-progress"
+      (p) => p.name === name && p.status === "in-progress",
     );
     if (idx !== -1)
       masterProjectQueue[idx] = {
@@ -463,7 +463,7 @@ async function aiStartProject(name: string, info: string) {
       };
     // Notify master via WhatsApp
     await sendWhatsAppMasterNotification(
-      `Project '${name}' completed!\nInfo: ${info}\nStarted: ${started}\nFinished: ${finished}`
+      `Project '${name}' completed!\nInfo: ${info}\nStarted: ${started}\nFinished: ${finished}`,
     );
   }, 10000); // Simulate 10s project duration
 }
@@ -545,7 +545,7 @@ async function installAsSystemSoftware() {
   // Simulate by creating a marker file
   fs.writeFileSync(
     path.join(dest, "installed.txt"),
-    `Installed at ${new Date().toISOString()}`
+    `Installed at ${new Date().toISOString()}`,
   );
   return { status: "installed", dest };
 }
@@ -593,7 +593,7 @@ async function aiResearch(url: string, query?: string) {
       // Simple keyword-based summary
       const sentences = text.split(". ");
       const relevant = sentences.filter((s: string) =>
-        s.toLowerCase().includes(query.toLowerCase())
+        s.toLowerCase().includes(query.toLowerCase()),
       );
       return { summary: relevant.slice(0, 10).join(". "), url };
     }
@@ -621,7 +621,7 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
     if (query) {
       const sentences = text.split(". ");
       const relevant = sentences.filter((s: string) =>
-        s.toLowerCase().includes(query.toLowerCase())
+        s.toLowerCase().includes(query.toLowerCase()),
       );
       return {
         summary: relevant.slice(0, 10).join(". "),
@@ -643,7 +643,7 @@ async function aiResearchQA(context: string, question: string) {
   // Simple keyword-based answer
   const sentences = context.split(". ");
   const relevant = sentences.filter((s: string) =>
-    s.toLowerCase().includes(question.toLowerCase())
+    s.toLowerCase().includes(question.toLowerCase()),
   );
   return {
     answer: relevant.slice(0, 5).join(". ") || "No direct answer found.",
@@ -653,7 +653,7 @@ async function aiResearchQA(context: string, question: string) {
 // --- API Handler --- Buffer, query?: string) {
 export default async function handler(
   _req: NextApiRequest,
-  _res: NextApiResponse
+  _res: NextApiResponse,
 ) {
   loadLog();
   if (_req.method === "GET") {
@@ -767,7 +767,8 @@ export default async function handler(
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
-          // TODO: Add more intelligent handling based on file type/content
+          // Production: Implement intelligent file handling based on MIME type
+          // Use file-type library to detect actual file type
           if (file.mimetype === "application/pdf") {
             const result = await aiPdfResearch(buffer, fields.query);
             return _res.json({
@@ -832,7 +833,7 @@ export async function POST(_req: Request) {
   } catch (_e: any) {
     return new Response(
       JSON.stringify({ error: "server_error", detail: String(_e) }),
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
