@@ -42,7 +42,12 @@
     "e2e": "cypress open",
     "e2e:run": "cypress run",
     "e2e:headless": "cypress run --headless",
-    "e2e:ci": "cypress run --record --parallel"
+    "e2e:ci": "cypress run --record --parallel",
+    "update-links": "./update_vercel_links.sh",
+    "update-links:verbose": "./update_vercel_links.sh --verbose",
+    "update-links:force": "./update_vercel_links.sh --force",
+    "check-deployment": "node scripts/check-deployment.js",
+    "verify-vercel": "npm run update-links && npm run check-deployment"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
