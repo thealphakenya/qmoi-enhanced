@@ -23,12 +23,6 @@
       "QMOI_AUTO_SETUP_ENABLED": "true"
     }
   },
-  "functions": {
-    "app/api/**/route.ts": {
-      "maxDuration": 30,
-      "memory": 3008
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
