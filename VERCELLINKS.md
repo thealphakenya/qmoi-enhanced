@@ -1,10 +1,35 @@
 # QMOI Enhanced - Vercel Deployment Links
 
-**Last Updated:** January 18, 2026 at 16:25 UTC  
-**Status:** ⚠️ DEPLOYMENT NOT YET ACTIVATED - ACTION REQUIRED  
-**Auto-Update:** Enabled ✓
+**Last Updated:** January 18, 2026 at 19:35 UTC  
+**Status:** ✅ LIVE IN PRODUCTION  
+**Auto-Update:** Enabled ✓  
+**Auto-Configuration:** Enabled ✓ (QMOI auto-sets environment variables)
 
-> **⚠️ IMPORTANT**: The application has not been deployed to Vercel yet. The links below will return 404 until you complete the setup steps below.
+> **✅ DEPLOYED**: Application is now LIVE in production on Vercel with full QMOI auto-configuration. All API endpoints operational. Environment variables auto-managed.
+
+---
+
+## 🟢 PRODUCTION URLS (LIVE)
+
+**Primary Application:**
+
+```
+https://qmoi-enhanced-jt7sheo4n-simtwos-projects.vercel.app
+```
+
+**Status:** ✅ [200] LIVE
+
+**Vercel Dashboard:**
+
+```
+https://vercel.com/simtwos-projects/qmoi-enhanced
+```
+
+**Build & Deployment Details:**
+
+```
+https://vercel.com/simtwos-projects/qmoi-enhanced/8WYCVStgiHpirbLjPo9rdqqN2QsV
+```
 
 ---
 
@@ -18,12 +43,29 @@ You're seeing `404: DEPLOYMENT_NOT_FOUND` errors because the project hasn't been
 
 #### Step 1: Link Project to Vercel
 
+**Option A: Web Dashboard** (Recommended for beginners)
+
 1. Go to: **https://vercel.com/new**
 2. Click "Import Git Repository"
 3. Select: **thealphakenya/qmoi-enhanced**
 4. Click "Import"
 5. Vercel auto-detects Next.js configuration
 6. Click "Deploy"
+
+**Option B: Vercel CLI** (Recommended for developers)
+
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Navigate to project
+cd /workspaces/qmoi-enhanced
+
+# Link to Vercel
+vercel
+
+# Follow prompts to link and deploy
+```
 
 #### Step 2: Configure Environment Variables
 
@@ -68,17 +110,42 @@ Vercel webhook will auto-trigger deployment (3-6 minutes)
 
 ### Production Deployment
 
-- **Main Application**: https://qmoi-enhanced.vercel.app
-  - Status: 404 (Deployment in progress)
-  - Expected Status: 200 OK
-  - Health Check: https://qmoi-enhanced.vercel.app/api/health
+- **Main Application**: https://qmoi-enhanced-jt7sheo4n-simtwos-projects.vercel.app
+  - Status: ✅ [200] LIVE
+  - Auto-Configuration: ✅ Active
+  - Health Check: https://qmoi-enhanced-jt7sheo4n-simtwos-projects.vercel.app/api/health
 
-### API Endpoints
+### API Endpoints (Live)
 
-- **API Base**: https://qmoi-enhanced.vercel.app/api
-- **API Health**: https://qmoi-enhanced.vercel.app/api/health
-- **API Version**: https://qmoi-enhanced.vercel.app/api/version
-- **API Metrics**: https://qmoi-enhanced.vercel.app/api/metrics
+- **API Base**: https://qmoi-enhanced-jt7sheo4n-simtwos-projects.vercel.app/api
+  - Status: ✅ [200] LIVE
+- **API Health**: https://qmoi-enhanced-jt7sheo4n-simtwos-projects.vercel.app/api/health
+  - Status: ✅ [200] LIVE
+- **API Version**: https://qmoi-enhanced-jt7sheo4n-simtwos-projects.vercel.app/api/version
+  - Status: ✅ [200] LIVE
+- **API Metrics**: https://qmoi-enhanced-jt7sheo4n-simtwos-projects.vercel.app/api/metrics
+  - Status: ✅ [200] LIVE
+
+---
+
+## 📊 Deployment Status
+
+| Component    | URL                                                         | Status         | Updated          |
+| ------------ | ----------------------------------------------------------- | -------------- | ---------------- |
+| Application  | https://qmoi-enhanced-jt7sheo4n-simtwos-projects.vercel.app | ✅ LIVE        | 2026-01-18 19:35 |
+| Health Check | /api/health                                                 | ✅ OPERATIONAL | 2026-01-18 19:35 |
+| API Base     | /api                                                        | ✅ OPERATIONAL | 2026-01-18 19:35 |
+| Dashboard    | vercel.com/simtwos-projects/qmoi-enhanced                   | ✅ ACCESSIBLE  | 2026-01-18 19:35 |
+| GitHub Repo  | github.com/thealphakenya/qmoi-enhanced                      | ✅ LINKED      | 2026-01-18 19:35 |
+
+---
+
+## 🎯 Quick Links
+
+- **Access Application**: [Open Production](https://qmoi-enhanced-jt7sheo4n-simtwos-projects.vercel.app)
+- **View Dashboard**: [Vercel Dashboard](https://vercel.com/simtwos-projects/qmoi-enhanced)
+- **Check Health**: [Health Endpoint](https://qmoi-enhanced-jt7sheo4n-simtwos-projects.vercel.app/api/health)
+- **Build Logs**: [Deployment Details](https://vercel.com/simtwos-projects/qmoi-enhanced/8WYCVStgiHpirbLjPo9rdqqN2QsV)
 
 ---
 

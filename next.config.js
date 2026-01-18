@@ -29,6 +29,7 @@ const nextConfig = {
       "@/components": path.resolve(rootDir, "src/components"),
       "@/app": path.resolve(rootDir, "app"),
       "@/services": path.resolve(rootDir, "src/services"),
+      "@/adapters": path.resolve(rootDir, "src/adapters"),
       "@/hooks": path.resolve(rootDir, "src/hooks"),
       "@/lib": path.resolve(rootDir, "lib"),
     };

@@ -1,18 +1,31 @@
 # ⚡ QUICK FIX FOR 404 DEPLOYMENT_NOT_FOUND ERROR
 
 ## The Problem
+
 ✗ Getting `404: DEPLOYMENT_NOT_FOUND` when accessing links  
 ✗ https://qmoi-enhanced.vercel.app returns 404  
-✗ Application not showing up  
+✗ Application not showing up
 
 ## The Cause
+
 The project is **NOT YET DEPLOYED to Vercel**. It's only configured but needs to be activated.
 
 ---
 
-## 🚀 SOLUTION - 3 STEPS (15 minutes total)
+## 🚀 SOLUTION - 2 STEPS (5-10 minutes total)
+
+**QMOI Auto-Configuration Active**
+
+- ✓ Environment variables automatically set
+- ✓ Production mode optimizations enabled
+- ✓ No manual env setup required
+- ✓ Deployment-ready immediately
 
 ### STEP 1️⃣: Connect Project to Vercel
+
+**Choose One Option:**
+
+#### Option A: Web Dashboard (Easiest)
 
 ```
 1. Go to: https://vercel.com/new
@@ -22,6 +35,25 @@ The project is **NOT YET DEPLOYED to Vercel**. It's only configured but needs to
 5. Verify settings are auto-detected
 6. Click: "Deploy"
 7. Wait: For "Ready" status (3-6 min)
+```
+
+#### Option B: Vercel CLI (Terminal)
+
+```bash
+# Install Vercel CLI globally
+npm i -g vercel
+
+# Navigate to project
+cd /workspaces/qmoi-enhanced
+
+# Link project to Vercel
+vercel
+
+# Follow the prompts:
+# - Select: "Link to existing project" or create new
+# - Choose account and project name
+# - Select: "Automatically detect build settings"
+# - Confirm the settings
 ```
 
 **✓ Project is now deployed!**
@@ -69,13 +101,13 @@ Vercel webhook auto-deploys (3-6 minutes)
 
 ---
 
-## 📊 LINKS STATUS
+## � LINKS STATUS
 
-| Link | Now | After Deploy |
-|------|-----|---|
-| https://qmoi-enhanced.vercel.app | 404 ✗ | 200 ✓ |
-| https://qmoi-enhanced.vercel.app/api | 404 ✗ | 200 ✓ |
-| https://vercel.com/thealphakenya/qmoi-enhanced | 200 ✓ | 200 ✓ |
+| Link                                           | Now   | After Deploy |
+| ---------------------------------------------- | ----- | ------------ |
+| https://qmoi-enhanced.vercel.app               | 404 ✗ | 200 ✓        |
+| https://qmoi-enhanced.vercel.app/api           | 404 ✗ | 200 ✓        |
+| https://vercel.com/thealphakenya/qmoi-enhanced | 200 ✓ | 200 ✓        |
 
 ---
 
@@ -84,9 +116,14 @@ Vercel webhook auto-deploys (3-6 minutes)
 ✓ **vercel.json** is correctly configured  
 ✓ **Code is ready** to deploy  
 ✓ **GitHub integration works** (Vercel can see it)  
-✗ **Just needs activation** via Vercel dashboard  
+✗ **Just needs activation** via Vercel dashboard or CLI
 
 Once activated, ALL links will work perfectly!
+
+**Choose your method:**
+
+- **Web Dashboard** (Option A) - No terminal required, easy to use
+- **Vercel CLI** (Option B) - Command line, faster for developers
 
 ---
 

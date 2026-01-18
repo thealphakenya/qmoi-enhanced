@@ -1,7 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "name": "qmoi-enhanced",
   "buildCommand": "npm run build",
   "installCommand": "npm install --legacy-peer-deps",
   "env": {
@@ -38,6 +37,6 @@
       ]
     }
   ],
-  "regions": ["sfo1", "lhr1", "sgp1"],
+  "regions": ["iad1"],
   "public": true
 }
