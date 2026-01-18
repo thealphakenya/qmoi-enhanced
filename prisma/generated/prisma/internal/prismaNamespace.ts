@@ -88,11 +88,11 @@ export type PrismaVersion = {
 }
 
 /**
- * Prisma Client JS version: 6.19.1
+ * Prisma Client JS version: 6.19.2
  * Query Engine version: c2990dca591cba766e3b7ef5d9e8a84796e47ab7
  */
 export const prismaVersion: PrismaVersion = {
-  client: "6.19.1",
+  client: "6.19.2",
   engine: "c2990dca591cba766e3b7ef5d9e8a84796e47ab7"
 }
 
@@ -135,13 +135,13 @@ export const AnyNull = runtime.objectEnumValues.instances.AnyNull
 
 
 type SelectAndInclude = {
-  select: unknown
-  include: unknown
+  select: any
+  include: any
 }
 
 type SelectAndOmit = {
-  select: unknown
-  omit: unknown
+  select: any
+  omit: any
 }
 
 /**
@@ -1162,23 +1162,23 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
   }
 } & {
   other: {
-    payload: unknown
+    payload: any
     operations: {
       $executeRaw: {
-        args: [query: TemplateStringsArray | Sql, ...values: unknown[]],
-        result: unknown
+        args: [query: TemplateStringsArray | Sql, ...values: any[]],
+        result: any
       }
       $executeRawUnsafe: {
-        args: [query: string, ...values: unknown[]],
-        result: unknown
+        args: [query: string, ...values: any[]],
+        result: any
       }
       $queryRaw: {
-        args: [query: TemplateStringsArray | Sql, ...values: unknown[]],
-        result: unknown
+        args: [query: TemplateStringsArray | Sql, ...values: any[]],
+        result: any
       }
       $queryRawUnsafe: {
-        args: [query: string, ...values: unknown[]],
-        result: unknown
+        args: [query: string, ...values: any[]],
+        result: any
       }
     }
   }
@@ -1474,7 +1474,7 @@ export type Datasources = {
   db?: Datasource
 }
 
-export const defineExtension = runtime.Extensions.defineExtension as any as runtime.Types.Extensions.ExtendsHook<"define", TypeMapCb, runtime.Types.Extensions.DefaultArgs>
+export const defineExtension = runtime.Extensions.defineExtension as unknown as runtime.Types.Extensions.ExtendsHook<"define", TypeMapCb, runtime.Types.Extensions.DefaultArgs>
 export type DefaultPrismaClient = PrismaClient
 export type ErrorFormat = 'pretty' | 'colorless' | 'minimal'
 export interface PrismaClientOptions {
