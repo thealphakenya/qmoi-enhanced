@@ -26,7 +26,7 @@ const nextConfig = {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
       "@": rootDir,
-      "@/components": path.resolve(rootDir, "src/components"),
+      "@/components": path.resolve(rootDir, "components"),
       "@/app": path.resolve(rootDir, "app"),
       "@/services": path.resolve(rootDir, "src/services"),
       "@/adapters": path.resolve(rootDir, "src/adapters"),

@@ -28,8 +28,7 @@
         "./*"
       ],
       "@/components/*": [
-        "./components/*",
-        "./src/components/*"
+        "./components/*"
       ],
       "@/app/*": [
         "./app/*"
@@ -41,12 +40,10 @@
         "./src/adapters/*"
       ],
       "@/hooks/*": [
-        "./hooks/*",
         "./src/hooks/*"
       ],
       "@/lib/*": [
-        "./lib/*",
-        "./src/lib/*"
+        "./lib/*"
       ]
     },
     "allowJs": true,
