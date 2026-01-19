@@ -371,7 +371,7 @@ class ServiceRecoveryManager {
     enabled: boolean;
     activeRecoveries: string[];
     historySize: number;
-    summary: any;
+    summary: unknown;
   } {
     return {
       enabled: this.enabled,

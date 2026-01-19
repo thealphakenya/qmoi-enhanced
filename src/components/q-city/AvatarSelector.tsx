@@ -61,7 +61,7 @@ export function AvatarSelector({
 
   // Get current voice's default avatar
   const currentVoice = voiceProfiles.find(
-    (voice) => voice.id === currentVoiceId
+    (voice) => voice.id === currentVoiceId,
   );
   const defaultAvatar =
     avatarsConfig.find((avatar) => avatar.voiceProfile === currentVoiceId) ||
@@ -329,7 +329,7 @@ export function AvatarSelector({
                         <Badge
                           variant="secondary"
                           className={`text-xs ${getQualityColor(
-                            avatar.qualityLevel
+                            avatar.qualityLevel,
                           )}`}
                         >
                           {avatar.qualityLevel}
@@ -337,7 +337,7 @@ export function AvatarSelector({
                         <Badge
                           variant="outline"
                           className={`text-xs ${getEngineColor(
-                            avatar.animationEngine
+                            avatar.animationEngine,
                           )}`}
                         >
                           {animationEngines[avatar.animationEngine]?.name}
@@ -395,16 +395,52 @@ export function AvatarSelector({
           </TabsContent>
 
           <TabsContent value="preview" className="space-y-4">
-            <div className="aspect-video bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg flex items-center justify-center">
-              <div className="text-center text-white">
-                <User className="h-16 w-16 mx-auto mb-4" />
-                <p className="text-lg font-medium">
-                  {avatarsConfig.find((a) => a.id === selectedAvatar)?.name}
-                </p>
-                <p className="text-sm opacity-80">
-                  Preview mode - Avatar will appear here
-                </p>
-              </div>
+            <div className="aspect-video rounded-lg overflow-hidden bg-black">
+              {selectedAvatar ? (
+                // If avatar provides a previewUrl, show it live in an iframe/video
+                (() => {
+                  const avatar = avatarsConfig.find(
+                    (a) => a.id === selectedAvatar,
+                  );
+                  const previewUrl =
+                    avatar?.previewUrl || avatar?.demoUrl || null;
+                  if (previewUrl) {
+                    return (
+                      <iframe
+                        title={`avatar-preview-${selectedAvatar}`}
+                        src={`${previewUrl}`}
+                        className="w-full h-full border-0"
+                        sandbox="allow-scripts allow-same-origin allow-forms"
+                      />
+                    );
+                  }
+
+                  // Fallback static preview box
+                  return (
+                    <div className="h-full flex items-center justify-center text-white">
+                      <div className="text-center">
+                        <User className="h-16 w-16 mx-auto mb-4" />
+                        <p className="text-lg font-medium">
+                          {avatar?.name || "Avatar Preview"}
+                        </p>
+                        <p className="text-sm opacity-80">
+                          Preview unavailable
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })()
+              ) : (
+                <div className="h-full flex items-center justify-center text-white">
+                  <div className="text-center">
+                    <User className="h-16 w-16 mx-auto mb-4" />
+                    <p className="text-lg font-medium">No avatar selected</p>
+                    <p className="text-sm opacity-80">
+                      Choose an avatar to preview
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="grid grid-cols-2 gap-4">

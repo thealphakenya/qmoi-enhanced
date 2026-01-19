@@ -27,7 +27,7 @@ interface PlatformResult {
   transactionId?: string;
   message?: string;
   error?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 // Constants
@@ -492,16 +492,16 @@ async function processBitget(amount: number, type: string) {
   }
 }
 
-const platformHandlers: Record<string, (...args: any[]) => Promise<unknown>> = {
-  Mpesa: processMpesa as (...args: any[]) => Promise<unknown>,
-  Binance: processBinance as (...args: any[]) => Promise<unknown>,
-  Pesapal: processPesapal as (...args: any[]) => Promise<unknown>,
-  Bitget: processBitget as (...args: any[]) => Promise<unknown>,
+const platformHandlers: Record<string, (...args: unknown[]) => Promise<unknown>> = {
+  Mpesa: processMpesa as (...args: unknown[]) => Promise<unknown>,
+  Binance: processBinance as (...args: unknown[]) => Promise<unknown>,
+  Pesapal: processPesapal as (...args: unknown[]) => Promise<unknown>,
+  Bitget: processBitget as (...args: unknown[]) => Promise<unknown>,
   Cashon: (async (_amount: number, _type?: string) => ({
     status: "success",
     platform: "Cashon",
     amount: _amount,
-  })) as (...args: any[]) => Promise<unknown>,
+  })) as (...args: unknown[]) => Promise<unknown>,
 };
 
 // Helper: Check if user is master (simulate for now)

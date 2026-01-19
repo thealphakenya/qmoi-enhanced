@@ -22,7 +22,7 @@ export async function POST(_req: Request) {
       headers,
       body: JSON.stringify(body),
     });
-    let data: any = null;
+    let data: unknown = null;
     try {
       data = await resp.json();
     } catch {
@@ -47,7 +47,7 @@ export async function GET() {
     if (process.env.QMOI_MEMORY_SECRET)
       headers["X-QMOI-MEMORY-SECRET"] = process.env.QMOI_MEMORY_SECRET;
     const resp = await fetch(target, { method: "GET", headers });
-    let data: any = null;
+    let data: unknown = null;
     try {
       data = await resp.json();
     } catch {

@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
-    const profile = profiles.find((p: any) => p.userId === userId);
+    const profile = profiles.find((p: unknown) => p.userId === userId);
 
     if (!profile) {
       return NextResponse.json({ error: "Voice profile not found" }, { status: 401 });

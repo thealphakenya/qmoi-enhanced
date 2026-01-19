@@ -5,6 +5,13 @@
 **Last Updated:** 2024  
 **RBAC Implementation:** ✅ Active
 
+**Production Readiness Notes (automated fixes applied):**
+
+- `MasterContext` state updater stabilized: `updateQMOIMemory` is now a stable `useCallback` and accepts functional updaters to avoid render loops.
+- Chat components now sync conversation counts to `/api/qmoi/memory` (best-effort POST) to keep server-side QMOI memory in sync.
+- Avatar management endpoints (`/api/qmoi/avatars`, `/api/qmoi/voice-profiles`) are used by the UI; avatar preview iframe added to `AvatarSelector` when `previewUrl` is available.
+- Removed duplicate Next.js page file causing `/qcity` route collision.
+
 ---
 
 ## Quick Summary
@@ -19,21 +26,22 @@
 
 ## Role Access Matrix
 
-| Endpoint Category | Master | Admin | User | Sponsored | Guest |
-|------------------|--------|-------|------|-----------|-------|
-| Auth (login) | ✅ | ✅ | ✅ | ✅ | ❌ |
-| WebAuthn | ✅ | ✅ | ✅ | ❌ | ❌ |
-| Voice | ✅ | ✅ | ✅ | ❌ | ❌ |
-| Biometric | ✅ | ✅ | ✅ | ❌ | ❌ |
-| Session | ✅ | ✅ | ✅ | ✅ | ❌ |
-| Users (list) | ✅ | ✅ | ❌ | ❌ | ❌ |
-| Users (own profile) | ✅ | ✅ | ✅ | ✅ | ❌ |
-| Admin | ✅ | ✅ | ❌ | ❌ | ❌ |
-| Master | ✅ | ❌ | ❌ | ❌ | ❌ |
+| Endpoint Category   | Master | Admin | User | Sponsored | Guest |
+| ------------------- | ------ | ----- | ---- | --------- | ----- |
+| Auth (login)        | ✅     | ✅    | ✅   | ✅        | ❌    |
+| WebAuthn            | ✅     | ✅    | ✅   | ❌        | ❌    |
+| Voice               | ✅     | ✅    | ✅   | ❌        | ❌    |
+| Biometric           | ✅     | ✅    | ✅   | ❌        | ❌    |
+| Session             | ✅     | ✅    | ✅   | ✅        | ❌    |
+| Users (list)        | ✅     | ✅    | ❌   | ❌        | ❌    |
+| Users (own profile) | ✅     | ✅    | ✅   | ✅        | ❌    |
+| Admin               | ✅     | ✅    | ❌   | ❌        | ❌    |
+| Master              | ✅     | ❌    | ❌   | ❌        | ❌    |
 
 ---
 
 ## Table of Contents
+
 1. [Authentication Endpoints](#authentication-endpoints)
 2. [Biometric Endpoints](#biometric-endpoints)
 3. [User Management Endpoints](#user-management-endpoints)
@@ -49,6 +57,7 @@
 ## Authentication Endpoints
 
 ### Email/Password Login
+
 **Endpoint:** `POST /api/auth/login`
 
 **Description:** Authenticate user with email/password credentials
@@ -56,6 +65,7 @@
 **Access:** `user`, `admin`, `master`, `sponsored`
 
 **Request Body:**
+
 ```json
 {
   "username": "string",
@@ -64,6 +74,7 @@
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
@@ -76,10 +87,12 @@
 ```
 
 **Errors:**
+
 - `400 Bad Request` - Missing username or password
 - `401 Unauthorized` - Invalid credentials
 
 **Example:**
+
 ```bash
 curl -X POST http://localhost:3000/api/auth/login \
   -H "Content-Type: application/json" \
@@ -94,6 +107,7 @@ curl -X POST http://localhost:3000/api/auth/login \
 ## Biometric Endpoints
 
 ### Register WebAuthn Credential
+
 **Endpoint:** `POST /api/webauthn/register`
 
 **Description:** Register fingerprint or face biometric credential
@@ -101,6 +115,7 @@ curl -X POST http://localhost:3000/api/auth/login \
 **Access:** `user`, `admin`, `master`
 
 **Request Body:**
+
 ```json
 {
   "userId": "1",
@@ -116,6 +131,7 @@ curl -X POST http://localhost:3000/api/auth/login \
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -131,11 +147,13 @@ curl -X POST http://localhost:3000/api/auth/login \
 ```
 
 **Errors:**
+
 - `400 Bad Request` - Missing required fields
 - `409 Conflict` - Credential already exists
 - `500 Internal Server Error` - Storage error
 
 **Example:**
+
 ```bash
 curl -X POST http://localhost:3000/api/webauthn/register \
   -H "Content-Type: application/json" \
@@ -156,6 +174,7 @@ curl -X POST http://localhost:3000/api/webauthn/register \
 ---
 
 ### Authenticate with WebAuthn
+
 **Endpoint:** `POST /api/webauthn/authenticate`
 
 **Description:** Verify fingerprint or face biometric for authentication
@@ -163,6 +182,7 @@ curl -X POST http://localhost:3000/api/webauthn/register \
 **Access:** `user`, `admin`, `master`
 
 **Request Body:**
+
 ```json
 {
   "userId": "1",
@@ -175,6 +195,7 @@ curl -X POST http://localhost:3000/api/webauthn/register \
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -185,11 +206,13 @@ curl -X POST http://localhost:3000/api/webauthn/register \
 ```
 
 **Errors:**
+
 - `400 Bad Request` - Missing required fields
 - `401 Unauthorized` - Authentication failed
 - `404 Not Found` - Credential not found
 
 **Example:**
+
 ```bash
 curl -X POST http://localhost:3000/api/webauthn/authenticate \
   -H "Content-Type: application/json" \
@@ -207,6 +230,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ---
 
 ### Enroll Voice Profile
+
 **Endpoint:** `POST /api/voice/enroll`
 
 **Description:** Enroll voice biometric profile for voice authentication
@@ -214,6 +238,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 **Access:** `user`, `admin`, `master`
 
 **Request Body:**
+
 ```json
 {
   "userId": "1",
@@ -225,6 +250,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -236,6 +262,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ```
 
 **Errors:**
+
 - `400 Bad Request` - Invalid audio data
 - `409 Conflict` - Voice profile already exists
 - `500 Internal Server Error` - Processing error
@@ -243,6 +270,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ---
 
 ### Verify Voice Biometric
+
 **Endpoint:** `POST /api/voice/verify`
 
 **Description:** Verify voice biometric during authentication
@@ -250,6 +278,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 **Access:** `user`, `admin`, `master`
 
 **Request Body:**
+
 ```json
 {
   "userId": "1",
@@ -259,6 +288,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -269,6 +299,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ```
 
 **Errors:**
+
 - `400 Bad Request` - Missing audio data
 - `401 Unauthorized` - Verification failed
 - `404 Not Found` - Voice profile not found
@@ -276,6 +307,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ---
 
 ### Store Biometric Template
+
 **Endpoint:** `POST /api/biometric/templates`
 
 **Description:** Store fingerprint, iris, or other biometric templates
@@ -283,6 +315,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 **Access:** `user`, `admin`, `master`
 
 **Request Body:**
+
 ```json
 {
   "userId": "1",
@@ -294,6 +327,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -306,6 +340,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ---
 
 ### Retrieve Biometric Templates
+
 **Endpoint:** `GET /api/biometric/templates`
 
 **Description:** Get user's stored biometric templates
@@ -313,9 +348,11 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 **Access:** `user`, `admin`, `master` (personal data with appropriate role checks)
 
 **Query Parameters:**
+
 - `userId` (required) - User ID
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -335,6 +372,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ---
 
 ### Verify Biometric Template
+
 **Endpoint:** `POST /api/biometric/verify`
 
 **Description:** Verify biometric data against stored template
@@ -342,6 +380,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 **Access:** `user`, `admin`, `master`
 
 **Request Body:**
+
 ```json
 {
   "userId": "1",
@@ -351,6 +390,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -362,6 +402,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ```
 
 **Errors:**
+
 - `400 Bad Request` - Missing fields
 - `401 Unauthorized` - Verification failed
 - `404 Not Found` - No biometric template found
@@ -371,6 +412,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ## Session Management
 
 ### Create/Validate Session
+
 **Endpoint:** `POST /api/qmoi/session`
 
 **Description:** Create authenticated session with QMOI memory integration
@@ -378,6 +420,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 **Access:** `user`, `admin`, `master`, `sponsored`
 
 **Request Body:**
+
 ```json
 {
   "userId": "1",
@@ -389,6 +432,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -400,6 +444,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ```
 
 **Errors:**
+
 - `400 Bad Request` - Missing fields
 - `401 Unauthorized` - Invalid user
 - `500 Internal Server Error` - Session creation failed
@@ -407,6 +452,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ---
 
 ### Get Session Info
+
 **Endpoint:** `GET /api/qmoi/session`
 
 **Description:** Retrieve current session information
@@ -414,9 +460,11 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 **Access:** `user`, `admin`, `master`, `sponsored` (authenticated users)
 
 **Query Parameters:**
+
 - `sessionId` (required) - Session ID
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -435,6 +483,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ## User Management Endpoints
 
 ### List All Users
+
 **Endpoint:** `GET /api/users/list`
 
 **Description:** Get list of all users (admin/master only)
@@ -442,6 +491,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 **Access:** `admin`, `master`
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -459,11 +509,13 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ```
 
 **Errors:**
+
 - `403 Forbidden` - Insufficient permissions
 
 ---
 
 ### Get User Profile
+
 **Endpoint:** `GET /api/users/profile`
 
 **Description:** Get own or another user's profile
@@ -471,9 +523,11 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 **Access:** `user`, `admin`, `master` (with role checks)
 
 **Query Parameters:**
+
 - `userId` (optional) - Target user ID (default: current user)
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -490,6 +544,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ---
 
 ### Update User Profile
+
 **Endpoint:** `PUT /api/users/update`
 
 **Description:** Update user profile information
@@ -497,6 +552,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 **Access:** `user`, `admin`, `master` (users can only update own profile)
 
 **Request Body:**
+
 ```json
 {
   "userId": "1",
@@ -506,6 +562,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -521,6 +578,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ---
 
 ### Delete User
+
 **Endpoint:** `DELETE /api/users/delete`
 
 **Description:** Delete user account (admin/master only)
@@ -528,9 +586,11 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 **Access:** `admin`, `master`
 
 **Query Parameters:**
+
 - `userId` (required) - User ID to delete
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -539,6 +599,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ```
 
 **Errors:**
+
 - `403 Forbidden` - Insufficient permissions
 - `404 Not Found` - User not found
 
@@ -547,6 +608,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ## Admin Endpoints
 
 ### Sponsored User Management
+
 **Endpoint:** `POST /api/admin/sponsored/create`
 
 **Description:** Create new sponsored user
@@ -554,6 +616,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 **Access:** `admin`, `master`
 
 **Request Body:**
+
 ```json
 {
   "username": "sponsored_user",
@@ -566,6 +629,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ```
 
 **Response (201 Created):**
+
 ```json
 {
   "success": true,
@@ -578,6 +642,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ---
 
 ### List Sponsored Users
+
 **Endpoint:** `GET /api/admin/sponsored/list`
 
 **Description:** Get list of sponsored users
@@ -585,10 +650,12 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 **Access:** `admin`, `master`
 
 **Query Parameters:**
+
 - `sponsorId` (optional) - Filter by sponsor
 - `programId` (optional) - Filter by program
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -608,6 +675,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ---
 
 ### Delete Sponsored User
+
 **Endpoint:** `DELETE /api/admin/sponsored/delete`
 
 **Description:** Remove sponsored user
@@ -615,9 +683,11 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 **Access:** `admin`, `master`
 
 **Query Parameters:**
+
 - `userId` (required) - Sponsored user ID
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -630,6 +700,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ## Master-Only Endpoints
 
 ### System Configuration
+
 **Endpoint:** `GET /api/master/system/config`
 
 **Description:** Get system configuration
@@ -637,6 +708,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 **Access:** `master`
 
 **Response (200 OK):**
+
 ```json
 {
   "version": "1.2.3",
@@ -652,6 +724,7 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 ---
 
 ### Audit Trail
+
 **Endpoint:** `GET /api/master/audit/trail`
 
 **Description:** Get system audit logs
@@ -659,10 +732,12 @@ curl -X POST http://localhost:3000/api/webauthn/authenticate \
 **Access:** `master`
 
 **Query Parameters:**
+
 - `limit` (optional) - Maximum records to return (default: 100)
 - `offset` (optional) - Start offset (default: 0)
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -689,6 +764,7 @@ Authorization: Bearer <JWT_TOKEN>
 ```
 
 **JWT Token Contents:**
+
 ```json
 {
   "id": "1",
@@ -704,6 +780,7 @@ Authorization: Bearer <JWT_TOKEN>
 ## Error Responses
 
 ### 400 Bad Request
+
 ```json
 {
   "error": "Missing required fields: username, password"
@@ -711,6 +788,7 @@ Authorization: Bearer <JWT_TOKEN>
 ```
 
 ### 401 Unauthorized
+
 ```json
 {
   "error": "Invalid credentials"
@@ -718,6 +796,7 @@ Authorization: Bearer <JWT_TOKEN>
 ```
 
 ### 403 Forbidden
+
 ```json
 {
   "error": "Forbidden: Insufficient permissions"
@@ -725,6 +804,7 @@ Authorization: Bearer <JWT_TOKEN>
 ```
 
 ### 404 Not Found
+
 ```json
 {
   "error": "Resource not found"
@@ -732,6 +812,7 @@ Authorization: Bearer <JWT_TOKEN>
 ```
 
 ### 500 Internal Server Error
+
 ```json
 {
   "error": "Internal server error"
@@ -751,6 +832,7 @@ Authorization: Bearer <JWT_TOKEN>
 ## Testing All Endpoints
 
 ### 1. Login as Admin
+
 ```bash
 curl -X POST http://localhost:3000/api/auth/login \
   -H "Content-Type: application/json" \
@@ -758,6 +840,7 @@ curl -X POST http://localhost:3000/api/auth/login \
 ```
 
 ### 2. Register WebAuthn
+
 ```bash
 curl -X POST http://localhost:3000/api/webauthn/register \
   -H "Content-Type: application/json" \
@@ -766,6 +849,7 @@ curl -X POST http://localhost:3000/api/webauthn/register \
 ```
 
 ### 3. Create Session
+
 ```bash
 curl -X POST http://localhost:3000/api/qmoi/session \
   -H "Content-Type: application/json" \

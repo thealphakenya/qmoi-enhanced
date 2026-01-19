@@ -117,7 +117,7 @@ export const db = {
         return [];
       }
     },
-    create: async (data: any) => {
+    create: async (data: unknown) => {
       const prisma = getPrisma();
       if (!prisma || !prisma.user) return null;
       try {
@@ -126,7 +126,7 @@ export const db = {
         return null;
       }
     },
-    update: async (userId: string, data: any) => {
+    update: async (userId: string, data: unknown) => {
       const prisma = getPrisma();
       if (!prisma || !prisma.user) return null;
       try {
@@ -152,7 +152,7 @@ export const db = {
   },
 
   auditLogService: {
-    create: async (data: any) => {
+    create: async (data: unknown) => {
       const prisma = getPrisma();
       if (!prisma || !prisma.auditLog) return null;
       try {
@@ -161,7 +161,7 @@ export const db = {
         return null;
       }
     },
-    findMany: async (where?: any) => {
+    findMany: async (where?: unknown) => {
       const prisma = getPrisma();
       if (!prisma || !prisma.auditLog) return [];
       try {

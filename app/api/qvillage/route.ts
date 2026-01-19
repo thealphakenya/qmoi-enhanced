@@ -5,7 +5,7 @@
 import { NextResponse } from "next/server";
 
 // Conditionally import Prisma
-let prisma: any = null;
+let prisma: unknown = null;
 let prismaInitialized = false;
 
 async function getPrismaClient() {
@@ -208,7 +208,7 @@ async function getStatus() {
   });
 }
 
-async function performSearch(body: any) {
+async function performSearch(body: unknown) {
   const { query, type, filters } = body;
 
   // Parallel search across all QVillage components
@@ -238,7 +238,7 @@ async function performSearch(body: any) {
   });
 }
 
-async function performSync(body: any) {
+async function performSync(body: unknown) {
   const { target, direction } = body;
 
   // Parallel sync operations
@@ -267,7 +267,7 @@ async function performSync(body: any) {
   });
 }
 
-async function performAnalysis(body: any) {
+async function performAnalysis(body: unknown) {
   const { content, type, _options } = body;
 
   // Parallel analysis with multiple AI models
@@ -344,7 +344,7 @@ async function fetchHuggingFacePapers(_params: URLSearchParams) {
 
     const models = await response.json();
 
-    return models.map((model: any) => ({
+    return models.map((model: unknown) => ({
       id: `hf-${model.id}`,
       title: model.id,
       authors: [model.author],
@@ -396,7 +396,7 @@ async function fetchLocalPapers(_params: URLSearchParams) {
   ];
 }
 
-async function rankPapersWithQMOI(papers: any[], query: string) {
+async function rankPapersWithQMOI(papers: unknown[], query: string) {
   // QMOI-enhanced paper ranking
   return papers.sort((a, b) => b.relevanceScore - a.relevanceScore);
 }
@@ -481,7 +481,7 @@ async function fetchUserDiscussions(user?: string | null) {
   ];
 }
 
-function deduplicateDiscussions(discussions: any[]) {
+function deduplicateDiscussions(discussions: unknown[]) {
   // Remove duplicates based on ID
   const seen = new Set();
   return discussions.filter((discussion) => {
@@ -603,7 +603,7 @@ async function checkPerformanceStatus() {
   };
 }
 
-async function searchPapers(query: string, filters: any) {
+async function searchPapers(query: string, filters: unknown) {
   // Real paper search with parallel API calls
   const [arxivResults, hfResults, localResults] = await Promise.all([
     fetchArxivPapers(new URLSearchParams({ query, limit: "20" })),
@@ -638,7 +638,7 @@ async function searchPapers(query: string, filters: any) {
   return filteredPapers;
 }
 
-async function searchKnowledgeBase(query: string, filters: any) {
+async function searchKnowledgeBase(query: string, filters: unknown) {
   // Real knowledge base search with parallel processing
   const [semanticResults, tagResults, recentResults] = await Promise.all([
     performSemanticSearch(query),
@@ -649,7 +649,7 @@ async function searchKnowledgeBase(query: string, filters: any) {
   return mergeAndRankKBResults(semanticResults, tagResults, recentResults);
 }
 
-async function searchDiscussions(query: string, filters: any) {
+async function searchDiscussions(query: string, filters: unknown) {
   try {
     // Real discussion search using database
     const discussions = await prisma.discussion.findMany({
@@ -675,7 +675,7 @@ async function searchDiscussions(query: string, filters: any) {
       take: 20,
     });
 
-    return discussions.map((disc: any) => ({
+    return discussions.map((disc: unknown) => ({
       id: disc.id,
       title: disc.title,
       content: disc.content,
@@ -691,20 +691,20 @@ async function searchDiscussions(query: string, filters: any) {
   }
 }
 
-async function rankSearchResultsWithQMOI(results: any, query: string) {
+async function rankSearchResultsWithQMOI(results: unknown, query: string) {
   // Real ranking with QMOI AI - combine and rank all results
   const allResults = [
-    ...results.papers.map((p: any) => ({
+    ...results.papers.map((p: unknown) => ({
       ...p,
       type: "paper",
       source: "arxiv",
     })),
-    ...results.kb.map((k: any) => ({
+    ...results.kb.map((k: unknown) => ({
       ...k,
       type: "kb",
       source: "knowledge_base",
     })),
-    ...results.discussions.map((d: any) => ({
+    ...results.discussions.map((d: unknown) => ({
       ...d,
       type: "discussion",
       source: "community",
@@ -857,7 +857,7 @@ async function syncLocalData(direction: string) {
   }
 }
 
-async function analyzeWithQMOI(content: any, type: string, _options: any) {
+async function analyzeWithQMOI(content: unknown, type: string, _options: unknown) {
   try {
     // Real QMOI analysis - superior AI processing
     const insights = [];
@@ -929,9 +929,9 @@ async function analyzeWithQMOI(content: any, type: string, _options: any) {
 }
 
 async function analyzeWithHuggingFace(
-  content: any,
+  content: unknown,
   type: string,
-  _options: any,
+  _options: unknown,
 ) {
   try {
     // Real Hugging Face API integration for analysis
@@ -958,7 +958,7 @@ async function analyzeWithHuggingFace(
         insights.push({
           type: "sentiment_analysis",
           confidence: 0.85,
-          findings: result.map((r: any) => ({
+          findings: result.map((r: unknown) => ({
             label: r.label,
             score: r.score,
           })),
@@ -993,7 +993,7 @@ async function analyzeWithHuggingFace(
   }
 }
 
-async function analyzeLocally(content: any, type: string, _options: any) {
+async function analyzeLocally(content: unknown, type: string, _options: unknown) {
   try {
     // Real local analysis processing
     const insights = [];
@@ -1074,7 +1074,7 @@ async function analyzeLocally(content: any, type: string, _options: any) {
   }
 }
 
-async function synthesizeAnalysisResults(qmoi: any, hf: any, local: any) {
+async function synthesizeAnalysisResults(qmoi: unknown, hf: unknown, local: unknown) {
   return {
     superior_insights: qmoi.insights,
     confidence: 0.99,
@@ -1084,7 +1084,7 @@ async function synthesizeAnalysisResults(qmoi: any, hf: any, local: any) {
 
 // XML parsing function for arXiv API
 function parseArxivXML(xmlText: string) {
-  const papers: any[] = [];
+  const papers: unknown[] = [];
   try {
     // Simple XML parsing - in production, use a proper XML parser
     const entryRegex = /<entry>(.*?)<\/entry>/gs;
@@ -1167,7 +1167,7 @@ async function performSemanticSearch(query: string) {
       take: 20,
     });
 
-    return results.map((entry: any) => ({
+    return results.map((entry: unknown) => ({
       id: entry.id,
       title: entry.title,
       content: entry.content,
@@ -1203,7 +1203,7 @@ async function searchByTags(tags: string[]) {
       take: 20,
     });
 
-    return results.map((entry: any) => ({
+    return results.map((entry: unknown) => ({
       id: entry.id,
       title: entry.title,
       content: entry.content,
@@ -1234,7 +1234,7 @@ async function getRecentEntries() {
       take: 10,
     });
 
-    return entries.map((entry: any) => ({
+    return entries.map((entry: unknown) => ({
       id: entry.id,
       title: entry.title,
       content: entry.content,
@@ -1247,7 +1247,7 @@ async function getRecentEntries() {
   }
 }
 
-function mergeAndRankKBResults(semantic: any[], tags: any[], recent: any[]) {
+function mergeAndRankKBResults(semantic: unknown[], tags: unknown[], recent: unknown[]) {
   const all = [...semantic, ...tags, ...recent];
   // Remove duplicates and rank by relevance
   const unique = all.filter(

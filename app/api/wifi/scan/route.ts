@@ -58,7 +58,7 @@ async function connectToWiFi({
   bssid?: string;
 }): Promise<{
   success: boolean;
-  details?: any;
+  details?: unknown;
   message?: string;
   error?: string;
 }> {

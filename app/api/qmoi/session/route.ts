@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
     
     // End existing sessions for user
-    sessions.forEach((s: any) => {
+    sessions.forEach((s: unknown) => {
       if (s.userId === userId && s.active) s.active = false;
     });
 
@@ -64,7 +64,7 @@ export async function GET(request: NextRequest) {
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
-    const session = sessions.find((s: any) => s.id === sessionId);
+    const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
       return NextResponse.json({ error: "Invalid session" }, { status: 401 });

@@ -69,7 +69,7 @@ export async function GET(_request: NextRequest) {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: any) {
+    } catch (_e: unknown) {
       problems.push({
         type: "system",
         message: _e instanceof Error ? _e.message : String(_e),
@@ -97,7 +97,7 @@ export async function POST(_request: NextRequest) {
 
   const searchParams = _request.nextUrl.searchParams;
   if (searchParams.get("fix")) {
-    const results: any[] = [];
+    const results: unknown[] = [];
     try {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
@@ -146,7 +146,7 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: any) {
+    } catch (_e: unknown) {
       results.push({
         type: "system",
         message: _e instanceof Error ? _e.message : String(_e),

@@ -290,7 +290,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
     setIsAuthenticating(true);
     setConfidence(0);
 
-    const results: any[] = [];
+    const results: unknown[] = [];
     let totalConfidence = 0;
     let methodCount = 0;
 

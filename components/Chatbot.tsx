@@ -53,15 +53,16 @@ const Chatbot: React.FC<ChatbotProps> = ({
   // Track conversation with QMOI memory
   useEffect(() => {
     if (chatHistory && chatHistory.length > 0) {
-      updateQMOIMemory({
+      updateQMOIMemory((prev) => ({
         conversations: chatHistory.length,
         contextHistory: [
-          ...(qmoiMemory.contextHistory || []),
+          ...(prev.contextHistory || []),
           `Chat with ${currentUser?.name || "user"}`,
         ].slice(-10),
-      });
+      }));
     }
-  }, [chatHistory, currentUser, qmoiMemory, updateQMOIMemory]);
+    // depend only on chatHistory and currentUser; updateQMOIMemory is stable
+  }, [chatHistory, currentUser, updateQMOIMemory]);
 
   const [profileName, setProfileName] = useState<string | null>(null);
 

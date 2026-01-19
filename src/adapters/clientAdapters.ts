@@ -43,7 +43,7 @@ const RETRY_DELAY = 1000; // ms
 // UTILITY FUNCTIONS
 // ============================================================================
 
-function getCacheKey(endpoint: string, _params?: any): string {
+function getCacheKey(endpoint: string, _params?: unknown): string {
   return `${endpoint}:${JSON.stringify(_params || {})}`;
 }
 
@@ -78,7 +78,7 @@ async function withRetry<T>(
   endpoint: string,
   maxRetries = MAX_RETRIES
 ): Promise<T> {
-  let lastError: any;
+  let lastError: unknown;
   for (let i = 0; i <= maxRetries; i++) {
     try {
       return await fn();
@@ -217,7 +217,7 @@ export async function uploadFile(formData: FormData): Promise<unknown> {
 
 export async function emergencyAction(
   action: string,
-  payload: any
+  payload: unknown
 ): Promise<unknown> {
   // Emergency actions skip retry logic for speed
   try {
@@ -267,8 +267,8 @@ export async function youtubeDownload(url: string): Promise<unknown> {
 // ============================================================================
 
 export async function fetchAllInParallel(): Promise<{
-  media: any[];
-  health: any;
+  media: unknown[];
+  health: unknown;
 }> {
   console.debug("[Parallel] Fetching all resources in parallel...");
   const [media, health] = await Promise.allSettled([

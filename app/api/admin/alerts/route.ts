@@ -137,7 +137,7 @@ export async function POST(_request: NextRequest) {
 }
 
 function generateAlerts() {
-  const alerts: any[] = [];
+  const alerts: unknown[] = [];
   const now = new Date();
   const errorStats = errorTracker.getErrorStats();
   const metrics = monitor.getAllMetrics();
@@ -160,7 +160,7 @@ function generateAlerts() {
   // Check for performance degradation based on metrics
   if (metrics && metrics.length > 0) {
     const avgResponseTime =
-      metrics.reduce((sum: number, m: any) => sum + m.duration, 0) /
+      metrics.reduce((sum: number, m: unknown) => sum + m.duration, 0) /
       metrics.length;
     if (avgResponseTime > 1000) {
       alerts.push({

@@ -2,7 +2,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // Dynamic import for Prisma to avoid build-time issues
-let prisma: any = null;
+let prisma: unknown = null;
 
 async function getPrisma() {
   if (!prisma) {
@@ -63,7 +63,7 @@ async function searchMedia(
   });
 
   // Convert to MediaItem format for compatibility
-  return mediaTasks.map((task: any) => ({
+  return mediaTasks.map((task: unknown) => ({
     id: task.id,
     title: task.type, // Using type as title for now
     type: "movie" as const, // Default type
@@ -141,7 +141,7 @@ async function getMediaLogs(filter?: {
   mediaId?: string;
   limit?: number;
 }) {
-  const where: any = {};
+  const where: unknown = {};
 
   if (filter?.action) {
     where.action = filter.action;

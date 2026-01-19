@@ -45,7 +45,7 @@ export async function GET(_request: NextRequest) {
     }
     if (url.searchParams.get("logs") === "true") {
       // Production: Fetch logs from Prisma DB or file storage service
-      const logs: any[] = [];
+      const logs: unknown[] = [];
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);

@@ -7,7 +7,7 @@ interface Document {
   id: number;
   name: string;
   type: string;
-  content: any;
+  content: unknown;
   createdAt: string;
 }
 

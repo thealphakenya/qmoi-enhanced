@@ -12,9 +12,9 @@ export async function POST(request: NextRequest) {
 
     if (!fs.existsSync(FILE)) return NextResponse.json({ error: "No credentials stored" }, { status: 404 });
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
-    const matches = items.filter((i: any) => i.username === username);
+    const matches = items.filter((i: unknown) => i.username === username);
     // Simplified match: check if any credential id equals assertion.id
-    const found = matches.find((m: any) => m.credential?.id === assertion.id);
+    const found = matches.find((m: unknown) => m.credential?.id === assertion.id);
     if (!found) return NextResponse.json({ success: false, message: "No matching credential" }, { status: 401 });
 
     return NextResponse.json({ success: true, message: "Authentication succeeded" });

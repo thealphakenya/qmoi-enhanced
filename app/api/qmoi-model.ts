@@ -214,7 +214,7 @@ async function createProject(
 }
 
 // Helper to auto-generate docs and packaging for a project/package/extension
-async function generateDocsAndPackaging(projectName: string, files: any[]) {
+async function generateDocsAndPackaging(projectName: string, files: unknown[]) {
   const docs = `# ${projectName} Documentation\n\nAuto-generated docs for project: ${projectName}`;
   const readmePath = `/workspaces/Alpha-Q-ai/projects/${projectName}/README.md`;
   // Ensure project directory exists and write README
@@ -230,7 +230,7 @@ async function generateDocsAndPackaging(projectName: string, files: any[]) {
 }
 
 // --- Enhanced Creative Generators ---
-async function enhancedGameGen(details: any) {
+async function enhancedGameGen(details: unknown) {
   // Add more thorough logic, error checking, and asset generation
   // ...
   return {
@@ -239,15 +239,15 @@ async function enhancedGameGen(details: any) {
     assets: ["game.js", "assets/", "README.md"],
   };
 }
-async function enhancedAppDev(details: any) {
+async function enhancedAppDev(details: unknown) {
   // ...
   return { status: "success", details, files: ["app.js", "README.md"] };
 }
-async function enhancedMusicGen(details: any) {
+async function enhancedMusicGen(details: unknown) {
   // ...
   return { status: "success", details, files: ["track.wav", "README.md"] };
 }
-async function enhancedArchitectureGen(details: any) {
+async function enhancedArchitectureGen(details: unknown) {
   // ...
   return { status: "success", details, files: ["model.obj", "README.md"] };
 }
@@ -762,7 +762,7 @@ export default async function handler(
   } else if (_req.method === "POST") {
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
-      form.parse(_req as any, async (_err: any, fields: any, files: any) => {
+      form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
         if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
@@ -798,7 +798,7 @@ export default async function handler(
 }
 
 // Add endpoint to save sister projects (simple in-memory for now)
-const sisterProjects: any[] = [];
+const sisterProjects: unknown[] = [];
 
 export async function POST(_req: Request) {
   const url = new URL(_req.url);
@@ -816,9 +816,9 @@ export async function POST(_req: Request) {
     const message = body.message || body.input;
     const speak = body.speak || url.searchParams.get("speak") === "1";
     if (message) {
-      const result: any = await multiUserChat(user, message);
+      const result: unknown = await multiUserChat(user, message);
       // If client requested speak, include SSML; otherwise return plain text
-      const payload: any = {
+      const payload: unknown = {
         reply: result.reply,
         conversation: result.conversation,
       };
@@ -830,7 +830,7 @@ export async function POST(_req: Request) {
     return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: any) {
+  } catch (_e: unknown) {
     return new Response(
       JSON.stringify({ error: "server_error", detail: String(_e) }),
       { status: 500 },

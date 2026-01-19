@@ -94,7 +94,7 @@ async function handlePaperUpdate(body: unknown) {
     (payload as any).timestamp ?? new Date().toISOString();
 
   // Parallel processing of paper updates
-  const updateTasks = papers.map((paper: any) =>
+  const updateTasks = papers.map((paper: unknown) =>
     processPaperUpdate(paper, source),
   );
 
@@ -248,7 +248,7 @@ async function handleAIEnhancement(body: unknown) {
     : [];
 
   // Parallel AI enhancement processing
-  const enhancementTasks = data.map((item: any) =>
+  const enhancementTasks = data.map((item: unknown) =>
     applyAIEnhancement(item, enhancement_type),
   );
 
@@ -353,10 +353,10 @@ function verifyWebhookSignature(
   }
 }
 
-async function processPaperUpdate(paper: any, source: string) {
+async function processPaperUpdate(paper: unknown, source: string) {
   // Enhanced paper processing with QMOI AI
   try {
-    const p: any = paper ?? {};
+    const p: unknown = paper ?? {};
     // Validate paper data
     if (!p.id || !p.title) {
       throw new Error("Invalid paper data");
@@ -382,7 +382,7 @@ async function processPaperUpdate(paper: any, source: string) {
       "Error processing paper update:",
       error,
     );
-    const p: any = paper ?? {};
+    const p: unknown = paper ?? {};
     return {
       id: p.id ?? null,
       status: "error",
@@ -391,7 +391,7 @@ async function processPaperUpdate(paper: any, source: string) {
   }
 }
 
-function calculateRelevanceScore(paper: any): number {
+function calculateRelevanceScore(paper: unknown): number {
   // Simple relevance scoring based on content
   let score = 0.5;
   const title = String((paper as any)?.title || "").toLowerCase();
@@ -406,7 +406,7 @@ function calculateRelevanceScore(paper: any): number {
   return Math.min(score, 1.0);
 }
 
-async function notifySubscribers(_event: string, data: any) {
+async function notifySubscribers(_event: string, data: unknown) {
   // Parallel notification system
   const notifications = await Promise.allSettled([
     notifyWebSubscribers(_event, data),
@@ -421,7 +421,7 @@ async function notifySubscribers(_event: string, data: any) {
   };
 }
 
-async function triggerQMOISync(type: string, data: any) {
+async function triggerQMOISync(type: string, data: unknown) {
   // QMOI AI synchronization
   try {
     // Trigger sync with QMOI AI system
@@ -602,7 +602,7 @@ async function notifyKBSubscribers(data: unknown) {
   }
 }
 
-async function moderateContent(content: any) {
+async function moderateContent(content: unknown) {
   // Content moderation with QMOI AI
   try {
     // Basic content checks
@@ -635,7 +635,7 @@ async function moderateContent(content: any) {
   }
 }
 
-async function analyzeSentiment(content: any) {
+async function analyzeSentiment(content: unknown) {
   // Sentiment analysis
   try {
     const text = content.content || "";
@@ -681,7 +681,7 @@ async function analyzeSentiment(content: any) {
   }
 }
 
-async function classifyTopic(content: any) {
+async function classifyTopic(content: unknown) {
   // Topic classification
   const text = `${content.title || ""} ${content.content || ""}`.toLowerCase();
   const topics: string[] = [];
@@ -702,7 +702,7 @@ async function classifyTopic(content: any) {
   return topics.length > 0 ? topics : ["General"];
 }
 
-async function storeDiscussion(discussion: any) {
+async function storeDiscussion(discussion: unknown) {
   // Store discussion in database
   try {
     const discussionId = `disc-${Date.now()}-${Math.random()
@@ -718,12 +718,12 @@ async function storeDiscussion(discussion: any) {
   }
 }
 
-async function broadcastDiscussionUpdate(discussionId: string, data: any) {
+async function broadcastDiscussionUpdate(discussionId: string, data: unknown) {
   // Broadcast to connected clients
   console.log(`Broadcasting discussion update: ${discussionId}`, data);
 }
 
-async function enhanceDiscussionWithQMOI(discussionId: string, content: any) {
+async function enhanceDiscussionWithQMOI(discussionId: string, content: unknown) {
   // QMOI AI discussion enhancement
   try {
     console.log(`Enhancing discussion ${discussionId} with QMOI AI`);
@@ -753,7 +753,7 @@ async function enhanceDiscussionWithQMOI(discussionId: string, content: any) {
 
 async function updateSyncMetrics(
   sync_type: string,
-  results: any,
+  results: unknown,
   duration: number,
 ) {
   // Update sync performance metrics
@@ -803,7 +803,7 @@ async function invalidateRelevantCaches(sync_type: string) {
   }
 }
 
-async function broadcastSyncCompletion(sync_type: string, results: any) {
+async function broadcastSyncCompletion(sync_type: string, results: unknown) {
   // Broadcast sync completion to subscribers
   try {
     const notification = {
@@ -827,7 +827,7 @@ async function broadcastSyncCompletion(sync_type: string, results: any) {
   }
 }
 
-async function analyzeSyncPerformance(results: any, duration: number) {
+async function analyzeSyncPerformance(results: unknown, duration: number) {
   // Analyze sync performance and provide recommendations
   const successRate = results.success_count / results.total_count;
   const throughput = results.total_count / (duration / 1000);
@@ -860,7 +860,7 @@ async function analyzeSyncPerformance(results: any, duration: number) {
 
 async function triggerAutoOptimization(
   sync_type: string,
-  recommendations: any[],
+  recommendations: unknown[],
 ) {
   // Trigger automatic optimizations
   try {
@@ -890,7 +890,7 @@ async function triggerAutoOptimization(
   }
 }
 
-async function applyAIEnhancement(item: any, enhancement_type: string) {
+async function applyAIEnhancement(item: unknown, enhancement_type: string) {
   // Apply AI enhancement to item
   try {
     const enhanced = { ...item, enhanced: true };
@@ -925,7 +925,7 @@ async function applyAIEnhancement(item: any, enhancement_type: string) {
 }
 
 async function synthesizeEnhancements(
-  results: any[],
+  results: unknown[],
   enhancement_type: string,
 ) {
   // Synthesize multiple enhancements into cohesive result
@@ -957,7 +957,7 @@ async function synthesizeEnhancements(
 
 async function applyEnhancementsWithRollback(
   target: string,
-  enhancements: any,
+  enhancements: unknown,
 ) {
   // Apply enhancements with rollback capability
   try {
@@ -994,7 +994,7 @@ async function createBackup(target: string) {
 async function trackEnhancementMetrics(
   target: string,
   enhancement_type: string,
-  results: any[],
+  results: unknown[],
 ) {
   // Track enhancement metrics
   try {
@@ -1024,8 +1024,8 @@ async function trackEnhancementMetrics(
 
 async function analyzePerformanceAlert(
   alert_type: string,
-  metrics: any,
-  threshold: any,
+  metrics: unknown,
+  threshold: unknown,
 ) {
   // Analyze performance alert severity
   try {
@@ -1088,7 +1088,7 @@ function getRecommendedAction(severity: string, alert_type: string): string {
 
 async function generatePerformanceRecommendations(
   alert_type: string,
-  metrics: any,
+  metrics: unknown,
 ) {
   // Generate performance recommendations
   const recommendations: string[] = [];
@@ -1114,7 +1114,7 @@ async function generatePerformanceRecommendations(
   return recommendations;
 }
 
-async function attemptAutoFixes(alert_type: string, metrics: any) {
+async function attemptAutoFixes(alert_type: string, metrics: unknown) {
   // Attempt automatic fixes
   const fixes: string[] = [];
 
@@ -1142,7 +1142,7 @@ async function attemptAutoFixes(alert_type: string, metrics: any) {
   }
 }
 
-async function escalateCriticalAlert(alert: any) {
+async function escalateCriticalAlert(alert: unknown) {
   // Escalate critical alerts
   try {
     console.log("Escalating critical alert:", alert);
@@ -1165,7 +1165,7 @@ async function escalateCriticalAlert(alert: any) {
   }
 }
 
-async function adjustMonitoringThresholds(alert_type: string, metrics: any) {
+async function adjustMonitoringThresholds(alert_type: string, metrics: unknown) {
   // Adjust monitoring thresholds based on patterns
   try {
     const adjustments: {
@@ -1196,7 +1196,7 @@ async function adjustMonitoringThresholds(alert_type: string, metrics: any) {
   }
 }
 
-async function notifyWebSubscribers(_event: string, data: any) {
+async function notifyWebSubscribers(_event: string, data: unknown) {
   // Web notification to connected clients
   try {
     console.log(`Sending web notification: ${_event}`, data);
@@ -1207,7 +1207,7 @@ async function notifyWebSubscribers(_event: string, data: any) {
       (await (_prisma as any).user.findMany({ select: { id: true } })) || [];
 
     // Create notifications in database
-    const notifications = users.map((user: any) => ({
+    const notifications = users.map((user: unknown) => ({
       userId: user.id,
       type: "web",
       _event,
@@ -1235,7 +1235,7 @@ async function notifyWebSubscribers(_event: string, data: any) {
 }
 
 // Helper functions for notifications
-function getNotificationTitle(_event: string, data: any): string {
+function getNotificationTitle(_event: string, data: unknown): string {
   switch (_event) {
     case "paper_update":
       return "New Research Papers Available";
@@ -1263,7 +1263,7 @@ function getNotificationMessage(_event: string, data: unknown): string {
   }
 }
 
-async function notifyEmailSubscribers(_event: string, data: any) {
+async function notifyEmailSubscribers(_event: string, data: unknown) {
   // Email notification
   try {
     console.log(`Sending email notification: ${_event}`, data);
@@ -1276,7 +1276,7 @@ async function notifyEmailSubscribers(_event: string, data: any) {
       })) || [];
 
     // Create email notifications in database
-    const notifications = users.map((user: any) => ({
+    const notifications = users.map((user: unknown) => ({
       userId: user.id,
       type: "email",
       _event,
@@ -1303,7 +1303,7 @@ async function notifyEmailSubscribers(_event: string, data: any) {
   }
 }
 
-async function notifyPushSubscribers(_event: string, data: any) {
+async function notifyPushSubscribers(_event: string, data: unknown) {
   // Push notification
   try {
     console.log(`Sending push notification: ${_event}`, data);
@@ -1314,7 +1314,7 @@ async function notifyPushSubscribers(_event: string, data: any) {
       (await (_prisma as any).user.findMany({ select: { id: true } })) || [];
 
     // Create push notifications in database
-    const notifications = users.map((user: any) => ({
+    const notifications = users.map((user: unknown) => ({
       userId: user.id,
       type: "push",
       _event,

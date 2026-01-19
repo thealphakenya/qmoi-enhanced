@@ -26,7 +26,7 @@ export async function GET(_request: NextRequest) {
     }
 
     const mod = await import("../../../../../lib/qmoi-revenue-engine");
-    const qmoiRevenueEngine: any =
+    const qmoiRevenueEngine: unknown =
       mod.qmoiRevenueEngine || mod.default || mod;
 
     const transactions = qmoiRevenueEngine.getTransactionHistory

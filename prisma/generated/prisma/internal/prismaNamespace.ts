@@ -135,13 +135,13 @@ export const AnyNull = runtime.objectEnumValues.instances.AnyNull
 
 
 type SelectAndInclude = {
-  select: any
-  include: any
+  select: unknown
+  include: unknown
 }
 
 type SelectAndOmit = {
-  select: any
-  omit: any
+  select: unknown
+  omit: unknown
 }
 
 /**
@@ -1162,23 +1162,23 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
   }
 } & {
   other: {
-    payload: any
+    payload: unknown
     operations: {
       $executeRaw: {
-        args: [query: TemplateStringsArray | Sql, ...values: any[]],
-        result: any
+        args: [query: TemplateStringsArray | Sql, ...values: unknown[]],
+        result: unknown
       }
       $executeRawUnsafe: {
-        args: [query: string, ...values: any[]],
-        result: any
+        args: [query: string, ...values: unknown[]],
+        result: unknown
       }
       $queryRaw: {
-        args: [query: TemplateStringsArray | Sql, ...values: any[]],
-        result: any
+        args: [query: TemplateStringsArray | Sql, ...values: unknown[]],
+        result: unknown
       }
       $queryRawUnsafe: {
-        args: [query: string, ...values: any[]],
-        result: any
+        args: [query: string, ...values: unknown[]],
+        result: unknown
       }
     }
   }

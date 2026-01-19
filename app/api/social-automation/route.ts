@@ -4,8 +4,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // In-memory stores (replace with DB/integration in production)
-const posts: any[] = [];
-const contacts: any[] = [
+const posts: unknown[] = [];
+const contacts: unknown[] = [
   { id: 1, name: "Alice", platform: "WhatsApp", tags: ["friend"] },
   { id: 2, name: "Bob", platform: "Telegram", tags: ["work"] },
 ];

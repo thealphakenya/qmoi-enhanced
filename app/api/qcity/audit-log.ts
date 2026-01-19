@@ -9,7 +9,7 @@ const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG_PATH = path.resolve(process.cwd(), "logs/qcity_audit.log");
 
 const handler = requireRole(["admin", "master"])(
-  async (_req: any, _res: any) => {
+  async (_req: unknown, _res: unknown) => {
     const { method, query } = _req;
     if (method !== "GET")
       return _res.status(405).json({ error: "Method not allowed" });
@@ -31,19 +31,19 @@ const handler = requireRole(["admin", "master"])(
     // Filtering
     if (query.user)
       logs = logs.filter(
-        (l: any) => l.user && l.user.includes(query.user)
+        (l: unknown) => l.user && l.user.includes(query.user)
       );
     if (query.action)
       logs = logs.filter(
-        (l: any) => l.action && l.action.includes(query.action)
+        (l: unknown) => l.action && l.action.includes(query.action)
       );
     if (query.status)
       logs = logs.filter(
-        (l: any) => l.status && l.status.includes(query.status)
+        (l: unknown) => l.status && l.status.includes(query.status)
       );
     if (query.date)
       logs = logs.filter(
-        (l: any) => l.timestamp && l.timestamp.startsWith(query.date)
+        (l: unknown) => l.timestamp && l.timestamp.startsWith(query.date)
       );
     // Pagination
     const page = parseInt(query.page) || 1;
@@ -54,7 +54,7 @@ const handler = requireRole(["admin", "master"])(
     // Export
     if (query.export === "csv") {
       const header = "Timestamp,User,Action,Device,Status,Command";
-      const rows = items.map((log: any) =>
+      const rows = items.map((log: unknown) =>
         [
           log.timestamp,
           log.user,

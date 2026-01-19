@@ -26,8 +26,8 @@ const PaymentInfoSchema = z.object({
 });
 
 // [PRODUCTION IMPLEMENTATION REQUIRED] database
-const payments: any[] = [];
-const paymentLogs: any[] = [];
+const payments: unknown[] = [];
+const paymentLogs: unknown[] = [];
 
 // Secure credential storage (in production, use encrypted environment variables)
 // Do NOT keep fallback literal secrets in source. Provide via environment or secrets manager.
@@ -52,7 +52,7 @@ function maskSecret(s: string | undefined | null) {
   return s.replace(/.(?=.{4})/g, "*");
 }
 
-async function backupCredentialsSafe(credentials: any, platform: string) {
+async function backupCredentialsSafe(credentials: unknown, platform: string) {
   try {
     const masked = {
       pesapal: { consumerKey: maskSecret(credentials.pesapal.consumerKey) },
@@ -69,7 +69,7 @@ async function backupCredentialsSafe(credentials: any, platform: string) {
 }
 
 // Payment processing functions
-async function processMpesaPayment(paymentData: any) {
+async function processMpesaPayment(paymentData: unknown) {
   try {
     // Simulate M-Pesa API call
     const response = await fetch(
@@ -108,7 +108,7 @@ async function processMpesaPayment(paymentData: any) {
   }
 }
 
-async function processAirtelPayment(paymentData: any) {
+async function processAirtelPayment(paymentData: unknown) {
   try {
     // Simulate Airtel Money API call
     const response = await fetch(
@@ -150,7 +150,7 @@ async function processAirtelPayment(paymentData: any) {
   }
 }
 
-async function processPesapalPayment(paymentData: any) {
+async function processPesapalPayment(paymentData: unknown) {
   try {
     // Simulate Pesapal API call
     const response = await fetch(

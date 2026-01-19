@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 type AutoFixService = {
   startContinuousAutoFix?: (getStatus: () => Promise<any>) => void;
   stopContinuousAutoFix?: () => void;
-  startAutoFix?: (status: any) => Promise<any>;
+  startAutoFix?: (status: unknown) => Promise<any>;
 };
 
 // Try to import the service at module load time for TypeScript resolution;

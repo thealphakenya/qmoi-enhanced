@@ -7,7 +7,7 @@ import path from "path";
 import { requireRole } from "./rbac";
 
 const USERS_FILE = path.resolve(process.cwd(), "data", "users.json");
-function loadUsers(): any[] {
+function loadUsers(): unknown[] {
   if (!fs.existsSync(USERS_FILE)) return [];
   try {
     return JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
@@ -15,7 +15,7 @@ function loadUsers(): any[] {
     return [];
   }
 }
-function saveUsers(users: any[]) {
+function saveUsers(users: unknown[]) {
   fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
 }
 
@@ -24,7 +24,7 @@ const handler = requireRole(["user", "admin", "master"])(
     const { method, body } = _req;
     const { id } = (_req as any).user || {};
     const users = loadUsers();
-    const userIdx = users.findIndex((u: any) => u.id === id);
+    const userIdx = users.findIndex((u: unknown) => u.id === id);
     if (userIdx === -1)
       return _res.status(404).json({ error: "User not found" });
     if (method === "POST" && body.action === "setup") {

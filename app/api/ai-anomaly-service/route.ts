@@ -44,7 +44,7 @@ export async function GET(_request: NextRequest) {
             }))
           : [];
       return NextResponse.json({ errors });
-    } catch (_e: any) {
+    } catch (_e: unknown) {
       return NextResponse.json(
         {
           error: _e instanceof Error ? _e.message : String(_e),
@@ -73,7 +73,7 @@ export async function POST(_request: NextRequest) {
       // Simulate auto-fix (could trigger a script, restart service, etc.)
       // In production, implement real fix logic
       return NextResponse.json({ status: "fixed" });
-    } catch (_e: any) {
+    } catch (_e: unknown) {
       return NextResponse.json(
         {
           error: _e instanceof Error ? _e.message : String(_e),

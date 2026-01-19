@@ -55,7 +55,7 @@ export function showDecoyInfo(): { message: string; warning: string } {
   };
 }
 
-export function logEvent(_event: string, data?: any): void {
+export function logEvent(_event: string, data?: unknown): void {
   try {
     const logEntry = {
       timestamp: new Date().toISOString(),

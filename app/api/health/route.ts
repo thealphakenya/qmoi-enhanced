@@ -386,7 +386,7 @@ async function checkQMOIHealth() {
   };
 }
 
-function calculateComponentHealth(metrics: any, thresholds: any) {
+function calculateComponentHealth(metrics: unknown, thresholds: unknown) {
   let healthyCount = 0;
   let totalCount = 0;
 
@@ -416,7 +416,7 @@ function calculateComponentHealth(metrics: any, thresholds: any) {
     : "unhealthy";
 }
 
-function calculateOverallHealth(healthReport: any) {
+function calculateOverallHealth(healthReport: unknown) {
   const components = [
     "system",
     "api",
@@ -477,7 +477,7 @@ function calculateOverallHealth(healthReport: any) {
   return { status, score: Math.round(averageScore) };
 }
 
-function generateRecommendations(healthReport: any) {
+function generateRecommendations(healthReport: unknown) {
   const recommendations: Array<{
     component: string;
     priority: string;

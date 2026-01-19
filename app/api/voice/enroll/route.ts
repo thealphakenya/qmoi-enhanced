@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
     
     // Check if user already has a profile (allow re-enrollment)
-    const existingIndex = profiles.findIndex((p: any) => p.userId === userId);
+    const existingIndex = profiles.findIndex((p: unknown) => p.userId === userId);
     
     const voiceProfile = {
       id: crypto.randomUUID(),

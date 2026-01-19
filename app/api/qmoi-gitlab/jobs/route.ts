@@ -9,7 +9,7 @@ export async function GET(_request: NextRequest) {
     const logsDir = path.join(process.cwd(), "logs");
     const jobLogFile = path.join(logsDir, "qmoi_gitlab_ci_cd.log");
 
-    let jobs: any[] = [];
+    let jobs: unknown[] = [];
 
     if (fs.existsSync(jobLogFile)) {
       const logContent = fs.readFileSync(jobLogFile, "utf-8");

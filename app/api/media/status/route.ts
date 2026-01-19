@@ -4,7 +4,7 @@
 import { NextResponse } from "next/server";
 
 // Conditionally import Prisma
-let prisma: any = null;
+let prisma: unknown = null;
 let prismaInitialized = false;
 
 async function getPrismaClient() {

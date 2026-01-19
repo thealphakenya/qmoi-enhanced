@@ -99,7 +99,7 @@ export async function GET(_request: NextRequest) {
     }
 
     // Calculate averages
-    Object.values(stats.currencyDistribution).forEach((dist: any) => {
+    Object.values(stats.currencyDistribution).forEach((dist: unknown) => {
       dist.averageBalance = dist.totalBalance / dist.walletCount;
     });
 
@@ -140,7 +140,7 @@ export async function GET(_request: NextRequest) {
             newWalletsLast30Days: recentWallets,
             transactionsLast30Days: recentTransactions,
           },
-          wallets: wallets.map((w: any) => ({
+          wallets: wallets.map((w: unknown) => ({
             id: w.id,
             currency: w.currency,
             balance: w.balance,

@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
-    const cred = credentials.find((c: any) => c.credentialId === credentialId);
+    const cred = credentials.find((c: unknown) => c.credentialId === credentialId);
 
     if (!cred) {
       return NextResponse.json({ error: "Credential not found" }, { status: 401 });

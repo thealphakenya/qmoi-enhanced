@@ -54,12 +54,12 @@ const ReferralProgramSchema = z.object({
 });
 
 // [PRODUCTION IMPLEMENTATION REQUIRED] database
-const microtasks: any[] = [];
-const affiliateCampaigns: any[] = [];
-const contentProjects: any[] = [];
-const referralPrograms: any[] = [];
-const revenueLogs: any[] = [];
-const platformAccounts: any[] = [];
+const microtasks: unknown[] = [];
+const affiliateCampaigns: unknown[] = [];
+const contentProjects: unknown[] = [];
+const referralPrograms: unknown[] = [];
+const revenueLogs: unknown[] = [];
+const platformAccounts: unknown[] = [];
 
 // M-Pesa credentials (securely stored)
 const MPESA_CREDENTIALS = {
@@ -74,7 +74,7 @@ const MPESA_CREDENTIALS = {
 };
 
 // Email backup function
-async function backupCredentialsToEmail(credentials: any, platform: string) {
+async function backupCredentialsToEmail(credentials: unknown, platform: string) {
   try {
     const emailData = {
       to: "rovicviccy@gmail.com",
@@ -105,7 +105,7 @@ async function backupCredentialsToEmail(credentials: any, platform: string) {
 }
 
 // Platform account creation functions
-async function createPlatformAccount(platform: string, accountData: any) {
+async function createPlatformAccount(platform: string, accountData: unknown) {
   try {
     const account = {
       id: `acc_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,

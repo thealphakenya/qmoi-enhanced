@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireApiKey } from "../../../lib/proposals";
 
 // Conditionally import Prisma
-let prisma: any = null;
+let prisma: unknown = null;
 let prismaInitialized = false;
 
 async function getPrismaClient() {
@@ -15,8 +15,8 @@ async function getPrismaClient() {
   return {
     news: {
       findMany: async () => [],
-      create: async (data: any) => ({ id: "mock-news-id", ...data.data }),
-      update: async (data: any) => data.data,
+      create: async (data: unknown) => ({ id: "mock-news-id", ...data.data }),
+      update: async (data: unknown) => data.data,
     },
   };
 }
@@ -214,7 +214,7 @@ export async function PUT(_req: NextRequest) {
     const body = (await _req.json()) as any;
     const { id, ...updates } = body;
 
-    const updateData: any = {
+    const updateData: unknown = {
       ...updates,
       updatedAt: new Date(),
     };
@@ -315,7 +315,7 @@ export async function GET_ANALYTICS(_req: NextRequest) {
       orderBy: { createdAt: "desc" },
     });
 
-    const analytics = news.map((n: any) => ({
+    const analytics = news.map((n: unknown) => ({
       id: n.id,
       title: n.title,
       views: (n.analytics as any)?.views || 0,
@@ -465,7 +465,7 @@ export async function POST_POST(_req: NextRequest) {
 }
 
 // Helper functions for posting to external platforms
-async function postToTelegram(newsItem: any) {
+async function postToTelegram(newsItem: unknown) {
   const botToken = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
 
@@ -495,14 +495,14 @@ async function postToTelegram(newsItem: any) {
   return await response.json();
 }
 
-async function postToWhatsApp(newsItem: any) {
+async function postToWhatsApp(newsItem: unknown) {
   // WhatsApp Business API implementation would go here
   // For now, return a placeholder
   console.log("Posting to WhatsApp:", newsItem.title);
   return { messageId: `wa_${Date.now()}`, status: "sent" };
 }
 
-async function postToTwitter(newsItem: any) {
+async function postToTwitter(newsItem: unknown) {
   // Twitter API v2 implementation would go here
   // For now, return a placeholder
   console.log("Posting to Twitter:", newsItem.title);

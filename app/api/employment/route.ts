@@ -51,9 +51,9 @@ const UserSchema = z.object({
 });
 
 // [PRODUCTION IMPLEMENTATION REQUIRED] database (replace with actual database)
-const employees: any[] = [];
-const users: any[] = [];
-const employmentLogs: any[] = [];
+const employees: unknown[] = [];
+const users: unknown[] = [];
+const employmentLogs: unknown[] = [];
 
 export async function GET(_request: NextRequest) {
   const { searchParams } = new URL(_request.url);
@@ -62,7 +62,7 @@ export async function GET(_request: NextRequest) {
   const role = searchParams.get("role");
 
   try {
-    let data: any = [];
+    let data: unknown = [];
 
     if (type === "employees") {
       data = employees.filter(
@@ -98,7 +98,7 @@ export async function GET(_request: NextRequest) {
 
 export async function POST(_request: NextRequest) {
   try {
-    const body: any = await _request.json();
+    const body: unknown = await _request.json();
     const { type, ...data } = body;
 
     if (type === "employee") {
@@ -182,7 +182,7 @@ export async function POST(_request: NextRequest) {
 
 export async function PUT(_request: NextRequest) {
   try {
-    const body: any = await _request.json();
+    const body: unknown = await _request.json();
     const { id, type, ...updates } = body;
 
     if (type === "employee") {

@@ -7,7 +7,7 @@ import jwt from "jsonwebtoken";
 const USERS_FILE = path.resolve(process.cwd(), "data", "users.json");
 const JWT_SECRET = process.env.JWT_SECRET || "changeme";
 
-function loadUsers(): any[] {
+function loadUsers(): unknown[] {
   if (!fs.existsSync(USERS_FILE)) return [];
   try {
     return JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     }
 
     const users = loadUsers();
-    const user = users.find((u: any) => u.username === username);
+    const user = users.find((u: unknown) => u.username === username);
     if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);

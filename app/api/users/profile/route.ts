@@ -67,7 +67,7 @@ export async function PUT(_request: NextRequest) {
       phoneNumber?: string;
       dateOfBirth?: string;
       bio?: string;
-      [key: string]: any;
+      [key: string]: unknown;
     };
 
     // Validate update data

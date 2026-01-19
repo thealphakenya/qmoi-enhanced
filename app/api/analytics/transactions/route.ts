@@ -92,7 +92,7 @@ export async function GET(_request: NextRequest) {
 }
 
 function groupTransactions(
-  transactions: any[],
+  transactions: unknown[],
   groupBy: string
 ): Record<string, any[]> {
   const grouped: Record<string, any[]> = {};
@@ -120,7 +120,7 @@ function groupTransactions(
   return grouped;
 }
 
-function calculateStats(transactions: any[]) {
+function calculateStats(transactions: unknown[]) {
   const stats = {
     totalTransactions: transactions.length,
     totalAmount: 0,

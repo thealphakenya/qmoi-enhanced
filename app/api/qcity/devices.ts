@@ -57,13 +57,13 @@ const handler = requireRole(["admin", "master"])(
     }
     if (method === "DELETE") {
       const { id } = body;
-      devices = devices.filter((d: any) => d.id !== id);
+      devices = devices.filter((d: unknown) => d.id !== id);
       saveDevices(devices);
       return _res.status(200).json({ success: true });
     }
     if (method === "POST" && query.action === "test") {
       const { id } = body;
-      const device = devices.find((d: any) => d.id === id);
+      const device = devices.find((d: unknown) => d.id === id);
       if (!device) return _res.status(404).json({ error: "Not found" });
       // Test SSH connection
       const ssh = new SSHClient();
@@ -72,7 +72,7 @@ const handler = requireRole(["admin", "master"])(
           ssh.end();
           return _res.status(200).json({ success: true });
         })
-        .on("error", (_err: any) => {
+        .on("error", (_err: unknown) => {
           return _res.status(500).json({ error: _err.message });
         })
         .connect({

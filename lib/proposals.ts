@@ -7,7 +7,7 @@ export type ApiCheckResult = {
   response?: { status?: number; body?: unknown };
 };
 
-function requireApiKey(headers: any): ApiCheckResult {
+function requireApiKey(headers: unknown): ApiCheckResult {
   // Support Next.js Headers and plain object headers
   const get = (k: string) => {
     if (!headers) return undefined;
@@ -20,8 +20,15 @@ function requireApiKey(headers: any): ApiCheckResult {
   const master = process.env.MASTER_TOKEN || process.env.API_KEY || "";
 
   if (!master) {
-    // If no master key set in env, be permissive in local/dev
-    return { ok: true };
+    // If no master key set in env, be permissive only in non-production
+    if (process.env.NODE_ENV !== "production") {
+      return { ok: true };
+    }
+    // In production, require a configured master/API key
+    return {
+      ok: false,
+      response: { status: 401, body: { error: "Unauthorized" } },
+    };
   }
 
   if (!key)
@@ -41,7 +48,7 @@ function requireApiKey(headers: any): ApiCheckResult {
   };
 }
 
-async function writeProposal(payload: any) {
+async function writeProposal(payload: unknown) {
   try {
     const dir = path.join(process.cwd(), ".qmoi_validation");
     await fs.promises.mkdir(dir, { recursive: true });

@@ -26,7 +26,7 @@ export async function POST(_request: NextRequest) {
 
     // Load engine dynamically to avoid import-style mismatches
     const mod = await import("../../../../../lib/qmoi-revenue-engine");
-    const qmoiRevenueEngine: any =
+    const qmoiRevenueEngine: unknown =
       mod.qmoiRevenueEngine || mod.default || mod;
 
     // Enable master mode and start engine

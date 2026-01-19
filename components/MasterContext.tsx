@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useCallback,
+} from "react";
 
 export type UserRole = "master" | "admin" | "user" | "sponsored" | "guest";
 
@@ -24,7 +30,9 @@ interface MasterContextType {
   currentUser: UserProfile | null;
   setCurrentUser: (user: UserProfile) => void;
   qmoiMemory: QMOIMemory;
-  updateQMOIMemory: (memory: Partial<QMOIMemory>) => void;
+  updateQMOIMemory: (
+    memory: Partial<QMOIMemory> | ((prev: QMOIMemory) => Partial<QMOIMemory>),
+  ) => void;
   hasPermission: (
     perm: "deploy" | "viewDashboard" | "admin" | "user",
   ) => boolean;
@@ -44,15 +52,26 @@ export function MasterProvider({ children }: { children: ReactNode }) {
 
   const isMaster = currentRole === "master";
 
-  const updateQMOIMemory = (memory: Partial<QMOIMemory>) => {
-    setQMOIMemory((prev) => ({
-      ...prev,
-      ...memory,
-      lastInteraction: new Date(),
-    }));
-  };
+  const updateQMOIMemory = useCallback(
+    (
+      memory: Partial<QMOIMemory> | ((prev: QMOIMemory) => Partial<QMOIMemory>),
+    ) => {
+      setQMOIMemory((prev) => {
+        const partial =
+          typeof memory === "function" ? memory(prev) : memory || {};
+        return {
+          ...prev,
+          ...partial,
+          lastInteraction: new Date(),
+        };
+      });
+    },
+    [],
+  );
 
-  function hasPermission(perm: "deploy" | "viewDashboard" | "admin" | "user" | "sponsored") {
+  function hasPermission(
+    perm: "deploy" | "viewDashboard" | "admin" | "user" | "sponsored",
+  ) {
     if (currentRole === "master") return true;
     if (perm === "admin" && currentRole === "admin") return true;
     if (perm === "user" && (currentRole === "user" || currentRole === "admin"))

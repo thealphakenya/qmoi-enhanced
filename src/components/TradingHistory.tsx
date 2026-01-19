@@ -60,7 +60,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
 
       const tradingManager = TradingManager.getInstance();
       const rawHistory = (await tradingManager.getTradingHistory()) as any[];
-      const history = rawHistory.map((trade: any) => ({
+      const history = rawHistory.map((trade: unknown) => ({
         ...trade,
         timestamp: new Date(trade?.timestamp),
       }));

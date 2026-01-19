@@ -122,7 +122,7 @@ export const userService = {
 
 // Transaction Service
 export const transactionService = {
-  create: async (data: any) => {
+  create: async (data: unknown) => {
     try {
       // TODO: Implement with Prisma transaction model
       return { id: `txn-${Date.now()}`, ...data };
@@ -138,7 +138,7 @@ export const transactionService = {
 
 // Wallet Service
 export const walletService = {
-  create: async (data: any) => {
+  create: async (data: unknown) => {
     try {
       // TODO: Implement with Prisma wallet model
       return { id: `wallet-${Date.now()}`, ...data };

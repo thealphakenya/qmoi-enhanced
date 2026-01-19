@@ -51,10 +51,10 @@ export const createDatabaseService = () => {
           where: { email },
         });
       },
-      create: async (data: any) => {
+      create: async (data: unknown) => {
         return db.user.create({ data });
       },
-      update: async (userId: string, data: any) => {
+      update: async (userId: string, data: unknown) => {
         return db.user.update({
           where: { id: userId },
           data,
@@ -67,10 +67,10 @@ export const createDatabaseService = () => {
       },
     },
     auditLogService: {
-      create: async (data: any) => {
+      create: async (data: unknown) => {
         return db.auditLog.create({ data });
       },
-      findMany: async (where?: any) => {
+      findMany: async (where?: unknown) => {
         return db.auditLog.findMany({ where });
       },
     },

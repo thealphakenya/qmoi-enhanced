@@ -4,13 +4,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { logEvent } from "../../../../lib/security_check";
 
 // Production helper functions (module-level to avoid inner-declaration lint errors)
-async function updateMpesaTransaction(details: any) {
+async function updateMpesaTransaction(details: unknown) {
   // Production: Connect to Prisma DB using prisma.transaction.update()
   // with CheckoutRequestID as unique identifier
   return true;
 }
 
-async function triggerPostPaymentActions(details: any) {
+async function triggerPostPaymentActions(details: unknown) {
   // Production: Send notification via WhatsApp/Email and update user wallet via Prisma
   // Integrate with notification service and user service for status updates
   return true;
@@ -18,7 +18,7 @@ async function triggerPostPaymentActions(details: any) {
 
 export async function POST(_req: NextRequest) {
   try {
-    const body: any = (await _req.json()) as any;
+    const body: unknown = (await _req.json()) as any;
 
     // Log the callback for debugging
     console.log("M-Pesa Callback received:", body);
@@ -37,17 +37,17 @@ export async function POST(_req: NextRequest) {
 
     if (ResultCode === "0") {
       // Payment successful
-      const metadata: any[] = CallbackMetadata?.Item || [];
+      const metadata: unknown[] = CallbackMetadata?.Item || [];
       const amount =
-        metadata.find((item: any) => item.Name === "Amount")?.Value || 0;
+        metadata.find((item: unknown) => item.Name === "Amount")?.Value || 0;
       const mpesaReceiptNumber =
-        metadata.find((item: any) => item.Name === "MpesaReceiptNumber")
+        metadata.find((item: unknown) => item.Name === "MpesaReceiptNumber")
           ?.Value || "";
       const transactionDate =
-        metadata.find((item: any) => item.Name === "TransactionDate")?.Value ||
+        metadata.find((item: unknown) => item.Name === "TransactionDate")?.Value ||
         "";
       const phoneNumber =
-        metadata.find((item: any) => item.Name === "PhoneNumber")?.Value || "";
+        metadata.find((item: unknown) => item.Name === "PhoneNumber")?.Value || "";
 
       logEvent("mpesa_payment_success", {
         checkoutRequestId: CheckoutRequestID,

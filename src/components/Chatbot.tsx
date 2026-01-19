@@ -77,6 +77,22 @@ export function Chatbot() {
       };
       setMessages((prev) => [...prev, botMessage]);
 
+      // Best-effort: report updated conversation length to QMOI memory API
+      try {
+        fetch("/api/qmoi/memory", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            sessions: {
+              local: {
+                conversations: (messages.length || 0) + 2,
+                last_prompt: input,
+              },
+            },
+          }),
+        }).catch(() => {});
+      } catch (_e) {}
+
       // Play SSML if provided
       if (dataAny && dataAny.ssml) {
         // best-effort playback

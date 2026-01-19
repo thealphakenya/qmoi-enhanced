@@ -16,7 +16,7 @@ async function installPackage(pkg: string, manager: "npm" | "pip" = "npm") {
 // Upload dataset to Colab/cloud (stub)
 interface Dataset {
   name: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 async function uploadDataset(dataset: Dataset) {
   // Production: Call Colab or cloud storage API to upload dataset to HuggingFace Datasets
@@ -26,7 +26,7 @@ async function uploadDataset(dataset: Dataset) {
 
 // Execute job in Colab/cloud (stub)
 interface JobSpec {
-  [key: string]: any;
+  [key: string]: unknown;
 }
 async function executeColabJob(jobSpec: JobSpec) {
   // Production: Call Colab API or cloud job submission service to execute job

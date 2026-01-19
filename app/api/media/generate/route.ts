@@ -17,7 +17,7 @@ interface CloudTask {
   cloudProvider: "colab" | "dagshub" | "cloud-runner";
   createdAt: string;
   updatedAt: string;
-  result?: any;
+  result?: unknown;
   error?: string;
 }
 
@@ -34,7 +34,7 @@ function isMaster(_req: NextRequest): boolean {
 // UTF-8 safe logging
 function logToDashboard(
   action: string,
-  data: any,
+  data: unknown,
   level: "info" | "error" | "warning" = "info",
 ) {
   const logEntry = {

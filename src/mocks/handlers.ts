@@ -1,6 +1,5 @@
 /* eslint-env node,jest,browser */
-/* global Headers, Response, Request, URL, URLSearchParams */
-// @ts-nocheck
+// (kept intentionally permissive for test runtime; avoid @ts-nocheck in production)
 // Provide handlers through an async getter so MSW (ESM) is imported at runtime
 export async function getHandlers() {
   const TEST_VERBOSE = process.env.TEST_VERBOSE === "1" || false;
@@ -14,13 +13,13 @@ export async function getHandlers() {
   const helpers = rest ?? http;
   debug(
     "handlers.getHandlers: using helper=",
-    helpers === rest ? "rest" : helpers === http ? "http" : "none"
+    helpers === rest ? "rest" : helpers === http ? "http" : "none",
   );
   if (!helpers)
     throw new Error("MSW helpers (rest or http) not found on msw import");
 
   const handlers = [
-    helpers.get("/api/qmoi/status", (_req: any, _res: any, ctx: any) => {
+    helpers.get("/api/qmoi/status", (_req: unknown, _res: unknown, ctx: unknown) => {
       try {
         debug(
           "HANDLER: status handler invoked, keys=",
@@ -30,7 +29,7 @@ export async function getHandlers() {
           "path=",
           (_req as any).path,
           "url=",
-          String((_req as any).url)
+          String((_req as any).url),
         );
         if ((_req as any) && (_req as any)._request) {
           try {
@@ -40,14 +39,20 @@ export async function getHandlers() {
               "_request.url=",
               ((_req as any)._request as any).url,
               "_request.path=",
-              ((_req as any)._request as any).path
+              ((_req as any)._request as any).path,
             );
           } catch (_e) {
-            (globalThis.console as any)?.error?.("HANDLER: status inner _request logging failed", _e);
+            (globalThis.console as any)?.error?.(
+              "HANDLER: status inner _request logging failed",
+              _e,
+            );
           }
         }
       } catch (_e) {
-        (globalThis.console as any)?.error?.("HANDLER: status handler logging failed", _e);
+        (globalThis.console as any)?.error?.(
+          "HANDLER: status handler logging failed",
+          _e,
+        );
       }
       // Support multiple resolver shapes: rest (ctx), http (return object), or http with _res not a function
       const payload = {
@@ -59,7 +64,7 @@ export async function getHandlers() {
       if (ctx && typeof (ctx as any).status === "function") {
         return (_res as any)(
           (ctx as any).status(200),
-          (ctx as any).json(payload)
+          (ctx as any).json(payload),
         );
       }
       const response = new Response(JSON.stringify(payload), {
@@ -75,15 +80,18 @@ export async function getHandlers() {
     // the _request is represented by the underlying interceptor.
     helpers.get(
       "http://localhost/api/qmoi/status",
-      (_req: any, _res: any, ctx: any) => {
+      (_req: unknown, _res: unknown, ctx: unknown) => {
         try {
           debug(
             "HANDLER: absolute status handler invoked, url=",
             ((_req as any)._request && ((_req as any)._request as any).url) ||
-              String((_req as any).url)
+              String((_req as any).url),
           );
         } catch (_e) {
-          (globalThis.console as any)?.error?.("HANDLER: absolute status logging failed", _e);
+          (globalThis.console as any)?.error?.(
+            "HANDLER: absolute status logging failed",
+            _e,
+          );
         }
         const payload = {
           status: "OK",
@@ -94,7 +102,7 @@ export async function getHandlers() {
         if (ctx && typeof (ctx as any).status === "function") {
           return (_res as any)(
             (ctx as any).status(200),
-            (ctx as any).json(payload)
+            (ctx as any).json(payload),
           );
         }
         const response = new Response(JSON.stringify(payload), {
@@ -105,9 +113,9 @@ export async function getHandlers() {
           return (_res as any)(response);
         }
         return response;
-      }
+      },
     ),
-    helpers.post("/api/qmoi/payload", (_req: any, _res: any, ctx: any) => {
+    helpers.post("/api/qmoi/payload", (_req: unknown, _res: unknown, ctx: unknown) => {
       // in rest handlers, _req.url is a URL instance
       try {
         debug(
@@ -118,7 +126,7 @@ export async function getHandlers() {
           "path=",
           (_req as any).path,
           "url=",
-          String((_req as any).url)
+          String((_req as any).url),
         );
         if ((_req as any) && (_req as any)._request) {
           try {
@@ -128,14 +136,20 @@ export async function getHandlers() {
               "_request.url=",
               ((_req as any)._request as any).url,
               "_request.path=",
-              ((_req as any)._request as any).path
+              ((_req as any)._request as any).path,
             );
           } catch (_e) {
-            (globalThis.console as any)?.error?.("HANDLER: payload inner _request logging failed", _e);
+            (globalThis.console as any)?.error?.(
+              "HANDLER: payload inner _request logging failed",
+              _e,
+            );
           }
         }
       } catch (_e) {
-        (globalThis.console as any)?.error?.("HANDLER: payload handler logging failed", _e);
+        (globalThis.console as any)?.error?.(
+          "HANDLER: payload handler logging failed",
+          _e,
+        );
       }
       // Support both `_req.url` (rest) and `_req._request.url` (http helper)
       const rawUrl =
@@ -167,7 +181,7 @@ export async function getHandlers() {
           "urlObjSearch=",
           urlObj?.search || null,
           "hasQfix=",
-          hasFlag("qfix")
+          hasFlag("qfix"),
         );
       } catch (e) {
         void e;
@@ -176,10 +190,10 @@ export async function getHandlers() {
       const action = hasFlag("qfix")
         ? "QFix"
         : hasFlag("qoptimize")
-        ? "QOptimize"
-        : hasFlag("qsecure")
-        ? "QSecure"
-        : "Unknown";
+          ? "QOptimize"
+          : hasFlag("qsecure")
+            ? "QSecure"
+            : "Unknown";
       const out = { message: `${action} done` };
       if (ctx && typeof (ctx as any).status === "function") {
         return (_res as any)((ctx as any).status(200), (ctx as any).json(out));
@@ -195,7 +209,7 @@ export async function getHandlers() {
     }),
     helpers.post(
       "http://localhost/api/qmoi/payload",
-      (_req: any, _res: any, ctx: any) => {
+      (_req: unknown, _res: unknown, ctx: unknown) => {
         // Mirror logic for absolute URL form
         try {
           const rawUrl =
@@ -232,7 +246,7 @@ export async function getHandlers() {
               "urlObjSearch=",
               urlObj?.search || null,
               "hasQfix=",
-              hasFlag("qfix")
+              hasFlag("qfix"),
             );
           } catch (e) {
             /* ignore */
@@ -240,15 +254,15 @@ export async function getHandlers() {
           const action = hasFlag("qfix")
             ? "QFix"
             : hasFlag("qoptimize")
-            ? "QOptimize"
-            : hasFlag("qsecure")
-            ? "QSecure"
-            : "Unknown";
+              ? "QOptimize"
+              : hasFlag("qsecure")
+                ? "QSecure"
+                : "Unknown";
           const out = { message: `${action} done` };
           if (ctx && typeof (ctx as any).status === "function") {
             return (_res as any)(
               (ctx as any).status(200),
-              (ctx as any).json(out)
+              (ctx as any).json(out),
             );
           }
           const response = new Response(JSON.stringify(out), {
@@ -260,12 +274,15 @@ export async function getHandlers() {
           }
           return response;
         } catch (_e) {
-          (globalThis.console as any)?.error?.("HANDLER: absolute payload handler failed", _e);
+          (globalThis.console as any)?.error?.(
+            "HANDLER: absolute payload handler failed",
+            _e,
+          );
           const out = { message: `Unknown done` };
           if (ctx && typeof (ctx as any).status === "function") {
             return (_res as any)(
               (ctx as any).status(200),
-              (ctx as any).json(out)
+              (ctx as any).json(out),
             );
           }
           if (typeof _res === "function") {
@@ -281,7 +298,7 @@ export async function getHandlers() {
             body: JSON.stringify(out),
           };
         }
-      }
+      },
     ),
   ];
   debug("handlers.getHandlers: returning", handlers.length);

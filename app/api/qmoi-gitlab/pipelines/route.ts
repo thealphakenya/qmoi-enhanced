@@ -9,7 +9,7 @@ export async function GET(_request: NextRequest) {
     const logsDir = path.join(process.cwd(), "logs");
     const pipelineLogFile = path.join(logsDir, "qmoi_gitlab_ci_cd.log");
 
-    let pipelines: any[] = [];
+    let pipelines: unknown[] = [];
 
     if (fs.existsSync(pipelineLogFile)) {
       const logContent = fs.readFileSync(pipelineLogFile, "utf-8");

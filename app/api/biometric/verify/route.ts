@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     }
 
     const templates = JSON.parse(fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"));
-    const userTemplates = templates.filter((t: any) => t.userId === userId && t.type === type);
+    const userTemplates = templates.filter((t: unknown) => t.userId === userId && t.type === type);
 
     if (userTemplates.length === 0) {
       return NextResponse.json({ error: "No biometric template for verification" }, { status: 401 });

@@ -44,7 +44,7 @@ export function useQmoiKernel() {
         mutationCount: data.mutation_count,
         logs: data.logs || [],
       });
-    } catch (_err: any) {
+    } catch (_err: unknown) {
       const message =
         _err && typeof _err === "object" && "message" in _err
           ? String((_err as any).message)
@@ -80,7 +80,7 @@ export function useQmoiKernel() {
             `${action} completed successfully`,
         });
         await fetchStatus();
-      } catch (_err: any) {
+      } catch (_err: unknown) {
         const message =
           _err && typeof _err === "object" && "message" in _err
             ? String((_err as any).message)

@@ -3,7 +3,7 @@
 import { NextResponse } from "next/server";
 
 // Conditionally import Prisma
-let prisma: any = null;
+let prisma: unknown = null;
 let prismaInitialized = false;
 
 async function getPrismaClient() {
@@ -12,7 +12,7 @@ async function getPrismaClient() {
   return {
     dataset: {
       findMany: async () => [],
-      create: async (data: any) => ({
+      create: async (data: unknown) => ({
         id: "mock-dataset-id",
         ...(data && data.data ? data.data : {}),
       }),

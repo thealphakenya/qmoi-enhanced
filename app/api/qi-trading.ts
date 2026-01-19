@@ -178,12 +178,12 @@ export default async function handler(
     }
     if (action === "stats") {
       // Return trading stats, confidence, and log (persistent)
-      let log: any[] = [];
+      let log: unknown[] = [];
       if (fs.existsSync(TRADING_LOG)) {
         log = JSON.parse(fs.readFileSync(TRADING_LOG, "utf-8"));
       }
       // Confidence and real funds status from last trade
-      const last: any = log.length > 0 ? log[log.length - 1] : null;
+      const last: unknown = log.length > 0 ? log[log.length - 1] : null;
       // Analytics: profit, win rate, trade count, pairs, etc.
       const totalProfit = log.reduce(
         (sum: number, t: Record<string, any>) => sum + (t.order?.profit || 0),
@@ -306,7 +306,7 @@ export default async function handler(
           real_funds: true,
         };
 
-        let trades: any[] = [];
+        let trades: unknown[] = [];
         if (fs.existsSync(TRADING_LOG)) {
           trades = JSON.parse(fs.readFileSync(TRADING_LOG, "utf-8"));
         }
@@ -326,7 +326,7 @@ export default async function handler(
     } else {
       return _res.status(405).end();
     }
-  } catch (_e: any) {
+  } catch (_e: unknown) {
     const msg = _e instanceof Error ? _e.message : String(_e);
     return _res.status(500).json({ error: msg });
   }

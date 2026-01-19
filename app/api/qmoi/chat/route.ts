@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(_req: Request) {
   try {
-    let body: any = {};
+    let body: unknown = {};
     try {
       body = await _req.json();
     } catch (_e) {
@@ -66,7 +66,7 @@ export async function POST(_req: Request) {
     }).finally(() => clearTimeout(timer));
 
     // Be defensive: some test environments may mock fetch or Response differently.
-    let data: any = null;
+    let data: unknown = null;
     try {
       if (resp && typeof (resp as any).json === "function") {
         data = await (resp as any).json();

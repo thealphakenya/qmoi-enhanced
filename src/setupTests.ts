@@ -53,7 +53,7 @@ debugLog(
   "SETUP_TESTS: hooks -> beforeAll:",
   typeof beforeAll,
   "global.beforeAll:",
-  typeof (globalThis as any).beforeAll
+  typeof (globalThis as any).beforeAll,
 );
 // Delay importing MSW until after early polyfills (setupFiles) run
 let server: unknown;
@@ -69,7 +69,7 @@ declare global {
 declare global {
   interface Console {
     // Keep signature compatible with standard Console.error
-    error(...data: any[]): void;
+    error(...data: unknown[]): void;
   }
 }
 
@@ -112,7 +112,7 @@ if (!global.fetch) {
       enumerable: true,
       writable: true,
       value: new (global as any).Headers(
-        init && init.headers ? init.headers : {}
+        init && init.headers ? init.headers : {},
       ),
     });
     Object.defineProperty(this, "body", {
@@ -172,7 +172,7 @@ if (!global.fetch) {
       enumerable: true,
       writable: true,
       value: new (global as any).Headers(
-        init && init.headers ? init.headers : {}
+        init && init.headers ? init.headers : {},
       ),
     });
     Object.defineProperty(this, "body", {
@@ -204,7 +204,7 @@ if (typeof (global as any).NextResponse === "undefined") {
     json(body: unknown, opts: Record<string, unknown> = {}) {
       // Return a plain object that mimics the minimal interface used in tests
       const status = Number(
-        (opts && (opts as Record<string, unknown>).status) ?? 200
+        (opts && (opts as Record<string, unknown>).status) ?? 200,
       );
       const headersObj =
         ((opts && (opts as Record<string, unknown>).headers) as Record<
@@ -231,7 +231,7 @@ if (typeof (global as any).NextResponse === "undefined") {
 let mswInitPromise: Promise<unknown>;
 if (typeof window === "undefined") {
   debugLog(
-    "SETUP_TESTS: detected Node test environment; skipping MSW initialization"
+    "SETUP_TESTS: detected Node test environment; skipping MSW initialization",
   );
   mswInitPromise = Promise.resolve();
   // Provide a minimal server object so downstream logic can safely call methods
@@ -249,12 +249,11 @@ if (typeof window === "undefined") {
     debugLog("SETUP_TESTS: initializing MSW at module load");
     // Ensure stream polyfills are available in this module scope before importing MSW
     try {
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
-      const {
-        TransformStream,
-        ReadableStream,
-        WritableStream,
-      } = require("web-streams-polyfill");
+      // Use dynamic import so ESM loaders handle the module correctly in test environments
+      const ws = await import("web-streams-polyfill");
+      const TransformStream = (ws as any).TransformStream;
+      const ReadableStream = (ws as any).ReadableStream;
+      const WritableStream = (ws as any).WritableStream;
       if (typeof (global as any).TransformStream === "undefined")
         (global as any).TransformStream = TransformStream;
       if (typeof (global as any).ReadableStream === "undefined")
@@ -279,7 +278,7 @@ if (typeof window === "undefined") {
       const handlersMod = await import("./mocks/handlers");
       debugLog(
         "SETUP_TESTS: imported handlers module",
-        Object.keys(handlersMod)
+        Object.keys(handlersMod),
       );
       const { server: importedServer } = await import("./mocks/server");
       debugLog("SETUP_TESTS: imported server module");
@@ -293,7 +292,10 @@ if (typeof window === "undefined") {
           debugLog("SETUP_TESTS: handlers resolved length=", handlers.length);
         } catch (_err) {
           void _err; /* fail fast */
-          (globalThis.console as any)?.error?.("SETUP_TESTS: handlersMod.getHandlers() threw:", _err);
+          (globalThis.console as any)?.error?.(
+            "SETUP_TESTS: handlersMod.getHandlers() threw:",
+            _err,
+          );
           throw _err;
         }
       } else {
@@ -329,12 +331,16 @@ if (typeof window === "undefined") {
             const req = _req as unknown as { method?: string; url?: unknown };
             const urlStr = String(req.url || "");
             if (process.env.SHOW_MSW_UNHANDLED === "1") {
-              (globalThis.console as any)?.error?.("MSW UNHANDLED REQUEST:", req.method, urlStr);
+              (globalThis.console as any)?.error?.(
+                "MSW UNHANDLED REQUEST:",
+                req.method,
+                urlStr,
+              );
             } else {
               debugLog(
                 "MSW UNHANDLED REQUEST (suppressed):",
                 req.method,
-                urlStr
+                urlStr,
               );
             }
           } catch (_err) {
@@ -346,16 +352,19 @@ if (typeof window === "undefined") {
       server = importedServer;
       debugLog(
         "SETUP_TESTS: MSW initialized; handlers registered",
-        handlers.length
+        handlers.length,
       );
     } catch (_e) {
       // Log errors to surface them in CI/dev runs
-      (globalThis.console as any)?.error?.("setupTests failed to initialize MSW:", _e);
+      (globalThis.console as any)?.error?.(
+        "setupTests failed to initialize MSW:",
+        _e,
+      );
       // Fallback: if MSW cannot be initialized (ESM/loader issues), install a
       // minimal fetch-based mock so tests don't hit the network. This mirrors
       // the most common handlers used in tests.
       (globalThis.console as any)?.error?.(
-        "SETUP_TESTS: Falling back to simple fetch mock server for tests"
+        "SETUP_TESTS: Falling back to simple fetch mock server for tests",
       );
 
       const fallbackHandlers = [
@@ -373,7 +382,7 @@ if (typeof window === "undefined") {
               {
                 status: 200,
                 headers: { "Content-Type": "application/json" },
-              }
+              },
             ),
         },
         {
@@ -391,12 +400,12 @@ if (typeof window === "undefined") {
               (q as any).searchParams && (q as any).searchParams.has("qfix")
                 ? "QFix"
                 : (q as any).searchParams &&
-                  (q as any).searchParams.has("qoptimize")
-                ? "QOptimize"
-                : (q as any).searchParams &&
-                  (q as any).searchParams.has("qsecure")
-                ? "QSecure"
-                : "Unknown";
+                    (q as any).searchParams.has("qoptimize")
+                  ? "QOptimize"
+                  : (q as any).searchParams &&
+                      (q as any).searchParams.has("qsecure")
+                    ? "QSecure"
+                    : "Unknown";
             return new Response(JSON.stringify({ message: `${action} done` }), {
               status: 200,
               headers: { "Content-Type": "application/json" },
@@ -410,7 +419,7 @@ if (typeof window === "undefined") {
         const originalFetch = getGlobal<unknown>("fetch");
         setGlobal("fetch", async function fetchFallback(
           input: unknown,
-          init: unknown
+          init: unknown,
         ) {
           try {
             const url =
@@ -440,7 +449,10 @@ if (typeof window === "undefined") {
           ).apply(globalThis, [input, init]);
         } as unknown);
       } catch (er) {
-        (globalThis.console as any)?.error?.("SETUP_TESTS: failed to install fetch fallback:", er);
+        (globalThis.console as any)?.error?.(
+          "SETUP_TESTS: failed to install fetch fallback:",
+          er,
+        );
       }
 
       // Provide a minimal server object with the same interface used elsewhere
@@ -655,13 +667,13 @@ beforeEach(async () => {
               (stores.user &&
                 Array.from(stores.user.values())
                   .slice(0, 5)
-                  .map((u: any) => u && (u as any).email)) ||
+                  .map((u: unknown) => u && (u as any).email)) ||
               [];
             console.warn(
               "SETUP_TESTS: mock store counts ->",
               counts,
               "sampleUsers=",
-              sampleUsers
+              sampleUsers,
             );
           } catch (_e) {}
         }
@@ -694,7 +706,7 @@ try {
             unknown
           >) || {};
         const HeadersCtor = getGlobal<unknown>("Headers") as unknown as new (
-          h?: unknown
+          h?: unknown,
         ) => unknown;
         this.headers = new HeadersCtor(headersInit);
       }
@@ -729,7 +741,7 @@ try {
   ) {
     (getGlobal<unknown>("Response") as any).json = function (
       body: unknown,
-      init: Record<string, unknown> = {}
+      init: Record<string, unknown> = {},
     ) {
       const headersObj =
         ((init && (init as Record<string, unknown>).headers) as Record<
@@ -738,7 +750,7 @@ try {
         >) || {};
       const RespCtor = getGlobal<unknown>("Response") as unknown as new (
         s: string,
-        o?: Record<string, unknown>
+        o?: Record<string, unknown>,
       ) => unknown;
       return new RespCtor(JSON.stringify(body), {
         status: Number((init as Record<string, unknown>)?.status ?? 200),
@@ -754,7 +766,7 @@ try {
 try {
   const ResponseCtor = getGlobal<unknown>("Response") as unknown as new (
     s: string,
-    o?: Record<string, unknown>
+    o?: Record<string, unknown>,
   ) => unknown;
   const makeJson = (obj: unknown, status = 200) =>
     new ResponseCtor(JSON.stringify(obj), {
@@ -811,18 +823,22 @@ try {
                 authHeader = String(
                   accessor.get!("authorization") ||
                     accessor.get!("Authorization") ||
-                    ""
+                    "",
                 );
               } else if (headersSource && typeof headersSource === "object") {
                 const h = headersSource as Record<string, unknown>;
                 authHeader = String(
-                  h["authorization"] || h["Authorization"] || ""
+                  h["authorization"] || h["Authorization"] || "",
                 );
               }
             } catch (err) {
               void err;
             }
-            if (!authHeader) return new ResponseCtor(JSON.stringify({ error: "Unauthorized" }), { status: 401 });
+            if (!authHeader)
+              return new ResponseCtor(
+                JSON.stringify({ error: "Unauthorized" }),
+                { status: 401 },
+              );
 
             // Try to decode JWT (without verification) to inspect role for admin checks
             let isAdmin = false;
@@ -842,7 +858,11 @@ try {
               // ignore decode errors
             }
 
-            if (!isAdmin) return new ResponseCtor(JSON.stringify({ error: "Invalid request" }), { status: 403 });
+            if (!isAdmin)
+              return new ResponseCtor(
+                JSON.stringify({ error: "Invalid request" }),
+                { status: 403 },
+              );
 
             // Simple admin responses for authorized admin users
             if (u.pathname === "/api/admin/monitoring") {
@@ -873,12 +893,15 @@ try {
                 const body =
                   init && (init as unknown as { body?: unknown })?.body
                     ? JSON.parse(
-                        String((init as unknown as { body?: unknown })!.body)
+                        String((init as unknown as { body?: unknown })!.body),
                       )
                     : {};
                 if (body && body.action === "acknowledge")
                   return makeJson({ success: true, action: "acknowledge" });
-                return new ResponseCtor(JSON.stringify({ error: "Invalid request" }), { status: 400 });
+                return new ResponseCtor(
+                  JSON.stringify({ error: "Invalid request" }),
+                  { status: 400 },
+                );
               }
               return makeJson({ alerts: [], count: 0, criticalCount: 0 });
             }
@@ -891,7 +914,7 @@ try {
                 const body =
                   init && (init as unknown as { body?: unknown })?.body
                     ? JSON.parse(
-                        String((init as unknown as { body?: unknown })!.body)
+                        String((init as unknown as { body?: unknown })!.body),
                       )
                     : {};
                 if (body && body.action === "reset") {
@@ -916,7 +939,7 @@ try {
                 const body =
                   init && (init as unknown as { body?: unknown })?.body
                     ? JSON.parse(
-                        String((init as unknown as { body?: unknown })!.body)
+                        String((init as unknown as { body?: unknown })!.body),
                       )
                     : {};
                 if (body && body.format === "csv") {
@@ -942,11 +965,14 @@ try {
                         "Content-Disposition":
                           "attachment; filename=export.json",
                       },
-                    }
+                    },
                   );
                   return resp;
                 }
-                return new ResponseCtor(JSON.stringify({ error: "Invalid request" }), { status: 400 });
+                return new ResponseCtor(
+                  JSON.stringify({ error: "Invalid request" }),
+                  { status: 400 },
+                );
               }
               return makeJson({
                 logs: [],
@@ -976,21 +1002,23 @@ try {
               (u.searchParams.has("qfix") || u.searchParams.get("qfix"))
                 ? "QFix"
                 : u.searchParams &&
-                  (u.searchParams.has("qoptimize") ||
-                    u.searchParams.get("qoptimize"))
-                ? "QOptimize"
-                : u.searchParams &&
-                  (u.searchParams.has("qsecure") ||
-                    u.searchParams.get("qsecure"))
-                ? "QSecure"
-                : "Unknown";
+                    (u.searchParams.has("qoptimize") ||
+                      u.searchParams.get("qoptimize"))
+                  ? "QOptimize"
+                  : u.searchParams &&
+                      (u.searchParams.has("qsecure") ||
+                        u.searchParams.get("qsecure"))
+                    ? "QSecure"
+                    : "Unknown";
             return makeJson({ message: `${action} done` });
           }
         } catch (_err) {
           // ignore
         }
-        return new ResponseCtor(JSON.stringify({ error: "Invalid request" }), { status: 404 });
-      }) as unknown
+        return new ResponseCtor(JSON.stringify({ error: "Invalid request" }), {
+          status: 404,
+        });
+      }) as unknown,
     );
   }
 } catch (_e) {
@@ -1019,7 +1047,7 @@ try {
         return (
           originalFetch as unknown as (...a: unknown[]) => Promise<Response>
         ).apply(globalThis, args);
-      }) as unknown
+      }) as unknown,
     );
   }
 } catch (_e) {
@@ -1031,7 +1059,10 @@ afterEach(() => {
     if (server)
       (server as unknown as { resetHandlers?: () => void }).resetHandlers?.();
   } catch (_e) {
-    (globalThis.console as any)?.error?.("SETUP_TESTS: server.resetHandlers() failed:", _e);
+    (globalThis.console as any)?.error?.(
+      "SETUP_TESTS: server.resetHandlers() failed:",
+      _e,
+    );
   }
 });
 // Ensure we clear mock DB after each test as well to handle cases where
