@@ -36,17 +36,15 @@ const nextConfig = {
 
     // Resolve modules from repo root and accept TS/TSX extensions explicitly
     config.resolve.modules = Array.from(
-      new Set([rootDir, "node_modules", ...(config.resolve.modules || [])])
+      new Set([rootDir, "node_modules", ...(config.resolve.modules || [])]),
     );
-    config.resolve.extensions = Array.from(
-      new Set([
-        ".ts",
-        ".tsx",
-        ".js",
-        ".jsx",
-        ...(config.resolve.extensions || []),
-      ])
-    );
+    config.resolve.extensions = [
+      ".ts",
+      ".tsx",
+      ".js",
+      ".jsx",
+      ...(config.resolve.extensions || []),
+    ];
 
     return config;
   },
