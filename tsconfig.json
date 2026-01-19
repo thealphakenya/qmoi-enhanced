@@ -2,14 +2,8 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
-    "types": [
-      "node"
-    ],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "types": ["node"],
     "module": "esnext",
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -24,27 +18,13 @@
     "useUnknownInCatchVariables": false,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "@/components/*": [
-        "./components/*"
-      ],
-      "@/app/*": [
-        "./app/*"
-      ],
-      "@/services/*": [
-        "./src/services/*"
-      ],
-      "@/adapters/*": [
-        "./src/adapters/*"
-      ],
-      "@/hooks/*": [
-        "./src/hooks/*"
-      ],
-      "@/lib/*": [
-        "./lib/*"
-      ]
+      "@/*": ["./*"],
+      "@/components/*": ["./components/*"],
+      "@/app/*": ["./app/*"],
+      "@/services/*": ["./src/services/*"],
+      "@/adapters/*": ["./src/adapters/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/lib/*": ["./lib/*"]
     },
     "allowJs": true,
     "incremental": true,
