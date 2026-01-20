@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_request: NextRequest) {
@@ -9,7 +9,7 @@ export async function POST(_request: NextRequest) {
 
     if (!message || !phoneNumber) {
       return NextResponse.json(
-        { error: "Message and phone number are required" },
+        { _error: "Message and phone number are required" },
         { status: 400 },
       );
     }
@@ -20,9 +20,9 @@ export async function POST(_request: NextRequest) {
       status: "success",
       message: `Message sent to ${phoneNumber} successfully`,
     });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }

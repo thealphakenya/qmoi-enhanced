@@ -81,7 +81,7 @@ export function AvatarSelector({
       setSelectedAvatar(avatarId);
 
       // Call API to switch avatar
-      const response = await fetch("/api/qmoi/avatars", {
+      const _response = await fetch("/api/qmoi/avatars", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", avatarId }),
@@ -113,7 +113,7 @@ export function AvatarSelector({
   const handleUpgrade = async (avatarId: string) => {
     setIsLoading(true);
     try {
-      const response = await fetch("/api/qmoi/avatars", {
+      const _response = await fetch("/api/qmoi/avatars", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "upgrade", avatarId }),
@@ -141,7 +141,7 @@ export function AvatarSelector({
     setIsLoading(true);
     try {
       const avatar = avatarsConfig.find((a) => a.id === avatarId);
-      const response = await fetch("/api/qmoi/avatars", {
+      const _response = await fetch("/api/qmoi/avatars", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({

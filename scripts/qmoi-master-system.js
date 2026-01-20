@@ -82,47 +82,47 @@ class QMOIMasterSystem {
   }
 
   // Universal error/fix handler: attempts to fix all errors, including manual
-  async handleError(error, context = {}) {
+  async handleError(_error, context = {}) {
     // Log the error
-    await this.logActivity('error', { ...context, error: error.message, stack: error.stack });
+    await this.logActivity('error', { ...context, _error: error.message, stack: error.stack });
     // Attempt auto-fix
     let fixResult = null;
     try {
-      fixResult = await this.autoFix(error, context);
-      await this.logActivity('fix_attempt', { ...context, error: error.message, fixResult });
+      fixResult = await this.autoFix(_error, context);
+      await this.logActivity('fix_attempt', { ...context, _error: error.message, fixResult });
       if (fixResult && fixResult.success) {
         await this.logActivity('fix_success', { ...context, fixResult });
         return fixResult;
       }
     } catch (fixErr) {
-      await this.logActivity('fix_failed', { ...context, error: fixErr.message, stack: fixErr.stack });
+      await this.logActivity('fix_failed', { ...context, _error: fixErr.message, stack: fixErr.stack });
     }
     // If not fixed, attempt manual fix
     let manualResult = null;
     try {
-      manualResult = await this.manualFix(error, context);
-      await this.logActivity('manual_fix_attempt', { ...context, error: error.message, manualResult });
+      manualResult = await this.manualFix(_error, context);
+      await this.logActivity('manual_fix_attempt', { ...context, _error: error.message, manualResult });
       if (manualResult && manualResult.success) {
         await this.logActivity('manual_fix_success', { ...context, manualResult });
         return manualResult;
       }
     } catch (manualErr) {
-      await this.logActivity('manual_fix_failed', { ...context, error: manualErr.message, stack: manualErr.stack });
+      await this.logActivity('manual_fix_failed', { ...context, _error: manualErr.message, stack: manualErr.stack });
     }
     // If still not fixed, log as unresolved
-    await this.logActivity('unresolved_error', { ...context, error: error.message });
-    return { success: false, error: error.message };
+    await this.logActivity('unresolved_error', { ...context, _error: error.message });
+    return { success: false, _error: error.message };
   }
 
   // Simulated auto-fix logic (expand as needed)
-  async autoFix(error, context = {}) {
+  async autoFix(_error, context = {}) {
     // Example: try to restart a subsystem, reload config, etc.
     // For [PRODUCTION IMPLEMENTATION REQUIRED], always fail to trigger manual
     return { success: false, reason: 'Auto-fix not implemented for this error type.' };
   }
 
   // Simulated manual fix logic (expand as needed)
-  async manualFix(error, context = {}) {
+  async manualFix(_error, context = {}) {
     // Example: prompt user, run manual script, etc.
     // For [PRODUCTION IMPLEMENTATION REQUIRED], always fail
     return { success: false, reason: 'Manual fix not implemented for this error type.' };
@@ -195,16 +195,16 @@ class QMOIMasterSystem {
 
       console.log('🎉 QMOI Master System fully initialized and operational');
       
-    } catch (error) {
+    } catch (_error) {
       (console as any).error('❌ Failed to initialize QMOI Master System:', error.message);
       await this.notificationSystem.sendNotification(
         'error',
         'QMOI Master System Initialization Failed',
         error.message,
-        { details: { error: error.message, stack: error.stack } }
+        { details: { _error: error.message, stack: error.stack } }
       );
       // Log and attempt to fix
-      await this.handleError(error, { phase: 'initialize' });
+      await this.handleError(_error, { phase: 'initialize' });
       throw error;
     }
   }
@@ -243,15 +243,15 @@ class QMOIMasterSystem {
       console.log('✅ Master mode enabled successfully');
       return true;
       
-    } catch (error) {
+    } catch (_error) {
       (console as any).error('❌ Failed to enable master mode:', error.message);
       await this.notificationSystem.sendNotification(
         'error',
         'Master Mode Enable Failed',
         error.message,
-        { details: { error: error.message } }
+        { details: { _error: error.message } }
       );
-      await this.handleError(error, { phase: 'enableMasterMode' });
+      await this.handleError(_error, { phase: 'enableMasterMode' });
       return false;
     }
   }
@@ -290,9 +290,9 @@ class QMOIMasterSystem {
       console.log('✅ Master mode disabled successfully');
       return true;
       
-    } catch (error) {
+    } catch (_error) {
       (console as any).error('❌ Failed to disable master mode:', error.message);
-      await this.handleError(error, { phase: 'disableMasterMode' });
+      await this.handleError(_error, { phase: 'disableMasterMode' });
       return false;
     }
   }
@@ -335,7 +335,7 @@ class QMOIMasterSystem {
       console.log('✅ Parallel processing enabled successfully');
       return true;
       
-    } catch (error) {
+    } catch (_error) {
       (console as any).error('❌ Failed to enable parallel processing:', error.message);
       return false;
     }
@@ -581,7 +581,7 @@ class QMOIMasterSystem {
     try {
       await fs.appendFile(this.logPath, JSON.stringify(logEntry) + '\n');
       this.activities = []; // Clear after saving
-    } catch (error) {
+    } catch (_error) {
       (console as any).error('Failed to save activity log:', error.message);
     }
   }
@@ -729,7 +729,7 @@ class QMOIMasterSystem {
       console.log('✅ System enhancement completed');
       return true;
       
-    } catch (error) {
+    } catch (_error) {
       (console as any).error('❌ System enhancement failed:', error.message);
       return false;
     }
@@ -786,7 +786,7 @@ class QMOIMasterSystem {
       console.log('✅ Auto-evolution completed successfully');
       return true;
       
-    } catch (error) {
+    } catch (_error) {
       (console as any).error('❌ Auto-evolution failed:', error.message);
       return false;
     }

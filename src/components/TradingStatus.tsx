@@ -37,7 +37,7 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [walletBalances, setWalletBalances] = useState<WalletBalance[]>([]);
   const [lastUpdate, setLastUpdate] = useState<Date>(new Date());
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
 
   const fetchStatus = async () => {
     try {

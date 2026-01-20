@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 import { headers } from "next/headers";
 import fs from "fs";
@@ -52,9 +52,9 @@ export async function POST(_request: NextRequest) {
     fs.writeFileSync(FINGERPRINTS_FILE, JSON.stringify(fingerprints, null, 2));
 
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }

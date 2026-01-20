@@ -12,7 +12,7 @@ type StatusResp = {
 export function QIStateWindow() {
   const [data, setData] = useState<StatusResp | null>(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     let mounted = true;
@@ -28,7 +28,7 @@ export function QIStateWindow() {
   }, []);
 
   if (loading) return <div>Loading QI state…</div>;
-  if (error) return <div>Error loading state: {error}</div>;
+  if (_error) return <div>Error loading state: {error}</div>;
   if (!data) return <div>No state available</div>;
 
   return (

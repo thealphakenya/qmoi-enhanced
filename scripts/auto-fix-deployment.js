@@ -65,8 +65,8 @@ async function fixVercelJsonPattern() {
     } else {
       console.log('✅ vercel.json: No issues found\n');
     }
-  } catch (error) {
-    ERRORS_FOUND.push(`vercel.json parsing error: ${error.message}`);
+  } catch (_error) {
+    ERRORS_FOUND.push(`vercel.json parsing _error: ${error.message}`);
   }
 }
 
@@ -100,8 +100,8 @@ async function fixNextConfig() {
     } else {
       console.log('✅ next.config.js: ESLint ignore already configured\n');
     }
-  } catch (error) {
-    ERRORS_FOUND.push(`next.config.js error: ${error.message}`);
+  } catch (_error) {
+    ERRORS_FOUND.push(`next.config.js _error: ${error.message}`);
   }
 }
 
@@ -151,8 +151,8 @@ async function fixTypeScriptConfig() {
     } else {
       console.log('✅ tsconfig.json: Path aliases properly configured\n');
     }
-  } catch (error) {
-    ERRORS_FOUND.push(`tsconfig.json error: ${error.message}`);
+  } catch (_error) {
+    ERRORS_FOUND.push(`tsconfig.json _error: ${error.message}`);
   }
 }
 
@@ -196,7 +196,7 @@ async function validateBuild() {
     } else {
       console.log('   Build output:\n', stdout);
     }
-  } catch (error) {
+  } catch (_error) {
     // Build might fail but that's ok - we just check for major issues
     if (error.stdout && error.stdout.includes('error')) {
       ERRORS_FOUND.push(`Build errors detected: ${error.stderr || error.message}`);
@@ -243,8 +243,8 @@ async function validateDependencies() {
     } else {
       console.log('   ✅ All required dependencies found\n');
     }
-  } catch (error) {
-    ERRORS_FOUND.push(`package.json error: ${error.message}`);
+  } catch (_error) {
+    ERRORS_FOUND.push(`package.json _error: ${error.message}`);
   }
 }
 
@@ -268,7 +268,7 @@ async function checkGitStatus() {
     } else {
       console.log('   ✅ Working tree clean\n');
     }
-  } catch (error) {
+  } catch (_error) {
     console.log('   ℹ️  Git check skipped\n');
   }
 }
@@ -306,7 +306,7 @@ async function main() {
 
     if (ERRORS_FOUND.length > 0) {
       console.log('\nIssues Found:');
-      ERRORS_FOUND.forEach(error => console.log(`  ❌ ${error}`));
+      ERRORS_FOUND.forEach(_error => console.log(`  ❌ ${error}`));
     }
 
     console.log(`
@@ -322,8 +322,8 @@ async function main() {
 `);
 
     process.exit(0);
-  } catch (error) {
-    console.error('\n❌ Fatal error:', error.message);
+  } catch (_error) {
+    console.error('\n❌ Fatal _error:', error.message);
     process.exit(1);
   }
 }

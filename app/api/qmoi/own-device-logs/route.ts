@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 import { requireApiKey } from "../../../../lib/proposals";
 
@@ -45,8 +45,8 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         apiAuth.ok
-          ? { error: "Master access required" }
-          : _r?.body ?? { error: "Master access required" },
+          ? { _error: "Master access required" }
+          : _r?.body ?? { _error: "Master access required" },
         { status: apiAuth.ok ? 403 : _r?.status ?? 403 }
       );
     }
@@ -62,7 +62,7 @@ export async function POST(_request: NextRequest) {
     // Check if logger script exists
     if (!fs.existsSync(loggerScript)) {
       return NextResponse.json(
-        { error: "QMOI Own Device Logger not found" },
+        { _error: "QMOI Own Device Logger not found" },
         { status: 404 }
       );
     }
@@ -99,16 +99,16 @@ export async function POST(_request: NextRequest) {
     } catch (parseError) {
       (console as any).error("Failed to parse logger output:", parseError);
       return NextResponse.json(
-        { error: "Failed to parse log data" },
+        { _error: "Failed to parse log data" },
         { status: 500 }
       );
     }
 
     return NextResponse.json(logs);
-  } catch (error) {
-    (console as any).error("QMOI Own Device Logs API error:", error);
+  } catch (_error) {
+    (console as any).error("QMOI Own Device Logs API _error:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -123,8 +123,8 @@ export async function GET(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         apiAuth.ok
-          ? { error: "Master access required" }
-          : _r?.body ?? { error: "Master access required" },
+          ? { _error: "Master access required" }
+          : _r?.body ?? { _error: "Master access required" },
         { status: apiAuth.ok ? 403 : _r?.status ?? 403 }
       );
     }
@@ -139,7 +139,7 @@ export async function GET(_request: NextRequest) {
 
     if (!fs.existsSync(loggerScript)) {
       return NextResponse.json(
-        { error: "QMOI Own Device Logger not found" },
+        { _error: "QMOI Own Device Logger not found" },
         { status: 404 }
       );
     }
@@ -155,16 +155,16 @@ export async function GET(_request: NextRequest) {
     } catch (parseError) {
       (console as any).error("Failed to parse statistics:", parseError);
       return NextResponse.json(
-        { error: "Failed to parse statistics" },
+        { _error: "Failed to parse statistics" },
         { status: 500 }
       );
     }
 
     return NextResponse.json(stats);
-  } catch (error) {
-    (console as any).error("QMOI Own Device Statistics API error:", error);
+  } catch (_error) {
+    (console as any).error("QMOI Own Device Statistics API _error:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -197,8 +197,8 @@ async function checkMasterAccess(_request: NextRequest): Promise<boolean> {
     }
 
     return false;
-  } catch (error) {
-    (console as any).error("Master access check error:", error);
+  } catch (_error) {
+    (console as any).error("Master access check _error:", _error);
     return false;
   }
 }

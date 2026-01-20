@@ -45,14 +45,14 @@ class QMOIRegistryManager {
       try {
         const data = await fs.readFile(this.registryPath, "utf8");
         this.registry = { ...this.registry, ...JSON.parse(data) };
-      } catch (error) {
+      } catch (_error) {
         console.log("Creating new QMOI registry...");
         await this.saveRegistry();
       }
       this.initializeAutoEnhancementRules();
       await this.registerCoreComponents();
       console.log("✅ QMOI Registry initialized successfully");
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("❌ Error initializing QMOI registry:", error.message);
     }
   }
@@ -263,7 +263,7 @@ class QMOIRegistryManager {
   // --- EXTERNAL API INTEGRATION ---
   async syncExternalAPI(name, url, _params = {}) {
     try {
-      const response = await axios.get(url, { _params });
+      const _response = await axios.get(url, { _params });
       this.registry.apiSync[name] = {
         data: response.data,
         lastSync: new Date().toISOString(),
@@ -271,7 +271,7 @@ class QMOIRegistryManager {
       await this.saveRegistry();
       console.log(`🌐 Synced external API: ${name}`);
       return response.data;
-    } catch (error) {
+    } catch (_error) {
       (console as any).error(`❌ Failed to sync API ${name}:`, error.message);
       return null;
     }
@@ -298,11 +298,11 @@ class QMOIRegistryManager {
   }
 
   // --- ADVANCED ERROR/FIX TRACKING ---
-  async recordError(error, context = {}) {
+  async recordError(_error, context = {}) {
     const errorId = crypto.randomUUID();
     this.registry.errors[errorId] = {
       id: errorId,
-      error: error,
+      _error: _error,
       context: context,
       timestamp: new Date().toISOString(),
       status: "detected",
@@ -311,7 +311,7 @@ class QMOIRegistryManager {
       suggestions: [],
     };
     await this.saveRegistry();
-    console.log(`📝 Recorded error: ${errorId}`);
+    console.log(`📝 Recorded _error: ${errorId}`);
     return errorId;
   }
 
@@ -431,7 +431,7 @@ class QMOIRegistryManager {
       await this.saveRegistry();
       console.log("✅ Registry imported successfully");
       return true;
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("❌ Error importing registry:", error.message);
       return false;
     }
@@ -455,7 +455,7 @@ class QMOIRegistryManager {
       await this.saveRegistry();
       console.log("✅ Registry restored successfully");
       return true;
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("❌ Error restoring registry:", error.message);
       return false;
     }
@@ -477,7 +477,7 @@ class QMOIRegistryManager {
             timestamp: new Date().toISOString(),
           });
           console.log(`✅ Auto-enhancement ${name}: ${result}`);
-        } catch (error) {
+        } catch (_error) {
           (console as any).error(`❌ Auto-enhancement ${name} failed:`, error.message);
         }
       }
@@ -573,7 +573,7 @@ class QMOIRegistryManager {
     const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
 
     // Clean up old errors
-    for (const [id, error] of Object.entries(this.registry.errors)) {
+    for (const [id, _error] of Object.entries(this.registry.errors)) {
       const errorDate = new Date(error.timestamp);
       if (errorDate < thirtyDaysAgo && error.status === "fixed") {
         delete this.registry.errors[id];

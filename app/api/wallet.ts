@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import type { NextApiRequest, NextApiResponse } from "next";
 import * as fs from "fs";
 import * as path from "path";
@@ -95,8 +95,8 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (error) {
-    (globalThis.console as any)?.error?.("Failed to get/create wallet:", error);
+  } catch (_error) {
+    (globalThis.console as any)?.error?.("Failed to get/create wallet:", _error);
     throw error;
   }
 }
@@ -132,8 +132,8 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (error) {
-    (globalThis.console as any)?.error?.("Failed to create transaction:", error);
+  } catch (_error) {
+    (globalThis.console as any)?.error?.("Failed to create transaction:", _error);
     throw error;
   }
 }
@@ -256,10 +256,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (error) {
-    (globalThis.console as any)?.error?.("Mpesa processing error:", error);
-    const errorMsg = error instanceof Error ? error.message : String(error);
-    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
+  } catch (_error) {
+    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
+    const errorMsg = error instanceof Error ? error.message : String(_error);
+    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
   }
 }
 
@@ -368,10 +368,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (error) {
-    (globalThis.console as any)?.error?.("Binance processing error:", error);
-    const errorMsg = error instanceof Error ? error.message : String(error);
-    return { status: "error", platform: "Binance", amount, error: errorMsg };
+  } catch (_error) {
+    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
+    const errorMsg = error instanceof Error ? error.message : String(_error);
+    return { status: "error", platform: "Binance", amount, _error: errorMsg };
   }
 }
 
@@ -421,14 +421,14 @@ async function processPesapal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (error) {
-    (globalThis.console as any)?.error?.("Pesapal processing error:", error);
-    const errorMsg = error instanceof Error ? error.message : String(error);
+  } catch (_error) {
+    (globalThis.console as any)?.error?.("Pesapal processing _error:", _error);
+    const errorMsg = error instanceof Error ? error.message : String(_error);
     return {
       status: "error",
       platform: "Pesapal",
       amount,
-      error: errorMsg,
+      _error: errorMsg,
     };
   }
 }
@@ -480,14 +480,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (error) {
-    (globalThis.console as any)?.error?.("Bitget processing error:", error);
-    const errorMsg = error instanceof Error ? error.message : String(error);
+  } catch (_error) {
+    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
+    const errorMsg = error instanceof Error ? error.message : String(_error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      error: errorMsg,
+      _error: errorMsg,
     };
   }
 }
@@ -519,16 +519,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(error);
+  } catch (_error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(_error);
     logAction("error", {
-      error: errorMsg,
+      _error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ error: errorMsg || "Internal server error" });
+      .json({ _error: errorMsg || "Internal server error" });
   }
 };
 
@@ -539,7 +539,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ error: "Forbidden" });
+    return _res.status(403).json({ _error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -550,7 +550,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      error: "Database not configured",
+      _error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -745,5 +745,5 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ error: "Method not allowed" });
+  return _res.status(405).json({ _error: "Method not allowed" });
 }

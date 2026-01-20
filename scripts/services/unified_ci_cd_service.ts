@@ -23,8 +23,8 @@ class UnifiedCICDService {
       await execAsync("git push origin main");
       logger.info("[CI/CD] Commit and push successful.");
       return { success: true, message: "Commit and push successful." };
-    } catch (error: unknown) {
-      logger.error("[CI/CD] Commit/push failed:", error);
+    } catch (_error: unknown) {
+      logger.error("[CI/CD] Commit/push failed:", _error);
       await notificationService.sendCriticalEventNotification(
         "commit_failed",
         error.message,
@@ -45,8 +45,8 @@ class UnifiedCICDService {
       );
       logger.info("[CI/CD] Pull _request created.");
       return { success: true, message: "Pull _request created." };
-    } catch (error: unknown) {
-      logger.error("[CI/CD] PR creation failed:", error);
+    } catch (_error: unknown) {
+      logger.error("[CI/CD] PR creation failed:", _error);
       await notificationService.sendCriticalEventNotification(
         "pr_failed",
         error.message,
@@ -65,8 +65,8 @@ class UnifiedCICDService {
         "Vercel deployment successful.",
       );
       return { success: true, message: "Vercel deployment successful." };
-    } catch (error: unknown) {
-      logger.error("[CI/CD] Vercel deployment failed:", error);
+    } catch (_error: unknown) {
+      logger.error("[CI/CD] Vercel deployment failed:", _error);
       await notificationService.sendCriticalEventNotification(
         "deploy_failed",
         error.message,
@@ -87,8 +87,8 @@ class UnifiedCICDService {
         "Heroku deployment successful.",
       );
       return { success: true, message: "Heroku deployment successful." };
-    } catch (error: unknown) {
-      logger.error("[CI/CD] Heroku deployment failed:", error);
+    } catch (_error: unknown) {
+      logger.error("[CI/CD] Heroku deployment failed:", _error);
       await notificationService.sendCriticalEventNotification(
         "deploy_failed",
         error.message,
@@ -109,8 +109,8 @@ class UnifiedCICDService {
         "AWS deployment successful.",
       );
       return { success: true, message: "AWS deployment successful." };
-    } catch (error: unknown) {
-      logger.error("[CI/CD] AWS deployment failed:", error);
+    } catch (_error: unknown) {
+      logger.error("[CI/CD] AWS deployment failed:", _error);
       await notificationService.sendCriticalEventNotification(
         "deploy_failed",
         error.message,
@@ -131,8 +131,8 @@ class UnifiedCICDService {
         "Azure deployment successful.",
       );
       return { success: true, message: "Azure deployment successful." };
-    } catch (error: unknown) {
-      logger.error("[CI/CD] Azure deployment failed:", error);
+    } catch (_error: unknown) {
+      logger.error("[CI/CD] Azure deployment failed:", _error);
       await notificationService.sendCriticalEventNotification(
         "deploy_failed",
         error.message,
@@ -151,8 +151,8 @@ class UnifiedCICDService {
         "GCP deployment successful.",
       );
       return { success: true, message: "GCP deployment successful." };
-    } catch (error: unknown) {
-      logger.error("[CI/CD] GCP deployment failed:", error);
+    } catch (_error: unknown) {
+      logger.error("[CI/CD] GCP deployment failed:", _error);
       await notificationService.sendCriticalEventNotification(
         "deploy_failed",
         error.message,
@@ -190,8 +190,8 @@ class UnifiedCICDService {
         logger.warn("[CI/CD] Deployment unhealthy:", _res.statusText);
         return { success: false, message: "Deployment unhealthy." };
       }
-    } catch (error: unknown) {
-      logger.error("[CI/CD] Deployment monitoring failed:", error);
+    } catch (_error: unknown) {
+      logger.error("[CI/CD] Deployment monitoring failed:", _error);
       return { success: false, message: error.message };
     }
   }

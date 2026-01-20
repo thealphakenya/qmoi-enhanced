@@ -26,13 +26,13 @@ function log(color, symbol, label, message = '') {
 function testUrl(url, timeout = 5000) {
   return new Promise((resolve) => {
     const urlObj = new URL(url);
-    const options = {
+    const _options = {
       hostname: urlObj.hostname,
       path: urlObj.pathname + urlObj.search,
       method: 'HEAD',
       timeout: timeout,
     };
-    const request = https.request(options, (res) => {
+    const _request = https.request(_options, (_res) => {
       resolve(res.statusCode);
     });
     request.on('error', () => resolve(0));

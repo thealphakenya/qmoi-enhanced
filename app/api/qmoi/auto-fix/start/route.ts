@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -16,7 +16,7 @@ export async function POST(_request: NextRequest) {
       const r = auth.response;
       if (!r)
         return NextResponse.json(
-          { error: "Unknown auth error" },
+          { _error: "Unknown auth error" },
           { status: 500 },
         );
       return NextResponse.json(r.body, { status: r.status });
@@ -30,7 +30,7 @@ export async function POST(_request: NextRequest) {
 
     if (!fs.existsSync(scriptPath)) {
       return NextResponse.json(
-        { error: "Auto-fix script not found" },
+        { _error: "Auto-fix script not found" },
         { status: 404 },
       );
     }
@@ -73,10 +73,10 @@ export async function POST(_request: NextRequest) {
       message: "Auto-fix process started",
       pid: child.pid,
     });
-  } catch (error) {
-    (console as any).error("Error starting auto-fix process:", error);
+  } catch (_error) {
+    (console as any).error("Error starting auto-fix process:", _error);
     return NextResponse.json(
-      { error: "Failed to start auto-fix process" },
+      { _error: "Failed to start auto-fix process" },
       { status: 500 },
     );
   }

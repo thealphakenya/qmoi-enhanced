@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 import { logEvent } from "../../../../lib/security_check";
 
@@ -92,13 +92,13 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (error) {
+  } catch (_error) {
     (globalThis.console as any)?.error?.(
       "M-Pesa callback processing failed:",
-      error,
+      _error,
     );
-    const errorMessage = error instanceof Error ? error.message : String(error);
-    logEvent("mpesa_callback_error", { error: errorMessage });
+    const errorMessage = error instanceof Error ? error.message : String(_error);
+    logEvent("mpesa_callback_error", { _error: errorMessage });
 
     return NextResponse.json(
       {

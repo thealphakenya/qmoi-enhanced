@@ -156,7 +156,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("🔧 Processing error:", errorReport.id);
+      console.log("🔧 Processing _error:", errorReport.id);
       try {
         // Root cause analysis
         const rootCause = await this.analyzeRootCause(errorReport);
@@ -186,8 +186,8 @@ export class EnhancedErrorFixingService extends EventEmitter {
           console.log("⚠️ No automatic fix suggested for this error.");
           this.emit("noFixAvailable", errorReport);
         }
-      } catch (error) {
-        (globalThis.console as any)?.error?.("❌ Failed to process error:", error);
+      } catch (_error) {
+        (globalThis.console as any)?.error?.("❌ Failed to process _error:", _error);
         this.emit("processingError", { errorReport, error });
       } finally {
         this.isProcessing = false;
@@ -198,7 +198,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
     }
   }
 
-  private async analyzeRootCause(error: ErrorReport): Promise<string> {
+  private async analyzeRootCause(_error: ErrorReport): Promise<string> {
     // AI-driven root cause analysis
     const patterns = [
       {
@@ -237,9 +237,9 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 
   private async analyzeAndSuggestFix(
-    error: ErrorReport
+    _error: ErrorReport
   ): Promise<FixSuggestion | null> {
-    console.log("🧠 AI analyzing error:", error);
+    console.log("🧠 AI analyzing _error:", _error);
 
     // Check learning database for similar errors
     const learningData = this.learningDatabase.get(error.type);
@@ -266,13 +266,13 @@ export class EnhancedErrorFixingService extends EventEmitter {
     const handler =
       fixHandlers[error.type as keyof typeof fixHandlers] ||
       this.handleGenericError.bind(this);
-    const suggestion = await handler(error, confidence, strategy);
+    const suggestion = await handler(_error, confidence, strategy);
 
     return suggestion;
   }
 
   private async handleLicenseError(
-    error: ErrorReport,
+    _error: ErrorReport,
     confidence: number,
     _strategy: string
   ): Promise<FixSuggestion> {
@@ -294,7 +294,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 
   private async handleVercelDeployError(
-    error: ErrorReport,
+    _error: ErrorReport,
     confidence: number,
     _strategy: string
   ): Promise<FixSuggestion> {
@@ -317,7 +317,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 
   private async handleHerokuDeployError(
-    error: ErrorReport,
+    _error: ErrorReport,
     confidence: number,
     _strategy: string
   ): Promise<FixSuggestion> {
@@ -340,7 +340,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 
   private async handleNetworkError(
-    error: ErrorReport,
+    _error: ErrorReport,
     confidence: number,
     _strategy: string
   ): Promise<FixSuggestion> {
@@ -362,7 +362,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 
   private async handleDependencyError(
-    error: ErrorReport,
+    _error: ErrorReport,
     confidence: number,
     _strategy: string
   ): Promise<FixSuggestion> {
@@ -387,7 +387,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 
   private async handleSyntaxError(
-    error: ErrorReport,
+    _error: ErrorReport,
     confidence: number,
     _strategy: string
   ): Promise<FixSuggestion> {
@@ -415,7 +415,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 
   private async handlePermissionError(
-    error: ErrorReport,
+    _error: ErrorReport,
     confidence: number,
     _strategy: string
   ): Promise<FixSuggestion> {
@@ -433,7 +433,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 
   private async handleSystemResourceError(
-    error: ErrorReport,
+    _error: ErrorReport,
     confidence: number,
     _strategy: string
   ): Promise<FixSuggestion> {
@@ -455,7 +455,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 
   private async handleGenericError(
-    error: ErrorReport,
+    _error: ErrorReport,
     confidence: number,
     _strategy: string
   ): Promise<FixSuggestion> {
@@ -473,7 +473,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 
   private async applyFixWithRetry(
-    error: ErrorReport,
+    _error: ErrorReport,
     fixSuggestion: FixSuggestion
   ): Promise<FixAttempt> {
     const fixAttempt: FixAttempt = {
@@ -512,8 +512,8 @@ export class EnhancedErrorFixingService extends EventEmitter {
         fixAttempt.success = true;
         console.log("✅ Fix applied successfully");
         break;
-      } catch (error) {
-        const errMsg = error instanceof Error ? error.message : String(error);
+      } catch (_error) {
+        const errMsg = error instanceof Error ? error.message : String(_error);
         lastError = errMsg;
         console.warn(`⚠️ Fix attempt ${attempt} failed:`, errMsg);
 
@@ -547,8 +547,8 @@ export class EnhancedErrorFixingService extends EventEmitter {
       // In a real implementation, this would modify the actual file
       console.log(`📝 Applying code change to ${change.filePath}:`, change);
       result.success = true;
-    } catch (error) {
-      const errMsg = error instanceof Error ? error.message : String(error);
+    } catch (_error) {
+      const errMsg = error instanceof Error ? error.message : String(_error);
       result.details += ` - Error: ${errMsg}`;
     }
 
@@ -568,8 +568,8 @@ export class EnhancedErrorFixingService extends EventEmitter {
       console.log(`⚡ Executing command: ${command}`);
       // In a real implementation, this would execute the command
       result.success = true;
-    } catch (error) {
-      const errMsg = error instanceof Error ? error.message : String(error);
+    } catch (_error) {
+      const errMsg = error instanceof Error ? error.message : String(_error);
       result.details += ` - Error: ${errMsg}`;
     }
 
@@ -577,7 +577,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 
   private async learnFromFixAttempt(
-    error: ErrorReport,
+    _error: ErrorReport,
     fixSuggestion: FixSuggestion,
     fixResult: FixAttempt
   ): Promise<void> {
@@ -688,7 +688,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
 
 // Notification service for fast error notifications
 class NotificationService {
-  async sendErrorNotification(error: ErrorReport): Promise<void> {
+  async sendErrorNotification(_error: ErrorReport): Promise<void> {
     console.log("📢 Sending error notification:", error.id);
     // In a real implementation, this would send notifications via email, Slack, etc.
   }

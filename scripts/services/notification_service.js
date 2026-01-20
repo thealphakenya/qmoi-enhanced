@@ -23,7 +23,7 @@ class NotificationService {
       if (fs.existsSync(configPath)) {
         return JSON.parse(fs.readFileSync(configPath, "utf8"));
       }
-    } catch (error) {
+    } catch (_error) {
       console.warn("Failed to load notification config:", error.message);
     }
 
@@ -53,7 +53,7 @@ class NotificationService {
 
     try {
       fs.appendFileSync(this.logFile, logEntry);
-    } catch (error) {
+    } catch (_error) {
       console.warn("Failed to write to notification log:", error.message);
     }
   }
@@ -80,7 +80,7 @@ Sent by QMOI AI Automation System
       await this.log(`Email notification sent: ${title}`);
       console.log(`[EMAIL] ${title}: ${message}`);
       return true;
-    } catch (error) {
+    } catch (_error) {
       await this.log(
         `Failed to send email notification: ${error.message}`,
         "ERROR",
@@ -106,7 +106,7 @@ Sent by QMOI AI Automation System
       console.log(`[SLACK] ${title}: ${message}`);
       await this.log(`Slack notification sent: ${title}`);
       return true;
-    } catch (error) {
+    } catch (_error) {
       await this.log(
         `Failed to send Slack notification: ${error.message}`,
         "ERROR",
@@ -142,7 +142,7 @@ Sent by QMOI AI Automation System
       console.log(`[DISCORD] ${title}: ${message}`);
       await this.log(`Discord notification sent: ${title}`);
       return true;
-    } catch (error) {
+    } catch (_error) {
       await this.log(
         `Failed to send Discord notification: ${error.message}`,
         "ERROR",
@@ -202,7 +202,7 @@ Sent by QMOI AI Automation System
         `Notification sent: ${title} (${results.filter((r) => r.success).length}/${results.length} channels)`,
       );
       return notification;
-    } catch (error) {
+    } catch (_error) {
       notification.status = "failed";
       notification.error = error.message;
       await this.log(`Failed to send notification: ${error.message}`, "ERROR");
@@ -210,7 +210,7 @@ Sent by QMOI AI Automation System
     }
   }
 
-  async sendErrorNotification(error, context = "") {
+  async sendErrorNotification(_error, context = "") {
     const title = "QMOI Error Alert";
     const message = `Error: ${error.message}\nContext: ${context}\nTimestamp: ${new Date().toISOString()}`;
 

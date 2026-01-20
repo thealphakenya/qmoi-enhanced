@@ -45,7 +45,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
   const [walletRequested, setWalletRequested] = useState(false);
   const [pendingRequests, setPendingRequests] = useState<WalletRequest[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
   const { toast } = useToast();
 
   const extractMessage = (_e: unknown) =>
@@ -232,8 +232,8 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
           tags: [...file.tags, "organized"],
         }))
       );
-    } catch (error) {
-      (globalThis.console as any)?.error?.("Error organizing files:", error);
+    } catch (_error) {
+      (globalThis.console as any)?.error?.("Error organizing files:", _error);
     } finally {
       setIsLoading(false);
     }

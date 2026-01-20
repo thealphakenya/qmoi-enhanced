@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 import { exec } from "child_process";
 import { promisify } from "util";
@@ -12,7 +12,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { error: "Commit message is required" },
+        { _error: "Commit message is required" },
         { status: 400 }
       );
     }
@@ -40,11 +40,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (error: unknown) {
+  } catch (_error: unknown) {
     return NextResponse.json(
       {
-        error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(error),
+        _error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(_error),
       },
       { status: 500 }
     );

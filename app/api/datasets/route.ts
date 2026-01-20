@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextResponse } from "next/server";
 
 // Conditionally import Prisma
@@ -63,12 +63,12 @@ export async function GET() {
         message: "Database temporarily disabled for build compatibility",
       });
     }
-  } catch (error) {
-    (console as any).error("Error fetching datasets:", error);
+  } catch (_error) {
+    (console as any).error("Error fetching datasets:", _error);
     // Return mock data during build time or when database fails
     return NextResponse.json({
       datasets: [],
-      error: "Database connection failed - using mock data",
+      _error: "Database connection failed - using mock data",
     });
   }
 }
@@ -80,7 +80,7 @@ export async function POST(_request: Request) {
 
     if (!name || !type) {
       return NextResponse.json(
-        { error: "Name and type are required" },
+        { _error: "Name and type are required" },
         { status: 400 },
       );
     }
@@ -113,10 +113,10 @@ export async function POST(_request: Request) {
     };
 
     return NextResponse.json(mockDataset);
-  } catch (error) {
-    (console as any).error("Error creating dataset:", error);
+  } catch (_error) {
+    (console as any).error("Error creating dataset:", _error);
     return NextResponse.json(
-      { error: "Failed to create dataset" },
+      { _error: "Failed to create dataset" },
       { status: 500 },
     );
   }

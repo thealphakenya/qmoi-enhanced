@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-interface UserProfile {
+interface UserProfileData {
   id: string;
   email: string;
   username: string;
@@ -17,9 +17,9 @@ interface UserProfile {
 
 export function UserProfile() {
   const router = useRouter();
-  const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [profile, setProfile] = useState<UserProfileData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [, setError] = useState("");
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [formData, setFormData] = useState({
@@ -43,13 +43,13 @@ export function UserProfile() {
         return;
       }
 
-      const response = await fetch("/api/users/profile", {
+      const _response = await fetch("/api/users/profile", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-      if (!response.ok) {
+      if (!_response.ok) {
         if (response.status === 401) {
           router.push("/login");
           return;
@@ -75,7 +75,7 @@ export function UserProfile() {
   };
 
   const handleChange = (
-    _e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    _e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = _e.target;
     setFormData((prev) => ({
@@ -95,7 +95,7 @@ export function UserProfile() {
         return;
       }
 
-      const response = await fetch("/api/users/profile", {
+      const _response = await fetch("/api/users/profile", {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -104,7 +104,7 @@ export function UserProfile() {
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) {
+      if (!_response.ok) {
         setError("Failed to update profile");
         return;
       }

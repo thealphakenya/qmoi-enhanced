@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextResponse } from "next/server";
 
 export async function POST(_req: Request) {
@@ -31,7 +31,7 @@ export async function POST(_req: Request) {
     return NextResponse.json(data);
   } catch (_e) {
     return NextResponse.json(
-      { error: "memory_proxy_error", detail: String(_e) },
+      { _error: "memory_proxy_error", detail: String(_e) },
       { status: 500 }
     );
   }
@@ -56,7 +56,7 @@ export async function GET() {
     return NextResponse.json(data);
   } catch (_e) {
     return NextResponse.json(
-      { error: "memory_fetch_error", detail: String(_e) },
+      { _error: "memory_fetch_error", detail: String(_e) },
       { status: 500 }
     );
   }

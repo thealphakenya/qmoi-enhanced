@@ -1,6 +1,6 @@
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 // @ts-nocheck
 import { NextRequest, NextResponse } from "next/server";
 import { requireApiKey } from "../../../../../lib/proposals";
@@ -20,7 +20,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { error: "Master access required" },
+        _r?.body ?? { _error: "Master access required" },
         { status: _r?.status ?? 401 }
       );
     }
@@ -36,10 +36,10 @@ export async function GET(_request: NextRequest) {
       : [];
 
     return NextResponse.json(transactions);
-  } catch (error) {
-    (console as any).error("Get transactions error:", error);
+  } catch (_error) {
+    (console as any).error("Get transactions _error:", _error);
     return NextResponse.json(
-      { error: "Failed to get transactions" },
+      { _error: "Failed to get transactions" },
       { status: 500 }
     );
   }

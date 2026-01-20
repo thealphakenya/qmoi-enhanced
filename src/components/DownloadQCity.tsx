@@ -11,7 +11,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -25,7 +25,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const response = await fetch("/api/qcity/download-url");
+      const _response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }

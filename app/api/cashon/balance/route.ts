@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 import { requireApiKey } from "../../../../lib/proposals";
 
@@ -29,7 +29,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { error: "Master access required" },
+        _r?.body ?? { _error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -49,10 +49,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (error) {
-    (console as any).error("Balance API error:", error);
+  } catch (_error) {
+    (console as any).error("Balance API _error:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -66,7 +66,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ error: "M-Pesa number not configured" }),
+        JSON.stringify({ _error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -79,8 +79,8 @@ export async function POST(_req: Request) {
       });
     } catch (_err) {
       const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { error: errorMessage });
-      return new Response(JSON.stringify({ error: errorMessage }), {
+      logEvent("mpesa_sync_failed", { _error: errorMessage });
+      return new Response(JSON.stringify({ _error: errorMessage }), {
         status: 500,
       });
     }

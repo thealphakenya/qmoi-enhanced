@@ -70,8 +70,8 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
         },
       ];
       setErrors(mockErrors);
-    } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to fetch error log:", error);
+    } catch (_error) {
+      (globalThis.console as any)?.error?.("Failed to fetch error log:", _error);
     }
   };
 
@@ -104,8 +104,8 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
         },
       ];
       setFixes(mockFixes);
-    } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to fetch fix history:", error);
+    } catch (_error) {
+      (globalThis.console as any)?.error?.("Failed to fetch fix history:", _error);
     }
   };
 
@@ -120,8 +120,8 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
         lastRun: new Date().toISOString(),
       };
       setGitHubStatus(mockStatus);
-    } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to fetch GitHub status:", error);
+    } catch (_error) {
+      (globalThis.console as any)?.error?.("Failed to fetch GitHub status:", _error);
     }
   };
 
@@ -142,8 +142,8 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       fetchFixHistory();
       fetchGitHubStatus();
       setLastUpdate(new Date().toISOString());
-    } catch (error) {
-      (globalThis.console as any)?.error?.("Auto-fix failed:", error);
+    } catch (_error) {
+      (globalThis.console as any)?.error?.("Auto-fix failed:", _error);
     } finally {
       setIsRunning(false);
     }
@@ -256,7 +256,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
         <div className="mb-6">
           <h4 className="font-semibold mb-2">All Errors</h4>
           <div className="space-y-2 max-h-40 overflow-y-auto">
-            {errors.map((error) => (
+            {errors.map((_error) => (
               <div
                 key={error.id}
                 className="flex items-center justify-between p-2 bg-gray-50 rounded"

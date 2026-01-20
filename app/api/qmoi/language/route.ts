@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 // NOTE: 14 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { NextApiRequest, NextApiResponse } from "next";
 import { requireApiKey } from "../../../../lib/proposals";
@@ -16,7 +16,7 @@ export default async function handler(
   if (!auth.ok) {
     return _res
       .status(auth.response?.status || 401)
-      .json(auth.response?.body || { error: "Unauthorized" });
+      .json(auth.response?.body || { _error: "Unauthorized" });
   }
   // Authenticate user and check permissions
   // Log action for audit
@@ -29,43 +29,43 @@ export default async function handler(
         case "translate":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle translation
           return _res.status(501).json({
-            error: "Not implemented - production integration required",
+            _error: "Not implemented - production integration required",
           });
         case "speech-to-text":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle STT
           return _res.status(501).json({
-            error: "Not implemented - production integration required",
+            _error: "Not implemented - production integration required",
           });
         case "text-to-speech":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle TTS
           return _res.status(501).json({
-            error: "Not implemented - production integration required",
+            _error: "Not implemented - production integration required",
           });
         case "language-detect":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle language detection
           return _res.status(501).json({
-            error: "Not implemented - production integration required",
+            _error: "Not implemented - production integration required",
           });
         case "lesson":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle language lesson
           return _res.status(501).json({
-            error: "Not implemented - production integration required",
+            _error: "Not implemented - production integration required",
           });
         case "quiz":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle language quiz
           return _res.status(501).json({
-            error: "Not implemented - production integration required",
+            _error: "Not implemented - production integration required",
           });
         case "pronunciation-check":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle pronunciation check
           return _res.status(501).json({
-            error: "Not implemented - production integration required",
+            _error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ error: "Unknown action" });
+          return _res.status(400).json({ _error: "Unknown action" });
       }
     }
     default:
-      return _res.status(405).json({ error: "Method not allowed" });
+      return _res.status(405).json({ _error: "Method not allowed" });
   }
 }

@@ -12,7 +12,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,

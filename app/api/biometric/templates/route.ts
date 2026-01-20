@@ -16,19 +16,19 @@ export async function GET() {
     ensureFile();
     const templates = JSON.parse(fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"));
     return NextResponse.json({ templates, total: templates.length });
-  } catch (error) {
-    return NextResponse.json({ error: (error as Error).message }, { status: 500 });
+  } catch (_error) {
+    return NextResponse.json({ _error: (error as Error).message }, { status: 500 });
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
     ensureFile();
     const body = await request.json();
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"));
@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (error) {
-    return NextResponse.json({ error: (error as Error).message }, { status: 500 });
+  } catch (_error) {
+    return NextResponse.json({ _error: (error as Error).message }, { status: 500 });
   }
 }

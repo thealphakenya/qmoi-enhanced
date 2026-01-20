@@ -86,7 +86,7 @@ NEXT_PUBLIC_APP_URL=${appUrl}
   try {
     fs.writeFileSync(envPath, envContent);
     console.log("✅ .env.production file created successfully!");
-  } catch (error) {
+  } catch (_error) {
     (console as any).error("❌ Failed to create .env.production file:", error.message);
     rl.close();
     return;

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextApiRequest, NextApiResponse } from "next";
 import { spawn } from "child_process";
 import fs from "fs";
@@ -33,10 +33,10 @@ export default async function handler(
       user: _req.headers["x-user"] || "unknown",
       status: "fail",
     });
-    return _res.status(401).json({ error: "Unauthorized" });
+    return _res.status(401).json({ _error: "Unauthorized" });
   }
   const { cmd, deviceId = "qcity", stream = false } = _req.body;
-  if (!cmd) return _res.status(400).json({ error: "Missing command" });
+  if (!cmd) return _res.status(400).json({ _error: "Missing command" });
   logAudit({
     action: "run",
     cmd: maskCommand(cmd),
@@ -91,9 +91,9 @@ export default async function handler(
         deviceId,
         user: _req.headers["x-user"] || "unknown",
         status: "error",
-        error: errorMessage,
+        _error: errorMessage,
       });
-      _res.status(500).json({ error: errorMessage });
+      _res.status(500).json({ _error: errorMessage });
     }
   }
 }

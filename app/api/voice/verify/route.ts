@@ -6,7 +6,7 @@ import { extractRoleFromHeader, canAccessEndpoint } from "@/lib/roleAuth";
 
 const VOICE_PROFILES_FILE = path.resolve(process.cwd(), "data", "voice-profiles.json");
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
     // Extract and verify role from Authorization header
     const authHeader = request.headers.get("authorization") || undefined;
@@ -14,25 +14,25 @@ export async function POST(request: NextRequest) {
 
     // Check if role can access this endpoint
     if (!canAccessEndpoint(userRole, "/api/voice/verify")) {
-      return NextResponse.json({ error: "Unauthorized: Insufficient permissions" }, { status: 403 });
+      return NextResponse.json({ _error: "Unauthorized: Insufficient permissions" }, { status: 403 });
     }
 
     const body = await request.json();
     const { userId, audioData } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(VOICE_PROFILES_FILE)) {
-      return NextResponse.json({ error: "No voice profile enrolled" }, { status: 401 });
+      return NextResponse.json({ _error: "No voice profile enrolled" }, { status: 401 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
     const profile = profiles.find((p: unknown) => p.userId === userId);
 
     if (!profile) {
-      return NextResponse.json({ error: "Voice profile not found" }, { status: 401 });
+      return NextResponse.json({ _error: "Voice profile not found" }, { status: 401 });
     }
 
     // Simulate voice verification by comparing audio hashes
@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
     fs.writeFileSync(VOICE_PROFILES_FILE, JSON.stringify(profiles, null, 2));
 
     if (similarity < 0.75) {
-      return NextResponse.json({ error: "Voice verification failed" }, { status: 401 });
+      return NextResponse.json({ _error: "Voice verification failed" }, { status: 401 });
     }
 
     return NextResponse.json({
@@ -55,8 +55,8 @@ export async function POST(request: NextRequest) {
       message: "Voice verification successful",
       userRole, // Include role in response for verification
     });
-  } catch (error) {
+  } catch (_error) {
     const errorMessage = error instanceof Error ? error.message : "Internal error";
-    return NextResponse.json({ error: errorMessage }, { status: 500 });
+    return NextResponse.json({ _error: errorMessage }, { status: 500 });
   }
 }

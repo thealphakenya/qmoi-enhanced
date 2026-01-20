@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 
 interface WiFiNetwork {
@@ -81,7 +81,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      error: "Invalid password or network unreachable",
+      _error: "Invalid password or network unreachable",
     };
   }
 }
@@ -91,10 +91,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (error) {
-    (console as any).error("Error in WiFi scan endpoint:", error);
+  } catch (_error) {
+    (console as any).error("Error in WiFi scan endpoint:", _error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -107,7 +107,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { error: "SSID and password are required" },
+        { _error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -125,15 +125,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          error: connectionResult.error,
+          _error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (error) {
-    (console as any).error("Error in WiFi connection endpoint:", error);
+  } catch (_error) {
+    (console as any).error("Error in WiFi connection endpoint:", _error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }

@@ -11,7 +11,7 @@ type ElectronDockLike = {
 type ElectronAppLike = {
   dock?: ElectronDockLike;
   getAppPath?: () => string;
-  on?: (event: string, handler: (...args: unknown[]) => void) => void;
+  on?: (_event: string, handler: (...args: unknown[]) => void) => void;
 };
 
 const _app = app as unknown as ElectronAppLike;

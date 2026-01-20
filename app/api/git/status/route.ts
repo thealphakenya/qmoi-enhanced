@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 import { exec } from "child_process";
 import { promisify } from "util";
@@ -37,11 +37,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (error: unknown) {
+  } catch (_error: unknown) {
     return NextResponse.json(
       {
-        error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(error),
+        _error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(_error),
       },
       { status: 500 }
     );

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 // @ts-nocheck
 import { NextApiRequest, NextApiResponse } from "next";
 import { exec } from "child_process";
@@ -9,17 +9,17 @@ export default async function handler(
   _res: NextApiResponse
 ) {
   if (_req.method !== "POST") {
-    _res.status(405).json({ error: "Method not allowed" });
+    _res.status(405).json({ _error: "Method not allowed" });
     return;
   }
   const { phone } = _req.body;
   exec(
     `python scripts/whatsapp_verification.py ${phone}`,
-    (error, stdout, stderr) => {
-      if (error) {
+    (_error, stdout, stderr) => {
+      if (_error) {
         _res
           .status(500)
-          .json({ success: false, error: stderr || error.message });
+          .json({ success: false, _error: stderr || error.message });
       } else {
         _res.status(200).json({ success: true, result: stdout });
       }

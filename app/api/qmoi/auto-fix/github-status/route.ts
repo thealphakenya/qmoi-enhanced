@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -14,7 +14,7 @@ export async function GET(_request: NextRequest) {
     const r = auth.response;
     if (!r)
       return NextResponse.json(
-        { error: "Unknown auth error" },
+        { _error: "Unknown auth error" },
         { status: 500 },
       );
     return NextResponse.json(r.body, { status: r.status });
@@ -89,15 +89,15 @@ export async function GET(_request: NextRequest) {
           }
         }
       }
-    } catch (error) {
-      console.log("Error checking logs:", error);
+    } catch (_error) {
+      console.log("Error checking logs:", _error);
     }
 
     return NextResponse.json(status);
-  } catch (error) {
-    (console as any).error("Error getting GitHub status:", error);
+  } catch (_error) {
+    (console as any).error("Error getting GitHub status:", _error);
     return NextResponse.json(
-      { error: "Failed to get GitHub status" },
+      { _error: "Failed to get GitHub status" },
       { status: 500 },
     );
   }

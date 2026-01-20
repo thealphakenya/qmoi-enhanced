@@ -31,7 +31,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {

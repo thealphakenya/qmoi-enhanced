@@ -25,12 +25,12 @@ export class QCityService {
         "Q-City Initialization",
         "Q-City service has been initialized successfully."
       );
-    } catch (error) {
-      logger.error("Failed to initialize Q-City service:", error);
+    } catch (_error) {
+      logger.error("Failed to initialize Q-City service:", _error);
       await this.notificationService.sendNotification(
         "Q-City Initialization Error",
         `Failed to initialize Q-City service: ${
-          (error as any)?.message || String(error)
+          (error as any)?.message || String(_error)
         }`
       );
       throw error;
@@ -91,8 +91,8 @@ export class QCityService {
         },
       };
       logger.info("Configuration loaded successfully");
-    } catch (error) {
-      logger.error("Failed to load configuration:", error);
+    } catch (_error) {
+      logger.error("Failed to load configuration:", _error);
       throw error;
     }
   }
@@ -117,8 +117,8 @@ export class QCityService {
         await this.initializeDesktop();
       }
       logger.info("Platforms initialized successfully");
-    } catch (error) {
-      logger.error("Failed to initialize platforms:", error);
+    } catch (_error) {
+      logger.error("Failed to initialize platforms:", _error);
       throw error;
     }
   }
@@ -155,8 +155,8 @@ export class QCityService {
         await this.initializeSecurity();
       }
       logger.info("Features initialized successfully");
-    } catch (error) {
-      logger.error("Failed to initialize features:", error);
+    } catch (_error) {
+      logger.error("Failed to initialize features:", _error);
       throw error;
     }
   }
@@ -187,8 +187,8 @@ export class QCityService {
         },
       };
       logger.info("Resources initialized successfully");
-    } catch (error) {
-      logger.error("Failed to initialize resources:", error);
+    } catch (_error) {
+      logger.error("Failed to initialize resources:", _error);
       throw error;
     }
   }
@@ -283,8 +283,8 @@ export class QCityService {
         "Q-City Configuration Update",
         "Q-City configuration has been updated successfully."
       );
-    } catch (error) {
-      logger.error("Failed to update configuration:", error);
+    } catch (_error) {
+      logger.error("Failed to update configuration:", _error);
       throw error;
     }
   }
@@ -298,8 +298,8 @@ export class QCityService {
         "Q-City Shutdown",
         "Q-City service has been shut down successfully."
       );
-    } catch (error) {
-      logger.error("Failed to shut down Q-City service:", error);
+    } catch (_error) {
+      logger.error("Failed to shut down Q-City service:", _error);
       throw error;
     }
   }

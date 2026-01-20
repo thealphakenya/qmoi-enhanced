@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 import { cashonWallet } from "@/lib/cashon-wallet";
 import libProposals from "../../../../lib/proposals";
@@ -16,7 +16,7 @@ export async function POST(_request: NextRequest) {
       if (r) {
         return NextResponse.json(r.body, { status: r.status });
       }
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
     }
 
     const canRun =
@@ -29,7 +29,7 @@ export async function POST(_request: NextRequest) {
 
     if (!amount || amount < 10) {
       return NextResponse.json(
-        { error: "Invalid amount - minimum KES 10" },
+        { _error: "Invalid amount - minimum KES 10" },
         { status: 400 },
       );
     }
@@ -57,10 +57,10 @@ export async function POST(_request: NextRequest) {
       depositId,
       message: `Deposit _request initiated for KES ${amount}`,
     });
-  } catch (error) {
-    (console as any).error("Deposit API error:", error);
+  } catch (_error) {
+    (console as any).error("Deposit API _error:", _error);
     return NextResponse.json(
-      { error: "Failed to initiate deposit" },
+      { _error: "Failed to initiate deposit" },
       { status: 500 },
     );
   }

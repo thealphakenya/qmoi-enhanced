@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 import { exec } from "child_process";
 import { promisify } from "util";
@@ -36,14 +36,14 @@ export async function POST(_req: NextRequest) {
       });
     } else {
       return NextResponse.json(
-        { error: "Unsupported platform", supported: ["vercel"] },
+        { _error: "Unsupported platform", supported: ["vercel"] },
         { status: 400 }
       );
     }
-  } catch (error: unknown) {
-    const details = error instanceof Error ? error.message : String(error);
+  } catch (_error: unknown) {
+    const details = error instanceof Error ? error.message : String(_error);
     return NextResponse.json(
-      { error: "Failed to deploy", details },
+      { _error: "Failed to deploy", details },
       { status: 500 }
     );
   }

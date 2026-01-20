@@ -11,14 +11,14 @@ function ensureFile() {
   if (!fs.existsSync(SESSIONS_FILE)) fs.writeFileSync(SESSIONS_FILE, "[]");
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
     ensureFile();
     const body = await request.json();
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -49,32 +49,32 @@ export async function POST(request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (error) {
-    return NextResponse.json({ error: (error as Error).message }, { status: 500 });
+  } catch (_error) {
+    return NextResponse.json({ _error: (error as Error).message }, { status: 500 });
   }
 }
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     ensureFile();
     const sessionId = request.nextUrl.searchParams.get("sessionId");
     
     if (!sessionId) {
-      return NextResponse.json({ error: "Missing sessionId" }, { status: 400 });
+      return NextResponse.json({ _error: "Missing sessionId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -82,7 +82,7 @@ export async function GET(request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (error) {
-    return NextResponse.json({ error: (error as Error).message }, { status: 500 });
+  } catch (_error) {
+    return NextResponse.json({ _error: (error as Error).message }, { status: 500 });
   }
 }

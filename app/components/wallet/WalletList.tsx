@@ -14,7 +14,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [_error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -31,7 +31,7 @@ export function WalletList() {
         return;
       }
 
-      const response = await fetch("/api/wallets", {
+      const _response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -66,7 +66,7 @@ export function WalletList() {
         return;
       }
 
-      const response = await fetch("/api/wallets", {
+      const _response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

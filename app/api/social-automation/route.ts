@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 // @ts-nocheck
 import { NextRequest, NextResponse } from "next/server";
 
@@ -38,7 +38,7 @@ export async function POST_TAG(_req: NextRequest) {
   const { id, tag } = body;
   const idx = contacts.findIndex((c) => c.id === id);
   if (idx === -1)
-    return NextResponse.json({ error: "Contact not found" }, { status: 404 });
+    return NextResponse.json({ _error: "Contact not found" }, { status: 404 });
   if (!contacts[idx].tags.includes(tag)) contacts[idx].tags.push(tag);
   return NextResponse.json({ success: true, contact: contacts[idx] });
 }

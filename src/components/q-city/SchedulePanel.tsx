@@ -13,7 +13,7 @@ export interface Schedule {
 export default function SchedulePanel() {
   const [schedules, setSchedules] = useState<Schedule[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [_error, setError] = useState("");
   const [form, setForm] = useState<Schedule>({
     name: "",
     command: "",

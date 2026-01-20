@@ -22,7 +22,7 @@ async function runTest() {
     parentPort.postMessage({
       file: path.relative(process.cwd(), workerData.testFile),
       success: false,
-      error: _err.message,
+      _error: _err.message,
       stack: _err.stack,
       retries: 0,
     });

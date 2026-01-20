@@ -16,14 +16,14 @@ interface User {
 interface AuthState {
   user: User | null;
   loading: boolean;
-  error: string | null;
+  _error: string | null;
 }
 
 export function useAuth() {
   const [state, setState] = useState<AuthState>({
     user: null,
     loading: true,
-    error: null,
+    _error: null,
   });
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export function useAuth() {
         setState({
           user,
           loading: false,
-          error: null,
+          _error: null,
         });
       } else {
         // Clear invalid session
@@ -52,21 +52,21 @@ export function useAuth() {
         setState({
           user: null,
           loading: false,
-          error: null,
+          _error: null,
         });
       }
-    } catch (error) {
+    } catch (_error) {
       setState({
         user: null,
         loading: false,
-        error: "Failed to validate session",
+        _error: "Failed to validate session",
       });
     }
   };
 
   const login = useCallback(async (email: string, password: string) => {
     try {
-      setState((prev) => ({ ...prev, loading: true, error: null }));
+      setState((prev) => ({ ...prev, loading: true, _error: null }));
       const session = await authManager.login(
         email,
         password,
@@ -78,13 +78,13 @@ export function useAuth() {
       setState({
         user,
         loading: false,
-        error: null,
+        _error: null,
       });
-    } catch (error) {
+    } catch (_error) {
       setState({
         user: null,
         loading: false,
-        error: "Invalid credentials",
+        _error: "Invalid credentials",
       });
     }
   }, []);
@@ -99,12 +99,12 @@ export function useAuth() {
       setState({
         user: null,
         loading: false,
-        error: null,
+        _error: null,
       });
-    } catch (error) {
+    } catch (_error) {
       setState((prev) => ({
         ...prev,
-        error: "Failed to logout",
+        _error: "Failed to logout",
       }));
     }
   }, []);
@@ -112,19 +112,19 @@ export function useAuth() {
   const register = useCallback(
     async (username: string, email: string, password: string) => {
       try {
-        setState((prev) => ({ ...prev, loading: true, error: null }));
+        setState((prev) => ({ ...prev, loading: true, _error: null }));
         const user = await authManager.registerUser(username, email, password);
         setState((prev) => ({
           ...prev,
           loading: false,
-          error: null,
+          _error: null,
         }));
         return user;
-      } catch (error) {
+      } catch (_error) {
         setState({
           user: null,
           loading: false,
-          error: "Failed to register",
+          _error: "Failed to register",
         });
         throw error;
       }
@@ -155,10 +155,10 @@ export function useAuth() {
           ...prev,
           user,
         }));
-      } catch (error) {
+      } catch (_error) {
         setState((prev) => ({
           ...prev,
-          error: "Failed to update preferences",
+          _error: "Failed to update preferences",
         }));
       }
     },

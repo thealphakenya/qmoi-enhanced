@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 // NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { NextResponse } from "next/server";
 
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { error: "WhatsApp Business integration not implemented" },
+    { _error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }

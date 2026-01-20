@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -16,7 +16,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -59,8 +59,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (error) {
-              console.log(`Failed to kill process ${pid}:`, error);
+            } catch (_error) {
+              console.log(`Failed to kill process ${pid}:`, _error);
             }
           }
         }
@@ -76,8 +76,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (error) {
-              console.log(`Failed to kill process ${pid}:`, error);
+            } catch (_error) {
+              console.log(`Failed to kill process ${pid}:`, _error);
             }
           }
         }
@@ -89,10 +89,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (error) {
-    (console as any).error("Error stopping auto-fix process:", error);
+  } catch (_error) {
+    (console as any).error("Error stopping auto-fix process:", _error);
     return NextResponse.json(
-      { error: "Failed to stop auto-fix process" },
+      { _error: "Failed to stop auto-fix process" },
       { status: 500 }
     );
   }

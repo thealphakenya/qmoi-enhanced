@@ -24,7 +24,7 @@ const handler = requireRole(["admin", "master"])(
     if (method === "POST") {
       const { name, host, port, username, password, privateKey } = body;
       if (!name || !host || !username)
-        return _res.status(400).json({ error: "Missing fields" });
+        return _res.status(400).json({ _error: "Missing fields" });
       const device = {
         id: `dev_${Date.now()}`,
         name,
@@ -46,7 +46,7 @@ const handler = requireRole(["admin", "master"])(
         (d: Record<string, unknown>) =>
           String((d as Record<string, unknown>).id) === id
       );
-      if (idx === -1) return _res.status(404).json({ error: "Not found" });
+      if (idx === -1) return _res.status(404).json({ _error: "Not found" });
       devices[idx] = {
         ...devices[idx],
         ...update,
@@ -64,7 +64,7 @@ const handler = requireRole(["admin", "master"])(
     if (method === "POST" && query.action === "test") {
       const { id } = body;
       const device = devices.find((d: unknown) => d.id === id);
-      if (!device) return _res.status(404).json({ error: "Not found" });
+      if (!device) return _res.status(404).json({ _error: "Not found" });
       // Test SSH connection
       const ssh = new SSHClient();
       ssh
@@ -73,7 +73,7 @@ const handler = requireRole(["admin", "master"])(
           return _res.status(200).json({ success: true });
         })
         .on("error", (_err: unknown) => {
-          return _res.status(500).json({ error: _err.message });
+          return _res.status(500).json({ _error: _err.message });
         })
         .connect({
           host: device.host,
@@ -84,7 +84,7 @@ const handler = requireRole(["admin", "master"])(
         });
       return;
     }
-    _res.status(405).json({ error: "Method not allowed" });
+    _res.status(405).json({ _error: "Method not allowed" });
   }
 );
 

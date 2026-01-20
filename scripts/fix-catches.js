@@ -19,8 +19,8 @@ function walk(dir) {
 function fixFile(file) {
   let s = fs.readFileSync(file, 'utf8');
   const orig = s;
-  // replace `catch (error)` -> `catch (error)`
-  s = s.replace(/catch \(\s*error\s*\)/g, 'catch (error)');
+  // replace `catch (_error)` -> `catch (_error)`
+  s = s.replace(/catch \(\s*error\s*\)/g, 'catch (_error)');
   // replace common usages of error to error
   s = s.replace(/\b_error\b/g, 'error');
   if (s !== orig) {

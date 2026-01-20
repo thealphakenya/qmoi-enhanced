@@ -50,7 +50,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [_error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -82,7 +82,7 @@ export default function PluginPanel() {
     fetch("/api/qcity/plugins")
       .then((r) => r.json())
       .then((data: unknown) => setPlugins(getPluginsFromData(data)))
-      .catch((e: unknown) => setError(extractMessage(e)))
+      .catch((_e: unknown) => setError(extractMessage(_e)))
       .finally(() => setLoading(false));
   }
 

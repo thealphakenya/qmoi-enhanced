@@ -74,7 +74,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null
   );
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");

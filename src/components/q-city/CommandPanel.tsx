@@ -21,7 +21,7 @@ export default function CommandPanel() {
   const [history, setHistory] = useState<HistoryItem[]>(() => {
     try {
       return JSON.parse(
-        localStorage.getItem("qcity-cmd-history") || "[]"
+        localStorage.getItem("qcity-cmd-history") || "[]",
       ) as HistoryItem[];
     } catch {
       return [];
@@ -30,7 +30,7 @@ export default function CommandPanel() {
   const [pinned, setPinned] = useState<string[]>(() => {
     try {
       return JSON.parse(
-        localStorage.getItem("qcity-cmd-pinned") || "[]"
+        localStorage.getItem("qcity-cmd-pinned") || "[]",
       ) as string[];
     } catch {
       return [];
@@ -53,7 +53,7 @@ export default function CommandPanel() {
     };
     if (stream) {
       const es = new EventSource(
-        `/api/qcity/remote-command?body=${encodeURIComponent(body)}`
+        `/api/qcity/remote-command?body=${encodeURIComponent(body)}`,
       );
       eventSourceRef.current = es;
       es.onmessage = (ev: MessageEvent) => {
@@ -71,13 +71,13 @@ export default function CommandPanel() {
     } else {
       fetch("/api/qcity/remote-command", { method: "POST", headers, body })
         .then((r) => r.json())
-        .then((res: unknown) => {
-          const _res = res as Record<string, unknown>;
-          setOutput(String(_res.output ?? _res.error ?? ""));
+        .then((json: unknown) => {
+          const parsed = json as Record<string, unknown>;
+          setOutput(String(parsed.output ?? parsed.error ?? ""));
           setLoading(false);
         })
-        .catch((_e: unknown) => {
-          console.warn(String(_e));
+        .catch((e: unknown) => {
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });

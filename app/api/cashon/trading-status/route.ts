@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 import { requireApiKey } from "../../../../lib/proposals";
 import { cashonWallet } from "@/lib/cashon-wallet";
@@ -28,17 +28,17 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { error: "Master access required" },
+        _r?.body ?? { _error: "Master access required" },
         { status: _r?.status ?? 401 }
       );
     }
 
     const status = await cashonWallet.getTradingStatus();
     return NextResponse.json(status);
-  } catch (error) {
-    (console as any).error("Trading status API error:", error);
+  } catch (_error) {
+    (console as any).error("Trading status API _error:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server error" },
       { status: 500 }
     );
   }

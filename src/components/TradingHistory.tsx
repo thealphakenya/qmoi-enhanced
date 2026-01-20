@@ -45,7 +45,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,

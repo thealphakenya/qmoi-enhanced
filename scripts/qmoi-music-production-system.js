@@ -283,7 +283,7 @@ class QMOIMusicProductionSystem {
     if (!artist) {
       return {
         success: false,
-        error: "Artist not found",
+        _error: "Artist not found",
         type: "song-creation",
       };
     }
@@ -331,10 +331,10 @@ class QMOIMusicProductionSystem {
           distribution: distributionResults,
         },
       };
-    } catch (error) {
+    } catch (_error) {
       return {
         success: false,
-        error: error.message,
+        _error: error.message,
         type: "song-creation",
       };
     }
@@ -356,7 +356,7 @@ class QMOIMusicProductionSystem {
             artist2,
           );
           collaborations.push(collaboration);
-        } catch (error) {
+        } catch (_error) {
           (console as any).error(
             `Failed to create collaboration between ${artist1.name} and ${artist2.name}:`,
             error.message,
@@ -485,8 +485,8 @@ class QMOIMusicProductionSystem {
         try {
           const result = await this.uploadToChannel(channelId, track, video);
           results[channelId] = result;
-        } catch (error) {
-          results[channelId] = { success: false, error: error.message };
+        } catch (_error) {
+          results[channelId] = { success: false, _error: error.message };
         }
       }
     }
@@ -655,7 +655,7 @@ class QMOIMusicProductionSystem {
     try {
       const trackingPath = "logs/revenue-tracking.json";
       await fs.writeFile(trackingPath, JSON.stringify(data, null, 2));
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("Failed to save revenue tracking:", error.message);
     }
   }

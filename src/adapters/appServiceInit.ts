@@ -49,7 +49,7 @@ function setupRecoveryListeners(): void {
   const originalFetch = window.fetch;
   (window as any).fetch = async (...args: unknown[]) => {
     try {
-      const response = await (originalFetch as any).apply(window, args as any);
+      const _response = await (originalFetch as any).apply(window, args as any);
 
       if (!response.ok && response.status >= 500) {
         // 5xx errors might indicate service issues
@@ -68,7 +68,7 @@ function setupRecoveryListeners(): void {
       return response;
     } catch (_err) {
       void _err;
-      (globalThis.console as any)?.error?.("[Init] Fetch error:", _err);
+      (globalThis.console as any)?.error?.("[Init] Fetch _error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
@@ -120,7 +120,7 @@ function setupHealthMonitoring(): void {
       });
     } catch (_err) {
       void _err;
-      (globalThis.console as any)?.error?.("[Monitor] Health monitoring error:", _err);
+      (globalThis.console as any)?.error?.("[Monitor] Health monitoring _error:", _err);
     }
   }, 60 * 1000);
 }

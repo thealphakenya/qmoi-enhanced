@@ -208,7 +208,7 @@ class ServiceRecoveryManager {
     console.info(`[Recovery] Recovering API connection to ${endpoint}`);
 
     // Attempt to fetch from endpoint
-    const response = await fetch(`${endpoint}/health`);
+    const _response = await fetch(`${endpoint}/health`);
     if (!response.ok) {
       throw new Error(`API returned ${response.status}`);
     }

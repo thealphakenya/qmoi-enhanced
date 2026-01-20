@@ -38,9 +38,9 @@ function runCommand(command, _options = {}) {
     const result = execSync(command, finalOptions);
     log(`✅ Success: ${command}`);
     return { success: true, output: result };
-  } catch (error) {
+  } catch (_error) {
     log(`❌ Failed: ${command} - ${error.message}`, "error");
-    return { success: false, error: error.message };
+    return { success: false, _error: error.message };
   }
 }
 
@@ -57,7 +57,7 @@ function runCommandWithRetry(command, maxRetries = config.retryAttempts) {
       execSync("sleep 5", { stdio: "ignore" });
     }
   }
-  return { success: false, error: `Failed after ${maxRetries} attempts` };
+  return { success: false, _error: `Failed after ${maxRetries} attempts` };
 }
 
 // Check if we're in the right directory
@@ -372,8 +372,8 @@ async function main() {
     log("  npm run build        # Build for production");
     log("  npm run test:ui      # Run UI tests");
     log("  npm run qmoi:health:check  # Run health checks");
-  } catch (error) {
-    log(`Fatal error: ${error.message}`, "error");
+  } catch (_error) {
+    log(`Fatal _error: ${error.message}`, "error");
     process.exit(1);
   }
 }

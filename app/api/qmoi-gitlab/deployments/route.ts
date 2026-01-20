@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
@@ -43,8 +43,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (error) {
-    (console as any).error("Error fetching deployments:", error);
+  } catch (_error) {
+    (console as any).error("Error fetching deployments:", _error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }

@@ -109,7 +109,7 @@ export class HealthCheckService {
         overallStatus = "degraded";
       }
 
-      const response: HealthCheckResponse = {
+      const _response: HealthCheckResponse = {
         timestamp: Date.now(),
         status: overallStatus,
         system: {
@@ -119,7 +119,7 @@ export class HealthCheckService {
         },
         adapters: {
           status: adapterHealth.status,
-          error: (adapterHealth as any).error,
+          _error: (adapterHealth as any).error,
           cacheStats: {
             total: cacheStats.total,
             entries: cacheStats.byEndpoint,
@@ -154,7 +154,7 @@ export class HealthCheckService {
         },
         adapters: {
           status: "unhealthy",
-          error: String(_err),
+          _error: String(_err),
           cacheStats: { total: 0, entries: {} as Record<string, number> },
           pendingRequests: [],
         },

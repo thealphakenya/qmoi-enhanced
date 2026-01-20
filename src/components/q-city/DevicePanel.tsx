@@ -12,7 +12,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string>("");
+  const [_error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -115,7 +115,7 @@ export default function DevicePanel() {
       body: JSON.stringify({ id }),
     })
       .then((r) => r.json())
-      .then((res: unknown) => {
+      .then((_res: unknown) => {
         const data = res as Record<string, unknown>;
         setTestResult(
           data.success ? "Success" : String(data.error ?? "Failed")

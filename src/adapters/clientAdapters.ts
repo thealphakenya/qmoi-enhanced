@@ -143,7 +143,7 @@ export async function fetchMedia(forceRefresh = false): Promise<any[]> {
 }
 
 export async function verifyProduct(
-  query: string,
+  _query: string,
   forceRefresh = false
 ): Promise<string> {
   const cacheKey = getCacheKey("verify", { query });
@@ -156,7 +156,7 @@ export async function verifyProduct(
   return deduplicateRequest(cacheKey, async () => {
     return withRetry(async () => {
       const _res = await fetch(
-        `${getEndpoint("verify")}?q=${encodeURIComponent(query)}`,
+        `${getEndpoint("verify")}?q=${encodeURIComponent(_query)}`,
         { signal: AbortSignal.timeout(30000) }
       );
       if (!_res.ok) throw new Error(`verify failed: ${_res.status}`);
@@ -211,7 +211,7 @@ export async function uploadFile(formData: FormData): Promise<unknown> {
     2
   ).catch((_err) => {
     console.warn("uploadFile error", _err);
-    return { success: false, error: String(_err) };
+    return { success: false, _error: String(_err) };
   });
 }
 
@@ -233,7 +233,7 @@ export async function emergencyAction(
   } catch (_err) {
     void _err;
     (globalThis.console as any)?.error?.("emergencyAction error", _err);
-    return { ok: false, error: String(_err) };
+    return { ok: false, _error: String(_err) };
   }
 }
 
@@ -258,7 +258,7 @@ export async function youtubeDownload(url: string): Promise<unknown> {
     }, "youtubeDownload");
   }).catch((_err) => {
     console.warn("youtubeDownload error", _err);
-    return { success: false, error: String(_err) };
+    return { success: false, _error: String(_err) };
   });
 }
 

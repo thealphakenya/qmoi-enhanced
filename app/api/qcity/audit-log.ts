@@ -1,6 +1,6 @@
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import * as fs from "fs";
 import * as path from "path";
 import { requireRole } from "../auth/rbac";
@@ -12,7 +12,7 @@ const handler = requireRole(["admin", "master"])(
   async (_req: unknown, _res: unknown) => {
     const { method, query } = _req;
     if (method !== "GET")
-      return _res.status(405).json({ error: "Method not allowed" });
+      return _res.status(405).json({ _error: "Method not allowed" });
     if (!fs.existsSync(AUDIT_LOG_PATH))
       return _res
         .status(200)

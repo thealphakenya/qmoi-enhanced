@@ -20,15 +20,15 @@ function requireApiKey(headers) {
       return { ok: true };
     return {
       ok: false,
-      response: {
-        body: { error: "Unauthorized - Invalid API key" },
+      _response: {
+        body: { _error: "Unauthorized - Invalid API key" },
         status: 401,
       },
     };
   } catch (_err) {
     return {
       ok: false,
-      response: { body: { error: "Authentication error" }, status: 500 },
+      _response: { body: { _error: "Authentication error" }, status: 500 },
     };
   }
 }

@@ -62,9 +62,9 @@ const tests = [
 ];
 
 // Helper function to make HTTPS request
-function makeRequest(url, options = {}) {
+function makeRequest(url, _options = {}) {
   return new Promise((resolve, reject) => {
-    const req = https.request(url, options, (res) => {
+    const _req = https.request(url, _options, (_res) => {
       let data = '';
       res.on('data', chunk => data += chunk);
       res.on('end', () => {
@@ -100,7 +100,7 @@ async function runTests() {
   for (const test of tests) {
     try {
       const url = new URL(test.path, VERCEL_URL);
-      const options = {
+      const _options = {
         method: test.method,
         headers: {
           'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ async function runTests() {
         body: test.body ? JSON.stringify(test.body) : undefined,
       };
 
-      const result = await makeRequest(url.toString(), options);
+      const result = await makeRequest(url.toString(), _options);
       const expectedStatuses = Array.isArray(test.expectedStatus)
         ? test.expectedStatus
         : [test.expectedStatus];
@@ -123,7 +123,7 @@ async function runTests() {
         console.log(`   Expected: ${expectedStatuses.join(', ')}, Got: ${result.status}`);
         failed++;
       }
-    } catch (error) {
+    } catch (_error) {
       console.log(`❌ ${test.name}`);
       console.log(`   Error: ${error.message}`);
       failed++;
@@ -142,7 +142,7 @@ async function runTests() {
 }
 
 // Run the tests
-runTests().catch(error => {
-  console.error('❌ Test suite error:', error.message);
+runTests().catch(_error => {
+  console.error('❌ Test suite _error:', error.message);
   process.exit(1);
 });

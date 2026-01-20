@@ -1,6 +1,6 @@
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import type { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 
@@ -109,5 +109,5 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ error: "Method not allowed" });
+  _res.status(405).json({ _error: "Method not allowed" });
 }

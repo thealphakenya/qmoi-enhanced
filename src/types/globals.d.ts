@@ -8,7 +8,7 @@ declare global {
   // common runtime/test placeholders
   var localServer: unknown;
   var _request: unknown;
-  var response: unknown;
+  var _response: unknown;
   var _req: unknown;
   var _res: unknown;
   var __dirname: string;

@@ -130,7 +130,7 @@ class BackgroundServiceManager {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        error: String(_err),
+        _error: String(_err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -146,7 +146,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (error) service.error = error;
+    if (_error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`
@@ -202,7 +202,7 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as any)?.error?.("[Background] Poll error:", _err);
+        (globalThis.console as any)?.error?.("[Background] Poll _error:", _err);
       });
     }, 5 * 1000); // Check every 5 seconds
 

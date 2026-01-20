@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 // NOTE: 4 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 
@@ -49,10 +49,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(Result);
-  } catch (error) {
-    (console as any).error("Error in AI scan endpoint:", error);
+  } catch (_error) {
+    (console as any).error("Error in AI scan endpoint:", _error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -88,13 +88,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: "Invalid action specified" },
+      { _error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (error) {
-    (console as any).error("Error in AI self-heal endpoint:", error);
+  } catch (_error) {
+    (console as any).error("Error in AI self-heal endpoint:", _error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }

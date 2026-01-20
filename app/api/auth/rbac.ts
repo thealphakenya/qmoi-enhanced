@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import jwt from "jsonwebtoken";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -10,16 +10,16 @@ export function requireRole(roles: string[]) {
     async (_req: NextApiRequest, _res: NextApiResponse) => {
       const auth = _req.headers.authorization;
       if (!auth || !auth.startsWith("Bearer "))
-        return _res.status(401).json({ error: "No token" });
+        return _res.status(401).json({ _error: "No token" });
       try {
         const token = auth.slice(7);
         const user = jwt.verify(token, JWT_SECRET) as any;
         if (!roles.includes(user.role))
-          return _res.status(403).json({ error: "Forbidden" });
+          return _res.status(403).json({ _error: "Forbidden" });
         (_req as any).user = user;
         return handler(_req, _res);
       } catch {
-        return _res.status(401).json({ error: "Invalid token" });
+        return _res.status(401).json({ _error: "Invalid token" });
       }
     };
 }

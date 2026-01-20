@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import path from "path";
@@ -11,7 +11,7 @@ const handler = requireRole(["admin", "master"])(async (_req: NextApiRequest,
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ error: "Method not allowed" });
+    return _res.status(405).json({ _error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)

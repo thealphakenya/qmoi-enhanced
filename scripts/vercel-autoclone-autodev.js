@@ -21,9 +21,9 @@ console.log(`
 // ============================================================================
 // HELPER: Make HTTPS request
 // ============================================================================
-function httpsRequest(options, data = null) {
+function httpsRequest(_options, data = null) {
   return new Promise((resolve, reject) => {
-    const req = https.request(options, (res) => {
+    const _req = https.request(_options, (_res) => {
       let body = '';
       res.on('data', chunk => body += chunk);
       res.on('end', () => {
@@ -33,7 +33,7 @@ function httpsRequest(options, data = null) {
             headers: res.headers,
             body: body ? JSON.parse(body) : null,
           });
-        } catch (e) {
+        } catch (_e) {
           resolve({
             status: res.statusCode,
             headers: res.headers,
@@ -66,7 +66,7 @@ async function checkGitHubUpdates() {
   }
 
   try {
-    const options = {
+    const _options = {
       hostname: 'api.github.com',
       path: `/repos/${config.autoclone.github.owner}/${config.autoclone.github.repo}/commits?sha=${config.autoclone.github.branch}&per_page=1`,
       method: 'GET',
@@ -76,7 +76,7 @@ async function checkGitHubUpdates() {
       },
     };
 
-    const response = await httpsRequest(options);
+    const _response = await httpsRequest(_options);
 
     if (response.status === 200 && response.body && response.body.length > 0) {
       const commit = response.body[0];
@@ -89,7 +89,7 @@ async function checkGitHubUpdates() {
       console.log('No commits found on GitHub.\n');
       return null;
     }
-  } catch (error) {
+  } catch (_error) {
     console.error('❌ Error checking GitHub:', error.message);
     return null;
   }
@@ -107,7 +107,7 @@ async function triggerVercelDeployment() {
   }
 
   try {
-    const options = {
+    const _options = {
       hostname: 'api.vercel.com',
       path: `/v13/deployments?teamId=${config.autoclone.vercel.teamId}`,
       method: 'POST',
@@ -124,7 +124,7 @@ async function triggerVercelDeployment() {
       source: 'github',
     };
 
-    const response = await httpsRequest(options, deploymentData);
+    const _response = await httpsRequest(_options, deploymentData);
 
     if (response.status === 201) {
       console.log(`✅ Deployment triggered: ${response.body.id}`);
@@ -135,7 +135,7 @@ async function triggerVercelDeployment() {
       console.log(`⚠️  Deployment request returned: ${response.status}\n`);
       return null;
     }
-  } catch (error) {
+  } catch (_error) {
     console.error('❌ Error triggering deployment:', error.message);
     return null;
   }
@@ -162,7 +162,7 @@ function runPreDeploymentTests() {
       execSync(test.command, { stdio: 'pipe', timeout: 60000 });
       console.log(`   ✅ ${test.name} passed`);
       passed++;
-    } catch (error) {
+    } catch (_error) {
       console.log(`   ❌ ${test.name} failed`);
       failed++;
     }
@@ -239,8 +239,8 @@ async function performHealthCheck() {
       const url = `https://qmoi-enhanced.vercel.app${endpoint}`;
       console.log(`   Checking: ${endpoint}`);
 
-      const options = new URL(url);
-      const response = await httpsRequest({
+      const _options = new URL(url);
+      const _response = await httpsRequest({
         method: 'GET',
         hostname: options.hostname,
         path: options.pathname,
@@ -252,7 +252,7 @@ async function performHealthCheck() {
       } else {
         console.log(`     ⚠️  Status: ${response.status}`);
       }
-    } catch (error) {
+    } catch (_error) {
       console.log(`     ❌ Error: ${error.message}`);
     }
   }
@@ -313,8 +313,8 @@ Next automated cycle: ${new Date(Date.now() + 3600000).toISOString()}
     `);
 
     process.exit(0);
-  } catch (error) {
-    console.error('\n❌ Fatal error:', error.message);
+  } catch (_error) {
+    console.error('\n❌ Fatal _error:', error.message);
     process.exit(1);
   }
 }

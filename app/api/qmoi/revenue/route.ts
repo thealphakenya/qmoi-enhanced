@@ -1,6 +1,6 @@
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 import { requireApiKey } from "../../../../lib/proposals";
 import { logEvent } from "../../../../lib/security_check";
@@ -17,7 +17,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -55,12 +55,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (error) {
-    (console as any).error("Revenue API error:", error);
-    const errorMsg = error instanceof Error ? error.message : String(error);
-    logEvent("revenue_api_error", { error: errorMsg });
+  } catch (_error) {
+    (console as any).error("Revenue API _error:", _error);
+    const errorMsg = error instanceof Error ? error.message : String(_error);
+    logEvent("revenue_api_error", { _error: errorMsg });
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -69,7 +69,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -124,14 +124,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
     }
-  } catch (error) {
-    (console as any).error("Revenue API POST error:", error);
-    const errorMsg = error instanceof Error ? error.message : String(error);
-    logEvent("revenue_api_post_error", { error: errorMsg });
+  } catch (_error) {
+    (console as any).error("Revenue API POST _error:", _error);
+    const errorMsg = error instanceof Error ? error.message : String(_error);
+    logEvent("revenue_api_post_error", { _error: errorMsg });
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server error" },
       { status: 500 }
     );
   }

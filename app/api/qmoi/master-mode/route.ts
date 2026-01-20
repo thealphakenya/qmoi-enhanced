@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 import { requireApiKey } from "../../../../lib/proposals";
 
@@ -27,7 +27,7 @@ export async function POST(_request: NextRequest) {
     const apiAuth = requireApiKey(_request.headers);
     if (!apiAuth.ok && !authenticateMaster(_request)) {
       return NextResponse.json(
-        { error: "Master access required" },
+        { _error: "Master access required" },
         { status: 401 },
       );
     }
@@ -36,7 +36,7 @@ export async function POST(_request: NextRequest) {
 
     if (typeof enabled !== "boolean") {
       return NextResponse.json(
-        { error: "Invalid enabled parameter" },
+        { _error: "Invalid enabled parameter" },
         { status: 400 },
       );
     }
@@ -53,10 +53,10 @@ export async function POST(_request: NextRequest) {
       timestamp: new Date().toISOString(),
       message: `Master mode ${enabled ? "enabled" : "disabled"} successfully`,
     });
-  } catch (error) {
-    (console as any).error("Error managing master mode:", error);
+  } catch (_error) {
+    (console as any).error("Error managing master mode:", _error);
     return NextResponse.json(
-      { error: "Failed to manage master mode" },
+      { _error: "Failed to manage master mode" },
       { status: 500 },
     );
   }
@@ -69,7 +69,7 @@ export async function GET(_request: NextRequest) {
     const apiAuth = requireApiKey(_request.headers);
     if (!apiAuth.ok && !authenticateMaster(_request)) {
       return NextResponse.json(
-        { error: "Master access required" },
+        { _error: "Master access required" },
         { status: 401 },
       );
     }
@@ -90,10 +90,10 @@ export async function GET(_request: NextRequest) {
         vulnerabilityScanning: true,
       },
     });
-  } catch (error) {
-    (console as any).error("Error fetching master mode status:", error);
+  } catch (_error) {
+    (console as any).error("Error fetching master mode status:", _error);
     return NextResponse.json(
-      { error: "Failed to fetch master mode status" },
+      { _error: "Failed to fetch master mode status" },
       { status: 500 },
     );
   }

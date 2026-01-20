@@ -23,7 +23,7 @@ console.log(`\n📡 Monitoring deployment for project: ${PROJECT_NAME}\n`);
 // Helper to make Vercel API request
 function vercelAPI(path) {
   return new Promise((resolve, reject) => {
-    const options = {
+    const _options = {
       hostname: 'api.vercel.com',
       path: path,
       method: 'GET',
@@ -33,14 +33,14 @@ function vercelAPI(path) {
       },
     };
 
-    const req = https.request(options, (res) => {
+    const _req = https.request(_options, (_res) => {
       let data = '';
       res.on('data', chunk => data += chunk);
       res.on('end', () => {
         try {
           resolve(JSON.parse(data));
-        } catch (e) {
-          reject(new Error(`Invalid JSON response: ${data}`));
+        } catch (_e) {
+          reject(new Error(`Invalid JSON _response: ${data}`));
         }
       });
     });
@@ -117,7 +117,7 @@ async function checkDeployment() {
     });
 
     console.log('\n');
-  } catch (error) {
+  } catch (_error) {
     console.error('❌ Error checking deployment:', error.message);
     console.log('\nTroubleshooting:');
     console.log('1. Verify VERCEL_TOKEN is correct');

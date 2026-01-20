@@ -48,17 +48,17 @@ async function runMigrations() {
           await pool.query("INSERT INTO migrations (name) VALUES ($1)", [file]);
           await pool.query("COMMIT");
           console.log(`✅ Migration ${file} completed successfully`);
-        } catch (error) {
+        } catch (_error) {
           await pool.query("ROLLBACK");
-          (console as any).error(`❌ Error in migration ${file}:`, error);
+          (console as any).error(`❌ Error in migration ${file}:`, _error);
           throw error;
         }
       }
     }
 
     console.log("✨ All migrations completed successfully");
-  } catch (error) {
-    (console as any).error("Migration error:", error);
+  } catch (_error) {
+    (console as any).error("Migration _error:", _error);
     process.exit(1);
   } finally {
     await pool.end();

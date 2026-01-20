@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 
@@ -57,7 +57,7 @@ export async function DELETE(_req: NextRequest) {
   const { key } = body;
   const idx = apiKeys.findIndex((k) => k.key === key);
   if (idx === -1)
-    return NextResponse.json({ error: "Key not found" }, { status: 404 });
+    return NextResponse.json({ _error: "Key not found" }, { status: 404 });
   apiKeys[idx].revoked = true;
   // Production: Persist revoked state to keys/ directory
   // Clear any cached auth tokens associated with revoked key

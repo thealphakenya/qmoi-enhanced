@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 import { exec } from "child_process";
 import { promisify } from "util";
@@ -17,7 +17,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { error: "Title and head branch are required" },
+        { _error: "Title and head branch are required" },
         { status: 400 }
       );
     }
@@ -40,11 +40,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (error: unknown) {
+  } catch (_error: unknown) {
     return NextResponse.json(
       {
-        error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(error),
+        _error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(_error),
       },
       { status: 500 }
     );

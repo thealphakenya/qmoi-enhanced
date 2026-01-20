@@ -15,7 +15,7 @@ export async function POST(_request: NextRequest) {
     // Validate input
     if (!body.email || !body.username || !body.password) {
       return NextResponse.json(
-        { error: "Missing required fields" },
+        { _error: "Missing required fields" },
         { status: 400 }
       );
     }
@@ -23,7 +23,7 @@ export async function POST(_request: NextRequest) {
     // Validate email format
     if (!authService.validateEmail(body.email)) {
       return NextResponse.json(
-        { error: "Invalid email format" },
+        { _error: "Invalid email format" },
         { status: 400 }
       );
     }
@@ -45,7 +45,7 @@ export async function POST(_request: NextRequest) {
     if (!passwordValidationResult.isStrong) {
       return NextResponse.json(
         {
-          error: "password too weak",
+          _error: "password too weak",
           details: passwordValidationResult.errors,
         },
         { status: 400 }
@@ -57,7 +57,7 @@ export async function POST(_request: NextRequest) {
     if (existing) {
       console.warn("REGISTER: existing found for", body.email, existing);
       return NextResponse.json(
-        { error: "Email already exists" },
+        { _error: "Email already exists" },
         { status: 409 }
       );
     }
@@ -124,7 +124,7 @@ export async function POST(_request: NextRequest) {
       },
       { status: 201 }
     );
-  } catch (error) {
+  } catch (_error) {
     // Handle unique constraint errors from Prisma mock or generated client
     try {
       const msg = error && (error as any).message;
@@ -134,16 +134,16 @@ export async function POST(_request: NextRequest) {
         (typeof msg === "string" && msg.toLowerCase().includes("unique"))
       ) {
         return NextResponse.json(
-          { error: "Email already exists" },
+          { _error: "Email already exists" },
           { status: 409 }
         );
       }
     } catch (_e) {
       void _e; /* ignore */
     }
-    (globalThis.console as any)?.error?.("Registration error:", error);
+    (globalThis.console as any)?.error?.("Registration _error:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server error" },
       { status: 500 }
     );
   }

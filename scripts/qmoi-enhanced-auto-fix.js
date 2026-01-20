@@ -93,7 +93,7 @@ class QMOIEnhancedAutoFix {
         `✅ Auto-fix completed: ${fixReport.summary.successfulFixes}/${fixReport.summary.totalFixes} fixes successful`,
       );
       return fixReport;
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("❌ Auto-fix failed:", error.message);
       await this.sendErrorNotification("Auto-Fix Failed", error.message);
       throw error;
@@ -115,16 +115,16 @@ class QMOIEnhancedAutoFix {
             file,
             ...result,
           });
-        } catch (error) {
+        } catch (_error) {
           fixes.push({
             type: "json",
             file,
             success: false,
-            error: error.message,
+            _error: error.message,
           });
         }
       }
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("Error fixing JSON files:", error.message);
     }
 
@@ -146,16 +146,16 @@ class QMOIEnhancedAutoFix {
             file,
             ...result,
           });
-        } catch (error) {
+        } catch (_error) {
           fixes.push({
             type: "yaml",
             file,
             success: false,
-            error: error.message,
+            _error: error.message,
           });
         }
       }
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("Error fixing YAML files:", error.message);
     }
 
@@ -194,10 +194,10 @@ class QMOIEnhancedAutoFix {
         backupPath,
         fixesApplied: 1,
       };
-    } catch (error) {
+    } catch (_error) {
       return {
         success: false,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -216,12 +216,12 @@ class QMOIEnhancedAutoFix {
           success: true,
           message: "NPM cache cleaned",
         });
-      } catch (error) {
+      } catch (_error) {
         fixes.push({
           type: "build",
           action: "npm_cache_clean",
           success: false,
-          error: error.message,
+          _error: error.message,
         });
       }
 
@@ -235,15 +235,15 @@ class QMOIEnhancedAutoFix {
           success: true,
           message: "Dependencies reinstalled",
         });
-      } catch (error) {
+      } catch (_error) {
         fixes.push({
           type: "build",
           action: "dependency_reinstall",
           success: false,
-          error: error.message,
+          _error: error.message,
         });
       }
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("Error fixing build issues:", error.message);
     }
 
@@ -264,12 +264,12 @@ class QMOIEnhancedAutoFix {
           success: true,
           message: "Dependencies updated",
         });
-      } catch (error) {
+      } catch (_error) {
         fixes.push({
           type: "dependency",
           action: "update_dependencies",
           success: false,
-          error: error.message,
+          _error: error.message,
         });
       }
 
@@ -282,15 +282,15 @@ class QMOIEnhancedAutoFix {
           success: true,
           message: "Peer dependencies fixed",
         });
-      } catch (error) {
+      } catch (_error) {
         fixes.push({
           type: "dependency",
           action: "fix_peer_dependencies",
           success: false,
-          error: error.message,
+          _error: error.message,
         });
       }
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("Error fixing dependency issues:", error.message);
     }
 
@@ -309,7 +309,7 @@ class QMOIEnhancedAutoFix {
       // Check and fix package.json scripts
       const scriptFixes = await this.fixPackageScripts();
       fixes.push(...scriptFixes);
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("Error fixing configuration issues:", error.message);
     }
 
@@ -326,7 +326,7 @@ class QMOIEnhancedAutoFix {
 
       try {
         envContent = await fs.readFile(envPath, "utf8");
-      } catch (error) {
+      } catch (_error) {
         // Create .env file if it doesn't exist
         envContent = `# QMOI Environment Variables
 NODE_ENV=development
@@ -360,12 +360,12 @@ QMOI_AUTODEV_ENABLED=true
       if (fixes.length > 0) {
         await fs.writeFile(envPath, envContent);
       }
-    } catch (error) {
+    } catch (_error) {
       fixes.push({
         type: "config",
         action: "fix_env_variables",
         success: false,
-        error: error.message,
+        _error: error.message,
       });
     }
 
@@ -409,12 +409,12 @@ QMOI_AUTODEV_ENABLED=true
       if (modified) {
         await fs.writeFile(packagePath, JSON.stringify(packageJson, null, 2));
       }
-    } catch (error) {
+    } catch (_error) {
       fixes.push({
         type: "config",
         action: "fix_package_scripts",
         success: false,
-        error: error.message,
+        _error: error.message,
       });
     }
 
@@ -444,7 +444,7 @@ QMOI_AUTODEV_ENABLED=true
             files.push(fullPath);
           }
         }
-      } catch (error) {
+      } catch (_error) {
         // Skip directories that can't be read
       }
     }
@@ -506,14 +506,14 @@ ${failedFixes.length > 3 ? `... and ${failedFixes.length - 3} more` : ""}
     );
   }
 
-  async sendErrorNotification(title, error) {
+  async sendErrorNotification(title, _error) {
     await this.notificationSystem.sendNotification(
       "error",
       title,
-      `QMOI Auto-Fix encountered an error: ${error}`,
+      `QMOI Auto-Fix encountered an _error: ${error}`,
       {
         details: {
-          error,
+          _error,
           timestamp: new Date().toISOString(),
         },
       },

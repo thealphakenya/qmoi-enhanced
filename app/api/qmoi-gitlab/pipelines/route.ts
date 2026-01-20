@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
@@ -36,8 +36,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ pipelines });
-  } catch (error) {
-    (console as any).error("Error fetching pipelines:", error);
+  } catch (_error) {
+    (console as any).error("Error fetching pipelines:", _error);
     return NextResponse.json({ pipelines: [] }, { status: 500 });
   }
 }

@@ -373,15 +373,15 @@ export class BrowserService {
 
       // AI features processing
       await this.processAIFeatures(tab, url);
-    } catch (error) {
+    } catch (_error) {
       tab.isLoading = false;
-      const errMsg = error instanceof Error ? error.message : String(error);
+      const errMsg = error instanceof Error ? error.message : String(_error);
       this.eventEmitter.emit("navigationError", {
         tabId,
         url,
-        error: errMsg,
+        _error: errMsg,
       });
-      logger.error(`Navigation failed for tab ${tabId}:`, error);
+      logger.error(`Navigation failed for tab ${tabId}:`, _error);
       throw error;
     }
   }
@@ -408,9 +408,9 @@ export class BrowserService {
               await this.processLiveTV(tab, url);
               break;
           }
-        } catch (error) {
+        } catch (_error) {
           const errDetails =
-            error instanceof Error ? error.message : String(error);
+            error instanceof Error ? error.message : String(_error);
           logger.error(`AI feature ${feature.id} failed: ${errDetails}`);
         }
       }
@@ -464,7 +464,7 @@ export class BrowserService {
     }
   }
 
-  private async generateSearchSuggestions(query: string): Promise<string[]> {
+  private async generateSearchSuggestions(_query: string): Promise<string[]> {
     // Simulate AI-powered search suggestions
     return [
       `${query} latest news`,
@@ -656,12 +656,12 @@ export class BrowserService {
 
       download.status = "completed";
       this.eventEmitter.emit("downloadCompleted", download);
-    } catch (error) {
+    } catch (_error) {
       download.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(error);
+      const errMsg = error instanceof Error ? error.message : String(_error);
       this.eventEmitter.emit("downloadFailed", {
         downloadId,
-        error: errMsg,
+        _error: errMsg,
       });
     }
   }
@@ -782,7 +782,7 @@ export class BrowserService {
   }
 
   public onNavigationError(
-    callback: (data: { tabId: string; url: string; error: string }) => void
+    callback: (data: { tabId: string; url: string; _error: string }) => void
   ): void {
     this.eventEmitter.on("navigationError", callback);
   }

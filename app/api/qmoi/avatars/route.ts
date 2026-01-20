@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 import {
   avatarsConfig,
@@ -28,10 +28,10 @@ export async function GET() {
       engines: Object.keys(animationEngines),
       qualityLevels: Object.keys(qualityLevels),
     });
-  } catch (error) {
-    (console as any).error("Error fetching avatars:", error);
+  } catch (_error) {
+    (console as any).error("Error fetching avatars:", _error);
     return NextResponse.json(
-      { error: "Failed to fetch avatars" },
+      { _error: "Failed to fetch avatars" },
       { status: 500 }
     );
   }
@@ -56,12 +56,12 @@ export async function POST(_request: NextRequest) {
         return await customizeAvatar(avatarId, voiceProfile);
 
       default:
-        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
     }
-  } catch (error) {
-    (console as any).error("Error in avatars API:", error);
+  } catch (_error) {
+    (console as any).error("Error in avatars API:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -72,7 +72,7 @@ async function switchAvatar(avatarId: string) {
     // Validate avatar ID
     const avatar = avatarsConfig.find((a) => a.id === avatarId);
     if (!avatar) {
-      return NextResponse.json({ error: "Invalid avatar ID" }, { status: 400 });
+      return NextResponse.json({ _error: "Invalid avatar ID" }, { status: 400 });
     }
 
     // Update QMOI's current avatar (in a real implementation, this would update the AI model)
@@ -97,10 +97,10 @@ async function switchAvatar(avatarId: string) {
       engineInfo: animationEngines[avatar.animationEngine],
       qualityInfo: qualityLevels[avatar.qualityLevel],
     });
-  } catch (error) {
-    (console as any).error("Error switching avatar:", error);
+  } catch (_error) {
+    (console as any).error("Error switching avatar:", _error);
     return NextResponse.json(
-      { error: "Failed to switch avatar" },
+      { _error: "Failed to switch avatar" },
       { status: 500 }
     );
   }
@@ -125,10 +125,10 @@ async function upgradeAvatar(avatarId: string) {
       newVersion: "2.1.0",
       improvements: ["better_animations", "enhanced_quality", "new_features"],
     });
-  } catch (error) {
-    (console as any).error("Error upgrading avatar:", error);
+  } catch (_error) {
+    (console as any).error("Error upgrading avatar:", _error);
     return NextResponse.json(
-      { error: "Failed to upgrade avatar" },
+      { _error: "Failed to upgrade avatar" },
       { status: 500 }
     );
   }
@@ -161,10 +161,10 @@ async function enhanceAvatar(
         "improved_quality",
       ],
     });
-  } catch (error) {
-    (console as any).error("Error enhancing avatar:", error);
+  } catch (_error) {
+    (console as any).error("Error enhancing avatar:", _error);
     return NextResponse.json(
-      { error: "Failed to enhance avatar" },
+      { _error: "Failed to enhance avatar" },
       { status: 500 }
     );
   }
@@ -192,10 +192,10 @@ async function customizeAvatar(avatarId: string, voiceProfile: string) {
         "preference_saved",
       ],
     });
-  } catch (error) {
-    (console as any).error("Error customizing avatar:", error);
+  } catch (_error) {
+    (console as any).error("Error customizing avatar:", _error);
     return NextResponse.json(
-      { error: "Failed to customize avatar" },
+      { _error: "Failed to customize avatar" },
       { status: 500 }
     );
   }

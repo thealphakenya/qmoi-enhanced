@@ -11,14 +11,14 @@ function ensureFile() {
   if (!fs.existsSync(CREDENTIALS_FILE)) fs.writeFileSync(CREDENTIALS_FILE, "[]");
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
     ensureFile();
     const body = await request.json();
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (error) {
-    return NextResponse.json({ error: (error as Error).message }, { status: 500 });
+  } catch (_error) {
+    return NextResponse.json({ _error: (error as Error).message }, { status: 500 });
   }
 }

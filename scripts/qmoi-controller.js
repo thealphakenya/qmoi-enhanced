@@ -60,7 +60,7 @@ class QMOIController {
       if (existsSync(configPath)) {
         return JSON.parse(readFileSync(configPath, "utf8"));
       }
-    } catch (error) {
+    } catch (_error) {
       this.log(`Error loading QMOI config: ${error.message}`, "error");
     }
 
@@ -76,7 +76,7 @@ class QMOIController {
       if (existsSync(configPath)) {
         return JSON.parse(readFileSync(configPath, "utf8"));
       }
-    } catch (error) {
+    } catch (_error) {
       this.log(`Error loading lint config: ${error.message}`, "error");
     }
 
@@ -177,8 +177,8 @@ class QMOIController {
         resolve({ code, stdout, stderr });
       });
 
-      child.on("error", (error) => {
-        reject(error);
+      child.on("error", (_error) => {
+        reject(_error);
       });
     });
   }
@@ -205,7 +205,7 @@ class QMOIController {
       this.systemState.tasksCompleted += 1;
 
       return analysisResults;
-    } catch (error) {
+    } catch (_error) {
       this.log(`Error in lint check: ${error.message}`, "error");
       return { status: "error", message: error.message };
     }
@@ -260,7 +260,7 @@ class QMOIController {
     const processedFiles = new Set();
 
     for (const error of errors) {
-      const analysis = await this.analyzeError(error);
+      const analysis = await this.analyzeError(_error);
 
       const filePath = join(this.projectRoot, error.file);
       if (!processedFiles.has(filePath)) {
@@ -270,7 +270,7 @@ class QMOIController {
 
       const fixApplied = await this.applyIntelligentFix(
         filePath,
-        error,
+        _error,
         analysis,
       );
 
@@ -294,7 +294,7 @@ class QMOIController {
     return results;
   }
 
-  async analyzeError(error) {
+  async analyzeError(_error) {
     const rule = error.rule;
     const message = error.message;
 
@@ -416,7 +416,7 @@ class QMOIController {
     }
   }
 
-  async applyIntelligentFix(filePath, error, analysis) {
+  async applyIntelligentFix(filePath, _error, analysis) {
     try {
       if (!existsSync(filePath)) {
         return false;
@@ -468,7 +468,7 @@ class QMOIController {
       }
 
       return false;
-    } catch (error) {
+    } catch (_error) {
       this.log(`Error applying fix to ${filePath}: ${error.message}`, "error");
       return false;
     }
@@ -509,7 +509,7 @@ class QMOIController {
       } else {
         execSync(`notify-send "QMOI AI" "${message}"`, { stdio: "ignore" });
       }
-    } catch (error) {
+    } catch (_error) {
       this.log(`Error sending desktop notification: ${error.message}`, "error");
     }
   }
@@ -527,7 +527,7 @@ class QMOIController {
           stdio: "ignore",
         });
       }
-    } catch (error) {
+    } catch (_error) {
       this.log(
         `Error sending WhatsApp notification: ${error.message}`,
         "error",
@@ -594,7 +594,7 @@ class QMOIController {
 
 // Run the QMOI controller
 const controller = new QMOIController();
-controller.run().catch((error) => {
-  (console as any).error("Fatal error in QMOI controller:", error);
+controller.run().catch((_error) => {
+  (console as any).error("Fatal error in QMOI controller:", _error);
   process.exit(1);
 });

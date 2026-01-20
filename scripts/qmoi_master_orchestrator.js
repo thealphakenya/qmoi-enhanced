@@ -37,7 +37,7 @@ class QMOIMasterOrchestrator {
       if (fs.existsSync(this.configFile)) {
         return JSON.parse(fs.readFileSync(this.configFile, "utf8"));
       }
-    } catch (error) {
+    } catch (_error) {
       this.log(`Error loading config: ${error.message}`);
     }
 
@@ -106,7 +106,7 @@ class QMOIMasterOrchestrator {
       if (fs.existsSync(this.healthFile)) {
         return JSON.parse(fs.readFileSync(this.healthFile, "utf8"));
       }
-    } catch (error) {
+    } catch (_error) {
       this.log(`Error loading health status: ${error.message}`);
     }
 
@@ -155,7 +155,7 @@ class QMOIMasterOrchestrator {
       }
 
       this.log("✅ Permissions setup completed");
-    } catch (error) {
+    } catch (_error) {
       this.log(`❌ Permission setup failed: ${error.message}`, "ERROR");
     }
   }
@@ -166,7 +166,7 @@ class QMOIMasterOrchestrator {
     files.forEach((pattern) => {
       try {
         execSync(`chmod 644 ${pattern}`, { stdio: "pipe" });
-      } catch (error) {
+      } catch (_error) {
         // Ignore errors for non-existent files
       }
     });
@@ -198,7 +198,7 @@ class QMOIMasterOrchestrator {
 
       // Set up git hooks
       this.setupGitHooks();
-    } catch (error) {
+    } catch (_error) {
       this.log(`Git permission setup failed: ${error.message}`, "WARN");
     }
   }
@@ -289,14 +289,14 @@ node scripts/qmoi_master_orchestrator.js post-commit
         }
       });
 
-      process.on("error", (error) => {
-        this.log(`Service ${serviceName} error: ${error.message}`, "ERROR");
+      process.on("error", (_error) => {
+        this.log(`Service ${serviceName} _error: ${error.message}`, "ERROR");
         this.handleServiceFailure(serviceName, config);
       });
 
       this.log(`✅ Service ${serviceName} started successfully`);
       return process;
-    } catch (error) {
+    } catch (_error) {
       this.log(
         `❌ Failed to start service ${serviceName}: ${error.message}`,
         "ERROR",
@@ -343,12 +343,12 @@ node scripts/qmoi_master_orchestrator.js post-commit
 
       this.log(`✅ Periodic task ${serviceName} completed successfully`);
       return { success: true, output: result.toString() };
-    } catch (error) {
+    } catch (_error) {
       this.log(
         `❌ Periodic task ${serviceName} failed: ${error.message}`,
         "ERROR",
       );
-      return { success: false, error: error.message };
+      return { success: false, _error: error.message };
     }
   }
 
@@ -356,7 +356,7 @@ node scripts/qmoi_master_orchestrator.js post-commit
     if (!config.healthCheck) return true;
 
     try {
-      const response = await this.makeHealthRequest(config.healthCheck);
+      const _response = await this.makeHealthRequest(config.healthCheck);
       const isHealthy = response.status === 200;
 
       this.healthStatus.services[serviceName] = {
@@ -366,7 +366,7 @@ node scripts/qmoi_master_orchestrator.js post-commit
       };
 
       return isHealthy;
-    } catch (error) {
+    } catch (_error) {
       this.log(
         `Health check failed for ${serviceName}: ${error.message}`,
         "WARN",
@@ -374,7 +374,7 @@ node scripts/qmoi_master_orchestrator.js post-commit
       this.healthStatus.services[serviceName] = {
         healthy: false,
         lastCheck: new Date().toISOString(),
-        error: error.message,
+        _error: error.message,
       };
       return false;
     }
@@ -460,9 +460,9 @@ node scripts/qmoi_master_orchestrator.js post-commit
         diskUsage: usagePercent,
         memoryUsage: memUsage,
       };
-    } catch (error) {
+    } catch (_error) {
       this.log(`System resource check failed: ${error.message}`, "WARN");
-      return { healthy: false, error: error.message };
+      return { healthy: false, _error: error.message };
     }
   }
 
@@ -491,7 +491,7 @@ node scripts/qmoi_master_orchestrator.js post-commit
         });
         fixesApplied++;
         this.log(`✅ ${fix.name} applied successfully`);
-      } catch (error) {
+      } catch (_error) {
         this.log(`⚠️ ${fix.name} failed: ${error.message}`, "WARN");
       }
     }
@@ -540,7 +540,7 @@ ${message}
           await this.sendToWhatsApp(notification);
           break;
       }
-    } catch (error) {
+    } catch (_error) {
       this.log(
         `Failed to send notification to ${channel}: ${error.message}`,
         "ERROR",
@@ -574,7 +574,7 @@ ${message}
         this.healthFile,
         JSON.stringify(this.healthStatus, null, 2),
       );
-    } catch (error) {
+    } catch (_error) {
       this.log(`Error saving health status: ${error.message}`, "ERROR");
     }
   }
@@ -711,7 +711,7 @@ ${message}
         await this.stopAllServices();
         process.exit(0);
       });
-    } catch (error) {
+    } catch (_error) {
       this.log(`❌ QMOI Master Orchestrator failed: ${error.message}`, "ERROR");
       await this.sendNotification(
         `QMOI Master Orchestrator failed: ${error.message}`,

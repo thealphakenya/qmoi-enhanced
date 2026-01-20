@@ -80,7 +80,7 @@ class QMOIGitHubActionsFixer {
         `✅ GitHub Actions fixes completed: ${fixReport.summary.successfulFixes}/${fixReport.summary.totalWorkflows} workflows fixed`,
       );
       return fixReport;
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("❌ GitHub Actions fix failed:", error.message);
       await this.sendErrorNotification(
         "GitHub Actions Fix Failed",
@@ -204,10 +204,10 @@ class QMOIGitHubActionsFixer {
         fixes: fixes,
         backupPath,
       };
-    } catch (error) {
+    } catch (_error) {
       return {
         success: false,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -277,10 +277,10 @@ class QMOIGitHubActionsFixer {
         backupPath,
         method: "yaml_syntax_fix",
       };
-    } catch (error) {
+    } catch (_error) {
       return {
         success: false,
-        error: `YAML syntax fix failed: ${error.message}`,
+        _error: `YAML syntax fix failed: ${error.message}`,
         attemptedFixes: fixes,
       };
     }
@@ -302,7 +302,7 @@ class QMOIGitHubActionsFixer {
           files.push(path.join(this.workflowPath, item.name));
         }
       }
-    } catch (error) {
+    } catch (_error) {
       console.log(`⚠️ Could not read workflow directory: ${error.message}`);
     }
 
@@ -349,7 +349,7 @@ class QMOIGitHubActionsFixer {
       }
 
       return validation;
-    } catch (error) {
+    } catch (_error) {
       return {
         valid: false,
         errors: [error.message],
@@ -475,14 +475,14 @@ ${failedFixes.length > 3 ? `... and ${failedFixes.length - 3} more` : ""}
     );
   }
 
-  async sendErrorNotification(title, error) {
+  async sendErrorNotification(title, _error) {
     await this.notificationSystem.sendNotification(
       "error",
       title,
-      `QMOI GitHub Actions Fixer encountered an error: ${error}`,
+      `QMOI GitHub Actions Fixer encountered an _error: ${error}`,
       {
         details: {
-          error,
+          _error,
           timestamp: new Date().toISOString(),
         },
       },

@@ -36,7 +36,7 @@ let errorLog = {
 console.log("[DEBUG] Error log initialized");
 
 function logError(type, message, severity = "medium") {
-  const error = {
+  const _error = {
     id: errorLog.errors.length + 1,
     type,
     message,
@@ -44,7 +44,7 @@ function logError(type, message, severity = "medium") {
     timestamp: new Date(),
     status: "pending",
   };
-  errorLog.errors.push(error);
+  errorLog.errors.push(_error);
   console.log(`[ERROR-${error.id}] ${type}: ${message} (${severity})`);
 }
 
@@ -311,8 +311,8 @@ try {
   console.log("[DEBUG] comprehensiveErrorFix completed");
 
   console.log("[QMOI] Enhanced Error Fix Script Finished");
-} catch (error) {
-  (console as any).error("[ERROR] Script failed with error:", error);
+} catch (_error) {
+  (console as any).error("[ERROR] Script failed with _error:", _error);
   process.exit(1);
 }
 

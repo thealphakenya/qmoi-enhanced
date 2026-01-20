@@ -30,7 +30,7 @@ function runJob(job: unknown) {
       status,
       durationMs: end - start,
       output: stdout,
-      error: stderr || (_err && _err.message),
+      _error: stderr || (_err && _err.message),
     });
     if (job.notify) {
       notify({

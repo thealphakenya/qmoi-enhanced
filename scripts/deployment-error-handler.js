@@ -164,8 +164,8 @@ function diagnoseError(errorMessage) {
 }
 
 // Display error diagnosis
-function showErrorDiagnosis(error) {
-  const diagnosis = diagnoseError(error);
+function showErrorDiagnosis(_error) {
+  const diagnosis = diagnoseError(_error);
 
   if (!diagnosis) {
     console.log(`\n❓ Unknown error. Please check Vercel logs for details.\n`);

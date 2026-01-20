@@ -19,7 +19,7 @@ export async function POST(_request: NextRequest) {
     // Validate input
     if (!body.walletId || !body.amount || body.amount <= 0) {
       return NextResponse.json(
-        { error: "Invalid payment parameters" },
+        { _error: "Invalid payment parameters" },
         { status: 400 }
       );
     }
@@ -65,7 +65,7 @@ export async function POST(_request: NextRequest) {
       await transactionService.updateStatus(transaction.id, "failed");
 
       return NextResponse.json(
-        { error: paymentResponse.message },
+        { _error: paymentResponse.message },
         { status: 400 }
       );
     }
@@ -107,10 +107,10 @@ export async function POST(_request: NextRequest) {
         redirectUrl: paymentResponse.redirectUrl,
       },
     });
-  } catch (error) {
-    (globalThis.console as any)?.error?.("Payment initiation error:", error);
+  } catch (_error) {
+    (globalThis.console as any)?.error?.("Payment initiation _error:", _error);
     return NextResponse.json(
-      { error: "Payment initiation failed" },
+      { _error: "Payment initiation failed" },
       { status: 500 }
     );
   }

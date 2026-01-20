@@ -68,7 +68,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const response = await fetch("/api/qmoi/voice-profiles", {
+      const _response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -105,7 +105,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const response = await fetch("/api/qmoi/voice-preview", {
+      const _response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({

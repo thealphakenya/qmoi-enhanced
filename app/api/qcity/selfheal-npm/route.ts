@@ -1,6 +1,6 @@
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 // NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { NextRequest } from "next/server";
 import { requireApiKey } from "../../../../lib/proposals";
@@ -56,7 +56,7 @@ function logDownloadFix(
     app: "QCity",
     device: (_options as any).device || "unknown",
     status,
-    error,
+    _error,
   };
   fs.appendFileSync("logs/download_fixes.log", JSON.stringify(entry) + "\n");
 }

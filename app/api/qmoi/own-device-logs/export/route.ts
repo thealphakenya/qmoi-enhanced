@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 import { requireApiKey } from "../../../../../lib/proposals";
 
@@ -31,8 +31,8 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         apiAuth.ok
-          ? { error: "Master access required" }
-          : _r?.body ?? { error: "Master access required" },
+          ? { _error: "Master access required" }
+          : _r?.body ?? { _error: "Master access required" },
         { status: apiAuth.ok ? 403 : _r?.status ?? 403 }
       );
     }
@@ -41,7 +41,7 @@ export async function POST(_request: NextRequest) {
     const validTypes = ["ownership", "unlock", "master", "all", "statistics"];
     if (!validTypes.includes(type)) {
       return NextResponse.json(
-        { error: "Invalid export type" },
+        { _error: "Invalid export type" },
         { status: 400 }
       );
     }
@@ -57,7 +57,7 @@ export async function POST(_request: NextRequest) {
     // Check if logger script exists
     if (!fs.existsSync(loggerScript)) {
       return NextResponse.json(
-        { error: "QMOI Own Device Logger not found" },
+        { _error: "QMOI Own Device Logger not found" },
         { status: 404 }
       );
     }
@@ -94,7 +94,7 @@ export async function POST(_request: NextRequest) {
     } catch (parseError) {
       (console as any).error("Failed to parse export data:", parseError);
       return NextResponse.json(
-        { error: "Failed to parse export data" },
+        { _error: "Failed to parse export data" },
         { status: 500 }
       );
     }
@@ -110,10 +110,10 @@ export async function POST(_request: NextRequest) {
         "Content-Disposition": `attachment; filename="${filename}"`,
       },
     });
-  } catch (error) {
-    (console as any).error("QMOI Own Device Export API error:", error);
+  } catch (_error) {
+    (console as any).error("QMOI Own Device Export API _error:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -146,8 +146,8 @@ async function checkMasterAccess(_request: NextRequest): Promise<boolean> {
     }
 
     return false;
-  } catch (error) {
-    (console as any).error("Master access check error:", error);
+  } catch (_error) {
+    (console as any).error("Master access check _error:", _error);
     return false;
   }
 }

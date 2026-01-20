@@ -51,7 +51,7 @@ class AILintEngine {
         this.log("QMOI AI not found, using fallback mode", "warning");
         return false;
       }
-    } catch (error) {
+    } catch (_error) {
       this.log(`Error initializing QMOI AI: ${error.message}`, "error");
       return false;
     }
@@ -83,7 +83,7 @@ class AILintEngine {
       });
 
       return JSON.parse(result);
-    } catch (error) {
+    } catch (_error) {
       this.log(`QMOI AI call failed: ${error.message}`, "error");
       return this.fallbackAIResponse(prompt, context);
     }
@@ -91,7 +91,7 @@ class AILintEngine {
 
   fallbackAIResponse(prompt, context) {
     // Fallback AI logic for when QMOI AI is not available
-    const response = {
+    const _response = {
       success: true,
       suggestion: this.generateFallbackSuggestion(prompt, context),
       confidence: 0.7,
@@ -129,7 +129,7 @@ class AILintEngine {
     return "Review code logic and fix according to ESLint rules";
   }
 
-  async analyzeError(error) {
+  async analyzeError(_error) {
     const prompt = `Analyze this ESLint error and provide a fix:
 File: ${error.file}
 Line: ${error.line}
@@ -152,7 +152,7 @@ Provide a specific fix that can be applied automatically.`;
     return await this.callQMOIAI(prompt, context);
   }
 
-  async applyAIFix(filePath, error, aiResponse) {
+  async applyAIFix(filePath, _error, aiResponse) {
     if (!aiResponse.success || !aiResponse.suggestion) {
       return false;
     }
@@ -215,7 +215,7 @@ Provide a specific fix that can be applied automatically.`;
       }
 
       return false;
-    } catch (error) {
+    } catch (_error) {
       this.log(
         `Error applying AI fix to ${filePath}: ${error.message}`,
         "error",
@@ -232,7 +232,7 @@ Provide a specific fix that can be applied automatically.`;
       if (!errorsByFile[error.file]) {
         errorsByFile[error.file] = [];
       }
-      errorsByFile[error.file].push(error);
+      errorsByFile[error.file].push(_error);
     }
 
     let totalFixes = 0;
@@ -246,10 +246,10 @@ Provide a specific fix that can be applied automatically.`;
 
       for (const error of fileErrors) {
         // Analyze error with AI
-        const aiResponse = await this.analyzeError(error);
+        const aiResponse = await this.analyzeError(_error);
 
         // Apply AI fix
-        const fixApplied = await this.applyAIFix(fullPath, error, aiResponse);
+        const fixApplied = await this.applyAIFix(fullPath, _error, aiResponse);
 
         if (fixApplied) {
           totalFixes++;
@@ -275,7 +275,7 @@ Provide a specific fix that can be applied automatically.`;
         stdio: "pipe",
       });
       return { success: true, output: "" };
-    } catch (error) {
+    } catch (_error) {
       return { success: false, output: error.stdout || error.stderr || "" };
     }
   }
@@ -333,9 +333,9 @@ Provide a specific fix that can be applied automatically.`;
             "import/no-unresolved",
           ].some((rule) => error.rule.includes(rule))
         ) {
-          categories.aiFixable.push(error);
+          categories.aiFixable.push(_error);
         } else {
-          categories.manualFix.push(error);
+          categories.manualFix.push(_error);
         }
 
         // Mark as critical
@@ -344,10 +344,10 @@ Provide a specific fix that can be applied automatically.`;
             error.rule.includes(rule),
           )
         ) {
-          categories.critical.push(error);
+          categories.critical.push(_error);
         }
       } else {
-        categories.warnings.push(error);
+        categories.warnings.push(_error);
       }
     }
 
@@ -397,7 +397,7 @@ Provide a specific fix that can be applied automatically.`;
 
       // Display remaining errors
       console.log("\n📋 Remaining Issues:");
-      remainingErrors.slice(0, 10).forEach((error, index) => {
+      remainingErrors.slice(0, 10).forEach((_error, index) => {
         console.log(
           `   ${index + 1}. ${error.file}:${error.line}:${error.column} - ${error.rule}: ${error.message}`,
         );
@@ -421,7 +421,7 @@ Provide a specific fix that can be applied automatically.`;
 
 // Run the AI lint engine
 const aiLintEngine = new AILintEngine();
-aiLintEngine.run().catch((error) => {
-  (console as any).error("Fatal error in AI lint engine:", error);
+aiLintEngine.run().catch((_error) => {
+  (console as any).error("Fatal error in AI lint engine:", _error);
   process.exit(1);
 });

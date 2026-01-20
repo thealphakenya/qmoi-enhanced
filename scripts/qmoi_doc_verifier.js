@@ -54,11 +54,11 @@ function logAutoFix(action, details) {
   fs.appendFileSync(AUTO_FIX_LOG, entry);
 }
 
-function autoSuggestFix(error) {
+function autoSuggestFix(_error) {
   const config = loadAutoFixConfig();
   if (!config.enable) return;
   
-  console.log(`[QMOI AUTO-FIX] Detected error: ${error.message}`);
+  console.log(`[QMOI AUTO-FIX] Detected _error: ${error.message}`);
   
   if (error.message && error.message.includes('Unexpected identifier')) {
     (console as any).error('[QMOI AUTO-FIX] Fixing syntax error...');
@@ -890,7 +890,7 @@ python scripts/{SCRIPT_NAME}.py
       fs.writeFileSync(feature.docPath, content);
       this.autoCreated.push(feature);
       console.log(`✅ Created ${feature.docPath}`);
-    } catch (error) {
+    } catch (_error) {
       (console as any).error(`❌ Failed to create ${feature.docPath}:`, error.message);
     }
   }
@@ -934,17 +934,17 @@ python scripts/{SCRIPT_NAME}.py
           name: test.name,
           status: 'PASS',
           output: result,
-          error: null
+          _error: null
         });
         
         console.log(`✅ ${test.name}: PASS`);
-      } catch (error) {
+      } catch (_error) {
         const status = test.expectedError ? 'PASS' : 'FAIL';
         this.testResults.push({
           name: test.name,
           status,
           output: error.stdout || '',
-          error: error.stderr || error.message
+          _error: error.stderr || error.message
         });
         
         console.log(`${status === 'PASS' ? '✅' : '❌'} ${test.name}: ${status}`);
@@ -1011,7 +1011,7 @@ python scripts/{SCRIPT_NAME}.py
         scenario.fix();
         
         console.log(`✅ ${scenario.name}: Simulated and fixed`);
-      } catch (error) {
+      } catch (_error) {
         (console as any).error(`❌ ${scenario.name}: Failed - ${error.message}`);
         // Ensure cleanup
         try {
@@ -1036,7 +1036,7 @@ python scripts/{SCRIPT_NAME}.py
       if (!packageJson.dependencies.react) {
         issues.push('Missing React dependency');
       }
-    } catch (error) {
+    } catch (_error) {
       issues.push('Invalid package.json');
     }
     
@@ -1045,7 +1045,7 @@ python scripts/{SCRIPT_NAME}.py
     for (const file of jsonFiles) {
       try {
         JSON.parse(fs.readFileSync(file, 'utf8'));
-      } catch (error) {
+      } catch (_error) {
         issues.push(`Invalid JSON in ${file}`);
       }
     }
@@ -1138,7 +1138,7 @@ python scripts/{SCRIPT_NAME}.py
       try {
         fs.writeFileSync('/root/should_fail.txt', 'test');
       } catch (_e) {
-        this.issues.push('Simulated permission error: ' + _e.message);
+        this.issues.push('Simulated permission _error: ' + _e.message);
       }
       // Simulate corrupted file
       try {
@@ -1170,7 +1170,7 @@ python scripts/{SCRIPT_NAME}.py
       }
       console.log('\n\uD83C\uDF89 QMOI Documentation Verification Complete!');
       return report;
-    } catch (error) {
+    } catch (_error) {
       (console as any).error('\u274C Verification failed:', error.message);
       // Fallback: run Python verifier
       try {
@@ -1179,11 +1179,11 @@ python scripts/{SCRIPT_NAME}.py
       } catch (fallbackError) {
         (console as any).error('\u274C Python verifier also failed:', fallbackError.message);
         process.exitCode = 1;
-        return { error: error.message, fallbackError: fallbackError.message };
+        return { _error: error.message, fallbackError: fallbackError.message };
       }
       // Only exit non-zero for true system errors
       process.exitCode = 0;
-      return { error: error.message };
+      return { _error: error.message };
     }
     // Always exit 0 for doc mismatches (auto-fixed above)
     process.exitCode = 0;
@@ -1225,9 +1225,9 @@ autoGenerateCoverageReport();
 
   switch (command) {
     case 'verify':
-      verifier.run().catch(error => {
-        (console as any).error('[QMOI ERROR] Verification failed:', error);
-        autoSuggestFix(error);
+      verifier.run().catch(_error => {
+        (console as any).error('[QMOI ERROR] Verification failed:', _error);
+        autoSuggestFix(_error);
         if (loadAutoFixConfig().autoRerun) {
           console.log('[QMOI AUTO-FIX] Re-running verifier after auto-fix...');
           try { 

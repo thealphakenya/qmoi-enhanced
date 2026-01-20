@@ -164,12 +164,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (error) {
+    } catch (_error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(error);
+      const errMsg = error instanceof Error ? error.message : String(_error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, error: errMsg });
+      this.emit("taskFailed", { task, _error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -195,9 +195,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((error) => {
+        .catch((_error) => {
           clearTimeout(timeout);
-          reject(error);
+          reject(_error);
         });
     });
   }

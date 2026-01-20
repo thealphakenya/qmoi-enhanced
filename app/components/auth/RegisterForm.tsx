@@ -11,7 +11,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [error, setError] = useState("");
+  const [_error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +42,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const response = await fetch("/api/auth/register", {
+      const _response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

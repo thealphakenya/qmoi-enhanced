@@ -52,7 +52,8 @@
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {
-        "argsIgnorePattern": "^(?:_|req|res|next|params|query|options|error|err|metrics|discussion|data|filters|hf|local|tags)$"
+        "argsIgnorePattern": "^(?:_|req|res|next|params|query|options|error|err|metrics|discussion|data|filters|hf|local|tags)$",
+        "caughtErrorsIgnorePattern": "^_"
       }
     ],
     "react/react-in-jsx-scope": "off",

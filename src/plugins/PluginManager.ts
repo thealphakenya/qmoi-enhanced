@@ -22,7 +22,7 @@ export type PluginEvent = { type: string; payload?: unknown };
 export type AutomationRule = {
   id: string;
   description: string;
-  trigger: (event: PluginEvent) => boolean;
+  trigger: (_event: PluginEvent) => boolean;
   action: () => void;
 };
 
@@ -76,10 +76,10 @@ export class PluginManager {
     this.eventListeners[eventType].push(listener);
   }
 
-  emit(event: PluginEvent) {
+  emit(_event: PluginEvent) {
     (this.eventListeners[event.type] || []).forEach((fn) => fn(event.payload));
     this.automationRules.forEach((rule) => {
-      if (rule.trigger(event)) rule.action();
+      if (rule.trigger(_event)) rule.action();
     });
   }
 

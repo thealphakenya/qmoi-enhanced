@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextApiRequest, NextApiResponse } from "next";
 import { exec } from "child_process";
 
@@ -7,17 +7,17 @@ export default async function handler(_req: NextApiRequest,
   _res: NextApiResponse,
 ) {
   if (_req.method !== "POST") {
-    _res.status(405).json({ error: "Method not allowed" });
+    _res.status(405).json({ _error: "Method not allowed" });
     return;
   }
   const { service, account } = _req.body;
   exec(
     `python scripts/financial_verification.py ${service} ${account}`,
-    (error, stdout, stderr) => {
-      if (error) {
+    (_error, stdout, stderr) => {
+      if (_error) {
         _res
           .status(500)
-          .json({ success: false, error: stderr || error.message });
+          .json({ success: false, _error: stderr || error.message });
       } else {
         _res.status(200).json({ success: true, result: stdout });
       }

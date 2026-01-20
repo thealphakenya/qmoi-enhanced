@@ -29,7 +29,7 @@ export default function AdminDashboard() {
   const [monitoring, setMonitoring] = useState<HealthMetrics | null>(null);
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
   const [refreshInterval, setRefreshInterval] = useState(30); // seconds
 
   useEffect(() => {
@@ -79,7 +79,7 @@ export default function AdminDashboard() {
     );
   }
 
-  if (error) {
+  if (_error) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center text-red-600">

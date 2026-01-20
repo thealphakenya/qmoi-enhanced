@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-case-declarations, no-empty, no-useless-escape */
-/* global Buffer, TextDecoder, TextEncoder */
+
 import { NextResponse } from "next/server";
 import { createHmac } from "crypto";
 

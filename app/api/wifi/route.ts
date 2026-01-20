@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(_request: NextRequest) {
@@ -13,7 +13,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { error: "SSID and password are required" },
+        { _error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -24,9 +24,9 @@ export async function POST(_request: NextRequest) {
       status: "success",
       message: `WiFi network ${ssid} configured successfully`,
     });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }

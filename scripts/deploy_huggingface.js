@@ -39,7 +39,7 @@ def chat_with_qmoi(message, conversation_id=None):
     
     # QMOI response logic
     if "status" in message.lower():
-        response = """🤖 QMOI System Status:
+        _response = """🤖 QMOI System Status:
         
 ✅ All systems operational
 📊 Health Score: 95.2%
@@ -48,7 +48,7 @@ def chat_with_qmoi(message, conversation_id=None):
 
 All QMOI components are running optimally!"""
     elif "help" in message.lower():
-        response = """🤖 QMOI AI System - How can I help?
+        _response = """🤖 QMOI AI System - How can I help?
 
 I can assist you with:
 
@@ -74,7 +74,7 @@ I can assist you with:
 
 Just ask me about any of these areas!"""
     else:
-        response = f"""🤖 QMOI Response:
+        _response = f"""🤖 QMOI Response:
         
 I understand you said: "{message}"
 
@@ -87,7 +87,7 @@ I'm here to help with QMOI system management, monitoring, and automation. You ca
 
 How can I assist you with QMOI today?"""
     
-    return response, conversation_id
+    return _response, conversation_id
 
 def get_system_status():
     """Get QMOI system status"""
@@ -261,7 +261,7 @@ MIT License
     try {
         execSync(`huggingface-cli repo create ${spaceName} --type space --sdk gradio --token ${process.env.HF_TOKEN}`, { stdio: 'inherit' });
         console.log('✅ Space created successfully');
-    } catch (error) {
+    } catch (_error) {
         console.log('ℹ️ Space might already exist, continuing...');
     }
 
@@ -273,7 +273,7 @@ MIT License
             try {
                 execSync(`huggingface-cli upload ${spaceRepo} ${filePath} --token ${process.env.HF_TOKEN}`, { stdio: 'inherit' });
                 console.log(`✅ Uploaded ${file}`);
-            } catch (error) {
+            } catch (_error) {
                 (console as any).error(`❌ Failed to upload ${file}:`, error.message);
             }
         }
@@ -283,7 +283,7 @@ MIT License
     console.log(`🌐 Visit: https://huggingface.co/spaces/${spaceRepo}`);
     console.log('💬 Start chatting with QMOI on Hugging Face Spaces!');
 
-} catch (error) {
+} catch (_error) {
     (console as any).error('❌ Deployment failed:', error.message);
     process.exit(1);
 } 

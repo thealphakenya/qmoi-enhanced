@@ -111,8 +111,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
         await notifyMaster(
           `🆕 New project planned: ${newProject.name}\nType: ${newProject.type}\nPriority: ${newProject.priority}\nEstimated time: ${newProject.estimatedDuration} minutes`
         );
-      } catch (error) {
-        (globalThis.console as any)?.error?.("Error creating project:", error);
+      } catch (_error) {
+        (globalThis.console as any)?.error?.("Error creating project:", _error);
       } finally {
         setIsLoading(false);
       }
@@ -163,8 +163,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
             }`
           );
         }
-      } catch (error) {
-        (globalThis.console as any)?.error?.("Error updating project status:", error);
+      } catch (_error) {
+        (globalThis.console as any)?.error?.("Error updating project status:", _error);
       } finally {
         setIsLoading(false);
       }
@@ -255,8 +255,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
           )
           .join("\n")}`
       );
-    } catch (error) {
-      (globalThis.console as any)?.error?.("Error generating daily plan:", error);
+    } catch (_error) {
+      (globalThis.console as any)?.error?.("Error generating daily plan:", _error);
     } finally {
       setIsLoading(false);
     }
@@ -273,8 +273,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({ message })
       // });
-    } catch (error) {
-      (console as any).error("Error notifying master:", error);
+    } catch (_error) {
+      (console as any).error("Error notifying master:", _error);
     }
   }, []);
 
@@ -292,8 +292,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //     description: 'Automated project updates and notifications'
       //   })
       // });
-    } catch (error) {
-      (globalThis.console as any)?.error?.("Error creating WhatsApp group:", error);
+    } catch (_error) {
+      (globalThis.console as any)?.error?.("Error creating WhatsApp group:", _error);
     }
   }, []);
 
@@ -308,8 +308,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({ message })
       // });
-    } catch (error) {
-      (globalThis.console as any)?.error?.("Error posting to WhatsApp group:", error);
+    } catch (_error) {
+      (globalThis.console as any)?.error?.("Error posting to WhatsApp group:", _error);
     }
   }, []);
 

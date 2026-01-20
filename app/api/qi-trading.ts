@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 // Production-ready QMOI AI Trading API with real Bitget integration
 import type { NextApiRequest, NextApiResponse } from "next";
 import * as crypto from "crypto";
@@ -100,13 +100,13 @@ async function calculateTradingConfidence(): Promise<number> {
         }
       });
 
-      pythonProcess.on("error", (error) => {
-        (console as any).error("Failed to start QMOI AI process:", error);
+      pythonProcess.on("error", (_error) => {
+        (console as any).error("Failed to start QMOI AI process:", _error);
         resolve(0.5);
       });
     });
-  } catch (error) {
-    (console as any).error("Error calculating trading confidence:", error);
+  } catch (_error) {
+    (console as any).error("Error calculating trading confidence:", _error);
     return 0.5; // Default confidence on error
   }
 }
@@ -121,7 +121,7 @@ export default async function handler(
   // Simple master auth (replace with real auth in production)
   const masterToken = _req.headers["x-master-token"];
   if (masterToken !== process.env.MASTER_TOKEN)
-    return _res.status(403).json({ error: "Forbidden" });
+    return _res.status(403).json({ _error: "Forbidden" });
 
   const { action } = _req.query;
   try {
@@ -150,7 +150,7 @@ export default async function handler(
       const size = 0.01;
       if (confidence < 0.7)
         return _res.json({
-          error: "Confidence too low for real trade",
+          _error: "Confidence too low for real trade",
           confidence,
         });
       const order = await bitgetRequest(
@@ -249,7 +249,7 @@ export default async function handler(
           return _res.json({ status: "trade-placed", order, confidence });
         } catch (_e) {
           const errorMessage = _e instanceof Error ? _e.message : String(_e);
-          return _res.json({ status: "error", error: errorMessage });
+          return _res.json({ status: "error", _error: errorMessage });
         }
       }
       return _res.json({ status: "idle", confidence });
@@ -269,7 +269,7 @@ export default async function handler(
 
       if (confidence < 0.7) {
         return _res.status(400).json({
-          error: "Confidence too low for trade execution",
+          _error: "Confidence too low for trade execution",
           confidence,
         });
       }
@@ -317,7 +317,7 @@ export default async function handler(
         const errorMessage = _e instanceof Error ? _e.message : String(_e);
         return _res
           .status(500)
-          .json({ error: "Trade execution failed", details: errorMessage });
+          .json({ _error: "Trade execution failed", details: errorMessage });
       }
     } else if (_req.method === "DELETE") {
       // Clear all trades (master only)
@@ -328,6 +328,6 @@ export default async function handler(
     }
   } catch (_e: unknown) {
     const msg = _e instanceof Error ? _e.message : String(_e);
-    return _res.status(500).json({ error: msg });
+    return _res.status(500).json({ _error: msg });
   }
 }

@@ -47,9 +47,9 @@ class AutoFixService {
     await VPNService.ensureSecureConnection();
     try {
       return await operation();
-    } catch (error: unknown) {
+    } catch (_error: unknown) {
       if (retries > 0) {
-        logger.warn(`Retrying ${operationName} after error:`, error);
+        logger.warn(`Retrying ${operationName} after _error:`, _error);
         await new Promise((resolve) => setTimeout(resolve, this.retryDelay));
         return this.runWithRetry(operation, operationName, retries - 1);
       }
@@ -94,11 +94,11 @@ class AutoFixService {
 
       result.success = true;
       logger.info("Lint fix completed successfully");
-    } catch (error: unknown) {
-      result.remainingIssues.push((error as any)?.message ?? String(error));
+    } catch (_error: unknown) {
+      result.remainingIssues.push((error as any)?.message ?? String(_error));
       result.errorType = (error as any)?.name ?? typeof error;
       result.stackTrace = (error as any)?.stack ?? undefined;
-      logger.error("Error during lint fix:", error);
+      logger.error("Error during lint fix:", _error);
     } finally {
       result.duration = Date.now() - startTime;
     }
@@ -143,11 +143,11 @@ class AutoFixService {
 
       result.success = true;
       logger.info("Dependency fix completed successfully");
-    } catch (error: unknown) {
-      result.remainingIssues.push((error as any)?.message ?? String(error));
+    } catch (_error: unknown) {
+      result.remainingIssues.push((error as any)?.message ?? String(_error));
       result.errorType = (error as any)?.name ?? typeof error;
       result.stackTrace = (error as any)?.stack ?? undefined;
-      logger.error("Error during dependency fix:", error);
+      logger.error("Error during dependency fix:", _error);
     } finally {
       result.duration = Date.now() - startTime;
     }
@@ -155,7 +155,7 @@ class AutoFixService {
     return result;
   }
 
-  private async determineFixStrategy(error: QCityError): Promise<FixStrategy> {
+  private async determineFixStrategy(_error: QCityError): Promise<FixStrategy> {
     // Analyze error patterns and determine the best fix approach
     const strategy: FixStrategy = {
       type: "code",
@@ -184,7 +184,7 @@ class AutoFixService {
     return strategy;
   }
 
-  private async runAIFix(error: unknown): Promise<FixResult> {
+  private async runAIFix(_error: unknown): Promise<FixResult> {
     await VPNService.ensureSecureConnection();
     const startTime = Date.now();
     const result: FixResult = {
@@ -199,14 +199,14 @@ class AutoFixService {
     try {
       logger.info("Starting AI fix process");
 
-      const strategy = await this.determineFixStrategy(error);
+      const strategy = await this.determineFixStrategy(_error);
       logger.info("Determined fix strategy:", strategy);
 
       // Call Q-city AI endpoint for fixing
-      const response: unknown = await this.runWithRetry(
+      const _response: unknown = await this.runWithRetry(
         () =>
           axios.post("/api/qcity/ai/fix", {
-            error,
+            _error,
             strategy,
             context: {
               timestamp: new Date().toISOString(),
@@ -227,11 +227,11 @@ class AutoFixService {
       }
 
       result.logs.push("AI fix attempt:", response.data);
-    } catch (error: unknown) {
-      result.remainingIssues.push((error as any)?.message ?? String(error));
+    } catch (_error: unknown) {
+      result.remainingIssues.push((error as any)?.message ?? String(_error));
       result.errorType = (error as any)?.name ?? typeof error;
       result.stackTrace = (error as any)?.stack ?? undefined;
-      logger.error("Error during AI fix:", error);
+      logger.error("Error during AI fix:", _error);
     } finally {
       result.duration = Date.now() - startTime;
     }
@@ -253,7 +253,7 @@ class AutoFixService {
       // Run all fix attempts
       if (status.errors.length > 0) {
         for (const error of status.errors) {
-          logger.info("Processing error:", error);
+          logger.info("Processing _error:", _error);
 
           const lintResult = await this.runLintFix();
           results.push(lintResult);
@@ -261,7 +261,7 @@ class AutoFixService {
           const depResult = await this.runDependencyFix();
           results.push(depResult);
 
-          const aiResult = await this.runAIFix(error);
+          const aiResult = await this.runAIFix(_error);
           results.push(aiResult);
         }
       }
@@ -290,12 +290,12 @@ class AutoFixService {
 
       logger.info("Auto-fix process completed", summary);
       return summary;
-    } catch (error: unknown) {
-      logger.error("Error in auto-fix process:", error);
+    } catch (_error: unknown) {
+      logger.error("Error in auto-fix process:", _error);
       await this.notificationService.sendNotification(
         "Q-city Auto Fix Error",
         `An error occurred during the auto-fix process:
-        Error: ${(error as any)?.message ?? String(error)}
+        Error: ${(error as any)?.message ?? String(_error)}
         Stack: ${(error as any)?.stack ?? ""}`
       );
       throw error;
@@ -315,8 +315,8 @@ class AutoFixService {
         const summary = await this.startAutoFix(status);
         // Analyze logs and suggest/apply further enhancements
         await this.enhanceFixing(summary.logs);
-      } catch (error) {
-        logger.error("Error in continuous auto-fix loop:", error);
+      } catch (_error) {
+        logger.error("Error in continuous auto-fix loop:", _error);
       }
       await new Promise((resolve) =>
         setTimeout(resolve, this.continuousInterval)

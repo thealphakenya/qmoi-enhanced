@@ -176,7 +176,7 @@ export class CashonAdapter implements WalletAdapter {
         amount: 0,
         currency: "USD",
         status: "network_failed",
-        error: String(_err),
+        _error: String(_err),
       };
     }
   }
@@ -262,7 +262,7 @@ export class MegavaultAdapter implements WalletAdapter {
         amount: 0,
         currency: "USD",
         status: "network_failed",
-        error: String(_err),
+        _error: String(_err),
       };
     }
   }
@@ -306,7 +306,7 @@ export class WalletService {
         };
       } catch (_err) {
         void _err;
-        out[name] = { error: String(_err) };
+        out[name] = { _error: String(_err) };
       }
     }
     // persist snapshot

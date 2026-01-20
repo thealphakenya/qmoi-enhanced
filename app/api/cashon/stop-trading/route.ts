@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 import { qmoiTrader } from "@/lib/qmoi-trader";
 import libProposals from "../../../../lib/proposals";
@@ -15,7 +15,7 @@ export async function POST(_request: NextRequest) {
       const r = auth.response;
       if (!r)
         return NextResponse.json(
-          { error: "Unknown auth error" },
+          { _error: "Unknown auth error" },
           { status: 500 },
         );
       return NextResponse.json(r.body, { status: r.status });
@@ -41,10 +41,10 @@ export async function POST(_request: NextRequest) {
       success: true,
       message: "AI trading stopped successfully",
     });
-  } catch (error) {
-    (console as any).error("Stop trading API error:", error);
+  } catch (_error) {
+    (console as any).error("Stop trading API _error:", _error);
     return NextResponse.json(
-      { error: "Failed to stop trading" },
+      { _error: "Failed to stop trading" },
       { status: 500 },
     );
   }

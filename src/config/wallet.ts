@@ -2,7 +2,7 @@
 /* eslint-disable no-unreachable */
 /// <reference types="node" />
 /* eslint-disable no-unreachable */
-/* global Buffer, NodeJS */
+
 export interface WalletBalance {
   currency: string;
   balance: number;
@@ -76,8 +76,8 @@ export class WalletManager {
       );
 
       this.balances = [...spotBalances, ...futuresBalances, ...otcBalances];
-    } catch (error) {
-      (globalThis.console as any)?.error?.("Error updating wallet balances:", error);
+    } catch (_error) {
+      (globalThis.console as any)?.error?.("Error updating wallet balances:", _error);
       throw error;
     }
   }
@@ -87,8 +87,8 @@ export class WalletManager {
     try {
       // Implement price fetching logic here
       return 0; // [PRODUCTION IMPLEMENTATION REQUIRED]
-    } catch (error) {
-      (globalThis.console as any)?.error?.(`Error fetching USD price for ${currency}:`, error);
+    } catch (_error) {
+      (globalThis.console as any)?.error?.(`Error fetching USD price for ${currency}:`, _error);
       return 0;
     }
   }
