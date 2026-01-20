@@ -19,7 +19,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { error: "Voice ID and text are required" },
+        { _error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -43,10 +43,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (error) {
-    (console as any).error("Error generating voice preview:", error);
+  } catch (_error) {
+    (console as any).error("Error generating voice preview:", _error);
     return NextResponse.json(
-      { error: "Failed to generate voice preview" },
+      { _error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -105,7 +105,7 @@ async function generateTTSAudio(
       }
     } catch (_err) {
       console.warn(
-        "ElevenLabs integration error, falling back to silent audio",
+        "ElevenLabs integration _error, falling back to silent audio",
         _err
       );
     }
@@ -173,9 +173,7 @@ function adjustVolumeWav(wavBytes: Uint8Array, scale: number): Uint8Array {
   // Check 'WAVE' and 'fmt ' presence simplistically
   try {
     if (readString(view, 8, 4) !== "WAVE") return wavBytes;
-  } catch (_e) {
-    return wavBytes;
-  }
+  } catch {
 
   // Find 'data' chunk start (simple scan)
   let dataOffset = -1;

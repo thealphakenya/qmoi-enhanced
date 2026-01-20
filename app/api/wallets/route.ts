@@ -9,7 +9,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -17,23 +17,21 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch {
-      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
     let skip = 0;
     let take = 10;
     try {
-      const query = new URL(String(_request.url || "http://localhost"));
+      const _query = new URL(String(_request.url || "http://localhost"));
       skip = parseInt(query.searchParams.get("skip") || "0");
       take = parseInt(query.searchParams.get("take") || "10");
-    } catch (_e) {
-      // ignore parse errors and keep defaults
-    }
+    } catch {
 
     // Use prisma facade to find wallets for this user
     const allWallets = await (fullDb as any).prisma.wallet.findMany({
@@ -45,10 +43,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets error:", error);
+  } catch (_error) {
+    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -59,7 +57,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -67,11 +65,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch {
-      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -89,10 +87,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets error:", error);
+  } catch (_error) {
+    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server error" },
       { status: 500 }
     );
   }

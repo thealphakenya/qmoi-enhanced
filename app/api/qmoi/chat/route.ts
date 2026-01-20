@@ -7,9 +7,7 @@ export async function POST(_req: Request) {
     let body: unknown = {};
     try {
       body = await _req.json();
-    } catch (_e) {
-      body = {};
-    }
+    } catch {
     // Accept both {messages: [...] } and {input: 'text'} convenience
     let messages = body.messages;
     if (!messages && body.input) {
@@ -17,7 +15,7 @@ export async function POST(_req: Request) {
     }
 
     if (!messages || !Array.isArray(messages)) {
-      return NextResponse.json({ error: "invalid_messages" }, { status: 400 });
+      return NextResponse.json({ _error: "invalid_messages" }, { status: 400 });
     }
 
     // Enforce canonical model unless explicitly overridden in non-production
@@ -28,7 +26,7 @@ export async function POST(_req: Request) {
     // In production require an explicit QMOI_API_BASE to avoid accidentally proxying to localhost test servers
     if (process.env.NODE_ENV === "production" && !qbase) {
       return NextResponse.json(
-        { error: "qmoi_api_base_not_configured" },
+        { _error: "qmoi_api_base_not_configured" },
         { status: 500 }
       );
     }
@@ -44,7 +42,7 @@ export async function POST(_req: Request) {
         const match = cookie.match(/(?:^|; )qmoi_session_id=([^;]+)/);
         if (match) sessionId = match[1];
       }
-    } catch (_e) {}
+    } catch {
 
     if (!sessionId) {
       sessionId = `s_${Date.now().toString(36)}_${Math.random()
@@ -74,24 +72,20 @@ export async function POST(_req: Request) {
         const txt = await (resp as any).text();
         try {
           data = txt ? JSON.parse(txt) : null;
-        } catch (_e) {
-          data = null;
-        }
+        } catch {
       } else {
         data = null;
       }
-    } catch (_e) {
-      data = null;
-    }
+    } catch {
 
     if (!data) {
       try {
         return NextResponse.json(
-          { error: "invalid_response_from_qmoi" },
+          { _error: "invalid_response_from_qmoi" },
           { status: 502 }
         );
       } catch (_e) {
-        return { status: 502, body: { error: "invalid_response_from_qmoi" } };
+        return { status: 502, body: { _error: "invalid_response_from_qmoi" } };
       }
     }
 
@@ -112,9 +106,7 @@ export async function POST(_req: Request) {
           }
         }
       }
-    } catch (_e) {
-      // ignore sanitization errors
-    }
+    } catch {
 
     // Pass-through sanitized response and set session cookie when new
     try {
@@ -131,20 +123,18 @@ export async function POST(_req: Request) {
           }; SameSite=Lax`;
           _res.headers.set("Set-Cookie", cookieVal);
         }
-      } catch (_e) {}
+      } catch {
       return _res;
-    } catch (_e) {
-      return { status: 200, body: data };
-    }
-  } catch (error) {
-    (console as any).error("Error in /api/qmoi/chat:", error);
+    } catch {
+  } catch (_error) {
+    (console as any).error("Error in /api/qmoi/chat:", _error);
     try {
-      return NextResponse.json({ error: "server_error" }, { status: 500 });
+      return NextResponse.json({ _error: "server_error" }, { status: 500 });
     } catch (_e) {
       // If NextResponse.json throws in the test environment, fall back to a plain object
       // This keeps tests deterministic without relying on Next runtime internals.
       // The test harness should still validate that the fetch call occurred.
-      return { status: 500, body: { error: "server_error" } };
+      return { status: 500, body: { _error: "server_error" } };
     }
   }
 }

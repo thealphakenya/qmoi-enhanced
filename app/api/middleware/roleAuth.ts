@@ -16,7 +16,7 @@ interface DecodedToken {
 /**
  * Extract JWT token from request headers
  */
-export function getTokenFromRequest(request: NextRequest): string | null {
+export function getTokenFromRequest(_request: NextRequest): string | null {
   const authHeader = request.headers.get("authorization");
   if (!authHeader?.startsWith("Bearer ")) {
     return null;
@@ -31,17 +31,14 @@ export function verifyToken(token: string): DecodedToken | null {
   try {
     const decoded = jwt.verify(token, JWT_SECRET) as DecodedToken;
     return decoded;
-  } catch (_error: unknown) {
-    // Token verification failed - return null
-    return null;
-  }
+  } catch {
 }
 
 /**
  * Get user role from request
  */
-export function getRoleFromRequest(request: NextRequest): UserRole | null {
-  const token = getTokenFromRequest(request);
+export function getRoleFromRequest(_request: NextRequest): UserRole | null {
+  const token = getTokenFromRequest(_request);
   if (!token) {
     return null;
   }
@@ -79,25 +76,25 @@ export function hasPermission(
  */
 export function withRoleProtection(
   handler: (
-    request: NextRequest,
-    context: { params: Record<string, string> }
+    _request: NextRequest,
+    context: { _params: Record<string, string> }
   ) => Promise<Response>,
   requiredRoles: UserRole | UserRole[]
 ) {
   return async (
-    request: NextRequest,
-    context: { params: Record<string, string> }
+    _request: NextRequest,
+    context: { _params: Record<string, string> }
   ) => {
-    const userRole = getRoleFromRequest(request);
+    const userRole = getRoleFromRequest(_request);
 
     if (!hasPermission(userRole, requiredRoles)) {
       return NextResponse.json(
-        { error: "Forbidden: Insufficient permissions" },
+        { _error: "Forbidden: Insufficient permissions" },
         { status: 403 }
       );
     }
 
-    return handler(request, context);
+    return handler(_request, context);
   };
 }
 
@@ -123,10 +120,10 @@ export function hasRoleLevel(role: UserRole, minLevel: number): boolean {
  * Check if request user role is at or above a hierarchy level
  */
 export function checkRoleLevel(
-  request: NextRequest,
+  _request: NextRequest,
   minLevel: number
 ): boolean {
-  const role = getRoleFromRequest(request);
+  const role = getRoleFromRequest(_request);
   if (!role) {
     return false;
   }

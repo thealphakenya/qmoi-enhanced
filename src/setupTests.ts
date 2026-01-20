@@ -134,9 +134,7 @@ if (!global.fetch) {
     if (typeof this.body === "string") {
       try {
         return JSON.parse(this.body);
-      } catch (_e) {
-        return null;
-      }
+      } catch {
     }
     return this.body;
   }
@@ -187,9 +185,7 @@ if (!global.fetch) {
     if (typeof this.body === "string") {
       try {
         return JSON.parse(this.body);
-      } catch (_e) {
-        return null;
-      }
+      } catch {
     }
     return this.body;
   }
@@ -328,7 +324,7 @@ if (typeof window === "undefined") {
       importedServer.listen({
         onUnhandledRequest: (_req: unknown) => {
           try {
-            const req = _req as unknown as { method?: string; url?: unknown };
+            const _req = _req as unknown as { method?: string; url?: unknown };
             const urlStr = String(req.url || "");
             if (process.env.SHOW_MSW_UNHANDLED === "1") {
               (globalThis.console as any)?.error?.(
@@ -495,12 +491,10 @@ try {
         ) {
           (maybePrisma as any).prisma.__resetMockStores();
         }
-      } catch (_e) {}
+      } catch {
     })
     .catch(() => {});
-} catch (_e) {
-  // ignore if import fails (e.g., generated prisma client present)
-}
+} catch {
 
 // Ensure Jest waits for MSW to finish initializing before unknown tests run.
 // This ensures XHR requests (which bypass our fetch wrapper) won't race ahead.
@@ -524,7 +518,7 @@ beforeAll(async () => {
         if (!stores.user) stores.user = new Map();
         if (!stores.wallet) stores.wallet = new Map();
         if (!stores.transaction) stores.transaction = new Map();
-      } catch (_e) {}
+      } catch {
       const now = new Date().toISOString();
       if (stores.user && stores.user.size === 0) {
         stores.user.set("user_admin@example.com", {
@@ -559,7 +553,7 @@ beforeAll(async () => {
         });
       }
     }
-  } catch (_e) {}
+  } catch {
 });
 
 // Reset mock DB stores before each test to ensure isolation between tests
@@ -574,13 +568,13 @@ beforeEach(async () => {
           try {
             const s = G.__qmoi_mock_prisma_stores[k];
             if (s && typeof s.clear === "function") s.clear();
-          } catch (_e) {}
+          } catch {
         }
       }
-    } catch (_e) {}
+    } catch {
     try {
       console.warn("SETUP_TESTS: beforeEach - resetting mock stores");
-    } catch (_e) {}
+    } catch {
     const gdb = (global as any).__qmoi_db;
     // Primary: reset mock prisma if available
     try {
@@ -600,13 +594,11 @@ beforeEach(async () => {
           for (const k of Object.keys(stores)) {
             try {
               stores[k].clear();
-            } catch (_e) {
-              /* ignore */
-            }
+            } catch {
           }
-        } catch (_e) {}
+        } catch {
       }
-    } catch (_e) {}
+    } catch {
     // Secondary: clear any in-memory walletService stores used by fallback db shim
     try {
       try {
@@ -624,7 +616,7 @@ beforeEach(async () => {
           ) {
             (maybeDb as any).prisma.resetMockDb();
           }
-        } catch (_e) {}
+        } catch {
         if (
           maybeDb &&
           (maybeDb as any).db &&
@@ -641,10 +633,10 @@ beforeEach(async () => {
               typeof s.transactions.clear === "function"
             )
               s.transactions.clear();
-          } catch (_e) {}
+          } catch {
         }
-      } catch (_e) {}
-    } catch (_e) {}
+      } catch {
+    } catch {
     // Debug: print mock store counts to help diagnose pre-existing data
     try {
       try {
@@ -661,7 +653,7 @@ beforeEach(async () => {
               const s = stores[k];
               counts[k] = s && typeof s.size === "number" ? s.size : 0;
             }
-          } catch (_e) {}
+          } catch {
           try {
             const sampleUsers =
               (stores.user &&
@@ -675,16 +667,14 @@ beforeEach(async () => {
               "sampleUsers=",
               sampleUsers,
             );
-          } catch (_e) {}
+          } catch {
         }
-      } catch (_e) {}
-    } catch (_e) {}
-  } catch (_e) {
-    // ignore
-  }
+      } catch {
+    } catch {
+  } catch {
   try {
     console.warn("SETUP_TESTS: beforeEach - reset complete");
-  } catch (_e) {}
+  } catch {
 });
 
 // Ensure a minimal global Response implementation exists (used by NextResponse plumbing)
@@ -758,7 +748,7 @@ try {
       });
     } as unknown;
   }
-} catch (_e) {}
+} catch {
 
 // Install a default jest `fetch` mock if one is not already present. This
 // provides sensible default responses for external QMOI calls and local
@@ -831,12 +821,10 @@ try {
                   h["authorization"] || h["Authorization"] || "",
                 );
               }
-            } catch (err) {
-              void err;
-            }
+            } catch {
             if (!authHeader)
               return new ResponseCtor(
-                JSON.stringify({ error: "Unauthorized" }),
+                JSON.stringify({ _error: "Unauthorized" }),
                 { status: 401 },
               );
 
@@ -854,13 +842,11 @@ try {
                   "admin"
               )
                 isAdmin = true;
-            } catch (_e) {
-              // ignore decode errors
-            }
+            } catch {
 
             if (!isAdmin)
               return new ResponseCtor(
-                JSON.stringify({ error: "Invalid request" }),
+                JSON.stringify({ _error: "Invalid request" }),
                 { status: 403 },
               );
 
@@ -899,7 +885,7 @@ try {
                 if (body && body.action === "acknowledge")
                   return makeJson({ success: true, action: "acknowledge" });
                 return new ResponseCtor(
-                  JSON.stringify({ error: "Invalid request" }),
+                  JSON.stringify({ _error: "Invalid request" }),
                   { status: 400 },
                 );
               }
@@ -970,7 +956,7 @@ try {
                   return resp;
                 }
                 return new ResponseCtor(
-                  JSON.stringify({ error: "Invalid request" }),
+                  JSON.stringify({ _error: "Invalid request" }),
                   { status: 400 },
                 );
               }
@@ -1012,18 +998,14 @@ try {
                     : "Unknown";
             return makeJson({ message: `${action} done` });
           }
-        } catch (_err) {
-          // ignore
-        }
-        return new ResponseCtor(JSON.stringify({ error: "Invalid request" }), {
+        } catch {
+        return new ResponseCtor(JSON.stringify({ _error: "Invalid request" }), {
           status: 404,
         });
       }) as unknown,
     );
   }
-} catch (_e) {
-  // ignore
-}
+} catch {
 
 // Wrap global.fetch so test code (and components) will wait for MSW to be ready
 try {
@@ -1050,9 +1032,7 @@ try {
       }) as unknown,
     );
   }
-} catch (_e) {
-  // ignore
-}
+} catch {
 
 afterEach(() => {
   try {
@@ -1087,8 +1067,8 @@ afterEach(() => {
         typeof maybePrisma.prisma.__resetMockStores === "function"
       )
         maybePrisma.prisma.__resetMockStores();
-    } catch (_e) {}
-  } catch (_e) {}
+    } catch {
+  } catch {
 });
 afterAll(() => {
   try {
@@ -1123,5 +1103,5 @@ global.console = {
   info: jest.fn(),
   warn: jest.fn(),
   // keep errors visible so setup failures surface in CI and dev runs
-  error: console.error,
+  _error: console.error,
 };

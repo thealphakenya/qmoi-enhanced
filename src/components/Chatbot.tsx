@@ -91,7 +91,7 @@ export function Chatbot() {
             },
           }),
         }).catch(() => {});
-      } catch (_e) {}
+      } catch {
 
       // Play SSML if provided
       if (dataAny && dataAny.ssml) {

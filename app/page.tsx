@@ -28,7 +28,7 @@ function MainPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [_error, setError] = useState("");
 
   // Check authentication status
   useEffect(() => {
@@ -110,13 +110,13 @@ function MainPage() {
     localStorage.setItem("qmoi_user", JSON.stringify(user));
   };
 
-  const handleEmailLogin = async (e: React.FormEvent) => {
+  const handleEmailLogin = async (_e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/auth/login", {
+      const _response = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username: email, password }),
@@ -136,9 +136,7 @@ function MainPage() {
         email: email,
         role: data.user.role || "User",
       });
-    } catch (err: unknown) {
-      setError("Network error. Please try again.");
-    } finally {
+    } catch { finally {
       setIsLoading(false);
     }
   };
@@ -209,7 +207,7 @@ function MainPage() {
                   <input
                     type="text"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(_e) => setEmail(e.target.value)}
                     placeholder="admin"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
@@ -223,7 +221,7 @@ function MainPage() {
                   <input
                     type="password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(_e) => setPassword(e.target.value)}
                     placeholder="••••••••"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
@@ -335,8 +333,8 @@ function MainPage() {
                         biometricMethods: ["fingerprint", "face", "voice"],
                       }),
                     });
-                  } catch (e) {
-                    console.warn("Could not create session", e);
+                  } catch (_e) {
+                    console.warn("Could not create session", _e);
                   }
                   handleLogin({
                     id: userId,

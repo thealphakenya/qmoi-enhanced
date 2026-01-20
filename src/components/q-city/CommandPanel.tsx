@@ -76,8 +76,8 @@ export default function CommandPanel() {
           setOutput(String(parsed.output ?? parsed.error ?? ""));
           setLoading(false);
         })
-        .catch((e: unknown) => {
-          console.warn(String(e));
+        .catch((_e: unknown) => {
+          console.warn(String(_e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });

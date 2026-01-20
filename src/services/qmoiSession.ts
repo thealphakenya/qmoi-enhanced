@@ -21,9 +21,7 @@ export function getSessionId(): string {
       } catch (_e) { void _e; }
     }
     return sid;
-  } catch (_e) {
-    return `s_${Date.now().toString(36)}`;
-  }
+  } catch {
 }
 
 export function getSessionHeaders(): Record<string, string> {

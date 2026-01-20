@@ -7,7 +7,5 @@ export async function GET(_req: NextRequest) {
   try {
     const remote = execSync("git remote get-url origin").toString().trim();
     return new Response(remote);
-  } catch (_e) {
-    return new Response("-", { status: 200 });
-  }
+  } catch {
 }

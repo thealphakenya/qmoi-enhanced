@@ -69,14 +69,7 @@ async function executeTrade(trade: Trade): Promise<Trade> {
       profit: engineResult.profit || 0,
     });
     return updated || newTrade;
-  } catch (error) {
-    // If trade fails, update status
-    await tradingService.updateTrade(newTrade.id || "", {
-      status: "failed",
-      profit: 0,
-    });
-    throw error;
-  }
+  } catch {
 }
 
 async function cancelTrade(
@@ -102,8 +95,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (error) {
-    (console as any).error("Error cancelling trade:", error);
+  } catch (_error) {
+    (console as any).error("Error cancelling trade:", _error);
     return {
       success: false,
       message:
@@ -141,13 +134,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: "Invalid query parameter" },
+      { _error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (error) {
-    (console as any).error("Error in QI trading endpoint:", error);
+  } catch (_error) {
+    (console as any).error("Error in QI trading endpoint:", _error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -211,13 +204,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: "Invalid action specified" },
+      { _error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (error) {
-    (console as any).error("Error in QI trading execution endpoint:", error);
+  } catch (_error) {
+    (console as any).error("Error in QI trading execution endpoint:", _error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }

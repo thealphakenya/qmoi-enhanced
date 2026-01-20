@@ -50,12 +50,7 @@ export default async function handler(
         let log = "";
         try {
           log = fs.readFileSync("/var/log/auth.log", "utf8");
-        } catch (_e) {
-          return _res.json({
-            result:
-              "Log unavailable (try running as root or on a supported system).",
-          });
-        }
+        } catch {
         // Parse failed logins
         const events = Array.from(
           log.matchAll(
@@ -126,11 +121,11 @@ export default async function handler(
         });
       }
       default:
-        return _res.status(400).json({ error: "Unknown action" });
+        return _res.status(400).json({ _error: "Unknown action" });
     }
   } catch (_e) {
     return _res
       .status(500)
-      .json({ error: (_e as Error).message || "Internal error" });
+      .json({ _error: (_e as Error).message || "Internal error" });
   }
 }

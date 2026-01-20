@@ -14,7 +14,7 @@ export async function GET(_request: NextRequest) {
     const r = auth.response;
     if (!r)
       return NextResponse.json(
-        { error: "Unknown auth error" },
+        { _error: "Unknown auth error" },
         { status: 500 },
       );
     return NextResponse.json(r.body, { status: r.status });
@@ -28,7 +28,7 @@ export async function GET(_request: NextRequest) {
       await fs.access(latestReportPath);
     } catch {
       return NextResponse.json(
-        { error: "No report available for download" },
+        { _error: "No report available for download" },
         { status: 404 },
       );
     }
@@ -41,23 +41,21 @@ export async function GET(_request: NextRequest) {
       user: process.env.AUTH_USER || "unknown", // Production: Extract from JWT auth context
       app: "QMOI",
       device: "unknown",
-      error: null,
+      _error: null,
     };
     try {
       await fs.appendFile(
         "logs/download_fixes.log",
         JSON.stringify(logEntry) + "\n",
       );
-    } catch (_e) {
-      /* ignore logging failures */
-    }
+    } catch {
 
     // Read the report file
     const reportData = await fs.readFile(latestReportPath, "utf-8");
     const report = JSON.parse(reportData);
 
     // Create response with proper headers for file download
-    const response = new NextResponse(reportData);
+    const _response = new NextResponse(reportData);
     response.headers.set("Content-Type", "application/json");
     response.headers.set(
       "Content-Disposition",
@@ -67,9 +65,9 @@ export async function GET(_request: NextRequest) {
     );
 
     return response;
-  } catch (error) {
-    // On error, log the error
-    (console as any).error("Error downloading report:", error);
+  } catch (_error) {
+    // On _error, log the error
+    (console as any).error("Error downloading report:", _error);
     const logEntryErr = {
       timestamp: new Date().toISOString(),
       action: "download-report-access",
@@ -77,18 +75,16 @@ export async function GET(_request: NextRequest) {
       user: "unknown",
       app: "QMOI",
       device: "unknown",
-      error: error?.toString() || "unknown error",
+      _error: error?.toString() || "unknown error",
     };
     try {
       await fs.appendFile(
         "logs/download_fixes.log",
         JSON.stringify(logEntryErr) + "\n",
       );
-    } catch (_e) {
-      /* ignore logging failures */
-    }
+    } catch {
     return NextResponse.json(
-      { error: "Failed to download report" },
+      { _error: "Failed to download report" },
       { status: 500 },
     );
   }

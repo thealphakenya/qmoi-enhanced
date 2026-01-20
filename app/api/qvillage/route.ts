@@ -37,7 +37,7 @@ export async function GET(_request: Request) {
 
     if (!isPrismaAvailable) {
       return NextResponse.json({
-        error: "Database not configured",
+        _error: "Database not configured",
         message: "Using mock data - database not configured",
       });
     }
@@ -55,14 +55,14 @@ export async function GET(_request: Request) {
         return await getStatus();
       default:
         return NextResponse.json(
-          { error: "Invalid endpoint" },
+          { _error: "Invalid endpoint" },
           { status: 400 },
         );
     }
-  } catch (error) {
-    (console as any).error("QVillage API error:", error);
+  } catch (_error) {
+    (console as any).error("QVillage API _error:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -84,14 +84,14 @@ export async function POST(_request: Request) {
         return await performAnalysis(body);
       default:
         return NextResponse.json(
-          { error: "Invalid endpoint" },
+          { _error: "Invalid endpoint" },
           { status: 400 },
         );
     }
-  } catch (error) {
-    (console as any).error("QVillage API error:", error);
+  } catch (_error) {
+    (console as any).error("QVillage API _error:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { _error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -125,11 +125,11 @@ async function getPapers(_params: URLSearchParams) {
 
 async function getKnowledgeBase(_params: URLSearchParams) {
   // Parallel KB search with semantic understanding
-  const query = _params.get("query") || "";
+  const _query = _params.get("query") || "";
   const tags = _params.get("tags")?.split(",") || [];
 
   const [semanticResults, tagResults, recentResults] = await Promise.all([
-    performSemanticSearch(query),
+    performSemanticSearch(_query),
     searchByTags(tags),
     getRecentEntries(),
   ]);
@@ -209,13 +209,13 @@ async function getStatus() {
 }
 
 async function performSearch(body: unknown) {
-  const { query, type, filters } = body;
+  const { _query, type, filters } = body;
 
   // Parallel search across all QVillage components
   const [paperResults, kbResults, discussionResults] = await Promise.all([
-    searchPapers(query, filters),
-    searchKnowledgeBase(query, filters),
-    searchDiscussions(query, filters),
+    searchPapers(_query, filters),
+    searchKnowledgeBase(_query, filters),
+    searchDiscussions(_query, filters),
   ]);
 
   // Enhanced result ranking with QMOI AI
@@ -225,7 +225,7 @@ async function performSearch(body: unknown) {
       kb: kbResults,
       discussions: discussionResults,
     },
-    query,
+    _query,
   );
 
   return NextResponse.json({
@@ -296,13 +296,13 @@ async function performAnalysis(body: unknown) {
 // Helper functions for parallel processing
 async function fetchArxivPapers(_params: URLSearchParams) {
   try {
-    const query = _params.get("query") || "artificial intelligence";
+    const _query = _params.get("query") || "artificial intelligence";
     const maxResults = parseInt(_params.get("limit") || "10");
 
     // Real arXiv API call
-    const response = await fetch(
+    const _response = await fetch(
       `http://export.arxiv.org/api/query?search_query=all:${encodeURIComponent(
-        query,
+        _query,
       )}&start=0&max_results=${maxResults}&sortBy=submittedDate&sortOrder=descending`,
     );
 
@@ -319,21 +319,21 @@ async function fetchArxivPapers(_params: URLSearchParams) {
       source: "arxiv",
       relevanceScore: Math.random() * 0.3 + 0.7, // Enhanced scoring
     }));
-  } catch (error) {
-    (console as any).error("Error fetching arXiv papers:", error);
+  } catch (_error) {
+    (console as any).error("Error fetching arXiv papers:", _error);
     return [];
   }
 }
 
 async function fetchHuggingFacePapers(_params: URLSearchParams) {
   try {
-    const query = _params.get("query") || "machine learning";
+    const _query = _params.get("query") || "machine learning";
     const maxResults = parseInt(_params.get("limit") || "10");
 
     // Real Hugging Face Hub API call
-    const response = await fetch(
+    const _response = await fetch(
       `https://huggingface.co/api/models?search=${encodeURIComponent(
-        query,
+        _query,
       )}&limit=${maxResults}&sort=downloads&direction=-1`,
     );
 
@@ -357,8 +357,8 @@ async function fetchHuggingFacePapers(_params: URLSearchParams) {
       downloads: model.downloads,
       likes: model.likes,
     }));
-  } catch (error) {
-    (console as any).error("Error fetching Hugging Face papers:", error);
+  } catch (_error) {
+    (console as any).error("Error fetching Hugging Face papers:", _error);
     return [];
   }
 }
@@ -396,7 +396,7 @@ async function fetchLocalPapers(_params: URLSearchParams) {
   ];
 }
 
-async function rankPapersWithQMOI(papers: unknown[], query: string) {
+async function rankPapersWithQMOI(papers: unknown[], _query: string) {
   // QMOI-enhanced paper ranking
   return papers.sort((a, b) => b.relevanceScore - a.relevanceScore);
 }
@@ -564,9 +564,7 @@ async function checkIntegrationsStatus() {
       },
     );
     integrations.hf_integration = hfResponse.ok;
-  } catch (error) {
-    integrations.hf_integration = false;
-  }
+  } catch {
 
   // Check arXiv API
   try {
@@ -574,9 +572,7 @@ async function checkIntegrationsStatus() {
       "http://export.arxiv.org/api/query?search_query=test&start=0&max_results=1",
     );
     integrations.arxiv_api = arxivResponse.ok;
-  } catch (error) {
-    integrations.arxiv_api = false;
-  }
+  } catch {
 
   return integrations;
 }
@@ -603,12 +599,12 @@ async function checkPerformanceStatus() {
   };
 }
 
-async function searchPapers(query: string, filters: unknown) {
+async function searchPapers(_query: string, filters: unknown) {
   // Real paper search with parallel API calls
   const [arxivResults, hfResults, localResults] = await Promise.all([
-    fetchArxivPapers(new URLSearchParams({ query, limit: "20" })),
-    fetchHuggingFacePapers(new URLSearchParams({ query, limit: "20" })),
-    fetchLocalPapers(new URLSearchParams({ query, limit: "20" })),
+    fetchArxivPapers(new URLSearchParams({ _query, limit: "20" })),
+    fetchHuggingFacePapers(new URLSearchParams({ _query, limit: "20" })),
+    fetchLocalPapers(new URLSearchParams({ _query, limit: "20" })),
   ]);
 
   const allPapers = [...arxivResults, ...hfResults, ...localResults];
@@ -638,10 +634,10 @@ async function searchPapers(query: string, filters: unknown) {
   return filteredPapers;
 }
 
-async function searchKnowledgeBase(query: string, filters: unknown) {
+async function searchKnowledgeBase(_query: string, filters: unknown) {
   // Real knowledge base search with parallel processing
   const [semanticResults, tagResults, recentResults] = await Promise.all([
-    performSemanticSearch(query),
+    performSemanticSearch(_query),
     filters?.tags ? searchByTags(filters.tags) : Promise.resolve([]),
     getRecentEntries(),
   ]);
@@ -649,15 +645,15 @@ async function searchKnowledgeBase(query: string, filters: unknown) {
   return mergeAndRankKBResults(semanticResults, tagResults, recentResults);
 }
 
-async function searchDiscussions(query: string, filters: unknown) {
+async function searchDiscussions(_query: string, filters: unknown) {
   try {
     // Real discussion search using database
     const discussions = await prisma.discussion.findMany({
       where: {
         OR: [
-          { title: { contains: query, mode: "insensitive" } },
-          { content: { contains: query, mode: "insensitive" } },
-          { tags: { hasSome: [query] } },
+          { title: { contains: _query, mode: "insensitive" } },
+          { content: { contains: _query, mode: "insensitive" } },
+          { tags: { hasSome: [_query] } },
         ],
       },
       include: {
@@ -685,13 +681,13 @@ async function searchDiscussions(query: string, filters: unknown) {
       tags: disc.tags,
       relevanceScore: disc.relevanceScore,
     }));
-  } catch (error) {
-    (console as any).error("Error searching discussions:", error);
+  } catch (_error) {
+    (console as any).error("Error searching discussions:", _error);
     return [];
   }
 }
 
-async function rankSearchResultsWithQMOI(results: unknown, query: string) {
+async function rankSearchResultsWithQMOI(results: unknown, _query: string) {
   // Real ranking with QMOI AI - combine and rank all results
   const allResults = [
     ...results.papers.map((p: unknown) => ({
@@ -797,12 +793,12 @@ async function syncWithQMOI(direction: string) {
       status: "success",
       data: qmoiData,
     };
-  } catch (error) {
-    (console as any).error("Error syncing with QMOI:", error);
+  } catch (_error) {
+    (console as any).error("Error syncing with QMOI:", _error);
     return {
       count: 0,
       status: "error",
-      error: error instanceof Error ? error.message : String(error),
+      _error: error instanceof Error ? error.message : String(_error),
     };
   }
 }
@@ -847,12 +843,12 @@ async function syncLocalData(direction: string) {
       status: "success",
       data: localData,
     };
-  } catch (error) {
-    (console as any).error("Error syncing local data:", error);
+  } catch (_error) {
+    (console as any).error("Error syncing local data:", _error);
     return {
       count: 0,
       status: "error",
-      error: error instanceof Error ? error.message : String(error),
+      _error: error instanceof Error ? error.message : String(_error),
     };
   }
 }
@@ -918,12 +914,12 @@ async function analyzeWithQMOI(content: unknown, type: string, _options: unknown
       processing_method: "qmoi_superior_analysis",
       analysis_quality: "excellent",
     };
-  } catch (error) {
-    (console as any).error("Error in QMOI analysis:", error);
+  } catch (_error) {
+    (console as any).error("Error in QMOI analysis:", _error);
     return {
       insights: [],
       confidence: 0.5,
-      error: error instanceof Error ? error.message : String(error),
+      _error: error instanceof Error ? error.message : String(_error),
     };
   }
 }
@@ -939,7 +935,7 @@ async function analyzeWithHuggingFace(
 
     if (type === "text") {
       // Use a text analysis model from Hugging Face
-      const response = await fetch(
+      const _response = await fetch(
         "https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english",
         {
           method: "POST",
@@ -983,12 +979,12 @@ async function analyzeWithHuggingFace(
       processing_method: "huggingface_model_analysis",
       models_used: ["distilbert-base-uncased-finetuned-sst-2-english"],
     };
-  } catch (error) {
-    (console as any).error("Error in Hugging Face analysis:", error);
+  } catch (_error) {
+    (console as any).error("Error in Hugging Face analysis:", _error);
     return {
       insights: [],
       confidence: 0.5,
-      error: error instanceof Error ? error.message : String(error),
+      _error: error instanceof Error ? error.message : String(_error),
     };
   }
 }
@@ -1064,12 +1060,12 @@ async function analyzeLocally(content: unknown, type: string, _options: unknown)
       processing_method: "local_computational_analysis",
       analysis_quality: "good",
     };
-  } catch (error) {
-    (console as any).error("Error in local analysis:", error);
+  } catch (_error) {
+    (console as any).error("Error in local analysis:", _error);
     return {
       insights: [],
       confidence: 0.5,
-      error: error instanceof Error ? error.message : String(error),
+      _error: error instanceof Error ? error.message : String(_error),
     };
   }
 }
@@ -1131,15 +1127,15 @@ function parseArxivXML(xmlText: string) {
         });
       }
     }
-  } catch (error) {
-    (console as any).error("Error parsing arXiv XML:", error);
+  } catch (_error) {
+    (console as any).error("Error parsing arXiv XML:", _error);
   }
 
   return papers;
 }
 
 // Enhanced semantic search implementation
-async function performSemanticSearch(query: string) {
+async function performSemanticSearch(_query: string) {
   try {
     // Real semantic search using database with text matching
     // Production: Implement semantic search using embeddings
@@ -1148,9 +1144,9 @@ async function performSemanticSearch(query: string) {
     const results = await prisma.knowledgeBaseEntry.findMany({
       where: {
         OR: [
-          { title: { contains: query, mode: "insensitive" } },
-          { content: { contains: query, mode: "insensitive" } },
-          { tags: { hasSome: [query] } },
+          { title: { contains: _query, mode: "insensitive" } },
+          { content: { contains: _query, mode: "insensitive" } },
+          { tags: { hasSome: [_query] } },
         ],
       },
       include: {
@@ -1174,8 +1170,8 @@ async function performSemanticSearch(query: string) {
       tags: entry.tags,
       relevanceScore: entry.relevanceScore,
     }));
-  } catch (error) {
-    (console as any).error("Error performing semantic search:", error);
+  } catch (_error) {
+    (console as any).error("Error performing semantic search:", _error);
     return [];
   }
 }
@@ -1210,8 +1206,8 @@ async function searchByTags(tags: string[]) {
       tags: entry.tags,
       relevanceScore: entry.relevanceScore,
     }));
-  } catch (error) {
-    (console as any).error("Error searching by tags:", error);
+  } catch (_error) {
+    (console as any).error("Error searching by tags:", _error);
     return [];
   }
 }
@@ -1241,8 +1237,8 @@ async function getRecentEntries() {
       tags: entry.tags,
       relevanceScore: entry.relevanceScore,
     }));
-  } catch (error) {
-    (console as any).error("Error fetching recent entries:", error);
+  } catch (_error) {
+    (console as any).error("Error fetching recent entries:", _error);
     return [];
   }
 }

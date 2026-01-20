@@ -67,12 +67,12 @@ export async function getHandlers() {
           (ctx as any).json(payload),
         );
       }
-      const response = new Response(JSON.stringify(payload), {
+      const _response = new Response(JSON.stringify(payload), {
         status: 200,
         headers: new Headers({ "content-type": "application/json" }),
       });
       if (typeof _res === "function") {
-        return (_res as any)(response);
+        return (_res as any)(_response);
       }
       return response;
     }),
@@ -105,12 +105,12 @@ export async function getHandlers() {
             (ctx as any).json(payload),
           );
         }
-        const response = new Response(JSON.stringify(payload), {
+        const _response = new Response(JSON.stringify(payload), {
           status: 200,
           headers: new Headers({ "content-type": "application/json" }),
         });
         if (typeof _res === "function") {
-          return (_res as any)(response);
+          return (_res as any)(_response);
         }
         return response;
       },
@@ -168,9 +168,7 @@ export async function getHandlers() {
             if ((urlObj as any).searchParams.has(flag)) return true;
           }
           if (typeof rawUrl === "string" && rawUrl.includes(flag)) return true;
-        } catch (_e) {
-          // ignore
-        }
+        } catch {
         return false;
       };
       // Debug log to aid tests when query flags are not detected
@@ -183,10 +181,7 @@ export async function getHandlers() {
           "hasQfix=",
           hasFlag("qfix"),
         );
-      } catch (e) {
-        void e;
-        /* ignore */ void e; /* ignore logging errors */
-      }
+      } catch {
       const action = hasFlag("qfix")
         ? "QFix"
         : hasFlag("qoptimize")
@@ -198,12 +193,12 @@ export async function getHandlers() {
       if (ctx && typeof (ctx as any).status === "function") {
         return (_res as any)((ctx as any).status(200), (ctx as any).json(out));
       }
-      const response = new Response(JSON.stringify(out), {
+      const _response = new Response(JSON.stringify(out), {
         status: 200,
         headers: new Headers({ "content-type": "application/json" }),
       });
       if (typeof _res === "function") {
-        return (_res as any)(response);
+        return (_res as any)(_response);
       }
       return response;
     }),
@@ -234,9 +229,7 @@ export async function getHandlers() {
               }
               if (typeof rawUrl === "string" && rawUrl.includes(flag))
                 return true;
-            } catch (_e) {
-              // ignore
-            }
+            } catch {
             return false;
           };
           try {
@@ -248,9 +241,7 @@ export async function getHandlers() {
               "hasQfix=",
               hasFlag("qfix"),
             );
-          } catch (e) {
-            /* ignore */
-          }
+          } catch {
           const action = hasFlag("qfix")
             ? "QFix"
             : hasFlag("qoptimize")
@@ -265,12 +256,12 @@ export async function getHandlers() {
               (ctx as any).json(out),
             );
           }
-          const response = new Response(JSON.stringify(out), {
+          const _response = new Response(JSON.stringify(out), {
             status: 200,
             headers: new Headers({ "content-type": "application/json" }),
           });
           if (typeof _res === "function") {
-            return (_res as any)(response);
+            return (_res as any)(_response);
           }
           return response;
         } catch (_e) {

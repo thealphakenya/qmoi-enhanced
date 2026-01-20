@@ -63,8 +63,8 @@ async function aggregateNews() {
           publishedAt: new Date().toISOString(),
         });
       }
-    } catch (error) {
-      (console as any).error("Failed to fetch ArXiv:", error);
+    } catch (_error) {
+      (console as any).error("Failed to fetch ArXiv:", _error);
     }
 
     // Fetch from HuggingFace
@@ -84,13 +84,13 @@ async function aggregateNews() {
           publishedAt: new Date().toISOString(),
         });
       }
-    } catch (error) {
-      (console as any).error("Failed to fetch HuggingFace:", error);
+    } catch (_error) {
+      (console as any).error("Failed to fetch HuggingFace:", _error);
     }
 
     return aggregatedNews;
-  } catch (error) {
-    (console as any).error("News aggregation failed:", error);
+  } catch (_error) {
+    (console as any).error("News aggregation failed:", _error);
     return [];
   }
 }
@@ -100,7 +100,7 @@ function isMaster(_req: NextRequest) {
   try {
     const auth = requireApiKey(_req.headers);
     if (auth.ok) return true;
-  } catch (_e) {}
+  } catch {
   return _req.headers.get("x-qmoi-master") === "true";
 }
 
@@ -151,10 +151,10 @@ export async function GET(_req: NextRequest) {
         message: "Database temporarily disabled for build compatibility",
       });
     }
-  } catch (error) {
-    (console as any).error("Failed to fetch news:", error);
+  } catch (_error) {
+    (console as any).error("Failed to fetch news:", _error);
     return NextResponse.json(
-      { error: "Failed to fetch news" },
+      { _error: "Failed to fetch news" },
       { status: 500 },
     );
   }
@@ -166,7 +166,7 @@ export async function POST(_req: NextRequest) {
     // Check API key or master header
     const auth = requireApiKey(_req.headers);
     if (!auth.ok && !isMaster(_req)) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
     }
 
     const body = (await _req.json()) as any;
@@ -195,10 +195,10 @@ export async function POST(_req: NextRequest) {
     });
 
     return NextResponse.json({ success: true, item });
-  } catch (error) {
-    (console as any).error("Failed to create news:", error);
+  } catch (_error) {
+    (console as any).error("Failed to create news:", _error);
     return NextResponse.json(
-      { error: "Failed to create news" },
+      { _error: "Failed to create news" },
       { status: 500 },
     );
   }
@@ -209,7 +209,7 @@ export async function PUT(_req: NextRequest) {
     // Approve, edit, or schedule news (master only)
     const auth = requireApiKey(_req.headers);
     if (!auth.ok && !isMaster(_req))
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+      return NextResponse.json({ _error: "Forbidden" }, { status: 403 });
 
     const body = (await _req.json()) as any;
     const { id, ...updates } = body;
@@ -234,21 +234,21 @@ export async function PUT(_req: NextRequest) {
     });
 
     return NextResponse.json({ success: true, item });
-  } catch (error) {
-    (console as any).error("Failed to update news:", error);
+  } catch (_error) {
+    (console as any).error("Failed to update news:", _error);
     if (
       error &&
-      typeof error === "object" &&
+      typeof _error === "object" &&
       "code" in error &&
       error.code === "P2025"
     ) {
       return NextResponse.json(
-        { error: "News item not found" },
+        { _error: "News item not found" },
         { status: 404 },
       );
     }
     return NextResponse.json(
-      { error: "Failed to update news" },
+      { _error: "Failed to update news" },
       { status: 500 },
     );
   }
@@ -259,7 +259,7 @@ export async function POST_SCHEDULE(_req: NextRequest) {
     // Schedule news (master only)
     const auth = requireApiKey(_req.headers);
     if (!auth.ok && !isMaster(_req))
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+      return NextResponse.json({ _error: "Forbidden" }, { status: 403 });
 
     const body = (await _req.json()) as any;
     const { id, scheduledAt } = body;
@@ -279,21 +279,21 @@ export async function POST_SCHEDULE(_req: NextRequest) {
     });
 
     return NextResponse.json({ success: true, item });
-  } catch (error) {
-    (console as any).error("Failed to schedule news:", error);
+  } catch (_error) {
+    (console as any).error("Failed to schedule news:", _error);
     if (
       error &&
-      typeof error === "object" &&
+      typeof _error === "object" &&
       "code" in error &&
       error.code === "P2025"
     ) {
       return NextResponse.json(
-        { error: "News item not found" },
+        { _error: "News item not found" },
         { status: 404 },
       );
     }
     return NextResponse.json(
-      { error: "Failed to schedule news" },
+      { _error: "Failed to schedule news" },
       { status: 500 },
     );
   }
@@ -304,7 +304,7 @@ export async function GET_ANALYTICS(_req: NextRequest) {
     // Return analytics for all news (master only)
     const auth = requireApiKey(_req.headers);
     if (!auth.ok && !isMaster(_req))
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+      return NextResponse.json({ _error: "Forbidden" }, { status: 403 });
 
     const news = await prisma.news.findMany({
       select: {
@@ -324,10 +324,10 @@ export async function GET_ANALYTICS(_req: NextRequest) {
     }));
 
     return NextResponse.json({ analytics });
-  } catch (error) {
-    (console as any).error("Failed to fetch analytics:", error);
+  } catch (_error) {
+    (console as any).error("Failed to fetch analytics:", _error);
     return NextResponse.json(
-      { error: "Failed to fetch analytics" },
+      { _error: "Failed to fetch analytics" },
       { status: 500 },
     );
   }
@@ -338,7 +338,7 @@ export async function POST_MEDIA(_req: NextRequest) {
     // Add media to news (master only)
     const auth = requireApiKey(_req.headers);
     if (!auth.ok && !isMaster(_req))
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+      return NextResponse.json({ _error: "Forbidden" }, { status: 403 });
 
     const body = (await _req.json()) as any;
     const { id, media } = body;
@@ -346,7 +346,7 @@ export async function POST_MEDIA(_req: NextRequest) {
     const newsItem = await prisma.news.findUnique({ where: { id } });
     if (!newsItem) {
       return NextResponse.json(
-        { error: "News item not found" },
+        { _error: "News item not found" },
         { status: 404 },
       );
     }
@@ -367,9 +367,9 @@ export async function POST_MEDIA(_req: NextRequest) {
     });
 
     return NextResponse.json({ success: true, item });
-  } catch (error) {
-    (console as any).error("Failed to add media:", error);
-    return NextResponse.json({ error: "Failed to add media" }, { status: 500 });
+  } catch (_error) {
+    (console as any).error("Failed to add media:", _error);
+    return NextResponse.json({ _error: "Failed to add media" }, { status: 500 });
   }
 }
 
@@ -378,7 +378,7 @@ export async function POST_POST(_req: NextRequest) {
   try {
     const auth = requireApiKey(_req.headers);
     if (!auth.ok && !isMaster(_req))
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+      return NextResponse.json({ _error: "Forbidden" }, { status: 403 });
 
     const body = (await _req.json()) as any;
     const { id, platforms } = body; // platforms: ['whatsapp', 'telegram', 'twitter', etc.]
@@ -394,7 +394,7 @@ export async function POST_POST(_req: NextRequest) {
 
     if (!newsItem) {
       return NextResponse.json(
-        { error: "News item not found" },
+        { _error: "News item not found" },
         { status: 404 },
       );
     }
@@ -432,15 +432,15 @@ export async function POST_POST(_req: NextRequest) {
             results.push({
               platform,
               success: false,
-              error: "Unsupported platform",
+              _error: "Unsupported platform",
             });
         }
-      } catch (error) {
-        (console as any).error(`Failed to post to ${platform}:`, error);
+      } catch (_error) {
+        (console as any).error(`Failed to post to ${platform}:`, _error);
         results.push({
           platform,
           success: false,
-          error: error instanceof Error ? error.message : String(error),
+          _error: error instanceof Error ? error.message : String(_error),
         });
       }
     }
@@ -458,9 +458,9 @@ export async function POST_POST(_req: NextRequest) {
     }
 
     return NextResponse.json({ success: true, posted: results });
-  } catch (error) {
-    (console as any).error("Failed to post news:", error);
-    return NextResponse.json({ error: "Failed to post news" }, { status: 500 });
+  } catch (_error) {
+    (console as any).error("Failed to post news:", _error);
+    return NextResponse.json({ _error: "Failed to post news" }, { status: 500 });
   }
 }
 
@@ -475,7 +475,7 @@ async function postToTelegram(newsItem: unknown) {
 
   const message = `*${newsItem.title}*\n\n${newsItem.content}\n\n#QMOI #AI #News`;
 
-  const response = await fetch(
+  const _response = await fetch(
     `https://api.telegram.org/bot${botToken}/sendMessage`,
     {
       method: "POST",
@@ -489,7 +489,7 @@ async function postToTelegram(newsItem: unknown) {
   );
 
   if (!response.ok) {
-    throw new Error(`Telegram API error: ${response.statusText}`);
+    throw new Error(`Telegram API _error: ${response.statusText}`);
   }
 
   return await response.json();

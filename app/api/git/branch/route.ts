@@ -7,7 +7,5 @@ export async function GET(_req: NextRequest) {
   try {
     const branch = execSync("git branch --show-current").toString().trim();
     return new Response(branch);
-  } catch (_e) {
-    return new Response("-", { status: 200 });
-  }
+  } catch {
 }

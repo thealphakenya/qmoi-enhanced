@@ -43,9 +43,7 @@ export function ThemeProvider({
       }
 
       document.documentElement.setAttribute(attribute, theme as string);
-    } catch (_e) {
-      // fail silently in tests
-    }
+    } catch {
   }, [attribute, defaultTheme, enableSystem, disableTransitionOnChange]);
 
   return <>{children}</>;
