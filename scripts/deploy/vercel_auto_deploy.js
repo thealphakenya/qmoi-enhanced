@@ -120,7 +120,7 @@ function autoCommitAndPush() {
     // Unstage .env if staged
     try {
       execSync("git reset .env");
-    } catch {}
+    } catch (e) {}
     execSync("git add .");
     execSync('git commit -m "Auto-fix: deploy error"');
     let pushed = false;

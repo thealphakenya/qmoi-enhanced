@@ -64,7 +64,7 @@ const authService = {
           return null;
         }
         return decoded as DecodedToken;
-      } catch {
+      } catch (e) {
         return null;
       }
     } catch (error) {

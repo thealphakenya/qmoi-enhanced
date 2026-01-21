@@ -17,7 +17,7 @@ export const extractRoleFromHeader = (authHeader?: string): string | null => {
     const token = authHeader.replace("Bearer ", "");
     const decoded = authService.verifyToken(token);
     return decoded?.role || null;
-  } catch {
+  } catch (e) {
     return null;
   }
 };
@@ -33,7 +33,7 @@ export const canAccessEndpoint = async (
     const decoded = await authService.decodeToken(token);
     if (!decoded) return false;
     return requiredRoles.includes(decoded.role);
-  } catch {
+  } catch (e) {
     return false;
   }
 };

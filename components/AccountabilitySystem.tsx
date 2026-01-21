@@ -291,7 +291,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                   ? (function (s) {
                       try {
                         return JSON.parse(s || "{}");
-                      } catch {
+                      } catch (e) {
                         return {};
                       }
                     })(e.details)
@@ -630,7 +630,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                               </p>
                             )
                           );
-                        } catch {
+                        } catch (e) {
                           return null;
                         }
                       })()}

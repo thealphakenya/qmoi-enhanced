@@ -93,7 +93,7 @@ export const db = {
         return await prisma.user.findUnique({
           where: { id: userId },
         });
-      } catch {
+      } catch (e) {
         return null;
       }
     },
@@ -104,7 +104,7 @@ export const db = {
         return await prisma.user.findUnique({
           where: { email },
         });
-      } catch {
+      } catch (e) {
         return null;
       }
     },
@@ -113,7 +113,7 @@ export const db = {
       if (!prisma || !prisma.user) return [];
       try {
         return await prisma.user.findMany();
-      } catch {
+      } catch (e) {
         return [];
       }
     },
@@ -122,7 +122,7 @@ export const db = {
       if (!prisma || !prisma.user) return null;
       try {
         return await prisma.user.create({ data });
-      } catch {
+      } catch (e) {
         return null;
       }
     },
@@ -134,7 +134,7 @@ export const db = {
           where: { id: userId },
           data,
         });
-      } catch {
+      } catch (e) {
         return null;
       }
     },
@@ -145,7 +145,7 @@ export const db = {
         return await prisma.user.delete({
           where: { id: userId },
         });
-      } catch {
+      } catch (e) {
         return null;
       }
     },
@@ -157,7 +157,7 @@ export const db = {
       if (!prisma || !prisma.auditLog) return null;
       try {
         return await prisma.auditLog.create({ data });
-      } catch {
+      } catch (e) {
         return null;
       }
     },
@@ -166,7 +166,7 @@ export const db = {
       if (!prisma || !prisma.auditLog) return [];
       try {
         return await prisma.auditLog.findMany({ where });
-      } catch {
+      } catch (e) {
         return [];
       }
     },

@@ -232,7 +232,7 @@ class QMOIAutoPush {
       // Add GitHub remote if not exists
       try {
         await this.runCommand("git remote get-url github");
-      } catch {
+      } catch (e) {
         await this.runCommand(
           "git remote add github https://github.com/thealphakenya/Alpha-Q-ai.git",
         );

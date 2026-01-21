@@ -57,7 +57,7 @@ class GitHubIntegrationService {
   private async ensureRepositoryCloned(repoFullName: string) {
     try {
       await execAsync("git status");
-    } catch {
+    } catch (e) {
       // Repository not cloned, clone it
       await execAsync(`git clone https://github.com/${repoFullName}.git .`);
     }

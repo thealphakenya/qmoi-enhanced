@@ -107,7 +107,7 @@ const run = async () => {
       const block = s.slice(bracePos + 1, endPos);
       if (!block.includes(param)) {
         out += s.slice(lastIndex, start);
-        out += "catch {";
+        out += "catch (e) {";
         lastIndex = endPos + 1;
         regex.lastIndex = endPos + 1;
         changed++;

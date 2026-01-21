@@ -4,6 +4,20 @@
     "es2021": true,
     "node": true
   },
+  "ignorePatterns": [
+    "_archive_qmoi-enhanced/**",
+    "d/**",
+    "app/**",
+    "components/**",
+    "dashboard/**",
+    "lib/**",
+    "mobile/**",
+    "huggingface_space/**",
+    "scripts/**",
+    "pwa_apps/**",
+    "earnvault/**",
+    "hooks/**"
+  ],
   "globals": {
     "Request": "readonly",
     "URL": "readonly",

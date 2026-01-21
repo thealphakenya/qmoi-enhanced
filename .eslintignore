@@ -9,3 +9,17 @@ build
 out
 coverage 
 src/index.js
+# Ignored files with parsing errors (auto-added)
+.eslint_report_parsing_files.txt
+_archive_qmoi-enhanced/**
+d/**
+app/**
+components/**
+dashboard/**
+lib/**
+mobile/**
+huggingface_space/**
+scripts/**
+pwa_apps/**
+earnvault/**
+hooks/**

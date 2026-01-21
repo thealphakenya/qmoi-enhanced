@@ -365,7 +365,7 @@ let log = [];
 if (fs.existsSync(LOG_FILE)) {
   try {
     log = JSON.parse(fs.readFileSync(LOG_FILE, "utf-8"));
-  } catch {}
+  } catch (e) {}
 }
 log.push(summary);
 fs.writeFileSync(LOG_FILE, JSON.stringify(log, null, 2));

@@ -358,7 +358,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
         body: JSON.stringify({ message: msg, webhook: webhookUrl }),
       });
       toast({ title: "Alert sent to external system." });
-    } catch {
+    } catch (e) {
       toast({ title: "Failed to send alert.", variant: "destructive" });
     }
   };

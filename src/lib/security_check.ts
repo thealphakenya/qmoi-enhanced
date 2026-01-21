@@ -21,7 +21,7 @@ export function runSecurityCheck(): void {
     // Additional security checks can be added here
     checkForTampering();
   } catch (_error) {
-    (globalThis.console as any)?.error?.("Security check failed:", _error);
+    (globalThis.console  as unknown)?.error?.("Security check failed:", _error);
     isTampered = true;
   }
 }
@@ -78,6 +78,6 @@ export function logEvent(_event: string, data?: unknown): void {
 
     localStorage.setItem("qmoi_logs", JSON.stringify(logs));
   } catch (_error) {
-    (globalThis.console as any)?.error?.("Failed to log _event:", _error);
+    (globalThis.console  as unknown)?.error?.("Failed to log _event:", _error);
   }
 }

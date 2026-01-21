@@ -71,7 +71,7 @@ class QMOIMasterSystem {
       let md = '';
       try {
         md = await fs.readFile(dashboardTracksPath, 'utf-8');
-      } catch {}
+      } catch (e) {}
       if (md && md.includes('<!-- QMOI will append new rows here automatically -->')) {
         const updated = md.replace('<!-- QMOI will append new rows here automatically -->', `<!-- QMOI will append new rows here automatically -->\n${row}`);
         await fs.writeFile(dashboardTracksPath, updated, 'utf-8');
@@ -692,7 +692,7 @@ class QMOIMasterSystem {
     let md = '';
     try {
       md = await fs.readFile(dashboardTracksPath, 'utf-8');
-    } catch {}
+    } catch (e) {}
     if (md && md.includes('<!-- QMOI will append new rows here automatically -->')) {
       const updated = md.replace('<!-- QMOI will append new rows here automatically -->', `<!-- QMOI will append new rows here automatically -->\n${row}`);
       await fs.writeFile(dashboardTracksPath, updated, 'utf-8');

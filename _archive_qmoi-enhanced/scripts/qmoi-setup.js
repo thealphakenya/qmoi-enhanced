@@ -211,7 +211,7 @@ echo "Post-commit actions completed"
           try {
             execSync("npm --version", { stdio: "ignore" });
             return true;
-          } catch {
+          } catch (e) {
             return false;
           }
         },
@@ -222,7 +222,7 @@ echo "Post-commit actions completed"
           try {
             execSync("git --version", { stdio: "ignore" });
             return true;
-          } catch {
+          } catch (e) {
             return false;
           }
         },

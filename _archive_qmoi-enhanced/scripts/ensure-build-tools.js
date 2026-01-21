@@ -74,7 +74,7 @@ if (os.platform() === "win32") {
   try {
     execCmd("where cl");
     console.log("✅ C++ Build Tools found (cl.exe)");
-  } catch {
+  } catch (e) {
     console.warn("⚠️ C++ Build Tools not found.");
     console.warn(
       '👉 Please manually install "Desktop development with C++" from Visual Studio Installer:\nhttps://visualstudio.microsoft.com/downloads/',

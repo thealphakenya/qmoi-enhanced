@@ -63,7 +63,7 @@ export async function GET() {
       const vercelConfigPath = path.join(process.cwd(), "vercel.json");
       await fs.access(vercelConfigPath);
       report.deployment.status = "configured";
-    } catch {
+    } catch (e) {
       report.deployment.status = "not_configured";
     }
 
@@ -81,7 +81,7 @@ export async function GET() {
       } else {
         report.deployment.github_actions = "no_workflows";
       }
-    } catch {
+    } catch (e) {
       report.deployment.github_actions = "not_configured";
     }
 

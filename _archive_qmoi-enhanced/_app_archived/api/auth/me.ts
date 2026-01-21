@@ -11,7 +11,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     const token = auth.slice(7);
     const user = jwt.verify(token, JWT_SECRET);
     res.status(200).json({ user });
-  } catch {
+  } catch (e) {
     res.status(401).json({ error: "Invalid token" });
   }
 }

@@ -41,7 +41,7 @@ try {
   try {
     execSync("git status", { stdio: "ignore" });
     console.log("✅ Git already initialized");
-  } catch {
+  } catch (e) {
     execSync("git init");
     console.log("✅ Git initialized");
   }
@@ -72,7 +72,7 @@ try {
   // Update remote
   try {
     execSync("git remote remove origin");
-  } catch {}
+  } catch (e) {}
   execSync(`git remote add origin ${REPO_URL}`);
   console.log("✅ Remote set");
 

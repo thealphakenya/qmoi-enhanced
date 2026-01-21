@@ -236,7 +236,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   const [commandHistory, setCommandHistory] = useState<string[]>(() => {
     try {
       return JSON.parse(localStorage.getItem("qcity-command-history") || "[]");
-    } catch {
+    } catch (e) {
       return [];
     }
   });
@@ -245,7 +245,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   const [pinnedCommands, setPinnedCommands] = useState<string[]>(() => {
     try {
       return JSON.parse(localStorage.getItem("qcity-pinned-commands") || "[]");
-    } catch {
+    } catch (e) {
       return [];
     }
   });
@@ -253,7 +253,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
     () => {
       try {
         return JSON.parse(localStorage.getItem("qcity-command-usage") || "{}");
-      } catch {
+      } catch (e) {
         return {};
       }
     }
@@ -1325,7 +1325,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
         if (res.ok) {
           setQCityStatus(await res.json());
         }
-      } catch {}
+      } catch (e) {}
     }
     if (showQCityDashboard) fetchStatus();
   }, [showQCityDashboard]);
@@ -1510,7 +1510,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
             }))
           );
         }
-      } catch {}
+      } catch (e) {}
     }
     if (showQCityDashboard) fetchDevices();
   }, [showQCityDashboard]);
@@ -1998,7 +1998,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
           description: `Imported ${importScope} settings.`,
           variant: "default",
         });
-      } catch {
+      } catch (e) {
         toast({
           title: "Import Error",
           description: "Failed to import settings.",

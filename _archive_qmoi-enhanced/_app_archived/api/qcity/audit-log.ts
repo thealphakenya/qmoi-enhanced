@@ -19,7 +19,7 @@ const handler = requireRole(["admin", "master"])(async (req: unknown, res: unkno
     .map((l) => {
       try {
         return JSON.parse(l);
-      } catch {
+      } catch (e) {
         return null;
       }
     })

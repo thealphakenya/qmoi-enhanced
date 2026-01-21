@@ -19,7 +19,7 @@ function loadExclusions() {
     if (fs.existsSync(EXCLUDE_CONFIG_PATH)) {
       return JSON.parse(fs.readFileSync(EXCLUDE_CONFIG_PATH, 'utf8'));
     }
-  } catch {}
+  } catch (e) {}
   return ['node_modules', '.git', '.next', 'dist', 'build', '__pycache__'];
 }
 
@@ -28,7 +28,7 @@ function loadAutoFixConfig() {
     if (fs.existsSync(AUTO_FIX_CONFIG_PATH)) {
       return JSON.parse(fs.readFileSync(AUTO_FIX_CONFIG_PATH, 'utf8'));
     }
-  } catch {}
+  } catch (e) {}
   return { 
     enable: true, 
     autoNpmInstall: true, 
@@ -203,7 +203,7 @@ function healConfigsAndEnv() {
     logAutoFix('auto', 'Created missing .env');
   }
   // Validate JSON
-  try { JSON.parse(fs.readFileSync(pkgPath, 'utf8')); } catch {
+  try { JSON.parse(fs.readFileSync(pkgPath, 'utf8')); } catch (e) {
     fs.writeFileSync(pkgPath, JSON.stringify({ name: 'qmoi-app', version: '1.0.0', scripts: {} }, null, 2));
     logAutoFix('auto', 'Fixed invalid package.json');
   }
@@ -727,7 +727,7 @@ python scripts/{SCRIPT_NAME}.py
       let items;
       try {
         items = fs.readdirSync(dir);
-      } catch {
+      } catch (e) {
         return files;
       }
       for (const item of items) {
@@ -735,7 +735,7 @@ python scripts/{SCRIPT_NAME}.py
         let stat;
         try {
           stat = fs.lstatSync(fullPath);
-        } catch {
+        } catch (e) {
           continue;
         }
         if (stat.isSymbolicLink()) continue;
@@ -763,7 +763,7 @@ python scripts/{SCRIPT_NAME}.py
       let items;
       try {
         items = fs.readdirSync(dir);
-      } catch {
+      } catch (e) {
         return files;
       }
       for (const item of items) {
@@ -771,7 +771,7 @@ python scripts/{SCRIPT_NAME}.py
         let stat;
         try {
           stat = fs.lstatSync(fullPath);
-        } catch {
+        } catch (e) {
           continue;
         }
         if (stat.isSymbolicLink()) continue;

@@ -16,7 +16,7 @@ export function requireRole(roles: string[]) {
           return res.status(403).json({ error: "Forbidden" });
         (req as any).user = user;
         return handler(req, res);
-      } catch {
+      } catch (e) {
         return res.status(401).json({ error: "Invalid token" });
       }
     };

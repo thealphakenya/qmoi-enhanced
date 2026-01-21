@@ -20,7 +20,7 @@ export default function AlertSettingsScreen() {
         setQuietHours(res.data.quietHours || '');
         await AsyncStorage.setItem('qmoiAlertPrefs', JSON.stringify(res.data));
         setOffline(false);
-      } catch {
+      } catch (e) {
         setOffline(true);
         const cached = await AsyncStorage.getItem('qmoiAlertPrefs');
         if (cached) {
@@ -45,7 +45,7 @@ export default function AlertSettingsScreen() {
     try {
       await axios.post('http://localhost:4200/api/alert-prefs', prefs);
       Alert.alert('Saved', 'Alert preferences updated!');
-    } catch {
+    } catch (e) {
       Alert.alert('Offline', 'Preferences saved locally and will sync when online.');
     }
   };

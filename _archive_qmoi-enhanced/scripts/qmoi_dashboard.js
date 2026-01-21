@@ -101,7 +101,7 @@ app.get("/", async (req, res) => {
   try {
     const predRes = await axios.get("http://localhost:4100/api/predictions");
     predictions = predRes.data.predictions || [];
-  } catch {}
+  } catch (e) {}
   // Fetch notification preferences
   let notificationPrefs = {};
   try {
@@ -109,7 +109,7 @@ app.get("/", async (req, res) => {
       "http://localhost:4200/api/notification-prefs",
     );
     notificationPrefs = prefsRes.data || {};
-  } catch {}
+  } catch (e) {}
   // Fetch notification history
   let notificationHistory = [];
   try {
@@ -117,7 +117,7 @@ app.get("/", async (req, res) => {
       "http://localhost:4200/api/notification-history",
     );
     notificationHistory = histRes.data || [];
-  } catch {}
+  } catch (e) {}
   // SVG chart for percent fixed over time
   let chart = "";
   if (log.length > 1) {
@@ -132,7 +132,7 @@ app.get("/", async (req, res) => {
     try {
       const s = JSON.parse(fs.readFileSync(GITHUB_STATUS_FILE, "utf-8"));
       ghStatus = `${s.status} (${s.time})`;
-    } catch {}
+    } catch (e) {}
   }
   let table = "";
   if (log.length > 0) {

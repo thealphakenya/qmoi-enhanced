@@ -14,7 +14,7 @@ function verifyJWT(token: string): { valid: boolean; role?: string } {
       return { valid: true, role: payload.role };
     }
     return { valid: false };
-  } catch {
+  } catch (e) {
     return { valid: false };
   }
 }
@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
   let options = {};
   try {
     options = (await req.json() as any);
-  } catch {}
+  } catch (e) {}
 
   // Determine script and args
   let script, args;

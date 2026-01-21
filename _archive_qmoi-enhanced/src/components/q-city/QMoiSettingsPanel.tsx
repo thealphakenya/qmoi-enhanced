@@ -5,7 +5,7 @@ export const QMoiSettingsPanel: React.FC = () => {
   const [settings, setSettings] = React.useState(() => {
     try {
       return JSON.parse(localStorage.getItem("qmoi-settings") || "{}");
-    } catch {
+    } catch (e) {
       return {};
     }
   });
@@ -53,7 +53,7 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(data.qavatar),
           );
         alert("Settings imported!");
-      } catch {
+      } catch (e) {
         alert("Invalid settings file.");
       }
     };

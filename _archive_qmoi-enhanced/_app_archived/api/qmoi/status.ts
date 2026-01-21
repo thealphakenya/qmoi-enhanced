@@ -20,7 +20,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
           : "issues";
       last_check = preActivity.timestamp || last_check;
     }
-  } catch {}
+  } catch (e) {}
 
   try {
     const connectivityPath = path.join(logsDir, "network_connectivity.log");
@@ -31,7 +31,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         .slice(-20)
         .join("\n");
     }
-  } catch {}
+  } catch (e) {}
 
   try {
     const cloudPath = path.join(logsDir, "cloud_optimizer.log");
@@ -42,7 +42,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         .slice(-20)
         .join("\n");
     }
-  } catch {}
+  } catch (e) {}
 
   res
     .status(200)
