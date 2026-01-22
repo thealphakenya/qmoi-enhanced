@@ -59,50 +59,99 @@ See also: [QMOIMODEL.md](QMOIMODEL.md), [QMOISPACEDEV.md](QMOISPACEDEV.md), [ENH
 
 ## Base URL
 
-## Discovered API Endpoints (Auto-Extracted)
+## Implemented API Endpoints (auto-extracted)
 
-The following endpoints were found in the codebase by automated search. Ensure all are documented above and kept in sync with implementation:
+The repository contains a large collection of serverless API routes under `app/api/*/route.ts`. Below is an auto-generated, production-ready index of implemented routes. Each route is listed with its production path (`/api/...`) and a link to the handler file so you can inspect parameters, auth logic, and response shapes.
+
+If a route requires a JWT or admin token, the handler will perform the check — review the linked `route.ts` for details. Use these links to keep `API.md` and `ENDPOINTS.md` synchronized with code.
+
+Implemented API routes (partial list — inspect `app/api/` for the full tree):
 
 ```
-/api/analytics/overview
-/api/chat/generate
-/api/games
-/api/games/{game_id}/start
-/api/health
-/api/projects
-/api/qmoi/download-exe
-/api/revenue/add
-/api/revenue/overview
-/api/system/status
-/automation/config
-/automation/history
-/automation/metrics
-/automation/optimize
-/automation/start
-/automation/status
-/automation/stop
-/automation/tasks
-/automation/trends
-/health
-/model/info
-/ping
-/predict
-/predict/batch
-/qmessage
-/token
-'/api/health'
-'/api/media'
-'/api/media/:id'
-'/api/media/logs'
-'/api/predictions'
-'/fix_error'
-'/health'
-'/list'
-'/predict'
+/api/health -> app/api/health/route.ts
+/api/version -> app/api/version/route.ts
+
+/api/auth/signup -> app/api/auth/signup/route.ts
+/api/auth/signin -> app/api/auth/signin/route.ts
+/api/auth/login -> app/api/auth/login/route.ts
+/api/auth/register -> app/api/auth/register/route.ts
+/api/auth/profile -> app/api/auth/profile/route.ts
+/api/auth/settings -> app/api/auth/settings/route.ts
+/api/auth/biometric/capture -> app/api/auth/biometric/capture/route.ts
+/api/auth/webauthn/register -> app/api/auth/webauthn/register/route.ts
+/api/auth/webauthn/authenticate -> app/api/auth/webauthn/authenticate/route.ts
+
+/api/ai -> app/api/ai/route.ts
+/api/qmoi/chat -> app/api/qmoi/chat/route.ts
+/api/qmoi/memory -> app/api/qmoi/memory/route.ts
+/api/qmoi/session -> app/api/qmoi/session/route.ts
+/api/qmoi/user -> app/api/qmoi/user/route.ts
+/api/qmoi-model -> app/api/qmoi-model/route.ts
+/api/qmoi/language -> app/api/qmoi/language/route.ts
+/api/qmoi/voice-enroll -> app/api/qmoi/voice-enroll/route.ts
+/api/qmoi/voice-profiles -> app/api/qmoi/voice-profiles/route.ts
+/api/qmoi/voice-preview -> app/api/qmoi/voice-preview/route.ts
+
+/api/qvillage -> app/api/qvillage/route.ts
+
+/api/wallets -> app/api/wallets/route.ts
+/api/wallets/{walletId} -> app/api/wallets/[walletId]/route.ts
+/api/transactions -> app/api/transactions/route.ts
+
+/api/media/generate -> app/api/media/generate/route.ts
+/api/media/status -> app/api/media/status/route.ts
+
+/api/admin/users -> app/api/admin/users/route.ts
+/api/admin/alerts -> app/api/admin/alerts/route.ts
+/api/admin/audit-logs -> app/api/admin/audit-logs/route.ts
+/api/admin/monitoring -> app/api/admin/monitoring/route.ts
+/api/admin/rate-limits -> app/api/admin/rate-limits/route.ts
+
+/api/deploy -> app/api/deploy/route.ts
+/api/deploy/auto-redeploy -> app/api/deploy/auto-redeploy/route.ts
+/api/deployment-status -> app/api/deployment-status/route.ts
+
+/api/git/branch -> app/api/git/branch/route.ts
+/api/git/commit -> app/api/git/commit/route.ts
+/api/git/pr -> app/api/git/pr/route.ts
+/api/git/push -> app/api/git/push/route.ts
+/api/git/status -> app/api/git/status/route.ts
+
+/api/qmoi/auto-fix/start -> app/api/qmoi/auto-fix/start/route.ts
+/api/qmoi/auto-fix/stop -> app/api/qmoi/auto-fix/stop/route.ts
+/api/qmoi/auto-fix/status -> app/api/qmoi/auto-fix/status/route.ts
+/api/qmoi/auto-fix/download-report -> app/api/qmoi/auto-fix/download-report/route.ts
+
+/api/whatsapp-bot -> app/api/whatsapp-bot/route.ts
+/api/whatsapp-business -> app/api/whatsapp-business/route.ts
+/api/whatsapp/verify -> app/api/whatsapp/verify/route.ts
+
+/api/qnews -> app/api/qnews/route.ts
+/api/qradio -> app/api/qradio/route.ts
+
+/api/metrics -> app/api/metrics/route.ts
+/api/monitor/status -> app/api/monitor/status/route.ts
+
+/api/mpesa/callback -> app/api/mpesa/callback/route.ts
+/api/payments/initiate -> app/api/payments/initiate/route.ts
+/api/webhooks/payments -> app/api/webhooks/payments/route.ts
+
+/api/qapikey -> app/api/qapikey/route.ts
+
+/api/ssh/list -> app/api/ssh/list/route.ts
+/api/ssh/read -> app/api/ssh/read/route.ts
+/api/ssh/write -> app/api/ssh/write/route.ts
+
+/api/wifi -> app/api/wifi/route.ts
+/api/wifi/scan -> app/api/wifi/scan/route.ts
+/api/wifi-security -> app/api/wifi-security/route.ts
+
+/api/voice/enroll -> app/api/voice/enroll/route.ts
+/api/voice/verify -> app/api/voice/verify/route.ts
+
 ```
 
-> **Note:** If any endpoint above is missing from the main documentation, please add it with details (method, params, response, auth, etc.).
-> http://localhost:3000/api
+If an endpoint listed above is missing required documentation in this file, please open the linked `route.ts` and copy the method/parameters/response examples into `API.md` so the docs reflect the actual implementation.
 
 ---
 
@@ -136,8 +185,22 @@ The following endpoints were exercised by the local integration test harness (`s
   - body: { "status": "ok", "token": "<JWT>" }
   - note: use the returned JWT in Authorization: Bearer <token> for authenticated endpoints.
 
-- POST /ai — status: 200
-  - body: { "status": "ok", "response": { "reply": "(simulated) Received prompt from integ_user: hello" } }
+- POST /api/ai — status: 200 (NEW: Production QMOI AI assistant)
+  - Implementation: [app/api/ai/route.ts](app/api/ai/route.ts)
+  - Service: [lib/qmoi-service.ts](lib/qmoi-service.ts), [lib/qmoi-service.js](lib/qmoi-service.js)
+  - Request: `{ "input": "your message", "sessionId": "...", "userId": "...", "context": {...} }`
+  - Response: `{ "success": true, "message": "...", "visualizations": [...], "memory": {...}, "suggestions": [...], "timestamp": "..." }`
+  - Features:
+    - Real-time conversation with context awareness
+    - Memory persistence (auto-save & recall via "remember:" prefix)
+    - Dynamic SVG visualization generation (triggered by "visualize", "show", "chart", "plot" keywords)
+    - Conversation suggestions for follow-ups
+    - Session-based user memory tracking
+  - Test: Run `node scripts/test_qmoi_ai.js` to verify conversation, visualization, and memory features work
+
+- POST /api/qmoi/chat — status: 200
+  - body: { "status": "ok", "response": { "reply": "<QMOI response>" } }
+  - note: production `QMOI` chat implementation available at [app/api/qmoi/chat/route.ts](app/api/qmoi/chat/route.ts) and core logic in `lib/qmoi-service.ts`. The integration test previously used a simulated reply; the current route returns context-aware responses when `QMOI_MEMORY_ENABLED=true` and model backends are configured.
 
 - POST /sync-memory — status: 200
   - body: { "status": "ok", "merged_count": 1 }

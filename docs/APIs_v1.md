@@ -18,32 +18,51 @@ Mutating endpoints are _proposal-first_ by default and require explicit producti
 ## /api/qmoi/auto-fix/start (POST)
 
 - Purpose: Start the auto-fix process for repository (runs `scripts/qmoi_auto_fix_enhanced.py`).
+- Implementation: [app/api/qmoi/auto-fix/start/route.ts](app/api/qmoi/auto-fix/start/route.ts)
 - Auth: `x-qmoi-api-key` or `MASTER_TOKEN`.
 - Behavior: writes proposal unless `PRODUCTION_CONFIRMED=true` and `--real` present; when allowed, spawns the auto-fix process.
 
 ## /api/qmoi/auto-fix/status (GET)
 
 - Purpose: Get current status and latest report for auto-fix runs.
+- Implementation: [app/api/qmoi/auto-fix/status/route.ts](app/api/qmoi/auto-fix/status/route.ts)
 - Auth: `x-qmoi-api-key` (gated).
 - Read-only.
 
 ## /api/qmoi/auto-fix/stop (POST)
 
 - Purpose: Stop running auto-fix processes (kill processes matching `qmoi_auto_fix`).
+- Implementation: [app/api/qmoi/auto-fix/stop/route.ts](app/api/qmoi/auto-fix/stop/route.ts)
 - Auth: `x-qmoi-api-key` and `MASTER_TOKEN` where configured.
 - Behavior: proposal-first for safety; writes proposal when not confirmed.
 
 ## /api/qmoi/auto-fix/download-report (GET)
 
 - Purpose: Download the latest auto-fix JSON report.
+- Implementation: [app/api/qmoi/auto-fix/download-report/route.ts](app/api/qmoi/auto-fix/download-report/route.ts)
 - Auth: `x-qmoi-api-key`.
 - Behavior: read-only; logs access to `logs/download_fixes.log` (best-effort).
 
 ## /api/qmoi/auto-fix/github-status (GET)
 
 - Purpose: Inspect GitHub Actions/workflow presence and recent runs for auto-fix workflows.
+- Implementation: [app/api/qmoi/auto-fix/github-status/route.ts](app/api/qmoi/auto-fix/github-status/route.ts)
 - Auth: `x-qmoi-api-key`.
 - Behavior: read-only.
+
+---
+
+## Implemented route index
+
+For quick cross-reference, the following important API routes are implemented and available in the codebase; follow the linked `route.ts` to see exact request/response schemas and auth checks.
+
+- /api/qmoi/auto-fix/_ -> `app/api/qmoi/auto-fix/_/route.ts`
+- /api/cashon/_ -> `app/api/cashon/_/route.ts`
+- /api/qi-trading -> [app/api/qi-trading/route.ts](app/api/qi-trading/route.ts)
+- /api/qmoi/chat -> [app/api/qmoi/chat/route.ts](app/api/qmoi/chat/route.ts)
+- /api/auth/_ -> `app/api/auth/_/route.ts`
+
+If you want any of the proposal-first endpoints to act immediately in production, set `PRODUCTION_CONFIRMED=true` and run the server with the `--real` flag (or the equivalent runner). This is intentional to prevent accidental destructive actions.
 
 ---
 
