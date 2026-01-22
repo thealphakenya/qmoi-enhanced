@@ -211,14 +211,14 @@ async function checkAPIHealth() {
         );
         return {
           endpoint,
-          status: response.ok ? "healthy" : "degraded",
+          status: _response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
       } catch (_error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          _error: _error instanceof Error ? _error.message : String(_error),
         };
       }
     }),
@@ -565,7 +565,7 @@ async function performAutoHeal(component: string) {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          _error: _error instanceof Error ? _error.message : String(_error),
         };
       }
     },
@@ -597,7 +597,7 @@ async function performAutoHeal(component: string) {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          _error: _error instanceof Error ? _error.message : String(_error),
         };
       }
     },
@@ -629,7 +629,7 @@ async function performAutoHeal(component: string) {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          _error: _error instanceof Error ? _error.message : String(_error),
         };
       }
     },
@@ -661,7 +661,7 @@ async function performAutoHeal(component: string) {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          _error: _error instanceof Error ? _error.message : String(_error),
         };
       }
     },
@@ -762,7 +762,7 @@ async function performDeepDiagnosis(component: string) {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      _error: _error instanceof Error ? _error.message : String(_error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -880,7 +880,7 @@ async function performOptimization(component: string) {
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      _error: _error instanceof Error ? _error.message : String(_error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
