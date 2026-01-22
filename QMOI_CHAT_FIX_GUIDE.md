@@ -3,9 +3,11 @@
 ## Issues Fixed
 
 ### 1. ✅ QueryClient Error - "No QueryClient set"
+
 **Problem**: React Query was being used without QueryClientProvider
 
-**Solution**: 
+**Solution**:
+
 - Added QueryClientProvider to root layout
 - Configured with sensible defaults (5min staleTime, 10min cacheTime)
 - Set as "use client" component for client-side rendering
@@ -13,9 +15,11 @@
 **File**: `app/layout.tsx`
 
 ### 2. ✅ QMOI Not Responding to Messages
+
 **Problem**: No proper chat interface or hook to communicate with QMOI API
 
-**Solution**: 
+**Solution**:
+
 - Created `useQMOIChat` hook for chat state management
 - Created `QMOIChat` component for UI
 - Proper error handling and loading states
@@ -26,6 +30,7 @@
 ### New Files Created
 
 #### 1. `hooks/useQMOIChat.ts` - Chat Hook
+
 ```typescript
 // Features:
 - Message management (add, clear, send)
@@ -36,6 +41,7 @@
 ```
 
 #### 2. `src/components/qmoi/QMOIChat.tsx` - Chat Component
+
 ```typescript
 // Features:
 - Full chat UI with message display
@@ -52,13 +58,13 @@
 ### In Your Components
 
 ```tsx
-import { QMOIChat } from '@/components/qmoi/QMOIChat';
+import { QMOIChat } from "@/components/qmoi/QMOIChat";
 
 export function MyPage() {
   return (
-    <QMOIChat 
+    <QMOIChat
       userId="user-123"
-      onMessageReceived={(msg) => console.log('User sent:', msg)}
+      onMessageReceived={(msg) => console.log("User sent:", msg)}
     />
   );
 }
@@ -89,24 +95,28 @@ export function ChatBox() {
 ## Features
 
 ### Text Input
+
 - Send messages via text input
 - Enter key to submit
 - Input validation
 - Loading state during API call
 
 ### Voice Input
+
 - Click "Voice" button to start recording
 - Automatic speech recognition
 - Real-time transcription
 - Error handling for unsupported browsers
 
 ### Voice Output
+
 - Click "Speak" button on any QMOI response
 - Text-to-Speech synthesis
 - Adjustable rate and pitch
 - Cancellation support
 
 ### Message Display
+
 - User messages (blue, right-aligned)
 - Assistant messages (gray, left-aligned)
 - Timestamps for each message
@@ -139,18 +149,21 @@ Response:
 ## Testing
 
 ### Manual Testing
+
 1. Start the app: `npm run dev`
 2. Open `http://localhost:3000`
 3. Type a message and click "Send"
 4. QMOI should respond with a message
 
 ### Expected Responses
+
 - "Hello QMOI, how are you?" → Returns greeting with session info
 - "Remember my name" → Returns memory confirmation
 - "What's my avatar?" → Returns avatar info
 - "Tell me about my projects" → Returns project stats
 
 ### Voice Testing
+
 1. Click "Voice" button
 2. Speak clearly
 3. Message appears in input
@@ -160,22 +173,26 @@ Response:
 ## Debugging
 
 ### If you get "No QueryClient"
+
 - Layout must use "use client"
 - QueryClientProvider must wrap children
 - Check layout.tsx is updated
 
 ### If QMOI doesn't respond
+
 - Check `/api/qmoi/chat` endpoint exists
 - Verify QMOIService is imported correctly
 - Check browser console for errors
 - Ensure userId is passed (or uses "anonymous-user")
 
 ### If voice input fails
+
 - Check browser supports Web Speech API (Chrome, Edge, Safari)
 - Check microphone permissions
 - Check browser console for errors
 
 ### If voice output fails
+
 - Check browser supports Speech Synthesis
 - Check volume isn't muted
 - Check text isn't empty
@@ -183,7 +200,9 @@ Response:
 ## Configuration
 
 ### Update Chat Styling
+
 Edit `src/components/qmoi/QMOIChat.tsx`:
+
 ```tsx
 // Colors
 bg-blue-500 → bg-your-color
@@ -194,21 +213,24 @@ max-w-xs → max-w-lg
 ```
 
 ### Update Voice Settings
+
 ```tsx
-utterance.rate = 1;    // Speed (0.1-10)
-utterance.pitch = 1;   // Pitch (0-2)
-utterance.volume = 1;  // Volume (0-1)
+utterance.rate = 1; // Speed (0.1-10)
+utterance.pitch = 1; // Pitch (0-2)
+utterance.volume = 1; // Volume (0-1)
 ```
 
 ## Production Deployment
 
 ### Requirements
+
 - QueryClientProvider in layout (✅ Fixed)
 - `/api/qmoi/chat` endpoint (✅ Working)
 - QMOI Service properly configured (✅ Ready)
 - Browser supports Web APIs (✅ Fallback handling)
 
 ### Environment Setup
+
 ```bash
 # Build
 npm run build
@@ -221,6 +243,7 @@ npm run dev
 ```
 
 ### Performance Tips
+
 - Message history persists in component state
 - Consider adding database storage for conversation history
 - Implement pagination for long conversations
@@ -228,13 +251,13 @@ npm run dev
 
 ## Common Issues & Solutions
 
-| Issue | Solution |
-|-------|----------|
-| No responses from QMOI | Check `/api/qmoi/chat` endpoint, verify QMOIService |
-| "No QueryClient" error | Update layout.tsx with QueryClientProvider |
-| Voice doesn't work | Check browser support and permissions |
-| Slow responses | Check API latency, verify processMessage implementation |
-| Messages not scrolling | Verify messagesEndRef is properly connected |
+| Issue                  | Solution                                                |
+| ---------------------- | ------------------------------------------------------- |
+| No responses from QMOI | Check `/api/qmoi/chat` endpoint, verify QMOIService     |
+| "No QueryClient" error | Update layout.tsx with QueryClientProvider              |
+| Voice doesn't work     | Check browser support and permissions                   |
+| Slow responses         | Check API latency, verify processMessage implementation |
+| Messages not scrolling | Verify messagesEndRef is properly connected             |
 
 ## Next Steps
 
