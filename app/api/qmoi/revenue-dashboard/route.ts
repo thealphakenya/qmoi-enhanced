@@ -48,7 +48,16 @@ export async function GET(_request: NextRequest) {
       const dashboardData = JSON.parse(dashboardContent);
 
       return NextResponse.json(dashboardData);
-    } catch (e) {
+    } catch (_e) {
+      // Error reading dashboard data, return default
+      return NextResponse.json({
+        status: "unknown",
+        revenue_total: 0,
+        revenue_today: 0,
+        revenue_week: 0,
+        revenue_month: 0,
+      });
+    }
   } catch (_error) {
     (console as any).error("Error fetching dashboard data:", _error);
     return NextResponse.json(

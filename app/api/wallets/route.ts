@@ -29,9 +29,11 @@ export async function GET(_request: NextRequest) {
     let take = 10;
     try {
       const _query = new URL(String(_request.url || "http://localhost"));
-      skip = parseInt(query.searchParams.get("skip") || "0");
-      take = parseInt(query.searchParams.get("take") || "10");
-    } catch (e) {
+      skip = parseInt(_query.searchParams.get("skip") || "0");
+      take = parseInt(_query.searchParams.get("take") || "10");
+    } catch (_e) {
+      // Use defaults on parse error
+    }
 
     // Use prisma facade to find wallets for this user
     const allWallets = await (fullDb as any).prisma.wallet.findMany({
@@ -47,7 +49,7 @@ export async function GET(_request: NextRequest) {
     (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
     return NextResponse.json(
       { _error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -81,7 +83,7 @@ export async function POST(_request: NextRequest) {
     const wallet = await walletService.create({
       userId: decoded.userId,
       address: `wallet_${Date.now()}`,
-      balance: '0',
+      balance: "0",
       network: currency,
       name: body.name,
     });
@@ -91,7 +93,7 @@ export async function POST(_request: NextRequest) {
     (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
     return NextResponse.json(
       { _error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

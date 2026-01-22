@@ -49,7 +49,10 @@ export async function POST(_request: Request) {
 
     // Enhanced security verification
     if (!verifyWebhookSignature(body, signature)) {
-      return NextResponse.json({ _error: "Invalid signature" }, { status: 401 });
+      return NextResponse.json(
+        { _error: "Invalid signature" },
+        { status: 401 },
+      );
     }
 
     switch (webhookType) {
@@ -335,7 +338,9 @@ function verifyWebhookSignature(
   try {
     payloadString =
       typeof body === "string" ? body : JSON.stringify(body ?? "");
-  } catch (e) {
+  } catch (_e) {
+    payloadString = "";
+  }
 
   try {
     const expected = createHmac("sha256", secret)
@@ -721,7 +726,10 @@ async function broadcastDiscussionUpdate(discussionId: string, data: unknown) {
   console.log(`Broadcasting discussion update: ${discussionId}`, data);
 }
 
-async function enhanceDiscussionWithQMOI(discussionId: string, content: unknown) {
+async function enhanceDiscussionWithQMOI(
+  discussionId: string,
+  content: unknown,
+) {
   // QMOI AI discussion enhancement
   try {
     console.log(`Enhancing discussion ${discussionId} with QMOI AI`);
@@ -767,7 +775,10 @@ async function updateSyncMetrics(
     console.log("Updated sync metrics:", metrics);
     return metrics;
   } catch (_error) {
-    (globalThis.console as any)?.error?.("Error updating sync metrics:", _error);
+    (globalThis.console as any)?.error?.(
+      "Error updating sync metrics:",
+      _error,
+    );
     return {
       _error: error instanceof Error ? error.message : String(_error),
     };
@@ -972,7 +983,10 @@ async function applyEnhancementsWithRollback(
       rollback_available: true,
     };
   } catch (_error) {
-    (globalThis.console as any)?.error?.("Error applying enhancements:", _error);
+    (globalThis.console as any)?.error?.(
+      "Error applying enhancements:",
+      _error,
+    );
     return {
       applied: false,
       _error: error instanceof Error ? error.message : String(_error),
@@ -1135,7 +1149,10 @@ async function attemptAutoFixes(alert_type: string, metrics: unknown) {
     console.log(`Attempted auto-fixes for ${alert_type}:`, fixes);
     return fixes;
   } catch (_error) {
-    (globalThis.console as any)?.error?.("Error attempting auto-fixes:", _error);
+    (globalThis.console as any)?.error?.(
+      "Error attempting auto-fixes:",
+      _error,
+    );
     return ["fix_attempt_failed"];
   }
 }
@@ -1163,7 +1180,10 @@ async function escalateCriticalAlert(alert: unknown) {
   }
 }
 
-async function adjustMonitoringThresholds(alert_type: string, metrics: unknown) {
+async function adjustMonitoringThresholds(
+  alert_type: string,
+  metrics: unknown,
+) {
   // Adjust monitoring thresholds based on patterns
   try {
     const adjustments: {
@@ -1334,7 +1354,7 @@ async function notifyPushSubscribers(_event: string, data: unknown) {
     );
     return {
       sent: false,
-      _error: error instanceof Error ? error.message : String(_error),
+      _error: _error instanceof Error ? _error.message : String(_error),
     };
   }
 }

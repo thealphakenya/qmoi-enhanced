@@ -69,7 +69,10 @@ async function executeTrade(trade: Trade): Promise<Trade> {
       profit: engineResult.profit || 0,
     });
     return updated || newTrade;
-  } catch (e) {
+  } catch (_e) {
+    // Engine error, return original trade
+    return newTrade;
+  }
 }
 
 async function cancelTrade(
@@ -100,8 +103,8 @@ async function cancelTrade(
     return {
       success: false,
       message:
-        error instanceof Error
-          ? error.message
+        _error instanceof Error
+          ? _error.message
           : "Unknown error cancelling trade",
     };
   }
@@ -140,7 +143,7 @@ export async function GET(_request: NextRequest) {
   } catch (_error) {
     (console as any).error("Error in QI trading endpoint:", _error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: _error instanceof Error ? _error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -210,7 +213,7 @@ export async function POST(_request: NextRequest) {
   } catch (_error) {
     (console as any).error("Error in QI trading execution endpoint:", _error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { _error: _error instanceof Error ? _error.message : "Unknown error" },
       { status: 500 },
     );
   }

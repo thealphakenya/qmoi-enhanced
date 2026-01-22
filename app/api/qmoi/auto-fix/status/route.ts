@@ -42,7 +42,9 @@ export async function GET(_request: NextRequest) {
     try {
       const reportData = await fs.readFile(latestReportPath, "utf-8");
       report = JSON.parse(reportData);
-    } catch (e) {
+    } catch (_e) {
+      // Report file not found or invalid, will use default report
+    }
 
     // Check if auto-fix process is running
     try {

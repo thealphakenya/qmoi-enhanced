@@ -7,11 +7,14 @@ export async function POST(_req: Request) {
     let body: unknown = {};
     try {
       body = await _req.json();
-    } catch (e) {
+    } catch (_e) {
+      // Invalid JSON in request body
+    }
+
     // Accept both {messages: [...] } and {input: 'text'} convenience
-    let messages = body.messages;
-    if (!messages && body.input) {
-      messages = [{ role: "user", content: body.input }];
+    let messages = (body as any).messages;
+    if (!messages && (body as any).input) {
+      messages = [{ role: "user", content: (body as any).input }];
     }
 
     if (!messages || !Array.isArray(messages)) {
@@ -20,21 +23,24 @@ export async function POST(_req: Request) {
 
     // Enforce canonical model unless explicitly overridden in non-production
     const model =
-      process.env.NODE_ENV === "production" ? "qmoi" : body.model || "qmoi";
+      process.env.NODE_ENV === "production"
+        ? "qmoi"
+        : (body as any).model || "qmoi";
 
     const qbase = process.env.QMOI_API_BASE;
     // In production require an explicit QMOI_API_BASE to avoid accidentally proxying to localhost test servers
     if (process.env.NODE_ENV === "production" && !qbase) {
       return NextResponse.json(
         { _error: "qmoi_api_base_not_configured" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
     const target = qbase || "http://127.0.0.1:8080";
 
     // Ensure a session id exists (cookie or incoming sessionId) so helper can track per-user memory
-    let sessionId = body.sessionId || _req.headers.get("x-qmoi-session");
+    let sessionId =
+      (body as any).sessionId || _req.headers.get("x-qmoi-session");
     // also accept cookie
     try {
       const cookie = _req.headers.get("cookie") || "";
@@ -42,7 +48,9 @@ export async function POST(_req: Request) {
         const match = cookie.match(/(?:^|; )qmoi_session_id=([^;]+)/);
         if (match) sessionId = match[1];
       }
-    } catch (e) {
+    } catch (_e) {
+      // Cookie parsing error
+    }
 
     if (!sessionId) {
       sessionId = `s_${Date.now().toString(36)}_${Math.random()
@@ -72,17 +80,21 @@ export async function POST(_req: Request) {
         const txt = await (resp as any).text();
         try {
           data = txt ? JSON.parse(txt) : null;
-        } catch (e) {
+        } catch (_e) {
+          data = null;
+        }
       } else {
         data = null;
       }
-    } catch (e) {
+    } catch (_e) {
+      data = null;
+    }
 
     if (!data) {
       try {
         return NextResponse.json(
           { _error: "invalid_response_from_qmoi" },
-          { status: 502 }
+          { status: 502 },
         );
       } catch (_e) {
         return { status: 502, body: { _error: "invalid_response_from_qmoi" } };
@@ -101,12 +113,14 @@ export async function POST(_req: Request) {
             msg.content = msg.content.replace(/\s*\(tone:\s*[^\)]+\)\s*$/i, "");
             msg.content = msg.content.replace(
               /\s*\(tone:\s*[^;]+;\s*model:\s*[^\)]+\)\s*$/i,
-              ""
+              "",
             );
           }
         }
       }
-    } catch (e) {
+    } catch (_e) {
+      // Sanitization error, continue with unsanitized response
+    }
 
     // Pass-through sanitized response and set session cookie when new
     try {
@@ -114,7 +128,7 @@ export async function POST(_req: Request) {
       // if incoming _request didn't have cookie, set one so browser persists session
       try {
         const hadCookie = (_req.headers.get("cookie") || "").includes(
-          "qmoi_session_id="
+          "qmoi_session_id=",
         );
         if (!hadCookie && sessionId) {
           // Set cookie for 1 year
@@ -123,9 +137,13 @@ export async function POST(_req: Request) {
           }; SameSite=Lax`;
           _res.headers.set("Set-Cookie", cookieVal);
         }
-      } catch (e) {
+      } catch (_e) {
+        // Cookie setting error
+      }
       return _res;
-    } catch (e) {
+    } catch (_e) {
+      // Response creation error
+    }
   } catch (_error) {
     (console as any).error("Error in /api/qmoi/chat:", _error);
     try {

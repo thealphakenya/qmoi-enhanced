@@ -48,7 +48,9 @@ export async function GET(_request: NextRequest) {
         "logs/download_fixes.log",
         JSON.stringify(logEntry) + "\n",
       );
-    } catch (e) {
+    } catch (_e) {
+      // Ignore logging errors
+    }
 
     // Read the report file
     const reportData = await fs.readFile(latestReportPath, "utf-8");
@@ -56,15 +58,15 @@ export async function GET(_request: NextRequest) {
 
     // Create response with proper headers for file download
     const _response = new NextResponse(reportData);
-    response.headers.set("Content-Type", "application/json");
-    response.headers.set(
+    _response.headers.set("Content-Type", "application/json");
+    _response.headers.set(
       "Content-Disposition",
       `attachment; filename="qmoi-auto-fix-report-${
         new Date().toISOString().split("T")[0]
       }.json"`,
     );
 
-    return response;
+    return _response;
   } catch (_error) {
     // On _error, log the error
     (console as any).error("Error downloading report:", _error);
@@ -75,14 +77,16 @@ export async function GET(_request: NextRequest) {
       user: "unknown",
       app: "QMOI",
       device: "unknown",
-      _error: error?.toString() || "unknown error",
+      _error: _error?.toString() || "unknown error",
     };
     try {
       await fs.appendFile(
         "logs/download_fixes.log",
         JSON.stringify(logEntryErr) + "\n",
       );
-    } catch (e) {
+    } catch (_e) {
+      // Ignore logging errors
+    }
     return NextResponse.json(
       { _error: "Failed to download report" },
       { status: 500 },

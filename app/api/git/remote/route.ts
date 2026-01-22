@@ -8,4 +8,9 @@ export async function GET(_req: NextRequest) {
     const remote = execSync("git remote get-url origin").toString().trim();
     return new Response(remote);
   } catch (e) {
+    return new Response(JSON.stringify({ error: "Failed to get remote" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
 }

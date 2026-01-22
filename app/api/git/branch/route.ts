@@ -8,4 +8,9 @@ export async function GET(_req: NextRequest) {
     const branch = execSync("git branch --show-current").toString().trim();
     return new Response(branch);
   } catch (e) {
+    return new Response(JSON.stringify({ error: "Failed to get branch" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
 }
