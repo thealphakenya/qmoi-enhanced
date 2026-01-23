@@ -6,7 +6,7 @@
  * Run: node test-qmoi-master.js
  */
 
-const http = require("http");
+import http from "http";
 
 // Configuration
 const config = {
@@ -676,11 +676,11 @@ async function runAllTests() {
 }
 
 // Run tests
-if (require.main === module) {
+if (import.meta.url === `file://${process.argv[1]}`) {
   runAllTests().catch((error) => {
     log(`Test suite error: ${error.message}`, "ERROR");
     process.exit(1);
   });
 }
 
-module.exports = { runAllTests };
+export { runAllTests };
