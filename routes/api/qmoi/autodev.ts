@@ -4,6 +4,7 @@ import { QCityService } from "../../../scripts/services/qcity_service";
 import { logger } from "../../../scripts/utils/logger";
 import { QmoiAutodevDaemon } from "../../../scripts/services/qmoi_autodev_daemon";
 import { unifiedCICDService } from "../../../scripts/services/unified_ci_cd_service";
+import { aiService } from "../../../lib/ai-service";
 
 const qcityService = new QCityService();
 
@@ -29,7 +30,11 @@ export default async function handler(
     }
     const { action, platform = "vercel", ...params } = req.body;
     logger.info(`[QMOI-AUTODEV] Action: ${action}`, params);
-    let result: unknown = { success: false, message: "Not implemented", logs: [] };
+    let result: unknown = {
+      success: false,
+      message: "Not implemented",
+      logs: [],
+    };
     switch (action) {
       case "force_run": {
         let fixResults = [];
@@ -291,9 +296,115 @@ export default async function handler(
         };
         break;
       }
-      case "status": {
-        const status = qcityService.getStatus();
-        result = { success: true, message: "QCity status fetched.", status };
+      case "master_instruction": {
+        const instruction = params.instruction || params.command;
+        if (!instruction) {
+          result = {
+            success: false,
+            message: "No instruction provided",
+            logs: [],
+          };
+        } else {
+          // Execute master instruction through AI service
+          const aiResponse = await aiService.generateResponse(
+            `master instruction ${instruction}`,
+          );
+          result = {
+            success: true,
+            message: "Master instruction executed",
+            instruction,
+            response: aiResponse,
+            logs: [`Executed master instruction: ${instruction}`],
+          };
+        }
+        break;
+      }
+      case "ui_development": {
+        const uiSpec = params.spec || params.description;
+        if (!uiSpec) {
+          result = {
+            success: false,
+            message: "No UI specification provided",
+            logs: [],
+          };
+        } else {
+          // Execute UI development through AI service
+          const aiResponse = await aiService.generateResponse(
+            `create ui ${uiSpec}`,
+          );
+          result = {
+            success: true,
+            message: "UI development initiated",
+            spec: uiSpec,
+            response: aiResponse,
+            logs: [`UI development task: ${uiSpec}`],
+          };
+        }
+        break;
+      }
+      case "autodev_task": {
+        const task = params.task || params.description;
+        if (!task) {
+          result = { success: false, message: "No task provided", logs: [] };
+        } else {
+          // Execute autodev task through AI service
+          const aiResponse = await aiService.generateResponse(
+            `autodev ${task}`,
+          );
+          result = {
+            success: true,
+            message: "Autodev task initiated",
+            task,
+            response: aiResponse,
+            logs: [`Autodev task: ${task}`],
+          };
+        }
+        break;
+      }
+      case "research": {
+        const topic = params.topic || params.subject;
+        if (!topic) {
+          result = {
+            success: false,
+            message: "No research topic provided",
+            logs: [],
+          };
+        } else {
+          // Execute research through AI service
+          const aiResponse = await aiService.generateResponse(
+            `research ${topic}`,
+          );
+          result = {
+            success: true,
+            message: "Research completed",
+            topic,
+            response: aiResponse,
+            logs: [`Research on: ${topic}`],
+          };
+        }
+        break;
+      }
+      case "evolution": {
+        const aspect = params.aspect || params.target;
+        if (!aspect) {
+          result = {
+            success: false,
+            message: "No evolution aspect provided",
+            logs: [],
+          };
+        } else {
+          // Execute evolution through AI service
+          const aiResponse = await aiService.generateResponse(
+            `evolve ${aspect}`,
+          );
+          result = {
+            success: true,
+            message: "Evolution initiated",
+            aspect,
+            response: aiResponse,
+            logs: [`Evolution of: ${aspect}`],
+          };
+        }
         break;
       }
       default:

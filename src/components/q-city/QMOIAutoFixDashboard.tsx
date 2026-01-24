@@ -85,20 +85,6 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       );
     }
   };
-          type: "deploy",
-          message: "Vercel deployment failed",
-          severity: "high",
-          timestamp: new Date().toISOString(),
-          status: "pending",
-        },
-      ];
-      setErrors(mockErrors);
-      (globalThis.console as unknown)?.error?.(
-        "Failed to fetch error log:",
-        _error,
-      );
-    }
-  };
 
   const fetchFixHistory = async () => {
     try {
