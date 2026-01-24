@@ -76,6 +76,44 @@ export class CashonWallet {
     return this.balance;
   }
 
+  async verifyPesapalBalance(masterToken: string): Promise<{
+    success: boolean;
+    currentBalance: number;
+    previousBalance?: number;
+    transferDetected: boolean;
+    error?: string;
+  }> {
+    if (masterToken !== this.masterToken) {
+      throw new Error("Master access required");
+    }
+
+    try {
+      const previousBalance = this.balance.availableBalance;
+      await this.updateBalance();
+      const currentBalance = this.balance.availableBalance;
+
+      // Check if balance increased by approximately $1000 (converted to KES)
+      // $1000 USD ≈ 130,000 KES (rough conversion)
+      const expectedIncrease = 130000;
+      const transferDetected =
+        currentBalance - previousBalance >= expectedIncrease * 0.9; // 90% of expected
+
+      return {
+        success: true,
+        currentBalance,
+        previousBalance,
+        transferDetected,
+      };
+    } catch (error) {
+      return {
+        success: false,
+        currentBalance: 0,
+        transferDetected: false,
+        error: (error as any)?.message || String(error),
+      };
+    }
+  }
+
   async initiateDeposit(amount: number, masterToken: string): Promise<string> {
     if (masterToken !== this.masterToken) {
       throw new Error("Master access required");
@@ -95,7 +133,7 @@ export class CashonWallet {
     this.transactions.push(transaction);
     await this.notifyMaster(
       `Deposit request: KES ${amount}`,
-      "deposit_request"
+      "deposit_request",
     );
 
     return transactionId;
@@ -103,7 +141,7 @@ export class CashonWallet {
 
   async approveDeposit(
     transactionId: string,
-    masterToken: string
+    masterToken: string,
   ): Promise<boolean> {
     if (masterToken !== this.masterToken) {
       throw new Error("Master access required");
@@ -125,14 +163,14 @@ export class CashonWallet {
 
         await this.notifyMaster(
           `Deposit approved: KES ${transaction.amount}`,
-          "deposit_approved"
+          "deposit_approved",
         );
         return true;
       } else {
         transaction.status = "failed";
         await this.notifyMaster(
           `Deposit failed: KES ${transaction.amount}`,
-          "deposit_failed"
+          "deposit_failed",
         );
         return false;
       }
@@ -140,7 +178,7 @@ export class CashonWallet {
       transaction.status = "failed";
       await this.notifyMaster(
         `Deposit error: ${(error as any)?.message || String(error)}`,
-        "deposit_error"
+        "deposit_error",
       );
       return false;
     }
@@ -172,7 +210,7 @@ export class CashonWallet {
 
     await this.notifyMaster(
       `Withdrawal processed: KES ${amount}`,
-      "withdrawal_processed"
+      "withdrawal_processed",
     );
     return transactionId;
   }
@@ -182,7 +220,7 @@ export class CashonWallet {
     amount: number,
     asset: string,
     strategy: string,
-    aiConfidence: number
+    aiConfidence: number,
   ): Promise<string> {
     if (!this.isTradingEnabled) {
       throw new Error("Trading is disabled");
@@ -217,17 +255,14 @@ export class CashonWallet {
     } else {
       await this.notifyMaster(
         `Trade request: ${asset} KES ${amount} (${strategy})`,
-        "trade_request"
+        "trade_request",
       );
     }
 
     return tradeId;
   }
 
-  async approveTrade(
-    tradeId: string,
-    autoApproved = false
-  ): Promise<boolean> {
+  async approveTrade(tradeId: string, autoApproved = false): Promise<boolean> {
     const trade = this.tradeRequests.find((t) => t.id === tradeId);
     if (!trade) {
       throw new Error("Trade request not found");
@@ -264,14 +299,14 @@ export class CashonWallet {
 
         await this.notifyMaster(
           `Trade executed: ${trade.asset} KES ${trade.amount}`,
-          "trade_executed"
+          "trade_executed",
         );
         return true;
       } else {
         trade.status = "rejected";
         await this.notifyMaster(
           `Trade failed: ${trade.asset} KES ${trade.amount}`,
-          "trade_failed"
+          "trade_failed",
         );
         return false;
       }
@@ -279,7 +314,7 @@ export class CashonWallet {
       trade.status = "rejected";
       await this.notifyMaster(
         `Trade error: ${(error as any)?.message || String(error)}`,
-        "trade_error"
+        "trade_error",
       );
       return false;
     }
@@ -306,7 +341,7 @@ export class CashonWallet {
     lastTrade: Date | null;
   }> {
     const activeTrades = this.tradeRequests.filter(
-      (t) => t.status === "executed"
+      (t) => t.status === "executed",
     ).length;
     const totalProfit = this.calculateTotalProfit();
     const lastTrade =
@@ -330,73 +365,134 @@ export class CashonWallet {
       const baseUrl =
         this.pesapalConfig.environment === "live"
           ? "https://api.pesapal.com"
-          : "https://[PRODUCTION IMPLEMENTATION REQUIRED].pesapal.com";
+          : "https://cybqa.pesapal.com";
 
-      const response = await fetch(`${baseUrl}/api/v1/accounts/balance`, {
+      const token = await this.getPesapalToken();
+
+      // Use Pesapal's account balance endpoint
+      const response = await fetch(`${baseUrl}/api/Account/Balance`, {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${await this.getPesapalToken()}`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
       });
 
-      const data = (await response.json()) as any;
-      if (data.success) {
-        this.balance.availableBalance = data.data.availableBalance;
-        this.balance.pendingBalance = data.data.pendingBalance;
+      if (!response.ok) {
+        throw new Error(
+          `Pesapal balance API failed: ${response.status} ${response.statusText}`,
+        );
+      }
+
+      const data = await response.json();
+      if (data.status === "200" && data.balance !== undefined) {
+        this.balance.availableBalance = parseFloat(data.balance);
+        this.balance.pendingBalance = parseFloat(data.pending_balance || "0");
         this.balance.lastUpdated = new Date();
+
+        console.log("[CashOnWallet] Pesapal balance updated:", {
+          available: this.balance.availableBalance,
+          pending: this.balance.pendingBalance,
+        });
+      } else {
+        throw new Error(
+          `Pesapal balance query failed: ${data.error || "Unknown error"}`,
+        );
       }
     } catch (error) {
       (globalThis.console as any)?.error?.("Failed to update balance:", error);
+      // Don't throw error, just log it - balance update failures shouldn't break the system
     }
   }
 
   private async initiatePesapalSTK(
-    amount: number
+    amount: number,
   ): Promise<{ success: boolean; reference?: string }> {
     try {
       const baseUrl =
         this.pesapalConfig.environment === "live"
           ? "https://api.pesapal.com"
-          : "https://[PRODUCTION IMPLEMENTATION REQUIRED].pesapal.com";
+          : "https://cybqa.pesapal.com";
 
-      const response = await fetch(`${baseUrl}/api/v1/payments/request`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${await this.getPesapalToken()}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          amount: amount.toString(),
-          currency: "KES",
-          description: "Cashon Trading Deposit",
-          callback_url: this.pesapalConfig.callbackUrl,
-          ipn_url: this.pesapalConfig.ipnUrl,
-          billing_address: {
-            email_address: "master@cashon.ai",
-            phone_number: "+254700000000",
-            country_code: "KE",
-            first_name: "Master",
-            last_name: "User",
+      const token = await this.getPesapalToken();
+
+      // Use Pesapal's SubmitOrderRequest endpoint for STK push
+      const response = await fetch(
+        `${baseUrl}/api/Transactions/SubmitOrderRequest`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
-        }),
-      });
+          body: JSON.stringify({
+            currency: "KES",
+            amount: amount.toString(),
+            description: "Cashon Trading Deposit",
+            callback_url: this.pesapalConfig.callbackUrl,
+            notification_id: this.pesapalConfig.ipnUrl,
+            billing_address: {
+              email_address: "master@cashon.ai",
+              phone_number: "+254700000000",
+              country_code: "KE",
+              first_name: "Master",
+              last_name: "User",
+            },
+          }),
+        },
+      );
 
       const data = (await response.json()) as any;
-      return {
-        success: data.success,
-        reference: data.reference,
-      };
+      if (data.status === "200" && data.order_tracking_id) {
+        return {
+          success: true,
+          reference: data.order_tracking_id,
+        };
+      } else {
+        (globalThis.console as any)?.error?.("Pesapal STK failed:", data);
+        return { success: false };
+      }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Pesapal STK initiation failed:", error);
+      (globalThis.console as any)?.error?.(
+        "Pesapal STK initiation failed:",
+        error,
+      );
       return { success: false };
     }
   }
 
   private async getPesapalToken(): Promise<string> {
-    // Implement Pesapal OAuth token generation
-    // This would typically involve getting a token using consumer key/secret
-    return "pesapal_token_[PRODUCTION IMPLEMENTATION REQUIRED]";
+    try {
+      const baseUrl =
+        this.pesapalConfig.environment === "live"
+          ? "https://api.pesapal.com"
+          : "https://cybqa.pesapal.com";
+
+      // Get OAuth token using consumer credentials
+      const authResponse = await fetch(`${baseUrl}/api/Auth/RequestToken`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          consumer_key: this.pesapalConfig.consumerKey,
+          consumer_secret: this.pesapalConfig.consumerSecret,
+        }),
+      });
+
+      const authData = await authResponse.json();
+      if (authData.status === "200" && authData.token) {
+        return authData.token;
+      } else {
+        throw new Error(
+          `Pesapal auth failed: ${authData.error || "Unknown error"}`,
+        );
+      }
+    } catch (error) {
+      console.error("[CashOnWallet] Pesapal token generation failed:", error);
+      throw error;
+    }
   }
 
   private async autoRequestDeposit(requiredAmount: number): Promise<void> {
@@ -404,12 +500,12 @@ export class CashonWallet {
     await this.initiateDeposit(depositAmount, this.masterToken);
     await this.notifyMaster(
       `Auto-deposit requested: KES ${depositAmount}`,
-      "auto_deposit_requested"
+      "auto_deposit_requested",
     );
   }
 
   private async executeTrade(
-    trade: TradeRequest
+    trade: TradeRequest,
   ): Promise<{ success: boolean; profit?: number }> {
     // This would integrate with actual trading APIs (Binance, Valr, etc.)
     // For now, simulate trade execution
@@ -441,27 +537,30 @@ export class CashonWallet {
 
   private startTradingLoop(): void {
     // Start autonomous trading loop
-    setInterval(async () => {
-      if (!this.isTradingEnabled) return;
+    setInterval(
+      async () => {
+        if (!this.isTradingEnabled) return;
 
-      try {
-        await this.updateBalance();
+        try {
+          await this.updateBalance();
 
-        if (this.balance.availableBalance < this.minTradeAmount) {
-          await this.autoRequestDeposit(this.minTradeAmount);
-          return;
+          if (this.balance.availableBalance < this.minTradeAmount) {
+            await this.autoRequestDeposit(this.minTradeAmount);
+            return;
+          }
+
+          // AI trading logic would go here
+          // For now, just log the check
+          console.log(
+            "Trading loop check - balance:",
+            this.balance.availableBalance,
+          );
+        } catch (error) {
+          (globalThis.console as any)?.error?.("Trading loop error:", error);
         }
-
-        // AI trading logic would go here
-        // For now, just log the check
-        console.log(
-          "Trading loop check - balance:",
-          this.balance.availableBalance
-        );
-      } catch (error) {
-        (globalThis.console as any)?.error?.("Trading loop error:", error);
-      }
-    }, 5 * 60 * 1000); // Every 5 minutes
+      },
+      5 * 60 * 1000,
+    ); // Every 5 minutes
   }
 }
 
@@ -475,7 +574,7 @@ export const cashonWallet = new CashonWallet(
     callbackUrl: process.env.PESAPAL_CALLBACK_URL || "",
     ipnUrl: process.env.PESAPAL_IPN_URL || "",
   },
-  process.env.MASTER_TOKEN || ""
+  process.env.MASTER_TOKEN || "master_token",
 );
 
 export async function transferToMpesa(amount: number) {
