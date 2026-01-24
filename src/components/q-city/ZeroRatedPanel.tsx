@@ -13,7 +13,10 @@ const fetchZeroRatedStatus = async (): Promise<ZeroRatedStatus> => {
     active: true,
     lastUsed: new Date().toLocaleString(),
     logs: [
-      { time: new Date().toLocaleString(), _event: "Zero-rated mode activated" },
+      {
+        time: new Date().toLocaleString(),
+        _event: "Zero-rated mode activated",
+      },
       {
         time: new Date().toLocaleString(),
         _event: "Fallback to Wikipedia proxy",

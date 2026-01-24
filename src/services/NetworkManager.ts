@@ -64,12 +64,12 @@ export class NetworkManager extends EventEmitter {
         n.type === "wifi"
           ? 4
           : n.type === "ethernet"
-          ? 3
-          : n.type === "cellular"
-          ? 2
-          : n.isZeroRated
-          ? 1
-          : 0;
+            ? 3
+            : n.type === "cellular"
+              ? 2
+              : n.isZeroRated
+                ? 1
+                : 0;
       return priority(b) - priority(a) || b.signalStrength - a.signalStrength;
     });
     const best = sorted[0];

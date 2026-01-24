@@ -44,7 +44,7 @@ export function useTrading() {
       refetchInterval: 5000, // Poll every 5 seconds
       onError: (err: unknown) =>
         setError(err instanceof Error ? err : new Error(String(err))),
-    }
+    },
   );
 
   // Fetch trading config
@@ -60,7 +60,7 @@ export function useTrading() {
     {
       onError: (err: unknown) =>
         setError(err instanceof Error ? err : new Error(String(err))),
-    }
+    },
   );
 
   // Open position mutation
@@ -81,7 +81,7 @@ export function useTrading() {
       onSuccess: () => refetchPositions(),
       onError: (err: unknown) =>
         setError(err instanceof Error ? err : new Error(String(err))),
-    }
+    },
   );
 
   // Close position mutation
@@ -96,7 +96,7 @@ export function useTrading() {
       onSuccess: () => refetchPositions(),
       onError: (err: unknown) =>
         setError(err instanceof Error ? err : new Error(String(err))),
-    }
+    },
   );
 
   // Update config mutation
@@ -112,7 +112,7 @@ export function useTrading() {
       },
       onError: (err: unknown) =>
         setError(err instanceof Error ? err : new Error(String(err))),
-    }
+    },
   );
 
   // Update positions and config when data changes
@@ -133,7 +133,7 @@ export function useTrading() {
     (symbol: string, type: "long" | "short", size: number) => {
       openPositionMutation.mutate({ symbol, type, size });
     },
-    [openPositionMutation]
+    [openPositionMutation],
   );
 
   // Close position
@@ -141,7 +141,7 @@ export function useTrading() {
     (positionId: string) => {
       closePositionMutation.mutate(positionId);
     },
-    [closePositionMutation]
+    [closePositionMutation],
   );
 
   // Update config
@@ -149,7 +149,7 @@ export function useTrading() {
     (newConfig: Partial<TradingConfig>) => {
       updateConfigMutation.mutate(newConfig);
     },
-    [updateConfigMutation]
+    [updateConfigMutation],
   );
 
   return {

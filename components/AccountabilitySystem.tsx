@@ -174,7 +174,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
     // Generate sample logs and save to database
     for (let i = 0; i < 20; i++) {
       const timestamp = new Date(
-        Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000
+        Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000,
       ); // Last 30 days
 
       try {
@@ -205,7 +205,10 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
           }),
         });
       } catch (error) {
-        (globalThis.console as any)?.error?.("Failed to save sample log:", error);
+        (globalThis.console as any)?.error?.(
+          "Failed to save sample log:",
+          error,
+        );
       }
     }
 
@@ -217,11 +220,11 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
   const calculateMetrics = (logs: AuditLog[]) => {
     const totalActions = logs.length;
     const successfulActions = logs.filter(
-      (log) => log.status === "success"
+      (log) => log.status === "success",
     ).length;
     const failedActions = logs.filter((log) => log.status === "failure").length;
     const highRiskActions = logs.filter(
-      (log) => log.riskLevel === "high" || log.riskLevel === "critical"
+      (log) => log.riskLevel === "high" || log.riskLevel === "critical",
     ).length;
     const uniqueUsers = new Set(logs.map((log) => log.userId)).size;
 
@@ -229,7 +232,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
     const complianceScore = Math.min(
       100,
       (successfulActions / totalActions) * 100 -
-        (failedActions / totalActions) * 50
+        (failedActions / totalActions) * 50,
     );
 
     setMetrics({
@@ -248,7 +251,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
     action: string,
     resource: string,
     details: Record<string, any> = {},
-    riskLevel: "low" | "medium" | "high" | "critical" = "low"
+    riskLevel: "low" | "medium" | "high" | "critical" = "low",
   ) => {
     try {
       const response = await fetch("/api/qmoi-database", {
@@ -306,7 +309,9 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
           detectAnomalies(newLog);
         }
       } else {
-        (globalThis.console as any)?.error?.("Failed to log action to database");
+        (globalThis.console as any)?.error?.(
+          "Failed to log action to database",
+        );
         // Fallback to local state update
         const newLog: AuditLog = {
           id: `log-${Date.now()}`,
@@ -345,15 +350,15 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
     const recentLogs = auditLogs.filter(
       (l) =>
         l.userId === log.userId &&
-        l.timestamp > new Date(Date.now() - 60 * 60 * 1000) // Last hour
+        l.timestamp > new Date(Date.now() - 60 * 60 * 1000), // Last hour
     );
 
     // Check for unusual patterns
     const failedActions = recentLogs.filter(
-      (l) => l.status === "failure"
+      (l) => l.status === "failure",
     ).length;
     const highRiskActions = recentLogs.filter(
-      (l) => l.riskLevel === "high" || l.riskLevel === "critical"
+      (l) => l.riskLevel === "high" || l.riskLevel === "critical",
     ).length;
 
     if (failedActions > 5 || highRiskActions > 3) {
@@ -375,7 +380,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
         (log) =>
           log.action.toLowerCase().includes(searchQuery.toLowerCase()) ||
           log.resource.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          log.username.toLowerCase().includes(searchQuery.toLowerCase())
+          log.username.toLowerCase().includes(searchQuery.toLowerCase()),
       );
     }
 
@@ -554,7 +559,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                   "manual_audit",
                   "system",
                   { action: "manual_check" },
-                  "low"
+                  "low",
                 )
               }
             >

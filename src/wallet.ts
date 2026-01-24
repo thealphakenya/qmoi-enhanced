@@ -12,7 +12,7 @@ export interface WalletAdapter {
     amount: number,
     asset: string,
     strategy?: string,
-    confidence?: number
+    confidence?: number,
   ) => Promise<string>;
   approveTrade?: (tradeId: string, auto?: boolean) => Promise<boolean>;
 }
@@ -63,7 +63,7 @@ export class TestnetAdapter implements WalletAdapter {
     amount: number,
     asset: string,
     strategy?: string,
-    confidence?: number
+    confidence?: number,
   ) {
     void amount;
     void asset;
@@ -71,7 +71,7 @@ export class TestnetAdapter implements WalletAdapter {
     void confidence;
 
     const id = `test-${this.name}-${Date.now()}-${Math.floor(
-      Math.random() * 10000
+      Math.random() * 10000,
     )}`;
     // In a real adapter, you would call the testnet SDK here. We persist a lightweight entry in state if available.
     return id;
@@ -282,7 +282,7 @@ export class WalletService {
     if (!fs.existsSync(this.stateFile))
       fs.writeFileSync(
         this.stateFile,
-        JSON.stringify({ wallets: {} }, null, 2)
+        JSON.stringify({ wallets: {} }, null, 2),
       );
   }
 
@@ -343,7 +343,7 @@ export class WalletService {
       fs.writeFileSync(
         this.stateFile,
         JSON.stringify(dataObjSafe, null, 2),
-        "utf8"
+        "utf8",
       );
     } catch (_err) {
       void _err;
@@ -352,9 +352,9 @@ export class WalletService {
         JSON.stringify(
           { history: [{ ts: new Date().toISOString(), snapshot }] },
           null,
-          2
+          2,
         ),
-        "utf8"
+        "utf8",
       );
     }
   }
@@ -367,7 +367,7 @@ export class WalletService {
 
     try {
       const s: unknown = JSON.parse(
-        fs.readFileSync(this.stateFile, "utf8") || "{}"
+        fs.readFileSync(this.stateFile, "utf8") || "{}",
       );
       if (s && typeof s === "object") {
         const sObj = s as Record<string, unknown>;

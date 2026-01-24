@@ -1,4 +1,8 @@
-import { userService, walletService, transactionService } from "@/lib/db/services";
+import {
+  userService,
+  walletService,
+  transactionService,
+} from "@/lib/db/services";
 import { authService } from "@/lib/auth/service";
 
 describe("Admin Endpoints", () => {
@@ -31,7 +35,10 @@ describe("Admin Endpoints", () => {
 
     // Generate tokens
     adminToken = authService.generateToken(adminId, "admin@test.com");
-    regularUserToken = authService.generateToken(regularUserId, "user@test.com");
+    regularUserToken = authService.generateToken(
+      regularUserId,
+      "user@test.com",
+    );
   });
 
   afterAll(async () => {
@@ -103,7 +110,10 @@ describe("Admin Endpoints", () => {
 
     it("should calculate wallet statistics", async () => {
       const wallets = await walletService.list(1000);
-      const totalBalance = wallets.reduce((sum, w) => sum + parseFloat(w.balance), 0);
+      const totalBalance = wallets.reduce(
+        (sum, w) => sum + parseFloat(w.balance),
+        0,
+      );
 
       expect(typeof totalBalance).toBe("number");
       expect(totalBalance).toBeGreaterThanOrEqual(0);
@@ -119,7 +129,9 @@ describe("Admin Endpoints", () => {
     });
 
     it("should update user information", async () => {
-      const updated = await userService.update(regularUserId, { role: "moderator" });
+      const updated = await userService.update(regularUserId, {
+        role: "moderator",
+      });
 
       expect(updated?.role).toBe("moderator");
 
@@ -135,7 +147,7 @@ describe("Admin Endpoints", () => {
 
     it("should search users by email", async () => {
       const users = await userService.list(1000);
-      const filtered = users.filter(u => u.email.includes("admin"));
+      const filtered = users.filter((u) => u.email.includes("admin"));
 
       expect(Array.isArray(filtered)).toBe(true);
     });

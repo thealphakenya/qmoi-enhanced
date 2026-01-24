@@ -122,7 +122,9 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
   const [deviceSearch, setDeviceSearch] = useState("");
   const [deviceGroup, setDeviceGroup] = useState("all");
 
-  const [analytics, setAnalytics] = useState<{ events: unknown[] }>({ events: [] });
+  const [analytics, setAnalytics] = useState<{ events: unknown[] }>({
+    events: [],
+  });
   const [auditLog, setAuditLog] = useState<string[]>([]);
 
   const [awsModalOpen, setAwsModalOpen] = useState(false);

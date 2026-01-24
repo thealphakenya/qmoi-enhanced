@@ -37,7 +37,7 @@ function isMaster(_request: NextRequest) {
 async function searchMedia(
   _query: string,
   type?: string,
-  source?: string
+  source?: string,
 ): Promise<MediaItem[]> {
   const prisma = await getPrisma();
   const where: Record<string, unknown> = {
@@ -73,8 +73,8 @@ async function searchMedia(
       task.status === "completed"
         ? "downloaded"
         : task.status === "processing"
-        ? "downloading"
-        : "available",
+          ? "downloading"
+          : "available",
     createdAt: task.createdAt,
     updatedAt: task.updatedAt,
   }));
@@ -117,7 +117,8 @@ async function downloadMedia(mediaId: string) {
       message: "Media downloaded successfully",
     };
   } catch (_error) {
-    const errorMessage = error instanceof Error ? error.message : String(_error);
+    const errorMessage =
+      error instanceof Error ? error.message : String(_error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
@@ -166,7 +167,7 @@ export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
       { _error: "Master access required" },
-      { status: 403 }
+      { status: 403 },
     );
   }
 
@@ -179,13 +180,13 @@ export async function GET(_request: NextRequest) {
       const results = await searchMedia(
         searchQuery,
         searchParams.get("type") || undefined,
-        searchParams.get("source") || undefined
+        searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
     } catch (_error) {
       return NextResponse.json(
         { _error: `Search failed: ${error}` },
-        { status: 500 }
+        { status: 500 },
       );
     }
   }
@@ -204,7 +205,7 @@ export async function GET(_request: NextRequest) {
     } catch (_error) {
       return NextResponse.json(
         { _error: `Failed to get logs: ${error}` },
-        { status: 500 }
+        { status: 500 },
       );
     }
   }
@@ -224,7 +225,7 @@ export async function GET(_request: NextRequest) {
     } catch (_error) {
       return NextResponse.json(
         { _error: `Failed to get database info: ${error}` },
-        { status: 500 }
+        { status: 500 },
       );
     }
   }
@@ -236,7 +237,7 @@ export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
       { _error: "Master access required" },
-      { status: 403 }
+      { status: 403 },
     );
   }
 
@@ -300,7 +301,7 @@ export async function POST(_request: NextRequest) {
   } catch (_error) {
     return NextResponse.json(
       { _error: `Request failed: ${error}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

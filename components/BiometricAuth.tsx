@@ -170,7 +170,10 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
         return { success: !!credential, confidence: 0.95 };
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("WebAuthn authentication failed:", error);
+      (globalThis.console as any)?.error?.(
+        "WebAuthn authentication failed:",
+        error,
+      );
       return { success: false, confidence: 0 };
     }
   };
@@ -216,7 +219,10 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
         setTimeout(() => recorder.stop(), 2000);
       });
     } catch (error) {
-      (globalThis.console as any)?.error?.("Voice authentication failed:", error);
+      (globalThis.console as any)?.error?.(
+        "Voice authentication failed:",
+        error,
+      );
       return { success: false, confidence: 0 };
     }
   };
@@ -243,7 +249,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
       const fingerprintString = JSON.stringify(fingerprint);
       const hashBuffer = await crypto.subtle.digest(
         "SHA-256",
-        new TextEncoder().encode(fingerprintString)
+        new TextEncoder().encode(fingerprintString),
       );
       const hashArray = Array.from(new Uint8Array(hashBuffer));
       const hashHex = hashArray
@@ -255,7 +261,10 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
 
       return { success: confidence > requiredConfidence, confidence };
     } catch (error) {
-      (globalThis.console as any)?.error?.("Device fingerprint authentication failed:", error);
+      (globalThis.console as any)?.error?.(
+        "Device fingerprint authentication failed:",
+        error,
+      );
       return { success: false, confidence: 0 };
     }
   };
@@ -280,7 +289,10 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
 
       return { success: confidence > requiredConfidence, confidence };
     } catch (error) {
-      (globalThis.console as any)?.error?.("Behavioral authentication failed:", error);
+      (globalThis.console as any)?.error?.(
+        "Behavioral authentication failed:",
+        error,
+      );
       return { success: false, confidence: 0 };
     }
   };

@@ -21,7 +21,7 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 export const AnalyticsCharts: React.FC<{
@@ -40,7 +40,7 @@ export const AnalyticsCharts: React.FC<{
 
   // Event frequency by time
   const eventTimes = analytics.events.map(
-    (e) => new Date(e.timestamp || Date.now())
+    (e) => new Date(e.timestamp || Date.now()),
   );
   const timeLabels = eventTimes.map((t) => t.toLocaleTimeString());
   const eventCounts = analytics.events.map((_, i) => i + 1);

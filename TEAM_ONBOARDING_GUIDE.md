@@ -5,6 +5,7 @@ Welcome to the QMOI Enhanced production team! This guide will help you get up to
 ## What is QMOI Enhanced?
 
 QMOI Enhanced is a Next.js-based full-stack application with:
+
 - **Frontend**: React with TypeScript
 - **Backend**: Node.js API (150+ endpoints)
 - **Database**: PostgreSQL
@@ -15,6 +16,7 @@ QMOI Enhanced is a Next.js-based full-stack application with:
 ## Your First Day
 
 ### 1. Access the Development Environment
+
 ```bash
 # Clone the repository
 git clone https://github.com/thealphakenya/qmoi-enhanced.git
@@ -29,6 +31,7 @@ npm run dev
 ```
 
 ### 2. Understand the Project Structure
+
 ```
 qmoi-enhanced/
 ├── pages/              # Next.js pages and API routes
@@ -43,6 +46,7 @@ qmoi-enhanced/
 ```
 
 ### 3. Key Files You Should Know
+
 - **pm2.config.cjs**: Defines how processes are managed in production
 - **PRODUCTION_DEPLOYMENT_PLAYBOOK.md**: Step-by-step deployment guide
 - **DEPLOYMENT_CHECKLIST.md**: Pre-deployment verification checklist
@@ -50,6 +54,7 @@ qmoi-enhanced/
 - **.env.production.updated**: Production environment template
 
 ### 4. Meet the Team Roles
+
 - **DevOps/Infrastructure**: Manages servers, SSL, monitoring
 - **Backend Developers**: Work on API endpoints and database
 - **Frontend Developers**: Work on React components and UI
@@ -72,6 +77,7 @@ pm2 restart qmoi-app                   # Restart a process
 ```
 
 **Key Concepts:**
+
 - **Process**: A running Node.js instance (app, health monitor, dashboard)
 - **Auto-restart**: If a process crashes, PM2 automatically restarts it
 - **Health Check**: Runs every 30 seconds to verify system is OK
@@ -103,6 +109,7 @@ curl http://localhost:3000/api/health
 ```
 
 **API Locations:**
+
 - All endpoints are in `pages/api/`
 - Each file becomes an endpoint (e.g., `pages/api/users.js` → `/api/users`)
 - Use TypeScript for type safety
@@ -110,12 +117,14 @@ curl http://localhost:3000/api/health
 ### Day 5: Monitoring and Alerts
 
 **Understanding Alerts:**
+
 1. Health check fails → 30 seconds later → Warning logged
 2. 3 consecutive failures → Critical alert → Slack message
 3. Auto-recovery triggers → Process restarts
 4. Alert resolves when health check passes again
 
 **Responding to an Alert:**
+
 ```bash
 # 1. Check process logs
 pm2 logs qmoi-app --lines 100
@@ -140,20 +149,21 @@ pm2 logs qmoi-app
 3. **CI/CD pipeline** runs tests
 4. **Merge to main** branch
 5. **Production deployment** happens automatically (or run manually):
+
    ```bash
    # SSH to production server
    ssh deploy@qmoi.app
-   
+
    # Pull latest code
    cd /var/www/qmoi-enhanced
    git pull origin main
-   
+
    # Rebuild
    npm run ci:build
-   
+
    # Restart processes
    pm2 restart all
-   
+
    # Verify
    curl https://qmoi.app/api/health
    ```
@@ -175,11 +185,13 @@ pm2 logs
 ### Troubleshoot a Problem
 
 1. **Check PM2 logs:**
+
    ```bash
    pm2 logs qmoi-app --lines 50
    ```
 
 2. **Check system status:**
+
    ```bash
    pm2 status
    free -h  # Memory
@@ -187,11 +199,13 @@ pm2 logs
    ```
 
 3. **Restart the process:**
+
    ```bash
    pm2 restart qmoi-app
    ```
 
 4. **Check database connection:**
+
    ```bash
    npx prisma migrate status
    ```
@@ -225,6 +239,7 @@ tail -f logs/app-out.log
 If you're on-call:
 
 1. **Morning**: Run verification script
+
    ```bash
    bash scripts/verify-deployment.sh
    ```
@@ -240,32 +255,33 @@ If you're on-call:
    - Update status page
 
 4. **Emergency Response** (if application down):
+
    ```bash
    # 1. SSH to server
    ssh deploy@qmoi.app
-   
+
    # 2. Check status
    pm2 status
    pm2 logs
-   
+
    # 3. Restart if needed
    pm2 restart all
-   
+
    # 4. Verify recovery
    curl https://qmoi.app/api/health
-   
+
    # 5. Notify team
    Post in #qmoi-alerts Slack channel
    ```
 
 ## Important URLs
 
-| Service | Development | Production |
-|---------|-------------|-----------|
-| Main App | http://localhost:3000 | https://qmoi.app |
+| Service      | Development                      | Production                  |
+| ------------ | -------------------------------- | --------------------------- |
+| Main App     | http://localhost:3000            | https://qmoi.app            |
 | Health Check | http://localhost:3000/api/health | https://qmoi.app/api/health |
-| Dashboard | http://localhost:3001 | https://qmoi.app:3001 |
-| Database | localhost:5432 | (On-server only) |
+| Dashboard    | http://localhost:3001            | https://qmoi.app:3001       |
+| Database     | localhost:5432                   | (On-server only)            |
 
 ## Communication Channels
 

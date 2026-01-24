@@ -4,10 +4,10 @@
  * Tests critical endpoints after deployment to Vercel
  */
 
-const https = require('https');
+const https = require("https");
 
 // Get Vercel URL from command line or use default
-const VERCEL_URL = process.argv[2] || 'https://qmoi-enhanced.vercel.app';
+const VERCEL_URL = process.argv[2] || "https://qmoi-enhanced.vercel.app";
 const TIMEOUT = 10000; // 10 seconds
 
 console.log(`\n🔍 Testing deployment at: ${VERCEL_URL}\n`);
@@ -15,48 +15,48 @@ console.log(`\n🔍 Testing deployment at: ${VERCEL_URL}\n`);
 // Test cases
 const tests = [
   {
-    name: 'Health Check - API Memory',
-    path: '/api/memory',
-    method: 'GET',
+    name: "Health Check - API Memory",
+    path: "/api/memory",
+    method: "GET",
     expectedStatus: 200,
   },
   {
-    name: 'Health Check - Version',
-    path: '/api/version',
-    method: 'GET',
+    name: "Health Check - Version",
+    path: "/api/version",
+    method: "GET",
     expectedStatus: 200,
   },
   {
-    name: 'Login API',
-    path: '/api/auth/login',
-    method: 'POST',
-    body: { email: 'test@example.com', password: 'test' },
+    name: "Login API",
+    path: "/api/auth/login",
+    method: "POST",
+    body: { email: "test@example.com", password: "test" },
     expectedStatus: [200, 401], // 401 is ok - means endpoint exists
   },
   {
-    name: 'Biometric Verify',
-    path: '/api/biometric/verify',
-    method: 'POST',
-    body: { templateId: 'test' },
+    name: "Biometric Verify",
+    path: "/api/biometric/verify",
+    method: "POST",
+    body: { templateId: "test" },
     expectedStatus: [200, 401, 403],
   },
   {
-    name: 'WebAuthn Register',
-    path: '/api/webauthn/register',
-    method: 'POST',
-    body: { userId: 'test' },
+    name: "WebAuthn Register",
+    path: "/api/webauthn/register",
+    method: "POST",
+    body: { userId: "test" },
     expectedStatus: [200, 400, 401],
   },
   {
-    name: 'Users API',
-    path: '/api/users',
-    method: 'GET',
+    name: "Users API",
+    path: "/api/users",
+    method: "GET",
     expectedStatus: [200, 401, 403],
   },
   {
-    name: 'Home Page',
-    path: '/',
-    method: 'GET',
+    name: "Home Page",
+    path: "/",
+    method: "GET",
     expectedStatus: 200,
   },
 ];
@@ -65,9 +65,9 @@ const tests = [
 function makeRequest(url, _options = {}) {
   return new Promise((resolve, reject) => {
     const _req = https.request(url, _options, (_res) => {
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => {
+      let data = "";
+      res.on("data", (chunk) => (data += chunk));
+      res.on("end", () => {
         resolve({
           status: res.statusCode,
           headers: res.headers,
@@ -76,10 +76,10 @@ function makeRequest(url, _options = {}) {
       });
     });
 
-    req.on('error', reject);
-    req.on('timeout', () => {
+    req.on("error", reject);
+    req.on("timeout", () => {
       req.destroy();
-      reject(new Error('Request timeout'));
+      reject(new Error("Request timeout"));
     });
 
     req.setTimeout(TIMEOUT);
@@ -103,8 +103,8 @@ async function runTests() {
       const _options = {
         method: test.method,
         headers: {
-          'Content-Type': 'application/json',
-          'User-Agent': 'Vercel-Deployment-Test/1.0',
+          "Content-Type": "application/json",
+          "User-Agent": "Vercel-Deployment-Test/1.0",
         },
         body: test.body ? JSON.stringify(test.body) : undefined,
       };
@@ -120,7 +120,9 @@ async function runTests() {
         passed++;
       } else {
         console.log(`❌ ${test.name}`);
-        console.log(`   Expected: ${expectedStatuses.join(', ')}, Got: ${result.status}`);
+        console.log(
+          `   Expected: ${expectedStatuses.join(", ")}, Got: ${result.status}`,
+        );
         failed++;
       }
     } catch (_error) {
@@ -133,16 +135,16 @@ async function runTests() {
   console.log(`\n📊 Results: ${passed} passed, ${failed} failed\n`);
 
   if (failed === 0) {
-    console.log('🎉 All tests passed! Deployment is successful!\n');
+    console.log("🎉 All tests passed! Deployment is successful!\n");
     process.exit(0);
   } else {
-    console.log('⚠️  Some tests failed. Check the deployment.\n');
+    console.log("⚠️  Some tests failed. Check the deployment.\n");
     process.exit(1);
   }
 }
 
 // Run the tests
-runTests().catch(_error => {
-  console.error('❌ Test suite _error:', error.message);
+runTests().catch((_error) => {
+  console.error("❌ Test suite _error:", error.message);
   process.exit(1);
 });

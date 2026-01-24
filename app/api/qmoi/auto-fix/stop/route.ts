@@ -93,7 +93,7 @@ export async function POST(_request: NextRequest) {
     (console as any).error("Error stopping auto-fix process:", _error);
     return NextResponse.json(
       { _error: "Failed to stop auto-fix process" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

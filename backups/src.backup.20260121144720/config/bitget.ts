@@ -1078,7 +1078,7 @@ export class BitgetManager extends EventEmitter {
       // Implement _request signature validation logic
       return true;
     } catch (_error) {
-      (globalThis.console  as unknown)?.error?.(
+      (globalThis.console as unknown)?.error?.(
         "Error validating _request signature:",
         _error,
       );
@@ -1182,7 +1182,7 @@ export class BitgetManager extends EventEmitter {
       // Implement API credential validation logic here
       return true;
     } catch (_error) {
-      (globalThis.console  as unknown)?.error?.(
+      (globalThis.console as unknown)?.error?.(
         "Error validating Bitget API credentials:",
         _error,
       );

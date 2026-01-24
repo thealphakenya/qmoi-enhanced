@@ -95,22 +95,22 @@ export const UISettings: React.FC = () => {
     if (typeof window !== "undefined") {
       window.addEventListener(
         "qmoi:toggle-high-contrast",
-        onToggleHigh as EventListener
+        onToggleHigh as EventListener,
       );
       window.addEventListener(
         "qmoi:toggle-reduce-motion",
-        onToggleReduce as EventListener
+        onToggleReduce as EventListener,
       );
     }
     return () => {
       if (typeof window !== "undefined") {
         window.removeEventListener(
           "qmoi:toggle-high-contrast",
-          onToggleHigh as EventListener
+          onToggleHigh as EventListener,
         );
         window.removeEventListener(
           "qmoi:toggle-reduce-motion",
-          onToggleReduce as EventListener
+          onToggleReduce as EventListener,
         );
       }
     };
@@ -124,14 +124,14 @@ export const UISettings: React.FC = () => {
     if (typeof window !== "undefined") {
       window.addEventListener(
         "qmoi:open-settings",
-        handleOpenEvent as EventListener
+        handleOpenEvent as EventListener,
       );
     }
     return () => {
       if (typeof window !== "undefined") {
         window.removeEventListener(
           "qmoi:open-settings",
-          handleOpenEvent as EventListener
+          handleOpenEvent as EventListener,
         );
       }
     };

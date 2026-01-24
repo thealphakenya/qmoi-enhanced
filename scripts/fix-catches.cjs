@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const ROOT = path.resolve(__dirname, '..');
-const DIR = path.join(ROOT, 'src', 'services');
+const ROOT = path.resolve(__dirname, "..");
+const DIR = path.join(ROOT, "src", "services");
 
 function walk(dir) {
   for (const name of fs.readdirSync(dir)) {
@@ -17,17 +17,17 @@ function walk(dir) {
 }
 
 function fixFile(file) {
-  let s = fs.readFileSync(file, 'utf8');
+  let s = fs.readFileSync(file, "utf8");
   const orig = s;
   // replace `catch (_error)` -> `catch (error)`
-  s = s.replace(/catch \(\s*_error\s*\)/g, 'catch (error)');
+  s = s.replace(/catch \(\s*_error\s*\)/g, "catch (error)");
   // replace common usages of _error to error
-  s = s.replace(/\b_error\b/g, 'error');
+  s = s.replace(/\b_error\b/g, "error");
   if (s !== orig) {
-    fs.writeFileSync(file, s, 'utf8');
-    console.log('Updated', file);
+    fs.writeFileSync(file, s, "utf8");
+    console.log("Updated", file);
   }
 }
 
 walk(DIR);
-console.log('Done fixing catches.');
+console.log("Done fixing catches.");

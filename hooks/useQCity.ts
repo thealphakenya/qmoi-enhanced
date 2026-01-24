@@ -107,7 +107,7 @@ export function useQCity() {
     {
       refetchInterval: 5000, // Poll every 5 seconds
       onError: (err: unknown) => setError(err as QCityError),
-    }
+    },
   );
 
   // Fetch Q-city config
@@ -122,7 +122,7 @@ export function useQCity() {
     },
     {
       onError: (err: unknown) => setError(err as QCityError),
-    }
+    },
   );
 
   // Start Q-city
@@ -134,7 +134,7 @@ export function useQCity() {
     {
       onSuccess: () => refetchStatus(),
       onError: (err: unknown) => setError(err as QCityError),
-    }
+    },
   );
 
   // Stop Q-city
@@ -146,7 +146,7 @@ export function useQCity() {
     {
       onSuccess: () => refetchStatus(),
       onError: (err: unknown) => setError(err as QCityError),
-    }
+    },
   );
 
   // Configure platforms
@@ -158,7 +158,7 @@ export function useQCity() {
     async (config) => {
       const response = await axios.post(
         "/api/qcity/configure-platforms",
-        config
+        config,
       );
       return response.data;
     },
@@ -168,7 +168,7 @@ export function useQCity() {
         refetchStatus();
       },
       onError: (err: unknown) => setError(err as QCityError),
-    }
+    },
   );
 
   // Enable features
@@ -185,7 +185,7 @@ export function useQCity() {
         refetchStatus();
       },
       onError: (err: unknown) => setError(err as QCityError),
-    }
+    },
   );
 
   // Monitor resources
@@ -197,7 +197,7 @@ export function useQCity() {
     {
       onSuccess: () => refetchStatus(),
       onError: (err: unknown) => setError(err as QCityError),
-    }
+    },
   );
 
   // Add new mutation for error tracking
@@ -213,7 +213,7 @@ export function useQCity() {
     {
       onSuccess: () => refetchStatus(),
       onError: (err: unknown) => setError(err as QCityError),
-    }
+    },
   );
 
   // Add new mutation for backup management
@@ -229,7 +229,7 @@ export function useQCity() {
     {
       onSuccess: () => refetchStatus(),
       onError: (err: unknown) => setError(err as QCityError),
-    }
+    },
   );
 
   // Add new mutation for resource optimization
@@ -241,7 +241,7 @@ export function useQCity() {
     {
       onSuccess: () => refetchStatus(),
       onError: (err: unknown) => setError(err as QCityError),
-    }
+    },
   );
 
   // Update status and config when data changes
@@ -272,7 +272,7 @@ export function useQCity() {
     (config: Partial<QCityConfig["platforms"]>) => {
       configurePlatformsMutation.mutate(config);
     },
-    [configurePlatformsMutation]
+    [configurePlatformsMutation],
   );
 
   // Enable features
@@ -280,7 +280,7 @@ export function useQCity() {
     (features: string[]) => {
       enableFeaturesMutation.mutate(features);
     },
-    [enableFeaturesMutation]
+    [enableFeaturesMutation],
   );
 
   // Monitor resources
@@ -323,7 +323,7 @@ export function useQCityNotifications() {
     },
     {
       refetchInterval: 10000, // Poll every 10 seconds
-    }
+    },
   );
 
   // Update notifications when data changes
@@ -355,7 +355,7 @@ export function useQCityTasks() {
     },
     {
       refetchInterval: 5000, // Poll every 5 seconds
-    }
+    },
   );
 
   // Update tasks when data changes
@@ -387,7 +387,7 @@ export function useQCityResources() {
     },
     {
       refetchInterval: 1000, // Poll every second
-    }
+    },
   );
 
   // Update resources when data changes
@@ -416,7 +416,7 @@ export function useQCityLogs() {
     },
     {
       refetchInterval: 5000, // Poll every 5 seconds
-    }
+    },
   );
 
   // Update logs when data changes

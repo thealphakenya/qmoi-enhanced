@@ -13,8 +13,10 @@ export async function GET(_request: NextRequest) {
 
     if (!token) {
       return NextResponse.json(
-        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
-        { status: 401 }
+        {
+          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+        },
+        { status: 401 },
       );
     }
 
@@ -24,7 +26,7 @@ export async function GET(_request: NextRequest) {
     } catch (_error) {
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -36,7 +38,7 @@ export async function GET(_request: NextRequest) {
             code: "INVALID_TOKEN",
           },
         },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -45,7 +47,7 @@ export async function GET(_request: NextRequest) {
     if (!user || user.role !== "admin") {
       return NextResponse.json(
         { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -112,13 +114,13 @@ export async function GET(_request: NextRequest) {
         },
         timestamp: new Date().toISOString(),
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (_error) {
     (globalThis.console as any)?.error?.("Audit logs _error:", _error);
     return NextResponse.json(
       { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -172,8 +174,10 @@ export async function POST(_request: NextRequest) {
 
     if (!token) {
       return NextResponse.json(
-        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
-        { status: 401 }
+        {
+          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+        },
+        { status: 401 },
       );
     }
 
@@ -183,7 +187,7 @@ export async function POST(_request: NextRequest) {
     } catch (_error) {
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -195,7 +199,7 @@ export async function POST(_request: NextRequest) {
             code: "INVALID_TOKEN",
           },
         },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -204,7 +208,7 @@ export async function POST(_request: NextRequest) {
     if (!user || user.role !== "admin") {
       return NextResponse.json(
         { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -222,7 +226,7 @@ export async function POST(_request: NextRequest) {
             code: "INVALID_FORMAT",
           },
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -266,7 +270,7 @@ export async function POST(_request: NextRequest) {
     (globalThis.console as any)?.error?.("Audit log export _error:", _error);
     return NextResponse.json(
       { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -296,7 +300,7 @@ function convertLogsToCSV(logs: Record<string, unknown>[]): string {
   const csv = [
     headers.join(","),
     ...rows.map((row) =>
-      row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(",")
+      row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(","),
     ),
   ].join("\n");
 

@@ -27,7 +27,7 @@ export async function GET() {
     (console as any).error("Error fetching voice profiles:", _error);
     return NextResponse.json(
       { _error: "Failed to fetch voice profiles" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -57,7 +57,7 @@ export async function POST(_request: NextRequest) {
     (console as any).error("Error in voice profiles API:", _error);
     return NextResponse.json(
       { _error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -90,7 +90,7 @@ async function switchVoice(voiceId: string) {
     (console as any).error("Error switching voice:", _error);
     return NextResponse.json(
       { _error: "Failed to switch voice" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -99,7 +99,7 @@ async function previewVoice(
   voiceId: string,
   text: string,
   quality: string,
-  volume: number
+  volume: number,
 ) {
   try {
     // In a real implementation, this would:
@@ -125,7 +125,7 @@ async function previewVoice(
     (console as any).error("Error previewing voice:", _error);
     return NextResponse.json(
       { _error: "Failed to generate voice preview" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -155,7 +155,7 @@ async function enhanceVoice(voiceId: string) {
     (console as any).error("Error enhancing voice:", _error);
     return NextResponse.json(
       { _error: "Failed to enhance voice" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -187,7 +187,7 @@ async function upgradeVoice(voiceId: string) {
     (console as any).error("Error upgrading voice:", _error);
     return NextResponse.json(
       { _error: "Failed to upgrade voice" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -252,7 +252,7 @@ async function generateTTSAudio(
   voiceId: string,
   text: string,
   quality: string,
-  volume: number
+  volume: number,
 ): Promise<string> {
   // In a real implementation, this would integrate with:
   // - Bark (for high-quality TTS)
@@ -263,6 +263,6 @@ async function generateTTSAudio(
 
   // For now, return a [PRODUCTION IMPLEMENTATION REQUIRED] URL
   return `/api/tts/generate?voice=${voiceId}&text=${encodeURIComponent(
-    text
+    text,
   )}&quality=${quality}&volume=${volume}`;
 }

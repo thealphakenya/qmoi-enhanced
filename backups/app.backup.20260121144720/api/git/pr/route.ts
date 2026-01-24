@@ -18,7 +18,7 @@ export async function POST(_req: NextRequest) {
     if (!title || !headBranch) {
       return NextResponse.json(
         { _error: "Title and head branch are required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -46,7 +46,7 @@ export async function POST(_req: NextRequest) {
         _error: "Failed to create pull _request",
         details: error instanceof Error ? error.message : String(_error),
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -95,7 +95,10 @@ export const QmoiAutoDistribution: React.FC = () => {
       const response = await axios.get("/api/git/status");
       setGitStatus(response.data);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to fetch Git status:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to fetch Git status:",
+        error,
+      );
     }
   };
 
@@ -107,7 +110,10 @@ export const QmoiAutoDistribution: React.FC = () => {
         setDeploymentUrl(response.data.url);
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to fetch Vercel status:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to fetch Vercel status:",
+        error,
+      );
     }
   };
 
@@ -206,7 +212,10 @@ export const QmoiAutoDistribution: React.FC = () => {
         ...prev,
       ]);
     } catch (error: unknown) {
-      (globalThis.console as any)?.error?.("Auto-redeploy toggle failed:", error);
+      (globalThis.console as any)?.error?.(
+        "Auto-redeploy toggle failed:",
+        error,
+      );
     } finally {
       setVercelLoading(false);
     }

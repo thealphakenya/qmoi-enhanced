@@ -87,7 +87,10 @@ export async function GET() {
 
     return NextResponse.json(report);
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error getting auto-fix status:", error);
+    (globalThis.console as any)?.error?.(
+      "Error getting auto-fix status:",
+      error,
+    );
     return NextResponse.json(
       { error: "Failed to get auto-fix status" },
       { status: 500 },

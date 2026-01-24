@@ -11,7 +11,9 @@ const report = JSON.parse(fs.readFileSync(path, "utf8"));
 let fail = 0;
 for (const r of report.results) {
   if (r.hasHeader && !r.hasRequire) {
-    (console as any).error(`Route ${r.file} uses headers but missing requireApiKey()`);
+    (console as any).error(
+      `Route ${r.file} uses headers but missing requireApiKey()`,
+    );
     fail++;
   }
 }

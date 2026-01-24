@@ -6,7 +6,7 @@ import AccessibilitySettingsPanel from "../../components/ui/AccessibilitySetting
 describe("AccessibilitySettingsPanel", () => {
   it("renders and toggles settings", () => {
     const { getByLabelText } = render(
-      React.createElement(AccessibilitySettingsPanel)
+      React.createElement(AccessibilitySettingsPanel),
     );
     const highContrast = getByLabelText("High Contrast Mode");
     fireEvent.click(highContrast);

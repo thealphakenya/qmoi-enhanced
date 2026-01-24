@@ -326,7 +326,6 @@ SENTRY_DSN=<your-sentry-dsn>
    ```
 
 4. **Configure Post-Deployment** (15 mins)
-
    - Set up custom domain
    - Configure SSL
    - Add monitoring webhooks

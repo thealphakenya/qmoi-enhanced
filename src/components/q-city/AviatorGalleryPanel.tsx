@@ -87,7 +87,8 @@ export default function AviatorGalleryPanel() {
     setTimeout(() => {
       toast({
         title: "Upload Submitted",
-        description: "Your avatar/voice _request has been submitted for review.",
+        description:
+          "Your avatar/voice _request has been submitted for review.",
         variant: "default",
       });
       setAvatarFile(null);

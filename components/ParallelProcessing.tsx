@@ -159,8 +159,8 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
               task.dependencies.every(
                 (depId) =>
                   updatedTasks.find((t) => t.id === depId)?.status ===
-                  "completed"
-              ))
+                  "completed",
+              )),
         );
 
         if (pendingTask) {
@@ -174,8 +174,8 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
             currentWorkers.map((w) =>
               w.id === worker.id
                 ? { ...w, status: "busy", currentTask: pendingTask.id }
-                : w
-            )
+                : w,
+            ),
           );
         }
       });
@@ -207,8 +207,8 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
                           (task.duration || 0)) /
                         (w.tasksCompleted + 1),
                     }
-                  : w
-              )
+                  : w,
+              ),
             );
 
             onTaskCompleted?.(task);
@@ -240,8 +240,8 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
     // Pause all running tasks
     setTasks((currentTasks) =>
       currentTasks.map((task) =>
-        task.status === "running" ? { ...task, status: "paused" } : task
-      )
+        task.status === "running" ? { ...task, status: "paused" } : task,
+      ),
     );
 
     toast({
@@ -267,7 +267,7 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
         endTime: undefined,
         duration: undefined,
         workerId: undefined,
-      }))
+      })),
     );
 
     // Reset workers
@@ -276,7 +276,7 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
         ...w,
         status: "idle",
         currentTask: undefined,
-      }))
+      })),
     );
 
     toast({
@@ -299,7 +299,7 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
       (completedTasks /
         Math.max(
           1,
-          (Date.now() - (tasks[0]?.startTime?.getTime() || Date.now())) / 1000
+          (Date.now() - (tasks[0]?.startTime?.getTime() || Date.now())) / 1000,
         )) *
       60; // tasks per minute
     const efficiency =
@@ -456,8 +456,8 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
                         worker.status === "idle"
                           ? "bg-green-500"
                           : worker.status === "busy"
-                          ? "bg-blue-500"
-                          : "bg-red-500"
+                            ? "bg-blue-500"
+                            : "bg-red-500"
                       }`}
                     />
                     <div>

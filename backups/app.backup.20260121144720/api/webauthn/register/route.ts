@@ -3,12 +3,17 @@ import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 
-const CREDENTIALS_FILE = path.resolve(process.cwd(), "data", "webauthn-credentials.json");
+const CREDENTIALS_FILE = path.resolve(
+  process.cwd(),
+  "data",
+  "webauthn-credentials.json",
+);
 
 function ensureFile() {
   const dir = path.dirname(CREDENTIALS_FILE);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  if (!fs.existsSync(CREDENTIALS_FILE)) fs.writeFileSync(CREDENTIALS_FILE, "[]");
+  if (!fs.existsSync(CREDENTIALS_FILE))
+    fs.writeFileSync(CREDENTIALS_FILE, "[]");
 }
 
 export async function POST(_request: NextRequest) {
@@ -22,7 +27,7 @@ export async function POST(_request: NextRequest) {
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
-    
+
     // Store credential with timestamp
     const credentialRecord = {
       id: crypto.randomUUID(),
@@ -46,6 +51,9 @@ export async function POST(_request: NextRequest) {
       message: "WebAuthn credential registered successfully",
     });
   } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message }, { status: 500 });
+    return NextResponse.json(
+      { _error: (error as Error).message },
+      { status: 500 },
+    );
   }
 }

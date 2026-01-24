@@ -15,7 +15,7 @@ export const runtime = "nodejs";
 function verifyJWT(token: string): { valid: boolean; role?: string } {
   try {
     const payload = JSON.parse(
-      Buffer.from(token.split(".")[1], "base64").toString()
+      Buffer.from(token.split(".")[1], "base64").toString(),
     );
     if (payload && (payload.role === "admin" || payload.role === "master")) {
       return { valid: true, role: payload.role };
@@ -30,7 +30,7 @@ function logAudit(
   action: string,
   user: string,
   _options: Record<string, unknown>,
-  status: string
+  status: string,
 ) {
   const entry = {
     timestamp: new Date().toISOString(),
@@ -47,7 +47,7 @@ function logDownloadFix(
   user: string,
   _options: Record<string, unknown>,
   status: string,
-  error?: unknown
+  error?: unknown,
 ) {
   const entry = {
     timestamp: new Date().toISOString(),
@@ -81,7 +81,9 @@ export async function POST(_req: NextRequest) {
   let _options: Record<string, unknown> = {};
   try {
     _options = (await _req.json()) as Record<string, unknown>;
-  } catch (e) { void e; }
+  } catch (e) {
+    void e;
+  }
 
   // Determine script and args
   let script, args;
@@ -129,13 +131,13 @@ export async function POST(_req: NextRequest) {
       "selfheal-complete",
       user,
       _options,
-      code === 0 ? "success" : "error"
+      code === 0 ? "success" : "error",
     );
     logDownloadFix(
       "selfheal-complete",
       user,
       _options,
-      code === 0 ? "success" : "error"
+      code === 0 ? "success" : "error",
     );
   });
 

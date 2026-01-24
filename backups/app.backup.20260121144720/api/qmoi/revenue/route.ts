@@ -61,7 +61,7 @@ export async function GET(_req: NextRequest) {
     logEvent("revenue_api_error", { _error: errorMsg });
     return NextResponse.json(
       { _error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -73,7 +73,7 @@ export async function POST(_req: NextRequest) {
   }
 
   try {
-    const { action } = (await _req.json() as any);
+    const { action } = (await _req.json()) as any;
 
     // Load engine dynamically
     const mod = await import("../../../../lib/qmoi-revenue-engine");
@@ -132,7 +132,7 @@ export async function POST(_req: NextRequest) {
     logEvent("revenue_api_post_error", { _error: errorMsg });
     return NextResponse.json(
       { _error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -30,7 +30,7 @@ export const QConverse: React.FC<QConverseProps> = ({
   userId,
 }) => {
   const { currentUser, updateQMOIMemory } = useMaster();
-  
+
   // ensure session id available and fetch profile display name
   const getOrCreateSessionId = (): string => {
     try {

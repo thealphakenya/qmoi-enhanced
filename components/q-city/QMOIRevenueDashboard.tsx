@@ -154,7 +154,10 @@ const QMOIRevenueDashboard: React.FC = () => {
         fetchDashboardData();
       }
     } catch (err) {
-      (globalThis.console as any)?.error?.("Failed to enable master mode:", err);
+      (globalThis.console as any)?.error?.(
+        "Failed to enable master mode:",
+        err,
+      );
     }
   };
 
@@ -176,7 +179,10 @@ const QMOIRevenueDashboard: React.FC = () => {
         window.URL.revokeObjectURL(url);
       }
     } catch (err) {
-      (globalThis.console as any)?.error?.("Failed to export dashboard data:", err);
+      (globalThis.console as any)?.error?.(
+        "Failed to export dashboard data:",
+        err,
+      );
     }
   };
 

@@ -13,8 +13,10 @@ export async function GET(_request: NextRequest) {
 
     if (!token) {
       return NextResponse.json(
-        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
-        { status: 401 }
+        {
+          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+        },
+        { status: 401 },
       );
     }
 
@@ -24,7 +26,7 @@ export async function GET(_request: NextRequest) {
     } catch (_error) {
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -36,7 +38,7 @@ export async function GET(_request: NextRequest) {
             code: "INVALID_TOKEN",
           },
         },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -45,7 +47,7 @@ export async function GET(_request: NextRequest) {
     if (!user || user.role !== "admin") {
       return NextResponse.json(
         { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -105,13 +107,13 @@ export async function GET(_request: NextRequest) {
         })),
         pagination: { skip, take, total },
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (_error) {
     (globalThis.console as any)?.error?.("Admin users _error:", _error);
     return NextResponse.json(
       { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -126,8 +128,10 @@ export async function PUT(_request: NextRequest) {
 
     if (!token) {
       return NextResponse.json(
-        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
-        { status: 401 }
+        {
+          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+        },
+        { status: 401 },
       );
     }
 
@@ -137,7 +141,7 @@ export async function PUT(_request: NextRequest) {
     } catch (_error) {
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -149,7 +153,7 @@ export async function PUT(_request: NextRequest) {
             code: "INVALID_TOKEN",
           },
         },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -158,7 +162,7 @@ export async function PUT(_request: NextRequest) {
     if (!user || user.role !== "admin") {
       return NextResponse.json(
         { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -169,7 +173,7 @@ export async function PUT(_request: NextRequest) {
     if (!userId) {
       return NextResponse.json(
         { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -208,13 +212,13 @@ export async function PUT(_request: NextRequest) {
 
     return NextResponse.json(
       { message: "User updated successfully", user: updatedUser },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (_error) {
     (globalThis.console as any)?.error?.("Update user _error:", _error);
     return NextResponse.json(
       { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -229,8 +233,10 @@ export async function DELETE(_request: NextRequest) {
 
     if (!token) {
       return NextResponse.json(
-        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
-        { status: 401 }
+        {
+          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+        },
+        { status: 401 },
       );
     }
 
@@ -240,7 +246,7 @@ export async function DELETE(_request: NextRequest) {
     } catch (_error) {
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -249,7 +255,7 @@ export async function DELETE(_request: NextRequest) {
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
         { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -260,7 +266,7 @@ export async function DELETE(_request: NextRequest) {
     if (!userId) {
       return NextResponse.json(
         { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -273,7 +279,7 @@ export async function DELETE(_request: NextRequest) {
             code: "INVALID_REQUEST",
           },
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -295,13 +301,13 @@ export async function DELETE(_request: NextRequest) {
 
     return NextResponse.json(
       { message: "User deleted successfully" },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (_error) {
     (globalThis.console as any)?.error?.("Delete user _error:", _error);
     return NextResponse.json(
       { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

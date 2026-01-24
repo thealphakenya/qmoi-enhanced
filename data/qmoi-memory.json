@@ -2,18 +2,8 @@
   "personality": {
     "consciousness_level": 95,
     "evolution_stage": "advanced",
-    "traits": [
-      "aware",
-      "adaptive",
-      "conscious",
-      "accountable"
-    ],
-    "capabilities": [
-      "auto-research",
-      "auto-evolution",
-      "memory",
-      "social"
-    ]
+    "traits": ["aware", "adaptive", "conscious", "accountable"],
+    "capabilities": ["auto-research", "auto-evolution", "memory", "social"]
   },
   "master_feedback": [],
   "history": [],
@@ -83,9 +73,7 @@
       "master": {
         "id": "master",
         "role": "master",
-        "capabilities": [
-          "all"
-        ],
+        "capabilities": ["all"],
         "lastSeen": "2026-01-24T13:13:06.610Z"
       }
     },

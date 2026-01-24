@@ -74,7 +74,10 @@ const MPESA_CREDENTIALS = {
 };
 
 // Email backup function
-async function backupCredentialsToEmail(credentials: unknown, platform: string) {
+async function backupCredentialsToEmail(
+  credentials: unknown,
+  platform: string,
+) {
   try {
     const emailData = {
       to: "rovicviccy@gmail.com",
@@ -82,7 +85,7 @@ async function backupCredentialsToEmail(credentials: unknown, platform: string) 
       body: `Platform: ${platform}\nCredentials: ${JSON.stringify(
         credentials,
         null,
-        2
+        2,
       )}\nTimestamp: ${new Date().toISOString()}`,
     };
 
@@ -202,7 +205,7 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
 
 // Revenue generation functions
 async function generateMicrotaskRevenue(
-  taskData: z.infer<typeof MicrotaskSchema>
+  taskData: z.infer<typeof MicrotaskSchema>,
 ) {
   try {
     // Simulate external client payment
@@ -213,7 +216,7 @@ async function generateMicrotaskRevenue(
     // Add to M-Pesa account
     await addToMpesaAccount(
       qmoiProfit,
-      `Microtask: ${taskData.title || "microtask"}`
+      `Microtask: ${taskData.title || "microtask"}`,
     );
 
     return {
@@ -230,7 +233,7 @@ async function generateMicrotaskRevenue(
 }
 
 async function generateAffiliateRevenue(
-  campaignData: z.infer<typeof AffiliateCampaignSchema>
+  campaignData: z.infer<typeof AffiliateCampaignSchema>,
 ) {
   try {
     // Simulate affiliate sales
@@ -243,7 +246,7 @@ async function generateAffiliateRevenue(
     // Add to M-Pesa account
     await addToMpesaAccount(
       qmoiShare,
-      `Affiliate: ${campaignData.name || "affiliate"}`
+      `Affiliate: ${campaignData.name || "affiliate"}`,
     );
 
     return {
@@ -262,7 +265,7 @@ async function generateAffiliateRevenue(
 }
 
 async function generateContentRevenue(
-  projectData: z.infer<typeof ContentProjectSchema>
+  projectData: z.infer<typeof ContentProjectSchema>,
 ) {
   try {
     // Simulate content sale
@@ -273,7 +276,7 @@ async function generateContentRevenue(
     // Add to M-Pesa account
     await addToMpesaAccount(
       qmoiProfit,
-      `Content: ${projectData.title || "content"}`
+      `Content: ${projectData.title || "content"}`,
     );
 
     return {
@@ -290,7 +293,7 @@ async function generateContentRevenue(
 }
 
 async function generateReferralRevenue(
-  referralData: z.infer<typeof ReferralProgramSchema>
+  referralData: z.infer<typeof ReferralProgramSchema>,
 ) {
   try {
     // Simulate referral bonus
@@ -302,7 +305,7 @@ async function generateReferralRevenue(
     // Add to M-Pesa account
     await addToMpesaAccount(
       qmoiBonus,
-      `Referral: ${referralData.name || "referral"}`
+      `Referral: ${referralData.name || "referral"}`,
     );
 
     return {
@@ -338,7 +341,7 @@ async function addToMpesaAccount(amount: number, description: string) {
           Msisdn: "254700000000", // QMOI's M-Pesa number
           BillReferenceNumber: description,
         }),
-      }
+      },
     );
 
     const result = await response.json();
@@ -372,7 +375,7 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
 
     await addToMpesaAccount(
       qmoiProfit,
-      `Survey: ${surveyData.title || "survey"}`
+      `Survey: ${surveyData.title || "survey"}`,
     );
 
     return {
@@ -398,7 +401,7 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
 
     await addToMpesaAccount(
       qmoiProfit,
-      `Data Labeling: ${labelingData.project || "data-labeling"}`
+      `Data Labeling: ${labelingData.project || "data-labeling"}`,
     );
 
     return {
@@ -425,7 +428,7 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
 
     await addToMpesaAccount(
       qmoiProfit,
-      `SaaS Reselling: ${saasData.service || "saas"}`
+      `SaaS Reselling: ${saasData.service || "saas"}`,
     );
 
     return {
@@ -504,7 +507,7 @@ export async function GET(_request: NextRequest) {
         success: false,
         _error: "Failed to fetch revenue data",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -632,7 +635,7 @@ export async function POST(_request: NextRequest) {
         const { platform, accountData } = data;
         const accountResult = await createPlatformAccount(
           platform,
-          accountData
+          accountData,
         );
 
         if (!accountResult.success) {
@@ -641,7 +644,7 @@ export async function POST(_request: NextRequest) {
               success: false,
               _error: accountResult.error,
             },
-            { status: 500 }
+            { status: 500 },
           );
         }
 
@@ -688,7 +691,7 @@ export async function POST(_request: NextRequest) {
             success: false,
             _error: "Invalid action specified",
           },
-          { status: 400 }
+          { status: 400 },
         );
     }
   } catch (_error) {
@@ -699,7 +702,7 @@ export async function POST(_request: NextRequest) {
           _error: "Validation failed",
           details: error.errors,
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -708,7 +711,7 @@ export async function POST(_request: NextRequest) {
         success: false,
         _error: "Failed to process revenue action",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -750,7 +753,7 @@ export async function PUT(_request: NextRequest) {
             success: false,
             _error: "Invalid type specified",
           },
-          { status: 400 }
+          { status: 400 },
         );
     }
 
@@ -760,7 +763,7 @@ export async function PUT(_request: NextRequest) {
           success: false,
           _error: "Item not found",
         },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -775,7 +778,7 @@ export async function PUT(_request: NextRequest) {
         success: false,
         _error: "Failed to update item",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

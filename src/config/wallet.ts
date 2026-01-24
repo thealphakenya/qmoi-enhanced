@@ -56,7 +56,7 @@ export class WalletManager {
             (wallet.currency === "USDT"
               ? 1
               : await this.getUsdPrice(wallet.currency)),
-        }))
+        })),
       );
 
       const futuresBalances = await Promise.all(
@@ -64,7 +64,7 @@ export class WalletManager {
           currency: wallet.currency,
           balance: wallet.balance,
           usdValue: wallet.balance * (await this.getUsdPrice(wallet.currency)),
-        }))
+        })),
       );
 
       const otcBalances = await Promise.all(
@@ -72,12 +72,15 @@ export class WalletManager {
           currency: wallet.currency,
           balance: wallet.balance,
           usdValue: wallet.balance * (await this.getUsdPrice(wallet.currency)),
-        }))
+        })),
       );
 
       this.balances = [...spotBalances, ...futuresBalances, ...otcBalances];
     } catch (_error) {
-      (globalThis.console  as unknown)?.error?.("Error updating wallet balances:", _error);
+      (globalThis.console as unknown)?.error?.(
+        "Error updating wallet balances:",
+        _error,
+      );
       throw error;
     }
   }
@@ -88,7 +91,10 @@ export class WalletManager {
       // Implement price fetching logic here
       return 0; // [PRODUCTION IMPLEMENTATION REQUIRED]
     } catch (_error) {
-      (globalThis.console  as unknown)?.error?.(`Error fetching USD price for ${currency}:`, _error);
+      (globalThis.console as unknown)?.error?.(
+        `Error fetching USD price for ${currency}:`,
+        _error,
+      );
       return 0;
     }
   }
@@ -105,10 +111,10 @@ export class WalletManager {
   public async updateBalance(
     type: "spot" | "futures" | "otc",
     currency: string,
-    balance: number
+    balance: number,
   ): Promise<void> {
     const walletIndex = this.config[type].findIndex(
-      (w) => w.currency === currency
+      (w) => w.currency === currency,
     );
     if (walletIndex !== -1) {
       this.config[type][walletIndex].balance = balance;

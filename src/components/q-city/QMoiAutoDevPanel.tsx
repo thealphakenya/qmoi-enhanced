@@ -31,7 +31,7 @@ function exportToCSV(logs: LogEntry[]) {
   const rows = logs
     .map(
       (log) =>
-        `"${log.timestamp}","${log.action}","${log.result.replace(/"/g, '""')}"`
+        `"${log.timestamp}","${log.action}","${log.result.replace(/"/g, '""')}"`,
     )
     .join("\n");
   const csv = header + rows;
@@ -72,7 +72,7 @@ export default function QMoiAutoDevPanel({
   const [status, setStatus] = useState<AutoDevStatus>(null);
   const [loading, setLoading] = useState(true);
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
-    null
+    null,
   );
   const [_error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
@@ -80,7 +80,10 @@ export default function QMoiAutoDevPanel({
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
   const [deployPlatform, setDeployPlatform] = useState("vercel");
   const [forceRunLoading, setForceRunLoading] = useState(false);
-  const [forceRunResult, setForceRunResult] = useState<Record<string, unknown> | null>(null);
+  const [forceRunResult, setForceRunResult] = useState<Record<
+    string,
+    unknown
+  > | null>(null);
 
   async function fetchStatus() {
     setLoading(true);
@@ -321,10 +324,11 @@ export default function QMoiAutoDevPanel({
             marginBottom: 8,
           }}
         >
-          <b>Force Run Result:</b> {String((forceRunResult  as unknown)?.message)}
-          {(forceRunResult  as unknown)?.platform && (
+          <b>Force Run Result:</b>{" "}
+          {String((forceRunResult as unknown)?.message)}
+          {(forceRunResult as unknown)?.platform && (
             <span style={{ marginLeft: 8, color: "#0ff" }}>
-              ({String((forceRunResult  as unknown)?.platform)})
+              ({String((forceRunResult as unknown)?.platform)})
             </span>
           )}
         </div>
@@ -480,7 +484,10 @@ export default function QMoiAutoDevPanel({
             value={logFilter}
             onChange={(_e) =>
               setLogFilter(
-                (_e.target as HTMLSelectElement).value as "all" | "fix" | "cicd"
+                (_e.target as HTMLSelectElement).value as
+                  | "all"
+                  | "fix"
+                  | "cicd",
               )
             }
             style={{

@@ -40,7 +40,7 @@ const mockWhatsAppService = {
 };
 
 const deviceService = new DeviceTrackingService(
-  mockWhatsAppService as unknown as WhatsAppService
+  mockWhatsAppService as unknown as WhatsAppService,
 );
 
 export const DevicesHub: React.FC = () => {
@@ -93,8 +93,8 @@ export const DevicesHub: React.FC = () => {
                     device.status === "online"
                       ? "green"
                       : device.status === "lost"
-                      ? "red"
-                      : "#888",
+                        ? "red"
+                        : "#888",
                 }}
               >
                 ({device.status})

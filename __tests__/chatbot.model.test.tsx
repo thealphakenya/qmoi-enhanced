@@ -26,7 +26,7 @@ test("Chatbot shows canonical model label and no interactive selector", () => {
   const modelLabel = screen.getByText(/Model:/i);
   expect(modelLabel).toBeInTheDocument();
   expect(modelLabel.parentElement?.textContent?.toLowerCase()).toContain(
-    "qmoi"
+    "qmoi",
   );
 
   // There should be no <select> element for model selection (combobox role)

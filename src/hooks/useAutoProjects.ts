@@ -37,11 +37,11 @@ interface UseAutoProjectsReturn {
   dailyPlan: DailyPlan | null;
   isLoading: boolean;
   createProject: (
-    project: Omit<AutoProject, "id" | "status" | "startedAt">
+    project: Omit<AutoProject, "id" | "status" | "startedAt">,
   ) => Promise<void>;
   updateProjectStatus: (
     id: string,
-    status: AutoProject["status"]
+    status: AutoProject["status"],
   ) => Promise<void>;
   generateDailyPlan: () => Promise<void>;
   notifyMaster: (message: string) => Promise<void>;
@@ -68,7 +68,10 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       try {
         setProjects(JSON.parse(savedProjects) as AutoProject[]);
       } catch (_e) {
-        (globalThis.console  as unknown)?.error?.("Failed to parse saved projects:", _e);
+        (globalThis.console as unknown)?.error?.(
+          "Failed to parse saved projects:",
+          _e,
+        );
       }
     }
 
@@ -77,7 +80,10 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       try {
         setDailyPlan(JSON.parse(savedDailyPlan) as DailyPlan);
       } catch (_e) {
-        (globalThis.console  as unknown)?.error?.("Failed to parse saved daily plan:", _e);
+        (globalThis.console as unknown)?.error?.(
+          "Failed to parse saved daily plan:",
+          _e,
+        );
       }
     }
   }, []);
@@ -109,15 +115,18 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
 
         // Notify master about new project
         await notifyMaster(
-          `🆕 New project planned: ${newProject.name}\nType: ${newProject.type}\nPriority: ${newProject.priority}\nEstimated time: ${newProject.estimatedDuration} minutes`
+          `🆕 New project planned: ${newProject.name}\nType: ${newProject.type}\nPriority: ${newProject.priority}\nEstimated time: ${newProject.estimatedDuration} minutes`,
         );
       } catch (_error) {
-        (globalThis.console  as unknown)?.error?.("Error creating project:", _error);
+        (globalThis.console as unknown)?.error?.(
+          "Error creating project:",
+          _error,
+        );
       } finally {
         setIsLoading(false);
       }
     },
-    []
+    [],
   );
 
   const updateProjectStatus = useCallback(
@@ -139,7 +148,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
                   const startTime = new Date(project.startedAt).getTime();
                   const endTime = new Date().getTime();
                   updatedProject.actualDuration = Math.round(
-                    (endTime - startTime) / (1000 * 60)
+                    (endTime - startTime) / (1000 * 60),
                   ); // Convert to minutes
                 }
               }
@@ -147,7 +156,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
               return updatedProject;
             }
             return project;
-          })
+          }),
         );
 
         // Notify master about status change
@@ -158,18 +167,21 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
               status === "completed"
                 ? " ✅"
                 : status === "in-progress"
-                ? " 🔄"
-                : " 📋"
-            }`
+                  ? " 🔄"
+                  : " 📋"
+            }`,
           );
         }
       } catch (_error) {
-        (globalThis.console  as unknown)?.error?.("Error updating project status:", _error);
+        (globalThis.console as unknown)?.error?.(
+          "Error updating project status:",
+          _error,
+        );
       } finally {
         setIsLoading(false);
       }
     },
-    [projects]
+    [projects],
   );
 
   const generateDailyPlan = useCallback(async () => {
@@ -225,7 +237,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
         projects: newProjects,
         totalEstimatedTime: newProjects.reduce(
           (sum, p) => sum + p.estimatedDuration,
-          0
+          0,
         ),
         status: "active",
       };
@@ -238,8 +250,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
         `📅 Daily plan generated for ${plan.date}\nTotal projects: ${
           newProjects.length
         }\nEstimated time: ${Math.round(
-          plan.totalEstimatedTime / 60
-        )} hours\nStatus: ${plan.status}`
+          plan.totalEstimatedTime / 60,
+        )} hours\nStatus: ${plan.status}`,
       );
 
       // Post to WhatsApp group
@@ -247,16 +259,19 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
         `📋 Daily Plan - ${plan.date}\n\nProjects planned: ${
           newProjects.length
         }\nEstimated time: ${Math.round(
-          plan.totalEstimatedTime / 60
+          plan.totalEstimatedTime / 60,
         )} hours\n\nProjects:\n${newProjects
           .map(
             (p, i) =>
-              `${i + 1}. ${p.name} (${p.type}) - ${p.estimatedDuration}min`
+              `${i + 1}. ${p.name} (${p.type}) - ${p.estimatedDuration}min`,
           )
-          .join("\n")}`
+          .join("\n")}`,
       );
     } catch (_error) {
-      (globalThis.console  as unknown)?.error?.("Error generating daily plan:", _error);
+      (globalThis.console as unknown)?.error?.(
+        "Error generating daily plan:",
+        _error,
+      );
     } finally {
       setIsLoading(false);
     }
@@ -274,7 +289,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   body: JSON.stringify({ message })
       // });
     } catch (_error) {
-      (console  as unknown).error("Error notifying master:", _error);
+      (console as unknown).error("Error notifying master:", _error);
     }
   }, []);
 
@@ -293,7 +308,10 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   })
       // });
     } catch (_error) {
-      (globalThis.console  as unknown)?.error?.("Error creating WhatsApp group:", _error);
+      (globalThis.console as unknown)?.error?.(
+        "Error creating WhatsApp group:",
+        _error,
+      );
     }
   }, []);
 
@@ -309,7 +327,10 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   body: JSON.stringify({ message })
       // });
     } catch (_error) {
-      (globalThis.console  as unknown)?.error?.("Error posting to WhatsApp group:", _error);
+      (globalThis.console as unknown)?.error?.(
+        "Error posting to WhatsApp group:",
+        _error,
+      );
     }
   }, []);
 
@@ -317,7 +338,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
     const total = projects.length;
     const completed = projects.filter((p) => p.status === "completed").length;
     const inProgress = projects.filter(
-      (p) => p.status === "in-progress"
+      (p) => p.status === "in-progress",
     ).length;
     const planned = projects.filter((p) => p.status === "planned").length;
     const successRate = total > 0 ? Math.round((completed / total) * 100) : 0;

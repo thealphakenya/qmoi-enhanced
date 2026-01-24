@@ -147,7 +147,7 @@ npm start
 ```typescript
 // Backend: POST /api/mail
 export async function POST(req: Request) {
-  const { to, subject, body } = (await req.json() as any);
+  const { to, subject, body } = (await req.json()) as any;
 
   // Validate
   if (!to || !subject || !body) {

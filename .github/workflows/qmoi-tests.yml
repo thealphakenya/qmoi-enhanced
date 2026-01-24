@@ -2,9 +2,10 @@ name: QMOI Tests
 
 on:
   push:
-    branches: [ main, autosync-backup-20250926-232440, ci-debug-output-manual-1766306758 ]
+    branches:
+      [main, autosync-backup-20250926-232440, ci-debug-output-manual-1766306758]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   node-and-smoke:
@@ -13,7 +14,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: "22"
       - run: npm ci
       - run: npm run ci:build --if-present
       - run: npm run test:quick-qmoi
@@ -26,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
       - run: python -m pip install --upgrade pip
       - run: python -m pip install pytest requests
       - run: pytest -q tests/test_qmoi_local_server.py -q || true

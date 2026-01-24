@@ -226,7 +226,7 @@ describe("User Registration Flow", () => {
     const user = await register(
       "test@example.com",
       "testuser",
-      "SecurePassword123!@#"
+      "SecurePassword123!@#",
     );
 
     expect(user).toHaveProperty("id");

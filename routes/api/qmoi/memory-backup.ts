@@ -5,14 +5,14 @@ import axios from "axios";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   try {
     const memoryPath = path.join(
       process.cwd(),
       "scripts",
       "models",
-      "qmoi_memory.json"
+      "qmoi_memory.json",
     );
     if (!fs.existsSync(memoryPath)) {
       return res
@@ -24,7 +24,7 @@ export default async function handler(
       process.cwd(),
       "scripts",
       "models",
-      "memory_backups"
+      "memory_backups",
     );
     fs.mkdirSync(backupsDir, { recursive: true });
     const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
@@ -55,7 +55,7 @@ export default async function handler(
               timeout: 15000,
             });
             details.push(
-              r.status === 200 ? "gist:ok" : `gist:error:${r.status}`
+              r.status === 200 ? "gist:ok" : `gist:error:${r.status}`,
             );
           } else {
             details.push("gist:skipped:missing_config");

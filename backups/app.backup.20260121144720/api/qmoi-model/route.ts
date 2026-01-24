@@ -30,7 +30,7 @@ export async function GET(_request: NextRequest) {
     // Always ignore any client-supplied 'model' query param and enforce canonical model
     if (searchParams.has("model")) {
       console.warn(
-        "Client attempted to override 'model' param; ignoring and using 'qmoi' aggregator."
+        "Client attempted to override 'model' param; ignoring and using 'qmoi' aggregator.",
       );
     }
 
@@ -97,13 +97,13 @@ export async function GET(_request: NextRequest) {
 
     return NextResponse.json(
       { _error: "Invalid query parameter" },
-      { status: 400 }
+      { status: 400 },
     );
   } catch (_error) {
     (console as any).error("Error in QMOI model endpoint:", _error);
     return NextResponse.json(
       { _error: error instanceof Error ? error.message : "Unknown error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -139,13 +139,13 @@ export async function POST(_request: NextRequest) {
 
     return NextResponse.json(
       { _error: "Invalid action specified" },
-      { status: 400 }
+      { status: 400 },
     );
   } catch (_error) {
     (console as any).error("Error in QMOI model enhancement endpoint:", _error);
     return NextResponse.json(
       { _error: error instanceof Error ? error.message : "Unknown error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

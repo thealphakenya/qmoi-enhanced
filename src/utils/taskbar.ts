@@ -53,10 +53,12 @@ export class TaskbarManager {
     if (this._options.showInTaskbar) {
       // Set application icon
       const iconPath = path.join(_app.getAppPath?.() ?? "", this._options.icon);
-      ((globalThis  as unknown)._app?.dock  as unknown)?.setIcon?.(iconPath);
+      ((globalThis as unknown)._app?.dock as unknown)?.setIcon?.(iconPath);
 
       // Set tooltip
-      ((globalThis  as unknown)._app?.dock  as unknown)?.setTooltip?.(this._options.tooltip);
+      ((globalThis as unknown)._app?.dock as unknown)?.setTooltip?.(
+        this._options.tooltip,
+      );
 
       // Enable notifications if requested
       if (this._options.notifications) {
@@ -67,7 +69,7 @@ export class TaskbarManager {
 
   private setupNotifications(): void {
     // Setup notification handlers
-    (_app  as unknown).on?.("ready", () => {
+    (_app as unknown).on?.("ready", () => {
       // Register notification handlers
       this.registerNotificationHandlers();
     });
@@ -75,20 +77,20 @@ export class TaskbarManager {
 
   private registerNotificationHandlers(): void {
     // Handle different types of notifications
-    (globalThis  as unknown)._app?.on?.(
+    (globalThis as unknown)._app?.on?.(
       "notification-click",
       (_event: NotificationEvent, notification: NotificationData) => {
         // Handle notification clicks
         console.log("Notification clicked:", notification);
-      }
+      },
     );
 
-    (globalThis  as unknown)._app?.on?.(
+    (globalThis as unknown)._app?.on?.(
       "notification-close",
       (_event: NotificationEvent, notification: NotificationData) => {
         // Handle notification closes
         console.log("Notification closed:", notification);
-      }
+      },
     );
   }
 
@@ -109,14 +111,14 @@ export class TaskbarManager {
 
   public updateTooltip(tooltip: string): void {
     if (this._options.showInTaskbar) {
-      (globalThis  as unknown)._app?.dock?.setTooltip(tooltip);
+      (globalThis as unknown)._app?.dock?.setTooltip(tooltip);
     }
   }
 
   public updateIcon(iconPath: string): void {
     if (this._options.showInTaskbar) {
       const fullPath = path.join(_app.getAppPath?.() ?? "", iconPath);
-      (globalThis  as unknown)._app?.dock?.setIcon(fullPath);
+      (globalThis as unknown)._app?.dock?.setIcon(fullPath);
     }
   }
 
@@ -125,7 +127,7 @@ export class TaskbarManager {
     if (show) {
       this.initialize();
     } else {
-      (globalThis  as unknown)._app?.dock?.hide();
+      (globalThis as unknown)._app?.dock?.hide();
     }
   }
 

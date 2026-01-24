@@ -28,8 +28,9 @@ export type AutomationRule = {
 export class PluginManager {
   private plugins: QmoiPlugin[] = [];
   private pluginStatus: { [id: string]: boolean } = {};
-  private eventListeners: { [eventType: string]: ((payload: unknown) => void)[] } =
-    {};
+  private eventListeners: {
+    [eventType: string]: ((payload: unknown) => void)[];
+  } = {};
   private scheduledPlugins: {
     plugin: QmoiPlugin;
     interval: number;

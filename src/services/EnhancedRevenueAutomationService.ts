@@ -54,7 +54,7 @@ export class EnhancedRevenueAutomationService extends EventEmitter {
   }
 
   public async requestRevenueProject(
-    _request: Omit<RevenueProjectRequest, "id" | "timestamp">
+    _request: Omit<RevenueProjectRequest, "id" | "timestamp">,
   ): Promise<string> {
     const id = `revenue_${Date.now()}_${Math.random()
       .toString(36)
@@ -78,7 +78,9 @@ export class EnhancedRevenueAutomationService extends EventEmitter {
       try {
         const result = await this.automateRevenueProject(_request);
         this.emit("revenueProjectAutomated", result);
-      } catch (e) { void e; } finally {
+      } catch (e) {
+        void e;
+      } finally {
         this.isProcessing = false;
         this.processQueue();
       }
@@ -88,13 +90,13 @@ export class EnhancedRevenueAutomationService extends EventEmitter {
   }
 
   private async automateRevenueProject(
-    _request: RevenueProjectRequest
+    _request: RevenueProjectRequest,
   ): Promise<RevenueAutomationResult> {
     const logs: string[] = [];
     logs.push(
       `Starting revenue automation for ${
         _request.type
-      } targeting platforms: ${_request.targetPlatforms.join(", ")}`
+      } targeting platforms: ${_request.targetPlatforms.join(", ")}`,
     );
     // 1. Discover new platforms and deals
     const deals: PlatformDeal[] = _request.autoDiscoveryEnabled

@@ -56,7 +56,8 @@ app.post("/api/media", requireAdmin, upload.single("file"), (_req, _res) => {
 
 app.delete("/api/media/:id", requireAdmin, (_req, _res) => {
   const file = path.join(MEDIA_DIR, _req._params.id);
-  if (!fs.existsSync(file)) return _res.status(404).json({ _error: "Not found" });
+  if (!fs.existsSync(file))
+    return _res.status(404).json({ _error: "Not found" });
   fs.unlinkSync(file);
   logAudit(`DELETE ${_req._params.id}`);
   _res.json({ success: true });

@@ -24,7 +24,7 @@ export async function POST(_req: NextRequest) {
         _error: "Failed to push changes",
         details: error instanceof Error ? error.message : String(_error),
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

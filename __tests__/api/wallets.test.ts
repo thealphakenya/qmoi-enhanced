@@ -23,7 +23,10 @@ describe("Wallet API", () => {
     testUserId = (user as { id: string }).id;
 
     // Create JWT token for authenticated requests
-    testToken = authService.generateToken(testUserId, "wallet-test@example.com");
+    testToken = authService.generateToken(
+      testUserId,
+      "wallet-test@example.com",
+    );
 
     // Create test wallet
     const wallet = await walletService.create({
@@ -178,7 +181,9 @@ describe("Wallet API", () => {
 
       const wallet = await walletService.getById(testWalletId);
       // Balance should be positive
-      expect(parseFloat((wallet as { balance: string }).balance)).toBeGreaterThan(0);
+      expect(
+        parseFloat((wallet as { balance: string }).balance),
+      ).toBeGreaterThan(0);
     });
   });
 });

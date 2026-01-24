@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(_req: Request) {
   try {
-    const body = (await _req.json() as any).catch(() => ({}));
+    const body = ((await _req.json()) as any).catch(() => ({}));
 
     const qbase = process.env.QMOI_API_BASE || "http://127.0.0.1:8080";
     const target = `${qbase}/memory/sync`;
@@ -32,7 +32,7 @@ export async function POST(_req: Request) {
   } catch (_e) {
     return NextResponse.json(
       { _error: "memory_proxy_error", detail: String(_e) },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -57,7 +57,7 @@ export async function GET() {
   } catch (_e) {
     return NextResponse.json(
       { _error: "memory_fetch_error", detail: String(_e) },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

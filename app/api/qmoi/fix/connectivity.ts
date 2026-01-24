@@ -8,5 +8,7 @@ export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
     detached: true,
     stdio: "ignore",
   });
-  _res.status(200).json({ ok: true, message: "Connectivity repair triggered." });
+  _res
+    .status(200)
+    .json({ ok: true, message: "Connectivity repair triggered." });
 }

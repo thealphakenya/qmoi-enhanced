@@ -22,7 +22,12 @@ export async function POST(req: Request) {
 
     // Support both message arrays and simple input
     let userMessage = input;
-    if (!userMessage && messages && Array.isArray(messages) && messages.length > 0) {
+    if (
+      !userMessage &&
+      messages &&
+      Array.isArray(messages) &&
+      messages.length > 0
+    ) {
       const lastMsg = messages[messages.length - 1];
       userMessage = lastMsg.content || lastMsg.text || "";
     }

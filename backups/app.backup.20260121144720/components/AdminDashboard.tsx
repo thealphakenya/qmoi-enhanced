@@ -304,7 +304,7 @@ export default function AdminDashboard() {
                           {metric.p99Duration}
                         </td>
                       </tr>
-                    )
+                    ),
                   )}
                 </tbody>
               </table>

@@ -229,7 +229,10 @@ function isMasterOrSister(): boolean {
     const email = localStorage.getItem("userEmail") || "";
     return MASTER_EMAILS.includes(email);
   } catch (error) {
-    (globalThis.console as any)?.error?.("Failed to check master/sister status:", error);
+    (globalThis.console as any)?.error?.(
+      "Failed to check master/sister status:",
+      error,
+    );
     return false;
   }
 }
@@ -361,7 +364,10 @@ function QIComponent() {
 
       if (!response.ok) throw new Error("Failed to trigger enhancement");
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to trigger enhancement:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to trigger enhancement:",
+        error,
+      );
       toast({
         title: "Error",
         description: "Failed to trigger enhancement",

@@ -38,10 +38,13 @@ export async function GET(_request: NextRequest) {
       pagination: { skip, take, total: 0 },
     });
   } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/transactions _error:", _error);
+    (globalThis.console as any)?.error?.(
+      "GET /api/transactions _error:",
+      _error,
+    );
     return NextResponse.json(
       { _error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -107,7 +107,10 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       ];
       setFixes(mockFixes);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to fetch fix history:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to fetch fix history:",
+        error,
+      );
     }
   };
 
@@ -123,7 +126,10 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       };
       setGitHubStatus(mockStatus);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to fetch GitHub status:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to fetch GitHub status:",
+        error,
+      );
     }
   };
 

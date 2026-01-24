@@ -30,7 +30,7 @@ describe("Chatbot integration (API proxy)", () => {
               { message: { content: "QMOI AI (qmoi): Hello from qmoi" } },
             ],
           }),
-      })
+      }),
     ) as any;
 
     (global as any).speechSynthesis = {
@@ -39,16 +39,16 @@ describe("Chatbot integration (API proxy)", () => {
     };
 
     // JSDOM doesn't implement SpeechSynthesisUtterance; mock it so construction succeeds
-    const SpeechSynthesisUtteranceMock = jest
-      .fn()
-      .mockImplementation(function (text: string) {
-        // @ts-expect-error - Setting mock properties
-        this.text = text;
-        // @ts-expect-error - Setting mock properties
-        this.onend = undefined;
-        // @ts-expect-error - Setting mock properties
-        this.onerror = undefined;
-      });
+    const SpeechSynthesisUtteranceMock = jest.fn().mockImplementation(function (
+      text: string,
+    ) {
+      // @ts-expect-error - Setting mock properties
+      this.text = text;
+      // @ts-expect-error - Setting mock properties
+      this.onend = undefined;
+      // @ts-expect-error - Setting mock properties
+      this.onerror = undefined;
+    });
     (global as any).SpeechSynthesisUtterance =
       SpeechSynthesisUtteranceMock as any;
     // expose the mock for assertions in tests

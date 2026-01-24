@@ -37,7 +37,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [sortBy, setSortBy] = useState<"name" | "date" | "size" | "type">(
-    "name"
+    "name",
   );
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
   const [isLoading, setIsLoading] = useState(false);
@@ -150,7 +150,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
     const matchesSearch =
       file.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       file.tags.some((tag) =>
-        tag.toLowerCase().includes(searchQuery.toLowerCase())
+        tag.toLowerCase().includes(searchQuery.toLowerCase()),
       );
     const matchesCategory =
       selectedCategory === "all" || file.category === selectedCategory;
@@ -185,7 +185,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
       prev.map((file) => ({
         ...file,
         isSelected: file.id === id ? !file.isSelected : file.isSelected,
-      }))
+      })),
     );
   }, []);
 
@@ -203,7 +203,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
 
     if (
       confirm(
-        `Are you sure you want to delete ${selectedFiles.length} item(s)?`
+        `Are you sure you want to delete ${selectedFiles.length} item(s)?`,
       )
     ) {
       setIsLoading(true);
@@ -212,7 +212,10 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
         await new Promise((resolve) => setTimeout(resolve, 1000));
         setFiles((prev) => prev.filter((file) => !file.isSelected));
       } catch (_e: unknown) {
-        (globalThis.console  as unknown)?.error?.("Error deleting files:", extractMessage(_e));
+        (globalThis.console as unknown)?.error?.(
+          "Error deleting files:",
+          extractMessage(_e),
+        );
       } finally {
         setIsLoading(false);
       }
@@ -230,10 +233,13 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
         prev.map((file) => ({
           ...file,
           tags: [...file.tags, "organized"],
-        }))
+        })),
       );
     } catch (_error) {
-      (globalThis.console  as unknown)?.error?.("Error organizing files:", _error);
+      (globalThis.console as unknown)?.error?.(
+        "Error organizing files:",
+        _error,
+      );
     } finally {
       setIsLoading(false);
     }

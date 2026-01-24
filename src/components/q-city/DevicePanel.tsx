@@ -118,7 +118,7 @@ export default function DevicePanel() {
       .then((_res: unknown) => {
         const data = res as Record<string, unknown>;
         setTestResult(
-          data.success ? "Success" : String(data.error ?? "Failed")
+          data.success ? "Success" : String(data.error ?? "Failed"),
         );
       })
       .catch((_e: unknown) => {

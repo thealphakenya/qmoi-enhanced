@@ -7,7 +7,7 @@ module.exports = {
     {
       name: "qmoi-cluster",
       script: "node node_modules/.bin/next start",
-      instances: "max",  // Auto-detect CPU cores
+      instances: "max", // Auto-detect CPU cores
       exec_mode: "cluster",
       cwd: "/workspaces/qmoi-enhanced",
       env: {
@@ -28,11 +28,16 @@ module.exports = {
   deploy: {
     production: {
       user: "node",
-      host: ["server1.example.com", "server2.example.com", "server3.example.com"],
+      host: [
+        "server1.example.com",
+        "server2.example.com",
+        "server3.example.com",
+      ],
       ref: "origin/main",
       repo: "https://github.com/thealphakenya/qmoi-enhanced.git",
       path: "/workspaces/qmoi-enhanced",
-      "post-deploy": "npm install --production && npm run ci:build && pm2 restart all",
+      "post-deploy":
+        "npm install --production && npm run ci:build && pm2 restart all",
     },
   },
 };

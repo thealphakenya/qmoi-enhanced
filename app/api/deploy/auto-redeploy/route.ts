@@ -14,7 +14,7 @@ export async function POST(_req: NextRequest) {
       // Enable auto-redeploy by setting up webhooks or CI/CD
       // For Vercel, this is typically handled through GitHub integration
       const { stdout: hookOutput } = await execAsync(
-        "vercel env pull .env.local"
+        "vercel env pull .env.local",
       );
 
       return NextResponse.json({
@@ -37,7 +37,7 @@ export async function POST(_req: NextRequest) {
     const details = error instanceof Error ? error.message : String(_error);
     return NextResponse.json(
       { _error: "Failed to configure auto-redeploy", details },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

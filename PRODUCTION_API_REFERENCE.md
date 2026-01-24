@@ -350,7 +350,7 @@ const registerResponse = await fetch(
       password: "SecurePass123!",
       name: "John Doe",
     }),
-  }
+  },
 );
 
 const { token } = await registerResponse.json();
@@ -360,7 +360,7 @@ const profileResponse = await fetch(
   "https://your-domain.vercel.app/api/users/profile",
   {
     headers: { Authorization: `Bearer ${token}` },
-  }
+  },
 );
 
 const profile = await profileResponse.json();
@@ -378,7 +378,7 @@ const updateResponse = await fetch(
       name: "Jane Doe",
       phone: "+1-234-567-8900",
     }),
-  }
+  },
 );
 
 // 4. Logout
@@ -396,7 +396,7 @@ async function getAdminDashboard(token) {
     "https://your-domain.vercel.app/api/admin/dashboard",
     {
       headers: { Authorization: `Bearer ${token}` },
-    }
+    },
   );
 
   if (!response.ok) {
@@ -425,7 +425,7 @@ async function initiatePayment(token, amount) {
         currency: "USD",
         provider: "stripe",
       }),
-    }
+    },
   );
 
   const { data } = await response.json();

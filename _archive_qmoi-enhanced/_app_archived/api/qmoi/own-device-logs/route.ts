@@ -87,7 +87,10 @@ export async function POST(request: NextRequest) {
     try {
       logs = JSON.parse(stdout);
     } catch (parseError) {
-      (globalThis.console as any)?.error?.("Failed to parse logger output:", parseError);
+      (globalThis.console as any)?.error?.(
+        "Failed to parse logger output:",
+        parseError,
+      );
       return NextResponse.json(
         { error: "Failed to parse log data" },
         { status: 500 },
@@ -96,7 +99,10 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(logs);
   } catch (error) {
-    (globalThis.console as any)?.error?.("QMOI Own Device Logs API error:", error);
+    (globalThis.console as any)?.error?.(
+      "QMOI Own Device Logs API error:",
+      error,
+    );
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },
@@ -139,7 +145,10 @@ export async function GET(request: NextRequest) {
     try {
       stats = JSON.parse(stdout);
     } catch (parseError) {
-      (globalThis.console as any)?.error?.("Failed to parse statistics:", parseError);
+      (globalThis.console as any)?.error?.(
+        "Failed to parse statistics:",
+        parseError,
+      );
       return NextResponse.json(
         { error: "Failed to parse statistics" },
         { status: 500 },
@@ -148,7 +157,10 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(stats);
   } catch (error) {
-    (globalThis.console as any)?.error?.("QMOI Own Device Statistics API error:", error);
+    (globalThis.console as any)?.error?.(
+      "QMOI Own Device Statistics API error:",
+      error,
+    );
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },

@@ -2,7 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
-const CREDENTIALS_FILE = path.resolve(process.cwd(), "data", "webauthn-credentials.json");
+const CREDENTIALS_FILE = path.resolve(
+  process.cwd(),
+  "data",
+  "webauthn-credentials.json",
+);
 
 export async function POST(_request: NextRequest) {
   try {
@@ -14,14 +18,22 @@ export async function POST(_request: NextRequest) {
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
-      return NextResponse.json({ _error: "No credentials registered" }, { status: 401 });
+      return NextResponse.json(
+        { _error: "No credentials registered" },
+        { status: 401 },
+      );
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
-    const cred = credentials.find((c: unknown) => c.credentialId === credentialId);
+    const cred = credentials.find(
+      (c: unknown) => c.credentialId === credentialId,
+    );
 
     if (!cred) {
-      return NextResponse.json({ _error: "Credential not found" }, { status: 401 });
+      return NextResponse.json(
+        { _error: "Credential not found" },
+        { status: 401 },
+      );
     }
 
     // Update lastUsed and counter
@@ -37,6 +49,9 @@ export async function POST(_request: NextRequest) {
       message: "WebAuthn authentication successful",
     });
   } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message }, { status: 500 });
+    return NextResponse.json(
+      { _error: (error as Error).message },
+      { status: 500 },
+    );
   }
 }

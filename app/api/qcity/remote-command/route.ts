@@ -12,7 +12,7 @@ function logAudit(entry: unknown) {
   const _e = (entry as Record<string, unknown>) || {};
   fs.appendFileSync(
     AUDIT_LOG,
-    JSON.stringify({ ..._e, timestamp: new Date().toISOString() }) + "\n"
+    JSON.stringify({ ..._e, timestamp: new Date().toISOString() }) + "\n",
   );
 }
 
@@ -22,7 +22,7 @@ function maskCommand(cmd: string) {
 
 export default async function handler(
   _req: NextApiRequest,
-  _res: NextApiResponse
+  _res: NextApiResponse,
 ) {
   if (_req.method !== "POST") return _res.status(405).end();
   const key = _req.headers["x-qcity-admin-key"];

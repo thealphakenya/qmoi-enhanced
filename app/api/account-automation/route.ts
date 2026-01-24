@@ -39,7 +39,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!username || !email) {
     return NextResponse.json(
       { _error: "Missing username or email" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -78,7 +78,7 @@ export async function POST_LOGIN(_req: NextRequest) {
     return NextResponse.json({ _error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
-    (a) => a.username === username && a.platform === platform
+    (a) => a.username === username && a.platform === platform,
   );
   if (!account)
     return NextResponse.json({ _error: "Account not found" }, { status: 404 });
@@ -105,7 +105,10 @@ export async function POST_VERIFY(_req: NextRequest) {
   const id = typeof body.id === "number" ? body.id : Number(body.id || NaN);
 
   if (!email || !Number.isFinite(id)) {
-    return NextResponse.json({ _error: "Missing email or id" }, { status: 400 });
+    return NextResponse.json(
+      { _error: "Missing email or id" },
+      { status: 400 },
+    );
   }
 
   // Production: integrate with real email provider (SendGrid, AWS SES, or Nodemailer)
@@ -127,7 +130,7 @@ export async function GET_STATUS(_req: NextRequest) {
   if (!Number.isFinite(id))
     return NextResponse.json(
       { _error: "Missing or invalid id" },
-      { status: 400 }
+      { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);

@@ -201,7 +201,7 @@ export default function EnhancedQMOIDashboard({
           <p>
             <b>Average Response Time:</b>{" "}
             {Math.round(
-              dashboardData.errorFixing.systemHealth.averageResponseTime || 0
+              dashboardData.errorFixing.systemHealth.averageResponseTime || 0,
             )}
             ms
           </p>
@@ -256,7 +256,7 @@ export default function EnhancedQMOIDashboard({
             {Math.round(
               (dashboardData.revenueAutomation.totalRevenue /
                 dashboardData.revenueAutomation.revenueGoal) *
-                100
+                100,
             )}
             %
           </p>
@@ -297,9 +297,9 @@ export default function EnhancedQMOIDashboard({
                   "healthy"
                     ? "#4CAF50"
                     : dashboardData.parallelization.systemHealth
-                        .systemStatus === "warning"
-                    ? "#FF9800"
-                    : "#F44336",
+                          .systemStatus === "warning"
+                      ? "#FF9800"
+                      : "#F44336",
               }}
             >
               {dashboardData.parallelization.systemHealth.systemStatus}
@@ -308,14 +308,14 @@ export default function EnhancedQMOIDashboard({
           <p>
             <b>CPU Usage:</b>{" "}
             {Math.round(
-              dashboardData.parallelization.systemHealth.cpuUsage || 0
+              dashboardData.parallelization.systemHealth.cpuUsage || 0,
             )}
             %
           </p>
           <p>
             <b>Memory Usage:</b>{" "}
             {Math.round(
-              dashboardData.parallelization.systemHealth.memoryUsage || 0
+              dashboardData.parallelization.systemHealth.memoryUsage || 0,
             )}
             %
           </p>
@@ -323,7 +323,7 @@ export default function EnhancedQMOIDashboard({
             <b>Success Rate:</b>{" "}
             {Math.round(
               (dashboardData.parallelization.performanceMetrics.successRate ||
-                0) * 100
+                0) * 100,
             )}
             %
           </p>
@@ -331,7 +331,7 @@ export default function EnhancedQMOIDashboard({
             <b>Tasks/Min:</b>{" "}
             {Math.round(
               dashboardData.parallelization.performanceMetrics.tasksPerMinute ||
-                0
+                0,
             )}
           </p>
         </div>
@@ -424,7 +424,7 @@ export default function EnhancedQMOIDashboard({
             onClick={() =>
               enhancedParallelizationService.submitTask(
                 "optimization",
-                "medium"
+                "medium",
               )
             }
           >
@@ -441,7 +441,7 @@ export default function EnhancedQMOIDashboard({
             onClick={() =>
               enhancedParallelizationService.submitTask(
                 "site_generation",
-                "medium"
+                "medium",
               )
             }
           >
@@ -451,7 +451,7 @@ export default function EnhancedQMOIDashboard({
             onClick={() =>
               enhancedParallelizationService.submitTask(
                 "revenue_automation",
-                "high"
+                "high",
               )
             }
           >

@@ -124,7 +124,8 @@ export function QMOIDashboard() {
                     : state.currentAvatar
                         .split("-")
                         .map(
-                          (word) => word.charAt(0).toUpperCase() + word.slice(1)
+                          (word) =>
+                            word.charAt(0).toUpperCase() + word.slice(1),
                         )
                         .join(" ")}
                 </div>
@@ -171,7 +172,7 @@ export function QMOIDashboard() {
                 </div>
                 <p
                   className={`text-xs text-muted-foreground ${getEnergyColor(
-                    state.energy
+                    state.energy,
                   )}`}
                 >
                   Energy: {state.energy}%

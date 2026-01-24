@@ -37,14 +37,14 @@ export async function POST(_req: NextRequest) {
     } else {
       return NextResponse.json(
         { _error: "Unsupported platform", supported: ["vercel"] },
-        { status: 400 }
+        { status: 400 },
       );
     }
   } catch (_error: unknown) {
     const details = error instanceof Error ? error.message : String(_error);
     return NextResponse.json(
       { _error: "Failed to deploy", details },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

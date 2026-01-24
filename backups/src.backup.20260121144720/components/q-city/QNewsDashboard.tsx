@@ -265,7 +265,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
                         onClick={() =>
                           handleSchedule(
                             item.id,
-                            prompt("Enter ISO date/time to schedule:") || ""
+                            prompt("Enter ISO date/time to schedule:") || "",
                           )
                         }
                       >
@@ -320,7 +320,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
                       {m.url}
                     </a>
                   </li>
-                )
+                ),
               )}
             </ul>
           </div>

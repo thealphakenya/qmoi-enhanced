@@ -151,7 +151,10 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({
       ];
       setBiometricTemplates(templates);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error loading account logs:", error);
+      (globalThis.console as any)?.error?.(
+        "Error loading account logs:",
+        error,
+      );
     }
   };
 
@@ -172,7 +175,10 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({
       ];
       setAccountLogs(logs);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error loading account logs:", error);
+      (globalThis.console as any)?.error?.(
+        "Error loading account logs:",
+        error,
+      );
     }
   };
 
@@ -199,7 +205,10 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({
       ];
       setRecoveryLogs(logs);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error loading recovery logs:", error);
+      (globalThis.console as any)?.error?.(
+        "Error loading recovery logs:",
+        error,
+      );
     }
   };
 

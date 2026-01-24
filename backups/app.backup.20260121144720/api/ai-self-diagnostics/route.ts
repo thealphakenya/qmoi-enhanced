@@ -39,8 +39,8 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err))
-        )
+          resolve(String(out) + String(_err)),
+        ),
       );
       tsc.split("\n").forEach((line) => {
         if (line.includes("error"))
@@ -51,8 +51,8 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err))
-          )
+            resolve(String(out) + String(_err)),
+          ),
         );
         flake.split("\n").forEach((line) => {
           if (line.trim())
@@ -62,8 +62,8 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err))
-        )
+          resolve(String(out) + String(_err)),
+        ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
@@ -102,8 +102,8 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err))
-        )
+          resolve(String(out) + String(_err)),
+        ),
       );
       results.push({ type: "eslint", result: eslintFix });
       // Python
@@ -111,30 +111,30 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err))
-          )
+            resolve(String(out) + String(_err)),
+          ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
       }
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err))
-        )
+          resolve(String(out) + String(_err)),
+        ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err))
-        )
+          resolve(String(out) + String(_err)),
+        ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err))
-        )
+          resolve(String(out) + String(_err)),
+        ),
       );
       problemsRes.split("\n").forEach((line) => {
         const match = line.match(/error TS2307: Cannot find module '(.+?)'/);

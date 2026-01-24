@@ -17,9 +17,18 @@ const run = async () => {
     let s = fs.readFileSync(file, "utf8");
     const old = s;
     s = s.replace(/catch\s*\(\s*error\s*\)\s*\{/g, "catch (_error) {");
-    s = s.replace(/catch\s*\(\s*error\s*:\s*unknown\s*\)\s*\{/g, "catch (_error: unknown) {");
-    s = s.replace(/catch\s*\(\s*error\s*:\s*any\s*\)\s*\{/g, "catch (_error: unknown) {");
-    s = s.replace(/catch\s*\(\s*error\s*:\s*Error\s*\)\s*\{/g, "catch (_error: Error) {");
+    s = s.replace(
+      /catch\s*\(\s*error\s*:\s*unknown\s*\)\s*\{/g,
+      "catch (_error: unknown) {",
+    );
+    s = s.replace(
+      /catch\s*\(\s*error\s*:\s*any\s*\)\s*\{/g,
+      "catch (_error: unknown) {",
+    );
+    s = s.replace(
+      /catch\s*\(\s*error\s*:\s*Error\s*\)\s*\{/g,
+      "catch (_error: Error) {",
+    );
     if (s !== old) {
       fs.writeFileSync(file, s, "utf8");
       count++;

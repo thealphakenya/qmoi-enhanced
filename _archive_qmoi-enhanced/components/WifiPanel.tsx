@@ -76,7 +76,10 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
       const saved = localStorage.getItem("wifiPriorities");
       if (saved) setPriorities(JSON.parse(saved));
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to load WiFi priorities:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to load WiFi priorities:",
+        error,
+      );
       toast({
         title: "Error",
         description: "Failed to load saved WiFi priorities",
@@ -90,7 +93,10 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
     try {
       localStorage.setItem("wifiPriorities", JSON.stringify(priorities));
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to save WiFi priorities:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to save WiFi priorities:",
+        error,
+      );
       toast({
         title: "Error",
         description: "Failed to save WiFi priorities",
@@ -224,7 +230,10 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
         const data = await res.json();
         setMonitorStatus(data);
       } catch (error) {
-        (globalThis.console as any)?.error?.("Failed to fetch monitor status:", error);
+        (globalThis.console as any)?.error?.(
+          "Failed to fetch monitor status:",
+          error,
+        );
         toast({
           title: "Error",
           description: "Failed to fetch monitor status",
@@ -334,7 +343,10 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
       const data = await res.json();
       setHourlyAnalytics(data);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to fetch hourly analytics:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to fetch hourly analytics:",
+        error,
+      );
       toast({
         title: "Error",
         description: "Failed to fetch hourly analytics",

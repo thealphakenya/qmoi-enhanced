@@ -15,7 +15,7 @@ export async function GET() {
 }
 
 export async function POST(_req: NextRequest) {
-  const { id, action } = (await _req.json() as any);
+  const { id, action } = (await _req.json()) as any;
   // In real us_e, update DB or call API
   const log = `Transaction ${id} ${action} by master at ${new Date().toISOString()}`;
   fs.appendFileSync("logs/financial_verification.log", log + "\n");

@@ -324,7 +324,10 @@ export async function POST(request: NextRequest) {
       { status: 400 },
     );
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error in AI health action endpoint:", error);
+    (globalThis.console as any)?.error?.(
+      "Error in AI health action endpoint:",
+      error,
+    );
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },

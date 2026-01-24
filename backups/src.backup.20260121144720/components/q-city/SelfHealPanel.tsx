@@ -22,7 +22,7 @@ const SelfHealPanel: React.FC = () => {
   const [history, setHistory] = useState<Record<string, unknown>[]>(() => {
     try {
       return JSON.parse(
-        localStorage.getItem("selfHealHistory") || "[]"
+        localStorage.getItem("selfHealHistory") || "[]",
       ) as Record<string, unknown>[];
     } catch (e) {
       return [] as Record<string, unknown>[];
@@ -47,7 +47,7 @@ const SelfHealPanel: React.FC = () => {
           "?token=" +
           encodeURIComponent(token) +
           "&opts=" +
-          encodeURIComponent(JSON.stringify(_options))
+          encodeURIComponent(JSON.stringify(_options)),
       );
       eventSourceRef.current = es;
       let logBuffer = "";

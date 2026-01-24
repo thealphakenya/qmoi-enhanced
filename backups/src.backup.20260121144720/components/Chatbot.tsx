@@ -55,7 +55,7 @@ export function Chatbot() {
         message: input,
         speak: wantSpeak,
       });
-      const dataAny = data  as unknown;
+      const dataAny = data as unknown;
       let replyText = "";
       if (dataAny && dataAny.reply) replyText = dataAny.reply;
       else if (

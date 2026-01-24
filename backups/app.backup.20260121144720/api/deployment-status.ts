@@ -65,7 +65,9 @@ export async function GET() {
         fs.readFileSync(huggingfaceStatusPath, "utf-8"),
       );
     }
-  } catch (e) { void e; }
+  } catch (e) {
+    void e;
+  }
   return NextResponse.json({
     status,
     lastDeploy,

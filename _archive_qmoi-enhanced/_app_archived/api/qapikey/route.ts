@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
   // Revoke a key
-  const body = (await req.json() as any);
+  const body = (await req.json()) as any;
   const { key } = body;
   const idx = apiKeys.findIndex((k) => k.key === key);
   if (idx === -1)

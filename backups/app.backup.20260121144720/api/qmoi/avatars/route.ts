@@ -32,7 +32,7 @@ export async function GET() {
     (console as any).error("Error fetching avatars:", _error);
     return NextResponse.json(
       { _error: "Failed to fetch avatars" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -62,7 +62,7 @@ export async function POST(_request: NextRequest) {
     (console as any).error("Error in avatars API:", _error);
     return NextResponse.json(
       { _error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -72,7 +72,10 @@ async function switchAvatar(avatarId: string) {
     // Validate avatar ID
     const avatar = avatarsConfig.find((a) => a.id === avatarId);
     if (!avatar) {
-      return NextResponse.json({ _error: "Invalid avatar ID" }, { status: 400 });
+      return NextResponse.json(
+        { _error: "Invalid avatar ID" },
+        { status: 400 },
+      );
     }
 
     // Update QMOI's current avatar (in a real implementation, this would update the AI model)
@@ -86,7 +89,7 @@ async function switchAvatar(avatarId: string) {
       await enhanceAvatar(
         avatarId,
         avatar.qualityLevel,
-        avatar.animationEngine
+        avatar.animationEngine,
       );
     }
 
@@ -101,7 +104,7 @@ async function switchAvatar(avatarId: string) {
     (console as any).error("Error switching avatar:", _error);
     return NextResponse.json(
       { _error: "Failed to switch avatar" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -129,7 +132,7 @@ async function upgradeAvatar(avatarId: string) {
     (console as any).error("Error upgrading avatar:", _error);
     return NextResponse.json(
       { _error: "Failed to upgrade avatar" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -137,7 +140,7 @@ async function upgradeAvatar(avatarId: string) {
 async function enhanceAvatar(
   avatarId: string,
   quality: string,
-  engine: string
+  engine: string,
 ) {
   try {
     // In a real implementation, this would:
@@ -146,7 +149,7 @@ async function enhanceAvatar(
     // 3. Store the enhanced version
 
     console.log(
-      `Enhancing avatar: ${avatarId} with quality: ${quality}, engine: ${engine}`
+      `Enhancing avatar: ${avatarId} with quality: ${quality}, engine: ${engine}`,
     );
 
     // Simulate enhancement process
@@ -165,7 +168,7 @@ async function enhanceAvatar(
     (console as any).error("Error enhancing avatar:", _error);
     return NextResponse.json(
       { _error: "Failed to enhance avatar" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -196,7 +199,7 @@ async function customizeAvatar(avatarId: string, voiceProfile: string) {
     (console as any).error("Error customizing avatar:", _error);
     return NextResponse.json(
       { _error: "Failed to customize avatar" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

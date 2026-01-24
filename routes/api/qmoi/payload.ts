@@ -78,12 +78,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
       const p = spawn("bash", [scriptSh], { detached: true, stdio: "ignore" });
       p.unref();
-      return res
-        .status(200)
-        .json({
-          success: true,
-          message: `${q} queued and shell script started`,
-        });
+      return res.status(200).json({
+        success: true,
+        message: `${q} queued and shell script started`,
+      });
     } catch (e) {
       (globalThis.console as any)?.error?.("Failed to spawn shell payload", e);
     }

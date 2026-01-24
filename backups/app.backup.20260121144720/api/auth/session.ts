@@ -8,7 +8,8 @@ const sessions: Record<
   { userId: string; createdAt: string; expiresAt: string }
 > = {};
 
-const handler = requireRole(["user", "admin", "master"])(async (_req: NextApiRequest,
+const handler = requireRole(["user", "admin", "master"])(async (
+  _req: NextApiRequest,
   _res: NextApiResponse,
 ) => {
   const { method, body } = _req;

@@ -59,7 +59,8 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
       setError(null);
 
       const tradingManager = TradingManager.getInstance();
-      const rawHistory = (await tradingManager.getTradingHistory())  as unknown[];
+      const rawHistory =
+        (await tradingManager.getTradingHistory()) as unknown[];
       const history = rawHistory.map((trade: unknown) => ({
         ...trade,
         timestamp: new Date(trade?.timestamp),
@@ -68,11 +69,11 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
 
       // Calculate statistics
       const successfulTrades = history.filter(
-        (t: Trade) => t.status === "completed"
+        (t: Trade) => t.status === "completed",
       );
       const totalProfit = successfulTrades.reduce(
         (sum: number, trade: Trade) => sum + (trade.profit || 0),
-        0
+        0,
       );
       const winRate = (successfulTrades.length / history.length) * 100;
 
@@ -85,7 +86,9 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
     } catch (_err) {
       void _err;
       setError(
-        _err instanceof Error ? _err.message : "Failed to fetch trading history"
+        _err instanceof Error
+          ? _err.message
+          : "Failed to fetch trading history",
       );
     } finally {
       setIsLoading(false);
@@ -252,8 +255,8 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
                           trade.status === "completed"
                             ? "success"
                             : trade.status === "failed"
-                            ? "error"
-                            : "warning"
+                              ? "error"
+                              : "warning"
                         }
                       />
                     </TableCell>

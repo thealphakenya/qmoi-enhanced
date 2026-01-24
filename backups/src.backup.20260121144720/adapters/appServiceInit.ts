@@ -34,7 +34,10 @@ export async function initializeServices(): Promise<void> {
     console.info("[Init] Service initialization complete!");
   } catch (_err) {
     void _err;
-    (globalThis.console  as unknown)?.error?.("[Init] Service initialization failed:", _err);
+    (globalThis.console as unknown)?.error?.(
+      "[Init] Service initialization failed:",
+      _err,
+    );
     throw _err;
   }
 }
@@ -47,9 +50,12 @@ function setupRecoveryListeners(): void {
 
   // Listen for API failures and trigger recovery
   const originalFetch = window.fetch;
-  (window  as unknown).fetch = async (...args: unknown[]) => {
+  (window as unknown).fetch = async (...args: unknown[]) => {
     try {
-      const _response = await (originalFetch  as unknown).apply(window, args  as unknown);
+      const _response = await (originalFetch as unknown).apply(
+        window,
+        args as unknown,
+      );
 
       if (!response.ok && response.status >= 500) {
         // 5xx errors might indicate service issues
@@ -61,14 +67,14 @@ function setupRecoveryListeners(): void {
           async () => {
             await checkHealth();
           },
-          2000
+          2000,
         );
       }
 
       return response;
     } catch (_err) {
       void _err;
-      (globalThis.console  as unknown)?.error?.("[Init] Fetch _error:", _err);
+      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
@@ -77,7 +83,7 @@ function setupRecoveryListeners(): void {
         async () => {
           await checkHealth();
         },
-        3000
+        3000,
       );
 
       throw _err;
@@ -105,7 +111,7 @@ function setupHealthMonitoring(): void {
           async () => {
             await checkHealth();
           },
-          1000
+          1000,
         );
       } else if (health.status === "degraded") {
         console.warn("[Monitor] Health check returned degraded");
@@ -120,7 +126,10 @@ function setupHealthMonitoring(): void {
       });
     } catch (_err) {
       void _err;
-      (globalThis.console  as unknown)?.error?.("[Monitor] Health monitoring _error:", _err);
+      (globalThis.console as unknown)?.error?.(
+        "[Monitor] Health monitoring _error:",
+        _err,
+      );
     }
   }, 60 * 1000);
 }
@@ -174,20 +183,20 @@ export function enableDebugLogging(): void {
   console.info("[Debug] Debug logging enabled");
 
   // Intercept console methods to add timestamps
-  const originalLog = (console  as unknown).log;
-  const originalWarn = (console  as unknown).warn;
-  const originalError = (console  as unknown).error;
+  const originalLog = (console as unknown).log;
+  const originalWarn = (console as unknown).warn;
+  const originalError = (console as unknown).error;
 
-  (console  as unknown).log = (...args: unknown[]) => {
-    originalLog?.(`[${new Date().toISOString()}]`, ...(args  as unknown));
+  (console as unknown).log = (...args: unknown[]) => {
+    originalLog?.(`[${new Date().toISOString()}]`, ...(args as unknown));
   };
 
-  (console  as unknown).warn = (...args: unknown[]) => {
-    originalWarn?.(`[${new Date().toISOString()}]`, ...(args  as unknown));
+  (console as unknown).warn = (...args: unknown[]) => {
+    originalWarn?.(`[${new Date().toISOString()}]`, ...(args as unknown));
   };
 
-  (console  as unknown).error = (...args: unknown[]) => {
-    originalError?.(`[${new Date().toISOString()}]`, ...(args  as unknown));
+  (console as unknown).error = (...args: unknown[]) => {
+    originalError?.(`[${new Date().toISOString()}]`, ...(args as unknown));
   };
 }
 

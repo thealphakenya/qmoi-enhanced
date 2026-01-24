@@ -87,7 +87,10 @@ export async function POST(request: NextRequest) {
       pid: child.pid,
     });
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error starting auto-fix process:", error);
+    (globalThis.console as any)?.error?.(
+      "Error starting auto-fix process:",
+      error,
+    );
     return NextResponse.json(
       { error: "Failed to start auto-fix process" },
       { status: 500 },

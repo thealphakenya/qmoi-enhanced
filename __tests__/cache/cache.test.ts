@@ -143,7 +143,7 @@ describe("Redis Cache Manager", () => {
       await cacheManager.set(
         cacheKeys.userProfile(userId),
         { id: userId },
-        3600
+        3600,
       );
       await cacheManager.set(cacheKeys.userWallets(userId), [], 3600);
       await cacheManager.set(cacheKeys.userTransactions(userId), [], 3600);
@@ -159,7 +159,7 @@ describe("Redis Cache Manager", () => {
       profile = await cacheManager.get(cacheKeys.userProfile(userId));
       const wallets = await cacheManager.get(cacheKeys.userWallets(userId));
       const transactions = await cacheManager.get(
-        cacheKeys.userTransactions(userId)
+        cacheKeys.userTransactions(userId),
       );
 
       expect(profile).toBeNull();
@@ -175,7 +175,7 @@ describe("Redis Cache Manager", () => {
       await cacheManager.set(
         cacheKeys.walletMetrics(walletId),
         { txCount: 5 },
-        3600
+        3600,
       );
 
       // Invalidate
@@ -277,7 +277,7 @@ describe("Redis Cache Manager", () => {
       const values = await Promise.all(
         Array(10)
           .fill(null)
-          .map((_, i) => cacheManager.get(`concurrent:${i}`))
+          .map((_, i) => cacheManager.get(`concurrent:${i}`)),
       );
 
       expect(values).toHaveLength(10);

@@ -38,7 +38,10 @@ export async function POST(_request: NextRequest) {
     // Verify signature
     if (!verifyWebhookSignature(body, signature)) {
       console.warn("Invalid webhook signature");
-      return NextResponse.json({ _error: "Invalid signature" }, { status: 401 });
+      return NextResponse.json(
+        { _error: "Invalid signature" },
+        { status: 401 },
+      );
     }
 
     const data = JSON.parse(body) as {

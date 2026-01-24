@@ -13,6 +13,7 @@
 ## Deployment Steps
 
 ### Phase 1: Environment Setup
+
 ```bash
 # 1. Clone repository
 git clone https://github.com/thealphakenya/qmoi-enhanced.git
@@ -30,6 +31,7 @@ npm run ci:build
 ```
 
 ### Phase 2: Database Setup
+
 ```bash
 # 1. Create database
 createdb qmoi_production
@@ -42,6 +44,7 @@ npm run seed
 ```
 
 ### Phase 3: Process Management
+
 ```bash
 # 1. Start with PM2
 pm2 start pm2.config.cjs
@@ -54,6 +57,7 @@ pm2 startup systemd -u node --hp /home/node
 ```
 
 ### Phase 4: Web Server Configuration
+
 ```bash
 # 1. Setup Nginx
 sudo cp nginx.conf.template /etc/nginx/sites-available/qmoi.app
@@ -68,6 +72,7 @@ sudo systemctl restart nginx
 ```
 
 ### Phase 5: Monitoring & Alerts
+
 ```bash
 # 1. Configure alerts
 export SLACK_WEBHOOK_URL="https://hooks.slack.com/..."
@@ -103,6 +108,7 @@ pm2 logs
 ## Scaling (Horizontal)
 
 ### Add Additional Instances
+
 ```bash
 # Switch to cluster mode
 pm2 stop pm2.config.cjs
@@ -113,6 +119,7 @@ pm2 status
 ```
 
 ### Load Balancing
+
 - Nginx distributes traffic across instances
 - PM2 manages process restarts
 - Health monitoring ensures uptime
@@ -121,21 +128,25 @@ pm2 status
 ## Maintenance Schedule
 
 ### Daily
+
 - Check PM2 logs for errors
 - Monitor CPU/Memory usage
 - Verify health endpoint
 
 ### Weekly
+
 - Review error patterns
 - Check disk space
 - Verify backup completion
 
 ### Monthly
+
 - Update dependencies
 - Review performance metrics
 - Update SSL certificate (if needed)
 
 ### Quarterly
+
 - Security audit
 - Performance optimization
 - Disaster recovery drill
@@ -143,12 +154,14 @@ pm2 status
 ## Troubleshooting
 
 ### App not responding
+
 ```bash
 pm2 logs qmoi-app
 pm2 restart qmoi-app
 ```
 
 ### High memory usage
+
 ```bash
 pm2 monit
 pm2 kill
@@ -156,12 +169,14 @@ pm2 start pm2.config.cjs
 ```
 
 ### SSL certificate issues
+
 ```bash
 sudo certbot renew --force-renewal
 sudo systemctl restart nginx
 ```
 
 ### Database connection failing
+
 ```bash
 # Verify DATABASE_URL
 echo $DATABASE_URL

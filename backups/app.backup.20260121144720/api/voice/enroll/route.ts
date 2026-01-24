@@ -3,12 +3,17 @@ import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 
-const VOICE_PROFILES_FILE = path.resolve(process.cwd(), "data", "voice-profiles.json");
+const VOICE_PROFILES_FILE = path.resolve(
+  process.cwd(),
+  "data",
+  "voice-profiles.json",
+);
 
 function ensureFile() {
   const dir = path.dirname(VOICE_PROFILES_FILE);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  if (!fs.existsSync(VOICE_PROFILES_FILE)) fs.writeFileSync(VOICE_PROFILES_FILE, "[]");
+  if (!fs.existsSync(VOICE_PROFILES_FILE))
+    fs.writeFileSync(VOICE_PROFILES_FILE, "[]");
 }
 
 export async function POST(_request: NextRequest) {
@@ -22,10 +27,12 @@ export async function POST(_request: NextRequest) {
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
-    
+
     // Check if user already has a profile (allow re-enrollment)
-    const existingIndex = profiles.findIndex((p: unknown) => p.userId === userId);
-    
+    const existingIndex = profiles.findIndex(
+      (p: unknown) => p.userId === userId,
+    );
+
     const voiceProfile = {
       id: crypto.randomUUID(),
       userId,
@@ -55,6 +62,9 @@ export async function POST(_request: NextRequest) {
       message: "Voice profile enrolled successfully",
     });
   } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message }, { status: 500 });
+    return NextResponse.json(
+      { _error: (error as Error).message },
+      { status: 500 },
+    );
   }
 }

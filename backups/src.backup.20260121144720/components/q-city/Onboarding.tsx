@@ -27,7 +27,7 @@ const Onboarding: React.FC = () => {
   };
 
   const handleChange = (
-    _e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    _e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     setForm((f) => ({ ...f, [_e.target.name]: _e.target.value }));
   };

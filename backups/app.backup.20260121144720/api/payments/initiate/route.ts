@@ -20,7 +20,7 @@ export async function POST(_request: NextRequest) {
     if (!body.walletId || !body.amount || body.amount <= 0) {
       return NextResponse.json(
         { _error: "Invalid payment parameters" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -57,7 +57,7 @@ export async function POST(_request: NextRequest) {
           provider,
         },
       },
-      provider
+      provider,
     );
 
     if (!paymentResponse.success) {
@@ -66,7 +66,7 @@ export async function POST(_request: NextRequest) {
 
       return NextResponse.json(
         { _error: paymentResponse.message },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -86,7 +86,7 @@ export async function POST(_request: NextRequest) {
             message: `Your payment of ${amount} ${currency} is being processed. Reference: ${transaction.reference}`,
             type: "info",
           },
-          ["email"]
+          ["email"],
         );
       } catch (notifyError) {
         console.warn("Failed to send notification:", notifyError);
@@ -111,7 +111,7 @@ export async function POST(_request: NextRequest) {
     (globalThis.console as any)?.error?.("Payment initiation _error:", _error);
     return NextResponse.json(
       { _error: "Payment initiation failed" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

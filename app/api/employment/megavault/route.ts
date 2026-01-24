@@ -26,7 +26,7 @@ const DividendDistributionSchema = z.object({
       id: z.string(),
       type: z.enum(["employee", "user"]),
       percentage: z.number().min(0).max(100),
-    })
+    }),
   ),
 });
 
@@ -70,7 +70,7 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
   } catch (_error) {
     (console as any).error(
       "Failed to create safe backup for megavault credentials:",
-      _error
+      _error,
     );
   }
 }
@@ -122,7 +122,7 @@ async function processPesapalTransaction(transactionData: unknown) {
           PhoneNumber="254700000000" 
           xmlns="http://www.pesapal.com" />
       `,
-      }
+      },
     );
 
     const result = await response.text();
@@ -285,7 +285,7 @@ export async function GET(_request: NextRequest) {
         success: false,
         _error: "Failed to fetch megavault data",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -305,7 +305,7 @@ export async function POST(_request: NextRequest) {
               success: false,
               _error: "Insufficient funds in Megavault",
             },
-            { status: 400 }
+            { status: 400 },
           );
         }
 
@@ -338,7 +338,7 @@ export async function POST(_request: NextRequest) {
         const profitResult = calculateProfit(
           profitData.period,
           profitData.startDate,
-          profitData.endDate
+          profitData.endDate,
         );
 
         megavaultData.profitHistory.push({
@@ -363,7 +363,7 @@ export async function POST(_request: NextRequest) {
               success: false,
               _error: dividendResult.error,
             },
-            { status: 500 }
+            { status: 500 },
           );
         }
 
@@ -382,7 +382,7 @@ export async function POST(_request: NextRequest) {
               success: false,
               _error: pesapalResult.error,
             },
-            { status: 500 }
+            { status: 500 },
           );
         }
 
@@ -423,7 +423,7 @@ export async function POST(_request: NextRequest) {
             success: false,
             _error: "Invalid action specified",
           },
-          { status: 400 }
+          { status: 400 },
         );
     }
   } catch (_error) {
@@ -434,7 +434,7 @@ export async function POST(_request: NextRequest) {
           _error: "Validation failed",
           details: error.errors,
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -443,7 +443,7 @@ export async function POST(_request: NextRequest) {
         success: false,
         _error: "Failed to process megavault action",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -455,7 +455,7 @@ export async function PUT(_request: NextRequest) {
 
     // Find and update transaction
     const transactionIndex = megavaultData.transactions.findIndex(
-      (t) => t.id === id
+      (t) => t.id === id,
     );
     if (transactionIndex === -1) {
       return NextResponse.json(
@@ -463,7 +463,7 @@ export async function PUT(_request: NextRequest) {
           success: false,
           _error: "Transaction not found",
         },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -484,7 +484,7 @@ export async function PUT(_request: NextRequest) {
         success: false,
         _error: "Failed to update transaction",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

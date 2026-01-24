@@ -6,7 +6,7 @@ let docId = 1;
 
 export async function POST_UPLOAD(req: NextRequest) {
   // Upload document (stub)
-  const body = (await req.json() as any);
+  const body = (await req.json()) as any;
   const { name, type, content } = body;
   const doc = {
     id: docId++,
@@ -32,7 +32,7 @@ export async function GET_SEARCH(req: NextRequest) {
 
 export async function POST_RESTORE(req: NextRequest) {
   // Restore document (stub)
-  const body = (await req.json() as any);
+  const body = (await req.json()) as any;
   const { id } = body;
   const doc = documents.find((d) => d.id === id);
   // TODO: Restore from GDrive, S3, HuggingFace

@@ -338,7 +338,7 @@ ws.onopen = () => {
     JSON.stringify({
       type: "subscribe",
       channels: ["qvillage_updates", "qmoi_status", "health_alerts"],
-    })
+    }),
   );
 };
 

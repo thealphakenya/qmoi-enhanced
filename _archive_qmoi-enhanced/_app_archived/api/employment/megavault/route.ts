@@ -89,7 +89,10 @@ async function initializePesapalAccount() {
 
     return { success: true, account: accountData };
   } catch (error) {
-    (globalThis.console as any)?.error?.("Failed to initialize Pesapal account:", error);
+    (globalThis.console as any)?.error?.(
+      "Failed to initialize Pesapal account:",
+      error,
+    );
     return { success: false, error: "Pesapal initialization failed" };
   }
 }
@@ -205,7 +208,10 @@ async function distributeDividends(distributionData: unknown) {
 
     return { success: true, distributions, totalAmount };
   } catch (error) {
-    (globalThis.console as any)?.error?.("Dividend distribution failed:", error);
+    (globalThis.console as any)?.error?.(
+      "Dividend distribution failed:",
+      error,
+    );
     return { success: false, error: "Dividend distribution failed" };
   }
 }

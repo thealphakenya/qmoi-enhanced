@@ -56,7 +56,7 @@ export default function PluginPanel() {
   const [configuring, setConfiguring] = useState<string | null>(null);
   const [pluginFile, setPluginFile] = useState<File | null>(null);
   const [pluginConfig, setPluginConfig] = useState<{ [key: string]: string }>(
-    {}
+    {},
   );
   const { toast } = useToast();
 

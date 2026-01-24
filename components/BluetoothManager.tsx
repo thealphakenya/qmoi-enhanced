@@ -14,7 +14,7 @@ export const BluetoothManager: React.FC = () => {
   const [connectedDevice, setConnectedDevice] =
     useState<BluetoothDevice | null>(null);
   const [location, setLocation] = useState<{ lat: number; lng: number } | null>(
-    null
+    null,
   );
   const [directions, setDirections] = useState<string | null>(null);
 

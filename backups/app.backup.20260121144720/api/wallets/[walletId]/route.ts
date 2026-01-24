@@ -5,7 +5,7 @@ import authService from "@/lib/auth/service";
 // GET /api/wallets/:walletId - Get wallet details
 export async function GET(
   _request: NextRequest,
-  { _params }: { _params: Promise<{ walletId: string }> }
+  { _params }: { _params: Promise<{ walletId: string }> },
 ) {
   try {
     const authHeader = _request.headers.get("authorization");
@@ -39,10 +39,13 @@ export async function GET(
 
     return NextResponse.json(wallet);
   } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets/:walletId _error:", _error);
+    (globalThis.console as any)?.error?.(
+      "GET /api/wallets/:walletId _error:",
+      _error,
+    );
     return NextResponse.json(
       { _error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -50,7 +53,7 @@ export async function GET(
 // PUT /api/wallets/:walletId - Update wallet
 export async function PUT(
   _request: NextRequest,
-  { _params }: { _params: Promise<{ walletId: string }> }
+  { _params }: { _params: Promise<{ walletId: string }> },
 ) {
   try {
     const authHeader = _request.headers.get("authorization");
@@ -86,10 +89,13 @@ export async function PUT(
     // Update wallet (Prisma update would go here)
     return NextResponse.json({ ...wallet, name: body.name || wallet.name });
   } catch (_error) {
-    (globalThis.console as any)?.error?.("PUT /api/wallets/:walletId _error:", _error);
+    (globalThis.console as any)?.error?.(
+      "PUT /api/wallets/:walletId _error:",
+      _error,
+    );
     return NextResponse.json(
       { _error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -97,7 +103,7 @@ export async function PUT(
 // DELETE /api/wallets/:walletId - Delete wallet
 export async function DELETE(
   _request: NextRequest,
-  { _params }: { _params: Promise<{ walletId: string }> }
+  { _params }: { _params: Promise<{ walletId: string }> },
 ) {
   try {
     const authHeader = _request.headers.get("authorization");
@@ -136,17 +142,20 @@ export async function DELETE(
     if (balance > 0) {
       return NextResponse.json(
         { _error: "Cannot delete wallet with balance" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     // Delete wallet (Prisma delete would go here)
     return NextResponse.json({ success: true });
   } catch (_error) {
-    (globalThis.console as any)?.error?.("DELETE /api/wallets/:walletId _error:", _error);
+    (globalThis.console as any)?.error?.(
+      "DELETE /api/wallets/:walletId _error:",
+      _error,
+    );
     return NextResponse.json(
       { _error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

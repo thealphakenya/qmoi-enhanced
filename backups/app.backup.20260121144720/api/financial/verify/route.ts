@@ -3,7 +3,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { exec } from "child_process";
 
-export default async function handler(_req: NextApiRequest,
+export default async function handler(
+  _req: NextApiRequest,
   _res: NextApiResponse,
 ) {
   if (_req.method !== "POST") {

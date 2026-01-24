@@ -47,7 +47,7 @@ describe("Payment API", () => {
             phoneNumber: "+254700000000",
             paymentMethod: "mpesa",
           }),
-        }
+        },
       );
 
       // Would need proper token generation in real test
@@ -70,7 +70,7 @@ describe("Payment API", () => {
             phoneNumber: "+254700000000",
             paymentMethod: "mpesa",
           }),
-        }
+        },
       );
 
       const response = await initiatePaymentHandler(request);
@@ -91,7 +91,7 @@ describe("Payment API", () => {
             phoneNumber: "+254700000000",
             paymentMethod: "mpesa",
           }),
-        }
+        },
       );
 
       const response = await initiatePaymentHandler(request);
@@ -119,7 +119,7 @@ describe("Payment API", () => {
             "content-type": "application/json",
           },
           body: JSON.stringify(webhookPayload),
-        }
+        },
       );
 
       // In production, this would verify signature and update transaction status
@@ -143,7 +143,7 @@ describe("Payment API", () => {
             "content-type": "application/json",
           },
           body: JSON.stringify(webhookPayload),
-        }
+        },
       );
 
       const response = await webhookHandler(request);
@@ -161,10 +161,10 @@ describe("Payment API", () => {
 
     it("should format phone number correctly", () => {
       expect(paymentService.formatPhoneNumber("+254700000000")).toBe(
-        "254700000000"
+        "254700000000",
       );
       expect(paymentService.formatPhoneNumber("0700000000")).toBe(
-        "254700000000"
+        "254700000000",
       );
     });
 

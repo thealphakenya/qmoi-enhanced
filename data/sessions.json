@@ -4,9 +4,7 @@
     "userId": "1",
     "username": "admin",
     "role": "Administrator",
-    "biometricMethods": [
-      "fingerprint"
-    ],
+    "biometricMethods": ["fingerprint"],
     "active": true,
     "createdAt": "2026-01-16T07:14:19.799Z",
     "expiresAt": "2026-01-16T15:14:19.799Z",

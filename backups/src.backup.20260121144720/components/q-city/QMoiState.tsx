@@ -81,7 +81,7 @@ export function QMoiState({
 
     const activityTimer = setInterval(() => {
       setCurrentActivity(
-        activities[Math.floor(Math.random() * activities.length)]
+        activities[Math.floor(Math.random() * activities.length)],
       );
     }, 5000);
 
@@ -255,7 +255,7 @@ export function QMoiState({
           <span className="text-sm text-gray-400">Status</span>
           <span
             className={`text-sm font-bold ${getHealthColor(
-              aiHealth?.status || "OK"
+              aiHealth?.status || "OK",
             )}`}
           >
             {aiHealth?.status || "OK"} {aiHealth?.status === "OK" ? "🟢" : "🔴"}

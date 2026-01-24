@@ -61,7 +61,7 @@ const AccountAutomationPanel: React.FC = () => {
     setStatus(
       data.status
         ? `Status: ${data.status}, Verified: ${data.verified}`
-        : "Status check failed"
+        : "Status check failed",
     );
   };
 

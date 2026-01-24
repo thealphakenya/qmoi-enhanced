@@ -15,8 +15,10 @@ export async function GET(_request: NextRequest) {
 
     if (!token) {
       return NextResponse.json(
-        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
-        { status: 401 }
+        {
+          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+        },
+        { status: 401 },
       );
     }
 
@@ -26,7 +28,7 @@ export async function GET(_request: NextRequest) {
     } catch (e) {
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -38,7 +40,7 @@ export async function GET(_request: NextRequest) {
             code: "INVALID_TOKEN",
           },
         },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -47,7 +49,7 @@ export async function GET(_request: NextRequest) {
     if (!user || user.role !== "admin") {
       return NextResponse.json(
         { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -83,17 +85,17 @@ export async function GET(_request: NextRequest) {
             healthScore > 80
               ? "healthy"
               : healthScore > 50
-              ? "degraded"
-              : "critical",
+                ? "degraded"
+                : "critical",
         },
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (_error) {
     (globalThis.console as any)?.error?.("Monitoring _error:", _error);
     return NextResponse.json(
       { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -122,7 +124,7 @@ function calculateHealthScore(monitoring: Record<string, unknown>): number {
     }>
   ).reduce(
     (sum: number, _err: { count?: number }) => sum + (Number(_err.count) || 0),
-    0
+    0,
   );
   if (totalErrors > 10) {
     score -= Math.min(30, totalErrors);

@@ -99,7 +99,7 @@ export class MultiUserSessionManager extends EventEmitter {
   joinSession(
     userId: string,
     sessionId: string,
-    userData: Partial<User>
+    userData: Partial<User>,
   ): User {
     let session = this.sessions.get(sessionId);
     if (!session) {
@@ -199,7 +199,7 @@ export class MultiUserSessionManager extends EventEmitter {
   addUserToGroup(
     userId: string,
     groupId: string,
-    role: "member" | "admin" = "member"
+    role: "member" | "admin" = "member",
   ): boolean {
     const sessionId = this.userSessions.get(userId);
     if (!sessionId) return false;
@@ -306,7 +306,7 @@ export class MultiUserSessionManager extends EventEmitter {
   // AI Relationship Management
   getAIRelationshipContext(
     userId: string,
-    targetUserId?: string
+    targetUserId?: string,
   ): Record<string, unknown> | null {
     const user = this.getUser(userId);
     if (!user) return null;
@@ -379,7 +379,7 @@ export class MultiUserSessionManager extends EventEmitter {
         searchHistory: [],
         aiMode: "assistant",
         relationshipType: "individual",
-      }
+      },
     );
   }
 
@@ -432,7 +432,7 @@ export class MultiUserSessionManager extends EventEmitter {
   // New: Link WhatsApp ID to user
   linkWhatsAppToUser(
     whatsappId: string | undefined,
-    userId: string | undefined
+    userId: string | undefined,
   ) {
     if (!whatsappId || !userId || typeof userId !== "string") return;
     this.whatsappToUserId.set(whatsappId, userId as string);
@@ -451,7 +451,7 @@ export class MultiUserSessionManager extends EventEmitter {
   // New: Sync context from WhatsApp or chat
   syncUserContextByWhatsApp(
     whatsappId: string | undefined,
-    context: Partial<UserContext>
+    context: Partial<UserContext>,
   ) {
     if (!whatsappId) return;
     const user = this.getUserByWhatsAppId(whatsappId);
@@ -479,7 +479,7 @@ export class MultiUserSessionManager extends EventEmitter {
 
   private handleGroupCreated(data: { group: Group; sessionId: string }) {
     console.log(
-      `Group ${data.group.name} created in session ${data.sessionId}`
+      `Group ${data.group.name} created in session ${data.sessionId}`,
     );
   }
 
@@ -489,7 +489,7 @@ export class MultiUserSessionManager extends EventEmitter {
     sessionId: string;
   }) {
     console.log(
-      `Context changed for user ${data.userId} in session ${data.sessionId}`
+      `Context changed for user ${data.userId} in session ${data.sessionId}`,
     );
   }
 

@@ -67,6 +67,7 @@ QVillage is the AI/ML infrastructure layer for QMOI, providing:
 ### Available Models
 
 #### 1. **QMOI-Text-Classifier** (NLP)
+
 - **Task**: Text classification
 - **Framework**: PyTorch
 - **Input**: Text string (max 512 tokens)
@@ -99,6 +100,7 @@ curl -X POST https://qmoi-enhanced.vercel.app/api/qvillage/inference \
 ---
 
 #### 2. **QMOI-Voice-Recognition** (Speech)
+
 - **Task**: Voice command recognition
 - **Framework**: TensorFlow
 - **Input**: Audio file (WAV/MP3, <30s)
@@ -128,6 +130,7 @@ curl -X POST https://qmoi-enhanced.vercel.app/api/qvillage/inference \
 ---
 
 #### 3. **QMOI-Behavior-Analyzer** (Analytics)
+
 - **Task**: User behavior analysis
 - **Framework**: Scikit-learn + XGBoost
 - **Input**: User activity data
@@ -168,6 +171,7 @@ curl -X POST https://qmoi-enhanced.vercel.app/api/qvillage/inference \
 ---
 
 #### 4. **QMOI-Revenue-Predictor** (Forecasting)
+
 - **Task**: Revenue forecasting
 - **Framework**: LSTM + Prophet
 - **Input**: Historical revenue data
@@ -204,6 +208,7 @@ curl -X POST https://qmoi-enhanced.vercel.app/api/qvillage/inference \
 ---
 
 #### 5. **QMOI-Feature-Generator** (Feature Engineering)
+
 - **Task**: Automatic feature generation
 - **Framework**: Custom Python pipeline
 - **Input**: Raw data

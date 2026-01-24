@@ -7,7 +7,8 @@ import { requireRole } from "../auth/rbac";
 
 const PLUGIN_DIR = path.resolve(process.cwd(), "plugins");
 
-const handler = requireRole(["admin", "master"])(async (_req: NextApiRequest,
+const handler = requireRole(["admin", "master"])(async (
+  _req: NextApiRequest,
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")

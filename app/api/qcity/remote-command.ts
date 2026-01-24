@@ -40,11 +40,11 @@ export async function POST(_req: NextRequest) {
     cmd,
     stream,
     deviceId = "default",
-  } = ((await _req.json()) as any).catch(() => ({} as any));
+  } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
       { _error: "No command provided" },
-      { status: 400 }
+      { status: 400 },
     );
 
   const qcityService = new QCityService();
@@ -61,7 +61,7 @@ export async function POST(_req: NextRequest) {
         function push() {
           if (i < 5) {
             controller.enqueue(
-              encoder.encode(`data: [${deviceId}] Log line ${i + 1}\n\n`)
+              encoder.encode(`data: [${deviceId}] Log line ${i + 1}\n\n`),
             );
             i++;
             setTimeout(push, 300);

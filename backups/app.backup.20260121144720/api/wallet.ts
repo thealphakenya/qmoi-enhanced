@@ -34,7 +34,7 @@ interface PlatformResult {
 const REQUESTS_FILE = path.resolve(
   process.cwd(),
   "data",
-  "wallet_requests.json"
+  "wallet_requests.json",
 );
 const LOGS_FILE = path.resolve(process.cwd(), "data", "wallet_logs.json");
 const MPESA_API_URL = "https://api.safaricom.co.ke";
@@ -59,7 +59,10 @@ let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
 } catch (_e) {
-  (globalThis.console as any)?.error?.("Failed to initialize WhatsApp service:", _e);
+  (globalThis.console as any)?.error?.(
+    "Failed to initialize WhatsApp service:",
+    _e,
+  );
 }
 
 // Enhanced logging
@@ -96,7 +99,10 @@ async function getOrCreateWallet(userId: string) {
 
     return wallet;
   } catch (_error) {
-    (globalThis.console as any)?.error?.("Failed to get/create wallet:", _error);
+    (globalThis.console as any)?.error?.(
+      "Failed to get/create wallet:",
+      _error,
+    );
     throw error;
   }
 }
@@ -111,7 +117,7 @@ async function createTransaction(
     description?: string;
     transactionId?: string;
     metadata?: Record<string, any>;
-  }
+  },
 ) {
   try {
     const transaction = await prisma.transaction.create({
@@ -133,7 +139,10 @@ async function createTransaction(
 
     return transaction;
   } catch (_error) {
-    (globalThis.console as any)?.error?.("Failed to create transaction:", _error);
+    (globalThis.console as any)?.error?.(
+      "Failed to create transaction:",
+      _error,
+    );
     throw error;
   }
 }
@@ -141,7 +150,7 @@ async function createTransaction(
 async function processMpesa(
   amount: number,
   type: string,
-  phoneNumber?: string
+  phoneNumber?: string,
 ) {
   // Real Mpesa API integration
   try {
@@ -164,10 +173,10 @@ async function processMpesa(
         method: "GET",
         headers: {
           Authorization: `Basic ${Buffer.from(
-            `${mpesaConfig.consumerKey}:${mpesaConfig.consumerSecret}`
+            `${mpesaConfig.consumerKey}:${mpesaConfig.consumerSecret}`,
           ).toString("base64")}`,
         },
-      }
+      },
     );
 
     if (!authResponse.ok) {
@@ -184,7 +193,7 @@ async function processMpesa(
         .replace(/[^0-9]/g, "")
         .slice(0, -3);
       const password = Buffer.from(
-        `${mpesaConfig.businessShortCode}${mpesaConfig.passkey}${timestamp}`
+        `${mpesaConfig.businessShortCode}${mpesaConfig.passkey}${timestamp}`,
       ).toString("base64");
 
       const stkPushData = {
@@ -210,7 +219,7 @@ async function processMpesa(
             "Content-Type": "application/json",
           },
           body: JSON.stringify(stkPushData),
-        }
+        },
       );
 
       if (!stkResponse.ok) {
@@ -266,7 +275,7 @@ async function processMpesa(
 async function processBinance(
   amount: number,
   type: string,
-  currency: string = "USDT"
+  currency: string = "USDT",
 ) {
   // Real Binance API integration
   try {
@@ -303,12 +312,12 @@ async function processBinance(
         {
           method: "GET",
           headers,
-        }
+        },
       );
 
       if (!depositResponse.ok) {
         throw new Error(
-          `Binance deposit address failed: ${depositResponse.statusText}`
+          `Binance deposit address failed: ${depositResponse.statusText}`,
         );
       }
 
@@ -338,7 +347,7 @@ async function processBinance(
         {
           method: "POST",
           headers,
-        }
+        },
       );
 
       if (!withdrawResponse.ok) {
@@ -346,7 +355,7 @@ async function processBinance(
         throw new Error(
           `Binance withdrawal failed: ${
             errorData.msg || withdrawResponse.statusText
-          }`
+          }`,
         );
       }
 
@@ -492,7 +501,10 @@ async function processBitget(amount: number, type: string) {
   }
 }
 
-const platformHandlers: Record<string, (...args: unknown[]) => Promise<unknown>> = {
+const platformHandlers: Record<
+  string,
+  (...args: unknown[]) => Promise<unknown>
+> = {
   Mpesa: processMpesa as (...args: unknown[]) => Promise<unknown>,
   Binance: processBinance as (...args: unknown[]) => Promise<unknown>,
   Pesapal: processPesapal as (...args: unknown[]) => Promise<unknown>,
@@ -514,7 +526,7 @@ function isMaster(_req: NextApiRequest): boolean {
 const handleApiRequest = async (
   _req: NextApiRequest,
   _res: NextApiResponse,
-  handler: () => Promise<unknown>
+  handler: () => Promise<unknown>,
 ) => {
   try {
     const result = await handler();
@@ -534,7 +546,7 @@ const handleApiRequest = async (
 
 export default async function handler(
   _req: NextApiRequest,
-  _res: NextApiResponse
+  _res: NextApiResponse,
 ) {
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
@@ -613,7 +625,7 @@ export default async function handler(
         const result = (await platformHandlers[platform](
           Number(amount),
           "deposit",
-          phoneNumber
+          phoneNumber,
         )) as PlatformResult;
 
         // Create transaction in database
@@ -631,7 +643,7 @@ export default async function handler(
 
         if (whatsappService) {
           await whatsappService.sendMessageToMaster(
-            `💰 Deposit completed: ${amount} ${wallet.currency} via ${platform} for user ${userIdToUse}`
+            `💰 Deposit completed: ${amount} ${wallet.currency} via ${platform} for user ${userIdToUse}`,
           );
         }
 
@@ -661,7 +673,7 @@ export default async function handler(
 
         const result = (await platformHandlers[platform](
           Number(amount),
-          "withdraw"
+          "withdraw",
         )) as PlatformResult;
 
         // Create transaction in database
@@ -679,7 +691,7 @@ export default async function handler(
 
         if (whatsappService) {
           await whatsappService.sendMessageToMaster(
-            `💸 Withdrawal completed: ${amount} ${wallet.currency} via ${platform} for user ${userIdToUse}`
+            `💸 Withdrawal completed: ${amount} ${wallet.currency} via ${platform} for user ${userIdToUse}`,
           );
         }
 
@@ -717,7 +729,7 @@ export default async function handler(
         const requests = readWalletRequests();
         const idx = requests.findIndex(
           (r: WalletRequest) =>
-            r.email === approveEmail && r.status === "pending"
+            r.email === approveEmail && r.status === "pending",
         );
         if (idx === -1) throw new Error("No pending _request for this email.");
 
@@ -729,10 +741,10 @@ export default async function handler(
         // Notify user via WhatsApp
         await whatsappService.sendMessage(
           requests[idx].email,
-          "✅ Your wallet _request has been approved!"
+          "✅ Your wallet _request has been approved!",
         );
         await whatsappService.sendMessageToMaster(
-          `✅ Wallet approved for ${requests[idx].username} (${approveEmail})`
+          `✅ Wallet approved for ${requests[idx].username} (${approveEmail})`,
         );
 
         return {

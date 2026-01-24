@@ -267,7 +267,7 @@ export const GET = cacheRoute(
     ttl: 3600,
     keyGenerator: (req) =>
       cacheKeys.userProfile(req.nextUrl.searchParams.get("id")),
-  }
+  },
 );
 
 export const PUT = async (req) => {
@@ -316,7 +316,7 @@ const user = await optimizedQueries.getUserProfile(prisma, userId);
 // For related data:
 const userWithWallets = await optimizedQueries.getUserWithWallets(
   prisma,
-  userId
+  userId,
 );
 
 // For paginated results:
@@ -325,7 +325,7 @@ const transactions = await optimizedQueries.getTransactionsPaginated(
   userId,
   page,
   limit,
-  filters
+  filters,
 );
 ```
 
@@ -411,19 +411,16 @@ npm test -- __tests__/cache/cache.test.ts --coverage
 ## Next Steps (Phase 8)
 
 1. **Social Login Integration**
-
    - OAuth provider setup (Google, GitHub, Twitter)
    - Social profile mapping
    - Multi-social account linking
 
 2. **Subscription Management**
-
    - Tier-based access control
    - Feature gating
    - Usage tracking per tier
 
 3. **WebSocket Real-Time Updates**
-
    - Real-time transaction updates
    - Live metrics streaming
    - Alert notifications

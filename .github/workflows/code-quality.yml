@@ -1,66 +1,66 @@
 name: Code Quality
 
 on:
-    pull_request:
-        branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
 
 jobs:
-    code-quality:
-        runs-on: ubuntu-latest
-        name: Code Quality Analysis
-        steps:
-            - uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
+  code-quality:
+    runs-on: ubuntu-latest
+    name: Code Quality Analysis
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: "18"
-                  cache: "npm"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
 
-            - name: Install dependencies
-              run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-            - name: Run TypeScript check
-              run: npx tsc --noEmit
+      - name: Run TypeScript check
+        run: npx tsc --noEmit
 
-            - name: Run ESLint
-              run: npm run lint --if-present
+      - name: Run ESLint
+        run: npm run lint --if-present
 
-            - name: Run tests with coverage
-              run: npm run test:coverage --if-present
+      - name: Run tests with coverage
+        run: npm run test:coverage --if-present
 
-            - name: Check test coverage
-              run: |
-                  # Verify minimum coverage thresholds
-                  if [ -f coverage/coverage-summary.json ]; then
-                    echo "Coverage check would go here"
-                  fi
+      - name: Check test coverage
+        run: |
+          # Verify minimum coverage thresholds
+          if [ -f coverage/coverage-summary.json ]; then
+            echo "Coverage check would go here"
+          fi
 
-            - name: Comment PR with results
-              if: always()
-              uses: actions/github-script@v6
-              with:
-                  script: |
-                      const fs = require('fs');
-                      if (fs.existsSync('coverage/coverage-summary.json')) {
-                        const coverage = JSON.parse(fs.readFileSync('coverage/coverage-summary.json', 'utf8'));
-                        const total = coverage.total;
-                        
-                        const comment = `## Code Quality Report
-                        
-                        | Metric | Coverage |
-                        |--------|----------|
-                        | Lines | ${total.lines.pct}% |
-                        | Functions | ${total.functions.pct}% |
-                        | Branches | ${total.branches.pct}% |
-                        | Statements | ${total.statements.pct}% |`;
-                        
-                        github.rest.issues.createComment({
-                          issue_number: context.issue.number,
-                          owner: context.repo.owner,
-                          repo: context.repo.repo,
-                          body: comment
-                        });
-                      }
+      - name: Comment PR with results
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            if (fs.existsSync('coverage/coverage-summary.json')) {
+              const coverage = JSON.parse(fs.readFileSync('coverage/coverage-summary.json', 'utf8'));
+              const total = coverage.total;
+              
+              const comment = `## Code Quality Report
+              
+              | Metric | Coverage |
+              |--------|----------|
+              | Lines | ${total.lines.pct}% |
+              | Functions | ${total.functions.pct}% |
+              | Branches | ${total.branches.pct}% |
+              | Statements | ${total.statements.pct}% |`;
+              
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: comment
+              });
+            }

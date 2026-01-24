@@ -139,7 +139,7 @@ export class WhatsAppService {
 
     // Authentication failure
     this.client.on("auth_failure", async (message: string) => {
-      (globalThis.console  as unknown)?.error?.(
+      (globalThis.console as unknown)?.error?.(
         "❌ WhatsApp authentication failed:",
         message,
       );
@@ -241,7 +241,7 @@ Time: ${this.qrCodeStatus.timestamp.toLocaleString()}`;
       // Send backup verification
       await this.sendBackupVerification();
     } catch (_error) {
-      (globalThis.console  as unknown)?.error?.(
+      (globalThis.console as unknown)?.error?.(
         "Error sending QR code notifications:",
         _error,
       );
@@ -300,7 +300,7 @@ Time: ${new Date().toLocaleString()}`;
         await this.forwardToMaster(message);
       }
     } catch (_error) {
-      (globalThis.console  as unknown)?.error?.(
+      (globalThis.console as unknown)?.error?.(
         "Error handling incoming message:",
         _error,
       );
@@ -618,7 +618,7 @@ Master Commands:
       console.log("🚀 Starting WhatsApp service...");
       await this.client.initialize();
     } catch (_error) {
-      (globalThis.console  as unknown)?.error?.(
+      (globalThis.console as unknown)?.error?.(
         "Error starting WhatsApp service:",
         _error,
       );
@@ -632,7 +632,7 @@ Master Commands:
       await this.client.destroy();
       this.isConnected = false;
     } catch (_error) {
-      (globalThis.console  as unknown)?.error?.(
+      (globalThis.console as unknown)?.error?.(
         "Error stopping WhatsApp service:",
         _error,
       );
@@ -649,7 +649,7 @@ Master Commands:
       await this.client.sendMessage(chatId, message);
       console.log(`📤 Message sent to ${to}`);
     } catch (_error) {
-      (globalThis.console  as unknown)?.error?.(
+      (globalThis.console as unknown)?.error?.(
         "Error sending WhatsApp message:",
         _error,
       );
@@ -678,7 +678,7 @@ Master Commands:
         await this.sendMessage(contact, message);
         await this.sleep(1000); // Delay between messages
       } catch (_error) {
-        (globalThis.console  as unknown)?.error?.(
+        (globalThis.console as unknown)?.error?.(
           `Error broadcasting to ${contact}:`,
           _error,
         );

@@ -68,7 +68,7 @@ interface QMOIContextType {
   updateUserPreferences: (
     preferences: Partial<
       Pick<QMOIState, "autoUpgrade" | "autoEnhance" | "dataSaver">
-    >
+    >,
   ) => void;
   getAvatarInfo: (avatarId: string) => unknown;
   getVoiceInfo: (voiceId: string) => unknown;
@@ -127,7 +127,10 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
           ...(parsedState as unknown as Partial<QMOIState>),
         }));
       } catch (_error) {
-        (globalThis.console  as unknown)?.error?.("Error loading QMOI state:", _error);
+        (globalThis.console as unknown)?.error?.(
+          "Error loading QMOI state:",
+          _error,
+        );
       }
     }
   }, []);
@@ -191,7 +194,10 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
         await updateVoice(compatibleVoice);
       }
     } catch (_error) {
-      (globalThis.console  as unknown)?.error?.("Error updating avatar:", _error);
+      (globalThis.console as unknown)?.error?.(
+        "Error updating avatar:",
+        _error,
+      );
       setState((prev) => ({ ...prev, isProcessing: false, currentTask: null }));
     }
   };
@@ -226,7 +232,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
         error && typeof _error === "object" && "message" in error
           ? String((error as { message?: unknown }).message)
           : String(_error);
-      (globalThis.console  as unknown)?.error?.("Error updating voice:", msg);
+      (globalThis.console as unknown)?.error?.("Error updating voice:", msg);
       setState((prev) => ({ ...prev, isProcessing: false, currentTask: null }));
     }
   };
@@ -253,7 +259,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
   const updateUserPreferences = (
     preferences: Partial<
       Pick<QMOIState, "autoUpgrade" | "autoEnhance" | "dataSaver">
-    >
+    >,
   ) => {
     setState((prev) => ({ ...prev, ...preferences }));
   };
@@ -279,7 +285,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
 
   const getCompatibleAvatar = (voiceId: string) => {
     const compatibleAvatar = avatarsConfig.find(
-      (a) => a.voiceProfile === voiceId
+      (a) => a.voiceProfile === voiceId,
     );
     return compatibleAvatar?.id || "default";
   };

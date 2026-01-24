@@ -44,10 +44,11 @@ export async function POST(_req: NextRequest) {
         metadata.find((item: unknown) => item.Name === "MpesaReceiptNumber")
           ?.Value || "";
       const transactionDate =
-        metadata.find((item: unknown) => item.Name === "TransactionDate")?.Value ||
-        "";
+        metadata.find((item: unknown) => item.Name === "TransactionDate")
+          ?.Value || "";
       const phoneNumber =
-        metadata.find((item: unknown) => item.Name === "PhoneNumber")?.Value || "";
+        metadata.find((item: unknown) => item.Name === "PhoneNumber")?.Value ||
+        "";
 
       logEvent("mpesa_payment_success", {
         checkoutRequestId: CheckoutRequestID,
@@ -97,7 +98,8 @@ export async function POST(_req: NextRequest) {
       "M-Pesa callback processing failed:",
       _error,
     );
-    const errorMessage = error instanceof Error ? error.message : String(_error);
+    const errorMessage =
+      error instanceof Error ? error.message : String(_error);
     logEvent("mpesa_callback_error", { _error: errorMessage });
 
     return NextResponse.json(

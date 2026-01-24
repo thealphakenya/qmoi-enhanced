@@ -14,7 +14,7 @@ export const QMoiSettingsPanel: React.FC = () => {
   const [settings, setSettings] = React.useState<QSettings>(() => {
     try {
       return JSON.parse(
-        localStorage.getItem("qmoi-settings") || "{}"
+        localStorage.getItem("qmoi-settings") || "{}",
       ) as QSettings;
     } catch (e) {
       return {} as QSettings;
@@ -30,13 +30,13 @@ export const QMoiSettingsPanel: React.FC = () => {
     const data: Record<string, unknown> = {
       settings,
       cmdHistory: JSON.parse(
-        localStorage.getItem("qcity-cmd-history") || "[]"
+        localStorage.getItem("qcity-cmd-history") || "[]",
       ) as unknown,
       pinned: JSON.parse(
-        localStorage.getItem("qcity-cmd-pinned") || "[]"
+        localStorage.getItem("qcity-cmd-pinned") || "[]",
       ) as unknown,
       qavatar: JSON.parse(
-        localStorage.getItem("qavatar-settings") || "{}"
+        localStorage.getItem("qavatar-settings") || "{}",
       ) as unknown,
     };
     const blob = new Blob([JSON.stringify(data, null, 2)], {
@@ -71,12 +71,12 @@ export const QMoiSettingsPanel: React.FC = () => {
         )
           localStorage.setItem(
             "qcity-cmd-history",
-            JSON.stringify(importedData["cmdHistory"])
+            JSON.stringify(importedData["cmdHistory"]),
           );
         if (importedData && "pinned" in importedData && importedData["pinned"])
           localStorage.setItem(
             "qcity-cmd-pinned",
-            JSON.stringify(importedData["pinned"])
+            JSON.stringify(importedData["pinned"]),
           );
         if (
           importedData &&
@@ -85,7 +85,7 @@ export const QMoiSettingsPanel: React.FC = () => {
         )
           localStorage.setItem(
             "qavatar-settings",
-            JSON.stringify(importedData["qavatar"])
+            JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
       } catch (_err: unknown) {

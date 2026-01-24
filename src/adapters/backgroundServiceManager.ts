@@ -60,7 +60,7 @@ class BackgroundServiceManager {
     id: string,
     name: string,
     intervalMs: number,
-    fn: () => Promise<void>
+    fn: () => Promise<void>,
   ): void {
     this.tasks.set(id, {
       id,
@@ -91,11 +91,14 @@ class BackgroundServiceManager {
       task.lastRun = Date.now();
       task.nextRun = Date.now() + task.interval;
       console.debug(
-        `[Background] Task ${id} completed in ${Date.now() - startTime}ms`
+        `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
     } catch (_err) {
       void _err;
-      (globalThis.console  as unknown)?.error?.(`[Background] Task ${id} failed:`, _err);
+      (globalThis.console as unknown)?.error?.(
+        `[Background] Task ${id} failed:`,
+        _err,
+      );
     } finally {
       task.isRunning = false;
     }
@@ -139,7 +142,7 @@ class BackgroundServiceManager {
   async updateServiceStatus(
     id: string,
     status: "healthy" | "degraded" | "unhealthy",
-    error?: string
+    error?: string,
   ): Promise<void> {
     const service = this.services.get(id);
     if (!service) return;
@@ -149,7 +152,7 @@ class BackgroundServiceManager {
     if (_error) service.error = error;
 
     console.info(
-      `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`
+      `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
     );
   }
 
@@ -174,7 +177,7 @@ class BackgroundServiceManager {
       async () => {
         const status = await this.checkServiceHealth();
         this.services.set("backend", status);
-      }
+      },
     );
 
     this.registerTask(
@@ -184,7 +187,7 @@ class BackgroundServiceManager {
       async () => {
         console.debug("[Background] Syncing data...");
         await fetchAllInParallel();
-      }
+      },
     );
 
     this.registerTask(
@@ -196,13 +199,16 @@ class BackgroundServiceManager {
         if (cleared > 0) {
           console.debug(`[Background] Cleared ${cleared} cache entries`);
         }
-      }
+      },
     );
 
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console  as unknown)?.error?.("[Background] Poll _error:", _err);
+        (globalThis.console as unknown)?.error?.(
+          "[Background] Poll _error:",
+          _err,
+        );
       });
     }, 5 * 1000); // Check every 5 seconds
 
@@ -214,7 +220,7 @@ class BackgroundServiceManager {
 
     this.enabled = false;
     if (this.pollInterval) {
-      clearInterval(this.pollInterval  as unknown);
+      clearInterval(this.pollInterval as unknown);
       this.pollInterval = null;
     }
 

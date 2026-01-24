@@ -23,7 +23,7 @@ export class QCityService {
       logger.info("Q-City service initialized successfully");
       await this.notificationService.sendNotification(
         "Q-City Initialization",
-        "Q-City service has been initialized successfully."
+        "Q-City service has been initialized successfully.",
       );
     } catch (_error) {
       logger.error("Failed to initialize Q-City service:", _error);
@@ -31,7 +31,7 @@ export class QCityService {
         "Q-City Initialization Error",
         `Failed to initialize Q-City service: ${
           (error as any)?.message || String(_error)
-        }`
+        }`,
       );
       throw error;
     }
@@ -281,7 +281,7 @@ export class QCityService {
       this.config = { ...this.config, ...newConfig };
       await this.notificationService.sendNotification(
         "Q-City Configuration Update",
-        "Q-City configuration has been updated successfully."
+        "Q-City configuration has been updated successfully.",
       );
     } catch (_error) {
       logger.error("Failed to update configuration:", _error);
@@ -296,7 +296,7 @@ export class QCityService {
       this.status = null;
       await this.notificationService.sendNotification(
         "Q-City Shutdown",
-        "Q-City service has been shut down successfully."
+        "Q-City service has been shut down successfully.",
       );
     } catch (_error) {
       logger.error("Failed to shut down Q-City service:", _error);
@@ -336,7 +336,7 @@ export class QCityService {
 
   public async runRemoteCommand(
     cmd: string,
-    deviceId = "default"
+    deviceId = "default",
   ): Promise<any> {
     // Simulate routing to the correct device
     if (deviceId === "qcity-1") {

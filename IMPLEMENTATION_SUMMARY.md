@@ -216,14 +216,14 @@ qmoi-enhanced/
 
 ### Integration Tests Created
 
-- ****tests**/api/auth.test.ts**: JWT generation, email validation, token verification
-- ****tests**/api/payments.test.ts**: Payment flow, webhook signature verification, phone validation
-- ****tests**/api/wallets.test.ts**: CRUD operations, balance management, currency validation
-- ****tests**/integration/user-registration.test.ts**: Complete registration flow with database integration
+- \***\*tests**/api/auth.test.ts\*\*: JWT generation, email validation, token verification
+- \***\*tests**/api/payments.test.ts\*\*: Payment flow, webhook signature verification, phone validation
+- \***\*tests**/api/wallets.test.ts\*\*: CRUD operations, balance management, currency validation
+- \***\*tests**/integration/user-registration.test.ts\*\*: Complete registration flow with database integration
 
 ### Test Utilities
 
-- ****tests**/utils/test-helpers.ts**:
+- \***\*tests**/utils/test-helpers.ts\*\*:
   - `createAuthenticatedRequest()` - Create authenticated test requests
   - `createTestUser()`, `createTestWallet()`, `createTestTransaction()`
   - `assertJsonResponse()`, `assertErrorResponse()`
@@ -276,37 +276,31 @@ qmoi-enhanced/
 ### GitHub Actions Workflow (7 Stages)
 
 1. **Quality Stage**
-
    - TypeScript compilation check
    - ESLint code style validation
    - Prettier format verification
 
 2. **Test Stage**
-
    - Run all integration tests
    - Generate coverage reports
    - Upload to Codecov
 
 3. **Build Stage**
-
    - CodeQL SAST analysis
    - Build Next.js application
    - Create production bundle
 
 4. **Docker Stage**
-
    - Build Docker image
    - Push to registry
    - Generate image metadata
 
 5. **Deploy Staging**
-
    - Deploy to staging environment
    - Run smoke tests
    - Slack notification
 
 6. **Security Scanning**
-
    - npm audit for vulnerabilities
    - Snyk dependency check
    - Trivy container scan

@@ -98,7 +98,7 @@ class ServiceRecoveryManager {
   async recover(
     service: string,
     reason: string,
-    recoveryFn: () => Promise<void>
+    recoveryFn: () => Promise<void>,
   ): Promise<boolean> {
     if (!this.enabled) {
       console.warn("[Recovery] Recovery attempted but manager is disabled");
@@ -131,7 +131,7 @@ class ServiceRecoveryManager {
         });
 
         console.info(
-          `[Recovery] Successfully recovered ${service} on attempt ${attemptCount}`
+          `[Recovery] Successfully recovered ${service} on attempt ${attemptCount}`,
         );
         return true;
       } catch (_err) {
@@ -146,8 +146,8 @@ class ServiceRecoveryManager {
 
           console.warn(
             `[Recovery] Attempt ${attemptCount} failed, retrying in ${Math.round(
-              backoff
-            )}ms: ${lastError.message}`
+              backoff,
+            )}ms: ${lastError.message}`,
           );
 
           // Wait before next attempt
@@ -165,8 +165,8 @@ class ServiceRecoveryManager {
       success: false,
     });
 
-    (globalThis.console  as unknown)?.error?.(
-      `[Recovery] Failed to recover ${service} after ${attemptCount} attempts: ${lastError?.message}`
+    (globalThis.console as unknown)?.error?.(
+      `[Recovery] Failed to recover ${service} after ${attemptCount} attempts: ${lastError?.message}`,
     );
     return false;
   }
@@ -175,15 +175,17 @@ class ServiceRecoveryManager {
     service: string,
     reason: string,
     recoveryFn: () => Promise<void>,
-    delayMs: number
+    delayMs: number,
   ): void {
     console.debug(
-      `[Recovery] Scheduling recovery of ${service} in ${delayMs}ms`
+      `[Recovery] Scheduling recovery of ${service} in ${delayMs}ms`,
     );
 
     const timer = setTimeout(() => {
       this.recover(service, reason, recoveryFn).catch((_err) => {
-        (globalThis.console  as unknown)?.error?.(`[Recovery] Scheduled recovery failed: ${_err}`);
+        (globalThis.console as unknown)?.error?.(
+          `[Recovery] Scheduled recovery failed: ${_err}`,
+        );
       });
       this.activeRecoveries.delete(service);
     }, delayMs);

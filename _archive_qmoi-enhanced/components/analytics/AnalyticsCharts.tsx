@@ -23,9 +23,9 @@ ChartJS.register(
   Legend,
 );
 
-export const AnalyticsCharts: React.FC<{ analytics: { events: unknown[] } }> = ({
-  analytics,
-}) => {
+export const AnalyticsCharts: React.FC<{
+  analytics: { events: unknown[] };
+}> = ({ analytics }) => {
   // Plugin usage count
   const pluginUsage: { [name: string]: number } = {};
   analytics.events.forEach((e) => {

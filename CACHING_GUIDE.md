@@ -214,7 +214,7 @@ const user = await optimizedQueries.getUserProfile(prisma, "user-123");
 // Get user with wallets (avoid N+1)
 const userWithWallets = await optimizedQueries.getUserWithWallets(
   prisma,
-  "user-123"
+  "user-123",
 );
 
 // Get wallet with paginated transactions
@@ -222,7 +222,7 @@ const wallet = await optimizedQueries.getWalletWithTransactions(
   prisma,
   "wallet-456",
   1, // page
-  50 // limit per page
+  50, // limit per page
 );
 
 // Get transactions with filters
@@ -237,7 +237,7 @@ const transactions = await optimizedQueries.getTransactionsPaginated(
     maxAmount: 10000,
     startDate: new Date("2024-01-01"),
     endDate: new Date("2024-01-31"),
-  }
+  },
 );
 ```
 

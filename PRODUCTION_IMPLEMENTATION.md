@@ -289,7 +289,7 @@ await logAuditEntry(
   oldValue, // Previous value
   newValue, // New value
   ipAddress, // Client IP
-  userAgent // Browser info
+  userAgent, // Browser info
 );
 ```
 
@@ -381,19 +381,16 @@ curl https://api.sendgrid.com/v3/api_keys \
 ## 🔄 Next Steps
 
 1. **Test Payment Flows**
-
    - Set up M-Pesa sandbox
    - Test deposit/withdrawal cycle
    - Verify webhook processing
 
 2. **Communication Services**
-
    - Implement WhatsApp notifications
    - Add Telegram bot integration
    - Set up push notifications
 
 3. **Advanced Features**
-
    - Two-factor authentication
    - Affiliate system
    - Revenue sharing

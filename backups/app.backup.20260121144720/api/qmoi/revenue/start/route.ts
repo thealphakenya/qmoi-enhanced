@@ -20,7 +20,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? { _error: "Master access required" },
-        { status: _r?.status ?? 401 }
+        { status: _r?.status ?? 401 },
       );
     }
 
@@ -42,7 +42,7 @@ export async function POST(_request: NextRequest) {
     (console as any).error("Start revenue engine _error:", _error);
     return NextResponse.json(
       { _error: "Failed to start revenue engine" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

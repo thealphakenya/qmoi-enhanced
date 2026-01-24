@@ -15,8 +15,10 @@ export async function GET(_request: NextRequest) {
 
     if (!token) {
       return NextResponse.json(
-        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
-        { status: 401 }
+        {
+          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+        },
+        { status: 401 },
       );
     }
 
@@ -26,7 +28,7 @@ export async function GET(_request: NextRequest) {
     } catch (_error) {
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -35,7 +37,7 @@ export async function GET(_request: NextRequest) {
     if (!user || user.role !== "admin") {
       return NextResponse.json(
         { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -49,13 +51,13 @@ export async function GET(_request: NextRequest) {
         criticalCount: alerts.filter((a) => a.severity === "critical").length,
         lastUpdated: new Date().toISOString(),
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (_error) {
     (globalThis.console as any)?.error?.("Alerts _error:", _error);
     return NextResponse.json(
       { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -71,8 +73,10 @@ export async function POST(_request: NextRequest) {
 
     if (!token) {
       return NextResponse.json(
-        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
-        { status: 401 }
+        {
+          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+        },
+        { status: 401 },
       );
     }
 
@@ -82,7 +86,7 @@ export async function POST(_request: NextRequest) {
     } catch (_error) {
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -91,7 +95,7 @@ export async function POST(_request: NextRequest) {
     if (!user || user.role !== "admin") {
       return NextResponse.json(
         { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -106,14 +110,14 @@ export async function POST(_request: NextRequest) {
             code: "MISSING_FIELDS",
           },
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     if (!["acknowledge", "dismiss", "escalate"].includes(action)) {
       return NextResponse.json(
         { _error: { message: "Invalid action", code: "INVALID_ACTION" } },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -125,13 +129,13 @@ export async function POST(_request: NextRequest) {
         timestamp: new Date().toISOString(),
         message: `Alert ${action}d successfully`,
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (_error) {
     (globalThis.console as any)?.error?.("Alert action _error:", _error);
     return NextResponse.json(
       { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

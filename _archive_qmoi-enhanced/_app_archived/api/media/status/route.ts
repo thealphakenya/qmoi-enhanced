@@ -48,7 +48,10 @@ export async function GET() {
 
     return NextResponse.json(status);
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error in media status endpoint:", error);
+    (globalThis.console as any)?.error?.(
+      "Error in media status endpoint:",
+      error,
+    );
     return NextResponse.json(
       { error: "Failed to fetch media status" },
       { status: 500 },

@@ -6,19 +6,26 @@
  * - Leaves ambiguous cases (links, large generated files) untouched and records them in a pending report
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const ROOT = path.resolve(__dirname, '..');
-const EXCLUDE_DIRS = ['node_modules', '.git', '.next', 'dist', 'coverage', '_archive_qmoi-enhanced'];
-const SKIP_FILES = ['link_report.md']; // large generated file(s) — skip automatic edits
-const SAFE_EXT = new Set(['.md', '.txt', '.rst']);
+const ROOT = path.resolve(__dirname, "..");
+const EXCLUDE_DIRS = [
+  "node_modules",
+  ".git",
+  ".next",
+  "dist",
+  "coverage",
+  "_archive_qmoi-enhanced",
+];
+const SKIP_FILES = ["link_report.md"]; // large generated file(s) — skip automatic edits
+const SAFE_EXT = new Set([".md", ".txt", ".rst"]);
 const MAX_SAFE_SIZE = 200 * 1024; // 200 KB
 
 const TODO_REGEX = /\bTODO_PROD\b/g;
 
 function isBinary(filename) {
-  const textExt = ['.md', '.txt', '.json', '.js', '.ts', '.tsx', '.html'];
+  const textExt = [".md", ".txt", ".json", ".js", ".ts", ".tsx", ".html"];
   return !textExt.includes(path.extname(filename).toLowerCase());
 }
 
@@ -45,7 +52,7 @@ function isAmbiguousLine(line) {
 }
 
 (async function main() {
-  console.log('Scanning for TODO_PROD occurrences...');
+  console.log("Scanning for TODO_PROD occurrences...");
   const allFiles = await walk(ROOT);
   const results = {
     scannedFiles: 0,
@@ -73,7 +80,7 @@ function isAmbiguousLine(line) {
       continue;
     }
 
-    let content = await fs.promises.readFile(f, 'utf8');
+    let content = await fs.promises.readFile(f, "utf8");
     if (!TODO_REGEX.test(content)) continue;
     // Reset regex
     TODO_REGEX.lastIndex = 0;
@@ -84,7 +91,11 @@ function isAmbiguousLine(line) {
       if (TODO_REGEX.test(lines[i])) {
         if (isAmbiguousLine(lines[i])) {
           ambiguousFound = true;
-          results.ambiguous.push({ file: f, lineNumber: i + 1, line: lines[i].trim() });
+          results.ambiguous.push({
+            file: f,
+            lineNumber: i + 1,
+            line: lines[i].trim(),
+          });
         }
       }
       TODO_REGEX.lastIndex = 0;
@@ -96,31 +107,49 @@ function isAmbiguousLine(line) {
     }
 
     // Safe to replace all TODO_PROD tokens in this file
-    const replacementNote = 'REVIEWED: production placeholder (follow-up recommended)';
+    const replacementNote =
+      "REVIEWED: production placeholder (follow-up recommended)";
     const newContent = content.replace(/\bTODO_PROD\b/g, replacementNote);
     if (newContent !== content) {
-      await fs.promises.writeFile(f, newContent, 'utf8');
+      await fs.promises.writeFile(f, newContent, "utf8");
       results.replacedFiles.push({ file: f, replaced: true });
       const count = (content.match(/\bTODO_PROD\b/g) || []).length;
       results.replacedCount += count;
-      console.log(`Replaced ${count} occurrence(s) in: ${path.relative(ROOT, f)}`);
+      console.log(
+        `Replaced ${count} occurrence(s) in: ${path.relative(ROOT, f)}`,
+      );
     }
   }
 
   // Save results
-  await fs.promises.writeFile(path.join(ROOT, 'TODO_PROD_BATCH_RESULTS.json'), JSON.stringify(results, null, 2), 'utf8');
+  await fs.promises.writeFile(
+    path.join(ROOT, "TODO_PROD_BATCH_RESULTS.json"),
+    JSON.stringify(results, null, 2),
+    "utf8",
+  );
 
   // Save ambiguous list for manual review
   if (results.ambiguous.length) {
-    const lines = ['Ambiguous TODO_PROD occurrences (manual review suggested):', ''];
+    const lines = [
+      "Ambiguous TODO_PROD occurrences (manual review suggested):",
+      "",
+    ];
     for (const a of results.ambiguous) {
       lines.push(`${path.relative(ROOT, a.file)}:${a.lineNumber}: ${a.line}`);
     }
-    await fs.promises.writeFile(path.join(ROOT, 'TODO_PROD_BATCH_PENDING.md'), lines.join('\n'), 'utf8');
+    await fs.promises.writeFile(
+      path.join(ROOT, "TODO_PROD_BATCH_PENDING.md"),
+      lines.join("\n"),
+      "utf8",
+    );
   }
 
-  console.log('Batch sweep complete.');
+  console.log("Batch sweep complete.");
   console.log(`Files scanned: ${results.scannedFiles}`);
-  console.log(`Files auto-replaced: ${results.replacedFiles.length}, total replacements: ${results.replacedCount}`);
-  console.log(`Ambiguous occurrences: ${results.ambiguous.length} (see TODO_PROD_BATCH_PENDING.md)`);
+  console.log(
+    `Files auto-replaced: ${results.replacedFiles.length}, total replacements: ${results.replacedCount}`,
+  );
+  console.log(
+    `Ambiguous occurrences: ${results.ambiguous.length} (see TODO_PROD_BATCH_PENDING.md)`,
+  );
 })();

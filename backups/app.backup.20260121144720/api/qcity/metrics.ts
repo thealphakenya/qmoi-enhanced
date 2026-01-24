@@ -4,7 +4,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 import os from "os";
 import { requireRole } from "../auth/rbac";
 
-const handler = requireRole(["admin", "master"])(async (_req: NextApiRequest,
+const handler = requireRole(["admin", "master"])(async (
+  _req: NextApiRequest,
   _res: NextApiResponse,
 ) => {
   const cpus = os.cpus();

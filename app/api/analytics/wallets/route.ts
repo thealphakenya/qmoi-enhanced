@@ -12,8 +12,10 @@ export async function GET(_request: NextRequest) {
 
     if (!token) {
       return NextResponse.json(
-        { _error: { message: "Missing authorization token", code: "NO_TOKEN" } },
-        { status: 401 }
+        {
+          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+        },
+        { status: 401 },
       );
     }
 
@@ -23,7 +25,7 @@ export async function GET(_request: NextRequest) {
     } catch (_error) {
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -35,7 +37,7 @@ export async function GET(_request: NextRequest) {
             code: "INVALID_TOKEN",
           },
         },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -105,7 +107,7 @@ export async function GET(_request: NextRequest) {
 
     // Calculate wallet utilization (wallets with transactions / total wallets)
     const activeWallets = Object.keys(transactionsByWallet).filter(
-      (walletId) => transactionsByWallet[walletId].length > 0
+      (walletId) => transactionsByWallet[walletId].length > 0,
     ).length;
 
     stats.walletUtilization =
@@ -150,13 +152,13 @@ export async function GET(_request: NextRequest) {
           })),
         },
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (_error) {
     (globalThis.console as any)?.error?.("Wallet analytics _error:", _error);
     return NextResponse.json(
       { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

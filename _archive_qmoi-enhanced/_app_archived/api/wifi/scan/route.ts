@@ -95,7 +95,10 @@ export async function POST(request: NextRequest) {
       );
     }
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error in WiFi connection endpoint:", error);
+    (globalThis.console as any)?.error?.(
+      "Error in WiFi connection endpoint:",
+      error,
+    );
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },

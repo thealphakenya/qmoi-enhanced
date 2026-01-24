@@ -63,7 +63,7 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
   } catch (_error) {
     (console as any).error(
       "Failed to create safe backup for credentials:",
-      _error
+      _error,
     );
   }
 }
@@ -93,7 +93,7 @@ async function processMpesaPayment(paymentData: unknown) {
           AccountReference: paymentData.description,
           TransactionDesc: paymentData.description,
         }),
-      }
+      },
     );
 
     const result = await response.json();
@@ -135,7 +135,7 @@ async function processAirtelPayment(paymentData: unknown) {
             id: `QMOI_${Date.now()}`,
           },
         }),
-      }
+      },
     );
 
     const result = await response.json();
@@ -176,7 +176,7 @@ async function processPesapalPayment(paymentData: unknown) {
           PhoneNumber="${paymentData.phone}" 
           xmlns="http://www.pesapal.com" />
       `,
-      }
+      },
     );
 
     const result = await response.text();
@@ -224,7 +224,7 @@ export async function GET(_request: NextRequest) {
         success: false,
         _error: "Failed to fetch payment data",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -331,7 +331,7 @@ export async function POST(_request: NextRequest) {
           success: false,
           _error: "Invalid action specified",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
   } catch (_error) {
@@ -342,7 +342,7 @@ export async function POST(_request: NextRequest) {
           _error: "Validation failed",
           details: error.errors,
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -351,7 +351,7 @@ export async function POST(_request: NextRequest) {
         success: false,
         _error: "Failed to process payment action",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -368,7 +368,7 @@ export async function PUT(_request: NextRequest) {
           success: false,
           _error: "Payment not found",
         },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -394,7 +394,7 @@ export async function PUT(_request: NextRequest) {
         success: false,
         _error: "Failed to update payment",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

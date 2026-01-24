@@ -65,7 +65,10 @@ export function useDatasetManager() {
         const data = await res.json();
         setManager(data);
       } catch (error) {
-        (globalThis.console as any)?.error?.("Failed to fetch datasets:", error);
+        (globalThis.console as any)?.error?.(
+          "Failed to fetch datasets:",
+          error,
+        );
       }
     };
 

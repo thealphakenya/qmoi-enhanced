@@ -34,7 +34,7 @@ describe("QMoiKernelPanel Integration", () => {
                 mutation_count: 5,
                 logs: ["Log 1", "Log 2"],
               }),
-              { status: 200 }
+              { status: 200 },
             );
           }
           if (url.includes("/api/qmoi/payload")) {
@@ -42,10 +42,10 @@ describe("QMoiKernelPanel Integration", () => {
             const action = u.searchParams.get("qfix")
               ? "QFix"
               : u.searchParams.get("qoptimize")
-              ? "QOptimize"
-              : u.searchParams.get("qsecure")
-              ? "QSecure"
-              : "Unknown";
+                ? "QOptimize"
+                : u.searchParams.get("qsecure")
+                  ? "QSecure"
+                  : "Unknown";
             return new Response(JSON.stringify({ message: `${action} done` }), {
               status: 200,
             });
@@ -154,7 +154,7 @@ describe("QMoiKernelPanel Integration", () => {
             () =>
               new Response(JSON.stringify({ message: "QFix done" }), {
                 status: 200,
-              })
+              }),
           );
           if (handler)
             server.use(handler as unknown as Parameters<typeof server.use>[0]);
@@ -168,7 +168,7 @@ describe("QMoiKernelPanel Integration", () => {
     await screen.findByText("OK");
     fireEvent.click(screen.getByRole("button", { name: /Run QFix/i }));
     await waitFor(() =>
-      expect(screen.getByText(/Last Action:/)).toBeInTheDocument()
+      expect(screen.getByText(/Last Action:/)).toBeInTheDocument(),
     );
     expect(screen.getByText("QFix done")).toBeInTheDocument();
   });
@@ -189,7 +189,7 @@ describe("QMoiKernelPanel Integration", () => {
         if (helpersObj.get) {
           const handler = helpersObj.get(
             "/api/qmoi/status",
-            () => new Response(null, { status: 500 })
+            () => new Response(null, { status: 500 }),
           );
           if (handler)
             server.use(handler as unknown as Parameters<typeof server.use>[0]);

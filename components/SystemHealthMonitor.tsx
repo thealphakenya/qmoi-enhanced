@@ -127,8 +127,8 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
             Math.random() > 0.9
               ? "error"
               : Math.random() > 0.7
-              ? "warning"
-              : "healthy",
+                ? "warning"
+                : "healthy",
           uptime: 99.9 + Math.random() * 0.1,
           responseTime: 50 + Math.random() * 200,
           lastCheck: now,
@@ -140,8 +140,8 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
             Math.random() > 0.95
               ? "error"
               : Math.random() > 0.8
-              ? "warning"
-              : "healthy",
+                ? "warning"
+                : "healthy",
           uptime: 99.5 + Math.random() * 0.5,
           responseTime: 20 + Math.random() * 100,
           lastCheck: now,
@@ -153,8 +153,8 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
             Math.random() > 0.9
               ? "error"
               : Math.random() > 0.6
-              ? "warning"
-              : "healthy",
+                ? "warning"
+                : "healthy",
           uptime: 99.8 + Math.random() * 0.2,
           responseTime: 30 + Math.random() * 150,
           lastCheck: now,
@@ -166,8 +166,8 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
             Math.random() > 0.9
               ? "error"
               : Math.random() > 0.7
-              ? "warning"
-              : "healthy",
+                ? "warning"
+                : "healthy",
           uptime: 99.7 + Math.random() * 0.3,
           responseTime: 40 + Math.random() * 120,
           lastCheck: now,
@@ -179,8 +179,8 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
             Math.random() > 0.95
               ? "error"
               : Math.random() > 0.8
-              ? "warning"
-              : "healthy",
+                ? "warning"
+                : "healthy",
           uptime: 99.6 + Math.random() * 0.4,
           responseTime: 25 + Math.random() * 80,
           lastCheck: now,
@@ -222,13 +222,13 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
   // Calculate overall system status
   const calculateOverallStatus = (
     metrics: SystemMetrics,
-    checks: HealthCheck[]
+    checks: HealthCheck[],
   ): "healthy" | "warning" | "critical" => {
     const serviceErrors = metrics.services.filter(
-      (s) => s.status === "error"
+      (s) => s.status === "error",
     ).length;
     const serviceWarnings = metrics.services.filter(
-      (s) => s.status === "warning"
+      (s) => s.status === "warning",
     ).length;
     const failedChecks = checks.filter((c) => c.status === "fail").length;
     const warningChecks = checks.filter((c) => c.status === "warning").length;
@@ -403,7 +403,7 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
             <div className="flex items-center gap-4">
               <div
                 className={`flex items-center gap-2 ${getStatusColor(
-                  overallStatus
+                  overallStatus,
                 )}`}
               >
                 {getStatusIcon(overallStatus)}
@@ -583,7 +583,7 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
                           (metrics.memory.total - metrics.memory.used) *
                             1024 *
                             1024 *
-                            1024
+                            1024,
                         )}
                       </div>
                     </div>
@@ -611,7 +611,7 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
                           (metrics.disk.total - metrics.disk.used) *
                             1024 *
                             1024 *
-                            1024
+                            1024,
                         )}
                       </div>
                     </div>

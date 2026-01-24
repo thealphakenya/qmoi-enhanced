@@ -49,7 +49,7 @@ class PerformanceMonitor {
   getLoadTime(): number {
     if (typeof performance !== "undefined") {
       const navigation = performance.getEntriesByType(
-        "navigation"
+        "navigation",
       )[0] as PerformanceNavigationTiming;
       return navigation
         ? navigation.loadEventEnd - navigation.loadEventStart
@@ -61,7 +61,7 @@ class PerformanceMonitor {
   getResponseTime(): number {
     if (typeof performance !== "undefined") {
       const navigation = performance.getEntriesByType(
-        "navigation"
+        "navigation",
       )[0] as PerformanceNavigationTiming;
       return navigation ? navigation.responseEnd - navigation.requestStart : 0;
     }
@@ -212,7 +212,10 @@ export function useDeviceHealth(): DeviceHealth {
           warnings,
         });
       } catch (error) {
-        (globalThis.console as any)?.error?.("Device health check failed:", error);
+        (globalThis.console as any)?.error?.(
+          "Device health check failed:",
+          error,
+        );
         setHealth({
           status: "degraded",
           lastCheck: Date.now(),

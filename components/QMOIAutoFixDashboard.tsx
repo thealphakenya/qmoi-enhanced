@@ -140,7 +140,10 @@ export default function QMOIAutoFixDashboard() {
         setGitHubStatus(data);
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error fetching GitHub status:", error);
+      (globalThis.console as any)?.error?.(
+        "Error fetching GitHub status:",
+        error,
+      );
     }
   };
 
@@ -153,7 +156,10 @@ export default function QMOIAutoFixDashboard() {
         setDeploymentStatus(data.status);
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error fetching deployment status:", error);
+      (globalThis.console as any)?.error?.(
+        "Error fetching deployment status:",
+        error,
+      );
     }
   };
 

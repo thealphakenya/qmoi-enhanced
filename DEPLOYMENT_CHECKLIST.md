@@ -3,6 +3,7 @@
 ## Pre-Deployment (On Your Machine)
 
 ### Environment Preparation
+
 - [ ] Clone repository: `git clone https://github.com/thealphakenya/qmoi-enhanced.git`
 - [ ] Copy environment template: `cp .env.production.updated .env.production`
 - [ ] Create strong JWT_SECRET (32+ chars): `openssl rand -hex 16`
@@ -12,6 +13,7 @@
 - [ ] Install PM2 globally: `npm install -g pm2`
 
 ### Local Testing
+
 - [ ] Run environment validator: `node scripts/validate-production-env.js`
 - [ ] Install dependencies: `npm install --production`
 - [ ] Build application: `npm run ci:build`
@@ -20,6 +22,7 @@
 ## Deployment (On Production Server)
 
 ### Phase 1: Initial Setup
+
 - [ ] SSH to production server
 - [ ] Create deployment user: `sudo useradd -m deploy`
 - [ ] Create application directory: `sudo mkdir -p /var/www/qmoi-enhanced`
@@ -28,34 +31,40 @@
 - [ ] Copy .env.production to server (securely via SCP)
 
 ### Phase 2: Application Deployment
+
 - [ ] Run automated deployment: `bash scripts/deploy-production.sh`
 - [ ] Verify processes: `pm2 list` (should show 3 running)
 - [ ] Check logs: `pm2 logs` (should show no errors)
 - [ ] Test health endpoint: `curl http://localhost:3000/api/health`
 
 ### Phase 3: Database Setup
+
 - [ ] Ensure PostgreSQL is running
 - [ ] Run database setup: `bash scripts/setup-database.sh`
 - [ ] Verify migrations: Check database for tables
 
 ### Phase 4: SSL/TLS (Requires Domain + Root Access)
+
 - [ ] Point domain DNS A record to server IP
 - [ ] Wait for DNS propagation (~5 minutes): `nslookup qmoi.app`
 - [ ] Run SSL setup (as root): `sudo bash scripts/setup-ssl-automated.sh qmoi.app admin@qmoi.app`
 - [ ] Verify certificate: `sudo certbot certificates`
 
 ### Phase 5: Nginx Setup
+
 - [ ] Run Nginx setup (as root): `sudo bash scripts/setup-nginx-automated.sh qmoi.app 3000`
 - [ ] Test Nginx config: `sudo nginx -t`
 - [ ] Verify HTTPS: `curl https://qmoi.app` (should return 200)
 
 ### Phase 6: Monitoring & Backups
+
 - [ ] Initialize monitoring: `node scripts/init-monitoring.js`
 - [ ] Setup backups (as root): `sudo bash scripts/setup-backup-system.sh /var/backups/qmoi 30`
 - [ ] Test backup: `sudo qmoi-backup /var/backups/qmoi 30`
 - [ ] Start monitoring dashboard: `pm2 monit`
 
 ### Phase 7: Verification
+
 - [ ] Run verification suite: `bash scripts/verify-deployment.sh`
 - [ ] Check all endpoints: `curl https://qmoi.app/api/health`
 - [ ] Monitor logs for errors: `pm2 logs qmoi-app --lines 50`
@@ -64,18 +73,21 @@
 ## Post-Deployment
 
 ### Immediate (First Hour)
+
 - [ ] Monitor logs for any errors
 - [ ] Test key application features
 - [ ] Verify database connectivity
 - [ ] Check SSL certificate validity
 
 ### Short Term (First Day)
+
 - [ ] Monitor performance metrics
 - [ ] Review error logs
 - [ ] Test backup system
 - [ ] Document any issues
 
 ### Long Term (Ongoing)
+
 - [ ] Daily: Check PM2 logs and health endpoint
 - [ ] Weekly: Review performance metrics
 - [ ] Monthly: Update SSL certificate status, security patches
@@ -84,6 +96,7 @@
 ## Troubleshooting
 
 ### Application Won't Start
+
 ```bash
 # Check PM2 logs
 pm2 logs qmoi-app
@@ -96,6 +109,7 @@ node scripts/qmoi-production-init.js
 ```
 
 ### Database Connection Failed
+
 ```bash
 # Verify DATABASE_URL
 grep DATABASE_URL .env.production
@@ -108,6 +122,7 @@ npx prisma migrate status
 ```
 
 ### HTTPS Not Working
+
 ```bash
 # Verify certificate
 sudo certbot certificates
@@ -120,6 +135,7 @@ sudo nginx -t
 ```
 
 ### PM2 Auto-startup Not Working
+
 ```bash
 # Verify systemd service
 sudo systemctl status pm2-node
@@ -153,6 +169,7 @@ pm2 logs
 ## Success Criteria
 
 Your deployment is successful when:
+
 - ✅ All 3 PM2 processes are running
 - ✅ Health endpoint responds with 200 OK
 - ✅ HTTPS connection works
@@ -165,6 +182,7 @@ Your deployment is successful when:
 ---
 
 **Need Help?**
+
 - Check logs: `pm2 logs`
 - View process status: `pm2 status`
 - Monitor in real-time: `pm2 monit`

@@ -77,7 +77,7 @@ export default function QMoiToolbar() {
             return { ...app, status: health };
           }
           return app;
-        })
+        }),
       );
     }, 1000);
     return () => clearInterval(interval);
@@ -269,10 +269,10 @@ export default function QMoiToolbar() {
               notification.type === "error"
                 ? "#f44336"
                 : notification.type === "warning"
-                ? "#ff9800"
-                : notification.type === "success"
-                ? "#4caf50"
-                : "#333",
+                  ? "#ff9800"
+                  : notification.type === "success"
+                    ? "#4caf50"
+                    : "#333",
             color: "#fff",
             padding: "10px 20px",
             borderRadius: 10,
@@ -353,10 +353,10 @@ export default function QMoiToolbar() {
                       n.type === "error"
                         ? "#f44336"
                         : n.type === "warning"
-                        ? "#ff9800"
-                        : n.type === "success"
-                        ? "#4caf50"
-                        : "#e0ffe0",
+                          ? "#ff9800"
+                          : n.type === "success"
+                            ? "#4caf50"
+                            : "#e0ffe0",
                   }}
                 >
                   {n.message}
@@ -412,8 +412,8 @@ export default function QMoiToolbar() {
                   app.status === "error"
                     ? "#f00"
                     : app.status === "warning"
-                    ? "#ff0"
-                    : "#0f0",
+                      ? "#ff0"
+                      : "#0f0",
                 color: "#111",
                 borderRadius: 8,
                 padding: "0 4px",

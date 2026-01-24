@@ -22,7 +22,7 @@ export async function POST(_request: NextRequest) {
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
-    
+
     // End existing sessions for user
     sessions.forEach((s: unknown) => {
       if (s.userId === userId && s.active) s.active = false;
@@ -50,7 +50,10 @@ export async function POST(_request: NextRequest) {
       message: "Session created",
     });
   } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message }, { status: 500 });
+    return NextResponse.json(
+      { _error: (error as Error).message },
+      { status: 500 },
+    );
   }
 }
 
@@ -58,9 +61,12 @@ export async function GET(_request: NextRequest) {
   try {
     ensureFile();
     const sessionId = request.nextUrl.searchParams.get("sessionId");
-    
+
     if (!sessionId) {
-      return NextResponse.json({ _error: "Missing sessionId" }, { status: 400 });
+      return NextResponse.json(
+        { _error: "Missing sessionId" },
+        { status: 400 },
+      );
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -83,6 +89,9 @@ export async function GET(_request: NextRequest) {
 
     return NextResponse.json({ success: true, session });
   } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message }, { status: 500 });
+    return NextResponse.json(
+      { _error: (error as Error).message },
+      { status: 500 },
+    );
   }
 }

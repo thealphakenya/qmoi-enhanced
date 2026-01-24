@@ -52,7 +52,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     } catch (_err) {
       void _err;
       setError(
-        _err instanceof Error ? _err.message : "Failed to fetch asset data"
+        _err instanceof Error ? _err.message : "Failed to fetch asset data",
       );
     } finally {
       setIsLoading(false);

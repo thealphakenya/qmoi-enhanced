@@ -29,7 +29,7 @@ export default function SessionPanel() {
         setError(
           typeof _err === "object" && _err && "message" in _err
             ? String((_err as { message?: unknown }).message)
-            : String(_err)
+            : String(_err),
         );
       })
       .finally(() => setLoading(false));
@@ -55,7 +55,7 @@ export default function SessionPanel() {
         setError(
           typeof _err === "object" && _err && "message" in _err
             ? String((_err as { message?: unknown }).message)
-            : String(_err)
+            : String(_err),
         );
       })
       .finally(() => setLoading(false));

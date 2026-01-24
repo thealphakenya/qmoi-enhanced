@@ -14,7 +14,7 @@ function stripTags(ssml: string) {
 
 export function playSSML(
   ssml: string,
-  opts: { voiceName?: string; rate?: number } = {}
+  opts: { voiceName?: string; rate?: number } = {},
 ) {
   if (!supportsSpeechSynthesis()) return false;
   try {

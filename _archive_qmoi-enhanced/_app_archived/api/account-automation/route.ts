@@ -7,7 +7,7 @@ let idCounter = 1;
 
 export async function POST_CREATE(req: NextRequest) {
   // Create new account
-  const body = (await req.json() as any);
+  const body = (await req.json()) as any;
   const { username, email, platform } = body;
   const account = {
     id: idCounter++,
@@ -25,7 +25,7 @@ export async function POST_CREATE(req: NextRequest) {
 
 export async function POST_LOGIN(req: NextRequest) {
   // Login (stub)
-  const body = (await req.json() as any);
+  const body = (await req.json()) as any;
   const { username, platform } = body;
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
@@ -38,7 +38,7 @@ export async function POST_LOGIN(req: NextRequest) {
 
 export async function POST_VERIFY(req: NextRequest) {
   // Trigger verification (e.g. email)
-  const body = (await req.json() as any);
+  const body = (await req.json()) as any;
   const { email, id } = body;
   // TODO: Integrate with nodemailer and rovicviccy@gmail.com for email verification
   // Example:

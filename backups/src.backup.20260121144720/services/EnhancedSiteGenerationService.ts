@@ -57,7 +57,7 @@ export class EnhancedSiteGenerationService extends EventEmitter {
   }
 
   public async requestSiteGeneration(
-    _request: Omit<SiteGenerationRequest, "id" | "timestamp">
+    _request: Omit<SiteGenerationRequest, "id" | "timestamp">,
   ): Promise<string> {
     const id = `site_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     const fullRequest: SiteGenerationRequest = {
@@ -79,7 +79,9 @@ export class EnhancedSiteGenerationService extends EventEmitter {
       try {
         const result = await this.generateSite(_request);
         this.emit("siteGenerated", result);
-      } catch (e) { void e; } finally {
+      } catch (e) {
+        void e;
+      } finally {
         this.isProcessing = false;
         this.processQueue();
       }
@@ -89,11 +91,11 @@ export class EnhancedSiteGenerationService extends EventEmitter {
   }
 
   private async generateSite(
-    _request: SiteGenerationRequest
+    _request: SiteGenerationRequest,
   ): Promise<SiteGenerationResult> {
     const logs: string[] = [];
     logs.push(
-      `Starting site generation for ${_request.type} using template ${_request.template}`
+      `Starting site generation for ${_request.type} using template ${_request.template}`,
     );
     // 1. Use best-practice template
     // 2. Optionally use AI for content/design

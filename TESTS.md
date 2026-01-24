@@ -7,7 +7,6 @@ This document lists the automated tests in this repository, the features they ex
 ## Run tests
 
 - JavaScript / Next.js tests (Jest):
-
   - Install: `npm install`
   - Run: `npm run test` or `npm run ci:full` for full build+tests
 

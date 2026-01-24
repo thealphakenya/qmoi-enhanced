@@ -368,7 +368,10 @@ export class AppManagementService {
       app.errorMessage =
         error instanceof Error ? error.message : "Unknown error";
       this.eventEmitter.emit("appError", { appId, error: app.errorMessage });
-      (globalThis.console as any)?.error?.(`Failed to install app ${appId}:`, error);
+      (globalThis.console as any)?.error?.(
+        `Failed to install app ${appId}:`,
+        error,
+      );
       throw error;
     }
   }
@@ -467,7 +470,10 @@ export class AppManagementService {
       app.errorMessage =
         error instanceof Error ? error.message : "Unknown error";
       this.eventEmitter.emit("appError", { appId, error: app.errorMessage });
-      (globalThis.console as any)?.error?.(`Failed to update app ${appId}:`, error);
+      (globalThis.console as any)?.error?.(
+        `Failed to update app ${appId}:`,
+        error,
+      );
       throw error;
     }
   }
@@ -535,7 +541,10 @@ export class AppManagementService {
         level: "error",
         message: `Troubleshooting failed: ${error}`,
       });
-      (globalThis.console as any)?.error?.(`Troubleshooting failed for ${appId}:`, error);
+      (globalThis.console as any)?.error?.(
+        `Troubleshooting failed for ${appId}:`,
+        error,
+      );
       throw error;
     }
   }
@@ -645,7 +654,10 @@ export class AppManagementService {
                 this.eventEmitter.emit("updateAvailable", { app, update });
               }
             } catch (error) {
-              (globalThis.console as any)?.error?.(`Failed to check updates for ${app.id}:`, error);
+              (globalThis.console as any)?.error?.(
+                `Failed to check updates for ${app.id}:`,
+                error,
+              );
             }
           }
         }

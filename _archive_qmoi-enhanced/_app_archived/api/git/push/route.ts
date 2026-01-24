@@ -6,7 +6,7 @@ const execAsync = promisify(exec);
 
 export async function POST(req: NextRequest) {
   try {
-    const { branch = "main" } = (await req.json() as any);
+    const { branch = "main" } = (await req.json()) as any;
 
     // Push to the specified branch
     const { stdout: pushOutput } = await execAsync(`git push origin ${branch}`);

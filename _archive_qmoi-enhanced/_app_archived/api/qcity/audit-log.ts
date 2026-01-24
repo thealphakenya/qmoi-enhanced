@@ -5,7 +5,10 @@ import { requireRole } from "../auth/rbac";
 const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG_PATH = path.resolve(process.cwd(), "logs/qcity_audit.log");
 
-const handler = requireRole(["admin", "master"])(async (req: unknown, res: unknown) => {
+const handler = requireRole(["admin", "master"])(async (
+  req: unknown,
+  res: unknown,
+) => {
   const { method, query } = req;
   if (method !== "GET")
     return res.status(405).json({ error: "Method not allowed" });
@@ -28,9 +31,13 @@ const handler = requireRole(["admin", "master"])(async (req: unknown, res: unkno
   if (query.user)
     logs = logs.filter((l: unknown) => l.user && l.user.includes(query.user));
   if (query.action)
-    logs = logs.filter((l: unknown) => l.action && l.action.includes(query.action));
+    logs = logs.filter(
+      (l: unknown) => l.action && l.action.includes(query.action),
+    );
   if (query.status)
-    logs = logs.filter((l: unknown) => l.status && l.status.includes(query.status));
+    logs = logs.filter(
+      (l: unknown) => l.status && l.status.includes(query.status),
+    );
   if (query.date)
     logs = logs.filter(
       (l: unknown) => l.timestamp && l.timestamp.startsWith(query.date),

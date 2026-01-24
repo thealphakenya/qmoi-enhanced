@@ -4,10 +4,10 @@
  * Automatically diagnoses and fixes common Vercel deployment issues
  */
 
-const fs = require('fs');
-const path = require('path');
-const { exec } = require('child_process');
-const util = require('util');
+const fs = require("fs");
+const path = require("path");
+const { exec } = require("child_process");
+const util = require("util");
 
 const execPromise = util.promisify(exec);
 
@@ -26,15 +26,15 @@ console.log(`
 // FIX 1: Check vercel.json pattern
 // ============================================================================
 async function fixVercelJsonPattern() {
-  const vercelPath = path.join(PROJECT_ROOT, 'vercel.json');
+  const vercelPath = path.join(PROJECT_ROOT, "vercel.json");
 
   if (!fs.existsSync(vercelPath)) {
-    ERRORS_FOUND.push('vercel.json not found');
+    ERRORS_FOUND.push("vercel.json not found");
     return;
   }
 
   try {
-    const content = fs.readFileSync(vercelPath, 'utf8');
+    const content = fs.readFileSync(vercelPath, "utf8");
     const config = JSON.parse(content);
 
     let fixed = false;
@@ -42,10 +42,10 @@ async function fixVercelJsonPattern() {
     // Fix 1a: Check function pattern
     if (config.functions) {
       for (const pattern of Object.keys(config.functions)) {
-        if (pattern.includes('*.js')) {
-          console.log('🔧 Fixing: Function pattern uses *.js instead of *.ts');
+        if (pattern.includes("*.js")) {
+          console.log("🔧 Fixing: Function pattern uses *.js instead of *.ts");
           delete config.functions[pattern];
-          config.functions['app/api/**/route.ts'] = { maxDuration: 30 };
+          config.functions["app/api/**/route.ts"] = { maxDuration: 30 };
           fixed = true;
         }
       }
@@ -53,17 +53,19 @@ async function fixVercelJsonPattern() {
 
     // Fix 1b: Remove unnecessary routes
     if (config.routes && config.routes.length > 0) {
-      console.log('🔧 Fixing: Removing unnecessary custom routes (Next.js 15 handles routing)');
+      console.log(
+        "🔧 Fixing: Removing unnecessary custom routes (Next.js 15 handles routing)",
+      );
       config.routes = [];
       fixed = true;
     }
 
     if (fixed) {
-      fs.writeFileSync(vercelPath, JSON.stringify(config, null, 2) + '\n');
-      FIXES_APPLIED.push('✅ vercel.json: Fixed function pattern and routes');
-      console.log('   Status: FIXED\n');
+      fs.writeFileSync(vercelPath, JSON.stringify(config, null, 2) + "\n");
+      FIXES_APPLIED.push("✅ vercel.json: Fixed function pattern and routes");
+      console.log("   Status: FIXED\n");
     } else {
-      console.log('✅ vercel.json: No issues found\n');
+      console.log("✅ vercel.json: No issues found\n");
     }
   } catch (_error) {
     ERRORS_FOUND.push(`vercel.json parsing _error: ${error.message}`);
@@ -74,31 +76,33 @@ async function fixVercelJsonPattern() {
 // FIX 2: Check next.config.js
 // ============================================================================
 async function fixNextConfig() {
-  const nextConfigPath = path.join(PROJECT_ROOT, 'next.config.js');
+  const nextConfigPath = path.join(PROJECT_ROOT, "next.config.js");
 
   if (!fs.existsSync(nextConfigPath)) {
-    ERRORS_FOUND.push('next.config.js not found');
+    ERRORS_FOUND.push("next.config.js not found");
     return;
   }
 
   try {
-    const content = fs.readFileSync(nextConfigPath, 'utf8');
+    const content = fs.readFileSync(nextConfigPath, "utf8");
 
     // Check for ESLint ignore
-    if (!content.includes('eslintIgnoreDuringBuilds')) {
-      console.log('🔧 Fixing: Adding ESLint ignore for build');
+    if (!content.includes("eslintIgnoreDuringBuilds")) {
+      console.log("🔧 Fixing: Adding ESLint ignore for build");
       const updateContent = content.replace(
         /module\.exports\s*=\s*{/,
         `module.exports = {
   eslint: {
     ignoreDuringBuilds: true,
-  },`
+  },`,
       );
       fs.writeFileSync(nextConfigPath, updateContent);
-      FIXES_APPLIED.push('✅ next.config.js: Added ESLint ignore during builds');
-      console.log('   Status: FIXED\n');
+      FIXES_APPLIED.push(
+        "✅ next.config.js: Added ESLint ignore during builds",
+      );
+      console.log("   Status: FIXED\n");
     } else {
-      console.log('✅ next.config.js: ESLint ignore already configured\n');
+      console.log("✅ next.config.js: ESLint ignore already configured\n");
     }
   } catch (_error) {
     ERRORS_FOUND.push(`next.config.js _error: ${error.message}`);
@@ -109,15 +113,15 @@ async function fixNextConfig() {
 // FIX 3: Check TypeScript configuration
 // ============================================================================
 async function fixTypeScriptConfig() {
-  const tsconfigPath = path.join(PROJECT_ROOT, 'tsconfig.json');
+  const tsconfigPath = path.join(PROJECT_ROOT, "tsconfig.json");
 
   if (!fs.existsSync(tsconfigPath)) {
-    ERRORS_APPLIED.push('tsconfig.json not found');
+    ERRORS_APPLIED.push("tsconfig.json not found");
     return;
   }
 
   try {
-    const content = fs.readFileSync(tsconfigPath, 'utf8');
+    const content = fs.readFileSync(tsconfigPath, "utf8");
     const config = JSON.parse(content);
 
     let fixed = false;
@@ -129,27 +133,32 @@ async function fixTypeScriptConfig() {
     }
 
     // Ensure baseUrl is set
-    if (!config.compilerOptions.baseUrl || config.compilerOptions.baseUrl !== '.') {
-      config.compilerOptions.baseUrl = '.';
+    if (
+      !config.compilerOptions.baseUrl ||
+      config.compilerOptions.baseUrl !== "."
+    ) {
+      config.compilerOptions.baseUrl = ".";
       fixed = true;
     }
 
     // Ensure paths are configured
-    if (!config.compilerOptions.paths || !config.compilerOptions.paths['@/*']) {
+    if (!config.compilerOptions.paths || !config.compilerOptions.paths["@/*"]) {
       if (!config.compilerOptions.paths) {
         config.compilerOptions.paths = {};
       }
-      config.compilerOptions.paths['@/*'] = ['./*'];
+      config.compilerOptions.paths["@/*"] = ["./*"];
       fixed = true;
     }
 
     if (fixed) {
-      fs.writeFileSync(tsconfigPath, JSON.stringify(config, null, 2) + '\n');
-      FIXES_APPLIED.push('✅ tsconfig.json: Fixed path aliases and configuration');
-      console.log('🔧 Fixing: TypeScript configuration');
-      console.log('   Status: FIXED\n');
+      fs.writeFileSync(tsconfigPath, JSON.stringify(config, null, 2) + "\n");
+      FIXES_APPLIED.push(
+        "✅ tsconfig.json: Fixed path aliases and configuration",
+      );
+      console.log("🔧 Fixing: TypeScript configuration");
+      console.log("   Status: FIXED\n");
     } else {
-      console.log('✅ tsconfig.json: Path aliases properly configured\n');
+      console.log("✅ tsconfig.json: Path aliases properly configured\n");
     }
   } catch (_error) {
     ERRORS_FOUND.push(`tsconfig.json _error: ${error.message}`);
@@ -160,49 +169,53 @@ async function fixTypeScriptConfig() {
 // FIX 4: Check for missing .env configuration
 // ============================================================================
 async function checkEnvironmentSetup() {
-  const envPath = path.join(PROJECT_ROOT, '.env');
-  const envExamplePath = path.join(PROJECT_ROOT, '.env.example');
+  const envPath = path.join(PROJECT_ROOT, ".env");
+  const envExamplePath = path.join(PROJECT_ROOT, ".env.example");
 
-  console.log('📋 Environment Check:\n');
+  console.log("📋 Environment Check:\n");
 
   if (!fs.existsSync(envPath)) {
-    console.log('ℹ️  .env file not found (this is optional)');
+    console.log("ℹ️  .env file not found (this is optional)");
     if (fs.existsSync(envExamplePath)) {
-      console.log('   Tip: Copy .env.example to .env for development');
+      console.log("   Tip: Copy .env.example to .env for development");
     }
   } else {
-    console.log('✅ .env file exists');
+    console.log("✅ .env file exists");
   }
 
-  console.log('   Note: Set environment variables in Vercel project settings\n');
+  console.log(
+    "   Note: Set environment variables in Vercel project settings\n",
+  );
 }
 
 // ============================================================================
 // FIX 5: Validate build
 // ============================================================================
 async function validateBuild() {
-  console.log('🔨 Validating build:\n');
+  console.log("🔨 Validating build:\n");
 
   try {
-    console.log('   Running: npm run build');
-    const { stdout, stderr } = await execPromise('npm run build', {
+    console.log("   Running: npm run build");
+    const { stdout, stderr } = await execPromise("npm run build", {
       cwd: PROJECT_ROOT,
       timeout: 300000, // 5 minutes
     });
 
-    if (stdout.includes('successfully')) {
-      FIXES_APPLIED.push('✅ Build: Validation successful - 0 errors');
-      console.log('   ✅ Build successful\n');
+    if (stdout.includes("successfully")) {
+      FIXES_APPLIED.push("✅ Build: Validation successful - 0 errors");
+      console.log("   ✅ Build successful\n");
     } else {
-      console.log('   Build output:\n', stdout);
+      console.log("   Build output:\n", stdout);
     }
   } catch (_error) {
     // Build might fail but that's ok - we just check for major issues
-    if (error.stdout && error.stdout.includes('error')) {
-      ERRORS_FOUND.push(`Build errors detected: ${error.stderr || error.message}`);
-      console.log('   ⚠️  Build completed with warnings/errors');
+    if (error.stdout && error.stdout.includes("error")) {
+      ERRORS_FOUND.push(
+        `Build errors detected: ${error.stderr || error.message}`,
+      );
+      console.log("   ⚠️  Build completed with warnings/errors");
     } else {
-      console.log('   ⚠️  Build validation skipped\n');
+      console.log("   ⚠️  Build validation skipped\n");
     }
   }
 }
@@ -211,22 +224,22 @@ async function validateBuild() {
 // FIX 6: Check dependencies
 // ============================================================================
 async function validateDependencies() {
-  console.log('📦 Dependency Check:\n');
+  console.log("📦 Dependency Check:\n");
 
-  const packageJsonPath = path.join(PROJECT_ROOT, 'package.json');
+  const packageJsonPath = path.join(PROJECT_ROOT, "package.json");
 
   if (!fs.existsSync(packageJsonPath)) {
-    ERRORS_FOUND.push('package.json not found');
+    ERRORS_FOUND.push("package.json not found");
     return;
   }
 
   try {
-    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
 
     const requiredDeps = {
-      'next': 'dependencies',
-      'react': 'dependencies',
-      'react-dom': 'dependencies',
+      next: "dependencies",
+      react: "dependencies",
+      "react-dom": "dependencies",
     };
 
     let missing = [];
@@ -238,10 +251,10 @@ async function validateDependencies() {
     }
 
     if (missing.length > 0) {
-      ERRORS_FOUND.push(`Missing dependencies: ${missing.join(', ')}`);
-      console.log(`   ⚠️  Missing: ${missing.join(', ')}`);
+      ERRORS_FOUND.push(`Missing dependencies: ${missing.join(", ")}`);
+      console.log(`   ⚠️  Missing: ${missing.join(", ")}`);
     } else {
-      console.log('   ✅ All required dependencies found\n');
+      console.log("   ✅ All required dependencies found\n");
     }
   } catch (_error) {
     ERRORS_FOUND.push(`package.json _error: ${error.message}`);
@@ -252,24 +265,27 @@ async function validateDependencies() {
 // FIX 7: Check git status
 // ============================================================================
 async function checkGitStatus() {
-  console.log('🔄 Git Status Check:\n');
+  console.log("🔄 Git Status Check:\n");
 
   try {
-    const { stdout } = await execPromise('git status --porcelain', {
+    const { stdout } = await execPromise("git status --porcelain", {
       cwd: PROJECT_ROOT,
     });
 
     if (stdout.trim()) {
-      console.log('   ⚠️  Modified files (not committed):');
-      stdout.split('\n').slice(0, 5).forEach(line => {
-        if (line) console.log(`      ${line}`);
-      });
-      console.log('   Tip: Commit changes before pushing to Vercel\n');
+      console.log("   ⚠️  Modified files (not committed):");
+      stdout
+        .split("\n")
+        .slice(0, 5)
+        .forEach((line) => {
+          if (line) console.log(`      ${line}`);
+        });
+      console.log("   Tip: Commit changes before pushing to Vercel\n");
     } else {
-      console.log('   ✅ Working tree clean\n');
+      console.log("   ✅ Working tree clean\n");
     }
   } catch (_error) {
-    console.log('   ℹ️  Git check skipped\n');
+    console.log("   ℹ️  Git check skipped\n");
   }
 }
 
@@ -278,8 +294,8 @@ async function checkGitStatus() {
 // ============================================================================
 async function main() {
   try {
-    console.log('🔍 Scanning for issues...\n');
-    console.log('─'.repeat(50) + '\n');
+    console.log("🔍 Scanning for issues...\n");
+    console.log("─".repeat(50) + "\n");
 
     // Run all checks
     await fixVercelJsonPattern();
@@ -292,21 +308,21 @@ async function main() {
     // Try build validation (optional)
     // await validateBuild();
 
-    console.log('─'.repeat(50) + '\n');
+    console.log("─".repeat(50) + "\n");
 
     // Summary
-    console.log('📊 SUMMARY:\n');
+    console.log("📊 SUMMARY:\n");
 
     if (FIXES_APPLIED.length > 0) {
-      console.log('Fixes Applied:');
-      FIXES_APPLIED.forEach(fix => console.log(`  ${fix}`));
+      console.log("Fixes Applied:");
+      FIXES_APPLIED.forEach((fix) => console.log(`  ${fix}`));
     } else {
-      console.log('✅ No fixes needed - configuration is correct!');
+      console.log("✅ No fixes needed - configuration is correct!");
     }
 
     if (ERRORS_FOUND.length > 0) {
-      console.log('\nIssues Found:');
-      ERRORS_FOUND.forEach(_error => console.log(`  ❌ ${error}`));
+      console.log("\nIssues Found:");
+      ERRORS_FOUND.forEach((_error) => console.log(`  ❌ ${error}`));
     }
 
     console.log(`
@@ -323,7 +339,7 @@ async function main() {
 
     process.exit(0);
   } catch (_error) {
-    console.error('\n❌ Fatal _error:', error.message);
+    console.error("\n❌ Fatal _error:", error.message);
     process.exit(1);
   }
 }

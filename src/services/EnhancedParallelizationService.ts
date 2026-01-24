@@ -92,7 +92,7 @@ export class EnhancedParallelizationService extends EventEmitter {
   public async submitTask(
     taskType: ParallelTask["type"],
     priority: ParallelTask["priority"] = "medium",
-    data?: unknown
+    data?: unknown,
   ): Promise<string> {
     const task: ParallelTask = {
       id: `task_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -185,8 +185,8 @@ export class EnhancedParallelizationService extends EventEmitter {
       const timeout = setTimeout(() => {
         reject(
           new Error(
-            `Task ${task.id} timed out after ${this.config.taskTimeout}ms`
-          )
+            `Task ${task.id} timed out after ${this.config.taskTimeout}ms`,
+          ),
         );
       }, this.config.taskTimeout);
 
@@ -211,7 +211,7 @@ export class EnhancedParallelizationService extends EventEmitter {
       this.emit("taskProgress", { taskId: task.id, progress });
 
       await new Promise((resolve) =>
-        setTimeout(resolve, task.estimatedDuration / 10)
+        setTimeout(resolve, task.estimatedDuration / 10),
       );
     }
 
@@ -314,7 +314,7 @@ export class EnhancedParallelizationService extends EventEmitter {
     this.isRunning = false;
     if (this.healthCheckInterval) {
       clearInterval(
-        this.healthCheckInterval as unknown as number | NodeJS.Timeout
+        this.healthCheckInterval as unknown as number | NodeJS.Timeout,
       );
     }
     this.emit("serviceStopped");

@@ -43,14 +43,14 @@ export function VoiceSelector({
   const [quality, setQuality] = useState("enhanced");
   const [autoAdapt, setAutoAdapt] = useState(true);
   const [previewText, setPreviewText] = useState(
-    "Hello! I am QMOI, your AI assistant."
+    "Hello! I am QMOI, your AI assistant.",
   );
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
   // Get current avatar's default voice
   const currentAvatar = avatarsConfig.find(
-    (avatar) => avatar.id === currentAvatarId
+    (avatar) => avatar.id === currentAvatarId,
   );
   const defaultVoice = currentAvatar?.voiceProfile || "professional-male";
 
@@ -195,7 +195,7 @@ export function VoiceSelector({
                         <Badge
                           variant="secondary"
                           className={`text-xs ${getQualityColor(
-                            voice.quality
+                            voice.quality,
                           )}`}
                         >
                           {voice.quality}

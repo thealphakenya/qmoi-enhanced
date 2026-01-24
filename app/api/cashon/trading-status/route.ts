@@ -29,7 +29,7 @@ export async function GET(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? { _error: "Master access required" },
-        { status: _r?.status ?? 401 }
+        { status: _r?.status ?? 401 },
       );
     }
 
@@ -39,7 +39,7 @@ export async function GET(_request: NextRequest) {
     (console as any).error("Trading status API _error:", _error);
     return NextResponse.json(
       { _error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

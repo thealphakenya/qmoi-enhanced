@@ -17,7 +17,7 @@ export class AIRequestRouter {
 
   constructor(
     sessionManager: MultiUserSessionManager,
-    contextEngine: ContextEngine
+    contextEngine: ContextEngine,
   ) {
     this.sessionManager = sessionManager;
     this.contextEngine = contextEngine;
@@ -32,7 +32,7 @@ export class AIRequestRouter {
         // Link WhatsApp to user if not already linked
         this.sessionManager.linkWhatsAppToUser(
           _request.whatsappId,
-          _request.userId
+          _request.userId,
         );
         user = this.sessionManager.getUser(_request.userId);
       }
@@ -49,12 +49,14 @@ export class AIRequestRouter {
       this.contextEngine.saveUserContext({
         userId: user.id,
         preferences:
-          ((_request.context  as unknown)?.preferences as Record<string, unknown>) ||
-          {},
+          ((_request.context as unknown)?.preferences as Record<
+            string,
+            unknown
+          >) || {},
         personalityTraits:
-          ((_request.context  as unknown)?.personalityTraits as string[]) || [],
+          ((_request.context as unknown)?.personalityTraits as string[]) || [],
         moodHistory:
-          ((_request.context  as unknown)?.moodHistory as {
+          ((_request.context as unknown)?.moodHistory as {
             date: Date;
             mood: string;
           }[]) || [],
@@ -71,7 +73,7 @@ export class AIRequestRouter {
     }
     if (
       /wallet|fund|mpesa|airtel|pesapal|finance|transaction/i.test(
-        _request.message
+        _request.message,
       )
     ) {
       return this.handleFinancialRequest(user, _request);

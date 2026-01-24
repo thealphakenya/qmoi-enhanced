@@ -41,7 +41,7 @@ const DocumentManagerPanel: React.FC = () => {
 
   const searchDocs = async () => {
     const _res = await fetch(
-      `/api/document-backup/search?q=${encodeURIComponent(search)}`
+      `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
     setResults(data.results || []);

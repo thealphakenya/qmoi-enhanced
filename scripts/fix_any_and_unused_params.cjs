@@ -39,7 +39,7 @@ const params = [
 const paramsPattern = params.join("|");
 const paramsRe = new RegExp(
   "([\\(\\[,\\s])(" + paramsPattern + ")(?=\\s*[:,\\)\\]\\=])",
-  "g"
+  "g",
 );
 
 function processFile(file) {

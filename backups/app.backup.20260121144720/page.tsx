@@ -15,7 +15,12 @@ interface User {
 }
 
 function MainPage() {
-  const { isMaster, setRole, setCurrentUser: setMasterUser, updateQMOIMemory } = useMaster();
+  const {
+    isMaster,
+    setRole,
+    setCurrentUser: setMasterUser,
+    updateQMOIMemory,
+  } = useMaster();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState<User>({
     id: "1",
@@ -62,10 +67,13 @@ function MainPage() {
   const handleLogin = (userData: unknown) => {
     const u = (userData as Partial<User>) || {};
     const roleString = String(u.role || "User");
-    const roleMap: Record<string, "master" | "admin" | "user" | "sponsored" | "guest"> = {
+    const roleMap: Record<
+      string,
+      "master" | "admin" | "user" | "sponsored" | "guest"
+    > = {
       "Master Administrator": "master",
       Administrator: "admin",
-      "Sister": "admin",
+      Sister: "admin",
       User: "user",
       "Sponsored User": "sponsored",
       Master: "master",
@@ -73,7 +81,7 @@ function MainPage() {
       Sponsored: "sponsored",
     };
     const mappedRole = roleMap[roleString] || "user";
-    
+
     const user: User = {
       id: String(u.id || "1"),
       name: String(u.name || "Unknown"),
@@ -81,10 +89,10 @@ function MainPage() {
       role: roleString,
       avatar: u.avatar,
     };
-    
+
     setCurrentUser(user);
     setIsAuthenticated(true);
-    
+
     // Update QMOI awareness with user context - cast to UserProfile type
     setMasterUser({
       id: user.id,
@@ -94,7 +102,7 @@ function MainPage() {
       avatar: user.avatar,
     });
     setRole(mappedRole);
-    
+
     // Update QMOI memory with user interaction
     updateQMOIMemory({
       conversations: (Math.random() * 50) | 0,
@@ -105,7 +113,7 @@ function MainPage() {
       },
       contextHistory: [`User ${user.name} (${user.role}) logged in`],
     });
-    
+
     localStorage.setItem("qmoi_authenticated", "true");
     localStorage.setItem("qmoi_user", JSON.stringify(user));
   };
@@ -136,7 +144,9 @@ function MainPage() {
         email: email,
         role: data.user.role || "User",
       });
-    } catch (e) { void e; } finally {
+    } catch (e) {
+      void e;
+    } finally {
       setIsLoading(false);
     }
   };
@@ -248,7 +258,9 @@ function MainPage() {
                   <p>👩‍💼 Sister: sister / adminpass</p>
                   <p>📋 Admin: admin / adminpass</p>
                   <p>👤 User: user / adminpass</p>
-                  <p className="text-blue-600 font-semibold mt-2">Master is System Admin</p>
+                  <p className="text-blue-600 font-semibold mt-2">
+                    Master is System Admin
+                  </p>
                 </div>
               </form>
             )}

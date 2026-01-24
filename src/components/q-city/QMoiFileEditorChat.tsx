@@ -23,7 +23,7 @@ export default function QMoiFileEditorChat({
   isMaster?: boolean;
 }) {
   const [messages, setMessages] = useState<{ user: string; text: ReactNode }[]>(
-    []
+    [],
   );
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);

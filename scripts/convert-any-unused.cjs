@@ -45,13 +45,13 @@ function tryProcessFile(filePath) {
   // 2) Prefix declared vars named unused* with an underscore (const/let/var)
   content = content.replace(
     /\b([cC]onst|let|var)\s+(unused[A-Za-z0-9_]*)/g,
-    (m, decl, name) => `${decl} _${name}`
+    (m, decl, name) => `${decl} _${name}`,
   );
 
   // 3) Prefix function parameters named unused* (basic pattern: (, or start)
   content = content.replace(
     /([,(\s])\b(unused[A-Za-z0-9_]*)\b/g,
-    (m, before, name) => `${before}_${name}`
+    (m, before, name) => `${before}_${name}`,
   );
 
   if (content !== original) {
@@ -66,9 +66,9 @@ walk(ROOT);
 console.log(
   `Scanned ${filesScanned} files. ${filesChanged} files ${
     APPLY ? "modified" : "would be modified"
-  }.`
+  }.`,
 );
 if (!APPLY)
   console.log(
-    "Run with --apply to write changes. Review diffs before committing."
+    "Run with --apply to write changes. Review diffs before committing.",
   );

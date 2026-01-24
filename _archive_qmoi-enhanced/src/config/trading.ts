@@ -172,7 +172,10 @@ export class TradingManager {
           return;
         }
       } catch (error) {
-        (globalThis.console as any)?.error?.("Recovery strategy failed:", error);
+        (globalThis.console as any)?.error?.(
+          "Recovery strategy failed:",
+          error,
+        );
       }
     }
   }
@@ -260,7 +263,10 @@ export class TradingManager {
       }
       return false;
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to connect to Bitget:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to connect to Bitget:",
+        error,
+      );
       return false;
     }
   }
@@ -291,7 +297,10 @@ export class TradingManager {
         }),
       });
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to update Bitget whitelist:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to update Bitget whitelist:",
+        error,
+      );
     }
   }
 
@@ -357,7 +366,10 @@ export class TradingManager {
         this.updateWalletBalances(data);
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to update wallet balance:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to update wallet balance:",
+        error,
+      );
     }
   }
 

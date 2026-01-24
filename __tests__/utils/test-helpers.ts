@@ -14,7 +14,7 @@ export function createAuthenticatedRequest(
   url: string,
   method: string = "GET",
   userId: string = "test-user-id",
-  body?: Record<string, unknown>
+  body?: Record<string, unknown>,
 ): NextRequest {
   const token = authService.generateToken({
     userId,
@@ -48,7 +48,7 @@ export async function createTestUser(
     email: string;
     username: string;
     name: string;
-  }> = {}
+  }> = {},
 ) {
   const timestamp = Date.now();
   const user = await db.userService.create({
@@ -65,7 +65,7 @@ export async function createTestUser(
  */
 export async function createTestWallet(
   userId: string,
-  currency: string = "KES"
+  currency: string = "KES",
 ) {
   const wallet = await db.walletService.create(userId, currency);
   return wallet;
@@ -78,7 +78,7 @@ export async function createTestTransaction(
   walletId: string,
   amount: number = 100,
   type: string = "deposit",
-  status: string = "pending"
+  status: string = "pending",
 ) {
   const transaction = await db.transactionService.create({
     walletId,
@@ -97,7 +97,7 @@ export function mockRequest(
   url: string,
   method: string = "GET",
   headers: Record<string, string> = {},
-  body?: unknown
+  body?: unknown,
 ): NextRequest {
   const requestInit: RequestInit = {
     method,
@@ -130,7 +130,7 @@ export async function assertJsonResponse(response: Response) {
 export async function assertErrorResponse(
   response: Response,
   expectedStatus: number,
-  expectedErrorMessage?: string
+  expectedErrorMessage?: string,
 ) {
   expect(response.status).toBe(expectedStatus);
   const data = await response.json();
@@ -154,7 +154,7 @@ export async function cleanupTestData() {
  * Mock payment provider response
  */
 export function mockPaymentProviderResponse(
-  status: "success" | "pending" | "failed"
+  status: "success" | "pending" | "failed",
 ) {
   return {
     success: status === "success",

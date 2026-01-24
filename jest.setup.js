@@ -33,7 +33,7 @@ try {
                     Object.entries(init || {}).map(([k, v]) => [
                       k.toLowerCase(),
                       String(v),
-                    ])
+                    ]),
                   );
                 }
                 get(k) {

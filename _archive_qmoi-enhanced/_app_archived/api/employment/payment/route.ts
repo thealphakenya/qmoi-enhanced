@@ -59,7 +59,10 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
     console.log(`Safe backup for ${platform}:`, masked);
     // Intentionally avoid sending raw secrets via email or API.
   } catch (error) {
-    (globalThis.console as any)?.error?.("Failed to create safe backup for credentials:", error);
+    (globalThis.console as any)?.error?.(
+      "Failed to create safe backup for credentials:",
+      error,
+    );
   }
 }
 

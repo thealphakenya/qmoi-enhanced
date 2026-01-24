@@ -302,7 +302,7 @@ export class VPNService {
 
   private async deployServers(
     serverIds: string[],
-    _config: unknown
+    _config: unknown,
   ): Promise<void> {
     for (const serverId of serverIds) {
       const server = this.servers.get(serverId);
@@ -446,7 +446,7 @@ export class VPNService {
 
   private generateRandomIP(): string {
     return `10.${Math.floor(Math.random() * 255)}.${Math.floor(
-      Math.random() * 255
+      Math.random() * 255,
     )}.${Math.floor(Math.random() * 255)}`;
   }
 
@@ -480,7 +480,7 @@ export class VPNService {
       }
       this.eventEmitter.emit(
         "serversUpdated",
-        Array.from(this.servers.values())
+        Array.from(this.servers.values()),
       );
     }, 30000); // Every 30 seconds
 
@@ -565,7 +565,7 @@ export class VPNService {
 
   public async getRecommendedServer(): Promise<VPNServer | null> {
     const onlineServers = Array.from(this.servers.values()).filter(
-      (s) => s.isOnline
+      (s) => s.isOnline,
     );
     if (onlineServers.length === 0) return null;
 
@@ -583,43 +583,43 @@ export class VPNService {
 
   // Event listeners
   public onNetworkCreationStarted(
-    callback: (config: VPNCreateConfig) => void
+    callback: (config: VPNCreateConfig) => void,
   ): void {
     this.eventEmitter.on("networkCreationStarted", callback);
   }
 
   public onNetworkCreated(
-    callback: (data: { networkId: string; config: VPNCreateConfig }) => void
+    callback: (data: { networkId: string; config: VPNCreateConfig }) => void,
   ): void {
     this.eventEmitter.on("networkCreated", callback);
   }
 
   public onNetworkCreationFailed(
-    callback: (data: { _error: string }) => void
+    callback: (data: { _error: string }) => void,
   ): void {
     this.eventEmitter.on("networkCreationFailed", callback);
   }
 
   public onConnectionStarted(
-    callback: (connection: VPNConnection) => void
+    callback: (connection: VPNConnection) => void,
   ): void {
     this.eventEmitter.on("connectionStarted", callback);
   }
 
   public onConnectionEstablished(
-    callback: (connection: VPNConnection) => void
+    callback: (connection: VPNConnection) => void,
   ): void {
     this.eventEmitter.on("connectionEstablished", callback);
   }
 
   public onConnectionFailed(
-    callback: (data: { serverId: string; _error: string }) => void
+    callback: (data: { serverId: string; _error: string }) => void,
   ): void {
     this.eventEmitter.on("connectionFailed", callback);
   }
 
   public onDisconnectionStarted(
-    callback: (connection: VPNConnection) => void
+    callback: (connection: VPNConnection) => void,
   ): void {
     this.eventEmitter.on("disconnectionStarted", callback);
   }
@@ -629,7 +629,7 @@ export class VPNService {
   }
 
   public onConnectionStats(
-    callback: (connection: VPNConnection) => void
+    callback: (connection: VPNConnection) => void,
   ): void {
     this.eventEmitter.on("connectionStats", callback);
   }
