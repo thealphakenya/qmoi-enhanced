@@ -20,11 +20,15 @@ import {
 } from "lucide-react";
 import { VoiceSelector } from "./VoiceSelector";
 import { AvatarSelector } from "./AvatarSelector";
-import { useQMOIState } from "./QMOIStateProvider";
+import { SisterProjects } from "./SisterProjects";
+import { QMoiAutoDevPanel } from "./QMoiAutoDevPanel";
+import { useContext } from "react";
+import { MasterContext } from "../MasterContext";
 
 export function QMOIDashboard() {
   const { state, updateAvatar, updateVoice, updateMood, updateEnergy } =
     useQMOIState();
+  const { user, hasPermission } = useContext(MasterContext);
   const [activeTab, setActiveTab] = useState("overview");
 
   const getMoodColor = (mood: string) => {
@@ -100,11 +104,27 @@ export function QMOIDashboard() {
         onValueChange={setActiveTab}
         className="space-y-4"
       >
-        <TabsList className="grid w-full grid-cols-4">
+        <TabsList
+          className={`grid w-full ${
+            user?.role === "master"
+              ? hasPermission("sister")
+                ? "grid-cols-6"
+                : "grid-cols-5"
+              : hasPermission("sister")
+                ? "grid-cols-5"
+                : "grid-cols-4"
+          }`}
+        >
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="avatar">Avatar</TabsTrigger>
           <TabsTrigger value="voice">Voice</TabsTrigger>
           <TabsTrigger value="system">System</TabsTrigger>
+          {hasPermission("sister") && (
+            <TabsTrigger value="projects">Projects</TabsTrigger>
+          )}
+          {user?.role === "master" && (
+            <TabsTrigger value="auto-dev">Auto-Dev</TabsTrigger>
+          )}
         </TabsList>
 
         <TabsContent value="overview" className="space-y-4">
@@ -124,7 +144,8 @@ export function QMOIDashboard() {
                     : state.currentAvatar
                         .split("-")
                         .map(
-                          (word) => word.charAt(0).toUpperCase() + word.slice(1)
+                          (word) =>
+                            word.charAt(0).toUpperCase() + word.slice(1),
                         )
                         .join(" ")}
                 </div>
@@ -171,7 +192,7 @@ export function QMOIDashboard() {
                 </div>
                 <p
                   className={`text-xs text-muted-foreground ${getEnergyColor(
-                    state.energy
+                    state.energy,
                   )}`}
                 >
                   Energy: {state.energy}%
@@ -413,6 +434,18 @@ export function QMOIDashboard() {
             </Card>
           )}
         </TabsContent>
+
+        {hasPermission("sister") && (
+          <TabsContent value="projects" className="space-y-4">
+            <SisterProjects />
+          </TabsContent>
+        )}
+
+        {user?.role === "master" && (
+          <TabsContent value="auto-dev" className="space-y-4">
+            <QMoiAutoDevPanel />
+          </TabsContent>
+        )}
       </Tabs>
     </div>
   );

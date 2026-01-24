@@ -37,7 +37,7 @@ function MainPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [username, setUsername] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [biometricMethod, setBiometricMethod] = useState<
     "fingerprint" | "facial" | "voice" | null
   >(null);
@@ -46,6 +46,32 @@ function MainPage() {
   useEffect(() => {
     // In a real implementation, this would check for valid session/token
     const checkAuth = () => {
+      // Development bypass: auto-authenticate in development mode
+      if (process.env.NODE_ENV === "development") {
+        const devUser = {
+          id: "dev-1",
+          name: "Development User",
+          email: "dev@qmoi.com",
+          role: "Master Administrator",
+          avatar: undefined,
+        };
+        setCurrentUser(devUser);
+        setIsAuthenticated(true);
+        setMasterUser(devUser);
+        setRole("master");
+        updateQMOIMemory({
+          conversations: 0,
+          preferences: {
+            language: "en",
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          },
+          contextHistory: ["Development mode: Auto-authenticated"],
+        });
+        localStorage.setItem("qmoi_authenticated", "true");
+        localStorage.setItem("qmoi_user", JSON.stringify(devUser));
+        return;
+      }
+
       const storedAuth = localStorage.getItem("qmoi_authenticated");
       if (storedAuth === "true") {
         setIsAuthenticated(true);

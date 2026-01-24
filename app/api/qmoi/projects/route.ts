@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from "next/server";
-import { QMOIProjectService } from "@/lib/project-service";
+import { QMOIProjectsService } from "@/lib/projects-service";
 
 export async function GET(req: Request) {
   try {
@@ -8,17 +8,12 @@ export async function GET(req: Request) {
     const action = searchParams.get("action");
     const userId = searchParams.get("userId");
     const projectId = searchParams.get("projectId");
-    const type = searchParams.get("type");
-    const query = searchParams.get("query");
-
-    if (!userId) {
-      return NextResponse.json({ error: "userId required" }, { status: 400 });
-    }
-
-    const projectService = QMOIProjectService.getInstance();
+    const category = searchParams.get("category");
 
     if (action === "list") {
-      const projects = projectService.getUserProjects(userId);
+      const projects = await QMOIProjectsService.getProjects(
+        userId || undefined,
+      );
       return NextResponse.json({
         success: true,
         projects,
@@ -27,7 +22,7 @@ export async function GET(req: Request) {
     }
 
     if (action === "get" && projectId) {
-      const project = projectService.getProject(projectId);
+      const project = await QMOIProjectsService.getProjectById(projectId);
       if (!project) {
         return NextResponse.json(
           { error: "Project not found" },
@@ -37,32 +32,27 @@ export async function GET(req: Request) {
       return NextResponse.json({ success: true, project });
     }
 
-    if (action === "stats") {
-      const stats = projectService.getStats(userId);
-      return NextResponse.json({ success: true, stats });
-    }
-
-    if (action === "search" && query) {
-      const results = projectService.searchProjects(userId, query);
+    if (action === "capabilities") {
+      const capabilities = await QMOIProjectsService.getCapabilities(
+        category || undefined,
+      );
       return NextResponse.json({
         success: true,
-        results,
-        count: results.length,
+        capabilities,
+        count: capabilities.length,
       });
     }
 
-    if (action === "filter-type" && type) {
-      const results = projectService.filterByType(userId, type as any);
-      return NextResponse.json({
-        success: true,
-        results,
-        count: results.length,
-      });
+    if (action === "analytics") {
+      const analytics = await QMOIProjectsService.getProjectAnalytics(
+        userId || undefined,
+      );
+      return NextResponse.json({ success: true, analytics });
     }
 
     return NextResponse.json({ error: "Invalid action" }, { status: 400 });
   } catch (error) {
-    console.error("Project API GET error:", error);
+    console.error("Projects API GET error:", error);
     return NextResponse.json(
       { success: false, error: String(error) },
       { status: 500 },
@@ -79,12 +69,11 @@ export async function POST(req: Request) {
       projectId,
       name,
       description,
-      type,
-      dueDate,
-      budget,
-      isPublic,
-      task,
-      asset,
+      priority,
+      tags,
+      deadline,
+      taskData,
+      capabilityData,
       updates,
     } = body;
 
@@ -92,27 +81,27 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "userId required" }, { status: 400 });
     }
 
-    const projectService = QMOIProjectService.getInstance();
-
     if (action === "create") {
-      const project = projectService.createProject({
+      const project = await QMOIProjectsService.createProject({
         name,
         description,
-        type,
-        owner: userId,
-        dueDate,
-        budget,
-        isPublic,
+        ownerId: userId,
+        priority,
+        tags,
+        deadline,
       });
       return NextResponse.json({
         success: true,
-        message: "Project created successfully",
         project,
+        message: "Project created successfully",
       });
     }
 
-    if (action === "update" && projectId) {
-      const project = projectService.updateProject(projectId, updates);
+    if (action === "update" && projectId && updates) {
+      const project = await QMOIProjectsService.updateProject(
+        projectId,
+        updates,
+      );
       if (!project) {
         return NextResponse.json(
           { error: "Project not found" },
@@ -121,90 +110,71 @@ export async function POST(req: Request) {
       }
       return NextResponse.json({
         success: true,
-        message: "Project updated successfully",
         project,
+        message: "Project updated successfully",
       });
     }
 
     if (action === "delete" && projectId) {
-      const deleted = projectService.deleteProject(projectId);
-      if (!deleted) {
-        return NextResponse.json(
-          { error: "Project not found" },
-          { status: 404 },
-        );
-      }
-      return NextResponse.json({
-        success: true,
-        message: "Project deleted successfully",
-      });
+      const result = await QMOIProjectsService.deleteProject(projectId);
+      return NextResponse.json(result);
     }
 
-    if (action === "add-task" && projectId && task) {
-      const newTask = projectService.addTask(projectId, task);
-      if (!newTask) {
+    if (action === "add-task" && projectId && taskData) {
+      const task = await QMOIProjectsService.addTask(projectId, taskData);
+      if (!task) {
         return NextResponse.json(
-          { error: "Project not found" },
-          { status: 404 },
+          { error: "Failed to add task" },
+          { status: 400 },
         );
       }
       return NextResponse.json({
         success: true,
+        task,
         message: "Task added successfully",
-        task: newTask,
       });
     }
 
-    if (action === "update-task" && projectId && task) {
-      const updated = projectService.updateTask(projectId, task.id, task);
-      if (!updated) {
+    if (action === "update-task" && projectId && taskData?.id) {
+      const task = await QMOIProjectsService.updateTask(
+        projectId,
+        taskData.id,
+        taskData,
+      );
+      if (!task) {
         return NextResponse.json({ error: "Task not found" }, { status: 404 });
       }
       return NextResponse.json({
         success: true,
+        task,
         message: "Task updated successfully",
-        task: updated,
       });
     }
 
-    if (action === "delete-task" && projectId && task) {
-      const deleted = projectService.deleteTask(projectId, task.id);
-      if (!deleted) {
-        return NextResponse.json({ error: "Task not found" }, { status: 404 });
-      }
+    if (action === "register-capability" && capabilityData) {
+      const capability =
+        await QMOIProjectsService.registerCapability(capabilityData);
       return NextResponse.json({
         success: true,
-        message: "Task deleted successfully",
+        capability,
+        message: "Capability registered successfully",
       });
     }
 
-    if (action === "add-asset" && projectId && asset) {
-      const newAsset = projectService.addAsset(projectId, asset);
-      if (!newAsset) {
-        return NextResponse.json(
-          { error: "Project not found" },
-          { status: 404 },
-        );
-      }
+    if (action === "update-capability-usage" && capabilityData?.id) {
+      await QMOIProjectsService.updateCapabilityUsage(
+        capabilityData.id,
+        capabilityData.metrics || {},
+      );
       return NextResponse.json({
         success: true,
-        message: "Asset added successfully",
-        asset: newAsset,
-      });
-    }
-
-    if (action === "update-progress" && projectId) {
-      const progress = projectService.updateProgress(projectId);
-      return NextResponse.json({
-        success: true,
-        message: "Progress updated",
-        progress,
+        message: "Capability usage updated",
       });
     }
 
     return NextResponse.json({ error: "Invalid action" }, { status: 400 });
   } catch (error) {
-    console.error("Project API POST error:", error);
+    console.error("Projects API POST error:", error);
     return NextResponse.json(
       { success: false, error: String(error) },
       { status: 500 },

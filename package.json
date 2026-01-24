@@ -50,8 +50,10 @@
     "verify-vercel": "npm run update-links && npm run check-deployment"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.71.2",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@huggingface/inference": "^4.13.10",
     "@mui/icons-material": "^7.3.6",
     "@mui/material": "^7.3.6",
     "@prisma/client": "^6.19.1",
@@ -94,6 +96,7 @@
     "next": "^15.5.8",
     "next-themes": "^0.2.1",
     "nodemailer": "^7.0.11",
+    "openai": "^6.16.0",
     "otplib": "^12.0.1",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.3.1",

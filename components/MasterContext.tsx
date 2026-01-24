@@ -6,7 +6,13 @@ import React, {
   useCallback,
 } from "react";
 
-export type UserRole = "master" | "admin" | "user" | "sponsored" | "guest";
+export type UserRole =
+  | "master"
+  | "admin"
+  | "sister"
+  | "user"
+  | "sponsored"
+  | "guest";
 
 interface UserProfile {
   id: string;
@@ -70,14 +76,32 @@ export function MasterProvider({ children }: { children: ReactNode }) {
   );
 
   function hasPermission(
-    perm: "deploy" | "viewDashboard" | "admin" | "user" | "sponsored",
+    perm:
+      | "deploy"
+      | "viewDashboard"
+      | "admin"
+      | "user"
+      | "sponsored"
+      | "sister",
   ) {
     if (currentRole === "master") return true;
-    if (perm === "admin" && currentRole === "admin") return true;
-    if (perm === "user" && (currentRole === "user" || currentRole === "admin"))
+    if (currentRole === "sister" && (perm === "admin" || perm === "sister"))
       return true;
-    if (perm === "viewDashboard" && currentRole === "admin") return true;
+    if (perm === "admin" && currentRole === "admin") return true;
+    if (
+      perm === "user" &&
+      (currentRole === "user" ||
+        currentRole === "admin" ||
+        currentRole === "sister")
+    )
+      return true;
+    if (
+      perm === "viewDashboard" &&
+      (currentRole === "admin" || currentRole === "sister")
+    )
+      return true;
     if (perm === "sponsored" && currentRole === "sponsored") return true;
+    if (perm === "sister" && currentRole === "sister") return true;
     return false;
   }
 

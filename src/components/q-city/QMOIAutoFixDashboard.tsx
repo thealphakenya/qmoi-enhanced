@@ -36,13 +36,22 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
   const [errors, setErrors] = useState<ErrorItem[]>([]);
   const [fixes, setFixes] = useState<FixItem[]>([]);
   const [githubStatus, setGitHubStatus] = useState<GitHubActionStatus | null>(
-    null
+    null,
   );
   const [isRunning, setIsRunning] = useState(false);
   const [lastUpdate, setLastUpdate] = useState<string>("");
 
   const fetchErrorLog = async () => {
     try {
+      const response = await fetch("/api/health/data?type=errors");
+      if (response.ok) {
+        const realErrors = await response.json();
+        setErrors(realErrors);
+      } else {
+        throw new Error(`HTTP ${response.status}`);
+      }
+    } catch (_error) {
+      // Fallback to mock data if API not available
       const mockErrors: ErrorItem[] = [
         {
           id: 1,
@@ -70,13 +79,38 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
         },
       ];
       setErrors(mockErrors);
-    } catch (_error) {
-      (globalThis.console  as unknown)?.error?.("Failed to fetch error log:", _error);
+      (globalThis.console as unknown)?.error?.(
+        "Failed to fetch error log:",
+        _error,
+      );
+    }
+  };
+          type: "deploy",
+          message: "Vercel deployment failed",
+          severity: "high",
+          timestamp: new Date().toISOString(),
+          status: "pending",
+        },
+      ];
+      setErrors(mockErrors);
+      (globalThis.console as unknown)?.error?.(
+        "Failed to fetch error log:",
+        _error,
+      );
     }
   };
 
   const fetchFixHistory = async () => {
     try {
+      const response = await fetch("/api/health/data?type=fixes");
+      if (response.ok) {
+        const realFixes = await response.json();
+        setFixes(realFixes);
+      } else {
+        throw new Error(`HTTP ${response.status}`);
+      }
+    } catch (_error) {
+      // Fallback to mock data
       const mockFixes: FixItem[] = [
         {
           errorId: 1,
@@ -104,13 +138,24 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
         },
       ];
       setFixes(mockFixes);
-    } catch (_error) {
-      (globalThis.console  as unknown)?.error?.("Failed to fetch fix history:", _error);
+      (globalThis.console as unknown)?.error?.(
+        "Failed to fetch fix history:",
+        _error,
+      );
     }
   };
 
   const fetchGitHubStatus = async () => {
     try {
+      const response = await fetch("/api/health/data?type=github");
+      if (response.ok) {
+        const realStatus = await response.json();
+        setGitHubStatus(realStatus);
+      } else {
+        throw new Error(`HTTP ${response.status}`);
+      }
+    } catch (_error) {
+      // Fallback to mock data
       const mockStatus: GitHubActionStatus = {
         preCheck: "success",
         autoFix: "success",
@@ -120,8 +165,10 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
         lastRun: new Date().toISOString(),
       };
       setGitHubStatus(mockStatus);
-    } catch (_error) {
-      (globalThis.console  as unknown)?.error?.("Failed to fetch GitHub status:", _error);
+      (globalThis.console as unknown)?.error?.(
+        "Failed to fetch GitHub status:",
+        _error,
+      );
     }
   };
 
@@ -137,13 +184,35 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
   const triggerAutoFix = async () => {
     setIsRunning(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 3000));
-      fetchErrorLog();
-      fetchFixHistory();
-      fetchGitHubStatus();
-      setLastUpdate(new Date().toISOString());
+      const response = await fetch("/api/health/data", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ action: "trigger-autofix" }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        // Wait for the auto-fix to complete
+        setTimeout(() => {
+          fetchErrorLog();
+          fetchFixHistory();
+          fetchGitHubStatus();
+          setLastUpdate(new Date().toISOString());
+        }, result.estimatedDuration || 3000);
+      } else {
+        throw new Error(`HTTP ${response.status}`);
+      }
     } catch (_error) {
-      (globalThis.console  as unknown)?.error?.("Auto-fix failed:", _error);
+      (globalThis.console as unknown)?.error?.("Auto-fix failed:", _error);
+      // Fallback to old behavior
+      setTimeout(() => {
+        fetchErrorLog();
+        fetchFixHistory();
+        fetchGitHubStatus();
+        setLastUpdate(new Date().toISOString());
+      }, 3000);
     } finally {
       setIsRunning(false);
     }
@@ -296,7 +365,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
                 <div className="flex items-center gap-2">
                   <Badge
                     className={getStatusColor(
-                      fix.success ? "success" : "failed"
+                      fix.success ? "success" : "failed",
                     )}
                   >
                     {fix.success ? "SUCCESS" : "FAILED"}

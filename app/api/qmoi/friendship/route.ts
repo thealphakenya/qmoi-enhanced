@@ -13,38 +13,56 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: "userId required" }, { status: 400 });
     }
 
-    const friendshipService = QMOIFriendshipService.getInstance();
-
-    if (action === "list") {
-      const friends = friendshipService.getFriends(userId);
+    if (action === "get") {
+      const result = await QMOIFriendshipService.getFriendships(userId);
       return NextResponse.json({
         success: true,
-        friends,
-        count: friends.length,
+        friendships: result.friendships,
+        pendingRequests: result.pendingRequests,
+        userProfile: result.userProfile,
+      });
+    }
+
+    if (action === "list") {
+      const result = await QMOIFriendshipService.getFriendships(userId);
+      return NextResponse.json({
+        success: true,
+        friends: result.friendships,
+        count: result.friendships.length,
       });
     }
 
     if (action === "pending") {
-      const pending = friendshipService.getPendingRequests(userId);
+      const result = await QMOIFriendshipService.getFriendships(userId);
       return NextResponse.json({
         success: true,
-        pending,
-        count: pending.length,
+        pending: result.pendingRequests,
+        count: result.pendingRequests.length,
       });
     }
 
     if (action === "stats") {
-      const stats = friendshipService.getStats(userId);
+      const result = await QMOIFriendshipService.getFriendships(userId);
+      const stats = {
+        totalFriends: result.friendships.length,
+        pendingRequests: result.pendingRequests.length,
+        socialScore: result.userProfile?.socialScore || 0,
+        friendshipCount: result.userProfile?.friendshipCount || 0,
+      };
       return NextResponse.json({ success: true, stats });
     }
 
     if (action === "activity") {
-      const activity = friendshipService.getActivity(userId, 20);
-      return NextResponse.json({ success: true, activity });
+      const voiceHistory =
+        (await QMOIFriendshipService.getVoiceHistory?.(userId, 20)) || [];
+      return NextResponse.json({ success: true, activity: voiceHistory });
     }
 
     if (action === "get-friend" && friendId) {
-      const friend = friendshipService.getFriend(userId, friendId);
+      const result = await QMOIFriendshipService.getFriendships(userId);
+      const friend = result.friendships.find(
+        (f) => f.friendId === friendId || f.userId === friendId,
+      );
       if (!friend) {
         return NextResponse.json(
           { error: "Friend not found" },
@@ -67,83 +85,60 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { action, userId, friendId, friendProfile, customMessage, updates } =
-      body;
+    const {
+      action,
+      userId,
+      friendId,
+      friendProfile,
+      customMessage,
+      updates,
+      friendshipId,
+    } = body;
 
     if (!userId) {
       return NextResponse.json({ error: "userId required" }, { status: 400 });
     }
 
-    const friendshipService = QMOIFriendshipService.getInstance();
-
-    if (action === "send-request" && friendProfile) {
-      const friend = friendshipService.sendFriendRequest(
-        userId,
-        friendProfile,
-        customMessage,
-      );
-      return NextResponse.json({
-        success: true,
-        message: "Friend request sent successfully",
-        friend,
-      });
-    }
-
-    if (action === "accept" && friendId) {
-      const friend = friendshipService.acceptFriendRequest(userId, friendId);
-      if (!friend) {
-        return NextResponse.json(
-          { error: "Friend request not found" },
-          { status: 404 },
-        );
-      }
-      return NextResponse.json({
-        success: true,
-        message: "Friend request accepted",
-        friend,
-      });
-    }
-
-    if (action === "remove" && friendId) {
-      const removed = friendshipService.removeFriend(userId, friendId);
-      if (!removed) {
-        return NextResponse.json(
-          { error: "Friend not found" },
-          { status: 404 },
-        );
-      }
-      return NextResponse.json({
-        success: true,
-        message: "Friend removed successfully",
-      });
-    }
-
-    if (action === "block" && friendProfile) {
-      const blocked = friendshipService.blockUser(userId, friendProfile);
-      return NextResponse.json({
-        success: true,
-        message: "User blocked successfully",
-        friend: blocked,
-      });
-    }
-
-    if (action === "update" && friendId && updates) {
-      const updated = friendshipService.updateFriendInfo(
+    if (action === "create" && friendId) {
+      const result = await QMOIFriendshipService.createFriendship({
         userId,
         friendId,
+        initialMessage: customMessage,
+      });
+      return NextResponse.json(result);
+    }
+
+    if (action === "accept" && friendshipId) {
+      const result = await QMOIFriendshipService.acceptFriendship(
+        friendshipId,
+        userId,
+      );
+      return NextResponse.json(result);
+    }
+
+    if (action === "update" && friendshipId && updates) {
+      const result = await QMOIFriendshipService.updateFriendship(
+        friendshipId,
         updates,
       );
-      if (!updated) {
-        return NextResponse.json(
-          { error: "Friend not found" },
-          { status: 404 },
-        );
-      }
-      return NextResponse.json({
-        success: true,
-        message: "Friend info updated",
-        friend: updated,
-      });
+      return NextResponse.json(result);
+    }
+
+    if (action === "delete" && friendshipId) {
+      const result = await QMOIFriendshipService.deleteFriendship(friendshipId);
+      return NextResponse.json(result);
+    }
+
+    if (action === "identify-user" && friendProfile) {
+      const userProfile =
+        await QMOIFriendshipService.identifyUser(friendProfile);
+      return NextResponse.json({ success: true, userProfile });
+    }
+
+    if (action === "get-recommendations") {
+      const recommendations =
+        await QMOIFriendshipService.getSocialRecommendations(userId);
+      return NextResponse.json({ success: true, recommendations });
     }
 
     return NextResponse.json({ error: "Invalid action" }, { status: 400 });
