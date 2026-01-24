@@ -141,6 +141,69 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
   async getTransactionHistory(startDate: Date, endDate: Date) {
     return [];
   }
+
+  async getBalance(): Promise<{
+    success: boolean;
+    balance?: { available: number; pending: number; total: number };
+    currency?: string;
+    error?: string;
+  }> {
+    try {
+      console.log("[PayPalAdapter] Getting account balance...");
+
+      return new Promise((resolve) => {
+        // Use PayPal's payout balance API to get available balance
+        paypal.payout.getBalance({}, (error: any, balance: any) => {
+          if (error) {
+            console.error("[PayPalAdapter] Balance check failed:", error);
+            resolve({
+              success: false,
+              error: error.message || "Failed to retrieve PayPal balance",
+            });
+          } else {
+            console.log("[PayPalAdapter] Balance retrieved successfully");
+
+            // Parse balance response
+            const balances = balance.balances || [];
+            const usdBalance =
+              balances.find((b: any) => b.currency === "USD") || balances[0];
+
+            if (usdBalance) {
+              const available = parseFloat(usdBalance.value) || 0;
+              const pending = 0; // PayPal payout balance doesn't show pending separately
+              const total = available;
+
+              resolve({
+                success: true,
+                balance: {
+                  available,
+                  pending,
+                  total,
+                },
+                currency: usdBalance.currency || "USD",
+              });
+            } else {
+              resolve({
+                success: true,
+                balance: {
+                  available: 0,
+                  pending: 0,
+                  total: 0,
+                },
+                currency: "USD",
+              });
+            }
+          }
+        });
+      });
+    } catch (error) {
+      console.error("[PayPalAdapter] Balance check error:", error);
+      return {
+        success: false,
+        error: error.message || "System error during balance check",
+      };
+    }
+  }
 }
 
 export default PayPalAdapter;
