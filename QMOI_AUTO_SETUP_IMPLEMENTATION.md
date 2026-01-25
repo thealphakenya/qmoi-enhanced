@@ -18,6 +18,7 @@ QMOI now includes a **complete zero-touch configuration system**. The applicatio
 ## What Was Implemented
 
 ### 1. **Auto-Setup API Endpoint**
+
 - **File**: `app/api/qmoi/auto-setup/route.ts` (480 lines)
 - **Functionality**:
   - Detects first-run scenario
@@ -29,6 +30,7 @@ QMOI now includes a **complete zero-touch configuration system**. The applicatio
   - Implements retry-safe design
 
 **Generated Variables**:
+
 ```
 MASTER_PASSWORD      (16-char hex token)
 ADMIN_TOKEN          (32-char hex token)
@@ -49,6 +51,7 @@ QMOI_LOG_RETENTION_DAYS             (30)
 ```
 
 ### 2. **Auto-Setup Manager Library**
+
 - **File**: `lib/qmoi-auto-setup-manager.ts` (350+ lines)
 - **Class**: `QMOIAutoSetupManager`
 - **Methods**:
@@ -62,6 +65,7 @@ QMOI_LOG_RETENTION_DAYS             (30)
   - `isReady()` - Verify environment completeness
 
 **Key Features**:
+
 - Reads/writes `.env.local` file
 - Generates cryptographically secure credentials
 - Sets file permissions to 0600 (owner-only on Unix)
@@ -69,6 +73,7 @@ QMOI_LOG_RETENTION_DAYS             (30)
 - Validates critical variables
 
 ### 3. **Auto-Setup Frontend Component**
+
 - **File**: `app/components/QMOIAutoSetup.tsx` (240 lines)
 - **Responsibilities**:
   - Displays loading screen during setup
@@ -79,6 +84,7 @@ QMOI_LOG_RETENTION_DAYS             (30)
   - Wraps all app content
 
 **Features**:
+
 - Beautiful animated loading UI
 - Progressive retry with increasing delays (1s, 2s, 3s)
 - Detailed error messages with troubleshooting hints
@@ -86,6 +92,7 @@ QMOI_LOG_RETENTION_DAYS             (30)
 - Shows setup progress and status
 
 ### 4. **Middleware Integration**
+
 - **File**: `middleware.ts` (140 lines - enhanced)
 - **Changes**:
   - Added `ensureSetup()` function
@@ -95,6 +102,7 @@ QMOI_LOG_RETENTION_DAYS             (30)
   - Prevents access to protected routes until environment ready
 
 ### 5. **Layout Integration**
+
 - **File**: `app/layout.tsx` (enhanced)
 - **Changes**:
   - Wraps all children with `<QMOIAutoSetup>` component
@@ -102,7 +110,9 @@ QMOI_LOG_RETENTION_DAYS             (30)
   - Maintains theme provider and other wrappers
 
 ### 6. **Stub Services Created**
+
 Created placeholder service files to fix build errors:
+
 - `lib/qmoi-service.ts` - Core QMOI operations
 - `lib/domain-service.ts` - Domain management
 - `lib/friendship-service.ts` - Friendship/relationship operations
@@ -110,6 +120,7 @@ Created placeholder service files to fix build errors:
 - `lib/voice-service.ts` - Voice/TTS operations
 
 ### 7. **Documentation**
+
 - **File**: `docs/AUTO_SETUP_GUIDE.md` (500+ lines)
 - **Contents**:
   - How it works (flow diagrams)
@@ -125,6 +136,7 @@ Created placeholder service files to fix build errors:
   - Testing instructions
 
 ### 8. **Test Suite**
+
 - **File**: `test-auto-setup.sh` (executable script)
 - **Tests**:
   1. Fresh start scenario check
@@ -206,6 +218,7 @@ App renders immediately ✅
 ## File Changes & New Files
 
 ### New Files Created (8 total)
+
 1. ✅ `app/api/qmoi/auto-setup/route.ts` - API endpoint
 2. ✅ `lib/qmoi-auto-setup-manager.ts` - Manager class
 3. ✅ `docs/AUTO_SETUP_GUIDE.md` - Complete guide
@@ -217,12 +230,14 @@ App renders immediately ✅
 9. ✅ `lib/voice-service.ts` - Service stub
 
 ### Files Modified (4 total)
+
 1. ✅ `app/components/QMOIAutoSetup.tsx` - Enhanced component
 2. ✅ `middleware.ts` - Added setup integration
 3. ✅ `app/layout.tsx` - Wrapped with auto-setup
 4. ✅ `app/admin/master/page.tsx` - Removed duplicate code
 
 ### Code Statistics
+
 - **Total Lines Added**: 1,200+
 - **New Component**: 240 lines
 - **New API Route**: 480 lines
@@ -237,28 +252,32 @@ App renders immediately ✅
 ## Security Implementation
 
 ### Credential Generation
+
 ✅ Uses `crypto.randomBytes()` for cryptographic entropy  
 ✅ 16-character hex tokens for MASTER_PASSWORD  
 ✅ 32-character hex tokens for ADMIN_TOKEN  
-✅ Unique generation on every first run  
+✅ Unique generation on every first run
 
 ### File Security
+
 ✅ `.env.local` created with 0600 permissions (owner-only)  
 ✅ Not included in git (should be in .gitignore)  
 ✅ Secure file deletion on reset  
-✅ No credentials in logs or console  
+✅ No credentials in logs or console
 
 ### API Security
+
 ✅ Auto-setup endpoint allows unauthenticated POST on first run  
 ✅ Rationale: First run has no token yet, safe to allow  
 ✅ Other admin endpoints require Bearer token  
-✅ Middleware enforces authentication on protected routes  
+✅ Middleware enforces authentication on protected routes
 
 ---
 
 ## Testing Results
 
 ### Test Suite Execution
+
 ```
 ✅ Test 1: Fresh start scenario - PASSED
 ✅ Test 2: TypeScript compilation - PASSED
@@ -274,6 +293,7 @@ Status: 🟢 ALL TESTS PASSED
 ```
 
 ### Build Verification
+
 ```
 TypeScript compilation: ✅ SUCCESS
 No errors or warnings
@@ -357,6 +377,7 @@ cat .env.local
 1. **Set environment variables explicitly** via your hosting platform
 2. **Use deployment secrets** (GitHub Secrets, Vercel Env, etc.)
 3. **Example for Vercel**:
+
    ```bash
    vercel env add MASTER_PASSWORD <your-password>
    vercel env add ADMIN_TOKEN <your-token>
@@ -373,6 +394,7 @@ cat .env.local
 ### Auto-Setup in Production
 
 If `.env.local` doesn't exist:
+
 - Auto-setup will attempt to generate new credentials
 - Will fail if file system is read-only
 - **Best practice**: Define all variables before first deployment
@@ -480,16 +502,16 @@ If `.env.local` doesn't exist:
 
 ## Comparison: Before vs After
 
-| Aspect | Before | After |
-|--------|--------|-------|
-| Setup Time | Manual config required | Automatic |
-| Human Intervention | Required | Zero |
-| Environment Variables | Manual creation | Auto-generated |
-| First Run | Broken without setup | Fully functional |
-| Credential Management | Manual | Automatic secure generation |
-| Persistence | Manual | Automatic to .env.local |
-| Error Recovery | Manual restart | Automatic retry (3x) |
-| Production Ready | With manual setup | Yes, out of box |
+| Aspect                | Before                 | After                       |
+| --------------------- | ---------------------- | --------------------------- |
+| Setup Time            | Manual config required | Automatic                   |
+| Human Intervention    | Required               | Zero                        |
+| Environment Variables | Manual creation        | Auto-generated              |
+| First Run             | Broken without setup   | Fully functional            |
+| Credential Management | Manual                 | Automatic secure generation |
+| Persistence           | Manual                 | Automatic to .env.local     |
+| Error Recovery        | Manual restart         | Automatic retry (3x)        |
+| Production Ready      | With manual setup      | Yes, out of box             |
 
 ---
 
@@ -516,12 +538,14 @@ If `.env.local` doesn't exist:
 ## What's Next
 
 ### Immediate Actions
+
 1. Run the test suite: `./test-auto-setup.sh`
 2. Start dev server: `npm run dev`
 3. Verify auto-setup in browser
 4. Commit changes to git
 
 ### Future Enhancements
+
 1. Encrypted credential storage (AES-256)
 2. Credential rotation mechanism
 3. Multi-environment configuration
@@ -544,6 +568,7 @@ The QMOI system now features **complete automatic environment configuration**. N
 ## Related Files
 
 **Core Implementation**:
+
 - [Auto-Setup API](app/api/qmoi/auto-setup/route.ts)
 - [Auto-Setup Manager](lib/qmoi-auto-setup-manager.ts)
 - [Auto-Setup Component](app/components/QMOIAutoSetup.tsx)
@@ -551,10 +576,12 @@ The QMOI system now features **complete automatic environment configuration**. N
 - [Root Layout](app/layout.tsx)
 
 **Documentation & Testing**:
+
 - [Auto-Setup Guide](docs/AUTO_SETUP_GUIDE.md)
 - [Test Suite](test-auto-setup.sh)
 
 **Support Files**:
+
 - [QMOI Service](lib/qmoi-service.ts)
 - [Domain Service](lib/domain-service.ts)
 - [Friendship Service](lib/friendship-service.ts)
