@@ -193,14 +193,6 @@ export function QMOIMasterDashboard({
     }
   };
 
-  // Logout
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-    setToken("");
-    setAutomationStatus(null);
-    setFinancialData(null);
-  };
-
   // Auto-refresh automation status
   useEffect(() => {
     if (isAuthenticated && activeTab === "automation") {

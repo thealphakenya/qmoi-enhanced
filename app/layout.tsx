@@ -9,6 +9,7 @@ import { ClientUISettings } from "./components/ClientUISettings";
 import { Analytics } from "@vercel/analytics/next";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { useState } from "react";
+import QMOIAutoSetup from "./components/QMOIAutoSetup";
 
 // NOTE: Temporarily removed next/font/google usage to isolate heavy build step
 
@@ -40,12 +41,15 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <FloatingAQ />
-            {/* UI settings: display & accessibility */}
-            {/* lazy client component */}
-            <ClientUISettings />
-            {children}
-            <Analytics />
+            {/* QMOI Auto-Setup: Must initialize environment before rendering app */}
+            <QMOIAutoSetup>
+              <FloatingAQ />
+              {/* UI settings: display & accessibility */}
+              {/* lazy client component */}
+              <ClientUISettings />
+              {children}
+              <Analytics />
+            </QMOIAutoSetup>
           </ThemeProvider>
         </QueryClientProvider>
       </body>

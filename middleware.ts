@@ -1,18 +1,45 @@
 /**
- * QMOI Middleware - Combined Automation & Master Access Control
+ * QMOI Middleware - Complete System Initialization & Access Control
  * Handles:
- * 1. Background automation initialization
- * 2. Master route protection
- * 3. Admin API authentication
+ * 1. Environment auto-setup on first request
+ * 2. Background automation initialization
+ * 3. Master route protection
+ * 4. Admin API authentication
  */
 
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { initializeBackgroundAutomation } from "@/lib/qmoi-bootstrap";
+import { setupManager } from "@/lib/qmoi-auto-setup-manager";
 
 // Track initialization
 let initPromise: Promise<void> | null = null;
 let initDone = false;
+let setupDone = false;
+
+/**
+ * Ensure environment is setup
+ */
+async function ensureSetup() {
+  if (setupDone) return;
+
+  try {
+    const status = setupManager.getStatus();
+
+    if (!status.configured) {
+      console.log("[QMOI] Auto-setup required, initializing environment...");
+      setupManager.initialize();
+      console.log("[QMOI] Environment auto-setup complete");
+    } else {
+      console.log("[QMOI] Environment already configured");
+    }
+
+    setupDone = true;
+  } catch (error) {
+    console.error("[QMOI] Error during auto-setup:", error);
+    // Continue anyway - app can still work with defaults
+  }
+}
 
 /**
  * Initialize background automation on first request
@@ -23,6 +50,9 @@ async function ensureInitialized() {
   if (!initPromise) {
     initPromise = (async () => {
       try {
+        // Ensure setup first
+        await ensureSetup();
+
         // Only initialize in production or if explicitly enabled
         if (
           process.env.NODE_ENV === "production" ||
@@ -74,9 +104,12 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // Protect admin API routes (except auth)
+  // Protect admin API routes (except auth and auto-setup)
   if (pathname.startsWith("/api/admin/")) {
-    if (pathname === "/api/admin/master/auth") {
+    if (
+      pathname === "/api/admin/master/auth" ||
+      pathname === "/api/admin/master/logout"
+    ) {
       return NextResponse.next();
     }
 
@@ -88,21 +121,16 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  // Allow auto-setup endpoint without authentication
+  if (pathname === "/api/qmoi/auto-setup") {
+    return NextResponse.next();
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/api/admin/:path*"],
-};
-
-/**
- * Configure middleware to run on specific paths
- */
-export const config = {
-  matcher: [
-    // Run on all paths except static files and next internals
-    "/((?!_next/static|_next/image|favicon.ico).*)",
-  ],
+  matcher: ["/admin/:path*", "/api/admin/:path*", "/api/qmoi/:path*"],
 };
 
 // Also export initialization for direct use
