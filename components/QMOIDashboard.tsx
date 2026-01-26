@@ -60,6 +60,7 @@ import FileExplorer from "./FileExplorer";
 import { NotificationCenter } from "./NotificationCenter";
 import QmoiAutoDistribution from "./QmoiAutoDistribution";
 import { SisterProjects } from "./SisterProjects";
+import AskQMoi from "./AskQMoi";
 
 interface DashboardProps {
   user?: {
@@ -89,6 +90,7 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
     "healthy" | "warning" | "critical"
   >("healthy");
   const [chatHistory, setChatHistory] = useState<unknown[]>([]);
+  const [askQMoiOpen, setAskQMoiOpen] = useState(false);
   const { toast } = useToast();
   const { setCurrentUser, setRole, updateQMOIMemory, qmoiMemory, currentRole } =
     useMaster();
@@ -571,6 +573,9 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
                   </Card>
                 </div>
 
+                {/* Ask QMoi */}
+                <AskQMoi />
+
                 {/* Recent Activity */}
                 <Card>
                   <CardHeader>
@@ -866,6 +871,13 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
           </div>
         </main>
       </div>
+
+      {/* Floating Ask QMoi */}
+      <AskQMoi
+        compact
+        isOpen={askQMoiOpen}
+        onToggle={() => setAskQMoiOpen(!askQMoiOpen)}
+      />
     </div>
   );
 };

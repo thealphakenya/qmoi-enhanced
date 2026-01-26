@@ -131,6 +131,7 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: ["/admin/:path*", "/api/admin/:path*", "/api/qmoi/:path*"],
+  runtime: "nodejs",
 };
 
 // Also export initialization for direct use

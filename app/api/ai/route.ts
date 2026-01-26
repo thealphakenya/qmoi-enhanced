@@ -37,12 +37,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const response = await QMOIService.processMessage(
-      userMessage,
-      sessionId,
-      userId,
-      context,
-    );
+    const response = await QMOIService.processQuery(userMessage);
 
     if (!response || !response.success) {
       return NextResponse.json(

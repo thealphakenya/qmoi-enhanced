@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import {
   Card,
   CardContent,
@@ -95,6 +95,8 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
   >("healthy");
   const [isRefreshing, setIsRefreshing] = useState(false);
   const { toast } = useToast();
+
+  const isRefreshingRef = useRef(false);
 
   // Generate mock system metrics
   const generateMockMetrics = (): SystemMetrics => {
@@ -254,12 +256,44 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
 
   // Refresh system metrics
   const refreshMetrics = useCallback(async () => {
+    if (isRefreshingRef.current) return; // Prevent multiple simultaneous refreshes
+    isRefreshingRef.current = true;
     setIsRefreshing(true);
     try {
-      // In a real implementation, this would fetch from APIs
-      const newMetrics = generateMockMetrics();
-      const newChecks = generateMockHealthChecks();
-      const newStatus = calculateOverallStatus(newMetrics, newChecks);
+      // Fetch real health data from API
+      const response = await fetch("/api/health");
+      if (!response.ok) throw new Error("Failed to fetch health data");
+      const healthData = await response.json();
+
+      // Convert API response to component format
+      const newMetrics: SystemMetrics = {
+        cpu: {
+          usage: healthData.cpu_usage || 0,
+          temperature: healthData.cpu_temp || 0,
+          cores: healthData.cpu_cores || 8,
+        },
+        memory: {
+          used: healthData.memory_used || 0,
+          total: healthData.memory_total || 16,
+          percentage: healthData.memory_percent || 0,
+        },
+        disk: {
+          used: healthData.disk_used || 0,
+          total: healthData.disk_total || 512,
+          percentage: healthData.disk_percent || 0,
+        },
+        network: {
+          upload: healthData.network_upload || 0,
+          download: healthData.network_download || 0,
+          latency: healthData.network_latency || 0,
+        },
+        services: healthData.services || [],
+        uptime: healthData.uptime || 0,
+        lastUpdated: new Date(),
+      };
+
+      const newChecks: HealthCheck[] = healthData.checks || [];
+      const newStatus = healthData.overall_health || "healthy";
 
       setMetrics(newMetrics);
       setHealthChecks(newChecks);
@@ -284,6 +318,7 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
       });
     } finally {
       setIsRefreshing(false);
+      isRefreshingRef.current = false;
     }
   }, [onHealthChange, toast]);
 

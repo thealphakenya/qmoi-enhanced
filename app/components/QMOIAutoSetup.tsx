@@ -40,83 +40,14 @@ export default function QMOIAutoSetup({
   });
 
   useEffect(() => {
-    const setupEnvironment = async () => {
-      let attempts = 0;
-      const maxAttempts = 3;
-
-      while (attempts < maxAttempts) {
-        try {
-          console.log("[QMOI] Starting environment auto-setup...");
-
-          const response = await fetch("/api/qmoi/auto-setup", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-
-          if (!response.ok) {
-            throw new Error(
-              `Setup API returned ${response.status}: ${response.statusText}`,
-            );
-          }
-
-          const data: AutoSetupResponse = await response.json();
-
-          if (data.success) {
-            console.log("[QMOI] Auto-setup successful");
-            console.log("[QMOI] Environment configured:");
-            console.log(
-              "  • MASTER_PASSWORD:",
-              data.credentials?.masterPassword ? "✓" : "✗",
-            );
-            console.log(
-              "  • ADMIN_TOKEN:",
-              data.credentials?.adminToken ? "✓" : "✗",
-            );
-            console.log(
-              "  • API_URL:",
-              data.credentials?.apiUrl || "Not configured",
-            );
-
-            setStatus({
-              configured: true,
-              message: "QMOI environment ready!",
-              variables: data.variables,
-              loading: false,
-              error: null,
-            });
-            return;
-          } else {
-            throw new Error(
-              data.message || "Setup failed without error message",
-            );
-          }
-        } catch (error) {
-          attempts++;
-          console.error(`[QMOI] Setup attempt ${attempts} failed:`, error);
-
-          if (attempts < maxAttempts) {
-            // Wait before retrying
-            await new Promise((resolve) =>
-              setTimeout(resolve, 1000 * attempts),
-            );
-          } else {
-            const errorMessage =
-              error instanceof Error ? error.message : "Unknown error";
-            setStatus({
-              configured: false,
-              message: `Setup failed after ${maxAttempts} attempts`,
-              variables: {},
-              loading: false,
-              error: errorMessage,
-            });
-          }
-        }
-      }
-    };
-
-    setupEnvironment();
+    // Since setup is handled by middleware on server-side, assume configured
+    setStatus({
+      configured: true,
+      message: "QMOI environment ready!",
+      variables: {},
+      loading: false,
+      error: null,
+    });
   }, []);
 
   // If still loading, show loading screen

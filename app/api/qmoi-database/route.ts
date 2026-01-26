@@ -300,7 +300,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
   } catch (_error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { _error: `Request failed: ${_error}` },
       { status: 500 },
     );
   }
