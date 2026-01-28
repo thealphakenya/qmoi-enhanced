@@ -40,9 +40,8 @@ export async function POST(req: Request) {
     }
 
     // Process with QMOI service
-    const response = await QMOIService.processMessage(
+    const response = await QMOIService.processQuery(
       userMessage,
-      sessionId,
       userId,
       context,
     );
