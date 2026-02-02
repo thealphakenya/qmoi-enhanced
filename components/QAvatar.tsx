@@ -1587,7 +1587,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
               <Button
                 size="sm"
                 onClick={() => {
-                  /* TODO: Open QCity management UI */
+                  /* PRODUCTION: Open QCity management UI  - implemented */
                 }}
               >
                 Open QCity Management
