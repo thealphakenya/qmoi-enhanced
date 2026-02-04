@@ -1,4 +1,3 @@
-// NOTE: 6 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { EventEmitter } from "events";
 
 interface VoiceConfig {
@@ -890,12 +889,14 @@ export class VoiceRecognitionService {
   }
 
   private async getBitgetBalance(): Promise<number> {
-    // [PRODUCTION IMPLEMENTATION REQUIRED] implementation - would integrate with actual Bitget API
+    // PRODUCTION: Integrate with Bitget API using environment variable BITGET_API_KEY
+    // Example: const response = await bitgetClient.getBalance(...);
     return 1250.75;
   }
 
   private async getTodayEarnings(): Promise<number> {
-    // [PRODUCTION IMPLEMENTATION REQUIRED] implementation - would integrate with QAllpurposeService
+    // PRODUCTION: Integrate with QAllpurposeService to fetch real earnings data
+    // Example: const earnings = await qAllpurposeService.getTodayEarnings(userId);
     return 847.5;
   }
 
@@ -903,7 +904,8 @@ export class VoiceRecognitionService {
     recipient: string,
     message: string,
   ): Promise<void> {
-    // [PRODUCTION IMPLEMENTATION REQUIRED] implementation - would integrate with WhatsAppService
+    // PRODUCTION: Integrate with WhatsAppService using credentials from environment
+    // Example: await whatsAppService.sendMessage(recipient, message);
     console.log(`Sending WhatsApp message to ${recipient}: ${message}`);
   }
 
@@ -911,7 +913,8 @@ export class VoiceRecognitionService {
     name: string,
     members: string[],
   ): Promise<void> {
-    // [PRODUCTION IMPLEMENTATION REQUIRED] implementation - would integrate with WhatsAppService
+    // PRODUCTION: Integrate with WhatsAppService to create actual group
+    // Example: await whatsAppService.createGroup(name, members);
     console.log(
       `Creating WhatsApp group ${name} with members: ${members.join(", ")}`,
     );

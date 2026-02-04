@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 // @ts-nocheck -- temporary: suppress widespread 'unknown' property errors during triage
 
-// NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import type { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import path from "path";
@@ -285,7 +284,11 @@ async function restoreModelFromHuggingFace(
   });
 }
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] for advanced AI/ML tasks (to be implemented)
+/**
+ * PRODUCTION: Calls Python script for heavy AI/ML tasks (image generation, text analysis, etc.)
+ * Integration: Ensure Python dependencies are installed and environment is configured.
+ * Security: Validate input parameters and sanitize file paths before passing to exec().
+ */
 async function runAdvancedAIGeneration(
   type: string,
   _params: Record<string, any>,

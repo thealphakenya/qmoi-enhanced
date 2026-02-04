@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 3 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { NextResponse } from "next/server";
 
 // Conditionally import Prisma

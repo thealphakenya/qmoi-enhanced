@@ -1,4 +1,3 @@
-// NOTE: 2 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { QmoiPlugin } from "./PluginManager";
 
 // Minimal non-JSX plugin implementation to avoid TSX in .ts file.

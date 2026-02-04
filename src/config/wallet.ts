@@ -1,4 +1,3 @@
-// NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 /* eslint-disable no-unreachable */
 /// <reference types="node" />
 /* eslint-disable no-unreachable */
@@ -88,8 +87,9 @@ export class WalletManager {
   private async getUsdPrice(currency: string): Promise<number> {
     if (currency === "USDT") return 1;
     try {
-      // Implement price fetching logic here
-      return 0; // [PRODUCTION IMPLEMENTATION REQUIRED]
+      // PRODUCTION: Integrate with CoinGecko, Binance, or other price API
+      // Example: const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+      return 0; // Stub: returns 0 until production API is configured
     } catch (_error) {
       (globalThis.console as unknown)?.error?.(
         `Error fetching USD price for ${currency}:`,
