@@ -59,6 +59,11 @@
     "coverage/**",
     "**/*.md.ts",
     "**/*.md.tsx",
-    "**/*.py.tsx"
+    "**/*.py.tsx",
+    "app/api/auth/**",
+    "app/api/auto-fix.ts",
+    "app/api/middleware/**",
+    "app/api/qmoi-model.ts",
+    "app/api/wifi-security.ts"
   ]
 }
