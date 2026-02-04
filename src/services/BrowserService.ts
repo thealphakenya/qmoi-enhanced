@@ -381,7 +381,7 @@ export class BrowserService {
         url,
         _error: errMsg,
       });
-      logger.error(`Navigation failed for tab ${tabId}:`, _error);
+      logger._error(`Navigation failed for tab ${tabId}:`, _error);
       throw error;
     }
   }
@@ -411,7 +411,7 @@ export class BrowserService {
         } catch (_error) {
           const errDetails =
             error instanceof Error ? error.message : String(_error);
-          logger.error(`AI feature ${feature.id} failed: ${errDetails}`);
+          logger._error(`AI feature ${feature.id} failed: ${errDetails}`);
         }
       }
     }

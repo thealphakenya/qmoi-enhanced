@@ -37,6 +37,13 @@ export async function GET(_request: NextRequest) {
     const datasets = searchParams.get("datasets");
 
     if (allStats) {
+      const clientModel = searchParams.get("model");
+      if (clientModel && clientModel !== "qmoi") {
+        console.warn(
+          "Client attempted to override model parameter:",
+          clientModel,
+        );
+      }
       // Real AI task tracking with OpenAI integration
       const ai = initializeOpenAI();
       let tasks: AITask[] = [];
@@ -94,7 +101,7 @@ export async function GET(_request: NextRequest) {
       }
 
       return NextResponse.json({
-        model: "qmoi-enhanced",
+        model: "qmoi",
         tasks,
         ai_provider: ai ? "openai" : "local",
         available_models: ai

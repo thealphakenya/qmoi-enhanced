@@ -21,7 +21,7 @@ export function useQmoiKernel() {
     logs: [],
   });
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [lastAction, setLastAction] = useState<QMoiKernelActionResult | null>(
     null,
   );
@@ -101,11 +101,11 @@ export function useQmoiKernel() {
     () => ({
       status,
       loading,
-      _error,
+      error,
       lastAction,
       fetchStatus,
       runAction,
     }),
-    [status, loading, _error, lastAction, fetchStatus, runAction],
+    [status, loading, error, lastAction, fetchStatus, runAction],
   );
 }

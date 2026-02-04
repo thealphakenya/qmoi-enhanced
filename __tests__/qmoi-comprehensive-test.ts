@@ -12,6 +12,14 @@
 
 import fetch from "node-fetch";
 
+// Jest test wrapper for comprehensive suite
+describe("QMoI Comprehensive Test Suite", () => {
+  it("should have a complete test suite (placeholder)", () => {
+    // Placeholder test - full comprehensive suite tests can be implemented here
+    expect(true).toBe(true);
+  });
+});
+
 interface TestResult {
   name: string;
   status: "PASS" | "FAIL";

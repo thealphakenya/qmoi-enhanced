@@ -78,7 +78,7 @@ export async function POST(_request: NextRequest) {
       currency?: string;
       name?: string;
     };
-    const currency = body.currency || "KES";
+    const currency = body.currency || "USD";
 
     const wallet = await walletService.create({
       userId: decoded.userId,

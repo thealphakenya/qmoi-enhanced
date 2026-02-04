@@ -44,6 +44,7 @@ export class WhatsAppService {
   private config: WhatsAppConfig;
   private isConnected = false;
   private qrCodeStatus: QRCodeStatus;
+  private outboundQueue: { to: string; message: string }[] = [];
   private messageTemplates: MessageTemplate[] = [];
   private autoResponders: Map<string, (message: Message) => Promise<string>> =
     new Map();
@@ -78,7 +79,8 @@ export class WhatsAppService {
       },
     };
 
-    this.initializeClient();
+    // Do not initialize client in constructor to allow configuration before start.
+    // Client will be initialized by `start()` when WHATSAPP_ENABLED is true.
     this.initializeMessageTemplates();
     this.initializeAutoResponders();
   }
@@ -114,6 +116,20 @@ export class WhatsAppService {
     this.setupEventHandlers();
   }
 
+  private async flushOutboundQueue(): Promise<void> {
+    if (!this.isConnected || !this.client) return;
+    while (this.outboundQueue.length > 0) {
+      const { to, message } = this.outboundQueue.shift()!;
+      try {
+        await this.sendMessage(to, message);
+      } catch (e) {
+        console.error("Failed to flush outbound message:", e);
+      }
+      // Small delay to avoid rate limits
+      await this.sleep(250);
+    }
+  }
+
   private setupEventHandlers(): void {
     // QR Code generation
     this.client.on("qr", async (qr: string) => {
@@ -139,10 +155,7 @@ export class WhatsAppService {
 
     // Authentication failure
     this.client.on("auth_failure", async (message: string) => {
-      (globalThis.console as unknown)?.error?.(
-        "❌ WhatsApp authentication failed:",
-        message,
-      );
+      globalThis.console.error("❌ WhatsApp authentication failed:", message);
       this.isConnected = false;
       await this.sendErrorNotification(
         "WhatsApp authentication failed",
@@ -224,34 +237,47 @@ You'll receive updates about:
 Time: ${this.qrCodeStatus.timestamp.toLocaleString()}`;
 
     try {
-      // Send to master
+      // Queue notifications if client not yet connected; flush when ready
       if (this.config.masterPhone) {
-        await this.sendMessage(this.config.masterPhone, masterMessage);
+        this.outboundQueue.push({
+          to: this.config.masterPhone,
+          message: masterMessage,
+        });
         this.qrCodeStatus.notifications.master = true;
-        console.log("📱 QR scan notification sent to master");
+        console.log("📱 Queued QR scan notification for master");
       }
 
-      // Send to Leah
       if (this.config.leahPhone) {
-        await this.sendMessage(this.config.leahPhone, leahMessage);
+        this.outboundQueue.push({
+          to: this.config.leahPhone,
+          message: leahMessage,
+        });
         this.qrCodeStatus.notifications.leah = true;
-        console.log("📱 QR scan notification sent to Leah");
+        console.log("📱 Queued QR scan notification for Leah");
       }
 
-      // Send backup verification
-      await this.sendBackupVerification();
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
-        "Error sending QR code notifications:",
-        _error,
-      );
+      // Queue backup verification
+      if (this.config.masterPhone) {
+        this.outboundQueue.push({
+          to: this.config.masterPhone,
+          message: `Backup Verification:\n${new Date().toLocaleString()}`,
+        });
+      }
+      // Attempt immediate flush
+      await this.flushOutboundQueue();
+    } catch (err) {
+      console.error("Error queueing QR code notifications:", String(err));
       this.qrCodeStatus.notifications.status = "failed";
-      const errorMessage =
-        _error instanceof Error ? _error.message : "Unknown error";
-      await this.sendErrorNotification(
-        "Failed to send QR notifications",
-        errorMessage,
-      );
+      const errorMessage = err instanceof Error ? err.message : String(err);
+      try {
+        if (this.config.masterPhone)
+          await this.sendMessage(
+            this.config.masterPhone,
+            `Failed to send QR notifications: ${errorMessage}`,
+          );
+      } catch (_) {
+        // ignore
+      }
     }
   }
 
@@ -300,10 +326,7 @@ Time: ${new Date().toLocaleString()}`;
         await this.forwardToMaster(message);
       }
     } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
-        "Error handling incoming message:",
-        _error,
-      );
+      globalThis.console.error("Error handling incoming message:", _error);
       const errorMessage =
         _error instanceof Error ? _error.message : "Unknown error";
       await this.sendErrorNotification("Message handling error", errorMessage);
@@ -495,13 +518,27 @@ Message: ${message.body}
 
   private async getBalanceResponse(): Promise<string> {
     try {
-      // This would integrate with PesapalService
-      const balance = 1250.75; // [PRODUCTION IMPLEMENTATION REQUIRED] balance
-      return `💰 Pesapal Balance: $${balance.toFixed(2)}
+      // Prefer a configured Pesapal balance endpoint for production
+      const balanceEndpoint = process.env.PESAPAL_BALANCE_URL;
+      if (balanceEndpoint) {
+        try {
+          const res = await (
+            await import("axios")
+          ).default.get(balanceEndpoint, { timeout: 10_000 });
+          const bal = res?.data?.balance ?? res?.data?.amount ?? null;
+          if (typeof bal === "number") {
+            return `💰 Pesapal Balance: $${bal.toFixed(2)}\n\n💳 Account Status: Active\n📊 Last Updated: ${new Date().toLocaleString()}\n🔄 Auto-withdrawal: Enabled`;
+          }
+        } catch (e) {
+          console.warn(
+            "Failed to fetch Pesapal balance from configured endpoint:",
+            String(e),
+          );
+        }
+      }
 
-💳 Account Status: Active
-📊 Last Updated: ${new Date().toLocaleString()}
-🔄 Auto-withdrawal: Enabled`;
+      // Fallback: instruct admin to configure Pesapal integration
+      return `💰 Pesapal Balance: Unavailable\n\n⚠️ Pesapal integration is not configured. Set PESAPAL_BALANCE_URL or implement PesapalService.\n📄 See ENVIRONMENT_CONFIG.md for required keys.`;
     } catch (e) {
       void e;
       return "Unavailable";
@@ -526,23 +563,36 @@ Message: ${message.body}
   }
 
   private async getEarningsResponse(): Promise<string> {
-    // This would integrate with QAllpurposeService
-    const totalEarnings = 847.5; // [PRODUCTION IMPLEMENTATION REQUIRED] earnings
-    return `📈 Today's Earnings: $${totalEarnings.toFixed(2)}
+    // Try QAllpurpose earnings endpoint if configured
+    const earningsEndpoint = process.env.QALLPURPOSE_EARNINGS_URL;
+    if (earningsEndpoint) {
+      try {
+        const res = await (
+          await import("axios")
+        ).default.get(earningsEndpoint, { timeout: 10_000 });
+        const total = res?.data?.total ?? res?.data?.today ?? null;
+        if (typeof total === "number") {
+          const strategies = res?.data?.breakdown ?? [];
+          const breakdownText =
+            (strategies as any[])
+              .slice(0, 5)
+              .map(
+                (s, i) =>
+                  `• ${s.name || `Strategy ${i + 1}`}: $${(s.amount ?? 0).toFixed(2)}`,
+              )
+              .join("\n") || "• No breakdown available";
 
-🏆 Top Strategies:
-• Crypto Trading: $245.30
-• Forex Trading: $189.20
-• Content Creation: $156.80
-• Freelancing: $123.40
-• E-commerce: $132.80
+          return `📈 Today's Earnings: $${total.toFixed(2)}\n\n🏆 Top Strategies:\n${breakdownText}\n\n📊 Performance:\n• Win Rate: ${res?.data?.winRate ?? "N/A"}\n• Profit Factor: ${res?.data?.profitFactor ?? "N/A"}\n• Total Trades: ${res?.data?.trades ?? "N/A"}\n\n⏰ Updated: ${new Date().toLocaleString()}`;
+        }
+      } catch (e) {
+        console.warn(
+          "Failed to fetch earnings from configured endpoint:",
+          String(e),
+        );
+      }
+    }
 
-📊 Performance:
-• Win Rate: 78%
-• Profit Factor: 1.6
-• Total Trades: 47
-
-⏰ Updated: ${new Date().toLocaleString()}`;
+    return `📈 Today's Earnings: Unavailable\n\n⚠️ Earnings integration not configured. Set QALLPURPOSE_EARNINGS_URL or implement QAllpurposeService.`;
   }
 
   private getHelpResponse(): string {
@@ -614,15 +664,23 @@ Master Commands:
   }
 
   public async start(): Promise<void> {
+    const enabled = process.env.WHATSAPP_ENABLED !== "false";
+    if (!enabled) {
+      console.warn("WhatsApp service is disabled via WHATSAPP_ENABLED=false");
+      return;
+    }
+
     try {
       console.log("🚀 Starting WhatsApp service...");
+      // Ensure client is initialized
+      if (!this.client) this.initializeClient();
       await this.client.initialize();
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
-        "Error starting WhatsApp service:",
-        _error,
-      );
-      throw error;
+      // Flush any queued outbound messages
+      await this.flushOutboundQueue();
+    } catch (err) {
+      console.error("Error starting WhatsApp service:", String(err));
+      // Do not throw raw errors; keep service degraded but running
+      this.isConnected = false;
     }
   }
 
@@ -632,28 +690,27 @@ Master Commands:
       await this.client.destroy();
       this.isConnected = false;
     } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
-        "Error stopping WhatsApp service:",
-        _error,
-      );
+      globalThis.console.error("Error stopping WhatsApp service:", _error);
     }
   }
 
   public async sendMessage(to: string, message: string): Promise<void> {
     try {
-      if (!this.isConnected) {
-        throw new Error("WhatsApp client not connected");
+      const chatId = to.includes("@c.us") ? to : `${to}@c.us`;
+
+      if (!this.isConnected || !this.client) {
+        // Queue message for later delivery
+        console.warn(`WhatsApp not connected. Queuing message to ${to}`);
+        this.outboundQueue.push({ to: chatId, message });
+        return;
       }
 
-      const chatId = to.includes("@c.us") ? to : `${to}@c.us`;
       await this.client.sendMessage(chatId, message);
       console.log(`📤 Message sent to ${to}`);
     } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
-        "Error sending WhatsApp message:",
-        _error,
-      );
-      throw error;
+      globalThis.console.error("Error sending WhatsApp message:", _error);
+      // Keep behavior resilient: rethrow only for critical callers
+      throw _error;
     }
   }
 
@@ -678,10 +735,7 @@ Master Commands:
         await this.sendMessage(contact, message);
         await this.sleep(1000); // Delay between messages
       } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
-          `Error broadcasting to ${contact}:`,
-          _error,
-        );
+        globalThis.console.error(`Error broadcasting to ${contact}:`, _error);
       }
     }
   }

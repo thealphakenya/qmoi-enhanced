@@ -335,18 +335,18 @@ export class VoiceRecognitionService {
           this.recognition = new ctor() as SpeechRecognitionLike;
           this.setupRecognitionHandlers();
         } catch (_err) {
-          (globalThis.console as unknown)?.error?.(
+          (globalThis.console).error(
             "Failed to construct SpeechRecognition instance:",
             _err,
           );
         }
       } else {
-        (globalThis.console as unknown)?.error?.(
+        (globalThis.console).error(
           "Speech recognition not supported",
         );
       }
     } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+      (globalThis.console).error(
         "Error initializing speech recognition:",
         _error,
       );
@@ -361,12 +361,12 @@ export class VoiceRecognitionService {
       if (this.synthesis) {
         this.setupSynthesisHandlers();
       } else {
-        (globalThis.console as unknown)?.error?.(
+        (globalThis.console).error(
           "Speech synthesis not supported",
         );
       }
     } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+      (globalThis.console).error(
         "Error initializing speech synthesis:",
         _error,
       );
@@ -435,7 +435,7 @@ export class VoiceRecognitionService {
 
     this.recognition.onerror = (evt: unknown) => {
       const _err = (evt as Record<string, unknown>)?.["error"];
-      (globalThis.console as unknown)?.error?.(
+      (globalThis.console).error(
         "Voice recognition _error:",
         _err,
       );
@@ -495,7 +495,7 @@ export class VoiceRecognitionService {
       evt?: unknown,
     ) => {
       const _err = (evt as Record<string, unknown>)?.["error"];
-      (globalThis.console as unknown)?.error?.(
+      (globalThis.console).error(
         "Speech synthesis _error:",
         _err,
       );
@@ -670,7 +670,7 @@ export class VoiceRecognitionService {
           confidence,
         });
       } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+        (globalThis.console).error(
           "Error executing voice command:",
           _error,
         );
@@ -758,7 +758,7 @@ export class VoiceRecognitionService {
       try {
         this.recognition?.start?.();
       } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+        (globalThis.console).error(
           "Error starting voice recognition:",
           _error,
         );
@@ -771,7 +771,7 @@ export class VoiceRecognitionService {
       try {
         this.recognition?.stop?.();
       } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+        (globalThis.console).error(
           "Error stopping voice recognition:",
           _error,
         );
@@ -789,7 +789,7 @@ export class VoiceRecognitionService {
     } = {},
   ): void {
     if (!this.synthesis) {
-      (globalThis.console as unknown)?.error?.(
+      (globalThis.console).error(
         "Speech synthesis not available",
       );
       return;
@@ -940,7 +940,7 @@ export class VoiceRecognitionService {
         }
       }
     } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+      (globalThis.console).error(
         "Error loading voice user settings:",
         _error,
       );
@@ -954,7 +954,7 @@ export class VoiceRecognitionService {
         JSON.stringify(this.userSettings),
       );
     } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+      (globalThis.console).error(
         "Error saving voice user settings:",
         _error,
       );

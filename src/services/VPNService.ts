@@ -268,10 +268,11 @@ export class VPNService {
     } catch (_error: unknown) {
       this.isCreatingNetwork = false;
       this.eventEmitter.emit("networkCreationFailed", {
-        _error: error instanceof Error ? error.message : "Unknown error",
+        _error:
+          _error instanceof Error ? (_error as Error).message : "Unknown error",
       });
-      logger.error("Failed to create VPN network:", String(_error));
-      throw error;
+      logger._error("Failed to create VPN network:", String(_error));
+      throw _error;
     }
   }
 
@@ -380,7 +381,7 @@ export class VPNService {
         serverId,
         _error: errorMessage,
       });
-      logger.error(`Failed to connect to server ${serverId}:`, String(_error));
+      logger._error(`Failed to connect to server ${serverId}:`, String(_error));
       throw error;
     }
   }
@@ -412,7 +413,7 @@ export class VPNService {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error";
       this.eventEmitter.emit("disconnectionFailed", { _error: errorMessage });
-      logger.error("Failed to disconnect:", String(_error));
+      logger._error("Failed to disconnect:", String(_error));
       throw error;
     }
   }

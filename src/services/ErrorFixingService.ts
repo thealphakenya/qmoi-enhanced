@@ -1,5 +1,12 @@
 // NOTE: 2 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import axios from "axios";
+import { promises as fs } from "fs";
+import { promisify } from "util";
+import { exec as execCb } from "child_process";
+const exec = promisify(execCb);
+
+const ERROR_FIXER_URL = process.env.ERROR_FIXER_URL || "";
+const ALLOW_AUTO_COMMANDS = process.env.ALLOW_AUTO_COMMANDS === "true";
 
 interface ErrorReport {
   type: string;
@@ -65,7 +72,7 @@ export class ErrorFixingService {
           console.log("No automatic fix suggested for this error.");
         }
       } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+        globalThis.console.error(
           "Failed to process error or apply fix:",
           _error,
         );
@@ -79,114 +86,165 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
-    // This is where the AI logic for analyzing errors and suggesting fixes would go.
-    // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.info(
+      "Analyzing error for automated fix:",
+      error.type || "(unknown)",
+    );
 
-    // License compliance error handling
-    if (
-      error.message.includes("Non-compliant license found") ||
-      error.type === "LicenseError"
-    ) {
-      // Attempt to parse the offending package from logs (if available)
-      // Suggest removing or replacing the package, or adding a license override
-      return {
-        description:
-          "Attempting to fix license compliance error. Will try to remove or replace non-compliant packages, or add override if safe.",
-        codeChanges: [],
-        commands: [
-          // Try to auto-remove the last installed package (as a fallback)
-          "npm uninstall <offending-package>",
-          // Optionally, add a license override (if policy allows)
-          // 'npx license-checker --json > license-report.json',
-          // 'echo "<offending-package>@*" >> .license-allowlist',
-        ],
-      };
+    // If an external error-fixer service is configured, delegate analysis to it.
+    if (ERROR_FIXER_URL) {
+      try {
+        const res = await axios.post<
+          FixSuggestion | { suggestion?: FixSuggestion }
+        >(ERROR_FIXER_URL, { error }, { timeout: 30_000 });
+
+        // Accept either direct FixSuggestion or wrapped result
+        const suggestion = (res.data as any).suggestion ?? res.data;
+        if (suggestion && suggestion.codeChanges)
+          return suggestion as FixSuggestion;
+      } catch (e) {
+        console.warn(
+          "External error fixer failed, falling back to local heuristics:",
+          String(e),
+        );
+      }
     }
 
-    // Vercel/Deployment error handling
-    if (
-      error.message.includes("Vercel deployment failed") ||
-      error.type === "VercelDeployError"
-    ) {
-      // Try to parse the error and suggest fixes
-      return {
-        description:
-          "Attempting to fix Vercel deployment error. Will retry with cache clear, check env, and auto-fix common issues.",
-        codeChanges: [],
-        commands: [
-          "npx vercel --prod --force --yes",
-          // Optionally, clear Vercel cache
-          "npx vercel --prod --yes --force --prebuilt",
-        ],
-      };
+    // Fallback local heuristic analysis (safe, conservative suggestions)
+    try {
+      const msg = error.message || "";
+
+      if (
+        msg.includes("Non-compliant license found") ||
+        error.type === "LicenseError"
+      ) {
+        return {
+          description:
+            "License compliance detected. Suggest reviewing dependency and replacing with a compatible package.",
+          codeChanges: [],
+          commands: ["# REVIEW REQUIRED: npm uninstall <offending-package>"],
+        };
+      }
+
+      if (
+        msg.includes("Vercel deployment failed") ||
+        error.type === "VercelDeployError"
+      ) {
+        return {
+          description:
+            "Vercel deployment failed: will suggest safe retry commands and env checks.",
+          codeChanges: [],
+          commands: [
+            "# REVIEW REQUIRED: npx vercel --prod --force --yes",
+            "# REVIEW REQUIRED: clear Vercel build cache via dashboard if needed",
+          ],
+        };
+      }
+
+      if (msg.includes("Cannot find module") && error.filePath) {
+        const parts = msg.split("'");
+        const moduleName = parts.length >= 2 ? parts[1] : undefined;
+        if (moduleName) {
+          return {
+            description: `Missing module ${moduleName}. Suggest installing the package and adding import if necessary.`,
+            codeChanges: [],
+            commands: [`npm install ${moduleName} --save`],
+          };
+        }
+      }
+
+      if (
+        msg.toLowerCase().includes("linter error") &&
+        error.filePath &&
+        error.lineNumber
+      ) {
+        return {
+          description: `Linter issue at ${error.filePath}:${error.lineNumber}. Suggest running project linter and applying auto-fixes.`,
+          codeChanges: [],
+          commands: ["npm run lint -- --fix"],
+        };
+      }
+
+      if (error.type === "GitHubPushError") {
+        return {
+          description: `GitHub push failure: suggest pulling remote changes and retrying push.`,
+          codeChanges: [],
+          commands: ["git pull --rebase", "git push"],
+        };
+      }
+    } catch (e) {
+      console.warn("Local heuristic analysis failed:", String(e));
     }
 
-    // Heroku/Other deployment error handling
-    if (
-      error.message.includes("Heroku deployment failed") ||
-      error.type === "HerokuDeployError"
-    ) {
-      return {
-        description:
-          "Attempting to fix Heroku deployment error. Will retry push and check env.",
-        codeChanges: [],
-        commands: ["git push heroku main --force"],
-      };
-    }
-
-    // Existing logic...
-    if (error.message.includes("Cannot find module") && error.filePath) {
-      const moduleName = error.message.split("'")[1];
-      return {
-        description: `Attempting to fix missing import for module: ${moduleName}`,
-        codeChanges: [], // Real fix would involve dynamically generating code to add import
-        commands: [`npm install ${moduleName}`], // Or yarn add, or pip install
-      };
-    }
-
-    if (
-      error.message.includes("linter error") &&
-      error.filePath &&
-      error.lineNumber
-    ) {
-      return {
-        description: `Attempting to fix linter error at ${error.filePath}:${error.lineNumber}`,
-        codeChanges: [], // Real fix would involve fetching file content, applying linter fix
-      };
-    }
-
-    // Example for a hypothetical GitHub push error
-    if (error.type === "GitHubPushError") {
-      return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
-        codeChanges: [],
-        commands: ["git pull --rebase", "git push"],
-      };
-    }
-
-    // [PRODUCTION IMPLEMENTATION REQUIRED] for other error types
     return null;
   }
 
   private async applyFix(fix: FixSuggestion): Promise<void> {
-    console.log("Applying code changes:", fix.codeChanges);
-    // In a real scenario, this would interact with the file system API to modify files.
-    // For this simulation, we'll just log.
-    for (const change of fix.codeChanges) {
-      console.log(`Applying change to ${change.filePath}:`);
-      console.log(`  Lines ${change.startLine}-${change.endLine} will be replaced with:
-${change.newContent}`);
-      // await axios.post('/api/edit-file', change); // Hypothetical API call to apply file edit
+    console.info(
+      "Applying fix suggestion:",
+      fix.description ?? "(no description)",
+    );
+
+    // Apply code changes to files with backups
+    for (const change of fix.codeChanges || []) {
+      try {
+        const path = change.filePath;
+        const exists = await fs
+          .stat(path)
+          .then(() => true)
+          .catch(() => false);
+        if (!exists) {
+          console.warn(`File not found, skipping change: ${path}`);
+          continue;
+        }
+
+        const original = await fs.readFile(path, "utf8");
+        const lines = original.split(/\r?\n/);
+
+        const start = Math.max(1, change.startLine) - 1; // convert to 0-based
+        const end = Math.min(lines.length, change.endLine) - 1;
+
+        const newContentLines = change.newContent.split(/\r?\n/);
+
+        const updated = [
+          ...lines.slice(0, start),
+          ...newContentLines,
+          ...lines.slice(end + 1),
+        ].join("\n");
+
+        // Backup original file
+        const backupPath = `${path}.bak.${Date.now()}`;
+        await fs.writeFile(backupPath, original, "utf8");
+        await fs.writeFile(path, updated, "utf8");
+        console.info(`Applied change to ${path} (backup at ${backupPath})`);
+      } catch (e) {
+        console.error(
+          `Failed to apply change to ${change.filePath}:`,
+          String(e),
+        );
+      }
     }
 
-    console.log("Running commands:", fix.commands);
+    // Run suggested commands only when explicitly allowed (production safety)
     if (fix.commands && fix.commands.length > 0) {
       for (const command of fix.commands) {
-        console.log(`Executing command: ${command}`);
-        // await axios.post('/api/run-command', { command }); // Hypothetical API call to run terminal command
+        try {
+          if (!ALLOW_AUTO_COMMANDS) {
+            console.info(
+              `Command suggested but not executed (ALLOW_AUTO_COMMANDS=false): ${command}`,
+            );
+            continue;
+          }
+
+          console.info(`Executing command: ${command}`);
+          const { stdout, stderr } = await exec(command, { timeout: 60_000 });
+          if (stdout) console.info(`Command stdout: ${stdout}`);
+          if (stderr) console.warn(`Command stderr: ${stderr}`);
+        } catch (e) {
+          console.error(`Command failed: ${command}`, String(e));
+        }
       }
     }
   }
