@@ -400,7 +400,7 @@ CREATE TABLE messages (
 ### Required by Specific APIs:
 
 - [ ] Cloud storage (S3, GCS) for backups & media
-- [ ] Google Cloud credentials (for translation/speech)
+- [ ] Google Cloud in credentials (for translation/speech)
 - [ ] Cryptocurrency exchange APIs (for earnings)
 - [ ] WhatsApp Business account (for messaging)
 - [ ] Blockchain explorer API (for research)
