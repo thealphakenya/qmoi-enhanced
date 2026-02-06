@@ -2,6 +2,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import { stkPush } from "../../../../src/lib/payments/service";
 
 // Payment schemas
 const PaymentSchema = z.object({
@@ -70,36 +71,28 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
 // Payment processing functions
 async function processMpesaPayment(paymentData: unknown) {
   try {
-    // Simulate M-Pesa API call
-    const _response = await fetch(
-      "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${PAYMENT_CREDENTIALS.mpesa.consumerKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          BusinessShortCode: "174379",
-          Password: PAYMENT_CREDENTIALS.mpesa.passkey,
-          Timestamp: new Date().toISOString(),
-          TransactionType: "CustomerPayBillOnline",
-          Amount: paymentData.amount,
-          PartyA: paymentData.mpesaNumber,
-          PartyB: "174379",
-          PhoneNumber: paymentData.mpesaNumber,
-          CallBackURL: "https://your-callback-url.com/mpesa",
-          AccountReference: paymentData.description,
-          TransactionDesc: paymentData.description,
-        }),
-      },
-    );
+    const amount = (paymentData as any)?.amount;
+    const phone =
+      (paymentData as any)?.mpesaNumber || (paymentData as any)?.phone;
 
-    const result = await response.json();
+    const res = await stkPush({
+      phone,
+      amount,
+      description: (paymentData as any)?.description,
+    });
+    if (res && res.success) {
+      return {
+        success: true,
+        reference:
+          res.body?.CheckoutRequestID || res.body?.checkoutRequestId || null,
+        provider: "mpesa",
+        details: res,
+      };
+    }
     return {
-      success: true,
-      reference: result.CheckoutRequestID,
-      provider: "mpesa",
+      success: false,
+      error: res?.error || "mpesa_initiation_failed",
+      details: res,
     };
   } catch (_error) {
     (console as any).error("M-Pesa payment failed:", _error);

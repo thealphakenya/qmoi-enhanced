@@ -2,6 +2,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { logEvent } from "../../../../lib/security_check";
+import { verifyWebhook } from "../../../../src/lib/payments/service";
 
 // Production helper functions (module-level to avoid inner-declaration lint errors)
 async function updateMpesaTransaction(details: unknown) {
@@ -18,37 +19,55 @@ async function triggerPostPaymentActions(details: unknown) {
 
 export async function POST(_req: NextRequest) {
   try {
-    const body: unknown = (await _req.json()) as any;
+    // Read raw body for optional signature verification
+    const raw = await _req.text();
 
-    // Log the callback for debugging
+    // Try common signature headers
+    const signatureHeader =
+      _req.headers.get("x-signature") ||
+      _req.headers.get("x-payments-signature") ||
+      _req.headers.get("x-hub-signature") ||
+      _req.headers.get("x-qmoi-signature") ||
+      undefined;
+
+    // If a webhook secret is configured, enforce verification
+    const secretConfigured = Boolean(
+      process.env.PAYMENTS_WEBHOOK_SECRET || process.env.WEBHOOK_SIGNING_SECRET,
+    );
+
+    if (secretConfigured) {
+      const ok = verifyWebhook(raw || "", signatureHeader);
+      if (!ok) {
+        logEvent("mpesa_callback_signature_mismatch", { signatureHeader });
+        return NextResponse.json(
+          { success: false, message: "signature_mismatch" },
+          { status: 401 },
+        );
+      }
+    }
+
+    const body: any = raw ? JSON.parse(raw) : await _req.json();
+
     console.log("M-Pesa Callback received:", body);
 
-    // Extract transaction details
-    const {
-      Body: {
-        stkCallback: {
-          CheckoutRequestID,
-          ResultCode,
-          ResultDesc,
-          CallbackMetadata,
-        },
-      },
-    } = body;
+    // Extract transaction details safely
+    const CheckoutRequestID = body?.Body?.stkCallback?.CheckoutRequestID;
+    const ResultCode = body?.Body?.stkCallback?.ResultCode;
+    const ResultDesc = body?.Body?.stkCallback?.ResultDesc;
+    const CallbackMetadata = body?.Body?.stkCallback?.CallbackMetadata;
 
-    if (ResultCode === "0") {
-      // Payment successful
-      const metadata: unknown[] = CallbackMetadata?.Item || [];
+    if (ResultCode === 0 || ResultCode === "0") {
+      const metadata: any[] = CallbackMetadata?.Item || [];
       const amount =
-        metadata.find((item: unknown) => item.Name === "Amount")?.Value || 0;
+        metadata.find((item: any) => item.Name === "Amount")?.Value || 0;
       const mpesaReceiptNumber =
-        metadata.find((item: unknown) => item.Name === "MpesaReceiptNumber")
+        metadata.find((item: any) => item.Name === "MpesaReceiptNumber")
           ?.Value || "";
       const transactionDate =
-        metadata.find((item: unknown) => item.Name === "TransactionDate")
-          ?.Value || "";
-      const phoneNumber =
-        metadata.find((item: unknown) => item.Name === "PhoneNumber")?.Value ||
+        metadata.find((item: any) => item.Name === "TransactionDate")?.Value ||
         "";
+      const phoneNumber =
+        metadata.find((item: any) => item.Name === "PhoneNumber")?.Value || "";
 
       logEvent("mpesa_payment_success", {
         checkoutRequestId: CheckoutRequestID,
@@ -58,7 +77,7 @@ export async function POST(_req: NextRequest) {
         transactionDate,
       });
 
-      // Production: Update database with successful transaction
+      // Production: Update database and trigger post-payment hooks
       await updateMpesaTransaction({
         checkoutRequestId: CheckoutRequestID,
         amount,
@@ -66,7 +85,6 @@ export async function POST(_req: NextRequest) {
         phoneNumber,
         transactionDate,
       });
-      // Production: Trigger any post-payment actions
       await triggerPostPaymentActions({
         checkoutRequestId: CheckoutRequestID,
         amount,
@@ -74,39 +92,34 @@ export async function POST(_req: NextRequest) {
         phoneNumber,
         transactionDate,
       });
-      // production helpers are defined at module scope
 
       return NextResponse.json({
         success: true,
         message: "Payment processed successfully",
       });
-    } else {
-      // Payment failed
-      logEvent("mpesa_payment_failed", {
-        checkoutRequestId: CheckoutRequestID,
-        resultCode: ResultCode,
-        resultDesc: ResultDesc,
-      });
-
-      return NextResponse.json({
-        success: false,
-        message: ResultDesc,
-      });
     }
-  } catch (_error) {
+
+    // Payment failed or non-success status
+    logEvent("mpesa_payment_failed", {
+      checkoutRequestId: CheckoutRequestID,
+      resultCode: ResultCode,
+      resultDesc: ResultDesc,
+    });
+
+    return NextResponse.json({
+      success: false,
+      message: ResultDesc || "payment_failed",
+    });
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
-    const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+    const errorMessage = error instanceof Error ? error.message : String(error);
     logEvent("mpesa_callback_error", { _error: errorMessage });
 
     return NextResponse.json(
-      {
-        success: false,
-        message: "Callback processing failed",
-      },
+      { success: false, message: "Callback processing failed" },
       { status: 500 },
     );
   }
