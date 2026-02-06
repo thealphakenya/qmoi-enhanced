@@ -130,7 +130,7 @@ async function processAirtelPayment(paymentData: unknown) {
       },
     );
 
-    const result = await response.json();
+    const result = await _response.json();
     return {
       success: true,
       reference: result.data.transaction.id,
@@ -171,7 +171,7 @@ async function processPesapalPayment(paymentData: unknown) {
       },
     );
 
-    const result = await response.text();
+    const result = await _response.text();
     return { success: true, reference: result, provider: "pesapal" };
   } catch (_error) {
     (console as any).error("Pesapal payment failed:", _error);
@@ -327,12 +327,12 @@ export async function POST(_request: NextRequest) {
       );
     }
   } catch (_error) {
-    if (error instanceof z.ZodError) {
+    if (_error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
           _error: "Validation failed",
-          details: error.errors,
+          details: _error.errors,
         },
         { status: 400 },
       );

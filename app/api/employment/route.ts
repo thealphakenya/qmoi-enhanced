@@ -158,12 +158,12 @@ export async function POST(_request: NextRequest) {
       );
     }
   } catch (_error) {
-    if (error instanceof z.ZodError) {
+    if (_error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
           _error: "Validation failed",
-          details: error.errors,
+          details: _error.errors,
         },
         { status: 400 },
       );
