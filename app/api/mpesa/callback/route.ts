@@ -3,6 +3,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { logEvent } from "../../../../lib/security_check";
 import { verifyWebhook } from "../../../../src/lib/payments/service";
+import {
+  notifyPaymentSuccess,
+  notifyPaymentFailure,
+} from "../../../../src/lib/notifier";
 
 // Production helper functions (module-level to avoid inner-declaration lint errors)
 async function updateMpesaTransaction(details: unknown) {
@@ -11,9 +15,29 @@ async function updateMpesaTransaction(details: unknown) {
   return true;
 }
 
-async function triggerPostPaymentActions(details: unknown) {
-  // Production: Send notification via WhatsApp/Email and update user wallet via Prisma
-  // Integrate with notification service and user service for status updates
+async function triggerPostPaymentActions(details: any) {
+  // Send notifications via Email, Slack, WhatsApp
+  try {
+    const {
+      checkoutRequestId,
+      amount,
+      receiptNumber,
+      phoneNumber,
+      transactionDate,
+      userEmail,
+    } = details;
+
+    await notifyPaymentSuccess({
+      checkoutRequestId,
+      amount: Number(amount) || 0,
+      receiptNumber: String(receiptNumber || ""),
+      phoneNumber: String(phoneNumber || ""),
+      transactionDate: String(transactionDate || ""),
+      userEmail,
+    });
+  } catch (error) {
+    console.error("Failed to send payment success notifications:", error);
+  }
   return true;
 }
 
@@ -105,6 +129,17 @@ export async function POST(_req: NextRequest) {
       resultCode: ResultCode,
       resultDesc: ResultDesc,
     });
+
+    // Send failure notification
+    try {
+      await notifyPaymentFailure({
+        checkoutRequestId: CheckoutRequestID || "unknown",
+        resultCode: ResultCode || "unknown",
+        resultDesc: ResultDesc,
+      });
+    } catch (error) {
+      console.error("Failed to send payment failure notifications:", error);
+    }
 
     return NextResponse.json({
       success: false,
