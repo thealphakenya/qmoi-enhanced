@@ -48,17 +48,17 @@ if (eslintRes.out) {
     eslintSummary.files = json.length;
     eslintSummary.errorCount = json.reduce(
       (s, f) => s + (f.errorCount || 0),
-      0
+      0,
     );
     eslintSummary.warningCount = json.reduce(
       (s, f) => s + (f.warningCount || 0),
-      0
+      0,
     );
   } catch (e) {
     // Fallback: try to parse summary from text
     const mErr =
       eslintRes.out.match(
-        /\u2716\s+(\d+) problems \((\d+) errors, (\d+) warnings\)/
+        /\u2716\s+(\d+) problems \((\d+) errors, (\d+) warnings\)/,
       ) || [];
     if (mErr.length) {
       eslintSummary.errorCount = parseInt(mErr[2], 10);
@@ -67,7 +67,7 @@ if (eslintRes.out) {
   }
 }
 report.push(
-  `ESLint: ${eslintSummary.errorCount} errors, ${eslintSummary.warningCount} warnings (checked ${eslintSummary.files} files)`
+  `ESLint: ${eslintSummary.errorCount} errors, ${eslintSummary.warningCount} warnings (checked ${eslintSummary.files} files)`,
 );
 report.push("ESLint raw output (truncated 10000 chars):");
 report.push(eslintRes.out ? eslintRes.out.slice(0, 10000) : "(no output)");
@@ -103,7 +103,7 @@ const apiFiles = walk(apiRoot).filter(
     f.endsWith(".ts") ||
     f.endsWith(".tsx") ||
     f.endsWith(".js") ||
-    f.endsWith(".jsx")
+    f.endsWith(".jsx"),
 );
 let nocheckCount = 0;
 for (const f of apiFiles) {

@@ -63,7 +63,7 @@ class QMOINotificationSystem {
     // Create logs directory if it doesn't exist
     try {
       await fs.mkdir("logs", { recursive: true });
-    } catch (error) {
+    } catch (_error) {
       // Directory might already exist
     }
 
@@ -108,7 +108,7 @@ class QMOINotificationSystem {
 
       console.log(`✅ Notification sent via ${successCount} channels`);
       return notification;
-    } catch (error) {
+    } catch (_error) {
       notification.status = "failed";
       notification.error = error.message;
       this.notificationHistory.push(notification);
@@ -151,8 +151,8 @@ class QMOINotificationSystem {
 
       const result = await transporter.sendMail(mailOptions);
       return { status: "sent", messageId: result.messageId };
-    } catch (error) {
-      return { status: "failed", error: error.message };
+    } catch (_error) {
+      return { status: "failed", _error: error.message };
     }
   }
 
@@ -197,8 +197,8 @@ class QMOINotificationSystem {
       }
       const result = await axios.post(this.config.slack.webhook, slackMessage);
       return { status: "sent", messageId: result.data.ts };
-    } catch (error) {
-      return { status: "failed", error: error.message };
+    } catch (_error) {
+      return { status: "failed", _error: error.message };
     }
   }
 
@@ -221,8 +221,8 @@ class QMOINotificationSystem {
         discordMessage,
       );
       return { status: "sent", messageId: result.data.id };
-    } catch (error) {
-      return { status: "failed", error: error.message };
+    } catch (_error) {
+      return { status: "failed", _error: error.message };
     }
   }
 
@@ -248,8 +248,8 @@ class QMOINotificationSystem {
         telegramMessage,
       );
       return { status: "sent", messageId: result.data.result.message_id };
-    } catch (error) {
-      return { status: "failed", error: error.message };
+    } catch (_error) {
+      return { status: "failed", _error: error.message };
     }
   }
 
@@ -277,15 +277,15 @@ class QMOINotificationSystem {
         pushoverMessage,
       );
       return { status: "sent", messageId: result.data.id };
-    } catch (error) {
-      return { status: "failed", error: error.message };
+    } catch (_error) {
+      return { status: "failed", _error: error.message };
     }
   }
 
   async logNotification(notification) {
     try {
       await fs.appendFile(this.logPath, JSON.stringify(notification) + "\n");
-    } catch (error) {
+    } catch (_error) {
       (console as any).error(`❌ Failed to log notification: ${error.message}`);
     }
   }

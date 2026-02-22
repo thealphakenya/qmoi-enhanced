@@ -85,7 +85,10 @@ async function applyFix(strategy: unknown, error: FixRequest["error"]) {
   };
 }
 
-async function updateErrorTracking(error: FixRequest["error"], fixResult: unknown) {
+async function updateErrorTracking(
+  error: FixRequest["error"],
+  fixResult: unknown,
+) {
   // Update the error tracking system with the fix results
   // This could involve:
   // 1. Marking the error as resolved

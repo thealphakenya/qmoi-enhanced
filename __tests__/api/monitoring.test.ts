@@ -30,11 +30,11 @@ describe("Admin Monitoring APIs", () => {
     // Generate tokens for authorization tests
     adminToken = authService.generateToken(
       (adminUser as any).id,
-      (adminUser as any).email || "admin@qmoi.app"
+      (adminUser as any).email || "admin@qmoi.app",
     );
     regularToken = authService.generateToken(
       (regularUser as any).id,
-      (regularUser as any).email || "user@qmoi.app"
+      (regularUser as any).email || "user@qmoi.app",
     );
   });
 
@@ -46,7 +46,7 @@ describe("Admin Monitoring APIs", () => {
   describe("Monitoring Dashboard", () => {
     test("should return 401 without authentication", async () => {
       const response = await fetch(
-        "http://localhost:3000/api/admin/monitoring"
+        "http://localhost:3000/api/admin/monitoring",
       );
       expect(response.status).toBe(401);
     });
@@ -56,7 +56,7 @@ describe("Admin Monitoring APIs", () => {
         "http://localhost:3000/api/admin/monitoring",
         {
           headers: { Authorization: `Bearer ${regularToken}` },
-        }
+        },
       );
       expect(response.status).toBe(403);
     });
@@ -66,7 +66,7 @@ describe("Admin Monitoring APIs", () => {
         "http://localhost:3000/api/admin/monitoring",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
-        }
+        },
       );
 
       expect(response.status).toBe(200);
@@ -86,7 +86,7 @@ describe("Admin Monitoring APIs", () => {
         "http://localhost:3000/api/admin/monitoring",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
-        }
+        },
       );
 
       const data = await response.json();
@@ -103,7 +103,7 @@ describe("Admin Monitoring APIs", () => {
         "http://localhost:3000/api/admin/monitoring",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
-        }
+        },
       );
 
       const data = await response.json();
@@ -150,7 +150,7 @@ describe("Admin Monitoring APIs", () => {
         "http://localhost:3000/api/admin/alerts",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
-        }
+        },
       );
 
       const alertsData = await alertsResponse.json();
@@ -194,7 +194,7 @@ describe("Admin Monitoring APIs", () => {
         "http://localhost:3000/api/admin/rate-limits",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
-        }
+        },
       );
 
       expect(response.status).toBe(200);
@@ -210,7 +210,7 @@ describe("Admin Monitoring APIs", () => {
         `http://localhost:3000/api/admin/rate-limits?userId=${regularUser.id}`,
         {
           headers: { Authorization: `Bearer ${adminToken}` },
-        }
+        },
       );
 
       expect(response.status).toBe(200);
@@ -233,7 +233,7 @@ describe("Admin Monitoring APIs", () => {
             endpoint: "/api/payments",
             newLimit: 200,
           }),
-        }
+        },
       );
 
       expect(response.status).toBe(200);
@@ -256,7 +256,7 @@ describe("Admin Monitoring APIs", () => {
             endpoint: "/api/payments",
             action: "reset",
           }),
-        }
+        },
       );
 
       expect(response.status).toBe(200);
@@ -289,7 +289,7 @@ describe("Admin Monitoring APIs", () => {
         "http://localhost:3000/api/admin/audit-logs",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
-        }
+        },
       );
 
       expect(response.status).toBe(200);
@@ -305,7 +305,7 @@ describe("Admin Monitoring APIs", () => {
         "http://localhost:3000/api/admin/audit-logs?action=UPDATE",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
-        }
+        },
       );
 
       expect(response.status).toBe(200);
@@ -322,7 +322,7 @@ describe("Admin Monitoring APIs", () => {
         "http://localhost:3000/api/admin/audit-logs?resource=user",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
-        }
+        },
       );
 
       expect(response.status).toBe(200);
@@ -338,7 +338,7 @@ describe("Admin Monitoring APIs", () => {
         "http://localhost:3000/api/admin/audit-logs?skip=0&take=10",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
-        }
+        },
       );
 
       expect(response.status).toBe(200);
@@ -359,15 +359,15 @@ describe("Admin Monitoring APIs", () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ format: "json" }),
-        }
+        },
       );
 
       expect(response.status).toBe(200);
       expect(response.headers.get("Content-Type")).toContain(
-        "application/json"
+        "application/json",
       );
       expect(response.headers.get("Content-Disposition")).toContain(
-        "attachment"
+        "attachment",
       );
     });
 
@@ -381,7 +381,7 @@ describe("Admin Monitoring APIs", () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ format: "csv" }),
-        }
+        },
       );
 
       expect(response.status).toBe(200);
@@ -398,7 +398,7 @@ describe("Admin Monitoring APIs", () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ format: "invalid" }),
-        }
+        },
       );
 
       expect(response.status).toBe(400);
@@ -422,7 +422,7 @@ describe("Admin Monitoring APIs", () => {
 
       expect(data.checks.database).toBeDefined();
       expect(["connected", "disconnected"]).toContain(
-        data.checks.database.status
+        data.checks.database.status,
       );
     });
 

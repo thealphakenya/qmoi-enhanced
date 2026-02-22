@@ -1,13 +1,9 @@
 module.exports = {
-  preset: "ts-jest",
-  testEnvironment: "node",
-  testMatch: ["**/tests/**/*.test.ts", "**/tests/**/*.spec.ts"],
-};
-module.exports = {
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
-  moduleNameMapping: {
+  moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",
+    "^@/lib/(.*)$": "<rootDir>/src/lib/$1",
     "^@/components/(.*)$": "<rootDir>/components/$1",
   },
   testMatch: [
@@ -18,6 +14,7 @@ module.exports = {
   transform: {
     "^.+\\.(js|jsx|ts|tsx)$": ["babel-jest", { presets: ["next/babel"] }],
   },
+  transformIgnorePatterns: ["/node_modules/(?!(@testing-library)/)"],
   moduleFileExtensions: ["js", "jsx", "ts", "tsx"],
   collectCoverageFrom: [
     "src/**/*.{js,jsx,ts,tsx}",

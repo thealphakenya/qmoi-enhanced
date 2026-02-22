@@ -65,7 +65,7 @@ wheels/
 .installed.cfg
 *.egg
 
-# Virtual environments
+# Virtual environments - note: app's lib/ folder is NOT ignored
 venv/
 env/
 ENV/
@@ -194,3 +194,4 @@ loaded_apps/**
 
 /generated/prisma
 v1.2.5_release/*.zip
+.env*.local

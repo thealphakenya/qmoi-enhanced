@@ -74,7 +74,10 @@ export function useTaskQueue() {
         const data = await response.json();
         setQueue(data);
       } catch (error) {
-        (globalThis.console as any)?.error?.("Failed to fetch task queue:", error);
+        (globalThis.console as any)?.error?.(
+          "Failed to fetch task queue:",
+          error,
+        );
       }
     }
 

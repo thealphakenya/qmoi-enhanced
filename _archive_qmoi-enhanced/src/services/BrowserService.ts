@@ -725,7 +725,7 @@ export class BrowserService {
     try {
       const domain = new URL(url).hostname;
       return domain.replace("www.", "");
-    } catch {
+    } catch (e) {
       return "Unknown";
     }
   }
@@ -734,7 +734,7 @@ export class BrowserService {
     try {
       const domain = new URL(url).hostname;
       return `https://${domain}/favicon.ico`;
-    } catch {
+    } catch (e) {
       return "🌐";
     }
   }

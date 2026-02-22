@@ -91,7 +91,10 @@ export const FloatingAQ: React.FC = () => {
       }
       return false;
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to load always-on setting:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to load always-on setting:",
+        error,
+      );
       return false;
     }
   });
@@ -103,7 +106,10 @@ export const FloatingAQ: React.FC = () => {
       }
       return false;
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to load auto-start setting:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to load auto-start setting:",
+        error,
+      );
       return false;
     }
   });
@@ -118,7 +124,10 @@ export const FloatingAQ: React.FC = () => {
         }
         return null;
       } catch (error) {
-        (globalThis.console as any)?.error?.("Failed to load voice URI setting:", error);
+        (globalThis.console as any)?.error?.(
+          "Failed to load voice URI setting:",
+          error,
+        );
         return null;
       }
     },
@@ -133,7 +142,10 @@ export const FloatingAQ: React.FC = () => {
       }
       return false;
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to load dark mode setting:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to load dark mode setting:",
+        error,
+      );
       return false;
     }
   });
@@ -169,7 +181,10 @@ export const FloatingAQ: React.FC = () => {
         document.body.classList.toggle("aq-dark", darkMode);
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to save dark mode setting:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to save dark mode setting:",
+        error,
+      );
       toast({
         title: "Error",
         description: "Failed to save dark mode setting",

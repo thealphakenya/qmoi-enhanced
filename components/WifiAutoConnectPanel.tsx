@@ -67,7 +67,7 @@ export const WifiAutoConnectPanel: React.FC = () => {
             connected: !!net.connected,
             zeroRated: false, // This would be determined by your zero-rated network detection logic
           } as Network;
-        })
+        }),
       );
     } catch (e) {
       const error = e as Error;
@@ -89,7 +89,7 @@ export const WifiAutoConnectPanel: React.FC = () => {
   useEffect(() => {
     if (networks.length > 0 && !connected) {
       const wifi = networks.find(
-        (n) => n.encryption === "WPA2" && !n.zeroRated
+        (n) => n.encryption === "WPA2" && !n.zeroRated,
       );
       const zero = networks.find((n) => n.zeroRated);
       if (mode === "auto" && wifi) connect(wifi.ssid);

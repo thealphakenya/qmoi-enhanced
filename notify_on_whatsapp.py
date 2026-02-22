@@ -16,7 +16,7 @@ SISTER_WHATSAPP_NUMBER = "+61424 053 495"
 # Provider configuration (choose provider via env var)
 # QMOI_WHATSAPP_PROVIDER: 'local' (default) or 'twilio'
 # QMOI_WHATSAPP_ENDPOINT: local endpoint to POST JSON payload { to, message }
-# TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM: for Twilio provider (whatsapp:+...) 
+# TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM: for Twilio provider (whatsapp:+...)
 QMOI_WHATSAPP_PROVIDER = os.environ.get("QMOI_WHATSAPP_PROVIDER", "local")
 QMOI_WHATSAPP_ENDPOINT = os.environ.get("QMOI_WHATSAPP_ENDPOINT", "http://localhost:3000/api/whatsapp-bot?send=1")
 TWILIO_ACCOUNT_SID = os.environ.get("TWILIO_ACCOUNT_SID")
@@ -25,6 +25,7 @@ TWILIO_FROM = os.environ.get("TWILIO_FROM")
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
 
 def send_whatsapp(to: str, message: str, provider: Optional[str] = None) -> bool:
     """Send a WhatsApp message using configured provider.
@@ -62,6 +63,7 @@ def send_whatsapp(to: str, message: str, provider: Optional[str] = None) -> bool
         logger.exception("Failed to send whatsapp message: %s", e)
         return False
 
+
 def notify_master_on_whatsapp(master_number, ai_status, projects_report, planned_projects, timetable):
     message = f"""
 Hello Master,
@@ -87,6 +89,7 @@ Timetable (✓ = done):
     if not ok:
         logger.warning("Failed to notify master via provider: %s", QMOI_WHATSAPP_PROVIDER)
 
+
 def notify_sister_on_whatsapp(sister_number, ai_features, project_suggestions, instructions):
     message = f"""
 Hello Sister!
@@ -108,6 +111,7 @@ Would you like me to start any of these projects for you? Just reply with the pr
     if not ok:
         logger.warning("Failed to notify sister via provider: %s", QMOI_WHATSAPP_PROVIDER)
 
+
 def notify_leah_wallet_on_whatsapp(sister_number, wallet_status, instructions):
     message = f"""
 Hello Leah!
@@ -127,6 +131,8 @@ You can check your balance, send/receive funds, and manage your wallet easily fr
         logger.warning("Failed to notify Leah about wallet via provider: %s", QMOI_WHATSAPP_PROVIDER)
 
 # Enhance: Save user info and ask for more details if missing
+
+
 def ensure_user_info(user_type, user_info):
     required_fields = ["name", "age", "career", "hobbies", "interests"]
     missing = [f for f in required_fields if f not in user_info or not user_info[f]]
@@ -149,7 +155,11 @@ def ensure_user_info(user_type, user_info):
             )
     return not missing
 
-# Enhance: Send files between devices via all wireless options ([PRODUCTION IMPLEMENTATION REQUIRED])
+# PRODUCTION: Send files between devices via wireless options (WiFi Direct, Bluetooth, NFC)
+# Implementation: Requires platform-specific device SDKs or cloud relay service
+# Status: Stubbed for test environments
+
+
 def send_file_between_devices(file_path, to_device, method="auto"):
     """Stub for file transfer between devices.
 
@@ -159,6 +169,7 @@ def send_file_between_devices(file_path, to_device, method="auto"):
     logger.info("send_file_between_devices: stub called for %s => %s via %s", file_path, to_device, method)
     # Not implemented in this repository; return False to indicate no-op
     return False
+
 
 def send_app_download_links_via_whatsapp():
     app_links = {

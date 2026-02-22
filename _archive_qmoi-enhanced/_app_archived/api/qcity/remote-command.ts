@@ -28,7 +28,7 @@ const handler = requireRole(["admin", "master"])(async (req: NextRequest) => {
       status: 401,
     });
   }
-  const { cmd, stream, deviceId = "default" } = (await req.json() as any);
+  const { cmd, stream, deviceId = "default" } = (await req.json()) as any;
   if (!cmd)
     return new Response(JSON.stringify({ error: "No command provided" }), {
       status: 400,

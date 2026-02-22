@@ -38,7 +38,7 @@ mainApp.listen(PORT_MAIN, async () => {
   console.log(`QMOI Main UI running at http://localhost:${PORT_MAIN}`);
   try {
     await open(`http://localhost:${PORT_MAIN}`);
-  } catch {}
+  } catch (e) {}
 });
 
 // QCity UI
@@ -51,7 +51,7 @@ qcityApp.listen(PORT_QCITY, async () => {
   console.log(`QCity UI running at http://localhost:${PORT_QCITY}`);
   try {
     await open(`http://localhost:${PORT_QCITY}`);
-  } catch {}
+  } catch (e) {}
 });
 
 // QMOI Space PWA
@@ -67,7 +67,7 @@ spaceApp.listen(PORT_SPACE, async () => {
   console.log(`QMOI Space PWA running at http://localhost:${PORT_SPACE}`);
   try {
     await open(`http://localhost:${PORT_SPACE}`);
-  } catch {}
+  } catch (e) {}
 });
 
 // Reliability: Log errors

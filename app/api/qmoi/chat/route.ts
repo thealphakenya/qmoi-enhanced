@@ -1,150 +1,89 @@
-/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
-import { NextResponse } from "next/server";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-export async function POST(_req: Request) {
+import { NextResponse } from "next/server";
+import { QMOIService } from "@/lib/qmoi-service";
+
+export async function POST(req: Request) {
   try {
     let body: any = {};
     try {
-      body = await _req.json();
+      body = await req.json();
     } catch (_e) {
-      body = {};
-    }
-    // Accept both {messages: [...] } and {input: 'text'} convenience
-    let messages = body.messages;
-    if (!messages && body.input) {
-      messages = [{ role: "user", content: body.input }];
+      return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
     }
 
-    if (!messages || !Array.isArray(messages)) {
-      return NextResponse.json({ error: "invalid_messages" }, { status: 400 });
+    const {
+      messages,
+      input,
+      sessionId = `session-${Date.now()}`,
+      userId = "anonymous-user",
+      context = {},
+    } = body;
+
+    // Support both message arrays and simple input
+    let userMessage = input;
+    if (
+      !userMessage &&
+      messages &&
+      Array.isArray(messages) &&
+      messages.length > 0
+    ) {
+      const lastMsg = messages[messages.length - 1];
+      userMessage = lastMsg.content || lastMsg.text || "";
     }
 
-    // Enforce canonical model unless explicitly overridden in non-production
-    const model =
-      process.env.NODE_ENV === "production" ? "qmoi" : body.model || "qmoi";
-
-    const qbase = process.env.QMOI_API_BASE;
-    // In production require an explicit QMOI_API_BASE to avoid accidentally proxying to localhost test servers
-    if (process.env.NODE_ENV === "production" && !qbase) {
+    if (!userMessage) {
       return NextResponse.json(
-        { error: "qmoi_api_base_not_configured" },
-        { status: 500 }
+        { error: "No message provided" },
+        { status: 400 },
       );
     }
 
-    const target = qbase || "http://127.0.0.1:8080";
+    // Process with QMOI service
+    const response = await QMOIService.processQuery(
+      userMessage,
+      userId,
+      context,
+    );
 
-    // Ensure a session id exists (cookie or incoming sessionId) so helper can track per-user memory
-    let sessionId = body.sessionId || _req.headers.get("x-qmoi-session");
-    // also accept cookie
-    try {
-      const cookie = _req.headers.get("cookie") || "";
-      if (!sessionId && cookie) {
-        const match = cookie.match(/(?:^|; )qmoi_session_id=([^;]+)/);
-        if (match) sessionId = match[1];
-      }
-    } catch (_e) {}
-
-    if (!sessionId) {
-      sessionId = `s_${Date.now().toString(36)}_${Math.random()
-        .toString(36)
-        .slice(2, 8)}`;
+    if (!response.success) {
+      return NextResponse.json(response, { status: 500 });
     }
 
-    // Enhanced timeout for superior QMOI processing with parallel optimization
-    const controller = new AbortController();
-    const timeout = Number(process.env.QMOI_PROXY_TIMEOUT_MS || 2000); // Reduced to 2000ms for faster responses
-    const timer = setTimeout(() => controller.abort(), timeout);
-
-    const fetchFn = (globalThis as any).fetch || fetch;
-    const resp = await fetchFn(`${target}/v1/chat/completions`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ model, messages, sessionId }),
-      signal: controller.signal,
-    }).finally(() => clearTimeout(timer));
-
-    // Be defensive: some test environments may mock fetch or Response differently.
-    let data: any = null;
-    try {
-      if (resp && typeof (resp as any).json === "function") {
-        data = await (resp as any).json();
-      } else if (resp && typeof (resp as any).text === "function") {
-        const txt = await (resp as any).text();
-        try {
-          data = txt ? JSON.parse(txt) : null;
-        } catch (_e) {
-          data = null;
-        }
-      } else {
-        data = null;
-      }
-    } catch (_e) {
-      data = null;
-    }
-
-    if (!data) {
-      try {
-        return NextResponse.json(
-          { error: "invalid_response_from_qmoi" },
-          { status: 502 }
-        );
-      } catch (_e) {
-        return { status: 502, body: { error: "invalid_response_from_qmoi" } };
-      }
-    }
-
-    // Sanitize assistant text: remove debug suffixes like "(tone: ...; model: ..)"
-    try {
-      const choices = (data as any)?.choices || [];
-      for (const c of choices) {
-        const msg = c.message || c;
-        if (msg && typeof msg.content === "string") {
-          // strip parenthetical debug suffix unless client requested debug via header
-          const wantDebug = _req.headers.get("x-qmoi-debug") === "1";
-          if (!wantDebug) {
-            msg.content = msg.content.replace(/\s*\(tone:\s*[^\)]+\)\s*$/i, "");
-            msg.content = msg.content.replace(
-              /\s*\(tone:\s*[^;]+;\s*model:\s*[^\)]+\)\s*$/i,
-              ""
-            );
-          }
-        }
-      }
-    } catch (_e) {
-      // ignore sanitization errors
-    }
-
-    // Pass-through sanitized response and set session cookie when new
-    try {
-      const _res = NextResponse.json(data);
-      // if incoming _request didn't have cookie, set one so browser persists session
-      try {
-        const hadCookie = (_req.headers.get("cookie") || "").includes(
-          "qmoi_session_id="
-        );
-        if (!hadCookie && sessionId) {
-          // Set cookie for 1 year
-          const cookieVal = `qmoi_session_id=${sessionId}; Path=/; Max-Age=${
-            60 * 60 * 24 * 365
-          }; SameSite=Lax`;
-          _res.headers.set("Set-Cookie", cookieVal);
-        }
-      } catch (_e) {}
-      return _res;
-    } catch (_e) {
-      return { status: 200, body: data };
-    }
+    return NextResponse.json({
+      ...response,
+      choices: [
+        {
+          message: {
+            role: "assistant",
+            content: response.message,
+          },
+        },
+      ],
+    });
   } catch (error) {
-    (console as any).error("Error in /api/qmoi/chat:", error);
-    try {
-      return NextResponse.json({ error: "server_error" }, { status: 500 });
-    } catch (_e) {
-      // If NextResponse.json throws in the test environment, fall back to a plain object
-      // This keeps tests deterministic without relying on Next runtime internals.
-      // The test harness should still validate that the fetch call occurred.
-      return { status: 500, body: { error: "server_error" } };
-    }
+    console.error("QMOI chat error:", error);
+    return NextResponse.json(
+      {
+        error: "Internal server error",
+        message: error instanceof Error ? error.message : "Unknown error",
+      },
+      { status: 500 },
+    );
   }
+}
+
+export async function GET() {
+  return NextResponse.json({
+    name: "QMOI Chat API",
+    version: "2.0.1",
+    model: "qmoi-enhanced",
+    capabilities: [
+      "conversation",
+      "memory-integration",
+      "qvillage-features",
+      "biometric-aware",
+      "real-time-response",
+    ],
+  });
 }

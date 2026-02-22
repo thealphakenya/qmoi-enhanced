@@ -29,7 +29,11 @@ export default async function handler(
     }
     const { action, platform = "vercel", ...params } = req.body;
     logger.info(`[QMOI-AUTODEV] Action: ${action}`, params);
-    let result: unknown = { success: false, message: "Not implemented", logs: [] };
+    let result: unknown = {
+      success: false,
+      message: "Not implemented",
+      logs: [],
+    };
     switch (action) {
       case "force_run": {
         let fixResults = [];

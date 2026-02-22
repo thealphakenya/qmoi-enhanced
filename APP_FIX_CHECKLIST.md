@@ -45,7 +45,7 @@ ls -la ~/Downloads/*.apk 2>/dev/null
 ```
 
 **Result**: Found? [ ] Yes [ ] No [ ] Maybe  
-**Location**: ******\*\*\*\*******\_******\*\*\*\*******
+**Location**: **\*\***\*\*\*\***\*\***\_**\*\***\*\*\*\***\*\***
 
 ### Task 2: Search for Source Code
 
@@ -58,16 +58,16 @@ find /workspaces -type d -name "android" -o -name "ios" -o -name "app-src" 2>/de
 ```
 
 **Result**: Found? [ ] Yes [ ] No  
-**Location**: ******\*\*\*\*******\_******\*\*\*\*******
+**Location**: **\*\***\*\*\*\***\*\***\_**\*\***\*\*\*\***\*\***
 
 ### Task 3: Document Findings
 
 **Choose ONE**:
 
-- [ ] Real builds found at: ******\*\*\*\*******\_******\*\*\*\*******
-- [ ] Source code found at: ******\*\*\*\*******\_******\*\*\*\*******
+- [ ] Real builds found at: **\*\***\*\*\*\***\*\***\_**\*\***\*\*\*\***\*\***
+- [ ] Source code found at: **\*\***\*\*\*\***\*\***\_**\*\***\*\*\*\***\*\***
 - [ ] Neither found - need to create MVP apps
-- [ ] Other: **********\*\*\*\***********\_**********\*\*\*\***********
+- [ ] Other: \***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\_\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***
 
 ---
 

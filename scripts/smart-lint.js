@@ -40,7 +40,7 @@ class SmartLinter {
         stdio: "pipe",
       });
       return { success: true, output: "" };
-    } catch (error) {
+    } catch (_error) {
       return { success: false, output: error.stdout || error.stderr || "" };
     }
   }
@@ -81,7 +81,7 @@ class SmartLinter {
   readFile(filePath) {
     try {
       return readFileSync(filePath, "utf8");
-    } catch (error) {
+    } catch (_error) {
       this.log(`Error reading file ${filePath}: ${error.message}`, "error");
       return null;
     }
@@ -93,7 +93,7 @@ class SmartLinter {
       this.filesModified.add(filePath);
       this.log(`Fixed file: ${filePath}`, "success");
       return true;
-    } catch (error) {
+    } catch (_error) {
       this.log(`Error writing file ${filePath}: ${error.message}`, "error");
       return false;
     }
@@ -348,7 +348,7 @@ class SmartLinter {
       if (!errorsByFile[error.file]) {
         errorsByFile[error.file] = [];
       }
-      errorsByFile[error.file].push(error);
+      errorsByFile[error.file].push(_error);
     }
 
     // Apply fixes for each file
@@ -402,7 +402,7 @@ class SmartLinter {
 
       // Display remaining errors
       console.log("\n📋 Remaining Issues:");
-      remainingErrors.forEach((error, index) => {
+      remainingErrors.forEach((_error, index) => {
         console.log(
           `   ${index + 1}. ${error.file}:${error.line}:${error.column} - ${error.rule}: ${error.message}`,
         );
@@ -421,7 +421,7 @@ class SmartLinter {
 
 // Run the smart linter
 const smartLinter = new SmartLinter();
-smartLinter.run().catch((error) => {
-  (console as any).error("Fatal error in smart linter:", error);
+smartLinter.run().catch((_error) => {
+  (console as any).error("Fatal error in smart linter:", _error);
   process.exit(1);
 });

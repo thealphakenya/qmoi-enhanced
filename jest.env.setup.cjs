@@ -135,10 +135,12 @@ try {
             ? url
             : (url && (url.url || String(url))) || "http://localhost";
         this.method = (init && init.method) || "GET";
-        this.headers = new (global.Headers ||
+        this.headers = new (
+          global.Headers ||
           function (h) {
             this._map = h || {};
-          })(init && init.headers ? init.headers : {});
+          }
+        )(init && init.headers ? init.headers : {});
         this.body = init && init.body ? init.body : null;
       }
       async json() {

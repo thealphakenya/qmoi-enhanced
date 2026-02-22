@@ -16,16 +16,13 @@ export async function POST(_request: NextRequest) {
     if (!body.email || !body.username || !body.password) {
       return NextResponse.json(
         { error: "Missing required fields" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     // Validate email format
     if (!authService.validateEmail(body.email)) {
-      return NextResponse.json(
-        { error: "Invalid email format" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
     }
 
     // Validate password strength. Support both boolean quick-check and
@@ -48,7 +45,7 @@ export async function POST(_request: NextRequest) {
           error: "password too weak",
           details: passwordValidationResult.errors,
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -58,7 +55,7 @@ export async function POST(_request: NextRequest) {
       console.warn("REGISTER: existing found for", body.email, existing);
       return NextResponse.json(
         { error: "Email already exists" },
-        { status: 409 }
+        { status: 409 },
       );
     }
 
@@ -86,8 +83,8 @@ export async function POST(_request: NextRequest) {
     await walletService.create({
       userId: user.id,
       address: `wallet_${user.id}`,
-      balance: '0',
-      network: 'USD',
+      balance: "0",
+      network: "USD",
     });
 
     // Generate auth tokens
@@ -122,7 +119,7 @@ export async function POST(_request: NextRequest) {
         refreshToken: tokens.refreshToken,
         expiresIn: tokens.expiresIn,
       },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error) {
     // Handle unique constraint errors from Prisma mock or generated client
@@ -135,7 +132,7 @@ export async function POST(_request: NextRequest) {
       ) {
         return NextResponse.json(
           { error: "Email already exists" },
-          { status: 409 }
+          { status: 409 },
         );
       }
     } catch (_e) {
@@ -144,7 +141,7 @@ export async function POST(_request: NextRequest) {
     (globalThis.console as any)?.error?.("Registration error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

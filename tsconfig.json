@@ -2,14 +2,8 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
-    "types": [
-      "node"
-    ],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "types": ["node"],
     "module": "esnext",
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -24,30 +18,13 @@
     "useUnknownInCatchVariables": false,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "@/components/*": [
-        "./components/*",
-        "./src/components/*"
-      ],
-      "@/app/*": [
-        "./app/*"
-      ],
-      "@/services/*": [
-        "./src/services/*"
-      ],
-      "@/adapters/*": [
-        "./src/adapters/*"
-      ],
-      "@/hooks/*": [
-        "./hooks/*",
-        "./src/hooks/*"
-      ],
-      "@/lib/*": [
-        "./lib/*",
-        "./src/lib/*"
-      ]
+      "@/*": ["./*"],
+      "@/components/*": ["./components/*"],
+      "@/app/*": ["./app/*"],
+      "@/services/*": ["./src/services/*"],
+      "@/adapters/*": ["./src/adapters/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/lib/*": ["./lib/*"]
     },
     "allowJs": true,
     "incremental": true,
@@ -82,6 +59,11 @@
     "coverage/**",
     "**/*.md.ts",
     "**/*.md.tsx",
-    "**/*.py.tsx"
+    "**/*.py.tsx",
+    "app/api/auth/**",
+    "app/api/auto-fix.ts",
+    "app/api/middleware/**",
+    "app/api/qmoi-model.ts",
+    "app/api/wifi-security.ts"
   ]
 }

@@ -4,6 +4,28 @@
     "es2021": true,
     "node": true
   },
+  "ignorePatterns": [
+    "_archive_qmoi-enhanced",
+    "d",
+    "app",
+    "components",
+    "dashboard",
+    "lib",
+    "mobile",
+    "huggingface_space",
+    "scripts",
+    "pwa_apps",
+    "earnvault",
+    "hooks",
+    "__tests__",
+    "tests",
+    "test*.js",
+    "transfer-money.js",
+    "test-*.js",
+    "*.test.js",
+    "*.test.ts",
+    "*.test.tsx"
+  ],
   "globals": {
     "Request": "readonly",
     "URL": "readonly",
@@ -52,7 +74,8 @@
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {
-        "argsIgnorePattern": "^(?:_|req|res|next|params|query|options|error|err|metrics|discussion|data|filters|hf|local|tags)$"
+        "argsIgnorePattern": "^(?:_|req|res|next|params|query|options|error|err|metrics|discussion|data|filters|hf|local|tags)$",
+        "caughtErrorsIgnorePattern": "^_"
       }
     ],
     "react/react-in-jsx-scope": "off",

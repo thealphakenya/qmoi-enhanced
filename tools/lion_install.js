@@ -42,7 +42,7 @@ function runInstall(pm) {
 (function main() {
   if (!hasNode()) {
     console.error(
-      "node is not installed in this environment. Please install Node.js first."
+      "node is not installed in this environment. Please install Node.js first.",
     );
     process.exit(2);
   }

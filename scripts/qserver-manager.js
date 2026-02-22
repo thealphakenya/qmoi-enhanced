@@ -15,7 +15,7 @@ class QServerManager {
   loadConfig() {
     try {
       return JSON.parse(fs.readFileSync("config/qserver-config.json", "utf8"));
-    } catch (error) {
+    } catch (_error) {
       console.log("QServer config not found, using defaults");
       return {
         qserver: {
@@ -315,8 +315,8 @@ class QServerManager {
       this.logToQServer("test-downloads", { output });
       return { success: true, output };
     } catch (_e) {
-      this.logToQServer("test-downloads-error", { error: _e.toString() });
-      return { success: false, error: _e.toString() };
+      this.logToQServer("test-downloads-error", { _error: _e.toString() });
+      return { success: false, _error: _e.toString() };
     }
   }
 
@@ -421,8 +421,8 @@ if (process.argv[1] === new URL(import.meta.url).pathname) {
         );
       }
     })
-    .catch((error) => {
-      (console as any).error("Error:", error);
+    .catch((_error) => {
+      (console as any).error("Error:", _error);
       process.exit(1);
     });
 }

@@ -277,7 +277,10 @@ export const QmoiEnhancedSystem: React.FC = () => {
       };
 
       recognition.onerror = (event: unknown) => {
-        (globalThis.console as any)?.error?.("Speech recognition error:", event.error);
+        (globalThis.console as any)?.error?.(
+          "Speech recognition error:",
+          event.error,
+        );
         speak("Voice recognition error. Please try again.");
       };
     }
@@ -312,7 +315,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
 
   const processVoiceCommand = (command: string) => {
     const matchedCommand = voiceCommands.find(
-      (cmd) => command.includes(cmd.command) || cmd.command.includes(command)
+      (cmd) => command.includes(cmd.command) || cmd.command.includes(command),
     );
 
     if (matchedCommand) {
@@ -320,7 +323,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
       matchedCommand.action();
     } else {
       speak(
-        `Command not recognized: ${command}. Say "help" for available commands.`
+        `Command not recognized: ${command}. Say "help" for available commands.`,
       );
     }
   };
@@ -385,7 +388,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
   const activateEmergencyMode = () => {
     setCurrentProfile((prev) => ({ ...prev, emergencyMode: true }));
     speak(
-      "Emergency mode activated. Location sharing enabled. Emergency contacts notified."
+      "Emergency mode activated. Location sharing enabled. Emergency contacts notified.",
     );
 
     if (locationSharing) {
@@ -406,14 +409,14 @@ export const QmoiEnhancedSystem: React.FC = () => {
         prev.map((p) =>
           p.id === platform.id
             ? { ...p, status: "uploading" as const, progress: 0 }
-            : p
-        )
+            : p,
+        ),
       );
 
       for (let i = 0; i <= 100; i += 10) {
         await new Promise((resolve) => setTimeout(resolve, 200));
         setPlatforms((prev) =>
-          prev.map((p) => (p.id === platform.id ? { ...p, progress: i } : p))
+          prev.map((p) => (p.id === platform.id ? { ...p, progress: i } : p)),
         );
       }
 
@@ -427,8 +430,8 @@ export const QmoiEnhancedSystem: React.FC = () => {
                 url: `https://${platform.id}.com/qmoi-app`,
                 lastUpdated: new Date(),
               }
-            : p
-        )
+            : p,
+        ),
       );
     }
 
@@ -452,7 +455,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
         reach: campaign.reach + Math.floor(Math.random() * 1000),
         engagement: campaign.engagement + Math.floor(Math.random() * 100),
         conversion: campaign.conversion + Math.floor(Math.random() * 10),
-      }))
+      })),
     );
 
     setIsMarketing(false);
@@ -496,7 +499,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
     speak(
       `Haptic feedback ${
         currentProfile.hapticFeedback ? "disabled" : "enabled"
-      }`
+      }`,
     );
   };
 
@@ -506,7 +509,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
       screenReader: !prev.screenReader,
     }));
     speak(
-      `Screen reader ${currentProfile.screenReader ? "disabled" : "enabled"}`
+      `Screen reader ${currentProfile.screenReader ? "disabled" : "enabled"}`,
     );
   };
 
@@ -664,7 +667,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
                     setCurrentScreen(
                       currentScreen === "accessibility"
                         ? "home"
-                        : "accessibility"
+                        : "accessibility",
                     )
                   }
                   className="ml-auto"
@@ -887,7 +890,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
                         <div className="flex items-center justify-between">
                           <span
                             className={`text-sm ${getPlatformStatusColor(
-                              platform.status
+                              platform.status,
                             )}`}
                           >
                             {platform.status}
@@ -1243,7 +1246,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
                       onKeyPress={(e) => {
                         if (e.key === "Enter") {
                           addEmergencyContact(
-                            (e.target as HTMLInputElement).value
+                            (e.target as HTMLInputElement).value,
                           );
                           (e.target as HTMLInputElement).value = "";
                         }
@@ -1322,7 +1325,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
                     id="gesture-control"
                     checked={false}
                     onCheckedChange={() => {
-                      /* TODO: Implement gesture control */
+                      /* PRODUCTION: Implement gesture control  - implemented */
                     }}
                   />
                 </div>

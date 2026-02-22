@@ -10,7 +10,10 @@ function logAudit(entry: Record<string, any>) {
     fs.appendFileSync(AUDIT_LOG, JSON.stringify(entry) + "\n", "utf-8");
   } catch (e) {
     // best-effort logging; do not break primary flow
-    (globalThis.console as any)?.error?.("Failed to write audit log", e.message);
+    (globalThis.console as any)?.error?.(
+      "Failed to write audit log",
+      e.message,
+    );
   }
 }
 
@@ -95,12 +98,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
     if (action === "replace") {
       if (typeof replace !== "string" || typeof content !== "string") {
-        res
-          .status(400)
-          .json({
-            success: false,
-            error: "replace and content must be strings",
-          });
+        res.status(400).json({
+          success: false,
+          error: "replace and content must be strings",
+        });
         return;
       }
       const data = fs.readFileSync(absPath, "utf-8");

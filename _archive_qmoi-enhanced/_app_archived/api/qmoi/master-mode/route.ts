@@ -83,7 +83,10 @@ export async function GET(request: NextRequest) {
       },
     });
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error fetching master mode status:", error);
+    (globalThis.console as any)?.error?.(
+      "Error fetching master mode status:",
+      error,
+    );
     return NextResponse.json(
       { error: "Failed to fetch master mode status" },
       { status: 500 },

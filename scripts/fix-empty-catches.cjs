@@ -22,7 +22,7 @@ function fixFile(file) {
     /catch\s*\(\s*([A-Za-z0-9_$]+)\s*\)\s*\{\s*\}/g,
     (m, p1) => {
       return `catch (${p1}) { void ${p1}; }`;
-    }
+    },
   );
 
   if (fixed !== content) {

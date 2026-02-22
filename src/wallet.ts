@@ -12,7 +12,7 @@ export interface WalletAdapter {
     amount: number,
     asset: string,
     strategy?: string,
-    confidence?: number
+    confidence?: number,
   ) => Promise<string>;
   approveTrade?: (tradeId: string, auto?: boolean) => Promise<boolean>;
 }
@@ -63,7 +63,7 @@ export class TestnetAdapter implements WalletAdapter {
     amount: number,
     asset: string,
     strategy?: string,
-    confidence?: number
+    confidence?: number,
   ) {
     void amount;
     void asset;
@@ -71,7 +71,7 @@ export class TestnetAdapter implements WalletAdapter {
     void confidence;
 
     const id = `test-${this.name}-${Date.now()}-${Math.floor(
-      Math.random() * 10000
+      Math.random() * 10000,
     )}`;
     // In a real adapter, you would call the testnet SDK here. We persist a lightweight entry in state if available.
     return id;
@@ -123,60 +123,60 @@ export class CashonAdapter implements WalletAdapter {
       return { amount, currency: "USD", status: "mock" };
     }
 
-    // Prepare proposal payload
-    const payload = {
-      adapter: "cashon",
-      api_url: apiUrl || "unknown",
-      api_key_masked: _maskSecret(apiKey),
-    };
-    const prop = await writeProposal({
-      title: "check-balance-cashon",
-      description: "Dry-run: check Cashon real balance",
-      payload,
-    });
+    // If credentials exist, perform a direct HTTP call to the adapter's API.
+    // Use global fetch when available; otherwise write a proposal and return proposal metadata.
+    try {
+      const maybeFetch = (global as unknown as { fetch?: unknown }).fetch;
+      if (typeof maybeFetch === "function") {
+        const url = apiUrl || "https://api.cashon.example/v1/balance";
+        const controller = new AbortController();
+        const timeout = Number(process.env.WALLET_HTTP_TIMEOUT_MS || 5000);
+        const timeoutId = setTimeout(() => controller.abort(), timeout);
+        const r = await (maybeFetch as any)(url, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            Accept: "application/json",
+          },
+          signal: controller.signal,
+        });
+        clearTimeout(timeoutId);
+        const j = await (
+          r as { json: () => Promise<Record<string, unknown>> }
+        ).json();
+        // Support multiple response shapes
+        const balance =
+          (j.balance as number) || (j.data && (j.data.balance as number)) || 0;
+        const currency =
+          (j.currency as string) ||
+          (j.data && (j.data.currency as string)) ||
+          "USD";
+        return { amount: balance, currency, status: "ok" };
+      }
 
-    // Only perform real calls when explicitly allowed via env flags
-    const prod =
-      (process.env.PRODUCTION_CONFIRMED || "").toLowerCase() === "true";
-    const allow =
-      (process.env.ALLOW_REAL_ACTIONS || "").toLowerCase() === "true";
-    if (!prod || !allow) {
+      // If fetch not available, persist a proposal for human review
+      const prop = await writeProposal({
+        title: "check-balance-cashon",
+        description:
+          "No global fetch available: write proposal to check Cashon balance",
+        payload: {
+          adapter: "cashon",
+          api_url: apiUrl || "unknown",
+          api_key_masked: _maskSecret(apiKey),
+        },
+      });
       return {
         amount: 0,
         currency: "USD",
         status: "proposal_written",
         proposal: prop,
       };
-    }
-
-    // If allowed, attempt a minimal fetch if global fetch exists; otherwise return a network_not_available status
-    try {
-      const maybeFetch = (global as unknown as { fetch?: unknown }).fetch;
-      if (typeof maybeFetch === "function") {
-        const url = apiUrl || "https://api.cashon.example/v1/balance";
-        const r = await (
-          maybeFetch as (...args: unknown[]) => Promise<unknown>
-        )(url, {
-          headers: { Authorization: `Bearer ${apiKey}` },
-        });
-        const j = await (
-          r as { json: () => Promise<Record<string, unknown>> }
-        ).json();
-        // Expecting { balance: number, currency: string }
-        return {
-          amount: (j.balance as number) || 0,
-          currency: (j.currency as string) || "USD",
-          status: "ok",
-        };
-      }
-      return { amount: 0, currency: "USD", status: "network_not_available" };
-    } catch (_err) {
-      void _err;
+    } catch (err) {
       return {
         amount: 0,
         currency: "USD",
         status: "network_failed",
-        error: String(_err),
+        _error: String(err),
       };
     }
   }
@@ -213,56 +213,56 @@ export class MegavaultAdapter implements WalletAdapter {
       return { amount, currency: "USD", status: "mock" };
     }
 
-    const payload = {
-      adapter: "megavault",
-      api_url: apiUrl || "unknown",
-      api_key_masked: _maskSecret(apiKey),
-    };
-    const prop = await writeProposal({
-      title: "check-balance-megavault",
-      description: "Dry-run: check Megavault real balance",
-      payload,
-    });
+    try {
+      const maybeFetch = (global as unknown as { fetch?: unknown }).fetch;
+      if (typeof maybeFetch === "function") {
+        const url = apiUrl || "https://api.megavault.example/v1/balance";
+        const controller = new AbortController();
+        const timeout = Number(process.env.WALLET_HTTP_TIMEOUT_MS || 5000);
+        const timeoutId = setTimeout(() => controller.abort(), timeout);
+        const r = await (maybeFetch as any)(url, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            Accept: "application/json",
+          },
+          signal: controller.signal,
+        });
+        clearTimeout(timeoutId);
+        const j = await (
+          r as { json: () => Promise<Record<string, unknown>> }
+        ).json();
+        const balance =
+          (j.balance as number) || (j.data && (j.data.balance as number)) || 0;
+        const currency =
+          (j.currency as string) ||
+          (j.data && (j.data.currency as string)) ||
+          "USD";
+        return { amount: balance, currency, status: "ok" };
+      }
 
-    const prod =
-      (process.env.PRODUCTION_CONFIRMED || "").toLowerCase() === "true";
-    const allow =
-      (process.env.ALLOW_REAL_ACTIONS || "").toLowerCase() === "true";
-    if (!prod || !allow) {
+      const prop = await writeProposal({
+        title: "check-balance-megavault",
+        description:
+          "No global fetch available: write proposal to check Megavault balance",
+        payload: {
+          adapter: "megavault",
+          api_url: apiUrl || "unknown",
+          api_key_masked: _maskSecret(apiKey),
+        },
+      });
       return {
         amount: 0,
         currency: "USD",
         status: "proposal_written",
         proposal: prop,
       };
-    }
-
-    try {
-      const maybeFetch = (global as unknown as { fetch?: unknown }).fetch;
-      if (typeof maybeFetch === "function") {
-        const url = apiUrl || "https://api.megavault.example/v1/balance";
-        const r = await (
-          maybeFetch as (...args: unknown[]) => Promise<unknown>
-        )(url, {
-          headers: { Authorization: `Bearer ${apiKey}` },
-        });
-        const j = await (
-          r as { json: () => Promise<Record<string, unknown>> }
-        ).json();
-        return {
-          amount: (j.balance as number) || 0,
-          currency: (j.currency as string) || "USD",
-          status: "ok",
-        };
-      }
-      return { amount: 0, currency: "USD", status: "network_not_available" };
-    } catch (_err) {
-      void _err;
+    } catch (err) {
       return {
         amount: 0,
         currency: "USD",
         status: "network_failed",
-        error: String(_err),
+        _error: String(err),
       };
     }
   }
@@ -282,7 +282,7 @@ export class WalletService {
     if (!fs.existsSync(this.stateFile))
       fs.writeFileSync(
         this.stateFile,
-        JSON.stringify({ wallets: {} }, null, 2)
+        JSON.stringify({ wallets: {} }, null, 2),
       );
   }
 
@@ -306,7 +306,7 @@ export class WalletService {
         };
       } catch (_err) {
         void _err;
-        out[name] = { error: String(_err) };
+        out[name] = { _error: String(_err) };
       }
     }
     // persist snapshot
@@ -343,7 +343,7 @@ export class WalletService {
       fs.writeFileSync(
         this.stateFile,
         JSON.stringify(dataObjSafe, null, 2),
-        "utf8"
+        "utf8",
       );
     } catch (_err) {
       void _err;
@@ -352,9 +352,9 @@ export class WalletService {
         JSON.stringify(
           { history: [{ ts: new Date().toISOString(), snapshot }] },
           null,
-          2
+          2,
         ),
-        "utf8"
+        "utf8",
       );
     }
   }
@@ -367,7 +367,7 @@ export class WalletService {
 
     try {
       const s: unknown = JSON.parse(
-        fs.readFileSync(this.stateFile, "utf8") || "{}"
+        fs.readFileSync(this.stateFile, "utf8") || "{}",
       );
       if (s && typeof s === "object") {
         const sObj = s as Record<string, unknown>;

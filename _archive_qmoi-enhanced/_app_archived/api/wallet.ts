@@ -16,7 +16,10 @@ let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
 } catch (e) {
-  (globalThis.console as any)?.error?.("Failed to initialize WhatsApp service:", e);
+  (globalThis.console as any)?.error?.(
+    "Failed to initialize WhatsApp service:",
+    e,
+  );
 }
 
 // Enhanced logging

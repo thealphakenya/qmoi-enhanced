@@ -53,7 +53,7 @@ app.use(
   express.static("public", {
     maxAge: "1y",
     etag: false,
-  })
+  }),
 );
 ```
 

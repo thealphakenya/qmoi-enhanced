@@ -141,7 +141,7 @@ interface Test {
 }
 
 const test: Test = {
-  name: 123, // Type error: number assigned to string
+  name: 123, // Type _error: number assigned to string
   invalid: true // Property doesn't exist
 };
 `;
@@ -361,8 +361,8 @@ console.log(usedVariable);
         });
       });
       
-      child.on('error', (error) => {
-        reject(error);
+      child.on('error', (_error) => {
+        reject(_error);
       });
     });
   }
@@ -382,7 +382,7 @@ console.log(usedVariable);
       setupSuccess: false,
       testSuccess: false,
       cleanupSuccess: false,
-      error: null,
+      _error: null,
       autoFixAttempted: false,
       autoFixSuccess: false
     };
@@ -415,7 +415,7 @@ console.log(usedVariable);
             }
             break;
           }
-        } catch (error) {
+        } catch (_error) {
           console.log(`   ⚠️  Command failed: ${command}`);
         }
       }
@@ -436,12 +436,12 @@ console.log(usedVariable);
           } else {
             console.log('   ❌ Auto-fix failed');
           }
-        } catch (error) {
-          console.log('   ❌ Auto-fix error:', error.message);
+        } catch (_error) {
+          console.log('   ❌ Auto-fix _error:', error.message);
         }
       }
       
-    } catch (error) {
+    } catch (_error) {
       result.error = error.message;
       console.log(`   ❌ Setup failed: ${error.message}`);
     } finally {
@@ -452,7 +452,7 @@ console.log(usedVariable);
         result.cleanupTime = Date.now() - cleanupStart;
         result.cleanupSuccess = true;
         console.log('   🧹 Cleanup completed');
-      } catch (error) {
+      } catch (_error) {
         console.log(`   ⚠️  Cleanup failed: ${error.message}`);
       }
     }

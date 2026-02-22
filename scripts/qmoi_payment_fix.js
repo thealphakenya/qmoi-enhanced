@@ -137,7 +137,7 @@ class QmoiPaymentFix {
         issues.push(`Pesapal API: ${pesapalTest.error}`);
       }
 
-    } catch (error) {
+    } catch (_error) {
       issues.push(`API connectivity test failed: ${error.message}`);
     }
 
@@ -147,7 +147,7 @@ class QmoiPaymentFix {
   async testMpesaAPI() {
     try {
       // Simulate M-Pesa API test
-      const response = await fetch('https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials', {
+      const _response = await fetch('https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials', {
         method: 'GET',
         headers: {
           'Authorization': 'Basic ' + Buffer.from(process.env.MPESA_CONSUMER_KEY + ':' + process.env.MPESA_CONSUMER_SECRET).toString('base64')
@@ -157,17 +157,17 @@ class QmoiPaymentFix {
       if (response.ok) {
         return { success: true };
       } else {
-        return { success: false, error: `HTTP ${response.status}` };
+        return { success: false, _error: `HTTP ${response.status}` };
       }
-    } catch (error) {
-      return { success: false, error: error.message };
+    } catch (_error) {
+      return { success: false, _error: error.message };
     }
   }
 
   async testAirtelAPI() {
     try {
       // Simulate Airtel API test
-      const response = await fetch('https://openapiuat.airtel.africa/auth/oauth2/token', {
+      const _response = await fetch('https://openapiuat.airtel.africa/auth/oauth2/token', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -182,17 +182,17 @@ class QmoiPaymentFix {
       if (response.ok) {
         return { success: true };
       } else {
-        return { success: false, error: `HTTP ${response.status}` };
+        return { success: false, _error: `HTTP ${response.status}` };
       }
-    } catch (error) {
-      return { success: false, error: error.message };
+    } catch (_error) {
+      return { success: false, _error: error.message };
     }
   }
 
   async testPesapalAPI() {
     try {
       // Simulate Pesapal API test
-      const response = await fetch('https://[PRODUCTION IMPLEMENTATION REQUIRED].pesapal.com/api/PostPesapalDirectOrderV4', {
+      const _response = await fetch('https://[PRODUCTION IMPLEMENTATION REQUIRED].pesapal.com/api/PostPesapalDirectOrderV4', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/xml'
@@ -202,8 +202,8 @@ class QmoiPaymentFix {
 
       // Pesapal might return different status codes, but we're just testing connectivity
       return { success: true };
-    } catch (error) {
-      return { success: false, error: error.message };
+    } catch (_error) {
+      return { success: false, _error: error.message };
     }
   }
 
@@ -252,7 +252,7 @@ class QmoiPaymentFix {
         issues.push(`Recent payment failures: ${recentFailures.length} failures detected`);
       }
 
-    } catch (error) {
+    } catch (_error) {
       issues.push(`Revenue engine check failed: ${error.message}`);
     }
 
@@ -263,8 +263,8 @@ class QmoiPaymentFix {
     try {
       // Simulate revenue status check
       return { running: true, dailyEarnings: 5000, target: 10000 };
-    } catch (error) {
-      return { running: false, error: error.message };
+    } catch (_error) {
+      return { running: false, _error: error.message };
     }
   }
 
@@ -272,8 +272,8 @@ class QmoiPaymentFix {
     try {
       // Simulate checking recent payment failures
       return []; // Empty array means no recent failures
-    } catch (error) {
-      return [{ error: error.message }];
+    } catch (_error) {
+      return [{ _error: error.message }];
     }
   }
 
@@ -295,7 +295,7 @@ class QmoiPaymentFix {
         fixes.push('Payment cache cleared');
       }
 
-    } catch (error) {
+    } catch (_error) {
       this.log(`Revenue engine fix failed: ${error.message}`, 'ERROR');
     }
 
@@ -326,7 +326,7 @@ class QmoiPaymentFix {
       const syntaxIssues = await this.checkAnnotationSyntax();
       issues.push(...syntaxIssues);
 
-    } catch (error) {
+    } catch (_error) {
       issues.push(`Annotation check failed: ${error.message}`);
     }
 
@@ -353,11 +353,11 @@ class QmoiPaymentFix {
             issues.push(`Unclosed bracket in ${file}`);
           }
           
-        } catch (error) {
+        } catch (_error) {
           issues.push(`Error reading ${file}: ${error.message}`);
         }
       }
-    } catch (error) {
+    } catch (_error) {
       issues.push(`Syntax check failed: ${error.message}`);
     }
 
@@ -411,14 +411,14 @@ class QmoiPaymentFix {
           
           fs.writeFileSync(file, content);
           
-        } catch (error) {
+        } catch (_error) {
           this.log(`Error fixing ${file}: ${error.message}`, 'WARN');
         }
       }
       
       fixes.push('Annotation syntax fixed');
 
-    } catch (error) {
+    } catch (_error) {
       this.log(`Annotation fix failed: ${error.message}`, 'ERROR');
     }
 
@@ -476,7 +476,7 @@ class QmoiPaymentFix {
       // Generate report
       this.generateReport();
 
-    } catch (error) {
+    } catch (_error) {
       this.log(`Payment fix failed: ${error.message}`, 'ERROR');
       process.exitCode = 1;
     }

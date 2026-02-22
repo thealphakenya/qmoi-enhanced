@@ -303,6 +303,7 @@ QI Chat APIs:
 ├─ Webhooks: Message events
 
 Recent validation & notes:
+
 - Updated local QM OI helper (scripts/qmoi_local_server.py) to produce concise, natural replies for UI testing (handles greetings, "how are you", and "create file" intents).
 - Added tests: `tests/test_qmoi_local_server.py` (pytest) and `tests/qmoi-chat-api.test.ts` (Jest) and a lightweight smoke script `scripts/quick_qmoi_checks.js` for local CI-free verification.
 - Note: Python pytest cannot be executed in this environment due to system Python pip restrictions; run `pytest tests/test_qmoi_local_server.py` in CI or an environment with pip available to fully validate the Python unit tests.

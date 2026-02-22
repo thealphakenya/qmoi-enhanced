@@ -59,6 +59,8 @@ import QmoiMediaManager from "./QmoiMediaManager";
 import FileExplorer from "./FileExplorer";
 import { NotificationCenter } from "./NotificationCenter";
 import QmoiAutoDistribution from "./QmoiAutoDistribution";
+import { SisterProjects } from "./SisterProjects";
+import AskQMoi from "./AskQMoi";
 
 interface DashboardProps {
   user?: {
@@ -88,8 +90,10 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
     "healthy" | "warning" | "critical"
   >("healthy");
   const [chatHistory, setChatHistory] = useState<unknown[]>([]);
+  const [askQMoiOpen, setAskQMoiOpen] = useState(false);
   const { toast } = useToast();
-  const { setCurrentUser, setRole, updateQMOIMemory, qmoiMemory, currentRole } = useMaster();
+  const { setCurrentUser, setRole, updateQMOIMemory, qmoiMemory, currentRole } =
+    useMaster();
 
   // Validate tab access on role change
   useEffect(() => {
@@ -165,32 +169,87 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
   // Navigation items
   const getAccessibleTabs = (role: string): Set<string> => {
     // Normalize role - map display names to internal codes
-    const normalizedRole = role.toLowerCase().includes("master") ? "master" :
-                          role.toLowerCase().includes("sister") ? "admin" :
-                          role.toLowerCase().includes("admin") ? "admin" :
-                          role.toLowerCase().includes("user") ? "user" :
-                          role.toLowerCase().includes("sponsored") ? "sponsored" :
-                          "guest";
-    
+    const normalizedRole = role.toLowerCase().includes("master")
+      ? "master"
+      : role.toLowerCase().includes("sister")
+        ? "sister"
+        : role.toLowerCase().includes("admin")
+          ? "admin"
+          : role.toLowerCase().includes("user")
+            ? "user"
+            : role.toLowerCase().includes("sponsored")
+              ? "sponsored"
+              : "guest";
+
     const tabAccess: Record<string, string[]> = {
       master: [
-        "overview", "chat", "qconverse", "biometric", "access", "memory",
-        "parallel", "accountability", "health", "trading", "financial",
-        "qvillage", "media", "files", "notifications", "settings"
+        "overview",
+        "chat",
+        "qconverse",
+        "biometric",
+        "access",
+        "memory",
+        "parallel",
+        "accountability",
+        "health",
+        "trading",
+        "financial",
+        "qvillage",
+        "media",
+        "files",
+        "notifications",
+        "settings",
+      ],
+      sister: [
+        "overview",
+        "chat",
+        "qconverse",
+        "biometric",
+        "memory",
+        "parallel",
+        "accountability",
+        "health",
+        "trading",
+        "financial",
+        "qvillage",
+        "media",
+        "files",
+        "projects",
+        "notifications",
+        "settings",
       ],
       admin: [
-        "overview", "chat", "qconverse", "biometric", "access", "memory",
-        "parallel", "accountability", "health", "trading", "financial",
-        "qvillage", "media", "files", "notifications", "settings"
+        "overview",
+        "chat",
+        "qconverse",
+        "biometric",
+        "access",
+        "memory",
+        "parallel",
+        "accountability",
+        "health",
+        "trading",
+        "financial",
+        "qvillage",
+        "media",
+        "files",
+        "notifications",
+        "settings",
       ],
       user: [
-        "overview", "chat", "qconverse", "biometric", "memory",
-        "trading", "media", "files", "notifications", "settings"
+        "overview",
+        "chat",
+        "qconverse",
+        "biometric",
+        "memory",
+        "trading",
+        "media",
+        "files",
+        "notifications",
+        "settings",
       ],
-      sponsored: [
-        "chat", "trading", "notifications", "settings"
-      ],
-      guest: []
+      sponsored: ["chat", "trading", "notifications", "settings"],
+      guest: [],
     };
     return new Set(tabAccess[normalizedRole] || []);
   };
@@ -212,18 +271,39 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
       badge: null,
     },
     { id: "health", label: "System Health", icon: Activity, badge: null },
-    { id: "trading", label: "Trading & Revenue", icon: TrendingUp, badge: null },
-    { id: "financial", label: "Financial Manager", icon: BarChart3, badge: null },
+    {
+      id: "trading",
+      label: "Trading & Revenue",
+      icon: TrendingUp,
+      badge: null,
+    },
+    {
+      id: "financial",
+      label: "Financial Manager",
+      icon: BarChart3,
+      badge: null,
+    },
     { id: "qvillage", label: "QVillage", icon: Database, badge: "ENTERPRISE" },
     { id: "media", label: "Media Manager", icon: MessageSquare, badge: null },
     { id: "files", label: "File Explorer", icon: Database, badge: null },
-    { id: "notifications", label: "Notifications", icon: Bell, badge: notifications > 0 ? String(notifications) : null },
+    {
+      id: "projects",
+      label: "Sister Projects",
+      icon: Grid,
+      badge: null,
+    },
+    {
+      id: "notifications",
+      label: "Notifications",
+      icon: Bell,
+      badge: notifications > 0 ? String(notifications) : null,
+    },
     { id: "settings", label: "Settings", icon: Settings, badge: null },
   ];
 
   // Filter navigation items based on role access
-  const navigationItems = allNavigationItems.filter(item => 
-    accessibleTabs.has(item.id)
+  const navigationItems = allNavigationItems.filter((item) =>
+    accessibleTabs.has(item.id),
   );
 
   const getActivityIcon = (type: string) => {
@@ -287,8 +367,8 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
                     systemStatus === "healthy"
                       ? "bg-green-500"
                       : systemStatus === "warning"
-                      ? "bg-yellow-500"
-                      : "bg-red-500"
+                        ? "bg-yellow-500"
+                        : "bg-red-500"
                   }`}
                 />
                 <span className="text-sm text-gray-600 capitalize">
@@ -493,6 +573,9 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
                   </Card>
                 </div>
 
+                {/* Ask QMoi */}
+                <AskQMoi />
+
                 {/* Recent Activity */}
                 <Card>
                   <CardHeader>
@@ -576,7 +659,10 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
                     });
                   } catch (e) {
                     // safe fallback if context not available
-                    console.warn("Could not update MasterContext on biometric auth", e);
+                    console.warn(
+                      "Could not update MasterContext on biometric auth",
+                      e,
+                    );
                   }
 
                   toast({
@@ -692,6 +778,21 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
               </Card>
             )}
 
+            {/* Sister Projects Tab */}
+            {activeTab === "projects" && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Grid className="w-5 h-5" />
+                    Sister Projects
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <SisterProjects />
+                </CardContent>
+              </Card>
+            )}
+
             {/* Notifications Tab */}
             {activeTab === "notifications" && (
               <Card>
@@ -770,6 +871,13 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
           </div>
         </main>
       </div>
+
+      {/* Floating Ask QMoi */}
+      <AskQMoi
+        compact
+        isOpen={askQMoiOpen}
+        onToggle={() => setAskQMoiOpen(!askQMoiOpen)}
+      />
     </div>
   );
 };

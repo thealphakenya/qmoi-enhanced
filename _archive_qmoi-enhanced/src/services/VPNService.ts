@@ -298,7 +298,10 @@ export class VPNService {
     return vpnConfig;
   }
 
-  private async deployServers(serverIds: string[], config: unknown): Promise<void> {
+  private async deployServers(
+    serverIds: string[],
+    config: unknown,
+  ): Promise<void> {
     for (const serverId of serverIds) {
       const server = this.servers.get(serverId);
       if (server) {

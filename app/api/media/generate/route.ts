@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
-// NOTE: 2 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 import { requireApiKey } from "../../../../lib/proposals";
@@ -17,7 +16,7 @@ interface CloudTask {
   cloudProvider: "colab" | "dagshub" | "cloud-runner";
   createdAt: string;
   updatedAt: string;
-  result?: any;
+  result?: unknown;
   error?: string;
 }
 
@@ -34,7 +33,7 @@ function isMaster(_req: NextRequest): boolean {
 // UTF-8 safe logging
 function logToDashboard(
   action: string,
-  data: any,
+  data: unknown,
   level: "info" | "error" | "warning" = "info",
 ) {
   const logEntry = {
@@ -140,14 +139,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (error) {
+  } catch (_error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, error: task.error },
+      { taskId: task.id, _error: task.error },
       "error",
     );
 
@@ -162,7 +161,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { error: "Type and prompt are required" },
+        { _error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -178,7 +177,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          error: "Pre-autotest failed",
+          _error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -191,7 +190,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          error: "Master access required for override",
+          _error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -224,13 +223,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (error) {
+  } catch (_error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
 
     return NextResponse.json(
-      { error: "Failed to generate media", details: errorMessage },
+      { _error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -243,7 +242,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -272,13 +271,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (error) {
+  } catch (_error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { error: errorMessage }, "error");
+    logToDashboard("media-status-error", { _error: errorMessage }, "error");
 
     return NextResponse.json(
-      { error: "Failed to fetch task status", details: errorMessage },
+      { _error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }

@@ -14,12 +14,17 @@ function verifyJWT(token: string): { valid: boolean; role?: string } {
       return { valid: true, role: payload.role };
     }
     return { valid: false };
-  } catch {
+  } catch (e) {
     return { valid: false };
   }
 }
 
-function logAudit(action: string, user: string, options: unknown, status: string) {
+function logAudit(
+  action: string,
+  user: string,
+  options: unknown,
+  status: string,
+) {
   const entry = {
     timestamp: new Date().toISOString(),
     action,
@@ -62,8 +67,8 @@ export async function POST(req: NextRequest) {
 
   let options = {};
   try {
-    options = (await req.json() as any);
-  } catch {}
+    options = (await req.json()) as any;
+  } catch (e) {}
 
   // Determine script and args
   let script, args;

@@ -189,12 +189,12 @@ export const QVillage: React.FC = () => {
           i < 20
             ? "Connecting to Hugging Face..."
             : i < 40
-            ? "Syncing daily papers..."
-            : i < 60
-            ? "Syncing knowledge base..."
-            : i < 80
-            ? "Validating data integrity..."
-            : "Finalizing synchronization...",
+              ? "Syncing daily papers..."
+              : i < 60
+                ? "Syncing knowledge base..."
+                : i < 80
+                  ? "Validating data integrity..."
+                  : "Finalizing synchronization...",
         eta: `${Math.max(0, ((100 - i) / 20) * 0.3)}s`,
       }));
     }
@@ -446,7 +446,7 @@ export const QVillage: React.FC = () => {
               <Progress
                 value={Math.max(
                   0,
-                  100 - (qvillage.metrics.responseTime || 0) * 1000
+                  100 - (qvillage.metrics.responseTime || 0) * 1000,
                 )}
                 className="h-2"
               />
@@ -600,7 +600,7 @@ export const QVillage: React.FC = () => {
                 <Progress
                   value={Math.max(
                     0,
-                    100 - (qvillage.metrics.networkLatency || 0)
+                    100 - (qvillage.metrics.networkLatency || 0),
                   )}
                   className="h-2"
                 />
@@ -610,7 +610,7 @@ export const QVillage: React.FC = () => {
                 <span className="text-sm">Last Sync</span>
                 <span className="text-sm text-gray-600">
                   {new Date(
-                    qvillage.lastSync || Date.now()
+                    qvillage.lastSync || Date.now(),
                   ).toLocaleTimeString()}
                 </span>
               </div>
@@ -733,7 +733,7 @@ export const QVillage: React.FC = () => {
                 onClick={() =>
                   accessibility.updateSetting(
                     "highContrast",
-                    !accessibility.highContrast
+                    !accessibility.highContrast,
                   )
                 }
               >
@@ -745,7 +745,7 @@ export const QVillage: React.FC = () => {
                 onClick={() =>
                   accessibility.updateSetting(
                     "largeText",
-                    !accessibility.largeText
+                    !accessibility.largeText,
                   )
                 }
               >
@@ -757,7 +757,7 @@ export const QVillage: React.FC = () => {
                 onClick={() =>
                   accessibility.updateSetting(
                     "voiceCommands",
-                    !accessibility.voiceCommands
+                    !accessibility.voiceCommands,
                   )
                 }
               >

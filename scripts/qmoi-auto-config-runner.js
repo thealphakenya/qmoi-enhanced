@@ -13,8 +13,8 @@ async function runAutoConfig() {
       (console as any).error("❌ Auto-configuration failed:", result.error);
       process.exit(1);
     }
-  } catch (error) {
-    (console as any).error("❌ Auto-configuration error:", error.message);
+  } catch (_error) {
+    (console as any).error("❌ Auto-configuration _error:", error.message);
     process.exit(1);
   }
 }

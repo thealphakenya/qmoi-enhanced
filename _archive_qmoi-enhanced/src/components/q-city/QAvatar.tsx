@@ -28,7 +28,7 @@ export default function QAvatar() {
   const [settings, setSettings] = useState(() => {
     try {
       return JSON.parse(localStorage.getItem("qavatar-settings") || "{}");
-    } catch {
+    } catch (e) {
       return {};
     }
   });

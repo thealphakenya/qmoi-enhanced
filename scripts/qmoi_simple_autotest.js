@@ -35,7 +35,7 @@ async function main() {
   try {
     await fetch(dashboardUrl, { timeout: 5000 });
     console.log(`✅ Dashboard reachable at ${dashboardUrl}`);
-  } catch {
+  } catch (e) {
     console.log(
       `⚠️ Dashboard not reachable at ${dashboardUrl} (may be expected if not running)`,
     );

@@ -66,7 +66,7 @@ class QMOIGitHubIntegration {
       } else {
         throw new Error("Could not parse GitHub repository URL");
       }
-    } catch (error) {
+    } catch (_error) {
       throw new Error(`Failed to get repository info: ${error.message}`);
     }
   }
@@ -75,7 +75,7 @@ class QMOIGitHubIntegration {
     console.log(`📝 Creating issue: ${title}`);
 
     try {
-      const response = await this.githubApi.post(
+      const _response = await this.githubApi.post(
         `/repos/${this.repoInfo.owner}/${this.repoInfo.repo}/issues`,
         {
           title,
@@ -109,7 +109,7 @@ class QMOIGitHubIntegration {
       );
 
       return issue;
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("Failed to create issue:", error.message);
       throw error;
     }
@@ -119,7 +119,7 @@ class QMOIGitHubIntegration {
     console.log(`🔀 Creating pull _request: ${title}`);
 
     try {
-      const response = await this.githubApi.post(
+      const _response = await this.githubApi.post(
         `/repos/${this.repoInfo.owner}/${this.repoInfo.repo}/pulls`,
         {
           title,
@@ -154,7 +154,7 @@ class QMOIGitHubIntegration {
       );
 
       return pr;
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("Failed to create pull _request:", error.message);
       throw error;
     }
@@ -198,7 +198,7 @@ class QMOIGitHubIntegration {
       );
 
       return { success: true, backupPath };
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("Failed to update workflow:", error.message);
       throw error;
     }
@@ -213,7 +213,7 @@ class QMOIGitHubIntegration {
       const sha = stdout.trim();
 
       // Create branch via GitHub API
-      const response = await this.githubApi.post(
+      const _response = await this.githubApi.post(
         `/repos/${this.repoInfo.owner}/${this.repoInfo.repo}/git/refs`,
         {
           ref: `refs/heads/${branchName}`,
@@ -240,7 +240,7 @@ class QMOIGitHubIntegration {
       );
 
       return response.data;
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("Failed to create branch:", error.message);
       throw error;
     }
@@ -266,7 +266,7 @@ class QMOIGitHubIntegration {
       });
 
       return { success: true };
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("Failed to commit and push:", error.message);
       throw error;
     }
@@ -276,7 +276,7 @@ class QMOIGitHubIntegration {
     console.log(`🔀 Merging pull _request #${prNumber}`);
 
     try {
-      const response = await this.githubApi.put(
+      const _response = await this.githubApi.put(
         `/repos/${this.repoInfo.owner}/${this.repoInfo.repo}/pulls/${prNumber}/merge`,
         {
           merge_method: mergeMethod,
@@ -302,7 +302,7 @@ class QMOIGitHubIntegration {
       );
 
       return response.data;
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("Failed to merge pull _request:", error.message);
       throw error;
     }
@@ -312,7 +312,7 @@ class QMOIGitHubIntegration {
     console.log(`🏷️ Creating release: ${tagName}`);
 
     try {
-      const response = await this.githubApi.post(
+      const _response = await this.githubApi.post(
         `/repos/${this.repoInfo.owner}/${this.repoInfo.repo}/releases`,
         {
           tag_name: tagName,
@@ -347,7 +347,7 @@ class QMOIGitHubIntegration {
       );
 
       return release;
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("Failed to create release:", error.message);
       throw error;
     }
@@ -357,7 +357,7 @@ class QMOIGitHubIntegration {
     console.log("⚙️ Updating repository settings...");
 
     try {
-      const response = await this.githubApi.patch(
+      const _response = await this.githubApi.patch(
         `/repos/${this.repoInfo.owner}/${this.repoInfo.repo}`,
         settings,
       );
@@ -380,7 +380,7 @@ class QMOIGitHubIntegration {
       );
 
       return response.data;
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("Failed to update repository settings:", error.message);
       throw error;
     }
@@ -426,7 +426,7 @@ class QMOIGitHubIntegration {
       );
 
       return { success: true };
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("Failed to enable security features:", error.message);
       throw error;
     }
@@ -562,7 +562,7 @@ class QMOIGitHubIntegration {
       };
 
       return status;
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("Failed to get repository status:", error.message);
       throw error;
     }

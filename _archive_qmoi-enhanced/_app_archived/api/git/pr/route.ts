@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
       description,
       baseBranch = "main",
       headBranch,
-    } = (await req.json() as any);
+    } = (await req.json()) as any;
 
     if (!title || !headBranch) {
       return NextResponse.json(

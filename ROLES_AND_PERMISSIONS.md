@@ -7,6 +7,7 @@
 ---
 
 ## Table of Contents
+
 1. [Role Overview](#role-overview)
 2. [Master Role Permissions](#master-role-permissions)
 3. [Sister (Administrator) Role Permissions](#sister-administrator-role-permissions)
@@ -24,13 +25,13 @@
 
 The QMOI system implements a hierarchical role-based access control (RBAC) system with five distinct user roles:
 
-| Role | Display Name | Level | Description |
-|------|-------------|-------|-------------|
-| `master` | Master Administrator | 5 | Full system access, can manage all users and features |
-| `admin` | Administrator (Sister) | 4 | Administrative features, user management, cannot access master-only features |
-| `user` | Regular User | 2 | Basic features, personal data, limited access |
-| `sponsored` | Sponsored User | 1 | Limited features specific to sponsored programs |
-| `guest` | Guest | 0 | Read-only access, cannot perform actions |
+| Role        | Display Name           | Level | Description                                                                  |
+| ----------- | ---------------------- | ----- | ---------------------------------------------------------------------------- |
+| `master`    | Master Administrator   | 5     | Full system access, can manage all users and features                        |
+| `admin`     | Administrator (Sister) | 4     | Administrative features, user management, cannot access master-only features |
+| `user`      | Regular User           | 2     | Basic features, personal data, limited access                                |
+| `sponsored` | Sponsored User         | 1     | Limited features specific to sponsored programs                              |
+| `guest`     | Guest                  | 0     | Read-only access, cannot perform actions                                     |
 
 ---
 
@@ -40,6 +41,7 @@ The QMOI system implements a hierarchical role-based access control (RBAC) syste
 **Display Name:** Master Administrator
 
 ### Features
+
 - ✅ Full access to all 16 dashboard tabs
 - ✅ Can manage all users (create, edit, delete, suspend)
 - ✅ Can view all system logs and audit trails
@@ -52,6 +54,7 @@ The QMOI system implements a hierarchical role-based access control (RBAC) syste
 - ✅ Can execute master commands in automation systems
 
 ### Dashboard Tabs
+
 - Overview ✅
 - Chat with QMOI ✅
 - QConverse (Voice) ✅
@@ -70,9 +73,11 @@ The QMOI system implements a hierarchical role-based access control (RBAC) syste
 - Settings ✅
 
 ### API Endpoints
+
 All endpoints accessible with master role. See [API Endpoint Access Control](#api-endpoint-access-control) for details.
 
 ### Permissions Function
+
 ```javascript
 hasPermission(perm):
   if role === "master" → return true (all permissions granted)
@@ -86,6 +91,7 @@ hasPermission(perm):
 **Display Name:** Administrator / Sister
 
 ### Features
+
 - ✅ Can manage regular users (create, edit, delete)
 - ✅ Can view system logs and audit trails
 - ✅ Can access administrative dashboard
@@ -98,6 +104,7 @@ hasPermission(perm):
 - ❌ Cannot execute master commands
 
 ### Dashboard Tabs
+
 - Overview ✅
 - Chat with QMOI ✅
 - QConverse (Voice) ✅
@@ -116,6 +123,7 @@ hasPermission(perm):
 - Settings ✅ (limited)
 
 ### API Endpoints
+
 - `/api/auth/login` - ✅ Admin login
 - `/api/users/*` - ✅ Manage users (except other admins)
 - `/api/admin/*` - ✅ Most admin endpoints
@@ -123,6 +131,7 @@ hasPermission(perm):
 - See [API Endpoint Access Control](#api-endpoint-access-control) for complete list
 
 ### Permissions Function
+
 ```javascript
 hasPermission(perm):
   if perm === "admin" && role === "admin" → return true
@@ -139,6 +148,7 @@ hasPermission(perm):
 **Display Name:** Regular User
 
 ### Features
+
 - ✅ Can chat with QMOI
 - ✅ Can use voice features (QConverse)
 - ✅ Can access personal biometric settings
@@ -152,6 +162,7 @@ hasPermission(perm):
 - ❌ Cannot execute administrative actions
 
 ### Dashboard Tabs
+
 - Overview ✅ (personal data only)
 - Chat with QMOI ✅
 - QConverse (Voice) ✅
@@ -170,6 +181,7 @@ hasPermission(perm):
 - Settings ✅ (personal only)
 
 ### API Endpoints
+
 - `/api/auth/login` - ✅ User login
 - `/api/users/profile` - ✅ Own profile only
 - `/api/users/update` - ✅ Own profile only
@@ -179,6 +191,7 @@ hasPermission(perm):
 - See [API Endpoint Access Control](#api-endpoint-access-control) for complete list
 
 ### Permissions Function
+
 ```javascript
 hasPermission(perm):
   if perm === "user" && (role === "user" || role === "admin") → return true
@@ -193,6 +206,7 @@ hasPermission(perm):
 **Display Name:** Sponsored User
 
 ### Features
+
 - ✅ Limited chat with QMOI
 - ✅ Can enroll in sponsored programs
 - ✅ Can view personal sponsorship status
@@ -204,6 +218,7 @@ hasPermission(perm):
 - ❌ Cannot manage biometrics
 
 ### Dashboard Tabs
+
 - Overview ❌ (redirects to sponsorship dashboard)
 - Chat with QMOI ✅ (limited context)
 - QConverse (Voice) ❌
@@ -222,11 +237,13 @@ hasPermission(perm):
 - Settings ✅ (sponsored only)
 
 ### API Endpoints
+
 - `/api/auth/login` - ✅ Sponsored user login
 - `/api/sponsored/*` - ✅ Sponsored-specific endpoints
 - Most other endpoints - ❌ Forbidden
 
 ### Permissions Function
+
 ```javascript
 hasPermission(perm):
   if perm === "sponsored" && role === "sponsored" → return true
@@ -241,6 +258,7 @@ hasPermission(perm):
 **Display Name:** Guest
 
 ### Features
+
 - ✅ Can view public information only
 - ✅ Can access help and documentation
 - ❌ Cannot perform any actions
@@ -249,9 +267,11 @@ hasPermission(perm):
 - ❌ Cannot use chat or voice features
 
 ### Dashboard Tabs
+
 None - Guests should not access the dashboard
 
 ### API Endpoints
+
 - `/api/public/*` - ✅ Public endpoints only
 - All other endpoints - ❌ Forbidden
 
@@ -259,74 +279,79 @@ None - Guests should not access the dashboard
 
 ## Dashboard Tab Access Matrix
 
-| Tab | Master | Admin | User | Sponsored | Guest |
-|-----|--------|-------|------|-----------|-------|
-| Overview | ✅ | ✅ | ✅* | ❌ | ❌ |
-| Chat | ✅ | ✅ | ✅ | ✅* | ❌ |
-| QConverse | ✅ | ✅ | ✅ | ❌ | ❌ |
-| Biometric Auth | ✅ | ✅* | ✅* | ❌ | ❌ |
-| Access Control | ✅ | ✅ | ❌ | ❌ | ❌ |
-| Memory Awareness | ✅ | ✅ | ✅* | ❌ | ❌ |
-| Parallel Processing | ✅ | ✅ | ❌ | ❌ | ❌ |
-| Accountability | ✅ | ✅ | ❌ | ❌ | ❌ |
-| System Health | ✅ | ✅ | ❌ | ❌ | ❌ |
-| Trading & Revenue | ✅ | ✅ | ✅ | ✅* | ❌ |
-| Financial Manager | ✅ | ✅ | ❌ | ❌ | ❌ |
-| QVillage | ✅ | ✅* | ❌ | ❌ | ❌ |
-| Media Manager | ✅ | ✅ | ✅* | ❌ | ❌ |
-| File Explorer | ✅ | ✅ | ✅* | ❌ | ❌ |
-| Notifications | ✅ | ✅ | ✅ | ✅ | ❌ |
-| Settings | ✅ | ✅* | ✅* | ✅* | ❌ |
+| Tab                 | Master | Admin | User | Sponsored | Guest |
+| ------------------- | ------ | ----- | ---- | --------- | ----- |
+| Overview            | ✅     | ✅    | ✅\* | ❌        | ❌    |
+| Chat                | ✅     | ✅    | ✅   | ✅\*      | ❌    |
+| QConverse           | ✅     | ✅    | ✅   | ❌        | ❌    |
+| Biometric Auth      | ✅     | ✅\*  | ✅\* | ❌        | ❌    |
+| Access Control      | ✅     | ✅    | ❌   | ❌        | ❌    |
+| Memory Awareness    | ✅     | ✅    | ✅\* | ❌        | ❌    |
+| Parallel Processing | ✅     | ✅    | ❌   | ❌        | ❌    |
+| Accountability      | ✅     | ✅    | ❌   | ❌        | ❌    |
+| System Health       | ✅     | ✅    | ❌   | ❌        | ❌    |
+| Trading & Revenue   | ✅     | ✅    | ✅   | ✅\*      | ❌    |
+| Financial Manager   | ✅     | ✅    | ❌   | ❌        | ❌    |
+| QVillage            | ✅     | ✅\*  | ❌   | ❌        | ❌    |
+| Media Manager       | ✅     | ✅    | ✅\* | ❌        | ❌    |
+| File Explorer       | ✅     | ✅    | ✅\* | ❌        | ❌    |
+| Notifications       | ✅     | ✅    | ✅   | ✅        | ❌    |
+| Settings            | ✅     | ✅\*  | ✅\* | ✅\*      | ❌    |
 
-**Legend:** ✅ = Full Access | ✅* = Limited/Personal Data Only | ❌ = No Access
+**Legend:** ✅ = Full Access | ✅\* = Limited/Personal Data Only | ❌ = No Access
 
 ---
 
 ## API Endpoint Access Control
 
 ### Authentication Endpoints
-| Endpoint | Method | Master | Admin | User | Sponsored | Guest |
-|----------|--------|--------|-------|------|-----------|-------|
-| `/api/auth/login` | POST | ✅ | ✅ | ✅ | ✅ | ❌ |
-| `/api/webauthn/register` | POST | ✅ | ✅ | ✅ | ❌ | ❌ |
-| `/api/webauthn/authenticate` | POST | ✅ | ✅ | ✅ | ❌ | ❌ |
-| `/api/voice/enroll` | POST | ✅ | ✅ | ✅ | ❌ | ❌ |
-| `/api/voice/verify` | POST | ✅ | ✅ | ✅ | ❌ | ❌ |
-| `/api/biometric/templates` | GET/POST | ✅ | ✅ | ✅* | ❌ | ❌ |
-| `/api/biometric/verify` | POST | ✅ | ✅ | ✅ | ❌ | ❌ |
-| `/api/qmoi/session` | POST/GET | ✅ | ✅ | ✅ | ✅ | ❌ |
+
+| Endpoint                     | Method   | Master | Admin | User | Sponsored | Guest |
+| ---------------------------- | -------- | ------ | ----- | ---- | --------- | ----- |
+| `/api/auth/login`            | POST     | ✅     | ✅    | ✅   | ✅        | ❌    |
+| `/api/webauthn/register`     | POST     | ✅     | ✅    | ✅   | ❌        | ❌    |
+| `/api/webauthn/authenticate` | POST     | ✅     | ✅    | ✅   | ❌        | ❌    |
+| `/api/voice/enroll`          | POST     | ✅     | ✅    | ✅   | ❌        | ❌    |
+| `/api/voice/verify`          | POST     | ✅     | ✅    | ✅   | ❌        | ❌    |
+| `/api/biometric/templates`   | GET/POST | ✅     | ✅    | ✅\* | ❌        | ❌    |
+| `/api/biometric/verify`      | POST     | ✅     | ✅    | ✅   | ❌        | ❌    |
+| `/api/qmoi/session`          | POST/GET | ✅     | ✅    | ✅   | ✅        | ❌    |
 
 ### User Management Endpoints
-| Endpoint | Method | Master | Admin | User | Sponsored | Guest |
-|----------|--------|--------|-------|------|-----------|-------|
-| `/api/users/list` | GET | ✅ | ✅ | ❌ | ❌ | ❌ |
-| `/api/users/create` | POST | ✅ | ✅ | ❌ | ❌ | ❌ |
-| `/api/users/profile` | GET | ✅ | ✅ | ✅* | ✅* | ❌ |
-| `/api/users/update` | PUT | ✅ | ✅ | ✅* | ✅* | ❌ |
-| `/api/users/delete` | DELETE | ✅ | ✅ | ❌ | ❌ | ❌ |
+
+| Endpoint             | Method | Master | Admin | User | Sponsored | Guest |
+| -------------------- | ------ | ------ | ----- | ---- | --------- | ----- |
+| `/api/users/list`    | GET    | ✅     | ✅    | ❌   | ❌        | ❌    |
+| `/api/users/create`  | POST   | ✅     | ✅    | ❌   | ❌        | ❌    |
+| `/api/users/profile` | GET    | ✅     | ✅    | ✅\* | ✅\*      | ❌    |
+| `/api/users/update`  | PUT    | ✅     | ✅    | ✅\* | ✅\*      | ❌    |
+| `/api/users/delete`  | DELETE | ✅     | ✅    | ❌   | ❌        | ❌    |
 
 ### Admin Endpoints
-| Endpoint | Method | Master | Admin | User | Sponsored | Guest |
-|----------|--------|--------|-------|------|-----------|-------|
-| `/api/admin/sponsored/list` | GET | ✅ | ✅ | ❌ | ❌ | ❌ |
-| `/api/admin/sponsored/create` | POST | ✅ | ✅ | ❌ | ❌ | ❌ |
-| `/api/admin/sponsored/delete` | DELETE | ✅ | ✅ | ❌ | ❌ | ❌ |
-| `/api/admin/logs` | GET | ✅ | ✅ | ❌ | ❌ | ❌ |
-| `/api/admin/settings` | GET/PUT | ✅ | ✅* | ❌ | ❌ | ❌ |
+
+| Endpoint                      | Method  | Master | Admin | User | Sponsored | Guest |
+| ----------------------------- | ------- | ------ | ----- | ---- | --------- | ----- |
+| `/api/admin/sponsored/list`   | GET     | ✅     | ✅    | ❌   | ❌        | ❌    |
+| `/api/admin/sponsored/create` | POST    | ✅     | ✅    | ❌   | ❌        | ❌    |
+| `/api/admin/sponsored/delete` | DELETE  | ✅     | ✅    | ❌   | ❌        | ❌    |
+| `/api/admin/logs`             | GET     | ✅     | ✅    | ❌   | ❌        | ❌    |
+| `/api/admin/settings`         | GET/PUT | ✅     | ✅\*  | ❌   | ❌        | ❌    |
 
 ### Master-Only Endpoints
-| Endpoint | Method | Master | Admin | User | Sponsored | Guest |
-|----------|--------|--------|-------|------|-----------|-------|
-| `/api/master/system/config` | GET/PUT | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `/api/master/audit/trail` | GET | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `/api/master/users/admin/assign` | PUT | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `/api/master/backup` | POST | ✅ | ❌ | ❌ | ❌ | ❌ |
+
+| Endpoint                         | Method  | Master | Admin | User | Sponsored | Guest |
+| -------------------------------- | ------- | ------ | ----- | ---- | --------- | ----- |
+| `/api/master/system/config`      | GET/PUT | ✅     | ❌    | ❌   | ❌        | ❌    |
+| `/api/master/audit/trail`        | GET     | ✅     | ❌    | ❌   | ❌        | ❌    |
+| `/api/master/users/admin/assign` | PUT     | ✅     | ❌    | ❌   | ❌        | ❌    |
+| `/api/master/backup`             | POST    | ✅     | ❌    | ❌   | ❌        | ❌    |
 
 ---
 
 ## Implementation Status
 
 ### ✅ Completed
+
 - [x] Role definitions in MasterContext (master, admin, user, guest)
 - [x] Permission checking logic (hasPermission function)
 - [x] Biometric authentication endpoints created
@@ -334,12 +359,14 @@ None - Guests should not access the dashboard
 - [x] Dashboard components created
 
 ### 🔄 In Progress
+
 - [ ] Add "sponsored" role to MasterContext
 - [ ] Implement role-based UI rendering in QMOIDashboard
 - [ ] Add role checks to all API endpoints
 - [ ] Create role-based middleware for API protection
 
 ### ❌ Not Started
+
 - [ ] Create test users for each role (Master, Admin, User, Sponsored)
 - [ ] Implement sponsored user management endpoints
 - [ ] Add role-based field masking (hide sensitive data)
@@ -351,6 +378,7 @@ None - Guests should not access the dashboard
 ## Testing Results
 
 ### Test Status
+
 - ✅ Email/password login tested
 - ✅ WebAuthn endpoints tested
 - ✅ Voice biometric endpoints tested
@@ -359,6 +387,7 @@ None - Guests should not access the dashboard
 - 🔄 Role-based access needs testing (IN PROGRESS)
 
 ### Test Users (To Be Created)
+
 ```json
 [
   {
@@ -401,12 +430,12 @@ The system maps display role names to internal role codes:
 ```javascript
 const roleMap = {
   "Master Administrator": "master",
-  "Administrator": "admin",
-  "Sister": "admin",
-  "User": "user",
+  Administrator: "admin",
+  Sister: "admin",
+  User: "user",
   "Sponsored User": "sponsored",
-  "Guest": "guest"
-}
+  Guest: "guest",
+};
 ```
 
 ---

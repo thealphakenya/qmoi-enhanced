@@ -244,20 +244,17 @@ See `prisma/schema.prisma` for full schema definition.
 ## Security Best Practices
 
 1. **Secrets Management**
-
    - Never commit `.env.local` to version control
    - Use `.env.local.example` as template
    - Rotate API keys regularly
    - Use strong JWT secrets (32+ characters)
 
 2. **Webhook Security**
-
    - Verify webhook signatures using `WEBHOOK_SIGNING_SECRET`
    - Implement rate limiting on webhooks
    - Log all webhook events for debugging
 
 3. **Payment Security**
-
    - All payment data encrypted in transit (HTTPS)
    - PCI DSS compliance for payment handling
    - Transaction verification before wallet updates

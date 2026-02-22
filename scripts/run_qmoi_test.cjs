@@ -47,7 +47,7 @@ async function run() {
       env: Object.assign({}, process.env, {
         QMOI_UI_BASE: "http://127.0.0.1:3000",
       }),
-    }
+    },
   );
 
   jest.on("exit", (code) => {

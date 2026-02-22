@@ -50,7 +50,7 @@ function autoDetectProvider() {
       );
       req.on("error", () => {});
       req.end();
-    } catch {}
+    } catch (e) {}
   });
   if (best) {
     currentProvider = best;

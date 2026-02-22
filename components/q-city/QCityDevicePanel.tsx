@@ -197,7 +197,7 @@ export default function QCityDevicePanel() {
     type: "gitpod" | "local",
     id: string,
     action: "stop" | "clone" | "sync" | "start",
-    extra: Record<string, any> = {}
+    extra: Record<string, any> = {},
   ) => {
     setWorkspaceError("");
     setLoading(true);
@@ -238,8 +238,8 @@ export default function QCityDevicePanel() {
     setLogs((l) => ({ ...l, [id]: "Loading logs..." }));
     const eventSource = new EventSource(
       `/api/qcity/workspace-logs?id=${encodeURIComponent(
-        id
-      )}&type=${encodeURIComponent(type)}`
+        id,
+      )}&type=${encodeURIComponent(type)}`,
     );
     const logLines: string[] = [];
     eventSource.onmessage = (event) => {
@@ -692,10 +692,10 @@ export default function QCityDevicePanel() {
               {selfCheckStatus === "idle"
                 ? "Idle"
                 : selfCheckStatus === "checking"
-                ? "Checking..."
-                : selfCheckStatus === "fixed"
-                ? "Fixed"
-                : "Error"}
+                  ? "Checking..."
+                  : selfCheckStatus === "fixed"
+                    ? "Fixed"
+                    : "Error"}
             </span>
           </div>
           <div className="flex items-center gap-4">

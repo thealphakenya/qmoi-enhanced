@@ -44,7 +44,7 @@ class JSONConfigFixer {
             jsonFiles.push(fullPath);
           }
         }
-      } catch (error) {
+      } catch (_error) {
         this.log(
           `Error reading directory ${currentDir}: ${error.message}`,
           "WARN",
@@ -61,7 +61,7 @@ class JSONConfigFixer {
       const content = fs.readFileSync(filePath, "utf8");
       JSON.parse(content);
       return { valid: true, errors: [] };
-    } catch (error) {
+    } catch (_error) {
       return { valid: false, errors: [error.message] };
     }
   }
@@ -122,11 +122,11 @@ class JSONConfigFixer {
           `Failed to fix JSON file ${filePath}: ${parseError.message}`,
           "ERROR",
         );
-        return { success: false, error: parseError.message };
+        return { success: false, _error: parseError.message };
       }
-    } catch (error) {
+    } catch (_error) {
       this.log(`Error fixing JSON file ${filePath}: ${error.message}`, "ERROR");
-      return { success: false, error: error.message };
+      return { success: false, _error: error.message };
     }
   }
 
@@ -288,9 +288,9 @@ class JSONConfigFixer {
 
       this.log(`package.json fixed successfully with ${fixes.length} fixes`);
       return { success: true, fixes };
-    } catch (error) {
+    } catch (_error) {
       this.log(`Failed to fix package.json: ${error.message}`, "ERROR");
-      return { success: false, error: error.message };
+      return { success: false, _error: error.message };
     }
   }
 
@@ -373,9 +373,9 @@ class JSONConfigFixer {
 
       this.log(`tsconfig.json fixed successfully with ${fixes.length} fixes`);
       return { success: true, fixes };
-    } catch (error) {
+    } catch (_error) {
       this.log(`Failed to fix tsconfig.json: ${error.message}`, "ERROR");
-      return { success: false, error: error.message };
+      return { success: false, _error: error.message };
     }
   }
 
@@ -415,9 +415,9 @@ class JSONConfigFixer {
 
       this.log("jest.config.js exists, validating...");
       return { success: true, fixes: ["jest.config.js validated"] };
-    } catch (error) {
+    } catch (_error) {
       this.log(`Failed to fix jest.config.js: ${error.message}`, "ERROR");
-      return { success: false, error: error.message };
+      return { success: false, _error: error.message };
     }
   }
 
@@ -469,9 +469,9 @@ class JSONConfigFixer {
 
       this.log(`.eslintrc.json fixed successfully with ${fixes.length} fixes`);
       return { success: true, fixes };
-    } catch (error) {
+    } catch (_error) {
       this.log(`Failed to fix .eslintrc.json: ${error.message}`, "ERROR");
-      return { success: false, error: error.message };
+      return { success: false, _error: error.message };
     }
   }
 
@@ -513,7 +513,7 @@ class JSONConfigFixer {
               results.details.push({
                 file: filePath,
                 status: "error",
-                error: fixResult.error,
+                _error: fixResult.error,
               });
             }
           } else {
@@ -523,12 +523,12 @@ class JSONConfigFixer {
               fixes: [],
             });
           }
-        } catch (error) {
+        } catch (_error) {
           results.errors++;
           results.details.push({
             file: filePath,
             status: "error",
-            error: error.message,
+            _error: error.message,
           });
         }
       }
@@ -554,7 +554,7 @@ class JSONConfigFixer {
           results.details.push({
             file: "Configuration file",
             status: "error",
-            error: fix.error,
+            _error: fix.error,
           });
         }
       }
@@ -563,7 +563,7 @@ class JSONConfigFixer {
         `JSON fixing completed: ${results.fixed} fixed, ${results.errors} errors`,
       );
       return results;
-    } catch (error) {
+    } catch (_error) {
       this.log(`Failed to fix JSON files: ${error.message}`, "ERROR");
       throw error;
     }
@@ -627,7 +627,7 @@ async function main() {
         console.log("  --validate <path>            Validate JSON file");
         break;
     }
-  } catch (error) {
+  } catch (_error) {
     fixer.log(`JSON config fixer failed: ${error.message}`, "ERROR");
     process.exit(1);
   }

@@ -100,7 +100,7 @@ export function monitoringDashboard() {
       "GET",
       `${BASE_URL}/api/admin/monitoring`,
       null,
-      { endpoint: "monitoring" }
+      { endpoint: "monitoring" },
     );
 
     check(response, {
@@ -122,7 +122,7 @@ export function alerts() {
       "GET",
       `${BASE_URL}/api/admin/alerts`,
       null,
-      { endpoint: "alerts-get" }
+      { endpoint: "alerts-get" },
     );
 
     check(response, {
@@ -139,7 +139,7 @@ export function alerts() {
         alertId: "test-alert-" + Math.random(),
         action: "acknowledge",
       },
-      { endpoint: "alerts-post" }
+      { endpoint: "alerts-post" },
     );
 
     check(response, {
@@ -158,7 +158,7 @@ export function rateLimits() {
       "GET",
       `${BASE_URL}/api/admin/rate-limits`,
       null,
-      { endpoint: "rate-limits-get" }
+      { endpoint: "rate-limits-get" },
     );
 
     check(response, {
@@ -176,7 +176,7 @@ export function rateLimits() {
         endpoint: "/api/payments",
         newLimit: 150,
       },
-      { endpoint: "rate-limits-put" }
+      { endpoint: "rate-limits-put" },
     );
 
     check(response, {
@@ -194,7 +194,7 @@ export function auditLogs() {
       "GET",
       `${BASE_URL}/api/admin/audit-logs?skip=0&take=10`,
       null,
-      { endpoint: "audit-logs" }
+      { endpoint: "audit-logs" },
     );
 
     check(response, {
@@ -219,7 +219,7 @@ export function coreAPIs() {
         username: `user-${Date.now()}`,
         password: "TestPass123!",
       }),
-      { headers: { "Content-Type": "application/json" } }
+      { headers: { "Content-Type": "application/json" } },
     );
 
     check(authResponse, {

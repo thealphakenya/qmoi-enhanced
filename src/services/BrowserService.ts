@@ -373,15 +373,15 @@ export class BrowserService {
 
       // AI features processing
       await this.processAIFeatures(tab, url);
-    } catch (error) {
+    } catch (_error) {
       tab.isLoading = false;
-      const errMsg = error instanceof Error ? error.message : String(error);
+      const errMsg = error instanceof Error ? error.message : String(_error);
       this.eventEmitter.emit("navigationError", {
         tabId,
         url,
-        error: errMsg,
+        _error: errMsg,
       });
-      logger.error(`Navigation failed for tab ${tabId}:`, error);
+      logger._error(`Navigation failed for tab ${tabId}:`, _error);
       throw error;
     }
   }
@@ -408,10 +408,10 @@ export class BrowserService {
               await this.processLiveTV(tab, url);
               break;
           }
-        } catch (error) {
+        } catch (_error) {
           const errDetails =
-            error instanceof Error ? error.message : String(error);
-          logger.error(`AI feature ${feature.id} failed: ${errDetails}`);
+            error instanceof Error ? error.message : String(_error);
+          logger._error(`AI feature ${feature.id} failed: ${errDetails}`);
         }
       }
     }
@@ -419,7 +419,7 @@ export class BrowserService {
 
   private async processSmartSearch(
     tab: BrowserTab,
-    url: string
+    url: string,
   ): Promise<void> {
     // Simulate smart search processing
     const suggestions = await this.generateSearchSuggestions(url);
@@ -428,7 +428,7 @@ export class BrowserService {
 
   private async processContentSummary(
     tab: BrowserTab,
-    url: string
+    url: string,
   ): Promise<void> {
     // Simulate content summary generation
     const summary = await this.generateContentSummary(url);
@@ -437,7 +437,7 @@ export class BrowserService {
 
   private async processTranslation(
     tab: BrowserTab,
-    url: string
+    url: string,
   ): Promise<void> {
     // Simulate translation processing
     const translation = await this.translateContent(url);
@@ -464,7 +464,7 @@ export class BrowserService {
     }
   }
 
-  private async generateSearchSuggestions(query: string): Promise<string[]> {
+  private async generateSearchSuggestions(_query: string): Promise<string[]> {
     // Simulate AI-powered search suggestions
     return [
       `${query} latest news`,
@@ -480,7 +480,7 @@ export class BrowserService {
   }
 
   private async translateContent(
-    _url: string
+    _url: string,
   ): Promise<{ original: string; translated: string; language: string }> {
     // Simulate translation
     return {
@@ -491,7 +491,7 @@ export class BrowserService {
   }
 
   private async analyzeSecurity(
-    _url: string
+    _url: string,
   ): Promise<{ isSafe: boolean; threats: string[]; score: number }> {
     // Simulate security analysis
     return {
@@ -606,7 +606,7 @@ export class BrowserService {
     tabId: string,
     title: string,
     url: string,
-    folder = "Bookmarks"
+    folder = "Bookmarks",
   ): void {
     const bookmark: Bookmark = {
       id: this.generateId(),
@@ -656,12 +656,12 @@ export class BrowserService {
 
       download.status = "completed";
       this.eventEmitter.emit("downloadCompleted", download);
-    } catch (error) {
+    } catch (_error) {
       download.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(error);
+      const errMsg = error instanceof Error ? error.message : String(_error);
       this.eventEmitter.emit("downloadFailed", {
         downloadId,
-        error: errMsg,
+        _error: errMsg,
       });
     }
   }
@@ -738,7 +738,7 @@ export class BrowserService {
     try {
       const domain = new URL(url).hostname;
       return domain.replace("www.", "");
-    } catch {
+    } catch (e) {
       return "Unknown";
     }
   }
@@ -747,7 +747,7 @@ export class BrowserService {
     try {
       const domain = new URL(url).hostname;
       return `https://${domain}/favicon.ico`;
-    } catch {
+    } catch (e) {
       return "🌐";
     }
   }
@@ -770,25 +770,25 @@ export class BrowserService {
   }
 
   public onNavigationStarted(
-    callback: (data: { tabId: string; url: string }) => void
+    callback: (data: { tabId: string; url: string }) => void,
   ): void {
     this.eventEmitter.on("navigationStarted", callback);
   }
 
   public onNavigationCompleted(
-    callback: (data: { tabId: string; url: string }) => void
+    callback: (data: { tabId: string; url: string }) => void,
   ): void {
     this.eventEmitter.on("navigationCompleted", callback);
   }
 
   public onNavigationError(
-    callback: (data: { tabId: string; url: string; error: string }) => void
+    callback: (data: { tabId: string; url: string; _error: string }) => void,
   ): void {
     this.eventEmitter.on("navigationError", callback);
   }
 
   public onDeveloperToolsToggled(
-    callback: (data: { tabId: string; isOpen: boolean }) => void
+    callback: (data: { tabId: string; isOpen: boolean }) => void,
   ): void {
     this.eventEmitter.on("developerToolsToggled", callback);
   }
@@ -802,7 +802,7 @@ export class BrowserService {
   }
 
   public onDownloadProgress(
-    callback: (data: { downloadId: string; progress: number }) => void
+    callback: (data: { downloadId: string; progress: number }) => void,
   ): void {
     this.eventEmitter.on("downloadProgress", callback);
   }
@@ -812,19 +812,19 @@ export class BrowserService {
   }
 
   public onSearchSuggestions(
-    callback: (data: { tabId: string; suggestions: string[] }) => void
+    callback: (data: { tabId: string; suggestions: string[] }) => void,
   ): void {
     this.eventEmitter.on("searchSuggestions", callback);
   }
 
   public onContentSummary(
-    callback: (data: { tabId: string; summary: string }) => void
+    callback: (data: { tabId: string; summary: string }) => void,
   ): void {
     this.eventEmitter.on("contentSummary", callback);
   }
 
   public onLiveContent(
-    callback: (data: { tabId: string; content: unknown }) => void
+    callback: (data: { tabId: string; content: unknown }) => void,
   ): void {
     this.eventEmitter.on("liveContent", callback);
   }

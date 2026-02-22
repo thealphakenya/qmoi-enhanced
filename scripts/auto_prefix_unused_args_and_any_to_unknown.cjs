@@ -44,7 +44,7 @@ function processFile(file) {
   const paramsPattern = params.join("|");
   const re = new RegExp(
     "([\\(\\[,]\\s*)(" + paramsPattern + ")(?=\\s*[:,\\)\\]\\=])",
-    "g"
+    "g",
   );
   s = s.replace(re, function (_, lead, name) {
     return lead + "_" + name;
@@ -72,7 +72,7 @@ function main() {
     }
   }
   console.log(
-    "Processed " + files.length + " files, modified " + changed + " files."
+    "Processed " + files.length + " files, modified " + changed + " files.",
   );
 }
 

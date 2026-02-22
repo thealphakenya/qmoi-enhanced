@@ -22,7 +22,7 @@ app.get("/", (_req, _res) => {
 });
 
 app.get("/health", (_req, _res) =>
-  _res.json({ ok: true, time: new Date().toISOString() })
+  _res.json({ ok: true, time: new Date().toISOString() }),
 );
 
 app.listen(port, host, () => {

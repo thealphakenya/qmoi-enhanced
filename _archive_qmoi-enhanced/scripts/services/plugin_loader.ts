@@ -19,7 +19,10 @@ function loadPlugins() {
         console.log(`[PLUGIN] Loaded: ${file}`);
       }
     } catch (e) {
-      (globalThis.console as any)?.error?.(`[PLUGIN] Failed to load ${file}:`, e);
+      (globalThis.console as any)?.error?.(
+        `[PLUGIN] Failed to load ${file}:`,
+        e,
+      );
     }
   }
   return plugins;

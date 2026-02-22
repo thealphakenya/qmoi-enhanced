@@ -157,7 +157,7 @@ class ComprehensiveTestRunner {
       const result: TestResult = {
         success: true,
         output: stdout,
-        error: stderr || undefined,
+        _error: stderr || undefined,
         command,
         duration,
         timestamp: new Date().toISOString(),
@@ -167,13 +167,13 @@ class ComprehensiveTestRunner {
         `[COMPREHENSIVE-TEST-RUNNER] ${suiteName} passed in ${duration}ms`,
       );
       return result;
-    } catch (error: unknown) {
+    } catch (_error: unknown) {
       const duration = Date.now() - startTime;
 
       const result: TestResult = {
         success: false,
         output: error.stdout || "",
-        error: error.stderr || error.message,
+        _error: error.stderr || error.message,
         command,
         duration,
         timestamp: new Date().toISOString(),
@@ -219,7 +219,7 @@ class ComprehensiveTestRunner {
             );
           }
         }
-      } catch (error: unknown) {
+      } catch (_error: unknown) {
         logger.warn(
           `[COMPREHENSIVE-TEST-RUNNER] File check failed: ${file} - ${error.message}`,
         );
@@ -240,7 +240,7 @@ class ComprehensiveTestRunner {
             );
           }
         }
-      } catch (error: unknown) {
+      } catch (_error: unknown) {
         logger.warn(
           `[COMPREHENSIVE-TEST-RUNNER] Directory check failed: ${dir} - ${error.message}`,
         );
@@ -282,7 +282,7 @@ class ComprehensiveTestRunner {
         logger.info(
           `[COMPREHENSIVE-TEST-RUNNER] QMOI test passed: ${test.name}`,
         );
-      } catch (error: unknown) {
+      } catch (_error: unknown) {
         logger.warn(
           `[COMPREHENSIVE-TEST-RUNNER] QMOI test failed: ${test.name} - ${error.message}`,
         );
@@ -349,7 +349,7 @@ class ComprehensiveTestRunner {
 
     for (const endpoint of apiEndpoints) {
       try {
-        const response = await fetch(`http://localhost:3000${endpoint}`, {
+        const _response = await fetch(`http://localhost:3000${endpoint}`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ action: "status" }),
@@ -360,7 +360,7 @@ class ComprehensiveTestRunner {
             `API endpoint ${endpoint} returned ${response.status}`,
           );
         }
-      } catch (error: unknown) {
+      } catch (_error: unknown) {
         // Don't fail the entire test suite for API issues
         logger.warn(
           `[COMPREHENSIVE-TEST-RUNNER] API test warning: ${endpoint} - ${error.message}`,
@@ -389,7 +389,7 @@ class ComprehensiveTestRunner {
         command: r.command,
         success: r.success,
         duration: r.duration,
-        error: r.error,
+        _error: r.error,
       })),
     };
 
@@ -413,8 +413,8 @@ class ComprehensiveTestRunner {
         await execAsync(command, { timeout: 60000 }); // 1 minute timeout
         passed++;
         results.push({ command, success: true });
-      } catch (error: unknown) {
-        results.push({ command, success: false, error: error.message });
+      } catch (_error: unknown) {
+        results.push({ command, success: false, _error: error.message });
       }
     }
 
@@ -442,7 +442,7 @@ const logger = {
   warn: (message: string, ...args: unknown[]) => {
     console.warn(`[WARN] ${message}`, ...args);
   },
-  error: (message: string, ...args: unknown[]) => {
+  _error: (message: string, ...args: unknown[]) => {
     (console as any).error(`[ERROR] ${message}`, ...args);
   },
 };
@@ -455,8 +455,8 @@ if (require.main === module) {
       console.log("Test Results:", result);
       process.exit(result.success ? 0 : 1);
     })
-    .catch((error) => {
-      (console as any).error("Test runner failed:", error);
+    .catch((_error) => {
+      (console as any).error("Test runner failed:", _error);
       process.exit(1);
     });
 }

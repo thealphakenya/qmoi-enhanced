@@ -16,7 +16,7 @@ describe("Authentication API", () => {
             password: "Password123!@#",
             confirmPassword: "Password123!@#",
           }),
-        }
+        },
       );
 
       const response = await registerHandler(request);
@@ -39,7 +39,7 @@ describe("Authentication API", () => {
             username: "testuser",
             password: "Password123!@#",
           }),
-        }
+        },
       );
 
       const response = await registerHandler(request);
@@ -56,7 +56,7 @@ describe("Authentication API", () => {
             username: "testuser",
             password: "weak",
           }),
-        }
+        },
       );
 
       const response = await registerHandler(request);
@@ -73,7 +73,7 @@ describe("Authentication API", () => {
             username: "testuser1",
             password: "Password123!@#",
           }),
-        })
+        }),
       );
 
       // Duplicate registration
@@ -86,7 +86,7 @@ describe("Authentication API", () => {
             username: "testuser2",
             password: "Password123!@#",
           }),
-        }
+        },
       );
 
       const response = await registerHandler(request);
@@ -122,7 +122,7 @@ describe("Authentication API", () => {
       expect(authService.validatePasswordStrength("weak")).toBe(false);
       expect(authService.validatePasswordStrength("Password123!@#")).toBe(true);
       expect(authService.validatePasswordStrength("NoSpecialChar123")).toBe(
-        false
+        false,
       );
     });
   });

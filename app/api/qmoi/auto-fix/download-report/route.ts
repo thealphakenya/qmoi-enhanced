@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -14,7 +14,7 @@ export async function GET(_request: NextRequest) {
     const r = auth.response;
     if (!r)
       return NextResponse.json(
-        { error: "Unknown auth error" },
+        { _error: "Unknown auth error" },
         { status: 500 },
       );
     return NextResponse.json(r.body, { status: r.status });
@@ -26,9 +26,9 @@ export async function GET(_request: NextRequest) {
     // Check if latest report exists
     try {
       await fs.access(latestReportPath);
-    } catch {
+    } catch (e) {
       return NextResponse.json(
-        { error: "No report available for download" },
+        { _error: "No report available for download" },
         { status: 404 },
       );
     }
@@ -41,7 +41,7 @@ export async function GET(_request: NextRequest) {
       user: process.env.AUTH_USER || "unknown", // Production: Extract from JWT auth context
       app: "QMOI",
       device: "unknown",
-      error: null,
+      _error: null,
     };
     try {
       await fs.appendFile(
@@ -49,7 +49,7 @@ export async function GET(_request: NextRequest) {
         JSON.stringify(logEntry) + "\n",
       );
     } catch (_e) {
-      /* ignore logging failures */
+      // Ignore logging errors
     }
 
     // Read the report file
@@ -57,19 +57,19 @@ export async function GET(_request: NextRequest) {
     const report = JSON.parse(reportData);
 
     // Create response with proper headers for file download
-    const response = new NextResponse(reportData);
-    response.headers.set("Content-Type", "application/json");
-    response.headers.set(
+    const _response = new NextResponse(reportData);
+    _response.headers.set("Content-Type", "application/json");
+    _response.headers.set(
       "Content-Disposition",
       `attachment; filename="qmoi-auto-fix-report-${
         new Date().toISOString().split("T")[0]
       }.json"`,
     );
 
-    return response;
-  } catch (error) {
-    // On error, log the error
-    (console as any).error("Error downloading report:", error);
+    return _response;
+  } catch (_error) {
+    // On _error, log the error
+    (console as any).error("Error downloading report:", _error);
     const logEntryErr = {
       timestamp: new Date().toISOString(),
       action: "download-report-access",
@@ -77,7 +77,7 @@ export async function GET(_request: NextRequest) {
       user: "unknown",
       app: "QMOI",
       device: "unknown",
-      error: error?.toString() || "unknown error",
+      _error: _error?.toString() || "unknown error",
     };
     try {
       await fs.appendFile(
@@ -85,10 +85,10 @@ export async function GET(_request: NextRequest) {
         JSON.stringify(logEntryErr) + "\n",
       );
     } catch (_e) {
-      /* ignore logging failures */
+      // Ignore logging errors
     }
     return NextResponse.json(
-      { error: "Failed to download report" },
+      { _error: "Failed to download report" },
       { status: 500 },
     );
   }

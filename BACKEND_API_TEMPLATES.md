@@ -957,7 +957,6 @@ docker run -p 8000:8000 qcity-backend
 4. **Logging:** Log all important actions (especially emergency actions)
 
 5. **Security:**
-
    - Validate file types and sizes
    - Use environment variables for secrets
    - Add rate limiting

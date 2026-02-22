@@ -6,7 +6,7 @@ const execAsync = promisify(exec);
 
 export async function POST(req: NextRequest) {
   try {
-    const { enabled = true } = (await req.json() as any);
+    const { enabled = true } = (await req.json()) as any;
 
     if (enabled) {
       // Enable auto-redeploy by setting up webhooks or CI/CD

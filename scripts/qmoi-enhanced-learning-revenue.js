@@ -51,7 +51,7 @@ async function learnFromOrganizations() {
     ];
     for (const org of orgs) {
       try {
-        const response = await axios.get(
+        const _response = await axios.get(
           `https://api.github.com/orgs/${org}/repos?sort=updated&per_page=10`,
         );
         const repos = response.data;
@@ -99,7 +99,7 @@ async function learnFromServers() {
 
     for (const server of servers) {
       try {
-        const response = await axios.get(server);
+        const _response = await axios.get(server);
         const serverData = {
           source: "server_api",
           server: server,
@@ -137,7 +137,7 @@ async function learnFromClouds() {
 
     for (const service of cloudServices) {
       try {
-        const response = await axios.get(`https://${service}`);
+        const _response = await axios.get(`https://${service}`);
         const cloudData = {
           source: "cloud_service",
           service: service,
@@ -173,7 +173,7 @@ async function learnFromMovies() {
 
     for (const source of movieSources) {
       try {
-        const response = await axios.get(source);
+        const _response = await axios.get(source);
         const movieData = {
           source: "movie_api",
           api: source,
@@ -410,4 +410,4 @@ async function main() {
   }
 }
 
-main().catch((_e) => log("Fatal error: " + _e.message));
+main().catch((_e) => log("Fatal _error: " + _e.message));

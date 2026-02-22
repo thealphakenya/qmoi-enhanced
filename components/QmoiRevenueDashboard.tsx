@@ -86,7 +86,10 @@ const QmoiRevenueDashboard: React.FC = () => {
         setRevenueStatus(data);
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to fetch revenue status:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to fetch revenue status:",
+        error,
+      );
     }
   };
 
@@ -106,7 +109,10 @@ const QmoiRevenueDashboard: React.FC = () => {
         setTransactions(data.transactions);
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to fetch transactions:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to fetch transactions:",
+        error,
+      );
     }
   };
 
@@ -130,7 +136,10 @@ const QmoiRevenueDashboard: React.FC = () => {
         }
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.(`Failed to ${action} revenue engine:`, error);
+      (globalThis.console as any)?.error?.(
+        `Failed to ${action} revenue engine:`,
+        error,
+      );
     } finally {
       setIsLoading(false);
     }

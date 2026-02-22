@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
-// NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -51,9 +50,9 @@ const UserSchema = z.object({
 });
 
 // [PRODUCTION IMPLEMENTATION REQUIRED] database (replace with actual database)
-const employees: any[] = [];
-const users: any[] = [];
-const employmentLogs: any[] = [];
+const employees: unknown[] = [];
+const users: unknown[] = [];
+const employmentLogs: unknown[] = [];
 
 export async function GET(_request: NextRequest) {
   const { searchParams } = new URL(_request.url);
@@ -62,17 +61,17 @@ export async function GET(_request: NextRequest) {
   const role = searchParams.get("role");
 
   try {
-    let data: any = [];
+    let data: unknown = [];
 
     if (type === "employees") {
       data = employees.filter(
         (emp) =>
-          (!status || emp.status === status) && (!role || emp.role === role)
+          (!status || emp.status === status) && (!role || emp.role === role),
       );
     } else if (type === "users") {
       data = users.filter(
         (user) =>
-          (!status || user.status === status) && (!role || user.role === role)
+          (!status || user.status === status) && (!role || user.role === role),
       );
     } else {
       data = { employees, users };
@@ -85,20 +84,20 @@ export async function GET(_request: NextRequest) {
         ? data.length
         : employees.length + users.length,
     });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       {
         success: false,
-        error: "Failed to fetch employment data",
+        _error: "Failed to fetch employment data",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
 export async function POST(_request: NextRequest) {
   try {
-    const body: any = await _request.json();
+    const body: unknown = await _request.json();
     const { type, ...data } = body;
 
     if (type === "employee") {
@@ -153,36 +152,36 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          error: "Invalid type specified",
+          _error: "Invalid type specified",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
-  } catch (error) {
-    if (error instanceof z.ZodError) {
+  } catch (_error) {
+    if (_error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          error: "Validation failed",
-          details: error.errors,
+          _error: "Validation failed",
+          details: _error.errors,
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     return NextResponse.json(
       {
         success: false,
-        error: "Failed to create employment record",
+        _error: "Failed to create employment record",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
 export async function PUT(_request: NextRequest) {
   try {
-    const body: any = await _request.json();
+    const body: unknown = await _request.json();
     const { id, type, ...updates } = body;
 
     if (type === "employee") {
@@ -191,9 +190,9 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            error: "Employee not found",
+            _error: "Employee not found",
           },
-          { status: 404 }
+          { status: 404 },
         );
       }
 
@@ -219,9 +218,9 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            error: "User not found",
+            _error: "User not found",
           },
-          { status: 404 }
+          { status: 404 },
         );
       }
 
@@ -245,18 +244,18 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          error: "Invalid type specified",
+          _error: "Invalid type specified",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       {
         success: false,
-        error: "Failed to update employment record",
+        _error: "Failed to update employment record",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -271,9 +270,9 @@ export async function DELETE(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          error: "ID and type are required",
+          _error: "ID and type are required",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -283,9 +282,9 @@ export async function DELETE(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            error: "Employee not found",
+            _error: "Employee not found",
           },
-          { status: 404 }
+          { status: 404 },
         );
       }
 
@@ -311,9 +310,9 @@ export async function DELETE(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            error: "User not found",
+            _error: "User not found",
           },
-          { status: 404 }
+          { status: 404 },
         );
       }
 
@@ -337,18 +336,18 @@ export async function DELETE(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          error: "Invalid type specified",
+          _error: "Invalid type specified",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       {
         success: false,
-        error: "Failed to remove employment record",
+        _error: "Failed to remove employment record",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -15,7 +15,7 @@ class QCityDeviceManager {
   loadConfig() {
     try {
       return JSON.parse(fs.readFileSync('config/qcity-device-config.json', 'utf8'));
-    } catch (error) {
+    } catch (_error) {
       console.log('QCity config not found, using defaults');
       return { 
         qcity_device: { 
@@ -464,8 +464,8 @@ if (command) {
         console.log('Command completed successfully with unlimited resources');
       }
     })
-    .catch(error => {
-      (console as any).error('Error:', error);
+    .catch(_error => {
+      (console as any).error('Error:', _error);
       process.exit(1);
     });
 } else {

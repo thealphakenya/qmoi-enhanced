@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
-// NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+
 import { NextResponse } from "next/server";
 
 export async function POST(_request: Request) {
@@ -19,14 +18,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { error: "maxConcurrentProcessing must be between 1 and 10" },
+        { _error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { error: "defaultFormat must be one of: json, csv, parquet" },
+        { _error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -36,7 +35,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { error: "storageLocation must be one of: local, cloud, hybrid" },
+        { _error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -56,10 +55,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (error) {
-    (console as any).error("Error in dataset settings endpoint:", error);
+  } catch (_error) {
+    (console as any).error("Error in dataset settings endpoint:", _error);
     return NextResponse.json(
-      { error: "Failed to update dataset settings" },
+      { _error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }

@@ -15,7 +15,7 @@ function checkIP() {
   try {
     const ip = execSync("python scripts/get_public_ip.py").toString().trim();
     return ip.includes("Your public IP address is:");
-  } catch {
+  } catch (e) {
     return false;
   }
 }

@@ -159,7 +159,7 @@ module.exports = nextConfig`;
           fs.writeFileSync(nextConfigPath, fixedConfig);
           this.fixes.push("Fixed problematic next.config.js settings");
         }
-      } catch (error) {
+      } catch (_error) {
         this.errors.push(
           "Failed to check/fix next.config.js: " + error.message,
         );
@@ -223,7 +223,7 @@ export default function RootLayout({ children }) {
       // Use --legacy-peer-deps to handle TypeScript version conflicts
       execSync("npm install --legacy-peer-deps", { stdio: "inherit" });
       this.fixes.push("Installed dependencies with legacy peer deps");
-    } catch (error) {
+    } catch (_error) {
       this.errors.push("Failed to install dependencies: " + error.message);
     }
   }
@@ -233,7 +233,7 @@ export default function RootLayout({ children }) {
     try {
       execSync("npm run build", { stdio: "inherit" });
       this.fixes.push("Build completed successfully");
-    } catch (error) {
+    } catch (_error) {
       this.errors.push("Build failed: " + error.message);
     }
   }
@@ -284,7 +284,7 @@ export default function RootLayout({ children }) {
       }
 
       return report;
-    } catch (error) {
+    } catch (_error) {
       this.log(`❌ Auto fix failed: ${error.message}`, "error");
       throw error;
     }

@@ -82,7 +82,8 @@ export const TVDecoderIntegration: TVDecoderDevice = {
       const availablePorts = await SerialPortMock.list();
       const decoderPort = availablePorts.find(
         (port: unknown) =>
-          port.manufacturer?.includes("TVDecoder") || port.vendorId === "0x0403" // FTDI chip used in most decoders
+          port.manufacturer?.includes("TVDecoder") ||
+          port.vendorId === "0x0403", // FTDI chip used in most decoders
       );
 
       if (!decoderPort) {
@@ -109,7 +110,10 @@ export const TVDecoderIntegration: TVDecoderDevice = {
         setTimeout(() => resolve(true), 100);
       });
     } catch (err) {
-      (globalThis.console as any)?.error?.("Failed to connect to TV decoder:", err);
+      (globalThis.console as any)?.error?.(
+        "Failed to connect to TV decoder:",
+        err,
+      );
       return false;
     }
   },
@@ -138,15 +142,19 @@ export const TVDecoderIntegration: TVDecoderDevice = {
       const ports = await SerialPortMock.list();
       const hasDecoder = ports.some(
         (port: unknown) =>
-          port.manufacturer?.includes("TVDecoder") || port.vendorId === "0x0403"
+          port.manufacturer?.includes("TVDecoder") ||
+          port.vendorId === "0x0403",
       );
       console.log(
         "TV decoder auto-detection:",
-        hasDecoder ? "found" : "not found, using simulation"
+        hasDecoder ? "found" : "not found, using simulation",
       );
       return true; // Always return true in simulation mode
     } catch (err) {
-      (globalThis.console as any)?.error?.("Failed to auto-detect TV decoder:", err);
+      (globalThis.console as any)?.error?.(
+        "Failed to auto-detect TV decoder:",
+        err,
+      );
       return true; // Return true in simulation mode
     }
   },
@@ -167,7 +175,7 @@ export const CarRadioIntegration: CarRadioDevice = {
     try {
       const devices = HIDMock.devices();
       const carRadio = devices.find(
-        (d) => d.vendorId === this.VID && d.productId === this.PID
+        (d) => d.vendorId === this.VID && d.productId === this.PID,
       );
 
       if (!carRadio) {
@@ -179,7 +187,10 @@ export const CarRadioIntegration: CarRadioDevice = {
       this.device = new HIDMock(carRadio.path);
       return true;
     } catch (err) {
-      (globalThis.console as any)?.error?.("Failed to connect to car radio:", err);
+      (globalThis.console as any)?.error?.(
+        "Failed to connect to car radio:",
+        err,
+      );
       // In simulation mode, still return true
       this.device = new HIDMock("/dev/simulated-carradio");
       return true;
@@ -203,7 +214,10 @@ export const CarRadioIntegration: CarRadioDevice = {
         }, 100);
       });
     } catch (err) {
-      (globalThis.console as any)?.error?.("Failed to send command to car radio:", err);
+      (globalThis.console as any)?.error?.(
+        "Failed to send command to car radio:",
+        err,
+      );
       throw err;
     }
   },
@@ -212,15 +226,18 @@ export const CarRadioIntegration: CarRadioDevice = {
     try {
       const devices = HIDMock.devices();
       const hasRadio = devices.some(
-        (d) => d.vendorId === this.VID && d.productId === this.PID
+        (d) => d.vendorId === this.VID && d.productId === this.PID,
       );
       console.log(
         "Car radio auto-detection:",
-        hasRadio ? "found" : "not found, using simulation"
+        hasRadio ? "found" : "not found, using simulation",
       );
       return true; // Always return true in simulation mode
     } catch (err) {
-      (globalThis.console as any)?.error?.("Failed to auto-detect car radio:", err);
+      (globalThis.console as any)?.error?.(
+        "Failed to auto-detect car radio:",
+        err,
+      );
       return true; // Return true in simulation mode
     }
   },
@@ -232,14 +249,17 @@ export const SmartHomeIntegration: DeviceIntegration = {
   async connect() {
     try {
       console.log(
-        "SmartHomeIntegration: connecting to local smart home bridge..."
+        "SmartHomeIntegration: connecting to local smart home bridge...",
       );
       // Simulate discovery and connection attempt
       await new Promise((resolve) => setTimeout(resolve, 500));
       (this as any).connectionState = true;
       return true;
     } catch (err) {
-      (globalThis.console as any)?.error?.("Failed to connect to smart home bridge:", err);
+      (globalThis.console as any)?.error?.(
+        "Failed to connect to smart home bridge:",
+        err,
+      );
       (this as any).connectionState = false;
       return false;
     }
@@ -296,7 +316,7 @@ export const MessagingIntegration: DeviceIntegration = {
 
     // Simulate network latency
     await new Promise((resolve) =>
-      setTimeout(resolve, 100 + Math.random() * 200)
+      setTimeout(resolve, 100 + Math.random() * 200),
     );
     return {
       ok: true,
@@ -574,7 +594,10 @@ export const IoTIntegration: DeviceIntegration = {
       (this as any).connected = true;
       return true;
     } catch (err) {
-      (globalThis.console as any)?.error?.("Failed to connect to IoT network:", err);
+      (globalThis.console as any)?.error?.(
+        "Failed to connect to IoT network:",
+        err,
+      );
       (this as any).connected = false;
       return false;
     }
@@ -625,7 +648,10 @@ export const MobileIntegration: DeviceIntegration = {
       (this as any).connected = true;
       return true;
     } catch (err) {
-      (globalThis.console as any)?.error?.("Failed to connect to mobile device:", err);
+      (globalThis.console as any)?.error?.(
+        "Failed to connect to mobile device:",
+        err,
+      );
       (this as any).connected = false;
       return false;
     }

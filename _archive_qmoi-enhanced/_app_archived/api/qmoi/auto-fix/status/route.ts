@@ -63,7 +63,7 @@ export async function GET() {
       const vercelConfigPath = path.join(process.cwd(), "vercel.json");
       await fs.access(vercelConfigPath);
       report.deployment.status = "configured";
-    } catch {
+    } catch (e) {
       report.deployment.status = "not_configured";
     }
 
@@ -81,13 +81,16 @@ export async function GET() {
       } else {
         report.deployment.github_actions = "no_workflows";
       }
-    } catch {
+    } catch (e) {
       report.deployment.github_actions = "not_configured";
     }
 
     return NextResponse.json(report);
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error getting auto-fix status:", error);
+    (globalThis.console as any)?.error?.(
+      "Error getting auto-fix status:",
+      error,
+    );
     return NextResponse.json(
       { error: "Failed to get auto-fix status" },
       { status: 500 },

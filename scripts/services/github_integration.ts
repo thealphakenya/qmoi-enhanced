@@ -48,16 +48,16 @@ class GitHubIntegrationService {
 
       // Send notification
       await this.sendNotification(payload, fixResults);
-    } catch (error) {
-      (console as any).error("Error handling push _event:", error);
-      await this.sendErrorNotification(error);
+    } catch (_error) {
+      (console as any).error("Error handling push _event:", _error);
+      await this.sendErrorNotification(_error);
     }
   }
 
   private async ensureRepositoryCloned(repoFullName: string) {
     try {
       await execAsync("git status");
-    } catch {
+    } catch (e) {
       // Repository not cloned, clone it
       await execAsync(`git clone https://github.com/${repoFullName}.git .`);
     }
@@ -101,7 +101,7 @@ class GitHubIntegrationService {
     await autoFixService.sendEmailNotification(subject, body);
   }
 
-  private async sendErrorNotification(error: Error) {
+  private async sendErrorNotification(_error: Error) {
     const subject = "Q-city Auto Fix Error";
     const body = `
       An error occurred during the auto-fix process:

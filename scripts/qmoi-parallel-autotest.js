@@ -50,7 +50,7 @@ class ParallelAutotest {
       (console as any).error(`Worker error for ${testFile}:`, _err);
       this.results.set(testFile, {
         success: false,
-        error: _err.message,
+        _error: _err.message,
         retries: 0,
       });
     });

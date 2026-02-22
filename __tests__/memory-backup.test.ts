@@ -10,7 +10,7 @@ describe("memory-backup API", () => {
     fs.mkdirSync(memoryDir, { recursive: true });
     fs.writeFileSync(
       memoryPath,
-      JSON.stringify({ conversations: [] }, null, 2)
+      JSON.stringify({ conversations: [] }, null, 2),
     );
   });
 

@@ -53,15 +53,16 @@ const Chatbot: React.FC<ChatbotProps> = ({
   // Track conversation with QMOI memory
   useEffect(() => {
     if (chatHistory && chatHistory.length > 0) {
-      updateQMOIMemory({
+      updateQMOIMemory((prev) => ({
         conversations: chatHistory.length,
         contextHistory: [
-          ...(qmoiMemory.contextHistory || []),
+          ...(prev.contextHistory || []),
           `Chat with ${currentUser?.name || "user"}`,
         ].slice(-10),
-      });
+      }));
     }
-  }, [chatHistory, currentUser, qmoiMemory, updateQMOIMemory]);
+    // depend only on chatHistory and currentUser; updateQMOIMemory is stable
+  }, [chatHistory, currentUser, updateQMOIMemory]);
 
   const [profileName, setProfileName] = useState<string | null>(null);
 
@@ -154,21 +155,25 @@ const Chatbot: React.FC<ChatbotProps> = ({
       if (sessionId) headers["X-QMOI-SESSION"] = sessionId;
       if (isMaster) headers["X-QMOI-ROLE"] = "master";
 
-      const res = await fetch("/api/qmoi/chat", {
+      const res = await fetch("/api/ai", {
         method: "POST",
         headers,
-        body: JSON.stringify({ messages, sessionId }),
+        body: JSON.stringify({
+          input: inputMessage,
+          userId: currentUser?.id || "anonymous",
+          sessionId,
+        }),
       });
 
-      if (!res.ok) throw new Error("qmoi request failed");
+      if (!res.ok) throw new Error("QMoi request failed");
       const data = await res.json();
 
-      // Extract assistant reply content from OpenAI-like response
+      // Extract assistant reply content from response
       let replyText = "";
-      try {
-        replyText = data?.choices?.[0]?.message?.content ?? (data.reply || "");
-      } catch (e) {
-        replyText = data?.reply || "";
+      if (data.success && data.response) {
+        replyText = data.response;
+      } else {
+        throw new Error(data.error || "Failed to get response from QMoi");
       }
 
       const aiResponse = {

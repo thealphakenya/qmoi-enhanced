@@ -299,7 +299,7 @@ async function retireAsset(assetId) {
 }
 
 // --- UNIVERSAL ERROR AUTO-FIXING SYSTEM ---
-async function autoFixError(context, error) {
+async function autoFixError(context, _error) {
   logAction(`[ERROR] Context: ${context} | Error: ${error}`);
   // Self-healing/retry logic
   for (let attempt = 1; attempt <= 3; attempt++) {

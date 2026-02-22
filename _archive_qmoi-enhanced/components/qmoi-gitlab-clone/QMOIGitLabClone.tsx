@@ -112,7 +112,10 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
         setDeployments(data.deployments || []);
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error fetching deployments:", error);
+      (globalThis.console as any)?.error?.(
+        "Error fetching deployments:",
+        error,
+      );
     }
   };
 

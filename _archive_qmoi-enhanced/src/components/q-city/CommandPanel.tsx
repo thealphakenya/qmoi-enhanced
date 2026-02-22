@@ -20,14 +20,14 @@ export default function CommandPanel() {
   const [history, setHistory] = useState(() => {
     try {
       return JSON.parse(localStorage.getItem("qcity-cmd-history") || "[]");
-    } catch {
+    } catch (e) {
       return [];
     }
   });
   const [pinned, setPinned] = useState(() => {
     try {
       return JSON.parse(localStorage.getItem("qcity-cmd-pinned") || "[]");
-    } catch {
+    } catch (e) {
       return [];
     }
   });

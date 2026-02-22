@@ -206,4 +206,4 @@ async function main() {
   }
 }
 
-main().catch((_e) => log("Fatal error: " + _e.message));
+main().catch((_e) => log("Fatal _error: " + _e.message));

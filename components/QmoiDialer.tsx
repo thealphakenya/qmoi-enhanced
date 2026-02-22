@@ -117,7 +117,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
 
     const updatedContact = { ...contact, isFavorite: !contact.isFavorite };
     const newContacts = contacts.map((c) =>
-      c.id === contactId ? updatedContact : c
+      c.id === contactId ? updatedContact : c,
     );
     saveContacts(newContacts);
 
@@ -126,14 +126,14 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
       setFavorites(newFavorites);
       localStorage.setItem(
         "qmoi-dialer-favorites",
-        JSON.stringify(newFavorites)
+        JSON.stringify(newFavorites),
       );
     } else {
       const newFavorites = favorites.filter((f) => f.id !== contactId);
       setFavorites(newFavorites);
       localStorage.setItem(
         "qmoi-dialer-favorites",
-        JSON.stringify(newFavorites)
+        JSON.stringify(newFavorites),
       );
     }
   };
@@ -164,7 +164,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
     // Start call duration timer
     callDurationRef.current = setInterval(() => {
       setCurrentCall((prev) =>
-        prev ? { ...prev, duration: prev.duration + 1 } : null
+        prev ? { ...prev, duration: prev.duration + 1 } : null,
       );
     }, 1000);
 
@@ -218,7 +218,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
   const filteredContacts = contacts.filter(
     (contact) =>
       contact.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      contact.phone.includes(searchQuery)
+      contact.phone.includes(searchQuery),
   );
 
   const getContactName = (phone: string): string => {
@@ -431,8 +431,8 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
                         log.type === "incoming"
                           ? "bg-green-100 text-green-600"
                           : log.type === "outgoing"
-                          ? "bg-blue-100 text-blue-600"
-                          : "bg-red-100 text-red-600"
+                            ? "bg-blue-100 text-blue-600"
+                            : "bg-red-100 text-red-600"
                       }`}
                     >
                       {React.createElement(FaPhone as React.ElementType, {

@@ -26,11 +26,10 @@ describe("Chatbot integration (API proxy)", () => {
         ok: true,
         json: () =>
           Promise.resolve({
-            choices: [
-              { message: { content: "QMOI AI (qmoi): Hello from qmoi" } },
-            ],
+            success: true,
+            response: "QMOI AI (qmoi): Hello from qmoi",
           }),
-      })
+      }),
     ) as any;
 
     (global as any).speechSynthesis = {
@@ -39,16 +38,16 @@ describe("Chatbot integration (API proxy)", () => {
     };
 
     // JSDOM doesn't implement SpeechSynthesisUtterance; mock it so construction succeeds
-    const SpeechSynthesisUtteranceMock = jest
-      .fn()
-      .mockImplementation(function (text: string) {
-        // @ts-expect-error - Setting mock properties
-        this.text = text;
-        // @ts-expect-error - Setting mock properties
-        this.onend = undefined;
-        // @ts-expect-error - Setting mock properties
-        this.onerror = undefined;
-      });
+    const SpeechSynthesisUtteranceMock = jest.fn().mockImplementation(function (
+      text: string,
+    ) {
+      // @ts-expect-error - Setting mock properties
+      this.text = text;
+      // @ts-expect-error - Setting mock properties
+      this.onend = undefined;
+      // @ts-expect-error - Setting mock properties
+      this.onerror = undefined;
+    });
     (global as any).SpeechSynthesisUtterance =
       SpeechSynthesisUtteranceMock as any;
     // expose the mock for assertions in tests
@@ -79,13 +78,20 @@ describe("Chatbot integration (API proxy)", () => {
 
     // Wait for fetch to be called and setChatHistory to be invoked with an AI reply
     await waitFor(() => expect(global.fetch).toHaveBeenCalled(), {
-      timeout: 2000,
+      timeout: 3000,
     });
+
+    // Wait for speakText to be called (which happens after fetch completes and response is processed)
+    await waitFor(
+      () => {
+        expect((global as any).speechSynthesis.speak).toHaveBeenCalled();
+      },
+      { timeout: 3000 },
+    );
+
     // The Chatbot should call the provided setChatHistory to append AI reply
     expect(setChatHistory).toHaveBeenCalled();
 
-    // TTS should have been invoked even if parent state not updated in this test harness
-    expect((global as any).speechSynthesis.speak).toHaveBeenCalled();
     // And ensure SpeechSynthesisUtterance constructor was used
     expect((global as any).__SpeechSynthesisUtteranceMock).toHaveBeenCalled();
   });

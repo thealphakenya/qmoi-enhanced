@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 // @ts-nocheck -- temporary: suppress widespread 'unknown' property errors during triage
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
-// NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+
 import type { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import path from "path";
@@ -214,7 +213,7 @@ async function createProject(
 }
 
 // Helper to auto-generate docs and packaging for a project/package/extension
-async function generateDocsAndPackaging(projectName: string, files: any[]) {
+async function generateDocsAndPackaging(projectName: string, files: unknown[]) {
   const docs = `# ${projectName} Documentation\n\nAuto-generated docs for project: ${projectName}`;
   const readmePath = `/workspaces/Alpha-Q-ai/projects/${projectName}/README.md`;
   // Ensure project directory exists and write README
@@ -222,15 +221,13 @@ async function generateDocsAndPackaging(projectName: string, files: any[]) {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   try {
     fs.writeFileSync(readmePath, docs, "utf8");
-  } catch (_e) {
-    // Ignore write failures during build-time compatibility
-  }
+  } catch (e) {
   // Production: implement real packaging (zip/tar/docker) for distribution
   return { docs: readmePath, packaging: null };
 }
 
 // --- Enhanced Creative Generators ---
-async function enhancedGameGen(details: any) {
+async function enhancedGameGen(details: unknown) {
   // Add more thorough logic, error checking, and asset generation
   // ...
   return {
@@ -239,15 +236,15 @@ async function enhancedGameGen(details: any) {
     assets: ["game.js", "assets/", "README.md"],
   };
 }
-async function enhancedAppDev(details: any) {
+async function enhancedAppDev(details: unknown) {
   // ...
   return { status: "success", details, files: ["app.js", "README.md"] };
 }
-async function enhancedMusicGen(details: any) {
+async function enhancedMusicGen(details: unknown) {
   // ...
   return { status: "success", details, files: ["track.wav", "README.md"] };
 }
-async function enhancedArchitectureGen(details: any) {
+async function enhancedArchitectureGen(details: unknown) {
   // ...
   return { status: "success", details, files: ["model.obj", "README.md"] };
 }
@@ -287,7 +284,11 @@ async function restoreModelFromHuggingFace(
   });
 }
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] for advanced AI/ML tasks (to be implemented)
+/**
+ * PRODUCTION: Calls Python script for heavy AI/ML tasks (image generation, text analysis, etc.)
+ * Integration: Ensure Python dependencies are installed and environment is configured.
+ * Security: Validate input parameters and sanitize file paths before passing to exec().
+ */
 async function runAdvancedAIGeneration(
   type: string,
   _params: Record<string, any>,
@@ -303,7 +304,7 @@ async function runAdvancedAIGeneration(
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
         } catch (_e) {
-          resolve({ status: "error", error: String(_e), raw: stdout });
+          resolve({ status: "error", _error: String(_e), raw: stdout });
         }
       },
     );
@@ -589,7 +590,7 @@ async function aiResearch(url: string, query?: string) {
     let text = $("body").text();
     text = text.replace(/\s+/g, " ").trim();
     // Optionally, filter or summarize based on query
-    if (query) {
+    if (_query) {
       // Simple keyword-based summary
       const sentences = text.split(". ");
       const relevant = sentences.filter((s: string) =>
@@ -602,14 +603,14 @@ async function aiResearch(url: string, query?: string) {
       url,
     };
   } catch (_e) {
-    return { error: "Failed to fetch or parse URL", url };
+    return { _error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
 async function aiBatchResearch(urls: string[], query?: string) {
   const results = [];
   for (const url of urls) {
-    results.push(await aiResearch(url, query));
+    results.push(await aiResearch(url, _query));
   }
   return results;
 }
@@ -618,7 +619,7 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
   try {
     const data = await pdfParse(buffer);
     const text = data.text.replace(/\s+/g, " ").trim();
-    if (query) {
+    if (_query) {
       const sentences = text.split(". ");
       const relevant = sentences.filter((s: string) =>
         s.toLowerCase().includes(query.toLowerCase()),
@@ -635,7 +636,7 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       pages: data.numpages,
     };
   } catch (_e) {
-    return { error: "Failed to parse PDF", type: "pdf" };
+    return { _error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -762,8 +763,8 @@ export default async function handler(
   } else if (_req.method === "POST") {
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
-      form.parse(_req as any, async (_err: any, fields: any, files: any) => {
-        if (_err) return _res.status(500).json({ error: _err.message });
+      form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
+        if (_err) return _res.status(500).json({ _error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -773,7 +774,7 @@ export default async function handler(
             const result = await aiPdfResearch(buffer, fields.query);
             return _res.json({
               file: file.originalFilename,
-              query: fields.query,
+              _query: fields.query,
               result,
               status: "completed",
               timestamp: new Date().toISOString(),
@@ -791,14 +792,14 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ error: "No file uploaded" });
+        return _res.status(400).json({ _error: "No file uploaded" });
       });
     });
   }
 }
 
 // Add endpoint to save sister projects (simple in-memory for now)
-const sisterProjects: any[] = [];
+const sisterProjects: unknown[] = [];
 
 export async function POST(_req: Request) {
   const url = new URL(_req.url);
@@ -816,9 +817,9 @@ export async function POST(_req: Request) {
     const message = body.message || body.input;
     const speak = body.speak || url.searchParams.get("speak") === "1";
     if (message) {
-      const result: any = await multiUserChat(user, message);
+      const result: unknown = await multiUserChat(user, message);
       // If client requested speak, include SSML; otherwise return plain text
-      const payload: any = {
+      const payload: unknown = {
         reply: result.reply,
         conversation: result.conversation,
       };
@@ -827,12 +828,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ error: "no_message" }), {
+    return new Response(JSON.stringify({ _error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: any) {
+  } catch (_e: unknown) {
     return new Response(
-      JSON.stringify({ error: "server_error", detail: String(_e) }),
+      JSON.stringify({ _error: "server_error", detail: String(_e) }),
       { status: 500 },
     );
   }

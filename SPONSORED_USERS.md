@@ -7,6 +7,7 @@
 ---
 
 ## Table of Contents
+
 1. [Overview](#overview)
 2. [Sponsored User Role](#sponsored-user-role)
 3. [Creating Sponsored Users](#creating-sponsored-users)
@@ -22,6 +23,7 @@
 Sponsored users are a special user category with limited access to specific QMOI features. They're typically created through sponsorship programs, promotional campaigns, or beta testing initiatives. Sponsored users have reduced functionality compared to regular users but can still utilize core chat and trading features.
 
 ### Key Characteristics
+
 - **Limited feature access** - Only specific features available
 - **Time-limited access** - Can have expiration dates
 - **Program-specific features** - Access controlled by sponsorship program
@@ -33,6 +35,7 @@ Sponsored users are a special user category with limited access to specific QMOI
 ## Sponsored User Role
 
 ### Role Definition
+
 ```javascript
 {
   role: "Sponsored User",
@@ -44,16 +47,17 @@ Sponsored users are a special user category with limited access to specific QMOI
 ```
 
 ### Permissions
-| Feature | Sponsored User | Regular User | Admin | Master |
-|---------|---|---|---|---|
-| Chat with QMOI | ✅ Limited context | ✅ Full | ✅ Full | ✅ Full |
-| QConverse (Voice) | ❌ | ✅ | ✅ | ✅ |
-| Biometric Auth | ❌ | ✅ | ✅ | ✅ |
-| Access Control | ❌ | ❌ | ✅ | ✅ |
-| Trading & Revenue | ✅ Limited | ✅ Full | ✅ Full | ✅ Full |
-| Financial Manager | ❌ | ❌ | ✅ | ✅ |
-| Settings | ✅ Limited | ✅ Full | ✅ Full | ✅ Full |
-| Notifications | ✅ | ✅ | ✅ | ✅ |
+
+| Feature           | Sponsored User     | Regular User | Admin   | Master  |
+| ----------------- | ------------------ | ------------ | ------- | ------- |
+| Chat with QMOI    | ✅ Limited context | ✅ Full      | ✅ Full | ✅ Full |
+| QConverse (Voice) | ❌                 | ✅           | ✅      | ✅      |
+| Biometric Auth    | ❌                 | ✅           | ✅      | ✅      |
+| Access Control    | ❌                 | ❌           | ✅      | ✅      |
+| Trading & Revenue | ✅ Limited         | ✅ Full      | ✅ Full | ✅ Full |
+| Financial Manager | ❌                 | ❌           | ✅      | ✅      |
+| Settings          | ✅ Limited         | ✅ Full      | ✅ Full | ✅ Full |
+| Notifications     | ✅                 | ✅           | ✅      | ✅      |
 
 ---
 
@@ -64,6 +68,7 @@ Sponsored users are a special user category with limited access to specific QMOI
 **Endpoint:** `POST /api/admin/sponsored/create`
 
 **Request:**
+
 ```bash
 curl -X POST http://localhost:3000/api/admin/sponsored/create \
   -H "Content-Type: application/json" \
@@ -84,6 +89,7 @@ curl -X POST http://localhost:3000/api/admin/sponsored/create \
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -121,6 +127,7 @@ curl -X POST http://localhost:3000/api/admin/sponsored/bulk-create \
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -143,6 +150,7 @@ curl -X POST http://localhost:3000/api/admin/sponsored/bulk-create \
 ### Define a Sponsorship Program
 
 **Program Structure:**
+
 ```json
 {
   "programId": "prog_beta_2024",
@@ -210,6 +218,7 @@ Dashboard Tabs (Sponsored User View):
 ```
 
 ### Chat Feature (Sponsored)
+
 - ✅ Can chat with QMOI assistant
 - ✅ Limited conversation history (7 days)
 - ❌ Cannot access specialized AI models
@@ -217,6 +226,7 @@ Dashboard Tabs (Sponsored User View):
 - ⚠️ Rate-limited (100 messages/day)
 
 ### Trading Feature (Sponsored)
+
 - ✅ Can view trading dashboard
 - ✅ Can execute trades (limited volume)
 - ❌ Cannot access advanced analytics
@@ -224,11 +234,13 @@ Dashboard Tabs (Sponsored User View):
 - ⚠️ Limited to 5 concurrent positions
 
 ### Notifications
+
 - ✅ Full access to notification center
 - ✅ Email notifications enabled
 - ✅ Can configure notification preferences
 
 ### Settings
+
 - ✅ Can change password
 - ✅ Can update email
 - ❌ Cannot enable biometric auth
@@ -239,9 +251,11 @@ Dashboard Tabs (Sponsored User View):
 ## API Endpoints
 
 ### List Sponsored Users
+
 **Endpoint:** `GET /api/admin/sponsored/list`
 
 **Query Parameters:**
+
 - `programId` (optional) - Filter by program
 - `sponsorId` (optional) - Filter by sponsor
 - `status` (optional) - Filter by status (active, expired, suspended)
@@ -249,6 +263,7 @@ Dashboard Tabs (Sponsored User View):
 - `offset` (optional) - Pagination offset (default: 0)
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -320,6 +335,7 @@ curl -X DELETE http://localhost:3000/api/admin/sponsored/delete \
 **Endpoint:** `GET /api/admin/sponsored/program/:programId`
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -346,6 +362,7 @@ curl -X DELETE http://localhost:3000/api/admin/sponsored/delete \
 ### Database Schema
 
 #### Sponsored Users Table
+
 ```sql
 CREATE TABLE sponsored_users (
   id VARCHAR(36) PRIMARY KEY,
@@ -369,6 +386,7 @@ CREATE TABLE sponsored_users (
 ```
 
 #### Sponsorship Programs Table
+
 ```sql
 CREATE TABLE sponsorship_programs (
   id VARCHAR(36) PRIMARY KEY,
@@ -396,7 +414,7 @@ CREATE TABLE sponsorship_programs (
 function isSponsoredUser(userId: string): Promise<boolean> {
   return db.query(
     `SELECT id FROM sponsored_users WHERE user_id = ? AND status = 'active' AND expires_at > NOW()`,
-    [userId]
+    [userId],
   );
 }
 
@@ -404,15 +422,18 @@ function isSponsoredUser(userId: string): Promise<boolean> {
 function canAccessFeature(userId: string, feature: string): Promise<boolean> {
   return db.query(
     `SELECT 1 FROM sponsored_users WHERE user_id = ? AND JSON_CONTAINS(features, ?) AND status = 'active' AND expires_at > NOW()`,
-    [userId, JSON.stringify(feature)]
+    [userId, JSON.stringify(feature)],
   );
 }
 
 // Check token usage
-function checkTokenUsage(userId: string, tokensNeeded: number): Promise<boolean> {
+function checkTokenUsage(
+  userId: string,
+  tokensNeeded: number,
+): Promise<boolean> {
   return db.query(
     `SELECT 1 FROM sponsored_users WHERE user_id = ? AND (tokens_used + ?) <= max_tokens`,
-    [userId, tokensNeeded]
+    [userId, tokensNeeded],
   );
 }
 ```
@@ -438,19 +459,19 @@ function checkTokenUsage(userId: string, tokensNeeded: number): Promise<boolean>
 // Automatic expiration job (runs daily)
 async function handleExpiredSponsoredUsers() {
   const expired = await db.query(
-    `SELECT id, user_id FROM sponsored_users WHERE status = 'active' AND expires_at < NOW()`
+    `SELECT id, user_id FROM sponsored_users WHERE status = 'active' AND expires_at < NOW()`,
   );
-  
+
   for (const record of expired) {
     await db.query(
       `UPDATE sponsored_users SET status = 'expired' WHERE id = ?`,
-      [record.id]
+      [record.id],
     );
-    
+
     // Notify user
     await sendEmailNotification(record.user_id, {
       subject: "Your QMOI Sponsored Access Has Expired",
-      template: "sponsorship_expired"
+      template: "sponsorship_expired",
     });
   }
 }
@@ -462,12 +483,12 @@ async function handleExpiredSponsoredUsers() {
 
 ### Key Metrics
 
-| Metric | Query |
-|--------|-------|
-| Active Sponsored Users | `SELECT COUNT(*) FROM sponsored_users WHERE status = 'active'` |
-| Program Performance | `SELECT program_id, COUNT(*) as users, AVG(tokens_used) FROM sponsored_users GROUP BY program_id` |
-| Feature Usage | `SELECT features, COUNT(*) FROM sponsored_users WHERE status = 'active'` |
-| Expiration Rate | `SELECT COUNT(*) FROM sponsored_users WHERE status = 'expired' AND expires_at > DATE_SUB(NOW(), INTERVAL 7 DAY)` |
+| Metric                 | Query                                                                                                            |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Active Sponsored Users | `SELECT COUNT(*) FROM sponsored_users WHERE status = 'active'`                                                   |
+| Program Performance    | `SELECT program_id, COUNT(*) as users, AVG(tokens_used) FROM sponsored_users GROUP BY program_id`                |
+| Feature Usage          | `SELECT features, COUNT(*) FROM sponsored_users WHERE status = 'active'`                                         |
+| Expiration Rate        | `SELECT COUNT(*) FROM sponsored_users WHERE status = 'expired' AND expires_at > DATE_SUB(NOW(), INTERVAL 7 DAY)` |
 
 ---
 
@@ -485,12 +506,15 @@ async function handleExpiredSponsoredUsers() {
 ## Troubleshooting
 
 ### Issue: Sponsored user cannot login
+
 **Solution:** Check expiration date, verify status is "active", confirm user_id mapping
 
 ### Issue: Feature appears disabled for sponsored user
+
 **Solution:** Check features array in sponsored_users record, verify it contains required feature
 
 ### Issue: Token exhaustion warning
+
 **Solution:** Review max_tokens limit, consider extending or reducing token costs
 
 ---

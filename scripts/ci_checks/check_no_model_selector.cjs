@@ -41,7 +41,7 @@ function scanPaths(paths, patterns) {
   try {
     if (!skipBuild) {
       console.log(
-        "Running production build to make sure compiled output does not include model selector..."
+        "Running production build to make sure compiled output does not include model selector...",
       );
       execSync("npm run build", { stdio: "inherit" });
       // Search compiled .next output
@@ -49,12 +49,12 @@ function scanPaths(paths, patterns) {
       const matches = scanPaths([searchRoot], patterns);
       if (matches.length) {
         console.error(
-          "Found suspicious model-selector patterns in build output:"
+          "Found suspicious model-selector patterns in build output:",
         );
         matches
           .slice(0, 10)
           .forEach((m) =>
-            console.error(` - ${m.file}  contains: ${m.pattern}`)
+            console.error(` - ${m.file}  contains: ${m.pattern}`),
           );
         process.exit(2);
       }
@@ -91,12 +91,12 @@ function scanPaths(paths, patterns) {
 
       if (refined.length) {
         console.error(
-          "Found suspicious model-selector patterns in source files:"
+          "Found suspicious model-selector patterns in source files:",
         );
         refined
           .slice(0, 20)
           .forEach((m) =>
-            console.error(` - ${m.file}  contains: ${m.pattern}`)
+            console.error(` - ${m.file}  contains: ${m.pattern}`),
           );
         process.exit(2);
       }

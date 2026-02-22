@@ -1,42 +1,86 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 import { logEvent } from "../../../../lib/security_check";
+import { verifyWebhook } from "../../../../src/lib/payments/service";
+import {
+  notifyPaymentSuccess,
+  notifyPaymentFailure,
+} from "../../../../src/lib/notifier";
 
 // Production helper functions (module-level to avoid inner-declaration lint errors)
-async function updateMpesaTransaction(details: any) {
+async function updateMpesaTransaction(details: unknown) {
   // Production: Connect to Prisma DB using prisma.transaction.update()
   // with CheckoutRequestID as unique identifier
   return true;
 }
 
 async function triggerPostPaymentActions(details: any) {
-  // Production: Send notification via WhatsApp/Email and update user wallet via Prisma
-  // Integrate with notification service and user service for status updates
+  // Send notifications via Email, Slack, WhatsApp
+  try {
+    const {
+      checkoutRequestId,
+      amount,
+      receiptNumber,
+      phoneNumber,
+      transactionDate,
+      userEmail,
+    } = details;
+
+    await notifyPaymentSuccess({
+      checkoutRequestId,
+      amount: Number(amount) || 0,
+      receiptNumber: String(receiptNumber || ""),
+      phoneNumber: String(phoneNumber || ""),
+      transactionDate: String(transactionDate || ""),
+      userEmail,
+    });
+  } catch (error) {
+    console.error("Failed to send payment success notifications:", error);
+  }
   return true;
 }
 
 export async function POST(_req: NextRequest) {
   try {
-    const body: any = (await _req.json()) as any;
+    // Read raw body for optional signature verification
+    const raw = await _req.text();
 
-    // Log the callback for debugging
+    // Try common signature headers
+    const signatureHeader =
+      _req.headers.get("x-signature") ||
+      _req.headers.get("x-payments-signature") ||
+      _req.headers.get("x-hub-signature") ||
+      _req.headers.get("x-qmoi-signature") ||
+      undefined;
+
+    // If a webhook secret is configured, enforce verification
+    const secretConfigured = Boolean(
+      process.env.PAYMENTS_WEBHOOK_SECRET || process.env.WEBHOOK_SIGNING_SECRET,
+    );
+
+    if (secretConfigured) {
+      const ok = verifyWebhook(raw || "", signatureHeader);
+      if (!ok) {
+        logEvent("mpesa_callback_signature_mismatch", { signatureHeader });
+        return NextResponse.json(
+          { success: false, message: "signature_mismatch" },
+          { status: 401 },
+        );
+      }
+    }
+
+    const body: any = raw ? JSON.parse(raw) : await _req.json();
+
     console.log("M-Pesa Callback received:", body);
 
-    // Extract transaction details
-    const {
-      Body: {
-        stkCallback: {
-          CheckoutRequestID,
-          ResultCode,
-          ResultDesc,
-          CallbackMetadata,
-        },
-      },
-    } = body;
+    // Extract transaction details safely
+    const CheckoutRequestID = body?.Body?.stkCallback?.CheckoutRequestID;
+    const ResultCode = body?.Body?.stkCallback?.ResultCode;
+    const ResultDesc = body?.Body?.stkCallback?.ResultDesc;
+    const CallbackMetadata = body?.Body?.stkCallback?.CallbackMetadata;
 
-    if (ResultCode === "0") {
-      // Payment successful
+    if (ResultCode === 0 || ResultCode === "0") {
       const metadata: any[] = CallbackMetadata?.Item || [];
       const amount =
         metadata.find((item: any) => item.Name === "Amount")?.Value || 0;
@@ -57,7 +101,7 @@ export async function POST(_req: NextRequest) {
         transactionDate,
       });
 
-      // Production: Update database with successful transaction
+      // Production: Update database and trigger post-payment hooks
       await updateMpesaTransaction({
         checkoutRequestId: CheckoutRequestID,
         amount,
@@ -65,7 +109,6 @@ export async function POST(_req: NextRequest) {
         phoneNumber,
         transactionDate,
       });
-      // Production: Trigger any post-payment actions
       await triggerPostPaymentActions({
         checkoutRequestId: CheckoutRequestID,
         amount,
@@ -73,38 +116,45 @@ export async function POST(_req: NextRequest) {
         phoneNumber,
         transactionDate,
       });
-      // production helpers are defined at module scope
 
       return NextResponse.json({
         success: true,
         message: "Payment processed successfully",
       });
-    } else {
-      // Payment failed
-      logEvent("mpesa_payment_failed", {
-        checkoutRequestId: CheckoutRequestID,
-        resultCode: ResultCode,
+    }
+
+    // Payment failed or non-success status
+    logEvent("mpesa_payment_failed", {
+      checkoutRequestId: CheckoutRequestID,
+      resultCode: ResultCode,
+      resultDesc: ResultDesc,
+    });
+
+    // Send failure notification
+    try {
+      await notifyPaymentFailure({
+        checkoutRequestId: CheckoutRequestID || "unknown",
+        resultCode: ResultCode || "unknown",
         resultDesc: ResultDesc,
       });
-
-      return NextResponse.json({
-        success: false,
-        message: ResultDesc,
-      });
+    } catch (error) {
+      console.error("Failed to send payment failure notifications:", error);
     }
+
+    return NextResponse.json({
+      success: false,
+      message: ResultDesc || "payment_failed",
+    });
   } catch (error) {
     (globalThis.console as any)?.error?.(
       "M-Pesa callback processing failed:",
       error,
     );
     const errorMessage = error instanceof Error ? error.message : String(error);
-    logEvent("mpesa_callback_error", { error: errorMessage });
+    logEvent("mpesa_callback_error", { _error: errorMessage });
 
     return NextResponse.json(
-      {
-        success: false,
-        message: "Callback processing failed",
-      },
+      { success: false, message: "Callback processing failed" },
       { status: 500 },
     );
   }

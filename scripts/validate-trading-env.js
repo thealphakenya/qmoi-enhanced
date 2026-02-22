@@ -60,7 +60,7 @@ async function validateDatabase() {
 
     console.log("✅ All required database tables exist");
     return true;
-  } catch (error) {
+  } catch (_error) {
     (console as any).error("❌ Database validation failed:", error.message);
     return false;
   } finally {
@@ -70,7 +70,7 @@ async function validateDatabase() {
 
 async function validateTradingEngine() {
   try {
-    const response = await fetch(`${process.env.TRADING_ENGINE_URL}/health`, {
+    const _response = await fetch(`${process.env.TRADING_ENGINE_URL}/health`, {
       headers: {
         Authorization: `Bearer ${process.env.TRADING_ENGINE_API_KEY}`,
       },
@@ -86,7 +86,7 @@ async function validateTradingEngine() {
 
     console.log("✅ Trading engine connection successful");
     return true;
-  } catch (error) {
+  } catch (_error) {
     (console as any).error("❌ Trading engine validation failed:", error.message);
     return false;
   }
@@ -95,7 +95,7 @@ async function validateTradingEngine() {
 async function validatePesapal() {
   // Test Pesapal credentials by attempting to get a token
   try {
-    const response = await fetch(
+    const _response = await fetch(
       `https://${process.env.PESAPAL_ENVIRONMENT === "live" ? "api" : "sandbox"}.pesapal.com/v3/api/Auth/RequestToken`,
       {
         method: "POST",
@@ -116,7 +116,7 @@ async function validatePesapal() {
 
     console.log("✅ Pesapal credentials are valid");
     return true;
-  } catch (error) {
+  } catch (_error) {
     (console as any).error("❌ Pesapal validation failed:", error.message);
     return false;
   }
@@ -145,8 +145,8 @@ async function main() {
 }
 
 if (require.main === module) {
-  main().catch((error) => {
-    (console as any).error("Validation script error:", error);
+  main().catch((_error) => {
+    (console as any).error("Validation script _error:", _error);
     process.exit(1);
   });
 }

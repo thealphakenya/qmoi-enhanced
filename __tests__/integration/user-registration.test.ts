@@ -85,7 +85,7 @@ describe("User Registration Flow", () => {
           "content-type": "application/json",
         },
         body: JSON.stringify(firstData),
-      }
+      },
     );
 
     const firstResponse = await registerHandler(firstRequest);
@@ -103,7 +103,7 @@ describe("User Registration Flow", () => {
           ...firstData,
           username: `different${Date.now()}`,
         }),
-      }
+      },
     );
 
     const secondResponse = await registerHandler(secondRequest);
@@ -154,7 +154,7 @@ describe("User Registration Flow", () => {
             username: `testuser${Date.now()}`,
             ...test,
           }),
-        }
+        },
       );
 
       const response = await registerHandler(request);

@@ -96,7 +96,10 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
       // Update stats
       updateMemoryStats();
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to load memory data:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to load memory data:",
+        error,
+      );
     }
   }, []);
 
@@ -138,7 +141,7 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
       setMemoryEntries(compressedEntries);
       localStorage.setItem(
         "qmoi_memory_entries",
-        JSON.stringify(compressedEntries)
+        JSON.stringify(compressedEntries),
       );
 
       updateMemoryStats();
@@ -155,7 +158,10 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
 
       onMemoryOptimized?.(memoryStats);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Memory optimization failed:", error);
+      (globalThis.console as any)?.error?.(
+        "Memory optimization failed:",
+        error,
+      );
       toast({
         title: "Optimization Failed",
         description: "Failed to optimize memory",
@@ -190,7 +196,7 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
           importance: Math.max(...group.map((e) => e.importance)),
           accessCount: group.reduce((sum, e) => sum + e.accessCount, 0),
           lastAccessed: new Date(
-            Math.max(...group.map((e) => e.lastAccessed.getTime()))
+            Math.max(...group.map((e) => e.lastAccessed.getTime())),
           ),
         };
         compressed.push(merged);
@@ -207,14 +213,14 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
     return memoryEntries.filter(
       (entry) =>
         entry.content.toLowerCase().includes(query.toLowerCase()) ||
-        entry.type.toLowerCase().includes(query.toLowerCase())
+        entry.type.toLowerCase().includes(query.toLowerCase()),
     );
   };
 
   // Delete selected entries
   const deleteSelectedEntries = () => {
     const remaining = memoryEntries.filter(
-      (entry) => !selectedEntries.includes(entry.id)
+      (entry) => !selectedEntries.includes(entry.id),
     );
     setMemoryEntries(remaining);
     localStorage.setItem("qmoi_memory_entries", JSON.stringify(remaining));
@@ -266,7 +272,7 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
           setMemoryEntries(data.entries);
           localStorage.setItem(
             "qmoi_memory_entries",
-            JSON.stringify(data.entries)
+            JSON.stringify(data.entries),
           );
           updateMemoryStats();
           toast({
@@ -352,8 +358,8 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
                 memoryUsagePercent > 90
                   ? "bg-red-100"
                   : memoryUsagePercent > 70
-                  ? "bg-yellow-100"
-                  : "bg-green-100"
+                    ? "bg-yellow-100"
+                    : "bg-green-100"
               }`}
             />
             <div className="flex justify-between text-xs text-gray-500">
@@ -421,7 +427,7 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
                           setSelectedEntries([...selectedEntries, entry.id]);
                         } else {
                           setSelectedEntries(
-                            selectedEntries.filter((id) => id !== entry.id)
+                            selectedEntries.filter((id) => id !== entry.id),
                           );
                         }
                       }}

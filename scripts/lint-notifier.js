@@ -29,7 +29,7 @@ class LintNotifier {
     try {
       const content = readFileSync(this.errorLogFile, "utf8");
       return JSON.parse(content);
-    } catch (error) {
+    } catch (_error) {
       this.log(`Error reading error log: ${error.message}`, "error");
       return null;
     }
@@ -54,7 +54,7 @@ class LintNotifier {
         // Linux notification
         execSync(`notify-send "${title}" "${message}"`, { stdio: "ignore" });
       }
-    } catch (error) {
+    } catch (_error) {
       // Fallback to console output
       console.log(`\n🔔 NOTIFICATION: ${title}`);
       console.log(`   ${message}\n`);
@@ -76,7 +76,7 @@ class LintNotifier {
           stdio: "ignore",
         });
       }
-    } catch (error) {
+    } catch (_error) {
       this.log(
         `Error sending WhatsApp notification: ${error.message}`,
         "error",
@@ -126,7 +126,7 @@ class LintNotifier {
 
     if (report.summary.critical > 0) {
       console.log("\n🚨 Critical Issues:");
-      report.errors.critical.slice(0, 3).forEach((error, index) => {
+      report.errors.critical.slice(0, 3).forEach((_error, index) => {
         console.log(
           `   ${index + 1}. ${error.file}:${error.line}:${error.column} - ${error.rule}`,
         );
@@ -150,7 +150,7 @@ class LintNotifier {
 
 // Run the notifier
 const notifier = new LintNotifier();
-notifier.run().catch((error) => {
-  (console as any).error("Fatal error in notifier:", error);
+notifier.run().catch((_error) => {
+  (console as any).error("Fatal error in notifier:", _error);
   process.exit(1);
 });

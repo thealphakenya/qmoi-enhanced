@@ -33,7 +33,7 @@ async function run() {
       try {
         await waitForUrl(`http://127.0.0.1:3000${p}`, 5000);
         console.log(`OK ${p}`);
-      } catch {
+      } catch (e) {
         console.warn(`WARN ${p} did not respond with 200 within timeout`);
       }
     }

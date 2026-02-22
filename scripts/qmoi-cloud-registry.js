@@ -62,7 +62,7 @@ class QMOIRegistry {
     for (let attempt = 1; attempt <= RETRY_ATTEMPTS; attempt++) {
       try {
         const startTime = Date.now();
-        const response = await this.client.get(`${targetUrl}/health`);
+        const _response = await this.client.get(`${targetUrl}/health`);
         const latency = Date.now() - startTime;
 
         if (response.status !== 200) {

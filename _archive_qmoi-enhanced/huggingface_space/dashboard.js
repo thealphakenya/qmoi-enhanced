@@ -20,20 +20,20 @@ function Dashboard() {
         const res = await fetch("/health");
         const data = await res.json();
         setHealth(data.status);
-      } catch {
+      } catch (e) {
         setHealth("offline");
       }
       try {
         const logRes = await fetch("/logs/qmoispace_health.log");
         setLogs(await logRes.text());
-      } catch {
+      } catch (e) {
         setLogs("No logs");
       }
       try {
         const provRes = await fetch("/api/provider");
         const provData = await provRes.json();
         setProvider(provData.name);
-      } catch {
+      } catch (e) {
         setProvider("unknown");
       }
     };

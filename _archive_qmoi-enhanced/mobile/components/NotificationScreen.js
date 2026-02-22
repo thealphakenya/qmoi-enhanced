@@ -43,7 +43,7 @@ export default function NotificationScreen({ route }) {
           discord: prefsRes.data.discord?.enabled || false,
           pushover: prefsRes.data.pushover?.enabled || false,
         });
-      } catch {
+      } catch (e) {
         setOffline(true);
         const cached = await AsyncStorage.getItem("qmoiNotifications");
         setNotifications(cached ? JSON.parse(cached) : []);
@@ -59,7 +59,7 @@ export default function NotificationScreen({ route }) {
       await axios.post("http://localhost:4200/api/notification-prefs", {
         [channel]: { enabled: value },
       });
-    } catch {}
+    } catch (e) {}
   };
 
   const handleAcknowledge = async (id) => {
@@ -72,14 +72,14 @@ export default function NotificationScreen({ route }) {
       await axios.post("http://localhost:4200/api/acknowledge-notification", {
         id,
       });
-    } catch {}
+    } catch (e) {}
   };
 
   const handleDelete = async (id) => {
     setNotifications((n) => n.filter((notif) => notif.id !== id));
     try {
       await axios.post("http://localhost:4200/api/delete-notification", { id });
-    } catch {}
+    } catch (e) {}
   };
 
   const handleRespond = async (id) => {
@@ -90,7 +90,7 @@ export default function NotificationScreen({ route }) {
             id,
             response: text,
           });
-        } catch {}
+        } catch (e) {}
       }
     });
   };

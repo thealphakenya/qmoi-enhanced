@@ -6,7 +6,8 @@
       "binaries": [
         {
           "path": "Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe",
-          "size": 5242880,
+          "size": 5242880
+          ,
           "sha256": "0a7bd2608b2d7ba9fce026d64b9ea3f1ee2904ed98b6a7ece685bd9880109b8e"
         },
         {

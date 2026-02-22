@@ -66,7 +66,10 @@ export async function GET() {
       total: profilesWithMetadata.length,
     });
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error fetching voice profiles:", error);
+    (globalThis.console as any)?.error?.(
+      "Error fetching voice profiles:",
+      error,
+    );
     return NextResponse.json(
       { error: "Failed to fetch voice profiles" },
       { status: 500 },

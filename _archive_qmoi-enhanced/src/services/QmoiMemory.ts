@@ -68,7 +68,7 @@ export class QmoiMemory {
           const data = await r.json();
           all = all.concat(data);
         }
-      } catch {
+      } catch (e) {
         // Ignore repo fetch errors
       }
     }

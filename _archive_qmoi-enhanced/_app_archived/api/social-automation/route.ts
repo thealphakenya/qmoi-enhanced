@@ -10,7 +10,7 @@ let postId = 1;
 
 export async function POST_POST(req: NextRequest) {
   // Post status/news to platform
-  const body = (await req.json() as any);
+  const body = (await req.json()) as any;
   const { content, platform } = body;
   // TODO: Integrate with WhatsApp, Telegram, etc.
   const post = {
@@ -30,7 +30,7 @@ export async function GET_CONTACTS(req: NextRequest) {
 
 export async function POST_TAG(req: NextRequest) {
   // Auto-tag a contact
-  const body = (await req.json() as any);
+  const body = (await req.json()) as any;
   const { id, tag } = body;
   const idx = contacts.findIndex((c) => c.id === id);
   if (idx === -1)

@@ -1,7 +1,6 @@
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
-// NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+
 import { NextRequest } from "next/server";
 import { requireApiKey } from "../../../../lib/proposals";
 import { spawn } from "child_process";
@@ -15,13 +14,13 @@ export const runtime = "nodejs";
 function verifyJWT(token: string): { valid: boolean; role?: string } {
   try {
     const payload = JSON.parse(
-      Buffer.from(token.split(".")[1], "base64").toString()
+      Buffer.from(token.split(".")[1], "base64").toString(),
     );
     if (payload && (payload.role === "admin" || payload.role === "master")) {
       return { valid: true, role: payload.role };
     }
     return { valid: false };
-  } catch {
+  } catch (e) {
     return { valid: false };
   }
 }
@@ -30,7 +29,7 @@ function logAudit(
   action: string,
   user: string,
   _options: Record<string, unknown>,
-  status: string
+  status: string,
 ) {
   const entry = {
     timestamp: new Date().toISOString(),
@@ -47,7 +46,7 @@ function logDownloadFix(
   user: string,
   _options: Record<string, unknown>,
   status: string,
-  error?: unknown
+  error?: unknown,
 ) {
   const entry = {
     timestamp: new Date().toISOString(),
@@ -56,7 +55,7 @@ function logDownloadFix(
     app: "QCity",
     device: (_options as any).device || "unknown",
     status,
-    error,
+    _error,
   };
   fs.appendFileSync("logs/download_fixes.log", JSON.stringify(entry) + "\n");
 }
@@ -81,7 +80,9 @@ export async function POST(_req: NextRequest) {
   let _options: Record<string, unknown> = {};
   try {
     _options = (await _req.json()) as Record<string, unknown>;
-  } catch {}
+  } catch (e) {
+    void e;
+  }
 
   // Determine script and args
   let script, args;
@@ -129,13 +130,13 @@ export async function POST(_req: NextRequest) {
       "selfheal-complete",
       user,
       _options,
-      code === 0 ? "success" : "error"
+      code === 0 ? "success" : "error",
     );
     logDownloadFix(
       "selfheal-complete",
       user,
       _options,
-      code === 0 ? "success" : "error"
+      code === 0 ? "success" : "error",
     );
   });
 

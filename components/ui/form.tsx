@@ -13,16 +13,16 @@ const Form = FormProvider;
 
 type FormFieldContextValue<
   TFieldValues extends Record<string, any> = Record<string, any>,
-  TName extends string = string
+  TName extends string = string,
 > = {
   name: TName;
 };
 
 const FormFieldContext = React.createContext<FormFieldContextValue>(
-  {} as FormFieldContextValue
+  {} as FormFieldContextValue,
 );
 
-const FormField = (props: any) => {
+const FormField = (props: unknown) => {
   const name = props?.name ?? "";
 
   return (
@@ -60,7 +60,7 @@ type FormItemContextValue = {
 };
 
 const FormItemContext = React.createContext<FormItemContextValue>(
-  {} as FormItemContextValue
+  {} as FormItemContextValue,
 );
 
 const FormItem = React.forwardRef<

@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
-// NOTE: 3 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+
 import { NextResponse } from "next/server";
 
 // Conditionally import Prisma
-let prisma: any = null;
+let prisma: unknown = null;
 let prismaInitialized = false;
 
 async function getPrismaClient() {
@@ -64,10 +63,10 @@ export async function GET() {
         message: "Database temporarily disabled for build compatibility",
       });
     }
-  } catch (error) {
-    (console as any).error("Error fetching media status:", error);
+  } catch (_error) {
+    (console as any).error("Error fetching media status:", _error);
     return NextResponse.json(
-      { error: "Failed to fetch media status" },
+      { _error: "Failed to fetch media status" },
       { status: 500 },
     );
   }

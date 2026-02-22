@@ -48,7 +48,10 @@ export function useGlobalAutomation() {
         const data = await res.json();
         setStatus(data);
       } catch (error) {
-        (globalThis.console as any)?.error?.("Failed to fetch automation status:", error);
+        (globalThis.console as any)?.error?.(
+          "Failed to fetch automation status:",
+          error,
+        );
       }
     };
 
@@ -73,7 +76,10 @@ export function useGlobalAutomation() {
         settings: { ...prev.settings, ...data },
       }));
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to update automation settings:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to update automation settings:",
+        error,
+      );
     }
   };
 

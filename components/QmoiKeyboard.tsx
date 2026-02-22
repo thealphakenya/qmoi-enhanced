@@ -165,7 +165,10 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
       };
 
       recognitionRef.current.onerror = (event: unknown) => {
-        (globalThis.console as any)?.error?.("Speech recognition error:", event.error);
+        (globalThis.console as any)?.error?.(
+          "Speech recognition error:",
+          event.error,
+        );
         setIsListening(false);
       };
     }
@@ -194,7 +197,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
         wordFrequency,
         language,
         timestamp: Date.now(),
-      })
+      }),
     );
   };
 
@@ -211,7 +214,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
 
     if (input.length > 0) {
       const matchingWords = words.filter((word) =>
-        word.toLowerCase().startsWith(input.toLowerCase())
+        word.toLowerCase().startsWith(input.toLowerCase()),
       );
 
       matchingWords.slice(0, 5).forEach((word) => {

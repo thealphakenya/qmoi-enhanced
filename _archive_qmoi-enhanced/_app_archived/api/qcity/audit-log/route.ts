@@ -8,7 +8,7 @@ const AUDIT_LOG = path.join(process.cwd(), "logs/qcity_audit.log");
 function parseLogLine(line: string) {
   try {
     return JSON.parse(line);
-  } catch {
+  } catch (e) {
     return null;
   }
 }

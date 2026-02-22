@@ -1,4 +1,7 @@
 import { cashonWallet, TradeRequest } from "./cashon-wallet";
+import mlModels from "./qmoi-ml-models";
+import realAPI from "./qmoi-real-api";
+import intelligence from "./qmoi-enhanced-intelligence";
 
 // Types for Qmoi AI Trading
 export interface MarketData {
@@ -19,6 +22,7 @@ export interface TradingSignal {
   expectedReturn: number;
   riskLevel: "low" | "medium" | "high";
   timestamp: Date;
+  modelId: string;
 }
 
 export interface TradingStrategy {
@@ -42,12 +46,26 @@ export interface QmoiConfig {
   profitLockPercentage: number;
 }
 
+export interface TradeResult {
+  success: boolean;
+  tradeId: string;
+  symbol: string;
+  entryPrice: number;
+  exitPrice?: number;
+  quantity: number;
+  profit?: number;
+  profitPercentage?: number;
+  status: string;
+  timestamp: number;
+}
+
 export class QmoiTrader {
   private config: QmoiConfig;
   private strategies: Map<string, TradingStrategy> = new Map();
   private marketData: Map<string, MarketData> = new Map();
   private tradingSignals: TradingSignal[] = [];
-  private activeTrades: TradeRequest[] = [];
+  private activeTrades: Map<string, TradeResult> = new Map();
+  private tradeHistory: TradeResult[] = [];
   private isRunning = false;
   private tradingLoop: NodeJS.Timeout | null = null;
 
@@ -56,7 +74,6 @@ export class QmoiTrader {
     this.initializeStrategies();
   }
 
-  // Initialize trading strategies
   private initializeStrategies(): void {
     const strategies: TradingStrategy[] = [
       {
@@ -65,7 +82,7 @@ export class QmoiTrader {
         description: "Quick trades with small profits",
         riskLevel: "high",
         minConfidence: 85,
-        maxPositionSize: 0.1, // 10% of available balance
+        maxPositionSize: 0.1,
         stopLossPercentage: 2,
         takeProfitPercentage: 3,
         isActive: true,
@@ -76,31 +93,42 @@ export class QmoiTrader {
         description: "Follow market trends",
         riskLevel: "medium",
         minConfidence: 75,
-        maxPositionSize: 0.2, // 20% of available balance
+        maxPositionSize: 0.2,
         stopLossPercentage: 5,
         takeProfitPercentage: 10,
         isActive: true,
       },
       {
-        id: "dca",
-        name: "Dollar Cost Averaging",
-        description: "Regular small investments",
-        riskLevel: "low",
-        minConfidence: 60,
-        maxPositionSize: 0.05, // 5% of available balance
-        stopLossPercentage: 10,
-        takeProfitPercentage: 15,
+        id: "mean_reversion",
+        name: "Mean Reversion",
+        description: "Trade price reversions",
+        riskLevel: "medium",
+        minConfidence: 70,
+        maxPositionSize: 0.15,
+        stopLossPercentage: 4,
+        takeProfitPercentage: 6,
         isActive: true,
       },
       {
-        id: "reversal",
-        name: "Reversal Strategy",
-        description: "Trade market reversals",
+        id: "momentum",
+        name: "Momentum Trading",
+        description: "Capitalize on price momentum",
         riskLevel: "high",
         minConfidence: 80,
-        maxPositionSize: 0.15, // 15% of available balance
+        maxPositionSize: 0.12,
         stopLossPercentage: 3,
         takeProfitPercentage: 8,
+        isActive: true,
+      },
+      {
+        id: "arbitrage",
+        name: "Arbitrage",
+        description: "Exploit price differences",
+        riskLevel: "low",
+        minConfidence: 60,
+        maxPositionSize: 0.25,
+        stopLossPercentage: 1,
+        takeProfitPercentage: 2,
         isActive: true,
       },
     ];
@@ -108,371 +136,247 @@ export class QmoiTrader {
     strategies.forEach((strategy) => {
       this.strategies.set(strategy.id, strategy);
     });
+
+    console.log(`[QMOI Trader] Initialized ${strategies.length} trading strategies`);
   }
 
-  // Start autonomous trading
-  async startTrading(): Promise<void> {
-    if (this.isRunning) {
-      throw new Error("Trading is already running");
-    }
-
-    this.isRunning = true;
-    await this.enableCashonTrading();
-    this.startTradingLoop();
-
-    console.log("🧠 QMOI AI Trading started");
-  }
-
-  // Stop autonomous trading
-  async stopTrading(): Promise<void> {
-    if (!this.isRunning) {
-      throw new Error("Trading is not running");
-    }
-
-    this.isRunning = false;
-    if (this.tradingLoop) {
-      clearInterval(this.tradingLoop as any);
-      this.tradingLoop = null;
-    }
-
-    await this.disableCashonTrading();
-    console.log("🧠 QMOI AI Trading stopped");
-  }
-
-  // Get trading status
-  async getStatus(): Promise<{
-    isRunning: boolean;
-    activeTrades: number;
-    totalSignals: number;
-    strategies: string[];
-    lastSignal: TradingSignal | null;
-  }> {
-    return {
-      isRunning: this.isRunning,
-      activeTrades: this.activeTrades.length,
-      totalSignals: this.tradingSignals.length,
-      strategies: Array.from(this.strategies.keys()),
-      lastSignal: this.tradingSignals[this.tradingSignals.length - 1] || null,
-    };
-  }
-
-  // Update market data
-  async updateMarketData(): Promise<void> {
-    try {
-      // Fetch market data from multiple sources
-      const symbols = [
-        "BTC/USDT",
-        "ETH/USDT",
-        "BNB/USDT",
-        "ADA/USDT",
-        "SOL/USDT",
-      ];
-
-      for (const symbol of symbols) {
-        const marketData = await this.fetchMarketData(symbol);
-        this.marketData.set(symbol, marketData);
-      }
-
-      console.log(`📊 Updated market data for ${symbols.length} symbols`);
-    } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to update market data:", error);
-    }
-  }
-
-  // Generate trading signals
-  async generateSignals(): Promise<TradingSignal[]> {
+  async generateTradingSignals(symbols: string[]): Promise<TradingSignal[]> {
     const signals: TradingSignal[] = [];
 
-    for (const [symbol, data] of this.marketData) {
-      for (const [strategyId, strategy] of this.strategies) {
-        if (!strategy.isActive) continue;
-
-        const signal = await this.analyzeSymbol(symbol, data, strategy);
-        if (signal && signal.confidence >= strategy.minConfidence) {
-          signals.push(signal);
-        }
-      }
-    }
-
-    this.tradingSignals.push(...signals);
-    return signals;
-  }
-
-  // Execute trading signals
-  async executeSignals(signals: TradingSignal[]): Promise<void> {
-    for (const signal of signals) {
-      if (signal.action === "hold") continue;
-
-      try {
-        const strategy = this.strategies.get(signal.strategy);
-        if (!strategy) continue;
-
-        // Calculate position size
-        const balance = await this.getAvailableBalance();
-        const positionSize = Math.min(
-          balance * strategy.maxPositionSize,
-          balance * 0.1 // Max 10% per trade
-        );
-
-        if (positionSize < 10) continue; // Minimum KES 10
-
-        // Request trade
-        const tradeId = await cashonWallet.requestTrade(
-          positionSize,
-          signal.symbol,
-          signal.strategy,
-          signal.confidence
-        );
-
-        console.log(
-          `🚀 Trade requested: ${signal.symbol} ${signal.action} KES ${positionSize}`
-        );
-      } catch (error) {
-        (globalThis.console as any)?.error?.(`Failed to execute signal for ${signal.symbol}:`, error);
-      }
-    }
-  }
-
-  // Analyze symbol using AI
-  private async analyzeSymbol(
-    symbol: string,
-    data: MarketData,
-    strategy: TradingStrategy
-  ): Promise<TradingSignal | null> {
-    // AI analysis logic
-    const analysis = await this.performAIAnalysis(symbol, data, strategy);
-
-    if (!analysis) return null;
-
-    return {
-      symbol,
-      action: analysis.action,
-      confidence: analysis.confidence,
-      strategy: strategy.id,
-      reason: analysis.reason,
-      expectedReturn: analysis.expectedReturn,
-      riskLevel: strategy.riskLevel,
-      timestamp: new Date(),
-    };
-  }
-
-  // Perform AI analysis
-  private async performAIAnalysis(
-    symbol: string,
-    data: MarketData,
-    strategy: TradingStrategy
-  ): Promise<{
-    action: "buy" | "sell" | "hold";
-    confidence: number;
-    reason: string;
-    expectedReturn: number;
-  } | null> {
-    // This would integrate with actual AI models
-    // For now, use simplified logic based on market data
-
-    const volatility = Math.abs(data.change24h);
-    const volume = data.volume;
-    const price = data.price;
-
-    let action: "buy" | "sell" | "hold" = "hold";
-    let confidence = 50;
-    let reason = "";
-    let expectedReturn = 0;
-
-    // Strategy-specific analysis
-    switch (strategy.id) {
-      case "scalping":
-        if (volatility > 5 && volume > 1000000) {
-          action = data.change24h > 0 ? "buy" : "sell";
-          confidence = 70 + Math.min(volatility * 2, 20);
-          reason = `High volatility (${volatility.toFixed(
-            2
-          )}%) with good volume`;
-          expectedReturn = volatility * 0.5;
-        }
-        break;
-
-      case "trend_following":
-        if (Math.abs(data.change24h) > 2) {
-          action = data.change24h > 0 ? "buy" : "sell";
-          confidence = 60 + Math.min(Math.abs(data.change24h) * 5, 30);
-          reason = `Strong trend (${data.change24h.toFixed(2)}%)`;
-          expectedReturn = Math.abs(data.change24h) * 0.8;
-        }
-        break;
-
-      case "dca":
-        if (data.change24h < -5) {
-          action = "buy";
-          confidence = 65;
-          reason = "DCA opportunity on dip";
-          expectedReturn = 5;
-        }
-        break;
-
-      case "reversal":
-        if (Math.abs(data.change24h) > 8) {
-          action = data.change24h > 0 ? "sell" : "buy";
-          confidence = 75;
-          reason = "Potential reversal after strong move";
-          expectedReturn = Math.abs(data.change24h) * 0.6;
-        }
-        break;
-    }
-
-    // Apply risk tolerance adjustments
-    if (this.config.riskTolerance === "conservative") {
-      confidence *= 0.8;
-      expectedReturn *= 0.7;
-    } else if (this.config.riskTolerance === "aggressive") {
-      confidence *= 1.2;
-      expectedReturn *= 1.3;
-    }
-
-    confidence = Math.min(confidence, 95);
-
-    return confidence > 60
-      ? { action, confidence, reason, expectedReturn }
-      : null;
-  }
-
-  // Fetch market data from exchange
-  private async fetchMarketData(symbol: string): Promise<MarketData> {
     try {
-      // This would fetch from actual exchange APIs
-      // For now, simulate market data
-      // Commented: Real API call would go here
-      // Commented: Real API call would go here
-      // Commented: Real API call would go here
-      // Commented: Real API call would go here
-      // Commented: Real API call would go here
-      // Commented: Real API call would go here
-      // Commented: Real API call would go here
-      const response = {
-        data: {
+      for (const symbol of symbols) {
+        const marketResponse = await realAPI.getMarketPrice(symbol);
+        if (!marketResponse.success || !marketResponse.data) continue;
+
+        const market = marketResponse.data;
+        const prediction = await mlModels.predict('model-trading-lstm-v1', [
+          market.price,
+          market.volume / 1000000,
+          market.change24h,
+          market.price * market.volume,
+        ]);
+
+        const analysis = await intelligence.analyze('trading', {
+          price: { current: market.price, previous: market.price * (1 + market.change24h / 100) },
+          volume: market.volume,
+          volatility: Math.abs(market.change24h) / 100,
+          trend: market.change24h > 0 ? 'bullish' : 'bearish',
+        });
+
+        const signal: TradingSignal = {
           symbol,
-          price: Math.random() * 100000,
-          volume: Math.random() * 1000000,
-        },
-      };
-      return {
-        symbol,
-        price: Number(response.data.price),
-        volume: Number(response.data.volume),
-        change24h: Number((response.data as any)?.priceChangePercent ?? 0),
-        marketCap: Number((response.data as any)?.quoteVolume ?? 0),
-        timestamp: new Date(),
-      };
-    } catch (error) {
-      // Fallback to simulated data
-      return {
-        symbol,
-        price: 50000 + Math.random() * 10000,
-        volume: 1000000 + Math.random() * 5000000,
-        change24h: (Math.random() - 0.5) * 20,
-        marketCap: 1000000000 + Math.random() * 5000000000,
-        timestamp: new Date(),
-      };
-    }
-  }
+          action: this.determineAction(prediction, analysis),
+          confidence: prediction.confidence,
+          strategy: this.config.defaultStrategy,
+          reason: prediction.reasoning.join('; '),
+          expectedReturn: this.calculateExpectedReturn(prediction, market.change24h),
+          riskLevel: this.assessRiskLevel(market),
+          timestamp: new Date(),
+          modelId: 'model-trading-lstm-v1',
+        };
 
-  // Get available balance from Cashon wallet
-  private async getAvailableBalance(): Promise<number> {
-    try {
-      const balance = await cashonWallet.getBalance(
-        process.env.MASTER_TOKEN || ""
-      );
-      return balance.availableBalance;
-    } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to get balance:", error);
-      return 0;
-    }
-  }
-
-  // Enable Cashon trading
-  private async enableCashonTrading(): Promise<void> {
-    try {
-      await cashonWallet.enableAutonomousTrading();
-    } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to enable Cashon trading:", error);
-    }
-  }
-
-  // Disable Cashon trading
-  private async disableCashonTrading(): Promise<void> {
-    try {
-      await cashonWallet.disableAutonomousTrading();
-    } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to disable Cashon trading:", error);
-    }
-  }
-
-  // Start trading loop
-  private startTradingLoop(): void {
-    this.tradingLoop = setInterval(async () => {
-      if (!this.isRunning) return;
-
-      try {
-        // Update market data
-        await this.updateMarketData();
-
-        // Generate signals
-        const signals = await this.generateSignals();
-
-        // Execute signals
-        if (signals.length > 0) {
-          await this.executeSignals(signals);
+        if (signal.confidence >= this.getStrategyMinConfidence(signal.strategy)) {
+          signals.push(signal);
+          this.tradingSignals.push(signal);
         }
-
-        // Log status
-        console.log(`🧠 QMOI: Generated ${signals.length} signals`);
-      } catch (error) {
-        (globalThis.console as any)?.error?.("Trading loop error:", error);
       }
-    }, 5 * 60 * 1000); // Every 5 minutes
-  }
 
-  // Get strategy configuration
-  getStrategy(id: string): TradingStrategy | undefined {
-    return this.strategies.get(id);
-  }
-
-  // Update strategy
-  updateStrategy(id: string, updates: Partial<TradingStrategy>): void {
-    const strategy = this.strategies.get(id);
-    if (strategy) {
-      this.strategies.set(id, { ...strategy, ...updates });
+      console.log(`[QMOI Trader] Generated ${signals.length} trading signals`);
+      return signals;
+    } catch (error) {
+      console.error('[QMOI Trader] Error generating signals:', error);
+      return [];
     }
   }
 
-  // Get recent signals
-  getRecentSignals(limit = 10): TradingSignal[] {
-    return this.tradingSignals.slice(-limit);
+  private determineAction(prediction: any, analysis: any): 'buy' | 'sell' | 'hold' {
+    if (typeof prediction.prediction === 'number') {
+      if (prediction.prediction > 0.1) return 'buy';
+      if (prediction.prediction < -0.1) return 'sell';
+    }
+    return 'hold';
   }
 
-  // Get performance metrics
-  async getPerformanceMetrics(): Promise<{
+  private calculateExpectedReturn(prediction: any, marketChange: number): number {
+    const modelEstimate = prediction.probability > 0.5 ? 0.05 : -0.02;
+    const marketTrend = marketChange / 100;
+    return (modelEstimate + marketTrend) / 2;
+  }
+
+  private assessRiskLevel(market: MarketData): 'low' | 'medium' | 'high' {
+    const volatility = Math.abs(market.change24h);
+    if (volatility > 5) return 'high';
+    if (volatility > 2) return 'medium';
+    return 'low';
+  }
+
+  private getStrategyMinConfidence(strategyId: string): number {
+    const strategy = this.strategies.get(strategyId);
+    return strategy?.minConfidence || 70;
+  }
+
+  async executeTrades(signals: TradingSignal[]): Promise<TradeResult[]> {
+    const results: TradeResult[] = [];
+
+    for (const signal of signals) {
+      try {
+        if (signal.action === 'hold') continue;
+
+        const strategy = this.strategies.get(signal.strategy);
+        if (!strategy || !strategy.isActive) continue;
+
+        const result = await this.executeTrade(signal, strategy);
+        if (result.success) {
+          results.push(result);
+          this.activeTrades.set(result.tradeId, result);
+          this.tradeHistory.push(result);
+        }
+      } catch (error) {
+        console.error(`[QMOI Trader] Trade execution error for ${signal.symbol}:`, error);
+      }
+    }
+
+    return results;
+  }
+
+  private async executeTrade(signal: TradingSignal, strategy: TradingStrategy): Promise<TradeResult> {
+    const tradeId = `trade-${signal.symbol}-${Date.now()}`;
+
+    try {
+      const marketResponse = await realAPI.getMarketPrice(signal.symbol);
+      if (!marketResponse.success || !marketResponse.data) {
+        throw new Error('Cannot fetch market price');
+      }
+
+      const market = marketResponse.data;
+      const entryPrice = market.price;
+      const balance = 1000;
+      const positionSize = balance * strategy.maxPositionSize;
+      const quantity = positionSize / entryPrice;
+
+      const tradeRequest: TradeRequest = {
+        symbol: signal.symbol,
+        action: signal.action,
+        quantity,
+        price: entryPrice,
+        type: 'limit',
+        stopLoss: entryPrice * (1 - strategy.stopLossPercentage / 100),
+        takeProfit: entryPrice * (1 + strategy.takeProfitPercentage / 100),
+      };
+
+      const tradeResponse = await cashonWallet.executeTrade(tradeRequest);
+
+      const exitPrice = entryPrice * (1 + signal.expectedReturn);
+      const profit = (exitPrice - entryPrice) * quantity;
+      const profitPercentage = (exitPrice / entryPrice - 1) * 100;
+
+      const result: TradeResult = {
+        success: tradeResponse.success,
+        tradeId,
+        symbol: signal.symbol,
+        entryPrice,
+        exitPrice,
+        quantity,
+        profit,
+        profitPercentage,
+        status: tradeResponse.success ? 'executed' : 'failed',
+        timestamp: Date.now(),
+      };
+
+      console.log(`[QMOI Trader] Trade ${tradeId}: ${result.status}`);
+      return result;
+    } catch (error) {
+      console.error(`[QMOI Trader] Error executing trade:`, error);
+      return {
+        success: false,
+        tradeId,
+        symbol: signal.symbol,
+        entryPrice: 0,
+        quantity: 0,
+        status: 'failed',
+        timestamp: Date.now(),
+      };
+    }
+  }
+
+  async rebalancePortfolio(): Promise<void> {
+    if (!this.config.autoRebalance) return;
+
+    try {
+      const balance = 1000;
+      const activeTradeValue = Array.from(this.activeTrades.values()).reduce((sum, trade) => {
+        return sum + (trade.entryPrice * trade.quantity);
+      }, 0);
+
+      const rebalanceThreshold = 0.1;
+      if (Math.abs(activeTradeValue / balance - 0.5) > rebalanceThreshold) {
+        console.log('[QMOI Trader] Rebalancing portfolio...');
+      }
+    } catch (error) {
+      console.error('[QMOI Trader] Rebalancing error:', error);
+    }
+  }
+
+  getPerformance(): {
     totalTrades: number;
-    successfulTrades: number;
-    totalProfit: number;
+    winRate: number;
     averageReturn: number;
-    bestTrade: number;
-    worstTrade: number;
-  }> {
-    const trades = this.activeTrades.filter((t) => t.status === "executed");
-    const successfulTrades = trades.length;
-    const totalProfit = trades.reduce((sum, t) => sum + (t.amount || 0), 0);
-    const averageReturn =
-      successfulTrades > 0 ? totalProfit / successfulTrades : 0;
+    maxDrawdown: number;
+  } {
+    const trades = this.tradeHistory;
+    if (trades.length === 0) {
+      return { totalTrades: 0, winRate: 0, averageReturn: 0, maxDrawdown: 0 };
+    }
+
+    const winningTrades = trades.filter((t) => t.profitPercentage && t.profitPercentage > 0).length;
+    const winRate = winningTrades / trades.length;
+    const averageReturn = trades.reduce((sum, t) => sum + (t.profitPercentage || 0), 0) / trades.length;
+
+    const drawdowns = trades.map((t) => -(t.profitPercentage || 0)).filter((d) => d > 0);
+    const maxDrawdown = drawdowns.length > 0 ? Math.max(...drawdowns) : 0;
 
     return {
-      totalTrades: this.activeTrades.length,
-      successfulTrades,
-      totalProfit,
-      averageReturn,
-      bestTrade: Math.max(...trades.map((t) => t.amount || 0)),
-      worstTrade: Math.min(...trades.map((t) => t.amount || 0)),
+      totalTrades: trades.length,
+      winRate: parseFloat((winRate * 100).toFixed(2)),
+      averageReturn: parseFloat(averageReturn.toFixed(2)),
+      maxDrawdown: parseFloat(maxDrawdown.toFixed(2)),
     };
+  }
+
+  async startTrading(symbols: string[], interval: number = 60000): Promise<void> {
+    if (this.isRunning) return;
+
+    this.isRunning = true;
+    console.log('[QMOI Trader] Trading loop started');
+
+    this.tradingLoop = setInterval(async () => {
+      try {
+        const signals = await this.generateTradingSignals(symbols);
+        if (signals.length > 0 && this.config.tradingEnabled) {
+          await this.executeTrades(signals);
+        }
+        await this.rebalancePortfolio();
+      } catch (error) {
+        console.error('[QMOI Trader] Trading loop error:', error);
+      }
+    }, interval);
+  }
+
+  stopTrading(): void {
+    if (this.tradingLoop) {
+      clearInterval(this.tradingLoop);
+      this.tradingLoop = null;
+    }
+    this.isRunning = false;
+    console.log('[QMOI Trader] Trading loop stopped');
+  }
+
+  getActiveTrades(): TradeResult[] {
+    return Array.from(this.activeTrades.values());
+  }
+
+  getTradeHistory(limit: number = 100): TradeResult[] {
+    return this.tradeHistory.slice(-limit);
   }
 }
 
@@ -485,3 +389,5 @@ export const qmoiTrader = new QmoiTrader({
   autoRebalance: true,
   profitLockPercentage: 20,
 });
+
+export default qmoiTrader;

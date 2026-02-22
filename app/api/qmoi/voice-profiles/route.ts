@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
-// NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+
 import { NextRequest, NextResponse } from "next/server";
 import {
   voiceProfiles,
@@ -23,11 +22,11 @@ export async function GET() {
       profiles: profilesWithMetadata,
       total: profilesWithMetadata.length,
     });
-  } catch (error) {
-    (console as any).error("Error fetching voice profiles:", error);
+  } catch (_error) {
+    (console as any).error("Error fetching voice profiles:", _error);
     return NextResponse.json(
-      { error: "Failed to fetch voice profiles" },
-      { status: 500 }
+      { _error: "Failed to fetch voice profiles" },
+      { status: 500 },
     );
   }
 }
@@ -51,13 +50,13 @@ export async function POST(_request: NextRequest) {
         return await upgradeVoice(voiceId);
 
       default:
-        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
     }
-  } catch (error) {
-    (console as any).error("Error in voice profiles API:", error);
+  } catch (_error) {
+    (console as any).error("Error in voice profiles API:", _error);
     return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 }
+      { _error: "Internal server error" },
+      { status: 500 },
     );
   }
 }
@@ -67,7 +66,7 @@ async function switchVoice(voiceId: string) {
     // Validate voice ID
     const voiceProfile = voiceProfiles.find((v) => v.id === voiceId);
     if (!voiceProfile) {
-      return NextResponse.json({ error: "Invalid voice ID" }, { status: 400 });
+      return NextResponse.json({ _error: "Invalid voice ID" }, { status: 400 });
     }
 
     // Update QMOI's current voice (, this would update the AI model)
@@ -86,11 +85,11 @@ async function switchVoice(voiceId: string) {
       message: `Voice switched to ${voiceProfile.name}`,
       voice: voiceProfile,
     });
-  } catch (error) {
-    (console as any).error("Error switching voice:", error);
+  } catch (_error) {
+    (console as any).error("Error switching voice:", _error);
     return NextResponse.json(
-      { error: "Failed to switch voice" },
-      { status: 500 }
+      { _error: "Failed to switch voice" },
+      { status: 500 },
     );
   }
 }
@@ -99,7 +98,7 @@ async function previewVoice(
   voiceId: string,
   text: string,
   quality: string,
-  volume: number
+  volume: number,
 ) {
   try {
     // In a real implementation, this would:
@@ -109,7 +108,7 @@ async function previewVoice(
 
     const voiceProfile = voiceProfiles.find((v) => v.id === voiceId);
     if (!voiceProfile) {
-      return NextResponse.json({ error: "Invalid voice ID" }, { status: 400 });
+      return NextResponse.json({ _error: "Invalid voice ID" }, { status: 400 });
     }
 
     // Simulate TTS processing
@@ -121,11 +120,11 @@ async function previewVoice(
       duration: Math.random() * 5 + 2, // Simulated duration
       voice: voiceProfile,
     });
-  } catch (error) {
-    (console as any).error("Error previewing voice:", error);
+  } catch (_error) {
+    (console as any).error("Error previewing voice:", _error);
     return NextResponse.json(
-      { error: "Failed to generate voice preview" },
-      { status: 500 }
+      { _error: "Failed to generate voice preview" },
+      { status: 500 },
     );
   }
 }
@@ -151,11 +150,11 @@ async function enhanceVoice(voiceId: string) {
         "clarity_enhancement",
       ],
     });
-  } catch (error) {
-    (console as any).error("Error enhancing voice:", error);
+  } catch (_error) {
+    (console as any).error("Error enhancing voice:", _error);
     return NextResponse.json(
-      { error: "Failed to enhance voice" },
-      { status: 500 }
+      { _error: "Failed to enhance voice" },
+      { status: 500 },
     );
   }
 }
@@ -183,11 +182,11 @@ async function upgradeVoice(voiceId: string) {
         "faster_processing",
       ],
     });
-  } catch (error) {
-    (console as any).error("Error upgrading voice:", error);
+  } catch (_error) {
+    (console as any).error("Error upgrading voice:", _error);
     return NextResponse.json(
-      { error: "Failed to upgrade voice" },
-      { status: 500 }
+      { _error: "Failed to upgrade voice" },
+      { status: 500 },
     );
   }
 }
@@ -252,7 +251,7 @@ async function generateTTSAudio(
   voiceId: string,
   text: string,
   quality: string,
-  volume: number
+  volume: number,
 ): Promise<string> {
   // In a real implementation, this would integrate with:
   // - Bark (for high-quality TTS)
@@ -263,6 +262,6 @@ async function generateTTSAudio(
 
   // For now, return a [PRODUCTION IMPLEMENTATION REQUIRED] URL
   return `/api/tts/generate?voice=${voiceId}&text=${encodeURIComponent(
-    text
+    text,
   )}&quality=${quality}&volume=${volume}`;
 }

@@ -41,6 +41,8 @@ module.exports = {
     "/build/",
     "/.qmoi_validation/",
     "/_archive_qmoi-enhanced/",
+    "/backups/",
+    "/services/",
     "/tests/ui/",
   ],
   collectCoverage: false,

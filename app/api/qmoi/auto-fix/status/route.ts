@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
+
 import { NextRequest, NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -14,7 +14,7 @@ export async function GET(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
     const logsDir = path.join(process.cwd(), "logs");
@@ -42,8 +42,8 @@ export async function GET(_request: NextRequest) {
     try {
       const reportData = await fs.readFile(latestReportPath, "utf-8");
       report = JSON.parse(reportData);
-    } catch (error) {
-      console.log("No latest report found, using default");
+    } catch (_e) {
+      // Report file not found or invalid, will use default report
     }
 
     // Check if auto-fix process is running
@@ -67,8 +67,8 @@ export async function GET(_request: NextRequest) {
           }
         }
       }
-    } catch (error) {
-      console.log("Error checking running process_es:", error);
+    } catch (_error) {
+      console.log("Error checking running process_es:", _error);
     }
 
     // Check deployment status
@@ -76,7 +76,7 @@ export async function GET(_request: NextRequest) {
       const vercelConfigPath = path.join(process.cwd(), "vercel.json");
       await fs.access(vercelConfigPath);
       report.deployment.status = "configured";
-    } catch {
+    } catch (e) {
       report.deployment.status = "not_configured";
     }
 
@@ -94,15 +94,15 @@ export async function GET(_request: NextRequest) {
       } else {
         report.deployment.github_actions = "no_workflows";
       }
-    } catch {
+    } catch (e) {
       report.deployment.github_actions = "not_configured";
     }
 
     return NextResponse.json(report);
-  } catch (error) {
-    (console as any).error("Error getting auto-fix status:", error);
+  } catch (_error) {
+    (console as any).error("Error getting auto-fix status:", _error);
     return NextResponse.json(
-      { error: "Failed to get auto-fix status" },
+      { _error: "Failed to get auto-fix status" },
       { status: 500 },
     );
   }

@@ -5,7 +5,7 @@ const QMOIWatchDebug = require("./watchdebug");
 
 async function startQMOIMonitoring() {
   console.log(
-    "🚀 Starting QMOI Comprehensive Monitoring & Error Fixing System..."
+    "🚀 Starting QMOI Comprehensive Monitoring & Error Fixing System...",
   );
 
   // Initialize monitoring system
@@ -39,7 +39,7 @@ async function startQMOIMonitoring() {
     console.log(`├── Errors detected: ${monitor.logs.errors.length}`);
     console.log(`├── Fixes applied: ${monitor.logs.fixes.length}`);
     console.log(
-      `├── Deployments monitored: ${monitor.logs.deployments.length}`
+      `├── Deployments monitored: ${monitor.logs.deployments.length}`,
     );
     console.log(`└── Performance checks: ${monitor.logs.performance.length}`);
     process.exit(0);

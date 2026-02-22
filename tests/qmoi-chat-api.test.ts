@@ -26,6 +26,6 @@ describe("QMOI /api/qmoi/chat proxy", () => {
       expect(content).toBeTruthy();
       expect(content).toMatch(/How are you|I'm doing well|How can I help/);
     },
-    10000
+    10000,
   );
 });

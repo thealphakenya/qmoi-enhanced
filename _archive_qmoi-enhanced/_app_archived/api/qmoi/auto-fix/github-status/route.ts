@@ -27,7 +27,7 @@ export async function GET() {
       } else {
         status.status = "no_workflows";
       }
-    } catch {
+    } catch (e) {
       status.status = "not_configured";
     }
 
@@ -61,7 +61,7 @@ export async function GET() {
             } else if (logContent.includes("running")) {
               status.status = "running";
             }
-          } catch {
+          } catch (e) {
             // If we can't read the log, assume unknown
           }
         }

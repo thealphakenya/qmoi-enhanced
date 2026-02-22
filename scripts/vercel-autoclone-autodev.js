@@ -4,12 +4,12 @@
  * Handles automatic syncing from GitHub and auto-development features
  */
 
-const https = require('https');
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
+const https = require("https");
+const { execSync } = require("child_process");
+const fs = require("fs");
+const path = require("path");
 
-const config = require('./.vercel/autoclone-config.js');
+const config = require("./.vercel/autoclone-config.js");
 
 console.log(`
 ╔════════════════════════════════════════════════════╗
@@ -21,19 +21,19 @@ console.log(`
 // ============================================================================
 // HELPER: Make HTTPS request
 // ============================================================================
-function httpsRequest(options, data = null) {
+function httpsRequest(_options, data = null) {
   return new Promise((resolve, reject) => {
-    const req = https.request(options, (res) => {
-      let body = '';
-      res.on('data', chunk => body += chunk);
-      res.on('end', () => {
+    const _req = https.request(_options, (_res) => {
+      let body = "";
+      res.on("data", (chunk) => (body += chunk));
+      res.on("end", () => {
         try {
           resolve({
             status: res.statusCode,
             headers: res.headers,
             body: body ? JSON.parse(body) : null,
           });
-        } catch (e) {
+        } catch (_e) {
           resolve({
             status: res.statusCode,
             headers: res.headers,
@@ -43,7 +43,7 @@ function httpsRequest(options, data = null) {
       });
     });
 
-    req.on('error', reject);
+    req.on("error", reject);
     req.setTimeout(10000);
 
     if (data) {
@@ -58,39 +58,39 @@ function httpsRequest(options, data = null) {
 // FEATURE 1: Check for new commits on GitHub
 // ============================================================================
 async function checkGitHubUpdates() {
-  console.log('\n🔍 Checking GitHub for updates...\n');
+  console.log("\n🔍 Checking GitHub for updates...\n");
 
   if (!config.autoclone.github.token) {
-    console.log('⚠️  GITHUB_TOKEN not set. Skipping GitHub check.');
+    console.log("⚠️  GITHUB_TOKEN not set. Skipping GitHub check.");
     return null;
   }
 
   try {
-    const options = {
-      hostname: 'api.github.com',
+    const _options = {
+      hostname: "api.github.com",
       path: `/repos/${config.autoclone.github.owner}/${config.autoclone.github.repo}/commits?sha=${config.autoclone.github.branch}&per_page=1`,
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Authorization': `Bearer ${config.autoclone.github.token}`,
-        'User-Agent': 'QMOI-AutoClone/1.0',
+        Authorization: `Bearer ${config.autoclone.github.token}`,
+        "User-Agent": "QMOI-AutoClone/1.0",
       },
     };
 
-    const response = await httpsRequest(options);
+    const _response = await httpsRequest(_options);
 
     if (response.status === 200 && response.body && response.body.length > 0) {
       const commit = response.body[0];
       console.log(`✅ Latest commit: ${commit.sha.substring(0, 7)}`);
       console.log(`   Author: ${commit.commit.author.name}`);
-      console.log(`   Message: ${commit.commit.message.split('\n')[0]}`);
+      console.log(`   Message: ${commit.commit.message.split("\n")[0]}`);
       console.log(`   Date: ${commit.commit.author.date}\n`);
       return commit;
     } else {
-      console.log('No commits found on GitHub.\n');
+      console.log("No commits found on GitHub.\n");
       return null;
     }
-  } catch (error) {
-    console.error('❌ Error checking GitHub:', error.message);
+  } catch (_error) {
+    console.error("❌ Error checking GitHub:", error.message);
     return null;
   }
 }
@@ -99,32 +99,32 @@ async function checkGitHubUpdates() {
 // FEATURE 2: Trigger Vercel deployment
 // ============================================================================
 async function triggerVercelDeployment() {
-  console.log('🚀 Triggering Vercel deployment...\n');
+  console.log("🚀 Triggering Vercel deployment...\n");
 
   if (!config.autoclone.vercel.token) {
-    console.log('⚠️  VERCEL_TOKEN not set. Skipping deployment.');
+    console.log("⚠️  VERCEL_TOKEN not set. Skipping deployment.");
     return null;
   }
 
   try {
-    const options = {
-      hostname: 'api.vercel.com',
+    const _options = {
+      hostname: "api.vercel.com",
       path: `/v13/deployments?teamId=${config.autoclone.vercel.teamId}`,
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Authorization': `Bearer ${config.autoclone.vercel.token}`,
-        'Content-Type': 'application/json',
-        'User-Agent': 'QMOI-AutoClone/1.0',
+        Authorization: `Bearer ${config.autoclone.vercel.token}`,
+        "Content-Type": "application/json",
+        "User-Agent": "QMOI-AutoClone/1.0",
       },
     };
 
     const deploymentData = {
       name: config.autoclone.vercel.projectName,
       ref: config.autoclone.github.branch,
-      source: 'github',
+      source: "github",
     };
 
-    const response = await httpsRequest(options, deploymentData);
+    const _response = await httpsRequest(_options, deploymentData);
 
     if (response.status === 201) {
       console.log(`✅ Deployment triggered: ${response.body.id}`);
@@ -135,8 +135,8 @@ async function triggerVercelDeployment() {
       console.log(`⚠️  Deployment request returned: ${response.status}\n`);
       return null;
     }
-  } catch (error) {
-    console.error('❌ Error triggering deployment:', error.message);
+  } catch (_error) {
+    console.error("❌ Error triggering deployment:", error.message);
     return null;
   }
 }
@@ -145,24 +145,24 @@ async function triggerVercelDeployment() {
 // FEATURE 3: Run pre-deployment tests
 // ============================================================================
 function runPreDeploymentTests() {
-  console.log('🧪 Running pre-deployment tests...\n');
+  console.log("🧪 Running pre-deployment tests...\n");
 
   const tests = [
-    { name: 'Lint', command: config.autoclone.build.command.includes('lint') },
-    { name: 'Unit Tests', command: 'npm run test:unit 2>/dev/null' },
-    { name: 'Build Check', command: 'npm run build 2>/dev/null' },
+    { name: "Lint", command: config.autoclone.build.command.includes("lint") },
+    { name: "Unit Tests", command: "npm run test:unit 2>/dev/null" },
+    { name: "Build Check", command: "npm run build 2>/dev/null" },
   ];
 
   let passed = 0;
   let failed = 0;
 
-  tests.forEach(test => {
+  tests.forEach((test) => {
     try {
       console.log(`   Testing: ${test.name}...`);
-      execSync(test.command, { stdio: 'pipe', timeout: 60000 });
+      execSync(test.command, { stdio: "pipe", timeout: 60000 });
       console.log(`   ✅ ${test.name} passed`);
       passed++;
-    } catch (error) {
+    } catch (_error) {
       console.log(`   ❌ ${test.name} failed`);
       failed++;
     }
@@ -177,33 +177,41 @@ function runPreDeploymentTests() {
 // ============================================================================
 async function runAutoDev() {
   if (!config.autodev.enabled) {
-    console.log('ℹ️  AutoDev is disabled.\n');
+    console.log("ℹ️  AutoDev is disabled.\n");
     return;
   }
 
-  console.log('🤖 Running AutoDev analysis...\n');
+  console.log("🤖 Running AutoDev analysis...\n");
 
-  console.log('   Features to improve:');
+  console.log("   Features to improve:");
   Object.entries(config.autodev.features).forEach(([feature, enabled]) => {
     if (enabled) {
       console.log(`     ✓ ${feature}`);
     }
   });
 
-  console.log('\n   Safety checks:');
-  console.log(`     ✓ Master approval required: ${config.autodev.safety.requireMasterApproval}`);
-  console.log(`     ✓ Canary deployment: ${config.autodev.safety.canaryDeployment}`);
-  console.log(`     ✓ Auto-rollback enabled: ${config.autodev.safety.automatedRollback}`);
-  console.log(`     ✓ Max changes per run: ${config.autodev.safety.maxChangesPerRun}\n`);
+  console.log("\n   Safety checks:");
+  console.log(
+    `     ✓ Master approval required: ${config.autodev.safety.requireMasterApproval}`,
+  );
+  console.log(
+    `     ✓ Canary deployment: ${config.autodev.safety.canaryDeployment}`,
+  );
+  console.log(
+    `     ✓ Auto-rollback enabled: ${config.autodev.safety.automatedRollback}`,
+  );
+  console.log(
+    `     ✓ Max changes per run: ${config.autodev.safety.maxChangesPerRun}\n`,
+  );
 
-  console.log('   AutoDev will:');
-  console.log('   1. Analyze current code');
-  console.log('   2. Identify improvement opportunities');
-  console.log('   3. Propose changes (with master approval gate)');
-  console.log('   4. Run comprehensive tests');
-  console.log('   5. Deploy to canary (10% traffic)');
-  console.log('   6. Monitor metrics');
-  console.log('   7. Auto-rollback or promote to production\n');
+  console.log("   AutoDev will:");
+  console.log("   1. Analyze current code");
+  console.log("   2. Identify improvement opportunities");
+  console.log("   3. Propose changes (with master approval gate)");
+  console.log("   4. Run comprehensive tests");
+  console.log("   5. Deploy to canary (10% traffic)");
+  console.log("   6. Monitor metrics");
+  console.log("   7. Auto-rollback or promote to production\n");
 }
 
 // ============================================================================
@@ -211,26 +219,26 @@ async function runAutoDev() {
 // ============================================================================
 async function runQVillageResearch() {
   if (!config.qvillage.autoResearch.enabled) {
-    console.log('ℹ️  QVillage auto-research is disabled.\n');
+    console.log("ℹ️  QVillage auto-research is disabled.\n");
     return;
   }
 
-  console.log('🏘️  Triggering QVillage auto-research...\n');
+  console.log("🏘️  Triggering QVillage auto-research...\n");
 
-  console.log('   Research tasks:');
-  config.qvillage.autoResearch.tasks.forEach(task => {
+  console.log("   Research tasks:");
+  config.qvillage.autoResearch.tasks.forEach((task) => {
     console.log(`     → ${task}`);
   });
 
   console.log(`\n   Schedule: ${config.qvillage.autoResearch.schedule}`);
-  console.log('   Status: Will run at scheduled time\n');
+  console.log("   Status: Will run at scheduled time\n");
 }
 
 // ============================================================================
 // FEATURE 6: Health check
 // ============================================================================
 async function performHealthCheck() {
-  console.log('❤️  Performing health checks...\n');
+  console.log("❤️  Performing health checks...\n");
 
   const endpoints = config.monitoring.healthCheck.endpoints;
 
@@ -239,20 +247,23 @@ async function performHealthCheck() {
       const url = `https://qmoi-enhanced.vercel.app${endpoint}`;
       console.log(`   Checking: ${endpoint}`);
 
-      const options = new URL(url);
-      const response = await httpsRequest({
-        method: 'GET',
-        hostname: options.hostname,
-        path: options.pathname,
-        headers: { 'User-Agent': 'QMOI-AutoClone/1.0' },
-      }, null);
+      const _options = new URL(url);
+      const _response = await httpsRequest(
+        {
+          method: "GET",
+          hostname: options.hostname,
+          path: options.pathname,
+          headers: { "User-Agent": "QMOI-AutoClone/1.0" },
+        },
+        null,
+      );
 
       if (response.status === 200) {
         console.log(`     ✅ Healthy (${response.status})`);
       } else {
         console.log(`     ⚠️  Status: ${response.status}`);
       }
-    } catch (error) {
+    } catch (_error) {
       console.log(`     ❌ Error: ${error.message}`);
     }
   }
@@ -265,7 +276,7 @@ async function performHealthCheck() {
 // ============================================================================
 async function main() {
   try {
-    console.log('\n' + '='.repeat(50) + '\n');
+    console.log("\n" + "=".repeat(50) + "\n");
 
     // Step 1: Check GitHub for updates
     const latestCommit = await checkGitHubUpdates();
@@ -275,7 +286,7 @@ async function main() {
       const testsPass = runPreDeploymentTests();
 
       if (!testsPass) {
-        console.log('❌ Tests failed. Skipping deployment.\n');
+        console.log("❌ Tests failed. Skipping deployment.\n");
         process.exit(1);
       }
 
@@ -283,7 +294,7 @@ async function main() {
       const deployment = await triggerVercelDeployment();
 
       if (!deployment) {
-        console.log('❌ Failed to trigger deployment.\n');
+        console.log("❌ Failed to trigger deployment.\n");
         process.exit(1);
       }
 
@@ -297,7 +308,7 @@ async function main() {
     // Step 6: Health check
     await performHealthCheck();
 
-    console.log('='.repeat(50));
+    console.log("=".repeat(50));
     console.log(`
 ✅ Auto-Clone & AutoDev cycle complete!
 
@@ -313,8 +324,8 @@ Next automated cycle: ${new Date(Date.now() + 3600000).toISOString()}
     `);
 
     process.exit(0);
-  } catch (error) {
-    console.error('\n❌ Fatal error:', error.message);
+  } catch (_error) {
+    console.error("\n❌ Fatal _error:", error.message);
     process.exit(1);
   }
 }

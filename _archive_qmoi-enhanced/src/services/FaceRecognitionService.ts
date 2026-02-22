@@ -183,7 +183,10 @@ export class FaceRecognitionService {
         };
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error initializing face recognition API:", error);
+      (globalThis.console as any)?.error?.(
+        "Error initializing face recognition API:",
+        error,
+      );
     }
   }
 
@@ -231,7 +234,10 @@ export class FaceRecognitionService {
       try {
         await this.detectFaces();
       } catch (error) {
-        (globalThis.console as any)?.error?.("Error in face detection loop:", error);
+        (globalThis.console as any)?.error?.(
+          "Error in face detection loop:",
+          error,
+        );
       }
     }, this.config.detectionInterval);
   }
@@ -282,7 +288,9 @@ export class FaceRecognitionService {
     await this.identifyFaces(processedFaces);
   }
 
-  private async processFaceDetection(detection: unknown): Promise<FaceData | null> {
+  private async processFaceDetection(
+    detection: unknown,
+  ): Promise<FaceData | null> {
     try {
       const faceData: FaceData = {
         id: `face-${Date.now()}-${Math.random()}`,
@@ -303,7 +311,10 @@ export class FaceRecognitionService {
 
       return faceData;
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error processing face detection:", error);
+      (globalThis.console as any)?.error?.(
+        "Error processing face detection:",
+        error,
+      );
       return null;
     }
   }

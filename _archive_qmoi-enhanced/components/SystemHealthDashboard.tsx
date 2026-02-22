@@ -63,7 +63,7 @@ const SystemHealthDashboard: React.FC<{ isMaster: boolean }> = ({
           const statusRes = await fetch("/status");
           if (statusRes.ok) setHealthStats(await statusRes.json());
         }
-      } catch {
+      } catch (e) {
         setHealthStats(null);
       } finally {
         setLoading(false);

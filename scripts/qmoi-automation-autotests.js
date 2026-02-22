@@ -38,7 +38,7 @@ class QMOIAutomationAutotests {
       await this.loadTestConfiguration();
 
       console.log("✅ QMOI Automation Autotests initialized");
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("❌ Test initialization failed:", error.message);
       throw error;
     }
@@ -49,7 +49,7 @@ class QMOIAutomationAutotests {
     for (const dir of dirs) {
       try {
         await fs.mkdir(dir, { recursive: true });
-      } catch (error) {
+      } catch (_error) {
         // Directory might already exist
       }
     }
@@ -60,7 +60,7 @@ class QMOIAutomationAutotests {
       const configPath = "config/test-config.json";
       const config = await fs.readFile(configPath, "utf8");
       this.config = { ...this.config, ...JSON.parse(config) };
-    } catch (error) {
+    } catch (_error) {
       // Use default configuration
     }
   }
@@ -124,7 +124,7 @@ class QMOIAutomationAutotests {
             passed: 0,
             failed: 1,
             skipped: 0,
-            error: result.reason.message,
+            _error: result.reason.message,
           });
           testReport.summary.failed++;
         }
@@ -151,9 +151,9 @@ class QMOIAutomationAutotests {
       this.displayTestSummary(testReport);
 
       return testReport;
-    } catch (error) {
+    } catch (_error) {
       (console as any).error("❌ Test execution failed:", error.message);
-      await this.handleTestError(error);
+      await this.handleTestError(_error);
       throw error;
     }
   }
@@ -166,14 +166,14 @@ class QMOIAutomationAutotests {
         "npm run test:unit -- --coverage --watchAll=false",
       );
       return this.parseTestOutput(stdout, "Unit Tests");
-    } catch (error) {
+    } catch (_error) {
       return {
         name: "Unit Tests",
         total: 0,
         passed: 0,
         failed: 1,
         skipped: 0,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -186,14 +186,14 @@ class QMOIAutomationAutotests {
         "npm run test:integration -- --coverage --watchAll=false",
       );
       return this.parseTestOutput(stdout, "Integration Tests");
-    } catch (error) {
+    } catch (_error) {
       return {
         name: "Integration Tests",
         total: 0,
         passed: 0,
         failed: 1,
         skipped: 0,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -206,14 +206,14 @@ class QMOIAutomationAutotests {
         "npm run test:e2e -- --coverage --watchAll=false",
       );
       return this.parseTestOutput(stdout, "E2E Tests");
-    } catch (error) {
+    } catch (_error) {
       return {
         name: "E2E Tests",
         total: 0,
         passed: 0,
         failed: 1,
         skipped: 0,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -224,14 +224,14 @@ class QMOIAutomationAutotests {
     try {
       const { stdout } = await execAsync("npm run test:performance");
       return this.parseTestOutput(stdout, "Performance Tests");
-    } catch (error) {
+    } catch (_error) {
       return {
         name: "Performance Tests",
         total: 0,
         passed: 0,
         failed: 1,
         skipped: 0,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -242,14 +242,14 @@ class QMOIAutomationAutotests {
     try {
       const { stdout } = await execAsync("npm run test:security");
       return this.parseTestOutput(stdout, "Security Tests");
-    } catch (error) {
+    } catch (_error) {
       return {
         name: "Security Tests",
         total: 0,
         passed: 0,
         failed: 1,
         skipped: 0,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -260,14 +260,14 @@ class QMOIAutomationAutotests {
     try {
       const { stdout } = await execAsync("npm run test:accessibility");
       return this.parseTestOutput(stdout, "Accessibility Tests");
-    } catch (error) {
+    } catch (_error) {
       return {
         name: "Accessibility Tests",
         total: 0,
         passed: 0,
         failed: 1,
         skipped: 0,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -278,14 +278,14 @@ class QMOIAutomationAutotests {
     try {
       const { stdout } = await execAsync("npm run test:compatibility");
       return this.parseTestOutput(stdout, "Compatibility Tests");
-    } catch (error) {
+    } catch (_error) {
       return {
         name: "Compatibility Tests",
         total: 0,
         passed: 0,
         failed: 1,
         skipped: 0,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -296,14 +296,14 @@ class QMOIAutomationAutotests {
     try {
       const { stdout } = await execAsync("npm run test:load");
       return this.parseTestOutput(stdout, "Load Tests");
-    } catch (error) {
+    } catch (_error) {
       return {
         name: "Load Tests",
         total: 0,
         passed: 0,
         failed: 1,
         skipped: 0,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -314,14 +314,14 @@ class QMOIAutomationAutotests {
     try {
       const { stdout } = await execAsync("npm run test:stress");
       return this.parseTestOutput(stdout, "Stress Tests");
-    } catch (error) {
+    } catch (_error) {
       return {
         name: "Stress Tests",
         total: 0,
         passed: 0,
         failed: 1,
         skipped: 0,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -332,14 +332,14 @@ class QMOIAutomationAutotests {
     try {
       const { stdout } = await execAsync("npm run test:regression");
       return this.parseTestOutput(stdout, "Regression Tests");
-    } catch (error) {
+    } catch (_error) {
       return {
         name: "Regression Tests",
         total: 0,
         passed: 0,
         failed: 1,
         skipped: 0,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -350,14 +350,14 @@ class QMOIAutomationAutotests {
     try {
       const { stdout } = await execAsync("npm run test:smoke");
       return this.parseTestOutput(stdout, "Smoke Tests");
-    } catch (error) {
+    } catch (_error) {
       return {
         name: "Smoke Tests",
         total: 0,
         passed: 0,
         failed: 1,
         skipped: 0,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -368,14 +368,14 @@ class QMOIAutomationAutotests {
     try {
       const { stdout } = await execAsync("npm run test:sanity");
       return this.parseTestOutput(stdout, "Sanity Tests");
-    } catch (error) {
+    } catch (_error) {
       return {
         name: "Sanity Tests",
         total: 0,
         passed: 0,
         failed: 1,
         skipped: 0,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -386,14 +386,14 @@ class QMOIAutomationAutotests {
     try {
       const { stdout } = await execAsync("npm run test:visual");
       return this.parseTestOutput(stdout, "Visual Tests");
-    } catch (error) {
+    } catch (_error) {
       return {
         name: "Visual Tests",
         total: 0,
         passed: 0,
         failed: 1,
         skipped: 0,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -404,14 +404,14 @@ class QMOIAutomationAutotests {
     try {
       const { stdout } = await execAsync("npm run test:api");
       return this.parseTestOutput(stdout, "API Tests");
-    } catch (error) {
+    } catch (_error) {
       return {
         name: "API Tests",
         total: 0,
         passed: 0,
         failed: 1,
         skipped: 0,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -422,14 +422,14 @@ class QMOIAutomationAutotests {
     try {
       const { stdout } = await execAsync("npm run test:database");
       return this.parseTestOutput(stdout, "Database Tests");
-    } catch (error) {
+    } catch (_error) {
       return {
         name: "Database Tests",
         total: 0,
         passed: 0,
         failed: 1,
         skipped: 0,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -440,14 +440,14 @@ class QMOIAutomationAutotests {
     try {
       const { stdout } = await execAsync("npm run test:network");
       return this.parseTestOutput(stdout, "Network Tests");
-    } catch (error) {
+    } catch (_error) {
       return {
         name: "Network Tests",
         total: 0,
         passed: 0,
         failed: 1,
         skipped: 0,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -458,14 +458,14 @@ class QMOIAutomationAutotests {
     try {
       const { stdout } = await execAsync("npm run test:mobile");
       return this.parseTestOutput(stdout, "Mobile Tests");
-    } catch (error) {
+    } catch (_error) {
       return {
         name: "Mobile Tests",
         total: 0,
         passed: 0,
         failed: 1,
         skipped: 0,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -476,14 +476,14 @@ class QMOIAutomationAutotests {
     try {
       const { stdout } = await execAsync("npm run test:cross-browser");
       return this.parseTestOutput(stdout, "Cross-Browser Tests");
-    } catch (error) {
+    } catch (_error) {
       return {
         name: "Cross-Browser Tests",
         total: 0,
         passed: 0,
         failed: 1,
         skipped: 0,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -494,14 +494,14 @@ class QMOIAutomationAutotests {
     try {
       const { stdout } = await execAsync("npm run test:localization");
       return this.parseTestOutput(stdout, "Localization Tests");
-    } catch (error) {
+    } catch (_error) {
       return {
         name: "Localization Tests",
         total: 0,
         passed: 0,
         failed: 1,
         skipped: 0,
-        error: error.message,
+        _error: error.message,
       };
     }
   }
@@ -563,7 +563,7 @@ class QMOIAutomationAutotests {
       }
 
       return coverageData;
-    } catch (error) {
+    } catch (_error) {
       return null;
     }
   }
@@ -597,7 +597,7 @@ class QMOIAutomationAutotests {
       // Generate performance metrics
       await execAsync("npm run test:metrics");
       artifacts.push("test-results/metrics.json");
-    } catch (error) {
+    } catch (_error) {
       console.warn("⚠️  Some artifacts could not be generated:", error.message);
     }
 
@@ -667,8 +667,8 @@ class QMOIAutomationAutotests {
     }
   }
 
-  async handleTestError(error) {
-    (console as any).error("❌ Test execution error:", error.message);
+  async handleTestError(_error) {
+    (console as any).error("❌ Test execution _error:", error.message);
 
     await this.notificationSystem.sendNotification(
       "error",
@@ -691,8 +691,8 @@ async function main() {
     } else {
       process.exit(0);
     }
-  } catch (error) {
-    (console as any).error("💥 Fatal test error:", error.message);
+  } catch (_error) {
+    (console as any).error("💥 Fatal test _error:", error.message);
     process.exit(1);
   }
 }

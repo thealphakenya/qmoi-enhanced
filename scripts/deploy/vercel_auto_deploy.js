@@ -120,7 +120,7 @@ function autoCommitAndPush() {
     // Unstage .env if staged
     try {
       execSync("git reset .env");
-    } catch {}
+    } catch (e) {}
     execSync("git add .");
     execSync('git commit -m "Auto-fix: deploy error"');
     let pushed = false;
@@ -246,8 +246,8 @@ async function monitorHealth(url) {
       return false;
     }
   } catch (_e) {
-    log("Health check error: " + _e.message);
-    await notifyMaster("Health check error: " + _e.message);
+    log("Health check _error: " + _e.message);
+    await notifyMaster("Health check _error: " + _e.message);
     return false;
   }
 }
@@ -265,8 +265,8 @@ async function pingUptimeMonitor() {
       await notifyMaster("Uptime monitor check failed: " + _res.status);
     }
   } catch (_e) {
-    log("Uptime monitor error: " + _e.message);
-    await notifyMaster("Uptime monitor error: " + _e.message);
+    log("Uptime monitor _error: " + _e.message);
+    await notifyMaster("Uptime monitor _error: " + _e.message);
   }
 }
 
@@ -467,7 +467,7 @@ async function main() {
 }
 
 // Run main function
-main().catch((error) => {
+main().catch((_error) => {
   log(`Fatal error in main: ${error.message}`);
   process.exit(1);
 });

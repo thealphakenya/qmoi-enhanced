@@ -108,7 +108,10 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
         setDeployments(data.deployments || []);
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error fetching deployments:", error);
+      (globalThis.console as any)?.error?.(
+        "Error fetching deployments:",
+        error,
+      );
     }
   };
 
@@ -179,10 +182,10 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
       status === "success" || status === "READY"
         ? "default"
         : status === "failed" || status === "ERROR"
-        ? "destructive"
-        : status === "running" || status === "BUILDING"
-        ? "secondary"
-        : "outline";
+          ? "destructive"
+          : status === "running" || status === "BUILDING"
+            ? "secondary"
+            : "outline";
 
     return <Badge variant={variant}>{status}</Badge>;
   };
@@ -392,7 +395,8 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
                       <span>
                         {successCount + errorCount > 0
                           ? Math.round(
-                              (successCount / (successCount + errorCount)) * 100
+                              (successCount / (successCount + errorCount)) *
+                                100,
                             )
                           : 0}
                         %
@@ -452,10 +456,10 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
                         syncStatus === "success"
                           ? "default"
                           : syncStatus === "error"
-                          ? "destructive"
-                          : syncStatus === "syncing"
-                          ? "secondary"
-                          : "outline"
+                            ? "destructive"
+                            : syncStatus === "syncing"
+                              ? "secondary"
+                              : "outline"
                       }
                     >
                       {syncStatus.charAt(0).toUpperCase() + syncStatus.slice(1)}

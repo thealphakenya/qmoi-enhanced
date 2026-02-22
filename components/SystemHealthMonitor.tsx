@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import {
   Card,
   CardContent,
@@ -96,6 +96,8 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
   const [isRefreshing, setIsRefreshing] = useState(false);
   const { toast } = useToast();
 
+  const isRefreshingRef = useRef(false);
+
   // Generate mock system metrics
   const generateMockMetrics = (): SystemMetrics => {
     const now = new Date();
@@ -127,8 +129,8 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
             Math.random() > 0.9
               ? "error"
               : Math.random() > 0.7
-              ? "warning"
-              : "healthy",
+                ? "warning"
+                : "healthy",
           uptime: 99.9 + Math.random() * 0.1,
           responseTime: 50 + Math.random() * 200,
           lastCheck: now,
@@ -140,8 +142,8 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
             Math.random() > 0.95
               ? "error"
               : Math.random() > 0.8
-              ? "warning"
-              : "healthy",
+                ? "warning"
+                : "healthy",
           uptime: 99.5 + Math.random() * 0.5,
           responseTime: 20 + Math.random() * 100,
           lastCheck: now,
@@ -153,8 +155,8 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
             Math.random() > 0.9
               ? "error"
               : Math.random() > 0.6
-              ? "warning"
-              : "healthy",
+                ? "warning"
+                : "healthy",
           uptime: 99.8 + Math.random() * 0.2,
           responseTime: 30 + Math.random() * 150,
           lastCheck: now,
@@ -166,8 +168,8 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
             Math.random() > 0.9
               ? "error"
               : Math.random() > 0.7
-              ? "warning"
-              : "healthy",
+                ? "warning"
+                : "healthy",
           uptime: 99.7 + Math.random() * 0.3,
           responseTime: 40 + Math.random() * 120,
           lastCheck: now,
@@ -179,8 +181,8 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
             Math.random() > 0.95
               ? "error"
               : Math.random() > 0.8
-              ? "warning"
-              : "healthy",
+                ? "warning"
+                : "healthy",
           uptime: 99.6 + Math.random() * 0.4,
           responseTime: 25 + Math.random() * 80,
           lastCheck: now,
@@ -222,13 +224,13 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
   // Calculate overall system status
   const calculateOverallStatus = (
     metrics: SystemMetrics,
-    checks: HealthCheck[]
+    checks: HealthCheck[],
   ): "healthy" | "warning" | "critical" => {
     const serviceErrors = metrics.services.filter(
-      (s) => s.status === "error"
+      (s) => s.status === "error",
     ).length;
     const serviceWarnings = metrics.services.filter(
-      (s) => s.status === "warning"
+      (s) => s.status === "warning",
     ).length;
     const failedChecks = checks.filter((c) => c.status === "fail").length;
     const warningChecks = checks.filter((c) => c.status === "warning").length;
@@ -254,12 +256,44 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
 
   // Refresh system metrics
   const refreshMetrics = useCallback(async () => {
+    if (isRefreshingRef.current) return; // Prevent multiple simultaneous refreshes
+    isRefreshingRef.current = true;
     setIsRefreshing(true);
     try {
-      // In a real implementation, this would fetch from APIs
-      const newMetrics = generateMockMetrics();
-      const newChecks = generateMockHealthChecks();
-      const newStatus = calculateOverallStatus(newMetrics, newChecks);
+      // Fetch real health data from API
+      const response = await fetch("/api/health");
+      if (!response.ok) throw new Error("Failed to fetch health data");
+      const healthData = await response.json();
+
+      // Convert API response to component format
+      const newMetrics: SystemMetrics = {
+        cpu: {
+          usage: healthData.cpu_usage || 0,
+          temperature: healthData.cpu_temp || 0,
+          cores: healthData.cpu_cores || 8,
+        },
+        memory: {
+          used: healthData.memory_used || 0,
+          total: healthData.memory_total || 16,
+          percentage: healthData.memory_percent || 0,
+        },
+        disk: {
+          used: healthData.disk_used || 0,
+          total: healthData.disk_total || 512,
+          percentage: healthData.disk_percent || 0,
+        },
+        network: {
+          upload: healthData.network_upload || 0,
+          download: healthData.network_download || 0,
+          latency: healthData.network_latency || 0,
+        },
+        services: healthData.services || [],
+        uptime: healthData.uptime || 0,
+        lastUpdated: new Date(),
+      };
+
+      const newChecks: HealthCheck[] = healthData.checks || [];
+      const newStatus = healthData.overall_health || "healthy";
 
       setMetrics(newMetrics);
       setHealthChecks(newChecks);
@@ -284,6 +318,7 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
       });
     } finally {
       setIsRefreshing(false);
+      isRefreshingRef.current = false;
     }
   }, [onHealthChange, toast]);
 
@@ -403,7 +438,7 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
             <div className="flex items-center gap-4">
               <div
                 className={`flex items-center gap-2 ${getStatusColor(
-                  overallStatus
+                  overallStatus,
                 )}`}
               >
                 {getStatusIcon(overallStatus)}
@@ -583,7 +618,7 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
                           (metrics.memory.total - metrics.memory.used) *
                             1024 *
                             1024 *
-                            1024
+                            1024,
                         )}
                       </div>
                     </div>
@@ -611,7 +646,7 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
                           (metrics.disk.total - metrics.disk.used) *
                             1024 *
                             1024 *
-                            1024
+                            1024,
                         )}
                       </div>
                     </div>

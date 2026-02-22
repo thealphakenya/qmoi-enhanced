@@ -108,8 +108,8 @@ class QMOIAutoPush {
         }
       });
 
-      child.on("error", (error) => {
-        this.log(`Command error: ${error.message}`, "ERROR");
+      child.on("error", (_error) => {
+        this.log(`Command _error: ${error.message}`, "ERROR");
         if (retries < this.maxRetries) {
           this.log(`Retrying command in ${this.retryDelay}ms...`);
           setTimeout(() => {
@@ -118,7 +118,7 @@ class QMOIAutoPush {
               .catch(reject);
           }, this.retryDelay);
         } else {
-          reject({ error: error.message, code: -1 });
+          reject({ _error: error.message, code: -1 });
         }
       });
     });
@@ -171,7 +171,7 @@ class QMOIAutoPush {
         this.log(`Applying critical fix: ${fix.name}`);
         await this.runCommand(fix.command);
         this.log(`Critical fix applied: ${fix.name}`);
-      } catch (error) {
+      } catch (_error) {
         this.log(`Critical fix failed: ${fix.name} - ${error.message}`, "WARN");
         if (!fix.continueOnError) {
           throw error;
@@ -200,7 +200,7 @@ class QMOIAutoPush {
       } else {
         this.log("✅ No changes to commit");
       }
-    } catch (error) {
+    } catch (_error) {
       this.log(`Git status check failed: ${error.message}`, "ERROR");
       throw error;
     }
@@ -214,7 +214,7 @@ class QMOIAutoPush {
       await this.runCommand(`git push origin ${this.branch}`);
       this.log("✅ Successfully pushed to GitLab");
       return true;
-    } catch (error) {
+    } catch (_error) {
       this.log(`GitLab push failed: ${error.message}`, "ERROR");
       return false;
     }
@@ -232,7 +232,7 @@ class QMOIAutoPush {
       // Add GitHub remote if not exists
       try {
         await this.runCommand("git remote get-url github");
-      } catch {
+      } catch (e) {
         await this.runCommand(
           "git remote add github https://github.com/thealphakenya/Alpha-Q-ai.git",
         );
@@ -242,7 +242,7 @@ class QMOIAutoPush {
       await this.runCommand(`git push github ${this.branch}`);
       this.log("✅ Successfully pushed to GitHub");
       return true;
-    } catch (error) {
+    } catch (_error) {
       this.log(`GitHub push failed: ${error.message}`, "ERROR");
       return false;
     }
@@ -260,7 +260,7 @@ class QMOIAutoPush {
 
       this.log(`✅ Created backup branch: ${backupBranch}`);
       return backupBranch;
-    } catch (error) {
+    } catch (_error) {
       this.log(`Backup branch creation failed: ${error.message}`, "ERROR");
       return null;
     }
@@ -273,7 +273,7 @@ class QMOIAutoPush {
       await this.runCommand(`git push origin ${this.branch} --force`);
       this.log("✅ Force push successful");
       return true;
-    } catch (error) {
+    } catch (_error) {
       this.log(`Force push failed: ${error.message}`, "ERROR");
       return false;
     }
@@ -293,7 +293,7 @@ class QMOIAutoPush {
       );
 
       this.log("✅ Stakeholders notified");
-    } catch (error) {
+    } catch (_error) {
       this.log(`Notification failed: ${error.message}`, "ERROR");
     }
   }
@@ -345,14 +345,14 @@ class QMOIAutoPush {
         this.log("❌ QMOI Auto-Push failed!");
         throw new Error("All push attempts failed");
       }
-    } catch (error) {
+    } catch (_error) {
       this.log(`Auto-push failed: ${error.message}`, "ERROR");
 
       // Final fallback: create issue with error details
       try {
         await this.createGitLabIssue(
           "QMOI Auto-Push Failed",
-          `Auto-push failed with error: ${error.message}\n\nLogs: ${this.logFile}`,
+          `Auto-push failed with _error: ${error.message}\n\nLogs: ${this.logFile}`,
         );
       } catch (issueError) {
         this.log(`Failed to create issue: ${issueError.message}`, "ERROR");
@@ -369,7 +369,7 @@ class QMOIAutoPush {
     }
 
     try {
-      const response = await fetch(
+      const _response = await fetch(
         `${this.gitlabUrl}/api/v4/projects/${this.projectId}/issues`,
         {
           method: "POST",
@@ -396,7 +396,7 @@ class QMOIAutoPush {
         );
         return null;
       }
-    } catch (error) {
+    } catch (_error) {
       this.log(`Failed to create GitLab issue: ${error.message}`, "ERROR");
       return null;
     }
@@ -409,7 +409,7 @@ async function main() {
   try {
     await autoPush.runComprehensiveAutoPush();
     process.exit(0);
-  } catch (error) {
+  } catch (_error) {
     autoPush.log(`Main execution failed: ${error.message}`, "ERROR");
     process.exit(1);
   }

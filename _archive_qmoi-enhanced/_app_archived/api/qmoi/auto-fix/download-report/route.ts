@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
     // Check if latest report exists
     try {
       await fs.access(latestReportPath);
-    } catch {
+    } catch (e) {
       return NextResponse.json(
         { error: "No report available for download" },
         { status: 404 },

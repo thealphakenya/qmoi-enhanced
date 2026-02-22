@@ -26,26 +26,25 @@ const nextConfig = {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
       "@": rootDir,
-      "@/components": path.resolve(rootDir, "src/components"),
+      "@/components": path.resolve(rootDir, "components"),
       "@/app": path.resolve(rootDir, "app"),
       "@/services": path.resolve(rootDir, "src/services"),
+      "@/adapters": path.resolve(rootDir, "src/adapters"),
       "@/hooks": path.resolve(rootDir, "src/hooks"),
       "@/lib": path.resolve(rootDir, "lib"),
     };
 
     // Resolve modules from repo root and accept TS/TSX extensions explicitly
     config.resolve.modules = Array.from(
-      new Set([rootDir, "node_modules", ...(config.resolve.modules || [])])
+      new Set([rootDir, "node_modules", ...(config.resolve.modules || [])]),
     );
-    config.resolve.extensions = Array.from(
-      new Set([
-        ".ts",
-        ".tsx",
-        ".js",
-        ".jsx",
-        ...(config.resolve.extensions || []),
-      ])
-    );
+    config.resolve.extensions = [
+      ".ts",
+      ".tsx",
+      ".js",
+      ".jsx",
+      ...(config.resolve.extensions || []),
+    ];
 
     return config;
   },

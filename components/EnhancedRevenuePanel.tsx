@@ -99,7 +99,10 @@ export default function EnhancedRevenuePanel() {
         loadRevenueData();
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Master verification failed:", error);
+      (globalThis.console as any)?.error?.(
+        "Master verification failed:",
+        error,
+      );
     }
   };
 
@@ -118,7 +121,10 @@ export default function EnhancedRevenuePanel() {
         setTransactions(txData);
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to load revenue data:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to load revenue data:",
+        error,
+      );
     }
   };
 
@@ -247,7 +253,10 @@ export default function EnhancedRevenuePanel() {
         await loadRevenueData();
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to reset daily earnings:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to reset daily earnings:",
+        error,
+      );
     } finally {
       setLoading(false);
     }

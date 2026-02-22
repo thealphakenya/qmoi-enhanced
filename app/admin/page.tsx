@@ -3,11 +3,13 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import AdminDashboard from "@/app/components/AdminDashboard";
+import QMOIAutoFixDashboard from "@/app/components/QMOIAutoFixDashboard";
 
 export default function AdminPage() {
   const router = useRouter();
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState<"monitoring" | "autofix">("monitoring");
 
   useEffect(() => {
     const checkAdminStatus = async () => {
@@ -19,7 +21,7 @@ export default function AdminPage() {
         }
 
         // Verify admin access by trying to fetch monitoring dashboard
-        const response = await fetch("/api/admin/monitoring", {
+        const _response = await fetch("/api/admin/monitoring", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -33,8 +35,8 @@ export default function AdminPage() {
         } else {
           router.push("/login");
         }
-      } catch (error) {
-        console?.error?.("Error checking admin status:", error);
+      } catch (_error) {
+        console?.error?.("Error checking admin status:", _error);
         router.push("/login");
       } finally {
         setLoading(false);
@@ -71,28 +73,52 @@ export default function AdminPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation Bar */}
-      <nav className="bg-white shadow">
+      <nav className="bg-gradient-to-r from-gray-800 to-gray-900 shadow-lg border-b border-gray-700">
         <div className="max-w-7xl mx-auto px-8 py-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-gray-900">QMOI Admin</h1>
+          <div className="flex items-center justify-between mb-4">
+            <h1 className="text-3xl font-bold text-white">🔐 QMOI Master Control Panel</h1>
             <div className="flex items-center gap-4">
-              <span className="text-sm text-gray-600">Admin Panel</span>
+              <span className="text-sm text-gray-300">Master Access Level</span>
               <button
                 onClick={() => {
                   localStorage.removeItem("token");
                   window.location.href = "/login";
                 }}
-                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-sm"
+                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-sm font-medium"
               >
                 Logout
               </button>
             </div>
           </div>
+
+          {/* Tab Navigation */}
+          <div className="flex gap-4 border-b border-gray-600">
+            <button
+              onClick={() => setActiveTab("monitoring")}
+              className={`px-4 py-3 font-medium transition-colors ${
+                activeTab === "monitoring"
+                  ? "border-b-2 border-blue-500 text-blue-400"
+                  : "text-gray-400 hover:text-gray-300"
+              }`}
+            >
+              📊 Monitoring Dashboard
+            </button>
+            <button
+              onClick={() => setActiveTab("autofix")}
+              className={`px-4 py-3 font-medium transition-colors ${
+                activeTab === "autofix"
+                  ? "border-b-2 border-green-500 text-green-400"
+                  : "text-gray-400 hover:text-gray-300"
+              }`}
+            >
+              🔧 QMOI AutoFix System
+            </button>
+          </div>
         </div>
       </nav>
 
       {/* Main Content */}
-      <AdminDashboard />
+      {activeTab === "monitoring" ? <AdminDashboard /> : <QMOIAutoFixDashboard />}
     </div>
   );
 }

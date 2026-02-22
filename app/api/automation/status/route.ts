@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-/* global Request, Headers, Buffer, URLSearchParams, TextDecoder, TextEncoder */
-// NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(_request: NextRequest) {
@@ -45,10 +44,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(status);
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       {
-        error:
+        _error:
           error instanceof Error
             ? error.message
             : "Failed to get automation status",

@@ -135,11 +135,11 @@ export async function GET(request: NextRequest) {
     try {
       const lintLog = fs.readFileSync("logs/lint-errors.json", "utf-8");
       lintStatus = lintLog.includes("error") ? "failed" : "passed";
-    } catch {}
+    } catch (e) {}
     try {
       const testLog = fs.readFileSync("logs/auto-lint.log", "utf-8");
       testStatus = testLog.includes("FAIL") ? "failed" : "passed";
-    } catch {}
+    } catch (e) {}
 
     // Deployment status
     let deployStatus = "unknown";
@@ -147,7 +147,7 @@ export async function GET(request: NextRequest) {
       const deployLog = fs.readFileSync("logs/vercel_auto_deploy.log", "utf-8");
       if (deployLog.includes("successful")) deployStatus = "success";
       else if (deployLog.includes("failed")) deployStatus = "failed";
-    } catch {}
+    } catch (e) {}
 
     // TODO: Replace with actual component monitoring
     const components: AIComponentStatus[] = [
@@ -324,7 +324,10 @@ export async function POST(request: NextRequest) {
       { status: 400 },
     );
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error in AI health action endpoint:", error);
+    (globalThis.console as any)?.error?.(
+      "Error in AI health action endpoint:",
+      error,
+    );
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },

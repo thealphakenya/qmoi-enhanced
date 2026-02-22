@@ -120,15 +120,15 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
   useEffect(() => {
     document.documentElement.style.setProperty(
       "--font-family",
-      fontSettings.family
+      fontSettings.family,
     );
     document.documentElement.style.setProperty(
       "--font-size",
-      `${fontSettings.size}px`
+      `${fontSettings.size}px`,
     );
     document.documentElement.style.setProperty(
       "--font-weight",
-      fontSettings.weight
+      fontSettings.weight,
     );
   }, [fontSettings]);
 
@@ -140,7 +140,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
 
   const handleFontChange = (
     key: keyof FontSettings,
-    value: string | number
+    value: string | number,
   ) => {
     setFontSettings((prev) => ({ ...prev, [key]: value }));
   };
@@ -159,7 +159,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
 
   const handleAutomationChange = (
     key: keyof typeof automation,
-    value: boolean
+    value: boolean,
   ) => {
     setAutomation((prev) => ({ ...prev, [key]: value }));
   };
@@ -430,7 +430,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                       {
                         React.createElement(
                           FaNetworkWired as React.ElementType,
-                          { size: 20 }
+                          { size: 20 },
                         ) as React.ReactNode
                       }
                       {aiSettings.language === "sw"
@@ -598,7 +598,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                               checked={enabled}
                               onCheckedChange={() =>
                                 handleQmoiAppToggle(
-                                  app as keyof QmoiAppSettings
+                                  app as keyof QmoiAppSettings,
                                 )
                               }
                             />
@@ -607,16 +607,16 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                                 ? app === "browser"
                                   ? "Q-Kivinjari"
                                   : app === "dialer"
-                                  ? "Q-Simu"
-                                  : app === "messaging"
-                                  ? "Q-Ujumbe"
-                                  : app === "launcher"
-                                  ? "Q-Kuzindua"
-                                  : app === "keyboard"
-                                  ? "Q-Kibodi"
-                                  : app === "settings"
-                                  ? "Q-Mipangilio"
-                                  : app
+                                    ? "Q-Simu"
+                                    : app === "messaging"
+                                      ? "Q-Ujumbe"
+                                      : app === "launcher"
+                                        ? "Q-Kuzindua"
+                                        : app === "keyboard"
+                                          ? "Q-Kibodi"
+                                          : app === "settings"
+                                            ? "Q-Mipangilio"
+                                            : app
                                 : `Q-${
                                     app.charAt(0).toUpperCase() + app.slice(1)
                                   }`}
@@ -631,7 +631,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                               {
                                 React.createElement(
                                   FaSync as React.ElementType,
-                                  { className: "mr-1", size: 16 }
+                                  { className: "mr-1", size: 16 },
                                 ) as React.ReactNode
                               }
                               {aiSettings.language === "sw"
@@ -646,7 +646,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                               {
                                 React.createElement(
                                   FaDownload as React.ElementType,
-                                  { className: "mr-1", size: 16 }
+                                  { className: "mr-1", size: 16 },
                                 ) as React.ReactNode
                               }
                               {aiSettings.language === "sw"
@@ -661,8 +661,8 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                               ? "Imewezeshwa"
                               : "Enabled"
                             : aiSettings.language === "sw"
-                            ? "Imelazimishwa"
-                            : "Disabled"}
+                              ? "Imelazimishwa"
+                              : "Disabled"}
                         </Badge>
                       </div>
                     ))}
@@ -678,7 +678,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                         {
                           React.createElement(
                             FaUserShield as React.ElementType,
-                            { size: 20 }
+                            { size: 20 },
                           ) as React.ReactNode
                         }
                         {aiSettings.language === "sw" ? "Mkuu" : "Master"}

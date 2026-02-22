@@ -85,15 +85,15 @@ yarn lint:full              # Everything automated!
 
 ## 📊 Available Commands
 
-| Command               | What It Does                                |
-| --------------------- | ------------------------------------------- |
-| `yarn lint:auto`      | Complete auto-linting with smart fixes      |
-| `yarn lint:watch`     | Continuous file monitoring and auto-linting |
-| `yarn lint:smart`     | Apply intelligent fixes for complex errors  |
-| `yarn lint:report`    | Generate detailed HTML and JSON reports     |
-| `yarn lint:notify`    | Send notifications about errors             |
-| `yarn lint:full`      | Run auto-lint + notifications               |
-| `yarn lint:TODO_PROD [PRODUCTION: review and implement]` | TODO_PROD [PRODUCTION: review and implement]nstrate complete automation        |
+| Command                                                  | What It Does                                                            |
+| -------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `yarn lint:auto`                                         | Complete auto-linting with smart fixes                                  |
+| `yarn lint:watch`                                        | Continuous file monitoring and auto-linting                             |
+| `yarn lint:smart`                                        | Apply intelligent fixes for complex errors                              |
+| `yarn lint:report`                                       | Generate detailed HTML and JSON reports                                 |
+| `yarn lint:notify`                                       | Send notifications about errors                                         |
+| `yarn lint:full`                                         | Run auto-lint + notifications                                           |
+| `yarn lint:TODO_PROD [PRODUCTION: review and implement]` | TODO_PROD [PRODUCTION: review and implement]nstrate complete automation |
 
 ## 🔍 Error Categorization
 

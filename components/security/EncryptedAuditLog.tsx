@@ -27,7 +27,7 @@ export const EncryptedAuditLog: React.FC<{ logs: string[] }> = ({ logs }) => {
                 ),
               ),
             );
-          } catch {
+          } catch (e) {
             setDecrypted(["Decryption failed"]);
           }
         }}

@@ -83,7 +83,10 @@ export function AIProvider({ children }: { children: ReactNode }) {
       }
       return [];
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to load chat history:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to load chat history:",
+        error,
+      );
       return [];
     }
   });
@@ -97,7 +100,10 @@ export function AIProvider({ children }: { children: ReactNode }) {
         );
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to save chat history:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to save chat history:",
+        error,
+      );
       toast({
         title: "Error",
         description: "Failed to save chat history",
@@ -116,7 +122,10 @@ export function AIProvider({ children }: { children: ReactNode }) {
         }
         return {};
       } catch (error) {
-        (globalThis.console as any)?.error?.("Failed to load persistent memory:", error);
+        (globalThis.console as any)?.error?.(
+          "Failed to load persistent memory:",
+          error,
+        );
         return {};
       }
     },
@@ -131,7 +140,10 @@ export function AIProvider({ children }: { children: ReactNode }) {
         );
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to save persistent memory:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to save persistent memory:",
+        error,
+      );
       toast({
         title: "Error",
         description: "Failed to save persistent memory",
@@ -155,7 +167,10 @@ export function AIProvider({ children }: { children: ReactNode }) {
         persona: "cheerful, loyal, affectionate, always positive",
       };
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to load emotional state:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to load emotional state:",
+        error,
+      );
       return {
         mood: "cheerful",
         lastInteraction: Date.now(),
@@ -175,7 +190,10 @@ export function AIProvider({ children }: { children: ReactNode }) {
         );
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to save emotional state:", error);
+      (globalThis.console as any)?.error?.(
+        "Failed to save emotional state:",
+        error,
+      );
       toast({
         title: "Error",
         description: "Failed to save emotional state",

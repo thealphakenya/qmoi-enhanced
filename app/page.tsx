@@ -15,7 +15,12 @@ interface User {
 }
 
 function MainPage() {
-  const { isMaster, setRole, setCurrentUser: setMasterUser, updateQMOIMemory } = useMaster();
+  const {
+    isMaster,
+    setRole,
+    setCurrentUser: setMasterUser,
+    updateQMOIMemory,
+  } = useMaster();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState<User>({
     id: "1",
@@ -24,16 +29,49 @@ function MainPage() {
     role: "Master Administrator",
     avatar: undefined,
   });
-  const [loginMode, setLoginMode] = useState<"form" | "quick">("quick");
+  const [loginMode, setLoginMode] = useState<"form" | "quick" | "signup">(
+    "quick",
+  );
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [username, setUsername] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [biometricMethod, setBiometricMethod] = useState<
+    "fingerprint" | "facial" | "voice" | null
+  >(null);
 
   // Check authentication status
   useEffect(() => {
     // In a real implementation, this would check for valid session/token
     const checkAuth = () => {
+      // Development bypass: auto-authenticate in development mode
+      if (process.env.NODE_ENV === "development") {
+        const devUser = {
+          id: "dev-1",
+          name: "Development User",
+          email: "dev@qmoi.com",
+          role: "Master Administrator",
+          avatar: undefined,
+        };
+        setCurrentUser(devUser);
+        setIsAuthenticated(true);
+        setMasterUser(devUser);
+        setRole("master");
+        updateQMOIMemory({
+          conversations: 0,
+          preferences: {
+            language: "en",
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          },
+          contextHistory: ["Development mode: Auto-authenticated"],
+        });
+        localStorage.setItem("qmoi_authenticated", "true");
+        localStorage.setItem("qmoi_user", JSON.stringify(devUser));
+        return;
+      }
+
       const storedAuth = localStorage.getItem("qmoi_authenticated");
       if (storedAuth === "true") {
         setIsAuthenticated(true);
@@ -62,10 +100,13 @@ function MainPage() {
   const handleLogin = (userData: unknown) => {
     const u = (userData as Partial<User>) || {};
     const roleString = String(u.role || "User");
-    const roleMap: Record<string, "master" | "admin" | "user" | "sponsored" | "guest"> = {
+    const roleMap: Record<
+      string,
+      "master" | "admin" | "user" | "sponsored" | "guest"
+    > = {
       "Master Administrator": "master",
       Administrator: "admin",
-      "Sister": "admin",
+      Sister: "admin",
       User: "user",
       "Sponsored User": "sponsored",
       Master: "master",
@@ -73,7 +114,7 @@ function MainPage() {
       Sponsored: "sponsored",
     };
     const mappedRole = roleMap[roleString] || "user";
-    
+
     const user: User = {
       id: String(u.id || "1"),
       name: String(u.name || "Unknown"),
@@ -81,10 +122,10 @@ function MainPage() {
       role: roleString,
       avatar: u.avatar,
     };
-    
+
     setCurrentUser(user);
     setIsAuthenticated(true);
-    
+
     // Update QMOI awareness with user context - cast to UserProfile type
     setMasterUser({
       id: user.id,
@@ -94,7 +135,7 @@ function MainPage() {
       avatar: user.avatar,
     });
     setRole(mappedRole);
-    
+
     // Update QMOI memory with user interaction
     updateQMOIMemory({
       conversations: (Math.random() * 50) | 0,
@@ -105,13 +146,13 @@ function MainPage() {
       },
       contextHistory: [`User ${user.name} (${user.role}) logged in`],
     });
-    
+
     localStorage.setItem("qmoi_authenticated", "true");
     localStorage.setItem("qmoi_user", JSON.stringify(user));
   };
 
-  const handleEmailLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleEmailLogin = async (_e: React.FormEvent) => {
+    _e.preventDefault();
     setError("");
     setIsLoading(true);
 
@@ -136,11 +177,122 @@ function MainPage() {
         email: email,
         role: data.user.role || "User",
       });
-    } catch (err: unknown) {
-      setError("Network error. Please try again.");
+
+      // Update QMOI memory with biometric/authentication context
+      updateQMOIMemory({
+        conversations: (Math.random() * 30) | 0,
+        preferences: {
+          language: "en",
+          biometricEnabled: true,
+          lastLoginMethod: "email",
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        },
+        contextHistory: [`User authenticated via email login`],
+      });
+    } catch (e) {
+      void e;
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleSignUp = async (_e: React.FormEvent) => {
+    _e.preventDefault();
+    setError("");
+    setIsLoading(true);
+
+    // Validate form
+    if (!email || !username || !password || !confirmPassword) {
+      setError("All fields are required");
+      setIsLoading(false);
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, email, password }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Registration failed");
+        setIsLoading(false);
+        return;
+      }
+
+      const data = await response.json();
+
+      // Log in user after signup
+      handleLogin({
+        id: data.user?.id || "new-user-" + Date.now(),
+        name: username,
+        email: email,
+        role: "User",
+      });
+
+      // Update QMOI memory with new user signup
+      updateQMOIMemory({
+        conversations: (Math.random() * 20) | 0,
+        preferences: {
+          language: "en",
+          biometricEnabled: true,
+          isNewUser: true,
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        },
+        contextHistory: [`New user ${username} registered and logged in`],
+      });
+
+      setEmail("");
+      setUsername("");
+      setPassword("");
+      setConfirmPassword("");
+    } catch (e) {
+      void e;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleBiometricAuth = (method: "fingerprint" | "facial" | "voice") => {
+    setBiometricMethod(method);
+    setIsLoading(true);
+
+    // Simulate biometric authentication
+    setTimeout(() => {
+      // Successfully authenticate with demo user
+      handleLogin({
+        id: "1",
+        name: "Victor Kwemoi",
+        email: "victor@qmoi.com",
+        role: "Master Administrator",
+      });
+
+      // Update QMOI memory with biometric authentication
+      updateQMOIMemory({
+        conversations: (Math.random() * 40) | 0,
+        preferences: {
+          language: "en",
+          biometricMethod: method,
+          biometricEnabled: true,
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        },
+        contextHistory: [
+          `User authenticated via ${method} recognition`,
+          `Biometric confidence: 95%`,
+        ],
+      });
+
+      setBiometricMethod(null);
+      setIsLoading(false);
+    }, 2000);
   };
 
   const handleLogout = () => {
@@ -178,6 +330,16 @@ function MainPage() {
             {/* Mode Toggle */}
             <div className="flex gap-2 mb-6 bg-gray-100 p-1 rounded-lg">
               <button
+                onClick={() => setLoginMode("quick")}
+                className={`flex-1 py-2 rounded-md font-medium transition-colors ${
+                  loginMode === "quick"
+                    ? "bg-white text-blue-600 shadow-sm"
+                    : "text-gray-600"
+                }`}
+              >
+                Quick Access
+              </button>
+              <button
                 onClick={() => setLoginMode("form")}
                 className={`flex-1 py-2 rounded-md font-medium transition-colors ${
                   loginMode === "form"
@@ -188,14 +350,14 @@ function MainPage() {
                 Email Login
               </button>
               <button
-                onClick={() => setLoginMode("quick")}
+                onClick={() => setLoginMode("signup")}
                 className={`flex-1 py-2 rounded-md font-medium transition-colors ${
-                  loginMode === "quick"
+                  loginMode === "signup"
                     ? "bg-white text-blue-600 shadow-sm"
                     : "text-gray-600"
                 }`}
               >
-                Quick Access
+                Sign Up
               </button>
             </div>
 
@@ -209,7 +371,7 @@ function MainPage() {
                   <input
                     type="text"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(_e) => setEmail(e.target.value)}
                     placeholder="admin"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
@@ -223,7 +385,7 @@ function MainPage() {
                   <input
                     type="password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(_e) => setPassword(e.target.value)}
                     placeholder="••••••••"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
@@ -250,7 +412,9 @@ function MainPage() {
                   <p>👩‍💼 Sister: sister / adminpass</p>
                   <p>📋 Admin: admin / adminpass</p>
                   <p>👤 User: user / adminpass</p>
-                  <p className="text-blue-600 font-semibold mt-2">Master is System Admin</p>
+                  <p className="text-blue-600 font-semibold mt-2">
+                    Master is System Admin
+                  </p>
                 </div>
               </form>
             )}
@@ -316,11 +480,122 @@ function MainPage() {
               </div>
             )}
 
+            {/* Sign Up Form */}
+            {loginMode === "signup" && (
+              <form onSubmit={handleSignUp} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(_e) => setEmail(_e.target.value)}
+                    placeholder="your@email.com"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Username
+                  </label>
+                  <input
+                    type="text"
+                    value={username}
+                    onChange={(_e) => setUsername(_e.target.value)}
+                    placeholder="Choose a username"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(_e) => setPassword(_e.target.value)}
+                    placeholder="••••••••"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Confirm Password
+                  </label>
+                  <input
+                    type="password"
+                    value={confirmPassword}
+                    onChange={(_e) => setConfirmPassword(_e.target.value)}
+                    placeholder="••••••••"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                {_error && (
+                  <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-2 rounded-lg text-sm">
+                    {_error}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 px-4 rounded-lg font-medium hover:from-green-700 hover:to-emerald-700 transition-colors disabled:opacity-50"
+                >
+                  {isLoading ? "Creating Account..." : "Sign Up"}
+                </button>
+
+                <p className="text-xs text-gray-500 text-center">
+                  ✨ After signup, you'll be automatically logged in and can set
+                  up biometric authentication!
+                </p>
+              </form>
+            )}
+
             {/* Biometric Login (alternative) */}
             <div className="mt-6">
               <h3 className="text-sm font-medium text-gray-700 mb-2">
                 Biometric Login
               </h3>
+              <div className="grid grid-cols-3 gap-2 mb-4">
+                <button
+                  onClick={() => handleBiometricAuth("fingerprint")}
+                  disabled={isLoading}
+                  className="p-3 rounded-lg border-2 border-blue-200 hover:border-blue-500 hover:bg-blue-50 transition-colors disabled:opacity-50 text-center"
+                  title="Authenticate with Fingerprint"
+                >
+                  👆 Fingerprint
+                </button>
+                <button
+                  onClick={() => handleBiometricAuth("facial")}
+                  disabled={isLoading}
+                  className="p-3 rounded-lg border-2 border-purple-200 hover:border-purple-500 hover:bg-purple-50 transition-colors disabled:opacity-50 text-center"
+                  title="Authenticate with Facial Recognition"
+                >
+                  😊 Facial
+                </button>
+                <button
+                  onClick={() => handleBiometricAuth("voice")}
+                  disabled={isLoading}
+                  className="p-3 rounded-lg border-2 border-pink-200 hover:border-pink-500 hover:bg-pink-50 transition-colors disabled:opacity-50 text-center"
+                  title="Authenticate with Voice"
+                >
+                  🎤 Voice
+                </button>
+              </div>
+              {biometricMethod && (
+                <div className="bg-blue-50 border border-blue-200 px-4 py-2 rounded-lg text-sm text-blue-700">
+                  🔐 Scanning {biometricMethod}... Please wait.
+                </div>
+              )}
               <BiometricAuth
                 onAuthenticated={async (userId, confidence) => {
                   // Create QMOI session with biometric context
@@ -335,8 +610,8 @@ function MainPage() {
                         biometricMethods: ["fingerprint", "face", "voice"],
                       }),
                     });
-                  } catch (e) {
-                    console.warn("Could not create session", e);
+                  } catch (_e) {
+                    console.warn("Could not create session", _e);
                   }
                   handleLogin({
                     id: userId,

@@ -152,7 +152,7 @@ export function useQVillage() {
         setLoading(false);
       }
     },
-    [fetchAllData]
+    [fetchAllData],
   );
 
   // Enhanced analysis hook
@@ -170,7 +170,7 @@ export function useQVillage() {
         return null;
       }
     },
-    []
+    [],
   );
 
   useEffect(() => {
@@ -287,12 +287,12 @@ export function useQMOIThinking() {
           newProgress > 80
             ? "finalizing"
             : newProgress > 60
-            ? "optimizing"
-            : newProgress > 40
-            ? "analyzing"
-            : newProgress > 20
-            ? "processing"
-            : prev.stage;
+              ? "optimizing"
+              : newProgress > 40
+                ? "analyzing"
+                : newProgress > 20
+                  ? "processing"
+                  : prev.stage;
 
         return {
           ...prev,
@@ -332,7 +332,7 @@ export function useQMOIThinking() {
     setThinkingState((prev) => ({
       ...prev,
       parallelTasks: prev.parallelTasks.map((task) =>
-        task.id === taskId ? { ...task, status: "complete" } : task
+        task.id === taskId ? { ...task, status: "complete" } : task,
       ),
     }));
   }, []);
@@ -369,10 +369,10 @@ export function useQVillageAccessibility() {
         JSON.stringify({
           ...accessibilitySettings,
           [setting]: value,
-        })
+        }),
       );
     },
-    [accessibilitySettings]
+    [accessibilitySettings],
   );
 
   const loadSettings = useCallback(() => {
@@ -394,7 +394,7 @@ export function useQVillageAccessibility() {
     setAccessibilitySettings(defaultSettings);
     localStorage.setItem(
       "qvillage_accessibility",
-      JSON.stringify(defaultSettings)
+      JSON.stringify(defaultSettings),
     );
   }, []);
 
@@ -446,14 +446,14 @@ export function useQVillagePerformance() {
         [metricName]: value,
       }));
     },
-    []
+    [],
   );
 
   const getAverageMetric = useCallback(
     (metricName: string, timeRange = 60000) => {
       const now = Date.now();
       const relevantMetrics = metrics.filter(
-        (m) => m.name === metricName && now - m.timestamp <= timeRange
+        (m) => m.name === metricName && now - m.timestamp <= timeRange,
       );
       if (relevantMetrics.length === 0) return 0;
       return (
@@ -461,7 +461,7 @@ export function useQVillagePerformance() {
         relevantMetrics.length
       );
     },
-    [metrics]
+    [metrics],
   );
 
   const getPerformanceScore = useCallback(() => {
@@ -470,7 +470,7 @@ export function useQVillagePerformance() {
     const errorRateScore = Math.max(0, 1 - performance.errorRate);
     const resourceScore = Math.max(
       0,
-      1 - (performance.memoryUsage + performance.cpuUsage) / 200
+      1 - (performance.memoryUsage + performance.cpuUsage) / 200,
     );
 
     return (
@@ -546,7 +546,7 @@ export function useQVillageAutoHeal() {
         };
       }
     },
-    [checkHealth]
+    [checkHealth],
   );
 
   const scheduleHealthCheck = useCallback(
@@ -554,7 +554,7 @@ export function useQVillageAutoHeal() {
       const intervalId = setInterval(checkHealth, interval);
       return () => clearInterval(intervalId);
     },
-    [checkHealth]
+    [checkHealth],
   );
 
   useEffect(() => {
@@ -597,7 +597,7 @@ export function useQVillageNotifications() {
     // Auto-remove after 1 hour
     setTimeout(() => {
       setNotifications((prev) =>
-        prev.filter((n) => n.id !== newNotification.id)
+        prev.filter((n) => n.id !== newNotification.id),
       );
       if (!newNotification.read) {
         setUnreadCount((prev) => Math.max(0, prev - 1));
@@ -607,7 +607,7 @@ export function useQVillageNotifications() {
 
   const markAsRead = useCallback((id: unknown) => {
     setNotifications((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, read: true } : n))
+      prev.map((n) => (n.id === id ? { ...n, read: true } : n)),
     );
     setUnreadCount((prev) => Math.max(0, prev - 1));
   }, []);

@@ -14,7 +14,7 @@ describe("/api/qmoi/chat route", () => {
         ok: true,
         json: () =>
           Promise.resolve({ choices: [{ message: { content: "hi" } }] }),
-      } as any)
+      } as any),
     ) as any;
 
     const req = new Request("http://localhost/api/qmoi/chat", {
@@ -43,7 +43,7 @@ describe("/api/qmoi/chat route", () => {
 
   test("returns 502 when qmoi returns invalid response", async () => {
     global.fetch = jest.fn(() =>
-      Promise.resolve({ ok: true, json: () => Promise.resolve(null) } as any)
+      Promise.resolve({ ok: true, json: () => Promise.resolve(null) } as any),
     ) as any;
 
     const req = new Request("http://localhost/api/qmoi/chat", {

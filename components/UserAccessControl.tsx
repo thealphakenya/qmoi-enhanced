@@ -59,19 +59,19 @@ interface AccessControlContextType {
   checkPermission: (permission: string) => boolean;
   updateUserPermissions: (
     userId: string,
-    permissions: string[]
+    permissions: string[],
   ) => Promise<void>;
 }
 
 const AccessControlContext = createContext<AccessControlContextType | null>(
-  null
+  null,
 );
 
 export const useAccessControl = () => {
   const context = useContext(AccessControlContext);
   if (!context) {
     throw new Error(
-      "useAccessControl must be used within an AccessControlProvider"
+      "useAccessControl must be used within an AccessControlProvider",
     );
   }
   return context;
@@ -109,7 +109,7 @@ export const AccessControlProvider: React.FC<AccessControlProviderProps> = ({
 
   const authenticate = async (
     userId: string,
-    method: string
+    method: string,
   ): Promise<boolean> => {
     const user = users.find((u) => u.id === userId);
     if (!user || user.accountStatus !== "active") {
@@ -143,7 +143,7 @@ export const AccessControlProvider: React.FC<AccessControlProviderProps> = ({
 
   const updateUserPermissions = async (
     userId: string,
-    permissions: string[]
+    permissions: string[],
   ): Promise<void> => {
     if (!checkPermission("admin")) {
       throw new Error("Insufficient permissions");
@@ -151,8 +151,8 @@ export const AccessControlProvider: React.FC<AccessControlProviderProps> = ({
 
     setUsers((prevUsers) =>
       prevUsers.map((user) =>
-        user.id === userId ? { ...user, permissions } : user
-      )
+        user.id === userId ? { ...user, permissions } : user,
+      ),
     );
   };
 
@@ -411,8 +411,8 @@ export const UserAccessControl: React.FC<UserAccessControlProps> = ({
                                   } else {
                                     setNewPermissions(
                                       newPermissions.filter(
-                                        (p) => p !== permission
-                                      )
+                                        (p) => p !== permission,
+                                      ),
                                     );
                                   }
                                 }}
@@ -422,7 +422,7 @@ export const UserAccessControl: React.FC<UserAccessControlProps> = ({
                                 {permission}
                               </span>
                             </label>
-                          )
+                          ),
                         )}
                       </div>
                     </div>
@@ -481,7 +481,7 @@ export const UserAccessControl: React.FC<UserAccessControlProps> = ({
                 {Math.round(
                   (users.reduce((acc, u) => acc + u.trustScore, 0) /
                     users.length) *
-                    100
+                    100,
                 )}
               </div>
               <div className="text-sm text-gray-600">Avg Trust Score</div>

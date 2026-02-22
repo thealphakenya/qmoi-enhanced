@@ -13,7 +13,11 @@ function walk(dir, files = []) {
     const p = path.join(dir, _e.name);
     if (_e.isDirectory()) {
       // skip node_modules and .git
-      if (_e.name === "node_modules" || _e.name === ".git" || _e.name === ".next")
+      if (
+        _e.name === "node_modules" ||
+        _e.name === ".git" ||
+        _e.name === ".next"
+      )
         continue;
       walk(p, files);
     } else if (targetExt.has(path.extname(_e.name))) {
@@ -40,7 +44,7 @@ const _params = [
 const paramsPattern = _params.join("|");
 const paramsRe = new RegExp(
   "([\\(\\[,\\s])(" + paramsPattern + ")(?=\\s*[:,\\)\\]\\=])",
-  "g"
+  "g",
 );
 
 function processFile(file) {
@@ -75,7 +79,7 @@ function main() {
     try {
       if (processFile(f)) changed++;
     } catch (_err) {
-      (console as any).error("error processing", f, _err && _err.message);
+      console.error("error processing", f, _err && _err.message);
     }
   }
   console.log(`Scanned ${files.length} files, modified ${changed} files.`);
