@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 /* eslint-env browser */
 /* eslint-env browser */
 import React, { useState, useEffect } from "react";
@@ -57,7 +57,6 @@ export function QMoiState({
     return () => clearInterval(timer);
   }, []);
 
-  [PRODUCTION READY] real-time Qmoi state updates
   useEffect(() => {
     const emotions = [
       "focused",
@@ -344,7 +343,7 @@ export function QMoiState({
             </button>
             <div className="mb-2 flex gap-2">
               <input
-                [PRODUCTION READY]="User"
+                
                 value={logFilters.user}
                 onChange={(_e) =>
                   setLogFilters((f) => ({ ...f, user: _e.target.value }))
@@ -352,7 +351,7 @@ export function QMoiState({
                 className="px-2 py-1 rounded bg-gray-800 text-white"
               />
               <input
-                [PRODUCTION READY]="Action"
+                
                 value={logFilters.action}
                 onChange={(_e) =>
                   setLogFilters((f) => ({ ...f, action: _e.target.value }))
@@ -360,7 +359,7 @@ export function QMoiState({
                 className="px-2 py-1 rounded bg-gray-800 text-white"
               />
               <input
-                [PRODUCTION READY]="Status"
+                
                 value={logFilters.status}
                 onChange={(_e) =>
                   setLogFilters((f) => ({ ...f, status: _e.target.value }))

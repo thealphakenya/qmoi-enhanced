@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """
 complete, robust helper server used by tests and local development.
 
@@ -36,14 +36,12 @@ BASE_DIR = Path(__file__).resolve().parent
 MEMORY_FILE = Path(os.environ.get("QMOI_MEMORY_FILE", str(BASE_DIR / "qmoi_memory.json")))
 QMOI_SYNC_API_KEY = os.environ.get("QMOI_SYNC_API_KEY")
 
-
 def atomic_write_json(path: Path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile(mode="w", delete=False, dir=str(path.parent), encoding="utf-8") as tf:
         tf.write(json.dumps(data, ensure_ascii=False, indent=2))
         tmp = tf.name
     os.replace(tmp, str(path))
-
 
 @APP.after_request
 def add_cors_headers(response):
@@ -52,11 +50,9 @@ def add_cors_headers(response):
     response.headers["Access-Control-Allow-Headers"] = "Content-Type,Authorization"
     return response
 
-
 @APP.route("/", methods=["GET"])
 def index():
     return jsonify({"ok": True, "msg": "qmoi_local_server running"})
-
 
 @APP.route("/v1/chat/completions", methods=["POST", "OPTIONS"])
 def chat_completions():
@@ -133,7 +129,6 @@ def chat_completions():
     }
     return jsonify(response)
 
-
 @APP.route("/sync/push", methods=["POST", "OPTIONS"])
 def sync_push():
     if request.method == "OPTIONS":
@@ -150,7 +145,6 @@ def sync_push():
     except Exception as e:
         return make_response(jsonify({"error": "failed to save", "details": str(e)}), 500)
     return jsonify({"ok": True})
-
 
 def push_memory_to_backends(memory: dict):
     """Compatibility shim so other scripts/tests can call this directly.
@@ -227,7 +221,6 @@ def push_memory_to_backends(memory: dict):
 
     return overall_ok, details
 
-
 def pull_memory_from_backends():
     backends = os.environ.get('QMOI_SYNC_BACKENDS')
     if not backends:
@@ -274,7 +267,6 @@ def pull_memory_from_backends():
 
     return None
 
-
 @APP.route("/sync/pull", methods=["GET", "OPTIONS"])
 def sync_pull():
     if request.method == "OPTIONS":
@@ -292,13 +284,11 @@ def sync_pull():
         data = {}
     return jsonify(data)
 
-
 @APP.route('/health', methods=['GET', 'OPTIONS'])
 def health():
     if request.method == 'OPTIONS':
         return _ok_options()
     return jsonify({'status': 'ok', 'model': 'qmoi'})
-
 
 @APP.route('/memory', methods=['GET'])
 def memory():
@@ -311,14 +301,12 @@ def memory():
         data = {'conversations': []}
     return jsonify(data)
 
-
 def _ok_options():
     resp = make_response("", 204)
     resp.headers["Access-Control-Allow-Origin"] = "*"
     resp.headers["Access-Control-Allow-Methods"] = "GET,POST,OPTIONS"
     resp.headers["Access-Control-Allow-Headers"] = "Content-Type,Authorization"
     return resp
-
 
 def run(port: int = 8081, host: str | None = None):
     """Run the Flask helper app; provided for test runners that call `run()`.
@@ -329,7 +317,6 @@ def run(port: int = 8081, host: str | None = None):
     """
     bind_host = host or os.environ.get("QMOI_HELPER_HOST", "127.0.0.1")
     APP.run(host=bind_host, port=port)
-
 
 class _BackgroundFlaskServer(threading.Thread):
     def __init__(self, host: str, port: int):
@@ -344,7 +331,6 @@ class _BackgroundFlaskServer(threading.Thread):
             self._srv.serve_forever()
         except Exception:
             return
-
 
 # Auto-start a local helper server on import for test environments unless turned off
 if os.environ.get('QMOI_HELPER_AUTOSTART', '1') == '1':
@@ -375,7 +361,6 @@ if os.environ.get('QMOI_HELPER_AUTOSTART', '1') == '1':
     except Exception:
         # Best effort: do not raise on import
         pass
-
 
 if __name__ == '__main__':
     os.makedirs(os.path.dirname(MEMORY_FILE), exist_ok=True)

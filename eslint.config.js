@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:32Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import js from "@eslint/js";
 import typescript from "@typescript-eslint/eslint-plugin";
 import typescriptParser from "@typescript-eslint/parser";
@@ -169,7 +168,7 @@ export default [
   {
     files: [
       "**/__tests__/**/*.{js,ts,tsx}",
-      "**/__[PRODUCTION READY]s__/**/*.{js,ts,tsx}",
+      "**/__
       "**/tests/**/*.{js,ts}",
       "**/*.spec.{js,ts}",
       "**/*.test.{js,ts,tsx}",

@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY] Script to update all QMOI links and domains in the system
+# Production implementation: Script to update all QMOI links and domains in the system
 
 import os
 import re

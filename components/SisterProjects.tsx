@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -182,14 +181,14 @@ export function SisterProjects() {
           {isCreating && (
             <div className="mb-4 p-4 border rounded-lg space-y-3">
               <Input
-                [PRODUCTION READY]="Project Title"
+                
                 value={newProject.title}
                 onChange={(e) =>
                   setNewProject((prev) => ({ ...prev, title: e.target.value }))
                 }
               />
               <Textarea
-                [PRODUCTION READY]="Project Description"
+                
                 value={newProject.description}
                 onChange={(e) =>
                   setNewProject((prev) => ({

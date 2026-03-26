@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 1 
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -53,7 +53,6 @@ const UserSchema = z.object({
   createdAt: z.number().default(() => Date.now()),
 });
 
-[PRODUCTION READY] database (replace with actual database)
 const employees: unknown[] = [];
 const users: unknown[] = [];
 const employmentLogs: unknown[] = [];

@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 QMOI Central Link Validator & Sync System
@@ -39,7 +38,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-
 @dataclass
 class LinkValidationResult:
     """Result of validating a single link"""
@@ -59,7 +57,6 @@ class LinkValidationResult:
             self.timestamp = datetime.now().isoformat()
         if self.regions_checked is None:
             self.regions_checked = []
-
 
 @dataclass
 class DomainRegistry:
@@ -167,7 +164,6 @@ class DomainRegistry:
                 "status": "active"
             },
         }
-
 
 class CentralLinkValidator:
     """Central link validator for QMOI codebase"""
@@ -616,7 +612,6 @@ class CentralLinkValidator:
         except Exception as e:
             logger.debug(f"Track creation failed: {e}")
 
-
 def main():
     """Main entry point"""
     logger.info("QMOI Central Link Validator Starting...")
@@ -672,7 +667,6 @@ def main():
     logger.info("QMOI Central Link Validator Completed")
 
     return result
-
 
 if __name__ == "__main__":
     result = main()

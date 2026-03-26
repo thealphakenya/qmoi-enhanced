@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 "use client";
 import React, { useState } from "react";
 
@@ -49,13 +48,13 @@ export const AutomationRulesPanel: React.FC = () => {
       </ul>
       <div style={{ marginTop: 12 }}>
         <input
-          [PRODUCTION READY]="Trigger (event type)"
+          
           value={trigger}
           onChange={(e) => setTrigger(e.target.value)}
           style={{ marginRight: 8 }}
         />
         <input
-          [PRODUCTION READY]="Action (e.g., notify, offload)"
+          
           value={action}
           onChange={(e) => setAction(e.target.value)}
           style={{ marginRight: 8 }}

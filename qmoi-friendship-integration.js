@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 // QMOI Friendship Integration System - GitLab & Vercel Integration
 // This module handles automated deployment, error fixing, and system optimization
 
@@ -177,7 +176,7 @@ class QMOIFriendshipIntegration {
   }
 
   async createVercelDeployment() {
-    // Safe-by-default: if no Vercel token or running in dry-run, return a [PRODUCTION READY]ed deployment object
+    // Safe-by-default: if no Vercel token or running in dry-run, return a 
     const dryRun =
       !process.env.PRODUCTION_CONFIRMED ||
       process.argv.indexOf("--real") === -1;
@@ -186,11 +185,11 @@ class QMOIFriendshipIntegration {
       console.warn(
         "⚠️ Vercel token not provided; returning dry-run deployment object",
       );
-      return { id: `[PRODUCTION READY]-${Date.now()}`, url: null, dryRun: true };
+      return { id: `
     }
 
     if (dryRun) {
-      // Do not push files to Vercel in dry-run; return a [PRODUCTION READY]d response.
+      // Do not push files to Vercel in dry-run; return a 
       return { id: `dryrun-${Date.now()}`, url: null, dryRun: true };
     }
 

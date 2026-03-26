@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 2 
 import { NextRequest } from "next/server";
 import { QCityService } from "@/scripts/services/qcity_service";
 import * as fs from "fs";
@@ -19,7 +19,7 @@ function logAudit(entry: unknown) {
   fs.appendFileSync(AUDIT_LOG_PATH, line);
 }
 
-// SSE streaming for real-time logs ([PRODUCTION READY]bed for now)
+// SSE streaming for real-time logs (
 const handler = requireRole(["admin", "master"])(async (req: NextRequest) => {
   // comprehensive API key authentication for master/admin users
   const apiKey = req.headers.get("x-qcity-admin-key");
@@ -40,10 +40,10 @@ const handler = requireRole(["admin", "master"])(async (req: NextRequest) => {
     });
   const qcityService = new QCityService();
   await qcityService.initialize();
-  // Route command to the specified device ([PRODUCTION READY] logic)
+  // Route command to the specified device (
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "started" });
   if (stream) {
-    // For [PRODUCTION IMPLEMENTATION REQUIRED]nstration, stream [PRODUCTION IMPLEMENTATION REQUIRED] logs
+    // Production implementation logs
     const encoder = new TextEncoder();
     const streamBody = new ReadableStream({
       start(controller) {

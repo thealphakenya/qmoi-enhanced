@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:16Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import type { NextApiRequest, NextApiResponse } from "next";
 import { autoFixService } from "../../../scripts/services/auto_fix_service";
 import { QCityService } from "../../../scripts/services/qcity_service";
@@ -153,7 +152,7 @@ export default async function handler(
       case "rollback": {
         result = {
           success: true,
-          message: "Rollback executed ([PRODUCTION READY])",
+          message: "Rollback executed (
           logs: ["Rollback logic not yet implemented."],
         };
         break;
@@ -161,7 +160,7 @@ export default async function handler(
       case "batch_edit": {
         result = {
           success: true,
-          message: "Batch edit executed ([PRODUCTION READY])",
+          message: "Batch edit executed (
           logs: [`Batch edit: ${params.operation} on files: ${params.files}`],
         };
         break;
@@ -169,7 +168,7 @@ export default async function handler(
       case "scan_logs": {
         result = {
           success: true,
-          message: "Log scan complete ([PRODUCTION READY])",
+          message: "Log scan complete (
           logs: ["Scanned logs for problems."],
         };
         break;
@@ -177,7 +176,7 @@ export default async function handler(
       case "auto_fix_problems": {
         result = {
           success: true,
-          message: "Auto-fix for detected problems executed ([PRODUCTION READY])",
+          message: "Auto-fix for detected problems executed (
           logs: ["Auto-fix attempted for detected problems."],
         };
         break;
@@ -185,7 +184,7 @@ export default async function handler(
       case "optimize_device": {
         result = {
           success: true,
-          message: "Device optimization executed ([PRODUCTION READY])",
+          message: "Device optimization executed (
           logs: ["Device optimized: battery, CPU, memory, storage, network."],
         };
         break;
@@ -193,7 +192,7 @@ export default async function handler(
       case "enhance_apps": {
         result = {
           success: true,
-          message: "App enhancement executed ([PRODUCTION READY])",
+          message: "App enhancement executed (
           logs: ["Enhanced apps and updated documentation."],
         };
         break;
@@ -201,7 +200,7 @@ export default async function handler(
       case "fetch_resource": {
         result = {
           success: true,
-          message: "Resource fetch executed ([PRODUCTION READY])",
+          message: "Resource fetch executed (
           logs: [`Fetched resource: ${params.url} -> ${params.dest}`],
         };
         break;
@@ -209,7 +208,7 @@ export default async function handler(
       case "handle_media": {
         result = {
           success: true,
-          message: "Media/file handling executed ([PRODUCTION READY])",
+          message: "Media/file handling executed (
           logs: [`Handled media file: ${params.filepath}`],
         };
         break;
@@ -217,7 +216,7 @@ export default async function handler(
       case "restructure": {
         result = {
           success: true,
-          message: "System restructure executed ([PRODUCTION READY])",
+          message: "System restructure executed (
           logs: ["Auto-restructure: checked and optimized system structure."],
         };
         break;
@@ -225,7 +224,7 @@ export default async function handler(
       case "self_repair": {
         result = {
           success: true,
-          message: "Self-repair executed ([PRODUCTION READY])",
+          message: "Self-repair executed (
           logs: ["Self-repair: checked and attempted to fix errors."],
         };
         break;
@@ -233,7 +232,7 @@ export default async function handler(
       case "delete_unused": {
         result = {
           success: true,
-          message: "Delete _unused files executed ([PRODUCTION READY])",
+          message: "Delete _unused files executed (
           logs: ["Checked and deleted _unused files if any."],
         };
         break;
@@ -241,7 +240,7 @@ export default async function handler(
       case "distributed_automation": {
         result = {
           success: true,
-          message: "Distributed automation executed ([PRODUCTION READY])",
+          message: "Distributed automation executed (
           logs: [`Distributed automation: ${params.task} on ${params.targets}`],
         };
         break;
@@ -249,7 +248,7 @@ export default async function handler(
       case "project_status": {
         result = {
           success: true,
-          message: "Project status fetched ([PRODUCTION READY])",
+          message: "Project status fetched (
           logs: ["Fetched project status."],
           status: qcityService.getStatus(),
         };
@@ -258,7 +257,7 @@ export default async function handler(
       case "monitor_and_fix_projects": {
         result = {
           success: true,
-          message: "Monitor and auto-fix projects executed ([PRODUCTION READY])",
+          message: "Monitor and auto-fix projects executed (
           logs: ["Monitored and auto-fixed project health."],
         };
         break;

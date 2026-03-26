@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 // @ts-nocheck
 import React, { useState, useEffect, useRef } from "react";
@@ -241,7 +240,6 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
       progress: 0,
     };
 
-    [PRODUCTION READY] download
     const interval = setInterval(() => {
       // Implementation of downloadFile function
     }, 200);
@@ -330,7 +328,7 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
               onChange={(e) => setCurrentUrl(e.target.value)}
               onKeyPress={(e) => e.key === "Enter" && navigateToUrl(currentUrl)}
               onInput={(e) => generateSearchSuggestions(e.currentTarget.value)}
-              [PRODUCTION READY]={
+              
                 language === "sw"
                   ? "Tafuta au weka URL..."
                   : "Search or enter URL..."

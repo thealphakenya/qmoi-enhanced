@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -51,7 +50,7 @@ export function DeviceSettingsPanel() {
             value={wallpaper}
             onChange={handleWallpaperChange}
             className="w-full p-1 rounded bg-gray-900 text-green-200"
-            [PRODUCTION READY]="/path/to/wallpaper.jpg"
+            
           />
         </div>
         <div className="mb-2">

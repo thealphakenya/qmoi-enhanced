@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:51Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 tools/triage_link_issues.py
@@ -22,19 +21,16 @@ from urllib import request, parse
 REPO = os.environ.get('GITHUB_REPOSITORY', 'thealphakenya/qmoi-enhanced')
 TOKEN = os.environ.get('GITHUB_TOKEN')
 
-
 def load_report(path='tools/dns_links_report.json'):
     if not os.path.exists(path):
         print('Report required:', path); sys.exit(1)
     return json.load(open(path, 'r', encoding='utf-8'))
-
 
 def get_open_link_issues():
     url = f'https://api.github.com/repos/{REPO}/issues?state=open&labels=auto/link-check&per_page=200'
     req = request.Request(url, headers={'Authorization': f'token {TOKEN}', 'Accept': 'application/vnd.github+json'})
     with request.urlopen(req, timeout=15) as resp:
         return json.load(resp)
-
 
 def comment_and_close(issue_number, comment):
     comment_url = f'https://api.github.com/repos/{REPO}/issues/{issue_number}/comments'
@@ -47,7 +43,6 @@ def comment_and_close(issue_number, comment):
     req = request.Request(close_url, data=data, method='PATCH', headers={'Authorization': f'token {TOKEN}', 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json'})
     with request.urlopen(req, timeout=15) as resp:
         return json.load(resp)
-
 
 def main():
     if not TOKEN:
@@ -87,7 +82,6 @@ def main():
             print('Failed to close issue', num, e)
 
     print('Done. Closed issues:', closed)
-
 
 if __name__ == '__main__':
     main()

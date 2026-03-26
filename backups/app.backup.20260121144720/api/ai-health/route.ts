@@ -1,7 +1,7 @@
-[PRODUCTION READY] all markers normalized for completion
+
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 13 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 13 
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import { requireApiKey } from "../../../lib/proposals";
@@ -88,7 +88,6 @@ export async function GET(_request: NextRequest) {
     const searchParams = _request.nextUrl.searchParams;
     const detailed = searchParams.get("detailed") === "true";
 
-    [PRODUCTION READY] health metrics
     const Metrics: AIHealthMetrics = {
       cpu: {
         usage: 45.2,
@@ -162,7 +161,6 @@ export async function GET(_request: NextRequest) {
       else if (deployLog.includes("failed")) deployStatus = "failed";
     } catch (e) { void e; }
 
-    [PRODUCTION READY] component statuses
     const Components: AIComponentStatus[] = [
       {
         name: "QMOI Model",
@@ -239,7 +237,6 @@ export async function GET(_request: NextRequest) {
       },
     ];
 
-    [PRODUCTION READY] alerts
     const Alerts = [
       {
         level: "warning" as const,
@@ -302,7 +299,6 @@ export async function POST(_request: NextRequest) {
         );
       }
 
-      [PRODUCTION READY] component check - replace with actual implementation
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       return NextResponse.json({
@@ -328,7 +324,6 @@ export async function POST(_request: NextRequest) {
         );
       }
 
-      [PRODUCTION READY] settings update - replace with actual implementation
       await new Promise((resolve) => setTimeout(resolve, 800));
 
       return NextResponse.json({

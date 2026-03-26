@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+
 #!/bin/bash
 set -e
 APP_NAME="qmoi_ai"

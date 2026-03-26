@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 "use client";
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -120,14 +120,14 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
         </h4>
         <div className="flex gap-2 mb-2">
           <Input
-            [PRODUCTION READY]="Time (_e.g. 10:00)"
+            
             value={newProgram.time}
             onChange={(_e) =>
               setNewProgram((np) => ({ ...np, time: _e.target.value }))
             }
           />
           <Input
-            [PRODUCTION READY]="Title"
+            
             value={newProgram.title}
             onChange={(_e) =>
               setNewProgram((np) => ({ ...np, title: _e.target.value }))

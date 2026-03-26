@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:55Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 Link Validation Script - Discover and analyze all URLs in the codebase
@@ -58,7 +57,6 @@ KNOWN_DOMAINS = {
     'qvillage.net',  # fallback
     'localhost', '127.0.0.1', '0.0.0.0'
 }
-
 
 class LinkValidator:
     def __init__(self):
@@ -350,7 +348,6 @@ class LinkValidator:
         except Exception as e:
             print(f"\n❌ Error: {e}\n", file=sys.stderr)
             return 1
-
 
 if __name__ == '__main__':
     validator = LinkValidator()

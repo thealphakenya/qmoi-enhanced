@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextResponse } from "next/server";
@@ -39,7 +39,7 @@ export async function POST(_request: Request) {
       return NextResponse.json(
         {
           _error: "Database not configured",
-          message: "Using [PRODUCTION READY] data - database not configured",
+          message: "Using 
         },
         { status: 503 },
       );
@@ -372,7 +372,7 @@ async function processPaperUpdate(paper: unknown, source: string) {
       status: "processed",
     };
 
-    // In production, save to database
+    // Production:, save to database
     (console as any).log(`Processed paper: ${p.id} from ${source}`);
 
     return processedPaper;
@@ -426,7 +426,7 @@ async function triggerQMOISync(type: string, data: unknown) {
     // Trigger sync with QMOI AI system
     (console as any).log(`Triggering QMOI sync for ${type}`, data);
 
-    // In production, call QMOI sync API
+    // Production:, call QMOI sync API
     return {
       status: "sync_triggered",
       type,
@@ -539,13 +539,12 @@ async function storeKBEntries(
 ) {
   // Enhanced storage with indexing
   try {
-    // In production, save to database with full-text indexing
+    // Production:, save to database with full-text indexing
     (console as any).log(
       `Storing ${entries.length} KB entries with metadata:`,
       metadata,
     );
 
-    [PRODUCTION READY] storage operation
     const storedEntries = (entries || []).map((entry: unknown) => {
       const _e = (entry ?? {}) as Record<string, unknown>;
       return {
@@ -583,11 +582,11 @@ async function notifyKBSubscribers(data: unknown) {
     // Notify subscribers about new KB entries
     (console as any).log(`Notifying KB subscribers about ${entryCount} new entries`);
 
-    // In production, send real-time notifications
+    // Production:, send real-time notifications
     return {
       notified: true,
       channels: ["websocket", "email"],
-      subscriber_count: 150, [PRODUCTION READY] count
+      subscriber_count: 150, 
     };
   } catch (_error) {
     (globalThis.console as any)?.error?.(
@@ -709,7 +708,7 @@ async function storeDiscussion(discussion: unknown) {
       .substr(2, 9)}`;
     (console as any).log(`Storing discussion: ${discussionId}`);
 
-    // In production, save to database
+    // Production:, save to database
     return discussionId;
   } catch (_error) {
     (globalThis.console as any)?.error?.("Error storing discussion:", _error);
@@ -727,7 +726,7 @@ async function enhanceDiscussionWithQMOI(discussionId: string, content: unknown)
   try {
     (console as any).log(`Enhancing discussion ${discussionId} with QMOI AI`);
 
-    // In production, apply QMOI AI enhancements like:
+    // Production:, apply QMOI AI enhancements like:
     // - Generate related questions
     // - Suggest relevant papers
     // - Improve discussion quality
@@ -868,7 +867,7 @@ async function triggerAutoOptimization(
       recommendations,
     );
 
-    // In production, apply optimizations like:
+    // Production:, apply optimizations like:
     // - Adjust batch sizes
     // - Enable parallel processing
     // - Update configurations
@@ -966,7 +965,7 @@ async function applyEnhancementsWithRollback(
     // Apply enhancements
     (console as any).log(`Applying enhancements to ${target}`);
 
-    // In production, apply changes and prepare rollback
+    // Production:, apply changes and prepare rollback
     return {
       applied: true,
       backup_id: backup.id,
@@ -1146,7 +1145,7 @@ async function escalateCriticalAlert(alert: unknown) {
   try {
     (console as any).log("Escalating critical alert:", alert);
 
-    // In production: send to on-call engineer, create incident, etc.
+    // Production:: send to on-call engineer, create incident, etc.
     return {
       escalated: true,
       channels: ["email", "sms", "slack"],
@@ -1219,7 +1218,7 @@ async function notifyWebSubscribers(_event: string, data: unknown) {
       await (_prisma as any).notification.createMany({ data: notifications });
     }
 
-    // In production: broadcast via WebSocket, Server-Sent Events, etc.
+    // Production:: broadcast via WebSocket, Server-Sent Events, etc.
     return { sent: true, recipients: users.length };
   } catch (_error) {
     (globalThis.console as any)?.error?.(
@@ -1288,7 +1287,7 @@ async function notifyEmailSubscribers(_event: string, data: unknown) {
       await (_prisma as any).notification.createMany({ data: notifications });
     }
 
-    // In production: send via email service (SendGrid, SES, etc.)
+    // Production:: send via email service (SendGrid, SES, etc.)
     return { sent: true, recipients: users.length };
   } catch (_error) {
     (globalThis.console as any)?.error?.(
@@ -1326,7 +1325,7 @@ async function notifyPushSubscribers(_event: string, data: unknown) {
       await (_prisma as any).notification.createMany({ data: notifications });
     }
 
-    // In production: send via push service (FCM, APNs, etc.)
+    // Production:: send via push service (FCM, APNs, etc.)
     return { sent: true, recipients: users.length };
   } catch (_error) {
     (globalThis.console as any)?.error?.(

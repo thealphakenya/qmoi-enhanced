@@ -1,5 +1,4 @@
 #!/bin/bash
-# [PRODUCTION READY]
 
 ###############################################################################
 # FAST NON-PRODUCTION CODE SCANNER - v2

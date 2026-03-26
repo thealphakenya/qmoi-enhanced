@@ -3,13 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import Chatbot from "../components/Chatbot";
 
-[PRODUCTION READY] MasterContext to be non-master for test
-jest.[PRODUCTION READY]("../components/MasterContext", () => ({
+jest.
   useMaster: () => ({ isMaster: false }),
 }));
 
@@ -43,30 +41,30 @@ describe("Chatbot integration (API proxy)", () => {
       cancel: jest.fn(),
     };
 
-    // JSDOM doesn't implement SpeechSynthesisUtterance; [PRODUCTION READY] it so construction succeeds
-    const SpeechSynthesisUtterance[PRODUCTION READY] = jest.fn().[PRODUCTION READY]Implementation(function (
+    // JSDOM doesn't implement SpeechSynthesisUtterance; 
+    const SpeechSynthesisUtterance
       text: string,
     ) {
-      // @ts-expect-error - Setting [PRODUCTION READY] properties
+      // @ts-expect-error - Setting 
       this.text = text;
-      // @ts-expect-error - Setting [PRODUCTION READY] properties
+      // @ts-expect-error - Setting 
       this.onend = undefined;
-      // @ts-expect-error - Setting [PRODUCTION READY] properties
+      // @ts-expect-error - Setting 
       this.onerror = undefined;
     });
     .SpeechSynthesisUtterance =
-      SpeechSynthesisUtterance[PRODUCTION READY] as any;
-    // expose the [PRODUCTION READY] for assertions in tests
-    .__SpeechSynthesisUtterance[PRODUCTION READY] =
-      SpeechSynthesisUtterance[PRODUCTION READY];
+      SpeechSynthesisUtterance
+    // expose the 
+    .__SpeechSynthesisUtterance
+      SpeechSynthesisUtterance
   });
 
   afterEach(() => {
     global.fetch = originalFetch;
     .speechSynthesis = origSpeech;
     .SpeechSynthesisUtterance = origSpeechUtter;
-    .__SpeechSynthesisUtterance[PRODUCTION READY] = undefined;
-    jest.resetAll[PRODUCTION READY]s();
+    .__SpeechSynthesisUtterance
+    jest.resetAll
   });
 
   test("sends message to /api/qmoi/chat and renders reply and calls TTS when enabled", async () => {
@@ -77,7 +75,7 @@ describe("Chatbot integration (API proxy)", () => {
     const btn = screen.getByRole("button", { name: /🔊/i });
     fireEvent.click(btn);
 
-    const input = screen.getBy[PRODUCTION READY]Text(/Type your message/i);
+    const input = screen.getBy
     fireEvent.change(input, { target: { value: "Hello qmoi" } });
     const submitBtn = screen.getByRole("button", { name: /Send/i });
     fireEvent.click(submitBtn);
@@ -99,6 +97,6 @@ describe("Chatbot integration (API proxy)", () => {
     expect(setChatHistory).toHaveBeenCalled();
 
     // And ensure SpeechSynthesisUtterance constructor was used
-    expect(.__SpeechSynthesisUtterance[PRODUCTION READY]).toHaveBeenCalled();
+    expect(.__SpeechSynthesisUtterance
   });
 });

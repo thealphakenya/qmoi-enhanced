@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 tools/check_links_clean.py
@@ -34,7 +33,6 @@ os.makedirs(TOOLS_DIR, exist_ok=True)
 
 LINK_RE = re.compile(r"\bhttps?://[\w\-._~:/?#\[\]@!$&'()*+,;=%]+", re.IGNORECASE)
 
-
 def find_files(root: str, exts: List[str] | None = None) -> List[str]:
     """Find files under root matching extensions (defaults to Markdown + common docs/code files)."""
     if exts is None:
@@ -53,10 +51,8 @@ def find_files(root: str, exts: List[str] | None = None) -> List[str]:
                     break
     return out
 
-
 def extract_links(text: str) -> List[str]:
     return [m.group(0).rstrip('.,:;') for m in LINK_RE.finditer(text)]
-
 
 def resolve(hostname: str) -> List[str]:
     try:
@@ -64,7 +60,6 @@ def resolve(hostname: str) -> List[str]:
         return sorted({a[4][0] for a in ai})
     except Exception:
         return []
-
 
 def http_head_fallback(url: str, timeout: float = 3.0) -> Dict:
     rec: Dict = {"url": url, "status": None, "error": None}
@@ -87,7 +82,6 @@ def http_head_fallback(url: str, timeout: float = 3.0) -> Dict:
             rec["error"] = str(e)
             return rec
 
-
 def check_one(entry: Dict, timeout: float) -> Dict:
     url = entry["url"]
     out: Dict = {"url": url, "file": entry.get("file")}
@@ -98,7 +92,6 @@ def check_one(entry: Dict, timeout: float) -> Dict:
     http = http_head_fallback(url, timeout=timeout)
     out.update(http)
     return out
-
 
 def main(root: str, max_workers: int, timeout: float):
     md_files = find_files(root)
@@ -160,7 +153,6 @@ def main(root: str, max_workers: int, timeout: float):
                 fh.write(f"- File: `{f.get('file')}` URL: {f.get('url')} Status: {f.get('status')} Error: {f.get('error')} Resolved: {f.get('resolved_ips')}\n")
 
     print("Wrote:", inv_path, report_json, report_md)
-
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser()

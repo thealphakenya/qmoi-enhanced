@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React, { useEffect, useState } from "react";
 import type { AvatarConfig } from "./avatarsConfig";
 import { useToast } from "@/components/ui/use-toast";
@@ -89,7 +88,7 @@ export default function AviatorGalleryPanel() {
     _e.preventDefault();
     if (!avatarFile && !voiceFile) return;
     setUploading(true);
-    [PRODUCTION READY]bed upload
+    
     setTimeout(() => {
       toast({
         title: "Upload Submitted",

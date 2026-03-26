@@ -51,12 +51,10 @@ MAX_API_CALLS = int(os.getenv("MAX_API_CALLS_PER_HOUR", "100"))
 # Rate limiting state
 api_call_count = {}
 
-
 def generate_session_token() -> str:
     """Generate a session token for upgrade links."""
     import uuid
     return f"hf_{uuid.uuid4().hex[:16]}"
-
 
 async def safe_arxiv_call(query: str, max_results: int = 20) -> Optional[dict]:
     """
@@ -136,7 +134,6 @@ async def safe_arxiv_call(query: str, max_results: int = 20) -> Optional[dict]:
             "error": f"Failed to fetch papers: {str(e)}",
             "papers": [],
         }
-
 
 # Enhanced in-memory knowledge base with more entries
 KNOWLEDGE_BASE = [
@@ -222,7 +219,6 @@ KNOWLEDGE_BASE = [
     }
 ]
 
-
 async def fetch_daily_papers(tag_filter: str = None) -> str:
     """Fetch today's curated papers from arXiv with enhanced parallel processing."""
     # Build queries based on tag
@@ -292,7 +288,6 @@ async def fetch_daily_papers(tag_filter: str = None) -> str:
     
     return "\n" + "---\n".join(output_lines)
 
-
 async def search_knowledge_base(query: str) -> str:
     """Search knowledge base with enhanced search capabilities."""
     if not query or len(query) < 2:
@@ -355,7 +350,6 @@ async def search_knowledge_base(query: str) -> str:
     
     return "\n" + "---\n".join(output_lines)
 
-
 async def load_trending_papers() -> str:
     """Load trending papers for initial page load."""
     # Fetch recent papers as "trending"
@@ -375,7 +369,6 @@ async def load_trending_papers() -> str:
         output_lines.append(f"{i}. **{title}**  \n[Read](https://arxiv.org/abs/{arxiv_id})\n")
     
     return "\n".join(output_lines)
-
 
 async def get_community_stats() -> str:
     """Get enhanced community statistics with real-time calculations."""

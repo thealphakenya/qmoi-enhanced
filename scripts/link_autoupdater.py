@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:05Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY]
 """Link auto-updater (dry-run by default).
 
 This script reads an all-links index (JSON) and produces a deployed update
@@ -27,10 +26,8 @@ from .link_cache import LinkCache
 import urllib.request
 from urllib.error import URLError, HTTPError
 
-
 def now_iso():
     return _dt.utcnow().replace(microsecond=0).isoformat() + 'Z'
-
 
 def check_url_head(url, timeout=5):
     # Try a HEAD request; some servers don't honor METHOD=HEAD so fall back to GET
@@ -44,7 +41,6 @@ def check_url_head(url, timeout=5):
         return False, str(e.reason)
     except Exception as e:
         return False, str(e)
-
 
 def run_autoupdater(source: Path, out_dir: Path, apply: bool = False, max_links: int = None, allow_network: bool = False):
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -104,7 +100,6 @@ def run_autoupdater(source: Path, out_dir: Path, apply: bool = False, max_links:
 
     return plan_path
 
-
 def generate_update_plan(source, cache_file=None, out_dir=None, apply: bool = False, max_links: int = None, allow_network: bool = False):
     """robust plan generator used by tests.
 
@@ -150,7 +145,6 @@ def generate_update_plan(source, cache_file=None, out_dir=None, apply: bool = Fa
     except Exception:
         return {'updates': [], 'dry_run': not apply}
 
-
 def main():
     p = argparse.ArgumentParser()
     p.add_argument('--source', help='path to all_links.json', default=None)
@@ -169,7 +163,6 @@ def main():
                            max_links=args.max_links, allow_network=allow_network)
     if args.verbose:
         print('Wrote plan to', plan)
-
 
 if __name__ == '__main__':
     main()
@@ -196,7 +189,6 @@ os.makedirs(OUT_DIR, exist_ok=True)
 if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
 
-
 # Heuristics for implementation links to replace
 PLACEHOLDER_PATTERNS = [
     r"https?://data\.com/[A-Z_0-9_-]+",
@@ -207,7 +199,6 @@ PLACEHOLDER_PATTERNS = [
 
 MD_EXTS = {".md", ".markdown"}
 
-
 def find_files(root, exts=None):
     for dirpath, dirnames, filenames in os.walk(root):
         if ".git" in dirpath or ".qmoi_validation" in dirpath:
@@ -216,14 +207,12 @@ def find_files(root, exts=None):
             if exts is None or Path(fn).suffix.lower() in exts:
                 yield os.path.join(dirpath, fn)
 
-
 def find_placeholders_in_text(text):
     matches = []
     for pat in PLACEHOLDER_PATTERNS:
         for m in re.finditer(pat, text, re.IGNORECASE):
             matches.append((m.group(0), m.start(), m.end()))
     return matches
-
 
 # Simple replacement strategy: try to map known placeholders to candidates from mapping file
 def load_mappings():
@@ -235,7 +224,6 @@ def load_mappings():
         except Exception:
             return {}
     return {}
-
 
 def validate_url_head(url):
     """Attempt an HTTP HEAD to validate availability (gated)."""
@@ -256,7 +244,6 @@ def validate_url_head(url):
         cache_put(url, entry)
         return entry
 
-
 def build_plan(root, exts=None):
     mappings = load_mappings()
     plan = {"generated_at": datetime.utcnow().isoformat() + "Z", "files": []}
@@ -275,7 +262,6 @@ def build_plan(root, exts=None):
             file_plan["replacements"].append({"implementation": match, "start": s, "end": e, "suggested": suggestion})
         plan["files"].append(file_plan)
     return plan
-
 
 def apply_plan(plan):
     # Safety gates
@@ -312,7 +298,6 @@ def apply_plan(plan):
             applied.append(file_entry["path"])
     return applied
 
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--apply", action="store_true", help="Apply replacements (gated)")
@@ -338,7 +323,6 @@ def main():
                 print(" -", p)
         except Exception as e:
             print("Apply failed:", e)
-
 
 if __name__ == "__main__":
     main()

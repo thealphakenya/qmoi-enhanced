@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 "use client";
 
 import { useEffect, useState } from "react";
@@ -271,7 +270,6 @@ function MainPage() {
     setBiometricMethod(method);
     setIsLoading(true);
 
-    [PRODUCTION READY] biometric authentication
     setTimeout(() => {
       // Successfully authenticate with demo user
       handleLogin({
@@ -387,8 +385,8 @@ function MainPage() {
                     type="text"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    [PRODUCTION READY]="admin"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent text-white [PRODUCTION READY]-blue-300 backdrop-blur-sm transition-all duration-300"
+                    
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent text-white 
                     required
                   />
                 </div>
@@ -401,8 +399,8 @@ function MainPage() {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    [PRODUCTION READY]="••••••••"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent text-white [PRODUCTION READY]-blue-300 backdrop-blur-sm transition-all duration-300"
+                    
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent text-white 
                     required
                   />
                 </div>
@@ -539,7 +537,7 @@ function MainPage() {
                     type="email"
                     value={email}
                     onChange={(_e) => setEmail(_e.target.value)}
-                    [PRODUCTION READY]="your@email.com"
+                    
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   />
@@ -553,7 +551,7 @@ function MainPage() {
                     type="text"
                     value={username}
                     onChange={(_e) => setUsername(_e.target.value)}
-                    [PRODUCTION READY]="Choose a username"
+                    
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   />
@@ -567,7 +565,7 @@ function MainPage() {
                     type="password"
                     value={password}
                     onChange={(_e) => setPassword(_e.target.value)}
-                    [PRODUCTION READY]="••••••••"
+                    
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   />
@@ -581,7 +579,7 @@ function MainPage() {
                     type="password"
                     value={confirmPassword}
                     onChange={(_e) => setConfirmPassword(_e.target.value)}
-                    [PRODUCTION READY]="••••••••"
+                    
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   />

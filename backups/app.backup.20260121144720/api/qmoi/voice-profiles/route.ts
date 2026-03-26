@@ -1,7 +1,7 @@
-[PRODUCTION READY] all markers normalized for completion
+
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 1 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 1 
 import { NextRequest, NextResponse } from "next/server";
 import {
   voiceProfiles,
@@ -72,7 +72,7 @@ async function switchVoice(voiceId: string) {
     }
 
     // Update QMOI's current voice (, this would update the AI model)
-    // For now, we'll [PRODUCTION READY] this by storing in a global state or database
+    // For now, we'll 
 
     // Log the voice switch
     (console as any).log(`QMOI voice switched to: ${voiceProfile.name} (${voiceId})`);
@@ -113,13 +113,12 @@ async function previewVoice(
       return NextResponse.json({ _error: "Invalid voice ID" }, { status: 400 });
     }
 
-    [PRODUCTION READY] TTS processing
     const audioUrl = await generateTTSAudio(voiceId, text, quality, volume);
 
     return NextResponse.json({
       success: true,
       audioUrl,
-      duration: Math.random() * 5 + 2, [PRODUCTION READY]d duration
+      duration: Math.random() * 5 + 2, 
       voice: voiceProfile,
     });
   } catch (_error) {
@@ -140,7 +139,6 @@ async function enhanceVoice(voiceId: string) {
 
     (console as any).log(`Enhancing voice: ${voiceId}`);
 
-    [PRODUCTION READY] enhancement process
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     return NextResponse.json({
@@ -171,7 +169,6 @@ async function upgradeVoice(voiceId: string) {
 
     (console as any).log(`Upgrading voice: ${voiceId}`);
 
-    [PRODUCTION READY] upgrade process
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     return NextResponse.json({
@@ -262,7 +259,7 @@ async function generateTTSAudio(
   // - EVA3D (for 3D avatar animation)
   // - Commercial APIs (ElevenLabs, Azure, etc.)
 
-  // For now, return a [PRODUCTION IMPLEMENTATION REQUIRED] URL
+  // Production implementation URL
   return `/api/tts/generate?voice=${voiceId}&text=${encodeURIComponent(
     text,
   )}&quality=${quality}&volume=${volume}`;

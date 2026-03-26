@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 import React, { useEffect, useState } from "react";
 import { getSessionHeaders } from "../../services/qmoiSession";
 
@@ -59,7 +59,7 @@ export default function QMoiDatabaseDashboard({
         <input
           value={newTable}
           onChange={(_e) => setNewTable(_e.target.value)}
-          [PRODUCTION READY]="New table name"
+          
         />
         <button onClick={handleCreateTable}>Create Table</button>
       </div>

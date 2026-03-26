@@ -20,7 +20,6 @@ try:
 except Exception:
     client = None
 
-
 def run_test(test_func):
     try:
         test_func()
@@ -31,21 +30,17 @@ def run_test(test_func):
         traceback.print_exc()
         return False
 
-
 def test_arxiv_call():
     papers = safe_arxiv_call("machine learning", 5)
     assert isinstance(papers, list)
-
 
 def test_knowledge_base_search():
     results = search_knowledge_base("neural networks")
     assert isinstance(results, list)
 
-
 def test_daily_papers():
     papers = fetch_daily_papers()
     assert isinstance(papers, list)
-
 
 def test_api_health():
     if not client:
@@ -54,13 +49,11 @@ def test_api_health():
     assert r.status_code == 200
     assert r.json().get("status") == "healthy"
 
-
 def test_api_root():
     if not client:
         return
     r = client.get("/")
     assert r.status_code == 200
-
 
 def test_simple_paid_features():
     models_created = sum(1 for _ in range(10))
@@ -71,7 +64,6 @@ def test_simple_paid_features():
 
     datasets_created = sum(1 for _ in range(10))
     assert datasets_created == 10
-
 
 def main():
     tests = [
@@ -93,7 +85,6 @@ def main():
     print(f"Tests passed: {passed}/{total}")
     if passed != total:
         sys.exit(1)
-
 
 if __name__ == "__main__":
     main()

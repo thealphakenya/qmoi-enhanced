@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 // @ts-nocheck
@@ -45,7 +45,7 @@ export async function POST_TAG(_req: NextRequest) {
 }
 
 export async function GET_INFO(_req: NextRequest) {
-  // Gather info ([PRODUCTION READY])
+  // Gather info (
   // Production: Implement info gathering from platforms
   // Requires: Platform APIs (WhatsApp, Telegram, LinkedIn) and authentication tokens
   // Use respective SDK methods to fetch platform data

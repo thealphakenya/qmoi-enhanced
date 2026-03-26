@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 QMOI Domain Registry Script
@@ -621,10 +620,8 @@ if __name__ == '__main__':
     }
 }
 
-
 def ensure_out_dir():
     os.makedirs(OUT_DIR, exist_ok=True)
-
 
 def validate_revenue_settings(domain_config):
     """Validate revenue and billing settings for a domain."""
@@ -718,7 +715,6 @@ def write_registry(registry, apply=False):
     else:
         raise ValueError(f"Registry validation failed:\n" + "\n".join(all_errors))
 
-
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--apply", action="store_true", help="Apply mode (requires provider creds).")
@@ -745,7 +741,6 @@ def main():
 
     write_registry(registry, apply=args.apply)
 
-
 if __name__ == "__main__":
     main()
 #!/usr/bin/env python3
@@ -767,7 +762,6 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 OUT_DIR = os.path.join(ROOT, ".qmoi_validation")
 os.makedirs(OUT_DIR, exist_ok=True)
 
-
 def discover_domain_docs(allmd_path):
     docs = []
     if not os.path.exists(allmd_path):
@@ -779,7 +773,6 @@ def discover_domain_docs(allmd_path):
         if re.search(r"DOM|HOST|LINK", c, re.IGNORECASE):
             docs.append(c)
     return sorted(set(docs))
-
 
 def main():
     parser = argparse.ArgumentParser()
@@ -802,7 +795,6 @@ def main():
 
     print(f"Wrote {out_path} (dry-run) with {len(sources)} source docs")
 
-
 if __name__ == "__main__":
     main()
 #!/usr/bin/env python3
@@ -816,11 +808,9 @@ import argparse
 import datetime
 import os
 
-
 ROOT = Path(__file__).resolve().parents[1]
 QM_VAL = ROOT / ".qmoi_validation"
 QM_VAL.mkdir(exist_ok=True)
-
 
 def load_domains(domains_path: Path):
     if domains_path.exists():
@@ -829,7 +819,6 @@ def load_domains(domains_path: Path):
         except Exception:
             return {}
     return {}
-
 
 def write_registry(registry: dict, dry_run: bool):
     out = QM_VAL / "domains_registry.json"
@@ -840,7 +829,6 @@ def write_registry(registry: dict, dry_run: bool):
     }
     out.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     print(f"Wrote {out} (dry_run={dry_run})")
-
 
 def main():
     p = argparse.ArgumentParser()
@@ -868,7 +856,6 @@ def main():
             print(f"Persisted {domains_path}")
         else:
             print(f"{domains_path} already exists; --apply will not overwrite existing file.")
-
 
 if __name__ == "__main__":
     main()

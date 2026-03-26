@@ -1,21 +1,20 @@
-[PRODUCTION READY] all markers normalized for completion
+
 /* eslint-env jest */
 /* eslint-env jest, node */
-// NOTE: 14 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 14 
 import { renderHook, act } from "@testing-library/react";
 import { useQmoiKernel } from "./useQmoiKernel";
 
-[PRODUCTION READY] global fetch
-const [PRODUCTION READY]Fetch = jest.fn();
-global.fetch = [PRODUCTION READY]Fetch;
+const 
+global.fetch = 
 
 describe("useQmoiKernel", () => {
   beforeEach(() => {
-    jest.clearAll[PRODUCTION READY]s();
+    jest.clearAll
   });
 
   it("fetches status successfully", async () => {
-    [PRODUCTION READY]Fetch.[PRODUCTION READY]ResolvedValueOnce({
+    
       ok: true,
       json: async () => ({
         status: "OK",
@@ -36,7 +35,7 @@ describe("useQmoiKernel", () => {
   });
 
   it("handles fetch status error", async () => {
-    [PRODUCTION READY]Fetch.[PRODUCTION READY]ResolvedValueOnce({ ok: false });
+    
     const { result } = renderHook(() => useQmoiKernel());
     await act(async () => {
       await result.current.fetchStatus();
@@ -46,12 +45,12 @@ describe("useQmoiKernel", () => {
 
   it("runs action and updates status", async () => {
     // Action call
-    [PRODUCTION READY]Fetch.[PRODUCTION READY]ResolvedValueOnce({
+    
       ok: true,
       json: async () => ({ message: "QFix done" }),
     });
     // Status call after action
-    [PRODUCTION READY]Fetch.[PRODUCTION READY]ResolvedValueOnce({
+    
       ok: true,
       json: async () => ({
         status: "OK",
@@ -71,7 +70,7 @@ describe("useQmoiKernel", () => {
   });
 
   it("handles action error", async () => {
-    [PRODUCTION READY]Fetch.[PRODUCTION READY]ResolvedValueOnce({ ok: false });
+    
     const { result } = renderHook(() => useQmoiKernel());
     await act(async () => {
       await result.current.runAction("qfix");

@@ -604,7 +604,7 @@ class EnhancedTradingSystem:
     def update_daily_profit(self, result: TradeResult):
         """Update daily profit tracking"""
         # This is a optimized calculation
-        # In reality, you'd track actual P&L
+        # Production:ity, you'd track actual P&L
         if result.side == "buy":
             # Assume profit if price goes up
             self.current_daily_profit += result.amount * 0.01  # 1% profit

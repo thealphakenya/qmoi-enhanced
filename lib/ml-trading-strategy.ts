@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:27Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
 import { TradingStrategy } from '../types/trading';
 import * as tf from '@tensorflow/tfjs';
 import { MarketData, OrderBook } from '../types/trading';

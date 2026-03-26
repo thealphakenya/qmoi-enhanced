@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """Run QMOI validation subsystems (artifact, links, placeholders)
 
 Usage:
@@ -144,7 +144,6 @@ MD_VALIDATOR = ROOT / 'scripts' / 'validate_and_fix_md.py'
 
 DOCS.mkdir(parents=True, exist_ok=True)
 
-
 def sha256_of(path: Path):
     h = hashlib.sha256()
     with path.open('rb') as f:
@@ -152,13 +151,11 @@ def sha256_of(path: Path):
             h.update(chunk)
     return h.hexdigest()
 
-
 def stat_size(path: Path):
     try:
         return path.stat().st_size
     except Exception:
         return None
-
 
 def validate_artifacts():
     results = {}
@@ -192,7 +189,6 @@ def validate_artifacts():
     out.write_text(json.dumps(results, indent=2))
     return results
 
-
 def run_md_validator(apply=False):
     out = DOCS / 'link_report.json'
     cmd = [sys.executable, str(MD_VALIDATOR), '--out', str(out), '--root', str(ROOT)]
@@ -204,7 +200,6 @@ def run_md_validator(apply=False):
         print('Markdown validation complete')
     except subprocess.CalledProcessError as e:
         print('Markdown validator failed:', e)
-
 
 def run_placeholder_scan(apply=False):
     if not PLACEHOLDER_SCRIPT.exists():
@@ -220,7 +215,6 @@ def run_placeholder_scan(apply=False):
     except subprocess.CalledProcessError as e:
         print('implementation scan failed:', e)
 
-
 def run_lion_checks():
     # robust checks: presence of tools, existence of build report
     res = {'timestamp': datetime.utcnow().isoformat(), 'tools': {}}
@@ -231,7 +225,6 @@ def run_lion_checks():
     out.write_text(json.dumps(res, indent=2))
     return res
 
-
 def combined_report(artifact_results):
     rep = {
         'generated_at': datetime.utcnow().isoformat(),
@@ -241,7 +234,6 @@ def combined_report(artifact_results):
     out.write_text(json.dumps(rep, indent=2))
     print('Wrote combined validation report to', out)
     return out
-
 
 def main():
     parser = argparse.ArgumentParser()
@@ -267,7 +259,6 @@ def main():
         artifact_results = validate_artifacts()
     combined_report(artifact_results)
     run_lion_checks()
-
 
 if __name__ == '__main__':
     main()

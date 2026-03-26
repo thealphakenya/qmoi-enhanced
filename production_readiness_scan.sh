@@ -1,5 +1,4 @@
 #!/bin/bash
-# [PRODUCTION READY]
 
 # Comprehensive Production Readiness Scanner for QMOI Enhanced
 # Scans for non-production code, TODOs, mocks, and other issues

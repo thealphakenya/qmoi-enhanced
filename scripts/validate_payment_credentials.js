@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:55Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 #!/usr/bin/env node
 "use strict";
 // Simple validator for payment-related environment variables.
@@ -56,7 +55,7 @@ function run() {
     process.exit(0);
   } else {
     console.log(
-      `\nFound ${totalMissing} required/[PRODUCTION READY] credential(s). Please set them via environment or secrets manager.`,
+      `\nFound ${totalMissing} required/
     );
     process.exit(2);
   }

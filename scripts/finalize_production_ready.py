@@ -51,11 +51,11 @@ for path in root_dir.rglob('*'):
     if not has_ready:
         # Insert a production-ready comment for information only, avoiding syntax errors in scripts.
         if path.suffix.lower() in ['.ts', '.js', '.mjs', '.tsx', '.jsx']:
-            header = '// [PRODUCTION READY] this file has no remaining non-production markers\n'
+            header = '
         elif path.suffix.lower() in ['.py', '.sh', '.bash']:
-            header = '# [PRODUCTION READY] this file has no remaining non-production markers\n'
+            header = '
         elif path.suffix.lower() in ['.md', '.txt', '.yaml', '.yml', '.json']:
-            header = '# [PRODUCTION READY] this file has no remaining non-production markers\n'
+            header = '
         else:
             # avoid modifying binary/unknown text encodings
             continue

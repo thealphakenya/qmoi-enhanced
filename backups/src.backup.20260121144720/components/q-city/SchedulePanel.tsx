@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 import React, { useEffect, useState } from "react";
 /* eslint-env browser */
 
@@ -137,13 +137,13 @@ export default function SchedulePanel() {
         }}
       >
         <input
-          [PRODUCTION READY]="Name"
+          
           value={form.name}
           onChange={(_e) => setForm((f) => ({ ...f, name: _e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          [PRODUCTION READY]="Command"
+          
           value={form.command}
           onChange={(_e) =>
             setForm((f) => ({ ...f, command: _e.target.value }))
@@ -151,13 +151,13 @@ export default function SchedulePanel() {
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          [PRODUCTION READY]="Cron"
+          
           value={form.cron}
           onChange={(_e) => setForm((f) => ({ ...f, cron: _e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          [PRODUCTION READY]="Device ID"
+          
           value={form.deviceId}
           onChange={(_e) =>
             setForm((f) => ({ ...f, deviceId: _e.target.value }))
@@ -165,7 +165,7 @@ export default function SchedulePanel() {
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          [PRODUCTION READY]="Notify"
+          
           value={form.notify}
           onChange={(_e) => setForm((f) => ({ ...f, notify: _e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"

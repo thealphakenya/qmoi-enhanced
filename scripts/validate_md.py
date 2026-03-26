@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """
 Consolidated QMOI Markdown validator (enhanced).
 
@@ -42,7 +42,6 @@ REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 HISTORY_DIR.mkdir(parents=True, exist_ok=True)
 LION_TASKS_DIR.mkdir(parents=True, exist_ok=True)
 
-
 def load_auto_env():
     fn = OUT_DIR / 'auto_env.json'
     if not fn.exists():
@@ -51,7 +50,6 @@ def load_auto_env():
         return json.loads(fn.read_text(encoding='utf-8'))
     except Exception:
         return {}
-
 
 AUTO_ENV = load_auto_env()
 
@@ -62,7 +60,6 @@ VALIDATION_BLOCK_END = '<!-- QMOI_VALIDATION_END -->'
 
 LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 
-
 def find_md_files(root: Path) -> List[Path]:
     out = []
     for p in root.rglob('*.md'):
@@ -71,7 +68,6 @@ def find_md_files(root: Path) -> List[Path]:
         out.append(p)
     out.sort()
     return out
-
 
 def read_text(path: Path) -> str:
     # try utf-8, then utf-8-sig, then latin-1; if still fails, return None
@@ -100,13 +96,11 @@ def read_text(path: Path) -> str:
             pass
     return txt
 
-
 def has_h1(text: str) -> Tuple[bool, str]:
     for line in text.splitlines():
         if line.strip().startswith('# '):
             return True, line.strip()[2:].strip()
     return False, ''
-
 
 def has_frontmatter(text: str) -> bool:
     parts = text.splitlines()[:40]
@@ -115,7 +109,6 @@ def has_frontmatter(text: str) -> bool:
             if l.strip() == '---':
                 return True
     return False
-
 
 def check_links(relpath: Path, text: str) -> List[Dict]:
     results = []
@@ -128,7 +121,6 @@ def check_links(relpath: Path, text: str) -> List[Dict]:
         results.append({'label': label, 'target': target, 'ok': ok})
     return results
 
-
 def detect_build_marker(text: str) -> Dict:
     low = (text or '').lower()
     if 'build status: success' in low or 'build: success' in low:
@@ -136,7 +128,6 @@ def detect_build_marker(text: str) -> Dict:
     if 'build status' in low or 'build:' in low:
         return {'build': 'present_but_unknown'}
     return {'build': 'not_found'}
-
 
 def load_history(relpath: str) -> List[Dict]:
     fn = HISTORY_DIR / (relpath.replace('/', '__') + '.history.json')
@@ -147,11 +138,9 @@ def load_history(relpath: str) -> List[Dict]:
     except Exception:
         return []
 
-
 def save_history(relpath: str, history: List[Dict]):
     fn = HISTORY_DIR / (relpath.replace('/', '__') + '.history.json')
     fn.write_text(json.dumps(history, indent=2), encoding='utf-8')
-
 
 def build_report(path: Path) -> Dict:
     rel = str(path.relative_to(REPO_ROOT)).replace('\\', '/')
@@ -217,7 +206,6 @@ def build_report(path: Path) -> Dict:
 
     return txt, report
 
-
 def write_report_and_history(rel: str, report: Dict):
     fn = REPORTS_DIR / (rel.replace('/', '__') + '.validation.json')
     fn.parent.mkdir(parents=True, exist_ok=True)
@@ -228,7 +216,6 @@ def write_report_and_history(rel: str, report: Dict):
     history.append(history_entry)
     save_history(rel, history)
 
-
 def insert_validation_block(path: Path, original_text: str, report: Dict, apply: bool):
     j = json.dumps(report, indent=2)
     block = f"{VALIDATION_BLOCK_START}\n{j}\n{VALIDATION_BLOCK_END}\n"
@@ -236,7 +223,6 @@ def insert_validation_block(path: Path, original_text: str, report: Dict, apply:
     new_text = new_text.rstrip() + '\n\n' + block
     if apply:
         path.write_text(new_text, encoding='utf-8')
-
 
 def create_todo_for_report(report: Dict):
     try:
@@ -262,7 +248,6 @@ def create_todo_for_report(report: Dict):
         return str(out)
     except Exception:
         return None
-
 
 def main():
     parser = argparse.ArgumentParser()
@@ -301,7 +286,6 @@ def main():
     summary = {'total_validated': total, 'generated_at': datetime.now(timezone.utc).isoformat()}
     (OUT_DIR / 'validation_summary.json').write_text(json.dumps(summary, indent=2), encoding='utf-8')
     print(f"Validated {total} files. Reports in {REPORTS_DIR}/")
-
 
 if __name__ == '__main__':
     main()

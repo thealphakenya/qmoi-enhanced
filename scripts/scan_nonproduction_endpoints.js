@@ -3,25 +3,24 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 const fs = require('fs');
 const path = require('path');
 
 const rootDir = process.cwd();
 const scanDirs = ['app/api', 'src/app/api', 'lib', 'prisma'];
 const keywords = [
-  '[PRODUCTION READY]',
-  '[PRODUCTION READY]',
-  '[PRODUCTION READY]',
-  '[PRODUCTION READY]',
-  '[PRODUCTION READY]',
-  '[PRODUCTION READY]',
-  '[PRODUCTION READY]:',
-  '[PRODUCTION READY]',
-  '[PRODUCTION READY]',
+  '
+  '
+  '
+  '
+  '
+  '
+  '
+  '
+  '
   'real',
   'PRODUCTION',
-  '[PRODUCTION READY]',
+  '
   'production',
 ];
 

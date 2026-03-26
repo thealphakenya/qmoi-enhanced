@@ -3,12 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 // import fs from 'fs';
 import path from "path";
 import { exec } from "child_process";
 import cron from "node-cron";
-import { notify } from "./notification_[PRODUCTION READY]";
+import { notify } from "./notification_
 
 const SCHEDULE_FILE = path.resolve(process.cwd(), "data", "schedules.json");
 const AUDIT_LOG = path.resolve(process.cwd(), "logs/qcity_audit.log");

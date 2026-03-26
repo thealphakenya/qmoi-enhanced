@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 "use client";
 import React, { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
@@ -351,7 +350,7 @@ export function QMOIOwnDeviceLogs({
               <div>
                 <label className="text-sm font-medium">Device ID</label>
                 <Input
-                  [PRODUCTION READY]="Filter by device ID"
+                  
                   value={deviceFilter}
                   onChange={(e) => setDeviceFilter(e.target.value)}
                 />

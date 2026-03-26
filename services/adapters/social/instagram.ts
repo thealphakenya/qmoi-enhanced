@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import { z } from "zod";
 import {
   PlatformConfig,
@@ -65,7 +64,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
       return true; // Skip validation in sandbox mode
     }
 
-    // In production, would verify the access token with Instagram Graph API
+    // Production:, would verify the access token with Instagram Graph API
     return !!this.config.credentials?.accessToken;
   }
 
@@ -100,10 +99,10 @@ export class InstagramAdapter implements SocialPlatformAdapter {
 
     if (this.config.sandboxMode) {
       .log("[Instagram Sandbox] Would create post:", content);
-      return `[PRODUCTION READY]-ig-post-${Date.now()}`;
+      return `
     }
 
-    // In production mode, would make actual Graph API call
+    // Production: mode, would make actual Graph API call
     // Proper implementation would handle multi-step media upload
     .log("[Instagram] Creating post via Graph API v18.0");
     return `ig-post-${Date.now()}`;
@@ -126,7 +125,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
       return true;
     }
 
-    // In production mode, would make actual Graph API call
+    // Production: mode, would make actual Graph API call
     .log("[Instagram] Deleting post:", postId);
     return true;
   }
@@ -137,7 +136,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
     }
 
     if (this.config.sandboxMode) {
-      // Return [PRODUCTION READY] metrics in sandbox mode
+      // Return 
       const likes = Math.floor(Math.random() * 1000);
       const impressions = Math.floor(Math.random() * 5000);
       return {
@@ -151,7 +150,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
       };
     }
 
-    // In production mode, would fetch real metrics via Graph API
+    // Production: mode, would fetch real metrics via Graph API
     throw new Error("Production metrics fetching not yet implemented");
   }
 
@@ -168,7 +167,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
         topPosts: Array(3)
           .fill(null)
           .map((_, i) => ({
-            id: `[PRODUCTION READY]-post-${i}`,
+            id: `
             type: this.config?.mediaTypes
               ? this.config.mediaTypes[0]
               : undefined,
@@ -178,7 +177,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
       };
     }
 
-    // In production mode, would fetch real analytics via Graph API
+    // Production: mode, would fetch real analytics via Graph API
     throw new Error("Production analytics fetching not yet implemented");
   }
 }

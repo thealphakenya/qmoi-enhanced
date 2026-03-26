@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 import * as React from "react";
 import { useState } from "react";
 
@@ -21,7 +21,7 @@ const Onboarding: React.FC = () => {
   });
 
   const handleGoogleOAuth = () => {
-    // Google OAuth [PRODUCTION READY] - in production, integrate with @react-oauth/google
+    // Google OAuth 
     (console as any).log("Initiating Google OAuth flow...");
     setForm((f) => ({ ...f, googleConnected: true, email: "user@gmail.com" }));
     setStep(2);
@@ -69,7 +69,7 @@ const Onboarding: React.FC = () => {
           <form onSubmit={handleSubmit}>
             <input
               name="name"
-              [PRODUCTION READY]="Full Name"
+              
               value={form.name}
               onChange={handleChange}
               required
@@ -77,7 +77,7 @@ const Onboarding: React.FC = () => {
             />
             <input
               name="email"
-              [PRODUCTION READY]="Email"
+              
               value={form.email}
               onChange={handleChange}
               required

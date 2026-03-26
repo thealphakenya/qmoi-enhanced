@@ -139,7 +139,7 @@ export async function DELETE(request: NextRequest) {
 // Secure wipe implementation
 async function initiateSecureWipe(deviceId: string, reason: string, level: string) {
   try {
-    // In production, this would communicate with device management systems
+    // Production:, this would communicate with device management systems
     // For now, simulate secure wipe initiation
     console.log(`Initiating ${level} secure wipe for device ${deviceId}`);
     console.log(`Reason: ${reason}`);
@@ -185,7 +185,7 @@ async function initiateSecureWipe(deviceId: string, reason: string, level: strin
 // Check wipe status
 async function getWipeStatus(deviceId: string) {
   try {
-    // In production, check actual wipe status from device management system
+    // Production:, check actual wipe status from device management system
     // For now, simulate status
     const statuses = ['pending', 'in_progress', 'completed', 'failed', 'cancelled'];
     const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];

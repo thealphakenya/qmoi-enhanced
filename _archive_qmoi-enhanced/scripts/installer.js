@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 /* eslint-env node */
 const fs = require("fs");
 const readline = require("readline");
@@ -42,7 +41,7 @@ async function main() {
     );
     process.exit(1);
   }
-  [PRODUCTION READY] requesting all permissions
+  
   console.log("\nRequesting all necessary device permissions...");
   setTimeout(() => {
     console.log("All permissions granted. Setup complete!");

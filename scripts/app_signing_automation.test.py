@@ -39,7 +39,6 @@ except ImportError as e:
     print("Running skeleton tests only")
     AppSigningAutomation = None
 
-
 class TestAppSigningAutomationPlatformDetection(unittest.TestCase):
     """Test platform detection from file extensions and manifests"""
     
@@ -124,7 +123,6 @@ class TestAppSigningAutomationPlatformDetection(unittest.TestCase):
         platform = self.automation.detect_platform_from_file("app.unknown")
         self.assertIsNone(platform)
 
-
 class TestAppSigningAutomationKeyValidation(unittest.TestCase):
     """Test signing key validation"""
     
@@ -196,7 +194,6 @@ class TestAppSigningAutomationKeyValidation(unittest.TestCase):
         result = self.automation.validate_signing_keys("linux")
         self.assertIsInstance(result, bool)
 
-
 class TestAppSigningAutomationSigningOperations(unittest.TestCase):
     """Test signing operations for each platform"""
     
@@ -240,7 +237,6 @@ class TestAppSigningAutomationSigningOperations(unittest.TestCase):
         self.assertIn("platform", result_template)
         self.assertIn("status", result_template)
 
-
 class TestAppSigningAutomationBatchOperations(unittest.TestCase):
     """Test batch signing operations"""
     
@@ -283,7 +279,6 @@ class TestAppSigningAutomationBatchOperations(unittest.TestCase):
         
         self.assertEqual(results["success"] + results["failed"], 3)
         self.assertEqual(results["success"], 2)
-
 
 class TestAppSigningAutomationAuditLogging(unittest.TestCase):
     """Test audit logging with QMOI tracking IDs"""
@@ -342,7 +337,6 @@ class TestAppSigningAutomationAuditLogging(unittest.TestCase):
         self.assertIn("timestamp", operation_log)
         self.assertIn("status", operation_log)
 
-
 class TestAppSigningAutomationSignatureVerification(unittest.TestCase):
     """Test signature verification for each platform"""
     
@@ -363,7 +357,6 @@ class TestAppSigningAutomationSignatureVerification(unittest.TestCase):
         self.assertIn("verified", verification_structure)
         self.assertIn("platform", verification_structure)
         self.assertIsInstance(verification_structure["verified"], bool)
-
 
 class TestAppSigningAutomationIntegration(unittest.TestCase):
     """Integration tests for app signing workflow"""
@@ -390,7 +383,6 @@ class TestAppSigningAutomationIntegration(unittest.TestCase):
         for platform in platforms:
             # Check that platform has configuration
             self.assertIsNotNone(platform, f"Platform {platform} should be configurable")
-
 
 class TestAppSigningAutomationErrorHandling(unittest.TestCase):
     """Test error handling and edge cases"""
@@ -423,7 +415,6 @@ class TestAppSigningAutomationErrorHandling(unittest.TestCase):
         # Should return graceful error
         self.assertIsNotNone(self.automation)
 
-
 def run_tests():
     """Run all tests"""
     # Create test suite
@@ -446,7 +437,6 @@ def run_tests():
     
     # Return exit code
     return 0 if result.wasSuccessful() else 1
-
 
 if __name__ == "__main__":
     exit_code = run_tests()

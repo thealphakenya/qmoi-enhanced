@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 "use client";
 import React, { useState } from "react";
 
@@ -19,7 +19,7 @@ export function QiSpaces() {
         <input
           value={name}
           onChange={(_e) => setName(_e.target.value)}
-          [PRODUCTION READY]="Add new space..."
+          
         />
         <button onClick={add} style={{ marginLeft: 8 }}>
           Add

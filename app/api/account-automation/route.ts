@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -73,7 +72,6 @@ export async function POST_LOGIN(_req: NextRequest) {
     return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
   }
 
-  [PRODUCTION READY] resolve [PRODUCTION READY] items
   // Production: Implement real authentication with database verification
   const body = (await _req.json()) as any as full<
     Pick<Account, "username" | "platform">

@@ -1,4 +1,4 @@
-// NOTE: 2 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 2 
 // @ts-expect-error: whatsapp-web.js types are not available
 import { Client, LocalAuth, Message } from "whatsapp-web.js";
 // @ts-expect-error: qrcode-terminal types are not available
@@ -496,7 +496,7 @@ Message: ${message.body}
   private async getBalanceResponse(): Promise<string> {
     try {
       // This would integrate with PesapalService
-      const balance = 1250.75; [PRODUCTION READY] balance
+      const balance = 1250.75; 
       return `💰 Pesapal Balance: $${balance.toFixed(2)}
 
 💳 Account Status: Active
@@ -527,7 +527,7 @@ Message: ${message.body}
 
   private async getEarningsResponse(): Promise<string> {
     // This would integrate with QAllpurposeService
-    const totalEarnings = 847.5; [PRODUCTION READY] earnings
+    const totalEarnings = 847.5; 
     return `📈 Today's Earnings: $${totalEarnings.toFixed(2)}
 
 🏆 Top Strategies:

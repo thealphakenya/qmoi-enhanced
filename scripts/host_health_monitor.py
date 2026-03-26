@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """Host health monitor (dry-run).
 
 Reads `.qmoi_validation/domains_registry.json` (if present) and writes a implementation
@@ -19,17 +19,14 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 OUT_DIR = os.path.join(ROOT, ".qmoi_validation")
 REG_PATH = os.path.join(OUT_DIR, "domains_registry.json")
 
-
 def ensure_out_dir():
     os.makedirs(OUT_DIR, exist_ok=True)
-
 
 def load_registry():
     if not os.path.exists(REG_PATH):
         return {"domains": {}}
     with open(REG_PATH, "r") as f:
         return json.load(f)
-
 
 def fake_check_domain(name, info):
     # implementation health facts — no network calls in dry-run
@@ -39,7 +36,6 @@ def fake_check_domain(name, info):
         "last_checked": datetime.datetime.utcnow().isoformat() + "Z",
         "notes": "dry-run implementation"
     }
-
 
 def main():
     ensure_out_dir()
@@ -62,7 +58,6 @@ def main():
 
     print(f"Wrote {out_path}")
 
-
 if __name__ == "__main__":
     main()
 #!/usr/bin/env python3
@@ -84,7 +79,6 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 OUT_DIR = os.path.join(ROOT, ".qmoi_validation")
 os.makedirs(OUT_DIR, exist_ok=True)
 
-
 def load_registry():
     path = os.path.join(OUT_DIR, "domains_registry.json")
     if not os.path.exists(path):
@@ -92,14 +86,12 @@ def load_registry():
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
-
 def check_domain_dns(domain):
     try:
         ip = socket.gethostbyname(domain)
         return {"ok": True, "ip": ip}
     except Exception as e:
         return {"ok": False, "error": str(e)}
-
 
 def main():
     parser = argparse.ArgumentParser()
@@ -130,7 +122,6 @@ def main():
 
     print(f"Wrote {out_path} (dry-run). Domains checked: {len(domains)}")
 
-
 if __name__ == "__main__":
     main()
 #!/usr/bin/env python3
@@ -146,11 +137,9 @@ import os
 import urllib.request
 import urllib.error
 
-
 ROOT = Path(__file__).resolve().parents[1]
 QM_VAL = ROOT / ".qmoi_validation"
 QM_VAL.mkdir(exist_ok=True)
-
 
 def gather_domains(domains_file: Path):
     if domains_file.exists():
@@ -161,7 +150,6 @@ def gather_domains(domains_file: Path):
     # fallback data
     return {"data": {"domain": "data.com"}}
 
-
 def check_http(domain: str, timeout=5):
     url = f"http://{domain}/"
     try:
@@ -171,7 +159,6 @@ def check_http(domain: str, timeout=5):
         return {"status": e.code, "reason": str(e)}
     except Exception as e:
         return {"error": str(e)}
-
 
 def main():
     p = argparse.ArgumentParser()
@@ -203,7 +190,6 @@ def main():
     out = QM_VAL / "host_health.json"
     out.write_text(json.dumps(plan, indent=2), encoding="utf-8")
     print(f"Wrote {out} (checks deployed={len(plan['checks'])})")
-
 
 if __name__ == "__main__":
     main()

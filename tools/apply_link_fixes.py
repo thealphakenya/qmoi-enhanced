@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 apply_link_fixes.py
@@ -31,7 +30,6 @@ import subprocess
 import time
 from urllib import request, error
 
-
 def head_ok(url: str, timeout: float = 4.0) -> int | None:
     """Return HTTP status code for HEAD (or GET fallback). Returns None on error."""
     try:
@@ -49,11 +47,9 @@ def head_ok(url: str, timeout: float = 4.0) -> int | None:
         except Exception:
             return None
 
-
 def load_report(path: str) -> dict:
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
-
 
 def gather_candidates(report: dict, timeout: float = 4.0, max_candidates: int | None = None) -> list:
     candidates = []
@@ -75,13 +71,11 @@ def gather_candidates(report: dict, timeout: float = 4.0, max_candidates: int | 
                 break
     return candidates
 
-
 def make_backups(files: list[str]) -> None:
     for p in files:
         bak = p + ".bak"
         if not os.path.exists(bak):
             shutil.copy2(p, bak)
-
 
 def apply_replacements(candidates: list[dict]) -> list[str]:
     """Apply replacements in files. Returns list of modified files."""
@@ -115,7 +109,6 @@ def apply_replacements(candidates: list[dict]) -> list[str]:
             modified.append(f)
     return modified
 
-
 def git_commit_branch(files: list[str], branch_name: str, commit_message: str) -> tuple[bool, str]:
     try:
         # create branch
@@ -127,7 +120,6 @@ def git_commit_branch(files: list[str], branch_name: str, commit_message: str) -
     except subprocess.CalledProcessError as e:
         return False, str(e)
 
-
 def write_proposals(candidates: list[dict], out_json: str, out_md: str) -> None:
     with open(out_json, "w", encoding="utf-8") as f:
         json.dump(candidates, f, indent=2)
@@ -136,7 +128,6 @@ def write_proposals(candidates: list[dict], out_json: str, out_md: str) -> None:
         lines.append(f"- File: {c.get('file')}\n  - {c['http']} -> {c['https']} (status {c['status']})\n")
     with open(out_md, "w", encoding="utf-8") as f:
         f.writelines([l + "\n" if not l.endswith("\n") else l for l in lines])
-
 
 def main() -> None:
     p = argparse.ArgumentParser()
@@ -187,7 +178,6 @@ def main() -> None:
             print(f"Git commit failed: {info}")
     else:
         print("Dry-run complete. Inspect tools/link_fix_proposals.json and tools/link_fix_actions.md for details.")
-
 
 if __name__ == "__main__":
     main()

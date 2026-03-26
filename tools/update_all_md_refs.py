@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:51Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 Regenerate `ALLMDFILESREFS.md` by scanning the repository for `.md` files.

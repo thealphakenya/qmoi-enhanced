@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:04Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY]
 import os
 import re
 import time
@@ -18,11 +17,9 @@ unused_components = set()
 
 # Helper to normalize import paths for comparison.
 
-
 def normalize_import_path(path: str) -> str:
     # Remove file extensions and normalize separators
     return os.path.normpath(re.sub(r"\.(js|jsx|ts|tsx)$", "", path))
-
 
 # Build a set of all import targets from file imports/requires
 imported_targets = set()
@@ -33,7 +30,6 @@ INTENTIONAL_UNUSED_MARKER = "INTENTIONAL_UNUSED"
 IMPORT_RE = re.compile(r"(?:import\s+(?:[^\n]+?)\s+from\s+|require\()(?P<quote>['\"])(?P<path>.+?)(?P=quote)")
 
 # Resolve an import path to an absolute file-like path (without extension).
-
 
 def resolve_import(base_file: str, imp: str) -> str | None:
     # Only resolve relative paths, absolute root paths, and project alias paths.
@@ -47,7 +43,6 @@ def resolve_import(base_file: str, imp: str) -> str | None:
         return None
 
     return normalize_import_path(abs_path)
-
 
 # Scan all relevant source files for imports
 for scan_dir in COMPONENT_DIRS:

@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:51Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 Poll PR #94 check-runs; if all checks succeed, merge the PR.
@@ -31,12 +30,10 @@ HEADERS = {"Accept": "application/vnd.github+json", "Authorization": f"token {GI
 
 API_BASE = f"https://api.github.com/repos/{REPO}"
 
-
 def api_get(path: str):
     req = urllib.request.Request(f"{API_BASE}{path}", headers=HEADERS)
     with urllib.request.urlopen(req, timeout=30) as resp:
         return json.load(resp)
-
 
 def api_put(path: str, data: dict | None = None):
     data_bytes = None
@@ -46,13 +43,11 @@ def api_put(path: str, data: dict | None = None):
     with urllib.request.urlopen(req, timeout=30) as resp:
         return json.load(resp)
 
-
 def api_post(path: str, data: dict):
     data_bytes = json.dumps(data).encode("utf-8")
     req = urllib.request.Request(f"{API_BASE}{path}", data=data_bytes, headers={**HEADERS, "Content-Type": "application/json"}, method="POST")
     with urllib.request.urlopen(req, timeout=30) as resp:
         return json.load(resp)
-
 
 def poll_check_runs(sha: str, polls: int = 12, delay: int = 10):
     last = None
@@ -73,7 +68,6 @@ def poll_check_runs(sha: str, polls: int = 12, delay: int = 10):
         time.sleep(delay)
     return "timeout", last
 
-
 def download_job_logs(job_id: int, out_path: str):
     url = f"https://api.github.com/repos/{REPO}/actions/jobs/{job_id}/logs"
     req = urllib.request.Request(url, headers=HEADERS)
@@ -88,7 +82,6 @@ def download_job_logs(job_id: int, out_path: str):
         print("Failed to download logs for", job_id, e)
         return False
 
-
 def extract_errors_from_log_file(path: str) -> list[str]:
     patterns = ["ModuleNotFoundError", "No module named", "Cannot find module", "Can't resolve", "Process completed with exit code", "The server is busy"]
     found = []
@@ -101,7 +94,6 @@ def extract_errors_from_log_file(path: str) -> list[str]:
     except Exception as e:
         print("Error reading log", path, e)
     return found
-
 
 def main():
     status, runs = poll_check_runs(SHA, polls=12, delay=10)
@@ -168,7 +160,6 @@ def main():
             print("Failed to create PR:", e)
     else:
         print("No autofix branch created by tool; nothing to push/create PR for.")
-
 
 if __name__ == "__main__":
     main()

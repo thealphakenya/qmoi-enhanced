@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """
 QMOI Link Cacher & Offline Document Generator
 Mirrors external documents and assets for offline access.
@@ -237,7 +237,6 @@ class LinkCacher:
         self.manifest_path.write_text(json.dumps(self.manifest, indent=2))
         print(f"📋 Manifest saved: {self.manifest_path}")
 
-
 def main():
     parser = argparse.ArgumentParser(description="QMOI Link Cacher & Offline Site Generator")
     parser.add_argument("--report", default="link_report.json", help="Link report JSON file")
@@ -272,7 +271,6 @@ def main():
         cacher.generate_static_site()
 
     print("✅ Done!")
-
 
 if __name__ == "__main__":
     main()

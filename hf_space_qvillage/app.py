@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """
 QVillage Gradio App for Hugging Face Spaces.
 
@@ -43,7 +43,6 @@ MAX_API_CALLS = int(os.getenv("MAX_API_CALLS_PER_HOUR", "100"))
 
 # Rate limiting state
 api_call_count = {}
-
 
 async def safe_arxiv_call(query: str, max_results: int = 20) -> Optional[dict]:
     """
@@ -85,7 +84,6 @@ async def safe_arxiv_call(query: str, max_results: int = 20) -> Optional[dict]:
             "error": f"Failed to fetch papers: {str(e)}",
             "papers": [],
         }
-
 
 async def fetch_daily_papers(tag_filter: str = None) -> str:
     """Fetch today's curated papers from arXiv."""
@@ -135,7 +133,6 @@ async def fetch_daily_papers(tag_filter: str = None) -> str:
     
     return "\n" + "---\n".join(output_lines)
 
-
 # Simple in-memory knowledge base
 KNOWLEDGE_BASE = [
     {
@@ -174,7 +171,6 @@ KNOWLEDGE_BASE = [
         "score": 0.82
     }
 ]
-
 
 async def search_knowledge_base(query: str) -> str:
     """Search knowledge base with free tier limits."""
@@ -219,7 +215,6 @@ async def search_knowledge_base(query: str) -> str:
     
     return "\n" + "---\n".join(output_lines)
 
-
 def get_upgrade_html(feature_name: str, feature_description: str) -> str:
     """Generate HTML for upgrade prompt."""
     session_token = generate_session_token()
@@ -256,7 +251,6 @@ def get_upgrade_html(feature_name: str, feature_description: str) -> str:
     </div>
     """
 
-
 async def load_trending_papers() -> str:
     """Load trending papers for initial page load."""
     # Fetch recent papers as "trending"
@@ -277,7 +271,6 @@ async def load_trending_papers() -> str:
     
     return "\n".join(output_lines)
 
-
 async def get_community_stats() -> str:
     """Get community statistics."""
     # Mock stats - in production, this could come from a database
@@ -291,7 +284,6 @@ async def get_community_stats() -> str:
     - 📄 {papers:,} Research Papers
     - 💬 {discussions:,} Discussions
     """
-
 
 def get_about_html() -> str:
     """Generate About page."""
@@ -340,7 +332,6 @@ def get_about_html() -> str:
         </p>
     </div>
     """
-
 
 # ============================================================================
 # Build Gradio Interface
@@ -486,7 +477,6 @@ async def create_interface():
                 gr.HTML(get_about_html())
     
     return demo
-
 
 # ============================================================================
 # Main

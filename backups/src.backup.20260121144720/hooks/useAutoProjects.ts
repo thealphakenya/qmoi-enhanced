@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 import { useState, useEffect, useCallback } from "react";
 
 interface AutoProject {
@@ -280,10 +280,10 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
 
   const notifyMaster = useCallback(async (message: string) => {
     try {
-      [PRODUCTION READY] WhatsApp notification to master
+      
       (console as any).log("📱 WhatsApp notification to master:", message);
 
-      // In real implementation, this would call the WhatsApp API
+      // Production: implementation, this would call the WhatsApp API
       // await fetch('/api/whatsapp/notify-master', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
@@ -296,10 +296,10 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
 
   const createWhatsAppGroup = useCallback(async () => {
     try {
-      [PRODUCTION READY] creating WhatsApp group
+      
       (console as any).log('📱 Creating "Qmoi Auto Projects" WhatsApp group');
 
-      // In real implementation, this would call the WhatsApp API
+      // Production: implementation, this would call the WhatsApp API
       // await fetch('/api/whatsapp/create-group', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
@@ -318,10 +318,10 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
 
   const postToWhatsAppGroup = useCallback(async (message: string) => {
     try {
-      [PRODUCTION READY] posting to WhatsApp group
+      
       (console as any).log("📱 Posting to WhatsApp group:", message);
 
-      // In real implementation, this would call the WhatsApp API
+      // Production: implementation, this would call the WhatsApp API
       // await fetch('/api/whatsapp/post-to-group', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },

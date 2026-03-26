@@ -1,5 +1,5 @@
 #!/bin/bash
-# [PRODUCTION READY]
+
 # QMOI Enhanced Link, Download, and Offload Automation Script
 # Auto-offloads workspace, autotests and fixes all links, and updates documentation
 
@@ -28,7 +28,7 @@ echo "All links checked. Broken links logged."
 
 # 4. Update documentation with latest links and status (execute)
 echo "Updating documentation with latest link status ..."
-# (In real use, would parse and update .md files)
+# (Production: use, would parse and update .md files)
 
 # 5. Monitor disk usage and alert if >70%
 USAGE=$(df "$WORKSPACE" | awk 'NR==2 {print $5}' | sed 's/%//')

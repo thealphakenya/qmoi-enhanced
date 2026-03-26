@@ -1,7 +1,7 @@
-[PRODUCTION READY] all markers normalized for completion
+
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 2 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 2 
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 import { requireApiKey } from "../../../../lib/proposals";
@@ -104,7 +104,6 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
       provider: cloudProvider,
     });
 
-    [PRODUCTION READY] cloud processing
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     task.status = "processing";
@@ -117,7 +116,6 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
       progress: task.progress,
     });
 
-    [PRODUCTION READY] completion
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     task.status = "completed";

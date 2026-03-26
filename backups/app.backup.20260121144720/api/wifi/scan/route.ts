@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -66,7 +66,7 @@ async function connectToWiFi({
   // Production: Use system API/service to connect to WiFi
   // Requires: nmcli (Linux), netsh (Windows), or node-wifiscanner
   // Implementation: Use system commands or nmcli-node package
-  [PRODUCTION READY] connection
+  
   if (password === "correct-password") {
     return {
       success: true,

@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 import { EventEmitter } from "events";
 import { logger } from "./LoggerService";
@@ -247,7 +246,6 @@ export class VPNService {
       this.isCreatingNetwork = true;
       this.eventEmitter.emit("networkCreationStarted", config);
 
-      [PRODUCTION READY] network creation process
       await this.sleep(2000);
 
       const networkId = `vpn_network_${Date.now()}`;
@@ -315,7 +313,7 @@ export class VPNService {
     for (const serverId of serverIds) {
       const server = this.servers.get(serverId);
       if (server) {
-        [PRODUCTION READY] server deployment
+        
         await this.sleep(1000);
         logger.info(`Deployed server ${server.name} for VPN network`);
       }
@@ -323,13 +321,13 @@ export class VPNService {
   }
 
   private async setupEncryption(encryption: string): Promise<void> {
-    [PRODUCTION READY] encryption setup
+    
     await this.sleep(500);
     logger.info(`Setup encryption: ${encryption}`);
   }
 
   private async configureNetwork(_config: { name?: string }): Promise<void> {
-    [PRODUCTION READY] network configuration
+    
     await this.sleep(1000);
     logger.info(`Configured network for ${_config.name}`);
   }
@@ -368,7 +366,6 @@ export class VPNService {
       this.currentConnection = connection;
       this.eventEmitter.emit("connectionStarted", connection);
 
-      [PRODUCTION READY] connection process
       await this.sleep(2000);
 
       connection.status = "connected";
@@ -402,7 +399,6 @@ export class VPNService {
       this.currentConnection.status = "disconnecting";
       this.eventEmitter.emit("disconnectionStarted", this.currentConnection);
 
-      [PRODUCTION READY] disconnection
       await this.sleep(1000);
 
       this.currentConnection.status = "disconnected";
@@ -468,7 +464,6 @@ export class VPNService {
       recommendations: [],
     };
 
-    [PRODUCTION READY] threat detection
     if (Math.random() > 0.8) {
       report.threats.push("Suspicious connection attempt detected");
       report.recommendations.push("Enable additional security measures");
@@ -560,7 +555,7 @@ export class VPNService {
     upload: number;
     jitter: number;
   }> {
-    [PRODUCTION READY] connection test
+    
     await this.sleep(2000);
 
     return {

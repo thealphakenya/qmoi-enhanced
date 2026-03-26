@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 A clean runner for link checking (stdlib only).
@@ -28,7 +27,6 @@ DNS_TIMEOUT = 2.0
 HTTP_TIMEOUT = 4.0
 MAX_WORKERS = min(20, max(4, (os.cpu_count() or 2) * 2))
 
-
 def find_md_files(root):
     for dirpath, dirs, files in os.walk(root):
         if os.path.abspath(dirpath).startswith(os.path.abspath(TOOLS_DIR)):
@@ -39,10 +37,8 @@ def find_md_files(root):
             if f.lower().endswith('.md'):
                 yield os.path.join(dirpath, f)
 
-
 def extract_links(text):
     return [m.group(0).rstrip('.,:;') for m in LINK_RE.finditer(text)]
-
 
 def resolve_hostname(hostname: str):
     try:
@@ -56,7 +52,6 @@ def resolve_hostname(hostname: str):
             socket.setdefaulttimeout(orig)
     except Exception:
         return []
-
 
 def http_check(url: str):
     rec = {'url': url, 'status': None, 'error': None, 'elapsed': None}
@@ -80,7 +75,6 @@ def http_check(url: str):
     rec['error'] = f'network_error: {last}'
     rec['elapsed'] = time.time() - t0
     return rec
-
 
 def main():
     md_files = list(find_md_files(ROOT))
@@ -151,7 +145,6 @@ def main():
             fh.write('No failures detected.\n')
 
     print('Reports written:', inv_path, out_json, out_md)
-
 
 if __name__ == '__main__':
     main()

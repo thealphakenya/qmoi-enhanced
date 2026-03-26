@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -102,7 +101,7 @@ export const AWSCredentialsModal: React.FC<Props> = ({
             <input
               ref={firstInputRef}
               aria-label="Access Key ID"
-              [PRODUCTION READY]="Access Key ID"
+              
               value={accessKeyId}
               onChange={(e) => setAccessKeyId(e.target.value)}
               style={{ width: "100%", marginBottom: 8 }}
@@ -115,7 +114,7 @@ export const AWSCredentialsModal: React.FC<Props> = ({
             </span>
             <input
               aria-label="Secret Access Key"
-              [PRODUCTION READY]="Secret Access Key"
+              
               value={secretAccessKey}
               onChange={(e) => setSecretAccessKey(e.target.value)}
               style={{ width: "100%", marginBottom: 8 }}
@@ -129,7 +128,7 @@ export const AWSCredentialsModal: React.FC<Props> = ({
             </span>
             <input
               aria-label="Region"
-              [PRODUCTION READY]="us-east-1"
+              
               value={region}
               onChange={(e) => setRegion(e.target.value)}
               style={{ width: "100%", marginBottom: 8 }}

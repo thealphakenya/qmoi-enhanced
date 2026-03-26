@@ -1,7 +1,7 @@
-[PRODUCTION READY] all markers normalized for completion
+
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 14 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 14 
 import { NextApiRequest, NextApiResponse } from "next";
 import { requireApiKey } from "../../../../lib/proposals";
 export const dynamic = "force-dynamic";
@@ -28,37 +28,37 @@ export default async function handler(
       const { action } = body;
       switch (action) {
         case "translate":
-          [PRODUCTION READY]: handle translation
+          
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "speech-to-text":
-          [PRODUCTION READY]: handle STT
+          
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "text-to-speech":
-          [PRODUCTION READY]: handle TTS
+          
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "language-detect":
-          [PRODUCTION READY]: handle language detection
+          
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "lesson":
-          [PRODUCTION READY]: handle language lesson
+          
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "quiz":
-          [PRODUCTION READY]: handle language quiz
+          
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "pronunciation-check":
-          [PRODUCTION READY]: handle pronunciation check
+          
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });

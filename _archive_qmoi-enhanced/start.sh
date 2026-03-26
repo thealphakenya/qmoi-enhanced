@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+
 #! /bin/bash
 set -euo pipefail
 

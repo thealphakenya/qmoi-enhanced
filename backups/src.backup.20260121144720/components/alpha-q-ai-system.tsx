@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 import React, { useState, useEffect } from "react";
 import { Chatbot } from "./Chatbot";
 import "./AlphaQAiSystem.css";
@@ -24,7 +24,7 @@ const AlphaQAiSystem = () => {
 
   useEffect(() => {
     if (!autoUpdate) return;
-    [PRODUCTION READY] metrics update
+    
     const interval = setInterval(() => {
       setMetrics((prev) => ({
         ...prev,

@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -78,7 +78,7 @@ export default function QAvatar() {
         transition={{ type: "spring" }}
       >
         <img
-          src="/[PRODUCTION READY]-logo.png"
+          src="/
           alt="Q-Avatar"
           className="rounded-full shadow-lg border-4 border-cyan-400"
           style={{ width: 100, height: 100 }}

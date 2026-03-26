@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 1 
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -28,7 +28,6 @@ const PaymentInfoSchema = z.object({
   bankCode: z.string().optional(),
 });
 
-[PRODUCTION READY] database
 const payments: unknown[] = [];
 const paymentLogs: unknown[] = [];
 
@@ -74,7 +73,7 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
 // Payment processing functions
 async function processMpesaPayment(paymentData: unknown) {
   try {
-    [PRODUCTION READY] M-Pesa API call
+    
     const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
       {
@@ -113,7 +112,7 @@ async function processMpesaPayment(paymentData: unknown) {
 
 async function processAirtelPayment(paymentData: unknown) {
   try {
-    [PRODUCTION READY] Airtel Money API call
+    
     const response = await fetch(
       "https://openapiuat.airtel.africa/merchant/v1/payments/",
       {
@@ -155,7 +154,7 @@ async function processAirtelPayment(paymentData: unknown) {
 
 async function processPesapalPayment(paymentData: unknown) {
   try {
-    [PRODUCTION READY] Pesapal API call
+    
     const response = await fetch(
       "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
       {

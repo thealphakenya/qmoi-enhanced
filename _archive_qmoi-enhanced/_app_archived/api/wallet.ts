@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import type { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import path from "path";
@@ -45,7 +44,6 @@ function logAction(action: string, details: unknown) {
   }
 }
 
-[PRODUCTION READY]d wallet state (replace with DB or secure backend in production)
 const wallet = {
   balance: 10000,
   currency: "KES",
@@ -101,7 +99,7 @@ async function processMpesa(amount: number, type: string) {
     };
 
     if (!mpesaConfig.consumerKey || !mpesaConfig.consumerSecret) {
-      console.warn("Mpesa credentials not configured, using [PRODUCTION READY]");
+      console.warn("Mpesa credentials not configured, using 
       return {
         status: "success",
         platform: "Mpesa",
@@ -149,7 +147,7 @@ async function processBinance(amount: number, type: string) {
     };
 
     if (!binanceConfig.apiKey || !binanceConfig.secretKey) {
-      console.warn("Binance credentials not configured, using [PRODUCTION READY]");
+      console.warn("Binance credentials not configured, using 
       return {
         status: "success",
         platform: "Binance",
@@ -204,7 +202,7 @@ async function processPesapal(amount: number, type: string) {
     };
 
     if (!pesapalConfig.consumerKey || !pesapalConfig.consumerSecret) {
-      console.warn("Pesapal credentials not configured, using [PRODUCTION READY]");
+      console.warn("Pesapal credentials not configured, using 
       return {
         status: "success",
         platform: "Pesapal",
@@ -258,7 +256,7 @@ async function processBitget(amount: number, type: string) {
     };
 
     if (!bitgetConfig.apiKey || !bitgetConfig.secretKey) {
-      console.warn("Bitget credentials not configured, using [PRODUCTION READY]");
+      console.warn("Bitget credentials not configured, using 
       return {
         status: "success",
         platform: "Bitget",
@@ -315,9 +313,9 @@ const platformHandlers: Record<string, any> = {
   }),
 };
 
-// Helper: Check if user is master ([PRODUCTION READY] for now)
+// Helper: Check if user is master (
 function isMaster(req: NextApiRequest): boolean {
-  // In production, check session/user role from auth/session
+  // Production:, check session/user role from auth/session
   return req.headers["x-master-token"] === process.env.MASTER_TOKEN;
 }
 

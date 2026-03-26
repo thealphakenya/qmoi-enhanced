@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import { logger } from "../utils/logger";
 import { NotificationService } from "./notification_service";
 
@@ -30,7 +29,7 @@ interface Task {
   projectId: string;
   title: string;
   description: string;
-  status: "[PRODUCTION READY]" | "in-progress" | "review" | "completed";
+  status: "
   priority: "low" | "medium" | "high" | "critical";
   assignee: string;
   dueDate: number;

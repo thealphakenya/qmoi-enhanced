@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -47,14 +46,14 @@ export function LeahWallet() {
         <div className="mb-4">
           <input
             type="number"
-            [PRODUCTION READY]="Amount"
+            
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             className="border rounded px-2 py-1 mr-2"
           />
           <input
             type="text"
-            [PRODUCTION READY]="Note"
+            
             value={note}
             onChange={(e) => setNote(e.target.value)}
             className="border rounded px-2 py-1 mr-2"

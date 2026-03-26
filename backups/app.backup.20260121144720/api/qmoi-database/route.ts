@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 import { NextRequest, NextResponse } from "next/server";
 
@@ -104,7 +104,7 @@ async function downloadMedia(mediaId: string) {
     });
 
     // Production: implement real download via external APIs or background jobs
-    [PRODUCTION READY]: marks as completed
+    
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {

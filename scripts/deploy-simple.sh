@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# Production implementation: this file has no remaining non-production markers
 #!/bin/bash
 
 # QMOI Enhanced - Simplified Production Deployment

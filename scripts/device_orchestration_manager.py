@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:53Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """QMOI Device Orchestration Manager
 Unified multi-platform device/machine app deployment and management
@@ -34,7 +33,6 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger('QMOIDeviceOrchestration')
-
 
 class DeviceOrchestrationManager:
     def __init__(self):
@@ -319,7 +317,6 @@ class DeviceOrchestrationManager:
             'deployments': self.deployments
         }
 
-
 def main():
     import argparse
     
@@ -353,7 +350,6 @@ def main():
         print(json.dumps(status, indent=2, default=str))
     else:
         parser.print_help()
-
 
 if __name__ == '__main__':
     main()

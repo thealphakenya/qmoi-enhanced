@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:05Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 scripts/update_all_percentages.py
@@ -158,7 +157,6 @@ class PercentageUpdater:
         self.collect_metrics()
         self.update_percentage_file()
         self.save_summary_json()
-
 
 if __name__ == '__main__':
     updater = PercentageUpdater()

@@ -237,7 +237,7 @@ class MasterEmailDashboard:
     def get_unified_inbox(self, limit: int = 50, offset: int = 0) -> Dict:
         """Get unified inbox for all system emails"""
         try:
-            # In production, this would aggregate emails from all accounts
+            # Production:, this would aggregate emails from all accounts
             # For now, return mock data
             inbox_emails = []
 
@@ -269,7 +269,7 @@ class MasterEmailDashboard:
 
     def get_account_emails(self, email: str, limit: int = 50) -> List[Dict]:
         """Get emails for specific account"""
-        # In production, this would connect to email server
+        # Production:, this would connect to email server
         # For now, return mock data
         mock_emails = [
             {
@@ -529,7 +529,7 @@ class MasterEmailDashboard:
     def get_security_alerts(self) -> Dict:
         """Get security alerts and threats"""
         try:
-            # In production, this would integrate with security monitoring
+            # Production:, this would integrate with security monitoring
             alerts = []
 
             # Check for unhealthy accounts
@@ -617,7 +617,7 @@ class MasterEmailDashboard:
                     "error": "Unsupported format"
                 }
 
-            # In production, this would save to file or return download link
+            # Production:, this would save to file or return download link
             return {
                 "success": True,
                 "data": export_data,

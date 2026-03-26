@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 tools/auto_fix_build.py
@@ -30,11 +29,9 @@ import time
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
-
 def read_log(path: str) -> str:
     with open(path, "r", encoding="utf-8", errors="ignore") as f:
         return f.read()
-
 
 def find_missing_node_modules(log: str) -> list[str]:
     # matches: Error: Cannot find module 'xxx' or Module not found: Error: Can't resolve 'xxx'
@@ -45,7 +42,6 @@ def find_missing_node_modules(log: str) -> list[str]:
         mods.add(m.split('/')[0])
     return sorted(mods)
 
-
 def find_missing_python_modules(log: str) -> list[str]:
     mods = set()
     for m in re.findall(r"ModuleNotFoundError: No module named ['\"]?([^'\"]+)['\"]?", log):
@@ -54,19 +50,15 @@ def find_missing_python_modules(log: str) -> list[str]:
         mods.add(m)
     return sorted(mods)
 
-
 def git_run(args, **kwargs):
     return subprocess.check_call(["git"] + args, **kwargs)
-
 
 def make_branch(branch: str):
     subprocess.check_call(["git", "checkout", "-b", branch])
 
-
 def commit_changes(message: str):
     subprocess.check_call(["git", "add", "--all"])
     subprocess.check_call(["git", "-c", "commit.gpgsign=false", "commit", "-m", message])
-
 
 def npm_install(mods: list[str]):
     if not os.path.exists(os.path.join(ROOT, "package.json")):
@@ -75,7 +67,6 @@ def npm_install(mods: list[str]):
         # run npm install <mod> --save
         subprocess.check_call(["npm", "install", m, "--save"], cwd=ROOT)
     return True
-
 
 def pip_requirements_add(mods: list[str]):
     req = os.path.join(ROOT, "requirements.txt")
@@ -88,7 +79,6 @@ def pip_requirements_add(mods: list[str]):
             f.write(m + "\n")
     subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", req])
     return True
-
 
 def main():
     p = argparse.ArgumentParser()
@@ -134,7 +124,6 @@ def main():
         print("Push branch and create a PR for review.")
     else:
         print("No changes applied; nothing to commit.")
-
 
 if __name__ == "__main__":
     main()

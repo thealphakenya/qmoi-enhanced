@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 "use client";
 
 "use client";
@@ -77,7 +76,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
   const [tagFilter, setTagFilter] = useState("");
 
   // QMOI Media Manager
-  // To connect to a real API, replace the [PRODUCTION READY] data in useEffect with an API call to fetch media items.
+  // To connect to a real API, replace the 
   // For upload support, add an upload button and handler to POST files to your media API endpoint.
   // See README for more integration details.
 
@@ -105,10 +104,10 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
   const searchMedia = async (query: string) => {
     setIsLoading(true);
     try {
-      [PRODUCTION READY] API call
+      
       await new Promise((resolve) => setTimeout(resolve, 500));
 
-      // In real implementation, this would be an API call
+      // Production: implementation, this would be an API call
       // Using URLSearchParams with proper type checking
       const searchParams = new (
         globalThis.URLSearchParams || URLSearchParams
@@ -116,7 +115,6 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
       searchParams.append("q", query);
       searchParams.append("type", selectedType);
 
-      [PRODUCTION READY] response filtering
       const filtered = mediaItems.filter(
         (item) =>
           item.name.toLowerCase().includes(query.toLowerCase()) ||
@@ -137,7 +135,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
     setDownloadProgress((prev) => ({ ...prev, [item.id]: 0 }));
 
     try {
-      [PRODUCTION READY] download progress
+      
       for (let i = 0; i <= 100; i += 10) {
         await new Promise((resolve) => setTimeout(resolve, 100));
         setDownloadProgress((prev) => ({ ...prev, [item.id]: i }));
@@ -287,7 +285,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
           {/* Search and Filter */}
           <div className="flex gap-2">
             <Input
-              [PRODUCTION READY]="Search media files..."
+              
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="flex-1"
@@ -311,7 +309,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
             </Button>
           </div>
 
-          {/* Upload Button ([PRODUCTION READY]) */}
+          {/* Upload Button (
           <div className="mb-2 flex items-center gap-2">
             <span
               className={`px-2 py-1 rounded text-xs ${

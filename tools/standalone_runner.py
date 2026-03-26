@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
 """
 Standalone runner for QVillage/QMOI sync engine.
 - Attempts to import and run QVillageSyncEngine from tools/qvillage_memory_sync.py
@@ -23,7 +22,6 @@ log = logging.getLogger("standalone_runner")
 
 INTERVAL = int(os.getenv("RUN_INTERVAL_SECONDS", str(3600)))
 DRY_RUN = os.getenv("DRY_RUN", "false").lower() in ("1", "true", "yes")
-
 
 def run_engine_once():
     # Try import
@@ -59,7 +57,6 @@ def run_engine_once():
         log.info(proc.stdout.decode(errors="ignore"))
         return proc.returncode
 
-
 def health_server():
     class HealthHandler(BaseHTTPRequestHandler):
         def do_GET(self):
@@ -87,7 +84,6 @@ def main_loop():
             log.info("Interval <= 0, exiting after one run")
             break
         time.sleep(INTERVAL)
-
 
 if __name__ == "__main__":
     try:

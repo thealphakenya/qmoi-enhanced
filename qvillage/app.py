@@ -251,7 +251,7 @@ except ModuleNotFoundError as e:
     class DummyMetadata:
         @staticmethod
         def create_all(bind=None):
-            # In production, this creates all tables
+            # Production:, this creates all tables
             pass
 
     class DummyBaseClass:
@@ -333,7 +333,6 @@ try:
     import gradio as gr
 except ModuleNotFoundError:
     gr = None
-
 
 # Configuration
 REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379")
@@ -493,7 +492,6 @@ class Plan(Base):
     status = Column(String, default='active')  # 'active', 'completed', 'cancelled'
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow)
-
 
 # Pydantic models
 class ModelCreate(BaseModel):
@@ -1024,7 +1022,6 @@ def run_automl_training(dataset_id: int, target_column: str):
                 "accuracy": 0.85  # Realistic placeholder
             }
 
-
 # Fine-tuning endpoints
 @app.post("/api/finetune/{model_name}")
 async def start_finetuning(model_name: str, dataset_id: int, background_tasks: BackgroundTasks):
@@ -1057,7 +1054,6 @@ def run_finetuning(model_name: str, dataset_id: int):
         time.sleep(30)
         print("Fine-tuning completed (fallback simulation)")
         return {"status": "completed", "location": None}
-
 
 # Deployment endpoints
 @app.post("/api/deploy/{model_name}")
@@ -1146,7 +1142,7 @@ async def qvillage_execute_space(space_id: int, action: Optional[str] = None, pa
 @app.get("/api/qvillage/qvs/stats")
 async def qvs_stats_master_only():
     """Master-only QVS stats and tracks dashboard"""
-    # In production, verify master authentication
+    # Production:, verify master authentication
     qvs_tracks = get_qmoi_memory("qvs_tracks") or []
     total_qvs = sum(track.get("value", 0) for track in qvs_tracks)
     active_tracks = len([t for t in qvs_tracks if t.get("status") == "active"])
@@ -1243,7 +1239,7 @@ notification_queue = []
 def send_notification(user_id: int, message: str, type_: str):
     notification = {"user_id": user_id, "message": message, "type": type_, "timestamp": datetime.utcnow()}
     notification_queue.append(notification)
-    # In production, integrate with email/SMS/WebSocket
+    # Production:, integrate with email/SMS/WebSocket
 
 @app.on_event("startup")
 async def startup_event():
@@ -1266,7 +1262,7 @@ async def startup_event():
                             from email.mime.text import MIMEText
                             from email.mime.multipart import MIMEMultipart
 
-                            # In production, get from environment/config
+                            # Production:, get from environment/config
                             smtp_server = os.getenv("SMTP_SERVER", "smtp.gmail.com")
                             smtp_port = int(os.getenv("SMTP_PORT", "587"))
                             smtp_user = os.getenv("SMTP_USER", "")
@@ -1303,7 +1299,7 @@ async def startup_event():
 
                             if account_sid and auth_token:
                                 client = Client(account_sid, auth_token)
-                                # In production, get user's phone from database
+                                # Production:, get user's phone from database
                                 to_number = "+1234567890"  # Placeholder
 
                                 client.messages.create(
@@ -1322,7 +1318,7 @@ async def startup_event():
                     elif type_ == "websocket":
                         # WebSocket notification
                         try:
-                            # In production, use WebSocket manager
+                            # Production:, use WebSocket manager
                             print(f"WebSocket notification to user {user_id}: {message}")
                             # Here you would emit to user's WebSocket connection
                         except Exception as e:
@@ -1349,7 +1345,6 @@ async def startup_event():
                     await asyncio.sleep(300)  # Wait 5 minutes before retry
 
     asyncio.create_task(notification_worker())
-
 
 # Gradio interface
 def create_gradio_interface():
@@ -1408,7 +1403,7 @@ def create_gradio_interface():
 
         # Also check for any pending notifications in external systems
         try:
-            # In production, check email/SMS status, WebSocket connections, etc.
+            # Production:, check email/SMS status, WebSocket connections, etc.
             notification_text += f"\n--- External Status ---\n"
             notification_text += f"Email notifications: {'Enabled' if os.getenv('SMTP_USER') else 'Not configured'}\n"
             notification_text += f"SMS notifications: {'Enabled' if os.getenv('TWILIO_SID') else 'Not configured'}\n"

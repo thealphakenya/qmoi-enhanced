@@ -1,5 +1,4 @@
 #!/bin/bash
-# [PRODUCTION READY]
 
 ###############################################################################
 # COMPREHENSIVE NON-PRODUCTION CODE SCANNER

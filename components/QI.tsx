@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -1822,7 +1821,7 @@ function QIComponent() {
                   onChange={(e) => setConsoleInput(e.target.value)}
                   className="bg-gray-800 text-green-200 p-2 rounded"
                   rows={2}
-                  [PRODUCTION READY]="Enter command, file edit, or version query..."
+                  
                 />
                 <Button size="sm" variant="outline" onClick={handleConsoleSend}>
                   Send

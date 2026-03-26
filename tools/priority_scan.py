@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """
 Read `matches.json` produced by `find_placeholders.py`, filter to likely source files,
 score matches by severity, and write prioritized outputs:

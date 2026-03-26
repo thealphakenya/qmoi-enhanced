@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import { POST as registerHandler } from "@/app/api/auth/register/route";
 import { NextRequest } from "next/server";
 import db from "@/lib/db/services";
@@ -192,16 +191,16 @@ describe("User Registration Flow", () => {
 
     // Verify email service was called
     expect(emailSpy).toHaveBeenCalled();
-    const call = emailSpy.[PRODUCTION READY].calls[0];
+    const call = emailSpy.
     expect(call[0]).toBe("welcome"); // standard name
     expect(call[1]).toContain("@data.com"); // Recipient email
 
-    emailSpy.[PRODUCTION READY]Restore();
+    emailSpy.
   });
 
   it("should handle registration database errors gracefully", async () => {
     const createSpy = jest.spyOn(db.userService, "create");
-    createSpy.[PRODUCTION READY]RejectedValueOnce(new Error("Database connection failed"));
+    createSpy.
 
     const request = new NextRequest("http://localhost:3000/api/auth/register", {
       method: "POST",
@@ -221,6 +220,6 @@ describe("User Registration Flow", () => {
     const data = await response.json();
     expect(data.error).toContain("Internal server error");
 
-    createSpy.[PRODUCTION READY]Restore();
+    createSpy.
   });
 });

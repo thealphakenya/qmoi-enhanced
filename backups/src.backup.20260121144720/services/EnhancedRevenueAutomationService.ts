@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 import { EventEmitter } from "events";
 
 interface RevenueProjectRequest {
@@ -138,7 +138,7 @@ export class EnhancedRevenueAutomationService extends EventEmitter {
   }
 
   private discoverDeals(platforms: string[]): PlatformDeal[] {
-    [PRODUCTION READY] deal discovery
+    
     return platforms.map((platform) => ({
       platform,
       dealType: "affiliate",

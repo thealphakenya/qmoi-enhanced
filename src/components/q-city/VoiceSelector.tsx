@@ -123,7 +123,6 @@ export function VoiceSelector({
 
       if (!_response.ok) throw new Error("Failed to play preview");
 
-      [PRODUCTION READY] audio playback
       setTimeout(() => setIsPlaying(false), 3000);
     } catch (_e: unknown) {
       console.warn(String(_e));
@@ -246,7 +245,7 @@ export function VoiceSelector({
                 onChange={(_e) => setPreviewText(_e.target.value)}
                 className="w-full p-3 border rounded-md resize-none"
                 rows={3}
-                [PRODUCTION READY]="Enter text to preview the voice..."
+                
               />
             </div>
 

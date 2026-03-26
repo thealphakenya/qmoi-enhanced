@@ -1,5 +1,4 @@
 #!/bin/bash
-# [PRODUCTION READY]
 
 #══════════════════════════════════════════════════════════════════════════════#
 #  🚀 QMOI Multi-Platform Real-Time Release Publisher                          #

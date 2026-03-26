@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:32Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import { useState } from "react";
 
 export function useLargeFileUpload() {
@@ -13,7 +12,6 @@ export function useLargeFileUpload() {
   >("idle");
   const [error, setError] = useState<string | null>(null);
 
-  [PRODUCTION READY] chunked upload (replace with real API)
   const uploadFile = async (file: File) => {
     setStatus("uploading");
     setError(null);

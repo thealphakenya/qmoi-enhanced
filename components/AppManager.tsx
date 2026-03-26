@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 import React, { useState, useEffect } from "react";
 import {
@@ -433,7 +432,7 @@ export default function AppManager() {
               <div className="relative flex-1 max-w-md">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
                 <Input
-                  [PRODUCTION READY]="Search apps..."
+                  
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-10"

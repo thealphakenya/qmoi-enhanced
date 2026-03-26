@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """Safe implementation auto-fixer (broad).
 
 - Dry-run mode: reports counts and data lines, does not modify files.
@@ -31,7 +31,6 @@ KEY_PLAIN_PAT = re.compile(r"TODO_PROD-key")
 
 report = {"modified": [], "dry_run_matches": [], "errors": []}
 
-
 def is_skipped(path: Path):
     for part in path.parts:
         if part in SKIP_DIRS:
@@ -39,7 +38,6 @@ def is_skipped(path: Path):
         if part.startswith('.venv'):
             return True
     return False
-
 
 def process_file(path: Path, apply: bool):
     try:
@@ -78,7 +76,6 @@ def process_file(path: Path, apply: bool):
         return
     except Exception as e:
         report['errors'].append({"file": path.as_posix(), "error": str(e)})
-
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser()

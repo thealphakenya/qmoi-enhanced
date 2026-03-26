@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# [PRODUCTION READY]
+
 set -euo pipefail
 
 KEYWORDS=(implementation real execute simulation production implement DONE FIXED "PENDING_IMPLEMENTATION")

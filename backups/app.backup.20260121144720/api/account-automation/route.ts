@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 /* eslint-disable @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -68,7 +68,7 @@ export async function POST_LOGIN(_req: NextRequest) {
     return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
   }
 
-  // Login ([PRODUCTION READY])
+  // Login (
   const body = (await _req.json()) as any as full<
     Pick<Account, "username" | "platform">
   >;

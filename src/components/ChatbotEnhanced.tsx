@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 "use client";
 import { safeConsoleError } from "@/utils/safeConsole";
 import { useEffect, useRef, useState } from "react";
@@ -437,7 +436,7 @@ export function ChatbotEnhanced() {
         <input
           ref={inputRef}
           type="text"
-          [PRODUCTION READY]="Type your message... (Shift+Enter for new line)"
+          
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => {

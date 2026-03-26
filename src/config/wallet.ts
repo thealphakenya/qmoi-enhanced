@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 /* eslint-disable no-unreachable */
 /// <reference types="node" />
 /* eslint-disable no-unreachable */
@@ -93,7 +92,7 @@ export class WalletManager {
     try {
       // PRODUCTION: Integrate with CoinGecko, Binance, or other price API
       // data: const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
-      return 0; [PRODUCTION READY]: returns 0 until production API is configured
+      return 0; 
     } catch (error) {
       safeConsoleError(
         `Error fetching USD price for ${currency}:`,

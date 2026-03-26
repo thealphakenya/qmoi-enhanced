@@ -124,7 +124,6 @@ skip_extensions = {
 # Maximum file size for scanning to avoid timeout issues while remaining comprehensive.
 max_file_size_bytes = 20 * 1024 * 1024
 
-
 def is_whitelisted(file_path):
     rel = os.path.relpath(file_path, root_dir).replace('\\', '/').lower()
 
@@ -137,7 +136,6 @@ def is_whitelisted(file_path):
             return True
 
     return False
-
 
 def scan_file(file_path):
     global scanned_files, skipped_non_text, ready_files
@@ -189,7 +187,6 @@ def scan_file(file_path):
 
     if hits and not is_whitelisted(file_path):
         results.append({'filePath': os.path.relpath(file_path, root_dir), 'hits': hits, 'ready': is_ready})
-
 
 def perform_scan(root_dir, include_whitelist=False, max_size=max_file_size_bytes):
     global scanned_files, skipped_non_text, ready_files, results
@@ -278,7 +275,6 @@ def perform_scan(root_dir, include_whitelist=False, max_size=max_file_size_bytes
         print(f'Scan complete. No non-production markers found. undone.txt cleared. Scanned {scanned_files} files.')
         print(f'Skipped due to read errors/non-text: {skipped_non_text}')
 
-
 def parse_args():
     import argparse
     parser = argparse.ArgumentParser(description='Scan repository for non-production markers')
@@ -286,7 +282,6 @@ def parse_args():
     parser.add_argument('--include-whitelist', action='store_true', help='Include files in the whitelist for marker detection')
     parser.add_argument('--max-size', type=int, default=max_file_size_bytes, help='Max file size in bytes to scan (default 20MB)')
     return parser.parse_args()
-
 
 if __name__ == '__main__':
     args = parse_args()

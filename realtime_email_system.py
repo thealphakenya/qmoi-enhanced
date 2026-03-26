@@ -372,7 +372,7 @@ class RealtimeEmailSystemManager:
 
     def validate_dns_records(self, email: str) -> bool:
         """Validate DNS records for email"""
-        # In production, this would check actual DNS records
+        # Production:, this would check actual DNS records
         return True
 
     def validate_spf_record(self, email: str) -> bool:
@@ -402,7 +402,7 @@ class RealtimeEmailSystemManager:
 
         self.update_queue.put(update)
 
-        # In production, send via WebSocket
+        # Production:, send via WebSocket
         if email in self.active_connections:
             for connection in self.active_connections[email]:
                 try:

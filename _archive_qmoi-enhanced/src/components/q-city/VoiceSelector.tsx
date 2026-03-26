@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -131,7 +130,6 @@ export function VoiceSelector({
 
       if (!response.ok) throw new Error("Failed to play preview");
 
-      [PRODUCTION READY] audio playback
       setTimeout(() => setIsPlaying(false), 3000);
     } catch (error) {
       toast({
@@ -251,7 +249,7 @@ export function VoiceSelector({
                 onChange={(e) => setPreviewText(e.target.value)}
                 className="w-full p-3 border rounded-md resize-none"
                 rows={3}
-                [PRODUCTION READY]="Enter text to preview the voice..."
+                
               />
             </div>
 

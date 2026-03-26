@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -164,14 +163,14 @@ const AccountAutomationPanel: React.FC = () => {
           <p className="text-sm text-gray-700">
             Modular platform support and advanced security integrations are
             deployed. Use the button below to open the advanced settings
-            [PRODUCTION READY].
+            
           </p>
           <Button
             size="small"
             variant="contained"
             color="primary"
             onClick={() =>
-              alert("Open advanced account automation settings ([PRODUCTION READY])")
+              alert("Open advanced account automation settings (
             }
             style={{ marginTop: 8 }}
           >

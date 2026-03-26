@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """Create GitHub issues for flagged releases using only Python stdlib.
 
 Reads `tools/releases_audit.json` and posts an issue for each flagged release.

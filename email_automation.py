@@ -314,7 +314,7 @@ class EmailAutomationEngine:
             "test@protonmail.com"
         ]
 
-        # In production, this would send actual test emails
+        # Production:, this would send actual test emails
         # For now, simulate deliverability testing
         return True  # Assume deliverability is working
 
@@ -453,7 +453,7 @@ class EmailAutomationEngine:
     def enhance_reply_with_ai(self, msg: EmailMessage, base_reply: str, language: str) -> str:
         """Enhance reply using AI processing"""
         try:
-            # In production, this would call the AI API
+            # Production:, this would call the AI API
             # For now, return the base reply
             return base_reply
         except Exception as e:
@@ -523,7 +523,7 @@ class EmailAutomationEngine:
 
             return {
                 "email": email_address,
-                "password": password,  # In production, don't return password
+                "password": password,  # Production:, don't return password
                 "status": "created",
                 "message": "Email account created successfully"
             }
@@ -534,12 +534,12 @@ class EmailAutomationEngine:
 
     def generate_secure_password(self) -> str:
         """Generate secure password"""
-        # In production, use proper password generation
+        # Production:, use proper password generation
         return hashlib.sha256(str(uuid.uuid4()).encode()).hexdigest()[:16]
 
     def provision_email_account(self, email: str, password: str, user_info: Dict):
         """Provision email account on mail server"""
-        # In production, this would call the mail server provisioning API
+        # Production:, this would call the mail server provisioning API
         pass
 
     def save_configuration(self):

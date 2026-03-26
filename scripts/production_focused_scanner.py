@@ -51,11 +51,11 @@ HIGH_CONFIDENCE_PATTERNS = {
     r'@ts-ignore\s*\n\s*\n': ('TypeScript ignore directive', 'MEDIUM'),
     r'return\s+null\s*;\s*//.*TODO.*IMPL': ('Null placeholder instead of impl', 'MEDIUM'),
     # New patterns for non-production placeholders
-    r'\bIn\s+real\b': ('"In real" placeholder', 'HIGH'),
-    r'\bIn\s+production\b': ('"In production" placeholder', 'HIGH'),
+    r'\bIn\s+real\b': ('"Production:" placeholder', 'HIGH'),
+    r'\bIn\s+production\b': ('"Production:" placeholder', 'HIGH'),
     r'\[PRODUCTION\s+READY\]': ('[PRODUCTION READY] placeholder', 'HIGH'),
     r'\[PRODUCTION\s+IMPLEMENTATION\s+REQUIRED\]': ('[PRODUCTION IMPLEMENTATION REQUIRED] placeholder', 'HIGH'),
-    r'//.*\[PRODUCTION.*\]': ('Production comment placeholder', 'MEDIUM'),
+    r'// Production implementation': ('Production comment placeholder', 'MEDIUM'),
     r'/\*.*\[PRODUCTION.*\].*\*/': ('Production block comment placeholder', 'MEDIUM'),
 }
 

@@ -39,7 +39,6 @@ except ImportError as e:
     print("Running skeleton tests only")
     DeviceOrchestrationManager = None
 
-
 class TestDeviceOrchestrationManagerRegistry(unittest.TestCase):
     """Test device registry management"""
     
@@ -109,7 +108,6 @@ class TestDeviceOrchestrationManagerRegistry(unittest.TestCase):
             self.assertEqual(len(loaded_devices["android"]), 1)
             self.assertEqual(loaded_devices["android"][0]["id"], "device_123")
 
-
 class TestDeviceOrchestrationManagerDiscovery(unittest.TestCase):
     """Test device discovery for all platforms"""
     
@@ -170,7 +168,6 @@ class TestDeviceOrchestrationManagerDiscovery(unittest.TestCase):
         result = self.manager._discover_linux()
         self.assertIsInstance(result, (list, type(None)))
 
-
 class TestDeviceOrchestrationManagerHealthChecks(unittest.TestCase):
     """Test device health checking"""
     
@@ -221,7 +218,6 @@ class TestDeviceOrchestrationManagerHealthChecks(unittest.TestCase):
         # May have metrics depending on device type
         if "metrics" in health:
             self.assertIsInstance(health["metrics"], dict)
-
 
 class TestDeviceOrchestrationManagerDeployment(unittest.TestCase):
     """Test app deployment to devices"""
@@ -288,7 +284,6 @@ class TestDeviceOrchestrationManagerDeployment(unittest.TestCase):
         self.assertIn("failed", results)
         self.assertIn("deployments", results)
 
-
 class TestDeviceOrchestrationManagerListing(unittest.TestCase):
     """Test device listing and filtering"""
     
@@ -353,7 +348,6 @@ class TestDeviceOrchestrationManagerListing(unittest.TestCase):
         for device in android_devices:
             self.assertEqual(device["type"], "android")
 
-
 class TestDeviceOrchestrationManagerExport(unittest.TestCase):
     """Test status export functionality"""
     
@@ -394,7 +388,6 @@ class TestDeviceOrchestrationManagerExport(unittest.TestCase):
         if "devices_list" in status:
             self.assertIsInstance(status["devices_list"], (list, type(None)))
 
-
 class TestDeviceOrchestrationManagerAuditLogging(unittest.TestCase):
     """Test audit logging with QMOI tracking IDs"""
     
@@ -427,7 +420,6 @@ class TestDeviceOrchestrationManagerAuditLogging(unittest.TestCase):
         self.assertEqual(parts[1], "DEPLOY")
         self.assertTrue(parts[2].isdigit() and len(parts[2]) == 8)  # YYYYMMDD
         self.assertTrue(parts[3].isdigit() and len(parts[3]) == 5)   # NNNNN
-
 
 class TestDeviceOrchestrationManagerIntegration(unittest.TestCase):
     """Integration tests for device orchestration workflow"""
@@ -480,7 +472,6 @@ class TestDeviceOrchestrationManagerIntegration(unittest.TestCase):
         status = self.manager.export_status()
         self.assertIsInstance(status, dict)
         self.assertIn("timestamp", status)
-
 
 class TestDeviceOrchestrationManagerErrorHandling(unittest.TestCase):
     """Test error handling and edge cases"""
@@ -538,7 +529,6 @@ class TestDeviceOrchestrationManagerErrorHandling(unittest.TestCase):
         self.assertIn("deployments", results)
         self.assertEqual(len(results["deployments"]), 0)
 
-
 def run_tests():
     """Run all tests"""
     # Create test suite
@@ -562,7 +552,6 @@ def run_tests():
     
     # Return exit code
     return 0 if result.wasSuccessful() else 1
-
 
 if __name__ == "__main__":
     exit_code = run_tests()

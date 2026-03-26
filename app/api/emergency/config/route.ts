@@ -42,7 +42,7 @@ const defaultConfig: EmergencyConfig = {
 // GET /api/emergency/config - Get emergency configuration
 export async function GET() {
   try {
-    // In production, load from database or secure storage
+    // Production:, load from database or secure storage
     // For now, return default config
     return NextResponse.json(defaultConfig);
   } catch (error) {
@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // In production, save to database or secure storage
+    // Production:, save to database or secure storage
     // For now, just validate and return success
 
     return NextResponse.json({

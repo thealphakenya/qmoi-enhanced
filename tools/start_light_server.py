@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 Light HTTP server that serves only files under a configurable size limit or included in the light index.
@@ -231,7 +230,6 @@ def load_whitelist():
             return set()
     return set()
 
-
 def load_qcity_config():
     cfg = {'nodes': [], 'fetch_timeout_seconds': 10, 'cache_ttl_seconds': DEFAULT_CACHE_TTL, 'max_cache_bytes': DEFAULT_MAX_CACHE_BYTES}
     if QCITY_CONFIG.exists():
@@ -241,7 +239,6 @@ def load_qcity_config():
         except Exception:
             pass
     return cfg
-
 
 def _current_cache_size():
     total = 0
@@ -254,7 +251,6 @@ def _current_cache_size():
             except Exception:
                 continue
     return total
-
 
 def _evict_cache_if_needed(max_bytes):
     # remove oldest files until cache <= max_bytes

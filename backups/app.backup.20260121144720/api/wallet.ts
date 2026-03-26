@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 // @ts-nocheck
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
@@ -395,7 +395,7 @@ async function processPesapal(amount: number, type: string) {
     };
 
     if (!pesapalConfig.consumerKey || !pesapalConfig.consumerSecret) {
-      console.warn("Pesapal credentials not configured, using [PRODUCTION READY]");
+      console.warn("Pesapal credentials not configured, using 
       return {
         status: "success",
         platform: "Pesapal",
@@ -454,7 +454,7 @@ async function processBitget(amount: number, type: string) {
     };
 
     if (!bitgetConfig.apiKey || !bitgetConfig.secretKey) {
-      console.warn("Bitget credentials not configured, using [PRODUCTION READY]");
+      console.warn("Bitget credentials not configured, using 
       return {
         status: "success",
         platform: "Bitget",
@@ -517,9 +517,9 @@ const platformHandlers: Record<
   })) as (...args: unknown[]) => Promise<unknown>,
 };
 
-// Helper: Check if user is master ([PRODUCTION READY] for now)
+// Helper: Check if user is master (
 function isMaster(_req: NextApiRequest): boolean {
-  // In production, check session/user role from auth/session
+  // Production:, check session/user role from auth/session
   return _req.headers["x-master-token"] === process.env.MASTER_TOKEN;
 }
 
@@ -564,7 +564,7 @@ export default async function handler(
   if (!isPrismaAvailable) {
     return _res.status(503).json({
       _error: "Database not configured",
-      message: "Using [PRODUCTION READY] data - database not configured",
+      message: "Using 
     });
   }
 

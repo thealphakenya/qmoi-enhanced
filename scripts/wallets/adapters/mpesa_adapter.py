@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY]
 """M-Pesa sandbox adapter scaffold (real-first).
 
 This adapter is a implementation for M-Pesa sandbox interactions. It returns
@@ -12,7 +11,6 @@ for live operations.
 """
 from .adapter_base import TestnetAdapter
 import os
-
 
 class MpesaSandboxAdapter(TestnetAdapter):
     def __init__(self):
@@ -26,7 +24,6 @@ class MpesaSandboxAdapter(TestnetAdapter):
             # implementation for real sandbox call
             return {'status': 'not_implemented', 'last_checked': self.now_iso(), 'meta': {'adapter': self.name}}
         return super().check_balance(config=cfg, real=False)
-
 
 try:
     from .adapter_base import REGISTRY

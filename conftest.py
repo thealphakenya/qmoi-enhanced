@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY] this file has no remaining non-production markers
 """Pytest configuration helpers.
 
 This file provides a small compatibility shim for async tests when
@@ -17,10 +16,8 @@ import asyncio
 import inspect
 import pytest
 
-
 def pytest_configure(config):
     config.addinivalue_line("markers", "asyncio: mark the test as asyncio")
-
 
 def pytest_pyfunc_call(pyfuncitem):
     """Run async test functions with asyncio.run when pytest-asyncio is absent."""

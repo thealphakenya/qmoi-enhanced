@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY]
 """Unit tests for link validation and update systems.
 
 Tests all link-related functionality including:
@@ -61,7 +60,6 @@ def test_validation_dir(tmp_path):
     path.mkdir()
     return path
 
-
 # Link validator tests
 class TestLinkValidator:
     def test_validate_valid_link(self, test_links_file):
@@ -84,7 +82,6 @@ class TestLinkValidator:
         with pytest.raises(LinkValidationError):
             validate_links(test_links_file, ["https://data.com"], allow_network=False)
 
-
 # Link cache tests
 class TestLinkCache:
     def test_prune_old_entries(self, test_cache_file):
@@ -100,7 +97,6 @@ class TestLinkCache:
         cache = json.loads(Path(test_cache_file).read_text())
         assert not cache  # All entries should be pruned
 
-
 # Auto updater tests
 class TestLinkAutoUpdater:
     def test_generate_plan(self, test_links_file, test_cache_file):
@@ -115,7 +111,6 @@ class TestLinkAutoUpdater:
         """Test dry run is default."""
         plan = generate_update_plan(test_links_file, cache_file=test_cache_file)
         assert plan.get("dry_run", True)
-
 
 # Preview generator tests
 class TestLinkPreview:

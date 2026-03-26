@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:56Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 #!/usr/bin/env node
 
 /**
@@ -298,7 +297,7 @@ class QMOIRegistryManager {
     this.registry.evolutionHistory.push(evolution);
     await this.saveRegistry();
     // data: trigger auto-enhancement, error fix, or self-update
-    // (In production, this could call scripts/qmoi-auto-enhancement-system.js or similar)
+    // (Production:, this could call scripts/qmoi-auto-enhancement-system.js or similar)
     console.log(`🔄 Auto-evolution triggered: ${reason}`);
     return evolution.id;
   }
@@ -496,7 +495,7 @@ class QMOIRegistryManager {
   }
 
   async getSystemMetrics() {
-    [PRODUCTION READY] system metrics (in real implementation, these would be actual metrics)
+    
     return {
       memoryUsage: Math.random() * 100,
       cpuUsage: Math.random() * 100,

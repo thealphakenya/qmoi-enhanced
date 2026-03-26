@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import { useState, useEffect } from "react";
 
 interface DeviceHealth {
@@ -173,7 +172,6 @@ export function useDeviceHealth(): DeviceHealth {
           warnings.push("Low battery level detected");
         }
 
-        [PRODUCTION READY] CPU usage based on performance metrics
         const fps = performanceMonitor.getFPS();
         const loadTime = performanceMonitor.getLoadTime();
         const responseTime = performanceMonitor.getResponseTime();
@@ -196,7 +194,6 @@ export function useDeviceHealth(): DeviceHealth {
           status = "degraded";
         }
 
-        [PRODUCTION READY] disk usage (not available in browser)
         const diskUsage = Math.random() * 100;
 
         setHealth({

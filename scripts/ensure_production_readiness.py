@@ -3,10 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:56Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY] this file has no remaining non-production markers
 import subprocess
 import sys
-
 
 def run_command(cmd):
     print('Running:', cmd)
@@ -16,7 +14,6 @@ def run_command(cmd):
         print('ERROR (returncode', result.returncode, ')', result.stderr)
         sys.exit(result.returncode)
     return result.stdout
-
 
 def parse_scan_percentage(scan_output):
     # find line with "non-production marker files" or "No non-production markers"
@@ -34,7 +31,6 @@ def parse_scan_percentage(scan_output):
                     continue
     return None
 
-
 def main():
     max_cycles = 10
     for cycle in range(1, max_cycles + 1):
@@ -51,7 +47,6 @@ def main():
             break
     else:
         print('⚠️ Max cycles reached; production readiness may still not be 100%.')
-
 
 if __name__ == '__main__':
     main()

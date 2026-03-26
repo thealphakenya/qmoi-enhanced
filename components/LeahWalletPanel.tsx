@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -50,14 +49,14 @@ export function LeahWalletPanel() {
         <div className="mb-2">
           <input
             type="number"
-            [PRODUCTION READY]="Amount"
+            
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             className="border p-1 rounded w-1/3 mr-2"
           />
           <input
             type="text"
-            [PRODUCTION READY]="Description"
+            
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
             className="border p-1 rounded w-1/3 mr-2"

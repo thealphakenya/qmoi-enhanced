@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 /* global URL */
 import fs from "fs";
 import path from "path";
@@ -44,8 +43,8 @@ async function testAiHealthGating(aiHealthGET) {
   console.log("ai-health gating tests passed");
 }
 
-async function testLanguage[PRODUCTION READY]s(languageHandler) {
-  console.log("Testing qmoi/language [PRODUCTION READY] behavior and gating...");
+async function testLanguage
+  console.log("Testing qmoi/language 
   process.env.NODE_ENV = "production";
   delete process.env.API_KEY;
   const _res = {
@@ -93,9 +92,9 @@ async function testLanguage[PRODUCTION READY]s(languageHandler) {
       (res2.body &&
         res2.body.error &&
         res2.body.error.includes("implemented")),
-    "language route should return 501 despite key because [PRODUCTION READY]",
+    "language route should return 501 despite key because 
   );
-  console.log("language [PRODUCTION READY] gating tests passed");
+  console.log("language 
 }
 
 async function testQNewsGating(qnewsPOST) {
@@ -177,7 +176,7 @@ async function runAll() {
     }
 
     await testAiHealthGating(aiHealthGET);
-    await testLanguage[PRODUCTION READY]s(languageHandler);
+    await testLanguage
     await testQNewsGating(qnewsPOST);
     console.log("All endpoint gating tests passed.");
     process.exit(0);

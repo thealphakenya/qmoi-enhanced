@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 
 /**
@@ -11,7 +10,6 @@ import { NextRequest, NextResponse } from "next/server";
  * Handles file download, delete, and retrieval
  */
 
-[PRODUCTION READY] resolve [PRODUCTION READY] items
 const fileStorage = new Map<
   string,
   {

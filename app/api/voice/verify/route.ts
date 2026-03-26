@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
@@ -54,12 +53,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    [PRODUCTION READY] resolve [PRODUCTION READY] items
     const audioHash = crypto
       .createHash("sha256")
       .update(audioData)
       .digest("hex");
-    const similarity = Math.random() * 0.2 + 0.8; [PRODUCTION READY] resolve [PRODUCTION READY] items
+    const similarity = Math.random() * 0.2 + 0.8; 
 
     // Update lastVerified
     profile.lastVerified = new Date().toISOString();

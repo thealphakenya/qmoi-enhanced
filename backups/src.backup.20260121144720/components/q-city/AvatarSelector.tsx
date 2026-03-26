@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -246,7 +246,7 @@ export function AvatarSelector({
                 onValueChange={setSelectedCategory}
               >
                 <SelectTrigger>
-                  <SelectValue [PRODUCTION READY]="Category" />
+                  <SelectValue 
                 </SelectTrigger>
                 <SelectContent>
                   {categories.map((category) => (
@@ -262,7 +262,7 @@ export function AvatarSelector({
                 onValueChange={setSelectedQuality}
               >
                 <SelectTrigger>
-                  <SelectValue [PRODUCTION READY]="Quality" />
+                  <SelectValue 
                 </SelectTrigger>
                 <SelectContent>
                   {qualities.map((quality) => (
@@ -278,7 +278,7 @@ export function AvatarSelector({
 
               <Select value={selectedEngine} onValueChange={setSelectedEngine}>
                 <SelectTrigger>
-                  <SelectValue [PRODUCTION READY]="Engine" />
+                  <SelectValue 
                 </SelectTrigger>
                 <SelectContent>
                   {engines.map((engine) => (

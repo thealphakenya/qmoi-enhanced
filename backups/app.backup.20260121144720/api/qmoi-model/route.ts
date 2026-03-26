@@ -1,7 +1,7 @@
-[PRODUCTION READY] all markers normalized for completion
+
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 4 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 4 
 import { NextRequest, NextResponse } from "next/server";
 
 interface AITask {
@@ -36,7 +36,7 @@ export async function GET(_request: NextRequest) {
     }
 
     if (allStats) {
-      [PRODUCTION READY] AI tasks - replace with actual implementation
+      
       const aiTasks: AITask[] = [
         {
           id: "1",
@@ -115,8 +115,8 @@ export async function POST(_request: NextRequest) {
     const { enhance, desc } = body;
 
     if (enhance) {
-      [PRODUCTION READY] enhancement process - replace with actual implementation
-      await new Promise((resolve) => setTimeout(resolve, 1500)); [PRODUCTION READY] enhancement time
+      
+      await new Promise((resolve) => setTimeout(resolve, 1500)); 
 
       return NextResponse.json({
         status: "success",

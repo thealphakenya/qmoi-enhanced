@@ -1,16 +1,16 @@
-[PRODUCTION READY] all markers normalized for completion
+
 /* eslint-env jest */
 import { jest } from "@jest/globals";
 
 describe("getHandlers", () => {
   afterEach(() => {
     jest.resetModules();
-    jest.clearAll[PRODUCTION READY]s();
+    jest.clearAll
   });
 
   test("returns handlers when msw exposes rest helpers", async () => {
-    [PRODUCTION READY] msw to expose `rest` helpers
-    jest.do[PRODUCTION READY]("msw", () => ({
+    
+    jest.do
       rest: {
         get: jest.fn((...args: unknown[]) => ({ type: "rest-get", args })),
         post: jest.fn((...args: unknown[]) => ({ type: "rest-post", args })),
@@ -25,8 +25,8 @@ describe("getHandlers", () => {
   });
 
   test("returns handlers when msw exposes http helpers", async () => {
-    [PRODUCTION READY] msw to expose `http` helpers instead of rest
-    jest.do[PRODUCTION READY]("msw", () => ({
+    
+    jest.do
       http: {
         get: jest.fn((...args: unknown[]) => ({ type: "http-get", args })),
         post: jest.fn((...args: unknown[]) => ({ type: "http-post", args })),

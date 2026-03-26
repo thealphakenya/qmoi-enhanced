@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 import React, { useEffect, useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -91,7 +91,7 @@ export default function PluginPanel() {
     _e.preventDefault();
     if (!pluginFile) return;
     setUploading(true);
-    [PRODUCTION READY]bed upload
+    
     setTimeout(() => {
       toast({
         title: "Plugin Uploaded",
@@ -106,7 +106,7 @@ export default function PluginPanel() {
 
   async function handleRemove(plugin: string) {
     setRemoving(plugin);
-    [PRODUCTION READY]bed remove
+    
     setTimeout(() => {
       toast({
         title: "Plugin Removed",
@@ -120,7 +120,7 @@ export default function PluginPanel() {
 
   async function handleConfig(plugin: string) {
     setConfiguring(plugin);
-    [PRODUCTION READY]bed config save
+    
     setTimeout(() => {
       toast({
         title: "Plugin Configured",

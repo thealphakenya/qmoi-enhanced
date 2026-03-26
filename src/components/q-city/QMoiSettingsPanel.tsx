@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 /* eslint-env browser */
 /* eslint-env browser */
 import React, { useRef } from "react";
@@ -16,7 +15,7 @@ type QSettings = {
 };
 
 export const QMoiSettingsPanel: React.FC = () => {
-  // Settings state ([PRODUCTION READY]bed for now)
+  // Settings state (
   const [settings, setSettings] = React.useState<QSettings>(() => {
     try {
       return JSON.parse(
@@ -130,7 +129,7 @@ export const QMoiSettingsPanel: React.FC = () => {
               saveSettings({ ...settings, allowedActions: _e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
-            [PRODUCTION READY]="_e.g. build,deploy,test"
+            
           />
         </label>
         <label className="block mb-2">
@@ -142,7 +141,7 @@ export const QMoiSettingsPanel: React.FC = () => {
               saveSettings({ ...settings, mediaPerms: _e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
-            [PRODUCTION READY]="_e.g. images,docs,code"
+            
           />
         </label>
       </div>

@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:51Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 tools/update_md_refs.py
@@ -32,7 +31,6 @@ ROOT = Path(__file__).resolve().parents[1]
 SKIP_DIRS = {'.git', 'node_modules', '.venv', '__pycache__'}
 KEYWORDS = ['api', 'endpoint', 'endpoints', 'webhook', 'webhooks', 'hook', 'hooks']
 
-
 def find_md_files(root: Path):
     out = []
     for p in root.rglob('*.md'):
@@ -45,18 +43,15 @@ def find_md_files(root: Path):
         out.append(p)
     return sorted(out)
 
-
 def write_allmd(refs, out_path: Path):
     lines = ["# ALLMDFILESREFS\n", f"Generated: {time.strftime('%Y-%m-%d %H:%M:%S UTC', time.gmtime())}\n\n"]
     for p in refs:
         lines.append(str(p.relative_to(ROOT)) + '\n')
     out_path.write_text(''.join(lines), encoding='utf-8')
 
-
 def needs_footer(path: Path):
     txt = path.read_text(encoding='utf-8', errors='ignore')
     return any(re.search(rf"\b{k}\b", txt, re.IGNORECASE) for k in KEYWORDS)
-
 
 def update_footer(path: Path, ts: str):
     txt = path.read_text(encoding='utf-8', errors='ignore')
@@ -78,7 +73,6 @@ def update_footer(path: Path, ts: str):
         # if backup exists, just overwrite original safely
         path.write_text(new, encoding='utf-8')
         return True
-
 
 def git_commit_and_pr(files_changed, branch_name, pr_title, pr_body):
     subprocess.check_call(['git', 'checkout', '-b', branch_name])
@@ -107,7 +101,6 @@ def git_commit_and_pr(files_changed, branch_name, pr_title, pr_body):
         print('PR creation failed:', e)
         return None
 
-
 def main(apply_changes: bool = False):
     md_files = find_md_files(ROOT)
     allmd = ROOT / 'ALLMDFILESREFS.md'
@@ -130,7 +123,6 @@ def main(apply_changes: bool = False):
         print('PR result:', pr)
     else:
         print('Dry-run complete. Use --apply to commit/push/create PR.')
-
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser()

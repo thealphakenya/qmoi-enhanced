@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:32Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY]
 import os
 import time
 import threading
@@ -53,7 +52,6 @@ def bitget_request(method, path, body_obj=None):
     resp = requests.request(method, url, headers=headers, data=body if method != 'GET' else None)
     resp.raise_for_status()
     return resp.json()
-
 
 # --- AI confidence calculation using simple technical indicators ---
 def calculate_confidence(market_data):

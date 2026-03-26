@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY]
 """Test suite for DNS provider implementations.
 
 Tests proper implementation of ProviderBase interface, logging,
@@ -55,7 +54,6 @@ def mock_netlify_creds():
     }):
         yield
 
-
 # Generic provider tests
 class TestProviderBase:
     def test_provider_requires_credentials(self):
@@ -90,7 +88,6 @@ class TestProviderBase:
         with pytest.raises(ProviderError):
             provider.apply_dns_change(plan)
 
-
 # Route53 provider tests
 class TestRoute53Provider:
     def test_init_requires_aws_creds(self):
@@ -124,7 +121,6 @@ class TestRoute53Provider:
         assert plan['zone_id'] == 'test_zone'
         assert len(plan['changes']) == 1
         assert plan['changes'][0]['Action'] == 'UPSERT'
-
 
 # Cloudflare provider tests 
 class TestCloudflareProvider:
@@ -167,7 +163,6 @@ class TestCloudflareProvider:
         assert plan['zone_id'] == 'test_zone'
         assert len(plan['changes']) == 1
         assert plan['changes'][0]['action'] == 'create'
-
 
 # Netlify provider tests
 class TestNetlifyProvider:

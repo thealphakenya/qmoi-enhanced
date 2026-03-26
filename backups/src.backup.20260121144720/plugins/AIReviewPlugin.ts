@@ -1,4 +1,4 @@
-// NOTE: 2 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 2 
 import { QmoiPlugin } from "./PluginManager";
 
 // complete non-JSX plugin implementation to avoid TSX in .ts file.

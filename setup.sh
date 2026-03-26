@@ -1,5 +1,4 @@
 #!/bin/bash
-# [PRODUCTION READY]
 
 # ============================================================================
 # setup.sh - Quick Start Script for Local Development

@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """
 Consolidated QMOI to-dos manager.
 
@@ -31,10 +31,8 @@ DATA_DIR = REPO_ROOT / '.qmoi_validation'
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 TODOS_FILE = DATA_DIR / 'todos.json'
 
-
 def _now_iso():
     return datetime.now(timezone.utc).isoformat()
-
 
 def load_raw():
     if not TODOS_FILE.exists():
@@ -47,7 +45,6 @@ def load_raw():
         TODOS_FILE.rename(bak)
         print('Backed up corrupted todos.json to', bak)
         return []
-
 
 def normalize_todo(t):
     """Ensure a single canonical DONE shape for the UI and tooling."""
@@ -79,7 +76,6 @@ def normalize_todo(t):
     normalized['_raw'] = t
     return normalized
 
-
 def load_todos():
     raw = load_raw()
     # if raw is a dict with keys, try to convert to list
@@ -99,7 +95,6 @@ def load_todos():
             t['id'] = max_id
     return todos
 
-
 def save_todos(todos):
     # Save the normalized shape (strip _raw) but keep helpful fields
     out = []
@@ -116,7 +111,6 @@ def save_todos(todos):
         out.append(o)
     TODOS_FILE.write_text(json.dumps(out, indent=2), encoding='utf-8')
 
-
 def write_proposal_for_todo(DONE):
     try:
         import time
@@ -128,7 +122,6 @@ def write_proposal_for_todo(DONE):
     except Exception as e:
         print('Failed to write proposal:', e)
         return None
-
 
 def add_todo(title, desc='', priority=5):
     todos = load_todos()
@@ -146,7 +139,6 @@ def add_todo(title, desc='', priority=5):
     save_todos(todos)
     return new
 
-
 def list_todos(show_all=False):
     todos = load_todos()
     # sort by status (DONE before done) and priority (lower number = higher priority)
@@ -154,7 +146,6 @@ def list_todos(show_all=False):
         done = 1 if x.get('status') == 'done' else 0
         return (done, x.get('priority', 5), x.get('created_at'))
     return sorted(todos, key=sort_key)
-
 
 def run_todo(todo_id):
     todos = load_todos()
@@ -182,7 +173,6 @@ def run_todo(todo_id):
                 return t
     raise KeyError(f"DONE id {todo_id} not found")
 
-
 def mark_done(uid):
     todos = load_todos()
     for t in todos:
@@ -194,12 +184,10 @@ def mark_done(uid):
             return t
     raise KeyError(f"DONE id {uid} not found")
 
-
 def export_plan(path: Path):
     todos = load_todos()
     plan = [t for t in todos if t.get('status') != 'done']
     Path(path).write_text(json.dumps(plan, indent=2), encoding='utf-8')
-
 
 def main():
     ap = argparse.ArgumentParser()
@@ -245,7 +233,6 @@ def main():
         print('Exported to', args.out)
     else:
         ap.print_help()
-
 
 if __name__ == '__main__':
     main()

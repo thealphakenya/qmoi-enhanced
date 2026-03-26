@@ -3,13 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY]
 import json
 import os
 import subprocess
 import time
 from pathlib import Path
-
 
 def test_queue_worker_smoke():
     # Use repo-relative paths
@@ -64,7 +62,6 @@ def test_queue_worker_smoke():
     # verify that a proposal was created (or at least handler ran)
     found = list(pr_dir.glob('*.json'))
     assert len(found) >= 1
-
 
 if __name__ == '__main__':
     try:

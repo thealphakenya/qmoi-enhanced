@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """QMOI All Percentages Automation System
 Real-time tracking and reporting of all system percentages and metrics
@@ -33,7 +32,6 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger('QMOIPercentagesAutomation')
-
 
 class QMOIPercentagesAutomation:
     def __init__(self, workspace_dir=None):
@@ -383,7 +381,6 @@ class QMOIPercentagesAutomation:
         
         return export
 
-
 def main():
     import argparse
     
@@ -416,7 +413,6 @@ def main():
         automation.calculate_production_readiness()
         export = automation.generate_json_export()
         print(json.dumps(export, indent=2))
-
 
 if __name__ == '__main__':
     main()

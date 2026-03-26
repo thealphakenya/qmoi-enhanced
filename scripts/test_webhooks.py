@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY]
 """Script to test Stripe webhooks locally.
 
 This script simulates webhook events for various payment scenarios to help

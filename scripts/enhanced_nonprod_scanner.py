@@ -43,7 +43,7 @@ NONPROD_KEYWORDS = [
     'REPLACE', 'REPLACE ALL', 'REPLACE WITH',
     
     # Special markers
-    '[PRODUCTION READY]', '[REPLACE]', '[DEMO]', '[STUB]', '[MOCK]',
+    '
     '[TODO]', '[FIXME]', '[INCOMPLETE]', '[DEPRECATED]',
 ]
 

@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:51Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """Release helper: upload files to a GitHub Release or fallback to `gh` CLI.
 
@@ -22,7 +21,6 @@ import os
 import sys
 import json
 import requests
-
 
 def upload_with_api(owner, repo, tag, token, files):
     # Find release id by tag
@@ -44,7 +42,6 @@ def upload_with_api(owner, repo, tag, token, files):
                 print('Upload failed for', name, rr.status_code, rr.text)
                 return 3
     return 0
-
 
 def main():
     p = argparse.ArgumentParser()
@@ -83,7 +80,6 @@ def main():
     except Exception as e:
         print('Failed to upload artifacts: need GH_TOKEN or gh CLI authenticated. Error:', e)
         return 4
-
 
 if __name__ == '__main__':
     sys.exit(main())

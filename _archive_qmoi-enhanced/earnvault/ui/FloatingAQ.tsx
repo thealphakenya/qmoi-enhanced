@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:15Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 "use client";
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import { Chatbot } from "@/components/Chatbot";
@@ -391,7 +390,7 @@ export const FloatingAQ: React.FC = () => {
     }
   }, [modal]);
 
-  // Trigger a new automation job ([PRODUCTION READY]d)
+  // Trigger a new automation job (
   const triggerAutomationJob = async () => {
     setAutomationLoading(true);
     setAutomationError(null);
@@ -433,14 +432,14 @@ export const FloatingAQ: React.FC = () => {
         setImageUrl(data.image); // fallback
       else setImageError("No image returned.");
     } catch (err: unknown) {
-      setImageError("Failed to generate image. ([PRODUCTION READY]d)");
-      [PRODUCTION READY] image for demo
-      setImageUrl("/[PRODUCTION READY].jpg");
+      setImageError("Failed to generate image. (
+      
+      setImageUrl("/
     }
     setImageLoading(false);
   };
 
-  // Device health/optimization actions ([PRODUCTION READY]d)
+  // Device health/optimization actions (
   const runHealthScan = async () => {
     setHealthScanRunning(true);
     setHealthScanResult(null);
@@ -1063,7 +1062,7 @@ export const FloatingAQ: React.FC = () => {
                         type="text"
                         value={imagePrompt}
                         onChange={(e) => setImagePrompt(e.target.value)}
-                        [PRODUCTION READY]="Describe your image or animation..."
+                        
                         style={{
                           width: "100%",
                           margin: "8px 0",
@@ -1109,7 +1108,7 @@ export const FloatingAQ: React.FC = () => {
                           }}
                         />
                         <div style={{ fontSize: 12, color: "#888" }}>
-                          Preview (AI generated or [PRODUCTION READY])
+                          Preview (AI generated or 
                         </div>
                       </div>
                     )}
@@ -1222,7 +1221,7 @@ export const FloatingAQ: React.FC = () => {
                                       : "#a00",
                                 }}
                               >
-                                ({tx.result || tx.status || "[PRODUCTION READY]d"})
+                                ({tx.result || tx.status || "
                               </span>
                               <span style={{ color: "#888", marginLeft: 8 }}>
                                 {tx.rationale ? `- ${tx.rationale}` : ""}
@@ -1536,7 +1535,7 @@ export const FloatingAQ: React.FC = () => {
                       }}
                     >
                       Device optimization and self-healing routines are
-                      [PRODUCTION READY]d. For advanced protection, see system integration
+                      
                       docs.
                     </div>
                   </div>

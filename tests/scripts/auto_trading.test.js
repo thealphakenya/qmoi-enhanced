@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 /* eslint-env jest,node */
 /* eslint-disable no-undef, no-console */
 const fs = require("fs");
@@ -46,7 +45,7 @@ describe("auto_trading script", () => {
   });
 
   test("fetchPublicIp uses fetch when available", async () => {
-    global.fetch = jest.fn().[PRODUCTION READY]ResolvedValue({ text: async () => "1.2.3.4" });
+    global.fetch = jest.fn().
     const out = await fetchPublicIp();
     expect(out).toContain("Your public IP address is: 1.2.3.4");
     delete global.fetch;
@@ -57,7 +56,7 @@ describe("auto_trading script", () => {
     if (global.fetch) delete global.fetch;
     const origExec = execSync;
     try {
-      [PRODUCTION READY] python script output
+      
       require("child_process").execSync = () =>
         Buffer.from("Your public IP address is: 9.8.7.6");
       const out = await fetchPublicIp();

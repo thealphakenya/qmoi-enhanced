@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 // @ts-nocheck
@@ -115,10 +115,10 @@ export default async function handler(
         return _res.json({ result: "IoT scan complete", risks });
       }
       case "ai-agents": {
-        [PRODUCTION READY] agent action
+        
         return _res.json({
           result:
-            "AI agent [PRODUCTION READY]d action: would patch or isolate device if threat detected.",
+            "AI agent 
         });
       }
       default:

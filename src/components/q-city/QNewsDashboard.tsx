@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 /* eslint-env browser */
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -158,7 +157,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
       <CardContent>
         <div className="mb-4">
           <Input
-            [PRODUCTION READY]="Title"
+            
             value={form.title}
             onChange={(_e) =>
               setForm((f) => ({ ...f, title: _e.target.value }))
@@ -166,7 +165,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
             className="mb-2"
           />
           <Input
-            [PRODUCTION READY]="Content"
+            
             value={form.content}
             onChange={(_e) =>
               setForm((f) => ({ ...f, content: _e.target.value }))
@@ -176,7 +175,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
           {isMaster && (
             <>
               <Input
-                [PRODUCTION READY]="Category (_e.g. earning, project, marketing, global, local)"
+                
                 value={form.category}
                 onChange={(_e) =>
                   setForm((f) => ({ ...f, category: _e.target.value }))
@@ -185,7 +184,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
               />
               <div className="flex gap-2 mb-2">
                 <Input
-                  [PRODUCTION READY]="Media URL"
+                  
                   value={mediaUrl}
                   onChange={(_e) => setMediaUrl(_e.target.value)}
                   className="flex-1"
@@ -211,7 +210,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
             </>
           )}
           <Input
-            [PRODUCTION READY]="Schedule (ISO, optional)"
+            
             value={form.scheduledAt}
             onChange={(_e) =>
               setForm((f) => ({ ...f, scheduledAt: _e.target.value }))

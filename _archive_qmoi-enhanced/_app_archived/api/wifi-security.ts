@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import type { NextApiRequest, NextApiResponse } from "next";
 import { exec } from "child_process";
 import fs from "fs";
@@ -122,10 +121,10 @@ export default async function handler(
         return res.json({ result: "IoT scan complete", risks });
       }
       case "ai-agents": {
-        [PRODUCTION READY] agent action
+        
         return res.json({
           result:
-            "AI agent [PRODUCTION READY]d action: would patch or isolate device if threat detected.",
+            "AI agent 
         });
       }
       default:

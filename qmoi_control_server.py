@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """robust control server for QMOI to control Q stable PWA.
 
-This accepts JSON commands at /control and logs them. In production, QMOI would
+This accepts JSON commands at /control and logs them. Production:, QMOI would
 authenticate requests and perform actions (navigate, start download, etc.).
 """
 from payments.webhook_processor import WebhookProcessor
@@ -39,7 +39,6 @@ logging.basicConfig(level=logging.INFO)
 # Simple in-memory rate limiter (per-IP, optimized)
 _RATE_BUCKET = {}
 
-
 def rate_limit(key_func, limit=10, per_seconds=60):
     def deco(f):
         def wrapped(*args, **kwargs):
@@ -60,7 +59,6 @@ def rate_limit(key_func, limit=10, per_seconds=60):
         return wrapped
     return deco
 
-
 # Config / secrets: set these in env for production
 CONTROL_TOKEN = os.environ.get('QMOI_CONTROL_TOKEN', 'dev-token')
 JWT_SECRET = os.environ.get('QMOI_JWT_SECRET', 'dev-jwt-secret')
@@ -76,17 +74,14 @@ DB_FILE = ROOT / 'qmoi.db'
 # Runtime-only in-memory storage for transient WebAuthn state (was stored in webauthn_state.json)
 WEBAUTHN_STATE = {}
 
-
 def _load_json(path, default):
     # JSON storage is deprecated. Return default to avoid accidental reads.
     app.logger.warning('Attempted to load JSON file %s but JSON persistence is deprecated; returning default', path)
     return default
 
-
 def _save_json(path, data):
     # JSON persistence is deprecated. No-op (we keep backups of legacy JSON files).
     app.logger.warning('Attempted to save JSON file %s but JSON persistence is deprecated; no-op', path)
-
 
 def load_users():
     # If DB exists, read from DB
@@ -109,7 +104,6 @@ def load_users():
         return res
     return _load_json(USERS_FILE, {})
 
-
 def save_users(u):
     # If DB exists or we can create it, write into DB
     try:
@@ -124,7 +118,6 @@ def save_users(u):
         conn.close()
     except Exception:
         _save_json(USERS_FILE, u)
-
 
 def load_memories():
     if DB_FILE.exists():
@@ -142,7 +135,6 @@ def load_memories():
             res.setdefault(username, []).append(obj)
         return res
     return _load_json(MEMORIES_FILE, {})
-
 
 def save_memories(m):
     try:
@@ -164,7 +156,6 @@ def save_memories(m):
         conn.close()
     except Exception:
         _save_json(MEMORIES_FILE, m)
-
 
 def ensure_db_and_migrate():
     # If DB already exists, nothing to do
@@ -220,14 +211,11 @@ def ensure_db_and_migrate():
     conn.commit()
     conn.close()
 
-
 # Ensure DB is present and migrations applied at startup
 ensure_db_and_migrate()
 
-
 # Simple credential store for WebAuthn (store per user: a list of credentials)
 RP_NAME = os.environ.get('QMOI_RP_NAME', 'QMOI')
-
 
 def get_fido2_server():
     """Create a Fido2Server using RP config from env or the incoming request host.
@@ -244,7 +232,6 @@ def get_fido2_server():
     rp = PublicKeyCredentialRpEntity(name=RP_NAME, id=rp_id)
     return Fido2Server(rp)
 
-
 def _db_get_conn():
     try:
         if DB_FILE.exists():
@@ -252,7 +239,6 @@ def _db_get_conn():
     except Exception:
         app.logger.exception('Error connecting to DB')
     return None
-
 
 def load_creds():
     conn = _db_get_conn()
@@ -276,7 +262,6 @@ def load_creds():
     app.logger.warning('Database unavailable when loading webauthn creds; returning empty credential set')
     return {}
 
-
 def save_creds(c):
     conn = _db_get_conn()
     if conn:
@@ -297,7 +282,6 @@ def save_creds(c):
     # If DB not available, log and drop (we do not persist to JSON)
     app.logger.warning('Database unavailable when saving webauthn creds; change not persisted')
 
-
 def load_revoked_tokens():
     conn = _db_get_conn()
     tokens = []
@@ -314,7 +298,6 @@ def load_revoked_tokens():
             conn.close()
     app.logger.warning('Database unavailable when loading revoked tokens; returning empty list')
     return []
-
 
 def save_revoked_token(token):
     conn = _db_get_conn()
@@ -334,7 +317,6 @@ def save_revoked_token(token):
         finally:
             conn.close()
     app.logger.warning('Database unavailable when saving revoked token; token not persisted')
-
 
 def is_token_revoked(token):
     # Try decode and check jti or token in DB
@@ -367,7 +349,6 @@ def is_token_revoked(token):
     # If DB not available or no match, treat as not revoked
     return False
 
-
 def is_sponsored(username):
     conn = _db_get_conn()
     if not conn:
@@ -382,7 +363,6 @@ def is_sponsored(username):
             conn.close()
         except Exception:
             pass
-
 
 def _ensure_wallet(username):
     conn = _db_get_conn()
@@ -401,7 +381,6 @@ def _ensure_wallet(username):
             conn.close()
         except Exception:
             pass
-
 
 def _adjust_balance(username, delta_cents):
     conn = _db_get_conn()
@@ -427,7 +406,6 @@ def _adjust_balance(username, delta_cents):
         except Exception:
             pass
 
-
 def _get_balance(username):
     conn = _db_get_conn()
     if not conn:
@@ -443,7 +421,6 @@ def _get_balance(username):
             conn.close()
         except Exception:
             pass
-
 
 @app.route('/sponsored/add', methods=['POST'])
 def sponsored_add():
@@ -487,7 +464,6 @@ def sponsored_add():
         except Exception:
             pass
 
-
 def sponsored_list():
     # Anyone authenticated can view the sponsored list
     user = _verify_jwt(request)
@@ -509,7 +485,6 @@ def sponsored_list():
         except Exception:
             pass
 
-
 def _is_master_request(req):
     # Accept CONTROL_TOKEN or a JWT where subject equals MASTER_USERNAME
     auth = req.headers.get('Authorization') or req.headers.get('X-API-KEY')
@@ -525,7 +500,6 @@ def _is_master_request(req):
         except Exception:
             pass
     return False
-
 
 @app.route('/admin/users', methods=['GET'])
 def admin_users_list():
@@ -549,7 +523,6 @@ def admin_users_list():
     for uname, obj in users.items():
         out.append({'username': uname, 'created': obj.get('created'), 'pricing': pricing.get(uname)})
     return jsonify({'status': 'ok', 'users': out})
-
 
 @app.route('/admin/set-pricing', methods=['POST'])
 def admin_set_pricing():
@@ -575,7 +548,6 @@ def admin_set_pricing():
             conn.close()
         except Exception:
             pass
-
 
 @app.route('/admin/check-access/<username>/<feature>', methods=['GET'])
 def admin_check_access(username, feature):
@@ -611,7 +583,6 @@ def admin_check_access(username, feature):
             conn.close()
     return jsonify({'status': 'ok', 'access': False, 'reason': 'no_db'})
 
-
 @app.route('/deals/create', methods=['POST'])
 def deals_create():
     # Admin-only endpoint to create enhanced deals
@@ -640,7 +611,6 @@ def deals_create():
     finally:
         conn.close()
 
-
 @app.route('/deals', methods=['GET'])
 def deals_list():
     conn = _db_get_conn()
@@ -662,7 +632,6 @@ def deals_list():
     finally:
         conn.close()
 
-
 @app.route('/deals/<deal_id>', methods=['GET'])
 def deals_get(deal_id):
     conn = _db_get_conn()
@@ -683,7 +652,6 @@ def deals_get(deal_id):
     finally:
         conn.close()
 
-
 @app.route('/deals/<deal_id>/activate', methods=['POST'])
 def deals_activate(deal_id):
     if not _is_master_request(request):
@@ -699,7 +667,6 @@ def deals_activate(deal_id):
     finally:
         conn.close()
 
-
 @app.route('/deals/<deal_id>/deactivate', methods=['POST'])
 def deals_deactivate(deal_id):
     if not _is_master_request(request):
@@ -714,7 +681,6 @@ def deals_deactivate(deal_id):
         return jsonify({'status': 'ok', 'id': deal_id})
     finally:
         conn.close()
-
 
 @app.route('/deals/<deal_id>/purchase', methods=['POST'])
 def deals_purchase(deal_id):
@@ -816,7 +782,6 @@ def deals_purchase(deal_id):
         except Exception:
             pass
 
-
 # Enhanced Deal Endpoints
 @app.route('/deals/<deal_id>/execute', methods=['POST'])
 def deals_execute(deal_id):
@@ -845,7 +810,6 @@ def deals_execute(deal_id):
         app.logger.exception(f'Failed to execute deal {deal_id}')
         return jsonify({'status': 'error', 'reason': 'execution_failed'}), 500
 
-
 @app.route('/deals/revenue', methods=['GET'])
 def deals_revenue():
     # Get total revenue from all active deals
@@ -861,7 +825,6 @@ def deals_revenue():
         'active_deals': active_deals,
         'revenue_per_deal': total_revenue / active_deals if active_deals > 0 else 0
     })
-
 
 @app.route('/deals/<deal_id>/revenue', methods=['GET'])
 def deals_get_revenue(deal_id):
@@ -886,7 +849,6 @@ def deals_get_revenue(deal_id):
         'payment_methods': deal.payment_methods
     })
 
-
 @app.route('/deals/optimize', methods=['POST'])
 def deals_optimize():
     # Master-only endpoint to optimize deals
@@ -903,7 +865,6 @@ def deals_optimize():
         app.logger.exception('Failed to optimize deals')
         return jsonify({'status': 'error', 'reason': 'optimization_failed'}), 500
 
-
 @app.route('/wallet', methods=['GET'])
 def wallet_get():
     user = _verify_jwt(request)
@@ -911,7 +872,6 @@ def wallet_get():
         return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
     bal = _get_balance(user)
     return jsonify({'status': 'ok', 'balance_cents': bal})
-
 
 @app.route('/wallet/credit', methods=['POST'])
 def wallet_credit():
@@ -927,7 +887,6 @@ def wallet_credit():
     _adjust_balance(username, amount)
     return jsonify({'status': 'ok', 'username': username, 'credit': amount})
 
-
 @app.route('/wallet/debit', methods=['POST'])
 def wallet_debit():
     if not _is_master_request(request):
@@ -940,7 +899,6 @@ def wallet_debit():
     _ensure_wallet(username)
     _adjust_balance(username, -amount)
     return jsonify({'status': 'ok', 'username': username, 'debit': amount})
-
 
 @app.route('/webauthn/register/options', methods=['POST'])
 def webauthn_register_options():
@@ -959,7 +917,6 @@ def webauthn_register_options():
     WEBAUTHN_STATE[username] = state
     return cbor.encode(registration_data)
 
-
 @app.route('/webauthn/register/complete', methods=['POST'])
 def webauthn_register_complete():
     # expects CBOR body
@@ -977,7 +934,6 @@ def webauthn_register_complete():
     save_creds(creds)
     return jsonify({'status': 'ok'})
 
-
 @app.route('/webauthn/authenticate/options', methods=['POST'])
 def webauthn_auth_options():
     payload = request.get_json(force=True)
@@ -992,7 +948,6 @@ def webauthn_auth_options():
     auth_data, state = f2.authenticate_begin(allow_list)
     WEBAUTHN_STATE[username] = state
     return cbor.encode(auth_data)
-
 
 @app.route('/webauthn/authenticate/complete', methods=['POST'])
 def webauthn_auth_complete():
@@ -1020,7 +975,6 @@ def webauthn_auth_complete():
     token = jwt.encode({'sub': username, 'iat': now.timestamp(), 'exp': (
         now + datetime.timedelta(days=7)).timestamp(), 'jti': jti}, JWT_SECRET, algorithm='HS256')
     return jsonify({'status': 'ok', 'token': token})
-
 
 @app.route('/control', methods=['POST'])
 def control():
@@ -1069,11 +1023,10 @@ def control():
     # Fallback acknowledgement
     return jsonify({'status': 'ok', 'command': cmd, 'target': target})
 
-
 @app.route('/ai', methods=['POST'])
 def ai_endpoint():
     """User-facing AI endpoint. Accepts JSON {prompt: string} and requires user JWT.
-    Returns a simulated response for now. In production this would proxy to an AI service.
+    Returns a simulated response for now. Production: this would proxy to an AI service.
     """
     user = _verify_jwt(request)
     if not user:
@@ -1084,7 +1037,6 @@ def ai_endpoint():
     resp = {'reply': f"(simulated) Received prompt from {user}: {prompt[:200]}"}
     app.logger.info('AI request by %s: %s', user, prompt)
     return jsonify({'status': 'ok', 'response': resp})
-
 
 @app.route('/signup', methods=['POST'])
 @rate_limit(lambda: request.remote_addr or 'anon', limit=5, per_seconds=60)
@@ -1100,7 +1052,6 @@ def signup():
     users[username] = {'pw': generate_password_hash(password), 'created': datetime.datetime.utcnow().isoformat()}
     save_users(users)
     return jsonify({'status': 'ok', 'user': username})
-
 
 @app.route('/login', methods=['POST'])
 @rate_limit(lambda: request.remote_addr or 'anon', limit=10, per_seconds=60)
@@ -1119,7 +1070,6 @@ def login():
         now + datetime.timedelta(days=7)).timestamp(), 'jti': jti}, JWT_SECRET, algorithm='HS256')
     return jsonify({'status': 'ok', 'token': token})
 
-
 def _get_jwt_from_request():
     auth = request.headers.get('Authorization') or request.headers.get('X-API-KEY')
     if not auth:
@@ -1127,7 +1077,6 @@ def _get_jwt_from_request():
     if auth.startswith('Bearer '):
         return auth.split(' ', 1)[1].strip()
     return auth.strip()
-
 
 def _verify_jwt(req):
     token = _get_jwt_from_request()
@@ -1140,7 +1089,6 @@ def _verify_jwt(req):
         return payload.get('sub')
     except Exception:
         return None
-
 
 @app.route('/logout', methods=['POST'])
 def logout():
@@ -1175,7 +1123,6 @@ def logout():
         save_revoked_token(token)
     return jsonify({'status': 'ok'})
 
-
 @app.route('/sync-memory', methods=['POST'])
 @rate_limit(lambda: request.remote_addr or 'anon', limit=30, per_seconds=60)
 def sync_memory():
@@ -1205,7 +1152,6 @@ def sync_memory():
     memories[user] = merged
     save_memories(memories)
     return jsonify({'status': 'ok', 'merged_count': len(merged)})
-
 
 @app.route('/attachments', methods=['POST'])
 @rate_limit(lambda: request.remote_addr or 'anon', limit=30, per_seconds=60)
@@ -1248,7 +1194,6 @@ def attachments():
         except Exception:
             pass
 
-
 @app.route('/memories', methods=['GET'])
 def get_memories():
     user = _verify_jwt(request)
@@ -1257,15 +1202,12 @@ def get_memories():
     memories = load_memories()
     return jsonify({'status': 'ok', 'memories': memories.get(user, [])})
 
-
 @app.route('/health', methods=['GET'])
 def health():
     return jsonify({'status': 'ok'})
 
-
 # Discover apps under pwa_apps/ dynamically
 APPS_DIR = ROOT / 'pwa_apps'
-
 
 def discover_apps():
     apps = {}
@@ -1279,7 +1221,6 @@ def discover_apps():
     if 'q-stable' not in apps and (ROOT / 'pwa_apps' / 'q-stable').exists():
         apps['q-stable'] = ROOT / 'pwa_apps' / 'q-stable'
     return apps
-
 
 @app.route('/mirror/app/<appname>/', defaults={'rest': ''})
 @app.route('/mirror/app/<appname>/<path:rest>')
@@ -1328,7 +1269,6 @@ def mirror_app(appname, rest):
     raw_url = f"{GITHUB_RAW_BASE}/pwa_apps/{appname}/{path}"
     return redirect(raw_url)
 
-
 @app.route('/mirror/raw/<path:rest>', methods=['GET'])
 def mirror_raw(rest):
     # Serve local file if present under the repository root; otherwise redirect to GitHub raw
@@ -1343,7 +1283,6 @@ def mirror_raw(rest):
         return local.read_bytes(), 200, headers
     raw = f"{GITHUB_RAW_BASE}/{rest}"
     return redirect(raw)
-
 
 @app.route('/admin/backup-db', methods=['POST'])
 def admin_backup_db():
@@ -1369,7 +1308,6 @@ def admin_backup_db():
     except Exception:
         app.logger.exception('Backup failed')
         return jsonify({'status': 'error', 'reason': 'backup_failed'}), 500
-
 
 @app.route('/admin/update-ngrok', methods=['POST'])
 def admin_update_ngrok():
@@ -1417,7 +1355,6 @@ def admin_update_ngrok():
         app.logger.exception('Failed to run update script')
         return jsonify({'status': 'error', 'reason': 'failed'}), 500
 
-
 @app.route('/attachments', methods=['GET'])
 def list_attachments():
     """Return attachments metadata for the authenticated user."""
@@ -1443,7 +1380,6 @@ def list_attachments():
         except Exception:
             pass
 
-
 @app.route('/ready', methods=['GET'])
 def ready():
     """Readiness probe: confirms DB is accessible and comprehensive tables exist."""
@@ -1465,7 +1401,6 @@ def ready():
             conn.close()
         except Exception:
             pass
-
 
 @app.route('/metrics', methods=['GET'])
 def metrics():
@@ -1490,7 +1425,6 @@ def metrics():
             conn.close()
         except Exception:
             pass
-
 
 @app.route('/attachments/<att_id>/download', methods=['GET'])
 def attachment_download(att_id):
@@ -1536,7 +1470,6 @@ def attachment_download(att_id):
         except Exception:
             pass
 
-
 @app.route('/ai/tts', methods=['POST'])
 def ai_tts():
     """Return a simple SSML wrapper for the AI prompt. Requires user JWT.
@@ -1554,7 +1487,6 @@ def ai_tts():
     voice = payload.get('voice', 'default')
     ssml = f"<speak><voice name=\"{html.escape(voice)}\">{safe_text}</voice></speak>"
     return jsonify({'status': 'ok', 'ssml': ssml})
-
 
 @app.route('/payments/webhook', methods=['POST'])
 def payments_webhook():
@@ -1747,7 +1679,6 @@ def payments_webhook():
 
     return jsonify({'status': 'ok' if handled else 'ignored'})
 
-
 if __name__ == '__main__':
     # Ensure DB and migrate any JSON-backed stores into SQLite before serving
     try:
@@ -1755,7 +1686,7 @@ if __name__ == '__main__':
     except Exception:
         app.logger.exception('DB migration failed')
 
-    # In production, require secrets to be set and not default
+    # Production:, require secrets to be set and not default
     if os.environ.get('QMOI_ENV') == 'production':
         required = []
         if JWT_SECRET in (None, '', 'dev-jwt-secret'):

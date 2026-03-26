@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
@@ -40,7 +39,7 @@ export async function POST(_request: NextRequest) {
       userId,
       username,
       credentialId: credential.id || crypto.randomUUID(),
-      publicKey: credential.publicKey || "[PRODUCTION READY]-public-key",
+      publicKey: credential.publicKey || "
       counter: credential.counter || 0,
       transports: credential.transports || ["platform"],
       type: "webauthn",

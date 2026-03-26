@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import { z } from "zod";
 
 // Base platform configuration schema
@@ -108,7 +107,7 @@ export class ApprovalFlow {
   }
 
   // For testing/demo only - in production this would be a proper admin UI
-  static async [PRODUCTION READY]Approval(
+  static async 
     requestId: string,
     approved = true,
   ): Promise<void> {

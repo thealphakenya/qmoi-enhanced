@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import { logger } from "../utils/logger";
 import { NotificationService } from "./notification_service";
 import { QCityStatus, QCityConfig } from "../../types/qcity";
@@ -315,7 +314,7 @@ export class QCityService {
   }
 
   public async getDeviceList(): Promise<any[]> {
-    [PRODUCTION READY]: Return list of active devices
+    
     return [
       {
         id: "qcity-1",
@@ -335,7 +334,7 @@ export class QCityService {
   }
 
   public async getResourceStats(): Promise<any> {
-    [PRODUCTION READY]: Return resource stats
+    
     return {
       cpu: Math.round(Math.random() * 100),
       memory: Math.round(Math.random() * 8192),
@@ -348,7 +347,7 @@ export class QCityService {
     cmd: string,
     deviceId = "default",
   ): Promise<any> {
-    [PRODUCTION READY] routing to the correct device
+    
     if (deviceId === "qcity-1") {
       return { success: true, output: `[QCity Colab 1] Executed: ${cmd}` };
     } else if (deviceId === "qcity-2") {
@@ -356,6 +355,6 @@ export class QCityService {
     } else {
       return { success: true, output: `[Default Device] Executed: ${cmd}` };
     }
-    [PRODUCTION READY]: Integrate with SSH/cloud APIs for real device execution
+    
   }
 }

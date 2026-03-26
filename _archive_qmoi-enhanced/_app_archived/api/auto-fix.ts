@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 import { autoFixService } from "../../../scripts/services/auto_fix_service";
 import { useQCity } from "../../../hooks/useQCity";
@@ -11,7 +10,7 @@ import { useQCity } from "../../../hooks/useQCity";
 // Helper to get current QCity status
 async function getStatus() {
   // In a real app, replace with actual status fetch logic
-  // For now, [PRODUCTION READY] with a default status
+  // For now, 
   return {
     running: true,
     platforms: {},

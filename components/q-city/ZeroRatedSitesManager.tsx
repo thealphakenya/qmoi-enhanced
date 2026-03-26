@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -460,7 +459,7 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any) {
                     setFormData((prev) => ({ ...prev, name: e.target.value }))
                   }
                   className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  [PRODUCTION READY]="My Zero-Rated Site"
+                  
                 />
               </div>
 
@@ -475,7 +474,7 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any) {
                     setFormData((prev) => ({ ...prev, domain: e.target.value }))
                   }
                   className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  [PRODUCTION READY]="data.zero"
+                  
                 />
               </div>
             </div>
@@ -493,7 +492,7 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any) {
                     value={url}
                     onChange={(e) => updateUrl(index, e.target.value)}
                     className="flex-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    [PRODUCTION READY]="https://data.com"
+                    
                   />
                   {formData.urls.length > 1 && (
                     <button
@@ -555,7 +554,7 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any) {
                     }))
                   }
                   className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  [PRODUCTION READY]="Brief description of the site"
+                  
                 />
               </div>
             </div>
@@ -615,7 +614,7 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any) {
                   }))
                 }
                 className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                [PRODUCTION READY]="Kenya, United States, United Kingdom"
+                
               />
             </div>
 

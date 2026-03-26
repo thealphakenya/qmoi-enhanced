@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:53Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """Simple wallets audit script.
 
@@ -17,7 +16,6 @@ import os
 from pathlib import Path
 
 KEYWORDS = ['leahwallet', 'cashon', 'wallet', 'mpesa', 'pesapal', 'binance', 'valr', 'wallets', 'leah']
-
 
 def scan_files(root: Path):
     findings = []
@@ -34,11 +32,9 @@ def scan_files(root: Path):
                         findings.append({'file': str(p.relative_to(root)), 'line': i, 'keyword': k, 'text': line.strip()})
     return findings
 
-
 def build_report(findings):
     report = {'summary': {'total_matches': len(findings)}, 'matches': findings}
     return report
-
 
 def main():
     p = argparse.ArgumentParser()
@@ -60,7 +56,6 @@ def main():
         canonical.write_text(json.dumps(report, indent=2), encoding='utf8')
         print('Applied canonical wallets report ->', canonical)
 
-
 if __name__ == '__main__':
     main()
 #!/usr/bin/env python3
@@ -74,7 +69,6 @@ import json
 import os
 from pathlib import Path
 import socket
-
 
 def load_dotenv(root: Path):
     candidates = [root / 'tools' / 'lion.env', root / '.env']
@@ -94,7 +88,6 @@ def load_dotenv(root: Path):
             env[k]=v
     return env
 
-
 def check_tcp_host(hostport: str, timeout=2):
     try:
         host,port = hostport.split(':')
@@ -103,7 +96,6 @@ def check_tcp_host(hostport: str, timeout=2):
             return True
     except Exception:
         return False
-
 
 def find_wallet_configs(root: Path):
     # Look for files or env entries that mention wallet endpoints
@@ -120,7 +112,6 @@ def find_wallet_configs(root: Path):
         if 'rpc' in txt.lower() or 'wallet' in txt.lower():
             candidates.append({'source': str(p.relative_to(root)), 'key': 'file', 'value': txt[:200]})
     return candidates
-
 
 def main():
     p = argparse.ArgumentParser()
@@ -150,7 +141,6 @@ def main():
     outp.write_text(json.dumps(report, indent=2), encoding='utf8')
     print('Wrote', outp)
 
-
 if __name__ == '__main__':
     main()
 #!/usr/bin/env python3
@@ -165,7 +155,6 @@ from pathlib import Path
 
 WALLET_KEYWORDS = ['wallet', 'cashon', 'pesapal', 'mpesa', 'leahwallet', 'cashonwallet', 'binance']
 
-
 def scan_for_wallets(root: Path):
     findings = []
     for p in root.rglob('*'):
@@ -178,7 +167,6 @@ def scan_for_wallets(root: Path):
                 if k in text:
                     findings.append({'file': str(p.relative_to(root)), 'keyword': k})
     return findings
-
 
 def main():
     p = argparse.ArgumentParser()

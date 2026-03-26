@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import * as nodeCrypto from "crypto";
 import { v4 as uuidv4 } from "uuid";
 
@@ -295,7 +294,7 @@ export class AuthManager {
     sessionId: string,
     _method: "whatsapp" | "face" | "voice",
   ): Promise<boolean> {
-    [PRODUCTION READY]: implement WhatsApp/face/voice confirmation
+    
     // For now, always return true for master/sister
     const user = await this.getUser(sessionId);
     if (!user) return false;

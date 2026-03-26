@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -286,7 +285,7 @@ export default function EnhancedRevenuePanel() {
             <Input
               id="master-key"
               type="password"
-              [PRODUCTION READY]="Enter master key"
+              
               value={masterKey}
               onChange={(e) => setMasterKey(e.target.value)}
             />
@@ -483,7 +482,7 @@ export default function EnhancedRevenuePanel() {
                   <Label>Daily Target (KES)</Label>
                   <Input
                     type="number"
-                    [PRODUCTION READY]="Enter target amount"
+                    
                     value={targetAmount}
                     onChange={(e) => setTargetAmount(e.target.value)}
                   />
@@ -518,7 +517,7 @@ export default function EnhancedRevenuePanel() {
                   <Label>Amount (KES)</Label>
                   <Input
                     type="number"
-                    [PRODUCTION READY]="Enter amount"
+                    
                     value={transferAmount}
                     onChange={(e) => setTransferAmount(e.target.value)}
                   />

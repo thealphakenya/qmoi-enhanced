@@ -521,7 +521,7 @@ QMOI Team
                 "expires": datetime.now() + timedelta(seconds=self.verification_code_expiry)
             }
 
-            # In production, integrate with SMS service
+            # Production:, integrate with SMS service
             logger.info(f"Phone verification code {code} for {user.phone_number}")
 
         except Exception as e:

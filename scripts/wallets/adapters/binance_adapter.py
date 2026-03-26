@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY]
 """Binance testnet adapter scaffold (real-first).
 
 This file provides a scaffold for interacting with Binance testnet. It is
@@ -12,7 +11,6 @@ with `--real` and `PRODUCTION_CONFIRMED=true`.
 """
 from .adapter_base import TestnetAdapter
 import os
-
 
 class BinanceTestnetAdapter(TestnetAdapter):
     def __init__(self):
@@ -26,7 +24,6 @@ class BinanceTestnetAdapter(TestnetAdapter):
             # implementation for real SDK call (binance.client or ccxt)
             return {'status': 'not_implemented', 'last_checked': self.now_iso(), 'meta': {'adapter': self.name}}
         return super().check_balance(config=cfg, real=False)
-
 
 # Register in adapter registry if available
 try:

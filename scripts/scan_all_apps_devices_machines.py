@@ -44,7 +44,6 @@ scan_extensions = {
     '.sql', '.prisma', '.graphql', '.proto', '.toml', '.ini', '.cfg', '.csv'
 }
 
-
 def is_text_file(path: Path) -> bool:
     try:
         with open(path, 'rb') as f:
@@ -52,7 +51,6 @@ def is_text_file(path: Path) -> bool:
             return b'\0' not in chunk
     except Exception:
         return False
-
 
 def find_component_dirs(root: Path):
     component_dirs = set()
@@ -63,7 +61,6 @@ def find_component_dirs(root: Path):
         if any(token in parts for token in component_dir_tokens):
             component_dirs.add(p)
     return sorted(component_dirs)
-
 
 def scan_component_dir(component_dir: Path):
     info = {
@@ -109,7 +106,6 @@ def scan_component_dir(component_dir: Path):
     info['missing_docs'] = [doc for doc in required_doc_names if doc not in doc_names_found]
     return info
 
-
 def build_report(results, output_path: Path):
     report = {
         'generated_at': datetime.utcnow().isoformat() + 'Z',
@@ -119,7 +115,6 @@ def build_report(results, output_path: Path):
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(report, indent=2), encoding='utf-8')
     return report
-
 
 def main():
     parser = argparse.ArgumentParser(description='Scan apps/devices/machines components for production readiness')
@@ -169,7 +164,6 @@ def main():
 
     print('OK: no non-production markers found in scanned component directories')
     exit(0)
-
 
 if __name__ == '__main__':
     main()

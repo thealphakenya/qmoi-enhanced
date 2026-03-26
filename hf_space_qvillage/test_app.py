@@ -27,7 +27,6 @@ from core import (
     KNOWLEDGE_BASE
 )
 
-
 class TestRunner:
     """Simple test runner without pytest dependency."""
     
@@ -63,7 +62,6 @@ class TestRunner:
             self.failed += 1
             return None
 
-
 async def test_safe_arxiv_call_success():
     """Test successful arXiv API call."""
     # This will test the real API call
@@ -77,7 +75,6 @@ async def test_safe_arxiv_call_success():
         assert "arxiv_id" in paper
     print("✓ safe_arxiv_call success test passed")
 
-
 async def test_fetch_daily_papers():
     """Test fetching daily papers."""
     result = await fetch_daily_papers()
@@ -85,7 +82,6 @@ async def test_fetch_daily_papers():
     assert isinstance(result, str)
     assert len(result) > 0
     print("✓ fetch_daily_papers test passed")
-
 
 async def test_search_knowledge_base():
     """Test knowledge base search."""
@@ -95,14 +91,12 @@ async def test_search_knowledge_base():
     assert "Transformer" in result
     print("✓ search_knowledge_base test passed")
 
-
 async def test_search_empty_query():
     """Test search with empty query."""
     result = await search_knowledge_base("")
     
     assert "Enter at least 2 characters" in result
     print("✓ search_empty_query test passed")
-
 
 async def test_load_trending_papers():
     """Test loading trending papers."""
@@ -111,7 +105,6 @@ async def test_load_trending_papers():
     assert isinstance(result, str)
     assert "Trending" in result
     print("✓ load_trending_papers test passed")
-
 
 async def test_get_community_stats():
     """Test getting community stats."""
@@ -122,7 +115,6 @@ async def test_get_community_stats():
     assert "Active Users" in result
     print("✓ get_community_stats test passed")
 
-
 def test_generate_session_token():
     """Test session token generation."""
     token1 = generate_session_token()
@@ -132,7 +124,6 @@ def test_generate_session_token():
     assert len(token1) == 19  # hf_ + 16 hex chars
     assert token1 != token2
     print("✓ generate_session_token test passed")
-
 
 async def run_all_tests():
     """Run all tests."""
@@ -155,7 +146,6 @@ async def run_all_tests():
     except Exception as e:
         print(f"Test suite failed: {e}")
         return False
-
 
 if __name__ == "__main__":
     success = asyncio.run(run_all_tests())

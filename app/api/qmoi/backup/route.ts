@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextApiRequest, NextApiResponse } from "next";
@@ -61,8 +60,8 @@ export default async function handler(
           const { includeData } = body;
 
           return _res.status(200).json({
-            _status: "[PRODUCTION READY]",
-            _message: "Backup initiated. Encryption and storage in progress.",
+            status: "success",
+            message: "Backup initiated. Encryption and storage in progress.",
             backupId: `backup_${Date.now()}`,
             userId,
             includeData: includeData || ["profile", "preferences", "wallet"],
@@ -82,8 +81,8 @@ export default async function handler(
           }
 
           return _res.status(200).json({
-            _status: "[PRODUCTION READY]",
-            _message:
+            status: "success",
+            message:
               "Restore initiated. Validation and data restoration in progress.",
             backupId,
             userId,
@@ -104,8 +103,8 @@ export default async function handler(
     case "GET": {
       // Production implementation: Retrieve backup status and history
       return _res.status(200).json({
-        _status: "[PRODUCTION READY]",
-        _message: "Backup history and status retrieval in progress.",
+        status: "success",
+        message: "Backup history and status retrieval in progress.",
         userId,
         backups: [],
         lastBackupTime: null,

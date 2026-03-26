@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 Propose and apply trivial link fixes.
@@ -51,7 +50,6 @@ REPORT = os.path.join(TOOLS, "dns_links_report.json")
 PROPOSALS = os.path.join(TOOLS, "link_fix_proposals.json")
 ACTIONS_MD = os.path.join(TOOLS, "link_fix_actions.md")
 
-
 def head_status(url: str, timeout: float = 5.0) -> Dict:
     rec = {"url": url, "status": None, "error": None}
     try:
@@ -67,11 +65,9 @@ def head_status(url: str, timeout: float = 5.0) -> Dict:
         rec["error"] = str(e)
         return rec
 
-
 def load_report() -> Dict:
     with open(REPORT, "r", encoding="utf-8") as fh:
         return json.load(fh)
-
 
 def find_candidates(report: Dict) -> List[Dict]:
     candidates: List[Dict] = []
@@ -87,12 +83,10 @@ def find_candidates(report: Dict) -> List[Dict]:
                 candidates.append({"http": url, "https": https, "status": status, "files": r.get("file") or r.get("files")})
     return candidates
 
-
 def backup_file(path: str):
     bak = path + ".bak"
     if not os.path.exists(bak):
         shutil.copy2(path, bak)
-
 
 def apply_replacements(candidates: List[Dict]) -> List[Dict]:
     actions = []
@@ -138,7 +132,6 @@ def apply_replacements(candidates: List[Dict]) -> List[Dict]:
             PROPOSALS = os.path.join(TOOLS, "link_fix_proposals.json")
             ACTIONS_MD = os.path.join(TOOLS, "link_fix_actions.md")
 
-
             def head_status(url: str, timeout: float = 5.0) -> Dict:
                 rec = {"url": url, "status": None, "error": None}
                 try:
@@ -154,11 +147,9 @@ def apply_replacements(candidates: List[Dict]) -> List[Dict]:
                     rec["error"] = str(e)
                     return rec
 
-
             def load_report() -> Dict:
                 with open(REPORT, "r", encoding="utf-8") as fh:
                     return json.load(fh)
-
 
             def find_candidates(report: Dict) -> List[Dict]:
                 candidates: List[Dict] = []
@@ -174,12 +165,10 @@ def apply_replacements(candidates: List[Dict]) -> List[Dict]:
                             candidates.append({"http": url, "https": https, "status": status, "files": r.get("file") or r.get("files")})
                 return candidates
 
-
             def backup_file(path: str):
                 bak = path + ".bak"
                 if not os.path.exists(bak):
                     shutil.copy2(path, bak)
-
 
             def apply_replacements(candidates: List[Dict]) -> List[Dict]:
                 actions = []
@@ -231,7 +220,6 @@ def apply_replacements(candidates: List[Dict]) -> List[Dict]:
 
                 return actions
 
-
             def git_commit_branch(branch_name: str, message: str) -> bool:
                 try:
                     subprocess.check_call(["git", "checkout", "-b", branch_name])
@@ -246,7 +234,6 @@ def apply_replacements(candidates: List[Dict]) -> List[Dict]:
                     return True
                 except subprocess.CalledProcessError:
                     return False
-
 
             def main():
                 if not os.path.exists(REPORT):
@@ -289,7 +276,6 @@ def apply_replacements(candidates: List[Dict]) -> List[Dict]:
                     print("Committed changes on branch", branch)
                 else:
                     print("No commit created (no changes or git failure). Check working tree.")
-
 
             if __name__ == "__main__":
                 main()

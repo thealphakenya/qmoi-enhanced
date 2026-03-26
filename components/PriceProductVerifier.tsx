@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 import React, { useState } from "react";
 import { verifyProduct } from "@/adapters/clientAdapters";
@@ -32,7 +31,7 @@ export const PriceProductVerifier: React.FC = () => {
       <h3>Price & Product Verification</h3>
       <input
         type="text"
-        [PRODUCTION READY]="Enter product name or barcode"
+        
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         style={{ marginBottom: 8, width: "100%" }}

@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import { useState } from "react";
 
 export function useLargeFileUpload() {
@@ -13,13 +12,12 @@ export function useLargeFileUpload() {
   >("idle");
   const [error, setError] = useState<string | null>(null);
 
-  [PRODUCTION READY] chunked upload (replace with real API)
   const uploadFile = async (file: File) => {
     setStatus("uploading");
     setError(null);
     setProgress(0);
     try {
-      [PRODUCTION READY]: Use tus, S3 multipart, or Google Drive API for real
+      
       for (let i = 1; i <= 10; i++) {
         await new Promise((res) => setTimeout(res, 100));
         setProgress(i * 10);

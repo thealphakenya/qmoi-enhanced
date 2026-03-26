@@ -187,7 +187,6 @@ class APIDocumentationValidator:
         summary_path.write_text(json.dumps(summary, indent=2))
         print(f"📦 Saved API documentation summary to {summary_path}")
 
-
     def update_api_md(self, missing_endpoints: Set[str]):
         """Update API.md with missing endpoints"""
         if not API_MD.exists():

@@ -3,12 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY]
 from pathlib import Path
 import tempfile
 import shutil
 import json
-
 
 def test_autoupdater_dry_run_creates_plan():
     tmp = Path(tempfile.mkdtemp(prefix='qmoi-test-'))
@@ -43,7 +41,6 @@ import json
 import os
 import tempfile
 from pathlib import Path
-
 
 def test_build_plan_creates_plan():
     # create a small temp repo with a md file containing placeholders

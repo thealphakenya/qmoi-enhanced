@@ -3,11 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 /* eslint-disable */
 const fs = require("fs");
 const path = require("path");
-const { generate[PRODUCTION READY], updateDocs } = require("../../scripts/auto_utils");
+const { generate
 
 describe("Auto-watcher utilities", () => {
   const testFile = "test_feature.ts";
@@ -23,11 +22,11 @@ describe("Auto-watcher utilities", () => {
     }
   });
 
-  it("should generate a [PRODUCTION READY] file", () => {
-    generate[PRODUCTION READY](testFile);
+  it("should generate a 
+    generate
     expect(fs.existsSync(testFile)).toBe(true);
     const content = fs.readFileSync(testFile, "utf8");
-    expect(content).toMatch(/Auto-generated [PRODUCTION READY]/);
+    expect(content).toMatch(/Auto-generated 
   });
 
   it("should update FEATURESINDEX.md", () => {

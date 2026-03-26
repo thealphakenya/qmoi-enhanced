@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React, { useState, useEffect } from "react";
 import { Chatbot } from "./Chatbot";
 import "./AlphaQAiSystem.css";
@@ -29,7 +28,7 @@ const AlphaQAiSystem = () => {
 
   useEffect(() => {
     if (!autoUpdate) return;
-    [PRODUCTION READY] metrics update
+    
     const interval = setInterval(() => {
       setMetrics((prev) => ({
         ...prev,

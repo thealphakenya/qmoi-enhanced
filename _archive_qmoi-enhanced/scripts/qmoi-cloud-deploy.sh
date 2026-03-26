@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+
 #!/bin/bash
 # QMOI Cloud Deploy Script
 # Deploys and keeps QMOI automation, live status, and dashboard running in Colab, DagsHub, or any cloud

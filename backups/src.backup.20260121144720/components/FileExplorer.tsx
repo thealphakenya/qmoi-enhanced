@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 "use client";
 import React, { useState, useEffect } from "react";
 import "./FileExplorer.css";
@@ -35,7 +35,7 @@ export function FileExplorer() {
   };
 
   const handleDownload = (file: FileItem) => {
-    [PRODUCTION READY] download - in production, fetch from backend
+    
     (console as any).log(`Downloading: ${file.name}`);
     alert(`Download initiated for: ${file.name}`);
   };

@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
@@ -7,14 +7,14 @@ import fs from "fs";
 
 const JOBS_PATH = "/workspaces/stable-Q-ai/colab-jobs-log.jsonl";
 
-// Install package in Colab/cloud ([PRODUCTION READY])
+// Install package in Colab/cloud (
 async function installPackage(pkg: string, manager: "npm" | "pip" = "npm") {
   // Production: Call Google Colab API or AWS SageMaker API to install package
   // Use axios with authentication headers to deploy package installation
   return { status: "success", pkg, manager };
 }
 
-// Upload dataset to Colab/cloud ([PRODUCTION READY])
+// Upload dataset to Colab/cloud (
 interface Dataset {
   name: string;
   [key: string]: unknown;
@@ -25,7 +25,7 @@ async function uploadDataset(dataset: Dataset) {
   return { status: "success", dataset: dataset.name };
 }
 
-// Execute job in Colab/cloud ([PRODUCTION READY])
+// Execute job in Colab/cloud (
 interface JobSpec {
   [key: string]: unknown;
 }
@@ -35,7 +35,7 @@ async function executeColabJob(jobSpec: JobSpec) {
   return { status: "running", jobId: Date.now(), jobSpec };
 }
 
-// Track job status ([PRODUCTION READY])
+// Track job status (
 async function getColabJobStatus(jobId: number) {
   // Production: Query Colab or cloud job service for current job status and results
   // Poll until job completion or return current progress
@@ -85,7 +85,7 @@ export default async function handler(
       return _res.json(result);
     }
     const { type, name } = _req.body;
-    [PRODUCTION READY] Colab job execution (replace with real Colab API integration)
+    
     const job = {
       id: Date.now(),
       type,
@@ -93,7 +93,7 @@ export default async function handler(
       status: "success",
       started: new Date().toISOString(),
       finished: new Date().toISOString(),
-      result: `[PRODUCTION READY]d Colab job for ${type}: ${name}`,
+      result: `
     };
     persistJob(job);
     return _res.json(job);

@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 // NetworkManager: Handles all device network connections, prioritization, and health monitoring
 import EventEmitter from "events";
 
@@ -28,7 +28,7 @@ export class NetworkManager extends EventEmitter {
 
   async scanNetworks(): Promise<Network[]> {
     // Production: integrate with platform APIs (native modules or APIs) to scan networks
-    [PRODUCTION READY]s scan result
+    
     this.networks = [
       {
         id: "wifi-1",
@@ -85,7 +85,7 @@ export class NetworkManager extends EventEmitter {
 
   async connectToNetwork(networkId: string): Promise<boolean> {
     // Production: integrate with platform APIs to perform actual connection
-    [PRODUCTION READY]s connection state
+    
     this.networks = this.networks.map((n) => ({
       ...n,
       isConnected: n.id === networkId,

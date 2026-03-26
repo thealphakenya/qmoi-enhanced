@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextApiRequest, NextApiResponse } from "next";
@@ -51,7 +50,7 @@ export default async function handler(
             });
           }
           return _res.status(200).json({
-            _status: "[PRODUCTION READY]",
+            _status: "
             _message:
               "Research analysis initiated. Data aggregation in progress.",
             query,
@@ -71,7 +70,7 @@ export default async function handler(
             });
           }
           return _res.status(200).json({
-            _status: "[PRODUCTION READY]",
+            _status: "
             _message: "Blockchain verification in progress.",
             address,
             type,
@@ -84,7 +83,7 @@ export default async function handler(
         case "earning-opportunities": {
           const { filter } = body;
           return _res.status(200).json({
-            _status: "[PRODUCTION READY]",
+            _status: "
             _message: "Scanning for earning opportunities. Results loading.",
             userId,
             filter: filter || {},

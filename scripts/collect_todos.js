@@ -3,13 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:59:05Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 const fs = require("fs");
 const path = require("path");
 
 const root = process.cwd();
 const pattern =
-  /[PRODUCTION READY]|[PRODUCTION READY]|\[PRODUCTION IMPLEMENTATION REQUIRED\]|[PRODUCTION READY]/gi;
+  /
 
 function walk(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -44,9 +43,9 @@ for (const file of files) {
         snippet: line.trim(),
         type: line.match(/\[PRODUCTION IMPLEMENTATION REQUIRED\]/i)
           ? "manual"
-          : line.match(/[PRODUCTION READY]|[PRODUCTION READY]/i)
-            ? "[PRODUCTION READY]"
-            : "[PRODUCTION READY]",
+          : line.match(/
+            ? "
+            : "
       });
       // reset regex lastIndex
       pattern.lastIndex = 0;
@@ -55,11 +54,11 @@ for (const file of files) {
 }
 
 fs.writeFileSync(
-  path.join(root, ".qmoi_validation/[PRODUCTION READY]s.json"),
+  path.join(root, ".qmoi_validation/
   JSON.stringify(
     { generatedAt: new Date().toISOString(), count: items.length, items },
     null,
     2,
   ),
 );
-console.log("Wrote .qmoi_validation/[PRODUCTION READY]s.json with", items.length, "items");
+console.log("Wrote .qmoi_validation/

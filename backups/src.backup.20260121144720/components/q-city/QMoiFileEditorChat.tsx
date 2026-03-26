@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 import React, { useState, ReactNode } from "react";
 
 function highlightCode(code: string) {
@@ -326,7 +326,7 @@ export default function QMoiFileEditorChat({
           <input
             value={batchFiles}
             onChange={(_e) => setBatchFiles(_e.target.value)}
-            [PRODUCTION READY]="file1.py,file2.ts,..."
+            
             style={{
               width: "60%",
               marginRight: 8,
@@ -340,7 +340,7 @@ export default function QMoiFileEditorChat({
           <input
             value={batchOp}
             onChange={(_e) => setBatchOp(_e.target.value)}
-            [PRODUCTION READY]="operation (_e.g. lint, format)"
+            
             style={{
               width: "30%",
               background: "#111",
@@ -404,7 +404,7 @@ export default function QMoiFileEditorChat({
         <input
           value={input}
           onChange={(_e) => setInput(_e.target.value)}
-          [PRODUCTION READY]="/view /edit /append /replace ..."
+          
           style={{
             flex: 1,
             background: "#111",

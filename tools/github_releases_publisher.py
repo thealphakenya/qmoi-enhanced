@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 GitHub Releases Publisher for QMOI Apps
@@ -35,7 +34,6 @@ from typing import Dict, List, Optional
 from dataclasses import dataclass, asdict
 from datetime import datetime
 
-
 @dataclass
 class AppBuild:
     """Represents a single app build for a platform."""
@@ -49,7 +47,6 @@ class AppBuild:
     release_date: str
     status: str = "ready"
 
-
 @dataclass
 class AppRelease:
     """Represents a complete release with all platform builds."""
@@ -60,7 +57,6 @@ class AppRelease:
     release_notes: str
     is_prerelease: bool = False
     is_draft: bool = False
-
 
 class GitHubReleasesPublisher:
     """Manages GitHub releases for QMOI apps."""
@@ -517,7 +513,6 @@ echo "✅ Release published successfully!"
 """
         return commands
 
-
 def main():
     """Main entry point."""
     parser = argparse.ArgumentParser(description="GitHub Releases Publisher for QMOI Apps")
@@ -617,7 +612,6 @@ def main():
 
     if not any([args.all, args.discover, args.config, args.guide, args.commands, args.publish_all]):
         parser.print_help()
-
 
 if __name__ == "__main__":
     main()

@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React, { useState } from "react";
 
 export interface OrchestratorStatus {
@@ -19,7 +18,7 @@ export interface OrchestratorStatus {
 const statusColor = (s: string) =>
   s === "success" ? "#4caf50" : s === "warning" ? "#ff9800" : "#f44336";
 
-const [PRODUCTION READY]Agents = [
+const 
   {
     id: "a1",
     name: "Agent stable",
@@ -39,12 +38,12 @@ const [PRODUCTION READY]Agents = [
     assignedDevice: "Device 3",
   },
 ];
-const [PRODUCTION READY]Devices = ["Device 1", "Device 2", "Device 3", "Device 4"];
+const 
 
 export const OrchestratorStatusPanel: React.FC<{
   status: OrchestratorStatus;
 }> = ({ status }) => {
-  const [agents, setAgents] = useState([PRODUCTION READY]Agents);
+  const [agents, setAgents] = useState(
   const [failoverLoading, setFailoverLoading] = useState<string | null>(null);
 
   function handleAssign(agentId: string, device: string) {
@@ -53,7 +52,7 @@ export const OrchestratorStatusPanel: React.FC<{
         a.id === agentId ? { ...a, assignedDevice: device } : a,
       ),
     );
-    [PRODUCTION READY]: backend call
+    
   }
 
   function handleFailover(agentId: string) {
@@ -143,7 +142,7 @@ export const OrchestratorStatusPanel: React.FC<{
                   style={{ minWidth: 100 }}
                 >
                   <option value="">-- Select Device --</option>
-                  {[PRODUCTION READY]Devices.map((d) => (
+                  {
                     <option key={d} value={d}>
                       {d}
                     </option>

@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """
 Autotest runner for repository health checks and conservative test execution.
 
@@ -194,7 +194,6 @@ def main():
     # Finalize report
     safe_write(REPORT_MD, '\n'.join(report))
     print(f'Wrote {REPORT_MD}')
-
 
 if __name__ == '__main__':
     main()

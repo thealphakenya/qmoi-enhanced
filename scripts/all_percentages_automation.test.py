@@ -39,7 +39,6 @@ except ImportError as e:
     print("Running skeleton tests only")
     QMOIPercentagesAutomation = None
 
-
 class TestPercentagesAutomationMarkdownScanning(unittest.TestCase):
     """Test markdown file scanning and percentage extraction"""
     
@@ -127,7 +126,6 @@ Network throughput gain: 45.2%
         self.assertEqual(len(metric_keys), len(set(metric_keys)), 
                         "Metric keys should be unique (no duplicates)")
 
-
 class TestPercentagesAutomationCategorization(unittest.TestCase):
     """Test metric categorization logic"""
     
@@ -185,7 +183,6 @@ class TestPercentagesAutomationCategorization(unittest.TestCase):
         
         category = self.automation.categorize_metric("cpu efficiency")
         self.assertEqual(category, "resource")
-
 
 class TestPercentagesAutomationTelemetry(unittest.TestCase):
     """Test telemetry extraction from host manager"""
@@ -247,7 +244,6 @@ class TestPercentagesAutomationTelemetry(unittest.TestCase):
         self.assertIsNotNone(result)
         self.assertGreater(float(result), 0)
 
-
 class TestPercentagesAutomationReportGeneration(unittest.TestCase):
     """Test report generation and formatting"""
     
@@ -301,7 +297,6 @@ class TestPercentagesAutomationReportGeneration(unittest.TestCase):
         self.assertIn("reliability", report_text.lower())
         self.assertIn("security", report_text.lower())
 
-
 class TestPercentagesAutomationJSONExport(unittest.TestCase):
     """Test JSON export functionality"""
     
@@ -343,7 +338,6 @@ class TestPercentagesAutomationJSONExport(unittest.TestCase):
         self.assertIn("timestamp", data)
         self.assertIn("percentages", data)
         self.assertIsInstance(data["percentages"], list)
-
 
 class TestPercentagesAutomationIntegration(unittest.TestCase):
     """Integration tests for full automation workflow"""
@@ -395,7 +389,6 @@ class TestPercentagesAutomationIntegration(unittest.TestCase):
         if report_file:
             self.assertTrue(report_file[0].exists())
 
-
 class TestPercentagesAutomationErrorHandling(unittest.TestCase):
     """Test error handling and edge cases"""
     
@@ -434,7 +427,6 @@ class TestPercentagesAutomationErrorHandling(unittest.TestCase):
         os.chdir(old_cwd)
         shutil.rmtree(test_dir)
 
-
 def run_tests():
     """Run all tests"""
     # Create test suite
@@ -456,7 +448,6 @@ def run_tests():
     
     # Return exit code
     return 0 if result.wasSuccessful() else 1
-
 
 if __name__ == "__main__":
     exit_code = run_tests()

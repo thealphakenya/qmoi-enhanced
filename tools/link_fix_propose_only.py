@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """Generate conservative http->https fix proposals from the checker report.
 
@@ -25,7 +24,6 @@ REPORT = os.path.join(TOOLS, "dns_links_report.json")
 PROPOSALS = os.path.join(TOOLS, "link_fix_proposals.json")
 ACTIONS_MD = os.path.join(TOOLS, "link_fix_actions.md")
 
-
 def head_status(url: str, timeout: float = 4.0) -> Dict:
     try:
         req = request.Request(url, method="HEAD", headers={"User-Agent": "qmoi-link-proposer/1.0"})
@@ -35,7 +33,6 @@ def head_status(url: str, timeout: float = 4.0) -> Dict:
         return {"status": he.code}
     except Exception as e:
         return {"error": str(e)}
-
 
 def main():
     if not os.path.exists(REPORT):
@@ -71,7 +68,6 @@ def main():
         fh.writelines(md_lines)
 
     print("Wrote proposals:", PROPOSALS)
-
 
 if __name__ == "__main__":
     main()

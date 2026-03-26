@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextResponse } from "next/server";
@@ -108,7 +107,6 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
       provider: cloudProvider,
     });
 
-    [PRODUCTION READY] resolve [PRODUCTION READY] items
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     task.status = "processing";
@@ -121,7 +119,6 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
       progress: task.progress,
     });
 
-    [PRODUCTION READY] resolve [PRODUCTION READY] items
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     task.status = "completed";

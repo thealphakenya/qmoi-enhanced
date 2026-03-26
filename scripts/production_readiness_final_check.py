@@ -86,14 +86,14 @@ def fix_file(file_path):
             if '[production ready]' not in content.lower():
                 if file_path.suffix in ['.py', '.sh']:
                     if not content.startswith('#!/'):
-                        content = '# [PRODUCTION READY]\n' + content
+                        content = '
                     else:
                         lines = content.split('\n')
-                        content = lines[0] + '\n# [PRODUCTION READY]\n' + '\n'.join(lines[1:])
+                        content = lines[0] + '\n
                 elif file_path.suffix in ['.js', '.ts', '.jsx', '.tsx', '.cjs', '.mjs']:
-                    content = '// [PRODUCTION READY]\n' + content
+                    content = '
                 elif file_path.suffix in ['.md']:
-                    content = '[PRODUCTION READY]\n' + content
+                    content = '
             
             file_path.write_text(content, encoding='utf-8')
             return True

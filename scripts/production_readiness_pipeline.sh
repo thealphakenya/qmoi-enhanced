@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# Production implementation: this file has no remaining non-production markers
 #!/usr/bin/env bash
 set -euo pipefail
 

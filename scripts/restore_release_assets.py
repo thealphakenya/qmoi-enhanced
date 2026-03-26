@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """
 Restore release assets to actual production versions by downloading the v1.2.3
 assets for any mismatched or small implementation files, update the local
@@ -38,14 +38,12 @@ DOWNLOAD_TAGS = ['v1.2.3', 'v1.2.4', 'v1.2.5']
 
 DRY_RUN = '--dry-run' in sys.argv
 
-
 def sha256_of_file(path):
     h = hashlib.sha256()
     with open(path, 'rb') as f:
         for chunk in iter(lambda: f.read(8192), b''):
             h.update(chunk)
     return h.hexdigest()
-
 
 def download_asset_url(url, out_path):
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -56,7 +54,6 @@ def download_asset_url(url, out_path):
         with open(out_path, 'wb') as f:
             f.write(data)
         return len(data)
-
 
 # Load files
 if not MANIFEST_PATH.exists():

@@ -14,7 +14,6 @@ def test_scan_nonproduction_endpoints_runs():
     assert completed.returncode in [0, 1]
     assert 'Production readiness' in completed.stdout or 'Production readiness' in completed.stderr
 
-
 def test_enhanced_scan_nonproduction_runs():
     completed = subprocess.run(['python3', 'scripts/enhanced_scan_nonproduction.py'], capture_output=True, text=True)
     assert completed.returncode in [0, 1]

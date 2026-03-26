@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 import React from "react";
 import { QmoiPlugin } from "./PluginManager";
 
@@ -11,7 +11,7 @@ export const AIReviewPlugin: QmoiPlugin = {
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    [PRODUCTION READY] actions/logs for demonstration
+    
     const actions = [
       { type: "edit", file: "main.py", time: "2m ago" },
       { type: "run", file: "main.py", time: "1m ago" },

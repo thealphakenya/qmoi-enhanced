@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """
 QMOI Core Model Integration.
 Provides seamless integration between local and cloud features.
@@ -20,14 +20,12 @@ import time
 from .parallel_processor import QMOIParallelProcessor
 from .qvs_system import QVSSystem
 
-
 @dataclass
 class ModelState:
     ready: bool
     source: str
     capabilities: Dict[str, bool]
     metrics: Dict[str, float]
-
 
 class QMOIModel:
     """Core QMOI model with hybrid local/cloud capabilities."""
@@ -291,7 +289,6 @@ class QMOIModel:
         self.parallel_processor.cleanup()
         self.qvs.cleanup()
         self._backup_model()
-
 
 if __name__ == "__main__":
     # data usage

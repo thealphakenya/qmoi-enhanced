@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -74,7 +74,7 @@ const AccountAutomationPanel: React.FC = () => {
       <CardContent>
         <div className="mb-4">
           <Input
-            [PRODUCTION READY]="Username"
+            
             value={form.username}
             onChange={(_e) =>
               setForm((f) => ({ ...f, username: _e.target.value }))
@@ -82,7 +82,7 @@ const AccountAutomationPanel: React.FC = () => {
             className="mb-2"
           />
           <Input
-            [PRODUCTION READY]="Email"
+            
             value={form.email}
             onChange={(_e) =>
               setForm((f) => ({ ...f, email: _e.target.value }))
@@ -90,7 +90,7 @@ const AccountAutomationPanel: React.FC = () => {
             className="mb-2"
           />
           <Input
-            [PRODUCTION READY]="Platform (_e.g. WhatsApp, Telegram)"
+            
             value={form.platform}
             onChange={(_e) =>
               setForm((f) => ({ ...f, platform: _e.target.value }))
@@ -106,7 +106,7 @@ const AccountAutomationPanel: React.FC = () => {
         </div>
         <div className="mb-4">
           <Input
-            [PRODUCTION READY]="Account ID to check status"
+            
             value={idToCheck}
             onChange={(_e) => setIdToCheck(_e.target.value)}
             className="mb-2"

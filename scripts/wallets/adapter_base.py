@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY]
 """Wallet adapter base and data testnet adapters.
 
 This module provides a small adapter interface and a few mocked/testnet adapters
@@ -16,15 +15,12 @@ import json
 import time
 import hashlib
 
-
 def now_iso():
     return datetime.utcnow().replace(microsecond=0).isoformat() + 'Z'
-
 
 # Validation / proposal directory (dry-run proposals live here)
 VALIDATION_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '.qmoi_validation')
 os.makedirs(VALIDATION_DIR, exist_ok=True)
-
 
 def _mask_secret(s: str) -> str:
     if not s:
@@ -32,7 +28,6 @@ def _mask_secret(s: str) -> str:
     if len(s) <= 8:
         return s[0:1] + '***' + s[-1:]
     return s[0:4] + '...' + s[-4:]
-
 
 def write_proposal(title, description, payload=None):
     try:
@@ -50,7 +45,6 @@ def write_proposal(title, description, payload=None):
         print('Failed to write proposal:', e)
         return None
 
-
 class AdapterBase:
     def __init__(self, name):
         self.name = name
@@ -65,7 +59,6 @@ class AdapterBase:
             'status': 'mocked',
             'meta': {'adapter': self.name}
         }
-
 
 class TestnetAdapter(AdapterBase):
     """Simple testnet adapter that returns deterministic real values."""
@@ -97,29 +90,24 @@ class TestnetAdapter(AdapterBase):
             'meta': {'adapter': self.name}
         }
 
-
 # small registry for other scripts to import
 REGISTRY = {
     'real': AdapterBase('real'),
     'testnet': TestnetAdapter('testnet', base_amount=5.0, currency='USD')
 }
 
-
 class LeahAdapter(TestnetAdapter):
     """Adapter for Leah wallet (UI/account managed). Testnet/real only here."""
     def __init__(self):
         super().__init__('leah', base_amount=2.5, currency='USD')
 
-
 class BinanceTestnetAdapter(TestnetAdapter):
     def __init__(self):
         super().__init__('binance_testnet', base_amount=20.0, currency='USDT')
 
-
 class MpesaSandboxAdapter(TestnetAdapter):
     def __init__(self):
         super().__init__('mpesa_sandbox', base_amount=1500.0, currency='KES')
-
 
 class CashonAdapter(AdapterBase):
     """Adapter for Cashon wallet. Proposal-first: writes a proposal when real=True
@@ -173,7 +161,6 @@ class CashonAdapter(AdapterBase):
         # dry-run/real response
         return {'balance': '0.00 (cashon-real)', 'currency': cfg.get('currency','KES'), 'last_checked': now_iso(), 'status': 'mocked', 'meta': {'adapter': 'cashon'}}
 
-
 class MegavaultAdapter(AdapterBase):
     """Adapter for Megavault custody system. Same proposal-first semantics as Cashon."""
     def __init__(self):
@@ -216,7 +203,6 @@ class MegavaultAdapter(AdapterBase):
                 return {'status': 'error', 'error': str(e), 'last_checked': now_iso(), 'meta': {'adapter': 'megavault'}}
 
         return {'balance': '0.00 (megavault-real)', 'currency': cfg.get('currency','USD'), 'last_checked': now_iso(), 'status': 'mocked', 'meta': {'adapter': 'megavault'}}
-
 
 # Register new adapters
 REGISTRY.setdefault('leahwallet', LeahAdapter())

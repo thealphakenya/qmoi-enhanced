@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 Rerun workflow runs for PR #94 head SHA, then poll check-runs and attempt merge or autofix.
@@ -21,12 +20,10 @@ if not GITHUB_TOKEN:
 HEADERS = {"Accept": "application/vnd.github+json", "Authorization": f"token {GITHUB_TOKEN}"}
 API_BASE = f"https://api.github.com/repos/{REPO}"
 
-
 def api_get(path: str):
     req = urllib.request.Request(f"{API_BASE}{path}", headers=HEADERS)
     with urllib.request.urlopen(req, timeout=30) as resp:
         return json.load(resp)
-
 
 def api_post(path: str, data=None):
     data_bytes = None
@@ -41,12 +38,10 @@ def api_post(path: str, data=None):
         print(f"HTTPError POST {path}: {e.code} {e.reason} - {body}")
         return None
 
-
 def get_workflow_runs_for_sha(sha: str):
     # search recent workflow runs by head_sha
     runs = api_get(f"/actions/runs?per_page=50&head_sha={sha}")
     return runs.get("workflow_runs", [])
-
 
 def rerun_workflow_run(run_id: int):
     print(f"Requesting rerun for workflow run {run_id}")
@@ -55,7 +50,6 @@ def rerun_workflow_run(run_id: int):
         print(f"Rerun request for {run_id} may have failed or returned non-JSON response")
     else:
         print(f"Rerun response for {run_id}: {resp}")
-
 
 def poll_check_runs(sha: str, polls=36, delay=10):
     for i in range(polls):
@@ -74,7 +68,6 @@ def poll_check_runs(sha: str, polls=36, delay=10):
         time.sleep(delay)
     return "timeout", runs
 
-
 def download_job_logs(job_id: int, out_path: str):
     url = f"https://api.github.com/repos/{REPO}/actions/jobs/{job_id}/logs"
     req = urllib.request.Request(url, headers=HEADERS)
@@ -91,7 +84,6 @@ def download_job_logs(job_id: int, out_path: str):
         print("Failed downloading logs for", job_id, e)
         return False
 
-
 def extract_errors_from_log_file(path: str) -> list[str]:
     patterns = ["ModuleNotFoundError", "No module named", "Cannot find module", "Can't resolve", "Process completed with exit code", "The server is busy"]
     found = []
@@ -105,11 +97,9 @@ def extract_errors_from_log_file(path: str) -> list[str]:
         print("Error reading log", path, e)
     return found
 
-
 def run_autofix_on_build_log():
     print("Running tools/auto_fix_build.py --log tools/build.log --apply")
     subprocess.run([sys.executable, "tools/auto_fix_build.py", "--log", "tools/build.log", "--apply"], check=False)
-
 
 def main():
     runs = get_workflow_runs_for_sha(SHA)

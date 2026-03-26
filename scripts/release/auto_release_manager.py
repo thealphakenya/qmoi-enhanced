@@ -17,10 +17,8 @@ REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
 RELEASES_DIR = REPO_ROOT / "releases"
 VALIDATION_DIR = REPO_ROOT / ".qmoi_validation"
 
-
 def log(msg):
     print(f"[{datetime.now().isoformat()}] {msg}")
-
 
 def find_artifacts():
     artifacts = []
@@ -31,7 +29,6 @@ def find_artifacts():
         if path.is_file() and path.suffix in ['.apk', '.aab', '.ipa', '.exe', '.msi', '.msix', '.dmg', '.pkg', '.AppImage', '.deb', '.rpm', '.zip']:
             artifacts.append(path)
     return artifacts
-
 
 def is_corrupted(artifact_path):
     # simple heuristic: 0-byte or size too small
@@ -50,7 +47,6 @@ def is_corrupted(artifact_path):
     except Exception as e:
         return True, f'Error reading artifact: {e}'
 
-
 def remove_and_flag(artifact_path, reason):
     log(f"Marking artifact for deletion: {artifact_path} because {reason}")
     try:
@@ -59,7 +55,6 @@ def remove_and_flag(artifact_path, reason):
     except Exception as e:
         log(f"Failed to delete {artifact_path}: {e}")
         return False
-
 
 def trigger_rebuild(artifact_path):
     log(f"Triggering rebuild for app artifact path: {artifact_path}")
@@ -71,7 +66,6 @@ def trigger_rebuild(artifact_path):
         queue = json.loads(trigger_file.read_text(encoding='utf-8'))
     queue.append({'artifact': str(artifact_path), 'requested_at': datetime.now().isoformat()})
     trigger_file.write_text(json.dumps(queue, indent=2), encoding='utf-8')
-
 
 def main():
     artifacts = find_artifacts()
@@ -85,7 +79,6 @@ def main():
                 trigger_rebuild(art)
 
     log("Auto release manager finished")
-
 
 if __name__ == '__main__':
     main()

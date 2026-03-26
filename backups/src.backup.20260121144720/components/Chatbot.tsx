@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { playSSML, supportsSpeechSynthesis } from "../services/tts";
@@ -144,7 +144,7 @@ export function Chatbot() {
       <div className="chatbot-input">
         <input
           type="text"
-          [PRODUCTION READY]="Type your message..."
+          
           value={input}
           onChange={(_e) => setInput(_e.target.value)}
           onKeyPress={(_e) => _e.key === "Enter" && handleSendMessage()}

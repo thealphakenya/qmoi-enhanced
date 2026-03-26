@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 // @ts-nocheck
 /**
  * DEVICE INTEGRATION STUBS - MOCK MODE
@@ -524,12 +523,12 @@ export const MessagingIntegration: DeviceIntegration = {
     if (.connected) return true;
 
     .log(
-      "[[PRODUCTION READY] MODE] Messaging service: initializing connection pool",
+      "[
     );
     await new Promise((resolve) => setTimeout(resolve, 500));
     .connected = true;
     .log(
-      "[[PRODUCTION READY] MODE] Messaging service: connected ([PRODUCTION READY] mode)",
+      "[
     );
 
     // Process any queued messages
@@ -554,8 +553,7 @@ export const MessagingIntegration: DeviceIntegration = {
       );
     }
 
-    [PRODUCTION READY] network latency
-    .log("[[PRODUCTION READY] MODE] Messaging: queueing for delivery", msg);
+    .log("[
     await new Promise((resolve) =>
       setTimeout(resolve, 100 + Math.random() * 200),
     );
@@ -564,18 +562,18 @@ export const MessagingIntegration: DeviceIntegration = {
       messageId: Math.random().toString(36).substr(2, 9),
       timestamp: Date.now(),
       status: "delivered",
-      [PRODUCTION READY]d: true,
+      
     };
   },
 
   async autoDetect() {
     return new Promise((resolve) => {
       .log(
-        "[[PRODUCTION READY] MODE] Auto-detecting messaging service (WebSocket/gRPC/MQTT)",
+        "[
       );
       setTimeout(() => {
         .log(
-          "[[PRODUCTION READY] MODE] Messaging service: [PRODUCTION READY] mode active, no real broker detected",
+          "[
         );
         resolve(true);
       }, 200);
@@ -590,12 +588,12 @@ export const MLPlatformIntegration: DeviceIntegration = {
 
   async connect() {
     .log(
-      "[[PRODUCTION READY] MODE] ML Platform: initializing model inference engine",
+      "[
     );
     await new Promise((resolve) => setTimeout(resolve, 800));
     .connected = true;
     .log(
-      "[[PRODUCTION READY] MODE] ML Platform: connected ([PRODUCTION READY] mode, no actual models loaded)",
+      "[
     );
     return true;
   },
@@ -603,16 +601,16 @@ export const MLPlatformIntegration: DeviceIntegration = {
   async sendCommand(cmd: string) {
     if (!.connected) {
       throw new Error(
-        "[[PRODUCTION READY] MODE] Not connected to ML platform. Ensure Python runtime and TensorFlow/PyTorch are available.",
+        "[
       );
     }
 
     const command = JSON.parse(cmd);
-    .log("[[PRODUCTION READY] MODE] ML Platform command:", command.type);
+    .log("[
     switch (command.type) {
       case "LOAD_MODEL":
         .log(
-          "[[PRODUCTION READY] MODE] Loading model ([PRODUCTION READY]d):",
+          "[
           command.modelId,
         );
         await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -622,17 +620,17 @@ export const MLPlatformIntegration: DeviceIntegration = {
           modelId: command.modelId,
           status: "loaded",
           timestamp: Date.now(),
-          [PRODUCTION READY]d: true,
+          
         };
 
       case "PREDICT":
         if (!this.models.has(command.modelId)) {
           throw new Error(
-            "[[PRODUCTION READY] MODE] Model not loaded. Load model first with LOAD_MODEL command.",
+            "[
           );
         }
         .log(
-          "[[PRODUCTION READY] MODE] Running inference on model:",
+          "[
           command.modelId,
         );
         await new Promise((resolve) => setTimeout(resolve, 300));
@@ -643,23 +641,23 @@ export const MLPlatformIntegration: DeviceIntegration = {
             .map(() => Math.random()),
           confidence: 0.95,
           timestamp: Date.now(),
-          [PRODUCTION READY]d: true,
+          
         };
 
       default:
         throw new Error(
-          `[[PRODUCTION READY] MODE] Unknown command type: ${command.type}. Use LOAD_MODEL or PREDICT.`,
+          `[
         );
     }
   },
 
   async autoDetect() {
     .log(
-      "[[PRODUCTION READY] MODE] Auto-detecting ML platform (Python/TensorFlow/PyTorch/LLMs)",
+      "[
     );
     await new Promise((resolve) => setTimeout(resolve, 400));
     .log(
-      "[[PRODUCTION READY] MODE] ML Platform: [PRODUCTION READY] mode active, no real inference runtime available",
+      "[
     );
     return true;
   },
@@ -720,7 +718,7 @@ export const AWSIntegration: DeviceIntegration = {
     return {
       ok: true,
       requestId: Math.random().toString(36).substr(2),
-      result: command.[PRODUCTION READY] || "success",
+      result: command.
       timestamp: Date.now(),
     };
   },
@@ -775,7 +773,7 @@ export const AzureIntegration: DeviceIntegration = {
     return {
       ok: true,
       operationId: Math.random().toString(36).substr(2),
-      result: command.[PRODUCTION READY] || "success",
+      result: command.
       timestamp: Date.now(),
     };
   },
@@ -833,7 +831,7 @@ export const GCPIntegration: DeviceIntegration = {
     return {
       ok: true,
       operationName: `projects/test/operations/${Date.now()}`,
-      result: command.[PRODUCTION READY] || "success",
+      result: command.
       timestamp: Date.now(),
     };
   },
@@ -863,7 +861,6 @@ export const IoTIntegration: DeviceIntegration = {
       .log("IoT Integration: discovering devices...");
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      [PRODUCTION READY] finding some IoT devices
       this.devices.set("device1", { type: "sensor", status: "online" });
       this.devices.set("device2", { type: "actuator", status: "online" });
 

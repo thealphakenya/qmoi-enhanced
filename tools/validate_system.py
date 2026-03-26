@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """Validation system that runs linters, the allrefs processor and autotest runner.
 Produces a validation report `tools/validation_report.json` and human-readable `tools/validation_report.md`.

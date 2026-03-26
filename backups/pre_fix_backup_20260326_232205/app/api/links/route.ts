@@ -1,0 +1,48 @@
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:59:09Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+
+// 
+import { NextRequest, NextResponse } from "next/server";
+import { linksService } from "@/lib/links-service";
+
+export async function GET(req: NextRequest) {
+  try {
+    const url = new URL(req.url);
+    const category = url.searchParams.get("category") || undefined;
+    const isZeroRated =
+      url.searchParams.get("isZeroRated") === "true"
+        ? true
+        : url.searchParams.get("isZeroRated") === "false"
+          ? false
+          : undefined;
+
+    const links = await linksService.getLinks(category, isZeroRated);
+    return NextResponse.json({ success: true, links, count: links.length });
+  } catch (error) {
+    return NextResponse.json(
+      {
+        success: false,
+        error: error instanceof Error ? error.message : "Unknown",
+      },
+      { status: 500 },
+    );
+  }
+}
+
+export async function POST(req: NextRequest) {
+  try {
+    const body = await req.json();
+    const link = await linksService.addLink(body);
+    return NextResponse.json({ success: true, link });
+  } catch (error) {
+    return NextResponse.json(
+      {
+        success: false,
+        error: error instanceof Error ? error.message : "Unknown",
+      },
+      { status: 500 },
+    );
+  }
+}

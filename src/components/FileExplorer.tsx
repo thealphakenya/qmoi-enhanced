@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 "use client";
 import React, { useState, useEffect } from "react";
 import "./FileExplorer.css";
@@ -40,7 +39,7 @@ export function FileExplorer() {
   };
 
   const handleDownload = (file: FileItem) => {
-    [PRODUCTION READY] download - in production, fetch from backend
+    
     console.log(`Downloading: ${file.name}`);
     alert(`Download initiated for: ${file.name}`);
   };

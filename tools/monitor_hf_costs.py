@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 Monitor HF Space compute costs to prevent billing surprises.
@@ -25,7 +24,6 @@ except ImportError:
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
 
 class HFSpaceCostMonitor:
     """Monitor and report on HF Space compute costs."""
@@ -222,7 +220,6 @@ class HFSpaceCostMonitor:
         
         print("\n" + "=" * 70)
 
-
 def main():
     """Main entry point."""
     import argparse
@@ -265,7 +262,6 @@ def main():
         return 1
     
     return 0
-
 
 if __name__ == "__main__":
     exit(main())

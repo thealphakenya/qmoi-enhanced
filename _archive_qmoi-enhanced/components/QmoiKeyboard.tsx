@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React, { useState, useEffect, useRef } from "react";
 import { useMaster } from "./MasterContext";
 import { FaBrain, FaLanguage, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
@@ -305,7 +304,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
             setCurrentText(e.target.value);
             onTextChange(e.target.value);
           }}
-          [PRODUCTION READY]={language === "sw" ? "Andika hapa..." : "Type here..."}
+          
           className="w-full p-2 border rounded resize-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           rows={2}
         />

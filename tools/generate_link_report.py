@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """
 QMOI Link Report Generator
 Scans all .md, .py, .js, .ts files for HTTP(S) links and generates a comprehensive report.

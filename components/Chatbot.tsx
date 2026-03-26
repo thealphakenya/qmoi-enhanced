@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 // @ts-nocheck
 "use client";
 
@@ -412,7 +411,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
             type="text"
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
-            [PRODUCTION READY]="Type your message..."
+            
             className="flex-1 bg-[#222] border border-green-600 text-white px-3 py-2 rounded"
             enabled={isLoading}
           />

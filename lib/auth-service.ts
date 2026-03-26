@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:27Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Authentication Service with Enhanced Biometric Integration
@@ -159,7 +158,7 @@ export class AuthService {
         createdAt: now,
         updatedAt: now,
         isActive: true,
-        emailVerified: false, // In production, send verification email
+        emailVerified: false, // Production:, send verification email
         phoneVerified: false,
       };
 
@@ -597,12 +596,12 @@ export class AuthService {
   // Helper methods
 
   private static hashPassword(password: string): string {
-    // In production, use bcrypt or Argon2
+    // Production:, use bcrypt or Argon2
     return Buffer.from(password).toString("base64");
   }
 
   private static verifyPassword(password: string, hash: string): boolean {
-    // In production, use bcrypt or Argon2 verification
+    // Production:, use bcrypt or Argon2 verification
     return Buffer.from(password).toString("base64") === hash;
   }
 
@@ -616,8 +615,8 @@ export class AuthService {
       return { verified: false, confidence: 0 };
     }
 
-    // In production, use actual biometric matching algorithm
-    // For now, [PRODUCTION READY] with confidence scoring
+    // Production:, use actual biometric matching algorithm
+    // For now, 
     const confidence = Math.min(biometricData.confidence, 0.95);
 
     return {

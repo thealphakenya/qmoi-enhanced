@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """
 Check wallets (QVS) script.
 
@@ -46,15 +46,14 @@ ROOT = Path(__file__).resolve().parents[2]
 def now_iso():
     return datetime.datetime.utcnow().replace(microsecond=0).isoformat() + 'Z'
 
-
 class AdapterBase:
     def __init__(self, name):
         self.name = name
 
     def check_balance(self, config, real=False):
         """Return dict: {balance, currency, last_checked, status, meta}
-        In real mode return safe mocked values.
-        In real mode perform network calls (only if PRODUCTION_CONFIRMED=true).
+        Production: mode return safe mocked values.
+        Production: mode perform network calls (only if PRODUCTION_CONFIRMED=true).
         """
         # Default real implementation
         return {
@@ -64,7 +63,6 @@ class AdapterBase:
             "status": "mocked",
             "meta": {"adapter": self.name}
         }
-
 
 class CashonAdapter(AdapterBase):
     def check_balance(self, config, real=False):
@@ -92,7 +90,6 @@ class CashonAdapter(AdapterBase):
         # real
         return {"balance": "100.00 (real)", "currency": "USD", "last_checked": now_iso(), "status": "mocked", "meta": {"adapter": self.name}}
 
-
 ADAPTERS = {
     'cashon': CashonAdapter('cashon'),
 }
@@ -104,7 +101,6 @@ try:
         ADAPTERS.setdefault(k, v)
 except Exception:
     pass
-
 
 def discover_wallets():
     # complete discovery: look for known MD docs and known env vars
@@ -118,7 +114,6 @@ def discover_wallets():
     if os.environ.get('CASHON_API_KEY'):
         wallets.setdefault('cashon', {})['source'] = 'env:CASHON_API_KEY'
     return wallets
-
 
 def register_wallets_in_state(wallets):
     """Register discovered wallets into the persistent state store for aliases/metadata."""
@@ -146,7 +141,6 @@ def register_wallets_in_state(wallets):
             except Exception:
                 pass
 
-
 def load_config_for(wallet_name):
     # Try to find a config file, then fall back to env variables
     cfg = {}
@@ -156,7 +150,6 @@ def load_config_for(wallet_name):
         cfg['api_url'] = os.environ.get('CASHON_API_URL')
         cfg['currency'] = os.environ.get('CASHON_CURRENCY','USD')
     return cfg
-
 
 def main():
     ap = argparse.ArgumentParser()
@@ -233,7 +226,6 @@ def main():
         print(f"Wrote report: {args.report}")
     else:
         print(json.dumps(out, indent=2))
-
 
 if __name__ == '__main__':
     main()

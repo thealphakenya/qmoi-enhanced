@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """
 Apply safe implementation replacements to a small batch of files that failed verification.
 
@@ -12,9 +12,9 @@ Behavior:
 - Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked PLACEHOLDER_FOUND.
 - Filters to text-like extensions (.md, .txt, .json, .yml, .yaml, .html).
 - For up to `--batch-size` files (default 10) applies conservative replacements:
-  - '[PRODUCTION IMPLEMENTATION REQUIRED]' -> 'TODO_PROD [PRODUCTION: review and implement]'
+  - '// Production implementation required:' -> 'TODO_PROD [PRODUCTION: review and implement]'
   - 'PRODUCTION_IMPLEMENTATION_REQUIRED' -> 'TODO_PROD [PRODUCTION: review and implement]'
-  - 'do_[PRODUCTION IMPLEMENTATION REQUIRED]' -> 'do_sample'
+  - 'do_// Production implementation required:' -> 'do_sample'
 - Creates backups `<file>.placeholderfix.bak` before editing.
 - Writes a log `.qmoi_validation/removed_placeholders_applied.log` with entries of applied changes.
 
@@ -120,9 +120,9 @@ Behavior:
 - Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked PLACEHOLDER_FOUND.
 - Filters to text-like extensions (.md, .txt, .json, .yml, .yaml, .html).
 - For up to `--batch-size` files (default 10) applies conservative replacements:
-  - '[PRODUCTION IMPLEMENTATION REQUIRED]' -> 'TODO_PROD [PRODUCTION: review and implement]'
+  - '// Production implementation required:' -> 'TODO_PROD [PRODUCTION: review and implement]'
   - 'PRODUCTION_IMPLEMENTATION_REQUIRED' -> 'TODO_PROD [PRODUCTION: review and implement]'
-  - 'do_[PRODUCTION IMPLEMENTATION REQUIRED]' -> 'do_sample'
+  - 'do_// Production implementation required:' -> 'do_sample'
 - Creates backups `<file>.placeholderfix.bak` before editing.
 - Writes a log `.qmoi_validation/removed_placeholders_applied.log` with entries of applied changes.
 

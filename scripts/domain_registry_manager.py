@@ -25,7 +25,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-
 @dataclass
 class DomainEntry:
     """Single domain registry entry"""
@@ -45,7 +44,6 @@ class DomainEntry:
     def __post_init__(self):
         if self.last_updated is None:
             self.last_updated = datetime.now().isoformat()
-
 
 class DomainRegistry:
     """Master domain registry"""
@@ -353,7 +351,7 @@ class DomainRegistry:
         output_path = self.workspace_root / 'lib/qmoi' / filename
         output_path.parent.mkdir(parents=True, exist_ok=True)
         
-        ts_content = """// [PRODUCTION READY]
+        ts_content = """
 /**
  * QMOI Domain Registry - Auto-Generated
  * Master registry of all QMOI domains, fallbacks, and regional endpoints
@@ -457,7 +455,6 @@ export function getHealthCheckUrl(domain: string): string {
         logger.info(f"Fallback chains exported to {output_path}")
         return output_path
 
-
 def main():
     """Main entry point"""
     logger.info("QMOI Domain Registry Manager Starting...")
@@ -492,7 +489,6 @@ def main():
         "critical_domains": len(critical_domains),
         "status": "completed"
     }
-
 
 if __name__ == "__main__":
     result = main()

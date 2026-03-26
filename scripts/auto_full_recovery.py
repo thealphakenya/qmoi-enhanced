@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 QMOI Auto Full Recovery Script
@@ -28,7 +27,6 @@ from pathlib import Path
 
 ROOT = Path('/workspaces/qmoi-enhanced')
 
-
 def run_cmd(cmd):
     print(f"Running: {cmd}")
     result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
@@ -37,7 +35,6 @@ def run_cmd(cmd):
         print(result.stderr, file=sys.stderr)
         raise RuntimeError(f"Command failed: {cmd}")
     return result
-
 
 def main():
     print("=== QMOI Auto Full Recovery: START ===")
@@ -68,7 +65,6 @@ def main():
     print(" - documentation_audit_report.json")
 
     return 0
-
 
 if __name__ == '__main__':
     try:

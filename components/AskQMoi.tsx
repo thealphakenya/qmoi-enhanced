@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 "use client";
 
 import React, { useState } from "react";
@@ -104,7 +103,7 @@ export function AskQMoi({
             <CardContent className="space-y-3">
               <div className="flex gap-2">
                 <Input
-                  [PRODUCTION READY]="Ask about finances, music..."
+                  
                   value={question}
                   onChange={(e) => setQuestion(e.target.value)}
                   onKeyPress={handleKeyPress}
@@ -143,7 +142,7 @@ export function AskQMoi({
       <CardContent className="space-y-4">
         <div className="flex gap-2">
           <Input
-            [PRODUCTION READY]="Ask QMoi about finances, music production, or any question..."
+            
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             onKeyPress={handleKeyPress}

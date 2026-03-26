@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
 /**
  * Email Service
  * Production email sending and receiving with SMTP/IMAP support
@@ -232,7 +231,7 @@ class EmailService {
    * Send email with queue support (for production reliability)
    */
   sendEmailQueued = async (options: EmailOptions): Promise<string> => {
-    // In production, implement queue system (Redis, database, etc.)
+    // Production:, implement queue system (Redis, database, etc.)
     // For now, send immediately
     const success = await this.sendEmail(options);
     if (!success) {

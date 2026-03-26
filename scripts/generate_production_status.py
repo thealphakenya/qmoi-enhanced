@@ -4,13 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 import os, re, json
 from pathlib import Path
 
 ROOT = Path(".").resolve()
 MARKERS = re.compile(r"\b(DONE|FIXED|implementation|TODO_PROD|PRODUCTION IMPLEMENTATION REQUIRED|execute|real)\b", re.IGNORECASE)
-
 
 def scan_dir(dir_path: Path):
     files = []
@@ -25,7 +24,6 @@ def scan_dir(dir_path: Path):
                 files.append((path.relative_to(ROOT), len(matches), list(set(matches))))
     return sorted(files, key=lambda x: (-x[1], str(x[0])))
 
-
 def write_status(path: Path, entries, title):
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8") as f:
@@ -37,7 +35,6 @@ def write_status(path: Path, entries, title):
         f.write("## Files with production marker hits\n\n")
         for file, count, markers in entries:
             f.write(f"- `{file}`: {count} marker(s) - {', '.join(markers)}\n")
-
 
 def main():
     dirs = [ROOT, ROOT / "app/api", ROOT / "src/components/q-city", ROOT / "lib"]
@@ -79,7 +76,6 @@ def main():
         ROOT.joinpath("ALLMDFILESREFS.md").write_text("\n".join(["# All MD Files Refs", "", *summary]), encoding="utf-8")
 
     print("Production status docs generated.")
-
 
 if __name__ == '__main__':
     main()

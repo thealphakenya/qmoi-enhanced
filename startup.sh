@@ -1,5 +1,5 @@
 #!/bin/bash
-# [PRODUCTION READY]
+
 # QMOI Enhanced Master Startup Script
 # Launches all services, verifies health, displays status dashboard
 # Usage: ./startup.sh [options]

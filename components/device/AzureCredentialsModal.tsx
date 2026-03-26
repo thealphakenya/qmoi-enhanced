@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 "use client";
 import React, { useState } from "react";
 
@@ -47,26 +46,26 @@ export const AzureCredentialsModal: React.FC<{
       >
         <h2>Azure Credentials</h2>
         <input
-          [PRODUCTION READY]="Tenant ID"
+          
           value={tenantId}
           onChange={(e) => setTenantId(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}
         />
         <input
-          [PRODUCTION READY]="Client ID"
+          
           value={clientId}
           onChange={(e) => setClientId(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}
         />
         <input
-          [PRODUCTION READY]="Client Secret"
+          
           value={clientSecret}
           onChange={(e) => setClientSecret(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}
           type="password"
         />
         <input
-          [PRODUCTION READY]="Subscription ID"
+          
           value={subscriptionId}
           onChange={(e) => setSubscriptionId(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}

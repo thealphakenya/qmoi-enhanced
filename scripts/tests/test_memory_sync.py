@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY]
 import os
 import json
 import importlib
@@ -19,19 +18,16 @@ spec = importlib.util.spec_from_file_location('q', str(mod_path))
 q = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(q)
 
-
 def setup_function(function):
     # Ensure env is clean for each test
     for k in list(os.environ.keys()):
         if k.startswith('QMOI_'):
             del os.environ[k]
 
-
 def test_no_backends_configured():
     ok, details = q.push_memory_to_backends({'conversations': []})
     assert ok is True
     assert details == ['no_backends_configured']
-
 
 def test_push_gist_success(monkeypatch):
     os.environ['QMOI_SYNC_BACKENDS'] = 'gist'
@@ -52,7 +48,6 @@ def test_push_gist_success(monkeypatch):
     assert ok is True
     assert 'gist:ok' in details
 
-
 def test_push_hf_success(monkeypatch):
     os.environ['QMOI_SYNC_BACKENDS'] = 'hf'
     os.environ['QMOI_HF_TOKEN'] = 'fake_hf_token'
@@ -72,7 +67,6 @@ def test_push_hf_success(monkeypatch):
     assert ok is True
     assert 'hf:ok' in details
 
-
 def test_push_scp_success(monkeypatch, tmp_path):
     os.environ['QMOI_SYNC_BACKENDS'] = 'scp:user@host:/tmp/qmoi_memory.json'
 
@@ -85,7 +79,6 @@ def test_push_scp_success(monkeypatch, tmp_path):
     ok, details = q.push_memory_to_backends({'conversations': []})
     assert ok is True
     assert any(d.startswith('scp:user@host:/tmp/qmoi_memory.json:ok') for d in details)
-
 
 def test_pull_gist_success(monkeypatch):
     os.environ['QMOI_SYNC_BACKENDS'] = 'gist'
@@ -109,7 +102,6 @@ def test_pull_gist_success(monkeypatch):
 
     mem = q.pull_memory_from_backends()
     assert mem == dummy_content
-
 
 def test_pull_hf_success(monkeypatch):
     os.environ['QMOI_SYNC_BACKENDS'] = 'hf'
@@ -136,7 +128,6 @@ def test_pull_hf_success(monkeypatch):
     mem = q.pull_memory_from_backends()
     assert mem == {'conversations': [{'timestamp': '1', 'persona': 'user', 'message': 'hola'}]}
 
-
 def test_push_gist_missing_config_or_requests(monkeypatch):
     os.environ['QMOI_SYNC_BACKENDS'] = 'gist'
     os.environ['QMOI_GIST_ID'] = 'real'
@@ -147,7 +138,6 @@ def test_push_gist_missing_config_or_requests(monkeypatch):
     ok, details = q.push_memory_to_backends({'conversations': []})
     assert ok is False
     assert any(d.startswith('gist:skipped:missing_config_or_requests') for d in details)
-
 
 def test_push_gist_http_error(monkeypatch):
     os.environ['QMOI_SYNC_BACKENDS'] = 'gist'
@@ -167,7 +157,6 @@ def test_push_gist_http_error(monkeypatch):
     assert ok is False
     assert any(d.startswith('gist:error:500') for d in details)
 
-
 def test_push_scp_failure(monkeypatch):
     os.environ['QMOI_SYNC_BACKENDS'] = 'scp:user@host:/tmp/qmoi_memory.json'
 
@@ -180,7 +169,6 @@ def test_push_scp_failure(monkeypatch):
     assert ok is False
     assert any(d.startswith('scp:user@host:/tmp/qmoi_memory.json:error') for d in details)
 
-
 def test_pull_gist_missing_config(monkeypatch):
     os.environ['QMOI_SYNC_BACKENDS'] = 'gist'
     # No GIST_ID or GH_TOKEN configured
@@ -188,7 +176,6 @@ def test_pull_gist_missing_config(monkeypatch):
 
     mem = q.pull_memory_from_backends()
     assert mem is None
-
 
 def test_pull_hf_invalid_json(monkeypatch):
     os.environ['QMOI_SYNC_BACKENDS'] = 'hf'

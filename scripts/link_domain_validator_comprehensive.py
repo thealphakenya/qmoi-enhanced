@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 scripts/link_domain_validator_comprehensive.py
@@ -421,7 +420,6 @@ class ComprehensiveLinkDomainValidator:
         logging.info(f"Report saved to {report_file}")
         logging.info(f"Summary saved to {summary_file}")
         return report_file
-
 
 def main():
     """Main execution"""

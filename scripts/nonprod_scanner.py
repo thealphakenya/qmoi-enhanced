@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """Fast conservative scanner to find files in donerefs.txt that contain
 instructions/todos or obvious "not for production" markers.
 
@@ -59,7 +59,6 @@ PATTERNS = [
 ]
 PATTERN_RE = re.compile("(?:" + ")|(?:".join(PATTERNS) + ")", re.IGNORECASE)
 
-
 def is_binary(path: Path) -> bool:
     try:
         with open(path, "rb") as f:
@@ -69,7 +68,6 @@ def is_binary(path: Path) -> bool:
     except Exception:
         return True
     return False
-
 
 def scan_file(path: Path, max_bytes: int = 20000) -> List[str]:
     """Return lines (brief) that match patterns. Limit read size to avoid hangs."""
@@ -94,7 +92,6 @@ def scan_file(path: Path, max_bytes: int = 20000) -> List[str]:
                 excerpt = excerpt[:300] + "..."
             matches.append(f"L{i}: {excerpt}")
     return matches
-
 
 def main() -> int:
     if not DONEREFS.exists():
@@ -150,7 +147,6 @@ def main() -> int:
 
     print(f"Scan complete. total={len(paths)} flagged={len(flagged)} report={REPORT_TXT}")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

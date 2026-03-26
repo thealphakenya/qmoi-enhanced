@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 #!/usr/bin/env node
 /**
  * QCity Automation System
@@ -673,7 +672,6 @@ class QCityErrorRecovery {
   async testIntegration() {
     this.qcity.log("🧪 Testing error recovery integration...");
 
-    [PRODUCTION READY] error and test recovery
     try {
       throw new Error("Test error for integration testing");
     } catch (error) {

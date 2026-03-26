@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React, { useState, useEffect } from "react";
 
 type Notification = {
@@ -55,28 +54,28 @@ export default function QMoiToolbar() {
             return { ...app, status: new Date().toLocaleTimeString() };
           }
           if (app.name === "QWhatsApp") {
-            [PRODUCTION READY] unread count
+            
             return { ...app, status: `${getRandomInt(0, 5)} unread` };
           }
           if (app.name === "QAutoDev") {
-            [PRODUCTION READY] health status
+            
             const health = ["healthy", "warning", "error"][getRandomInt(0, 2)];
             return { ...app, status: health };
           }
           if (app.name === "QWifi") {
-            [PRODUCTION READY] WiFi status
+            
             const wifi = ["connected", "disconnected", "connecting"][
               getRandomInt(0, 2)
             ];
             return { ...app, status: wifi };
           }
           if (app.name === "QBluetooth") {
-            [PRODUCTION READY] Bluetooth status
+            
             const bt = ["on", "off", "pairing"][getRandomInt(0, 2)];
             return { ...app, status: bt };
           }
           if (app.name === "QDevice") {
-            [PRODUCTION READY] device health
+            
             const health = ["optimized", "needs attention", "updating"][
               getRandomInt(0, 2)
             ];
@@ -89,7 +88,6 @@ export default function QMoiToolbar() {
     return () => clearInterval(interval);
   }, []);
 
-  [PRODUCTION READY] advanced notifications
   useEffect(() => {
     const interval = setInterval(() => {
       const n = getRandomInt(0, 10);
@@ -212,7 +210,6 @@ export default function QMoiToolbar() {
     if (notif.onAction) notif.onAction();
   }
 
-  [PRODUCTION READY] WiFi connect
   function handleWifiConnect() {
     setNotification({
       type: "success",
@@ -222,7 +219,6 @@ export default function QMoiToolbar() {
     setTimeout(() => setNotification(null), 2000);
   }
 
-  [PRODUCTION READY] Bluetooth connect
   function handleBluetoothConnect() {
     setNotification({
       type: "success",
@@ -232,7 +228,6 @@ export default function QMoiToolbar() {
     setTimeout(() => setNotification(null), 2000);
   }
 
-  [PRODUCTION READY] device optimization
   function handleDeviceOptimization() {
     setNotification({
       type: "success",

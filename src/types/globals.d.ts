@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-unused-vars, no-undef, @typescript-eslint/no-unsafe-function-type, @typescript-eslint/no-explicit-any */
 /// <reference types="node" />
 // Consolidated permissive global declarations to reduce `no-undef` noise
@@ -11,7 +10,7 @@
 // change runtime semantics — refine types per-module later.
 
 declare global {
-  // common runtime/test [PRODUCTION READY]s
+  // common runtime/test 
   var localServer: unknown;
   var _request: unknown;
   var _response: unknown;

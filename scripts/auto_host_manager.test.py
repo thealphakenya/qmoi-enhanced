@@ -6,12 +6,10 @@
 import pytest
 from scripts.auto_host_manager import QMOIAutoHostManager
 
-
 def test_manager_initializes():
     manager = QMOIAutoHostManager()
     assert isinstance(manager, QMOIAutoHostManager)
     assert 'nextjs-app' in manager.services
-
 
 def test_check_system_health_returns_expected_fields():
     manager = QMOIAutoHostManager()
@@ -21,13 +19,11 @@ def test_check_system_health_returns_expected_fields():
     assert 'disk_free_gb' in health
     assert 'status' in health
 
-
 def test_get_domain_health_structure():
     manager = QMOIAutoHostManager()
     dh = manager.get_domain_health()
     assert 'status' in dh
     assert 'domain_ratio' in dh
-
 
 def test_generate_report_contains_sections():
     manager = QMOIAutoHostManager()
@@ -36,7 +32,6 @@ def test_generate_report_contains_sections():
     assert '## System Health' in report
     assert '## Domain Health' in report
     assert '## Services' in report
-
 
 if __name__ == '__main__':
     pytest.main(['-q'])

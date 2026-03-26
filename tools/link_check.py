@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
 #!/usr/bin/env python3
 """
 Simple Markdown link checker.
@@ -28,7 +27,6 @@ OUT_MD = os.path.join(os.path.dirname(__file__), 'dns_links_report.md')
 
 URL_RE = re.compile(r"https?://[^")\]\s]+", re.IGNORECASE)
 
-
 def find_md_files(root):
     for dirpath, dirs, files in os.walk(root):
         # skip common large or irrelevant folders
@@ -42,7 +40,6 @@ def find_md_files(root):
             if f.lower().endswith('.md'):
                 yield os.path.join(dirpath, f)
 
-
 def extract_urls_from_file(path):
     urls = set()
     try:
@@ -55,7 +52,6 @@ def extract_urls_from_file(path):
         url = m.rstrip('.,;:')
         urls.add(url)
     return urls
-
 
 def check_url(url, timeout=8):
     info = {
@@ -96,7 +92,6 @@ def check_url(url, timeout=8):
             info['status'] = 'error'
     info['elapsed'] = round(time.time() - start, 3)
     return info
-
 
 def main():
     print('Scanning Markdown files for links...')
@@ -166,7 +161,6 @@ def main():
         print(f'Wrote {OUT_MD}')
     except Exception as e:
         print('Failed to write MD:', e)
-
 
 if __name__ == '__main__':
     main()

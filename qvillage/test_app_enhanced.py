@@ -21,7 +21,6 @@ except Exception as e:
 
 client = TestClient(app)
 
-
 def run_test(test_func):
     try:
         test_func()
@@ -36,18 +35,15 @@ def run_test(test_func):
         traceback.print_exc()
         return False
 
-
 def test_health():
     r = client.get("/health")
     assert r.status_code == 200
     assert r.json().get("status") == "healthy"
 
-
 def test_auth_token():
     r = client.post("/auth/token", json={"username": "admin", "password": "admin"})
     assert r.status_code == 200
     assert "access_token" in r.json()
-
 
 def test_model_lifecycle():
     r = client.post("/models/", json={
@@ -77,7 +73,6 @@ def test_model_lifecycle():
     r = client.delete(f"/models/{model_id}")
     assert r.status_code == 200
 
-
 def test_space_lifecycle():
     r = client.post("/spaces/", json={
         "name": "test-space-1",
@@ -100,7 +95,6 @@ def test_space_lifecycle():
 
     r = client.delete(f"/spaces/{space_id}")
     assert r.status_code == 200
-
 
 def test_dataset_lifecycle():
     r = client.post("/datasets/", json={
@@ -127,7 +121,6 @@ def test_dataset_lifecycle():
     r = client.delete(f"/datasets/{dataset_id}")
     assert r.status_code == 200
 
-
 def test_research_and_inference():
     r = client.get("/api/research/daily-papers")
     assert r.status_code == 200
@@ -140,7 +133,6 @@ def test_research_and_inference():
     r = client.post("/api/inference/gpt2", json={"text": "Hello world"})
     assert r.status_code in (200, 404, 500)
 
-
 def test_automl_finetune_deploy():
     r = client.post("/api/automl/train", params={"dataset_id": 1, "target_column": "target"})
     assert r.status_code == 200
@@ -151,14 +143,12 @@ def test_automl_finetune_deploy():
     r = client.post("/api/deploy/gpt2")
     assert r.status_code == 200
 
-
 def test_metrics():
     r = client.get("/api/monitoring/metrics")
     assert r.status_code == 200
     data = r.json()
     assert "models_loaded" in data
     assert "registered_models" in data
-
 
 def test_qvillage_features_autosync():
     r = client.get("/api/qvillage/features")
@@ -174,7 +164,6 @@ def test_qvillage_features_autosync():
     assert r.status_code == 200
     assert r.json().get("status") == "executed"
 
-
 def test_notifications():
     r = client.post("/api/notifications/", json={
         "user_id": 1,
@@ -186,7 +175,6 @@ def test_notifications():
     r = client.get("/api/notifications/", params={"user_id": 1})
     assert r.status_code == 200
     assert isinstance(r.json(), list)
-
 
 def test_discussions():
     r = client.post("/api/discussions/", json={
@@ -200,7 +188,6 @@ def test_discussions():
     r = client.get("/api/discussions/", params={"entity_type": "model", "entity_id": 1})
     assert r.status_code == 200
     assert isinstance(r.json(), list)
-
 
 def test_plans():
     r = client.post("/api/plans/", json={
@@ -219,12 +206,10 @@ def test_plans():
     r = client.put(f"/api/plans/{plan_id}", params={"status": "completed"})
     assert r.status_code == 200
 
-
 def test_auto_enhance():
     r = client.post("/api/auto-enhance")
     assert r.status_code == 200
     assert r.json().get("status") == "enhancement scheduled"
-
 
 def main():
     print("Running QVillage Enhanced Test Suite...")
@@ -250,7 +235,6 @@ def main():
     print(f"Tests passed: {passed}/{len(tests)}")
     if passed != len(tests):
         sys.exit(1)
-
 
 if __name__ == "__main__":
     main()

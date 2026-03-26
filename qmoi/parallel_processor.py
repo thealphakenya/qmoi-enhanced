@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """qmoi.parallel_processor
 
 robust, well-formed parallel processing helper used by QMOI.
@@ -27,14 +27,12 @@ from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
 from dataclasses import dataclass
 from typing import Dict, List, Optional
 
-
 @dataclass
 class ProcessingResult:
     success: bool
     data: Dict
     source: str  # 'claude' or 'local'
     metrics: Dict
-
 
 class QmoiParallelProcessor:
     """Core parallel processing system with graceful fallbacks.
@@ -191,16 +189,13 @@ class QmoiParallelProcessor:
         if self.process_pool:
             self.process_pool.shutdown(wait=True)
 
-
 _parallel_processor: Optional[QmoiParallelProcessor] = None
-
 
 def get_parallel_processor() -> QmoiParallelProcessor:
     global _parallel_processor
     if _parallel_processor is None:
         _parallel_processor = QmoiParallelProcessor()
     return _parallel_processor
-
 
 if __name__ == "__main__":
     processor = get_parallel_processor()

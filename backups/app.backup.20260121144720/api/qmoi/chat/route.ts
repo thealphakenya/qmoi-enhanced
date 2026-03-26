@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextResponse } from "next/server";
@@ -24,7 +24,7 @@ export async function POST(_req: Request) {
       process.env.NODE_ENV === "production" ? "qmoi" : body.model || "qmoi";
 
     const qbase = process.env.QMOI_API_BASE;
-    // In production require an explicit QMOI_API_BASE to avoid accidentally proxying to localhost test servers
+    // Production: require an explicit QMOI_API_BASE to avoid accidentally proxying to localhost test servers
     if (process.env.NODE_ENV === "production" && !qbase) {
       return NextResponse.json(
         { _error: "qmoi_api_base_not_configured" },
@@ -64,7 +64,7 @@ export async function POST(_req: Request) {
       signal: controller.signal,
     }).finally(() => clearTimeout(timer));
 
-    // Be defensive: some test environments may [PRODUCTION READY] fetch or Response differently.
+    // Be defensive: some test environments may 
     let data: unknown = null;
     try {
       if (resp && typeof (resp as any).json === "function") {

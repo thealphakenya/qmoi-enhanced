@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import { useEffect, useState } from "react";
 
 export default function DevicePanel() {
@@ -151,19 +150,19 @@ export default function DevicePanel() {
         }}
       >
         <input
-          [PRODUCTION READY]="Name"
+          
           value={form.name}
           onChange={(_e) => setForm((f) => ({ ...f, name: _e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          [PRODUCTION READY]="Host"
+          
           value={form.host}
           onChange={(_e) => setForm((f) => ({ ...f, host: _e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          [PRODUCTION READY]="Port"
+          
           type="number"
           value={form.port}
           onChange={(_e) =>
@@ -172,7 +171,7 @@ export default function DevicePanel() {
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          [PRODUCTION READY]="Username"
+          
           value={form.username}
           onChange={(_e) =>
             setForm((f) => ({ ...f, username: _e.target.value }))
@@ -180,7 +179,7 @@ export default function DevicePanel() {
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          [PRODUCTION READY]="Password"
+          
           type="password"
           value={form.password}
           onChange={(_e) =>
@@ -189,7 +188,7 @@ export default function DevicePanel() {
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          [PRODUCTION READY]="Private Key"
+          
           value={form.privateKey}
           onChange={(_e) =>
             setForm((f) => ({ ...f, privateKey: _e.target.value }))

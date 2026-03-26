@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:55Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 #!/usr/bin/env node
 
 /**
@@ -326,7 +325,7 @@ class QMOIRevenueDashboard {
     let totalRevenue = 0;
 
     for (const [streamId, stream] of this.dashboardData.revenue.streams) {
-      [PRODUCTION READY] revenue generation
+      
       const newRevenue = this.generateRevenue(streamId);
       stream.current += newRevenue;
       totalRevenue += stream.current;
@@ -352,7 +351,7 @@ class QMOIRevenueDashboard {
   }
 
   generateRevenue(streamId) {
-    [PRODUCTION READY] revenue generation based on stream type
+    
     const revenueRanges = {
       "app-sales": [100, 500],
       "youtube-ads": [50, 300],
@@ -477,11 +476,10 @@ class QMOIRevenueDashboard {
   async updatePlatformData() {
     // Update platform performance data
     for (const [platformId, platform] of this.dashboardData.platforms.active) {
-      [PRODUCTION READY] platform revenue
+      
       const newRevenue = this.generatePlatformRevenue(platformId);
       platform.revenue += newRevenue;
 
-      [PRODUCTION READY] account creation
       if (Math.random() < 0.1) {
         // 10% chance of new account
         platform.accounts += 1;

@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+
 """Scan repository for implementation markers and either propose replacements or apply
 conservative, non-destructive replacements when explicitly allowed.
 

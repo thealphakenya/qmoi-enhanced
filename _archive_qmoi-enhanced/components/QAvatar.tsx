@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -294,7 +293,6 @@ const QAvatar: React.FC<QAvatarProps> = ({
   const enhanceAvatar = useCallback(() => {
     if (!config.aiEnhancement) return;
 
-    [PRODUCTION READY] AI enhancement process
     const enhancements = [
       () => setConfig((prev) => ({ ...prev, quality: "ai-enhanced" })),
       () => setConfig((prev) => ({ ...prev, particleEffects: true })),
@@ -1156,7 +1154,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <input
                     type="email"
                     className="border rounded px-2 py-1 flex-1"
-                    [PRODUCTION READY]="Email address"
+                    
                     value={notificationSettings.email}
                     onChange={(e) =>
                       handleNotificationChange("email", e.target.value)
@@ -1189,7 +1187,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <input
                     type="text"
                     className="border rounded px-2 py-1 flex-1"
-                    [PRODUCTION READY]="Slack Webhook URL"
+                    
                     value={notificationSettings.slack}
                     onChange={(e) =>
                       handleNotificationChange("slack", e.target.value)
@@ -1222,7 +1220,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <input
                     type="text"
                     className="border rounded px-2 py-1 flex-1"
-                    [PRODUCTION READY]="WhatsApp Number (+1234567890)"
+                    
                     value={notificationSettings.whatsapp}
                     onChange={(e) =>
                       handleNotificationChange("whatsapp", e.target.value)
@@ -1313,7 +1311,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   );
 
   useEffect(() => {
-    // Fetch QCity status from API ([PRODUCTION READY]bed for now)
+    // Fetch QCity status from API (
     async function fetchStatus() {
       try {
         const res = await fetch("/api/qcity/status");
@@ -1579,7 +1577,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
               <Button
                 size="sm"
                 onClick={() => {
-                  /* [PRODUCTION READY]: Open QCity management UI */
+                  /* 
                 }}
               >
                 Open QCity Management
@@ -1591,7 +1589,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   value={adminKey}
                   onChange={(e) => setAdminKey(e.target.value)}
                   className="w-full px-2 py-1 border rounded bg-gray-50 dark:bg-gray-800"
-                  [PRODUCTION READY]="Enter admin key"
+                  
                 />
                 {authStatus === "ok" && (
                   <span className="text-green-600 text-xs">Authenticated</span>
@@ -1610,7 +1608,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                     value={commandInput}
                     onChange={(e) => setCommandInput(e.target.value)}
                     className="flex-1 px-2 py-1 border rounded bg-gray-50 dark:bg-gray-800"
-                    [PRODUCTION READY]="Enter command (e.g. npm run build)"
+                    
                     enabled={isRunning}
                     tabIndex={0}
                   />
@@ -1684,7 +1682,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                           [v]: e.target.value,
                         }))
                       }
-                      [PRODUCTION READY]={v}
+                      
                       className="w-20 px-1 py-0.5 border rounded text-xs"
                     />
                   ))}
@@ -2089,7 +2087,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
         >
           <input
             className="border rounded px-2 py-1"
-            [PRODUCTION READY]="Action"
+            
             value={auditFilter.action}
             onChange={(e) =>
               setAuditFilter((f) => ({ ...f, action: e.target.value }))
@@ -2098,7 +2096,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
           />
           <input
             className="border rounded px-2 py-1"
-            [PRODUCTION READY]="User"
+            
             value={auditFilter.user}
             onChange={(e) =>
               setAuditFilter((f) => ({ ...f, user: e.target.value }))
@@ -2107,7 +2105,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
           />
           <input
             className="border rounded px-2 py-1"
-            [PRODUCTION READY]="Device ID"
+            
             value={auditFilter.deviceId}
             onChange={(e) =>
               setAuditFilter((f) => ({ ...f, deviceId: e.target.value }))
@@ -2116,7 +2114,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
           />
           <input
             className="border rounded px-2 py-1"
-            [PRODUCTION READY]="Status"
+            
             value={auditFilter.status}
             onChange={(e) =>
               setAuditFilter((f) => ({ ...f, status: e.target.value }))
@@ -2304,7 +2302,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
     setNotificationSettings((prev) => ({ ...prev, [field]: value }));
   }
 
-  // Handler for test notification ([PRODUCTION READY]bed)
+  // Handler for test notification (
   function handleTestNotification(type: "email" | "slack" | "whatsapp") {
     toast({
       title: `Test ${
