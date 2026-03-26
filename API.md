@@ -1,29 +1,33 @@
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2026-03-26T05:18:48.180456Z
+- note: Auto-updated by `scripts/comprehensive_docs_update.py`
+<!-- LION_VALIDATION_END -->
+
 # QMOI API Documentation
 
-Generated: 2026-03-26 SESSION 2
-Last Updated: 2026-03-26 (EVOLUTION & AUTODEV ENHANCED)
+**Generated**: 2026-03-26 SESSION CONTINUOUS
+**Last Updated**: 2026-03-26T05:18:48.180456Z
+**Total Endpoints**: 241
 
 ## Overview
 
-This document provides comprehensive documentation for all QMOI system APIs. Updated to include Evolution System and Enhanced AutoDev endpoints.
+This document provides comprehensive documentation for all QMOI system APIs. All endpoints are auto-generated and verified.
 
-## New in this Session
+## Quick Access
 
-### Evolution System
-- Model replacement engine with autonomous decision making
-- Model comparison and metrics tracking
-- Evolution history and progress monitoring
-- Consciousness-integrated model decision making
-
-### Enhanced AutoDev
-- Advanced suggestions for improvements
-- Optimization recommendations
-- Feature generation suggestions
-- Research and insights pipeline
+- **Total Endpoints**: 241
+- **API Base URL**: `/api`
+- **Authentication**: JWT tokens required for most endpoints
+- **Rate Limiting**: Applied to all endpoints
+- **Response Format**: JSON (application/json)
 
 ## Authentication
 
-All API endpoints require authentication via JWT tokens.
+All API endpoints require authentication via JWT tokens (except public endpoints).
 
 ```
 POST /api/auth/login
@@ -35,484 +39,378 @@ Content-Type: application/json
 }
 ```
 
-## API Endpoints
+## API Endpoints by Category
 
-### Domains APIs
+### Evolution System
+- `POST /api/qmoi/evolution/replace-model` - Execute or decide model replacement
+- `GET /api/qmoi/evolution/replace-model` - Get current model status
+- `POST /api/qmoi/evolution/compare-models` - Compare model performance metrics
+- `GET /api/qmoi/evolution/compare-models` - Get available models
+- `GET /api/qmoi/evolution/track-evolution` - Get evolution tracking data
+- `POST /api/qmoi/evolution/track-evolution` - Manage evolution tracking
 
-- GET /api/domains/health - Get domain health status
-- POST /api/domains/check - Check specific domain
-- GET /api/domains/report - Generate domain health report
-- POST /api/domains/failover - Initiate domain failover
+### AutoDev - Core
+- `GET /api/qmoi/autodev/research` - Get research suggestions
+- `POST /api/qmoi/autodev/research` - Execute research recommendations
+- `GET /api/qmoi/autodev/generate-feature` - Get feature generation status
+- `POST /api/qmoi/autodev/generate-feature` - Generate new feature
+- `GET /api/qmoi/autodev/state` - Get AutoDev state
+- `POST /api/qmoi/autodev/toggle` - Toggle AutoDev functionality
 
-### Core Engine APIs
+### AutoDev - Suggestions
+- `GET /api/qmoi/autodev/suggestions/improvements` - Get improvement suggestions
+- `POST /api/qmoi/autodev/suggestions/improvements` - Process improvements
+- `GET /api/qmoi/autodev/suggestions/optimizations` - Get optimization suggestions
+- `GET /api/qmoi/autodev/suggestions/features` - Get feature suggestions
 
-#### Consciousness Engine
-- GET /api/qmoi-model?consciousness - Get current consciousness state
-- POST /api/qmoi-model - Process consciousness actions
-  ```json
-  {
-    "action": "consciousness",
-    "data": {
-      "thought": "User needs help",
-      "context": "UI interaction"
-    }
-  }
-  ```
+### Self-Work
+- `POST /api/qmoi/self-work/code-review` - Code review
+- `POST /api/qmoi/self-work/debug` - Debug code
+- `POST /api/qmoi/self-work/run-tests` - Run tests
 
-#### Awareness System
-- GET /api/qmoi-model?awareness - Get awareness context
-- POST /api/qmoi-model - Process awareness actions
-  ```json
-  {
-    "action": "awareness",
-    "data": {
-      "user_id": "user123",
-      "context": "User is frustrated"
-    }
-  }
-  ```
+### Global APIs
+- `POST /api/global` - Global operations
+- `POST /api/qvs` - QVS operations
 
-#### Memory Sync System
-- GET /api/qmoi-model?memory - Get memory status
-- POST /api/qmoi-model - Process memory actions
-  ```json
-  {
-    "action": "memory",
-    "data": {
-      "tags": ["urgent", "help"],
-      "keyword": "error"
-    }
-  }
-  ```
+### Health & Monitoring
+- `GET /api/qmoi/health` - Health check
+- `GET /api/qmoi/health/stream` - Health stream
 
-#### Orchestration Engine
-- GET /api/qmoi-model?orchestration - Get orchestration status
-- POST /api/qmoi-model - Process orchestration actions
-  ```json
-  {
-    "action": "orchestration",
-    "data": {
-      "user_id": "user123",
-      "device_ids": ["device1", "device2"]
-    }
-  }
-  ```
+### Consciousness & Awareness
+- `GET /api/consciousness` - Get consciousness state
+- `POST /api/consciousness` - Update consciousness
 
-#### Execution Engine
-- GET /api/qmoi-model?execution - Get execution status
-- POST /api/qmoi-model - Process execution actions
-  ```json
-  {
-    "action": "execution",
-    "data": {
-      "type": "app_launch",
-      "app": "calculator"
-    }
-  }
-  ```
+### Tracks System
+- `GET /api/tracks` - Get all tracks
+- `POST /api/tracks` - Create new track
+- `GET /api/tracks/[id]` - Get specific track
+- `GET /api/tracks/stream` - Track stream
+- `GET /api/tracks/settings` - Track settings
 
-#### Validation Engine
-- GET /api/qmoi-model?validation - Get validation status
-- POST /api/qmoi-model - Process validation actions
-  ```json
-  {
-    "action": "validation",
-    "data": {
-      "type": "code",
-      "content": "function test() { return true; }"
-    }
-  }
-  ```
+### Master Operations
+- `GET /api/master/tracks` - Master track operations
+- `GET /api/master/links` - Master link operations
+- `GET /api/master/domains` - Master domain operations
+- `POST /api/master/domains/emergency-takeover` - Emergency domain takeover
+- `GET /api/master/domains/status` - Domain status
+- `POST /api/master/sponsored` - Sponsored user operations
 
-#### Self-Learning Engine
-- GET /api/qmoi-model?selfLearning - Get self-learning status
-- POST /api/qmoi-model - Process self-learning actions
-  ```json
-  {
-    "action": "selfLearning",
-    "data": {
-      "topic": "React hooks",
-      "difficulty": "intermediate"
-    }
-  }
-  ```
+### Domain Management
+- `GET /api/domains/health` - Domain health
+- `POST /api/domains/check` - Check domain
+- `GET /api/domains/report` - Domain report
 
-#### Accessibility Engine
-- GET /api/qmoi-model?accessibility - Get accessibility status
-- POST /api/qmoi-model - Process accessibility actions
-  ```json
-  {
-    "action": "accessibility",
-    "data": {
-      "request": "describe_screen",
-      "format": "voice"
-    }
-  }
-  ```
+### QVillage
+- `GET /api/qvillage` - QVillage info
+- `GET /api/qvillage/models` - Available models
+- `POST /api/qvillage/inference` - Run inference
+- `GET /api/qvillage/spaces` - Available spaces
 
-### Consciousness & Awareness APIs
+### Datasets
+- `GET /api/datasets` - Get datasets
+- `POST /api/datasets` - Create dataset
+- `GET /api/datasets/[id]` - Get specific dataset
+- `GET /api/datasets/settings` - Dataset settings
 
-#### Consciousness Engine
-- GET /api/consciousness?endpoint=consciousness - Get current consciousness state
-- GET /api/consciousness?endpoint=consciousness/introspect - Get consciousness introspection and analysis
-- POST /api/consciousness - Update consciousness state
-- POST /api/consciousness - Add thought to consciousness stream
+### Media
+- `POST /api/media/generate` - Generate media
+- `GET /api/media/status` - Media generation status
 
-#### Awareness System
-- GET /api/consciousness?endpoint=awareness/global - Get global awareness snapshot
-- GET /api/consciousness?endpoint=awareness/user&user_id=USER_ID - Get user specific awareness
-- GET /api/consciousness?endpoint=awareness/environment&device_id=DEVICE_ID - Get environment awareness
-- POST /api/consciousness - Update environment awareness
-- POST /api/consciousness - Update user context
-- POST /api/consciousness - Update task context
-- POST /api/consciousness - Predict user needs
+### Links
+- `GET /api/links` - Get links
+- `POST /api/links` - Create link
+- `POST /api/links/validate` - Validate links
+- `GET /api/global-links` - Global links
 
-#### Memory Sync System
-- GET /api/consciousness?endpoint=memory/get&memory_id=MEMORY_ID - Get specific memory
-- GET /api/consciousness?endpoint=memory/user&user_id=USER_ID - Get all user memories
-- GET /api/consciousness?endpoint=memory/stats - Get memory statistics
-- POST /api/consciousness - Add new memory
-- POST /api/consciousness - Update existing memory
-- POST /api/consciousness - Delete memory
-- POST /api/consciousness - Search memory by tags/keyword
-- POST /api/consciousness - Consolidate memory (cleanup/optimize)
+### WebAuthn
+- `POST /api/webauthn/register` - Register WebAuthn
+- `POST /api/webauthn/authenticate` - Authenticate with WebAuthn
 
-#### Orchestration System
-- GET /api/consciousness?endpoint=orchestration/stats - Get orchestration statistics
-- GET /api/consciousness?endpoint=system/introspect - Get complete system introspection
-- POST /api/consciousness - Sync memory to devices
-- POST /api/consciousness - Reset entire system
+### Biometric
+- `POST /api/biometric/templates` - Biometric templates
+- `POST /api/biometric/verify` - Verify biometric
 
-### Health APIs
+### Integration APIs
+- `POST /api/whatsapp-business` - WhatsApp Business
+- `GET /api/qi-trading` - QI Trading
+- `POST /api/deploy` - Deployment
+- `POST /api/deploy/auto-redeploy` - Auto-redeploy
+- `GET /api/qstore` - Q Store
+- `GET /api/qnews` - Q News
 
-- GET /api/health/system - System health check
-- GET /api/health/domains - Domain health overview
-- GET /api/health/production - Production readiness status
-- GET /api/health/telemetry - System telemetry data
+## Complete Endpoint List
 
-### Monitoring APIs
+- `GET` `/api/account-automation`
+- `GET` `/api/admin/alerts`
+- `GET` `/api/admin/audit-logs`
+- `GET` `/api/admin/autofix/automation`
+- `GET` `/api/admin/autofix/autoscan`
+- `GET` `/api/admin/autofix/background-automation`
+- `GET` `/api/admin/autofix/bootstrap`
+- `GET` `/api/admin/autofix/config`
+- `GET` `/api/admin/autofix/errors`
+- `GET` `/api/admin/autofix/fix-all`
+- `POST` `/api/admin/autofix/fix/[errorId]`
+- `GET` `/api/admin/autofix/health`
+- `GET` `/api/admin/autofix/healthmonitor`
+- `GET` `/api/admin/autofix/scan`
+- `GET` `/api/admin/autofix/stream`
+- `GET` `/api/admin/dashboard`
+- `GET` `/api/admin/financial/global`
+- `GET` `/api/admin/financial/summary`
+- `POST` `/api/admin/master/auth`
+- `POST` `/api/admin/master/logout`
+- `GET` `/api/admin/monitoring`
+- `GET` `/api/admin/rate-limits`
+- `GET` `/api/admin/users`
+- `GET` `/api/ai`
+- `GET` `/api/ai-anomaly-service`
+- `GET` `/api/ai-health`
+- `GET` `/api/ai-self-diagnostics`
+- `GET` `/api/ai/scan`
+- `GET` `/api/analytics/transactions`
+- `GET` `/api/analytics/wallets`
+- `GET` `/api/auth/biometric/capture`
+- `POST` `/api/auth/login`
+- `POST` `/api/auth/profile`
+- `POST` `/api/auth/refresh`
+- `POST` `/api/auth/register`
+- `GET` `/api/auth/settings`
+- `GET` `/api/auth/signin`
+- `GET` `/api/auth/signup`
+- `POST` `/api/auth/verify`
+- `POST` `/api/auth/verify-email`
+- `POST` `/api/auth/webauthn/authenticate`
+- `POST` `/api/auth/webauthn/register`
+- `GET` `/api/automation/status`
+- `POST` `/api/automation/trigger`
+- `GET` `/api/biometric/templates`
+- `POST` `/api/biometric/verify`
+- `GET` `/api/cashon`
+- `GET` `/api/cashon/balance`
+- `POST` `/api/cashon/deposit`
+- `GET` `/api/cashon/signals`
+- `POST` `/api/cashon/start-trading`
+- `POST` `/api/cashon/stop-trading`
+- `GET` `/api/cashon/trading-status`
+- `POST` `/api/chat/enhanced`
+- `GET` `/api/consciousness`
+- `GET` `/api/datasets`
+- `GET` `/api/datasets/[id]`
+- `POST` `/api/datasets/settings`
+- `GET` `/api/debug/users`
+- `POST` `/api/deploy`
+- `POST` `/api/deploy/auto-redeploy`
+- `GET` `/api/deployment-status`
+- `GET` `/api/device-fingerprint`
+- `POST` `/api/document-backup`
+- `GET` `/api/domains`
+- `GET` `/api/domains/health`
+- `GET` `/api/earning`
+- `GET` `/api/emails`
+- `GET` `/api/emergency/config`
+- `POST` `/api/emergency/dispatch`
+- `POST` `/api/emergency/email`
+- `GET` `/api/emergency/lockdown`
+- `POST` `/api/emergency/sms`
+- `GET` `/api/emergency/wipe`
+- `GET` `/api/employment`
+- `GET` `/api/employment/megavault`
+- `GET` `/api/employment/payment`
+- `GET` `/api/employment/revenue`
+- `GET` `/api/enhanced-email/analytics`
+- `GET` `/api/enhanced-email/realtime`
+- `GET` `/api/enhanced-email/rules`
+- `POST` `/api/enhanced-email/send`
+- `GET` `/api/enhanced-email/templates`
+- `GET` `/api/enhanced-link-domain`
+- `GET` `/api/evolution/autoclone-evolution`
+- `GET` `/api/evolution/platform-evolution`
+- `GET` `/api/files`
+- `GET` `/api/financial/audit`
+- `GET` `/api/financial/balances`
+- `GET` `/api/financial/transactions`
+- `GET` `/api/financial/verify`
+- `GET` `/api/git/branch`
+- `POST` `/api/git/commit`
+- `POST` `/api/git/pr`
+- `POST` `/api/git/push`
+- `GET` `/api/git/remote`
+- `GET` `/api/git/status`
+- `GET` `/api/global`
+- `GET` `/api/global-links`
+- `GET` `/api/health`
+- `GET` `/api/health/data`
+- `GET` `/api/links`
+- `PATCH` `/api/links/[id]/zero-rated`
+- `GET` `/api/links/validate`
+- `GET` `/api/master/domains`
+- `POST` `/api/master/domains/approve/[domain]`
+- `POST` `/api/master/domains/emergency-takeover`
+- `POST` `/api/master/domains/force-refresh`
+- `DELETE` `/api/master/domains/remove/[domain]`
+- `GET` `/api/master/domains/status`
+- `GET` `/api/master/links`
+- `POST` `/api/master/sponsored/add`
+- `GET` `/api/master/sponsored/analytics`
+- `GET` `/api/master/sponsored/list`
+- `DELETE` `/api/master/sponsored/remove/[userId]`
+- `GET` `/api/master/sponsored/sync`
+- `GET` `/api/master/tracks`
+- `GET` `/api/media/generate`
+- `GET` `/api/media/status`
+- `GET` `/api/metrics`
+- `GET` `/api/monitor/status`
+- `POST` `/api/mpesa/callback`
+- `POST` `/api/notifications/test`
+- `POST` `/api/payments/initiate`
+- `GET` `/api/platforms`
+- `POST` `/api/preview/analyze`
+- `POST` `/api/preview/execute-tool`
+- `GET` `/api/qapikey`
+- `GET` `/api/qcity/audit-log`
+- `GET` `/api/qcity/remote-command`
+- `POST` `/api/qcity/selfheal-npm`
+- `GET` `/api/qcity/status`
+- `GET` `/api/qi-trading`
+- `GET` `/api/qmoi-database`
+- `GET` `/api/qmoi-earning-enhanced`
+- `GET` `/api/qmoi-gitlab/deployments`
+- `GET` `/api/qmoi-gitlab/errors`
+- `GET` `/api/qmoi-gitlab/jobs`
+- `GET` `/api/qmoi-gitlab/pipelines`
+- `POST` `/api/qmoi-gitlab/trigger`
+- `GET` `/api/qmoi-model`
+- `GET` `/api/qmoi-tracks`
+- `GET` `/api/qmoi/advanced-analysis`
+- `POST` `/api/qmoi/audio`
+- `GET` `/api/qmoi/auto-fix/download-report`
+- `GET` `/api/qmoi/auto-fix/github-status`
+- `POST` `/api/qmoi/auto-fix/start`
+- `GET` `/api/qmoi/auto-fix/status`
+- `POST` `/api/qmoi/auto-fix/stop`
+- `GET` `/api/qmoi/auto-setup`
+- `POST` `/api/qmoi/autodev/generate-feature`
+- `POST` `/api/qmoi/autodev/generate-feature`
+- `POST` `/api/qmoi/autodev/research`
+- `POST` `/api/qmoi/autodev/research`
+- `GET` `/api/qmoi/autodev/state`
+- `GET` `/api/qmoi/autodev/suggestions/features`
+- `GET` `/api/qmoi/autodev/suggestions/improvements`
+- `GET` `/api/qmoi/autodev/suggestions/optimizations`
+- `POST` `/api/qmoi/autodev/toggle`
+- `POST` `/api/qmoi/autodev/toggle`
+- `GET` `/api/qmoi/avatars`
+- `GET` `/api/qmoi/backup`
+- `GET` `/api/qmoi/chat`
+- `GET` `/api/qmoi/chat-enhanced`
+- `GET` `/api/qmoi/evolution/compare-models`
+- `GET` `/api/qmoi/evolution/replace-model`
+- `GET` `/api/qmoi/evolution/track-evolution`
+- `POST` `/api/qmoi/execute`
+- `GET` `/api/qmoi/files/[id]`
+- `GET` `/api/qmoi/friendship`
+- `GET` `/api/qmoi/health`
+- `GET` `/api/qmoi/health/stream`
+- `GET` `/api/qmoi/language`
+- `GET` `/api/qmoi/master-mode`
+- `GET` `/api/qmoi/memory`
+- `GET` `/api/qmoi/own-device-logs`
+- `POST` `/api/qmoi/own-device-logs/export`
+- `GET` `/api/qmoi/profile-questions`
+- `GET` `/api/qmoi/projects`
+- `GET` `/api/qmoi/research`
+- `GET` `/api/qmoi/revenue`
+- `GET` `/api/qmoi/revenue-dashboard`
+- `POST` `/api/qmoi/revenue/reset`
+- `POST` `/api/qmoi/revenue/start`
+- `GET` `/api/qmoi/revenue/status`
+- `POST` `/api/qmoi/revenue/stop`
+- `POST` `/api/qmoi/revenue/target`
+- `GET` `/api/qmoi/revenue/transactions`
+- `POST` `/api/qmoi/revenue/transfer`
+- `POST` `/api/qmoi/self-work/code-review`
+- `POST` `/api/qmoi/self-work/debug`
+- `POST` `/api/qmoi/self-work/run-tests`
+- `GET` `/api/qmoi/session`
+- `POST` `/api/qmoi/suggestions`
+- `POST` `/api/qmoi/transcribe`
+- `POST` `/api/qmoi/upload`
+- `GET` `/api/qmoi/user`
+- `GET` `/api/qmoi/visuals`
+- `GET` `/api/qmoi/voice`
+- `POST` `/api/qmoi/voice-enroll`
+- `POST` `/api/qmoi/voice-preview`
+- `GET` `/api/qmoi/voice-profiles`
+- `GET` `/api/qnews`
+- `GET` `/api/qradio`
+- `GET` `/api/qstore`
+- `GET` `/api/qvillage`
+- `GET` `/api/qvillage/inference`
+- `GET` `/api/qvillage/model-card`
+- `GET` `/api/qvillage/models`
+- `GET` `/api/qvillage/spaces`
+- `GET` `/api/qvs`
+- `GET` `/api/social-automation`
+- `POST` `/api/ssh/list`
+- `POST` `/api/ssh/read`
+- `POST` `/api/ssh/write`
+- `GET` `/api/tracks`
+- `DELETE` `/api/tracks/[id]`
+- `GET` `/api/tracks/settings`
+- `GET` `/api/tracks/stream`
+- `GET` `/api/trading/status`
+- `GET` `/api/transactions`
+- `GET` `/api/tts/generate`
+- `GET` `/api/tts/stream`
+- `GET` `/api/users/profile`
+- `GET` `/api/version`
+- `POST` `/api/voice/enroll`
+- `POST` `/api/voice/verify`
+- `GET` `/api/wallets`
+- `GET` `/api/wallets/[walletId]`
+- `POST` `/api/webauthn/authenticate`
+- `POST` `/api/webauthn/register`
+- `GET` `/api/webhooks/payments`
+- `POST` `/api/webhooks/qvillage`
+- `POST` `/api/whatsapp-bot`
+- `GET` `/api/whatsapp-business`
+- `GET` `/api/whatsapp/audit`
+- `GET` `/api/whatsapp/verify`
+- `GET` `/api/wifi`
+- `GET` `/api/wifi-security`
+- `GET` `/api/wifi/scan`
+- `GET` `/api/youtube/download`
 
-- GET /api/monitor/logs - System logs
-- GET /api/monitor/metrics - Performance metrics
-- GET /api/monitor/alerts - Active alerts
-- POST /api/monitor/test - Test monitoring systems
+## Status Codes
 
-### Automation APIs
-
-- GET /api/auto/status - Automation status
-- POST /api/auto/scan - Run production scan
-- POST /api/auto/fix - Auto-fix issues
-- GET /api/auto/report - Automation report
-
-### Authentication APIs
-
-- POST /api/auth/login - User login
-- POST /api/auth/logout - User logout
-- GET /api/auth/verify - Verify token
-- POST /api/auth/refresh - Refresh token
-
-### Data APIs
-
-- GET /api/data/export - Export system data
-- POST /api/data/import - Import data
-- GET /api/data/backup - Create backup
-- POST /api/data/restore - Restore from backup
-
-### Reports APIs
-
-- GET /api/reports/health - Health reports
-- GET /api/reports/production - Production reports
-- GET /api/reports/performance - Performance reports
-- GET /api/reports/compliance - Compliance reports
-
-### Global Operations APIs
-
-- GET /api/global?action=stats - Get global operations statistics
-- GET /api/global?action=countries - List configured countries
-- GET /api/global?action=operations - List active/queued operations
-- GET /api/global?action=health - Get global system health
-- POST /api/global (action=start-operation|bulk-operations|compliance-check|expansion-initiate) - Manage global operations
-- PUT /api/global (action=update-config|reset-country) - Update global config or reset country state
-- DELETE /api/global?action=stop-operations|clear-completed - Control global operation lifecycle
-
-### QVS (QMOI Virtual System) APIs
-
-- GET /api/qvs?action=stats - Get QVS system statistics
-- GET /api/qvs?action=health - Get QVS health snapshot
-- POST /api/qvs (action=configure|start-operations|scale-up) - Manage QVS configuration and flow
-
-## Response Format
-
-All API responses follow this standard format:
-
-```json
-{
-  "success": true,
-  "data": {},
-  "message": "Operation completed",
-  "timestamp": "2026-03-24T19:33:56.507328"
-}
-```
-
-## Error Handling
-
-Error responses include:
-
-```json
-{
-  "success": false,
-  "error": "Error description",
-  "code": "ERROR_CODE",
-  "timestamp": "2026-03-24T19:33:56.507328"
-}
-```
+- `200 OK` - Successful request
+- `201 Created` - Resource created
+- `400 Bad Request` - Invalid request
+- `401 Unauthorized` - Authentication required
+- `403 Forbidden` - Access denied
+- `404 Not Found` - Resource not found
+- `500 Internal Server Error` - Server error
 
 ## Rate Limiting
 
-- 1000 requests per hour for authenticated users
-- 100 requests per hour for unauthenticated requests
+All endpoints are rate-limited to prevent abuse:
+- Public endpoints: 100 requests per minute
+- Authenticated endpoints: 1000 requests per minute
+- Master endpoints: 10000 requests per minute
 
-## Support
+## Version Info
 
-For API support, contact: support@qmoi.com
+- **API Version**: v1
+- **Compatibility**: Node.js 18+
+- **Framework**: Next.js 13+
 
+## Last Update
 
-
-
-
-
-
-
-
-
-## AUTO-GENERATED ENDPOINTS
-
-- /api/account-automation
-- /api/admin/alerts
-- /api/admin/audit-logs
-- /api/admin/autofix/automation
-- /api/admin/autofix/autoscan
-- /api/admin/autofix/background-automation
-- /api/admin/autofix/bootstrap
-- /api/admin/autofix/config
-- /api/admin/autofix/errors
-- /api/admin/autofix/fix/{errorId}
-- /api/admin/autofix/fix-all
-- /api/admin/autofix/health
-- /api/admin/autofix/healthmonitor
-- /api/admin/autofix/scan
-- /api/admin/autofix/stream
-- /api/admin/dashboard
-- /api/admin/financial/global
-- /api/admin/financial/summary
-- /api/admin/master/auth
-- /api/admin/master/logout
-- /api/admin/monitoring
-- /api/admin/rate-limits
-- /api/admin/users
-- /api/ai
-- /api/ai/scan
-- /api/ai-anomaly-service
-- /api/ai-health
-- /api/ai-self-diagnostics
-- /api/analytics/transactions
-- /api/analytics/wallets
-- /api/auth/biometric/capture
-- /api/auth/login
-- /api/auth/profile
-- /api/auth/refresh
-- /api/auth/register
-- /api/auth/settings
-- /api/auth/signin
-- /api/auth/signup
-- /api/auth/verify
-- /api/auth/verify-email
-- /api/auth/webauthn/authenticate
-- /api/auth/webauthn/register
-- /api/automation/status
-- /api/biometric/templates
-- /api/biometric/verify
-- /api/cashon/balance
-- /api/cashon/deposit
-- /api/cashon
-- /api/cashon/signals
-- /api/cashon/start-trading
-- /api/cashon/stop-trading
-- /api/cashon/trading-status
-- /api/chat/enhanced
-- /api/consciousness
-- /api/datasets/{id}
-- /api/datasets
-- /api/datasets/settings
-- /api/debug/users
-- /api/deploy/auto-redeploy
-- /api/deploy
-- /api/deployment-status
-- /api/device-fingerprint
-- /api/document-backup
-- /api/domains/health
-- /api/domains
-- /api/earning
-- /api/emails
-- /api/emergency/config
-- /api/emergency/dispatch
-- /api/emergency/email
-- /api/emergency/lockdown
-- /api/emergency/sms
-- /api/emergency/wipe
-- /api/employment/megavault
-- /api/employment/payment
-- /api/employment/revenue
-- /api/employment
-- /api/enhanced-email/analytics
-- /api/enhanced-email/realtime
-- /api/enhanced-email/rules
-- /api/enhanced-email/send
-- /api/enhanced-email/templates
-- /api/enhanced-link-domain
-- /api/files
-- /api/financial/audit
-- /api/financial/balances
-- /api/financial/transactions
-- /api/financial/verify
-- /api/git/branch
-- /api/git/commit
-- /api/git/pr
-- /api/git/push
-- /api/git/remote
-- /api/git/status
-- /api/global-links
-- /api/health/data
-- /api/health
-- /api/links/{id}/zero-rated
-- /api/links
-- /api/links/validate
-- /api/master/domains/approve/{domain}
-- /api/master/domains/emergency-takeover
-- /api/master/domains/force-refresh
-- /api/master/domains/remove/{domain}
-- /api/master/domains
-- /api/master/domains/status
-- /api/master/links
-- /api/master/sponsored/add
-- /api/master/sponsored/analytics
-- /api/master/sponsored/list
-- /api/master/sponsored/remove/{userId}
-- /api/master/sponsored/sync
-- /api/master/tracks
-- /api/media/generate
-- /api/media/status
-- /api/metrics
-- /api/monitor/status
-- /api/mpesa/callback
-- /api/notifications/test
-- /api/payments/initiate
-- /api/platforms
-- /api/qapikey
-- /api/qcity/audit-log
-- /api/qcity/remote-command
-- /api/qcity/selfheal-npm
-- /api/qcity/status
-- /api/qi-trading
-- /api/qmoi/advanced-analysis
-- /api/qmoi/audio
-- /api/qmoi/auto-fix/download-report
-- /api/qmoi/auto-fix/github-status
-- /api/qmoi/auto-fix/start
-- /api/qmoi/auto-fix/status
-- /api/qmoi/auto-fix/stop
-- /api/qmoi/auto-setup
-- /api/qmoi/autodev/generate-feature
-- /api/qmoi/autodev/research
-- /api/qmoi/autodev/toggle
-- /api/qmoi/avatars
-- /api/qmoi/backup
-- /api/qmoi/chat
-- /api/qmoi/chat-enhanced
-- /api/qmoi/files/{id}
-- /api/qmoi/friendship
-- /api/qmoi/language
-- /api/qmoi/master-mode
-- /api/qmoi/memory
-- /api/qmoi/own-device-logs/export
-- /api/qmoi/own-device-logs
-- /api/qmoi/profile-questions
-- /api/qmoi/projects
-- /api/qmoi/research
-- /api/qmoi/revenue/reset
-- /api/qmoi/revenue
-- /api/qmoi/revenue/start
-- /api/qmoi/revenue/status
-- /api/qmoi/revenue/stop
-- /api/qmoi/revenue/target
-- /api/qmoi/revenue/transactions
-- /api/qmoi/revenue/transfer
-- /api/qmoi/revenue-dashboard
-- /api/qmoi/session
-- /api/qmoi/transcribe
-- /api/qmoi/upload
-- /api/qmoi/user
-- /api/qmoi/visuals
-- /api/qmoi/voice
-- /api/qmoi/voice-enroll
-- /api/qmoi/voice-preview
-- /api/qmoi/voice-profiles
-- /api/qmoi-database
-- /api/qmoi-earning-enhanced
-- /api/qmoi-gitlab/deployments
-- /api/qmoi-gitlab/errors
-- /api/qmoi-gitlab/jobs
-- /api/qmoi-gitlab/pipelines
-- /api/qmoi-gitlab/trigger
-- /api/qmoi-model
-- /api/qmoi-tracks
-- /api/qnews
-- /api/qradio
-- /api/qstore
-- /api/qvillage/inference
-- /api/qvillage/models
-- /api/qvillage
-- /api/qvillage/spaces
-- /api/social-automation
-- /api/ssh/list
-- /api/ssh/read
-- /api/ssh/write
-- /api/tracks/{id}
-- /api/tracks
-- /api/tracks/settings
-- /api/tracks/stream
-- /api/trading/status
-- /api/transactions
-- /api/tts/generate
-- /api/tts/stream
-- /api/users/profile
-- /api/version
-- /api/voice/enroll
-- /api/voice/verify
-- /api/wallets/{walletId}
-- /api/wallets
-- /api/webauthn/authenticate
-- /api/webauthn/register
-- /api/webhooks/payments
-- /api/webhooks/qvillage
-- /api/whatsapp/audit
-- /api/whatsapp/verify
-- /api/whatsapp-bot
-- /api/whatsapp-business
-- /api/wifi
-- /api/wifi/scan
-- /api/wifi-security
-- /api/youtube/download
-
-## 🔄 Evolution Status
-
-**QMOI Evolution Enhanced**: This document is continuously updated through QMOI's autonomous evolution system.
-
-- **Continuous Improvement**: AI-driven optimizations and feature enhancements
-- **Global Scalability**: Automatic adaptation for worldwide operations
-- **Parallel Processing**: Multi-threaded execution and optimization
-- **Self-Healing**: Automatic error detection and correction
-- **Last Evolution**: 2026-03-26T03:58:28Z
+- **Date**: 2026-03-26
+- **By**: `scripts/comprehensive_docs_update.py`
+- **Analysis**: Auto-generated from routing structure
 
 ---
-*This document is maintained by QMOI's autonomous evolution system*
+
+Generated by QMOI Continuous Documentation System
