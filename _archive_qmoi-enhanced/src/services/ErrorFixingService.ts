@@ -44,7 +44,7 @@ export class ErrorFixingService {
   }
 
   public async reportError(report: ErrorReport): Promise<void> {
-    (console as any).log("Error reported:", report);
+    .log("Error reported:", report);
     this.errorQueue.push(report);
     this.processQueue();
   }
@@ -58,16 +58,16 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      (console as any).log("Processing error:", errorReport);
+      .log("Processing error:", errorReport);
       try {
         [PRODUCTION READY] AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
         if (fixSuggestion) {
-          (console as any).log("Applying fix suggestion:", fixSuggestion);
+          .log("Applying fix suggestion:", fixSuggestion);
           await this.applyFix(fixSuggestion);
-          (console as any).log("Fix applied successfully.");
+          .log("Fix applied successfully.");
         } else {
-          (console as any).log("No automatic fix suggested for this error.");
+          .log("No automatic fix suggested for this error.");
         }
       } catch (error) {
         (globalThis.console as any)?.error?.(
@@ -88,7 +88,7 @@ export class ErrorFixingService {
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some comprehensive examples.
-    (console as any).log("AI analyzing error:", error);
+    .log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -177,20 +177,20 @@ export class ErrorFixingService {
   }
 
   private async applyFix(fix: FixSuggestion): Promise<void> {
-    (console as any).log("Applying code changes:", fix.codeChanges);
+    .log("Applying code changes:", fix.codeChanges);
     // In a real scenario, this would interact with the file system API to modify files.
     // For this [PRODUCTION READY], we'll just log.
     for (const change of fix.codeChanges) {
-      (console as any).log(`Applying change to ${change.filePath}:`);
-      (console as any).log(`  Lines ${change.startLine}-${change.endLine} will be replaced with:
+      .log(`Applying change to ${change.filePath}:`);
+      .log(`  Lines ${change.startLine}-${change.endLine} will be replaced with:
 ${change.newContent}`);
       // await axios.post('/api/edit-file', change); // Hypothetical API call to apply file edit
     }
 
-    (console as any).log("Running commands:", fix.commands);
+    .log("Running commands:", fix.commands);
     if (fix.commands && fix.commands.length > 0) {
       for (const command of fix.commands) {
-        (console as any).log(`Executing command: ${command}`);
+        .log(`Executing command: ${command}`);
         // await axios.post('/api/run-command', { command }); // Hypothetical API call to run terminal command
       }
     }

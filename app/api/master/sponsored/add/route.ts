@@ -118,7 +118,7 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
-    (console as any).error("Error creating sponsored user:", error);
+    console.error("Error creating sponsored user:", error);
     return NextResponse.json(
       { error: "Internal server error", code: "SERVER_ERROR" },
       { status: 500 },

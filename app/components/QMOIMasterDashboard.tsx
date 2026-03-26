@@ -161,8 +161,8 @@ export function QMOIMasterDashboard({
     if (isInstalled(platform.id)) return;
 
     if (deferredPrompt) {
-      await (deferredPrompt as any).prompt();
-      const choiceResult = await (deferredPrompt as any).userChoice;
+      await .prompt();
+      const choiceResult = await .userChoice;
       if (choiceResult.outcome === "accepted") {
         markInstalled(platform.id);
       }
@@ -218,7 +218,7 @@ export function QMOIMasterDashboard({
         setAutomationStatus(data.status);
       }
     } catch (err) {
-      (console as any).error("Failed to fetch automation status:", err);
+      console.error("Failed to fetch automation status:", err);
     }
   };
 
@@ -239,7 +239,7 @@ export function QMOIMasterDashboard({
         setFinancialData(data);
       }
     } catch (err) {
-      (console as any).error("Failed to fetch financial data:", err);
+      console.error("Failed to fetch financial data:", err);
     }
   };
 
@@ -260,7 +260,7 @@ export function QMOIMasterDashboard({
         setLinksData(data);
       }
     } catch (err) {
-      (console as any).error("Failed to fetch links data:", err);
+      console.error("Failed to fetch links data:", err);
     }
   };
 
@@ -281,7 +281,7 @@ export function QMOIMasterDashboard({
         setGlobalData(data.data);
       }
     } catch (err) {
-      (console as any).error("Failed to fetch global finance data:", err);
+      console.error("Failed to fetch global finance data:", err);
     }
   };
 
@@ -301,7 +301,7 @@ export function QMOIMasterDashboard({
         setDomainData(data);
       }
     } catch (err) {
-      (console as any).error("Failed to fetch domain data:", err);
+      console.error("Failed to fetch domain data:", err);
     }
   };
 
@@ -322,7 +322,7 @@ export function QMOIMasterDashboard({
       setToken("");
       onUnauthorized?.();
     } catch (err) {
-      (console as any).error("Logout failed:", err);
+      console.error("Logout failed:", err);
       setError("Failed to logout properly");
     } finally {
       setLoading(false);

@@ -114,7 +114,7 @@ export class CashonWallet {
         success: false,
         currentBalance: 0,
         transferDetected: false,
-        error: (error as any)?.message || String(error),
+        error: ?.message || String(error),
       };
     }
   }
@@ -182,7 +182,7 @@ export class CashonWallet {
     } catch (error) {
       transaction.status = "failed";
       await this.notifyMaster(
-        `Deposit error: ${(error as any)?.message || String(error)}`,
+        `Deposit error: ${?.message || String(error)}`,
         "deposit_error",
       );
       return false;
@@ -318,7 +318,7 @@ export class CashonWallet {
     } catch (error) {
       trade.status = "rejected";
       await this.notifyMaster(
-        `Trade error: ${(error as any)?.message || String(error)}`,
+        `Trade error: ${?.message || String(error)}`,
         "trade_error",
       );
       return false;
@@ -396,7 +396,7 @@ export class CashonWallet {
         this.balance.pendingBalance = parseFloat(data.pending_balance || "0");
         this.balance.lastUpdated = new Date();
 
-        (console as any).log("[CashOnWallet] Pesapal balance updated:", {
+        .log("[CashOnWallet] Pesapal balance updated:", {
           available: this.balance.availableBalance,
           pending: this.balance.pendingBalance,
         });
@@ -495,7 +495,7 @@ export class CashonWallet {
         );
       }
     } catch (error) {
-      (console as any).error("[CashOnWallet] Pesapal token generation failed:", error);
+      console.error("[CashOnWallet] Pesapal token generation failed:", error);
       throw error;
     }
   }
@@ -533,7 +533,7 @@ export class CashonWallet {
 
   private async notifyMaster(message: string, type: string): Promise<void> {
     // Send notification to master via WhatsApp, email, or other channels
-    (console as any).log(`[${type.toUpperCase()}] ${message}`);
+    .log(`[${type.toUpperCase()}] ${message}`);
 
     // PRODUCTION: Implement actual notification system - implemented
     // await this.sendWhatsAppNotification(message);
@@ -556,7 +556,7 @@ export class CashonWallet {
 
           // AI trading logic would go here
           // For now, just log the check
-          (console as any).log(
+          .log(
             "Trading loop check - balance:",
             this.balance.availableBalance,
           );
@@ -594,7 +594,7 @@ export async function transferToMpesa(amount: number) {
     return { success: true };
   } catch (err) {
     logEvent("mpesa_transfer_failed", {
-      error: (err as any)?.message || String(err),
+      error: ?.message || String(err),
     });
     throw err;
   }

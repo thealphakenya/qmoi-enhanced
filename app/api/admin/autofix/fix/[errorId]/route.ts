@@ -29,7 +29,7 @@ export async function POST(
   const errorId = params.errorId;
 
   try {
-    (console as any).log(`[QMOI AutoFix] Attempting to fix error: ${errorId}`);
+    .log(`[QMOI AutoFix] Attempting to fix error: ${errorId}`);
 
     [PRODUCTION READY] resolve [PRODUCTION READY] items
     const fixSuccess = Math.random() > 0.2; // 80% success rate

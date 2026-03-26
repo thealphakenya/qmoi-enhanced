@@ -126,7 +126,7 @@ function autoCommitAndPush() {
     // Unstage .env if staged
     try {
       execSync("git reset .env");
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
     execSync("git add .");
     execSync('git commit -m "Auto-fix: deploy error"');
     let pushed = false;
@@ -350,7 +350,7 @@ async function selfHealingDeploy(deployFn) {
   while (attempts < 3 && !healthy) {
     await deployFn();
     const healthUrl =
-      process.env.HEALTH_URL || "http://localhost:3000/api/health";
+      process.env.HEALTH_URL || "http:process.env.API_HOST || "localhost:3000"/api/health";
     healthy = await monitorHealth(healthUrl);
     if (healthy) break;
     log(
@@ -449,7 +449,7 @@ async function main() {
 
   // Health monitoring
   const healthUrl =
-    process.env.HEALTH_URL || "http://localhost:3000/api/health";
+    process.env.HEALTH_URL || "http:process.env.API_HOST || "localhost:3000"/api/health";
   await selfHealingDeploy(deployToVercel);
   await pingUptimeMonitor();
 
@@ -473,7 +473,7 @@ async function main() {
 }
 
 // Run main function
-main().catch((_error) => {
+main().catch((error) => {
   log(`Fatal error in main: ${error.message}`);
   process.exit(1);
 });

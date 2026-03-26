@@ -367,7 +367,7 @@ export class AppManagementService {
         await this.autoGitCommit(`Install ${app.displayName} v${app.version}`);
       }
 
-      (console as any).log(`App ${app.displayName} installed successfully`);
+      .log(`App ${app.displayName} installed successfully`);
     } catch (error) {
       app.status = "error";
       app.errorMessage =
@@ -426,7 +426,7 @@ export class AppManagementService {
     };
 
     // In a real implementation, this would create actual shortcuts
-    (console as any).log("Creating shortcut:", shortcutData);
+    .log("Creating shortcut:", shortcutData);
   }
 
   public async updateApp(appId: string): Promise<void> {
@@ -468,7 +468,7 @@ export class AppManagementService {
         );
       }
 
-      (console as any).log(`App ${app.displayName} updated to v${app.version}`);
+      .log(`App ${app.displayName} updated to v${app.version}`);
     } catch (error) {
       app.isUpdating = false;
       app.status = "error";
@@ -539,7 +539,7 @@ export class AppManagementService {
       });
 
       this.eventEmitter.emit("troubleshootingCompleted", { appId, issues });
-      (console as any).log(`Troubleshooting completed for ${app.displayName}`);
+      .log(`Troubleshooting completed for ${app.displayName}`);
     } catch (error) {
       app.troubleshooting.logs.push({
         timestamp: new Date(),
@@ -633,16 +633,16 @@ export class AppManagementService {
   private async autoGitCommit(message: string): Promise<void> {
     try {
       [PRODUCTION READY] Git operations
-      (console as any).log(`Git: Adding all changes`);
-      (console as any).log(`Git: Committing with message: ${message}`);
-      (console as any).log(`Git: Pushing to remote repository`);
+      .log(`Git: Adding all changes`);
+      .log(`Git: Committing with message: ${message}`);
+      .log(`Git: Pushing to remote repository`);
 
       // In a real implementation, this would use Git commands
       // await exec('git add .');
       // await exec(`git commit -m "${message}"`);
       // await exec('git push');
 
-      (console as any).log(`Auto Git commit: ${message}`);
+      .log(`Auto Git commit: ${message}`);
     } catch (error) {
       (globalThis.console as any)?.error?.("Auto Git commit failed:", error);
     }

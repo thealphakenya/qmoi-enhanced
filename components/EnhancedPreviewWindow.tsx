@@ -29,8 +29,8 @@ export function EnhancedPreviewWindow() {
     try {
       const sid =
         (globalThis &&
-          (globalThis as any).localStorage &&
-          (globalThis as any).localStorage.getItem("qmoi_session_id")) ||
+          .localStorage &&
+          .localStorage.getItem("qmoi_session_id")) ||
         undefined;
       if (sid) {
         fetch("/api/qmoi/memory", {
@@ -49,7 +49,7 @@ export function EnhancedPreviewWindow() {
           }),
         }).catch(() => {});
       }
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   }
 
   function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -59,8 +59,8 @@ export function EnhancedPreviewWindow() {
     try {
       const sid =
         (globalThis &&
-          (globalThis as any).localStorage &&
-          (globalThis as any).localStorage.getItem("qmoi_session_id")) ||
+          .localStorage &&
+          .localStorage.getItem("qmoi_session_id")) ||
         undefined;
       if (sid && e.target.value) {
         fetch("/api/qmoi/memory", {
@@ -79,7 +79,7 @@ export function EnhancedPreviewWindow() {
           }),
         }).catch(() => {});
       }
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   }
 
   return (

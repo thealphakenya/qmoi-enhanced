@@ -7,7 +7,7 @@
 import { aiService } from "./lib/ai-service.js";
 
 async function testPesapalVerification() {
-  (console as any).log("🔍 Starting Pesapal Balance Verification...\n");
+  .log("🔍 Starting Pesapal Balance Verification...\n");
 
   try {
     // Call the AI service with master instruction to verify Pesapal balance
@@ -16,14 +16,14 @@ async function testPesapalVerification() {
       { task: "balance_verification" },
     );
 
-    (console as any).log("📊 Verification Result:");
-    (console as any).log("=".repeat(50));
-    (console as any).log(result);
-    (console as any).log("=".repeat(50));
+    .log("📊 Verification Result:");
+    .log("=".repeat(50));
+    .log(result);
+    .log("=".repeat(50));
 
     return result;
   } catch (error) {
-    (console as any).error("❌ Verification failed:", error);
+    console.error("❌ Verification failed:", error);
     return null;
   }
 }
@@ -32,13 +32,13 @@ async function testPesapalVerification() {
 testPesapalVerification()
   .then((result) => {
     if (result) {
-      (console as any).log("\n✅ Verification completed successfully");
+      .log("\n✅ Verification completed successfully");
     } else {
-      (console as any).log("\n❌ Verification failed");
+      .log("\n❌ Verification failed");
     }
     process.exit(0);
   })
   .catch((error) => {
-    (console as any).error("💥 Test execution failed:", error);
+    console.error("💥 Test execution failed:", error);
     process.exit(1);
   });

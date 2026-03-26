@@ -56,7 +56,7 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       { _error: (error as Error).message },
       { status: 500 },

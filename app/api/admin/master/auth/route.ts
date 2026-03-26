@@ -63,7 +63,7 @@ export async function POST(request: Request) {
     }
 
     // Log successful authentication
-    (console as any).log("[MASTER] Authentication successful", new Date().toISOString());
+    .log("[MASTER] Authentication successful", new Date().toISOString());
 
     return NextResponse.json(
       {
@@ -74,7 +74,7 @@ export async function POST(request: Request) {
       { status: 200 },
     );
   } catch (error) {
-    (console as any).error("Authentication error:", error);
+    console.error("Authentication error:", error);
     return NextResponse.json(
       { error: "Authentication failed" },
       { status: 500 },

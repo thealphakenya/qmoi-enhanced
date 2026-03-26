@@ -16,13 +16,13 @@ export class üöÄEnhancedFeatures&CapabilitiesService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing üöÄ Enhanced Features & Capabilities');
+    .log("[Service] Initializing...");
+    .log('Initializing üöÄ Enhanced Features & Capabilities');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'üöÄ Enhanced Features & Capabilities executed' };
   }
 }

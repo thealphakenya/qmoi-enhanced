@@ -70,12 +70,12 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
       consumerSecret: maskSecret(credentials.consumerSecret),
       environment: credentials.environment,
     };
-    (console as any).log(`Safe backup for ${platform}:`, masked);
+    .log(`Safe backup for ${platform}:`, masked);
     // Intentionally do not send raw credentials anywhere.
-  } catch (_error) {
-    (console as any).error(
+  } catch (error) {
+    console.error(
       "Failed to create safe backup for megavault credentials:",
-      _error,
+      error,
     );
   }
 }
@@ -96,8 +96,8 @@ async function initializePesapalAccount() {
     await backupCredentialsSafe(PESAPAL_CREDENTIALS, "pesapal");
 
     return { success: true, account: accountData };
-  } catch (_error) {
-    (console as any).error("Failed to initialize Pesapal account:", _error);
+  } catch (error) {
+    console.error("Failed to initialize Pesapal account:", error);
     return { success: false, _error: "Pesapal initialization failed" };
   }
 }
@@ -132,8 +132,8 @@ async function processPesapalTransaction(transactionData: unknown) {
 
     const result = await response.text();
     return { success: true, transactionId: result, provider: "pesapal" };
-  } catch (_error) {
-    (console as any).error("Pesapal transaction failed:", _error);
+  } catch (error) {
+    console.error("Pesapal transaction failed:", error);
     return { success: false, _error: "Pesapal transaction failed" };
   }
 }
@@ -212,8 +212,8 @@ async function distributeDividends(distributionData: unknown) {
     });
 
     return { success: true, distributions, totalAmount };
-  } catch (_error) {
-    (console as any).error("Dividend distribution failed:", _error);
+  } catch (error) {
+    console.error("Dividend distribution failed:", error);
     return { success: false, _error: "Dividend distribution failed" };
   }
 }
@@ -284,7 +284,7 @@ export async function GET(_request: NextRequest) {
           data: megavaultData,
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
@@ -431,7 +431,7 @@ export async function POST(_request: NextRequest) {
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
@@ -483,7 +483,7 @@ export async function PUT(_request: NextRequest) {
       data: megavaultData.transactions[transactionIndex],
       message: "Transaction updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,

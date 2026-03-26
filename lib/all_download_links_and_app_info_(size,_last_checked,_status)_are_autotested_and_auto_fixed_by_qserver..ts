@@ -16,13 +16,13 @@ export class Alldownloadlinksandappinfo(size,lastchecked,status)areautotestedand
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing All download links and app info (size, last checked, status) are autotested and auto-fixed by QServer.');
+    .log("[Service] Initializing...");
+    .log('Initializing All download links and app info (size, last checked, status) are autotested and auto-fixed by QServer.');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'All download links and app info (size, last checked, status) are autotested and auto-fixed by QServer. executed' };
   }
 }

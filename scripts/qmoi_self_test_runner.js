@@ -366,8 +366,8 @@ console.log(usedVariable);
         });
       });
       
-      child.on('error', (_error) => {
-        reject(_error);
+      child.on('error', (error) => {
+        reject(error);
       });
     });
   }
@@ -420,7 +420,7 @@ console.log(usedVariable);
             }
             break;
           }
-        } catch (_error) {
+        } catch (error) {
           console.log(`   ⚠️  Command failed: ${command}`);
         }
       }
@@ -441,12 +441,12 @@ console.log(usedVariable);
           } else {
             console.log('   ❌ Auto-fix failed');
           }
-        } catch (_error) {
+        } catch (error) {
           console.log('   ❌ Auto-fix _error:', error.message);
         }
       }
       
-    } catch (_error) {
+    } catch (error) {
       result.error = error.message;
       console.log(`   ❌ Setup failed: ${error.message}`);
     } finally {
@@ -457,7 +457,7 @@ console.log(usedVariable);
         result.cleanupTime = Date.now() - cleanupStart;
         result.cleanupSuccess = true;
         console.log('   🧹 Cleanup completed');
-      } catch (_error) {
+      } catch (error) {
         console.log(`   ⚠️  Cleanup failed: ${error.message}`);
       }
     }
@@ -581,7 +581,7 @@ console.log(usedVariable);
     const scenario = this.testScenarios.find(s => s.name === testName);
     
     if (!scenario) {
-      (console as any).error(`❌ Test scenario "${testName}" not found`);
+      console.error(`❌ Test scenario "${testName}" not found`);
       console.log('Available tests:');
       this.testScenarios.forEach(s => console.log(`   - ${s.name}`));
       return;

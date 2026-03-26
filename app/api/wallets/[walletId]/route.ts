@@ -44,10 +44,10 @@ export async function GET(
     }
 
     return NextResponse.json(wallet);
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "GET /api/wallets/:walletId _error:",
-      _error,
+      error,
     );
     return NextResponse.json(
       { _error: "Internal server error" },
@@ -110,10 +110,10 @@ export async function PUT(
     }
 
     return NextResponse.json(updated);
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "PUT /api/wallets/:walletId _error:",
-      _error,
+      error,
     );
     return NextResponse.json(
       { _error: "Internal server error" },
@@ -176,10 +176,10 @@ export async function DELETE(
       );
     }
     return NextResponse.json({ success: true });
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "DELETE /api/wallets/:walletId _error:",
-      _error,
+      error,
     );
     return NextResponse.json(
       { _error: "Internal server error" },

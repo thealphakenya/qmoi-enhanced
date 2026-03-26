@@ -16,13 +16,13 @@ export class 5.FunctionalProgrammingLanguagesService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing 5. Functional Programming Languages');
+    .log("[Service] Initializing...");
+    .log('Initializing 5. Functional Programming Languages');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: '5. Functional Programming Languages executed' };
   }
 }

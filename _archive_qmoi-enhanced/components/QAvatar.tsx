@@ -1320,7 +1320,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
         if (res.ok) {
           setQCityStatus(await res.json());
         }
-      } catch (e) {}
+      } catch (error) { /* Handle error */ }
     }
     if (showQCityDashboard) fetchStatus();
   }, [showQCityDashboard]);
@@ -1382,7 +1382,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
 
   // Audit logging (console.log for now)
   function auditLog(action: string, cmd: string) {
-    (console as any).log(`[AUDIT] ${action}: ${cmd} at ${new Date().toISOString()}`);
+    .log(`[AUDIT] ${action}: ${cmd} at ${new Date().toISOString()}`);
   }
 
   // Run command with confirmation for destructive commands
@@ -1505,7 +1505,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
             })),
           );
         }
-      } catch (e) {}
+      } catch (error) { /* Handle error */ }
     }
     if (showQCityDashboard) fetchDevices();
   }, [showQCityDashboard]);

@@ -24,7 +24,7 @@ export class SelfHealingService {
 
   static async diagnoseError(_error: SystemError): Promise<string> {
     [PRODUCTION READY]: Use AI or rules to diagnose the root cause
-    return `Diagnosis for error ${_error.id}`;
+    return `Diagnosis for error ${error.id}`;
   }
 
   static async autoFixError(_error: SystemError): Promise<boolean> {
@@ -37,7 +37,7 @@ export class SelfHealingService {
     diagnosis: string,
     fixResult: boolean,
   ): Promise<void> {
-    [PRODUCTION READY]: Notify master of _error, diagnosis, and fix result (UI, email, chat)
-    (console as any).log("Reporting to master:", { _error, diagnosis, fixResult });
+    [PRODUCTION READY]: Notify master of error, diagnosis, and fix result (UI, email, chat)
+    .log("Reporting to master:", { error, diagnosis, fixResult });
   }
 }

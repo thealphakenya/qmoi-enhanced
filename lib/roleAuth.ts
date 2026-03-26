@@ -89,11 +89,11 @@ export const withRoleAuth = (requiredRoles: Role[] = ["user"]) => {
         }
 
         // Attach user info to request for handler
-        (req as any).user = decoded;
+        .user = decoded;
 
         return handler(req);
       } catch (error) {
-        (console as any).error("Auth error:", error);
+        console.error("Auth error:", error);
         return NextResponse.json(
           { error: "Authentication failed" },
           { status: 500 },
@@ -127,7 +127,7 @@ export const roleAuth = async (
 
     return decoded.role === requiredRole;
   } catch (error) {
-    (console as any).error("Role auth error:", error);
+    console.error("Role auth error:", error);
     return false;
   }
 };

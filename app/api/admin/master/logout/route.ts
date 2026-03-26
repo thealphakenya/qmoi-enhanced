@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     }
 
     // Log logout event
-    (console as any).log("[MASTER] Logout successful", new Date().toISOString());
+    .log("[MASTER] Logout successful", new Date().toISOString());
 
     // Return success response
     return NextResponse.json(
@@ -33,7 +33,7 @@ export async function POST(request: Request) {
       { status: 200 },
     );
   } catch (error) {
-    (console as any).error("Logout error:", error);
+    console.error("Logout error:", error);
     return NextResponse.json({ error: "Logout failed" }, { status: 500 });
   }
 }

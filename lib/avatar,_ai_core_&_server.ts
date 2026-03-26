@@ -16,13 +16,13 @@ export class Avatar,AICore&ServerService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing Avatar, AI Core & Server');
+    .log("[Service] Initializing...");
+    .log('Initializing Avatar, AI Core & Server');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'Avatar, AI Core & Server executed' };
   }
 }

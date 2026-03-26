@@ -225,7 +225,7 @@ export class ErrorFixingService {
         await fs.writeFile(path, updated, "utf8");
         console.info(`Applied change to ${path} (backup at ${backupPath})`);
       } catch (e) {
-        (console as any).error(
+        console.error(
           `Failed to apply change to ${change.filePath}:`,
           String(e),
         );
@@ -248,7 +248,7 @@ export class ErrorFixingService {
           if (stdout) console.info(`Command stdout: ${stdout}`);
           if (stderr) console.warn(`Command stderr: ${stderr}`);
         } catch (e) {
-          (console as any).error(`Command failed: ${command}`, String(e));
+          console.error(`Command failed: ${command}`, String(e));
         }
       }
     }

@@ -129,7 +129,7 @@ class QMOIRevenueEngine {
           error,
         );
         logEvent("revenue_cycle_failed", {
-          error: (error as any)?.message || String(error),
+          error: ?.message || String(error),
         });
         await this.sleep(60000); // Wait 1 minute before retry
       }
@@ -196,7 +196,7 @@ class QMOIRevenueEngine {
       stream.status = "failed";
       logEvent("revenue_stream_failed", {
         stream: stream.name,
-        error: (error as any)?.message || String(error),
+        error: ?.message || String(error),
       });
     }
   }
@@ -287,7 +287,7 @@ class QMOIRevenueEngine {
           error,
         );
         logEvent("periodic_transfer_failed", {
-          error: (error as any)?.message || String(error),
+          error: ?.message || String(error),
         });
       }
     }, 3600000); // Check every hour
@@ -331,13 +331,13 @@ class QMOIRevenueEngine {
           }
         } catch (error) {
           logEvent("mpesa_status_check_failed", {
-            error: (error as any)?.message || String(error),
+            error: ?.message || String(error),
           });
         }
       }, 30000); // Check after 30 seconds
     } catch (error) {
       logEvent("mpesa_transfer_failed", {
-        error: (error as any)?.message || String(error),
+        error: ?.message || String(error),
       });
       throw error;
     }
@@ -395,12 +395,12 @@ class QMOIRevenueEngine {
       };
     } catch (error) {
       logEvent("revenue_engine_start_failed", {
-        error: (error as any)?.message || String(error),
+        error: ?.message || String(error),
       });
       return {
         success: false,
         message: "Failed to start revenue engine",
-        error: (error as any)?.message || String(error),
+        error: ?.message || String(error),
       };
     }
   }
@@ -416,12 +416,12 @@ class QMOIRevenueEngine {
       };
     } catch (error) {
       logEvent("revenue_engine_stop_failed", {
-        error: (error as any)?.message || String(error),
+        error: ?.message || String(error),
       });
       return {
         success: false,
         message: "Failed to stop revenue engine",
-        error: (error as any)?.message || String(error),
+        error: ?.message || String(error),
       };
     }
   }
@@ -545,11 +545,11 @@ class QMOIRevenueEngine {
     } catch (error) {
       logEvent("master_command_failed", {
         command,
-        error: (error as any)?.message || String(error),
+        error: ?.message || String(error),
       });
       return {
         success: false,
-        error: `Command execution failed: ${(error as any)?.message || String(error)}`,
+        error: `Command execution failed: ${?.message || String(error)}`,
         command,
       };
     }
@@ -564,7 +564,7 @@ export { QMOIRevenueEngine, type RevenueStream, type RevenueTransaction };
 try {
   // Provide a safe CJS export when module is available
   const cjs: any =
-    (typeof module !== "undefined" ? module : (globalThis as any).module) ||
+    (typeof module !== "undefined" ? module : .module) ||
     undefined;
   if (cjs && cjs.exports) {
     cjs.exports = qmoiRevenueEngine;

@@ -36,7 +36,7 @@ async function writeProposal(proposal: unknown) {
   } catch (err) {
     (globalThis.console as any)?.error?.(
       "Failed to write auto-fix proposal:",
-      err && (err as any).message ? (err as any).message : err,
+      err && .message ? .message : err,
     );
   }
 }
@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
       stdio: ["ignore", "pipe", "pipe"],
     });
 
-    child.stdout.on("data", (d) => (console as any).log("[auto-fix]", d.toString()));
+    child.stdout.on("data", (d) => .log("[auto-fix]", d.toString()));
     child.stderr.on("data", (d) =>
       (globalThis.console as any)?.error?.("[auto-fix][err]", d.toString()),
     );

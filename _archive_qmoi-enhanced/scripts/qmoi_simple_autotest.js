@@ -37,7 +37,7 @@ async function main() {
   }
 
   // 2. Dashboard (if running)
-  const dashboardUrl = "http://localhost:3010";
+  const dashboardUrl = "http:process.env.API_HOST || "localhost:3000"";
   try {
     await fetch(dashboardUrl, { timeout: 5000 });
     console.log(`✅ Dashboard reachable at ${dashboardUrl}`);

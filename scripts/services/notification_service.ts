@@ -120,8 +120,8 @@ export class NotificationService {
         text: body,
       });
       logger.info("Email notification sent successfully");
-    } catch (_error) {
-      logger.error("Failed to send email notification:", _error);
+    } catch (error) {
+      logger.error("Failed to send email notification:", error);
       throw error;
     }
   }
@@ -132,8 +132,8 @@ export class NotificationService {
     try {
       await axios.post(this.config.slack.webhookUrl, { text: message });
       logger.info("Slack notification sent successfully");
-    } catch (_error) {
-      logger.error("Failed to send Slack notification:", _error);
+    } catch (error) {
+      logger.error("Failed to send Slack notification:", error);
       throw error;
     }
   }
@@ -144,8 +144,8 @@ export class NotificationService {
     try {
       await axios.post(this.config.discord.webhookUrl, { content: message });
       logger.info("Discord notification sent successfully");
-    } catch (_error) {
-      logger.error("Failed to send Discord notification:", _error);
+    } catch (error) {
+      logger.error("Failed to send Discord notification:", error);
       throw error;
     }
   }
@@ -160,8 +160,8 @@ export class NotificationService {
         text: message,
       });
       logger.info("Telegram notification sent successfully");
-    } catch (_error) {
-      logger.error("Failed to send Telegram notification:", _error);
+    } catch (error) {
+      logger.error("Failed to send Telegram notification:", error);
       throw error;
     }
   }
@@ -170,15 +170,15 @@ export class NotificationService {
     if (!this.config.whatsapp.enabled || !twilioClient) return;
     try {
       for (const to of this.config.whatsapp.to) {
-        await (twilioClient as any).messages.create({
+        await .messages.create({
           from: `whatsapp:${this.config.whatsapp.from}`,
           to: `whatsapp:${to}`,
           body: message,
         });
       }
       logger.info("WhatsApp notification sent successfully");
-    } catch (_error) {
-      logger.error("Failed to send WhatsApp notification:", _error);
+    } catch (error) {
+      logger.error("Failed to send WhatsApp notification:", error);
       throw error;
     }
   }
@@ -206,8 +206,8 @@ export class NotificationService {
     try {
       await Promise.all(notifications);
       logger.info("All notifications sent successfully");
-    } catch (_error) {
-      logger.error("Some notifications failed to send:", _error);
+    } catch (error) {
+      logger.error("Some notifications failed to send:", error);
       throw error;
     }
   }

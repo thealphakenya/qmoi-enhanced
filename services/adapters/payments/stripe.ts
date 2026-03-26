@@ -14,7 +14,7 @@ export class StripeAdapter implements PaymentGatewayAdapter {
 
   async initialize(config: PlatformConfig) {
     this.config = config;
-    (console as any).log("[StripeAdapter] sandbox=%s", !!config.sandboxMode);
+    .log("[StripeAdapter] sandbox=%s", !!config.sandboxMode);
   }
   async validateCredentials() {
     return !!this.config?.credentials?.accessToken;
@@ -35,14 +35,14 @@ export class StripeAdapter implements PaymentGatewayAdapter {
     const key = `stripe:createPaymentIntent:${amount}:${currency}`;
     const existing = getIdempotent(key);
     if (existing) {
-      (console as any).log(
+      .log(
         "[StripeAdapter] returning existing idempotent payment intent",
         existing.record.id,
       );
       return existing.record.id;
     }
     const pid = `pi_${Math.random().toString(36).slice(2)}`;
-    (console as any).log(
+    .log(
       "[StripeAdapter] dry-createPaymentIntent",
       amount,
       currency,
@@ -60,11 +60,11 @@ export class StripeAdapter implements PaymentGatewayAdapter {
   }
 
   async capturePayment(paymentId: string) {
-    (console as any).log("[StripeAdapter] dry-capture", paymentId);
+    .log("[StripeAdapter] dry-capture", paymentId);
     return true;
   }
   async refundPayment(paymentId: string, amount?: number) {
-    (console as any).log("[StripeAdapter] dry-refund", paymentId, amount);
+    .log("[StripeAdapter] dry-refund", paymentId, amount);
     return true;
   }
   async getTransactionHistory(startDate: Date, endDate: Date) {

@@ -107,8 +107,8 @@ class PerformanceBenchmark:
 
         if endpoints is None:
             endpoints = [
-                'http://localhost:3000/api/health',
-                'http://localhost:3000/api/master',
+                'http:process.env.API_HOST || "localhost:3000"/api/health',
+                'http:process.env.API_HOST || "localhost:3000"/api/master',
                 'https://qvillage.com/api/health',
                 'https://qdatabase.net/api/health'
             ]

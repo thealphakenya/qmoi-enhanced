@@ -60,7 +60,7 @@ class DeploymentHealthCheck {
               `✅ Vercel deployment healthy: ${url} (${response.status})`,
             );
             return { status: "healthy", url, statusCode: response.status };
-          } catch (_error) {
+          } catch (error) {
             this.log(
               `❌ Vercel deployment unhealthy: ${url} - ${error.message}`,
             );
@@ -71,7 +71,7 @@ class DeploymentHealthCheck {
 
       this.log("⚠️ No Vercel deployment found");
       return { status: "unknown", _error: "No deployment found" };
-    } catch (_error) {
+    } catch (error) {
       this.log(`❌ Vercel check failed: ${error.message}`);
       return { status: "error", _error: error.message };
     }
@@ -110,7 +110,7 @@ class DeploymentHealthCheck {
 
       this.log(`✅ Build status healthy (${buildFiles.length} files)`);
       return { status: "healthy", files: buildFiles.length };
-    } catch (_error) {
+    } catch (error) {
       this.log(`❌ Build check failed: ${error.message}`);
       return { status: "error", _error: error.message };
     }
@@ -146,7 +146,7 @@ class DeploymentHealthCheck {
         `✅ Environment configuration healthy (${requiredVars.length} variables)`,
       );
       return { status: "healthy", variables: requiredVars.length };
-    } catch (_error) {
+    } catch (error) {
       this.log(`❌ Environment check failed: ${error.message}`);
       return { status: "error", _error: error.message };
     }
@@ -190,7 +190,7 @@ class DeploymentHealthCheck {
         status: "healthy",
         dependencies: Object.keys(packageJson.dependencies || {}).length,
       };
-    } catch (_error) {
+    } catch (error) {
       this.log(`❌ Dependencies check failed: ${error.message}`);
       return { status: "error", _error: error.message };
     }
@@ -209,7 +209,7 @@ class DeploymentHealthCheck {
         execSync("npm run build", { stdio: "inherit" });
         fixes.push("build");
         this.log("✅ Build fix applied");
-      } catch (_error) {
+      } catch (error) {
         this.log(`❌ Build fix failed: ${error.message}`);
       }
     }
@@ -227,7 +227,7 @@ class DeploymentHealthCheck {
         fs.writeFileSync(".env", envContent);
         fixes.push("environment");
         this.log("✅ Environment fix applied");
-      } catch (_error) {
+      } catch (error) {
         this.log(`❌ Environment fix failed: ${error.message}`);
       }
     }
@@ -240,7 +240,7 @@ class DeploymentHealthCheck {
         execSync("npm ci --legacy-peer-deps", { stdio: "inherit" });
         fixes.push("dependencies");
         this.log("✅ Dependencies fix applied");
-      } catch (_error) {
+      } catch (error) {
         this.log(`❌ Dependencies fix failed: ${error.message}`);
       }
     }
@@ -251,7 +251,7 @@ class DeploymentHealthCheck {
       try {
         execSync("npx vercel --prod --yes --force", { stdio: "inherit" });
         this.log("✅ Redeployment successful");
-      } catch (_error) {
+      } catch (error) {
         this.log(`❌ Redeployment failed: ${error.message}`);
       }
     }

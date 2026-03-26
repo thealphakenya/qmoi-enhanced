@@ -35,7 +35,7 @@ def start_ngrok_tunnel(port=8080, real: bool = False):
         logger.info('[QMOI] ngrok process started (pid=%s)', getattr(proc, 'pid', 'unknown'))
         # best-effort: try localhost:4040 API
         try:
-            r = requests.get('http://localhost:4040/api/tunnels', timeout=2)
+            r = requests.get('process.env.API_URL || "http://localhost:\1"/api/tunnels', timeout=2)
             data = r.json()
             if data.get('tunnels'):
                 return data['tunnels'][0]['public_url']

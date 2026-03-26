@@ -19,7 +19,7 @@ export default function AlertSettingsScreen() {
   useEffect(() => {
     const fetchPrefs = async () => {
       try {
-        const res = await axios.get('http://localhost:4200/api/alert-prefs');
+        const res = await axios.get('process.env.API_URL || "http://localhost:\1"/api/alert-prefs');
         setCriticalOnly(res.data.criticalOnly || false);
         setErrorTypes((res.data.errorTypes || []).join(','));
         setQuietHours(res.data.quietHours || '');
@@ -48,7 +48,7 @@ export default function AlertSettingsScreen() {
     };
     await AsyncStorage.setItem('qmoiAlertPrefs', JSON.stringify(prefs));
     try {
-      await axios.post('http://localhost:4200/api/alert-prefs', prefs);
+      await axios.post('process.env.API_URL || "http://localhost:\1"/api/alert-prefs', prefs);
       Alert.alert('Saved', 'Alert preferences updated!');
     } catch (e) {
       Alert.alert('Offline', 'Preferences saved locally and will sync when online.');

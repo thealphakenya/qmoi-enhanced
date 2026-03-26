@@ -7,7 +7,7 @@
 import { aiService } from './lib/ai-service.js';
 
 async function executeRealMoneyTransfer() {
-  (console as any).log('💰 Executing Real $1000 Money Transfer to CashOn...\n');
+  .log('💰 Executing Real $1000 Money Transfer to CashOn...\n');
 
   try {
     // Execute the actual money transfer through AI service
@@ -16,31 +16,31 @@ async function executeRealMoneyTransfer() {
       { task: 'real_money_transfer' }
     );
 
-    (console as any).log('📊 Transfer Execution Result:');
-    (console as any).log('='.repeat(60));
-    (console as any).log(result);
-    (console as any).log('='.repeat(60));
+    .log('📊 Transfer Execution Result:');
+    .log('='.repeat(60));
+    .log(result);
+    .log('='.repeat(60));
 
     // Wait a moment for processing
-    (console as any).log('\n⏳ Waiting 5 seconds for payment processing...');
+    .log('\n⏳ Waiting 5 seconds for payment processing...');
     await new Promise(resolve => setTimeout(resolve, 5000));
 
     // Now verify the balance
-    (console as any).log('\n🔍 Verifying Pesapal Balance After Transfer...\n');
+    .log('\n🔍 Verifying Pesapal Balance After Transfer...\n');
 
     const verificationResult = await aiService.generateResponse(
       'master instruction verify pesapal balance',
       { task: 'post_transfer_verification' }
     );
 
-    (console as any).log('📊 Post-Transfer Verification Result:');
-    (console as any).log('='.repeat(60));
-    (console as any).log(verificationResult);
-    (console as any).log('='.repeat(60));
+    .log('📊 Post-Transfer Verification Result:');
+    .log('='.repeat(60));
+    .log(verificationResult);
+    .log('='.repeat(60));
 
     return { transfer: result, verification: verificationResult };
   } catch (error) {
-    (console as any).error('❌ Transfer execution failed:', error);
+    console.error('❌ Transfer execution failed:', error);
     return null;
   }
 }
@@ -48,13 +48,13 @@ async function executeRealMoneyTransfer() {
 // Run the real money transfer test
 executeRealMoneyTransfer().then((result) => {
   if (result) {
-    (console as any).log('\n✅ Real money transfer test completed');
-    (console as any).log('🔍 Check the results above to confirm actual fund transfer');
+    .log('\n✅ Real money transfer test completed');
+    .log('🔍 Check the results above to confirm actual fund transfer');
   } else {
-    (console as any).log('\n❌ Real money transfer test failed');
+    .log('\n❌ Real money transfer test failed');
   }
   process.exit(0);
 }).catch((error) => {
-  (console as any).error('💥 Test execution failed:', error);
+  console.error('💥 Test execution failed:', error);
   process.exit(1);
 });

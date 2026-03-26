@@ -43,10 +43,10 @@ export async function GET(_request: NextRequest) {
       transactions: [],
       pagination: { skip, take, total: 0 },
     });
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "GET /api/transactions _error:",
-      _error,
+      error,
     );
     return NextResponse.json(
       { _error: "Internal server error" },

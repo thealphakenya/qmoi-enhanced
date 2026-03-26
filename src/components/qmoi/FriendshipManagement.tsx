@@ -102,7 +102,7 @@ export function FriendshipManagement({
         setStats(data.stats);
       }
     } catch (error) {
-      (console as any).error("Failed to fetch stats:", error);
+      console.error("Failed to fetch stats:", error);
     }
   };
 

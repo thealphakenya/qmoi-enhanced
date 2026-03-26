@@ -117,8 +117,8 @@ export async function POST(_request: Request) {
           { status: 400 },
         );
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("QVillage webhook _error:", _error);
+  } catch (error) {
+    (globalThis.console as any)?.error?.("QVillage webhook _error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },
@@ -132,12 +132,12 @@ async function handlePaperUpdate(body: unknown) {
     string,
     unknown
   >;
-  const papers: unknown[] = Array.isArray((payload as any).papers)
-    ? (payload as any).papers
+  const papers: unknown[] = Array.isArray(.papers)
+    ? .papers
     : [];
-  const source: string = (payload as any).source ?? "unknown";
+  const source: string = .source ?? "unknown";
   const timestamp: string =
-    (payload as any).timestamp ?? new Date().toISOString();
+    .timestamp ?? new Date().toISOString();
 
   // Parallel processing of paper updates
   const updateTasks = papers.map((paper: unknown) =>
@@ -442,19 +442,19 @@ async function processPaperUpdate(
     };
 
     // In production, save to database
-    (console as any).log(`Processed paper: ${p.id} from ${source}`);
+    .log(`Processed paper: ${p.id} from ${source}`);
 
     return processedPaper;
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "Error processing paper update:",
-      _error,
+      error,
     );
     const p: unknown = paper ?? {};
     return {
       id: p.id ?? null,
       status: "error",
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -462,9 +462,9 @@ async function processPaperUpdate(
 function calculateRelevanceScore(paper: unknown): number {
   // Simple relevance scoring based on content
   let score = 0.5;
-  const title = String((paper as any)?.title || "").toLowerCase();
-  const abstract = String((paper as any)?.abstract || "").toLowerCase();
-  const tags = Array.isArray((paper as any)?.tags) ? (paper as any).tags : [];
+  const title = String(?.title || "").toLowerCase();
+  const abstract = String(?.abstract || "").toLowerCase();
+  const tags = Array.isArray(?.tags) ? .tags : [];
 
   if (title.includes("ai")) score += 0.2;
   if (title.includes("consciousness")) score += 0.15;
@@ -493,7 +493,7 @@ async function triggerQMOISync(type: string, data: unknown) {
   // QMOI AI synchronization
   try {
     // Trigger sync with QMOI AI system
-    (console as any).log(`Triggering QMOI sync for ${type}`, data);
+    .log(`Triggering QMOI sync for ${type}`, data);
 
     // In production, call QMOI sync API
     return {
@@ -501,11 +501,11 @@ async function triggerQMOISync(type: string, data: unknown) {
       type,
       count: Array.isArray(data) ? data.length : 1,
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Error triggering QMOI sync:", _error);
+  } catch (error) {
+    (globalThis.console as any)?.error?.("Error triggering QMOI sync:", error);
     return {
       status: "error",
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -609,7 +609,7 @@ async function storeKBEntries(
   // Enhanced storage with indexing
   try {
     // In production, save to database with full-text indexing
-    (console as any).log(
+    .log(
       `Storing ${entries.length} KB entries with metadata:`,
       metadata,
     );
@@ -632,11 +632,11 @@ async function storeKBEntries(
       indexed: true,
       metadata,
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Error storing KB entries:", _error);
+  } catch (error) {
+    (globalThis.console as any)?.error?.("Error storing KB entries:", error);
     return {
       success: false,
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -650,7 +650,7 @@ async function notifyKBSubscribers(data: unknown) {
       : 0;
 
     // Notify subscribers about new KB entries
-    (console as any).log(
+    .log(
       `Notifying KB subscribers about ${entryCount} new entries`,
     );
 
@@ -660,14 +660,14 @@ async function notifyKBSubscribers(data: unknown) {
       channels: ["websocket", "email"],
       subscriber_count: 150, [PRODUCTION READY] resolve [PRODUCTION READY] items
     };
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "Error notifying KB subscribers:",
-      _error,
+      error,
     );
     return {
       notified: false,
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -708,12 +708,12 @@ async function moderateContent(
       moderation_checks: checks,
       moderated_at: new Date().toISOString(),
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Error moderating content:", _error);
+  } catch (error) {
+    (globalThis.console as any)?.error?.("Error moderating content:", error);
     return {
       ...content,
       status: "error",
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -758,8 +758,8 @@ async function analyzeSentiment(content: unknown) {
       label,
       confidence: 0.8,
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Error analyzing sentiment:", _error);
+  } catch (error) {
+    (globalThis.console as any)?.error?.("Error analyzing sentiment:", error);
     return { score: 0.5, label: "neutral", confidence: 0.5 };
   }
 }
@@ -791,19 +791,19 @@ async function storeDiscussion(discussion: unknown) {
     const discussionId = `disc-${Date.now()}-${Math.random()
       .toString(36)
       .substr(2, 9)}`;
-    (console as any).log(`Storing discussion: ${discussionId}`);
+    .log(`Storing discussion: ${discussionId}`);
 
     // In production, save to database
     return discussionId;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Error storing discussion:", _error);
-    throw _error;
+  } catch (error) {
+    (globalThis.console as any)?.error?.("Error storing discussion:", error);
+    throw error;
   }
 }
 
 async function broadcastDiscussionUpdate(discussionId: string, data: unknown) {
   // Broadcast to connected clients
-  (console as any).log(`Broadcasting discussion update: ${discussionId}`, data);
+  .log(`Broadcasting discussion update: ${discussionId}`, data);
 }
 
 async function enhanceDiscussionWithQMOI(
@@ -812,7 +812,7 @@ async function enhanceDiscussionWithQMOI(
 ) {
   // QMOI AI discussion enhancement
   try {
-    (console as any).log(`Enhancing discussion ${discussionId} with QMOI AI`);
+    .log(`Enhancing discussion ${discussionId} with QMOI AI`);
 
     // In production, apply QMOI AI enhancements like:
     // - Generate related questions
@@ -825,14 +825,14 @@ async function enhanceDiscussionWithQMOI(
       suggestions: ["Add related research links", "Generate summary points"],
       quality_score: 0.92,
     };
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "Error enhancing discussion with QMOI:",
-      _error,
+      error,
     );
     return {
       enhanced: false,
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -858,15 +858,15 @@ async function updateSyncMetrics(
       timestamp: new Date().toISOString(),
     };
 
-    (console as any).log("Updated sync metrics:", metrics);
+    .log("Updated sync metrics:", metrics);
     return metrics;
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "Error updating sync metrics:",
-      _error,
+      error,
     );
     return {
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -888,14 +888,14 @@ async function invalidateRelevantCaches(sync_type: string) {
         break;
     }
 
-    (console as any).log(
+    .log(
       `Invalidating caches: ${cachesToInvalidate.join(", ")}`,
     );
     return { invalidated: cachesToInvalidate };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Error invalidating caches:", _error);
+  } catch (error) {
+    (globalThis.console as any)?.error?.("Error invalidating caches:", error);
     return {
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -910,16 +910,16 @@ async function broadcastSyncCompletion(sync_type: string, results: unknown) {
       timestamp: new Date().toISOString(),
     };
 
-    (console as any).log("Broadcasting sync completion:", notification);
+    .log("Broadcasting sync completion:", notification);
     return { broadcasted: true, notification };
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "Error broadcasting sync completion:",
-      _error,
+      error,
     );
     return {
       broadcasted: false,
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -962,7 +962,7 @@ async function triggerAutoOptimization(
 ) {
   // Trigger automatic optimizations
   try {
-    (console as any).log(
+    .log(
       `Triggering auto-optimization for ${sync_type}:`,
       recommendations,
     );
@@ -976,14 +976,14 @@ async function triggerAutoOptimization(
       triggered: recommendations.length > 0,
       optimizations: recommendations,
     };
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "Error triggering auto-optimization:",
-      _error,
+      error,
     );
     return {
       triggered: false,
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -1009,15 +1009,15 @@ async function applyAIEnhancement(item: unknown, enhancement_type: string) {
     }
 
     return enhanced;
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "Error applying AI enhancement:",
-      _error,
+      error,
     );
     return {
       ...item,
       enhanced: false,
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -1040,15 +1040,15 @@ async function synthesizeEnhancements(
       synthesis_method: "weighted_average",
       confidence: 0.9,
     };
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "Error synthesizing enhancements:",
-      _error,
+      error,
     );
     return {
       quality: 0.5,
       enhancements: results,
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -1063,7 +1063,7 @@ async function applyEnhancementsWithRollback(
     const backup = await createBackup(target);
 
     // Apply enhancements
-    (console as any).log(`Applying enhancements to ${target}`);
+    .log(`Applying enhancements to ${target}`);
 
     // In production, apply changes and prepare rollback
     return {
@@ -1071,14 +1071,14 @@ async function applyEnhancementsWithRollback(
       backup_id: backup.id,
       rollback_available: true,
     };
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "Error applying enhancements:",
-      _error,
+      error,
     );
     return {
       applied: false,
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -1110,15 +1110,15 @@ async function trackEnhancementMetrics(
       timestamp: new Date().toISOString(),
     };
 
-    (console as any).log("Tracked enhancement metrics:", metrics);
+    .log("Tracked enhancement metrics:", metrics);
     return metrics;
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "Error tracking enhancement metrics:",
-      _error,
+      error,
     );
     return {
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -1162,14 +1162,14 @@ async function analyzePerformanceAlert(
       analysis: `Alert type: ${alert_type}, severity: ${severity}`,
       recommended_action: getRecommendedAction(severity, alert_type),
     };
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "Error analyzing performance alert:",
-      _error,
+      error,
     );
     return {
       severity: "unknown",
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -1193,7 +1193,7 @@ function getRecommendedAction(severity: string, alert_type: string): string {
     },
   };
 
-  return (actions as any)[severity]?.[alert_type] || "Monitor situation";
+  return [severity]?.[alert_type] || "Monitor situation";
 }
 
 async function generatePerformanceRecommendations(
@@ -1244,12 +1244,12 @@ async function attemptAutoFixes(alert_type: string, metrics: unknown) {
         break;
     }
 
-    (console as any).log(`Attempted auto-fixes for ${alert_type}:`, fixes);
+    .log(`Attempted auto-fixes for ${alert_type}:`, fixes);
     return fixes;
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "Error attempting auto-fixes:",
-      _error,
+      error,
     );
     return ["fix_attempt_failed"];
   }
@@ -1258,7 +1258,7 @@ async function attemptAutoFixes(alert_type: string, metrics: unknown) {
 async function escalateCriticalAlert(alert: unknown) {
   // Escalate critical alerts
   try {
-    (console as any).log("Escalating critical alert:", alert);
+    .log("Escalating critical alert:", alert);
 
     // In production: send to on-call engineer, create incident, etc.
     return {
@@ -1266,14 +1266,14 @@ async function escalateCriticalAlert(alert: unknown) {
       channels: ["email", "sms", "slack"],
       incident_id: `incident-${Date.now()}`,
     };
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "Error escalating critical alert:",
-      _error,
+      error,
     );
     return {
       escalated: false,
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -1300,15 +1300,15 @@ async function adjustMonitoringThresholds(
         break;
     }
 
-    (console as any).log("Adjusted monitoring thresholds:", adjustments);
+    .log("Adjusted monitoring thresholds:", adjustments);
     return adjustments;
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "Error adjusting monitoring thresholds:",
-      _error,
+      error,
     );
     return {
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -1316,12 +1316,12 @@ async function adjustMonitoringThresholds(
 async function notifyWebSubscribers(_event: string, data: unknown) {
   // Web notification to connected clients
   try {
-    (console as any).log(`Sending web notification: ${_event}`, data);
+    .log(`Sending web notification: ${_event}`, data);
 
     // Get all users for web notifications
     const _prisma = await getPrismaClient();
     const users =
-      (await (_prisma as any).user.findMany({ select: { id: true } })) || [];
+      (await .user.findMany({ select: { id: true } })) || [];
 
     const typedUsers = users as Array<{ id: string }>;
 
@@ -1335,20 +1335,20 @@ async function notifyWebSubscribers(_event: string, data: unknown) {
       data,
     }));
 
-    if ((_prisma as any)?.notification?.createMany) {
-      await (_prisma as any).notification.createMany({ data: notifications });
+    if (?.notification?.createMany) {
+      await .notification.createMany({ data: notifications });
     }
 
     // In production: broadcast via WebSocket, Server-Sent Events, etc.
     return { sent: true, recipients: users.length };
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "Error sending web notification:",
-      _error,
+      error,
     );
     return {
       sent: false,
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -1385,12 +1385,12 @@ function getNotificationMessage(_event: string, data: unknown): string {
 async function notifyEmailSubscribers(_event: string, data: unknown) {
   // Email notification
   try {
-    (console as any).log(`Sending email notification: ${_event}`, data);
+    .log(`Sending email notification: ${_event}`, data);
 
     // Get users who have email notifications enabled (assuming all users for now)
     const _prisma = await getPrismaClient();
     const users =
-      (await (_prisma as any).user.findMany({
+      (await .user.findMany({
         select: { id: true, email: true },
       })) || [];
 
@@ -1409,20 +1409,20 @@ async function notifyEmailSubscribers(_event: string, data: unknown) {
       },
     }));
 
-    if ((_prisma as any)?.notification?.createMany) {
-      await (_prisma as any).notification.createMany({ data: notifications });
+    if (?.notification?.createMany) {
+      await .notification.createMany({ data: notifications });
     }
 
     // In production: send via email service (SendGrid, SES, etc.)
     return { sent: true, recipients: users.length };
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "Error sending email notification:",
-      _error,
+      error,
     );
     return {
       sent: false,
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -1430,12 +1430,12 @@ async function notifyEmailSubscribers(_event: string, data: unknown) {
 async function notifyPushSubscribers(_event: string, data: unknown) {
   // Push notification
   try {
-    (console as any).log(`Sending push notification: ${_event}`, data);
+    .log(`Sending push notification: ${_event}`, data);
 
     // Get users who have push notifications enabled (assuming all users for now)
     const _prisma = await getPrismaClient();
     const users =
-      (await (_prisma as any).user.findMany({ select: { id: true } })) || [];
+      (await .user.findMany({ select: { id: true } })) || [];
 
     // Create push notifications in database
     const notifications = users.map((user: unknown) => ({
@@ -1447,20 +1447,20 @@ async function notifyPushSubscribers(_event: string, data: unknown) {
       data,
     }));
 
-    if ((_prisma as any)?.notification?.createMany) {
-      await (_prisma as any).notification.createMany({ data: notifications });
+    if (?.notification?.createMany) {
+      await .notification.createMany({ data: notifications });
     }
 
     // In production: send via push service (FCM, APNs, etc.)
     return { sent: true, recipients: users.length };
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "Error sending push notification:",
-      _error,
+      error,
     );
     return {
       sent: false,
-      _error: _error instanceof Error ? _error.message : String(_error),
+      _error: _error instanceof Error ? error.message : String(error),
     };
   }
 }

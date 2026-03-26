@@ -109,9 +109,9 @@ class QMOIHealthIntegration:
         try:
             import requests
             endpoints = [
-                "http://localhost:3000/api/health",
-                "http://localhost:8000/health",
-                "http://localhost:5000/health",
+                "http:process.env.API_HOST || "localhost:3000"/api/health",
+                "process.env.API_URL || "http://localhost:\1"/health",
+                "process.env.API_URL || "http://localhost:\1"/health",
             ]
 
             for endpoint in endpoints:

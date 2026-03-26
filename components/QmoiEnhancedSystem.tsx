@@ -268,10 +268,10 @@ export const QmoiEnhancedSystem: React.FC = () => {
   const initializeSpeechRecognition = () => {
     if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
       const SpeechRecognition =
-        (window as any).SpeechRecognition ||
-        (window as any).webkitSpeechRecognition;
-      (window as any).SpeechRecognition ||
-        (window as any).webkitSpeechRecognition;
+        .SpeechRecognition ||
+        .webkitSpeechRecognition;
+      .SpeechRecognition ||
+        .webkitSpeechRecognition;
       const recognition = new SpeechRecognition();
       recognition.continuous = true;
       recognition.interimResults = false;
@@ -338,8 +338,8 @@ export const QmoiEnhancedSystem: React.FC = () => {
   const startListening = () => {
     if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
       const SpeechRecognition =
-        (window as any).SpeechRecognition ||
-        (window as any).webkitSpeechRecognition;
+        .SpeechRecognition ||
+        .webkitSpeechRecognition;
       const recognition = new SpeechRecognition();
       recognition.continuous = true;
       recognition.interimResults = false;
@@ -479,7 +479,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
 
 #QMOI #Accessibility #Innovation`;
 
-    (console as any).log("WhatsApp message:", message);
+    .log("WhatsApp message:", message);
     speak("WhatsApp message sent successfully.");
   };
 

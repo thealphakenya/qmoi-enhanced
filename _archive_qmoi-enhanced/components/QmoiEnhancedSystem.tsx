@@ -456,7 +456,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
 
 #QMOI #Accessibility #Innovation`;
 
-    (console as any).log("WhatsApp message:", message);
+    .log("WhatsApp message:", message);
     speak("WhatsApp message sent successfully.");
   };
 

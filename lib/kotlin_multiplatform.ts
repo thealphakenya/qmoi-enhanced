@@ -17,13 +17,13 @@ export class KotlinMultiplatformService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing Kotlin Multiplatform');
+    .log("[Service] Initializing...");
+    .log('Initializing Kotlin Multiplatform');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'Kotlin Multiplatform executed' };
   }
 }

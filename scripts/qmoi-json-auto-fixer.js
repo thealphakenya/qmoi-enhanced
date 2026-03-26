@@ -118,8 +118,8 @@ class QMOIJSONAutoFixer {
         console.log(`⚠️ JSON still invalid after fixes: ${parseError.message}`);
         return await this.advancedFix(content, filePath, originalContent);
       }
-    } catch (_error) {
-      (console as any).error(`❌ Error auto-fixing ${filePath}:`, error.message);
+    } catch (error) {
+      console.error(`❌ Error auto-fixing ${filePath}:`, error.message);
       return { success: false, _error: error.message };
     }
   }
@@ -216,7 +216,7 @@ class QMOIJSONAutoFixer {
       JSON.parse(content);
       console.log(`✅ ${filePath} is valid JSON`);
       return { valid: true };
-    } catch (_error) {
+    } catch (error) {
       console.log(`❌ ${filePath} is invalid JSON: ${error.message}`);
       return { valid: false, _error: error.message };
     }
@@ -256,7 +256,7 @@ class QMOIJSONAutoFixer {
           files.push(fullPath);
         }
       }
-    } catch (_error) {
+    } catch (error) {
       console.log(`⚠️ Could not read directory ${directory}: ${error.message}`);
     }
 

@@ -126,8 +126,8 @@ export const QmoiAccessibility: React.FC = () => {
   const initializeSpeechRecognition = () => {
     if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
       const SpeechRecognition =
-        (window as any).SpeechRecognition ||
-        (window as any).webkitSpeechRecognition;
+        .SpeechRecognition ||
+        .webkitSpeechRecognition;
       recognition.current = new SpeechRecognition();
       recognition.current.continuous = true;
       recognition.current.interimResults = false;

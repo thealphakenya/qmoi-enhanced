@@ -10,7 +10,7 @@ import { getSessionHeaders } from "../../services/qmoiSession";
 export default function SystemHealthPanel() {
   const [data, setData] = useState<Record<string, unknown> | null>(null);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [actionMsg, setActionMsg] = useState<string | null>(null);
   const [uiHealth, setUiHealth] = useState<string>("Unknown");
   const [uiTestTime, setUiTestTime] = useState<string>("Never");
@@ -97,7 +97,7 @@ export default function SystemHealthPanel() {
   }, []);
 
   if (loading) return <div>Loading system health...</div>;
-  if (_error) return <div style={{ color: "red" }}>Error: {_error}</div>;
+  if (_error) return <div style={{ color: "red" }}>Error: {error}</div>;
 
   return (
     <div

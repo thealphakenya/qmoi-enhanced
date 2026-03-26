@@ -36,9 +36,9 @@ walk(repoRoot, (file) => {
     const original = s;
 
     // common replacements
-    s = s.replace(/console\.error\s*\(/g, "(console as any).error(");
-    s = s.replace(/\(globalThis as any\)/g, "(globalThis as any)");
-    s = s.replace(/\(global as any\)/g, "(global as any)");
+    s = s.replace(/console\.error\s*\(/g, "console.error(");
+    s = s.replace(/\(globalThis as any\)/g, "");
+    s = s.replace(/\(global as any\)/g, "");
 
     // cast clearInterval/clearTimeout args
     s = s.replace(
@@ -51,20 +51,20 @@ walk(repoRoot, (file) => {
     );
 
     // common 'unknown' access like `issue.`
-    s = s.replace(/\bissue\./g, "(issue as any).");
+    s = s.replace(/\bissue\./g, ".");
 
     // Stream globals often come from globalThis typed unknown in test setup
     s = s.replace(
       /\bTransformStream\b/g,
-      "((globalThis as any).TransformStream)",
+      "(.TransformStream)",
     );
     s = s.replace(
       /\bReadableStream\b/g,
-      "((globalThis as any).ReadableStream)",
+      "(.ReadableStream)",
     );
     s = s.replace(
       /\bWritableStream\b/g,
-      "((globalThis as any).WritableStream)",
+      "(.WritableStream)",
     );
 
     if (s !== original) {

@@ -72,7 +72,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
     try {
       if (typeof window !== "undefined")
         localStorage.setItem("speakResponses", String(speakResponses));
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   }, [speakResponses]);
 
   // Track conversation with QMOI memory
@@ -104,7 +104,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
         "anon";
       const name = data?.profiles?.[sid]?.name || null;
       setProfileName(name);
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   };
 
   useEffect(() => {
@@ -114,7 +114,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
           ? localStorage.getItem("qmoi_session_id")
           : null;
       fetchProfile(sid || undefined);
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   }, []);
 
   const speakText = (text: string) => {
@@ -176,13 +176,13 @@ const Chatbot: React.FC<ChatbotProps> = ({
       let sessionId = null;
       try {
         sessionId = localStorage.getItem("qmoi_session_id");
-      } catch (e) {}
+      } catch (error) { /* Handle error */ }
       if (!sessionId) {
         sessionId =
           String(Date.now()) + "-" + Math.random().toString(36).slice(2, 8);
         try {
           localStorage.setItem("qmoi_session_id", sessionId);
-        } catch (e) {}
+        } catch (error) { /* Handle error */ }
       }
 
       // if we attached a file, persist preview info to memory
@@ -204,7 +204,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
               ],
             }),
           }).catch(() => {});
-        } catch (e) {}
+        } catch (error) { /* Handle error */ }
       }
 
       const headers: Record<string, string> = {
@@ -259,7 +259,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
             }),
           }).catch(() => {});
         }
-      } catch (e) {}
+      } catch (error) { /* Handle error */ }
 
       setChatHistory((prev) => [...prev, aiResponse]);
 

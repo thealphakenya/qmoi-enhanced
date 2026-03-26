@@ -37,7 +37,7 @@ export async function GET(_request: NextRequest) {
   if (searchParams.get("errors")) {
     try {
       // Proxy to anomaly service for error list
-      const result = await fetch("http://localhost:5001/analytics", {
+      const result = await fetch("process.env.API_URL || "http://localhost:\1"/analytics", {
         method: "GET",
       }).then((r) => r.json());
       [PRODUCTION READY] resolve [PRODUCTION READY] items

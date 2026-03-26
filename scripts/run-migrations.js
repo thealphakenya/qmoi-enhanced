@@ -54,17 +54,17 @@ async function runMigrations() {
           await pool.query("INSERT INTO migrations (name) VALUES ($1)", [file]);
           await pool.query("COMMIT");
           console.log(`✅ Migration ${file} completed successfully`);
-        } catch (_error) {
+        } catch (error) {
           await pool.query("ROLLBACK");
-          (console as any).error(`❌ Error in migration ${file}:`, _error);
+          console.error(`❌ Error in migration ${file}:`, error);
           throw error;
         }
       }
     }
 
     console.log("✨ All migrations completed successfully");
-  } catch (_error) {
-    (console as any).error("Migration _error:", _error);
+  } catch (error) {
+    console.error("Migration _error:", error);
     process.exit(1);
   } finally {
     await pool.end();
@@ -73,7 +73,7 @@ async function runMigrations() {
 
 if (require.main === module) {
   if (!process.env.DATABASE_URL) {
-    (console as any).error("DATABASE_URL environment variable is required");
+    console.error("DATABASE_URL environment variable is required");
     process.exit(1);
   }
   runMigrations().catch(console.error);

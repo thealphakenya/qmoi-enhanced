@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
       nextStep: "initial_profiling",
     });
   } catch (error) {
-    (console as any).error("Email verification error:", error);
+    console.error("Email verification error:", error);
     return NextResponse.json(
       { error: "Verification failed. Please try again." },
       { status: 500 },
@@ -82,7 +82,7 @@ export async function PUT(request: NextRequest) {
       message: result.message,
     });
   } catch (error) {
-    (console as any).error("Resend verification error:", error);
+    console.error("Resend verification error:", error);
     return NextResponse.json(
       { error: "Failed to resend verification code" },
       { status: 500 },

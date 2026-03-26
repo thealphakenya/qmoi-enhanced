@@ -9,7 +9,7 @@ import { PrismaClient } from "../generated/prisma";
 const prisma = new PrismaClient();
 
 async function main() {
-  (console as any).log("Seeding database...");
+  .log("Seeding database...");
 
   // Create data users
   const user1 = await prisma.user.create({
@@ -76,12 +76,12 @@ async function main() {
     },
   });
 
-  (console as any).log("Database seeded successfully!");
+  .log("Database seeded successfully!");
 }
 
 main()
   .catch((_e) => {
-    (console as any).error(_e);
+    console.error(_e);
     process.exit(1);
   })
   .finally(async () => {

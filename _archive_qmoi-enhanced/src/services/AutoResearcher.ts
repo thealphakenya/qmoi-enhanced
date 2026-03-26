@@ -27,6 +27,6 @@ export class AutoResearcher {
   notifyImprovements(topic: string) {
     // Notify user/master of new learnings or improvements
     [PRODUCTION READY]: Integrate with notification system
-    (console as any).log(`New knowledge added for ${topic}`);
+    .log(`New knowledge added for ${topic}`);
   }
 }

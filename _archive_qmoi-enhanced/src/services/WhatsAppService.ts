@@ -123,7 +123,7 @@ export class WhatsAppService {
   private setupEventHandlers(): void {
     // QR Code generation
     this.client.on("qr", async (qr: string) => {
-      (console as any).log("🔗 WhatsApp QR Code generated");
+      .log("🔗 WhatsApp QR Code generated");
       qrcode.generate(qr, { small: true });
 
       if (this.config.qrNotifications) {
@@ -133,7 +133,7 @@ export class WhatsAppService {
 
     // Client ready
     this.client.on("ready", async () => {
-      (console as any).log("✅ WhatsApp client is ready!");
+      .log("✅ WhatsApp client is ready!");
       this.isConnected = true;
       this.qrCodeStatus.isScanned = true;
       this.qrCodeStatus.timestamp = new Date();
@@ -158,7 +158,7 @@ export class WhatsAppService {
 
     // Disconnected
     this.client.on("disconnected", async (reason: string) => {
-      (console as any).log("🔌 WhatsApp client disconnected:", reason);
+      .log("🔌 WhatsApp client disconnected:", reason);
       this.isConnected = false;
       await this.sendErrorNotification("WhatsApp disconnected", reason);
     });
@@ -170,14 +170,14 @@ export class WhatsAppService {
 
     // Message acknowledged
     this.client.on("message_ack", (message: Message, ack: number) => {
-      (console as any).log(
+      .log(
         `📨 Message ${message.id._serialized} acknowledged with status: ${ack}`,
       );
     });
   }
 
   private async handleQRCodeGenerated(qr: string): Promise<void> {
-    (console as any).log("📱 QR Code generated, waiting for scan...");
+    .log("📱 QR Code generated, waiting for scan...");
 
     // Store QR code for potential retry
     this.qrCodeStatus.notifications.status = "pending";
@@ -185,7 +185,7 @@ export class WhatsAppService {
   }
 
   private async handleQRCodeScanned(): Promise<void> {
-    (console as any).log("✅ QR Code successfully scanned!");
+    .log("✅ QR Code successfully scanned!");
 
     // Send immediate notifications to master and Leah
     await this.sendQRCodeScannedNotifications();
@@ -234,14 +234,14 @@ Time: ${this.qrCodeStatus.timestamp.toLocaleString()}`;
       if (this.config.masterPhone) {
         await this.sendMessage(this.config.masterPhone, masterMessage);
         this.qrCodeStatus.notifications.master = true;
-        (console as any).log("📱 QR scan notification sent to master");
+        .log("📱 QR scan notification sent to master");
       }
 
       // Send to Leah
       if (this.config.leahPhone) {
         await this.sendMessage(this.config.leahPhone, leahMessage);
         this.qrCodeStatus.notifications.leah = true;
-        (console as any).log("📱 QR scan notification sent to Leah");
+        .log("📱 QR scan notification sent to Leah");
       }
 
       // Send backup verification
@@ -282,7 +282,7 @@ Time: ${new Date().toLocaleString()}`;
 
   private async handleIncomingMessage(message: Message): Promise<void> {
     try {
-      (console as any).log(`📨 Received message from ${message.from}: ${message.body}`);
+      .log(`📨 Received message from ${message.from}: ${message.body}`);
 
       // Check for auto-responders
       const response = await this.processAutoResponders(message);
@@ -616,7 +616,7 @@ Master Commands:
 
   public async start(): Promise<void> {
     try {
-      (console as any).log("🚀 Starting WhatsApp service...");
+      .log("🚀 Starting WhatsApp service...");
       await this.client.initialize();
     } catch (error) {
       (globalThis.console as any)?.error?.(
@@ -629,7 +629,7 @@ Master Commands:
 
   public async stop(): Promise<void> {
     try {
-      (console as any).log("🛑 Stopping WhatsApp service...");
+      .log("🛑 Stopping WhatsApp service...");
       await this.client.destroy();
       this.isConnected = false;
     } catch (error) {
@@ -648,7 +648,7 @@ Master Commands:
 
       const chatId = to.includes("@c.us") ? to : `${to}@c.us`;
       await this.client.sendMessage(chatId, message);
-      (console as any).log(`📤 Message sent to ${to}`);
+      .log(`📤 Message sent to ${to}`);
     } catch (error) {
       (globalThis.console as any)?.error?.(
         "Error sending WhatsApp message:",
@@ -776,7 +776,7 @@ Master Commands:
   }
 
   private logAndSendToQcity(log: string): void {
-    (console as any).log(log);
+    .log(log);
     // Production: Send error logs to QCity monitoring dashboard
     // Requires: QCity API integration with master credentials
     // Implementation: Call POST /api/qcity/logs with auth token

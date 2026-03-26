@@ -468,7 +468,7 @@ def main():
     
     if success:
         print("\n✅ QMOI Monitoring System started successfully!")
-        print("📊 Dashboard available at: http://localhost:8080")
+        print("📊 Dashboard available at: process.env.API_URL || "http://localhost:\1"")
         print("📝 Logs available in: logs/")
         print("🔄 System will auto-restart failed components")
     else:

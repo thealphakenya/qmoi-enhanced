@@ -16,7 +16,7 @@ function runCheck(command, label) {
     console.log(`✅ ${label} OK:\n${output.trim()}`);
     return `✅ ${label}: ${output.trim()}`;
   } catch (_err) {
-    (console as any).error(`❌ ${label} FAILED:\n${_err.message}`);
+    console.error(`❌ ${label} FAILED:\n${_err.message}`);
     return `❌ ${label}: ${_err.message}`;
   }
 }

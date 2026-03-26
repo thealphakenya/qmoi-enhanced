@@ -67,8 +67,8 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    console.error("Balance API _error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },

@@ -52,9 +52,9 @@ class SimpleDomainLinkFixer:
             
             # Replace localhost patterns
             localhost_patterns = {
-                "http://localhost:3000": "https://qmoi.ai",
-                "http://localhost:8080": "https://qvillage.com",
-                "localhost:3000": "qmoi.ai",
+                "http:process.env.API_HOST || "localhost:3000"": "https://qmoi.ai",
+                "process.env.API_URL || "http://localhost:\1"": "https://qvillage.com",
+                "process.env.API_HOST || "localhost:3000"": "qmoi.ai",
                 "localhost:8080": "qvillage.com"
             }
             

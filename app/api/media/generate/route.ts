@@ -60,7 +60,7 @@ function logToDashboard(
       .join("");
   }
   const sanitizedLog = removeControlChars(JSON.stringify(logEntry));
-  (console as any).log(sanitizedLog);
+  .log(sanitizedLog);
 
   // Production: Send generated media metadata to WebSocket dashboard
   // Requires: Socket.io or Next.js WebSocket integration
@@ -145,9 +145,9 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
-    task.error = _error instanceof Error ? _error.message : "Unknown error";
+    task.error = _error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
@@ -229,9 +229,9 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      _error instanceof Error ? _error.message : "Unknown error";
+      _error instanceof Error ? error.message : "Unknown error";
     logToDashboard("media-generation-error", { _error: errorMessage }, "error");
 
     return NextResponse.json(
@@ -277,9 +277,9 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      _error instanceof Error ? _error.message : "Unknown error";
+      _error instanceof Error ? error.message : "Unknown error";
     logToDashboard("media-status-error", { _error: errorMessage }, "error");
 
     return NextResponse.json(

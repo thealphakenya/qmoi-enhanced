@@ -231,8 +231,8 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
       try {
         const monitorUrl =
           (typeof window !== "undefined" &&
-            (window as any).process?.env?.NEXT_PUBLIC_MONITOR_URL) ||
-          "http://localhost:5001";
+            .process?.env?.NEXT_PUBLIC_MONITOR_URL) ||
+          "process.env.API_URL || "http://localhost:\1"";
         const res = await fetch(`${monitorUrl}/monitor/status`);
         if (!res.ok) throw new Error("Failed to fetch monitor status");
         const data = await res.json();
@@ -264,8 +264,8 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
     try {
       const monitorUrl =
         (typeof window !== "undefined" &&
-          (window as any).process?.env?.NEXT_PUBLIC_MONITOR_URL) ||
-        "http://localhost:5001";
+          .process?.env?.NEXT_PUBLIC_MONITOR_URL) ||
+        "process.env.API_URL || "http://localhost:\1"";
       const monitorRes = await fetch(`${monitorUrl}/monitor`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -297,7 +297,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
     setLoading(true);
     setError(null);
     try {
-      await fetch("http://localhost:5001/monitor", {
+      await fetch("process.env.API_URL || "http://localhost:\1"/monitor", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ enable: false }),
@@ -331,7 +331,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
   // Fetch analytics
   const fetchAnalytics = async () => {
     try {
-      const res = await fetch("http://localhost:5001/analytics");
+      const res = await fetch("process.env.API_URL || "http://localhost:\1"/analytics");
       const data = await res.json();
       setAnalytics(data);
     } catch (error) {
@@ -347,7 +347,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
   // Fetch hourly analytics
   const fetchHourlyAnalytics = async () => {
     try {
-      const res = await fetch("http://localhost:5001/analytics/hourly");
+      const res = await fetch("process.env.API_URL || "http://localhost:\1"/analytics/hourly");
       const data = await res.json();
       setHourlyAnalytics(data);
     } catch (error) {
@@ -365,14 +365,14 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
 
   // Export analytics as CSV
   const exportAnalytics = () => {
-    window.open("http://localhost:5001/export-analytics", "_blank");
+    window.open("process.env.API_URL || "http://localhost:\1"/export-analytics", "_blank");
   };
 
   // Send alert to external system
   const sendAlert = async (msg: string) => {
     if (!webhookUrl) return;
     try {
-      await fetch("http://localhost:5001/alert", {
+      await fetch("process.env.API_URL || "http://localhost:\1"/alert", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: msg, webhook: webhookUrl }),

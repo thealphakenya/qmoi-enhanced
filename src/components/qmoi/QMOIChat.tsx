@@ -37,7 +37,7 @@ export function QMOIChat({ userId, onMessageReceived }: QMOIChatProps) {
       await sendMessage(userMessage);
       onMessageReceived?.(userMessage);
     } catch (err) {
-      (console as any).error("Failed to send message:", err);
+      console.error("Failed to send message:", err);
     }
   };
 
@@ -48,7 +48,7 @@ export function QMOIChat({ userId, onMessageReceived }: QMOIChatProps) {
     }
 
     const SpeechRecognition =
-      (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition;
+      .webkitSpeechRecognition || .SpeechRecognition;
     if (!SpeechRecognition) {
       alert("Speech recognition API is not available in this browser.");
       return;
@@ -72,7 +72,7 @@ export function QMOIChat({ userId, onMessageReceived }: QMOIChatProps) {
     };
 
     recognition.onerror = (event: any) => {
-      (console as any).error("Speech recognition error:", event.error);
+      console.error("Speech recognition error:", event.error);
       setIsSpeaking(false);
     };
 

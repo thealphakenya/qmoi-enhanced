@@ -47,7 +47,7 @@ describe("Wallet API", () => {
 
   describe("GET /api/wallets", () => {
     it("should list user wallets with valid token", async () => {
-      const request = new NextRequest("http://localhost:3000/api/wallets", {
+      const request = new NextRequest("http:process.env.API_HOST || "localhost:3000"/api/wallets", {
         method: "GET",
         headers: {
           authorization: `Bearer ${testToken}`,
@@ -64,7 +64,7 @@ describe("Wallet API", () => {
     });
 
     it("should reject request without token", async () => {
-      const request = new NextRequest("http://localhost:3000/api/wallets", {
+      const request = new NextRequest("http:process.env.API_HOST || "localhost:3000"/api/wallets", {
         method: "GET",
       });
 
@@ -73,7 +73,7 @@ describe("Wallet API", () => {
     });
 
     it("should reject request with invalid token", async () => {
-      const request = new NextRequest("http://localhost:3000/api/wallets", {
+      const request = new NextRequest("http:process.env.API_HOST || "localhost:3000"/api/wallets", {
         method: "GET",
         headers: {
           authorization: "Bearer invalid-token-xyz",
@@ -87,7 +87,7 @@ describe("Wallet API", () => {
 
   describe("POST /api/wallets", () => {
     it("should create new wallet with valid currency", async () => {
-      const request = new NextRequest("http://localhost:3000/api/wallets", {
+      const request = new NextRequest("http:process.env.API_HOST || "localhost:3000"/api/wallets", {
         method: "POST",
         headers: {
           authorization: `Bearer ${testToken}`,
@@ -108,7 +108,7 @@ describe("Wallet API", () => {
     });
 
     it("should create wallet with default currency", async () => {
-      const request = new NextRequest("http://localhost:3000/api/wallets", {
+      const request = new NextRequest("http:process.env.API_HOST || "localhost:3000"/api/wallets", {
         method: "POST",
         headers: {
           authorization: `Bearer ${testToken}`,
@@ -129,7 +129,7 @@ describe("Wallet API", () => {
     });
 
     it("should reject request without authentication", async () => {
-      const request = new NextRequest("http://localhost:3000/api/wallets", {
+      const request = new NextRequest("http:process.env.API_HOST || "localhost:3000"/api/wallets", {
         method: "POST",
         headers: {
           "content-type": "application/json",

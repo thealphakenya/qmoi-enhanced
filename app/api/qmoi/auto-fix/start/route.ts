@@ -69,9 +69,9 @@ export async function POST(_request: NextRequest) {
       stdio: ["pipe", "pipe", "pipe"],
     });
 
-    child.stdout.on("data", (d) => (console as any).log("[auto-fix]", d.toString()));
+    child.stdout.on("data", (d) => .log("[auto-fix]", d.toString()));
     child.stderr.on("data", (d) =>
-      (console as any).error("[auto-fix][_err]", d.toString()),
+      console.error("[auto-fix][_err]", d.toString()),
     );
 
     return NextResponse.json({
@@ -79,8 +79,8 @@ export async function POST(_request: NextRequest) {
       message: "Auto-fix process started",
       pid: child.pid,
     });
-  } catch (_error) {
-    (console as any).error("Error starting auto-fix process:", _error);
+  } catch (error) {
+    console.error("Error starting auto-fix process:", error);
     return NextResponse.json(
       { _error: "Failed to start auto-fix process" },
       { status: 500 },

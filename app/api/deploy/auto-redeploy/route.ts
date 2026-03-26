@@ -40,7 +40,7 @@ export async function POST(_req: NextRequest) {
       });
     }
   } catch (_error: unknown) {
-    const details = _error instanceof Error ? _error.message : String(_error);
+    const details = _error instanceof Error ? error.message : String(error);
     return NextResponse.json(
       { _error: "Failed to configure auto-redeploy", details },
       { status: 500 },

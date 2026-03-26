@@ -104,10 +104,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -144,10 +144,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -271,9 +271,9 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    (globalThis.console as any)?.error?.("Mpesa processing _error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
   }
 }
@@ -383,9 +383,9 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    logger.error("Binance processing error", { error: _error });
-    const errorMsg = _error instanceof Error ? _error.message : String(_error);
+  } catch (error) {
+    logger.error("Binance processing error", { error: error });
+    const errorMsg = _error instanceof Error ? error.message : String(error);
     return { status: "error", platform: "Binance", amount, _error: errorMsg };
   }
 }
@@ -436,9 +436,9 @@ async function processPesapal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    logger.error("Pesapal processing error", { error: _error });
-    const errorMsg = _error instanceof Error ? _error.message : String(_error);
+  } catch (error) {
+    logger.error("Pesapal processing error", { error: error });
+    const errorMsg = _error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Pesapal",
@@ -495,9 +495,9 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    logger.error("Bitget processing error", { error: _error });
-    const errorMsg = _error instanceof Error ? _error.message : String(_error);
+  } catch (error) {
+    logger.error("Bitget processing error", { error: error });
+    const errorMsg = _error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
@@ -538,7 +538,7 @@ const handleApiRequest = async (
     const result = await handler();
     return _res.json(result);
   } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
       _error: errorMsg,
       path: _req.url,

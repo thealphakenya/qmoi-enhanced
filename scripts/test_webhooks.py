@@ -43,7 +43,7 @@ def simulate_webhook_event(event_type: str, test_data: dict) -> dict:
     
     # Send to webhook endpoint
     response = requests.post(
-        'http://localhost:8000/payments/webhook',
+        'process.env.API_URL || "http://localhost:\1"/payments/webhook',
         json=event,
         headers={'Content-Type': 'application/json'}
     )

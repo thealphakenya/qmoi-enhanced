@@ -20,8 +20,8 @@ export class Developer&ParallelizationService {
   constructor(private config: Developer&ParallelizationConfig) {}
   
   async initialize(): Promise<void> {
-    (console as any).log('Initializing Developer & Parallelization');
-    (console as any).log(`Configuration:`, {
+    .log('Initializing Developer & Parallelization');
+    .log(`Configuration:`, {
       maxConcurrency: this.config.maxConcurrency || 5,
       timeout: this.config.timeout || 30000,
       retryAttempts: this.config.retryAttempts || 3,
@@ -34,11 +34,11 @@ export class Developer&ParallelizationService {
       throw new Error('maxConcurrency must be at least 1');
     }
     
-    (console as any).log('Developer & Parallelization initialized successfully');
+    .log('Developer & Parallelization initialized successfully');
   }
   
   async execute(): Promise<any> {
-    (console as any).log('Executing Developer & Parallelization tasks');
+    .log('Executing Developer & Parallelization tasks');
     
     const strategy = this.config.parallelizationStrategy || 'parallel';
     const maxConcurrency = this.config.maxConcurrency || 5;
@@ -47,13 +47,13 @@ export class Developer&ParallelizationService {
     try {
       switch (strategy) {
         case 'sequential':
-          (console as any).log('Running in sequential mode');
+          .log('Running in sequential mode');
           break;
         case 'parallel':
-          (console as any).log(`Running in parallel mode with max concurrency: ${maxConcurrency}`);
+          .log(`Running in parallel mode with max concurrency: ${maxConcurrency}`);
           break;
         case 'batch':
-          (console as any).log('Running in batch mode');
+          .log('Running in batch mode');
           break;
         default:
           console.warn(`Unknown strategy: ${strategy}, using parallel`);
@@ -68,7 +68,7 @@ export class Developer&ParallelizationService {
         timestamp: new Date().toISOString()
       };
     } catch (error) {
-      (console as any).error('Error executing Developer & Parallelization:', error);
+      console.error('Error executing Developer & Parallelization:', error);
       return {
         status: 'error',
         message: 'Developer & Parallelization execution failed',

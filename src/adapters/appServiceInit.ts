@@ -189,7 +189,7 @@ export function enableDebugLogging(): void {
   // Intercept console methods to add timestamps
   const originalLog = (console as unknown).log;
   const originalWarn = (console as unknown).warn;
-  const originalError = (console as any).error;
+  const originalError = console.error;
 
   (console as unknown).log = (...args: unknown[]) => {
     originalLog?.(`[${new Date().toISOString()}]`, ...((args as any[]) ?? []));
@@ -199,7 +199,7 @@ export function enableDebugLogging(): void {
     originalWarn?.(`[${new Date().toISOString()}]`, ...((args as any[]) ?? []));
   };
 
-  (console as any).error = (...args: unknown[]) => {
+  console.error = (...args: unknown[]) => {
     originalError?.(`[${new Date().toISOString()}]`, ...((args as any[]) ?? []));
   };
 }

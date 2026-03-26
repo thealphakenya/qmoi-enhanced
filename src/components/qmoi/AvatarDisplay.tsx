@@ -57,7 +57,7 @@ export function AvatarDisplay({
           setAvatar(data.avatar);
         }
       } catch (error) {
-        (console as any).error("Failed to fetch avatar:", error);
+        console.error("Failed to fetch avatar:", error);
       } finally {
         setIsLoading(false);
       }

@@ -164,7 +164,7 @@ def main():
     print("\n📋 Next steps:")
     print("1. Update the .env file with your actual API keys")
     print("2. Run: python scripts/start_qmoi_enhanced.py")
-    print("3. Access the system at: http://localhost:7861")
+    print("3. Access the system at: process.env.API_URL || "http://localhost:\1"")
 
 if __name__ == "__main__":
     main() 

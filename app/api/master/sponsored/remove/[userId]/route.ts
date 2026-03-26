@@ -97,7 +97,7 @@ export async function DELETE(
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
-    (console as any).error("Error removing sponsored user:", error);
+    console.error("Error removing sponsored user:", error);
     return NextResponse.json(
       { error: "Internal server error", code: "SERVER_ERROR" },
       { status: 500 },

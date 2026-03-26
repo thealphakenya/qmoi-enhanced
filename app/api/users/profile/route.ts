@@ -37,10 +37,10 @@ export async function GET(_request: NextRequest) {
     // Remove sensitive data
     const { passwordHash, ...safeUser } = user;
     return NextResponse.json(safeUser);
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "GET /api/users/profile _error:",
-      _error,
+      error,
     );
     return NextResponse.json(
       { _error: "Internal server error" },
@@ -97,10 +97,10 @@ export async function PUT(_request: NextRequest) {
     >;
 
     return NextResponse.json(safeUser);
-  } catch (_error) {
+  } catch (error) {
     (globalThis.console as any)?.error?.(
       "PUT /api/users/profile _error:",
-      _error,
+      error,
     );
     return NextResponse.json(
       { _error: "Internal server error" },

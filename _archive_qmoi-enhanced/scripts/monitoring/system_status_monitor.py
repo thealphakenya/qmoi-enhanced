@@ -61,49 +61,49 @@ class QMOISystemStatusMonitor:
             'components': {
                 'qmoi_core': {
                     'enabled': True,
-                    'health_check_url': 'http://localhost:3000/api/health',
+                    'health_check_url': 'http:process.env.API_HOST || "localhost:3000"/api/health',
                     'timeout': 10,
                     'critical': True
                 },
                 'qcity_device': {
                     'enabled': True,
-                    'health_check_url': 'http://localhost:3000/api/qcity/status',
+                    'health_check_url': 'http:process.env.API_HOST || "localhost:3000"/api/qcity/status',
                     'timeout': 15,
                     'critical': True
                 },
                 'database': {
                     'enabled': True,
-                    'health_check_url': 'http://localhost:3000/api/database/health',
+                    'health_check_url': 'http:process.env.API_HOST || "localhost:3000"/api/database/health',
                     'timeout': 10,
                     'critical': True
                 },
                 'trading_engine': {
                     'enabled': True,
-                    'health_check_url': 'http://localhost:3000/api/trading/status',
+                    'health_check_url': 'http:process.env.API_HOST || "localhost:3000"/api/trading/status',
                     'timeout': 10,
                     'critical': False
                 },
                 'ai_models': {
                     'enabled': True,
-                    'health_check_url': 'http://localhost:3000/api/ai/health',
+                    'health_check_url': 'http:process.env.API_HOST || "localhost:3000"/api/ai/health',
                     'timeout': 15,
                     'critical': False
                 },
                 'voice_system': {
                     'enabled': True,
-                    'health_check_url': 'http://localhost:3000/api/qmoi/voice-profiles',
+                    'health_check_url': 'http:process.env.API_HOST || "localhost:3000"/api/qmoi/voice-profiles',
                     'timeout': 10,
                     'critical': False
                 },
                 'avatar_system': {
                     'enabled': True,
-                    'health_check_url': 'http://localhost:3000/api/qmoi/avatars',
+                    'health_check_url': 'http:process.env.API_HOST || "localhost:3000"/api/qmoi/avatars',
                     'timeout': 10,
                     'critical': False
                 },
                 'automation_engine': {
                     'enabled': True,
-                    'health_check_url': 'http://localhost:3000/api/automation/status',
+                    'health_check_url': 'http:process.env.API_HOST || "localhost:3000"/api/automation/status',
                     'timeout': 10,
                     'critical': False
                 }

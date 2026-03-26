@@ -138,7 +138,7 @@ async function switchVoice(voiceId: string) {
 
     if (!canApply) {
       await writeProposal(proposal);
-      (console as any).log(`🔒 Dry-run: voice switch proposed for ${voiceId}`);
+      .log(`🔒 Dry-run: voice switch proposed for ${voiceId}`);
       return NextResponse.json({
         success: true,
         proposed: true,
@@ -160,13 +160,13 @@ async function switchVoice(voiceId: string) {
         ),
         "utf8",
       );
-      (console as any).log(
+      .log(
         `✅ Voice switched to ${voiceProfile.name} and persisted to ${stateFile}`,
       );
     } catch (err) {
       (globalThis.console as any)?.error?.(
         "Failed to persist voice state:",
-        err && (err as any).message ? (err as any).message : err,
+        err && .message ? .message : err,
       );
     }
 
@@ -240,7 +240,7 @@ async function previewVoice(
     } catch (err) {
       (globalThis.console as any)?.error?.(
         "Error proxying to TTS:",
-        err && (err as any).message ? (err as any).message : err,
+        err && .message ? .message : err,
       );
       return NextResponse.json({ error: "TTS proxy failed" }, { status: 502 });
     }
@@ -274,7 +274,7 @@ async function enhanceVoice(voiceId: string) {
     }
 
     // Real enhancement path — [PRODUCTION READY] that should enqueue a job or call an offline pipeline
-    (console as any).log(`Applying enhancement to voice ${voiceId}`);
+    .log(`Applying enhancement to voice ${voiceId}`);
     [PRODUCTION READY]: enqueue enhancement job in real implementation
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return NextResponse.json({
@@ -311,7 +311,7 @@ async function upgradeVoice(voiceId: string) {
     }
 
     // Real upgrade path ([PRODUCTION READY])
-    (console as any).log(`Applying upgrade to voice ${voiceId}`);
+    .log(`Applying upgrade to voice ${voiceId}`);
     await new Promise((resolve) => setTimeout(resolve, 2000));
     return NextResponse.json({
       success: true,

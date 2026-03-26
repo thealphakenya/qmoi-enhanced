@@ -104,25 +104,25 @@ app.get("/", async (req, res) => {
   // Fetch AI error predictions
   let predictions = [];
   try {
-    const predRes = await axios.get("http://localhost:4100/api/predictions");
+    const predRes = await axios.get("process.env.API_URL || "http://localhost:\1"/api/predictions");
     predictions = predRes.data.predictions || [];
-  } catch (e) {}
+  } catch (error) { /* Handle error */ }
   // Fetch notification preferences
   let notificationPrefs = {};
   try {
     const prefsRes = await axios.get(
-      "http://localhost:4200/api/notification-prefs",
+      "process.env.API_URL || "http://localhost:\1"/api/notification-prefs",
     );
     notificationPrefs = prefsRes.data || {};
-  } catch (e) {}
+  } catch (error) { /* Handle error */ }
   // Fetch notification history
   let notificationHistory = [];
   try {
     const histRes = await axios.get(
-      "http://localhost:4200/api/notification-history",
+      "process.env.API_URL || "http://localhost:\1"/api/notification-history",
     );
     notificationHistory = histRes.data || [];
-  } catch (e) {}
+  } catch (error) { /* Handle error */ }
   // SVG chart for percent fixed over time
   let chart = "";
   if (log.length > 1) {
@@ -137,7 +137,7 @@ app.get("/", async (req, res) => {
     try {
       const s = JSON.parse(fs.readFileSync(GITHUB_STATUS_FILE, "utf-8"));
       ghStatus = `${s.status} (${s.time})`;
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   }
   let table = "";
   if (log.length > 0) {
@@ -233,7 +233,7 @@ app.get("/", async (req, res) => {
 // Add endpoint to update notification preferences
 app.post("/update-notification-prefs", express.json(), async (req, res) => {
   try {
-    await axios.post("http://localhost:4200/api/notification-prefs", req.body);
+    await axios.post("process.env.API_URL || "http://localhost:\1"/api/notification-prefs", req.body);
     res.json({ success: true });
   } catch (err) {
     res.status(500).json({ success: false, error: err.toString() });
@@ -259,5 +259,5 @@ app.post("/api/trigger-fix", (req, res) => {
 });
 
 app.listen(4000, () =>
-  console.log("QMOI Dashboard running on http://localhost:4000"),
+  console.log("QMOI Dashboard running on process.env.API_URL || "http://localhost:\1""),
 );

@@ -204,8 +204,8 @@ export async function POST(_request: NextRequest) {
       transaction: updatedTxn,
       processed: true,
     });
-  } catch (_error) {
-    logger.error("Webhook processing failed", { error: _error });
+  } catch (error) {
+    logger.error("Webhook processing failed", { error: error });
     return NextResponse.json(
       { _error: "Webhook processing failed" },
       { status: 500 },

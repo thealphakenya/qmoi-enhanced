@@ -44,7 +44,7 @@ mainApp.listen(PORT_MAIN, async () => {
   console.log(`QMOI Main UI running at http://localhost:${PORT_MAIN}`);
   try {
     await open(`http://localhost:${PORT_MAIN}`);
-  } catch (e) {}
+  } catch (error) { /* Handle error */ }
 });
 
 // QCity UI
@@ -57,7 +57,7 @@ qcityApp.listen(PORT_QCITY, async () => {
   console.log(`QCity UI running at http://localhost:${PORT_QCITY}`);
   try {
     await open(`http://localhost:${PORT_QCITY}`);
-  } catch (e) {}
+  } catch (error) { /* Handle error */ }
 });
 
 // QMOI Space PWA
@@ -73,13 +73,13 @@ spaceApp.listen(PORT_SPACE, async () => {
   console.log(`QMOI Space PWA running at http://localhost:${PORT_SPACE}`);
   try {
     await open(`http://localhost:${PORT_SPACE}`);
-  } catch (e) {}
+  } catch (error) { /* Handle error */ }
 });
 
 // Reliability: Log errors
 process.on("uncaughtException", (_err) => {
-  (console as any).error("Uncaught:", _err);
+  console.error("Uncaught:", _err);
 });
 process.on("unhandledRejection", (_err) => {
-  (console as any).error("Unhandled:", _err);
+  console.error("Unhandled:", _err);
 });

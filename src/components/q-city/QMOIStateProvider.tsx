@@ -133,9 +133,9 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
           ...prevState,
           ...(parsedState as unknown as full<QMOIState>),
         }));
-      } catch (_error) {
+      } catch (error) {
         if (typeof console !== "undefined" && typeof console.error === "function") {
-          safeConsoleError("Error loading QMOI state:", _error);
+          safeConsoleError("Error loading QMOI state:", error);
         }
       }
     }
@@ -199,9 +199,9 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
       if (compatibleVoice && compatibleVoice !== state.currentVoice) {
         await updateVoice(compatibleVoice);
       }
-    } catch (_error) {
+    } catch (error) {
       if (typeof console !== "undefined" && typeof console.error === "function") {
-        safeConsoleError("Error updating avatar:", _error);
+        safeConsoleError("Error updating avatar:", error);
       }
       setState((prev) => ({ ...prev, isProcessing: false, currentTask: null }));
     }
@@ -233,7 +233,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
         currentTask: null,
       }));
     } catch (_error: unknown) {
-      const error = _error instanceof Error ? _error : new Error(String(_error));
+      const error = _error instanceof Error ? _error : new Error(String(error));
       const msg = error.message;
       if (typeof console !== "undefined" && typeof console.error === "function") {
         safeConsoleError("Error updating voice:", msg);

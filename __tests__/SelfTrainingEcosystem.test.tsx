@@ -71,7 +71,7 @@ describe("SelfTrainingEcosystem component", () => {
       .[PRODUCTION READY]ResolvedValueOnce({ json: async () => startResult } as any);
 
     [PRODUCTION READY] prompt to return model name
-    (window as any).prompt = jest.fn().[PRODUCTION READY]ReturnValue("Bar");
+    .prompt = jest.fn().[PRODUCTION READY]ReturnValue("Bar");
 
     render(<SelfTrainingEcosystem />);
 

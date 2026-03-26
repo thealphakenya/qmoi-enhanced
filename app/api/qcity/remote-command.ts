@@ -17,7 +17,7 @@ const AUDIT_LOG_PATH = path.resolve(process.cwd(), "logs/qcity_audit.log");
 function logAudit(entry: Record<string, unknown> | unknown) {
   const payload =
     typeof entry === "object" && entry !== null
-      ? { ...(entry as any) }
+      ? { ... }
       : { message: String(entry) };
   const line =
     JSON.stringify({ ...payload, timestamp: new Date().toISOString() }) + "\n";

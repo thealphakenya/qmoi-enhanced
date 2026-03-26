@@ -75,10 +75,10 @@ export async function GET(_request: NextRequest) {
       { _error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in WiFi security endpoint:", _error);
+  } catch (error) {
+    console.error("Error in WiFi security endpoint:", error);
     return NextResponse.json(
-      { _error: _error instanceof Error ? _error.message : "Unknown error" },
+      { _error: _error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -130,10 +130,10 @@ export async function POST(_request: NextRequest) {
       { _error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in WiFi security action endpoint:", _error);
+  } catch (error) {
+    console.error("Error in WiFi security action endpoint:", error);
     return NextResponse.json(
-      { _error: _error instanceof Error ? _error.message : "Unknown error" },
+      { _error: _error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }

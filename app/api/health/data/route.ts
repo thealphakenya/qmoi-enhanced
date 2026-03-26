@@ -62,7 +62,7 @@ async function readErrors(): Promise<ErrorItem[]> {
     const data = fs.readFileSync(ERRORS_FILE, "utf-8");
     return JSON.parse(data);
   } catch (error) {
-    (console as any).error("Error reading errors file:", error);
+    console.error("Error reading errors file:", error);
     return [];
   }
 }
@@ -71,7 +71,7 @@ async function writeErrors(errors: ErrorItem[]): Promise<void> {
   try {
     fs.writeFileSync(ERRORS_FILE, JSON.stringify(errors, null, 2));
   } catch (error) {
-    (console as any).error("Error writing errors file:", error);
+    console.error("Error writing errors file:", error);
   }
 }
 
@@ -83,7 +83,7 @@ async function readFixes(): Promise<FixItem[]> {
     const data = fs.readFileSync(FIXES_FILE, "utf-8");
     return JSON.parse(data);
   } catch (error) {
-    (console as any).error("Error reading fixes file:", error);
+    console.error("Error reading fixes file:", error);
     return [];
   }
 }
@@ -92,7 +92,7 @@ async function writeFixes(fixes: FixItem[]): Promise<void> {
   try {
     fs.writeFileSync(FIXES_FILE, JSON.stringify(fixes, null, 2));
   } catch (error) {
-    (console as any).error("Error writing fixes file:", error);
+    console.error("Error writing fixes file:", error);
   }
 }
 
@@ -111,7 +111,7 @@ async function readGitHubStatus(): Promise<GitHubActionStatus> {
     const data = fs.readFileSync(GITHUB_STATUS_FILE, "utf-8");
     return JSON.parse(data);
   } catch (error) {
-    (console as any).error("Error reading GitHub status file:", error);
+    console.error("Error reading GitHub status file:", error);
     return {
       preCheck: "error",
       autoFix: "error",
@@ -127,7 +127,7 @@ async function writeGitHubStatus(status: GitHubActionStatus): Promise<void> {
   try {
     fs.writeFileSync(GITHUB_STATUS_FILE, JSON.stringify(status, null, 2));
   } catch (error) {
-    (console as any).error("Error writing GitHub status file:", error);
+    console.error("Error writing GitHub status file:", error);
   }
 }
 
@@ -192,7 +192,7 @@ async function collectErrorsFromLogs(): Promise<ErrorItem[]> {
       }
     }
   } catch (error) {
-    (console as any).error("Error collecting errors from logs:", error);
+    console.error("Error collecting errors from logs:", error);
   }
 
   return errors;
@@ -269,7 +269,7 @@ async function checkGitHubActionsStatus(): Promise<GitHubActionStatus> {
       commitSha: latestRun.head_sha,
     };
   } catch (error) {
-    (console as any).error("Error checking GitHub Actions status:", error);
+    console.error("Error checking GitHub Actions status:", error);
     return {
       preCheck: "error",
       autoFix: "error",
@@ -350,7 +350,7 @@ async function executeAutoFix(errorId: number): Promise<FixItem | null> {
 
     return fix;
   } catch (error) {
-    (console as any).error("Error executing auto-fix:", error);
+    console.error("Error executing auto-fix:", error);
     return null;
   }
 }
@@ -365,7 +365,7 @@ async function fixBuildErrors(error: ErrorItem): Promise<boolean> {
     await execAsync("npx tsc --noEmit");
     return true;
   } catch (error) {
-    (console as any).error("Build fix failed:", error);
+    console.error("Build fix failed:", error);
     return false;
   }
 }
@@ -380,7 +380,7 @@ async function fixLintErrors(error: ErrorItem): Promise<boolean> {
     await execAsync("npx eslint . --fix");
     return true;
   } catch (error) {
-    (console as any).error("Lint fix failed:", error);
+    console.error("Lint fix failed:", error);
     return false;
   }
 }
@@ -396,7 +396,7 @@ async function fixRuntimeErrors(error: ErrorItem): Promise<boolean> {
     await execAsync("rm -rf .next/cache");
     return true;
   } catch (error) {
-    (console as any).error("Runtime fix failed:", error);
+    console.error("Runtime fix failed:", error);
     return false;
   }
 }
@@ -455,7 +455,7 @@ export async function GET(request: NextRequest) {
         );
     }
   } catch (error) {
-    (console as any).error("Error fetching data:", error);
+    console.error("Error fetching data:", error);
     return NextResponse.json(
       { error: "Failed to fetch data" },
       { status: 500 },
@@ -554,7 +554,7 @@ export async function POST(request: NextRequest) {
       { status: 400 },
     );
   } catch (error) {
-    (console as any).error("Error processing request:", error);
+    console.error("Error processing request:", error);
     return NextResponse.json(
       { error: "Failed to process request" },
       { status: 500 },

@@ -93,7 +93,7 @@ async function calculateTradingConfidence(): Promise<number> {
 
       pythonProcess.on("close", (code) => {
         if (code !== 0) {
-          (console as any).error("QMOI AI analysis failed:", errorOutput);
+          console.error("QMOI AI analysis failed:", errorOutput);
           resolve(0.5); // Default confidence on failure
           return;
         }
@@ -102,18 +102,18 @@ async function calculateTradingConfidence(): Promise<number> {
           const result = JSON.parse(output.trim());
           resolve(Math.max(0, Math.min(1, result.confidence || 0.5)));
         } catch (_e) {
-          (console as any).error("Failed to parse QMOI AI _respons_e:", _e);
+          console.error("Failed to parse QMOI AI _respons_e:", _e);
           resolve(0.5);
         }
       });
 
-      pythonProcess.on("error", (_error) => {
-        (console as any).error("Failed to start QMOI AI process:", _error);
+      pythonProcess.on("error", (error) => {
+        console.error("Failed to start QMOI AI process:", error);
         resolve(0.5);
       });
     });
-  } catch (_error) {
-    (console as any).error("Error calculating trading confidence:", _error);
+  } catch (error) {
+    console.error("Error calculating trading confidence:", error);
     return 0.5; // Default confidence on error
   }
 }

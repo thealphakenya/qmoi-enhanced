@@ -136,7 +136,7 @@ export class AssetManagerImpl implements AssetManager {
       if (Math.abs(targetAmount - currentAmount) > 1) {
         // 1 USD threshold
         // Implement rebalancing logic here
-        (console as any).log(
+        .log(
           `Rebalancing ${type} from ${currentAmount} to ${targetAmount}`,
         );
       }

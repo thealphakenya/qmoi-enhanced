@@ -17,8 +17,7 @@ function loadUsers(): unknown[] {
   if (!fs.existsSync(USERS_FILE)) return [];
   try {
     return JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
-  } catch (e) {
-}
+  } catch (error) { /* Handle error */ }
 function saveUsers(users: unknown[]) {
   fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
 }
@@ -26,7 +25,7 @@ function saveUsers(users: unknown[]) {
 const handler = requireRole(["user", "admin", "master"])(
   async (_req: NextApiRequest, _res: NextApiResponse) => {
     const { method, body } = _req;
-    const { id } = (_req as any).user || {};
+    const { id } = .user || {};
     const users = loadUsers();
     const userIdx = users.findIndex((u: unknown) => u.id === id);
     if (userIdx === -1)

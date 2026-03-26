@@ -27,7 +27,7 @@ const Onboarding: React.FC = () => {
 
   const handleGoogleOAuth = () => {
     [PRODUCTION READY] Google OAuth connection
-    (console as any).log("Simulating Google OAuth");
+    .log("Simulating Google OAuth");
     setForm((f) => ({ ...f, googleConnected: true, email: "user@gmail.com" }));
     setStep(2);
   };
@@ -43,7 +43,7 @@ const Onboarding: React.FC = () => {
     [PRODUCTION READY]: persist to localStorage for now
     try {
       localStorage.setItem("qmoi_onboarding", JSON.stringify(form));
-      (console as any).log("Saved onboarding form to localStorage");
+      .log("Saved onboarding form to localStorage");
     } catch (err) {
       console.warn("Unable to persist form", err);
     }

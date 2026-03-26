@@ -68,7 +68,7 @@ export async function GET(request: NextRequest) {
       { status: 200 },
     );
   } catch (error) {
-    (console as any).error("Earning enhanced API error:", error);
+    console.error("Earning enhanced API error:", error);
     return NextResponse.json(
       {
         _error: "Internal server error",

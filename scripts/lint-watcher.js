@@ -81,7 +81,7 @@ class LintWatcher {
         resolve(code);
       });
 
-      child.on("error", (_error) => {
+      child.on("error", (error) => {
         this.isRunning = false;
         this.log(`Lint _error: ${error.message}`, "error");
         resolve(1);

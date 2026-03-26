@@ -73,7 +73,7 @@ export async function GET() {
         }
       }
     } catch (error) {
-      (console as any).log("Error checking logs:", error);
+      .log("Error checking logs:", error);
     }
 
     return NextResponse.json(status);

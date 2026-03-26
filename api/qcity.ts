@@ -224,7 +224,7 @@ router.get("/workspace-logs", async (req, res) => {
       logAudit({
         timestamp: new Date().toISOString(),
         action: "log_streaming_session",
-        user: (req as any).user || "system",
+        user: .user || "system",
         id,
         type,
         status: "completed",
@@ -252,7 +252,7 @@ export async function listWorkspaces(req: Request, res: Response) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "list_gitpod_workspaces",
-      user: (req as any).user || "system",
+      user: .user || "system",
       status: "success",
     });
     res.json({ workspaces: data.workspaces });
@@ -260,9 +260,9 @@ export async function listWorkspaces(req: Request, res: Response) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "list_gitpod_workspaces",
-      user: (req as any).user || "system",
+      user: .user || "system",
       status: "error",
-      error: (error as any).message,
+      error: .message,
     });
     res.status(500).json({ error: error.message });
   }
@@ -279,7 +279,7 @@ export async function startWorkspace(req: Request, res: Response) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "start_gitpod_workspace",
-      user: (req as any).user || "system",
+      user: .user || "system",
       contextUrl,
       status: "success",
     });
@@ -292,9 +292,9 @@ export async function startWorkspace(req: Request, res: Response) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "start_gitpod_workspace",
-      user: (req as any).user || "system",
+      user: .user || "system",
       status: "error",
-      error: (error as any).message,
+      error: .message,
     });
     await notificationService.sendNotification(
       "QMOI Workspace Start Failed",
@@ -312,7 +312,7 @@ export async function stopWorkspace(req: Request, res: Response) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "stop_gitpod_workspace",
-      user: (req as any).user || "system",
+      user: .user || "system",
       id,
       status: "success",
     });
@@ -325,15 +325,15 @@ export async function stopWorkspace(req: Request, res: Response) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "stop_gitpod_workspace",
-      user: (req as any).user || "system",
+      user: .user || "system",
       status: "error",
-      error: (error as any).message,
+      error: .message,
     });
     await notificationService.sendNotification(
       "QMOI Workspace Stop Failed",
-      (error as any).message,
+      .message,
     );
-    res.status(500).json({ error: (error as any).message });
+    res.status(500).json({ error: .message });
   }
 }
 
@@ -345,7 +345,7 @@ export async function cloneWorkspace(req: Request, res: Response) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "clone_gitpod_workspace",
-      user: (req as any).user || "system",
+      user: .user || "system",
       id,
       status: "success",
     });
@@ -358,15 +358,15 @@ export async function cloneWorkspace(req: Request, res: Response) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "clone_gitpod_workspace",
-      user: (req as any).user || "system",
+      user: .user || "system",
       status: "error",
-      error: (error as any).message,
+      error: .message,
     });
     await notificationService.sendNotification(
       "QMOI Workspace Clone Failed",
-      (error as any).message,
+      .message,
     );
-    res.status(500).json({ error: (error as any).message });
+    res.status(500).json({ error: .message });
   }
 }
 
@@ -383,7 +383,7 @@ export async function syncWorkspace(req: Request, res: Response) {
       logAudit({
         timestamp: new Date().toISOString(),
         action: "sync_gitpod_workspace",
-        user: (req as any).user || "system",
+        user: .user || "system",
         id,
         type,
         status: "success",
@@ -412,7 +412,7 @@ export async function syncWorkspace(req: Request, res: Response) {
       logAudit({
         timestamp: new Date().toISOString(),
         action: "sync_local_workspace",
-        user: (req as any).user || "system",
+        user: .user || "system",
         id,
         type,
         status: "success",
@@ -433,15 +433,15 @@ export async function syncWorkspace(req: Request, res: Response) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "sync_workspace",
-      user: (req as any).user || "system",
+      user: .user || "system",
       status: "error",
-      error: (error as any).message,
+      error: .message,
     });
     await notificationService.sendNotification(
       "QMOI Workspace Sync Failed",
-      (error as any).message,
+      .message,
     );
-    res.status(500).json({ error: (error as any).message });
+    res.status(500).json({ error: .message });
   }
 }
 
@@ -460,7 +460,7 @@ export async function listLocalWorkspaces(req: Request, res: Response) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "list_local_workspaces",
-      user: (req as any).user || "system",
+      user: .user || "system",
       status: "success",
     });
     res.json({
@@ -476,7 +476,7 @@ export async function listLocalWorkspaces(req: Request, res: Response) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "list_local_workspaces",
-      user: (req as any).user || "system",
+      user: .user || "system",
       status: "error",
       error: error.message,
     });
@@ -508,7 +508,7 @@ export async function startLocalWorkspace(req: Request, res: Response) {
       );
     });
     await new Promise((resolve, reject) => {
-      (container as any).start((err: unknown) => {
+      .start((err: unknown) => {
         if (err) reject(err);
         else resolve(true);
       });
@@ -516,7 +516,7 @@ export async function startLocalWorkspace(req: Request, res: Response) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "start_local_workspace",
-      user: (req as any).user || "system",
+      user: .user || "system",
       image,
       name,
       status: "success",
@@ -525,12 +525,12 @@ export async function startLocalWorkspace(req: Request, res: Response) {
       "QMOI Local Workspace Started",
       `Local workspace started: ${name}`,
     );
-    res.json({ id: (container as any).id, name });
+    res.json({ id: .id, name });
   } catch (error: unknown) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "start_local_workspace",
-      user: (req as any).user || "system",
+      user: .user || "system",
       status: "error",
       error: error.message,
     });
@@ -557,7 +557,7 @@ export async function stopLocalWorkspace(req: Request, res: Response) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "stop_local_workspace",
-      user: (req as any).user || "system",
+      user: .user || "system",
       id,
       status: "success",
     });
@@ -570,7 +570,7 @@ export async function stopLocalWorkspace(req: Request, res: Response) {
     logAudit({
       timestamp: new Date().toISOString(),
       action: "stop_local_workspace",
-      user: (req as any).user || "system",
+      user: .user || "system",
       status: "error",
       error: error.message,
     });

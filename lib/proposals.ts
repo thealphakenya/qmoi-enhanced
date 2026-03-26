@@ -23,8 +23,8 @@ function requireApiKey(headers: HeadersOrObject): ApiCheckResult {
   // Support Next.js Headers and plain object headers
   const get = (k: string) => {
     if (!headers) return undefined;
-    if (typeof (headers as any)?.get === "function") {
-      return (headers as any).get(k);
+    if (typeof ?.get === "function") {
+      return .get(k);
     }
 
     const h = (headers as Record<string, any>) || {};

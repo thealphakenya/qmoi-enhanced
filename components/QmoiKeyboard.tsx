@@ -146,12 +146,12 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
     // ensure session id on mount for other UI pieces
     try {
       getOrCreateSessionId();
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
     // Initialize speech recognition
     if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
       const SpeechRecognition =
-        (window as any).SpeechRecognition ||
-        (window as any).webkitSpeechRecognition;
+        .SpeechRecognition ||
+        .webkitSpeechRecognition;
       recognitionRef.current = new SpeechRecognition();
       recognitionRef.current.continuous = true;
       recognitionRef.current.interimResults = true;

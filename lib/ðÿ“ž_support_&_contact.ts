@@ -16,13 +16,13 @@ export class ðŸ“žSupport&ContactService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing ðŸ“ž Support & Contact');
+    .log("[Service] Initializing...");
+    .log('Initializing ðŸ“ž Support & Contact');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'ðŸ“ž Support & Contact executed' };
   }
 }

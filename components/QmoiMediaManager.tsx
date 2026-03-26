@@ -157,7 +157,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
 
-      (console as any).log(`Downloaded: ${item.name}`);
+      .log(`Downloaded: ${item.name}`);
     } catch (error) {
       (globalThis.console as any)?.error?.("Download failed:", error);
     } finally {

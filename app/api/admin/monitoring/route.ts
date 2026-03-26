@@ -97,8 +97,8 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Monitoring _error:", _error);
+  } catch (error) {
+    (globalThis.console as any)?.error?.("Monitoring _error:", error);
     return NextResponse.json(
       { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },

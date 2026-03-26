@@ -42,7 +42,7 @@ export class FacebookAdapter implements SocialPlatformAdapter {
     this.config = FacebookConfigSchema.parse(config);
 
     if (this.config.sandboxMode) {
-      (console as any).log("[Facebook] Running in sandbox mode");
+      .log("[Facebook] Running in sandbox mode");
       return;
     }
 
@@ -98,13 +98,13 @@ export class FacebookAdapter implements SocialPlatformAdapter {
     }
 
     if (this.config.sandboxMode) {
-      (console as any).log("[Facebook Sandbox] Would create post:", content);
+      .log("[Facebook Sandbox] Would create post:", content);
       return `[PRODUCTION READY]-post-${Date.now()}`;
     }
 
     // In production mode, would make actual Graph API call
     // For now just log the intent
-    (console as any).log("[Facebook] Creating post with Graph API v18.0");
+    .log("[Facebook] Creating post with Graph API v18.0");
     return `fb-post-${Date.now()}`;
   }
 
@@ -121,12 +121,12 @@ export class FacebookAdapter implements SocialPlatformAdapter {
     }
 
     if (this.config.sandboxMode) {
-      (console as any).log("[Facebook Sandbox] Would delete post:", postId);
+      .log("[Facebook Sandbox] Would delete post:", postId);
       return true;
     }
 
     // In production mode, would make actual Graph API call
-    (console as any).log("[Facebook] Deleting post:", postId);
+    .log("[Facebook] Deleting post:", postId);
     return true;
   }
 

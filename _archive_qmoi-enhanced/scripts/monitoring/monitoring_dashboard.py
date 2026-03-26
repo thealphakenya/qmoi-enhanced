@@ -54,7 +54,7 @@ class MonitoringDashboard:
                 'refresh_interval': 30
             },
             'monitoring_endpoints': {
-                'master': 'http://localhost:8080/api/status',
+                'master': 'process.env.API_URL || "http://localhost:\1"/api/status',
                 'system_health': 'logs/system_health_latest.json',
                 'performance': 'logs/performance_latest.json',
                 'security': 'logs/security_latest.json',

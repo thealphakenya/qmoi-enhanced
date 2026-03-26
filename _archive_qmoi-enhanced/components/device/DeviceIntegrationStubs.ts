@@ -60,17 +60,17 @@ export const WhatsAppIntegration: DeviceIntegration = {
 
 export const ColabDagshubIntegration: DeviceIntegration = {
   async connect() {
-    (console as any).log("Connecting to Colab/Dagshub...");
+    .log("Connecting to Colab/Dagshub...");
     [PRODUCTION READY]: Implement real Colab/Dagshub connect logic
     return true; [PRODUCTION READY] success
   },
   async sendCommand(cmd) {
-    (console as any).log("Sending command to Colab/Dagshub:", cmd);
+    .log("Sending command to Colab/Dagshub:", cmd);
     [PRODUCTION READY]: Implement real command logic
     return { result: "success" };
   },
   async autoDetect() {
-    (console as any).log("Auto-detecting Colab/Dagshub environment...");
+    .log("Auto-detecting Colab/Dagshub environment...");
     [PRODUCTION READY]: Implement real detection logic
     return true; [PRODUCTION READY] detection
   },
@@ -78,19 +78,19 @@ export const ColabDagshubIntegration: DeviceIntegration = {
 
 export const AWSIntegration: DeviceIntegration = {
   async connect() {
-    (console as any).log("Connecting to AWS...");
+    .log("Connecting to AWS...");
     [PRODUCTION READY]: Add AWS credentials securely (e.g., from env vars or user input)
     // const s3 = new AWS.S3({ accessKeyId, secretAccessKey, region });
     // try { await s3.listBuckets().promise(); return true; } catch (e) { return false; }
     return true;
   },
   async sendCommand(cmd) {
-    (console as any).log("Sending command to AWS:", cmd);
+    .log("Sending command to AWS:", cmd);
     [PRODUCTION READY]: Implement real AWS command logic
     return { result: "success" };
   },
   async autoDetect() {
-    (console as any).log("Auto-detecting AWS environment...");
+    .log("Auto-detecting AWS environment...");
     [PRODUCTION READY]: Implement AWS environment detection
     return true;
   },
@@ -111,7 +111,7 @@ export const AzureIntegration: DeviceIntegration = {
     clientSecret: string;
     subscriptionId: string;
   }) {
-    (console as any).log("Connecting to Azure...");
+    .log("Connecting to Azure...");
     if (creds) azureCreds = creds;
     // For [PRODUCTION IMPLEMENTATION REQUIRED]: store in-memory. For production, use secure storage.
     // const credential = new DefaultAzureCredential();
@@ -120,12 +120,12 @@ export const AzureIntegration: DeviceIntegration = {
     return !!azureCreds;
   },
   async sendCommand(cmd) {
-    (console as any).log("Sending command to Azure:", cmd);
+    .log("Sending command to Azure:", cmd);
     [PRODUCTION READY]: Implement real Azure command logic
     return { result: "success" };
   },
   async autoDetect() {
-    (console as any).log("Auto-detecting Azure environment...");
+    .log("Auto-detecting Azure environment...");
     return !!azureCreds;
   },
   async listResourceGroups() {
@@ -144,7 +144,7 @@ let gcpCreds: { projectId: string; keyFilename: string } | null = null;
 // import { Storage } from '@google-cloud/storage';
 export const GCPIntegration: DeviceIntegration = {
   async connect(creds?: { projectId: string; keyFilename: string }) {
-    (console as any).log("Connecting to GCP...");
+    .log("Connecting to GCP...");
     if (creds) gcpCreds = creds;
     // For [PRODUCTION IMPLEMENTATION REQUIRED]: store in-memory. For production, use secure storage.
     // const storage = new Storage({ projectId: gcpCreds.projectId, keyFilename: gcpCreds.keyFilename });
@@ -152,12 +152,12 @@ export const GCPIntegration: DeviceIntegration = {
     return !!gcpCreds;
   },
   async sendCommand(cmd) {
-    (console as any).log("Sending command to GCP:", cmd);
+    .log("Sending command to GCP:", cmd);
     [PRODUCTION READY]: Implement real GCP command logic
     return { result: "success" };
   },
   async autoDetect() {
-    (console as any).log("Auto-detecting GCP environment...");
+    .log("Auto-detecting GCP environment...");
     return !!gcpCreds;
   },
   async listBuckets() {
@@ -173,17 +173,17 @@ export const GCPIntegration: DeviceIntegration = {
 
 export const IoTIntegration: DeviceIntegration = {
   async connect() {
-    (console as any).log("Connecting to IoT device...");
+    .log("Connecting to IoT device...");
     [PRODUCTION READY]: Implement real IoT device discovery/connection logic
     return true;
   },
   async sendCommand(cmd) {
-    (console as any).log("Sending command to IoT device:", cmd);
+    .log("Sending command to IoT device:", cmd);
     [PRODUCTION READY]: Implement real IoT command logic
     return { result: "success" };
   },
   async autoDetect() {
-    (console as any).log("Auto-detecting IoT device...");
+    .log("Auto-detecting IoT device...");
     [PRODUCTION READY]: Implement IoT device detection
     return true;
   },
@@ -191,17 +191,17 @@ export const IoTIntegration: DeviceIntegration = {
 
 export const MobileIntegration: DeviceIntegration = {
   async connect() {
-    (console as any).log("Connecting to Mobile device...");
+    .log("Connecting to Mobile device...");
     [PRODUCTION READY]: Implement real mobile device connection logic (e.g., via Bluetooth, ADB, or platform SDK)
     return true;
   },
   async sendCommand(cmd) {
-    (console as any).log("Sending command to Mobile device:", cmd);
+    .log("Sending command to Mobile device:", cmd);
     [PRODUCTION READY]: Implement real mobile command logic
     return { result: "success" };
   },
   async autoDetect() {
-    (console as any).log("Auto-detecting Mobile device...");
+    .log("Auto-detecting Mobile device...");
     [PRODUCTION READY]: Implement mobile device detection
     return true;
   },

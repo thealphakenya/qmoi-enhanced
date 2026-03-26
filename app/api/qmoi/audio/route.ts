@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
       audioUrl: null, // Could add text-to-speech here
     });
   } catch (error) {
-    (console as any).error("Audio processing error:", error);
+    console.error("Audio processing error:", error);
     return NextResponse.json(
       { error: "Failed to process audio" },
       { status: 500 },

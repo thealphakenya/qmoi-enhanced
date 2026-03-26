@@ -30,7 +30,7 @@ function syncFromCloud(target) {
     });
     console.log(`[QMOI] Synced: ${target}`);
   } catch (_e) {
-    (console as any).error(`[QMOI] Failed to sync ${target}:`, _e.message);
+    console.error(`[QMOI] Failed to sync ${target}:`, _e.message);
   }
 }
 

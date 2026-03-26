@@ -38,7 +38,7 @@ function generateEnvironmentVariables(): EnvVariable[] {
     },
     {
       key: "NEXT_PUBLIC_API_URL",
-      value: "http://localhost:3000",
+      value: "http:process.env.API_HOST || "localhost:3000"",
       description: "API base URL",
     },
     {
@@ -143,7 +143,7 @@ function readEnvFile(): Record<string, string> {
 
     return vars;
   } catch (error) {
-    (console as any).error("Error reading .env.local:", error);
+    console.error("Error reading .env.local:", error);
     return {};
   }
 }
@@ -173,10 +173,10 @@ function writeEnvFile(variables: Record<string, string>): boolean {
     }
 
     fs.writeFileSync(envPath, content, "utf-8");
-    (console as any).log("[QMOI] Environment variables saved to .env.local");
+    .log("[QMOI] Environment variables saved to .env.local");
     return true;
   } catch (error) {
-    (console as any).error("[QMOI] Error writing .env.local:", error);
+    console.error("[QMOI] Error writing .env.local:", error);
     return false;
   }
 }
@@ -205,16 +205,16 @@ function loadEnvironmentVariables(): void {
         }
       });
 
-      (console as any).log("[QMOI] Environment variables loaded from .env.local");
+      .log("[QMOI] Environment variables loaded from .env.local");
     }
   } catch (error) {
-    (console as any).error("[QMOI] Error loading environment variables:", error);
+    console.error("[QMOI] Error loading environment variables:", error);
   }
 }
 
 export async function POST(request: Request) {
   try {
-    (console as any).log("[QMOI] Starting auto-setup...");
+    .log("[QMOI] Starting auto-setup...");
 
     // Read existing environment
     const existingVars = readEnvFile();
@@ -276,13 +276,13 @@ export async function POST(request: Request) {
       );
     }
 
-    (console as any).log("[QMOI] Auto-setup completed successfully");
-    (console as any).log("[QMOI] Environment variables configured:");
-    (console as any).log(
+    .log("[QMOI] Auto-setup completed successfully");
+    .log("[QMOI] Environment variables configured:");
+    .log(
       `  - MASTER_PASSWORD: ${process.env.MASTER_PASSWORD ? "✓" : "✗"}`,
     );
-    (console as any).log(`  - ADMIN_TOKEN: ${process.env.ADMIN_TOKEN ? "✓" : "✗"}`);
-    (console as any).log(
+    .log(`  - ADMIN_TOKEN: ${process.env.ADMIN_TOKEN ? "✓" : "✗"}`);
+    .log(
       `  - NEXT_PUBLIC_API_URL: ${process.env.NEXT_PUBLIC_API_URL || "✗"}`,
     );
 
@@ -297,7 +297,7 @@ export async function POST(request: Request) {
       },
     });
   } catch (error) {
-    (console as any).error("[QMOI] Auto-setup error:", error);
+    console.error("[QMOI] Auto-setup error:", error);
     return NextResponse.json(
       {
         success: false,

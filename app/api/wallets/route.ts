@@ -49,8 +49,8 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: wallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    (globalThis.console as any)?.error?.("GET /api/wallets _error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },
@@ -91,8 +91,8 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    (globalThis.console as any)?.error?.("POST /api/wallets _error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },

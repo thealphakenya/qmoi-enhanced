@@ -70,7 +70,7 @@ export class TaskbarManager {
       "notification-click",
       (event: NotificationEvent, notification: NotificationData) => {
         // Handle notification clicks
-        (console as any).log("Notification clicked:", notification);
+        .log("Notification clicked:", notification);
       },
     );
 
@@ -78,7 +78,7 @@ export class TaskbarManager {
       "notification-close",
       (event: NotificationEvent, notification: NotificationData) => {
         // Handle notification closes
-        (console as any).log("Notification closed:", notification);
+        .log("Notification closed:", notification);
       },
     );
   }

@@ -131,7 +131,7 @@ class GitHubFallback {
         this.log("GitLab is not available");
         return false;
       }
-    } catch (_error) {
+    } catch (error) {
       this.log(`GitLab is not available: ${error.message}`, "WARN");
       return false;
     }
@@ -150,7 +150,7 @@ class GitHubFallback {
         this.log("GitHub is not available");
         return false;
       }
-    } catch (_error) {
+    } catch (error) {
       this.log(`GitHub is not available: ${error.message}`, "WARN");
       return false;
     }
@@ -190,7 +190,7 @@ class GitHubFallback {
         }
       });
 
-      child.on("error", (_error) => {
+      child.on("error", (error) => {
         this.log(`Command _error: ${error.message}`, "ERROR");
         reject({ _error: error.message, code: -1 });
       });
@@ -206,14 +206,14 @@ class GitHubFallback {
         await this.runCommand("git remote get-url github");
         this.log("GitHub remote already exists");
         return true;
-      } catch (_error) {
+      } catch (error) {
         // GitHub remote doesn't exist, add it
         const githubUrl = `https://github.com/${this.githubRepo}.git`;
         await this.runCommand(`git remote add github ${githubUrl}`);
         this.log("GitHub remote added successfully");
         return true;
       }
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to setup GitHub remote: ${error.message}`, "ERROR");
       return false;
     }
@@ -234,7 +234,7 @@ class GitHubFallback {
 
       this.log("Successfully synced to GitHub");
       return true;
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to sync to GitHub: ${error.message}`, "ERROR");
       return false;
     }
@@ -255,7 +255,7 @@ class GitHubFallback {
 
       this.log("Successfully synced from GitHub");
       return true;
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to sync from GitHub: ${error.message}`, "ERROR");
       return false;
     }
@@ -270,7 +270,7 @@ class GitHubFallback {
       });
       this.log(`Created GitHub issue: ${issue.number} - ${title}`);
       return issue;
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to create GitHub issue: ${error.message}`, "ERROR");
       return null;
     }
@@ -287,7 +287,7 @@ class GitHubFallback {
       });
       this.log(`Created GitHub release: ${release.tag_name}`);
       return release;
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to create GitHub release: ${error.message}`, "ERROR");
       return null;
     }
@@ -419,7 +419,7 @@ ${githubUrl}
 
       this.log(`GitHub notification sent: ${type}`);
       return issue;
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to send GitHub notification: ${error.message}`, "ERROR");
       throw error;
     }
@@ -467,7 +467,7 @@ ${githubUrl}
       }
 
       this.log("GitHub fallback pipeline completed successfully");
-    } catch (_error) {
+    } catch (error) {
       this.log(`GitHub fallback pipeline failed: ${error.message}`, "ERROR");
       throw error;
     }
@@ -489,7 +489,7 @@ ${githubUrl}
         try {
           await this.runCommand(script);
           this.log(`GitHub automation completed: ${script}`);
-        } catch (_error) {
+        } catch (error) {
           this.log(
             `GitHub automation failed: ${script} - ${error.message}`,
             "WARN",
@@ -498,7 +498,7 @@ ${githubUrl}
       }
 
       this.log("QMOI automation on GitHub completed");
-    } catch (_error) {
+    } catch (error) {
       this.log(
         `Failed to run QMOI automation on GitHub: ${error.message}`,
         "ERROR",
@@ -532,7 +532,7 @@ ${githubUrl}
       }
 
       return status;
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to monitor platforms: ${error.message}`, "ERROR");
       throw error;
     }
@@ -591,7 +591,7 @@ async function main() {
         console.log("  --notify [data] [type] Send GitHub notification");
         break;
     }
-  } catch (_error) {
+  } catch (error) {
     fallback.log(`GitHub fallback failed: ${error.message}`, "ERROR");
     process.exit(1);
   }

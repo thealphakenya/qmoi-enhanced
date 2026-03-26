@@ -16,13 +16,13 @@ export class INDEPENDENTQMOI.mdService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing INDEPENDENTQMOI.md');
+    .log("[Service] Initializing...");
+    .log('Initializing INDEPENDENTQMOI.md');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'INDEPENDENTQMOI.md executed' };
   }
 }

@@ -23,7 +23,7 @@ export async function GET(request: NextRequest) {
       templates,
     });
   } catch (error) {
-    (console as any).error("Enhanced email service error:", error);
+    console.error("Enhanced email service error:", error);
     return NextResponse.json(
       { success: false, error: "Failed to get email templates" },
       { status: 500 },
@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
       standard: createdTemplate,
     });
   } catch (error) {
-    (console as any).error("Failed to create email standard:", error);
+    console.error("Failed to create email standard:", error);
     return NextResponse.json(
       { success: false, error: "Failed to create email standard" },
       { status: 500 },

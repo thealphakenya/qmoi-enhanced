@@ -67,7 +67,7 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
       consumerSecret: maskSecret(credentials.consumerSecret),
       environment: credentials.environment,
     };
-    (console as any).log(`Safe backup for ${platform}:`, masked);
+    .log(`Safe backup for ${platform}:`, masked);
     // Intentionally do not send raw credentials anywhere.
   } catch (error) {
     (globalThis.console as any)?.error?.(

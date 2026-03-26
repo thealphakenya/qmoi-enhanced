@@ -27,7 +27,7 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
         "",
     });
 
-    (console as any).log(
+    .log(
       "[PayPalAdapter] initialized in %s mode",
       config.sandboxMode ? "sandbox" : "live",
     );
@@ -83,7 +83,7 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
 
       paypal.payment.create(create_payment_json, (error: any, payment: any) => {
         if (error) {
-          (console as any).error("[PayPalAdapter] Payment creation failed:", error);
+          console.error("[PayPalAdapter] Payment creation failed:", error);
           reject(error);
         } else {
           const paymentId = payment.id;
@@ -98,14 +98,14 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
             paypal_payment: payment,
           });
 
-          (console as any).log("[PayPalAdapter] Payment created:", paymentId);
+          .log("[PayPalAdapter] Payment created:", paymentId);
           resolve(paymentId);
         }
       });
     });
   }
   async capturePayment(paymentId: string) {
-    (console as any).log("[PayPalAdapter] Executing payment:", paymentId);
+    .log("[PayPalAdapter] Executing payment:", paymentId);
 
     return new Promise((resolve, reject) => {
       paypal.payment.execute(
@@ -113,7 +113,7 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
         { payer_id: "APPROVED" },
         (error: any, payment: any) => {
           if (error) {
-            (console as any).error("[PayPalAdapter] Payment execution failed:", error);
+            console.error("[PayPalAdapter] Payment execution failed:", error);
             WalletManager.appendAudit({
               _event: "payment_capture_failed",
               gateway: "paypal",
@@ -122,7 +122,7 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
             });
             reject(error);
           } else {
-            (console as any).log(
+            .log(
               "[PayPalAdapter] Payment executed successfully:",
               paymentId,
             );
@@ -141,7 +141,7 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
     });
   }
   async refundPayment(paymentId: string, amount?: number) {
-    (console as any).log("[PayPalAdapter] dry-refund", paymentId, amount);
+    .log("[PayPalAdapter] dry-refund", paymentId, amount);
     return true;
   }
   async getTransactionHistory(startDate: Date, endDate: Date) {
@@ -155,19 +155,19 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
     error?: string;
   }> {
     try {
-      (console as any).log("[PayPalAdapter] Getting account balance...");
+      .log("[PayPalAdapter] Getting account balance...");
 
       return new Promise((resolve) => {
         // Use PayPal's payout balance API to get available balance
         paypal.payout.getBalance({}, (error: any, balance: any) => {
           if (error) {
-            (console as any).error("[PayPalAdapter] Balance check failed:", error);
+            console.error("[PayPalAdapter] Balance check failed:", error);
             resolve({
               success: false,
               error: error.message || "Failed to retrieve PayPal balance",
             });
           } else {
-            (console as any).log("[PayPalAdapter] Balance retrieved successfully");
+            .log("[PayPalAdapter] Balance retrieved successfully");
 
             // Parse balance response
             const balances = balance.balances || [];
@@ -203,7 +203,7 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
         });
       });
     } catch (error) {
-      (console as any).error("[PayPalAdapter] Balance check error:", error);
+      console.error("[PayPalAdapter] Balance check error:", error);
       return {
         success: false,
         error: error.message || "System error during balance check",

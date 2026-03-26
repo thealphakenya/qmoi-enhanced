@@ -18,8 +18,8 @@ async function updateMpesaTransaction(details: any) {
   // Production: update the transaction record in the database
   try {
     const prisma = await getPrismaClient();
-    if (prisma && (prisma as any).transaction) {
-      await (prisma as any).transaction.update({
+    if (prisma && .transaction) {
+      await .transaction.update({
         where: { transactionId: details.checkoutRequestId },
         data: {
           status: "completed",
@@ -33,7 +33,7 @@ async function updateMpesaTransaction(details: any) {
       });
     }
   } catch (e) {
-    (console as any).error("updateMpesaTransaction error:", e);
+    console.error("updateMpesaTransaction error:", e);
   }
   return true;
 }
@@ -59,7 +59,7 @@ async function triggerPostPaymentActions(details: any) {
       userEmail,
     });
   } catch (error) {
-    (console as any).error(
+    console.error(
       "Failed to send payment success notifications:",
       error,
     );
@@ -98,7 +98,7 @@ export async function POST(_req: NextRequest) {
 
     const body: any = raw ? JSON.parse(raw) : await _req.json();
 
-    (console as any).log("M-Pesa Callback received:", body);
+    .log("M-Pesa Callback received:", body);
 
     // Extract transaction details safely
     const CheckoutRequestID = body?.Body?.stkCallback?.CheckoutRequestID;
@@ -164,7 +164,7 @@ export async function POST(_req: NextRequest) {
         resultDesc: ResultDesc,
       });
     } catch (error) {
-      (console as any).error(
+      console.error(
         "Failed to send payment failure notifications:",
         error,
       );

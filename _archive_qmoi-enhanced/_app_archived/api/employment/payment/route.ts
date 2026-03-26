@@ -61,7 +61,7 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
       pesapal: { consumerKey: maskSecret(credentials.pesapal.consumerKey) },
       mpesa: { passkey: maskSecret(credentials.mpesa.passkey) },
     };
-    (console as any).log(`Safe backup for ${platform}:`, masked);
+    .log(`Safe backup for ${platform}:`, masked);
     // Intentionally avoid sending raw secrets via email or API.
   } catch (error) {
     (globalThis.console as any)?.error?.(

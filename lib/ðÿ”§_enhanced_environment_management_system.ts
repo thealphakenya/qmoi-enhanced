@@ -16,13 +16,13 @@ export class ðŸ”§EnhancedEnvironmentManagementSystemService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing ðŸ”§ Enhanced Environment Management System');
+    .log("[Service] Initializing...");
+    .log('Initializing ðŸ”§ Enhanced Environment Management System');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'ðŸ”§ Enhanced Environment Management System executed' };
   }
 }

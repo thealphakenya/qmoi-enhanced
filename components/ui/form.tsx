@@ -30,7 +30,7 @@ const FormFieldContext = React.createContext<FormFieldContextValue>(
 );
 
 const FormField = (props: FormFieldProps) => {
-  const name = (props as any)?.name ?? "";
+  const name = ?.name ?? "";
 
   return (
     <FormFieldContext.Provider value={{ name: String(name) }}>

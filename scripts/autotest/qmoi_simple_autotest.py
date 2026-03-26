@@ -134,7 +134,7 @@ def main():
             failed.append(api)
 
     # 4. Dashboard (if running)
-    dashboard_url = "http://localhost:3010"
+    dashboard_url = "http:process.env.API_HOST || "localhost:3000""
     try:
         requests.get(dashboard_url, timeout=5)
         log_result(f"✅ Dashboard reachable at {dashboard_url}")

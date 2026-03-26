@@ -71,7 +71,7 @@ export function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps) {
         setFriends(data.friends);
       }
     } catch (error) {
-      (console as any).error("Failed to fetch friends:", error);
+      console.error("Failed to fetch friends:", error);
     } finally {
       setIsLoading(false);
     }
@@ -88,7 +88,7 @@ export function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps) {
         setPendingRequests(data.pending);
       }
     } catch (error) {
-      (console as any).error("Failed to fetch pending requests:", error);
+      console.error("Failed to fetch pending requests:", error);
     }
   };
 
@@ -103,7 +103,7 @@ export function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps) {
         setStats(data.stats);
       }
     } catch (error) {
-      (console as any).error("Failed to fetch stats:", error);
+      console.error("Failed to fetch stats:", error);
     }
   };
 

@@ -42,8 +42,8 @@ class QMOIComprehensiveTestSuite {
   private conversationHistory: string[] = [];
 
   constructor() {
-    (console as any).log("🚀 Initializing QMOI Comprehensive Test Suite");
-    (console as any).log(`⏰ Test Start: ${new Date().toISOString()}`);
+    .log("🚀 Initializing QMOI Comprehensive Test Suite");
+    .log(`⏰ Test Start: ${new Date().toISOString()}`);
   }
 
   // ==================== TEST UTILITIES ====================
@@ -52,7 +52,7 @@ class QMOIComprehensiveTestSuite {
     type: "INFO" | "SUCCESS" | "ERROR" | "WARN" = "INFO",
   ) {
     const icons = { INFO: "ℹ️", SUCCESS: "✅", ERROR: "❌", WARN: "⚠️" };
-    (console as any).log(`${icons[type]} ${message}`);
+    .log(`${icons[type]} ${message}`);
   }
 
   private recordResult(
@@ -659,16 +659,16 @@ class QMOIComprehensiveTestSuite {
 
   // ==================== REPORT & EXECUTION ====================
   async generateReport() {
-    (console as any).log("\n" + "=".repeat(80));
-    (console as any).log("📊 QMOI COMPREHENSIVE TEST REPORT");
-    (console as any).log("=".repeat(80));
+    .log("\n" + "=".repeat(80));
+    .log("📊 QMOI COMPREHENSIVE TEST REPORT");
+    .log("=".repeat(80));
 
     const passCount = this.results.filter((r) => r.status === "PASS").length;
     const failCount = this.results.filter((r) => r.status === "FAIL").length;
     const totalTests = this.results.length;
     const passRate = ((passCount / totalTests) * 100).toFixed(1);
 
-    (console as any).log(
+    .log(
       `\n📈 Test Results: ${passCount}/${totalTests} PASSED (${passRate}%)\n`,
     );
 
@@ -696,17 +696,17 @@ class QMOIComprehensiveTestSuite {
         const categoryPass = categoryResults.filter(
           (r) => r.status === "PASS",
         ).length;
-        (console as any).log(
+        .log(
           `\n${category} Tests (${categoryPass}/${categoryResults.length})`,
         );
-        (console as any).log("-".repeat(80));
+        .log("-".repeat(80));
 
         for (const result of categoryResults) {
           const icon = result.status === "PASS" ? "✅" : "❌";
-          (console as any).log(`${icon} ${result.name}`);
-          (console as any).log(`   Message: ${result.message}`);
+          .log(`${icon} ${result.name}`);
+          .log(`   Message: ${result.message}`);
           if (result.details) {
-            (console as any).log(
+            .log(
               `   Details: ${JSON.stringify(result.details).substring(0, 100)}`,
             );
           }
@@ -716,17 +716,17 @@ class QMOIComprehensiveTestSuite {
 
     // Conversation history
     if (this.conversationHistory.length > 0) {
-      (console as any).log("\n" + "=".repeat(80));
-      (console as any).log("💬 Conversation History");
-      (console as any).log("=".repeat(80));
+      .log("\n" + "=".repeat(80));
+      .log("💬 Conversation History");
+      .log("=".repeat(80));
       for (const msg of this.conversationHistory) {
-        (console as any).log(msg);
+        .log(msg);
       }
     }
 
-    (console as any).log("\n" + "=".repeat(80));
-    (console as any).log(`⏰ Test Complete: ${new Date().toISOString()}`);
-    (console as any).log("=".repeat(80) + "\n");
+    .log("\n" + "=".repeat(80));
+    .log(`⏰ Test Complete: ${new Date().toISOString()}`);
+    .log("=".repeat(80) + "\n");
 
     return {
       summary: {
@@ -782,20 +782,20 @@ async function main() {
   const suite = new QMOIComprehensiveTestSuite();
 
   try {
-    (console as any).log("\nWaiting for dev server to be ready...");
-    (console as any).log("Make sure to run: npm run dev\n");
+    .log("\nWaiting for dev server to be ready...");
+    .log("Make sure to run: npm run dev\n");
 
     const report = await suite.runAllTests();
 
     // Save report to file
-    (console as any).log("\n💾 Saving test report...");
+    .log("\n💾 Saving test report...");
     // In a real environment, this would write to a file
-    (console as any).log(
+    .log(
       "Test report data:",
       JSON.stringify(report, null, 2).substring(0, 500),
     );
   } catch (error) {
-    (console as any).error("Test suite failed:", error);
+    console.error("Test suite failed:", error);
     process.exit(1);
   }
 }

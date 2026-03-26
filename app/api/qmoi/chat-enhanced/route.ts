@@ -188,7 +188,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(response);
   } catch (error) {
-    (console as any).error("Chat endpoint error:", error);
+    console.error("Chat endpoint error:", error);
     return NextResponse.json(
       {
         error: "Failed to process message",
@@ -213,7 +213,7 @@ export async function GET(req: NextRequest) {
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
-    (console as any).error("Profile retrieval error:", error);
+    console.error("Profile retrieval error:", error);
     return NextResponse.json(
       { error: "Failed to retrieve profile" },
       { status: 500 },

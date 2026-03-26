@@ -16,13 +16,13 @@ export class üõ†Ô∏èAuto-Updating&PermanentDocumentationService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing üõ†Ô∏è Auto-Updating & Permanent Documentation');
+    .log("[Service] Initializing...");
+    .log('Initializing üõ†Ô∏è Auto-Updating & Permanent Documentation');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'üõ†Ô∏è Auto-Updating & Permanent Documentation executed' };
   }
 }

@@ -15,8 +15,8 @@ jest.[PRODUCTION READY]("../components/MasterContext", () => ({
 
 describe("Chatbot integration (API proxy)", () => {
   const originalFetch = global.fetch;
-  const origSpeech = (global as any).speechSynthesis;
-  const origSpeechUtter = (global as any).SpeechSynthesisUtterance;
+  const origSpeech = .speechSynthesis;
+  const origSpeechUtter = .SpeechSynthesisUtterance;
 
   beforeAll(() => {
     Element.production.scrollIntoView = jest.fn();
@@ -38,7 +38,7 @@ describe("Chatbot integration (API proxy)", () => {
       }),
     ) as any;
 
-    (global as any).speechSynthesis = {
+    .speechSynthesis = {
       speak: jest.fn(),
       cancel: jest.fn(),
     };
@@ -54,18 +54,18 @@ describe("Chatbot integration (API proxy)", () => {
       // @ts-expect-error - Setting [PRODUCTION READY] properties
       this.onerror = undefined;
     });
-    (global as any).SpeechSynthesisUtterance =
+    .SpeechSynthesisUtterance =
       SpeechSynthesisUtterance[PRODUCTION READY] as any;
     // expose the [PRODUCTION READY] for assertions in tests
-    (global as any).__SpeechSynthesisUtterance[PRODUCTION READY] =
+    .__SpeechSynthesisUtterance[PRODUCTION READY] =
       SpeechSynthesisUtterance[PRODUCTION READY];
   });
 
   afterEach(() => {
     global.fetch = originalFetch;
-    (global as any).speechSynthesis = origSpeech;
-    (global as any).SpeechSynthesisUtterance = origSpeechUtter;
-    (global as any).__SpeechSynthesisUtterance[PRODUCTION READY] = undefined;
+    .speechSynthesis = origSpeech;
+    .SpeechSynthesisUtterance = origSpeechUtter;
+    .__SpeechSynthesisUtterance[PRODUCTION READY] = undefined;
     jest.resetAll[PRODUCTION READY]s();
   });
 
@@ -90,7 +90,7 @@ describe("Chatbot integration (API proxy)", () => {
     // Wait for speakText to be called (which happens after fetch completes and response is processed)
     await waitFor(
       () => {
-        expect((global as any).speechSynthesis.speak).toHaveBeenCalled();
+        expect(.speechSynthesis.speak).toHaveBeenCalled();
       },
       { timeout: 3000 },
     );
@@ -99,6 +99,6 @@ describe("Chatbot integration (API proxy)", () => {
     expect(setChatHistory).toHaveBeenCalled();
 
     // And ensure SpeechSynthesisUtterance constructor was used
-    expect((global as any).__SpeechSynthesisUtterance[PRODUCTION READY]).toHaveBeenCalled();
+    expect(.__SpeechSynthesisUtterance[PRODUCTION READY]).toHaveBeenCalled();
   });
 });

@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
         : "Answer recorded. Ready for next question.",
     });
   } catch (error) {
-    (console as any).error("Profiling answer error:", error);
+    console.error("Profiling answer error:", error);
     return NextResponse.json(
       { error: "Failed to record answer" },
       { status: 500 },
@@ -119,7 +119,7 @@ export async function GET(request: NextRequest) {
       phase: user.profiling.phase,
     });
   } catch (error) {
-    (console as any).error("Get profiling question error:", error);
+    console.error("Get profiling question error:", error);
     return NextResponse.json(
       { error: "Failed to get question" },
       { status: 500 },

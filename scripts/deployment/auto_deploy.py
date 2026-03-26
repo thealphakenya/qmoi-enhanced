@@ -69,7 +69,7 @@ class QMOIAutoDeploy:
             return {
                 'environments': {
                     'development': {
-                        'url': 'http://localhost:3000',
+                        'url': 'http:process.env.API_HOST || "localhost:3000"',
                         'auto_restart': True,
                         'health_check_timeout': 30
                     },

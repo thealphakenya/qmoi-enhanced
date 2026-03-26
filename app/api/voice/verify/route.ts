@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
       message: "Voice verification successful",
       userRole, // Include role in response for verification
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Internal error";
     return NextResponse.json({ _error: errorMessage }, { status: 500 });

@@ -16,13 +16,13 @@ export class üìÖDated&CategorizedDocumentation(Auto-Updating)Service {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing üìÖ Dated & Categorized Documentation (Auto-Updating)');
+    .log("[Service] Initializing...");
+    .log('Initializing üìÖ Dated & Categorized Documentation (Auto-Updating)');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'üìÖ Dated & Categorized Documentation (Auto-Updating) executed' };
   }
 }

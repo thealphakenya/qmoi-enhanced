@@ -155,7 +155,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,

@@ -60,7 +60,7 @@ export async function GET(request: NextRequest) {
       { status: 200 },
     );
   } catch (error) {
-    (console as any).error("WhatsApp webhook error:", error);
+    console.error("WhatsApp webhook error:", error);
     return NextResponse.json(
       {
         _error: "Webhook processing error",
@@ -209,7 +209,7 @@ export async function POST(request: NextRequest) {
         );
     }
   } catch (error) {
-    (console as any).error("WhatsApp API error:", error);
+    console.error("WhatsApp API error:", error);
     return NextResponse.json(
       {
         _error: "Internal server error",

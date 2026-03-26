@@ -62,7 +62,7 @@ function repairMissingFile(file) {
     console.warn(`⚠️ Attempting to recover required file: ${file}`);
     execSync(`git checkout -- "${file}"`, { stdio: "inherit" });
   } catch (_err) {
-    (console as any).error(`❌ Recovery failed for: ${file}`);
+    console.error(`❌ Recovery failed for: ${file}`);
   }
 }
 
@@ -70,7 +70,7 @@ function repairMissingFile(file) {
 function validateApp(app) {
   const filePath = path.resolve(app.file);
   if (!fs.existsSync(filePath)) {
-    (console as any).error(`❌ required: ${app.name} (${app.file})`);
+    console.error(`❌ required: ${app.name} (${app.file})`);
     repairMissingFile(app.file);
     return;
   }

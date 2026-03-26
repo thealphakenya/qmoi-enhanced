@@ -154,8 +154,8 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      const error = _error instanceof Error ? _error : new Error(String(_error));
+    } catch (error) {
+      const error = _error instanceof Error ? _error : new Error(String(error));
       safeConsoleError("Connection check failed:", error);
       this.config.bitget.connectionStatus.lastError = error.message;
     }
@@ -178,8 +178,8 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        safeConsoleError("Recovery strategy failed:", _error);
+      } catch (error) {
+        safeConsoleError("Recovery strategy failed:", error);
       }
     }
   }
@@ -195,8 +195,8 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        safeConsoleError(`Retry ${i + 1} failed:`, _error);
+      } catch (error) {
+        safeConsoleError(`Retry ${i + 1} failed:`, error);
       }
     }
   }
@@ -266,8 +266,8 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      safeConsoleError("Failed to connect to Bitget:", _error);
+    } catch (error) {
+      safeConsoleError("Failed to connect to Bitget:", error);
       return false;
     }
   }
@@ -297,8 +297,8 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      safeConsoleError("Failed to update Bitget whitelist:", _error);
+    } catch (error) {
+      safeConsoleError("Failed to update Bitget whitelist:", error);
     }
   }
 
@@ -363,10 +363,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
+    } catch (error) {
       safeConsoleError(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -523,7 +523,7 @@ export class TradingManager {
         timestamp: Date.now(),
       };
     } catch (_error: unknown) {
-      const error = _error instanceof Error ? _error : new Error(String(_error));
+      const error = _error instanceof Error ? _error : new Error(String(error));
       const errorMessage = error.message || "Unknown error occurred";
       return {
         trade: null,

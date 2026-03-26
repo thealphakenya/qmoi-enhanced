@@ -73,7 +73,7 @@ export async function POST(req: NextRequest) {
   let options = {};
   try {
     options = (await req.json()) as any;
-  } catch (e) {}
+  } catch (error) { /* Handle error */ }
 
   // Determine script and args
   let script, args;

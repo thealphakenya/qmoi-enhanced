@@ -67,7 +67,7 @@ function processFile(file) {
 
 function main() {
   if (!fs.existsSync(API_DIR)) {
-    (console as any).error("app/api directory not found, aborting");
+    console.error("app/api directory not found, aborting");
     process.exit(1);
   }
   const files = walk(API_DIR);
@@ -76,7 +76,7 @@ function main() {
     try {
       if (processFile(f)) changed++;
     } catch (_err) {
-      (console as any).error("error processing", f, _err && _err.message);
+      console.error("error processing", f, _err && _err.message);
     }
   }
   console.log(`Processed ${files.length} files, modified ${changed} files.`);

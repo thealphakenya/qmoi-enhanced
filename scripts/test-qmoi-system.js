@@ -48,8 +48,8 @@ class QMOISystemTester {
       this.musicSystem = new QMOIMusicProductionSystem();
 
       console.log("✅ QMOI System Tester initialized");
-    } catch (_error) {
-      (console as any).error(
+    } catch (error) {
+      console.error(
         "❌ Failed to initialize QMOI System Tester:",
         error.message,
       );
@@ -109,8 +109,8 @@ class QMOISystemTester {
       await this.generateTestReport();
 
       console.log("✅ All tests completed successfully");
-    } catch (_error) {
-      (console as any).error("❌ Test execution failed:", error.message);
+    } catch (error) {
+      console.error("❌ Test execution failed:", error.message);
       await this.generateTestReport();
       throw error;
     }
@@ -142,7 +142,7 @@ class QMOISystemTester {
         duration,
         "System initialization successful",
       );
-    } catch (_error) {
+    } catch (error) {
       const duration = Date.now() - startTime;
       this.addTestResult(testName, "FAIL", duration, error.message);
       throw error;
@@ -179,7 +179,7 @@ class QMOISystemTester {
         await fs.access(file);
         const content = await fs.readFile(file, "utf8");
         JSON.parse(content); // Validate JSON
-      } catch (_error) {
+      } catch (error) {
         throw new Error(`Configuration file issue: ${file} - ${error.message}`);
       }
     }
@@ -206,7 +206,7 @@ class QMOISystemTester {
     for (const dir of requiredDirs) {
       try {
         await fs.access(dir);
-      } catch (_error) {
+      } catch (error) {
         throw new Error(`required directory: ${dir}`);
       }
     }
@@ -227,7 +227,7 @@ class QMOISystemTester {
           throw new Error(`required critical dependency: ${dep}`);
         }
       }
-    } catch (_error) {
+    } catch (error) {
       throw new Error(`Dependency test failed: ${error.message}`);
     }
   }
@@ -279,7 +279,7 @@ class QMOISystemTester {
         duration,
         "Master system fully functional",
       );
-    } catch (_error) {
+    } catch (error) {
       const duration = Date.now() - startTime;
       this.addTestResult(testName, "FAIL", duration, error.message);
       throw error;
@@ -335,7 +335,7 @@ class QMOISystemTester {
         duration,
         "All notification channels working",
       );
-    } catch (_error) {
+    } catch (error) {
       const duration = Date.now() - startTime;
       this.addTestResult(testName, "FAIL", duration, error.message);
       throw error;
@@ -386,7 +386,7 @@ class QMOISystemTester {
         duration,
         "Avatar system fully functional",
       );
-    } catch (_error) {
+    } catch (error) {
       const duration = Date.now() - startTime;
       this.addTestResult(testName, "FAIL", duration, error.message);
       throw error;
@@ -428,7 +428,7 @@ class QMOISystemTester {
         duration,
         "Music production system functional",
       );
-    } catch (_error) {
+    } catch (error) {
       const duration = Date.now() - startTime;
       this.addTestResult(testName, "FAIL", duration, error.message);
       throw error;
@@ -464,7 +464,7 @@ class QMOISystemTester {
         duration,
         "Auto-fix system working correctly",
       );
-    } catch (_error) {
+    } catch (error) {
       const duration = Date.now() - startTime;
       this.addTestResult(testName, "FAIL", duration, error.message);
       throw error;
@@ -510,7 +510,7 @@ jobs:
       execSync("node scripts/qmoi-enhanced-auto-fix.js --fix-all", {
         stdio: "pipe",
       });
-    } catch (_error) {
+    } catch (error) {
       // Expected to fail in test environment, but should not crash
     }
   }
@@ -523,7 +523,7 @@ jobs:
       execSync("node scripts/qmoi-github-actions-fixer.js --fix-all", {
         stdio: "pipe",
       });
-    } catch (_error) {
+    } catch (error) {
       // Expected to fail in test environment, but should not crash
     }
   }
@@ -536,7 +536,7 @@ jobs:
       execSync("node scripts/qmoi-github-actions-fixer.js --test", {
         stdio: "pipe",
       });
-    } catch (_error) {
+    } catch (error) {
       // Expected to fail in test environment, but should not crash
     }
   }
@@ -547,7 +547,7 @@ jobs:
     for (const file of testFiles) {
       try {
         await fs.unlink(file);
-      } catch (_error) {
+      } catch (error) {
         // Ignore cleanup errors
       }
     }
@@ -567,7 +567,7 @@ jobs:
         execSync("node scripts/qmoi-github-integration.js --test", {
           stdio: "pipe",
         });
-      } catch (_error) {
+      } catch (error) {
         // Expected to fail in test environment, but should not crash
       }
 
@@ -578,7 +578,7 @@ jobs:
         duration,
         "GitHub integration test completed",
       );
-    } catch (_error) {
+    } catch (error) {
       const duration = Date.now() - startTime;
       this.addTestResult(testName, "FAIL", duration, error.message);
       throw error;
@@ -599,7 +599,7 @@ jobs:
         execSync("node scripts/qmoi-vulnerability-scanner.js --test", {
           stdio: "pipe",
         });
-      } catch (_error) {
+      } catch (error) {
         // Expected to fail in test environment, but should not crash
       }
 
@@ -610,7 +610,7 @@ jobs:
         duration,
         "Vulnerability scanner test completed",
       );
-    } catch (_error) {
+    } catch (error) {
       const duration = Date.now() - startTime;
       this.addTestResult(testName, "FAIL", duration, error.message);
       throw error;
@@ -647,7 +647,7 @@ jobs:
         duration,
         "Parallel processing working correctly",
       );
-    } catch (_error) {
+    } catch (error) {
       const duration = Date.now() - startTime;
       this.addTestResult(testName, "FAIL", duration, error.message);
       throw error;
@@ -701,7 +701,7 @@ jobs:
         duration,
         "Enhanced auto projects system functional",
       );
-    } catch (_error) {
+    } catch (error) {
       const duration = Date.now() - startTime;
       this.addTestResult(testName, "FAIL", duration, error.message);
       throw error;
@@ -755,7 +755,7 @@ jobs:
         duration,
         "Revenue dashboard system functional",
       );
-    } catch (_error) {
+    } catch (error) {
       const duration = Date.now() - startTime;
       this.addTestResult(testName, "FAIL", duration, error.message);
       throw error;

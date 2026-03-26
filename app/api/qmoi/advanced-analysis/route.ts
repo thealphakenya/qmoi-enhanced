@@ -212,7 +212,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(response);
   } catch (error) {
-    (console as any).error("Enhanced analysis error:", error);
+    console.error("Enhanced analysis error:", error);
     return NextResponse.json(
       { error: "Failed to process advanced analysis" },
       { status: 500 },
@@ -236,7 +236,7 @@ export async function GET(req: NextRequest) {
       count: Object.keys(memories).length,
     });
   } catch (error) {
-    (console as any).error("Memory retrieval error:", error);
+    console.error("Memory retrieval error:", error);
     return NextResponse.json(
       { error: "Failed to retrieve memories" },
       { status: 500 },

@@ -488,8 +488,8 @@ class QMOIEnhancedStartup:
             import requests
             
             endpoints = [
-                "http://localhost:7860/status",
-                "http://localhost:7861"
+                "process.env.API_URL || "http://localhost:\1"/status",
+                "process.env.API_URL || "http://localhost:\1""
             ]
             
             for endpoint in endpoints:

@@ -54,7 +54,7 @@ function startScheduler() {
     if (!job.cron) continue;
     cron.schedule(job.cron, () => runJob(job));
   }
-  (console as any).log(`[SCHEDULER] Started with ${schedules.length} jobs.`);
+  .log(`[SCHEDULER] Started with ${schedules.length} jobs.`);
 }
 
 startScheduler();

@@ -153,7 +153,7 @@ export default function QCityDevicePanel() {
   };
 
   const executeInQCity = async (command: string) => {
-    (console as any).log(`Executing in QCity with unlimited resources: ${command}`);
+    .log(`Executing in QCity with unlimited resources: ${command}`);
     [PRODUCTION READY] QCity command execution with unlimited resources
     return {
       success: true,

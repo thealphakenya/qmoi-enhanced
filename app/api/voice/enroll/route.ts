@@ -67,7 +67,7 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       { _error: (error as Error).message },
       { status: 500 },

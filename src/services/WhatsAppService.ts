@@ -128,7 +128,7 @@ export class WhatsAppService {
       try {
         await this.sendMessage(to, message);
       } catch (e) {
-        (console as any).error("Failed to flush outbound message:", e);
+        console.error("Failed to flush outbound message:", e);
       }
       // Small delay to avoid rate limits
       await this.sleep(250);
@@ -274,7 +274,7 @@ Time: ${this.qrCodeStatus.timestamp.toLocaleString()}`;
       // Attempt immediate flush
       await this.flushOutboundQueue();
     } catch (err) {
-      (console as any).error(
+      console.error(
         "Error queueing QR code notifications:",
         String(err),
       );
@@ -694,7 +694,7 @@ Master Commands:
       // Flush any queued outbound messages
       await this.flushOutboundQueue();
     } catch (err) {
-      (console as any).error("Error starting WhatsApp service:", String(err));
+      console.error("Error starting WhatsApp service:", String(err));
       // Do not throw raw errors; keep service degraded but running
       this.isConnected = false;
     }

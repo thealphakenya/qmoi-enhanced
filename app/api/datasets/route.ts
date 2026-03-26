@@ -34,7 +34,7 @@ export async function GET() {
       meta: syncStatus,
     });
   } catch (error) {
-    (console as any).error("Error listing datasets:", error);
+    console.error("Error listing datasets:", error);
     return NextResponse.json(
       { success: false, error: "Failed to list datasets" },
       { status: 500 },
@@ -136,7 +136,7 @@ export async function POST(request: Request) {
       );
       const totalItems = datasets.reduce(
         (acc: number, d: any) =>
-          acc + ((d as any).itemCount ?? d.stats?.totalItems ?? 0),
+          acc + (.itemCount ?? d.stats?.totalItems ?? 0),
         0,
       );
       const stats = {
@@ -231,7 +231,7 @@ export async function POST(request: Request) {
       { status: 400 },
     );
   } catch (error) {
-    (console as any).error("Error handling dataset request:", error);
+    console.error("Error handling dataset request:", error);
     return NextResponse.json(
       {
         success: false,

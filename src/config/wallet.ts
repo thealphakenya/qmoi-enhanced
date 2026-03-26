@@ -81,8 +81,8 @@ export class WalletManager {
       );
 
       this.balances = [...spotBalances, ...futuresBalances, ...otcBalances];
-    } catch (_error) {
-      const error = _error instanceof Error ? _error : new Error(String(_error));
+    } catch (error) {
+      const error = _error instanceof Error ? _error : new Error(String(error));
       safeConsoleError("Error updating wallet balances:", error);
       throw error;
     }
@@ -94,10 +94,10 @@ export class WalletManager {
       // PRODUCTION: Integrate with CoinGecko, Binance, or other price API
       // data: const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
       return 0; [PRODUCTION READY]: returns 0 until production API is configured
-    } catch (_error) {
+    } catch (error) {
       safeConsoleError(
         `Error fetching USD price for ${currency}:`,
-        _error,
+        error,
       );
       return 0;
     }

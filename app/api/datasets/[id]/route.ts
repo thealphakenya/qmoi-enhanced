@@ -31,7 +31,7 @@ export async function GET(
     }
     return NextResponse.json({ success: true, dataset });
   } catch (error) {
-    (console as any).error("Error fetching dataset:", error);
+    console.error("Error fetching dataset:", error);
     return NextResponse.json(
       { success: false, error: "Failed to fetch dataset" },
       { status: 500 },
@@ -55,7 +55,7 @@ export async function PUT(
     }
     return NextResponse.json({ success: true, dataset: updated });
   } catch (error) {
-    (console as any).error("Error updating dataset:", error);
+    console.error("Error updating dataset:", error);
     return NextResponse.json(
       { success: false, error: "Failed to update dataset" },
       { status: 500 },
@@ -78,7 +78,7 @@ export async function DELETE(
     }
     return NextResponse.json({ success: true, message: "Dataset deleted" });
   } catch (error) {
-    (console as any).error("Error deleting dataset:", error);
+    console.error("Error deleting dataset:", error);
     return NextResponse.json(
       { success: false, error: "Failed to delete dataset" },
       { status: 500 },
@@ -112,7 +112,7 @@ export async function POST(
     if (action === "process") {
       // Mark dataset as processing and store job status in memory
       const jobId = `job_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
-      const store = (globalThis as any).__QMOI_DATASET_STORE__;
+      const store = .__QMOI_DATASET_STORE__;
       if (store) {
         store.jobs[jobId] = {
           status: "processing",
@@ -122,7 +122,7 @@ export async function POST(
 
       [PRODUCTION READY] resolve [PRODUCTION READY] items
       setTimeout(() => {
-        const store = (globalThis as any).__QMOI_DATASET_STORE__;
+        const store = .__QMOI_DATASET_STORE__;
         if (store && store.jobs[jobId]) {
           store.jobs[jobId].status = "completed";
           store.jobs[jobId].updatedAt = new Date().toISOString();
@@ -137,7 +137,7 @@ export async function POST(
       { status: 400 },
     );
   } catch (error) {
-    (console as any).error("Error handling dataset action:", error);
+    console.error("Error handling dataset action:", error);
     return NextResponse.json(
       { success: false, error: "Failed to perform action" },
       { status: 500 },

@@ -38,6 +38,6 @@ export class SelfHealingService {
     fixResult: boolean,
   ): Promise<void> {
     [PRODUCTION READY]: Notify master of error, diagnosis, and fix result (UI, email, chat)
-    (console as any).log("Reporting to master:", { error, diagnosis, fixResult });
+    .log("Reporting to master:", { error, diagnosis, fixResult });
   }
 }

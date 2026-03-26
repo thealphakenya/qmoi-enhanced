@@ -83,7 +83,7 @@ class GitLabNotificationService {
       });
       this.log(`Created GitLab issue: ${issue.iid} - ${title}`);
       return issue;
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to create GitLab issue: ${error.message}`, 'ERROR');
       return null;
     }
@@ -96,7 +96,7 @@ class GitLabNotificationService {
         body: comment
       });
       this.log(`Added GitLab comment to MR ${mrId}`);
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to add GitLab comment: ${error.message}`, 'ERROR');
     }
   }
@@ -109,7 +109,7 @@ class GitLabNotificationService {
         target_url: `${this.gitlabUrl}/${this.projectId}/-/jobs/${this.jobId}`
       });
       this.log(`Updated GitLab status: ${status} - ${description}`);
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to update GitLab status: ${error.message}`, 'ERROR');
     }
   }
@@ -471,13 +471,13 @@ ${jobUrl}
       this.log(`Pipeline notification sent: ${type}`);
       return issue;
       
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to send pipeline notification: ${error.message}`, 'ERROR');
       throw error;
     }
   }
 
-  async sendErrorNotification(_error, context = {}) {
+  async sendErrorNotification(error, context = {}) {
     try {
       const timestamp = new Date().toISOString();
       const errorTitle = `❌ QMOI Error - ${context.type || 'Unknown'} - ${timestamp}`;
@@ -585,7 +585,7 @@ ${this.gitlabUrl}/${this.projectId}/-/jobs/${this.jobId}
       this.log(`Success notification sent: ${context.type || 'Operation'}`);
       return issue;
       
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to send success notification: ${error.message}`, 'ERROR');
       throw error;
     }
@@ -627,9 +627,9 @@ async function main() {
         await notificationService.sendPipelineNotification('build_failure', data);
         break;
       case '--error':
-        const _error = new Error(data.message || 'Unknown error');
+        const error = new Error(data.message || 'Unknown error');
         error.stack = data.stack;
-        await notificationService.sendErrorNotification(_error, data);
+        await notificationService.sendErrorNotification(error, data);
         break;
       case '--success':
         await notificationService.sendSuccessNotification(data);
@@ -650,7 +650,7 @@ async function main() {
         break;
     }
     
-  } catch (_error) {
+  } catch (error) {
     notificationService.log(`Notification service failed: ${error.message}`, 'ERROR');
     process.exit(1);
   }

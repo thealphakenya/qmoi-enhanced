@@ -35,19 +35,19 @@ function walk(dir) {
 
 const rules = [
   {
-    name: "console.error -> (console as any).error",
+    name: "console.error -> console.error",
     re: /console\.error\(/g,
-    repl: "(console as any).error(",
+    repl: "console.error(",
   },
   {
-    name: "(globalThis as any) -> (globalThis as any)",
+    name: " -> ",
     re: /\(globalThis as any\)/g,
-    repl: "(globalThis as any)",
+    repl: "",
   },
   {
-    name: "(global as any) -> (global as any)",
+    name: " -> ",
     re: /\(global as any\)/g,
-    repl: "(global as any)",
+    repl: "",
   },
   {
     name: "clearInterval(this.foo as any) -> clearInterval(this.foo as any)",

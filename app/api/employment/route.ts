@@ -90,7 +90,7 @@ export async function GET(_request: NextRequest) {
         ? data.length
         : employees.length + users.length,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
@@ -163,13 +163,13 @@ export async function POST(_request: NextRequest) {
         { status: 400 },
       );
     }
-  } catch (_error) {
-    if (_error instanceof z.ZodError) {
+  } catch (error) {
+    if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
           _error: "Validation failed",
-          details: _error.errors,
+          details: error.errors,
         },
         { status: 400 },
       );
@@ -202,14 +202,14 @@ export async function PUT(_request: NextRequest) {
         );
       }
 
-      employees[index] = { ...(employees as any)[index], ...updates };
+      employees[index] = { ...[index], ...updates };
 
       // Log the update
       employmentLogs.push({
         id: Date.now(),
         action: "employee_updated",
         employeeId: id,
-        details: `Employee ${(employees as any)[index].name} updated`,
+        details: `Employee ${[index].name} updated`,
         timestamp: Date.now(),
       });
 
@@ -219,7 +219,7 @@ export async function PUT(_request: NextRequest) {
         message: "Employee updated successfully",
       });
     } else if (type === "user") {
-      const index = (users as any).findIndex((user: any) => user.id === id);
+      const index = .findIndex((user: any) => user.id === id);
       if (index === -1) {
         return NextResponse.json(
           {
@@ -230,14 +230,14 @@ export async function PUT(_request: NextRequest) {
         );
       }
 
-      users[index] = { ...(users as any)[index], ...updates };
+      users[index] = { ...[index], ...updates };
 
       // Log the update
       employmentLogs.push({
         id: Date.now(),
         action: "user_updated",
         userId: id,
-        details: `User ${(users as any)[index].name} updated`,
+        details: `User ${[index].name} updated`,
         timestamp: Date.now(),
       });
 
@@ -255,7 +255,7 @@ export async function PUT(_request: NextRequest) {
         { status: 400 },
       );
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
@@ -283,7 +283,7 @@ export async function DELETE(_request: NextRequest) {
     }
 
     if (type === "employee") {
-      const index = (employees as any).findIndex((emp: any) => emp.id === id);
+      const index = .findIndex((emp: any) => emp.id === id);
       if (index === -1) {
         return NextResponse.json(
           {
@@ -302,7 +302,7 @@ export async function DELETE(_request: NextRequest) {
         id: Date.now(),
         action: "employee_removed",
         employeeId: id,
-        details: `Employee ${(employee as any).name} removed`,
+        details: `Employee ${.name} removed`,
         timestamp: Date.now(),
       });
 
@@ -311,7 +311,7 @@ export async function DELETE(_request: NextRequest) {
         message: "Employee removed successfully",
       });
     } else if (type === "user") {
-      const index = (users as any).findIndex((user: any) => user.id === id);
+      const index = .findIndex((user: any) => user.id === id);
       if (index === -1) {
         return NextResponse.json(
           {
@@ -330,7 +330,7 @@ export async function DELETE(_request: NextRequest) {
         id: Date.now(),
         action: "user_removed",
         userId: id,
-        details: `User ${(user as any).name} removed`,
+        details: `User ${.name} removed`,
         timestamp: Date.now(),
       });
 
@@ -347,7 +347,7 @@ export async function DELETE(_request: NextRequest) {
         { status: 400 },
       );
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,

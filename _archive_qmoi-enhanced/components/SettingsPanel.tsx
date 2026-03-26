@@ -178,7 +178,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
   };
 
   const downloadQmoiApp = async (appName: string) => {
-    (console as any).log(`Downloading ${appName}...`);
+    .log(`Downloading ${appName}...`);
   };
 
   if (!isOpen) return null;

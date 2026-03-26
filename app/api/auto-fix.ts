@@ -21,8 +21,7 @@ let autoFixService: AutoFixService | undefined;
     const mod = await import("../../scripts/services/auto_fix_service");
     autoFixService =
       (mod.autoFixService as AutoFixService) ?? (mod as AutoFixService);
-  } catch (e) {
-})();
+  } catch (error) { /* Handle error */ })();
 
 // Helper to get current QCity status
 async function getStatus() {

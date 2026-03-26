@@ -56,8 +56,8 @@ export class WhatsAppService {
         "WhatsApp Service",
         "WhatsApp service has been initialized successfully.",
       );
-    } catch (_error) {
-      logger.error("Failed to initialize WhatsApp service:", _error);
+    } catch (error) {
+      logger.error("Failed to initialize WhatsApp service:", error);
       throw error;
     }
   }
@@ -78,8 +78,8 @@ export class WhatsAppService {
         ),
       };
       logger.info("WhatsApp configuration loaded successfully");
-    } catch (_error) {
-      logger.error("Failed to load WhatsApp configuration:", _error);
+    } catch (error) {
+      logger.error("Failed to load WhatsApp configuration:", error);
       throw error;
     }
   }
@@ -94,8 +94,8 @@ export class WhatsAppService {
       // Register webhook with WhatsApp API
       await this.registerWebhook();
       logger.info("WhatsApp webhook initialized successfully");
-    } catch (_error) {
-      logger.error("Failed to initialize WhatsApp webhook:", _error);
+    } catch (error) {
+      logger.error("Failed to initialize WhatsApp webhook:", error);
       throw error;
     }
   }
@@ -141,8 +141,8 @@ export class WhatsAppService {
       );
 
       return message;
-    } catch (_error) {
-      logger.error("Failed to send WhatsApp message:", _error);
+    } catch (error) {
+      logger.error("Failed to send WhatsApp message:", error);
       throw error;
     }
   }
@@ -175,8 +175,8 @@ export class WhatsAppService {
         "WhatsApp Message Received",
         `Message from ${message.from}: ${message.content}`,
       );
-    } catch (_error) {
-      logger.error("Failed to handle incoming WhatsApp message:", _error);
+    } catch (error) {
+      logger.error("Failed to handle incoming WhatsApp message:", error);
       throw error;
     }
   }
@@ -193,8 +193,8 @@ export class WhatsAppService {
     try {
       this.config = { ...this.config, ...newConfig };
       logger.info("WhatsApp configuration updated successfully");
-    } catch (_error) {
-      logger.error("Failed to update WhatsApp configuration:", _error);
+    } catch (error) {
+      logger.error("Failed to update WhatsApp configuration:", error);
       throw error;
     }
   }

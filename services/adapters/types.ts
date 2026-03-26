@@ -96,8 +96,8 @@ export class ApprovalFlow {
     this.approvals.set(request.id, _request);
 
     // Log the request for human review
-    (console as any).log(`[APPROVAL REQUIRED] ${platformId}: ${action}`);
-    (console as any).log("Payload:", JSON.stringify(payload, null, 2));
+    .log(`[APPROVAL REQUIRED] ${platformId}: ${action}`);
+    .log("Payload:", JSON.stringify(payload, null, 2));
 
     return request;
   }

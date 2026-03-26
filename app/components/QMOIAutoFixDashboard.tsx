@@ -85,7 +85,7 @@ export default function QMOIAutoFixDashboard() {
         setAutoFixStatus(data.status);
       }
     } catch (error) {
-      (console as any).error("Failed to fetch autofix status:", error);
+      console.error("Failed to fetch autofix status:", error);
     }
   };
 
@@ -101,7 +101,7 @@ export default function QMOIAutoFixDashboard() {
         setHealthStatus(data.health);
       }
     } catch (error) {
-      (console as any).error("Failed to fetch health status:", error);
+      console.error("Failed to fetch health status:", error);
     }
   };
 
@@ -117,7 +117,7 @@ export default function QMOIAutoFixDashboard() {
         setErrors(data.errors);
       }
     } catch (error) {
-      (console as any).error("Failed to fetch errors:", error);
+      console.error("Failed to fetch errors:", error);
     } finally {
       setLoading(false);
     }
@@ -143,7 +143,7 @@ export default function QMOIAutoFixDashboard() {
         }, 2000);
       }
     } catch (error) {
-      (console as any).error("Failed to trigger scan:", error);
+      console.error("Failed to trigger scan:", error);
     }
   };
 
@@ -169,7 +169,7 @@ export default function QMOIAutoFixDashboard() {
         setTimeout(() => clearInterval(pollInterval), 30000);
       }
     } catch (error) {
-      (console as any).error("Failed to trigger autofix:", error);
+      console.error("Failed to trigger autofix:", error);
     }
   };
 
@@ -185,7 +185,7 @@ export default function QMOIAutoFixDashboard() {
         fetchErrors();
       }
     } catch (error) {
-      (console as any).error("Failed to fix error:", error);
+      console.error("Failed to fix error:", error);
     }
   };
 

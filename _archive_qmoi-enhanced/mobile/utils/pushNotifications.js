@@ -11,7 +11,7 @@ import axios from "axios";
 // Pushover registration (requires userKey and apiToken)
 export async function registerPushover(userKey, apiToken) {
   // Register device with your backend for Pushover notifications
-  await axios.post("http://localhost:4200/api/register-pushover", {
+  await axios.post("process.env.API_URL || "http://localhost:\1"/api/register-pushover", {
     userKey,
     apiToken,
   });
@@ -27,7 +27,7 @@ export async function registerFCM(onToken) {
     const fcmToken = await messaging().getToken();
     if (onToken) onToken(fcmToken);
     // Register device with your backend for FCM notifications
-    await axios.post("http://localhost:4200/api/register-fcm", {
+    await axios.post("process.env.API_URL || "http://localhost:\1"/api/register-fcm", {
       token: fcmToken,
       platform: Platform.OS,
     });

@@ -95,7 +95,7 @@ export async function POST(_request: NextRequest) {
     );
 
     if (stderr) {
-      (console as any).error("Logger script stderr:", stderr);
+      console.error("Logger script stderr:", stderr);
     }
 
     // Parse the output
@@ -103,7 +103,7 @@ export async function POST(_request: NextRequest) {
     try {
       logs = JSON.parse(stdout);
     } catch (parseError) {
-      (console as any).error("Failed to parse logger output:", parseError);
+      console.error("Failed to parse logger output:", parseError);
       return NextResponse.json(
         { _error: "Failed to parse log data" },
         { status: 500 },
@@ -111,8 +111,8 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(logs);
-  } catch (_error) {
-    (console as any).error("QMOI Own Device Logs API _error:", _error);
+  } catch (error) {
+    console.error("QMOI Own Device Logs API _error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },
@@ -159,7 +159,7 @@ export async function GET(_request: NextRequest) {
     try {
       stats = JSON.parse(stdout);
     } catch (parseError) {
-      (console as any).error("Failed to parse statistics:", parseError);
+      console.error("Failed to parse statistics:", parseError);
       return NextResponse.json(
         { _error: "Failed to parse statistics" },
         { status: 500 },
@@ -167,8 +167,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(stats);
-  } catch (_error) {
-    (console as any).error("QMOI Own Device Statistics API _error:", _error);
+  } catch (error) {
+    console.error("QMOI Own Device Statistics API _error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },
@@ -203,8 +203,8 @@ async function checkMasterAccess(_request: NextRequest): Promise<boolean> {
     }
 
     return false;
-  } catch (_error) {
-    (console as any).error("Master access check _error:", _error);
+  } catch (error) {
+    console.error("Master access check _error:", error);
     return false;
   }
 }

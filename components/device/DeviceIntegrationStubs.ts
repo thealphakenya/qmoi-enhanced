@@ -346,16 +346,16 @@ export const TVDecoderIntegration: TVDecoderDevice = {
   }
 
       if (!hasDecoder) {
-        (console as any).log(
+        .log(
           "[MOCK MODE] TV decoder not detected in system, using mock mode",
         );
       } else {
-        (console as any).log("[MOCK MODE] TV decoder found, connecting...");
+        .log("[MOCK MODE] TV decoder found, connecting...");
       }
 
       return true; // Always return true - mock mode always succeeds
     } catch (err) {
-      (console as any).log(
+      .log(
         "[MOCK MODE] TV decoder auto-detection failed, defaulting to mock:",
         err instanceof Error ? err.message : String(err),
       );
@@ -383,7 +383,7 @@ export const CarRadioIntegration: CarRadioDevice = {
       );
 
       if (!carRadio) {
-        (console as any).log(
+        .log(
           `[MOCK MODE] Car radio device (VID:${this.VID.toString(16)}, PID:${this.PID.toString(16)}) not found, using mock mode`,
         );
         this.device = new HIDMock("/dev/mock-carradio");
@@ -391,12 +391,12 @@ export const CarRadioIntegration: CarRadioDevice = {
       }
 
       this.device = new HIDMock(carRadio.path);
-      (console as any).log(
+      .log(
         `[MOCK MODE] Connected to car radio at ${carRadio.path}`,
       );
       return true;
     } catch (err) {
-      (console as any).log(
+      .log(
         "[MOCK MODE] Car radio connection failed, using mock mode:",
         err instanceof Error ? err.message : String(err),
       );
@@ -417,7 +417,7 @@ export const CarRadioIntegration: CarRadioDevice = {
       // Mock command execution
       return new Promise((resolve) => {
         setTimeout(() => {
-          (console as any).log(`[MOCK MODE] Car radio command: "${cmd}" -> ACK`);
+          .log(`[MOCK MODE] Car radio command: "${cmd}" -> ACK`);
           resolve({
             ok: true,
             response: `CAR_RADIO_ACK ${cmd}`,
@@ -427,7 +427,7 @@ export const CarRadioIntegration: CarRadioDevice = {
         }, 100);
       });
     } catch (err) {
-      (console as any).error(
+      console.error(
         "[MOCK MODE] Car radio command error:",
         err instanceof Error ? err.message : String(err),
       );
@@ -443,16 +443,16 @@ export const CarRadioIntegration: CarRadioDevice = {
       );
 
       if (!hasRadio) {
-        (console as any).log(
+        .log(
           `[MOCK MODE] Car radio (VID:${this.VID.toString(16)}, PID:${this.PID.toString(16)}) not detected in system, using mock mode`,
         );
       } else {
-        (console as any).log("[MOCK MODE] Car radio device found, connecting...");
+        .log("[MOCK MODE] Car radio device found, connecting...");
       }
 
       return true; // Always return true in mock mode
     } catch (err) {
-      (console as any).log(
+      .log(
         "[MOCK MODE] Car radio auto-detection failed, defaulting to mock:",
         err instanceof Error ? err.message : String(err),
       );
@@ -466,22 +466,22 @@ export const SmartHomeIntegration: DeviceIntegration = {
 
   async connect() {
     try {
-      (console as any).log(
+      .log(
         "[MOCK MODE] Smart home bridge: connecting to local discovery service",
       );
       // Mock discovery and connection attempt
       await new Promise((resolve) => setTimeout(resolve, 500));
-      (this as any).connectionState = true;
-      (console as any).log(
+      .connectionState = true;
+      .log(
         "[MOCK MODE] Smart home bridge: connection established (mock)",
       );
       return true;
     } catch (err) {
-      (console as any).log(
+      .log(
         "[MOCK MODE] Smart home bridge connection failed, using mock mode:",
         err instanceof Error ? err.message : String(err),
       );
-      (this as any).connectionState = false;
+      .connectionState = false;
       return false;
     }
   },
@@ -494,7 +494,7 @@ export const SmartHomeIntegration: DeviceIntegration = {
     }
 
     // Mock command execution with appropriate latency
-    (console as any).log("[MOCK MODE] Smart home command:", cmd);
+    .log("[MOCK MODE] Smart home command:", cmd);
     await new Promise((resolve) => setTimeout(resolve, 200));
     return {
       ok: true,
@@ -505,11 +505,11 @@ export const SmartHomeIntegration: DeviceIntegration = {
   },
 
   async autoDetect() {
-    (console as any).log(
+    .log(
       "[MOCK MODE] Auto-detecting smart home bridge (MQTT/Zigbee/Matter protocols)",
     );
     await new Promise((resolve) => setTimeout(resolve, 300));
-    (console as any).log(
+    .log(
       "[MOCK MODE] Smart home bridge: mock mode active, not detected in actual hardware",
     );
     return true;
@@ -521,22 +521,22 @@ export const MessagingIntegration: DeviceIntegration = {
   queuedMessages: [] as string[],
 
   async connect() {
-    if ((this as any).connected) return true;
+    if (.connected) return true;
 
-    (console as any).log(
+    .log(
       "[[PRODUCTION READY] MODE] Messaging service: initializing connection pool",
     );
     await new Promise((resolve) => setTimeout(resolve, 500));
-    (this as any).connected = true;
-    (console as any).log(
+    .connected = true;
+    .log(
       "[[PRODUCTION READY] MODE] Messaging service: connected ([PRODUCTION READY] mode)",
     );
 
     // Process any queued messages
-    while ((this as any).queuedMessages.length > 0) {
-      const msg = (this as any).queuedMessages.shift();
+    while (.queuedMessages.length > 0) {
+      const msg = .queuedMessages.shift();
       if (msg) {
-        await (this as any).sendCommand(msg);
+        await .sendCommand(msg);
       }
     }
 
@@ -544,9 +544,9 @@ export const MessagingIntegration: DeviceIntegration = {
   },
 
   async sendCommand(msg: string) {
-    if (!(this as any).connected) {
-      (this as any).queuedMessages.push(msg);
-      (console as any).log(
+    if (!.connected) {
+      .queuedMessages.push(msg);
+      .log(
         "[MOCK MODE] Messaging service: not connected, queuing message",
       );
       throw new Error(
@@ -555,7 +555,7 @@ export const MessagingIntegration: DeviceIntegration = {
     }
 
     [PRODUCTION READY] network latency
-    (console as any).log("[[PRODUCTION READY] MODE] Messaging: queueing for delivery", msg);
+    .log("[[PRODUCTION READY] MODE] Messaging: queueing for delivery", msg);
     await new Promise((resolve) =>
       setTimeout(resolve, 100 + Math.random() * 200),
     );
@@ -570,11 +570,11 @@ export const MessagingIntegration: DeviceIntegration = {
 
   async autoDetect() {
     return new Promise((resolve) => {
-      (console as any).log(
+      .log(
         "[[PRODUCTION READY] MODE] Auto-detecting messaging service (WebSocket/gRPC/MQTT)",
       );
       setTimeout(() => {
-        (console as any).log(
+        .log(
           "[[PRODUCTION READY] MODE] Messaging service: [PRODUCTION READY] mode active, no real broker detected",
         );
         resolve(true);
@@ -589,34 +589,34 @@ export const MLPlatformIntegration: DeviceIntegration = {
   apiVersion: "2023-12",
 
   async connect() {
-    (console as any).log(
+    .log(
       "[[PRODUCTION READY] MODE] ML Platform: initializing model inference engine",
     );
     await new Promise((resolve) => setTimeout(resolve, 800));
-    (this as any).connected = true;
-    (console as any).log(
+    .connected = true;
+    .log(
       "[[PRODUCTION READY] MODE] ML Platform: connected ([PRODUCTION READY] mode, no actual models loaded)",
     );
     return true;
   },
 
   async sendCommand(cmd: string) {
-    if (!(this as any).connected) {
+    if (!.connected) {
       throw new Error(
         "[[PRODUCTION READY] MODE] Not connected to ML platform. Ensure Python runtime and TensorFlow/PyTorch are available.",
       );
     }
 
     const command = JSON.parse(cmd);
-    (console as any).log("[[PRODUCTION READY] MODE] ML Platform command:", command.type);
+    .log("[[PRODUCTION READY] MODE] ML Platform command:", command.type);
     switch (command.type) {
       case "LOAD_MODEL":
-        (console as any).log(
+        .log(
           "[[PRODUCTION READY] MODE] Loading model ([PRODUCTION READY]d):",
           command.modelId,
         );
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        (this as any).models.set(command.modelId, { state: "loaded" });
+        .models.set(command.modelId, { state: "loaded" });
         return {
           ok: true,
           modelId: command.modelId,
@@ -631,7 +631,7 @@ export const MLPlatformIntegration: DeviceIntegration = {
             "[[PRODUCTION READY] MODE] Model not loaded. Load model first with LOAD_MODEL command.",
           );
         }
-        (console as any).log(
+        .log(
           "[[PRODUCTION READY] MODE] Running inference on model:",
           command.modelId,
         );
@@ -654,11 +654,11 @@ export const MLPlatformIntegration: DeviceIntegration = {
   },
 
   async autoDetect() {
-    (console as any).log(
+    .log(
       "[[PRODUCTION READY] MODE] Auto-detecting ML platform (Python/TensorFlow/PyTorch/LLMs)",
     );
     await new Promise((resolve) => setTimeout(resolve, 400));
-    (console as any).log(
+    .log(
       "[[PRODUCTION READY] MODE] ML Platform: [PRODUCTION READY] mode active, no real inference runtime available",
     );
     return true;
@@ -687,8 +687,8 @@ export const AWSIntegration: DeviceIntegration = {
 
   async connect() {
     try {
-      (console as any).log("AWS Integration: initializing connection...");
-      const env = (globalThis as any).process?.env ?? {};
+      .log("AWS Integration: initializing connection...");
+      const env = .process?.env ?? {};
 
       // Check for required credentials
       if (env.AWS_ACCESS_KEY_ID && env.AWS_SECRET_ACCESS_KEY) {
@@ -700,17 +700,17 @@ export const AWSIntegration: DeviceIntegration = {
       }
 
       await new Promise((resolve) => setTimeout(resolve, 600));
-      (this as any).connected = true;
+      .connected = true;
       return true;
     } catch (err) {
       (globalThis.console as any)?.error?.("Failed to connect to AWS:", err);
-      (this as any).connected = false;
+      .connected = false;
       return false;
     }
   },
 
   async sendCommand(cmd: string) {
-    if (!(this as any).connected) {
+    if (!.connected) {
       throw new Error("Not connected to AWS");
     }
 
@@ -726,8 +726,8 @@ export const AWSIntegration: DeviceIntegration = {
   },
 
   async autoDetect() {
-    (console as any).log("Auto-detecting AWS credentials...");
-    const env = (globalThis as any).process?.env ?? {};
+    .log("Auto-detecting AWS credentials...");
+    const env = .process?.env ?? {};
     return !!(env.AWS_ACCESS_KEY_ID && env.AWS_SECRET_ACCESS_KEY);
   },
 };
@@ -743,29 +743,29 @@ export const AzureIntegration: DeviceIntegration = {
     subscriptionId: string;
   }) {
     try {
-      (console as any).log("Azure Integration: establishing connection...");
+      .log("Azure Integration: establishing connection...");
       if (creds) {
         CredentialStore.set("azure", creds);
       }
 
       const storedCreds = CredentialStore.get("azure");
       if (!storedCreds) {
-        (console as any).log("No Azure credentials found");
+        .log("No Azure credentials found");
         return false;
       }
 
       await new Promise((resolve) => setTimeout(resolve, 700));
-      (this as any).connected = true;
+      .connected = true;
       return true;
     } catch (err) {
       (globalThis.console as any)?.error?.("Failed to connect to Azure:", err);
-      (this as any).connected = false;
+      .connected = false;
       return false;
     }
   },
 
   async sendCommand(cmd: string) {
-    if (!(this as any).connected) {
+    if (!.connected) {
       throw new Error("Not connected to Azure");
     }
 
@@ -781,7 +781,7 @@ export const AzureIntegration: DeviceIntegration = {
   },
 
   async autoDetect() {
-    (console as any).log("Auto-detecting Azure credentials...");
+    .log("Auto-detecting Azure credentials...");
     return !!CredentialStore.get("azure");
   },
 
@@ -801,29 +801,29 @@ export const GCPIntegration: DeviceIntegration = {
 
   async connect(creds?: { projectId: string; keyFilename: string }) {
     try {
-      (console as any).log("GCP Integration: initializing connection...");
+      .log("GCP Integration: initializing connection...");
       if (creds) {
         CredentialStore.set("gcp", creds);
       }
 
       const storedCreds = CredentialStore.get("gcp");
       if (!storedCreds) {
-        (console as any).log("No GCP credentials found");
+        .log("No GCP credentials found");
         return false;
       }
 
       await new Promise((resolve) => setTimeout(resolve, 800));
-      (this as any).connected = true;
+      .connected = true;
       return true;
     } catch (err) {
       (globalThis.console as any)?.error?.("Failed to connect to GCP:", err);
-      (this as any).connected = false;
+      .connected = false;
       return false;
     }
   },
 
   async sendCommand(cmd: string) {
-    if (!(this as any).connected) {
+    if (!.connected) {
       throw new Error("Not connected to GCP");
     }
 
@@ -839,7 +839,7 @@ export const GCPIntegration: DeviceIntegration = {
   },
 
   async autoDetect() {
-    (console as any).log("Auto-detecting GCP credentials...");
+    .log("Auto-detecting GCP credentials...");
     return !!CredentialStore.get("gcp");
   },
 
@@ -860,27 +860,27 @@ export const IoTIntegration: DeviceIntegration = {
 
   async connect() {
     try {
-      (console as any).log("IoT Integration: discovering devices...");
+      .log("IoT Integration: discovering devices...");
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       [PRODUCTION READY] finding some IoT devices
       this.devices.set("device1", { type: "sensor", status: "online" });
       this.devices.set("device2", { type: "actuator", status: "online" });
 
-      (this as any).connected = true;
+      .connected = true;
       return true;
     } catch (err) {
       (globalThis.console as any)?.error?.(
         "Failed to connect to IoT network:",
         err,
       );
-      (this as any).connected = false;
+      .connected = false;
       return false;
     }
   },
 
   async sendCommand(cmd: string) {
-    if (!(this as any).connected) {
+    if (!.connected) {
       throw new Error("Not connected to IoT network");
     }
 
@@ -899,7 +899,7 @@ export const IoTIntegration: DeviceIntegration = {
   },
 
   async autoDetect() {
-    (console as any).log("Auto-detecting IoT devices...");
+    .log("Auto-detecting IoT devices...");
     await new Promise((resolve) => setTimeout(resolve, 500));
     return true;
   },
@@ -912,29 +912,29 @@ export const MobileIntegration: DeviceIntegration = {
 
   async connect() {
     try {
-      (console as any).log("Mobile Integration: establishing connection...");
+      .log("Mobile Integration: establishing connection...");
       await new Promise((resolve) => setTimeout(resolve, 600));
 
-      (this as any).deviceInfo = {
+      .deviceInfo = {
         platform: Math.random() > 0.5 ? "iOS" : "Android",
         version: "15.0",
         capabilities: ["push_notifications", "location", "camera"],
       };
 
-      (this as any).connected = true;
+      .connected = true;
       return true;
     } catch (err) {
       (globalThis.console as any)?.error?.(
         "Failed to connect to mobile device:",
         err,
       );
-      (this as any).connected = false;
+      .connected = false;
       return false;
     }
   },
 
   async sendCommand(cmd: string) {
-    if (!(this as any).connected) {
+    if (!.connected) {
       throw new Error("Not connected to mobile device");
     }
 
@@ -951,7 +951,7 @@ export const MobileIntegration: DeviceIntegration = {
   },
 
   async autoDetect() {
-    (console as any).log("Auto-detecting mobile devices...");
+    .log("Auto-detecting mobile devices...");
     await new Promise((resolve) => setTimeout(resolve, 400));
     return true;
   },

@@ -58,7 +58,7 @@ export async function GET(
 
     return response;
   } catch (error) {
-    (console as any).error("File retrieval error:", error);
+    console.error("File retrieval error:", error);
     return NextResponse.json(
       { error: "Failed to retrieve file" },
       { status: 500 },
@@ -94,7 +94,7 @@ export async function DELETE(
       message: `File ${fileData.name} deleted successfully`,
     });
   } catch (error) {
-    (console as any).error("File deletion error:", error);
+    console.error("File deletion error:", error);
     return NextResponse.json(
       { error: "Failed to delete file" },
       { status: 500 },

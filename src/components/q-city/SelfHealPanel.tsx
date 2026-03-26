@@ -18,7 +18,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -177,8 +177,8 @@ const SelfHealPanel: React.FC = () => {
           Self-heal completed successfully.
         </div>
       )}
-      {_error && (
-        <div style={{ color: "red", marginTop: 8 }}>Error: {_error}</div>
+      {error && (
+        <div style={{ color: "red", marginTop: 8 }}>Error: {error}</div>
       )}
       {log && (
         <div style={{ marginTop: 16 }}>

@@ -15,7 +15,7 @@ export interface SessionItem {
 export default function SessionPanel() {
   const [sessions, setSessions] = useState<SessionItem[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const token =
     typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
@@ -70,7 +70,7 @@ export default function SessionPanel() {
   return (
     <div className="p-4 bg-gray-900 rounded-lg shadow-lg">
       <h2 className="text-xl font-bold mb-4 text-cyan-400">Sessions</h2>
-      {_error && <div className="text-red-400 mb-2">{_error}</div>}
+      {error && <div className="text-red-400 mb-2">{error}</div>}
       {loading ? (
         <div className="text-gray-400">Loading...</div>
       ) : (

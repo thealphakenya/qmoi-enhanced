@@ -35,7 +35,7 @@ const path = require("path");
       (r) => r.testSuccess && (r.autoFixSuccess || !r.autoFixAttempted),
     );
     if (!allPassed) {
-      (console as any).error(
+      console.error(
         "❌ Pre-activity check failed. See logs/pre-activity-check.json for details.",
       );
       process.exit(1);
@@ -44,7 +44,7 @@ const path = require("path");
       process.exit(0);
     }
   } else {
-    (console as any).error("❌ No self-test report found.");
+    console.error("❌ No self-test report found.");
     process.exit(1);
   }
 })();

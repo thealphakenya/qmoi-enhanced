@@ -142,7 +142,7 @@ class QmoiPaymentFix {
         issues.push(`Pesapal API: ${pesapalTest.error}`);
       }
 
-    } catch (_error) {
+    } catch (error) {
       issues.push(`API connectivity test failed: ${error.message}`);
     }
 
@@ -164,7 +164,7 @@ class QmoiPaymentFix {
       } else {
         return { success: false, _error: `HTTP ${response.status}` };
       }
-    } catch (_error) {
+    } catch (error) {
       return { success: false, _error: error.message };
     }
   }
@@ -189,7 +189,7 @@ class QmoiPaymentFix {
       } else {
         return { success: false, _error: `HTTP ${response.status}` };
       }
-    } catch (_error) {
+    } catch (error) {
       return { success: false, _error: error.message };
     }
   }
@@ -207,7 +207,7 @@ class QmoiPaymentFix {
 
       // Pesapal might return different status codes, but we're just testing connectivity
       return { success: true };
-    } catch (_error) {
+    } catch (error) {
       return { success: false, _error: error.message };
     }
   }
@@ -257,7 +257,7 @@ class QmoiPaymentFix {
         issues.push(`Recent payment failures: ${recentFailures.length} failures detected`);
       }
 
-    } catch (_error) {
+    } catch (error) {
       issues.push(`Revenue engine check failed: ${error.message}`);
     }
 
@@ -268,7 +268,7 @@ class QmoiPaymentFix {
     try {
       [PRODUCTION READY] revenue status check
       return { running: true, dailyEarnings: 5000, target: 10000 };
-    } catch (_error) {
+    } catch (error) {
       return { running: false, _error: error.message };
     }
   }
@@ -277,7 +277,7 @@ class QmoiPaymentFix {
     try {
       [PRODUCTION READY] checking recent payment failures
       return []; // Empty array means no recent failures
-    } catch (_error) {
+    } catch (error) {
       return [{ _error: error.message }];
     }
   }
@@ -300,7 +300,7 @@ class QmoiPaymentFix {
         fixes.push('Payment cache cleared');
       }
 
-    } catch (_error) {
+    } catch (error) {
       this.log(`Revenue engine fix failed: ${error.message}`, 'ERROR');
     }
 
@@ -331,7 +331,7 @@ class QmoiPaymentFix {
       const syntaxIssues = await this.checkAnnotationSyntax();
       issues.push(...syntaxIssues);
 
-    } catch (_error) {
+    } catch (error) {
       issues.push(`Annotation check failed: ${error.message}`);
     }
 
@@ -358,11 +358,11 @@ class QmoiPaymentFix {
             issues.push(`Unclosed bracket in ${file}`);
           }
           
-        } catch (_error) {
+        } catch (error) {
           issues.push(`Error reading ${file}: ${error.message}`);
         }
       }
-    } catch (_error) {
+    } catch (error) {
       issues.push(`Syntax check failed: ${error.message}`);
     }
 
@@ -416,14 +416,14 @@ class QmoiPaymentFix {
           
           fs.writeFileSync(file, content);
           
-        } catch (_error) {
+        } catch (error) {
           this.log(`Error fixing ${file}: ${error.message}`, 'WARN');
         }
       }
       
       fixes.push('Annotation syntax fixed');
 
-    } catch (_error) {
+    } catch (error) {
       this.log(`Annotation fix failed: ${error.message}`, 'ERROR');
     }
 
@@ -481,7 +481,7 @@ class QmoiPaymentFix {
       // Generate report
       this.generateReport();
 
-    } catch (_error) {
+    } catch (error) {
       this.log(`Payment fix failed: ${error.message}`, 'ERROR');
       process.exitCode = 1;
     }

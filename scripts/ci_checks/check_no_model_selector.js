@@ -54,13 +54,13 @@ function scanPaths(paths, patterns) {
       const searchRoot = ".next";
       const matches = scanPaths([searchRoot], patterns);
       if (matches.length) {
-        (console as any).error(
+        console.error(
           "Found suspicious model-selector patterns in build output:"
         );
         matches
           .slice(0, 10)
           .forEach((m) =>
-            (console as any).error(` - ${m.file}  contains: ${m.pattern}`)
+            console.error(` - ${m.file}  contains: ${m.pattern}`)
           );
         process.exit(2);
       }
@@ -96,13 +96,13 @@ function scanPaths(paths, patterns) {
       }
 
       if (refined.length) {
-        (console as any).error(
+        console.error(
           "Found suspicious model-selector patterns in source files:"
         );
         refined
           .slice(0, 20)
           .forEach((m) =>
-            (console as any).error(` - ${m.file}  contains: ${m.pattern}`)
+            console.error(` - ${m.file}  contains: ${m.pattern}`)
           );
         process.exit(2);
       }
@@ -110,7 +110,7 @@ function scanPaths(paths, patterns) {
     console.log("No model-selector artifacts found.");
     process.exit(0);
   } catch (_e) {
-    (console as any).error("Error while checking for model selector:", _e);
+    console.error("Error while checking for model selector:", _e);
     process.exit(1);
   }
 })();

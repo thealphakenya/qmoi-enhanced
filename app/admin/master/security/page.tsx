@@ -43,7 +43,7 @@ export default function MasterSecurityPage() {
         });
       }
     } catch (error) {
-      (console as any).error("Failed to fetch security status:", error);
+      console.error("Failed to fetch security status:", error);
     } finally {
       setLoading(false);
     }

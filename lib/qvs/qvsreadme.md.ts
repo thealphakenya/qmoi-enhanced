@@ -16,13 +16,13 @@ export class QVS/QVSREADME.mdService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing QVS/QVSREADME.md');
+    .log("[Service] Initializing...");
+    .log('Initializing QVS/QVSREADME.md');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'QVS/QVSREADME.md executed' };
   }
 }

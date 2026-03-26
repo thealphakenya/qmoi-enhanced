@@ -16,13 +16,13 @@ export class 25+ProgrammingLanguagesService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing 25+ Programming Languages');
+    .log("[Service] Initializing...");
+    .log('Initializing 25+ Programming Languages');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: '25+ Programming Languages executed' };
   }
 }

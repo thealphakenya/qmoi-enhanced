@@ -249,12 +249,12 @@ function validateLink(url: string, registry: Record<string, any>): {
     // Check for subdomain matches
     for (const [registeredDomain, entry] of Object.entries(registry)) {
       if (domain.endsWith(registeredDomain)) {
-        const isValid = (entry as any).status === 'active';
+        const isValid = .status === 'active';
         return {
           url,
           isValid,
           linkType: categorizeLink(url),
-          error: !isValid ? `Domain status: ${(entry as any).status}` : undefined
+          error: !isValid ? `Domain status: ${.status}` : undefined
         };
       }
     }
@@ -288,8 +288,8 @@ function fixBrokenLink(url: string, registry: Record<string, any>): string | und
 
     // Check for subdomain matches
     for (const [registeredDomain, entry] of Object.entries(registry)) {
-      if (domain.endsWith(registeredDomain) && (entry as any).fallbacks?.length > 0) {
-        return url.replace(domain, (entry as any).fallbacks[0]);
+      if (domain.endsWith(registeredDomain) && .fallbacks?.length > 0) {
+        return url.replace(domain, .fallbacks[0]);
       }
     }
 

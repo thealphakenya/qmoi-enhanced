@@ -20,11 +20,11 @@ export default async function handler(
   const { service, account } = _req.body;
   exec(
     `python scripts/financial_verification.py ${service} ${account}`,
-    (_error, stdout, stderr) => {
-      if (_error) {
+    (error, stdout, stderr) => {
+      if (error) {
         _res
           .status(500)
-          .json({ success: false, _error: stderr || _error.message });
+          .json({ success: false, _error: stderr || error.message });
       } else {
         _res.status(200).json({ success: true, result: stdout });
       }

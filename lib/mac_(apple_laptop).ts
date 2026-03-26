@@ -16,13 +16,13 @@ export class Mac(AppleLaptop)Service {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing Mac (Apple Laptop)');
+    .log("[Service] Initializing...");
+    .log('Initializing Mac (Apple Laptop)');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'Mac (Apple Laptop) executed' };
   }
 }

@@ -73,7 +73,7 @@ async function fixVercelJsonPattern() {
     } else {
       console.log("✅ vercel.json: No issues found\n");
     }
-  } catch (_error) {
+  } catch (error) {
     ERRORS_FOUND.push(`vercel.json parsing _error: ${error.message}`);
   }
 }
@@ -110,7 +110,7 @@ async function fixNextConfig() {
     } else {
       console.log("✅ next.config.js: ESLint ignore already configured\n");
     }
-  } catch (_error) {
+  } catch (error) {
     ERRORS_FOUND.push(`next.config.js _error: ${error.message}`);
   }
 }
@@ -166,7 +166,7 @@ async function fixTypeScriptConfig() {
     } else {
       console.log("✅ tsconfig.json: Path aliases properly configured\n");
     }
-  } catch (_error) {
+  } catch (error) {
     ERRORS_FOUND.push(`tsconfig.json _error: ${error.message}`);
   }
 }
@@ -213,7 +213,7 @@ async function validateBuild() {
     } else {
       console.log("   Build output:\n", stdout);
     }
-  } catch (_error) {
+  } catch (error) {
     // Build might fail but that's ok - we just check for major issues
     if (error.stdout && error.stdout.includes("error")) {
       ERRORS_FOUND.push(
@@ -262,7 +262,7 @@ async function validateDependencies() {
     } else {
       console.log("   ✅ All required dependencies found\n");
     }
-  } catch (_error) {
+  } catch (error) {
     ERRORS_FOUND.push(`package.json _error: ${error.message}`);
   }
 }
@@ -290,7 +290,7 @@ async function checkGitStatus() {
     } else {
       console.log("   ✅ Working tree clean\n");
     }
-  } catch (_error) {
+  } catch (error) {
     console.log("   ℹ️  Git check skipped\n");
   }
 }
@@ -328,7 +328,7 @@ async function main() {
 
     if (ERRORS_FOUND.length > 0) {
       console.log("\nIssues Found:");
-      ERRORS_FOUND.forEach((_error) => console.log(`  ❌ ${error}`));
+      ERRORS_FOUND.forEach((error) => console.log(`  ❌ ${error}`));
     }
 
     console.log(`
@@ -344,7 +344,7 @@ async function main() {
 `);
 
     process.exit(0);
-  } catch (_error) {
+  } catch (error) {
     console.error("\n❌ Fatal _error:", error.message);
     process.exit(1);
   }

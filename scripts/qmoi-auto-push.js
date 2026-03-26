@@ -114,7 +114,7 @@ class QMOIAutoPush {
         }
       });
 
-      child.on("error", (_error) => {
+      child.on("error", (error) => {
         this.log(`Command _error: ${error.message}`, "ERROR");
         if (retries < this.maxRetries) {
           this.log(`Retrying command in ${this.retryDelay}ms...`);
@@ -177,7 +177,7 @@ class QMOIAutoPush {
         this.log(`Applying critical fix: ${fix.name}`);
         await this.runCommand(fix.command);
         this.log(`Critical fix applied: ${fix.name}`);
-      } catch (_error) {
+      } catch (error) {
         this.log(`Critical fix failed: ${fix.name} - ${error.message}`, "WARN");
         if (!fix.continueOnError) {
           throw error;
@@ -206,7 +206,7 @@ class QMOIAutoPush {
       } else {
         this.log("✅ No changes to commit");
       }
-    } catch (_error) {
+    } catch (error) {
       this.log(`Git status check failed: ${error.message}`, "ERROR");
       throw error;
     }
@@ -220,7 +220,7 @@ class QMOIAutoPush {
       await this.runCommand(`git push origin ${this.branch}`);
       this.log("✅ Successfully pushed to GitLab");
       return true;
-    } catch (_error) {
+    } catch (error) {
       this.log(`GitLab push failed: ${error.message}`, "ERROR");
       return false;
     }
@@ -248,7 +248,7 @@ class QMOIAutoPush {
       await this.runCommand(`git push github ${this.branch}`);
       this.log("✅ Successfully pushed to GitHub");
       return true;
-    } catch (_error) {
+    } catch (error) {
       this.log(`GitHub push failed: ${error.message}`, "ERROR");
       return false;
     }
@@ -266,7 +266,7 @@ class QMOIAutoPush {
 
       this.log(`✅ Created backup branch: ${backupBranch}`);
       return backupBranch;
-    } catch (_error) {
+    } catch (error) {
       this.log(`Backup branch creation failed: ${error.message}`, "ERROR");
       return null;
     }
@@ -279,7 +279,7 @@ class QMOIAutoPush {
       await this.runCommand(`git push origin ${this.branch} --force`);
       this.log("✅ Force push successful");
       return true;
-    } catch (_error) {
+    } catch (error) {
       this.log(`Force push failed: ${error.message}`, "ERROR");
       return false;
     }
@@ -299,7 +299,7 @@ class QMOIAutoPush {
       );
 
       this.log("✅ Stakeholders notified");
-    } catch (_error) {
+    } catch (error) {
       this.log(`Notification failed: ${error.message}`, "ERROR");
     }
   }
@@ -351,7 +351,7 @@ class QMOIAutoPush {
         this.log("❌ QMOI Auto-Push failed!");
         throw new Error("All push attempts failed");
       }
-    } catch (_error) {
+    } catch (error) {
       this.log(`Auto-push failed: ${error.message}`, "ERROR");
 
       // Final fallback: create issue with error details
@@ -402,7 +402,7 @@ class QMOIAutoPush {
         );
         return null;
       }
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to create GitLab issue: ${error.message}`, "ERROR");
       return null;
     }
@@ -415,7 +415,7 @@ async function main() {
   try {
     await autoPush.runComprehensiveAutoPush();
     process.exit(0);
-  } catch (_error) {
+  } catch (error) {
     autoPush.log(`Main execution failed: ${error.message}`, "ERROR");
     process.exit(1);
   }

@@ -38,12 +38,10 @@ export async function POST(_request: NextRequest) {
     // detailed validator used elsewhere in the codebase.
     let passwordValidationResult: { isStrong: boolean; errors: string[] };
     if (
-      typeof (authService as any).validatePasswordStrengthDetailed ===
+      typeof .validatePasswordStrengthDetailed ===
       "function"
     ) {
-      passwordValidationResult = (
-        authService as any
-      ).validatePasswordStrengthDetailed(body.password);
+      passwordValidationResult = .validatePasswordStrengthDetailed(body.password);
     } else {
       const ok = authService.validatePasswordStrength(body.password);
       passwordValidationResult = { isStrong: Boolean(ok), errors: [] };
@@ -63,7 +61,7 @@ export async function POST(_request: NextRequest) {
     if (existing) {
       logger.warn("REGISTER: existing user found", {
         email: body.email,
-        existingId: (existing as any).id,
+        existingId: .id,
       });
       return NextResponse.json(
         { error: "Email already exists" },
@@ -82,11 +80,11 @@ export async function POST(_request: NextRequest) {
     });
 
     // Ensure we can surface createdAt (some services/clients expect it).
-    let createdAt: string | undefined = (user as any).createdAt;
+    let createdAt: string | undefined = .createdAt;
     try {
       const fresh = await userService.getByEmail(user.email);
-      if (fresh && (fresh as any).createdAt)
-        createdAt = (fresh as any).createdAt;
+      if (fresh && .createdAt)
+        createdAt = .createdAt;
     } catch (_e) {
       void _e; /* ignore */
     }
@@ -120,10 +118,10 @@ export async function POST(_request: NextRequest) {
       {
         success: true,
         user: {
-          id: (user as any).id,
-          email: (user as any).email,
-          username: (user as any).username,
-          name: (user as any).name,
+          id: .id,
+          email: .email,
+          username: .username,
+          name: .name,
           createdAt: createdAt || new Date().toISOString(),
         },
         // Expose token fields at top-level for tests that expect them
@@ -136,8 +134,8 @@ export async function POST(_request: NextRequest) {
   } catch (error) {
     [PRODUCTION READY] resolve [PRODUCTION READY] items
     try {
-      const msg = error && (error as any).message;
-      const code = error && (error as any).code;
+      const msg = error && .message;
+      const code = error && .code;
       if (
         code === "P2002" ||
         (typeof msg === "string" && msg.toLowerCase().includes("unique"))

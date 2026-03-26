@@ -16,13 +16,13 @@ export class Revenue&BusinessService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing Revenue & Business');
+    .log("[Service] Initializing...");
+    .log('Initializing Revenue & Business');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'Revenue & Business executed' };
   }
 }

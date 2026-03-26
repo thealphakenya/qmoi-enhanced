@@ -76,7 +76,7 @@ export const AudibleConversation: React.FC<AudibleConversationProps> = ({
       // Setup audio context for visualization
       if (!audioContextRef.current) {
         audioContextRef.current = new (window.AudioContext ||
-          (window as any).webkitAudioContext)();
+          .webkitAudioContext)();
       }
 
       const source = audioContextRef.current.createMediaStreamSource(stream);
@@ -112,7 +112,7 @@ export const AudibleConversation: React.FC<AudibleConversationProps> = ({
         setRecordingTime((prev) => prev + 1);
       }, 1000);
     } catch (error) {
-      (console as any).error("Error accessing microphone:", error);
+      console.error("Error accessing microphone:", error);
       alert("Unable to access microphone. Please check permissions.");
     }
   };
@@ -165,7 +165,7 @@ export const AudibleConversation: React.FC<AudibleConversationProps> = ({
           )
         );
       } catch (error) {
-        (console as any).error("Error processing audio:", error);
+        console.error("Error processing audio:", error);
         setAudioMessages((prev) =>
           prev.map((msg) =>
             msg.id === audioMessage.id
@@ -222,7 +222,7 @@ export const AudibleConversation: React.FC<AudibleConversationProps> = ({
 
       return "";
     } catch (error) {
-      (console as any).error("Transcription error:", error);
+      console.error("Transcription error:", error);
       return "";
     }
   };
@@ -280,7 +280,7 @@ export const AudibleConversation: React.FC<AudibleConversationProps> = ({
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
     } catch (error) {
-      (console as any).error("Download error:", error);
+      console.error("Download error:", error);
     }
   };
 

@@ -13,7 +13,7 @@ let config;
 try {
   config = JSON.parse(fs.readFileSync(configPath, "utf-8"));
 } catch (_e) {
-  (console as any).error("Failed to read test_config.json:", _e.message);
+  console.error("Failed to read test_config.json:", _e.message);
   process.exit(1);
 }
 

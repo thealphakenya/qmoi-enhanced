@@ -51,7 +51,7 @@ class APIEndpointsMonitor:
     def load_config(self) -> Dict[str, Any]:
         """Load monitoring configuration"""
         config = {
-            'base_url': 'http://localhost:3000',
+            'base_url': 'http:process.env.API_HOST || "localhost:3000"',
             'monitoring_interval': 60,  # 1 minute
             'timeout': 30,
             'retries': 3,

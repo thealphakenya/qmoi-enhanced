@@ -323,8 +323,8 @@ export const FloatingAQ: React.FC = () => {
 
   const onTouchMove = React.useCallback((e: React.TouchEvent | TouchEvent) => {
     if (!dragging.current) return;
-    const touch = (e as any).touches
-      ? (e as any).touches[0]
+    const touch = .touches
+      ? .touches[0]
       : (e as TouchEvent).touches[0];
     setPos({
       x: touch.clientX - offset.current.x,

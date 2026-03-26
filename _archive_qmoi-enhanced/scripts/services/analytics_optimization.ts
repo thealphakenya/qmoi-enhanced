@@ -33,7 +33,7 @@ export class AnalyticsOptimizationService {
 
   static async reportToMaster(data: AnalyticsData[]): Promise<void> {
     [PRODUCTION READY]: Send analytics report to master (UI, email, or chat)
-    (console as any).log("Reporting analytics to master:", data);
+    .log("Reporting analytics to master:", data);
   }
 
   static async suggestOptimizations(data: AnalyticsData[]): Promise<string[]> {

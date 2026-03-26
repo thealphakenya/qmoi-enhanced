@@ -42,7 +42,7 @@ export function useAutoFixAllProblems() {
           new Notification("All problems auto-fixed by QMOI AI!");
         }
         // Log to console
-        (console as any).log("[QMOI] All problems auto-fixed.");
+        .log("[QMOI] All problems auto-fixed.");
         retryCount = 0;
       } else {
         retryCount++;

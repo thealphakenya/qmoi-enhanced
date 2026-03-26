@@ -18,7 +18,7 @@ const GITLAB_API_URL =
   process.env.GITLAB_API_URL || "https://gitlab.com/api/v4";
 
 if (!GITLAB_TOKEN || !GITLAB_PROJECT_ID) {
-  (console as any).error(
+  console.error(
     "QMOI GITLAB SYNC ERROR: GITLAB_TOKEN and GITLAB_PROJECT_ID must be set in env.",
   );
   process.exit(1);
@@ -43,7 +43,7 @@ async function upsertVariable(key, value) {
       );
       console.log(`QMOI: Created GitLab variable ${key}`);
     } else {
-      (console as any).error(`QMOI: Failed to upsert variable ${key}:`, _err.message);
+      console.error(`QMOI: Failed to upsert variable ${key}:`, _err.message);
     }
   }
 }

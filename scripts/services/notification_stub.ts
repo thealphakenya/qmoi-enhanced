@@ -20,5 +20,5 @@ export function notify({
 }) {
   const entry = { timestamp: new Date().toISOString(), to, subject, message };
   // fs.appendFileSync(NOTIFY_LOG, JSON.stringify(entry) + '\n');
-  (console as any).log(`[NOTIFY]`, entry);
+  .log(`[NOTIFY]`, entry);
 }

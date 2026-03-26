@@ -39,19 +39,19 @@ const AnalyticsScreen = ({ userRole }) => {
 
       // Load error/fix analytics
       const analyticsRes = await axios.get(
-        `http://localhost:4000/api/error-fix-log?range=${timeRange}`,
+        `process.env.API_URL || "http://localhost:\1"/api/error-fix-log?range=${timeRange}`,
       );
       setAnalytics(analyticsRes.data);
 
       // Load AI predictions
       const predictionsRes = await axios.get(
-        "http://localhost:4100/api/predictions",
+        "process.env.API_URL || "http://localhost:\1"/api/predictions",
       );
       setPredictions(predictionsRes.data.predictions || []);
 
       // Load device statistics
       const deviceStatsRes = await axios.get(
-        "http://localhost:4000/api/device-stats",
+        "process.env.API_URL || "http://localhost:\1"/api/device-stats",
       );
       setDeviceStats(deviceStatsRes.data);
     } catch (error) {

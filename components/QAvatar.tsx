@@ -3040,7 +3040,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
         if (res.ok) {
           setQCityStatus(await res.json());
         }
-      } catch (e) {}
+      } catch (error) { /* Handle error */ }
     }
     if (showQCityDashboard) fetchStatus();
   }, [showQCityDashboard]);
@@ -3102,7 +3102,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
 
   // Audit logging (console.log for now)
   function auditLog(action: string, cmd: string) {
-    (console as any).log(
+    .log(
       `[AUDIT] ${action}: ${cmd} at ${new Date().toISOString()}`,
     );
   }
@@ -3227,7 +3227,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
             })),
           );
         }
-      } catch (e) {}
+      } catch (error) { /* Handle error */ }
     }
     if (showQCityDashboard) fetchDevices();
   }, [showQCityDashboard]);
@@ -4102,7 +4102,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       audioContextRef.current = new (
-        window.AudioContext || (window as any).webkitAudioContext
+        window.AudioContext || .webkitAudioContext
       )();
       analyserRef.current = audioContextRef.current.createAnalyser();
       microphoneRef.current =
@@ -4366,8 +4366,8 @@ const QAvatar: React.FC<QAvatarProps> = ({
 
       // Set up speech recognition for voice input
       const SpeechRecognition =
-        (window as any).SpeechRecognition ||
-        (window as any).webkitSpeechRecognition;
+        .SpeechRecognition ||
+        .webkitSpeechRecognition;
       if (!SpeechRecognition) {
         console.log("Speech Recognition not supported in this browser");
         return;
@@ -4606,8 +4606,8 @@ const QAvatar: React.FC<QAvatarProps> = ({
   // Start listening with automatic speech end detection
   const startListeningWithAutoDetection = useCallback(() => {
     const SpeechRecognition =
-      (window as any).SpeechRecognition ||
-      (window as any).webkitSpeechRecognition;
+      .SpeechRecognition ||
+      .webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
       console.log("Speech Recognition not supported");

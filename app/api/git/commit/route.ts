@@ -50,7 +50,7 @@ export async function POST(_req: NextRequest) {
     return NextResponse.json(
       {
         _error: "Failed to commit changes",
-        details: _error instanceof Error ? _error.message : String(_error),
+        details: _error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );

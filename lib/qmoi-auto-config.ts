@@ -26,7 +26,7 @@ class QMOIAutoConfig {
 
   async autoConfigureMpesa(): Promise<AutoConfigResult> {
     try {
-      (console as any).log('🔧 Starting QMOI Auto-Configuration...');
+      .log('🔧 Starting QMOI Auto-Configuration...');
       
       // Generate production security credential
       const productionSecurityCredential = this.generateSecurityCredential('Victor9798!');
@@ -57,10 +57,10 @@ class QMOIAutoConfig {
       const connectionTest = await this.testMpesaConnection();
       
       if (connectionTest.success) {
-        (console as any).log('✅ M-Pesa connection test successful');
+        .log('✅ M-Pesa connection test successful');
         logEvent('mpesa_auto_config_success', { environment: mpesaConfig.MPESA_ENVIRONMENT });
       } else {
-        (console as any).log('⚠️ M-Pesa connection test failed, but configuration saved');
+        .log('⚠️ M-Pesa connection test failed, but configuration saved');
         logEvent('mpesa_auto_config_partial', { error: connectionTest.message });
       }
 
@@ -77,11 +77,11 @@ class QMOIAutoConfig {
 
     } catch (error) {
       (globalThis.console as any)?.error?.('❌ Auto-configuration failed:', error);
-      logEvent('mpesa_auto_config_failed', { error: (error as any)?.message || String(error) });
+      logEvent('mpesa_auto_config_failed', { error: ?.message || String(error) });
       
       return {
         success: false,
-        message: `Auto-configuration failed: ${(error as any)?.message || String(error)}`
+        message: `Auto-configuration failed: ${?.message || String(error)}`
       };
     }
   }
@@ -130,9 +130,9 @@ NEXT_PUBLIC_APP_URL=${config.NEXT_PUBLIC_APP_URL}
   private async writeEnvFile(content: string): Promise<void> {
     try {
       // fs.writeFileSync(this.configPath, content); // Commented out as per edit hint
-      (console as any).log('✅ .env.production file created/updated');
+      .log('✅ .env.production file created/updated');
     } catch (error) {
-      throw new Error(`Failed to write .env.production: ${(error as any)?.message || String(error)}`);
+      throw new Error(`Failed to write .env.production: ${?.message || String(error)}`);
     }
   }
 
@@ -155,7 +155,7 @@ NEXT_PUBLIC_APP_URL=${config.NEXT_PUBLIC_APP_URL}
     } catch (error) {
       return {
         success: false,
-        message: `M-Pesa connection test failed: ${(error as any)?.message || String(error)}`
+        message: `M-Pesa connection test failed: ${?.message || String(error)}`
       };
     }
   }
@@ -200,7 +200,7 @@ NEXT_PUBLIC_APP_URL=${config.NEXT_PUBLIC_APP_URL}
     } catch (error) {
       return {
         success: false,
-        message: `Configuration validation failed: ${(error as any)?.message || String(error)}`
+        message: `Configuration validation failed: ${?.message || String(error)}`
       };
     }
   }

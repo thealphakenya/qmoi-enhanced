@@ -21,8 +21,8 @@ export default async function handler(
   const { phone } = _req.body;
   exec(
     `python scripts/whatsapp_verification.py ${phone}`,
-    (_error, stdout, stderr) => {
-      if (_error) {
+    (error, stdout, stderr) => {
+      if (error) {
         _res
           .status(500)
           .json({ success: false, _error: stderr || error.message });

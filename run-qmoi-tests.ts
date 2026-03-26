@@ -16,7 +16,7 @@ import * as fs from "fs";
 import * as path from "path";
 
 async function runTests() {
-  (console as any).log("🚀 Starting QMoi Comprehensive Testing Suite...\n");
+  .log("🚀 Starting QMoi Comprehensive Testing Suite...\n");
 
   const suite = new QMOITestingSuite();
   const results = await suite.runAllTests();
@@ -27,8 +27,8 @@ async function runTests() {
   const reportPath = path.join(process.cwd(), "QMoi_Test_Report.md");
   fs.writeFileSync(reportPath, report);
 
-  (console as any).log(report);
-  (console as any).log(`\n📄 Full report saved to: ${reportPath}`);
+  .log(report);
+  .log(`\n📄 Full report saved to: ${reportPath}`);
 
   // Summary
   const passedTests = results.filter((r) => r.passed).length;
@@ -36,16 +36,16 @@ async function runTests() {
   const overallScore =
     results.reduce((sum, r) => sum + r.score, 0) / totalTests;
 
-  (console as any).log(`\n📊 Summary:`);
-  (console as any).log(
+  .log(`\n📊 Summary:`);
+  .log(
     `   Tests Passed: ${passedTests}/${totalTests} (${((passedTests / totalTests) * 100).toFixed(1)}%)`,
   );
-  (console as any).log(`   Overall Score: ${overallScore.toFixed(1)}/10`);
+  .log(`   Overall Score: ${overallScore.toFixed(1)}/10`);
 
   if (passedTests === totalTests) {
-    (console as any).log("🎉 All tests passed! QMoi is fully functional.");
+    .log("🎉 All tests passed! QMoi is fully functional.");
   } else {
-    (console as any).log("⚠️  Some tests failed. Review the report for details.");
+    .log("⚠️  Some tests failed. Review the report for details.");
   }
 }
 

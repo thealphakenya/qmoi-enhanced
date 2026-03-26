@@ -350,10 +350,10 @@ export class VoiceRecognitionService {
           "Speech recognition not supported",
         );
       }
-    } catch (_error) {
+    } catch (error) {
       safeConsoleError(
         "Error initializing speech recognition:",
-        _error,
+        error,
       );
     }
   }
@@ -370,10 +370,10 @@ export class VoiceRecognitionService {
           "Speech synthesis not supported",
         );
       }
-    } catch (_error) {
+    } catch (error) {
       safeConsoleError(
         "Error initializing speech synthesis:",
-        _error,
+        error,
       );
     }
   }
@@ -674,10 +674,10 @@ export class VoiceRecognitionService {
           transcript,
           confidence,
         });
-      } catch (_error) {
+      } catch (error) {
         safeConsoleError(
           "Error executing voice command:",
-          _error,
+          error,
         );
         this.speak(
           "Sorry, I encountered an error while executing that command",
@@ -762,10 +762,10 @@ export class VoiceRecognitionService {
     if (this.recognition && !this.isListening) {
       try {
         this.recognition?.start?.();
-      } catch (_error) {
+      } catch (error) {
         safeConsoleError(
           "Error starting voice recognition:",
-          _error,
+          error,
         );
       }
     }
@@ -775,10 +775,10 @@ export class VoiceRecognitionService {
     if (this.recognition && this.isListening) {
       try {
         this.recognition?.stop?.();
-      } catch (_error) {
+      } catch (error) {
         safeConsoleError(
           "Error stopping voice recognition:",
-          _error,
+          error,
         );
       }
     }
@@ -948,10 +948,10 @@ export class VoiceRecognitionService {
           }
         }
       }
-    } catch (_error) {
+    } catch (error) {
       safeConsoleError(
         "Error loading voice user settings:",
-        _error,
+        error,
       );
     }
   }
@@ -962,10 +962,10 @@ export class VoiceRecognitionService {
         "voiceUserSettings",
         JSON.stringify(this.userSettings),
       );
-    } catch (_error) {
+    } catch (error) {
       safeConsoleError(
         "Error saving voice user settings:",
-        _error,
+        error,
       );
     }
   }

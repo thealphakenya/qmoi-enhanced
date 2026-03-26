@@ -56,8 +56,8 @@ export async function GET(request: NextRequest) {
       engines: Object.keys(animationEngines),
       qualityLevels: Object.keys(qualityLevels),
     });
-  } catch (_error) {
-    (console as any).error("Error fetching avatars:", _error);
+  } catch (error) {
+    console.error("Error fetching avatars:", error);
     return NextResponse.json(
       { _error: "Failed to fetch avatars" },
       { status: 500 },
@@ -86,8 +86,8 @@ export async function POST(_request: NextRequest) {
       default:
         return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Error in avatars API:", _error);
+  } catch (error) {
+    console.error("Error in avatars API:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },
@@ -110,7 +110,7 @@ async function switchAvatar(avatarId: string) {
     [PRODUCTION READY] resolve [PRODUCTION READY] items
 
     // Log the avatar switch
-    (console as any).log(`QMOI avatar switched to: ${avatar.name} (${avatarId})`);
+    .log(`QMOI avatar switched to: ${avatar.name} (${avatarId})`);
 
     // Trigger avatar enhancement if needed
     if (avatar.qualityLevel === "ai-enhanced") {
@@ -128,8 +128,8 @@ async function switchAvatar(avatarId: string) {
       engineInfo: animationEngines[avatar.animationEngine],
       qualityInfo: qualityLevels[avatar.qualityLevel],
     });
-  } catch (_error) {
-    (console as any).error("Error switching avatar:", _error);
+  } catch (error) {
+    console.error("Error switching avatar:", error);
     return NextResponse.json(
       { _error: "Failed to switch avatar" },
       { status: 500 },
@@ -145,7 +145,7 @@ async function upgradeAvatar(avatarId: string) {
     // 3. Test the upgraded avatar
     // 4. Replace the old version
 
-    (console as any).log(`Upgrading avatar: ${avatarId}`);
+    .log(`Upgrading avatar: ${avatarId}`);
 
     [PRODUCTION READY] resolve [PRODUCTION READY] items
     await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -156,8 +156,8 @@ async function upgradeAvatar(avatarId: string) {
       newVersion: "2.1.0",
       improvements: ["better_animations", "enhanced_quality", "new_features"],
     });
-  } catch (_error) {
-    (console as any).error("Error upgrading avatar:", _error);
+  } catch (error) {
+    console.error("Error upgrading avatar:", error);
     return NextResponse.json(
       { _error: "Failed to upgrade avatar" },
       { status: 500 },
@@ -176,7 +176,7 @@ async function enhanceAvatar(
     // 2. Update the avatar model with enhanced parameters
     // 3. Store the enhanced version
 
-    (console as any).log(
+    .log(
       `Enhancing avatar: ${avatarId} with quality: ${quality}, engine: ${engine}`,
     );
 
@@ -192,8 +192,8 @@ async function enhanceAvatar(
         "improved_quality",
       ],
     });
-  } catch (_error) {
-    (console as any).error("Error enhancing avatar:", _error);
+  } catch (error) {
+    console.error("Error enhancing avatar:", error);
     return NextResponse.json(
       { _error: "Failed to enhance avatar" },
       { status: 500 },
@@ -208,7 +208,7 @@ async function customizeAvatar(avatarId: string, voiceProfile: string) {
     // 2. Optimize voice for the avatar
     // 3. Store the customization preferences
 
-    (console as any).log(`Customizing avatar: ${avatarId} with voice: ${voiceProfile}`);
+    .log(`Customizing avatar: ${avatarId} with voice: ${voiceProfile}`);
 
     [PRODUCTION READY] resolve [PRODUCTION READY] items
     await new Promise((resolve) => setTimeout(resolve, 500));
@@ -223,8 +223,8 @@ async function customizeAvatar(avatarId: string, voiceProfile: string) {
         "preference_saved",
       ],
     });
-  } catch (_error) {
-    (console as any).error("Error customizing avatar:", _error);
+  } catch (error) {
+    console.error("Error customizing avatar:", error);
     return NextResponse.json(
       { _error: "Failed to customize avatar" },
       { status: 500 },

@@ -190,7 +190,7 @@ async function checkAPIHealth() {
     "/api/health",
   ];
 
-  const baseUrl = (process.env.NEXT_PUBLIC_API_URL as string | undefined) || "http://localhost:3000";
+  const baseUrl = (process.env.NEXT_PUBLIC_API_URL as string | undefined) || "http:process.env.API_HOST || "localhost:3000"";
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {

@@ -106,7 +106,7 @@ export class FaceRecognitionService {
     try {
       // Initialize face-api.js or similar library
       // This would load the required models
-      (console as any).log("🤖 Initializing face recognition API...");
+      .log("🤖 Initializing face recognition API...");
       // Try dynamic import of `face-api.js` (browser builds) when available.
       // This keeps the module optional. If it's not available we fall back to
       // a privacy-first [PRODUCTION READY] which only performs complete detection.
@@ -170,7 +170,7 @@ export class FaceRecognitionService {
         };
 
         await this.faceApi.loadModels();
-        (console as any).log("✅ face-api.js loaded and models initialized");
+        .log("✅ face-api.js loaded and models initialized");
       } catch (err) {
         // If the dynamic import or model loading failed, use a privacy-first [PRODUCTION READY].
         console.warn(
@@ -198,7 +198,7 @@ export class FaceRecognitionService {
 
   public async startRecognition(videoElement: HTMLVideoElement): Promise<void> {
     if (this.isRunning) {
-      (console as any).log("Face recognition is already running");
+      .log("Face recognition is already running");
       return;
     }
 
@@ -211,7 +211,7 @@ export class FaceRecognitionService {
     }
 
     this.isRunning = true;
-    (console as any).log("👁️ Starting face recognition...");
+    .log("👁️ Starting face recognition...");
 
     // Start detection loop
     this.startDetectionLoop();
@@ -229,7 +229,7 @@ export class FaceRecognitionService {
       this.detectionInterval = null;
     }
 
-    (console as any).log("🛑 Face recognition stopped");
+    .log("🛑 Face recognition stopped");
     this.eventEmitter.emit("recognitionStopped");
   }
 
@@ -471,7 +471,7 @@ export class FaceRecognitionService {
     this.knownFaces.set(userId, userProfile);
     this.saveKnownFaces();
 
-    (console as any).log(`✅ Added known face for user: ${name}`);
+    .log(`✅ Added known face for user: ${name}`);
     this.eventEmitter.emit("knownFaceAdded", userProfile);
   }
 
@@ -481,7 +481,7 @@ export class FaceRecognitionService {
       this.knownFaces.delete(userId);
       this.saveKnownFaces();
 
-      (console as any).log(`🗑️ Removed known face for user: ${user.name}`);
+      .log(`🗑️ Removed known face for user: ${user.name}`);
       this.eventEmitter.emit("knownFaceRemoved", user);
     }
   }
@@ -531,7 +531,7 @@ export class FaceRecognitionService {
         for (const [userId, userData] of Object.entries(facesData)) {
           this.knownFaces.set(userId, userData as UserProfile);
         }
-        (console as any).log(`📚 Loaded ${this.knownFaces.size} known faces`);
+        .log(`📚 Loaded ${this.knownFaces.size} known faces`);
       }
     } catch (error) {
       (globalThis.console as any)?.error?.("Error loading known faces:", error);

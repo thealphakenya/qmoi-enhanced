@@ -10,7 +10,7 @@ import { EventEmitter } from "events";
 // Ensure all enhanced services work with current setup
 export class EnhancedServicesCompatibility {
   static initialize() {
-    (console as any).log("Enhanced QMOI services compatibility layer initialized");
+    .log("Enhanced QMOI services compatibility layer initialized");
     return true;
   }
 

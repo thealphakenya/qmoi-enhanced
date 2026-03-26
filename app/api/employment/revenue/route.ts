@@ -125,9 +125,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     });
 
     return { success: true, account };
-  } catch (_error) {
+  } catch (error) {
     logger.error(`Failed to create ${platform} account`, {
-      error: _error instanceof Error ? _error.message : String(_error),
+      error: _error instanceof Error ? error.message : String(error),
       platform,
     });
     return { success: false, error: `${platform} account creation failed` };
@@ -161,8 +161,8 @@ async function generateMicrotaskRevenue(
       revenue: qmoiProfit,
       dataType: "[PRODUCTION READY]d",
     };
-  } catch (_error) {
-    logger.error("Microtask revenue generation failed", { error: _error });
+  } catch (error) {
+    logger.error("Microtask revenue generation failed", { error: error });
     return { success: false, error: "Microtask revenue failed" };
   }
 }
@@ -193,8 +193,8 @@ async function generateAffiliateRevenue(
       revenue: qmoiShare,
       dataType: "[PRODUCTION READY]d",
     };
-  } catch (_error) {
-    logger.error("Affiliate revenue generation failed", { error: _error });
+  } catch (error) {
+    logger.error("Affiliate revenue generation failed", { error: error });
     return { success: false, error: "Affiliate revenue failed" };
   }
 }
@@ -221,8 +221,8 @@ async function generateContentRevenue(
       revenue: qmoiProfit,
       dataType: "[PRODUCTION READY]d",
     };
-  } catch (_error) {
-    logger.error("Content revenue generation failed", { error: _error });
+  } catch (error) {
+    logger.error("Content revenue generation failed", { error: error });
     return { success: false, error: "Content revenue failed" };
   }
 }
@@ -251,8 +251,8 @@ async function generateReferralRevenue(
       revenue: qmoiBonus,
       dataType: "[PRODUCTION READY]d",
     };
-  } catch (_error) {
-    logger.error("Referral revenue generation failed", { error: _error });
+  } catch (error) {
+    logger.error("Referral revenue generation failed", { error: error });
     return { success: false, error: "Referral revenue failed" };
   }
 }
@@ -317,7 +317,7 @@ async function addToMpesaAccount(amount: number, description: string) {
       description,
       status: response.ok ? "success" : "failed",
       timestamp: Date.now(),
-      reference: (result as any).CheckoutRequestID || `QMOI_${Date.now()}`,
+      reference: .CheckoutRequestID || `QMOI_${Date.now()}`,
     });
 
     if (!response.ok) {
@@ -327,10 +327,10 @@ async function addToMpesaAccount(amount: number, description: string) {
       };
     }
 
-    return { success: true, reference: (result as any).CheckoutRequestID };
-  } catch (_error) {
+    return { success: true, reference: .CheckoutRequestID };
+  } catch (error) {
     logger.error("M-Pesa deposit failed", {
-      error: _error instanceof Error ? _error.message : String(_error),
+      error: _error instanceof Error ? error.message : String(error),
     });
     return { success: false, error: "M-Pesa deposit failed" };
   }
@@ -361,7 +361,7 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       revenue: qmoiProfit,
       dataType: "[PRODUCTION READY]d",
     };
-  } catch (_error) {
+  } catch (error) {
     return { success: false, error: "Survey revenue failed" };
   }
 }
@@ -388,7 +388,7 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       revenue: qmoiProfit,
       dataType: "[PRODUCTION READY]d",
     };
-  } catch (_error) {
+  } catch (error) {
     return { success: false, error: "Data labeling revenue failed" };
   }
 }
@@ -416,7 +416,7 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       revenue: qmoiProfit,
       dataType: "[PRODUCTION READY]d",
     };
-  } catch (_error) {
+  } catch (error) {
     return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
@@ -485,7 +485,7 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
@@ -682,13 +682,13 @@ export async function POST(_request: NextRequest) {
           { status: 400 },
         );
     }
-  } catch (_error) {
-    if (_error instanceof z.ZodError) {
+  } catch (error) {
+    if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
           error: "Validation failed",
-          details: _error.errors,
+          details: error.errors,
         },
         { status: 400 },
       );
@@ -760,7 +760,7 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,

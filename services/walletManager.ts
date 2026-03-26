@@ -56,7 +56,7 @@ export class WalletManager {
     };
     persistWallet(rec);
     WalletManager.appendAudit({ _event: "wallet_created", walletId: id, meta });
-    (console as any).log("[WalletManager] created wallet", id);
+    .log("[WalletManager] created wallet", id);
     return rec;
   }
 

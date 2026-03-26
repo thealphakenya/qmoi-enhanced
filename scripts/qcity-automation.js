@@ -125,9 +125,9 @@ class QCityAutomation {
 
       this.log("✅ QCity Automation System initialized successfully");
       return true;
-    } catch (_error) {
+    } catch (error) {
       this.log(`❌ QCity initialization failed: ${error.message}`, "ERROR");
-      await this.errorRecovery.handleError(_error);
+      await this.errorRecovery.handleError(error);
       return false;
     }
   }
@@ -240,7 +240,7 @@ if __name__ == "__main__":
       } else {
         this.log(`⚠️ Script not found: ${scriptName}`);
       }
-    } catch (_error) {
+    } catch (error) {
       this.log(`❌ Error running ${scriptName}: ${error.message}`, "ERROR");
     }
   }
@@ -275,9 +275,9 @@ if __name__ == "__main__":
 
       this.log("✅ QCity validation completed successfully");
       return true;
-    } catch (_error) {
+    } catch (error) {
       this.log(`❌ QCity validation failed: ${error.message}`, "ERROR");
-      await this.errorRecovery.handleError(_error);
+      await this.errorRecovery.handleError(error);
       return false;
     }
   }
@@ -334,9 +334,9 @@ if __name__ == "__main__":
 
       this.log("✅ QCity test integration completed successfully");
       return true;
-    } catch (_error) {
+    } catch (error) {
       this.log(`❌ QCity test integration failed: ${error.message}`, "ERROR");
-      await this.errorRecovery.handleError(_error);
+      await this.errorRecovery.handleError(error);
       return false;
     }
   }
@@ -366,9 +366,9 @@ if __name__ == "__main__":
 
       this.log("✅ QCity build integration completed");
       return true;
-    } catch (_error) {
+    } catch (error) {
       this.log(`❌ QCity build integration failed: ${error.message}`, "ERROR");
-      await this.errorRecovery.handleError(_error);
+      await this.errorRecovery.handleError(error);
       return false;
     }
   }
@@ -388,12 +388,12 @@ if __name__ == "__main__":
 
       this.log("✅ QCity deployment integration completed");
       return true;
-    } catch (_error) {
+    } catch (error) {
       this.log(
         `❌ QCity deployment integration failed: ${error.message}`,
         "ERROR",
       );
-      await this.errorRecovery.handleError(_error);
+      await this.errorRecovery.handleError(error);
       return false;
     }
   }
@@ -487,9 +487,9 @@ if __name__ == "__main__":
 
       this.log("✅ QCity full pipeline completed successfully");
       return true;
-    } catch (_error) {
+    } catch (error) {
       this.log(`❌ QCity full pipeline failed: ${error.message}`, "ERROR");
-      await this.errorRecovery.handleError(_error);
+      await this.errorRecovery.handleError(error);
       return false;
     }
   }
@@ -546,7 +546,7 @@ class QCityNotificationSystem {
         try {
           await channel.send(message, type);
           this.qcity.log(`✅ Notification sent via ${channelName}`);
-        } catch (_error) {
+        } catch (error) {
           this.qcity.log(
             `❌ Failed to send notification via ${channelName}: ${error.message}`,
             "ERROR",
@@ -564,7 +564,7 @@ class QCityNotificationSystem {
       try {
         await channel.test();
         this.qcity.log(`✅ ${name} notification channel validated`);
-      } catch (_error) {
+      } catch (error) {
         this.qcity.log(
           `❌ ${name} notification channel validation failed: ${error.message}`,
           "ERROR",
@@ -604,15 +604,15 @@ class QCityErrorRecovery {
     await this.qcity.runPythonScript("qmoi-error-handler.py", ["--initialize"]);
   }
 
-  async handleError(_error) {
+  async handleError(error) {
     this.qcity.log(`🚨 Handling _error: ${error.message}`, "ERROR");
 
     try {
       // Log error details
-      this.logErrorDetails(_error);
+      this.logErrorDetails(error);
 
       // Attempt automatic recovery
-      await this.attemptRecovery(_error);
+      await this.attemptRecovery(error);
 
       // Send error notification
       await this.qcity.notificationSystem.sendNotification(
@@ -624,11 +624,11 @@ class QCityErrorRecovery {
         `❌ Error recovery failed: ${recoveryError.message}`,
         "ERROR",
       );
-      await this.escalateError(_error, recoveryError);
+      await this.escalateError(error, recoveryError);
     }
   }
 
-  logErrorDetails(_error) {
+  logErrorDetails(error) {
     const errorLog = {
       timestamp: new Date().toISOString(),
       message: error.message,
@@ -640,7 +640,7 @@ class QCityErrorRecovery {
     fs.appendFileSync(errorLogPath, JSON.stringify(errorLog) + "\n");
   }
 
-  async attemptRecovery(_error) {
+  async attemptRecovery(error) {
     this.qcity.log("🔄 Attempting error recovery...");
 
     // Run error recovery script
@@ -676,8 +676,8 @@ class QCityErrorRecovery {
     [PRODUCTION READY] error and test recovery
     try {
       throw new Error("Test error for integration testing");
-    } catch (_error) {
-      await this.handleError(_error);
+    } catch (error) {
+      await this.handleError(error);
     }
 
     this.qcity.log("✅ Error recovery integration tested");
@@ -719,9 +719,9 @@ class QCityHealthMonitor {
       await this.checkNotificationHealth();
 
       this.qcity.log("✅ Health check completed");
-    } catch (_error) {
+    } catch (error) {
       this.qcity.log(`❌ Health check failed: ${error.message}`, "ERROR");
-      await this.qcity.errorRecovery.handleError(_error);
+      await this.qcity.errorRecovery.handleError(error);
     }
   }
 
@@ -853,8 +853,8 @@ async function main() {
         console.log("  --full-pipeline   Run full pipeline");
         break;
     }
-  } catch (_error) {
-    (console as any).error(`❌ QCity automation failed: ${error.message}`);
+  } catch (error) {
+    console.error(`❌ QCity automation failed: ${error.message}`);
     process.exit(1);
   }
 }

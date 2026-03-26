@@ -113,7 +113,7 @@ export async function GET(request: NextRequest) {
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
-    (console as any).error("Error fetching sponsored analytics:", error);
+    console.error("Error fetching sponsored analytics:", error);
     return NextResponse.json(
       { error: "Internal server error", code: "SERVER_ERROR" },
       { status: 500 },

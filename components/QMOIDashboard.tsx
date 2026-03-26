@@ -730,7 +730,7 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
                     avatar: undefined,
                   };
                   try {
-                    setCurrentUser(userProfile as any);
+                    setCurrentUser;
                     setRole("user");
                     updateQMOIMemory({
                       conversations: (qmoiMemory?.conversations || 0) + 1,

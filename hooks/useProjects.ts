@@ -124,14 +124,14 @@ export function useProjects() {
             // Add any other relevant project details for Colab job
           },
         });
-        (console as any).log("Colab job initiated:", response.data);
+        .log("Colab job initiated:", response.data);
         refetchProjects();
       } catch (err) {
         (globalThis.console as any)?.error?.(
           "Error initiating Colab job:",
           err,
         );
-        setError(err as any);
+        setError;
       }
     },
     [refetchProjects],

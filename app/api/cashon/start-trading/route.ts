@@ -48,8 +48,8 @@ export async function POST(_request: NextRequest) {
       success: true,
       message: "AI trading started successfully",
     });
-  } catch (_error) {
-    (console as any).error("Start trading API _error:", _error);
+  } catch (error) {
+    console.error("Start trading API _error:", error);
     return NextResponse.json(
       { _error: "Failed to start trading" },
       { status: 500 },

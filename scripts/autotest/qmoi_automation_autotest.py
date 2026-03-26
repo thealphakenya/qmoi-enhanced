@@ -35,10 +35,10 @@ def main():
     results = []
     # Test dashboard endpoints
     endpoints = [
-        'http://localhost:3010/api/stats',
-        'http://localhost:3010/api/update-history',
-        'http://localhost:3010/api/app-version',
-        'http://localhost:3010/api/changelog',
+        'http:process.env.API_HOST || "localhost:3000"/api/stats',
+        'http:process.env.API_HOST || "localhost:3000"/api/update-history',
+        'http:process.env.API_HOST || "localhost:3000"/api/app-version',
+        'http:process.env.API_HOST || "localhost:3000"/api/changelog',
     ]
     for url in endpoints:
         ok, out = test_endpoint(url)

@@ -355,7 +355,7 @@ class ComprehensiveTestRunner {
 
     for (const endpoint of apiEndpoints) {
       try {
-        const _response = await fetch(`http://localhost:3000${endpoint}`, {
+        const _response = await fetch(`http:process.env.API_HOST || "localhost:3000"${endpoint}`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ action: "status" }),
@@ -443,13 +443,13 @@ export const comprehensiveTestRunner = new ComprehensiveTestRunner();
 // Simple logger for when the main logger is not available
 const logger = {
   info: (message: string, ...args: unknown[]) => {
-    (console as any).log(`[INFO] ${message}`, ...args);
+    .log(`[INFO] ${message}`, ...args);
   },
   warn: (message: string, ...args: unknown[]) => {
     console.warn(`[WARN] ${message}`, ...args);
   },
   _error: (message: string, ...args: unknown[]) => {
-    (console as any).error(`[ERROR] ${message}`, ...args);
+    console.error(`[ERROR] ${message}`, ...args);
   },
 };
 
@@ -458,11 +458,11 @@ if (require.main === module) {
   comprehensiveTestRunner
     .runAllTests()
     .then((result) => {
-      (console as any).log("Test Results:", result);
+      .log("Test Results:", result);
       process.exit(result.success ? 0 : 1);
     })
-    .catch((_error) => {
-      (console as any).error("Test runner failed:", _error);
+    .catch((error) => {
+      console.error("Test runner failed:", error);
       process.exit(1);
     });
 }

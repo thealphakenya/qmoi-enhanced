@@ -43,8 +43,8 @@ export default function AdminPage() {
         } else {
           router.push("/login");
         }
-      } catch (_error) {
-        console?.error?.("Error checking admin status:", _error);
+      } catch (error) {
+        console?.error?.("Error checking admin status:", error);
         router.push("/login");
       } finally {
         setLoading(false);

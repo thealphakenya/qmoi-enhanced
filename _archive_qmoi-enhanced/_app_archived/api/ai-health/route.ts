@@ -140,11 +140,11 @@ export async function GET(request: NextRequest) {
     try {
       const lintLog = fs.readFileSync("logs/lint-errors.json", "utf-8");
       lintStatus = lintLog.includes("error") ? "failed" : "passed";
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
     try {
       const testLog = fs.readFileSync("logs/auto-lint.log", "utf-8");
       testStatus = testLog.includes("FAIL") ? "failed" : "passed";
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
 
     // Deployment status
     let deployStatus = "unknown";
@@ -152,7 +152,7 @@ export async function GET(request: NextRequest) {
       const deployLog = fs.readFileSync("logs/vercel_auto_deploy.log", "utf-8");
       if (deployLog.includes("successful")) deployStatus = "success";
       else if (deployLog.includes("failed")) deployStatus = "failed";
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
 
     [PRODUCTION READY]: Replace with actual component monitoring
     const components: AIComponentStatus[] = [

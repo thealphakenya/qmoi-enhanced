@@ -26,8 +26,8 @@ export async function GET(request: NextRequest) {
 
     let analytics: any = {};
     const fn =
-      (qmoiEnhancedEmailService as any).getEmailAnalytics ||
-      (qmoiEnhancedEmailService as any).getAnalytics ||
+      .getEmailAnalytics ||
+      .getAnalytics ||
       (async () => ({}));
     analytics = await fn(account, days);
 
@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
       analytics,
     });
   } catch (error) {
-    (console as any).error("Enhanced email service error:", error);
+    console.error("Enhanced email service error:", error);
     return NextResponse.json(
       { success: false, error: "Failed to get email analytics" },
       { status: 500 },

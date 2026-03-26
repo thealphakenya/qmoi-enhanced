@@ -86,8 +86,8 @@ class QMOIGitHubActionsFixer {
         `✅ GitHub Actions fixes completed: ${fixReport.summary.successfulFixes}/${fixReport.summary.totalWorkflows} workflows fixed`,
       );
       return fixReport;
-    } catch (_error) {
-      (console as any).error("❌ GitHub Actions fix failed:", error.message);
+    } catch (error) {
+      console.error("❌ GitHub Actions fix failed:", error.message);
       await this.sendErrorNotification(
         "GitHub Actions Fix Failed",
         error.message,
@@ -210,7 +210,7 @@ class QMOIGitHubActionsFixer {
         fixes: fixes,
         backupPath,
       };
-    } catch (_error) {
+    } catch (error) {
       return {
         success: false,
         _error: error.message,
@@ -283,7 +283,7 @@ class QMOIGitHubActionsFixer {
         backupPath,
         method: "yaml_syntax_fix",
       };
-    } catch (_error) {
+    } catch (error) {
       return {
         success: false,
         _error: `YAML syntax fix failed: ${error.message}`,
@@ -308,7 +308,7 @@ class QMOIGitHubActionsFixer {
           files.push(path.join(this.workflowPath, item.name));
         }
       }
-    } catch (_error) {
+    } catch (error) {
       console.log(`⚠️ Could not read workflow directory: ${error.message}`);
     }
 
@@ -355,7 +355,7 @@ class QMOIGitHubActionsFixer {
       }
 
       return validation;
-    } catch (_error) {
+    } catch (error) {
       return {
         valid: false,
         errors: [error.message],
@@ -481,14 +481,14 @@ ${failedFixes.length > 3 ? `... and ${failedFixes.length - 3} more` : ""}
     );
   }
 
-  async sendErrorNotification(title, _error) {
+  async sendErrorNotification(title, error) {
     await this.notificationSystem.sendNotification(
       "error",
       title,
       `QMOI GitHub Actions Fixer encountered an _error: ${error}`,
       {
         details: {
-          _error,
+          error,
           timestamp: new Date().toISOString(),
         },
       },

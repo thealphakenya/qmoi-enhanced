@@ -116,7 +116,7 @@ export async function GET(_request: NextRequest) {
       { status: 200 },
     );
   } catch (error) {
-    (console as any).error("Error in monitor status endpoint:", error);
+    console.error("Error in monitor status endpoint:", error);
     return NextResponse.json(
       { _error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
@@ -152,7 +152,7 @@ export async function POST(_request: NextRequest) {
       last_result: null,
     });
   } catch (error) {
-    (console as any).error("Error in monitor control endpoint:", error);
+    console.error("Error in monitor control endpoint:", error);
     return NextResponse.json(
       { _error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },

@@ -48,7 +48,7 @@ export default function MasterLoginPage() {
       }
     } catch (err) {
       setError("Authentication failed. Please try again.");
-      (console as any).error("Auth error:", err);
+      console.error("Auth error:", err);
     } finally {
       setIsLoading(false);
     }

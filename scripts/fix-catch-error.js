@@ -22,7 +22,7 @@ const run = async () => {
   for (const file of files) {
     let s = fs.readFileSync(file, "utf8");
     const old = s;
-    s = s.replace(/catch\s*\(\s*error\s*\)\s*\{/g, "catch (_error) {");
+    s = s.replace(/catch\s*\(\s*error\s*\)\s*\{/g, "catch (error) {");
     s = s.replace(
       /catch\s*\(\s*error\s*:\s*unknown\s*\)\s*\{/g,
       "catch (_error: unknown) {",

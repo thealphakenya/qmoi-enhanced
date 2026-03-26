@@ -80,8 +80,8 @@ export const QConverse: React.FC<QConverseProps> = ({
       synthesisRef.current = window.speechSynthesis;
 
       const SpeechRecognition =
-        (window as any).SpeechRecognition ||
-        (window as any).webkitSpeechRecognition;
+        .SpeechRecognition ||
+        .webkitSpeechRecognition;
       if (SpeechRecognition) {
         recognitionRef.current = new SpeechRecognition();
         setupSpeechRecognition();
@@ -91,7 +91,7 @@ export const QConverse: React.FC<QConverseProps> = ({
     try {
       const sid = getOrCreateSessionId();
       fetchProfileName(sid);
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   }, []);
 
   const setupSpeechRecognition = () => {

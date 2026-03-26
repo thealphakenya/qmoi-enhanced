@@ -22,10 +22,10 @@ function loadPlugins() {
       if (typeof plugin.register === "function") {
         plugin.register();
         plugins.push(file);
-        (console as any).log(`[PLUGIN] Loaded: ${file}`);
+        .log(`[PLUGIN] Loaded: ${file}`);
       }
     } catch (_e) {
-      (console as any).error(`[PLUGIN] Failed to load ${file}:`, _e);
+      console.error(`[PLUGIN] Failed to load ${file}:`, _e);
     }
   }
   return plugins;

@@ -138,7 +138,7 @@ export class CashonAdapter implements WalletAdapter {
         const controller = new AbortController();
         const timeout = Number(process.env.WALLET_HTTP_TIMEOUT_MS || 5000);
         const timeoutId = setTimeout(() => controller.abort(), timeout);
-        const r = await (maybeFetch as any)(url, {
+        const r = await (url, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${apiKey}`,
@@ -226,7 +226,7 @@ export class MegavaultAdapter implements WalletAdapter {
         const controller = new AbortController();
         const timeout = Number(process.env.WALLET_HTTP_TIMEOUT_MS || 5000);
         const timeoutId = setTimeout(() => controller.abort(), timeout);
-        const r = await (maybeFetch as any)(url, {
+        const r = await (url, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${apiKey}`,

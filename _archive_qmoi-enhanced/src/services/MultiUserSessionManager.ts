@@ -467,15 +467,15 @@ export class MultiUserSessionManager extends EventEmitter {
 
   // Event Handlers
   private handleUserJoined(data: { user: User; sessionId: string }) {
-    (console as any).log(`User ${data.user.name} joined session ${data.sessionId}`);
+    .log(`User ${data.user.name} joined session ${data.sessionId}`);
   }
 
   private handleUserLeft(data: { user: User; sessionId: string }) {
-    (console as any).log(`User ${data.user.name} left session ${data.sessionId}`);
+    .log(`User ${data.user.name} left session ${data.sessionId}`);
   }
 
   private handleGroupCreated(data: { group: Group; sessionId: string }) {
-    (console as any).log(
+    .log(
       `Group ${data.group.name} created in session ${data.sessionId}`,
     );
   }
@@ -485,7 +485,7 @@ export class MultiUserSessionManager extends EventEmitter {
     context: UserContext;
     sessionId: string;
   }) {
-    (console as any).log(
+    .log(
       `Context changed for user ${data.userId} in session ${data.sessionId}`,
     );
   }

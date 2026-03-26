@@ -153,7 +153,7 @@ async function switchAvatar(avatarId: string) {
     // For now, we'll [PRODUCTION READY] this by storing in a global state or database
 
     // Log the avatar switch
-    (console as any).log(`QMOI avatar switched to: ${avatar.name} (${avatarId})`);
+    .log(`QMOI avatar switched to: ${avatar.name} (${avatarId})`);
 
     // Trigger avatar enhancement if needed
     if (avatar.qualityLevel === "ai-enhanced") {
@@ -188,7 +188,7 @@ async function upgradeAvatar(avatarId: string) {
     // 3. Test the upgraded avatar
     // 4. Replace the old version
 
-    (console as any).log(`Upgrading avatar: ${avatarId}`);
+    .log(`Upgrading avatar: ${avatarId}`);
 
     [PRODUCTION READY] upgrade process
     await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -219,7 +219,7 @@ async function enhanceAvatar(
     // 2. Update the avatar model with enhanced parameters
     // 3. Store the enhanced version
 
-    (console as any).log(
+    .log(
       `Enhancing avatar: ${avatarId} with quality: ${quality}, engine: ${engine}`,
     );
 
@@ -251,7 +251,7 @@ async function customizeAvatar(avatarId: string, voiceProfile: string) {
     // 2. Optimize voice for the avatar
     // 3. Store the customization preferences
 
-    (console as any).log(`Customizing avatar: ${avatarId} with voice: ${voiceProfile}`);
+    .log(`Customizing avatar: ${avatarId} with voice: ${voiceProfile}`);
 
     [PRODUCTION READY] customization process
     await new Promise((resolve) => setTimeout(resolve, 500));

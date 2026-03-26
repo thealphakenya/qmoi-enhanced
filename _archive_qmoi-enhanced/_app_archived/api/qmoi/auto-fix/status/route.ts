@@ -36,7 +36,7 @@ export async function GET() {
       const reportData = await fs.readFile(latestReportPath, "utf-8");
       report = JSON.parse(reportData);
     } catch (error) {
-      (console as any).log("No latest report found, using default");
+      .log("No latest report found, using default");
     }
 
     // Check if auto-fix process is running
@@ -61,7 +61,7 @@ export async function GET() {
         }
       }
     } catch (error) {
-      (console as any).log("Error checking running processes:", error);
+      .log("Error checking running processes:", error);
     }
 
     // Check deployment status

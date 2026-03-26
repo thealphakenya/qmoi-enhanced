@@ -48,7 +48,7 @@ class ErrorTracker {
 
     // Log to console in development
     if (process.env.NODE_ENV !== "production") {
-      (console as any).error(`[${id}] Error tracked:`, trackedError);
+      console.error(`[${id}] Error tracked:`, trackedError);
     }
 
     // Send to external service (Sentry, DataDog, etc.) in production
@@ -190,10 +190,10 @@ class ErrorTracker {
       });
 
       if (!response.ok) {
-        (console as any).error("Failed to send error to tracking service");
+        console.error("Failed to send error to tracking service");
       }
     } catch (error) {
-      (console as any).error("Error sending to tracking service:", error);
+      console.error("Error sending to tracking service:", error);
     }
   };
 }

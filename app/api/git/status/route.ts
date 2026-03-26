@@ -47,7 +47,7 @@ export async function GET(_req: NextRequest) {
     return NextResponse.json(
       {
         _error: "Failed to get Git status",
-        details: _error instanceof Error ? _error.message : String(_error),
+        details: _error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );

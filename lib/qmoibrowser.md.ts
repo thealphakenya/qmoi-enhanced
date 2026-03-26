@@ -16,13 +16,13 @@ export class QMOIBROWSER.mdService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing QMOIBROWSER.md');
+    .log("[Service] Initializing...");
+    .log('Initializing QMOIBROWSER.md');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'QMOIBROWSER.md executed' };
   }
 }

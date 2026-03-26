@@ -29,7 +29,7 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
@@ -67,10 +67,10 @@ export async function GET(_request: NextRequest) {
     // Build filter
     const where: Record<string, unknown> = {};
     if (status) {
-      (where as any).emailVerified = status === "verified";
+      .emailVerified = status === "verified";
     }
     if (search) {
-      (where as any).OR = [
+      .OR = [
         { email: { contains: search, mode: "insensitive" } },
         { username: { contains: search, mode: "insensitive" } },
       ];
@@ -115,8 +115,8 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    (globalThis.console as any)?.error?.("Admin users _error:", error);
     return NextResponse.json(
       { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
@@ -144,7 +144,7 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
@@ -220,8 +220,8 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    (globalThis.console as any)?.error?.("Update user _error:", error);
     return NextResponse.json(
       { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
@@ -249,7 +249,7 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
@@ -314,8 +314,8 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    (globalThis.console as any)?.error?.("Delete user _error:", error);
     return NextResponse.json(
       { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },

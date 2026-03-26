@@ -368,7 +368,7 @@ async function executeCustom(interaction: AutoInteraction) {
     case "optimize_performance":
       // Trigger performance optimization
       if ("gc" in window) {
-        (window as any).gc();
+        .gc();
       }
       break;
     case "clear_cache":
@@ -376,7 +376,7 @@ async function executeCustom(interaction: AutoInteraction) {
       sessionStorage.clear();
       break;
     default:
-      (console as any).log("Custom QMOI action:", interaction.action);
+      .log("Custom QMOI action:", interaction.action);
   }
 
   document.dispatchEvent(

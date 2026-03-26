@@ -299,7 +299,7 @@ export default async function handler(
               logs: [],
             };
           } else {
-            const summary = await autoFixService.startAutoFix(status as any);
+            const summary = await autoFixService.startAutoFix;
             result = {
               success: true,
               message: "Auto-fix for detected problems executed.",
@@ -310,7 +310,7 @@ export default async function handler(
           result = {
             success: false,
             message: "Auto-fix failed.",
-            error: (error as any)?.message ?? String(error),
+            error: ?.message ?? String(error),
           };
         }
         break;
@@ -399,7 +399,7 @@ export default async function handler(
         try {
           const status = qcityService.getStatus();
           const summary = status
-            ? await autoFixService.startAutoFix(status as any)
+            ? await autoFixService.startAutoFix
             : { success: false, message: "No status available" };
           result = {
             success: true,
@@ -472,7 +472,7 @@ export default async function handler(
               logs: [],
             };
           } else {
-            const summary = await autoFixService.startAutoFix(status as any);
+            const summary = await autoFixService.startAutoFix;
             result = {
               success: true,
               message: "Monitor and auto-fix projects executed",

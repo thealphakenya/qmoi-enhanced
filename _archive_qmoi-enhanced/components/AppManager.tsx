@@ -141,7 +141,7 @@ export default function AppManager() {
 
     appManagementService.onUpdateAvailable(({ app, update }) => {
       // Show update notification
-      (console as any).log(
+      .log(
         `Update available for ${app.displayName}: v${update.newVersion}`,
       );
     });

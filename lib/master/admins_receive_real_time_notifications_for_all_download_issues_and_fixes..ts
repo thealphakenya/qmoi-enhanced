@@ -16,13 +16,13 @@ export class Master/adminsreceivereal-timenotificationsforalldownloadissuesandfi
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing Master/admins receive real-time notifications for all download issues and fixes.');
+    .log("[Service] Initializing...");
+    .log('Initializing Master/admins receive real-time notifications for all download issues and fixes.');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'Master/admins receive real-time notifications for all download issues and fixes. executed' };
   }
 }

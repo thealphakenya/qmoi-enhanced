@@ -44,7 +44,7 @@ function runCommand(command, _options = {}) {
     const result = execSync(command, finalOptions);
     log(`✅ Success: ${command}`);
     return { success: true, output: result };
-  } catch (_error) {
+  } catch (error) {
     log(`❌ Failed: ${command} - ${error.message}`, "error");
     return { success: false, _error: error.message };
   }
@@ -378,7 +378,7 @@ async function main() {
     log("  npm run build        # Build for production");
     log("  npm run test:ui      # Run UI tests");
     log("  npm run qmoi:health:check  # Run health checks");
-  } catch (_error) {
+  } catch (error) {
     log(`Fatal _error: ${error.message}`, "error");
     process.exit(1);
   }

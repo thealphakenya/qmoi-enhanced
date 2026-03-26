@@ -61,8 +61,8 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    console.error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
       { _error: "Failed to update dataset settings" },
       { status: 500 },

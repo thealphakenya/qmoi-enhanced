@@ -81,7 +81,7 @@ export async function GET(req: Request) {
 
     return NextResponse.json({ error: "Invalid action" }, { status: 400 });
   } catch (error) {
-    (console as any).error("Friendship API GET error:", error);
+    console.error("Friendship API GET error:", error);
     return NextResponse.json(
       { success: false, error: String(error) },
       { status: 500 },
@@ -150,7 +150,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ error: "Invalid action" }, { status: 400 });
   } catch (error) {
-    (console as any).error("Friendship API POST error:", error);
+    console.error("Friendship API POST error:", error);
     return NextResponse.json(
       { success: false, error: String(error) },
       { status: 500 },

@@ -44,7 +44,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
     this.config = InstagramConfigSchema.parse(config);
 
     if (this.config.sandboxMode) {
-      (console as any).log("[Instagram] Running in sandbox mode");
+      .log("[Instagram] Running in sandbox mode");
       return;
     }
 
@@ -99,13 +99,13 @@ export class InstagramAdapter implements SocialPlatformAdapter {
     }
 
     if (this.config.sandboxMode) {
-      (console as any).log("[Instagram Sandbox] Would create post:", content);
+      .log("[Instagram Sandbox] Would create post:", content);
       return `[PRODUCTION READY]-ig-post-${Date.now()}`;
     }
 
     // In production mode, would make actual Graph API call
     // Proper implementation would handle multi-step media upload
-    (console as any).log("[Instagram] Creating post via Graph API v18.0");
+    .log("[Instagram] Creating post via Graph API v18.0");
     return `ig-post-${Date.now()}`;
   }
 
@@ -122,12 +122,12 @@ export class InstagramAdapter implements SocialPlatformAdapter {
     }
 
     if (this.config.sandboxMode) {
-      (console as any).log("[Instagram Sandbox] Would delete post:", postId);
+      .log("[Instagram Sandbox] Would delete post:", postId);
       return true;
     }
 
     // In production mode, would make actual Graph API call
-    (console as any).log("[Instagram] Deleting post:", postId);
+    .log("[Instagram] Deleting post:", postId);
     return true;
   }
 

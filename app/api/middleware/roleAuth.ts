@@ -37,8 +37,7 @@ export function verifyToken(token: string): DecodedToken | null {
   try {
     const decoded = jwt.verify(token, JWT_SECRET) as DecodedToken;
     return decoded;
-  } catch (e) {
-}
+  } catch (error) { /* Handle error */ }
 
 /**
  * Get user role from request

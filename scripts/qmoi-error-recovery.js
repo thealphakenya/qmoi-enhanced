@@ -42,7 +42,7 @@ class QMOIErrorRecovery {
       fs.copyFileSync(filePath, backupPath);
       await this.log(`Backup created: ${backupPath}`);
       return backupPath;
-    } catch (_error) {
+    } catch (error) {
       await this.log(
         `Failed to create backup for ${filePath}: ${error.message}`,
         "ERROR",
@@ -55,7 +55,7 @@ class QMOIErrorRecovery {
       fs.copyFileSync(backupPath, originalPath);
       await this.log(`Restored from backup: ${originalPath}`);
       return true;
-    } catch (_error) {
+    } catch (error) {
       await this.log(`Failed to restore backup: ${error.message}`, "ERROR");
       return false;
     }
@@ -145,7 +145,7 @@ class QMOIErrorRecovery {
       }
 
       return false;
-    } catch (_error) {
+    } catch (error) {
       await this.log(`Error fixing package.json: ${error.message}`, "ERROR");
       return false;
     }
@@ -327,7 +327,7 @@ after_script:
       }
 
       return false;
-    } catch (_error) {
+    } catch (error) {
       await this.log(`Error fixing .gitlab-ci.yml: ${error.message}`, "ERROR");
       return false;
     }
@@ -375,7 +375,7 @@ after_script:
       }
 
       return false;
-    } catch (_error) {
+    } catch (error) {
       await this.log(
         `Error fixing syntax in ${filePath}: ${error.message}`,
         "ERROR",
@@ -457,7 +457,7 @@ console.log('QMOI setup completed');`,
       execSync("npm install", { stdio: "inherit" });
       await this.log("Dependencies installed successfully");
       return true;
-    } catch (_error) {
+    } catch (error) {
       await this.log(
         `Failed to install dependencies: ${error.message}`,
         "ERROR",
@@ -472,7 +472,7 @@ console.log('QMOI setup completed');`,
       execSync("npm test", { stdio: "inherit" });
       await this.log("Tests passed");
       return true;
-    } catch (_error) {
+    } catch (error) {
       await this.log(`Tests failed: ${error.message}`, "WARN");
       return false;
     }
@@ -500,7 +500,7 @@ console.log('QMOI setup completed');`,
             require(filePath);
           }
           await this.log(`✓ ${file} is valid`);
-        } catch (_error) {
+        } catch (error) {
           await this.log(`✗ ${file} has errors: ${error.message}`, "ERROR");
           return false;
         }
@@ -557,7 +557,7 @@ console.log('QMOI setup completed');`,
 
       await this.log(`Error recovery completed. Fixed ${fixCount} issues.`);
       return true;
-    } catch (_error) {
+    } catch (error) {
       await this.log(`Error recovery failed: ${error.message}`, "ERROR");
       await this.notificationService.sendNotification(
         "QMOI Error Recovery Failed",

@@ -21,7 +21,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -105,9 +105,9 @@ export function WalletList() {
     <div className="space-y-6">
       <h2 className="text-2xl font-bold">My Wallets</h2>
 
-      {_error && (
+      {error && (
         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
-          {_error}
+          {error}
         </div>
       )}
 

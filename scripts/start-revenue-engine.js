@@ -123,9 +123,9 @@ class RevenueEngineStarter {
           `Failed to start revenue engine: ${startResult.message}`,
         );
       }
-    } catch (_error) {
+    } catch (error) {
       this.log(`❌ Failed to start revenue engine: ${error.message}`);
-      (console as any).error(_error);
+      console.error(error);
       process.exit(1);
     }
   }
@@ -176,7 +176,7 @@ class RevenueEngineStarter {
           this.log("🎉 Combined daily target reached!");
           this.combinedTargetReached = true;
         }
-      } catch (_error) {
+      } catch (error) {
         this.log(`⚠️  Monitoring _error: ${error.message}`);
       }
     }, 30000); // Every 30 seconds
@@ -282,8 +282,8 @@ async function main() {
 
 // Run the main function
 if (require.main === module) {
-  main().catch((_error) => {
-    (console as any).error("❌ Fatal _error:", error.message);
+  main().catch((error) => {
+    console.error("❌ Fatal _error:", error.message);
     process.exit(1);
   });
 }

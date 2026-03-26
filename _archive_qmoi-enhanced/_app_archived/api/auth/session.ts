@@ -17,7 +17,7 @@ const handler = requireRole(["user", "admin", "master"])(async (
   res: NextApiResponse,
 ) => {
   const { method, body } = req;
-  const { id } = (req as any).user || {};
+  const { id } = .user || {};
   if (method === "GET") {
     // List sessions for user
     const userSessions = Object.entries(sessions)

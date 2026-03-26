@@ -10,7 +10,7 @@ import { PlatformConfig } from "../../services/adapters/types";
 import WalletManager from "../../services/walletManager";
 
 async function run() {
-  (console as any).log("Running adapter dry-run smoke tests...");
+  .log("Running adapter dry-run smoke tests...");
   const fb = new FacebookAdapter();
   const cfg: PlatformConfig = {
     platformId: "facebook",
@@ -21,10 +21,10 @@ async function run() {
   } as any;
   await fb.initialize(cfg);
   const ok = await fb.validateCredentials();
-  (console as any).log("FB validateCredentials:", ok);
+  .log("FB validateCredentials:", ok);
 
   const wallet = WalletManager.createWallet({ purpose: "test" });
-  (console as any).log("Wallet created:", wallet.id);
+  .log("Wallet created:", wallet.id);
 }
 
 test("adapter dry-run executes without throwing", async () => {

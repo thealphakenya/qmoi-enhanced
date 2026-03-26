@@ -16,13 +16,13 @@ export class QCity&RunnersService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing QCity & Runners');
+    .log("[Service] Initializing...");
+    .log('Initializing QCity & Runners');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'QCity & Runners executed' };
   }
 }

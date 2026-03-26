@@ -84,7 +84,7 @@ export function SisterProjects() {
         setSuggested(suggestions);
       }
     } catch (error) {
-      (console as any).error("Failed to get AI suggestions:", error);
+      console.error("Failed to get AI suggestions:", error);
     }
   };
 

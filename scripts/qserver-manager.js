@@ -21,7 +21,7 @@ class QServerManager {
   loadConfig() {
     try {
       return JSON.parse(fs.readFileSync("config/qserver-config.json", "utf8"));
-    } catch (_error) {
+    } catch (error) {
       console.log("QServer config not found, using defaults");
       return {
         qserver: {
@@ -427,8 +427,8 @@ if (process.argv[1] === new URL(import.meta.url).pathname) {
         );
       }
     })
-    .catch((_error) => {
-      (console as any).error("Error:", _error);
+    .catch((error) => {
+      console.error("Error:", error);
       process.exit(1);
     });
 }

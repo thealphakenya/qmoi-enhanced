@@ -16,13 +16,13 @@ export class QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.mdService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md');
+    .log("[Service] Initializing...");
+    .log('Initializing QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md executed' };
   }
 }

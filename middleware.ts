@@ -32,16 +32,16 @@ async function ensureSetup() {
     const status = setupManager.getStatus();
 
     if (!status.configured) {
-      (console as any).log("[QMOI] Auto-setup required, initializing environment...");
+      .log("[QMOI] Auto-setup required, initializing environment...");
       setupManager.initialize();
-      (console as any).log("[QMOI] Environment auto-setup complete");
+      .log("[QMOI] Environment auto-setup complete");
     } else {
-      (console as any).log("[QMOI] Environment already configured");
+      .log("[QMOI] Environment already configured");
     }
 
     setupDone = true;
   } catch (error) {
-    (console as any).error("[QMOI] Error during auto-setup:", error);
+    console.error("[QMOI] Error during auto-setup:", error);
     // Continue anyway - app can still work with defaults
   }
 }
@@ -67,7 +67,7 @@ async function ensureInitialized() {
           initDone = true;
         }
       } catch (error) {
-        (console as any).error("Failed to initialize background automation:", error);
+        console.error("Failed to initialize background automation:", error);
       }
     })();
   }

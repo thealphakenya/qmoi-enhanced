@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     const fetchStatus = async () => {
-      const res = await fetch("http://localhost:4000/api/status");
+      const res = await fetch("process.env.API_URL || "http://localhost:\1"/api/status");
       const data = await res.json();
       setStatus(data);
     };

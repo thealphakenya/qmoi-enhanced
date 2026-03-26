@@ -26,9 +26,9 @@ export async function POST(_request: NextRequest) {
       status: "success",
       message: `Message sent to ${phoneNumber} successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: _error instanceof Error ? _error.message : "Unknown error" },
+      { _error: _error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }

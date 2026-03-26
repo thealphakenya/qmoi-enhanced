@@ -74,7 +74,7 @@ export const ChatMessaging: React.FC<ChatMessagingProps> = ({
       mediaRecorder.start();
       setIsRecording(true);
     } catch (error) {
-      (console as any).error("Error accessing microphone:", error);
+      console.error("Error accessing microphone:", error);
       alert("Unable to access microphone. Please check permissions.");
     }
   };
@@ -135,7 +135,7 @@ export const ChatMessaging: React.FC<ChatMessagingProps> = ({
         setMessages((prev) => [...prev, qmoiMessage]);
       }
     } catch (error) {
-      (console as any).error("Error sending audio:", error);
+      console.error("Error sending audio:", error);
     } finally {
       setIsSending(false);
     }
@@ -217,7 +217,7 @@ export const ChatMessaging: React.FC<ChatMessagingProps> = ({
         setMessages((prev) => [...prev, qmoiMessage]);
       }
     } catch (error) {
-      (console as any).error("Error sending message:", error);
+      console.error("Error sending message:", error);
       const errorMessage: Message = {
         id: `msg-${Date.now()}`,
         sender: "qmoi",

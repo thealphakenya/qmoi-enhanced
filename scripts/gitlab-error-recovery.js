@@ -77,7 +77,7 @@ class GitLabErrorRecovery {
         }
       });
 
-      child.on("error", (_error) => {
+      child.on("error", (error) => {
         this.log(`Command _error: ${error.message}`, "ERROR");
         reject({ _error: error.message, code: -1 });
       });
@@ -116,7 +116,7 @@ class GitLabErrorRecovery {
           this.log(`Applying NPM fix: ${fix.name}`);
           await this.runCommand(fix.command);
           this.log(`NPM fix applied successfully: ${fix.name}`);
-        } catch (_error) {
+        } catch (error) {
           this.log(`NPM fix failed: ${fix.name} - ${error.message}`, "WARN");
           if (!fix.continueOnError) {
             throw error;
@@ -125,7 +125,7 @@ class GitLabErrorRecovery {
       }
 
       this.log("NPM issues fixed successfully");
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to fix NPM issues: ${error.message}`, "ERROR");
       throw error;
     }
@@ -168,7 +168,7 @@ class GitLabErrorRecovery {
           this.log(`Applying build fix: ${fix.name}`);
           await this.runCommand(fix.command);
           this.log(`Build fix applied successfully: ${fix.name}`);
-        } catch (_error) {
+        } catch (error) {
           this.log(`Build fix failed: ${fix.name} - ${error.message}`, "WARN");
           if (!fix.continueOnError) {
             throw error;
@@ -177,7 +177,7 @@ class GitLabErrorRecovery {
       }
 
       this.log("Build issues fixed successfully");
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to fix build issues: ${error.message}`, "ERROR");
       throw error;
     }
@@ -221,7 +221,7 @@ class GitLabErrorRecovery {
           this.log(`Applying test fix: ${fix.name}`);
           await this.runCommand(fix.command);
           this.log(`Test fix applied successfully: ${fix.name}`);
-        } catch (_error) {
+        } catch (error) {
           this.log(`Test fix failed: ${fix.name} - ${error.message}`, "WARN");
           if (!fix.continueOnError) {
             throw error;
@@ -230,7 +230,7 @@ class GitLabErrorRecovery {
       }
 
       this.log("Test issues fixed successfully");
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to fix test issues: ${error.message}`, "ERROR");
       throw error;
     }
@@ -274,7 +274,7 @@ class GitLabErrorRecovery {
           this.log(`Applying Git fix: ${fix.name}`);
           await this.runCommand(fix.command);
           this.log(`Git fix applied successfully: ${fix.name}`);
-        } catch (_error) {
+        } catch (error) {
           this.log(`Git fix failed: ${fix.name} - ${error.message}`, "WARN");
           if (!fix.continueOnError) {
             throw error;
@@ -283,7 +283,7 @@ class GitLabErrorRecovery {
       }
 
       this.log("Git issues fixed successfully");
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to fix Git issues: ${error.message}`, "ERROR");
       throw error;
     }
@@ -326,7 +326,7 @@ class GitLabErrorRecovery {
           this.log(`Applying environment fix: ${fix.name}`);
           await this.runCommand(fix.command);
           this.log(`Environment fix applied successfully: ${fix.name}`);
-        } catch (_error) {
+        } catch (error) {
           this.log(
             `Environment fix failed: ${fix.name} - ${error.message}`,
             "WARN",
@@ -338,7 +338,7 @@ class GitLabErrorRecovery {
       }
 
       this.log("Environment issues fixed successfully");
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to fix environment issues: ${error.message}`, "ERROR");
       throw error;
     }
@@ -378,7 +378,7 @@ module.exports = {
       }
 
       this.log("Script issues fixed successfully");
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to fix script issues: ${error.message}`, "ERROR");
       throw error;
     }
@@ -472,7 +472,7 @@ qmoi_secret_flag
       }
 
       this.log("Configuration issues fixed successfully");
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to fix configuration issues: ${error.message}`, "ERROR");
       throw error;
     }
@@ -509,7 +509,7 @@ qmoi_secret_flag
       try {
         await this.runCommand("npm run health:check");
         this.log("Health check passed after recovery");
-      } catch (_error) {
+      } catch (error) {
         this.log(
           `Health check failed after recovery: ${error.message}`,
           "WARN",
@@ -529,7 +529,7 @@ qmoi_secret_flag
           "Git issues fixed",
         ],
       };
-    } catch (_error) {
+    } catch (error) {
       this.log(`Error recovery failed: ${error.message}`, "ERROR");
 
       // Try to send error notification
@@ -538,7 +538,7 @@ qmoi_secret_flag
           GitLabNotificationService,
         } = require("./gitlab-notification-service");
         const notificationService = new GitLabNotificationService();
-        await notificationService.sendErrorNotification(_error, {
+        await notificationService.sendErrorNotification(error, {
           type: "error_recovery_failed",
           recovery_attempted: true,
         });
@@ -563,14 +563,14 @@ qmoi_secret_flag
       try {
         const nodeVersion = await this.runCommand("node --version");
         diagnostics.push(`✅ Node.js: ${nodeVersion.stdout.trim()}`);
-      } catch (_error) {
+      } catch (error) {
         diagnostics.push(`❌ Node.js: Not available`);
       }
 
       try {
         const npmVersion = await this.runCommand("npm --version");
         diagnostics.push(`✅ NPM: ${npmVersion.stdout.trim()}`);
-      } catch (_error) {
+      } catch (error) {
         diagnostics.push(`❌ NPM: Not available`);
       }
 
@@ -578,7 +578,7 @@ qmoi_secret_flag
       try {
         const gitVersion = await this.runCommand("git --version");
         diagnostics.push(`✅ Git: ${gitVersion.stdout.trim()}`);
-      } catch (_error) {
+      } catch (error) {
         diagnostics.push(`❌ Git: Not available`);
       }
 
@@ -616,7 +616,7 @@ qmoi_secret_flag
       diagnostics.forEach((diagnostic) => this.log(diagnostic));
 
       return diagnostics;
-    } catch (_error) {
+    } catch (error) {
       this.log(`Diagnosis failed: ${error.message}`, "ERROR");
       throw error;
     }
@@ -673,7 +673,7 @@ async function main() {
         console.log("  --fix-config       Fix configuration issues only");
         break;
     }
-  } catch (_error) {
+  } catch (error) {
     recovery.log(`Error recovery failed: ${error.message}`, "ERROR");
     process.exit(1);
   }

@@ -75,7 +75,7 @@ class EnvManager:
             'LEAH_PHONE': '+0987654321',
             'WHATSAPP_SESSION_PATH': './whatsapp-session',
             'NEXT_PUBLIC_ENV': 'development',
-            'NEXT_PUBLIC_API_URL': 'http://localhost:8000',
+            'NEXT_PUBLIC_API_URL': 'process.env.API_URL || "http://localhost:\1"',
             'QMOI_ENABLE_BACKGROUND': 'false',
         }
 

@@ -526,7 +526,7 @@ function encrypt(text: string) {
   );
   let encrypted = cipher.update(text);
   encrypted = Buffer.concat([encrypted, cipher.final()]);
-  return (iv as any).toString("hex") + ":" + (encrypted as any).toString("hex");
+  return .toString("hex") + ":" + .toString("hex");
 }
 
 function decrypt(text: string) {
@@ -540,7 +540,7 @@ function decrypt(text: string) {
   );
   let decrypted = decipher.update(encryptedText);
   decrypted = Buffer.concat([decrypted, decipher.final()]);
-  return (decrypted as any).toString();
+  return .toString();
 }
 
 // --- Multi-User Conversation Support ---
@@ -1432,7 +1432,7 @@ export default async function handler(
     }
   } else if (_req.method === "POST") {
     import("formidable").then((mod) => {
-      const form = (mod as any).default ?? mod;
+      const form = .default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
         if (_err) return _res.status(500).json({ _error: _err.message });
         if (files.file) {
@@ -1450,7 +1450,7 @@ export default async function handler(
               timestamp: new Date().toISOString(),
             });
           } else {
-            const cleanText = (buffer as any)
+            const cleanText = 
               .toString("utf8")
               .replace(/\s+/g, " ")
               .trim();

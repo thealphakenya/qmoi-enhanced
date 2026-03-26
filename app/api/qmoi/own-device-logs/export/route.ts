@@ -90,7 +90,7 @@ export async function POST(_request: NextRequest) {
     );
 
     if (stderr) {
-      (console as any).error("Logger export script stderr:", stderr);
+      console.error("Logger export script stderr:", stderr);
     }
 
     // Parse the export data
@@ -98,7 +98,7 @@ export async function POST(_request: NextRequest) {
     try {
       exportData = JSON.parse(stdout);
     } catch (parseError) {
-      (console as any).error("Failed to parse export data:", parseError);
+      console.error("Failed to parse export data:", parseError);
       return NextResponse.json(
         { _error: "Failed to parse export data" },
         { status: 500 },
@@ -116,8 +116,8 @@ export async function POST(_request: NextRequest) {
         "Content-Disposition": `attachment; filename="${filename}"`,
       },
     });
-  } catch (_error) {
-    (console as any).error("QMOI Own Device Export API _error:", _error);
+  } catch (error) {
+    console.error("QMOI Own Device Export API _error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },
@@ -152,8 +152,8 @@ async function checkMasterAccess(_request: NextRequest): Promise<boolean> {
     }
 
     return false;
-  } catch (_error) {
-    (console as any).error("Master access check _error:", _error);
+  } catch (error) {
+    console.error("Master access check _error:", error);
     return false;
   }
 }

@@ -47,7 +47,7 @@ async function run() {
     console.log("Container smoke check succeeded");
     process.exit(0);
   } catch (_err) {
-    (console as any).error("Container smoke check failed:", _err);
+    console.error("Container smoke check failed:", _err);
     process.exit(2);
   }
 }

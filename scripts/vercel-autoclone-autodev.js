@@ -95,7 +95,7 @@ async function checkGitHubUpdates() {
       console.log("No commits found on GitHub.\n");
       return null;
     }
-  } catch (_error) {
+  } catch (error) {
     console.error("❌ Error checking GitHub:", error.message);
     return null;
   }
@@ -141,7 +141,7 @@ async function triggerVercelDeployment() {
       console.log(`⚠️  Deployment request returned: ${response.status}\n`);
       return null;
     }
-  } catch (_error) {
+  } catch (error) {
     console.error("❌ Error triggering deployment:", error.message);
     return null;
   }
@@ -168,7 +168,7 @@ function runPreDeploymentTests() {
       execSync(test.command, { stdio: "pipe", timeout: 60000 });
       console.log(`   ✅ ${test.name} passed`);
       passed++;
-    } catch (_error) {
+    } catch (error) {
       console.log(`   ❌ ${test.name} failed`);
       failed++;
     }
@@ -269,7 +269,7 @@ async function performHealthCheck() {
       } else {
         console.log(`     ⚠️  Status: ${response.status}`);
       }
-    } catch (_error) {
+    } catch (error) {
       console.log(`     ❌ Error: ${error.message}`);
     }
   }
@@ -330,7 +330,7 @@ Next automated cycle: ${new Date(Date.now() + 3600000).toISOString()}
     `);
 
     process.exit(0);
-  } catch (_error) {
+  } catch (error) {
     console.error("\n❌ Fatal _error:", error.message);
     process.exit(1);
   }

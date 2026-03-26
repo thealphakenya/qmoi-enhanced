@@ -52,7 +52,7 @@ function getPrisma(): PrismaClient {
 
       // Handle errors in production
       prismaInstance.$on("error", (e: any) => {
-        (console as any).error("[Prisma Error]", e?.message ?? e);
+        console.error("[Prisma Error]", e?.message ?? e);
       });
 
       prismaInstance.$on("warn", (e: any) => {

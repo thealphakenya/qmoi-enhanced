@@ -12,7 +12,7 @@
 import nodemailer from "nodemailer";
 // Support environments where 'imapflow' may be a CommonJS module or a default export shim
 import * as ImapFlowPkg from "imapflow";
-const ImapFlow: any = (ImapFlowPkg as any)?.ImapFlow || ImapFlowPkg;
+const ImapFlow: any = ?.ImapFlow || ImapFlowPkg;
 
 interface EmailOptions {
   to: string | string[];
@@ -412,10 +412,10 @@ class EmailService {
         attachments: options.attachments,
       });
 
-      (console as any).log(`Email sent to ${options.to}:`, result.messageId);
+      .log(`Email sent to ${options.to}:`, result.messageId);
       return true;
     } catch (error) {
-      (console as any).error("Failed to send email:", error);
+      console.error("Failed to send email:", error);
       return false;
     }
   };

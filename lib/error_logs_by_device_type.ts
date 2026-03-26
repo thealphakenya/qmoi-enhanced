@@ -17,13 +17,13 @@ export class ErrorLogsbyDeviceTypeService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing Error Logs by Device Type');
+    .log("[Service] Initializing...");
+    .log('Initializing Error Logs by Device Type');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'Error Logs by Device Type executed' };
   }
 }

@@ -42,7 +42,7 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [walletBalances, setWalletBalances] = useState<WalletBalance[]>([]);
   const [lastUpdate, setLastUpdate] = useState<Date>(new Date());
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchStatus = async () => {
     try {
@@ -130,10 +130,10 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
           <Box display="flex" justifyContent="center" p={2}>
             <CircularProgress size={24} />
           </Box>
-        ) : _error ? (
+        ) : error ? (
           <Box display="flex" alignItems="center" gap={1} color="error.main">
             <Warning fontSize="small" />
-            <Typography variant="body2">{_error}</Typography>
+            <Typography variant="body2">{error}</Typography>
           </Box>
         ) : (
           <>

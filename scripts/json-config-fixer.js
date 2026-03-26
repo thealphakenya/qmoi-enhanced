@@ -50,7 +50,7 @@ class JSONConfigFixer {
             jsonFiles.push(fullPath);
           }
         }
-      } catch (_error) {
+      } catch (error) {
         this.log(
           `Error reading directory ${currentDir}: ${error.message}`,
           "WARN",
@@ -67,7 +67,7 @@ class JSONConfigFixer {
       const content = fs.readFileSync(filePath, "utf8");
       JSON.parse(content);
       return { valid: true, errors: [] };
-    } catch (_error) {
+    } catch (error) {
       return { valid: false, errors: [error.message] };
     }
   }
@@ -130,7 +130,7 @@ class JSONConfigFixer {
         );
         return { success: false, _error: parseError.message };
       }
-    } catch (_error) {
+    } catch (error) {
       this.log(`Error fixing JSON file ${filePath}: ${error.message}`, "ERROR");
       return { success: false, _error: error.message };
     }
@@ -294,7 +294,7 @@ class JSONConfigFixer {
 
       this.log(`package.json fixed successfully with ${fixes.length} fixes`);
       return { success: true, fixes };
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to fix package.json: ${error.message}`, "ERROR");
       return { success: false, _error: error.message };
     }
@@ -379,7 +379,7 @@ class JSONConfigFixer {
 
       this.log(`tsconfig.json fixed successfully with ${fixes.length} fixes`);
       return { success: true, fixes };
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to fix tsconfig.json: ${error.message}`, "ERROR");
       return { success: false, _error: error.message };
     }
@@ -421,7 +421,7 @@ class JSONConfigFixer {
 
       this.log("jest.config.js exists, validating...");
       return { success: true, fixes: ["jest.config.js validated"] };
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to fix jest.config.js: ${error.message}`, "ERROR");
       return { success: false, _error: error.message };
     }
@@ -475,7 +475,7 @@ class JSONConfigFixer {
 
       this.log(`.eslintrc.json fixed successfully with ${fixes.length} fixes`);
       return { success: true, fixes };
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to fix .eslintrc.json: ${error.message}`, "ERROR");
       return { success: false, _error: error.message };
     }
@@ -529,7 +529,7 @@ class JSONConfigFixer {
               fixes: [],
             });
           }
-        } catch (_error) {
+        } catch (error) {
           results.errors++;
           results.details.push({
             file: filePath,
@@ -569,7 +569,7 @@ class JSONConfigFixer {
         `JSON fixing completed: ${results.fixed} fixed, ${results.errors} errors`,
       );
       return results;
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to fix JSON files: ${error.message}`, "ERROR");
       throw error;
     }
@@ -633,7 +633,7 @@ async function main() {
         console.log("  --validate <path>            Validate JSON file");
         break;
     }
-  } catch (_error) {
+  } catch (error) {
     fixer.log(`JSON config fixer failed: ${error.message}`, "ERROR");
     process.exit(1);
   }

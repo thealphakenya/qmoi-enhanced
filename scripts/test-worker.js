@@ -36,6 +36,6 @@ async function runTest() {
 }
 
 runTest().catch((_err) => {
-  (console as any).error(`Worker error in ${workerData.testFile}:`, _err);
+  console.error(`Worker error in ${workerData.testFile}:`, _err);
   process.exit(1);
 });

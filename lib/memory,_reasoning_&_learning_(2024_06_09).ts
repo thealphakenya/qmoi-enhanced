@@ -16,13 +16,13 @@ export class Memory,Reasoning&Learning(2024-06-09)Service {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing Memory, Reasoning & Learning (2024-06-09)');
+    .log("[Service] Initializing...");
+    .log('Initializing Memory, Reasoning & Learning (2024-06-09)');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'Memory, Reasoning & Learning (2024-06-09) executed' };
   }
 }

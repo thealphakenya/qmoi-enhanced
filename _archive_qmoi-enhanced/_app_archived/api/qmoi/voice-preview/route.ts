@@ -41,7 +41,7 @@ async function generateTTSAudio(voiceId: string, text: string, quality: string, 
   // Provider selection: supports 'elevenlabs' (if ELEVENLABS_API_KEY present) or '[PRODUCTION READY]'
   const provider = process.env.TTS_PROVIDER || (process.env.ELEVENLABS_API_KEY ? 'elevenlabs' : '[PRODUCTION READY]');
 
-  (console as any).log(`Generating TTS audio for voice: ${voiceId} using provider=${provider}`);
+  .log(`Generating TTS audio for voice: ${voiceId} using provider=${provider}`);
 
   // Normalize params
   const vol = typeof volume === 'number' ? Math.max(0, Math.min(200, volume)) : 100;

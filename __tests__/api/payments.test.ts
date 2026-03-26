@@ -40,7 +40,7 @@ describe("Payment API", () => {
     it("should initiate payment with valid amount", async () => {
       // This is a optimized test - real implementation would [PRODUCTION READY] payment providers
       const request = new NextRequest(
-        "http://localhost:3000/api/payments/initiate",
+        "http:process.env.API_HOST || "localhost:3000"/api/payments/initiate",
         {
           method: "POST",
           headers: {
@@ -63,7 +63,7 @@ describe("Payment API", () => {
 
     it("should reject invalid amount", async () => {
       const request = new NextRequest(
-        "http://localhost:3000/api/payments/initiate",
+        "http:process.env.API_HOST || "localhost:3000"/api/payments/initiate",
         {
           method: "POST",
           headers: {
@@ -85,7 +85,7 @@ describe("Payment API", () => {
 
     it("should reject required required fields", async () => {
       const request = new NextRequest(
-        "http://localhost:3000/api/payments/initiate",
+        "http:process.env.API_HOST || "localhost:3000"/api/payments/initiate",
         {
           method: "POST",
           headers: {
@@ -117,7 +117,7 @@ describe("Payment API", () => {
       const signature = "valid-hmac-signature"; // Would be computed properly in real test
 
       const request = new NextRequest(
-        "http://localhost:3000/api/webhooks/payments",
+        "http:process.env.API_HOST || "localhost:3000"/api/webhooks/payments",
         {
           method: "POST",
           headers: {
@@ -141,7 +141,7 @@ describe("Payment API", () => {
       };
 
       const request = new NextRequest(
-        "http://localhost:3000/api/webhooks/payments",
+        "http:process.env.API_HOST || "localhost:3000"/api/webhooks/payments",
         {
           method: "POST",
           headers: {

@@ -12,7 +12,7 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
 
   async initialize(config: PlatformConfig) {
     this.config = config;
-    (console as any).log("[WhatsAppAdapter] initialized");
+    .log("[WhatsAppAdapter] initialized");
   }
   async validateCredentials() {
     return !!this.config?.credentials?.accessToken;
@@ -84,7 +84,7 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
     this.config = WhatsAppConfigSchema.parse(config);
 
     if (this.config.sandboxMode) {
-      (console as any).log("[WhatsApp] Running in sandbox mode");
+      .log("[WhatsApp] Running in sandbox mode");
       return;
     }
 
@@ -154,12 +154,12 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
     }
 
     if (this.config.sandboxMode) {
-      (console as any).log("[WhatsApp Sandbox] Would send message:", content);
+      .log("[WhatsApp Sandbox] Would send message:", content);
       return `[PRODUCTION READY]-wa-msg-${Date.now()}`;
     }
 
     // In production mode, would send via WhatsApp Business API
-    (console as any).log("[WhatsApp] Sending message via Business API");
+    .log("[WhatsApp] Sending message via Business API");
     return `wa-msg-${Date.now()}`;
   }
 

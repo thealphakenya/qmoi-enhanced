@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
       { status: 200 },
     );
   } catch (error) {
-    (console as any).error("[BIOMETRIC CAPTURE API] Error:", error);
+    console.error("[BIOMETRIC CAPTURE API] Error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },

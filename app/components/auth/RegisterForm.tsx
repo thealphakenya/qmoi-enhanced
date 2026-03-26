@@ -18,7 +18,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,9 +86,9 @@ export function RegisterForm() {
     <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
       <h1 className="text-2xl font-bold mb-6">Create Account</h1>
 
-      {_error && (
+      {error && (
         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
-          {_error}
+          {error}
         </div>
       )}
 

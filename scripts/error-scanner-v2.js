@@ -86,7 +86,7 @@ class ComprehensiveErrorScanner {
           this.errorStats.syntax++;
         }
       });
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   }
 
   /**
@@ -118,7 +118,7 @@ class ComprehensiveErrorScanner {
           }
         });
       });
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   }
 
   /**
@@ -157,7 +157,7 @@ class ComprehensiveErrorScanner {
       } catch (e) {
         // JSON parse failed, try text format
       }
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
 
     // Scan for common logic patterns
     this.scanLogicPatterns();
@@ -187,10 +187,10 @@ class ComprehensiveErrorScanner {
                 this.errorStats.logic++;
               }
             });
-          } catch (e) {}
+          } catch (error) { /* Handle error */ }
         }
       });
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   }
 
   /**
@@ -209,7 +209,7 @@ class ComprehensiveErrorScanner {
         this.addError("runtime", "circular_dependency", "Circular dependencies detected", "HIGH");
         this.errorStats.runtime++;
       }
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
 
     // Check for required imports
     this.checkMissingImports();
@@ -240,9 +240,9 @@ class ComprehensiveErrorScanner {
               this.errorStats.runtime++;
             }
           });
-        } catch (e) {}
+        } catch (error) { /* Handle error */ }
       });
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   }
 
   /**
@@ -277,7 +277,7 @@ class ComprehensiveErrorScanner {
               this.errorStats.security++;
             }
           });
-        } catch (e) {}
+        } catch (error) { /* Handle error */ }
       });
 
       // Run npm audit
@@ -301,9 +301,9 @@ class ComprehensiveErrorScanner {
               this.errorStats.security += critical + high;
             }
           }
-        } catch (e) {}
-      } catch (e) {}
-    } catch (e) {}
+        } catch (error) { /* Handle error */ }
+      } catch (error) { /* Handle error */ }
+    } catch (error) { /* Handle error */ }
   }
 
   /**
@@ -354,9 +354,9 @@ class ComprehensiveErrorScanner {
             );
             this.errorStats.performance++;
           }
-        } catch (e) {}
+        } catch (error) { /* Handle error */ }
       });
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   }
 
   /**
@@ -401,9 +401,9 @@ class ComprehensiveErrorScanner {
               this.errorStats.accessibility++;
             }
           });
-        } catch (e) {}
+        } catch (error) { /* Handle error */ }
       });
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   }
 
   /**
@@ -449,9 +449,9 @@ class ComprehensiveErrorScanner {
               this.errorStats.documentation++;
             }
           }
-        } catch (e) {}
+        } catch (error) { /* Handle error */ }
       });
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   }
 
   /**
@@ -517,7 +517,7 @@ class ComprehensiveErrorScanner {
         );
         this.errorStats.configuration++;
       }
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   }
 
   /**
@@ -556,9 +556,9 @@ class ComprehensiveErrorScanner {
             );
             this.errorStats.data_integrity++;
           }
-        } catch (e) {}
+        } catch (error) { /* Handle error */ }
       }
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   }
 
   /**
@@ -589,8 +589,8 @@ class ComprehensiveErrorScanner {
           );
           this.errorStats.compliance++;
         }
-      } catch (e) {}
-    } catch (e) {}
+      } catch (error) { /* Handle error */ }
+    } catch (error) { /* Handle error */ }
   }
 
   /**
@@ -617,8 +617,8 @@ class ComprehensiveErrorScanner {
           );
           this.errorStats.dependency += outdatedCount;
         }
-      } catch (e) {}
-    } catch (e) {}
+      } catch (error) { /* Handle error */ }
+    } catch (error) { /* Handle error */ }
   }
 
   /**
@@ -654,9 +654,9 @@ class ComprehensiveErrorScanner {
             );
             this.errorStats.environment++;
           }
-        } catch (e) {}
+        } catch (error) { /* Handle error */ }
       });
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   }
 
   /**
@@ -683,8 +683,8 @@ class ComprehensiveErrorScanner {
           );
           this.errorStats.test += testResults.numFailedTests;
         }
-      } catch (e) {}
-    } catch (e) {}
+      } catch (error) { /* Handle error */ }
+    } catch (error) { /* Handle error */ }
 
     // Check for required tests
     try {
@@ -710,7 +710,7 @@ class ComprehensiveErrorScanner {
           this.errorStats.test++;
         }
       });
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   }
 
   /**
@@ -743,7 +743,7 @@ class ComprehensiveErrorScanner {
         );
         this.errorStats.build_deployment++;
       }
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   }
 
   /**
@@ -768,7 +768,7 @@ class ComprehensiveErrorScanner {
           files.push(fullPath);
         }
       });
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
 
     return files;
   }

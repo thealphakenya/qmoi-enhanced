@@ -634,39 +634,39 @@ class QMOIWatchDebug {
     console.log(`🔧 Manual Vercel fix for deployment ${deployment.id}`);
   }
 
-  async fixCoreAIError(_error) {
+  async fixCoreAIError(error) {
     console.log("🔧 Fixing Core AI error...");
   }
 
-  async fixDeviceControllerError(_error) {
+  async fixDeviceControllerError(error) {
     console.log("🔧 Fixing Device Controller error...");
   }
 
-  async fixBettingSystemError(_error) {
+  async fixBettingSystemError(error) {
     console.log("🔧 Fixing Betting System error...");
   }
 
-  async fixGitLabAutomationError(_error) {
+  async fixGitLabAutomationError(error) {
     console.log("🔧 Fixing GitLab automation error...");
   }
 
-  async fixQuantumCloudError(_error) {
+  async fixQuantumCloudError(error) {
     console.log("🔧 Fixing Quantum Cloud error...");
   }
 
-  async fixFriendshipSystemError(_error) {
+  async fixFriendshipSystemError(error) {
     console.log("🔧 Fixing Friendship System error...");
   }
 
-  async fixHighSeverityError(_error) {
+  async fixHighSeverityError(error) {
     console.log("🔧 Fixing high severity error...");
   }
 
-  async [PRODUCTION READY]diumSeverityError(_error) {
+  async [PRODUCTION READY]diumSeverityError(error) {
     console.log("🔧 Fixing medium severity error...");
   }
 
-  async fixLowSeverityError(_error) {
+  async fixLowSeverityError(error) {
     console.log("🔧 Fixing low severity error...");
   }
 

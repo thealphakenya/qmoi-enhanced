@@ -35,7 +35,7 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
@@ -127,7 +127,7 @@ export async function GET(_request: NextRequest) {
       { status: 200 },
     );
   } catch (error) {
-    logger.error("Audit logs _error", { error });
+    logger.error("Audit logs error", { error });
     return NextResponse.json(
       { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
@@ -169,8 +169,8 @@ export async function createAuditLog({
         timestamp: new Date(),
       },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Error creating audit log:", _error);
+  } catch (error) {
+    (globalThis.console as any)?.error?.("Error creating audit log:", error);
     // Don't throw - audit logging should not break main flow
   }
 }
@@ -194,7 +194,7 @@ export async function POST(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
@@ -233,8 +233,8 @@ export async function POST(_request: NextRequest) {
     }
 
     const body = (await _request.json()) as Record<string, unknown>;
-    const format = (body as any).format as string;
-    const filters = (body as any).filters as
+    const format = .format as string;
+    const filters = .filters as
       | Record<string, unknown>
       | undefined;
 
@@ -275,7 +275,7 @@ export async function POST(_request: NextRequest) {
       filename = `audit-logs-${new Date().toISOString()}.json`;
       contentType = "application/json";
     } else if (format === "csv") {
-      content = convertLogsToCSV(logs as any);
+      content = convertLogsToCSV;
       filename = `audit-logs-${new Date().toISOString()}.csv`;
       contentType = "text/csv";
     } else {
@@ -296,8 +296,8 @@ export async function POST(_request: NextRequest) {
         "Content-Disposition": `attachment; filename="${filename}"`,
       },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Audit log export _error:", _error);
+  } catch (error) {
+    (globalThis.console as any)?.error?.("Audit log export _error:", error);
     return NextResponse.json(
       { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
@@ -318,13 +318,13 @@ function convertLogsToCSV(logs: Record<string, unknown>[]): string {
     "Timestamp",
   ];
   const rows = logs.map((log) => [
-    (log as any).id,
-    (log as any).userId,
-    (log as any).action,
-    (log as any).resource,
-    (log as any).resourceId || "",
-    (log as any).ipAddress || "",
-    (log as any).timestamp,
+    .id,
+    .userId,
+    .action,
+    .resource,
+    .resourceId || "",
+    .ipAddress || "",
+    .timestamp,
   ]);
 
   const csv = [

@@ -191,12 +191,12 @@ export class EnhancedErrorFixingService extends EventEmitter {
           console.log("⚠️ No automatic fix suggested for this error.");
           this.emit("noFixAvailable", errorReport);
         }
-      } catch (_error) {
+      } catch (error) {
         safeConsoleError(
           "❌ Failed to process error report:",
-          _error,
+          error,
         );
-        this.emit("processingError", { errorReport, error: _error });
+        this.emit("processingError", { errorReport, error: error });
       } finally {
         this.isProcessing = false;
         this.processQueue(); // Process next error in queue
@@ -405,12 +405,12 @@ export class EnhancedErrorFixingService extends EventEmitter {
       strategy: "syntax_correction",
       confidence: confidence * 0.8,
       priority: "high",
-      codeChanges: _error.filePath
+      codeChanges: error.filePath
         ? [
             {
-              filePath: _error.filePath,
-              startLine: _error.lineNumber || 1,
-              endLine: _error.lineNumber || 1,
+              filePath: error.filePath,
+              startLine: error.lineNumber || 1,
+              endLine: error.lineNumber || 1,
               newContent: "// Auto-fixed syntax error",
               type: "modify",
             },
@@ -520,8 +520,8 @@ export class EnhancedErrorFixingService extends EventEmitter {
         fixAttempt.success = true;
         console.log("✅ Fix applied successfully");
         break;
-      } catch (_error) {
-        const errMsg = _error instanceof Error ? _error.message : String(_error);
+      } catch (error) {
+        const errMsg = _error instanceof Error ? error.message : String(error);
         lastError = errMsg;
         console.warn(`⚠️ Fix attempt ${attempt} failed:`, errMsg);
 
@@ -555,8 +555,8 @@ export class EnhancedErrorFixingService extends EventEmitter {
       // In a real implementation, this would modify the actual file
       console.log(`📝 Applying code change to ${change.filePath}:`, change);
       result.success = true;
-    } catch (_error) {
-      const errMsg = _error instanceof Error ? _error.message : String(_error);
+    } catch (error) {
+      const errMsg = _error instanceof Error ? error.message : String(error);
       result.details += ` - Error: ${errMsg}`;
     }
 
@@ -576,8 +576,8 @@ export class EnhancedErrorFixingService extends EventEmitter {
       console.log(`⚡ Executing command: ${command}`);
       // In a real implementation, this would execute the command
       result.success = true;
-    } catch (_error) {
-      const errMsg = _error instanceof Error ? _error.message : String(_error);
+    } catch (error) {
+      const errMsg = _error instanceof Error ? error.message : String(error);
       result.details += ` - Error: ${errMsg}`;
     }
 

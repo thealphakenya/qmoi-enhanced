@@ -56,8 +56,8 @@ export async function POST(_request: NextRequest) {
       : { success: false, message: "Target command unavailable - revenue engine may not be initialized" };
 
     return NextResponse.json(result);
-  } catch (_error) {
-    (console as any).error("Set target _error:", _error);
+  } catch (error) {
+    console.error("Set target _error:", error);
     return NextResponse.json(
       { _error: "Failed to set target" },
       { status: 500 },

@@ -16,13 +16,13 @@ export class 1.UniversalLanguageRuntime(`qmoi-universal-runtime.py`)Service {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing 1. Universal Language Runtime (`qmoi-universal-runtime.py`)');
+    .log("[Service] Initializing...");
+    .log('Initializing 1. Universal Language Runtime (`qmoi-universal-runtime.py`)');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: '1. Universal Language Runtime (`qmoi-universal-runtime.py`) executed' };
   }
 }

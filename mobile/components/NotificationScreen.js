@@ -33,7 +33,7 @@ export default function NotificationScreen({ route }) {
     const fetchData = async () => {
       try {
         const notifRes = await axios.get(
-          "http://localhost:4200/api/notification-history",
+          "process.env.API_URL || "http://localhost:\1"/api/notification-history",
         );
         setNotifications(notifRes.data || []);
         await AsyncStorage.setItem(
@@ -42,7 +42,7 @@ export default function NotificationScreen({ route }) {
         );
         setOffline(false);
         const prefsRes = await axios.get(
-          "http://localhost:4200/api/notification-prefs",
+          "process.env.API_URL || "http://localhost:\1"/api/notification-prefs",
         );
         setPrefs({
           slack: prefsRes.data.slack?.enabled || false,
@@ -62,10 +62,10 @@ export default function NotificationScreen({ route }) {
   const updatePref = async (channel, value) => {
     setPrefs((p) => ({ ...p, [channel]: value }));
     try {
-      await axios.post("http://localhost:4200/api/notification-prefs", {
+      await axios.post("process.env.API_URL || "http://localhost:\1"/api/notification-prefs", {
         [channel]: { enabled: value },
       });
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   };
 
   const handleAcknowledge = async (id) => {
@@ -75,28 +75,28 @@ export default function NotificationScreen({ route }) {
       ),
     );
     try {
-      await axios.post("http://localhost:4200/api/acknowledge-notification", {
+      await axios.post("process.env.API_URL || "http://localhost:\1"/api/acknowledge-notification", {
         id,
       });
-    } catch (e) {}
+    } catch (error) { /* Handle error */ }
   };
 
   const handleDelete = async (id) => {
     setNotifications((n) => n.filter((notif) => notif.id !== id));
     try {
-      await axios.post("http://localhost:4200/api/delete-notification", { id });
-    } catch (e) {}
+      await axios.post("process.env.API_URL || "http://localhost:\1"/api/delete-notification", { id });
+    } catch (error) { /* Handle error */ }
   };
 
   const handleRespond = async (id) => {
     Alert.prompt("Respond to Notification", "", async (text) => {
       if (text) {
         try {
-          await axios.post("http://localhost:4200/api/respond-notification", {
+          await axios.post("process.env.API_URL || "http://localhost:\1"/api/respond-notification", {
             id,
             response: text,
           });
-        } catch (e) {}
+        } catch (error) { /* Handle error */ }
       }
     });
   };

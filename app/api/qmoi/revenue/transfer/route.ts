@@ -56,8 +56,8 @@ export async function POST(_request: NextRequest) {
       : { success: false, message: "Transfer command unavailable - revenue engine may not be initialized" };
 
     return NextResponse.json(result);
-  } catch (_error) {
-    (console as any).error("Manual transfer _error:", _error);
+  } catch (error) {
+    console.error("Manual transfer _error:", error);
     return NextResponse.json(
       { _error: "Failed to process transfer" },
       { status: 500 },

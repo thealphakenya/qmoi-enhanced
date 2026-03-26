@@ -61,7 +61,7 @@ export function useAuth() {
           _error: null,
         });
       }
-    } catch (_error) {
+    } catch (error) {
       setState({
         user: null,
         loading: false,
@@ -86,7 +86,7 @@ export function useAuth() {
         loading: false,
         _error: null,
       });
-    } catch (_error) {
+    } catch (error) {
       setState({
         user: null,
         loading: false,
@@ -107,7 +107,7 @@ export function useAuth() {
         loading: false,
         _error: null,
       });
-    } catch (_error) {
+    } catch (error) {
       setState((prev) => ({
         ...prev,
         _error: "Failed to logout",
@@ -126,13 +126,13 @@ export function useAuth() {
           _error: null,
         }));
         return user;
-      } catch (_error) {
+      } catch (error) {
         setState({
           user: null,
           loading: false,
           _error: "Failed to register",
         });
-        throw _error;
+        throw error;
       }
     },
     [],
@@ -161,7 +161,7 @@ export function useAuth() {
           ...prev,
           user,
         }));
-      } catch (_error) {
+      } catch (error) {
         setState((prev) => ({
           ...prev,
           _error: "Failed to update preferences",

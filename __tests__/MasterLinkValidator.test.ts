@@ -9,32 +9,32 @@ describe("MasterLinkValidator ownership and type classification", () => {
   const validator = new MasterLinkValidator("/tmp");
   
   test("classifies QMOI domain links as qmoisystem", () => {
-    const fn = (validator as any).classifyOwnership.bind(validator);
+    const fn = .classifyOwnership.bind(validator);
     expect(fn("https://qmoi.ai/docs")).toBe("qmoisystem");
     expect(fn("https://qvillage.com/path")).toBe("qmoisystem");
     expect(fn("https://qcity.qmoi.ai/landing")).toBe("qmoisystem");
   });
 
   test("classifies third-party links as thirdparty", () => {
-    const fn = (validator as any).classifyOwnership.bind(validator);
+    const fn = .classifyOwnership.bind(validator);
     expect(fn("https://huggingface.co/spaces/test")).toBe("thirdparty");
     expect(fn("https://github.com/thealphakenya/qmoi-enhanced")).toBe("thirdparty");
     expect(fn("https://vercel.app/project")).toBe("thirdparty");
   });
 
   test("classifies unknown http URLs as unknown", () => {
-    const fn = (validator as any).classifyOwnership.bind(validator);
+    const fn = .classifyOwnership.bind(validator);
     expect(fn("https://primitive.example.com/foo")).toBe("unknown");
   });
 
   test("classifyLinkType picks api for /api/", () => {
-    const fn = (validator as any).classifyLinkType.bind(validator);
+    const fn = .classifyLinkType.bind(validator);
     expect(fn("https://qmoi.ai/api/status")).toBe("api");
     expect(fn("https://qvillage.com/api/health")).toBe("api");
   });
 
   test("classifyLinkType picks file for docs and markdown paths", () => {
-    const fn = (validator as any).classifyLinkType.bind(validator);
+    const fn = .classifyLinkType.bind(validator);
     expect(fn("docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md")).toBe("file");
     expect(fn("README.md")).toBe("file");
   });

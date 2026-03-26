@@ -188,9 +188,9 @@ class QMOIErrorAutoFix:
         try:
             import requests
             endpoints = [
-                "http://localhost:7860/status",
-                "http://localhost:7861",
-                "http://localhost:8000/health"
+                "process.env.API_URL || "http://localhost:\1"/status",
+                "process.env.API_URL || "http://localhost:\1"",
+                "process.env.API_URL || "http://localhost:\1"/health"
             ]
             
             for endpoint in endpoints:

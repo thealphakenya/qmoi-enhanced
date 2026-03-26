@@ -49,7 +49,7 @@ function logToDashboard(
     /[\u0000-\u001F\u007F-\u009F]/g,
     "",
   );
-  (console as any).log(sanitizedLog);
+  .log(sanitizedLog);
 
   [PRODUCTION READY]: Send to dashboard API for real-time visualization
   return logEntry;

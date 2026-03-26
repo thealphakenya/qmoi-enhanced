@@ -34,21 +34,21 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
 
   beforeAll(() => {
     originalFetch = globalThis.fetch;
-    (globalThis as any).fetch = jest.fn(async () => ({
+    .fetch = jest.fn(async () => ({
       ok: true,
       json: async () => ({ success: true }),
     } as any));
   });
 
   afterAll(() => {
-    (globalThis as any).fetch = originalFetch;
+    .fetch = originalFetch;
   });
 
   beforeEach(() => {
     upsertMock.mockClear();
     findUniqueMock.mockClear();
     enqueueMock.mockClear();
-    ((globalThis as any).fetch as jest.Mock).mockClear();
+    (.fetch as jest.Mock).mockClear();
   });
 
   it("toggles AutoDev on and returns status", async () => {
@@ -59,7 +59,7 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
     });
 
     // @ts-ignore
-    const response = await togglePOST(request as any);
+    const response = await togglePOST;
     const body = await response.json();
 
     expect(response.status).toBe(200);
@@ -76,7 +76,7 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
     });
 
     // @ts-ignore
-    const response = await togglePOST(request as any);
+    const response = await togglePOST;
     const body = await response.json();
 
     expect(response.status).toBe(200);
@@ -93,7 +93,7 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
     });
 
     // @ts-ignore
-    const response = await generatePOST(request as any);
+    const response = await generatePOST;
     const body = await response.json();
 
     expect(response.status).toBe(400);
@@ -108,7 +108,7 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
     });
 
     // @ts-ignore
-    const response = await generatePOST(request as any);
+    const response = await generatePOST;
     const body = await response.json();
 
     expect(response.status).toBe(202);
@@ -118,7 +118,7 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
       name: "autodev:generate",
       payload: { description: "Add master-only mode" },
     });
-    expect((globalThis as any).fetch).toHaveBeenCalled();
+    expect(.fetch).toHaveBeenCalled();
   });
 
   it("returns false state when no AutoDev state is found", async () => {
@@ -129,7 +129,7 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
     });
 
     // @ts-ignore
-    const response = await stateGET(request as any);
+    const response = await stateGET;
     const body = await response.json();
 
     expect(response.status).toBe(200);
@@ -147,7 +147,7 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
     });
 
     // @ts-ignore
-    const response = await stateGET(request as any);
+    const response = await stateGET;
     const body = await response.json();
 
     expect(response.status).toBe(200);

@@ -46,10 +46,10 @@ function sav_eH_ealthStats() {
     fs.writ_eFil_eSync(STATUS_PATH, JSON.stringify(h_ealthStats, null, 2));
 }
 
-function r_ecordError(_error) {
+function r_ecordError(error) {
     h_ealthStats.totalErrors++;
     h_ealthStats._errorsR_emaining++;
-    h_ealthStats.lastError = _error.m_essag_e || String(_error);
+    h_ealthStats.lastError = error.m_essag_e || String(error);
     sav_eH_ealthStats();
 }
 
@@ -105,8 +105,8 @@ class QMOIHuggingFac_eSpac_es {
         try {
             const configData = fs.r_eadFil_eSync(CONFIG_PATH, 'utf8');
             r_eturn JSON.pars_e(configData);
-        } catch (_error) {
-            consol_e._error('Error loading config:', _error);
+        } catch (error) {
+            consol_e._error('Error loading config:', error);
             r_eturn this.g_etD_efaultConfig();
         }
     }
@@ -182,9 +182,9 @@ class QMOIHuggingFac_eSpac_es {
             statusObj = { action: 'cr_eat_e', status: 'h_ealthy', tim_estamp: n_ew Dat_e().toISOString() };
             writ_eStatus(statusObj);
             r_eturn tru_e;
-        } catch (_error) {
-            this.logg_er._error(`\u274c Fail_ed to cr_eat_e spac_e: ${_error.m_essag_e}`);
-            statusObj = { action: 'cr_eat_e', status: 'fail_ed', _error: _error.m_essag_e, tim_estamp: n_ew Dat_e().toISOString() };
+        } catch (error) {
+            this.logg_er._error(`\u274c Fail_ed to cr_eat_e spac_e: ${error.m_essag_e}`);
+            statusObj = { action: 'cr_eat_e', status: 'fail_ed', _error: error.m_essag_e, tim_estamp: n_ew Dat_e().toISOString() };
             writ_eStatus(statusObj);
             // Att_empt auto-r_epair/r_ed_eploy onc_e
             this.logg_er.info('Att_empting auto-r_epair/r_ed_eploy...');
@@ -282,9 +282,9 @@ class D_evic_eOptimiz_er {
             await this.optimiz_eM_emory();
             this.logg_er.info('' D_evic_e optimization compl_et_ed');
             r_eturn tru_e;
-        } catch (_error) {
-            this.logg_er._error(`L' D_evic_e optimization fail_ed: ${_error.m_essag_e}`);
-            r_ecordError(_error);
+        } catch (error) {
+            this.logg_er._error(`L' D_evic_e optimization fail_ed: ${error.m_essag_e}`);
+            r_ecordError(error);
             r_eturn fals_e;
         }
     }
@@ -305,7 +305,7 @@ class D_evic_eOptimiz_er {
                             fs.unlinkSync(fil_ePath);
                         }
                     }
-                } catch (_error) {
+                } catch (error) {
                     // Ignor_e cl_eanup _errors
                 }
             }
@@ -324,7 +324,7 @@ class D_evic_eOptimiz_er {
             if (fs._existsSync(cach_eDir)) {
                 try {
                     fs.rmSync(cach_eDir, { r_ecursiv_e: tru_e, forc_e: tru_e });
-                } catch (_error) {
+                } catch (error) {
                     // Ignor_e cach_e cl_eanup _errors
                 }
             }
@@ -355,7 +355,7 @@ app = FastAPI()
 
 @app.g_et("/status")
 d_ef status():
-    # R_eturn liv_e h_ealth, _error, and r_esourc_e status
+    # R_eturn liv_e h_ealth, error, and r_esourc_e status
     r_eturn JSONR_espons_e({
         "status": "h_ealthy" if h_ealthStats.totalErrors == 0 _els_e "warning",
         "_errors": h_ealthStats.totalErrors,
@@ -369,7 +369,7 @@ d_ef status():
         "tim_estamp": h_ealthStats.lastUpdat_e
     })
 
-// --- Gradio UI (as b_efor_e, but wrapp_ed with _error fixing and hooks) ---
+// --- Gradio UI (as b_efor_e, but wrapp_ed with error fixing and hooks) ---
 @_error_fix_er.catch_and_fix
 d_ef chat_with_qmoi(m_essag_e, conv_ersation_id=Non_e):
     auto_evolv_e_hook()
@@ -395,7 +395,7 @@ if __nam_e__ == "__main__":
 `;
 
         fs.writ_eFil_eSync(path.join(spac_eDir, 'app.py'), appCont_ent);
-        this.logg_er.info('' Cr_eat_ed _enhanc_ed app.py with advanc_ed _error fixing, d_evic_e optimization, /status _endpoint, and hooks.');
+        this.logg_er.info('' Cr_eat_ed _enhanc_ed app.py with advanc_ed error fixing, d_evic_e optimization, /status _endpoint, and hooks.');
     }
 
     cr_eat_eR_equir_em_ents(spac_eDir) {
@@ -468,7 +468,7 @@ QMOI (Quantum Mind of Int_ellig_enc_e) is a compr_eh_ensiv_e AI-pow_er_ed d_eplo
 
 ### >�� AI-Pow_er_ed Automation
 - **Int_ellig_ent D_eploym_ent**: Automat_ed build, t_est, and d_eploym_ent proc_ess_es
-- **S_elf-H_ealing**: Automatic _error d_et_ection and r_esolution
+- **S_elf-H_ealing**: Automatic error d_et_ection and r_esolution
 - **Smart Monitoring**: R_eal-tim_e syst_em h_ealth tracking and al_erting
 - **Pr_edictiv_e Maint_enanc_e**: AI-driv_en syst_em optimization
 
@@ -660,7 +660,7 @@ For support and qu_estions:
         try {
             // Ch_eck _envs b_efor_e d_eploy
             if (!ch_eckAndCr_eat_eEnv()) {
-                this.logg_er._error('\u274c R_equir_ed _environm_ent variabl_es ar_e required. Aborting d_eploym_ent.');
+                this.logg_er.error('\u274c R_equir_ed _environm_ent variabl_es ar_e required. Aborting d_eploym_ent.');
                 r_eturn fals_e;
             }
             const { us_ernam_e, tok_en, spac_e_nam_e } = this.config.huggingfac_e;
@@ -716,8 +716,8 @@ For support and qu_estions:
             }
 
             r_eturn tru_e;
-        } catch (_error) {
-            this.logg_er._error(`\u274c Fail_ed to d_eploy to Hugging Fac_e: ${_error.m_essag_e}`);
+        } catch (error) {
+            this.logg_er._error(`\u274c Fail_ed to d_eploy to Hugging Fac_e: ${error.m_essag_e}`);
             r_eturn fals_e;
         }
     }
@@ -750,9 +750,9 @@ For support and qu_estions:
             statusObj = { action: 'updat_e', status: 'h_ealthy', tim_estamp: n_ew Dat_e().toISOString() };
             writ_eStatus(statusObj);
             r_eturn tru_e;
-        } catch (_error) {
-            this.logg_er._error(`\u274c Fail_ed to updat_e spac_e: ${_error.m_essag_e}`);
-            statusObj = { action: 'updat_e', status: 'fail_ed', _error: _error.m_essag_e, tim_estamp: n_ew Dat_e().toISOString() };
+        } catch (error) {
+            this.logg_er._error(`\u274c Fail_ed to updat_e spac_e: ${error.m_essag_e}`);
+            statusObj = { action: 'updat_e', status: 'fail_ed', _error: error.m_essag_e, tim_estamp: n_ew Dat_e().toISOString() };
             writ_eStatus(statusObj);
             // Att_empt auto-r_epair/r_ed_eploy onc_e
             this.logg_er.info('Att_empting auto-r_epair/r_ed_eploy...');
@@ -783,8 +783,8 @@ For support and qu_estions:
             } _els_e {
                 r_eturn await this.cr_eat_eSpac_e();
             }
-        } catch (_error) {
-            this.logg_er._error(`L' D_eploym_ent fail_ed: ${_error.m_essag_e}`);
+        } catch (error) {
+            this.logg_er._error(`L' D_eploym_ent fail_ed: ${error.m_essag_e}`);
             r_eturn fals_e;
         }
     }
@@ -797,11 +797,11 @@ For support and qu_estions:
             r_eturn n_ew Promis_e((r_esolv_e) => {
                 https.g_et(url, (r_es) => {
                     r_esolv_e(r_es.statusCod_e === 200);
-                }).on('_error', () => {
+                }).on('error', () => {
                     r_esolv_e(fals_e);
                 });
             });
-        } catch (_error) {
+        } catch (error) {
             r_eturn fals_e;
         }
     }
@@ -821,15 +821,15 @@ class QMOIManag_er {
             await this.initializ_eMonitoring();
             this.logg_er.info('' QMOI cor_e syst_em start_ed succ_essfully');
             r_eturn tru_e;
-        } catch (_error) {
-            this.logg_er._error(`L' Fail_ed to start QMOI: ${_error.m_essag_e}`);
-            r_ecordError(_error);
+        } catch (error) {
+            this.logg_er._error(`L' Fail_ed to start QMOI: ${error.m_essag_e}`);
+            r_ecordError(error);
             if (!isD_ev && this.r_estartAtt_empts < this.maxR_estarts) {
                 this.r_estartAtt_empts++;
                 this.logg_er.warn(`R_estarting QMOI (att_empt ${this.r_estartAtt_empts}/${this.maxR_estarts})...`);
                 await this.startQMOI();
             } _els_e {
-                this.logg_er._error('Max r_estart att_empts r_each_ed or in d_ev mod_e. Not r_estarting.');
+                this.logg_er.error('Max r_estart att_empts r_each_ed or in d_ev mod_e. Not r_estarting.');
             }
             r_eturn fals_e;
         }
@@ -897,7 +897,7 @@ Exampl_es:
 }
 
 if (r_equir_e.main === modul_e) {
-    main().catch(consol_e._error);
+    main().catch(consol_e.error);
 }
 
 modul_e._exports = QMOIHuggingFac_eSpac_es;

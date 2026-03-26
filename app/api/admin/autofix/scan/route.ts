@@ -161,7 +161,7 @@ async function detectAllErrors() {
 
     return errors;
   } catch (error) {
-    (console as any).error("Error detection failed:", error);
+    console.error("Error detection failed:", error);
     return errors;
   }
 }
@@ -181,7 +181,7 @@ async function applyAutofixes(errors: any[]) {
       switch (error.type) {
         case "required Dependency":
           // Would run: npm install <package>
-          (console as any).log(
+          .log(
             `[AUTOFIX] Installing required dependency: ${error.id}`,
           );
           fixed = true;
@@ -189,32 +189,32 @@ async function applyAutofixes(errors: any[]) {
 
         case "TypeScript/Syntax Error":
           // Would run eslint --fix
-          (console as any).log(
+          .log(
             `[AUTOFIX] Running ESLint fix on: ${error.file}`,
           );
           fixed = true;
           break;
 
         case "Configuration Error":
-          (console as any).log(
+          .log(
             `[AUTOFIX] Attempting to fix configuration: ${error.id}`,
           );
           fixed = true;
           break;
 
         case "Resource Warning":
-          (console as any).log(`[AUTOFIX] Optimizing system resources`);
+          .log(`[AUTOFIX] Optimizing system resources`);
           fixed = true;
           break;
 
         case "Security Issue":
-          (console as any).log(`[AUTOFIX] Securing environment variables`);
+          .log(`[AUTOFIX] Securing environment variables`);
           // Would update env configuration
           fixed = true;
           break;
 
         case "Code Quality":
-          (console as any).log(
+          .log(
             `[AUTOFIX] Updating deprecated patterns: ${error.id}`,
           );
           fixed = true;
@@ -222,7 +222,7 @@ async function applyAutofixes(errors: any[]) {
 
         default:
           // Try generic fix
-          (console as any).log(
+          .log(
             `[AUTOFIX] Attempting generic fix for: ${error.type}`,
           );
           fixed = Math.random() > 0.3; // 70% success rate
@@ -274,7 +274,7 @@ export async function POST(request: Request) {
 
   try {
     // Start error detection scan
-    (console as any).log("[QMOI AutoFix] Starting comprehensive error scan...");
+    .log("[QMOI AutoFix] Starting comprehensive error scan...");
     scanState.scanning = true;
 
     const detectedErrors = await detectAllErrors();
@@ -283,7 +283,7 @@ export async function POST(request: Request) {
     scanState.lastScanTime = new Date().toISOString();
     scanState.scanning = false;
 
-    (console as any).log(
+    .log(
       `[QMOI AutoFix] Scan complete. Found ${detectedErrors.length} issues.`,
     );
 

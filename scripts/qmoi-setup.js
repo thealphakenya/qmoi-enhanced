@@ -155,7 +155,7 @@ class QMOISetup {
       execSync("npm install", { stdio: "inherit" });
       await this.log("Dependencies installed successfully");
       return true;
-    } catch (_error) {
+    } catch (error) {
       await this.log(
         `Failed to install dependencies: ${error.message}`,
         "ERROR",
@@ -264,7 +264,7 @@ echo "Post-commit actions completed"
       execSync("npm test", { stdio: "inherit" });
       await this.log("Tests passed successfully");
       return true;
-    } catch (_error) {
+    } catch (error) {
       await this.log(`Tests failed: ${error.message}`, "WARN");
       return false;
     }
@@ -276,7 +276,7 @@ echo "Post-commit actions completed"
         "QMOI Setup Completed",
         "QMOI AI Automation System has been successfully set up and is ready to use.",
       );
-    } catch (_error) {
+    } catch (error) {
       await this.log(
         `Failed to send setup notification: ${error.message}`,
         "WARN",
@@ -329,7 +329,7 @@ echo "Post-commit actions completed"
       await this.log("  npm run qmoi-error-recovery - Run error recovery");
 
       return true;
-    } catch (_error) {
+    } catch (error) {
       await this.log(`Setup failed: ${error.message}`, "ERROR");
       await this.notificationService.sendNotification(
         "QMOI Setup Failed",

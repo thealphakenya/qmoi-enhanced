@@ -63,7 +63,7 @@ function MainPage() {
         };
         setCurrentUser(devUser);
         setIsAuthenticated(true);
-        setMasterUser(devUser as any);
+        setMasterUser;
         setRole("master");
         updateQMOIMemory({
           conversations: 0,

@@ -374,7 +374,7 @@ async function scanForProjects(): Promise<string[]> {
 
     return projects;
   } catch (error) {
-    (console as any).error("Error scanning for projects:", error);
+    console.error("Error scanning for projects:", error);
     return ["QMOI-Enhanced", "AI-Trading", "Automation-System"];
   }
 }
@@ -408,7 +408,7 @@ async function scanForCapabilities(): Promise<string[]> {
 
     return verifiedCapabilities;
   } catch (error) {
-    (console as any).error("Error scanning capabilities:", error);
+    console.error("Error scanning capabilities:", error);
     return ["comprehensive-awareness", "memory", "social"];
   }
 }
@@ -464,7 +464,7 @@ async function getFinancialOverview(): Promise<any> {
       lastSnapshotUpdate: snapshot?.last_updated || null,
     };
   } catch (error) {
-    (console as any).error("Error getting financial overview:", error);
+    console.error("Error getting financial overview:", error);
     return {
       totalEarnings: 0,
       transactions: [],
@@ -498,7 +498,7 @@ async function scanForUsers(): Promise<Record<string, any>> {
           const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
           Object.assign(users, data);
         } catch (error) {
-          (console as any).error(
+          console.error(
             `Error reading user data from ${file}:`,
             error,
           );
@@ -518,7 +518,7 @@ async function scanForUsers(): Promise<Record<string, any>> {
 
     return users;
   } catch (error) {
-    (console as any).error("Error scanning for users:", error);
+    console.error("Error scanning for users:", error);
     return {
       master: {
         id: "master",

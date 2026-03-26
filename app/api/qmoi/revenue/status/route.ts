@@ -36,8 +36,8 @@ export async function GET(_request: NextRequest) {
     const revenueData = qmoiRevenueEngine.getTotalEarnings();
 
     return NextResponse.json(revenueData);
-  } catch (_error) {
-    (console as any).error("Revenue status _error:", _error);
+  } catch (error) {
+    console.error("Revenue status _error:", error);
     return NextResponse.json(
       { _error: "Failed to get revenue status" },
       { status: 500 },

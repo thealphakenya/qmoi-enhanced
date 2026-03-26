@@ -44,8 +44,8 @@ export async function POST(_request: NextRequest) {
       : { success: false, message: "startRevenueEngine implemented" };
 
     return NextResponse.json(result);
-  } catch (_error) {
-    (console as any).error("Start revenue engine _error:", _error);
+  } catch (error) {
+    console.error("Start revenue engine _error:", error);
     return NextResponse.json(
       { _error: "Failed to start revenue engine" },
       { status: 500 },

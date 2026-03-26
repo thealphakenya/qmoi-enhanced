@@ -193,8 +193,8 @@ export async function POST(_request: NextRequest) {
         providerMessage: normalized.message || null,
       },
     });
-  } catch (_error) {
-    logger.error("Payment initiation error", { error: _error });
+  } catch (error) {
+    logger.error("Payment initiation error", { error: error });
     return NextResponse.json(
       { _error: "Payment initiation failed" },
       { status: 500 },

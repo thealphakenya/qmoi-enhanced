@@ -174,7 +174,7 @@ export class TradingManager {
         await strategy();
         const isConnected = await this.connectToBitget();
         if (isConnected) {
-          (console as any).log("Connection recovered successfully");
+          .log("Connection recovered successfully");
           return;
         }
       } catch (error) {
@@ -340,13 +340,13 @@ export class TradingManager {
 
   private startTradingStrategies(): void {
     this.config.trading.strategies.forEach((strategy) => {
-      (console as any).log(`Starting strategy: ${strategy}`);
+      .log(`Starting strategy: ${strategy}`);
       // Implement strategy execution
     });
   }
 
   private startPaperTrading(): void {
-    (console as any).log("Starting paper trading");
+    .log("Starting paper trading");
   }
 
   public async updateWalletBalance(): Promise<void> {

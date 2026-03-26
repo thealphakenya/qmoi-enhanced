@@ -84,7 +84,7 @@ class DomainLinkFixer:
         return content, count
     
     def fix_localhost_references(self, content: str) -> Tuple[str, int]:
-        """Fix localhost:3000 and localhost:8080 references"""
+        """Fix process.env.API_HOST || "localhost:3000" and localhost:8080 references"""
         count = 0
         patterns = self.mappings.get("pattern_replacements", {}).get("localhost_patterns", [])
         

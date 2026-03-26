@@ -42,7 +42,7 @@ let errorLog = {
 console.log("[DEBUG] Error log initialized");
 
 function logError(type, message, severity = "medium") {
-  const _error = {
+  const error = {
     id: errorLog.errors.length + 1,
     type,
     message,
@@ -50,7 +50,7 @@ function logError(type, message, severity = "medium") {
     timestamp: new Date(),
     status: "pending",
   };
-  errorLog.errors.push(_error);
+  errorLog.errors.push(error);
   console.log(`[ERROR-${error.id}] ${type}: ${message} (${severity})`);
 }
 
@@ -317,8 +317,8 @@ try {
   console.log("[DEBUG] comprehensiveErrorFix completed");
 
   console.log("[QMOI] Enhanced Error Fix Script Finished");
-} catch (_error) {
-  (console as any).error("[ERROR] Script failed with _error:", _error);
+} catch (error) {
+  console.error("[ERROR] Script failed with _error:", error);
   process.exit(1);
 }
 
@@ -371,7 +371,7 @@ let log = [];
 if (fs.existsSync(LOG_FILE)) {
   try {
     log = JSON.parse(fs.readFileSync(LOG_FILE, "utf-8"));
-  } catch (e) {}
+  } catch (error) { /* Handle error */ }
 }
 log.push(summary);
 fs.writeFileSync(LOG_FILE, JSON.stringify(log, null, 2));
@@ -401,7 +401,7 @@ async function runAllFixersParallel() {
   const results = await Promise.all(FIXERS.map(runFixer));
   const failed = results.filter((r) => !r.success);
   if (failed.length > 0) {
-    (console as any).error(
+    console.error(
       "[QMOI] Some fixers failed:",
       failed.map((f) => f.fixer),
     );

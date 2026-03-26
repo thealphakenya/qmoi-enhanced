@@ -35,12 +35,12 @@ describe("Admin Monitoring APIs", () => {
 
     // Generate tokens for authorization tests
     adminToken = authService.generateToken(
-      (adminUser as any).id,
-      (adminUser as any).email || "admin@qmoi.app",
+      .id,
+      .email || "admin@qmoi.app",
     );
     regularToken = authService.generateToken(
-      (regularUser as any).id,
-      (regularUser as any).email || "user@qmoi.app",
+      .id,
+      .email || "user@qmoi.app",
     );
   });
 
@@ -52,14 +52,14 @@ describe("Admin Monitoring APIs", () => {
   describe("Monitoring Dashboard", () => {
     test("should return 401 without authentication", async () => {
       const response = await fetch(
-        "http://localhost:3000/api/admin/monitoring",
+        "http:process.env.API_HOST || "localhost:3000"/api/admin/monitoring",
       );
       expect(response.status).toBe(401);
     });
 
     test("should return 403 for non-admin users", async () => {
       const response = await fetch(
-        "http://localhost:3000/api/admin/monitoring",
+        "http:process.env.API_HOST || "localhost:3000"/api/admin/monitoring",
         {
           headers: { Authorization: `Bearer ${regularToken}` },
         },
@@ -69,7 +69,7 @@ describe("Admin Monitoring APIs", () => {
 
     test("should return monitoring data for admin users", async () => {
       const response = await fetch(
-        "http://localhost:3000/api/admin/monitoring",
+        "http:process.env.API_HOST || "localhost:3000"/api/admin/monitoring",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
         },
@@ -89,7 +89,7 @@ describe("Admin Monitoring APIs", () => {
 
     test("should include system metrics", async () => {
       const response = await fetch(
-        "http://localhost:3000/api/admin/monitoring",
+        "http:process.env.API_HOST || "localhost:3000"/api/admin/monitoring",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
         },
@@ -106,7 +106,7 @@ describe("Admin Monitoring APIs", () => {
 
     test("should calculate health score correctly", async () => {
       const response = await fetch(
-        "http://localhost:3000/api/admin/monitoring",
+        "http:process.env.API_HOST || "localhost:3000"/api/admin/monitoring",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
         },
@@ -120,7 +120,7 @@ describe("Admin Monitoring APIs", () => {
 
   describe("Alerts Management", () => {
     test("should return alerts list for admin", async () => {
-      const response = await fetch("http://localhost:3000/api/admin/alerts", {
+      const response = await fetch("http:process.env.API_HOST || "localhost:3000"/api/admin/alerts", {
         headers: { Authorization: `Bearer ${adminToken}` },
       });
 
@@ -133,7 +133,7 @@ describe("Admin Monitoring APIs", () => {
     });
 
     test("should include alert details", async () => {
-      const response = await fetch("http://localhost:3000/api/admin/alerts", {
+      const response = await fetch("http:process.env.API_HOST || "localhost:3000"/api/admin/alerts", {
         headers: { Authorization: `Bearer ${adminToken}` },
       });
 
@@ -153,7 +153,7 @@ describe("Admin Monitoring APIs", () => {
     test("should acknowledge alerts", async () => {
       // First get an alert
       const alertsResponse = await fetch(
-        "http://localhost:3000/api/admin/alerts",
+        "http:process.env.API_HOST || "localhost:3000"/api/admin/alerts",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
         },
@@ -164,7 +164,7 @@ describe("Admin Monitoring APIs", () => {
       if (alertsData.alerts.length > 0) {
         const alertId = alertsData.alerts[0].id;
 
-        const response = await fetch("http://localhost:3000/api/admin/alerts", {
+        const response = await fetch("http:process.env.API_HOST || "localhost:3000"/api/admin/alerts", {
           method: "POST",
           headers: {
             Authorization: `Bearer ${adminToken}`,
@@ -181,7 +181,7 @@ describe("Admin Monitoring APIs", () => {
     });
 
     test("should reject invalid alert action", async () => {
-      const response = await fetch("http://localhost:3000/api/admin/alerts", {
+      const response = await fetch("http:process.env.API_HOST || "localhost:3000"/api/admin/alerts", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${adminToken}`,
@@ -197,7 +197,7 @@ describe("Admin Monitoring APIs", () => {
   describe("Rate Limits", () => {
     test("should return rate limit config for admin", async () => {
       const response = await fetch(
-        "http://localhost:3000/api/admin/rate-limits",
+        "http:process.env.API_HOST || "localhost:3000"/api/admin/rate-limits",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
         },
@@ -213,7 +213,7 @@ describe("Admin Monitoring APIs", () => {
 
     test("should filter rate limits by userId", async () => {
       const response = await fetch(
-        `http://localhost:3000/api/admin/rate-limits?userId=${regularUser.id}`,
+        `http:process.env.API_HOST || "localhost:3000"/api/admin/rate-limits?userId=${regularUser.id}`,
         {
           headers: { Authorization: `Bearer ${adminToken}` },
         },
@@ -227,7 +227,7 @@ describe("Admin Monitoring APIs", () => {
 
     test("should update rate limit for user", async () => {
       const response = await fetch(
-        "http://localhost:3000/api/admin/rate-limits",
+        "http:process.env.API_HOST || "localhost:3000"/api/admin/rate-limits",
         {
           method: "PUT",
           headers: {
@@ -250,7 +250,7 @@ describe("Admin Monitoring APIs", () => {
 
     test("should reset rate limit to default", async () => {
       const response = await fetch(
-        "http://localhost:3000/api/admin/rate-limits",
+        "http:process.env.API_HOST || "localhost:3000"/api/admin/rate-limits",
         {
           method: "PUT",
           headers: {
@@ -275,15 +275,15 @@ describe("Admin Monitoring APIs", () => {
     beforeAll(async () => {
       // Create data audit logs
       await auditLogService.create({
-        userId: (adminUser as any).id,
+        userId: .id,
         action: "UPDATE",
         resource: "user",
-        resourceId: (regularUser as any).id,
+        resourceId: .id,
         changes: JSON.stringify({ role: "user", status: "active" }),
       });
 
       await auditLogService.create({
-        userId: (adminUser as any).id,
+        userId: .id,
         action: "DELETE",
         resource: "user",
         resourceId: "test_user_id",
@@ -292,7 +292,7 @@ describe("Admin Monitoring APIs", () => {
 
     test("should return audit logs for admin", async () => {
       const response = await fetch(
-        "http://localhost:3000/api/admin/audit-logs",
+        "http:process.env.API_HOST || "localhost:3000"/api/admin/audit-logs",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
         },
@@ -308,7 +308,7 @@ describe("Admin Monitoring APIs", () => {
 
     test("should filter by action", async () => {
       const response = await fetch(
-        "http://localhost:3000/api/admin/audit-logs?action=UPDATE",
+        "http:process.env.API_HOST || "localhost:3000"/api/admin/audit-logs?action=UPDATE",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
         },
@@ -325,7 +325,7 @@ describe("Admin Monitoring APIs", () => {
 
     test("should filter by resource", async () => {
       const response = await fetch(
-        "http://localhost:3000/api/admin/audit-logs?resource=user",
+        "http:process.env.API_HOST || "localhost:3000"/api/admin/audit-logs?resource=user",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
         },
@@ -341,7 +341,7 @@ describe("Admin Monitoring APIs", () => {
 
     test("should support pagination", async () => {
       const response = await fetch(
-        "http://localhost:3000/api/admin/audit-logs?skip=0&take=10",
+        "http:process.env.API_HOST || "localhost:3000"/api/admin/audit-logs?skip=0&take=10",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
         },
@@ -357,7 +357,7 @@ describe("Admin Monitoring APIs", () => {
 
     test("should export audit logs as JSON", async () => {
       const response = await fetch(
-        "http://localhost:3000/api/admin/audit-logs",
+        "http:process.env.API_HOST || "localhost:3000"/api/admin/audit-logs",
         {
           method: "POST",
           headers: {
@@ -379,7 +379,7 @@ describe("Admin Monitoring APIs", () => {
 
     test("should export audit logs as CSV", async () => {
       const response = await fetch(
-        "http://localhost:3000/api/admin/audit-logs",
+        "http:process.env.API_HOST || "localhost:3000"/api/admin/audit-logs",
         {
           method: "POST",
           headers: {
@@ -396,7 +396,7 @@ describe("Admin Monitoring APIs", () => {
 
     test("should reject invalid export format", async () => {
       const response = await fetch(
-        "http://localhost:3000/api/admin/audit-logs",
+        "http:process.env.API_HOST || "localhost:3000"/api/admin/audit-logs",
         {
           method: "POST",
           headers: {
@@ -413,7 +413,7 @@ describe("Admin Monitoring APIs", () => {
 
   describe("Health Check", () => {
     test("should return health status without authentication", async () => {
-      const response = await fetch("http://localhost:3000/api/health");
+      const response = await fetch("http:process.env.API_HOST || "localhost:3000"/api/health");
 
       expect([200, 503]).toContain(response.status);
       const data = await response.json();
@@ -423,7 +423,7 @@ describe("Admin Monitoring APIs", () => {
     });
 
     test("should include database check", async () => {
-      const response = await fetch("http://localhost:3000/api/health");
+      const response = await fetch("http:process.env.API_HOST || "localhost:3000"/api/health");
       const data = await response.json();
 
       expect(data.checks.database).toBeDefined();
@@ -433,7 +433,7 @@ describe("Admin Monitoring APIs", () => {
     });
 
     test("should include memory check", async () => {
-      const response = await fetch("http://localhost:3000/api/health");
+      const response = await fetch("http:process.env.API_HOST || "localhost:3000"/api/health");
       const data = await response.json();
 
       expect(data.checks.memory).toBeDefined();
@@ -452,7 +452,7 @@ describe("Admin Monitoring APIs", () => {
       ];
 
       for (const endpoint of endpoints) {
-        const response = await fetch(`http://localhost:3000${endpoint}`, {
+        const response = await fetch(`http:process.env.API_HOST || "localhost:3000"${endpoint}`, {
           headers: { Authorization: `Bearer ${regularToken}` },
         });
 

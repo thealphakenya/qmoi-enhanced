@@ -69,7 +69,7 @@ describe("QMoiKernelPanel Integration", () => {
       const handlersMod = await import("../../[PRODUCTION READY]s/handlers");
       if (typeof handlersMod.getHandlers === "function") {
         const handlers = await handlersMod.getHandlers();
-        server.use(...(handlers as any));
+        server.use(...);
       }
     } catch (_e: unknown) {
       void _e; /* ignore */
@@ -82,7 +82,7 @@ describe("QMoiKernelPanel Integration", () => {
     const handlersMod = await import("../../[PRODUCTION READY]s/handlers");
     if (typeof handlersMod.getHandlers === "function") {
       const hs = await handlersMod.getHandlers();
-      server.use(...(hs as any));
+      server.use(...);
     }
     const _res = await fetch("/api/qmoi/status");
     const text = await _res.text().catch(() => "<no-body>");
@@ -126,7 +126,7 @@ describe("QMoiKernelPanel Integration", () => {
     const handlersMod = await import("../../[PRODUCTION READY]s/handlers");
     if (typeof handlersMod.getHandlers === "function") {
       const hs = await handlersMod.getHandlers();
-      server.use(...(hs as any));
+      server.use(...);
     }
     render(<QMoiKernelPanel isMaster={true} />);
     expect(await screen.findByText("OK")).toBeInTheDocument();
@@ -140,7 +140,7 @@ describe("QMoiKernelPanel Integration", () => {
     const handlersMod = await import("../../[PRODUCTION READY]s/handlers");
     if (typeof handlersMod.getHandlers === "function") {
       const hs = await handlersMod.getHandlers();
-      server.use(...(hs as any));
+      server.use(...);
     }
 
     render(<QMoiKernelPanel isMaster={true} />);

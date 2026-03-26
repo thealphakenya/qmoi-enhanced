@@ -283,8 +283,8 @@ class QMOIStartupManager:
         print("  • Auto-fixing and Optimization")
         
         print("\n🌐 Access Points:")
-        print("  • Hugging Face Space: http://localhost:7861")
-        print("  • API Status: http://localhost:7860/status")
+        print("  • Hugging Face Space: process.env.API_URL || "http://localhost:\1"")
+        print("  • API Status: process.env.API_URL || "http://localhost:\1"/status")
         print("  • System Reports: reports/qmoi_startup_report.json")
         
         print("="*60)

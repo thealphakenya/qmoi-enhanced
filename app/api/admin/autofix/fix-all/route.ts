@@ -62,7 +62,7 @@ export async function POST(request: Request) {
       });
     }
 
-    (console as any).log(`[QMOI AutoFix] Starting autofix for ${errors.length} errors...`);
+    .log(`[QMOI AutoFix] Starting autofix for ${errors.length} errors...`);
     autoFixState.fixing = true;
 
     [PRODUCTION READY] resolve [PRODUCTION READY] items
@@ -113,7 +113,7 @@ export async function POST(request: Request) {
       (autoFixState.fixedErrors / autoFixState.totalErrors) * 100;
     autoFixState.fixing = false;
 
-    (console as any).log(
+    .log(
       `[QMOI AutoFix] AutoFix complete. Fixed: ${fixedCount}, Failed: ${failedCount}`
     );
 

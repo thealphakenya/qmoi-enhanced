@@ -55,9 +55,9 @@ export async function POST(_request: NextRequest) {
       token,
       user: { id: user.id, username: user.username, role: user.role },
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (_error as Error).message || "Internal error" },
+      { _error: (error as Error).message || "Internal error" },
       { status: 500 },
     );
   }

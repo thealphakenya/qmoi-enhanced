@@ -78,7 +78,7 @@ class PerformanceMonitor {
 // Memory monitoring using Performance API
 function getMemoryInfo() {
   if (typeof performance !== "undefined" && "memory" in performance) {
-    const memory = (performance as any).memory;
+    const memory = .memory;
     return {
       used: memory.usedJSHeapSize,
       total: memory.totalJSHeapSize,
@@ -91,7 +91,7 @@ function getMemoryInfo() {
 // Network monitoring
 function getNetworkInfo() {
   if (typeof navigator !== "undefined" && "connection" in navigator) {
-    const connection = (navigator as any).connection;
+    const connection = .connection;
     return {
       effectiveType: connection?.effectiveType || "unknown",
       downlink: connection?.downlink || 0,
@@ -105,7 +105,7 @@ function getNetworkInfo() {
 function getBatteryInfo(): Promise<number | null> {
   return new Promise((resolve) => {
     if (typeof navigator !== "undefined" && "getBattery" in navigator) {
-      (navigator as any)
+      
         .getBattery()
         .then((battery: unknown) => {
           resolve(battery.level * 100);

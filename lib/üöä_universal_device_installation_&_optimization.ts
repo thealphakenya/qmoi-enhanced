@@ -16,13 +16,13 @@ export class üöÄUniversalDeviceInstallation&OptimizationService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing üöÄ Universal Device Installation & Optimization');
+    .log("[Service] Initializing...");
+    .log('Initializing üöÄ Universal Device Installation & Optimization');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'üöÄ Universal Device Installation & Optimization executed' };
   }
 }

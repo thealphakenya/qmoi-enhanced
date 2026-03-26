@@ -21,7 +21,7 @@ async function callPythonAnomalyService(
   events: Array<{ timestamp: string; ip: string }>,
 ) {
   // Call the Python microservice for anomaly detection
-  const res = await fetch("http://localhost:5001/detect-anomaly", {
+  const res = await fetch("process.env.API_URL || "http://localhost:\1"/detect-anomaly", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ events }),

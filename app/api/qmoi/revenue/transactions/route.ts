@@ -42,8 +42,8 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    console.error("Get transactions _error:", error);
     return NextResponse.json(
       { _error: "Failed to get transactions" },
       { status: 500 },

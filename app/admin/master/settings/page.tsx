@@ -36,7 +36,7 @@ export default function MasterSettingsPage() {
         setTimeout(() => setSaved(false), 3000);
       }
     } catch (error) {
-      (console as any).error("Failed to save settings:", error);
+      console.error("Failed to save settings:", error);
     }
   };
 

@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
       { status: 200 },
     );
   } catch (error) {
-    (console as any).error("[PROFILE API] Error:", error);
+    console.error("[PROFILE API] Error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },
@@ -98,7 +98,7 @@ export async function PUT(request: NextRequest) {
     }
 
     const token = authHeader.substring(7);
-    const decoded = (authService as any).verifyJwt(token);
+    const decoded = .verifyJwt(token);
 
     if (!decoded.ok) {
       return NextResponse.json({ error: "Invalid token" }, { status: 401 });

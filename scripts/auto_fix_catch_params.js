@@ -25,7 +25,7 @@ function walk(dir, cb) {
 const replacements = [
   { from: /catch\s*\(\s*e\s*\)/g, to: "catch (_e)" },
   { from: /catch\s*\(\s*err\s*\)/g, to: "catch (_err)" },
-  { from: /catch\s*\(\s*error\s*\)/g, to: "catch (_error)" },
+  { from: /catch\s*\(\s*error\s*\)/g, to: "catch (error)" },
   { from: /catch\s*\(\s*\)\s*{/g, to: "catch (_e) {" },
 ];
 

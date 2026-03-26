@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
       userId,
     });
   } catch (error) {
-    (console as any).error("Transcription error:", error);
+    console.error("Transcription error:", error);
     return NextResponse.json(
       { error: "Failed to transcribe audio" },
       { status: 500 },
@@ -80,7 +80,7 @@ export async function PUT(req: NextRequest) {
       voiceId,
     });
   } catch (error) {
-    (console as any).error("Text-to-speech error:", error);
+    console.error("Text-to-speech error:", error);
     return NextResponse.json(
       { error: "Failed to generate speech" },
       { status: 500 },

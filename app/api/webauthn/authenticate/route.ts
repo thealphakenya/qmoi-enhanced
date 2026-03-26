@@ -54,7 +54,7 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       { _error: (error as Error).message },
       { status: 500 },

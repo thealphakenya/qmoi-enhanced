@@ -16,13 +16,13 @@ export class Friendship&UserExperienceService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing Friendship & User Experience');
+    .log("[Service] Initializing...");
+    .log('Initializing Friendship & User Experience');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'Friendship & User Experience executed' };
   }
 }

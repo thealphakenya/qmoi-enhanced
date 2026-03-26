@@ -128,7 +128,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ error: "Invalid action" }, { status: 400 });
   } catch (error) {
-    (console as any).error("Voice API error:", error);
+    console.error("Voice API error:", error);
     return NextResponse.json(
       { success: false, error: String(error) },
       { status: 500 },

@@ -42,8 +42,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ pipelines });
-  } catch (_error) {
-    (console as any).error("Error fetching pipelines:", _error);
+  } catch (error) {
+    console.error("Error fetching pipelines:", error);
     return NextResponse.json({ pipelines: [] }, { status: 500 });
   }
 }

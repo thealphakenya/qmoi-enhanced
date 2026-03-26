@@ -73,9 +73,9 @@ export async function GET(_request: NextRequest) {
     );
 
     return _response;
-  } catch (_error) {
-    // On _error, log the error
-    (console as any).error("Error downloading report:", _error);
+  } catch (error) {
+    // On error, log the error
+    console.error("Error downloading report:", error);
     const logEntryErr = {
       timestamp: new Date().toISOString(),
       action: "download-report-access",
@@ -83,7 +83,7 @@ export async function GET(_request: NextRequest) {
       user: "unknown",
       app: "QMOI",
       device: "unknown",
-      _error: _error?.toString() || "unknown error",
+      _error: error?.toString() || "unknown error",
     };
     try {
       await fs.appendFile(

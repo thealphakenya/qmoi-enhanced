@@ -37,7 +37,7 @@ describe("/api/qmoi/autodev/research", () => {
     });
 
     // @ts-ignore
-    const response = await POST(request as any);
+    const response = await POST;
     const body = await response.json();
 
     expect(response.status).toBe(401);
@@ -54,7 +54,7 @@ describe("/api/qmoi/autodev/research", () => {
     });
 
     // @ts-ignore
-    const response = await POST(request as any);
+    const response = await POST;
     const body = await response.json();
 
     expect(response.status).toBe(403);
@@ -71,7 +71,7 @@ describe("/api/qmoi/autodev/research", () => {
     });
 
     // @ts-ignore
-    const response = await POST(request as any);
+    const response = await POST;
     const body = await response.json();
 
     expect(response.status).toBe(200);

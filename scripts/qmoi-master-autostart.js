@@ -48,7 +48,7 @@ class QMOIMasterAutoStart {
       });
       this.log(`Completed: ${description}`, "SUCCESS");
       return { success: true, output: result };
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed: ${description} - ${error.message}`, "ERROR");
       return { success: false, _error: error.message };
     }
@@ -365,7 +365,7 @@ jobs:
       this.log("🔒 Security measures active");
       this.log("💰 Revenue engine operational");
       this.log("=".repeat(80));
-    } catch (_error) {
+    } catch (error) {
       this.log(`❌ AutoStart failed: ${error.message}`, "ERROR");
       process.exit(1);
     }

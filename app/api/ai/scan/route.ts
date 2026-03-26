@@ -65,7 +65,7 @@ export async function GET(_request: NextRequest) {
 
     return NextResponse.json({ threats, stats });
   } catch (error) {
-    (console as any).error("Error in AI scan endpoint:", error);
+    console.error("Error in AI scan endpoint:", error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
@@ -113,7 +113,7 @@ export async function POST(_request: NextRequest) {
       { status: 400 },
     );
   } catch (error) {
-    (console as any).error("Error in AI self-heal endpoint:", error);
+    console.error("Error in AI self-heal endpoint:", error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },

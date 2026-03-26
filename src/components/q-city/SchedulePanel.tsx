@@ -19,7 +19,7 @@ export interface Schedule {
 export default function SchedulePanel() {
   const [schedules, setSchedules] = useState<Schedule[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [form, setForm] = useState<Schedule>({
     name: "",
     command: "",
@@ -133,7 +133,7 @@ export default function SchedulePanel() {
   return (
     <div className="p-4 bg-gray-900 rounded-lg shadow-lg">
       <h2 className="text-xl font-bold mb-4 text-cyan-400">Schedules</h2>
-      {_error && <div className="text-red-400 mb-2">{_error}</div>}
+      {error && <div className="text-red-400 mb-2">{error}</div>}
       <form
         className="mb-4 flex flex-wrap gap-2"
         onSubmit={(_e) => {

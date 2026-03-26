@@ -123,9 +123,9 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      _error instanceof Error ? _error.message : String(_error);
+      _error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
@@ -190,9 +190,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${_error}` },
+        { _error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -209,9 +209,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${_error}` },
+        { _error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -230,9 +230,9 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${_error}` },
+        { _error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
@@ -306,9 +306,9 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${_error}` },
+      { _error: `Request failed: ${error}` },
       { status: 500 },
     );
   }

@@ -16,13 +16,13 @@ export class Apps,Devices&PlatformsService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing Apps, Devices & Platforms');
+    .log("[Service] Initializing...");
+    .log('Initializing Apps, Devices & Platforms');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'Apps, Devices & Platforms executed' };
   }
 }

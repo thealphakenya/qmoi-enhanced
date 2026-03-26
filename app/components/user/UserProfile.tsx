@@ -25,7 +25,7 @@ export function UserProfile() {
   const router = useRouter();
   const [profile, setProfile] = useState<UserProfileData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [formData, setFormData] = useState({
@@ -142,9 +142,9 @@ export function UserProfile() {
           <p className="text-gray-600">{profile.email}</p>
         </div>
 
-        {_error && (
+        {error && (
           <div className="bg-red-50 border-b border-red-200 text-red-700 px-6 py-3">
-            {_error}
+            {error}
           </div>
         )}
 

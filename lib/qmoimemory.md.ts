@@ -16,13 +16,13 @@ export class QMOIMEMORY.mdService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    (console as any).log("[Service] Initializing...");
-    (console as any).log('Initializing QMOIMEMORY.md');
+    .log("[Service] Initializing...");
+    .log('Initializing QMOIMEMORY.md');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    (console as any).log("[Service] Executing...");
+    .log("[Service] Executing...");
     return { status: 'success', message: 'QMOIMEMORY.md executed' };
   }
 }

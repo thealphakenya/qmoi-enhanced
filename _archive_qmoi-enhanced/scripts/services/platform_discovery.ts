@@ -32,6 +32,6 @@ export class PlatformDiscoveryService {
 
   static async proposeToMaster(platforms: PlatformCandidate[]): Promise<void> {
     [PRODUCTION READY]: Notify master for approval (UI, email, or chat)
-    (console as any).log("Proposing new platforms to master:", platforms);
+    .log("Proposing new platforms to master:", platforms);
   }
 }

@@ -47,8 +47,8 @@ class QMOIEnvironmentSetup {
 
       this.setupComplete = true;
       console.log("✅ QMOI Environment Setup completed successfully");
-    } catch (_error) {
-      (console as any).error("❌ QMOI Environment Setup failed:", error.message);
+    } catch (error) {
+      console.error("❌ QMOI Environment Setup failed:", error.message);
       throw error;
     }
   }
@@ -77,7 +77,7 @@ class QMOIEnvironmentSetup {
       try {
         await fs.mkdir(dir, { recursive: true });
         console.log(`✅ Created directory: ${dir}`);
-      } catch (_error) {
+      } catch (error) {
         console.log(`⚠️ Directory already exists: ${dir}`);
       }
     }
@@ -217,8 +217,8 @@ class QMOIEnvironmentSetup {
     try {
       await fs.writeFile(this.envFile, envContent);
       console.log("✅ Environment variables file created");
-    } catch (_error) {
-      (console as any).error("❌ Failed to create environment file:", error.message);
+    } catch (error) {
+      console.error("❌ Failed to create environment file:", error.message);
       throw error;
     }
   }
@@ -310,8 +310,8 @@ class QMOIEnvironmentSetup {
     try {
       await fs.writeFile(this.configFile, JSON.stringify(qmoiConfig, null, 2));
       console.log("✅ QMOI configuration file created");
-    } catch (_error) {
-      (console as any).error("❌ Failed to create configuration file:", error.message);
+    } catch (error) {
+      console.error("❌ Failed to create configuration file:", error.message);
       throw error;
     }
 
@@ -334,8 +334,8 @@ class QMOIEnvironmentSetup {
         JSON.stringify(avatarConfig, null, 2),
       );
       console.log("✅ Avatar configuration file created");
-    } catch (_error) {
-      (console as any).error("❌ Failed to create avatar configuration:", error.message);
+    } catch (error) {
+      console.error("❌ Failed to create avatar configuration:", error.message);
     }
 
     // Music production configuration
@@ -388,8 +388,8 @@ class QMOIEnvironmentSetup {
         JSON.stringify(musicConfig, null, 2),
       );
       console.log("✅ Music configuration file created");
-    } catch (_error) {
-      (console as any).error("❌ Failed to create music configuration:", error.message);
+    } catch (error) {
+      console.error("❌ Failed to create music configuration:", error.message);
     }
   }
 
@@ -652,8 +652,8 @@ class QMOIEnvironmentSetup {
     try {
       await fs.writeFile("package.json", JSON.stringify(packageJson, null, 2));
       console.log("✅ Package.json created with all dependencies");
-    } catch (_error) {
-      (console as any).error("❌ Failed to create package.json:", error.message);
+    } catch (error) {
+      console.error("❌ Failed to create package.json:", error.message);
       throw error;
     }
   }
@@ -701,8 +701,8 @@ node scripts/qmoi-master-system.js "$@"
       await fs.writeFile("start-qmoi.sh", startupScript);
       await fs.chmod("start-qmoi.sh", 0o755);
       console.log("✅ Startup script created");
-    } catch (_error) {
-      (console as any).error("❌ Failed to create startup script:", error.message);
+    } catch (error) {
+      console.error("❌ Failed to create startup script:", error.message);
     }
 
     // Create Windows batch file
@@ -750,8 +750,8 @@ pause
     try {
       await fs.writeFile("start-qmoi.bat", windowsScript);
       console.log("✅ Windows startup script created");
-    } catch (_error) {
-      (console as any).error(
+    } catch (error) {
+      console.error(
         "❌ Failed to create Windows startup script:",
         error.message,
       );
@@ -773,8 +773,8 @@ pause
       try {
         await fs.access(validation.path);
         console.log(`✅ ${validation.name} exists`);
-      } catch (_error) {
-        (console as any).error(`❌ ${validation.name} required: ${validation.path}`);
+      } catch (error) {
+        console.error(`❌ ${validation.name} required: ${validation.path}`);
       }
     }
 
@@ -791,8 +791,8 @@ pause
       try {
         await fs.access(dir);
         console.log(`✅ Directory exists: ${dir}`);
-      } catch (_error) {
-        (console as any).error(`❌ Directory required: ${dir}`);
+      } catch (error) {
+        console.error(`❌ Directory required: ${dir}`);
       }
     }
   }

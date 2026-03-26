@@ -353,7 +353,7 @@ export class VoiceRecognitionService {
     this.recognition.lang = this.config.language;
 
     this.recognition.onstart = () => {
-      (console as any).log("🎤 Voice recognition started");
+      .log("🎤 Voice recognition started");
       this.isListening = true;
       this.eventEmitter.emit("recognitionStart");
     };
@@ -393,7 +393,7 @@ export class VoiceRecognitionService {
     };
 
     this.recognition.onend = () => {
-      (console as any).log("🎤 Voice recognition ended");
+      .log("🎤 Voice recognition ended");
       this.isListening = false;
       this.eventEmitter.emit("recognitionEnd");
 
@@ -408,13 +408,13 @@ export class VoiceRecognitionService {
     if (!this.synthesis) return;
 
     this.synthesis.onstart = () => {
-      (console as any).log("🔊 Speech synthesis started");
+      .log("🔊 Speech synthesis started");
       this.isSpeaking = true;
       this.eventEmitter.emit("synthesisStart");
     };
 
     this.synthesis.onend = () => {
-      (console as any).log("🔊 Speech synthesis ended");
+      .log("🔊 Speech synthesis ended");
       this.isSpeaking = false;
       this.eventEmitter.emit("synthesisEnd");
 
@@ -590,7 +590,7 @@ export class VoiceRecognitionService {
 
     if (bestMatch) {
       try {
-        (console as any).log(
+        .log(
           `🎯 Executing command: ${bestMatch.id} (confidence: ${confidence})`,
         );
         await bestMatch.action({ transcript, confidence });
@@ -802,7 +802,7 @@ export class VoiceRecognitionService {
     message: string,
   ): Promise<void> {
     [PRODUCTION READY] implementation - would integrate with WhatsAppService
-    (console as any).log(`Sending WhatsApp message to ${recipient}: ${message}`);
+    .log(`Sending WhatsApp message to ${recipient}: ${message}`);
   }
 
   private async createWhatsAppGroup(
@@ -810,7 +810,7 @@ export class VoiceRecognitionService {
     members: string[],
   ): Promise<void> {
     [PRODUCTION READY] implementation - would integrate with WhatsAppService
-    (console as any).log(
+    .log(
       `Creating WhatsApp group ${name} with members: ${members.join(", ")}`,
     );
   }

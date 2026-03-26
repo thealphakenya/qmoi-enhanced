@@ -64,7 +64,7 @@ export async function POST(req: Request) {
       ],
     });
   } catch (error) {
-    (console as any).error("/api/ai error:", error);
+    console.error("/api/ai error:", error);
     return NextResponse.json(
       {
         error: "Internal server error",

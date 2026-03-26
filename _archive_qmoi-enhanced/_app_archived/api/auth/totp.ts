@@ -24,7 +24,7 @@ const handler = requireRole(["user", "admin", "master"])(async (
   res: NextApiResponse,
 ) => {
   const { method, body } = req;
-  const { id } = (req as any).user || {};
+  const { id } = .user || {};
   const users = loadUsers();
   const userIdx = users.findIndex((u: unknown) => u.id === id);
   if (userIdx === -1) return res.status(404).json({ error: "User not found" });

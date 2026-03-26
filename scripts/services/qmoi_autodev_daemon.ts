@@ -23,10 +23,10 @@ function initializeServices() {
     if (!autoFixService) {
       autoFixService = new AutoFixService();
     }
-  } catch (_error) {
+  } catch (error) {
     logger.error(
       "[QMOI-AUTODEV-DAEMON] Failed to initialize AutoFixService:",
-      _error,
+      error,
     );
     autoFixService = {
       runLintFix: async () => ({
@@ -45,10 +45,10 @@ function initializeServices() {
     if (!qcityService) {
       qcityService = new QCityService();
     }
-  } catch (_error) {
+  } catch (error) {
     logger.error(
       "[QMOI-AUTODEV-DAEMON] Failed to initialize QCityService:",
-      _error,
+      error,
     );
     qcityService = {
       getStatus: () => ({ errors: [], status: "error" }),
@@ -115,8 +115,8 @@ class ErrorRecoverySystem {
       try {
         await execAsync(cmd);
         logger.info(`[QMOI-AUTODEV-DAEMON] Fixed issue with: ${cmd}`);
-      } catch (_error) {
-        logger.warn(`[QMOI-AUTODEV-DAEMON] Could not fix with ${cmd}:`, _error);
+      } catch (error) {
+        logger.warn(`[QMOI-AUTODEV-DAEMON] Could not fix with ${cmd}:`, error);
       }
     }
   }
@@ -185,7 +185,7 @@ async function runHealthChecks(): Promise<any[]> {
       const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
 
       const _res = await fetch(
-        url.startsWith("http") ? url : `http://localhost:3000${url}`,
+        url.startsWith("http") ? url : `http:process.env.API_HOST || "localhost:3000"${url}`,
         {
           signal: controller.signal,
         },
@@ -296,8 +296,8 @@ async function daemonLoop(): Promise<void> {
     try {
       status = qcityService.getStatus();
       errors = status?.errors || [];
-    } catch (_error) {
-      logger.error("[QMOI-AUTODEV-DAEMON] Failed to get status:", _error);
+    } catch (error) {
+      logger.error("[QMOI-AUTODEV-DAEMON] Failed to get status:", error);
       status = { errors: [], status: "error" };
       errors = [];
     }
@@ -320,7 +320,7 @@ async function daemonLoop(): Promise<void> {
           );
 
           logger.info("[QMOI-AUTODEV-DAEMON] Running AI fix...");
-          const aiResult = await autoFixService.runAIFix(_error);
+          const aiResult = await autoFixService.runAIFix(error);
           logger.info("[QMOI-AUTODEV-DAEMON] AI fix result:", aiResult);
 
           fixResults.push({ lintResult, depResult, aiResult });
@@ -422,7 +422,7 @@ async function daemonLoop(): Promise<void> {
     ErrorRecoverySystem.getInstance().resetRecoveryAttempts();
   } catch (_error: unknown) {
     errorCount++;
-    logger.error("[QMOI-AUTODEV-DAEMON] Error in daemon loop:", _error);
+    logger.error("[QMOI-AUTODEV-DAEMON] Error in daemon loop:", error);
 
     // Enter recovery mode if too many errors
     if (errorCount >= MAX_ERRORS) {
@@ -433,7 +433,7 @@ async function daemonLoop(): Promise<void> {
 
       const recoverySystem = ErrorRecoverySystem.getInstance();
       if (recoverySystem.shouldAttemptRecovery()) {
-        const recovered = await recoverySystem.attemptRecovery(_error);
+        const recovered = await recoverySystem.attemptRecovery(error);
         if (!recovered) {
           logger.error(
             "[QMOI-AUTODEV-DAEMON] Recovery failed, system may need manual intervention",
@@ -485,20 +485,20 @@ export const QmoiAutodevDaemon: DaemonControl = {
     this.intervalId = setInterval(async () => {
       try {
         await daemonLoop();
-      } catch (_error) {
+      } catch (error) {
         logger.error(
           "[QMOI-AUTODEV-DAEMON] Fatal error in daemon interval:",
-          _error,
+          error,
         );
         // Don't stop the daemon, let it continue trying
       }
     }, 60 * 1000); // 1 minute
 
     // Run immediately on start
-    daemonLoop().catch((_error) => {
+    daemonLoop().catch((error) => {
       logger.error(
         "[QMOI-AUTODEV-DAEMON] Error in initial daemon run:",
-        _error,
+        error,
       );
     });
   },
@@ -576,8 +576,8 @@ if (require.main === module) {
   });
 
   // Handle uncaught exceptions
-  process.on("uncaughtException", (_error) => {
-    logger.error("[QMOI-AUTODEV-DAEMON] Uncaught exception:", _error);
+  process.on("uncaughtException", (error) => {
+    logger.error("[QMOI-AUTODEV-DAEMON] Uncaught exception:", error);
     // Don't exit, let the daemon continue
   });
 

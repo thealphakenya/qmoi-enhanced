@@ -65,7 +65,7 @@ class DeploymentMonitor {
 
       this.log(`Deployment status: ${status.overall}`);
       return status;
-    } catch (_error) {
+    } catch (error) {
       this.log(`Error checking deployment status: ${error.message}`);
       return { _error: error.message, overall: "error" };
     }
@@ -98,7 +98,7 @@ class DeploymentMonitor {
               responseTime: response.headers["x-response-time"] || "unknown",
               statusCode: response.status,
             };
-          } catch (_error) {
+          } catch (error) {
             return {
               status: "unhealthy",
               url: url,
@@ -109,7 +109,7 @@ class DeploymentMonitor {
       }
 
       return { status: "unknown", _error: "No deployment found" };
-    } catch (_error) {
+    } catch (error) {
       return { status: "error", _error: error.message };
     }
   }
@@ -141,7 +141,7 @@ class DeploymentMonitor {
       }
 
       return { status: "healthy", files: buildFiles.length };
-    } catch (_error) {
+    } catch (error) {
       return { status: "error", _error: error.message };
     }
   }
@@ -169,7 +169,7 @@ class DeploymentMonitor {
       }
 
       return { status: "healthy", variables: requiredVars.length };
-    } catch (_error) {
+    } catch (error) {
       return { status: "error", _error: error.message };
     }
   }
@@ -204,7 +204,7 @@ class DeploymentMonitor {
         status: "healthy",
         dependencies: Object.keys(packageJson.dependencies || {}).length,
       };
-    } catch (_error) {
+    } catch (error) {
       return { status: "error", _error: error.message };
     }
   }
@@ -236,7 +236,7 @@ class DeploymentMonitor {
       try {
         execSync("npm run build", { stdio: "inherit" });
         fixes.push("build");
-      } catch (_error) {
+      } catch (error) {
         this.log(`Build fix failed: ${error.message}`);
       }
     }
@@ -252,7 +252,7 @@ class DeploymentMonitor {
         ].join("\n");
         fs.writeFileSync(".env", envContent);
         fixes.push("environment");
-      } catch (_error) {
+      } catch (error) {
         this.log(`Environment fix failed: ${error.message}`);
       }
     }
@@ -263,7 +263,7 @@ class DeploymentMonitor {
       try {
         execSync("npm ci --legacy-peer-deps", { stdio: "inherit" });
         fixes.push("dependencies");
-      } catch (_error) {
+      } catch (error) {
         this.log(`Dependency fix failed: ${error.message}`);
       }
     }
@@ -285,7 +285,7 @@ class DeploymentMonitor {
       await notifyMaster(
         "QMOI deployment monitor: Redeployment successful after auto-fixes",
       );
-    } catch (_error) {
+    } catch (error) {
       this.log(`Redeployment failed: ${error.message}`);
       await notifyMaster(
         `QMOI deployment monitor: Redeployment failed - ${error.message}`,
@@ -316,7 +316,7 @@ class DeploymentMonitor {
         } else {
           this.log("Deployment status: Healthy");
         }
-      } catch (_error) {
+      } catch (error) {
         this.log(`Monitoring _error: ${error.message}`);
       }
     };

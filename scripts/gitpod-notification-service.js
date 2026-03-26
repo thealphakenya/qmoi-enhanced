@@ -129,7 +129,7 @@ class GitpodNotificationService {
       );
       this.log(`Created GitLab issue: ${issue.iid} - ${title}`);
       return issue;
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to create GitLab issue: ${error.message}`, "ERROR");
       return null;
     }
@@ -385,7 +385,7 @@ ${gitpodUrl}
           this.log(
             `Sent notification to Gitpod workspace: ${data.workspaceId}`,
           );
-        } catch (_error) {
+        } catch (error) {
           this.log(
             `Failed to send Gitpod notification: ${error.message}`,
             "WARN",
@@ -395,7 +395,7 @@ ${gitpodUrl}
 
       this.log(`Gitpod notification sent: ${type}`);
       return issue;
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to send Gitpod notification: ${error.message}`, "ERROR");
       throw error;
     }
@@ -435,7 +435,7 @@ ${gitpodUrl}
 
       this.log(`Monitored ${workspaces.workspaces?.length || 0} workspaces`);
       return workspaces.workspaces || [];
-    } catch (_error) {
+    } catch (error) {
       this.log(
         `Failed to monitor Gitpod workspaces: ${error.message}`,
         "ERROR",
@@ -465,7 +465,7 @@ ${gitpodUrl}
       });
 
       return workspace;
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to start Gitpod workspace: ${error.message}`, "ERROR");
 
       // Send error notification
@@ -494,7 +494,7 @@ ${gitpodUrl}
       await this.sendGitpodNotification("workspace_stopped", {
         workspaceId: workspaceId,
       });
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to stop Gitpod workspace: ${error.message}`, "ERROR");
 
       // Send error notification
@@ -530,7 +530,7 @@ ${gitpodUrl}
       });
 
       return snapshot;
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to clone Gitpod workspace: ${error.message}`, "ERROR");
 
       // Send error notification
@@ -564,7 +564,7 @@ ${gitpodUrl}
         workspaceId: workspaceId,
         syncType: syncType,
       });
-    } catch (_error) {
+    } catch (error) {
       this.log(`Failed to sync Gitpod workspace: ${error.message}`, "ERROR");
 
       // Send error notification
@@ -671,7 +671,7 @@ async function main() {
         console.log("  --sync-workspace [data]       Sync a workspace");
         break;
     }
-  } catch (_error) {
+  } catch (error) {
     notificationService.log(
       `Gitpod notification service failed: ${error.message}`,
       "ERROR",

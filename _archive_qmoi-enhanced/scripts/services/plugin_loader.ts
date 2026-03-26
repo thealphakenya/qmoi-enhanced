@@ -22,7 +22,7 @@ function loadPlugins() {
       if (typeof plugin.register === "function") {
         plugin.register();
         plugins.push(file);
-        (console as any).log(`[PLUGIN] Loaded: ${file}`);
+        .log(`[PLUGIN] Loaded: ${file}`);
       }
     } catch (e) {
       (globalThis.console as any)?.error?.(

@@ -72,7 +72,7 @@ class QMOIGitHubIntegration {
       } else {
         throw new Error("Could not parse GitHub repository URL");
       }
-    } catch (_error) {
+    } catch (error) {
       throw new Error(`Failed to get repository info: ${error.message}`);
     }
   }
@@ -115,8 +115,8 @@ class QMOIGitHubIntegration {
       );
 
       return issue;
-    } catch (_error) {
-      (console as any).error("Failed to create issue:", error.message);
+    } catch (error) {
+      console.error("Failed to create issue:", error.message);
       throw error;
     }
   }
@@ -160,8 +160,8 @@ class QMOIGitHubIntegration {
       );
 
       return pr;
-    } catch (_error) {
-      (console as any).error("Failed to create pull _request:", error.message);
+    } catch (error) {
+      console.error("Failed to create pull _request:", error.message);
       throw error;
     }
   }
@@ -204,8 +204,8 @@ class QMOIGitHubIntegration {
       );
 
       return { success: true, backupPath };
-    } catch (_error) {
-      (console as any).error("Failed to update workflow:", error.message);
+    } catch (error) {
+      console.error("Failed to update workflow:", error.message);
       throw error;
     }
   }
@@ -246,8 +246,8 @@ class QMOIGitHubIntegration {
       );
 
       return response.data;
-    } catch (_error) {
-      (console as any).error("Failed to create branch:", error.message);
+    } catch (error) {
+      console.error("Failed to create branch:", error.message);
       throw error;
     }
   }
@@ -272,8 +272,8 @@ class QMOIGitHubIntegration {
       });
 
       return { success: true };
-    } catch (_error) {
-      (console as any).error("Failed to commit and push:", error.message);
+    } catch (error) {
+      console.error("Failed to commit and push:", error.message);
       throw error;
     }
   }
@@ -308,8 +308,8 @@ class QMOIGitHubIntegration {
       );
 
       return response.data;
-    } catch (_error) {
-      (console as any).error("Failed to merge pull _request:", error.message);
+    } catch (error) {
+      console.error("Failed to merge pull _request:", error.message);
       throw error;
     }
   }
@@ -353,8 +353,8 @@ class QMOIGitHubIntegration {
       );
 
       return release;
-    } catch (_error) {
-      (console as any).error("Failed to create release:", error.message);
+    } catch (error) {
+      console.error("Failed to create release:", error.message);
       throw error;
     }
   }
@@ -386,8 +386,8 @@ class QMOIGitHubIntegration {
       );
 
       return response.data;
-    } catch (_error) {
-      (console as any).error("Failed to update repository settings:", error.message);
+    } catch (error) {
+      console.error("Failed to update repository settings:", error.message);
       throw error;
     }
   }
@@ -432,8 +432,8 @@ class QMOIGitHubIntegration {
       );
 
       return { success: true };
-    } catch (_error) {
-      (console as any).error("Failed to enable security features:", error.message);
+    } catch (error) {
+      console.error("Failed to enable security features:", error.message);
       throw error;
     }
   }
@@ -568,8 +568,8 @@ class QMOIGitHubIntegration {
       };
 
       return status;
-    } catch (_error) {
-      (console as any).error("Failed to get repository status:", error.message);
+    } catch (error) {
+      console.error("Failed to get repository status:", error.message);
       throw error;
     }
   }

@@ -132,7 +132,7 @@ export async function POST(req: Request) {
         );
     }
   } catch (error: unknown) {
-    (console as any).error("Domain management API error:", error);
+    console.error("Domain management API error:", error);
     const details = error instanceof Error ? error.message : String(error);
     return NextResponse.json(
       { error: "Internal server error", details },
@@ -163,7 +163,7 @@ export async function GET() {
       },
     });
   } catch (error) {
-    (console as any).error("Domain management GET error:", error);
+    console.error("Domain management GET error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },

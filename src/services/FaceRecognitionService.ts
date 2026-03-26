@@ -129,7 +129,7 @@ export class FaceRecognitionService {
     } catch (_error: unknown) {
       safeConsoleError(
         "Error initializing face recognition API:",
-        String(_error),
+        String(error),
       );
     }
   }
@@ -180,7 +180,7 @@ export class FaceRecognitionService {
       } catch (_error: unknown) {
         safeConsoleError(
           "Error in face detection loop:",
-          String(_error),
+          String(error),
         );
       }
     }, this.config.detectionInterval);
@@ -269,7 +269,7 @@ export class FaceRecognitionService {
     } catch (_error: unknown) {
       safeConsoleError(
         "Error processing face detection:",
-        String(_error),
+        String(error),
       );
       return null;
     }
@@ -354,7 +354,7 @@ export class FaceRecognitionService {
     } catch (_error: unknown) {
       safeConsoleError(
         "Error detecting emotions:",
-        String(_error),
+        String(error),
       );
       return {
         happy: 0,
@@ -377,7 +377,7 @@ export class FaceRecognitionService {
     } catch (_error: unknown) {
       safeConsoleError(
         "Error estimating age:",
-        String(_error),
+        String(error),
       );
       return 0;
     }
@@ -391,7 +391,7 @@ export class FaceRecognitionService {
     } catch (_error: unknown) {
       safeConsoleError(
         "Error estimating gender:",
-        String(_error),
+        String(error),
       );
       return "unknown";
     }
@@ -545,7 +545,7 @@ export class FaceRecognitionService {
     } catch (_error: unknown) {
       safeConsoleError(
         "Error loading known faces:",
-        String(_error),
+        String(error),
       );
     }
   }
@@ -560,7 +560,7 @@ export class FaceRecognitionService {
     } catch (_error: unknown) {
       safeConsoleError(
         "Error saving known faces:",
-        String(_error),
+        String(error),
       );
     }
   }

@@ -122,8 +122,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
         await notifyMaster(
           `🆕 New project deployed: ${newProject.name}\nType: ${newProject.type}\nPriority: ${newProject.priority}\nEstimated time: ${newProject.estimatedDuration} minutes`,
         );
-      } catch (_error) {
-        safeConsoleError("Error creating project:", _error);
+      } catch (error) {
+        safeConsoleError("Error creating project:", error);
       } finally {
         setIsLoading(false);
       }
@@ -174,8 +174,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
             }`,
           );
         }
-      } catch (_error) {
-        safeConsoleError("Error updating project status:", _error);
+      } catch (error) {
+        safeConsoleError("Error updating project status:", error);
       } finally {
         setIsLoading(false);
       }
@@ -266,8 +266,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
           )
           .join("\n")}`,
       );
-    } catch (_error) {
-      safeConsoleError("Error generating daily plan:", _error);
+    } catch (error) {
+      safeConsoleError("Error generating daily plan:", error);
     } finally {
       setIsLoading(false);
     }
@@ -284,8 +284,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({ message })
       // });
-    } catch (_error) {
-      (console as any).error("Error notifying master:", _error);
+    } catch (error) {
+      console.error("Error notifying master:", error);
     }
   }, []);
 
@@ -303,8 +303,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //     description: 'Automated project updates and notifications'
       //   })
       // });
-    } catch (_error) {
-      safeConsoleError("Error creating WhatsApp group:", _error);
+    } catch (error) {
+      safeConsoleError("Error creating WhatsApp group:", error);
     }
   }, []);
 
@@ -319,8 +319,8 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({ message })
       // });
-    } catch (_error) {
-      safeConsoleError("Error posting to WhatsApp group:", _error);
+    } catch (error) {
+      safeConsoleError("Error posting to WhatsApp group:", error);
     }
   }, []);
 

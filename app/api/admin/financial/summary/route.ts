@@ -93,7 +93,7 @@ function readFinancialData() {
       lastUpdated: new Date(fs.statSync(auditPath).mtime).toISOString(),
     };
   } catch (error) {
-    (console as any).error("Error reading financial data:", error);
+    console.error("Error reading financial data:", error);
     return {
       liquid: 0,
       revenue: 323999,

@@ -235,10 +235,10 @@ export async function GET(_request: NextRequest) {
       { _error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    logger.error("Error in QMOI model endpoint", { error: _error });
+  } catch (error) {
+    logger.error("Error in QMOI model endpoint", { error: error });
     return NextResponse.json(
-      { _error: _error instanceof Error ? _error.message : "Unknown error" },
+      { _error: _error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -477,7 +477,7 @@ export async function POST(_request: NextRequest) {
           tokens_used: completion.usage?.total_tokens || 0,
         });
       } catch (error) {
-        (console as any).error("AI enhancement error:", error);
+        console.error("AI enhancement error:", error);
         // Fallback to local enhancement
         await new Promise((resolve) => setTimeout(resolve, 1500));
 
@@ -532,10 +532,10 @@ export async function POST(_request: NextRequest) {
       { _error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    console.error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: _error instanceof Error ? _error.message : "Unknown error" },
+      { _error: _error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }

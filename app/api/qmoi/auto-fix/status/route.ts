@@ -73,8 +73,8 @@ export async function GET(_request: NextRequest) {
           }
         }
       }
-    } catch (_error) {
-      (console as any).log("Error checking running process_es:", _error);
+    } catch (error) {
+      .log("Error checking running process_es:", error);
     }
 
     // Check deployment status
@@ -105,8 +105,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(report);
-  } catch (_error) {
-    (console as any).error("Error getting auto-fix status:", _error);
+  } catch (error) {
+    console.error("Error getting auto-fix status:", error);
     return NextResponse.json(
       { _error: "Failed to get auto-fix status" },
       { status: 500 },

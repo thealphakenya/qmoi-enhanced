@@ -190,7 +190,7 @@ export function ProjectManagement({
         fetchProjects();
       }
     } catch (error) {
-      (console as any).error("Failed to add task:", error);
+      console.error("Failed to add task:", error);
     }
   };
 

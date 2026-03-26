@@ -113,9 +113,9 @@ class QMOIHealthMonitor:
     def check_api_endpoints(self):
         """Check API endpoint health"""
         endpoints = [
-            "http://localhost:7860/status",
-            "http://localhost:8000/health",
-            "http://localhost:3000/api/health"
+            "process.env.API_URL || "http://localhost:\1"/status",
+            "process.env.API_URL || "http://localhost:\1"/health",
+            "http:process.env.API_HOST || "localhost:3000"/api/health"
         ]
         
         for endpoint in endpoints:

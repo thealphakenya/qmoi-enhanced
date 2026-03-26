@@ -44,8 +44,8 @@ export async function POST(_request: NextRequest) {
       : { success: false, message: "Reset command unavailable - check engine initialization" };
 
     return NextResponse.json(result);
-  } catch (_error) {
-    (console as any).error("Reset daily earnings _error:", _error);
+  } catch (error) {
+    console.error("Reset daily earnings _error:", error);
     return NextResponse.json(
       { _error: "Failed to reset daily earnings" },
       { status: 500 },

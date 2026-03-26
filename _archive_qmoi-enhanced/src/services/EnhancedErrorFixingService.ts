@@ -131,7 +131,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
       fixHistory: [],
     };
 
-    (console as any).log("🚨 Enhanced Error Reported:", errorReport);
+    .log("🚨 Enhanced Error Reported:", errorReport);
     this.errorQueue.push(errorReport);
     this.systemHealth.activeErrors++;
 
@@ -160,7 +160,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      (console as any).log("🔧 Processing error:", errorReport.id);
+      .log("🔧 Processing error:", errorReport.id);
       try {
         // Root cause analysis
         const rootCause = await this.analyzeRootCause(errorReport);
@@ -170,7 +170,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
 
         if (fixSuggestion) {
-          (console as any).log("🤖 AI Fix Suggestion:", fixSuggestion);
+          .log("🤖 AI Fix Suggestion:", fixSuggestion);
 
           // Apply fix with retry logic
           const fixResult = await this.applyFixWithRetry(
@@ -187,7 +187,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
           // Emit events for real-time updates
           this.emit("fixApplied", { errorReport, fixSuggestion, fixResult });
         } else {
-          (console as any).log("⚠️ No automatic fix suggested for this error.");
+          .log("⚠️ No automatic fix suggested for this error.");
           this.emit("noFixAvailable", errorReport);
         }
       } catch (error) {
@@ -246,7 +246,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async analyzeAndSuggestFix(
     error: ErrorReport,
   ): Promise<FixSuggestion | null> {
-    (console as any).log("🧠 AI analyzing error:", error);
+    .log("🧠 AI analyzing error:", error);
 
     // Check learning database for similar errors
     const learningData = this.learningDatabase.get(error.type);
@@ -475,7 +475,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
 
     for (let attempt = 1; attempt <= this.maxRetries; attempt++) {
       try {
-        (console as any).log(
+        .log(
           `🔄 Attempt ${attempt}/${this.maxRetries} for fix: ${fixSuggestion.id}`,
         );
 
@@ -494,7 +494,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
         }
 
         fixAttempt.success = true;
-        (console as any).log("✅ Fix applied successfully");
+        .log("✅ Fix applied successfully");
         break;
       } catch (error) {
         lastError = error.message;
@@ -528,7 +528,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
 
     try {
       // In a real implementation, this would modify the actual file
-      (console as any).log(`📝 Applying code change to ${change.filePath}:`, change);
+      .log(`📝 Applying code change to ${change.filePath}:`, change);
       result.success = true;
     } catch (error) {
       result.details += ` - Error: ${error.message}`;
@@ -547,7 +547,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
     };
 
     try {
-      (console as any).log(`⚡ Executing command: ${command}`);
+      .log(`⚡ Executing command: ${command}`);
       // In a real implementation, this would execute the command
       result.success = true;
     } catch (error) {
@@ -599,7 +599,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
     learningData.lastUpdated = new Date().toISOString();
     this.learningDatabase.set(learningKey, learningData);
 
-    (console as any).log("🧠 Updated learning database for:", learningKey);
+    .log("🧠 Updated learning database for:", learningKey);
   }
 
   private updateSystemHealth(fixResult: FixAttempt): void {
@@ -632,7 +632,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
 
   public startContinuousMonitoring(): void {
     this.continuousMonitoring = true;
-    (console as any).log("🔍 Starting continuous error monitoring");
+    .log("🔍 Starting continuous error monitoring");
     this.emit("monitoringStarted");
   }
 
@@ -641,7 +641,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
     if (this.monitoringInterval) {
       clearInterval(this.monitoringInterval as any);
     }
-    (console as any).log("🛑 Stopped continuous error monitoring");
+    .log("🛑 Stopped continuous error monitoring");
     this.emit("monitoringStopped");
   }
 
@@ -668,7 +668,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
 // Notification service for fast error notifications
 class NotificationService {
   async sendErrorNotification(error: ErrorReport): Promise<void> {
-    (console as any).log("📢 Sending error notification:", error.id);
+    .log("📢 Sending error notification:", error.id);
     // In a real implementation, this would send notifications via email, Slack, etc.
   }
 }

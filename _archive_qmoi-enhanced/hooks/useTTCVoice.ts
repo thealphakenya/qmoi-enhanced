@@ -7,7 +7,7 @@
 import { useState, useCallback } from "react";
 
 // TTC API endpoint (local or remote)
-const TTC_API = "http://localhost:5002/tts"; // Update if needed
+const TTC_API = "process.env.API_URL || "http://localhost:\1"/tts"; // Update if needed
 
 export function useTTCVoice() {
   const [isSpeaking, setIsSpeaking] = useState(false);

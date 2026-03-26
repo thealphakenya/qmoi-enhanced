@@ -47,7 +47,7 @@ class LintReporter {
         stdio: "pipe",
       });
       return { success: true, output: "" };
-    } catch (_error) {
+    } catch (error) {
       return { success: false, output: error.stdout || error.stderr || "" };
     }
   }
@@ -107,7 +107,7 @@ class LintReporter {
         rule.includes("import/no-unresolved") ||
         rule.includes("no-unused-vars")
       ) {
-        categories.critical.push(_error);
+        categories.critical.push(error);
       }
       // Security issues
       else if (
@@ -115,7 +115,7 @@ class LintReporter {
         rule.includes("no-eval") ||
         rule.includes("no-implied-eval")
       ) {
-        categories.security.push(_error);
+        categories.security.push(error);
       }
       // Performance issues
       else if (
@@ -123,11 +123,11 @@ class LintReporter {
         rule.includes("no-console") ||
         rule.includes("no-debugger")
       ) {
-        categories.performance.push(_error);
+        categories.performance.push(error);
       }
       // Accessibility issues
       else if (rule.includes("jsx-a11y") || rule.includes("accessibility")) {
-        categories.accessibility.push(_error);
+        categories.accessibility.push(error);
       }
       // High priority
       else if (
@@ -135,7 +135,7 @@ class LintReporter {
         rule.includes("no-debugger") ||
         rule.includes("no-alert")
       ) {
-        categories.high.push(_error);
+        categories.high.push(error);
       }
       // Style issues
       else if (
@@ -144,7 +144,7 @@ class LintReporter {
         rule.includes("indent") ||
         rule.includes("trailing-spaces")
       ) {
-        categories.style.push(_error);
+        categories.style.push(error);
       }
       // Medium priority
       else if (
@@ -152,11 +152,11 @@ class LintReporter {
         rule.includes("no-var") ||
         rule.includes("eqeqeq")
       ) {
-        categories.medium.push(_error);
+        categories.medium.push(error);
       }
       // Low priority
       else {
-        categories.low.push(_error);
+        categories.low.push(error);
       }
     }
 
@@ -309,7 +309,7 @@ class LintReporter {
             <h2>🚨 Critical Issues (${categories.critical.length})</h2>
             ${categories.critical
               .map(
-                (_error) => `
+                (error) => `
                 <div class="error-item">
                     <div class="error-file">${error.file}:${error.line}:${error.column}</div>
                     <div class="error-details">${error.rule}</div>
@@ -330,7 +330,7 @@ class LintReporter {
             <h2>⚠️ High Priority Issues (${categories.high.length})</h2>
             ${categories.high
               .map(
-                (_error) => `
+                (error) => `
                 <div class="error-item">
                     <div class="error-file">${error.file}:${error.line}:${error.column}</div>
                     <div class="error-details">${error.rule}</div>
@@ -351,7 +351,7 @@ class LintReporter {
             <h2>📝 Medium Priority Issues (${categories.medium.length})</h2>
             ${categories.medium
               .map(
-                (_error) => `
+                (error) => `
                 <div class="error-item">
                     <div class="error-file">${error.file}:${error.line}:${error.column}</div>
                     <div class="error-details">${error.rule}</div>
@@ -372,7 +372,7 @@ class LintReporter {
             <h2>💡 Low Priority Issues (${categories.low.length})</h2>
             ${categories.low
               .map(
-                (_error) => `
+                (error) => `
                 <div class="error-item">
                     <div class="error-file">${error.file}:${error.line}:${error.column}</div>
                     <div class="error-details">${error.rule}</div>
@@ -525,7 +525,7 @@ class LintReporter {
 
     if (categories.critical.length > 0) {
       console.log("\n🚨 Critical Issues:");
-      categories.critical.slice(0, 3).forEach((_error, index) => {
+      categories.critical.slice(0, 3).forEach((error, index) => {
         console.log(
           `   ${index + 1}. ${error.file}:${error.line}:${error.column} - ${error.rule}`,
         );
@@ -564,7 +564,7 @@ class LintReporter {
 
 // Run the reporter
 const reporter = new LintReporter();
-reporter.run().catch((_error) => {
-  (console as any).error("Fatal error in lint reporter:", _error);
+reporter.run().catch((error) => {
+  console.error("Fatal error in lint reporter:", error);
   process.exit(1);
 });

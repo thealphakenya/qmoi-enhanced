@@ -26,7 +26,7 @@ function makeNextUrl(url = "http://localhost") {
 }
 
 async function testAiHealthGating(aiHealthGET: unknown) {
-  (console as any).log("Testing ai-health GET gating...");
+  .log("Testing ai-health GET gating...");
   process.env.NODE_ENV = "production";
   delete process.env.API_KEY;
   // No header -> expect 401
@@ -51,11 +51,11 @@ async function testAiHealthGating(aiHealthGET: unknown) {
     res2?.status === 200 || res2?.status === undefined,
     "ai-health should allow valid API key",
   );
-  (console as any).log("ai-health gating tests passed");
+  .log("ai-health gating tests passed");
 }
 
 async function testLanguage[PRODUCTION READY]s(languageHandler: unknown) {
-  (console as any).log("Testing qmoi/language [PRODUCTION READY] behavior and gating...");
+  .log("Testing qmoi/language [PRODUCTION READY] behavior and gating...");
   process.env.NODE_ENV = "production";
   delete process.env.API_KEY;
 
@@ -114,11 +114,11 @@ async function testLanguage[PRODUCTION READY]s(languageHandler: unknown) {
         res2.body.error.includes("implemented")),
     "language route should return 501 despite key because [PRODUCTION READY]",
   );
-  (console as any).log("language [PRODUCTION READY] gating tests passed");
+  .log("language [PRODUCTION READY] gating tests passed");
 }
 
 async function testQNewsGating(qnewsPOST: unknown) {
-  (console as any).log("Testing qnews gating and master fallback...");
+  .log("Testing qnews gating and master fallback...");
   process.env.NODE_ENV = "production";
   delete process.env.API_KEY;
 
@@ -141,7 +141,7 @@ async function testQNewsGating(qnewsPOST: unknown) {
   } as any);
   // qnews uses NextResponse; if not, success property
   assert(resKey?.status !== 401, "qnews POST allowed with API key");
-  (console as any).log("qnews gating tests passed");
+  .log("qnews gating tests passed");
 }
 
 async function runAll() {
@@ -165,7 +165,7 @@ async function runAll() {
           await import("../../../app/api/ai-health/route.ts"));
       }
     } catch (ie) {
-      (console as any).error(
+      console.error(
         "Error importing ai-health/route:",
         ie instanceof Error ? ie.stack : ie,
       );
@@ -185,7 +185,7 @@ async function runAll() {
           await import("../../../app/api/qmoi/language/route.ts"));
       }
     } catch (ie) {
-      (console as any).error(
+      console.error(
         "Error importing qmoi/language/route:",
         ie instanceof Error ? ie.stack : ie,
       );
@@ -202,7 +202,7 @@ async function runAll() {
         ({ POST: qnewsPOST } = await import("../../../app/api/qnews/route.ts"));
       }
     } catch (ie) {
-      (console as any).error(
+      console.error(
         "Error importing qnews/route:",
         ie instanceof Error ? ie.stack : ie,
       );
@@ -212,10 +212,10 @@ async function runAll() {
     await testAiHealthGating(aiHealthGET);
     await testLanguage[PRODUCTION READY]s(languageHandler);
     await testQNewsGating(qnewsPOST);
-    (console as any).log("All endpoint gating tests passed.");
+    .log("All endpoint gating tests passed.");
     process.exit(0);
   } catch (_e) {
-    (console as any).error(
+    console.error(
       "Endpoint gating tests failed:",
       _e instanceof Error ? _e.stack : _e,
     );

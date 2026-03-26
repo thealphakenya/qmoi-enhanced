@@ -63,7 +63,7 @@ class AutoGitUpdater {
           await this.executeCommand("git pull --rebase");
           console.log("Git pull/merge completed.");
         } catch (_err) {
-          (console as any).error("Git pull/merge failed:", _err.message);
+          console.error("Git pull/merge failed:", _err.message);
         }
       },
       10 * 60 * 1000,
@@ -103,9 +103,9 @@ class AutoGitUpdater {
         "✅ Repository updated successfully",
         commitMessage,
       );
-    } catch (_error) {
-      (console as any).error("❌ Error during update:", error.message);
-      await this.handleError(_error);
+    } catch (error) {
+      console.error("❌ Error during update:", error.message);
+      await this.handleError(error);
     }
   }
 
@@ -130,8 +130,8 @@ class AutoGitUpdater {
       this.updateDocumentation();
       // Notify master of version change
       await this.notifyMaster("🔄 Version updated", `New version: ${version}`);
-    } catch (_error) {
-      (console as any).error("❌ Error updating version/changelog:", error.message);
+    } catch (error) {
+      console.error("❌ Error updating version/changelog:", error.message);
     }
   }
 
@@ -156,16 +156,16 @@ class AutoGitUpdater {
       // Create daily summary
       const summary = await this.createDailySummary();
       await this.notifyMaster("📊 Daily Update Summary", summary);
-    } catch (_error) {
-      (console as any).error("❌ Error during daily update:", error.message);
-      await this.handleError(_error);
+    } catch (error) {
+      console.error("❌ Error during daily update:", error.message);
+      await this.handleError(error);
     }
   }
 
   async checkForChanges() {
     return new Promise((resolve) => {
-      exec("git status --porcelain", (_error, stdout) => {
-        if (_error) {
+      exec("git status --porcelain", (error, stdout) => {
+        if (error) {
           resolve(false);
         } else {
           resolve(stdout.trim().length > 0);
@@ -176,8 +176,8 @@ class AutoGitUpdater {
 
   async checkForConflicts() {
     return new Promise((resolve) => {
-      exec("git status --porcelain", (_error, stdout) => {
-        if (_error) {
+      exec("git status --porcelain", (error, stdout) => {
+        if (error) {
           resolve(false);
         } else {
           resolve(stdout.includes("UU") || stdout.includes("AA"));
@@ -195,8 +195,8 @@ class AutoGitUpdater {
       // Pull with rebase to avoid conflicts
       await this.executeCommand("git pull --rebase origin main");
       console.log("🔄 Rebase completed");
-    } catch (_error) {
-      (console as any).error("❌ Could not resolve conflicts automatically");
+    } catch (error) {
+      console.error("❌ Could not resolve conflicts automatically");
       await this.notifyMaster(
         "⚠️ Git conflicts detected",
         "Manual resolution required",
@@ -231,8 +231,8 @@ class AutoGitUpdater {
       }
 
       console.log("📚 Documentation updated");
-    } catch (_error) {
-      (console as any).error("❌ Error updating documentation:", error.message);
+    } catch (error) {
+      console.error("❌ Error updating documentation:", error.message);
     }
   }
 
@@ -277,15 +277,15 @@ class AutoGitUpdater {
         `🌿 Branches: ${summary.branches.join(", ")}\n` +
         `📝 Last Commit: ${summary.lastCommit}`
       );
-    } catch (_error) {
-      (console as any).error("❌ Error creating daily summary:", error.message);
+    } catch (error) {
+      console.error("❌ Error creating daily summary:", error.message);
       return "❌ Could not generate daily summary";
     }
   }
 
   async getCommitCount() {
     return new Promise((resolve) => {
-      exec("git rev-list --count HEAD", (_error, stdout) => {
+      exec("git rev-list --count HEAD", (error, stdout) => {
         resolve(error ? 0 : parseInt(stdout.trim()));
       });
     });
@@ -293,7 +293,7 @@ class AutoGitUpdater {
 
   async getFilesChanged() {
     return new Promise((resolve) => {
-      exec("git diff --name-only HEAD~1", (_error, stdout) => {
+      exec("git diff --name-only HEAD~1", (error, stdout) => {
         resolve(
           error ? 0 : stdout.split("\n").filter((line) => line.trim()).length,
         );
@@ -303,7 +303,7 @@ class AutoGitUpdater {
 
   async getLinesAdded() {
     return new Promise((resolve) => {
-      exec("git diff --stat HEAD~1 | tail -1", (_error, stdout) => {
+      exec("git diff --stat HEAD~1 | tail -1", (error, stdout) => {
         const match = stdout.match(/(\d+) insertions/);
         resolve(match ? parseInt(match[1]) : 0);
       });
@@ -312,7 +312,7 @@ class AutoGitUpdater {
 
   async getLinesRemoved() {
     return new Promise((resolve) => {
-      exec("git diff --stat HEAD~1 | tail -1", (_error, stdout) => {
+      exec("git diff --stat HEAD~1 | tail -1", (error, stdout) => {
         const match = stdout.match(/(\d+) deletions/);
         resolve(match ? parseInt(match[1]) : 0);
       });
@@ -321,8 +321,8 @@ class AutoGitUpdater {
 
   async getBranches() {
     return new Promise((resolve) => {
-      exec("git branch --list", (_error, stdout) => {
-        if (_error) {
+      exec("git branch --list", (error, stdout) => {
+        if (error) {
           resolve(["main"]);
         } else {
           resolve(
@@ -338,7 +338,7 @@ class AutoGitUpdater {
 
   async getLastCommit() {
     return new Promise((resolve) => {
-      exec("git log -1 --oneline", (_error, stdout) => {
+      exec("git log -1 --oneline", (error, stdout) => {
         resolve(error ? "Unknown" : stdout.trim());
       });
     });
@@ -371,9 +371,9 @@ class AutoGitUpdater {
 
   async executeCommand(command) {
     return new Promise((resolve, reject) => {
-      exec(command, { cwd: this.repoRoot }, (_error, stdout, stderr) => {
-        if (_error) {
-          reject(_error);
+      exec(command, { cwd: this.repoRoot }, (error, stdout, stderr) => {
+        if (error) {
+          reject(error);
         } else {
           resolve(stdout);
         }
@@ -398,14 +398,14 @@ class AutoGitUpdater {
       //     message
       //   })
       // });
-    } catch (_error) {
-      (console as any).error("❌ Error notifying master:", error.message);
+    } catch (error) {
+      console.error("❌ Error notifying master:", error.message);
     }
   }
 
-  async handleError(_error) {
+  async handleError(error) {
     const errorMessage = `❌ Git Update Error: ${error.message}`;
-    (console as any).error(errorMessage);
+    console.error(errorMessage);
 
     // Notify master about the error
     await this.notifyMaster("⚠️ Git Update Error", errorMessage);

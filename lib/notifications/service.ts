@@ -44,7 +44,7 @@ class NotificationsService {
         await this.sendEmailNotification(options);
       }
 
-      (console as any).log(
+      .log(
         `Notification sent to ${options.userId}:`,
         options.title,
       );
@@ -139,7 +139,7 @@ class NotificationsService {
 
       return true;
     } catch (error) {
-      (console as any).error("Failed to send push notification:", error);
+      console.error("Failed to send push notification:", error);
       return false;
     }
   };
@@ -153,7 +153,7 @@ class NotificationsService {
       // await emailService.sendNotification(...)
       return true;
     } catch (error) {
-      (console as any).error("Failed to send email notification:", error);
+      console.error("Failed to send email notification:", error);
       return false;
     }
   };

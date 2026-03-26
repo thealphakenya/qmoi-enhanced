@@ -96,7 +96,7 @@ export async function GET(request: NextRequest) {
         );
     }
   } catch (error) {
-    (console as any).error("Enhanced link domain service error:", error);
+    console.error("Enhanced link domain service error:", error);
     return NextResponse.json(
       {
         success: false,
@@ -193,7 +193,7 @@ export async function POST(request: NextRequest) {
         );
     }
   } catch (error) {
-    (console as any).error("Enhanced link domain service POST error:", error);
+    console.error("Enhanced link domain service POST error:", error);
     const details = error instanceof Error ? error.message : String(error);
     return NextResponse.json(
       {

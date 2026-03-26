@@ -60,9 +60,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (_error as Error).message || "Internal server error" },
+      { _error: (error as Error).message || "Internal server error" },
       { status: 500 },
     );
   }
@@ -99,9 +99,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (_error as Error).message || "Internal server error" },
+      { _error: (error as Error).message || "Internal server error" },
       { status: 500 },
     );
   }
