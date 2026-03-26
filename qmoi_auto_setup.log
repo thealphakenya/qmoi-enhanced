@@ -1,0 +1,20 @@
+2025-07-06 02:36:00,052 - __main__ - INFO - Starting QMOI Auto Setup System...
+2025-07-06 02:36:00,052 - __main__ - INFO - Setting up QMOI environment...
+2025-07-06 02:36:00,052 - __main__ - INFO - Created directory: employment_letters
+2025-07-06 02:36:00,053 - __main__ - INFO - Created directory: logs
+2025-07-06 02:36:00,053 - __main__ - INFO - Created directory: reports
+2025-07-06 02:36:00,053 - __main__ - INFO - Created directory: models/latest
+2025-07-06 02:36:00,053 - __main__ - INFO - Created directory: huggingface_space
+2025-07-06 02:36:00,053 - __main__ - INFO - Created directory: data
+2025-07-06 02:36:00,054 - __main__ - INFO - Created directory: config
+2025-07-06 02:36:00,054 - __main__ - INFO - Created directory: keys
+2025-07-06 02:36:00,130 - __main__ - INFO - Created directory: backups
+2025-07-06 02:36:00,130 - __main__ - INFO - Created directory: cloud_cache
+2025-07-06 02:36:00,130 - __main__ - INFO - Created directory: temp
+2025-07-06 02:36:00,130 - __main__ - INFO - Created directory: artifacts
+2025-07-06 02:36:00,131 - __main__ - INFO - Created directory: distributions
+2025-07-06 02:36:00,131 - __main__ - INFO - Installing dependencies...
+2025-07-06 02:36:04,117 - __main__ - INFO - Installed: requests>=2.31.0
+2025-07-06 02:36:09,259 - __main__ - INFO - Installed: psutil>=5.9.0
+2025-07-06 02:36:14,635 - __main__ - INFO - Installed: fastapi>=0.104.0
+2025-07-06 02:36:17,109 - __main__ - INFO - Installed: uvicorn>=0.24.0

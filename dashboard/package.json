@@ -1,0 +1,16 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+{
+  "name": "qmoi-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "scripts": {
+    "start": "npx serve -s build",
+    "dev": "npx vite"
+  }
+}

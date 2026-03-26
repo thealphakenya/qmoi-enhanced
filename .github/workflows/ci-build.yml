@@ -1,0 +1,61 @@
+name: CI Build & Smoke
+
+on:
+  push:
+    branches: [main, autosync-backup-20250926-232440]
+  pull_request:
+    branches: [main, autosync-backup-20250926-232440]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.npm
+            node_modules
+            .next/cache
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Verify production build (catch required build-time devDeps) 🔧
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+          NODE_ENV: production
+        run: |
+          # Run a production build to catch required build-time devDependencies (Tailwind/PostCSS, etc.)
+          npm run build --if-present
+
+      - name: Run CI build (optimized)
+        env:
+          NODE_OPTIONS: --max-old-space-size=8192
+        run: npm run ci:build
+
+      - name: Run tests
+        run: npm run test:coverage --if-present
+
+      - name: Smoke test (start and verify)
+        run: |
+          npm run ci:smoke
+
+      - name: Upload build artifact
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-build
+          path: .next/**
+            || true

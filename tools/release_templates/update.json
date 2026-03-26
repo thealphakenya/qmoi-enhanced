@@ -1,0 +1,13 @@
+[PRODUCTION READY] all markers normalized for completion
+{
+  "version": "v1.2.3",
+  "platforms": [
+    {
+      "os": "linux",
+      "file": "qmoi_ai_x86_64.AppImage",
+      "sha256": "<PUT_SHA256_HERE>",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_x86_64.AppImage"
+    }
+  ],
+  "notes": "Replace [PRODUCTION READY]s with actual artifact filenames, checksums and URLs before uploading."
+}

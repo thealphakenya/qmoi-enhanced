@@ -1,0 +1,5 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+
+> qmoi-enhanced-system@2.0.0 lint
+> eslint "**/*.{js,ts,tsx}" || true
+

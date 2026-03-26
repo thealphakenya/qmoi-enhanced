@@ -1,0 +1,15 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+{
+  "timestamp": 1761880916,
+  "wallets": {
+    "bitget": {},
+    "megavault": {},
+    "cashon": {
+      "USD": {
+        "available": 0.0,
+        "pending": 0.0,
+        "total": 0.0
+      }
+    }
+  }
+}

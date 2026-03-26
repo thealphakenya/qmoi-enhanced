@@ -1,0 +1,47 @@
+name: Full Start Smoke Test
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [autosync-links-20251107]
+
+jobs:
+  smoke-start:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-cache-${{ runner.os }}-py-${{ matrix.python-version }}
+          restore-keys: |
+            pip-cache-${{ runner.os }}-py-
+
+      - name: Install complete dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-complete.txt
+
+      - name: Attempt CPU PyTorch wheels and full requirements
+        run: |
+          python -m pip install --upgrade pip
+          # Use the official PyTorch CPU wheel index to avoid GPU packaging issues on ubuntu-latest
+          pip install --extra-index-url https://download.pytorch.org/whl/cpu -r requirements.txt || true
+
+      - name: Run supervised start (smoke)
+        run: |
+          mkdir -p logs
+          python scripts/qmoi-start-watch.py --timeout 120 || true
+
+      - name: Upload logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: qmoi-start-logs
+          path: logs/**

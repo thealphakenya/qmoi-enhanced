@@ -1,0 +1,378 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/@prisma/client/.prisma/client"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String   @id @default(cuid())
+  email             String   @unique
+  username          String   @unique
+  name              String?
+  avatar            String?
+  role              String   @default("user")
+  permissions       String   @default("[]") // JSON string array of permissions
+  biometricEnabled  Boolean  @default(false)
+  accountStatus     String   @default("active")
+  trustScore        Float    @default(0.5)
+  lastLogin         DateTime?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  discussions      Discussion[]
+  knowledgeEntries KnowledgeBaseEntry[]
+  notifications    Notification[]
+  news            News[]
+  wallets         Wallet[]
+  auditLogs       AuditLog[]
+  sessions        Session[]
+  paymentTransactions PaymentTransaction[]
+
+  @@map("users")
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  timestamp   DateTime @default(now())
+  userId      String
+  username    String
+  action      String
+  resource    String
+  details     String   // JSON string
+  ipAddress   String?
+  userAgent   String?
+  riskLevel   String   @default("low")
+  status      String   @default("success")
+  sessionId   String?
+
+  // Relations
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("audit_logs")
+}
+
+model Discussion {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  authorId    String
+  author      User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  replies     Int      @default(0)
+  views       Int      @default(0)
+  lastActivity DateTime @default(now())
+  tags        String   @default("[]") // JSON string array of tags
+  relevanceScore Float    @default(0.0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("discussions")
+}
+
+model KnowledgeBaseEntry {
+  id             String   @id @default(cuid())
+  title          String
+  content        String
+  authorId       String
+  author         User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  tags           String   @default("[]") // JSON string array of tags
+  relevanceScore Float    @default(0.0)
+  viewCount      Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@map("knowledge_base_entries")
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      String   // 'web', 'email', 'push'
+  event     String   // 'paper_update', 'kb_entry', 'discussion'
+  title     String
+  message   String
+  data      Json?    // Additional data
+  read      Boolean  @default(false)
+  sentAt    DateTime?
+  createdAt DateTime @default(now())
+
+  @@map("notifications")
+}
+
+model Dataset {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  type        String   // 'text', 'image', 'mixed', etc.
+  size        Int      // Size in bytes
+  itemCount   Int
+  status      String   @default("processing") // 'processing', 'ready', 'failed'
+  metadata    Json?    // Additional metadata
+  stats       Json?    // Processing statistics
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("datasets")
+}
+
+model MediaTask {
+  id          String   @id @default(cuid())
+  type        String   // 'image', 'video', 'audio'
+  status      String   @default("processing") // 'processing', 'completed', 'failed'
+  progress    Int      @default(0) // 0-100
+  result      Json?    // Result data (URL, metadata, etc.)
+  error       String?  // Error message if failed
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("media_tasks")
+}
+
+model News {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  summary     String?
+  category    String   @default("general")
+  status      String   @default("pending") // 'pending', 'approved', 'scheduled', 'published'
+  authorId    String?
+  author      User?    @relation(fields: [authorId], references: [id])
+  media       Json?   // JSON object array of media objects: [{type: 'image', url: '', alt: ''}, ...]
+  analytics   String   @default("{\"views\": 0, \"shares\": 0, \"engagement\": 0}") // JSON string analytics data
+  scheduledAt DateTime?
+  publishedAt DateTime?
+  tags        String   @default("[]") // JSON string array of tags
+  source      String?  // Source of the news (RSS, API, manual, etc.)
+  externalId  String?  // External ID for aggregated news
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("news")
+}
+
+model Wallet {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  balance     Float    @default(0.0)
+  currency    String   @default("KES")
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  transactions Transaction[]
+
+  @@map("wallets")
+}
+
+model Transaction {
+  id            String   @id @default(cuid())
+  walletId      String
+  wallet        Wallet   @relation(fields: [walletId], references: [id], onDelete: Cascade)
+  type          String   // 'deposit', 'withdraw', 'transfer'
+  amount        Float
+  currency      String   @default("KES")
+  platform      String   // 'Mpesa', 'Binance', 'PesaPal', 'Bitget'
+  status        String   @default("pending") // 'pending', 'processing', 'completed', 'failed'
+  transactionId String?  // External transaction ID
+  description   String?
+  metadata      Json?    // Additional transaction data
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("transactions")
+}
+model Track {
+  id           String   @id @default(cuid())
+  type         String
+  title        String
+  summary      String
+  details      String?
+  status       String   @default("pending")
+  priority     String   @default("medium")
+  report       String?
+  precisionTime DateTime @default(now())
+  links        Json?    // Array of strings
+  source       String   @default("qvillage")
+  metadata     Json?    // Additional metadata
+  isPrivate    Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("tracks")
+}
+
+model UserPreference {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  theme       String   @default("light")
+  language    String   @default("en")
+  notifications Boolean @default(true)
+  riskTolerance String   @default("medium")
+  metadata    Json?    // additional preference fields
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([userId])
+  @@map("user_preferences")
+}
+
+model LearningGoal {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  goal        String
+  progress    Float    @default(0.0)
+  status      String   @default("active")
+  dueDate     DateTime?
+  metadata    Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("learning_goals")
+}
+
+model ZeroRatedSite {
+  id                String   @id @default(cuid())
+  name              String
+  domain            String   @unique
+  urls              Json     // Array of strings
+  category          String
+  description       String?
+  isActive          Boolean  @default(true)
+  globalAccess      Boolean  @default(false)
+  continents        Json     // Array of strings
+  countries         Json     // Array of strings
+  regions           Json     // Array of strings
+  cdnProviders      Json     // Array of strings
+  ispPartners       Json     // Array of partnership objects
+  blockchainEnabled Boolean  @default(false)
+  tokenGated        Boolean  @default(false)
+  accessTokens      Json     // Array of strings
+  bandwidthLimit    Int      @default(10) // GB per user per month
+  concurrentUsers   Int      @default(1000)
+  cdnConfig         Json?    // CDN configuration object
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("zero_rated_sites")
+}
+
+model Link {
+  id                    String   @id @default(cuid())
+  url                   String   @unique
+  title                 String
+  description           String?
+  category              String
+  tags                  Json     // Array of strings
+  isZeroRated           Boolean  @default(false)
+  isVerified            Boolean  @default(false)
+  isGloballyAccessible  Boolean  @default(false)
+  domain                String
+  platform              String?
+  status                String   @default("active") // 'active', 'inactive', 'blocked', 'pending'
+  lastChecked           DateTime @default(now())
+  lastGlobalCheck       DateTime?
+  responseTime          Int?
+  globalHealthStatus    Json?    // Object with continent health status
+  cdnEndpoints          Json?    // Array of CDN endpoint URLs
+  mirrorSites           Json?    // Array of mirror site URLs
+  responseTimes         Json?    // Object with region response times
+  uptimeHistory         Json?    // Object with region uptime history
+  metadata              Json?    // Additional metadata
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  @@map("links")
+}
+
+model Domain {
+  id            String   @id @default(cuid())
+  name          String   @unique
+  category      String
+  isZeroRated   Boolean  @default(false)
+  trustScore    Float    @default(50.0) // 0-100
+  lastAudited   DateTime @default(now())
+  certificates  Json     // Array of certificate strings
+  subdomains    Json     // Array of subdomain strings
+  metadata      Json?    // Additional metadata
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("domains")
+}
+
+model Platform {
+  id                String   @id @default(cuid())
+  name              String   @unique
+  category          String
+  baseUrl           String
+  apiEndpoints      Json     // Array of API endpoint strings
+  isZeroRated       Boolean  @default(false)
+  trustScore        Float    @default(50.0) // 0-100
+  supportedFeatures Json     // Array of supported feature strings
+  rateLimits        Json?    // Rate limiting configuration
+  metadata          Json?    // Additional metadata
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("platforms")
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userAgent String?
+  ipAddress String?
+  expiresAt DateTime
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("sessions")
+}
+
+model PaymentTransaction {
+  id                   String   @id @default(cuid())
+  userId               String
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amount               Float
+  currency             String   @default("USD")
+  method               String   // 'card', 'bank_transfer', 'crypto', 'paypal'
+  status               String   @default("pending") // 'pending', 'processing', 'completed', 'failed', 'refunded'
+  provider             String   @default("stripe") // 'stripe', 'paypal', 'crypto'
+  providerTransactionId String?
+  description          String?
+  reference            String?
+  metadata             Json?
+  refundedAmount       Float    @default(0)
+  refundReason         String?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  @@map("payment_transactions")
+}
+
+model Setting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("settings")
+}

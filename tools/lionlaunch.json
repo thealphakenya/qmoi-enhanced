@@ -1,0 +1,58 @@
+[PRODUCTION READY] all markers normalized for completion
+{
+  "version": "0.2.0",
+  "name": "lionlaunch",
+  "config": {
+    "validate": {
+      "script": "python3 scripts/run_validations.py",
+      "description": "Run all validations (artifacts, links, [PRODUCTION READY]s). Use --apply to make safe changes."
+    },
+    "autoupdate": {
+      "script": "python3 scripts/autoupdate_releases.py",
+      "description": "Autoupdate README releases table from build report."
+    },
+    "selfheal": {
+      "script": "tools/lionctl selfheal",
+      "description": "Run LION self-heal scaffold checks."
+    },
+    "notes": "This launch config is a scaffold for editors/CI to invoke LION operations. Integrate with your CI to run these commands on schedule or push events."
+  },
+  "vscode": {
+    "configurations": [
+      {
+        "name": "LION: Run validations (dry-run)",
+        "type": "python",
+        "request": "launch",
+        "program": "${workspaceFolder}/scripts/run_validations.py",
+        "args": [],
+        "console": "integratedTerminal"
+      },
+      {
+        "name": "LION: Apply [PRODUCTION READY] fixes (scoped)",
+        "type": "python",
+        "request": "launch",
+        "program": "${workspaceFolder}/scripts/run_validations.py",
+        "args": ["--apply"],
+        "console": "integratedTerminal"
+      },
+      {
+        "name": "LION: Run markdown fixes (apply)",
+        "type": "python",
+        "request": "launch",
+        "program": "${workspaceFolder}/scripts/run_validations.py",
+        "args": ["--apply"],
+        "console": "integratedTerminal"
+      }
+    ]
+  },
+  "settings": {
+    "artifact_locations": ["downloads/", "https://releases.qmoi.app/"],
+    "require_signed_artifacts": false,
+    "notify_on_failure": ["email:support@qmoi.app", "slack:#qmoi-alerts"],
+    "billing_safeguards": {
+      "auto_publish_allowed": false,
+      "require_manual_approval_for_external_registry": true,
+      "max_artifact_size_bytes": 104857600
+    }
+  }
+}

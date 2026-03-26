@@ -1,0 +1,1708 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+{
+  "lastHealthCheck": {
+    "timestamp": "2026-01-22T06:54:11.716Z",
+    "checks": [
+      {
+        "name": "API Health",
+        "status": "failed",
+        "error": "Request timeout"
+      },
+      {
+        "name": "Database",
+        "status": "warning",
+        "error": "DATABASE_URL not configured"
+      },
+      {
+        "name": "Memory Usage",
+        "status": "warning",
+        "details": {
+          "heapUsedPercent": "86.27",
+          "heapUsed": "8.07 MB",
+          "heapTotal": "9.36 MB"
+        },
+        "error": "High memory usage: 86.27%"
+      },
+      {
+        "name": "Disk Space",
+        "status": "healthy",
+        "details": {
+          "usedPercent": "35%",
+          "raw": "overlay          32G   11G   20G  35% /"
+        },
+        "error": null
+      },
+      {
+        "name": "Processes",
+        "status": "healthy",
+        "details": {
+          "processCount": 58
+        },
+        "error": null
+      },
+      {
+        "name": "File System",
+        "status": "failed",
+        "details": {
+          "critical_files_ok": 3,
+          "critical_files_total": 4
+        },
+        "error": "included files: ecosystem.config.js"
+      },
+      {
+        "name": "External Dependencies",
+        "status": "warning",
+        "details": {
+          "configured": 0,
+          "total": 3
+        },
+        "error": "included env: DATABASE_URL, JWT_SECRET, APP_URL"
+      }
+    ],
+    "status": "unhealthy",
+    "issues": [
+      {
+        "check": "API Health",
+        "error": "Request timeout",
+        "timestamp": "2026-01-22T06:54:11.716Z"
+      },
+      {
+        "check": "File System",
+        "error": "included files: ecosystem.config.js",
+        "timestamp": "2026-01-22T06:54:11.716Z"
+      }
+    ],
+    "duration": 10233
+  },
+  "successfulRecoveries": [
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-21T20:41:05.205Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-21T20:41:40.594Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-21T20:42:11.146Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-21T20:42:40.659Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:43:15.720Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:43:45.837Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:44:15.406Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:44:45.404Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:45:15.408Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:45:45.401Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:46:15.431Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:46:45.411Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:47:15.403Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:47:45.401Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:48:15.418Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:48:45.397Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:49:15.408Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:49:45.404Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:50:15.406Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:50:45.403Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:51:15.407Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:51:45.406Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:52:15.406Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:52:45.407Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:53:15.407Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:53:45.420Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:54:15.417Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:54:45.412Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:55:15.413Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:55:45.407Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:56:15.407Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:56:45.415Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:57:15.422Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:57:45.416Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:58:15.411Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:58:45.412Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:59:15.414Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T20:59:45.436Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:00:15.413Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:00:45.407Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:01:15.413Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:01:45.411Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:02:15.415Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:02:45.415Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:03:15.414Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:03:45.419Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:04:15.563Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:04:45.432Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:05:15.417Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:05:45.427Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:06:15.424Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:06:45.422Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:07:15.614Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:07:45.428Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:08:15.554Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:08:45.502Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:09:15.427Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:09:45.431Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:10:15.425Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:10:45.436Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:11:15.429Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:11:45.440Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:12:15.443Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:12:45.431Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:13:15.450Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:13:45.435Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:14:15.456Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:14:45.434Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:15:15.438Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:15:45.434Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:16:15.431Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:16:45.429Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:17:15.452Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:17:45.435Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:18:15.439Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:18:45.431Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:19:15.430Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:19:45.438Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:20:15.431Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:20:45.435Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:21:15.454Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:21:45.435Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:22:15.439Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:22:45.442Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:23:15.447Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:23:45.437Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:24:15.439Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:24:45.462Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:25:15.438Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:25:45.446Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:26:15.435Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:26:45.465Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:27:15.440Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:27:45.442Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:28:15.439Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:28:45.440Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:29:15.440Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:29:45.440Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:30:15.439Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:30:45.447Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:31:15.443Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:31:45.446Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:32:15.452Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:32:45.456Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:33:15.443Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:33:45.447Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:34:15.444Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:34:45.448Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:35:15.453Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:35:45.450Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:36:15.455Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:36:45.449Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:37:15.455Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:37:45.450Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:38:15.453Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:38:45.452Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:39:15.454Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:39:45.452Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:40:15.452Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:40:45.453Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:41:15.456Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:41:45.451Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:42:15.459Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:42:45.454Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:43:15.457Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:43:45.466Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:44:15.460Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:44:45.468Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:45:15.463Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:45:45.468Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:46:15.456Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:46:45.464Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:47:15.463Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:47:45.469Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:48:15.467Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:48:45.463Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:49:15.464Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:49:45.467Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:50:15.462Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:50:45.462Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:51:15.464Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-21T21:51:45.465Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T04:38:49.788Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T05:32:53.996Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T05:33:29.193Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:35:03.176Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:35:38.442Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:36:08.508Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:36:38.555Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:37:08.610Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:37:38.620Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:38:08.659Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:38:38.735Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:39:08.787Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:39:38.824Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:40:08.868Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:40:38.883Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:41:08.862Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:41:38.927Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:42:09.020Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:42:38.940Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:43:08.972Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:43:39.024Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:44:09.261Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:44:39.201Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:45:09.159Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:45:39.190Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:46:09.361Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:46:39.325Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:47:09.421Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:47:39.440Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:48:09.480Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:48:39.412Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:49:09.449Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:49:39.573Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:50:09.705Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:50:41.389Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:51:10.354Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:51:39.986Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:52:09.965Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:52:39.943Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:53:11.862Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:53:41.139Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Status 500",
+      "timestamp": "2026-01-22T05:54:11.120Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T05:54:31.718Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T05:55:06.952Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T05:55:36.971Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T05:56:06.989Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T05:56:37.007Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T05:57:07.031Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T05:57:37.035Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T05:58:07.064Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T05:58:37.074Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T05:59:07.218Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T05:59:37.118Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:00:07.138Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:00:37.164Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:01:07.178Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:01:37.198Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:02:07.210Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:02:37.256Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:03:07.240Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:03:37.270Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:04:07.277Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:04:37.290Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:05:07.316Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:05:37.338Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:06:07.372Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:06:37.391Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:07:07.399Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:07:37.428Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:08:07.465Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:08:37.476Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:09:07.501Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:09:37.507Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:10:07.538Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:10:37.558Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:11:07.586Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:11:37.617Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:12:07.635Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:12:37.660Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:13:07.680Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:13:37.700Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:14:07.729Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:14:37.757Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:15:07.826Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:15:37.819Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:16:08.045Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:16:37.863Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:17:07.872Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:17:37.901Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:18:07.897Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:18:37.928Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:19:07.938Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:20:15.174Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:20:50.365Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:21:20.363Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:21:50.370Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:22:20.369Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:22:50.366Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:23:20.365Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:23:50.368Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:24:20.366Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:24:50.369Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:25:20.373Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:25:50.368Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:26:20.370Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:26:50.375Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:27:20.372Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:27:50.375Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:28:20.369Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:28:50.375Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:29:20.393Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:29:50.382Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:30:20.367Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:30:50.380Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:31:20.382Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:31:50.597Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:32:20.373Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:32:37.372Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:33:12.566Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:33:43.384Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:34:18.571Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:34:41.692Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:35:21.901Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:35:51.920Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:36:21.937Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:36:51.908Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:37:21.956Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:37:51.951Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:38:21.995Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:38:51.929Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:39:21.932Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:39:51.998Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:40:21.926Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:40:51.936Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:41:21.966Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:41:51.974Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:42:22.035Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:42:51.963Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:43:21.960Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:43:51.924Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:44:21.926Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:socket hang up",
+      "timestamp": "2026-01-22T06:44:47.095Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:45:16.896Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:45:46.894Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:46:16.895Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:46:46.917Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:connect ECONNREFUSED ::1:3000",
+      "timestamp": "2026-01-22T06:47:16.964Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:47:51.934Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:48:21.965Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:48:51.931Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:49:21.983Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:49:51.976Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:50:21.953Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:50:51.974Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:51:21.956Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:51:51.937Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:52:21.946Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:52:51.946Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:53:21.946Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:53:51.976Z",
+      "attempt": 1
+    },
+    {
+      "issue": "API Health:Request timeout",
+      "timestamp": "2026-01-22T06:54:21.948Z",
+      "attempt": 1
+    }
+  ],
+  "failedRecoveries": [
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-21T20:41:05.205Z",
+      "attempt": 1
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-21T20:41:40.595Z",
+      "attempt": 2
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-21T20:42:11.148Z",
+      "attempt": 3
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-22T04:38:49.788Z",
+      "attempt": 1
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-22T05:32:53.996Z",
+      "attempt": 1
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-22T05:33:29.194Z",
+      "attempt": 2
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-22T05:35:03.176Z",
+      "attempt": 1
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-22T05:35:38.442Z",
+      "attempt": 2
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-22T05:36:08.508Z",
+      "attempt": 3
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-22T05:54:31.718Z",
+      "attempt": 1
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-22T05:55:06.952Z",
+      "attempt": 2
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-22T05:55:36.971Z",
+      "attempt": 3
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-22T06:20:15.174Z",
+      "attempt": 1
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-22T06:20:50.365Z",
+      "attempt": 2
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-22T06:21:20.363Z",
+      "attempt": 3
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-22T06:32:37.372Z",
+      "attempt": 1
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-22T06:33:12.566Z",
+      "attempt": 2
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-22T06:33:43.384Z",
+      "attempt": 1
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-22T06:34:18.572Z",
+      "attempt": 2
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-22T06:34:41.692Z",
+      "attempt": 1
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-22T06:35:21.902Z",
+      "attempt": 2
+    },
+    {
+      "issue": "File System:included files: ecosystem.config.js",
+      "timestamp": "2026-01-22T06:35:51.920Z",
+      "attempt": 3
+    }
+  ],
+  "issues": [],
+  "timestamp": "2026-01-21T20:40:59.885Z"
+}

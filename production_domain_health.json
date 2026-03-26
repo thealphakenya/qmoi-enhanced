@@ -1,0 +1,147 @@
+{
+  "total_domains": 13,
+  "healthy_domains": 5,
+  "unhealthy_domains": 8,
+  "details": {
+    "qmoi.ai": {
+      "domain": "qmoi.ai",
+      "healthy": false,
+      "dns_resolves": false,
+      "http_accessible": false,
+      "ssl_valid": false,
+      "response_time_ms": null,
+      "errors": [
+        "DNS resolution failed: [Errno -2] Name does not resolve"
+      ]
+    },
+    "qvillage.com": {
+      "domain": "qvillage.com",
+      "healthy": true,
+      "dns_resolves": true,
+      "http_accessible": true,
+      "ssl_valid": true,
+      "response_time_ms": 68.33,
+      "errors": []
+    },
+    "alphaq.ai": {
+      "domain": "alphaq.ai",
+      "healthy": true,
+      "dns_resolves": true,
+      "http_accessible": true,
+      "ssl_valid": true,
+      "response_time_ms": 21.83,
+      "errors": []
+    },
+    "qcity.qmoi.ai": {
+      "domain": "qcity.qmoi.ai",
+      "healthy": false,
+      "dns_resolves": false,
+      "http_accessible": false,
+      "ssl_valid": false,
+      "response_time_ms": null,
+      "errors": [
+        "DNS resolution failed: [Errno -2] Name does not resolve"
+      ]
+    },
+    "qmoi-space.qmoi.ai": {
+      "domain": "qmoi-space.qmoi.ai",
+      "healthy": false,
+      "dns_resolves": false,
+      "http_accessible": false,
+      "ssl_valid": false,
+      "response_time_ms": null,
+      "errors": [
+        "DNS resolution failed: [Errno -2] Name does not resolve"
+      ]
+    },
+    "yap.qmoi.ai": {
+      "domain": "yap.qmoi.ai",
+      "healthy": false,
+      "dns_resolves": false,
+      "http_accessible": false,
+      "ssl_valid": false,
+      "response_time_ms": null,
+      "errors": [
+        "DNS resolution failed: [Errno -2] Name does not resolve"
+      ]
+    },
+    "q-stable.qmoi.ai": {
+      "domain": "q-stable.qmoi.ai",
+      "healthy": false,
+      "dns_resolves": false,
+      "http_accessible": false,
+      "ssl_valid": false,
+      "response_time_ms": null,
+      "errors": [
+        "DNS resolution failed: [Errno -2] Name does not resolve"
+      ]
+    },
+    "qvillage.net": {
+      "domain": "qvillage.net",
+      "healthy": false,
+      "dns_resolves": true,
+      "http_accessible": false,
+      "ssl_valid": true,
+      "response_time_ms": null,
+      "errors": [
+        "HTTP connection failed: HTTP Error 404: Not Found"
+      ]
+    },
+    "qvillage.org": {
+      "domain": "qvillage.org",
+      "healthy": false,
+      "dns_resolves": false,
+      "http_accessible": false,
+      "ssl_valid": false,
+      "response_time_ms": null,
+      "errors": [
+        "DNS resolution failed: [Errno -2] Name does not resolve"
+      ]
+    },
+    "qglobal.org": {
+      "domain": "qglobal.org",
+      "healthy": true,
+      "dns_resolves": true,
+      "http_accessible": true,
+      "ssl_valid": true,
+      "response_time_ms": 24.67,
+      "errors": []
+    },
+    "qparallel.dev": {
+      "domain": "qparallel.dev",
+      "healthy": false,
+      "dns_resolves": false,
+      "http_accessible": false,
+      "ssl_valid": false,
+      "response_time_ms": null,
+      "errors": [
+        "DNS resolution failed: [Errno -2] Name does not resolve"
+      ]
+    },
+    "qshare.qvillage.com": {
+      "domain": "qshare.qvillage.com",
+      "healthy": true,
+      "dns_resolves": true,
+      "http_accessible": true,
+      "ssl_valid": false,
+      "response_time_ms": 12.96,
+      "errors": [
+        "HTTP connection failed: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)>",
+        "SSL check failed: [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)"
+      ]
+    },
+    "qstore.qvillage.com": {
+      "domain": "qstore.qvillage.com",
+      "healthy": true,
+      "dns_resolves": true,
+      "http_accessible": true,
+      "ssl_valid": false,
+      "response_time_ms": 31.48,
+      "errors": [
+        "HTTP connection failed: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)>",
+        "SSL check failed: [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)"
+      ]
+    }
+  },
+  "timestamp": "2026-03-21T23:23:59.782403"
+}

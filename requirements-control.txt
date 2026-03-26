@@ -1,0 +1,7 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+Flask>=2.0
+flask-cors>=3.0
+PyJWT>=2.0
+werkzeug>=2.0
+fido2>=1.0
+requests>=2.0

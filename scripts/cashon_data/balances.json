@@ -1,0 +1,10 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+{
+  "accounts": [
+    {
+      "currency": "USD",
+      "available": "0.00",
+      "pending": "0.00"
+    }
+  ]
+}

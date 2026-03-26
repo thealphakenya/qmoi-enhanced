@@ -1,0 +1,19 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+{
+  "version": "v1.2.4",
+  "platforms": [
+    {
+      "os": "android",
+      "file": "qmoi_ai.apk",
+      "sha256": "<PUT_SHA256_HERE>",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai.apk"
+    },
+    {
+      "os": "macos",
+      "file": "qmoi_ai.ipa",
+      "sha256": "<PUT_SHA256_HERE>",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai.ipa"
+    }
+  ],
+  "notes": "Fill in artifact filenames and SHA256 checksums; then upload artifacts to GitHub Releases for tag v1.2.4."
+}

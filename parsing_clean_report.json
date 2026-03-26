@@ -1,0 +1,623 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+{
+  "cleaned": [
+    "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/earnvault/ui/FinancialManager.tsx",
+    "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/qmoi-emergency-fix.js",
+    "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/qmoi-enhanced-doc-verifier.js",
+    "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/qmoi_huggingface_spaces.js",
+    "/workspaces/qmoi-enhanced/earnvault/ui/FinancialManager.tsx",
+    "/workspaces/qmoi-enhanced/scripts/qmoi-emergency-fix.js",
+    "/workspaces/qmoi-enhanced/scripts/qmoi-enhanced-doc-verifier.js",
+    "/workspaces/qmoi-enhanced/scripts/qmoi_huggingface_spaces.js"
+  ],
+  "skipped": [
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-preview/route.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/_app_archived/layout.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/components/DownloadQApp.tsx",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/components/advanced_ui_&_parallel_processing_features_(2025_01_22).tsx",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/components/components/qmedia_player.md.tsx",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/components/media_&_ui_features_(2024_06_09).tsx",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/components/real_time_status_dashboard_with_universal_language_support.tsx",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/components/scripts/enhanced_build.py.tsx",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/components/\uf8ff\u00fc\u00f5\u00b0\u00f4\u220f\u00e8_automated_build,_install,_and_error_fix_strategies.tsx",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/dashboard/src/index.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/huggingface_space/app.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/huggingface_space/dashboard.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/mobile/App.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/mobile/components/AlertSettingsScreen.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/mobile/components/AnalyticsScreen.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/mobile/components/DeviceManagementScreen.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/mobile/components/NotificationScreen.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/demo-automation.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/deploy_huggingface.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/gitlab-automation.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/gitlab-notification-service.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/lint-watcher.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/qcity-device-manager.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/qmoi-auto-enhancement-system.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/qmoi-enhanced-avatar-system.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/qmoi-environment-setup.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/qmoi-master-system.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/qmoi-mobile-auto-selfheal.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/qmoi-music-production-system.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/qmoi-revenue-enforcer.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/qmoi_env_manager.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/qmoi_master_website_automation.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/qmoi_payment_fix.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/qmoi_self_test_runner.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/src/App.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/src/components/q-city/QMoiKernelPanel.tsx",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/src/hooks/useQmoiKernel.test.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/src/index.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/src/plugins/AIReviewPlugin.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/src/plugins/DeviceHealthReviewerPlugin.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/src/plugins/OptimizationSuggestionPlugin.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/src/plugins/QuickAIWidgetPlugin.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/src/services/VoiceRecognitionService.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/src/setupTests.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/tests/unit/test_accessibility.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/ai-health/route.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/auth/login/route.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/auth/register.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/auth/totp.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/auto-fix.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/git/branch/route.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/git/remote/route.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/health/route.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/middleware/roleAuth.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/qi-trading/route.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/qmoi-model.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/qmoi/auto-fix/download-report/route.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/qmoi/auto-fix/status/route.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/qmoi/chat/route.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/qmoi/revenue-dashboard/route.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/qmoi/voice-preview/route.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/qnews/route.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/qradio/route.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/qvillage/route.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/wallets/route.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/webhooks/qvillage/route.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/api/wifi-security.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/app/page.tsx",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/components/Chatbot.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/components/FileExplorer.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/components/GitStatus.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/components/stable-q-ai-system.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/components/scripts/enhanced_build.py.tsx",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/dashboard/src/index.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/hooks/useQMOIAutoInteraction.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/huggingface_space/app.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/huggingface_space/dashboard.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/1._universal_language_runtime_(`qmoi_universal_runtime.py`).ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/25+_programming_languages.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/5._functional_programming_languages.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/8._emerging_languages.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/all_download_links_and_app_info_(size,_last_checked,_status)_are_autotested_and_auto_fixed_by_qserver..ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/apps,_devices_&_platforms.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/avatar,_ai_core_&_server.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/cross_language_integration.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/developer_&_parallelization.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/download_&_distribution.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/free,_hands_free_&_accessibility.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/friendship_&_user_experience.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/independentqmoi.md.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/mac_(apple_laptop).ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/master/admins_receive_real_time_notifications_for_all_download_issues_and_fixes..ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/memory,_reasoning_&_learning_(2024_06_09).ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/push.txt.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/qcity_&_runners.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/qcityreadme.md.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/qcityrunnersengine.md.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/qmoi-revenue-engine.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/qmoi_friendship_system_integration.md.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/qmoialldeviceshandsfree.md.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/qmoiautoevolve.md.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/qmoiautomakenew.md.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/qmoiavatar.md.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/qmoibrowser.md.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/qmoiclone.md.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/qmoidev.md.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/qmoifree.md.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/qmoimemory.md.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/qmoingrok.md.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/qmoiqcityautomatic.md.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/qserverreadme.md.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/qvs/qvsreadme.md.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/revenue_&_business.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/troubleshooting_&_help.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/watchdebug.md.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/wpa.md.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/\u00f0\u00ff\u201c\u017e_support_&_contact.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/\u00f0\u00ff\u201d\u00a7_enhanced_environment_management_system.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/\uf8ff\u00fc\u00e9\u00ae_icon_&_notification_customization.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/\uf8ff\u00fc\u00ec\u00f6_dated_&_categorized_documentation_(auto_updating).ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/\uf8ff\u00fc\u00f5\u2020\u00f4\u220f\u00e8_auto_updating_&_permanent_documentation.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/\uf8ff\u00fc\u00f6\u00e4_enhanced_features_&_capabilities.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/lib/\uf8ff\u00fc\u00f6\u00e4_universal_device_installation_&_optimization.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/mobile/App.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/mobile/components/AlertSettingsScreen.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/mobile/components/AnalyticsScreen.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/mobile/components/DeviceManagementScreen.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/mobile/components/NotificationScreen.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/pwa_apps/qmoi-ai/sw.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/scripts/demo-automation.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/scripts/deploy_huggingface.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/scripts/gitlab-automation.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/scripts/gitlab-notification-service.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/scripts/qcity-device-manager.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/scripts/qmoi-auto-enhancement-system.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/scripts/qmoi-enhanced-avatar-system.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/scripts/qmoi-master-system.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/scripts/qmoi-mobile-auto-selfheal.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/scripts/qmoi-revenue-enforcer.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/scripts/qmoi_doc_verifier.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/scripts/qmoi_env_manager.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/scripts/qmoi_master_website_automation.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/scripts/qmoi_payment_fix.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/scripts/qmoi_self_test_runner.js",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/src/components/@vercel/analytics/next.tsx",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/src/components/theme-provider.tsx",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/src/config/bitget.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/src/services/EnhancedRevenueAutomationService.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/src/services/EnhancedSiteGenerationService.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/src/services/WhatsAppService.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/src/services/qmoiSession.ts",
+      "reason": "no-change"
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/src/setupTests.ts",
+      "reason": "no-change"
+    }
+  ]
+}

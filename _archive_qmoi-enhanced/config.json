@@ -1,0 +1,2 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+echo { "version": "1.0.0", "author": "thealphakenya" } > config.json

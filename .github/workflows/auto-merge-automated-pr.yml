@@ -1,0 +1,28 @@
+name: Auto-merge automated proposals
+
+on:
+  pull_request_target:
+    types: [opened, edited, reopened, synchronize]
+
+jobs:
+  enable-auto-merge:
+    runs-on: ubuntu-latest
+    if: startsWith(github.event.pull_request.head.ref, 'automated/') || startsWith(github.event.pull_request.head.ref, 'auto/')
+    steps:
+      - name: Enable auto-merge via GraphQL
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          echo "Querying pull request node id..."
+          QUERY='{"query":"query($owner:String!, $name:String!, $number:Int!){ repository(owner:$owner,name:$name){ pullRequest(number:$number){ id } } }","variables":{"owner":"'"${REPO%%/*}"'","name":"'"${REPO##*/}"'","number":'"$PR_NUMBER"'}}'
+          NODE_ID=$(curl -s -H "Authorization: bearer $GITHUB_TOKEN" -X POST -d "$QUERY" https://api.github.com/graphql | jq -r '.data.repository.pullRequest.id')
+          if [ "$NODE_ID" = "null" ] || [ -z "$NODE_ID" ]; then
+            echo "Could not find PR node id; aborting auto-merge enable step."; exit 0
+          fi
+          echo "Enabling auto-merge for PR $PR_NUMBER (node: $NODE_ID)"
+          MUTATION='{"query":"mutation($id:ID!){enablePullRequestAutoMerge(input:{ pullRequestId:$id, mergeMethod:MERGE }) { clientMutationId }}','"variables":{"id":"'"$NODE_ID"'"}}'
+          # Use GraphQL to enable auto-merge
+          RESP=$(curl -s -H "Authorization: bearer $GITHUB_TOKEN" -X POST -d "$MUTATION" https://api.github.com/graphql)
+          echo "$RESP"

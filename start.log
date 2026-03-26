@@ -1,0 +1,7 @@
+nohup: ignoring input
+127.0.0.1 - - [25/Dec/2025 08:36:50] "GET /health HTTP/1.1" 200 -
+ * Tip: There are .env files present. Install python-dotenv to use them.
+ * Serving Flask app 'qmoi_local_server'
+ * Debug mode: off
+Address already in use
+Port 8081 is in use by another program. Either identify and stop that program, or start the server with a different port.

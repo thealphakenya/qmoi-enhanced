@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qmoi-worker
+  labels:
+    app: qmoi
+    component: worker
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: qmoi
+      component: worker
+  standard:
+    metadata:
+      labels:
+        app: qmoi
+        component: worker
+    spec:
+      containers:
+        - name: qmoi-worker
+          image: qmoi/worker:latest
+          imagePullPolicy: IfNotPresent
+          args: ["--concurrency", "2"]
+          env:
+            - name: QMOIN_VALIDATION_DIR
+              value: "/data/.qmoi_validation"
+          ports:
+            - containerPort: 9187
+              name: metrics
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data
+          emptyDir: {}

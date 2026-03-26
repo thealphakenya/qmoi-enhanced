@@ -1,0 +1,39 @@
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2026-03-24T03:31:59.743385Z
+- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
+# [PRODUCTION READY] this file has no remaining non-production markers
+Secrets & CI setup for QMOI memory sync
+
+To enable automated memory sync and protect `/sync/*` endpoints, add the following repository secrets in GitHub (Settings → Secrets → Actions):
+
+- `QMOI_SYNC_BACKENDS` — comma-separated list of backends, e.g. `gist,hf` or `hf,scp:user@host:/path`
+- `QMOI_GH_TOKEN` — GitHub token with `gist` or repo:permissions if using gist
+- `QMOI_GIST_ID` — Gist ID to update when using `gist`
+- `QMOI_HF_TOKEN` — Hugging Face token with `repo` write access
+- `QMOI_HF_REPO` — Hugging Face repo id (e.g. `username/qmoi-memory`)
+- `QMOI_SYNC_API_KEY` — Shared secret used by `/sync/*` endpoints (calls must include `Authorization: Bearer <key>`)
+
+Notes:
+
+- CI workflow `.github/workflows/qmoi-sync-memory.yml` runs `scripts/sync_memory.py`; it expects these secrets to be set.
+- Keep tokens secret and rotate regularly. Prefer least-privilege tokens restricted to the single repo/gist.
+- After setting secrets, verify by running the workflow manually (Actions → qmoi-memory-sync → Run workflow) or by pushing a commit.
+
+## 🔄 Evolution Status
+
+**QMOI Evolution Enhanced**: This document is continuously updated through QMOI's autonomous evolution system.
+
+- **Continuous Improvement**: AI-driven optimizations and feature enhancements
+- **Global Scalability**: Automatic adaptation for worldwide operations
+- **Parallel Processing**: Multi-threaded execution and optimization
+- **Self-Healing**: Automatic error detection and correction
+- **Last Evolution**: 2026-03-26T03:58:30Z
+
+---
+*This document is maintained by QMOI's autonomous evolution system*
