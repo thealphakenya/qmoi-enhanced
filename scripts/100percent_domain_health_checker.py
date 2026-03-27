@@ -34,13 +34,13 @@ def main():
         health_status = achiever.perform_100percent_health_check(domain)
         results.append(health_status)
 
-        if health_status.get('overall_healthy', False):
+        if health_status['overall_healthy']:
             healthy_count += 1
             print(f"✅ {domain}: 100% HEALTHY")
         else:
-            percentage = health_status.get('health_percentage', 0.0)
+            percentage = health_status['health_percentage']
             print(f"⚠️  {domain}: {percentage:.1f}% HEALTHY")
-            for issue in health_status.get('issues', []):
+            for issue in health_status['issues']:
                 print(f"   • {issue}")
 
     # Summary

@@ -140,8 +140,7 @@ class DomainHealth100PercentAchiever:
             with socket.create_connection((domain, 443), timeout=10) as sock:
                 with context.wrap_socket(sock, server_hostname=domain) as ssock:
                     cert = ssock.getpeercert()
-                    # Check certificate validity
-                    ssl.match_hostname(cert, domain)
+                    # Hostname matching is done automatically with check_hostname=True
 
                     # Check expiration
                     import datetime
@@ -227,7 +226,11 @@ class DomainHealth100PercentAchiever:
             health_status['issues'].append(f"DNS: {dns_info}")
 
         if not dns_ok:
-            return health_status  # Can't continue without DNS
+            # Still calculate health percentage even if DNS fails
+            health_percentage = (health_status['score'] / health_status['max_score']) * 100
+            health_status['health_percentage'] = health_percentage
+            health_status['overall_healthy'] = False  # Can't be 100% healthy without DNS
+            return health_status
 
         # 2. SSL Certificate (20 points)
         ssl_ok, ssl_info = self.check_ssl_certificate(domain)

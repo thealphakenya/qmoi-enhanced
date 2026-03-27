@@ -12,20 +12,18 @@
 
 ## Component and UI File Inventory
 
+# UI Inventory and Component Usage
+
+## Component and UI File Inventory
+
 ### Components Directory
 
 - components/AccountabilitySystem.tsx
 - components/AIContext.tsx
-- components/stable-q-ai-system.js
-- components/stable-q-ai-system.tsx
-- components/analytics/AnalyticsCharts.tsx
-- components/analytics/EncryptedAuditLog.tsx
 - components/AnimationControlPanel.tsx
 - components/AppManager.tsx
 - components/AskQMoi.tsx
 - components/AudioVisualizer.tsx
-- components/auth/BiometricAuth.tsx
-- components/automation/AutomationRulesPanel.tsx
 - components/AvatarGalleryPanel.tsx
 - components/AvatarSelectionPanel.tsx
 - components/BiometricAuth.tsx
@@ -36,18 +34,94 @@
 - components/Chatbot.js
 - components/Chatbot.tsx
 - components/ComponentGallery.tsx
-- components/components/qmedia_player.md.tsx
 - components/DealsList.tsx
 - components/DealsPopup.tsx
 - components/DeploymentStatusDashboard.tsx
-- components/device/AWSCredentialsModal.tsx
-- components/device/AzureCredentialsModal.tsx
-- components/device/DeviceIntegration[PRODUCTION READY]s.ts
-- components/device/GCPCredentialsModal.tsx
 - components/DeviceMap.tsx
 - components/DeviceSettingsPanel.tsx
 - components/DownloadAppButton.tsx
 - components/DownloadManager.tsx
+- components/DownloadQApp.tsx
+- components/EmergencyPanel.tsx
+- components/EnhancedLinkDomainManager.tsx
+- components/EnhancedPreviewWindow.tsx
+- components/EnhancedRevenuePanel.tsx
+- components/FarmBusinessManager.tsx
+- components/FileCategorizer.tsx
+- components/FileExplorer.js
+- components/FileExplorer.tsx
+- components/FinancialManager.tsx
+- components/FloatingControlPanel.tsx
+- components/FloatingPreviewWindow.tsx
+- components/GitStatus.js
+- components/GitStatus.tsx
+- components/GlobalCall.tsx
+- components/GlobalFileTransfer.tsx
+- components/GlobalMail.tsx
+- components/GlobalVideoCall.tsx
+- components/HelpGuide.tsx
+- components/LcSpaces.tsx
+- components/LeahWallet.tsx
+- components/LeahWalletPanel.tsx
+- components/MapLocationPanel.tsx
+- components/MasterContext.tsx
+- components/MasterEmailDashboard.tsx
+- components/MasterPortal.tsx
+- components/MasterTracksDashboard.tsx
+- components/MediaPreviewWindow.tsx
+- components/MemoryAwareness.tsx
+- components/NotificationCenter.tsx
+- components/NotificationPanel.tsx
+- components/ParallelProcessing.tsx
+- components/PreviewWindow.tsx
+- components/PriceProductVerifier.tsx
+- components/QAvatar.tsx
+- components/QCityErrorManager.tsx
+- components/QCityThemeProvider.tsx
+- components/QConverse.tsx
+- components/QFileManager.tsx
+- components/QI.tsx
+- components/QIStateWindow.tsx
+- components/QMOIAutoFixDashboard.tsx
+- components/QMOIDashboard.tsx
+- components/QMOIOwnDevice.tsx
+- components/QVillage.tsx
+- components/QVillageDatasetsPanel.tsx
+- components/QiSpaces.tsx
+- components/QmoiAccessibility.tsx
+- components/QmoiAutoDistribution.tsx
+- components/QmoiBrowser.tsx
+- components/QmoiDialer.tsx
+- components/QmoiEnhancedSystem.tsx
+- components/QmoiKeyboard.tsx
+- components/QmoiMediaManager.tsx
+- components/QmoiMemoryPanel.tsx
+- components/QmoiRevenueDashboard.tsx
+- components/RealtimeAvatarWindow.tsx
+- components/SettingsPanel.tsx
+- components/SettingsSidebar.tsx
+- components/SisterProjects.tsx
+- components/SystemHealthDashboard.tsx
+- components/SystemHealthMonitor.tsx
+- components/TeamRoleManager.tsx
+- components/ThemeCustomizer.tsx
+- components/TradingPanel.tsx
+- components/TransactionHistory.tsx
+- components/UserAccessControl.tsx
+- components/VoiceLibraryPanel.tsx
+- components/VoiceSelectionPanel.tsx
+- components/WalletPanel.tsx
+- components/WhatsAppBusinessPanel.tsx
+- components/WifiAutoConnectPanel.tsx
+- components/WifiPanel.tsx
+- components/WrappedComponent.tsx
+- components/alpha-q-ai-system.js
+- components/alpha-q-ai-system.tsx
+- components/enhanced-system-dashboard.tsx
+- components/enhanced_build_tools.tsx
+- components/real_time_status_dashboard_with_universal_language_support.tsx
+- components/release-notes.ts
+- components/theme-provider.tsx
 - components/DownloadQApp.tsx
 - components/EmergencyPanel.tsx
 - components/enhanced_build_tools.tsx

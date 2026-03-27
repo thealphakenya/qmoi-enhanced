@@ -431,6 +431,36 @@ This document provides comprehensive documentation of all workflows in the QMOI 
 
 ## Other Critical Workflows
 
+### Security & Compliance Workflows
+- **Security Audit Workflow**: Automated security scanning and vulnerability assessment
+- **Compliance Check Workflow**: Regulatory compliance validation
+- **Access Control Workflow**: User authentication and authorization management
+
+### Performance & Optimization Workflows
+- **Performance Monitoring Workflow**: Real-time performance tracking and alerting
+- **Optimization Workflow**: Automated code and resource optimization
+- **Load Testing Workflow**: Scalability and stress testing
+
+### Data Management Workflows
+- **Backup & Recovery Workflow**: Automated data backup and disaster recovery
+- **Data Synchronization Workflow**: Cross-platform data sync and consistency
+- **Analytics Processing Workflow**: Data analysis and reporting automation
+
+### AI & Machine Learning Workflows
+- **Model Training Workflow**: Automated ML model training and deployment
+- **Evolution Workflow**: AI model evolution and improvement
+- **Prediction Workflow**: Real-time AI predictions and recommendations
+
+### Global Operations Workflows
+- **Multi-Region Deployment Workflow**: Global infrastructure management
+- **Localization Workflow**: Content and feature localization
+- **Currency & Payment Workflow**: International payment processing
+
+### Emergency & Recovery Workflows
+- **Incident Response Workflow**: Automated incident detection and response
+- **Failover Workflow**: System failover and redundancy management
+- **Recovery Workflow**: Automated system recovery and restoration
+
 ### Core Q Platform (`q.yml`)
 **Purpose**: Core Q platform operations
 **Triggers**: Q-related changes

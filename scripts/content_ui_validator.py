@@ -492,7 +492,7 @@ python3 scripts/100percent_domain_health_checker.py
 """
 
         report_file = self.reports_dir / "COMPREHENSIVE_CONTENT_UI_VALIDATION_REPORT.md"
-        with open(report_file, 'w') as f
+        with open(report_file, 'w') as f:
             f.write(report)
 
         print(report)

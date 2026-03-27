@@ -46,8 +46,65 @@ This document catalogs all automation scripts, build scripts, and utility script
 - **Status**: ✅ Production Ready
 - **Frequency**: Run before each release
 
+## 📡 API Documentation Scripts
+
+### Documentation Generation
+- **File**: `scripts/comprehensive_docs_update.py`
+- **Purpose**: Auto-generate API, endpoint, and hook documentation
+- **Generates**: API.md, ENDPOINTS.md, HOOKS.md
+- **Status**: ✅ Production Ready
+- **Frequency**: Run before each release
+
 ### API Validation
 - **File**: `scripts/validate_api_documentation.py`
+- **Purpose**: Validate API documentation completeness
+- **Status**: ✅ Production Ready
+
+## 🔧 Automation Scripts
+
+### Build Automation
+- `scripts/build-all-platforms.sh` - Cross-platform build orchestration
+- `scripts/build-all.sh` - Master build script
+- `scripts/build-android-production.sh` - Android APK builds
+- `scripts/build-apple-production.sh` - iOS IPA builds
+- `scripts/build-pwa-production.sh` - PWA builds
+- `scripts/build-windows-production.sh` - Windows EXE builds
+
+### Deployment Automation
+- `scripts/deploy-production.sh` - Production deployment
+- `scripts/deploy-docker.sh` - Docker container deployment
+- `scripts/deploy_huggingface.js` - HuggingFace Spaces deployment
+- `scripts/vercel_deploy.sh` - Vercel deployment
+
+### Testing Automation
+- `scripts/run_all_tests.py` - Comprehensive test runner
+- `scripts/run_unit_tests.py` - Unit test execution
+- `scripts/test-qmoi-comprehensive.sh` - Full system tests
+- `scripts/production_full_validation.py` - Production readiness validation
+
+### Domain & Health Scripts
+- `scripts/100percent_domain_health_checker.py` - Domain health validation
+- `scripts/content_ui_validator.py` - UI content validation
+- `scripts/domain_health_100percent_achiever.py` - Domain health achievement
+- `scripts/health_check_simple.py` - Basic health checks
+
+### AI & Evolution Scripts
+- `scripts/ai_automation.py` - AI automation tasks
+- `scripts/auto_evolution.py` - Model evolution
+- `scripts/enhance_ai.py` - AI enhancement
+- `scripts/qmoi_auto_evolution.py` - QMOI evolution
+
+### Validation & Monitoring Scripts
+- `scripts/validate_all_credentials.py` - Credential validation
+- `scripts/validate_links.py` - Link validation
+- `scripts/validate_md.py` - Markdown validation
+- `scripts/monitor_performance.py` - Performance monitoring
+
+### Utility Scripts
+- `scripts/auto_update_allmdfilesrefs.py` - Documentation updates
+- `scripts/generate_all_links.py` - Link generation
+- `scripts/update_tree_and_percentages.py` - Structure updates
+- `scripts/comprehensive_md_validator.py` - MD validation
 - **Purpose**: Validate API endpoint documentation
 - **Checks**: Endpoint completeness, documentation accuracy
 - **Status**: ✅ Production Ready
