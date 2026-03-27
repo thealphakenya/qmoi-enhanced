@@ -1,0 +1,19 @@
+{
+  "main_domains": {
+    "qmoi.com": "64.190.63.222",
+    "api.qmoi.com": "64.190.63.222",
+    "auth.qmoi.com": "64.190.63.222",
+    "cdn.qmoi.com": "64.190.63.222"
+  },
+  "additional_domains": {
+    "qcity.io": "Needs domain registration and DNS setup",
+    "qvillage.org": "Needs domain registration and DNS setup",
+    "qglobal.ai": "Needs domain registration and DNS setup",
+    "qparallel.dev": "Needs domain registration and DNS setup"
+  },
+  "working_domains": {
+    "qvillage.com": "Already working",
+    "alphaq.ai": "Already working",
+    "qglobal.org": "Already working"
+  }
+}
