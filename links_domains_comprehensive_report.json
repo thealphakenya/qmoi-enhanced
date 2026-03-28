@@ -1,0 +1,201 @@
+{
+  "timestamp": "2026-03-28T03:56:33.347918",
+  "total_domains": 10,
+  "domains_by_type": {
+    "ai_platform": {
+      "count": 1,
+      "healthy": 1,
+      "domains": [
+        "alphaq.ai"
+      ]
+    },
+    "main_app": {
+      "count": 1,
+      "healthy": 0,
+      "domains": [
+        "qmoi.ai"
+      ]
+    },
+    "primary_hub": {
+      "count": 1,
+      "healthy": 1,
+      "domains": [
+        "qvillage.com"
+      ]
+    },
+    "city_service": {
+      "count": 1,
+      "healthy": 0,
+      "domains": [
+        "qcity.qmoi.ai"
+      ]
+    },
+    "space_platform": {
+      "count": 1,
+      "healthy": 0,
+      "domains": [
+        "qmoi-space.qmoi.ai"
+      ]
+    },
+    "models": {
+      "count": 1,
+      "healthy": 0,
+      "domains": [
+        "q-stable.qmoi.ai"
+      ]
+    },
+    "file_sharing": {
+      "count": 1,
+      "healthy": 0,
+      "domains": [
+        "qshare.qvillage.com"
+      ]
+    },
+    "messaging": {
+      "count": 1,
+      "healthy": 0,
+      "domains": [
+        "yap.qmoi.ai"
+      ]
+    },
+    "app_store": {
+      "count": 1,
+      "healthy": 0,
+      "domains": [
+        "qstore.qvillage.com"
+      ]
+    },
+    "fallback": {
+      "count": 1,
+      "healthy": 1,
+      "domains": [
+        "qglobal.org"
+      ]
+    }
+  },
+  "domain_details": {
+    "alphaq.ai": {
+      "type": "ai_platform",
+      "critical": true,
+      "description": "Advanced AI system with superior intelligence",
+      "is_healthy": true,
+      "endpoints": [
+        "/api/health",
+        "/chat",
+        "/dashboard",
+        "/"
+      ],
+      "health_check_timestamp": "2026-03-28T03:56:33.397686"
+    },
+    "qmoi.ai": {
+      "type": "main_app",
+      "critical": true,
+      "description": "Main QMOI AI platform with parallel processing",
+      "is_healthy": false,
+      "endpoints": [
+        "/api/health",
+        "/"
+      ],
+      "health_check_timestamp": "2026-03-28T03:56:33.423171"
+    },
+    "qvillage.com": {
+      "type": "primary_hub",
+      "critical": true,
+      "description": "Primary hub for QMOI ecosystem",
+      "is_healthy": true,
+      "endpoints": [
+        "/api/health",
+        "/app",
+        "/dashboard",
+        "/"
+      ],
+      "health_check_timestamp": "2026-03-28T03:56:33.498422"
+    },
+    "qcity.qmoi.ai": {
+      "type": "city_service",
+      "critical": false,
+      "description": "QCity enterprise platform",
+      "is_healthy": false,
+      "endpoints": [
+        "/api/health",
+        "/"
+      ],
+      "health_check_timestamp": "2026-03-28T03:56:33.518694"
+    },
+    "qmoi-space.qmoi.ai": {
+      "type": "space_platform",
+      "critical": false,
+      "description": "QMOI Space application",
+      "is_healthy": false,
+      "endpoints": [
+        "/api/health",
+        "/"
+      ],
+      "health_check_timestamp": "2026-03-28T03:56:33.585823"
+    },
+    "q-stable.qmoi.ai": {
+      "type": "models",
+      "critical": false,
+      "description": "Q-stable progressive web app",
+      "is_healthy": false,
+      "endpoints": [
+        "/api/health",
+        "/"
+      ],
+      "health_check_timestamp": "2026-03-28T03:56:33.599683"
+    },
+    "qshare.qvillage.com": {
+      "type": "file_sharing",
+      "critical": true,
+      "description": "File sharing and collaboration platform",
+      "is_healthy": false,
+      "endpoints": [
+        "/api/health",
+        "/"
+      ],
+      "health_check_timestamp": "2026-03-28T03:56:33.645556"
+    },
+    "yap.qmoi.ai": {
+      "type": "messaging",
+      "critical": false,
+      "description": "Communication and messaging app",
+      "is_healthy": false,
+      "endpoints": [
+        "/api/health",
+        "/"
+      ],
+      "health_check_timestamp": "2026-03-28T03:56:33.674488"
+    },
+    "qstore.qvillage.com": {
+      "type": "app_store",
+      "critical": true,
+      "description": "Application marketplace",
+      "is_healthy": false,
+      "endpoints": [
+        "/api/health",
+        "/"
+      ],
+      "health_check_timestamp": "2026-03-28T03:56:33.830784"
+    },
+    "qglobal.org": {
+      "type": "fallback",
+      "critical": false,
+      "description": "Global fallback domain",
+      "is_healthy": true,
+      "endpoints": [
+        "/api/health",
+        "/"
+      ],
+      "health_check_timestamp": "2026-03-28T03:56:33.877202"
+    }
+  },
+  "critical_domains_health": {
+    "alphaq.ai": true,
+    "qmoi.ai": false,
+    "qvillage.com": true,
+    "qshare.qvillage.com": false,
+    "qstore.qvillage.com": false
+  },
+  "endpoint_coverage": {},
+  "health_percentage": 30.0
+}
