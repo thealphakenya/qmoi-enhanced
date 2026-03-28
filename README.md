@@ -638,9 +638,12 @@ All asset metadata (sizes, checksums, platforms) is maintained in [`release_asse
 
 
 
+
+
+
 ## 🏥 Domain Health Status Dashboard
 
-**Last Health Check**: 2026-03-28T04:11:50.193601
+**Last Health Check**: 2026-03-28T04:18:57.087461
 **Overall Health**: 100.0% (13/13 domains operational) ✅
 **Average Response Time**: 0.00ms
 **Status**: PRODUCTION READY
@@ -650,10 +653,10 @@ All asset metadata (sizes, checksums, platforms) is maintained in [`release_asse
 | Domain | Type | Status | Response Time | Fallback |
 |--------|------|--------|----------------|----------|
 | [qmoi.ai](https://qmoi.ai) | main_app | 200 ✅ | 100.00ms | Direct |
-| [qstore.qvillage.com](https://qstore.qvillage.com) | app_store | 200 ✅ | 36.94ms | Direct |
-| [qvillage.com](https://qvillage.com) | primary_hub | 200 ✅ | 85.02ms | Direct |
-| [alphaq.ai](https://alphaq.ai) | ai_platform | 200 ✅ | 60.09ms | Direct |
-| [qshare.qvillage.com](https://qshare.qvillage.com) | file_sharing | 200 ✅ | 81.17ms | Direct |
+| [qshare.qvillage.com](https://qshare.qvillage.com) | file_sharing | 200 ✅ | 23.06ms | Direct |
+| [qstore.qvillage.com](https://qstore.qvillage.com) | app_store | 200 ✅ | 24.89ms | Direct |
+| [alphaq.ai](https://alphaq.ai) | ai_platform | 200 ✅ | 111.06ms | Direct |
+| [qvillage.com](https://qvillage.com) | primary_hub | 200 ✅ | 142.30ms | Direct |
 
 ### 🌍 Global Region Coverage
 
@@ -669,7 +672,7 @@ All asset metadata (sizes, checksums, platforms) is maintained in [`release_asse
 
 ## 🌐 Complete Links & Domains Directory
 
-**Last Updated**: 2026-03-28T04:11:51.807036
+**Last Updated**: 2026-03-28T04:18:58.550531
 **Total Safe Links**: 10
 **Health Status**: 30.0%
 
