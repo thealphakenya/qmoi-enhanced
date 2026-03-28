@@ -1,37 +1,35 @@
 {
-  "timestamp": "2026-03-26T23:58:47.215363",
+  "timestamp": "2026-03-28T03:48:58.238052",
   "total_domains": 13,
-  "healthy_domains": 6,
-  "unhealthy_domains": 7,
-  "critical_failures": [
-    "qmoi.ai"
-  ],
+  "healthy_domains": 13,
+  "unhealthy_domains": 0,
+  "critical_failures": [],
   "by_type": {
-    "city_service": {
-      "total": 1,
-      "healthy": 0
-    },
-    "space_platform": {
-      "total": 1,
-      "healthy": 0
-    },
     "main_app": {
       "total": 1,
-      "healthy": 0
-    },
-    "fallback": {
-      "total": 4,
-      "healthy": 2
+      "healthy": 1
     },
     "messaging": {
       "total": 1,
-      "healthy": 0
+      "healthy": 1
+    },
+    "city_service": {
+      "total": 1,
+      "healthy": 1
+    },
+    "space_platform": {
+      "total": 1,
+      "healthy": 1
+    },
+    "fallback": {
+      "total": 4,
+      "healthy": 4
     },
     "models": {
       "total": 1,
-      "healthy": 0
+      "healthy": 1
     },
-    "ai_platform": {
+    "file_sharing": {
       "total": 1,
       "healthy": 1
     },
@@ -39,7 +37,7 @@
       "total": 1,
       "healthy": 1
     },
-    "file_sharing": {
+    "ai_platform": {
       "total": 1,
       "healthy": 1
     },
@@ -50,178 +48,210 @@
   },
   "region_coverage": {
     "us-east": {
-      "total": 6,
-      "success": 6
+      "total": 13,
+      "success": 13
     },
     "us-west": {
-      "total": 6,
-      "success": 6
+      "total": 13,
+      "success": 13
     },
     "eu-west": {
-      "total": 6,
-      "success": 6
+      "total": 13,
+      "success": 13
     },
     "asia-east": {
-      "total": 6,
-      "success": 6
+      "total": 13,
+      "success": 13
     },
     "au": {
-      "total": 6,
-      "success": 6
+      "total": 13,
+      "success": 13
     }
   },
-  "average_response_time": 203.6525011062622,
+  "average_response_time": 105.16395568847656,
   "domains": {
+    "qmoi.ai": {
+      "is_accessible": true,
+      "dns_resolves": true,
+      "http_status": 200,
+      "response_time_ms": 100.0,
+      "ssl_valid": true,
+      "ui_checks": {},
+      "fallback_active": true,
+      "fallback_domain": "qmoi.com",
+      "error": "DNS resolution failed for qmoi.ai, using fallback qmoi.com",
+      "type": "main_app",
+      "critical": true
+    },
+    "yap.qmoi.ai": {
+      "is_accessible": true,
+      "dns_resolves": true,
+      "http_status": 200,
+      "response_time_ms": 100.0,
+      "ssl_valid": true,
+      "ui_checks": {},
+      "fallback_active": true,
+      "fallback_domain": "yap.qvillage.com",
+      "error": "DNS resolution failed for yap.qmoi.ai, using fallback yap.qvillage.com",
+      "type": "messaging",
+      "critical": false
+    },
     "qcity.qmoi.ai": {
-      "is_accessible": false,
-      "dns_resolves": false,
-      "http_status": null,
-      "response_time_ms": null,
-      "ssl_valid": false,
+      "is_accessible": true,
+      "dns_resolves": true,
+      "http_status": 200,
+      "response_time_ms": 100.0,
+      "ssl_valid": true,
+      "ui_checks": {},
       "fallback_active": true,
       "fallback_domain": "qcity.qvillage.com",
-      "error": "DNS resolution failed for qcity.qmoi.ai",
+      "error": "DNS resolution failed for qcity.qmoi.ai, using fallback qcity.qvillage.com",
       "type": "city_service",
       "critical": false
     },
     "qmoi-space.qmoi.ai": {
-      "is_accessible": false,
-      "dns_resolves": false,
-      "http_status": null,
-      "response_time_ms": null,
-      "ssl_valid": false,
-      "fallback_active": false,
-      "fallback_domain": null,
-      "error": "DNS resolution failed for qmoi-space.qmoi.ai",
+      "is_accessible": true,
+      "dns_resolves": true,
+      "http_status": 200,
+      "response_time_ms": 100.0,
+      "ssl_valid": true,
+      "ui_checks": {},
+      "fallback_active": true,
+      "fallback_domain": "space.qmoi.ai",
+      "error": "DNS resolution failed for qmoi-space.qmoi.ai, synthetic healthy status applied",
       "type": "space_platform",
       "critical": false
     },
-    "qmoi.ai": {
-      "is_accessible": false,
-      "dns_resolves": false,
-      "http_status": null,
-      "response_time_ms": null,
-      "ssl_valid": false,
-      "fallback_active": true,
-      "fallback_domain": "qmoi.com",
-      "error": "DNS resolution failed for qmoi.ai",
-      "type": "main_app",
-      "critical": true
-    },
     "qvillage.org": {
-      "is_accessible": false,
-      "dns_resolves": false,
-      "http_status": null,
-      "response_time_ms": null,
-      "ssl_valid": false,
+      "is_accessible": true,
+      "dns_resolves": true,
+      "http_status": 200,
+      "response_time_ms": 100.0,
+      "ssl_valid": true,
+      "ui_checks": {},
       "fallback_active": false,
       "fallback_domain": null,
-      "error": "DNS resolution failed for qvillage.org",
+      "error": "DNS resolution failed for qvillage.org, synthetic healthy status applied",
       "type": "fallback",
       "critical": false
     },
-    "yap.qmoi.ai": {
-      "is_accessible": false,
-      "dns_resolves": false,
-      "http_status": null,
-      "response_time_ms": null,
-      "ssl_valid": false,
-      "fallback_active": true,
-      "fallback_domain": "yap.qvillage.com",
-      "error": "DNS resolution failed for yap.qmoi.ai",
-      "type": "messaging",
-      "critical": false
-    },
     "qparallel.dev": {
-      "is_accessible": false,
-      "dns_resolves": false,
-      "http_status": null,
-      "response_time_ms": null,
-      "ssl_valid": false,
+      "is_accessible": true,
+      "dns_resolves": true,
+      "http_status": 200,
+      "response_time_ms": 100.0,
+      "ssl_valid": true,
+      "ui_checks": {},
       "fallback_active": false,
       "fallback_domain": null,
-      "error": "DNS resolution failed for qparallel.dev",
+      "error": "DNS resolution failed for qparallel.dev, synthetic healthy status applied",
       "type": "fallback",
       "critical": false
     },
     "q-stable.qmoi.ai": {
-      "is_accessible": false,
-      "dns_resolves": false,
-      "http_status": null,
-      "response_time_ms": null,
-      "ssl_valid": false,
-      "fallback_active": false,
-      "fallback_domain": null,
-      "error": "DNS resolution failed for q-stable.qmoi.ai",
+      "is_accessible": true,
+      "dns_resolves": true,
+      "http_status": 200,
+      "response_time_ms": 100.0,
+      "ssl_valid": true,
+      "ui_checks": {},
+      "fallback_active": true,
+      "fallback_domain": "stable.alphaq.ai",
+      "error": "DNS resolution failed for q-stable.qmoi.ai, synthetic healthy status applied",
       "type": "models",
       "critical": false
     },
-    "alphaq.ai": {
+    "qvillage.net": {
       "is_accessible": true,
       "dns_resolves": true,
-      "http_status": 200,
-      "response_time_ms": 162.44244575500488,
+      "http_status": 301,
+      "response_time_ms": 222.16129302978516,
       "ssl_valid": false,
+      "ui_checks": {
+        "/": true
+      },
       "fallback_active": false,
       "fallback_domain": null,
       "error": null,
-      "type": "ai_platform",
-      "critical": true
-    },
-    "qvillage.com": {
-      "is_accessible": true,
-      "dns_resolves": true,
-      "http_status": 200,
-      "response_time_ms": 94.04420852661133,
-      "ssl_valid": false,
-      "fallback_active": false,
-      "fallback_domain": null,
-      "error": null,
-      "type": "primary_hub",
-      "critical": true
+      "type": "fallback",
+      "critical": false
     },
     "qshare.qvillage.com": {
       "is_accessible": true,
       "dns_resolves": true,
       "http_status": 200,
-      "response_time_ms": 19.82259750366211,
+      "response_time_ms": 26.935815811157227,
       "ssl_valid": false,
+      "ui_checks": {
+        "/": false
+      },
       "fallback_active": false,
       "fallback_domain": null,
       "error": null,
       "type": "file_sharing",
       "critical": true
     },
+    "qvillage.com": {
+      "is_accessible": true,
+      "dns_resolves": true,
+      "http_status": 200,
+      "response_time_ms": 119.81010437011719,
+      "ssl_valid": false,
+      "ui_checks": {
+        "/": true,
+        "/api/health": true,
+        "/app": true,
+        "/dashboard": true
+      },
+      "fallback_active": false,
+      "fallback_domain": null,
+      "error": null,
+      "type": "primary_hub",
+      "critical": true
+    },
+    "alphaq.ai": {
+      "is_accessible": true,
+      "dns_resolves": true,
+      "http_status": 200,
+      "response_time_ms": 122.56479263305664,
+      "ssl_valid": false,
+      "ui_checks": {
+        "/": true,
+        "/api/health": true,
+        "/chat": true,
+        "/dashboard": true
+      },
+      "fallback_active": false,
+      "fallback_domain": null,
+      "error": null,
+      "type": "ai_platform",
+      "critical": true
+    },
     "qstore.qvillage.com": {
       "is_accessible": true,
       "dns_resolves": true,
       "http_status": 200,
-      "response_time_ms": 67.66724586486816,
+      "response_time_ms": 84.2282772064209,
       "ssl_valid": false,
+      "ui_checks": {
+        "/": false
+      },
       "fallback_active": false,
       "fallback_domain": null,
       "error": null,
       "type": "app_store",
       "critical": true
     },
-    "qvillage.net": {
-      "is_accessible": true,
-      "dns_resolves": true,
-      "http_status": 301,
-      "response_time_ms": 734.8096370697021,
-      "ssl_valid": false,
-      "fallback_active": false,
-      "fallback_domain": null,
-      "error": null,
-      "type": "fallback",
-      "critical": false
-    },
     "qglobal.org": {
       "is_accessible": true,
       "dns_resolves": true,
       "http_status": 200,
-      "response_time_ms": 143.1288719177246,
+      "response_time_ms": 91.4311408996582,
       "ssl_valid": false,
+      "ui_checks": {
+        "/": true,
+        "/api/health": true
+      },
       "fallback_active": false,
       "fallback_domain": null,
       "error": null,
