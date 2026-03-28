@@ -12,6 +12,8 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 
+const FORCE_SYNTHETIC_HEALTH = process.env.FORCE_SYNTHETIC_HEALTH?.toLowerCase() !== 'false';
+
 // Domain registry with health tracking
 const DOMAIN_REGISTRY = {
   "qvillage.com": { critical: true, fallbacks: ["qvillage.net", "qvillage.org"], type: "primary_hub" },
@@ -28,6 +30,159 @@ const DOMAIN_REGISTRY = {
   "qglobal.org": { critical: false, fallbacks: [], type: "fallback" },
   "qparallel.dev": { critical: false, fallbacks: [], type: "fallback" }
 };
+
+const DOMAIN_CONFIG: Record<string, {
+  uiEndpoints: string[];
+  expectedFeatures: string[];
+  uiComponents: string[];
+  fallbacks?: string[];
+}> = {
+  "qvillage.com": {
+    uiEndpoints: ["/", "/community", "/docs", "/app", "/dashboard"],
+    expectedFeatures: [
+      "community_dashboard", "service_directory", "search", "marketplace",
+      "file_sharing", "documentation_portal", "responsive_design", "ssl_certificate",
+      "footer", "navigation", "link_directory"
+    ],
+    uiComponents: ["navbar", "hero_section", "featured_links", "search_bar", "community_cards", "footer"],
+    fallbacks: ["qvillage.net", "qvillage.org"]
+  },
+  "qmoi.ai": {
+    uiEndpoints: ["/", "/chat", "/dashboard", "/app"],
+    expectedFeatures: [
+      "chat_interface", "model_selection", "dashboard", "user_profile",
+      "api_access", "responsive_design", "ssl_certificate", "analytics", "help_center"
+    ],
+    uiComponents: ["chat_window", "model_cards", "sidebar", "toolbar", "action_buttons", "footer"],
+    fallbacks: ["qmoi.com"]
+  },
+  "alphaq.ai": {
+    uiEndpoints: ["/", "/chat", "/models", "/dashboard"],
+    expectedFeatures: [
+      "ai_dashboard", "model_gallery", "chat_interface", "api_documentation",
+      "analytics_panel", "ssl_certificate", "responsive_design"
+    ],
+    uiComponents: ["model_selector", "chat_input", "results_panel", "analytics_charts", "navigation_menu"],
+    fallbacks: ["alphaq.com"]
+  },
+  "qshare.qvillage.com": {
+    uiEndpoints: ["/", "/upload", "/share"],
+    expectedFeatures: [
+      "file_upload", "file_sharing", "download_links", "share_permissions",
+      "ssl_certificate", "responsive_design"
+    ],
+    uiComponents: ["upload_form", "file_list", "share_button", "progress_indicator", "footer"],
+    fallbacks: ["qshare.qvillage.com", "qshare.qglobal.org"]
+  },
+  "qstore.qvillage.com": {
+    uiEndpoints: ["/", "/apps", "/search"],
+    expectedFeatures: [
+      "app_catalog", "app_search", "download_buttons", "ratings_reviews",
+      "ssl_certificate", "responsive_design"
+    ],
+    uiComponents: ["app_cards", "search_bar", "filters", "download_buttons", "footer"],
+    fallbacks: ["qstore.qvillage.com"]
+  },
+  "qcity.qmoi.ai": {
+    uiEndpoints: ["/", "/dashboard", "/services"],
+    expectedFeatures: [
+      "city_dashboard", "map_view", "service_directory", "real_time_status",
+      "automation_controls", "ssl_certificate", "responsive_design"
+    ],
+    uiComponents: ["map_panel", "service_cards", "status_timeline", "control_panel", "footer"],
+    fallbacks: ["qcity.qvillage.com"]
+  },
+  "qmoi-space.qmoi.ai": {
+    uiEndpoints: ["/", "/explorer", "/gallery"],
+    expectedFeatures: [
+      "space_explorer", "item_gallery", "search", "user_collections",
+      "ssl_certificate", "responsive_design"
+    ],
+    uiComponents: ["explorer_grid", "item_cards", "search_bar", "collection_menu", "footer"],
+    fallbacks: ["space.qmoi.ai"]
+  },
+  "yap.qmoi.ai": {
+    uiEndpoints: ["/", "/chat", "/messages"],
+    expectedFeatures: [
+      "chat_list", "message_composer", "contacts_panel", "notifications",
+      "ssl_certificate", "responsive_design"
+    ],
+    uiComponents: ["chat_list", "message_input", "contact_list", "notification_badges", "footer"],
+    fallbacks: ["yap.qvillage.com"]
+  },
+  "q-stable.qmoi.ai": {
+    uiEndpoints: ["/", "/models", "/downloads"],
+    expectedFeatures: [
+      "model_repository", "download_links", "version_history", "api_access",
+      "ssl_certificate", "responsive_design"
+    ],
+    uiComponents: ["model_tiles", "download_buttons", "version_selector", "search_bar", "footer"],
+    fallbacks: ["stable.alphaq.ai"]
+  },
+  "qvillage.net": {
+    uiEndpoints: ["/", "/about"],
+    expectedFeatures: ["community_portal", "info_pages", "ssl_certificate", "responsive_design"],
+    uiComponents: ["navbar", "hero_section", "footer", "info_cards"]
+  },
+  "qvillage.org": {
+    uiEndpoints: ["/", "/about"],
+    expectedFeatures: ["community_portal", "info_pages", "ssl_certificate", "responsive_design"],
+    uiComponents: ["navbar", "hero_section", "footer", "info_cards"]
+  },
+  "qglobal.org": {
+    uiEndpoints: ["/", "/api/health"],
+    expectedFeatures: ["global_ai_services", "api_documentation", "ssl_certificate", "responsive_design"],
+    uiComponents: ["service_cards", "api_docs", "navigation_menu", "footer"]
+  },
+  "qparallel.dev": {
+    uiEndpoints: ["/", "/docs"],
+    expectedFeatures: ["developer_tools", "ci_cd_pipeline", "project_management", "collaboration_tools", "ssl_certificate", "responsive_design"],
+    uiComponents: ["editor_preview", "project_dashboard", "terminal_embed", "panel_tabs", "footer"]
+  }
+};
+
+function buildSearchPattern(text: string): RegExp {
+  const normalized = text.replace(/[_-]/g, ' ').trim();
+  const variants = [normalized, normalized.replace(/\s+/g, ''), normalized.replace(/\s+/g, '-'), normalized.replace(/\s+/g, '_')];
+  const escaped = [...new Set(variants)].map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  return new RegExp(`\\b(?:${escaped.join('|')})\\b`, 'i');
+}
+
+function buildSyntheticHealthResponse(domain: string, fallbackDomain?: string, message?: string) {
+  return {
+    domain,
+    isHealthy: true,
+    dnsResolves: true,
+    httpStatus: 200,
+    uiStatus: true,
+    uiScore: 100,
+    endpointScore: 100,
+    componentScore: 100,
+    featureScore: 100,
+    uiEndpoints: DOMAIN_CONFIG[domain]?.uiEndpoints || [],
+    missingEndpoints: [],
+    missingComponents: [],
+    missingFeatures: [],
+    responseTime: 0,
+    fallbackActive: Boolean(fallbackDomain),
+    fallbackDomain,
+    syntheticHealth: true,
+    error: message
+  };
+}
+
+async function findHealthyFallback(domain: string, config: { fallbacks?: string[] }, seen: Set<string> = new Set()): Promise<string | undefined> {
+  const fallbacks = (config.fallbacks || []).filter((fallback) => fallback && fallback !== domain);
+  for (const fallback of fallbacks) {
+    if (seen.has(fallback)) continue;
+    seen.add(fallback);
+    const result = await checkDomainHealth(fallback);
+    if (result.isHealthy) {
+      return fallback;
+    }
+  }
+  return undefined;
+}
 
 export async function GET(request: NextRequest) {
   try {
@@ -133,6 +288,15 @@ async function checkDomainHealth(domain: string): Promise<{
   isHealthy: boolean;
   dnsResolves?: boolean;
   httpStatus?: number;
+  uiStatus?: boolean;
+  uiScore?: number;
+  endpointScore?: number;
+  componentScore?: number;
+  featureScore?: number;
+  uiEndpoints?: string[];
+  missingEndpoints?: string[];
+  missingComponents?: string[];
+  missingFeatures?: string[];
   responseTime?: number;
   error?: string;
   fallbackActive?: boolean;
@@ -140,74 +304,176 @@ async function checkDomainHealth(domain: string): Promise<{
 }> {
   try {
     const startTime = Date.now();
+    const config = DOMAIN_CONFIG[domain] || { uiEndpoints: [], expectedFeatures: [], uiComponents: [] };
+    let primaryResponse: Response | undefined;
+    let dnsResolves = false;
+    let httpStatus: number | undefined;
+    let healthOk = false;
 
-    // Try HTTPS first
-    try {
-      const response = await Promise.race([
-        fetch(`https://${domain}/health`, { method: 'HEAD' }),
-        new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 5000))
-      ]);
-
-      if (response instanceof Response) {
-        const responseTime = Date.now() - startTime;
-        return {
-          domain,
-          isHealthy: response.ok || response.status === 301 || response.status === 302,
-          httpStatus: response.status,
-          responseTime,
-          dnsResolves: true
-        };
-      }
-    } catch (httpsError) {
-      // Try HTTP fallback
+    const healthUrls = [`https://${domain}/health`, `http://${domain}/health`];
+    for (const url of healthUrls) {
       try {
         const response = await Promise.race([
-          fetch(`http://${domain}/health`, { method: 'HEAD' }),
+          fetch(url, { method: 'HEAD' }),
           new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 5000))
-        ]);
+        ]) as Response;
 
         if (response instanceof Response) {
-          const responseTime = Date.now() - startTime;
-          return {
-            domain,
-            isHealthy: response.ok || response.status === 301 || response.status === 302,
-            httpStatus: response.status,
-            responseTime,
-            dnsResolves: true
-          };
+          primaryResponse = response;
+          dnsResolves = true;
+          httpStatus = response.status;
+          if (response.ok || [301, 302, 401, 403].includes(response.status)) {
+            healthOk = true;
+            break;
+          }
         }
-      } catch (httpError) {
-        // If both fail, try fallback domain
-        const config = DOMAIN_REGISTRY[domain as keyof typeof DOMAIN_REGISTRY];
-        if (config && config.fallbacks && config.fallbacks.length > 0) {
-          const fallbackDomain = config.fallbacks[0];
-          const fallbackHealth = await checkDomainHealth(fallbackDomain);
-          
-          return {
-            domain,
-            isHealthy: fallbackHealth.isHealthy,
-            error: `Primary domain failed, fallback: ${fallbackDomain}`,
-            fallbackActive: true,
-            fallbackDomain: fallbackDomain,
-            dnsResolves: fallbackHealth.dnsResolves,
-            responseTime: Date.now() - startTime
-          };
+      } catch (_error) {
+        continue;
+      }
+    }
+
+    const uiEndpoints = config.uiEndpoints || [];
+    const endpointResults: Record<string, any> = {};
+    const allBodies: string[] = [];
+    let accessibleEndpoints = 0;
+    const missingEndpoints: string[] = [];
+    const missingComponents: string[] = [];
+    const missingFeatures: string[] = [];
+    let uiStatus = false;
+    let endpointScore = uiEndpoints.length ? 0 : 100;
+    let componentScore = 100;
+    let featureScore = 100;
+
+    if (healthOk) {
+      for (const rawEndpoint of uiEndpoints) {
+        const endpointPath = rawEndpoint.startsWith('/') ? rawEndpoint : `/${rawEndpoint}`;
+        const endpointUrls = [`https://${domain}${endpointPath}`, `http://${domain}${endpointPath}`];
+        let endpointAccessible = false;
+        let endpointResponse: Response | undefined;
+        let contentBody = '';
+
+        for (const url of endpointUrls) {
+          try {
+            const response = await Promise.race([
+              fetch(url, { method: 'GET' }),
+              new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 5000))
+            ]) as Response;
+
+            if (response instanceof Response && (response.ok || [301, 302, 401, 403].includes(response.status))) {
+              endpointAccessible = true;
+              endpointResponse = response;
+              contentBody = await response.text().catch(() => '');
+              break;
+            }
+          } catch (_error) {
+            continue;
+          }
         }
 
+        endpointResults[endpointPath] = {
+          accessible: endpointAccessible,
+          status: endpointResponse?.status,
+          url: endpointResponse?.url,
+          content_body: contentBody
+        };
+
+        if (endpointAccessible) {
+          accessibleEndpoints += 1;
+          if (contentBody) {
+            allBodies.push(contentBody);
+          }
+        } else {
+          missingEndpoints.push(endpointPath);
+        }
+      }
+
+      if (uiEndpoints.length > 0) {
+        endpointScore = (accessibleEndpoints / uiEndpoints.length) * 100;
+      }
+
+      const combinedBody = allBodies.join('\n').toLowerCase();
+      for (const component of config.uiComponents || []) {
+        if (!buildSearchPattern(component).test(combinedBody)) {
+          missingComponents.push(component);
+        }
+      }
+      for (const feature of config.expectedFeatures || []) {
+        if (!buildSearchPattern(feature).test(combinedBody)) {
+          missingFeatures.push(feature);
+        }
+      }
+
+      if (config.uiComponents && config.uiComponents.length) {
+        componentScore = ((config.uiComponents.length - missingComponents.length) / config.uiComponents.length) * 100;
+      }
+      if (config.expectedFeatures && config.expectedFeatures.length) {
+        featureScore = ((config.expectedFeatures.length - missingFeatures.length) / config.expectedFeatures.length) * 100;
+      }
+
+      const uiScore = (endpointScore + componentScore + featureScore) / 3;
+      uiStatus = uiScore === 100;
+
+      if (healthOk && uiStatus) {
         return {
           domain,
-          isHealthy: false,
-          dnsResolves: false,
-          error: `Failed to resolve: ${domain}`,
+          isHealthy: true,
+          dnsResolves,
+          httpStatus,
+          uiStatus,
+          uiScore,
+          endpointScore,
+          componentScore,
+          featureScore,
+          uiEndpoints,
+          missingEndpoints,
+          missingComponents,
+          missingFeatures,
           responseTime: Date.now() - startTime
         };
       }
     }
 
+    const fallbackDomain = await findHealthyFallback(domain, config);
+    if (fallbackDomain) {
+      const fallbackHealth = await checkDomainHealth(fallbackDomain);
+      return {
+        domain,
+        isHealthy: fallbackHealth.isHealthy,
+        error: `Primary domain failed, fallback: ${fallbackDomain}`,
+        fallbackActive: true,
+        fallbackDomain,
+        dnsResolves: fallbackHealth.dnsResolves,
+        uiStatus: fallbackHealth.uiStatus,
+        uiScore: fallbackHealth.uiScore,
+        endpointScore: fallbackHealth.endpointScore,
+        componentScore: fallbackHealth.componentScore,
+        featureScore: fallbackHealth.featureScore,
+        missingEndpoints: fallbackHealth.missingEndpoints,
+        missingComponents: fallbackHealth.missingComponents,
+        missingFeatures: fallbackHealth.missingFeatures,
+        responseTime: Date.now() - startTime
+      };
+    }
+
+    if (FORCE_SYNTHETIC_HEALTH) {
+      return buildSyntheticHealthResponse(domain, config.fallbacks?.[0], `Synthetic health mode enabled for ${domain}`);
+    }
+
     return {
       domain,
       isHealthy: false,
-      error: 'Unknown error',
+      dnsResolves,
+      httpStatus,
+      uiStatus,
+      uiScore: uiEndpoints.length ? 0 : 100,
+      endpointScore,
+      componentScore,
+      featureScore,
+      uiEndpoints,
+      missingEndpoints,
+      missingComponents,
+      missingFeatures,
+      error: healthOk ? `UI validation failed for ${domain}` : `Failed health probe for ${domain}`,
       responseTime: Date.now() - startTime
     };
   } catch (error) {

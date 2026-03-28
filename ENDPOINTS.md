@@ -3,15 +3,15 @@
 
 - validated: yes
 - validator: QMOI Lion
-- timestamp: 2026-03-28T04:58:47.979567Z
+- timestamp: 2026-03-28T05:56:28.502404Z
 - note: Auto-updated by `scripts/comprehensive_docs_update.py`
 <!-- LION_VALIDATION_END -->
 
 # QMOI System Endpoints
 
 **Last Updated**: 2026-03-28 (AUTO-GENERATED)
-**Total Endpoints**: 244
-**Last Scan**: 2026-03-28T04:58:47.979567Z
+**Total Endpoints**: 379
+**Last Scan**: 2026-03-28T05:56:28.502404Z
 
 ## Overview
 
@@ -21,196 +21,389 @@ This document catalogs all available endpoints in the QMOI system.
 
 | # | Method | Endpoint | File | Status |
 |---|--------|----------|------|--------|
-| 1 | GET | `/api/account-automation` | ['api', 'account-automation', 'route.ts'] | ✅ |
-| 2 | GET | `/api/accountability` | ['api', 'accountability', 'route.ts'] | ✅ |
-| 3 | GET | `/api/admin/alerts` | ['admin', 'alerts', 'route.ts'] | ✅ |
-| 4 | GET | `/api/admin/audit-logs` | ['admin', 'audit-logs', 'route.ts'] | ✅ |
-| 5 | GET | `/api/admin/autofix/automation` | ['autofix', 'automation', 'route.ts'] | ✅ |
-| 6 | GET | `/api/admin/autofix/autoscan` | ['autofix', 'autoscan', 'route.ts'] | ✅ |
-| 7 | GET | `/api/admin/autofix/background-automation` | ['autofix', 'background-automation', 'route.ts'] | ✅ |
-| 8 | GET | `/api/admin/autofix/bootstrap` | ['autofix', 'bootstrap', 'route.ts'] | ✅ |
-| 9 | GET | `/api/admin/autofix/config` | ['autofix', 'config', 'route.ts'] | ✅ |
-| 10 | GET | `/api/admin/autofix/errors` | ['autofix', 'errors', 'route.ts'] | ✅ |
-| 11 | GET | `/api/admin/autofix/fix-all` | ['autofix', 'fix-all', 'route.ts'] | ✅ |
-| 12 | POST | `/api/admin/autofix/fix/[errorId]` | ['fix', '[errorId]', 'route.ts'] | ✅ |
-| 13 | GET | `/api/admin/autofix/health` | ['autofix', 'health', 'route.ts'] | ✅ |
-| 14 | GET | `/api/admin/autofix/healthmonitor` | ['autofix', 'healthmonitor', 'route.ts'] | ✅ |
-| 15 | GET | `/api/admin/autofix/scan` | ['autofix', 'scan', 'route.ts'] | ✅ |
-| 16 | GET | `/api/admin/autofix/stream` | ['autofix', 'stream', 'route.ts'] | ✅ |
-| 17 | GET | `/api/admin/dashboard` | ['admin', 'dashboard', 'route.ts'] | ✅ |
-| 18 | GET | `/api/admin/financial/global` | ['financial', 'global', 'route.ts'] | ✅ |
-| 19 | GET | `/api/admin/financial/summary` | ['financial', 'summary', 'route.ts'] | ✅ |
-| 20 | POST | `/api/admin/master/auth` | ['master', 'auth', 'route.ts'] | ✅ |
-| 21 | POST | `/api/admin/master/logout` | ['master', 'logout', 'route.ts'] | ✅ |
-| 22 | GET | `/api/admin/monitoring` | ['admin', 'monitoring', 'route.ts'] | ✅ |
-| 23 | GET | `/api/admin/rate-limits` | ['admin', 'rate-limits', 'route.ts'] | ✅ |
-| 24 | GET | `/api/admin/users` | ['admin', 'users', 'route.ts'] | ✅ |
-| 25 | GET | `/api/ai` | ['api', 'ai', 'route.ts'] | ✅ |
-| 26 | GET | `/api/ai-anomaly-service` | ['api', 'ai-anomaly-service', 'route.ts'] | ✅ |
-| 27 | GET | `/api/ai-health` | ['api', 'ai-health', 'route.ts'] | ✅ |
-| 28 | GET | `/api/ai-self-diagnostics` | ['api', 'ai-self-diagnostics', 'route.ts'] | ✅ |
-| 29 | GET | `/api/ai/scan` | ['ai', 'scan', 'route.ts'] | ✅ |
-| 30 | GET | `/api/analytics/transactions` | ['analytics', 'transactions', 'route.ts'] | ✅ |
-| 31 | GET | `/api/analytics/wallets` | ['analytics', 'wallets', 'route.ts'] | ✅ |
-| 32 | GET | `/api/auth/biometric/capture` | ['biometric', 'capture', 'route.ts'] | ✅ |
-| 33 | POST | `/api/auth/login` | ['auth', 'login', 'route.ts'] | ✅ |
-| 34 | POST | `/api/auth/profile` | ['auth', 'profile', 'route.ts'] | ✅ |
-| 35 | POST | `/api/auth/refresh` | ['auth', 'refresh', 'route.ts'] | ✅ |
-| 36 | POST | `/api/auth/register` | ['auth', 'register', 'route.ts'] | ✅ |
-| 37 | GET | `/api/auth/settings` | ['auth', 'settings', 'route.ts'] | ✅ |
-| 38 | GET | `/api/auth/signin` | ['auth', 'signin', 'route.ts'] | ✅ |
-| 39 | GET | `/api/auth/signup` | ['auth', 'signup', 'route.ts'] | ✅ |
-| 40 | POST | `/api/auth/verify` | ['auth', 'verify', 'route.ts'] | ✅ |
-| 41 | POST | `/api/auth/verify-email` | ['auth', 'verify-email', 'route.ts'] | ✅ |
-| 42 | POST | `/api/auth/webauthn/authenticate` | ['webauthn', 'authenticate', 'route.ts'] | ✅ |
-| 43 | POST | `/api/auth/webauthn/register` | ['webauthn', 'register', 'route.ts'] | ✅ |
-| 44 | GET | `/api/automation/status` | ['automation', 'status', 'route.ts'] | ✅ |
-| 45 | POST | `/api/automation/trigger` | ['automation', 'trigger', 'route.ts'] | ✅ |
-| 46 | GET | `/api/biometric/templates` | ['biometric', 'templates', 'route.ts'] | ✅ |
-| 47 | POST | `/api/biometric/verify` | ['biometric', 'verify', 'route.ts'] | ✅ |
-| 48 | GET | `/api/cashon` | ['api', 'cashon', 'route.ts'] | ✅ |
-| 49 | GET | `/api/cashon/balance` | ['cashon', 'balance', 'route.ts'] | ✅ |
-| 50 | POST | `/api/cashon/deposit` | ['cashon', 'deposit', 'route.ts'] | ✅ |
+| 1 | GET | `/api/account-automation` | `app/api/account-automation/route.ts` | ✅ |
+| 2 | POST | `/api/account-automation` | `app/api/account-automation/route.ts` | ✅ |
+| 3 | GET | `/api/accountability` | `app/api/accountability/route.ts` | ✅ |
+| 4 | POST | `/api/accountability` | `app/api/accountability/route.ts` | ✅ |
+| 5 | GET | `/api/admin/alerts` | `app/api/admin/alerts/route.ts` | ✅ |
+| 6 | POST | `/api/admin/alerts` | `app/api/admin/alerts/route.ts` | ✅ |
+| 7 | GET | `/api/admin/audit-logs` | `app/api/admin/audit-logs/route.ts` | ✅ |
+| 8 | POST | `/api/admin/audit-logs` | `app/api/admin/audit-logs/route.ts` | ✅ |
+| 9 | GET | `/api/admin/autofix/automation` | `app/api/admin/autofix/automation/route.ts` | ✅ |
+| 10 | POST | `/api/admin/autofix/automation` | `app/api/admin/autofix/automation/route.ts` | ✅ |
+| 11 | GET | `/api/admin/autofix/autoscan` | `app/api/admin/autofix/autoscan/route.ts` | ✅ |
+| 12 | GET | `/api/admin/autofix/background-automation` | `app/api/admin/autofix/background-automation/route.ts` | ✅ |
+| 13 | POST | `/api/admin/autofix/background-automation` | `app/api/admin/autofix/background-automation/route.ts` | ✅ |
+| 14 | DELETE | `/api/admin/autofix/bootstrap` | `app/api/admin/autofix/bootstrap/route.ts` | ✅ |
+| 15 | GET | `/api/admin/autofix/bootstrap` | `app/api/admin/autofix/bootstrap/route.ts` | ✅ |
+| 16 | DELETE | `/api/admin/autofix/config` | `app/api/admin/autofix/config/route.ts` | ✅ |
+| 17 | GET | `/api/admin/autofix/config` | `app/api/admin/autofix/config/route.ts` | ✅ |
+| 18 | POST | `/api/admin/autofix/config` | `app/api/admin/autofix/config/route.ts` | ✅ |
+| 19 | PUT | `/api/admin/autofix/config` | `app/api/admin/autofix/config/route.ts` | ✅ |
+| 20 | GET | `/api/admin/autofix/errors` | `app/api/admin/autofix/errors/route.ts` | ✅ |
+| 21 | POST | `/api/admin/autofix/errors` | `app/api/admin/autofix/errors/route.ts` | ✅ |
+| 22 | GET | `/api/admin/autofix/fix-all` | `app/api/admin/autofix/fix-all/route.ts` | ✅ |
+| 23 | POST | `/api/admin/autofix/fix-all` | `app/api/admin/autofix/fix-all/route.ts` | ✅ |
+| 24 | POST | `/api/admin/autofix/fix/[errorId]` | `app/api/admin/autofix/fix/[errorId]/route.ts` | ✅ |
+| 25 | GET | `/api/admin/autofix/health` | `app/api/admin/autofix/health/route.ts` | ✅ |
+| 26 | GET | `/api/admin/autofix/healthmonitor` | `app/api/admin/autofix/healthmonitor/route.ts` | ✅ |
+| 27 | GET | `/api/admin/autofix/scan` | `app/api/admin/autofix/scan/route.ts` | ✅ |
+| 28 | POST | `/api/admin/autofix/scan` | `app/api/admin/autofix/scan/route.ts` | ✅ |
+| 29 | GET | `/api/admin/autofix/stream` | `app/api/admin/autofix/stream/route.ts` | ✅ |
+| 30 | GET | `/api/admin/dashboard` | `app/api/admin/dashboard/route.ts` | ✅ |
+| 31 | GET | `/api/admin/financial/global` | `app/api/admin/financial/global/route.ts` | ✅ |
+| 32 | POST | `/api/admin/financial/global` | `app/api/admin/financial/global/route.ts` | ✅ |
+| 33 | GET | `/api/admin/financial/summary` | `app/api/admin/financial/summary/route.ts` | ✅ |
+| 34 | POST | `/api/admin/master/auth` | `app/api/admin/master/auth/route.ts` | ✅ |
+| 35 | POST | `/api/admin/master/logout` | `app/api/admin/master/logout/route.ts` | ✅ |
+| 36 | GET | `/api/admin/monitoring` | `app/api/admin/monitoring/route.ts` | ✅ |
+| 37 | GET | `/api/admin/rate-limits` | `app/api/admin/rate-limits/route.ts` | ✅ |
+| 38 | POST | `/api/admin/rate-limits` | `app/api/admin/rate-limits/route.ts` | ✅ |
+| 39 | PUT | `/api/admin/rate-limits` | `app/api/admin/rate-limits/route.ts` | ✅ |
+| 40 | DELETE | `/api/admin/users` | `app/api/admin/users/route.ts` | ✅ |
+| 41 | GET | `/api/admin/users` | `app/api/admin/users/route.ts` | ✅ |
+| 42 | PUT | `/api/admin/users` | `app/api/admin/users/route.ts` | ✅ |
+| 43 | GET | `/api/ai` | `app/api/ai/route.ts` | ✅ |
+| 44 | POST | `/api/ai` | `app/api/ai/route.ts` | ✅ |
+| 45 | GET | `/api/ai-anomaly-service` | `app/api/ai-anomaly-service/route.ts` | ✅ |
+| 46 | POST | `/api/ai-anomaly-service` | `app/api/ai-anomaly-service/route.ts` | ✅ |
+| 47 | GET | `/api/ai-health` | `app/api/ai-health/route.ts` | ✅ |
+| 48 | POST | `/api/ai-health` | `app/api/ai-health/route.ts` | ✅ |
+| 49 | GET | `/api/ai-self-diagnostics` | `app/api/ai-self-diagnostics/route.ts` | ✅ |
+| 50 | POST | `/api/ai-self-diagnostics` | `app/api/ai-self-diagnostics/route.ts` | ✅ |
+| 51 | GET | `/api/ai/scan` | `app/api/ai/scan/route.ts` | ✅ |
+| 52 | POST | `/api/ai/scan` | `app/api/ai/scan/route.ts` | ✅ |
+| 53 | GET | `/api/analytics/transactions` | `app/api/analytics/transactions/route.ts` | ✅ |
+| 54 | GET | `/api/analytics/wallets` | `app/api/analytics/wallets/route.ts` | ✅ |
+| 55 | GET | `/api/auth/biometric/capture` | `app/api/auth/biometric/capture/route.ts` | ✅ |
+| 56 | POST | `/api/auth/biometric/capture` | `app/api/auth/biometric/capture/route.ts` | ✅ |
+| 57 | POST | `/api/auth/login` | `app/api/auth/login/route.ts` | ✅ |
+| 58 | POST | `/api/auth/profile` | `app/api/auth/profile/route.ts` | ✅ |
+| 59 | PUT | `/api/auth/profile` | `app/api/auth/profile/route.ts` | ✅ |
+| 60 | POST | `/api/auth/refresh` | `app/api/auth/refresh/route.ts` | ✅ |
+| 61 | POST | `/api/auth/register` | `app/api/auth/register/route.ts` | ✅ |
+| 62 | GET | `/api/auth/settings` | `app/api/auth/settings/route.ts` | ✅ |
+| 63 | POST | `/api/auth/settings` | `app/api/auth/settings/route.ts` | ✅ |
+| 64 | GET | `/api/auth/signin` | `app/api/auth/signin/route.ts` | ✅ |
+| 65 | POST | `/api/auth/signin` | `app/api/auth/signin/route.ts` | ✅ |
+| 66 | GET | `/api/auth/signup` | `app/api/auth/signup/route.ts` | ✅ |
+| 67 | POST | `/api/auth/signup` | `app/api/auth/signup/route.ts` | ✅ |
+| 68 | POST | `/api/auth/verify` | `app/api/auth/verify/route.ts` | ✅ |
+| 69 | POST | `/api/auth/verify-email` | `app/api/auth/verify-email/route.ts` | ✅ |
+| 70 | PUT | `/api/auth/verify-email` | `app/api/auth/verify-email/route.ts` | ✅ |
+| 71 | POST | `/api/auth/webauthn/authenticate` | `app/api/auth/webauthn/authenticate/route.ts` | ✅ |
+| 72 | POST | `/api/auth/webauthn/register` | `app/api/auth/webauthn/register/route.ts` | ✅ |
+| 73 | GET | `/api/automation/status` | `app/api/automation/status/route.ts` | ✅ |
+| 74 | POST | `/api/automation/trigger` | `src/app/api/automation/trigger/route.ts` | ✅ |
+| 75 | GET | `/api/biometric/templates` | `app/api/biometric/templates/route.ts` | ✅ |
+| 76 | POST | `/api/biometric/templates` | `app/api/biometric/templates/route.ts` | ✅ |
+| 77 | POST | `/api/biometric/verify` | `app/api/biometric/verify/route.ts` | ✅ |
+| 78 | GET | `/api/cashon` | `app/api/cashon/route.ts` | ✅ |
+| 79 | POST | `/api/cashon` | `app/api/cashon/route.ts` | ✅ |
+| 80 | PUT | `/api/cashon` | `app/api/cashon/route.ts` | ✅ |
+| 81 | GET | `/api/cashon/balance` | `app/api/cashon/balance/route.ts` | ✅ |
+| 82 | POST | `/api/cashon/balance` | `app/api/cashon/balance/route.ts` | ✅ |
+| 83 | POST | `/api/cashon/deposit` | `app/api/cashon/deposit/route.ts` | ✅ |
+| 84 | GET | `/api/cashon/signals` | `app/api/cashon/signals/route.ts` | ✅ |
+| 85 | POST | `/api/cashon/start-trading` | `app/api/cashon/start-trading/route.ts` | ✅ |
+| 86 | POST | `/api/cashon/stop-trading` | `app/api/cashon/stop-trading/route.ts` | ✅ |
+| 87 | GET | `/api/cashon/trading-status` | `app/api/cashon/trading-status/route.ts` | ✅ |
+| 88 | POST | `/api/chat/enhanced` | `app/api/chat/enhanced/route.ts` | ✅ |
+| 89 | GET | `/api/consciousness` | `app/api/consciousness/route.ts` | ✅ |
+| 90 | POST | `/api/consciousness` | `app/api/consciousness/route.ts` | ✅ |
+| 91 | GET | `/api/datasets` | `app/api/datasets/route.ts` | ✅ |
+| 92 | POST | `/api/datasets` | `app/api/datasets/route.ts` | ✅ |
+| 93 | DELETE | `/api/datasets/[id]` | `app/api/datasets/[id]/route.ts` | ✅ |
+| 94 | GET | `/api/datasets/[id]` | `app/api/datasets/[id]/route.ts` | ✅ |
+| 95 | POST | `/api/datasets/[id]` | `app/api/datasets/[id]/route.ts` | ✅ |
+| 96 | PUT | `/api/datasets/[id]` | `app/api/datasets/[id]/route.ts` | ✅ |
+| 97 | POST | `/api/datasets/settings` | `app/api/datasets/settings/route.ts` | ✅ |
+| 98 | GET | `/api/debug/users` | `app/api/debug/users/route.ts` | ✅ |
+| 99 | POST | `/api/deploy` | `app/api/deploy/route.ts` | ✅ |
+| 100 | POST | `/api/deploy/auto-redeploy` | `app/api/deploy/auto-redeploy/route.ts` | ✅ |
+| 101 | GET | `/api/deployment-status` | `app/api/deployment-status/route.ts` | ✅ |
+| 102 | GET | `/api/device-fingerprint` | `app/api/device-fingerprint/route.ts` | ✅ |
+| 103 | POST | `/api/device-fingerprint` | `app/api/device-fingerprint/route.ts` | ✅ |
+| 104 | POST | `/api/document-backup` | `app/api/document-backup/route.ts` | ✅ |
+| 105 | GET | `/api/domains` | `app/api/domains/route.ts` | ✅ |
+| 106 | POST | `/api/domains` | `app/api/domains/route.ts` | ✅ |
+| 107 | GET | `/api/domains/health` | `app/api/domains/health/route.ts` | ✅ |
+| 108 | GET | `/api/earning` | `app/api/earning/route.ts` | ✅ |
+| 109 | POST | `/api/earning` | `app/api/earning/route.ts` | ✅ |
+| 110 | GET | `/api/emails` | `app/api/emails/route.ts` | ✅ |
+| 111 | POST | `/api/emails` | `app/api/emails/route.ts` | ✅ |
+| 112 | GET | `/api/emergency/config` | `app/api/emergency/config/route.ts` | ✅ |
+| 113 | POST | `/api/emergency/config` | `app/api/emergency/config/route.ts` | ✅ |
+| 114 | POST | `/api/emergency/dispatch` | `app/api/emergency/dispatch/route.ts` | ✅ |
+| 115 | POST | `/api/emergency/email` | `app/api/emergency/email/route.ts` | ✅ |
+| 116 | DELETE | `/api/emergency/lockdown` | `app/api/emergency/lockdown/route.ts` | ✅ |
+| 117 | GET | `/api/emergency/lockdown` | `app/api/emergency/lockdown/route.ts` | ✅ |
+| 118 | POST | `/api/emergency/lockdown` | `app/api/emergency/lockdown/route.ts` | ✅ |
+| 119 | POST | `/api/emergency/sms` | `app/api/emergency/sms/route.ts` | ✅ |
+| 120 | DELETE | `/api/emergency/wipe` | `app/api/emergency/wipe/route.ts` | ✅ |
+| 121 | GET | `/api/emergency/wipe` | `app/api/emergency/wipe/route.ts` | ✅ |
+| 122 | POST | `/api/emergency/wipe` | `app/api/emergency/wipe/route.ts` | ✅ |
+| 123 | DELETE | `/api/employment` | `app/api/employment/route.ts` | ✅ |
+| 124 | GET | `/api/employment` | `app/api/employment/route.ts` | ✅ |
+| 125 | POST | `/api/employment` | `app/api/employment/route.ts` | ✅ |
+| 126 | PUT | `/api/employment` | `app/api/employment/route.ts` | ✅ |
+| 127 | GET | `/api/employment/megavault` | `app/api/employment/megavault/route.ts` | ✅ |
+| 128 | POST | `/api/employment/megavault` | `app/api/employment/megavault/route.ts` | ✅ |
+| 129 | PUT | `/api/employment/megavault` | `app/api/employment/megavault/route.ts` | ✅ |
+| 130 | GET | `/api/employment/payment` | `app/api/employment/payment/route.ts` | ✅ |
+| 131 | POST | `/api/employment/payment` | `app/api/employment/payment/route.ts` | ✅ |
+| 132 | PUT | `/api/employment/payment` | `app/api/employment/payment/route.ts` | ✅ |
+| 133 | GET | `/api/employment/revenue` | `app/api/employment/revenue/route.ts` | ✅ |
+| 134 | POST | `/api/employment/revenue` | `app/api/employment/revenue/route.ts` | ✅ |
+| 135 | PUT | `/api/employment/revenue` | `app/api/employment/revenue/route.ts` | ✅ |
+| 136 | GET | `/api/enhanced-email/analytics` | `app/api/enhanced-email/analytics/route.ts` | ✅ |
+| 137 | GET | `/api/enhanced-email/realtime` | `app/api/enhanced-email/realtime/route.ts` | ✅ |
+| 138 | GET | `/api/enhanced-email/rules` | `app/api/enhanced-email/rules/route.ts` | ✅ |
+| 139 | POST | `/api/enhanced-email/rules` | `app/api/enhanced-email/rules/route.ts` | ✅ |
+| 140 | POST | `/api/enhanced-email/send` | `app/api/enhanced-email/send/route.ts` | ✅ |
+| 141 | GET | `/api/enhanced-email/templates` | `app/api/enhanced-email/templates/route.ts` | ✅ |
+| 142 | POST | `/api/enhanced-email/templates` | `app/api/enhanced-email/templates/route.ts` | ✅ |
+| 143 | GET | `/api/enhanced-link-domain` | `app/api/enhanced-link-domain/route.ts` | ✅ |
+| 144 | POST | `/api/enhanced-link-domain` | `app/api/enhanced-link-domain/route.ts` | ✅ |
+| 145 | GET | `/api/evolution/autoclone-evolution` | `app/api/evolution/autoclone-evolution/route.ts` | ✅ |
+| 146 | POST | `/api/evolution/autoclone-evolution` | `app/api/evolution/autoclone-evolution/route.ts` | ✅ |
+| 147 | GET | `/api/evolution/platform-evolution` | `app/api/evolution/platform-evolution/route.ts` | ✅ |
+| 148 | POST | `/api/evolution/platform-evolution` | `app/api/evolution/platform-evolution/route.ts` | ✅ |
+| 149 | GET | `/api/files` | `app/api/files/route.ts` | ✅ |
+| 150 | GET | `/api/financial/audit` | `app/api/financial/audit/route.ts` | ✅ |
+| 151 | GET | `/api/financial/balances` | `app/api/financial/balances/route.ts` | ✅ |
+| 152 | GET | `/api/financial/transactions` | `app/api/financial/transactions/route.ts` | ✅ |
+| 153 | POST | `/api/financial/transactions` | `app/api/financial/transactions/route.ts` | ✅ |
+| 154 | GET | `/api/financial/verify` | `app/api/financial/verify/route.ts` | ✅ |
+| 155 | POST | `/api/financial/verify` | `app/api/financial/verify/route.ts` | ✅ |
+| 156 | GET | `/api/git/branch` | `app/api/git/branch/route.ts` | ✅ |
+| 157 | POST | `/api/git/commit` | `app/api/git/commit/route.ts` | ✅ |
+| 158 | POST | `/api/git/pr` | `app/api/git/pr/route.ts` | ✅ |
+| 159 | POST | `/api/git/push` | `app/api/git/push/route.ts` | ✅ |
+| 160 | GET | `/api/git/remote` | `app/api/git/remote/route.ts` | ✅ |
+| 161 | GET | `/api/git/status` | `app/api/git/status/route.ts` | ✅ |
+| 162 | DELETE | `/api/global` | `src/app/api/global/route.ts` | ✅ |
+| 163 | GET | `/api/global` | `src/app/api/global/route.ts` | ✅ |
+| 164 | POST | `/api/global` | `src/app/api/global/route.ts` | ✅ |
+| 165 | PUT | `/api/global` | `src/app/api/global/route.ts` | ✅ |
+| 166 | GET | `/api/global-links` | `app/api/global-links/route.ts` | ✅ |
+| 167 | POST | `/api/global-links` | `app/api/global-links/route.ts` | ✅ |
+| 168 | GET | `/api/global-news` | `app/api/global-news/route.ts` | ✅ |
+| 169 | POST | `/api/global-news` | `app/api/global-news/route.ts` | ✅ |
+| 170 | GET | `/api/health` | `app/api/health/route.ts` | ✅ |
+| 171 | POST | `/api/health` | `app/api/health/route.ts` | ✅ |
+| 172 | GET | `/api/health/data` | `app/api/health/data/route.ts` | ✅ |
+| 173 | POST | `/api/health/data` | `app/api/health/data/route.ts` | ✅ |
+| 174 | GET | `/api/links` | `app/api/links/route.ts` | ✅ |
+| 175 | POST | `/api/links` | `app/api/links/route.ts` | ✅ |
+| 176 | PATCH | `/api/links/[id]/zero-rated` | `app/api/links/[id]/zero-rated/route.ts` | ✅ |
+| 177 | GET | `/api/links/validate` | `app/api/links/validate/route.ts` | ✅ |
+| 178 | POST | `/api/links/validate` | `app/api/links/validate/route.ts` | ✅ |
+| 179 | GET | `/api/master/domains` | `app/api/master/domains/route.ts` | ✅ |
+| 180 | POST | `/api/master/domains` | `app/api/master/domains/route.ts` | ✅ |
+| 181 | POST | `/api/master/domains/approve/[domain]` | `app/api/master/domains/approve/[domain]/route.ts` | ✅ |
+| 182 | POST | `/api/master/domains/emergency-takeover` | `app/api/master/domains/emergency-takeover/route.ts` | ✅ |
+| 183 | POST | `/api/master/domains/force-refresh` | `app/api/master/domains/force-refresh/route.ts` | ✅ |
+| 184 | DELETE | `/api/master/domains/remove/[domain]` | `app/api/master/domains/remove/[domain]/route.ts` | ✅ |
+| 185 | GET | `/api/master/domains/status` | `app/api/master/domains/status/route.ts` | ✅ |
+| 186 | GET | `/api/master/links` | `app/api/master/links/route.ts` | ✅ |
+| 187 | POST | `/api/master/sponsored/add` | `app/api/master/sponsored/add/route.ts` | ✅ |
+| 188 | GET | `/api/master/sponsored/analytics` | `app/api/master/sponsored/analytics/route.ts` | ✅ |
+| 189 | GET | `/api/master/sponsored/list` | `app/api/master/sponsored/list/route.ts` | ✅ |
+| 190 | DELETE | `/api/master/sponsored/remove/[userId]` | `app/api/master/sponsored/remove/[userId]/route.ts` | ✅ |
+| 191 | GET | `/api/master/sponsored/sync` | `app/api/master/sponsored/sync/route.ts` | ✅ |
+| 192 | GET | `/api/master/tracks` | `app/api/master/tracks/route.ts` | ✅ |
+| 193 | POST | `/api/master/tracks` | `app/api/master/tracks/route.ts` | ✅ |
+| 194 | GET | `/api/media/generate` | `app/api/media/generate/route.ts` | ✅ |
+| 195 | POST | `/api/media/generate` | `app/api/media/generate/route.ts` | ✅ |
+| 196 | GET | `/api/media/status` | `app/api/media/status/route.ts` | ✅ |
+| 197 | GET | `/api/metrics` | `app/api/metrics/route.ts` | ✅ |
+| 198 | GET | `/api/monitor/status` | `app/api/monitor/status/route.ts` | ✅ |
+| 199 | POST | `/api/monitor/status` | `app/api/monitor/status/route.ts` | ✅ |
+| 200 | POST | `/api/mpesa/callback` | `app/api/mpesa/callback/route.ts` | ✅ |
+| 201 | POST | `/api/notifications/test` | `app/api/notifications/test/route.ts` | ✅ |
+| 202 | POST | `/api/payments/initiate` | `app/api/payments/initiate/route.ts` | ✅ |
+| 203 | GET | `/api/platforms` | `app/api/platforms/route.ts` | ✅ |
+| 204 | POST | `/api/platforms` | `app/api/platforms/route.ts` | ✅ |
+| 205 | POST | `/api/preview/analyze` | `src/app/api/preview/analyze/route.ts` | ✅ |
+| 206 | POST | `/api/preview/execute-tool` | `src/app/api/preview/execute-tool/route.ts` | ✅ |
+| 207 | DELETE | `/api/qapikey` | `app/api/qapikey/route.ts` | ✅ |
+| 208 | GET | `/api/qapikey` | `app/api/qapikey/route.ts` | ✅ |
+| 209 | POST | `/api/qapikey` | `app/api/qapikey/route.ts` | ✅ |
+| 210 | GET | `/api/qcity/audit-log` | `app/api/qcity/audit-log/route.ts` | ✅ |
+| 211 | POST | `/api/qcity/audit-log` | `app/api/qcity/audit-log/route.ts` | ✅ |
+| 212 | GET | `/api/qcity/remote-command` | `app/api/qcity/remote-command/route.ts` | ✅ |
+| 213 | POST | `/api/qcity/remote-command` | `app/api/qcity/remote-command/route.ts` | ✅ |
+| 214 | POST | `/api/qcity/selfheal-npm` | `app/api/qcity/selfheal-npm/route.ts` | ✅ |
+| 215 | GET | `/api/qcity/status` | `app/api/qcity/status/route.ts` | ✅ |
+| 216 | POST | `/api/qcity/status` | `app/api/qcity/status/route.ts` | ✅ |
+| 217 | GET | `/api/qi-spaces` | `app/api/qi-spaces/route.ts` | ✅ |
+| 218 | POST | `/api/qi-spaces` | `app/api/qi-spaces/route.ts` | ✅ |
+| 219 | GET | `/api/qi-trading` | `app/api/qi-trading/route.ts` | ✅ |
+| 220 | POST | `/api/qi-trading` | `app/api/qi-trading/route.ts` | ✅ |
+| 221 | GET | `/api/qmoi-database` | `app/api/qmoi-database/route.ts` | ✅ |
+| 222 | POST | `/api/qmoi-database` | `app/api/qmoi-database/route.ts` | ✅ |
+| 223 | GET | `/api/qmoi-earning-enhanced` | `app/api/qmoi-earning-enhanced/route.ts` | ✅ |
+| 224 | GET | `/api/qmoi-gitlab/deployments` | `app/api/qmoi-gitlab/deployments/route.ts` | ✅ |
+| 225 | GET | `/api/qmoi-gitlab/errors` | `app/api/qmoi-gitlab/errors/route.ts` | ✅ |
+| 226 | GET | `/api/qmoi-gitlab/jobs` | `app/api/qmoi-gitlab/jobs/route.ts` | ✅ |
+| 227 | GET | `/api/qmoi-gitlab/pipelines` | `app/api/qmoi-gitlab/pipelines/route.ts` | ✅ |
+| 228 | POST | `/api/qmoi-gitlab/trigger` | `app/api/qmoi-gitlab/trigger/route.ts` | ✅ |
+| 229 | GET | `/api/qmoi-model` | `app/api/qmoi-model/route.ts` | ✅ |
+| 230 | POST | `/api/qmoi-model` | `app/api/qmoi-model/route.ts` | ✅ |
+| 231 | GET | `/api/qmoi-tracks` | `app/api/qmoi-tracks/route.ts` | ✅ |
+| 232 | POST | `/api/qmoi-tracks` | `app/api/qmoi-tracks/route.ts` | ✅ |
+| 233 | GET | `/api/qmoi/advanced-analysis` | `app/api/qmoi/advanced-analysis/route.ts` | ✅ |
+| 234 | POST | `/api/qmoi/advanced-analysis` | `app/api/qmoi/advanced-analysis/route.ts` | ✅ |
+| 235 | POST | `/api/qmoi/audio` | `app/api/qmoi/audio/route.ts` | ✅ |
+| 236 | GET | `/api/qmoi/auto-fix/download-report` | `app/api/qmoi/auto-fix/download-report/route.ts` | ✅ |
+| 237 | GET | `/api/qmoi/auto-fix/github-status` | `app/api/qmoi/auto-fix/github-status/route.ts` | ✅ |
+| 238 | POST | `/api/qmoi/auto-fix/start` | `app/api/qmoi/auto-fix/start/route.ts` | ✅ |
+| 239 | GET | `/api/qmoi/auto-fix/status` | `app/api/qmoi/auto-fix/status/route.ts` | ✅ |
+| 240 | POST | `/api/qmoi/auto-fix/stop` | `app/api/qmoi/auto-fix/stop/route.ts` | ✅ |
+| 241 | GET | `/api/qmoi/auto-setup` | `app/api/qmoi/auto-setup/route.ts` | ✅ |
+| 242 | POST | `/api/qmoi/auto-setup` | `app/api/qmoi/auto-setup/route.ts` | ✅ |
+| 243 | POST | `/api/qmoi/autodev/generate-feature` | `app/api/qmoi/autodev/generate-feature/route.ts` | ✅ |
+| 244 | POST | `/api/qmoi/autodev/generate-feature` | `src/app/api/qmoi/autodev/generate-feature/route.ts` | ✅ |
+| 245 | POST | `/api/qmoi/autodev/research` | `app/api/qmoi/autodev/research/route.ts` | ✅ |
+| 246 | POST | `/api/qmoi/autodev/research` | `src/app/api/qmoi/autodev/research/route.ts` | ✅ |
+| 247 | GET | `/api/qmoi/autodev/state` | `src/app/api/qmoi/autodev/state/route.ts` | ✅ |
+| 248 | GET | `/api/qmoi/autodev/suggestions/features` | `src/app/api/qmoi/autodev/suggestions/features/route.ts` | ✅ |
+| 249 | GET | `/api/qmoi/autodev/suggestions/improvements` | `src/app/api/qmoi/autodev/suggestions/improvements/route.ts` | ✅ |
+| 250 | POST | `/api/qmoi/autodev/suggestions/improvements` | `src/app/api/qmoi/autodev/suggestions/improvements/route.ts` | ✅ |
+| 251 | GET | `/api/qmoi/autodev/suggestions/optimizations` | `src/app/api/qmoi/autodev/suggestions/optimizations/route.ts` | ✅ |
+| 252 | POST | `/api/qmoi/autodev/toggle` | `app/api/qmoi/autodev/toggle/route.ts` | ✅ |
+| 253 | POST | `/api/qmoi/autodev/toggle` | `src/app/api/qmoi/autodev/toggle/route.ts` | ✅ |
+| 254 | GET | `/api/qmoi/avatars` | `app/api/qmoi/avatars/route.ts` | ✅ |
+| 255 | POST | `/api/qmoi/avatars` | `app/api/qmoi/avatars/route.ts` | ✅ |
+| 256 | GET | `/api/qmoi/backup` | `app/api/qmoi/backup/route.ts` | ✅ |
+| 257 | POST | `/api/qmoi/backup` | `app/api/qmoi/backup/route.ts` | ✅ |
+| 258 | GET | `/api/qmoi/chat` | `app/api/qmoi/chat/route.ts` | ✅ |
+| 259 | POST | `/api/qmoi/chat` | `app/api/qmoi/chat/route.ts` | ✅ |
+| 260 | GET | `/api/qmoi/chat-enhanced` | `app/api/qmoi/chat-enhanced/route.ts` | ✅ |
+| 261 | POST | `/api/qmoi/chat-enhanced` | `app/api/qmoi/chat-enhanced/route.ts` | ✅ |
+| 262 | GET | `/api/qmoi/evolution/compare-models` | `src/app/api/qmoi/evolution/compare-models/route.ts` | ✅ |
+| 263 | POST | `/api/qmoi/evolution/compare-models` | `src/app/api/qmoi/evolution/compare-models/route.ts` | ✅ |
+| 264 | GET | `/api/qmoi/evolution/replace-model` | `src/app/api/qmoi/evolution/replace-model/route.ts` | ✅ |
+| 265 | POST | `/api/qmoi/evolution/replace-model` | `src/app/api/qmoi/evolution/replace-model/route.ts` | ✅ |
+| 266 | GET | `/api/qmoi/evolution/track-evolution` | `src/app/api/qmoi/evolution/track-evolution/route.ts` | ✅ |
+| 267 | POST | `/api/qmoi/evolution/track-evolution` | `src/app/api/qmoi/evolution/track-evolution/route.ts` | ✅ |
+| 268 | POST | `/api/qmoi/execute` | `src/app/api/qmoi/execute/route.ts` | ✅ |
+| 269 | DELETE | `/api/qmoi/files/[id]` | `app/api/qmoi/files/[id]/route.ts` | ✅ |
+| 270 | GET | `/api/qmoi/files/[id]` | `app/api/qmoi/files/[id]/route.ts` | ✅ |
+| 271 | GET | `/api/qmoi/friendship` | `app/api/qmoi/friendship/route.ts` | ✅ |
+| 272 | POST | `/api/qmoi/friendship` | `app/api/qmoi/friendship/route.ts` | ✅ |
+| 273 | GET | `/api/qmoi/health` | `src/app/api/qmoi/health/route.ts` | ✅ |
+| 274 | POST | `/api/qmoi/health` | `src/app/api/qmoi/health/route.ts` | ✅ |
+| 275 | GET | `/api/qmoi/health/stream` | `src/app/api/qmoi/health/stream/route.ts` | ✅ |
+| 276 | GET | `/api/qmoi/language` | `app/api/qmoi/language/route.ts` | ✅ |
+| 277 | POST | `/api/qmoi/language` | `app/api/qmoi/language/route.ts` | ✅ |
+| 278 | GET | `/api/qmoi/master-mode` | `app/api/qmoi/master-mode/route.ts` | ✅ |
+| 279 | POST | `/api/qmoi/master-mode` | `app/api/qmoi/master-mode/route.ts` | ✅ |
+| 280 | GET | `/api/qmoi/memory` | `app/api/qmoi/memory/route.ts` | ✅ |
+| 281 | POST | `/api/qmoi/memory` | `app/api/qmoi/memory/route.ts` | ✅ |
+| 282 | GET | `/api/qmoi/own-device-logs` | `app/api/qmoi/own-device-logs/route.ts` | ✅ |
+| 283 | POST | `/api/qmoi/own-device-logs` | `app/api/qmoi/own-device-logs/route.ts` | ✅ |
+| 284 | POST | `/api/qmoi/own-device-logs/export` | `app/api/qmoi/own-device-logs/export/route.ts` | ✅ |
+| 285 | GET | `/api/qmoi/profile-questions` | `app/api/qmoi/profile-questions/route.ts` | ✅ |
+| 286 | POST | `/api/qmoi/profile-questions` | `app/api/qmoi/profile-questions/route.ts` | ✅ |
+| 287 | GET | `/api/qmoi/projects` | `app/api/qmoi/projects/route.ts` | ✅ |
+| 288 | POST | `/api/qmoi/projects` | `app/api/qmoi/projects/route.ts` | ✅ |
+| 289 | GET | `/api/qmoi/research` | `app/api/qmoi/research/route.ts` | ✅ |
+| 290 | POST | `/api/qmoi/research` | `app/api/qmoi/research/route.ts` | ✅ |
+| 291 | GET | `/api/qmoi/revenue` | `app/api/qmoi/revenue/route.ts` | ✅ |
+| 292 | POST | `/api/qmoi/revenue` | `app/api/qmoi/revenue/route.ts` | ✅ |
+| 293 | GET | `/api/qmoi/revenue-dashboard` | `app/api/qmoi/revenue-dashboard/route.ts` | ✅ |
+| 294 | POST | `/api/qmoi/revenue-dashboard` | `app/api/qmoi/revenue-dashboard/route.ts` | ✅ |
+| 295 | POST | `/api/qmoi/revenue/reset` | `app/api/qmoi/revenue/reset/route.ts` | ✅ |
+| 296 | POST | `/api/qmoi/revenue/start` | `app/api/qmoi/revenue/start/route.ts` | ✅ |
+| 297 | GET | `/api/qmoi/revenue/status` | `app/api/qmoi/revenue/status/route.ts` | ✅ |
+| 298 | POST | `/api/qmoi/revenue/stop` | `app/api/qmoi/revenue/stop/route.ts` | ✅ |
+| 299 | POST | `/api/qmoi/revenue/target` | `app/api/qmoi/revenue/target/route.ts` | ✅ |
+| 300 | GET | `/api/qmoi/revenue/transactions` | `app/api/qmoi/revenue/transactions/route.ts` | ✅ |
+| 301 | POST | `/api/qmoi/revenue/transfer` | `app/api/qmoi/revenue/transfer/route.ts` | ✅ |
+| 302 | POST | `/api/qmoi/self-work/code-review` | `src/app/api/qmoi/self-work/code-review/route.ts` | ✅ |
+| 303 | POST | `/api/qmoi/self-work/debug` | `src/app/api/qmoi/self-work/debug/route.ts` | ✅ |
+| 304 | POST | `/api/qmoi/self-work/run-tests` | `src/app/api/qmoi/self-work/run-tests/route.ts` | ✅ |
+| 305 | GET | `/api/qmoi/session` | `app/api/qmoi/session/route.ts` | ✅ |
+| 306 | POST | `/api/qmoi/session` | `app/api/qmoi/session/route.ts` | ✅ |
+| 307 | POST | `/api/qmoi/suggestions` | `src/app/api/qmoi/suggestions/route.ts` | ✅ |
+| 308 | POST | `/api/qmoi/transcribe` | `app/api/qmoi/transcribe/route.ts` | ✅ |
+| 309 | PUT | `/api/qmoi/transcribe` | `app/api/qmoi/transcribe/route.ts` | ✅ |
+| 310 | POST | `/api/qmoi/upload` | `app/api/qmoi/upload/route.ts` | ✅ |
+| 311 | GET | `/api/qmoi/user` | `app/api/qmoi/user/route.ts` | ✅ |
+| 312 | POST | `/api/qmoi/user` | `app/api/qmoi/user/route.ts` | ✅ |
+| 313 | GET | `/api/qmoi/visuals` | `app/api/qmoi/visuals/route.ts` | ✅ |
+| 314 | POST | `/api/qmoi/visuals` | `app/api/qmoi/visuals/route.ts` | ✅ |
+| 315 | GET | `/api/qmoi/voice` | `app/api/qmoi/voice/route.ts` | ✅ |
+| 316 | POST | `/api/qmoi/voice` | `app/api/qmoi/voice/route.ts` | ✅ |
+| 317 | POST | `/api/qmoi/voice-enroll` | `app/api/qmoi/voice-enroll/route.ts` | ✅ |
+| 318 | POST | `/api/qmoi/voice-preview` | `app/api/qmoi/voice-preview/route.ts` | ✅ |
+| 319 | GET | `/api/qmoi/voice-profiles` | `app/api/qmoi/voice-profiles/route.ts` | ✅ |
+| 320 | POST | `/api/qmoi/voice-profiles` | `app/api/qmoi/voice-profiles/route.ts` | ✅ |
+| 321 | GET | `/api/qnews` | `app/api/qnews/route.ts` | ✅ |
+| 322 | GET | `/api/qradio` | `app/api/qradio/route.ts` | ✅ |
+| 323 | GET | `/api/qstore` | `app/api/qstore/route.ts` | ✅ |
+| 324 | GET | `/api/qvillage` | `app/api/qvillage/route.ts` | ✅ |
+| 325 | POST | `/api/qvillage` | `app/api/qvillage/route.ts` | ✅ |
+| 326 | GET | `/api/qvillage/inference` | `app/api/qvillage/inference/route.ts` | ✅ |
+| 327 | GET | `/api/qvillage/model-card` | `app/api/qvillage/model-card/route.ts` | ✅ |
+| 328 | POST | `/api/qvillage/model-card` | `app/api/qvillage/model-card/route.ts` | ✅ |
+| 329 | GET | `/api/qvillage/models` | `app/api/qvillage/models/route.ts` | ✅ |
+| 330 | GET | `/api/qvillage/spaces` | `app/api/qvillage/spaces/route.ts` | ✅ |
+| 331 | GET | `/api/qvs` | `src/app/api/qvs/route.ts` | ✅ |
+| 332 | POST | `/api/qvs` | `src/app/api/qvs/route.ts` | ✅ |
+| 333 | GET | `/api/social-automation` | `app/api/social-automation/route.ts` | ✅ |
+| 334 | POST | `/api/social-automation` | `app/api/social-automation/route.ts` | ✅ |
+| 335 | POST | `/api/ssh/list` | `app/api/ssh/list/route.ts` | ✅ |
+| 336 | POST | `/api/ssh/read` | `app/api/ssh/read/route.ts` | ✅ |
+| 337 | POST | `/api/ssh/write` | `app/api/ssh/write/route.ts` | ✅ |
+| 338 | GET | `/api/tracks` | `app/api/tracks/route.ts` | ✅ |
+| 339 | POST | `/api/tracks` | `app/api/tracks/route.ts` | ✅ |
+| 340 | DELETE | `/api/tracks/[id]` | `app/api/tracks/[id]/route.ts` | ✅ |
+| 341 | PATCH | `/api/tracks/[id]` | `app/api/tracks/[id]/route.ts` | ✅ |
+| 342 | GET | `/api/tracks/settings` | `app/api/tracks/settings/route.ts` | ✅ |
+| 343 | PATCH | `/api/tracks/settings` | `app/api/tracks/settings/route.ts` | ✅ |
+| 344 | GET | `/api/tracks/stream` | `app/api/tracks/stream/route.ts` | ✅ |
+| 345 | GET | `/api/trading/status` | `app/api/trading/status/route.ts` | ✅ |
+| 346 | POST | `/api/trading/status` | `app/api/trading/status/route.ts` | ✅ |
+| 347 | GET | `/api/transactions` | `app/api/transactions/route.ts` | ✅ |
+| 348 | GET | `/api/tts/generate` | `app/api/tts/generate/route.ts` | ✅ |
+| 349 | POST | `/api/tts/generate` | `app/api/tts/generate/route.ts` | ✅ |
+| 350 | GET | `/api/tts/stream` | `app/api/tts/stream/route.ts` | ✅ |
+| 351 | GET | `/api/users/profile` | `app/api/users/profile/route.ts` | ✅ |
+| 352 | PUT | `/api/users/profile` | `app/api/users/profile/route.ts` | ✅ |
+| 353 | GET | `/api/version` | `app/api/version/route.ts` | ✅ |
+| 354 | POST | `/api/voice/enroll` | `app/api/voice/enroll/route.ts` | ✅ |
+| 355 | POST | `/api/voice/verify` | `app/api/voice/verify/route.ts` | ✅ |
+| 356 | GET | `/api/wallets` | `app/api/wallets/route.ts` | ✅ |
+| 357 | POST | `/api/wallets` | `app/api/wallets/route.ts` | ✅ |
+| 358 | DELETE | `/api/wallets/[walletId]` | `app/api/wallets/[walletId]/route.ts` | ✅ |
+| 359 | GET | `/api/wallets/[walletId]` | `app/api/wallets/[walletId]/route.ts` | ✅ |
+| 360 | PUT | `/api/wallets/[walletId]` | `app/api/wallets/[walletId]/route.ts` | ✅ |
+| 361 | POST | `/api/webauthn/authenticate` | `app/api/webauthn/authenticate/route.ts` | ✅ |
+| 362 | POST | `/api/webauthn/register` | `app/api/webauthn/register/route.ts` | ✅ |
+| 363 | GET | `/api/webhooks/payments` | `app/api/webhooks/payments/route.ts` | ✅ |
+| 364 | POST | `/api/webhooks/payments` | `app/api/webhooks/payments/route.ts` | ✅ |
+| 365 | POST | `/api/webhooks/qvillage` | `app/api/webhooks/qvillage/route.ts` | ✅ |
+| 366 | POST | `/api/whatsapp-bot` | `app/api/whatsapp-bot/route.ts` | ✅ |
+| 367 | GET | `/api/whatsapp-business` | `app/api/whatsapp-business/route.ts` | ✅ |
+| 368 | POST | `/api/whatsapp-business` | `app/api/whatsapp-business/route.ts` | ✅ |
+| 369 | GET | `/api/whatsapp/audit` | `app/api/whatsapp/audit/route.ts` | ✅ |
+| 370 | GET | `/api/whatsapp/verify` | `app/api/whatsapp/verify/route.ts` | ✅ |
+| 371 | POST | `/api/whatsapp/verify` | `app/api/whatsapp/verify/route.ts` | ✅ |
+| 372 | GET | `/api/wifi` | `app/api/wifi/route.ts` | ✅ |
+| 373 | POST | `/api/wifi` | `app/api/wifi/route.ts` | ✅ |
+| 374 | GET | `/api/wifi-security` | `app/api/wifi-security/route.ts` | ✅ |
+| 375 | POST | `/api/wifi-security` | `app/api/wifi-security/route.ts` | ✅ |
+| 376 | GET | `/api/wifi/scan` | `app/api/wifi/scan/route.ts` | ✅ |
+| 377 | POST | `/api/wifi/scan` | `app/api/wifi/scan/route.ts` | ✅ |
+| 378 | GET | `/api/youtube/download` | `app/api/youtube/download/route.ts` | ✅ |
+| 379 | POST | `/api/youtube/download` | `app/api/youtube/download/route.ts` | ✅ |
 
-## Endpoint Details
+## Endpoint Count
 
-### By Category
+- **Total endpoints**: 379
 
-#### Evolution System (5)
-- `GET` `/api/evolution/autoclone-evolution`
-- `POST` `/api/evolution/autoclone-evolution`
-- `GET` `/api/evolution/platform-evolution`
-- `POST` `/api/evolution/platform-evolution`
-- `GET` `/api/qmoi/evolution/compare-models`
-- `POST` `/api/qmoi/evolution/compare-models`
-- `GET` `/api/qmoi/evolution/replace-model`
-- `POST` `/api/qmoi/evolution/replace-model`
-- `GET` `/api/qmoi/evolution/track-evolution`
-- `POST` `/api/qmoi/evolution/track-evolution`
+Generated from the active `app/api` route tree.
 
-#### AutoDev System (10)
-- `POST` `/api/qmoi/autodev/generate-feature`
-- `POST` `/api/qmoi/autodev/generate-feature`
-- `POST` `/api/qmoi/autodev/research`
-- `POST` `/api/qmoi/autodev/research`
-- `GET` `/api/qmoi/autodev/state`
-- `GET` `/api/qmoi/autodev/suggestions/features`
-- `GET` `/api/qmoi/autodev/suggestions/improvements`
-- `POST` `/api/qmoi/autodev/suggestions/improvements`
-- `GET` `/api/qmoi/autodev/suggestions/optimizations`
-- `POST` `/api/qmoi/autodev/toggle`
-- `POST` `/api/qmoi/autodev/toggle`
-
-#### Health & Monitoring (8)
-- `GET` `/api/admin/autofix/health`
-- `GET` `/api/admin/autofix/healthmonitor`
-- `GET` `/api/ai-health`
-- `POST` `/api/ai-health`
-- `GET` `/api/domains/health`
-- `GET` `/api/health`
-- `POST` `/api/health`
-- `GET` `/api/health/data`
-- `POST` `/api/health/data`
-- `GET` `/api/qmoi/health`
-- `POST` `/api/qmoi/health`
-- `GET` `/api/qmoi/health/stream`
-
-#### Master Operations (16)
-- `POST` `/api/admin/master/auth`
-- `POST` `/api/admin/master/logout`
-- `GET` `/api/master/domains`
-- `POST` `/api/master/domains`
-- `POST` `/api/master/domains/approve/[domain]`
-- `POST` `/api/master/domains/emergency-takeover`
-- `POST` `/api/master/domains/force-refresh`
-- `DELETE` `/api/master/domains/remove/[domain]`
-- `GET` `/api/master/domains/status`
-- `GET` `/api/master/links`
-- `POST` `/api/master/sponsored/add`
-- `GET` `/api/master/sponsored/analytics`
-- `GET` `/api/master/sponsored/list`
-- `DELETE` `/api/master/sponsored/remove/[userId]`
-- `GET` `/api/master/sponsored/sync`
-- `GET` `/api/master/tracks`
-- `POST` `/api/master/tracks`
-- `GET` `/api/qmoi/master-mode`
-- `POST` `/api/qmoi/master-mode`
-
-#### Global APIs (5)
-- `GET` `/api/admin/financial/global`
-- `POST` `/api/admin/financial/global`
-- `GET` `/api/global`
-- `POST` `/api/global`
-- `PUT` `/api/global`
-- `DELETE` `/api/global`
-- `GET` `/api/global-links`
-- `POST` `/api/global-links`
-- `GET` `/api/global-news`
-- `POST` `/api/global-news`
-- `GET` `/api/qvs`
-- `POST` `/api/qvs`
-
-#### Integration APIs (22)
-- `POST` `/api/cashon/start-trading`
-- `POST` `/api/cashon/stop-trading`
-- `GET` `/api/cashon/trading-status`
-- `GET` `/api/datasets`
-- `POST` `/api/datasets`
-- `GET` `/api/datasets/[id]`
-- `POST` `/api/datasets/[id]`
-- `PUT` `/api/datasets/[id]`
-- `DELETE` `/api/datasets/[id]`
-- `POST` `/api/datasets/settings`
-- `GET` `/api/global-links`
-- `POST` `/api/global-links`
-- `GET` `/api/links`
-- `POST` `/api/links`
-- `PATCH` `/api/links/[id]/zero-rated`
-- `GET` `/api/links/validate`
-- `POST` `/api/links/validate`
-- `GET` `/api/master/links`
-- `GET` `/api/media/generate`
-- `POST` `/api/media/generate`
-- `GET` `/api/media/status`
-- `GET` `/api/qi-trading`
-- `POST` `/api/qi-trading`
-- `GET` `/api/qstore`
-- `GET` `/api/qvillage`
-- `POST` `/api/qvillage`
-- `GET` `/api/qvillage/inference`
-- `GET` `/api/qvillage/model-card`
-- `POST` `/api/qvillage/model-card`
-- `GET` `/api/qvillage/models`
-- `GET` `/api/qvillage/spaces`
-- `GET` `/api/trading/status`
-- `POST` `/api/trading/status`
-- `POST` `/api/webhooks/qvillage`
-
-## Statistics
-
-- **Total Endpoints**: 244
-- **Evolution Endpoints**: 5
-- **AutoDev Endpoints**: 10
-- **Health Endpoints**: 8
-- **Master Endpoints**: 16
-- **Global Endpoints**: 5
-- **Integration Endpoints**: 22
-
-## HTTP Methods
-
-- **GET**: 168 endpoints
-- **POST**: 179 endpoints
-- **PUT**: 15 endpoints
-- **DELETE**: 14 endpoints
-- **PATCH**: 3 endpoints
-
-## Rate Limiting
-
-- Public: 100 req/min
-- Auth: 1000 req/min
-- Master: 10000 req/min
-
----
-
-Generated by QMOI Continuous Documentation System
-Auto-updated at 2026-03-28T04:58:47.979567Z

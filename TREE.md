@@ -26,6 +26,7 @@
 - `.env.example` - Environment variables template
 - `README.md` - Main project documentation
 - `LICENSE` - Project license
+- `domain_registry.json` - Master domain registry metadata
 
 ### Core Application Directories
 
@@ -244,6 +245,9 @@ qmoi-enhanced/
 │   ├── validate_api_documentation.py # API validation
 │   ├── update_tree_and_percentages.py # Tree update
 │   ├── domain_health_check.py        # Domain health
+│   ├── domain_health_check_advanced.py # Advanced domain and UI health validator
+│   ├── content_ui_validator.py       # Content and UI feature validation
+│   ├── domain_registry_manager.py    # Domain registry manager and exporter
 │   ├── validate_and_sync_links.py    # Link validation
 │   ├── build/
 │   │   ├── build-all.sh             # Master build script

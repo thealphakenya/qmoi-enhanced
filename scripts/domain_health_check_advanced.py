@@ -13,6 +13,7 @@ Date: 2026-03-21
 """
 
 import os
+import re
 import socket
 import subprocess
 import json
@@ -25,6 +26,9 @@ from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
 from typing import Any
+import urllib.request
+import urllib.error
+import urllib.parse
 
 # Configure logging
 logging.basicConfig(
@@ -65,7 +69,7 @@ class DomainHealthStatus:
 class DomainHealthChecker:
     """Advanced domain health checking system"""
 
-    # Force synthetic health fallback mode (100% up) when real network checks fail
+    # Force synthetic health fallback mode by default unless explicitly disabled
     FORCE_SYNTHETIC_HEALTH = os.getenv("FORCE_SYNTHETIC_HEALTH", "true").lower() in ("1", "true", "yes")
 
     # Regional DNS servers for multi-region checks
@@ -84,81 +88,145 @@ class DomainHealthChecker:
             "critical": True,
             "fallbacks": ["qvillage.net", "qvillage.org"],
             "check_endpoints": ["/", "/api/health", "/status"],
-            "ui_endpoints": ["/", "/api/health", "/app", "/dashboard"]
+            "ui_endpoints": ["/", "/community", "/docs", "/app", "/dashboard"],
+            "expected_features": [
+                "community_dashboard", "service_directory", "search", "marketplace",
+                "file_sharing", "documentation_portal", "responsive_design", "ssl_certificate",
+                "footer", "navigation", "link_directory"
+            ],
+            "ui_components": ["navbar", "hero_section", "featured_links", "search_bar", "community_cards", "footer"]
         },
         "qmoi.ai": {
             "type": "main_app",
             "critical": True,
             "fallbacks": ["qmoi.com"],
-            "check_endpoints": ["/", "/api/health"]
+            "check_endpoints": ["/", "/api/health"],
+            "ui_endpoints": ["/", "/chat", "/dashboard", "/app"],
+            "expected_features": [
+                "chat_interface", "model_selection", "dashboard", "user_profile",
+                "api_access", "responsive_design", "ssl_certificate", "analytics", "help_center"
+            ],
+            "ui_components": ["chat_window", "model_cards", "sidebar", "toolbar", "action_buttons", "footer"]
         },
         "alphaq.ai": {
             "type": "ai_platform",
             "critical": True,
             "fallbacks": ["alphaq.com"],
             "check_endpoints": ["/", "/api/health"],
-            "ui_endpoints": ["/", "/api/health", "/chat", "/dashboard"]
+            "ui_endpoints": ["/", "/chat", "/models", "/dashboard"],
+            "expected_features": [
+                "ai_dashboard", "model_gallery", "chat_interface", "api_documentation",
+                "analytics_panel", "ssl_certificate", "responsive_design"
+            ],
+            "ui_components": ["model_selector", "chat_input", "results_panel", "analytics_charts", "navigation_menu"]
         },
         "qshare.qvillage.com": {
             "type": "file_sharing",
             "critical": True,
             "fallbacks": ["qshare.qvillage.com", "qshare.qglobal.org"],
-            "check_endpoints": ["/", "/api/health", "/upload"]
+            "check_endpoints": ["/", "/api/health", "/upload"],
+            "ui_endpoints": ["/", "/upload", "/share"],
+            "expected_features": [
+                "file_upload", "file_sharing", "download_links", "share_permissions",
+                "ssl_certificate", "responsive_design"
+            ],
+            "ui_components": ["upload_form", "file_list", "share_button", "progress_indicator", "footer"]
         },
         "qstore.qvillage.com": {
             "type": "app_store",
             "critical": True,
             "fallbacks": ["qstore.qvillage.com"],
-            "check_endpoints": ["/", "/api/apps"]
+            "check_endpoints": ["/", "/api/apps"],
+            "ui_endpoints": ["/", "/apps", "/search"],
+            "expected_features": [
+                "app_catalog", "app_search", "download_buttons", "ratings_reviews",
+                "ssl_certificate", "responsive_design"
+            ],
+            "ui_components": ["app_cards", "search_bar", "filters", "download_buttons", "footer"]
         },
         "qcity.qmoi.ai": {
             "type": "city_service",
             "critical": False,
             "fallbacks": ["qcity.qvillage.com"],
-            "check_endpoints": ["/", "/api/health"]
+            "check_endpoints": ["/", "/api/health"],
+            "ui_endpoints": ["/", "/dashboard", "/services"],
+            "expected_features": [
+                "city_dashboard", "map_view", "service_directory", "real_time_status",
+                "automation_controls", "ssl_certificate", "responsive_design"
+            ],
+            "ui_components": ["map_panel", "service_cards", "status_timeline", "control_panel", "footer"]
         },
         "qmoi-space.qmoi.ai": {
             "type": "space_platform",
             "critical": False,
             "fallbacks": ["space.qmoi.ai"],
-            "check_endpoints": ["/", "/api/health"]
+            "check_endpoints": ["/", "/api/health"],
+            "ui_endpoints": ["/", "/explorer", "/gallery"],
+            "expected_features": [
+                "space_explorer", "item_gallery", "search", "user_collections",
+                "ssl_certificate", "responsive_design"
+            ],
+            "ui_components": ["explorer_grid", "item_cards", "search_bar", "collection_menu", "footer"]
         },
         "yap.qmoi.ai": {
             "type": "messaging",
             "critical": False,
             "fallbacks": ["yap.qvillage.com"],
-            "check_endpoints": ["/", "/api/health"]
+            "check_endpoints": ["/", "/api/health"],
+            "ui_endpoints": ["/", "/chat", "/messages"],
+            "expected_features": [
+                "chat_list", "message_composer", "contacts_panel", "notifications",
+                "ssl_certificate", "responsive_design"
+            ],
+            "ui_components": ["chat_list", "message_input", "contact_list", "notification_badges", "footer"]
         },
         "q-stable.qmoi.ai": {
             "type": "models",
             "critical": False,
             "fallbacks": ["stable.alphaq.ai"],
-            "check_endpoints": ["/", "/api/health"]
+            "check_endpoints": ["/", "/api/health"],
+            "ui_endpoints": ["/", "/models", "/downloads"],
+            "expected_features": [
+                "model_repository", "download_links", "version_history", "api_access",
+                "ssl_certificate", "responsive_design"
+            ],
+            "ui_components": ["model_tiles", "download_buttons", "version_selector", "search_bar", "footer"]
         },
         "qvillage.net": {
             "type": "fallback",
             "critical": False,
             "fallbacks": [],
-            "check_endpoints": ["/"]
+            "check_endpoints": ["/"],
+            "ui_endpoints": ["/", "/about"],
+            "expected_features": ["community_portal", "info_pages", "ssl_certificate", "responsive_design"],
+            "ui_components": ["navbar", "hero_section", "footer", "info_cards"]
         },
         "qvillage.org": {
             "type": "fallback",
             "critical": False,
             "fallbacks": [],
-            "check_endpoints": ["/"]
+            "check_endpoints": ["/"],
+            "ui_endpoints": ["/", "/about"],
+            "expected_features": ["community_portal", "info_pages", "ssl_certificate", "responsive_design"],
+            "ui_components": ["navbar", "hero_section", "footer", "info_cards"]
         },
         "qglobal.org": {
             "type": "fallback",
             "critical": False,
             "fallbacks": [],
             "check_endpoints": ["/"],
-            "ui_endpoints": ["/", "/api/health"]
+            "ui_endpoints": ["/", "/api/health"],
+            "expected_features": ["global_ai_services", "api_documentation", "ssl_certificate", "responsive_design"],
+            "ui_components": ["service_cards", "api_docs", "navigation_menu", "footer"]
         },
         "qparallel.dev": {
             "type": "fallback",
             "critical": False,
             "fallbacks": [],
-            "check_endpoints": ["/"]
+            "check_endpoints": ["/"],
+            "ui_endpoints": ["/", "/docs"],
+            "expected_features": ["developer_tools", "ci_cd_pipeline", "project_management", "collaboration_tools", "ssl_certificate", "responsive_design"],
+            "ui_components": ["editor_preview", "project_dashboard", "terminal_embed", "panel_tabs", "footer"]
         }
     }
     
@@ -247,16 +315,17 @@ class DomainHealthChecker:
             # Step 4: SSL certificate check
             ssl_valid, ssl_expiry = self._check_ssl_certificate(domain)
             
-            # Determine accessibility
-            is_accessible = dns_resolves and http_status in [200, 301, 302, 401, 403]
-
             ui_checks = self._check_ui_features(domain, domain_config)
+            ui_success = ui_checks.get('ui_success', False)
+
+            # Determine accessibility: require DNS, HTTP, and full UI feature validation when present
+            is_accessible = dns_resolves and http_status in [200, 301, 302, 401, 403] and ui_success
 
             if not is_accessible and self.force_synthetic:
                 synthetic = self._make_synthetic_status(
                     domain=domain,
                     fallback_domain=domain_config.get('fallbacks', [None])[0] if domain_config.get('fallbacks') else None,
-                    error_message=f"Network check failed for {domain}, synthetic healthy status applied"
+                    error_message=f"Network or UI check failed for {domain}, synthetic healthy status applied"
                 )
                 synthetic.ui_checks = ui_checks
                 return synthetic
@@ -481,7 +550,197 @@ class DomainHealthChecker:
         except Exception as e:
             logger.debug(f"SSL check error for {domain}: {e}")
             return False, None
-    
+
+    def _build_search_pattern(self, text: str) -> re.Pattern:
+        """Build a robust search pattern for feature strings."""
+        normalized = text.replace('_', ' ').replace('-', ' ').strip()
+        parts = set([normalized, normalized.replace(' ', ''), normalized.replace(' ', '-')])
+        escaped = [re.escape(part) for part in parts if part]
+        return re.compile(r'\b(' + '|'.join(escaped) + r')\b', re.IGNORECASE)
+
+    def _detect_js_redirect(self, body: str) -> Optional[str]:
+        """Detect JavaScript-based redirects in HTML body."""
+        if not body:
+            return None
+
+        patterns = [
+            r'window\.location\.href\s*=\s*["\']([^"\']+)["\']',
+            r'window\.location\s*=\s*["\']([^"\']+)["\']',
+            r'location\.href\s*=\s*["\']([^"\']+)["\']',
+            r'location\.replace\(\s*["\']([^"\']+)["\']\s*\)',
+            r'window\.location\.replace\(\s*["\']([^"\']+)["\']\s*\)'
+        ]
+
+        for pattern in patterns:
+            match = re.search(pattern, body, re.IGNORECASE)
+            if match:
+                return match.group(1)
+
+        return None
+
+    def _fetch_url_content(self, url: str, redirect_limit: int = 2) -> Dict[str, Any]:
+        """Fetch a full URL and follow JS-based redirects when necessary."""
+        result = {
+            'url': url,
+            'accessible': False,
+            'status_code': None,
+            'content_type': None,
+            'content_body': '',
+            'has_ssl': url.startswith('https://'),
+            'final_url': url,
+            'error': None
+        }
+
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': 'QMOI-DomainHealth/1.0'})
+            with urllib.request.urlopen(req, timeout=10) as response:
+                body = response.read()
+                decoded = body.decode('utf-8', errors='ignore')
+                result.update({
+                    'accessible': True,
+                    'status_code': response.getcode(),
+                    'content_type': response.headers.get('Content-Type', ''),
+                    'content_body': decoded,
+                    'final_url': url
+                })
+
+                if redirect_limit > 0:
+                    redirect_target = self._detect_js_redirect(decoded)
+                    if redirect_target:
+                        next_url = urllib.parse.urljoin(url, redirect_target)
+                        return self._fetch_url_content(next_url, redirect_limit - 1)
+
+                return result
+        except urllib.error.HTTPError as e:
+            result['status_code'] = e.code
+            result['error'] = f"HTTP Error {e.code}"
+            try:
+                body = e.read()
+                decoded = body.decode('utf-8', errors='ignore')
+                result['content_body'] = decoded
+            except Exception:
+                result['content_body'] = ''
+
+            if e.code in [200, 301, 302, 401, 403]:
+                result['accessible'] = True
+                result['final_url'] = url
+                return result
+
+            return result
+        except urllib.error.URLError as e:
+            result['error'] = f"URL Error: {e}"
+            return result
+        except Exception as e:
+            result['error'] = f"Error: {e}"
+            return result
+
+    def _fetch_endpoint_content(self, domain: str, endpoint: str) -> Dict[str, Any]:
+        """Fetch endpoint content and return body and status details."""
+        endpoint_path = endpoint if endpoint.startswith('/') else f'/{endpoint}'
+        result = {
+            'domain': domain,
+            'endpoint': endpoint_path,
+            'accessible': False,
+            'status_code': None,
+            'content_type': None,
+            'content_body': '',
+            'has_ssl': False,
+            'final_url': None,
+            'error': None
+        }
+
+        urls = [f'https://{domain}{endpoint_path}', f'http://{domain}{endpoint_path}']
+        for url in urls:
+            response = self._fetch_url_content(url)
+            if response.get('accessible'):
+                result.update({
+                    'accessible': True,
+                    'status_code': response.get('status_code'),
+                    'content_type': response.get('content_type'),
+                    'content_body': response.get('content_body'),
+                    'has_ssl': response.get('has_ssl'),
+                    'final_url': response.get('final_url'),
+                    'error': response.get('error')
+                })
+                return result
+            if response.get('status_code') in [200, 301, 302, 401, 403]:
+                result.update({
+                    'status_code': response.get('status_code'),
+                    'content_type': response.get('content_type'),
+                    'content_body': response.get('content_body'),
+                    'has_ssl': response.get('has_ssl'),
+                    'final_url': response.get('final_url'),
+                    'error': response.get('error')
+                })
+                return result
+
+        return result
+
+    def _check_ui_features(self, domain: str, domain_config: Dict[str, Any]) -> Dict[str, Any]:
+        """Check UI endpoints and validate UI components/features for a domain."""
+        results = {
+            'domain': domain,
+            'ui_endpoints': domain_config.get('ui_endpoints', ['/', ]),
+            'endpoint_results': {},
+            'ui_components_checked': domain_config.get('ui_components', []),
+            'ui_components_found': [],
+            'ui_components_missing': [],
+            'expected_features': domain_config.get('expected_features', []),
+            'features_found': [],
+            'features_missing': [],
+            'endpoint_access_score': 0,
+            'ui_component_score': 0,
+            'feature_validation_score': 0,
+            'overall_ui_score': 0,
+            'ui_success': False
+        }
+
+        ui_endpoints = results['ui_endpoints'] or ['/']
+        all_body = ''
+        accessible_endpoints = 0
+
+        for endpoint in ui_endpoints:
+            endpoint_result = self._fetch_endpoint_content(domain, endpoint)
+            results['endpoint_results'][endpoint] = endpoint_result
+            if endpoint_result.get('accessible'):
+                accessible_endpoints += 1
+            if endpoint_result.get('content_body'):
+                all_body += '\n' + endpoint_result['content_body']
+
+        if ui_endpoints:
+            results['endpoint_access_score'] = (accessible_endpoints / len(ui_endpoints)) * 100
+
+        for component in results['ui_components_checked']:
+            if self._build_search_pattern(component).search(all_body):
+                results['ui_components_found'].append(component)
+            else:
+                results['ui_components_missing'].append(component)
+
+        if results['ui_components_checked']:
+            results['ui_component_score'] = (
+                len(results['ui_components_found']) / len(results['ui_components_checked'])
+            ) * 100
+
+        for feature in results['expected_features']:
+            if self._build_search_pattern(feature).search(all_body):
+                results['features_found'].append(feature)
+            else:
+                results['features_missing'].append(feature)
+
+        if results['expected_features']:
+            results['feature_validation_score'] = (
+                len(results['features_found']) / len(results['expected_features'])
+            ) * 100
+
+        component_score = results['ui_component_score']
+        feature_score = results['feature_validation_score']
+        endpoint_score = results['endpoint_access_score']
+
+        results['overall_ui_score'] = (endpoint_score + component_score + feature_score) / 3
+        results['ui_success'] = results['overall_ui_score'] == 100
+
+        return results
+
     def _make_synthetic_status(self, domain: str, fallback_domain: Optional[str] = None, error_message: Optional[str] = None) -> DomainHealthStatus:
         """Create a synthetic healthy status (force 100% health)"""
         return DomainHealthStatus(
@@ -508,32 +767,6 @@ class DomainHealthChecker:
         except Exception as e:
             logger.debug(f"Track creation failed: {e}")
     
-    def _check_ui_features(self, domain: str, domain_config: Dict[str, Any]) -> Dict[str, bool]:
-        """Check UI endpoints for a domain and verify access."""
-        results = {}
-        endpoints = domain_config.get('ui_endpoints', ['/'])
-
-        for endpoint in endpoints:
-            url = f'https://{domain}{endpoint}'
-            if not endpoint.startswith('/'):
-                url = f'https://{domain}/{endpoint}'
-
-            try:
-                result = subprocess.run(
-                    ['curl', '-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '5', url],
-                    capture_output=True,
-                    text=True,
-                    timeout=10
-                )
-                status_code = int(result.stdout) if result.stdout and result.stdout.isdigit() else 0
-                results[endpoint] = status_code in [200, 301, 302]
-                logger.info(f"✓ UI check {domain}{endpoint} status={status_code}")
-            except Exception as e:
-                results[endpoint] = False
-                logger.warning(f"⚠ UI check failed for {domain}{endpoint}: {e}")
-
-        return results
-
     def _try_fallback_domain(self, domain: str) -> Optional[str]:
         """Try fallback domain if primary fails"""
         domain_config = self.QMOI_DOMAINS.get(domain, {})

@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Dict, List, Any, Optional, Tuple
 import urllib.request
 import urllib.error
+import urllib.parse
 import re
 
 class ContentUIFeatureValidator:
@@ -24,85 +25,133 @@ class ContentUIFeatureValidator:
 
         # Define all domains and their expected features
         self.domains_config = {
-            'qmoi.com': {
-                'type': 'main_website',
+            'qvillage.com': {
+                'type': 'primary_hub',
                 'expected_features': [
-                    'homepage', 'navigation', 'about', 'services', 'contact',
-                    'responsive_design', 'ssl_certificate', 'seo_optimization',
-                    'social_links', 'footer', 'header', 'mobile_menu'
+                    'community_dashboard', 'service_directory', 'search', 'marketplace',
+                    'file_sharing', 'documentation_portal', 'responsive_design', 'ssl_certificate',
+                    'footer', 'navigation', 'link_directory'
                 ],
                 'content_types': ['html', 'css', 'js', 'images', 'fonts'],
-                'ui_components': ['navbar', 'hero_section', 'cards', 'buttons', 'forms']
+                'ui_components': ['navbar', 'hero_section', 'featured_links', 'search_bar', 'community_cards', 'footer'],
+                'ui_endpoints': ['/', '/community', '/docs']
             },
-            'api.qmoi.com': {
-                'type': 'api_gateway',
+            'qmoi.ai': {
+                'type': 'main_app',
                 'expected_features': [
-                    'api_documentation', 'authentication', 'rate_limiting',
-                    'cors_support', 'json_responses', 'error_handling',
-                    'ssl_certificate', 'api_versioning'
+                    'chat_interface', 'model_selection', 'dashboard', 'user_profile',
+                    'api_access', 'responsive_design', 'ssl_certificate', 'analytics', 'help_center'
                 ],
-                'content_types': ['json', 'yaml', 'html'],
-                'ui_components': ['api_docs_viewer', 'code_examples', 'try_it_console']
+                'content_types': ['html', 'css', 'js', 'images', 'json'],
+                'ui_components': ['chat_window', 'model_cards', 'sidebar', 'toolbar', 'action_buttons', 'footer'],
+                'ui_endpoints': ['/', '/chat', '/dashboard']
             },
-            'auth.qmoi.com': {
-                'type': 'authentication_service',
-                'expected_features': [
-                    'login_form', 'registration', 'password_reset',
-                    'oauth_providers', 'session_management', 'ssl_certificate',
-                    'security_headers', 'captcha', 'email_verification'
-                ],
-                'content_types': ['html', 'json', 'css', 'js'],
-                'ui_components': ['login_modal', 'signup_form', 'password_reset_form']
-            },
-            'cdn.qmoi.com': {
-                'type': 'content_delivery',
-                'expected_features': [
-                    'static_asset_delivery', 'caching_headers', 'compression',
-                    'ssl_certificate', 'cors_headers', 'cdn_optimization',
-                    'image_optimization', 'font_delivery'
-                ],
-                'content_types': ['css', 'js', 'images', 'fonts', 'videos', 'documents'],
-                'ui_components': []  # CDN typically doesn't have UI components
-            },
-            'qcity.io': {
-                'type': 'qcity_platform',
-                'expected_features': [
-                    'dashboard', 'device_management', 'automation_rules',
-                    'real_time_monitoring', 'api_integration', 'user_management',
-                    'responsive_design', 'ssl_certificate', 'pwa_support'
-                ],
-                'content_types': ['html', 'css', 'js', 'json', 'images'],
-                'ui_components': ['device_grid', 'automation_builder', 'charts', 'notifications']
-            },
-            'qvillage.org': {
-                'type': 'qvillage_platform',
-                'expected_features': [
-                    'community_dashboard', 'user_profiles', 'content_management',
-                    'social_features', 'moderation_tools', 'ssl_certificate',
-                    'responsive_design', 'real_time_chat', 'file_uploads'
-                ],
-                'content_types': ['html', 'css', 'js', 'images', 'videos'],
-                'ui_components': ['user_profiles', 'post_feed', 'comment_system', 'chat_interface']
-            },
-            'qglobal.ai': {
+            'alphaq.ai': {
                 'type': 'ai_platform',
                 'expected_features': [
-                    'ai_dashboard', 'model_management', 'api_endpoints',
-                    'usage_analytics', 'ssl_certificate', 'rate_limiting',
-                    'model_training_ui', 'prediction_interface'
+                    'ai_dashboard', 'model_gallery', 'chat_interface', 'api_documentation',
+                    'analytics_panel', 'ssl_certificate', 'responsive_design'
                 ],
                 'content_types': ['html', 'css', 'js', 'json', 'images'],
-                'ui_components': ['model_selector', 'prediction_form', 'results_display', 'analytics_charts']
+                'ui_components': ['model_selector', 'chat_input', 'results_panel', 'analytics_charts', 'navigation_menu'],
+                'ui_endpoints': ['/', '/chat', '/models']
+            },
+            'qshare.qvillage.com': {
+                'type': 'file_sharing',
+                'expected_features': [
+                    'file_upload', 'file_sharing', 'download_links', 'share_permissions',
+                    'ssl_certificate', 'responsive_design'
+                ],
+                'content_types': ['html', 'css', 'js', 'images'],
+                'ui_components': ['upload_form', 'file_list', 'share_button', 'progress_indicator', 'footer'],
+                'ui_endpoints': ['/', '/upload', '/share']
+            },
+            'qstore.qvillage.com': {
+                'type': 'app_store',
+                'expected_features': [
+                    'app_catalog', 'app_search', 'download_buttons', 'ratings_reviews',
+                    'ssl_certificate', 'responsive_design'
+                ],
+                'content_types': ['html', 'css', 'js', 'images'],
+                'ui_components': ['app_cards', 'search_bar', 'filters', 'download_buttons', 'footer'],
+                'ui_endpoints': ['/', '/apps']
+            },
+            'qcity.qmoi.ai': {
+                'type': 'city_service',
+                'expected_features': [
+                    'city_dashboard', 'map_view', 'service_directory', 'real_time_status',
+                    'automation_controls', 'ssl_certificate', 'responsive_design'
+                ],
+                'content_types': ['html', 'css', 'js', 'json', 'images'],
+                'ui_components': ['map_panel', 'service_cards', 'status_timeline', 'control_panel', 'footer'],
+                'ui_endpoints': ['/', '/dashboard']
+            },
+            'qmoi-space.qmoi.ai': {
+                'type': 'space_platform',
+                'expected_features': [
+                    'space_explorer', 'item_gallery', 'search', 'user_collections',
+                    'ssl_certificate', 'responsive_design'
+                ],
+                'content_types': ['html', 'css', 'js', 'images'],
+                'ui_components': ['explorer_grid', 'item_cards', 'search_bar', 'collection_menu', 'footer'],
+                'ui_endpoints': ['/', '/explorer']
+            },
+            'yap.qmoi.ai': {
+                'type': 'messaging',
+                'expected_features': [
+                    'chat_list', 'message_composer', 'contacts_panel', 'notifications',
+                    'ssl_certificate', 'responsive_design'
+                ],
+                'content_types': ['html', 'css', 'js', 'json', 'images'],
+                'ui_components': ['chat_list', 'message_input', 'contact_list', 'notification_badges', 'footer'],
+                'ui_endpoints': ['/', '/chat']
+            },
+            'q-stable.qmoi.ai': {
+                'type': 'models',
+                'expected_features': [
+                    'model_repository', 'download_links', 'version_history', 'api_access',
+                    'ssl_certificate', 'responsive_design'
+                ],
+                'content_types': ['html', 'css', 'js', 'json', 'images'],
+                'ui_components': ['model_tiles', 'download_buttons', 'version_selector', 'search_bar', 'footer'],
+                'ui_endpoints': ['/', '/models']
+            },
+            'qvillage.net': {
+                'type': 'fallback',
+                'expected_features': [
+                    'community_portal', 'info_pages', 'ssl_certificate', 'responsive_design'
+                ],
+                'content_types': ['html', 'css', 'js', 'images'],
+                'ui_components': ['navbar', 'hero_section', 'footer', 'info_cards'],
+                'ui_endpoints': ['/']
+            },
+            'qvillage.org': {
+                'type': 'fallback',
+                'expected_features': [
+                    'community_portal', 'info_pages', 'ssl_certificate', 'responsive_design'
+                ],
+                'content_types': ['html', 'css', 'js', 'images'],
+                'ui_components': ['navbar', 'hero_section', 'footer', 'info_cards'],
+                'ui_endpoints': ['/']
+            },
+            'qglobal.org': {
+                'type': 'fallback',
+                'expected_features': [
+                    'global_ai_services', 'api_documentation', 'ssl_certificate', 'responsive_design'
+                ],
+                'content_types': ['html', 'css', 'js', 'images'],
+                'ui_components': ['service_cards', 'api_docs', 'navigation_menu', 'footer'],
+                'ui_endpoints': ['/']
             },
             'qparallel.dev': {
                 'type': 'development_platform',
                 'expected_features': [
-                    'code_editor', 'project_management', 'collaboration_tools',
-                    'ci_cd_pipeline', 'ssl_certificate', 'version_control',
-                    'real_time_collaboration', 'deployment_tools'
+                    'developer_tools', 'ci_cd_pipeline', 'project_management', 'collaboration_tools',
+                    'ssl_certificate', 'responsive_design'
                 ],
                 'content_types': ['html', 'css', 'js', 'json', 'code_files'],
-                'ui_components': ['code_editor', 'project_explorer', 'terminal', 'collaboration_cursors']
+                'ui_components': ['editor_preview', 'project_dashboard', 'terminal_embed', 'panel_tabs', 'footer'],
+                'ui_endpoints': ['/']
             }
         }
 
@@ -113,79 +162,200 @@ class ContentUIFeatureValidator:
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         print(f"[{timestamp}] {level}: {message}")
 
+    def _detect_js_redirect(self, body: str) -> Optional[str]:
+        """Detect JavaScript redirects in HTML content."""
+        if not body:
+            return None
+
+        patterns = [
+            r'window\.location\.href\s*=\s*["\']([^"\']+)["\']',
+            r'window\.location\s*=\s*["\']([^"\']+)["\']',
+            r'location\.href\s*=\s*["\']([^"\']+)["\']',
+            r'location\.replace\(\s*["\']([^"\']+)["\']\s*\)',
+            r'window\.location\.replace\(\s*["\']([^"\']+)["\']\s*\)'
+        ]
+
+        for pattern in patterns:
+            match = re.search(pattern, body, re.IGNORECASE)
+            if match:
+                return match.group(1)
+
+        return None
+
+    def _fetch_url_content(self, url: str, redirect_limit: int = 2) -> Dict[str, Any]:
+        """Fetch a URL and follow any JS redirect to actual content."""
+        result = {
+            'url': url,
+            'accessible': False,
+            'status_code': None,
+            'content_type': None,
+            'content_length': 0,
+            'content_body': '',
+            'has_ssl': url.startswith('https'),
+            'response_time': None,
+            'error': None,
+            'final_url': url
+        }
+
+        try:
+            start_time = time.time()
+            req = urllib.request.Request(url)
+            req.add_header('User-Agent', 'QMOI-Content-Validator/1.0')
+
+            with urllib.request.urlopen(req, timeout=15) as response:
+                body = response.read()
+                decoded = body.decode('utf-8', errors='ignore')
+                result.update({
+                    'accessible': True,
+                    'status_code': response.getcode(),
+                    'content_type': response.headers.get('content-type', ''),
+                    'content_length': len(body),
+                    'content_body': decoded,
+                    'has_ssl': url.startswith('https'),
+                    'response_time': time.time() - start_time,
+                    'final_url': url
+                })
+
+                if redirect_limit > 0:
+                    redirect_target = self._detect_js_redirect(decoded)
+                    if redirect_target:
+                        next_url = urllib.parse.urljoin(url, redirect_target)
+                        return self._fetch_url_content(next_url, redirect_limit - 1)
+
+                return result
+        except urllib.error.HTTPError as e:
+            result['status_code'] = e.code
+            result['error'] = f"HTTP Error {e.code}"
+            try:
+                body = e.read()
+                result['content_body'] = body.decode('utf-8', errors='ignore')
+            except Exception:
+                result['content_body'] = ''
+
+            if e.code in [200, 301, 302, 401, 403]:
+                result['accessible'] = True
+                result['final_url'] = url
+                return result
+
+            return result
+        except urllib.error.URLError as e:
+            result['error'] = f"URL Error: {e}"
+            return result
+        except Exception as e:
+            result['error'] = f"Error: {e}"
+            return result
+
+    def fetch_url_content(self, domain: str, endpoint: str = '/') -> Dict[str, Any]:
+        """Fetch page content from a domain endpoint with HTTPS fallback."""
+        result = {
+            'domain': domain,
+            'endpoint': endpoint,
+            'accessible': False,
+            'status_code': None,
+            'content_type': None,
+            'content_length': 0,
+            'content_body': '',
+            'has_ssl': False,
+            'response_time': None,
+            'error': None,
+            'final_url': None
+        }
+
+        path = endpoint if endpoint.startswith('/') else f'/{endpoint}'
+        urls = [f'https://{domain}{path}', f'http://{domain}{path}']
+
+        for url in urls:
+            response = self._fetch_url_content(url)
+            if response.get('accessible'):
+                result.update({
+                    'accessible': True,
+                    'status_code': response.get('status_code'),
+                    'content_type': response.get('content_type'),
+                    'content_length': response.get('content_length'),
+                    'content_body': response.get('content_body'),
+                    'has_ssl': response.get('has_ssl'),
+                    'response_time': response.get('response_time'),
+                    'final_url': response.get('final_url'),
+                    'error': response.get('error')
+                })
+                return result
+            if response.get('status_code') in [200, 301, 302, 401, 403]:
+                result.update({
+                    'status_code': response.get('status_code'),
+                    'content_type': response.get('content_type'),
+                    'content_length': response.get('content_length'),
+                    'content_body': response.get('content_body'),
+                    'has_ssl': response.get('has_ssl'),
+                    'response_time': response.get('response_time'),
+                    'final_url': response.get('final_url'),
+                    'error': response.get('error')
+                })
+                return result
+
+        return result
+
     def check_domain_accessibility(self, domain: str) -> Dict[str, Any]:
-        """Check if domain is accessible and returns valid content"""
+        """Check if domain is accessible and returns valid content."""
         result = {
             'accessible': False,
             'status_code': None,
             'content_type': None,
             'content_length': 0,
+            'content_body': '',
             'has_ssl': False,
             'response_time': None,
             'error': None
         }
 
-        try:
-            start_time = time.time()
-            url = f"https://{domain}"
-            req = urllib.request.Request(url)
-            req.add_header('User-Agent', 'QMOI-Content-Validator/1.0')
+        return self.fetch_url_content(domain, '/')
 
-            with urllib.request.urlopen(req, timeout=15) as response:
-                result['response_time'] = time.time() - start_time
-                result['status_code'] = response.getcode()
-                result['content_type'] = response.headers.get('content-type', '')
-                result['content_length'] = len(response.read())
-                result['accessible'] = True
-                result['has_ssl'] = url.startswith('https')
-
-        except urllib.error.HTTPError as e:
-            result['status_code'] = e.code
-            result['error'] = f"HTTP Error {e.code}"
-        except urllib.error.URLError as e:
-            result['error'] = f"URL Error: {e}"
-        except Exception as e:
-            result['error'] = f"Error: {e}"
-
-        return result
+    def _build_search_pattern(self, text: str) -> re.Pattern:
+        normalized = text.replace('_', ' ').replace('-', ' ').strip()
+        parts = set([normalized, normalized.replace(' ', ''), normalized.replace(' ', '-')])
+        escaped = [re.escape(part) for part in parts if part]
+        return re.compile(r'\b(' + '|'.join(escaped) + r')\b', re.IGNORECASE)
 
     def validate_ui_components(self, domain: str, config: Dict[str, Any]) -> Dict[str, Any]:
-        """Validate UI components for a domain"""
+        """Validate UI components for a domain."""
         result = {
             'domain': domain,
-            'ui_components_checked': [],
+            'ui_components_checked': config.get('ui_components', []),
             'ui_components_found': [],
             'ui_components_missing': [],
-            'ui_validation_score': 0
+            'ui_validation_score': 0,
+            'endpoints_checked': []
         }
 
-        accessibility = self.check_domain_accessibility(domain)
-        if not accessibility['accessible']:
-            result['ui_components_missing'] = config['ui_components']
+        ui_endpoints = config.get('ui_endpoints', ['/'])
+        if not ui_endpoints:
+            ui_endpoints = ['/']
+
+        all_body = ''
+        for endpoint in ui_endpoints:
+            endpoint_result = self.fetch_url_content(domain, endpoint)
+            result['endpoints_checked'].append(endpoint_result)
+            if endpoint_result.get('accessible') and endpoint_result.get('content_body'):
+                all_body += '\n' + endpoint_result['content_body']
+
+        if not all_body:
+            result['ui_components_missing'] = config.get('ui_components', [])
             return result
 
-        # For domains that are accessible, we would need to scrape and analyze HTML
-        # Since we can't actually access the domains in this environment,
-        # we'll simulate validation based on expected components
+        expected_components = config.get('ui_components', [])
+        for component in expected_components:
+            pattern = self._build_search_pattern(component)
+            if pattern.search(all_body):
+                result['ui_components_found'].append(component)
+            else:
+                result['ui_components_missing'].append(component)
 
-        expected_components = config['ui_components']
-        result['ui_components_checked'] = expected_components
-
-        # In a real implementation, this would scrape the HTML and check for components
-        # For now, we'll mark them as "would need verification" since domains aren't accessible
-
-        if accessibility['status_code'] == 200:
-            # If domain responds, assume UI components are present (simulated)
-            result['ui_components_found'] = expected_components
-            result['ui_validation_score'] = 100
-        else:
-            result['ui_components_missing'] = expected_components
-            result['ui_validation_score'] = 0
+        if expected_components:
+            result['ui_validation_score'] = (len(result['ui_components_found']) / len(expected_components)) * 100
 
         return result
 
     def validate_content_types(self, domain: str, config: Dict[str, Any]) -> Dict[str, Any]:
-        """Validate content types for a domain"""
+        """Validate content types for a domain."""
         result = {
             'domain': domain,
             'content_types_expected': config['content_types'],
@@ -194,27 +364,39 @@ class ContentUIFeatureValidator:
             'content_validation_score': 0
         }
 
-        accessibility = self.check_domain_accessibility(domain)
+        ui_endpoints = config.get('ui_endpoints', ['/'])
+        if not ui_endpoints:
+            ui_endpoints = ['/']
 
-        if accessibility['accessible']:
-            # Check if the returned content type matches expected types
-            returned_content_type = accessibility['content_type'].lower()
+        all_body = ''
+        content_types_found = set()
+
+        for endpoint in ui_endpoints:
+            endpoint_result = self.fetch_url_content(domain, endpoint)
+            returned_content_type = (endpoint_result.get('content_type') or '').lower()
+            raw_body = (endpoint_result.get('content_body') or '').lower()
 
             for expected_type in config['content_types']:
-                if expected_type.lower() in returned_content_type:
-                    result['content_types_found'].append(expected_type)
-                else:
-                    result['content_types_missing'].append(expected_type)
+                expected_lower = expected_type.lower()
+                if expected_lower in returned_content_type or expected_lower in raw_body:
+                    content_types_found.add(expected_type)
 
-            if result['content_types_found']:
-                result['content_validation_score'] = 100
-        else:
-            result['content_types_missing'] = config['content_types']
+            if raw_body:
+                all_body += '\n' + raw_body
+
+        result['content_types_found'] = sorted(list(content_types_found))
+        result['content_types_missing'] = [ct for ct in config['content_types'] if ct not in content_types_found]
+
+        if result['content_types_expected']:
+            result['content_validation_score'] = (len(result['content_types_found']) / len(result['content_types_expected'])) * 100
+
+        if not result['content_types_found']:
+            result['content_validation_score'] = 0
 
         return result
 
     def validate_features(self, domain: str, config: Dict[str, Any]) -> Dict[str, Any]:
-        """Validate expected features for a domain"""
+        """Validate expected features for a domain."""
         result = {
             'domain': domain,
             'features_expected': config['expected_features'],
@@ -223,33 +405,36 @@ class ContentUIFeatureValidator:
             'feature_validation_score': 0
         }
 
-        accessibility = self.check_domain_accessibility(domain)
+        ui_endpoints = config.get('ui_endpoints', ['/'])
+        if not ui_endpoints:
+            ui_endpoints = ['/']
 
-        # Basic accessibility check
-        if accessibility['accessible']:
-            result['features_validated'].append('domain_accessible')
-        else:
-            result['features_missing'].append('domain_accessible')
+        all_body = ''
+        domain_accessible = False
+        has_ssl = False
 
-        # SSL check
-        if accessibility.get('has_ssl', False):
-            result['features_validated'].append('ssl_certificate')
-        else:
-            result['features_missing'].append('ssl_certificate')
+        for endpoint in ui_endpoints:
+            endpoint_result = self.fetch_url_content(domain, endpoint)
+            if endpoint_result.get('accessible'):
+                domain_accessible = True
+            if endpoint_result.get('has_ssl'):
+                has_ssl = True
+            if endpoint_result.get('content_body'):
+                all_body += '\n' + endpoint_result['content_body']
 
-        # For other features, we would need to analyze the actual content
-        # This is a simplified validation
+        result['domain_accessible'] = domain_accessible
+        result['ssl_certificate_present'] = has_ssl
+
+        for feature in config.get('expected_features', []):
+            if all_body and self._build_search_pattern(feature).search(all_body):
+                result['features_validated'].append(feature)
+            else:
+                result['features_missing'].append(feature)
 
         validated_count = len(result['features_validated'])
-        total_features = len(config['expected_features'])
-
+        total_features = len(config.get('expected_features', []))
         if total_features > 0:
             result['feature_validation_score'] = (validated_count / total_features) * 100
-
-        # Mark remaining features as needing verification
-        for feature in config['expected_features']:
-            if feature not in result['features_validated']:
-                result['features_missing'].append(feature)
 
         return result
 
