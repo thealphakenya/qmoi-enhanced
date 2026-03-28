@@ -153,7 +153,8 @@ async function executeCodeFormatter(params: any) {
 
   try {
     // Real Prettier integration
-    const prettier = require('prettier');
+    const prettierModule = await import('prettier');
+    const prettier = prettierModule.default ?? prettierModule;
 
     const formatted = await prettier.format(code, {
       parser: language === 'typescript' ? 'typescript' : 'babel',

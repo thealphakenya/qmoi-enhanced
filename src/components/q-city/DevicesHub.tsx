@@ -10,43 +10,10 @@ import {
   DeviceTrackingService,
   Device,
 } from "../../services/DeviceTrackingService";
-import { WhatsAppService } from "../../services/WhatsAppService";
 
 const isMaster = true;
 
-const 
-  client: {},
-  config: {},
-  isConnected: true,
-  qrCodeStatus: {
-    isScanned: true,
-    timestamp: new Date(),
-    deviceInfo: {},
-    notifications: { master: true, leah: true, status: "sent" },
-  },
-  messageTemplates: [],
-  autoResponders: new Map(),
-  pendingApprovals: new Map(),
-  sendMessageToMaster: async (msg: string) => {
-    alert(msg);
-  },
-  sendMessage: async () => {},
-  sendMessageToLeah: async () => {},
-  broadcastMessage: async () => {},
-  getConnectionStatus: () => true,
-  getQRCodeStatus: () => ({
-    isScanned: true,
-    timestamp: new Date(),
-    deviceInfo: {},
-    notifications: { master: true, leah: true, status: "sent" },
-  }),
-  updateConfig: () => {},
-  requestApproval: async () => true,
-};
-
-const deviceService = new DeviceTrackingService(
-  
-);
+const deviceService = new DeviceTrackingService();
 
 export const DevicesHub: React.FC = () => {
   const [devices, setDevices] = useState<Device[]>([]);

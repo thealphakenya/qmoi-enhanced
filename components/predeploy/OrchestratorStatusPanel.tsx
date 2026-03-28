@@ -19,7 +19,7 @@ export interface OrchestratorStatus {
 const statusColor = (s: string) =>
   s === "success" ? "#4caf50" : s === "warning" ? "#ff9800" : "#f44336";
 
-const 
+const initialAgents = [
   {
     id: "a1",
     name: "Agent stable",
@@ -39,12 +39,11 @@ const
     assignedDevice: "Device 3",
   },
 ];
-const 
 
 export const OrchestratorStatusPanel: React.FC<{
   status: OrchestratorStatus;
 }> = ({ status }) => {
-  const [agents, setAgents] = useState(
+  const [agents, setAgents] = useState(initialAgents);
   const [failoverLoading, setFailoverLoading] = useState<string | null>(null);
 
   function handleAssign(agentId: string, device: string) {

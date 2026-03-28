@@ -33,7 +33,8 @@ export interface ApiConfig {
 function getCurrentEnvironment(): Environment {
   if (typeof window !== "undefined") {
     // Browser environment
-    const env = (.__ENV as string | undefined) ||
+    const env =
+      ((window as unknown) as Record<string, string | undefined>).__ENV ||
       (process.env.NEXT_PUBLIC_ENV as string | undefined);
     return (env as Environment) || "development";
   }
@@ -47,7 +48,7 @@ function getCurrentEnvironment(): Environment {
 const configMap: Record<Environment, ApiConfig> = {
   local: {
     environment: "local",
-    baseUrl: "process.env.API_URL || "http://localhost:\1"",
+    baseUrl: process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "http://localhost:3000",
     endpoints: {
       media: "/api/media",
       verify: "/api/verify",
@@ -63,7 +64,7 @@ const configMap: Record<Environment, ApiConfig> = {
   },
   development: {
     environment: "development",
-    baseUrl: process.env.NEXT_PUBLIC_API_URL || "process.env.API_URL || "http://localhost:\1"",
+    baseUrl: process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "http://localhost:3000",
     endpoints: {
       media: "/api/media",
       verify: "/api/verify",

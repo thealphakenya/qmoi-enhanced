@@ -51,7 +51,7 @@ import {
   GCPIntegration,
   IoTIntegration,
   MobileIntegration,
-} from "./device/DeviceIntegration
+} from "./device/DeviceIntegration";
 import { AWSCredentialsModal } from "./device/AWSCredentialsModal";
 import { AzureCredentialsModal } from "./device/AzureCredentialsModal";
 import { GCPCredentialsModal } from "./device/GCPCredentialsModal";
@@ -152,7 +152,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
     const result = await AzureIntegration.connect(creds);
     if (result) {
       notify("Azure connected", "success");
-      const rgs = await .listResourceGroups();
+      const rgs = await AzureIntegration.listResourceGroups();
       setAzureResourceGroups(rgs);
     } else {
       notify("Azure connection failed", "error");
@@ -169,7 +169,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
     const result = await GCPIntegration.connect(creds);
     if (result) {
       notify("GCP connected", "success");
-      const buckets = await .listBuckets();
+      const buckets = await GCPIntegration.listBuckets();
       setGcpBuckets(buckets);
     } else {
       notify("GCP connection failed", "error");
@@ -703,10 +703,9 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
                                         return;
                                       }
                                       if (
-                                        typeof 
-                                          .listBuckets === "function"
+                                        typeof AWSIntegration.listBuckets === "function"
                                       ) {
-                                        const buckets = await .listBuckets();
+                                        const buckets = await AWSIntegration.listBuckets();
                                         setAwsBuckets(buckets);
                                         notify("Buckets refreshed", "info");
                                       }
@@ -743,10 +742,9 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
                                         return;
                                       }
                                       if (
-                                        typeof 
-                                          .listResourceGroups === "function"
+                                        typeof AzureIntegration.listResourceGroups === "function"
                                       ) {
-                                        const rgs = await .listResourceGroups();
+                                        const rgs = await AzureIntegration.listResourceGroups();
                                         setAzureResourceGroups(rgs);
                                         notify(
                                           "Resource groups refreshed",
@@ -791,10 +789,9 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
                                         return;
                                       }
                                       if (
-                                        typeof 
-                                          .listBuckets === "function"
+                                        typeof GCPIntegration.listBuckets === "function"
                                       ) {
-                                        const buckets = await .listBuckets();
+                                        const buckets = await GCPIntegration.listBuckets();
                                         setGcpBuckets(buckets);
                                         notify("Buckets refreshed", "info");
                                       }

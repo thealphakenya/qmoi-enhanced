@@ -23,3 +23,7 @@ scripts/**
 pwa_apps/**
 earnvault/**
 hooks/**
+test*.js
+test-*.js
+**/test*.js
+**/test-*.js

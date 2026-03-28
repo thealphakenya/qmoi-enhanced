@@ -90,7 +90,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
 
   // Production: Replace with actual API call to /api/files endpoint
   useEffect(() => {
-    const 
+    const sampleFiles: FileItem[] = [
       {
         id: "1",
         name: "Qmoi AI Core",
@@ -120,36 +120,11 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
         path: "/src/services/whatsapp.ts",
         lastModified: new Date().toISOString(),
         isSelected: false,
-        tags: ["whatsapp", "integration", "api"],
-        category: "code",
-      },
-      {
-        id: "4",
-        name: "Master Dashboard",
-        type: "file",
-        extension: ".tsx",
-        size: 4096,
-        path: "/src/components/MasterDashboard.tsx",
-        lastModified: new Date().toISOString(),
-        isSelected: false,
-        tags: ["dashboard", "master", "ui"],
-        category: "code",
-      },
-      {
-        id: "5",
-        name: "Project Documentation",
-        type: "file",
-        extension: ".md",
-        size: 1024,
-        path: "/docs/projects.md",
-        lastModified: new Date().toISOString(),
-        isSelected: false,
-        tags: ["documentation", "projects"],
-        category: "document",
+        tags: ["chat", "integration", "messaging"],
+        category: "project",
       },
     ];
-
-    setFiles(
+    setFiles(sampleFiles);
   }, []);
 
   const filteredFiles = files.filter((file) => {

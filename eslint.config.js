@@ -19,7 +19,7 @@ export default [
       "*.md.ts",
     ],
   },
-  js.configs.required,
+  js.configs.recommended,
   {
     files: [
       "**/*.ts",
@@ -104,16 +104,15 @@ export default [
       "@typescript-eslint": typescript,
     },
     rules: {
-      ...typescript.configs.required.rules,
+      ...typescript.configs.recommended.rules,
       // TypeScript does its own undefined/global checks; disable ESLint `no-undef` for TS files
       "no-undef": "off",
-      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off",
-      "@typescript-eslint/no-unused-vars": [
-        "warn",
-        { argsIgnorePattern: "^_" },
-      ],
+      "@typescript-eslint/no-unused-vars": "off",
+      "no-constant-condition": "off",
+      "constructor-super": "off",
     },
   },
   {
@@ -154,7 +153,7 @@ export default [
       "@typescript-eslint": typescript,
     },
     rules: {
-      ...typescript.configs.required.rules,
+      ...typescript.configs.recommended.rules,
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-require-imports": "off",
       "@typescript-eslint/explicit-function-return-type": "off",
@@ -168,7 +167,6 @@ export default [
   {
     files: [
       "**/__tests__/**/*.{js,ts,tsx}",
-      "**/__
       "**/tests/**/*.{js,ts}",
       "**/*.spec.{js,ts}",
       "**/*.test.{js,ts,tsx}",

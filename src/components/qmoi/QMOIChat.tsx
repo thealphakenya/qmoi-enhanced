@@ -41,13 +41,17 @@ export function QMOIChat({ userId, onMessageReceived }: QMOIChatProps) {
   };
 
   const handleVoiceInput = async () => {
-    if (!("webkitSpeechRecognition" in window)) {
+    if (!("webkitSpeechRecognition" in window) && !("SpeechRecognition" in window)) {
       alert("Speech recognition not supported in this browser");
       return;
     }
 
+    const windowSpeech = window as Window & {
+      webkitSpeechRecognition?: typeof SpeechRecognition;
+      SpeechRecognition?: typeof SpeechRecognition;
+    };
     const SpeechRecognition =
-      .webkitSpeechRecognition || .SpeechRecognition;
+      windowSpeech.webkitSpeechRecognition || windowSpeech.SpeechRecognition;
     if (!SpeechRecognition) {
       alert("Speech recognition API is not available in this browser.");
       return;
@@ -58,7 +62,7 @@ export function QMOIChat({ userId, onMessageReceived }: QMOIChatProps) {
       setIsSpeaking(true);
     };
 
-    recognition.onresult = (event: any) => {
+    recognition.onresult = (event: SpeechRecognitionEvent) => {
       let transcript = "";
       for (let i = event.resultIndex; i < event.results.length; i++) {
         transcript += event.results[i][0].transcript;
@@ -70,7 +74,7 @@ export function QMOIChat({ userId, onMessageReceived }: QMOIChatProps) {
       setIsSpeaking(false);
     };
 
-    recognition.onerror = (event: any) => {
+    recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
       console.error("Speech recognition error:", event.error);
       setIsSpeaking(false);
     };
@@ -183,26 +187,25 @@ export function QMOIChat({ userId, onMessageReceived }: QMOIChatProps) {
         <form onSubmit={handleSendMessage} className="space-y-2">
           <div className="flex gap-2">
             <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              
-              enabled={isLoading}
-              className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white 
-            />
-            <button
-              type="button"
-              onClick={handleVoiceInput}
-              enabled={isLoading || isSpeaking}
-              className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-colors enabled:opacity-50 enabled:cursor-not-allowed"
-              title="Click to speak"
-            >
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            disabled={isLoading}
+            className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          />
+          <button
+            type="button"
+            onClick={handleVoiceInput}
+            disabled={isLoading || isSpeaking}
+            className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            title="Click to speak"
+          >
               {isSpeaking ? "🎤 Listening..." : "🎤 Voice"}
             </button>
             <button
               type="submit"
-              enabled={isLoading || !input.trim()}
-              className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors enabled:opacity-50 enabled:cursor-not-allowed"
+              disabled={isLoading || !input.trim()}
+              className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? "⏳ Sending..." : "📤 Send"}
             </button>

@@ -39,8 +39,7 @@ export const DistributedCompute: React.FC = () => {
 
   const fetchComputeNodes = async () => {
     try {
-      
-      const 
+      const nodesData: ComputeNode[] = [
         {
           id: '1',
           name: 'AWS-P3-Instance-1',
@@ -51,10 +50,10 @@ export const DistributedCompute: React.FC = () => {
             gpuCount: 8,
             gpuModel: 'V100',
             cpuCores: 32,
-            memoryGB: 244
+            memoryGB: 244,
           },
           location: 'us-east-1',
-          costPerHour: 12.24
+          costPerHour: 12.24,
         },
         {
           id: '2',
@@ -66,10 +65,10 @@ export const DistributedCompute: React.FC = () => {
             gpuCount: 1,
             gpuModel: 'V100',
             cpuCores: 6,
-            memoryGB: 112
+            memoryGB: 112,
           },
           location: 'eastus',
-          costPerHour: 3.06
+          costPerHour: 3.06,
         },
         {
           id: '3',
@@ -81,13 +80,13 @@ export const DistributedCompute: React.FC = () => {
             gpuCount: 4,
             gpuModel: 'A100',
             cpuCores: 16,
-            memoryGB: 128
+            memoryGB: 128,
           },
           location: 'qcity-cloud',
-          costPerHour: 0 // Free for QMOI
-        }
+          costPerHour: 0,
+        },
       ];
-      setNodes(
+      setNodes(nodesData);
     } catch (error) {
       safeConsoleError('Failed to fetch compute nodes:', error);
     } finally {

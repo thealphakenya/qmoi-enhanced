@@ -3,9 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import fs from "fs";
-import path from "path";
-import { writeProposal } from "lib/proposals";
+import * as fs from "fs";
+import * as path from "path";
 
 // comprehensive adapter interface
 export interface WalletAdapter {
@@ -22,7 +21,7 @@ export interface WalletAdapter {
   approveTrade?: (tradeId: string, auto?: boolean) => Promise<boolean>;
 }
 
-REAL adapter used when no credentials or for testnets
+// REAL adapter used when no credentials or for testnets
 export class MockAdapter implements WalletAdapter {
   name: string;
   isTestnet: boolean;
@@ -70,15 +69,44 @@ export class TestnetAdapter implements WalletAdapter {
     strategy?: string,
     confidence?: number,
   ) {
-    void amount;
-    void asset;
-    void strategy;
-    void confidence;
+    const apiKey =
+      ((this.opts as Record<string, unknown>).apiKey as string | undefined) ||
+      process.env.WALLET_API_KEY ||
+      null;
+    const apiUrl =
+      ((this.opts as Record<string, unknown>).apiUrl as string | undefined) ||
+      process.env.WALLET_API_URL ||
+      null;
+
+    if (apiKey && apiUrl) {
+      const controller = new AbortController();
+      const timeout = Number(process.env.WALLET_HTTP_TIMEOUT_MS || 10000);
+      const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ amount, asset, strategy, confidence }),
+        signal: controller.signal,
+      });
+      clearTimeout(timeoutId);
+
+      const json = await response.json();
+      return (
+        (json as Record<string, unknown>).tradeId as string | undefined ||
+        (json as Record<string, unknown>).id as string | undefined ||
+        `test-${this.name}-${Date.now()}-${Math.floor(
+          Math.random() * 10000,
+        )}`
+      );
+    }
 
     const id = `test-${this.name}-${Date.now()}-${Math.floor(
       Math.random() * 10000,
     )}`;
-    // In a real adapter, you would call the testnet SDK here. We persist a robust entry in state if available.
     return id;
   }
 
@@ -94,6 +122,23 @@ function _maskSecret(s: string | null | undefined) {
   if (!s) return null;
   if (s.length <= 8) return "*****";
   return s.slice(0, 4) + "*".repeat(Math.max(4, s.length - 8)) + s.slice(-4);
+}
+
+async function writeProposal(proposal: {
+  title: string;
+  description: string;
+  payload: Record<string, unknown>;
+}) {
+  const validationDir = path.join(process.cwd(), ".qmoi_validation");
+  if (!fs.existsSync(validationDir)) {
+    fs.mkdirSync(validationDir, { recursive: true });
+  }
+  const filePath = path.join(validationDir, `${proposal.title}.json`);
+  fs.writeFileSync(filePath, JSON.stringify({
+    ...proposal,
+    createdAt: new Date().toISOString(),
+  }, null, 2), "utf8");
+  return { path: filePath, title: proposal.title };
 }
 
 // Cashon adapter: proposal-first behavior. When apiKey present but not allowed to run
@@ -137,7 +182,7 @@ export class CashonAdapter implements WalletAdapter {
         const controller = new AbortController();
         const timeout = Number(process.env.WALLET_HTTP_TIMEOUT_MS || 5000);
         const timeoutId = setTimeout(() => controller.abort(), timeout);
-        const r = await (url, {
+        const r = await fetch(url, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${apiKey}`,
@@ -146,15 +191,15 @@ export class CashonAdapter implements WalletAdapter {
           signal: controller.signal,
         });
         clearTimeout(timeoutId);
-        const j = await (
-          r as { json: () => Promise<Record<string, unknown>> }
-        ).json();
+        const json = await (r as { json: () => Promise<Record<string, unknown>> }).json();
         // Support multiple response shapes
         const balance =
-          (j.balance as number) || (j.data && (j.data.balance as number)) || 0;
+          (json.balance as number) ||
+          ((json.data as Record<string, unknown> | undefined)?.balance as number) ||
+          0;
         const currency =
-          (j.currency as string) ||
-          (j.data && (j.data.currency as string)) ||
+          (json.currency as string) ||
+          ((json.data as Record<string, unknown> | undefined)?.currency as string) ||
           "USD";
         return { amount: balance, currency, status: "ok" };
       }
@@ -225,7 +270,7 @@ export class MegavaultAdapter implements WalletAdapter {
         const controller = new AbortController();
         const timeout = Number(process.env.WALLET_HTTP_TIMEOUT_MS || 5000);
         const timeoutId = setTimeout(() => controller.abort(), timeout);
-        const r = await (url, {
+        const r = await fetch(url, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${apiKey}`,
@@ -234,14 +279,14 @@ export class MegavaultAdapter implements WalletAdapter {
           signal: controller.signal,
         });
         clearTimeout(timeoutId);
-        const j = await (
-          r as { json: () => Promise<Record<string, unknown>> }
-        ).json();
+        const json = await (r as { json: () => Promise<Record<string, unknown>> }).json();
         const balance =
-          (j.balance as number) || (j.data && (j.data.balance as number)) || 0;
+          (json.balance as number) ||
+          ((json.data as Record<string, unknown> | undefined)?.balance as number) ||
+          0;
         const currency =
-          (j.currency as string) ||
-          (j.data && (j.data.currency as string)) ||
+          (json.currency as string) ||
+          ((json.data as Record<string, unknown> | undefined)?.currency as string) ||
           "USD";
         return { amount: balance, currency, status: "ok" };
       }

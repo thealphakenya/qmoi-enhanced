@@ -124,7 +124,7 @@ export class HealthCheckService {
         },
         adapters: {
           status: adapterHealth.status,
-          error: .error ? String(.error) : undefined,
+          error: adapterHealth.error ? String(adapterHealth.error) : undefined,
           cacheStats: {
             total: cacheStats.total,
             entries: cacheStats.byEndpoint,
@@ -192,7 +192,7 @@ export class HealthCheckService {
     }
 
     // Check API config
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "process.env.API_URL || "http://localhost:\1"";
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "http://localhost:3000";
     status["api-endpoint"] = apiUrl;
 
     // Background services

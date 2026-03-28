@@ -9,12 +9,11 @@ import { jest } from "@jest/globals";
 describe("getHandlers", () => {
   afterEach(() => {
     jest.resetModules();
-    jest.clearAll
+    jest.clearAllMocks();
   });
 
   test("returns handlers when msw exposes rest helpers", async () => {
-    
-    jest.do
+    jest.doMock("msw", () => ({
       rest: {
         get: jest.fn((...args: unknown[]) => ({ type: "rest-get", args })),
         post: jest.fn((...args: unknown[]) => ({ type: "rest-post", args })),
@@ -26,15 +25,13 @@ describe("getHandlers", () => {
     const handlers = await mod.getHandlers();
     expect(Array.isArray(handlers)).toBe(true);
     expect(handlers.length).toBeGreaterThan(0);
-    // Check that handlers have the expected structure
     expect(handlers[0]).toHaveProperty("method");
     expect(handlers[0]).toHaveProperty("url");
     expect(handlers[0]).toHaveProperty("handler");
   });
 
   test("returns handlers when msw exposes http helpers", async () => {
-    
-    jest.do
+    jest.doMock("msw", () => ({
       http: {
         get: jest.fn((...args: unknown[]) => ({ type: "http-get", args })),
         post: jest.fn((...args: unknown[]) => ({ type: "http-post", args })),
@@ -45,7 +42,6 @@ describe("getHandlers", () => {
     const handlers = await mod.getHandlers();
     expect(Array.isArray(handlers)).toBe(true);
     expect(handlers.length).toBeGreaterThan(0);
-    // Check that handlers have the expected structure
     expect(handlers[0]).toHaveProperty("method");
     expect(handlers[0]).toHaveProperty("url");
     expect(handlers[0]).toHaveProperty("handler");

@@ -17,12 +17,11 @@ export const PredictiveToolRecommender: React.FC = () => {
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
 
   useEffect(() => {
-    
-    const 
+    const recommendedTools: Recommendation[] = [
       { tool: "live-preview", confidence: 0.85, reason: "Frequently used with web projects" },
       { tool: "code-linter", confidence: 0.72, reason: "High error rate detected" },
     ];
-    setRecommendations(
+    setRecommendations(recommendedTools);
   }, []);
 
   return (

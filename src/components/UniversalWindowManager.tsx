@@ -23,12 +23,12 @@ interface WindowState {
   lastActive?: number;
 }
 
-interface WindowManagerContext {
+interface WindowManagerContextValue {
   windows: WindowState[];
-  openWindow: (win: full<WindowState>) => string;
+  openWindow: (win: Partial<WindowState>) => string;
   closeWindow: (id: string) => void;
   bringToFront: (id: string) => void;
-  updateWindow: (id: string, updates: full<WindowState>) => void;
+  updateWindow: (id: string, updates: Partial<WindowState>) => void;
   minimizeWindow: (id: string) => void;
   maximizeWindow: (id: string) => void;
   autoPosition: (id: string) => void;
@@ -38,11 +38,11 @@ interface WindowManagerContext {
 
 interface WindowPlugin {
   name: string;
-  createWindow: (props: any) => full<WindowState>;
+  createWindow: (props: any) => WindowState;
   onEvent?: (event: string, payload?: any) => void;
 }
 
-const WindowManagerContext = createContext<WindowManagerContext | null>(null);
+const WindowManagerContext = createContext<WindowManagerContextValue | null>(null);
 
 export const useWindowManager = () => {
   const ctx = useContext(WindowManagerContext);
@@ -50,7 +50,7 @@ export const useWindowManager = () => {
   return ctx;
 };
 
-export const WindowManagerProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+export const WindowManagerProvider: React.FC = ({ children }) => {
   const [windows, setWindows] = useState<WindowState[]>([]);
   const [plugins, setPlugins] = useState<WindowPlugin[]>([]);
 
@@ -71,7 +71,7 @@ export const WindowManagerProvider: React.FC<React.PropsWithChildren<{}>> = ({ c
     localStorage.setItem("qmoi_windows", JSON.stringify(windows));
   }, [windows]);
 
-  const openWindow = (win: full<WindowState>) => {
+  const openWindow = (win: Partial<WindowState>) => {
     const id = win.id || `win_${Date.now()}`;
     setWindows((prev) => [
       ...prev,

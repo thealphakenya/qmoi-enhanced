@@ -195,7 +195,7 @@ export class EnhancedParallelizationService extends EventEmitter {
         );
       }, this.config.taskTimeout);
 
-      this.
+      this.runTask(task)
         .then((result) => {
           clearTimeout(timeout);
           resolve(result);
@@ -207,7 +207,7 @@ export class EnhancedParallelizationService extends EventEmitter {
     });
   }
 
-  private async 
+  private async runTask(task: ParallelTask): Promise<unknown> {
     const startTime = Date.now();
 
     for (let progress = 0; progress <= 100; progress += 10) {

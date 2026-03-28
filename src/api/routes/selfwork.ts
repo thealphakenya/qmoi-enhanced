@@ -117,7 +117,7 @@ async function runTests(req: Request) {
       recommendations: [
         "Review failed tests in detail",
         "Increase timeout for streaming tests",
-        "
+        "Improve test data coverage for edge cases",
       ],
     };
 

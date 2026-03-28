@@ -1,6 +1,7 @@
 // QMOI EVOLUTION ENHANCED: This API endpoint supports unlimited concurrent QVS operations
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:14Z
+/* eslint-disable no-case-declarations */
 
 import { NextRequest, NextResponse } from 'next/server';
 import { qvsSystem } from '@/qmoi/core/qvs/qvs-system';

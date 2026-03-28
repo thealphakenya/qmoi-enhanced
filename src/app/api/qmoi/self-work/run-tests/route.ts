@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
           suite: "Components",
           error: "Timeout",
           stackTrace: "at ChatBot.test.tsx:125",
-          suggestion: "Increase test timeout or 
+          suggestion: "Increase test timeout or improve streaming reliability",
         },
         {
           test: "AutoDev.tsx - should generate valid code",
@@ -119,20 +119,20 @@ export async function POST(request: NextRequest) {
           {
             name: "Database Setup",
             duration: 8000,
-            suggestion: "Use 
+            suggestion: "Use a dedicated setup fixture to reduce overhead",
           },
         ],
       },
       recommendations: [
         "Fix timeout issues in streaming tests",
-        "Add required 
+        "Add required coverage for edge cases",
         "Increase test coverage for error scenarios",
         "Optimize slow integration tests",
       ],
       nextSteps: [
         "Review failed tests and fix",
         "Run tests locally to debug issues",
-        "Update 
+        "Update automation workflows and reports",
         "Re-run before merging PR",
       ],
     };
