@@ -928,6 +928,8 @@ class DeviceMonitoringAgent {
   async getStatus(): Promise<any> {
     // Get monitoring status
     return { active_monitors: 0 };
+  }
+
   /**
    * Get consciousness-guided validation strategy
    */

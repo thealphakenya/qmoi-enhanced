@@ -5,19 +5,21 @@
 
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Chatbot from "../components/Chatbot";
+import Chatbot from "../../components/Chatbot";
 
-jest.
+jest.mock("../../hooks/useMaster", () => ({
   useMaster: () => ({ isMaster: false }),
 }));
-beforeAll(() => {
-  // jsdom does not implement scrollIntoView; 
-  Element.production.scrollIntoView = jest.fn();
-});
 
-afterAll(() => {
-  // restore
-  // @ts-expect-error - Intentionally deleting production property
+describe("Chatbot model tests", () => {
+  beforeAll(() => {
+    // jsdom does not implement scrollIntoView; 
+    (Element.prototype as any).scrollIntoView = jest.fn();
+  });
+
+  afterAll(() => {
+    // restore
+    // @ts-expect-error - Intentionally deleting production property
   delete Element.production.scrollIntoView;
 });
 test("Chatbot shows canonical model label and no interactive selector", () => {

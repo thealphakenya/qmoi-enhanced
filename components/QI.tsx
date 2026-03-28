@@ -893,7 +893,7 @@ function QIComponent() {
                     size="sm"
                     variant="outline"
                     onClick={() => {
-                      .log("Pausing all downloads");
+                      console.log("Pausing all downloads");
                       toast({
                         title: "Success",
                         description: "All downloads paused",
@@ -918,7 +918,7 @@ function QIComponent() {
                     size="sm"
                     variant="outline"
                     onClick={() => {
-                      .log("Opening wallpaper settings");
+                      console.log("Opening wallpaper settings");
                       toast({
                         title: "Wallpaper",
                         description: "Opening wallpaper manager...",
@@ -934,7 +934,7 @@ function QIComponent() {
                     size="sm"
                     variant="outline"
                     onClick={() => {
-                      .log("Opening appearance settings");
+                      console.log("Opening appearance settings");
                       toast({
                         title: "Appearance",
                         description: "Opening customization panel...",
@@ -950,7 +950,7 @@ function QIComponent() {
                     size="sm"
                     variant="outline"
                     onClick={() => {
-                      .log("Opening app management");
+                      console.log("Opening app management");
                       toast({
                         title: "App Management",
                         description: "Opening installed apps...",
@@ -987,7 +987,7 @@ function QIComponent() {
                     size="sm"
                     variant="outline"
                     onClick={() => {
-                      .log("Pausing downloads");
+                      console.log("Pausing downloads");
                       toast({
                         title: "Downloads",
                         description: "All downloads paused",
@@ -1010,7 +1010,7 @@ function QIComponent() {
                   size="sm"
                   variant="outline"
                   onClick={() => {
-                    .log("Scanning for Bluetooth devices");
+                    console.log("Scanning for Bluetooth devices");
                     toast({
                       title: "Bluetooth",
                       description: "Scanning for nearby devices...",
@@ -1035,7 +1035,7 @@ function QIComponent() {
                     size="sm"
                     variant="outline"
                     onClick={() => {
-                      .log("Scanning WiFi networks");
+                      console.log("Scanning WiFi networks");
                       toast({
                         title: "WiFi",
                         description: "Scanning for available networks...",
@@ -1059,7 +1059,7 @@ function QIComponent() {
                   size="sm"
                   variant="outline"
                   onClick={() => {
-                    .log("Adding life goal");
+                    console.log("Adding life goal");
                     toast({
                       title: "Life Goal",
                       description: "Opening goal creation dialog...",
@@ -1082,7 +1082,7 @@ function QIComponent() {
                   size="sm"
                   variant="outline"
                   onClick={() => {
-                    .log("Adding invention project");
+                    console.log("Adding invention project");
                     toast({
                       title: "New Project",
                       description: "Opening project creation dialog...",
@@ -1157,7 +1157,7 @@ function QIComponent() {
                     size="sm"
                     variant="outline"
                     onClick={() => {
-                      .log("Adding automation rule");
+                      console.log("Adding automation rule");
                       toast({
                         title: "Automation",
                         description: "Opening rule builder...",
@@ -1236,7 +1236,7 @@ function QIComponent() {
                     size="sm"
                     variant="outline"
                     onClick={() => {
-                      .log("Clearing notifications");
+                      console.log("Clearing notifications");
                       toast({
                         title: "Notifications",
                         description: "All notifications cleared",
@@ -1310,7 +1310,7 @@ function QIComponent() {
                     size="sm"
                     variant="outline"
                     onClick={() => {
-                      .log("Starting system optimization");
+                      console.log("Starting system optimization");
                       toast({
                         title: "Optimization",
                         description: "Starting system optimization process...",

@@ -3234,3 +3234,60 @@ No endpoints are deprecated in v1.0.
 { "success": true }
 ```
 
+
+## Additional API Endpoints
+
+### GET /accountability
+
+**Description:** API endpoint
+
+**Response:**
+```json
+{ "success": true }
+```
+
+### GET /global-news
+
+**Description:** API endpoint
+
+**Response:**
+```json
+{ "success": true }
+```
+
+### GET /qi-spaces
+
+**Description:** API endpoint
+
+**Response:**
+```json
+{ "success": true }
+```
+
+### POST /accountability
+
+**Description:** API endpoint
+
+**Response:**
+```json
+{ "success": true }
+```
+
+### POST /global-news
+
+**Description:** API endpoint
+
+**Response:**
+```json
+{ "success": true }
+```
+
+### POST /qi-spaces
+
+**Description:** API endpoint
+
+**Response:**
+```json
+{ "success": true }
+```
+

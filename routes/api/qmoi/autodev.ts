@@ -309,7 +309,10 @@ export default async function handler(
           result = {
             success: false,
             message: "Auto-fix failed.",
-            error: ?.message ?? String(error),
+            error:
+              typeof error === "object" && error !== null && "message" in error
+                ? String((error as { message?: string }).message)
+                : String(error),
           };
         }
         break;

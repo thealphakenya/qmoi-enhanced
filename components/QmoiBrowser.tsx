@@ -454,7 +454,7 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
                     );
                   }
                 } catch (error) {
-                  .log("Cannot access iframe content due to CORS");
+                  console.log("Cannot access iframe content due to CORS");
                 }
               }
             }}

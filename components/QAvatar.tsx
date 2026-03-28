@@ -3099,7 +3099,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
 
   // Audit logging (console.log for now)
   function auditLog(action: string, cmd: string) {
-    .log(
+    console.log(
       `[AUDIT] ${action}: ${cmd} at ${new Date().toISOString()}`,
     );
   }

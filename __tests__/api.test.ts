@@ -10,9 +10,9 @@
 
 // NOTE: Using fetch instead of supertest for MSW 
 
-const 
+const token =
   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ0ZXN0LXVzZXItMTIzIiwicm9sZSI6ImFkbWluIn0.signed";
-const 
+const userToken =
   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ1c2VyLWFiYyIsInJvbGUiOiJ1c2VyIn0.signed";
 
 const apiRequest = async (

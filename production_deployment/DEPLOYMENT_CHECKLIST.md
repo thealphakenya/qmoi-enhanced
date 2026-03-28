@@ -1,3 +1,12 @@
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2026-03-28T23:12:21.094910Z
+- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
 # QMOI Enhanced Production Deployment Checklist
 Generated: 2026-03-26 23:50:50
 

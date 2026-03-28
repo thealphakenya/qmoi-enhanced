@@ -43,7 +43,7 @@ class NotificationsService {
         await this.sendEmailNotification(options);
       }
 
-      .log(
+      console.log(
         `Notification sent to ${options.userId}:`,
         options.title,
       );

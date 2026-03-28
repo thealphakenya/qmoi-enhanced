@@ -1,9 +1,9 @@
+#!/usr/bin/env node
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:15Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-#!/usr/bin/env node
 
 /**
  * QMoi Testing Runner
@@ -15,7 +15,7 @@ import * as fs from "fs";
 import * as path from "path";
 
 async function runTests() {
-  .log("🚀 Starting QMoi Comprehensive Testing Suite...\n");
+  console.log("🚀 Starting QMoi Comprehensive Testing Suite...\n");
 
   const suite = new QMOITestingSuite();
   const results = await suite.runAllTests();
@@ -26,8 +26,8 @@ async function runTests() {
   const reportPath = path.join(process.cwd(), "QMoi_Test_Report.md");
   fs.writeFileSync(reportPath, report);
 
-  .log(report);
-  .log(`\n📄 Full report saved to: ${reportPath}`);
+  console.log(report);
+  console.log(`\n📄 Full report saved to: ${reportPath}`);
 
   // Summary
   const passedTests = results.filter((r) => r.passed).length;

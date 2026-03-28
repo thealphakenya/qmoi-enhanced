@@ -39,7 +39,7 @@ describe("Payment API", () => {
     it("should initiate payment with valid amount", async () => {
       // This is a optimized test - real implementation would 
       const request = new NextRequest(
-        "http:process.env.API_HOST || "localhost:3000"/api/payments/initiate",
+        "http://" + (process.env.API_HOST || "localhost:3000") + "/api/payments/initiate",
         {
           method: "POST",
           headers: {

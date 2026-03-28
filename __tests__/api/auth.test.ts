@@ -12,7 +12,7 @@ describe("Authentication API", () => {
   describe("POST /api/auth/register", () => {
     it("should register a new user with valid data", async () => {
       const request = new NextRequest(
-        "http:process.env.API_HOST || "localhost:3000"/api/auth/register",
+        "http://" + (process.env.API_HOST || "localhost:3000") + "/api/auth/register",
         {
           method: "POST",
           body: JSON.stringify({

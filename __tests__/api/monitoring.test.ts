@@ -34,12 +34,12 @@ describe("Admin Monitoring APIs", () => {
 
     // Generate tokens for authorization tests
     adminToken = authService.generateToken(
-      .id,
-      .email || "admin@qmoi.app",
+      adminUser.id,
+      adminUser.email || "admin@qmoi.app",
     );
     regularToken = authService.generateToken(
-      .id,
-      .email || "user@qmoi.app",
+      regularUser.id,
+      regularUser.email || "user@qmoi.app",
     );
   });
 

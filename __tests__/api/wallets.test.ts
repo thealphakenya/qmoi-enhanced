@@ -46,7 +46,7 @@ describe("Wallet API", () => {
 
   describe("GET /api/wallets", () => {
     it("should list user wallets with valid token", async () => {
-      const request = new NextRequest("http:process.env.API_HOST || "localhost:3000"/api/wallets", {
+      const request = new NextRequest("http://" + (process.env.API_HOST || "localhost:3000") + "/api/wallets", {
         method: "GET",
         headers: {
           authorization: `Bearer ${testToken}`,
@@ -63,7 +63,7 @@ describe("Wallet API", () => {
     });
 
     it("should reject request without token", async () => {
-      const request = new NextRequest("http:process.env.API_HOST || "localhost:3000"/api/wallets", {
+      const request = new NextRequest("http://" + (process.env.API_HOST || "localhost:3000") + "/api/wallets", {
         method: "GET",
       });
 
@@ -72,7 +72,7 @@ describe("Wallet API", () => {
     });
 
     it("should reject request with invalid token", async () => {
-      const request = new NextRequest("http:process.env.API_HOST || "localhost:3000"/api/wallets", {
+      const request = new NextRequest("http://" + (process.env.API_HOST || "localhost:3000") + "/api/wallets", {
         method: "GET",
         headers: {
           authorization: "Bearer invalid-token-xyz",

@@ -34,21 +34,21 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
 
   beforeAll(() => {
     originalFetch = globalThis.fetch;
-    .fetch = jest.fn(async () => ({
+    globalThis.fetch = jest.fn(async () => ({
       ok: true,
       json: async () => ({ success: true }),
     } as any));
   });
 
   afterAll(() => {
-    .fetch = originalFetch;
+    globalThis.fetch = originalFetch;
   });
 
   beforeEach(() => {
     upsertMock.mockClear();
     findUniqueMock.mockClear();
     enqueueMock.mockClear();
-    (.fetch as jest.Mock).mockClear();
+    (globalThis.fetch as jest.Mock).mockClear();
   });
 
   it("toggles AutoDev on and returns status", async () => {

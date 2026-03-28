@@ -656,8 +656,8 @@ All asset metadata (sizes, checksums, platforms) is maintained in [`release_asse
 | Domain | Type | Status | Response Time | Fallback |
 |--------|------|--------|----------------|----------|
 | [qmoi.ai](https://qmoi.ai) | main_app | 200 ✅ | 100.00ms | Direct |
-| [qshare.qvillage.com](https://qshare.qvillage.com) | file_sharing | 200 ✅ | 37.50ms | Direct |
-| [qstore.qvillage.com](https://qstore.qvillage.com) | app_store | 200 ✅ | 33.96ms | Direct |
+| [qshare.qvillage.com](qshare.qvillage.com) | file_sharing | 200 ✅ | 37.50ms | Direct |
+| [qstore.qvillage.com](qstore.qvillage.com) | app_store | 200 ✅ | 33.96ms | Direct |
 | [alphaq.ai](https://alphaq.ai) | ai_platform | 200 ✅ | 115.15ms | Direct |
 | [qvillage.com](https://qvillage.com) | primary_hub | 200 ✅ | 122.91ms | Direct |
 
@@ -684,8 +684,8 @@ All asset metadata (sizes, checksums, platforms) is maintained in [`release_asse
 - [alphaq.ai](https://alphaq.ai) - Advanced AI system with superior intelligence ✅
 - [qmoi.ai](https://qmoi.ai) - Main QMOI AI platform with parallel processing ⚠️
 - [qvillage.com](https://qvillage.com) - Primary hub for QMOI ecosystem ✅
-- [qshare.qvillage.com](https://qshare.qvillage.com) - File sharing and collaboration platform ⚠️
-- [qstore.qvillage.com](https://qstore.qvillage.com) - Application marketplace ⚠️
+- [qshare.qvillage.com](qshare.qvillage.com) - File sharing and collaboration platform ⚠️
+- [qstore.qvillage.com](qstore.qvillage.com) - Application marketplace ⚠️
 
 ### 🛣️ Support & Extension Platforms
 

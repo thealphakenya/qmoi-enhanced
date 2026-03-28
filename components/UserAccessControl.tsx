@@ -127,7 +127,7 @@ export const AccessControlProvider: React.FC<AccessControlProviderProps> = ({
     setIsAuthenticated(true);
 
     // Log authentication event
-    .log(`User ${user.username} authenticated via ${method}`);
+    console.log(`User ${user.username} authenticated via ${method}`);
 
     return true;
   };

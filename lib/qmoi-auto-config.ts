@@ -25,7 +25,7 @@ class QMOIAutoConfig {
 
   async autoConfigureMpesa(): Promise<AutoConfigResult> {
     try {
-      .log('🔧 Starting QMOI Auto-Configuration...');
+      console.log('🔧 Starting QMOI Auto-Configuration...');
       
       // Generate production security credential
       const productionSecurityCredential = this.generateSecurityCredential('Victor9798!');

@@ -345,16 +345,16 @@ export const TVDecoderIntegration: TVDecoderDevice = {
   }
 
       if (!hasDecoder) {
-        .log(
+        console.log(
           "[MOCK MODE] TV decoder not detected in system, using mock mode",
         );
       } else {
-        .log("[MOCK MODE] TV decoder found, connecting...");
+        console.log("[MOCK MODE] TV decoder found, connecting...");
       }
 
       return true; // Always return true - mock mode always succeeds
     } catch (err) {
-      .log(
+      console.log(
         "[MOCK MODE] TV decoder auto-detection failed, defaulting to mock:",
         err instanceof Error ? err.message : String(err),
       );
@@ -382,7 +382,7 @@ export const CarRadioIntegration: CarRadioDevice = {
       );
 
       if (!carRadio) {
-        .log(
+        console.log(
           `[MOCK MODE] Car radio device (VID:${this.VID.toString(16)}, PID:${this.PID.toString(16)}) not found, using mock mode`,
         );
         this.device = new HIDMock("/dev/mock-carradio");
@@ -390,12 +390,12 @@ export const CarRadioIntegration: CarRadioDevice = {
       }
 
       this.device = new HIDMock(carRadio.path);
-      .log(
+      console.log(
         `[MOCK MODE] Connected to car radio at ${carRadio.path}`,
       );
       return true;
     } catch (err) {
-      .log(
+      console.log(
         "[MOCK MODE] Car radio connection failed, using mock mode:",
         err instanceof Error ? err.message : String(err),
       );
@@ -416,7 +416,7 @@ export const CarRadioIntegration: CarRadioDevice = {
       // Mock command execution
       return new Promise((resolve) => {
         setTimeout(() => {
-          .log(`[MOCK MODE] Car radio command: "${cmd}" -> ACK`);
+          console.log(`[MOCK MODE] Car radio command: "${cmd}" -> ACK`);
           resolve({
             ok: true,
             response: `CAR_RADIO_ACK ${cmd}`,
@@ -442,16 +442,16 @@ export const CarRadioIntegration: CarRadioDevice = {
       );
 
       if (!hasRadio) {
-        .log(
+        console.log(
           `[MOCK MODE] Car radio (VID:${this.VID.toString(16)}, PID:${this.PID.toString(16)}) not detected in system, using mock mode`,
         );
       } else {
-        .log("[MOCK MODE] Car radio device found, connecting...");
+        console.log("[MOCK MODE] Car radio device found, connecting...");
       }
 
       return true; // Always return true in mock mode
     } catch (err) {
-      .log(
+      console.log(
         "[MOCK MODE] Car radio auto-detection failed, defaulting to mock:",
         err instanceof Error ? err.message : String(err),
       );
@@ -465,18 +465,18 @@ export const SmartHomeIntegration: DeviceIntegration = {
 
   async connect() {
     try {
-      .log(
+      console.log(
         "[MOCK MODE] Smart home bridge: connecting to local discovery service",
       );
       // Mock discovery and connection attempt
       await new Promise((resolve) => setTimeout(resolve, 500));
       .connectionState = true;
-      .log(
+      console.log(
         "[MOCK MODE] Smart home bridge: connection established (mock)",
       );
       return true;
     } catch (err) {
-      .log(
+      console.log(
         "[MOCK MODE] Smart home bridge connection failed, using mock mode:",
         err instanceof Error ? err.message : String(err),
       );
@@ -493,7 +493,7 @@ export const SmartHomeIntegration: DeviceIntegration = {
     }
 
     // Mock command execution with appropriate latency
-    .log("[MOCK MODE] Smart home command:", cmd);
+    console.log("[MOCK MODE] Smart home command:", cmd);
     await new Promise((resolve) => setTimeout(resolve, 200));
     return {
       ok: true,
@@ -504,11 +504,11 @@ export const SmartHomeIntegration: DeviceIntegration = {
   },
 
   async autoDetect() {
-    .log(
+    console.log(
       "[MOCK MODE] Auto-detecting smart home bridge (MQTT/Zigbee/Matter protocols)",
     );
     await new Promise((resolve) => setTimeout(resolve, 300));
-    .log(
+    console.log(
       "[MOCK MODE] Smart home bridge: mock mode active, not detected in actual hardware",
     );
     return true;
@@ -522,12 +522,12 @@ export const MessagingIntegration: DeviceIntegration = {
   async connect() {
     if (.connected) return true;
 
-    .log(
+    console.log(
       "[
     );
     await new Promise((resolve) => setTimeout(resolve, 500));
     .connected = true;
-    .log(
+    console.log(
       "[
     );
 
@@ -545,7 +545,7 @@ export const MessagingIntegration: DeviceIntegration = {
   async sendCommand(msg: string) {
     if (!.connected) {
       .queuedMessages.push(msg);
-      .log(
+      console.log(
         "[MOCK MODE] Messaging service: not connected, queuing message",
       );
       throw new Error(
@@ -553,7 +553,7 @@ export const MessagingIntegration: DeviceIntegration = {
       );
     }
 
-    .log("[
+    console.log("[
     await new Promise((resolve) =>
       setTimeout(resolve, 100 + Math.random() * 200),
     );
@@ -568,11 +568,11 @@ export const MessagingIntegration: DeviceIntegration = {
 
   async autoDetect() {
     return new Promise((resolve) => {
-      .log(
+      console.log(
         "[
       );
       setTimeout(() => {
-        .log(
+        console.log(
           "[
         );
         resolve(true);
@@ -587,12 +587,12 @@ export const MLPlatformIntegration: DeviceIntegration = {
   apiVersion: "2023-12",
 
   async connect() {
-    .log(
+    console.log(
       "[
     );
     await new Promise((resolve) => setTimeout(resolve, 800));
     .connected = true;
-    .log(
+    console.log(
       "[
     );
     return true;
@@ -606,10 +606,10 @@ export const MLPlatformIntegration: DeviceIntegration = {
     }
 
     const command = JSON.parse(cmd);
-    .log("[
+    console.log("[
     switch (command.type) {
       case "LOAD_MODEL":
-        .log(
+        console.log(
           "[
           command.modelId,
         );
@@ -629,7 +629,7 @@ export const MLPlatformIntegration: DeviceIntegration = {
             "[
           );
         }
-        .log(
+        console.log(
           "[
           command.modelId,
         );
@@ -652,11 +652,11 @@ export const MLPlatformIntegration: DeviceIntegration = {
   },
 
   async autoDetect() {
-    .log(
+    console.log(
       "[
     );
     await new Promise((resolve) => setTimeout(resolve, 400));
-    .log(
+    console.log(
       "[
     );
     return true;
@@ -685,7 +685,7 @@ export const AWSIntegration: DeviceIntegration = {
 
   async connect() {
     try {
-      .log("AWS Integration: initializing connection...");
+      console.log("AWS Integration: initializing connection...");
       const env = .process?.env ?? {};
 
       // Check for required credentials
@@ -724,7 +724,7 @@ export const AWSIntegration: DeviceIntegration = {
   },
 
   async autoDetect() {
-    .log("Auto-detecting AWS credentials...");
+    console.log("Auto-detecting AWS credentials...");
     const env = .process?.env ?? {};
     return !!(env.AWS_ACCESS_KEY_ID && env.AWS_SECRET_ACCESS_KEY);
   },
@@ -741,14 +741,14 @@ export const AzureIntegration: DeviceIntegration = {
     subscriptionId: string;
   }) {
     try {
-      .log("Azure Integration: establishing connection...");
+      console.log("Azure Integration: establishing connection...");
       if (creds) {
         CredentialStore.set("azure", creds);
       }
 
       const storedCreds = CredentialStore.get("azure");
       if (!storedCreds) {
-        .log("No Azure credentials found");
+        console.log("No Azure credentials found");
         return false;
       }
 
@@ -779,7 +779,7 @@ export const AzureIntegration: DeviceIntegration = {
   },
 
   async autoDetect() {
-    .log("Auto-detecting Azure credentials...");
+    console.log("Auto-detecting Azure credentials...");
     return !!CredentialStore.get("azure");
   },
 
@@ -799,14 +799,14 @@ export const GCPIntegration: DeviceIntegration = {
 
   async connect(creds?: { projectId: string; keyFilename: string }) {
     try {
-      .log("GCP Integration: initializing connection...");
+      console.log("GCP Integration: initializing connection...");
       if (creds) {
         CredentialStore.set("gcp", creds);
       }
 
       const storedCreds = CredentialStore.get("gcp");
       if (!storedCreds) {
-        .log("No GCP credentials found");
+        console.log("No GCP credentials found");
         return false;
       }
 
@@ -837,7 +837,7 @@ export const GCPIntegration: DeviceIntegration = {
   },
 
   async autoDetect() {
-    .log("Auto-detecting GCP credentials...");
+    console.log("Auto-detecting GCP credentials...");
     return !!CredentialStore.get("gcp");
   },
 
@@ -858,7 +858,7 @@ export const IoTIntegration: DeviceIntegration = {
 
   async connect() {
     try {
-      .log("IoT Integration: discovering devices...");
+      console.log("IoT Integration: discovering devices...");
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       this.devices.set("device1", { type: "sensor", status: "online" });
@@ -896,7 +896,7 @@ export const IoTIntegration: DeviceIntegration = {
   },
 
   async autoDetect() {
-    .log("Auto-detecting IoT devices...");
+    console.log("Auto-detecting IoT devices...");
     await new Promise((resolve) => setTimeout(resolve, 500));
     return true;
   },
@@ -909,7 +909,7 @@ export const MobileIntegration: DeviceIntegration = {
 
   async connect() {
     try {
-      .log("Mobile Integration: establishing connection...");
+      console.log("Mobile Integration: establishing connection...");
       await new Promise((resolve) => setTimeout(resolve, 600));
 
       .deviceInfo = {
@@ -948,7 +948,7 @@ export const MobileIntegration: DeviceIntegration = {
   },
 
   async autoDetect() {
-    .log("Auto-detecting mobile devices...");
+    console.log("Auto-detecting mobile devices...");
     await new Promise((resolve) => setTimeout(resolve, 400));
     return true;
   },

@@ -142,7 +142,7 @@ export class QmoiTrader {
       this.strategies.set(strategy.id, strategy);
     });
 
-    .log(
+    console.log(
       `[QMOI Trader] Initialized ${strategies.length} trading strategies`,
     );
   }

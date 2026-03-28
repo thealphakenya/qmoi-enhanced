@@ -128,7 +128,7 @@ class QMOIRevenueEngine {
           error,
         );
         logEvent("revenue_cycle_failed", {
-          error: ?.message || String(error),
+          error: (error as any)?.message || String(error),
         });
         await this.sleep(60000); // Wait 1 minute before retry
       }

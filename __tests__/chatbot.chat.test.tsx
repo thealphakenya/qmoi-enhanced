@@ -5,19 +5,19 @@
 
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import Chatbot from "../components/Chatbot";
+import Chatbot from "../../components/Chatbot";
 
-jest.
+jest.mock("../hooks/useMaster", () => ({
   useMaster: () => ({ isMaster: false }),
 }));
 
 describe("Chatbot integration (API proxy)", () => {
   const originalFetch = global.fetch;
-  const origSpeech = .speechSynthesis;
-  const origSpeechUtter = .SpeechSynthesisUtterance;
+  const origSpeech = window.speechSynthesis;
+  const origSpeechUtter = window.SpeechSynthesisUtterance;
 
   beforeAll(() => {
-    Element.production.scrollIntoView = jest.fn();
+    (Element.prototype as any).scrollIntoView = jest.fn();
   });
   afterAll(() => {
     // @ts-expect-error - Intentionally deleting production property

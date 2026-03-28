@@ -9,14 +9,14 @@ describe("MasterLinkValidator ownership and type classification", () => {
   const validator = new MasterLinkValidator("/tmp");
   
   test("classifies QMOI domain links as qmoisystem", () => {
-    const fn = .classifyOwnership.bind(validator);
+    const fn = validator.classifyOwnership.bind(validator);
     expect(fn("https://qmoi.ai/docs")).toBe("qmoisystem");
     expect(fn("https://qvillage.com/path")).toBe("qmoisystem");
     expect(fn("https://qcity.qmoi.ai/landing")).toBe("qmoisystem");
   });
 
   test("classifies third-party links as thirdparty", () => {
-    const fn = .classifyOwnership.bind(validator);
+    const fn = validator.classifyOwnership.bind(validator);
     expect(fn("https://huggingface.co/spaces/test")).toBe("thirdparty");
     expect(fn("https://github.com/thealphakenya/qmoi-enhanced")).toBe("thirdparty");
     expect(fn("https://vercel.app/project")).toBe("thirdparty");

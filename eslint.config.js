@@ -21,6 +21,38 @@ export default [
   },
   js.configs.recommended,
   {
+    files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+    languageOptions: {
+      globals: {
+        window: "readonly",
+        document: "readonly",
+        navigator: "readonly",
+        localStorage: "readonly",
+        fetch: "readonly",
+        URL: "readonly",
+        XMLHttpRequest: "readonly",
+        console: "readonly",
+        setTimeout: "readonly",
+        clearTimeout: "readonly",
+        setInterval: "readonly",
+        clearInterval: "readonly",
+        File: "readonly",
+        Blob: "readonly",
+        Notification: "readonly",
+        Audio: "readonly",
+        alert: "readonly",
+        confirm: "readonly",
+        prompt: "readonly",
+        event: "readonly",
+        process: "readonly",
+        Buffer: "readonly",
+      },
+    },
+    rules: {
+      "no-undef": "off",
+    },
+  },
+  {
     files: [
       "**/*.ts",
       "**/*.tsx",
