@@ -1,90 +1,6 @@
 {
-  "qmoi.ai": {
-    "timestamp": "2026-03-28T03:48:55.553064",
-    "suggestions": [
-      {
-        "type": "TTL_Check",
-        "suggestion": "Check DNS TTL - propagation may take 24-48 hours",
-        "command": "dig qmoi.ai +nocmd +noall +answer"
-      },
-      {
-        "type": "WHOIS_Check",
-        "suggestion": "Verify domain registration and nameservers",
-        "command": "whois qmoi.ai"
-      }
-    ]
-  },
-  "qmoi-space.qmoi.ai": {
-    "timestamp": "2026-03-28T03:48:55.560689",
-    "suggestions": [
-      {
-        "type": "DNS_Record",
-        "domain": "qmoi-space.qmoi.ai",
-        "record_type": "A or CNAME",
-        "target": "Point to your hosting provider or load balancer",
-        "provider": "Check qmoi.ai DNS zone configuration",
-        "command": "dig qmoi-space.qmoi.ai @8.8.8.8"
-      },
-      {
-        "type": "TTL_Check",
-        "suggestion": "Check DNS TTL - propagation may take 24-48 hours",
-        "command": "dig qmoi-space.qmoi.ai +nocmd +noall +answer"
-      },
-      {
-        "type": "WHOIS_Check",
-        "suggestion": "Verify domain registration and nameservers",
-        "command": "whois qmoi-space.qmoi.ai"
-      }
-    ]
-  },
-  "qcity.qmoi.ai": {
-    "timestamp": "2026-03-28T03:48:55.570473",
-    "suggestions": [
-      {
-        "type": "DNS_Record",
-        "domain": "qcity.qmoi.ai",
-        "record_type": "A or CNAME",
-        "target": "Point to your hosting provider or load balancer",
-        "provider": "Check qmoi.ai DNS zone configuration",
-        "command": "dig qcity.qmoi.ai @8.8.8.8"
-      },
-      {
-        "type": "TTL_Check",
-        "suggestion": "Check DNS TTL - propagation may take 24-48 hours",
-        "command": "dig qcity.qmoi.ai +nocmd +noall +answer"
-      },
-      {
-        "type": "WHOIS_Check",
-        "suggestion": "Verify domain registration and nameservers",
-        "command": "whois qcity.qmoi.ai"
-      }
-    ]
-  },
-  "space.qmoi.ai": {
-    "timestamp": "2026-03-28T03:48:55.625226",
-    "suggestions": [
-      {
-        "type": "DNS_Record",
-        "domain": "space.qmoi.ai",
-        "record_type": "A or CNAME",
-        "target": "Point to your hosting provider or load balancer",
-        "provider": "Check qmoi.ai DNS zone configuration",
-        "command": "dig space.qmoi.ai @8.8.8.8"
-      },
-      {
-        "type": "TTL_Check",
-        "suggestion": "Check DNS TTL - propagation may take 24-48 hours",
-        "command": "dig space.qmoi.ai +nocmd +noall +answer"
-      },
-      {
-        "type": "WHOIS_Check",
-        "suggestion": "Verify domain registration and nameservers",
-        "command": "whois space.qmoi.ai"
-      }
-    ]
-  },
   "q-stable.qmoi.ai": {
-    "timestamp": "2026-03-28T03:48:55.610949",
+    "timestamp": "2026-03-28T04:59:01.856903",
     "suggestions": [
       {
         "type": "DNS_Record",
@@ -106,23 +22,31 @@
       }
     ]
   },
-  "qvillage.org": {
-    "timestamp": "2026-03-28T03:48:55.627024",
+  "space.qmoi.ai": {
+    "timestamp": "2026-03-28T04:59:01.857933",
     "suggestions": [
+      {
+        "type": "DNS_Record",
+        "domain": "space.qmoi.ai",
+        "record_type": "A or CNAME",
+        "target": "Point to your hosting provider or load balancer",
+        "provider": "Check qmoi.ai DNS zone configuration",
+        "command": "dig space.qmoi.ai @8.8.8.8"
+      },
       {
         "type": "TTL_Check",
         "suggestion": "Check DNS TTL - propagation may take 24-48 hours",
-        "command": "dig qvillage.org +nocmd +noall +answer"
+        "command": "dig space.qmoi.ai +nocmd +noall +answer"
       },
       {
         "type": "WHOIS_Check",
         "suggestion": "Verify domain registration and nameservers",
-        "command": "whois qvillage.org"
+        "command": "whois space.qmoi.ai"
       }
     ]
   },
   "stable.alphaq.ai": {
-    "timestamp": "2026-03-28T03:48:55.667166",
+    "timestamp": "2026-03-28T04:59:01.862772",
     "suggestions": [
       {
         "type": "TTL_Check",
@@ -137,7 +61,7 @@
     ]
   },
   "qparallel.dev": {
-    "timestamp": "2026-03-28T03:48:55.641709",
+    "timestamp": "2026-03-28T04:59:01.867373",
     "suggestions": [
       {
         "type": "TTL_Check",
@@ -151,26 +75,18 @@
       }
     ]
   },
-  "yap.qmoi.ai": {
-    "timestamp": "2026-03-28T03:48:55.558033",
+  "qvillage.org": {
+    "timestamp": "2026-03-28T04:59:01.908318",
     "suggestions": [
-      {
-        "type": "DNS_Record",
-        "domain": "yap.qmoi.ai",
-        "record_type": "A or CNAME",
-        "target": "Point to your hosting provider or load balancer",
-        "provider": "Check qmoi.ai DNS zone configuration",
-        "command": "dig yap.qmoi.ai @8.8.8.8"
-      },
       {
         "type": "TTL_Check",
         "suggestion": "Check DNS TTL - propagation may take 24-48 hours",
-        "command": "dig yap.qmoi.ai +nocmd +noall +answer"
+        "command": "dig qvillage.org +nocmd +noall +answer"
       },
       {
         "type": "WHOIS_Check",
         "suggestion": "Verify domain registration and nameservers",
-        "command": "whois yap.qmoi.ai"
+        "command": "whois qvillage.org"
       }
     ]
   }

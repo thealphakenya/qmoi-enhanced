@@ -3,15 +3,15 @@
 
 - validated: yes
 - validator: QMOI Lion
-- timestamp: 2026-03-28T02:12:25.671957Z
+- timestamp: 2026-03-28T04:58:47.978662Z
 - note: Auto-updated by `scripts/comprehensive_docs_update.py`
 <!-- LION_VALIDATION_END -->
 
 # QMOI API Documentation
 
 **Generated**: 2026-03-28 SESSION CONTINUOUS
-**Last Updated**: 2026-03-28T02:12:25.671957Z
-**Total Endpoints**: 243
+**Last Updated**: 2026-03-28T04:58:47.978662Z
+**Total Endpoints**: 244
 
 ## Overview
 
@@ -19,7 +19,7 @@ This document provides comprehensive documentation for all QMOI system APIs. All
 
 ## Quick Access
 
-- **Total Endpoints**: 243
+- **Total Endpoints**: 244
 - **API Base URL**: `/api`
 - **Authentication**: JWT tokens required for most endpoints
 - **Rate Limiting**: Applied to all endpoints
@@ -240,6 +240,7 @@ Content-Type: application/json
 - `GET` `/api/git/status`
 - `GET` `/api/global`
 - `GET` `/api/global-links`
+- `GET` `/api/global-news`
 - `GET` `/api/health`
 - `GET` `/api/health/data`
 - `GET` `/api/links`
