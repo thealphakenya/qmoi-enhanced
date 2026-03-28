@@ -1,0 +1,10 @@
+[Unit]
+Description=Run QMOI healthcheck every minute
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
+Unit=qmoi-healthcheck.service
+
+[Install]
+WantedBy=timers.target

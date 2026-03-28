@@ -1,0 +1,24 @@
+[Unit]
+Description=QVillage Auto Update & Deploy
+After=network-online.target docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/opt/qvillage
+Environment=IMAGE_NAME=qvillage-standalone:latest
+ExecStart=/bin/bash -lc '\
+  set -euo pipefail; \
+  git fetch --all --tags; \
+  git reset --hard origin/main; \
+  docker build -f Dockerfile.qvillage -t ${IMAGE_NAME} .; \
+  # graceful restart: start new container then remove old
+  docker rm -f qvillage-standalone-new || true; \
+  docker run -d --name qvillage-standalone-new --restart=always $(/bin/grep -h "^-e" /opt/qvillage/.env 2>/dev/null || true) ${IMAGE_NAME}; \
+  sleep 5; \
+  docker rm -f qvillage-standalone || true; \
+  docker rename qvillage-standalone-new qvillage-standalone || true'
+
+[Install]
+WantedBy=multi-user.target

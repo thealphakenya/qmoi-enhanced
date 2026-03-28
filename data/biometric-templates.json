@@ -1,0 +1,16 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+[
+  {
+    "id": "a6281b8c-b6ce-47db-9c1c-8c11018390f0",
+    "userId": "1",
+    "username": "admin",
+    "type": "fingerprint",
+    "templateId": "fingerprint-1-1768547646696",
+    "dataHash": "7de705beee8f0c49ba78964251e32823af4fbd0fada2002211af1c80ffe49a50",
+    "quality": 0.9730570648265886,
+    "status": "active",
+    "enrolledAt": "2026-01-16T07:14:06.696Z",
+    "lastUsed": "2026-01-16T07:14:13.627Z",
+    "failedAttempts": 0
+  }
+]

@@ -1,0 +1,28 @@
+name: Regenerate ALLLINKS
+
+on:
+  push:
+    branches: [main, autosync-backup-20250926-232440]
+  schedule:
+    - cron: "0 2 * * *" # daily at 02:00 UTC
+  pull_request:
+    paths:
+      - "**/*.md"
+
+jobs:
+  regen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Regenerate ALLLINKS (dry-run)
+        run: |
+          python3 scripts/generate_all_links.py
+      - name: Upload ALLLINKS report
+        uses: actions/upload-artifact@v4
+        with:
+          name: all-links-report
+          path: .qmoi_validation/all_links.json

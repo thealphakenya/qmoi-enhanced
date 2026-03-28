@@ -1,0 +1,204 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+{
+  "checked_at": "2025-11-20T18:46:31.981002Z",
+  "releases": [
+    {
+      "tag": "v1.2.5",
+      "assets": [
+        "admin.zip",
+        "app-release.apk",
+        "checksums.txt",
+        "deals.zip",
+        "q-stable.zip",
+        "qcity_package.zip",
+        "qmoi-ai.zip",
+        "qmoi-release.exe",
+        "qmoi-release.ipa",
+        "qmoi-space.zip",
+        "qmoi.zip",
+        "qmoi_ai.apk",
+        "qmoi_ai.AppImage",
+        "qmoi_ai.deb",
+        "qmoi_ai.dmg",
+        "qmoi_ai.exe",
+        "qmoi_ai.exe.sha256",
+        "qmoi_ai.img",
+        "qmoi_ai.ipa",
+        "qmoi_ai_chromebook.zip",
+        "qmoi_ai_smarttv.apk",
+        "SHA256SUMS.txt"
+      ],
+      "included": {
+        "qmoi": [],
+        "qcity": [
+          "windows",
+          "mac",
+          "linux",
+          "android",
+          "ios"
+        ],
+        "qshare": [
+          "windows",
+          "mac",
+          "linux",
+          "android",
+          "ios"
+        ],
+        "yap": [
+          "windows",
+          "mac",
+          "linux",
+          "android",
+          "ios"
+        ],
+        "qstore": [
+          "windows",
+          "mac",
+          "linux",
+          "android",
+          "ios"
+        ],
+        "qvillage": [
+          "windows",
+          "mac",
+          "linux",
+          "android",
+          "ios"
+        ],
+        "qmoi-space": [
+          "windows",
+          "mac",
+          "linux",
+          "android",
+          "ios"
+        ]
+      }
+    },
+    {
+      "tag": "v1.2.4",
+      "assets": [
+        "qcity_package.zip",
+        "qmoi_ai.apk",
+        "qmoi_ai.ipa",
+        "qmoi_ai_chromebook.zip",
+        "qmoi_ai_smarttv.apk"
+      ],
+      "included": {
+        "qmoi": [
+          "windows",
+          "mac",
+          "linux"
+        ],
+        "qcity": [
+          "windows",
+          "mac",
+          "linux",
+          "android",
+          "ios"
+        ],
+        "qshare": [
+          "windows",
+          "mac",
+          "linux",
+          "android",
+          "ios"
+        ],
+        "yap": [
+          "windows",
+          "mac",
+          "linux",
+          "android",
+          "ios"
+        ],
+        "qstore": [
+          "windows",
+          "mac",
+          "linux",
+          "android",
+          "ios"
+        ],
+        "qvillage": [
+          "windows",
+          "mac",
+          "linux",
+          "android",
+          "ios"
+        ],
+        "qmoi-space": [
+          "windows",
+          "mac",
+          "linux",
+          "android",
+          "ios"
+        ]
+      }
+    },
+    {
+      "tag": "v1.2.3",
+      "assets": [
+        "admin.zip",
+        "checksums.txt",
+        "deals.zip",
+        "q-stable.zip",
+        "qcity_package.zip",
+        "qmoi-ai.zip",
+        "qmoi-space.zip",
+        "qmoi.zip",
+        "qmoi_ai.apk",
+        "qmoi_ai.AppImage",
+        "qmoi_ai.deb",
+        "qmoi_ai.dmg",
+        "qmoi_ai.exe",
+        "qmoi_ai.exe.sha256",
+        "qmoi_ai.ipa",
+        "qmoi_ai_chromebook.zip",
+        "qmoi_ai_smarttv.apk"
+      ],
+      "included": {
+        "qmoi": [],
+        "qcity": [
+          "windows",
+          "mac",
+          "linux",
+          "android",
+          "ios"
+        ],
+        "qshare": [
+          "windows",
+          "mac",
+          "linux",
+          "android",
+          "ios"
+        ],
+        "yap": [
+          "windows",
+          "mac",
+          "linux",
+          "android",
+          "ios"
+        ],
+        "qstore": [
+          "windows",
+          "mac",
+          "linux",
+          "android",
+          "ios"
+        ],
+        "qvillage": [
+          "windows",
+          "mac",
+          "linux",
+          "android",
+          "ios"
+        ],
+        "qmoi-space": [
+          "windows",
+          "mac",
+          "linux",
+          "android",
+          "ios"
+        ]
+      }
+    }
+  ]
+}

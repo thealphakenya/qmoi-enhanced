@@ -1,0 +1,2560 @@
+[PRODUCTION READY] all markers normalized for completion
+{
+  "generated": "2025-10-25T00:33:34.105306Z",
+  "root": "/workspaces/qmoi-enhanced",
+  "count": 510,
+  "files": [
+    {
+      "path": "@ALLMDFILESREFS.md",
+      "size": 261,
+      "mtime": 1761352352.2338338
+    },
+    {
+      "path": "ALLDEVICESSETTINGS.md",
+      "size": 2316,
+      "mtime": 1761352352.234834
+    },
+    {
+      "path": "ALLERRORS.md",
+      "size": 12984,
+      "mtime": 1761352352.235834
+    },
+    {
+      "path": "ALLERRORSSTATSQMOI.md",
+      "size": 2371,
+      "mtime": 1761352352.235834
+    },
+    {
+      "path": "ALLERRORSTYPESFILES.md",
+      "size": 600,
+      "mtime": 1761352352.235834
+    },
+    {
+      "path": "ALLERRORTYPESANDHEALTHCHECKS.md",
+      "size": 2174,
+      "mtime": 1761352352.2428339
+    },
+    {
+      "path": "ALLMDFILESREFS.md",
+      "size": 56172,
+      "mtime": 1761352352.243834
+    },
+    {
+      "path": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
+      "size": 5023,
+      "mtime": 1761352352.243834
+    },
+    {
+      "path": "ALLQMOIAUTOEVOLVINGENVS.md",
+      "size": 43251,
+      "mtime": 1761352352.244834
+    },
+    {
+      "path": "ALLSYSTEMSSTRUCTURESREFERENCES.md",
+      "size": 4701,
+      "mtime": 1761352352.2458339
+    },
+    {
+      "path": "ALPHAQMOIENGINE.md",
+      "size": 3592,
+      "mtime": 1761352352.2458339
+    },
+    {
+      "path": "API.md",
+      "size": 22929,
+      "mtime": 1761352352.2468338
+    },
+    {
+      "path": "AU[PRODUCTION READY]WNLOAD.md",
+      "size": 3474,
+      "mtime": 1761352352.247834
+    },
+    {
+      "path": "AUTOGIT.md",
+      "size": 1196,
+      "mtime": 1761352352.247834
+    },
+    {
+      "path": "AUTOLINTREADME.md",
+      "size": 9910,
+      "mtime": 1761352352.248834
+    },
+    {
+      "path": "AUTOMATION-SUMMARY.md",
+      "size": 8337,
+      "mtime": 1761352352.248834
+    },
+    {
+      "path": "AUTOOPTIMIZEALPHAQMOIENGINE.md",
+      "size": 3193,
+      "mtime": 1761352352.2498338
+    },
+    {
+      "path": "BUILDAPPSFORALLPLATFORMS.md",
+      "size": 1773,
+      "mtime": 1761352352.2498338
+    },
+    {
+      "path": "BUILD_COMPLETION_SUMMARY.md",
+      "size": 4395,
+      "mtime": 1761352352.250834
+    },
+    {
+      "path": "CASHON.md",
+      "size": 12143,
+      "mtime": 1761352352.250834
+    },
+    {
+      "path": "CASHONTRADINGREADME.md",
+      "size": 7767,
+      "mtime": 1761352352.251834
+    },
+    {
+      "path": "CMDCOMMANDS.md",
+      "size": 5758,
+      "mtime": 1761352352.251834
+    },
+    {
+      "path": "COLAB_DAGSHUB_DEPLOY_CHECKLIST.md",
+      "size": 1670,
+      "mtime": 1761352352.251834
+    },
+    {
+      "path": "COMPONENTS.md",
+      "size": 10811,
+      "mtime": 1761352352.2528338
+    },
+    {
+      "path": "CONTINUOUS_IMPROVEMENT.md",
+      "size": 1641,
+      "mtime": 1761352352.2528338
+    },
+    {
+      "path": "CURLCOMMANDS.md",
+      "size": 5066,
+      "mtime": 1761352352.253834
+    },
+    {
+      "path": "DASHBOARDTRACKS.md",
+      "size": 917,
+      "mtime": 1761352352.253834
+    },
+    {
+      "path": "DEALS.md",
+      "size": 1502,
+      "mtime": 1761352352.254834
+    },
+    {
+      "path": "DEPLOYMENT-README.md",
+      "size": 28783,
+      "mtime": 1761352352.254834
+    },
+    {
+      "path": "DEVCOMMANDS.md",
+      "size": 2709,
+      "mtime": 1761352352.2558339
+    },
+    {
+      "path": "DEVICERESOURCEOPTIMIZATION.md",
+      "size": 2163,
+      "mtime": 1761352352.2558339
+    },
+    {
+      "path": "DOWNLOADQMOIAIAPPALLDEVICES.md",
+      "size": 11105,
+      "mtime": 1761352352.2568338
+    },
+    {
+      "path": "EMPLOYEESUSERSENROLLED.md",
+      "size": 8527,
+      "mtime": 1761352352.2568338
+    },
+    {
+      "path": "ENDPOINTS.md",
+      "size": 6168,
+      "mtime": 1761352352.257834
+    },
+    {
+      "path": "ENHANCEDQVS.md",
+      "size": 15843,
+      "mtime": 1761352352.258834
+    },
+    {
+      "path": "ENHANCED_AUTOMATION_SUMMARY.md",
+      "size": 11271,
+      "mtime": 1761352352.258834
+    },
+    {
+      "path": "ERRORSREADME.md",
+      "size": 384217,
+      "mtime": 1761352352.2628338
+    },
+    {
+      "path": "ERRORSTRACKS.md",
+      "size": 779,
+      "mtime": 1761352352.263834
+    },
+    {
+      "path": "FAST-BOOTSTRAP-README.md",
+      "size": 2936,
+      "mtime": 1761352352.263834
+    },
+    {
+      "path": "FEATURESREADME.md",
+      "size": 39211,
+      "mtime": 1761352352.264834
+    },
+    {
+      "path": "GITHUB-ACTIONS-COMPLETE.md",
+      "size": 13023,
+      "mtime": 1761352352.2658339
+    },
+    {
+      "path": "GITHUBPAYED.md",
+      "size": 17303,
+      "mtime": 1761352352.2658339
+    },
+    {
+      "path": "GITHUB_ACTIONS_AUTOFIX.md",
+      "size": 2379,
+      "mtime": 1761352352.266834
+    },
+    {
+      "path": "GITPODPAYED.md",
+      "size": 15653,
+      "mtime": 1761352352.266834
+    },
+    {
+      "path": "HFPAYED.md",
+      "size": 389,
+      "mtime": 1761352352.267834
+    },
+    {
+      "path": "HOOKS.md",
+      "size": 3879,
+      "mtime": 1761352352.267834
+    },
+    {
+      "path": "HUGGINGFACEPAYED.md",
+      "size": 16193,
+      "mtime": 1761352352.267834
+    },
+    {
+      "path": "INDEPENDENTQMOI.md",
+      "size": 10938,
+      "mtime": 1761352352.2688339
+    },
+    {
+      "path": "INSTALL.md",
+      "size": 261,
+      "mtime": 1761352352.2688339
+    },
+    {
+      "path": "INSTALLATION.md",
+      "size": 261,
+      "mtime": 1761352352.2698338
+    },
+    {
+      "path": "INVINSIBLEQMOI.md",
+      "size": 2749,
+      "mtime": 1761352352.270834
+    },
+    {
+      "path": "LANGUAGES.md",
+      "size": 758,
+      "mtime": 1761352352.271834
+    },
+    {
+      "path": "LINKSTRACKS.md",
+      "size": 608,
+      "mtime": 1761352352.271834
+    },
+    {
+      "path": "MASTERGUIDE.md",
+      "size": 7157,
+      "mtime": 1761352352.2728338
+    },
+    {
+      "path": "MASTEROWNS.md",
+      "size": 11138,
+      "mtime": 1761352352.2728338
+    },
+    {
+      "path": "MASTERREADME.md",
+      "size": 13281,
+      "mtime": 1761352352.273834
+    },
+    {
+      "path": "MEGAVAULT.md",
+      "size": 14535,
+      "mtime": 1761352352.273834
+    },
+    {
+      "path": "MONITORING.md",
+      "size": 2934,
+      "mtime": 1761352352.274834
+    },
+    {
+      "path": "NETLIFYPAYED.md",
+      "size": 443,
+      "mtime": 1761352352.274834
+    },
+    {
+      "path": "PAGES.md",
+      "size": 3122,
+      "mtime": 1761352352.2758338
+    },
+    {
+      "path": "PAYEDGITLAB.md",
+      "size": 985,
+      "mtime": 1761352352.2758338
+    },
+    {
+      "path": "PAYMENTS.md",
+      "size": 2258,
+      "mtime": 1761352352.2758338
+    },
+    {
+      "path": "POSTPRODUCTIONCHECKLIST.md",
+      "size": 556,
+      "mtime": 1761352352.276834
+    },
+    {
+      "path": "PRODUCTIONCHECKLIST.md",
+      "size": 2514,
+      "mtime": 1761352352.276834
+    },
+    {
+      "path": "PUBLIC.md",
+      "size": 3558,
+      "mtime": 1761352352.277834
+    },
+    {
+      "path": "PWA.md",
+      "size": 1140,
+      "mtime": 1761352352.277834
+    },
+    {
+      "path": "QAlLPURPOSE.MD",
+      "size": 1011,
+      "mtime": 1761352352.277834
+    },
+    {
+      "path": "QAvatar_User_Feedback_Kit.md",
+      "size": 2619,
+      "mtime": 1761352352.2788339
+    },
+    {
+      "path": "QCITYDEVICEAUTOUPGRADE.md",
+      "size": 8596,
+      "mtime": 1761352352.2788339
+    },
+    {
+      "path": "QCITYMAINDEVICE.md",
+      "size": 13602,
+      "mtime": 1761352352.2798338
+    },
+    {
+      "path": "QCITYQMOIAUTOSTART.md",
+      "size": 52,
+      "mtime": 1761346423.4462724
+    },
+    {
+      "path": "QCITYREADME.md",
+      "size": 24941,
+      "mtime": 1761352352.2798338
+    },
+    {
+      "path": "QCITYRESOURCES.md",
+      "size": 13267,
+      "mtime": 1761352352.280834
+    },
+    {
+      "path": "QCITYRUNNERSENGINE.md",
+      "size": 4991,
+      "mtime": 1761352352.280834
+    },
+    {
+      "path": "QCITY_DEVICE_MANAGEMENT.md",
+      "size": 1966,
+      "mtime": 1761352352.281834
+    },
+    {
+      "path": "QGAMINGCLOUD.md",
+      "size": 14471,
+      "mtime": 1761352352.281834
+    },
+    {
+      "path": "QGLOBAL.md",
+      "size": 16634,
+      "mtime": 1761352352.2828338
+    },
+    {
+      "path": "QMOI-AI-ENHANCEMENT.md",
+      "size": 12494,
+      "mtime": 1761352352.2828338
+    },
+    {
+      "path": "QMOI-AIRTEL-INTEGRATION.md",
+      "size": 11665,
+      "mtime": 1761352352.283834
+    },
+    {
+      "path": "QMOI-ANIMATION-ENHANCEMENT.md",
+      "size": 15805,
+      "mtime": 1761352352.283834
+    },
+    {
+      "path": "QMOI-AUTOMATION-COMPLETE.md",
+      "size": 8446,
+      "mtime": 1761352352.284834
+    },
+    {
+      "path": "QMOI-AUTOUPDATE.md",
+      "size": 13798,
+      "mtime": 1761352352.284834
+    },
+    {
+      "path": "QMOI-CLOUD-ENHANCED.md",
+      "size": 2936,
+      "mtime": 1761352352.2858338
+    },
+    {
+      "path": "QMOI-CLOUD-OFFLOAD.md",
+      "size": 261,
+      "mtime": 1761352352.2858338
+    },
+    {
+      "path": "QMOI-CLOUD.md",
+      "size": 2439,
+      "mtime": 1761352352.286834
+    },
+    {
+      "path": "QMOI-CROSS-PLATFORM.md",
+      "size": 430,
+      "mtime": 1761352352.286834
+    },
+    {
+      "path": "QMOI-EARNING-ENHANCED.md",
+      "size": 4271,
+      "mtime": 1761352352.287834
+    },
+    {
+      "path": "QMOI-ENHANCED-AUTOMATION.md",
+      "size": 19429,
+      "mtime": 1761352352.287834
+    },
+    {
+      "path": "QMOI-ENHANCED-AUTOTESTS.md",
+      "size": 19275,
+      "mtime": 1761352352.2888339
+    },
+    {
+      "path": "QMOI-ENHANCED-COMPLETE.md",
+      "size": 12474,
+      "mtime": 1761352352.2888339
+    },
+    {
+      "path": "QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md",
+      "size": 17211,
+      "mtime": 1761352352.2928338
+    },
+    {
+      "path": "QMOI-ENHANCED-FEATURES.md",
+      "size": 10710,
+      "mtime": 1761352352.2928338
+    },
+    {
+      "path": "QMOI-ENHANCED-FINAL.md",
+      "size": 10318,
+      "mtime": 1761352352.293834
+    },
+    {
+      "path": "QMOI-ENHANCED-README.md",
+      "size": 15631,
+      "mtime": 1761352352.294834
+    },
+    {
+      "path": "QMOI-ENHANCED-SUMMARY.md",
+      "size": 11502,
+      "mtime": 1761352352.294834
+    },
+    {
+      "path": "QMOI-ENHANCED-SYSTEM.md",
+      "size": 12778,
+      "mtime": 1761352352.2958338
+    },
+    {
+      "path": "QMOI-ENHANCEMENT-SUMMARY.md",
+      "size": 19448,
+      "mtime": 1761346423.4492724
+    },
+    {
+      "path": "QMOI-FEATURE-INDEX.md",
+      "size": 12298,
+      "mtime": 1761352352.2958338
+    },
+    {
+      "path": "QMOI-HUGGINGFACE-ENHANCEMENTS.md",
+      "size": 11846,
+      "mtime": 1761352352.296834
+    },
+    {
+      "path": "QMOI-MASTER-CONTROLS.md",
+      "size": 11476,
+      "mtime": 1761352352.296834
+    },
+    {
+      "path": "QMOI-OPTIMIZATION.md",
+      "size": 2369,
+      "mtime": 1761352352.297834
+    },
+    {
+      "path": "QMOI-PLATFORM-ANALYTICS.md",
+      "size": 381,
+      "mtime": 1761352352.297834
+    },
+    {
+      "path": "QMOI-PLATFORM-AUTOMATION.md",
+      "size": 405,
+      "mtime": 1761352352.2988338
+    },
+    {
+      "path": "QMOI-PLATFORM-MONITORING.md",
+      "size": 373,
+      "mtime": 1761352352.2988338
+    },
+    {
+      "path": "QMOI-PLATFORM-SECURITY.md",
+      "size": 398,
+      "mtime": 1761352352.300834
+    },
+    {
+      "path": "QMOI-PLUGIN-SYSTEM.md",
+      "size": 4039,
+      "mtime": 1761352352.3018339
+    },
+    {
+      "path": "QMOI-REVENUE-README.md",
+      "size": 9607,
+      "mtime": 1761352352.3018339
+    },
+    {
+      "path": "QMOI-VOICE-ENHANCEMENT.md",
+      "size": 13702,
+      "mtime": 1761352352.3028338
+    },
+    {
+      "path": "QMOIACCOUNTS.md",
+      "size": 4119,
+      "mtime": 1761352352.3028338
+    },
+    {
+      "path": "QMOIACCOUNTSPLATFORMS.md",
+      "size": 2410,
+      "mtime": 1761352352.303834
+    },
+    {
+      "path": "QMOIAICORE.md",
+      "size": 4538,
+      "mtime": 1761352352.303834
+    },
+    {
+      "path": "QMOIALLDEVICESHANDSFREE.md",
+      "size": 15003,
+      "mtime": 1761352352.304834
+    },
+    {
+      "path": "QMOIALLDEVICESINSTALL.md",
+      "size": 8187,
+      "mtime": 1761352352.304834
+    },
+    {
+      "path": "QMOIALLPLATFORMS.md",
+      "size": 16046,
+      "mtime": 1761352352.3058338
+    },
+    {
+      "path": "QMOIALLPROJECTSADDSTRAILERSDOCS.md",
+      "size": 1937,
+      "mtime": 1761352352.3058338
+    },
+    {
+      "path": "QMOIALWAYSPARALLEL.md",
+      "size": 12362,
+      "mtime": 1761352352.306834
+    },
+    {
+      "path": "QMOIAPIKEYREADME.md",
+      "size": 1248,
+      "mtime": 1761352352.306834
+    },
+    {
+      "path": "QMOIAPPS.md",
+      "size": 12361,
+      "mtime": 1761352352.307834
+    },
+    {
+      "path": "QMOIARTISTS.md",
+      "size": 11843,
+      "mtime": 1761352352.307834
+    },
+    {
+      "path": "QMOIAUTHBIOMETRICS.md",
+      "size": 12703,
+      "mtime": 1761352352.3088338
+    },
+    {
+      "path": "QMOIAUTOAPPSDEV.md",
+      "size": 2974,
+      "mtime": 1761352352.3088338
+    },
+    {
+      "path": "QMOIAUTOBET.md",
+      "size": 14546,
+      "mtime": 1761352352.309834
+    },
+    {
+      "path": "QMOIAUTODEV.md",
+      "size": 5371,
+      "mtime": 1761352352.309834
+    },
+    {
+      "path": "QMOIAUTODEVDOCTESTS.MD",
+      "size": 2732,
+      "mtime": 1761352352.309834
+    },
+    {
+      "path": "QMOIAUTODISTRIBUTEMARKET.md",
+      "size": 13328,
+      "mtime": 1761352352.310834
+    },
+    {
+      "path": "QMOIAUTOEVOLVE.md",
+      "size": 27921,
+      "mtime": 1761352352.3118339
+    },
+    {
+      "path": "QMOIAUTOFIXREADME.md",
+      "size": 7135,
+      "mtime": 1761352352.3118339
+    },
+    {
+      "path": "QMOIAUTOGMAIL.md",
+      "size": 3060,
+      "mtime": 1761352352.3118339
+    },
+    {
+      "path": "QMOIAUTOMAKENEW.md",
+      "size": 2702,
+      "mtime": 1761352352.3148339
+    },
+    {
+      "path": "QMOIAUTOMAKESMONEY.md",
+      "size": 21909,
+      "mtime": 1761352352.3148339
+    },
+    {
+      "path": "QMOIAUTOMATIONMONITORING.md",
+      "size": 14696,
+      "mtime": 1761352352.3158338
+    },
+    {
+      "path": "QMOIAUTOOPPORTUNITIES.md",
+      "size": 12020,
+      "mtime": 1761352352.316834
+    },
+    {
+      "path": "QMOIAUTOPROJECTS.md",
+      "size": 9223,
+      "mtime": 1761352352.316834
+    },
+    {
+      "path": "QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md",
+      "size": 5769,
+      "mtime": 1761352352.317834
+    },
+    {
+      "path": "QMOIAUTOREVENUEEARN.md",
+      "size": 2828,
+      "mtime": 1761352352.317834
+    },
+    {
+      "path": "QMOIAVATAR.md",
+      "size": 22200,
+      "mtime": 1761352352.3188338
+    },
+    {
+      "path": "QMOIBINARIES.md",
+      "size": 261,
+      "mtime": 1761352352.3188338
+    },
+    {
+      "path": "QMOIBROWSER.md",
+      "size": 3388,
+      "mtime": 1761352352.319834
+    },
+    {
+      "path": "QMOICLONE.md",
+      "size": 6751,
+      "mtime": 1761352352.319834
+    },
+    {
+      "path": "QMOICLONEGITHUB.md",
+      "size": 16923,
+      "mtime": 1761352352.320834
+    },
+    {
+      "path": "QMOICLONEGITLAB.md",
+      "size": 5440,
+      "mtime": 1761352352.320834
+    },
+    {
+      "path": "QMOICLONEGITPOD.md",
+      "size": 1502,
+      "mtime": 1761352352.3218338
+    },
+    {
+      "path": "QMOICLONEHF.md",
+      "size": 382,
+      "mtime": 1761352352.3218338
+    },
+    {
+      "path": "QMOICLONEHUGGINGFACE.md",
+      "size": 19417,
+      "mtime": 1761352352.322834
+    },
+    {
+      "path": "QMOICLONEQUANTUM.md",
+      "size": 384,
+      "mtime": 1761352352.322834
+    },
+    {
+      "path": "QMOICLONEVERCEL.md",
+      "size": 547,
+      "mtime": 1761352352.323834
+    },
+    {
+      "path": "QMOICOLABDAGSHUB.md",
+      "size": 1673,
+      "mtime": 1761352352.323834
+    },
+    {
+      "path": "QMOIDATABASE.md",
+      "size": 3730,
+      "mtime": 1761352352.323834
+    },
+    {
+      "path": "QMOIDEV.md",
+      "size": 5569,
+      "mtime": 1761352352.3248339
+    },
+    {
+      "path": "QMOIDEVICES.md",
+      "size": 15665,
+      "mtime": 1761352352.3248339
+    },
+    {
+      "path": "QMOIDNS.md",
+      "size": 4285,
+      "mtime": 1761352352.3258338
+    },
+    {
+      "path": "QMOIDOMAINS.md",
+      "size": 3711,
+      "mtime": 1761352352.3258338
+    },
+    {
+      "path": "QMOIDOMAINSLINKS.md",
+      "size": 3848,
+      "mtime": 1761352352.326834
+    },
+    {
+      "path": "QMOIDOWNLOADS.md",
+      "size": 25183,
+      "mtime": 1761352352.326834
+    },
+    {
+      "path": "QMOIEARNING.md",
+      "size": 2949,
+      "mtime": 1761352352.327834
+    },
+    {
+      "path": "QMOIEMPLOYAUTOPAY.md",
+      "size": 13795,
+      "mtime": 1761352352.327834
+    },
+    {
+      "path": "QMOIEMPLOYEES.md",
+      "size": 8521,
+      "mtime": 1761352352.3288338
+    },
+    {
+      "path": "QMOIEMULATORS.md",
+      "size": 261,
+      "mtime": 1761352352.3288338
+    },
+    {
+      "path": "QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md",
+      "size": 23463,
+      "mtime": 1761352352.329834
+    },
+    {
+      "path": "QMOIENHANCEMENTSSUMMARY.md",
+      "size": 12745,
+      "mtime": 1761352352.330834
+    },
+    {
+      "path": "QMOIENVWITHALLPROGRAMMINGLANGUAGES.md",
+      "size": 42806,
+      "mtime": 1761352352.3318338
+    },
+    {
+      "path": "QMOIFORALL.md",
+      "size": 9240,
+      "mtime": 1761352352.3318338
+    },
+    {
+      "path": "QMOIFREE.md",
+      "size": 2458,
+      "mtime": 1761352352.332834
+    },
+    {
+      "path": "QMOIGAMINGCLOUDUSERS.md",
+      "size": 14234,
+      "mtime": 1761352352.332834
+    },
+    {
+      "path": "QMOIGAMINGGENREV.md",
+      "size": 262,
+      "mtime": 1761352352.333834
+    },
+    {
+      "path": "QMOIGITHUBAPP.md",
+      "size": 10035,
+      "mtime": 1761352352.333834
+    },
+    {
+      "path": "QMOIGITHUBDEV.md",
+      "size": 16326,
+      "mtime": 1761352352.335834
+    },
+    {
+      "path": "QMOIGITLABDEV.md",
+      "size": 5489,
+      "mtime": 1761352352.336834
+    },
+    {
+      "path": "QMOIGITPODDEV.md",
+      "size": 2716,
+      "mtime": 1761352352.336834
+    },
+    {
+      "path": "QMOIHUGGINGFACEALWAYSUPDATE.md",
+      "size": 2193,
+      "mtime": 1761352352.337834
+    },
+    {
+      "path": "QMOIHUGGINGFACESPACES.md",
+      "size": 26080,
+      "mtime": 1761346423.4562724
+    },
+    {
+      "path": "QMOIHUGGINGFACESPACESSETUPINST.md",
+      "size": 10675,
+      "mtime": 1761352352.337834
+    },
+    {
+      "path": "QMOIMASKS.md",
+      "size": 21467,
+      "mtime": 1761352352.3388338
+    },
+    {
+      "path": "QMOIMEMORY.md",
+      "size": 3479,
+      "mtime": 1761352352.3388338
+    },
+    {
+      "path": "QMOIMODEL.md",
+      "size": 2306,
+      "mtime": 1761352352.339834
+    },
+    {
+      "path": "QMOIMODELTESTS.md",
+      "size": 1844,
+      "mtime": 1761352352.339834
+    },
+    {
+      "path": "QMOINETWORK.md",
+      "size": 24704,
+      "mtime": 1761352352.340834
+    },
+    {
+      "path": "QMOINGROK.md",
+      "size": 5494,
+      "mtime": 1761352352.340834
+    },
+    {
+      "path": "QMOIOWNDEVICE.md",
+      "size": 22399,
+      "mtime": 1761352352.3418338
+    },
+    {
+      "path": "QMOIPREDEVDOCACTIONS.md",
+      "size": 2144,
+      "mtime": 1761352352.3418338
+    },
+    {
+      "path": "QMOIQCITYAUTOMATIC.md",
+      "size": 5628,
+      "mtime": 1761352352.342834
+    },
+    {
+      "path": "QMOIQTEAMCUSTOMERCARE.md",
+      "size": 2754,
+      "mtime": 1761352352.342834
+    },
+    {
+      "path": "QMOIRADIOREADME.md",
+      "size": 1442,
+      "mtime": 1761352352.343834
+    },
+    {
+      "path": "QMOIREADME.md",
+      "size": 18854,
+      "mtime": 1761352352.343834
+    },
+    {
+      "path": "QMOIREGISTRY.md",
+      "size": 4564,
+      "mtime": 1761352352.3448339
+    },
+    {
+      "path": "QMOIREVENUEGENERATION.md",
+      "size": 13734,
+      "mtime": 1761352352.3448339
+    },
+    {
+      "path": "QMOISERVERS.md",
+      "size": 3517,
+      "mtime": 1761352352.346834
+    },
+    {
+      "path": "QMOISPACE.md",
+      "size": 12871,
+      "mtime": 1761352352.3478339
+    },
+    {
+      "path": "QMOISPACEDEV.md",
+      "size": 42792,
+      "mtime": 1761352352.3488338
+    },
+    {
+      "path": "QMOISPACEUI.md",
+      "size": 13152,
+      "mtime": 1761352352.350834
+    },
+    {
+      "path": "QMOISYSTEMAUTO.md",
+      "size": 8994,
+      "mtime": 1761352352.3518338
+    },
+    {
+      "path": "QMOITESTENVIRONMENT.md",
+      "size": 18308,
+      "mtime": 1761352352.352834
+    },
+    {
+      "path": "QMOITRADER.md",
+      "size": 12562,
+      "mtime": 1761352352.353834
+    },
+    {
+      "path": "QMOIVERCELDEV.md",
+      "size": 2210,
+      "mtime": 1761352352.3548338
+    },
+    {
+      "path": "QMOIVIDEOPLATFORMS.md",
+      "size": 780,
+      "mtime": 1761352352.3548338
+    },
+    {
+      "path": "QMOIWHATSAPP.md",
+      "size": 7578,
+      "mtime": 1761352352.355834
+    },
+    {
+      "path": "QMOI_AUTOMATED_SYSTEMS_README.md",
+      "size": 9118,
+      "mtime": 1761352352.3578339
+    },
+    {
+      "path": "QMOI_COMPLETE_SYSTEM.md",
+      "size": 11859,
+      "mtime": 1761352352.3588338
+    },
+    {
+      "path": "QMOI_COMPLETE_SYSTEM_OVERVIEW.md",
+      "size": 13523,
+      "mtime": 1761352352.359834
+    },
+    {
+      "path": "QMOI_FRIENDSHIP_ENHANCEMENT.md",
+      "size": 15913,
+      "mtime": 1761352352.360834
+    },
+    {
+      "path": "QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md",
+      "size": 13598,
+      "mtime": 1761352352.3618338
+    },
+    {
+      "path": "QMOI_GITLAB_AUTOMATION.md",
+      "size": 11998,
+      "mtime": 1761352352.362834
+    },
+    {
+      "path": "QMOI_MEMORY.md",
+      "size": 1625,
+      "mtime": 1761352352.363834
+    },
+    {
+      "path": "QRADIOPROGRAMS.md",
+      "size": 907,
+      "mtime": 1761352352.363834
+    },
+    {
+      "path": "QSERVERREADME.md",
+      "size": 14922,
+      "mtime": 1761352352.3648338
+    },
+    {
+      "path": "QTEAMTERMS.md",
+      "size": 1911,
+      "mtime": 1761352352.365834
+    },
+    {
+      "path": "QUANTUGENREV.md",
+      "size": 1550,
+      "mtime": 1761352352.366834
+    },
+    {
+      "path": "QUANTUM.md",
+      "size": 9927,
+      "mtime": 1761352352.3678339
+    },
+    {
+      "path": "QUANTUMAUTOMARKET.md",
+      "size": 1393,
+      "mtime": 1761352352.368834
+    },
+    {
+      "path": "QUANTUMPAYED.md",
+      "size": 1295,
+      "mtime": 1761352352.369834
+    },
+    {
+      "path": "QVILLAGE.md",
+      "size": 5570,
+      "mtime": 1761352352.3718338
+    },
+    {
+      "path": "QVPNREADME.md",
+      "size": 15058,
+      "mtime": 1761352352.373834
+    },
+    {
+      "path": "QVS/ENHANCEDQVS.md",
+      "size": 13214,
+      "mtime": 1761352352.3748338
+    },
+    {
+      "path": "QVS/QVSREADME.md",
+      "size": 13898,
+      "mtime": 1761352352.3748338
+    },
+    {
+      "path": "Qstore.md",
+      "size": 5301,
+      "mtime": 1761352352.375834
+    },
+    {
+      "path": "README (1).md",
+      "size": 20544,
+      "mtime": 1761352352.3778338
+    },
+    {
+      "path": "README.md",
+      "size": 10172,
+      "mtime": 1761352352.378834
+    },
+    {
+      "path": "REFERENCES.md",
+      "size": 4405,
+      "mtime": 1761352352.378834
+    },
+    {
+      "path": "RELEASETRACKS.md",
+      "size": 2634,
+      "mtime": 1761352352.379834
+    },
+    {
+      "path": "REVENUEGENERATING.md",
+      "size": 9710,
+      "mtime": 1761352352.379834
+    },
+    {
+      "path": "RSAAPIREADME.md",
+      "size": 2432,
+      "mtime": 1761352352.379834
+    },
+    {
+      "path": "SCRIPTS.md",
+      "size": 2845,
+      "mtime": 1761352352.3808339
+    },
+    {
+      "path": "SCRIPTSREADME.md",
+      "size": 19716,
+      "mtime": 1761352352.3808339
+    },
+    {
+      "path": "SECURITY.md",
+      "size": 1158,
+      "mtime": 1761352352.3818338
+    },
+    {
+      "path": "SECURITYREADME.md",
+      "size": 1300,
+      "mtime": 1761352352.3818338
+    },
+    {
+      "path": "SECURITY_AUTOMATION.md",
+      "size": 1779,
+      "mtime": 1761352352.382834
+    },
+    {
+      "path": "SELF_EVOLUTION.md",
+      "size": 2147,
+      "mtime": 1761352352.382834
+    },
+    {
+      "path": "SERVEQCITYQMOIAIQMOISPACE.md",
+      "size": 2026,
+      "mtime": 1761352352.383834
+    },
+    {
+      "path": "SERVICES.md",
+      "size": 1365,
+      "mtime": 1761352352.383834
+    },
+    {
+      "path": "SERVINGERRORSISSUES.md",
+      "size": 1162,
+      "mtime": 1761352352.383834
+    },
+    {
+      "path": "SISTERREADME.md",
+      "size": 2720,
+      "mtime": 1761352352.3848338
+    },
+    {
+      "path": "SPONSORED.md",
+      "size": 811,
+      "mtime": 1761352352.3848338
+    },
+    {
+      "path": "SRC.md",
+      "size": 3453,
+      "mtime": 1761352352.385834
+    },
+    {
+      "path": "START.md",
+      "size": 1130,
+      "mtime": 1761352352.385834
+    },
+    {
+      "path": "SYNCREPOS.md",
+      "size": 1097,
+      "mtime": 1761352352.385834
+    },
+    {
+      "path": "TEMPLATES.md",
+      "size": 3136,
+      "mtime": 1761352352.386834
+    },
+    {
+      "path": "TESTREADME.md",
+      "size": 13024,
+      "mtime": 1761352352.386834
+    },
+    {
+      "path": "TO-DOs.md",
+      "size": 811,
+      "mtime": 1761352352.3878338
+    },
+    {
+      "path": "TRACKS.md",
+      "size": 3883,
+      "mtime": 1761352352.3878338
+    },
+    {
+      "path": "TRADINGREADME.md",
+      "size": 29237,
+      "mtime": 1761352352.388834
+    },
+    {
+      "path": "TROUBLESHOOTING.md",
+      "size": 800,
+      "mtime": 1761352352.388834
+    },
+    {
+      "path": "UNIVERSALHEALTHRUNNERS.md",
+      "size": 2078,
+      "mtime": 1761352352.389834
+    },
+    {
+      "path": "UNUSED_API_ENDPOINTS.md",
+      "size": 1295,
+      "mtime": 1761352352.389834
+    },
+    {
+      "path": "USEEMPLOYEESUSERS.md",
+      "size": 14774,
+      "mtime": 1761352352.3908339
+    },
+    {
+      "path": "USERREADME.md",
+      "size": 2253,
+      "mtime": 1761352352.391834
+    },
+    {
+      "path": "VERCELPAYED.md",
+      "size": 441,
+      "mtime": 1761352352.391834
+    },
+    {
+      "path": "WATCHDEBUG.md",
+      "size": 5755,
+      "mtime": 1761352352.391834
+    },
+    {
+      "path": "WEBHOOKS.md",
+      "size": 771,
+      "mtime": 1761352352.3938339
+    },
+    {
+      "path": "WIRKFLOWSTRACKS.md",
+      "size": 1218,
+      "mtime": 1761352352.3978338
+    },
+    {
+      "path": "WPA.md",
+      "size": 15253,
+      "mtime": 1761352352.3978338
+    },
+    {
+      "path": "ZERORATEDQMOI.md",
+      "size": 4511,
+      "mtime": 1761352352.398834
+    },
+    {
+      "path": "components/qmedia-player.md",
+      "size": 2342,
+      "mtime": 1761352352.399834
+    },
+    {
+      "path": "docs/ACCESSIBILITY.md",
+      "size": 1989,
+      "mtime": 1761352352.4038339
+    },
+    {
+      "path": "docs/ALLTESTSAUTOTESTS.md",
+      "size": 1988,
+      "mtime": 1761352352.4048338
+    },
+    {
+      "path": "docs/API.md",
+      "size": 11574,
+      "mtime": 1761352352.4048338
+    },
+    {
+      "path": "docs/AUTOEVOLVE.md",
+      "size": 1626,
+      "mtime": 1761352352.405834
+    },
+    {
+      "path": "docs/ENHANCED_FEATURES.md",
+      "size": 11123,
+      "mtime": 1761352352.405834
+    },
+    {
+      "path": "docs/FEATURESINDEX.md",
+      "size": 2348,
+      "mtime": 1761352352.406834
+    },
+    {
+      "path": "docs/LIONOPERATINGSYSTEM.md",
+      "size": 2243,
+      "mtime": 1761352352.406834
+    },
+    {
+      "path": "docs/MONITORING_SYSTEM.md",
+      "size": 11089,
+      "mtime": 1761352352.4078338
+    },
+    {
+      "path": "docs/QMOI-ENHANCED-AUTOTESTS.md",
+      "size": 530,
+      "mtime": 1761352352.4078338
+    },
+    {
+      "path": "docs/QMOICLONE.md",
+      "size": 393,
+      "mtime": 1761352352.408834
+    },
+    {
+      "path": "docs/QMOIGITHUBDEV.md",
+      "size": 1983,
+      "mtime": 1761352352.408834
+    },
+    {
+      "path": "docs/QMOIGITLABDEV.md",
+      "size": 3541,
+      "mtime": 1761352352.409834
+    },
+    {
+      "path": "docs/QMOIVERCELDEV.md",
+      "size": 1950,
+      "mtime": 1761352352.409834
+    },
+    {
+      "path": "docs/README.md",
+      "size": 10022,
+      "mtime": 1761352352.4108338
+    },
+    {
+      "path": "docs/REFERENCES.md",
+      "size": 1301,
+      "mtime": 1761352352.4108338
+    },
+    {
+      "path": "docs/TROUBLESHOOTING.md",
+      "size": 1684,
+      "mtime": 1761352352.411834
+    },
+    {
+      "path": "docs/corrupted.md",
+      "size": 273,
+      "mtime": 1761352352.411834
+    },
+    {
+      "path": "docs/implemented_endpoints.md",
+      "size": 3683,
+      "mtime": 1761352352.412834
+    },
+    {
+      "path": "docs/qmoi_space_enhancements.md",
+      "size": 4644,
+      "mtime": 1761352352.4138339
+    },
+    {
+      "path": "docs/qvillage_features.md",
+      "size": 8285,
+      "mtime": 1761352352.414834
+    },
+    {
+      "path": "error-fix-summary.md",
+      "size": 906,
+      "mtime": 1761352352.415834
+    },
+    {
+      "path": "mobile/README.md",
+      "size": 2963,
+      "mtime": 1761352352.415834
+    },
+    {
+      "path": "models/latest/README.md",
+      "size": 3834,
+      "mtime": 1761352352.4308338
+    },
+    {
+      "path": "pwa_apps/README.md",
+      "size": 1010,
+      "mtime": 1761352352.432834
+    },
+    {
+      "path": "pwa_apps/q-stable/README.md",
+      "size": 576,
+      "mtime": 1761352352.432834
+    },
+    {
+      "path": "qmoi-enhanced/@ALLMDFILESREFS.md",
+      "size": 2815,
+      "mtime": 1761352352.4368339
+    },
+    {
+      "path": "qmoi-enhanced/ALLDEVICESSETTINGS.md",
+      "size": 2316,
+      "mtime": 1761352352.437834
+    },
+    {
+      "path": "qmoi-enhanced/ALLERRORSSTATSQMOI.md",
+      "size": 2371,
+      "mtime": 1761352352.437834
+    },
+    {
+      "path": "qmoi-enhanced/ALLMDFILESREFS.md",
+      "size": 12511,
+      "mtime": 1761352352.437834
+    },
+    {
+      "path": "qmoi-enhanced/ALLQMOIAIAPPSREALEASESVERSIONS.md",
+      "size": 4780,
+      "mtime": 1761352352.438834
+    },
+    {
+      "path": "qmoi-enhanced/ALLQMOIAUTOEVOLVINGENVS.md",
+      "size": 43251,
+      "mtime": 1761352352.4398339
+    },
+    {
+      "path": "qmoi-enhanced/ALPHAQMOIENGINE.md",
+      "size": 3592,
+      "mtime": 1761352352.4398339
+    },
+    {
+      "path": "qmoi-enhanced/API.md",
+      "size": 15958,
+      "mtime": 1761352352.4408338
+    },
+    {
+      "path": "qmoi-enhanced/AU[PRODUCTION READY]WNLOAD.md",
+      "size": 3474,
+      "mtime": 1761352352.4408338
+    },
+    {
+      "path": "qmoi-enhanced/AUTOGIT.md",
+      "size": 1196,
+      "mtime": 1761352352.441834
+    },
+    {
+      "path": "qmoi-enhanced/AUTOLINTREADME.md",
+      "size": 9910,
+      "mtime": 1761352352.442834
+    },
+    {
+      "path": "qmoi-enhanced/AUTOMATION-SUMMARY.md",
+      "size": 8337,
+      "mtime": 1761352352.442834
+    },
+    {
+      "path": "qmoi-enhanced/AUTOOPTIMIZEALPHAQMOIENGINE.md",
+      "size": 3193,
+      "mtime": 1761352352.4438338
+    },
+    {
+      "path": "qmoi-enhanced/BUILDAPPSFORALLPLATFORMS.md",
+      "size": 5623,
+      "mtime": 1761352352.4438338
+    },
+    {
+      "path": "qmoi-enhanced/BUILD_COMPLETION_SUMMARY.md",
+      "size": 4395,
+      "mtime": 1761352352.444834
+    },
+    {
+      "path": "qmoi-enhanced/CASHON.md",
+      "size": 12143,
+      "mtime": 1761352352.444834
+    },
+    {
+      "path": "qmoi-enhanced/CASHONTRADINGREADME.md",
+      "size": 7767,
+      "mtime": 1761352352.445834
+    },
+    {
+      "path": "qmoi-enhanced/CMDCOMMANDS.md",
+      "size": 5758,
+      "mtime": 1761352352.445834
+    },
+    {
+      "path": "qmoi-enhanced/COLAB_DAGSHUB_DEPLOY_CHECKLIST.md",
+      "size": 1670,
+      "mtime": 1761352352.4468338
+    },
+    {
+      "path": "qmoi-enhanced/COMPONENTS.md",
+      "size": 5539,
+      "mtime": 1761352352.4468338
+    },
+    {
+      "path": "qmoi-enhanced/CONTINUOUS_IMPROVEMENT.md",
+      "size": 1641,
+      "mtime": 1761352352.447834
+    },
+    {
+      "path": "qmoi-enhanced/DEPLOYMENT-README.md",
+      "size": 28783,
+      "mtime": 1761352352.447834
+    },
+    {
+      "path": "qmoi-enhanced/DEVCOMMANDS.md",
+      "size": 2709,
+      "mtime": 1761352352.448834
+    },
+    {
+      "path": "qmoi-enhanced/DEVICERESOURCEOPTIMIZATION.md",
+      "size": 2163,
+      "mtime": 1761352352.448834
+    },
+    {
+      "path": "qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md",
+      "size": 7548,
+      "mtime": 1761352352.448834
+    },
+    {
+      "path": "qmoi-enhanced/EMPLOYEESUSERSENROLLED.md",
+      "size": 8527,
+      "mtime": 1761352352.4498339
+    },
+    {
+      "path": "qmoi-enhanced/ENHANCEDQVS.md",
+      "size": 15843,
+      "mtime": 1761352352.4498339
+    },
+    {
+      "path": "qmoi-enhanced/ENHANCED_AUTOMATION_SUMMARY.md",
+      "size": 11680,
+      "mtime": 1761352352.4508338
+    },
+    {
+      "path": "qmoi-enhanced/ERRORSREADME.md",
+      "size": 384217,
+      "mtime": 1761352352.4568338
+    },
+    {
+      "path": "qmoi-enhanced/FAST-BOOTSTRAP-README.md",
+      "size": 2936,
+      "mtime": 1761352352.458834
+    },
+    {
+      "path": "qmoi-enhanced/FEATURESREADME.md",
+      "size": 39302,
+      "mtime": 1761352352.460834
+    },
+    {
+      "path": "qmoi-enhanced/GITHUB-ACTIONS-COMPLETE.md",
+      "size": 13023,
+      "mtime": 1761352352.461834
+    },
+    {
+      "path": "qmoi-enhanced/GITHUBPAYED.md",
+      "size": 17303,
+      "mtime": 1761352352.462834
+    },
+    {
+      "path": "qmoi-enhanced/GITHUB_ACTIONS_AUTOFIX.md",
+      "size": 2379,
+      "mtime": 1761352352.462834
+    },
+    {
+      "path": "qmoi-enhanced/GITPODPAYED.md",
+      "size": 15653,
+      "mtime": 1761352352.4638338
+    },
+    {
+      "path": "qmoi-enhanced/HUGGINGFACEPAYED.md",
+      "size": 16193,
+      "mtime": 1761352352.464834
+    },
+    {
+      "path": "qmoi-enhanced/INDEPENDENTQMOI.md",
+      "size": 10938,
+      "mtime": 1761352352.465834
+    },
+    {
+      "path": "qmoi-enhanced/INSTALL.md",
+      "size": 261,
+      "mtime": 1761352352.465834
+    },
+    {
+      "path": "qmoi-enhanced/INSTALLATION.md",
+      "size": 261,
+      "mtime": 1761352352.4668338
+    },
+    {
+      "path": "qmoi-enhanced/MASTERGUIDE.md",
+      "size": 7157,
+      "mtime": 1761352352.467834
+    },
+    {
+      "path": "qmoi-enhanced/MASTEROWNS.md",
+      "size": 11138,
+      "mtime": 1761352352.467834
+    },
+    {
+      "path": "qmoi-enhanced/MASTERREADME.md",
+      "size": 13281,
+      "mtime": 1761352352.468834
+    },
+    {
+      "path": "qmoi-enhanced/MEGAVAULT.md",
+      "size": 14535,
+      "mtime": 1761352352.4698339
+    },
+    {
+      "path": "qmoi-enhanced/MONITORING.md",
+      "size": 2934,
+      "mtime": 1761352352.470834
+    },
+    {
+      "path": "qmoi-enhanced/PAYEDGITLAB.md",
+      "size": 985,
+      "mtime": 1761352352.470834
+    },
+    {
+      "path": "qmoi-enhanced/QAlLPURPOSE.MD",
+      "size": 1011,
+      "mtime": 1761352352.471834
+    },
+    {
+      "path": "qmoi-enhanced/QAvatar_User_Feedback_Kit.md",
+      "size": 2619,
+      "mtime": 1761352352.471834
+    },
+    {
+      "path": "qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md",
+      "size": 8596,
+      "mtime": 1761352352.4728339
+    },
+    {
+      "path": "qmoi-enhanced/QCITYMAINDEVICE.md",
+      "size": 13602,
+      "mtime": 1761352352.4738338
+    },
+    {
+      "path": "qmoi-enhanced/QCITYQMOIAUTOSTART.md",
+      "size": 52,
+      "mtime": 1761346427.4372723
+    },
+    {
+      "path": "qmoi-enhanced/QCITYREADME.md",
+      "size": 24941,
+      "mtime": 1761352352.474834
+    },
+    {
+      "path": "qmoi-enhanced/QCITYRESOURCES.md",
+      "size": 13267,
+      "mtime": 1761352352.475834
+    },
+    {
+      "path": "qmoi-enhanced/QCITYRUNNERSENGINE.md",
+      "size": 4991,
+      "mtime": 1761352352.4768338
+    },
+    {
+      "path": "qmoi-enhanced/QCITY_DEVICE_MANAGEMENT.md",
+      "size": 1966,
+      "mtime": 1761352352.4768338
+    },
+    {
+      "path": "qmoi-enhanced/QGAMINGCLOUD.md",
+      "size": 14471,
+      "mtime": 1761352352.477834
+    },
+    {
+      "path": "qmoi-enhanced/QGLOBAL.md",
+      "size": 16634,
+      "mtime": 1761352352.478834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-AI-ENHANCEMENT.md",
+      "size": 12494,
+      "mtime": 1761352352.4798338
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-AIRTEL-INTEGRATION.md",
+      "size": 11665,
+      "mtime": 1761352352.480834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-ANIMATION-ENHANCEMENT.md",
+      "size": 15805,
+      "mtime": 1761352352.481834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-AUTOMATION-COMPLETE.md",
+      "size": 8446,
+      "mtime": 1761352352.4828339
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-AUTOUPDATE.md",
+      "size": 13798,
+      "mtime": 1761352352.483834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-CLOUD-ENHANCED.md",
+      "size": 2936,
+      "mtime": 1761352352.484834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-CLOUD.md",
+      "size": 2439,
+      "mtime": 1761352352.485834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-EARNING-ENHANCED.md",
+      "size": 4271,
+      "mtime": 1761352352.4868338
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-ENHANCED-AUTOMATION.md",
+      "size": 19429,
+      "mtime": 1761352352.487834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md",
+      "size": 19275,
+      "mtime": 1761352352.487834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-ENHANCED-COMPLETE.md",
+      "size": 12474,
+      "mtime": 1761352352.488834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md",
+      "size": 17211,
+      "mtime": 1761352352.488834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-ENHANCED-FEATURES.md",
+      "size": 10710,
+      "mtime": 1761352352.4898338
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-ENHANCED-FINAL.md",
+      "size": 10318,
+      "mtime": 1761352352.4898338
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-ENHANCED-README.md",
+      "size": 15631,
+      "mtime": 1761352352.490834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-ENHANCED-SUMMARY.md",
+      "size": 11502,
+      "mtime": 1761352352.490834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-ENHANCED-SYSTEM.md",
+      "size": 12778,
+      "mtime": 1761352352.491834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-ENHANCEMENT-SUMMARY.md",
+      "size": 19448,
+      "mtime": 1761346427.4402723
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-FEATURE-INDEX.md",
+      "size": 12298,
+      "mtime": 1761352352.491834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-HUGGINGFACE-ENHANCEMENTS.md",
+      "size": 11846,
+      "mtime": 1761352352.4928339
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-MASTER-CONTROLS.md",
+      "size": 11476,
+      "mtime": 1761352352.4928339
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-OPTIMIZATION.md",
+      "size": 2369,
+      "mtime": 1761352352.493834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-PLUGIN-SYSTEM.md",
+      "size": 4039,
+      "mtime": 1761352352.493834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-REVENUE-README.md",
+      "size": 9607,
+      "mtime": 1761352352.493834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI-VOICE-ENHANCEMENT.md",
+      "size": 13702,
+      "mtime": 1761352352.494834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIACCOUNTS.md",
+      "size": 4119,
+      "mtime": 1761352352.494834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIACCOUNTSPLATFORMS.md",
+      "size": 2410,
+      "mtime": 1761352352.4958339
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAICORE.md",
+      "size": 4538,
+      "mtime": 1761352352.4958339
+    },
+    {
+      "path": "qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md",
+      "size": 15003,
+      "mtime": 1761352352.4958339
+    },
+    {
+      "path": "qmoi-enhanced/QMOIALLDEVICESINSTALL.md",
+      "size": 8187,
+      "mtime": 1761352352.4968338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIALLPLATFORMS.md",
+      "size": 16268,
+      "mtime": 1761352352.4968338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIALLPROJECTSADDSTRAILERSDOCS.md",
+      "size": 1937,
+      "mtime": 1761352352.497834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIALWAYSPARALLEL.md",
+      "size": 12362,
+      "mtime": 1761352352.497834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAPIKEYREADME.md",
+      "size": 1248,
+      "mtime": 1761352352.497834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAPPS.md",
+      "size": 15354,
+      "mtime": 1761352352.498834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIARTISTS.md",
+      "size": 11059,
+      "mtime": 1761352352.498834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAUTHBIOMETRICS.md",
+      "size": 12703,
+      "mtime": 1761352352.4998338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAUTOAPPSDEV.md",
+      "size": 6818,
+      "mtime": 1761352352.4998338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAUTOBET.md",
+      "size": 14546,
+      "mtime": 1761352352.500834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAUTODEV.md",
+      "size": 5371,
+      "mtime": 1761352352.500834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAUTODEVDOCTESTS.MD",
+      "size": 2732,
+      "mtime": 1761352352.500834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAUTODISTRIBUTEMARKET.md",
+      "size": 13328,
+      "mtime": 1761352352.501834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAUTOEVOLVE.md",
+      "size": 27921,
+      "mtime": 1761352352.501834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAUTOFIXREADME.md",
+      "size": 7135,
+      "mtime": 1761352352.5028338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAUTOGMAIL.md",
+      "size": 3060,
+      "mtime": 1761352352.5028338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAUTOMAKENEW.md",
+      "size": 2702,
+      "mtime": 1761352352.503834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAUTOMAKESMONEY.md",
+      "size": 21909,
+      "mtime": 1761352352.503834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAUTOMATIONMONITORING.md",
+      "size": 14696,
+      "mtime": 1761352352.503834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAUTOOPPORTUNITIES.md",
+      "size": 12020,
+      "mtime": 1761352352.504834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAUTOPROJECTS.md",
+      "size": 9223,
+      "mtime": 1761352352.504834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md",
+      "size": 5769,
+      "mtime": 1761352352.5058339
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAUTOREVENUEEARN.md",
+      "size": 2828,
+      "mtime": 1761352352.5058339
+    },
+    {
+      "path": "qmoi-enhanced/QMOIAVATAR.md",
+      "size": 22200,
+      "mtime": 1761352352.5068338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIBINARIES.md",
+      "size": 261,
+      "mtime": 1761352352.5068338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIBROWSER.md",
+      "size": 3388,
+      "mtime": 1761352352.5068338
+    },
+    {
+      "path": "qmoi-enhanced/QMOICLONE.md",
+      "size": 6751,
+      "mtime": 1761352352.507834
+    },
+    {
+      "path": "qmoi-enhanced/QMOICLONEGITHUB.md",
+      "size": 16923,
+      "mtime": 1761352352.507834
+    },
+    {
+      "path": "qmoi-enhanced/QMOICLONEGITLAB.md",
+      "size": 5440,
+      "mtime": 1761352352.507834
+    },
+    {
+      "path": "qmoi-enhanced/QMOICLONEGITPOD.md",
+      "size": 1502,
+      "mtime": 1761352352.508834
+    },
+    {
+      "path": "qmoi-enhanced/QMOICLONEHUGGINGFACE.md",
+      "size": 19417,
+      "mtime": 1761352352.508834
+    },
+    {
+      "path": "qmoi-enhanced/QMOICOLABDAGSHUB.md",
+      "size": 1673,
+      "mtime": 1761352352.5098338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIDATABASE.md",
+      "size": 3730,
+      "mtime": 1761352352.5098338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIDEV.md",
+      "size": 5569,
+      "mtime": 1761352352.5098338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIDEVICES.md",
+      "size": 15665,
+      "mtime": 1761352352.510834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIDNS.md",
+      "size": 4285,
+      "mtime": 1761352352.510834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIDOMAINS.md",
+      "size": 3711,
+      "mtime": 1761352352.510834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIDOWNLOADS.md",
+      "size": 25183,
+      "mtime": 1761352352.511834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIEARNING.md",
+      "size": 2949,
+      "mtime": 1761352352.511834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIEMPLOYAUTOPAY.md",
+      "size": 13795,
+      "mtime": 1761352352.5128338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIEMPLOYEES.md",
+      "size": 8521,
+      "mtime": 1761352352.5128338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIEMULATORS.md",
+      "size": 261,
+      "mtime": 1761352352.5128338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md",
+      "size": 23463,
+      "mtime": 1761352352.513834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIENHANCEMENTSSUMMARY.md",
+      "size": 12745,
+      "mtime": 1761352352.513834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIENVWITHALLPROGRAMMINGLANGUAGES.md",
+      "size": 42806,
+      "mtime": 1761352352.514834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIFORALL.md",
+      "size": 9240,
+      "mtime": 1761352352.5158339
+    },
+    {
+      "path": "qmoi-enhanced/QMOIFREE.md",
+      "size": 2458,
+      "mtime": 1761352352.5198338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIGAMINGCLOUDUSERS.md",
+      "size": 14234,
+      "mtime": 1761352352.5198338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIGAMINGGENREV.md",
+      "size": 262,
+      "mtime": 1761352352.5198338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIGITHUBDEV.md",
+      "size": 16326,
+      "mtime": 1761352352.520834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIGITLABDEV.md",
+      "size": 5489,
+      "mtime": 1761352352.520834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIGITPODDEV.md",
+      "size": 2716,
+      "mtime": 1761352352.520834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIHUGGINGFACEALWAYSUPDATE.md",
+      "size": 2193,
+      "mtime": 1761352352.521834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIHUGGINGFACESPACES.md",
+      "size": 26080,
+      "mtime": 1761346427.4472723
+    },
+    {
+      "path": "qmoi-enhanced/QMOIHUGGINGFACESPACESSETUPINST.md",
+      "size": 10675,
+      "mtime": 1761352352.521834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIICONS.md",
+      "size": 2719,
+      "mtime": 1761352352.5228338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIMASKS.md",
+      "size": 21467,
+      "mtime": 1761352352.5228338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIMEMORY.md",
+      "size": 3479,
+      "mtime": 1761352352.5228338
+    },
+    {
+      "path": "qmoi-enhanced/QMOINETWORK.md",
+      "size": 24704,
+      "mtime": 1761352352.523834
+    },
+    {
+      "path": "qmoi-enhanced/QMOINGROK.md",
+      "size": 5309,
+      "mtime": 1761352352.523834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIOWNDEVICE.md",
+      "size": 22399,
+      "mtime": 1761352352.524834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIPREDEVDOCACTIONS.md",
+      "size": 2144,
+      "mtime": 1761352352.524834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIQCITYAUTOMATIC.md",
+      "size": 5628,
+      "mtime": 1761352352.5258338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIQTEAMCUSTOMERCARE.md",
+      "size": 2754,
+      "mtime": 1761352352.5258338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIRADIOREADME.md",
+      "size": 1442,
+      "mtime": 1761352352.5258338
+    },
+    {
+      "path": "qmoi-enhanced/QMOIREADME.md",
+      "size": 18854,
+      "mtime": 1761352352.526834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIREGISTRY.md",
+      "size": 4564,
+      "mtime": 1761352352.526834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIREVENUEGENERATION.md",
+      "size": 12154,
+      "mtime": 1761352352.527834
+    },
+    {
+      "path": "qmoi-enhanced/QMOISPACE.md",
+      "size": 13131,
+      "mtime": 1761352352.527834
+    },
+    {
+      "path": "qmoi-enhanced/QMOISPACEDEV.md",
+      "size": 42792,
+      "mtime": 1761352352.5288339
+    },
+    {
+      "path": "qmoi-enhanced/QMOISPACEUI.md",
+      "size": 11398,
+      "mtime": 1761352352.5288339
+    },
+    {
+      "path": "qmoi-enhanced/QMOISYSTEMAUTO.md",
+      "size": 8994,
+      "mtime": 1761352352.5298338
+    },
+    {
+      "path": "qmoi-enhanced/QMOITESTENVIRONMENT.md",
+      "size": 18308,
+      "mtime": 1761352352.5298338
+    },
+    {
+      "path": "qmoi-enhanced/QMOITRADER.md",
+      "size": 12562,
+      "mtime": 1761352352.530834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIVERCELDEV.md",
+      "size": 2210,
+      "mtime": 1761352352.530834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIVIDEOPLATFORMS.md",
+      "size": 780,
+      "mtime": 1761352352.530834
+    },
+    {
+      "path": "qmoi-enhanced/QMOIWHATSAPP.md",
+      "size": 7578,
+      "mtime": 1761352352.531834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI_AUTOMATED_SYSTEMS_README.md",
+      "size": 9118,
+      "mtime": 1761352352.531834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI_COMPLETE_SYSTEM.md",
+      "size": 11321,
+      "mtime": 1761352352.531834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI_COMPLETE_SYSTEM_OVERVIEW.md",
+      "size": 13523,
+      "mtime": 1761352352.5328338
+    },
+    {
+      "path": "qmoi-enhanced/QMOI_FRIENDSHIP_ENHANCEMENT.md",
+      "size": 15913,
+      "mtime": 1761352352.5328338
+    },
+    {
+      "path": "qmoi-enhanced/QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md",
+      "size": 13598,
+      "mtime": 1761352352.533834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI_GITLAB_AUTOMATION.md",
+      "size": 11998,
+      "mtime": 1761352352.533834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI_MEMORY.md",
+      "size": 1625,
+      "mtime": 1761352352.534834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI_ORCHESTRATOR.md",
+      "size": 4375,
+      "mtime": 1761352352.534834
+    },
+    {
+      "path": "qmoi-enhanced/QMOI_ORCHESTRATOR_FLAGS.md",
+      "size": 1312,
+      "mtime": 1761352352.534834
+    },
+    {
+      "path": "qmoi-enhanced/QRADIOPROGRAMS.md",
+      "size": 907,
+      "mtime": 1761352352.5358338
+    },
+    {
+      "path": "qmoi-enhanced/QSERVERREADME.md",
+      "size": 14922,
+      "mtime": 1761352352.5358338
+    },
+    {
+      "path": "qmoi-enhanced/QTEAMTERMS.md",
+      "size": 1911,
+      "mtime": 1761352352.5358338
+    },
+    {
+      "path": "qmoi-enhanced/QUANTUGENREV.md",
+      "size": 1550,
+      "mtime": 1761352352.536834
+    },
+    {
+      "path": "qmoi-enhanced/QUANTUM.md",
+      "size": 9927,
+      "mtime": 1761352352.536834
+    },
+    {
+      "path": "qmoi-enhanced/QUANTUMAUTOMARKET.md",
+      "size": 1393,
+      "mtime": 1761352352.536834
+    },
+    {
+      "path": "qmoi-enhanced/QUANTUMPAYED.md",
+      "size": 1295,
+      "mtime": 1761352352.537834
+    },
+    {
+      "path": "qmoi-enhanced/QVILLAGE.md",
+      "size": 5570,
+      "mtime": 1761352352.537834
+    },
+    {
+      "path": "qmoi-enhanced/QVPNREADME.md",
+      "size": 15058,
+      "mtime": 1761352352.5388339
+    },
+    {
+      "path": "qmoi-enhanced/QVS/ENHANCEDQVS.md",
+      "size": 13214,
+      "mtime": 1761352352.5388339
+    },
+    {
+      "path": "qmoi-enhanced/QVS/QVSREADME.md",
+      "size": 13898,
+      "mtime": 1761352352.539834
+    },
+    {
+      "path": "qmoi-enhanced/Qstore.md",
+      "size": 5301,
+      "mtime": 1761352352.539834
+    },
+    {
+      "path": "qmoi-enhanced/README (1).md",
+      "size": 20544,
+      "mtime": 1761352352.539834
+    },
+    {
+      "path": "qmoi-enhanced/README.md",
+      "size": 3749,
+      "mtime": 1761352352.540834
+    },
+    {
+      "path": "qmoi-enhanced/REFERENCES.md",
+      "size": 4405,
+      "mtime": 1761352352.540834
+    },
+    {
+      "path": "qmoi-enhanced/REVENUEGENERATING.md",
+      "size": 9710,
+      "mtime": 1761352352.5418339
+    },
+    {
+      "path": "qmoi-enhanced/RSAAPIREADME.md",
+      "size": 2432,
+      "mtime": 1761352352.5418339
+    },
+    {
+      "path": "qmoi-enhanced/SCRIPTSREADME.md",
+      "size": 19716,
+      "mtime": 1761352352.5428338
+    },
+    {
+      "path": "qmoi-enhanced/SECURITY.md",
+      "size": 1158,
+      "mtime": 1761352352.5428338
+    },
+    {
+      "path": "qmoi-enhanced/SECURITYREADME.md",
+      "size": 1300,
+      "mtime": 1761352352.5428338
+    },
+    {
+      "path": "qmoi-enhanced/SECURITY_AUTOMATION.md",
+      "size": 3171,
+      "mtime": 1761352352.5428338
+    },
+    {
+      "path": "qmoi-enhanced/SELF_EVOLUTION.md",
+      "size": 2147,
+      "mtime": 1761352352.543834
+    },
+    {
+      "path": "qmoi-enhanced/SISTERREADME.md",
+      "size": 2720,
+      "mtime": 1761352352.543834
+    },
+    {
+      "path": "qmoi-enhanced/START.md",
+      "size": 1130,
+      "mtime": 1761352352.543834
+    },
+    {
+      "path": "qmoi-enhanced/SYNCREPOS.md",
+      "size": 1097,
+      "mtime": 1761352352.544834
+    },
+    {
+      "path": "qmoi-enhanced/TESTREADME.md",
+      "size": 13024,
+      "mtime": 1761352352.544834
+    },
+    {
+      "path": "qmoi-enhanced/TRACKS.md",
+      "size": 2160,
+      "mtime": 1761352352.5458338
+    },
+    {
+      "path": "qmoi-enhanced/TRADINGREADME.md",
+      "size": 29237,
+      "mtime": 1761352352.5458338
+    },
+    {
+      "path": "qmoi-enhanced/TROUBLESHOOTING.md",
+      "size": 800,
+      "mtime": 1761352352.5458338
+    },
+    {
+      "path": "qmoi-enhanced/USEEMPLOYEESUSERS.md",
+      "size": 14774,
+      "mtime": 1761352352.546834
+    },
+    {
+      "path": "qmoi-enhanced/USERREADME.md",
+      "size": 2253,
+      "mtime": 1761352352.546834
+    },
+    {
+      "path": "qmoi-enhanced/WATCHDEBUG.md",
+      "size": 5755,
+      "mtime": 1761352352.547834
+    },
+    {
+      "path": "qmoi-enhanced/WPA.md",
+      "size": 15253,
+      "mtime": 1761352352.547834
+    },
+    {
+      "path": "qmoi-enhanced/ZERORATEDQMOI.md",
+      "size": 4511,
+      "mtime": 1761352352.5488338
+    },
+    {
+      "path": "qmoi-enhanced/components/qmedia-player.md",
+      "size": 2342,
+      "mtime": 1761352352.550834
+    },
+    {
+      "path": "qmoi-enhanced/docs/ACCESSIBILITY.md",
+      "size": 1989,
+      "mtime": 1761352352.554834
+    },
+    {
+      "path": "qmoi-enhanced/docs/API.md",
+      "size": 11575,
+      "mtime": 1761352352.554834
+    },
+    {
+      "path": "qmoi-enhanced/docs/AUTOEVOLVE.md",
+      "size": 1626,
+      "mtime": 1761352352.5558338
+    },
+    {
+      "path": "qmoi-enhanced/docs/ENHANCED_FEATURES.md",
+      "size": 11123,
+      "mtime": 1761352352.5558338
+    },
+    {
+      "path": "qmoi-enhanced/docs/FEATURESINDEX.md",
+      "size": 2348,
+      "mtime": 1761352352.5558338
+    },
+    {
+      "path": "qmoi-enhanced/docs/MONITORING_SYSTEM.md",
+      "size": 11089,
+      "mtime": 1761352352.557834
+    },
+    {
+      "path": "qmoi-enhanced/docs/QMOI-ENHANCED-AUTOTESTS.md",
+      "size": 530,
+      "mtime": 1761352352.557834
+    },
+    {
+      "path": "qmoi-enhanced/docs/QMOICLONE.md",
+      "size": 393,
+      "mtime": 1761352352.557834
+    },
+    {
+      "path": "qmoi-enhanced/docs/QMOIGITHUBDEV.md",
+      "size": 1983,
+      "mtime": 1761352352.559834
+    },
+    {
+      "path": "qmoi-enhanced/docs/QMOIGITLABDEV.md",
+      "size": 3541,
+      "mtime": 1761352352.559834
+    },
+    {
+      "path": "qmoi-enhanced/docs/QMOIVERCELDEV.md",
+      "size": 1950,
+      "mtime": 1761352352.559834
+    },
+    {
+      "path": "qmoi-enhanced/docs/README.md",
+      "size": 10022,
+      "mtime": 1761352352.5618339
+    },
+    {
+      "path": "qmoi-enhanced/docs/REFERENCES.md",
+      "size": 1301,
+      "mtime": 1761352352.5618339
+    },
+    {
+      "path": "qmoi-enhanced/docs/TROUBLESHOOTING.md",
+      "size": 1684,
+      "mtime": 1761352352.5618339
+    },
+    {
+      "path": "qmoi-enhanced/docs/corrupted.md",
+      "size": 273,
+      "mtime": 1761352352.563834
+    },
+    {
+      "path": "qmoi-enhanced/error-fix-summary.md",
+      "size": 906,
+      "mtime": 1761352352.5648339
+    },
+    {
+      "path": "qmoi-enhanced/mobile/README.md",
+      "size": 2963,
+      "mtime": 1761352352.5648339
+    },
+    {
+      "path": "qmoi-enhanced/models/latest/README.md",
+      "size": 3834,
+      "mtime": 1761352352.567834
+    },
+    {
+      "path": "qmoi-enhanced/scripts/README_QMOI_SECRETS.md",
+      "size": 1748,
+      "mtime": 1761352352.567834
+    },
+    {
+      "path": "qmoi-enhanced/scripts/templates/README_template.en.md",
+      "size": 6082,
+      "mtime": 1761352352.570834
+    },
+    {
+      "path": "qmoi-enhanced/scripts/templates/README_template.md",
+      "size": 947,
+      "mtime": 1761352352.570834
+    },
+    {
+      "path": "qmoi-enhanced/scripts/templates/README_template.sw.md",
+      "size": 1008,
+      "mtime": 1761352352.5718338
+    },
+    {
+      "path": "qmoi-enhanced/whatsapp-qmoi-bot/README.md",
+      "size": 1985,
+      "mtime": 1761352352.572834
+    },
+    {
+      "path": "scripts/templates/README_template.en.md",
+      "size": 6082,
+      "mtime": 1761352352.577834
+    },
+    {
+      "path": "scripts/templates/README_template.md",
+      "size": 947,
+      "mtime": 1761352352.5788338
+    },
+    {
+      "path": "scripts/templates/README_template.sw.md",
+      "size": 1008,
+      "mtime": 1761352352.5788338
+    },
+    {
+      "path": "whatsapp-qmoi-bot/README.md",
+      "size": 1985,
+      "mtime": 1761352352.579834
+    }
+  ],
+  "modified_count": 0,
+  "modified_files": []
+}

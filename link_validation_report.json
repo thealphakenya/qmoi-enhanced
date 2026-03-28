@@ -1,0 +1,873 @@
+{
+  "timestamp": "2026-03-21T23:15:55.123551",
+  "total_links_checked": 106782,
+  "valid_links": 106670,
+  "broken_links": 112,
+  "by_type": {
+    "standard": {
+      "total": 94293,
+      "valid": 94181
+    },
+    "city": {
+      "total": 2460,
+      "valid": 2460
+    },
+    "api": {
+      "total": 4217,
+      "valid": 4217
+    },
+    "download": {
+      "total": 1871,
+      "valid": 1871
+    },
+    "messaging": {
+      "total": 113,
+      "valid": 113
+    },
+    "sharing": {
+      "total": 99,
+      "valid": 99
+    },
+    "store": {
+      "total": 493,
+      "valid": 493
+    },
+    "models": {
+      "total": 3192,
+      "valid": 3192
+    },
+    "space": {
+      "total": 44,
+      "valid": 44
+    }
+  },
+  "broken_links_by_type": {
+    "standard": [
+      "https://",
+      "www.shippable.com",
+      "www.npmjs",
+      "www.$DOMAIN",
+      "http://",
+      "www.npmj",
+      "http://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "www.npmj",
+      "www.npmjs",
+      "www.$DOMAIN",
+      "https://",
+      "http://",
+      "www.shippable.com",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "http://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "www",
+      "www",
+      "www.shippable.com",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "www.$DOMAIN",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "www",
+      "http://",
+      "https://",
+      "http://",
+      "www.$DOMAIN",
+      "https://",
+      "https://",
+      "http://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "www",
+      "www.npmjs",
+      "www.npmjs",
+      "www.shippable.com",
+      "www.npmj"
+    ]
+  },
+  "files_with_broken_links": {
+    "/workspaces/qmoi-enhanced/link_validation_results.json": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.shippable.com",
+        "suggestion": "www.shippable.com",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.npmjs",
+        "suggestion": "www.npmjs",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.$DOMAIN",
+        "suggestion": "www.$DOMAIN",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.npmj",
+        "suggestion": "www.npmj",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/link_report.md": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/eslint_report_after_fix.json": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/eslint_report_after_any_fix.json": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/LINK_DOMAIN_VALIDATION_PLAN.md": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/eslint_report.json": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/ALLLINKS.md": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/matches.json": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/eslint_report_after_ignore.json": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/link_validation_report.json": [
+      {
+        "url": "www.npmj",
+        "suggestion": "www.npmj",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.npmjs",
+        "suggestion": "www.npmjs",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.$DOMAIN",
+        "suggestion": "www.$DOMAIN",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.shippable.com",
+        "suggestion": "www.shippable.com",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/QMOI_AI_PRODUCTION_READY.md": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/TECHNICAL_COMMANDS_REFERENCE.md": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/QMOINGROK.md": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/eslint_report_after_eslintignore.json": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/qmoi_cloud_upload.sh": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/COMPREHENSIVE_ACTION_PLAN.md": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/documentation_audit_details.json": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/QMOIGITHUBAPP.md": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/eslint_fix_result.json": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/docs/link_report.json": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/docs/merged_remediation_plan.md": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/docs/REVENUE_SPEC.md": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/docs/LINKVALIDATION.md": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/components/DeviceMap.tsx": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/components/QmoiBrowser.tsx": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/QMOINGROK.md": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/components/DeviceMap.tsx": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/components/QmoiBrowser.tsx": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/github_auto_push.py": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/qmoi-system-controller.py": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/auto_lint_fix.py": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/deploy/health-check.js": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/deploy/deployment-monitor.js": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/src/services/BrowserService.ts": [
+      {
+        "url": "www",
+        "suggestion": "www",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/backups/src.backup.20260121144720/services/BrowserService.ts": [
+      {
+        "url": "www",
+        "suggestion": "www",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/tools/dns_links_report.json": [
+      {
+        "url": "www.shippable.com",
+        "suggestion": "www.shippable.com",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/tools/dns_fix_summary.md": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/tools/dns_docs_inventory.json": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/tools/apply_link_fixes.py": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/tools/placeholder_actions.md": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/tools/placeholder_scan.json": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/tools/link_fix_propose_only.py": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/tools/propose_apply_trivial_fixes.py": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/tools/issue_drafts/1057_scripts_validate_and_fix_md.py.md": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/validate_and_sync_links.py": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/setup-ssl-automated.sh": [
+      {
+        "url": "www.$DOMAIN",
+        "suggestion": "www.$DOMAIN",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/host_health_monitor.py": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/validate_and_fix_md.py": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/domain_health_check.py": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/github_auto_push.py": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/qmoi-system-controller.py": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/link_apply_preview.py": [
+      {
+        "url": "www",
+        "suggestion": "www",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/metrics_server.py": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/qmoi-production-init.js": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/validate_links.py": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/setup-nginx-automated.sh": [
+      {
+        "url": "www.$DOMAIN",
+        "suggestion": "www.$DOMAIN",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/domain_health_check_advanced.py": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/link_validator.py": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/link_normalization_dryrun.py": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/domain_registry_manager.py": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/deployment-monitor.sh": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/health-check.sh": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/auto_lint_fix.py": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/qmoi_local_server.py": [
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/auto_host_manager.py": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/domain_registry.py": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/deploy/health-check.js": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/scripts/deploy/deployment-monitor.js": [
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/src/services/BrowserService.ts": [
+      {
+        "url": "www",
+        "suggestion": "www",
+        "error": "Link validation failed"
+      }
+    ],
+    "/workspaces/qmoi-enhanced/results/link_validation_report.json": [
+      {
+        "url": "www.npmjs",
+        "suggestion": "www.npmjs",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.npmjs",
+        "suggestion": "www.npmjs",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.shippable.com",
+        "suggestion": "www.shippable.com",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.npmj",
+        "suggestion": "www.npmj",
+        "error": "Link validation failed"
+      }
+    ]
+  },
+  "suggestions": {
+    "https://": "https://",
+    "www.shippable.com": "www.shippable.com",
+    "www.npmjs": "www.npmjs",
+    "www.$DOMAIN": "www.$DOMAIN",
+    "http://": "http://",
+    "www.npmj": "www.npmj",
+    "www": "www"
+  }
+}

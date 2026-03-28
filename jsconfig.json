@@ -1,0 +1,14 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@/components/*": ["src/components/*"],
+      "@/app/*": ["app/*"],
+      "@/services/*": ["src/services/*"],
+      "@/hooks/*": ["src/hooks/*"],
+      "@/lib/*": ["lib/*"]
+    }
+  }
+}

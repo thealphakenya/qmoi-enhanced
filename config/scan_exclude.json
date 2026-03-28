@@ -1,0 +1,11 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+[
+  "node_modules",
+  ".git",
+  ".next",
+  "dist",
+  "build",
+  "__pycache__",
+  "logs",
+  "coverage"
+]

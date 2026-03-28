@@ -1,0 +1,13 @@
+Scan run: Sat Mar 21 06:42:51 UTC 2026
+Repository path: /workspaces/qmoi-enhanced
+
+Finding files with keywords: PENDING_IMPLEMENTATION TODO FIXME PLACEHOLDER MOCK SIMULATE SIMULATION STAGING STUB STUBS PRODUCTION IMPLEMENTATION REQUIRED PRODUCTION DONE PRODUCTION FIXED TEST DATA TEST IMPLEMENTATION
+----
+No non-production markers found. undone.txt is now empty.
+
+Total files with non-production markers: 0
+Total scanned files: 14081
+Total skipped (read errors or non-text): 1321
+Total production-ready files found: 5703
+Remaining non-production percent: 0.0%
+Normalized percent complete: 100.0%

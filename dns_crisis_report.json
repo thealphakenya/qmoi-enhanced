@@ -1,0 +1,75 @@
+{
+  "checked_domains": [
+    "qvillage.com",
+    "qmoi.ai",
+    "qshare.qvillage.com",
+    "qstore.qvillage.com",
+    "qcity.qmoi.ai",
+    "qmoi-space.qmoi.ai",
+    "yap.qmoi.ai",
+    "q-stable.qmoi.ai"
+  ],
+  "resolved": [
+    {
+      "domain": "qvillage.com",
+      "ip": "76.223.54.146"
+    },
+    {
+      "domain": "qshare.qvillage.com",
+      "ip": "76.223.54.146"
+    },
+    {
+      "domain": "qstore.qvillage.com",
+      "ip": "76.223.54.146"
+    }
+  ],
+  "unresolved": [
+    {
+      "domain": "qmoi.ai",
+      "error": "[Errno -2] Name does not resolve"
+    },
+    {
+      "domain": "qcity.qmoi.ai",
+      "error": "[Errno -2] Name does not resolve"
+    },
+    {
+      "domain": "qmoi-space.qmoi.ai",
+      "error": "[Errno -2] Name does not resolve"
+    },
+    {
+      "domain": "yap.qmoi.ai",
+      "error": "[Errno -2] Name does not resolve"
+    },
+    {
+      "domain": "q-stable.qmoi.ai",
+      "error": "[Errno -2] Name does not resolve"
+    }
+  ],
+  "actions": [
+    {
+      "domain": "qmoi.ai",
+      "action": "fallback-suggested",
+      "fallback": "qmoi.com"
+    },
+    {
+      "domain": "qcity.qmoi.ai",
+      "action": "fallback-suggested",
+      "fallback": "qcity.qvillage.com"
+    },
+    {
+      "domain": "qmoi-space.qmoi.ai",
+      "action": "fallback-suggested",
+      "fallback": "space.qmoi.ai"
+    },
+    {
+      "domain": "yap.qmoi.ai",
+      "action": "fallback-suggested",
+      "fallback": "yap.qvillage.com"
+    },
+    {
+      "domain": "q-stable.qmoi.ai",
+      "action": "fallback-suggested",
+      "fallback": "stable.alphaq.ai"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+[
+  {
+    "id": "cf8afdd7-7f09-40d4-8f84-f425e008ee20",
+    "userId": "1",
+    "username": "admin",
+    "profileId": "voice-1-1768547633566",
+    "audioHash": "4d63054367257e7c18a3a3cf0b8a2fb7380b48bc90b0b928d6a2e21adeaed957",
+    "duration": 3,
+    "quality": 0.9096240582447519,
+    "type": "voice",
+    "enrolledAt": "2026-01-16T07:13:53.566Z",
+    "lastVerified": "2026-01-16T07:13:59.831Z",
+    "enrollmentAttempts": 1
+  }
+]

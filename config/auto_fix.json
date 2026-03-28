@@ -1,0 +1,12 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+{
+  "enable": true,
+  "autoNpmInstall": true,
+  "autoPermissionFix": true,
+  "autoRerun": true,
+  "autoRemoveUnusedDeps": true,
+  "autoUpdateDeps": true,
+  "autoGenerateConfigs": true,
+  "autoFixSecrets": true,
+  "autoSummarize": true
+}

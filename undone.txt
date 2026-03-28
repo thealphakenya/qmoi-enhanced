@@ -1,0 +1,1959 @@
+=== ENHANCED PRODUCTION READINESS SCAN ===
+Scan run: 2026-03-25T03:02:49.836494
+Repository path: /workspaces/qmoi-enhanced
+
+SCAN STATISTICS
+============================================================
+Total files discovered: 6661
+Text files analyzed: 5893
+Files with non-production markers: 171
+Production-ready files: 5591
+Binary/skipped files: 768
+Error/unreadable files: 0
+
+Remaining non-production percent: 2.9%
+Production completion rate: 97.1%
+
+TOP NON-PRODUCTION MARKERS (by frequency)
+============================================================
+  PRODUCTION IMPLEMENTATION REQUIRED: 91949 occurrences
+  STUB: 32690 occurrences
+  BROKEN: 30693 occurrences
+  NOTE: 6702 occurrences
+  DEBUG: 6579 occurrences
+  WARNING: 6514 occurrences
+  CONSOLE.LOG: 6109 occurrences
+  STUBS: 5493 occurrences
+  NOT IMPLEMENTED: 5456 occurrences
+  REPLACE: 4809 occurrences
+  PLACEHOLDER: 4780 occurrences
+  SIMULATION: 4015 occurrences
+  TODO: 3309 occurrences
+  PRINT(: 2673 occurrences
+  THROW NEW ERROR: 1653 occurrences
+  ALPHA: 1449 occurrences
+  REPLACE WITH: 1337 occurrences
+  TEMPORARY: 1294 occurrences
+  TEST DATA: 1272 occurrences
+  HACK: 1187 occurrences
+  PATCH: 962 occurrences
+  SIMPLE: 906 occurrences
+  DEMO: 860 occurrences
+  MOCK: 799 occurrences
+  COMING SOON: 689 occurrences
+
+FILES WITH NON-PRODUCTION MARKERS
+============================================================
+ALLHOOKSWEBHOOKS.md (7.4KB, 213 lines) [NOTE]
+ALLMDFILESREFS.md (153.0KB, 2103 lines) [ALPHA; INSTRUCTIONS; TODO]
+API.md (7.1KB, 322 lines) [DEBUG; MISSING_API_PARAMETERS; MISSING_API_RESPONSE_CODES]
+COMPREHENSIVE_VALIDATION_SYSTEM.md (11.8KB, 445 lines) [FIXME; MOCK; NOTE; PLACEHOLDER; SECURITY_CONCERN; TODO]
+Dockerfile.qmoi_control (0.8KB, 28 lines) [NOTE]
+EMAILSSYSTEM.md (17.2KB, 500 lines) [INSTRUCTIONS; MISSING_API_PARAMETERS; MISSING_API_RESPONSE_CODES; NOTE; SECURITY_CONCERN]
+LINKS_DOMAINS_ENHANCEMENT_PLAN.md (10.6KB, 384 lines) [BROKEN; MISSING; MISSING_API_RESPONSE_CODES; NOTE; REPLACE]
+LINKS_FIX_EXECUTION_GUIDE.md (10.9KB, 238 lines) [BROKEN; NOTE; STAGING]
+PRODUCTION_READINESS_EXECUTION_STATUS.md (8.3KB, 320 lines) [BROKEN; ECHO; FIXME; NOTE; STAGING; TODO]
+QI_download_component.html (13.0KB, 394 lines) [THROW NEW ERROR]
+QMOISYSTEMEMAILS.md (19.6KB, 592 lines) [MISSING_API_RESPONSE_CODES; NOTE; REPLACE; WARNING]
+QMOISYSTEMEMAILS_ENHANCED.md (16.0KB, 488 lines) [DEBUG; MISSING_API_RESPONSE_CODES; NOTE; SECURITY_CONCERN; WARNING]
+QMOI_ENHANCEMENT_UPDATE_20260321.md (8.7KB, 318 lines) [BROKEN; MISSING_API_PARAMETERS; NOTE; STAGING]
+QUICKSTART_LINKS_FIX.md (1.8KB, 61 lines) [BROKEN; NOTE]
+QUICK_REFERENCE_SPRINT_METRICS.md (11.5KB, 348 lines) [BROKEN; MISSING; MISSING_API_PARAMETERS; NOTE; REPLACE; STAGING; WORKAROUND]
+VALIDATION_SYSTEM.md (5.2KB, 216 lines) [WARNING]
+WORKFLOWS.md (19.6KB, 614 lines) [ALPHA; BROKEN; MISSING; NOTE; SIMULATION; STAGING]
+_archive_qmoi-enhanced/QI_download_component.html (13.0KB, 394 lines) [THROW NEW ERROR]
+_archive_qmoi-enhanced/build-qmoi.bat (0.1KB, 4 lines) [ECHO]
+_archive_qmoi-enhanced/mobile/android/app/src/main/java/com/tempinit/MainApplication.kt (1.3KB, 38 lines) [DEBUG]
+_archive_qmoi-enhanced/mobile/android/gradle.properties (1.9KB, 44 lines) [NOTE]
+_archive_qmoi-enhanced/nginx.sample.conf (2.9KB, 92 lines) [CONFIG_PLACEHOLDER; SECURITY_CONCERN]
+_archive_qmoi-enhanced/qmoi-space-pwa/index.html (27.4KB, 768 lines) [CONSOLE.LOG; SIMULATION; WARNING]
+_archive_qmoi-enhanced/reports/lint-report.html (892.4KB, 26104 lines) [DEBUG; WARNING]
+_archive_qmoi-enhanced/scripts/ensure-build-tools.js.bak.1768901506 (2.4KB, 85 lines) [CONSOLE.LOG]
+_archive_qmoi-enhanced/scripts/qmoi-setup.js.bak.1768901506 (9.1KB, 349 lines) [CONSOLE.LOG; DEVELOPMENT MODE; ECHO; THROW NEW ERROR]
+_archive_qmoi-enhanced/setup_and_build_qmoi_ai.bat (4.8KB, 133 lines) [ECHO; MISSING]
+_archive_qmoi-enhanced/templates/dashboard.html (11.5KB, 394 lines) [WARNING]
+allrefs.txt (79.7KB, 1461 lines) [ALPHA; DEBUG; DEMO; INSTRUCTIONS; MISSING; PATCH; SIMULATION; TODO]
+app/api/emergency/email/route.ts (4.1KB, 160 lines) [CONSOLE.LOG; MISSING; NOT YET IMPLEMENTED; NOTE]
+app/api/emergency/sms/route.ts (3.9KB, 155 lines) [CONSOLE.LOG; MISSING; NOT YET IMPLEMENTED; NOTE]
+backups/src.backup.20260121144720/setupTests.ts.bak.1768901506 (36.7KB, 1107 lines) [DEBUG; MOCK; PERFORMANCE_CONCERN; REPLACE; SIMPLE]
+build-qmoi.bat (0.1KB, 4 lines) [ECHO]
+components_tree.txt (6.3KB, 213 lines) [ALPHA]
+comprehensive_link_fixer.py (7.9KB, 190 lines) [BROKEN; INCOMPLETE_PY_IMPLEMENTATION; PRINT(; REPLACE]
+continues.txt (4.8KB, 100 lines) [INCOMPLETE_DOCUMENTATION]
+data/auto_host_telemetry.json (1.4KB, 64 lines) [EMPTY_CONFIG_VALUE]
+data/balance_config.json (1.6KB, 63 lines) [CONFIG_PLACEHOLDER]
+data/domain_health_history.json (5.3KB, 192 lines) [EMPTY_CONFIG_VALUE]
+data/email_config.json (10.6KB, 352 lines) [EMPTY_CONFIG_VALUE]
+data/percentages_latest.json (636.6KB, 17235 lines) [TBD]
+data/production_readiness_scan.json (0.2KB, 9 lines) [EMPTY_CONFIG_VALUE]
+db/migrations/001_create_trades.sql (1.1KB, 25 lines) [REPLACE]
+dns_deployment_results.json (1.3KB, 72 lines) [EMPTY_CONFIG_VALUE]
+dns_providers_config.json (1.1KB, 47 lines) [CONFIG_PLACEHOLDER]
+docker-compose.yml (2.2KB, 84 lines) [CONFIG_PLACEHOLDER]
+docs/ui/login.html (5.9KB, 179 lines) [DEMO]
+documentation_audit_details.json (1250.9KB, 30393 lines) [ALPHA; BROKEN; CONFIG_PLACEHOLDER; DEBUG; DEMO; EMPTY_CONFIG_VALUE; INSTRUCTION; INSTRUCTIONS; PATCH; REPLACE; SECURITY_CONCERN; SIMPLE; XXX]
+documentation_audit_report.json (3.1KB, 100 lines) [CONFIG_PLACEHOLDER]
+domain_fallback_chains.json (3.6KB, 185 lines) [EMPTY_CONFIG_VALUE]
+domain_health_report.json (5.5KB, 232 lines) [EMPTY_CONFIG_VALUE]
+domain_registry.json (8.3KB, 384 lines) [EMPTY_CONFIG_VALUE]
+email_system_tests.py (10.4KB, 309 lines) [INCOMPLETE_PY_IMPLEMENTATION; MOCK; PATCH; POTENTIAL_EXPOSED_SECRET; PRINT(]
+hf_space_qvillage/core.py (15.2KB, 409 lines) [HTTP_INSTEAD_OF_HTTPS; INCOMPLETE_PY_IMPLEMENTATION; PATCH]
+hf_space_qvillage/test_app.py (4.1KB, 157 lines) [INCOMPLETE_PY_IMPLEMENTATION; PRINT(]
+link_validation_results.json (39800.9KB, 1281386 lines) [ALPHA; BETA; BROKEN; CONFIG_PLACEHOLDER; DEBUG; DEMO; DEPRECATED; DRAFT; ECHO; EMPTY_CONFIG_VALUE; FAKE; INSTRUCTIONS; MOCK; PATCH; PLACEHOLDER; REPLACE; SECURITY_CONCERN; SIMPLE; STAGING; TODO; XXX]
+mobile/android/app/build.gradle (4.0KB, 102 lines) [NOTE]
+mobile/android/app/signing-config.gradle (1.7KB, 50 lines) [DEBUG]
+mobile/android/app/src/main/java/com/qmoi/app/MainApplication.kt (1.3KB, 38 lines) [DEBUG]
+mobile/android/app/src/main/java/com/tempinit/MainApplication.kt (1.3KB, 38 lines) [DEBUG]
+mobile/android/gradle.properties (1.9KB, 44 lines) [NOTE]
+nginx.sample.conf (2.9KB, 92 lines) [CONFIG_PLACEHOLDER; SECURITY_CONCERN]
+package-lock.json (692.8KB, 19597 lines) [BETA; DEBUG; DEPRECATED; DRAFT; FAKE; MOCK; PATCH; PLACEHOLDER; REPLACE; SECURITY_CONCERN; STUB]
+phase1_results.json (0.1KB, 6 lines) [EMPTY_CONFIG_VALUE]
+production_dns_records.json (5.3KB, 237 lines) [EMPTY_CONFIG_VALUE]
+production_domain_health.json (4.0KB, 147 lines) [EMPTY_CONFIG_VALUE]
+production_health_check.json (2.9KB, 114 lines) [EMPTY_CONFIG_VALUE]
+pwa_apps/q-alpha/index.html (18.3KB, 545 lines) [CONSOLE.LOG]
+pwa_apps/qmoi-ai/index.html (16.1KB, 571 lines) [CONSOLE.LOG]
+pwa_apps/qmoi-space/index.html (7.0KB, 258 lines) [CONSOLE.LOG]
+q-alpha.html (0.6KB, 23 lines) [REPLACE]
+q/AI_ENHANCED_INTELLIGENT_VALIDATION_ARCHITECTURE.md (12.7KB, 439 lines) [BROKEN; INCOMPLETE; MISSING; NOTE; SIMULATE]
+q/BALANCES.md (4.3KB, 149 lines) [MANDATORY; NOTE]
+qcity-complete.html (42.9KB, 1431 lines) [WARNING]
+qcity-dashboard.html (24.3KB, 897 lines) [WARNING]
+qcity-enterprise.html (36.4KB, 1175 lines) [CONSOLE.LOG; WARNING]
+qmoi-ai.html (0.7KB, 24 lines) [REPLACE]
+qmoi-backups/1752627018600/qmoi-clone-optimize.log (3.5KB, 44 lines) [ALPHA]
+qmoi-clone-optimize.log (12.8KB, 124 lines) [ALPHA]
+qmoi-health-check.log (132.1KB, 1193 lines) [ALPHA; DEBUG; FAKE]
+qmoi-space-pwa/index.html (27.6KB, 771 lines) [CONSOLE.LOG; SIMULATION; WARNING]
+qmoi-space.html (0.7KB, 26 lines) [REPLACE]
+qmoi_enhanced.log (31.6KB, 370 lines) [WARNING]
+qmoi_system_controller.log (0.5KB, 5 lines) [ALPHA; WARNING]
+qvillage/demo.py (5.6KB, 176 lines) [DEMO; INCOMPLETE_PY_IMPLEMENTATION; PERFORMANCE_CONCERN; PRINT(; SIMULATE]
+qvillage/test_app_enhanced.py (6.6KB, 251 lines) [INCOMPLETE_PY_IMPLEMENTATION; MISSING; PRINT(]
+qvillage/test_app_simple.py (1.9KB, 94 lines) [INCOMPLETE_PY_IMPLEMENTATION; MINIMAL; PRINT(]
+realtime_email_tests.py (16.9KB, 487 lines) [INCOMPLETE_PY_IMPLEMENTATION; MOCK; PATCH; PRINT(; WARNING]
+reports/ai-understanding-detailed-20260324_041407.json (29.4KB, 887 lines) [BROKEN; EMPTY_CONFIG_VALUE; NOTE]
+reports/lint-report.html (892.4KB, 26104 lines) [DEBUG; WARNING]
+reports/percentages-archive/all-percentages-2026-03-24.json (636.4KB, 17223 lines) [TBD]
+reports/security-compliance-summary.json (0.2KB, 11 lines) [CONFIG_PLACEHOLDER]
+resumefromhere.txt (32.1KB, 517 lines) [INSTRUCTIONS; MISSING; REPLACE; STAGING; STUBS; WARNING]
+run_phase1.py (1.5KB, 59 lines) [PRINT(; REPLACE]
+scan_non_production.js (8.8KB, 274 lines) [BOILERPLATE; COMING SOON; CONSOLE.LOG; DUMMY; FAKE; FAKE DATA; FIXME; INCOMPLETE; MINIMAL; MOCK; NOT IMPLEMENTED; PENDING_IMPLEMENTATION; PLACEHOLDER; PLACEHOLDER TEXT; SIMPLE; SIMULATION; STAGING; STUB; TEMPORARY; TEST DATA; TODO; WARNING]
+scripts/all_percentages_automation.test.py (16.8KB, 458 lines) [INCOMPLETE_PY_IMPLEMENTATION; PRINT(; WARNING]
+scripts/app_signing_automation.test.py (17.2KB, 448 lines) [INCOMPLETE_PY_IMPLEMENTATION; MOCK; PRINT(; WARNING]
+scripts/auto_continue_resumefromhere.py (0.8KB, 26 lines) [INCOMPLETE_PY_IMPLEMENTATION; PRINT(; REPLACE]
+scripts/auto_host_manager.test.py (1.0KB, 37 lines) [INCOMPLETE_PY_IMPLEMENTATION]
+scripts/balance_validator_comprehensive.py (17.1KB, 464 lines) [INCOMPLETE_PY_IMPLEMENTATION; MISSING; PRINT(]
+scripts/device_orchestration_manager.test.py (20.0KB, 564 lines) [INCOMPLETE_PY_IMPLEMENTATION; PRINT(; WARNING]
+scripts/enhanced_scan_nonproduction.test.py (0.4KB, 12 lines) [INCOMPLETE_PY_IMPLEMENTATION]
+scripts/ensure-build-tools.js.bak.1768901506 (2.4KB, 85 lines) [CONSOLE.LOG]
+scripts/phase1_domain_link_fixer.py (14.2KB, 356 lines) [INCOMPLETE_PY_IMPLEMENTATION; PRINT(]
+scripts/qmoi-setup.js.bak.1768901506 (9.1KB, 349 lines) [CONSOLE.LOG; DEVELOPMENT MODE; ECHO; THROW NEW ERROR]
+scripts/realtime_email_tests.py (16.4KB, 401 lines) [INCOMPLETE_PY_IMPLEMENTATION; MOCK; PATCH; POTENTIAL_EXPOSED_SECRET]
+scripts/scan_all_apps_devices_machines.test.py (0.5KB, 17 lines) [INCOMPLETE_PY_IMPLEMENTATION; PRINT(]
+scripts/scan_nonproduction_endpoints.test.py (0.8KB, 21 lines) [INCOMPLETE_PY_IMPLEMENTATION]
+scripts/validate_builds.py (4.8KB, 134 lines) [INCOMPLETE_PY_IMPLEMENTATION; PRINT(; REPLACE; STUBS]
+scripts_tree.txt (28.3KB, 867 lines) [BROKEN; DEBUG; DEMO; PLACEHOLDER; SIMPLE]
+setup_and_build_qmoi_ai.bat (4.8KB, 133 lines) [ECHO; MISSING]
+src/components/ComponentGallery.tsx (15.4KB, 473 lines) [PLACEHOLDER; SECURITY_CONCERN]
+src/components/FloatingAQ.tsx (4.2KB, 142 lines) [PLACEHOLDER]
+src/setupTests.ts.bak.1768901506 (36.7KB, 1107 lines) [DEBUG; MOCK; PERFORMANCE_CONCERN; REPLACE; SIMPLE]
+src_tree.txt (11.6KB, 309 lines) [ALPHA; DEBUG]
+start.log (0.4KB, 7 lines) [DEBUG; SECURITY_CONCERN]
+styles/theme.css (10.9KB, 427 lines) [PERFORMANCE_CONCERN; SLOW; WARNING]
+templates/dashboard.html (11.5KB, 394 lines) [WARNING]
+tools/autotest_report.md (2.0KB, 68 lines) [PATCH]
+tools/dns_docs_inventory.json (7169.7KB, 108575 lines) [ALPHA; BROKEN; CONFIG_PLACEHOLDER; DEBUG; DEPRECATED; PLACEHOLDER; SIMPLE; TODO; XXX]
+tools/dns_links_report.json (558.3KB, 21270 lines) [BROKEN; CONFIG_PLACEHOLDER; DEBUG; DEPRECATED; EMPTY_CONFIG_VALUE]
+tools/dns_links_report.md (34.8KB, 212 lines) [BROKEN]
+tools/mass_fix_markers.py (2.7KB, 87 lines) [INCOMPLETE_PY_IMPLEMENTATION; PRINT(]
+tools/matches_priority.md (6.2KB, 91 lines) [ALPHA; DEBUG]
+tools/qmoi_lint_report.json (0.3KB, 21 lines) [EMPTY_CONFIG_VALUE]
+tools/rust_lint_fix/src/main.rs (1.9KB, 56 lines) [PATCH]
+undone_backups/undone_1773961215.txt (0.5KB, 12 lines) [PENDING_IMPLEMENTATION; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1773961963.txt (67.1KB, 723 lines) [DEMO; MISSING_API_RESPONSE_CODES; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1773962033.txt (67.1KB, 723 lines) [DEMO; MISSING_API_RESPONSE_CODES; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1773962097.txt (67.1KB, 723 lines) [DEMO; MISSING_API_RESPONSE_CODES; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1773962163.txt (67.1KB, 723 lines) [DEMO; MISSING_API_RESPONSE_CODES; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1773962242.txt (67.1KB, 723 lines) [DEMO; MISSING_API_RESPONSE_CODES; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1773962308.txt (67.1KB, 723 lines) [DEMO; MISSING_API_RESPONSE_CODES; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1773962377.txt (67.1KB, 723 lines) [DEMO; MISSING_API_RESPONSE_CODES; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1773962444.txt (67.1KB, 723 lines) [DEMO; MISSING_API_RESPONSE_CODES; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1773962512.txt (67.1KB, 723 lines) [DEMO; MISSING_API_RESPONSE_CODES; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1773963093.txt (8.2KB, 157 lines) [DEMO; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1773964009.txt (308.1KB, 2700 lines) [DEBUG; DEMO; INCOMPLETE_DOCUMENTATION; PATCH; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1773964164.txt (308.1KB, 2700 lines) [DEBUG; DEMO; INCOMPLETE_DOCUMENTATION; PATCH; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1773964317.txt (308.1KB, 2700 lines) [DEBUG; DEMO; INCOMPLETE_DOCUMENTATION; PATCH; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1773964470.txt (308.1KB, 2700 lines) [DEBUG; DEMO; INCOMPLETE_DOCUMENTATION; PATCH; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1773964785.txt (20.3KB, 370 lines) [DEMO; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1773964959.txt (20.3KB, 370 lines) [DEMO; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1773965087.txt (20.3KB, 370 lines) [DEMO; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774041741.txt (308.2KB, 2700 lines) [DEBUG; DEMO; INCOMPLETE_DOCUMENTATION; PATCH; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774041928.txt (308.2KB, 2700 lines) [DEBUG; DEMO; INCOMPLETE_DOCUMENTATION; PATCH; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774042065.txt (308.2KB, 2700 lines) [DEBUG; DEMO; INCOMPLETE_DOCUMENTATION; PATCH; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774043083.txt (308.9KB, 2709 lines) [DEBUG; DEMO; INCOMPLETE_DOCUMENTATION; PATCH; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774047732.txt (308.9KB, 2709 lines) [DEBUG; DEMO; INCOMPLETE_DOCUMENTATION; PATCH; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774050739.txt (308.4KB, 2704 lines) [DEBUG; DEMO; INCOMPLETE_DOCUMENTATION; PATCH; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774051010.txt (308.4KB, 2704 lines) [DEBUG; DEMO; INCOMPLETE_DOCUMENTATION; PATCH; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774051642.txt (1265.8KB, 11285 lines) [DEBUG; DEMO; HACK; INCOMPLETE_DOCUMENTATION; INSTRUCTIONS; NOT IMPLEMENTED; PATCH; PENDING_IMPLEMENTATION; PERFORMANCE_CONCERN; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; REPLACE; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774051966.txt (1265.8KB, 11285 lines) [DEBUG; DEMO; HACK; INCOMPLETE_DOCUMENTATION; INSTRUCTIONS; NOT IMPLEMENTED; PATCH; PENDING_IMPLEMENTATION; PERFORMANCE_CONCERN; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; REPLACE; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774052136.txt (1265.8KB, 11285 lines) [DEBUG; DEMO; HACK; INCOMPLETE_DOCUMENTATION; INSTRUCTIONS; NOT IMPLEMENTED; PATCH; PENDING_IMPLEMENTATION; PERFORMANCE_CONCERN; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; REPLACE; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774052306.txt (1265.8KB, 11285 lines) [DEBUG; DEMO; HACK; INCOMPLETE_DOCUMENTATION; INSTRUCTIONS; NOT IMPLEMENTED; PATCH; PENDING_IMPLEMENTATION; PERFORMANCE_CONCERN; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; REPLACE; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774053155.txt (1265.8KB, 11285 lines) [DEBUG; DEMO; HACK; INCOMPLETE_DOCUMENTATION; INSTRUCTIONS; NOT IMPLEMENTED; PATCH; PENDING_IMPLEMENTATION; PERFORMANCE_CONCERN; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; REPLACE; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774053277.txt (1265.8KB, 11285 lines) [DEBUG; DEMO; HACK; INCOMPLETE_DOCUMENTATION; INSTRUCTIONS; NOT IMPLEMENTED; PATCH; PENDING_IMPLEMENTATION; PERFORMANCE_CONCERN; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; REPLACE; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774053578.txt (1265.9KB, 11286 lines) [DEBUG; DEMO; HACK; INCOMPLETE_DOCUMENTATION; INSTRUCTIONS; NOT IMPLEMENTED; PATCH; PENDING_IMPLEMENTATION; PERFORMANCE_CONCERN; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; REPLACE; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774053750.txt (1265.9KB, 11286 lines) [DEBUG; DEMO; HACK; INCOMPLETE_DOCUMENTATION; INSTRUCTIONS; NOT IMPLEMENTED; PATCH; PENDING_IMPLEMENTATION; PERFORMANCE_CONCERN; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; REPLACE; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774055102.txt (1265.9KB, 11286 lines) [DEBUG; DEMO; HACK; INCOMPLETE_DOCUMENTATION; INSTRUCTIONS; NOT IMPLEMENTED; PATCH; PENDING_IMPLEMENTATION; PERFORMANCE_CONCERN; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; REPLACE; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774063844.txt (1266.0KB, 11289 lines) [DEBUG; DEMO; HACK; INCOMPLETE_DOCUMENTATION; INSTRUCTIONS; NOT IMPLEMENTED; PATCH; PENDING_IMPLEMENTATION; PERFORMANCE_CONCERN; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; REPLACE; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774065686.txt (1266.4KB, 11290 lines) [DEBUG; DEMO; HACK; INCOMPLETE_DOCUMENTATION; INSTRUCTIONS; NOT IMPLEMENTED; PATCH; PENDING_IMPLEMENTATION; PERFORMANCE_CONCERN; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; REPLACE; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774066401.txt (1266.4KB, 11290 lines) [DEBUG; DEMO; HACK; INCOMPLETE_DOCUMENTATION; INSTRUCTIONS; NOT IMPLEMENTED; PATCH; PENDING_IMPLEMENTATION; PERFORMANCE_CONCERN; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; REPLACE; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774066461.txt (1266.4KB, 11290 lines) [DEBUG; DEMO; HACK; INCOMPLETE_DOCUMENTATION; INSTRUCTIONS; NOT IMPLEMENTED; PATCH; PENDING_IMPLEMENTATION; PERFORMANCE_CONCERN; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; REPLACE; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774066910.txt (1266.9KB, 11297 lines) [DEBUG; DEMO; HACK; INCOMPLETE_DOCUMENTATION; INSTRUCTIONS; NOT IMPLEMENTED; PATCH; PENDING_IMPLEMENTATION; PERFORMANCE_CONCERN; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; REPLACE; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774067032.txt (739.4KB, 5867 lines) [DEBUG; DEMO; INSTRUCTIONS; NOT IMPLEMENTED; PATCH; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; REPLACE; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774067113.txt (739.8KB, 5868 lines) [DEBUG; DEMO; INSTRUCTIONS; NOT IMPLEMENTED; PATCH; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; REPLACE; SIMULATION; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION]
+undone_backups/undone_1774072083.txt (556.9KB, 4812 lines) [DEBUG; DEMO; INSTRUCTIONS; PATCH; PENDING_IMPLEMENTATION; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATION; STUBS; TEST IMPLEMENTATION]
+undone_backups/undone_1774075371.txt (0.6KB, 13 lines) [FIXME; MOCK; PENDING_IMPLEMENTATION; PLACEHOLDER; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATE; SIMULATION; STAGING; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION; TODO]
+undone_backups/undone_1774075419.txt (0.6KB, 13 lines) [FIXME; MOCK; PENDING_IMPLEMENTATION; PLACEHOLDER; PRODUCTION DONE; PRODUCTION FIXED; PRODUCTION IMPLEMENTATION REQUIRED; SIMULATE; SIMULATION; STAGING; STUB; STUBS; TEST DATA; TEST IMPLEMENTATION; TODO]
+user_email_creation.py (19.3KB, 562 lines) [INCOMPLETE_PY_IMPLEMENTATION; INSTRUCTIONS; WARNING]
+
+DETAILED MARKER BREAKDOWN
+============================================================
+
+ALLOW ALL ORIGINS (2 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+ALPHA (1449 files):
+  - ALLMDFILESREFS.md
+  - COMPONENTS.md
+  - TREE.md
+  - WORKFLOWS.md
+  - allrefs.txt
+  - components/ComponentGallery.tsx
+  - components_tree.txt
+  - compulsories.md
+  - documentation_audit_details.json
+  - link_validation_results.json
+  - matches.json
+  - qmoi-backups/1752627018600/qmoi-clone-optimize.log
+  - qmoi-clone-optimize.log
+  - qmoi-health-check.log
+  - qmoi_system_controller.log
+  ... and 14 more files
+
+ALPHA FEATURE (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+API INTEGRATION TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+BANDAID (79 files):
+  - PRODUCTION_READINESS_ENHANCED_REPORT.md
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/production_readiness_final_check.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  - undone_backups/undone_1774116178.txt
+  ... and 18 more files
+
+BETA (114 files):
+  - QMOI_CONSCIOUSNESS_MASTER_PLAN.md
+  - link_validation_results.json
+  - matches.json
+  - package-lock.json
+  - reports/test_all_apps_devices_machines_report.json
+  - scripts/comprehensive_md_validator.py
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/qmoi_master_website_automation.js
+  - scripts/scan_all_apps_devices_machines.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  ... and 24 more files
+
+BETA FEATURE (72 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  - undone_backups/undone_1774116178.txt
+  - undone_backups/undone_1774116195.txt
+  - undone_backups/undone_1774116550.txt
+  ... and 16 more files
+
+BLOCKING CALL (2 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+BOILERPLATE (248 files):
+  - compulsories.md
+  - matches.json
+  - scan_non_production.js
+  - scan_non_production.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  ... and 19 more files
+
+BROKEN (30693 files):
+  - ALLERRORS.md
+  - ALLQMOIAIAPPSREALEASESVERSIONS.md
+  - API_AUTO_UPDATE_GUIDELINES.md
+  - APP_FIX_ACTION_PLAN.md
+  - APP_FIX_CHECKLIST.md
+  - CASHON.md
+  - COMPLETE_SYSTEM_DOCUMENTATION_MASTER.md
+  - COMPONENTS.md
+  - COMPREHENSIVE_ACTION_PLAN.md
+  - COMPREHENSIVE_LINK_FIX_STRATEGY.md
+  - COMPREHENSIVE_TESTING_QA_STRATEGY.md
+  - CRITICAL_APP_AUDIT_REPORT.md
+  - DEPLOYMENT_GATEWAY.md
+  - DEPLOYMENT_VERIFICATION.md
+  - ENHANCED_LINK_DOMAIN_SYSTEM.md
+  ... and 177 more files
+
+BUILD TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+BYPASS AUTH (2 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+CHANGE_ME (4 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+
+CI/CD TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+CLASS NOT IMPLEMENTED (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+COMING SOON (689 files):
+  - compulsories.md
+  - matches.json
+  - scan_non_production.js
+  - scan_non_production.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  ... and 19 more files
+
+COMPALSARIES (7 files):
+  - matches.json
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_all_apps_devices_machines.py
+
+COMPALSARY (7 files):
+  - matches.json
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_all_apps_devices_machines.py
+
+COMPLIANCE TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+COMPULSORY (8 files):
+  - matches.json
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_all_apps_devices_machines.py
+
+CONFIGURE_HERE (3 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+
+CONSOLE.LOG (6109 files):
+  - AUTH_SYSTEM_IMPLEMENTATION.md
+  - BACKEND_API_TEMPLATES.md
+  - CHATBOT.md
+  - DEVELOPER_QUICK_START.md
+  - ENVIRONMENT_CONFIG.md
+  - IMPLEMENTATION_SUMMARY.md
+  - INTEGRATION_GUIDE.md
+  - PERFORMANCE_GUIDE.md
+  - QALLPURPOSE.md
+  - QCITY-ENTERPRISE-COMPLETE.md
+  - QMOI_AUTOFIX_QUICK_REFERENCE.md
+  - QMOI_AUTOFIX_SETUP_GUIDE.md
+  - QMOI_AUTOFIX_SYSTEM_INDEX.md
+  - QMOI_CHAT_FIX_GUIDE.md
+  - QMOI_USER_IDENTIFICATION_SYSTEM.md
+  ... and 457 more files
+
+CPU INTENSIVE (5 files):
+  - ERROR_TYPES_GUIDE.md
+  - _archive_qmoi-enhanced/scripts/qmoi-parallel-processor.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/qmoi-parallel-processor.py
+
+DEBUG (6579 files):
+  - ALLERRORS.md
+  - ALLERRORS.txt
+  - ALLLINKS.md
+  - ALLMDGILES.md
+  - ALL_TODOS_SAMPLE.txt
+  - API.md
+  - APIs_v1.md
+  - AUTOLINTREADME.md
+  - AUTO_SETUP_COMPLETION_SUMMARY.md
+  - BACKEND_API_TEMPLATES.md
+  - BIOMETRIC_LOGIN_TEST_RESULTS.md
+  - CHATBOT.md
+  - COMPREHENSIVE_TESTING_QA_STRATEGY.md
+  - CONTRIBUTING.md
+  - D1.txt
+  ... and 280 more files
+
+DEFAULT CONFIG (40 files):
+  - QMOI_RELEASE_VERIFICATION_SYSTEM.md
+  - _archive_qmoi-enhanced/tailwind.config.ts
+  - eslint_fix_result.json
+  - eslint_report.json
+  - eslint_report_after_any_fix.json
+  - eslint_report_after_eslintignore.json
+  - eslint_report_after_fix.json
+  - eslint_report_after_ignore.json
+  - scripts/enhanced_scan_nonproduction.py
+  - tailwind.config.ts
+
+DEMO (860 files):
+  - ALLERRORS.md
+  - ALLERRORS.txt
+  - CAMPAIGN_COMPLETION_SUMMARY.md
+  - EXECUTION_SUMMARY.md
+  - FINAL_VERIFICATION_REPORT.md
+  - MANUAL_TODOS_COMPLETION_REPORT.md
+  - NONPROD_REPORT_HEAD.txt
+  - OPTION_A_PRODUCTION_READY.md
+  - PHASE4_PRODUCTION_STRATEGY.md
+  - QUICK_START.md
+  - QVILLAGEENHANCEMENTS.md
+  - QVILLAGE_HUGGINGFACE_INTEGRATION.md
+  - ROOT_PRODUCTION_STATUS.md
+  - SCRIPTS.md
+  - TREE.md
+  ... and 109 more files
+
+DEMO DATA (6 files):
+  - QUICK_START.md
+  - matches.json
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+
+DEMO UI (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+DEPLOYMENT TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+DEPRECATED (666 files):
+  - ALLLINKS.md
+  - ALLUITESTS.md
+  - ALL_TODOS_SAMPLE.txt
+  - API_AUTO_UPDATE_GUIDELINES.md
+  - APIs_v1.md
+  - COMPONENTS.md
+  - COMPONENT_USAGE_PLAN.md
+  - ERROR_TYPES_GUIDE.md
+  - GITHUB_ACTIONS_AUTOFIX.md
+  - HOSTLINKSDOMAINS.md
+  - NONPROD_REPORT_HEAD.txt
+  - PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md
+  - QMOISTATS.md
+  - QMOI_MARKDOWN_AUTO_UPDATE.md
+  - QMOI_SELF_UPDATE_SYSTEM.md
+  ... and 50 more files
+
+DEV MODE (20 files):
+  - CASHONTRADINGREADME.md
+  - COMPONENTS.md
+  - SRC.md
+  - _archive_qmoi-enhanced/CASHONTRADINGREADME.md
+  - _archive_qmoi-enhanced/scripts/qmoi_huggingface_spaces.js
+  - eslint_fix_result.json
+  - eslint_report.json
+  - eslint_report_after_any_fix.json
+  - eslint_report_after_eslintignore.json
+  - eslint_report_after_fix.json
+  - eslint_report_after_ignore.json
+  - matches.json
+  - platformspayed.txt
+  - scripts/enhanced_scan_nonproduction.py
+
+DEVELOPMENT MODE (52 files):
+  - DEVCOMMANDS.md
+  - FINAL_STATUS.txt
+  - PRODUCTION_COMPLETION_SUMMARY.md
+  - SESSION_4_SUMMARY.md
+  - _archive_qmoi-enhanced/DEVCOMMANDS.md
+  - _archive_qmoi-enhanced/scripts/qmoi-setup.js
+  - _archive_qmoi-enhanced/scripts/qmoi-setup.js.bak.1768901506
+  - app/dev/page.tsx
+  - app/page.tsx
+  - docs/REVENUE_SPEC.md
+  - eslint_fix_result.json
+  - eslint_report.json
+  - eslint_report_after_any_fix.json
+  - eslint_report_after_eslintignore.json
+  - eslint_report_after_fix.json
+  ... and 12 more files
+
+DIRTY (7 files):
+  - backups/src.backup.20260121144720/components/GitStatus.tsx
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - src/components/GitStatus.tsx
+  - ultra_aggressive_fixer.py
+
+DISABLED SECURITY (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+DOCKER TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+DOCS TODO (2 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+DOCUMENT ME (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+DRAFT (53 files):
+  - link_validation_results.json
+  - matches.json
+  - package-lock.json
+  - scripts/comprehensive_md_validator.py
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/qmoi_master_website_automation.js
+  - scripts/scan_all_apps_devices_machines.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774307937.txt
+  - undone_backups/undone_1774309189.txt
+
+DUMMY (104 files):
+  - TREE.md
+  - compulsories.md
+  - matches.json
+  - scan_non_production.js
+  - scan_non_production.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  ... and 20 more files
+
+E2E TESTS TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+ECHO (609 files):
+  - ALLQMOIAUTOEVOLVINGENVS.md
+  - AUTOLINTREADME.md
+  - AUTOMATION-SUMMARY.md
+  - BB.txt
+  - CONSOLIDATION_ANALYSIS.md
+  - CREDENTIAL_ROTATION_PLAYBOOK.md
+  - CURLQMOIMASTERSISTERUSER.md
+  - DEPLOYMENT-README.md
+  - DEPLOYMENT_QUICK_START.md
+  - DOCS/CI_SIGNING_SETUP.md
+  - ERRORSREADME.md
+  - FAST-BOOTSTRAP-README.md
+  - FINAL_EXECUTION_SUMMARY.md
+  - MANIFEST_AND_DEPLOYMENT_GUIDE.md
+  - NEXT_STEPS_EXECUTIVE_SUMMARY.md
+  ... and 99 more files
+
+ENTER_YOUR_ (3 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+
+EXAMPLE DATA (77 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  - undone_backups/undone_1774116178.txt
+  - undone_backups/undone_1774116195.txt
+  - undone_backups/undone_1774116550.txt
+  ... and 16 more files
+
+EXPERIMENTAL (123 files):
+  - compulsories.md
+  - matches.json
+  - scripts/comprehensive_md_validator.py
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/qmoi_master_website_automation.js
+  - scripts/scan_all_apps_devices_machines.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  ... and 21 more files
+
+EXPERIMENTAL FEATURE (96 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  - undone_backups/undone_1774116178.txt
+  - undone_backups/undone_1774116195.txt
+  - undone_backups/undone_1774116550.txt
+  ... and 16 more files
+
+EXTERNAL API TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+FAKE (123 files):
+  - TREE.md
+  - compulsories.md
+  - link_validation_results.json
+  - matches.json
+  - package-lock.json
+  - qmoi-health-check.log
+  - scan_non_production.js
+  - scan_non_production.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  ... and 23 more files
+
+FAKE API (78 files):
+  - compulsories.md
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  - undone_backups/undone_1774116178.txt
+  - undone_backups/undone_1774116195.txt
+  ... and 17 more files
+
+FAKE DATA (180 files):
+  - compulsories.md
+  - matches.json
+  - scan_non_production.js
+  - scan_non_production.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  ... and 19 more files
+
+FEATURE FLAG (246 files):
+  - SRC.md
+  - UI_FEATURES_AUDIT_COMPREHENSIVE.md
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  - undone_backups/undone_1774116178.txt
+  ... and 18 more files
+
+FIXME (408 files):
+  - COMPREHENSIVE_ACTION_PLAN.md
+  - COMPREHENSIVE_VALIDATION_SYSTEM.md
+  - FINAL_EXECUTION_SUMMARY.md
+  - PRODUCTION_READINESS_EXECUTION_STATUS.md
+  - compulsories.md
+  - matches.json
+  - scan_non_production.js
+  - scan_non_production.py
+  - scripts/comprehensive_md_validator.py
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/qmoi_master_website_automation.js
+  - scripts/scan_all_apps_devices_machines.py
+  - scripts/scan_nonproduction_endpoints.py
+  - scripts/validate_links.py
+  ... and 30 more files
+
+FUNCTION NOT IMPLEMENTED (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+GDPR TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+GUIDELINE (12 files):
+  - matches.json
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774307937.txt
+  - undone_backups/undone_1774309189.txt
+
+HACK (1187 files):
+  - TREE.md
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774051642.txt
+  - undone_backups/undone_1774051966.txt
+  - undone_backups/undone_1774052136.txt
+  - undone_backups/undone_1774052306.txt
+  - undone_backups/undone_1774053155.txt
+  - undone_backups/undone_1774053277.txt
+  - undone_backups/undone_1774053578.txt
+  - undone_backups/undone_1774053750.txt
+  - undone_backups/undone_1774055102.txt
+  - undone_backups/undone_1774063844.txt
+  - undone_backups/undone_1774065686.txt
+  ... and 31 more files
+
+HOTFIX (87 files):
+  - COMPREHENSIVE_TESTING_QA_STRATEGY.md
+  - PRE_RELEASE_DISTRIBUTION_PLAN.md
+  - PRODUCTION_RELEASE_DOCS_INDEX.md
+  - QMOI_MASTER_INTEGRATION_VALIDATION.md
+  - QMOI_PHASE_3_COMPLETION_SUMMARY.md
+  - _archive_qmoi-enhanced/config/qmoi_huggingface_config.json
+  - config/qmoi_huggingface_config.json
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  ... and 23 more files
+
+IMPLEMENT ME (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+INCOMPLETE (443 files):
+  - COMPREHENSIVE_LINK_FIX_STRATEGY.md
+  - IMPLEMENTATION_ACTION_PLAN.md
+  - MANUAL_TODOS_COMPLETION_REPORT.md
+  - SESSION_COMPREHENSIVE_SUMMARY_20260321.md
+  - SESSION_LINKS_DOMAINS_ENHANCEMENT_SUMMARY.md
+  - compulsories.md
+  - matches.json
+  - q/AI_ENHANCED_INTELLIGENT_VALIDATION_ARCHITECTURE.md
+  - scan_non_production.js
+  - scan_non_production.py
+  - scripts/auto_lint_fix.py
+  - scripts/comprehensive_md_validator.py
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/qmoi_master_website_automation.js
+  ... and 31 more files
+
+INCOMPLETE DOCS (2 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+INEFFICIENT (5 files):
+  - ERROR_TYPES_GUIDE.md
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/error-scanner-v2.js
+  - src/app/api/qmoi/self-work/debug/route.ts
+
+INSECURE (3 files):
+  - PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md
+  - scripts/enhanced_scan_nonproduction.py
+
+INSTRUCTION (221 files):
+  - COMPLETION_REPORT.txt
+  - CURLQMOIMASTERSISTERUSER.md
+  - DOCUMENTATION_INDEX.md
+  - MASTER_OPERATIONS_GUIDE.md
+  - MASTER_READINESS_INDEX.md
+  - QMOIAUTOEVOLVE.md
+  - QMOIAUTOMAKENEW.md
+  - QMOI_MEMORY_AWARENESS_SYSTEM.md
+  - QMOI_QUICK_START.md
+  - README_DOCUMENTATION.md
+  - _archive_qmoi-enhanced/QMOIAUTOEVOLVE.md
+  - _archive_qmoi-enhanced/QMOIAUTOMAKENEW.md
+  - _archive_qmoi-enhanced/qmoisimtwo.py
+  - _archive_qmoi-enhanced/scripts/models/qmoi_personality.py
+  - abctesting.txt
+  ... and 23 more files
+
+INSTRUCTIONS (474 files):
+  - ALLMDFILESREFS.md
+  - ALLMDGILES.md
+  - ALLWALLETSQVS.md
+  - APPS_PLATFORMS_DOCUMENTATION_UPDATE.md
+  - APP_BUILD_MATRIX.md
+  - AUTOGIT.md
+  - AUTO_SETUP_COMPLETION_SUMMARY.md
+  - BUILD_INSTRUCTIONS.md
+  - CAMPAIGN_COMPLETION_SUMMARY.md
+  - COMPLETION_REPORT.txt
+  - COMPREHENSIVE_QMOI_RESPONSE_TESTING_SUMMARY.txt
+  - CREDENTIAL_ROTATION_PLAYBOOK.md
+  - CURLCOMMANDS.md
+  - CURLQMOIMASTERSISTERUSER.md
+  - DELIVERABLES_CHECKLIST.md
+  ... and 203 more files
+
+INTEGRATION TESTS TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+INTEGRATION TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+INTERFACE NOT IMPLEMENTED (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+KUBERNETES TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+LEGAL TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+LOG.DEBUG (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+LOGGING TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+LOREM IPSUM (10 files):
+  - compulsories.md
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+
+MANDATORY (15 files):
+  - COMPLETION_INDEX.md
+  - COMPREHENSIVE_ACTION_PLAN.md
+  - MASTER_COMPLETION_CERTIFICATE.txt
+  - README.md
+  - matches.json
+  - q/BALANCES.md
+  - qmoimodelupgradeplan.txt
+  - scripts/balance_updater.py
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_all_apps_devices_machines.py
+
+MEMORY LEAK (48 files):
+  - ALLQMOIAUTOEVOLVINGENVS.md
+  - PRODUCTION_READINESS_ENHANCED_REPORT.md
+  - QCITYRESOURCES.md
+  - QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md
+  - QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md
+  - QMOI_MARKDOWN_AUTO_UPDATE.md
+  - QMOI_RELEASE_VERIFICATION_SYSTEM.md
+  - _archive_qmoi-enhanced/ALLQMOIAUTOEVOLVINGENVS.md
+  - _archive_qmoi-enhanced/QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md
+  - _archive_qmoi-enhanced/scripts/qmoi-auto-enhancement-system.js
+  - _archive_qmoi-enhanced/scripts/qmoi-universal-error-fixer.py
+  - _archive_qmoi-enhanced/src/services/EnhancedErrorFixingService.ts
+  - backups/src.backup.20260121144720/services/EnhancedErrorFixingService.ts
+  - eslint_fix_result.json
+  - eslint_report.json
+  ... and 13 more files
+
+METHOD NOT IMPLEMENTED (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+METRICS TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+MINIMAL (70 files):
+  - MANUAL_TODOS_COMPLETION_REPORT.md
+  - QVILLAGESPACES.md
+  - README.md
+  - SESSION_3_COMPLETION_SUMMARY.md
+  - TREE.md
+  - compulsories.md
+  - hf_space_qvillage/README.md
+  - matches.json
+  - qvillage/test_app_simple.py
+  - scan_non_production.js
+  - scan_non_production.py
+  - scripts/comprehensive_md_validator.py
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/qmoi_master_website_automation.js
+  ... and 5 more files
+
+MISSING (93 files):
+  - COMPREHENSIVE_LINK_FIX_STRATEGY.md
+  - FINAL_EXECUTION_SUMMARY.md
+  - IMPLEMENTATION_ACTION_PLAN.md
+  - LINKS_DOMAINS_ENHANCEMENT_PLAN.md
+  - PHASE_3_TEST_COMPLETION_REPORT.md
+  - QUICK_REFERENCE_SPRINT_METRICS.md
+  - SESSION_COMPREHENSIVE_SUMMARY_20260321.md
+  - SESSION_LINKS_DOMAINS_ENHANCEMENT_SUMMARY.md
+  - WORKFLOWS.md
+  - _archive_qmoi-enhanced/setup_and_build_qmoi_ai.bat
+  - allrefs.txt
+  - app/api/emergency/dispatch/route.ts
+  - app/api/emergency/email/route.ts
+  - app/api/emergency/lockdown/route.ts
+  - app/api/emergency/sms/route.ts
+  ... and 20 more files
+
+MISSING DOCS (2 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+MOCK (799 files):
+  - COMPREHENSIVE_ACTION_PLAN.md
+  - COMPREHENSIVE_VALIDATION_SYSTEM.md
+  - MANUAL_TODOS_COMPLETION_REPORT.md
+  - PHASE_3_TEST_COMPLETION_REPORT.md
+  - SRC.md
+  - TREE.md
+  - __tests__/utils/test-helpers.ts
+  - app/api/youtube/download/route.ts
+  - backups/src.backup.20260121144720/setupTests.ts.bak.1768901506
+  - components/device/DeviceIntegrationStubs.ts
+  - compulsories.md
+  - email_system_tests.py
+  - hf_space_qvillage/README.md
+  - link_validation_results.json
+  - master_email_dashboard.py
+  ... and 48 more files
+
+MOCK API (82 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  - undone_backups/undone_1774116178.txt
+  - undone_backups/undone_1774116195.txt
+  - undone_backups/undone_1774116550.txt
+  ... and 16 more files
+
+MOCK DATA (386 files):
+  - PHASE_3_TEST_COMPLETION_REPORT.md
+  - SRC.md
+  - hf_space_qvillage/README.md
+  - matches.json
+  - scripts/balance_updater.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  ... and 20 more files
+
+MOCK DB (9 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - tools/matches_priority.json
+
+MOCK UI (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+MONITORING TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+MUST IMPLEMENT (11 files):
+  - PAYMENTS.md
+  - compulsories.md
+  - docs/REVENUE_SPEC.md
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/providers/provider_base.py
+
+NEEDS DOCS (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+NEEDS IMPLEMENTATION (84 files):
+  - PRODUCTION_READINESS_ENHANCED_REPORT.md
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/production_readiness_final_check.py
+  - scripts/scan_nonproduction_endpoints.py
+  - scripts/security_compliance_validator_comprehensive.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  ... and 19 more files
+
+NOT IMPLEMENTED (5456 files):
+  - compulsories.md
+  - matches.json
+  - scan_non_production.js
+  - scan_non_production.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774051642.txt
+  - undone_backups/undone_1774051966.txt
+  - undone_backups/undone_1774052136.txt
+  - undone_backups/undone_1774052306.txt
+  - undone_backups/undone_1774053155.txt
+  - undone_backups/undone_1774053277.txt
+  - undone_backups/undone_1774053578.txt
+  - undone_backups/undone_1774053750.txt
+  - undone_backups/undone_1774055102.txt
+  ... and 35 more files
+
+NOT YET IMPLEMENTED (213 files):
+  - CAMPAIGN_COMPLETION_SUMMARY.md
+  - NONPROD_REPORT_HEAD.txt
+  - QMOI_MASTER_TESTING_GUIDE.md
+  - QMOI_MASTER_TESTING_SUMMARY.md
+  - QMOI_TEST_DASHBOARD.md
+  - QUICK_TEST_START.md
+  - RBAC_IMPLEMENTATION_SUMMARY.md
+  - _archive_qmoi-enhanced/_app_archived/api/social-automation/route.ts
+  - _archive_qmoi-enhanced/api/qcity.ts
+  - _archive_qmoi-enhanced/routes/api/qmoi/autodev.ts
+  - api/qcity.ts
+  - app/api/emergency/dispatch/route.ts
+  - app/api/emergency/email/route.ts
+  - app/api/emergency/sms/route.ts
+  - app/api/qmoi/language/route.ts
+  ... and 52 more files
+
+NOTE (6702 files):
+  - @ALLMDFILESREFS.md
+  - ADVANCED_USER_IDENTIFICATION_SYSTEM.md
+  - ALLCLONEDRELEASES.md
+  - ALLCOMPONENTSTESTS.md
+  - ALLDEVICESSETTINGS.md
+  - ALLERRORSSTATSQMOI.md
+  - ALLERRORSTYPESFILES.md
+  - ALLERRORTYPESANDHEALTHCHECKS.md
+  - ALLHOOKSWEBHOOKS.md
+  - ALLLINKS.md
+  - ALLMDGILES.md
+  - ALLQMOIAIAPPSREALEASESVERSIONS.md
+  - ALLQMOIAUTOEVOLVINGENVS.md
+  - ALLSYSTEMSSTRUCTURESREFERENCES.md
+  - ALLUI.md
+  ... and 2435 more files
+
+NOTE: (2 files):
+  - QMOIMODEL.md
+
+OBSERVABILITY TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+OPTIMIZE LATER (2 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+OUTDATED DOCS (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+PATCH (962 files):
+  - ALLMDGILES.md
+  - FEATURESREADME.md
+  - FINAL_PRODUCTION_READINESS_REPORT.md
+  - GITHUB-ACTIONS-COMPLETE.md
+  - HOSTLINKSDOMAINS.md
+  - MASTER_ONLY_FEATURES.md
+  - NONPROD_REPORT_HEAD.txt
+  - PRODUCTION_API_REFERENCE.md
+  - QMOI-AUTOUPDATE.md
+  - QMOI-ENHANCED-SUMMARY.md
+  - QMOI-HUGGINGFACE-ENHANCEMENTS.md
+  - QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md
+  - QMOISPACEDEV.md
+  - QMOISTATS.md
+  - QMOISYSTEMAUTO.md
+  ... and 156 more files
+
+PENDING_IMPLEMENTATION (627 files):
+  - PRODUCTION_READINESS_ENHANCED_REPORT.md
+  - compulsories.md
+  - matches.json
+  - scan_non_production.js
+  - scan_non_production.py
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/finalize_production_ready.py
+  - scripts/normalize_nonprod_comments.py
+  - scripts/production_readiness_final_check.py
+  - scripts/scan_all_apps_devices_machines.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1773961215.txt
+  - undone_backups/undone_1773961963.txt
+  - undone_backups/undone_1773962033.txt
+  ... and 69 more files
+
+PERFORMANCE TESTS TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+PERFORMANCE TODO (2 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+PIPELINE TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+PLACEHOLDER (4780 files):
+  - COMPREHENSIVE_VALIDATION_SYSTEM.md
+  - QTOOLS.md
+  - SCRIPTS.md
+  - TREE.md
+  - app/components/QMOIMasterDashboard.tsx
+  - components/ComponentGallery.tsx
+  - compulsories.md
+  - link_validation_results.json
+  - matches.json
+  - package-lock.json
+  - qvillage/app.py
+  - reports/test_all_apps_devices_machines_report.json
+  - results/discovered_urls.csv
+  - scan_non_production.js
+  - scan_non_production.py
+  ... and 42 more files
+
+PLACEHOLDER CONFIG (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+PLACEHOLDER DATA (75 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  - undone_backups/undone_1774116178.txt
+  - undone_backups/undone_1774116195.txt
+  - undone_backups/undone_1774116550.txt
+  ... and 16 more files
+
+PLACEHOLDER TEXT (175 files):
+  - compulsories.md
+  - matches.json
+  - scan_non_production.js
+  - scan_non_production.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  ... and 19 more files
+
+PLACEHOLDER UI (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+POC (33 files):
+  - compulsories.md
+  - matches.json
+  - scripts/comprehensive_md_validator.py
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/qmoi_master_website_automation.js
+  - scripts/scan_all_apps_devices_machines.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774307937.txt
+  - undone_backups/undone_1774309189.txt
+
+PRINT( (2673 files):
+  - ALLQMOIAUTOEVOLVINGENVS.md
+  - BACKEND_API_TEMPLATES.md
+  - DOCKER_DEPLOYMENT_GUIDE.md
+  - IMPLEMENTATION_ACTION_PLAN.md
+  - QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md
+  - QMOIENVWITHALLPROGRAMMINGLANGUAGES.md
+  - QMOIMODEL.md
+  - QMOISPACEDEV.md
+  - QMOI_AUTOFIX_MASTER_GUIDE.md
+  - QMOI_AUTOFIX_SETUP_GUIDE.md
+  - QVS/ENHANCEDQVS.md
+  - QVS/QVSREADME.md
+  - _archive_qmoi-enhanced/ALLQMOIAUTOEVOLVINGENVS.md
+  - _archive_qmoi-enhanced/QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md
+  - _archive_qmoi-enhanced/QMOIENVWITHALLPROGRAMMINGLANGUAGES.md
+  ... and 511 more files
+
+PRIVACY TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+PRODUCTION DONE (566 files):
+  - COMPREHENSIVE_ACTION_PLAN.md
+  - matches.json
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/finalize_production_ready.py
+  - scripts/normalize_nonprod_comments.py
+  - scripts/production_readiness_final_check.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1773961963.txt
+  - undone_backups/undone_1773962033.txt
+  - undone_backups/undone_1773962097.txt
+  - undone_backups/undone_1773962163.txt
+  - undone_backups/undone_1773962242.txt
+  - undone_backups/undone_1773962308.txt
+  - undone_backups/undone_1773962377.txt
+  ... and 64 more files
+
+PRODUCTION FIXED (548 files):
+  - COMPREHENSIVE_ACTION_PLAN.md
+  - matches.json
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/finalize_production_ready.py
+  - scripts/normalize_nonprod_comments.py
+  - scripts/production_readiness_final_check.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1773961963.txt
+  - undone_backups/undone_1773962033.txt
+  - undone_backups/undone_1773962097.txt
+  - undone_backups/undone_1773962163.txt
+  - undone_backups/undone_1773962242.txt
+  - undone_backups/undone_1773962308.txt
+  - undone_backups/undone_1773962377.txt
+  ... and 64 more files
+
+PRODUCTION IMPLEMENTATION REQUIRED (91949 files):
+  - COMPREHENSIVE_ACTION_PLAN.md
+  - MANUAL_TODOS_COMPLETION_REPORT.md
+  - ROOT_PRODUCTION_STATUS.md
+  - _archive_qmoi-enhanced/_app_archived/api/qmoi-earning-enhanced/route.ts
+  - _archive_qmoi-enhanced/_app_archived/api/qmoi/backup/route.ts
+  - _archive_qmoi-enhanced/_app_archived/api/qmoi/language/route.ts
+  - _archive_qmoi-enhanced/_app_archived/api/qmoi/research/route.ts
+  - _archive_qmoi-enhanced/_app_archived/api/qmoi/user/route.ts
+  - _archive_qmoi-enhanced/_app_archived/api/whatsapp-business/route.ts
+  - _archive_qmoi-enhanced/backend/trading-engine.ts
+  - _archive_qmoi-enhanced/components/device/DeviceIntegrationStubs.ts
+  - _archive_qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth.cy.js
+  - _archive_qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_biometric_magiclink.cy.js
+  - _archive_qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_custom.cy.js
+  - _archive_qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js
+  ... and 200 more files
+
+PROOF OF CONCEPT (22 files):
+  - matches.json
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_all_apps_devices_machines.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774307937.txt
+  - undone_backups/undone_1774309189.txt
+
+QUICK_FIX (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+REPLACE (4809 files):
+  - ALLMDGILES.md
+  - ALLQMOIAIAPPSREALEASESVERSIONS.md
+  - ALL_TODOS_SAMPLE.txt
+  - APP_FIX_ACTION_PLAN.md
+  - APP_FIX_CHECKLIST.md
+  - APP_FIX_COMPLETE.md
+  - AUTH_SYSTEM_IMPLEMENTATION.md
+  - CAMPAIGN_COMPLETION_SUMMARY.md
+  - COMPLETION_REPORT.md
+  - COMPREHENSIVE_LINK_FIX_STRATEGY.md
+  - CREDENTIAL_ROTATION_PLAYBOOK.md
+  - CRITICAL_APP_AUDIT_REPORT.md
+  - CURLQMOIMASTERSISTERUSER.md
+  - DEPLOYMENT-README.md
+  - DEPLOYMENT_READY_FINAL.md
+  ... and 607 more files
+
+REPLACE ALL (54 files):
+  - COMPREHENSIVE_LINK_FIX_STRATEGY.md
+  - EXECUTION_SUMMARY.md
+  - PREVIEWWINDOW.md
+  - aggressive_production_fixer.py
+  - compulsories.md
+  - docs/PRODUCTION_CHECKLIST.md
+  - docs_site/PRODUCTION_LINK_AUDIT.json
+  - eslint_fix_result.json
+  - eslint_report.json
+  - eslint_report_after_any_fix.json
+  - eslint_report_after_eslintignore.json
+  - eslint_report_after_fix.json
+  - eslint_report_after_ignore.json
+  - finals.txt
+  - matches.json
+  ... and 10 more files
+
+REPLACE WITH (1337 files):
+  - ALL_TODOS_SAMPLE.txt
+  - COMPREHENSIVE_LINK_FIX_STRATEGY.md
+  - IMPLEMENTATION_ACTION_PLAN.md
+  - NETLIFYPAYED.md
+  - NEXT_STEPS_ROADMAP.md
+  - NONPROD_REPORT_HEAD.txt
+  - PRODUCTION_READINESS_FINAL.md
+  - PRODUCTION_READINESS_REPORT.md
+  - QMOICLONEVERCEL.md
+  - QMOI_MARKDOWN_AUTO_UPDATE.md
+  - RELEASE_v1.2.5_VERIFICATION_GUIDE.md
+  - TRACKS.md
+  - VERCELPAYED.md
+  - _archive_qmoi-enhanced/_app_archived/api/ai-health/route.ts
+  - _archive_qmoi-enhanced/_app_archived/api/ai/scan/route.ts
+  ... and 105 more files
+
+REPLACEABLE (7 files):
+  - SESSION_3_COMPLETION_SUMMARY.md
+  - matches.json
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+
+REPLACE_ME (37 files):
+  - docs/placeholders_report.json
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/placeholder_scan.py
+  - scripts/scan_replace_placeholders.py
+  - tools/auto_fix_placeholders.py
+  - tools/priority_scan.py
+  - tools/process_allrefs.py
+
+REQUIRES IMPLEMENTATION (2 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+
+SAMPLE CONFIG (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+SAMPLE DATA (75 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  - undone_backups/undone_1774116178.txt
+  - undone_backups/undone_1774116195.txt
+  - undone_backups/undone_1774116550.txt
+  ... and 16 more files
+
+SAMPLE DATABASE (73 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  - undone_backups/undone_1774116178.txt
+  - undone_backups/undone_1774116195.txt
+  - undone_backups/undone_1774116550.txt
+  ... and 16 more files
+
+SAMPLE TEXT (3 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+
+SAMPLE UI (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+SECURITY AUDIT TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+SELF SIGNED (2 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+SERVICE INTEGRATION TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+SET_YOUR_ (3 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+
+SIMPLE (906 files):
+  - ALLLINKS.md
+  - ALLQMOIAUTOEVOLVINGENVS.md
+  - ALL_TODOS_SAMPLE.txt
+  - AUTOCLONE_STANDALONE.md
+  - AUTO_SETUP_COMPLETION_SUMMARY.md
+  - CHATBOT.md
+  - CURLQMOIMASTERSISTERUSER.md
+  - DEPLOYMENT.md
+  - DOCKER_DEPLOYMENT_GUIDE.md
+  - EMPLOYEESUSERSENROLLED.md
+  - FEATURESREADME.md
+  - HOSTLINKSDOMAINS.md
+  - IMPLEMENTATION_COMPLETE.md
+  - ITERATIVE_IMPROVEMENT_ANALYSIS.md
+  - MANUAL_TODOS_COMPLETION_REPORT.md
+  ... and 169 more files
+
+SIMULATE (433 files):
+  - app/api/emergency/lockdown/route.ts
+  - app/api/emergency/wipe/route.ts
+  - compulsories.md
+  - matches.json
+  - q/AI_ENHANCED_INTELLIGENT_VALIDATION_ARCHITECTURE.md
+  - qvillage/app.py
+  - qvillage/demo.py
+  - reports/test_all_apps_devices_machines_report.json
+  - scripts/comprehensive_md_validator.py
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/qmoi_master_website_automation.js
+  - scripts/scan_all_apps_devices_machines.py
+  - scripts/scan_nonproduction_endpoints.py
+  - tools/matches_priority.json
+  ... and 31 more files
+
+SIMULATION (4015 files):
+  - COMPREHENSIVE_ACTION_PLAN.md
+  - FINAL_PRODUCTION_READINESS_REPORT.md
+  - PHASE_3_TEST_COMPLETION_REPORT.md
+  - PRODUCTION_READINESS_ENHANCED_REPORT.md
+  - QMOI-ENHANCED-AUTOTESTS.md
+  - QMOI_CONSCIOUSNESS_MASTER_PLAN.md
+  - README.md
+  - TREE.md
+  - WORKFLOWS.md
+  - _archive_qmoi-enhanced/qmoi-space-pwa/index.html
+  - _archive_qmoi-enhanced/scripts/qmoi-quick-test.py
+  - allrefs.txt
+  - compulsories.md
+  - docs/ALLTESTSAUTOTESTS.md
+  - hf_space_qvillage/README.md
+  ... and 86 more files
+
+SKIP AUTH (2 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+SLOW (194 files):
+  - ALLUITESTS.md
+  - AUTO_RECOVERY_PROCEDURES.md
+  - CACHING_GUIDE.md
+  - CHATBOT.md
+  - COMPREHENSIVE_TESTING_QA_STRATEGY.md
+  - DEVICERESOURCEOPTIMIZATION.md
+  - ENHANCED_LINK_DOMAIN_SYSTEM.md
+  - ERROR_TYPES_GUIDE.md
+  - FAST-BOOTSTRAP-README.md
+  - GITHUB_RELEASES_COMPLETE_GUIDE.md
+  - INTEGRATION_GUIDE.md
+  - NONPROD_REPORT_HEAD.txt
+  - PERFORMANCE_GUIDE.md
+  - PHASE_7_SUMMARY.md
+  - PRODUCTION_READINESS_FINAL.md
+  ... and 79 more files
+
+STAGING (173 files):
+  - COMPREHENSIVE_LINK_FIX_STRATEGY.md
+  - FINAL_EXECUTION_SUMMARY.md
+  - LINKS_FIX_EXECUTION_GUIDE.md
+  - PRODUCTION_READINESS_EXECUTION_STATUS.md
+  - QMOI_ENHANCEMENT_UPDATE_20260321.md
+  - QMOI_LINKS_DOMAINS_PROGRESS.md
+  - QUICK_REFERENCE_SPRINT_METRICS.md
+  - SESSION_COMPREHENSIVE_SUMMARY_20260321.md
+  - WORKFLOWS.md
+  - compulsories.md
+  - link_validation_results.json
+  - matches.json
+  - resumefromhere.txt
+  - scan_non_production.js
+  - scan_non_production.py
+  ... and 36 more files
+
+STUB (32690 files):
+  - compulsories.md
+  - matches.json
+  - package-lock.json
+  - scan_non_production.js
+  - scan_non_production.py
+  - scripts/comprehensive_md_validator.py
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/qmoi_master_website_automation.js
+  - scripts/scan_all_apps_devices_machines.py
+  - scripts/scan_nonproduction_endpoints.py
+  - tools/matches_priority.json
+  - undone_backups/undone_1773961215.txt
+  - undone_backups/undone_1773961963.txt
+  - undone_backups/undone_1773962033.txt
+  ... and 68 more files
+
+STUB API (74 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  - undone_backups/undone_1774116178.txt
+  - undone_backups/undone_1774116195.txt
+  - undone_backups/undone_1774116550.txt
+  ... and 16 more files
+
+STUB COMPONENT (5 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+
+STUB ENDPOINT (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+STUBS (5493 files):
+  - PRODUCTION_READINESS_ENHANCED_REPORT.md
+  - TREE.md
+  - compulsories.md
+  - matches.json
+  - resumefromhere.txt
+  - scripts/auto_host_manager.py
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/normalize_nonprod_comments.py
+  - scripts/placeholder_scanner.py
+  - scripts/production_readiness_final_check.py
+  - scripts/scan_all_apps_devices_machines.py
+  - scripts/scan_nonproduction_endpoints.py
+  - scripts/sync_qmoi_downloads.py
+  - scripts/validate_builds.py
+  ... and 75 more files
+
+TBA (7 files):
+  - NONPROD_REPORT_HEAD.txt
+  - get-pip.py
+  - matches.json
+  - results/discovered_urls.csv
+  - scripts/enhanced_scan_nonproduction.py
+
+TBD (7 files):
+  - ALL PERCENTAGES.md
+  - data/percentages_latest.json
+  - matches.json
+  - reports/all-percentages-report-2026-03-24.md
+  - reports/percentages-archive/all-percentages-2026-03-24.json
+  - scripts/enhanced_scan_nonproduction.py
+
+TEMP FIX (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+TEMPLATE COMPONENT (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+TEMPLATE CONFIG (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+TEMPLATE CONTENT (3 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+
+TEMPLATE DATA (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+TEMPORARY (1294 files):
+  - PHASE_3_TEST_COMPLETION_REPORT.md
+  - QTOOLS.md
+  - SESSION_LINKS_DOMAINS_ENHANCEMENT_SUMMARY.md
+  - compulsories.md
+  - matches.json
+  - scan_non_production.js
+  - scan_non_production.py
+  - scripts/comprehensive_md_validator.py
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/qmoi_master_website_automation.js
+  - scripts/scan_all_apps_devices_machines.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  ... and 26 more files
+
+TEST CERTIFICATE (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+TEST CONFIG (80 files):
+  - _archive_qmoi-enhanced/scripts/qmoi-error-handler.py
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/qmoi-error-handler.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  - undone_backups/undone_1774116178.txt
+  ... and 18 more files
+
+TEST DATA (1272 files):
+  - __tests__/utils/test-helpers.ts
+  - compulsories.md
+  - matches.json
+  - scan_non_production.js
+  - scan_non_production.py
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_all_apps_devices_machines.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1773961215.txt
+  - undone_backups/undone_1773961963.txt
+  - undone_backups/undone_1773962033.txt
+  - undone_backups/undone_1773962097.txt
+  - undone_backups/undone_1773962163.txt
+  - undone_backups/undone_1773962242.txt
+  ... and 65 more files
+
+TEST DATABASE (73 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  - undone_backups/undone_1774116178.txt
+  - undone_backups/undone_1774116195.txt
+  - undone_backups/undone_1774116550.txt
+  ... and 16 more files
+
+TEST ENDPOINT (5 files):
+  - API_AUTO_UPDATE_GUIDELINES.md
+  - QMOI_SELF_UPDATE_SYSTEM.md
+  - responsesa_enhanced.txt
+  - scripts/enhanced_scan_nonproduction.py
+  - src/components/q-city/UnifiedAPI.tsx
+
+TEST IMPLEMENTATION (634 files):
+  - PRODUCTION_READINESS_ENHANCED_REPORT.md
+  - matches.json
+  - scripts/domain_health_check.py
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/normalize_nonprod_comments.py
+  - scripts/production_readiness_final_check.py
+  - scripts/scan_all_apps_devices_machines.py
+  - scripts/scan_nonproduction_endpoints.py
+  - scripts/test_error_fixing_suite.py
+  - undone_backups/undone_1773961215.txt
+  - undone_backups/undone_1773961963.txt
+  - undone_backups/undone_1773962033.txt
+  - undone_backups/undone_1773962097.txt
+  - undone_backups/undone_1773962163.txt
+  - undone_backups/undone_1773962242.txt
+  ... and 66 more files
+
+TEST MODE (16 files):
+  - MANIFEST_AND_DEPLOYMENT_GUIDE.md
+  - NONPROD_REPORT_HEAD.txt
+  - PHASE_4_QVILLAGE_HF_COMPLETE.md
+  - PRODUCTION_READINESS_FINAL_AUDIT.md
+  - QI_ENHANCEMENT_PLAN.md
+  - QMOIFINANCEENGINES.md
+  - _archive_qmoi-enhanced/scripts/start_qmoi_enhanced.py
+  - app/api/admin/audit-logs/route.ts
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/start_qmoi_enhanced.py
+  - scripts/test_env_setup.py
+  - tools/qvillage_memory_sync.py
+
+TESTS TODO (2 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+THIRD PARTY TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+THROW NEW ERROR (1653 files):
+  - PRODUCTION_API_REFERENCE.md
+  - QI_download_component.html
+  - SECURITY_CHECKLIST.md
+  - TRACKS.md
+  - __tests__/qmoi-comprehensive-test.ts
+  - _archive_qmoi-enhanced/QI_download_component.html
+  - _archive_qmoi-enhanced/_app_archived/api/qi-trading.ts
+  - _archive_qmoi-enhanced/_app_archived/api/qmoi/voice-preview/route.ts
+  - _archive_qmoi-enhanced/_app_archived/api/wallet.ts
+  - _archive_qmoi-enhanced/api/qcity.ts
+  - _archive_qmoi-enhanced/components/AIContext.tsx
+  - _archive_qmoi-enhanced/components/DeploymentStatusDashboard.tsx
+  - _archive_qmoi-enhanced/components/MasterContext.tsx
+  - _archive_qmoi-enhanced/components/QAvatar.tsx
+  - _archive_qmoi-enhanced/components/QCityThemeProvider.tsx
+  ... and 246 more files
+
+TODO (3309 files):
+  - ALLMDFILESREFS.md
+  - COMPREHENSIVE_ACTION_PLAN.md
+  - COMPREHENSIVE_VALIDATION_SYSTEM.md
+  - FINAL_EXECUTION_SUMMARY.md
+  - PRODUCTION_READINESS_EXECUTION_STATUS.md
+  - TREE.md
+  - _archive_qmoi-enhanced/scripts/rust_lint_fix.rs
+  - allrefs.txt
+  - compulsories.md
+  - link_validation_results.json
+  - matches.json
+  - scan_non_production.js
+  - scan_non_production.py
+  - scripts/comprehensive_md_validator.py
+  - scripts/domain_health_check.py
+  ... and 38 more files
+
+TOGGLE TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+TRACING TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+UGLY (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+UNDER CONSTRUCTION (73 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  - undone_backups/undone_1774116178.txt
+  - undone_backups/undone_1774116195.txt
+  - undone_backups/undone_1774116550.txt
+  ... and 16 more files
+
+UNIMPLEMENTED (83 files):
+  - docs/validation/MANUAL_TODOS_ACTIONS.md
+  - docs/validation/MANUAL_TODOS_TOP10.md
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  - undone_backups/undone_1774116178.txt
+  ... and 18 more files
+
+UNIT TESTS TODO (1 files):
+  - scripts/enhanced_scan_nonproduction.py
+
+UPDATE_THIS (3 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+
+WARNING (6514 files):
+  - API_REFERENCE.md
+  - APPS_PLATFORMS_DOCUMENTATION_UPDATE.md
+  - AUTO_RECOVERY_PROCEDURES.md
+  - BACKGROUND_AUTOMATION_COMPLETE.md
+  - BUILD_INSTRUCTIONS.md
+  - COMPREHENSIVE_TESTING_QA_STRATEGY.md
+  - DASHBOARDTRACKS.md
+  - DEVELOPER_QUICK_START.md
+  - DOMAIN_MANAGEMENT.md
+  - EXECUTION_SUMMARY.md
+  - FINAL_COMPLETION_REPORT.md
+  - IMPLEMENTATION_SUMMARY.md
+  - MASTER_CONTROL_SYSTEM.md
+  - MASTER_OPERATIONS_GUIDE.md
+  - MONITORING_API_DOCS.md
+  ... and 528 more files
+
+WIP (6 files):
+  - COMPREHENSIVE_ACTION_PLAN.md
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+
+WORK IN PROGRESS (204 files):
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  - undone_backups/undone_1774115991.txt
+  - undone_backups/undone_1774116087.txt
+  - undone_backups/undone_1774116178.txt
+  - undone_backups/undone_1774116195.txt
+  - undone_backups/undone_1774116550.txt
+  ... and 16 more files
+
+WORKAROUND (529 files):
+  - COMPREHENSIVE_TESTING_QA_STRATEGY.md
+  - PRODUCTION_READINESS_ENHANCED_REPORT.md
+  - QUICK_REFERENCE_SPRINT_METRICS.md
+  - SESSION_3_COMPLETION_SUMMARY.md
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+  - scripts/production_readiness_final_check.py
+  - scripts/scan_nonproduction_endpoints.py
+  - undone_backups/undone_1774077246.txt
+  - undone_backups/undone_1774077276.txt
+  - undone_backups/undone_1774115276.txt
+  - undone_backups/undone_1774115484.txt
+  - undone_backups/undone_1774115787.txt
+  - undone_backups/undone_1774115945.txt
+  - undone_backups/undone_1774115964.txt
+  ... and 21 more files
+
+XXX (70 files):
+  - ALL_TODOS_SAMPLE.txt
+  - DEPLOYMENT_READY_FINAL.md
+  - ENVIRONMENT_CONFIG.md
+  - PHASE_4_QVILLAGE_HF_COMPLETE.md
+  - PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md
+  - RELEASE_FINALIZATION_PLAN.md
+  - VERCEL_DEPLOYMENT_READY.md
+  - documentation_audit_details.json
+  - get-pip.py
+  - link_validation_results.json
+  - matches.json
+  - reports/placeholders.json
+  - reports/suggestions.json
+  - results/discovered_urls.csv
+  - results/link_validation_report.json
+  ... and 4 more files
+
+YOUR_API_KEY (7 files):
+  - docs/API_REFERENCE.md
+  - docs/CLAUDE_SONNET_CONFIG.md
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py
+
+YOUR_SECRET (7 files):
+  - PRODUCTION_IMPLEMENTATION.md
+  - PRODUCTION_SETUP.md
+  - matches.json
+  - scripts/enhanced_scan_nonproduction.py

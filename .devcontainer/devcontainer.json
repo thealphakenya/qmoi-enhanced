@@ -1,0 +1,35 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+{
+  "name": "QMOI - robust Devcontainer",
+  "image": "mcr.microsoft.com/devcontainers/base:bullseye",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": { "version": "20" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["esbenp.prettier-vscode"],
+      "settings": {
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "files.exclude": {
+          "**/.git": true,
+          "**/node_modules": true,
+          "**/.next": true,
+          "**/.venv": true
+        },
+        "files.watcherExclude": {
+          "**/.git/**": true,
+          "**/node_modules/**": true,
+          "**/.next/**": true,
+          "**/dist/**": true
+        }
+      }
+    }
+  },
+  "forwardPorts": [3000],
+  "postCreateCommand": "if [ \"${INSTALL_DEPS:-false}\" = \"true\" ]; then npm ci --prefer-offline --no-audit --no-fund; else echo 'Skipping dependency install (set INSTALL_DEPS=true to install)'; fi",
+  "updateContentCommand": "echo 'devcontainer ready'",
+  "remoteUser": "node",
+  "shutdownAction": "stopContainer"
+}

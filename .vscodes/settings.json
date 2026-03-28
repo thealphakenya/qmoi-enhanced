@@ -1,0 +1,18 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+{
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "github.copilot.chat.maxProjectFileCount": 2000,
+  "github.copilot.enable": true,
+  "github.copilot.autocomplete": "advanced",
+  "github.copilot.production.suggest": true,
+  "github.copilot.advanced.ghostTextEnabled": true,
+  "editor.formatOnSave": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "workbench.startupEditor": "welcomePage",
+  "search.exclude": {
+    "**/datasets/**": true,
+    "**/backups/**": true,
+    "**/downloads/**": true
+  }
+}

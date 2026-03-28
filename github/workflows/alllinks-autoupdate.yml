@@ -1,0 +1,81 @@
+name: ALLLINKS Auto-Update
+on:
+  schedule:
+    - cron: "0 0 * * *" # Run daily at midnight
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-links:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Generate link update plan
+        run: |
+          python scripts/generate_all_links.py --plan-only
+        env:
+          QMOI_ALLOW_NETWORK: "0" # Plan only - no network access yet
+
+      - name: Validate existing links
+        run: |
+          python scripts/link_validator.py ALLLINKS.md
+        env:
+          QMOI_ALLOW_NETWORK: "1"
+
+      - name: Generate link preview
+        run: |
+          python scripts/link_apply_preview.py
+
+      - name: Apply updates if approved
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          python scripts/generate_all_links.py --apply
+        env:
+          QMOI_ALLOW_NETWORK: "1"
+
+      - name: Create Pull Request
+        if: success()
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: Update ALLLINKS.md from scheduled run"
+          title: "[Automated] Update ALLLINKS.md"
+          body: |
+            This PR was automatically created by the ALLLINKS auto-update workflow.
+
+            Updates:
+            - Refreshed link statuses
+            - Updated cached metadata
+            - Generated new validation reports
+
+            Please review the changes and approve if everything looks correct.
+
+            <details>
+            <summary>Link Update Preview</summary>
+
+            ```
+            $(cat .qmoi_validation/link_preview.txt)
+            ```
+            </details>
+          branch: automated/links-update
+          base: autosync-backup-20250926-232440
+          labels: |
+            automated
+            documentation
+          reviewers: thealphakenya
+          final: false

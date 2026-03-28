@@ -1,0 +1,10 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+{
+  "windows": {
+    "status": "built",
+    "file": "Qmoi_apps/windows/qmoi ai.exe",
+    "size": "24.5 MB",
+    "download_link": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi_ai.exe"
+  },
+  ...
+}

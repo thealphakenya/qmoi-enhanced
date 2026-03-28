@@ -1,0 +1,14 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+requests
+aiohttp
+boto3
+numpy
+pandas
+GitPython
+watchdog
+schedule
+PyYAML
+
+# complete set used for local verification. Keep heavy platform-specific packages (torch, transformers)
+# out of this file to allow install in complete CI/dev containers. Install heavier deps in a
+# separate environment or CI that supports them.

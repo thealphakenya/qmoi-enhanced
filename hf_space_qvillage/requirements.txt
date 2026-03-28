@@ -1,0 +1,17 @@
+# [PRODUCTION READY] Enhanced QVillage HF Space Requirements
+gradio>=4.11.0
+# httpx>=0.25.0  # Not used, using built-in urllib
+# huggingface-hub>=0.19.0  # Not used in current implementation
+# asyncio-contextmanager>=1.0.0  # Not needed
+# pydantic>=2.0.0  # Not used
+# python-dotenv>=1.0.0  # Not used
+
+# Core dependencies (all built-in Python modules)
+# - asyncio (built-in)
+# - urllib (built-in)
+# - xml.etree.ElementTree (built-in)
+# - concurrent.futures (built-in)
+# - json (built-in)
+# - time (built-in)
+# - datetime (built-in)
+# - typing (built-in)

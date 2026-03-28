@@ -1,0 +1,12 @@
+Scan run: Mon Mar 23 23:39:49 UTC 2026
+Repository path: /workspaces/qmoi-enhanced
+
+Finding files with keywords: PENDING_IMPLEMENTATION TODO FIXME PLACEHOLDER MOCK SIMULATE SIMULATION STAGING STUB STUBS PRODUCTION IMPLEMENTATION REQUIRED PRODUCTION DONE PRODUCTION FIXED TEST DATA TEST IMPLEMENTATION NOT IMPLEMENTED UNIMPLEMENTED SIMPLE MINIMAL DEMO DRAFT PROOF OF CONCEPT POC ALPHA BETA EXPERIMENTAL TEMPORARY INCOMPLETE implementation pending pending implementation needs implementation implementation needed to be implemented not yet implemented coming soon work in progress in development under development placeholder placeholder text placeholder data dummy data sample data example data fake data mock data dev only development only for development debug only temporary temp hack workaround bandaid test only testing only for testing unit test integration test test fixture test mock test stub broken buggy incomplete unfinished partial implementation skeleton scaffold boilerplate template mock api fake api stub api placeholder api dummy api mock function stub function placeholder function dev config test config staging config local config development configuration test configuration coming soon under construction maintenance mode temporarily unavailable test database mock database dummy database sample database error placeholder exception placeholder not handled unhandled feature flag feature toggle experimental feature beta feature instruction instructions readme guideline policy spec note: note - todo: fixme: hack: workaround: temporary fix quick fix hotfix replace replaced replace all replace with
+----
+tools/mass_fix_markers.py [ALPHA, BETA, DRAFT, FIXME, INCOMPLETE, MOCK, NOT IMPLEMENTED, PENDING_IMPLEMENTATION, PLACEHOLDER, SIMULATION, STAGING, TEMPORARY, TODO, boilerplate, coming soon, incomplete, placeholder, placeholder text, skeleton, template, temporary, to be implemented, under development, work in progress]
+
+Total files with non-production markers: 1
+Total files scanned: 36345
+Files skipped (binary/large): 1574
+Files marked as production ready: 18696
+Production readiness: 100.0%

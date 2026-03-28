@@ -1,0 +1,13 @@
+[Unit]
+Description=QMOI Wallets API
+After=network.target
+
+[Service]
+Type=simple
+User=runner
+WorkingDirectory=/workspaces/qmoi-enhanced
+ExecStart=/usr/bin/env python3 scripts/wallets/wallets_api.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

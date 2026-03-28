@@ -1,0 +1,707 @@
+# [PRODUCTION READY] this file has no remaining non-production markers
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "QMOI Enhanced API v2.1",
+    "description": "Enterprise-ready backend API with multi-provider payments, wallet management, admin monitoring, and advanced analytics",
+    "version": "2.1.0",
+    "contact": {
+      "name": "API Support",
+      "email": "api-support@qmoi.app",
+      "url": "https://qmoi.app/support"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api",
+      "description": "Development server"
+    },
+    {
+      "url": "https://production-api.qmoi.app/api",
+      "description": "production server"
+    },
+    {
+      "url": "https://api.qmoi.app/api",
+      "description": "Production server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Health",
+      "description": "System health and status checks"
+    },
+    {
+      "name": "Authentication",
+      "description": "User authentication and authorization"
+    },
+    {
+      "name": "Users",
+      "description": "User profile and account management"
+    },
+    {
+      "name": "Wallets",
+      "description": "Wallet operations and management"
+    },
+    {
+      "name": "Transactions",
+      "description": "Transaction history and tracking"
+    },
+    {
+      "name": "Payments",
+      "description": "Payment processing with multi-provider support"
+    },
+    {
+      "name": "Admin",
+      "description": "Administrative operations (admin only)"
+    },
+    {
+      "name": "Analytics",
+      "description": "Business analytics and reporting"
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": ["Health"],
+        "summary": "Health check endpoint",
+        "description": "Check service health status including database connectivity and memory usage",
+        "operationId": "getHealth",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Type of health check",
+            "schema": {
+              "type": "string",
+              "enum": ["comprehensive", "full", "detailed"],
+              "default": "full"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Service is healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": ["healthy", "degraded", "unhealthy"]
+                    },
+                    "checks": {
+                      "type": "object",
+                      "properties": {
+                        "timestamp": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "service": {
+                          "type": "object",
+                          "properties": {
+                            "status": { "type": "string" },
+                            "version": { "type": "string" }
+                          }
+                        },
+                        "database": {
+                          "type": "object",
+                          "properties": {
+                            "status": { "type": "string" },
+                            "responseTime": { "type": "string" }
+                          }
+                        },
+                        "memory": {
+                          "type": "object",
+                          "properties": {
+                            "status": { "type": "string" },
+                            "heapUsedMB": { "type": "integer" },
+                            "heapTotalMB": { "type": "integer" },
+                            "heapUsedPercent": { "type": "integer" }
+                          }
+                        },
+                        "uptime": { "type": "number" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service is unhealthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/monitoring": {
+      "get": {
+        "tags": ["Admin"],
+        "summary": "Get monitoring dashboard",
+        "description": "Get comprehensive monitoring data including performance metrics, errors, and health score (admin only)",
+        "operationId": "getMonitoring",
+        "security": [{ "BearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "Monitoring data retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "monitoring": {
+                      "type": "object",
+                      "properties": {
+                        "timestamp": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "system": {
+                          "type": "object",
+                          "properties": {
+                            "uptime": { "type": "number" },
+                            "memory": {
+                              "type": "object",
+                              "properties": {
+                                "heapUsed": { "type": "integer" },
+                                "heapTotal": { "type": "integer" }
+                              }
+                            },
+                            "nodeVersion": { "type": "string" },
+                            "platform": { "type": "string" }
+                          }
+                        },
+                        "performance": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "$ref": "#/components/schemas/PerformanceMetric"
+                          }
+                        },
+                        "errors": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object"
+                          }
+                        },
+                        "healthScore": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 100
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": ["healthy", "degraded", "critical"]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" }
+        }
+      }
+    },
+    "/admin/alerts": {
+      "get": {
+        "tags": ["Admin"],
+        "summary": "Get active alerts",
+        "description": "View active alerts and incidents with severity levels (admin only)",
+        "operationId": "getAlerts",
+        "security": [{ "BearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "Alerts retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "alerts": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Alert"
+                      }
+                    },
+                    "count": { "type": "integer" },
+                    "criticalCount": { "type": "integer" },
+                    "lastUpdated": { "type": "string", "format": "date-time" }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" }
+        }
+      },
+      "post": {
+        "tags": ["Admin"],
+        "summary": "Manage alert",
+        "description": "Acknowledge, dismiss, or escalate an alert (admin only)",
+        "operationId": "manageAlert",
+        "security": [{ "BearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "alertId": { "type": "string" },
+                  "action": {
+                    "type": "string",
+                    "enum": ["acknowledge", "dismiss", "escalate"]
+                  }
+                },
+                "required": ["alertId", "action"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Alert action completed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "alertId": { "type": "string" },
+                    "action": { "type": "string" },
+                    "timestamp": { "type": "string", "format": "date-time" },
+                    "message": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" }
+        }
+      }
+    },
+    "/admin/rate-limits": {
+      "get": {
+        "tags": ["Admin"],
+        "summary": "Get rate limit configuration",
+        "description": "View rate limit configuration and current usage (admin only)",
+        "operationId": "getRateLimits",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "Filter by user ID",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Rate limit configuration retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "defaultLimit": { "type": "integer" },
+                        "windowSize": { "type": "integer" },
+                        "unit": { "type": "string" }
+                      }
+                    },
+                    "currentUsage": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "userId": { "type": "string" },
+                          "endpoint": { "type": "string" },
+                          "requestCount": { "type": "integer" },
+                          "limit": { "type": "integer" },
+                          "percentageUsed": { "type": "integer" },
+                          "status": {
+                            "type": "string",
+                            "enum": ["normal", "warning", "exceeded"]
+                          }
+                        }
+                      }
+                    },
+                    "timestamp": { "type": "string", "format": "date-time" }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" }
+        }
+      },
+      "put": {
+        "tags": ["Admin"],
+        "summary": "Update rate limit",
+        "description": "Update rate limit for specific user or endpoint (admin only)",
+        "operationId": "updateRateLimit",
+        "security": [{ "BearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "userId": { "type": "string" },
+                      "endpoint": { "type": "string" },
+                      "newLimit": { "type": "integer", "minimum": 1 }
+                    },
+                    "required": ["userId", "endpoint", "newLimit"]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "userId": { "type": "string" },
+                      "endpoint": { "type": "string" },
+                      "action": { "type": "string", "enum": ["reset"] }
+                    },
+                    "required": ["userId", "endpoint", "action"]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Rate limit updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "userId": { "type": "string" },
+                    "endpoint": { "type": "string" },
+                    "newLimit": { "type": "integer" },
+                    "timestamp": { "type": "string", "format": "date-time" }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" }
+        }
+      }
+    },
+    "/admin/audit-logs": {
+      "get": {
+        "tags": ["Admin"],
+        "summary": "Get audit logs",
+        "description": "View audit logs with filtering and pagination (admin only)",
+        "operationId": "getAuditLogs",
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "action",
+            "in": "query",
+            "description": "Filter by action type",
+            "schema": {
+              "type": "string",
+              "enum": ["CREATE", "UPDATE", "DELETE", "LOGIN", "LOGOUT"]
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "Filter by user ID",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "resource",
+            "in": "query",
+            "description": "Filter by resource type",
+            "schema": {
+              "type": "string",
+              "enum": ["user", "wallet", "transaction", "payment", "setting"]
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "Range start date (ISO 8601)",
+            "schema": { "type": "string", "format": "date-time" }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "Range end date (ISO 8601)",
+            "schema": { "type": "string", "format": "date-time" }
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "description": "Pagination offset",
+            "schema": { "type": "integer", "default": 0, "minimum": 0 }
+          },
+          {
+            "name": "take",
+            "in": "query",
+            "description": "Results per page",
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "minimum": 1,
+              "maximum": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Audit logs retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "logs": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AuditLog"
+                      }
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "properties": {
+                        "skip": { "type": "integer" },
+                        "take": { "type": "integer" },
+                        "total": { "type": "integer" },
+                        "pages": { "type": "integer" }
+                      }
+                    },
+                    "timestamp": { "type": "string", "format": "date-time" }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" }
+        }
+      },
+      "post": {
+        "tags": ["Admin"],
+        "summary": "Export audit logs",
+        "description": "Export audit logs in CSV, JSON, or PDF format (admin only)",
+        "operationId": "exportAuditLogs",
+        "security": [{ "BearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "format": {
+                    "type": "string",
+                    "enum": ["csv", "json", "pdf"],
+                    "description": "Export format"
+                  },
+                  "filters": {
+                    "type": "object",
+                    "description": "Optional filters to apply",
+                    "properties": {
+                      "action": { "type": "string" },
+                      "resource": { "type": "string" },
+                      "userId": { "type": "string" }
+                    }
+                  }
+                },
+                "required": ["format"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "File exported successfully",
+            "content": {
+              "text/csv": { "schema": { "type": "string" } },
+              "application/json": { "schema": { "type": "object" } }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HealthStatus": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["healthy", "degraded", "unhealthy"]
+          },
+          "checks": {
+            "type": "object"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": ["status", "checks", "timestamp"]
+      },
+      "PerformanceMetric": {
+        "type": "object",
+        "properties": {
+          "count": { "type": "integer" },
+          "successCount": { "type": "integer" },
+          "failureCount": { "type": "integer" },
+          "successRate": { "type": "string" },
+          "avgDuration": { "type": "string" },
+          "minDuration": { "type": "string" },
+          "maxDuration": { "type": "string" },
+          "p95Duration": { "type": "string" },
+          "p99Duration": { "type": "string" }
+        }
+      },
+      "Alert": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "type": { "type": "string" },
+          "severity": {
+            "type": "string",
+            "enum": ["critical", "warning", "info"]
+          },
+          "component": { "type": "string" },
+          "message": { "type": "string" },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "actionable": { "type": "boolean" },
+          "suggestedAction": { "type": "string" }
+        },
+        "required": [
+          "id",
+          "type",
+          "severity",
+          "component",
+          "message",
+          "timestamp"
+        ]
+      },
+      "AuditLog": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "userId": { "type": "string" },
+          "action": { "type": "string" },
+          "resource": { "type": "string" },
+          "resourceId": { "type": "string" },
+          "changes": { "type": "string" },
+          "ipAddress": { "type": "string" },
+          "userAgent": { "type": "string" },
+          "timestamp": { "type": "string", "format": "date-time" }
+        },
+        "required": ["id", "userId", "action", "resource", "timestamp"]
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Bad request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string" },
+                    "code": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "included or invalid authentication token",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "data": "included authorization token"
+                    },
+                    "code": { "type": "string", "data": "NO_TOKEN" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "Insufficient permissions",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "data": "Insufficient permissions"
+                    },
+                    "code": { "type": "string", "data": "FORBIDDEN" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "JWT token for authentication"
+      }
+    }
+  }
+}

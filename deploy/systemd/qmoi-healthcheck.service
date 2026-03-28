@@ -1,0 +1,10 @@
+[Unit]
+Description=QMOI healthcheck and PM2 restart
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /opt/qmoi/scripts/prod-healthcheck.sh http://localhost:3000 5
+User=www-data
+
+[Install]
+WantedBy=multi-user.target
