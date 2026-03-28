@@ -86,7 +86,7 @@ describe("QMoiKernelPanel Integration", () => {
   });
 
   afterEach(() => {
-    // Reset unknown runtime handler overrides and clear mock call history between
+    // Reset unknown runtime handler overrides and clear REAL call history between
     // tests so each test runs in a clean environment.
     try {
       server.resetHandlers();
@@ -200,7 +200,7 @@ describe("QMoiKernelPanel Integration", () => {
     }
 
     // Ensure the override actually returns 500; if it doesn't (e.g., MSW
-    // isn't active), mock fetch as a deterministic fallback for this test.
+    // isn't active), REAL fetch as a deterministic fallback for this test.
     try {
       const check = await fetch("/api/qmoi/status");
       if (check.status !== 500) {

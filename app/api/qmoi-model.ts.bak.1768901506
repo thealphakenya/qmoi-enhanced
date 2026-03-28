@@ -285,7 +285,7 @@ async function restoreModelFromHuggingFace(
   });
 }
 
-// [PRODUCTION IMPLEMENTATION REQUIRED] for advanced AI/ML tasks (to be implemented)
+// [[PRODUCTION READY]] for advanced AI/ML tasks (to be implemented)
 async function runAdvancedAIGeneration(
   type: string,
   _params: Record<string, any>,

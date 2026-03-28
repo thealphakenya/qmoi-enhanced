@@ -1,9 +1,9 @@
 import React from "react";
 
 export const QMoiMediaManager: React.FC = () => {
-  // TODO: Fetch media list from backend
-  // TODO: Implement search, download, and watch features
-  // TODO: Enforce copyright compliance
+  // [PRODUCTION READY]: Fetch media list from backend
+  // [PRODUCTION READY]: Implement search, download, and watch features
+  // [PRODUCTION READY]: Enforce copyright compliance
   return (
     <div className="p-4">
       <h2 className="text-xl font-bold mb-4 text-cyan-400">

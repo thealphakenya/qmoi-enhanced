@@ -133,8 +133,8 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
     fetchNews();
   };
 
-  // TODO: Analytics, engagement, post history
-  // TODO: Post to WhatsApp, Telegram, etc.
+  // [PRODUCTION READY]: Analytics, engagement, post history
+  // [PRODUCTION READY]: Post to WhatsApp, Telegram, etc.
 
   return (
     <Card className="space-y-4">

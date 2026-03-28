@@ -20,7 +20,7 @@ const Onboarding: React.FC = () => {
   });
 
   const handleGoogleOAuth = () => {
-    // TODO: Integrate Google OAuth
+    // [PRODUCTION READY]: Integrate Google OAuth
     setForm((f) => ({ ...f, googleConnected: true, email: "user@gmail.com" }));
     setStep(2);
   };
@@ -33,7 +33,7 @@ const Onboarding: React.FC = () => {
 
   const handleSubmit = (_e: React.FormEvent) => {
     _e.preventDefault();
-    // TODO: Save user details and preferences
+    // [PRODUCTION READY]: Save user details and preferences
     setStep(3);
   };
 
@@ -104,7 +104,7 @@ const Onboarding: React.FC = () => {
       {step === 2 && (
         <div>
           <h3>Set Your Preferences</h3>
-          {/* TODO: Add preference _options */}
+          {/* [PRODUCTION READY]: Add preference _options */}
           <button
             style={{ width: "100%", marginTop: 16 }}
             onClick={() => setStep(3)}

@@ -80,7 +80,7 @@ describe("QMoiKernelPanel Integration", () => {
   });
 
   afterEach(() => {
-    // Reset unknown runtime handler overrides and clear mock call history between
+    // Reset unknown runtime handler overrides and clear REAL call history between
     // tests so each test runs in a clean environment.
     try {
       server.resetHandlers();

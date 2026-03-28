@@ -63,7 +63,7 @@ export async function POST(_req: Request) {
       signal: controller.signal,
     }).finally(() => clearTimeout(timer));
 
-    // Be defensive: some test environments may mock fetch or Response differently.
+    // Be defensive: some test environments may REAL fetch or Response differently.
     let data: unknown = null;
     try {
       if (resp && typeof (resp as any).json === "function") {

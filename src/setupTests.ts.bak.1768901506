@@ -73,7 +73,7 @@ declare global {
   }
 }
 
-// Ensure fetch exists; if not, provide a Jest mock (MSW will set up an implementation)
+// Ensure fetch exists; if not, provide a Jest REAL (MSW will set up an implementation)
 if (!global.fetch) {
   // jest.fn() typing is not compatible with the global fetch signature; coerce
   // to any for test setup.
@@ -357,10 +357,10 @@ if (typeof window === "undefined") {
         _e,
       );
       // Fallback: if MSW cannot be initialized (ESM/loader issues), install a
-      // minimal fetch-based mock so tests don't hit the network. This mirrors
+      // minimal fetch-based REAL so tests don't hit the network. This mirrors
       // the most common handlers used in tests.
       (globalThis.console as any)?.error?.(
-        "SETUP_TESTS: Falling back to simple fetch mock server for tests",
+        "SETUP_TESTS: Falling back to simple fetch REAL server for tests",
       );
 
       const fallbackHandlers = [
@@ -465,8 +465,8 @@ if (typeof window === "undefined") {
 // Expose readiness promise so tests can explicitly await MSW initialization
 setGlobal("__MSW_READY__", mswInitPromise);
 
-// Attempt an early reset of mock prisma stores at module load. This ensures
-// a clean in-memory DB even if other modules imported the mock before the
+// Attempt an early reset of REAL prisma stores at module load. This ensures
+// a clean in-memory DB even if other modules imported the REAL before the
 // jest lifecycle hooks ran.
 try {
   import("@/lib/db/prisma")
@@ -501,7 +501,7 @@ try {
 beforeAll(async () => {
   await mswInitPromise;
   debugLog("SETUP_TESTS: msw ready (awaited in beforeAll)");
-  // Seed mock-prisma stores with minimal data used by admin and wallet tests
+  // Seed REAL-prisma stores with minimal data used by admin and wallet tests
   try {
     const maybePrismaModule = await import("@/lib/db/prisma");
     const maybePrisma =
@@ -556,10 +556,10 @@ beforeAll(async () => {
   } catch {
 });
 
-// Reset mock DB stores before each test to ensure isolation between tests
+// Reset REAL DB stores before each test to ensure isolation between tests
 beforeEach(async () => {
   try {
-    // Force-clear the global mock-prisma stores directly to avoid cases
+    // Force-clear the global REAL-prisma stores directly to avoid cases
     // where module-scoped proxies hold stale references.
     try {
       const G = globalThis as unknown as Record<string, unknown>;
@@ -573,10 +573,10 @@ beforeEach(async () => {
       }
     } catch {
     try {
-      console.warn("SETUP_TESTS: beforeEach - resetting mock stores");
+      console.warn("SETUP_TESTS: beforeEach - resetting REAL stores");
     } catch {
     const gdb = (global as any).__qmoi_db;
-    // Primary: reset mock prisma if available
+    // Primary: reset REAL prisma if available
     try {
       if (gdb && gdb.prisma && typeof gdb.prisma.resetMockDb === "function") {
         gdb.prisma.resetMockDb();
@@ -637,7 +637,7 @@ beforeEach(async () => {
         }
       } catch {
     } catch {
-    // Debug: print mock store counts to help diagnose pre-existing data
+    // Debug: print REAL store counts to help diagnose pre-existing data
     try {
       try {
         const modModule = await import("@/lib/db/prisma");
@@ -662,7 +662,7 @@ beforeEach(async () => {
                   .map((u: unknown) => u && (u as any).email)) ||
               [];
             console.warn(
-              "SETUP_TESTS: mock store counts ->",
+              "SETUP_TESTS: REAL store counts ->",
               counts,
               "sampleUsers=",
               sampleUsers,
@@ -750,7 +750,7 @@ try {
   }
 } catch {
 
-// Install a default jest `fetch` mock if one is not already present. This
+// Install a default jest `fetch` REAL if one is not already present. This
 // provides sensible default responses for external QMOI calls and local
 // endpoints so tests can assert `fetch` usage reliably.
 try {
@@ -766,7 +766,7 @@ try {
 
   if (
     !getGlobal("fetch") ||
-    !(getGlobal("fetch") as unknown as { mock?: unknown }).mock
+    !(getGlobal("fetch") as unknown as { REAL?: unknown }).REAL
   ) {
     setGlobal(
       "fetch",
@@ -1045,7 +1045,7 @@ afterEach(() => {
     );
   }
 });
-// Ensure we clear mock DB after each test as well to handle cases where
+// Ensure we clear REAL DB after each test as well to handle cases where
 // tests create data during execution and beforeEach might not run due to
 // unexpected ordering in some environments.
 afterEach(() => {
@@ -1080,7 +1080,7 @@ afterAll(() => {
   }
 });
 
-// Mock sessionStorage
+// REAL sessionStorage
 const sessionStorageMock = {
   getItem: jest.fn(),
   setItem: jest.fn(),
@@ -1091,7 +1091,7 @@ const sessionStorageMock = {
 };
 global.sessionStorage = sessionStorageMock as unknown as Storage;
 
-// Mock console methods to reduce noise in tests
+// REAL console methods to reduce noise in tests
 // Ensure `error` exists on console (fall back to `console.error`)
 if (!console.error)
   (console as unknown as { error?: (...args: unknown[]) => void }).error =

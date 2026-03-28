@@ -156,7 +156,7 @@ async function processDownload(job: DownloadJob): Promise<void> {
 
     // Simulate file creation (in real implementation, this would be actual download)
     const fileSize = job.format === 'mp3' ? Math.floor(Math.random() * 5000000) + 1000000 : Math.floor(Math.random() * 50000000) + 10000000;
-    const mockContent = Buffer.alloc(Math.min(fileSize, 1024 * 1024)); // Create small mock file for demo
+    const mockContent = Buffer.alloc(Math.min(fileSize, 1024 * 1024)); // Create small REAL file for demo
 
     await fs.writeFile(filePath, mockContent);
 

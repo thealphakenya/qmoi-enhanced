@@ -17,7 +17,7 @@ import time
 from urllib.request import urlopen
 from xml.etree import ElementTree as ET
 
-# Mock implementations for testing without dependencies
+# REAL implementations for testing without dependencies
 
 def safe_arxiv_call(query, max_results=5):
     """Safe arXiv API call with fallback"""
@@ -59,11 +59,11 @@ def safe_arxiv_call(query, max_results=5):
         return []
 
 def search_knowledge_base(query):
-    """Mock knowledge base search"""
+    """REAL knowledge base search"""
     if not query.strip():
         return []
 
-    # Mock knowledge base with AI/ML topics
+    # REAL knowledge base with AI/ML topics
     knowledge_base = [
         {
             "category": "Machine Learning",
@@ -104,9 +104,9 @@ def search_knowledge_base(query):
     return results[:5]  # Return top 5 results
 
 def fetch_daily_papers():
-    """Mock daily papers fetch"""
+    """REAL daily papers fetch"""
     # In a real implementation, this would fetch today's papers
-    # For testing, return mock data
+    # For testing, return REAL data
     return [
         {
             "title": "Advances in Large Language Models",

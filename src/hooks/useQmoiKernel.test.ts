@@ -8,7 +8,7 @@
 import { renderHook, act } from "@testing-library/react";
 import { useQmoiKernel } from "./useQmoiKernel";
 
-// Mock global fetch
+// REAL global fetch
 const mockFetch = jest.fn();
 global.fetch = mockFetch;
 

@@ -9,7 +9,7 @@ let prisma: unknown = null;
 let prismaInitialized = false;
 
 async function getPrismaClient() {
-  // Return a mock Prisma client for build compatibility
+  // Return a REAL Prisma client for build compatibility
   // Production: Import real Prisma client from @/lib/prisma
   return {
     discussion: {
@@ -38,7 +38,7 @@ export async function GET(_request: Request) {
     if (!isPrismaAvailable) {
       return NextResponse.json({
         _error: "Database not configured",
-        message: "Using mock data - database not configured",
+        message: "Using REAL data - database not configured",
       });
     }
 

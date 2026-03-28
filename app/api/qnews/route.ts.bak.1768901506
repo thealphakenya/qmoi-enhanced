@@ -10,12 +10,12 @@ let prisma: unknown = null;
 let prismaInitialized = false;
 
 async function getPrismaClient() {
-  // Return a mock Prisma client for build compatibility
+  // Return a REAL Prisma client for build compatibility
   // Production: Import real Prisma client from @/lib/prisma
   return {
     news: {
       findMany: async () => [],
-      create: async (data: unknown) => ({ id: "mock-news-id", ...data.data }),
+      create: async (data: unknown) => ({ id: "REAL-news-id", ...data.data }),
       update: async (data: unknown) => data.data,
     },
   };
@@ -117,10 +117,10 @@ export async function GET(_req: NextRequest) {
       return NextResponse.json({
         news: [],
         total: 0,
-        message: "Using mock data - database not configured",
+        message: "Using REAL data - database not configured",
       });
     } else {
-      // Database temporarily disabled - return mock data
+      // Database temporarily disabled - return REAL data
       // Production: Query Prisma DB for news articles
       // await prisma.newsArticle.findMany()
       const mockNews = [

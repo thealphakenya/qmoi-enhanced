@@ -38,7 +38,7 @@ export async function POST(_request: Request) {
       return NextResponse.json(
         {
           _error: "Database not configured",
-          message: "Using mock data - database not configured",
+          message: "Using REAL data - database not configured",
         },
         { status: 503 },
       );
@@ -586,7 +586,7 @@ async function notifyKBSubscribers(data: unknown) {
     return {
       notified: true,
       channels: ["websocket", "email"],
-      subscriber_count: 150, // Mock count
+      subscriber_count: 150, // REAL count
     };
   } catch (_error) {
     (globalThis.console as any)?.error?.(

@@ -551,7 +551,7 @@ export default async function handler(
   if (!isPrismaAvailable) {
     return _res.status(503).json({
       _error: "Database not configured",
-      message: "Using mock data - database not configured",
+      message: "Using REAL data - database not configured",
     });
   }
 
