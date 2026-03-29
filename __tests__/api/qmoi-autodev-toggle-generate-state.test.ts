@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// @ts-nocheck
+// @ts-expect-error - Required for API route mocking - Required for test mocking
 import { POST as togglePOST } from "@/src/app/api/qmoi/autodev/toggle/route";
 import { POST as generatePOST } from "@/src/app/api/qmoi/autodev/generate-feature/route";
 import { GET as stateGET } from "@/src/app/api/qmoi/autodev/state/route";
@@ -58,7 +58,7 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
       headers: { "Content-Type": "application/json" },
     });
 
-    // @ts-ignore
+    // @ts-expect-error - Required for API route mocking
     const response = await togglePOST;
     const body = await response.json();
 
@@ -75,7 +75,7 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
       headers: { "Content-Type": "application/json" },
     });
 
-    // @ts-ignore
+    // @ts-expect-error - Required for API route mocking
     const response = await togglePOST;
     const body = await response.json();
 
@@ -92,7 +92,7 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
       headers: { "Content-Type": "application/json" },
     });
 
-    // @ts-ignore
+    // @ts-expect-error - Required for API route mocking
     const response = await generatePOST;
     const body = await response.json();
 
@@ -107,7 +107,7 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
       headers: { "Content-Type": "application/json" },
     });
 
-    // @ts-ignore
+    // @ts-expect-error - Required for API route mocking
     const response = await generatePOST;
     const body = await response.json();
 
@@ -118,7 +118,7 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
       name: "autodev:generate",
       payload: { description: "Add master-only mode" },
     });
-    expect(.fetch).toHaveBeenCalled();
+    expect(global.fetch).toHaveBeenCalled();
   });
 
   it("returns false state when no AutoDev state is found", async () => {
@@ -128,7 +128,7 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
       method: "GET",
     });
 
-    // @ts-ignore
+    // @ts-expect-error - Required for API route mocking
     const response = await stateGET;
     const body = await response.json();
 
@@ -146,7 +146,7 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
       method: "GET",
     });
 
-    // @ts-ignore
+    // @ts-expect-error - Required for API route mocking
     const response = await stateGET;
     const body = await response.json();
 

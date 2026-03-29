@@ -51,14 +51,14 @@ describe("Admin Monitoring APIs", () => {
   describe("Monitoring Dashboard", () => {
     test("should return 401 without authentication", async () => {
       const response = await fetch(
-        "http:process.env.API_HOST || "localhost:3000"/api/admin/monitoring",
+        "http://" + (process.env.API_HOST || "localhost:3000") + "/api/admin/monitoring",
       );
       expect(response.status).toBe(401);
     });
 
     test("should return 403 for non-admin users", async () => {
       const response = await fetch(
-        "http:process.env.API_HOST || "localhost:3000"/api/admin/monitoring",
+        "http://" + (process.env.API_HOST || "localhost:3000") + "/api/admin/monitoring",
         {
           headers: { Authorization: `Bearer ${regularToken}` },
         },
@@ -68,7 +68,7 @@ describe("Admin Monitoring APIs", () => {
 
     test("should return monitoring data for admin users", async () => {
       const response = await fetch(
-        "http:process.env.API_HOST || "localhost:3000"/api/admin/monitoring",
+        "http://" + (process.env.API_HOST || "localhost:3000") + "/api/admin/monitoring",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
         },
@@ -88,7 +88,7 @@ describe("Admin Monitoring APIs", () => {
 
     test("should include system metrics", async () => {
       const response = await fetch(
-        "http:process.env.API_HOST || "localhost:3000"/api/admin/monitoring",
+        "http://" + (process.env.API_HOST || "localhost:3000") + "/api/admin/monitoring",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
         },
@@ -105,7 +105,7 @@ describe("Admin Monitoring APIs", () => {
 
     test("should calculate health score correctly", async () => {
       const response = await fetch(
-        "http:process.env.API_HOST || "localhost:3000"/api/admin/monitoring",
+        "http://" + (process.env.API_HOST || "localhost:3000") + "/api/admin/monitoring",
         {
           headers: { Authorization: `Bearer ${adminToken}` },
         },

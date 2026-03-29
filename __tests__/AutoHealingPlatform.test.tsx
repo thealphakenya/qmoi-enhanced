@@ -25,7 +25,7 @@ jest.mock("@/components/ui/badge", () => ({
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
 
-jest.
+jest.mock("lucide-react", () => ({
   AlertTriangle: () => <span />,
   Zap: () => <span />,
   TrendingUp: () => <span />,

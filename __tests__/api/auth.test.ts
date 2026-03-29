@@ -36,7 +36,7 @@ describe("Authentication API", () => {
 
     it("should reject invalid email", async () => {
       const request = new NextRequest(
-        "http:process.env.API_HOST || "localhost:3000"/api/auth/register",
+        "http://" + (process.env.API_HOST || "localhost:3000") + "/api/auth/register",
         {
           method: "POST",
           body: JSON.stringify({
@@ -53,7 +53,7 @@ describe("Authentication API", () => {
 
     it("should reject weak password", async () => {
       const request = new NextRequest(
-        "http:process.env.API_HOST || "localhost:3000"/api/auth/register",
+        "http://" + (process.env.API_HOST || "localhost:3000") + "/api/auth/register",
         {
           method: "POST",
           body: JSON.stringify({
@@ -71,7 +71,7 @@ describe("Authentication API", () => {
     it("should reject duplicate email", async () => {
       // First registration
       await registerHandler(
-        new NextRequest("http:process.env.API_HOST || "localhost:3000"/api/auth/register", {
+        new NextRequest("http://" + (process.env.API_HOST || "localhost:3000") + "/api/auth/register", {
           method: "POST",
           body: JSON.stringify({
             email: "duplicate@data.com",
@@ -83,7 +83,7 @@ describe("Authentication API", () => {
 
       // Duplicate registration
       const request = new NextRequest(
-        "http:process.env.API_HOST || "localhost:3000"/api/auth/register",
+        "http://" + (process.env.API_HOST || "localhost:3000") + "/api/auth/register",
         {
           method: "POST",
           body: JSON.stringify({
@@ -108,8 +108,8 @@ describe("Authentication API", () => {
 
       const decoded = authService.verifyToken(token);
       expect(decoded).toBeTruthy();
-      expect(.userId).toBe("test-id");
-      expect(.email).toBe("test@data.com");
+      expect(decoded.userId).toBe("test-id");
+      expect(decoded.email).toBe("test@data.com");
     });
 
     it("should reject invalid token", () => {

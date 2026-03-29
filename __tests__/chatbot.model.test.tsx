@@ -39,3 +39,4 @@ test("Chatbot shows canonical model label and no interactive selector", () => {
   const selects = screen.queryAllByRole("combobox");
   expect(selects.length).toBe(0);
 });
+});

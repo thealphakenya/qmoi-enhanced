@@ -18,10 +18,10 @@ jest.mock("@/components/ui/button", () => ({
     <button {...props}>{children}</button>
   ),
 }));
-jest.
+jest.mock("@/components/ui/badge", () => ({
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
-jest.
+jest.mock("@/components/ui/progress", () => ({
   Progress: ({ value }: any) => <div data-value={value}></div>,
 }));
 
@@ -29,7 +29,7 @@ import { ModelRegistry } from "../src/components/q-city/ModelRegistry";
 
 describe("ModelRegistry component", () => {
   beforeEach(() => {
-    jest.resetAll
+    jest.resetAllMocks();
     global.fetch = jest.fn(async (url: string, opts?: any) => {
       if (url === "/api/models") {
         return {

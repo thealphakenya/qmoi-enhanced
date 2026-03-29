@@ -21,22 +21,22 @@ jest.mock("@/components/ui/button", () => ({
   ),
 }));
 
-jest.
+jest.mock("@/components/ui/badge", () => ({
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
 
-jest.
+jest.mock("@/components/ui/progress", () => ({
   Progress: ({ value }: any) => <div data-value={value}></div>,
 }));
 
-jest.
+jest.mock("@/components/ui/tabs", () => ({
   Tabs: ({ children }: any) => <div>{children}</div>,
   TabsContent: ({ children }: any) => <div>{children}</div>,
   TabsList: ({ children }: any) => <div>{children}</div>,
   TabsTrigger: ({ children }: any) => <div>{children}</div>,
 }));
 
-jest.
+jest.mock("lucide-react", () => ({
   TrendingUp: () => <span />,
   Zap: () => <span />,
   BarChart3: () => <span />,
@@ -47,7 +47,7 @@ import { SelfTrainingEcosystem } from "../src/components/q-city/SelfTrainingEcos
 describe("SelfTrainingEcosystem component", () => {
   beforeEach(() => {
     // ensure global 
-    jest.resetAll
+    jest.resetAllMocks();
   });
 
   it("renders header and comprehensive tabs", () => {
@@ -63,12 +63,15 @@ describe("SelfTrainingEcosystem component", () => {
       tasks: [{ id: "t1", model: "Foo", status: "completed" }],
     };
     const startResult = { task: { id: "t2", model: "Bar", status: "queued" } };
-    global.fetch = jest
-      .fn()
-      .
-      .
+    global.fetch = jest.fn()
+      .mockResolvedValueOnce({
+        json: () => Promise.resolve(listResult)
+      })
+      .mockResolvedValueOnce({
+        json: () => Promise.resolve(startResult)
+      });
 
-    .prompt = jest.fn().
+    global.prompt = jest.fn();
 
     render(<SelfTrainingEcosystem />);
 

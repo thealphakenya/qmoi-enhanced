@@ -86,7 +86,7 @@ describe("Wallet API", () => {
 
   describe("POST /api/wallets", () => {
     it("should create new wallet with valid currency", async () => {
-      const request = new NextRequest("http:process.env.API_HOST || "localhost:3000"/api/wallets", {
+      const request = new NextRequest("http://" + (process.env.API_HOST || "localhost:3000") + "/api/wallets", {
         method: "POST",
         headers: {
           authorization: `Bearer ${testToken}`,
@@ -107,7 +107,7 @@ describe("Wallet API", () => {
     });
 
     it("should create wallet with default currency", async () => {
-      const request = new NextRequest("http:process.env.API_HOST || "localhost:3000"/api/wallets", {
+      const request = new NextRequest("http://" + (process.env.API_HOST || "localhost:3000") + "/api/wallets", {
         method: "POST",
         headers: {
           authorization: `Bearer ${testToken}`,

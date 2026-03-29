@@ -19,23 +19,23 @@ jest.mock("@/components/ui/button", () => ({
     <button {...props}>{children}</button>
   ),
 }));
-jest.
+jest.mock("@/components/ui/badge", () => ({
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
-jest.
+jest.mock("@/components/ui/input", () => ({
   Input: ({ ...props }: any) => <input {...props} />,
 }));
-jest.
+jest.mock("@/components/ui/textarea", () => ({
   Textarea: ({ ...props }: any) => <textarea {...props} />,
 }));
-jest.
+jest.mock("@/components/ui/tabs", () => ({
   Tabs: ({ children }: any) => <div>{children}</div>,
   TabsContent: ({ children }: any) => <div>{children}</div>,
   TabsList: ({ children }: any) => <div>{children}</div>,
   TabsTrigger: ({ children }: any) => <div>{children}</div>,
 }));
 
-jest.
+jest.mock("lucide-react", () => ({
   Search: () => <span />,
   BookOpen: () => <span />,
   Link2: () => <span />,
@@ -46,7 +46,7 @@ import { KnowledgeEngine } from "../src/components/q-city/KnowledgeEngine";
 
 describe("KnowledgeEngine component", () => {
   beforeEach(() => {
-    jest.resetAll
+    jest.resetAllMocks();
     global.fetch = jest.fn(async (url: string, opts?: any) => {
       // simplistic router
       if (url.includes("action=sources")) {

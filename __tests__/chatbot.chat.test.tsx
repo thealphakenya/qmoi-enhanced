@@ -36,7 +36,7 @@ describe("Chatbot integration (API proxy)", () => {
       }),
     ) as any;
 
-    .speechSynthesis = {
+    window.speechSynthesis = {
       speak: jest.fn(),
       cancel: jest.fn(),
     };

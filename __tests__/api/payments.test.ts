@@ -62,7 +62,7 @@ describe("Payment API", () => {
 
     it("should reject invalid amount", async () => {
       const request = new NextRequest(
-        "http:process.env.API_HOST || "localhost:3000"/api/payments/initiate",
+        "http://" + (process.env.API_HOST || "localhost:3000") + "/api/payments/initiate",
         {
           method: "POST",
           headers: {
@@ -84,7 +84,7 @@ describe("Payment API", () => {
 
     it("should reject required required fields", async () => {
       const request = new NextRequest(
-        "http:process.env.API_HOST || "localhost:3000"/api/payments/initiate",
+        "http://" + (process.env.API_HOST || "localhost:3000") + "/api/payments/initiate",
         {
           method: "POST",
           headers: {
@@ -116,7 +116,7 @@ describe("Payment API", () => {
       const signature = "valid-hmac-signature"; // Would be computed properly in real test
 
       const request = new NextRequest(
-        "http:process.env.API_HOST || "localhost:3000"/api/webhooks/payments",
+        "http://" + (process.env.API_HOST || "localhost:3000") + "/api/webhooks/payments",
         {
           method: "POST",
           headers: {

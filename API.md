@@ -3,14 +3,14 @@
 
 - validated: yes
 - validator: QMOI Lion
-- timestamp: 2026-03-28T23:11:33.370244Z
+- timestamp: 2026-03-29T00:33:19.100756Z
 - note: Auto-updated by `scripts/comprehensive_docs_update.py`
 <!-- LION_VALIDATION_END -->
 
 # QMOI API Documentation
 
-**Generated**: 2026-03-28 SESSION CONTINUOUS
-**Last Updated**: 2026-03-28T23:11:33.370244Z
+**Generated**: 2026-03-29 SESSION CONTINUOUS
+**Last Updated**: 2026-03-29T00:33:19.100756Z
 **Total Endpoints**: 244
 
 ## Overview
@@ -410,7 +410,7 @@ All endpoints are rate-limited to prevent abuse:
 
 ## Last Update
 
-- **Date**: 2026-03-28
+- **Date**: 2026-03-29
 - **By**: `scripts/comprehensive_docs_update.py`
 - **Analysis**: Auto-generated from routing structure
 

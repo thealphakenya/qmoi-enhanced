@@ -36,7 +36,7 @@ describe("/api/qmoi/autodev/research", () => {
       body: JSON.stringify({ scope: "system" }),
     });
 
-    // @ts-expect-error
+    // @ts-expect-error - POST is imported from route file
     const response = await POST;
     const body = await response.json();
 
@@ -53,7 +53,7 @@ describe("/api/qmoi/autodev/research", () => {
       body: JSON.stringify({ scope: "system" }),
     });
 
-    // @ts-expect-error
+    // @ts-expect-error - POST is imported from route file
     const response = await POST;
     const body = await response.json();
 
@@ -70,7 +70,7 @@ describe("/api/qmoi/autodev/research", () => {
       body: JSON.stringify({ scope: "system", details: "Test research" }),
     });
 
-    // @ts-expect-error
+    // @ts-expect-error - POST is imported from route file
     const response = await POST;
     const body = await response.json();
 

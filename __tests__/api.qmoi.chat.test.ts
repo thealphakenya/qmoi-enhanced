@@ -10,7 +10,7 @@ describe("/api/qmoi/chat route", () => {
 
   afterEach(() => {
     global.fetch = originalFetch;
-    jest.resetAll
+    jest.resetAllMocks();
   });
 
   test("proxies messages to QMOI and enforces model qmoi", async () => {
