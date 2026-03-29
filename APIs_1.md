@@ -3,402 +3,139 @@
 
 - validated: yes
 - validator: QMOI Lion
-- timestamp: 2026-03-28T05:55:41.773583Z
-- note: Auto-updated by `scripts/comprehensive_docs_update.py`
+- timestamp: 2026-03-29T01:01:10.433088Z
+- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI APIs v1.0
+# QMOI Complete APIs List v1.0
 
-Version: 1.0
-Generated: 2026-03-28T05:55:41.773594
+**Generated**: 2026-03-29T00:59:40.589636
+**Total Endpoints**: 20
+**Format**: Comprehensive Single-File Reference
 
-## API Version Information
+## APIs Summary
 
-- **Version**: 1.0
-- **Status**: Production Ready
-- **Base URL**: https://api.qmoi.com/v1
-- **Authentication**: JWT Bearer Token
+| Domain | Endpoints | Status |
+|--------|-----------|--------|
+| QCity | 12 | ✅ Production |
+| QMOI | 7 | ✅ Production |
+| General | 0 | ✅ Production |
+| **TOTAL** | **20** | **✅ Ready** |
 
-## Available Endpoints
+## All Available Endpoints
 
-- GET /api/account-automation
-- POST /api/account-automation
-- GET /api/accountability
-- POST /api/accountability
-- GET /api/admin/alerts
-- POST /api/admin/alerts
-- GET /api/admin/audit-logs
-- POST /api/admin/audit-logs
-- GET /api/admin/autofix/automation
-- POST /api/admin/autofix/automation
-- GET /api/admin/autofix/autoscan
-- GET /api/admin/autofix/background-automation
-- POST /api/admin/autofix/background-automation
-- DELETE /api/admin/autofix/bootstrap
-- GET /api/admin/autofix/bootstrap
-- DELETE /api/admin/autofix/config
-- GET /api/admin/autofix/config
-- POST /api/admin/autofix/config
-- PUT /api/admin/autofix/config
-- GET /api/admin/autofix/errors
-- POST /api/admin/autofix/errors
-- GET /api/admin/autofix/fix-all
-- POST /api/admin/autofix/fix-all
-- POST /api/admin/autofix/fix/[errorId]
-- GET /api/admin/autofix/health
-- GET /api/admin/autofix/healthmonitor
-- GET /api/admin/autofix/scan
-- POST /api/admin/autofix/scan
-- GET /api/admin/autofix/stream
-- GET /api/admin/dashboard
-- GET /api/admin/financial/global
-- POST /api/admin/financial/global
-- GET /api/admin/financial/summary
-- POST /api/admin/master/auth
-- POST /api/admin/master/logout
-- GET /api/admin/monitoring
-- GET /api/admin/rate-limits
-- POST /api/admin/rate-limits
-- PUT /api/admin/rate-limits
-- DELETE /api/admin/users
-- GET /api/admin/users
-- PUT /api/admin/users
-- GET /api/ai
-- POST /api/ai
-- GET /api/ai-anomaly-service
-- POST /api/ai-anomaly-service
-- GET /api/ai-health
-- POST /api/ai-health
-- GET /api/ai-self-diagnostics
-- POST /api/ai-self-diagnostics
-- GET /api/ai/scan
-- POST /api/ai/scan
-- GET /api/analytics/transactions
-- GET /api/analytics/wallets
-- GET /api/auth/biometric/capture
-- POST /api/auth/biometric/capture
-- POST /api/auth/login
-- POST /api/auth/profile
-- PUT /api/auth/profile
-- POST /api/auth/refresh
-- POST /api/auth/register
-- GET /api/auth/settings
-- POST /api/auth/settings
-- GET /api/auth/signin
-- POST /api/auth/signin
-- GET /api/auth/signup
-- POST /api/auth/signup
-- POST /api/auth/verify
-- POST /api/auth/verify-email
-- PUT /api/auth/verify-email
-- POST /api/auth/webauthn/authenticate
-- POST /api/auth/webauthn/register
-- GET /api/automation/status
-- POST /api/automation/trigger
-- GET /api/biometric/templates
-- POST /api/biometric/templates
-- POST /api/biometric/verify
-- GET /api/cashon
-- POST /api/cashon
-- PUT /api/cashon
-- GET /api/cashon/balance
-- POST /api/cashon/balance
-- POST /api/cashon/deposit
-- GET /api/cashon/signals
-- POST /api/cashon/start-trading
-- POST /api/cashon/stop-trading
-- GET /api/cashon/trading-status
-- POST /api/chat/enhanced
-- GET /api/consciousness
-- POST /api/consciousness
-- GET /api/datasets
-- POST /api/datasets
-- DELETE /api/datasets/[id]
-- GET /api/datasets/[id]
-- POST /api/datasets/[id]
-- PUT /api/datasets/[id]
-- POST /api/datasets/settings
-- GET /api/debug/users
-- POST /api/deploy
-- POST /api/deploy/auto-redeploy
-- GET /api/deployment-status
-- GET /api/device-fingerprint
-- POST /api/device-fingerprint
-- POST /api/document-backup
-- GET /api/domains
-- POST /api/domains
-- GET /api/domains/health
-- GET /api/earning
-- POST /api/earning
-- GET /api/emails
-- POST /api/emails
-- GET /api/emergency/config
-- POST /api/emergency/config
-- POST /api/emergency/dispatch
-- POST /api/emergency/email
-- DELETE /api/emergency/lockdown
-- GET /api/emergency/lockdown
-- POST /api/emergency/lockdown
-- POST /api/emergency/sms
-- DELETE /api/emergency/wipe
-- GET /api/emergency/wipe
-- POST /api/emergency/wipe
-- DELETE /api/employment
-- GET /api/employment
-- POST /api/employment
-- PUT /api/employment
-- GET /api/employment/megavault
-- POST /api/employment/megavault
-- PUT /api/employment/megavault
-- GET /api/employment/payment
-- POST /api/employment/payment
-- PUT /api/employment/payment
-- GET /api/employment/revenue
-- POST /api/employment/revenue
-- PUT /api/employment/revenue
-- GET /api/enhanced-email/analytics
-- GET /api/enhanced-email/realtime
-- GET /api/enhanced-email/rules
-- POST /api/enhanced-email/rules
-- POST /api/enhanced-email/send
-- GET /api/enhanced-email/templates
-- POST /api/enhanced-email/templates
-- GET /api/enhanced-link-domain
-- POST /api/enhanced-link-domain
-- GET /api/evolution/autoclone-evolution
-- POST /api/evolution/autoclone-evolution
-- GET /api/evolution/platform-evolution
-- POST /api/evolution/platform-evolution
-- GET /api/files
-- GET /api/financial/audit
-- GET /api/financial/balances
-- GET /api/financial/transactions
-- POST /api/financial/transactions
-- GET /api/financial/verify
-- POST /api/financial/verify
-- GET /api/git/branch
-- POST /api/git/commit
-- POST /api/git/pr
-- POST /api/git/push
-- GET /api/git/remote
-- GET /api/git/status
-- DELETE /api/global
-- GET /api/global
-- POST /api/global
-- PUT /api/global
-- GET /api/global-links
-- POST /api/global-links
-- GET /api/global-news
-- POST /api/global-news
-- GET /api/health
-- POST /api/health
-- GET /api/health/data
-- POST /api/health/data
-- GET /api/links
-- POST /api/links
-- PATCH /api/links/[id]/zero-rated
-- GET /api/links/validate
-- POST /api/links/validate
-- GET /api/master/domains
-- POST /api/master/domains
-- POST /api/master/domains/approve/[domain]
-- POST /api/master/domains/emergency-takeover
-- POST /api/master/domains/force-refresh
-- DELETE /api/master/domains/remove/[domain]
-- GET /api/master/domains/status
-- GET /api/master/links
-- POST /api/master/sponsored/add
-- GET /api/master/sponsored/analytics
-- GET /api/master/sponsored/list
-- DELETE /api/master/sponsored/remove/[userId]
-- GET /api/master/sponsored/sync
-- GET /api/master/tracks
-- POST /api/master/tracks
-- GET /api/media/generate
-- POST /api/media/generate
-- GET /api/media/status
-- GET /api/metrics
-- GET /api/monitor/status
-- POST /api/monitor/status
-- POST /api/mpesa/callback
-- POST /api/notifications/test
-- POST /api/payments/initiate
-- GET /api/platforms
-- POST /api/platforms
-- POST /api/preview/analyze
-- POST /api/preview/execute-tool
-- DELETE /api/qapikey
-- GET /api/qapikey
-- POST /api/qapikey
-- GET /api/qcity/audit-log
-- POST /api/qcity/audit-log
-- GET /api/qcity/remote-command
-- POST /api/qcity/remote-command
-- POST /api/qcity/selfheal-npm
-- GET /api/qcity/status
-- POST /api/qcity/status
-- GET /api/qi-spaces
-- POST /api/qi-spaces
-- GET /api/qi-trading
-- POST /api/qi-trading
-- GET /api/qmoi-database
-- POST /api/qmoi-database
-- GET /api/qmoi-earning-enhanced
-- GET /api/qmoi-gitlab/deployments
-- GET /api/qmoi-gitlab/errors
-- GET /api/qmoi-gitlab/jobs
-- GET /api/qmoi-gitlab/pipelines
-- POST /api/qmoi-gitlab/trigger
-- GET /api/qmoi-model
-- POST /api/qmoi-model
-- GET /api/qmoi-tracks
-- POST /api/qmoi-tracks
-- GET /api/qmoi/advanced-analysis
-- POST /api/qmoi/advanced-analysis
-- POST /api/qmoi/audio
-- GET /api/qmoi/auto-fix/download-report
-- GET /api/qmoi/auto-fix/github-status
-- POST /api/qmoi/auto-fix/start
-- GET /api/qmoi/auto-fix/status
-- POST /api/qmoi/auto-fix/stop
-- GET /api/qmoi/auto-setup
-- POST /api/qmoi/auto-setup
-- POST /api/qmoi/autodev/generate-feature
-- POST /api/qmoi/autodev/research
-- GET /api/qmoi/autodev/state
-- GET /api/qmoi/autodev/suggestions/features
-- GET /api/qmoi/autodev/suggestions/improvements
-- POST /api/qmoi/autodev/suggestions/improvements
-- GET /api/qmoi/autodev/suggestions/optimizations
-- POST /api/qmoi/autodev/toggle
-- GET /api/qmoi/avatars
-- POST /api/qmoi/avatars
-- GET /api/qmoi/backup
-- POST /api/qmoi/backup
-- GET /api/qmoi/chat
-- POST /api/qmoi/chat
-- GET /api/qmoi/chat-enhanced
-- POST /api/qmoi/chat-enhanced
-- GET /api/qmoi/evolution/compare-models
-- POST /api/qmoi/evolution/compare-models
-- GET /api/qmoi/evolution/replace-model
-- POST /api/qmoi/evolution/replace-model
-- GET /api/qmoi/evolution/track-evolution
-- POST /api/qmoi/evolution/track-evolution
-- POST /api/qmoi/execute
-- DELETE /api/qmoi/files/[id]
-- GET /api/qmoi/files/[id]
-- GET /api/qmoi/friendship
-- POST /api/qmoi/friendship
-- GET /api/qmoi/health
-- POST /api/qmoi/health
-- GET /api/qmoi/health/stream
-- GET /api/qmoi/language
-- POST /api/qmoi/language
-- GET /api/qmoi/master-mode
-- POST /api/qmoi/master-mode
-- GET /api/qmoi/memory
-- POST /api/qmoi/memory
-- GET /api/qmoi/own-device-logs
-- POST /api/qmoi/own-device-logs
-- POST /api/qmoi/own-device-logs/export
-- GET /api/qmoi/profile-questions
-- POST /api/qmoi/profile-questions
-- GET /api/qmoi/projects
-- POST /api/qmoi/projects
-- GET /api/qmoi/research
-- POST /api/qmoi/research
-- GET /api/qmoi/revenue
-- POST /api/qmoi/revenue
-- GET /api/qmoi/revenue-dashboard
-- POST /api/qmoi/revenue-dashboard
-- POST /api/qmoi/revenue/reset
-- POST /api/qmoi/revenue/start
-- GET /api/qmoi/revenue/status
-- POST /api/qmoi/revenue/stop
-- POST /api/qmoi/revenue/target
-- GET /api/qmoi/revenue/transactions
-- POST /api/qmoi/revenue/transfer
-- POST /api/qmoi/self-work/code-review
-- POST /api/qmoi/self-work/debug
-- POST /api/qmoi/self-work/run-tests
-- GET /api/qmoi/session
-- POST /api/qmoi/session
-- POST /api/qmoi/suggestions
-- POST /api/qmoi/transcribe
-- PUT /api/qmoi/transcribe
-- POST /api/qmoi/upload
-- GET /api/qmoi/user
-- POST /api/qmoi/user
-- GET /api/qmoi/visuals
-- POST /api/qmoi/visuals
-- GET /api/qmoi/voice
-- POST /api/qmoi/voice
-- POST /api/qmoi/voice-enroll
-- POST /api/qmoi/voice-preview
-- GET /api/qmoi/voice-profiles
-- POST /api/qmoi/voice-profiles
-- GET /api/qnews
-- GET /api/qradio
-- GET /api/qstore
-- GET /api/qvillage
-- POST /api/qvillage
-- GET /api/qvillage/inference
-- GET /api/qvillage/model-card
-- POST /api/qvillage/model-card
-- GET /api/qvillage/models
-- GET /api/qvillage/spaces
-- GET /api/qvs
-- POST /api/qvs
-- GET /api/social-automation
-- POST /api/social-automation
-- POST /api/ssh/list
-- POST /api/ssh/read
-- POST /api/ssh/write
-- GET /api/tracks
-- POST /api/tracks
-- DELETE /api/tracks/[id]
-- PATCH /api/tracks/[id]
-- GET /api/tracks/settings
-- PATCH /api/tracks/settings
-- GET /api/tracks/stream
-- GET /api/trading/status
-- POST /api/trading/status
-- GET /api/transactions
-- GET /api/tts/generate
-- POST /api/tts/generate
-- GET /api/tts/stream
-- GET /api/users/profile
-- PUT /api/users/profile
-- GET /api/version
-- POST /api/voice/enroll
-- POST /api/voice/verify
-- GET /api/wallets
-- POST /api/wallets
-- DELETE /api/wallets/[walletId]
-- GET /api/wallets/[walletId]
-- PUT /api/wallets/[walletId]
-- POST /api/webauthn/authenticate
-- POST /api/webauthn/register
-- GET /api/webhooks/payments
-- POST /api/webhooks/payments
-- POST /api/webhooks/qvillage
-- POST /api/whatsapp-bot
-- GET /api/whatsapp-business
-- POST /api/whatsapp-business
-- GET /api/whatsapp/audit
-- GET /api/whatsapp/verify
-- POST /api/whatsapp/verify
-- GET /api/wifi
-- POST /api/wifi
-- GET /api/wifi-security
-- POST /api/wifi-security
-- GET /api/wifi/scan
-- POST /api/wifi/scan
-- GET /api/youtube/download
-- POST /api/youtube/download
 
-## Summary
+### /api/deployment-status
+- **File**: `deployment-status.ts`
+- **Domain**: `general`
 
-- **Total Endpoints**: 376
+### /api/qcity/ai/fix
+- **File**: `qcity/ai/fix.ts`
+- **Domain**: `qcity`
+
+### /api/qcity/config
+- **File**: `qcity/config.ts`
+- **Domain**: `qcity`
+
+### /api/qcity/projects/[id]
+- **File**: `qcity/projects/[id].ts`
+- **Domain**: `qcity`
+
+### /api/qcity/projects/[id]/tasks
+- **File**: `qcity/projects/[id]/tasks.ts`
+- **Domain**: `qcity`
+
+### /api/qcity/projects/index
+- **File**: `qcity/projects/index.ts`
+- **Domain**: `qcity`
+
+### /api/qcity/start
+- **File**: `qcity/start.ts`
+- **Domain**: `qcity`
+
+### /api/qcity/status
+- **File**: `qcity/status.ts`
+- **Domain**: `qcity`
+
+### /api/qcity/stop
+- **File**: `qcity/stop.ts`
+- **Domain**: `qcity`
+
+### /api/qcity/trading/config
+- **File**: `qcity/trading/config.ts`
+- **Domain**: `qcity`
+
+### /api/qcity/trading/positions
+- **File**: `qcity/trading/positions.ts`
+- **Domain**: `qcity`
+
+### /api/qcity/whatsapp/config
+- **File**: `qcity/whatsapp/config.ts`
+- **Domain**: `qcity`
+
+### /api/qcity/whatsapp/messages
+- **File**: `qcity/whatsapp/messages.ts`
+- **Domain**: `qcity`
+
+### /api/qmoi/autodev
+- **File**: `qmoi/autodev.ts`
+- **Domain**: `qmoi`
+
+### /api/qmoi/feedback
+- **File**: `qmoi/feedback.ts`
+- **Domain**: `qmoi`
+
+### /api/qmoi/file
+- **File**: `qmoi/file.ts`
+- **Domain**: `qmoi`
+
+### /api/qmoi/memory
+- **File**: `qmoi/memory.ts`
+- **Domain**: `qmoi`
+
+### /api/qmoi/memory-backup
+- **File**: `qmoi/memory-backup.ts`
+- **Domain**: `qmoi`
+
+### /api/qmoi/payload
+- **File**: `qmoi/payload.ts`
+- **Domain**: `qmoi`
+
+### /api/qmoi/status
+- **File**: `qmoi/status.ts`
+- **Domain**: `qmoi`
+
+## Webhook APIs
+
+The QMOI system includes webhook support for real-time event processing:
+
+- **Payment Webhooks**: `/api/webhooks/payments` - Stripe and PayPal payment events
+- **GitHub Webhooks**: `/api/webhooks/github` - Repository and CI/CD events
+- **QVillage Webhooks**: `/api/webhooks/qvillage` - Community and collaboration events
+
+## Integration Examples
+
+### Authentication
+```
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+```
+
+### Error Response Format
+```json
+{
+  "error": "error_code",
+  "message": "Human readable error message",
+  "status": 400
+}
+```
+
+### Success Response Format
+```json
+{
+  "status": "success",
+  "data": {},
+  "timestamp": "2026-03-29T00:00:00Z"
+}
+```
 

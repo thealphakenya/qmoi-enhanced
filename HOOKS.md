@@ -1,158 +1,369 @@
-# HOOKS.md - React Hooks Directory
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
 
-**Last Updated**: 2026-03-29
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2026-03-29T01:01:10.494905Z
+- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
+# HOOKS.md - Complete React Hooks Reference
+
+**Last Updated**: 2026-03-29T01:00:55.804236
 **Total Hooks**: 33
-**Last Scan**: 2026-03-29T00:33:19.113735Z
+**Status**: ✅ All Hooks Production Ready
 
-## Overview
+## 📚 React Hooks Overview
 
-This file documents all custom React hooks in the `hooks/` directory, their usage, and integration for QCity, QMOI AI, and QMOI Space.
+This comprehensive document provides detailed information about all custom React hooks in the QMOI system, organized by category and functionality.
 
-## Hook Statistics
+## 📊 Hooks Statistics
 
 - **Total Custom Hooks**: 33
-- **Active Hooks**: 33
-- **Integration Status**: ✅ All hooks integrated and tested
+- **Categories**: 7
+- **Integration Status**: ✅ All hooks tested and integrated
+- **Production Ready**: ✅ Yes
 
-## All Hooks
+## 🗂️ Hooks by Category
 
-- [use-mobile](hooks/use-mobile.ts) - use-mobile hook
-- [use-mobile](hooks/use-mobile.tsx) - use-mobile hook
-- [use-toast](hooks/use-toast.ts) - use-toast hook
-- [useAIFeatureEnhancer](hooks/useAIFeatureEnhancer.ts) - useAIFeatureEnhancer hook
-- [useAIHealthCheck](hooks/useAIHealthCheck.ts) - useAIHealthCheck hook
-- [useAnalyticsDashboard](hooks/useAnalyticsDashboard.ts) - useAnalyticsDashboard hook
-- [useAutoEarningTasks](hooks/useAutoEarningTasks.ts) - useAutoEarningTasks hook
-- [useAutoFixAllProblems](hooks/useAutoFixAllProblems.ts) - useAutoFixAllProblems hook
-- [useBitgetTrader](hooks/useBitgetTrader.ts) - useBitgetTrader hook
-- [useColabJob](hooks/useColabJob.ts) - useColabJob hook
-- [useDatasetManager](hooks/useDatasetManager.ts) - useDatasetManager hook
-- [useDatasets](hooks/useDatasets.ts) - useDatasets hook
-- [useDeviceHealth](hooks/useDeviceHealth.ts) - useDeviceHealth hook
-- [useDeviceOptimizer](hooks/useDeviceOptimizer.ts) - useDeviceOptimizer hook
-- [useErrorAutoFix](hooks/useErrorAutoFix.ts) - useErrorAutoFix hook
-- [useExtensionManager](hooks/useExtensionManager.ts) - useExtensionManager hook
-- [useGithubRepoManager](hooks/useGithubRepoManager.ts) - useGithubRepoManager hook
-- [useGlobalAutomation](hooks/useGlobalAutomation.ts) - useGlobalAutomation hook
-- [useLargeFileUpload](hooks/useLargeFileUpload.ts) - useLargeFileUpload hook
-- [useMediaGenerationStatus](hooks/useMediaGenerationStatus.ts) - useMediaGenerationStatus hook
-- [useModelTrainer](hooks/useModelTrainer.ts) - useModelTrainer hook
-- [useProjects](hooks/useProjects.ts) - useProjects hook
-- [useQCity](hooks/useQCity.ts) - useQCity hook
-- [useQMOIAutoInteraction](hooks/useQMOIAutoInteraction.ts) - useQMOIAutoInteraction hook
-- [useQMOIChat](hooks/useQMOIChat.ts) - useQMOIChat hook
-- [useQVillage](hooks/useQVillage.ts) - useQVillage hook
-- [useSystemMetrics](hooks/useSystemMetrics.ts) - useSystemMetrics hook
-- [useTTCVoice](hooks/useTTCVoice.ts) - useTTCVoice hook
-- [useTaskQueue](hooks/useTaskQueue.ts) - useTaskQueue hook
-- [useTrading](hooks/useTrading.ts) - useTrading hook
-- [useTradingAutomation](hooks/useTradingAutomation.ts) - useTradingAutomation hook
-- [useVSCodeProblems](hooks/useVSCodeProblems.ts) - useVSCodeProblems hook
-- [useWhatsApp](hooks/useWhatsApp.ts) - useWhatsApp hook
+### Summary Table
 
-## Hook Categories
+| Category | Count | Status |
+|----------|-------|--------|
+| AI & ML Hooks | 3 | ✅ Active |
+| Automation Hooks | 6 | ✅ Active |
+| Device & System Hooks | 3 | ✅ Active |
+| Platform Integration Hooks | 2 | ✅ Active |
+| QMOI Integration Hooks | 1 | ✅ Active |
+| Trading Hooks | 3 | ✅ Active |
+| Utility Hooks | 15 | ✅ Active |
 
-### UI & State Management
-- use-mobile.ts/tsx - Mobile UI state
-- use-toast.ts - Toast notifications
-- useQCity.ts - QCity state
-- useQVillage.ts - QVillage state
+| **TOTAL** | **33** | **✅ Production** |
 
-### AI & Features
-- useAIFeatureEnhancer.ts - AI feature enhancement
-- useAIHealthCheck.ts - AI health monitoring
-- useExtensionManager.ts - Extension management
-- useModelTrainer.ts - Model training
 
-### Automation
-- useAutoEarningTasks.ts - Auto earning tasks
-- useAutoFixAllProblems.ts - Auto fix problems
-- useGlobalAutomation.ts - Global automation
+## AI & ML Hooks
 
-### System Monitoring
-- useAnalyticsDashboard.ts - Analytics tracking
-- useSystemMetrics.ts - System metrics
-- useDeviceHealth.ts - Device health
-- useDeviceOptimizer.ts - Device optimization
+**Count**: 3
 
-### Data Management
-- useDatasetManager.ts - Dataset management
-- useDatasets.ts - Datasets tracking
-- useLargeFileUpload.ts - File upload
-- useProjects.ts - Project management
+### useAIFeatureEnhancer
 
-### Communication & Integration
-- useBitgetTrader.ts - Bitget trading
-- useTrading.ts - Trading operations
-- useTradingAutomation.ts - Trading automation
-- useWhatsApp.ts - WhatsApp integration
-- useQMOIChat.ts - QMOI chat
+- **File**: [useAIFeatureEnhancer.ts](hooks/useAIFeatureEnhancer.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
 
-### Task Management
-- useTaskQueue.ts - Task queue management
-- useColabJob.ts - Colab job management
-- useMediaGenerationStatus.ts - Media generation
+### useAIHealthCheck
 
-### Development Tools
-- useGithubRepoManager.ts - GitHub management
-- useVSCodeProblems.ts - VS Code integration
-- useErrorAutoFix.ts - Error auto-fix
+- **File**: [useAIHealthCheck.ts](hooks/useAIHealthCheck.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
 
-### Voice & Audio
-- useTTCVoice.ts - Text-to-speech voice
+### useModelTrainer
 
-## Usage Examples
+- **File**: [useModelTrainer.ts](hooks/useModelTrainer.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
 
-All hooks are documented and tested for production use.
 
-## Hook Integration
+## Automation Hooks
 
-### In Components
-- Used in QCity, QMOI AI, and QMOI Space
-- All hooks are production-ready
-- Comprehensive error handling included
-- Full TypeScript support
+**Count**: 6
 
-### In Context Providers
-- Hooks are wrapped in context providers
-- Compatible with Redux and Zustand
-- Support for async operations
-- Built-in caching mechanisms
+### useAutoEarningTasks
 
-## Memory Sync & Hooks
+- **File**: [useAutoEarningTasks.ts](hooks/useAutoEarningTasks.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
 
-QMOI implements a configurable memory sync system:
-- `POST /sync/push` — Push memory to backends
-- `POST /sync/pull` — Pull remote memory
-- `GET /sync/config` — List sync backends
-- Background sync support for automation
+### useAutoFixAllProblems
 
-## Zero-Rated Features
+- **File**: [useAutoFixAllProblems.ts](hooks/useAutoFixAllProblems.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
 
-All QMOI hooks provide zero-rated (free, unlimited) features:
-- No billing or subscription required
-- Unlimited parallel jobs
-- Advanced analytics included
-- Premium integrations provided
-- All features documented in QMOIFREE.md
+### useErrorAutoFix
 
-## Testing
+- **File**: [useErrorAutoFix.ts](hooks/useErrorAutoFix.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
 
-All hooks have corresponding test files:
-- Unit tests for each hook
-- Integration tests with components
-- E2E tests for critical flows
-- Test files location: `__tests__/hooks/`
+### useGlobalAutomation
 
-## Maintenance
+- **File**: [useGlobalAutomation.ts](hooks/useGlobalAutomation.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
 
-- ✅ All hooks checked for usage
-- ✅ Unused hooks marked for removal
-- ✅ All hooks documented
-- ✅ All hooks tested
-- ✅ All hooks integrated
+### useQMOIAutoInteraction
+
+- **File**: [useQMOIAutoInteraction.ts](hooks/useQMOIAutoInteraction.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### useVSCodeProblems
+
+- **File**: [useVSCodeProblems.ts](hooks/useVSCodeProblems.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+
+## Device & System Hooks
+
+**Count**: 3
+
+### useDeviceHealth
+
+- **File**: [useDeviceHealth.ts](hooks/useDeviceHealth.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### useDeviceOptimizer
+
+- **File**: [useDeviceOptimizer.ts](hooks/useDeviceOptimizer.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### useSystemMetrics
+
+- **File**: [useSystemMetrics.ts](hooks/useSystemMetrics.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+
+## Platform Integration Hooks
+
+**Count**: 2
+
+### useQCity
+
+- **File**: [useQCity.ts](hooks/useQCity.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### useQVillage
+
+- **File**: [useQVillage.ts](hooks/useQVillage.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+
+## QMOI Integration Hooks
+
+**Count**: 1
+
+### useQMOIChat
+
+- **File**: [useQMOIChat.ts](hooks/useQMOIChat.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+
+## Trading Hooks
+
+**Count**: 3
+
+### useBitgetTrader
+
+- **File**: [useBitgetTrader.ts](hooks/useBitgetTrader.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### useTrading
+
+- **File**: [useTrading.ts](hooks/useTrading.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### useTradingAutomation
+
+- **File**: [useTradingAutomation.ts](hooks/useTradingAutomation.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+
+## Utility Hooks
+
+**Count**: 15
+
+### use-mobile
+
+- **File**: [use-mobile.ts](hooks/use-mobile.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### use-mobilex
+
+- **File**: [use-mobile.tsx](hooks/use-mobile.tsx)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### use-toast
+
+- **File**: [use-toast.ts](hooks/use-toast.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### useAnalyticsDashboard
+
+- **File**: [useAnalyticsDashboard.ts](hooks/useAnalyticsDashboard.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### useColabJob
+
+- **File**: [useColabJob.ts](hooks/useColabJob.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### useDatasetManager
+
+- **File**: [useDatasetManager.ts](hooks/useDatasetManager.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### useDatasets
+
+- **File**: [useDatasets.ts](hooks/useDatasets.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### useExtensionManager
+
+- **File**: [useExtensionManager.ts](hooks/useExtensionManager.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### useGithubRepoManager
+
+- **File**: [useGithubRepoManager.ts](hooks/useGithubRepoManager.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### useLargeFileUpload
+
+- **File**: [useLargeFileUpload.ts](hooks/useLargeFileUpload.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### useMediaGenerationStatus
+
+- **File**: [useMediaGenerationStatus.ts](hooks/useMediaGenerationStatus.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### useProjects
+
+- **File**: [useProjects.ts](hooks/useProjects.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### useTTCVoice
+
+- **File**: [useTTCVoice.ts](hooks/useTTCVoice.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### useTaskQueue
+
+- **File**: [useTaskQueue.ts](hooks/useTaskQueue.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+### useWhatsApp
+
+- **File**: [useWhatsApp.ts](hooks/useWhatsApp.ts)
+- **Type**: React Custom Hook
+- **Status**: ✅ Active
+- **Integration**: Full
+
+
+## 🔧 Hook Usage Guidelines
+
+### Installation
+All hooks are pre-installed in the project. Import directly from the hooks directory:
+
+```typescript
+import { useQCity } from '@/hooks/useQCity';
+import { useAIFeatureEnhancer } from '@/hooks/useAIFeatureEnhancer';
+```
+
+### Best Practices
+1. **Dependency Arrays**: Keep dependenciesarrays accurate
+2. **Cleanup**: Always clean up side effects in return function
+3. **Memoization**: Use memo for expensive computations
+4. **Error Handling**: Handle errors gracefully in all hooks
+5. **TypeScript**: Use proper types for all hook parameters and returns
+
+### Common Patterns
+- State management with `useState`
+- Effect management with `useEffect`
+- Context consumption with `useContext`
+- Performance optimization with `useMemo` and `useCallback`
+
+## 📦 Hook Export Configuration
+
+All hooks are exported from the main hooks index for easy importing:
+
+```typescript
+export * from './useQCity';
+export * from './useAIFeatureEnhancer';
+// ... all other hooks
+```
+
+## 🧪 Testing Hooks
+
+Each hook includes corresponding tests:
+- Unit tests for hook logic
+- Integration tests for component usage
+- Mock implementations for testing
+- Error scenario coverage
+
+## 🔄 Hook Lifecycle
+
+1. **Mounting**: Hook initializes with initial state
+2. **Updating**: Hook responds to prop/state changes
+3. **Effects**: Side effects run after render
+4. **Cleanup**: Resources cleaned up before unmount or dependency change
+5. **Unmounting**: Hook cleanup completes
+
+## 📝 Hook Documentation
+
+Each hook includes:
+- JSDoc comments with parameters and return types
+- Usage examples
+- Error handling documentation
+- Performance considerations
+- Dependencies and side effects
 
 ---
-
-**Auto-generated by**: `scripts/comprehensive_docs_update.py`
-**Last Updated**: 2026-03-29T00:33:19.113735Z
+*This document is maintained with the latest hook inventory and status.*

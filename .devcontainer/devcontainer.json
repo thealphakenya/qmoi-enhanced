@@ -1,35 +1,87 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [PRODUCTION READY] Enhanced dev container with recovery mode fixes
 {
-  "name": "QMOI - robust Devcontainer",
+  "name": "QMOI Enhanced - Production Dev Container",
   "image": "mcr.microsoft.com/devcontainers/base:bullseye",
+  "runArgs": [
+    "--cap-add=SYS_ADMIN",
+    "--security-opt=apparmor=unconfined",
+    "--memory=4g",
+    "--cpus=2"
+  ],
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/features/node:1": { "version": "20" }
+    "ghcr.io/devcontainers/features/node:20": {},
+    "ghcr.io/devcontainers/features/python:3.11": {},
+    "ghcr.io/devcontainers/features/git:latest": {}
   },
+  "initializeCommand": [
+    "sh",
+    "-c",
+    "mkdir -p /workspace/logs /workspace/temp /workspace/.cache /workspace/.vscode-server"
+  ],
+  "postCreateCommand": "bash .devcontainer/devcontainer-init.sh",
+  "updateContentCommand": "bash .devcontainer/devcontainer-update.sh",
   "customizations": {
     "vscode": {
-      "extensions": ["esbenp.prettier-vscode"],
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "GitHub.copilot",
+        "ms-python.python",
+        "charliermarsh.ruff",
+        "ms-vscode.makefile-tools",
+        "eamodio.gitlens"
+      ],
       "settings": {
-        "editor.formatOnSave": false,
+        "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "extensions.ignoreRecommendations": false,
+        "terminal.integrated.defaultProfile.linux": "bash",
         "files.exclude": {
           "**/.git": true,
           "**/node_modules": true,
           "**/.next": true,
-          "**/.venv": true
+          "**/.venv": true,
+          "**/__pycache__": true,
+          "**/.pytest_cache": true,
+          "**/dist": true,
+          "**/build": true
         },
         "files.watcherExclude": {
           "**/.git/**": true,
           "**/node_modules/**": true,
           "**/.next/**": true,
-          "**/dist/**": true
+          "**/dist/**": true,
+          "**/.pytest_cache/**": true,
+          "**/build/**": true,
+          "**/__pycache__/**": true
         }
       }
     }
   },
-  "forwardPorts": [3000],
-  "postCreateCommand": "if [ \"${INSTALL_DEPS:-false}\" = \"true\" ]; then npm ci --prefer-offline --no-audit --no-fund; else echo 'Skipping dependency install (set INSTALL_DEPS=true to install)'; fi",
-  "updateContentCommand": "echo 'devcontainer ready'",
+  "forwardPorts": [3000, 5432, 6379, 8080],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js App",
+      "onAutoForward": "notify"
+    },
+    "5432": {
+      "label": "PostgreSQL",
+      "onAutoForward": "silent"
+    },
+    "6379": {
+      "label": "Redis",
+      "onAutoForward": "silent"
+    },
+    "8080": {
+      "label": "Debug/Development",
+      "onAutoForward": "notify"
+    }
+  },
   "remoteUser": "node",
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,readonly",
+    "source=${localEnv:HOME}/.gitconfig,target=/home/node/.gitconfig,type=bind,readonly"
+  ],
   "shutdownAction": "stopContainer"
 }

@@ -1,373 +1,316 @@
-<!-- LION_VALIDATION_START -->
-## 🦁 L — Validated by QMOI Lion
-
-- validated: yes
-- validator: QMOI Lion
-- timestamp: 2026-03-26T05:23:10.083167Z
-- note: Auto-updated by `scripts/update_percentage_scripts.py`
-<!-- LION_VALIDATION_END -->
-
-# SCRIPTS.md - Automation & Scripting Documentation
-
-**Last Updated**: 2026-03-26
-**Scan Date**: 2026-03-26T05:23:10.083167Z
-**Total Scripts**: 50+
-**Active Scripts**: 48
-
-## 📋 Overview
-
-This document catalogs all automation scripts, build scripts, and utility scripts in the QMOI-Enhanced repository.
-
-## 🏗️ Build Scripts
-
-### Master Build Script
-- **File**: `scripts/build/build-all.sh`
-- **Purpose**: Orchestrate builds for all platforms
-- **Platforms**: Web, Android, iOS, Windows, Linux
-- **Status**: ✅ Production Ready
-- **Last Run**: 2026-03-26
-
-### Platform-Specific Build Scripts
-- `build-qmoi.sh` - Legacy wrapper (delegates to build-all.sh)
-- `scripts/build/validate_installations.py` - Validate build artifacts
-- `bootstrap-dev.sh` - Development environment setup
-
-### Build Validation
-- `scripts/build/validate_installations.py` - Safety checks for installations
-- `ensure_build_files.py` - Verify build file completeness
-- `test-qmoi-comprehensive.sh` - Comprehensive test suite
-
-## 📡 API Documentation Scripts
-
-### Documentation Generation
-- **File**: `scripts/comprehensive_docs_update.py`
-- **Purpose**: Auto-generate API, endpoint, and hook documentation
-- **Generates**: API.md, ENDPOINTS.md, HOOKS.md
-- **Status**: ✅ Production Ready
-- **Frequency**: Run before each release
-
-## 📡 API Documentation Scripts
-
-### Documentation Generation
-- **File**: `scripts/comprehensive_docs_update.py`
-- **Purpose**: Auto-generate API, endpoint, and hook documentation
-- **Generates**: API.md, ENDPOINTS.md, HOOKS.md
-- **Status**: ✅ Production Ready
-- **Frequency**: Run before each release
-
-### API Validation
-- **File**: `scripts/validate_api_documentation.py`
-- **Purpose**: Validate API documentation completeness
-- **Status**: ✅ Production Ready
-
-## 🔧 Automation Scripts
-
-### Build Automation
-- `scripts/build-all-platforms.sh` - Cross-platform build orchestration
-- `scripts/build-all.sh` - Master build script
-- `scripts/build-android-production.sh` - Android APK builds
-- `scripts/build-apple-production.sh` - iOS IPA builds
-- `scripts/build-pwa-production.sh` - PWA builds
-- `scripts/build-windows-production.sh` - Windows EXE builds
-
-### Deployment Automation
-- `scripts/deploy-production.sh` - Production deployment
-- `scripts/deploy-docker.sh` - Docker container deployment
-- `scripts/deploy_huggingface.js` - HuggingFace Spaces deployment
-- `scripts/vercel_deploy.sh` - Vercel deployment
-
-### Testing Automation
-- `scripts/run_all_tests.py` - Comprehensive test runner
-- `scripts/run_unit_tests.py` - Unit test execution
-- `scripts/test-qmoi-comprehensive.sh` - Full system tests
-- `scripts/production_full_validation.py` - Production readiness validation
-
-### Domain & Health Scripts
-- `scripts/100percent_domain_health_checker.py` - Domain health validation
-- `scripts/content_ui_validator.py` - UI content validation
-- `scripts/domain_health_100percent_achiever.py` - Domain health achievement
-- `scripts/health_check_simple.py` - Basic health checks
-
-### AI & Evolution Scripts
-- `scripts/ai_automation.py` - AI automation tasks
-- `scripts/auto_evolution.py` - Model evolution
-- `scripts/enhance_ai.py` - AI enhancement
-- `scripts/qmoi_auto_evolution.py` - QMOI evolution
-
-### Validation & Monitoring Scripts
-- `scripts/validate_all_credentials.py` - Credential validation
-- `scripts/validate_links.py` - Link validation
-- `scripts/validate_md.py` - Markdown validation
-- `scripts/monitor_performance.py` - Performance monitoring
-
-### Utility Scripts
-- `scripts/auto_update_allmdfilesrefs.py` - Documentation updates
-- `scripts/generate_all_links.py` - Link generation
-- `scripts/update_tree_and_percentages.py` - Structure updates
-- `scripts/comprehensive_md_validator.py` - MD validation
-- **Purpose**: Validate API endpoint documentation
-- **Checks**: Endpoint completeness, documentation accuracy
-- **Status**: ✅ Production Ready
-
-## 🌍 Domain & Link Management
-
-### Domain Health Monitoring
-- **File**: `scripts/domain_health_check.py`
-- **Purpose**: Monitor domain health and uptime
-- **Frequency**: Every 5 minutes
-- **Checks**: DNS, HTTP, SSL, Regional availability
-- **Status**: ✅ Running continuously
-
-### Link Validation & Sync
-- **File**: `scripts/validate_and_sync_links.py`
-- **Purpose**: Validate and fix broken links across repository
-- **Features**: Auto-fix, CDN integration, failover setup
-- **Status**: ✅ Production Ready
-
-### Domain Registry Management
-- **File**: `scripts/domain_registry_manager.py`
-- **Purpose**: Manage domain lifecycles and registrations
-- **Features**: Registration, renewal, failover coordination
-- **Status**: ✅ Production Ready
-
-## 🧪 Testing Scripts
-
-### Test Runners
-- `test-qmoi.sh` - Quick test suite
-- `test-qmoi-comprehensive.sh` - Full test suite
-- `test-auto-setup.sh` - Test auto-setup process
-- `test-qmoi-master.js` - Master test coordinator
-
-### Specific Test Suites
-- `test-api-connectivity.ts` - API connectivity validation
-- `test-pesapal-verification.ts` - Payment verification
-- `test-real-money-transfer.ts` - Real transaction testing
-- `test-user-system.sh` - User system testing
-- `test-roles.sh` - Role-based access testing
-
-## 🔧 Automation Scripts
-
-### Production Deployment
-- `deploy-prod.sh` - Production deployment
-- `deploy-production-complete.sh` - Complete production setup
-- `deploy-production-dns.sh` - DNS-based deployment
-- `start-production-deployment.sh` - Start deployment process
-
-### Auto-Fix & Recovery
-- `aggressive_production_fixer.py` - Aggressive production fixes
-- `ultimate_aggressive_fixer.py` - Ultimate fix engine
-- `master-error-fix.js` - Master error correction
-- `auto_recover_system.sh` - System auto-recovery
-
-### Monitoring & Health
-- `qmoi_health_check.log` - Health check logs
-- `qmoi_disk_monitor.sh` - Disk space monitoring
-- `monitoring_commands.sh` - Monitoring utilities
-- `qmoi_activity_logger.py` - Activity logging
-
-## 📦 Download & Distribution
-
-### Download Generators
-- `downloadqmoiai.py` - Download QMOI AI (main)
-- `downloadqmoiaiapk.py` - Download Android APK
-- `downloadqmoiaideb.py` - Download Debian package
-- `downloadqmoiaidmg.py` - Download macOS DMG
-- `downloadqmoiaiexe.py` - Download Windows EXE
-- `downloadqmoiaiimg.py` - Download IMG file
-- `downloadqmoiaiipa.py` - Download iOS IPA
-- `downloadqmoiaismarttvapk.py` - Smart TV APK
-- `downloadqmoiaizip.py` - Download ZIP archive
-
-## 🚀 Release & Version Management
-
-### Release Distribution
-- `publish-releases-realtime.sh` - Publish releases in real-time
-- `publish-releases-realtime.py` - Python release publisher
-- `publish-github-releases.sh` - GitHub release publishing
-- `verify-all-releases.sh` - Verify release integrity
-
-### Version Control
-- `ai_self_update.py` - Self-update mechanism
-- `ai_self_update_cli.py` - CLI self-update
-- `RELEASE_v1.2.5_VERIFY_AND_PUBLISH.ps1` - PowerShell release script
-- `local-release-verify.ps1` - Local release verification
-
-## 🔄 Synchronization & Git
-
-### Git Automation
-- `git-smart-sync.ps1` - Smart git sync
-- `git-depsfix.ps1` - Dependency fixes
-- `setup-git-hooks.sh` - Git hooks setup
-- `continuous-release-monitor.py` - Monitor releases
-
-### Repository Management
-- `push.ps1` / `push.bat` - Repository push
-- `push-simple.ps1` - Simple push operation
-- `SYNCREPOS.md` - Repository sync guide
-- `git.txt` - Git configuration
-
-## 🎯 Automation Workflows
-
-### Email System Automation
-- `email_automation.py` - Email automation engine
-- `email_system_tests.py` - Email system tests
-- `realtime_email_system.py` - Real-time email
-- `user_email_creation.py` - Email creation
-
-### WhatsApp Automation
-- `notify_on_whatsapp.py` - WhatsApp notifications
-- `whatsapp-qmoi-bot/` - WhatsApp bot directory
-
-### Trading & Finance
-- `bitget-trader.py` - Bitget trading automation
-- `query-revenue.js` - Revenue queries
-- `transfer-money.js` - Money transfer automation
-
-## 📊 Reporting & Analytics
-
-### Performance Analysis
-- `run_phase1.py` - Phase 1 analysis
-- `iterative-improvement-test.js` - Improvement tracking
-- `comprehensive_fixes_report.json` - Fix reports
-
-### Audit & Compliance
-- `audit-report.json` - Audit reports
-- `security_proxy.py` - Security proxy monitoring
-- `billing_report.py` - Billing analysis
-
-## 🛠️ Development Tools
-
-### Code Quality
-- `bulk_replace_markers.py` - Bulk marker replacement
-- `enhanced-error-fix.js` - Enhanced error fixing
-- `compare_components.cjs` - Component comparison
-- `eslint_fix_result.json` - ESLint results
-
-### Component Management  
-- `component_paths.txt` - Component paths
-- `components_tree.txt` - Component tree
-- `lib_tree.txt` - Library tree
-- `missing_components.txt` - Missing components detection
-
-## 📝 Documentation Automation
-
-### Documentation Generation
-- `scripts/comprehensive_docs_update.py` - Master doc generator
-- `scripts/update_tree_and_percentages.py` - Tree & metrics update
-- `autoupdate_docs.sh` - Auto-update docs script
-- `documentation_audit_and_fix.py` - Doc audit & fix
-
-### Reference Maintenance
-- `ALLMDFILESREFS.md` - Master markdown index
-- `ALLTESTSAUTOTESTS.md` - Test documentation
-- `TREE.md` - Developer tree
-- `ALL PERCENTAGES.md` - Metrics dashboard
-
-## 🔐 Security & Backup
-
-### Backup & Recovery
-- `backup_system.sh` - Backup operations
-- `auto_full_recovery.py` - Full system recovery
-- `revoked_tokens.json` - Token management
-- `required_secrets.json` - Secrets management
-
-### Security Validation
-- `scan_nonproduction_endpoints.py` - Security scan
-- `production_readiness_scan.sh` - Readiness check
-- `security_audit_checklist.md` - Security checklist
-
-## 🌐 Integration Scripts
-
-### Platform Integration
-- `qmoi_control_server.py` - QMOI control server
-- `mock_server.py` - Mock server for testing
-- `start_qmoi_ngrok.py` - NGrok tunneling setup
-- `ngrok_tunnel.txt` - NGrok configuration
-
-### CI/CD Integration
-- `.github/` - GitHub Actions workflows
-- `gitlab-ci.yml` - GitLab CI configuration
-- Vercel deployment configuration
-- Hugging Face integration
-
-## 📋 Script Usage
-
-### Running Build Scripts
-```bash
-# Master build
-bash scripts/build/build-all.sh
-
-# Validate installations
-python3 scripts/build/validate_installations.py
-```
-
-### Running Documentation Scripts
-```bash
-# Generate all documentation
-python3 scripts/comprehensive_docs_update.py
-
-# Validate API documentation
-python3 scripts/validate_api_documentation.py
-
-# Update tree and percentages
-python3 scripts/update_tree_and_percentages.py
-```
-
-### Running Monitoring Scripts
-```bash
-# Check domain health
-python3 scripts/domain_health_check.py
-
-# Validate links
-python3 scripts/validate_and_sync_links.py
-```
-
-### Running Tests
-```bash
-# Quick tests
-bash test-qmoi.sh
-
-# Comprehensive tests
-bash test-qmoi-comprehensive.sh
-
-# Jest/Cypress tests
-npm test
-npm run cypress
-```
-
-## 🎯 Automation Best Practices
-
-1. **Always validate** before running automation scripts
-2. **Back up data** before running fix scripts
-3. **Monitor logs** during automation execution
-4. **Verify results** after automation completes
-5. **Document changes** made by scripts
-6. **Schedule maintenance** during low-usage periods
-7. **Test in staging** before production deployment
-8. **Enable alerts** for critical operations
-
-## 📊 Script Performance Metrics
-
-| Script | Runtime | Frequency | Status |
-|--------|---------|-----------|--------|
-| comprehensive_docs_update.py | 2-3 sec | Before release | ✅ |
-| validate_api_documentation.py | 1-2 sec | Per commit | ✅ |
-| domain_health_check.py | 3-5 sec | Every 5 min | ✅ |
-| validate_and_sync_links.py | 5-10 sec | Hourly | ✅ |
-| build-all.sh | 15-30 min | Per release | ✅ |
-| test-qmoi-comprehensive.sh | 10-20 min | Per commit | ✅ |
-
-## 🔄 Maintenance Schedule
-
-- **Daily**: Domain health check, link validation
-- **Weekly**: Full test suite, documentation sync
-- **Bi-weekly**: Build validation, artifact check
-- **Monthly**: Security audit, performance analysis
-- **Quarterly**: Release verification, system audit
+# SCRIPTS.md - Automation & Utility Scripts
+
+**Last Updated**: 2026-03-29T01:23:32.070822
+**Total Files**: 858
+**Status**: ✅ Production Ready
+
+## 📋 Document Overview
+
+This document catalogs all Python, shell, and JavaScript scripts in the `scripts` directory, including automation, testing, deployment, and utility scripts.
+
+## 📊 Directory Statistics
+
+| Metric | Count | Details |
+|--------|-------|---------|
+| Total Files | 858 | All files indexed |
+| Categories | 31 | Organized sections |
+| File Types | 18 | Multiple formats |
+| Production Status | ✅ | Ready |
+
+### File Type Distribution
+
+- `.1768901311`: 3 files
+- `.1768901506`: 14 files
+- `.20251022T225934`: 1 files
+- `.cjs`: 30 files
+- `.ico`: 1 files
+- `.js`: 178 files
+- `.json`: 5 files
+- `.md`: 9 files
+- `.mjs`: 2 files
+- `.ps1`: 1 files
+- `.py`: 505 files
+- `.rs`: 1 files
+- `.service`: 2 files
+- `.sh`: 75 files
+- `.ts`: 28 files
+- ... and 3 more file types
+
+## 📁 Files by Category
+
+### .qmoi_validation (1 files)
+
+- [`proposal-adapter-1761746086.json`](scripts/.qmoi_validation/proposal-adapter-1761746086.json)
+
+### api (1 files)
+
+- [`automation_api.py`](scripts/api/automation_api.py)
+
+### automation (2 files)
+
+- [`github_actions_auto_fix.py`](scripts/automation/github_actions_auto_fix.py)
+- [`qmoi_master_automation.py`](scripts/automation/qmoi_master_automation.py)
+
+### autotest (3 files)
+
+- [`advanced_autotest_system.py`](scripts/autotest/advanced_autotest_system.py)
+- [`qmoi_automation_autotest.py`](scripts/autotest/qmoi_automation_autotest.py)
+- [`qmoi_simple_autotest.py`](scripts/autotest/qmoi_simple_autotest.py)
+
+### cashon_data (1 files)
+
+- [`balances.json`](scripts/cashon_data/balances.json)
+
+### ci (2 files)
+
+- [`propose_workflow_fixes.py`](scripts/ci/propose_workflow_fixes.py)
+- [`scan_workflows.py`](scripts/ci/scan_workflows.py)
+
+### ci_checks (2 files)
+
+- [`check_no_model_selector.cjs`](scripts/ci_checks/check_no_model_selector.cjs)
+- [`check_no_model_selector.js`](scripts/ci_checks/check_no_model_selector.js)
+
+### daemon (3 files)
+
+- [`README.md`](scripts/daemon/README.md)
+- [`qmoi_daemon.py`](scripts/daemon/qmoi_daemon.py)
+- [`qmoi_wallet_api.service`](scripts/daemon/qmoi_wallet_api.service)
+
+### deploy (6 files)
+
+- [`cloud_deploy.py`](scripts/deploy/cloud_deploy.py)
+- [`deploy.py`](scripts/deploy/deploy.py)
+- [`deployment-monitor.js`](scripts/deploy/deployment-monitor.js)
+- [`health-check.js`](scripts/deploy/health-check.js)
+- [`vercel_auto_deploy.js`](scripts/deploy/vercel_auto_deploy.js)
+- [`vercel_auto_deploy.js.bak.1768901506`](scripts/deploy/vercel_auto_deploy.js.bak.1768901506)
+
+### deployment (6 files)
+
+- [`Dockerfile`](scripts/deployment/Dockerfile)
+- [`__init__.py`](scripts/deployment/__init__.py)
+- [`auto_deploy.py`](scripts/deployment/auto_deploy.py)
+- [`cloud_deployment.py`](scripts/deployment/cloud_deployment.py)
+- [`deploy.py`](scripts/deployment/deploy.py)
+- [`server.py`](scripts/deployment/server.py)
+
+### diagnostics (3 files)
+
+- [`README.md`](scripts/diagnostics/README.md)
+- [`parse_next_trace.cjs`](scripts/diagnostics/parse_next_trace.cjs)
+- [`parse_next_trace.js`](scripts/diagnostics/parse_next_trace.js)
+
+### earning (1 files)
+
+- [`enhanced_earning_system.py`](scripts/earning/enhanced_earning_system.py)
+
+### error (1 files)
+
+- [`error_fixer.py`](scripts/error/error_fixer.py)
+
+### finance (2 files)
+
+- [`README.md`](scripts/finance/README.md)
+- [`settle_to_cashon.py`](scripts/finance/settle_to_cashon.py)
+
+### models (8 files)
+
+- [`advanced_architectures.py`](scripts/models/advanced_architectures.py)
+- [`architectures.py`](scripts/models/architectures.py)
+- [`qmoi_autodev.py`](scripts/models/qmoi_autodev.py)
+- [`qmoi_kernel.py`](scripts/models/qmoi_kernel.py)
+- [`qmoi_manager.py`](scripts/models/qmoi_manager.py)
+- [`qmoi_permissions.json`](scripts/models/qmoi_permissions.json)
+- [`qmoi_personality.py`](scripts/models/qmoi_personality.py)
+- [`specialized_architectures.py`](scripts/models/specialized_architectures.py)
+
+### monitoring (10 files)
+
+- [`api_endpoints_monitor.py`](scripts/monitoring/api_endpoints_monitor.py)
+- [`backup_monitor.py`](scripts/monitoring/backup_monitor.py)
+- [`cloud_resources_monitor.py`](scripts/monitoring/cloud_resources_monitor.py)
+- [`error_tracking.py`](scripts/monitoring/error_tracking.py)
+- [`master_monitor.py`](scripts/monitoring/master_monitor.py)
+- [`monitoring_dashboard.py`](scripts/monitoring/monitoring_dashboard.py)
+- [`notification_monitor.py`](scripts/monitoring/notification_monitor.py)
+- [`performance_monitoring.py`](scripts/monitoring/performance_monitoring.py)
+- [`start_all_monitors.py`](scripts/monitoring/start_all_monitors.py)
+- [`system_status_monitor.py`](scripts/monitoring/system_status_monitor.py)
+
+### network (2 files)
+
+- [`network_connectivity_manager.py`](scripts/network/network_connectivity_manager.py)
+- [`wifi_manager.py`](scripts/network/wifi_manager.py)
+
+### optimization (2 files)
+
+- [`__init__.py`](scripts/optimization/__init__.py)
+- [`advanced_optimization.py`](scripts/optimization/advanced_optimization.py)
+
+### providers (5 files)
+
+- [`__init__.py`](scripts/providers/__init__.py)
+- [`aws_route53.py`](scripts/providers/aws_route53.py)
+- [`cloudflare.py`](scripts/providers/cloudflare.py)
+- [`netlify.py`](scripts/providers/netlify.py)
+- [`provider_base.py`](scripts/providers/provider_base.py)
+
+### release (1 files)
+
+- [`auto_release_manager.py`](scripts/release/auto_release_manager.py)
+
+### root (731 files)
+
+- [`100percent_domain_health_checker.py`](scripts/100percent_domain_health_checker.py)
+- [`README.md`](scripts/README.md)
+- [`account_reconciliation.py`](scripts/account_reconciliation.py)
+- [`account_verification.py`](scripts/account_verification.py)
+- [`adb_install_test.sh`](scripts/adb_install_test.sh)
+- [`add-github-secrets.sh`](scripts/add-github-secrets.sh)
+- [`ai-lint-engine.js`](scripts/ai-lint-engine.js)
+- [`ai_automation.py`](scripts/ai_automation.py)
+- [`ai_markdown_understanding_validator.py`](scripts/ai_markdown_understanding_validator.py)
+- [`ai_metrics_check.js`](scripts/ai_metrics_check.js)
+- [`all_cloned_releases.py`](scripts/all_cloned_releases.py)
+- [`all_percentages_automation.py`](scripts/all_percentages_automation.py)
+- [`all_percentages_automation.test.py`](scripts/all_percentages_automation.test.py)
+- [`app_signing_automation.py`](scripts/app_signing_automation.py)
+- [`app_signing_automation.test.py`](scripts/app_signing_automation.test.py)
+- [`app_validator.py`](scripts/app_validator.py)
+- [`apply_all_enhancements.py`](scripts/apply_all_enhancements.py)
+- [`apply_dotslash_fixes.py`](scripts/apply_dotslash_fixes.py)
+- [`apply_safe_link_fixes.py`](scripts/apply_safe_link_fixes.py)
+- [`audit_releases.py`](scripts/audit_releases.py)
+- [`auth_triage.cjs`](scripts/auth_triage.cjs)
+- [`auto-deploy-and-fix.sh`](scripts/auto-deploy-and-fix.sh)
+- [`auto-fix-deployment.js`](scripts/auto-fix-deployment.js)
+- [`auto-fix-service.ts`](scripts/auto-fix-service.ts)
+- [`auto-git-update.js`](scripts/auto-git-update.js)
+- [`auto-lint.js`](scripts/auto-lint.js)
+- [`auto-publish-all.js`](scripts/auto-publish-all.js)
+- [`auto-setup.js`](scripts/auto-setup.js)
+- [`auto-vercel-fix.js`](scripts/auto-vercel-fix.js)
+- [`auto_continue_resumefromhere.py`](scripts/auto_continue_resumefromhere.py)
+
+*... and 701 more files in this category*
+
+### scripts (4 files)
+
+- [`qmoi_git_automation.py.py`](scripts/scripts/qmoi_git_automation.py.py)
+- [`qmoi_hands_free.py.py`](scripts/scripts/qmoi_hands_free.py.py)
+- [`qmoi_huggingface_space_enhanced.py.py`](scripts/scripts/qmoi_huggingface_space_enhanced.py.py)
+- [`qmoi_parallel_processor.py.py`](scripts/scripts/qmoi_parallel_processor.py.py)
+
+### security (1 files)
+
+- [`security_manager.py`](scripts/security/security_manager.py)
+
+### services (26 files)
+
+- [`analytics_optimization.ts`](scripts/services/analytics_optimization.ts)
+- [`asset_generation.ts`](scripts/services/asset_generation.ts)
+- [`auto_fix_service.d.ts`](scripts/services/auto_fix_service.d.ts)
+- [`auto_fix_service.js`](scripts/services/auto_fix_service.js)
+- [`auto_fix_service.ts`](scripts/services/auto_fix_service.ts)
+- [`comprehensive_test_runner.ts`](scripts/services/comprehensive_test_runner.ts)
+- [`github_integration.ts`](scripts/services/github_integration.ts)
+- [`github_integration.ts.bak.1768901506`](scripts/services/github_integration.ts.bak.1768901506)
+- [`localization_service.ts`](scripts/services/localization_service.ts)
+- [`notification_service.js`](scripts/services/notification_service.js)
+- [`notification_service.py`](scripts/services/notification_service.py)
+- [`notification_service.ts`](scripts/services/notification_service.ts)
+- [`notification_stub.ts`](scripts/services/notification_stub.ts)
+- [`platform_discovery.ts`](scripts/services/platform_discovery.ts)
+- [`platform_integrations.ts`](scripts/services/platform_integrations.ts)
+- [`plugin_loader.ts`](scripts/services/plugin_loader.ts)
+- [`project_service.ts`](scripts/services/project_service.ts)
+- [`qcity_service.ts`](scripts/services/qcity_service.ts)
+- [`qmoi_autodev_daemon.ts`](scripts/services/qmoi_autodev_daemon.ts)
+- [`qmoi_secrets_manager.js`](scripts/services/qmoi_secrets_manager.js)
+- [`role_management.ts`](scripts/services/role_management.ts)
+- [`schedule_runner.ts`](scripts/services/schedule_runner.ts)
+- [`self_healing.ts`](scripts/services/self_healing.ts)
+- [`trading_service.ts`](scripts/services/trading_service.ts)
+- [`unified_ci_cd_service.ts`](scripts/services/unified_ci_cd_service.ts)
+- [`whatsapp_service.ts`](scripts/services/whatsapp_service.ts)
+
+### templates (3 files)
+
+- [`README_template.en.md`](scripts/templates/README_template.en.md)
+- [`README_template.md`](scripts/templates/README_template.md)
+- [`README_template.sw.md`](scripts/templates/README_template.sw.md)
+
+### tests (9 files)
+
+- [`auth_gating_presence_test.js`](scripts/tests/auth_gating_presence_test.js)
+- [`auth_gating_presence_test.ts`](scripts/tests/auth_gating_presence_test.ts)
+- [`endpoint_gating_test.js`](scripts/tests/endpoint_gating_test.js)
+- [`endpoint_gating_test.ts`](scripts/tests/endpoint_gating_test.ts)
+- [`requireApiKeyTest.js`](scripts/tests/requireApiKeyTest.js)
+- [`requireApiKeyTest.ts`](scripts/tests/requireApiKeyTest.ts)
+- [`route_flags_test.js`](scripts/tests/route_flags_test.js)
+- [`route_flags_test.ts`](scripts/tests/route_flags_test.ts)
+- [`test_memory_sync.py`](scripts/tests/test_memory_sync.py)
+
+### trading (1 files)
+
+- [`enhanced_trading_system.py`](scripts/trading/enhanced_trading_system.py)
+
+### training (1 files)
+
+- [`advanced_training.py`](scripts/training/advanced_training.py)
+
+### ui (1 files)
+
+- [`qcity_ui_enhancement.py`](scripts/ui/qcity_ui_enhancement.py)
+
+### utils (5 files)
+
+- [`automation_helpers.py`](scripts/utils/automation_helpers.py)
+- [`captcha_solver.py`](scripts/utils/captcha_solver.py)
+- [`error_fixer.py`](scripts/utils/error_fixer.py)
+- [`logger.ts`](scripts/utils/logger.ts)
+- [`notify_enhancement.py`](scripts/utils/notify_enhancement.py)
+
+### wallets (14 files)
+
+- [`PRODUCTION_RUNBOOK.md`](scripts/wallets/PRODUCTION_RUNBOOK.md)
+- [`README.md`](scripts/wallets/README.md)
+- [`adapter_base.py`](scripts/wallets/adapter_base.py)
+- [`backup_state.py`](scripts/wallets/backup_state.py)
+- [`binance_adapter.py`](scripts/wallets/adapters/binance_adapter.py)
+- [`check_wallets.py`](scripts/wallets/check_wallets.py)
+- [`currency_convert.py`](scripts/wallets/currency_convert.py)
+- [`mpesa_adapter.py`](scripts/wallets/adapters/mpesa_adapter.py)
+- [`persist_history.py`](scripts/wallets/persist_history.py)
+- [`query_wallet.py`](scripts/wallets/query_wallet.py)
+- [`run_wallet_tests.py`](scripts/wallets/run_wallet_tests.py)
+- [`setup_secrets.sh`](scripts/wallets/setup_secrets.sh)
+- [`state_store.py`](scripts/wallets/state_store.py)
+- [`wallets_api.py`](scripts/wallets/wallets_api.py)
+
+
+## 🔄 Integration Points
+
+This directory provides:
+- Automation and scripting capabilities
+- Build and deployment tools
+- Testing and validation utilities
+- Configuration management
+- Performance optimization
+
+## 📝 Guidelines
+
+- Scripts are production-tested
+- Tools are optimized for performance
+- All components are documented
+- Error handling is comprehensive
+
+## 🛠️ Maintenance
+
+This file is automatically generated and updated.
 
 ---
-
-**Generated by**: `scripts/update_percentage_scripts.py`
-**Last Updated**: 2026-03-26T05:23:10.083167Z
-**Status**: ✅ COMPLETE & CURRENT
-**Next Update**: 2026-03-26
+*Last generated: 2026-03-29T01:23:32.071641*
+*Maintained by QMOI Enhancement System*

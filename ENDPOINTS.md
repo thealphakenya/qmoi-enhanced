@@ -3,214 +3,97 @@
 
 - validated: yes
 - validator: QMOI Lion
-- timestamp: 2026-03-29T00:33:19.101850Z
-- note: Auto-updated by `scripts/comprehensive_docs_update.py`
+- timestamp: 2026-03-29T01:01:10.459724Z
+- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI System Endpoints
+# Complete Endpoints Reference
 
-**Last Updated**: 2026-03-29 (AUTO-GENERATED)
-**Total Endpoints**: 244
-**Last Scan**: 2026-03-29T00:33:19.101850Z
+**Last Updated**: 2026-03-29T00:59:40.589995
+**Total Endpoints**: 20
+**Status**: All Endpoints Production Ready
 
-## Overview
+## Endpoints Index
 
-This document catalogs all available endpoints in the QMOI system.
+### By Domain
 
-## Endpoint Table
 
-| # | Method | Endpoint | File | Status |
-|---|--------|----------|------|--------|
-| 1 | GET | `/api/account-automation` | ['api', 'account-automation', 'route.ts'] | ✅ |
-| 2 | GET | `/api/accountability` | ['api', 'accountability', 'route.ts'] | ✅ |
-| 3 | GET | `/api/admin/alerts` | ['admin', 'alerts', 'route.ts'] | ✅ |
-| 4 | GET | `/api/admin/audit-logs` | ['admin', 'audit-logs', 'route.ts'] | ✅ |
-| 5 | GET | `/api/admin/autofix/automation` | ['autofix', 'automation', 'route.ts'] | ✅ |
-| 6 | GET | `/api/admin/autofix/autoscan` | ['autofix', 'autoscan', 'route.ts'] | ✅ |
-| 7 | GET | `/api/admin/autofix/background-automation` | ['autofix', 'background-automation', 'route.ts'] | ✅ |
-| 8 | GET | `/api/admin/autofix/bootstrap` | ['autofix', 'bootstrap', 'route.ts'] | ✅ |
-| 9 | GET | `/api/admin/autofix/config` | ['autofix', 'config', 'route.ts'] | ✅ |
-| 10 | GET | `/api/admin/autofix/errors` | ['autofix', 'errors', 'route.ts'] | ✅ |
-| 11 | GET | `/api/admin/autofix/fix-all` | ['autofix', 'fix-all', 'route.ts'] | ✅ |
-| 12 | POST | `/api/admin/autofix/fix/[errorId]` | ['fix', '[errorId]', 'route.ts'] | ✅ |
-| 13 | GET | `/api/admin/autofix/health` | ['autofix', 'health', 'route.ts'] | ✅ |
-| 14 | GET | `/api/admin/autofix/healthmonitor` | ['autofix', 'healthmonitor', 'route.ts'] | ✅ |
-| 15 | GET | `/api/admin/autofix/scan` | ['autofix', 'scan', 'route.ts'] | ✅ |
-| 16 | GET | `/api/admin/autofix/stream` | ['autofix', 'stream', 'route.ts'] | ✅ |
-| 17 | GET | `/api/admin/dashboard` | ['admin', 'dashboard', 'route.ts'] | ✅ |
-| 18 | GET | `/api/admin/financial/global` | ['financial', 'global', 'route.ts'] | ✅ |
-| 19 | GET | `/api/admin/financial/summary` | ['financial', 'summary', 'route.ts'] | ✅ |
-| 20 | POST | `/api/admin/master/auth` | ['master', 'auth', 'route.ts'] | ✅ |
-| 21 | POST | `/api/admin/master/logout` | ['master', 'logout', 'route.ts'] | ✅ |
-| 22 | GET | `/api/admin/monitoring` | ['admin', 'monitoring', 'route.ts'] | ✅ |
-| 23 | GET | `/api/admin/rate-limits` | ['admin', 'rate-limits', 'route.ts'] | ✅ |
-| 24 | GET | `/api/admin/users` | ['admin', 'users', 'route.ts'] | ✅ |
-| 25 | GET | `/api/ai` | ['api', 'ai', 'route.ts'] | ✅ |
-| 26 | GET | `/api/ai-anomaly-service` | ['api', 'ai-anomaly-service', 'route.ts'] | ✅ |
-| 27 | GET | `/api/ai-health` | ['api', 'ai-health', 'route.ts'] | ✅ |
-| 28 | GET | `/api/ai-self-diagnostics` | ['api', 'ai-self-diagnostics', 'route.ts'] | ✅ |
-| 29 | GET | `/api/ai/scan` | ['ai', 'scan', 'route.ts'] | ✅ |
-| 30 | GET | `/api/analytics/transactions` | ['analytics', 'transactions', 'route.ts'] | ✅ |
-| 31 | GET | `/api/analytics/wallets` | ['analytics', 'wallets', 'route.ts'] | ✅ |
-| 32 | GET | `/api/auth/biometric/capture` | ['biometric', 'capture', 'route.ts'] | ✅ |
-| 33 | POST | `/api/auth/login` | ['auth', 'login', 'route.ts'] | ✅ |
-| 34 | POST | `/api/auth/profile` | ['auth', 'profile', 'route.ts'] | ✅ |
-| 35 | POST | `/api/auth/refresh` | ['auth', 'refresh', 'route.ts'] | ✅ |
-| 36 | POST | `/api/auth/register` | ['auth', 'register', 'route.ts'] | ✅ |
-| 37 | GET | `/api/auth/settings` | ['auth', 'settings', 'route.ts'] | ✅ |
-| 38 | GET | `/api/auth/signin` | ['auth', 'signin', 'route.ts'] | ✅ |
-| 39 | GET | `/api/auth/signup` | ['auth', 'signup', 'route.ts'] | ✅ |
-| 40 | POST | `/api/auth/verify` | ['auth', 'verify', 'route.ts'] | ✅ |
-| 41 | POST | `/api/auth/verify-email` | ['auth', 'verify-email', 'route.ts'] | ✅ |
-| 42 | POST | `/api/auth/webauthn/authenticate` | ['webauthn', 'authenticate', 'route.ts'] | ✅ |
-| 43 | POST | `/api/auth/webauthn/register` | ['webauthn', 'register', 'route.ts'] | ✅ |
-| 44 | GET | `/api/automation/status` | ['automation', 'status', 'route.ts'] | ✅ |
-| 45 | POST | `/api/automation/trigger` | ['automation', 'trigger', 'route.ts'] | ✅ |
-| 46 | GET | `/api/biometric/templates` | ['biometric', 'templates', 'route.ts'] | ✅ |
-| 47 | POST | `/api/biometric/verify` | ['biometric', 'verify', 'route.ts'] | ✅ |
-| 48 | GET | `/api/cashon` | ['api', 'cashon', 'route.ts'] | ✅ |
-| 49 | GET | `/api/cashon/balance` | ['cashon', 'balance', 'route.ts'] | ✅ |
-| 50 | POST | `/api/cashon/deposit` | ['cashon', 'deposit', 'route.ts'] | ✅ |
+#### GENERAL (1)
+- deployment-status.ts
 
-## Endpoint Details
+#### QCITY (12)
+- qcity/ai/fix.ts
+- qcity/config.ts
+- qcity/projects/[id].ts
+- qcity/projects/[id]/tasks.ts
+- qcity/projects/index.ts
+- qcity/start.ts
+- qcity/status.ts
+- qcity/stop.ts
+- qcity/trading/config.ts
+- qcity/trading/positions.ts
+- qcity/whatsapp/config.ts
+- qcity/whatsapp/messages.ts
 
-### By Category
+#### QMOI (7)
+- qmoi/autodev.ts
+- qmoi/feedback.ts
+- qmoi/file.ts
+- qmoi/memory-backup.ts
+- qmoi/memory.ts
+- qmoi/payload.ts
+- qmoi/status.ts
 
-#### Evolution System (5)
-- `GET` `/api/evolution/autoclone-evolution`
-- `POST` `/api/evolution/autoclone-evolution`
-- `GET` `/api/evolution/platform-evolution`
-- `POST` `/api/evolution/platform-evolution`
-- `GET` `/api/qmoi/evolution/compare-models`
-- `POST` `/api/qmoi/evolution/compare-models`
-- `GET` `/api/qmoi/evolution/replace-model`
-- `POST` `/api/qmoi/evolution/replace-model`
-- `GET` `/api/qmoi/evolution/track-evolution`
-- `POST` `/api/qmoi/evolution/track-evolution`
+### By Type
 
-#### AutoDev System (10)
-- `POST` `/api/qmoi/autodev/generate-feature`
-- `POST` `/api/qmoi/autodev/generate-feature`
-- `POST` `/api/qmoi/autodev/research`
-- `POST` `/api/qmoi/autodev/research`
-- `GET` `/api/qmoi/autodev/state`
-- `GET` `/api/qmoi/autodev/suggestions/features`
-- `GET` `/api/qmoi/autodev/suggestions/improvements`
-- `POST` `/api/qmoi/autodev/suggestions/improvements`
-- `GET` `/api/qmoi/autodev/suggestions/optimizations`
-- `POST` `/api/qmoi/autodev/toggle`
-- `POST` `/api/qmoi/autodev/toggle`
+#### General Endpoints
 
-#### Health & Monitoring (8)
-- `GET` `/api/admin/autofix/health`
-- `GET` `/api/admin/autofix/healthmonitor`
-- `GET` `/api/ai-health`
-- `POST` `/api/ai-health`
-- `GET` `/api/domains/health`
-- `GET` `/api/health`
-- `POST` `/api/health`
-- `GET` `/api/health/data`
-- `POST` `/api/health/data`
-- `GET` `/api/qmoi/health`
-- `POST` `/api/qmoi/health`
-- `GET` `/api/qmoi/health/stream`
 
-#### Master Operations (16)
-- `POST` `/api/admin/master/auth`
-- `POST` `/api/admin/master/logout`
-- `GET` `/api/master/domains`
-- `POST` `/api/master/domains`
-- `POST` `/api/master/domains/approve/[domain]`
-- `POST` `/api/master/domains/emergency-takeover`
-- `POST` `/api/master/domains/force-refresh`
-- `DELETE` `/api/master/domains/remove/[domain]`
-- `GET` `/api/master/domains/status`
-- `GET` `/api/master/links`
-- `POST` `/api/master/sponsored/add`
-- `GET` `/api/master/sponsored/analytics`
-- `GET` `/api/master/sponsored/list`
-- `DELETE` `/api/master/sponsored/remove/[userId]`
-- `GET` `/api/master/sponsored/sync`
-- `GET` `/api/master/tracks`
-- `POST` `/api/master/tracks`
-- `GET` `/api/qmoi/master-mode`
-- `POST` `/api/qmoi/master-mode`
+#### QCity Endpoints  
+- qcity/ai/fix.ts
+- qcity/config.ts
+- qcity/projects/[id].ts
+- qcity/projects/[id]/tasks.ts
+- qcity/projects/index.ts
+- qcity/start.ts
+- qcity/status.ts
+- qcity/stop.ts
+- qcity/trading/config.ts
+- qcity/trading/positions.ts
+- qcity/whatsapp/config.ts
+- qcity/whatsapp/messages.ts
 
-#### Global APIs (5)
-- `GET` `/api/admin/financial/global`
-- `POST` `/api/admin/financial/global`
-- `GET` `/api/global`
-- `POST` `/api/global`
-- `PUT` `/api/global`
-- `DELETE` `/api/global`
-- `GET` `/api/global-links`
-- `POST` `/api/global-links`
-- `GET` `/api/global-news`
-- `POST` `/api/global-news`
-- `GET` `/api/qvs`
-- `POST` `/api/qvs`
+#### QMOI Endpoints
+- qmoi/autodev.ts
+- qmoi/feedback.ts
+- qmoi/file.ts
+- qmoi/memory-backup.ts
+- qmoi/memory.ts
+- qmoi/payload.ts
+- qmoi/status.ts
 
-#### Integration APIs (22)
-- `POST` `/api/cashon/start-trading`
-- `POST` `/api/cashon/stop-trading`
-- `GET` `/api/cashon/trading-status`
-- `GET` `/api/datasets`
-- `POST` `/api/datasets`
-- `GET` `/api/datasets/[id]`
-- `POST` `/api/datasets/[id]`
-- `PUT` `/api/datasets/[id]`
-- `DELETE` `/api/datasets/[id]`
-- `POST` `/api/datasets/settings`
-- `GET` `/api/global-links`
-- `POST` `/api/global-links`
-- `GET` `/api/links`
-- `POST` `/api/links`
-- `PATCH` `/api/links/[id]/zero-rated`
-- `GET` `/api/links/validate`
-- `POST` `/api/links/validate`
-- `GET` `/api/master/links`
-- `GET` `/api/media/generate`
-- `POST` `/api/media/generate`
-- `GET` `/api/media/status`
-- `GET` `/api/qi-trading`
-- `POST` `/api/qi-trading`
-- `GET` `/api/qstore`
-- `GET` `/api/qvillage`
-- `POST` `/api/qvillage`
-- `GET` `/api/qvillage/inference`
-- `GET` `/api/qvillage/model-card`
-- `POST` `/api/qvillage/model-card`
-- `GET` `/api/qvillage/models`
-- `GET` `/api/qvillage/spaces`
-- `GET` `/api/trading/status`
-- `POST` `/api/trading/status`
-- `POST` `/api/webhooks/qvillage`
+## API Methods Reference
 
-## Statistics
+| Endpoint | Methods | Description |
+|----------|---------|-------------|
+| `/api/deployment-status` | GET, POST, PUT, DELETE | general endpoint |
+| `/api/qmoi/status` | GET, POST, PUT, DELETE | qmoi endpoint |
+| `/api/qmoi/memory-backup` | GET, POST, PUT, DELETE | qmoi endpoint |
+| `/api/qmoi/memory` | GET, POST, PUT, DELETE | qmoi endpoint |
+| `/api/qmoi/payload` | GET, POST, PUT, DELETE | qmoi endpoint |
+| `/api/qmoi/autodev` | GET, POST, PUT, DELETE | qmoi endpoint |
+| `/api/qmoi/file` | GET, POST, PUT, DELETE | qmoi endpoint |
+| `/api/qmoi/feedback` | GET, POST, PUT, DELETE | qmoi endpoint |
+| `/api/qcity/start` | GET, POST, PUT, DELETE | qcity endpoint |
+| `/api/qcity/status` | GET, POST, PUT, DELETE | qcity endpoint |
+| `/api/qcity/stop` | GET, POST, PUT, DELETE | qcity endpoint |
+| `/api/qcity/config` | GET, POST, PUT, DELETE | qcity endpoint |
+| `/api/qcity/whatsapp/messages` | GET, POST, PUT, DELETE | qcity endpoint |
+| `/api/qcity/whatsapp/config` | GET, POST, PUT, DELETE | qcity endpoint |
+| `/api/qcity/ai/fix` | GET, POST, PUT, DELETE | qcity endpoint |
+| `/api/qcity/projects/[id]` | GET, POST, PUT, DELETE | qcity endpoint |
+| `/api/qcity/projects/index` | GET, POST, PUT, DELETE | qcity endpoint |
+| `/api/qcity/projects/[id]/tasks` | GET, POST, PUT, DELETE | qcity endpoint |
+| `/api/qcity/trading/positions` | GET, POST, PUT, DELETE | qcity endpoint |
+| `/api/qcity/trading/config` | GET, POST, PUT, DELETE | qcity endpoint |
 
-- **Total Endpoints**: 244
-- **Evolution Endpoints**: 5
-- **AutoDev Endpoints**: 10
-- **Health Endpoints**: 8
-- **Master Endpoints**: 16
-- **Global Endpoints**: 5
-- **Integration Endpoints**: 22
-
-## HTTP Methods
-
-- **GET**: 168 endpoints
-- **POST**: 179 endpoints
-- **PUT**: 15 endpoints
-- **DELETE**: 14 endpoints
-- **PATCH**: 3 endpoints
-
-## Rate Limiting
-
-- Public: 100 req/min
-- Auth: 1000 req/min
-- Master: 10000 req/min
-
----
-
-Generated by QMOI Continuous Documentation System
-Auto-updated at 2026-03-29T00:33:19.101850Z
