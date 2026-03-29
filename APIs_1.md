@@ -10,7 +10,7 @@
 # QMOI Complete APIs List v1.1
 
 **Generated**: 2026-03-29T03:52:00Z
-**Total Endpoints**: 34 (28 QMOI Core + 6 Avatar System)
+**Total Endpoints**: 66 (28 QMOI Core + 6 Avatar System + 32 Financial)
 **Format**: Comprehensive Single-File Reference
 **Status**: ✅ Production Ready
 
@@ -24,7 +24,8 @@
 | System | 6 | ✅ Active | Optional |
 | Preview/Tools | 2 | ✅ Active | Optional |
 | Avatar System | 6 | ✅ Active | Optional/Token |
-| **TOTAL** | **34** | **✅ Ready** | **Varies** |
+| Financial System | 32 | ✅ Active | Bearer Token |
+| **TOTAL** | **66** | **✅ Ready** | **Varies** |
 
 ---
 
@@ -140,6 +141,35 @@
 - `/api/avatars/generate`
 - `/api/avatars/:userId/customize`
 
+### Financial System (32) - PRODUCTION READY
+- `/api/wallets` (GET, POST)
+- `/api/wallets/:id` (GET, PUT, DELETE)
+- `/api/wallets/:id/backup` (POST)
+- `/api/wallets/:id/restore` (POST)
+- `/api/wallets/:id/audit` (GET)
+- `/api/wallets/:id/permissions` (POST)
+- `/api/wallets/:id/compliance` (GET)
+- `/api/transactions` (GET, POST)
+- `/api/transactions/:id` (GET, PUT)
+- `/api/transactions/:id/cancel` (POST)
+- `/api/transactions/:id/rollback` (POST)
+- `/api/transactions/batch` (POST)
+- `/api/transactions/analytics` (GET)
+- `/api/exchange-rates` (GET)
+- `/api/transactions/:id/confirm` (POST)
+- `/api/balance` (GET)
+- `/api/balance/:walletId` (GET)
+- `/api/balance/history` (GET)
+- `/api/balance/reconciliation` (GET)
+- `/api/balance/verify` (POST)
+- `/api/balance/limits` (GET)
+- `/api/balance/alerts` (POST)
+- `/api/balance/ledger` (GET)
+- `/api/metrics/dashboard` (GET)
+- `/api/metrics/volume` (GET)
+- `/api/metrics/tvl` (GET)
+- `/api/metrics/export` (GET)
+
 ---
 
 ## 🔐 Authentication Types
@@ -156,18 +186,27 @@
 ## 📊 Endpoint Statistics
 
 ### By Authentication Level
-- **Public (No Auth)**: 6 endpoints (17.6%)
-- **Optional Auth**: 8 endpoints (23.5%)
-- **Bearer Token Required**: 19 endpoints (55.9%)
-- **Admin Only**: 1 endpoint (2.9%)
+- **Public (No Auth)**: 7 endpoints (10.6%) - Includes exchange rates
+- **Optional Auth**: 8 endpoints (12.1%)
+- **Bearer Token Required**: 50 endpoints (75.8%) - Includes all financial APIs
+- **Admin Only**: 1 endpoint (1.5%)
 
 ### By HTTP Method
-- **GET**: 11 endpoints (32.4%)
-- **POST**: 18 endpoints (52.9%)
-- **PUT**: 1 endpoint (2.9%)
-- **DELETE**: 1 endpoint (2.9%)
-- **HEAD**: 1 endpoint (2.9%)
-- **OPTIONS**: 1 endpoint (2.9%)
+- **GET**: 32 endpoints (48.5%)
+- **POST**: 28 endpoints (42.4%)
+- **PUT**: 3 endpoints (4.5%)
+- **DELETE**: 2 endpoints (3.0%)
+- **HEAD**: 1 endpoint (1.5%)
+- **OPTIONS**: 1 endpoint (1.5%)
+
+### By Domain
+- **Authentication**: 5 endpoints (7.6%)
+- **QMOI Core**: 13 endpoints (19.7%)
+- **Self-Work**: 3 endpoints (4.5%)
+- **System**: 6 endpoints (9.1%)
+- **Preview/Tools**: 2 endpoints (3.0%)
+- **Avatar System**: 6 endpoints (9.1%)
+- **Financial System**: 32 endpoints (48.5%)
 
 ### By Category
 - **Security/Auth**: 5 endpoints (14.7%)

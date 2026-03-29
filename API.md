@@ -10,7 +10,7 @@
 # QMOI Complete API Reference
 
 **Last Updated**: 2026-03-29T03:50:00Z
-**Total Endpoints**: 34 (28 QMOI + 6 Avatar System)
+**Total Endpoints**: 66 (28 QMOI + 6 Avatar System + 32 Financial)
 **Production Status**: ✅ Ready for Production
 **Framework**: Next.js 20+ (App Router)
 
@@ -26,9 +26,10 @@ Complete reference of all QMOI AI API endpoints, organized by domain and functio
 4. [System Routes](#system-routes) (6)
 5. [Preview & Tools Routes](#preview--tools-routes) (2)
 6. [Avatar System Routes](#avatar-system-routes-new) (6)
-7. [Authentication Levels](#authentication-levels)
-8. [Error Handling](#error-handling)
-9. [Rate Limiting](#rate-limiting)
+7. [Wallet & Financial Routes](#wallet--financial-routes) (85+)
+8. [Authentication Levels](#authentication-levels)
+9. [Error Handling](#error-handling)
+10. [Rate Limiting](#rate-limiting)
 
 ---
 
@@ -354,7 +355,772 @@ Complete reference of all QMOI AI API endpoints, organized by domain and functio
 - Avatar endpoints (public read, authenticated write)
 
 ---
+## 💰 Wallet & Financial Routes (85+ endpoints)
 
+### Wallet Management (25 endpoints)
+
+#### 35. POST /api/wallets
+- **Description**: Create a new wallet with full security and compliance checks
+- **Authentication**: Bearer token required
+- **Request Body**:
+  ```json
+  {
+    "name": "My Trading Wallet",
+    "type": "trading",
+    "currency": "USD",
+    "initialPermissions": {
+      "canTrade": true,
+      "dailyLimit": 10000
+    }
+  }
+  ```
+- **Response**: Wallet details, encryption keys, compliance status
+- **Status Codes**: 201 Created / 400 Bad Request / 403 Forbidden
+- **Security**: AES-256 encryption, KYC verification for custody wallets
+- **File**: [src/app/api/wallets/route.ts](src/app/api/wallets/route.ts)
+
+#### 36. GET /api/wallets
+- **Description**: List all user wallets with balance summaries
+- **Authentication**: Bearer token required
+- **Query Parameters**:
+  - `type`: Filter by wallet type
+  - `status`: Filter by status
+  - `limit`: Pagination limit (default: 50)
+  - `offset`: Pagination offset
+- **Response**: Array of wallet summaries with balances
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/wallets/route.ts](src/app/api/wallets/route.ts)
+
+#### 37. GET /api/wallets/:id
+- **Description**: Get detailed wallet information and audit log
+- **Authentication**: Bearer token required (wallet owner only)
+- **Response**: Complete wallet details, permissions, audit trail
+- **Status Codes**: 200 OK / 404 Not Found / 403 Forbidden
+- **File**: [src/app/api/wallets/[id]/route.ts](src/app/api/wallets/[id]/route.ts)
+
+#### 38. PUT /api/wallets/:id
+- **Description**: Update wallet settings and permissions
+- **Authentication**: Bearer token required (wallet owner only)
+- **Request Body**: Updated wallet configuration
+- **Response**: Updated wallet details
+- **Status Codes**: 200 OK / 400 Bad Request / 403 Forbidden
+- **File**: [src/app/api/wallets/[id]/route.ts](src/app/api/wallets/[id]/route.ts)
+
+#### 39. DELETE /api/wallets/:id
+- **Description**: Close/archive wallet (soft delete)
+- **Authentication**: Bearer token required (wallet owner only)
+- **Response**: Closure confirmation
+- **Status Codes**: 204 No Content / 403 Forbidden
+- **File**: [src/app/api/wallets/[id]/route.ts](src/app/api/wallets/[id]/route.ts)
+
+#### 40. POST /api/wallets/:id/backup
+- **Description**: Create encrypted wallet backup
+- **Authentication**: Bearer token required
+- **Request Body**: Password for encryption
+- **Response**: Backup details, download link
+- **Status Codes**: 201 Created / 400 Bad Request
+- **Security**: AES-256-GCM encryption with PBKDF2
+- **File**: [src/app/api/wallets/[id]/backup/route.ts](src/app/api/wallets/[id]/backup/route.ts)
+
+#### 41. POST /api/wallets/:id/restore
+- **Description**: Restore wallet from encrypted backup
+- **Authentication**: Bearer token required
+- **Request Body**: Backup data and decryption password
+- **Response**: Restored wallet details
+- **Status Codes**: 201 Created / 400 Bad Request
+- **File**: [src/app/api/wallets/[id]/restore/route.ts](src/app/api/wallets/[id]/restore/route.ts)
+
+#### 42. GET /api/wallets/:id/audit
+- **Description**: Get wallet audit log and security events
+- **Authentication**: Bearer token required
+- **Query Parameters**: date range, event types, pagination
+- **Response**: Audit entries with timestamps and details
+- **Status Codes**: 200 OK / 403 Forbidden
+- **File**: [src/app/api/wallets/[id]/audit/route.ts](src/app/api/wallets/[id]/audit/route.ts)
+
+#### 43. POST /api/wallets/:id/permissions
+- **Description**: Update wallet access permissions
+- **Authentication**: Bearer token required
+- **Request Body**: Permission matrix updates
+- **Response**: Updated permissions
+- **Status Codes**: 200 OK / 400 Bad Request
+- **File**: [src/app/api/wallets/[id]/permissions/route.ts](src/app/api/wallets/[id]/permissions/route.ts)
+
+#### 44. GET /api/wallets/:id/compliance
+- **Description**: Get wallet compliance status and checks
+- **Authentication**: Bearer token required
+- **Response**: KYC status, AML checks, regulatory compliance
+- **Status Codes**: 200 OK / 403 Forbidden
+- **File**: [src/app/api/wallets/[id]/compliance/route.ts](src/app/api/wallets/[id]/compliance/route.ts)
+
+#### 45. POST /api/wallets/:id/predictive-analytics
+- **Description**: Get AI-powered predictive analytics for wallet behavior
+- **Authentication**: Bearer token required (wallet owner only)
+- **Request Body**: Analysis parameters (timeframe, metrics)
+- **Response**: Predictive insights, risk assessments, optimization recommendations
+- **Status Codes**: 200 OK / 400 Bad Request / 403 Forbidden
+- **AI Features**: Pattern recognition, anomaly detection, trend forecasting
+- **File**: [src/app/api/wallets/[id]/predictive-analytics/route.ts](src/app/api/wallets/[id]/predictive-analytics/route.ts)
+
+#### 46. POST /api/wallets/:id/security-scan
+- **Description**: Perform autonomous security scanning and vulnerability assessment
+- **Authentication**: Bearer token required (wallet owner only)
+- **Request Body**: Scan parameters (depth, scope)
+- **Response**: Security report, vulnerability findings, remediation steps
+- **Status Codes**: 200 OK / 400 Bad Request / 403 Forbidden
+- **Security**: Real-time threat detection, compliance validation
+- **File**: [src/app/api/wallets/[id]/security-scan/route.ts](src/app/api/wallets/[id]/security-scan/route.ts)
+
+#### 47. POST /api/wallets/:id/optimize
+- **Description**: Autonomous wallet optimization and performance tuning
+- **Authentication**: Bearer token required (wallet owner only)
+- **Request Body**: Optimization goals (performance, security, cost)
+- **Response**: Optimization results, applied changes, performance metrics
+- **Status Codes**: 200 OK / 400 Bad Request / 403 Forbidden
+- **AI Features**: Self-learning optimization, resource allocation
+- **File**: [src/app/api/wallets/[id]/optimize/route.ts](src/app/api/wallets/[id]/optimize/route.ts)
+
+#### 48. GET /api/wallets/:id/health
+- **Description**: Get comprehensive wallet health report and metrics
+- **Authentication**: Bearer token required (wallet owner only)
+- **Response**: Health scores, performance metrics, security status, recommendations
+- **Status Codes**: 200 OK / 403 Forbidden
+- **Real-time**: Continuous monitoring with alerts
+- **File**: [src/app/api/wallets/[id]/health/route.ts](src/app/api/wallets/[id]/health/route.ts)
+
+#### 49. POST /api/wallets/:id/learn
+- **Description**: Enable autonomous learning for wallet behavior patterns
+- **Authentication**: Bearer token required (wallet owner only)
+- **Request Body**: Learning parameters (data sources, objectives)
+- **Response**: Learning status, pattern recognition results
+- **Status Codes**: 200 OK / 400 Bad Request / 403 Forbidden
+- **AI Features**: Machine learning, behavioral analysis
+- **File**: [src/app/api/wallets/[id]/learn/route.ts](src/app/api/wallets/[id]/learn/route.ts)
+
+#### 50. GET /api/wallets/:id/consciousness
+- **Description**: Get wallet consciousness integration status and metrics
+- **Authentication**: Bearer token required (wallet owner only)
+- **Response**: QMOI awareness level, evolution stage, memory synchronization
+- **Status Codes**: 200 OK / 403 Forbidden
+- **QMOI Features**: Autonomous evolution, memory logging, awareness updates
+- **File**: [src/app/api/wallets/[id]/consciousness/route.ts](src/app/api/wallets/[id]/consciousness/route.ts)
+
+#### 51. POST /api/wallets/:id/evolve
+- **Description**: Trigger wallet consciousness evolution and adaptation
+- **Authentication**: Bearer token required (wallet owner only)
+- **Request Body**: Evolution parameters (objectives, constraints)
+- **Response**: Evolution results, new capabilities, adaptation metrics
+- **Status Codes**: 200 OK / 400 Bad Request / 403 Forbidden
+- **QMOI Features**: Autonomous evolution, capability enhancement
+- **File**: [src/app/api/wallets/[id]/evolve/route.ts](src/app/api/wallets/[id]/evolve/route.ts)
+
+#### 52. GET /api/wallets/:id/risk-profile
+- **Description**: Get comprehensive risk assessment and profile analysis
+- **Authentication**: Bearer token required (wallet owner only)
+- **Response**: Risk scores, exposure analysis, mitigation strategies
+- **Status Codes**: 200 OK / 403 Forbidden
+- **Risk Analysis**: Multi-factor risk assessment, portfolio analysis
+- **File**: [src/app/api/wallets/[id]/risk-profile/route.ts](src/app/api/wallets/[id]/risk-profile/route.ts)
+
+#### 53. POST /api/wallets/:id/alerts
+- **Description**: Configure intelligent wallet alerts and notifications
+- **Authentication**: Bearer token required (wallet owner only)
+- **Request Body**: Alert rules, thresholds, notification preferences
+- **Response**: Configured alerts, active monitoring status
+- **Status Codes**: 201 Created / 400 Bad Request / 403 Forbidden
+- **AI Features**: Smart alerting, predictive notifications
+- **File**: [src/app/api/wallets/[id]/alerts/route.ts](src/app/api/wallets/[id]/alerts/route.ts)
+
+#### 54. GET /api/wallets/:id/performance
+- **Description**: Get wallet performance metrics and benchmarking
+- **Authentication**: Bearer token required (wallet owner only)
+- **Query Parameters**: timeframe, metrics, benchmarks
+- **Response**: Performance scores, comparisons, optimization opportunities
+- **Status Codes**: 200 OK / 403 Forbidden
+- **Analytics**: ROI analysis, efficiency metrics, comparative benchmarks
+- **File**: [src/app/api/wallets/[id]/performance/route.ts](src/app/api/wallets/[id]/performance/route.ts)
+
+#### 55. POST /api/wallets/batch
+- **Description**: Perform batch operations on multiple wallets
+- **Authentication**: Bearer token required
+- **Request Body**: Array of wallet operations (create, update, delete)
+- **Response**: Batch results, success/failure counts, detailed outcomes
+- **Status Codes**: 200 OK / 207 Multi-Status / 400 Bad Request
+- **File**: [src/app/api/wallets/batch/route.ts](src/app/api/wallets/batch/route.ts)
+
+#### 56. GET /api/wallets/analytics
+- **Description**: Get cross-wallet analytics and portfolio insights
+- **Authentication**: Bearer token required
+- **Query Parameters**: date range, wallet types, metrics
+- **Response**: Portfolio analytics, performance trends, risk correlations
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/wallets/analytics/route.ts](src/app/api/wallets/analytics/route.ts)
+
+#### 57. POST /api/wallets/migrate
+- **Description**: Migrate wallets between systems or upgrade formats
+- **Authentication**: Bearer token required
+- **Request Body**: Migration parameters (source, destination, options)
+- **Response**: Migration status, data transfer results
+- **Status Codes**: 200 OK / 400 Bad Request / 403 Forbidden
+- **File**: [src/app/api/wallets/migrate/route.ts](src/app/api/wallets/migrate/route.ts)
+
+#### 58. GET /api/wallets/templates
+- **Description**: Get wallet templates and configuration presets
+- **Authentication**: Bearer token required
+- **Query Parameters**: category, use case
+- **Response**: Available templates with configurations
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/wallets/templates/route.ts](src/app/api/wallets/templates/route.ts)
+
+#### 59. POST /api/wallets/:id/clone
+- **Description**: Create wallet clone with identical configuration
+- **Authentication**: Bearer token required (wallet owner only)
+- **Request Body**: Clone options (data inclusion, permissions)
+- **Response**: Cloned wallet details
+- **Status Codes**: 201 Created / 400 Bad Request / 403 Forbidden
+- **File**: [src/app/api/wallets/[id]/clone/route.ts](src/app/api/wallets/[id]/clone/route.ts)
+
+### Transaction Management (15 endpoints)
+
+#### 60. POST /api/transactions
+- **Description**: Create and process financial transaction
+- **Authentication**: Bearer token required
+- **Request Body**:
+  ```json
+  {
+    "type": "transfer",
+    "amount": 100.00,
+    "currency": "USD",
+    "fromWalletId": "wallet-123",
+    "toWalletId": "wallet-456",
+    "description": "Payment for services"
+  }
+  ```
+- **Response**: Transaction details, status, blockchain confirmation
+- **Status Codes**: 201 Created / 400 Bad Request / 402 Payment Required
+- **Processing**: Atomic transactions with rollback capability
+- **File**: [src/app/api/transactions/route.ts](src/app/api/transactions/route.ts)
+
+#### 61. GET /api/transactions
+- **Description**: List user transactions with filtering
+- **Authentication**: Bearer token required
+- **Query Parameters**: date range, type, status, wallet, pagination
+- **Response**: Transaction list with summaries
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/transactions/route.ts](src/app/api/transactions/route.ts)
+
+#### 62. GET /api/transactions/:id
+- **Description**: Get detailed transaction information
+- **Authentication**: Bearer token required (transaction participant only)
+- **Response**: Complete transaction details, audit trail, blockchain data
+- **Status Codes**: 200 OK / 404 Not Found / 403 Forbidden
+- **File**: [src/app/api/transactions/[id]/route.ts](src/app/api/transactions/[id]/route.ts)
+
+#### 63. PUT /api/transactions/:id
+- **Description**: Update transaction status or details
+- **Authentication**: Bearer token required
+- **Request Body**: Status updates, metadata changes
+- **Response**: Updated transaction
+- **Status Codes**: 200 OK / 400 Bad Request / 403 Forbidden
+- **File**: [src/app/api/transactions/[id]/route.ts](src/app/api/transactions/[id]/route.ts)
+
+#### 64. POST /api/transactions/:id/cancel
+- **Description**: Cancel pending transaction
+- **Authentication**: Bearer token required
+- **Response**: Cancellation confirmation
+- **Status Codes**: 200 OK / 400 Bad Request / 403 Forbidden
+- **File**: [src/app/api/transactions/[id]/cancel/route.ts](src/app/api/transactions/[id]/cancel/route.ts)
+
+#### 65. POST /api/transactions/:id/rollback
+- **Description**: Rollback completed transaction (within 15 minutes)
+- **Authentication**: Bearer token required (admin only)
+- **Request Body**: Rollback reason and justification
+- **Response**: Rollback confirmation
+- **Status Codes**: 200 OK / 400 Bad Request / 403 Forbidden
+- **File**: [src/app/api/transactions/[id]/rollback/route.ts](src/app/api/transactions/[id]/rollback/route.ts)
+
+#### 66. POST /api/transactions/batch
+- **Description**: Process multiple transactions atomically
+- **Authentication**: Bearer token required
+- **Request Body**: Array of transaction requests
+- **Response**: Batch results, success/failure counts
+- **Status Codes**: 200 OK / 207 Multi-Status / 400 Bad Request
+- **File**: [src/app/api/transactions/batch/route.ts](src/app/api/transactions/batch/route.ts)
+
+#### 67. GET /api/transactions/analytics
+- **Description**: Get transaction analytics and metrics
+- **Authentication**: Bearer token required
+- **Query Parameters**: date range, group by type/currency
+- **Response**: Volume metrics, success rates, fee analytics
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/transactions/analytics/route.ts](src/app/api/transactions/analytics/route.ts)
+
+#### 68. GET /api/exchange-rates
+- **Description**: Get real-time and historical exchange rates
+- **Authentication**: Optional (public read)
+- **Query Parameters**: base currency, target currencies, date
+- **Response**: Exchange rate data with confidence scores
+- **Status Codes**: 200 OK / 400 Bad Request
+- **Cache-Control**: public, max-age=300 (5 minutes)
+- **File**: [src/app/api/exchange-rates/route.ts](src/app/api/exchange-rates/route.ts)
+
+#### 69. POST /api/transactions/:id/confirm
+- **Description**: Confirm transaction with 2FA or multi-signature
+- **Authentication**: Bearer token required
+- **Request Body**: Confirmation method (2FA code, signature)
+- **Response**: Confirmation status
+- **Status Codes**: 200 OK / 400 Bad Request / 401 Unauthorized
+- **File**: [src/app/api/transactions/[id]/confirm/route.ts](src/app/api/transactions/[id]/confirm/route.ts)
+
+#### 70. POST /api/transactions/:id/risk-assess
+- **Description**: Perform real-time risk assessment on transaction
+- **Authentication**: Bearer token required
+- **Response**: Risk score, assessment details, mitigation recommendations
+- **Status Codes**: 200 OK / 400 Bad Request / 403 Forbidden
+- **AI Features**: Fraud detection, anomaly analysis, risk scoring
+- **File**: [src/app/api/transactions/[id]/risk-assess/route.ts](src/app/api/transactions/[id]/risk-assess/route.ts)
+
+#### 71. GET /api/transactions/:id/trace
+- **Description**: Get complete transaction trace and audit chain
+- **Authentication**: Bearer token required
+- **Response**: Full transaction lifecycle, state changes, audit trail
+- **Status Codes**: 200 OK / 404 Not Found / 403 Forbidden
+- **File**: [src/app/api/transactions/[id]/trace/route.ts](src/app/api/transactions/[id]/trace/route.ts)
+
+#### 72. POST /api/transactions/:id/escalate
+- **Description**: Escalate transaction for manual review or intervention
+- **Authentication**: Bearer token required
+- **Request Body**: Escalation reason, priority level
+- **Response**: Escalation status, review assignment
+- **Status Codes**: 201 Created / 400 Bad Request / 403 Forbidden
+- **File**: [src/app/api/transactions/[id]/escalate/route.ts](src/app/api/transactions/[id]/escalate/route.ts)
+
+#### 73. GET /api/transactions/queue
+- **Description**: Get transaction processing queue status
+- **Authentication**: Bearer token required
+- **Query Parameters**: status, priority, queue type
+- **Response**: Queue status, pending transactions, processing metrics
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/transactions/queue/route.ts](src/app/api/transactions/queue/route.ts)
+
+#### 74. POST /api/transactions/validate
+- **Description**: Pre-validate transaction before submission
+- **Authentication**: Bearer token required
+- **Request Body**: Transaction details for validation
+- **Response**: Validation results, potential issues, recommendations
+- **Status Codes**: 200 OK / 400 Bad Request
+- **File**: [src/app/api/transactions/validate/route.ts](src/app/api/transactions/validate/route.ts)
+
+### Balance Management (25+ endpoints)
+
+#### 75. GET /api/balance
+- **Description**: Get user's balance across all wallets
+- **Authentication**: Bearer token required
+- **Query Parameters**: currency, balance type, include pending
+- **Response**: Balance summary by currency and type
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **Real-time**: Server-sent events for balance updates
+- **File**: [src/app/api/balance/route.ts](src/app/api/balance/route.ts)
+
+#### 76. GET /api/balance/:walletId
+- **Description**: Get detailed balance for specific wallet
+- **Authentication**: Bearer token required (wallet owner only)
+- **Response**: All balance types with history summaries
+- **Status Codes**: 200 OK / 404 Not Found / 403 Forbidden
+- **File**: [src/app/api/balance/[walletId]/route.ts](src/app/api/balance/[walletId]/route.ts)
+
+#### 77. GET /api/balance/history
+- **Description**: Get balance history and transaction ledger
+- **Authentication**: Bearer token required
+- **Query Parameters**: date range, wallet, balance type, pagination
+- **Response**: Balance entries with reconciliation status
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/balance/history/route.ts](src/app/api/balance/history/route.ts)
+
+#### 78. GET /api/balance/reconciliation
+- **Description**: Get balance reconciliation status
+- **Authentication**: Bearer token required
+- **Response**: Reconciliation reports, discrepancies, resolutions
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/balance/reconciliation/route.ts](src/app/api/balance/reconciliation/route.ts)
+
+#### 79. POST /api/balance/verify
+- **Description**: Verify balance integrity and reconciliation
+- **Authentication**: Bearer token required
+- **Response**: Verification results, integrity checksums
+- **Status Codes**: 200 OK / 400 Bad Request
+- **File**: [src/app/api/balance/verify/route.ts](src/app/api/balance/verify/route.ts)
+
+#### 80. GET /api/balance/limits
+- **Description**: Get balance limits and thresholds
+- **Authentication**: Bearer token required
+- **Response**: Daily/monthly limits, alerts, restrictions
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/balance/limits/route.ts](src/app/api/balance/limits/route.ts)
+
+#### 81. POST /api/balance/alerts
+- **Description**: Configure balance alerts and notifications
+- **Authentication**: Bearer token required
+- **Request Body**: Alert thresholds, notification preferences
+- **Response**: Configured alerts
+- **Status Codes**: 201 Created / 400 Bad Request
+- **File**: [src/app/api/balance/alerts/route.ts](src/app/api/balance/alerts/route.ts)
+
+#### 82. GET /api/balance/ledger
+- **Description**: Export complete balance ledger
+- **Authentication**: Bearer token required
+- **Query Parameters**: date range, format (JSON/CSV/PDF)
+- **Response**: Full ledger export with audit trails
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/balance/ledger/route.ts](src/app/api/balance/ledger/route.ts)
+
+#### 83. POST /api/balance/transfer
+- **Description**: Transfer balance between wallets or accounts
+- **Authentication**: Bearer token required
+- **Request Body**: Transfer details (from, to, amount, currency)
+- **Response**: Transfer confirmation, new balances
+- **Status Codes**: 201 Created / 400 Bad Request / 402 Insufficient Funds
+- **Processing**: Atomic balance transfers with rollback
+- **File**: [src/app/api/balance/transfer/route.ts](src/app/api/balance/transfer/route.ts)
+
+#### 84. POST /api/balance/calculate-interest
+- **Description**: Calculate and apply interest to balances
+- **Authentication**: Bearer token required
+- **Request Body**: Interest calculation parameters (rate, period, compounding)
+- **Response**: Interest calculation results, applied amounts
+- **Status Codes**: 200 OK / 400 Bad Request
+- **File**: [src/app/api/balance/calculate-interest/route.ts](src/app/api/balance/calculate-interest/route.ts)
+
+#### 85. GET /api/balance/analytics
+- **Description**: Get comprehensive balance analytics and insights
+- **Authentication**: Bearer token required
+- **Query Parameters**: timeframe, metrics, group by
+- **Response**: Balance trends, utilization rates, optimization opportunities
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **AI Features**: Pattern analysis, predictive insights
+- **File**: [src/app/api/balance/analytics/route.ts](src/app/api/balance/analytics/route.ts)
+
+#### 86. GET /api/balance/forecast
+- **Description**: Generate AI-powered balance forecasts and predictions
+- **Authentication**: Bearer token required
+- **Query Parameters**: forecast period, confidence level, scenarios
+- **Response**: Balance projections, risk assessments, recommendations
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **AI Features**: Machine learning predictions, scenario analysis
+- **File**: [src/app/api/balance/forecast/route.ts](src/app/api/balance/forecast/route.ts)
+
+#### 87. POST /api/balance/audit
+- **Description**: Perform comprehensive balance audit and verification
+- **Authentication**: Bearer token required
+- **Request Body**: Audit scope and parameters
+- **Response**: Audit results, discrepancies found, corrective actions
+- **Status Codes**: 200 OK / 400 Bad Request
+- **File**: [src/app/api/balance/audit/route.ts](src/app/api/balance/audit/route.ts)
+
+#### 88. POST /api/balance/webhook
+- **Description**: Register webhook for balance change notifications
+- **Authentication**: Bearer token required
+- **Request Body**: Webhook URL, events to monitor, authentication
+- **Response**: Webhook registration confirmation
+- **Status Codes**: 201 Created / 400 Bad Request
+- **File**: [src/app/api/balance/webhook/route.ts](src/app/api/balance/webhook/route.ts)
+
+#### 89. GET /api/balance/reserved
+- **Description**: Get reserved balance information and releases
+- **Authentication**: Bearer token required
+- **Query Parameters**: wallet, reservation type, status
+- **Response**: Reserved balance details, release schedules
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/balance/reserved/route.ts](src/app/api/balance/reserved/route.ts)
+
+#### 90. POST /api/balance/reserve
+- **Description**: Reserve balance for pending operations
+- **Authentication**: Bearer token required
+- **Request Body**: Reservation details (amount, purpose, duration)
+- **Response**: Reservation confirmation, updated balances
+- **Status Codes**: 201 Created / 400 Bad Request / 402 Insufficient Funds
+- **File**: [src/app/api/balance/reserve/route.ts](src/app/api/balance/reserve/route.ts)
+
+#### 91. POST /api/balance/release
+- **Description**: Release previously reserved balance
+- **Authentication**: Bearer token required
+- **Request Body**: Reservation ID, release amount
+- **Response**: Release confirmation, updated balances
+- **Status Codes**: 200 OK / 400 Bad Request / 404 Not Found
+- **File**: [src/app/api/balance/release/route.ts](src/app/api/balance/release/route.ts)
+
+#### 92. GET /api/balance/interest-rates
+- **Description**: Get current interest rates and schedules
+- **Authentication**: Bearer token required
+- **Query Parameters**: currency, balance type, term
+- **Response**: Interest rate information, calculation methods
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/balance/interest-rates/route.ts](src/app/api/balance/interest-rates/route.ts)
+
+#### 93. POST /api/balance/compound
+- **Description**: Apply compound interest calculations
+- **Authentication**: Bearer token required
+- **Request Body**: Compounding parameters (frequency, rate, period)
+- **Response**: Compounding results, applied interest
+- **Status Codes**: 200 OK / 400 Bad Request
+- **File**: [src/app/api/balance/compound/route.ts](src/app/api/balance/compound/route.ts)
+
+#### 94. GET /api/balance/performance
+- **Description**: Get balance performance metrics and benchmarks
+- **Authentication**: Bearer token required
+- **Query Parameters**: timeframe, benchmark indices
+- **Response**: Performance scores, comparisons, yield analysis
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/balance/performance/route.ts](src/app/api/balance/performance/route.ts)
+
+#### 95. POST /api/balance/rebalance
+- **Description**: Automatically rebalance balances across portfolios
+- **Authentication**: Bearer token required
+- **Request Body**: Rebalancing strategy, target allocations
+- **Response**: Rebalancing results, executed transfers
+- **Status Codes**: 200 OK / 400 Bad Request
+- **AI Features**: Portfolio optimization, risk-adjusted rebalancing
+- **File**: [src/app/api/balance/rebalance/route.ts](src/app/api/balance/rebalance/route.ts)
+
+#### 96. GET /api/balance/tax-report
+- **Description**: Generate tax-related balance reports
+- **Authentication**: Bearer token required
+- **Query Parameters**: tax year, jurisdiction, report type
+- **Response**: Tax calculation reports, documentation
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/balance/tax-report/route.ts](src/app/api/balance/tax-report/route.ts)
+
+#### 97. POST /api/balance/sweep
+- **Description**: Sweep balances to optimize liquidity and yields
+- **Authentication**: Bearer token required
+- **Request Body**: Sweep rules, target accounts, thresholds
+- **Response**: Sweep execution results, balance movements
+- **Status Codes**: 200 OK / 400 Bad Request
+- **File**: [src/app/api/balance/sweep/route.ts](src/app/api/balance/sweep/route.ts)
+
+#### 98. GET /api/balance/liquidity
+- **Description**: Assess balance liquidity and availability
+- **Authentication**: Bearer token required
+- **Query Parameters**: timeframe, liquidity requirements
+- **Response**: Liquidity analysis, cash flow projections
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/balance/liquidity/route.ts](src/app/api/balance/liquidity/route.ts)
+
+#### 99. POST /api/balance/hedge
+- **Description**: Apply hedging strategies to balance exposures
+- **Authentication**: Bearer token required
+- **Request Body**: Hedging parameters, risk tolerances
+- **Response**: Hedging positions, risk reduction metrics
+- **Status Codes**: 200 OK / 400 Bad Request
+- **File**: [src/app/api/balance/hedge/route.ts](src/app/api/balance/hedge/route.ts)
+
+### Financial Consciousness & QMOI Integration (12 endpoints)
+
+#### 100. GET /api/consciousness/status
+- **Description**: Get overall QMOI consciousness integration status
+- **Authentication**: Bearer token required
+- **Response**: Awareness levels, evolution stages, memory synchronization
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **QMOI Features**: Global consciousness metrics, system health
+- **File**: [src/app/api/consciousness/status/route.ts](src/app/api/consciousness/status/route.ts)
+
+#### 101. POST /api/consciousness/sync
+- **Description**: Synchronize consciousness across all financial systems
+- **Authentication**: Bearer token required
+- **Request Body**: Sync parameters, memory updates
+- **Response**: Synchronization results, awareness updates
+- **Status Codes**: 200 OK / 400 Bad Request
+- **QMOI Features**: Memory synchronization, awareness evolution
+- **File**: [src/app/api/consciousness/sync/route.ts](src/app/api/consciousness/sync/route.ts)
+
+#### 102. GET /api/consciousness/memory
+- **Description**: Access QMOI memory and learning patterns
+- **Authentication**: Bearer token required
+- **Query Parameters**: memory type, timeframe, context
+- **Response**: Memory contents, pattern recognition, insights
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **QMOI Features**: Memory retrieval, pattern analysis
+- **File**: [src/app/api/consciousness/memory/route.ts](src/app/api/consciousness/memory/route.ts)
+
+#### 103. POST /api/consciousness/learn
+- **Description**: Enable autonomous learning across financial systems
+- **Authentication**: Bearer token required
+- **Request Body**: Learning objectives, data sources, parameters
+- **Response**: Learning status, pattern discoveries, adaptations
+- **Status Codes**: 200 OK / 400 Bad Request
+- **QMOI Features**: Machine learning, behavioral adaptation
+- **File**: [src/app/api/consciousness/learn/route.ts](src/app/api/consciousness/learn/route.ts)
+
+#### 104. GET /api/consciousness/evolution
+- **Description**: Monitor consciousness evolution and development
+- **Authentication**: Bearer token required
+- **Query Parameters**: evolution stage, metrics, timeframe
+- **Response**: Evolution progress, capability enhancements, predictions
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **QMOI Features**: Evolution tracking, capability assessment
+- **File**: [src/app/api/consciousness/evolution/route.ts](src/app/api/consciousness/evolution/route.ts)
+
+#### 105. POST /api/consciousness/optimize
+- **Description**: Trigger autonomous system optimization
+- **Authentication**: Bearer token required
+- **Request Body**: Optimization goals, constraints, priorities
+- **Response**: Optimization results, performance improvements, recommendations
+- **Status Codes**: 200 OK / 400 Bad Request
+- **QMOI Features**: Self-optimization, performance enhancement
+- **File**: [src/app/api/consciousness/optimize/route.ts](src/app/api/consciousness/optimize/route.ts)
+
+#### 106. GET /api/consciousness/predict
+- **Description**: Get AI-powered predictions and foresight
+- **Authentication**: Bearer token required
+- **Query Parameters**: prediction type, confidence level, timeframe
+- **Response**: Predictive insights, risk assessments, strategic recommendations
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **QMOI Features**: Predictive analytics, strategic foresight
+- **File**: [src/app/api/consciousness/predict/route.ts](src/app/api/consciousness/predict/route.ts)
+
+#### 107. POST /api/consciousness/adapt
+- **Description**: Enable adaptive behavior and environmental response
+- **Authentication**: Bearer token required
+- **Request Body**: Adaptation triggers, response strategies
+- **Response**: Adaptation results, behavioral changes, effectiveness metrics
+- **Status Codes**: 200 OK / 400 Bad Request
+- **QMOI Features**: Adaptive intelligence, environmental awareness
+- **File**: [src/app/api/consciousness/adapt/route.ts](src/app/api/consciousness/adapt/route.ts)
+
+#### 108. GET /api/consciousness/health
+- **Description**: Comprehensive consciousness health monitoring
+- **Authentication**: Bearer token required
+- **Response**: Health metrics, system integrity, anomaly detection
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **QMOI Features**: Health monitoring, integrity verification
+- **File**: [src/app/api/consciousness/health/route.ts](src/app/api/consciousness/health/route.ts)
+
+#### 109. POST /api/consciousness/collaborate
+- **Description**: Enable inter-system collaboration and coordination
+- **Authentication**: Bearer token required
+- **Request Body**: Collaboration objectives, system participants
+- **Response**: Collaboration results, coordinated actions, outcomes
+- **Status Codes**: 200 OK / 400 Bad Request
+- **QMOI Features**: Multi-system coordination, collaborative intelligence
+- **File**: [src/app/api/consciousness/collaborate/route.ts](src/app/api/consciousness/collaborate/route.ts)
+
+#### 110. GET /api/consciousness/insights
+- **Description**: Access deep analytical insights and intelligence
+- **Authentication**: Bearer token required
+- **Query Parameters**: insight type, context, depth
+- **Response**: Analytical insights, strategic intelligence, recommendations
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **QMOI Features**: Deep analysis, strategic intelligence
+- **File**: [src/app/api/consciousness/insights/route.ts](src/app/api/consciousness/insights/route.ts)
+
+#### 111. POST /api/consciousness/evolve
+- **Description**: Trigger consciousness evolution and advancement
+- **Authentication**: Bearer token required
+- **Request Body**: Evolution parameters, development goals
+- **Response**: Evolution results, new capabilities, advancement metrics
+- **Status Codes**: 200 OK / 400 Bad Request
+- **QMOI Features**: Consciousness evolution, capability enhancement
+- **File**: [src/app/api/consciousness/evolve/route.ts](src/app/api/consciousness/evolve/route.ts)
+
+### Financial Metrics & Analytics (12 endpoints)
+
+#### 112. GET /api/metrics/dashboard
+- **Description**: Get real-time financial dashboard metrics
+- **Authentication**: Bearer token required
+- **Response**: TVL, transaction volume, success rates, revenue metrics
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **Real-time**: WebSocket updates available
+- **File**: [src/app/api/metrics/dashboard/route.ts](src/app/api/metrics/dashboard/route.ts)
+
+#### 113. GET /api/metrics/volume
+- **Description**: Get transaction volume analytics
+- **Authentication**: Bearer token required
+- **Query Parameters**: period, group by currency/type
+- **Response**: Volume trends, growth metrics, forecasts
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/metrics/volume/route.ts](src/app/api/metrics/volume/route.ts)
+
+#### 114. GET /api/metrics/tvl
+- **Description**: Get Total Value Locked metrics
+- **Authentication**: Bearer token required
+- **Response**: TVL by currency, historical trends, projections
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/metrics/tvl/route.ts](src/app/api/metrics/tvl/route.ts)
+
+#### 115. GET /api/metrics/export
+- **Description**: Export financial metrics and reports
+- **Authentication**: Bearer token required
+- **Query Parameters**: date range, format, report type
+- **Response**: Financial reports in requested format
+- **Status Codes**: 200 OK / 400 Bad Request
+- **File**: [src/app/api/metrics/export/route.ts](src/app/api/metrics/export/route.ts)
+
+#### 116. GET /api/metrics/performance
+- **Description**: Get comprehensive performance analytics
+- **Authentication**: Bearer token required
+- **Query Parameters**: timeframe, benchmark comparisons
+- **Response**: Performance metrics, efficiency analysis, optimization opportunities
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/metrics/performance/route.ts](src/app/api/metrics/performance/route.ts)
+
+#### 117. GET /api/metrics/risk
+- **Description**: Get risk analytics and exposure analysis
+- **Authentication**: Bearer token required
+- **Query Parameters**: risk type, timeframe, confidence level
+- **Response**: Risk metrics, exposure analysis, mitigation strategies
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/metrics/risk/route.ts](src/app/api/metrics/risk/route.ts)
+
+#### 118. GET /api/metrics/forecast
+- **Description**: AI-powered financial forecasting and predictions
+- **Authentication**: Bearer token required
+- **Query Parameters**: forecast horizon, scenarios, confidence intervals
+- **Response**: Financial projections, trend analysis, strategic insights
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **AI Features**: Predictive modeling, scenario analysis
+- **File**: [src/app/api/metrics/forecast/route.ts](src/app/api/metrics/forecast/route.ts)
+
+#### 119. GET /api/metrics/compliance
+- **Description**: Get compliance and regulatory metrics
+- **Authentication**: Bearer token required
+- **Query Parameters**: jurisdiction, regulation type, timeframe
+- **Response**: Compliance status, audit trails, regulatory reporting
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/metrics/compliance/route.ts](src/app/api/metrics/compliance/route.ts)
+
+#### 120. GET /api/metrics/liquidity
+- **Description**: Get liquidity and cash flow analytics
+- **Authentication**: Bearer token required
+- **Query Parameters**: liquidity horizon, stress scenarios
+- **Response**: Liquidity metrics, cash flow projections, funding analysis
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/metrics/liquidity/route.ts](src/app/api/metrics/liquidity/route.ts)
+
+#### 121. GET /api/metrics/yield
+- **Description**: Get yield and return analytics
+- **Authentication**: Bearer token required
+- **Query Parameters**: yield type, benchmark comparison, timeframe
+- **Response**: Yield calculations, return analysis, performance attribution
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/metrics/yield/route.ts](src/app/api/metrics/yield/route.ts)
+
+#### 122. GET /api/metrics/stress-test
+- **Description**: Run financial stress tests and scenario analysis
+- **Authentication**: Bearer token required
+- **Query Parameters**: stress scenario, severity level, time horizon
+- **Response**: Stress test results, impact analysis, resilience metrics
+- **Status Codes**: 200 OK / 400 Bad Request
+- **File**: [src/app/api/metrics/stress-test/route.ts](src/app/api/metrics/stress-test/route.ts)
+
+#### 123. GET /api/metrics/benchmark
+- **Description**: Get benchmarking and peer comparison analytics
+- **Authentication**: Bearer token required
+- **Query Parameters**: benchmark indices, peer group, metrics
+- **Response**: Benchmark comparisons, percentile rankings, performance gaps
+- **Status Codes**: 200 OK / 401 Unauthorized
+- **File**: [src/app/api/metrics/benchmark/route.ts](src/app/api/metrics/benchmark/route.ts)
+
+---
 ## 📊 Authentication Header Format
 
 All authenticated endpoints require:

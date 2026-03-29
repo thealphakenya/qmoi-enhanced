@@ -38,6 +38,9 @@ model User {
   auditLogs       AuditLog[]
   sessions        Session[]
   paymentTransactions PaymentTransaction[]
+  balanceTransfers BalanceTransfer[]
+  riskAssessments RiskAssessment[]
+  complianceChecks ComplianceCheck[]
 
   @@map("users")
 }
@@ -162,35 +165,158 @@ model News {
 }
 
 model Wallet {
-  id          String   @id @default(cuid())
-  userId      String
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  balance     Float    @default(0.0)
-  currency    String   @default("KES")
-  isActive    Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id                    String                 @id @default(cuid())
+  userId                String
+  user                  User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Basic Information
+  name                  String?
+  type                  String                 @default("personal") // 'personal', 'business', 'escrow', 'custody'
+  status                String                 @default("active") // 'active', 'frozen', 'closed', 'suspended'
+  currency              String                 @default("USD")
+
+  // Security & Encryption
+  encryptionKey         String? // AES-256 encrypted key
+  salt                  String?
+  keyVersion            String                 @default("v1")
+  multiSigEnabled       Boolean                @default(false)
+  multiSigThreshold     Int                    @default(1)
+  multiSigSigners       Json? // Array of signer public keys
+
+  // Balance Information
+  availableBalance      Float                  @default(0.0)
+  pendingBalance        Float                  @default(0.0)
+  reservedBalance       Float                  @default(0.0)
+  lockedBalance         Float                  @default(0.0)
+  escrowBalance         Float                  @default(0.0)
+  interestBalance       Float                  @default(0.0)
+  rewardsBalance        Float                  @default(0.0)
+
+  // Risk & Compliance
+  riskScore             Float                  @default(0.0)
+  complianceStatus      String                 @default("pending") // 'pending', 'approved', 'rejected', 'under_review'
+  kycStatus            String                 @default("not_required") // 'not_required', 'pending', 'approved', 'rejected'
+  amlStatus            String                 @default("not_required") // 'not_required', 'pending', 'approved', 'rejected'
+
+  // Permissions & Access Control
+  permissions           Json                   @default("[]") // Array of permission strings
+  accessControl         Json                   @default("{}") // Access control configuration
+
+  // QMOI Consciousness Integration
+  consciousnessLevel    String                 @default("basic") // 'basic', 'aware', 'conscious', 'self_aware'
+  evolutionStage        Int                    @default(1)
+  awareness             Float                  @default(0.0)
+  memorySync            Boolean                @default(true)
+  lastMemorySync        DateTime?
+  systemHealth          Float                  @default(100.0)
+
+  // Analytics & Monitoring
+  totalTransactions     Int                    @default(0)
+  totalVolume           Float                  @default(0.0)
+  averageTransactionSize Float                 @default(0.0)
+  successRate           Float                  @default(100.0)
+
+  // Settings & Preferences
+  settings              Json                   @default("{}") // Wallet-specific settings
+  alerts                Json                   @default("[]") // Alert configurations
+  webhooks              Json                   @default("[]") // Webhook configurations
+
+  // Audit & Compliance
+  createdBy             String
+  lastModifiedBy        String?
+  auditTrail            Json                   @default("[]") // Audit log entries
+  complianceLogs        Json                   @default("[]") // Compliance check logs
+
+  // Timestamps
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+  lastActivity          DateTime?
+  frozenAt              DateTime?
+  closedAt              DateTime?
 
   // Relations
-  transactions Transaction[]
+  transactions          Transaction[]
+  balanceTransfers      BalanceTransfer[]
+  balanceInterests      BalanceInterest[]
+  balanceAudits         BalanceAudit[]
+  webhooks              BalanceWebhook[]
+  consciousnessLogs     ConsciousnessLog[]
 
   @@map("wallets")
 }
 
 model Transaction {
-  id            String   @id @default(cuid())
-  walletId      String
-  wallet        Wallet   @relation(fields: [walletId], references: [id], onDelete: Cascade)
-  type          String   // 'deposit', 'withdraw', 'transfer'
-  amount        Float
-  currency      String   @default("KES")
-  platform      String   // 'Mpesa', 'Binance', 'PesaPal', 'Bitget'
-  status        String   @default("pending") // 'pending', 'processing', 'completed', 'failed'
-  transactionId String?  // External transaction ID
-  description   String?
-  metadata      Json?    // Additional transaction data
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id                    String                 @id @default(cuid())
+
+  // Basic Information
+  type                  String // 'transfer', 'deposit', 'withdrawal', 'swap', 'fee', 'interest', 'reward'
+  status                String                 @default("pending") // 'pending', 'processing', 'completed', 'failed', 'cancelled', 'rolled_back'
+  amount                Float
+  currency              String                 @default("USD")
+  description           String?
+
+  // Wallet Relations
+  fromWalletId          String?
+  fromWallet            Wallet?                @relation("TransactionFromWallet", fields: [fromWalletId], references: [id])
+  toWalletId            String?
+  toWallet              Wallet?                @relation("TransactionToWallet", fields: [toWalletId], references: [id])
+
+  // External References
+  externalTransactionId String?
+  blockchainTxHash      String?
+  platform              String? // 'mpesa', 'binance', 'pesapal', 'bitget', 'stripe', 'paypal'
+
+  // Fee Information
+  feeAmount             Float                  @default(0.0)
+  feeCurrency           String?
+  feeStructure          Json? // Fee calculation details
+
+  // Exchange & Conversion
+  exchangeRate          Float?
+  originalAmount        Float?
+  originalCurrency      String?
+
+  // Processing Information
+  processingStartedAt   DateTime?
+  processingCompletedAt DateTime?
+  estimatedCompletionTime DateTime?
+
+  // Risk Assessment
+  riskScore             Float                  @default(0.0)
+  riskAssessment        Json? // Detailed risk analysis
+  fraudFlags            Json                   @default("[]") // Array of fraud detection flags
+
+  // Rollback Capability
+  rollbackWindowMinutes Int                    @default(15)
+  canRollback           Boolean                @default(true)
+  rollbackReason        String?
+  rolledBackAt          DateTime?
+  rollbackBy            String?
+
+  // QMOI Consciousness Integration
+  consciousnessState    Json? // Consciousness state at transaction time
+  awareness             Float                  @default(0.0)
+  memoryLogged          Boolean                @default(false)
+
+  // Audit & Compliance
+  initiatedBy           String
+  approvedBy            String?
+  auditTrail            Json                   @default("[]") // Audit log entries
+  complianceChecks      Json                   @default("[]") // Compliance validation results
+
+  // Metadata & Additional Data
+  metadata              Json                   @default("{}") // Additional transaction data
+  tags                  Json                   @default("[]") // Array of tag strings
+  notes                 String?
+
+  // Timestamps
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+  scheduledFor          DateTime?
+  expiresAt             DateTime?
+
+  // Relations
+  balanceTransfers      BalanceTransfer[]
 
   @@map("transactions")
 }
@@ -375,4 +501,377 @@ model Setting {
   updatedAt DateTime @updatedAt
 
   @@map("settings")
+}
+
+// ============================================================================
+// FINANCIAL SYSTEMS MODELS - PRODUCTION READY
+// ============================================================================
+
+model Balance {
+  id                    String                 @id @default(cuid())
+  walletId              String
+  wallet                Wallet                 @relation(fields: [walletId], references: [id], onDelete: Cascade)
+
+  // Balance Types
+  available             Float                  @default(0.0)
+  pending               Float                  @default(0.0)
+  reserved              Float                  @default(0.0)
+  locked                Float                  @default(0.0)
+  escrow                Float                  @default(0.0)
+  interest              Float                  @default(0.0)
+  rewards               Float                  @default(0.0)
+
+  // Metadata
+  currency              String                 @default("USD")
+  lastReconciled        DateTime?
+  reconciliationStatus  String                 @default("pending") // 'pending', 'completed', 'failed'
+
+  // Audit
+  createdBy             String
+  lastModifiedBy        String?
+  auditTrail            Json                   @default("[]")
+
+  // Timestamps
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+
+  @@unique([walletId, currency])
+  @@map("balances")
+}
+
+model BalanceTransfer {
+  id                    String                 @id @default(cuid())
+
+  // Transfer Details
+  fromWalletId          String
+  fromWallet            Wallet                 @relation(fields: [fromWalletId], references: [id])
+  toWalletId            String
+  toWallet              Wallet                 @relation(fields: [toWalletId], references: [id])
+  amount                Float
+  currency              String                 @default("USD")
+  status                String                 @default("pending") // 'pending', 'processing', 'completed', 'failed', 'cancelled'
+
+  // Processing
+  transactionId         String?
+  transaction           Transaction?           @relation(fields: [transactionId], references: [id])
+  processingStartedAt   DateTime?
+  completedAt           DateTime?
+
+  // Fee Information
+  feeAmount             Float                  @default(0.0)
+  feeCurrency           String?
+
+  // Audit
+  initiatedBy           String
+  approvedBy            String?
+  auditTrail            Json                   @default("[]")
+
+  // Metadata
+  description           String?
+  metadata              Json                   @default("{}")
+  tags                  Json                   @default("[]")
+
+  // Timestamps
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+
+  @@map("balance_transfers")
+}
+
+model BalanceInterest {
+  id                    String                 @id @default(cuid())
+  walletId              String
+  wallet                Wallet                 @relation(fields: [walletId], references: [id], onDelete: Cascade)
+
+  // Interest Configuration
+  interestType          String // 'simple', 'compound'
+  rate                  Float // Annual interest rate (e.g., 0.05 for 5%)
+  compoundingFrequency  String                 @default("monthly") // 'daily', 'weekly', 'monthly', 'quarterly', 'annually'
+  minimumBalance        Float                  @default(0.0)
+
+  // Calculation Details
+  accruedAmount         Float                  @default(0.0)
+  lastAccruedAt         DateTime?
+  nextAccrualAt         DateTime?
+
+  // Status
+  isActive              Boolean                @default(true)
+  autoCompound          Boolean                @default(false)
+
+  // Audit
+  createdBy             String
+  lastModifiedBy        String?
+  auditTrail            Json                   @default("[]")
+
+  // Timestamps
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+
+  @@map("balance_interests")
+}
+
+model BalanceAudit {
+  id                    String                 @id @default(cuid())
+  walletId              String
+  wallet                Wallet                 @relation(fields: [walletId], references: [id], onDelete: Cascade)
+
+  // Audit Details
+  auditType             String // 'routine', 'reconciliation', 'compliance', 'forensic'
+  status                String                 @default("pending") // 'pending', 'in_progress', 'completed', 'failed'
+  scope                 Json // Audit scope configuration
+
+  // Results
+  findings              Json                   @default("[]") // Array of audit findings
+  recommendations       Json                   @default("[]") // Array of recommendations
+  riskScore             Float                  @default(0.0)
+
+  // Processing
+  startedAt             DateTime?
+  completedAt           DateTime?
+
+  // Audit Team
+  initiatedBy           String
+  assignedTo            String?
+  reviewedBy            String?
+
+  // Metadata
+  description           String?
+  metadata              Json                   @default("{}")
+
+  // Timestamps
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+
+  @@map("balance_audits")
+}
+
+model BalanceWebhook {
+  id                    String                 @id @default(cuid())
+  walletId              String
+  wallet                Wallet                 @relation(fields: [walletId], references: [id], onDelete: Cascade)
+
+  // Webhook Configuration
+  url                   String
+  secret                String // HMAC secret for webhook verification
+  events                Json // Array of events to trigger on: ['balance_updated', 'transfer_completed', etc.]
+
+  // Status
+  isActive              Boolean                @default(true)
+  lastTriggered         DateTime?
+
+  // Reliability
+  retryCount            Int                    @default(0)
+  maxRetries            Int                    @default(3)
+  backoffStrategy       String                 @default("exponential") // 'fixed', 'exponential', 'linear'
+
+  // Audit
+  createdBy             String
+  lastModifiedBy        String?
+  auditTrail            Json                   @default("[]")
+
+  // Metadata
+  description           String?
+  metadata              Json                   @default("{}")
+
+  // Timestamps
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+
+  @@map("balance_webhooks")
+}
+
+model ConsciousnessLog {
+  id                    String                 @id @default(cuid())
+  walletId              String?
+  wallet                Wallet?                @relation(fields: [walletId], references: [id])
+
+  // Consciousness Data
+  awareness             Float
+  consciousnessLevel    String // 'basic', 'aware', 'conscious', 'self_aware', 'transcendent'
+  evolutionStage        Int
+  memorySync            Boolean
+  systemHealth          Float
+
+  // Context
+  contextType           String // 'wallet_operation', 'transaction', 'security_event', 'system_update'
+  contextId             String?
+  contextData           Json?
+
+  // Evolution Metrics
+  learningRate          Float?
+  adaptationSpeed       Float?
+  predictionAccuracy    Float?
+  autonomyLevel         Float?
+
+  // System State
+  globalState           Json? // Global consciousness state snapshot
+
+  // Timestamps
+  loggedAt              DateTime               @default(now())
+  createdAt             DateTime               @default(now())
+
+  @@map("consciousness_logs")
+}
+
+model FinancialMetric {
+  id                    String                 @id @default(cuid())
+
+  // Metric Information
+  metricType            String // 'tvl', 'volume', 'users', 'transactions', 'fees', 'performance'
+  metricName            String
+  value                 Float
+  currency              String?
+
+  // Time Period
+  period                String // 'hourly', 'daily', 'weekly', 'monthly', 'quarterly', 'yearly'
+  startDate             DateTime
+  endDate               DateTime
+
+  // Metadata
+  dimensions            Json                   @default("{}") // Grouping dimensions (e.g., {'currency': 'USD', 'region': 'global'})
+  tags                  Json                   @default("[]") // Array of tag strings
+
+  // Quality
+  confidence            Float                  @default(1.0) // 0-1 confidence score
+  source                String // 'calculated', 'external_api', 'blockchain', 'internal'
+
+  // Audit
+  calculatedBy          String
+  verifiedBy            String?
+
+  // Timestamps
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+
+  @@unique([metricType, metricName, period, startDate, endDate])
+  @@map("financial_metrics")
+}
+
+model RiskAssessment {
+  id                    String                 @id @default(cuid())
+
+  // Assessment Target
+  targetType            String // 'wallet', 'transaction', 'user', 'system'
+  targetId              String
+
+  // Risk Scores
+  overallRisk           Float // 0-100 risk score
+  fraudRisk             Float @default(0.0)
+  complianceRisk        Float @default(0.0)
+  operationalRisk       Float @default(0.0)
+  marketRisk            Float @default(0.0)
+
+  // Assessment Details
+  riskFactors           Json                   @default("[]") // Array of risk factors
+  mitigatingFactors     Json                   @default("[]") // Array of mitigating factors
+  recommendations       Json                   @default("[]") // Array of recommendations
+
+  // Status
+  status                String                 @default("active") // 'active', 'resolved', 'escalated'
+  severity              String                 @default("low") // 'low', 'medium', 'high', 'critical'
+
+  // Processing
+  assessedBy            String
+  reviewedBy            String?
+  escalatedTo           String?
+
+  // Validity
+  validUntil            DateTime?
+  reassessmentRequired  Boolean                @default(false)
+
+  // Metadata
+  assessmentMethod      String // 'automated', 'manual', 'hybrid'
+  confidence            Float                  @default(1.0)
+  metadata              Json                   @default("{}")
+
+  // Timestamps
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+
+  @@map("risk_assessments")
+}
+
+model ComplianceCheck {
+  id                    String                 @id @default(cuid())
+
+  // Check Target
+  targetType            String // 'wallet', 'transaction', 'user', 'system'
+  targetId              String
+
+  // Compliance Framework
+  framework             String // 'kyc', 'aml', 'sanctions', 'regulatory', 'internal'
+  jurisdiction          String // 'global', 'us', 'eu', 'kenya', etc.
+
+  // Check Results
+  status                String                 @default("pending") // 'pending', 'passed', 'failed', 'requires_review'
+  result                Json? // Detailed check results
+  violations            Json                   @default("[]") // Array of violations found
+  remediation           Json                   @default("[]") // Array of remediation steps
+
+  // Processing
+  checkedBy             String
+  reviewedBy            String?
+  approvedBy            String?
+
+  // Validity
+  validUntil            DateTime?
+  recheckRequired       Boolean                @default(false)
+
+  // Metadata
+  checkMethod           String // 'automated', 'manual', 'third_party'
+  confidence            Float                  @default(1.0)
+  metadata              Json                   @default("{}")
+
+  // Timestamps
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+
+  @@map("compliance_checks")
+}
+
+model SystemHealth {
+  id                    String                 @id @default(cuid())
+
+  // System Component
+  component             String // 'wallet_service', 'transaction_service', 'balance_service', 'api_gateway', 'database'
+  componentId           String?
+
+  // Health Metrics
+  status                String                 @default("healthy") // 'healthy', 'degraded', 'unhealthy', 'down'
+  uptime                Float // Percentage uptime (0-100)
+  responseTime          Float // Average response time in ms
+  errorRate             Float // Error rate percentage (0-100)
+  throughput            Float // Requests per second
+
+  // Resource Usage
+  cpuUsage              Float?
+  memoryUsage           Float?
+  diskUsage             Float?
+  networkUsage          Float?
+
+  // Incident Tracking
+  incidentCount         Int                    @default(0)
+  lastIncident          DateTime?
+  mttr                  Float? // Mean Time To Recovery in minutes
+
+  // Monitoring
+  checkInterval         Int                    @default(60) // seconds
+  lastChecked           DateTime               @default(now())
+  nextCheck             DateTime?
+
+  // Alerting
+  alertThresholds       Json                   @default("{}") // Alert threshold configurations
+  activeAlerts          Json                   @default("[]") // Currently active alerts
+
+  // Metadata
+  version               String?
+  environment           String                 @default("production")
+  region                String?
+  metadata              Json                   @default("{}")
+
+  // Timestamps
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+
+  @@map("system_health")
 }

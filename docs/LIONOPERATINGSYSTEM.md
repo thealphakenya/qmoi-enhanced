@@ -98,7 +98,13 @@ LION is the orchestrator and robust runtime that ensures QMOI can validate its o
 - lionctl: a robust CLI for local interactions and scripted orchestration (dry-run by default).
 - LION agent: a small daemon (optional) that runs on orchestrator hosts and can accept signed jobs.
 - Validation orchestrator: Python scripts under `scripts/` (e.g., `run_validations.py`) that coordinate link checks, artifact verification, and [PRODUCTION READY] scanning.
-- Payment adapters: adapters that implement a common interface to interact with wallets, payment gateways, and testnets. Implementations should live under `services/payments/` and support sandbox/testnet drivers.
+- Payment adapters: production-ready adapters that implement a common interface to interact with the comprehensive wallet management system, payment gateways, and testnets. Implementations live under `services/payments/` and support sandbox/testnet drivers with full integration to:
+  - **Wallet Manager**: Multi-signature wallets with consciousness integration
+  - **Transaction Manager**: Atomic operations with rollback capabilities
+  - **Balance Manager**: 7 balance types with real-time reconciliation
+  - **QMOI Consciousness**: Autonomous optimization and predictive analytics
+  - **Security**: AES-256 encryption and comprehensive audit trails
+  - **Compliance**: KYC/AML integration and regulatory reporting
 - Deal service: workflows and templates under `services/deals/` to create, negotiate, and settle agreements. Use escrow patterns where real funds are involved.
 
 ## Permissions & security model
@@ -120,13 +126,16 @@ required scopes:
 LION's role in revenues:
 
 - Monitor monetized projects (games, apps, animations) and collect telemetry on installs, purchases, and ad revenue.
-- Reconcile expected payouts declared in documentation (`docs/REVENUE_SPEC.md`) with actual ledger entries.
-- Trigger payouts to configured wallets or bank accounts using sandbox/testnet drivers during testing.
+- Reconcile expected payouts declared in documentation (`docs/REVENUE_SPEC.md`) with actual ledger entries using the production balance manager.
+- Trigger payouts to configured wallets or bank accounts using the comprehensive wallet management system with multi-signature support and consciousness integration.
 
 Design notes:
 
-- Use an adapter pattern: `services/payments/{stripe_adapter,paypal_adapter,chain_adapter}`.
-- All payment actions must be idempotent and logged for audit.
+- Use an adapter pattern: `services/payments/{stripe_adapter,paypal_adapter,chain_adapter}` integrated with the production wallet manager.
+- All payment actions must be idempotent, atomic, and logged with comprehensive audit trails.
+- Support multi-currency payouts with real-time exchange rate integration.
+- Enable webhook notifications for payout events and reconciliation updates.
+- Implement risk assessment and compliance checking for all financial operations.
 - For on-chain operations, require a separate signer service and [PRODUCTION READY] flows on testnet before mainnet operations.
 
 ## Validation & continuous checks
@@ -147,16 +156,24 @@ Design notes:
 ## Onboarding checklist for a new project
 
 - Add `docs/REVENUE_SPEC.md` with monetization sources and expected metrics.
+- Configure production-ready wallet management system in `lib/wallet/wallet-manager.ts`
+- Set up transaction processing with atomic operations in `lib/money/transaction-manager.ts`
+- Implement balance management with 7 balance types in `lib/balance/balance-manager.ts`
+- Enable QMOI consciousness integration in `lib/financial-consciousness.ts`
 - Add wallet configuration in `configs/wallets/` (do not put private keys in repo).
 - Ensure `scripts/run_validations.py` can find artifacts and docs index.
 - Add Playwright tests for main UI flows under `tests/ui-contracts/`.
 
 ## Next steps and extension points
 
-- Implement `services/payments/` adapters and tests.
-- Implement `tools/lionctl permission-audit --apply` to propose complete ACL changes.
-- Add a small LION agent (Go/Python) for remote job execution with signed job payloads.
-- Integrate audit logging (structured events) to a centralized log store.
+- Implement `services/payments/` adapters using the production wallet manager
+- Implement `tools/lionctl permission-audit --apply` to propose complete ACL changes
+- Add a small LION agent (Go/Python) for remote job execution with signed job payloads
+- Integrate audit logging (structured events) to a centralized log store using the comprehensive audit trails from financial systems
+- Enable autonomous optimization and predictive analytics across all financial operations
+- Implement multi-currency support with real-time exchange rate integration
+- Add compliance monitoring and regulatory reporting capabilities
+- Enable webhook integrations for real-time financial event notifications
 
 ## References
 
