@@ -1,9 +1,40 @@
-<!--
-  Enhanced Q-A Icon: Luminous green Q with A inside
--->
-<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="60" cy="60" r="55" stroke="#39FF14" stroke-width="8" fill="#101010"/>
-  <text x="50%" y="58%" text-anchor="middle" fill="#39FF14" font-size="54" font-family="Arial Black, Arial, sans-serif" font-weight="bold" dy=".3em">Q</text>
-  <text x="50%" y="70%" text-anchor="middle" fill="#39FF14" font-size="38" font-family="Arial Black, Arial, sans-serif" font-weight="bold" dy=".3em">A</text>
-  <ellipse cx="90" cy="90" rx="10" ry="5" fill="#39FF14" opacity="0.7"/>
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+  <!-- QMOI Production Logo - Professional Branding -->
+  <defs>
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d9ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0066ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6600ff;stop-opacity:1" />
+    </linearGradient>
+    <filter id="logoGlow">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle with subtle gradient -->
+  <circle cx="100" cy="100" r="95" fill="url(#mainGradient)" opacity="0.08"/>
+  
+  <!-- Evolution rings -->
+  <circle cx="100" cy="100" r="85" fill="none" stroke="url(#mainGradient)" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="100" cy="100" r="70" fill="none" stroke="url(#mainGradient)" stroke-width="1" opacity="0.3"/>
+  <circle cx="100" cy="100" r="55" fill="none" stroke="url(#mainGradient)" stroke-width="0.8" opacity="0.15"/>
+  
+  <!-- Main Q letter with glow effect -->
+  <g filter="url(#logoGlow)">
+    <text x="100" y="125" font-family="'Arial Black', Arial, sans-serif" font-size="100" font-weight="bold" 
+          fill="url(#mainGradient)" text-anchor="middle" dominant-baseline="middle">Q</text>
+  </g>
+  
+  <!-- AI consciousness indicator dots -->
+  <circle cx="140" cy="65" r="4" fill="#00d9ff"/>
+  <circle cx="150" cy="80" r="3" fill="#0066ff"/>
+  <circle cx="145" cy="95" r="2.5" fill="#6600ff"/>
+  
+  <!-- Consciousness pulse -->
+  <circle cx="100" cy="35" r="5" fill="#00d9ff"/>
+  <circle cx="100" cy="35" r="8" fill="none" stroke="#00d9ff" stroke-width="0.8" opacity="0.5"/>
 </svg>

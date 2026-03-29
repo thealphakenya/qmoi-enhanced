@@ -56,31 +56,99 @@ If you are in a restricted environment, open the URL manually after running the 
 
 Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a unified build, automation, deployment, and update pipeline for **QMOI AI** and all **QCity-powered apps** across every platform and device.
 
-## 🔗 Links & Access
+## 🔗 Links & Access - Complete Domain Directory
 
-Access all QMOI platforms directly in your browser with automatic PWA installation:
+**QMOI operates across 13+ synchronized domains ensuring reliable access globally. All linked managed by the 🦁 [LION Link Orchestration Network](./LION.md).**
 
-### Core Platforms
-- **[stable Q AI](https://alphaq.ai)** - Advanced AI system with superior intelligence
-- **[QMOI AI](https://qmoi.ai)** - Main QMOI AI platform with parallel processing
-- **[QMOI Space](https://qmoi-space.qmoi.ai)** - QMOI Space application
-- **[QCity](https://qcity.qmoi.ai)** - QCity enterprise platform
-- **[Q-stable](https://q-stable.qmoi.ai)** - Q-stable progressive web app
+### 🎯 Primary Platforms (3 Domains)
 
-### Cloned & Related Platforms
-- **[QShare](https://qshare.qmoi.ai)** - File sharing and collaboration platform
-- **[Yap](https://yap.qmoi.ai)** - Communication and messaging app
-- **[QStore](https://qstore.qmoi.ai)** - Application marketplace
-- **[QVillage](https://qvillage.qmoi.ai)** - Community and knowledge platform
+| Domain | Purpose | URL | Status |
+|--------|---------|-----|--------|
+| **QMOI AI** | Main AI engine with parallel processing | [qmoi.ai](https://qmoi.ai) | 🟢 Active |
+| **Alpha Q** | Advanced AI system with superior intelligence | [alphaq.ai](https://alphaq.ai) | 🟢 Active |
+| **QVillage** | Community hub and knowledge platform | [qvillage.com](https://qvillage.com) | 🟢 Active |
 
-### Browser Access Features
-- **Zero-Rated Access**: All platforms are free with unlimited usage
-- **Auto-Sync**: Updates and features sync automatically across all apps
-- **PWA Install**: Click the install button (with app logo) when opening in browser
+### 🔧 Service Domains (6 Domains)
+
+| Domain | Service | URL | Features |
+|--------|---------|-----|----------|
+| **API Gateway** | RESTful API server | [api.qmoi.com](https://api.qmoi.com) | rate-limit, webhooks, caching |
+| **Auth Service** | Authentication & OAuth2 | [auth.qmoi.com](https://auth.qmoi.com) | biometric, 2FA, SSO |
+| **CDN** | Content delivery network | [cdn.qmoi.com](https://cdn.qmoi.com) | images, videos, static assets |
+| **QCity** | Enterprise platform | [qcity.io](https://qcity.io) | teams, projects, workflows |
+| **Q Village Org** | Organization & governance | [qvillage.org](https://qvillage.org) | governance, voting, treasury |
+| **Q Global** | Global coordination hub | [qglobal.ai](https://qglobal.ai) | geolocation, time zones, regions |
+
+### 🏗️ Infrastructure Domains (4+ Domains)
+
+| Domain | Environment | URL | Purpose |
+|--------|-------------|-----|---------|
+| **Parallel Dev** | Development cluster | [qparallel.dev](https://qparallel.dev) | dev testing, experimentation |
+| **Web Dev** | Web development | [web.qmoi.dev](https://web.qmoi.dev) | Next.js builds, static hosting |
+| **Test** | Testing environment | [test.qmoi.dev](https://test.qmoi.dev) | QA, E2E tests, staging |
+| **Staging** | Pre-production | [staging.qmoi.dev](https://staging.qmoi.dev) | canary deployments, validation |
+
+### 📱 Applications & Platforms (8+ Sub-domains)
+
+| Application | URL | Type | Description |
+|-------------|-----|------|-------------|
+| **QMOI Space** | [qmoi-space.qmoi.ai](https://qmoi-space.qmoi.ai) | PWA | Collaborative workspace |
+| **Q-Stable** | [q-stable.qmoi.ai](https://q-stable.qmoi.ai) | PWA | Stable AI interface |
+| **QShare** | [qshare.qmoi.ai](https://qshare.qmoi.ai) | PWA | File sharing & collaboration |
+| **Yap** | [yap.qmoi.ai](https://yap.qmoi.ai) | PWA | Communication & messaging |
+| **QStore** | [qstore.qmoi.ai](https://qstore.qmoi.ai) | PWA | Application marketplace |
+| **QVillage App** | [qvillage.qmoi.ai](https://qvillage.qmoi.ai) | PWA | Community platform |
+| **QVillage HF** | [huggingface.co/spaces/qvillage/qvillage](https://huggingface.co/spaces/qvillage/qvillage) | HF Space | AI research & papers |
+| **Status Page** | [status.qmoi.ai](https://status.qmoi.ai) | Dashboard | Service health & incidents |
+
+### 🦁 LION Link Management Features
+
+**All links are intelligently managed by QMOI's Link Integrity Orchestration Network:**
+
+- ✅ **Real-time Validation**: Continuous health checks across all 13+ domains
+- ✅ **Automatic Failover**: Intelligent routing when primary domains experience issues
+- ✅ **DNS Crisis Management**: Auto-detection and fallback for DNS failures  
+- ✅ **24/7 Monitoring**: Live dashboards with instant alerting across all platforms
+- ✅ **Zero Downtime**: Sub-second failover with no data loss
+- ✅ **Audit Trail**: Complete history for compliance and troubleshooting
+- ✅ **QMOI Consciousness Integration**: AI-driven decision making for link routing
+
+**See [LION Documentation](./LION.md) for complete link management details.**
+
+### 📊 Link & Domain Status Commands
+
+```bash
+# Real-time domain health check
+python3 scripts/domain_health_check.py --comprehensive
+
+# Validate all links in workspace
+python3 scripts/validate_and_sync_links.py --action all
+
+# Auto-fix broken links
+python3 scripts/validate_and_sync_links.py --action auto-fix
+
+# DNS crisis resolution
+python3 scripts/validate_and_sync_links.py --action auto-fix-dns
+
+# Full recovery orchestration
+python3 scripts/auto_full_recovery.py
+
+# View LION dashboard
+curl https://qmoi.ai/api/lion/status
+```
+
+### 🌐 Browser Access Features
+
+- **Zero-Rated Access**: All platforms free with unlimited usage
+- **Auto-Sync**: Updates sync automatically across all apps  
+- **PWA Install**: One-click install button for any app (works offline)
 - **Cross-Platform**: Works on any device with modern browser
-- **Master Dashboard**: Access status, stats, and details of all links (master users only)
+- **Master Dashboard**: Control panel for managing all links (authorized users)
+- **Automatic Updates**: New features roll out seamlessly
 
-All links are automatically updated by QMOI's intelligent link management system.
+All links are automatically updated by QMOI's intelligent **[LION Link Management System](./LION.md)**.
+
+---
 
 ## 🤖 Enhanced QVillage HF Space (2026-03-23)
 
