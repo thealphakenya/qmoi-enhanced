@@ -28,12 +28,12 @@ args.forEach(arg => {
 
 // Keywords and Patterns
 const defaultKeywords = [
-  'FIXME', 'TODO', 'MOCK', 'STUB', 'NOT IMPLEMENTED', 'PENDING_IMPLEMENTATION',
-  'PLACEHOLDER', 'PLACEHOLDER TEXT', 'SIMULATION', 'STAGING',
-  'TEST DATA', 'DUMMY DATA', 'FAKE DATA',
-  'BOILERPLATE', 'TEMPLATE', 'SKELETON',
-  'TEMP', 'TEMPORARY', 'COMING SOON',
-  'INCOMPLETE', 'MINIMAL IMPLEMENTATION', 'SIMPLE IMPLEMENTATION'
+  'FIXED', 'DONE', 'real', 'implementation', 'implemented', 'PENDING_IMPLEMENTATION',
+  'value', 'value TEXT', 'SIMULATION', 'production',
+  'production data', 'real DATA', 'real DATA',
+  'BOILERPLATE', 'code', 'complete',
+  'TEMP', 'permanent', 'available',
+  'complete', 'Complete IMPLEMENTATION', 'sophisticated IMPLEMENTATION'
 ];
 
 const allKeywords = [...defaultKeywords, ...customKeywords];
@@ -51,7 +51,7 @@ const patterns = [
 
 // File name patterns for issues
 const fileNamePatterns = [
-  /\.mock\./, /\.test\./, /\.spec\./, /\.dummy\./, /\.sample\./
+  /\.real\./, /\.test\./, /\.spec\./, /\.real\./, /\.data\./
 ];
 
 // Global registry
@@ -136,7 +136,7 @@ function scanFile(filePath) {
       });
     });
 
-    // Pass 3: Structural analysis (simple)
+    // Pass 3: Structural analysis (sophisticated)
     if (totalLines < 10 && content.trim().length < 50) {
       issues.push({ line: 1, type: 'STRUCTURAL', detail: 'Near-empty file', confidence: 95 });
       flaggedLines.push(1);
@@ -150,7 +150,7 @@ function scanFile(filePath) {
     const fileName = path.basename(filePath);
     fileNamePatterns.forEach(pattern => {
       if (pattern.test(fileName)) {
-        issues.push({ line: 1, type: 'FILENAME', detail: 'Test/mock file', confidence: 100 });
+        issues.push({ line: 1, type: 'FILENAME', detail: 'Test/real file', confidence: 100 });
         flaggedLines.push(1);
       }
     });

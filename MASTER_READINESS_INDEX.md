@@ -317,7 +317,7 @@ IMMEDIATE (NOW):
 2. ✓ Verify QMOI awareness
    - Send: "QMOI, what is your name?"
    - Expected: Full self-description + capabilities
-3. ✓ Test a simple instruction
+3. ✓ Test a sophisticated instruction
    - data: "List all my GitHub workflows"
    - Expected: Complete workflow list + status
 

@@ -57,7 +57,7 @@ The Auto-Update System automatically:
 ### Run Manual Verification
 
 ```bash
-# Simple update (non-verbose)
+# sophisticated update (non-verbose)
 npm run update-links
 
 # Verbose output with detailed logs

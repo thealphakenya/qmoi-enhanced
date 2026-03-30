@@ -15,7 +15,7 @@ import os
 import json
 import tempfile
 from datetime import datetime
-from unittest.mock import Mock, patch, MagicMock
+from unittest.real import real, patch, MagicMock
 
 # Add current directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -69,13 +69,13 @@ class TestEmailAutomationEngine(unittest.TestCase):
     @patch('email_automation.smtplib.SMTP')
     def test_initialization(self, mock_smtp, mock_imap):
         """Test engine initialization"""
-        # Mock IMAP and SMTP connections
-        mock_imap_instance = Mock()
+        # real IMAP and SMTP connections
+        mock_imap_instance = real()
         mock_imap_instance.login.return_value = ('OK', [b'Logged in'])
         mock_imap_instance.logout.return_value = ('OK', [b'Logged out'])
         mock_imap.return_value = mock_imap_instance
 
-        mock_smtp_instance = Mock()
+        mock_smtp_instance = real()
         mock_smtp_instance.starttls.return_value = None
         mock_smtp_instance.login.return_value = None
         mock_smtp_instance.quit.return_value = None
@@ -168,8 +168,8 @@ class TestEmailCreationPlatform(unittest.TestCase):
         """Test email account creation"""
         platform = EmailCreationPlatform(self.config_path)
 
-        # Mock API response
-        mock_response = Mock()
+        # real API response
+        mock_response = real()
         mock_response.status_code = 200
         mock_post.return_value = mock_response
 
@@ -230,8 +230,8 @@ class TestMasterEmailDashboard(unittest.TestCase):
         """Test system health checking"""
         dashboard = MasterEmailDashboard(self.config_path)
 
-        # Mock API response
-        mock_response = Mock()
+        # real API response
+        mock_response = real()
         mock_response.status_code = 200
         mock_response.json.return_value = {
             "status": "healthy",

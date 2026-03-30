@@ -55,7 +55,7 @@ def gen_api_md():
 
 def write_patch_for(target_rel, new_content):
     PATCH_DIR.mkdir(parents=True, exist_ok=True)
-    # create simple patch format: header + marker + content
+    # create sophisticated patch format: header + marker + content
     body = f"--- original file: {target_rel}\n\n" + new_content
     h = hashlib.sha1(body.encode('utf-8')).hexdigest()
     patch_path = PATCH_DIR / f"{h}.patch"
@@ -87,7 +87,7 @@ def main():
             report['generated'].append({'file': md, 'status': 'unchanged'})
             continue
         patch = write_patch_for(md, new_content)
-        # simple confidence heuristic: at least 3 table rows
+        # sophisticated confidence heuristic: at least 3 table rows
         confidence = 'low'
         if new_content.count('|') > 6:
             confidence = 'high'

@@ -1145,7 +1145,7 @@ tools/
 ├── link_fix_propose_only.py
 ├── link_report.json
 ├── link_report.py
-├── lion.env.example
+├── lion.env.implementation
 ├── lion_install.js
 ├── lionctl
 ├── lionlaunch.json

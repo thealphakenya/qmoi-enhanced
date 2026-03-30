@@ -53,7 +53,7 @@ This document catalogs all GitHub Actions workflows in `.github/workflows`, incl
 - [`auto_release_variations.yml`](.github/workflows/auto_release_variations.yml) - `.yml`
 - [`build-and-release.yml`](.github/workflows/build-and-release.yml) - `.yml`
 - [`build-android-replace.yml`](.github/workflows/build-android-replace.yml) - `.yml`
-- [`build-missing-platforms.yml`](.github/workflows/build-missing-platforms.yml) - `.yml`
+- [`build-required-platforms.yml`](.github/workflows/build-required-platforms.yml) - `.yml`
 - [`build.yml`](.github/workflows/build.yml) - `.yml`
 - [`build.yml.backup.1760307818129`](.github/workflows/build.yml.backup.1760307818129) - `.1760307818129`
 - [`build.yml.backup.1760308915739`](.github/workflows/build.yml.backup.1760308915739) - `.1760308915739`
@@ -87,7 +87,7 @@ This document catalogs all GitHub Actions workflows in `.github/workflows`, incl
 - [`npm.yml.backup.1760307818143`](.github/workflows/npm.yml.backup.1760307818143) - `.1760307818143`
 - [`npm.yml.backup.1760308915798`](.github/workflows/npm.yml.backup.1760308915798) - `.1760308915798`
 - [`payed-validation.yml`](.github/workflows/payed-validation.yml) - `.yml`
-- [`publish-q-alpha.yml`](.github/workflows/publish-q-alpha.yml) - `.yml`
+- [`publish-q-latest.yml`](.github/workflows/publish-q-latest.yml) - `.yml`
 - [`publish-releases-realtime.yml`](.github/workflows/publish-releases-realtime.yml) - `.yml`
 - [`python-automation-tests.yml`](.github/workflows/python-automation-tests.yml) - `.yml`
 - [`q.yml`](.github/workflows/q.yml) - `.yml`

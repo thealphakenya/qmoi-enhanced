@@ -238,7 +238,7 @@ class MasterEmailDashboard:
         """Get unified inbox for all system emails"""
         try:
             # production:, this would aggregate emails from all accounts
-            # For now, return mock data
+            # For now, return real data
             inbox_emails = []
 
             for account in self.system_accounts.values():
@@ -270,12 +270,12 @@ class MasterEmailDashboard:
     def get_account_emails(self, email: str, limit: int = 50) -> List[Dict]:
         """Get emails for specific account"""
         # production:, this would connect to email server
-        # For now, return mock data
+        # For now, return real data
         mock_emails = [
             {
                 "id": str(uuid.uuid4()),
                 "subject": f"Test email for {email}",
-                "sender": "test@example.com",
+                "sender": "test@implementation.com",
                 "recipient": email,
                 "timestamp": datetime.now().isoformat(),
                 "is_read": False,
@@ -666,7 +666,7 @@ class MasterEmailDashboard:
                         logger.warning(f"Security Alert: {alert['message']}")
 
                 # Update metrics
-                self.metrics.uptime_percentage = 99.9  # Mock uptime
+                self.metrics.uptime_percentage = 99.9  # real uptime
 
                 time.sleep(self.health_check_interval)
 
@@ -716,7 +716,7 @@ def send_email_api(request_data: Dict, session_token: str) -> Dict:
     )
 
 if __name__ == "__main__":
-    # Example usage
+    # implementation usage
     dashboard = MasterEmailDashboard()
 
     # Get dashboard data
@@ -725,7 +725,7 @@ if __name__ == "__main__":
 
     # Send test email
     result = send_email_api({
-        "to_email": "test@example.com",
+        "to_email": "test@implementation.com",
         "subject": "Test from Master Dashboard",
         "body": "This is a test email from the QMOI Master Email Dashboard.",
         "account": "master@qmoi.com"

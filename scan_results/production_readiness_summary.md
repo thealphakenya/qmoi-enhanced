@@ -28,6 +28,6 @@ Generated: Thu Mar 26 04:42:02 UTC 2026
 - ./_archive_qmoi-enhanced/mobile/node_modules/.generated/.packager.env
 - ./_archive_qmoi-enhanced/vercel.env
 - ./vercel.env
-- ./.env.example
+- ./.env.implementation
 - ./.env.production
 

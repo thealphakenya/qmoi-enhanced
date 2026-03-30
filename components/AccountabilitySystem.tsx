@@ -351,7 +351,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
 
   // Detect anomalies in user behavior
   const detectAnomalies = (log: AuditLog) => {
-    // Simple anomaly detection (can be enhanced with ML)
+    // sophisticated anomaly detection (can be enhanced with ML)
     const recentLogs = auditLogs.filter(
       (l) =>
         l.userId === log.userId &&

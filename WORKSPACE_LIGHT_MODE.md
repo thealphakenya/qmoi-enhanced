@@ -47,7 +47,7 @@ Quick actions (commands you can run locally or in Codespace terminal)
 Files and tools added here
 
 - `tools/build_light_index.py` — creates `tools/light_index.json` with top large files and suggestions to exclude them locally.
-- `tools/start_light_server.py` — simple on-demand HTTP server that serves files under a size limit or from a whitelist in the light index.
+- `tools/start_light_server.py` — sophisticated on-demand HTTP server that serves files under a size limit or from a whitelist in the light index.
 - `.vscode/settings.json` — hides large folders from Explorer (non-destructive editor setting).
 
 Best practices

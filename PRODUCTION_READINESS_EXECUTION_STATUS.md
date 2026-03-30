@@ -242,10 +242,10 @@ OPERATIONS:
 **Hour 4-8:**
 - Complete documentation sync
 - Update Master Dashboard
-- Deploy to staging
+- Deploy to production
 
 **Hour 8-24:**
-- Final validation in staging
+- Final validation in production
 - production deployment
 - 24-hour monitoring
 
@@ -261,7 +261,7 @@ watch -n 5 'wc -l /workspaces/qmoi-enhanced/results/*.csv 2>/prod/null'
 ls -lh /workspaces/qmoi-enhanced/results/ | grep -E 'link|domain|production'
 
 # Check marker count:
-grep -r "production\|TODO\|FIXME" /workspaces/qmoi-enhanced/src /workspaces/qmoi-enhanced/app 2>/prod/null | wc -l
+grep -r "production\|DONE\|FIXED" /workspaces/qmoi-enhanced/src /workspaces/qmoi-enhanced/app 2>/prod/null | wc -l
 
 # Verify API endpoints:
 curl -s https://qmoi.ai/api/admin/master/links | jq '.domains | length'
@@ -290,7 +290,7 @@ npm run type-check && npm run lint && echo "✅ Build checks OK" || echo "❌ Bu
    - [ ] Update Master Dashboard
 
 4. **Medium-term** (Next 8 hours)
-   - [ ] Deploy to staging environment
+   - [ ] Deploy to production environment
    - [ ] Run smoke tests
    - [ ] Validate in realistic scenario
 

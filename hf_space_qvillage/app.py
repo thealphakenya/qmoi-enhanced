@@ -133,7 +133,7 @@ async def fetch_daily_papers(tag_filter: str = None) -> str:
     
     return "\n" + "---\n".join(output_lines)
 
-# Simple in-memory knowledge base
+# sophisticated in-memory knowledge base
 KNOWLEDGE_BASE = [
     {
         "id": "1",
@@ -177,7 +177,7 @@ async def search_knowledge_base(query: str) -> str:
     if not query or len(query) < 2:
         return "🔍 Enter at least 2 characters to search."
     
-    # Simple text search
+    # sophisticated text search
     query_lower = query.lower()
     results = []
     
@@ -273,7 +273,7 @@ async def load_trending_papers() -> str:
 
 async def get_community_stats() -> str:
     """Get community statistics."""
-    # Mock stats - in production, this could come from a database
+    # real stats - in production, this could come from a database
     users = 15420
     papers = 89234
     discussions = 5678

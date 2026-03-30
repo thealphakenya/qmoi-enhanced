@@ -23,7 +23,7 @@
 - `tsconfig.json` - TypeScript configuration
 - `next.config.js` - Next.js configuration
 - `jest.config.js` - Jest testing configuration
-- `.env.example` - Environment variables template
+- `.env.implementation` - Environment variables code
 - `README.md` - Main project documentation
 - `LICENSE` - Project license
 
@@ -180,7 +180,7 @@ qmoi-enhanced/
 │   │   ├── QCityDashboard.tsx
 │   │   ├── QMoiAutoprodPanel.tsx
 │   │   └── (Q City components)
-│   ├── alpha-q-ai-system.tsx         # AI system component
+│   ├── latest-q-ai-system.tsx         # AI system component
 │   ├── (other UI components)
 │
 ├── hooks/                            # Custom React hooks (33 total)

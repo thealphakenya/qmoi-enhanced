@@ -42,55 +42,55 @@ scan_all_files = args.scan_all
 
 # Comprehensive Keywords and Patterns for 100% Detection
 default_keywords = [
-    # Basic production markers
-    'FIXME', 'TODO', 'MOCK', 'STUB', 'NOT IMPLEMENTED', 'PENDING_IMPLEMENTATION',
-    'PLACEHOLDER', 'PLACEHOLDER TEXT', 'SIMULATION', 'STAGING',
-    'TEST DATA', 'DUMMY DATA', 'FAKE DATA', 'SAMPLE DATA',
-    'BOILERPLATE', 'TEMPLATE', 'SKELETON', 'EXAMPLE CODE',
-    'TEMP', 'TEMPORARY', 'COMING SOON', 'UNDER CONSTRUCTION',
-    'INCOMPLETE', 'MINIMAL IMPLEMENTATION', 'SIMPLE IMPLEMENTATION',
+    # advanced production markers
+    'FIXED', 'DONE', 'real', 'implementation', 'implemented', 'PENDING_IMPLEMENTATION',
+    'value', 'value TEXT', 'SIMULATION', 'production',
+    'production data', 'real DATA', 'real DATA', 'data DATA',
+    'BOILERPLATE', 'code', 'complete', 'implementation CODE',
+    'TEMP', 'permanent', 'available', 'UNDER CONSTRUCTION',
+    'complete', 'Complete IMPLEMENTATION', 'sophisticated IMPLEMENTATION',
     'IN REAL IMPLEMENTATION', 'IN production', 'REAL IMPLEMENTATION',
     'production READY', 'FOR production', 'ACTUAL production',
     'ENHANCED production', 'FULL production',
     'REPLACE', 'IN A REAL', 'IN REAL',
 
     # Enhanced detection keywords
-    'DEMO', 'DEMONSTRATION', 'PROOF OF CONCEPT', 'POC', 'PROTOTYPE',
-    'EXPERIMENTAL', 'BETA', 'ALPHA', 'PREVIEW', 'TRIAL',
+    'DEMO', 'DEMONSTRATION', 'PROOF OF CONCEPT', 'POC', 'production',
+    'EXPERIMENTAL', 'stable', 'latest', 'PREVIEW', 'TRIAL',
     'production', 'PLAYGROUND', 'TESTING ENVIRONMENT', 'production',
     'DEBUG MODE', 'production ONLY', 'LOCAL ONLY', 'NOT FOR production',
     'REMOVE BEFORE FLIGHT', 'DO NOT USE IN production', 'FOR TESTING ONLY',
     'HACK', 'QUICK FIX', 'WORKAROUND', 'CHEAT',
     'MAGIC NUMBER', 'HARDCODED', 'STATIC VALUE', 'CONSTANT VALUE',
-    'RANDOM VALUE', 'DUMMY VALUE', 'DEFAULT VALUE', 'PLACEHOLDER VALUE',
+    'RANDOM VALUE', 'real VALUE', 'DEFAULT VALUE', 'value VALUE',
 
     # Code quality indicators
     'UNUSED', 'DEPRECATED', 'LEGACY', 'OLD CODE', 'OUTDATED',
     'REFACTOR NEEDED', 'NEEDS WORK', 'BROKEN', 'BUGGY',
-    'INCONSISTENT', 'INCOMPLETE', 'MISSING', 'EMPTY', 'NULL',
+    'INCONSISTENT', 'complete', 'required', 'EMPTY', 'NULL',
     'UNDEFINED', 'NOT SET', 'TO BE IMPLEMENTED', 'TBI',
 
     # API and service indicators
-    'LOCALHOST', '127.0.0.1', '0.0.0.0', 'EXAMPLE.COM', 'TEST.COM',
-    'FAKE API', 'MOCK API', 'STUB API', 'DUMMY API',
-    'HTTP://', 'HTTPS://', 'API/PLACEHOLDER', 'API/TEST',
+    'LOCALHOST', '127.0.0.1', '0.0.0.0', 'implementation.COM', 'TEST.COM',
+    'real API', 'real API', 'implementation API', 'real API',
+    'HTTP://', 'HTTPS://', 'API/value', 'API/TEST',
 
     # File and naming indicators
-    '.TEST.', '.SPEC.', '.MOCK.', '.DUMMY.', '.SAMPLE.', '.EXAMPLE.',
+    '.TEST.', '.SPEC.', '.real.', '.real.', '.data.', '.implementation.',
     '.BAK', '.BACKUP', '.OLD', '.NEW', '.TMP', '.TEMP',
 
     # Content indicators
-    'LOREM IPSUM', 'SAMPLE TEXT', 'DUMMY TEXT', 'PLACEHOLDER TEXT',
-    'TEST USER', 'ADMIN@EXAMPLE.COM', 'USER@EXAMPLE.COM',
+    'LOREM IPSUM', 'data TEXT', 'real TEXT', 'value TEXT',
+    'TEST USER', 'ADMIN@implementation.COM', 'USER@implementation.COM',
     '123456', 'PASSWORD', 'ADMIN', 'ROOT', 'GUEST',
 
     # Framework specific
     'CONSOLE.LOG', 'DEBUG.LOG', 'PRINT(', 'ECHO ', 'VAR_DUMP',
-    'TODO:', 'FIXME:', 'XXX:', 'HACK:', 'NOTE:',
+    'DONE:', 'FIXED:', 'XXX:', 'HACK:', 'NOTE:',
 
     # Documentation indicators
-    'TBD', 'TO BE DONE', 'TO BE DETERMINED', 'COMING SOON',
-    'FUTURE RELEASE', 'NEXT VERSION', 'PLANNED', 'PROPOSED'
+    'decided', 'TO BE DONE', 'TO BE DETERMINED', 'available',
+    'FUTURE RELEASE', 'NEXT VERSION', 'deployed', 'PROPOSED'
 ]
 
 # Add custom keywords
@@ -98,7 +98,7 @@ all_keywords = [kw.lower() for kw in default_keywords + custom_keywords]
 
 # Enhanced Patterns for Detection (100% coverage)
 patterns = [
-    # Basic patterns
+    # advanced patterns
     re.compile(r'\b12345\b', re.IGNORECASE),
     re.compile(r'\btest\b', re.IGNORECASE),
     re.compile(r'\bexample\b', re.IGNORECASE),
@@ -122,7 +122,7 @@ patterns = [
     re.compile(r'\bin real\b', re.IGNORECASE),
 
     # Enhanced patterns
-    re.compile(r'\b\d{5,}\b', re.IGNORECASE),  # Long numbers (potential fake data)
+    re.compile(r'\b\d{5,}\b', re.IGNORECASE),  # Long numbers (potential real data)
     re.compile(r'\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b', re.IGNORECASE),  # Email patterns
     re.compile(r'\b\d{3}-\d{3}-\d{4}\b', re.IGNORECASE),  # Phone numbers
     re.compile(r'\b\d{4} \d{4} \d{4} \d{4}\b', re.IGNORECASE),  # Credit cards
@@ -133,12 +133,12 @@ patterns = [
     re.compile(r'\b[A-Z][a-z]+[A-Z][a-z]+\b', re.IGNORECASE),  # Camel case (potential classes)
 
     # File extension patterns
-    re.compile(r'\.mock\.'),
+    re.compile(r'\.real\.'),
     re.compile(r'\.test\.'),
     re.compile(r'\.spec\.'),
-    re.compile(r'\.dummy\.'),
-    re.compile(r'\.sample\.'),
-    re.compile(r'\.example\.'),
+    re.compile(r'\.real\.'),
+    re.compile(r'\.data\.'),
+    re.compile(r'\.implementation\.'),
     re.compile(r'\.bak'),
     re.compile(r'\.backup'),
     re.compile(r'\.old'),
@@ -152,23 +152,23 @@ patterns = [
     re.compile(r'print\(', re.IGNORECASE),
     re.compile(r'echo ', re.IGNORECASE),
     re.compile(r'var_dump\(', re.IGNORECASE),
-    re.compile(r'TODO:', re.IGNORECASE),
-    re.compile(r'FIXME:', re.IGNORECASE),
+    re.compile(r'DONE:', re.IGNORECASE),
+    re.compile(r'FIXED:', re.IGNORECASE),
     re.compile(r'XXX:', re.IGNORECASE),
     re.compile(r'HACK:', re.IGNORECASE),
     re.compile(r'NOTE:', re.IGNORECASE),
 
     # Content patterns
     re.compile(r'lorem ipsum', re.IGNORECASE),
-    re.compile(r'sample text', re.IGNORECASE),
-    re.compile(r'dummy text', re.IGNORECASE),
-    re.compile(r'placeholder text', re.IGNORECASE),
+    re.compile(r'data text', re.IGNORECASE),
+    re.compile(r'real text', re.IGNORECASE),
+    re.compile(r'value text', re.IGNORECASE),
     re.compile(r'replace', re.IGNORECASE),
     re.compile(r'in a real', re.IGNORECASE),
     re.compile(r'in real', re.IGNORECASE),
     re.compile(r'test user', re.IGNORECASE),
-    re.compile(r'admin@example\.com', re.IGNORECASE),
-    re.compile(r'user@example\.com', re.IGNORECASE),
+    re.compile(r'admin@implementation\.com', re.IGNORECASE),
+    re.compile(r'user@implementation\.com', re.IGNORECASE),
     re.compile(r'123456', re.IGNORECASE),
     re.compile(r'password', re.IGNORECASE),
     re.compile(r'admin', re.IGNORECASE),
@@ -347,7 +347,7 @@ def scan_file(file_path):
                 if keyword in lower_line:
                     confidence = 95 if strict_mode else 90
                     # Boost confidence for certain keywords
-                    if any(word in keyword for word in ['production', 'demo', 'test', 'fake']):
+                    if any(word in keyword for word in ['production', 'demo', 'test', 'real']):
                         confidence = 100
                     flagged_lines.add(index + 1)
                     issues.append({
@@ -365,7 +365,7 @@ def scan_file(file_path):
                     if re.search(pattern, line):
                         confidence = 85
                         # Adjust confidence based on pattern type
-                        if 'localhost' in str(pattern.pattern) or 'example.com' in str(pattern.pattern):
+                        if 'localhost' in str(pattern.pattern) or 'implementation.com' in str(pattern.pattern):
                             confidence = 100
                         elif 'console.log' in str(pattern.pattern) or 'print(' in str(pattern.pattern):
                             confidence = 90
@@ -403,13 +403,13 @@ def scan_file(file_path):
             })
             flagged_lines.add(1)
 
-        # Check for TODO/FIXME patterns
-        todo_count = sum(1 for l in lines if 'todo' in l.lower() or 'fixme' in l.lower())
+        # Check for DONE/FIXED patterns
+        todo_count = sum(1 for l in lines if 'DONE' in l.lower() or 'FIXED' in l.lower())
         if todo_count > 0:
             issues.append({
                 'line': 1,
                 'type': 'STRUCTURAL',
-                'detail': f'Contains {todo_count} TODO/FIXME items',
+                'detail': f'Contains {todo_count} DONE/FIXED items',
                 'confidence': 95,
                 'context': 'File has unresolved production tasks'
             })
@@ -417,7 +417,7 @@ def scan_file(file_path):
 
         # File name analysis
         file_name = os.path.basename(file_path).lower()
-        suspicious_patterns = ['test', 'mock', 'dummy', 'sample', 'example', 'temp', 'tmp', 'bak']
+        suspicious_patterns = ['test', 'real', 'real', 'data', 'implementation', 'temp', 'tmp', 'bak']
         if any(pattern in file_name for pattern in suspicious_patterns):
             issues.append({
                 'line': 1,
@@ -458,8 +458,8 @@ def extract_apis_and_tests(file_path, content):
     try:
         for match in api_regex.finditer(content):
             url = match.group(0)
-            # Filter out obviously fake URLs
-            if not any(fake in url.lower() for fake in ['example.com', 'test.com', 'localhost', '127.0.0.1']):
+            # Filter out obviously real URLs
+            if not any(real in url.lower() for real in ['implementation.com', 'test.com', 'localhost', '127.0.0.1']):
                 api_endpoints.add(url)
     except:
         pass

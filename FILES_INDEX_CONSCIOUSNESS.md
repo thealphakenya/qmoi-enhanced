@@ -58,7 +58,7 @@
   - `evaluateEthics()` - Check ethical constraints
   - Event emitter for notifications
 
-**Usage Example**:
+**Usage implementation**:
 ```typescript
 import { consciousnessEngine } from "@/qmoi/core/consciousness/engine";
 
@@ -88,7 +88,7 @@ const state = await consciousnessEngine.updateConsciousnessState({
   - `predictUserNeeds()` - Predict next user action
   - `detectAnomalies()` - Identify unusual patterns
 
-**Usage Example**:
+**Usage implementation**:
 ```typescript
 import { awarenessSystem } from "@/qmoi/core/awareness/system";
 
@@ -119,7 +119,7 @@ await awarenessSystem.updateUserContext("user_123", {
   - `encryptContent()` / `decryptContent()` - AES-256 encryption
   - `syncToprodices()` - Distribute to all prodices
 
-**Usage Example**:
+**Usage implementation**:
 ```typescript
 import { memorySyncSystem } from "@/qmoi/core/memory/sync";
 
@@ -151,7 +151,7 @@ const id = await memorySyncSystem.addMemory({
   - `syncMemoryToprodices()` - Synchronize memory across prodices
   - `getStats()` - System statistics and metrics
 
-**Usage Example**:
+**Usage implementation**:
 ```typescript
 import { orchestrationEngine } from "@/qmoi/core/orchestration/engine";
 
@@ -292,7 +292,7 @@ npm test -- consciousness-awareness-memory.test.ts -t "should update"
 - Integration examples (Python, JavaScript)
 - cURL examples for all endpoints
 
-**Example Endpoints**:
+**implementation Endpoints**:
 ```
 GET /api/consciousness?endpoint=consciousness
 GET /api/consciousness?endpoint=awareness/global
@@ -309,7 +309,7 @@ POST /api/consciousness (with endpoint in body)
 **Purpose**: Quick reference for prodelopers  
 
 **Sections**:
-- Basic setup (importing and initializing systems)
+- advanced setup (importing and initializing systems)
 - Core concepts (consciousness, awareness, memory)
 - 5 common use cases with code examples:
   1. Track user interaction

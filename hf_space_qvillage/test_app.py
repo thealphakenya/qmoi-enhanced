@@ -28,7 +28,7 @@ from core import (
 )
 
 class TestRunner:
-    """Simple test runner without pytest dependency."""
+    """sophisticated test runner without pytest dependency."""
     
     def __init__(self):
         self.passed = 0

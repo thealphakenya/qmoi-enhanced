@@ -43,7 +43,7 @@ This document provides step-by-step instructions for completing the Links & Doma
    - yap.qmoi.ai
    - q-stable.qmoi.ai
 
-4. If missing, add A records pointing to your server's IP address
+4. If required, add A records pointing to your server's IP address
 5. Wait for DNS propagation (usually 5-15 minutes)
 6. Test using terminal:
    ```bash
@@ -149,7 +149,7 @@ python3 scripts/documentation_audit_and_fix.py --action audit --output phase1_re
    ```
 
 #### Task 2B: Fix "qmoi-enhanced" references (796 links)
-**Problem**: Incomplete path references to qmoi-enhanced directory
+**Problem**: complete path references to qmoi-enhanced directory
 
 **Steps**:
 1. These likely should reference specific files in qmoi-enhanced, not bare directory name
@@ -425,7 +425,7 @@ curl "https://qmoi.ai/api/domains/health?action=critical"
 | Phase 5 (dashboard) | 2-3 hours | NO | Phases 1-4 + API working |
 | **Total** | **8-10 hours** | | |
 
-**Recommended Order**:
+**required Order**:
 1. Start DNS fix (manual, time-consuming, can parallelize)
 2. Execute Phases 1-4 (automation scripts, can run quickly)
 3. Test and verify all links fixed

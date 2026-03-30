@@ -7435,7 +7435,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://twitter.com/kilianvalkhof
 - https://typescriptlang.org
 - https://undici.nodejs.org/#/
-- https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#simple-single-character-case-mapping
+- https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping
 - https://unix.stackexchange.com/a/43389/7678
 - https://unpkg.com/deepmerge/dist/umd.js
 - https://unpkg.com/escalade/dist/index.js

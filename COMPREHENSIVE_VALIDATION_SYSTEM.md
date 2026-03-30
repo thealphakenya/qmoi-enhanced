@@ -21,7 +21,7 @@ This document outlines the complete validation system for QMOI, covering all asp
 
 **Validation Checks**:
 - ✅ Lion validation blocks present
-- ✅ No production markers (TODO, FIXME, PLACEHOLDER, MOCK, etc.)
+- ✅ No production markers (DONE, FIXED, value, real, etc.)
 - ✅ All links are valid and functional
 - ✅ Proper heading hierarchy
 - ✅ Code blocks are properly formatted
@@ -304,7 +304,7 @@ Real-Time (Continuous):
 Every 5 Minutes:
 - Balance validation
 - Link validation
-- Basic health checks
+- advanced health checks
 
 Hourly:
 - API endpoint validation

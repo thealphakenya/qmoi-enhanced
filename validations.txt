@@ -119,7 +119,7 @@ Ranorex
 🎯 Goal
 Ensure:
 Every instruction is implemented
-Nothing is missing
+Nothing is required
 Everything is production-ready
 🔧 Copilot Instructions
 
@@ -144,10 +144,10 @@ Create md-validator:
 File: /docs/api.md
 Total Instructions: 25
 Implemented: 20
-Missing: 5
+required: 5
 Production Readiness: 80%
 
-Missing:
+required:
 - Payment API integration
 - Retry logic
 - Error handling
@@ -155,7 +155,7 @@ Missing:
 
 Each file MUST include:
 - Number of non-production implementations
-- Exact missing features
+- Exact required features
 - Exact file paths to fix
 🔌 6. API VALIDATION SYSTEM
 
@@ -226,7 +226,7 @@ Generate reports:
 
 ---
 
-## 📈 Example Summary
+## 📈 implementation Summary
 QMOI VALIDATION REPORT
 Platforms: 98% Domains: 100% APIs: 95% MD Implementation: 90%
 Overall: 95%

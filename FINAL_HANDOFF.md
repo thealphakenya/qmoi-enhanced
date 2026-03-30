@@ -316,7 +316,7 @@ METHOD 3: Dashboard (Best for monitoring)
 
 Try these to verify QMOI is working:
 
-SIMPLE TEST:
+sophisticated TEST:
 "QMOI, what is your name?"
 → You'll get: Full self-introduction
 

@@ -87,7 +87,7 @@ Generated: 2026-03-29
 The following endpoints still need production implementation (non-financial):
    - `src/app/api/qmoi/autoprod/*` and `app/api/admin/autofix/*`
    - `app/api/automation/*`
-   - Reason: add job queue (BullMQ/Redis or simple SQLite/worker) and background worker endpoints.
+   - Reason: add job queue (BullMQ/Redis or sophisticated SQLite/worker) and background worker endpoints.
 
 7. Auth & user flows
    - `app/api/auth/*` (ensure register/login/session use DB-backed auth and secrets)
@@ -113,7 +113,7 @@ Notes on Codespaces low-data operation:
 
 Next steps (automated):
 
-1. Persist `qmoiTracksService` to a durable store and add simple pub/sub hooks. (priority)
+1. Persist `qmoiTracksService` to a durable store and add sophisticated pub/sub hooks. (priority)
 2. Implement normalized payments adapter for `payments/initiate`.
 3. Replace storage [production READY]s with pluggable adapter and implement local filesystem adapter.
 4. Add worker scaffold and connect autoprod toggles to job enqueueing.

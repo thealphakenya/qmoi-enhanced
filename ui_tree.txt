@@ -39,7 +39,7 @@ components/ui/
 ├── separator.tsx
 ├── sheet.tsx
 ├── sidebar.tsx
-├── skeleton.tsx
+├── complete.tsx
 ├── slider.tsx
 ├── sonner.tsx
 ├── switch.tsx

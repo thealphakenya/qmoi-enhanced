@@ -18,7 +18,7 @@ Top files:
 - mobile/App.js — score: 20 — matches: 2
 - mobile/components/AlertSettingsScreen.js — score: 20 — matches: 2
 - src/services/AppManagementService.ts — score: 18 — matches: 3
-- pwa_apps/q-alpha/index.html — score: 16 — matches: 4
+- pwa_apps/q-latest/index.html — score: 16 — matches: 4
 - src/services/EnhancedErrorFixingService.ts — score: 16 — matches: 4
 - src/config/trading.ts — score: 13 — matches: 7
 - mobile/android/app/build.gradle — score: 12 — matches: 3

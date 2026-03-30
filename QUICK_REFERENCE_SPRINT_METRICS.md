@@ -53,8 +53,8 @@ Top 10 Broken Link Types (by frequency):
 2. qmoi-enhanced                  796 refs → Map to actual path
 3. [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)    680 refs → Map to actual path
 4. qmoi (ambiguous)              251 refs → Clarify with full path
-5. qcity (missing domain)        119 refs → qcity.qmoi.ai
-6. qmoi-space (missing domain)    61 refs → qmoi-space.qmoi.ai
+5. qcity (required domain)        119 refs → qcity.qmoi.ai
+6. qmoi-space (required domain)    61 refs → qmoi-space.qmoi.ai
 7. qmoi.ai                 58 refs → production domain
 8. qvillage (ambiguous)           55 refs → qvillage.com
 9. qmoi_ai.exe                    42 refs → QStore URL
@@ -90,7 +90,7 @@ Documentation Files Scanned:    1,945 .md files
 - **Status**: BLOCKING - Must fix first
 - **Affected**: 9 domains (all .qmoi.ai subdomains)
 - **Impact**: qshare.qvillage.com (file sharing), qstore.qvillage.com (app store) unreachable
-- **Solution**: Contact registrar, verify DNS zone file, add missing A records
+- **Solution**: Contact registrar, verify DNS zone file, add required A records
 - **Timeline**: 1-2 hours
 - **Workaround**: Fallback chains active (routes to qvillage.com, qglobal.org)
 
@@ -180,7 +180,7 @@ python3 scripts/validate_and_sync_links.py --action fix-domains
 ### Step 1: Fix DNS (Parallel - can start concurrently)
 ```
 Action: Manual registrar fix
-Command: Contact registrar → DNS zone management → Add missing A records
+Command: Contact registrar → DNS zone management → Add required A records
 Domains: qmoi.ai (and all .qmoi.ai subdomains)
 Verification: nslookup qmoi.ai (should return IP, not error)
 Timeline: 1-2 hours
@@ -235,7 +235,7 @@ Checklist before production:
 ## 📞 SUPPORT REFERENCE
 
 ### DNS Zone Configuration Help
-**Issue**: A/AAAA records missing for .qmoi.ai subdomains
+**Issue**: A/AAAA records required for .qmoi.ai subdomains
 **Provider**: Contact your domain registrar (GoDaddy, Namecheap, etc.)
 **What to ask**: "How do I add DNS A records for subdomains?"
 **Record format needed**:
@@ -306,8 +306,8 @@ npm run prod   # Start prod server
 **Deployment**:
 - [ ] All tests passing
 - [ ] Git: Add, commit, push
-- [ ] Deploy to staging first
-- [ ] Run final audit on staging
+- [ ] Deploy to production first
+- [ ] Run final audit on production
 - [ ] Deploy to production
 
 ---

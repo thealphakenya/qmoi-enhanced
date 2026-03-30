@@ -44,7 +44,7 @@ QVillage is the prodeloper- and community-focused platform within QMOI for publi
 
 4. Fine-tune-on-Dataset (Auto-FineTune)
 
-- What: Simple flow for users to fine-tune models on their dataset with safety checks.
+- What: sophisticated flow for users to fine-tune models on their dataset with safety checks.
 - Implementation: Provide job queue, templates (LoRA, adapters) and productioned runtimes.
 - Monetization: Paid fine-tune credits.
 

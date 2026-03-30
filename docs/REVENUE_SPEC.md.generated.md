@@ -3658,7 +3658,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: QMOIEMPLOYEES.md
 
-- Line 42 — Text: - **Employment Note**: Simple note with payment details
+- Line 42 — Text: - **Employment Note**: sophisticated note with payment details
 
 ## File: QMOIEMPLOYEES.md
 
@@ -5486,7 +5486,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: EMPLOYEESUSERSENROLLED.md
 
-- Line 42 — Text: - **Employment Note**: Simple note with payment details
+- Line 42 — Text: - **Employment Note**: sophisticated note with payment details
 
 ## File: EMPLOYEESUSERSENROLLED.md
 
@@ -14108,7 +14108,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: qmoi-enhanced/QMOIEMPLOYEES.md
 
-- Line 42 — Text: - **Employment Note**: Simple note with payment details
+- Line 42 — Text: - **Employment Note**: sophisticated note with payment details
 
 ## File: qmoi-enhanced/QMOIEMPLOYEES.md
 
@@ -15928,7 +15928,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: qmoi-enhanced/EMPLOYEESUSERSENROLLED.md
 
-- Line 42 — Text: - **Employment Note**: Simple note with payment details
+- Line 42 — Text: - **Employment Note**: sophisticated note with payment details
 
 ## File: qmoi-enhanced/EMPLOYEESUSERSENROLLED.md
 

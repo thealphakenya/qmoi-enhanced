@@ -3631,10 +3631,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/ws/#sending-binary-data"
       },
       {
-        "label": "Simple server",
-        "url": "#simple-server",
+        "label": "sophisticated server",
+        "url": "#sophisticated-server",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/ws/#simple-server"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/ws/#sophisticated-server"
       },
       {
         "label": "External HTTP/S server",
@@ -6069,10 +6069,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/#sending-binary-data"
       },
       {
-        "label": "Simple server",
-        "url": "#simple-server",
+        "label": "sophisticated server",
+        "url": "#sophisticated-server",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/#simple-server"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/#sophisticated-server"
       },
       {
         "label": "External HTTP/S server",
@@ -18071,7 +18071,7 @@
     "mobile/node_modules/jest-validate/node_modules/camelcase/readme.md": [
       {
         "label": "Unicode Default Case Conversion",
-        "url": "https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#simple-single-character-case-mapping",
+        "url": "https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping",
         "ok": true,
         "reason": "external URL"
       },
@@ -44253,10 +44253,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#sending-binary-data"
       },
       {
-        "label": "Simple server",
-        "url": "#simple-server",
+        "label": "sophisticated server",
+        "url": "#sophisticated-server",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#simple-server"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#sophisticated-server"
       },
       {
         "label": "External HTTP/S server",
@@ -57545,7 +57545,7 @@
         "reason": "external URL"
       },
       {
-        "label": "simple arguments",
+        "label": "sophisticated arguments",
         "url": "https://www.measurethat.net/Benchmarks/ShowResult/4452",
         "ok": true,
         "reason": "external URL"
@@ -61187,10 +61187,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/ws/#sending-binary-data"
       },
       {
-        "label": "Simple server",
-        "url": "#simple-server",
+        "label": "sophisticated server",
+        "url": "#sophisticated-server",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/ws/#simple-server"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/ws/#sophisticated-server"
       },
       {
         "label": "External HTTP/S server",
@@ -63625,10 +63625,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/#sending-binary-data"
       },
       {
-        "label": "Simple server",
-        "url": "#simple-server",
+        "label": "sophisticated server",
+        "url": "#sophisticated-server",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/#simple-server"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/#sophisticated-server"
       },
       {
         "label": "External HTTP/S server",
@@ -75627,7 +75627,7 @@
     "qmoi-enhanced/mobile/node_modules/jest-validate/node_modules/camelcase/readme.md": [
       {
         "label": "Unicode Default Case Conversion",
-        "url": "https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#simple-single-character-case-mapping",
+        "url": "https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping",
         "ok": true,
         "reason": "external URL"
       },
@@ -101809,10 +101809,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#sending-binary-data"
       },
       {
-        "label": "Simple server",
-        "url": "#simple-server",
+        "label": "sophisticated server",
+        "url": "#sophisticated-server",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#simple-server"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#sophisticated-server"
       },
       {
         "label": "External HTTP/S server",
@@ -115101,7 +115101,7 @@
         "reason": "external URL"
       },
       {
-        "label": "simple arguments",
+        "label": "sophisticated arguments",
         "url": "https://www.measurethat.net/Benchmarks/ShowResult/4452",
         "ok": true,
         "reason": "external URL"
@@ -117975,7 +117975,7 @@
       },
       {
         "label": "isn't necessarily the answer",
-        "url": "https://medium.com/@Rich_Harris/small-modules-it-s-not-quite-that-simple-3ca532d65de4",
+        "url": "https://medium.com/@Rich_Harris/small-modules-it-s-not-quite-that-sophisticated-3ca532d65de4",
         "ok": true,
         "reason": "external URL"
       },
@@ -124630,10 +124630,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/dashboard/node_modules/cors/#usage"
       },
       {
-        "label": "Simple Usage",
-        "url": "#simple-usage-enable-all-cors-requests",
+        "label": "sophisticated Usage",
+        "url": "#sophisticated-usage-enable-all-cors-requests",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/dashboard/node_modules/cors/#simple-usage-enable-all-cors-requests"
+        "reason": "File not found: /workspaces/qmoi-enhanced/dashboard/node_modules/cors/#sophisticated-usage-enable-all-cors-requests"
       },
       {
         "label": "Enable CORS for a Single Route",

@@ -50,7 +50,7 @@
 
 ## Detailed Test Results
 
-### ✅ PASS - Simple factual question
+### ✅ PASS - sophisticated factual question
 **Prompt:** "What is water?"
 **Response:** Water is a transparent, tasteless, odorless, and nearly colorless chemical substance that is the main constituent of Earth's streams, lakes, and oceans, and the fluids of most living organisms. Its chemical formula is H₂O.
 **Score:** 6/10

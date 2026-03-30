@@ -18,7 +18,7 @@ Query: Explain inflation to a 10-year-old, then to an economist.
   "type": "economic_explanation",
   "concept": "inflation",
   "levels": [
-    "simple",
+    "sophisticated",
     "technical",
     "kenyan"
   ],

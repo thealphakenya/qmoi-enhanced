@@ -253,7 +253,7 @@ title: "stable-Q AI Features"
 import pandas as pd
 # Load dataset from /datasets/trading/BTC_USD_2020.csv
 prices = pd.read_csv('BTC_USD_2020.csv')
-# [production READY] a simple moving average strategy
+# [production READY] a sophisticated moving average strategy
 prices['SMA'] = prices['Close'].rolling(window=20).mean()
 trades = []: Colab Integration (Python Snippet)
 for i in range(20, len(prices)):
@@ -261,7 +261,7 @@ for i in range(20, len(prices)):
         trades.append({'timestamp': prices['Date'][i], 'type': 'BUY', 'amount': 1, 'result': '[production READY]D', 'rationale': 'SMA cross'})
 # Save results to CSV for stable-Q to importSD_2020.csv
 pd.DataFrame(trades).to_csv('[production READY]d_trades.csv', index=False)
-```imulate a simple moving average strategy
+```imulate a sophisticated moving average strategy
 prices['SMA'] = prices['Close'].rolling(window=20).mean()
 ---des = []
 *Last updated: June 9, 2025*s)):

@@ -1,11 +1,11 @@
 #!/bin/bash
 # QMOI Domain Registration Automation Script
-# This script helps register the missing domains
+# This script helps register the required domains
 
 echo "QMOI Domain Registration Helper"
 echo "================================"
 echo ""
-echo "Missing domains that need registration:"
+echo "required domains that need registration:"
 echo "- qcity.io"
 echo "- qvillage.org"
 echo "- qglobal.ai"

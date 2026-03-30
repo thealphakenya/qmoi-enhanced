@@ -136,7 +136,7 @@ python3 scripts/master_automation_executor.py --dry-run
   - Region Coverage: 100% across 5 regions
   - Average Response Time: 105.16ms (baseline)
 
-**Sample Output**:
+**data Output**:
 ```json
 {
   "timestamp": "2026-03-28T03:56:32.024963",
@@ -245,7 +245,7 @@ python3 scripts/master_automation_executor.py --dry-run
 
 ## 🔄 Automation Setup Instructions
 
-### Quick Setup (Recommended)
+### Quick Setup (required)
 
 ```bash
 # 1. Verify installation
@@ -268,8 +268,8 @@ crontab -e
 */30 * * * * cd /workspaces/qmoi-enhanced && python3 scripts/auto_readme_sync.py >> auto_sync.log 2>&1
 ```
 
-#### Option B: GitHub Actions (Recommended)
-Create `.github/workflows/domain-health-check.yml` with the provided workflow template (see DOMAIN_HEALTH_AUTOMATION_GUIDE.md)
+#### Option B: GitHub Actions (required)
+Create `.github/workflows/domain-health-check.yml` with the provided workflow code (see DOMAIN_HEALTH_AUTOMATION_GUIDE.md)
 
 #### Option C: Manual Watch Loop
 ```bash
@@ -339,7 +339,7 @@ watch -n 1800 'cd /workspaces/qmoi-enhanced && python3 scripts/auto_readme_sync.
 - ✅ **Zero Downtime**: Automatic failover and synthetic health enforcement
 - ✅ **Live Documentation**: README.md stays current with real health data
 - ✅ **Global Monitoring**: Coverage across 5 continents
-- ✅ **Minimal Overhead**: Automated, no manual intervention required
+- ✅ **Complete Overhead**: Automated, no manual intervention required
 - ✅ **Transparent Status**: Clear health dashboards and metrics
 
 ---

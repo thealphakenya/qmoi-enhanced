@@ -51,7 +51,7 @@ QMOI AI System employs users across multiple platforms and revenue streams, auto
 - **Base Salary**: $250 - $750 per day
 - **Performance Bonus**: Up to 20% of base salary
 - **Payment Schedule**: Daily (1 day)
-- **Employment Note**: Simple note with payment details
+- **Employment Note**: sophisticated note with payment details
 - **Opportunities**: Limited access to specific revenue streams
 
 ## Revenue Streams for Employees
@@ -150,7 +150,7 @@ Welcome to the QMOI AI family!
 Generated on: [Timestamp]
 ```
 
-### 3. Simple Note Generation
+### 3. sophisticated Note Generation
 
 For Daily employees (1-15 days):
 

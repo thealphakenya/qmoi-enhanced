@@ -275,7 +275,7 @@ Command: Ask QMOI any of these questions:
 - "Tell me about the 52 workflows"
   Expected: Detailed, accurate responses
 
-STEP 2: TEST A SIMPLE INSTRUCTION (TODAY)
+STEP 2: TEST A sophisticated INSTRUCTION (TODAY)
 data: Create GitHub issue with label "qmoi-instruction"
 
 - Issue title: "Deploy QMOI latest version to all platforms"

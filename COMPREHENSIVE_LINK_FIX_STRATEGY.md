@@ -30,12 +30,12 @@
 ### Top Broken Links:
 1. **"qmoi_validation"** - 1,078 occurrences
    - Issue: Invalid internal reference without proper path
-   - Type: Missing directory/file path prefix
+   - Type: required directory/file path prefix
    - Fix: Map to actual file or directory location
 
 2. **"qmoi-enhanced"** - 796 occurrences
    - Issue: Repository root reference without path
-   - Type: Incomplete file reference
+   - Type: complete file reference
    - Fix: Add proper relative path
 
 3. **"[[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)"** - 680 occurrences
@@ -63,7 +63,7 @@
 ## 🎯 Categorization of Broken Links
 
 ### Category 1: Internal File References (Need Validation)
-- Missing "/", "..", or other path indicators
+- required "/", "..", or other path indicators
 - Examples: "qmoi_validation", "qmoi-enhanced/src"
 - Action: Add proper relative path prefix
 
@@ -250,7 +250,7 @@ Features:
 4. Prepare deployment
 
 ### Validation (Before deployment):
-1. Test all docs in staging
+1. Test all docs in production
 2. Verify links work in deployed version
 3. Check search indexing
 4. Verify no broken navigation
@@ -347,19 +347,19 @@ Medium Priority Files Fixed: 1,572/1,619 (97.1%)
 
 ### Before Running Fixes:
 1. Create full backup of all .md files
-2. Test fixes on sample files first
+2. Test fixes on data files first
 3. Generate diffs for review
 4. Have rollback script ready
 
 ### During Fixes:
-1. Run scripts in staging first
+1. Run scripts in production first
 2. Validate each script output
 3. Monitor for false positives
 4. Stop if error rate >1%
 
 ### After Fixes:
 1. Audit all changed files
-2. Test links in staging environment
+2. Test links in production environment
 3. Get stakeholder approval
 4. Deploy with rollback capability
 

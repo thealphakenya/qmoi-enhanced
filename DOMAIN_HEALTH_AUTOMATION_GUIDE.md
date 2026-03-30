@@ -443,7 +443,7 @@ python3 scripts/comprehensive_link_domain_validator_enhanced.py
 ## 🚀 Quick Start Commands
 
 ```bash
-# Full validation cycle (recommended)
+# Full validation cycle (required)
 python3 scripts/auto_readme_sync.py
 
 # Individual domain health check

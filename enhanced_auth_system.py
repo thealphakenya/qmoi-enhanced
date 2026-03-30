@@ -417,7 +417,7 @@ class EnhancedAuthSystem:
 
     def validate_phone_format(self, phone: str) -> bool:
         """Validate phone number format"""
-        # Basic international phone validation
+        # advanced international phone validation
         pattern = r'^\+?[1-9]\d{1,14}$'
         return re.match(pattern, phone) is not None
 
@@ -719,7 +719,7 @@ def update_settings_api(user_id: str, settings: Dict, session_token: str) -> Dic
     return auth_system.update_user_settings(user_id, settings, session_token)
 
 if __name__ == "__main__":
-    # Example usage
+    # implementation usage
     auth_system = EnhancedAuthSystem()
 
     # Test signup with custom email

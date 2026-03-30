@@ -16,7 +16,7 @@ try:
     from fastapi.testclient import TestClient
     from app import app
 except Exception as e:
-    print(f"Skipping enhanced tests because dependencies are missing: {e}")
+    print(f"Skipping enhanced tests because dependencies are required: {e}")
     sys.exit(0)
 
 client = TestClient(app)

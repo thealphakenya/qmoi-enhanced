@@ -62,7 +62,7 @@ Operational flow
 
 Notes
 
-- The repository contains small placeholder artifacts under `downloads/` for local validation and link checks. These are placeholders for CI-produced signed artifacts; CI should replace them with real artifacts or upload to GitHub Releases or an artifacts bucket.
+- The repository contains small value artifacts under `downloads/` for local validation and link checks. These are placeholders for CI-produced signed artifacts; CI should replace them with real artifacts or upload to GitHub Releases or an artifacts bucket.
 - For production: do not commit large binaries into the repo. Use artifact storage and point `qcity-artifacts` at external URLs.
 
 # Apps Validation

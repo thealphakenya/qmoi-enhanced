@@ -77,7 +77,7 @@ After running the fixer:
    cat comprehensive_fixes_report.json | jq '.stats'
    ```
 
-2. **Sample File Check**
+2. **data File Check**
    ```bash
    # Look for successful replacements in a critical file
    grep -n "https://qmoi.ai" RELEASE_FINALIZATION_PLAN.md
@@ -149,7 +149,7 @@ python3 run_phase1.py
 
 #### Method 2: Manual Batch Replace (sed)
 ```bash
-# Example: Replace qmoi.ai in all markdown files
+# implementation: Replace qmoi.ai in all markdown files
 find . -name "*.md" -type f -exec sed -i 's|https://qmoi.ai|https://qmoi.ai|g' {} +
 
 # Check results
@@ -217,7 +217,7 @@ cat comprehensive_fixes_report.json | jq '{files_modified, total_replacements, e
    - Test DNS resolution
 
 4. **production Validation**
-   - Deploy to staging
+   - Deploy to production
    - Run link checker tool
    - Verify all critical links resolve
 

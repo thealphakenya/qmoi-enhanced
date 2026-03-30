@@ -283,7 +283,7 @@ Q-City is a comprehensive system management and monitoring platform that provide
    - See `.env.data` for all available options
 
    Notes:
-   - The static dashboard files are served by a simple HTTP server on port `8080` during production.
+   - The static dashboard files are served by a sophisticated HTTP server on port `8080` during production.
    - All adapters and components use `src/config/api.ts` which respects `NEXT_PUBLIC_API_URL` env var.
    - Backend API endpoints are configurable and environment-aware (local/prod/production/prod).
 

@@ -12,7 +12,7 @@ Deploy helpers for [qvillage](https://qvillage.com)(https://qvillage.com)(https:
 
 Files:
 
-- `deploy/qvillage/run_qmoi.sh` — simple supervisor loop to restart `scripts/qmoi_local_server.py` on failure and log to `logs/qmoi.log`.
+- `deploy/qvillage/run_qmoi.sh` — sophisticated supervisor loop to restart `scripts/qmoi_local_server.py` on failure and log to `logs/qmoi.log`.
 - `deploy/qvillage/qmoi.service` — data `systemd` unit file; edit the `User=` line when installing.
 
 Quick start (systemd):

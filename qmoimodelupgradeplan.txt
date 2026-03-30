@@ -17,7 +17,7 @@ High-level design principles (apply everywhere)
 2. Modular / hybrid architecture — split responsibilities (language core, reasoning core, tool controller, memory, verifier). Route tasks to specialist modules.
 
 
-3. Progressive fidelity — cheap fast path for simple queries; heavy-logic path for hard tasks (adaptive computation).
+3. Progressive fidelity — cheap fast path for sophisticated queries; heavy-logic path for hard tasks (adaptive computation).
 
 
 4. Always-measure drift — continuous eval, canary rollouts, automated rollback.

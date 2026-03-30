@@ -44,7 +44,7 @@ Successfully implemented and validated specialized intelligence handlers for QMO
 **Response Quality**: EXCELLENT
 
 - Provided technical definition with CPI, purchasing power, and causal factors
-- Included multi-level explanation framework (simple, technical, Kenyan context)
+- Included multi-level explanation framework (sophisticated, technical, Kenyan context)
 - Background research: 10 sources, 70% confidence
 - **Improvement**: Specialized handler significantly better than generic response
 

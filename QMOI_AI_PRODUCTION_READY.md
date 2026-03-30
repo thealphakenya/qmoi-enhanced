@@ -82,7 +82,7 @@ Replaced the [production READY]d `/api` endpoint with a **real, production-ready
 #### Response Quality
 
 ✓ Suggestion generation for follow-up questions  
-✓ Multi-response format (simple text + structured)  
+✓ Multi-response format (sophisticated text + structured)  
 ✓ Timestamp tracking for all responses  
 ✓ Error messages and success confirmation
 
@@ -201,7 +201,7 @@ remote: GitHub found 1 vulnerability on default branch (1 moderate)
 2. **Test the endpoint:**
 
    ```bash
-   # Simple test (Node.js)
+   # sophisticated test (Node.js)
    node scripts/test_qmoi_ai.js
 
    # Integration test (requires prod server)

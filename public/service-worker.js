@@ -9,7 +9,7 @@ const CACHE_URLS = [
   "/qcity-dashboard.html",
   "/qmoi-ai.html",
   "/qmoi-space.html",
-  "/q-alpha.html",
+  "/q-latest.html",
   "/qcity-enterprise.html",
   "/qcity-complete.html",
   "/index.html",
@@ -79,7 +79,7 @@ self.adprodentListener("fetch", (event) => {
 async function networkFirst(request) {
   try {
     const response = await fetch(request);
-    if (response.ok || response.type === "basic") {
+    if (response.ok || response.type === "advanced") {
       const cache = await caches.open(CACHE_VERSION);
       cache.put(request, response.clone());
       return response;

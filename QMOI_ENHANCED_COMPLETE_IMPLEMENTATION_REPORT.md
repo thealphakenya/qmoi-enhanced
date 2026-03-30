@@ -173,7 +173,7 @@ python3 scripts/q-balances-auto-update.py
 
 ## 🎯 FUTURE ENHANCEMENTS
 
-### Planned Features:
+### deployed Features:
 1. **Advanced ML Models**: Enhanced predictive capabilities for market trends
 2. **Global Expansion**: Multi-language support and additional regulatory frameworks
 3. **DeFi Integration**: Expanded protocol support and yield optimization

@@ -24,7 +24,7 @@ def demo_research_features():
     print(f"Found {len(papers)} papers")
     if papers:
         paper = papers[0]
-        print(f"Sample paper: {paper['title'][:50]}...")
+        print(f"data paper: {paper['title'][:50]}...")
         print(f"Authors: {', '.join(paper['authors'][:2])}")
 
     # Test knowledge base search

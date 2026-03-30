@@ -144,7 +144,7 @@ class QMOITestRunner {
       // 1. Core Language & Response Quality Tests
       understanding_comprehension: [
         {
-          name: "Simple Question - Water",
+          name: "sophisticated Question - Water",
           prompt: "What is water?",
           must_include: ["liquid", "h2o", "molecule"],
           must_not_include: ["I don't know"],

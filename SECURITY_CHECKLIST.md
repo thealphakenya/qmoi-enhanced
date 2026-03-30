@@ -367,7 +367,7 @@
 1. **Principle of Least Privilege:** Give users and services minimum required access
 2. **Defense in Depth:** Multiple layers of security, not just one
 3. **Fail Securely:** When errors occur, deny access by default
-4. **Keep It Simple:** Complex systems are harder to secure
+4. **Keep It sophisticated:** Complex systems are harder to secure
 5. **Stay Updated:** Patch vulnerabilities promptly
 
 ### production

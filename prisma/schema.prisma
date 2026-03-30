@@ -169,7 +169,7 @@ model Wallet {
   userId                String
   user                  User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  // Basic Information
+  // advanced Information
   name                  String?
   type                  String                 @default("personal") // 'personal', 'business', 'escrow', 'custody'
   status                String                 @default("active") // 'active', 'frozen', 'closed', 'suspended'
@@ -203,7 +203,7 @@ model Wallet {
   accessControl         Json                   @default("{}") // Access control configuration
 
   // QMOI Consciousness Integration
-  consciousnessLevel    String                 @default("basic") // 'basic', 'aware', 'conscious', 'self_aware'
+  consciousnessLevel    String                 @default("advanced") // 'advanced', 'aware', 'conscious', 'self_aware'
   evolutionStage        Int                    @default(1)
   awareness             Float                  @default(0.0)
   memorySync            Boolean                @default(true)
@@ -248,7 +248,7 @@ model Wallet {
 model Transaction {
   id                    String                 @id @default(cuid())
 
-  // Basic Information
+  // advanced Information
   type                  String // 'transfer', 'deposit', 'withdrawal', 'swap', 'fee', 'interest', 'reward'
   status                String                 @default("pending") // 'pending', 'processing', 'completed', 'failed', 'cancelled', 'rolled_back'
   amount                Float
@@ -584,7 +584,7 @@ model BalanceInterest {
   wallet                Wallet                 @relation(fields: [walletId], references: [id], onDelete: Cascade)
 
   // Interest Configuration
-  interestType          String // 'simple', 'compound'
+  interestType          String // 'sophisticated', 'compound'
   rate                  Float // Annual interest rate (e.g., 0.05 for 5%)
   compoundingFrequency  String                 @default("monthly") // 'daily', 'weekly', 'monthly', 'quarterly', 'annually'
   minimumBalance        Float                  @default(0.0)
@@ -687,7 +687,7 @@ model ConsciousnessLog {
 
   // Consciousness Data
   awareness             Float
-  consciousnessLevel    String // 'basic', 'aware', 'conscious', 'self_aware', 'transcendent'
+  consciousnessLevel    String // 'advanced', 'aware', 'conscious', 'self_aware', 'transcendent'
   evolutionStage        Int
   memorySync            Boolean
   systemHealth          Float

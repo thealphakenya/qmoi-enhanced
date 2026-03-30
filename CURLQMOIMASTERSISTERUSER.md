@@ -140,7 +140,7 @@ Start the local test server (runs on port 8080):
 python3 scripts/qmoi_chat_server.py &
 ```
 
-The server exposes a simple OpenAI-like endpoint at `https://qvillage.com/v1/chat/completions` that accepts JSON bodies similar to OpenAI Chat Completions API.
+The server exposes a sophisticated OpenAI-like endpoint at `https://qvillage.com/v1/chat/completions` that accepts JSON bodies similar to OpenAI Chat Completions API.
 
 ## 2. comprehensive conversation (ordinary user)
 

@@ -103,7 +103,7 @@ Phase 7 implements comprehensive load testing infrastructure and Redis-based cac
 **API**:
 
 - `withCache()`: Higher-order function for caching middleware
-- `cacheRoute()`: Simple HOF wrapper for single route
+- `cacheRoute()`: sophisticated HOF wrapper for single route
 - `setCacheControl()`: Set HTTP cache control headers
 - `invalidateCache()`: Pattern-based cache invalidation
 - `invalidateAllCache()`: Full cache reset

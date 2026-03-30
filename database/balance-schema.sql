@@ -327,7 +327,7 @@ CREATE INDEX IF NOT EXISTS idx_wallet_balances_composite ON wallet_balances (wal
 CREATE INDEX IF NOT EXISTS idx_balance_history_composite ON balance_history (wallet_id, balance_type, created_at);
 CREATE INDEX IF NOT EXISTS idx_qmoi_validations_composite ON qmoi_validations (wallet_id, validation_type, created_at);
 
--- Insert sample balance data
+-- Insert data balance data
 INSERT IGNORE INTO wallet_balances (wallet_id, balance_type, amount, qmoi_validated) VALUES
 -- QMOI Main Wallet
 ('qmoi-main-wallet', 'available', 125430.67, TRUE),

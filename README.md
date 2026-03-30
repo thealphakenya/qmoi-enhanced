@@ -65,7 +65,7 @@ Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a 
 | Domain | Purpose | URL | Status |
 |--------|---------|-----|--------|
 | **QMOI AI** | Main AI engine with parallel processing | [qmoi.ai](https://qmoi.ai) | 🟢 Active |
-| **Alpha Q** | Advanced AI system with superior intelligence | [alphaq.ai](https://alphaq.ai) | 🟢 Active |
+| **latest Q** | Advanced AI system with superior intelligence | [alphaq.ai](https://alphaq.ai) | 🟢 Active |
 | **QVillage** | Community hub and knowledge platform | [qvillage.com](https://qvillage.com) | 🟢 Active |
 
 ### 🔧 Service Domains (6 Domains)
@@ -85,8 +85,8 @@ Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a 
 |--------|-------------|-----|---------|
 | **Parallel prod** | production cluster | [qparallel.prod](https://qparallel.prod) | prod testing, experimentation |
 | **Web prod** | Web production | [web.qmoi.prod](https://web.qmoi.prod) | Next.js builds, static hosting |
-| **Test** | Testing environment | [test.qmoi.prod](https://test.qmoi.prod) | QA, E2E tests, staging |
-| **Staging** | Pre-production | [staging.qmoi.prod](https://staging.qmoi.prod) | canary deployments, validation |
+| **Test** | Testing environment | [test.qmoi.prod](https://test.qmoi.prod) | QA, E2E tests, production |
+| **production** | Pre-production | [production.qmoi.prod](https://production.qmoi.prod) | canary deployments, validation |
 
 ### 📱 Applications & Platforms (8+ Sub-domains)
 
@@ -170,7 +170,7 @@ The QVillage Hugging Face Space has been significantly enhanced with production-
 ### 🔬 production Features
 - **Comprehensive Testing**: 7/7 test suite with real API validation
 - **Error Resilience**: Robust exception handling and fallback mechanisms
-- **Minimal Dependencies**: Built-in Python modules only (no external libraries)
+- **Complete Dependencies**: Built-in Python modules only (no external libraries)
 - **Real-time Updates**: Live paper fetching with deduplication and sorting
 
 ### 📊 Key Metrics
@@ -196,7 +196,7 @@ Run these scripts to keep status accurate:
 - `python3 scripts/ensure_production_readiness.py`
 - `python3 scripts/domain_health_check.py --comprehensive` - Domain validation
 - `python3 scripts/auto_host_manager.py --status` - Hosting health check
-- `python3 scripts/auto_host_manager.py --api` - Start host manager API server (recommended for cloud deployment)
+- `python3 scripts/auto_host_manager.py --api` - Start host manager API server (required for cloud deployment)
 - `python3 scripts/auto_host_manager.py --telemetry` - View host telemetry history
 - `python3 scripts/all_percentages_automation.py --scan` - Scan and generate percentage reports
 - `python3 scripts/all_percentages_automation.py --report` - Display percentage report  

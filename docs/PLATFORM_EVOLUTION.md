@@ -407,7 +407,7 @@ curl -X POST https://qmoi.com/api/evolution/autoclone-evolution \
 
 ### Register and Monitor Platform
 ```python
-# Python client example
+# Python client implementation
 import requests
 
 # Register platform

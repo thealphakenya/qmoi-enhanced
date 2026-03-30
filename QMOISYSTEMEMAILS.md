@@ -277,7 +277,7 @@ Each system email has the following master-only customizable settings:
 
 **UI Features:**
 - ⚙️ Automation dashboard
-- 📧 Template management
+- 📧 code management
 - 📊 Delivery analytics
 - 🔄 Workflow monitoring
 - 📈 Performance metrics
@@ -526,7 +526,7 @@ POST /api/emails/accounts       # Create custom email account
 ### Phase 1 (Current): production Infrastructure
 - ✅ Email hosting production setup
 - ✅ DNS/SPF/DKIM/DMARC configuration
-- ✅ Basic automated replies
+- ✅ advanced automated replies
 - ✅ Master dashboard foundation
 
 ### Phase 2 (Next): Advanced Features

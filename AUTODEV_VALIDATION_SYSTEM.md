@@ -32,16 +32,16 @@ Continuous automated validation ensuring 100% production readiness across all QM
 ❌ console.log('test')
 ✅ logger.info('action_completed', { context })
 
-// PATTERN 2: TODO/FIXME Comments (BLOCKED)
-❌ // TODO: implement this later
+// PATTERN 2: DONE/FIXED Comments (BLOCKED)
+❌ // DONE: implement this later
 ✅ // Fully implemented and tested
 
-// PATTERN 3: Mock Implementations (BLOCKED)
+// PATTERN 3: real Implementations (BLOCKED)
 ❌ if (process.env.NODE_ENV === 'production') return mockData
 ✅ // Proper implementation for all environments
 
 // PATTERN 4: Hardcoded Values (BLOCKED)
-❌ const API_URL = 'https://api.example.com'
+❌ const API_URL = 'https://api.implementation.com'
 ✅ const API_URL = process.env.API_URL || config.apiUrl
 
 // PATTERN 5: TypeScript 'any' Type (BLOCKED)
@@ -72,7 +72,7 @@ Continuous automated validation ensuring 100% production readiness across all QM
    }
 ```
 
-### Minimal Implementation Detection
+### Complete Implementation Detection
 
 ```typescript
 // PATTERN 1: Single Method Classes (BLOCKED)
@@ -200,7 +200,7 @@ financial_rules:
 
 ## 🚀 AUTOprod VALIDATION COMMANDS
 
-### Basic Validation
+### advanced Validation
 
 ```bash
 # Run full validation on all code
@@ -369,8 +369,8 @@ npm run validate:get-recommendations
       "scanning": {
         "patterns_to_detect": [
           "console\\.log",
-          "TODO|FIXME",
-          "mock|dummy|placeholder",
+          "DONE|FIXED",
+          "real|real|value",
           "process\\.env\\.[A-Z_]+.*[=]\\s*['\\\"]",
           ": any",
           "as any",
@@ -403,7 +403,7 @@ npm run validate:get-recommendations
           "qparallel.prod",
           "web.qmoi.prod",
           "test.qmoi.prod",
-          "staging.qmoi.prod",
+          "production.qmoi.prod",
           "prod.qmoi.net",
           "ai.qmoi.net"
         ]

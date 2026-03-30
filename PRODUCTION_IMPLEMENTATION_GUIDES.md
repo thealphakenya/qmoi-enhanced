@@ -150,7 +150,7 @@ POST /api/qcity/ai/fix - AI fix features
 - title: string
 - description: string
 - assignees: string[]
-- status: 'todo' | 'in_progress' | 'review' | 'done'
+- status: 'DONE' | 'in_progress' | 'review' | 'done'
 - priority: 'low' | 'medium' | 'high'
 - dueDate: timestamp
 ```

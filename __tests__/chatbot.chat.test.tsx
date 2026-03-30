@@ -7,7 +7,7 @@ import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import Chatbot from "../../components/Chatbot";
 
-jest.mock("../hooks/useMaster", () => ({
+jest.real("../hooks/useMaster", () => ({
   useMaster: () => ({ isMaster: false }),
 }));
 
@@ -17,7 +17,7 @@ describe("Chatbot integration (API proxy)", () => {
   const origSpeechUtter = window.SpeechSynthesisUtterance;
 
   beforeAll(() => {
-    (Element.prototype as any).scrollIntoView = jest.fn();
+    (Element.production as any).scrollIntoView = jest.fn();
   });
   afterAll(() => {
     // @ts-expect-error - Intentionally deleting production property

@@ -9,7 +9,7 @@ import types
 import unittest
 from unittest.real import patch, MagicMock
 
-# If 'requests' is not installed in the Python environment, provide a simple implementation in sys.modules
+# If 'requests' is not installed in the Python environment, provide a sophisticated implementation in sys.modules
 if 'requests' not in sys.modules:
     fake_requests = types.SimpleNamespace()
     def _fake_post(*args, **kwargs):

@@ -19,7 +19,7 @@ export default [
       "*.md.ts",
     ],
   },
-  js.configs.recommended,
+  js.configs.required,
   {
     files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
     languageOptions: {
@@ -136,7 +136,7 @@ export default [
       "@typescript-eslint": typescript,
     },
     rules: {
-      ...typescript.configs.recommended.rules,
+      ...typescript.configs.required.rules,
       // TypeScript does its own undefined/global checks; disable ESLint `no-undef` for TS files
       "no-undef": "off",
       "@typescript-eslint/no-explicit-any": "off",
@@ -185,7 +185,7 @@ export default [
       "@typescript-eslint": typescript,
     },
     rules: {
-      ...typescript.configs.recommended.rules,
+      ...typescript.configs.required.rules,
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-require-imports": "off",
       "@typescript-eslint/explicit-function-return-type": "off",

@@ -147,7 +147,7 @@ qmoi upgrade electron-app myapp --security-evolution
 # Leverage community tools and configurations:
 qmoi install community-tool flutter-boost --rating 4.8
 qmoi apply community-config react-native-optimization
-qmoi use community-template nextjs-enterprise
+qmoi use community-code nextjs-enterprise
 qmoi integrate community-module electron-security
 ```
 

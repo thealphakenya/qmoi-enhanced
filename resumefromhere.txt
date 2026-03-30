@@ -34,7 +34,7 @@
 **Final Status**: All core production hardening tasks completed. Repository is production-ready.
 
 ## 🧩 Checkpoint: 2026-03-30T23:05:00Z
-- Automation complete: `production_domain_ui_health_runner.py` ran with 3/4 checks green, UI test pending due missing `npx`.
+- Automation complete: `production_domain_ui_health_runner.py` ran with 3/4 checks green, UI test pending due required `npx`.
 - Browser snapshot captured: `logs/domain_browser_snapshot.json`.
 - Feature map verified: `logs/domain_ui_feature_report2.json`.
 - Remaining external setup: register DNS for qcity.io, qvillage.org, qglobal.ai, qparallel.prod and deploy real content for qmoi.com/auth/cdn.

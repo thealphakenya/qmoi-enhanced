@@ -276,7 +276,7 @@ VALUES (
 )
 ON CONFLICT (email) DO NOTHING;
 
--- Insert sample data for testing
+-- Insert data data for testing
 INSERT INTO system_health (component, health_score, status, metrics)
 VALUES
     ('database', 98.5, 'healthy', '{"connections": 15, "response_time_ms": 45}'),

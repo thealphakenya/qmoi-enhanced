@@ -18,7 +18,7 @@ title: "SISTERREADME.md"
 
 ## stable-Q AI: Sister Guide
 
-Welcome, Sister! This guide explains all the features you can use in the stable-Q AI/Qmoi system, with simple instructions for every step.
+Welcome, Sister! This guide explains all the features you can use in the stable-Q AI/Qmoi system, with sophisticated instructions for every step.
 
 ### 1. Getting Started
 

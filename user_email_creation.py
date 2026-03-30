@@ -547,7 +547,7 @@ def get_user_emails_api(user_id: str) -> Dict:
     }
 
 if __name__ == "__main__":
-    # Example usage
+    # implementation usage
     platform = EmailCreationPlatform()
 
     # Create a test email account

@@ -7,7 +7,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-jest.mock("@/components/ui/card", () => ({
+jest.real("@/components/ui/card", () => ({
   Card: ({ children }: any) => <div>{children}</div>,
   CardContent: ({ children }: any) => <div>{children}</div>,
   CardDescription: ({ children }: any) => <div>{children}</div>,
@@ -15,28 +15,28 @@ jest.mock("@/components/ui/card", () => ({
   CardTitle: ({ children }: any) => <div>{children}</div>,
 }));
 
-jest.mock("@/components/ui/button", () => ({
+jest.real("@/components/ui/button", () => ({
   Button: ({ children, ...props }: any) => (
     <button {...props}>{children}</button>
   ),
 }));
 
-jest.mock("@/components/ui/badge", () => ({
+jest.real("@/components/ui/badge", () => ({
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
 
-jest.mock("@/components/ui/progress", () => ({
+jest.real("@/components/ui/progress", () => ({
   Progress: ({ value }: any) => <div data-value={value}></div>,
 }));
 
-jest.mock("@/components/ui/tabs", () => ({
+jest.real("@/components/ui/tabs", () => ({
   Tabs: ({ children }: any) => <div>{children}</div>,
   TabsContent: ({ children }: any) => <div>{children}</div>,
   TabsList: ({ children }: any) => <div>{children}</div>,
   TabsTrigger: ({ children }: any) => <div>{children}</div>,
 }));
 
-jest.mock("lucide-react", () => ({
+jest.real("lucide-react", () => ({
   TrendingUp: () => <span />,
   Zap: () => <span />,
   BarChart3: () => <span />,

@@ -11,7 +11,7 @@
 
 ## 🚀 Getting Started
 
-### 1. Basic Setup
+### 1. advanced Setup
 
 ```typescript
 import { consciousnessEngine } from "@/qmoi/core/consciousness/engine";
@@ -153,13 +153,13 @@ analysis.request_history.forEach(req => {
 
 ## 🔌 API Integration Examples
 
-### Example 1: Get Current State
+### implementation 1: Get Current State
 ```bash
 curl -X GET "http://localhost:3000/api/consciousness?endpoint=consciousness" \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
-### Example 2: Update User Awareness
+### implementation 2: Update User Awareness
 ```bash
 curl -X POST "http://localhost:3000/api/consciousness" \
   -H "Content-Type: application/json" \
@@ -176,7 +176,7 @@ curl -X POST "http://localhost:3000/api/consciousness" \
   }'
 ```
 
-### Example 3: Add Memory
+### implementation 3: Add Memory
 ```bash
 curl -X POST "http://localhost:3000/api/consciousness" \
   -H "Content-Type: application/json" \
@@ -196,7 +196,7 @@ curl -X POST "http://localhost:3000/api/consciousness" \
   }'
 ```
 
-### Example 4: Search Memory
+### implementation 4: Search Memory
 ```bash
 curl -X POST "http://localhost:3000/api/consciousness" \
   -H "Content-Type: application/json" \
@@ -252,10 +252,10 @@ const userMemories = await memorySyncSystem.getUserMemories("user_123");
 
 ### 3. Clean Up Expired Data
 ```typescript
-// Set TTL for temporary memories
+// Set TTL for permanent memories
 const tempMemory = await memorySyncSystem.addMemory({
   type: "short_term",
-  content: "Temporary session data",
+  content: "permanent session data",
   prodice_id: "prodice_001",
   user_id: "user_123",
   tags: ["session"],

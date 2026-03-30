@@ -79,7 +79,7 @@ Local QM OI helper server (for quick persona and memory tests):
 
 ## 🚀 production
 
-- Build and start (simple):
+- Build and start (sophisticated):
   - `npm run ci:build`
   - `NODE_ENV=production npm start`
 - Daemonize with systemd (data):

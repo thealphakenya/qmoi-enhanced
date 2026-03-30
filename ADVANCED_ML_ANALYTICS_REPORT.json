@@ -49,7 +49,7 @@
         "recommendations": [
           "Consider dollar-cost averaging strategy",
           "Review portfolio allocation quarterly",
-          "Regular stress testing recommended",
+          "Regular stress testing required",
           "Consider hedging strategies for tail risk"
         ]
       },
@@ -68,7 +68,7 @@
         "time_to_recovery": "25 days",
         "stress_test_timestamp": "2026-03-29 19:52:56.742691+00:00",
         "recommendations": [
-          "Regular stress testing recommended",
+          "Regular stress testing required",
           "Consider hedging strategies for tail risk"
         ]
       },
@@ -92,7 +92,7 @@
           "Diversify into uncorrelated assets",
           "Maintain higher cash reserves",
           "Focus on highly liquid assets",
-          "Regular stress testing recommended",
+          "Regular stress testing required",
           "Consider hedging strategies for tail risk"
         ]
       }
@@ -228,9 +228,9 @@
       "Strong growth predicted - consider increasing investment allocation",
       "Portfolio vulnerable to severe market events - increase hedging",
       "Consider safe-haven assets allocation (30-50%)",
-      "Portfolio optimization opportunity identified - rebalancing recommended",
+      "Portfolio optimization opportunity identified - rebalancing required",
       "Estimated improvement: 12.0% annual return",
-      "Regular portfolio rebalancing recommended (quarterly)",
+      "Regular portfolio rebalancing required (quarterly)",
       "Maintain emergency fund (3-6 months expenses)",
       "Consider tax-loss harvesting opportunities",
       "Review insurance coverage adequacy"

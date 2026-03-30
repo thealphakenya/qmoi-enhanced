@@ -97,7 +97,7 @@ Enhancements (>=20) — concise description, risk, required creds, and quick imp
 
 16. Cost-aware hosting selector & estimator
     - Given a release target, suggest hosting provider (Vercel/HF/Netlify) and estimate monthly cost based on traffic tiers.
-    - Risk: low. Creds: none. Implement: simple cost model module.
+    - Risk: low. Creds: none. Implement: sophisticated cost model module.
 
 17. Standardized release URL schema and README badges
     - Enforce release URL patterns (/<project>/releases/<tag>) and auto-generate status badges for READMEs.

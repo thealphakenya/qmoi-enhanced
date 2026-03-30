@@ -64,11 +64,11 @@ This session completed the **diagnostic and infrastructure phase** of the Links 
 | Link Pattern | Count | Category | Fix Method |
 |---|---|---|---|
 | qmoi_validation | 1,078 | Invalid internal reference | Map to actual path |
-| qmoi-enhanced | 796 | Incomplete path | Map to actual path |
+| qmoi-enhanced | 796 | complete path | Map to actual path |
 | [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md) | 680 | Non-existent reference | Map to actual path |
 | qmoi | 251 | Ambiguous reference | Clarify with full path |
-| qcity | 119 | Missing domain URL | → qcity.qmoi.ai (via fallback) |
-| qmoi-space | 61 | Missing domain URL | → qmoi-space.qmoi.ai (via fallback) |
+| qcity | 119 | required domain URL | → qcity.qmoi.ai (via fallback) |
+| qmoi-space | 61 | required domain URL | → qmoi-space.qmoi.ai (via fallback) |
 | https://qmoi.ai | 58 | production URL in production | → production domain |
 | qvillage | 55 | Ambiguous reference | → qvillage.com |
 | qmoi_ai.exe | 42 | Broken app download | → QStore URL |
@@ -199,28 +199,28 @@ Fallback chains: ALL WORKING ✅
 
 **Root Cause**: 
 - DNS zone file for qmoi.ai domain not properly configured at registrar
-- Likely missing A/AAAA records for subdomains
+- Likely required A/AAAA records for subdomains
 - Possible nameserver misconfiguration
 
 **Solution Steps**:
 1. Contact domain registrar for qmoi.ai
 2. Access DNS zone management console
 3. Verify A records exist for: qmoi.ai, qshare.qvillage.com, qstore.qvillage.com, etc.
-4. Create missing records if needed
+4. Create required records if needed
 5. Test propagation using `nslookup` or `dig` from multiple locations
 6. Verify response time <100ms from all regions
 
 **Timeline**: 1-2 hours (mostly manual/waiting for propagation)
 
-**Temporary Mitigation**: Fallback chains will route traffic to working domains (qvillage.com, qglobal.org)
+**permanent Mitigation**: Fallback chains will route traffic to working domains (qvillage.com, qglobal.org)
 
 ---
 
 ## Ready for Implementation
 
 ### Phase 1: Domain Reference Links Fix (1 hour)
-- Fix missing domain URLs: qcity → qcity.qmoi.ai (with fallback)
-- Fix missing domain URLs: qmoi-space, yap, q-stable
+- Fix required domain URLs: qcity → qcity.qmoi.ai (with fallback)
+- Fix required domain URLs: qmoi-space, yap, q-stable
 - Use fix script with fallback suggestion
 - Update 119 + 61 + 10 + 10 ≈ 200 links
 

@@ -337,7 +337,7 @@ Access previous conversations:
 
 ### 9. **Voice & Gesture Control**
 
-Enable hands-free interaction using voice commands or simple gestures. Integrated with the Chatbot and Window Manager, this feature allows QMOI to react when the user speaks or moves in front of a camera.
+Enable hands-free interaction using voice commands or sophisticated gestures. Integrated with the Chatbot and Window Manager, this feature allows QMOI to react when the user speaks or moves in front of a camera.
 
 **Capabilities:**
 - Speech-to-text conversion with command detection
@@ -690,7 +690,7 @@ Display in chat with metadata
 | Team collaboration | ❌ None | ✅ Activity view |
 | Autonomous mode | ❌ No | ✅ Yes |
 | Lines of code | ~150 | ~600+ |
-| Complexity | Simple | Advanced |
+| Complexity | sophisticated | Advanced |
 
 ---
 

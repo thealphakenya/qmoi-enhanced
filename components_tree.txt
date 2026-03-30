@@ -101,8 +101,8 @@ components/
 ├── WifiPanel.tsx
 ├── WifiPanel.tsx.bak.1768901506
 ├── WrappedComponent.tsx
-├── alpha-q-ai-system.js
-├── alpha-q-ai-system.tsx
+├── latest-q-ai-system.js
+├── latest-q-ai-system.tsx
 ├── analytics
 │   ├── AnalyticsCharts.tsx
 │   ├── EncryptedAuditLog.tsx
@@ -195,7 +195,7 @@ components/
     ├── separator.tsx
     ├── sheet.tsx
     ├── sidebar.tsx
-    ├── skeleton.tsx
+    ├── complete.tsx
     ├── slider.tsx
     ├── sonner.tsx
     ├── switch.tsx

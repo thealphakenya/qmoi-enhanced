@@ -192,7 +192,7 @@ Relevant config keys (in `config.json` or passed via config file):
 
 ## Notes for prodelopers
 
-- The current aggregator implementation is conservative and intentionally simple. Replace the [production READY] inference calls with real model calls when integrating third-party models.
+- The current aggregator implementation is conservative and intentionally sophisticated. Replace the [production READY] inference calls with real model calls when integrating third-party models.
 - Tests should assert that `model` override query params are ignored and that responses always include `model: "qmoi"`.
 - Documentation and front-end UI must not expose model-selection controls to the end user unless gated and audited for master use only.
 - **QVillage Integration:** any calls that require deeper knowledge or research should dispatch to QVillage endpoints (`/api/qvillage/*`), which themselves are backed by the same `qmoi` aggregator and memory store. QVillage handles papers, discussions and knowledge base queries; the model should treat it as an external source of truth.

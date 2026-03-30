@@ -125,7 +125,7 @@ try {
 // No early MSW fallback here. MSW is initialized in `src/setupTests.ts`
 // to ensure ESM imports and polyfills are applied in the correct order.
 
-// Provide a simple require-cache-based real for `next/server` so that modules
+// Provide a sophisticated require-cache-based real for `next/server` so that modules
 // importing it during test initialization receive consistent shims.
 try {
   const mockNextServer = {

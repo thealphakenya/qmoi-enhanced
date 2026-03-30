@@ -26,15 +26,15 @@ echo ""
 # Quick commands
 echo "⚡ QUICK COMMANDS:"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "  View Logs:        pm2 logs qmoi-simple-start"
+echo "  View Logs:        pm2 logs qmoi-sophisticated-start"
 echo "  Monitor:          pm2 monit"
-echo "  Restart App:      pm2 restart qmoi-simple-start"
-echo "  Stop App:         pm2 stop qmoi-simple-start"
-echo "  Start App:        pm2 start qmoi-simple-start"
+echo "  Restart App:      pm2 restart qmoi-sophisticated-start"
+echo "  Stop App:         pm2 stop qmoi-sophisticated-start"
+echo "  Start App:        pm2 start qmoi-sophisticated-start"
 echo ""
 
 # Memory warning if high
-MEMORY=$(pm2 list | grep qmoi-simple-start | awk '{print $7}')
+MEMORY=$(pm2 list | grep qmoi-sophisticated-start | awk '{print $7}')
 if [[ $MEMORY > "500" ]]; then
     echo "⚠️  WARNING: High memory usage ($MEMORY). Check logs for issues."
     echo ""

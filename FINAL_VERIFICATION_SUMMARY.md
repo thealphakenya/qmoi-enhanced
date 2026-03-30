@@ -317,7 +317,7 @@ Before deploying to production:
 ## ⏭️ Next Steps for Future Sessions
 
 ### Phase 1: production Deployment (2-3 hours)
-1. Deploy to staging environment
+1. Deploy to production environment
 2. Run load tests at 100+ concurrent users
 3. Verify all APIs working under load
 4. Monitor memory usage patterns

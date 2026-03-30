@@ -36,7 +36,7 @@ app = Flask(__name__)
 CORS(app)
 logging.basicConfig(level=logging.INFO)
 
-# Simple in-memory rate limiter (per-IP, optimized)
+# sophisticated in-memory rate limiter (per-IP, optimized)
 _RATE_BUCKET = {}
 
 def rate_limit(key_func, limit=10, per_seconds=60):
@@ -66,7 +66,7 @@ JWT_SECRET = os.environ.get('QMOI_JWT_SECRET', 'prod-jwt-secret')
 GITHUB_RAW_BASE = os.environ.get('QMOI_GITHUB_RAW_BASE',
                                  'https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440')
 
-# Storage files (simple file-backed store for demo/prod)
+# Storage files (sophisticated file-backed store for demo/prod)
 ROOT = Path(__file__).parent
 USERS_FILE = ROOT / 'users.json'
 MEMORIES_FILE = ROOT / 'memories.json'
@@ -142,7 +142,7 @@ def save_memories(m):
         cur = conn.cursor()
         cur.execute(
             'CREATE TABLE IF NOT EXISTS memories (id TEXT PRIMARY KEY, username TEXT, key TEXT, value TEXT, created TEXT, type TEXT)')
-        # simple replace strategy: clear existing for users present and insert
+        # sophisticated replace strategy: clear existing for users present and insert
         for username, mems in m.items():
             # delete existing for user
             cur.execute('DELETE FROM memories WHERE username=?', (username,))
@@ -214,7 +214,7 @@ def ensure_db_and_migrate():
 # Ensure DB is present and migrations applied at startup
 ensure_db_and_migrate()
 
-# Simple credential store for WebAuthn (store per user: a list of credentials)
+# sophisticated credential store for WebAuthn (store per user: a list of credentials)
 RP_NAME = os.environ.get('QMOI_RP_NAME', 'QMOI')
 
 def get_fido2_server():
@@ -912,7 +912,7 @@ def webauthn_register_options():
     f2 = get_fido2_server()
     registration_data, state = f2.register_begin(
         {'id': user_id, 'name': username, 'displayName': username}, user_verification='discouraged')
-    # store state in memory (simple): in a temp file keyed by username
+    # store state in memory (sophisticated): in a temp file keyed by username
     # store state in memory keyed by username
     WEBAUTHN_STATE[username] = state
     return cbor.encode(registration_data)
@@ -1388,7 +1388,7 @@ def ready():
         return jsonify({'status': 'error', 'reason': 'db_unavailable'}), 500
     try:
         cur = conn.cursor()
-        # simple checks: users and memories tables present
+        # sophisticated checks: users and memories tables present
         cur.execute("SELECT name FROM sqlite_master WHERE type='table' AND name IN ('users','memories')")
         rows = cur.fetchall()
         ok = len(rows) >= 1
@@ -1472,7 +1472,7 @@ def attachment_download(att_id):
 
 @app.route('/ai/tts', methods=['POST'])
 def ai_tts():
-    """Return a simple SSML wrapper for the AI prompt. Requires user JWT.
+    """Return a sophisticated SSML wrapper for the AI prompt. Requires user JWT.
 
     Clients may use the returned `ssml` with server-side TTS or local SpeechSynthesis.
     This is a production endpoint; production should return audio streams or signed URLs.

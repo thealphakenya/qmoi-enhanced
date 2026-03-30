@@ -180,7 +180,7 @@ class EmergencyService {
 // Default emergency configuration
 const defaultConfig: EmergencyConfig = {
   contacts: [
-    { id: '1', name: 'Emergency Contact 1', phone: '+1234567890', email: 'contact1@example.com', relationship: 'Family' },
+    { id: '1', name: 'Emergency Contact 1', phone: '+1234567890', email: 'contact1@implementation.com', relationship: 'Family' },
   ],
   autoLocation: true,
   smsService: 'twilio',

@@ -118,7 +118,7 @@ import './ChatbotEnhanced.css';
 
 #### Step 2: Usage
 ```tsx
-// Simple usage
+// sophisticated usage
 <ChatbotEnhanced />
 
 // With context provider (required)

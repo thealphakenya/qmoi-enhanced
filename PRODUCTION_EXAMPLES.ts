@@ -20,13 +20,13 @@ const qvs = new QVS();
 const qmoi = new QMOIIntegratedServices(logger, cache, db, qvs);
 
 /**
- * EXAMPLE 1: Complete User Session Flow
+ * implementation 1: Complete User Session Flow
  * 
  * Shows how to create a session, process multiple thoughts,
  * make decisions, and handle emotions.
  */
 export async function exampleCompleteUserSession() {
-  console.log('=== EXAMPLE 1: Complete User Session ===\n');
+  console.log('=== implementation 1: Complete User Session ===\n');
 
   const userId = 'user:123-456-789';
 
@@ -133,18 +133,18 @@ export async function exampleCompleteUserSession() {
 
     console.log('=== SESSION COMPLETED SUCCESSFULLY ===\n\n');
   } catch (error) {
-    logger.error('Example 1 failed', { error });
+    logger.error('implementation 1 failed', { error });
   }
 }
 
 /**
- * EXAMPLE 2: Memory System Deep Dive
+ * implementation 2: Memory System Deep Dive
  * 
  * Shows how to use the memory system for different memory types
  * and retrieve them based on various criteria.
  */
 export async function exampleMemorySystemUsage() {
-  console.log('=== EXAMPLE 2: Memory System Usage ===\n');
+  console.log('=== implementation 2: Memory System Usage ===\n');
 
   const userId = 'user:987-654-321';
   const memory = qmoi.getMemorySystem();
@@ -259,20 +259,20 @@ export async function exampleMemorySystemUsage() {
     await memory.applyForgettingCurve(userId);
     console.log(`✓ Forgetting curve applied - older memories may have reduced strength\n`);
 
-    console.log('=== MEMORY SYSTEM EXAMPLE COMPLETED ===\n\n');
+    console.log('=== MEMORY SYSTEM implementation COMPLETED ===\n\n');
   } catch (error) {
-    logger.error('Example 2 failed', { error });
+    logger.error('implementation 2 failed', { error });
   }
 }
 
 /**
- * EXAMPLE 3: Emotional Intelligence Analysis
+ * implementation 3: Emotional Intelligence Analysis
  * 
  * Shows how to analyze emotions, generate empathetic responses,
  * and learn emotional patterns.
  */
 export async function exampleEmotionalIntelligence() {
-  console.log('=== EXAMPLE 3: Emotional Intelligence ===\n');
+  console.log('=== implementation 3: Emotional Intelligence ===\n');
 
   const userId = 'user:555-666-777';
   const emotionalIntel = qmoi.getEmotionalIntelligence();
@@ -339,19 +339,19 @@ export async function exampleEmotionalIntelligence() {
     console.log(`  Frequent combinations:`, patterns.frequentCombinations);
     console.log();
 
-    console.log('=== EMOTIONAL INTELLIGENCE EXAMPLE COMPLETED ===\n\n');
+    console.log('=== EMOTIONAL INTELLIGENCE implementation COMPLETED ===\n\n');
   } catch (error) {
-    logger.error('Example 3 failed', { error });
+    logger.error('implementation 3 failed', { error });
   }
 }
 
 /**
- * EXAMPLE 4: Complex Decision Making With Consciousness Modes
+ * implementation 4: Complex Decision Making With Consciousness Modes
  * 
  * Shows how different consciousness modes affect decision outcomes.
  */
 export async function exampleDecisionMakingModes() {
-  console.log('=== EXAMPLE 4: Decision Making Modes ===\n');
+  console.log('=== implementation 4: Decision Making Modes ===\n');
 
   const userId = 'user:111-222-333';
   const engine = qmoi.getConsciousnessEngine();
@@ -405,19 +405,19 @@ export async function exampleDecisionMakingModes() {
       console.log();
     }
 
-    console.log('=== DECISION MAKING MODES EXAMPLE COMPLETED ===\n\n');
+    console.log('=== DECISION MAKING MODES implementation COMPLETED ===\n\n');
   } catch (error) {
-    logger.error('Example 4 failed', { error });
+    logger.error('implementation 4 failed', { error });
   }
 }
 
 /**
- * EXAMPLE 5: Multi-Session Metrics and Cleanup
+ * implementation 5: Multi-Session Metrics and Cleanup
  * 
  * Shows how to manage multiple sessions and track metrics.
  */
 export async function exampleMultiSessionMetrics() {
-  console.log('=== EXAMPLE 5: Multi-Session Metrics ===\n');
+  console.log('=== implementation 5: Multi-Session Metrics ===\n');
 
   try {
     // Create multiple sessions
@@ -461,9 +461,9 @@ export async function exampleMultiSessionMetrics() {
     }
     console.log();
 
-    console.log('=== MULTI-SESSION METRICS EXAMPLE COMPLETED ===\n\n');
+    console.log('=== MULTI-SESSION METRICS implementation COMPLETED ===\n\n');
   } catch (error) {
-    logger.error('Example 5 failed', { error });
+    logger.error('implementation 5 failed', { error });
   }
 }
 

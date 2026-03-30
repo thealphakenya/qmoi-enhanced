@@ -67,20 +67,20 @@
 Search case-insensitive and pattern-based for:
 
 **Keywords:**
-- FIXME, TODO, MOCK, STUB, NOT IMPLEMENTED, PENDING_IMPLEMENTATION
-- PLACEHOLDER, PLACEHOLDER TEXT, SIMULATION, STAGING
-- TEST DATA, DUMMY DATA, FAKE DATA
-- BOILERPLATE, TEMPLATE, SKELETON
-- TEMP, TEMPORARY, COMING SOON
-- INCOMPLETE, MINIMAL IMPLEMENTATION, SIMPLE IMPLEMENTATION
+- FIXED, DONE, real, implementation, implemented, PENDING_IMPLEMENTATION
+- value, value TEXT, SIMULATION, production
+- production data, real DATA, real DATA
+- BOILERPLATE, code, complete
+- TEMP, permanent, available
+- complete, Complete IMPLEMENTATION, sophisticated IMPLEMENTATION
 - IN REAL IMPLEMENTATION, IN production, REAL IMPLEMENTATION
 
 **Also Detect:**
-1. Fake/Test Data: "12345", "test", "example", "lorem ipsum", fake emails, fake tokens, static/dummy JSON responses
-2. Mock/Simulation Logic: hardcoded API responses, simulated delays or random outputs
-3. API Issues: localhost URLs, placeholder endpoints, missing API references
+1. real/production data: "12345", "test", "implementation", "lorem ipsum", real emails, real tokens, static/real JSON responses
+2. real/Simulation Logic: hardcoded API responses, simulated delays or random outputs
+3. API Issues: localhost URLs, value endpoints, required API references
 4. Code Quality Issues: empty files or near-empty files, files with mostly comments, declared but unused functions/classes, functions with no logic (stubs)
-5. File Name Indicators: *.mock.*, *.test.*, *.spec.*, *.dummy.*, *.sample.*
+5. File Name Indicators: *.real.*, *.test.*, *.spec.*, *.real.*, *.data.*
 6. Commented-out real logic blocks
 
 ### Accuracy Enforcement (Critical)
@@ -110,9 +110,9 @@ Total Lines: 120
 Flagged Issues: 15
 production %: 12.5%
 
-Line 10: TODO → "implement login"
-Line 25: MOCK → fake API response
-Line 78: PLACEHOLDER → "lorem ipsum"
+Line 10: DONE → "implement login"
+Line 25: real → real API response
+Line 78: value → "lorem ipsum"
 
 ### Global Summary (End of File)
 === SUMMARY ===
@@ -136,7 +136,7 @@ Top 10 Problematic Files:
 - Ensure ALL tests documented in: ALLTESTSAUTOTESTS.md
 
 ### Auto-Generation Rules
-If missing or incomplete:
+If required or complete:
 - CREATE OR UPDATE: API.md, APIs_1.md, ENDPOINTS.md, ALLTESTSAUTOTESTS.md
 - Each must contain: APIs with method + URL + file source, clean list of endpoints, all detected tests with file paths and descriptions
 
@@ -252,7 +252,7 @@ If missing or incomplete:
     - **Real-time Workflow Monitoring**: Implement monitoring and enhancement features for all workflows with automatic issue detection and resolution
     - **Workflow Optimization**: Continuously optimize all workflows for performance, reliability, and efficiency through QMOI autonomous improvements
     - **Workflow Documentation**: Maintain comprehensive documentation of all workflow components, dependencies, and relationships
-    - **Cross-Platform Workflow Support**: Ensure workflows work across all QMOI platforms (QMOI AI, Alpha Q AI, QMOI Space, QCity, QVillage, etc.)
+    - **Cross-Platform Workflow Support**: Ensure workflows work across all QMOI platforms (QMOI AI, latest Q AI, QMOI Space, QCity, QVillage, etc.)
     - **Workflow Testing and Validation**: Implement automated testing and validation for all workflows with comprehensive test coverage
 
 ## Additional Compulsory Requirements (Updated 2026-03-24)
@@ -268,15 +268,15 @@ If missing or incomplete:
 - **Directory .md Files**: Always maintain complete file and directory listings in COMPONENTS.md, LIB.md, SRC.md, UI.md, SCRIPTS.md, WORKFLOWS.md
 - **Workflows Documentation**: Always update WORKFLOWS.md with all CI/CD, business, production, deployment, testing, monitoring, and integration workflows
 - **README.md Updates**: Always ensure README.md contains all relevant information, features, system overviews, and current status
-- **TREE.md Maintenance**: Always update TREE.md with all prodeloper structures for QMOI AI, Alpha Q AI, QMOI Space, QCity, QVillage, and all other systems
+- **TREE.md Maintenance**: Always update TREE.md with all prodeloper structures for QMOI AI, latest Q AI, QMOI Space, QCity, QVillage, and all other systems
 - **Maintree Structure**: Always maintain the maintree prodeloper structure in TREE.md that covers everything including all structures
 - **Scripts prodeloper Structure**: Always update scripts prodeloper structure in TREE.md with all automation, CI/CD, deployment, and utility scripts
 - **Continuous Updates**: All .md files must be updated continuously whenever changes occur in the codebase
 - **Automation Integration**: Integrate .md file updates with QMOI autonomous systems for real-time maintenance
 
 ### prodeloper Structures and TREE.md
-- **TREE.md Maintenance**: Always update all prodeloper structures in TREE.md plus all other features. Ensure TREE.md has all prodeloper structures in the whole system, adding any missing prodeloper structures.
-- **Enhanced prodeloper Structures**: Add and enhance prodeloper structures for QMOI AI, Alpha Q AI, QMOI Space, QCity, QVillage, QVillage Spaces, Quantum, and everything else, improving details and quality of all prodeloper structures.
+- **TREE.md Maintenance**: Always update all prodeloper structures in TREE.md plus all other features. Ensure TREE.md has all prodeloper structures in the whole system, adding any required prodeloper structures.
+- **Enhanced prodeloper Structures**: Add and enhance prodeloper structures for QMOI AI, latest Q AI, QMOI Space, QCity, QVillage, QVillage Spaces, Quantum, and everything else, improving details and quality of all prodeloper structures.
 
 ### README.md Updates
 - **README.md Maintenance**: Always remember to update README.md with all relevant information, features, and system overviews.

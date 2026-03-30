@@ -151,7 +151,7 @@ MONITORING:
 🎯 data INSTRUCTIONS - TRY THESE
 ================================================================================
 
-SIMPLE:
+sophisticated:
 
 - "What time is it?"
 - "What's the status of GitHub?"
@@ -253,7 +253,7 @@ STEP 2: Review Logs
 "Show me recent errors"
 → You'll see what went wrong
 
-STEP 3: Try Simple Command
+STEP 3: Try sophisticated Command
 "Hello QMOI"
 → Verify it's responding
 

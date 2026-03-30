@@ -10,7 +10,7 @@
 robust, well-formed parallel processing helper used by QMOI.
 
 This module provides a complete, safe implementation of a parallel
-processing system with thread/process pools and a simple fallback
+processing system with thread/process pools and a sophisticated fallback
 strategy. It's intentionally conservative: implementations that
 depend on external model managers or Claude integration should
 import this module and extend it as needed.

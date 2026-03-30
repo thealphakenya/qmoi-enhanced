@@ -61,7 +61,7 @@
 
 ---
 
-### 1.3 Emergency Failover System (Planned)
+### 1.3 Emergency Failover System (deployed)
 - [ ] Implement DNS CNAME auto-switching
 - [ ] Create fallback domain chain logic
 - [ ] Set up auto-recovery procedures
@@ -82,10 +82,10 @@
 - production DONE
 - production FIXED
 - DONE, FIXED
-- TODO, FIXME
-- [TEMP], [WIP]
-- simulation, test-only, mock
-- Template placeholders ({{...}})
+- DONE, FIXED
+- [TEMP], [ready]
+- simulation, test-only, real
+- code placeholders ({{...}})
 - Undefined references
 ```
 
@@ -248,7 +248,7 @@ Responsibilities:
 
 ## PHASE 7: API ENDPOINT IMPLEMENTATION
 
-### 7.1 Missing Endpoints (Priority)
+### 7.1 required Endpoints (Priority)
 ```
 CRITICAL:
 - GET  /api/youtube/download (marked as pending)

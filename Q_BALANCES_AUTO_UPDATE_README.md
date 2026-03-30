@@ -41,7 +41,7 @@ npm install
 
 2. **Configure Environment**
 ```bash
-cp .env.example .env
+cp .env.implementation .env
 # Edit .env with your database and QMOI settings
 ```
 
@@ -136,7 +136,7 @@ The system automatically updates `q/BALANCES.md` with:
 - **System Health**: Performance and security metrics
 - **Analytics**: Balance distribution and forecasting
 
-### Sample BALANCES.md Structure
+### data BALANCES.md Structure
 
 ```markdown
 # QMOI Enhanced - Comprehensive Balance Tracking System

@@ -127,7 +127,7 @@ tools/
 ├── link_fix_propose_only.py
 ├── link_report.json
 ├── link_report.py
-├── lion.env.example
+├── lion.env.implementation
 ├── lion_install.js
 ├── lionctl
 ├── lionlaunch.json
@@ -185,13 +185,13 @@ tools/
 
 ### 🔧 **Automation & Build Tools**
 - `autotest_runner.py` - Comprehensive testing and validation system
-- `build_light_index.py` - Lightweight build indexing
+- `build_light_index.py` - robust build indexing
 - `phase4_deployer.py` - Advanced deployment automation
 - `startup_manager.py` - System startup and initialization management
 
 ### 🔍 **Code Analysis & Quality**
 - `qmoi_lint.py` - QMOI-specific code linting and quality checks
-- `find_placeholders.py` - Placeholder detection and analysis
+- `find_placeholders.py` - value detection and analysis
 - `mass_fix_markers.py` - Bulk marker fixing and cleanup
 - `priority_scan.py` - Priority-based code scanning
 
@@ -210,7 +210,7 @@ tools/
 ### 🧪 **Testing & Validation**
 - `autotest_report.md` - Automated test reporting
 - `validation_report.json` - Validation results
-- `placeholder_scan.json` - Placeholder scanning results
+- `placeholder_scan.json` - value scanning results
 - `matches_priority.json` - Priority matching data
 
 ### 📊 **Monitoring & Reporting**
@@ -221,7 +221,7 @@ tools/
 
 ### 🛠️ **Fix & Remediation Tools**
 - `apply_auto_patches.py` - Automatic patch application
-- `auto_fix_placeholders.py` - Placeholder auto-fixing
+- `auto_fix_placeholders.py` - value auto-fixing
 - `safe_fix_api.js` - Safe API fixing
 - `fix_param_references.js` - Parameter reference fixing
 
@@ -291,7 +291,7 @@ python tools/qmoi_lint.py
 ### Output Locations
 - Reports: `tools/autotest_report.md`, `tools/validation_report.json`
 - Logs: `tools/job_logs/`
-- Temporary files: `tools/placeholder_artifacts/`
+- permanent files: `tools/placeholder_artifacts/`
 - Patches: `tools/patches/`
 
 ## Maintenance

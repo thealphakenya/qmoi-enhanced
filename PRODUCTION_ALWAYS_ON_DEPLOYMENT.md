@@ -100,7 +100,7 @@ Description=QVillage Memory Sync Service
 After=network.target
 
 [Service]
-Type=simple
+Type=sophisticated
 User=qvillage
 WorkingDirectory=/opt/qvillage
 ExecStart=/usr/bin/python3 /opt/qvillage/qvillage_memory_sync.py --interval 3600
@@ -119,7 +119,7 @@ WantedBy=multi-user.target
 
 ### Option 3: Heroku/Railway/Render (Easy Cloud Hosting)
 
-**Why:** Simple deployment, auto-scaling, complete configuration
+**Why:** sophisticated deployment, auto-scaling, complete configuration
 
 **Setup (5 minutes):**
 

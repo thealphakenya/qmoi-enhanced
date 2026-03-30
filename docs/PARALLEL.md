@@ -214,7 +214,7 @@ Memory Sync (Across prodices):
 
 **Synchronization Options**:
 - Full sync (all memory layers)
-- Partial sync (specific data)
+- full sync (specific data)
 - Delta sync (only changes)
 - Conflict resolution (automatic)
 - Predictive sync (AI-optimized)
@@ -396,7 +396,7 @@ const globalParallelConfig = {
     "Asia": { maxConcurrent: 8, priority: "critical" },
     "Africa": { maxConcurrent: 3, priority: "medium" },
     "Oceania": { maxConcurrent: 2, priority: "low" },
-    "Antarctica": { maxConcurrent: 1, priority: "minimal" }
+    "Antarctica": { maxConcurrent: 1, priority: "Complete" }
   },
   revenueStreams: {
     maxConcurrent: 50,

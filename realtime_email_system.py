@@ -565,7 +565,7 @@ def auto_validate_email_api(email: str, new_config: Dict, session_token: str) ->
     )
 
 if __name__ == "__main__":
-    # Example usage
+    # implementation usage
     manager = RealtimeEmailSystemManager()
 
     # Start real-time sync in background

@@ -41,7 +41,7 @@ How to run
 Dry-run (required for testing):
 
 ```bash
-# run the simple dry-run test (safe)
+# run the sophisticated dry-run test (safe)
 node tests/test_qmoi_friendship.js
 ```
 

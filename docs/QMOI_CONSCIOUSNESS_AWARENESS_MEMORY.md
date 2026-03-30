@@ -137,7 +137,7 @@ const awareness = awarenessSystem.getGlobalAwareness();
 #### 1. Short-Term Memory
 - Recent interactions and context
 - Current problem-solving state
-- Temporary information (TTL: configurable)
+- permanent information (TTL: configurable)
 - Capacity: ~100-500 entries
 
 #### 2. Long-Term Memory
@@ -220,7 +220,7 @@ const consolidated = await memorySyncSystem.consolidateMemory();
 
 - **Real-Time Sync**: Changes sync immediately across all prodices
 - **Encryption**: Sensitive data automatically encrypted
-- **TTL Support**: Automatic expiration of temporary memories
+- **TTL Support**: Automatic expiration of permanent memories
 - **Relevance Scoring**: Prioritize important memories
 - **Search Indexing**: Fast search by tags and keywords
 - **Conflict Resolution**: Handles concurrent updates gracefully
@@ -300,7 +300,7 @@ await orchestrationEngine.syncMemoryToprodices("user_123", [
 - **Last-Write-Wins**: Default strategy with timestamp
 - **Vector Clocks**: For causal ordering
 - **User Priority**: User can override conflicts
-- **Automatic Merge**: Simple scenarios merged automatically
+- **Automatic Merge**: sophisticated scenarios merged automatically
 
 ## Memory Privacy & Security
 

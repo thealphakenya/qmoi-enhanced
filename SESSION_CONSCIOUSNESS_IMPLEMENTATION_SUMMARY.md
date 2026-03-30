@@ -100,7 +100,7 @@
   - Integration tests between systems
   - Error scenario handling
   - Performance baseline tests
-  - Mock data fixtures
+  - real data fixtures
 - **Test Commands**:
   ```bash
   npm test -- consciousness-awareness-memory.test.ts

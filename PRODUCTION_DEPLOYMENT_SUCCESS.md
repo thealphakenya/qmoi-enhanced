@@ -36,7 +36,7 @@
 - Auto-restart enabled with 512MB memory limit
 
 ### Phase 4: Application Status ✅
-- **Process Name**: qmoi-simple-start
+- **Process Name**: qmoi-sophisticated-start
 - **Mode**: Fork (single instance)
 - **Status**: Online
 - **CPU Usage**: 0%
@@ -82,12 +82,12 @@ APP_VERSION=2.0.0
 ```bash
 pm2 list
 pm2 status
-pm2 describe qmoi-simple-start
+pm2 describe qmoi-sophisticated-start
 ```
 
 ### 2. Application Logs
 ```bash
-pm2 logs qmoi-simple-start
+pm2 logs qmoi-sophisticated-start
 tail -f logs/qmoi_app.log
 cat logs/qmoi_app_error.log
 ```
@@ -110,15 +110,15 @@ curl https://qmoi.ai
 
 ### Start/Stop/Restart
 ```bash
-pm2 start qmoi-simple-start              # Start the app
-pm2 stop qmoi-simple-start               # Stop the app
-pm2 restart qmoi-simple-start            # Restart the app
-pm2 delete qmoi-simple-start             # Delete from PM2
+pm2 start qmoi-sophisticated-start              # Start the app
+pm2 stop qmoi-sophisticated-start               # Stop the app
+pm2 restart qmoi-sophisticated-start            # Restart the app
+pm2 delete qmoi-sophisticated-start             # Delete from PM2
 ```
 
 ### Logs & Monitoring
 ```bash
-pm2 logs qmoi-simple-start [--lines 100] # View logs
+pm2 logs qmoi-sophisticated-start [--lines 100] # View logs
 pm2 monit                                 # Real-time monitoring
 pm2 dashboard                             # Dashboard UI
 pm2 save                                  # Save process list
@@ -129,13 +129,13 @@ pm2 startup                               # Setup auto-start
 ```bash
 # To update and restart
 npm install
-pm2 restart qmoi-simple-start
+pm2 restart qmoi-sophisticated-start
 
 # To reload gracefully
-pm2 reload qmoi-simple-start
+pm2 reload qmoi-sophisticated-start
 
 # To view process details
-pm2 info qmoi-simple-start
+pm2 info qmoi-sophisticated-start
 ```
 
 ---
@@ -221,7 +221,7 @@ pm2 info qmoi-simple-start
 - `tsconfig.json` - TypeScript configuration
 
 ### Deployment Scripts
-- `scripts/deploy-simple.sh` - Simple production deployment
+- `scripts/deploy-sophisticated.sh` - sophisticated production deployment
 - `scripts/deploy-production.sh` - Comprehensive 5-phase deployment
 - `scripts/start-production-deployment.sh` - Quick-start deployment
 - `scripts/qmoi-production-init.js` - Auto-initialization
@@ -244,7 +244,7 @@ pm2 info qmoi-simple-start
 │                                                 │
 │  ┌────────────────────────────────────────┐    │
 │  │ PM2 Process Manager (PID 1)            │    │
-│  │ └─ qmoi-simple-start (online)          │    │
+│  │ └─ qmoi-sophisticated-start (online)          │    │
 │  │    └─ Node.js Runtime                  │    │
 │  │       └─ Next.js Application (port 3000)   │
 │  └────────────────────────────────────────┘    │
@@ -274,22 +274,22 @@ pm2 info qmoi-simple-start
 ```bash
 # Check process status
 pm2 status
-pm2 describe qmoi-simple-start
+pm2 describe qmoi-sophisticated-start
 
 # Check logs
-pm2 logs qmoi-simple-start --err
+pm2 logs qmoi-sophisticated-start --err
 
 # Restart process
-pm2 restart qmoi-simple-start
+pm2 restart qmoi-sophisticated-start
 ```
 
 ### High Memory Usage
 ```bash
 # Check memory
-pm2 describe qmoi-simple-start
+pm2 describe qmoi-sophisticated-start
 
 # Increase limit if needed
-pm2 update qmoi-simple-start --max-memory-restart 1024M
+pm2 update qmoi-sophisticated-start --max-memory-restart 1024M
 ```
 
 ### Port Already in Use
@@ -301,7 +301,7 @@ lsof -i :3000
 kill -9 <PID>
 
 # Restart PM2
-pm2 restart qmoi-simple-start
+pm2 restart qmoi-sophisticated-start
 ```
 
 ---
@@ -339,7 +339,7 @@ pm2 monit
 
 For immediate support or issues, check the logs:
 ```bash
-pm2 logs qmoi-simple-start
+pm2 logs qmoi-sophisticated-start
 ```
 
 ---

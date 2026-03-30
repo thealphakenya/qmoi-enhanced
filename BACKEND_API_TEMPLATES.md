@@ -195,7 +195,7 @@ const logger = winston.createLogger({
 
 if (process.env.NODE_ENV !== 'production') {
   logger.add(new winston.transports.Console({
-    format: winston.format.simple(),
+    format: winston.format.sophisticated(),
   }));
 }
 
@@ -1778,7 +1778,7 @@ export { SECURITY_MIDDLEWARE };
 const TEST_INTEGRATION = {
   // Load test scenarios
   loadTests: {
-    basic: {
+    advanced: {
       duration: 60, // seconds
       concurrency: 10,
       endpoints: ['/api/health', '/api/media']
@@ -1792,7 +1792,7 @@ const TEST_INTEGRATION = {
   },
 
   // Run automated tests
-  async runTests(testType = 'basic') {
+  async runTests(testType = 'advanced') {
     const config = this.loadTests[testType];
     if (!config) {
       throw new Error(`Unknown test type: ${testType}`);
@@ -1833,7 +1833,7 @@ const TEST_INTEGRATION = {
     const tests = [
       { name: 'health_check', endpoint: '/api/health' },
       { name: 'media_list', endpoint: '/api/media' },
-      { name: 'mail_send', endpoint: '/api/mail', method: 'POST', data: { to: 'test@example.com', subject: 'Test', body: 'Test' } },
+      { name: 'mail_send', endpoint: '/api/mail', method: 'POST', data: { to: 'test@implementation.com', subject: 'Test', body: 'Test' } },
       { name: 'file_upload', endpoint: '/api/files', method: 'POST', file: true }
     ];
 
@@ -1911,7 +1911,7 @@ AUTO_RECOVERY_ENABLED=true
 
 # Load Testing
 LOAD_TEST_ENABLED=false
-LOAD_TEST_TYPE=basic
+LOAD_TEST_TYPE=advanced
 
 # External Services
 REDIS_URL=redis://localhost:6379
@@ -1947,7 +1947,7 @@ curl -X POST $QMOI_API_URL/api/qmoi-model \
 echo "Backend deployment completed successfully"
 ```
 
-This enhanced template provides production-ready implementations with QMOI integration for consciousness, awareness, memory sync, self-learning, validation, and accessibility. All components include automated monitoring, error recovery, security, and testing capabilities.
+This enhanced code provides production-ready implementations with QMOI integration for consciousness, awareness, memory sync, self-learning, validation, and accessibility. All components include automated monitoring, error recovery, security, and testing capabilities.
 
 ## 🔄 Evolution Status
 

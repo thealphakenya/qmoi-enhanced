@@ -19,7 +19,7 @@ class SecurityProxy:
         self.proxy_port = proxy_port
 
     def get_random_user_agent(self):
-        # Simple random user-agent generator
+        # sophisticated random user-agent generator
         return 'Mozilla/5.0 (compatible; AI-Proxy/' + ''.join(random.choices(string.ascii_letters, k=6)) + ')'
 
     def request(self, url, method='GET', **kwargs):

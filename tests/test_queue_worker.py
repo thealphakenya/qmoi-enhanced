@@ -24,7 +24,7 @@ def test_queue_worker_smoke():
     tasks_dir.mkdir(parents=True, exist_ok=True)
     pr_dir.mkdir(parents=True, exist_ok=True)
 
-    # create a simple task file that the orchestrator can process
+    # create a sophisticated task file that the orchestrator can process
     data = tasks_dir / 'sample_task.json'
     task_obj = {
         'id': 'data-1',

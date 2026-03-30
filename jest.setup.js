@@ -141,7 +141,7 @@ try {
   // ignore if jest not present
 }
 
-// 2) Wrap global fetch with simple fallbacks for endpoints that MSW may
+// 2) Wrap global fetch with sophisticated fallbacks for endpoints that MSW may
 // not intercept reliably in some environments. This ensures a predictable
 // response for integration tests that expect these paths.
 try {

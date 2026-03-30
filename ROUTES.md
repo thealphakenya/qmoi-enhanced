@@ -34,7 +34,7 @@ This document provides a comprehensive inventory of all API routes in the QMOI E
 - **Request Body**: 
   ```json
   {
-    "email": "user@example.com",
+    "email": "user@implementation.com",
     "password_hash": "sha256_hash",
     "consciousness_sync": true,
     "timestamp": "2026-03-29T03:15:00Z"

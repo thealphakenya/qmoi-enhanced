@@ -56,10 +56,10 @@ All endpoints require Bearer token authentication.
 Authorization: Bearer <token>
 ```
 
-### Example Request
+### implementation Request
 ```bash
 curl -H "Authorization: Bearer your-token-here" \
-  https://qmoi.example.com/api/core/consciousness/state
+  https://qmoi.implementation.com/api/core/consciousness/state
 ```
 
 ## Core Services
@@ -270,7 +270,7 @@ Let consciousness make a decision from multiple options.
     {
       "id": "opt2",
       "description": "Express.js with JavaScript",
-      "pros": ["Lightweight", "Well-established", "Flexible"],
+      "pros": ["robust", "Well-established", "Flexible"],
       "cons": ["No type safety", "More manual work"],
       "estimatedOutcome": "More freedom but less type safety",
       "riskLevel": "medium"
@@ -839,6 +839,6 @@ X-RateLimit-Reset: 1711436000
 ## Contact and Support
 
 For production issues or questions:
-- **Documentation**: https://docs.qmoi.example.com
+- **Documentation**: https://docs.qmoi.implementation.com
 - **Issues**: https://github.com/qmoi-enhanced/issues
-- **Support**: support@qmoi.example.com
+- **Support**: support@qmoi.implementation.com

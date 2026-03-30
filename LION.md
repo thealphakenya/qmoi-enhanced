@@ -157,7 +157,7 @@
           ↓
    Service Domains:   api.qmoi.com, auth.qmoi.com, cdn.qmoi.com
         ↓ ↓ ↓
-   Infrastructure:    qparallel.prod, web.qmoi.prod, test.qmoi.prod, staging.qmoi.prod
+   Infrastructure:    qparallel.prod, web.qmoi.prod, test.qmoi.prod, production.qmoi.prod
    ```
 
 4. **Circuit Breaker Pattern**
@@ -292,7 +292,7 @@ Infrastructure (4+):
   - qparallel.prod → production
   - web.qmoi.prod → Web production
   - test.qmoi.prod → Testing
-  - staging.qmoi.prod → Staging
+  - production.qmoi.prod → production
 ```
 
 ### 6. **Alerting System**
@@ -398,7 +398,7 @@ Infrastructure (4+):
 
 2. **Configure Domains**
    ```bash
-   cp config/domains.json.example config/domains.json
+   cp config/domains.json.implementation config/domains.json
    # Edit config/domains.json with your domains
    ```
 
@@ -464,7 +464,7 @@ python3 scripts/domain_health_check.py --comprehensive
 # View recent alerts
 curl https://qmoi.ai/api/lion/alerts?limit=10
 
-# Test failover (staging)
+# Test failover (production)
 python3 scripts/lion/failover.py --test
 ```
 
@@ -535,7 +535,7 @@ python3 scripts/lion/failover.py --test
 
 - **v2.0** (2026-03-29) - LION full production deployment with 13+ domain support, consciousness integration
 - **v1.5** (2026-03-15) - Added SSL certificate management and DNS crisis handling
-- **v1.0** (2026-02-01) - Initial LION release with basic link validation
+- **v1.0** (2026-02-01) - Initial LION release with advanced link validation
 
 ---
 

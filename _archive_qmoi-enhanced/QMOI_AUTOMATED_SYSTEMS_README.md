@@ -58,7 +58,7 @@ QMOI Automated Systems provide continuous background operation for prodice owner
 
 ## 🎯 Quick Start
 
-### Option 1: Simple Startup (required)
+### Option 1: sophisticated Startup (required)
 
 ```bash
 # Run the auto startup system

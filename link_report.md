@@ -9879,7 +9879,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Server broadcast](#server-broadcast) — OK
@@ -10280,7 +10280,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Client authentication](#client-authentication) — OK
@@ -12259,7 +12259,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - link_report.md: [Node.js http module `http.STATUS_CODES`](https://nodejs.org/dist/latest/docs/api/http.html#http_http_status_codes) — external (not checked)
 - link_report.md: [MIT](LICENSE) — OK
-- link_report.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#simple-single-character-case-mapping) — external (not checked)
+- link_report.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping) — external (not checked)
 - link_report.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-camelcase?utm_source=npm-camelcase&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
 - link_report.md: [decamelize](https://github.com/sindresorhus/decamelize) — external (not checked)
 - link_report.md: [uppercamelcase](https://github.com/SamVerschueren/uppercamelcase) — external (not checked)
@@ -16601,7 +16601,7 @@ npm --prefix bench start
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Client authentication](#client-authentication) — OK
@@ -18798,7 +18798,7 @@ console.log(style.codes.get(36));
 - link_report.md: [implicit binding](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch2.md#implicit-binding) — external (not checked)
 - link_report.md: [![min](https://img.shields.io/bundlephobia/min/memoize-one.svg?label=) — external (not checked)
 - link_report.md: [![minzip](https://img.shields.io/bundlephobia/minzip/memoize-one.svg?label=) — external (not checked)
-- link_report.md: [simple arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
+- link_report.md: [sophisticated arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
 - link_report.md: [complex arguments](https://www.measurethat.net/Benchmarks/ShowResult/4488) — external (not checked)
 - link_report.md: [JavaScript types](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/types%20%26%20grammar/ch1.md) — external (not checked)
 - link_report.md: [Continuous integration](https://travis-ci.org/alexreardon/memoize-one) — external (not checked)
@@ -19353,7 +19353,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Server broadcast](#server-broadcast) — OK
@@ -19754,7 +19754,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Client authentication](#client-authentication) — OK
@@ -21733,7 +21733,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - link_report.md: [Node.js http module `http.STATUS_CODES`](https://nodejs.org/dist/latest/docs/api/http.html#http_http_status_codes) — external (not checked)
 - link_report.md: [MIT](LICENSE) — OK
-- link_report.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#simple-single-character-case-mapping) — external (not checked)
+- link_report.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping) — external (not checked)
 - link_report.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-camelcase?utm_source=npm-camelcase&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
 - link_report.md: [decamelize](https://github.com/sindresorhus/decamelize) — external (not checked)
 - link_report.md: [uppercamelcase](https://github.com/SamVerschueren/uppercamelcase) — external (not checked)
@@ -26075,7 +26075,7 @@ npm --prefix bench start
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Client authentication](#client-authentication) — OK
@@ -28272,7 +28272,7 @@ console.log(style.codes.get(36));
 - link_report.md: [implicit binding](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch2.md#implicit-binding) — external (not checked)
 - link_report.md: [![min](https://img.shields.io/bundlephobia/min/memoize-one.svg?label=) — external (not checked)
 - link_report.md: [![minzip](https://img.shields.io/bundlephobia/minzip/memoize-one.svg?label=) — external (not checked)
-- link_report.md: [simple arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
+- link_report.md: [sophisticated arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
 - link_report.md: [complex arguments](https://www.measurethat.net/Benchmarks/ShowResult/4488) — external (not checked)
 - link_report.md: [JavaScript types](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/types%20%26%20grammar/ch1.md) — external (not checked)
 - link_report.md: [Continuous integration](https://travis-ci.org/alexreardon/memoize-one) — external (not checked)
@@ -28733,7 +28733,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [rollup-starter-lib](https://github.com/rollup/rollup-starter-lib) — external (not checked)
 - link_report.md: [rollup-starter-app](https://github.com/rollup/rollup-starter-app) — external (not checked)
 - link_report.md: [user guide](https://rollupjs.org/introduction/) — external (not checked)
-- link_report.md: [isn't necessarily the answer](https://medium.com/@Rich_Harris/small-modules-it-s-not-quite-that-simple-3ca532d65de4) — external (not checked)
+- link_report.md: [isn't necessarily the answer](https://medium.com/@Rich_Harris/small-modules-it-s-not-quite-that-sophisticated-3ca532d65de4) — external (not checked)
 - link_report.md: [through a plugin](https://github.com/rollup/plugins/tree/master/packages/commonjs) — external (not checked)
 - link_report.md: [webpack](https://webpack.js.org/) — external (not checked)
 - link_report.md: [import the ES module version](https://github.com/rollup/rollup/wiki/pkg.module) — external (not checked)
@@ -29814,7 +29814,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Follow me (@troygoode) on Twitter!](https://twitter.com/intent/user?screen_name=troygoode) — external (not checked)
 - link_report.md: [Installation](#installation) — OK
 - link_report.md: [Usage](#usage) — OK
-- link_report.md: [Simple Usage](#simple-usage-enable-all-cors-requests) — OK
+- link_report.md: [sophisticated Usage](#sophisticated-usage-enable-all-cors-requests) — OK
 - link_report.md: [Enable CORS for a Single Route](#enable-cors-for-a-single-route) — OK
 - link_report.md: [Configuring CORS](#configuring-cors) — OK
 - link_report.md: [Configuring CORS Asynchronously](#configuring-cors-asynchronously) — OK
@@ -40047,7 +40047,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Server broadcast](#server-broadcast) — OK
@@ -40448,7 +40448,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Client authentication](#client-authentication) — OK
@@ -42427,7 +42427,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - link_report.md: [Node.js http module `http.STATUS_CODES`](https://nodejs.org/dist/latest/docs/api/http.html#http_http_status_codes) — external (not checked)
 - link_report.md: [MIT](LICENSE) — OK
-- link_report.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#simple-single-character-case-mapping) — external (not checked)
+- link_report.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping) — external (not checked)
 - link_report.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-camelcase?utm_source=npm-camelcase&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
 - link_report.md: [decamelize](https://github.com/sindresorhus/decamelize) — external (not checked)
 - link_report.md: [uppercamelcase](https://github.com/SamVerschueren/uppercamelcase) — external (not checked)
@@ -46769,7 +46769,7 @@ npm --prefix bench start
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Client authentication](#client-authentication) — OK
@@ -48966,7 +48966,7 @@ console.log(style.codes.get(36));
 - link_report.md: [implicit binding](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch2.md#implicit-binding) — external (not checked)
 - link_report.md: [![min](https://img.shields.io/bundlephobia/min/memoize-one.svg?label=) — external (not checked)
 - link_report.md: [![minzip](https://img.shields.io/bundlephobia/minzip/memoize-one.svg?label=) — external (not checked)
-- link_report.md: [simple arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
+- link_report.md: [sophisticated arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
 - link_report.md: [complex arguments](https://www.measurethat.net/Benchmarks/ShowResult/4488) — external (not checked)
 - link_report.md: [JavaScript types](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/types%20%26%20grammar/ch1.md) — external (not checked)
 - link_report.md: [Continuous integration](https://travis-ci.org/alexreardon/memoize-one) — external (not checked)
@@ -49521,7 +49521,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Server broadcast](#server-broadcast) — OK
@@ -49922,7 +49922,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Client authentication](#client-authentication) — OK
@@ -51901,7 +51901,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - link_report.md: [Node.js http module `http.STATUS_CODES`](https://nodejs.org/dist/latest/docs/api/http.html#http_http_status_codes) — external (not checked)
 - link_report.md: [MIT](LICENSE) — OK
-- link_report.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#simple-single-character-case-mapping) — external (not checked)
+- link_report.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping) — external (not checked)
 - link_report.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-camelcase?utm_source=npm-camelcase&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
 - link_report.md: [decamelize](https://github.com/sindresorhus/decamelize) — external (not checked)
 - link_report.md: [uppercamelcase](https://github.com/SamVerschueren/uppercamelcase) — external (not checked)
@@ -56243,7 +56243,7 @@ npm --prefix bench start
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Client authentication](#client-authentication) — OK
@@ -58440,7 +58440,7 @@ console.log(style.codes.get(36));
 - link_report.md: [implicit binding](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch2.md#implicit-binding) — external (not checked)
 - link_report.md: [![min](https://img.shields.io/bundlephobia/min/memoize-one.svg?label=) — external (not checked)
 - link_report.md: [![minzip](https://img.shields.io/bundlephobia/minzip/memoize-one.svg?label=) — external (not checked)
-- link_report.md: [simple arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
+- link_report.md: [sophisticated arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
 - link_report.md: [complex arguments](https://www.measurethat.net/Benchmarks/ShowResult/4488) — external (not checked)
 - link_report.md: [JavaScript types](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/types%20%26%20grammar/ch1.md) — external (not checked)
 - link_report.md: [Continuous integration](https://travis-ci.org/alexreardon/memoize-one) — external (not checked)
@@ -58901,7 +58901,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [rollup-starter-lib](https://github.com/rollup/rollup-starter-lib) — external (not checked)
 - link_report.md: [rollup-starter-app](https://github.com/rollup/rollup-starter-app) — external (not checked)
 - link_report.md: [user guide](https://rollupjs.org/introduction/) — external (not checked)
-- link_report.md: [isn't necessarily the answer](https://medium.com/@Rich_Harris/small-modules-it-s-not-quite-that-simple-3ca532d65de4) — external (not checked)
+- link_report.md: [isn't necessarily the answer](https://medium.com/@Rich_Harris/small-modules-it-s-not-quite-that-sophisticated-3ca532d65de4) — external (not checked)
 - link_report.md: [through a plugin](https://github.com/rollup/plugins/tree/master/packages/commonjs) — external (not checked)
 - link_report.md: [webpack](https://webpack.js.org/) — external (not checked)
 - link_report.md: [import the ES module version](https://github.com/rollup/rollup/wiki/pkg.module) — external (not checked)
@@ -59982,7 +59982,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Follow me (@troygoode) on Twitter!](https://twitter.com/intent/user?screen_name=troygoode) — external (not checked)
 - link_report.md: [Installation](#installation) — OK
 - link_report.md: [Usage](#usage) — OK
-- link_report.md: [Simple Usage](#simple-usage-enable-all-cors-requests) — OK
+- link_report.md: [sophisticated Usage](#sophisticated-usage-enable-all-cors-requests) — OK
 - link_report.md: [Enable CORS for a Single Route](#enable-cors-for-a-single-route) — OK
 - link_report.md: [Configuring CORS](#configuring-cors) — OK
 - link_report.md: [Configuring CORS Asynchronously](#configuring-cors-asynchronously) — OK
@@ -70215,7 +70215,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Server broadcast](#server-broadcast) — OK
@@ -70616,7 +70616,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Client authentication](#client-authentication) — OK
@@ -72595,7 +72595,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - link_report.md: [Node.js http module `http.STATUS_CODES`](https://nodejs.org/dist/latest/docs/api/http.html#http_http_status_codes) — external (not checked)
 - link_report.md: [MIT](LICENSE) — OK
-- link_report.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#simple-single-character-case-mapping) — external (not checked)
+- link_report.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping) — external (not checked)
 - link_report.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-camelcase?utm_source=npm-camelcase&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
 - link_report.md: [decamelize](https://github.com/sindresorhus/decamelize) — external (not checked)
 - link_report.md: [uppercamelcase](https://github.com/SamVerschueren/uppercamelcase) — external (not checked)
@@ -76937,7 +76937,7 @@ npm --prefix bench start
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Client authentication](#client-authentication) — OK
@@ -79134,7 +79134,7 @@ console.log(style.codes.get(36));
 - link_report.md: [implicit binding](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch2.md#implicit-binding) — external (not checked)
 - link_report.md: [![min](https://img.shields.io/bundlephobia/min/memoize-one.svg?label=) — external (not checked)
 - link_report.md: [![minzip](https://img.shields.io/bundlephobia/minzip/memoize-one.svg?label=) — external (not checked)
-- link_report.md: [simple arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
+- link_report.md: [sophisticated arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
 - link_report.md: [complex arguments](https://www.measurethat.net/Benchmarks/ShowResult/4488) — external (not checked)
 - link_report.md: [JavaScript types](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/types%20%26%20grammar/ch1.md) — external (not checked)
 - link_report.md: [Continuous integration](https://travis-ci.org/alexreardon/memoize-one) — external (not checked)
@@ -79689,7 +79689,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Server broadcast](#server-broadcast) — OK
@@ -80090,7 +80090,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Client authentication](#client-authentication) — OK
@@ -82069,7 +82069,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - link_report.md: [Node.js http module `http.STATUS_CODES`](https://nodejs.org/dist/latest/docs/api/http.html#http_http_status_codes) — external (not checked)
 - link_report.md: [MIT](LICENSE) — OK
-- link_report.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#simple-single-character-case-mapping) — external (not checked)
+- link_report.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping) — external (not checked)
 - link_report.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-camelcase?utm_source=npm-camelcase&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
 - link_report.md: [decamelize](https://github.com/sindresorhus/decamelize) — external (not checked)
 - link_report.md: [uppercamelcase](https://github.com/SamVerschueren/uppercamelcase) — external (not checked)
@@ -86411,7 +86411,7 @@ npm --prefix bench start
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Client authentication](#client-authentication) — OK
@@ -88608,7 +88608,7 @@ console.log(style.codes.get(36));
 - link_report.md: [implicit binding](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch2.md#implicit-binding) — external (not checked)
 - link_report.md: [![min](https://img.shields.io/bundlephobia/min/memoize-one.svg?label=) — external (not checked)
 - link_report.md: [![minzip](https://img.shields.io/bundlephobia/minzip/memoize-one.svg?label=) — external (not checked)
-- link_report.md: [simple arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
+- link_report.md: [sophisticated arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
 - link_report.md: [complex arguments](https://www.measurethat.net/Benchmarks/ShowResult/4488) — external (not checked)
 - link_report.md: [JavaScript types](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/types%20%26%20grammar/ch1.md) — external (not checked)
 - link_report.md: [Continuous integration](https://travis-ci.org/alexreardon/memoize-one) — external (not checked)
@@ -89069,7 +89069,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [rollup-starter-lib](https://github.com/rollup/rollup-starter-lib) — external (not checked)
 - link_report.md: [rollup-starter-app](https://github.com/rollup/rollup-starter-app) — external (not checked)
 - link_report.md: [user guide](https://rollupjs.org/introduction/) — external (not checked)
-- link_report.md: [isn't necessarily the answer](https://medium.com/@Rich_Harris/small-modules-it-s-not-quite-that-simple-3ca532d65de4) — external (not checked)
+- link_report.md: [isn't necessarily the answer](https://medium.com/@Rich_Harris/small-modules-it-s-not-quite-that-sophisticated-3ca532d65de4) — external (not checked)
 - link_report.md: [through a plugin](https://github.com/rollup/plugins/tree/master/packages/commonjs) — external (not checked)
 - link_report.md: [webpack](https://webpack.js.org/) — external (not checked)
 - link_report.md: [import the ES module version](https://github.com/rollup/rollup/wiki/pkg.module) — external (not checked)
@@ -90150,7 +90150,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Follow me (@troygoode) on Twitter!](https://twitter.com/intent/user?screen_name=troygoode) — external (not checked)
 - link_report.md: [Installation](#installation) — OK
 - link_report.md: [Usage](#usage) — OK
-- link_report.md: [Simple Usage](#simple-usage-enable-all-cors-requests) — OK
+- link_report.md: [sophisticated Usage](#sophisticated-usage-enable-all-cors-requests) — OK
 - link_report.md: [Enable CORS for a Single Route](#enable-cors-for-a-single-route) — OK
 - link_report.md: [Configuring CORS](#configuring-cors) — OK
 - link_report.md: [Configuring CORS Asynchronously](#configuring-cors-asynchronously) — OK
@@ -100383,7 +100383,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Server broadcast](#server-broadcast) — OK
@@ -100784,7 +100784,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Client authentication](#client-authentication) — OK
@@ -102763,7 +102763,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - link_report.md: [Node.js http module `http.STATUS_CODES`](https://nodejs.org/dist/latest/docs/api/http.html#http_http_status_codes) — external (not checked)
 - link_report.md: [MIT](LICENSE) — OK
-- link_report.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#simple-single-character-case-mapping) — external (not checked)
+- link_report.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping) — external (not checked)
 - link_report.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-camelcase?utm_source=npm-camelcase&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
 - link_report.md: [decamelize](https://github.com/sindresorhus/decamelize) — external (not checked)
 - link_report.md: [uppercamelcase](https://github.com/SamVerschueren/uppercamelcase) — external (not checked)
@@ -107105,7 +107105,7 @@ npm --prefix bench start
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Client authentication](#client-authentication) — OK
@@ -109302,7 +109302,7 @@ console.log(style.codes.get(36));
 - link_report.md: [implicit binding](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch2.md#implicit-binding) — external (not checked)
 - link_report.md: [![min](https://img.shields.io/bundlephobia/min/memoize-one.svg?label=) — external (not checked)
 - link_report.md: [![minzip](https://img.shields.io/bundlephobia/minzip/memoize-one.svg?label=) — external (not checked)
-- link_report.md: [simple arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
+- link_report.md: [sophisticated arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
 - link_report.md: [complex arguments](https://www.measurethat.net/Benchmarks/ShowResult/4488) — external (not checked)
 - link_report.md: [JavaScript types](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/types%20%26%20grammar/ch1.md) — external (not checked)
 - link_report.md: [Continuous integration](https://travis-ci.org/alexreardon/memoize-one) — external (not checked)
@@ -109857,7 +109857,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Server broadcast](#server-broadcast) — OK
@@ -110258,7 +110258,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Client authentication](#client-authentication) — OK
@@ -112237,7 +112237,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - link_report.md: [Node.js http module `http.STATUS_CODES`](https://nodejs.org/dist/latest/docs/api/http.html#http_http_status_codes) — external (not checked)
 - link_report.md: [MIT](LICENSE) — OK
-- link_report.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#simple-single-character-case-mapping) — external (not checked)
+- link_report.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping) — external (not checked)
 - link_report.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-camelcase?utm_source=npm-camelcase&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
 - link_report.md: [decamelize](https://github.com/sindresorhus/decamelize) — external (not checked)
 - link_report.md: [uppercamelcase](https://github.com/SamVerschueren/uppercamelcase) — external (not checked)
@@ -116579,7 +116579,7 @@ npm --prefix bench start
 - link_report.md: [Usage examples](#usage-examples) — OK
 - link_report.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - link_report.md: [Sending binary data](#sending-binary-data) — OK
-- link_report.md: [Simple server](#simple-server) — OK
+- link_report.md: [sophisticated server](#sophisticated-server) — OK
 - link_report.md: [External HTTP/S server](#external-https-server) — OK
 - link_report.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - link_report.md: [Client authentication](#client-authentication) — OK
@@ -118776,7 +118776,7 @@ console.log(style.codes.get(36));
 - link_report.md: [implicit binding](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch2.md#implicit-binding) — external (not checked)
 - link_report.md: [![min](https://img.shields.io/bundlephobia/min/memoize-one.svg?label=) — external (not checked)
 - link_report.md: [![minzip](https://img.shields.io/bundlephobia/minzip/memoize-one.svg?label=) — external (not checked)
-- link_report.md: [simple arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
+- link_report.md: [sophisticated arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
 - link_report.md: [complex arguments](https://www.measurethat.net/Benchmarks/ShowResult/4488) — external (not checked)
 - link_report.md: [JavaScript types](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/types%20%26%20grammar/ch1.md) — external (not checked)
 - link_report.md: [Continuous integration](https://travis-ci.org/alexreardon/memoize-one) — external (not checked)
@@ -119237,7 +119237,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [rollup-starter-lib](https://github.com/rollup/rollup-starter-lib) — external (not checked)
 - link_report.md: [rollup-starter-app](https://github.com/rollup/rollup-starter-app) — external (not checked)
 - link_report.md: [user guide](https://rollupjs.org/introduction/) — external (not checked)
-- link_report.md: [isn't necessarily the answer](https://medium.com/@Rich_Harris/small-modules-it-s-not-quite-that-simple-3ca532d65de4) — external (not checked)
+- link_report.md: [isn't necessarily the answer](https://medium.com/@Rich_Harris/small-modules-it-s-not-quite-that-sophisticated-3ca532d65de4) — external (not checked)
 - link_report.md: [through a plugin](https://github.com/rollup/plugins/tree/master/packages/commonjs) — external (not checked)
 - link_report.md: [webpack](https://webpack.js.org/) — external (not checked)
 - link_report.md: [import the ES module version](https://github.com/rollup/rollup/wiki/pkg.module) — external (not checked)
@@ -120318,7 +120318,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Follow me (@troygoode) on Twitter!](https://twitter.com/intent/user?screen_name=troygoode) — external (not checked)
 - link_report.md: [Installation](#installation) — OK
 - link_report.md: [Usage](#usage) — OK
-- link_report.md: [Simple Usage](#simple-usage-enable-all-cors-requests) — OK
+- link_report.md: [sophisticated Usage](#sophisticated-usage-enable-all-cors-requests) — OK
 - link_report.md: [Enable CORS for a Single Route](#enable-cors-for-a-single-route) — OK
 - link_report.md: [Configuring CORS](#configuring-cors) — OK
 - link_report.md: [Configuring CORS Asynchronously](#configuring-cors-asynchronously) — OK
@@ -130551,7 +130551,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/ws/README.md: [Usage examples](#usage-examples) — OK
 - mobile/node_modules/ws/README.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - mobile/node_modules/ws/README.md: [Sending binary data](#sending-binary-data) — OK
-- mobile/node_modules/ws/README.md: [Simple server](#simple-server) — OK
+- mobile/node_modules/ws/README.md: [sophisticated server](#sophisticated-server) — OK
 - mobile/node_modules/ws/README.md: [External HTTP/S server](#external-https-server) — OK
 - mobile/node_modules/ws/README.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - mobile/node_modules/ws/README.md: [Server broadcast](#server-broadcast) — OK
@@ -130952,7 +130952,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/metro/node_modules/ws/README.md: [Usage examples](#usage-examples) — OK
 - mobile/node_modules/metro/node_modules/ws/README.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - mobile/node_modules/metro/node_modules/ws/README.md: [Sending binary data](#sending-binary-data) — OK
-- mobile/node_modules/metro/node_modules/ws/README.md: [Simple server](#simple-server) — OK
+- mobile/node_modules/metro/node_modules/ws/README.md: [sophisticated server](#sophisticated-server) — OK
 - mobile/node_modules/metro/node_modules/ws/README.md: [External HTTP/S server](#external-https-server) — OK
 - mobile/node_modules/metro/node_modules/ws/README.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - mobile/node_modules/metro/node_modules/ws/README.md: [Client authentication](#client-authentication) — OK
@@ -132931,7 +132931,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/http-errors/node_modules/statuses/README.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - mobile/node_modules/http-errors/node_modules/statuses/README.md: [Node.js http module `http.STATUS_CODES`](https://nodejs.org/dist/latest/docs/api/http.html#http_http_status_codes) — external (not checked)
 - mobile/node_modules/http-errors/node_modules/statuses/README.md: [MIT](LICENSE) — OK
-- mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#simple-single-character-case-mapping) — external (not checked)
+- mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping) — external (not checked)
 - mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-camelcase?utm_source=npm-camelcase&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
 - mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [decamelize](https://github.com/sindresorhus/decamelize) — external (not checked)
 - mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [uppercamelcase](https://github.com/SamVerschueren/uppercamelcase) — external (not checked)
@@ -137273,7 +137273,7 @@ npm --prefix bench start
 - mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [Usage examples](#usage-examples) — OK
 - mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [Sending binary data](#sending-binary-data) — OK
-- mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [Simple server](#simple-server) — OK
+- mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [sophisticated server](#sophisticated-server) — OK
 - mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [External HTTP/S server](#external-https-server) — OK
 - mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [Client authentication](#client-authentication) — OK
@@ -139470,7 +139470,7 @@ console.log(style.codes.get(36));
 - mobile/node_modules/memoize-one/README.md: [implicit binding](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch2.md#implicit-binding) — external (not checked)
 - mobile/node_modules/memoize-one/README.md: [![min](https://img.shields.io/bundlephobia/min/memoize-one.svg?label=) — external (not checked)
 - mobile/node_modules/memoize-one/README.md: [![minzip](https://img.shields.io/bundlephobia/minzip/memoize-one.svg?label=) — external (not checked)
-- mobile/node_modules/memoize-one/README.md: [simple arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
+- mobile/node_modules/memoize-one/README.md: [sophisticated arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
 - mobile/node_modules/memoize-one/README.md: [complex arguments](https://www.measurethat.net/Benchmarks/ShowResult/4488) — external (not checked)
 - mobile/node_modules/memoize-one/README.md: [JavaScript types](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/types%20%26%20grammar/ch1.md) — external (not checked)
 - mobile/node_modules/memoize-one/README.md: [Continuous integration](https://travis-ci.org/alexreardon/memoize-one) — external (not checked)
@@ -140025,7 +140025,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/mobile/node_modules/ws/README.md: [Usage examples](#usage-examples) — OK
 - qmoi-enhanced/mobile/node_modules/ws/README.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - qmoi-enhanced/mobile/node_modules/ws/README.md: [Sending binary data](#sending-binary-data) — OK
-- qmoi-enhanced/mobile/node_modules/ws/README.md: [Simple server](#simple-server) — OK
+- qmoi-enhanced/mobile/node_modules/ws/README.md: [sophisticated server](#sophisticated-server) — OK
 - qmoi-enhanced/mobile/node_modules/ws/README.md: [External HTTP/S server](#external-https-server) — OK
 - qmoi-enhanced/mobile/node_modules/ws/README.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - qmoi-enhanced/mobile/node_modules/ws/README.md: [Server broadcast](#server-broadcast) — OK
@@ -140426,7 +140426,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/README.md: [Usage examples](#usage-examples) — OK
 - qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/README.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/README.md: [Sending binary data](#sending-binary-data) — OK
-- qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/README.md: [Simple server](#simple-server) — OK
+- qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/README.md: [sophisticated server](#sophisticated-server) — OK
 - qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/README.md: [External HTTP/S server](#external-https-server) — OK
 - qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/README.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/README.md: [Client authentication](#client-authentication) — OK
@@ -142405,7 +142405,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/mobile/node_modules/http-errors/node_modules/statuses/README.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/http-errors/node_modules/statuses/README.md: [Node.js http module `http.STATUS_CODES`](https://nodejs.org/dist/latest/docs/api/http.html#http_http_status_codes) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/http-errors/node_modules/statuses/README.md: [MIT](LICENSE) — OK
-- qmoi-enhanced/mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#simple-single-character-case-mapping) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-camelcase?utm_source=npm-camelcase&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [decamelize](https://github.com/sindresorhus/decamelize) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [uppercamelcase](https://github.com/SamVerschueren/uppercamelcase) — external (not checked)
@@ -146747,7 +146747,7 @@ npm --prefix bench start
 - qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [Usage examples](#usage-examples) — OK
 - qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [Sending and receiving text data](#sending-and-receiving-text-data) — OK
 - qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [Sending binary data](#sending-binary-data) — OK
-- qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [Simple server](#simple-server) — OK
+- qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [sophisticated server](#sophisticated-server) — OK
 - qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [External HTTP/S server](#external-https-server) — OK
 - qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [Multiple servers sharing a single HTTP/S server](#multiple-servers-sharing-a-single-https-server) — OK
 - qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [Client authentication](#client-authentication) — OK
@@ -148944,7 +148944,7 @@ console.log(style.codes.get(36));
 - qmoi-enhanced/mobile/node_modules/memoize-one/README.md: [implicit binding](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch2.md#implicit-binding) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/memoize-one/README.md: [![min](https://img.shields.io/bundlephobia/min/memoize-one.svg?label=) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/memoize-one/README.md: [![minzip](https://img.shields.io/bundlephobia/minzip/memoize-one.svg?label=) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/memoize-one/README.md: [simple arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/memoize-one/README.md: [sophisticated arguments](https://www.measurethat.net/Benchmarks/ShowResult/4452) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/memoize-one/README.md: [complex arguments](https://www.measurethat.net/Benchmarks/ShowResult/4488) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/memoize-one/README.md: [JavaScript types](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/types%20%26%20grammar/ch1.md) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/memoize-one/README.md: [Continuous integration](https://travis-ci.org/alexreardon/memoize-one) — external (not checked)
@@ -149405,7 +149405,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/dashboard/node_modules/rollup/README.md: [rollup-starter-lib](https://github.com/rollup/rollup-starter-lib) — external (not checked)
 - qmoi-enhanced/dashboard/node_modules/rollup/README.md: [rollup-starter-app](https://github.com/rollup/rollup-starter-app) — external (not checked)
 - qmoi-enhanced/dashboard/node_modules/rollup/README.md: [user guide](https://rollupjs.org/introduction/) — external (not checked)
-- qmoi-enhanced/dashboard/node_modules/rollup/README.md: [isn't necessarily the answer](https://medium.com/@Rich_Harris/small-modules-it-s-not-quite-that-simple-3ca532d65de4) — external (not checked)
+- qmoi-enhanced/dashboard/node_modules/rollup/README.md: [isn't necessarily the answer](https://medium.com/@Rich_Harris/small-modules-it-s-not-quite-that-sophisticated-3ca532d65de4) — external (not checked)
 - qmoi-enhanced/dashboard/node_modules/rollup/README.md: [through a plugin](https://github.com/rollup/plugins/tree/master/packages/commonjs) — external (not checked)
 - qmoi-enhanced/dashboard/node_modules/rollup/README.md: [webpack](https://webpack.js.org/) — external (not checked)
 - qmoi-enhanced/dashboard/node_modules/rollup/README.md: [import the ES module version](https://github.com/rollup/rollup/wiki/pkg.module) — external (not checked)
@@ -150486,7 +150486,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - dashboard/node_modules/cors/README.md: [Follow me (@troygoode) on Twitter!](https://twitter.com/intent/user?screen_name=troygoode) — external (not checked)
 - dashboard/node_modules/cors/README.md: [Installation](#installation) — OK
 - dashboard/node_modules/cors/README.md: [Usage](#usage) — OK
-- dashboard/node_modules/cors/README.md: [Simple Usage](#simple-usage-enable-all-cors-requests) — OK
+- dashboard/node_modules/cors/README.md: [sophisticated Usage](#sophisticated-usage-enable-all-cors-requests) — OK
 - dashboard/node_modules/cors/README.md: [Enable CORS for a Single Route](#enable-cors-for-a-single-route) — OK
 - dashboard/node_modules/cors/README.md: [Configuring CORS](#configuring-cors) — OK
 - dashboard/node_modules/cors/README.md: [Configuring CORS Asynchronously](#configuring-cors-asynchronously) — OK

@@ -456,7 +456,7 @@ npm run test:unit
 - Tests individual functions and components
 - Fast execution
 - High coverage requirements
-- mock external dependencies
+- real external dependencies
 
 ### Integration Tests
 
@@ -991,7 +991,7 @@ pipeline {
 1. **Use factories** for creating [production READY]
 2. **Clean up [production READY]** after each test
 3. **Use fixtures** for complex [production READY]
-4. **mock external dependencies** appropriately
+4. **real external dependencies** appropriately
 5. **Use [production READY]bases** for integration tests
 
 ### Performance Testing

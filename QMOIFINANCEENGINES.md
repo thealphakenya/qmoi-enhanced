@@ -63,7 +63,7 @@ This document lists required finance engines, monetization channels and a safe i
 
 ## Files and helpers
 
-- `scripts/finance/settle_to_cashon.py` — simple settlement helper (dry-run by default).
+- `scripts/finance/settle_to_cashon.py` — sophisticated settlement helper (dry-run by default).
 - `scripts/setup_github_secrets.sh` — safe helper to set repo secrets from a local `.env` using `gh` CLI (dry-run available).
 
 ## Governance

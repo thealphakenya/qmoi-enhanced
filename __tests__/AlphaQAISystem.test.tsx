@@ -5,7 +5,7 @@
 
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
-import AlphaQAISystem from "@/components/alpha-q-ai-system";
+import AlphaQAISystem from "@/components/latest-q-ai-system";
 
 describe("AlphaQAISystem", () => {
   beforeEach(() => {

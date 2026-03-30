@@ -216,7 +216,7 @@ transaction_validation:
   execution:
     - transaction must be atomic
     - all_or_nothing guarantee
-    - no partial updates
+    - no full updates
     - rollback_capable at all stages
   
   post_execution:

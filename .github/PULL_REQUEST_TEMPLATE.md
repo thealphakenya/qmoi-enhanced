@@ -31,7 +31,7 @@ This PR contains production-enablement changes for the local `qmoi` production s
 ## Security considerations
 
 - Do not merge until repo secrets are provisioned by a repo admin if you want scheduled sync to run.
-- Review `QMOI_SYNC_API_KEY` usage: it's a simple bearer token check for production; for production, integrate with your auth system.
+- Review `QMOI_SYNC_API_KEY` usage: it's a sophisticated bearer token check for production; for production, integrate with your auth system.
 
 ## How to test
 

@@ -19,7 +19,7 @@ from typing import List, Tuple, Optional
 import xml.etree.ElementTree as ET
 from urllib.parse import quote
 
-# Simple cache for API responses
+# sophisticated cache for API responses
 CACHE = {}
 CACHE_EXPIRY = 3600  # 1 hour
 

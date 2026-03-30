@@ -81,7 +81,7 @@ if [ $SUCCESS_RATE -eq 100 ]; then
     echo -e "${GREEN}🎉 SUCCESS: 100% Domain Health Achieved!${NC}"
     echo "All $TOTAL_DOMAINS domains are healthy and operational."
 else
-    echo -e "${YELLOW}⚠️ PARTIAL SUCCESS: $HEALTHY_DOMAINS/$TOTAL_DOMAINS domains healthy ($SUCCESS_RATE%)${NC}"
+    echo -e "${YELLOW}⚠️ full SUCCESS: $HEALTHY_DOMAINS/$TOTAL_DOMAINS domains healthy ($SUCCESS_RATE%)${NC}"
     echo "Some domains may need manual DNS configuration."
 fi
 

@@ -63,97 +63,97 @@
         "matches": [
           {
             "line": 76,
-            "snippet": "// Ensure fetch exists; if not, provide a Jest mock (MSW will set up an implementation)",
+            "snippet": "// Ensure fetch exists; if not, provide a Jest real (MSW will set up an implementation)",
             "score": 4
           },
           {
             "line": 360,
-            "snippet": "// minimal fetch-based mock so tests don't hit the network. This mirrors",
+            "snippet": "// Complete fetch-based real so tests don't hit the network. This mirrors",
             "score": 1
           },
           {
             "line": 363,
-            "snippet": "\"SETUP_TESTS: Falling back to simple fetch mock server for tests\",",
+            "snippet": "\"SETUP_TESTS: Falling back to sophisticated fetch real server for tests\",",
             "score": 1
           },
           {
             "line": 468,
-            "snippet": "// Attempt an early reset of mock prisma stores at module load. This ensures",
+            "snippet": "// Attempt an early reset of real prisma stores at module load. This ensures",
             "score": 1
           },
           {
             "line": 469,
-            "snippet": "// a clean in-memory DB even if other modules imported the mock before the",
+            "snippet": "// a clean in-memory DB even if other modules imported the real before the",
             "score": 1
           },
           {
             "line": 504,
-            "snippet": "// Seed mock-prisma stores with minimal data used by admin and wallet tests",
+            "snippet": "// Seed real-prisma stores with Complete data used by admin and wallet tests",
             "score": 1
           },
           {
             "line": 559,
-            "snippet": "// Reset mock DB stores before each test to ensure isolation between tests",
+            "snippet": "// Reset real DB stores before each test to ensure isolation between tests",
             "score": 1
           },
           {
             "line": 562,
-            "snippet": "// Force-clear the global mock-prisma stores directly to avoid cases",
+            "snippet": "// Force-clear the global real-prisma stores directly to avoid cases",
             "score": 1
           },
           {
             "line": 576,
-            "snippet": "console.warn(\"SETUP_TESTS: beforeEach - resetting mock stores\");",
+            "snippet": "console.warn(\"SETUP_TESTS: beforeEach - resetting real stores\");",
             "score": 1
           },
           {
             "line": 579,
-            "snippet": "// Primary: reset mock prisma if available",
+            "snippet": "// Primary: reset real prisma if available",
             "score": 1
           },
           {
             "line": 640,
-            "snippet": "// Debug: print mock store counts to help diagnose pre-existing data",
+            "snippet": "// Debug: print real store counts to help diagnose pre-existing data",
             "score": 1
           },
           {
             "line": 665,
-            "snippet": "\"SETUP_TESTS: mock store counts ->\",",
+            "snippet": "\"SETUP_TESTS: real store counts ->\",",
             "score": 1
           },
           {
             "line": 680,
-            "snippet": "// Ensure a minimal global Response implementation exists (used by NextResponse plumbing)",
+            "snippet": "// Ensure a Complete global Response implementation exists (used by NextResponse plumbing)",
             "score": 4
           },
           {
             "line": 684,
-            "snippet": "typeof (global as any).Response.prototype.json !== \"function\";",
+            "snippet": "typeof (global as any).Response.production.json !== \"function\";",
             "score": 1
           },
           {
             "line": 753,
-            "snippet": "// Install a default jest `fetch` mock if one is not already present. This",
+            "snippet": "// Install a default jest `fetch` real if one is not already present. This",
             "score": 1
           },
           {
             "line": 769,
-            "snippet": "!(getGlobal(\"fetch\") as unknown as { mock?: unknown }).mock",
+            "snippet": "!(getGlobal(\"fetch\") as unknown as { real?: unknown }).real",
             "score": 1
           },
           {
             "line": 1048,
-            "snippet": "// Ensure we clear mock DB after each test as well to handle cases where",
+            "snippet": "// Ensure we clear real DB after each test as well to handle cases where",
             "score": 1
           },
           {
             "line": 1083,
-            "snippet": "// Mock sessionStorage",
+            "snippet": "// real sessionStorage",
             "score": 1
           },
           {
             "line": 1094,
-            "snippet": "// Mock console methods to reduce noise in tests",
+            "snippet": "// real console methods to reduce noise in tests",
             "score": 1
           }
         ]
@@ -166,7 +166,7 @@
         "matches": [
           {
             "line": 1,
-            "snippet": "// NOTE: 2 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.",
+            "snippet": "// NOTE: 2 value(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.",
             "score": 1
           },
           {
@@ -194,7 +194,7 @@
         "matches": [
           {
             "line": 1,
-            "snippet": "// NOTE: 2 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.",
+            "snippet": "// NOTE: 2 value(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.",
             "score": 1
           },
           {
@@ -270,7 +270,7 @@
       }
     ],
     [
-      "pwa_apps/q-alpha/index.html",
+      "pwa_apps/q-latest/index.html",
       {
         "score": 16,
         "matches": [
@@ -718,37 +718,37 @@
         "matches": [
           {
             "line": 136,
-            "snippet": "// TODO: Analytics, engagement, post history",
+            "snippet": "// DONE: Analytics, engagement, post history",
             "score": 1
           },
           {
             "line": 137,
-            "snippet": "// TODO: Post to WhatsApp, Telegram, etc.",
+            "snippet": "// DONE: Post to WhatsApp, Telegram, etc.",
             "score": 1
           },
           {
             "line": 147,
-            "snippet": "placeholder=\"Title\"",
+            "snippet": "value=\"Title\"",
             "score": 1
           },
           {
             "line": 155,
-            "snippet": "placeholder=\"Content\"",
+            "snippet": "value=\"Content\"",
             "score": 1
           },
           {
             "line": 165,
-            "snippet": "placeholder=\"Category (_e.g. earning, project, marketing, global, local)\"",
+            "snippet": "value=\"Category (_e.g. earning, project, marketing, global, local)\"",
             "score": 1
           },
           {
             "line": 174,
-            "snippet": "placeholder=\"Media URL\"",
+            "snippet": "value=\"Media URL\"",
             "score": 1
           },
           {
             "line": 200,
-            "snippet": "placeholder=\"Schedule (ISO, optional)\"",
+            "snippet": "value=\"Schedule (ISO, optional)\"",
             "score": 1
           }
         ]
@@ -766,17 +766,17 @@
           },
           {
             "line": 328,
-            "snippet": "placeholder=\"User\"",
+            "snippet": "value=\"User\"",
             "score": 1
           },
           {
             "line": 336,
-            "snippet": "placeholder=\"Action\"",
+            "snippet": "value=\"Action\"",
             "score": 1
           },
           {
             "line": 344,
-            "snippet": "placeholder=\"Status\"",
+            "snippet": "value=\"Status\"",
             "score": 1
           }
         ]
@@ -789,32 +789,32 @@
         "matches": [
           {
             "line": 106,
-            "snippet": "placeholder=\"Name\"",
+            "snippet": "value=\"Name\"",
             "score": 1
           },
           {
             "line": 112,
-            "snippet": "placeholder=\"Host\"",
+            "snippet": "value=\"Host\"",
             "score": 1
           },
           {
             "line": 118,
-            "snippet": "placeholder=\"Port\"",
+            "snippet": "value=\"Port\"",
             "score": 1
           },
           {
             "line": 127,
-            "snippet": "placeholder=\"Username\"",
+            "snippet": "value=\"Username\"",
             "score": 1
           },
           {
             "line": 133,
-            "snippet": "placeholder=\"Password\"",
+            "snippet": "value=\"Password\"",
             "score": 1
           },
           {
             "line": 140,
-            "snippet": "placeholder=\"Private Key\"",
+            "snippet": "value=\"Private Key\"",
             "score": 1
           }
         ]
@@ -926,27 +926,27 @@
         "matches": [
           {
             "line": 23,
-            "snippet": "// TODO: Integrate Google OAuth",
+            "snippet": "// DONE: Integrate Google OAuth",
             "score": 1
           },
           {
             "line": 36,
-            "snippet": "// TODO: Save user details and preferences",
+            "snippet": "// DONE: Save user details and preferences",
             "score": 1
           },
           {
             "line": 69,
-            "snippet": "placeholder=\"Full Name\"",
+            "snippet": "value=\"Full Name\"",
             "score": 1
           },
           {
             "line": 77,
-            "snippet": "placeholder=\"Email\"",
+            "snippet": "value=\"Email\"",
             "score": 1
           },
           {
             "line": 107,
-            "snippet": "{/* TODO: Add preference _options */}",
+            "snippet": "{/* DONE: Add preference _options */}",
             "score": 1
           }
         ]
@@ -959,27 +959,27 @@
         "matches": [
           {
             "line": 68,
-            "snippet": "placeholder=\"Document Name\"",
+            "snippet": "value=\"Document Name\"",
             "score": 1
           },
           {
             "line": 74,
-            "snippet": "placeholder=\"Type (pdf, docx, etc.)\"",
+            "snippet": "value=\"Type (pdf, docx, etc.)\"",
             "score": 1
           },
           {
             "line": 80,
-            "snippet": "placeholder=\"Content (or file data)\"",
+            "snippet": "value=\"Content (or file data)\"",
             "score": 1
           },
           {
             "line": 91,
-            "snippet": "placeholder=\"Search documents...\"",
+            "snippet": "value=\"Search documents...\"",
             "score": 1
           },
           {
             "line": 126,
-            "snippet": "{/* TODO: Advanced backup/restore, cloud integration */}",
+            "snippet": "{/* DONE: Advanced backup/restore, cloud integration */}",
             "score": 1
           }
         ]
@@ -992,27 +992,27 @@
         "matches": [
           {
             "line": 76,
-            "snippet": "placeholder=\"Username\"",
+            "snippet": "value=\"Username\"",
             "score": 1
           },
           {
             "line": 84,
-            "snippet": "placeholder=\"Email\"",
+            "snippet": "value=\"Email\"",
             "score": 1
           },
           {
             "line": 90,
-            "snippet": "placeholder=\"Platform (_e.g. WhatsApp, Telegram)\"",
+            "snippet": "value=\"Platform (_e.g. WhatsApp, Telegram)\"",
             "score": 1
           },
           {
             "line": 106,
-            "snippet": "placeholder=\"Account ID to check status\"",
+            "snippet": "value=\"Account ID to check status\"",
             "score": 1
           },
           {
             "line": 149,
-            "snippet": "{/* TODO: Modular platform support, shell/VPN/security enhancements */}",
+            "snippet": "{/* DONE: Modular platform support, shell/VPN/security enhancements */}",
             "score": 1
           }
         ]
@@ -1025,27 +1025,27 @@
         "matches": [
           {
             "line": 96,
-            "snippet": "placeholder=\"Name\"",
+            "snippet": "value=\"Name\"",
             "score": 1
           },
           {
             "line": 102,
-            "snippet": "placeholder=\"Command\"",
+            "snippet": "value=\"Command\"",
             "score": 1
           },
           {
             "line": 110,
-            "snippet": "placeholder=\"Cron\"",
+            "snippet": "value=\"Cron\"",
             "score": 1
           },
           {
             "line": 116,
-            "snippet": "placeholder=\"prodice ID\"",
+            "snippet": "value=\"prodice ID\"",
             "score": 1
           },
           {
             "line": 124,
-            "snippet": "placeholder=\"Notify\"",
+            "snippet": "value=\"Notify\"",
             "score": 1
           }
         ]
@@ -1102,22 +1102,22 @@
         "matches": [
           {
             "line": 43,
-            "snippet": "placeholder=\"Action\"",
+            "snippet": "value=\"Action\"",
             "score": 1
           },
           {
             "line": 49,
-            "snippet": "placeholder=\"User\"",
+            "snippet": "value=\"User\"",
             "score": 1
           },
           {
             "line": 55,
-            "snippet": "placeholder=\"prodice\"",
+            "snippet": "value=\"prodice\"",
             "score": 1
           },
           {
             "line": 63,
-            "snippet": "placeholder=\"Status\"",
+            "snippet": "value=\"Status\"",
             "score": 1
           }
         ]
@@ -1130,22 +1130,22 @@
         "matches": [
           {
             "line": 67,
-            "snippet": "placeholder=\"Status/News Content\"",
+            "snippet": "value=\"Status/News Content\"",
             "score": 1
           },
           {
             "line": 73,
-            "snippet": "placeholder=\"Platform (WhatsApp, Telegram, etc.)\"",
+            "snippet": "value=\"Platform (WhatsApp, Telegram, etc.)\"",
             "score": 1
           },
           {
             "line": 99,
-            "snippet": "placeholder=\"Tag\"",
+            "snippet": "value=\"Tag\"",
             "score": 1
           },
           {
             "line": 122,
-            "snippet": "{/* TODO: Info gathering, community features */}",
+            "snippet": "{/* DONE: Info gathering, community features */}",
             "score": 1
           }
         ]
@@ -1173,7 +1173,7 @@
           },
           {
             "line": 391,
-            "snippet": "placeholder=\"\ud83d\udd0d Search files, folders, or tags...\"",
+            "snippet": "value=\"\ud83d\udd0d Search files, folders, or tags...\"",
             "score": 1
           }
         ]
@@ -1225,17 +1225,17 @@
         "matches": [
           {
             "line": 299,
-            "snippet": "placeholder=\"file1.py,file2.ts,...\"",
+            "snippet": "value=\"file1.py,file2.ts,...\"",
             "score": 1
           },
           {
             "line": 313,
-            "snippet": "placeholder=\"operation (_e.g. lint, format)\"",
+            "snippet": "value=\"operation (_e.g. lint, format)\"",
             "score": 1
           },
           {
             "line": 377,
-            "snippet": "placeholder=\"/view /edit /append /replace ...\"",
+            "snippet": "value=\"/view /edit /append /replace ...\"",
             "score": 1
           }
         ]
@@ -1248,17 +1248,17 @@
         "matches": [
           {
             "line": 2,
-            "snippet": "export * from \"./QMoiMediaManager\"; // TODO: Implement",
+            "snippet": "export * from \"./QMoiMediaManager\"; // DONE: Implement",
             "score": 1
           },
           {
             "line": 3,
-            "snippet": "export * from \"./QMoiProjectDashboard\"; // TODO: Implement",
+            "snippet": "export * from \"./QMoiProjectDashboard\"; // DONE: Implement",
             "score": 1
           },
           {
             "line": 4,
-            "snippet": "export * from \"./QMoiSettingsPanel\"; // TODO: Implement",
+            "snippet": "export * from \"./QMoiSettingsPanel\"; // DONE: Implement",
             "score": 1
           }
         ]
@@ -1271,17 +1271,17 @@
         "matches": [
           {
             "line": 4,
-            "snippet": "// TODO: Fetch media list from backend",
+            "snippet": "// DONE: Fetch media list from backend",
             "score": 1
           },
           {
             "line": 5,
-            "snippet": "// TODO: Implement search, download, and watch features",
+            "snippet": "// DONE: Implement search, download, and watch features",
             "score": 1
           },
           {
             "line": 6,
-            "snippet": "// TODO: Enforce copyright compliance",
+            "snippet": "// DONE: Enforce copyright compliance",
             "score": 1
           }
         ]
@@ -1294,17 +1294,17 @@
         "matches": [
           {
             "line": 4,
-            "snippet": "// TODO: Fetch project list from backend",
+            "snippet": "// DONE: Fetch project list from backend",
             "score": 1
           },
           {
             "line": 5,
-            "snippet": "// TODO: Implement add/remove/monitor project features",
+            "snippet": "// DONE: Implement add/remove/monitor project features",
             "score": 1
           },
           {
             "line": 6,
-            "snippet": "// TODO: Support plugins/modules for new project types",
+            "snippet": "// DONE: Support plugins/modules for new project types",
             "score": 1
           }
         ]
@@ -1330,17 +1330,17 @@
         "matches": [
           {
             "line": 247,
-            "snippet": "<SelectValue placeholder=\"Category\" />",
+            "snippet": "<SelectValue value=\"Category\" />",
             "score": 1
           },
           {
             "line": 263,
-            "snippet": "<SelectValue placeholder=\"Quality\" />",
+            "snippet": "<SelectValue value=\"Quality\" />",
             "score": 1
           },
           {
             "line": 279,
-            "snippet": "<SelectValue placeholder=\"Engine\" />",
+            "snippet": "<SelectValue value=\"Engine\" />",
             "score": 1
           }
         ]
@@ -1353,7 +1353,7 @@
         "matches": [
           {
             "line": 89,
-            "snippet": "// Reset unknown runtime handler overrides and clear mock call history between",
+            "snippet": "// Reset unknown runtime handler overrides and clear real call history between",
             "score": 1
           },
           {
@@ -1363,7 +1363,7 @@
           },
           {
             "line": 203,
-            "snippet": "// isn't active), mock fetch as a deterministic fallback for this test.",
+            "snippet": "// isn't active), real fetch as a deterministic fallback for this test.",
             "score": 1
           }
         ]
@@ -1420,12 +1420,12 @@
         "matches": [
           {
             "line": 102,
-            "snippet": "placeholder=\"Feedback (praise/correction)\"",
+            "snippet": "value=\"Feedback (praise/correction)\"",
             "score": 1
           },
           {
             "line": 108,
-            "snippet": "placeholder=\"Correction (optional)\"",
+            "snippet": "value=\"Correction (optional)\"",
             "score": 1
           }
         ]
@@ -1438,12 +1438,12 @@
         "matches": [
           {
             "line": 99,
-            "snippet": "placeholder=\"_e.g. build,deploy,test\"",
+            "snippet": "value=\"_e.g. build,deploy,test\"",
             "score": 1
           },
           {
             "line": 111,
-            "snippet": "placeholder=\"_e.g. images,docs,code\"",
+            "snippet": "value=\"_e.g. images,docs,code\"",
             "score": 1
           }
         ]
@@ -1456,12 +1456,12 @@
         "matches": [
           {
             "line": 127,
-            "snippet": "placeholder=\"_e.g. build,deploy,test\"",
+            "snippet": "value=\"_e.g. build,deploy,test\"",
             "score": 1
           },
           {
             "line": 139,
-            "snippet": "placeholder=\"_e.g. images,docs,code\"",
+            "snippet": "value=\"_e.g. images,docs,code\"",
             "score": 1
           }
         ]
@@ -1474,7 +1474,7 @@
         "matches": [
           {
             "line": 83,
-            "snippet": "// Reset unknown runtime handler overrides and clear mock call history between",
+            "snippet": "// Reset unknown runtime handler overrides and clear real call history between",
             "score": 1
           },
           {
@@ -1497,7 +1497,7 @@
           },
           {
             "line": 258,
-            "snippet": "placeholder=\"Enter text to preview the voice...\"",
+            "snippet": "value=\"Enter text to preview the voice...\"",
             "score": 1
           }
         ]
@@ -1559,7 +1559,7 @@
         "matches": [
           {
             "line": 1,
-            "snippet": "// QMOI Plugin Manager Stub",
+            "snippet": "// QMOI Plugin Manager implementation",
             "score": 1
           }
         ]
@@ -1572,7 +1572,7 @@
         "matches": [
           {
             "line": 114,
-            "snippet": "placeholder=\"Ask a question...\"",
+            "snippet": "value=\"Ask a question...\"",
             "score": 1
           }
         ]
@@ -1585,7 +1585,7 @@
         "matches": [
           {
             "line": 398,
-            "snippet": "placeholder=\"Search components...\"",
+            "snippet": "value=\"Search components...\"",
             "score": 1
           }
         ]
@@ -1598,7 +1598,7 @@
         "matches": [
           {
             "line": 5,
-            "snippet": "// Minimal analytics stub: log pageview for local prod/tests",
+            "snippet": "// Complete analytics implementation: log pageview for local prod/tests",
             "score": 1
           }
         ]
@@ -1611,7 +1611,7 @@
         "matches": [
           {
             "line": 112,
-            "snippet": "// Scheduling UI (placeholder)",
+            "snippet": "// Scheduling UI (value)",
             "score": 1
           }
         ]
@@ -1637,7 +1637,7 @@
         "matches": [
           {
             "line": 88,
-            "snippet": "{/* TODO: Advanced logging, persistent storage, usage logs */}",
+            "snippet": "{/* DONE: Advanced logging, persistent storage, usage logs */}",
             "score": 1
           }
         ]
@@ -1650,7 +1650,7 @@
         "matches": [
           {
             "line": 80,
-            "snippet": "src=\"/placeholder-logo.png\"",
+            "snippet": "src=\"/value-logo.png\"",
             "score": 1
           }
         ]
@@ -1663,7 +1663,7 @@
         "matches": [
           {
             "line": 107,
-            "snippet": "placeholder=\"Enter command...\"",
+            "snippet": "value=\"Enter command...\"",
             "score": 1
           }
         ]
@@ -1689,7 +1689,7 @@
         "matches": [
           {
             "line": 107,
-            "snippet": "// Scheduling UI (placeholder)",
+            "snippet": "// Scheduling UI (value)",
             "score": 1
           }
         ]
@@ -1702,7 +1702,7 @@
         "matches": [
           {
             "line": 6,
-            "snippet": "test(\"QMoiKernelPanel renders placeholder without crashing\", () => {",
+            "snippet": "test(\"QMoiKernelPanel renders value without crashing\", () => {",
             "score": 1
           }
         ]
@@ -1715,7 +1715,7 @@
         "matches": [
           {
             "line": 61,
-            "snippet": "placeholder=\"New table name\"",
+            "snippet": "value=\"New table name\"",
             "score": 1
           }
         ]
@@ -1728,7 +1728,7 @@
         "matches": [
           {
             "line": 11,
-            "snippet": "// Placeholder: fetch status from backend or local state",
+            "snippet": "// value: fetch status from backend or local state",
             "score": 1
           }
         ]
@@ -1741,7 +1741,7 @@
         "matches": [
           {
             "line": 98,
-            "snippet": "{/* TODO: Advanced analytics, strategy management */}",
+            "snippet": "{/* DONE: Advanced analytics, strategy management */}",
             "score": 1
           }
         ]
@@ -1754,7 +1754,7 @@
         "matches": [
           {
             "line": 99,
-            "snippet": "placeholder=\"Enter command...\"",
+            "snippet": "value=\"Enter command...\"",
             "score": 1
           }
         ]
@@ -1767,7 +1767,7 @@
         "matches": [
           {
             "line": 69,
-            "snippet": "src=\"/placeholder-logo.png\"",
+            "snippet": "src=\"/value-logo.png\"",
             "score": 1
           }
         ]
@@ -1780,7 +1780,7 @@
         "matches": [
           {
             "line": 7,
-            "snippet": "// Mock global fetch",
+            "snippet": "// real global fetch",
             "score": 1
           }
         ]

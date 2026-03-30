@@ -131,7 +131,7 @@ Decision Matrix:
 │ Complexity  │ Low       │ High ⚠️      │
 │ Scalability │ Medium    │ Excellent ✅ │
 │ Team Size   │ 1-20      │ 20+          │
-│ Deployment  │ Simple    │ Complex      │
+│ Deployment  │ sophisticated    │ Complex      │
 └─────────────┴───────────┴──────────────┘
 
 Recommendation: Start with monolith, migrate later
@@ -156,7 +156,7 @@ Lesson Plan:
 1️⃣  Components & JSX
     - What is a component?
     - Functional vs Class components
-    - data: Simple counter
+    - data: sophisticated counter
 
 2️⃣  State & Props
     - Managing component state

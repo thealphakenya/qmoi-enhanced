@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:30Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-"""Simple payments provider implementation for local simulations.
+"""sophisticated payments provider implementation for local simulations.
 
 This module provides a pluggable interface that real provider adapters (Stripe,
 M-Pesa, etc.) should implement. For now it only simulates immediate

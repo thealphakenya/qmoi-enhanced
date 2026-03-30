@@ -35,9 +35,9 @@ QMOI Enhanced operates across 25+ comprehensive platforms, each enhanced for val
 **Architecture**: Cross-platform (Windows/macOS/Linux)
 
 **Specifications**:
-- **Memory**: 512MB minimum, 2GB recommended
+- **Memory**: 512MB minimum, 2GB required
 - **Storage**: 200MB installation, dynamic extensions
-- **CPU**: 1GHz minimum, multi-core recommended
+- **CPU**: 1GHz minimum, multi-core required
 - **Network**: Internet connection for extensions
 
 **QMOI Integration**:
@@ -68,9 +68,9 @@ QMOI Enhanced operates across 25+ comprehensive platforms, each enhanced for val
 **Architecture**: Windows-native with cross-platform support
 
 **Specifications**:
-- **Memory**: 4GB minimum, 16GB recommended
+- **Memory**: 4GB minimum, 16GB required
 - **Storage**: 20GB installation, expandable workspace
-- **CPU**: Quad-core minimum, high-performance recommended
+- **CPU**: Quad-core minimum, high-performance required
 - **Network**: High-speed internet for cloud features
 
 **QMOI Integration**:
@@ -100,7 +100,7 @@ QMOI Enhanced operates across 25+ comprehensive platforms, each enhanced for val
 **Architecture**: Cross-platform (Windows/macOS/Linux)
 
 **Specifications**:
-- **Memory**: 512MB minimum, 2GB recommended
+- **Memory**: 512MB minimum, 2GB required
 - **Storage**: 100MB installation, npm cache management
 - **CPU**: 1GHz minimum, multi-core for parallel processing
 - **Network**: Internet for npm package installation
@@ -132,9 +132,9 @@ QMOI Enhanced operates across 25+ comprehensive platforms, each enhanced for val
 **Architecture**: Cross-platform (Windows/macOS/Linux)
 
 **Specifications**:
-- **Memory**: 1GB minimum, 4GB recommended
+- **Memory**: 1GB minimum, 4GB required
 - **Storage**: 500MB installation, virtual environment management
-- **CPU**: Multi-core recommended for parallel processing
+- **CPU**: Multi-core required for parallel processing
 - **Network**: Internet for pip package installation
 
 **QMOI Integration**:
@@ -168,7 +168,7 @@ QMOI Enhanced operates across 25+ comprehensive platforms, each enhanced for val
 **Architecture**: Cross-platform (Windows/macOS/Linux)
 
 **Specifications**:
-- **Memory**: 8GB minimum, 16GB recommended
+- **Memory**: 8GB minimum, 16GB required
 - **Storage**: 20GB installation, expandable AVD storage
 - **CPU**: Quad-core minimum, high-performance for emulation
 - **Network**: High-speed internet for SDK downloads
@@ -200,7 +200,7 @@ QMOI Enhanced operates across 25+ comprehensive platforms, each enhanced for val
 **Architecture**: macOS-native
 
 **Specifications**:
-- **Memory**: 8GB minimum, 16GB recommended
+- **Memory**: 8GB minimum, 16GB required
 - **Storage**: 30GB installation, expandable simulator storage
 - **CPU**: Multi-core Apple Silicon or Intel
 - **Network**: High-speed internet for updates
@@ -596,8 +596,8 @@ QMOI Enhanced operates across 25+ comprehensive platforms, each enhanced for val
 **Architecture**: x86/x64
 
 **Specifications**:
-- **Memory**: 4GB minimum, 16GB recommended
-- **Storage**: SSD recommended, various sizes
+- **Memory**: 4GB minimum, 16GB required
+- **Storage**: SSD required, various sizes
 - **CPU**: Intel/AMD x86 processors
 - **GPU**: Integrated or dedicated graphics
 
@@ -660,7 +660,7 @@ QMOI Enhanced operates across 25+ comprehensive platforms, each enhanced for val
 **Architecture**: x86/x64, ARM
 
 **Specifications**:
-- **Memory**: 2GB minimum, 8GB recommended
+- **Memory**: 2GB minimum, 8GB required
 - **Storage**: Ext4, Btrfs, various filesystems
 - **CPU**: x86/x64 or ARM processors
 - **Package Manager**: apt, yum, dnf, pacman

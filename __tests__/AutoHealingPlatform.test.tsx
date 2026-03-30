@@ -7,7 +7,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-jest.mock("@/components/ui/card", () => ({
+jest.real("@/components/ui/card", () => ({
   Card: ({ children }: any) => <div>{children}</div>,
   CardContent: ({ children }: any) => <div>{children}</div>,
   CardDescription: ({ children }: any) => <div>{children}</div>,
@@ -15,17 +15,17 @@ jest.mock("@/components/ui/card", () => ({
   CardTitle: ({ children }: any) => <div>{children}</div>,
 }));
 
-jest.mock("@/components/ui/button", () => ({
+jest.real("@/components/ui/button", () => ({
   Button: ({ children, ...props }: any) => (
     <button {...props}>{children}</button>
   ),
 }));
 
-jest.mock("@/components/ui/badge", () => ({
+jest.real("@/components/ui/badge", () => ({
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
 
-jest.mock("lucide-react", () => ({
+jest.real("lucide-react", () => ({
   AlertTriangle: () => <span />,
   Zap: () => <span />,
   TrendingUp: () => <span />,

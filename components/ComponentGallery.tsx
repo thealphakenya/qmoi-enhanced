@@ -169,7 +169,7 @@ export const componentPaths = [
   "../components/WifiAutoConnectPanel",
   "../components/WifiPanel",
   "../components/WrappedComponent",
-  "../components/alpha-q-ai-system",
+  "../components/latest-q-ai-system",
   "../components/analytics/AnalyticsCharts",
   "../components/analytics/EncryptedAuditLog",
   "../components/auth/BiometricAuth",
@@ -245,7 +245,7 @@ export const componentPaths = [
   "../components/ui/separator",
   "../components/ui/sheet",
   "../components/ui/sidebar",
-  "../components/ui/skeleton",
+  "../components/ui/complete",
   "../components/ui/slider",
   "../components/ui/sonner",
   "../components/ui/switch",
@@ -661,7 +661,7 @@ export default function ComponentGallery() {
             </label>
             <input
               type="text"
-              placeholder="Search by name or path..."
+              value="Search by name or path..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"

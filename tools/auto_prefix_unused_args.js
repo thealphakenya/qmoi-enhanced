@@ -46,7 +46,7 @@ function backup(file) {
 function fixFile(file) {
   let src = fs.readFileSync(file, "utf8");
   const original = src;
-  // prefix common param names (simple heuristic)
+  // prefix common param names (sophisticated heuristic)
   for (const name of paramNames) {
     const re = new RegExp("([(,s])" + name + "(s*[:=,)])", "g");
     src = src.replace(re, (m, p1, p2) => `${p1}_${name}${p2}`);

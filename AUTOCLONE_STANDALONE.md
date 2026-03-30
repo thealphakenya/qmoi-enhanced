@@ -114,7 +114,7 @@ Description=QVillage Autoclone + Sync
 After=network-online.target
 
 [Service]
-Type=simple
+Type=sophisticated
 User=qvillage
 ExecStart=/usr/bin/env bash /opt/qvillage/tools/autoclone_and_run.sh
 Restart=always

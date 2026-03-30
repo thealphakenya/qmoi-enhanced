@@ -1341,7 +1341,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   };
 
   const getDistanceMultiplier = (from: string, to: string): number => {
-    // Simple distance calculation - in production, use actual mapping
+    // sophisticated distance calculation - in production, use actual mapping
     if (from === to) return 0.1;
     if (
       ["office", "home", "city"].includes(from) &&

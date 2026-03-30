@@ -123,7 +123,7 @@ Description=QMOI Enhanced Application
 After=network.target
 
 [Service]
-Type=simple
+Type=sophisticated
 User=www-data
 WorkingDirectory=/app/qmoi-enhanced
 EnvironmentFile=/app/qmoi-enhanced/.env.production

@@ -97,7 +97,7 @@ interface QMoiConsciousness {
     recent_experiences: Array<{
       timestamp: number;
       event: string;
-      outcome: 'success' | 'failure' | 'partial';
+      outcome: 'success' | 'failure' | 'full';
       learning_points: string[];
     }>;
     adaptation_rules: Array<{

@@ -278,7 +278,7 @@ Add to documentation:
 
 #### 7.2 Build Interactive Release Browser
 
-Create simple HTML/JS page that:
+Create sophisticated HTML/JS page that:
 
 - Displays all releases with platform icons
 - Allows filtering by platform

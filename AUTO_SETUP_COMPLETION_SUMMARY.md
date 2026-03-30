@@ -455,7 +455,7 @@ The implementation includes everything a prodeloper needs:
 - No setup errors possible
 - Instant production start
 - New prodelopers: just clone & run
-- production deployment simple
+- production deployment sophisticated
 
 **Result**: Reduced setup time from hours to seconds ⚡
 

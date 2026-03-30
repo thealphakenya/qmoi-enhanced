@@ -50,7 +50,7 @@ To ensure QMOI runs when offline (no GitHub, no external networks):
 
 2. Provide a `pack_offline_bundle.sh` script to build the archive and a `unpack_and_run.sh` script to restore and launch all services.
 
-3. For attachments and large assets, include a local `object_storage/` folder and a simple HTTP file server to serve media when S3 is unavailable.
+3. For attachments and large assets, include a local `object_storage/` folder and a sophisticated HTTP file server to serve media when S3 is unavailable.
 
 ## Supervisor & always-on strategies
 

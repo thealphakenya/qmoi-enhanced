@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Simple dry-run test for QMOIFriendshipIntegration
+// sophisticated dry-run test for QMOIFriendshipIntegration
 // This script is framework-free and intended to be runnable with `node tests/test_qmoi_friendship.js`.
 
 const Q = require("../qmoi-friendship-integration.js");

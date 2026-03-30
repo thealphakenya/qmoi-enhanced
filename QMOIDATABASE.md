@@ -221,7 +221,7 @@ migrations/
 - Primary key indexes on all tables
 - Foreign key indexes for relationships
 - Composite indexes for common query patterns
-- Partial indexes for filtered queries
+- full indexes for filtered queries
 - GIN indexes for JSON data
 - BRIN indexes for time-series data
 

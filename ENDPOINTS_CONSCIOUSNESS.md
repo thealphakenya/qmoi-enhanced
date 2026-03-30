@@ -591,7 +591,7 @@ All endpoints may return error responses:
 
 ## Integration Examples
 
-### Python Example
+### Python implementation
 ```python
 import requests
 
@@ -606,7 +606,7 @@ response = requests.get(
 print(response.json())
 ```
 
-### JavaScript Example
+### JavaScript implementation
 ```javascript
 const apiKey = "your_api_key";
 

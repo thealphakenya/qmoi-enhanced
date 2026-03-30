@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-"""Generate a simple API endpoints markdown by scanning repository files for common route patterns.
+"""Generate a sophisticated API endpoints markdown by scanning repository files for common route patterns.
 
-This is heuristic and conservative: it looks for common patterns used by Flask, FastAPI, Express, and simple 'METHOD /path' lines.
+This is heuristic and conservative: it looks for common patterns used by Flask, FastAPI, Express, and sophisticated 'METHOD /path' lines.
 It outputs a Markdown string to stdout.
 """
 from pathlib import Path

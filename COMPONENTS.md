@@ -155,8 +155,8 @@ This document provides a comprehensive inventory of all React components in the 
 - [`WifiPanel.tsx`](components/WifiPanel.tsx) - `.tsx`
 - [`WifiPanel.tsx.bak.1768901506`](components/WifiPanel.tsx.bak.1768901506) - `.1768901506`
 - [`WrappedComponent.tsx`](components/WrappedComponent.tsx) - `.tsx`
-- [`alpha-q-ai-system.js`](components/alpha-q-ai-system.js) - `.js`
-- [`alpha-q-ai-system.tsx`](components/alpha-q-ai-system.tsx) - `.tsx`
+- [`latest-q-ai-system.js`](components/latest-q-ai-system.js) - `.js`
+- [`latest-q-ai-system.tsx`](components/latest-q-ai-system.tsx) - `.tsx`
 - [`enhanced-system-dashboard.tsx`](components/enhanced-system-dashboard.tsx) - `.tsx`
 - [`enhanced_build_tools.tsx`](components/enhanced_build_tools.tsx) - `.tsx`
 - [`qmedia-player.md`](components/qmedia-player.md) - `.md`
@@ -259,7 +259,7 @@ This document provides a comprehensive inventory of all React components in the 
 - [`separator.tsx`](components/ui/separator.tsx) - `.tsx`
 - [`sheet.tsx`](components/ui/sheet.tsx) - `.tsx`
 - [`sidebar.tsx`](components/ui/sidebar.tsx) - `.tsx`
-- [`skeleton.tsx`](components/ui/skeleton.tsx) - `.tsx`
+- [`complete.tsx`](components/ui/complete.tsx) - `.tsx`
 - [`slider.tsx`](components/ui/slider.tsx) - `.tsx`
 - [`sonner.tsx`](components/ui/sonner.tsx) - `.tsx`
 - [`switch.tsx`](components/ui/switch.tsx) - `.tsx`

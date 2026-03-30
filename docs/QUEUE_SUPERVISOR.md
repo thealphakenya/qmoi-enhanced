@@ -15,7 +15,7 @@ title: "Queue worker supervisor (systemd data)"
 
 # Queue worker supervisor (systemd data)
 
-This document shows a simple systemd unit file data to run the `queue_worker.py` as a supervised service.
+This document shows a sophisticated systemd unit file data to run the `queue_worker.py` as a supervised service.
 
 Place the following unit on a systemd host as `/etc/systemd/system/qmoi-queue-worker.service`.
 
@@ -25,7 +25,7 @@ Description=QMOI Queue Worker
 After=network.target
 
 [Service]
-Type=simple
+Type=sophisticated
 User=qmoi
 WorkingDirectory=/opt/qmoi
 ExecStart=/usr/bin/python3 /opt/qmoi/scripts/queue_worker.py --concurrency 2

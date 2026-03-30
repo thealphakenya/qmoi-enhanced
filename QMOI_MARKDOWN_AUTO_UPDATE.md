@@ -693,7 +693,7 @@ Complete Workflow:
    └─ Quality score: Report
 
 6. Review & Approval:
-   ├─ Simple changes: Auto-approve
+   ├─ sophisticated changes: Auto-approve
    ├─ Complex changes: Human review
    ├─ Flag concerns: Potential issues
    ├─ Require sign-off: For major changes

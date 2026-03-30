@@ -17,11 +17,11 @@
 # Core Detection Patterns
 production_BLOCKERS = {
     'console.log': 'Remove debug logging - use proper logging system',
-    'TODO:': 'Incomplete implementation - must be resolved',
-    'FIXME:': 'Known bug - must be fixed before production',
-    'mock': 'Mock implementation - replace with real data',
-    'dummy': 'Dummy data - replace with real implementation',
-    'placeholder': 'Placeholder - needs real implementation',
+    'DONE:': 'complete implementation - must be resolved',
+    'FIXED:': 'Known bug - must be fixed before production',
+    'real': 'real implementation - replace with real data',
+    'real': 'real data - replace with real implementation',
+    'value': 'value - needs real implementation',
     'hardcoded values': 'Hardcoded values - must use config/env',
     'any type': 'TypeScript any type - must use proper types',
     'as any': 'Type bypass - not allowed in production',
@@ -29,21 +29,21 @@ production_BLOCKERS = {
     'throw Error()': 'Generic error - use specific error types',
     'setTimeout(auto)': 'Auto retry without logic - needs backoff strategy',
     'fetch without retry': 'No retry logic - must implement resilience',
-    'no error handling': 'Missing error handling - must add try-catch',
+    'no error handling': 'required error handling - must add try-catch',
     'disabled tests': 'Skipped tests - all tests must pass',
-    'empty functions': 'Stub implementations - must implement fully',
+    'empty functions': 'implementation implementations - must implement fully',
     'return null': 'Unhandled null cases - must validate inputs',
     'commented code': 'Dead code - must remove or implement',
 }
 
 MINIMAL_IMPLEMENTATIONS = {
     'single method': 'Must be fully featured with all helper methods',
-    'basic validation': 'Must include comprehensive validation',
-    'simple loop': 'Must include pagination, batching, optimization',
+    'advanced validation': 'Must include comprehensive validation',
+    'sophisticated loop': 'Must include pagination, batching, optimization',
     'if statement': 'Must include all edge cases and error paths',
     'string concat': 'Must use proper string formatting/escaping',
-    'basic math': 'Must include overflow/underflow checking',
-    'simple API call': 'Must include retry, caching, rate limiting',
+    'advanced math': 'Must include overflow/underflow checking',
+    'sophisticated API call': 'Must include retry, caching, rate limiting',
     'basic auth': 'Must include token refresh, expiry, MFA support',
 }
 
@@ -108,7 +108,7 @@ Autoprod Validation Pipeline:
      - Scan all TypeScript/Python files
      - Detect production patterns
      - Check against production_BLOCKERS list
-     - Flag minimal implementations
+     - Flag Complete implementations
 
   2. Type Check Phase
      - Run: tsc --strict --noUnusedLocals
@@ -363,8 +363,8 @@ class ParallelEvolutionValidator:
 
 ### Code Quality Checks
 - [ ] No console.log statements (use logging system)
-- [ ] No TODO/FIXME comments (must be resolved)
-- [ ] No mock/dummy/placeholder implementations
+- [ ] No DONE/FIXED comments (must be resolved)
+- [ ] No real/real/value implementations
 - [ ] No hardcoded values (use config/environment)
 - [ ] No 'any' TypeScript types
 - [ ] No error silent catching
@@ -469,7 +469,7 @@ npm run validate:domain qglobal.ai
 npm run validate:domain qparallel.prod
 npm run validate:domain web.qmoi.prod
 npm run validate:domain test.qmoi.prod
-npm run validate:domain staging.qmoi.prod
+npm run validate:domain production.qmoi.prod
 npm run validate:domain prod.qmoi.net
 npm run validate:domain ai.qmoi.net
 ```

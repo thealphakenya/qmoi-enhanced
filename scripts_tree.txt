@@ -134,7 +134,7 @@ scripts/
 ├── deploy-docker.sh
 ├── deploy-prod.sh
 ├── deploy-production.sh
-├── deploy-simple.sh
+├── deploy-sophisticated.sh
 ├── deploy.py
 ├── deploy_huggingface.js
 ├── deployment
@@ -147,7 +147,7 @@ scripts/
 ├── deployment-error-handler.js
 ├── deployment-monitor.sh
 ├── dev-healthcheck.sh
-├── dev-placeholder.js
+├── dev-value.js
 ├── device_orchestration_manager.py
 ├── device_orchestration_manager.test.py
 ├── device_ownership_detector.py

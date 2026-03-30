@@ -53,9 +53,9 @@ def bitget_request(method, path, body_obj=None):
     resp.raise_for_status()
     return resp.json()
 
-# --- AI confidence calculation using simple technical indicators ---
+# --- AI confidence calculation using sophisticated technical indicators ---
 def calculate_confidence(market_data):
-    # Use moving average and volatility as a simple confidence metric
+    # Use moving average and volatility as a sophisticated confidence metric
     prices = [x['close'] for x in market_data[-10:]]
     if len(prices) < 2:
         return 0.5

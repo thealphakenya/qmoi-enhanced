@@ -7,35 +7,35 @@ import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-jest.mock("@/components/ui/card", () => ({
+jest.real("@/components/ui/card", () => ({
   Card: ({ children }: any) => <div>{children}</div>,
   CardContent: ({ children }: any) => <div>{children}</div>,
   CardDescription: ({ children }: any) => <div>{children}</div>,
   CardHeader: ({ children }: any) => <div>{children}</div>,
   CardTitle: ({ children }: any) => <div>{children}</div>,
 }));
-jest.mock("@/components/ui/button", () => ({
+jest.real("@/components/ui/button", () => ({
   Button: ({ children, ...props }: any) => (
     <button {...props}>{children}</button>
   ),
 }));
-jest.mock("@/components/ui/badge", () => ({
+jest.real("@/components/ui/badge", () => ({
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
-jest.mock("@/components/ui/input", () => ({
+jest.real("@/components/ui/input", () => ({
   Input: ({ ...props }: any) => <input {...props} />,
 }));
-jest.mock("@/components/ui/textarea", () => ({
+jest.real("@/components/ui/textarea", () => ({
   Textarea: ({ ...props }: any) => <textarea {...props} />,
 }));
-jest.mock("@/components/ui/tabs", () => ({
+jest.real("@/components/ui/tabs", () => ({
   Tabs: ({ children }: any) => <div>{children}</div>,
   TabsContent: ({ children }: any) => <div>{children}</div>,
   TabsList: ({ children }: any) => <div>{children}</div>,
   TabsTrigger: ({ children }: any) => <div>{children}</div>,
 }));
 
-jest.mock("lucide-react", () => ({
+jest.real("lucide-react", () => ({
   Search: () => <span />,
   BookOpen: () => <span />,
   Link2: () => <span />,

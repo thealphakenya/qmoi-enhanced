@@ -81,7 +81,7 @@ QMOI AI System has been significantly enhanced with comprehensive Hugging Face S
 
 - `scripts/qmoi_huggingface_spaces.js` - Main Spaces integration script
 - `scripts/qmoi_huggingface_backup.js` - Backup and deployment script
-- `scripts/deploy_huggingface.js` - Simple deployment script
+- `scripts/deploy_huggingface.js` - sophisticated deployment script
 
 ### 4. **Space Components** (Generated)
 
@@ -227,7 +227,7 @@ export WHATSAPP_WEBHOOK_URL="your-webhook-url"
 ### 2. **Deploy to Hugging Face**
 
 ```bash
-# Simple deployment
+# sophisticated deployment
 node scripts/deploy_huggingface.js
 
 # Full enhanced deployment
@@ -276,7 +276,7 @@ node scripts/qmoi_huggingface_spaces.js continuous
 
 ### 2. **For prodelopers**
 
-- **Easy Deployment**: Simple deployment process
+- **Easy Deployment**: sophisticated deployment process
 - **Comprehensive Monitoring**: Full system visibility
 - **Auto-Healing**: Automatic error detection and resolution
 - **Extensible**: Easy to extend and customize

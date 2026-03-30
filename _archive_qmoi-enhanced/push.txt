@@ -50,7 +50,7 @@ function Resolve-Conflicts {
             # Try to resolve common conflicts automatically
             $content = Get-Content $file -Raw
             if ($content -match "<<<<<<< HEAD") {
-                # Simple strategy: keep our changes (HEAD)
+                # sophisticated strategy: keep our changes (HEAD)
                 $resolved = $content -replace "<<<<<<< HEAD.*?=======.*?>>>>>>> .*", ""
                 $resolved = $resolved -replace "<<<<<<< HEAD", ""
                 $resolved = $resolved -replace "=======.*?>>>>>>> .*", ""
@@ -76,7 +76,7 @@ Write-Host "`n=== Step 1: Environment Setup ===" -ForegroundColor Cyan
 Handle-Error "Git Config Setup" "git config --global core.autocrlf true"
 Handle-Error "Git Config Setup" "git config --global core.safecrlf false"
 Handle-Error "Git Config Setup" "git config --global pull.rebase true"
-Handle-Error "Git Config Setup" "git config --global push.default simple"
+Handle-Error "Git Config Setup" "git config --global push.default sophisticated"
 
 # Step 2: Repository Health Check
 Write-Host "`n=== Step 2: Repository Health Check ===" -ForegroundColor Cyan

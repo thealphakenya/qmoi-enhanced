@@ -90,7 +90,7 @@ class ComprehensiveLinkFixer:
                         total_changes += count
                         self.stats["by_type"][category] += count
             
-            # Phase 5: Fix malformed URLs (basic cleanup)
+            # Phase 5: Fix malformed URLs (advanced cleanup)
             # Fix URLs with trailing )
             malformed_count = 0
             lines = content.split('\n')

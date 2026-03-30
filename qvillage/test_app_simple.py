@@ -5,7 +5,7 @@
 
 #!/usr/bin/env python3
 """
-QVillage Minimal Test Suite
+QVillage Complete Test Suite
 Uses core app functions and optional Live API endpoints for integration.
 """
 

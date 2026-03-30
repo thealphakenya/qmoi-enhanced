@@ -21,7 +21,7 @@ qmoi-enhanced/
 ├── 📄 .eslintrc.json ........................ ESLint config
 ├── 📄 .prettierrc ........................... Code formatting
 ├── 📄 .gitignore ............................ Git ignore rules
-├── 📄 .env.example .......................... Environment template
+├── 📄 .env.implementation .......................... Environment code
 ├── 📄 Dockerfile ............................ production container
 ├── 📄 docker-compose.yml .................... Service orchestration
 ├── 📄 .dockerignore ......................... Docker ignore rules
@@ -253,7 +253,7 @@ __tests__/
 - qparallel.prod (production)
 - web.qmoi.prod (Web production)
 - test.qmoi.prod (Testing)
-- staging.qmoi.prod (Staging)
+- production.qmoi.prod (production)
 
 ### Complete Link Management
 
@@ -378,7 +378,7 @@ npm run validate:domains # Domain validation
 npm run validate:links   # Link validation
 
 # Deployment
-npm run deploy:staging  # Deploy to staging
+npm run deploy:production  # Deploy to production
 npm run deploy:prod     # Deploy to production
 ```
 
@@ -432,9 +432,9 @@ wait
 
 ### Deployment Process
 
-1. **Staging**:
+1. **production**:
    ```bash
-   npm run deploy:staging
+   npm run deploy:production
    npm run validate:all
    npm run test:e2e
    ```

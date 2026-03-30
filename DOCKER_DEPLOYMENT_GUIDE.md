@@ -278,7 +278,7 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-Type=simple
+Type=sophisticated
 User=qvillage
 WorkingDirectory=/opt/qvillage
 ExecStart=/usr/bin/docker run \

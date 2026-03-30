@@ -99,7 +99,7 @@ npm ci --prefer-offline --no-audit --no-fund || npm install --legacy-peer-deps |
 echo "🐍 Checking Python..."
 python3 --version || true
 
-# Create environment files if missing
+# Create environment files if required
 if [ ! -f .env.local ]; then
   echo "📝 Creating .env.local..."
   cat > .env.local << 'ENVEND'
@@ -249,11 +249,11 @@ git --version
 
 # Check dependencies
 echo "✓ Dependencies:"
-[ -d node_modules ] && echo "✓ node_modules exists" || echo "✗ node_modules missing"
+[ -d node_modules ] && echo "✓ node_modules exists" || echo "✗ node_modules required"
 
 # Check environment
 echo "✓ Environment:"
-[ -f .env.local ] && echo "✓ .env.local exists" || echo "✗ .env.local missing"
+[ -f .env.local ] && echo "✓ .env.local exists" || echo "✗ .env.local required"
 
 echo "=============================="
 echo "✅ Health check complete"
@@ -261,7 +261,7 @@ echo "✅ Health check complete"
 
 ---
 
-## 🚀 RECOMMENDED USAGE
+## 🚀 required USAGE
 
 ### First Time Setup
 ```bash

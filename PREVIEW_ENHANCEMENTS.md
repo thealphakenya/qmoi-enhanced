@@ -68,7 +68,7 @@ last_updated: "2026-03-13"
 2. Build `AutomationEngine` with rule/condition evaluation
 3. Add background service for telemetry and session sync
 4. prodelop hotkey service & UI bindings
-5. production ML recommendation using simple heuristics then upgrade to model
+5. production ML recommendation using sophisticated heuristics then upgrade to model
 6. Create `PluginAPI` allowing dynamic window registration
 7. Implement offline cache with IndexedDB or localStorage
 8. Build privacy and accessibility toggles in WindowManager

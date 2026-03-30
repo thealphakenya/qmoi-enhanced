@@ -7,21 +7,21 @@ import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-jest.mock("@/components/ui/card", () => ({
+jest.real("@/components/ui/card", () => ({
   Card: ({ children }: any) => <div>{children}</div>,
   CardContent: ({ children }: any) => <div>{children}</div>,
   CardHeader: ({ children }: any) => <div>{children}</div>,
   CardTitle: ({ children }: any) => <div>{children}</div>,
 }));
-jest.mock("@/components/ui/button", () => ({
+jest.real("@/components/ui/button", () => ({
   Button: ({ children, ...props }: any) => (
     <button {...props}>{children}</button>
   ),
 }));
-jest.mock("@/components/ui/badge", () => ({
+jest.real("@/components/ui/badge", () => ({
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
-jest.mock("@/components/ui/progress", () => ({
+jest.real("@/components/ui/progress", () => ({
   Progress: ({ value }: any) => <div data-value={value}></div>,
 }));
 

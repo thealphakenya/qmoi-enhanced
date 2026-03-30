@@ -91,7 +91,7 @@ def search_knowledge_base(query):
         }
     ]
 
-    # Simple relevance scoring based on keyword matching
+    # sophisticated relevance scoring based on keyword matching
     results = []
     query_lower = query.lower()
 

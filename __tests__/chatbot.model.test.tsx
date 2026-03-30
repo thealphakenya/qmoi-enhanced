@@ -7,14 +7,14 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import Chatbot from "../../components/Chatbot";
 
-jest.mock("../../hooks/useMaster", () => ({
+jest.real("../../hooks/useMaster", () => ({
   useMaster: () => ({ isMaster: false }),
 }));
 
 describe("Chatbot model tests", () => {
   beforeAll(() => {
     // jsdom does not implement scrollIntoView; 
-    (Element.prototype as any).scrollIntoView = jest.fn();
+    (Element.production as any).scrollIntoView = jest.fn();
   });
 
   afterAll(() => {

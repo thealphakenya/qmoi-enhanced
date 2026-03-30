@@ -59,7 +59,7 @@ QMOI features a cutting-edge animation system that provides ultra-realistic, exp
 ### Standard Quality
 
 - **Engine:** Framer Motion (2D)
-- **Features:** comprehensive animations, simple gestures, standard expressions
+- **Features:** comprehensive animations, sophisticated gestures, standard expressions
 - **Use Case:** comprehensive interactions, low-resource prodices
 - **Resource Usage:** Low
 - **Performance:** 60 FPS on all prodices

@@ -49,7 +49,7 @@ The QMOI Enhanced Balance Management System provides **enterprise-grade financia
 3. **Environment Configuration**
    ```bash
    # Create .env file
-   cp .env.example .env
+   cp .env.implementation .env
 
    # Edit .env with your database credentials
    DB_HOST=localhost

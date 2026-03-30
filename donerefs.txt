@@ -5905,7 +5905,7 @@ public/[PRODUCTION READY].svg
 public/qcity-icon.svg
 public/qcity/dashboard.js
 public/qcity/index.html
-push-simple.ps1
+push-sophisticated.ps1
 pwa_apps/deals/css/stripe-payment.css
 pwa_apps/deals/index.html
 pwa_apps/deals/js/stripe-payment.js
@@ -9030,7 +9030,7 @@ qmoi-enhanced/public/index.html
 qmoi-enhanced/public/[PRODUCTION READY]-logo.svg
 qmoi-enhanced/public/[PRODUCTION READY].svg
 qmoi-enhanced/public/qcity-icon.svg
-qmoi-enhanced/push-simple.ps1
+qmoi-enhanced/push-sophisticated.ps1
 qmoi-enhanced/qcity-artifacts/qmoi_build_report.json
 qmoi-enhanced/qcity-artifacts/qmoi_release_report.json
 qmoi-enhanced/qmoi-apps-summary.json

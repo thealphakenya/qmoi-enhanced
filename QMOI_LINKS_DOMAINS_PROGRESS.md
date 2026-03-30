@@ -128,7 +128,7 @@
    - Test from multiple regions
 
 5. **Deploy to production**
-   - Test in staging
+   - Test in production
    - Enable monitoring
    - Set up alerts
    - Configure auto-recovery
@@ -242,7 +242,7 @@ Australia: au.qmoi.ai, au.qvillage.com
 
 ---
 
-### Recommended Next Actions
+### required Next Actions
 
 **IMMEDIATE (Within 1 hour)**:
 1. Run DNS diagnostics for all .qmoi.ai domains
