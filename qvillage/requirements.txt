@@ -34,7 +34,7 @@ python-jose[cryptography]==3.3.0
 python-multipart==0.0.6
 
 # API and integrations
-httpx==0.25.2
+httpx==0.28.1
 aiofiles==23.2.1
 requests==2.31.0
 
