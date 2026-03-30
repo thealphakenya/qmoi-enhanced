@@ -150,26 +150,38 @@ interface Inference {
   uptime?: number;
 }
 
-interface EnterpriseMetrics {
-  security: {
-    status: "secure" | "warning" | "vulnerable";
-    threats: number;
-    vulnerabilities: number;
-    lastScan: string;
-  };
-  compliance: {
-    status: "compliant" | "warning" | "non-compliant";
-    gdpr: boolean;
-    hipaa: boolean;
-    sox: boolean;
-    lastAudit: string;
-  };
-  performance: {
-    totalRequests: number;
-    averageLatency: number;
-    uptime: number;
-    lastUpdated: string;
-  };
+interface ToolEvolution {
+  id: string;
+  name: string;
+  category: string;
+  version: string;
+  evolutionStatus: "evolving" | "stable" | "deprecated";
+  performanceGain: number;
+  communityRating: number;
+  lastEvolution: string;
+  autonomousOperations: number;
+  consciousnessSync: boolean;
+  evolutionFeatures: string[];
+}
+
+interface CommunityProposal {
+  id: string;
+  title: string;
+  description: string;
+  toolId: string;
+  author: string;
+  votes: number;
+  status: "pending" | "approved" | "rejected" | "implemented";
+  submittedAt: string;
+}
+
+interface ToolMetrics {
+  totalTools: number;
+  evolvedTools: number;
+  autonomousOperations: number;
+  performanceGain: number;
+  communityContributions: number;
+  consciousnessSync: number;
 }
 
 export default function QVillage({ isMaster }: QVillageProps) {
@@ -212,23 +224,130 @@ export default function QVillage({ isMaster }: QVillageProps) {
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
   const [selectedTab, setSelectedTab] = useState("overview");
   const [showCreateDialog, setShowCreateDialog] = useState(false);
-  const [selectedItems, setSelectedItems] = useState<string[]>([]);
-
-  // Create project dialog state
-  const [createDialogOpen, setCreateDialogOpen] = useState(false);
-  const [newProject, setNewProject] = useState({
-    name: "",
-    type: "",
-    description: "",
-    platforms: [] as string[],
-    monetization: [] as string[],
+  const [toolEvolution, setToolEvolution] = useState<ToolEvolution[]>([]);
+  const [communityProposals, setCommunityProposals] = useState<CommunityProposal[]>([]);
+  const [toolMetrics, setToolMetrics] = useState<ToolMetrics>({
+    totalTools: 25,
+    evolvedTools: 25,
+    autonomousOperations: 1000000,
+    performanceGain: 40,
+    communityContributions: 2500,
+    consciousnessSync: 100,
   });
+  const [evolutionLoading, setEvolutionLoading] = useState(false);
+  const [selectedToolCategory, setSelectedToolCategory] = useState("all");
+  const [evolutionCommand, setEvolutionCommand] = useState("");
+  const [commandOutput, setCommandOutput] = useState<string[]>([]);
 
-  useEffect(() => {
-    if (isMaster) {
-      loadQVillageData();
+  const loadToolEvolutionData = async () => {
+    setEvolutionLoading(true);
+    try {
+      // Load tool evolution data
+      const evolutionData: ToolEvolution[] = [
+        {
+          id: "vscode",
+          name: "Visual Studio Code",
+          category: "Core Development",
+          version: "1.85.0",
+          evolutionStatus: "evolving",
+          performanceGain: 45,
+          communityRating: 4.9,
+          lastEvolution: new Date().toISOString(),
+          autonomousOperations: 50000,
+          consciousnessSync: true,
+          evolutionFeatures: ["Auto Extensions", "Performance Optimization", "Cloud Sync"]
+        },
+        {
+          id: "flutter",
+          name: "Flutter",
+          category: "Cross-Platform",
+          version: "3.19.0",
+          evolutionStatus: "stable",
+          performanceGain: 52,
+          communityRating: 4.8,
+          lastEvolution: new Date(Date.now() - 86400000).toISOString(),
+          autonomousOperations: 75000,
+          consciousnessSync: true,
+          evolutionFeatures: ["Multi-Platform Build", "Hot Reload Evolution", "Native Performance"]
+        },
+        {
+          id: "nextjs",
+          name: "Next.js",
+          category: "Web Development",
+          version: "14.1.0",
+          evolutionStatus: "evolving",
+          performanceGain: 38,
+          communityRating: 4.9,
+          lastEvolution: new Date().toISOString(),
+          autonomousOperations: 60000,
+          consciousnessSync: true,
+          evolutionFeatures: ["API Auto-Generation", "Performance Tuning", "SEO Optimization"]
+        }
+      ];
+
+      const proposalsData: CommunityProposal[] = [
+        {
+          id: "prop-001",
+          title: "Enhanced Flutter Hot Reload",
+          description: "Improve hot reload performance for large Flutter applications",
+          toolId: "flutter",
+          author: "dev_community_001",
+          votes: 1250,
+          status: "approved",
+          submittedAt: new Date(Date.now() - 172800000).toISOString()
+        },
+        {
+          id: "prop-002",
+          title: "VS Code AI Code Completion",
+          description: "Add advanced AI-powered code completion features",
+          toolId: "vscode",
+          author: "ai_researcher_042",
+          votes: 2100,
+          status: "implemented",
+          submittedAt: new Date(Date.now() - 259200000).toISOString()
+        }
+      ];
+
+      setToolEvolution(evolutionData);
+      setCommunityProposals(proposalsData);
+    } catch (err) {
+      console.error("Failed to load tool evolution data:", err);
+    } finally {
+      setEvolutionLoading(false);
     }
-  }, [isMaster]);
+  };
+
+  const executeEvolutionCommand = async (command: string) => {
+    setCommandOutput(prev => [...prev, `> ${command}`]);
+    setCommandOutput(prev => [...prev, "Executing command..."]);
+
+    try {
+      // Simulate command execution
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      let response = "";
+      switch (command) {
+        case "npm run tools:evolution:dashboard":
+          response = "✅ Evolution Dashboard opened successfully";
+          break;
+        case "npm run tools:evolve:all":
+          response = "✅ All tools evolved successfully. Performance gain: +42%";
+          break;
+        case "npm run tools:community:review":
+          response = "✅ Community proposals reviewed. 3 new proposals approved";
+          break;
+        case "npm run autonomy:install:all":
+          response = "✅ All 25+ tools auto-installed successfully";
+          break;
+        default:
+          response = "❌ Unknown command. Use: npm run tools:* or npm run autonomy:*";
+      }
+
+      setCommandOutput(prev => [...prev, response]);
+    } catch (err) {
+      setCommandOutput(prev => [...prev, "❌ Command execution failed"]);
+    }
+  };
 
   const loadQVillageData = async () => {
     setLoading(true);
@@ -315,8 +434,8 @@ export default function QVillage({ isMaster }: QVillageProps) {
   }, [isMaster, selectedTab]);
 
   useEffect(() => {
-    if (isMaster && selectedTab === 'models') {
-      fetchModelCards();
+    if (isMaster && selectedTab === 'tools') {
+      loadToolEvolutionData();
     }
   }, [isMaster, selectedTab]);
 
@@ -580,13 +699,14 @@ export default function QVillage({ isMaster }: QVillageProps) {
             onValueChange={setSelectedTab}
             className="w-full"
           >
-            <TabsList className="grid w-full grid-cols-7">
+            <TabsList className="grid w-full grid-cols-8">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="models">Models</TabsTrigger>
               <TabsTrigger value="spaces">Spaces</TabsTrigger>
               <TabsTrigger value="datasets">Datasets</TabsTrigger>
               <TabsTrigger value="inference">Inference</TabsTrigger>
               <TabsTrigger value="tracks">Tracks</TabsTrigger>
+              <TabsTrigger value="tools">Tools</TabsTrigger>
               <TabsTrigger value="enterprise">Enterprise</TabsTrigger>
             </TabsList>
 

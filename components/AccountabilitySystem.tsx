@@ -264,7 +264,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
         headers: {
           "Content-Type": "application/json",
           "x-qmoi-master": "true", // For now, allow all users to log
-        },
+        }, 
         body: JSON.stringify({
           logAction: true,
           userId: currentUserId || "anonymous",
