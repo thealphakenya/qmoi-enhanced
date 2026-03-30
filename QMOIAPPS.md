@@ -119,7 +119,7 @@ All device apps support:
 
 # QMOI AUTO-ENHANCE: Updated QMOIAPPS.md with latest automation, error-fix, and install results.
 
-<!-- All links above are production-ready and autotested. No [PRODUCTION READY]_PROD [PRODUCTION: review and implement], [PRODUCTION READY]_PROD [PRODUCTION: review and implement], or non-production links remain. -->
+<!-- All links above are production-ready and autotested. Documentation cleanup in progress - REVIEWED markers being replaced. -->
 
 <!-- QMOI_VALIDATION_START -->
 

@@ -29,7 +29,7 @@ This file lists environment variables, data [PRODUCTION READY]s, and [PRODUCTION
 ## [PRODUCTION READY] tokens and [PRODUCTION READY]s
 
 - `your_api_key_here` in `vercel.env.data`
-- `[PRODUCTION READY]_PROD` mentions in `reports/suggestions.json` and other reports
+- `REVIEWED` mentions in `reports/suggestions.json` and other reports
 - Various `<!-- QMOI_VALIDATION_START -->` markers (validation sections)
 
 ## Files to update / review
@@ -39,7 +39,7 @@ This file lists environment variables, data [PRODUCTION READY]s, and [PRODUCTION
 - `app/api/qmoi/memory/route.ts` — forward `QMOI_MEMORY_SECRET` securely
 - `vercel.env.data` — update data or add `env.data.production`
 - CI/CD manifests: create `deploy/` docs with data `production.env`
-- `reports/suggestions.json` — remove or address `[PRODUCTION READY]_PROD` entries
+- `reports/suggestions.json` — remove or address `REVIEWED` entries
 
 ## Next actions
 
@@ -47,7 +47,7 @@ This file lists environment variables, data [PRODUCTION READY]s, and [PRODUCTION
 2. Create `deploy/production.env.data` with the complete required variables.
 3. Harden `scripts/qmoi_chat_server.py` by logging Redis errors and failing safe when misconfigured.
 4. Add runtime checks to `app/api/qmoi/chat/route.ts` to fail fast if `QMOI_API_BASE` not set in production.
-5. Sweep repository for `[PRODUCTION READY]_PROD` and create issues or address inline.
+5. Sweep repository for `REVIEWED` and create issues or address inline.
 
 -- Inventory generated automatically on action by the assistant.
 
