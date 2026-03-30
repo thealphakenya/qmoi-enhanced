@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "ALL CLONED RELEASES (generated 2025-10-31T01:33:35.075484Z)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -56,7 +56,7 @@ This file lists discovered release status for platforms.
 
 ### Unlimited Cloning Capabilities
 
-- **Infinite Clones:** Unlimited device and system cloning instances
+- **Infinite Clones:** Unlimited prodice and system cloning instances
 - **Instant Replication:** One-click cloning with full state preservation
 - **Multi-Platform Cloning:** Cloning across all supported platforms
 - **Versioned Clones:** Complete version control for cloned instances
@@ -70,7 +70,7 @@ This file lists discovered release status for platforms.
 - **Automated Management:** Self-managing clone lifecycle operations
 - **Master Control:** Exclusive master user control over cloning
 
-### Cloned Device Synchronization & Updates
+### Cloned prodice Synchronization & Updates
 
 - **Real-Time Sync:** Instant synchronization across all clones
 - **Automated Updates:** Automatic update propagation to all clones

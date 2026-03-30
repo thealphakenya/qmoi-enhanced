@@ -1,6 +1,6 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 c---
-title: "AU[PRODUCTION READY]WNLOAD.md"
+title: "AU[production READY]WNLOAD.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 
 ---
@@ -15,19 +15,19 @@ title: "AU[PRODUCTION READY]WNLOAD.md"
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# AU[PRODUCTION READY]WNLOAD.md
+# AU[production READY]WNLOAD.md
 
-## QMOI App Au[PRODUCTION READY]wnload System
+## QMOI App Au[production READY]wnload System
 
 ### Overview
 
-This document describes the fully automated system for downloading and organizing all QMOI apps for every supported device and platform. The system ensures all apps are always available, up to date, and saved in their required directories, with no manual intervention required.
+This document describes the fully automated system for downloading and organizing all QMOI apps for every supported prodice and platform. The system ensures all apps are always available, up to date, and saved in their required directories, with no manual intervention required.
 
 ### Features
 
-- **Au[PRODUCTION READY]wnload All Apps:** Automatically downloads every app listed in QMOIAPPS.md and README.md for all platforms/devices.
+- **Au[production READY]wnload All Apps:** Automatically downloads every app listed in QMOIAPPS.md and README.md for all platforms/prodices.
 - **Directory Structure:** All downloads are saved in `Qmoi_downloaded_apps/<platform>/latest/` and `Qmoi_downloaded_apps/<platform>/v<version>/`.
-- **Device Coverage:** Supports Windows, Mac, Linux (DEB/AppImage), Android, iOS, Smart TV, Raspberry Pi, Chromebook, and more.
+- **prodice Coverage:** Supports Windows, Mac, Linux (DEB/AppImage), Android, iOS, Smart TV, Raspberry Pi, Chromebook, and more.
 - **Billing-Safe:** No paid GitHub Actions, runners, or features are used. All automation runs on self-hosted/cloud runners (Colab, DagsHub, QCity, etc.) to avoid billing issues.
 - **Auto-Update:** All download links are autotested and auto-updated (ngrok, fallback, etc.) before download. See QMOINGROK.md for details.
 - **Error Handling:** If a download fails, the system retries, logs the error, and notifies master/admin. All actions are auditable.
@@ -35,8 +35,8 @@ This document describes the fully automated system for downloading and organizin
 
 ### How It Works
 
-1. **App List Extraction:** The automation reads QMOIAPPS.md and README.md to extract all app names and download links for every device/platform.
-2. **Download Execution:** For each app and device, the system downloads the latest version using the provided link, saving it in the correct directory.
+1. **App List Extraction:** The automation reads QMOIAPPS.md and README.md to extract all app names and download links for every prodice/platform.
+2. **Download Execution:** For each app and prodice, the system downloads the latest version using the provided link, saving it in the correct directory.
 3. **Directory Organization:** All files are saved in `Qmoi_downloaded_apps/<platform>/latest/` and `Qmoi_downloaded_apps/<platform>/v<version>/`.
 4. **Verification:** After download, the system verifies file size and integrity. If a file is included or invalid, it retries or logs the error.
 5. **Audit & Notification:** All actions are logged. Master/admin is notified of any persistent issues.
@@ -73,7 +73,7 @@ Qmoi_downloaded_apps/
 ### Billing-Safe Design
 
 - **No Paid GitHub Actions:** All automation is run on self-hosted or cloud runners (Colab, DagsHub, QCity, etc.).
-- **No External Billing:** No step in the au[PRODUCTION READY]wnload process requires a paid plan or incurs costs on GitHub.
+- **No External Billing:** No step in the au[production READY]wnload process requires a paid plan or incurs costs on GitHub.
 - **Fallback Logic:** If a runner or service fails due to quota or billing, the system auto-switches to another free/cloud runner.
 
 ### See Also
@@ -87,14 +87,14 @@ Qmoi_downloaded_apps/
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "AU[PRODUCTION READY]WNLOAD.md",
+"file": "AU[production READY]WNLOAD.md",
 "validated_at": "2025-10-26T20:51:22.282567Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
 {
 "name": "title_present",
 "ok": true,
-"detail": "AU[PRODUCTION READY]WNLOAD.md"
+"detail": "AU[production READY]WNLOAD.md"
 },
 {
 "name": "links",

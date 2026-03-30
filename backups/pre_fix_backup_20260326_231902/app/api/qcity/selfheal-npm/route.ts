@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
@@ -16,7 +16,7 @@ import fs from "fs";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-[PRODUCTION READY] for JWT verification (replace with your actual logic)
+[production READY] for JWT verification (replace with your actual logic)
 function verifyJWT(token: string): { valid: boolean; role?: string } {
   try {
     const payload = JSON.parse(
@@ -59,7 +59,7 @@ function logDownloadFix(
     action,
     user,
     app: "QCity",
-    device: .device || "unknown",
+    prodice: .prodice || "unknown",
     status,
     error,
   };

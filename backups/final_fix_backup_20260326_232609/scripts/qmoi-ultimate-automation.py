@@ -11,7 +11,7 @@ def start_ngrok_tunnel(port=8080, real: bool = False):
     If real==False, write a proposal instead of starting processes.
     """
     try:
-        if not real and not PRODUCTION_CONFIRMED():
+        if not real and not production_CONFIRMED():
             # write a proposal for starting ngrok tunnel
             prop = {
                 'action': 'start_ngrok',
@@ -787,9 +787,9 @@ class ReleaseManager:
 
 def main():
     # Safety: only run destructive or network-heavy workflows when confirmed
-    real_run = os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() == 'true'
+    real_run = os.environ.get('production_CONFIRMED', 'false').lower() == 'true'
     if not real_run:
-        logger.info('⚠️ Running in dry-run mode. Use PRODUCTION_CONFIRMED=true to enable real operations.')
+        logger.info('⚠️ Running in dry-run mode. Use production_CONFIRMED=true to enable real operations.')
 
     # Run autotests for links (dry-run will write proposals for fixes)
     autotest_links(real=real_run)
@@ -936,7 +936,7 @@ def build_all_apps() -> List[Dict]:
     
     try:
         # This would build all apps and return their information
-        # For now, return a // Production implementation required: structure
+        # For now, return a // production implementation required: structure
         apps = [
             {
                 "name": "qmoi-core",

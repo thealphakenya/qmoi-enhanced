@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 /* eslint-env node,jest,browser */
 // complete MSW handlers for tests — keep simple and syntactically safe
 export async function getHandlers() {

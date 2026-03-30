@@ -7,12 +7,12 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # Backend API Templates & Implementation Examples
 
 **Date:** March 26, 2026  
 **Version:** 2.0  
-**Purpose:** Production-ready, automated code templates for all 7 required API endpoints with enhanced monitoring, self-healing, and scalability features
+**Purpose:** production-ready, automated code templates for all 7 required API endpoints with enhanced monitoring, self-healing, and scalability features
 
 ---
 
@@ -33,14 +33,14 @@ This document provides complete, production-ready code examples for implementing
 1. `POST /api/mail` — Send email with delivery tracking
 2. `POST /api/files` — Upload/transfer files with integrity checks
 3. `POST /api/emergency` — SOS, lockdown, wipe, alert with escalation
-4. `POST /api/verify` — Product verification with blockchain integration
+4. `POST /api/verify` — product verification with blockchain integration
 5. `POST /api/youtube/download` — YouTube downloader with queue management
 6. `GET /api/media` — List media items with CDN optimization
 7. `GET /api/health` — Health check with system diagnostics
 
 ---
 
-## Production Architecture
+## production Architecture
 
 ### Infrastructure Requirements
 
@@ -62,7 +62,7 @@ This document provides complete, production-ready code examples for implementing
 
 ---
 
-## Node.js + Express (Production Enhanced)
+## Node.js + Express (production Enhanced)
 
 ### Setup
 
@@ -74,7 +74,7 @@ npm install express cors dotenv nodemailer multer yt-dlp axios \
          @sentry/node newrelic aws-sdk multer-s3 sharp
 ```
 
-### Production Configuration
+### production Configuration
 
 ```javascript
 // config/production.js
@@ -397,7 +397,7 @@ app.post("/api/files", upload.single("file"), async (req, res) => {
 // ============================================================================
 app.post("/api/emergency", async (req, res) => {
   try {
-    const { action, deviceId, reason, metadata } = req.body;
+    const { action, prodiceId, reason, metadata } = req.body;
 
     if (!action || !["sos", "lockdown", "wipe", "alert"].includes(action)) {
       return res.status(400).json({
@@ -413,13 +413,13 @@ app.post("/api/emergency", async (req, res) => {
     console.error("[EMERGENCY]", {
       actionId,
       action,
-      deviceId,
+      prodiceId,
       reason,
       timestamp: new Date().toISOString(),
       metadata,
     });
 
-    // Device management integration (see production implementation)
+    // prodice management integration (see production implementation)
     // Actions: SOS (alert), Lockdown (remote lock), Wipe (data erase), Alert (notify)
 
     res.json({
@@ -439,7 +439,7 @@ app.post("/api/emergency", async (req, res) => {
 });
 
 // ============================================================================
-// POST /api/verify - Product Verification
+// POST /api/verify - product Verification
 // ============================================================================
 app.post("/api/verify", async (req, res) => {
   try {
@@ -451,9 +451,9 @@ app.post("/api/verify", async (req, res) => {
       });
     }
 
-    // Product verification service: query DB, check barcode/serial, return status
+    // product verification service: query DB, check barcode/serial, return status
 
-    [PRODUCTION READY] response
+    [production READY] response
     const verified = Math.random() > 0.1; // 90% authentic
 
     res.json({
@@ -461,15 +461,15 @@ app.post("/api/verify", async (req, res) => {
       verified,
       details: verified
         ? {
-            productName: "data Product",
+            productName: "data product",
             manufacturer: "data Corp",
             price: 99.99,
             lastVerified: new Date().toISOString(),
           }
         : null,
       message: verified
-        ? "Product verified as authentic"
-        : "Product verification failed",
+        ? "product verified as authentic"
+        : "product verification failed",
     });
   } catch (error) {
     console.error("Verification error:", error);
@@ -497,7 +497,7 @@ app.post("/api/youtube/download", async (req, res) => {
 
     // YouTube downloader: validates URL, queues task, returns temp link
 
-    [PRODUCTION READY] response
+    [production READY] response
     res.json({
       success: true,
       downloadId,
@@ -525,8 +525,8 @@ app.get("/api/media", async (req, res) => {
 
     // Media listing service: queries DB, applies filters, paginates
 
-    [PRODUCTION READY] response
-    const [PRODUCTION READY]Items = [
+    [production READY] response
+    const [production READY]Items = [
       {
         id: "media_1",
         name: "data Video",
@@ -547,8 +547,8 @@ app.get("/api/media", async (req, res) => {
 
     res.json({
       success: true,
-      items: [PRODUCTION READY]Items.slice(0, parseInt(limit)),
-      total: [PRODUCTION READY]Items.length,
+      items: [production READY]Items.slice(0, parseInt(limit)),
+      total: [production READY]Items.length,
       limit: parseInt(limit),
       offset: parseInt(offset),
     });
@@ -676,7 +676,7 @@ class FileMetadata(BaseModel):
 
 class EmergencyRequest(BaseModel):
     action: str  # 'sos', 'lockdown', 'wipe', 'alert'
-    deviceId: Optional[str] = None
+    prodiceId: Optional[str] = None
     reason: Optional[str] = None
     metadata: Optional[dict] = None
 
@@ -760,7 +760,7 @@ async def emergency_action(request: EmergencyRequest):
         # Log emergency action (critical)
         print(f"[EMERGENCY] {request.action} - {action_id}")
 
-        # Device management: route to service, send notifications, update status
+        # prodice management: route to service, send notifications, update status
 
         return {
             "success": True,
@@ -773,7 +773,7 @@ async def emergency_action(request: EmergencyRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 # ============================================================================
-# POST /api/verify - Product Verification
+# POST /api/verify - product Verification
 # ============================================================================
 @app.post("/api/verify")
 async def verify_product(request: VerifyRequest):
@@ -784,7 +784,7 @@ async def verify_product(request: VerifyRequest):
                 detail="Provide at least one: sku, productId, or serialNumber",
             )
 
-        # Product verification: query DB, check registry, return result
+        # product verification: query DB, check registry, return result
 
         import random
         verified = random.random() > 0.1  # 90% authentic
@@ -793,12 +793,12 @@ async def verify_product(request: VerifyRequest):
             "success": True,
             "verified": verified,
             "details": {
-                "productName": "data Product",
+                "productName": "data product",
                 "manufacturer": "data Corp",
                 "price": 99.99,
                 "lastVerified": datetime.now().isoformat(),
             } if verified else None,
-            "message": "Product verified" if verified else "Verification failed",
+            "message": "product verified" if verified else "Verification failed",
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -841,7 +841,7 @@ async def list_media(
     try:
         # Media listing: query DB, apply filters, paginate
 
-        [PRODUCTION READY]_items = [
+        [production READY]_items = [
             {
                 "id": "media_1",
                 "name": "data Video",
@@ -862,8 +862,8 @@ async def list_media(
 
         return {
             "success": True,
-            "items": [PRODUCTION READY]_items[:limit],
-            "total": len([PRODUCTION READY]_items),
+            "items": [production READY]_items[:limit],
+            "total": len([production READY]_items),
             "limit": limit,
             "offset": offset,
         }
@@ -963,7 +963,7 @@ def send_mail():
 
         message_id = f"msg_{datetime.now().timestamp()}_{uuid.uuid4().hex[:8]}"
 
-        # [PRODUCTION READY]: Implement email sending
+        # [production READY]: Implement email sending
 
         return jsonify({
             'success': True,
@@ -1030,7 +1030,7 @@ def emergency_action():
         return jsonify({'error': str(e)}), 500
 
 # ============================================================================
-# POST /api/verify - Product Verification
+# POST /api/verify - product Verification
 # ============================================================================
 @app.route('/api/verify', methods=['POST'])
 def verify_product():
@@ -1050,7 +1050,7 @@ def verify_product():
             'success': True,
             'verified': verified,
             'details': {
-                'productName': 'data Product',
+                'productName': 'data product',
                 'manufacturer': 'data Corp',
                 'price': 99.99,
                 'lastVerified': datetime.now().isoformat()
@@ -1096,7 +1096,7 @@ def list_media():
         limit = int(request.args.get('limit', 20))
         offset = int(request.args.get('offset', 0))
 
-        [PRODUCTION READY]_items = [
+        [production READY]_items = [
             {
                 'id': 'media_1',
                 'name': 'data Video',
@@ -1109,8 +1109,8 @@ def list_media():
 
         return jsonify({
             'success': True,
-            'items': [PRODUCTION READY]_items[:limit],
-            'total': len([PRODUCTION READY]_items),
+            'items': [production READY]_items[:limit],
+            'total': len([production READY]_items),
             'limit': limit,
             'offset': offset
         })
@@ -1249,7 +1249,7 @@ curl -X POST http://localhost:8000/api/youtube/download \
 
 1. Choose your framework (Node.js, Python, Go, etc.)
 2. Copy the standard code
-3. Implement the [PRODUCTION READY] sections
+3. Implement the [production READY] sections
 4. Set up your database and external services
 5. Test with curl or Postman
 6. Deploy to production/production
@@ -1257,7 +1257,7 @@ curl -X POST http://localhost:8000/api/youtube/download \
 
 ---
 
-## Enhanced Production Implementations & Automation
+## Enhanced production Implementations & Automation
 
 ### QMOI Integration Layer
 
@@ -1444,11 +1444,11 @@ const HEALTH_MONITOR = {
 export { HEALTH_MONITOR };
 ```
 
-### Production Database Integration
+### production Database Integration
 
 ```javascript
 // database-integration.js
-const PRODUCTION_DB = {
+const production_DB = {
   // PostgreSQL with connection pooling
   async initPool() {
     const { Pool } = require('pg');
@@ -1518,7 +1518,7 @@ const PRODUCTION_DB = {
   }
 };
 
-export { PRODUCTION_DB };
+export { production_DB };
 ```
 
 ### Automated Error Recovery & Self-Healing
@@ -1620,11 +1620,11 @@ const AUTO_RECOVERY = {
 export { AUTO_RECOVERY };
 ```
 
-### Production Logging & Monitoring
+### production Logging & Monitoring
 
 ```javascript
 // production-logger.js
-const PRODUCTION_LOGGER = {
+const production_LOGGER = {
   levels: {
     ERROR: 0,
     WARN: 1,
@@ -1687,7 +1687,7 @@ const PRODUCTION_LOGGER = {
   }
 };
 
-export { PRODUCTION_LOGGER };
+export { production_LOGGER };
 ```
 
 ### Rate Limiting & Security
@@ -1886,7 +1886,7 @@ const TEST_INTEGRATION = {
 export { TEST_INTEGRATION };
 ```
 
-### Environment Variables for Production
+### Environment Variables for production
 
 ```bash
 # QMOI Integration

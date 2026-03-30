@@ -3,22 +3,22 @@
 // Last evolution cycle: 2026-03-26T03:59:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 #!/usr/bin/env node
 
 const [, , provider, action, ...args] = process.argv;
 
 async function awsProvision() {
-  // Production implementation:: Add AWS SDK logic
-  console.log("[AWS] Provisioning resource (// Production implementation:)...");
+  // production implementation:: Add AWS SDK logic
+  console.log("[AWS] Provisioning resource (// production implementation:)...");
 }
 async function azureProvision() {
-  // Production implementation:: Add Azure SDK logic
-  console.log("[Azure] Provisioning resource (// Production implementation:)...");
+  // production implementation:: Add Azure SDK logic
+  console.log("[Azure] Provisioning resource (// production implementation:)...");
 }
 async function gcpProvision() {
-  // Production implementation:: Add GCP SDK logic
-  console.log("[GCP] Provisioning resource (// Production implementation:)...");
+  // production implementation:: Add GCP SDK logic
+  console.log("[GCP] Provisioning resource (// production implementation:)...");
 }
 
 if (provider === "aws" && action === "provision") {

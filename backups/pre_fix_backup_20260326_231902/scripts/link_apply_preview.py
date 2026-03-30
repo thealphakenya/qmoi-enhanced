@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
-"""Produce a human-readable preview from a link_update_plan.json.
+// [production READY] this file has no remaining production markers
+"""produce a human-readable preview from a link_update_plan.json.
 
 This script reads `.qmoi_validation/link_update_plan.json` (or another path)
 and writes a preview `.qmoi_validation/link_apply_preview.json` containing

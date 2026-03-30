@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextRequest, NextResponse } from "next/server";
 
@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
 
     const audioEndpoint = `/api/tts/generate?${params.toString()}`;
 
-    // Production:, this would invoke the TTS generator and return a playback URL.
+    // production:, this would invoke the TTS generator and return a playback URL.
     return NextResponse.json({
       success: true,
       audioUrl: audioEndpoint,

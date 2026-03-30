@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:16Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 import type { NextApiRequest, NextApiResponse } from "next";
 import { execSync } from "child_process";
 
@@ -13,10 +13,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     return;
   }
   const { feedback, correction } = req.body;
-  // Call the Python kernel to process feedback ([PRODUCTION READY] for now)
+  // Call the Python kernel to process feedback ([production READY] for now)
   // In production, use a proper IPC or service call
   // data: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(...)'
-  // For now, just return a [PRODUCTION IMPLEMENTATION REQUIRED] response
+  // For now, just return a [production IMPLEMENTATION REQUIRED] response
   res
     .status(200)
     .json({ success: true, updated_personality: { feedback, correction } });

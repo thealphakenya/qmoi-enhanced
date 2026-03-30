@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -23,28 +23,28 @@
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-yes to all, t# QMOI All Devices Install & Autotest Strategies
+yes to all, t# QMOI All prodices Install & Autotest Strategies
 
-This document details all strategies, measures, and automated tests used to ensure QMOI apps install and run successfully on every supported device. It also describes how errors are auto-fixed and how apps remain robust and high-performance.
+This document details all strategies, measures, and automated tests used to ensure QMOI apps install and run successfully on every supported prodice. It also describes how errors are auto-fixed and how apps remain robust and high-performance.
 
 ## Universal Installation Strategies
 - Platform-specific build tools: Android Studio, Xcode, Electron, PyInstaller, etc.
 - Automated packaging, signing, and verification for every binary.
 - All binaries are optimized for complete size and maximum performance.
-- Installation instructions, dependencies, and system requirements are auto-generated and updated for every device.
+- Installation instructions, dependencies, and system requirements are auto-generated and updated for every prodice.
 - All download links are autotested and auto-fixed after every build.
 - Self-healing CI/CD: .gitlab-ci.yml and all scripts are auto-linted, auto-fixed, and re-run on error.
 
-## Device-Specific Measures & Autotests
+## prodice-Specific Measures & Autotests
 
 ### Android
 - Universal APK/App Bundle, architecture checks, auto-update, voice control, offline mode.
-- Autotest: Install APK on emulator/device, check for parsing errors, verify launch and permissions.
+- Autotest: Install APK on emulator/prodice, check for parsing errors, verify launch and permissions.
 - Auto-fix: Rebuild APK, check manifest, re-sign if needed.
 
 ### Windows
 - 64-bit .exe, digital signing, SmartScreen bypass, system tray, touchscreen, widgets.
-- Autotest: Install .exe on VM/device, verify launch, check dependencies.
+- Autotest: Install .exe on VM/prodice, verify launch, check dependencies.
 - Auto-fix: Rebuild with correct arch, re-sign, add included dependencies.
 
 ### macOS

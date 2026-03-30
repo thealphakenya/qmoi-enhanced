@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { useState, useEffect, useCallback } from "react";
 
 interface AutoProject {
@@ -247,10 +247,10 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
 
   const notifyMaster = useCallback(async (message: string) => {
     try {
-      // Production implementation: WhatsApp notification to master
+      // production implementation: WhatsApp notification to master
       .log("📱 WhatsApp notification to master:", message);
 
-      // Production: implementation, this would call the WhatsApp API
+      // production: implementation, this would call the WhatsApp API
       // await fetch('/api/whatsapp/notify-master', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
@@ -263,10 +263,10 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
 
   const createWhatsAppGroup = useCallback(async () => {
     try {
-      // Production implementation: creating WhatsApp group
+      // production implementation: creating WhatsApp group
       .log('📱 Creating "Qmoi Auto Projects" WhatsApp group');
 
-      // Production: implementation, this would call the WhatsApp API
+      // production: implementation, this would call the WhatsApp API
       // await fetch('/api/whatsapp/create-group', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
@@ -285,10 +285,10 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
 
   const postToWhatsAppGroup = useCallback(async (message: string) => {
     try {
-      // Production implementation: posting to WhatsApp group
+      // production implementation: posting to WhatsApp group
       .log("📱 Posting to WhatsApp group:", message);
 
-      // Production: implementation, this would call the WhatsApp API
+      // production: implementation, this would call the WhatsApp API
       // await fetch('/api/whatsapp/post-to-group', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },

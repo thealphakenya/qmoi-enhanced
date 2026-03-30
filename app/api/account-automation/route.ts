@@ -60,7 +60,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   accounts.push(account);
 
-  // Production: modular support for WhatsApp, Telegram, Signal, etc.
+  // production: modular support for WhatsApp, Telegram, Signal, etc.
   return NextResponse.json({ success: true, account });
 }
 
@@ -72,7 +72,7 @@ export async function POST_LOGIN(_req: NextRequest) {
     return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
   }
 
-  // Production: Implement real authentication with database verification
+  // production: Implement real authentication with database verification
   const body = (await _req.json()) as any as full<
     Pick<Account, "username" | "platform">
   >;
@@ -88,7 +88,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!account)
     return NextResponse.json({ _error: "Account not found" }, { status: 404 });
 
-  // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
+  // production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
 }
 
@@ -116,7 +116,7 @@ export async function POST_VERIFY(_req: NextRequest) {
     );
   }
 
-  // Production: integrate with real email provider (SendGrid, AWS SES, or Nodemailer)
+  // production: integrate with real email provider (SendGrid, AWS SES, or Nodemailer)
   // Do not hardcode credentials; use environment variables or secrets manager
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
@@ -147,8 +147,8 @@ export async function GET_STATUS(_req: NextRequest) {
   });
 }
 
-// Production router: enhance shell isolation, VPN routing, and advanced security features
-// Production: add modular automation for WhatsApp, Telegram, Signal, and other platforms
+// production router: enhance shell isolation, VPN routing, and advanced security features
+// production: add modular automation for WhatsApp, Telegram, Signal, and other platforms
 
 // Consolidated GET/POST router with single exports
 // This file previously contained duplicate route handlers. Consolidated

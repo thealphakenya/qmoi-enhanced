@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:31Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 // backend/trading-engine.ts
 // Autonomous trading engine for stable-Q AI (no API key required)
 // - Loads local CSV datasets
@@ -25,7 +25,7 @@ interface Trade {
   rationale: string;
 }
 
-// Production dataset filename should be provided via environment or config; defaulting to trading-dataset-latest.csv
+// production dataset filename should be provided via environment or config; defaulting to trading-dataset-latest.csv
 const DATASET_PATH = path.join(
   __dirname,
   "../datasets/trading/trading-dataset-latest.csv",
@@ -74,7 +74,7 @@ export async function autonomousTradingLoop() {
         type: "BUY",
         amount: 1,
         price: closes[idx],
-        result: "// Production implementation:D",
+        result: "// production implementation:D",
         rationale: "SMA cross",
       };
       logTrade(trade);
@@ -85,7 +85,7 @@ export async function autonomousTradingLoop() {
         type: "SELL",
         amount: 1,
         price: closes[idx],
-        result: "// Production implementation:D",
+        result: "// production implementation:D",
         rationale: "SMA cross",
       };
       logTrade(trade);
@@ -94,4 +94,4 @@ export async function autonomousTradingLoop() {
 }
 
 // To start: import { autonomousTradingLoop } from './backend/trading-engine'; autonomousTradingLoop();
-// Production implementation.csv
+// production implementation.csv

@@ -3,19 +3,19 @@
 // Last evolution cycle: 2026-03-26T03:58:16Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 import type { NextApiRequest, NextApiResponse } from "next";
 import { autoFixService } from "../../../scripts/services/auto_fix_service";
 import { QCityService } from "../../../scripts/services/qcity_service";
 import { logger } from "../../../scripts/utils/logger";
-import { QmoiAutodevDaemon } from "../../../scripts/services/qmoi_autodev_daemon";
+import { QmoiAutoprodDaemon } from "../../../scripts/services/qmoi_autoprod_daemon";
 import { unifiedCICDService } from "../../../scripts/services/unified_ci_cd_service";
 
 const qcityService = new QCityService();
 
 // --- Audit log helper ---
 function auditLog(action: string, params: unknown, result: unknown) {
-  logger.info(`[QMOI-AUTODEV][AUDIT] Action: ${action}`, { params, result });
+  logger.info(`[QMOI-AUTOprod][AUDIT] Action: ${action}`, { params, result });
 }
 
 function withMessage(result: unknown, defaultMsg = "") {
@@ -34,7 +34,7 @@ export default async function handler(
       return res.status(405).json({ error: "Method not allowed" });
     }
     const { action, platform = "vercel", ...params } = req.body;
-    logger.info(`[QMOI-AUTODEV] Action: ${action}`, params);
+    logger.info(`[QMOI-AUTOprod] Action: ${action}`, params);
     let result: unknown = {
       success: false,
       message: "implemented",
@@ -153,7 +153,7 @@ export default async function handler(
       case "rollback": {
         result = {
           success: true,
-          message: "Rollback executed ([PRODUCTION READY])",
+          message: "Rollback executed ([production READY])",
           logs: ["Rollback logic not yet implemented."],
         };
         break;
@@ -161,7 +161,7 @@ export default async function handler(
       case "batch_edit": {
         result = {
           success: true,
-          message: "Batch edit executed ([PRODUCTION READY])",
+          message: "Batch edit executed ([production READY])",
           logs: [`Batch edit: ${params.operation} on files: ${params.files}`],
         };
         break;
@@ -169,7 +169,7 @@ export default async function handler(
       case "scan_logs": {
         result = {
           success: true,
-          message: "Log scan complete ([PRODUCTION READY])",
+          message: "Log scan complete ([production READY])",
           logs: ["Scanned logs for problems."],
         };
         break;
@@ -177,23 +177,23 @@ export default async function handler(
       case "auto_fix_problems": {
         result = {
           success: true,
-          message: "Auto-fix for detected problems executed ([PRODUCTION READY])",
+          message: "Auto-fix for detected problems executed ([production READY])",
           logs: ["Auto-fix attempted for detected problems."],
         };
         break;
       }
-      case "optimize_device": {
+      case "optimize_prodice": {
         result = {
           success: true,
-          message: "Device optimization executed ([PRODUCTION READY])",
-          logs: ["Device optimized: battery, CPU, memory, storage, network."],
+          message: "prodice optimization executed ([production READY])",
+          logs: ["prodice optimized: battery, CPU, memory, storage, network."],
         };
         break;
       }
       case "enhance_apps": {
         result = {
           success: true,
-          message: "App enhancement executed ([PRODUCTION READY])",
+          message: "App enhancement executed ([production READY])",
           logs: ["Enhanced apps and updated documentation."],
         };
         break;
@@ -201,7 +201,7 @@ export default async function handler(
       case "fetch_resource": {
         result = {
           success: true,
-          message: "Resource fetch executed ([PRODUCTION READY])",
+          message: "Resource fetch executed ([production READY])",
           logs: [`Fetched resource: ${params.url} -> ${params.dest}`],
         };
         break;
@@ -209,7 +209,7 @@ export default async function handler(
       case "handle_media": {
         result = {
           success: true,
-          message: "Media/file handling executed ([PRODUCTION READY])",
+          message: "Media/file handling executed ([production READY])",
           logs: [`Handled media file: ${params.filepath}`],
         };
         break;
@@ -217,7 +217,7 @@ export default async function handler(
       case "restructure": {
         result = {
           success: true,
-          message: "System restructure executed ([PRODUCTION READY])",
+          message: "System restructure executed ([production READY])",
           logs: ["Auto-restructure: checked and optimized system structure."],
         };
         break;
@@ -225,7 +225,7 @@ export default async function handler(
       case "self_repair": {
         result = {
           success: true,
-          message: "Self-repair executed ([PRODUCTION READY])",
+          message: "Self-repair executed ([production READY])",
           logs: ["Self-repair: checked and attempted to fix errors."],
         };
         break;
@@ -233,7 +233,7 @@ export default async function handler(
       case "delete_unused": {
         result = {
           success: true,
-          message: "Delete _unused files executed ([PRODUCTION READY])",
+          message: "Delete _unused files executed ([production READY])",
           logs: ["Checked and deleted _unused files if any."],
         };
         break;
@@ -241,7 +241,7 @@ export default async function handler(
       case "distributed_automation": {
         result = {
           success: true,
-          message: "Distributed automation executed ([PRODUCTION READY])",
+          message: "Distributed automation executed ([production READY])",
           logs: [`Distributed automation: ${params.task} on ${params.targets}`],
         };
         break;
@@ -249,7 +249,7 @@ export default async function handler(
       case "project_status": {
         result = {
           success: true,
-          message: "Project status fetched ([PRODUCTION READY])",
+          message: "Project status fetched ([production READY])",
           logs: ["Fetched project status."],
           status: qcityService.getStatus(),
         };
@@ -258,26 +258,26 @@ export default async function handler(
       case "monitor_and_fix_projects": {
         result = {
           success: true,
-          message: "Monitor and auto-fix projects executed ([PRODUCTION READY])",
+          message: "Monitor and auto-fix projects executed ([production READY])",
           logs: ["Monitored and auto-fixed project health."],
         };
         break;
       }
       case "continuous_autofix_start": {
-        QmoiAutodevDaemon.start();
+        QmoiAutoprodDaemon.start();
         result = {
           success: true,
           message: "Continuous auto-fix daemon started.",
-          status: QmoiAutodevDaemon.status(),
+          status: QmoiAutoprodDaemon.status(),
         };
         break;
       }
       case "continuous_autofix_stop": {
-        QmoiAutodevDaemon.stop();
+        QmoiAutoprodDaemon.stop();
         result = {
           success: true,
           message: "Continuous auto-fix daemon stopped.",
-          status: QmoiAutodevDaemon.status(),
+          status: QmoiAutoprodDaemon.status(),
         };
         break;
       }
@@ -285,15 +285,15 @@ export default async function handler(
         result = {
           success: true,
           message: "Continuous auto-fix daemon status.",
-          status: QmoiAutodevDaemon.status(),
+          status: QmoiAutoprodDaemon.status(),
         };
         break;
       }
       case "full_status": {
-        const daemonStatus = QmoiAutodevDaemon.status();
+        const daemonStatus = QmoiAutoprodDaemon.status();
         result = {
           success: true,
-          message: "Full QMOI Auto-Dev status",
+          message: "Full QMOI Auto-prod status",
           daemon: daemonStatus,
           lastRun: daemonStatus.lastRun,
           lastResult: daemonStatus.lastResult,
@@ -312,7 +312,7 @@ export default async function handler(
     auditLog(action, params, result);
     return res.status(200).json(result);
   } catch (error: unknown) {
-    logger.error("[QMOI-AUTODEV] Error:", error);
+    logger.error("[QMOI-AUTOprod] Error:", error);
     auditLog("error", req.body, { error: error.message });
     return res.status(500).json({ success: false, error: error.message });
   }

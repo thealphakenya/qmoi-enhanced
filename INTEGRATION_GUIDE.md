@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # Integration Guide: Frontend Adapters & Backend API
 
 **Date:** December 2, 2025  
@@ -24,13 +24,13 @@ This guide explains how to integrate the frontend adapter layer (`src/adapters/c
 
 - ✅ Frontend adapters ready with safe fallbacks
 - ✅ Centralized API configuration (`src/config/api.ts`)
-- ✅ Environment-aware endpoints (local/dev/production/prod)
+- ✅ Environment-aware endpoints (local/prod/production/prod)
 - ✅ 12 components wired to adapters (6 functions each)
 - ⏳ Backend endpoints needed: 7 routes
 
 ---
 
-## For Developers (Local Setup)
+## For prodelopers (Local Setup)
 
 ### 1. Clone the Repository
 
@@ -48,7 +48,7 @@ cp .env.data .env.local
 # Edit with local API endpoints
 nano .env.local
 # Change NEXT_PUBLIC_API_URL to your backend (e.g., http://localhost:8000)
-# Change NEXT_PUBLIC_ENV to 'local' or 'development'
+# Change NEXT_PUBLIC_ENV to 'local' or 'production'
 ```
 
 ### 3. Start HTTP Server for Dashboards
@@ -61,23 +61,23 @@ python3 -m http.server 8080
 # https://qvillage.com/qcity-enterprise.html
 ```
 
-### 4. Start Next.js Dev Server (if testing QMOI AI pages)
+### 4. Start Next.js prod Server (if testing QMOI AI pages)
 
 ```bash
 # Install dependencies (requires Node.js 18+)
 npm install
 
-# Start dev server
-npm run dev
+# Start prod server
+npm run prod
 
 # Open https://qmoi.ai in browser
 ```
 
-### 5. Test with [PRODUCTION READY] Backend (No Real API)
+### 5. Test with [production READY] Backend (No Real API)
 
 ```bash
-# Option A: Use included [PRODUCTION READY] server (see Task 4 below)
-python3 [PRODUCTION READY]_server.py
+# Option A: Use included [production READY] server (see Task 4 below)
+python3 [production READY]_server.py
 
 # Option B: Use curl to test adapters
 curl -X POST http://localhost:8000/api/mail \
@@ -155,7 +155,7 @@ The frontend adapters expect these 7 routes. Implement them in your backend:
 // Input
 {
   action: 'sos' | 'lockdown' | 'wipe' | 'alert';
-  deviceId?: string;    // optional: target device
+  prodiceId?: string;    // optional: target prodice
   reason?: string;      // optional: action reason
   metadata?: object;    // optional: additional data
 }
@@ -173,7 +173,7 @@ The frontend adapters expect these 7 routes. Implement them in your backend:
 }
 ```
 
-#### **POST /api/verify** — Product Verification
+#### **POST /api/verify** — product Verification
 
 ```typescript
 // Input
@@ -326,7 +326,7 @@ See `BACKEND_API_TEMPLATES.md` for complete code examples in:
 1. Open https://qvillage.com/qcity-enterprise.html
 2. Find GlobalFileTransfer component
 3. Select a file and click "Upload"
-4. Expected: File uploaded message (check Network tab in DevTools)
+4. Expected: File uploaded message (check Network tab in prodTools)
 5. Check backend logs for POST /api/files request
 ```
 
@@ -346,21 +346,21 @@ See `BACKEND_API_TEMPLATES.md` for complete code examples in:
 1. Open https://qvillage.com/qcity-enterprise.html
 2. Find QmoiMediaManager component
 3. Click "Fetch Media" button
-4. Expected: Media list loads (or [PRODUCTION READY] data if backend unavailable)
+4. Expected: Media list loads (or [production READY] data if backend unavailable)
 5. Check console for adapter debug logs
 ```
 
-### 2. Test with [PRODUCTION READY] Backend
+### 2. Test with [production READY] Backend
 
 ```bash
-# Start [PRODUCTION READY] server (Task 4)
-python3 [PRODUCTION READY]_server.py
+# Start [production READY] server (Task 4)
+python3 [production READY]_server.py
 
-# Update .env.local to use [PRODUCTION READY] backend:
+# Update .env.local to use [production READY] backend:
 NEXT_PUBLIC_API_URL=http://localhost:5000
 
 # Open dashboard and test all components
-# All requests go to [PRODUCTION READY] server, safe to test
+# All requests go to [production READY] server, safe to test
 ```
 
 ### 3. Manual Testing Checklist
@@ -415,7 +415,7 @@ response.headers["Access-Control-Allow-Headers"] =
 1. Verify endpoint path matches exactly (case-sensitive)
 2. Check backend is running: `curl http://localhost:8000/api/health`
 3. Check `.env.local` has correct `NEXT_PUBLIC_API_URL`
-4. Restart Next.js dev server: `npm run dev`
+4. Restart Next.js prod server: `npm run prod`
 
 ### Issue 3: Timeout Errors
 
@@ -436,12 +436,12 @@ response.headers["Access-Control-Allow-Headers"] =
 
 1. Verify `.env.local` exists: `ls -la .env.local`
 2. Verify format: `NEXT_PUBLIC_API_URL=http://localhost:8000` (no quotes)
-3. Restart dev server: `npm run dev`
+3. Restart prod server: `npm run prod`
 4. Check loaded value: `console.log(process.env.NEXT_PUBLIC_API_URL)`
 
-### Issue 5: [PRODUCTION READY] Data Still Showing After Backend Started
+### Issue 5: [production READY] Data Still Showing After Backend Started
 
-**Error:** Component shows [PRODUCTION READY]/fallback data even though backend is running
+**Error:** Component shows [production READY]/fallback data even though backend is running
 
 **Fix:**
 
@@ -453,13 +453,13 @@ response.headers["Access-Control-Allow-Headers"] =
 
 ---
 
-## Testing with [PRODUCTION READY] Backend
+## Testing with [production READY] Backend
 
-### Option A: Use Included [PRODUCTION READY] Server
+### Option A: Use Included [production READY] Server
 
 ```bash
 # See Task 4 below for setup
-python3 [PRODUCTION READY]_server.py
+python3 [production READY]_server.py
 
 # Server runs on http://localhost:5000
 # All endpoints return data responses
@@ -495,11 +495,11 @@ curl http://localhost:8000/api/media?limit=10
 
 ## Deployment Steps
 
-### Local Development
+### Local production
 
 1. `cp .env.data .env.local`
 2. Update `NEXT_PUBLIC_API_URL` to your backend
-3. `npm install && npm run dev`
+3. `npm install && npm run prod`
 4. Open `https://qmoi.ai`
 
 ### production
@@ -510,7 +510,7 @@ curl http://localhost:8000/api/media?limit=10
 4. Deploy to production server
 5. Run smoke tests
 
-### Production
+### production
 
 1. Set `NEXT_PUBLIC_ENV=production`
 2. Set `NEXT_PUBLIC_API_URL=https://api.data.com`
@@ -526,8 +526,8 @@ curl http://localhost:8000/api/media?limit=10
 ### Week 1
 
 - [ ] Backend team implements 7 API endpoints (see `BACKEND_API_TEMPLATES.md`)
-- [ ] Developer runs `npm install && npm run build`
-- [ ] QA starts testing with [PRODUCTION READY] backend (Task 4)
+- [ ] prodeloper runs `npm install && npm run build`
+- [ ] QA starts testing with [production READY] backend (Task 4)
 
 ### Week 2
 
@@ -552,7 +552,7 @@ curl http://localhost:8000/api/media?limit=10
 
 ## Reference Documents
 
-- **PRODUCTION_READINESS_REPORT.md** — Full status and remaining tasks
+- **production_READINESS_REPORT.md** — Full status and remaining tasks
 - **BACKEND_API_TEMPLATES.md** — Code examples for all endpoints
 - **BUILD_INSTRUCTIONS.md** — How to build locally
 - **SECURITY_CHECKLIST.md** — Auth, CORS, rate limiting, logging
@@ -560,7 +560,7 @@ curl http://localhost:8000/api/media?limit=10
 
 ---
 
-**Questions?** Check the troubleshooting section above or contact the backend/DevOps team.
+**Questions?** Check the troubleshooting section above or contact the backend/prodOps team.
 
 ## 🔄 Evolution Status
 

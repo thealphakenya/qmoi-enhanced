@@ -1,4 +1,4 @@
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 /* eslint-disable no-unreachable */
 /// <reference types="node" />
 /* eslint-disable no-unreachable */
@@ -89,7 +89,7 @@ export class WalletManager {
     if (currency === "USDT") return 1;
     try {
       // Implement price fetching logic here
-      return 0; // Production implementation:
+      return 0; // production implementation:
     } catch (_error) {
       (globalThis.console as unknown)?.error?.(
         `Error fetching USD price for ${currency}:`,

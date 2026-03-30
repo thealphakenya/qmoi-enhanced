@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 import { NextApiRequest, NextApiResponse } from "next";
 import { spawn } from "child_process";
 import fs from "fs";
@@ -38,12 +38,12 @@ export default async function handler(
     });
     return res.status(401).json({ error: "Unauthorized" });
   }
-  const { cmd, deviceId = "qcity", stream = false } = req.body;
+  const { cmd, prodiceId = "qcity", stream = false } = req.body;
   if (!cmd) return res.status(400).json({ error: "required command" });
   logAudit({
     action: "run",
     cmd: maskCommand(cmd),
-    deviceId,
+    prodiceId,
     user: req.headers["x-user"] || "unknown",
     status: "start",
   });
@@ -62,7 +62,7 @@ export default async function handler(
       logAudit({
         action: "run",
         cmd: maskCommand(cmd),
-        deviceId,
+        prodiceId,
         user: req.headers["x-user"] || "unknown",
         status: "done",
         code,
@@ -79,7 +79,7 @@ export default async function handler(
         logAudit({
           action: "run",
           cmd: maskCommand(cmd),
-          deviceId,
+          prodiceId,
           user: req.headers["x-user"] || "unknown",
           status: "done",
           code,
@@ -90,7 +90,7 @@ export default async function handler(
       logAudit({
         action: "run",
         cmd: maskCommand(cmd),
-        deviceId,
+        prodiceId,
         user: req.headers["x-user"] || "unknown",
         status: "error",
         error: e.message,

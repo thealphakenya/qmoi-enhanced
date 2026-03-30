@@ -3,12 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
   try {
-    // Production implementation: automation status - replace with real implementation later
+    // production implementation: automation status - replace with real implementation later
     const status = {
       isEnabled: true,
       tasks: [

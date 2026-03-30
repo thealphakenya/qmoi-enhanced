@@ -742,7 +742,7 @@ def run_comprehensive_tests():
     print(f"Detailed log saved to: api_test.log")
 
     if result.wasSuccessful():
-        print("✅ ALL TESTS PASSED - API IS PRODUCTION READY!")
+        print("✅ ALL TESTS PASSED - API IS production READY!")
         return 0
     else:
         print("❌ SOME TESTS FAILED - REVIEW api_test_report.json")

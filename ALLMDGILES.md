@@ -7,14 +7,14 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # ALLMDGILES.md - All Markdown Documents in the Repository
 
 Generated from current repository list on $(date)\n
 ./ADVANCED_USER_IDENTIFICATION_SYSTEM.md
 ./ALL_APPS/README.md
 ./ALLCLONEDRELEASES.md
-./ALLDEVICESSETTINGS.md
+./ALLprodICESSETTINGS.md
 ./ALLERRORS.md
 ./ALLERRORSSTATSQMOI.md
 ./ALLERRORSTYPESFILES.md
@@ -44,7 +44,7 @@ Generated from current repository list on $(date)\n
 ./APP_FIX_CHECKLIST.md
 ./APP_FIX_COMPLETE.md
 ./APPS_PLATFORMS_DOCUMENTATION_UPDATE.md
-./_archive_qmoi-enhanced/ALLDEVICESSETTINGS.md
+./_archive_qmoi-enhanced/ALLprodICESSETTINGS.md
 ./_archive_qmoi-enhanced/ALLERRORSSTATSQMOI.md
 ./_archive_qmoi-enhanced/@ALLMDFILESREFS.md
 ./_archive_qmoi-enhanced/ALLMDFILESREFS.md
@@ -52,7 +52,7 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/ALLQMOIAUTOEVOLVINGENVS.md
 ./_archive_qmoi-enhanced/ALPHAQMOIENGINE.md
 ./_archive_qmoi-enhanced/API.md
-./_archive_qmoi-enhanced/AU[PRODUCTION READY]WNLOAD.md
+./_archive_qmoi-enhanced/AU[production READY]WNLOAD.md
 ./_archive_qmoi-enhanced/AUTOGIT.md
 ./_archive_qmoi-enhanced/AUTOLINTREADME.md
 ./_archive_qmoi-enhanced/AUTOMATION-SUMMARY.md
@@ -140,8 +140,8 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/dashboard/node_modules/vite/README.md
 ./_archive_qmoi-enhanced/dashboard/node_modules/yallist/README.md
 ./_archive_qmoi-enhanced/DEPLOYMENT-README.md
-./_archive_qmoi-enhanced/DEVCOMMANDS.md
-./_archive_qmoi-enhanced/DEVICERESOURCEOPTIMIZATION.md
+./_archive_qmoi-enhanced/prodCOMMANDS.md
+./_archive_qmoi-enhanced/prodICERESOURCEOPTIMIZATION.md
 ./_archive_qmoi-enhanced/docs/ACCESSIBILITY.md
 ./_archive_qmoi-enhanced/docs/API.md
 ./_archive_qmoi-enhanced/docs/AUTOEVOLVE.md
@@ -151,13 +151,13 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/docs/MONITORING_SYSTEM.md
 ./_archive_qmoi-enhanced/docs/QMOICLONE.md
 ./_archive_qmoi-enhanced/docs/QMOI-ENHANCED-AUTOTESTS.md
-./_archive_qmoi-enhanced/docs/QMOIGITHUBDEV.md
-./_archive_qmoi-enhanced/docs/QMOIGITLABDEV.md
-./_archive_qmoi-enhanced/docs/QMOIVERCELDEV.md
+./_archive_qmoi-enhanced/docs/QMOIGITHUBprod.md
+./_archive_qmoi-enhanced/docs/QMOIGITLABprod.md
+./_archive_qmoi-enhanced/docs/QMOIVERCELprod.md
 ./_archive_qmoi-enhanced/docs/README.md
 ./_archive_qmoi-enhanced/docs/REFERENCES.md
 ./_archive_qmoi-enhanced/docs/TROUBLESHOOTING.md
-./_archive_qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md
+./_archive_qmoi-enhanced/DOWNLOADQMOIAIAPPALLprodICES.md
 ./_archive_qmoi-enhanced/EMPLOYEESUSERSENROLLED.md
 ./_archive_qmoi-enhanced/ENHANCED_AUTOMATION_SUMMARY.md
 ./_archive_qmoi-enhanced/ENHANCEDQVS.md
@@ -468,7 +468,7 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/mobile/node_modules/is-unicode-supported/readme.md
 ./_archive_qmoi-enhanced/mobile/node_modules/is-wsl/readme.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@jest/create-cache-key-function/README.md
-./_archive_qmoi-enhanced/mobile/node_modules/jest-[PRODUCTION READY]/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/jest-[production READY]/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@jest/schemas/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@jest/types/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/jest-util/Readme.md
@@ -614,8 +614,8 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/mobile/node_modules/raw-body/HISTORY.md
 ./_archive_qmoi-enhanced/mobile/node_modules/raw-body/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/raw-body/SECURITY.md
-./_archive_qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/README.md
-./_archive_qmoi-enhanced/mobile/node_modules/react-devtools-core/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/react-prodtools-core/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/react-is/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@react-native/assets-registry/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@react-native-async-storage/async-storage/README.md
@@ -654,7 +654,7 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-tools/node_modules/p-limit/readme.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-tools/node_modules/p-locate/readme.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@react-native/debugger-frontend/README.md
-./_archive_qmoi-enhanced/mobile/node_modules/@react-native/dev-middleware/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/@react-native/prod-middleware/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@react-native/gradle-plugin/react-native-gradle-plugin/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@react-native/gradle-plugin/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@react-native/js-polyfills/README.md
@@ -667,7 +667,7 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactApple/Libraries/RCTFoundation/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactApple/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactCommon/jsinspector-modern/CONCEPTS.md
-./_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactCommon/react/nativemodule/devtoolsruntimesettings/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactCommon/react/nativemodule/prodtoolsruntimesettings/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactCommon/react/runtime/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/react-native/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@react-native/virtualized-lists/README.md
@@ -836,9 +836,9 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/MONITORING.md
 ./_archive_qmoi-enhanced/PAYEDGITLAB.md
 ./_archive_qmoi-enhanced/QAvatar_User_Feedback_Kit.md
-./_archive_qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md
-./_archive_qmoi-enhanced/QCITY_DEVICE_MANAGEMENT.md
-./_archive_qmoi-enhanced/QCITYMAINDEVICE.md
+./_archive_qmoi-enhanced/QCITYprodICEAUTOUPGRADE.md
+./_archive_qmoi-enhanced/QCITY_prodICE_MANAGEMENT.md
+./_archive_qmoi-enhanced/QCITYMAINprodICE.md
 ./_archive_qmoi-enhanced/QCITYQMOIAUTOSTART.md
 ./_archive_qmoi-enhanced/QCITYREADME.md
 ./_archive_qmoi-enhanced/QCITYRESOURCES.md
@@ -850,8 +850,8 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/QMOIAICORE.md
 ./_archive_qmoi-enhanced/QMOI-AI-ENHANCEMENT.md
 ./_archive_qmoi-enhanced/QMOI-AIRTEL-INTEGRATION.md
-./_archive_qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md
-./_archive_qmoi-enhanced/QMOIALLDEVICESINSTALL.md
+./_archive_qmoi-enhanced/QMOIALLprodICESHANDSFREE.md
+./_archive_qmoi-enhanced/QMOIALLprodICESINSTALL.md
 ./_archive_qmoi-enhanced/QMOIALLPLATFORMS.md
 ./_archive_qmoi-enhanced/QMOIALLPROJECTSADDSTRAILERSDOCS.md
 ./_archive_qmoi-enhanced/QMOIALWAYSPARALLEL.md
@@ -860,9 +860,9 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/QMOIAPPS.md
 ./_archive_qmoi-enhanced/QMOIARTISTS.md
 ./_archive_qmoi-enhanced/QMOIAUTHBIOMETRICS.md
-./_archive_qmoi-enhanced/QMOIAUTOAPPSDEV.md
+./_archive_qmoi-enhanced/QMOIAUTOAPPSprod.md
 ./_archive_qmoi-enhanced/QMOIAUTOBET.md
-./_archive_qmoi-enhanced/QMOIAUTODEV.md
+./_archive_qmoi-enhanced/QMOIAUTOprod.md
 ./_archive_qmoi-enhanced/QMOIAUTODISTRIBUTEMARKET.md
 ./_archive_qmoi-enhanced/QMOIAUTOEVOLVE.md
 ./_archive_qmoi-enhanced/QMOIAUTOFIXREADME.md
@@ -891,8 +891,8 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/QMOI_COMPLETE_SYSTEM.md
 ./_archive_qmoi-enhanced/QMOI_COMPLETE_SYSTEM_OVERVIEW.md
 ./_archive_qmoi-enhanced/QMOIDATABASE.md
-./_archive_qmoi-enhanced/QMOIDEVICES.md
-./_archive_qmoi-enhanced/QMOIDEV.md
+./_archive_qmoi-enhanced/QMOIprodICES.md
+./_archive_qmoi-enhanced/QMOIprod.md
 ./_archive_qmoi-enhanced/QMOIDNS.md
 ./_archive_qmoi-enhanced/QMOIDOMAINS.md
 ./_archive_qmoi-enhanced/QMOIDOWNLOADS.md
@@ -921,10 +921,10 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md
 ./_archive_qmoi-enhanced/QMOIGAMINGCLOUDUSERS.md
 ./_archive_qmoi-enhanced/QMOIGAMINGGENREV.md
-./_archive_qmoi-enhanced/QMOIGITHUBDEV.md
+./_archive_qmoi-enhanced/QMOIGITHUBprod.md
 ./_archive_qmoi-enhanced/QMOI_GITLAB_AUTOMATION.md
-./_archive_qmoi-enhanced/QMOIGITLABDEV.md
-./_archive_qmoi-enhanced/QMOIGITPODDEV.md
+./_archive_qmoi-enhanced/QMOIGITLABprod.md
+./_archive_qmoi-enhanced/QMOIGITPODprod.md
 ./_archive_qmoi-enhanced/QMOIHUGGINGFACEALWAYSUPDATE.md
 ./_archive_qmoi-enhanced/QMOI-HUGGINGFACE-ENHANCEMENTS.md
 ./_archive_qmoi-enhanced/QMOIHUGGINGFACESPACES.md
@@ -939,9 +939,9 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/QMOI-OPTIMIZATION.md
 ./_archive_qmoi-enhanced/QMOI_ORCHESTRATOR_FLAGS.md
 ./_archive_qmoi-enhanced/QMOI_ORCHESTRATOR.md
-./_archive_qmoi-enhanced/QMOIOWNDEVICE.md
+./_archive_qmoi-enhanced/QMOIOWNprodICE.md
 ./_archive_qmoi-enhanced/QMOI-PLUGIN-SYSTEM.md
-./_archive_qmoi-enhanced/QMOIPREDEVDOCACTIONS.md
+./_archive_qmoi-enhanced/QMOIPREprodDOCACTIONS.md
 ./_archive_qmoi-enhanced/QMOIQCITYAUTOMATIC.md
 ./_archive_qmoi-enhanced/QMOIQTEAMCUSTOMERCARE.md
 ./_archive_qmoi-enhanced/QMOIRADIOREADME.md
@@ -949,13 +949,13 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/QMOIREGISTRY.md
 ./_archive_qmoi-enhanced/QMOIREVENUEGENERATION.md
 ./_archive_qmoi-enhanced/QMOI-REVENUE-README.md
-./_archive_qmoi-enhanced/QMOISPACEDEV.md
+./_archive_qmoi-enhanced/QMOISPACEprod.md
 ./_archive_qmoi-enhanced/QMOISPACE.md
 ./_archive_qmoi-enhanced/QMOISPACEUI.md
 ./_archive_qmoi-enhanced/QMOISYSTEMAUTO.md
 ./_archive_qmoi-enhanced/QMOITESTENVIRONMENT.md
 ./_archive_qmoi-enhanced/QMOITRADER.md
-./_archive_qmoi-enhanced/QMOIVERCELDEV.md
+./_archive_qmoi-enhanced/QMOIVERCELprod.md
 ./_archive_qmoi-enhanced/QMOIVIDEOPLATFORMS.md
 ./_archive_qmoi-enhanced/QMOI-VOICE-ENHANCEMENT.md
 ./_archive_qmoi-enhanced/QMOIWHATSAPP.md
@@ -1000,8 +1000,8 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/ZERORATEDQMOI.md
 ./AUTH_SYSTEM_IMPLEMENTATION.md
 ./AUTOCLONE_STANDALONE.md
-./AUTODEV_SECRETS.md
-./AU[PRODUCTION READY]WNLOAD.md
+./AUTOprod_SECRETS.md
+./AU[production READY]WNLOAD.md
 ./AUTOGIT.md
 ./AUTOLINTREADME.md
 ./AUTOMATION-SUMMARY.md
@@ -1016,7 +1016,7 @@ Generated from current repository list on $(date)\n
 ./BUILD_COMPLETION_REPORT_v2.md
 ./BUILD_COMPLETION_SUMMARY.md
 ./BUILD_INSTRUCTIONS.md
-./BUILD_INSTRUCTIONS_PRODUCTION.md
+./BUILD_INSTRUCTIONS_production.md
 ./BUILD_REAL_APPS.md
 ./BUILD_TRIGGER.md
 ./CACHING_GUIDE.md
@@ -1199,9 +1199,9 @@ Generated from current repository list on $(date)\n
 ./DEPLOYMENT_STATUS_V1_2_3.md
 ./DEPLOYMENT_VERIFICATION.md
 ./deploy/README.md
-./DEVCOMMANDS.md
-./DEVELOPER_QUICK_START.md
-./DEVICERESOURCEOPTIMIZATION.md
+./prodCOMMANDS.md
+./prodELOPER_QUICK_START.md
+./prodICERESOURCEOPTIMIZATION.md
 ./DOCKER_DEPLOYMENT_GUIDE.md
 ./docs/ACCESSIBILITY.md
 ./docs/ALLTESTSAUTOTESTS.md
@@ -1210,7 +1210,7 @@ Generated from current repository list on $(date)\n
 ./docs/API_REFERENCE.md
 ./docs/APIs_v1.md
 ./docs/APPSVALIDATION.md
-./docs/AUTODEV_INSTRUCTIONS.md
+./docs/AUTOprod_INSTRUCTIONS.md
 ./docs/AUTOEVOLVE.md
 ./docs/AUTO_SETUP_GUIDE.md
 ./DOCS/CI_SIGNING_SETUP.md
@@ -1248,7 +1248,7 @@ Generated from current repository list on $(date)\n
 ./docs/lion_variations/lion-sdk.md
 ./docs/LIONVARIATIONS.md
 ./docs/LION-WEBHOOKS-ENHANCEMENTS.md
-./docs/LOCAL_QMOI_DEVELOPMENT.md
+./docs/LOCAL_QMOI_production.md
 ./docs/MASTER_INDEX.md
 ./docs/MEMORYVALIDATION.md
 ./docs/merged_remediation_plan.md
@@ -1259,18 +1259,18 @@ Generated from current repository list on $(date)\n
 ./docs/operations.md
 ./docs/PARALLEL_ENHANCEMENTS.md
 ./docs/PLATFORM_AUTOMATION.md
-./docs/PRODUCTION_CHECKLIST.md
+./docs/production_CHECKLIST.md
 ./docs/QMOI_AI_GUIDE.md
 ./docs/QMOI_BACKGROUND_AUTOMATION_GUIDE.md
 ./docs/QMOI_BACKGROUND_AUTOMATION_README.md
 ./docs/QMOICLONE.md
 ./docs/QMOI-ENHANCED-AUTOTESTS.md
 ./docs/QMOI_FRIENDSHIP_RUNBOOK.md
-./docs/QMOIGITHUBDEV.md
-./docs/QMOIGITLABDEV.md
+./docs/QMOIGITHUBprod.md
+./docs/QMOIGITLABprod.md
 ./docs/QMOI_MEMORY.md
 ./docs/qmoi_space_enhancements.md
-./docs/QMOIVERCELDEV.md
+./docs/QMOIVERCELprod.md
 ./docs/QTOOLS.md
 ./docs/QUEUE_SUPERVISOR.md
 ./docs/QUICK_REFERENCE.md
@@ -1282,14 +1282,14 @@ Generated from current repository list on $(date)\n
 ./docs/RELEASE_AUTOMATION.md
 ./docs/REVENUE_SPEC.md
 ./docs/REVENUE_SPEC.md.generated.md
-./docs/[PRODUCTION READY]S_ENHANCEMENTS.md
+./docs/[production READY]S_ENHANCEMENTS.md
 ./docs/TROUBLESHOOTING_FAQ.md
 ./docs/TROUBLESHOOTING.md
-./docs/validation/ISSUES_MANUAL_[PRODUCTION READY]S.md
-./docs/validation/MANUAL_[PRODUCTION READY]S_ACTIONS.md
-./docs/validation/MANUAL_[PRODUCTION READY]S_TOP10.md
+./docs/validation/ISSUES_MANUAL_[production READY]S.md
+./docs/validation/MANUAL_[production READY]S_ACTIONS.md
+./docs/validation/MANUAL_[production READY]S_TOP10.md
 ./docs/validation/NEXT_UPGRADE_PLAN.md
-./docs/validation/[PRODUCTION READY]_FIX_ACTIONS.md
+./docs/validation/[production READY]_FIX_ACTIONS.md
 ./docs/VALIDATION_STRATEGIES.md
 ./docs/VALIDATIONSYSTEMS.md
 ./docs/VALIDATION_TOOLS.md
@@ -1300,7 +1300,7 @@ Generated from current repository list on $(date)\n
 ./DOCUMENTATION_INDEX.md
 ./DOCUMENTATION_MASTER_INDEX.md
 ./DOMAINSANDLINKS.md
-./DOWNLOADQMOIAIAPPALLDEVICES.md
+./DOWNLOADQMOIAIAPPALLprodICES.md
 ./EMPLOYEESUSERSENROLLED.md
 ./ENDPOINTS.md
 ./ENHANCED_AUTOMATION_SUMMARY.md
@@ -1319,16 +1319,16 @@ Generated from current repository list on $(date)\n
 ./FILE_MANIFEST.md
 ./FINAL_COMPLETION_REPORT.md
 ./FINAL_HANDOFF.md
-./FINAL_PRODUCTION_SUMMARY.md
+./FINAL_production_SUMMARY.md
 ./FINAL_SESSION_SUMMARY.md
-./FINAL_STATUS_[PRODUCTION READY]S_COMPLETE.md
+./FINAL_STATUS_[production READY]S_COMPLETE.md
 ./FINAL_VERIFICATION.md
 ./FINAL_VERIFICATION_REPORT.md
 ./GIT_COMMIT_INSTRUCTIONS.md
 ./GITHUB_ACTIONS_AUTOFIX.md
 ./GITHUB-ACTIONS-COMPLETE.md
 ./GITHUBPAYED.md
-./.github/PR_AUTO[PRODUCTION READY]S.md
+./.github/PR_AUTO[production READY]S.md
 ./.github/PULL_REQUEST_TEMPLATE/automated_fix.md
 ./.github/PULL_REQUEST_TEMPLATE.md
 ./GITHUB_RELEASES_COMPLETE_GUIDE.md
@@ -1353,10 +1353,10 @@ Generated from current repository list on $(date)\n
 ./INSTALL.md
 ./INTEGRATION_GUIDE.md
 ./INVINSIBLEQMOI.md
-./issues/[PRODUCTION READY]-PROD-CURATE.md
-./issues/[PRODUCTION READY]-PROD-PLATFORMS.md
-./issues/[PRODUCTION READY]-PROD-REPORTS.md
-./issues/[PRODUCTION READY]-PROD-UIUX.md
+./issues/[production READY]-prod-CURATE.md
+./issues/[production READY]-prod-PLATFORMS.md
+./issues/[production READY]-prod-REPORTS.md
+./issues/[production READY]-prod-UIUX.md
 ./ITERATIVE_IMPROVEMENT_ANALYSIS.md
 ./LANGUAGES.md
 ./LEAHWALLET.md
@@ -1668,7 +1668,7 @@ Generated from current repository list on $(date)\n
 ./mobile/node_modules/is-unicode-supported/readme.md
 ./mobile/node_modules/is-wsl/readme.md
 ./mobile/node_modules/@jest/create-cache-key-function/README.md
-./mobile/node_modules/jest-[PRODUCTION READY]/README.md
+./mobile/node_modules/jest-[production READY]/README.md
 ./mobile/node_modules/@jest/schemas/README.md
 ./mobile/node_modules/@jest/types/README.md
 ./mobile/node_modules/jest-util/Readme.md
@@ -1814,8 +1814,8 @@ Generated from current repository list on $(date)\n
 ./mobile/node_modules/raw-body/HISTORY.md
 ./mobile/node_modules/raw-body/README.md
 ./mobile/node_modules/raw-body/SECURITY.md
-./mobile/node_modules/react-devtools-core/node_modules/ws/README.md
-./mobile/node_modules/react-devtools-core/README.md
+./mobile/node_modules/react-prodtools-core/node_modules/ws/README.md
+./mobile/node_modules/react-prodtools-core/README.md
 ./mobile/node_modules/react-is/README.md
 ./mobile/node_modules/@react-native/assets-registry/README.md
 ./mobile/node_modules/@react-native-async-storage/async-storage/README.md
@@ -1854,7 +1854,7 @@ Generated from current repository list on $(date)\n
 ./mobile/node_modules/@react-native-community/cli-tools/node_modules/p-limit/readme.md
 ./mobile/node_modules/@react-native-community/cli-tools/node_modules/p-locate/readme.md
 ./mobile/node_modules/@react-native/debugger-frontend/README.md
-./mobile/node_modules/@react-native/dev-middleware/README.md
+./mobile/node_modules/@react-native/prod-middleware/README.md
 ./mobile/node_modules/@react-native/gradle-plugin/react-native-gradle-plugin/README.md
 ./mobile/node_modules/@react-native/gradle-plugin/README.md
 ./mobile/node_modules/@react-native/js-polyfills/README.md
@@ -1867,7 +1867,7 @@ Generated from current repository list on $(date)\n
 ./mobile/node_modules/react-native/ReactApple/Libraries/RCTFoundation/README.md
 ./mobile/node_modules/react-native/ReactApple/README.md
 ./mobile/node_modules/react-native/ReactCommon/jsinspector-modern/CONCEPTS.md
-./mobile/node_modules/react-native/ReactCommon/react/nativemodule/devtoolsruntimesettings/README.md
+./mobile/node_modules/react-native/ReactCommon/react/nativemodule/prodtoolsruntimesettings/README.md
 ./mobile/node_modules/react-native/ReactCommon/react/runtime/README.md
 ./mobile/node_modules/react-native/README.md
 ./mobile/node_modules/@react-native/virtualized-lists/README.md
@@ -2207,7 +2207,7 @@ Generated from current repository list on $(date)\n
 ./node_modules/@babel/plugin-transform-private-property-in-object/README.md
 ./node_modules/@babel/plugin-transform-property-literals/README.md
 ./node_modules/@babel/plugin-transform-react-display-name/README.md
-./node_modules/@babel/plugin-transform-react-jsx-development/README.md
+./node_modules/@babel/plugin-transform-react-jsx-production/README.md
 ./node_modules/@babel/plugin-transform-react-jsx/README.md
 ./node_modules/@babel/plugin-transform-react-pure-annotations/README.md
 ./node_modules/@babel/plugin-transform-regenerator/README.md
@@ -2713,7 +2713,7 @@ Generated from current repository list on $(date)\n
 ./node_modules/@huggingface/tasks/src/tasks/keypoint-detection/about.md
 ./node_modules/@huggingface/tasks/src/tasks/mask-generation/about.md
 ./node_modules/@huggingface/tasks/src/tasks/object-detection/about.md
-./node_modules/@huggingface/tasks/src/tasks/[PRODUCTION READY]/about.md
+./node_modules/@huggingface/tasks/src/tasks/[production READY]/about.md
 ./node_modules/@huggingface/tasks/src/tasks/question-answering/about.md
 ./node_modules/@huggingface/tasks/src/tasks/reinforcement-learning/about.md
 ./node_modules/@huggingface/tasks/src/tasks/sentence-similarity/about.md
@@ -2856,7 +2856,7 @@ Generated from current repository list on $(date)\n
 ./node_modules/jest-message-util/node_modules/ansi-styles/readme.md
 ./node_modules/jest-message-util/node_modules/pretty-format/README.md
 ./node_modules/jest-message-util/node_modules/react-is/README.md
-./node_modules/jest-[PRODUCTION READY]/README.md
+./node_modules/jest-[production READY]/README.md
 ./node_modules/@jest/pattern/README.md
 ./node_modules/jest-pnp-resolver/README.md
 ./node_modules/jest/README.md
@@ -3674,7 +3674,7 @@ Generated from current repository list on $(date)\n
 ./node_modules/vizion/node_modules/async/README.md
 ./node_modules/vizion/node_modules/ini/README.md
 ./node_modules/vizion/README.md
-./node_modules/vizion/test/fixtures/test_svn/branches/development/README.md
+./node_modules/vizion/test/fixtures/test_svn/branches/production/README.md
 ./node_modules/vizion/test/fixtures/test_svn/trunk/README.md
 ./node_modules/w3c-xmlserializer/LICENSE.md
 ./node_modules/w3c-xmlserializer/README.md
@@ -3722,53 +3722,53 @@ Generated from current repository list on $(date)\n
 ./node_modules/yocto-queue/readme.md
 ./node_modules/zod/README.md
 ./NOTSPONSORED.md
-./OPTION_A_PRODUCTION_READY.md
+./OPTION_A_production_READY.md
 ./PAGES.md
 ./PAYEDGITLAB.md
 ./PAYMENTS.md
 ./PERFORMANCE_GUIDE.md
 ./PHASE_1_COMPLETION_REPORT.md
 ./PHASE_4_COMPLETION_SUMMARY.md
-./PHASE4_PRODUCTION_STRATEGY.md
+./PHASE4_production_STRATEGY.md
 ./PHASE_4_QVILLAGE_HF_COMPLETE.md
 ./PHASE_4_SESSION_COMPLETION.md
 ./PHASE_5_COMPLETION.md
 ./PHASE_6_EXTENDED_SUMMARY.md
 ./PHASE_7_SUMMARY.md
-./[PRODUCTION READY]_scan_summary.md
-./POSTPRODUCTIONCHECKLIST.md
+./[production READY]_scan_summary.md
+./POSTproductionCHECKLIST.md
 ./PRE_RELEASE_DISTRIBUTION_PLAN.md
 ./PREVIEW_ENHANCEMENTS.md
 ./PREVIEWWINDOW.md
 ./PR_FIX_SUMMARY.md
-./PROD_[PRODUCTION READY]S_INVENTORY.md
-./PRODUCTION_ALWAYS_ON_DEPLOYMENT.md
-./PRODUCTION_API_REFERENCE.md
-./PRODUCTION_BUILD_SETUP.md
-./PRODUCTION_CHANGES.md
-./PRODUCTION_CHECKLIST.md
-./PRODUCTIONCHECKLIST.md
-./PRODUCTION_COMPLETION_SUMMARY.md
-./PRODUCTION_DEPLOYMENT_ALL_STEPS.md
-./PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md
-./PRODUCTION_DEPLOYMENT_CHECKLIST.md
-./PRODUCTION_DEPLOYMENT_COMPLETE.md
-./PRODUCTION_DEPLOYMENT_PLAYBOOK.md
-./PRODUCTION_DEPLOYMENT_READY.md
-./PRODUCTION_IMPLEMENTATION.md
-./PRODUCTION_NEXT_STEPS_COMPLETE.md
-./PRODUCTION_READINESS_AUDIT.md
-./PRODUCTION_READINESS_CHECKLIST_FINAL.md
-./PRODUCTION_READINESS_FINAL_AUDIT.md
-./PRODUCTION_READINESS_FINAL_COMPREHENSIVE.md
-./PRODUCTION_READINESS_FINAL.md
-./PRODUCTION_READINESS_REPORT.md
-./PRODUCTION_READY_SUMMARY.md
-./PRODUCTION_RELEASE_ACTION_PLAN.md
-./PRODUCTION_RELEASE_DOCS_INDEX.md
-./PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md
-./PRODUCTION_SETUP_COMPLETE.md
-./PRODUCTION_SETUP.md
+./prod_[production READY]S_INVENTORY.md
+./production_ALWAYS_ON_DEPLOYMENT.md
+./production_API_REFERENCE.md
+./production_BUILD_SETUP.md
+./production_CHANGES.md
+./production_CHECKLIST.md
+./productionCHECKLIST.md
+./production_COMPLETION_SUMMARY.md
+./production_DEPLOYMENT_ALL_STEPS.md
+./production_DEPLOYMENT_AUTO_RECOVERY.md
+./production_DEPLOYMENT_CHECKLIST.md
+./production_DEPLOYMENT_COMPLETE.md
+./production_DEPLOYMENT_PLAYBOOK.md
+./production_DEPLOYMENT_READY.md
+./production_IMPLEMENTATION.md
+./production_NEXT_STEPS_COMPLETE.md
+./production_READINESS_AUDIT.md
+./production_READINESS_CHECKLIST_FINAL.md
+./production_READINESS_FINAL_AUDIT.md
+./production_READINESS_FINAL_COMPREHENSIVE.md
+./production_READINESS_FINAL.md
+./production_READINESS_REPORT.md
+./production_READY_SUMMARY.md
+./production_RELEASE_ACTION_PLAN.md
+./production_RELEASE_DOCS_INDEX.md
+./production_RELEASE_VALIDATION_CHECKLIST.md
+./production_SETUP_COMPLETE.md
+./production_SETUP.md
 ./PROJECT_COMPLETE.md
 ./PROJECT_FILE_INDEX.md
 ./PUBLIC.md
@@ -3779,10 +3779,10 @@ Generated from current repository list on $(date)\n
 ./QAvatar_User_Feedback_Kit.md
 ./QCITY-COMPLETION-SUMMARY.md
 ./QCITY-DELIVERABLES-CHECKLIST.md
-./QCITYDEVICEAUTOUPGRADE.md
-./QCITY_DEVICE_MANAGEMENT.md
+./QCITYprodICEAUTOUPGRADE.md
+./QCITY_prodICE_MANAGEMENT.md
 ./QCITY-ENTERPRISE-COMPLETE.md
-./QCITYMAINDEVICE.md
+./QCITYMAINprodICE.md
 ./QCITY-PROJECT-COMPLETE.md
 ./QCITYQMOIAUTOSTART.md
 ./qcity/README.md
@@ -3795,14 +3795,14 @@ Generated from current repository list on $(date)\n
 ./QI_ENHANCEMENT_PLAN.md
 ./QMOIACCOUNTS.md
 ./QMOIACCOUNTSPLATFORMS.md
-./QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md
+./QMOI_ADVANCED_VALIDATION_AUTOproduction.md
 ./QMOI_AGENT_INSTRUCTIONS.md
 ./QMOIAICORE.md
 ./QMOI-AI-ENHANCEMENT.md
-./QMOI_AI_PRODUCTION_READY.md
+./QMOI_AI_production_READY.md
 ./QMOI-AIRTEL-INTEGRATION.md
-./QMOIALLDEVICESHANDSFREE.md
-./QMOIALLDEVICESINSTALL.md
+./QMOIALLprodICESHANDSFREE.md
+./QMOIALLprodICESINSTALL.md
 ./QMOIALLPLATFORMS.md
 ./QMOIALLPROJECTSADDSTRAILERSDOCS.md
 ./QMOIALWAYSPARALLEL.md
@@ -3815,10 +3815,10 @@ Generated from current repository list on $(date)\n
 ./QMOI_ARCHITECTURE.md
 ./QMOIARTISTS.md
 ./QMOIAUTHBIOMETRICS.md
-./QMOIAUTOAPPSDEV.md
+./QMOIAUTOAPPSprod.md
 ./QMOIAUTOBET.md
-./QMOI_AUTODEV.md
-./QMOIAUTODEV.md
+./QMOI_AUTOprod.md
+./QMOIAUTOprod.md
 ./QMOIAUTODISTRIBUTEMARKET.md
 ./QMOIAUTOEVOLVE.md
 ./QMOI_AUTOFIX_FILES_CREATED.md
@@ -3840,7 +3840,7 @@ Generated from current repository list on $(date)\n
 ./QMOIAUTOPROJECTS.md
 ./QMOIAUTOREVENUEEARN.md
 ./QMOI_AUTO_SETUP_IMPLEMENTATION.md
-./QMOI_AUTO_TESTING_UI_DEVELOPMENT.md
+./QMOI_AUTO_TESTING_UI_production.md
 ./QMOI-AUTOUPDATE.md
 ./QMOIAVATAR.md
 ./QMOIBINARIES.md
@@ -3868,8 +3868,8 @@ Generated from current repository list on $(date)\n
 ./QMOI-CROSS-PLATFORM.md
 ./QMOIDATABASE.md
 ./QMOIDATASETS.md
-./QMOIDEVICES.md
-./QMOIDEV.md
+./QMOIprodICES.md
+./QMOIprod.md
 ./QMOIDNS.md
 ./QMOIDOMAINSLINKS.md
 ./QMOIDOMAINS.md
@@ -3904,10 +3904,10 @@ Generated from current repository list on $(date)\n
 ./QMOIGAMINGCLOUDUSERS.md
 ./QMOIGAMINGGENREV.md
 ./QMOIGITHUBAPP.md
-./QMOIGITHUBDEV.md
+./QMOIGITHUBprod.md
 ./QMOI_GITLAB_AUTOMATION.md
-./QMOIGITLABDEV.md
-./QMOIGITPODDEV.md
+./QMOIGITLABprod.md
+./QMOIGITPODprod.md
 ./QMOIHUGGINGFACEALWAYSUPDATE.md
 ./QMOI-HUGGINGFACE-ENHANCEMENTS.md
 ./QMOIHUGGINGFACESPACES.md
@@ -3932,7 +3932,7 @@ Generated from current repository list on $(date)\n
 ./QMOINETWORK.md
 ./QMOINGROK.md
 ./QMOI-OPTIMIZATION.md
-./QMOIOWNDEVICE.md
+./QMOIOWNprodICE.md
 ./QMOI_PHASE_3_COMPLETION_SUMMARY.md
 ./QMOI-PLATFORM-ANALYTICS.md
 ./QMOI_PLATFORM_ARCHITECTURE.md
@@ -3940,8 +3940,8 @@ Generated from current repository list on $(date)\n
 ./QMOI-PLATFORM-MONITORING.md
 ./QMOI-PLATFORM-SECURITY.md
 ./QMOI-PLUGIN-SYSTEM.md
-./QMOIPREDEVDOCACTIONS.md
-./QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md
+./QMOIPREprodDOCACTIONS.md
+./QMOI_production_AUTO_RECOVERY_COMPLETE.md
 ./QMOI_PROFESSIONAL_DATASETS_PLAN.md
 ./QMOI_PROJECT_MANAGEMENT_SYSTEMS.md
 ./QMOIQCITYAUTOMATIC.md
@@ -3958,7 +3958,7 @@ Generated from current repository list on $(date)\n
 ./QMOI-REVENUE-README.md
 ./QMOI_SELF_UPDATE_SYSTEM.md
 ./QMOISERVERS.md
-./QMOISPACEDEV.md
+./QMOISPACEprod.md
 ./QMOISPACE.md
 ./QMOI_SPACE_QVILLAGE_ENHANCEMENT_PLAN.md
 ./QMOISPACEUI.md
@@ -3978,7 +3978,7 @@ Generated from current repository list on $(date)\n
 ./QMOI_V1_2_3_EXECUTIVE_SUMMARY.md
 ./QMOI_V1_2_3_RELEASE_PLAN_SUMMARY.md
 ./QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md
-./QMOIVERCELDEV.md
+./QMOIVERCELprod.md
 ./QMOIVIDEOPLATFORMS.md
 ./QMOI_VISION_AND_DEBATE_GUIDE.md
 ./QMOI-VOICE-ENHANCEMENT.md
@@ -4006,7 +4006,7 @@ Generated from current repository list on $(date)\n
 ./QVILLAGE_IMPLEMENTATION_SUMMARY.md
 ./QVILLAGE.md
 ./QVILLAGE_QMOI_MODELS_INTEGRATION.md
-./QVILLAGE_READY_FOR_PRODUCTION.md
+./QVILLAGE_READY_FOR_production.md
 ./QVILLAGESPACES.md
 ./QVPNREADME.md
 ./QVS/ENHANCEDQVS.md
@@ -4017,7 +4017,7 @@ Generated from current repository list on $(date)\n
 ./README_ENHANCED.md
 ./README.md
 ./README_MONITORING.md
-./README_PRODUCTION.md
+./README_production.md
 ./REAL_IMPLEMENTATIONS_SUMMARY.md
 ./REAL_IMPLEMENTATIONS_VERIFICATION.md
 ./REFERENCES.md
@@ -4048,7 +4048,7 @@ Generated from current repository list on $(date)\n
 ./scripts/templates/README_template.en.md
 ./scripts/templates/README_template.md
 ./scripts/templates/README_template.sw.md
-./scripts/wallets/PRODUCTION_RUNBOOK.md
+./scripts/wallets/production_RUNBOOK.md
 ./scripts/wallets/README.md
 ./SECRET_SETUP.md
 ./SECURITY_AUDIT_CHECKLIST.md
@@ -4063,7 +4063,7 @@ Generated from current repository list on $(date)\n
 ./SESSION_4_COMPLETION_REPORT.md
 ./SESSION_4_DELIVERABLES.md
 ./SESSION_4_SUMMARY.md
-./SESSION_COMPLETION_REPORT_[PRODUCTION READY]S_PRODUCTION_READY.md
+./SESSION_COMPLETION_REPORT_[production READY]S_production_READY.md
 ./SESSION_COMPLETION_SUMMARY.md
 ./SESSION_PROGRESS.md
 ./SISTERREADME.md
@@ -4073,7 +4073,7 @@ Generated from current repository list on $(date)\n
 ./SSL_SETUP.md
 ./START_HERE.md
 ./START.md
-./START_PRODUCTION_DEPLOYMENT.md
+./START_production_DEPLOYMENT.md
 ./STARTUP_NOTES.md
 ./SYNCREPOS.md
 ./TABLE_OF_CONTENTS.md
@@ -4084,9 +4084,9 @@ Generated from current repository list on $(date)\n
 ./TESTING.md
 ./TESTREADME.md
 ./TESTS.md
-./TODO_PROD_BATCH_PENDING.md
-./[PRODUCTION READY]S_COMPLETION_INDEX.md
-./[PRODUCTION READY]S_COMPLETION_VERIFICATION.md
+./TODO_prod_BATCH_PENDING.md
+./[production READY]S_COMPLETION_INDEX.md
+./[production READY]S_COMPLETION_VERIFICATION.md
 ./TO-DOs.md
 ./tools/allrefs_summary.md
 ./tools/autotest_report.md
@@ -4574,10 +4574,10 @@ Generated from current repository list on $(date)\n
 ./tools/issue_drafts/0477_.npm-cache__cacache_index-v5_fd_71_c7f3aae7973ddb056f116c1e1b5c592809893c3bb8abb715bd9149a465a5.md
 ./tools/issue_drafts/0478_.npm-cache__cacache_index-v5_fe_7e_a91fd1336f3a7ecdb3e92c1c395110e0fa53ba6337dee0415100adc3e48e.md
 ./tools/issue_drafts/0479_.npm-cache__cacache_index-v5_ff_33_ddce6167e599bc37bca44fc513e46f7a8b7af0321571060b48e77309f4ae.md
-./tools/issue_drafts/0480_ALLDEVICESSETTINGS.md.md
+./tools/issue_drafts/0480_ALLprodICESSETTINGS.md.md
 ./tools/issue_drafts/0481_ALLERRORSSTATSQMOI.md.md
 ./tools/issue_drafts/0482_ALLWALLETSQVS.md.md
-./tools/issue_drafts/0483_AU[PRODUCTION READY]WNLOAD.md.md
+./tools/issue_drafts/0483_AU[production READY]WNLOAD.md.md
 ./tools/issue_drafts/0484_AUTOGIT.md.md
 ./tools/issue_drafts/0485_AUTOLINTREADME.md.md
 ./tools/issue_drafts/0486_BUILDAPPSFORALLPLATFORMS.md.md
@@ -4586,8 +4586,8 @@ Generated from current repository list on $(date)\n
 ./tools/issue_drafts/0489_DASHBOARDTRACKS.md.md
 ./tools/issue_drafts/0490_DASHBOARDTRACKS.md.dotfix.bak.md
 ./tools/issue_drafts/0491_DASHBOARDTRACKS.md.linkfix.bak.md
-./tools/issue_drafts/0492_DEVCOMMANDS.md.md
-./tools/issue_drafts/0493_DEVICERESOURCEOPTIMIZATION.md.md
+./tools/issue_drafts/0492_prodCOMMANDS.md.md
+./tools/issue_drafts/0493_prodICERESOURCEOPTIMIZATION.md.md
 ./tools/issue_drafts/0494_ERRORSTRACKS.md.md
 ./tools/issue_drafts/0495_FAST-BOOTSTRAP-README.md.md
 ./tools/issue_drafts/0496_HOOKS.md.md
@@ -4612,8 +4612,8 @@ Generated from current repository list on $(date)\n
 ./tools/issue_drafts/0514_QMOI-PLATFORM-ANALYTICS.md.md
 ./tools/issue_drafts/0515_QMOI-PLATFORM-AUTOMATION.md.md
 ./tools/issue_drafts/0516_QMOI-PLATFORM-MONITORING.md.md
-./tools/issue_drafts/0517_QMOIALLDEVICESINSTALL.md.md
-./tools/issue_drafts/0518_QMOIAUTODEV.md.md
+./tools/issue_drafts/0517_QMOIALLprodICESINSTALL.md.md
+./tools/issue_drafts/0518_QMOIAUTOprod.md.md
 ./tools/issue_drafts/0519_QMOIBINARIES.md.md
 ./tools/issue_drafts/0520_QMOICLONEGITPOD.md.md
 ./tools/issue_drafts/0521_QMOICLONEHF.md.md
@@ -4625,19 +4625,19 @@ Generated from current repository list on $(date)\n
 ./tools/issue_drafts/0527_QMOIEMULATORS.md.md
 ./tools/issue_drafts/0528_QMOIFREE.md.md
 ./tools/issue_drafts/0529_QMOIGAMINGGENREV.md.md
-./tools/issue_drafts/0530_QMOIGITLABDEV.md.md
-./tools/issue_drafts/0531_QMOIGITLABDEV.md.dotfix.bak.md
-./tools/issue_drafts/0532_QMOIGITLABDEV.md.linkfix.bak.md
-./tools/issue_drafts/0533_QMOIGITPODDEV.md.md
-./tools/issue_drafts/0534_QMOIGITPODDEV.md.dotfix.bak.md
-./tools/issue_drafts/0535_QMOIGITPODDEV.md.linkfix.bak.md
+./tools/issue_drafts/0530_QMOIGITLABprod.md.md
+./tools/issue_drafts/0531_QMOIGITLABprod.md.dotfix.bak.md
+./tools/issue_drafts/0532_QMOIGITLABprod.md.linkfix.bak.md
+./tools/issue_drafts/0533_QMOIGITPODprod.md.md
+./tools/issue_drafts/0534_QMOIGITPODprod.md.dotfix.bak.md
+./tools/issue_drafts/0535_QMOIGITPODprod.md.linkfix.bak.md
 ./tools/issue_drafts/0536_QMOIHUGGINGFACEALWAYSUPDATE.md.md
 ./tools/issue_drafts/0537_QMOIJEST.md.md
 ./tools/issue_drafts/0538_QMOIRADIOREADME.md.md
 ./tools/issue_drafts/0539_QMOIREGISTRY.md.md
-./tools/issue_drafts/0540_QMOIVERCELDEV.md.md
-./tools/issue_drafts/0541_QMOIVERCELDEV.md.dotfix.bak.md
-./tools/issue_drafts/0542_QMOIVERCELDEV.md.linkfix.bak.md
+./tools/issue_drafts/0540_QMOIVERCELprod.md.md
+./tools/issue_drafts/0541_QMOIVERCELprod.md.dotfix.bak.md
+./tools/issue_drafts/0542_QMOIVERCELprod.md.linkfix.bak.md
 ./tools/issue_drafts/0543_QMOI_MEMORY.md.md
 ./tools/issue_drafts/0544_QRADIOPROGRAMS.md.md
 ./tools/issue_drafts/0545_QUANTUGENREV.md.md
@@ -4664,7 +4664,7 @@ Generated from current repository list on $(date)\n
 ./tools/issue_drafts/0566_WIRKFLOWSTRACKS.md.md
 ./tools/issue_drafts/0567_WORKSPACE_LIGHT_MODE.md.md
 ./tools/issue_drafts/0568_app_api_deploy_auto-redeploy_route.ts.md
-./tools/issue_drafts/0569_components_DeviceSettingsPanel.tsx.md
+./tools/issue_drafts/0569_components_prodiceSettingsPanel.tsx.md
 ./tools/issue_drafts/0570_components_DownloadManager.tsx.md
 ./tools/issue_drafts/0571_components_HelpGuide.tsx.md
 ./tools/issue_drafts/0572_components_qmedia-player.md.md
@@ -4689,13 +4689,13 @@ Generated from current repository list on $(date)\n
 ./tools/issue_drafts/0591_error-fix-summary.md.md
 ./tools/issue_drafts/0592_git-smart-sync.ps1.md
 ./tools/issue_drafts/0593_git.txt.md
-./tools/issue_drafts/0594_hooks_useDeviceOptimizer.ts.md
+./tools/issue_drafts/0594_hooks_useprodiceOptimizer.ts.md
 ./tools/issue_drafts/0595_hooks_useTTCVoice.ts.md
 ./tools/issue_drafts/0596_hooks_useTrading.ts.md
 ./tools/issue_drafts/0597_hooks_useWhatsApp.ts.md
 ./tools/issue_drafts/0598_lib_trading-config.ts.md
 ./tools/issue_drafts/0599_local-release-verify.ps1.md
-./tools/issue_drafts/05_qmoi-enhanced_QMOISPACEDEV_md.md
+./tools/issue_drafts/05_qmoi-enhanced_QMOISPACEprod_md.md
 ./tools/issue_drafts/0600_logs_quick-test-report.json.md
 ./tools/issue_drafts/0601_main.js.md
 ./tools/issue_drafts/0602_mobile_android_gradle_wrapper_gradle-wrapper.properties.md
@@ -4949,20 +4949,20 @@ Generated from current repository list on $(date)\n
 ./tools/issue_drafts/0848_qmoi-enhanced_.npm-cache__cacache_index-v5_fd_53_5bb1002465c5e287f7d0920204903e2720c0c6023665e5635dcf8b26586a.md
 ./tools/issue_drafts/0849_qmoi-enhanced_.npm-cache__cacache_index-v5_fd_60_528c5445a438483b66270e6a4dddfa6e9bdcceb2b998cb6f7580d23ceb1b.md
 ./tools/issue_drafts/0850_qmoi-enhanced_.npm-cache__cacache_index-v5_ff_9f_48b5354df0d5feb3420245101c38efe5fb13f171ce2093c16eeb4ba41c7e.md
-./tools/issue_drafts/0851_qmoi-enhanced_ALLDEVICESSETTINGS.md.md
+./tools/issue_drafts/0851_qmoi-enhanced_ALLprodICESSETTINGS.md.md
 ./tools/issue_drafts/0852_qmoi-enhanced_ALLERRORSSTATSQMOI.md.md
 ./tools/issue_drafts/0853_qmoi-enhanced_ALLQMOIAIAPPSREALEASESVERSIONS.md.md
-./tools/issue_drafts/0854_qmoi-enhanced_AU[PRODUCTION READY]WNLOAD.md.md
+./tools/issue_drafts/0854_qmoi-enhanced_AU[production READY]WNLOAD.md.md
 ./tools/issue_drafts/0855_qmoi-enhanced_AUTOGIT.md.md
 ./tools/issue_drafts/0856_qmoi-enhanced_AUTOLINTREADME.md.md
 ./tools/issue_drafts/0857_qmoi-enhanced_BUILDAPPSFORALLPLATFORMS.md.md
 ./tools/issue_drafts/0858_qmoi-enhanced_CMDCOMMANDS.md.md
 ./tools/issue_drafts/0859_qmoi-enhanced_CONTINUOUS_IMPROVEMENT.md.md
-./tools/issue_drafts/0860_qmoi-enhanced_DEVCOMMANDS.md.md
-./tools/issue_drafts/0861_qmoi-enhanced_DEVICERESOURCEOPTIMIZATION.md.md
-./tools/issue_drafts/0862_qmoi-enhanced_DOWNLOADQMOIAIAPPALLDEVICES.md.md
-./tools/issue_drafts/0863_qmoi-enhanced_DOWNLOADQMOIAIAPPALLDEVICES.md.dotfix.bak.md
-./tools/issue_drafts/0864_qmoi-enhanced_DOWNLOADQMOIAIAPPALLDEVICES.md.linkfix.bak.md
+./tools/issue_drafts/0860_qmoi-enhanced_prodCOMMANDS.md.md
+./tools/issue_drafts/0861_qmoi-enhanced_prodICERESOURCEOPTIMIZATION.md.md
+./tools/issue_drafts/0862_qmoi-enhanced_DOWNLOADQMOIAIAPPALLprodICES.md.md
+./tools/issue_drafts/0863_qmoi-enhanced_DOWNLOADQMOIAIAPPALLprodICES.md.dotfix.bak.md
+./tools/issue_drafts/0864_qmoi-enhanced_DOWNLOADQMOIAIAPPALLprodICES.md.linkfix.bak.md
 ./tools/issue_drafts/0865_qmoi-enhanced_FAST-BOOTSTRAP-README.md.md
 ./tools/issue_drafts/0866_qmoi-enhanced_INSTALL.md.md
 ./tools/issue_drafts/0867_qmoi-enhanced_INSTALLATION.md.md
@@ -4972,9 +4972,9 @@ Generated from current repository list on $(date)\n
 ./tools/issue_drafts/0871_qmoi-enhanced_QMOI-CLOUD.md.md
 ./tools/issue_drafts/0872_qmoi-enhanced_QMOI-EARNING-ENHANCED.md.md
 ./tools/issue_drafts/0873_qmoi-enhanced_QMOI-OPTIMIZATION.md.md
-./tools/issue_drafts/0874_qmoi-enhanced_QMOIALLDEVICESINSTALL.md.md
+./tools/issue_drafts/0874_qmoi-enhanced_QMOIALLprodICESINSTALL.md.md
 ./tools/issue_drafts/0875_qmoi-enhanced_QMOIAPPS.md.md
-./tools/issue_drafts/0876_qmoi-enhanced_QMOIAUTODEV.md.md
+./tools/issue_drafts/0876_qmoi-enhanced_QMOIAUTOprod.md.md
 ./tools/issue_drafts/0877_qmoi-enhanced_QMOIBINARIES.md.md
 ./tools/issue_drafts/0878_qmoi-enhanced_QMOICLONEGITPOD.md.md
 ./tools/issue_drafts/0879_qmoi-enhanced_QMOICOLABDAGSHUB.md.md
@@ -4983,18 +4983,18 @@ Generated from current repository list on $(date)\n
 ./tools/issue_drafts/0882_qmoi-enhanced_QMOIEMULATORS.md.md
 ./tools/issue_drafts/0883_qmoi-enhanced_QMOIFREE.md.md
 ./tools/issue_drafts/0884_qmoi-enhanced_QMOIGAMINGGENREV.md.md
-./tools/issue_drafts/0885_qmoi-enhanced_QMOIGITLABDEV.md.md
-./tools/issue_drafts/0886_qmoi-enhanced_QMOIGITLABDEV.md.dotfix.bak.md
-./tools/issue_drafts/0887_qmoi-enhanced_QMOIGITLABDEV.md.linkfix.bak.md
-./tools/issue_drafts/0888_qmoi-enhanced_QMOIGITPODDEV.md.md
-./tools/issue_drafts/0889_qmoi-enhanced_QMOIGITPODDEV.md.dotfix.bak.md
-./tools/issue_drafts/0890_qmoi-enhanced_QMOIGITPODDEV.md.linkfix.bak.md
+./tools/issue_drafts/0885_qmoi-enhanced_QMOIGITLABprod.md.md
+./tools/issue_drafts/0886_qmoi-enhanced_QMOIGITLABprod.md.dotfix.bak.md
+./tools/issue_drafts/0887_qmoi-enhanced_QMOIGITLABprod.md.linkfix.bak.md
+./tools/issue_drafts/0888_qmoi-enhanced_QMOIGITPODprod.md.md
+./tools/issue_drafts/0889_qmoi-enhanced_QMOIGITPODprod.md.dotfix.bak.md
+./tools/issue_drafts/0890_qmoi-enhanced_QMOIGITPODprod.md.linkfix.bak.md
 ./tools/issue_drafts/0891_qmoi-enhanced_QMOIHUGGINGFACEALWAYSUPDATE.md.md
 ./tools/issue_drafts/0892_qmoi-enhanced_QMOIRADIOREADME.md.md
 ./tools/issue_drafts/0893_qmoi-enhanced_QMOIREGISTRY.md.md
-./tools/issue_drafts/0894_qmoi-enhanced_QMOIVERCELDEV.md.md
-./tools/issue_drafts/0895_qmoi-enhanced_QMOIVERCELDEV.md.dotfix.bak.md
-./tools/issue_drafts/0896_qmoi-enhanced_QMOIVERCELDEV.md.linkfix.bak.md
+./tools/issue_drafts/0894_qmoi-enhanced_QMOIVERCELprod.md.md
+./tools/issue_drafts/0895_qmoi-enhanced_QMOIVERCELprod.md.dotfix.bak.md
+./tools/issue_drafts/0896_qmoi-enhanced_QMOIVERCELprod.md.linkfix.bak.md
 ./tools/issue_drafts/0897_qmoi-enhanced_QMOI_MEMORY.md.md
 ./tools/issue_drafts/0898_qmoi-enhanced_QMOI_ORCHESTRATOR_FLAGS.md.md
 ./tools/issue_drafts/0899_qmoi-enhanced_QRADIOPROGRAMS.md.md
@@ -5010,7 +5010,7 @@ Generated from current repository list on $(date)\n
 ./tools/issue_drafts/0908_qmoi-enhanced_WATCHDEBUG.md.linkfix.bak.md
 ./tools/issue_drafts/0909_qmoi-enhanced_app_api_deploy_auto-redeploy_route.ts.md
 ./tools/issue_drafts/0910_qmoi-enhanced_app_api_qmoi_auto-fix_start_route.ts.md
-./tools/issue_drafts/0911_qmoi-enhanced_components_DeviceSettingsPanel.tsx.md
+./tools/issue_drafts/0911_qmoi-enhanced_components_prodiceSettingsPanel.tsx.md
 ./tools/issue_drafts/0912_qmoi-enhanced_components_DownloadManager.tsx.md
 ./tools/issue_drafts/0913_qmoi-enhanced_components_HelpGuide.tsx.md
 ./tools/issue_drafts/0914_qmoi-enhanced_components_qmedia-player.md.md
@@ -5027,7 +5027,7 @@ Generated from current repository list on $(date)\n
 ./tools/issue_drafts/0925_qmoi-enhanced_error-fix-summary.md.md
 ./tools/issue_drafts/0926_qmoi-enhanced_git-smart-sync.ps1.md
 ./tools/issue_drafts/0927_qmoi-enhanced_git.txt.md
-./tools/issue_drafts/0928_qmoi-enhanced_hooks_useDeviceOptimizer.ts.md
+./tools/issue_drafts/0928_qmoi-enhanced_hooks_useprodiceOptimizer.ts.md
 ./tools/issue_drafts/0929_qmoi-enhanced_hooks_useTTCVoice.ts.md
 ./tools/issue_drafts/0930_qmoi-enhanced_hooks_useTrading.ts.md
 ./tools/issue_drafts/0931_qmoi-enhanced_hooks_useWhatsApp.ts.md
@@ -5075,7 +5075,7 @@ Generated from current repository list on $(date)\n
 ./tools/issue_drafts/0973_qmoi-enhanced_src_hooks_useTimezone.ts.md
 ./tools/issue_drafts/0974_qmoi-enhanced_src_services_QmoiMemory.ts.md
 ./tools/issue_drafts/0975_qmoi-enhanced_test_config.json.md
-./tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_[PRODUCTION READY].py.md
+./tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_[production READY].py.md
 ./tools/issue_drafts/0977_qmoi-space_.npm-cache__cacache_content-v2_sha512_02_d1_a8497e96eb39c7c4cebea38b288210ed76d0e62f7324915207a1dc0e8f59331e763661f76162b5546ca267cfc2e82f7f47666046b4ba41ffe8998b455e4d.md
 ./tools/issue_drafts/0978_qmoi-space_.npm-cache__cacache_content-v2_sha512_05_12_a4cf29119d9bd5f491c4797687b1eb28e483bc0f6ec0306d1bc06915dfc5e8ed8239eecbb6eee440026388319ad245f9f597e784311aac2ba34d0856afb2.md
 ./tools/issue_drafts/0979_qmoi-space_.npm-cache__cacache_content-v2_sha512_14_44_b2da51354ccd98e6fcd8250b982652bfe3126a7d85b1b85cb8e8b388fc2aa4b23fc7de9ad0684477c95ce93c22dabecf3032591914eb73647e42b6624673.md
@@ -5164,24 +5164,24 @@ Generated from current repository list on $(date)\n
 ./tools/issue_drafts/1061_scripts_wallets_audit.py.md
 ./tools/issue_drafts/1062_scripts_writing_assistant.py.md
 ./tools/issue_drafts/1063_services_adapters_payments_utils.ts.md
-./tools/issue_drafts/1064_services_payments_sandbox_adapter.py.md
+./tools/issue_drafts/1064_services_payments_production_adapter.py.md
 ./tools/issue_drafts/1065_src_components_q-city_QMoiSettingsPanel.tsx.md
 ./tools/issue_drafts/1066_src_hooks_useQmoiKernel.ts.md
 ./tools/issue_drafts/1067_src_hooks_useTimezone.ts.md
 ./tools/issue_drafts/1068_test_config.json.md
 ./tools/issue_drafts/1069_tests_integration_adapter-dryrun.test.ts.md
-./tools/issue_drafts/1070_tests_security_test_security_[PRODUCTION READY].py.md
+./tools/issue_drafts/1070_tests_security_test_security_[production READY].py.md
 ./tools/issue_drafts/1071_tests_test_integration.py.md
 ./tools/issue_drafts/1072_tests_test_link_systems.py.md
 ./tools/issue_drafts/1073_tools_allrefs_summary.md.md
 ./tools/issue_drafts/1074_tools_autotest_runner.py.md
 ./tools/issue_drafts/1075_tools_generate_api_docs.py.md
 ./tools/issue_drafts/1076_tools_qmoi_lint.py.md
-./tools/issue_drafts/1077_tools_update_resume_[PRODUCTION READY]s.py.md
+./tools/issue_drafts/1077_tools_update_resume_[production READY]s.py.md
 ./tools/issue_drafts/10_qmoi-enhanced_scripts_auto_lint_fix_py.md
 ./tools/issue_drafts/11_qmoi-enhanced_scripts_qmoi_auto_evolution_system_py.md
 ./tools/issue_drafts/12_qmoi-enhanced_scripts_enhance_ai_py.md
-./tools/issue_drafts/13_qmoi-enhanced_components_device_DeviceIntegration[PRODUCTION READY]s_ts.md
+./tools/issue_drafts/13_qmoi-enhanced_components_prodice_prodiceIntegration[production READY]s_ts.md
 ./tools/issue_drafts/14_qmoi-enhanced_app_api_qi-trading_route_ts.md
 ./tools/issue_drafts/15_qmoi-enhanced_ai_self_update_py.md
 ./tools/issue_drafts/16_qmoi-enhanced_scripts_qmoi-package-installer_py.md
@@ -5195,8 +5195,8 @@ Generated from current repository list on $(date)\n
 ./tools/link_fix_actions.md
 ./tools/link_fix_actions_more.md
 ./tools/matches_priority.md
-./tools/[PRODUCTION READY]_actions.md
-./tools/[PRODUCTION READY]_artifacts/README.md
+./tools/[production READY]_actions.md
+./tools/[production READY]_artifacts/README.md
 ./tools/qmoi_lint_report.md
 ./tools/release_remediation_guide.md
 ./tools/releases_assets_report.md

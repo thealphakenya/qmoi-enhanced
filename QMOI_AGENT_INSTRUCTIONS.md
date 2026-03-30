@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Agent Instructions (Master / Sister / User)
 
 This file provides clear, actionable agent-style instructions and examples for interacting with `qmoi` over curl. Use the `X-QMOI-ROLE` header or include a `system` message to set persona and privileges.

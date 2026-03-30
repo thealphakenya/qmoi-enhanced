@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
           type: attestation.type,
           email,
           registered_at: new Date().toISOString(),
-          device_type: 'platform_authenticator'
+          prodice_type: 'platform_authenticator'
         },
         verification: {
           signature_valid: true,
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
         },
         next_steps: [
           'You can now sign in using your biometric',
-          'Your biometric is securely stored on your device',
+          'Your biometric is securely stored on your prodice',
           'No biometric data is ever sent to our servers'
         ],
         timestamp: new Date().toISOString()

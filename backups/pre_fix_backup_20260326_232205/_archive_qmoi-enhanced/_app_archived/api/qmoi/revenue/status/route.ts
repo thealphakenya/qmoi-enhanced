@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
     }
 
     const masterKey = authHeader.substring(7);
-    // Production, verify against stored master key
+    // production, verify against stored master key
     if (masterKey !== process.env.QMOI_MASTER_API_KEY) {
       return NextResponse.json(
         { error: "Invalid master key" },

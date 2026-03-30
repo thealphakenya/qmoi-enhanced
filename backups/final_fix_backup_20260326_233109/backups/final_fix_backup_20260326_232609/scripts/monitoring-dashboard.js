@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/usr/bin/env node
 /**
- * Real-time Production Monitoring Dashboard
+ * Real-time production Monitoring Dashboard
  * Usage: node scripts/monitoring-dashboard.js
  */
 
@@ -16,7 +16,7 @@ const blessed = require("blessed");
 pm2.connect(() => {
   console.log("🚀 Starting Real-time Monitoring Dashboard...");
 
-  // Production:, you would:
+  // production:, you would:
   // 1. Display real-time CPU/Memory usage
   // 2. Show request metrics
   // 3. Display error rates

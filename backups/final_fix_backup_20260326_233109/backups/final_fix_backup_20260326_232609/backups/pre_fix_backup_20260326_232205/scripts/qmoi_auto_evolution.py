@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# // Production implementation:
+# // production implementation:
 """
 QMOI Auto-Evolution System
 Automatically evolves QMOI AI system across all aspects including features, UI, and capabilities
@@ -357,7 +357,7 @@ export const useResponsiveDesign = () => {
             else setScreenSize('desktop');
         };
         
-        window.addEventListener('resize', handleResize);
+        window.adprodentListener('resize', handleResize);
         handleResize();
         
         return () => window.removeEventListener('resize', handleResize);
@@ -378,7 +378,7 @@ export const accessibilityEnhancements = {
     
     addKeyboardNavigation: (element: HTMLElement) => {
         element.setAttribute('tabindex', '0');
-        element.addEventListener('keydown', (e) => {
+        element.adprodentListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 element.click();

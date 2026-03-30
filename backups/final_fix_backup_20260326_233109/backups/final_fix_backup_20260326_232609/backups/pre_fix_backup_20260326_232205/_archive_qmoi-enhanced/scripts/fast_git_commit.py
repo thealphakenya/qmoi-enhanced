@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# // Production implementation:
+# // production implementation:
 """Fast Git Commit Script (enhanced)
 
 This script automates a safe fast-commit workflow with options for dry-run,
@@ -86,7 +86,7 @@ class FastGitCommit:
         # Prefer commit --no-verify; still set hooksPath as fallback (non-fatal)
         self.log("Bypassing npm/git hooks for fast commit (if applicable)")
         try:
-            self.run_command(["git", "config", "core.hooksPath", "/dev/null"], "Disable git hooks", check=False)
+            self.run_command(["git", "config", "core.hooksPath", "/prod/null"], "Disable git hooks", check=False)
         except Exception:
             # non-fatal
             pass

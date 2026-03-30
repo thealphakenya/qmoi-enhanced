@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { EventEmitter } from "events";
 
 interface RevenueProjectRequest {
@@ -143,7 +143,7 @@ export class EnhancedRevenueAutomationService extends EventEmitter {
   }
 
   private discoverDeals(platforms: string[]): PlatformDeal[] {
-    // Production implementation: deal discovery
+    // production implementation: deal discovery
     return platforms.map((platform) => ({
       platform,
       dealType: "affiliate",

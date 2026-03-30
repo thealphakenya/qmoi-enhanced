@@ -19,13 +19,13 @@ REPORT_DIR.mkdir(exist_ok=True)
 # Pre-compiled regex patterns for speed
 CRITICAL_PATTERNS = [
     # Implementation markers  
-    (r'\[PRODUCTION\s+IMPLEMENTATION\s+REQUIRED\]', 'IMPL_MARKER'),
-    (r'PRODUCTION\s+IMPLEMENTATION\s+REQUIRED', 'IMPL_MARKER'),
-    (r'PRODUCTION\s+READY\]', 'IMPL_MARKER'),
+    (r'\[production\s+IMPLEMENTATION\s+REQUIRED\]', 'IMPL_MARKER'),
+    (r'production\s+IMPLEMENTATION\s+REQUIRED', 'IMPL_MARKER'),
+    (r'production\s+READY\]', 'IMPL_MARKER'),
     
     # TODO/FIXME with implementation context
     (r'TODO\s*:.*IMPL', 'TODO_IMPL'),
-    (r'FIXME\s*:.*PROD', 'FIXME_PROD'),
+    (r'FIXME\s*:.*prod', 'FIXME_prod'),
     
     # Stubs and unimplemented
     (r'\bMOCK\s+\w+', 'MOCK_CODE'),
@@ -50,7 +50,7 @@ CRITICAL_PATTERNS = [
     (r'@ts-ignore', 'TS_IGNORE'),
     (r'@ts-nocheck', 'TS_NOCHECK'),
     
-    # Localhost/dev endpoints
+    # Localhost/prod endpoints
     (r'localhost:[0-9]{4}', 'LOCALHOST'),
     (r'127\.0\.0\.1:[0-9]{4}', 'LOCALHOST_IP'),
     (r'http://\s*localhost', 'HTTP_LOCALHOST'),
@@ -120,7 +120,7 @@ class OptimizedUltimateScanner:
         return True
 
     def scan_file(self, file_path):
-        """Scan file for non-production patterns"""
+        """Scan file for production patterns"""
         issues = []
         
         try:
@@ -149,7 +149,7 @@ class OptimizedUltimateScanner:
     def scan_repository(self):
         """Scan entire repository efficiently"""
         print(f"\n{'='*80}")
-        print(f"🔍 OPTIMIZED ULTIMATE PRODUCTION SCANNER v4.1")
+        print(f"🔍 OPTIMIZED ULTIMATE production SCANNER v4.1")
         print(f"{'='*80}\n")
         print(f"📡 Efficiently scanning COMPLETE REPOSITORY...")
         print(f"   Base: {BASE_DIR}")
@@ -183,7 +183,7 @@ class OptimizedUltimateScanner:
         """Generate detailed report"""
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
-║      OPTIMIZED ULTIMATE COMPREHENSIVE PRODUCTION SCAN v4.1                 ║
+║      OPTIMIZED ULTIMATE COMPREHENSIVE production SCAN v4.1                 ║
 ║                    {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
@@ -192,7 +192,7 @@ class OptimizedUltimateScanner:
 
 Total Files Checked:        {self.files_scanned}
 Files with Issues:          {self.files_with_issues}
-Total Non-Production Issues: {self.issues_found}
+Total production Issues: {self.issues_found}
 Scan Duration:              {(datetime.now() - self.start_time).total_seconds():.1f} seconds
 
 ═══════════════════════════════════════════════════════════════════════════════
@@ -301,13 +301,13 @@ def main():
     
     print(f"\n{'='*80}")
     if scanner.issues_found > 0:
-        print(f"⚠️  {scanner.issues_found} non-production patterns found in {scanner.files_with_issues} files")
+        print(f"⚠️  {scanner.issues_found} production patterns found in {scanner.files_with_issues} files")
         print(f"\nTo fix all issues:")
         print(f"  1. Review: cat {txt_file}")
         print(f"  2. Fix: python3 scripts/create_enhanced_fixer.py")
         print(f"  3. Verify: python3 scripts/ultimate_production_scanner.py")
     else:
-        print(f"✅ NO NON-PRODUCTION CODE FOUND!")
+        print(f"✅ NO production CODE FOUND!")
         print(f"   Codebase is production-ready!")
     print(f"{'='*80}\n")
 

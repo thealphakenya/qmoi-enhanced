@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 import { useState, useEffect, useCallback } from "react";
 import { useQuery, useMutation } from "react-query";
 import axios, { AxiosError } from "axios";
@@ -33,7 +33,7 @@ interface Task {
   projectId: string;
   title: string;
   description: string;
-  status: "[PRODUCTION READY]" | "in-progress" | "review" | "completed";
+  status: "[production READY]" | "in-progress" | "review" | "completed";
   priority: "low" | "medium" | "high" | "critical";
   assignee: string;
   dueDate: number;

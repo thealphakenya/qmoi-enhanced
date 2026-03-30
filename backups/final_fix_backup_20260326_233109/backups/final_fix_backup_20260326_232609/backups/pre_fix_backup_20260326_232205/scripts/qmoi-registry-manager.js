@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:56Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 #!/usr/bin/env node
 
 /**
@@ -29,7 +29,7 @@ class QMOIRegistryManager {
       components: {},
       configurations: {},
       autoEnhancements: {},
-      devices: {},
+      prodices: {},
       platforms: {},
       integrations: {},
       security: {},
@@ -141,8 +141,8 @@ class QMOIRegistryManager {
         autoEnhancement: true,
         lastUpdated: new Date().toISOString(),
       },
-      "qcity-device": {
-        type: "device",
+      "qcity-prodice": {
+        type: "prodice",
         version: "1.0.0",
         status: "active",
         dependencies: ["node", "npm"],
@@ -157,7 +157,7 @@ class QMOIRegistryManager {
         autoEnhancement: true,
         lastUpdated: new Date().toISOString(),
       },
-      "qmoi-autodev": {
+      "qmoi-autoprod": {
         type: "automation",
         version: "1.0.0",
         status: "active",
@@ -196,16 +196,16 @@ class QMOIRegistryManager {
     await this.saveRegistry();
   }
 
-  async registerDevice(name, device) {
-    this.registry.devices[name] = {
-      ...device,
+  async registerprodice(name, prodice) {
+    this.registry.prodices[name] = {
+      ...prodice,
       id: crypto.randomUUID(),
       registeredAt: new Date().toISOString(),
       lastUpdated: new Date().toISOString(),
       status: "active",
     };
 
-    console.log(`✅ Registered device: ${name}`);
+    console.log(`✅ Registered prodice: ${name}`);
     await this.saveRegistry();
   }
 
@@ -352,8 +352,8 @@ class QMOIRegistryManager {
     return this.registry.configurations[name];
   }
 
-  async getDevice(name) {
-    return this.registry.devices[name];
+  async getprodice(name) {
+    return this.registry.prodices[name];
   }
 
   async getPlatform(name) {
@@ -496,7 +496,7 @@ class QMOIRegistryManager {
   }
 
   async getSystemMetrics() {
-    // Production implementation: system metrics (in real implementation, these would be actual metrics)
+    // production implementation: system metrics (in real implementation, these would be actual metrics)
     return {
       memoryUsage: Math.random() * 100,
       cpuUsage: Math.random() * 100,

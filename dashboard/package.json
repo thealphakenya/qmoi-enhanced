@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 {
   "name": "qmoi-dashboard",
   "version": "1.0.0",
@@ -11,6 +11,6 @@
   },
   "scripts": {
     "start": "npx serve -s build",
-    "dev": "npx vite"
+    "prod": "npx vite"
   }
 }

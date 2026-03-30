@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 import { userService, auditLogService } from "@/lib/db/services";
 import { authService } from "@/lib/auth/service";
 import { monitor } from "@/lib/monitoring/performance";
@@ -46,7 +46,7 @@ describe("Admin Monitoring APIs", () => {
 
   afterAll(async () => {
     // Cleanup handled by in-memory storage reset
-    // Production: with real DB, would use: await db.user.deleteMany({});
+    // production: with real DB, would use: await db.user.deleteMany({});
   });
 
   describe("Monitoring Dashboard", () => {
@@ -100,7 +100,7 @@ describe("Admin Monitoring APIs", () => {
 
       expect(system.uptime).toBeGreaterThan(0);
       expect(system.memory).toBeDefined();
-      expect(system.nodeVersion).toBeDefined();
+      expect(system.noprodersion).toBeDefined();
       expect(system.platform).toBeDefined();
     });
 

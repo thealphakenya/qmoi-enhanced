@@ -5,7 +5,7 @@
 
 #!/usr/bin/env node
 /**
- * Real-time Production Monitoring Dashboard
+ * Real-time production Monitoring Dashboard
  * Usage: node scripts/monitoring-dashboard.js
  */
 
@@ -15,7 +15,7 @@ const blessed = require("blessed");
 pm2.connect(() => {
   console.log("🚀 Starting Real-time Monitoring Dashboard...");
 
-  // Production:, you would:
+  // production:, you would:
   // 1. Display real-time CPU/Memory usage
   // 2. Show request metrics
   // 3. Display error rates

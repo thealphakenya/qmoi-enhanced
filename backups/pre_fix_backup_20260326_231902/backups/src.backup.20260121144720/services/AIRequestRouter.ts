@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 import { MultiUserSessionManager, User } from "./MultiUserSessionManager";
 import { ContextEngine } from "./ContextEngine";
 
@@ -87,12 +87,12 @@ export class AIRequestRouter {
   }
 
   private async handleFileRequest(user: User, _request: AIRequest) {
-    // Production: implement file editing, preview, commit/rollback with VCS
+    // production: implement file editing, preview, commit/rollback with VCS
     return { status: "file-handled", user: user.id, message: _request.message };
   }
 
   private async handleProjectRequest(user: User, _request: AIRequest) {
-    // Production: implement project/task switching and continuation logic
+    // production: implement project/task switching and continuation logic
     return {
       status: "project-handled",
       user: user.id,
@@ -101,7 +101,7 @@ export class AIRequestRouter {
   }
 
   private async handleFinancialRequest(user: User, _request: AIRequest) {
-    // Production: integrate with wallet, M-Pesa, Airtel Money, Pesapal APIs
+    // production: integrate with wallet, M-Pesa, Airtel Money, Pesapal APIs
     return {
       status: "financial-handled",
       user: user.id,
@@ -110,7 +110,7 @@ export class AIRequestRouter {
   }
 
   private async handleVersionRequest(user: User, _request: AIRequest) {
-    // Production: return version info, changelog, and release notes
+    // production: return version info, changelog, and release notes
     return {
       status: "version-handled",
       user: user.id,
@@ -119,7 +119,7 @@ export class AIRequestRouter {
   }
 
   private async handleChatRequest(user: User, _request: AIRequest) {
-    // Production: integrate with AI chat engine for intelligent responses
+    // production: integrate with AI chat engine for intelligent responses
     return { status: "chat-handled", user: user.id, message: _request.message };
   }
 }

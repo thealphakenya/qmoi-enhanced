@@ -1,7 +1,7 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// Production-ready QMOI AI Trading API with real Bitget integration
+// production-ready QMOI AI Trading API with real Bitget integration
 import type { NextApiRequest, NextApiResponse } from "next";
 import * as crypto from "crypto";
 import * as fs from "fs";

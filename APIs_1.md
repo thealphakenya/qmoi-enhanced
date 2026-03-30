@@ -12,7 +12,7 @@
 **Generated**: 2026-03-29T03:52:00Z
 **Total Endpoints**: 66 (28 QMOI Core + 6 Avatar System + 32 Financial)
 **Format**: Comprehensive Single-File Reference
-**Status**: ✅ Production Ready
+**Status**: ✅ production Ready
 
 ## APIs Summary
 
@@ -49,13 +49,13 @@
 | 7 | `/api/qmoi/health/stream` | GET | Token | Stream real-time health metrics (SSE) |
 | 8 | `/api/qmoi/execute` | POST | Token | Execute QMOI actions |
 | 9 | `/api/qmoi/suggestions` | POST | Token | Get AI improvement suggestions |
-| 10 | `/api/qmoi/autodev/state` | GET/POST | Token | Get/set AutoDev state |
-| 11 | `/api/qmoi/autodev/toggle` | POST | Token | Toggle AutoDev automation |
-| 12 | `/api/qmoi/autodev/research` | POST | Token | AutoDev codebase research |
-| 13 | `/api/qmoi/autodev/suggestions/improvements` | GET | Token | Get code improvements |
-| 14 | `/api/qmoi/autodev/suggestions/optimizations` | GET | Token | Get performance optimizations |
-| 15 | `/api/qmoi/autodev/suggestions/features` | GET | Token | Get feature suggestions |
-| 16 | `/api/qmoi/autodev/generate-feature` | POST | Token | Generate code for feature |
+| 10 | `/api/qmoi/autoprod/state` | GET/POST | Token | Get/set Autoprod state |
+| 11 | `/api/qmoi/autoprod/toggle` | POST | Token | Toggle Autoprod automation |
+| 12 | `/api/qmoi/autoprod/research` | POST | Token | Autoprod codebase research |
+| 13 | `/api/qmoi/autoprod/suggestions/improvements` | GET | Token | Get code improvements |
+| 14 | `/api/qmoi/autoprod/suggestions/optimizations` | GET | Token | Get performance optimizations |
+| 15 | `/api/qmoi/autoprod/suggestions/features` | GET | Token | Get feature suggestions |
+| 16 | `/api/qmoi/autoprod/generate-feature` | POST | Token | Generate code for feature |
 | 17 | `/api/qmoi/evolution/track-evolution` | GET/POST | Token | Track evolution cycles |
 | 18 | `/api/qmoi/evolution/replace-model` | POST | Admin | Replace with evolved model |
 | 19 | `/api/qmoi/evolution/compare-models` | POST | Token | Compare models for performance |
@@ -81,7 +81,7 @@
 | 25 | `/api/automation/trigger` | POST | Token | Trigger automated workflows |
 | 26 | `/api/qvs` | GET | Optional | Get QVS information |
 | 27 | `/api/preview/analyze` | POST | Optional | Analyze code/content |
-| 28 | `/api/preview/execute-tool` | POST | Optional | Execute dev tools |
+| 28 | `/api/preview/execute-tool` | POST | Optional | Execute prod tools |
 
 ---
 
@@ -112,13 +112,13 @@
 - `/api/qmoi/health/stream`
 - `/api/qmoi/execute`
 - `/api/qmoi/suggestions`
-- `/api/qmoi/autodev/state`
-- `/api/qmoi/autodev/toggle`
-- `/api/qmoi/autodev/research`
-- `/api/qmoi/autodev/suggestions/improvements`
-- `/api/qmoi/autodev/suggestions/optimizations`
-- `/api/qmoi/autodev/suggestions/features`
-- `/api/qmoi/autodev/generate-feature`
+- `/api/qmoi/autoprod/state`
+- `/api/qmoi/autoprod/toggle`
+- `/api/qmoi/autoprod/research`
+- `/api/qmoi/autoprod/suggestions/improvements`
+- `/api/qmoi/autoprod/suggestions/optimizations`
+- `/api/qmoi/autoprod/suggestions/features`
+- `/api/qmoi/autoprod/generate-feature`
 - `/api/qmoi/evolution/track-evolution`
 - `/api/qmoi/evolution/replace-model`
 - `/api/qmoi/evolution/compare-models`
@@ -141,7 +141,7 @@
 - `/api/avatars/generate`
 - `/api/avatars/:userId/customize`
 
-### Financial System (32) - PRODUCTION READY
+### Financial System (32) - production READY
 - `/api/wallets` (GET, POST)
 - `/api/wallets/:id` (GET, PUT, DELETE)
 - `/api/wallets/:id/backup` (POST)
@@ -211,7 +211,7 @@
 ### By Category
 - **Security/Auth**: 5 endpoints (14.7%)
 - **Core Features**: 13 endpoints (38.2%)
-- **Development**: 3 endpoints (8.8%)
+- **production**: 3 endpoints (8.8%)
 - **System**: 6 endpoints (17.6%)
 - **Tools**: 2 endpoints (5.9%)
 - **Assets**: 6 endpoints (17.6%)
@@ -256,7 +256,7 @@ All endpoints return JSON with standard structure:
 
 ---
 
-## ✅ Production Ready Status
+## ✅ production Ready Status
 
 - ✅ All 34 endpoints documented
 - ✅ Authentication requirements specified
@@ -270,7 +270,7 @@ All endpoints return JSON with standard structure:
 ---
 
 **Last Updated**: 2026-03-29T03:52:00Z
-**Status**: ✅ Production Ready
+**Status**: ✅ production Ready
 **Total Endpoints**: 34
 **Coverage**: 100%
 - **File**: `qmoi/payload.ts`
@@ -314,3 +314,260 @@ Content-Type: application/json
 }
 ```
 
+
+
+
+
+## AUTO-GENERATED ENDPOINTS
+
+- /api/account-automation
+- /api/accountability
+- /api/admin/alerts
+- /api/admin/audit-logs
+- /api/admin/autofix/automation
+- /api/admin/autofix/autoscan
+- /api/admin/autofix/background-automation
+- /api/admin/autofix/bootstrap
+- /api/admin/autofix/config
+- /api/admin/autofix/errors
+- /api/admin/autofix/fix-all
+- /api/admin/autofix/fix/{errorId}
+- /api/admin/autofix/health
+- /api/admin/autofix/healthmonitor
+- /api/admin/autofix/scan
+- /api/admin/autofix/stream
+- /api/admin/dashboard
+- /api/admin/financial/global
+- /api/admin/financial/summary
+- /api/admin/master/auth
+- /api/admin/master/logout
+- /api/admin/monitoring
+- /api/admin/rate-limits
+- /api/admin/users
+- /api/ai
+- /api/ai-anomaly-service
+- /api/ai-health
+- /api/ai-self-diagnostics
+- /api/ai/scan
+- /api/analytics/transactions
+- /api/analytics/wallets
+- /api/auth/biometric/capture
+- /api/auth/login
+- /api/auth/login
+- /api/auth/profile
+- /api/auth/refresh
+- /api/auth/register
+- /api/auth/settings
+- /api/auth/signin
+- /api/auth/signup
+- /api/auth/verify
+- /api/auth/verify-email
+- /api/auth/webauthn/auth/finish
+- /api/auth/webauthn/auth/options
+- /api/auth/webauthn/authenticate
+- /api/auth/webauthn/register
+- /api/auth/webauthn/register/finish
+- /api/auth/webauthn/register/options
+- /api/automation/status
+- /api/automation/trigger
+- /api/avatars/{userId}
+- /api/biometric/templates
+- /api/biometric/verify
+- /api/cashon
+- /api/cashon/balance
+- /api/cashon/deposit
+- /api/cashon/signals
+- /api/cashon/start-trading
+- /api/cashon/stop-trading
+- /api/cashon/trading-status
+- /api/chat/enhanced
+- /api/consciousness
+- /api/consciousness/health
+- /api/datasets
+- /api/datasets/settings
+- /api/datasets/{id}
+- /api/debug/users
+- /api/deploy
+- /api/deploy/auto-redeploy
+- /api/deployment-status
+- /api/device-fingerprint
+- /api/document-backup
+- /api/domains
+- /api/domains/health
+- /api/earning
+- /api/emails
+- /api/emergency/config
+- /api/emergency/dispatch
+- /api/emergency/email
+- /api/emergency/lockdown
+- /api/emergency/sms
+- /api/emergency/wipe
+- /api/employment
+- /api/employment/megavault
+- /api/employment/payment
+- /api/employment/revenue
+- /api/enhanced-email/analytics
+- /api/enhanced-email/realtime
+- /api/enhanced-email/rules
+- /api/enhanced-email/send
+- /api/enhanced-email/templates
+- /api/enhanced-link-domain
+- /api/evolution/autoclone-evolution
+- /api/evolution/platform-evolution
+- /api/files
+- /api/financial/audit
+- /api/financial/balances
+- /api/financial/transactions
+- /api/financial/verify
+- /api/git/branch
+- /api/git/commit
+- /api/git/pr
+- /api/git/push
+- /api/git/remote
+- /api/git/status
+- /api/global
+- /api/global-links
+- /api/global-news
+- /api/health
+- /api/health/data
+- /api/links
+- /api/links/validate
+- /api/links/{id}/zero-rated
+- /api/master/domains
+- /api/master/domains/approve/{domain}
+- /api/master/domains/emergency-takeover
+- /api/master/domains/force-refresh
+- /api/master/domains/remove/{domain}
+- /api/master/domains/status
+- /api/master/links
+- /api/master/sponsored/add
+- /api/master/sponsored/analytics
+- /api/master/sponsored/list
+- /api/master/sponsored/remove/{userId}
+- /api/master/sponsored/sync
+- /api/master/tracks
+- /api/media/generate
+- /api/media/status
+- /api/metrics
+- /api/monitor/status
+- /api/mpesa/callback
+- /api/notifications/test
+- /api/payments/initiate
+- /api/platforms
+- /api/preview/analyze
+- /api/preview/execute-tool
+- /api/qapikey
+- /api/qcity/audit-log
+- /api/qcity/remote-command
+- /api/qcity/selfheal-npm
+- /api/qcity/status
+- /api/qi-spaces
+- /api/qi-trading
+- /api/qmoi-database
+- /api/qmoi-earning-enhanced
+- /api/qmoi-gitlab/deployments
+- /api/qmoi-gitlab/errors
+- /api/qmoi-gitlab/jobs
+- /api/qmoi-gitlab/pipelines
+- /api/qmoi-gitlab/trigger
+- /api/qmoi-model
+- /api/qmoi-tracks
+- /api/qmoi/advanced-analysis
+- /api/qmoi/audio
+- /api/qmoi/auto-fix/download-report
+- /api/qmoi/auto-fix/github-status
+- /api/qmoi/auto-fix/start
+- /api/qmoi/auto-fix/status
+- /api/qmoi/auto-fix/stop
+- /api/qmoi/auto-setup
+- /api/qmoi/autodev/generate-feature
+- /api/qmoi/autodev/generate-feature
+- /api/qmoi/autodev/research
+- /api/qmoi/autodev/research
+- /api/qmoi/autodev/state
+- /api/qmoi/autodev/suggestions/features
+- /api/qmoi/autodev/suggestions/improvements
+- /api/qmoi/autodev/suggestions/optimizations
+- /api/qmoi/autodev/toggle
+- /api/qmoi/autodev/toggle
+- /api/qmoi/avatars
+- /api/qmoi/backup
+- /api/qmoi/chat
+- /api/qmoi/chat-enhanced
+- /api/qmoi/evolution/compare-models
+- /api/qmoi/evolution/replace-model
+- /api/qmoi/evolution/track-evolution
+- /api/qmoi/execute
+- /api/qmoi/files/{id}
+- /api/qmoi/friendship
+- /api/qmoi/health
+- /api/qmoi/health/stream
+- /api/qmoi/language
+- /api/qmoi/master-mode
+- /api/qmoi/memory
+- /api/qmoi/own-device-logs
+- /api/qmoi/own-device-logs/export
+- /api/qmoi/profile-questions
+- /api/qmoi/projects
+- /api/qmoi/research
+- /api/qmoi/revenue
+- /api/qmoi/revenue-dashboard
+- /api/qmoi/revenue/reset
+- /api/qmoi/revenue/start
+- /api/qmoi/revenue/status
+- /api/qmoi/revenue/stop
+- /api/qmoi/revenue/target
+- /api/qmoi/revenue/transactions
+- /api/qmoi/revenue/transfer
+- /api/qmoi/self-work/code-review
+- /api/qmoi/self-work/debug
+- /api/qmoi/self-work/run-tests
+- /api/qmoi/session
+- /api/qmoi/suggestions
+- /api/qmoi/transcribe
+- /api/qmoi/upload
+- /api/qmoi/user
+- /api/qmoi/visuals
+- /api/qmoi/voice
+- /api/qmoi/voice-enroll
+- /api/qmoi/voice-preview
+- /api/qmoi/voice-profiles
+- /api/qnews
+- /api/qradio
+- /api/qstore
+- /api/qvillage
+- /api/qvillage/inference
+- /api/qvillage/model-card
+- /api/qvillage/models
+- /api/qvillage/spaces
+- /api/qvs
+- /api/social-automation
+- /api/ssh/list
+- /api/ssh/read
+- /api/ssh/write
+- /api/tracks
+- /api/tracks/settings
+- /api/tracks/stream
+- /api/tracks/{id}
+- /api/trading/status
+- /api/transactions
+- /api/tts/generate
+- /api/tts/stream
+- /api/users/profile
+- /api/version
+- /api/voice/enroll
+- /api/voice/verify
+- /api/wallets
+- /api/wallets/{walletId}
+- /api/webauthn/authenticate
+- /api/webauthn/register
+- /api/webhooks/payments
+- /api/webhooks/qvillage
+- /api/whatsapp-bot
+- /api/whatsapp-business
+- /api/whatsapp/audit
+- /api/whatsapp/verify
+- /api/wifi
+- /api/wifi-security
+- /api/wifi/scan
+- /api/youtube/download

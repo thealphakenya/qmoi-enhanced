@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # Phase 6 Extended: Monitoring & Observability Implementation Guide
 
 ## Overview
@@ -76,7 +76,7 @@ Generated → Viewed → Acknowledged/Dismissed/Escalated
 
 - `acknowledge`: Mark alert as seen by admin
 - `dismiss`: Temporarily hide alert
-- `escalate`: Route to on-call team ([PRODUCTION READY])
+- `escalate`: Route to on-call team ([production READY])
 
 **Storage**: In-memory (production should use database)
 
@@ -113,7 +113,7 @@ if (!checkLimit(userId)) {
 **GET Endpoint**: View current usage and configuration
 **PUT Endpoint**: Update limits or reset to default
 
-**Production Considerations**:
+**production Considerations**:
 
 - Replace Map with Redis for distributed systems
 - Implement per-second cleanup (see `cleanupRateLimits()`)
@@ -143,7 +143,7 @@ if (!checkLimit(userId)) {
   resourceId: string; // Which resource
   changes: JSON; // What changed (before/after)
   ipAddress: string; // From where
-  userAgent: string; // What device
+  userAgent: string; // What prodice
   timestamp: Date; // When
 }
 ```
@@ -363,17 +363,17 @@ npm test -- __tests__/api/monitoring.test.ts
 
 ---
 
-## Production Considerations
+## production Considerations
 
 ### 1. Replace In-Memory Storage with Redis/Database
 
-**Current** (Development):
+**Current** (production):
 
 ```typescript
 const rateLimits = new Map<string, RateLimit>();
 ```
 
-**Production**:
+**production**:
 
 ```typescript
 // Use Redis for distributed rate limits

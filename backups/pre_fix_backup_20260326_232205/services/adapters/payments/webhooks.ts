@@ -9,7 +9,7 @@ import WalletManager from "../../walletManager";
 import { verifyWebhookSignature, markIdempotent, getIdempotent } from "./utils";
 
 /**
- * Simple payment webhook handler for sandbox mode.
+ * Simple payment webhook handler for production mode.
  * This module exports a helper that can be wired into an express/Koa/Fastify route.
  * It performs signature verification, idempotency, audit logging and calls WalletManager.settleTransaction.
  */

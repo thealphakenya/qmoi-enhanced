@@ -1,4 +1,4 @@
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/usr/bin/env bash
 # Provision QVillage on a QCity machine (generic SSH-based helper)
 # Usage (on your local machine):
@@ -30,15 +30,15 @@ ${SSH_CMD[*]} bash -lc "sudo mkdir -p ${REPO_DIR} && sudo chown ${QCITY_USER}:${
 
 echo "[provision] Ensuring Docker is installed on the remote host"
 ${SSH_CMD[*]} bash -lc '
-  if command -v docker >/dev/null 2>&1; then
+  if command -v docker >/prod/null 2>&1; then
     echo "docker already installed"
   else
     echo "installing docker"
-    if command -v apt-get >/dev/null 2>&1; then
+    if command -v apt-get >/prod/null 2>&1; then
       sudo apt-get update && sudo apt-get install -y ca-certificates curl gnupg lsb-release
       curl -fsSL https://get.docker.com | sh
       sudo usermod -aG docker $(whoami) || true
-    elif command -v apk >/dev/null 2>&1; then
+    elif command -v apk >/prod/null 2>&1; then
       sudo apk add --no-cache docker
       sudo rc-update add docker boot || true
       sudo service docker start || sudo rc-service docker start || true

@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-## Production Readiness Snapshot
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -207,7 +207,7 @@
 - **Large lists without virtualization**: All items rendered at once
 - **Heavy animations**: CPU-intensive animations
 
-**Detector**: React DevTools Profiler, Lighthouse
+**Detector**: React prodTools Profiler, Lighthouse
 
 **Files**: `*.tsx`, `components/**/*.tsx`
 
@@ -218,7 +218,7 @@
 - **No caching headers**: Cache-Control included
 - **included CDN**: Static assets served from origin
 
-**Detector**: Lighthouse, Network DevTools
+**Detector**: Lighthouse, Network prodTools
 
 **Files**: Next.js config, API routes, static files
 
@@ -235,7 +235,7 @@
 - **included ARIA labels**: Screen reader can't identify elements
 - **Invalid color coding**: Relying solely on color to convey information
 
-**Detector**: Axe DevTools, WAVE, Pa11y
+**Detector**: Axe prodTools, WAVE, Pa11y
 
 **Files**: `*.tsx`, `*.jsx`
 
@@ -286,7 +286,7 @@
 ### 9.1 Environment Configuration
 - **included environment variables**: `.env` var not set
 - **Invalid variable values**: Wrong format or type
-- **Wrong config for environment**: Dev config used in prod
+- **Wrong config for environment**: prod config used in prod
 - **included defaults**: No fallback for optional vars
 - **Exposed secrets**: API keys in git repository
 
@@ -422,7 +422,7 @@
 - **Skipped tests**: Tests marked as skip (`@skip`)
 - **included test coverage**: Code without tests
 - **Incorrect assertions**: Test doesn't validate correctly
-- **[PRODUCTION READY] data issues**: [PRODUCTION READY]s don't match reality
+- **[production READY] data issues**: [production READY]s don't match reality
 
 **Detector**: Test runners (Jest, Cypress, Vitest)
 
@@ -432,7 +432,7 @@
 - **Low coverage**: Overall coverage < 80%
 - **Uncovered branches**: If/else paths not tested
 - **Uncovered functions**: Functions never called in tests
-- **Unused [PRODUCTION READY]s**: [PRODUCTION READY] data not used by tests
+- **Unused [production READY]s**: [production READY] data not used by tests
 
 **Detector**: Coverage reporters (Istanbul, Nyc)
 
@@ -496,7 +496,7 @@
 3. Apply to file types listed
 4. Report with error type and severity
 
-### For Developers
+### For prodelopers
 1. Reference when fixing errors
 2. Understand root cause from category
 3. Implement detector patterns

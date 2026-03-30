@@ -1,7 +1,7 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextResponse } from "next/server";
 
 export async function POST(_request: Request) {
@@ -42,7 +42,7 @@ export async function POST(_request: Request) {
       );
     }
 
-    // Production implementation: response for now - replace with actual implementation
+    // production implementation: response for now - replace with actual implementation
     const updatedSettings = {
       maxConcurrentProcessing: maxConcurrentProcessing || 2,
       autoBackup: autoBackup ?? true,

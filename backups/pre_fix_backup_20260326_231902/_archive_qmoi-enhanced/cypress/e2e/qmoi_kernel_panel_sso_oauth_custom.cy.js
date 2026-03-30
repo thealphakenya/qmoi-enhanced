@@ -3,17 +3,17 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 6 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 6 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 /// <reference types="cypress" />
 
 describe("QMOI Kernel Panel SSO/OAuth E2E - Custom Providers", () => {
   it("allows login via Facebook OAuth", () => {
     cy.visit(
-      "/auth/callback?provider=facebook&token=facebook-[PRODUCTION IMPLEMENTATION REQUIRED]-token",
+      "/auth/callback?provider=facebook&token=facebook-[production IMPLEMENTATION REQUIRED]-token",
     );
     cy.setCookie(
       "authToken",
-      "facebook-[PRODUCTION IMPLEMENTATION REQUIRED]-token",
+      "facebook-[production IMPLEMENTATION REQUIRED]-token",
     );
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");
@@ -21,11 +21,11 @@ describe("QMOI Kernel Panel SSO/OAuth E2E - Custom Providers", () => {
 
   it("allows login via Okta OAuth", () => {
     cy.visit(
-      "/auth/callback?provider=okta&token=okta-[PRODUCTION IMPLEMENTATION REQUIRED]-token",
+      "/auth/callback?provider=okta&token=okta-[production IMPLEMENTATION REQUIRED]-token",
     );
     cy.setCookie(
       "authToken",
-      "okta-[PRODUCTION IMPLEMENTATION REQUIRED]-token",
+      "okta-[production IMPLEMENTATION REQUIRED]-token",
     );
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");
@@ -33,11 +33,11 @@ describe("QMOI Kernel Panel SSO/OAuth E2E - Custom Providers", () => {
 
   it("handles custom provider with extra claims", () => {
     cy.visit(
-      "/auth/callback?provider=custom&token=custom-[PRODUCTION IMPLEMENTATION REQUIRED]-token&role=superuser",
+      "/auth/callback?provider=custom&token=custom-[production IMPLEMENTATION REQUIRED]-token&role=superuser",
     );
     cy.setCookie(
       "authToken",
-      "custom-[PRODUCTION IMPLEMENTATION REQUIRED]-token",
+      "custom-[production IMPLEMENTATION REQUIRED]-token",
     );
     cy.setCookie("userRole", "superuser");
     cy.visit("/qcity/kernel");

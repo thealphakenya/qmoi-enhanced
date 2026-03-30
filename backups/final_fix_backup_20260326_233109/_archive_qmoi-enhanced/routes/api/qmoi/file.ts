@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:16Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import type { NextApiRequest, NextApiResponse } from "next";
 // import fs from 'fs';
 import path from "path";
@@ -32,7 +32,7 @@ function logAudit(
 }
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  // Production implementation:: Add real master/admin authentication
+  // production implementation:: Add real master/admin authentication
   if (req.method === "POST") {
     const { action, filePath, content, replace } = req.body;
     const absPath = path.join(process.cwd(), filePath);

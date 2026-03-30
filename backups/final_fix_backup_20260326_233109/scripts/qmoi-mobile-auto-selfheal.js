@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:56Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 #!/usr/bin/env node
 
 /**
@@ -93,7 +93,7 @@ async function autoFixAll() {
 }
 
 async function offloadToCloudIfNeeded() {
-  // Production implementation:: check system resources, offload builds/tests to cloud if low
+  // production implementation:: check system resources, offload builds/tests to cloud if low
   const freeMem = os.freemem() / (1024 * 1024);
   if (freeMem < 1024) {
     log('Low memory detected, offloading build/test to cloud...');

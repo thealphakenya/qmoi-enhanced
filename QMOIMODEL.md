@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOI Model Overview"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -26,7 +26,7 @@ _Version Note:_ the `qmoi` aggregator now powers the core conversation engine, m
 
 QMOI now exposes a canonical _aggregator_ model named `qmoi` which is the single source of truth for inference across the system.
 
-## 🚀 2026 Production Enhancements
+## 🚀 2026 production Enhancements
 
 ### ⚡ Performance & Scale Improvements
 - **3x Inference Speed**: Optimized parallel processing across all reasoning tasks
@@ -40,7 +40,7 @@ QMOI now exposes a canonical _aggregator_ model named `qmoi` which is the single
 - **Context Awareness**: Improved understanding of user intent and domain context
 - **Self-Improvement**: Continuous learning from interaction patterns
 
-### 🔬 Production-Ready Features
+### 🔬 production-Ready Features
 - **Real-Time Model Card**: Live performance metrics and health monitoring
 - **Automated Testing**: Comprehensive test suite covering all capabilities
 - **Error Resilience**: Graceful degradation and recovery mechanisms
@@ -106,7 +106,7 @@ QMOI now exposes a canonical _aggregator_ model named `qmoi` which is the single
 
 ### 9. Dataset Empowerment
 
-- **Dataset-First Reasoning**: QMOI selects and combines specialized datasets (e.g., autonomous development, networking, payments, domain/website monitoring, friendship, and error correction) to ground responses in structured knowledge.
+- **Dataset-First Reasoning**: QMOI selects and combines specialized datasets (e.g., autonomous production, networking, payments, domain/website monitoring, friendship, and error correction) to ground responses in structured knowledge.
 - **Auto-Discovery & Sync**: Datasets are auto-discovered from the QVillage cloud store and synchronized into memory, enabling seamless operation even in disconnected or zero-rated environments.
 - **Specialized Dataset Modules**: QMOI supports domain-specific datasets for parallel execution, persistence, accountability, payments, conversational tone, network health, and project execution, ensuring the right knowledge is used for each task.
 - **robust In-Memory Store**: Datasets are kept in RAM and only synced to disk/cloud when necessary, minimizing latency and maximizing response speed.
@@ -115,7 +115,7 @@ QMOI now exposes a canonical _aggregator_ model named `qmoi` which is the single
 
 - **Interactive Editing**: Allow users to edit and refine AI-generated content
 - **Suggestion Modes**: Provide multiple options with acceptance tracking
-- **Workflow Integration**: Seamless integration with development and creative tools
+- **Workflow Integration**: Seamless integration with production and creative tools
 
 ### 10. Creativity & Novelty
 
@@ -135,19 +135,19 @@ QMOI now exposes a canonical _aggregator_ model named `qmoi` which is the single
 - **Real Fund Generation**: Integrated payment gateways (Stripe, PayPal, crypto, M-Pesa) for actual monetary transactions
 - **Parallel Processing**: Multi-threaded deal execution with configurable parallel processes for maximum efficiency
 - **Auto-Projects**: Fully automated project creation and monetization without human intervention
-- **Media Production**: AI-driven music, video, and movie production with automated distribution
+- **Media production**: AI-driven music, video, and movie production with automated distribution
 - **Investment Automation**: Crypto trading, stock automation, and NFT creation with real fund management
 
 ### 14. Autonomous Project Execution
 
 - **Zero-Intervention Projects**: Complete project lifecycle from ideation to monetization without human input
-- **Multi-Domain Projects**: Support for software development, content creation, business automation, and creative projects
+- **Multi-Domain Projects**: Support for software production, content creation, business automation, and creative projects
 - **Revenue-Driven Projects**: All projects designed with monetization strategies from inception
 - **Scalable Execution**: Parallel project execution across multiple platforms and markets
 
 ### 15. Advanced Monetization Engine
 
-### 16. Network, Wallet, and Pesapal Integration (Production Hardened)
+### 16. Network, Wallet, and Pesapal Integration (production Hardened)
 
 - **Network & link validation**: QMOI now validates every domain/link used in docs, end-user flows, and network monitoring APIs, returning real-time HTTP status and reliability metrics.
 - **Wallet management**: QMOI supports wallet connect, balance tracking, and secure transfer operations with per-user wallet states and production-level checks.
@@ -190,9 +190,9 @@ Relevant config keys (in `config.json` or passed via config file):
 - `ai.model.status_poll` - whether to expose `/api/qmoi/status` endpoint (enabled by default).
 - `ai.model.research_enabled` - enable/disable automatic web/internet research when uncertain.
 
-## Notes for Developers
+## Notes for prodelopers
 
-- The current aggregator implementation is conservative and intentionally simple. Replace the [PRODUCTION READY] inference calls with real model calls when integrating third-party models.
+- The current aggregator implementation is conservative and intentionally simple. Replace the [production READY] inference calls with real model calls when integrating third-party models.
 - Tests should assert that `model` override query params are ignored and that responses always include `model: "qmoi"`.
 - Documentation and front-end UI must not expose model-selection controls to the end user unless gated and audited for master use only.
 - **QVillage Integration:** any calls that require deeper knowledge or research should dispatch to QVillage endpoints (`/api/qvillage/*`), which themselves are backed by the same `qmoi` aggregator and memory store. QVillage handles papers, discussions and knowledge base queries; the model should treat it as an external source of truth.

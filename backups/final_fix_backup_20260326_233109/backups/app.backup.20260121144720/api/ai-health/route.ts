@@ -1,7 +1,7 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 13 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 13 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import { requireApiKey } from "../../../lib/proposals";
@@ -88,7 +88,7 @@ export async function GET(_request: NextRequest) {
     const searchParams = _request.nextUrl.searchParams;
     const detailed = searchParams.get("detailed") === "true";
 
-    // Production implementation: health metrics
+    // production implementation: health metrics
     const Metrics: AIHealthMetrics = {
       cpu: {
         usage: 45.2,
@@ -162,7 +162,7 @@ export async function GET(_request: NextRequest) {
       else if (deployLog.includes("failed")) deployStatus = "failed";
     } catch (e) { void e; }
 
-    // Production implementation: component statuses
+    // production implementation: component statuses
     const Components: AIComponentStatus[] = [
       {
         name: "QMOI Model",
@@ -239,7 +239,7 @@ export async function GET(_request: NextRequest) {
       },
     ];
 
-    // Production implementation: alerts
+    // production implementation: alerts
     const Alerts = [
       {
         level: "warning" as const,
@@ -302,7 +302,7 @@ export async function POST(_request: NextRequest) {
         );
       }
 
-      // Production implementation: component check - replace with actual implementation
+      // production implementation: component check - replace with actual implementation
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       return NextResponse.json({
@@ -328,7 +328,7 @@ export async function POST(_request: NextRequest) {
         );
       }
 
-      // Production implementation: settings update - replace with actual implementation
+      // production implementation: settings update - replace with actual implementation
       await new Promise((resolve) => setTimeout(resolve, 800));
 
       return NextResponse.json({

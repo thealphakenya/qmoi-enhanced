@@ -1,6 +1,6 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
-title: "PRODUCTION RELEASE VALIDATION CHECKLIST"
+title: "production RELEASE VALIDATION CHECKLIST"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 last_updated: 2025-11-15
 ---
@@ -15,7 +15,7 @@ last_updated: 2025-11-15
 - note: Auto-inserted by production release validation workflow
 <!-- LION_VALIDATION_END -->
 
-# PRODUCTION RELEASE VALIDATION CHECKLIST
+# production RELEASE VALIDATION CHECKLIST
 
 ## 📋 Overview
 
@@ -51,7 +51,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] Strip out debug logs and test instrumentation code
   - [ ] Verify output: `*.apk` or `*.aab` (prefer AAB for Play Store)
 
-- [ ] **Sign with Production Keystore**
+- [ ] **Sign with production Keystore**
   - [ ] Keystore file exists and is backed up securely: `/path/to/qmoi_production.keystore`
   - [ ] Verify keystore alias: `qmoi_ai_release` or equivalent
   - [ ] Check keystore expiration date (must be valid for >1 year)
@@ -72,7 +72,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] Build scheme set to "Release"
   - [ ] Code signing identity set to production certificate
   - [ ] Provisioning profile set to production/app-store profile
-  - [ ] Archive created in Xcode: `Product → Archive`
+  - [ ] Archive created in Xcode: `product → Archive`
 
 - [ ] **Export for Distribution**
   - [ ] Export method: "App Store Connect" or "Ad Hoc"
@@ -85,7 +85,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] Certificate is valid (check expiration date)
   - [ ] Certificate matches App ID
   - [ ] Provisioning profile is provisioned for production deployment
-  - [ ] No "Ad Hoc" or development profiles mixed in
+  - [ ] No "Ad Hoc" or production profiles mixed in
 
 #### Windows (EXE/MSI)
 
@@ -116,7 +116,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 
 - [ ] **Create DMG Installer**
   - [ ] DMG created from release binary
-  - [ ] Code signing applied: `codesign -s "Developer ID Application" qmoi_ai.app`
+  - [ ] Code signing applied: `codesign -s "prodeloper ID Application" qmoi_ai.app`
   - [ ] Verify signature: `codesign -v qmoi_ai.app`
 
 - [ ] **Notarize for Gatekeeper**
@@ -153,9 +153,9 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] Console output complete (no internal state dumps)
 
 - [ ] **No Test Files**
-  - [ ] Test suites and [PRODUCTION READY] excluded from binary
-  - [ ] [PRODUCTION READY] data and test fixtures removed
-  - [ ] Development-only dependencies not included
+  - [ ] Test suites and [production READY] excluded from binary
+  - [ ] [production READY] data and test fixtures removed
+  - [ ] production-only dependencies not included
 
 - [ ] **No Build Artifacts**
   - [ ] permanent build files cleaned up
@@ -165,7 +165,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 ### 1.3 Verify Versioning & Metadata
 
 - [ ] **Version Numbers Match Across All Platforms**
-  - [ ] Windows: File properties → Product Version = `1.2.3`
+  - [ ] Windows: File properties → product Version = `1.2.3`
   - [ ] macOS: `CFBundleShortVersionString` = `1.2.3`
   - [ ] Android: `versionName="1.2.3"` in `AndroidManifest.xml` or `build.gradle`
   - [ ] iOS: `CFBundleShortVersionString` = `1.2.3` in `Info.plist`
@@ -179,7 +179,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] Consistency across related platforms
 
 - [ ] **Icons & Branding**
-  - [ ] App icons are production ones (not [PRODUCTION READY]s/test icons)
+  - [ ] App icons are production ones (not [production READY]s/test icons)
   - [ ] Splash screen images are final
   - [ ] Logo/branding assets use correct colors and dimensions
   - [ ] Icons meet platform requirements (sizes, formats, transparency)
@@ -224,14 +224,14 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] Interaction tests (click, input) verified
   - [ ] Layout/responsive tests pass
 
-### 2.2 Manual Testing on Real Devices
+### 2.2 Manual Testing on Real prodices
 
 #### Android Testing
 
-- [ ] **Test on Real Devices (not emulator only)**
-  - [ ] Low-end device (Android 8.0+): App launches, no crashes, performance acceptable
-  - [ ] Mid-range device (Android 10): All features work, UI responsive
-  - [ ] High-end device (Android 12+): Optimal performance, all features polished
+- [ ] **Test on Real prodices (not emulator only)**
+  - [ ] Low-end prodice (Android 8.0+): App launches, no crashes, performance acceptable
+  - [ ] Mid-range prodice (Android 10): All features work, UI responsive
+  - [ ] High-end prodice (Android 12+): Optimal performance, all features polished
   - [ ] Test on different screen sizes (small, normal, large, xlarge)
 
 - [ ] **Core Features**
@@ -243,7 +243,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 
 #### iOS Testing
 
-- [ ] **Test on Real Devices (not simulator only)**
+- [ ] **Test on Real prodices (not simulator only)**
   - [ ] iPhone SE (small screen): UI readable, no overflow
   - [ ] iPhone 12/13 (standard): All features accessible
   - [ ] iPhone 14+ / iPad: Full-screen features optimized
@@ -317,9 +317,9 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 
 ### 2.3 Network Conditions Testing
 
-- [ ] **Slow Network (3G [PRODUCTION READY])**
+- [ ] **Slow Network (3G [production READY])**
   - [ ] App loads (may take longer, but no timeout)
-  - [ ] Images load progressively or show [PRODUCTION READY]
+  - [ ] Images load progressively or show [production READY]
   - [ ] No "network error" crashes, graceful fallback
   - [ ] User feedback provided (loading spinner, progress indicator)
 
@@ -520,7 +520,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 
 - [ ] **Ad-Hoc Distribution**
   - [ ] IPA created with ad-hoc provisioning profile
-  - [ ] Tester UDIDs registered with Apple Dev Account
+  - [ ] Tester UDIDs registered with Apple prod Account
   - [ ] IPA signed and distributed
   - [ ] Tester installs via Xcode or direct transfer
 
@@ -581,7 +581,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] Critical crashes trigger alerts
 
 - [ ] **Error Logging**
-  - [ ] Errors logged with context (OS, device model, app version)
+  - [ ] Errors logged with context (OS, prodice model, app version)
   - [ ] Logs aggregated in central location
   - [ ] Daily/weekly crash reports reviewed
 
@@ -594,7 +594,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 
 - [ ] **Bug Report Form**
   - [ ] Link to bug report form in release notes
-  - [ ] Form captures: OS, device, app version, reproduction steps, screenshot
+  - [ ] Form captures: OS, prodice, app version, reproduction steps, screenshot
 
 - [ ] **Monitoring & Response**
   - [ ] Critical bugs: Fix within 1-2 days
@@ -611,7 +611,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] UI/UX meets requirements: ✓
 
 - [ ] **Sign-Off Documentation**
-  - [ ] Testers document OS/device tested
+  - [ ] Testers document OS/prodice tested
   - [ ] Sign-off date recorded
   - [ ] Any reservations noted
 
@@ -651,7 +651,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 - [ ] **Release Notes standard**
 
   ```
-  # QMOI v1.2.3 - Production Release
+  # QMOI v1.2.3 - production Release
 
   **Release Date:** November 15, 2025
 
@@ -824,10 +824,10 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 
 ## PHASE 9: POST-RELEASE VALIDATION
 
-### 9.1 Production Environment Verification
+### 9.1 production Environment Verification
 
 - [ ] **Real User Testing**
-  - [ ] Production app used by real users for 1-2 weeks
+  - [ ] production app used by real users for 1-2 weeks
   - [ ] Real-world usage patterns monitored
   - [ ] Edge cases and bugs found and fixed
 
@@ -941,7 +941,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 ```
 **Tester Name:** ________________
 **Platform:** Android / iOS / Windows / macOS / Linux / Web
-**Device/Browser:** ________________ (e.g., "Samsung Galaxy S21, Android 12")
+**prodice/Browser:** ________________ (e.g., "Samsung Galaxy S21, Android 12")
 **App Version:** v1.2.3
 **Test Date:** ________________
 
@@ -994,7 +994,7 @@ Release Date: November 15, 2025
 
 APPROVAL SIGN-OFFS:
 
-[ ] Product Manager: ________________ Date: ________
+[ ] product Manager: ________________ Date: ________
     (Confirms feature completeness and business readiness)
 
 [ ] QA Lead: ________________ Date: ________
@@ -1025,8 +1025,8 @@ FINAL APPROVAL:
 - [INSTALLATION_GUIDE.md](./INSTALLATION_GUIDE.md) (if exists) — User-facing installation help
 - [CHANGELOG.md](./CHANGELOG.md) (if exists) — Detailed change history
 - Firebase Crashlytics: https://firebase.google.com/docs/crashlytics
-- Google Play Console Testing: https://developer.android.com/distribute/console/setup
-- TestFlight: https://developer.apple.com/testflight/
+- Google Play Console Testing: https://prodeloper.android.com/distribute/console/setup
+- TestFlight: https://prodeloper.apple.com/testflight/
 - GitHub Releases: https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository
 
 ---

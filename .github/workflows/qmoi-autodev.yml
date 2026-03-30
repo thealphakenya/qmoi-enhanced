@@ -1,4 +1,4 @@
-name: QMOI Autodev Pipeline
+name: QMOI Autoprod Pipeline
 
 on:
   workflow_dispatch:

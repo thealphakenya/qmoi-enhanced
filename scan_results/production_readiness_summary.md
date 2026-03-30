@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Production Readiness Scan Summary
+# production Readiness Scan Summary
 Generated: Thu Mar 26 04:42:02 UTC 2026
 
 

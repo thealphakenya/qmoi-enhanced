@@ -230,7 +230,7 @@ class ErrorFixer:
             for partition in psutil.disk_partitions():
                 try:
                     chkdsk_result = subprocess.run(
-                        ["chkdsk", partition.device, "/f"],
+                        ["chkdsk", partition.prodice, "/f"],
                         capture_output=True,
                         text=True
                     )
@@ -240,7 +240,7 @@ class ErrorFixer:
                             "type": "disk",
                             "category": "health",
                             "severity": "high",
-                            "description": f"Disk errors found on {partition.device}",
+                            "description": f"Disk errors found on {partition.prodice}",
                             "timestamp": datetime.now().isoformat()
                         })
                 except subprocess.CalledProcessError:

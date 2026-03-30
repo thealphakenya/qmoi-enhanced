@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -11,7 +11,7 @@ import { mlModels } from "@/lib/qmoi-ml-models";
 import { realAPI } from "@/lib/qmoi-real-api";
 import fs from "fs";
 
-// Production: in-memory transaction store (replace with DB in production)
+// production: in-memory transaction store (replace with DB in production)
 const transactions: Record<string, any> = {};
 let transactionId = 0;
 

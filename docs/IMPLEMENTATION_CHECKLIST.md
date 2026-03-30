@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Background Automation - Implementation Checklist
 
 ## ✅ Completed Implementation
@@ -102,8 +102,8 @@
 - [x] Environment standard (`.env.local.data`)
   - [x] All configuration variables
   - [x] Explanations for each
-  - [x] Production presets
-  - [x] Development presets
+  - [x] production presets
+  - [x] production presets
   - [x] data values
 
 - [x] Quick Start Guide (`docs/QMOI_BACKGROUND_AUTOMATION_README.md`)
@@ -261,7 +261,7 @@
 
 ## 📋 Deployment Checklist
 
-### Pre-Production
+### Pre-production
 
 - [ ] All environment variables configured
 - [ ] Admin token generated and secured
@@ -269,7 +269,7 @@
 - [ ] Thresholds adjusted for environment
 - [ ] Intervals tuned for workload
 
-### Production
+### production
 
 - [ ] Background automation enabled
 - [ ] Monitoring and alerting configured
@@ -356,7 +356,7 @@
 
 ```bash
 # [ ] Review all configurations
-# [ ] Test in development environment
+# [ ] Test in production environment
 # [ ] Verify all API endpoints
 # [ ] Check log output
 # [ ] Review documentation
@@ -448,7 +448,7 @@ All components of the QMOI Background Automation System have been successfully i
 ### Next Steps
 
 1. Run setup script: `bash scripts/qmoi-background-setup.sh`
-2. Start application: `npm run dev`
+2. Start application: `npm run prod`
 3. Visit dashboard: `https://qmoi.ai/admin`
 4. Verify services are running
 5. Monitor logs and statistics
@@ -456,7 +456,7 @@ All components of the QMOI Background Automation System have been successfully i
 
 ---
 
-**QMOI Background Automation System - Ready for Production! 🚀**
+**QMOI Background Automation System - Ready for production! 🚀**
 
 ## 🔄 Evolution Status
 

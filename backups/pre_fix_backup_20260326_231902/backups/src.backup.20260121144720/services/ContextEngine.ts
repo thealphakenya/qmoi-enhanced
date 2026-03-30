@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 // ContextEngine: Manages user context, preferences, and adapts to personality traits
 export interface UserContext {
   userId: string;

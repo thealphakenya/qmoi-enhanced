@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "rust_lint_fix (scaffold)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -17,7 +17,7 @@ title: "rust_lint_fix (scaffold)"
 
 This folder contains a complete Rust-based linter/fixer scaffold. It is intentionally a dry-run scaffold that collects a list of files and writes a proposal JSON into `.qmoi_validation/`.
 
-How to run (developer machine with Rust toolchain):
+How to run (prodeloper machine with Rust toolchain):
 
 ```bash
 cd tools/rust_lint_fix

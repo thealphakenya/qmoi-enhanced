@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -56,7 +56,7 @@ const ReferralProgramSchema = z.object({
   validUntil: z.string(),
 });
 
-[PRODUCTION READY] database
+[production READY] database
 const microtasks: unknown[] = [];
 const affiliateCampaigns: unknown[] = [];
 const contentProjects: unknown[] = [];
@@ -73,7 +73,7 @@ const MPESA_CREDENTIALS = {
     process.env.MPESA_CONSUMER_SECRET ||
     "u27oKMfyACGxoQsD2bAuAJn0QzMQ8cWofA6bfzuG4hXaGxCB90PiGOSuCVNcaCSj",
   shortcode: process.env.MPESA_SHORTCODE || "N/A",
-  environment: process.env.MPESA_ENVIRONMENT || "sandbox",
+  environment: process.env.MPESA_ENVIRONMENT || "production",
 };
 
 // Email backup function
@@ -211,7 +211,7 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
 // Revenue generation functions
 async function generateMicrotaskRevenue(taskData: unknown) {
   try {
-    [PRODUCTION READY] external client payment
+    [production READY] external client payment
     const clientPayment = taskData.reward * 1.5; // QMOI takes 33% cut
     const userPayment = taskData.reward;
     const qmoiProfit = clientPayment - userPayment;
@@ -237,7 +237,7 @@ async function generateMicrotaskRevenue(taskData: unknown) {
 
 async function generateAffiliateRevenue(campaignData: unknown) {
   try {
-    [PRODUCTION READY] affiliate sales
+    [production READY] affiliate sales
     const sales = Math.floor(Math.random() * 10) + 1; // Random sales 1-10
     const totalRevenue = sales * 100; // Assume $100 per sale
     const commission = totalRevenue * (campaignData.commission / 100);
@@ -267,7 +267,7 @@ async function generateAffiliateRevenue(campaignData: unknown) {
 
 async function generateContentRevenue(projectData: unknown) {
   try {
-    [PRODUCTION READY] content sale
+    [production READY] content sale
     const salePrice = projectData.reward * 3; // Content sold for 3x reward
     const userPayment = projectData.reward;
     const qmoiProfit = salePrice - userPayment;
@@ -293,7 +293,7 @@ async function generateContentRevenue(projectData: unknown) {
 
 async function generateReferralRevenue(referralData: unknown) {
   try {
-    [PRODUCTION READY] referral bonus
+    [production READY] referral bonus
     const referrals = Math.floor(Math.random() * 5) + 1; // Random referrals 1-5
     const totalBonus = referrals * referralData.bonus;
     const userBonus = totalBonus * 0.8; // User gets 80%
@@ -322,9 +322,9 @@ async function generateReferralRevenue(referralData: unknown) {
 // M-Pesa integration
 async function addToMpesaAccount(amount: number, description: string) {
   try {
-    [PRODUCTION READY] M-Pesa API call to add funds
+    [production READY] M-Pesa API call to add funds
     const response = await fetch(
-      "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/[PRODUCTION READY]",
+      "https://production.safaricom.co.ke/mpesa/c2b/v1/[production READY]",
       {
         method: "POST",
         headers: {

@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// DeviceTrackingService: Tracks devices, provides security actions, and integrates with WhatsApp
+// prodiceTrackingService: Tracks prodices, provides security actions, and integrates with WhatsApp
 import { WhatsAppService } from "./WhatsAppService";
 
-export interface Device {
+export interface prodice {
   id: string;
   name: string;
   lastSeen: Date;
@@ -14,47 +14,47 @@ export interface Device {
   location?: string;
 }
 
-export class DeviceTrackingService {
-  private devices: Device[] = [];
+export class prodiceTrackingService {
+  private prodices: prodice[] = [];
   private whatsapp: WhatsAppService;
 
   constructor(whatsappService: WhatsAppService) {
     this.whatsapp = whatsappService;
-    // Initialize device tracking
+    // Initialize prodice tracking
   }
 
-  listDevices(): Device[] {
+  listprodices(): prodice[] {
     
-    return this.devices;
+    return this.prodices;
   }
 
-  findDevice(deviceId: string): Device | null {
+  findprodice(prodiceId: string): prodice | null {
     
-    const device = this.devices.find((d) => d.id === deviceId) || null;
-    if (device) {
-      this.notifyMaster("find", deviceId);
+    const prodice = this.prodices.find((d) => d.id === prodiceId) || null;
+    if (prodice) {
+      this.notifyMaster("find", prodiceId);
     }
-    return device;
+    return prodice;
   }
 
-  lockDevice(deviceId: string): boolean {
+  lockprodice(prodiceId: string): boolean {
     
-    this.notifyMaster("lock", deviceId);
+    this.notifyMaster("lock", prodiceId);
     return true;
   }
 
-  wipeDevice(deviceId: string): boolean {
+  wipeprodice(prodiceId: string): boolean {
     
-    this.notifyMaster("wipe", deviceId);
+    this.notifyMaster("wipe", prodiceId);
     return true;
   }
 
-  notifyMaster(action: string, deviceId: string) {
+  notifyMaster(action: string, prodiceId: string) {
     // Send real-time alert to master via WhatsApp
-    const device = this.devices.find((d) => d.id === deviceId);
-    if (device) {
+    const prodice = this.prodices.find((d) => d.id === prodiceId);
+    if (prodice) {
       this.whatsapp.sendMessageToMaster(
-        `Device action: ${action} on ${device.name} (${device.id})`,
+        `prodice action: ${action} on ${prodice.name} (${prodice.id})`,
       );
     }
   }

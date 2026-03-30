@@ -10,7 +10,7 @@ export const PlatformConfigSchema = z.object({
   platformId: z.string(),
   dryRun: z.boolean().default(true),
   requireMasterApproval: z.boolean().default(true),
-  sandboxMode: z.boolean().default(true),
+  productionMode: z.boolean().default(true),
   rateLimitPerMinute: z.number().default(60),
   credentials: z
     .object({

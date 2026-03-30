@@ -75,7 +75,7 @@ export async function POST(_request: NextRequest) {
   if (searchParams.get("fix")) {
     try {
       
-      // Production, implement real fix logic
+      // production, implement real fix logic
       return NextResponse.json({ status: "fixed" });
     } catch (_e: unknown) {
       return NextResponse.json(

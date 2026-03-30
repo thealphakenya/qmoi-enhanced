@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 import { transactionService, walletService } from "@/lib/db/services";
@@ -91,7 +91,7 @@ export async function POST(_request: NextRequest) {
     if (newStatus === "completed" && txn.amount) {
       const walletId = String(txn.walletId || transaction.walletId);
       const amount = String(txn.amount);
-      // Note: updateBalance implementation pending - // Production implementation: for production
+      // Note: updateBalance implementation pending - // production implementation: for production
       try {
         // await walletService.updateBalance(walletId, amount);
         (console as any).log(`Wallet update pending for ${walletId}: +${amount}`);

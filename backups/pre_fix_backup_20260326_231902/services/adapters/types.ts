@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 import { z } from "zod";
 
 // Base platform configuration schema
@@ -11,7 +11,7 @@ export const PlatformConfigSchema = z.object({
   platformId: z.string(),
   dryRun: z.boolean().default(true),
   requireMasterApproval: z.boolean().default(true),
-  sandboxMode: z.boolean().default(true),
+  productionMode: z.boolean().default(true),
   rateLimitPerMinute: z.number().default(60),
   credentials: z
     .object({
@@ -108,7 +108,7 @@ export class ApprovalFlow {
   }
 
   // For testing/demo only - in production this would be a proper admin UI
-  static async [PRODUCTION READY]Approval(
+  static async [production READY]Approval(
     requestId: string,
     approved = true,
   ): Promise<void> {

@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOIDOMAINS"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -36,7 +36,7 @@ Capability Description
 🧠 Smart Prioritization Always uses the most stable, fastest, and lowest-latency link
 🖥️ UI Management QCity dashboard allows authorized users to manage domains/tunnels
 📋 Activity Logging All domain changes are timestamped and logged
-🧩 Integration Fully integrates with QMOINGROK.md, QMOIDNS.md, and QMOIAUTODEV.md
+🧩 Integration Fully integrates with QMOINGROK.md, QMOIDNS.md, and QMOIAUTOprod.md
 
 🧪 Health Monitoring
 QMOI runs periodic checks on all domain/tunnel endpoints:

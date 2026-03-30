@@ -8,7 +8,7 @@
 
 This uses an HMAC-based signature stored in `.qmoi_validation/dns_plan_key`.
 For stronger security use an external KMS; this is a safe local scaffold for CI
-and development (dry-run). The signer writes plans under
+and production (dry-run). The signer writes plans under
 `.qmoi_validation/dns_plans/` with signature metadata.
 """
 import argparse

@@ -19,7 +19,7 @@ interface AppInfo {
     | "entertainment"
     | "productivity"
     | "security"
-    | "development";
+    | "production";
   icon: string;
   downloadUrl: string;
   size: number;
@@ -253,15 +253,15 @@ export class AppManagementService {
         },
       },
       {
-        id: "q-stable-development",
-        name: "Q-stable Development",
+        id: "q-stable-production",
+        name: "Q-stable production",
         displayName: "Q-stable Code Studio",
         version: "1.0.0",
-        description: "AI-powered development environment with code completion",
-        category: "development",
+        description: "AI-powered production environment with code completion",
+        category: "production",
         icon: "💻",
         downloadUrl:
-          "https://github.com/q-stable/development-app/releases/latest",
+          "https://github.com/q-stable/production-app/releases/latest",
         size: 300 * 1024 * 1024, // 300MB
         isInstalled: false,
         isUpdating: false,
@@ -299,7 +299,7 @@ export class AppManagementService {
         category: "productivity",
         icon: "📰",
         downloadUrl: "",
-        size: 10 * 1024 * 1024, // 10MB (// [PRODUCTION READY]:)
+        size: 10 * 1024 * 1024, // 10MB (// [production READY]:)
         isInstalled: false,
         isUpdating: false,
         lastUpdate: new Date(),

@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOI Enhanced Auto-Deploy System"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -90,7 +90,7 @@ npm run deploy:monitor
 The system includes enhanced GitHub Actions workflows:
 
 - **`.github/workflows/auto-deploy.yml`**: Main deployment workflow
-- **`.github/workflows/qmoi-autodev.yml`**: Auto-development workflow
+- **`.github/workflows/qmoi-autoprod.yml`**: Auto-production workflow
 
 ## Deployment Scripts
 
@@ -177,7 +177,7 @@ Enhanced Vercel configuration with:
   "env": {
     "NODE_ENV": "production",
     "NEXT_PUBLIC_APP_ENV": "production",
-    "QMOI_AUTODEV_ENABLED": "true"
+    "QMOI_AUTOprod_ENABLED": "true"
   }
 }
 ```
@@ -189,7 +189,7 @@ Create a `.env` file with:
 ```bash
 NODE_ENV=production
 NEXT_PUBLIC_APP_ENV=production
-QMOI_AUTODEV_ENABLED=true
+QMOI_AUTOprod_ENABLED=true
 ```
 
 ## Troubleshooting
@@ -362,10 +362,10 @@ Modify `package.json` scripts:
 Create environment-specific files:
 
 ```bash
-# Development
-.env.development
+# production
+.env.production
 
-# Production
+# production
 .env.production
 
 # production
@@ -535,7 +535,7 @@ npm run qmoi:autoconfig
 
 ```bash
 # Full auto-deployment with error fixing
-npm run qmoi:autodev:deploy
+npm run qmoi:autoprod:deploy
 
 # Auto-configuration and setup
 npm run qmoi:autoconfig
@@ -628,7 +628,7 @@ npm run security:integrity
 - 🛡️ **Tamper Detection**: Real-time monitoring for unauthorized changes
 - 🚨 **Decoy Mode**: Shows false information if tampering detected
 - 🔐 **Encrypted Storage**: All sensitive data encrypted at rest
-- 🎭 **Honeypot Traps**: [PRODUCTION READY]_PROD endpoints to catch attackers
+- 🎭 **Honeypot Traps**: [production READY]_prod endpoints to catch attackers
 
 ### Security Configuration
 
@@ -1060,7 +1060,7 @@ function Dashboard() {
 }
 ```
 
-- The component uses [PRODUCTION READY]_PROD data by default, but can be connected to a real API for production use.
+- The component uses [production READY]_prod data by default, but can be connected to a real API for production use.
 
 ### data UI
 
@@ -1071,36 +1071,36 @@ function Dashboard() {
 
 **API Integration:**
 
-- To use real data, replace the [PRODUCTION READY]_PROD data in the component with an API call (e.g., `fetch('/api/media')`).
+- To use real data, replace the [production READY]_prod data in the component with an API call (e.g., `fetch('/api/media')`).
 - For upload support, add an upload button and POST handler to your media API endpoint.
 - See comments in `QmoiMediaManager.tsx` for integration points.
 
 ---
 
-## Development Workflow
+## production Workflow
 
-### Enhanced Development Process
+### Enhanced production Process
 
-Streamlined development workflow with automation:
+Streamlined production workflow with automation:
 
 ```bash
-# Start development
-npm run dev:start
+# Start production
+npm run prod:start
 
 # Run tests
-npm run dev:test
+npm run prod:test
 
 # Code quality check
-npm run dev:quality
+npm run prod:quality
 
 # Deploy to production
-npm run dev:production
+npm run prod:production
 
 # Deploy to production
-npm run dev:production
+npm run prod:production
 ```
 
-**Development Features:**
+**production Features:**
 
 - 🔄 **Auto-Testing**: Automatic test execution
 - 📊 **Code Quality**: Comprehensive code quality checks
@@ -1108,18 +1108,18 @@ npm run dev:production
 - 📋 **Code Review**: Automated code review process
 - 🔍 **Bug Detection**: Proactive bug detection and fixing
 
-### Development Configuration
+### production Configuration
 
 ```json
 {
-  "development": {
+  "production": {
     "auto_testing": true,
     "code_quality": true,
     "auto_deployment": true,
     "code_review": true,
     "bug_detection": true,
     "environments": {
-      "development": "https://qmoi.ai",
+      "production": "https://qmoi.ai",
       "production": "https://production.qmoi.ai",
       "production": "https://qmoi.ai"
     }
@@ -1190,7 +1190,7 @@ The QMOI Enhanced Auto-Deploy System provides a comprehensive, self-healing, and
 ### Getting Started
 
 1. **Setup**: Run `npm run qmoi:autoconfig` for automatic configuration
-2. **Deploy**: Use `npm run qmoi:autodev:deploy` for automated deployment
+2. **Deploy**: Use `npm run qmoi:autoprod:deploy` for automated deployment
 3. **Monitor**: Access the master dashboard for comprehensive monitoring
 4. **Optimize**: Use built-in optimization tools for peak performance
 

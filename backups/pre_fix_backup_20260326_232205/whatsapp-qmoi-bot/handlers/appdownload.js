@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-async function askDeviceTypeAndSendLink(sock, jid) {
-    await sock.sendMessage(jid, { text: 'Which device do you want to download the app for? (android/apple/windows/linux)' });
+async function askprodiceTypeAndSendLink(sock, jid) {
+    await sock.sendMessage(jid, { text: 'Which prodice do you want to download the app for? (android/apple/windows/linux)' });
     // The next message handler should listen for the reply and call sendDownloadLink
 }
 
-module.exports = askDeviceTypeAndSendLink;
+module.exports = askprodiceTypeAndSendLink;

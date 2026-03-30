@@ -1,7 +1,7 @@
-# [PRODUCTION READY] Enhanced dev container with recovery mode fixes
+# [production READY] Enhanced prod container with recovery mode fixes
 {
-  "name": "QMOI Enhanced - Production Dev Container",
-  "image": "mcr.microsoft.com/devcontainers/base:bullseye",
+  "name": "QMOI Enhanced - production prod Container",
+  "image": "mcr.microsoft.com/prodcontainers/base:bullseye",
   "runArgs": [
     "--cap-add=SYS_ADMIN",
     "--security-opt=apparmor=unconfined",
@@ -9,18 +9,18 @@
     "--cpus=2"
   ],
   "features": {
-    "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/features/node:20": {},
-    "ghcr.io/devcontainers/features/python:3.11": {},
-    "ghcr.io/devcontainers/features/git:latest": {}
+    "ghcr.io/prodcontainers/features/github-cli:1": {},
+    "ghcr.io/prodcontainers/features/node:20": {},
+    "ghcr.io/prodcontainers/features/python:3.11": {},
+    "ghcr.io/prodcontainers/features/git:latest": {}
   },
   "initializeCommand": [
     "sh",
     "-c",
     "mkdir -p /workspace/logs /workspace/temp /workspace/.cache /workspace/.vscode-server"
   ],
-  "postCreateCommand": "bash .devcontainer/devcontainer-init.sh",
-  "updateContentCommand": "bash .devcontainer/devcontainer-update.sh",
+  "postCreateCommand": "bash .prodcontainer/prodcontainer-init.sh",
+  "updateContentCommand": "bash .prodcontainer/prodcontainer-update.sh",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -74,7 +74,7 @@
       "onAutoForward": "silent"
     },
     "8080": {
-      "label": "Debug/Development",
+      "label": "Debug/production",
       "onAutoForward": "notify"
     }
   },

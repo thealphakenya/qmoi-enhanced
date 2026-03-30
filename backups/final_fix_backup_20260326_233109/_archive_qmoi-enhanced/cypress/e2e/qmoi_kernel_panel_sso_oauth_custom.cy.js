@@ -3,17 +3,17 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 6 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 6 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 /// <reference types="cypress" />
 
 describe("QMOI Kernel Panel SSO/OAuth E2E - Custom Providers", () => {
   it("allows login via Facebook OAuth", () => {
     cy.visit(
-      "/auth/callback?provider=facebook&token=facebook-// Production implementation required:-token",
+      "/auth/callback?provider=facebook&token=facebook-// production implementation required:-token",
     );
     cy.setCookie(
       "authToken",
-      "facebook-// Production implementation required:-token",
+      "facebook-// production implementation required:-token",
     );
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");
@@ -21,11 +21,11 @@ describe("QMOI Kernel Panel SSO/OAuth E2E - Custom Providers", () => {
 
   it("allows login via Okta OAuth", () => {
     cy.visit(
-      "/auth/callback?provider=okta&token=okta-// Production implementation required:-token",
+      "/auth/callback?provider=okta&token=okta-// production implementation required:-token",
     );
     cy.setCookie(
       "authToken",
-      "okta-// Production implementation required:-token",
+      "okta-// production implementation required:-token",
     );
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");
@@ -33,11 +33,11 @@ describe("QMOI Kernel Panel SSO/OAuth E2E - Custom Providers", () => {
 
   it("handles custom provider with extra claims", () => {
     cy.visit(
-      "/auth/callback?provider=custom&token=custom-// Production implementation required:-token&role=superuser",
+      "/auth/callback?provider=custom&token=custom-// production implementation required:-token&role=superuser",
     );
     cy.setCookie(
       "authToken",
-      "custom-// Production implementation required:-token",
+      "custom-// production implementation required:-token",
     );
     cy.setCookie("userRole", "superuser");
     cy.visit("/qcity/kernel");

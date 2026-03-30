@@ -32,7 +32,7 @@ async function startQMOIMonitoring() {
   console.log("├── GitLab: Monitoring pipelines and jobs");
   console.log("├── Vercel: Monitoring deployments and builds");
   console.log("├── QMOI Core AI: Health monitoring");
-  console.log("├── QMOI Device Controller: Status tracking");
+  console.log("├── QMOI prodice Controller: Status tracking");
   console.log("├── QMOI Automated Betting: Performance monitoring");
   console.log("├── QMOI GitLab Automation: Pipeline monitoring");
   console.log("├── QMOI Quantum Cloud: Resource monitoring");

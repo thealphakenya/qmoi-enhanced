@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """Ensure light server is running; start it if required.
 
-This script is intended to be invoked by editor startup hooks (VS Code tasks or devcontainer
+This script is intended to be invoked by editor startup hooks (VS Code tasks or prodcontainer
 postStartCommand). It will check the configured port and launch the server in the background
 if it's not already running.
 """
@@ -45,7 +45,7 @@ def start_server(port, max_size):
     # launch server detached
     cmd = ['python3', str(SERVER_SCRIPT), '--port', str(port), '--max-size', str(max_size)]
     # use Popen and detach
-    p = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
+    p = subprocess.Popen(cmd, stdout=subprocess.prodNULL, stderr=subprocess.prodNULL, start_new_session=True)
     return p.pid
 
 def main():

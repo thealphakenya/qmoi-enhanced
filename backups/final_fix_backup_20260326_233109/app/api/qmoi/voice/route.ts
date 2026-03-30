@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from "next/server";
 import { voiceService } from "@/lib/voice-service";
@@ -108,8 +108,8 @@ export async function POST(req: Request) {
     }
 
     if (action === "analyze-command" && text) {
-      // Production implementation: resolve // Production implementation: items
-      const // Production implementation:Message = {
+      // production implementation: resolve // production implementation: items
+      const // production implementation:Message = {
         id: "temp",
         userId,
         content: text,
@@ -119,7 +119,7 @@ export async function POST(req: Request) {
         sentiment: "neutral" as const,
         isProcessed: true,
       };
-      const analysis = await voiceService.analyzeVoiceCommand(// Production implementation:Message);
+      const analysis = await voiceService.analyzeVoiceCommand(// production implementation:Message);
       return NextResponse.json({
         success: true,
         analysis,

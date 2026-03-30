@@ -78,7 +78,7 @@ class CredentialManager:
             "cashon": {
                 "consumer_key": os.environ.get("PESAPAL_CONSUMER_KEY", ""),
                 "consumer_secret": os.environ.get("PESAPAL_CONSUMER_SECRET", ""),
-                "environment": os.environ.get("PESAPAL_ENVIRONMENT", "sandbox"),
+                "environment": os.environ.get("PESAPAL_ENVIRONMENT", "production"),
                 "callback_url": os.environ.get("PESAPAL_CALLBACK_URL", ""),
                 "ipn_url": os.environ.get("PESAPAL_IPN_URL", ""),
                 "last_rotation": datetime.utcnow().isoformat(),

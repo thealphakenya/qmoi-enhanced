@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -23,7 +23,7 @@
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI AI App Downloads (All Devices)
+# QMOI AI App Downloads (All prodices)
 
 ## Unified Auto-Detect Download Script
 
@@ -67,7 +67,7 @@ Qmoi_downloaded_apps/<platform>/v<version>/
 
 All links below are always up-to-date, autotested, and provided by QCity runners. If a download ever fails, it is automatically fixed and re-uploaded.
 
-Every app can be downloaded, transferred (e.g. via USB), and installed offline on any device, without requiring a download or internet connection. All download links are autotested and auto-fixed by QCity runners, with fallback to ngrok or Freenom if needed (see QMOINGROK.md). Billing safety is ensured: no paid GitHub Actions or ru
+Every app can be downloaded, transferred (e.g. via USB), and installed offline on any prodice, without requiring a download or internet connection. All download links are autotested and auto-fixed by QCity runners, with fallback to ngrok or Freenom if needed (see QMOINGROK.md). Billing safety is ensured: no paid GitHub Actions or ru
 
 ```
 

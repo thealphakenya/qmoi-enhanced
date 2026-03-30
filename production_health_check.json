@@ -98,7 +98,7 @@
       "timestamp": "2026-03-21T23:26:59.135687"
     },
     {
-      "domain": "qparallel.dev",
+      "domain": "qparallel.prod",
       "healthy": false,
       "dns_resolved": false,
       "http_accessible": false,

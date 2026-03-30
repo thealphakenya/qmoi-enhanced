@@ -7,10 +7,10 @@
 import React from "react";
 import { QmoiPlugin } from "./PluginManager";
 
-export const DeviceHealthReviewerPlugin: QmoiPlugin = {
-  id: "device-health-reviewer",
-  name: "Device Health Reviewer",
-  description: "Analyzes device stats and suggests optimizations.",
+export const prodiceHealthReviewerPlugin: QmoiPlugin = {
+  id: "prodice-health-reviewer",
+  name: "prodice Health Reviewer",
+  description: "Analyzes prodice stats and suggests optimizations.",
   init() {},
   activate() {},
   deactivate() {},
@@ -31,7 +31,7 @@ export const DeviceHealthReviewerPlugin: QmoiPlugin = {
     ].filter(Boolean);
     return (
       <div>
-        <h4>Device Health</h4>
+        <h4>prodice Health</h4>
         <ul>
           <li>CPU Usage: {stats.cpu}%</li>
           <li>Memory Usage: {stats.memory}%</li>

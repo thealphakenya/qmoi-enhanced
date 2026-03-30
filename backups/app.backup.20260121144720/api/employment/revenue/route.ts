@@ -70,7 +70,7 @@ const MPESA_CREDENTIALS = {
     process.env.MPESA_CONSUMER_SECRET ||
     "u27oKMfyACGxoQsD2bAuAJn0QzMQ8cWofA6bfzuG4hXaGxCB90PiGOSuCVNcaCSj",
   shortcode: process.env.MPESA_SHORTCODE || "N/A",
-  environment: process.env.MPESA_ENVIRONMENT || "sandbox",
+  environment: process.env.MPESA_ENVIRONMENT || "production",
 };
 
 // Email backup function
@@ -327,7 +327,7 @@ async function addToMpesaAccount(amount: number, description: string) {
   try {
     
     const _response = await fetch(
-      "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/
+      "https://production.safaricom.co.ke/mpesa/c2b/v1/
       {
         method: "POST",
         headers: {

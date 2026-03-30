@@ -1,5 +1,5 @@
 /**
- * QMOI Integrated Services - Production Implementation
+ * QMOI Integrated Services - production Implementation
  * 
  * Coordinates all QMOI services:
  * - Consciousness Engine
@@ -48,7 +48,7 @@ export interface QMOIMetrics {
 }
 
 /**
- * Production QMOI Integrated Services
+ * production QMOI Integrated Services
  * Coordinates all consciousness, memory, and emotional systems
  */
 export class QMOIIntegratedServices {

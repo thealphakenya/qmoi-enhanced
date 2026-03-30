@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "lion-lite"
 [[[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -17,7 +17,7 @@ title: "lion-lite"
 
 Description
 
-- A complete, robust LION variant for edge devices and constrained environments.
+- A complete, robust LION variant for edge prodices and constrained environments.
 
 Key features
 
@@ -29,11 +29,11 @@ Release & packaging
 
 - Delivered as a small tar.gz and a tiny Docker image. Suitable for IoT and edge deployments.
 
-# LION-Lite (Developer / Hobbyist)
+# LION-Lite (prodeloper / Hobbyist)
 
 Purpose
 
-- A robust, complete LION distribution focused on developers and hobbyists for local testing and experimentation.
+- A robust, complete LION distribution focused on prodelopers and hobbyists for local testing and experimentation.
 
 Key features
 
@@ -53,7 +53,7 @@ Release artifacts
 
 Auto-update strategy
 
-- Checks GitHub Releases; developer opt-in auto-updates via pip or scripted upgrade.
+- Checks GitHub Releases; prodeloper opt-in auto-updates via pip or scripted upgrade.
 
 Monetization
 
@@ -61,7 +61,7 @@ Monetization
 
 Integration with QMOI
 
-- Useful for local development of QVS plugins and integration tests.
+- Useful for local production of QVS plugins and integration tests.
 
 ## 🔄 Evolution Status
 

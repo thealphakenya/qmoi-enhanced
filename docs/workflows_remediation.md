@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "Workflows remediation report"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -27,7 +27,7 @@ _scanned at 2025-10-28T23:42:26.289223Z_
 ## .github/workflows/build.yml
 
 - Issue: owner/repo references found; ensure they are templated or use inputs
-- Env vars: NODE_VERSION, QMOI_AUTODEV_ENABLED
+- Env vars: NODE_VERSION, QMOI_AUTOprod_ENABLED
 - Owner/repo references: actions/checkout, actions/setup-node, actions/setup-python
 
 ## .github/workflows/ci.yml
@@ -40,19 +40,19 @@ _scanned at 2025-10-28T23:42:26.289223Z_
 
 - Issue: owner/repo references found; ensure they are templated or use inputs
 - Secrets used: GITHUB_TOKEN
-- Env vars: GH_TOKEN, NODE_VERSION, QMOI_AUTODEV_ENABLED, matrix, platform, strategy
+- Env vars: GH_TOKEN, NODE_VERSION, QMOI_AUTOprod_ENABLED, matrix, platform, strategy
 - Owner/repo references: actions/checkout, actions/setup-node, actions/setup-python
 
 ## .github/workflows/nightly.yml
 
 - Issue: owner/repo references found; ensure they are templated or use inputs
-- Env vars: NODE_VERSION, QMOI_AUTODEV_ENABLED
+- Env vars: NODE_VERSION, QMOI_AUTOprod_ENABLED
 - Owner/repo references: ./.github, workflows/build-and-publish.yml
 
 ## .github/workflows/npm.yml
 
 - Issue: owner/repo references found; ensure they are templated or use inputs
-- Env vars: NODE_VERSION, QMOI_AUTODEV_ENABLED
+- Env vars: NODE_VERSION, QMOI_AUTOprod_ENABLED
 - Owner/repo references: actions/cache, actions/checkout, actions/setup-node
 
 ## .github/workflows/publish-q-stable.yml
@@ -64,15 +64,15 @@ _scanned at 2025-10-28T23:42:26.289223Z_
 ## .github/workflows/q.yml
 
 - Issue: owner/repo references found; ensure they are templated or use inputs
-- Env vars: NODE_VERSION, QMOI_AUTODEV_ENABLED
+- Env vars: NODE_VERSION, QMOI_AUTOprod_ENABLED
 - Owner/repo references: actions/checkout, actions/setup-node
 
 ## .github/workflows/qmoi-app-build.yml
 
 - Secrets used: QMOI_DISCORD_WEBHOOK, QMOI_EMAIL_PASS, QMOI_EMAIL_RECIPIENT, QMOI_EMAIL_USER, QMOI_SLACK_WEBHOOK, QMOI_TELEGRAM_CHAT, QMOI_TELEGRAM_TOKEN, QMOI_TWILIO_SID, QMOI_TWILIO_TOKEN, QMOI_TWILIO_WHATSAPP
-- Env vars: GIT_DEPTH, GIT_SUBMODULE_STRATEGY, NODE_ENV, NODE_VERSION, PYTHONUNBUFFERED, QMOI_AUTODEV_ENABLED, QMOI_CODESPACES, QMOI_DISCORD_WEBHOOK, QMOI_EMAIL_PASS, QMOI_EMAIL_RECIPIENT, QMOI_EMAIL_USER, QMOI_SLACK_WEBHOOK, QMOI_TELEGRAM_CHAT, QMOI_TELEGRAM_TOKEN, QMOI_TWILIO_SID, QMOI_TWILIO_TOKEN, QMOI_TWILIO_WHATSAPP, steps
+- Env vars: GIT_DEPTH, GIT_SUBMODULE_STRATEGY, NODE_ENV, NODE_VERSION, PYTHONUNBUFFERED, QMOI_AUTOprod_ENABLED, QMOI_CODESPACES, QMOI_DISCORD_WEBHOOK, QMOI_EMAIL_PASS, QMOI_EMAIL_RECIPIENT, QMOI_EMAIL_USER, QMOI_SLACK_WEBHOOK, QMOI_TELEGRAM_CHAT, QMOI_TELEGRAM_TOKEN, QMOI_TWILIO_SID, QMOI_TWILIO_TOKEN, QMOI_TWILIO_WHATSAPP, steps
 
-## .github/workflows/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-autodev.yml
+## .github/workflows/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-autoprod.yml
 
 - Issue: owner/repo references found; ensure they are templated or use inputs
 - Issue: no secrets or envs detected (ok)
@@ -81,24 +81,24 @@ _scanned at 2025-10-28T23:42:26.289223Z_
 ## .github/workflows/qmoi-ci.yml
 
 - Issue: owner/repo references found; ensure they are templated or use inputs
-- Env vars: NODE_VERSION, QMOI_AUTODEV_ENABLED
+- Env vars: NODE_VERSION, QMOI_AUTOprod_ENABLED
 - Owner/repo references: actions/checkout, actions/setup-node, actions/setup-python, actions/upload-artifact
 
 ## .github/workflows/release.yml
 
 - Issue: owner/repo references found; ensure they are templated or use inputs
 - Secrets used: GH_TOKEN, GITHUB_TOKEN
-- Env vars: GH_TOKEN, GITHUB_TOKEN, NODE_VERSION, QMOI_AUTODEV_ENABLED, steps, timeout_minutes
+- Env vars: GH_TOKEN, GITHUB_TOKEN, NODE_VERSION, QMOI_AUTOprod_ENABLED, steps, timeout_minutes
 - Owner/repo references: actions/cache, actions/checkout, actions/setup-node, actions/setup-python, actions/upload-artifact, docker/setup-buildx-action, softprops/action-gh-release
 
 ## .github/workflows/sync-notify.yml
 
-- Env vars: NODE_VERSION, QMOI_AUTODEV_ENABLED
+- Env vars: NODE_VERSION, QMOI_AUTOprod_ENABLED
 
 ## .github/workflows/update-readme-cli.yml
 
 - Issue: owner/repo references found; ensure they are templated or use inputs
-- Env vars: NODE_VERSION, QMOI_AUTODEV_ENABLED
+- Env vars: NODE_VERSION, QMOI_AUTOprod_ENABLED
 - Owner/repo references: actions/checkout, actions/setup-python
 
 ## .github/workflows/validate-and-tag-md.yml

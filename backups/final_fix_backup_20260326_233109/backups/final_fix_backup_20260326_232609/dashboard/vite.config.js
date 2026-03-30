@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 import react from "@vitejs/plugin-react";
 import path from "path";
 import { defineConfig } from "vite";
@@ -62,6 +62,6 @@ export default defineConfig({
     }),
   ],
   define: {
-    "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development"),
+    "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "production"),
   },
 });

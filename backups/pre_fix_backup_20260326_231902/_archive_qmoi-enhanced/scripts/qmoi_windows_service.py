@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI Windows Service Manager
@@ -40,7 +40,7 @@ class QMOIWindowsService(win32serviceutil.ServiceFramework):
     
     _svc_name_ = "QMOIAutomatedSystem"
     _svc_display_name_ = "QMOI Automated System Service"
-    _svc_description_ = "QMOI Device Controller and Betting System Service"
+    _svc_description_ = "QMOI prodice Controller and Betting System Service"
     
     def __init__(self, args):
         win32serviceutil.ServiceFramework.__init__(self, args)
@@ -84,8 +84,8 @@ class QMOIWindowsService(win32serviceutil.ServiceFramework):
         try:
             logging.info("🔧 Starting automated systems...")
             
-            # Start device controller
-            self.start_device_controller()
+            # Start prodice controller
+            self.start_prodice_controller()
             
             # Start betting system
             self.start_betting_system()
@@ -98,20 +98,20 @@ class QMOIWindowsService(win32serviceutil.ServiceFramework):
         except Exception as e:
             logging.error(f"Failed to start automated systems: {e}")
     
-    def start_device_controller(self):
-        """Start device controller process"""
+    def start_prodice_controller(self):
+        """Start prodice controller process"""
         try:
-            script_path = os.path.join(os.getcwd(), 'scripts', 'qmoi_automated_device_controller.py')
+            script_path = os.path.join(os.getcwd(), 'scripts', 'qmoi_automated_prodice_controller.py')
             if os.path.exists(script_path):
                 process = subprocess.Popen([
                     sys.executable, script_path
                 ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                self.processes.append(('device_controller', process))
-                logging.info("✅ Device controller started")
+                self.processes.append(('prodice_controller', process))
+                logging.info("✅ prodice controller started")
             else:
-                logging.error(f"Device controller script not found: {script_path}")
+                logging.error(f"prodice controller script not found: {script_path}")
         except Exception as e:
-            logging.error(f"Failed to start device controller: {e}")
+            logging.error(f"Failed to start prodice controller: {e}")
     
     def start_betting_system(self):
         """Start betting system process"""
@@ -160,8 +160,8 @@ class QMOIWindowsService(win32serviceutil.ServiceFramework):
             self.processes = [(name, proc) for name, proc in self.processes if name != process_name]
             
             # Restart process
-            if process_name == 'device_controller':
-                self.start_device_controller()
+            if process_name == 'prodice_controller':
+                self.start_prodice_controller()
             elif process_name == 'betting_system':
                 self.start_betting_system()
                 

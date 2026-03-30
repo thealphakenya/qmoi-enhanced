@@ -8,7 +8,7 @@
 
 This module provides a small adapter interface and a few mocked/testnet adapters
 you can extend. All adapters are real-first and must be explicitly enabled for
-real calls using PRODUCTION_CONFIRMED and --real flags in the caller.
+real calls using production_CONFIRMED and --real flags in the caller.
 """
 from datetime import datetime
 import os
@@ -72,7 +72,7 @@ class TestnetAdapter(AdapterBase):
         cfg = config or {}
         if real:
             # Never perform real calls unless production confirmed
-            if os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() != 'true':
+            if os.environ.get('production_CONFIRMED', 'false').lower() != 'true':
                 # write a proposal describing intent and return blocked status
                 write_proposal(
                     f'check-balance-{self.name}',
@@ -106,13 +106,13 @@ class BinanceTestnetAdapter(TestnetAdapter):
     def __init__(self):
         super().__init__('binance_testnet', base_amount=20.0, currency='USDT')
 
-class MpesaSandboxAdapter(TestnetAdapter):
+class MpesaproductionAdapter(TestnetAdapter):
     def __init__(self):
-        super().__init__('mpesa_sandbox', base_amount=1500.0, currency='KES')
+        super().__init__('mpesa_production', base_amount=1500.0, currency='KES')
 
 class CashonAdapter(AdapterBase):
     """Adapter for Cashon wallet. Proposal-first: writes a proposal when real=True
-    unless PRODUCTION_CONFIRMED=true is set. If production is confirmed and
+    unless production_CONFIRMED=true is set. If production is confirmed and
     ALLOW_REAL_ACTIONS=true is set, this will attempt a simple HTTP GET to the
     configured URL and try to parse a balance from the response.
     """
@@ -128,7 +128,7 @@ class CashonAdapter(AdapterBase):
             # write proposal and block unless explicitly allowed
             payload = {'adapter': 'cashon', 'api_url': api_url, 'api_key_masked': _mask_secret(api_key)}
             prop = write_proposal('check-balance-cashon', 'Dry-run: check Cashon real balance', payload)
-            if os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() != 'true':
+            if os.environ.get('production_CONFIRMED', 'false').lower() != 'true':
                 return {'status': 'blocked_no_production_confirm', 'last_checked': now_iso(), 'meta': {'adapter': 'cashon', 'proposal': prop}}
 
             if os.environ.get('ALLOW_REAL_ACTIONS', 'false').lower() != 'true':
@@ -175,7 +175,7 @@ class MegavaultAdapter(AdapterBase):
         if real:
             payload = {'adapter': 'megavault', 'api_url': api_url, 'api_key_masked': _mask_secret(api_key)}
             prop = write_proposal('check-balance-megavault', 'Dry-run: check Megavault real balance', payload)
-            if os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() != 'true':
+            if os.environ.get('production_CONFIRMED', 'false').lower() != 'true':
                 return {'status': 'blocked_no_production_confirm', 'last_checked': now_iso(), 'meta': {'adapter': 'megavault', 'proposal': prop}}
             if os.environ.get('ALLOW_REAL_ACTIONS', 'false').lower() != 'true':
                 return {'status': 'blocked_no_allow_real', 'last_checked': now_iso(), 'meta': {'adapter': 'megavault', 'proposal': prop}}
@@ -209,6 +209,6 @@ class MegavaultAdapter(AdapterBase):
 REGISTRY.setdefault('leahwallet', LeahAdapter())
 REGISTRY.setdefault('leah', LeahAdapter())
 REGISTRY.setdefault('binance_testnet', BinanceTestnetAdapter())
-REGISTRY.setdefault('mpesa_sandbox', MpesaSandboxAdapter())
+REGISTRY.setdefault('mpesa_production', MpesaproductionAdapter())
 REGISTRY.setdefault('cashon', CashonAdapter())
 REGISTRY.setdefault('megavault', MegavaultAdapter())

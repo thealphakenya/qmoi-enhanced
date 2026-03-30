@@ -85,12 +85,12 @@
       {
         "pattern": "http://localhost:3000",
         "replacement": "https://qmoi.ai",
-        "context": "Development server reference in production docs"
+        "context": "production server reference in production docs"
       },
       {
         "pattern": "http://localhost:8080",
         "replacement": "https://qvillage.com",
-        "context": "Development server reference in production docs"
+        "context": "production server reference in production docs"
       }
     ],
     "malformed_urls": [

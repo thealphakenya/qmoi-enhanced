@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 export interface WalletBalance {
   currency: string;
   balance: number;
@@ -90,7 +90,7 @@ export class WalletManager {
     if (currency === "USDT") return 1;
     try {
       // Implement price fetching logic here
-      return 0; // Production implementation:
+      return 0; // production implementation:
     } catch (error) {
       (globalThis.console as any)?.error?.(
         `Error fetching USD price for ${currency}:`,

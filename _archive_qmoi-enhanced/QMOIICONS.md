@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOIICONS"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -78,7 +78,7 @@ How QMOI updates icons
 
 See also
 
-- ALLDEVICESSETTINGS.md (device-specific icon settings)
+- ALLprodICESSETTINGS.md (prodice-specific icon settings)
 - BUILDAPPSFORALLPLATFORMS.md (integration into build pipelines)
 - QMOINGROK.md (icon downloads via tunnel/CDN if needed)
 

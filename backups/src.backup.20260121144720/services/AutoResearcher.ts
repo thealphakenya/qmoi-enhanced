@@ -29,7 +29,7 @@ export class AutoResearcher {
    * Notify about improvements. Make this a no-op for now but keep typing.
    */
   notifyImprovements(topic: string): void {
-    // Production: integrate with system notification service for real alerts
+    // production: integrate with system notification service for real alerts
     
     console.info(`New knowledge added for ${topic}`);
   }

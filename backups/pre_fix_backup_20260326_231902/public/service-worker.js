@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:31Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 const CACHE_VERSION = "qmoi-pwa-v1";
 const CACHE_URLS = [
   "/",
@@ -17,7 +17,7 @@ const CACHE_URLS = [
 ];
 
 // Service Worker Install Event
-self.addEventListener("install", (event) => {
+self.adprodentListener("install", (event) => {
   console.log("[ServiceWorker] Installing...");
   event.waitUntil(
     caches.open(CACHE_VERSION).then((cache) => {
@@ -33,7 +33,7 @@ self.addEventListener("install", (event) => {
 });
 
 // Service Worker Activate Event (Cleanup old caches)
-self.addEventListener("activate", (event) => {
+self.adprodentListener("activate", (event) => {
   console.log("[ServiceWorker] Activating...");
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -51,7 +51,7 @@ self.addEventListener("activate", (event) => {
 });
 
 // Service Worker Fetch Event (Network-first strategy with fallback)
-self.addEventListener("fetch", (event) => {
+self.adprodentListener("fetch", (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
@@ -122,7 +122,7 @@ async function cacheFirst(request) {
 }
 
 // Background sync for updates
-self.addEventListener("sync", (event) => {
+self.adprodentListener("sync", (event) => {
   if (event.tag === "pwa-update") {
     event.waitUntil(checkForUpdates());
   }
@@ -152,7 +152,7 @@ async function checkForUpdates() {
 }
 
 // Message handling from client
-self.addEventListener("message", (event) => {
+self.adprodentListener("message", (event) => {
   if (event.data.type === "SKIP_WAITING") {
     self.skipWaiting();
   }
@@ -162,7 +162,7 @@ self.addEventListener("message", (event) => {
 });
 
 // Periodic background sync for auto-updates
-self.addEventListener("periodicsync", (event) => {
+self.adprodentListener("periodicsync", (event) => {
   if (event.tag === "qmoi-auto-update") {
     event.waitUntil(checkAndApplyUpdates());
   }

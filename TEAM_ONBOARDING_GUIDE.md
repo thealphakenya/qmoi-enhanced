@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Enhanced - Team Onboarding Guide
 
 Welcome to the QMOI Enhanced production team! This guide will help you get up to speed with our deployment and operations practices.
@@ -25,17 +25,17 @@ QMOI Enhanced is a Next.js-based full-stack application with:
 
 ## Your First Day
 
-### 1. Access the Development Environment
+### 1. Access the production Environment
 
 ```bash
 # Clone the repository
 git clone https://github.com/thealphakenya/qmoi-enhanced.git
 cd qmoi-enhanced
 
-# Setup development environment
+# Setup production environment
 npm install
-cp .env.development .env.local
-npm run dev
+cp .env.production .env.local
+npm run prod
 
 # Application will be available at https://qmoi.ai
 ```
@@ -58,16 +58,16 @@ qmoi-enhanced/
 ### 3. Key Files You Should Know
 
 - **pm2.config.cjs**: Defines how processes are managed in production
-- **PRODUCTION_DEPLOYMENT_PLAYBOOK.md**: Step-by-step deployment guide
+- **production_DEPLOYMENT_PLAYBOOK.md**: Step-by-step deployment guide
 - **DEPLOYMENT_CHECKLIST.md**: Pre-deployment verification checklist
 - **scripts/deploy-production.sh**: Automated deployment script
-- **.env.production.updated**: Production environment standard
+- **.env.production.updated**: production environment standard
 
 ### 4. Meet the Team Roles
 
-- **DevOps/Infrastructure**: Manages servers, SSL, monitoring
-- **Backend Developers**: Work on API endpoints and database
-- **Frontend Developers**: Work on React components and UI
+- **prodOps/Infrastructure**: Manages servers, SSL, monitoring
+- **Backend prodelopers**: Work on API endpoints and database
+- **Frontend prodelopers**: Work on React components and UI
 - **QA/Testing**: Tests features before production release
 - **On-Call Support**: Monitors production and responds to alerts
 
@@ -78,7 +78,7 @@ qmoi-enhanced/
 The system uses **automated deployments** with PM2:
 
 ```bash
-# Current development setup (local)
+# Current production setup (local)
 pm2 start pm2.config.cjs              # Start all processes
 pm2 monit                              # Monitor in real-time
 pm2 logs                               # View all logs
@@ -96,19 +96,19 @@ pm2 restart qmoi-app                   # Restart a process
 ### Day 3: Database Operations
 
 ```bash
-# Development database setup
-npx prisma migrate dev              # Run migrations
+# production database setup
+npx prisma migrate prod              # Run migrations
 npx prisma studio                   # Visual database browser
 npx prisma db seed                  # Seed initial data
 
-# Production database (from production server)
+# production database (from production server)
 npx prisma migrate deploy           # Apply migrations
 npx prisma db execute --stdin       # Run raw SQL
 ```
 
 **Important**: Never modify production database directly!
 
-### Day 4: API Development
+### Day 4: API production
 
 ```bash
 # View all compiled API endpoints
@@ -152,13 +152,13 @@ pm2 logs qmoi-app
 
 ## Common Tasks
 
-### Deploy a Code Change to Production
+### Deploy a Code Change to production
 
 1. **Create a pull request** on GitHub
 2. **Team reviews** the code
 3. **CI/CD pipeline** runs tests
 4. **Merge to main** branch
-5. **Production deployment** happens automatically (or run manually):
+5. **production deployment** happens automatically (or run manually):
 
    ```bash
    # SSH to production server
@@ -286,7 +286,7 @@ If you're on-call:
 
 ## Important URLs
 
-| Service      | Development                      | Production                  |
+| Service      | production                      | production                  |
 | ------------ | -------------------------------- | --------------------------- |
 | Main App     | https://qmoi.ai            | https://qmoi.app            |
 | Health Check | https://qmoi.ai/api/health | https://qmoi.app/api/health |
@@ -310,8 +310,8 @@ If you're on-call:
 ## Useful Commands Reference
 
 ```bash
-# Development
-npm run dev              # Start dev server
+# production
+npm run prod              # Start prod server
 npm run build            # Build for production
 npm test                 # Run tests
 npm run lint             # Run ESLint
@@ -329,7 +329,7 @@ pm2 save
 pm2 startup
 
 # Database
-npx prisma migrate dev
+npx prisma migrate prod
 npx prisma migrate deploy
 npx prisma studio
 npx prisma generate

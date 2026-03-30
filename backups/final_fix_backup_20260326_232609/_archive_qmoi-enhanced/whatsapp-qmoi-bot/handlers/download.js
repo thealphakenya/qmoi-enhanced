@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-async function sendDownloadLink(sock, jid, deviceType) {
-  // Provide download link for app/project based on device type
+async function sendDownloadLink(sock, jid, prodiceType) {
+  // Provide download link for app/project based on prodice type
   let url = "";
-  switch (deviceType) {
+  switch (prodiceType) {
     case "android":
       url = "https://data.com/app-android.apk";
       break;
@@ -23,7 +23,7 @@ async function sendDownloadLink(sock, jid, deviceType) {
       url = "https://data.com/app";
   }
   await sock.sendMessage(jid, {
-    text: `Download the app for ${deviceType}: ${url}`,
+    text: `Download the app for ${prodiceType}: ${url}`,
   });
 }
 

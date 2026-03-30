@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "ALL MD Files References - Enhanced Comprehensive Edition"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -28,7 +28,7 @@ This comprehensive reference document catalogs and categorizes all .md files in 
 - **All app download links are now provided via https://github.com/thealphakenya/qmoi-enhanced/releases/**
 - **All links are autotested and always up-to-date, managed by QCity runners.**
 - **See [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) for all app releases and versions.**
-- **See [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) for all device/platform download instructions.**
+- **See [DOWNLOADQMOIAIAPPALLprodICES.md](DOWNLOADQMOIAIAPPALLprodICES.md) for all prodice/platform download instructions.**
 
 ## Download Autofix & Customer Care (2025+)
 
@@ -36,7 +36,7 @@ This comprehensive reference document catalogs and categorizes all .md files in 
 - Download UI and scripts feature robust error handling, retry logic, and real-time status.
 - Users can report issues directly from the download UI; all issues are logged and prioritized for immediate fix.
 - Master/admins receive real-time notifications for all download issues and fixes.
-- See [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) and [DOWNLOADQMOIAIAPPALLDEVICES.md](DOWNLOADQMOIAIAPPALLDEVICES.md) for all links and troubleshooting.
+- See [ALLQMOIAIAPPSREALEASESVERSIONS.md](ALLQMOIAIAPPSREALEASESVERSIONS.md) and [DOWNLOADQMOIAIAPPALLprodICES.md](DOWNLOADQMOIAIAPPALLprodICES.md) for all links and troubleshooting.
 
 > **Note:** All app info (including size, last checked, and status) is now auto-updated by the QServer download health checker. All documentation and app info is always up-to-date and precise.
 
@@ -47,7 +47,7 @@ This comprehensive reference document catalogs and categorizes all .md files in 
   - **Android**: React Native APK, built and output as `Qmoi_apps/android/qmoi ai.apk`.
   - **iOS**: React Native IPA (if on macOS), output as `Qmoi_apps/ios/qmoi ai.ipa`.
 - All actions and errors are robustly logged via `qmoi_activity_logger`.
-- [PRODUCTION READY]_PRODs remain for mac, linux, chromebook, raspberrypi, smarttv, qcity.
+- [production READY]_prods remain for mac, linux, chromebook, raspberrypi, smarttv, qcity.
 - All output files are named `qmoi ai` and placed in the correct subdirectory.
 - Download links and notifications are updated automatically after each build.
 
@@ -73,8 +73,8 @@ This comprehensive reference document catalogs and categorizes all .md files in 
 "ok": true
 },
 {
-"label": "DOWNLOADQMOIAIAPPALLDEVICES.md",
-"target": "./DOWNLOADQMOIAIAPPALLDEVICES.md",
+"label": "DOWNLOADQMOIAIAPPALLprodICES.md",
+"target": "./DOWNLOADQMOIAIAPPALLprodICES.md",
 "ok": true
 },
 {
@@ -83,8 +83,8 @@ This comprehensive reference document catalogs and categorizes all .md files in 
 "ok": true
 },
 {
-"label": "DOWNLOADQMOIAIAPPALLDEVICES.md",
-"target": "./DOWNLOADQMOIAIAPPALLDEVICES.md",
+"label": "DOWNLOADQMOIAIAPPALLprodICES.md",
+"target": "./DOWNLOADQMOIAIAPPALLprodICES.md",
 "ok": true
 }
 ]

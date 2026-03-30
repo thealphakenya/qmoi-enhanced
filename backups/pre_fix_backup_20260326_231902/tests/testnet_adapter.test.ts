@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 import { TestnetAdapter } from "../src/wallet";
 
 describe("TestnetAdapter (dry-run)", () => {
-  test("getBalance returns deterministic [PRODUCTION READY] when no apiKey", async () => {
+  test("getBalance returns deterministic [production READY] when no apiKey", async () => {
     const a = new TestnetAdapter("unittest");
     const b = await a.getBalance();
     expect(b).toHaveProperty("amount");

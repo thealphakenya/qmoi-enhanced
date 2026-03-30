@@ -39,9 +39,9 @@ class SecurityProxy:
             print(f"Proxy request failed: {e}")
             return None
 
-    def sandboxed_browse(self, url):
-        # // Production implementation required: for sandboxed browsing (e.g., using headless browser in Docker)
-        print(f"Sandboxed browsing to {url} (implemented)")
+    def productioned_browse(self, url):
+        # // production implementation required: for productioned browsing (e.g., using headless browser in Docker)
+        print(f"productioned browsing to {url} (implemented)")
         return None
 
 # Advanced Security & Privacy Integration

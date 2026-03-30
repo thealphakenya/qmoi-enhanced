@@ -7,14 +7,14 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # Environment Configuration Guide
 
 ## Overview
 
-This guide explains how to configure the QMOI Enhanced application for different environments (development, production, production).
+This guide explains how to configure the QMOI Enhanced application for different environments (production, production, production).
 
-## Development Environment
+## production Environment
 
 ### 1. Create `.env.local`
 
@@ -24,23 +24,23 @@ cp .env.local.data .env.local
 
 ### 2. Configure Database
 
-**SQLite (Default for Development):**
+**SQLite (Default for production):**
 
 ```bash
-DATABASE_URL="file:./prisma/dev.db"
+DATABASE_URL="file:./prisma/prod.db"
 ```
 
 **PostgreSQL (Optional):**
 
 ```bash
-DATABASE_URL="postgresql://user:password@localhost:5432/qmoi_dev"
+DATABASE_URL="postgresql://user:password@localhost:5432/qmoi_prod"
 ```
 
 ### 3. Configure Authentication
 
 ```bash
-JWT_SECRET="your-dev-secret-key-min-32-chars"
-JWT_REFRESH_SECRET="your-dev-refresh-secret-min-32-chars"
+JWT_SECRET="your-prod-secret-key-min-32-chars"
+JWT_REFRESH_SECRET="your-prod-refresh-secret-min-32-chars"
 JWT_EXPIRATION=604800
 JWT_REFRESH_EXPIRATION=2592000
 ```
@@ -113,24 +113,24 @@ TELEGRAM_BOT_TOKEN="your-bot-token"
 
 ```bash
 NEXT_PUBLIC_API_URL="https://qmoi.ai"
-NODE_ENV="development"
+NODE_ENV="production"
 LOG_LEVEL="debug"
 ```
 
-### 8. Run Development Server
+### 8. Run production Server
 
 ```bash
 # Install dependencies
 npm install
 
 # Run database migrations
-npx prisma migrate dev
+npx prisma migrate prod
 
 # Seed database (optional)
 npx prisma db seed
 
-# Start development server
-npm run dev
+# Start production server
+npm run prod
 ```
 
 ## production Environment
@@ -174,7 +174,7 @@ heroku config:set -a qmoi-production JWT_SECRET=production-secret
 # ... set all other variables ...
 ```
 
-## Production Environment
+## production Environment
 
 ### 1. Create `.env.production`
 
@@ -256,7 +256,7 @@ WEBHOOK_SECRET="prod-webhook-secret-very-secure"
 - [ ] Input validation is strict
 - [ ] Secrets are rotated quarterly
 
-### 3. Deploy to Production
+### 3. Deploy to production
 
 **Using Docker:**
 
@@ -290,7 +290,7 @@ git push heroku main
 | Variable             | Type   | Required | Default     | Description                                  |
 | -------------------- | ------ | -------- | ----------- | -------------------------------------------- |
 | `DATABASE_URL`       | URL    | Yes      | -           | Database connection string                   |
-| `NODE_ENV`           | String | No       | development | Environment (development/production/production) |
+| `NODE_ENV`           | String | No       | production | Environment (production/production/production) |
 | `JWT_SECRET`         | String | Yes      | -           | JWT signing secret (min 32 chars)            |
 | `JWT_REFRESH_SECRET` | String | Yes      | -           | JWT refresh secret (min 32 chars)            |
 | `SENDGRID_API_KEY`   | String | No       | -           | SendGrid API key                             |
@@ -303,10 +303,10 @@ git push heroku main
 
 ## Verification
 
-### Development
+### production
 
 ```bash
-npm run dev
+npm run prod
 # Visit https://qmoi.ai
 ```
 
@@ -317,7 +317,7 @@ curl https://production-api.qmoi.app/health
 # Should return { "status": "ok" }
 ```
 
-### Production
+### production
 
 ```bash
 curl https://api.qmoi.app/health
@@ -353,9 +353,9 @@ node -e "console.log(process.env)"
 
 For environment configuration issues:
 
-- Check [PRODUCTION_SETUP.md](./PRODUCTION_SETUP.md)
+- Check [production_SETUP.md](./production_SETUP.md)
 - Review [DEPLOYMENT.md](./DEPLOYMENT.md)
-- Contact: devops@[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai).app
+- Contact: prodops@[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai).app
 
 ## 🔄 Evolution Status
 

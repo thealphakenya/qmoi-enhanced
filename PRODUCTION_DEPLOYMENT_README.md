@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Production Deployment - 100% Domain Health Guarantee
+# QMOI production Deployment - 100% Domain Health Guarantee
 
 ## 🎯 Mission
 Achieve **100% domain and system health** in production with guaranteed operational status across all QMOI platforms.
@@ -68,7 +68,7 @@ qvillage.net         A      13.248.169.48
 qvillage.org         A      13.248.169.48
 qglobal.org          A      13.248.169.48
 alphaq.ai            A      13.248.169.48
-qparallel.dev        A      13.248.169.48
+qparallel.prod        A      13.248.169.48
 ```
 
 ### 3. Verify Health

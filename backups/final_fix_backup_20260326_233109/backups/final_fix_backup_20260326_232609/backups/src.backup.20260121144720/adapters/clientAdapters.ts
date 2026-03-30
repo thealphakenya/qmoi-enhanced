@@ -1,4 +1,4 @@
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 // Client-side adapters for production integrations with parallel execution support
 // Features: Caching, retry logic, background operations, _request queuing, error recovery
 // These call backend API endpoints (preferred) which should implement real third-party integrations.
@@ -143,7 +143,7 @@ export async function fetchMedia(forceRefresh = false): Promise<any[]> {
   });
 }
 
-export async function verifyProduct(
+export async function verifyproduct(
   _query: string,
   forceRefresh = false,
 ): Promise<string> {
@@ -165,9 +165,9 @@ export async function verifyProduct(
       const result = data.result || "No result";
       setCache(cacheKey, result, "verify");
       return result;
-    }, "verifyProduct");
+    }, "verifyproduct");
   }).catch((_err) => {
-    console.warn("verifyProduct error", _err);
+    console.warn("verifyproduct error", _err);
     return `Verification unavailable: ${String(_err)}`;
   });
 }

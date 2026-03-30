@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI WhatsApp Browser Login Page
 
 This page describes how to log QMOI into WhatsApp using the official WhatsApp Web login, including all intended UI features and usage instructions.
@@ -20,7 +20,7 @@ This page describes how to log QMOI into WhatsApp using the official WhatsApp We
    - The page opens WhatsApp Web in a new window/tab: [https://web.whatsapp.com/](https://web.whatsapp.com/)
 2. **Scan the QR Code**
    - Use your WhatsApp mobile app to scan the QR code displayed on the page.
-   - Go to WhatsApp > Menu > Linked Devices > Link a Device.
+   - Go to WhatsApp > Menu > Linked prodices > Link a prodice.
 3. **Successful Login**
    - Once scanned, QMOI will be logged in and can use the WhatsApp account for all intended automation and messaging features.
 
@@ -33,11 +33,11 @@ This page describes how to log QMOI into WhatsApp using the official WhatsApp We
 - **Status Indicator:**
   - Shows connection status ("Waiting for scan", "Connected", "Disconnected").
 - **Instructions Panel:**
-  - Step-by-step guide for linking the device.
+  - Step-by-step guide for linking the prodice.
 - **Session Management:**
   - Option to log out, refresh QR, or switch accounts.
 - **Security Notice:**
-  - Reminds users to only scan with trusted devices.
+  - Reminds users to only scan with trusted prodices.
 - **QMOI Integration Panel:**
   - Shows QMOI's WhatsApp automation status (active, idle, error).
 - **Help/Support Link:**

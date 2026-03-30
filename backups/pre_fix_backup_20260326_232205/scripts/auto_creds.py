@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-"""Automatic credentials shim for test/dev environments.
+"""Automatic credentials shim for test/prod environments.
 
 Provides safe, local, automatically-created credentials when environment
 variables are not set. Credentials are stored under `.secrets/credentials.json`

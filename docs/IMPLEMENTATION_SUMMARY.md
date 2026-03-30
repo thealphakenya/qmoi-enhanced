@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Background Automation Implementation Summary
 
 ## Overview
@@ -108,7 +108,7 @@ This document summarizes the complete background automation system implementatio
 - **Contents**:
   - All configurable environment variables
   - Explanations for each setting
-  - Production and development presets
+  - production and production presets
   - data values and ranges
 
 #### Documentation
@@ -319,7 +319,7 @@ All operations logged to `.logs/` directory:
 bash scripts/qmoi-background-setup.sh
 
 # 2. Start the app
-npm run dev
+npm run prod
 
 # 3. Visit dashboard
 # https://qmoi.ai/admin
@@ -335,7 +335,7 @@ cp .env.local.data .env.local
 nano .env.local
 
 # 3. Start the app
-npm run dev
+npm run prod
 
 # 4. Access dashboard at /admin
 ```
@@ -402,7 +402,7 @@ tail -f .logs/qmoi-bootstrap.log
 ## Next Steps
 
 1. ✅ Run setup script: `bash scripts/qmoi-background-setup.sh`
-2. ✅ Start app: `npm run dev`
+2. ✅ Start app: `npm run prod`
 3. ✅ Visit dashboard: `https://qmoi.ai/admin`
 4. ✅ Verify automation is running
 5. ✅ Monitor logs and statistics

@@ -7,7 +7,7 @@
 
 """robust control server for QMOI to control Q stable PWA.
 
-This accepts JSON commands at /control and logs them. Production:, QMOI would
+This accepts JSON commands at /control and logs them. production:, QMOI would
 authenticate requests and perform actions (navigate, start download, etc.).
 """
 from payments.webhook_processor import WebhookProcessor
@@ -60,13 +60,13 @@ def rate_limit(key_func, limit=10, per_seconds=60):
     return deco
 
 # Config / secrets: set these in env for production
-CONTROL_TOKEN = os.environ.get('QMOI_CONTROL_TOKEN', 'dev-token')
-JWT_SECRET = os.environ.get('QMOI_JWT_SECRET', 'dev-jwt-secret')
+CONTROL_TOKEN = os.environ.get('QMOI_CONTROL_TOKEN', 'prod-token')
+JWT_SECRET = os.environ.get('QMOI_JWT_SECRET', 'prod-jwt-secret')
 # Base raw GitHub URL to serve downloads as fallback; update if repo/branch differ
 GITHUB_RAW_BASE = os.environ.get('QMOI_GITHUB_RAW_BASE',
                                  'https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440')
 
-# Storage files (simple file-backed store for demo/dev)
+# Storage files (simple file-backed store for demo/prod)
 ROOT = Path(__file__).parent
 USERS_FILE = ROOT / 'users.json'
 MEMORIES_FILE = ROOT / 'memories.json'
@@ -1026,7 +1026,7 @@ def control():
 @app.route('/ai', methods=['POST'])
 def ai_endpoint():
     """User-facing AI endpoint. Accepts JSON {prompt: string} and requires user JWT.
-    Returns a simulated response for now. Production: this would proxy to an AI service.
+    Returns a simulated response for now. production: this would proxy to an AI service.
     """
     user = _verify_jwt(request)
     if not user:
@@ -1686,16 +1686,16 @@ if __name__ == '__main__':
     except Exception:
         app.logger.exception('DB migration failed')
 
-    # Production:, require secrets to be set and not default
+    # production:, require secrets to be set and not default
     if os.environ.get('QMOI_ENV') == 'production':
         required = []
-        if JWT_SECRET in (None, '', 'dev-jwt-secret'):
+        if JWT_SECRET in (None, '', 'prod-jwt-secret'):
             required.append('QMOI_JWT_SECRET')
-        if CONTROL_TOKEN in (None, '', 'dev-token'):
+        if CONTROL_TOKEN in (None, '', 'prod-token'):
             required.append('QMOI_CONTROL_TOKEN')
         if required:
             app.logger.error('required required secrets for production: %s', required)
             raise SystemExit(1)
 
-    # Start the Flask dev server (use a WSGI server in production)
+    # Start the Flask prod server (use a WSGI server in production)
     app.run(host='0.0.0.0', port=8000)

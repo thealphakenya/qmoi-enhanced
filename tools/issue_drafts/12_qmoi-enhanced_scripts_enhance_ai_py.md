@@ -7,13 +7,13 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
-title: "Fix [PRODUCTION READY]s in qmoi-enhanced/scripts/enhance_ai.py (71 priority)"
+title: "Fix [production READY]s in qmoi-enhanced/scripts/enhance_ai.py (71 priority)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Fix [PRODUCTION READY]s in qmoi-enhanced/scripts/enhance_ai.py (71 priority)
+# Fix [production READY]s in qmoi-enhanced/scripts/enhance_ai.py (71 priority)
 
 **File**: `qmoi-enhanced/scripts/enhance_ai.py`
 **Priority score**: 71
@@ -27,13 +27,13 @@ title: "Fix [PRODUCTION READY]s in qmoi-enhanced/scripts/enhance_ai.py (71 prior
 - Line 240: # Implementation for icon updates
 - Line 245: # Implementation for broadcast feature
 - Line 250: # Implementation for targeted notifications
-- Line 256: # Implement device optimization
+- Line 256: # Implement prodice optimization
 - Line 268: # Implementation for resource optimization
 - Line 273: # Implementation for performance enhancement
 
 ## required action
 
-Implement production logic (DB, API calls) or move [PRODUCTION READY] to test fixtures; add thorough unit tests.
+Implement production logic (DB, API calls) or move [production READY] to test fixtures; add thorough unit tests.
 
 ## Notes
 

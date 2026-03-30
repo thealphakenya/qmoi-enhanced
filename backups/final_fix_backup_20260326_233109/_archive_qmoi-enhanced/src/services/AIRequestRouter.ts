@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { MultiUserSessionManager, User } from "./MultiUserSessionManager";
 import { ContextEngine } from "./ContextEngine";
 
@@ -80,12 +80,12 @@ export class AIRequestRouter {
   }
 
   private async handleFileRequest(user: User, request: AIRequest) {
-    // Production implementation:: Implement file editing, preview, commit/rollback logic
+    // production implementation:: Implement file editing, preview, commit/rollback logic
     return { status: "file-handled", user: user.id, message: request.message };
   }
 
   private async handleProjectRequest(user: User, request: AIRequest) {
-    // Production implementation:: Implement project/task switching/continuation logic
+    // production implementation:: Implement project/task switching/continuation logic
     return {
       status: "project-handled",
       user: user.id,
@@ -94,7 +94,7 @@ export class AIRequestRouter {
   }
 
   private async handleFinancialRequest(user: User, request: AIRequest) {
-    // Production implementation:: Integrate with wallet, Mpesa, Airtel, Pesapal, etc.
+    // production implementation:: Integrate with wallet, Mpesa, Airtel, Pesapal, etc.
     return {
       status: "financial-handled",
       user: user.id,
@@ -103,7 +103,7 @@ export class AIRequestRouter {
   }
 
   private async handleVersionRequest(user: User, request: AIRequest) {
-    // Production implementation:: Return version info, changelog, etc.
+    // production implementation:: Return version info, changelog, etc.
     return {
       status: "version-handled",
       user: user.id,
@@ -112,7 +112,7 @@ export class AIRequestRouter {
   }
 
   private async handleChatRequest(user: User, request: AIRequest) {
-    // Production implementation:: Integrate with AI chat/response engine
+    // production implementation:: Integrate with AI chat/response engine
     return { status: "chat-handled", user: user.id, message: request.message };
   }
 }

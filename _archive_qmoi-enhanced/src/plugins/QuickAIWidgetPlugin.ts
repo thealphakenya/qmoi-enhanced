@@ -20,7 +20,7 @@ export const QuickAIWidgetPlugin: QmoiPlugin = {
     const insights = [
       "AI detected high CPU usage.",
       "No critical errors in the last hour.",
-      "All cloud devices are online.",
+      "All cloud prodices are online.",
     ];
     const actions = [
       "Optimize Now",

@@ -1,4 +1,4 @@
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/bin/bash
 
 ################################################################################
@@ -65,7 +65,7 @@ pre_deployment_checks() {
     
     # Verify build
     log "Building project..."
-    if ! npm run build > /dev/null 2>&1; then
+    if ! npm run build > /prod/null 2>&1; then
         log_error "Build failed"
         return 1
     fi
@@ -92,7 +92,7 @@ pre_deployment_checks() {
 verify_vercel_cli() {
     log "Verifying Vercel CLI..."
     
-    if ! command -v vercel &> /dev/null; then
+    if ! command -v vercel &> /prod/null; then
         log_error "Vercel CLI not found. Installing..."
         npm install -g vercel || return 1
     fi
@@ -101,7 +101,7 @@ verify_vercel_cli() {
     log_success "Vercel CLI: $vercel_version"
     
     # Check authentication
-    if ! vercel whoami > /dev/null 2>&1; then
+    if ! vercel whoami > /prod/null 2>&1; then
         log_warning "Vercel CLI not authenticated"
         log "Attempting to login with existing credentials..."
         # Note: In CI/CD, this would use VERCEL_TOKEN environment variable
@@ -134,7 +134,7 @@ wait_for_deployment() {
     log "Waiting for deployment to be ready (max ${max_wait}s)..."
     
     while [ $elapsed -lt $max_wait ]; do
-        if curl -s -f "$VERCEL_URL/api/health" > /dev/null 2>&1; then
+        if curl -s -f "$VERCEL_URL/api/health" > /prod/null 2>&1; then
             log_success "Deployment is LIVE"
             return 0
         fi
@@ -177,7 +177,7 @@ check_api_routes() {
     )
     
     for route in "${routes[@]}"; do
-        local http_code=$(curl -s -o /dev/null -w "%{http_code}" "$VERCEL_URL$route" 2>&1)
+        local http_code=$(curl -s -o /prod/null -w "%{http_code}" "$VERCEL_URL$route" 2>&1)
         
         if [ "$http_code" = "200" ] || [ "$http_code" = "401" ]; then
             log_success "Route $route: OK (HTTP $http_code)"

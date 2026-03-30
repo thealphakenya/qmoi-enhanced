@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 /**
  * QMOI Health Real-time API Route
  * Server-Sent Events for real-time health, pulse, and consciousness updates
@@ -71,7 +71,7 @@ export async function GET(request: NextRequest) {
         const interval = setInterval(sendData, 2000); // Update every 2 seconds
 
         // Handle client disconnect
-        request.signal.addEventListener("abort", () => {
+        request.signal.adprodentListener("abort", () => {
           clearInterval(interval);
           qmoiHealthService.stopMonitoring();
           controller.close();

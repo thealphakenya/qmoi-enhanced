@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-## Production Readiness Snapshot
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -28,15 +28,15 @@
 
 The QMOI Enhanced Automation Autotests system provides comprehensive testing capabilities for all QMOI features and components. This system includes unit tests, integration tests, E2E tests, performance tests, security tests, accessibility tests, and many more specialized test types.
 
-## Production Readiness Status
+## production Readiness Status
 - **Current Coverage**: 40% (Critical gaps identified)
 - **Target Coverage**: 98%+ for production release
-- **Non-production markers**: 358 files (8.08%)
+- **production markers**: 358 files (8.08%)
 - **Critical errors**: 1,033 (must fix before release)
 
 ## Comprehensive Test Requirements
 
-### 🔴 CRITICAL TESTS (Must Pass for Production)
+### 🔴 CRITICAL TESTS (Must Pass for production)
 
 #### 1. E2E Test Suite (included - BLOCKER)
 **Status**: ❌ implemented
@@ -54,7 +54,7 @@ The QMOI Enhanced Automation Autotests system provides comprehensive testing cap
 - Link validation and domain management
 - WhatsApp Business integration
 - PWA installation and offline functionality
-- Cross-platform device compatibility (iOS/Android/SmartTV/Desktop)
+- Cross-platform prodice compatibility (iOS/Android/SmartTV/Desktop)
 - Payment processing (Stripe, M-Pesa, Pesapal)
 - Trading system end-to-end
 - Sponsored user management
@@ -99,12 +99,12 @@ The QMOI Enhanced Automation Autotests system provides comprehensive testing cap
 - Authentication middleware
 - Error handling for all endpoints
 
-#### 4. Production Readiness Validation Tests (included - BLOCKER)
+#### 4. production Readiness Validation Tests (included - BLOCKER)
 **Status**: ❌ implemented
 **Priority**: CRITICAL
 
 **Required Test Cases:**
-- Non-production marker scan validation
+- production marker scan validation
 - Documentation sync validation
 - Link validation across all .md files
 - Domain naming consistency (*.qmoi.ai)
@@ -161,7 +161,7 @@ The QMOI Enhanced Automation Autotests system provides comprehensive testing cap
 - Mobile responsiveness
 - Touch gesture handling
 - PWA functionality across platforms
-- Offline mode across devices
+- Offline mode across prodices
 - Notification permissions
 - Camera access permissions
 - Geolocation for regional features
@@ -246,7 +246,7 @@ The QMOI Enhanced Automation Autotests system provides comprehensive testing cap
 - iOS PWA installation
 - Android TWA integration
 - Mobile gesture handling
-- Device orientation changes
+- prodice orientation changes
 - Mobile browser quirks
 
 ## Test Implementation Plan
@@ -262,7 +262,7 @@ The QMOI Enhanced Automation Autotests system provides comprehensive testing cap
 1. Implement E2E test suite (20 test cases)
 2. Create API functional tests (50+ tests)
 3. Build component integration tests (50 tests)
-4. Develop performance benchmarks
+4. prodelop performance benchmarks
 5. Add security test coverage
 
 ### Phase 3: Advanced Testing (Week 7-8)
@@ -272,7 +272,7 @@ The QMOI Enhanced Automation Autotests system provides comprehensive testing cap
 4. Database integration tests
 5. Network resilience tests
 
-### Phase 4: Production Validation (Week 9-10)
+### Phase 4: production Validation (Week 9-10)
 1. Full test suite execution
 2. Performance optimization
 3. Security audit completion
@@ -305,13 +305,13 @@ npm run test:performance
 npm run test:security
 ```
 
-### Production Readiness Commands
+### production Readiness Commands
 ```bash
 # Validate production readiness
 npm run validate:production
 
-# Run non-production scan test
-npm run test:nonprod-scan
+# Run production scan test
+npm run test:production-scan
 
 # Run documentation sync test
 npm run test:docs-sync
@@ -368,12 +368,12 @@ The QMOI autotest system automatically:
 - **Performance Tests**: Load and stress testing
 - **Security Tests**: Vulnerability and security scanning
 - **Accessibility Tests**: WCAG compliance testing
-- **Compatibility Tests**: Cross-browser and device testing
+- **Compatibility Tests**: Cross-browser and prodice testing
 - **Visual Tests**: UI regression testing
 - **API Tests**: Backend endpoint testing
 - **Database Tests**: Data integrity testing
 - **Network Tests**: Connectivity and API testing
-- **Mobile Tests**: Mobile device testing
+- **Mobile Tests**: Mobile prodice testing
 - **Localization Tests**: Multi-language support testing
 
 ### 📊 Advanced Reporting
@@ -547,10 +547,10 @@ npm run test:accessibility
 ```json
 {
   "environments": {
-    "development": {
+    "production": {
       "baseUrl": "https://qmoi.ai",
       "apiUrl": "http://localhost:3001",
-      "database": "qmoi_dev"
+      "database": "qmoi_prod"
     },
     "production": {
       "baseUrl": "https://production.q-city.ai",
@@ -640,7 +640,7 @@ tests/
 │   └── keyboard/             # Keyboard navigation tests
 ├── compatibility/            # Compatibility tests
 │   ├── browsers/             # Browser compatibility
-│   ├── devices/              # Device compatibility
+│   ├── prodices/              # prodice compatibility
 │   └── platforms/            # Platform compatibility
 ├── visual/                   # Visual tests
 │   ├── screenshots/          # Screenshot tests
@@ -858,7 +858,7 @@ name: QMOI Tests
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main, prodelop]
   pull_request:
     branches: [main]
 
@@ -986,13 +986,13 @@ pipeline {
 4. **Keep tests independent** and isolated
 5. **Use meaningful assertions** with clear error messages
 
-### [PRODUCTION READY] Management
+### [production READY] Management
 
-1. **Use factories** for creating [PRODUCTION READY]
-2. **Clean up [PRODUCTION READY]** after each test
-3. **Use fixtures** for complex [PRODUCTION READY]
+1. **Use factories** for creating [production READY]
+2. **Clean up [production READY]** after each test
+3. **Use fixtures** for complex [production READY]
 4. **mock external dependencies** appropriately
-5. **Use [PRODUCTION READY]bases** for integration tests
+5. **Use [production READY]bases** for integration tests
 
 ### Performance Testing
 

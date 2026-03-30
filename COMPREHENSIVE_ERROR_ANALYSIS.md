@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-## Production Readiness Snapshot
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -125,7 +125,7 @@
 1. Split large components into smaller ones
 2. Extract expensive calculations to `useMemo`
 3. Implement virtualization for long lists
-4. Use React DevTools Profiler to identify bottlenecks
+4. Use React prodTools Profiler to identify bottlenecks
 
 **Estimated Fix Time**: 3-5 hours
 
@@ -192,7 +192,7 @@
 
 ### Low Priority Issues (1,207)
 - included configuration defaults
-- Unimplemented features marked as [PRODUCTION READY]
+- Unimplemented features marked as [production READY]
 - Documentation typos and formatting
 
 ---

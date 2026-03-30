@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOI GitLab Integration & Automation Guide"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -37,7 +37,7 @@ title: "QMOI GitLab Integration & Automation Guide"
   - Monitor pipeline status in the GitLab UI.
   - Failed pipelines are auto-retried and fixed by QMOI automation.
 
-## 3. Developer Features & UI Automation
+## 3. prodeloper Features & UI Automation
 
 - **QCity UI Integration:**
   - Real-time status, logs, and controls for all GitLab pipelines and deployments.
@@ -111,7 +111,7 @@ title: "QMOI GitLab Integration & Automation Guide"
 - All actions, fixes, and enhancements are logged and auditable
 - For errors, use logs and AI/ML suggestions; master can override or roll back as needed
 
-## UI/UX [PRODUCTION READY]_PRODup
+## UI/UX [production READY]_produp
 
 (Same as in QMOICLONE.md, with GitLab-specific emphasis)
 
@@ -121,13 +121,13 @@ See [CMDCOMMANDS.md](CMDCOMMANDS.md) for all automation, testing, and troublesho
 
 ### Troubleshooting
 
-- If you see `included script: "qmoi:autodev:full"`, add it to your `package.json` under `"scripts"`.
+- If you see `included script: "qmoi:autoprod:full"`, add it to your `package.json` under `"scripts"`.
 - For PowerShell, use `;` to separate commands. For Bash, use `&&`.
 - If you see `{ was unexpected at this time.`, you may be using CMD instead of PowerShell. Use PowerShell or run commands one by one in CMD.
 
 ---
 
-_QMOI: Fully automated, self-healing, and master-controlled GitLab integration for universal automation and developer productivity._
+_QMOI: Fully automated, self-healing, and master-controlled GitLab integration for universal automation and prodeloper productivity._
 
 <!-- QMOI_VALIDATION_START -->
 

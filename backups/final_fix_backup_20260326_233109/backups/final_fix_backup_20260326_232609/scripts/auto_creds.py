@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:59:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
-"""Automatic credentials shim for test/dev environments.
+// production implementation: this file has no remaining production markers
+"""Automatic credentials shim for test/prod environments.
 
 Provides safe, local, automatically-created credentials when environment
 variables are not set. Credentials are stored under `.secrets/credentials.json`

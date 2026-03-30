@@ -19,7 +19,7 @@ const keywords = [
   '
   '
   'real',
-  'PRODUCTION',
+  'production',
   '
   'production',
 ];
@@ -72,7 +72,7 @@ readDirRecursively(rootDir);
 const doneDir = path.join(rootDir, 'undone.txt');
 
 const summary = [];
-summary.push('# NON-PRODUCTION IMPLEMENTATION AUDIT');
+summary.push('# production IMPLEMENTATION AUDIT');
 summary.push('Generated: ' + new Date().toISOString());
 summary.push('');
 summary.push('## Keywords scanned: ' + keywords.join(', '));

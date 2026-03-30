@@ -5,7 +5,7 @@ set -euo pipefail
 HOST=${1:-http://localhost:3000}
 TIMEOUT=${2:-5}
 
-HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time "$TIMEOUT" "$HOST" || echo "000")
+HTTP_CODE=$(curl -s -o /prod/null -w "%{http_code}" --max-time "$TIMEOUT" "$HOST" || echo "000")
 if [ "$HTTP_CODE" = "200" ]; then
   echo "OK: ${HOST} returned 200"
   exit 0

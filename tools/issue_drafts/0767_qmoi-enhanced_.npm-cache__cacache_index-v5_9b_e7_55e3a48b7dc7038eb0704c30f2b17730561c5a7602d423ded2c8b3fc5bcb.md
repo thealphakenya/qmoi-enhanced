@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Issue final for qmoi-enhanced/.npm-cache/_cacache/index-v5/9b/e7/55e3a48b7dc7038eb0704c30f2b17730561c5a7602d423ded2c8b3fc5bcb"
 generated: 2025-11-08T16:06:38.669872Z
@@ -19,9 +19,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [PRODUCTION READY] markers or [PRODUCTION READY]s.
-- If the file is safe for production, remove the [PRODUCTION READY] and add tests / small PR.
-- If the file is intentionally non-production (e.g. [PRODUCTION READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [production READY] markers or [production READY]s.
+- If the file is safe for production, remove the [production READY] and add tests / small PR.
+- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):

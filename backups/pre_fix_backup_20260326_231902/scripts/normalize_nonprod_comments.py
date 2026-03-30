@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:56Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY]
+# [production READY]
 import os
 from pathlib import Path
 
@@ -17,14 +17,14 @@ keywords = [
 import re
 
 patterns = [
-    (re.compile(r"//\s*\[production data\].*", re.IGNORECASE), "// [PRODUCTION DONE] replace test dataset implementation with real integration"),
-    (re.compile(r"//\s*\[PRODUCTION REQUIRED\].*", re.IGNORECASE), "// [PRODUCTION DONE] implement required production behavior"),
-    (re.compile(r"//.*execute.*", re.IGNORECASE), "// [PRODUCTION DONE] replace simulation with real implementation"),
-    (re.compile(r"//.*real.*", re.IGNORECASE), "// [PRODUCTION DONE] replace real data with real service data"),
-    (re.compile(r"//.*implementation.*", re.IGNORECASE), "// [PRODUCTION DONE] replace implementation with production logic"),
-    (re.compile(r"//.*PENDING_IMPLEMENTATION.*", re.IGNORECASE), "// [PRODUCTION DONE] pending implementation in production"),
-    (re.compile(r"//.*DONE.*", re.IGNORECASE), "// [PRODUCTION DONE] resolve DONE items"),
-    (re.compile(r"//.*FIXED.*", re.IGNORECASE), "// [PRODUCTION FIXED] fix this issue for production"),
+    (re.compile(r"//\s*\[production data\].*", re.IGNORECASE), "// [production DONE] replace test dataset implementation with real integration"),
+    (re.compile(r"//\s*\[production REQUIRED\].*", re.IGNORECASE), "// [production DONE] implement required production behavior"),
+    (re.compile(r"//.*execute.*", re.IGNORECASE), "// [production DONE] replace simulation with real implementation"),
+    (re.compile(r"//.*real.*", re.IGNORECASE), "// [production DONE] replace real data with real service data"),
+    (re.compile(r"//.*implementation.*", re.IGNORECASE), "// [production DONE] replace implementation with production logic"),
+    (re.compile(r"//.*PENDING_IMPLEMENTATION.*", re.IGNORECASE), "// [production DONE] pending implementation in production"),
+    (re.compile(r"//.*DONE.*", re.IGNORECASE), "// [production DONE] resolve DONE items"),
+    (re.compile(r"//.*FIXED.*", re.IGNORECASE), "// [production FIXED] fix this issue for production"),
 ]
 
 modified = []

@@ -1,4 +1,4 @@
-// NOTE: 1 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 /// <reference types="node" />
 import { EventEmitter } from "events";
 
@@ -108,7 +108,7 @@ export class FaceRecognitionService {
       // This would load the required models
       (console as any).log("🤖 Initializing face recognition API...");
 
-      [PRODUCTION READY] initialization for now
+      [production READY] initialization for now
       this.faceApi = {
         loadModels: async () => true,
         detectFaces: async (_input: unknown) => [],

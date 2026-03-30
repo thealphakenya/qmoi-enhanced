@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:15Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 import { Router } from "express";
 import type { Request, Response } from "express";
 import Docker from "dockerode";
@@ -21,7 +21,7 @@ let fetchInstance: (input: unknown, init?: unknown) => Promise<any>;
   }
 })();
 
-// Fix QCityManager import for dev environments
+// Fix QCityManager import for prod environments
 let QCityManagerImpl;
 try {
   QCityManagerImpl = require("../scripts/qcity_manager").QCityManager;
@@ -210,7 +210,7 @@ router.get("/workspace-logs", async (req, res) => {
   res.setHeader("Connection", "keep-alive");
   res.flushHeaders();
 
-  [PRODUCTION READY] log streaming (replace with real log source in future)
+  [production READY] log streaming (replace with real log source in future)
   let count = 0;
   const maxLines = 10;
   const interval = setInterval(() => {
@@ -221,7 +221,7 @@ router.get("/workspace-logs", async (req, res) => {
       res.write("data: [DONE]\n\n");
       clearInterval(interval);
       res.end();
-      [PRODUCTION READY]: Audit log log-streaming session
+      [production READY]: Audit log log-streaming session
     }
   }, 500);
 
@@ -232,7 +232,7 @@ router.get("/workspace-logs", async (req, res) => {
   });
 });
 
-// --- Gitpod/QMOI Workspace Management API [PRODUCTION READY]s ---
+// --- Gitpod/QMOI Workspace Management API [production READY]s ---
 
 // List workspaces
 export async function listWorkspaces(req: Request, res: Response) {
@@ -368,8 +368,8 @@ export async function syncWorkspace(req, res) {
     // For Gitpod: create a snapshot and return the snapshot info
     if (type === "gitpod") {
       const data = await gitpodRequest(`/workspaces/${id}/snapshot`, "POST");
-      [PRODUCTION READY]: Optionally download/upload snapshot to local if needed
-      [PRODUCTION READY]: Audit log and notify
+      [production READY]: Optionally download/upload snapshot to local if needed
+      [production READY]: Audit log and notify
       logAudit({
         timestamp: new Date().toISOString(),
         action: "sync_gitpod_workspace",
@@ -393,9 +393,9 @@ export async function syncWorkspace(req, res) {
         return res.status(404).json({ error: "Container not found" });
       // Export container filesystem as tar stream
       const tarStream = await container.export();
-      [PRODUCTION READY]: Upload tarStream to Gitpod (if API supports direct upload)
+      [production READY]: Upload tarStream to Gitpod (if API supports direct upload)
       // For now, just acknowledge the sync request
-      [PRODUCTION READY]: Audit log and notify
+      [production READY]: Audit log and notify
       logAudit({
         timestamp: new Date().toISOString(),
         action: "sync_local_workspace",

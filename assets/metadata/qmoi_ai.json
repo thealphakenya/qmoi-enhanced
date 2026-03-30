@@ -17,7 +17,7 @@
   ],
   "description": "Advanced autonomous AI system with consciousness, memory synchronization, and parallel processing capabilities.",
   "features": [
-    "Autonomous Development",
+    "Autonomous production",
     "Memory Synchronization",
     "Parallel Processing",
     "QVS Access",
@@ -64,7 +64,7 @@
     "ja",
     "ko"
   ],
-  "target_audience": "Developers, Researchers, Enterprises",
+  "target_audience": "prodelopers, Researchers, Enterprises",
   "icon": "assets/icons/qmoi_ai.svg",
   "icon_sizes": [
     16,
@@ -122,7 +122,7 @@
     "certificate_authority": "QMOI Root CA",
     "encryption": "AES-256",
     "secure_boot": true,
-    "sandboxing": true
+    "productioning": true
   },
   "generated_at": "2026-03-25T00:47:37.992449+00:00",
   "generator_version": "2.0.0",

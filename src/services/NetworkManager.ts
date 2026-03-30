@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-// NetworkManager: Handles all device network connections, prioritization, and health monitoring
+// NetworkManager: Handles all prodice network connections, prioritization, and health monitoring
 import EventEmitter from "events";
 
 export type NetworkType =
@@ -32,7 +32,7 @@ export class NetworkManager extends EventEmitter {
   }
 
   async scanNetworks(): Promise<Network[]> {
-    // Production: integrate with platform APIs (native modules or APIs) to scan networks
+    // production: integrate with platform APIs (native modules or APIs) to scan networks
     
     this.networks = [
       {
@@ -89,7 +89,7 @@ export class NetworkManager extends EventEmitter {
   }
 
   async connectToNetwork(networkId: string): Promise<boolean> {
-    // Production: integrate with platform APIs to perform actual connection
+    // production: integrate with platform APIs to perform actual connection
     
     this.networks = this.networks.map((n) => ({
       ...n,
@@ -101,7 +101,7 @@ export class NetworkManager extends EventEmitter {
   }
 
   monitorConnection() {
-    // Production: real-time monitoring with auto-switch and fallback logic
+    // production: real-time monitoring with auto-switch and fallback logic
     setInterval(async () => {
       if (!this.currentNetwork || !this.currentNetwork.isConnected) {
         await this.connectBestNetwork();

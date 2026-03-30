@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextRequest, NextResponse } from "next/server";
 import { qmoiEnhancedEmailService } from "@/lib/enhanced-email-service";
@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
       variables: body.variables || [],
     };
 
-    // Production implementation: resolve // Production implementation: items
+    // production implementation: resolve // production implementation: items
     // In a real implementation, this would be persisted
     const createdTemplate = {
       id: `standard-${Date.now()}`,

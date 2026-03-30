@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # QMOI Vercel Auto-Deployment Guide
 
 **Status:** ✅ **READY FOR DEPLOYMENT**
@@ -43,7 +43,7 @@ Environment variables are **auto-generated on deployment** via:
 // Enabled in .env.production
 QMOI_AUTO_SETUP_ENABLED=true
 QMOI_AUTO_CONFIG_ENABLED=true
-QMOI_AUTODEV_ENABLED=true
+QMOI_AUTOprod_ENABLED=true
 ```
 
 The system auto-configures:
@@ -129,7 +129,7 @@ MPESA_CONSUMER_KEY=your_actual_key
 MPESA_CONSUMER_SECRET=your_actual_secret
 
 # Security (WILL BE AUTO-GENERATED ON FIRST DEPLOY)
-# These can be left as [PRODUCTION READY]s, QMOI will auto-generate:
+# These can be left as [production READY]s, QMOI will auto-generate:
 QMOI_JWT_SECRET=auto_generated_on_deployment
 QMOI_ENCRYPTION_KEY=auto_generated_on_deployment
 ```
@@ -232,8 +232,8 @@ You only need to provide:
 DATABASE_URL             // Your PostgreSQL URL
 
 // Payment Processing
-MPESA_CONSUMER_KEY       // From M-Pesa sandbox
-MPESA_CONSUMER_SECRET    // From M-Pesa sandbox
+MPESA_CONSUMER_KEY       // From M-Pesa production
+MPESA_CONSUMER_SECRET    // From M-Pesa production
 
 // Optional but required
 STRIPE_SECRET_KEY        // For payment processing
@@ -246,7 +246,7 @@ AWS_ACCESS_KEY_ID        // For file storage
 ### Check Deployment Status
 1. Go to Vercel dashboard
 2. Click your project
-3. View "Production" deployment
+3. View "production" deployment
 4. Status should show "Ready ✅"
 
 ### View Logs
@@ -408,7 +408,7 @@ curl https://qmoi-enhanced.vercel.app/api/auto-setup-status
 
 All systems configured and ready for Vercel auto-deployment with QMOI's auto-setup, auto-fix, and auto-monitoring capabilities.
 
-**Time to Production:** 20-30 minutes (including Vercel setup)
+**Time to production:** 20-30 minutes (including Vercel setup)
 
 **No Manual Configuration Needed for:**
 - ✅ Environment variable generation

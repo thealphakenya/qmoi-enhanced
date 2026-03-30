@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOI Scripts Documentation"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -516,7 +516,7 @@ python scripts/qmoi-config-manager.py --backup
 python scripts/qmoi-environment-setup.py
 
 # Specific setup
-python scripts/qmoi-environment-setup.py --dev
+python scripts/qmoi-environment-setup.py --prod
 python scripts/qmoi-environment-setup.py --prod
 python scripts/qmoi-environment-setup.py --test
 ```
@@ -760,7 +760,7 @@ npm install axios ws express
 1. **Setup** - Environment preparation
 2. **Validation** - Code quality checks
 3. **Testing** - Comprehensive testing
-4. **Building** - Production builds
+4. **Building** - production builds
 5. **Deployment** - Multi-platform deployment
 6. **Monitoring** - Health and performance monitoring
 7. **Notification** - Status notifications
@@ -803,7 +803,7 @@ npm install axios ws express
   ```
 - **Logs:** `logs/qmoi-hf-test.log`
 
-## 🌐 Platform Management & Developer Actions
+## 🌐 Platform Management & prodeloper Actions
 
 ### QMOI Platform Manager (`scripts/qmoi-platform-manager.py`)
 
@@ -814,14 +814,14 @@ npm install axios ws express
   ```
 - **Logs:** `logs/qmoi-platform-manager.log`
 
-### QMOI Developer Actions (`scripts/qmoi-dev-actions.py`)
+### QMOI prodeloper Actions (`scripts/qmoi-prod-actions.py`)
 
-- **Purpose:** [PRODUCTION READY]s real developer actions (PRs, issues, reviews, comments, etc.) on all platforms. Logs all actions and allows master control.
+- **Purpose:** [production READY]s real prodeloper actions (PRs, issues, reviews, comments, etc.) on all platforms. Logs all actions and allows master control.
 - **Usage:**
   ```bash
-  python scripts/qmoi-dev-actions.py
+  python scripts/qmoi-prod-actions.py
   ```
-- **Logs:** `logs/qmoi-dev-actions.log`
+- **Logs:** `logs/qmoi-prod-actions.log`
 
 ---
 

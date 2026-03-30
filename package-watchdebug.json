@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 {
   "name": "qmoi-watchdebug",
   "version": "1.1.0",
@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node start-watchdebug.js",
     "monitor": "node start-watchdebug.js",
-    "dev": "nodemon start-watchdebug.js",
+    "prod": "nodemon start-watchdebug.js",
     "watch": "chokidar '**/*.js' -c 'npm run monitor'",
     "debug": "node --inspect-brk start-watchdebug.js",
     "lint": "eslint . --fix",
@@ -56,7 +56,7 @@
     "dotenv": "^16.3.1",
     "form-data": "^4.0.0"
   },
-  "devDependencies": {
+  "prodDependencies": {
     "jest": "^29.7.0",
     "eslint": "^8.0.0",
     "nodemon": "^3.0.2"

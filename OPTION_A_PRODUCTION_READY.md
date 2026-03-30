@@ -7,12 +7,12 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-# QMOI Enhanced - Option A: Production-Ready Email/Password Authentication
+# [production READY] this file has no remaining production markers
+# QMOI Enhanced - Option A: production-Ready Email/Password Authentication
 
 **Date:** January 15, 2026  
 **Status:** ✅ FULLY OPERATIONAL  
-**Environment:** Production Ready
+**Environment:** production Ready
 
 ---
 
@@ -26,7 +26,7 @@ QMOI Enhanced is now fully configured for **Option A: Email/Password Authenticat
 
 ### 1. Authentication System
 
-- ✅ **Email/Password Login Form** - Production-ready authentication
+- ✅ **Email/Password Login Form** - production-ready authentication
 - ✅ **API Integration** - `/api/auth/login` endpoint fully functional
 - ✅ **Session Management** - JWT token and session tracking
 - ✅ **Error Handling** - Comprehensive error messages and validation
@@ -118,7 +118,7 @@ Password: (as configured in your users.json)
 
 ---
 
-## 🔐 Production Configuration
+## 🔐 production Configuration
 
 ### Backend Setup
 
@@ -148,7 +148,7 @@ EOF
 ### Build and Deploy
 
 ```bash
-# Production build
+# production build
 npm run build
 
 # Start production server
@@ -309,7 +309,7 @@ User state persisted
 ## 📈 Performance Metrics
 
 - **Build Time:** ~33 seconds
-- **Dev Server Startup:** ~8 seconds
+- **prod Server Startup:** ~8 seconds
 - **First Page Load:** < 2 seconds
 - **Memory Usage:** ~150MB
 - **Bundle Size:** ~102KB JS
@@ -327,7 +327,7 @@ User state persisted
 4. ✅ Test chat and voice capabilities
 5. ✅ Verify user context persistence
 
-### Production Deployment
+### production Deployment
 
 1. Configure real database (PostgreSQL, MongoDB)
 2. Set up production JWT secret
@@ -352,7 +352,7 @@ For issues or questions:
 - Check TypeScript compilation: `npx tsc --noEmit`
 - Run linter: `npm run lint`
 - Check build: `npm run build`
-- Start dev server: `npm run dev`
+- Start prod server: `npm run prod`
 - View logs: Check browser console
 
 ---
@@ -375,7 +375,7 @@ For issues or questions:
 **Start the server and login to experience the complete QMOI Enhanced system!**
 
 ```bash
-npm run dev
+npm run prod
 # Open https://qmoi.ai
 # Login with Option A (Email/Password)
 ```
@@ -383,7 +383,7 @@ npm run dev
 ---
 
 _Generated: 2026-01-15_  
-_Version: 2.0.0 Production_  
+_Version: 2.0.0 production_  
 _Status: Ready for Deployment_ ✅
 
 ## 🔄 Evolution Status

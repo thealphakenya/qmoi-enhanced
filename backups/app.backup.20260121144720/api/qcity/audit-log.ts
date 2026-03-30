@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
@@ -54,13 +54,13 @@ const handler = requireRole(["admin", "master"])(async (
   const items = logs.slice((page - 1) * pageSize, page * pageSize);
   // Export
   if (query.export === "csv") {
-    const header = "Timestamp,User,Action,Device,Status,Command";
+    const header = "Timestamp,User,Action,prodice,Status,Command";
     const rows = items.map((log: unknown) =>
       [
         log.timestamp,
         log.user,
         log.action,
-        log.deviceId,
+        log.prodiceId,
         log.status,
         log.command.replace(/"/g, '""'),
       ]

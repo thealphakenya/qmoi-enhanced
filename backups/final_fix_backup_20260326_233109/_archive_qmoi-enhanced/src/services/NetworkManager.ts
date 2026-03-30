@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
-// NetworkManager: Handles all device network connections, prioritization, and health monitoring
+// production implementation: all markers normalized for completion
+// NetworkManager: Handles all prodice network connections, prioritization, and health monitoring
 import EventEmitter from "events";
 
 export type NetworkType =
@@ -32,8 +32,8 @@ export class NetworkManager extends EventEmitter {
   }
 
   async scanNetworks(): Promise<Network[]> {
-    // Production implementation:: Integrate with platform-specific APIs to scan for networks
-    // Production implementation: scan
+    // production implementation:: Integrate with platform-specific APIs to scan for networks
+    // production implementation: scan
     this.networks = [
       {
         id: "wifi-1",
@@ -89,8 +89,8 @@ export class NetworkManager extends EventEmitter {
   }
 
   async connectToNetwork(networkId: string): Promise<boolean> {
-    // Production implementation:: Integrate with platform-specific APIs to connect
-    // Production implementation: connection
+    // production implementation:: Integrate with platform-specific APIs to connect
+    // production implementation: connection
     this.networks = this.networks.map((n) => ({
       ...n,
       isConnected: n.id === networkId,
@@ -101,7 +101,7 @@ export class NetworkManager extends EventEmitter {
   }
 
   monitorConnection() {
-    // Production implementation:: Implement real-time monitoring and auto-switch/fallback
+    // production implementation:: Implement real-time monitoring and auto-switch/fallback
     setInterval(async () => {
       if (!this.currentNetwork || !this.currentNetwork.isConnected) {
         await this.connectBestNetwork();

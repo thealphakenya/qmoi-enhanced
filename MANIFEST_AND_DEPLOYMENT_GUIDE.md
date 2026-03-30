@@ -7,18 +7,18 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # 📦 QVILLAGE + HF INTEGRATION — FINAL MANIFEST & DEPLOYMENT GUIDE
 
 **Generated:** November 11, 2025  
-**Status:** ✅ PRODUCTION READY  
+**Status:** ✅ production READY  
 **Quality:** Enterprise Grade
 
 ---
 
 ## 📍 FILE LOCATIONS & QUICK ACCESS
 
-### Production Code (5 files, 1,300+ lines)
+### production Code (5 files, 1,300+ lines)
 
 1. **Sync Engine**
    - 📍 `/workspaces/qmoi-enhanced/tools/qvillage_memory_sync.py` (475 lines)
@@ -69,8 +69,8 @@
    - 📊 All deliverables listed
    - 🎯 Context and background
 
-4. **Production Readiness**
-   - 📍 `/workspaces/qmoi-enhanced/QVILLAGE_READY_FOR_PRODUCTION.md` (380 lines)
+4. **production Readiness**
+   - 📍 `/workspaces/qmoi-enhanced/QVILLAGE_READY_FOR_production.md` (380 lines)
    - 📋 Quick start guide
    - ⚡ Go-live checklist
    - 🚀 5-minute deployment
@@ -131,7 +131,7 @@ SLACK_WEBHOOK_URL=https://hooks.slack.com/services/...
 
 ```bash
 git add -A
-git commit -m "QVillage + HF Integration: Production Ready"
+git commit -m "QVillage + HF Integration: production Ready"
 git push origin main
 ```
 
@@ -150,7 +150,7 @@ git push origin main
 **For Quick Understanding:**
 
 1. 📖 This file (DELIVERABLES_FINAL_INVENTORY.md)
-2. 📖 QVILLAGE_READY_FOR_PRODUCTION.md
+2. 📖 QVILLAGE_READY_FOR_production.md
 3. 📖 QVILLAGE_IMPLEMENTATION_SUMMARY.md
 
 **For Full Technical Details:**
@@ -161,7 +161,7 @@ git push origin main
 
 **For Deployment:**
 
-1. 📖 QVILLAGE_READY_FOR_PRODUCTION.md (checklist)
+1. 📖 QVILLAGE_READY_FOR_production.md (checklist)
 2. 📖 QVILLAGE_IMPLEMENTATION_SUMMARY.md (detailed steps)
 3. 📖 .github/workflows/qvillage-sync.yml (workflow details)
 
@@ -265,7 +265,7 @@ Run these commands to verify all files are in place:
 test -f QVILLAGE_HUGGINGFACE_INTEGRATION.md && echo "✅ Main integration guide"
 test -f QVILLAGE_IMPLEMENTATION_SUMMARY.md && echo "✅ Implementation guide"
 test -f PHASE_4_QVILLAGE_HF_COMPLETE.md && echo "✅ Project summary"
-test -f QVILLAGE_READY_FOR_PRODUCTION.md && echo "✅ Production readiness guide"
+test -f QVILLAGE_READY_FOR_production.md && echo "✅ production readiness guide"
 test -f DELIVERABLES_FINAL_INVENTORY.md && echo "✅ Final inventory"
 
 # Check all code files exist
@@ -278,7 +278,7 @@ test -f .github/workflows/qvillage-sync.yml && echo "✅ CI/CD workflow"
 # Verify line counts
 echo "=== Total Lines ==="
 wc -l QVILLAGE_HUGGINGFACE_INTEGRATION.md QVILLAGE_IMPLEMENTATION_SUMMARY.md \
-        PHASE_4_QVILLAGE_HF_COMPLETE.md QVILLAGE_READY_FOR_PRODUCTION.md \
+        PHASE_4_QVILLAGE_HF_COMPLETE.md QVILLAGE_READY_FOR_production.md \
         tools/qvillage_memory_sync.py tools/monitor_hf_costs.py \
         hf_space_qvillage/app.py .github/workflows/qvillage-sync.yml | tail -1
 ```
@@ -306,7 +306,7 @@ Before production deployment:
 ```
 Total Lines:           3,229
 ├─ Documentation:      2,163 lines (67%)
-├─ Production Code:    1,300 lines (40%)
+├─ production Code:    1,300 lines (40%)
 │  ├─ Sync Engine:       475 lines
 │  ├─ Cost Monitor:      265 lines
 │  ├─ Gradio UI:         415 lines
@@ -400,11 +400,11 @@ Check: http://localhost:7860
 
 ## ✨ YOU NOW HAVE
 
-✅ Production-grade sync engine (475 lines, fully async)  
-✅ Production-grade HF Spaces UI (415 lines, Gradio)  
-✅ Production-grade cost monitoring (265 lines)  
-✅ Production-grade CI/CD (140 lines)  
-✅ Production-grade documentation (2,163 lines)  
+✅ production-grade sync engine (475 lines, fully async)  
+✅ production-grade HF Spaces UI (415 lines, Gradio)  
+✅ production-grade cost monitoring (265 lines)  
+✅ production-grade CI/CD (140 lines)  
+✅ production-grade documentation (2,163 lines)  
 ✅ Complete architecture (all components)  
 ✅ Complete security (hardened, billable)  
 ✅ Complete testing (local + CI ready)
@@ -415,7 +415,7 @@ Check: http://localhost:7860
 
 **Next Steps:**
 
-1. ✅ Read QVILLAGE_READY_FOR_PRODUCTION.md
+1. ✅ Read QVILLAGE_READY_FOR_production.md
 2. ✅ Test locally (python tools/qvillage_memory_sync.py --dry-run)
 3. ✅ Rotate exposed tokens
 4. ✅ Create HF Space

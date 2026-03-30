@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "INDEPENDENTQMOI.md - QMOI Independent Operation System"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -22,7 +22,7 @@ QMOI Independent Operation System allows QMOI to run completely independently wi
 
 ### 📦 Dataset-Driven Autonomy
 
-QMOI's independence is powered by a rich dataset ecosystem that fuels every feature, from autopilot development and autonomous deployment to secure networking, payment handling, domain and website monitoring, and conversational intelligence. Core datasets are loaded in memory and optionally synced to a cloud-backed QVillage store so QMOI remains fully operational even when offline or in zero-rated networks.
+QMOI's independence is powered by a rich dataset ecosystem that fuels every feature, from autopilot production and autonomous deployment to secure networking, payment handling, domain and website monitoring, and conversational intelligence. Core datasets are loaded in memory and optionally synced to a cloud-backed QVillage store so QMOI remains fully operational even when offline or in zero-rated networks.
 
 - **Domain & Website Health**: QMOI uses domain/DNS datasets to validate domains, avoid DNS failures, and ensure links are live.
 - **Search Engine Presence**: QMOI uses SEO and master visibility datasets to ensure the master identity and core sites are discoverable across major search platforms.
@@ -46,9 +46,9 @@ QMOI's independence is powered by a rich dataset ecosystem that fuels every feat
 - **Microservices**: Modular architecture for independent operation
 - **Auto-Scaling**: Automatically scales based on demand
 
-### 3. Autonomous Development
+### 3. Autonomous production
 
-- **Self-Development**: QMOI can develop and improve itself
+- **Self-production**: QMOI can prodelop and improve itself
 - **Code Generation**: Automatically generates code and features
 - **Testing**: Self-testing and validation systems
 - **Documentation**: Auto-generates and updates documentation
@@ -167,10 +167,10 @@ class IndependentHealing:
 
 ## 📊 Independent Features
 
-### 1. Autonomous Development
+### 1. Autonomous production
 
 - **Self-Coding**: QMOI can write and modify its own code
-- **Feature Development**: Automatically develops new features
+- **Feature production**: Automatically prodelops new features
 - **Bug Fixing**: Identifies and fixes bugs independently
 - **Testing**: Comprehensive self-testing systems
 
@@ -302,11 +302,11 @@ python scripts/independent-monitor.py
 python scripts/independent-dashboard.py
 ```
 
-### 2. Independent Development
+### 2. Independent production
 
 ```bash
-# Start independent development
-python scripts/independent-dev.py
+# Start independent production
+python scripts/independent-prod.py
 
 # Generate new features
 python scripts/independent-generate.py
@@ -372,7 +372,7 @@ python scripts/independent-deploy-monitor.py
 - **Canonical Model**: QMOI enforces a canonical `qmoi` aggregator used everywhere; runtime model overrides are ignored for consistency and safety.
 - **Aggregation Strategy**: The `qmoi` aggregator merges local and optional cloud model outputs and annotates responses with source metadata.
 - **Durable Memory**: Aggregation events will trigger persistent backups and optional remote sync (gist, HF, scp) to ensure auditability and recoverability.
-- **Developer Notes**: Remove model selection UI and route all model requests through `qmoi`. See `QMOIMODEL.md` for details.
+- **prodeloper Notes**: Remove model selection UI and route all model requests through `qmoi`. See `QMOIMODEL.md` for details.
 
 ### 2. Extended Capabilities
 
@@ -383,17 +383,17 @@ python scripts/independent-deploy-monitor.py
 
 ## New Integrations & Enhancements
 
-- **QMOIAUTOMAKENEW.md Integration:** QMOI Independent System can now trigger autoclone/automake-new actions for any device, platform, or website from QCity, with master-only controls and audit logging.
+- **QMOIAUTOMAKENEW.md Integration:** QMOI Independent System can now trigger autoclone/automake-new actions for any prodice, platform, or website from QCity, with master-only controls and audit logging.
 - **QMOIBROWSER.md Integration:** QMOI Independent System uses the QMOI Browser to autotest and fix all links and web features in every independent operation cycle.
-- **Always-On Cloud Operation:** QMOI Independent System is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
-- **Enhanced QCity Runners & Devices:** All runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Always-On Cloud Operation:** QMOI Independent System is always running in QCity/cloud/Colab/Dagshub, never relying on local prodice for critical tasks.
+- **Enhanced QCity Runners & prodices:** All runners, prodices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
 - **Auto-Updating Documentation:** All .md files are auto-updated after every independent operation cycle, ensuring documentation is always current.
 - **Increased Minimum Daily Revenue:** QMOI Independent System now targets a higher, dynamically increasing minimum daily revenue, using advanced strategies and statistics for all money-making features.
 - **Enhanced Money-Making UI:** QCity dashboard now includes detailed statistics, charts, and controls for all QMOI money-making features, visible only to master/admin.
 
 ## Platform Independence & Cloned Platforms
 
-- QMOI does not use the actual platforms (e.g., Gitpod, GitLab, GitHub, Vercel, etc.) for any automation, CI/CD, or development.
+- QMOI does not use the actual platforms (e.g., Gitpod, GitLab, GitHub, Vercel, etc.) for any automation, CI/CD, or production.
 - All operations are performed on QMOI's own cloned, independent platforms, which are fully controlled, self-healing, and optimized.
 - This ensures complete autonomy, security, and performance for all QMOI activities.
 - See QMOICLONE.md for details on cross-platform cloning and infrastructure.

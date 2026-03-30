@@ -16,17 +16,17 @@ const JOBS_PATH = "/workspaces/stable-Q-ai/colab-jobs-log.jsonl";
  *
  * STATUS: Minimum viable production helper
  *
- * Production requirements:
+ * production requirements:
  * - Google Colab API (notebooks, execution) or equivalent container service
  * - AWS SageMaker / GCP Vertex AI for scalable job orchestration
  * - Job scheduling and monitoring service with retry/error tracking
  */
 
-// Production: Integrate with Google Colab Notebooks API or AWS SageMaker
+// production: Integrate with Google Colab Notebooks API or AWS SageMaker
 // Use authenticated requests to cloud job service
 async function installPackage(pkg: string, manager: "npm" | "pip" = "npm") {
   // Local orchestrator: logs the request and returns success 
-  // Production: Call Google Colab API or AWS SageMaker API to actually install
+  // production: Call Google Colab API or AWS SageMaker API to actually install
   logEvent("colab_install", {
     package: pkg,
     manager,
@@ -43,7 +43,7 @@ async function installPackage(pkg: string, manager: "npm" | "pip" = "npm") {
 }
 
 // Upload dataset to Colab/cloud (local metadata path)
-// Production: Integrate with HuggingFace Datasets Hub or AWS S3
+// production: Integrate with HuggingFace Datasets Hub or AWS S3
 async function uploadDataset(dataset: Dataset) {
   // Local handler: logs the dataset and returns success; production needs cloud object storage integration
   logEvent("colab_upload", {
@@ -61,7 +61,7 @@ async function uploadDataset(dataset: Dataset) {
 }
 
 // Execute job in Colab/cloud (adapted for local workflow or external provider)
-// Production: Integrate with Google Colab API or AWS SageMaker
+// production: Integrate with Google Colab API or AWS SageMaker
 async function executeColabJob(jobSpec: JobSpec) {
   // Local orchestrator implementation: creates a job ID and queues job metadata for retrieval
   const jobId = `job-${Date.now()}`;
@@ -81,7 +81,7 @@ async function executeColabJob(jobSpec: JobSpec) {
   };
 }
 
-// Production: Query cloud job service for real status
+// production: Query cloud job service for real status
 async function getColabJobStatus(jobId: number) {
   // complete production: return current persisted payload where possible
   logEvent("colab_status", {

@@ -58,7 +58,7 @@ class DocumentationAuditSystem:
         "yap.qmoi.ai", "yap.qvillage.com",
         "q-stable.qmoi.ai", "stable.alphaq.ai", "models.qvillage.com",
         "qglobal.org", "qglobal.net",
-        "qparallel.dev",
+        "qparallel.prod",
         # GitHub and other external
         "github.com", "raw.githubusercontent.com",
         # External
@@ -187,7 +187,7 @@ class DocumentationAuditSystem:
         qmoi_pattern = r'(?:qmoi|qvillage|alphaq|qstore|qshare|qcity|yap|q-stable)[.\w-]*'
         qmoi_domains = re.findall(qmoi_pattern, content)
         for domain in qmoi_domains:
-            if '.' in domain and not any(x in domain for x in ['com', 'ai', 'net', 'org', 'dev']):
+            if '.' in domain and not any(x in domain for x in ['com', 'ai', 'net', 'org', 'prod']):
                 continue
             links.add(domain)
         

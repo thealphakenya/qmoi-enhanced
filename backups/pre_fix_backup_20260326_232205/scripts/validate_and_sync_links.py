@@ -159,7 +159,7 @@ class DomainRegistry:
                 "primary": "qvillage.com",
                 "status": "active"
             },
-            "qparallel.dev": {
+            "qparallel.prod": {
                 "type": "fallback",
                 "primary": "alphaq.ai",
                 "status": "active"

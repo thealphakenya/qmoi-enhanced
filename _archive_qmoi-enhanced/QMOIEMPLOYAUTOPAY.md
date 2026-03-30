@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOI Employment Auto-Payment System"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -38,7 +38,7 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 - **Consumer Key**: ruOrfyOb22NgqcsmToADVNDf0Gltcu6AI8woFLOusfgkNBnj
 - **Consumer Secret**: u27oKMfyACGxoQsD2bAuAJn0QzMQ8cWofA6bfzuG4hXaGxCB90PiGOSuCVNcaCSj
 - **Shortcode**: N/A (Business Account)
-- **Environment**: Production
+- **Environment**: production
 - **Features**:
   - STK Push for instant payments
   - C2B for receiving payments
@@ -49,7 +49,7 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 
 - **Client ID**: [Securely stored]
 - **Client Secret**: [Securely stored]
-- **Environment**: Production
+- **Environment**: production
 - **Features**:
   - Direct money transfers
   - Bulk payment processing
@@ -60,7 +60,7 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 
 - **Consumer Key**: [PROVIDE VIA ENV: PESAPAL_CONSUMER_KEY]
 - **Consumer Secret**: [PROVIDE VIA ENV: PESAPAL_CONSUMER_SECRET]
-- **Environment**: Production
+- **Environment**: production
 - **Features**:
   - Merchant payments
   - International transfers
@@ -96,7 +96,7 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 - **Payment Dates**: 1st and 15th of each month
 - **Processing Time**: 24-48 hours
 - **Applicable Roles**: Contract employees, part-time staff
-- **data**: Freelance developers, consultants
+- **data**: Freelance prodelopers, consultants
 
 #### On-Demand Payments
 

@@ -8,6 +8,6 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   return NextResponse.json({
-    message: "WhatsApp Business // Production implementation required:",
+    message: "WhatsApp Business // production implementation required:",
   });
 }

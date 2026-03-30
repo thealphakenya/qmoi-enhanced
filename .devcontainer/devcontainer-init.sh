@@ -1,5 +1,5 @@
 #!/bin/bash
-# QMOI Dev Container Initialization Script
+# QMOI prod Container Initialization Script
 # Ensures proper setup and prevents recovery mode
 
 set -e
@@ -11,7 +11,7 @@ BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-echo -e "${BLUE}🚀 QMOI Enhanced Dev Container Initialization${NC}"
+echo -e "${BLUE}🚀 QMOI Enhanced prod Container Initialization${NC}"
 echo "=================================================="
 
 # Create necessary directories
@@ -29,8 +29,8 @@ chmod 755 /workspace/.cache
 chmod 755 /workspace/.vscode-server
 
 # Logging setup
-LOG_FILE="/workspace/logs/devcontainer-init.log"
-echo "Dev container initialization started: $(date)" | tee "$LOG_FILE"
+LOG_FILE="/workspace/logs/prodcontainer-init.log"
+echo "prod container initialization started: $(date)" | tee "$LOG_FILE"
 
 # Check Node.js
 echo -e "${BLUE}✓ Node.js version:${NC}"
@@ -62,13 +62,13 @@ fi
 if [ ! -f .env.local ]; then
   echo -e "${YELLOW}📝 Creating .env.local...${NC}"
   cat > .env.local << 'ENVEND'
-# QMOI Dev Environment
-NODE_ENV=development
+# QMOI prod Environment
+NODE_ENV=production
 DEBUG=qmoi:*
 DATABASE_URL=postgresql://qmoi:qmoi@localhost:5432/qmoi_enhanced
 REDIS_URL=redis://localhost:6379
 PORT=3000
-JWT_SECRET=dev-secret-change-in-production
+JWT_SECRET=prod-secret-change-in-production
 ENVEND
   echo "Created .env.local" | tee -a "$LOG_FILE"
 fi
@@ -94,7 +94,7 @@ fi
 # Verify directory structure
 echo -e "${BLUE}📊 Verifying directory structure...${NC}"
 echo "Key directories:" | tee -a "$LOG_FILE"
-ls -d src public scripts .devcontainer 2>/dev/null | tee -a "$LOG_FILE" || echo "Some directories may not exist yet" >> "$LOG_FILE"
+ls -d src public scripts .prodcontainer 2>/prod/null | tee -a "$LOG_FILE" || echo "Some directories may not exist yet" >> "$LOG_FILE"
 
 # Run type check if available
 if [ -f package.json ] && grep -q '"type-check"' package.json; then
@@ -103,12 +103,12 @@ if [ -f package.json ] && grep -q '"type-check"' package.json; then
 fi
 
 # Final status
-echo -e "${GREEN}✅ Dev container initialization complete!${NC}"
-echo "Dev container initialization completed: $(date)" | tee -a "$LOG_FILE"
-echo -e "${GREEN}Ready for development!${NC}"
+echo -e "${GREEN}✅ prod container initialization complete!${NC}"
+echo "prod container initialization completed: $(date)" | tee -a "$LOG_FILE"
+echo -e "${GREEN}Ready for production!${NC}"
 echo ""
 echo "Next steps:"
 echo "  1. Verify setup: npm run lint"
 echo "  2. Run tests: npm run test"
-echo "  3. Start dev: npm run dev"
+echo "  3. Start prod: npm run prod"
 echo ""

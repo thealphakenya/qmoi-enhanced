@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 from scripts.wallets.adapter_base import TestnetAdapter, REGISTRY
 
 def test_testnet_adapter_returns_mock():

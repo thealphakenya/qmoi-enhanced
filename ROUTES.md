@@ -2,7 +2,7 @@
 
 **Last Updated**: 2026-03-29T03:15:22.891234
 **Total Routes**: 28
-**Status**: ✅ Production Ready
+**Status**: ✅ production Ready
 **Framework**: Next.js 20+ (App Router)
 
 ## 📚 API Routes Overview
@@ -41,7 +41,7 @@ This document provides a comprehensive inventory of all API routes in the QMOI E
   }
   ```
 - **Response**: Session token, user info, MFA status
-- **Status**: ✅ Production Ready
+- **Status**: ✅ production Ready
 
 ### 2. POST /api/auth/webauthn/register/options
 - **File**: [src/app/api/auth/webauthn/register/options/route.ts](src/app/api/auth/webauthn/register/options/route.ts)
@@ -115,57 +115,57 @@ This document provides a comprehensive inventory of all API routes in the QMOI E
 - **Response**: Suggestions array with scoring
 - **Status**: ✅ Active
 
-### 10. GET/POST /api/qmoi/autodev/state
-- **File**: [src/app/api/qmoi/autodev/state/route.ts](src/app/api/qmoi/autodev/state/route.ts)
+### 10. GET/POST /api/qmoi/autoprod/state
+- **File**: [src/app/api/qmoi/autoprod/state/route.ts](src/app/api/qmoi/autoprod/state/route.ts)
 - **Method**: `GET`, `POST`
-- **Description**: Get/set AutoDev state and configuration
+- **Description**: Get/set Autoprod state and configuration
 - **Authentication**: Bearer token required
-- **Response**: AutoDev enabled status, timestamp, state config
+- **Response**: Autoprod enabled status, timestamp, state config
 - **Status**: ✅ Active
 
-### 11. POST /api/qmoi/autodev/toggle
-- **File**: [src/app/api/qmoi/autodev/toggle/route.ts](src/app/api/qmoi/autodev/toggle/route.ts)
+### 11. POST /api/qmoi/autoprod/toggle
+- **File**: [src/app/api/qmoi/autoprod/toggle/route.ts](src/app/api/qmoi/autoprod/toggle/route.ts)
 - **Method**: `POST`
-- **Description**: Toggle AutoDev automation on/off
+- **Description**: Toggle Autoprod automation on/off
 - **Authentication**: Bearer token required
-- **Response**: New AutoDev state, toggle timestamp
+- **Response**: New Autoprod state, toggle timestamp
 - **Status**: ✅ Active
 
-### 12. POST /api/qmoi/autodev/research
-- **File**: [src/app/api/qmoi/autodev/research/route.ts](src/app/api/qmoi/autodev/research/route.ts)
+### 12. POST /api/qmoi/autoprod/research
+- **File**: [src/app/api/qmoi/autoprod/research/route.ts](src/app/api/qmoi/autoprod/research/route.ts)
 - **Method**: `POST`
-- **Description**: AutoDev research endpoint for codebase analysis
+- **Description**: Autoprod research endpoint for codebase analysis
 - **Authentication**: Bearer token required
 - **Request Body**: Query, scope, depth level
 - **Response**: Research findings, recommendations
 - **Status**: ✅ Active
 
-### 13. GET /api/qmoi/autodev/suggestions/improvements
-- **File**: [src/app/api/qmoi/autodev/suggestions/improvements/route.ts](src/app/api/qmoi/autodev/suggestions/improvements/route.ts)
+### 13. GET /api/qmoi/autoprod/suggestions/improvements
+- **File**: [src/app/api/qmoi/autoprod/suggestions/improvements/route.ts](src/app/api/qmoi/autoprod/suggestions/improvements/route.ts)
 - **Method**: `GET`
-- **Description**: Get code improvement suggestions from AutoDev
+- **Description**: Get code improvement suggestions from Autoprod
 - **Authentication**: Bearer token required
 - **Response**: Improvements list with priority levels
 - **Status**: ✅ Active
 
-### 14. GET /api/qmoi/autodev/suggestions/optimizations
-- **File**: [src/app/api/qmoi/autodev/suggestions/optimizations/route.ts](src/app/api/qmoi/autodev/suggestions/optimizations/route.ts)
+### 14. GET /api/qmoi/autoprod/suggestions/optimizations
+- **File**: [src/app/api/qmoi/autoprod/suggestions/optimizations/route.ts](src/app/api/qmoi/autoprod/suggestions/optimizations/route.ts)
 - **Method**: `GET`
 - **Description**: Get performance optimization suggestions
 - **Authentication**: Bearer token required
 - **Response**: Optimizations list with performance impact metrics
 - **Status**: ✅ Active
 
-### 15. GET /api/qmoi/autodev/suggestions/features
-- **File**: [src/app/api/qmoi/autodev/suggestions/features/route.ts](src/app/api/qmoi/autodev/suggestions/features/route.ts)
+### 15. GET /api/qmoi/autoprod/suggestions/features
+- **File**: [src/app/api/qmoi/autoprod/suggestions/features/route.ts](src/app/api/qmoi/autoprod/suggestions/features/route.ts)
 - **Method**: `GET`
-- **Description**: Get feature development suggestions
+- **Description**: Get feature production suggestions
 - **Authentication**: Bearer token required
 - **Response**: Features array with implementation estimates
 - **Status**: ✅ Active
 
-### 16. POST /api/qmoi/autodev/generate-feature
-- **File**: [src/app/api/qmoi/autodev/generate-feature/route.ts](src/app/api/qmoi/autodev/generate-feature/route.ts)
+### 16. POST /api/qmoi/autoprod/generate-feature
+- **File**: [src/app/api/qmoi/autoprod/generate-feature/route.ts](src/app/api/qmoi/autoprod/generate-feature/route.ts)
 - **Method**: `POST`
 - **Description**: Generate feature code automatically
 - **Authentication**: Bearer token required
@@ -283,7 +283,7 @@ This document provides a comprehensive inventory of all API routes in the QMOI E
 ### 28. POST /api/preview/execute-tool
 - **File**: [src/app/api/preview/execute-tool/route.ts](src/app/api/preview/execute-tool/route.ts)
 - **Method**: `POST`
-- **Description**: Execute development tools for preview
+- **Description**: Execute production tools for preview
 - **Authentication**: Bearer token optional
 - **Request Body**: Tool name, parameters
 - **Response**: Tool output, results
@@ -295,12 +295,12 @@ This document provides a comprehensive inventory of all API routes in the QMOI E
 
 ### By HTTP Method
 - **GET**: 8 routes (health, stream, state, suggestions, evolution tracking)
-- **POST**: 20 routes (auth, autodev, evolution, self-work, automation, tools)
+- **POST**: 20 routes (auth, autoprod, evolution, self-work, automation, tools)
 
 ### By Feature Category
 - **Authentication**: 5 routes (login, WebAuthn)
 - **Health & Monitoring**: 3 routes (QMOI health, stream, consciousness)
-- **AutoDev & Improvements**: 7 routes (state, toggle, research, suggestions, generate)
+- **Autoprod & Improvements**: 7 routes (state, toggle, research, suggestions, generate)
 - **Evolution**: 3 routes (track, replace, compare models)
 - **Self-Work**: 3 routes (code-review, debug, tests)
 - **System**: 4 routes (global, consciousness, automation, QVS)
@@ -326,15 +326,15 @@ This document provides a comprehensive inventory of all API routes in the QMOI E
 - `/api/qmoi/health/stream` - Real-time metrics
 - `/api/consciousness/health` - Consciousness metrics
 
-### AutoDev Development Pattern
-1. Check state: `/api/qmoi/autodev/state`
-2. Get suggestions: `/api/qmoi/autodev/suggestions/*`
-3. Generate: `/api/qmoi/autodev/generate-feature`
+### Autoprod production Pattern
+1. Check state: `/api/qmoi/autoprod/state`
+2. Get suggestions: `/api/qmoi/autoprod/suggestions/*`
+3. Generate: `/api/qmoi/autoprod/generate-feature`
 4. Track: `/api/qmoi/evolution/track-evolution`
 
 ---
 
-## ✨ Production Deployment Notes
+## ✨ production Deployment Notes
 
 - ✅ All routes implement error handling and logging
 - ✅ Authentication integrated with QMOI consciousness

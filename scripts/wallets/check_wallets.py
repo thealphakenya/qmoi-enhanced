@@ -9,7 +9,7 @@
 Check wallets (QVS) script.
 
 Safe default: dry-run + mocked adapters.
-To attempt real network calls use --real AND set environment variable PRODUCTION_CONFIRMED=true.
+To attempt real network calls use --real AND set environment variable production_CONFIRMED=true.
 
 Usage:
   python3 scripts/wallets/check_wallets.py --report out.json [--wallet NAME] [--real]
@@ -52,8 +52,8 @@ class AdapterBase:
 
     def check_balance(self, config, real=False):
         """Return dict: {balance, currency, last_checked, status, meta}
-        Production: mode return safe mocked values.
-        Production: mode perform network calls (only if PRODUCTION_CONFIRMED=true).
+        production: mode return safe mocked values.
+        production: mode perform network calls (only if production_CONFIRMED=true).
         """
         # Default real implementation
         return {
@@ -74,7 +74,7 @@ class CashonAdapter(AdapterBase):
 
         if real:
             # Safety gate
-            if os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() != 'true':
+            if os.environ.get('production_CONFIRMED', 'false').lower() != 'true':
                 return {"status": "blocked_no_production_confirm", "last_checked": now_iso(), "meta": {"adapter": self.name}}
             # Real call implementation: implement provider API call here
             try:
@@ -155,7 +155,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--wallet', help='Check only a specific wallet')
     ap.add_argument('--report', help='Write JSON report file', default=None)
-    ap.add_argument('--real', action='store_true', help='Attempt real network calls (requires PRODUCTION_CONFIRMED=true)')
+    ap.add_argument('--real', action='store_true', help='Attempt real network calls (requires production_CONFIRMED=true)')
     args = ap.parse_args()
 
     wallets = discover_wallets()

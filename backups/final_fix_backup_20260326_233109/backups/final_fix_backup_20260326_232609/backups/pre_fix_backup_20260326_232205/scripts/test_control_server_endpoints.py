@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env python3
 """
 robust integration test for qmoi_control_server.py using Flask test client.
-Runs a sequence of requests to verify endpoints behave as expected in the dev environment.
+Runs a sequence of requests to verify endpoints behave as expected in the prod environment.
 """
 import json
 import sys

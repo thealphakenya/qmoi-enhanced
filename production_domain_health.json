@@ -107,8 +107,8 @@
       "response_time_ms": 24.67,
       "errors": []
     },
-    "qparallel.dev": {
-      "domain": "qparallel.dev",
+    "qparallel.prod": {
+      "domain": "qparallel.prod",
       "healthy": false,
       "dns_resolves": false,
       "http_accessible": false,

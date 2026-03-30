@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 export interface Project {
   id: string;
   name: string;
@@ -27,7 +27,7 @@ export interface Task {
   projectId: string;
   title: string;
   description: string;
-  status: "[PRODUCTION READY]" | "in-progress" | "review" | "completed";
+  status: "[production READY]" | "in-progress" | "review" | "completed";
   priority: "low" | "medium" | "high" | "critical";
   assignee: string;
   dueDate: number;

@@ -21,7 +21,7 @@ export async function POST_POST(_req: NextRequest) {
   // Post status/news to platform
   const body = (await _req.json()) as any;
   const { content, platform } = body;
-  // POST: Production integration with WhatsApp API, Telegram Bot API, LinkedIn Graph API
+  // POST: production integration with WhatsApp API, Telegram Bot API, LinkedIn Graph API
   // Use respective SDKs and webhook validators for each platform
   const post = {
     id: postId++,

@@ -1,4 +1,4 @@
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/bin/bash
 
 # QMOI Enhanced - Database Setup Script
@@ -41,7 +41,7 @@ log_info "Database Name: $DB_NAME"
 
 # Check PostgreSQL connection
 log_info "Testing PostgreSQL connection..."
-if psql "$DB_URL" -c "SELECT 1" > /dev/null 2>&1; then
+if psql "$DB_URL" -c "SELECT 1" > /prod/null 2>&1; then
     log_info "✓ PostgreSQL connection successful"
 else
     log_error "Cannot connect to PostgreSQL"

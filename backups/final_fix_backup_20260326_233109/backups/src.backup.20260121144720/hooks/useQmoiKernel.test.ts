@@ -1,21 +1,21 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-env jest */
 /* eslint-env jest, node */
-// NOTE: 14 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 14 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { renderHook, act } from "@testing-library/react";
 import { useQmoiKernel } from "./useQmoiKernel";
 
-// Production implementation: global fetch
-const // Production implementation:Fetch = jest.fn();
-global.fetch = // Production implementation:Fetch;
+// production implementation: global fetch
+const // production implementation:Fetch = jest.fn();
+global.fetch = // production implementation:Fetch;
 
 describe("useQmoiKernel", () => {
   beforeEach(() => {
-    jest.clearAll// Production implementation:s();
+    jest.clearAll// production implementation:s();
   });
 
   it("fetches status successfully", async () => {
-    // Production implementation:Fetch.// Production implementation:ResolvedValueOnce({
+    // production implementation:Fetch.// production implementation:ResolvedValueOnce({
       ok: true,
       json: async () => ({
         status: "OK",
@@ -36,7 +36,7 @@ describe("useQmoiKernel", () => {
   });
 
   it("handles fetch status error", async () => {
-    // Production implementation:Fetch.// Production implementation:ResolvedValueOnce({ ok: false });
+    // production implementation:Fetch.// production implementation:ResolvedValueOnce({ ok: false });
     const { result } = renderHook(() => useQmoiKernel());
     await act(async () => {
       await result.current.fetchStatus();
@@ -46,12 +46,12 @@ describe("useQmoiKernel", () => {
 
   it("runs action and updates status", async () => {
     // Action call
-    // Production implementation:Fetch.// Production implementation:ResolvedValueOnce({
+    // production implementation:Fetch.// production implementation:ResolvedValueOnce({
       ok: true,
       json: async () => ({ message: "QFix done" }),
     });
     // Status call after action
-    // Production implementation:Fetch.// Production implementation:ResolvedValueOnce({
+    // production implementation:Fetch.// production implementation:ResolvedValueOnce({
       ok: true,
       json: async () => ({
         status: "OK",
@@ -71,7 +71,7 @@ describe("useQmoiKernel", () => {
   });
 
   it("handles action error", async () => {
-    // Production implementation:Fetch.// Production implementation:ResolvedValueOnce({ ok: false });
+    // production implementation:Fetch.// production implementation:ResolvedValueOnce({ ok: false });
     const { result } = renderHook(() => useQmoiKernel());
     await act(async () => {
       await result.current.runAction("qfix");

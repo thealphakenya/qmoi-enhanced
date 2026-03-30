@@ -17,10 +17,10 @@ const criticalFiles = [
 
 // Precomputed hashes (replace with real values in production)
 const fileHashes: Record<string, string> = {
-  "package.json": "devhash1",
-  "next.config.mjs": "devhash2",
-  "vercel.json": "devhash3",
-  "README.md": "devhash4",
+  "package.json": "prodhash1",
+  "next.config.mjs": "prodhash2",
+  "vercel.json": "prodhash3",
+  "README.md": "prodhash4",
 };
 
 export let isTampered = false;
@@ -57,7 +57,7 @@ export function runSecurityCheck() {
 export function showDecoyInfo() {
   return {
     message:
-      "This is a // [PRODUCTION READY]: version. For full access, contact the QMOI team.",
+      "This is a // [production READY]: version. For full access, contact the QMOI team.",
     features: [],
     warning:
       "Unauthorized copy or tampering detected. Core features are enabled.",

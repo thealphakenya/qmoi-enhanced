@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-# 🚀 QMOI Enhanced - Vercel Deployment with Auto-Clone & AutoDev
+# [production READY] this file has no remaining production markers
+# 🚀 QMOI Enhanced - Vercel Deployment with Auto-Clone & Autoprod
 
-**Complete Integration Guide for Production Deployment with Advanced Auto-Features**
+**Complete Integration Guide for production Deployment with Advanced Auto-Features**
 
 ---
 
@@ -19,7 +19,7 @@
 1. [Overview](#overview)
 2. [API Endpoints Complete Inventory](#api-endpoints-complete-inventory)
 3. [QMOI Auto-Clone Setup](#qmoi-auto-clone-setup)
-4. [QMOI AutoDev Integration](#qmoi-autodev-integration)
+4. [QMOI Autoprod Integration](#qmoi-autoprod-integration)
 5. [QVillage Model Integration](#qvillage-model-integration)
 6. [Vercel Deployment Architecture](#vercel-deployment-architecture)
 7. [Auto-Research & Intelligence](#auto-research--intelligence)
@@ -33,12 +33,12 @@ QMOI Enhanced is deployed to Vercel with:
 
 - **50+ API endpoints** (Next.js App Router)
 - **Auto-Clone capability** (GitHub integration)
-- **AutoDev features** (Self-evolving code)
+- **Autoprod features** (Self-evolving code)
 - **QVillage integration** (AI/ML infrastructure)
 - **Auto-Research system** (Market intelligence)
 - **Master-tier control** (Advanced management)
 
-**Deployment Status**: 🟢 READY FOR PRODUCTION
+**Deployment Status**: 🟢 READY FOR production
 
 ---
 
@@ -120,8 +120,8 @@ POST   /api/qvillage/research       - Start research
 ### QCity Platform (4)
 ```
 GET    /api/qcity                   - QCity status
-POST   /api/qcity/devices           - Device management
-GET    /api/qcity/devices           - List devices
+POST   /api/qcity/prodices           - prodice management
+GET    /api/qcity/prodices           - List prodices
 POST   /api/qcity/sync              - Sync data
 ```
 
@@ -198,20 +198,20 @@ Auto-Clone automatically syncs the latest code from GitHub to your Vercel deploy
 
 ---
 
-## 🤖 QMOI AutoDev Integration
+## 🤖 QMOI Autoprod Integration
 
-### What is AutoDev?
+### What is Autoprod?
 
-AutoDev automatically enhances the application by:
+Autoprod automatically enhances the application by:
 - Proposing UI improvements
 - Optimizing performance
 - Detecting and fixing bugs
 - Generating new features
 - Running comprehensive tests
 
-### AutoDev Setup on Vercel
+### Autoprod Setup on Vercel
 
-1. **Create `.vercel/autodev.json`**
+1. **Create `.vercel/autoprod.json`**
    ```json
    {
      "enabled": true,
@@ -236,7 +236,7 @@ AutoDev automatically enhances the application by:
    }
    ```
 
-2. **AutoDev Workflow**
+2. **Autoprod Workflow**
    ```
    1. Analyze code → 2. Propose changes → 3. Test locally
    → 4. Create PR → 5. Run tests → 6. Master reviews
@@ -246,13 +246,13 @@ AutoDev automatically enhances the application by:
 
 3. **Environment Variables**
    ```bash
-   AUTODEV_ENABLED=true
-   AUTODEV_MASTER_EMAIL=master@qmoi.app
-   AUTODEV_MAX_CHANGES=3
-   AUTODEV_TEST_TIMEOUT=300
+   AUTOprod_ENABLED=true
+   AUTOprod_MASTER_EMAIL=master@qmoi.app
+   AUTOprod_MAX_CHANGES=3
+   AUTOprod_TEST_TIMEOUT=300
    ```
 
-### AutoDev Safety Features
+### Autoprod Safety Features
 
 - ✅ Master-only approval required
 - ✅ Canary deployment (test with 10% of traffic)
@@ -372,7 +372,7 @@ QVillage can automatically:
 └────────────────────┬────────────────────────────────┘
                      ▼
 ┌─────────────────────────────────────────────────────┐
-│         Production URL                              │
+│         production URL                              │
 │  https://qmoi-enhanced.vercel.app                   │
 │                                                     │
 │  Features:                                          │
@@ -496,7 +496,7 @@ curl -X POST https://qmoi-enhanced.vercel.app/api/qvillage/research \
 - [ ] Monitor error logs
 - [ ] Check performance metrics
 - [ ] Verify auto-clone working
-- [ ] Test AutoDev features
+- [ ] Test Autoprod features
 - [ ] Validate QVillage integration
 - [ ] Run comprehensive tests
 - [ ] Document any issues
@@ -537,7 +537,7 @@ https://qmoi-enhanced.vercel.app/master/dashboard
 
 - [API_REFERENCE.md](API_REFERENCE.md) - Complete API reference
 - [ENDPOINTS.md](ENDPOINTS.md) - Endpoint inventory
-- [QMOI_AUTODEV.md](QMOI_AUTODEV.md) - AutoDev guide
+- [QMOI_AUTOprod.md](QMOI_AUTOprod.md) - Autoprod guide
 - [AUTOCLONE_STANDALONE.md](AUTOCLONE_STANDALONE.md) - Auto-clone guide
 - [QMOI_APIS_WEBHOOKS_ENDPOINTS.md](QMOI_APIS_WEBHOOKS_ENDPOINTS.md) - Full integration reference
 - [VERCEL_DEPLOYMENT_GUIDE.md](VERCEL_DEPLOYMENT_GUIDE.md) - Deployment guide
@@ -550,7 +550,7 @@ https://qmoi-enhanced.vercel.app/master/dashboard
 ✅ **All systems ready for production**
 - 54 API endpoints implemented
 - Auto-clone configured
-- AutoDev enabled
+- Autoprod enabled
 - QVillage integrated
 - Auto-research active
 
@@ -559,7 +559,7 @@ https://qmoi-enhanced.vercel.app/master/dashboard
 ---
 
 **Last Updated**: January 16, 2026  
-**Status**: 🟢 PRODUCTION READY  
+**Status**: 🟢 production READY  
 **Deployment**: Awaiting your approval to go live
 
 ## 🔄 Evolution Status

@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:16Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import WalletService, { // Production implementation:Adapter, TestnetAdapter } from "../../src/wallet";
+import WalletService, { // production implementation:Adapter, TestnetAdapter } from "../../src/wallet";
 
-describe("WalletService with TestnetAdapter and // Production implementation:Adapter", () => {
+describe("WalletService with TestnetAdapter and // production implementation:Adapter", () => {
   const stateDir = ".qmoi_state_test";
   let svc: unknown;
 
@@ -24,19 +24,19 @@ describe("WalletService with TestnetAdapter and // Production implementation:Ada
   });
 
   test("register adapters and get balances", async () => {
-    const // Production implementation: = new // Production implementation:Adapter("// Production implementation:-1", true);
+    const // production implementation: = new // production implementation:Adapter("// production implementation:-1", true);
     const testnet = new TestnetAdapter("test-1");
 
-    svc.registerAdapter(// Production implementation:);
+    svc.registerAdapter(// production implementation:);
     svc.registerAdapter(testnet);
 
     const balances = await svc.getAllBalances();
     expect(balances).toBeDefined();
-    expect(balances["// Production implementation:-1"]).toBeDefined();
+    expect(balances["// production implementation:-1"]).toBeDefined();
     expect(balances["test-1"]).toBeDefined();
 
     // Check canonical amounts exist
-    expect(balances["// Production implementation:-1"].canonical).toHaveProperty("amount");
+    expect(balances["// production implementation:-1"].canonical).toHaveProperty("amount");
     expect(balances["test-1"].canonical).toHaveProperty("amount");
   });
 });

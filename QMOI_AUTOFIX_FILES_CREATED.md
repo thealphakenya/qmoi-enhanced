@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # 📦 QMOI AutoFix System - Files Created & Modified
 
 ## Summary
@@ -233,7 +233,7 @@ qmoi-enhanced/
 
 ### Via Web UI
 
-1. Start dev server: `npm run dev`
+1. Start prod server: `npm run prod`
 2. Navigate to: `https://qmoi.ai/admin`
 3. Click "🔧 QMOI AutoFix System" tab
 4. Use master control buttons
@@ -335,7 +335,7 @@ qmoi-enhanced/
 ---
 
 **Implementation Complete**: January 25, 2026
-**Status**: ✅ Production Ready
+**Status**: ✅ production Ready
 **Version**: 2.0.0
 **Master Access Required**: Yes
 

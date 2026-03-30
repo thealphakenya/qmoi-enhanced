@@ -685,7 +685,7 @@ cd qmoi-system
 npm install
 
 # Start the system
-npm run dev
+npm run prod
 
 # Enable auto-fix
 npm run qmoi:autofix:enable
@@ -720,7 +720,7 @@ npm run qmoi:autofix:enable
 ## API Reference
 
 ### Core APIs
-- `/api/qmoi/autodev` - Auto-development system
+- `/api/qmoi/autoprod` - Auto-production system
 - `/api/qmoi/feedback` - Feedback and improvement
 - `/api/qmoi/file` - File management
 - `/api/qmoi/health` - System health monitoring
@@ -741,7 +741,7 @@ npm run qmoi:autofix:enable
 ```bash
 # Core Configuration
 NODE_ENV=production
-QMOI_AUTODEV_ENABLED=true
+QMOI_AUTOprod_ENABLED=true
 QMOI_AUTOFIX_ENABLED=true
 
 # Security
@@ -771,7 +771,7 @@ npm run qmoi:autoconfig
 ### Automated Deployment
 ```bash
 # Full auto-deployment
-npm run qmoi:autodev:deploy
+npm run qmoi:autoprod:deploy
 
 # Health check
 npm run deploy:health
@@ -823,7 +823,7 @@ npm run qmoi:autofix:trigger
 
 ## Contributing
 
-### Development Workflow
+### production Workflow
 1. Fork the repository
 2. Create feature branch
 3. Make changes

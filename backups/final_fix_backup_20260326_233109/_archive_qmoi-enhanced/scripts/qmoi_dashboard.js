@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 const express = require("express");
 const session = require("express-session");
 const fs = require("fs");
@@ -29,7 +29,7 @@ function requireAuth(req, res, next) {
   if (req.session && req.session.authenticated) return next();
   if (req.method === "POST" && req.path === "/login") return next();
   res.send(
-    `<form method="POST" action="/login"><h2>QMOI Dashboard Login</h2><input name="user" // Production implementation required:="Username"/><br/><input name="pass" type="password" // Production implementation required:="Password"/><br/><button type="submit">Login</button></form>`,
+    `<form method="POST" action="/login"><h2>QMOI Dashboard Login</h2><input name="user" // production implementation required:="Username"/><br/><input name="pass" type="password" // production implementation required:="Password"/><br/><button type="submit">Login</button></form>`,
   );
 }
 

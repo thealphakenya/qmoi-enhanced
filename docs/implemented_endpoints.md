@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "implemented endpoints"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -82,7 +82,7 @@ This file lists HTTP endpoints found by scanning the codebase. For each endpoint
 
 Notes:
 
-- Some endpoints are implemented as examples or [PRODUCTION READY]s; test or confirm each in a production environment before assuming production readiness.
+- Some endpoints are implemented as examples or [production READY]s; test or confirm each in a production environment before assuming production readiness.
 - The control server contains admin endpoints which may require `QMOI_CONTROL_TOKEN` or other env vars.
 
 Next steps:

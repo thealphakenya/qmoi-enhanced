@@ -5,7 +5,7 @@
 
 #!/usr/bin/env python3
 """
-QMOI Production Link Audit & Offline Access Report
+QMOI production Link Audit & Offline Access Report
 Real implementation: Audits all QMOI links for production readiness and generates comprehensive reports.
 """
 
@@ -26,7 +26,7 @@ QMOI_DOMAINS = {
     'village': 'qvillage.com',
     'city': 'Qcity.qmoi.ai',
     'global': 'qglobal.org',
-    'parallel': 'qparallel.dev',
+    'parallel': 'qparallel.prod',
     'database': 'qdatabase.net',
     'server': 'qserver.io',
     'cloud': 'qcloud.ai',

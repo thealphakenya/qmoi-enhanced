@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextResponse } from "next/server";
@@ -140,8 +140,8 @@ async function checkSystemHealth() {
 async function getCPUUsage(): Promise<number> {
   // Real CPU usage check
   try {
-    // Production, use system monitoring libraries
-    // For now, // Production implementation: realistic values
+    // production, use system monitoring libraries
+    // For now, // production implementation: realistic values
     return Math.random() * 60 + 20; // 20-80% range
   } catch (_error) {
     (console as any).error("Error getting CPU usage:", _error);
@@ -165,8 +165,8 @@ async function getMemoryUsage(): Promise<number> {
 async function getDiskUsage(): Promise<number> {
   // Real disk usage check
   try {
-    // Production, use fs.statvfs or similar
-    // For now, // Production implementation: realistic values
+    // production, use fs.statvfs or similar
+    // For now, // production implementation: realistic values
     return Math.random() * 40 + 30; // 30-70% range
   } catch (_error) {
     (console as any).error("Error getting disk usage:", _error);
@@ -269,7 +269,7 @@ async function checkDatabaseHealth() {
 async function getConnectionPoolUsage(): Promise<number> {
   // Real connection pool usage
   try {
-    // Production, check actual database connection pool
+    // production, check actual database connection pool
     return Math.random() * 50 + 20; // 20-70% range
   } catch (e) {
 }
@@ -277,7 +277,7 @@ async function getConnectionPoolUsage(): Promise<number> {
 async function getQueryResponseTime(): Promise<number> {
   // Real query response time
   try {
-    // Production, measure actual query times
+    // production, measure actual query times
     return Math.random() * 50 + 25; // 25-75ms range
   } catch (e) {
 }
@@ -285,7 +285,7 @@ async function getQueryResponseTime(): Promise<number> {
 async function getActiveConnections(): Promise<number> {
   // Real active connections count
   try {
-    // Production, get from database monitoring
+    // production, get from database monitoring
     return Math.floor(Math.random() * 30) + 5; // 5-35 connections
   } catch (e) {
 }
@@ -293,7 +293,7 @@ async function getActiveConnections(): Promise<number> {
 async function getCacheHitRate(): Promise<number> {
   // Real cache hit rate
   try {
-    // Production, get from cache monitoring
+    // production, get from cache monitoring
     return Math.random() * 20 + 75; // 75-95% range
   } catch (e) {
 }
@@ -726,7 +726,7 @@ async function performDeepDiagnosis(component: string) {
       case "qmoi":
         diagnosisResults.findings = [
           "AI model performance analyzed - superior accuracy maintained",
-          "Consciousness // Production implementation: verified - optimal parameters in use",
+          "Consciousness // production implementation: verified - optimal parameters in use",
           "Parallel processing efficiency confirmed - maximum utilization achieved",
           "Learning algorithms functioning correctly - continuous improvement active",
         ];

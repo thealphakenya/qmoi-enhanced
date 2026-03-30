@@ -37,7 +37,7 @@ export default async function handler(
     switch (action) {
       case "security-test": {
         // Wi-Fi security test: scan for networks and show encryption
-        const output = await runCommand("iwlist scan 2>/dev/null");
+        const output = await runCommand("iwlist scan 2>/prod/null");
         // Parse SSIDs and encryption
         const networks = Array.from(
           output.matchAll(/ESSID:"([^"]+)"[\s\S]*?Encryption key:(on|off)/g),
@@ -98,7 +98,7 @@ export default async function handler(
       }
       case "signal-analysis": {
         // Wireless signal analysis: list signal strengths
-        const output = await runCommand("iwlist scan 2>/dev/null");
+        const output = await runCommand("iwlist scan 2>/prod/null");
         const signals = Array.from(
           output.matchAll(/ESSID:"([^"]+)"[\s\S]*?Signal level=([\-\d]+)/g),
         ).map((match) => ({
@@ -108,7 +108,7 @@ export default async function handler(
         return res.json({ result: "Signal analysis complete", signals });
       }
       case "iot-scan": {
-        // IoT scan: use nmap to find devices with open telnet/ftp (common IoT risks)
+        // IoT scan: use nmap to find prodices with open telnet/ftp (common IoT risks)
         const output = await runCommand("nmap -p 23,21 192.168.1.0/24");
         const risks = Array.from(
           output.matchAll(

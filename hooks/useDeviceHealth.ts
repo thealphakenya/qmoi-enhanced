@@ -5,7 +5,7 @@
 
 import { useState, useEffect } from "react";
 
-interface DeviceHealth {
+interface prodiceHealth {
   status: "healthy" | "degraded" | "critical";
   lastCheck: number;
   metrics: {
@@ -57,7 +57,7 @@ class PerformanceMonitor {
         "navigation",
       )[0] as PerformanceNavigationTiming;
       return navigation
-        ? navigation.loadEventEnd - navigation.loadEventStart
+        ? navigation.loaprodentEnd - navigation.loaprodentStart
         : 0;
     }
     return 0;
@@ -117,8 +117,8 @@ function getBatteryInfo(): Promise<number | null> {
   });
 }
 
-export function useDeviceHealth(): DeviceHealth {
-  const [health, setHealth] = useState<DeviceHealth>({
+export function useprodiceHealth(): prodiceHealth {
+  const [health, setHealth] = useState<prodiceHealth>({
     status: "healthy",
     lastCheck: Date.now(),
     metrics: {
@@ -216,7 +216,7 @@ export function useDeviceHealth(): DeviceHealth {
         });
       } catch (error) {
         (globalThis.console as any)?.error?.(
-          "Device health check failed:",
+          "prodice health check failed:",
           error,
         );
         setHealth({
@@ -234,7 +234,7 @@ export function useDeviceHealth(): DeviceHealth {
               responseTime: 0,
             },
           },
-          warnings: ["Device health check failed"],
+          warnings: ["prodice health check failed"],
         });
       }
     };
@@ -249,7 +249,7 @@ export function useDeviceHealth(): DeviceHealth {
       }
     };
 
-    document.addEventListener("visibilitychange", handleVisibilityChange);
+    document.adprodentListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       clearInterval(interval);

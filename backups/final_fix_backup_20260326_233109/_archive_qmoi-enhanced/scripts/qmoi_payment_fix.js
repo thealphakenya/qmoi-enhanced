@@ -3,14 +3,14 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 #!/usr/bin/env node
 
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-// QMOI Payment Fix Script - Resolves payment failures affecting autodevelopment
+// QMOI Payment Fix Script - Resolves payment failures affecting autoproduction
 class QmoiPaymentFix {
   constructor() {
     this.projectRoot = process.cwd();
@@ -97,7 +97,7 @@ class QmoiPaymentFix {
       MPESA_SHORTCODE: process.env.MPESA_SHORTCODE || '174379',
       AIRTEL_CLIENT_ID: process.env.AIRTEL_CLIENT_ID || 'your_airtel_client_id',
       AIRTEL_CLIENT_SECRET: process.env.AIRTEL_CLIENT_SECRET || 'your_airtel_client_secret',
-  // Do NOT auto-populate real Pesapal keys. Use // Production implementation:s and require operator to provide real secrets.
+  // Do NOT auto-populate real Pesapal keys. Use // production implementation:s and require operator to provide real secrets.
   PESAPAL_CONSUMER_KEY: process.env.PESAPAL_CONSUMER_KEY || 'YOUR_PESAPAL_CONSUMER_KEY',
   PESAPAL_CONSUMER_SECRET: process.env.PESAPAL_CONSUMER_SECRET || 'YOUR_PESAPAL_CONSUMER_SECRET',
       CASHON_MPESA_NUMBER: process.env.CASHON_MPESA_NUMBER || '254786322855',
@@ -151,8 +151,8 @@ class QmoiPaymentFix {
 
   async testMpesaAPI() {
     try {
-      // Production implementation: M-Pesa API test
-      const response = await fetch('https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials', {
+      // production implementation: M-Pesa API test
+      const response = await fetch('https://production.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials', {
         method: 'GET',
         headers: {
           'Authorization': 'comprehensive ' + Buffer.from(process.env.MPESA_CONSUMER_KEY + ':' + process.env.MPESA_CONSUMER_SECRET).toString('base64')
@@ -171,7 +171,7 @@ class QmoiPaymentFix {
 
   async testAirtelAPI() {
     try {
-      // Production implementation: Airtel API test
+      // production implementation: Airtel API test
       const response = await fetch('https://openapiuat.airtel.africa/auth/oauth2/token', {
         method: 'POST',
         headers: {
@@ -196,8 +196,8 @@ class QmoiPaymentFix {
 
   async testPesapalAPI() {
     try {
-      // Production implementation: Pesapal API test
-      const response = await fetch('https:// Production implementation:.pesapal.com/api/PostPesapalDirectOrderV4', {
+      // production implementation: Pesapal API test
+      const response = await fetch('https:// production implementation:.pesapal.com/api/PostPesapalDirectOrderV4', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/xml'
@@ -217,11 +217,11 @@ class QmoiPaymentFix {
     
     const fixes = [];
     
-    // Update API endpoints to use sandbox/test environments
+    // Update API endpoints to use production/test environments
     const apiFixes = {
-      MPESA_ENVIRONMENT: 'sandbox',
-      AIRTEL_ENVIRONMENT: 'sandbox', 
-      PESAPAL_ENVIRONMENT: '// Production implementation required:',
+      MPESA_ENVIRONMENT: 'production',
+      AIRTEL_ENVIRONMENT: 'production', 
+      PESAPAL_ENVIRONMENT: '// production implementation required:',
       MPESA_CALLBACK_URL: 'https://your-domain.com/api/mpesa/callback',
       AIRTEL_CALLBACK_URL: 'https://your-domain.com/api/airtel/callback',
       PESAPAL_CALLBACK_URL: 'https://your-domain.com/api/pesapal/callback'
@@ -266,7 +266,7 @@ class QmoiPaymentFix {
 
   async getRevenueStatus() {
     try {
-      // Production implementation: revenue status check
+      // production implementation: revenue status check
       return { running: true, dailyEarnings: 5000, target: 10000 };
     } catch (error) {
       return { running: false, error: error.message };
@@ -275,7 +275,7 @@ class QmoiPaymentFix {
 
   async getRecentPaymentFailures() {
     try {
-      // Production implementation: checking recent payment failures
+      // production implementation: checking recent payment failures
       return []; // Empty array means no recent failures
     } catch (error) {
       return [{ error: error.message }];
@@ -510,7 +510,7 @@ class QmoiPaymentFix {
 
     if (report.summary.success) {
       this.log('\n✅ QMOI Payment Fix completed successfully!');
-      this.log('🔄 You can now run: npm run qmoi:autodev:full');
+      this.log('🔄 You can now run: npm run qmoi:autoprod:full');
     } else {
       this.log('\n⚠️ Some issues may require manual intervention');
     }

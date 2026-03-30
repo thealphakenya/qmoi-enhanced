@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Background Automation - Quick Reference
 
 ## 🚀 Quick Start (30 seconds)
@@ -17,7 +17,7 @@
 bash scripts/qmoi-background-setup.sh
 
 # 2. Start app
-npm run dev
+npm run prod
 
 # 3. Visit dashboard
 # https://qmoi.ai/admin
@@ -206,14 +206,14 @@ curl -H "Authorization: Bearer TOKEN" \
 
 ## ⚙️ Performance Tuning
 
-### For Production (Less Frequent)
+### For production (Less Frequent)
 
 ```bash
 QMOI_AUTO_SCAN_INTERVAL=600000         # 10 min
 QMOI_HEALTH_MONITOR_INTERVAL=60000     # 1 min
 ```
 
-### For Development (More Frequent)
+### For production (More Frequent)
 
 ```bash
 QMOI_AUTO_SCAN_INTERVAL=60000          # 1 min
@@ -273,7 +273,7 @@ QMOI_HEALTH_MONITOR_INTERVAL=10000     # 10 sec
 ## 🚀 Next Steps
 
 1. Setup: `bash scripts/qmoi-background-setup.sh`
-2. Start: `npm run dev`
+2. Start: `npm run prod`
 3. Dashboard: `https://qmoi.ai/admin`
 4. Monitor: Check `.logs/` directory
 5. Configure: Adjust intervals and thresholds

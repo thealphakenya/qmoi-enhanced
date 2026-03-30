@@ -234,8 +234,8 @@ VSVersionInfo(
         StringStruct(u'InternalName', u'qmoiexe_enhanced'),
         StringStruct(u'LegalCopyright', u'Copyright (C) 2025 QMOI AI'),
         StringStruct(u'OriginalFilename', u'qmoiexe_enhanced.exe'),
-        StringStruct(u'ProductName', u'QMOI AI Enhanced'),
-        StringStruct(u'ProductVersion', u'2.0.0.0')])
+        StringStruct(u'productName', u'QMOI AI Enhanced'),
+        StringStruct(u'productVersion', u'2.0.0.0')])
       ]), 
     VarFileInfo([VarStruct(u'Translation', [1033, 1200])])
   ]

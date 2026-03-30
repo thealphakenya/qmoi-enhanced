@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # ✅ QMOI Background Automation - IMPLEMENTATION COMPLETE
 
 ## 🎉 Mission Accomplished!
@@ -70,7 +70,7 @@ This creates `.env.local` with all needed configuration and generates a secure a
 ### Step 2: Start (immediate)
 
 ```bash
-npm run dev
+npm run prod
 ```
 
 The app starts and background automation begins automatically.
@@ -286,7 +286,7 @@ Everything is implemented and ready to use:
 bash scripts/qmoi-background-setup.sh
 
 # 2. Start (one command)
-npm run dev
+npm run prod
 
 # 3. Monitor (one URL)
 https://qmoi.ai/admin
@@ -300,7 +300,7 @@ That's it! QMOI will now automatically scan, detect, and fix errors in the backg
 
 1. **Read**: `docs/QMOI_BACKGROUND_AUTOMATION_README.md` (5 minutes)
 2. **Setup**: `bash scripts/qmoi-background-setup.sh` (30 seconds)
-3. **Start**: `npm run dev` (immediate)
+3. **Start**: `npm run prod` (immediate)
 4. **Monitor**: Visit `https://qmoi.ai/admin` (immediate)
 5. **Check**: `tail -f .logs/qmoi-autoscan.log` (ongoing)
 
@@ -313,7 +313,7 @@ That's it! QMOI will now automatically scan, detect, and fix errors in the backg
 ✅ **Well Documented** - 7+ comprehensive guides
 ✅ **Secure** - Token-based authentication
 ✅ **Monitored** - Real-time dashboard and logs
-✅ **Production Ready** - Error handling and resilience built-in
+✅ **production Ready** - Error handling and resilience built-in
 ✅ **Easy Setup** - One-command setup script
 ✅ **Complete API** - Full control via REST endpoints
 
@@ -350,7 +350,7 @@ QMOI now:
 2. **Start the application** (immediate)
 
    ```bash
-   npm run dev
+   npm run prod
    ```
 
 3. **Visit the dashboard** (immediate)
@@ -386,7 +386,7 @@ Your QMOI Background Automation System is:
 - ✅ Fully implemented
 - ✅ Thoroughly documented
 - ✅ Ready to deploy
-- ✅ Production-ready
+- ✅ production-ready
 - ✅ Easy to configure
 - ✅ Simple to monitor
 

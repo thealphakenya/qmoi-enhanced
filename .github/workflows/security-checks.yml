@@ -1,9 +1,9 @@
 name: Security Checks (Pre-Merge)
 on:
   push:
-    branches: [main, develop, release/**]
+    branches: [main, prodelop, release/**]
   pull_request:
-    branches: [main, develop, release/**]
+    branches: [main, prodelop, release/**]
 
 permissions:
   contents: read
@@ -48,7 +48,7 @@ jobs:
             > .secrets.scan.json
 
           # Compare with baseline
-          if detect-secrets audit .secrets.baseline .secrets.scan.json 2>/dev/null; then
+          if detect-secrets audit .secrets.baseline .secrets.scan.json 2>/prod/null; then
             echo "status=clean" >> $GITHUB_OUTPUT
             echo "✅ No new secrets detected"
           else

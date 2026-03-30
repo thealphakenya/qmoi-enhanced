@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 // Simple dry-run test for QMOIFriendshipIntegration
 // This script is framework-free and intended to be runnable with `node tests/test_qmoi_friendship.js`.
 
@@ -18,7 +18,7 @@ const Q = require("../qmoi-friendship-integration.js");
     const result = await inst.detectAndFixErrors();
     console.log("detectAndFixErrors result:", JSON.stringify(result, null, 2));
 
-    // 2. Produce system metrics
+    // 2. produce system metrics
     const metrics = await inst.monitorSystemPerformance();
     console.log("system metrics:", JSON.stringify(metrics, null, 2));
 

@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "SERVEQCITYQMOIAIQMOISPACE.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -20,7 +20,7 @@ This document describes how to serve QCity, QMOI AI, and QMOI Space for all apps
 
 ## QCity Serving
 
-- Main entry: `QCITYREADME.md`, `QCITYMAINDEVICE.md`, and related scripts in `qcity-artifacts/`
+- Main entry: `QCITYREADME.md`, `QCITYMAINprodICE.md`, and related scripts in `qcity-artifacts/`
 - Serve via Python/Node.js web server (search for main server script or use FastAPI/Flask/Express)
 - UI features: Referenced in `QCITYRESOURCES.md`, `QCITYRUNNERSENGINE.md`, and `QCITYQMOIAUTOSTART.md`
 - All endpoints and UI features are autotested and autofixed by QMOI
@@ -34,9 +34,9 @@ This document describes how to serve QCity, QMOI AI, and QMOI Space for all apps
 
 ## QMOI Space Serving
 
-- Main entry: `qmoi-space/`, `QMOISPACEDEV.md`, `QMOISPACEUI.md`
+- Main entry: `qmoi-space/`, `QMOISPACEprod.md`, `QMOISPACEUI.md`
 - Serve via Python/Node.js backend or Gradio/Streamlit for AI features
-- UI features: Referenced in `QMOISPACEUI.md`, `QMOISPACEDEV.md`, and `QMOIHUGGINGFACESPACES.md`
+- UI features: Referenced in `QMOISPACEUI.md`, `QMOISPACEprod.md`, and `QMOIHUGGINGFACESPACES.md`
 - All endpoints and UI features are autotested and autofixed by QMOI
 
 ## Automation & Enhancement

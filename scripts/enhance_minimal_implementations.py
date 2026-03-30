@@ -38,7 +38,7 @@ def enhance_function_body(content, function_name="implementation"):
     '{function_name} must return a valid value in production.'
 )""",
         'raise NotImplementedError': """raise NotImplementedError(
-    'Production implementation required'
+    'production implementation required'
 )""",
     }
     

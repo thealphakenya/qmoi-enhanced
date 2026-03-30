@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 import { enhancedLinkDomainService } from "@/lib/enhanced-link-domain-service";
 import { qmoiTracksService } from "@/lib/tracks-service";
 import { NextRequest, NextResponse } from "next/server";

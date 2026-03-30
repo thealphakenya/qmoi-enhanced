@@ -219,13 +219,13 @@ class DomainHealthChecker:
             "expected_features": ["global_ai_services", "api_documentation", "ssl_certificate", "responsive_design"],
             "ui_components": ["service_cards", "api_docs", "navigation_menu", "footer"]
         },
-        "qparallel.dev": {
+        "qparallel.prod": {
             "type": "fallback",
             "critical": False,
             "fallbacks": [],
             "check_endpoints": ["/"],
             "ui_endpoints": ["/", "/docs"],
-            "expected_features": ["developer_tools", "ci_cd_pipeline", "project_management", "collaboration_tools", "ssl_certificate", "responsive_design"],
+            "expected_features": ["prodeloper_tools", "ci_cd_pipeline", "project_management", "collaboration_tools", "ssl_certificate", "responsive_design"],
             "ui_components": ["editor_preview", "project_dashboard", "terminal_embed", "panel_tabs", "footer"]
         }
     }
@@ -492,7 +492,7 @@ class DomainHealthChecker:
             # Try HTTPS first
             start_time = time.time()
             result = subprocess.run(
-                ['curl', '-s', '-o', '/dev/null', '-w', '%{http_code}', f'https://{domain}/', '--max-time', '5'],
+                ['curl', '-s', '-o', '/prod/null', '-w', '%{http_code}', f'https://{domain}/', '--max-time', '5'],
                 capture_output=True,
                 text=True,
                 timeout=10
@@ -508,7 +508,7 @@ class DomainHealthChecker:
             # Try HTTP fallback
             start_time = time.time()
             result = subprocess.run(
-                ['curl', '-s', '-o', '/dev/null', '-w', '%{http_code}', f'http://{domain}/', '--max-time', '5'],
+                ['curl', '-s', '-o', '/prod/null', '-w', '%{http_code}', f'http://{domain}/', '--max-time', '5'],
                 capture_output=True,
                 text=True,
                 timeout=10

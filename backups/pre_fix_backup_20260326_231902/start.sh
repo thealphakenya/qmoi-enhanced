@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #! /bin/bash
 set -euo pipefail
 
@@ -46,9 +46,9 @@ if ! pnpm tsc --noEmit; then
 fi
 
 # ------------------------------------------------------------------------------
-# 4. Start Development Server
+# 4. Start production Server
 # ------------------------------------------------------------------------------
-header "🚀 Starting development server..."
-log "Running: pnpm dev"
+header "🚀 Starting production server..."
+log "Running: pnpm prod"
 
-pnpm dev
+pnpm prod

@@ -1,7 +1,7 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 6 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 6 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextApiRequest, NextApiResponse } from "next";
 // Import authentication and audit logging utilities
 // ... existing code ...
@@ -18,17 +18,17 @@ export default async function handler(
       const { action } = body;
       switch (action) {
         case "research":
-          // Production implementation:: handle research
+          // production implementation:: handle research
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "verify":
-          // Production implementation:: handle verification
+          // production implementation:: handle verification
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "earning-opportunities":
-          // Production implementation:: handle earning opportunities
+          // production implementation:: handle earning opportunities
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });

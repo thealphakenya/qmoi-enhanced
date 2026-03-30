@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:04Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 """Integration tests for qmoi_control_server
 
 This script provides pytest-compatible tests that exercise the main
@@ -34,7 +34,7 @@ if str(repo_root) not in sys.path:
 import qmoi_control_server as server
 
 DB_FILE = server.DB_FILE
-CONTROL_TOKEN = os.environ.get('QMOI_CONTROL_TOKEN', 'dev-token')
+CONTROL_TOKEN = os.environ.get('QMOI_CONTROL_TOKEN', 'prod-token')
 
 def remove_db_if_exists():
 	try:

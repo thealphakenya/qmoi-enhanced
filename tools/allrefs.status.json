@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 {
   "All": {
     "category": "included"
@@ -93,7 +93,7 @@
   "PUBLIC.md": {
     "category": "skip"
   },
-  "QCITYMAINDEVICE.md": {
+  "QCITYMAINprodICE.md": {
     "category": "skip"
   },
   "QCITYREADME.md": {
@@ -159,7 +159,7 @@
   "QMOI-REVENUE-README.md": {
     "category": "skip"
   },
-  "QMOIALLDEVICESHANDSFREE.md": {
+  "QMOIALLprodICESHANDSFREE.md": {
     "category": "skip"
   },
   "QMOIALLPROJECTSADDSTRAILERSDOCS.md": {
@@ -180,13 +180,13 @@
   "QMOIAUTHBIOMETRICS.md": {
     "category": "skip"
   },
-  "QMOIAUTOAPPSDEV.md": {
+  "QMOIAUTOAPPSprod.md": {
     "category": "skip"
   },
   "QMOIAUTOBET.md": {
     "category": "skip"
   },
-  "QMOIAUTODEVDOCTESTS.MD": {
+  "QMOIAUTOprodDOCTESTS.MD": {
     "category": "skip"
   },
   "QMOIAUTOEVOLVE.md": {
@@ -228,7 +228,7 @@
   "QMOIDATABASE.md": {
     "category": "auto"
   },
-  "QMOIDEV.md": {
+  "QMOIprod.md": {
     "category": "skip"
   },
   "QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md": {
@@ -249,7 +249,7 @@
   "QMOIGITHUBAPP.md": {
     "category": "skip"
   },
-  "QMOIGITHUBDEV.md": {
+  "QMOIGITHUBprod.md": {
     "category": "skip"
   },
   "QMOIMASKS.md": {
@@ -258,10 +258,10 @@
   "QMOINGROK.md": {
     "category": "skip"
   },
-  "QMOIOWNDEVICE.md": {
+  "QMOIOWNprodICE.md": {
     "category": "skip"
   },
-  "QMOIPREDEVDOCACTIONS.md": {
+  "QMOIPREprodDOCACTIONS.md": {
     "category": "skip"
   },
   "QMOIQCITYAUTOMATIC.md": {
@@ -276,7 +276,7 @@
   "QMOISPACE.md": {
     "category": "skip"
   },
-  "QMOISPACEDEV.md": {
+  "QMOISPACEprod.md": {
     "category": "skip"
   },
   "QMOISYSTEMAUTO.md": {
@@ -294,7 +294,7 @@
   "QMOIWHATSAPP.md": {
     "category": "skip"
   },
-  "QMOI_AUTODEV.md": {
+  "QMOI_AUTOprod.md": {
     "category": "skip"
   },
   "QMOI_COMPLETE_SYSTEM_OVERVIEW.md": {
@@ -468,10 +468,10 @@
   "app/api/qmoi/master-mode/route.ts": {
     "category": "skip"
   },
-  "app/api/qmoi/own-device-logs/export/route.ts": {
+  "app/api/qmoi/own-prodice-logs/export/route.ts": {
     "category": "skip"
   },
-  "app/api/qmoi/own-device-logs/route.ts": {
+  "app/api/qmoi/own-prodice-logs/route.ts": {
     "category": "skip"
   },
   "app/api/qmoi/research/route.ts": {
@@ -546,7 +546,7 @@
   "components/Chatbot.tsx": {
     "category": "skip"
   },
-  "components/DeviceSettingsPanel.tsx": {
+  "components/prodiceSettingsPanel.tsx": {
     "category": "skip"
   },
   "components/DownloadManager.tsx": {
@@ -597,7 +597,7 @@
   "components/MediaPreviewWindow.tsx": {
     "category": "skip"
   },
-  "components/PriceProductVerifier.tsx": {
+  "components/PriceproductVerifier.tsx": {
     "category": "skip"
   },
   "components/QAvatar.tsx": {
@@ -666,16 +666,16 @@
   "components/components/qmedia_player.md.tsx": {
     "category": "skip"
   },
-  "components/device/AWSCredentialsModal.tsx": {
+  "components/prodice/AWSCredentialsModal.tsx": {
     "category": "skip"
   },
-  "components/device/AzureCredentialsModal.tsx": {
+  "components/prodice/AzureCredentialsModal.tsx": {
     "category": "skip"
   },
-  "components/device/DeviceIntegration[PRODUCTION READY]s.ts": {
+  "components/prodice/prodiceIntegration[production READY]s.ts": {
     "category": "skip"
   },
-  "components/device/GCPCredentialsModal.tsx": {
+  "components/prodice/GCPCredentialsModal.tsx": {
     "category": "skip"
   },
   "components/enhanced-system-dashboard.tsx": {
@@ -702,13 +702,13 @@
   "components/q-city/EmploymentDashboard.tsx": {
     "category": "skip"
   },
-  "components/q-city/QCityDevicePanel.tsx": {
+  "components/q-city/QCityprodicePanel.tsx": {
     "category": "skip"
   },
   "components/q-city/QMOIBiometricManager.tsx": {
     "category": "skip"
   },
-  "components/q-city/QMOIOwnDeviceLogs.tsx": {
+  "components/q-city/QMOIOwnprodiceLogs.tsx": {
     "category": "skip"
   },
   "components/q-city/QVillage.tsx": {
@@ -738,7 +738,7 @@
   "components/\uf8ff\u00fc\u00f5\u00b0\u00f4\u220f\u00e8_automated_build,_install,_and_error_fix_strategies.tsx": {
     "category": "skip"
   },
-  "continue[PRODUCTION READY]s.txt": {
+  "continue[production READY]s.txt": {
     "category": "skip"
   },
   "cypress/e2e/qmoi_kernel_panel_concurrent_impersonation.cy.js": {
@@ -753,7 +753,7 @@
   "cypress/e2e/qmoi_kernel_panel_sso_oauth_custom.cy.js": {
     "category": "skip"
   },
-  "cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js": {
+  "cypress/e2e/qmoi_kernel_panel_sso_oauth_prodice_delegated.cy.js": {
     "category": "skip"
   },
   "cypress/e2e/qmoi_kernel_panel_sso_oauth_edge.cy.js": {
@@ -777,7 +777,7 @@
   "docs/APPSVALIDATION.md": {
     "category": "skip"
   },
-  "docs/AUTODEV_INSTRUCTIONS.md": {
+  "docs/AUTOprod_INSTRUCTIONS.md": {
     "category": "skip"
   },
   "docs/AUTOEVOLVE.md": {
@@ -819,19 +819,19 @@
   "docs/PLATFORM_AUTOMATION.md": {
     "category": "skip"
   },
-  "docs/PRODUCTION_CHECKLIST.md": {
+  "docs/production_CHECKLIST.md": {
     "category": "skip"
   },
   "docs/QMOI-ENHANCED-AUTOTESTS.md": {
     "category": "skip"
   },
-  "docs/QMOIGITHUBDEV.md": {
+  "docs/QMOIGITHUBprod.md": {
     "category": "skip"
   },
-  "docs/QMOIGITLABDEV.md": {
+  "docs/QMOIGITLABprod.md": {
     "category": "skip"
   },
-  "docs/QMOIVERCELDEV.md": {
+  "docs/QMOIVERCELprod.md": {
     "category": "skip"
   },
   "docs/QMOI_FRIENDSHIP_RUNBOOK.md": {
@@ -849,7 +849,7 @@
   "docs/REVENUE_SPEC.md.generated.md": {
     "category": "skip"
   },
-  "docs/[PRODUCTION READY]S_ENHANCEMENTS.md": {
+  "docs/[production READY]S_ENHANCEMENTS.md": {
     "category": "skip"
   },
   "docs/VALIDATIONSYSTEMS.md": {
@@ -876,7 +876,7 @@
   "docs/merged_remediation_plan.md": {
     "category": "skip"
   },
-  "docs/[PRODUCTION READY]s_report.json": {
+  "docs/[production READY]s_report.json": {
     "category": "manual"
   },
   "docs/qmoi_space_enhancements.md": {
@@ -912,7 +912,7 @@
   "hooks/useColabJob.ts": {
     "category": "skip"
   },
-  "hooks/useDeviceHealth.ts": {
+  "hooks/useprodiceHealth.ts": {
     "category": "skip"
   },
   "hooks/useExtensionManager.ts": {
@@ -951,7 +951,7 @@
   "lib/all_download_links_and_app_info_(size,_last_checked,_status)_are_autotested_and_auto_fixed_by_qserver..ts": {
     "category": "manual"
   },
-  "lib/apps,_devices_&_platforms.ts": {
+  "lib/apps,_prodices_&_platforms.ts": {
     "category": "manual"
   },
   "lib/avatar,_ai_core_&_server.ts": {
@@ -963,13 +963,13 @@
   "lib/cross_language_integration.ts": {
     "category": "manual"
   },
-  "lib/developer_&_parallelization.ts": {
+  "lib/prodeloper_&_parallelization.ts": {
     "category": "manual"
   },
   "lib/download_&_distribution.ts": {
     "category": "manual"
   },
-  "lib/error_logs_by_device_type.ts": {
+  "lib/error_logs_by_prodice_type.ts": {
     "category": "manual"
   },
   "lib/free,_hands_free_&_accessibility.ts": {
@@ -1026,7 +1026,7 @@
   "lib/qmoi_friendship_system_integration.md.ts": {
     "category": "manual"
   },
-  "lib/qmoialldeviceshandsfree.md.ts": {
+  "lib/qmoiallprodiceshandsfree.md.ts": {
     "category": "manual"
   },
   "lib/qmoiautoevolve.md.ts": {
@@ -1044,7 +1044,7 @@
   "lib/qmoiclone.md.ts": {
     "category": "manual"
   },
-  "lib/qmoidev.md.ts": {
+  "lib/qmoiprod.md.ts": {
     "category": "manual"
   },
   "lib/qmoifree.md.ts": {
@@ -1107,7 +1107,7 @@
   "lib/\uf8ff\u00fc\u00f6\u00e4_enhanced_features_&_capabilities.ts": {
     "category": "manual"
   },
-  "lib/\uf8ff\u00fc\u00f6\u00e4_universal_device_installation_&_optimization.ts": {
+  "lib/\uf8ff\u00fc\u00f6\u00e4_universal_prodice_installation_&_optimization.ts": {
     "category": "manual"
   },
   "ml/qmoi_advanced_error_predictor.py": {
@@ -1125,7 +1125,7 @@
   "mobile/components/AnalyticsScreen.js": {
     "category": "skip"
   },
-  "mobile/components/DeviceManagementScreen.js": {
+  "mobile/components/prodiceManagementScreen.js": {
     "category": "skip"
   },
   "models/latest/qmoi_enhanced_advanced_model.py": {
@@ -1149,13 +1149,13 @@
   "package.json.bak": {
     "category": "skip"
   },
-  "payments/provider_[PRODUCTION READY].py": {
+  "payments/provider_[production READY].py": {
     "category": "skip"
   },
   "payments/stripe_adapter.py": {
     "category": "skip"
   },
-  "[PRODUCTION READY]_scan_summary.md": {
+  "[production READY]_scan_summary.md": {
     "category": "skip"
   },
   "public/favicon.ico": {
@@ -1227,7 +1227,7 @@
   "qmoi-enhanced/MASTERGUIDE.md": {
     "category": "skip"
   },
-  "qmoi-enhanced/QCITYMAINDEVICE.md": {
+  "qmoi-enhanced/QCITYMAINprodICE.md": {
     "category": "skip"
   },
   "qmoi-enhanced/QCITYREADME.md": {
@@ -1278,7 +1278,7 @@
   "qmoi-enhanced/QMOI-REVENUE-README.md": {
     "category": "skip"
   },
-  "qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md": {
+  "qmoi-enhanced/QMOIALLprodICESHANDSFREE.md": {
     "category": "skip"
   },
   "qmoi-enhanced/QMOIALLPROJECTSADDSTRAILERSDOCS.md": {
@@ -1296,13 +1296,13 @@
   "qmoi-enhanced/QMOIAUTHBIOMETRICS.md": {
     "category": "skip"
   },
-  "qmoi-enhanced/QMOIAUTOAPPSDEV.md": {
+  "qmoi-enhanced/QMOIAUTOAPPSprod.md": {
     "category": "skip"
   },
   "qmoi-enhanced/QMOIAUTOBET.md": {
     "category": "skip"
   },
-  "qmoi-enhanced/QMOIAUTODEVDOCTESTS.MD": {
+  "qmoi-enhanced/QMOIAUTOprodDOCTESTS.MD": {
     "category": "skip"
   },
   "qmoi-enhanced/QMOIAUTOEVOLVE.md": {
@@ -1335,7 +1335,7 @@
   "qmoi-enhanced/QMOIDATABASE.md": {
     "category": "auto"
   },
-  "qmoi-enhanced/QMOIDEV.md": {
+  "qmoi-enhanced/QMOIprod.md": {
     "category": "skip"
   },
   "qmoi-enhanced/QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md": {
@@ -1350,7 +1350,7 @@
   "qmoi-enhanced/QMOIGAMINGCLOUDUSERS.md": {
     "category": "skip"
   },
-  "qmoi-enhanced/QMOIGITHUBDEV.md": {
+  "qmoi-enhanced/QMOIGITHUBprod.md": {
     "category": "skip"
   },
   "qmoi-enhanced/QMOIMASKS.md": {
@@ -1359,10 +1359,10 @@
   "qmoi-enhanced/QMOINGROK.md": {
     "category": "skip"
   },
-  "qmoi-enhanced/QMOIOWNDEVICE.md": {
+  "qmoi-enhanced/QMOIOWNprodICE.md": {
     "category": "skip"
   },
-  "qmoi-enhanced/QMOIPREDEVDOCACTIONS.md": {
+  "qmoi-enhanced/QMOIPREprodDOCACTIONS.md": {
     "category": "skip"
   },
   "qmoi-enhanced/QMOIQCITYAUTOMATIC.md": {
@@ -1374,7 +1374,7 @@
   "qmoi-enhanced/QMOISPACE.md": {
     "category": "skip"
   },
-  "qmoi-enhanced/QMOISPACEDEV.md": {
+  "qmoi-enhanced/QMOISPACEprod.md": {
     "category": "skip"
   },
   "qmoi-enhanced/QMOISYSTEMAUTO.md": {
@@ -1548,10 +1548,10 @@
   "qmoi-enhanced/app/api/qmoi/master-mode/route.ts": {
     "category": "skip"
   },
-  "qmoi-enhanced/app/api/qmoi/own-device-logs/export/route.ts": {
+  "qmoi-enhanced/app/api/qmoi/own-prodice-logs/export/route.ts": {
     "category": "skip"
   },
-  "qmoi-enhanced/app/api/qmoi/own-device-logs/route.ts": {
+  "qmoi-enhanced/app/api/qmoi/own-prodice-logs/route.ts": {
     "category": "skip"
   },
   "qmoi-enhanced/app/api/qmoi/research/route.ts": {
@@ -1626,7 +1626,7 @@
   "qmoi-enhanced/components/Chatbot.tsx": {
     "category": "skip"
   },
-  "qmoi-enhanced/components/DeviceSettingsPanel.tsx": {
+  "qmoi-enhanced/components/prodiceSettingsPanel.tsx": {
     "category": "skip"
   },
   "qmoi-enhanced/components/DownloadManager.tsx": {
@@ -1674,7 +1674,7 @@
   "qmoi-enhanced/components/MediaPreviewWindow.tsx": {
     "category": "skip"
   },
-  "qmoi-enhanced/components/PriceProductVerifier.tsx": {
+  "qmoi-enhanced/components/PriceproductVerifier.tsx": {
     "category": "skip"
   },
   "qmoi-enhanced/components/QAvatar.tsx": {
@@ -1740,16 +1740,16 @@
   "qmoi-enhanced/components/components/qmedia_player.md.tsx": {
     "category": "skip"
   },
-  "qmoi-enhanced/components/device/AWSCredentialsModal.tsx": {
+  "qmoi-enhanced/components/prodice/AWSCredentialsModal.tsx": {
     "category": "skip"
   },
-  "qmoi-enhanced/components/device/AzureCredentialsModal.tsx": {
+  "qmoi-enhanced/components/prodice/AzureCredentialsModal.tsx": {
     "category": "skip"
   },
-  "qmoi-enhanced/components/device/DeviceIntegration[PRODUCTION READY]s.ts": {
+  "qmoi-enhanced/components/prodice/prodiceIntegration[production READY]s.ts": {
     "category": "manual"
   },
-  "qmoi-enhanced/components/device/GCPCredentialsModal.tsx": {
+  "qmoi-enhanced/components/prodice/GCPCredentialsModal.tsx": {
     "category": "skip"
   },
   "qmoi-enhanced/components/enhanced-system-dashboard.tsx": {
@@ -1776,13 +1776,13 @@
   "qmoi-enhanced/components/q-city/EmploymentDashboard.tsx": {
     "category": "skip"
   },
-  "qmoi-enhanced/components/q-city/QCityDevicePanel.tsx": {
+  "qmoi-enhanced/components/q-city/QCityprodicePanel.tsx": {
     "category": "skip"
   },
   "qmoi-enhanced/components/q-city/QMOIBiometricManager.tsx": {
     "category": "skip"
   },
-  "qmoi-enhanced/components/q-city/QMOIOwnDeviceLogs.tsx": {
+  "qmoi-enhanced/components/q-city/QMOIOwnprodiceLogs.tsx": {
     "category": "skip"
   },
   "qmoi-enhanced/components/q-city/QVillage.tsx": {
@@ -1830,7 +1830,7 @@
   "qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_custom.cy.js": {
     "category": "skip"
   },
-  "qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js": {
+  "qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_prodice_delegated.cy.js": {
     "category": "skip"
   },
   "qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_edge.cy.js": {
@@ -1863,13 +1863,13 @@
   "qmoi-enhanced/docs/QMOI-ENHANCED-AUTOTESTS.md": {
     "category": "skip"
   },
-  "qmoi-enhanced/docs/QMOIGITHUBDEV.md": {
+  "qmoi-enhanced/docs/QMOIGITHUBprod.md": {
     "category": "skip"
   },
-  "qmoi-enhanced/docs/QMOIGITLABDEV.md": {
+  "qmoi-enhanced/docs/QMOIGITLABprod.md": {
     "category": "skip"
   },
-  "qmoi-enhanced/docs/QMOIVERCELDEV.md": {
+  "qmoi-enhanced/docs/QMOIVERCELprod.md": {
     "category": "skip"
   },
   "qmoi-enhanced/docs/README.md": {
@@ -1893,7 +1893,7 @@
   "qmoi-enhanced/hooks/useColabJob.ts": {
     "category": "skip"
   },
-  "qmoi-enhanced/hooks/useDeviceHealth.ts": {
+  "qmoi-enhanced/hooks/useprodiceHealth.ts": {
     "category": "skip"
   },
   "qmoi-enhanced/hooks/useExtensionManager.ts": {
@@ -1932,7 +1932,7 @@
   "qmoi-enhanced/mobile/components/AnalyticsScreen.js": {
     "category": "skip"
   },
-  "qmoi-enhanced/mobile/components/DeviceManagementScreen.js": {
+  "qmoi-enhanced/mobile/components/prodiceManagementScreen.js": {
     "category": "skip"
   },
   "qmoi-enhanced/models/latest/qmoi_enhanced_advanced_model.py": {
@@ -1995,7 +1995,7 @@
   "qmoi-enhanced/routes/api/qcity/ai/fix.ts": {
     "category": "skip"
   },
-  "qmoi-enhanced/routes/api/qmoi/autodev.ts": {
+  "qmoi-enhanced/routes/api/qmoi/autoprod.ts": {
     "category": "skip"
   },
   "qmoi-enhanced/routes/api/qmoi/feedback.ts": {
@@ -2064,10 +2064,10 @@
   "qmoi-enhanced/scripts/deployment/deploy.py": {
     "category": "skip"
   },
-  "qmoi-enhanced/scripts/device_ownership_detector.py": {
+  "qmoi-enhanced/scripts/prodice_ownership_detector.py": {
     "category": "skip"
   },
-  "qmoi-enhanced/scripts/device_unlock_system.py": {
+  "qmoi-enhanced/scripts/prodice_unlock_system.py": {
     "category": "skip"
   },
   "qmoi-enhanced/scripts/doc_verifier.py": {
@@ -2172,7 +2172,7 @@
   "qmoi-enhanced/scripts/qcity-automation.js": {
     "category": "skip"
   },
-  "qmoi-enhanced/scripts/qcity-device-manager.js": {
+  "qmoi-enhanced/scripts/qcity-prodice-manager.js": {
     "category": "manual"
   },
   "qmoi-enhanced/scripts/qcity_advanced_installer.py": {
@@ -2211,7 +2211,7 @@
   "qmoi-enhanced/scripts/qmoi-dashboard.py": {
     "category": "skip"
   },
-  "qmoi-enhanced/scripts/qmoi-dev-actions.py": {
+  "qmoi-enhanced/scripts/qmoi-prod-actions.py": {
     "category": "skip"
   },
   "qmoi-enhanced/scripts/qmoi-enhanced-auto-projects.js": {
@@ -2373,7 +2373,7 @@
   "qmoi-enhanced/scripts/qmoi_data_optimization_system.py": {
     "category": "skip"
   },
-  "qmoi-enhanced/scripts/qmoi_device_agent.py": {
+  "qmoi-enhanced/scripts/qmoi_prodice_agent.py": {
     "category": "skip"
   },
   "qmoi-enhanced/scripts/qmoi_earning_daemon.py": {
@@ -2472,7 +2472,7 @@
   "qmoi-enhanced/scripts/services/qcity_service.ts": {
     "category": "manual"
   },
-  "qmoi-enhanced/scripts/services/qmoi_autodev_daemon.ts": {
+  "qmoi-enhanced/scripts/services/qmoi_autoprod_daemon.ts": {
     "category": "skip"
   },
   "qmoi-enhanced/scripts/services/role_management.ts": {
@@ -2535,10 +2535,10 @@
   "qmoi-enhanced/src/components/q-city/CommandPanel.tsx": {
     "category": "skip"
   },
-  "qmoi-enhanced/src/components/q-city/DevicePanel.tsx": {
+  "qmoi-enhanced/src/components/q-city/prodicePanel.tsx": {
     "category": "skip"
   },
-  "qmoi-enhanced/src/components/q-city/DevicesHub.tsx": {
+  "qmoi-enhanced/src/components/q-city/prodicesHub.tsx": {
     "category": "skip"
   },
   "qmoi-enhanced/src/components/q-city/DocumentManagerPanel.tsx": {
@@ -2637,7 +2637,7 @@
   "qmoi-enhanced/src/plugins/AIReviewPlugin.ts": {
     "category": "skip"
   },
-  "qmoi-enhanced/src/plugins/DeviceHealthReviewerPlugin.ts": {
+  "qmoi-enhanced/src/plugins/prodiceHealthReviewerPlugin.ts": {
     "category": "skip"
   },
   "qmoi-enhanced/src/plugins/OptimizationSuggestionPlugin.ts": {
@@ -2661,7 +2661,7 @@
   "qmoi-enhanced/src/services/BrowserService.ts": {
     "category": "skip"
   },
-  "qmoi-enhanced/src/services/DeviceTrackingService.ts": {
+  "qmoi-enhanced/src/services/prodiceTrackingService.ts": {
     "category": "manual"
   },
   "qmoi-enhanced/src/services/EnhancedErrorFixingService.ts": {
@@ -2784,19 +2784,19 @@
   "reports/lint-report.json": {
     "category": "skip"
   },
-  "reports/[PRODUCTION READY]s.json": {
+  "reports/[production READY]s.json": {
     "category": "manual"
   },
   "reports/suggestions.json": {
     "category": "manual"
   },
-  "resume[PRODUCTION READY]s.txt": {
+  "resume[production READY]s.txt": {
     "category": "skip"
   },
   "routes/api/qcity/ai/fix.ts": {
     "category": "skip"
   },
-  "routes/api/qmoi/autodev.ts": {
+  "routes/api/qmoi/autoprod.ts": {
     "category": "skip"
   },
   "routes/api/qmoi/feedback.ts": {
@@ -2853,7 +2853,7 @@
   "scripts/autotest/advanced_autotest_system.py": {
     "category": "skip"
   },
-  "scripts/check_[PRODUCTION READY]s.py": {
+  "scripts/check_[production READY]s.py": {
     "category": "manual"
   },
   "scripts/colab_manager.py": {
@@ -2883,10 +2883,10 @@
   "scripts/deployment/deploy.py": {
     "category": "skip"
   },
-  "scripts/device_ownership_detector.py": {
+  "scripts/prodice_ownership_detector.py": {
     "category": "skip"
   },
-  "scripts/device_unlock_system.py": {
+  "scripts/prodice_unlock_system.py": {
     "category": "skip"
   },
   "scripts/doc_verifier.py": {
@@ -2922,7 +2922,7 @@
   "scripts/error_tracker.py": {
     "category": "skip"
   },
-  "scripts/expand_platform_[PRODUCTION READY]s.py": {
+  "scripts/expand_platform_[production READY]s.py": {
     "category": "skip"
   },
   "scripts/fast_git_commit.py": {
@@ -3003,7 +3003,7 @@
   "scripts/optimizer.py": {
     "category": "skip"
   },
-  "scripts/[PRODUCTION READY]_scanner.py": {
+  "scripts/[production READY]_scanner.py": {
     "category": "manual"
   },
   "scripts/platform_manager.py": {
@@ -3024,7 +3024,7 @@
   "scripts/qcity-automation.js": {
     "category": "skip"
   },
-  "scripts/qcity-device-manager.js": {
+  "scripts/qcity-prodice-manager.js": {
     "category": "manual"
   },
   "scripts/qcity_advanced_installer.py": {
@@ -3057,7 +3057,7 @@
   "scripts/qmoi-dashboard.py": {
     "category": "skip"
   },
-  "scripts/qmoi-dev-actions.py": {
+  "scripts/qmoi-prod-actions.py": {
     "category": "skip"
   },
   "scripts/qmoi-enhanced-auto-projects.js": {
@@ -3219,7 +3219,7 @@
   "scripts/qmoi_data_optimization_system.py": {
     "category": "skip"
   },
-  "scripts/qmoi_device_agent.py": {
+  "scripts/qmoi_prodice_agent.py": {
     "category": "skip"
   },
   "scripts/qmoi_doc_verifier.js": {
@@ -3291,7 +3291,7 @@
   "scripts/qmoi_self_test_runner.js": {
     "category": "skip"
   },
-  "scripts/qmoi_[PRODUCTION READY]s.py": {
+  "scripts/qmoi_[production READY]s.py": {
     "category": "skip"
   },
   "scripts/qmoi_wallet_monitor.py": {
@@ -3306,13 +3306,13 @@
   "scripts/release_automation.py": {
     "category": "skip"
   },
-  "scripts/replace_[PRODUCTION READY]s.py": {
+  "scripts/replace_[production READY]s.py": {
     "category": "manual"
   },
   "scripts/revenue_enhancer.py": {
     "category": "skip"
   },
-  "scripts/run_[PRODUCTION READY]_scans.py": {
+  "scripts/run_[production READY]_scans.py": {
     "category": "skip"
   },
   "scripts/run_validations.py": {
@@ -3324,7 +3324,7 @@
   "scripts/scan_and_index.py": {
     "category": "manual"
   },
-  "scripts/scan_replace_[PRODUCTION READY]s.py": {
+  "scripts/scan_replace_[production READY]s.py": {
     "category": "manual"
   },
   "scripts/services/analytics_optimization.ts": {
@@ -3357,7 +3357,7 @@
   "scripts/services/qcity_service.ts": {
     "category": "manual"
   },
-  "scripts/services/qmoi_autodev_daemon.ts": {
+  "scripts/services/qmoi_autoprod_daemon.ts": {
     "category": "skip"
   },
   "scripts/services/role_management.ts": {
@@ -3504,10 +3504,10 @@
   "src/components/q-city/CommandPanel.tsx": {
     "category": "skip"
   },
-  "src/components/q-city/DevicePanel.tsx": {
+  "src/components/q-city/prodicePanel.tsx": {
     "category": "skip"
   },
-  "src/components/q-city/DevicesHub.tsx": {
+  "src/components/q-city/prodicesHub.tsx": {
     "category": "skip"
   },
   "src/components/q-city/DocumentManagerPanel.tsx": {
@@ -3606,7 +3606,7 @@
   "src/plugins/AIReviewPlugin.ts": {
     "category": "skip"
   },
-  "src/plugins/DeviceHealthReviewerPlugin.ts": {
+  "src/plugins/prodiceHealthReviewerPlugin.ts": {
     "category": "skip"
   },
   "src/plugins/OptimizationSuggestionPlugin.ts": {
@@ -3630,7 +3630,7 @@
   "src/services/BrowserService.ts": {
     "category": "skip"
   },
-  "src/services/DeviceTrackingService.ts": {
+  "src/services/prodiceTrackingService.ts": {
     "category": "manual"
   },
   "src/services/EnhancedErrorFixingService.ts": {
@@ -3711,7 +3711,7 @@
   "teststoadd.txt": {
     "category": "skip"
   },
-  "tools/auto_fix_[PRODUCTION READY]s.py": {
+  "tools/auto_fix_[production READY]s.py": {
     "category": "auto",
     "patch": "tools/patches/74ddf5a1585e1c97907f5e3b70c046a8f629ad2e.patch"
   },
@@ -3724,7 +3724,7 @@
   "tools/extract_comments.py": {
     "category": "skip"
   },
-  "tools/find_[PRODUCTION READY]s.py": {
+  "tools/find_[production READY]s.py": {
     "category": "manual"
   },
   "tools/lion.env.data": {

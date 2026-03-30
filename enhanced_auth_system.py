@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 QMOI Enhanced Authentication System
-Production-ready login/signup system with email integration, biometrics, and recovery options
+production-ready login/signup system with email integration, biometrics, and recovery options
 
 Features:
 - Email-optional signup with custom email creation
@@ -521,7 +521,7 @@ QMOI Team
                 "expires": datetime.now() + timedelta(seconds=self.verification_code_expiry)
             }
 
-            # Production:, integrate with SMS service
+            # production:, integrate with SMS service
             logger.info(f"Phone verification code {code} for {user.phone_number}")
 
         except Exception as e:

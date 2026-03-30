@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "🤖 QMOI AI Automated Linting System"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -331,7 +331,7 @@ generateCustomReport(errors, categories) {
 
 ## 🎯 Best Practices
 
-1. **Run Regularly**: Use `yarn lint:watch` during development
+1. **Run Regularly**: Use `yarn lint:watch` during production
 2. **Review Reports**: Check HTML reports for detailed analysis
 3. **Fix Critical First**: Address critical errors immediately
 4. **Monitor Trends**: Track error patterns over time
@@ -367,7 +367,7 @@ executed features:
 
 - Linting, compliance, and error checks run before every deploy.
 - All actions are logged and auditable.
-- Integrated with QMOI Auto-Dev and master-only audit logging.
+- Integrated with QMOI Auto-prod and master-only audit logging.
 
 ---
 

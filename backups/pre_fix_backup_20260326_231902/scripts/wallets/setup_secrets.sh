@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env bash
 # Dry-run helper to produce commands for setting secrets in GitHub or Vault.
 # This script does NOT send secrets — it prints the commands for manual review.
@@ -61,7 +61,7 @@ while IFS='=' read -r key val; do
   cmd=(gh secret set "$key" --body-file=-)
   echo "# Command: ${cmd[*]}  (will read value from stdin)"
   if $APPLY; then
-    echo -n "$val" | gh secret set "$key" --repository "${GITHUB_REPOSITORY:-}" --body - 2>/dev/null || echo "Failed to set $key"
+    echo -n "$val" | gh secret set "$key" --repository "${GITHUB_REPOSITORY:-}" --body - 2>/prod/null || echo "Failed to set $key"
   fi
 done < "$ENVFILE"
 

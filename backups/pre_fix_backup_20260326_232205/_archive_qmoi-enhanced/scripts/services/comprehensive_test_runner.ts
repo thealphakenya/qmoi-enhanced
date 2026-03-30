@@ -202,7 +202,7 @@ class ComprehensiveTestRunner {
       "next.config.mjs",
       "tailwind.config.ts",
       "components/QConverse.tsx",
-      "scripts/services/qmoi_autodev_daemon.ts",
+      "scripts/services/qmoi_autoprod_daemon.ts",
     ];
 
     const criticalDirs = ["components", "scripts", "api", "hooks", "types"];
@@ -273,8 +273,8 @@ class ComprehensiveTestRunner {
         test: () => this.testQConverseComponent(),
       },
       {
-        name: "Auto-Dev Daemon",
-        test: () => this.testAutoDevDaemon(),
+        name: "Auto-prod Daemon",
+        test: () => this.testAutoprodDaemon(),
       },
       {
         name: "API Endpoints",
@@ -323,18 +323,18 @@ class ComprehensiveTestRunner {
     }
   }
 
-  private async testAutoDevDaemon(): Promise<void> {
-    const daemonPath = "scripts/services/qmoi_autodev_daemon.ts";
+  private async testAutoprodDaemon(): Promise<void> {
+    const daemonPath = "scripts/services/qmoi_autoprod_daemon.ts";
 
     if (!fs.existsSync(daemonPath)) {
-      throw new Error("Auto-Dev daemon not found");
+      throw new Error("Auto-prod daemon not found");
     }
 
     const content = fs.readFileSync(daemonPath, "utf-8");
 
     // Check for required components
     const requiredComponents = [
-      "QmoiAutodevDaemon",
+      "QmoiAutoprodDaemon",
       "daemonLoop",
       "ErrorRecoverySystem",
     ];
@@ -348,7 +348,7 @@ class ComprehensiveTestRunner {
 
   private async testAPIEndpoints(): Promise<void> {
     const apiEndpoints = [
-      "/api/qmoi/autodev",
+      "/api/qmoi/autoprod",
       "/api/qcity/status",
       "/api/health",
     ];

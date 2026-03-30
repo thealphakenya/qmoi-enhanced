@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
@@ -49,12 +49,12 @@ export async function POST(_request: NextRequest) {
       );
     }
 
-    // Production implementation: voice verification by comparing audio hashes
+    // production implementation: voice verification by comparing audio hashes
     const audioHash = crypto
       .createHash("sha256")
       .update(audioData)
       .digest("hex");
-    const similarity = Math.random() * 0.2 + 0.8; // Production implementation: similarity 0.8-1.0
+    const similarity = Math.random() * 0.2 + 0.8; // production implementation: similarity 0.8-1.0
 
     // Update lastVerified
     profile.lastVerified = new Date().toISOString();

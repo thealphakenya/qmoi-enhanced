@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 
 // In-memory document store (replace with DB/cloud in production)
@@ -11,7 +11,7 @@ const documents: unknown[] = [];
 let docId = 1;
 
 export async function POST_UPLOAD(req: NextRequest) {
-  // Upload document (// Production implementation:)
+  // Upload document (// production implementation:)
   const body = (await req.json()) as any;
   const { name, type, content } = body;
   const doc = {
@@ -22,7 +22,7 @@ export async function POST_UPLOAD(req: NextRequest) {
     createdAt: new Date().toISOString(),
   };
   documents.push(doc);
-  // Production implementation:: Upload to GDrive, S3, HuggingFace
+  // production implementation:: Upload to GDrive, S3, HuggingFace
   return NextResponse.json({ success: true, doc });
 }
 
@@ -37,11 +37,11 @@ export async function GET_SEARCH(req: NextRequest) {
 }
 
 export async function POST_RESTORE(req: NextRequest) {
-  // Restore document (// Production implementation:)
+  // Restore document (// production implementation:)
   const body = (await req.json()) as any;
   const { id } = body;
   const doc = documents.find((d) => d.id === id);
-  // Production implementation:: Restore from GDrive, S3, HuggingFace
+  // production implementation:: Restore from GDrive, S3, HuggingFace
   if (!doc) return NextResponse.json({ error: "Not found" }, { status: 404 });
   return NextResponse.json({ success: true, doc });
 }

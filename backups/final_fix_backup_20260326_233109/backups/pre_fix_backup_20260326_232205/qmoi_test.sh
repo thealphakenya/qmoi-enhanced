@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/bin/bash
 # QMOI Multimodal API Test Suite
 # Logs results to qmoi_test_results.log
@@ -109,21 +109,21 @@ run_test "Memory: Query" "$test_memory_query"
 test_memory_save="curl -s -X POST $QMOI_API_BASE/memory -H 'Content-Type: application/json' -H 'Authorization: Bearer $QMOI_API_KEY' -d '{\"type\": \"correction\", \"data\": {\"original\": \"quamtum\", \"corrected\": \"quantum\"}}'"
 run_test "Memory: Save/Correction" "$test_memory_save"
 
-# Revenue, Device, and Automation
+# Revenue, prodice, and Automation
 test_revenue_status="curl -s $QMOI_API_BASE/qmoi/revenue -H 'Authorization: Bearer $QMOI_API_KEY'"
 run_test "Revenue: Status" "$test_revenue_status"
 
 test_revenue_control="curl -s -X POST $QMOI_API_BASE/qmoi/revenue -H 'Content-Type: application/json' -H 'Authorization: Bearer $QMOI_API_KEY' -d '{\"action\": \"start\"}'"
 run_test "Revenue: Control" "$test_revenue_control"
 
-test_device_health="curl -s $QMOI_API_BASE/device/health -H 'Authorization: Bearer $QMOI_API_KEY'"
-run_test "Device: Health" "$test_device_health"
+test_prodice_health="curl -s $QMOI_API_BASE/prodice/health -H 'Authorization: Bearer $QMOI_API_KEY'"
+run_test "prodice: Health" "$test_prodice_health"
 
-test_device_resources="curl -s $QMOI_API_BASE/device/resources -H 'Authorization: Bearer $QMOI_API_KEY'"
-run_test "Device: Resources" "$test_device_resources"
+test_prodice_resources="curl -s $QMOI_API_BASE/prodice/resources -H 'Authorization: Bearer $QMOI_API_KEY'"
+run_test "prodice: Resources" "$test_prodice_resources"
 
-test_device_install_envs="curl -s -X POST $QMOI_API_BASE/device/install-all-envs -H 'Authorization: Bearer $QMOI_API_KEY'"
-run_test "Device: Install All Envs" "$test_device_install_envs"
+test_prodice_install_envs="curl -s -X POST $QMOI_API_BASE/prodice/install-all-envs -H 'Authorization: Bearer $QMOI_API_KEY'"
+run_test "prodice: Install All Envs" "$test_prodice_install_envs"
 
 # Error, Health, and Automation
 test_errors="curl -s $QMOI_API_BASE/qcity/errors -H 'Authorization: Bearer $QMOI_API_KEY'"

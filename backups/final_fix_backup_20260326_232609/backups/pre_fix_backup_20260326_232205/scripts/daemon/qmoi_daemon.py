@@ -23,7 +23,7 @@ Usage:
 
 Safety rules:
 - By default all called scripts run in dry-run mode and never perform real money transfers.
-- Real mode requires PRODUCTION_CONFIRMED=true and explicit flags to each script; this daemon will never pass those flags automatically.
+- Real mode requires production_CONFIRMED=true and explicit flags to each script; this daemon will never pass those flags automatically.
 """
 
 import argparse

@@ -33,20 +33,20 @@ class FileUploadManager {
     const fileInput = document.getElementById("file-input");
 
     if (uploadBtn) {
-      uploadBtn.addEventListener("click", () => this.openModal());
+      uploadBtn.adprodentListener("click", () => this.openModal());
     }
     if (closeBtn) {
-      closeBtn.addEventListener("click", () => this.closeModal());
+      closeBtn.adprodentListener("click", () => this.closeModal());
     }
     if (uploadArea) {
-      uploadArea.addEventListener("click", () => fileInput?.click());
+      uploadArea.adprodentListener("click", () => fileInput?.click());
       // Drag and drop
-      uploadArea.addEventListener("dragover", (e) => this.handleDragOver(e));
-      uploadArea.addEventListener("dragleave", (e) => this.handleDragLeave(e));
-      uploadArea.addEventListener("drop", (e) => this.handleDrop(e));
+      uploadArea.adprodentListener("dragover", (e) => this.handleDragOver(e));
+      uploadArea.adprodentListener("dragleave", (e) => this.handleDragLeave(e));
+      uploadArea.adprodentListener("drop", (e) => this.handleDrop(e));
     }
     if (fileInput) {
-      fileInput.addEventListener("change", (e) => this.handleFileSelect(e));
+      fileInput.adprodentListener("change", (e) => this.handleFileSelect(e));
     }
   }
 
@@ -134,14 +134,14 @@ class FileUploadManager {
 
       // Upload file with progress tracking
       const xhr = new XMLHttpRequest();
-      xhr.upload.addEventListener("progress", (e) => {
+      xhr.upload.adprodentListener("progress", (e) => {
         if (e.lengthComputable) {
           const progress = (e.loaded / e.total) * 100;
           this.updateUploadProgress(fileId, progress);
         }
       });
 
-      xhr.addEventListener("load", () => {
+      xhr.adprodentListener("load", () => {
         if (xhr.status === 200) {
           this.completeUpload(fileId, fileKey);
         } else {
@@ -149,7 +149,7 @@ class FileUploadManager {
         }
       });
 
-      xhr.addEventListener("error", () => {
+      xhr.adprodentListener("error", () => {
         this.failUpload(fileId, "Network error during upload");
       });
 
@@ -198,7 +198,7 @@ class FileUploadManager {
 
 // Initialize on DOM ready
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => {
+  document.adprodentListener("DOMContentLoaded", () => {
     window.fileUploadManager = new FileUploadManager();
   });
 } else {

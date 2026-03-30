@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # Next Steps Roadmap — QMOI Enhanced Release Automation
 
 **Last Updated**: November 14, 2025  
@@ -22,7 +22,7 @@
 1. **Release Automation Workflows** (`.github/workflows/`)
    - ✅ `sync-releases-from-manifest.yml` — Daily auto-sync to final releases + on-demand full sync
    - ✅ `release-compliance-check.yml` — Weekly compliance monitoring with auto-issue creation
-   - ✅ `build-included-platforms.yml` — [PRODUCTION READY] for future platform builds
+   - ✅ `build-included-platforms.yml` — [production READY] for future platform builds
 
 2. **Release Scripts** (`scripts/`)
    - ✅ `sync_to_draft_release.py` — Safe final-release production with --publish flag
@@ -34,7 +34,7 @@
 
 3. **Release Assets**
    - ✅ `release_assets_manifest.json` — Canonical source of truth (16 assets, SHA256 checksums)
-   - ✅ 10 binaries synced to `downloads/` (real files, not [PRODUCTION READY]s)
+   - ✅ 10 binaries synced to `downloads/` (real files, not [production READY]s)
    - ✅ 6 PWA zips packaged and ready for release
    - ✅ GitHub release v1.2.3 updated with all 17 assets (corrupt exe replaced)
 
@@ -135,12 +135,12 @@ sha256sum /tmp/qmoi_ai.AppImage
 - If non-compliant: auto-creates issue with title "⚠️ Release Compliance Alert"
 - Report saved as artifact
 
-#### 2.2 [PRODUCTION READY] Non-Compliance (Testing)
+#### 2.2 [production READY] Non-Compliance (Testing)
 
 To test failure path without breaking real releases:
 
 ```bash
-# Temporarily rename/remove an asset to [PRODUCTION READY] non-compliance
+# Temporarily rename/remove an asset to [production READY] non-compliance
 mv Qmoi_downloaded_apps/qcity_package.zip Qmoi_downloaded_apps/qcity_package.zip.bak
 
 # Run compliance check (will detect included asset)
@@ -161,7 +161,7 @@ mv Qmoi_downloaded_apps/qcity_package.zip.bak Qmoi_downloaded_apps/qcity_package
 
 #### 3.1 Update GITHUB_RELEASES_RECENT.md
 
-Replace [PRODUCTION READY] with real release data:
+Replace [production READY] with real release data:
 
 ```bash
 # Fetch real recent releases and update the file
@@ -182,7 +182,7 @@ New file: `RELEASES_USER_GUIDE.md`
 
 #### 3.3 Audit & Update Platform-Specific Docs
 
-- [ ] `DOWNLOADQMOIAIAPPALLDEVICES.md` — Update with real release links
+- [ ] `DOWNLOADQMOIAIAPPALLprodICES.md` — Update with real release links
 - [ ] `DEPLOYMENT_STATUS_V1_2_3.md` — Verify all platforms listed
 - [ ] `QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md` — Cross-check against manifest
 
@@ -218,7 +218,7 @@ Go to: [GitHub Security → Dependabot](https://github.com/thealphakenya/qmoi-en
 
 ### Phase 5: included Platforms Build Pipeline
 
-**Objective**: Implement builds for currently-[PRODUCTION READY]bed platforms.
+**Objective**: Implement builds for currently-[production READY]bed platforms.
 
 #### 5.1 Raspberry Pi Image Build
 
@@ -227,7 +227,7 @@ Go to: [GitHub Security → Dependabot](https://github.com/thealphakenya/qmoi-en
 - [ ] Add to `release_assets_manifest.json`
 - [ ] Update workflow: `.github/workflows/build-included-platforms.yml`
 
-**Reference**: `build-included-platforms.yml` (currently a [PRODUCTION READY])
+**Reference**: `build-included-platforms.yml` (currently a [production READY])
 
 #### 5.2 Wear OS APK Build
 
@@ -324,27 +324,27 @@ Create simple HTML/JS page that:
 | --------------------------------- | ------- | ---------------------------- | ------------------------ |
 | `sync-releases-from-manifest.yml` | ✅ Live | Daily (00:00 UTC) + tag push | Next tag push            |
 | `release-compliance-check.yml`    | ✅ Live | Weekly (Sun 00:00 UTC)       | Next Sunday              |
-| `build-included-platforms.yml`     | ⏳ [PRODUCTION READY] | Manual dispatch              | Ready for implementation |
+| `build-included-platforms.yml`     | ⏳ [production READY] | Manual dispatch              | Ready for implementation |
 
 ---
 
 ## 🚀 How to Execute Next Steps
 
-### For Developers:
+### For prodelopers:
 
 1. **Run Phase 1** immediately (test workflows with test-v1.2.5 tag)
 2. **Execute Phase 2** next (validate compliance checks)
 3. **Work through Phase 3-4** (docs + security fixes)
 4. **Plan Phase 5+** as capacity allows
 
-### For DevOps/Release Managers:
+### For prodOps/Release Managers:
 
 1. Monitor Phase 1 execution closely
 2. Create runbooks for Phase 2 compliance responses
 3. Set up alerts for failed workflows (via GitHub Actions)
 4. Prepare Phase 5 infrastructure (cross-compilation, Docker)
 
-### For Product/UX:
+### For product/UX:
 
 1. Review Phase 7 user-facing improvements
 2. Design Phase 7.2 release browser UI

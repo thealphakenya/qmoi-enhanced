@@ -17,7 +17,7 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
 
     // Configure PayPal SDK
     paypal.configure({
-      mode: config.sandboxMode ? "sandbox" : "live",
+      mode: config.productionMode ? "production" : "live",
       client_id:
         config.credentials?.clientId || process.env.PAYPAL_CLIENT_ID || "",
       client_secret:
@@ -28,7 +28,7 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
 
     .log(
       "[PayPalAdapter] initialized in %s mode",
-      config.sandboxMode ? "sandbox" : "live",
+      config.productionMode ? "production" : "live",
     );
   }
   async validateCredentials() {

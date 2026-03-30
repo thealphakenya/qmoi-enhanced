@@ -7,8 +7,8 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-# Production Build Setup Guide - QMOI v1.2.4
+# [production READY] this file has no remaining production markers
+# production Build Setup Guide - QMOI v1.2.4
 
 ## Current Status ✅
 
@@ -63,7 +63,7 @@ After adding secrets, verify in GitHub UI:
 
 ---
 
-## Step 3: Dispatch the Production Build 🚀
+## Step 3: Dispatch the production Build 🚀
 
 Run the workflow with the secrets:
 
@@ -109,7 +109,7 @@ After successful build:
 ### Android APK
 
 - **Location**: `/qmoi-enhanced/mobile/android/app/build/outputs/apk/release/app-release.apk`
-- **Signature**: Production signed with debug keystore credentials
+- **Signature**: production signed with debug keystore credentials
 - **Status**: Will be uploaded to GitHub Release
 
 ### PWAs (7 apps)
@@ -127,7 +127,7 @@ After successful build:
 
 ---
 
-## Production Files Created 🔨
+## production Files Created 🔨
 
 | File                                       | Purpose                                                        |
 | ------------------------------------------ | -------------------------------------------------------------- |
@@ -140,7 +140,7 @@ After successful build:
 
 ## Signing Flow 🔐
 
-### Local Development (Optional)
+### Local production (Optional)
 
 ```bash
 # Build locally with debug keystore
@@ -196,7 +196,7 @@ bash scripts/build-android-production.sh
 2. ✅ Dispatch the workflow or push tag v1.2.4
 3. ✅ Monitor build in GitHub Actions
 4. ✅ Verify signed APK in GitHub Release
-5. ⏳ Optional: Download and test APK on device
+5. ⏳ Optional: Download and test APK on prodice
 6. ⏳ Optional: Set up iOS signing (same process)
 
 ---

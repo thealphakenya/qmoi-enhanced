@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Enhanced - Vercel Deployment Links
 
 **Last Updated:** January 18, 2026 at 20:21 UTC  
-**Status:** ✅ LIVE IN PRODUCTION - BUILD SUCCESSFUL  
+**Status:** ✅ LIVE IN production - BUILD SUCCESSFUL  
 **Auto-Update:** Enabled ✓  
 **Auto-Configuration:** Enabled ✓ (QMOI auto-sets environment variables)
 
@@ -19,7 +19,7 @@
 
 ---
 
-## 🟢 PRODUCTION URLS (LIVE)
+## 🟢 production URLS (LIVE)
 
 **Primary Application:**
 
@@ -45,11 +45,11 @@ https://vercel.com/simtwos-projects/qmoi-enhanced/H6DPEs2Rgc6h7BhgT3GMBtsgFLqB
 
 ## ✅ DEPLOYMENT COMPLETE
 
-Your application is now **LIVE IN PRODUCTION** with full QMOI auto-configuration enabled and all API endpoints operational.
+Your application is now **LIVE IN production** with full QMOI auto-configuration enabled and all API endpoints operational.
 
 ---
 
-### Production Deployment
+### production Deployment
 
 - **Main Application**: https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app
   - Status: ✅ [401] LIVE (Auth-Protected)
@@ -79,7 +79,7 @@ Your application is now **LIVE IN PRODUCTION** with full QMOI auto-configuration
 
 ## 🎯 Quick Links
 
-- **Access Application**: [Open Production](https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app)
+- **Access Application**: [Open production](https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app)
 - **View Dashboard**: [Vercel Dashboard](https://vercel.com/simtwos-projects/qmoi-enhanced)
 - **Check Health**: [Health Endpoint](https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/health)
 - **Build Logs**: [Deployment Details](https://vercel.com/simtwos-projects/qmoi-enhanced/H6DPEs2Rgc6h7BhgT3GMBtsgFLqB)
@@ -121,7 +121,7 @@ Your application is now **LIVE IN PRODUCTION** with full QMOI auto-configuration
 
 ---
 
-## 🎯 Testing Endpoints (Production Live)
+## 🎯 Testing Endpoints (production Live)
 
 ### Health & Status Endpoints
 
@@ -173,7 +173,7 @@ GET  https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/admin/metri
 
 | Link                                                                   | Type      | Status      | Last Verified | Notes                      |
 | ---------------------------------------------------------------------- | --------- | ----------- | ------------- | -------------------------- |
-| https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app            | App       | ✅ 401 LIVE | Jan 18, 2026  | Production deployment live |
+| https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app            | App       | ✅ 401 LIVE | Jan 18, 2026  | production deployment live |
 | https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api        | API       | ✅ 401 LIVE | Jan 18, 2026  | API endpoints operational  |
 | https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/health | Health    | ✅ 401 LIVE | Jan 18, 2026  | Health check active        |
 | https://vercel.com/simtwos-projects/qmoi-enhanced                      | Dashboard | ✅ 200 OK   | Jan 18, 2026  | Vercel dashboard           |
@@ -286,7 +286,7 @@ curl -v https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/health
 - **Owner**: thealphakenya
 - **Repository**: qmoi-enhanced
 - **Branch**: autosync-backup-20250926-232440
-- **Production URL**: https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app
+- **production URL**: https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app
 - **Deployment Status**: ✅ LIVE
 
 ---
@@ -303,7 +303,7 @@ curl -v https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/health
 | 5:00 | Application live and verified | ✅     |
 
 **Deployment Status**: ✅ COMPLETE  
-**Application Status**: ✅ LIVE IN PRODUCTION  
+**Application Status**: ✅ LIVE IN production  
 **Last Updated**: January 18, 2026 at 20:21 UTC
 
 ---
@@ -333,7 +333,7 @@ curl -v https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/health
 - [Vercel Documentation](https://vercel.com/docs)
 - [Next.js Documentation](https://nextjs.org/docs)
 - [GitHub Actions](https://github.com/features/actions)
-- [Deployment Guide](./BUILD_INSTRUCTIONS_PRODUCTION.md)
+- [Deployment Guide](./BUILD_INSTRUCTIONS_production.md)
 
 ---
 

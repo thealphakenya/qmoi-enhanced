@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import fs from "fs";
 import path from "path";
 import adapterRegistry from "./adapters/index";
@@ -111,7 +111,7 @@ export function importFromEnv() {
   return accounts.length;
 }
 
-// Safe // Production implementation:: record that an account *would* be created. Does NOT call external APIs.
+// Safe // production implementation:: record that an account *would* be created. Does NOT call external APIs.
 export function prepareAccountCreation(
   platform: string,
   desiredUsername?: string,

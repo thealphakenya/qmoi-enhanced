@@ -135,7 +135,7 @@ class LinkDomainValidator:
         url = f"https://{domain}{endpoint}"
         try:
             result = subprocess.run(
-                ['curl', '-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '5', url],
+                ['curl', '-s', '-o', '/prod/null', '-w', '%{http_code}', '--max-time', '5', url],
                 capture_output=True,
                 text=True,
                 timeout=10
@@ -203,7 +203,7 @@ class LinkDomainValidator:
         """Check if domain is accessible"""
         try:
             result = subprocess.run(
-                ['curl', '-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '5', f'https://{domain}/'],
+                ['curl', '-s', '-o', '/prod/null', '-w', '%{http_code}', '--max-time', '5', f'https://{domain}/'],
                 capture_output=True,
                 text=True,
                 timeout=10

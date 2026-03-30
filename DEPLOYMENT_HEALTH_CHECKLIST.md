@@ -7,13 +7,13 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Enhanced - Deployment Health Checklist
 
 **Date Created:** January 17, 2026  
 **Application:** QMOI Enhanced  
 **Repository:** github.com/thealphakenya/qmoi-enhanced  
-**Status:** 🟢 Production Ready
+**Status:** 🟢 production Ready
 
 ---
 
@@ -43,7 +43,7 @@
 - [x] vercel.json - Optimized and verified
 - [x] .env.production - Complete with auto-setup flags
 - [ ] API endpoint `/api/env` enabled for runtime env modification (requires QMOI_CONTROL_TOKEN)
-- [x] next.config.js - Production optimized
+- [x] next.config.js - production optimized
 - [x] tsconfig.json - Strict mode enabled
 - [x] package.json - 40+ npm scripts configured
 - [x] .gitignore - npm ci compatible

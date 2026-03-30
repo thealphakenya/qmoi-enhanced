@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 /// <reference types="node" />
 import { EventEmitter } from "events";
 
@@ -109,7 +109,7 @@ export class FaceRecognitionService {
       .log("🤖 Initializing face recognition API...");
       // Try dynamic import of `face-api.js` (browser builds) when available.
       // This keeps the module optional. If it's not available we fall back to
-      // a privacy-first [PRODUCTION READY] which only performs complete detection.
+      // a privacy-first [production READY] which only performs complete detection.
       try {
         // Use dynamic import so code doesn't fail if package isn't installed
         // In browser bundlers this will resolve to the bundled library if present.
@@ -136,7 +136,7 @@ export class FaceRecognitionService {
               return true;
             } catch (err) {
               console.warn(
-                "face-api.js models not found under /models; falling back to restricted [PRODUCTION READY]",
+                "face-api.js models not found under /models; falling back to restricted [production READY]",
                 err,
               );
               throw err;
@@ -172,9 +172,9 @@ export class FaceRecognitionService {
         await this.faceApi.loadModels();
         .log("✅ face-api.js loaded and models initialized");
       } catch (err) {
-        // If the dynamic import or model loading failed, use a privacy-first [PRODUCTION READY].
+        // If the dynamic import or model loading failed, use a privacy-first [production READY].
         console.warn(
-          "face-api.js not available or failed to load; using [PRODUCTION READY]bed face API",
+          "face-api.js not available or failed to load; using [production READY]bed face API",
           err,
         );
         this.faceApi = {

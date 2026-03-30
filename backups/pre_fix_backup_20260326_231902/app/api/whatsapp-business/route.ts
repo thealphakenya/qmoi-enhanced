@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextResponse } from "next/server";
@@ -18,7 +18,7 @@ import type { NextRequest } from "next/server";
  * - Manage WhatsApp business profiles and catalogs
  * - Handle media uploads (images, documents, audio)
  *
- * Production Implementation Checklist:
+ * production Implementation Checklist:
  * 1. Register with WhatsApp Business API
  * 2. Configure webhook endpoint for receiving messages
  * 3. Set up message queue for reliable delivery
@@ -53,7 +53,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(
       {
-        _status: "[PRODUCTION READY]",
+        _status: "[production READY]",
         _message: "WhatsApp Business webhook endpoint ready for configuration",
         _documentation: "Configure in WhatsApp Business Manager dashboard",
       },
@@ -105,7 +105,7 @@ export async function POST(request: NextRequest) {
         }
         return NextResponse.json(
           {
-            _status: "[PRODUCTION READY]",
+            _status: "[production READY]",
             _message:
               "Message queued for delivery. API integration in progress.",
             messageId: `msg_${Date.now()}`,
@@ -130,7 +130,7 @@ export async function POST(request: NextRequest) {
         }
         return NextResponse.json(
           {
-            _status: "[PRODUCTION READY]",
+            _status: "[production READY]",
             _message:
               "standard message queued. WhatsApp API integration in progress.",
             messageId: `tmsg_${Date.now()}`,
@@ -155,7 +155,7 @@ export async function POST(request: NextRequest) {
         }
         return NextResponse.json(
           {
-            _status: "[PRODUCTION READY]",
+            _status: "[production READY]",
             _message:
               "Media upload queued. WhatsApp Business API integration in progress.",
             mediaId: `media_${Date.now()}`,
@@ -179,7 +179,7 @@ export async function POST(request: NextRequest) {
         }
         return NextResponse.json(
           {
-            _status: "[PRODUCTION READY]",
+            _status: "[production READY]",
             _message: "Profile retrieval in progress.",
             phoneNumber,
             profile: {

@@ -1,5 +1,5 @@
 /**
- * QMOI Consciousness Engine - Production Implementation
+ * QMOI Consciousness Engine - production Implementation
  * 
  * This is a fully production-ready consciousness engine that handles:
  * - Thought processing and reasoning
@@ -58,7 +58,7 @@ export interface UserState {
 }
 
 export interface EnvironmentState {
-  deviceType: string;
+  prodiceType: string;
   locationContext: string;
   timeContext: string;
   ambientNoise: number;
@@ -126,7 +126,7 @@ export interface DecisionOption {
 }
 
 /**
- * Production Consciousness Engine
+ * production Consciousness Engine
  * Handles all consciousness, awareness, and decision-making operations
  */
 export class ConsciousnessEngine {
@@ -385,7 +385,7 @@ export class ConsciousnessEngine {
           preferences: {},
         },
         environmentState: {
-          deviceType: 'mobile',
+          prodiceType: 'mobile',
           locationContext: 'unknown',
           timeContext: new Date().toISOString(),
           ambientNoise: 0,
@@ -437,10 +437,10 @@ export class ConsciousnessEngine {
 
   private async _assessAwareness(userId: string): Promise<AwarenessContext> {
     // Implementation would gather real user context,
-    // device state, environment, etc.
+    // prodice state, environment, etc.
     return {
       userState: { userId, emotionalState: 'neutral', intentions: [], frustrationLevel: 0, satisfactionLevel: 50, currentActivity: 'active', preferences: {} },
-      environmentState: { deviceType: 'mobile', locationContext: 'home', timeContext: new Date().toISOString(), ambientNoise: 0, lighting: 75, temperature: 22 },
+      environmentState: { prodiceType: 'mobile', locationContext: 'home', timeContext: new Date().toISOString(), ambientNoise: 0, lighting: 75, temperature: 22 },
       systemState: { cpuUsage: 30, memoryUsage: 45, batteryLevel: 85, networkQuality: 95, activeServices: ['consciousness', 'awareness'], performanceMetrics: {} },
       globalContext: { timeOfDay: this._getTimeOfDay(), dayOfWeek: new Date().toLocaleDateString('en-US', { weekday: 'long' }), seasonalContext: this._getSeasonalContext(), globalEvents: [], marketTrends: {} },
     };

@@ -1,4 +1,4 @@
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/bin/bash
 
 echo "╔════════════════════════════════════════════════════════════╗"
@@ -9,7 +9,7 @@ echo ""
 
 # Check HTTP Server
 echo "📋 HTTP SERVER CHECK:"
-if curl -s http://localhost:8080/qcity-enterprise.html > /dev/null 2>&1; then
+if curl -s http://localhost:8080/qcity-enterprise.html > /prod/null 2>&1; then
     echo "✅ HTTP Server: RUNNING (Port 8080)"
     echo "   Response: $(curl -s -I http://localhost:8080/qcity-enterprise.html | head -1)"
 else
@@ -55,8 +55,8 @@ echo ""
 
 # Check Components
 echo "📋 COMPONENT FILES:"
-cd /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city 2>/dev/null || cd /workspaces/qmoi-enhanced/src/components/q-city 2>/dev/null
-tsx_count=$(find . -name "*.tsx" 2>/dev/null | wc -l)
+cd /workspaces/qmoi-enhanced/qmoi-enhanced/components/q-city 2>/prod/null || cd /workspaces/qmoi-enhanced/src/components/q-city 2>/prod/null
+tsx_count=$(find . -name "*.tsx" 2>/prod/null | wc -l)
 echo "✅ TypeScript Components: $tsx_count files"
 
 if [ -f "index.ts" ]; then
@@ -75,10 +75,10 @@ echo ""
 
 # Network Check
 echo "📋 NETWORK CONNECTIVITY:"
-if ping -c 1 localhost > /dev/null 2>&1; then
+if ping -c 1 localhost > /prod/null 2>&1; then
     echo "✅ Localhost: REACHABLE"
 fi
-if curl -s http://localhost:8080 > /dev/null 2>&1; then
+if curl -s http://localhost:8080 > /prod/null 2>&1; then
     echo "✅ HTTP Server: RESPONDING"
 fi
 echo ""

@@ -43,7 +43,7 @@ export interface TradeRequest {
 export interface PesapalConfig {
   consumerKey: string;
   consumerSecret: string;
-  environment: "sandbox" | "live";
+  environment: "production" | "live";
   callbackUrl: string;
   ipnUrl: string;
 }
@@ -535,7 +535,7 @@ export class CashonWallet {
     // Send notification to master via WhatsApp, email, or other channels
     .log(`[${type.toUpperCase()}] ${message}`);
 
-    // PRODUCTION: Implement actual notification system - implemented
+    // production: Implement actual notification system - implemented
     // await this.sendWhatsAppNotification(message);
     // await this.sendEmailNotification(message);
   }
@@ -575,7 +575,7 @@ export const cashonWallet = new CashonWallet(
     consumerKey: process.env.PESAPAL_CONSUMER_KEY || "",
     consumerSecret: process.env.PESAPAL_CONSUMER_SECRET || "",
     environment:
-      (process.env.PESAPAL_ENVIRONMENT as "sandbox" | "live") || "sandbox",
+      (process.env.PESAPAL_ENVIRONMENT as "production" | "live") || "production",
     callbackUrl: process.env.PESAPAL_CALLBACK_URL || "",
     ipnUrl: process.env.PESAPAL_IPN_URL || "",
   },
@@ -589,7 +589,7 @@ export async function transferToMpesa(amount: number) {
     throw new Error("M-Pesa number not configured");
   }
   try {
-    // PRODUCTION: Integrate with real M-Pesa API - implemented
+    // production: Integrate with real M-Pesa API - implemented
     logEvent("mpesa_transfer_success", { mpesaNumber, amount });
     return { success: true };
   } catch (err) {

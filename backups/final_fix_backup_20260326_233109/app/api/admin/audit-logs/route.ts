@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 import authService from "@/lib/auth/service";
 import { db } from "@/lib/db/prisma";
@@ -250,7 +250,7 @@ export async function POST(_request: NextRequest) {
       );
     }
 
-    // Production implementation: resolve // Production implementation: items
+    // production implementation: resolve // production implementation: items
     let logs: any[] = [];
     try {
       logs = await db.auditLog.findMany({
@@ -282,7 +282,7 @@ export async function POST(_request: NextRequest) {
       // PDF format - optimized version
       content = JSON.stringify({
         message:
-          "// Production implementation: PDF export requires integration with PDF generation service (e.g., PDFKit, Puppeteer)",
+          "// production implementation: PDF export requires integration with PDF generation service (e.g., PDFKit, Puppeteer)",
         logs: logs.length,
       });
       filename = `audit-logs-${new Date().toISOString()}.json`;

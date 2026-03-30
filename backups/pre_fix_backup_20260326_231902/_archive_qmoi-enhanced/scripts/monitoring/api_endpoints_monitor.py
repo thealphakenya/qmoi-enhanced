@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI API Endpoints Monitor
@@ -69,7 +69,7 @@ class APIEndpointsMonitor:
                 # QCity endpoints
                 {'path': '/api/qcity/status', 'method': 'GET', 'name': 'QCity Status'},
                 {'path': '/api/qcity/metrics', 'method': 'GET', 'name': 'QCity Metrics'},
-                {'path': '/api/qcity/devices', 'method': 'GET', 'name': 'QCity Devices'},
+                {'path': '/api/qcity/prodices', 'method': 'GET', 'name': 'QCity prodices'},
                 
                 # Trading endpoints
                 {'path': '/api/trading/status', 'method': 'GET', 'name': 'Trading Status'},

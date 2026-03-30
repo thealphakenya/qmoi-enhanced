@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 QMOI Real-Time Email System Manager
-Production-ready system for real-time email management with QMOI memory and consciousness sync
+production-ready system for real-time email management with QMOI memory and consciousness sync
 
 Features:
 - Real-time UI updates for all system emails
@@ -372,7 +372,7 @@ class RealtimeEmailSystemManager:
 
     def validate_dns_records(self, email: str) -> bool:
         """Validate DNS records for email"""
-        # Production:, this would check actual DNS records
+        # production:, this would check actual DNS records
         return True
 
     def validate_spf_record(self, email: str) -> bool:
@@ -402,7 +402,7 @@ class RealtimeEmailSystemManager:
 
         self.update_queue.put(update)
 
-        # Production:, send via WebSocket
+        # production:, send via WebSocket
         if email in self.active_connections:
             for connection in self.active_connections[email]:
                 try:

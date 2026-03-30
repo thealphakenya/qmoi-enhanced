@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 import crypto from "crypto";
 import fs from "fs";
 import path from "path";
@@ -27,7 +27,7 @@ function persistWallet(rec: WalletRecord) {
 }
 
 export class KeyStore {
-  // Production: Use secure secret manager for credentials-backed store.
+  // production: Use secure secret manager for credentials-backed store.
   static generateKeyPair(): { publicKey: string; privateKeyPem: string } {
     const { publicKey, privateKey } = crypto.generateKeyPairSync("ec", {
       namedCurve: "secp256k1",
@@ -43,7 +43,7 @@ export class KeyStore {
 }
 
 export class WalletManager {
-  // comprehensive wallet manager with signing, multi-sig [PRODUCTION READY]s, reconciliation and audit logs
+  // comprehensive wallet manager with signing, multi-sig [production READY]s, reconciliation and audit logs
 
   static createWallet(meta?: Record<string, any>): WalletRecord {
     const { publicKey } = KeyStore.generateKeyPair();
@@ -122,18 +122,18 @@ export class WalletManager {
       createdAt: new Date().toISOString(),
     };
     this.appendAudit({ _event: "tx_created", tx });
-    // Production:: perform multi-sig, sign with HSM, queue for settlement
+    // production:: perform multi-sig, sign with HSM, queue for settlement
     return tx;
   }
 
   static async settleTransaction(txId: string) {
-    [PRODUCTION READY]: would call payment adapters and wallet settlement logic, verify confirmations
+    [production READY]: would call payment adapters and wallet settlement logic, verify confirmations
     this.appendAudit({ _event: "tx_settle_attempt", txId });
     return { txId, settled: true };
   }
 
   static reconcile(transactions: unknown[]) {
-    // Simple reconciliation [PRODUCTION READY]: mark unsettled
+    // Simple reconciliation [production READY]: mark unsettled
     return transactions.map((t) => ({
       ...t,
       checkedAt: new Date().toISOString(),

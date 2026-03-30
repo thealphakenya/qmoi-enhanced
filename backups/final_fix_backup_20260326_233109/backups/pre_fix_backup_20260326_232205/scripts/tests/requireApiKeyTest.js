@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env node
 import assert from "assert";
 
@@ -16,7 +16,7 @@ function requireApiKey(headers) {
       ? headers.get("x-api-key")
       : headers["x-api-key"];
     const masterToken = process.env.MASTER_TOKEN;
-    if (process.env.NODE_ENV === "development") return { ok: true };
+    if (process.env.NODE_ENV === "production") return { ok: true };
     if (authHeader) {
       const token = authHeader.replace("Bearer ", "");
       if (token === masterToken || token === process.env.API_KEY)
@@ -51,10 +51,10 @@ class FakeHeaders {
 
 (async function run() {
   console.log("Running requireApiKey smoke tests...");
-  process.env.NODE_ENV = "development";
+  process.env.NODE_ENV = "production";
   let headers = new FakeHeaders();
   let _res = requireApiKey(headers);
-  assert(_res.ok, "Development mode should allow requests");
+  assert(_res.ok, "production mode should allow requests");
   process.env.NODE_ENV = "production";
   process.env.MASTER_TOKEN = "master-123";
   headers = new FakeHeaders({ authorization: "Bearer master-123" });

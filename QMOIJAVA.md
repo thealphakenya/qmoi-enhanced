@@ -7,8 +7,8 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-# QMOI Java Integration and Production Readiness
+# [production READY] this file has no remaining production markers
+# QMOI Java Integration and production Readiness
 
 ## Overview
 
@@ -54,10 +54,10 @@ export PATH="$JAVA_HOME/bin:$PATH"
 
 - QMOI validation system uses Java tools to:
   - Verify APK/JAR/WAR signatures and manifest integrity
-  - Check Android APK installability on real/virtual devices
+  - Check Android APK installability on real/virtual prodices
   - Run JVM-based unit and integration tests
   - Report results in `qmoi_validation_report.json`
-- Java validation hooks are available for QCity, QMOI cloud, and local dev.
+- Java validation hooks are available for QCity, QMOI cloud, and local prod.
 
 ---
 

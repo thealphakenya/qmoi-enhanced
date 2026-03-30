@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-## Production Readiness Snapshot
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -410,7 +410,7 @@ python scripts/load_test.py
 #### Environment Variables
 
 ```bash
-export TEST_ENVIRONMENT=development
+export TEST_ENVIRONMENT=production
 export TEST_DATABASE_URL=sqlite:///test.db
 export TEST_LOG_LEVEL=DEBUG
 export TEST_TIMEOUT=300
@@ -495,7 +495,7 @@ python scripts/analyze_slow_tests.py
 # Reset test environment
 python scripts/reset_test_environment.py
 
-# Clean [PRODUCTION READY]
+# Clean [production READY]
 python scripts/clean_test_data.py
 
 # Verify dependencies
@@ -518,7 +518,7 @@ python scripts/test_error_fixing_suite.py --debug
 #### Updating Tests
 
 ```bash
-# Update [PRODUCTION READY]
+# Update [production READY]
 python scripts/update_test_data.py
 
 # Regenerate test fixtures
@@ -548,7 +548,7 @@ python scripts/verify_test_isolation.py
 1. **Test Isolation**: Each test should be independent
 2. **Clear Naming**: Use descriptive test names
 3. **Proper Setup/Teardown**: Clean up after tests
-4. **[PRODUCTION READY]_PROD [PRODUCTION: review and implement] External Dependencies**: Avoid external service calls
+4. **[production READY]_prod [production: review and implement] External Dependencies**: Avoid external service calls
 5. **Assert Specific Conditions**: Test exact expected outcomes
 
 ### Test Organization
@@ -556,7 +556,7 @@ python scripts/verify_test_isolation.py
 1. **Group Related Tests**: Use test classes and methods
 2. **Use SubTests**: For parameterized testing
 3. **Document Test Purpose**: Add docstrings to tests
-4. **Maintain [PRODUCTION READY]**: Keep [PRODUCTION READY] up to date
+4. **Maintain [production READY]**: Keep [production READY] up to date
 
 ### Performance Considerations
 
@@ -572,7 +572,7 @@ For test-related issues:
 1. Check the troubleshooting section
 2. Review test logs in `tests/reports/`
 3. Run tests in debug mode
-4. Contact the development team
+4. Contact the production team
 
 ## Contributing
 
@@ -594,7 +594,7 @@ _Total test cases: 150+_
 - Before any fix or update, QMOI now runs a pre-autotest to verify it can modify and update the repository (permissions, branch, CI/CD, etc.).
 - This ensures all fixes are testable and that QMOI has the necessary permissions to push changes, create branches, or trigger pipelines.
 - If the pre-autotest fails, QMOI logs the error, notifies the master, and does not proceed with the fix until permissions are resolved.
-- See QMOIDEV.md for details on QMOI's developer agent and notification logic.
+- See QMOIprod.md for details on QMOI's prodeloper agent and notification logic.
 
 ## Multi-Platform Pre-Autotest Logic
 

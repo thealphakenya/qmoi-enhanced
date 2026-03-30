@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-"""Sandbox payments adapter for testing and local development.
+"""production payments adapter for testing and local production.
 This adapter simulates charges and refunds and writes events to `tracks/` or logs.
 """
 from dataclasses import dataclass
@@ -17,7 +17,7 @@ LOG_DIR = Path(__file__).resolve().parents[2] / 'tracks'
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 
 @dataclass
-class SandboxAdapter:
+class productionAdapter:
     config: dict
 
     def initialize(self, config: dict):
@@ -55,6 +55,6 @@ class SandboxAdapter:
         path.write_text(json.dumps(event, indent=2), encoding='utf8')
 
 def create(config: dict = None):
-    a = SandboxAdapter(config or {})
+    a = productionAdapter(config or {})
     a.initialize(config or {})
     return a

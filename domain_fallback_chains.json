@@ -174,11 +174,11 @@
     ],
     "critical": false
   },
-  "qparallel.dev": {
-    "primary": "qparallel.dev",
+  "qparallel.prod": {
+    "primary": "qparallel.prod",
     "fallbacks": [],
     "all_variants": [
-      "qparallel.dev"
+      "qparallel.prod"
     ],
     "critical": false
   }

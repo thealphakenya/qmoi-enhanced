@@ -158,10 +158,10 @@ class GitpodNotificationService {
 ${gitpodUrl}
 
 ### Status:
-Gitpod workspace has been started and is ready for development.
+Gitpod workspace has been started and is ready for production.
 
 ### Features Available:
-- Full development environment
+- Full production environment
 - Integrated terminal
 - Code editor
 - Git integration
@@ -219,10 +219,10 @@ ${gitpodUrl}
 ### Clone Information:
 - Snapshot created successfully
 - All files and configurations preserved
-- Ready for independent development
+- Ready for independent production
 
 ### Benefits:
-- Isolated development environment
+- Isolated production environment
 - No conflicts with original workspace
 - Safe experimentation
 - Backup of complete
@@ -453,7 +453,7 @@ ${gitpodUrl}
 
       const workspace = await this.makeGitpodRequest("/workspaces", "POST", {
         contextUrl,
-        description: `QMOI Development Workspace - ${new Date().toISOString()}`,
+        description: `QMOI production Workspace - ${new Date().toISOString()}`,
       });
 
       this.log(`Gitpod workspace started: ${workspace.id}`);

@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 {
   "generated_at": "2025-10-21T00:50:52.798258Z",
   "files": {
@@ -39,7 +39,7 @@
     "FEATURESREADME.md": [],
     "SERVINGERRORSISSUES.md": [],
     "QMOI_FRIENDSHIP_ENHANCEMENT.md": [],
-    "QMOIDEVICES.md": [],
+    "QMOIprodICES.md": [],
     "SELF_EVOLUTION.md": [],
     "QMOI-ENHANCED-AUTOTESTS.md": [
       {
@@ -90,8 +90,8 @@
         "reason": null
       },
       {
-        "label": "DOWNLOADQMOIAIAPPALLDEVICES.md",
-        "url": "./DOWNLOADQMOIAIAPPALLDEVICES.md",
+        "label": "DOWNLOADQMOIAIAPPALLprodICES.md",
+        "url": "./DOWNLOADQMOIAIAPPALLprodICES.md",
         "ok": true,
         "reason": null
       }
@@ -413,8 +413,8 @@
         "reason": null
       },
       {
-        "label": "QMOIVERCELDEV.md",
-        "url": "./QMOIVERCELDEV.md",
+        "label": "QMOIVERCELprod.md",
+        "url": "./QMOIVERCELprod.md",
         "ok": true,
         "reason": null
       }
@@ -636,31 +636,31 @@
       },
       {
         "label": "Win",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
@@ -809,8 +809,8 @@
         "reason": null
       },
       {
-        "label": "mobile/components/DeviceManagementScreen.js",
-        "url": "mobile/components/DeviceManagementScreen.js",
+        "label": "mobile/components/prodiceManagementScreen.js",
+        "url": "mobile/components/prodiceManagementScreen.js",
         "ok": true,
         "reason": null
       },
@@ -833,7 +833,7 @@
         "reason": null
       }
     ],
-    "DOWNLOADQMOIAIAPPALLDEVICES.md": [
+    "DOWNLOADQMOIAIAPPALLprodICES.md": [
       {
         "label": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
         "url": "./ALLQMOIAIAPPSREALEASESVERSIONS.md",
@@ -1022,31 +1022,31 @@
       },
       {
         "label": "Win",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
@@ -1136,9 +1136,9 @@
     "QMOI-ENHANCED-FEATURES.md": [],
     "INSTALL.md": [],
     "QUANTUMAUTOMARKET.md": [],
-    "QMOIALLDEVICESHANDSFREE.md": [],
+    "QMOIALLprodICESHANDSFREE.md": [],
     "QMOIAUTOMAKENEW.md": [],
-    "QMOIALLDEVICESINSTALL.md": [],
+    "QMOIALLprodICESINSTALL.md": [],
     "QMOIBROWSER.md": [],
     "TESTREADME.md": [
       {
@@ -1225,8 +1225,8 @@
     ],
     "QSERVERREADME.md": [
       {
-        "label": "QCITYDEVICEAUTOUPGRADE.md",
-        "url": "./QCITYDEVICEAUTOUPGRADE.md",
+        "label": "QCITYprodICEAUTOUPGRADE.md",
+        "url": "./QCITYprodICEAUTOUPGRADE.md",
         "ok": true,
         "reason": null
       },
@@ -1270,14 +1270,14 @@
         "reason": null
       },
       {
-        "label": "QMOIGITLABDEV.md",
-        "url": "./QMOIGITLABDEV.md",
+        "label": "QMOIGITLABprod.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       },
       {
-        "label": "QMOIVERCELDEV.md",
-        "url": "./QMOIVERCELDEV.md",
+        "label": "QMOIVERCELprod.md",
+        "url": "./QMOIVERCELprod.md",
         "ok": true,
         "reason": null
       },
@@ -1310,8 +1310,8 @@
         "reason": null
       }
     ],
-    "ALLDEVICESSETTINGS.md": [],
-    "QCITY_DEVICE_MANAGEMENT.md": [],
+    "ALLprodICESSETTINGS.md": [],
+    "QCITY_prodICE_MANAGEMENT.md": [],
     "QMOI-CLOUD-ENHANCED.md": [],
     "SRC.md": [],
     "QMOIAUTOMAKESMONEY.md": [],
@@ -1404,7 +1404,7 @@
     "QMOICLONEGITPOD.md": [],
     "QMOI-CLOUD.md": [],
     "QMOIHUGGINGFACESPACES.md": [],
-    "DEVICERESOURCEOPTIMIZATION.md": [],
+    "prodICERESOURCEOPTIMIZATION.md": [],
     "INDEPENDENTQMOI.md": [],
     "HUGGINGFACEPAYED.md": [
       {
@@ -1444,8 +1444,8 @@
     "QUANTUMPAYED.md": [],
     "SCRIPTS.md": [],
     "SECURITY.md": [],
-    "QMOIAUTOAPPSDEV.md": [],
-    "QMOIAUTODEV.md": [],
+    "QMOIAUTOAPPSprod.md": [],
+    "QMOIAUTOprod.md": [],
     "QMOIAUTOGMAIL.md": [],
     "QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md": [],
     "QMOIGAMINGCLOUDUSERS.md": [],
@@ -1454,7 +1454,7 @@
     "QMOI-ENHANCED-FINAL.md": [],
     "QMOI-ENHANCED-SYSTEM.md": [],
     "QMOIEMPLOYEES.md": [],
-    "QMOISPACEDEV.md": [
+    "QMOISPACEprod.md": [
       {
         "label": "MASTEROWNS.md",
         "url": "./MASTEROWNS.md",
@@ -1462,8 +1462,8 @@
         "reason": null
       },
       {
-        "label": "QMOIDEV.md",
-        "url": "./QMOIDEV.md",
+        "label": "QMOIprod.md",
+        "url": "./QMOIprod.md",
         "ok": true,
         "reason": null
       },
@@ -1541,28 +1541,28 @@
         "reason": null
       }
     ],
-    "QMOIGITPODDEV.md": [
+    "QMOIGITPODprod.md": [
       {
-        "label": "QMOIDEV.md",
-        "url": "./QMOIDEV.md",
+        "label": "QMOIprod.md",
+        "url": "./QMOIprod.md",
         "ok": true,
         "reason": null
       },
       {
-        "label": "QMOIGITHUBDEV.md",
-        "url": "./QMOIGITHUBDEV.md",
+        "label": "QMOIGITHUBprod.md",
+        "url": "./QMOIGITHUBprod.md",
         "ok": true,
         "reason": null
       },
       {
-        "label": "QMOIGITLABDEV.md",
-        "url": "./QMOIGITLABDEV.md",
+        "label": "QMOIGITLABprod.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       },
       {
-        "label": "QMOISPACEDEV.md",
-        "url": "./QMOISPACEDEV.md",
+        "label": "QMOISPACEprod.md",
+        "url": "./QMOISPACEprod.md",
         "ok": true,
         "reason": null
       },
@@ -1592,8 +1592,8 @@
         "reason": null
       },
       {
-        "label": "DOWNLOADQMOIAIAPPALLDEVICES.md",
-        "url": "./DOWNLOADQMOIAIAPPALLDEVICES.md",
+        "label": "DOWNLOADQMOIAIAPPALLprodICES.md",
+        "url": "./DOWNLOADQMOIAIAPPALLprodICES.md",
         "ok": true,
         "reason": null
       }
@@ -1635,8 +1635,8 @@
     ],
     "QCITYREADME.md": [
       {
-        "label": "QCITYDEVICEAUTOUPGRADE.md",
-        "url": "./QCITYDEVICEAUTOUPGRADE.md",
+        "label": "QCITYprodICEAUTOUPGRADE.md",
+        "url": "./QCITYprodICEAUTOUPGRADE.md",
         "ok": true,
         "reason": null
       },
@@ -1659,10 +1659,10 @@
         "reason": null
       }
     ],
-    "QMOIVERCELDEV.md": [
+    "QMOIVERCELprod.md": [
       {
-        "label": "QMOIDEV.md",
-        "url": "./QMOIDEV.md",
+        "label": "QMOIprod.md",
+        "url": "./QMOIprod.md",
         "ok": true,
         "reason": null
       },
@@ -1679,8 +1679,8 @@
         "reason": null
       },
       {
-        "label": "QMOIGITLABDEV.md",
-        "url": "./QMOIGITLABDEV.md",
+        "label": "QMOIGITLABprod.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       },
@@ -1703,17 +1703,17 @@
         "reason": null
       },
       {
-        "label": "DOWNLOADQMOIAIAPPALLDEVICES.md",
-        "url": "./DOWNLOADQMOIAIAPPALLDEVICES.md",
+        "label": "DOWNLOADQMOIAIAPPALLprodICES.md",
+        "url": "./DOWNLOADQMOIAIAPPALLprodICES.md",
         "ok": true,
         "reason": null
       }
     ],
-    "QCITYMAINDEVICE.md": [],
-    "POSTPRODUCTIONCHECKLIST.md": [],
+    "QCITYMAINprodICE.md": [],
+    "POSTproductionCHECKLIST.md": [],
     "TROUBLESHOOTING.md": [],
     "EMPLOYEESUSERSENROLLED.md": [],
-    "PRODUCTIONCHECKLIST.md": [],
+    "productionCHECKLIST.md": [],
     "error-fix-summary.md": [],
     "QVILLAGE.md": [],
     "SYNCREPOS.md": [],
@@ -1834,7 +1834,7 @@
       }
     ],
     "REVENUEGENERATING.md": [],
-    "QMOIPREDEVDOCACTIONS.md": [],
+    "QMOIPREprodDOCACTIONS.md": [],
     "PAGES.md": [],
     "QMOI-FEATURE-INDEX.md": [],
     "RELEASETRACKS.md": [
@@ -1878,22 +1878,22 @@
     "@ALLMDFILESREFS.md": [],
     "QMOIDATABASE.md": [],
     "QMOIARTISTS.md": [],
-    "QMOIDEV.md": [
+    "QMOIprod.md": [
       {
-        "label": "QMOIGITHUBDEV.md",
-        "url": "./QMOIGITHUBDEV.md",
+        "label": "QMOIGITHUBprod.md",
+        "url": "./QMOIGITHUBprod.md",
         "ok": true,
         "reason": null
       },
       {
-        "label": "QMOIGITLABDEV.md",
-        "url": "./QMOIGITLABDEV.md",
+        "label": "QMOIGITLABprod.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       },
       {
-        "label": "QMOIVERCELDEV.md",
-        "url": "./QMOIVERCELDEV.md",
+        "label": "QMOIVERCELprod.md",
+        "url": "./QMOIVERCELprod.md",
         "ok": true,
         "reason": null
       },
@@ -1904,8 +1904,8 @@
         "reason": null
       }
     ],
-    "AU[PRODUCTION READY]WNLOAD.md": [],
-    "QMOIGITLABDEV.md": [
+    "AU[production READY]WNLOAD.md": [],
+    "QMOIGITLABprod.md": [
       {
         "label": "QMOICLONE.md",
         "url": "./QMOICLONE.md",
@@ -1919,8 +1919,8 @@
         "reason": null
       },
       {
-        "label": "QMOIVERCELDEV.md",
-        "url": "./QMOIVERCELDEV.md",
+        "label": "QMOIVERCELprod.md",
+        "url": "./QMOIVERCELprod.md",
         "ok": true,
         "reason": null
       },
@@ -1942,10 +1942,10 @@
     ],
     "QMOI-VOICE-ENHANCEMENT.md": [],
     "USEEMPLOYEESUSERS.md": [],
-    "QMOIGITHUBDEV.md": [
+    "QMOIGITHUBprod.md": [
       {
-        "label": "QMOIDEV.md",
-        "url": "./QMOIDEV.md",
+        "label": "QMOIprod.md",
+        "url": "./QMOIprod.md",
         "ok": true,
         "reason": null
       }
@@ -2136,31 +2136,31 @@
       },
       {
         "label": "Win",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
         "ok": true,
         "reason": "external URL"
       }
@@ -2180,7 +2180,7 @@
         "reason": null
       }
     ],
-    "DEVCOMMANDS.md": [
+    "prodCOMMANDS.md": [
       {
         "label": "http://localhost:5000",
         "url": "http://localhost:5000",
@@ -2239,7 +2239,7 @@
     "FAST-BOOTSTRAP-README.md": [],
     "ENHANCED_AUTOMATION_SUMMARY.md": [],
     "WIRKFLOWSTRACKS.md": [],
-    "QMOIOWNDEVICE.md": [],
+    "QMOIOWNprodICE.md": [],
     "QMOIRADIOREADME.md": [],
     "QUANTUM.md": [],
     "SISTERREADME.md": [],
@@ -2247,26 +2247,26 @@
     "QMOICOLABDAGSHUB.md": [],
     "ALLMDFILESREFS.md": [
       {
-        "label": "QMOIGITLABDEV.md",
-        "url": "./QMOIGITLABDEV.md",
+        "label": "QMOIGITLABprod.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       },
       {
         "label": "QMOI GitLab Self-Healing CI/CD Automation",
-        "url": "./QMOIGITLABDEV.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       },
       {
-        "label": "QMOIGITLABDEV.md",
-        "url": "./QMOIGITLABDEV.md",
+        "label": "QMOIGITLABprod.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       },
       {
         "label": "QMOI GitLab Self-Healing CI/CD Automation",
-        "url": "./QMOIGITLABDEV.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       },
@@ -2392,7 +2392,7 @@
         "reason": null
       }
     ],
-    "QCITYDEVICEAUTOUPGRADE.md": [],
+    "QCITYprodICEAUTOUPGRADE.md": [],
     "QMOIAUTOEVOLVE.md": [],
     "QRADIOPROGRAMS.md": [],
     "QGAMINGCLOUD.md": [],
@@ -2613,31 +2613,31 @@
       },
       {
         "label": "Win",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
         "ok": true,
         "reason": "external URL"
       }
@@ -2711,8 +2711,8 @@
     ],
     "docs/QMOICLONE.md": [
       {
-        "label": "QMOIGITLABDEV.md",
-        "url": "./QMOIGITLABDEV.md",
+        "label": "QMOIGITLABprod.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       }
@@ -2739,8 +2739,8 @@
         "reason": null
       },
       {
-        "label": "QMOIALLDEVICESHANDSFREE.md",
-        "url": "../QMOIALLDEVICESHANDSFREE.md",
+        "label": "QMOIALLprodICESHANDSFREE.md",
+        "url": "../QMOIALLprodICESHANDSFREE.md",
         "ok": true,
         "reason": null
       },
@@ -2790,27 +2790,27 @@
     "docs/REFERENCES.md": [
       {
         "label": "QMOI GitLab Self-Healing CI/CD Automation",
-        "url": "./QMOIGITLABDEV.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       },
       {
         "label": "QMOI Vercel Self-Healing CI/CD Automation",
-        "url": "./QMOIVERCELDEV.md",
+        "url": "./QMOIVERCELprod.md",
         "ok": true,
         "reason": null
       },
       {
         "label": "QMOI GitHub Actions Self-Healing CI/CD Automation",
-        "url": "./QMOIGITHUBDEV.md",
+        "url": "./QMOIGITHUBprod.md",
         "ok": true,
         "reason": null
       }
     ],
-    "docs/QMOIVERCELDEV.md": [
+    "docs/QMOIVERCELprod.md": [
       {
-        "label": "QMOIGITLABDEV.md",
-        "url": "./QMOIGITLABDEV.md",
+        "label": "QMOIGITLABprod.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       },
@@ -2824,7 +2824,7 @@
     "docs/MONITORING_SYSTEM.md": [],
     "docs/TROUBLESHOOTING.md": [],
     "docs/ENHANCED_FEATURES.md": [],
-    "docs/QMOIGITLABDEV.md": [
+    "docs/QMOIGITLABprod.md": [
       {
         "label": "REFERENCES.md",
         "url": "./REFERENCES.md",
@@ -2832,16 +2832,16 @@
         "reason": null
       },
       {
-        "label": "QMOIGITHUBDEV.md",
-        "url": "./QMOIGITHUBDEV.md",
+        "label": "QMOIGITHUBprod.md",
+        "url": "./QMOIGITHUBprod.md",
         "ok": true,
         "reason": null
       }
     ],
-    "docs/QMOIGITHUBDEV.md": [
+    "docs/QMOIGITHUBprod.md": [
       {
-        "label": "QMOIGITLABDEV.md",
-        "url": "./QMOIGITLABDEV.md",
+        "label": "QMOIGITLABprod.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       },
@@ -3269,8 +3269,8 @@
         "reason": "external URL"
       },
       {
-        "label": "![devDependency Status",
-        "url": "https://david-dm.org/isaacs/rimraf/dev-status.svg",
+        "label": "![prodDependency Status",
+        "url": "https://david-dm.org/isaacs/rimraf/prod-status.svg",
         "ok": true,
         "reason": "external URL"
       },
@@ -3411,7 +3411,7 @@
       },
       {
         "label": "Apple platforms",
-        "url": "https://developer.apple.com/documentation/foundation/jsondecoder/3766916-allowsjson5",
+        "url": "https://prodeloper.apple.com/documentation/foundation/jsondecoder/3766916-allowsjson5",
         "ok": true,
         "reason": "external URL"
       },
@@ -3572,7 +3572,7 @@
       },
       {
         "label": "`WebSocket`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/WebSocket",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/WebSocket",
         "ok": true,
         "reason": "external URL"
       },
@@ -3832,7 +3832,7 @@
       },
       {
         "label": "since version\n  31",
-        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-developer-tools-episode-31/",
+        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/",
         "ok": true,
         "reason": "external URL"
       },
@@ -4235,7 +4235,7 @@
     "mobile/node_modules/metro-resolver/README.md": [
       {
         "label": "Metro",
-        "url": "https://metrobundler.dev/",
+        "url": "https://metrobundler.prod/",
         "ok": true,
         "reason": "external URL"
       }
@@ -6010,7 +6010,7 @@
       },
       {
         "label": "`WebSocket`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/WebSocket",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/WebSocket",
         "ok": true,
         "reason": "external URL"
       },
@@ -6199,7 +6199,7 @@
       },
       {
         "label": "Azure Pipelines",
-        "url": "https://azure.microsoft.com/en-us/services/devops/pipelines/",
+        "url": "https://azure.microsoft.com/en-us/services/prodops/pipelines/",
         "ok": true,
         "reason": "external URL"
       },
@@ -7419,7 +7419,7 @@
     "mobile/node_modules/metro-source-map/README.md": [
       {
         "label": "Metro",
-        "url": "https://metrobundler.dev/",
+        "url": "https://metrobundler.prod/",
         "ok": true,
         "reason": "external URL"
       }
@@ -8619,7 +8619,7 @@
       },
       {
         "label": "since version\n  31",
-        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-developer-tools-episode-31/",
+        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/",
         "ok": true,
         "reason": "external URL"
       },
@@ -9443,7 +9443,7 @@
       },
       {
         "label": "`Symbol`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
         "ok": true,
         "reason": "external URL"
       },
@@ -9481,7 +9481,7 @@
       },
       {
         "label": "![licenses",
-        "url": "https://licenses.dev/b/npm/escalade",
+        "url": "https://licenses.prod/b/npm/escalade",
         "ok": true,
         "reason": "external URL"
       },
@@ -9812,7 +9812,7 @@
       },
       {
         "label": "decodeURIComponent",
-        "url": "https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent",
+        "url": "https://prodeloper.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent",
         "ok": true,
         "reason": "external URL"
       },
@@ -11706,7 +11706,7 @@
       },
       {
         "label": "since version\n  31",
-        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-developer-tools-episode-31/",
+        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/",
         "ok": true,
         "reason": "external URL"
       },
@@ -11825,7 +11825,7 @@
       },
       {
         "label": "here",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
         "ok": true,
         "reason": "external URL"
       },
@@ -11959,7 +11959,7 @@
       },
       {
         "label": "Error",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
         "ok": true,
         "reason": "external URL"
       },
@@ -12647,7 +12647,7 @@
     "mobile/node_modules/metro-core/README.md": [
       {
         "label": "Metro",
-        "url": "https://metrobundler.dev/",
+        "url": "https://metrobundler.prod/",
         "ok": true,
         "reason": "external URL"
       }
@@ -18115,7 +18115,7 @@
     "mobile/node_modules/metro-file-map/README.md": [
       {
         "label": "Metro",
-        "url": "https://metrobundler.dev/",
+        "url": "https://metrobundler.prod/",
         "ok": true,
         "reason": "external URL"
       },
@@ -18158,8 +18158,8 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/chrome-launcher/#api"
       },
       {
-        "label": "devtools protocol",
-        "url": "https://chromedevtools.github.io/devtools-protocol/",
+        "label": "prodtools protocol",
+        "url": "https://chromeprodtools.github.io/prodtools-protocol/",
         "ok": true,
         "reason": "external URL"
       },
@@ -18440,7 +18440,7 @@
       },
       {
         "label": "`Browser.getBrowserCommandLine`",
-        "url": "https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getBrowserCommandLine",
+        "url": "https://chromeprodtools.github.io/prodtools-protocol/tot/Browser/#method-getBrowserCommandLine",
         "ok": true,
         "reason": "external URL"
       },
@@ -18500,7 +18500,7 @@
       },
       {
         "label": "Sometimes used",
-        "url": "https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#setting-up-chrome-linux-sandbox",
+        "url": "https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#setting-up-chrome-linux-production",
         "ok": true,
         "reason": "external URL"
       },
@@ -18788,7 +18788,7 @@
       },
       {
         "label": "`Symbol`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
         "ok": true,
         "reason": "external URL"
       },
@@ -18864,7 +18864,7 @@
       },
       {
         "label": "`Array#find`",
-        "url": "https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find",
+        "url": "https://prodeloper.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find",
         "ok": true,
         "reason": "external URL"
       },
@@ -19512,7 +19512,7 @@
       },
       {
         "label": "argparse",
-        "url": "http://docs.python.org/dev/library/argparse.html",
+        "url": "http://docs.python.org/prod/library/argparse.html",
         "ok": true,
         "reason": "external URL"
       },
@@ -19574,7 +19574,7 @@
       },
       {
         "label": "mutual exclusion",
-        "url": "http://docs.python.org/dev/library/argparse.html#mutual-exclusion",
+        "url": "http://docs.python.org/prod/library/argparse.html#mutual-exclusion",
         "ok": true,
         "reason": "external URL"
       }
@@ -19763,10 +19763,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/cosmiconfig/#installation"
       },
       {
-        "label": "Usage for tooling developers",
-        "url": "#usage-for-tooling-developers",
+        "label": "Usage for tooling prodelopers",
+        "url": "#usage-for-tooling-prodelopers",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/cosmiconfig/#usage-for-tooling-developers"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/cosmiconfig/#usage-for-tooling-prodelopers"
       },
       {
         "label": "Result",
@@ -19943,10 +19943,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/cosmiconfig/#imports"
       },
       {
-        "label": "Contributing & Development",
-        "url": "#contributing--development",
+        "label": "Contributing & production",
+        "url": "#contributing--production",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/cosmiconfig/#contributing--development"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/cosmiconfig/#contributing--production"
       },
       {
         "label": "the end user section",
@@ -20004,7 +20004,7 @@
       },
       {
         "label": "dynamic `import` function",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports",
         "ok": true,
         "reason": "external URL"
       },
@@ -20042,7 +20042,7 @@
     "mobile/node_modules/@react-native-community/cli-config/node_modules/parse-json/readme.md": [
       {
         "label": "`JSON.parse` docs",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#Using_the_reviver_parameter\n",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#Using_the_reviver_parameter\n",
         "ok": true,
         "reason": "external URL"
       }
@@ -20056,7 +20056,7 @@
       },
       {
         "label": "`Symbol`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
         "ok": true,
         "reason": "external URL"
       },
@@ -20910,7 +20910,7 @@
       },
       {
         "label": "`Array#find`",
-        "url": "https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find",
+        "url": "https://prodeloper.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find",
         "ok": true,
         "reason": "external URL"
       },
@@ -20962,7 +20962,7 @@
     "mobile/node_modules/metro-config/README.md": [
       {
         "label": "Metro",
-        "url": "https://metrobundler.dev/",
+        "url": "https://metrobundler.prod/",
         "ok": true,
         "reason": "external URL"
       }
@@ -21021,7 +21021,7 @@
       },
       {
         "label": "`Object.create(null)`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create",
         "ok": true,
         "reason": "external URL"
       },
@@ -21039,7 +21039,7 @@
       },
       {
         "label": "encodeURIComponent",
-        "url": "https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent",
+        "url": "https://prodeloper.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent",
         "ok": true,
         "reason": "external URL"
       },
@@ -21051,7 +21051,7 @@
       },
       {
         "label": "URL encode",
-        "url": "https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent",
+        "url": "https://prodeloper.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent",
         "ok": true,
         "reason": "external URL"
       },
@@ -21305,7 +21305,7 @@
       },
       {
         "label": "`Array#find`",
-        "url": "https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find",
+        "url": "https://prodeloper.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find",
         "ok": true,
         "reason": "external URL"
       },
@@ -21487,7 +21487,7 @@
       },
       {
         "label": "since version\n  31",
-        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-developer-tools-episode-31/",
+        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/",
         "ok": true,
         "reason": "external URL"
       },
@@ -21745,7 +21745,7 @@
       },
       {
         "label": "`Iterable`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols",
         "ok": true,
         "reason": "external URL"
       },
@@ -23466,7 +23466,7 @@
       },
       {
         "label": "Accept-Encoding",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding",
         "ok": true,
         "reason": "external URL"
       },
@@ -23612,7 +23612,7 @@
       },
       {
         "label": "since version\n  31",
-        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-developer-tools-episode-31/",
+        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/",
         "ok": true,
         "reason": "external URL"
       },
@@ -23931,32 +23931,32 @@
     ],
     "mobile/node_modules/@sideway/formula/README.md": [
       {
-        "label": "joi.dev",
-        "url": "https://joi.dev",
+        "label": "joi.prod",
+        "url": "https://joi.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Documentation and API",
-        "url": "https://joi.dev/module/formula/",
+        "url": "https://joi.prod/module/formula/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Version status",
-        "url": "https://joi.dev/resources/status/#formula",
+        "url": "https://joi.prod/resources/status/#formula",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Changelog",
-        "url": "https://joi.dev/module/formula/changelog/",
+        "url": "https://joi.prod/module/formula/changelog/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Project policies",
-        "url": "https://joi.dev/policies/",
+        "url": "https://joi.prod/policies/",
         "ok": true,
         "reason": "external URL"
       },
@@ -23970,32 +23970,32 @@
     "mobile/node_modules/@sideway/formula/LICENSE.md": [],
     "mobile/node_modules/@sideway/address/README.md": [
       {
-        "label": "joi.dev",
-        "url": "https://joi.dev",
+        "label": "joi.prod",
+        "url": "https://joi.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Documentation and API",
-        "url": "https://joi.dev/module/address/",
+        "url": "https://joi.prod/module/address/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Versions status",
-        "url": "https://joi.dev/resources/status/#address",
+        "url": "https://joi.prod/resources/status/#address",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Changelog",
-        "url": "https://joi.dev/module/address/changelog/",
+        "url": "https://joi.prod/module/address/changelog/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Project policies",
-        "url": "https://joi.dev/policies/",
+        "url": "https://joi.prod/policies/",
         "ok": true,
         "reason": "external URL"
       }
@@ -24003,32 +24003,32 @@
     "mobile/node_modules/@sideway/address/LICENSE.md": [],
     "mobile/node_modules/@sideway/pinpoint/README.md": [
       {
-        "label": "joi.dev",
-        "url": "https://joi.dev",
+        "label": "joi.prod",
+        "url": "https://joi.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Documentation and API",
-        "url": "https://joi.dev/module/pinpoint/",
+        "url": "https://joi.prod/module/pinpoint/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Version status",
-        "url": "https://joi.dev/resources/status/#pinpoint",
+        "url": "https://joi.prod/resources/status/#pinpoint",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Changelog",
-        "url": "https://joi.dev/module/pinpoint/changelog/",
+        "url": "https://joi.prod/module/pinpoint/changelog/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Project policies",
-        "url": "https://joi.dev/policies/",
+        "url": "https://joi.prod/policies/",
         "ok": true,
         "reason": "external URL"
       }
@@ -24907,7 +24907,7 @@
       },
       {
         "label": "RegExp literal or pattern string",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
         "ok": true,
         "reason": "external URL"
       },
@@ -25147,7 +25147,7 @@
       },
       {
         "label": "V8 stack trace API",
-        "url": "https://v8.dev/docs/stack-trace-api",
+        "url": "https://v8.prod/docs/stack-trace-api",
         "ok": true,
         "reason": "external URL"
       },
@@ -25215,7 +25215,7 @@
       },
       {
         "label": "arrays",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray",
         "ok": true,
         "reason": "external URL"
       },
@@ -27540,13 +27540,13 @@
     "mobile/node_modules/queue-microtask/README.md": [
       {
         "label": "`queueMicrotask`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/queueMicrotask",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/queueMicrotask",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "`queueMicrotask`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/queueMicrotask",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/queueMicrotask",
         "ok": true,
         "reason": "external URL"
       },
@@ -31290,7 +31290,7 @@
       },
       {
         "label": "regex quantifiers",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#quantifiers",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#quantifiers",
         "ok": true,
         "reason": "external URL"
       },
@@ -33480,7 +33480,7 @@
       },
       {
         "label": "in the MDN documentation about JSON.parse",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#data.3A_Using_the_reviver_parameter",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#data.3A_Using_the_reviver_parameter",
         "ok": true,
         "reason": "external URL"
       },
@@ -33694,7 +33694,7 @@
       },
       {
         "label": "since version\n  31",
-        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-developer-tools-episode-31/",
+        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/",
         "ok": true,
         "reason": "external URL"
       },
@@ -33727,7 +33727,7 @@
       },
       {
         "label": "argparse",
-        "url": "http://docs.python.org/dev/library/argparse.html",
+        "url": "http://docs.python.org/prod/library/argparse.html",
         "ok": true,
         "reason": "external URL"
       },
@@ -33745,25 +33745,25 @@
       },
       {
         "label": "original ArgumentParser guide",
-        "url": "http://docs.python.org/dev/library/argparse.html#argumentparser-objects",
+        "url": "http://docs.python.org/prod/library/argparse.html#argumentparser-objects",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "original add_argument guide",
-        "url": "http://docs.python.org/dev/library/argparse.html#the-add-argument-method",
+        "url": "http://docs.python.org/prod/library/argparse.html#the-add-argument-method",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "original action guide",
-        "url": "http://docs.python.org/dev/library/argparse.html#action",
+        "url": "http://docs.python.org/prod/library/argparse.html#action",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "original sub-commands guide",
-        "url": "http://docs.python.org/dev/library/argparse.html#sub-commands",
+        "url": "http://docs.python.org/prod/library/argparse.html#sub-commands",
         "ok": true,
         "reason": "external URL"
       },
@@ -33801,7 +33801,7 @@
     "mobile/node_modules/argparse/CHANGELOG.md": [
       {
         "label": "mutual exclusion",
-        "url": "http://docs.python.org/dev/library/argparse.html#mutual-exclusion",
+        "url": "http://docs.python.org/prod/library/argparse.html#mutual-exclusion",
         "ok": true,
         "reason": "external URL"
       }
@@ -33893,25 +33893,25 @@
       },
       {
         "label": "JSON reviver",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "JSON reviver",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "JSON replacer",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "JSON replacer",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify",
         "ok": true,
         "reason": "external URL"
       }
@@ -34233,10 +34233,10 @@
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/jest-[PRODUCTION READY]/README.md": [
+    "mobile/node_modules/jest-[production READY]/README.md": [
       {
         "label": "Jest documentation",
-        "url": "https://jestjs.io/docs/[PRODUCTION READY]_PROD-function-api",
+        "url": "https://jestjs.io/docs/[production READY]_prod-function-api",
         "ok": true,
         "reason": "external URL"
       }
@@ -34567,7 +34567,7 @@
       },
       {
         "label": "Azure Pipelines",
-        "url": "https://azure.microsoft.com/en-us/services/devops/pipelines/",
+        "url": "https://azure.microsoft.com/en-us/services/prodops/pipelines/",
         "ok": true,
         "reason": "external URL"
       },
@@ -34645,7 +34645,7 @@
       },
       {
         "label": "Expo Application Services",
-        "url": "https://expo.dev/eas",
+        "url": "https://expo.prod/eas",
         "ok": true,
         "reason": "external URL"
       },
@@ -35529,13 +35529,13 @@
       },
       {
         "label": "Expo",
-        "url": "https://expo.dev",
+        "url": "https://expo.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Getting Started guide",
-        "url": "https://reactnative.dev/docs/getting-started",
+        "url": "https://reactnative.prod/docs/getting-started",
         "ok": true,
         "reason": "external URL"
       },
@@ -35546,19 +35546,19 @@
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/react-native/ReactCommon/react/nativemodule/devtoolsruntimesettings/README.md": [],
+    "mobile/node_modules/react-native/ReactCommon/react/nativemodule/prodtoolsruntimesettings/README.md": [],
     "mobile/node_modules/react-native/ReactCommon/react/runtime/README.md": [],
     "mobile/node_modules/react-native/ReactCommon/jsinspector-modern/CONCEPTS.md": [],
     "mobile/node_modules/react-native/ReactAndroid/README.md": [
       {
         "label": "Building from Source guide",
-        "url": "https://reactnative.dev/contributing/how-to-build-from-source#prerequisites",
+        "url": "https://reactnative.prod/contributing/how-to-build-from-source#prerequisites",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Testing guide",
-        "url": "https://reactnative.dev/contributing/how-to-run-and-write-tests",
+        "url": "https://reactnative.prod/contributing/how-to-run-and-write-tests",
         "ok": true,
         "reason": "external URL"
       }
@@ -35921,7 +35921,7 @@
       },
       {
         "label": "XMLHttpRequests",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/XMLHttpRequest",
         "ok": true,
         "reason": "external URL"
       },
@@ -35933,7 +35933,7 @@
       },
       {
         "label": "Promise",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
         "ok": true,
         "reason": "external URL"
       },
@@ -35987,7 +35987,7 @@
       },
       {
         "label": "rejection callback",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then",
         "ok": true,
         "reason": "external URL"
       },
@@ -36017,13 +36017,13 @@
       },
       {
         "label": "CORS",
-        "url": "https://developer.mozilla.org/ru/docs/Web/HTTP/Guides/CORS",
+        "url": "https://prodeloper.mozilla.org/ru/docs/Web/HTTP/Guides/CORS",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mixed Content",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/Security/Mixed_content",
         "ok": true,
         "reason": "external URL"
       },
@@ -36035,13 +36035,13 @@
       },
       {
         "label": "`application/x-www-form-urlencoded` format",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/HTTP/Methods/POST",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "`URLSearchParams`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/URLSearchParams",
         "ok": true,
         "reason": "external URL"
       },
@@ -36107,7 +36107,7 @@
       },
       {
         "label": "SvelteKit",
-        "url": "https://svelte.dev/docs/kit/web-standards#Fetch-APIs",
+        "url": "https://svelte.prod/docs/kit/web-standards#Fetch-APIs",
         "ok": true,
         "reason": "external URL"
       },
@@ -36494,7 +36494,7 @@
       },
       {
         "label": "Manish Sahani",
-        "url": "https://github.com/manishsahanidev \"+70/-0 (#6961 ",
+        "url": "https://github.com/manishsahaniprod \"+70/-0 (#6961 ",
         "ok": true,
         "reason": "external URL"
       },
@@ -36602,7 +36602,7 @@
       },
       {
         "label": "Uhyeon Park",
-        "url": "https://github.com/warpdev \"+1/-1 (#6883 ",
+        "url": "https://github.com/warpprod \"+1/-1 (#6883 ",
         "ok": true,
         "reason": "external URL"
       },
@@ -40472,7 +40472,7 @@
       },
       {
         "label": "Luca Pizzini",
-        "url": "https://github.com/lpizzinidev",
+        "url": "https://github.com/lpizziniprod",
         "ok": true,
         "reason": "external URL"
       },
@@ -40742,7 +40742,7 @@
       },
       {
         "label": "Luca Pizzini",
-        "url": "https://github.com/lpizzinidev",
+        "url": "https://github.com/lpizziniprod",
         "ok": true,
         "reason": "external URL"
       },
@@ -40833,13 +40833,13 @@
     "mobile/node_modules/marky/README.md": [
       {
         "label": "high-resolution\ntimings",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/User_Timing_API",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "User Timing API",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/User_Timing_API",
         "ok": true,
         "reason": "external URL"
       },
@@ -40851,12 +40851,12 @@
       },
       {
         "label": "more accurate",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/Performance/now",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/Performance/now",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "Chrome Dev Tools screenshot",
+        "label": "Chrome prod Tools screenshot",
         "url": "doc/chrome.png",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/marky/doc/chrome.png"
@@ -40869,13 +40869,13 @@
       },
       {
         "label": "PerformanceEntries",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/PerformanceEntry",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Performance Timeline",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/Performance_Timeline",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/Performance_Timeline",
         "ok": true,
         "reason": "external URL"
       },
@@ -40887,7 +40887,7 @@
       },
       {
         "label": "Windows Performance Analyzer",
-        "url": "https://blogs.windows.com/msedgedev/2016/05/11/top-down-analysis-wpt/",
+        "url": "https://blogs.windows.com/msedgeprod/2016/05/11/top-down-analysis-wpt/",
         "ok": true,
         "reason": "external URL"
       },
@@ -40973,7 +40973,7 @@
       },
       {
         "label": "primitive value",
-        "url": "https://developer.mozilla.org/en-US/docs/Glossary/Primitive",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Glossary/Primitive",
         "ok": true,
         "reason": "external URL"
       },
@@ -40985,7 +40985,7 @@
       },
       {
         "label": "`class` constructor",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes",
         "ok": true,
         "reason": "external URL"
       },
@@ -40997,7 +40997,7 @@
       },
       {
         "label": "typed array",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray",
         "ok": true,
         "reason": "external URL"
       },
@@ -41595,49 +41595,49 @@
     "mobile/node_modules/@hapi/topo/README.md": [
       {
         "label": "hapi web framework",
-        "url": "https://hapi.dev",
+        "url": "https://hapi.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "hapi",
-        "url": "https://hapi.dev",
+        "url": "https://hapi.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "hapi.dev",
-        "url": "https://hapi.dev",
+        "label": "hapi.prod",
+        "url": "https://hapi.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Documentation and API",
-        "url": "https://hapi.dev/family/topo/",
+        "url": "https://hapi.prod/family/topo/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Version status",
-        "url": "https://hapi.dev/resources/status/#topo",
+        "url": "https://hapi.prod/resources/status/#topo",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Changelog",
-        "url": "https://hapi.dev/family/topo/changelog/",
+        "url": "https://hapi.prod/family/topo/changelog/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Project policies",
-        "url": "https://hapi.dev/policies/",
+        "url": "https://hapi.prod/policies/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Free and commercial support options",
-        "url": "https://hapi.dev/support/",
+        "url": "https://hapi.prod/support/",
         "ok": true,
         "reason": "external URL"
       }
@@ -41646,13 +41646,13 @@
     "mobile/node_modules/@hapi/hoek/README.md": [
       {
         "label": "hapi web framework",
-        "url": "https://hapi.dev",
+        "url": "https://hapi.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "hapi",
-        "url": "https://hapi.dev",
+        "url": "https://hapi.prod",
         "ok": true,
         "reason": "external URL"
       },
@@ -41663,38 +41663,38 @@
         "reason": "external URL"
       },
       {
-        "label": "hapi.dev",
-        "url": "https://hapi.dev",
+        "label": "hapi.prod",
+        "url": "https://hapi.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Documentation and API",
-        "url": "https://hapi.dev/family/hoek/",
+        "url": "https://hapi.prod/family/hoek/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Version status",
-        "url": "https://hapi.dev/resources/status/#hoek",
+        "url": "https://hapi.prod/resources/status/#hoek",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Changelog",
-        "url": "https://hapi.dev/family/hoek/changelog/",
+        "url": "https://hapi.prod/family/hoek/changelog/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Project policies",
-        "url": "https://hapi.dev/policies/",
+        "url": "https://hapi.prod/policies/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Free and commercial support options",
-        "url": "https://hapi.dev/support/",
+        "url": "https://hapi.prod/support/",
         "ok": true,
         "reason": "external URL"
       }
@@ -42485,7 +42485,7 @@
       },
       {
         "label": "standard literals",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals",
         "ok": true,
         "reason": "external URL"
       },
@@ -43878,7 +43878,7 @@
       },
       {
         "label": "![Build Status",
-        "url": "https://img.shields.io/github/workflow/status/micromatch/is-glob/dev",
+        "url": "https://img.shields.io/github/workflow/status/micromatch/is-glob/prod",
         "ok": true,
         "reason": "external URL"
       },
@@ -43980,7 +43980,7 @@
       },
       {
         "label": "homepage",
-        "url": "https://github.com/update/update \"Be scalable! Update is a new, open source developer framework and CLI for automating updates of any kind in code projects.\"",
+        "url": "https://github.com/update/update \"Be scalable! Update is a new, open source prodeloper framework and CLI for automating updates of any kind in code projects.\"",
         "ok": true,
         "reason": "external URL"
       },
@@ -44135,7 +44135,7 @@
       }
     ],
     "mobile/node_modules/hermes-estree/README.md": [],
-    "mobile/node_modules/react-devtools-core/README.md": [
+    "mobile/node_modules/react-prodtools-core/README.md": [
       {
         "label": "React Native",
         "url": "https://github.com/facebook/react-native",
@@ -44143,8 +44143,8 @@
         "reason": "external URL"
       },
       {
-        "label": "`react-devtools`",
-        "url": "https://github.com/facebook/react/tree/main/packages/react-devtools",
+        "label": "`react-prodtools`",
+        "url": "https://github.com/facebook/react/tree/main/packages/react-prodtools",
         "ok": true,
         "reason": "external URL"
       },
@@ -44158,22 +44158,22 @@
         "label": "plain settings object",
         "url": "#Settings",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/#Settings"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/#Settings"
       },
       {
-        "label": "`react-devtools`",
-        "url": "https://github.com/facebook/react/tree/main/packages/react-devtools",
+        "label": "`react-prodtools`",
+        "url": "https://github.com/facebook/react/tree/main/packages/react-prodtools",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "`react-devtools`",
-        "url": "https://github.com/facebook/react/tree/main/packages/react-devtools",
+        "label": "`react-prodtools`",
+        "url": "https://github.com/facebook/react/tree/main/packages/react-prodtools",
         "ok": true,
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/react-devtools-core/node_modules/ws/README.md": [
+    "mobile/node_modules/react-prodtools-core/node_modules/ws/README.md": [
       {
         "label": "![Version npm",
         "url": "https://img.shields.io/npm/v/ws.svg?logo=npm",
@@ -44194,7 +44194,7 @@
       },
       {
         "label": "`WebSocket`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/WebSocket",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/WebSocket",
         "ok": true,
         "reason": "external URL"
       },
@@ -44208,133 +44208,133 @@
         "label": "Protocol support",
         "url": "#protocol-support",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#protocol-support"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#protocol-support"
       },
       {
         "label": "Installing",
         "url": "#installing",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#installing"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#installing"
       },
       {
         "label": "Opt-in for performance",
         "url": "#opt-in-for-performance",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#opt-in-for-performance"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#opt-in-for-performance"
       },
       {
         "label": "API docs",
         "url": "#api-docs",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#api-docs"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#api-docs"
       },
       {
         "label": "WebSocket compression",
         "url": "#websocket-compression",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#websocket-compression"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#websocket-compression"
       },
       {
         "label": "Usage examples",
         "url": "#usage-examples",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#usage-examples"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#usage-examples"
       },
       {
         "label": "Sending and receiving text data",
         "url": "#sending-and-receiving-text-data",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#sending-and-receiving-text-data"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#sending-and-receiving-text-data"
       },
       {
         "label": "Sending binary data",
         "url": "#sending-binary-data",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#sending-binary-data"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#sending-binary-data"
       },
       {
         "label": "Simple server",
         "url": "#simple-server",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#simple-server"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#simple-server"
       },
       {
         "label": "External HTTP/S server",
         "url": "#external-https-server",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#external-https-server"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#external-https-server"
       },
       {
         "label": "Multiple servers sharing a single HTTP/S server",
         "url": "#multiple-servers-sharing-a-single-https-server",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#multiple-servers-sharing-a-single-https-server"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#multiple-servers-sharing-a-single-https-server"
       },
       {
         "label": "Client authentication",
         "url": "#client-authentication",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#client-authentication"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#client-authentication"
       },
       {
         "label": "Server broadcast",
         "url": "#server-broadcast",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#server-broadcast"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#server-broadcast"
       },
       {
         "label": "Use the Node.js streams API",
         "url": "#use-the-nodejs-streams-api",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#use-the-nodejs-streams-api"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#use-the-nodejs-streams-api"
       },
       {
         "label": "Other examples",
         "url": "#other-examples",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#other-examples"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#other-examples"
       },
       {
         "label": "FAQ",
         "url": "#faq",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#faq"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#faq"
       },
       {
         "label": "How to get the IP address of the client?",
         "url": "#how-to-get-the-ip-address-of-the-client",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#how-to-get-the-ip-address-of-the-client"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#how-to-get-the-ip-address-of-the-client"
       },
       {
         "label": "How to detect and close broken connections?",
         "url": "#how-to-detect-and-close-broken-connections",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#how-to-detect-and-close-broken-connections"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#how-to-detect-and-close-broken-connections"
       },
       {
         "label": "How to connect via a proxy?",
         "url": "#how-to-connect-via-a-proxy",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#how-to-connect-via-a-proxy"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#how-to-connect-via-a-proxy"
       },
       {
         "label": "Changelog",
         "url": "#changelog",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#changelog"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#changelog"
       },
       {
         "label": "License",
         "url": "#license",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#license"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#license"
       },
       {
         "label": "`/doc/ws.md`",
         "url": "./doc/ws.md",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/doc/ws.md"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/doc/ws.md"
       },
       {
         "label": "MIT",
@@ -44579,7 +44579,7 @@
       },
       {
         "label": "here",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
         "ok": true,
         "reason": "external URL"
       }
@@ -44839,7 +44839,7 @@
       },
       {
         "label": "homepage",
-        "url": "https://github.com/jonschlinkert/repeat-string \"Repeat the given string n times. Fas[PRODUCTION READY]_PROD for repeating a string.\"",
+        "url": "https://github.com/jonschlinkert/repeat-string \"Repeat the given string n times. Fas[production READY]_prod for repeating a string.\"",
         "ok": true,
         "reason": "external URL"
       },
@@ -45057,13 +45057,13 @@
       },
       {
         "label": "![community slack",
-        "url": "http://devtoolscommunity.herokuapp.com/badge.svg",
+        "url": "http://prodtoolscommunity.herokuapp.com/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "community slack",
-        "url": "http://devtoolscommunity.herokuapp.com",
+        "url": "http://prodtoolscommunity.herokuapp.com",
         "ok": true,
         "reason": "external URL"
       },
@@ -46428,19 +46428,19 @@
       },
       {
         "label": "Map",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Array.production.values",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/values",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/values",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "WeakMap",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
         "ok": true,
         "reason": "external URL"
       }
@@ -46505,7 +46505,7 @@
       },
       {
         "label": "community slack",
-        "url": "http://devtoolscommunity.herokuapp.com",
+        "url": "http://prodtoolscommunity.herokuapp.com",
         "ok": true,
         "reason": "external URL"
       },
@@ -47369,32 +47369,32 @@
     ],
     "mobile/node_modules/joi/README.md": [
       {
-        "label": "joi.dev",
-        "url": "https://joi.dev",
+        "label": "joi.prod",
+        "url": "https://joi.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Documentation and API",
-        "url": "https://joi.dev/api/",
+        "url": "https://joi.prod/api/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Versions status",
-        "url": "https://joi.dev/resources/status/#joi",
+        "url": "https://joi.prod/resources/status/#joi",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Changelog",
-        "url": "https://joi.dev/resources/changelog/",
+        "url": "https://joi.prod/resources/changelog/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Project policies",
-        "url": "https://joi.dev/policies/",
+        "url": "https://joi.prod/policies/",
         "ok": true,
         "reason": "external URL"
       }
@@ -47924,7 +47924,7 @@
     "mobile/node_modules/@sinonjs/authentic-timers/README.md": [
       {
         "label": "![codecov",
-        "url": "https://codecov.io/gh/sinonjs/[PRODUCTION READY]_PROD-timers/branch/main/graph/badge.svg",
+        "url": "https://codecov.io/gh/sinonjs/[production READY]_prod-timers/branch/main/graph/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
@@ -47942,7 +47942,7 @@
       },
       {
         "label": "Skypack",
-        "url": "https://www.skypack.dev",
+        "url": "https://www.skypack.prod",
         "ok": true,
         "reason": "external URL"
       },
@@ -47966,7 +47966,7 @@
       },
       {
         "label": "`Performance`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/Performance/now",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/Performance/now",
         "ok": true,
         "reason": "external URL"
       },
@@ -49456,7 +49456,7 @@
       },
       {
         "label": "Sometimes used",
-        "url": "https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#setting-up-chrome-linux-sandbox",
+        "url": "https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#setting-up-chrome-linux-production",
         "ok": true,
         "reason": "external URL"
       },
@@ -49584,7 +49584,7 @@
     "mobile/node_modules/logkitty/README.md": [
       {
         "label": "patters supported by Logcat",
-        "url": "https://developer.android.com/studio/command-line/logcat#filteringOutput",
+        "url": "https://prodeloper.android.com/studio/command-line/logcat#filteringOutput",
         "ok": true,
         "reason": "external URL"
       },
@@ -49771,7 +49771,7 @@
       },
       {
         "label": "community slack",
-        "url": "http://devtoolscommunity.herokuapp.com",
+        "url": "http://prodtoolscommunity.herokuapp.com",
         "ok": true,
         "reason": "external URL"
       },
@@ -53762,8 +53762,8 @@
         "reason": "external URL"
       },
       {
-        "label": "devongovett",
-        "url": "https://github.com/devongovett",
+        "label": "prodongovett",
+        "url": "https://github.com/prodongovett",
         "ok": true,
         "reason": "external URL"
       },
@@ -54315,7 +54315,7 @@
     "mobile/node_modules/convert-source-map/README.md": [
       {
         "label": "JSON.stringify",
-        "url": "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/JSON/stringify",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/JSON/stringify",
         "ok": true,
         "reason": "external URL"
       }
@@ -54383,20 +54383,20 @@
         "reason": "external URL"
       },
       {
-        "label": "`@react-native/dev-middleware`",
-        "url": "https://www.npmjs.com/package/@react-native/dev-middleware",
+        "label": "`@react-native/prod-middleware`",
+        "url": "https://www.npmjs.com/package/@react-native/prod-middleware",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "facebook/react-native-devtools-frontend",
-        "url": "https://github.com/facebook/react-native-devtools-frontend",
+        "label": "facebook/react-native-prodtools-frontend",
+        "url": "https://github.com/facebook/react-native-prodtools-frontend",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "facebook/react-native-devtools-frontend",
-        "url": "https://github.com/facebook/react-native-devtools-frontend",
+        "label": "facebook/react-native-prodtools-frontend",
+        "url": "https://github.com/facebook/react-native-prodtools-frontend",
         "ok": true,
         "reason": "external URL"
       }
@@ -54404,10 +54404,10 @@
     "mobile/node_modules/@react-native/codegen/README.md": [],
     "mobile/node_modules/@react-native/js-polyfills/README.md": [],
     "mobile/node_modules/@react-native/assets-registry/README.md": [],
-    "mobile/node_modules/@react-native/dev-middleware/README.md": [
+    "mobile/node_modules/@react-native/prod-middleware/README.md": [
       {
         "label": "npm package",
-        "url": "https://img.shields.io/npm/v/@react-native/dev-middleware?color=brightgreen&label=npm%20package",
+        "url": "https://img.shields.io/npm/v/@react-native/prod-middleware?color=brightgreen&label=npm%20package",
         "ok": true,
         "reason": "external URL"
       },
@@ -54418,8 +54418,8 @@
         "reason": "external URL"
       },
       {
-        "label": "`@expo/dev-server`",
-        "url": "https://www.npmjs.com/package/@expo/dev-server",
+        "label": "`@expo/prod-server`",
+        "url": "https://www.npmjs.com/package/@expo/prod-server",
         "ok": true,
         "reason": "external URL"
       },
@@ -54430,14 +54430,14 @@
         "reason": "external URL"
       },
       {
-        "label": "Chrome DevTools protocol (CDP)",
-        "url": "https://chromedevtools.github.io/devtools-protocol/",
+        "label": "Chrome prodTools protocol (CDP)",
+        "url": "https://chromeprodtools.github.io/prodtools-protocol/",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "Dev Menu",
-        "url": "https://reactnative.dev/docs/debugging#accessing-the-dev-menu",
+        "label": "prod Menu",
+        "url": "https://reactnative.prod/docs/debugging#accessing-the-prod-menu",
         "ok": true,
         "reason": "external URL"
       },
@@ -54449,19 +54449,19 @@
       },
       {
         "label": "CDP",
-        "url": "https://chromedevtools.github.io/devtools-protocol/#endpoints",
+        "url": "https://chromeprodtools.github.io/prodtools-protocol/#endpoints",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "CDP",
-        "url": "https://chromedevtools.github.io/devtools-protocol/#endpoints",
+        "url": "https://chromeprodtools.github.io/prodtools-protocol/#endpoints",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Contributing guide",
-        "url": "https://reactnative.dev/contributing/overview#contributing-code",
+        "url": "https://reactnative.prod/contributing/overview#contributing-code",
         "ok": true,
         "reason": "external URL"
       }
@@ -54476,7 +54476,7 @@
       },
       {
         "label": "Contributing guide",
-        "url": "https://reactnative.dev/contributing/overview#contributing-code",
+        "url": "https://reactnative.prod/contributing/overview#contributing-code",
         "ok": true,
         "reason": "external URL"
       }
@@ -54592,7 +54592,7 @@
     "mobile/node_modules/whatwg-fetch/README.md": [
       {
         "label": "![OpenSSF Scorecard",
-        "url": "https://api.securityscorecards.dev/projects/github.com/JakeChampion/fetch/badge",
+        "url": "https://api.securityscorecards.prod/projects/github.com/JakeChampion/fetch/badge",
         "ok": true,
         "reason": "external URL"
       },
@@ -54772,19 +54772,19 @@
       },
       {
         "label": "the abortable fetch API",
-        "url": "https://developers.google.com/web/updates/2017/09/abortable-fetch",
+        "url": "https://prodelopers.google.com/web/updates/2017/09/abortable-fetch",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "AbortController",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/AbortController",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/AbortController",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "AbortSignal",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/AbortSignal",
         "ok": true,
         "reason": "external URL"
       },
@@ -55626,7 +55626,7 @@
       },
       {
         "label": "since version\n31",
-        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-developer-tools-episode-31/",
+        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/",
         "ok": true,
         "reason": "external URL"
       },
@@ -55843,10 +55843,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/cosmiconfig/#differences-from-rc"
       },
       {
-        "label": "Contributing & Development",
-        "url": "#contributing--development",
+        "label": "Contributing & production",
+        "url": "#contributing--production",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/cosmiconfig/#contributing--development"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/cosmiconfig/#contributing--production"
       },
       {
         "label": "\"Caching\"",
@@ -57578,7 +57578,7 @@
       },
       {
         "label": "`String#split()`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split",
         "ok": true,
         "reason": "external URL"
       },
@@ -57631,7 +57631,7 @@
       },
       {
         "label": "`JSON.parse` docs",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#Using_the_reviver_parameter\n",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#Using_the_reviver_parameter\n",
         "ok": true,
         "reason": "external URL"
       },
@@ -57707,7 +57707,7 @@
       }
     ],
     "qmoi-enhanced/QMOI_FRIENDSHIP_ENHANCEMENT.md": [],
-    "qmoi-enhanced/QMOIDEVICES.md": [],
+    "qmoi-enhanced/QMOIprodICES.md": [],
     "qmoi-enhanced/SELF_EVOLUTION.md": [],
     "qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md": [
       {
@@ -57758,8 +57758,8 @@
         "reason": null
       },
       {
-        "label": "DOWNLOADQMOIAIAPPALLDEVICES.md",
-        "url": "./DOWNLOADQMOIAIAPPALLDEVICES.md",
+        "label": "DOWNLOADQMOIAIAPPALLprodICES.md",
+        "url": "./DOWNLOADQMOIAIAPPALLprodICES.md",
         "ok": true,
         "reason": null
       }
@@ -58036,8 +58036,8 @@
         "reason": null
       },
       {
-        "label": "QMOIVERCELDEV.md",
-        "url": "./QMOIVERCELDEV.md",
+        "label": "QMOIVERCELprod.md",
+        "url": "./QMOIVERCELprod.md",
         "ok": true,
         "reason": null
       }
@@ -58060,7 +58060,7 @@
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md": [
+    "qmoi-enhanced/DOWNLOADQMOIAIAPPALLprodICES.md": [
       {
         "label": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
         "url": "./ALLQMOIAIAPPSREALEASESVERSIONS.md",
@@ -58074,9 +58074,9 @@
     "qmoi-enhanced/QMOI-ENHANCED-FEATURES.md": [],
     "qmoi-enhanced/INSTALL.md": [],
     "qmoi-enhanced/QUANTUMAUTOMARKET.md": [],
-    "qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md": [],
+    "qmoi-enhanced/QMOIALLprodICESHANDSFREE.md": [],
     "qmoi-enhanced/QMOIAUTOMAKENEW.md": [],
-    "qmoi-enhanced/QMOIALLDEVICESINSTALL.md": [],
+    "qmoi-enhanced/QMOIALLprodICESINSTALL.md": [],
     "qmoi-enhanced/QMOIBROWSER.md": [],
     "qmoi-enhanced/TESTREADME.md": [
       {
@@ -58141,8 +58141,8 @@
     "qmoi-enhanced/QMOIACCOUNTSPLATFORMS.md": [],
     "qmoi-enhanced/QSERVERREADME.md": [
       {
-        "label": "QCITYDEVICEAUTOUPGRADE.md",
-        "url": "./QCITYDEVICEAUTOUPGRADE.md",
+        "label": "QCITYprodICEAUTOUPGRADE.md",
+        "url": "./QCITYprodICEAUTOUPGRADE.md",
         "ok": true,
         "reason": null
       },
@@ -58185,14 +58185,14 @@
         "reason": null
       },
       {
-        "label": "QMOIGITLABDEV.md",
-        "url": "./QMOIGITLABDEV.md",
+        "label": "QMOIGITLABprod.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       },
       {
-        "label": "QMOIVERCELDEV.md",
-        "url": "./QMOIVERCELDEV.md",
+        "label": "QMOIVERCELprod.md",
+        "url": "./QMOIVERCELprod.md",
         "ok": true,
         "reason": null
       },
@@ -58203,8 +58203,8 @@
         "reason": null
       }
     ],
-    "qmoi-enhanced/ALLDEVICESSETTINGS.md": [],
-    "qmoi-enhanced/QCITY_DEVICE_MANAGEMENT.md": [],
+    "qmoi-enhanced/ALLprodICESSETTINGS.md": [],
+    "qmoi-enhanced/QCITY_prodICE_MANAGEMENT.md": [],
     "qmoi-enhanced/QMOI-CLOUD-ENHANCED.md": [],
     "qmoi-enhanced/QMOIAUTOMAKESMONEY.md": [],
     "qmoi-enhanced/QMOISYSTEMAUTO.md": [],
@@ -58250,7 +58250,7 @@
     "qmoi-enhanced/QMOICLONEGITPOD.md": [],
     "qmoi-enhanced/QMOI-CLOUD.md": [],
     "qmoi-enhanced/QMOIHUGGINGFACESPACES.md": [],
-    "qmoi-enhanced/DEVICERESOURCEOPTIMIZATION.md": [],
+    "qmoi-enhanced/prodICERESOURCEOPTIMIZATION.md": [],
     "qmoi-enhanced/INDEPENDENTQMOI.md": [],
     "qmoi-enhanced/HUGGINGFACEPAYED.md": [
       {
@@ -58289,7 +58289,7 @@
     "qmoi-enhanced/QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md": [],
     "qmoi-enhanced/QUANTUMPAYED.md": [],
     "qmoi-enhanced/SECURITY.md": [],
-    "qmoi-enhanced/QMOIAUTOAPPSDEV.md": [
+    "qmoi-enhanced/QMOIAUTOAPPSprod.md": [
       {
         "label": "Win",
         "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
@@ -58472,31 +58472,31 @@
       },
       {
         "label": "Win",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
@@ -58579,7 +58579,7 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/pwa_apps/qmoi-ai-pwa.webmanifest"
       }
     ],
-    "qmoi-enhanced/QMOIAUTODEV.md": [],
+    "qmoi-enhanced/QMOIAUTOprod.md": [],
     "qmoi-enhanced/QMOIAUTOGMAIL.md": [],
     "qmoi-enhanced/QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md": [],
     "qmoi-enhanced/QMOIGAMINGCLOUDUSERS.md": [],
@@ -58588,7 +58588,7 @@
     "qmoi-enhanced/QMOI-ENHANCED-FINAL.md": [],
     "qmoi-enhanced/QMOI-ENHANCED-SYSTEM.md": [],
     "qmoi-enhanced/QMOIEMPLOYEES.md": [],
-    "qmoi-enhanced/QMOISPACEDEV.md": [
+    "qmoi-enhanced/QMOISPACEprod.md": [
       {
         "label": "MASTEROWNS.md",
         "url": "./MASTEROWNS.md",
@@ -58596,8 +58596,8 @@
         "reason": null
       },
       {
-        "label": "QMOIDEV.md",
-        "url": "./QMOIDEV.md",
+        "label": "QMOIprod.md",
+        "url": "./QMOIprod.md",
         "ok": true,
         "reason": null
       },
@@ -58675,28 +58675,28 @@
         "reason": null
       }
     ],
-    "qmoi-enhanced/QMOIGITPODDEV.md": [
+    "qmoi-enhanced/QMOIGITPODprod.md": [
       {
-        "label": "QMOIDEV.md",
-        "url": "./QMOIDEV.md",
+        "label": "QMOIprod.md",
+        "url": "./QMOIprod.md",
         "ok": true,
         "reason": null
       },
       {
-        "label": "QMOIGITHUBDEV.md",
-        "url": "./QMOIGITHUBDEV.md",
+        "label": "QMOIGITHUBprod.md",
+        "url": "./QMOIGITHUBprod.md",
         "ok": true,
         "reason": null
       },
       {
-        "label": "QMOIGITLABDEV.md",
-        "url": "./QMOIGITLABDEV.md",
+        "label": "QMOIGITLABprod.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       },
       {
-        "label": "QMOISPACEDEV.md",
-        "url": "./QMOISPACEDEV.md",
+        "label": "QMOISPACEprod.md",
+        "url": "./QMOISPACEprod.md",
         "ok": true,
         "reason": null
       },
@@ -58724,8 +58724,8 @@
         "reason": null
       },
       {
-        "label": "DOWNLOADQMOIAIAPPALLDEVICES.md",
-        "url": "./DOWNLOADQMOIAIAPPALLDEVICES.md",
+        "label": "DOWNLOADQMOIAIAPPALLprodICES.md",
+        "url": "./DOWNLOADQMOIAIAPPALLprodICES.md",
         "ok": true,
         "reason": null
       }
@@ -58767,8 +58767,8 @@
     ],
     "qmoi-enhanced/QCITYREADME.md": [
       {
-        "label": "QCITYDEVICEAUTOUPGRADE.md",
-        "url": "./QCITYDEVICEAUTOUPGRADE.md",
+        "label": "QCITYprodICEAUTOUPGRADE.md",
+        "url": "./QCITYprodICEAUTOUPGRADE.md",
         "ok": true,
         "reason": null
       },
@@ -58791,10 +58791,10 @@
         "reason": null
       }
     ],
-    "qmoi-enhanced/QMOIVERCELDEV.md": [
+    "qmoi-enhanced/QMOIVERCELprod.md": [
       {
-        "label": "QMOIDEV.md",
-        "url": "./QMOIDEV.md",
+        "label": "QMOIprod.md",
+        "url": "./QMOIprod.md",
         "ok": true,
         "reason": null
       },
@@ -58811,8 +58811,8 @@
         "reason": null
       },
       {
-        "label": "QMOIGITLABDEV.md",
-        "url": "./QMOIGITLABDEV.md",
+        "label": "QMOIGITLABprod.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       },
@@ -59009,31 +59009,31 @@
       },
       {
         "label": "Win",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
@@ -59124,13 +59124,13 @@
         "reason": null
       },
       {
-        "label": "DOWNLOADQMOIAIAPPALLDEVICES.md",
-        "url": "./DOWNLOADQMOIAIAPPALLDEVICES.md",
+        "label": "DOWNLOADQMOIAIAPPALLprodICES.md",
+        "url": "./DOWNLOADQMOIAIAPPALLprodICES.md",
         "ok": true,
         "reason": null
       }
     ],
-    "qmoi-enhanced/QCITYMAINDEVICE.md": [],
+    "qmoi-enhanced/QCITYMAINprodICE.md": [],
     "qmoi-enhanced/TROUBLESHOOTING.md": [],
     "qmoi-enhanced/EMPLOYEESUSERSENROLLED.md": [],
     "qmoi-enhanced/error-fix-summary.md": [],
@@ -59219,7 +59219,7 @@
     "qmoi-enhanced/CMDCOMMANDS.md": [],
     "qmoi-enhanced/QMOI-EARNING-ENHANCED.md": [],
     "qmoi-enhanced/REVENUEGENERATING.md": [],
-    "qmoi-enhanced/QMOIPREDEVDOCACTIONS.md": [],
+    "qmoi-enhanced/QMOIPREprodDOCACTIONS.md": [],
     "qmoi-enhanced/QMOI-FEATURE-INDEX.md": [],
     "qmoi-enhanced/QMOISPACE.md": [],
     "qmoi-enhanced/QMOIHUGGINGFACEALWAYSUPDATE.md": [],
@@ -59245,8 +59245,8 @@
         "reason": null
       },
       {
-        "label": "DOWNLOADQMOIAIAPPALLDEVICES.md",
-        "url": "./DOWNLOADQMOIAIAPPALLDEVICES.md",
+        "label": "DOWNLOADQMOIAIAPPALLprodICES.md",
+        "url": "./DOWNLOADQMOIAIAPPALLprodICES.md",
         "ok": true,
         "reason": null
       },
@@ -59257,30 +59257,30 @@
         "reason": null
       },
       {
-        "label": "DOWNLOADQMOIAIAPPALLDEVICES.md",
-        "url": "./DOWNLOADQMOIAIAPPALLDEVICES.md",
+        "label": "DOWNLOADQMOIAIAPPALLprodICES.md",
+        "url": "./DOWNLOADQMOIAIAPPALLprodICES.md",
         "ok": true,
         "reason": null
       }
     ],
     "qmoi-enhanced/QMOIDATABASE.md": [],
     "qmoi-enhanced/QMOIARTISTS.md": [],
-    "qmoi-enhanced/QMOIDEV.md": [
+    "qmoi-enhanced/QMOIprod.md": [
       {
-        "label": "QMOIGITHUBDEV.md",
-        "url": "./QMOIGITHUBDEV.md",
+        "label": "QMOIGITHUBprod.md",
+        "url": "./QMOIGITHUBprod.md",
         "ok": true,
         "reason": null
       },
       {
-        "label": "QMOIGITLABDEV.md",
-        "url": "./QMOIGITLABDEV.md",
+        "label": "QMOIGITLABprod.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       },
       {
-        "label": "QMOIVERCELDEV.md",
-        "url": "./QMOIVERCELDEV.md",
+        "label": "QMOIVERCELprod.md",
+        "url": "./QMOIVERCELprod.md",
         "ok": true,
         "reason": null
       },
@@ -59291,8 +59291,8 @@
         "reason": null
       }
     ],
-    "qmoi-enhanced/AU[PRODUCTION READY]WNLOAD.md": [],
-    "qmoi-enhanced/QMOIGITLABDEV.md": [
+    "qmoi-enhanced/AU[production READY]WNLOAD.md": [],
+    "qmoi-enhanced/QMOIGITLABprod.md": [
       {
         "label": "QMOICLONE.md",
         "url": "./QMOICLONE.md",
@@ -59306,8 +59306,8 @@
         "reason": null
       },
       {
-        "label": "QMOIVERCELDEV.md",
-        "url": "./QMOIVERCELDEV.md",
+        "label": "QMOIVERCELprod.md",
+        "url": "./QMOIVERCELprod.md",
         "ok": true,
         "reason": null
       },
@@ -59322,10 +59322,10 @@
     "qmoi-enhanced/QMOI-VOICE-ENHANCEMENT.md": [],
     "qmoi-enhanced/USEEMPLOYEESUSERS.md": [],
     "qmoi-enhanced/QMOIICONS.md": [],
-    "qmoi-enhanced/QMOIGITHUBDEV.md": [
+    "qmoi-enhanced/QMOIGITHUBprod.md": [
       {
-        "label": "QMOIDEV.md",
-        "url": "./QMOIDEV.md",
+        "label": "QMOIprod.md",
+        "url": "./QMOIprod.md",
         "ok": true,
         "reason": null
       }
@@ -59515,31 +59515,31 @@
       },
       {
         "label": "Win",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
         "ok": true,
         "reason": "external URL"
       }
@@ -59559,7 +59559,7 @@
         "reason": null
       }
     ],
-    "qmoi-enhanced/DEVCOMMANDS.md": [
+    "qmoi-enhanced/prodCOMMANDS.md": [
       {
         "label": "http://localhost:5000",
         "url": "http://localhost:5000",
@@ -59620,7 +59620,7 @@
         "reason": null
       }
     ],
-    "qmoi-enhanced/QMOIOWNDEVICE.md": [],
+    "qmoi-enhanced/QMOIOWNprodICE.md": [],
     "qmoi-enhanced/QMOIRADIOREADME.md": [],
     "qmoi-enhanced/QUANTUM.md": [],
     "qmoi-enhanced/SISTERREADME.md": [],
@@ -59663,7 +59663,7 @@
       }
     ],
     "qmoi-enhanced/QMOIREVENUEGENERATION.md": [],
-    "qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md": [],
+    "qmoi-enhanced/QCITYprodICEAUTOUPGRADE.md": [],
     "qmoi-enhanced/QMOIAUTOEVOLVE.md": [],
     "qmoi-enhanced/QRADIOPROGRAMS.md": [],
     "qmoi-enhanced/QGAMINGCLOUD.md": [],
@@ -59884,31 +59884,31 @@
       },
       {
         "label": "Win",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
@@ -60094,31 +60094,31 @@
       },
       {
         "label": "Win",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mac",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Android",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "iOS",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Linux",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
         "ok": true,
         "reason": "external URL"
       },
@@ -60267,8 +60267,8 @@
     ],
     "qmoi-enhanced/docs/QMOICLONE.md": [
       {
-        "label": "QMOIGITLABDEV.md",
-        "url": "./QMOIGITLABDEV.md",
+        "label": "QMOIGITLABprod.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       }
@@ -60295,8 +60295,8 @@
         "reason": null
       },
       {
-        "label": "QMOIALLDEVICESHANDSFREE.md",
-        "url": "../QMOIALLDEVICESHANDSFREE.md",
+        "label": "QMOIALLprodICESHANDSFREE.md",
+        "url": "../QMOIALLprodICESHANDSFREE.md",
         "ok": true,
         "reason": null
       },
@@ -60346,27 +60346,27 @@
     "qmoi-enhanced/docs/REFERENCES.md": [
       {
         "label": "QMOI GitLab Self-Healing CI/CD Automation",
-        "url": "./QMOIGITLABDEV.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       },
       {
         "label": "QMOI Vercel Self-Healing CI/CD Automation",
-        "url": "./QMOIVERCELDEV.md",
+        "url": "./QMOIVERCELprod.md",
         "ok": true,
         "reason": null
       },
       {
         "label": "QMOI GitHub Actions Self-Healing CI/CD Automation",
-        "url": "./QMOIGITHUBDEV.md",
+        "url": "./QMOIGITHUBprod.md",
         "ok": true,
         "reason": null
       }
     ],
-    "qmoi-enhanced/docs/QMOIVERCELDEV.md": [
+    "qmoi-enhanced/docs/QMOIVERCELprod.md": [
       {
-        "label": "QMOIGITLABDEV.md",
-        "url": "./QMOIGITLABDEV.md",
+        "label": "QMOIGITLABprod.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       },
@@ -60380,7 +60380,7 @@
     "qmoi-enhanced/docs/MONITORING_SYSTEM.md": [],
     "qmoi-enhanced/docs/TROUBLESHOOTING.md": [],
     "qmoi-enhanced/docs/ENHANCED_FEATURES.md": [],
-    "qmoi-enhanced/docs/QMOIGITLABDEV.md": [
+    "qmoi-enhanced/docs/QMOIGITLABprod.md": [
       {
         "label": "REFERENCES.md",
         "url": "./REFERENCES.md",
@@ -60388,16 +60388,16 @@
         "reason": null
       },
       {
-        "label": "QMOIGITHUBDEV.md",
-        "url": "./QMOIGITHUBDEV.md",
+        "label": "QMOIGITHUBprod.md",
+        "url": "./QMOIGITHUBprod.md",
         "ok": true,
         "reason": null
       }
     ],
-    "qmoi-enhanced/docs/QMOIGITHUBDEV.md": [
+    "qmoi-enhanced/docs/QMOIGITHUBprod.md": [
       {
-        "label": "QMOIGITLABDEV.md",
-        "url": "./QMOIGITLABDEV.md",
+        "label": "QMOIGITLABprod.md",
+        "url": "./QMOIGITLABprod.md",
         "ok": true,
         "reason": null
       },
@@ -60825,8 +60825,8 @@
         "reason": "external URL"
       },
       {
-        "label": "![devDependency Status",
-        "url": "https://david-dm.org/isaacs/rimraf/dev-status.svg",
+        "label": "![prodDependency Status",
+        "url": "https://david-dm.org/isaacs/rimraf/prod-status.svg",
         "ok": true,
         "reason": "external URL"
       },
@@ -60967,7 +60967,7 @@
       },
       {
         "label": "Apple platforms",
-        "url": "https://developer.apple.com/documentation/foundation/jsondecoder/3766916-allowsjson5",
+        "url": "https://prodeloper.apple.com/documentation/foundation/jsondecoder/3766916-allowsjson5",
         "ok": true,
         "reason": "external URL"
       },
@@ -61128,7 +61128,7 @@
       },
       {
         "label": "`WebSocket`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/WebSocket",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/WebSocket",
         "ok": true,
         "reason": "external URL"
       },
@@ -61388,7 +61388,7 @@
       },
       {
         "label": "since version\n  31",
-        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-developer-tools-episode-31/",
+        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/",
         "ok": true,
         "reason": "external URL"
       },
@@ -61791,7 +61791,7 @@
     "qmoi-enhanced/mobile/node_modules/metro-resolver/README.md": [
       {
         "label": "Metro",
-        "url": "https://metrobundler.dev/",
+        "url": "https://metrobundler.prod/",
         "ok": true,
         "reason": "external URL"
       }
@@ -63566,7 +63566,7 @@
       },
       {
         "label": "`WebSocket`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/WebSocket",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/WebSocket",
         "ok": true,
         "reason": "external URL"
       },
@@ -63755,7 +63755,7 @@
       },
       {
         "label": "Azure Pipelines",
-        "url": "https://azure.microsoft.com/en-us/services/devops/pipelines/",
+        "url": "https://azure.microsoft.com/en-us/services/prodops/pipelines/",
         "ok": true,
         "reason": "external URL"
       },
@@ -64975,7 +64975,7 @@
     "qmoi-enhanced/mobile/node_modules/metro-source-map/README.md": [
       {
         "label": "Metro",
-        "url": "https://metrobundler.dev/",
+        "url": "https://metrobundler.prod/",
         "ok": true,
         "reason": "external URL"
       }
@@ -66175,7 +66175,7 @@
       },
       {
         "label": "since version\n  31",
-        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-developer-tools-episode-31/",
+        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/",
         "ok": true,
         "reason": "external URL"
       },
@@ -66999,7 +66999,7 @@
       },
       {
         "label": "`Symbol`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
         "ok": true,
         "reason": "external URL"
       },
@@ -67037,7 +67037,7 @@
       },
       {
         "label": "![licenses",
-        "url": "https://licenses.dev/b/npm/escalade",
+        "url": "https://licenses.prod/b/npm/escalade",
         "ok": true,
         "reason": "external URL"
       },
@@ -67368,7 +67368,7 @@
       },
       {
         "label": "decodeURIComponent",
-        "url": "https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent",
+        "url": "https://prodeloper.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent",
         "ok": true,
         "reason": "external URL"
       },
@@ -69262,7 +69262,7 @@
       },
       {
         "label": "since version\n  31",
-        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-developer-tools-episode-31/",
+        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/",
         "ok": true,
         "reason": "external URL"
       },
@@ -69381,7 +69381,7 @@
       },
       {
         "label": "here",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
         "ok": true,
         "reason": "external URL"
       },
@@ -69515,7 +69515,7 @@
       },
       {
         "label": "Error",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
         "ok": true,
         "reason": "external URL"
       },
@@ -70203,7 +70203,7 @@
     "qmoi-enhanced/mobile/node_modules/metro-core/README.md": [
       {
         "label": "Metro",
-        "url": "https://metrobundler.dev/",
+        "url": "https://metrobundler.prod/",
         "ok": true,
         "reason": "external URL"
       }
@@ -75671,7 +75671,7 @@
     "qmoi-enhanced/mobile/node_modules/metro-file-map/README.md": [
       {
         "label": "Metro",
-        "url": "https://metrobundler.dev/",
+        "url": "https://metrobundler.prod/",
         "ok": true,
         "reason": "external URL"
       },
@@ -75714,8 +75714,8 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/chrome-launcher/#api"
       },
       {
-        "label": "devtools protocol",
-        "url": "https://chromedevtools.github.io/devtools-protocol/",
+        "label": "prodtools protocol",
+        "url": "https://chromeprodtools.github.io/prodtools-protocol/",
         "ok": true,
         "reason": "external URL"
       },
@@ -75996,7 +75996,7 @@
       },
       {
         "label": "`Browser.getBrowserCommandLine`",
-        "url": "https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getBrowserCommandLine",
+        "url": "https://chromeprodtools.github.io/prodtools-protocol/tot/Browser/#method-getBrowserCommandLine",
         "ok": true,
         "reason": "external URL"
       },
@@ -76056,7 +76056,7 @@
       },
       {
         "label": "Sometimes used",
-        "url": "https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#setting-up-chrome-linux-sandbox",
+        "url": "https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#setting-up-chrome-linux-production",
         "ok": true,
         "reason": "external URL"
       },
@@ -76344,7 +76344,7 @@
       },
       {
         "label": "`Symbol`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
         "ok": true,
         "reason": "external URL"
       },
@@ -76420,7 +76420,7 @@
       },
       {
         "label": "`Array#find`",
-        "url": "https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find",
+        "url": "https://prodeloper.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find",
         "ok": true,
         "reason": "external URL"
       },
@@ -77068,7 +77068,7 @@
       },
       {
         "label": "argparse",
-        "url": "http://docs.python.org/dev/library/argparse.html",
+        "url": "http://docs.python.org/prod/library/argparse.html",
         "ok": true,
         "reason": "external URL"
       },
@@ -77130,7 +77130,7 @@
       },
       {
         "label": "mutual exclusion",
-        "url": "http://docs.python.org/dev/library/argparse.html#mutual-exclusion",
+        "url": "http://docs.python.org/prod/library/argparse.html#mutual-exclusion",
         "ok": true,
         "reason": "external URL"
       }
@@ -77319,10 +77319,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/cosmiconfig/#installation"
       },
       {
-        "label": "Usage for tooling developers",
-        "url": "#usage-for-tooling-developers",
+        "label": "Usage for tooling prodelopers",
+        "url": "#usage-for-tooling-prodelopers",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/cosmiconfig/#usage-for-tooling-developers"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/cosmiconfig/#usage-for-tooling-prodelopers"
       },
       {
         "label": "Result",
@@ -77499,10 +77499,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/cosmiconfig/#imports"
       },
       {
-        "label": "Contributing & Development",
-        "url": "#contributing--development",
+        "label": "Contributing & production",
+        "url": "#contributing--production",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/cosmiconfig/#contributing--development"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/cosmiconfig/#contributing--production"
       },
       {
         "label": "the end user section",
@@ -77560,7 +77560,7 @@
       },
       {
         "label": "dynamic `import` function",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports",
         "ok": true,
         "reason": "external URL"
       },
@@ -77598,7 +77598,7 @@
     "qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/parse-json/readme.md": [
       {
         "label": "`JSON.parse` docs",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#Using_the_reviver_parameter\n",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#Using_the_reviver_parameter\n",
         "ok": true,
         "reason": "external URL"
       }
@@ -77612,7 +77612,7 @@
       },
       {
         "label": "`Symbol`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
         "ok": true,
         "reason": "external URL"
       },
@@ -78466,7 +78466,7 @@
       },
       {
         "label": "`Array#find`",
-        "url": "https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find",
+        "url": "https://prodeloper.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find",
         "ok": true,
         "reason": "external URL"
       },
@@ -78518,7 +78518,7 @@
     "qmoi-enhanced/mobile/node_modules/metro-config/README.md": [
       {
         "label": "Metro",
-        "url": "https://metrobundler.dev/",
+        "url": "https://metrobundler.prod/",
         "ok": true,
         "reason": "external URL"
       }
@@ -78577,7 +78577,7 @@
       },
       {
         "label": "`Object.create(null)`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create",
         "ok": true,
         "reason": "external URL"
       },
@@ -78595,7 +78595,7 @@
       },
       {
         "label": "encodeURIComponent",
-        "url": "https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent",
+        "url": "https://prodeloper.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent",
         "ok": true,
         "reason": "external URL"
       },
@@ -78607,7 +78607,7 @@
       },
       {
         "label": "URL encode",
-        "url": "https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent",
+        "url": "https://prodeloper.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent",
         "ok": true,
         "reason": "external URL"
       },
@@ -78861,7 +78861,7 @@
       },
       {
         "label": "`Array#find`",
-        "url": "https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find",
+        "url": "https://prodeloper.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find",
         "ok": true,
         "reason": "external URL"
       },
@@ -79043,7 +79043,7 @@
       },
       {
         "label": "since version\n  31",
-        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-developer-tools-episode-31/",
+        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/",
         "ok": true,
         "reason": "external URL"
       },
@@ -79301,7 +79301,7 @@
       },
       {
         "label": "`Iterable`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols",
         "ok": true,
         "reason": "external URL"
       },
@@ -81022,7 +81022,7 @@
       },
       {
         "label": "Accept-Encoding",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding",
         "ok": true,
         "reason": "external URL"
       },
@@ -81168,7 +81168,7 @@
       },
       {
         "label": "since version\n  31",
-        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-developer-tools-episode-31/",
+        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/",
         "ok": true,
         "reason": "external URL"
       },
@@ -81487,32 +81487,32 @@
     ],
     "qmoi-enhanced/mobile/node_modules/@sideway/formula/README.md": [
       {
-        "label": "joi.dev",
-        "url": "https://joi.dev",
+        "label": "joi.prod",
+        "url": "https://joi.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Documentation and API",
-        "url": "https://joi.dev/module/formula/",
+        "url": "https://joi.prod/module/formula/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Version status",
-        "url": "https://joi.dev/resources/status/#formula",
+        "url": "https://joi.prod/resources/status/#formula",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Changelog",
-        "url": "https://joi.dev/module/formula/changelog/",
+        "url": "https://joi.prod/module/formula/changelog/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Project policies",
-        "url": "https://joi.dev/policies/",
+        "url": "https://joi.prod/policies/",
         "ok": true,
         "reason": "external URL"
       },
@@ -81526,32 +81526,32 @@
     "qmoi-enhanced/mobile/node_modules/@sideway/formula/LICENSE.md": [],
     "qmoi-enhanced/mobile/node_modules/@sideway/address/README.md": [
       {
-        "label": "joi.dev",
-        "url": "https://joi.dev",
+        "label": "joi.prod",
+        "url": "https://joi.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Documentation and API",
-        "url": "https://joi.dev/module/address/",
+        "url": "https://joi.prod/module/address/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Versions status",
-        "url": "https://joi.dev/resources/status/#address",
+        "url": "https://joi.prod/resources/status/#address",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Changelog",
-        "url": "https://joi.dev/module/address/changelog/",
+        "url": "https://joi.prod/module/address/changelog/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Project policies",
-        "url": "https://joi.dev/policies/",
+        "url": "https://joi.prod/policies/",
         "ok": true,
         "reason": "external URL"
       }
@@ -81559,32 +81559,32 @@
     "qmoi-enhanced/mobile/node_modules/@sideway/address/LICENSE.md": [],
     "qmoi-enhanced/mobile/node_modules/@sideway/pinpoint/README.md": [
       {
-        "label": "joi.dev",
-        "url": "https://joi.dev",
+        "label": "joi.prod",
+        "url": "https://joi.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Documentation and API",
-        "url": "https://joi.dev/module/pinpoint/",
+        "url": "https://joi.prod/module/pinpoint/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Version status",
-        "url": "https://joi.dev/resources/status/#pinpoint",
+        "url": "https://joi.prod/resources/status/#pinpoint",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Changelog",
-        "url": "https://joi.dev/module/pinpoint/changelog/",
+        "url": "https://joi.prod/module/pinpoint/changelog/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Project policies",
-        "url": "https://joi.dev/policies/",
+        "url": "https://joi.prod/policies/",
         "ok": true,
         "reason": "external URL"
       }
@@ -82463,7 +82463,7 @@
       },
       {
         "label": "RegExp literal or pattern string",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
         "ok": true,
         "reason": "external URL"
       },
@@ -82703,7 +82703,7 @@
       },
       {
         "label": "V8 stack trace API",
-        "url": "https://v8.dev/docs/stack-trace-api",
+        "url": "https://v8.prod/docs/stack-trace-api",
         "ok": true,
         "reason": "external URL"
       },
@@ -82771,7 +82771,7 @@
       },
       {
         "label": "arrays",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray",
         "ok": true,
         "reason": "external URL"
       },
@@ -85096,13 +85096,13 @@
     "qmoi-enhanced/mobile/node_modules/queue-microtask/README.md": [
       {
         "label": "`queueMicrotask`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/queueMicrotask",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/queueMicrotask",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "`queueMicrotask`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/queueMicrotask",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/queueMicrotask",
         "ok": true,
         "reason": "external URL"
       },
@@ -88846,7 +88846,7 @@
       },
       {
         "label": "regex quantifiers",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#quantifiers",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#quantifiers",
         "ok": true,
         "reason": "external URL"
       },
@@ -91036,7 +91036,7 @@
       },
       {
         "label": "in the MDN documentation about JSON.parse",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#data.3A_Using_the_reviver_parameter",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#data.3A_Using_the_reviver_parameter",
         "ok": true,
         "reason": "external URL"
       },
@@ -91250,7 +91250,7 @@
       },
       {
         "label": "since version\n  31",
-        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-developer-tools-episode-31/",
+        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/",
         "ok": true,
         "reason": "external URL"
       },
@@ -91283,7 +91283,7 @@
       },
       {
         "label": "argparse",
-        "url": "http://docs.python.org/dev/library/argparse.html",
+        "url": "http://docs.python.org/prod/library/argparse.html",
         "ok": true,
         "reason": "external URL"
       },
@@ -91301,25 +91301,25 @@
       },
       {
         "label": "original ArgumentParser guide",
-        "url": "http://docs.python.org/dev/library/argparse.html#argumentparser-objects",
+        "url": "http://docs.python.org/prod/library/argparse.html#argumentparser-objects",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "original add_argument guide",
-        "url": "http://docs.python.org/dev/library/argparse.html#the-add-argument-method",
+        "url": "http://docs.python.org/prod/library/argparse.html#the-add-argument-method",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "original action guide",
-        "url": "http://docs.python.org/dev/library/argparse.html#action",
+        "url": "http://docs.python.org/prod/library/argparse.html#action",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "original sub-commands guide",
-        "url": "http://docs.python.org/dev/library/argparse.html#sub-commands",
+        "url": "http://docs.python.org/prod/library/argparse.html#sub-commands",
         "ok": true,
         "reason": "external URL"
       },
@@ -91357,7 +91357,7 @@
     "qmoi-enhanced/mobile/node_modules/argparse/CHANGELOG.md": [
       {
         "label": "mutual exclusion",
-        "url": "http://docs.python.org/dev/library/argparse.html#mutual-exclusion",
+        "url": "http://docs.python.org/prod/library/argparse.html#mutual-exclusion",
         "ok": true,
         "reason": "external URL"
       }
@@ -91449,25 +91449,25 @@
       },
       {
         "label": "JSON reviver",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "JSON reviver",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "JSON replacer",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "JSON replacer",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify",
         "ok": true,
         "reason": "external URL"
       }
@@ -91789,10 +91789,10 @@
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/jest-[PRODUCTION READY]/README.md": [
+    "qmoi-enhanced/mobile/node_modules/jest-[production READY]/README.md": [
       {
         "label": "Jest documentation",
-        "url": "https://jestjs.io/docs/[PRODUCTION READY]_PROD-function-api",
+        "url": "https://jestjs.io/docs/[production READY]_prod-function-api",
         "ok": true,
         "reason": "external URL"
       }
@@ -92123,7 +92123,7 @@
       },
       {
         "label": "Azure Pipelines",
-        "url": "https://azure.microsoft.com/en-us/services/devops/pipelines/",
+        "url": "https://azure.microsoft.com/en-us/services/prodops/pipelines/",
         "ok": true,
         "reason": "external URL"
       },
@@ -92201,7 +92201,7 @@
       },
       {
         "label": "Expo Application Services",
-        "url": "https://expo.dev/eas",
+        "url": "https://expo.prod/eas",
         "ok": true,
         "reason": "external URL"
       },
@@ -93085,13 +93085,13 @@
       },
       {
         "label": "Expo",
-        "url": "https://expo.dev",
+        "url": "https://expo.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Getting Started guide",
-        "url": "https://reactnative.dev/docs/getting-started",
+        "url": "https://reactnative.prod/docs/getting-started",
         "ok": true,
         "reason": "external URL"
       },
@@ -93102,19 +93102,19 @@
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/react-native/ReactCommon/react/nativemodule/devtoolsruntimesettings/README.md": [],
+    "qmoi-enhanced/mobile/node_modules/react-native/ReactCommon/react/nativemodule/prodtoolsruntimesettings/README.md": [],
     "qmoi-enhanced/mobile/node_modules/react-native/ReactCommon/react/runtime/README.md": [],
     "qmoi-enhanced/mobile/node_modules/react-native/ReactCommon/jsinspector-modern/CONCEPTS.md": [],
     "qmoi-enhanced/mobile/node_modules/react-native/ReactAndroid/README.md": [
       {
         "label": "Building from Source guide",
-        "url": "https://reactnative.dev/contributing/how-to-build-from-source#prerequisites",
+        "url": "https://reactnative.prod/contributing/how-to-build-from-source#prerequisites",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Testing guide",
-        "url": "https://reactnative.dev/contributing/how-to-run-and-write-tests",
+        "url": "https://reactnative.prod/contributing/how-to-run-and-write-tests",
         "ok": true,
         "reason": "external URL"
       }
@@ -93477,7 +93477,7 @@
       },
       {
         "label": "XMLHttpRequests",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/XMLHttpRequest",
         "ok": true,
         "reason": "external URL"
       },
@@ -93489,7 +93489,7 @@
       },
       {
         "label": "Promise",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
         "ok": true,
         "reason": "external URL"
       },
@@ -93543,7 +93543,7 @@
       },
       {
         "label": "rejection callback",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then",
         "ok": true,
         "reason": "external URL"
       },
@@ -93573,13 +93573,13 @@
       },
       {
         "label": "CORS",
-        "url": "https://developer.mozilla.org/ru/docs/Web/HTTP/Guides/CORS",
+        "url": "https://prodeloper.mozilla.org/ru/docs/Web/HTTP/Guides/CORS",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Mixed Content",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/Security/Mixed_content",
         "ok": true,
         "reason": "external URL"
       },
@@ -93591,13 +93591,13 @@
       },
       {
         "label": "`application/x-www-form-urlencoded` format",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/HTTP/Methods/POST",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "`URLSearchParams`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/URLSearchParams",
         "ok": true,
         "reason": "external URL"
       },
@@ -93663,7 +93663,7 @@
       },
       {
         "label": "SvelteKit",
-        "url": "https://svelte.dev/docs/kit/web-standards#Fetch-APIs",
+        "url": "https://svelte.prod/docs/kit/web-standards#Fetch-APIs",
         "ok": true,
         "reason": "external URL"
       },
@@ -94050,7 +94050,7 @@
       },
       {
         "label": "Manish Sahani",
-        "url": "https://github.com/manishsahanidev \"+70/-0 (#6961 ",
+        "url": "https://github.com/manishsahaniprod \"+70/-0 (#6961 ",
         "ok": true,
         "reason": "external URL"
       },
@@ -94158,7 +94158,7 @@
       },
       {
         "label": "Uhyeon Park",
-        "url": "https://github.com/warpdev \"+1/-1 (#6883 ",
+        "url": "https://github.com/warpprod \"+1/-1 (#6883 ",
         "ok": true,
         "reason": "external URL"
       },
@@ -98028,7 +98028,7 @@
       },
       {
         "label": "Luca Pizzini",
-        "url": "https://github.com/lpizzinidev",
+        "url": "https://github.com/lpizziniprod",
         "ok": true,
         "reason": "external URL"
       },
@@ -98298,7 +98298,7 @@
       },
       {
         "label": "Luca Pizzini",
-        "url": "https://github.com/lpizzinidev",
+        "url": "https://github.com/lpizziniprod",
         "ok": true,
         "reason": "external URL"
       },
@@ -98389,13 +98389,13 @@
     "qmoi-enhanced/mobile/node_modules/marky/README.md": [
       {
         "label": "high-resolution\ntimings",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/User_Timing_API",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "User Timing API",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/User_Timing_API",
         "ok": true,
         "reason": "external URL"
       },
@@ -98407,12 +98407,12 @@
       },
       {
         "label": "more accurate",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/Performance/now",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/Performance/now",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "Chrome Dev Tools screenshot",
+        "label": "Chrome prod Tools screenshot",
         "url": "doc/chrome.png",
         "ok": false,
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/marky/doc/chrome.png"
@@ -98425,13 +98425,13 @@
       },
       {
         "label": "PerformanceEntries",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/PerformanceEntry",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Performance Timeline",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/Performance_Timeline",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/Performance_Timeline",
         "ok": true,
         "reason": "external URL"
       },
@@ -98443,7 +98443,7 @@
       },
       {
         "label": "Windows Performance Analyzer",
-        "url": "https://blogs.windows.com/msedgedev/2016/05/11/top-down-analysis-wpt/",
+        "url": "https://blogs.windows.com/msedgeprod/2016/05/11/top-down-analysis-wpt/",
         "ok": true,
         "reason": "external URL"
       },
@@ -98529,7 +98529,7 @@
       },
       {
         "label": "primitive value",
-        "url": "https://developer.mozilla.org/en-US/docs/Glossary/Primitive",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Glossary/Primitive",
         "ok": true,
         "reason": "external URL"
       },
@@ -98541,7 +98541,7 @@
       },
       {
         "label": "`class` constructor",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes",
         "ok": true,
         "reason": "external URL"
       },
@@ -98553,7 +98553,7 @@
       },
       {
         "label": "typed array",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray",
         "ok": true,
         "reason": "external URL"
       },
@@ -99151,49 +99151,49 @@
     "qmoi-enhanced/mobile/node_modules/@hapi/topo/README.md": [
       {
         "label": "hapi web framework",
-        "url": "https://hapi.dev",
+        "url": "https://hapi.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "hapi",
-        "url": "https://hapi.dev",
+        "url": "https://hapi.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "hapi.dev",
-        "url": "https://hapi.dev",
+        "label": "hapi.prod",
+        "url": "https://hapi.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Documentation and API",
-        "url": "https://hapi.dev/family/topo/",
+        "url": "https://hapi.prod/family/topo/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Version status",
-        "url": "https://hapi.dev/resources/status/#topo",
+        "url": "https://hapi.prod/resources/status/#topo",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Changelog",
-        "url": "https://hapi.dev/family/topo/changelog/",
+        "url": "https://hapi.prod/family/topo/changelog/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Project policies",
-        "url": "https://hapi.dev/policies/",
+        "url": "https://hapi.prod/policies/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Free and commercial support options",
-        "url": "https://hapi.dev/support/",
+        "url": "https://hapi.prod/support/",
         "ok": true,
         "reason": "external URL"
       }
@@ -99202,13 +99202,13 @@
     "qmoi-enhanced/mobile/node_modules/@hapi/hoek/README.md": [
       {
         "label": "hapi web framework",
-        "url": "https://hapi.dev",
+        "url": "https://hapi.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "hapi",
-        "url": "https://hapi.dev",
+        "url": "https://hapi.prod",
         "ok": true,
         "reason": "external URL"
       },
@@ -99219,38 +99219,38 @@
         "reason": "external URL"
       },
       {
-        "label": "hapi.dev",
-        "url": "https://hapi.dev",
+        "label": "hapi.prod",
+        "url": "https://hapi.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Documentation and API",
-        "url": "https://hapi.dev/family/hoek/",
+        "url": "https://hapi.prod/family/hoek/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Version status",
-        "url": "https://hapi.dev/resources/status/#hoek",
+        "url": "https://hapi.prod/resources/status/#hoek",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Changelog",
-        "url": "https://hapi.dev/family/hoek/changelog/",
+        "url": "https://hapi.prod/family/hoek/changelog/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Project policies",
-        "url": "https://hapi.dev/policies/",
+        "url": "https://hapi.prod/policies/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Free and commercial support options",
-        "url": "https://hapi.dev/support/",
+        "url": "https://hapi.prod/support/",
         "ok": true,
         "reason": "external URL"
       }
@@ -100041,7 +100041,7 @@
       },
       {
         "label": "standard literals",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals",
         "ok": true,
         "reason": "external URL"
       },
@@ -101434,7 +101434,7 @@
       },
       {
         "label": "![Build Status",
-        "url": "https://img.shields.io/github/workflow/status/micromatch/is-glob/dev",
+        "url": "https://img.shields.io/github/workflow/status/micromatch/is-glob/prod",
         "ok": true,
         "reason": "external URL"
       },
@@ -101536,7 +101536,7 @@
       },
       {
         "label": "homepage",
-        "url": "https://github.com/update/update \"Be scalable! Update is a new, open source developer framework and CLI for automating updates of any kind in code projects.\"",
+        "url": "https://github.com/update/update \"Be scalable! Update is a new, open source prodeloper framework and CLI for automating updates of any kind in code projects.\"",
         "ok": true,
         "reason": "external URL"
       },
@@ -101691,7 +101691,7 @@
       }
     ],
     "qmoi-enhanced/mobile/node_modules/hermes-estree/README.md": [],
-    "qmoi-enhanced/mobile/node_modules/react-devtools-core/README.md": [
+    "qmoi-enhanced/mobile/node_modules/react-prodtools-core/README.md": [
       {
         "label": "React Native",
         "url": "https://github.com/facebook/react-native",
@@ -101699,8 +101699,8 @@
         "reason": "external URL"
       },
       {
-        "label": "`react-devtools`",
-        "url": "https://github.com/facebook/react/tree/main/packages/react-devtools",
+        "label": "`react-prodtools`",
+        "url": "https://github.com/facebook/react/tree/main/packages/react-prodtools",
         "ok": true,
         "reason": "external URL"
       },
@@ -101714,22 +101714,22 @@
         "label": "plain settings object",
         "url": "#Settings",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/#Settings"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/#Settings"
       },
       {
-        "label": "`react-devtools`",
-        "url": "https://github.com/facebook/react/tree/main/packages/react-devtools",
+        "label": "`react-prodtools`",
+        "url": "https://github.com/facebook/react/tree/main/packages/react-prodtools",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "`react-devtools`",
-        "url": "https://github.com/facebook/react/tree/main/packages/react-devtools",
+        "label": "`react-prodtools`",
+        "url": "https://github.com/facebook/react/tree/main/packages/react-prodtools",
         "ok": true,
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/README.md": [
+    "qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md": [
       {
         "label": "![Version npm",
         "url": "https://img.shields.io/npm/v/ws.svg?logo=npm",
@@ -101750,7 +101750,7 @@
       },
       {
         "label": "`WebSocket`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/WebSocket",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/WebSocket",
         "ok": true,
         "reason": "external URL"
       },
@@ -101764,133 +101764,133 @@
         "label": "Protocol support",
         "url": "#protocol-support",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#protocol-support"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#protocol-support"
       },
       {
         "label": "Installing",
         "url": "#installing",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#installing"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#installing"
       },
       {
         "label": "Opt-in for performance",
         "url": "#opt-in-for-performance",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#opt-in-for-performance"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#opt-in-for-performance"
       },
       {
         "label": "API docs",
         "url": "#api-docs",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#api-docs"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#api-docs"
       },
       {
         "label": "WebSocket compression",
         "url": "#websocket-compression",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#websocket-compression"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#websocket-compression"
       },
       {
         "label": "Usage examples",
         "url": "#usage-examples",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#usage-examples"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#usage-examples"
       },
       {
         "label": "Sending and receiving text data",
         "url": "#sending-and-receiving-text-data",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#sending-and-receiving-text-data"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#sending-and-receiving-text-data"
       },
       {
         "label": "Sending binary data",
         "url": "#sending-binary-data",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#sending-binary-data"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#sending-binary-data"
       },
       {
         "label": "Simple server",
         "url": "#simple-server",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#simple-server"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#simple-server"
       },
       {
         "label": "External HTTP/S server",
         "url": "#external-https-server",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#external-https-server"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#external-https-server"
       },
       {
         "label": "Multiple servers sharing a single HTTP/S server",
         "url": "#multiple-servers-sharing-a-single-https-server",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#multiple-servers-sharing-a-single-https-server"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#multiple-servers-sharing-a-single-https-server"
       },
       {
         "label": "Client authentication",
         "url": "#client-authentication",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#client-authentication"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#client-authentication"
       },
       {
         "label": "Server broadcast",
         "url": "#server-broadcast",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#server-broadcast"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#server-broadcast"
       },
       {
         "label": "Use the Node.js streams API",
         "url": "#use-the-nodejs-streams-api",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#use-the-nodejs-streams-api"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#use-the-nodejs-streams-api"
       },
       {
         "label": "Other examples",
         "url": "#other-examples",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#other-examples"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#other-examples"
       },
       {
         "label": "FAQ",
         "url": "#faq",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#faq"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#faq"
       },
       {
         "label": "How to get the IP address of the client?",
         "url": "#how-to-get-the-ip-address-of-the-client",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#how-to-get-the-ip-address-of-the-client"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#how-to-get-the-ip-address-of-the-client"
       },
       {
         "label": "How to detect and close broken connections?",
         "url": "#how-to-detect-and-close-broken-connections",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#how-to-detect-and-close-broken-connections"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#how-to-detect-and-close-broken-connections"
       },
       {
         "label": "How to connect via a proxy?",
         "url": "#how-to-connect-via-a-proxy",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#how-to-connect-via-a-proxy"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#how-to-connect-via-a-proxy"
       },
       {
         "label": "Changelog",
         "url": "#changelog",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#changelog"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#changelog"
       },
       {
         "label": "License",
         "url": "#license",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/#license"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#license"
       },
       {
         "label": "`/doc/ws.md`",
         "url": "./doc/ws.md",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/doc/ws.md"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/doc/ws.md"
       },
       {
         "label": "MIT",
@@ -102135,7 +102135,7 @@
       },
       {
         "label": "here",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
         "ok": true,
         "reason": "external URL"
       }
@@ -102395,7 +102395,7 @@
       },
       {
         "label": "homepage",
-        "url": "https://github.com/jonschlinkert/repeat-string \"Repeat the given string n times. Fas[PRODUCTION READY]_PROD for repeating a string.\"",
+        "url": "https://github.com/jonschlinkert/repeat-string \"Repeat the given string n times. Fas[production READY]_prod for repeating a string.\"",
         "ok": true,
         "reason": "external URL"
       },
@@ -102613,13 +102613,13 @@
       },
       {
         "label": "![community slack",
-        "url": "http://devtoolscommunity.herokuapp.com/badge.svg",
+        "url": "http://prodtoolscommunity.herokuapp.com/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "community slack",
-        "url": "http://devtoolscommunity.herokuapp.com",
+        "url": "http://prodtoolscommunity.herokuapp.com",
         "ok": true,
         "reason": "external URL"
       },
@@ -103984,19 +103984,19 @@
       },
       {
         "label": "Map",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Array.production.values",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/values",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/values",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "WeakMap",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
         "ok": true,
         "reason": "external URL"
       }
@@ -104061,7 +104061,7 @@
       },
       {
         "label": "community slack",
-        "url": "http://devtoolscommunity.herokuapp.com",
+        "url": "http://prodtoolscommunity.herokuapp.com",
         "ok": true,
         "reason": "external URL"
       },
@@ -104925,32 +104925,32 @@
     ],
     "qmoi-enhanced/mobile/node_modules/joi/README.md": [
       {
-        "label": "joi.dev",
-        "url": "https://joi.dev",
+        "label": "joi.prod",
+        "url": "https://joi.prod",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Documentation and API",
-        "url": "https://joi.dev/api/",
+        "url": "https://joi.prod/api/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Versions status",
-        "url": "https://joi.dev/resources/status/#joi",
+        "url": "https://joi.prod/resources/status/#joi",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Changelog",
-        "url": "https://joi.dev/resources/changelog/",
+        "url": "https://joi.prod/resources/changelog/",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Project policies",
-        "url": "https://joi.dev/policies/",
+        "url": "https://joi.prod/policies/",
         "ok": true,
         "reason": "external URL"
       }
@@ -105480,7 +105480,7 @@
     "qmoi-enhanced/mobile/node_modules/@sinonjs/authentic-timers/README.md": [
       {
         "label": "![codecov",
-        "url": "https://codecov.io/gh/sinonjs/[PRODUCTION READY]_PROD-timers/branch/main/graph/badge.svg",
+        "url": "https://codecov.io/gh/sinonjs/[production READY]_prod-timers/branch/main/graph/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
@@ -105498,7 +105498,7 @@
       },
       {
         "label": "Skypack",
-        "url": "https://www.skypack.dev",
+        "url": "https://www.skypack.prod",
         "ok": true,
         "reason": "external URL"
       },
@@ -105522,7 +105522,7 @@
       },
       {
         "label": "`Performance`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/Performance/now",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/Performance/now",
         "ok": true,
         "reason": "external URL"
       },
@@ -107012,7 +107012,7 @@
       },
       {
         "label": "Sometimes used",
-        "url": "https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#setting-up-chrome-linux-sandbox",
+        "url": "https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#setting-up-chrome-linux-production",
         "ok": true,
         "reason": "external URL"
       },
@@ -107140,7 +107140,7 @@
     "qmoi-enhanced/mobile/node_modules/logkitty/README.md": [
       {
         "label": "patters supported by Logcat",
-        "url": "https://developer.android.com/studio/command-line/logcat#filteringOutput",
+        "url": "https://prodeloper.android.com/studio/command-line/logcat#filteringOutput",
         "ok": true,
         "reason": "external URL"
       },
@@ -107327,7 +107327,7 @@
       },
       {
         "label": "community slack",
-        "url": "http://devtoolscommunity.herokuapp.com",
+        "url": "http://prodtoolscommunity.herokuapp.com",
         "ok": true,
         "reason": "external URL"
       },
@@ -111318,8 +111318,8 @@
         "reason": "external URL"
       },
       {
-        "label": "devongovett",
-        "url": "https://github.com/devongovett",
+        "label": "prodongovett",
+        "url": "https://github.com/prodongovett",
         "ok": true,
         "reason": "external URL"
       },
@@ -111871,7 +111871,7 @@
     "qmoi-enhanced/mobile/node_modules/convert-source-map/README.md": [
       {
         "label": "JSON.stringify",
-        "url": "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/JSON/stringify",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/JSON/stringify",
         "ok": true,
         "reason": "external URL"
       }
@@ -111939,20 +111939,20 @@
         "reason": "external URL"
       },
       {
-        "label": "`@react-native/dev-middleware`",
-        "url": "https://www.npmjs.com/package/@react-native/dev-middleware",
+        "label": "`@react-native/prod-middleware`",
+        "url": "https://www.npmjs.com/package/@react-native/prod-middleware",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "facebook/react-native-devtools-frontend",
-        "url": "https://github.com/facebook/react-native-devtools-frontend",
+        "label": "facebook/react-native-prodtools-frontend",
+        "url": "https://github.com/facebook/react-native-prodtools-frontend",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "facebook/react-native-devtools-frontend",
-        "url": "https://github.com/facebook/react-native-devtools-frontend",
+        "label": "facebook/react-native-prodtools-frontend",
+        "url": "https://github.com/facebook/react-native-prodtools-frontend",
         "ok": true,
         "reason": "external URL"
       }
@@ -111960,10 +111960,10 @@
     "qmoi-enhanced/mobile/node_modules/@react-native/codegen/README.md": [],
     "qmoi-enhanced/mobile/node_modules/@react-native/js-polyfills/README.md": [],
     "qmoi-enhanced/mobile/node_modules/@react-native/assets-registry/README.md": [],
-    "qmoi-enhanced/mobile/node_modules/@react-native/dev-middleware/README.md": [
+    "qmoi-enhanced/mobile/node_modules/@react-native/prod-middleware/README.md": [
       {
         "label": "npm package",
-        "url": "https://img.shields.io/npm/v/@react-native/dev-middleware?color=brightgreen&label=npm%20package",
+        "url": "https://img.shields.io/npm/v/@react-native/prod-middleware?color=brightgreen&label=npm%20package",
         "ok": true,
         "reason": "external URL"
       },
@@ -111974,8 +111974,8 @@
         "reason": "external URL"
       },
       {
-        "label": "`@expo/dev-server`",
-        "url": "https://www.npmjs.com/package/@expo/dev-server",
+        "label": "`@expo/prod-server`",
+        "url": "https://www.npmjs.com/package/@expo/prod-server",
         "ok": true,
         "reason": "external URL"
       },
@@ -111986,14 +111986,14 @@
         "reason": "external URL"
       },
       {
-        "label": "Chrome DevTools protocol (CDP)",
-        "url": "https://chromedevtools.github.io/devtools-protocol/",
+        "label": "Chrome prodTools protocol (CDP)",
+        "url": "https://chromeprodtools.github.io/prodtools-protocol/",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "Dev Menu",
-        "url": "https://reactnative.dev/docs/debugging#accessing-the-dev-menu",
+        "label": "prod Menu",
+        "url": "https://reactnative.prod/docs/debugging#accessing-the-prod-menu",
         "ok": true,
         "reason": "external URL"
       },
@@ -112005,19 +112005,19 @@
       },
       {
         "label": "CDP",
-        "url": "https://chromedevtools.github.io/devtools-protocol/#endpoints",
+        "url": "https://chromeprodtools.github.io/prodtools-protocol/#endpoints",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "CDP",
-        "url": "https://chromedevtools.github.io/devtools-protocol/#endpoints",
+        "url": "https://chromeprodtools.github.io/prodtools-protocol/#endpoints",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Contributing guide",
-        "url": "https://reactnative.dev/contributing/overview#contributing-code",
+        "url": "https://reactnative.prod/contributing/overview#contributing-code",
         "ok": true,
         "reason": "external URL"
       }
@@ -112032,7 +112032,7 @@
       },
       {
         "label": "Contributing guide",
-        "url": "https://reactnative.dev/contributing/overview#contributing-code",
+        "url": "https://reactnative.prod/contributing/overview#contributing-code",
         "ok": true,
         "reason": "external URL"
       }
@@ -112148,7 +112148,7 @@
     "qmoi-enhanced/mobile/node_modules/whatwg-fetch/README.md": [
       {
         "label": "![OpenSSF Scorecard",
-        "url": "https://api.securityscorecards.dev/projects/github.com/JakeChampion/fetch/badge",
+        "url": "https://api.securityscorecards.prod/projects/github.com/JakeChampion/fetch/badge",
         "ok": true,
         "reason": "external URL"
       },
@@ -112328,19 +112328,19 @@
       },
       {
         "label": "the abortable fetch API",
-        "url": "https://developers.google.com/web/updates/2017/09/abortable-fetch",
+        "url": "https://prodelopers.google.com/web/updates/2017/09/abortable-fetch",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "AbortController",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/AbortController",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/AbortController",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "AbortSignal",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/AbortSignal",
         "ok": true,
         "reason": "external URL"
       },
@@ -113182,7 +113182,7 @@
       },
       {
         "label": "since version\n31",
-        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-developer-tools-episode-31/",
+        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/",
         "ok": true,
         "reason": "external URL"
       },
@@ -113399,10 +113399,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/cosmiconfig/#differences-from-rc"
       },
       {
-        "label": "Contributing & Development",
-        "url": "#contributing--development",
+        "label": "Contributing & production",
+        "url": "#contributing--production",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/cosmiconfig/#contributing--development"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/cosmiconfig/#contributing--production"
       },
       {
         "label": "\"Caching\"",
@@ -115134,7 +115134,7 @@
       },
       {
         "label": "`String#split()`",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split",
         "ok": true,
         "reason": "external URL"
       },
@@ -115187,7 +115187,7 @@
       },
       {
         "label": "`JSON.parse` docs",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#Using_the_reviver_parameter\n",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#Using_the_reviver_parameter\n",
         "ok": true,
         "reason": "external URL"
       },
@@ -115250,25 +115250,25 @@
     "qmoi-enhanced/dashboard/node_modules/vite/README.md": [
       {
         "label": "native ES modules",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "rich built-in features",
-        "url": "https://vite.dev/guide/features.html",
+        "url": "https://vite.prod/guide/features.html",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Hot Module Replacement (HMR)",
-        "url": "https://vite.dev/guide/features.html#hot-module-replacement",
+        "url": "https://vite.prod/guide/features.html#hot-module-replacement",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "build command",
-        "url": "https://vite.dev/guide/build.html",
+        "url": "https://vite.prod/guide/build.html",
         "ok": true,
         "reason": "external URL"
       },
@@ -115280,19 +115280,19 @@
       },
       {
         "label": "Plugin API",
-        "url": "https://vite.dev/guide/api-plugin.html",
+        "url": "https://vite.prod/guide/api-plugin.html",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "JavaScript API",
-        "url": "https://vite.dev/guide/api-javascript.html",
+        "url": "https://vite.prod/guide/api-javascript.html",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Read the Docs to Learn More",
-        "url": "https://vite.dev",
+        "url": "https://vite.prod",
         "ok": true,
         "reason": "external URL"
       }
@@ -115389,7 +115389,7 @@
       },
       {
         "label": "Apple platforms",
-        "url": "https://developer.apple.com/documentation/foundation/jsondecoder/3766916-allowsjson5",
+        "url": "https://prodeloper.apple.com/documentation/foundation/jsondecoder/3766916-allowsjson5",
         "ok": true,
         "reason": "external URL"
       },
@@ -115728,7 +115728,7 @@
       },
       {
         "label": "![licenses",
-        "url": "https://licenses.dev/b/npm/escalade",
+        "url": "https://licenses.prod/b/npm/escalade",
         "ok": true,
         "reason": "external URL"
       },
@@ -115863,8 +115863,8 @@
         "reason": "external URL"
       },
       {
-        "label": "SuperchupuDev/tinyglobby",
-        "url": "https://github.com/SuperchupuDev/tinyglobby",
+        "label": "Superchupuprod/tinyglobby",
+        "url": "https://github.com/Superchupuprod/tinyglobby",
         "ok": true,
         "reason": "external URL"
       },
@@ -118081,13 +118081,13 @@
       },
       {
         "label": "middleware mode",
-        "url": "https://vite.dev/config/server-options.html#server-middlewaremode",
+        "url": "https://vite.prod/config/server-options.html#server-middlewaremode",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "Gatsby docs",
-        "url": "https://www.gatsbyjs.com/docs/reference/local-development/fast-refresh/#how-it-works",
+        "url": "https://www.gatsbyjs.com/docs/reference/local-production/fast-refresh/#how-it-works",
         "ok": true,
         "reason": "external URL"
       },
@@ -118488,7 +118488,7 @@
     "qmoi-enhanced/dashboard/node_modules/convert-source-map/README.md": [
       {
         "label": "JSON.stringify",
-        "url": "https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/JSON/stringify",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/JSON/stringify",
         "ok": true,
         "reason": "external URL"
       }
@@ -118527,7 +118527,7 @@
       },
       {
         "label": "since version\n31",
-        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-developer-tools-episode-31/",
+        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/",
         "ok": true,
         "reason": "external URL"
       },
@@ -123614,7 +123614,7 @@
       },
       {
         "label": "in the MDN documentation about JSON.parse",
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#data.3A_Using_the_reviver_parameter",
+        "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#data.3A_Using_the_reviver_parameter",
         "ok": true,
         "reason": "external URL"
       },
@@ -126066,7 +126066,7 @@
       },
       {
         "label": "since version\n31",
-        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-developer-tools-episode-31/",
+        "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/",
         "ok": true,
         "reason": "external URL"
       },

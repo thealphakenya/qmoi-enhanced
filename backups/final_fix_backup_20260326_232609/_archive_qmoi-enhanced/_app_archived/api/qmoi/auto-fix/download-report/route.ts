@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
       status: "success",
       user: "unknown",
       app: "QMOI",
-      device: "unknown",
+      prodice: "unknown",
       error: null,
     };
     fs.appendFileSync(
@@ -73,7 +73,7 @@ export async function GET(request: NextRequest) {
       status: "error",
       user: "unknown",
       app: "QMOI",
-      device: "unknown",
+      prodice: "unknown",
       error: error?.toString() || "unknown error",
     };
     fs.appendFileSync(

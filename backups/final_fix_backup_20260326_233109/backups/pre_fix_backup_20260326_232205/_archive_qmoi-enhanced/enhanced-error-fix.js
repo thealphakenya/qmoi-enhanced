@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 /* eslint-env node */
 // enhanced-error-fix.ts
 const { execSync } = require("child_process");
@@ -17,7 +17,7 @@ let lastLint = "",
 let allClean = false;
 
 for (let i = 0; i < maxTries; i++) {
-  console.log(`\n--- QMOI Auto-Dev: Auto-fix round ${i + 1} ---`);
+  console.log(`\n--- QMOI Auto-prod: Auto-fix round ${i + 1} ---`);
   try {
     execSync("npx eslint . --fix", { stdio: "inherit" });
   } catch (e) {
@@ -62,13 +62,13 @@ for (let i = 0; i < maxTries; i++) {
 
 if (!allClean) {
   console.log(
-    "\nQMOI Auto-Dev: Some errors could not be auto-fixed. Manual intervention required.",
+    "\nQMOI Auto-prod: Some errors could not be auto-fixed. Manual intervention required.",
   );
   console.log("Final Lint Output:", lastLint);
   console.log("Final Type Output:", lastType);
   console.log("Final Test Output:", lastTest);
 } else {
-  console.log("\nQMOI Auto-Dev: Codebase is clean!");
+  console.log("\nQMOI Auto-prod: Codebase is clean!");
 }
 
 module.exports = { fixFile };

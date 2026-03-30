@@ -12,7 +12,7 @@ async function testPayPalAdapter() {
     const adapter = new PayPalAdapter();
 
     await adapter.initialize({
-      sandboxMode: true,
+      productionMode: true,
       credentials: {
         clientId: "test_client_id",
         clientSecret: "test_client_secret",

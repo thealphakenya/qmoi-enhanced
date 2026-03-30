@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 import requests
 
-def test_status_returns_device_info():
+def test_status_returns_prodice_info():
     r = requests.get('http://localhost:3000/api/qcity/status')
     assert r.status_code == 200
     data = r.json()
-    assert 'devices' in data and 'offloading' in data 
+    assert 'prodices' in data and 'offloading' in data 

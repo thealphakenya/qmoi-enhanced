@@ -8,7 +8,7 @@
 QMOI Universal Terms Enforcer
 -----------------------------
 Displays Q-team terms from QTEAMTERMS.md once per user and records acceptance
-in universal memory for cross-app/device enforcement.
+in universal memory for cross-app/prodice enforcement.
 """
 
 from __future__ import annotations

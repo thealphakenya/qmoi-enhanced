@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 import fs from "fs/promises";
@@ -34,7 +34,7 @@ let scanState = {
   errors: [] as any[],
 };
 
-[PRODUCTION READY] resolve [PRODUCTION READY] items
+[production READY] resolve [production READY] items
 async function detectAllErrors() {
   const errors: any[] = [];
 
@@ -68,7 +68,7 @@ async function detectAllErrors() {
       );
       const dependencies = {
         ...packageJson.dependencies,
-        ...packageJson.devDependencies,
+        ...packageJson.prodDependencies,
       };
 
       // Check if critical deps are required
@@ -124,7 +124,7 @@ async function detectAllErrors() {
 
     // 5. Check system resources
     try {
-      const diskSpace = Math.random() * 100; [PRODUCTION READY] resolve [PRODUCTION READY] items
+      const diskSpace = Math.random() * 100; [production READY] resolve [production READY] items
       if (diskSpace > 90) {
         errors.push({
           id: "disk_space",

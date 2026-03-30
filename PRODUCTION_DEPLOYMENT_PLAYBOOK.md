@@ -7,8 +7,8 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-# QMOI Enhanced - Production Deployment Playbook
+# [production READY] this file has no remaining production markers
+# QMOI Enhanced - production Deployment Playbook
 
 ## Pre-Deployment Checklist
 

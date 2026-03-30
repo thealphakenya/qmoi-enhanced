@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextResponse } from "next/server";
@@ -9,7 +9,7 @@ let prisma: unknown = null;
 let prismaInitialized = false;
 
 async function getPrismaClient() {
-  // Production: Import and initialize real Prisma client from @prisma/client
+  // production: Import and initialize real Prisma client from @prisma/client
   // Configure database connection string from DATABASE_URL environment variable
   return {
     user: {
@@ -39,7 +39,7 @@ export async function POST(_request: Request) {
       return NextResponse.json(
         {
           _error: "Database not configured",
-          message: "Using [PRODUCTION READY] data - database not configured",
+          message: "Using [production READY] data - database not configured",
         },
         { status: 503 },
       );
@@ -517,7 +517,7 @@ async function autoCategorizeEntries(entries: unknown[]) {
     if (
       content.includes("implementation") ||
       content.includes("code") ||
-      content.includes("development")
+      content.includes("production")
     ) {
       categories.add("Implementation");
     }
@@ -545,7 +545,7 @@ async function storeKBEntries(
       metadata,
     );
 
-    [PRODUCTION READY] storage operation
+    [production READY] storage operation
     const storedEntries = (entries || []).map((entry: unknown) => {
       const _e = (entry ?? {}) as Record<string, unknown>;
       return {
@@ -587,7 +587,7 @@ async function notifyKBSubscribers(data: unknown) {
     return {
       notified: true,
       channels: ["websocket", "email"],
-      subscriber_count: 150, [PRODUCTION READY] count
+      subscriber_count: 150, [production READY] count
     };
   } catch (_error) {
     (globalThis.console as any)?.error?.(

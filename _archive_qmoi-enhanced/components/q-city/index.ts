@@ -10,7 +10,7 @@
 
 // Main Dashboard Components
 export { default as QCityDashboard } from "./QCityDashboard";
-export { default as QCityDevicePanel } from "./QCityDevicePanel";
+export { default as QCityprodicePanel } from "./QCityprodicePanel";
 export { default as QVillage } from "./QVillage";
 
 // Employment & Revenue
@@ -21,7 +21,7 @@ export { default as QMOIRevenueDashboard } from "./QMOIRevenueDashboard";
 export { default as QMOIBiometricManager } from "./QMOIBiometricManager";
 
 // Logging & Monitoring
-export { default as QMOIOwnDeviceLogs } from "./QMOIOwnDeviceLogs";
+export { default as QMOIOwnprodiceLogs } from "./QMOIOwnprodiceLogs";
 
 // Onboarding
 export { default as Onboarding } from "./Onboarding";
@@ -47,7 +47,7 @@ export interface QCityState {
 
 // Feature Flags
 export const QCityFeatures = {
-  DEVICE_MANAGEMENT: true,
+  prodICE_MANAGEMENT: true,
   EMPLOYMENT: true,
   REVENUE_TRACKING: true,
   MEGAVAULT: true,
@@ -65,15 +65,15 @@ export const QCityComponentRegistry: Record<string, QCityComponent> = {
     icon: "🏙️",
     features: [
       "Master Mode Toggle",
-      "Device Management",
+      "prodice Management",
       "QVillage Integration",
     ],
   },
-  QCityDevicePanel: {
-    name: "Device Management",
-    description: "Manage connected devices and resources",
+  QCityprodicePanel: {
+    name: "prodice Management",
+    description: "Manage connected prodices and resources",
     icon: "🖥️",
-    features: ["Device Tracking", "Resource Allocation", "Real-time Sync"],
+    features: ["prodice Tracking", "Resource Allocation", "Real-time Sync"],
   },
   QVillage: {
     name: "QVillage",
@@ -119,14 +119,14 @@ export const QCityComponentRegistry: Record<string, QCityComponent> = {
       "Iris Scan",
     ],
   },
-  QMOIOwnDeviceLogs: {
-    name: "Device Logs",
-    description: "Monitor device ownership and activity logs",
+  QMOIOwnprodiceLogs: {
+    name: "prodice Logs",
+    description: "Monitor prodice ownership and activity logs",
     icon: "📝",
     features: [
       "Activity Tracking",
       "Log Filtering",
-      "Device History",
+      "prodice History",
       "Audit Trail",
     ],
   },

@@ -8,7 +8,7 @@
 GitHub Releases Publisher for QMOI Apps
 ========================================
 
-Manages all QMOI app releases across all platforms and devices.
+Manages all QMOI app releases across all platforms and prodices.
 Publishes releases to GitHub with proper versioning and asset management.
 
 Usage:
@@ -234,7 +234,7 @@ class GitHubReleasesPublisher:
 3. Install the APK
 
 ### iOS
-1. Download from App Store or use `.ipa` with device management
+1. Download from App Store or use `.ipa` with prodice management
 
 ## What's New
 - Enhanced performance
@@ -372,7 +372,7 @@ chmod +x app-name.AppImage
 
 ### Raspberry Pi
 1. Download `app-name.img`
-2. Flash to microSD: `dd if=app-name.img of=/dev/sdX bs=4M`
+2. Flash to microSD: `dd if=app-name.img of=/prod/sdX bs=4M`
 3. Insert card and boot
 
 ### Chromebook

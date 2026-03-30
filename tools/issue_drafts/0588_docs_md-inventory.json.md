@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Issue final for docs/md-inventory.json"
 generated: 2025-11-08T16:06:38.378692Z
@@ -19,9 +19,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [PRODUCTION READY] markers or [PRODUCTION READY]s.
-- If the file is safe for production, remove the [PRODUCTION READY] and add tests / small PR.
-- If the file is intentionally non-production (e.g. [PRODUCTION READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [production READY] markers or [production READY]s.
+- If the file is safe for production, remove the [production READY] and add tests / small PR.
+- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -37,8 +37,8 @@ Excerpt (first 2KB):
       "last_verified": null
     },
     {
-      "name": "ALLDEVICESSETTINGS.md",
-      "path": "/workspaces/qmoi-enhanced/ALLDEVICESSETTINGS.md",
+      "name": "ALLprodICESSETTINGS.md",
+      "path": "/workspaces/qmoi-enhanced/ALLprodICESSETTINGS.md",
       "last_verified": null
     },
     {
@@ -92,8 +92,8 @@ Excerpt (first 2KB):
       "last_verified": null
     },
     {
-      "name": "AU[PRODUCTION READY]WNLOAD.md",
-      "path": "/workspaces/qmoi-enhanced/AU[PRODUCTION READY]WNLOAD.md",
+      "name": "AU[production READY]WNLOAD.md",
+      "path": "/workspaces/qmoi-enhanced/AU[production READY]WNLOAD.md",
       "last_verified": null
     },
     {

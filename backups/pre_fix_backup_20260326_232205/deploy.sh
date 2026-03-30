@@ -25,7 +25,7 @@ echo -e "${BLUE}[STEP 1]${NC} Checking environment variables..."
 if [ ! -f .env.local ]; then
     echo -e "${YELLOW}⚠️  .env.local not found${NC}"
     echo "Creating .env.local from standard..."
-    cp .env.local.data .env.local 2>/dev/null || cp .env.master.data .env.local 2>/dev/null || {
+    cp .env.local.data .env.local 2>/prod/null || cp .env.master.data .env.local 2>/prod/null || {
         echo -e "${RED}✗ Failed to create .env.local${NC}"
         echo "Please copy .env.local.data to .env.local and configure it"
         exit 1
@@ -49,7 +49,7 @@ echo ""
 # ===== STEP 2: Dependency Check =====
 echo -e "${BLUE}[STEP 2]${NC} Checking dependencies..."
 
-if ! command -v node &> /dev/null; then
+if ! command -v node &> /prod/null; then
     echo -e "${RED}✗ Node.js not found${NC}"
     exit 1
 fi
@@ -57,7 +57,7 @@ fi
 NODE_VERSION=$(node -v)
 echo -e "${GREEN}✓ Node.js found: ${NODE_VERSION}${NC}"
 
-if ! command -v npm &> /dev/null; then
+if ! command -v npm &> /prod/null; then
     echo -e "${RED}✗ npm not found${NC}"
     exit 1
 fi
@@ -160,8 +160,8 @@ echo "╔═══════════════════════�
 echo "║                    NEXT STEPS FOR DEPLOYMENT                  ║"
 echo "╚════════════════════════════════════════════════════════════════╝"
 echo ""
-echo "1. START DEVELOPMENT SERVER:"
-echo "   npm run dev"
+echo "1. START production SERVER:"
+echo "   npm run prod"
 echo ""
 echo "2. TEST MASTER DASHBOARD:"
 echo "   Visit: http://localhost:3000/admin/master/login"
@@ -174,7 +174,7 @@ echo "   ✓ Activity Logs tab"
 echo "   ✓ Settings page"
 echo "   ✓ Security center"
 echo ""
-echo "4. FOR PRODUCTION DEPLOYMENT:"
+echo "4. FOR production DEPLOYMENT:"
 echo "   npm run build && npm start"
 echo ""
 echo "5. REVIEW DOCUMENTATION:"

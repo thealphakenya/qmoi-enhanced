@@ -12,7 +12,7 @@
     "qcity.io": "Individual SSL certificate needed",
     "qvillage.org": "Individual SSL certificate needed",
     "qglobal.ai": "Individual SSL certificate needed",
-    "qparallel.dev": "Individual SSL certificate needed"
+    "qparallel.prod": "Individual SSL certificate needed"
   },
   "certificate_authority": "Let's Encrypt (recommended) or commercial CA",
   "auto_renewal": "Certbot or similar tool for automatic renewal"

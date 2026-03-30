@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env node
 /**
- * Real-time Production Monitoring Dashboard
+ * Real-time production Monitoring Dashboard
  * Usage: node scripts/monitoring-dashboard.js
  */
 

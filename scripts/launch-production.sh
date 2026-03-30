@@ -1,7 +1,7 @@
 
 #!/bin/bash
 
-# QMOI Enhanced - Production Launch Script
+# QMOI Enhanced - production Launch Script
 # optimized, non-blocking startup for production deployment
 
 set -e
@@ -10,7 +10,7 @@ PROJECT_ROOT="/workspaces/qmoi-enhanced"
 cd "$PROJECT_ROOT"
 
 echo "╔═══════════════════════════════════════════════════════════╗"
-echo "║  QMOI Enhanced - Production Launch                       ║"
+echo "║  QMOI Enhanced - production Launch                       ║"
 echo "╚═══════════════════════════════════════════════════════════╝"
 
 # 1. Ensure .env.production exists
@@ -56,7 +56,7 @@ echo ""
 echo "📋 Step 5: Starting Next.js server..."
 
 # Kill any existing node processes on port 3000
-lsof -ti:3000 | xargs kill -9 2>/dev/null || true
+lsof -ti:3000 | xargs kill -9 2>/prod/null || true
 sleep 1
 
 # Start server in background with nohup
@@ -70,7 +70,7 @@ echo "📋 Step 6: Waiting for server to be ready..."
 MAX_WAIT=30
 COUNTER=0
 while [ $COUNTER -lt $MAX_WAIT ]; do
-    if curl -s http://localhost:3000/api/health > /dev/null 2>&1; then
+    if curl -s http://localhost:3000/api/health > /prod/null 2>&1; then
         echo "✅ Server is healthy!"
         break
     fi
@@ -94,7 +94,7 @@ echo "✅ Health monitor started (PID: $HEALTH_PID)"
 # 7. Display status
 echo ""
 echo "╔═══════════════════════════════════════════════════════════╗"
-echo "║  🚀 PRODUCTION DEPLOYMENT COMPLETE                        ║"
+echo "║  🚀 production DEPLOYMENT COMPLETE                        ║"
 echo "╚═══════════════════════════════════════════════════════════╝"
 echo ""
 echo "📊 Status:"

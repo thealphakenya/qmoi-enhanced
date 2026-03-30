@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/bin/bash
 
 # QMOI Auto-Setup Test Suite
@@ -37,7 +37,7 @@ echo ""
 # Test 2: Verify TypeScript compilation
 echo -e "${BLUE}[Test 2]${NC} Verifying TypeScript compilation..."
 cd "$PROJECT_ROOT"
-if npm run build >/dev/null 2>&1; then
+if npm run build >/prod/null 2>&1; then
   echo -e "${GREEN}✓ TypeScript compilation successful${NC}"
 else
   echo -e "${RED}✗ TypeScript compilation failed${NC}"
@@ -134,7 +134,7 @@ echo ""
 echo -e "${GREEN}✓ All critical auto-setup tests passed!${NC}"
 echo ""
 echo "Next steps to verify auto-setup in action:"
-echo "  1. Start development server: npm run dev"
+echo "  1. Start production server: npm run prod"
 echo "  2. Open http://localhost:3000 in your browser"
 echo "  3. Watch auto-setup initialize (loading screen)"
 echo "  4. Verify .env.local was created:"

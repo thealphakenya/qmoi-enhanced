@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation Token verification endpoint
+// production implementation Token verification endpoint
 import { NextRequest, NextResponse } from "next/server";
 import { authService } from "@/lib/auth/service";
 

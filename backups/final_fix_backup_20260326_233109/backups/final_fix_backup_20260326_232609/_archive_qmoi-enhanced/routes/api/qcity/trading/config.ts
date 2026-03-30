@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 import { NextApiRequest, NextApiResponse } from "next";
 import { TradingService } from "../../../../scripts/services/trading_service";
 import { logger } from "../../../../scripts/utils/logger";

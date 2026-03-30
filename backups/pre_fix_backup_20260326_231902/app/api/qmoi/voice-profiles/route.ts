@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
         return await enhanceVoice(voiceId);
 
       case "upgrade":
-        return await upgradeVoice(voiceId);
+        return await upgraprodoice(voiceId);
 
       default:
         return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
@@ -206,7 +206,7 @@ async function enhanceVoice(voiceId: string) {
   }
 }
 
-async function upgradeVoice(voiceId: string) {
+async function upgraprodoice(voiceId: string) {
   try {
     // In a real implementation, this would:
     // 1. Check for newer voice models/versions

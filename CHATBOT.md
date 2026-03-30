@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "CHATBOT.md - Enhanced QMOI ChatBot v2.0"
 description: "Comprehensive documentation for enhanced chatbot features"
@@ -357,7 +357,7 @@ Advanced hooks allow the Chatbot to register custom automation actions and globa
 
 - **Hotkey registration**: `Ctrl+Shift+P` to open preview, `Alt+H` for help, etc.
 - **Automation conditions**: QMOI evaluates context and triggers hooks via `/api/automation/trigger`.
-- **Custom actions**: Developers can extend with plugins, e.g., `onError` to open error detail window.
+- **Custom actions**: prodelopers can extend with plugins, e.g., `onError` to open error detail window.
 
 **Usage**:
 ```ts
@@ -445,7 +445,7 @@ Response:
   "projectType": "web",
   "fileTypes": [".tsx", ".css", ".ts"],
   "confidence": 85,
-  "recommendedTools": ["live-preview", "dev-inspector", ...]
+  "recommendedTools": ["live-preview", "prod-inspector", ...]
 }
 ```
 
@@ -521,7 +521,7 @@ CSS for responsive styling:
 
 💡 Suggestions:
   → Use CSS Grid for complex layouts
-  → Consider Tailwind CSS for faster development
+  → Consider Tailwind CSS for faster production
   → Test with different screen sizes"
 ```
 

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextResponse } from "next/server";
@@ -17,7 +17,7 @@ let prisma: unknown = null;
 let prismaInitialized = false;
 
 async function getPrismaClient() {
-  // Production: Import and initialize real Prisma client from @prisma/client
+  // production: Import and initialize real Prisma client from @prisma/client
   // Configure database connection string from DATABASE_URL environment variable
   return {
     user: {
@@ -81,7 +81,7 @@ export async function POST(_request: Request) {
       return NextResponse.json(
         {
           _error: "Database not configured",
-          message: "Using [PRODUCTION READY] data - database not configured",
+          message: "Using [production READY] data - database not configured",
         },
         { status: 503 },
       );
@@ -441,7 +441,7 @@ async function processPaperUpdate(
       status: "processed",
     };
 
-    // Production:, save to database
+    // production:, save to database
     .log(`Processed paper: ${p.id} from ${source}`);
 
     return processedPaper;
@@ -495,7 +495,7 @@ async function triggerQMOISync(type: string, data: unknown) {
     // Trigger sync with QMOI AI system
     .log(`Triggering QMOI sync for ${type}`, data);
 
-    // Production:, call QMOI sync API
+    // production:, call QMOI sync API
     return {
       status: "sync_triggered",
       type,
@@ -586,7 +586,7 @@ async function autoCategorizeEntries(entries: unknown[]) {
     if (
       content.includes("implementation") ||
       content.includes("code") ||
-      content.includes("development")
+      content.includes("production")
     ) {
       categories.add("Implementation");
     }
@@ -608,13 +608,13 @@ async function storeKBEntries(
 ) {
   // Enhanced storage with indexing
   try {
-    // Production:, save to database with full-text indexing
+    // production:, save to database with full-text indexing
     .log(
       `Storing ${entries.length} KB entries with metadata:`,
       metadata,
     );
 
-    [PRODUCTION READY] resolve [PRODUCTION READY] items
+    [production READY] resolve [production READY] items
     const storedEntries = (entries || []).map((entry: unknown) => {
       const e = (entry ?? {}) as Record<string, unknown>;
       return {
@@ -654,11 +654,11 @@ async function notifyKBSubscribers(data: unknown) {
       `Notifying KB subscribers about ${entryCount} new entries`,
     );
 
-    // Production:, send real-time notifications
+    // production:, send real-time notifications
     return {
       notified: true,
       channels: ["websocket", "email"],
-      subscriber_count: 150, [PRODUCTION READY] resolve [PRODUCTION READY] items
+      subscriber_count: 150, [production READY] resolve [production READY] items
     };
   } catch (error) {
     (globalThis.console as any)?.error?.(
@@ -793,7 +793,7 @@ async function storeDiscussion(discussion: unknown) {
       .substr(2, 9)}`;
     .log(`Storing discussion: ${discussionId}`);
 
-    // Production:, save to database
+    // production:, save to database
     return discussionId;
   } catch (error) {
     (globalThis.console as any)?.error?.("Error storing discussion:", error);
@@ -814,7 +814,7 @@ async function enhanceDiscussionWithQMOI(
   try {
     .log(`Enhancing discussion ${discussionId} with QMOI AI`);
 
-    // Production:, apply QMOI AI enhancements like:
+    // production:, apply QMOI AI enhancements like:
     // - Generate related questions
     // - Suggest relevant papers
     // - Improve discussion quality
@@ -967,7 +967,7 @@ async function triggerAutoOptimization(
       recommendations,
     );
 
-    // Production:, apply optimizations like:
+    // production:, apply optimizations like:
     // - Adjust batch sizes
     // - Enable parallel processing
     // - Update configurations
@@ -1065,7 +1065,7 @@ async function applyEnhancementsWithRollback(
     // Apply enhancements
     .log(`Applying enhancements to ${target}`);
 
-    // Production:, apply changes and prepare rollback
+    // production:, apply changes and prepare rollback
     return {
       applied: true,
       backup_id: backup.id,
@@ -1260,7 +1260,7 @@ async function escalateCriticalAlert(alert: unknown) {
   try {
     .log("Escalating critical alert:", alert);
 
-    // Production:: send to on-call engineer, create incident, etc.
+    // production:: send to on-call engineer, create incident, etc.
     return {
       escalated: true,
       channels: ["email", "sms", "slack"],
@@ -1339,7 +1339,7 @@ async function notifyWebSubscribers(_event: string, data: unknown) {
       await .notification.createMany({ data: notifications });
     }
 
-    // Production:: broadcast via WebSocket, Server-Sent Events, etc.
+    // production:: broadcast via WebSocket, Server-Sent Events, etc.
     return { sent: true, recipients: users.length };
   } catch (error) {
     (globalThis.console as any)?.error?.(
@@ -1413,7 +1413,7 @@ async function notifyEmailSubscribers(_event: string, data: unknown) {
       await .notification.createMany({ data: notifications });
     }
 
-    // Production:: send via email service (SendGrid, SES, etc.)
+    // production:: send via email service (SendGrid, SES, etc.)
     return { sent: true, recipients: users.length };
   } catch (error) {
     (globalThis.console as any)?.error?.(
@@ -1451,7 +1451,7 @@ async function notifyPushSubscribers(_event: string, data: unknown) {
       await .notification.createMany({ data: notifications });
     }
 
-    // Production:: send via push service (FCM, APNs, etc.)
+    // production:: send via push service (FCM, APNs, etc.)
     return { sent: true, recipients: users.length };
   } catch (error) {
     (globalThis.console as any)?.error?.(

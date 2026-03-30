@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/bin/bash
 
 # QMOI User Identification System Test Suite
@@ -64,7 +64,7 @@ EOF
     echo "" >> "$OUTPUT_FILE"
     
     # Check if response contains expected role
-    local actual_role=$(echo "$response" | jq -r '.userRole' 2>/dev/null)
+    local actual_role=$(echo "$response" | jq -r '.userRole' 2>/prod/null)
     
     if [ "$actual_role" = "$expected_role" ]; then
         PASS_COUNT=$((PASS_COUNT + 1))

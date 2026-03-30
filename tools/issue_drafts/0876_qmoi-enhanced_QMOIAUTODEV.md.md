@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -23,9 +23,9 @@
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-QMOIAUTODEV.md
-QMOI Auto-Dev: Always-On, Self-Healing, Auto-Deploying System
-QMOI Auto-Dev is the heartbeat of the stable-Q ecosystem. It continuously monitors, fixes, commits, deploys, and optimizes every part of the system in real time — with zero manual effort.
+QMOIAUTOprod.md
+QMOI Auto-prod: Always-On, Self-Healing, Auto-Deploying System
+QMOI Auto-prod is the heartbeat of the stable-Q ecosystem. It continuously monitors, fixes, commits, deploys, and optimizes every part of the system in real time — with zero manual effort.
 
 🧠 Key Highlights
 Feature	Description
@@ -69,7 +69,7 @@ Stage	Description
 
 📊 Dashboard & API
 Endpoint	Description
-POST /api/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)/autodev wit
+POST /api/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)/autoprod wit
 ```
 
 Notes:

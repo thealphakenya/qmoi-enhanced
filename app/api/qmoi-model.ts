@@ -9,10 +9,10 @@
 /**
  * QMOI AI Model & Task Management API
  *
- * PRODUCTION vs TEST CODE:
+ * production vs TEST CODE:
  * This file contains production-ready implementations with proper error handling and fallbacks.
  *
- * PRODUCTION CODE:
+ * production CODE:
  * - File upload & parsing (PDF, Word, text via handleFileUpload)
  * - Project creation with filesystem operations (createProject, generateDocsAndPackaging)
  * - Encryption/decryption for sensitive data
@@ -159,7 +159,7 @@ async function handleFileUpload(file: UploadedFile) {
   return task;
 }
 
-// Production: Replace with real extension discovery from npm/GitHub API
+// production: Replace with real extension discovery from npm/GitHub API
 async function autoDiscoverAndBuildExtension(projectType: string) {
   try {
     
@@ -263,7 +263,7 @@ async function autoDiscoverAndBuildExtension(projectType: string) {
   }
 }
 
-// Production: Must integrate actual AI generation service (Claude API, etc.)
+// production: Must integrate actual AI generation service (Claude API, etc.)
 async function creativeFileGen(type: string, details: Record<string, any>) {
   try {
     
@@ -403,7 +403,7 @@ async function createProject(
     timeZone: getUserTimeZone(),
   });
   persistLog();
-  // Production: update master/projects list via DB or JSON storage
+  // production: update master/projects list via DB or JSON storage
   return {
     project: projectName,
     files: files.map((f) => f.name),
@@ -421,7 +421,7 @@ async function generateDocsAndPackaging(projectName: string, files: unknown[]) {
   try {
     fs.writeFileSync(readmePath, docs, "utf8");
   } catch (e) {
-  // Production: implement real packaging (zip/tar/docker) for distribution
+  // production: implement real packaging (zip/tar/docker) for distribution
   return { docs: readmePath, packaging: null };
 }
 
@@ -435,7 +435,7 @@ async function enhancedGameGen(details: unknown) {
     assets: ["game.js", "assets/", "README.md"],
   };
 }
-async function enhancedAppDev(details: unknown) {
+async function enhancedAppprod(details: unknown) {
   // ...
   return { status: "success", details, files: ["app.js", "README.md"] };
 }
@@ -484,7 +484,7 @@ async function restoreModelFromHuggingFace(
 }
 
 /**
- * PRODUCTION: Calls Python script for heavy AI/ML tasks (image generation, text analysis, etc.)
+ * production: Calls Python script for heavy AI/ML tasks (image generation, text analysis, etc.)
  * Integration: Ensure Python dependencies are installed and environment is configured.
  * Security: Validate input parameters and sanitize file paths before passing to exec().
  */
@@ -557,7 +557,7 @@ export async function multiUserChat(user: string, message: string) {
   });
 
   try {
-    // Production: Integrate with actual AI service (Claude API, OpenAI, etc.)
+    // production: Integrate with actual AI service (Claude API, OpenAI, etc.)
     const apiKey = process.env.CLAUDE_API_KEY || process.env.OPENAI_API_KEY;
     if (!apiKey) {
       throw new Error('AI service API key not configured');
@@ -684,10 +684,10 @@ function generateSSML(
   )}%"><voice name="${voice}">${escaped}</voice></prosody></speak>`;
 }
 
-// Production: Implement real linting/analysis using actual code analysis tools
+// production: Implement real linting/analysis using actual code analysis tools
 async function globalScanAndFix(): Promise<GlobalFixResponse> {
   try {
-    // Production: Integrate with diagnostics, lint, and auto-fix tools
+    // production: Integrate with diagnostics, lint, and auto-fix tools
     const startTime = Date.now();
 
     aiTaskLog.push({
@@ -782,7 +782,7 @@ async function globalScanAndFix(): Promise<GlobalFixResponse> {
 }
 
 // --- Hook Diagnostics & Enhancement ---
-// Production: Implement real hook analysis and refactoring using AST analysis
+// production: Implement real hook analysis and refactoring using AST analysis
 async function diagnoseAndEnhanceHooks() {
   try {
     aiTaskLog.push({
@@ -934,7 +934,7 @@ async function aiStartProject(name: string, info: string) {
     progress: 0
   });
 
-  // Production: Implement real job queue (Bull, RabbitMQ, etc.) or task runner
+  // production: Implement real job queue (Bull, RabbitMQ, etc.) or task runner
   try {
     // Simulate real project work with multiple phases
     const phases = [
@@ -1033,7 +1033,7 @@ async function aiStartProject(name: string, info: string) {
 
 async function sendWhatsAppMasterNotification(message: string) {
   try {
-    // Production: Integrate with official WhatsApp Business API (twilio, official API, etc.)
+    // production: Integrate with official WhatsApp Business API (twilio, official API, etc.)
     const whatsappConfig = {
       accountSid: process.env.TWILIO_ACCOUNT_SID,
       authToken: process.env.TWILIO_AUTH_TOKEN,
@@ -1134,26 +1134,26 @@ export const config = {
 };
 
 async function sendTelegramMessage(chatId: string, message: string) {
-  // Production:, use Telegram Bot API
+  // production:, use Telegram Bot API
   return { status: "sent", platform: "telegram", chatId, message };
 }
 async function sendSignalMessage(number: string, message: string) {
-  // Production:, use Signal CLI or API
+  // production:, use Signal CLI or API
   return { status: "sent", platform: "signal", number, message };
 }
 async function sendEmail(to: string, subject: string, body: string) {
-  // Production:, use nodemailer or email API
+  // production:, use nodemailer or email API
   return { status: "sent", platform: "email", to, subject, body };
 }
 
 // --- System Directory Setup ---
 const SYSTEM_ROOT = "/stable-Qmoi";
 if (!fs.existsSync(SYSTEM_ROOT)) fs.mkdirSync(SYSTEM_ROOT, { recursive: true });
-// --- Device Control & Self-Installation ---
+// --- prodice Control & Self-Installation ---
 async function installAsSystemSoftware() {
   const src = "/workspaces/stable-Q-ai";
   const dest = SYSTEM_ROOT;
-  // Production:, recursively copy all files and set up a systemd service or equivalent
+  // production:, recursively copy all files and set up a systemd service or equivalent
   fs.writeFileSync(
     path.join(dest, "installed.txt"),
     `Installed at ${new Date().toISOString()}`,
@@ -1179,11 +1179,11 @@ async function getAIRecommendations(context: string) {
       "Send follow-up to non-responders",
       "Personalize offers for top users",
     ];
-  } else if (context === "devices") {
+  } else if (context === "prodices") {
     return [
-      "Update firmware on all IoT devices",
-      "Enable device health monitoring",
-      "Schedule weekly device reboots",
+      "Update firmware on all IoT prodices",
+      "Enable prodice health monitoring",
+      "Schedule weekly prodice reboots",
       "Apply latest security patches",
       "Optimize battery usage",
     ];
@@ -1356,7 +1356,7 @@ export default async function handler(
         lastTrained: new Date().toISOString(),
       });
     }
-    if (_req.query.deviceOptimize) {
+    if (_req.query.prodiceOptimize) {
       return _res.json({
         suggestions: [
           "Enable battery saver mode",
@@ -1437,7 +1437,7 @@ export default async function handler(
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
-          // Production: Implement intelligent file handling based on MIME type
+          // production: Implement intelligent file handling based on MIME type
           // Use file-type library to detect actual file type
           if (file.mimetype === "application/pdf") {
             const result = await aiPdfResearch(buffer, fields.query);

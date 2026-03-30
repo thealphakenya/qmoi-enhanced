@@ -112,8 +112,8 @@ export class QVSSystem extends EventEmitter {
         status: 'active',
       },
       {
-        id: 'app-development',
-        name: 'App Development',
+        id: 'app-production',
+        name: 'App production',
         dailyTarget: 15000,
         currentRevenue: 0,
         platforms: ['App Store', 'Google Play', 'Amazon Appstore'],
@@ -133,7 +133,7 @@ export class QVSSystem extends EventEmitter {
       },
       {
         id: 'music-production',
-        name: 'Music Production',
+        name: 'Music production',
         dailyTarget: 10000,
         currentRevenue: 0,
         platforms: ['Spotify', 'Apple Music', 'YouTube Music'],

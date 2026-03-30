@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# // Production implementation:
+# // production implementation:
 """robust backend API to execute QMOI AI chat responses for local testing.
 Run: python3 scripts/qmoi_ai_api.py
 Listens on port 8000

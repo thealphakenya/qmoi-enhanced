@@ -6,7 +6,7 @@
 import json, os
 status = {
     "windows": "✅ PASS" if os.path.exists("dist/qmoi ai.exe") else "❌ FAIL",
-    # Other devices can be checked similarly
+    # Other prodices can be checked similarly
 }
 readme_path = "README.md"
 with open(readme_path, "r") as f:

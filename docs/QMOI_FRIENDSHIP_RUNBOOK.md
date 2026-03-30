@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOI Friendship Integration Runbook"
 [[[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -21,7 +21,7 @@ Key principles
 
 - Safe-by-default: destructive actions are never executed unless explicitly enabled.
 - Proposal-first: any change (installing deps, syntax fixes, git operations, or configuration updates) is written as a proposal under `.qmoi_validation/` for human review.
-- Explicit production gating: to allow destructive actions you must set the environment variable `PRODUCTION_CONFIRMED=true` and pass `--real` on the command line.
+- Explicit production gating: to allow destructive actions you must set the environment variable `production_CONFIRMED=true` and pass `--real` on the command line.
 
 Files & artifacts
 
@@ -34,7 +34,7 @@ Environment variables
 
 - `VERCEL_TOKEN` - Vercel API token (optional). If included, Vercel deploys are dry-run and proposals are created.
 - `GITLAB_TOKEN` - GitLab API token (optional). If included, GitLab deploys will fail or be dry-run depending on code paths.
-- `PRODUCTION_CONFIRMED` - When set to `true` and combined with `--real`, the module may perform destructive actions like writing files, installing deps, or pushing commits.
+- `production_CONFIRMED` - When set to `true` and combined with `--real`, the module may perform destructive actions like writing files, installing deps, or pushing commits.
 
 How to run
 
@@ -60,7 +60,7 @@ Applying proposals (manual process)
 
 ```bash
 # ONLY run when you have performed a human review and are sure
-PRODUCTION_CONFIRMED=true node -e "const Q=require('./qmoi-friendship-integration.js'); (async()=>{ const i=new Q(); /* call methods that apply changes, e.g., detectAndFixErrors */ })()" --real
+production_CONFIRMED=true node -e "const Q=require('./qmoi-friendship-integration.js'); (async()=>{ const i=new Q(); /* call methods that apply changes, e.g., detectAndFixErrors */ })()" --real
 ```
 
 Notes and cautions

@@ -100,7 +100,7 @@ class TestRealTimeEmailSystem(unittest.TestCase):
             "alerts@qmoi.com"
         ]
 
-        # Production: implementation, SYSTEM_EMAILS would be a list
+        # production: implementation, SYSTEM_EMAILS would be a list
         # This verifies the system has email definitions
         self.assertIsNotNone(SYSTEM_EMAILS)
 

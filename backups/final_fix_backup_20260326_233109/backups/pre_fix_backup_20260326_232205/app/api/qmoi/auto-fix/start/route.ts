@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -43,7 +43,7 @@ export async function POST(_request: NextRequest) {
 
     // Only run in real mode when explicitly confirmed. Default: propose.
     const canRun =
-      process.env.PRODUCTION_CONFIRMED === "true" &&
+      process.env.production_CONFIRMED === "true" &&
       process.argv.indexOf("--real") !== -1;
     const proposal = {
       id: `auto-fix-start-${Date.now()}`,

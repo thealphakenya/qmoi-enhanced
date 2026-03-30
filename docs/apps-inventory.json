@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 {
   "generated_by": "generate_apps_inventory.py",
   "generated_at": "2025-10-21T01:51:07.321520Z",
@@ -144,8 +144,8 @@
       "exists": true
     },
     {
-      "name": "DeviceManagementScreen",
-      "file": "mobile/components/DeviceManagementScreen.js",
+      "name": "prodiceManagementScreen",
+      "file": "mobile/components/prodiceManagementScreen.js",
       "platform": "components",
       "size_bytes": 27675,
       "exists": true

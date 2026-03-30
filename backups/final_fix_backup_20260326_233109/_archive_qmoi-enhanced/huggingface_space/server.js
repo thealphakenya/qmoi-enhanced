@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 const express = require("express");
 const fs = require("fs");
 const app = express();
@@ -46,7 +46,7 @@ async function keepAlive() {
 }
 
 function restartServer() {
-  // Production implementation:: Production: use, integrate with process manager or Hugging Face API
+  // production implementation:: production: use, integrate with process manager or Hugging Face API
   fs.appendFileSync(
     "logs/qmoispace_health.log",
     `[${new Date().toISOString()}] Restart triggered\n`,

@@ -1,7 +1,7 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 import {
   voiceProfiles,
@@ -49,7 +49,7 @@ export async function POST(_request: NextRequest) {
         return await enhanceVoice(voiceId);
 
       case "upgrade":
-        return await upgradeVoice(voiceId);
+        return await upgraprodoice(voiceId);
 
       default:
         return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
@@ -72,7 +72,7 @@ async function switchVoice(voiceId: string) {
     }
 
     // Update QMOI's current voice (, this would update the AI model)
-    // For now, we'll // Production implementation: this by storing in a global state or database
+    // For now, we'll // production implementation: this by storing in a global state or database
 
     // Log the voice switch
     (console as any).log(`QMOI voice switched to: ${voiceProfile.name} (${voiceId})`);
@@ -113,13 +113,13 @@ async function previewVoice(
       return NextResponse.json({ _error: "Invalid voice ID" }, { status: 400 });
     }
 
-    // Production implementation: TTS processing
+    // production implementation: TTS processing
     const audioUrl = await generateTTSAudio(voiceId, text, quality, volume);
 
     return NextResponse.json({
       success: true,
       audioUrl,
-      duration: Math.random() * 5 + 2, // Production implementation:d duration
+      duration: Math.random() * 5 + 2, // production implementation:d duration
       voice: voiceProfile,
     });
   } catch (_error) {
@@ -140,7 +140,7 @@ async function enhanceVoice(voiceId: string) {
 
     (console as any).log(`Enhancing voice: ${voiceId}`);
 
-    // Production implementation: enhancement process
+    // production implementation: enhancement process
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     return NextResponse.json({
@@ -161,7 +161,7 @@ async function enhanceVoice(voiceId: string) {
   }
 }
 
-async function upgradeVoice(voiceId: string) {
+async function upgraprodoice(voiceId: string) {
   try {
     // In a real implementation, this would:
     // 1. Check for newer voice models/versions
@@ -171,7 +171,7 @@ async function upgradeVoice(voiceId: string) {
 
     (console as any).log(`Upgrading voice: ${voiceId}`);
 
-    // Production implementation: upgrade process
+    // production implementation: upgrade process
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     return NextResponse.json({
@@ -262,7 +262,7 @@ async function generateTTSAudio(
   // - EVA3D (for 3D avatar animation)
   // - Commercial APIs (ElevenLabs, Azure, etc.)
 
-  // Production implementation URL
+  // production implementation URL
   return `/api/tts/generate?voice=${voiceId}&text=${encodeURIComponent(
     text,
   )}&quality=${quality}&volume=${volume}`;

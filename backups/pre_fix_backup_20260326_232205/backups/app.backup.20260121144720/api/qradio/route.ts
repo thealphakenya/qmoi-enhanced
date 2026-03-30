@@ -102,5 +102,5 @@ export async function POST_PROGRAM(_req: NextRequest) {
 export async function GET_LISTENERS(_req: NextRequest) {
   return NextResponse.json({ listeners });
 }
-// Production: FM/AM radio integration via SDR (Software Defined Radio), automated DJ scheduling,
+// production: FM/AM radio integration via SDR (Software Defined Radio), automated DJ scheduling,
 // QMOI AI as host/presenter, intelligent program generation, listener analytics

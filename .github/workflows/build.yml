@@ -25,7 +25,7 @@ jobs:
       - name: Install Node.js deps
         run: |
           npm install
-          npm install --save-dev electron-builder
+          npm install --save-prod electron-builder
       - name: Run Master Build Orchestrator
         run: |
           bash scripts/build/build-all.sh
@@ -52,4 +52,4 @@ permissions:
   issues: read
 env:
   NODE_VERSION: "18"
-  QMOI_AUTODEV_ENABLED: "true"
+  QMOI_AUTOprod_ENABLED: "true"

@@ -105,7 +105,7 @@ CRITICAL_FILES=(
   "PHASE_6_EXTENDED_SUMMARY.md"
   "DEPLOYMENT_HEALTH_CHECKLIST.md"
   "README_ENHANCED.md"
-  "START_PRODUCTION_DEPLOYMENT.md"
+  "START_production_DEPLOYMENT.md"
   "SECURITY_AUDIT_CHECKLIST.md"
   "API.md"
   "DOCKER_DEPLOYMENT_GUIDE.md"
@@ -127,7 +127,7 @@ grep -n "localhost\|qcity\|qvillage\|qmoi" "${CRITICAL_FILES[0]}" | grep -v "htt
 **After Comprehensive Fixes:**
 - Broken links: ~1,000-2,000 / 31,185 (3-6%)
   - Most remaining will be DNS-dependent (.qmoi.ai domains)
-  - Some may be intentional relative links or dev references
+  - Some may be intentional relative links or prod references
 
 **Remaining Work:**
 - DNS Recovery (.qmoi.ai zone configuration) ← Requires registrar action
@@ -216,7 +216,7 @@ cat comprehensive_fixes_report.json | jq '{files_modified, total_replacements, e
    - Validate nameservers
    - Test DNS resolution
 
-4. **Production Validation**
+4. **production Validation**
    - Deploy to staging
    - Run link checker tool
    - Verify all critical links resolve

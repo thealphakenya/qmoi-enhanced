@@ -6,7 +6,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  // Production:, call the Python kernel's backup_memory function
+  // production:, call the Python kernel's backup_memory function
   // For now, 
   const backupFile =
     "/scripts/models/memory_backups/qmoi_memory_YYYYMMDD_HHMMSS.json";

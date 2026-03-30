@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -40,7 +40,7 @@ export async function GET(_request: NextRequest) {
       const result = await fetch("process.env.API_URL || "http://localhost:\1"/analytics", {
         method: "GET",
       }).then((r) => r.json());
-      [PRODUCTION READY] resolve [PRODUCTION READY] items
+      [production READY] resolve [production READY] items
       const errors: AnomalyError[] =
         result.top_ips && result.top_ips.length
           ? result.top_ips.map(([ip, count]: [string, number]) => ({
@@ -75,8 +75,8 @@ export async function POST(_request: NextRequest) {
   const searchParams = _request.nextUrl.searchParams;
   if (searchParams.get("fix")) {
     try {
-      [PRODUCTION READY] resolve [PRODUCTION READY] items
-      // Production:, implement real fix logic
+      [production READY] resolve [production READY] items
+      // production:, implement real fix logic
       return NextResponse.json({ status: "fixed" });
     } catch (_e: unknown) {
       return NextResponse.json(

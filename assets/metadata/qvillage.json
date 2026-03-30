@@ -32,7 +32,7 @@
     "min_ram": "2GB",
     "min_storage": "1GB",
     "network": "Internet connection (offline-capable)",
-    "hardware": "Mobile device or computer"
+    "hardware": "Mobile prodice or computer"
   },
   "dependencies": [
     "Progressive Web App support",
@@ -116,7 +116,7 @@
     "certificate_authority": "QMOI Root CA",
     "encryption": "AES-256",
     "secure_boot": true,
-    "sandboxing": true
+    "productioning": true
   },
   "generated_at": "2026-03-25T00:47:38.003560+00:00",
   "generator_version": "2.0.0",

@@ -1,8 +1,8 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 {
-  "qcity_device": {
+  "qcity_prodice": {
     "enabled": true,
-    "primary_device": true,
+    "primary_prodice": true,
     "unlimited_resources": {
       "memory": "unlimited",
       "storage": "unlimited",
@@ -87,13 +87,13 @@
       "performance_prediction": true,
       "adaptive_algorithms": true
     },
-    "multi_device": {
+    "multi_prodice": {
       "enabled": true,
-      "device_clustering": true,
+      "prodice_clustering": true,
       "load_distribution": true,
       "failover_protection": true,
       "geographic_distribution": true,
-      "device_synchronization": true
+      "prodice_synchronization": true
     },
     "auto_upgrade": {
       "enabled": true,

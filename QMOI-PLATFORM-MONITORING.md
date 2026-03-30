@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOI Platform Monitoring"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -16,7 +16,7 @@ title: "QMOI Platform Monitoring"
 
 # QMOI Platform Monitoring
 
-[PRODUCTION READY] for monitoring strategy: metrics, logs, alerting, SLOs, and required tools.
+[production READY] for monitoring strategy: metrics, logs, alerting, SLOs, and required tools.
 
 <!-- QMOI_VALIDATION_START -->
 

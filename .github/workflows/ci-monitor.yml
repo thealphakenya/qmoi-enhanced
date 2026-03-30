@@ -83,8 +83,8 @@ jobs:
           logsdir=$(jq -r '.logs_dir' <<< '${{ toJson(steps.download_logs.outputs) }}')
           echo "scanning $logsdir"
           set +e
-          if grep -R "Jest: 'global' coverage threshold" $logsdir >/dev/null 2>&1; then echo "coverage_failure=true" >> $GITHUB_OUTPUT; fi
-          if grep -R "npm ERR!.*required" $logsdir >/dev/null 2>&1 || grep -R "npm ci" $logsdir >/dev/null 2>&1; then echo "npm_ci_problem=true" >> $GITHUB_OUTPUT; fi
+          if grep -R "Jest: 'global' coverage threshold" $logsdir >/prod/null 2>&1; then echo "coverage_failure=true" >> $GITHUB_OUTPUT; fi
+          if grep -R "npm ERR!.*required" $logsdir >/prod/null 2>&1 || grep -R "npm ci" $logsdir >/prod/null 2>&1; then echo "npm_ci_problem=true" >> $GITHUB_OUTPUT; fi
           set -e
 
       - name: Create auto-fix for coverage thresholds

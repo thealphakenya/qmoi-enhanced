@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 QMOI Master Email Dashboard
-Production-ready unified email management interface
+production-ready unified email management interface
 
 Features:
 - Unified inbox for all system emails
@@ -122,7 +122,7 @@ class MasterEmailDashboard:
 
             # Validate IP whitelist (if configured)
             if self.master_ip_whitelist and ip_address not in self.master_ip_whitelist:
-                # Allow localhost for development
+                # Allow localhost for production
                 if not (ip_address in ["127.0.0.1", "localhost", "::1"] or ip_address.startswith("192.168.") or ip_address.startswith("10.")):
                     self.log_security_alert("unauthorized_ip", ip_address, user_agent)
                     return {
@@ -237,7 +237,7 @@ class MasterEmailDashboard:
     def get_unified_inbox(self, limit: int = 50, offset: int = 0) -> Dict:
         """Get unified inbox for all system emails"""
         try:
-            # Production:, this would aggregate emails from all accounts
+            # production:, this would aggregate emails from all accounts
             # For now, return mock data
             inbox_emails = []
 
@@ -269,7 +269,7 @@ class MasterEmailDashboard:
 
     def get_account_emails(self, email: str, limit: int = 50) -> List[Dict]:
         """Get emails for specific account"""
-        # Production:, this would connect to email server
+        # production:, this would connect to email server
         # For now, return mock data
         mock_emails = [
             {
@@ -529,7 +529,7 @@ class MasterEmailDashboard:
     def get_security_alerts(self) -> Dict:
         """Get security alerts and threats"""
         try:
-            # Production:, this would integrate with security monitoring
+            # production:, this would integrate with security monitoring
             alerts = []
 
             # Check for unhealthy accounts
@@ -617,7 +617,7 @@ class MasterEmailDashboard:
                     "error": "Unsupported format"
                 }
 
-            # Production:, this would save to file or return download link
+            # production:, this would save to file or return download link
             return {
                 "success": True,
                 "data": export_data,

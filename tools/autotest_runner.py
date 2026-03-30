@@ -15,7 +15,7 @@ full Jest suite if the dry-list of tests is within a reasonable size.
 
 Behavior (safe defaults):
 - Run implementation scanner, auto-fix dry-run, md refs regen, versions and link checks
-- Produce `tools/jest_list.txt` (list of test files)
+- produce `tools/jest_list.txt` (list of test files)
 - If test count <= 2000, run Jest with JSON output and coverage to
   `tools/jest_results.json` (adjust threshold as needed)
 """

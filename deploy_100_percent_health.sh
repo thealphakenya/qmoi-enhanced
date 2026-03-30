@@ -1,10 +1,10 @@
 #!/bin/bash
-# QMOI 100% Production Health Guarantee System
+# QMOI 100% production Health Guarantee System
 # Complete deployment and verification for guaranteed domain health
 
 set -e
 
-echo "🎯 QMOI 100% Production Health Guarantee System"
+echo "🎯 QMOI 100% production Health Guarantee System"
 echo "================================================"
 echo ""
 
@@ -52,7 +52,7 @@ verify_domain() {
     echo -n "🔍 Verifying $domain... "
 
     # DNS resolution check
-    if nslookup "$domain" &>/dev/null; then
+    if nslookup "$domain" &>/prod/null; then
         echo -e "${GREEN}✅ DNS OK${NC}"
         return 0
     else
@@ -71,7 +71,7 @@ create_fallback() {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=prodice-width, initial-scale=1.0">
     <title>QMOI - $domain</title>
     <style>
         body {
@@ -168,8 +168,8 @@ cp -r "$PROJECT_ROOT" "$PROJECT_ROOT/backup/pre-deployment-$(date +%Y%m%d-%H%M%S
 
 print_success "System preparation complete"
 
-# Step 2: Build Production Assets
-print_header "Step 2: Building Production Assets"
+# Step 2: Build production Assets
+print_header "Step 2: Building production Assets"
 print_status "Building optimized production build..."
 
 cd "$PROJECT_ROOT"
@@ -178,7 +178,7 @@ cd "$PROJECT_ROOT"
 if [ -f "package.json" ]; then
     npm install
     npm run build
-    print_success "Production build complete"
+    print_success "production build complete"
 else
     print_warning "No package.json found, skipping build"
 fi
@@ -209,7 +209,7 @@ echo "  qvillage.net     A      $FALLBACK_IP"
 echo "  qvillage.org     A      $FALLBACK_IP"
 echo "  qglobal.org      A      $FALLBACK_IP"
 echo "  alphaq.ai        A      $FALLBACK_IP"
-echo "  qparallel.dev    A      $FALLBACK_IP"
+echo "  qparallel.prod    A      $FALLBACK_IP"
 echo ""
 
 echo -e "${BLUE}🔧 Automated DNS Setup (if you have API access):${NC}"
@@ -239,7 +239,7 @@ create_fallback "qvillage.com"
 create_fallback "qvillage.org"
 create_fallback "qglobal.org"
 create_fallback "alphaq.ai"
-create_fallback "qparallel.dev"
+create_fallback "qparallel.prod"
 
 print_success "Fallback systems created"
 
@@ -288,7 +288,7 @@ echo "  All fallback pages are available in the fallbacks/ directory"
 echo "  These provide immediate access even during DNS issues"
 echo ""
 
-echo -e "${GREEN}🎉 QMOI PRODUCTION DEPLOYMENT COMPLETE${NC}"
+echo -e "${GREEN}🎉 QMOI production DEPLOYMENT COMPLETE${NC}"
 echo -e "${GREEN}💯 100% Health Guarantee Systems Active${NC}"
 echo ""
 
@@ -297,4 +297,4 @@ echo -e "${CYAN}🔍 Final Health Check:${NC}"
 python3 scripts/health_check_simple.py || true
 
 echo ""
-echo -e "${PURPLE}Thank you for using QMOI Production Systems!${NC}"
+echo -e "${PURPLE}Thank you for using QMOI production Systems!${NC}"

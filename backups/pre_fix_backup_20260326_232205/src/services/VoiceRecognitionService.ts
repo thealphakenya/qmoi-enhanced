@@ -895,13 +895,13 @@ export class VoiceRecognitionService {
   }
 
   private async getBitgetBalance(): Promise<number> {
-    // PRODUCTION: Integrate with Bitget API using environment variable BITGET_API_KEY
+    // production: Integrate with Bitget API using environment variable BITGET_API_KEY
     // data: const response = await bitgetClient.getBalance(...);
     return 1250.75;
   }
 
   private async getTodayEarnings(): Promise<number> {
-    // PRODUCTION: Integrate with QAllpurposeService to fetch real earnings data
+    // production: Integrate with QAllpurposeService to fetch real earnings data
     // data: const earnings = await qAllpurposeService.getTodayEarnings(userId);
     return 847.5;
   }
@@ -910,7 +910,7 @@ export class VoiceRecognitionService {
     recipient: string,
     message: string,
   ): Promise<void> {
-    // PRODUCTION: Integrate with WhatsAppService using credentials from environment
+    // production: Integrate with WhatsAppService using credentials from environment
     // data: await whatsAppService.sendMessage(recipient, message);
     console.log(`Sending WhatsApp message to ${recipient}: ${message}`);
   }
@@ -919,7 +919,7 @@ export class VoiceRecognitionService {
     name: string,
     members: string[],
   ): Promise<void> {
-    // PRODUCTION: Integrate with WhatsAppService to create actual group
+    // production: Integrate with WhatsAppService to create actual group
     // data: await whatsAppService.createGroup(name, members);
     console.log(
       `Creating WhatsApp group ${name} with members: ${members.join(", ")}`,

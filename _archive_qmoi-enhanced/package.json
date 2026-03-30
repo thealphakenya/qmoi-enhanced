@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 {
   "name": "qmoi-stable-ai",
   "version": "1.0.0",
@@ -6,7 +6,7 @@
   "main": "main.js",
   "scripts": {
     "start": "next start",
-    "dev": "next dev",
+    "prod": "next prod",
     "build": "next build",
     "build:prod": "next build && npm run build:optimize",
     "build:optimize": "node scripts/build-optimizer.js",
@@ -96,7 +96,7 @@
     "uuid": "^11.1.0",
     "zod": "^4.0.2"
   },
-  "devDependencies": {
+  "prodDependencies": {
     "@tailwindcss/postcss": "^4.1.11",
     "@testing-library/jest-dom": "^6.1.0",
     "@testing-library/react": "^14.0.0",

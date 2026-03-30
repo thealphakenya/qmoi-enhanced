@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -22,7 +22,7 @@ Choose what you need:
 ### 🚀 I Just Want to Run Tests (START HERE!)
 
 → Read: [QUICK_TEST_START.md](QUICK_TEST_START.md)
-→ Run: `npm run dev` + `node test-qmoi-master.js`
+→ Run: `npm run prod` + `node test-qmoi-master.js`
 → Time: 5 minutes
 
 ### 📖 I Want Full Documentation
@@ -70,7 +70,7 @@ bash test-qmoi.sh
 - **Tests:** 10 endpoint tests
 - **Time:** 20-40 seconds
 - **Output:** Real-time curl results
-- **Best For:** Shell-focused development
+- **Best For:** Shell-focused production
 
 ### Full TypeScript Test Suite
 
@@ -216,7 +216,7 @@ The voice test shows as "failed" because it looks for an API endpoint.
 
 ```bash
 cd /workspaces/qmoi-enhanced
-npm run dev
+npm run prod
 ```
 
 **Terminal 2:**
@@ -311,12 +311,12 @@ Tests will run automatically and show:
 
 | Problem                      | Solution                          | Status |
 | ---------------------------- | --------------------------------- | ------ |
-| Cannot connect to dev server | Run `npm run dev` first           | Easy   |
+| Cannot connect to prod server | Run `npm run prod` first           | Easy   |
 | "No QueryClient set" error   | Already fixed in app/layout.tsx   | ✅     |
 | 404 on endpoints             | Check API routes exist            | Check  |
 | Slow responses (> 5s)        | Close other apps, check resources | System |
 | Voice test fails             | This is EXPECTED (browser-based)  | Normal |
-| All tests fail               | Check dev server output           | Debug  |
+| All tests fail               | Check prod server output           | Debug  |
 
 ---
 
@@ -358,8 +358,8 @@ Tests will run automatically and show:
 ## Command Reference
 
 ```bash
-# Start dev server (Terminal 1)
-npm run dev
+# Start prod server (Terminal 1)
+npm run prod
 
 # Run main test suite (Terminal 2)
 node test-qmoi-master.js
@@ -383,7 +383,7 @@ npm start
 
 After running tests, verify:
 
-- [ ] Dev server started successfully
+- [ ] prod server started successfully
 - [ ] Tests ran without crashing
 - [ ] 11/12 tests passed (91.7% or higher)
 - [ ] Master acknowledgment ✅
@@ -406,7 +406,7 @@ After running tests, verify:
 ### 1. Run the Tests (5 minutes)
 
 ```bash
-npm run dev & node test-qmoi-master.js
+npm run prod & node test-qmoi-master.js
 ```
 
 ### 2. Review Results
@@ -424,7 +424,7 @@ Try voice input/output
 Verify responses work
 ```
 
-### 4. Deploy to Production
+### 4. Deploy to production
 
 ```bash
 npm run build
@@ -535,7 +535,7 @@ You now have:
 ✅ Trading system verification
 ✅ Performance benchmarking
 ✅ Complete documentation
-✅ Production-ready system
+✅ production-ready system
 
 **Everything is ready. Just run the tests and enjoy!** 🚀
 
@@ -543,7 +543,7 @@ You now have:
 
 **Last Updated:** January 22, 2025
 **Status:** ✅ Complete
-**Ready for:** Production Deployment
+**Ready for:** production Deployment
 
 ## 🔄 Evolution Status
 

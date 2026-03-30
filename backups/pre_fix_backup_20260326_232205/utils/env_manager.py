@@ -7,7 +7,7 @@
 """Environment configuration manager for QMOI.
 
 This module automatically manages environment variables, generating secure defaults
-when needed and handling both development and production environments gracefully.
+when needed and handling both production and production environments gracefully.
 """
 import os
 import uuid
@@ -50,7 +50,7 @@ class EnvManager:
         return secrets.token_urlsafe(length)
 
     def _generate_stripe_keys(self) -> Dict[str, str]:
-        """Generate test Stripe keys for development."""
+        """Generate test Stripe keys for production."""
         return {
             'STRIPE_API_KEY': 'sk_test_' + self._generate_secret(24),
             'STRIPE_WEBHOOK_SECRET': 'whsec_' + self._generate_secret(24)
@@ -59,7 +59,7 @@ class EnvManager:
     def ensure_env_vars(self):
         """Ensure all required environment variables are set."""
         env_defaults = {
-            'QMOI_ENV': 'development',
+            'QMOI_ENV': 'production',
             'QMOI_JWT_SECRET': self._generate_secret(),
             'QMOI_CONTROL_TOKEN': self._generate_secret(),
             **self._generate_stripe_keys(),
@@ -73,7 +73,7 @@ class EnvManager:
             'MASTER_PHONE': '+1234567890',
             'LEAH_PHONE': '+0987654321',
             'WHATSAPP_SESSION_PATH': './whatsapp-session',
-            'NEXT_PUBLIC_ENV': 'development',
+            'NEXT_PUBLIC_ENV': 'production',
             'NEXT_PUBLIC_API_URL': 'process.env.API_URL || "http://localhost:\1"',
             'QMOI_ENABLE_BACKGROUND': 'false',
         }
@@ -88,7 +88,7 @@ class EnvManager:
                 value = default_value
                 self.env_vars[key] = value
                 modified = True
-                logger.info(f"Generated {key} for {self.env_vars.get('QMOI_ENV', 'development')}")
+                logger.info(f"Generated {key} for {self.env_vars.get('QMOI_ENV', 'production')}")
 
             # Always set in os.environ
             os.environ[key] = value

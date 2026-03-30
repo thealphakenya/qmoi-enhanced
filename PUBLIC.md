@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "PUBLIC.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -29,21 +29,21 @@ public/
 ├── icon.svg
 ├── icon.webp
 ├── index.html
-├── [PRODUCTION READY]-logo.png
-├── [PRODUCTION READY]-logo.svg
-├── [PRODUCTION READY]-user.jpg
-├── [PRODUCTION READY].jpg
-├── [PRODUCTION READY].svg
+├── [production READY]-logo.png
+├── [production READY]-logo.svg
+├── [production READY]-user.jpg
+├── [production READY].jpg
+├── [production READY].svg
 ├── qcity/
 ├── qcity-icon.svg
 ```
 
 ## Usage & Integration
 
-- All icons and images are used for branding, UI, and device compatibility in QCity, QMOI AI, and QMOI Space.
+- All icons and images are used for branding, UI, and prodice compatibility in QCity, QMOI AI, and QMOI Space.
 - `index.html` is the main entry point for web apps and dashboards.
 - `qcity/` and `qcity-icon.svg` are used for QCity branding and UI features.
-- [PRODUCTION READY] assets are used for default avatars, logos, and error states.
+- [production READY] assets are used for default avatars, logos, and error states.
 - Unused/duplicate assets are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
 
 ## Automation & Health
@@ -55,24 +55,24 @@ public/
 
 ## Zero-Rated QMOI Features & Universal Automation
 
-- All QMOI public assets, including zero-rated (free, unlimited, no billing) features, are documented and available for every app, platform, and device.
+- All QMOI public assets, including zero-rated (free, unlimited, no billing) features, are documented and available for every app, platform, and prodice.
 - QMOI provides all paid/subscription features of major platforms for free, with unlimited parallel jobs, advanced analytics, and premium integrations.
 - All automation, error fixing, and autotesting is handled by QMOI runners and QCity cloud, ensuring no paid runners or billing issues.
 - All public assets, downloads, builds, tests, health checks, and runners are referenced and autotested in:
   - `QMOIFREE.md` (zero-rated features)
-  - `DOWNLOADQMOIAIAPPALLDEVICES.md` (downloads)
+  - `DOWNLOADQMOIAIAPPALLprodICES.md` (downloads)
   - `BUILDAPPSFORALLPLATFORMS.md` (builds)
   - `TESTREADME.md` (testing)
-  - `ALLERRORSSTATSQMOI.md` (device error stats)
+  - `ALLERRORSSTATSQMOI.md` (prodice error stats)
   - `QMOI-ENHANCED-README.md` (enhanced automation)
   - `QMOI-ENHANCEMENT-SUMMARY.md` (enhancement summary)
-  - `QMOIGITPODDEV.md` (Gitpod automation)
+  - `QMOIGITPODprod.md` (Gitpod automation)
   - `QMOIAUTOREVENUEEARN.md` (auto revenue)
   - `ALLMDFILESREFS.md` (master .md index)
 
 ## Cross-App, Cross-Platform Automation
 
-- All public assets and features are autotested, auto-fixed, and auto-updated for every app, platform, and device.
+- All public assets and features are autotested, auto-fixed, and auto-updated for every app, platform, and prodice.
 - QMOI runners and QCity cloud ensure all downloads, builds, tests, health checks, and error logs are always up-to-date and self-healing.
 - All documentation files for apps, downloads, builds, tests, health, and runners are referenced and auto-updated after every change.
 

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 // QMOI Space Service Worker - Advanced PWA Features
 const CACHE_NAME = "qmoi-space-v4.0.0";
 const STATIC_CACHE = "qmoi-static-v4.0.0";
@@ -54,7 +54,7 @@ const API_ENDPOINTS = [
 ];
 
 // Install event - cache static files
-self.addEventListener("install", (event) => {
+self.adprodentListener("install", (event) => {
   console.log("QMOI Space SW: Installing...");
 
   event.waitUntil(
@@ -75,7 +75,7 @@ self.addEventListener("install", (event) => {
 });
 
 // Activate event - clean up old caches
-self.addEventListener("activate", (event) => {
+self.adprodentListener("activate", (event) => {
   console.log("QMOI Space SW: Activating...");
 
   event.waitUntil(
@@ -102,7 +102,7 @@ self.addEventListener("activate", (event) => {
 });
 
 // Fetch event - implement caching strategies
-self.addEventListener("fetch", (event) => {
+self.adprodentListener("fetch", (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
@@ -242,7 +242,7 @@ function isMediaFile(pathname) {
 }
 
 // Background sync for offline actions
-self.addEventListener("sync", (event) => {
+self.adprodentListener("sync", (event) => {
   console.log("QMOI Space SW: Background sync triggered:", event.tag);
 
   if (event.tag === "qmoi-chat-sync") {
@@ -255,7 +255,7 @@ self.addEventListener("sync", (event) => {
 });
 
 // Push notifications
-self.addEventListener("push", (event) => {
+self.adprodentListener("push", (event) => {
   console.log("QMOI Space SW: Push notification received");
 
   const options = {
@@ -287,7 +287,7 @@ self.addEventListener("push", (event) => {
 });
 
 // Notification click handling
-self.addEventListener("notificationclick", (event) => {
+self.adprodentListener("notificationclick", (event) => {
   console.log("QMOI Space SW: Notification clicked:", event.action);
 
   event.notification.close();
@@ -298,7 +298,7 @@ self.addEventListener("notificationclick", (event) => {
 });
 
 // Message handling from main thread
-self.addEventListener("message", (event) => {
+self.adprodentListener("message", (event) => {
   console.log("QMOI Space SW: Message received:", event.data);
 
   if (event.data && event.data.type === "SKIP_WAITING") {
@@ -413,7 +413,7 @@ async function syncVoiceData() {
 }
 
 // Periodic background sync
-self.addEventListener("periodicsync", (event) => {
+self.adprodentListener("periodicsync", (event) => {
   console.log("QMOI Space SW: Periodic sync triggered:", event.tag);
 
   if (event.tag === "qmoi-cache-update") {

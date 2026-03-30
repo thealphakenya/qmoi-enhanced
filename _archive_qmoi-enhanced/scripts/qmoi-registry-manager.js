@@ -28,7 +28,7 @@ class QMOIRegistryManager {
       components: {},
       configurations: {},
       autoEnhancements: {},
-      devices: {},
+      prodices: {},
       platforms: {},
       integrations: {},
       security: {},
@@ -140,8 +140,8 @@ class QMOIRegistryManager {
         autoEnhancement: true,
         lastUpdated: new Date().toISOString(),
       },
-      "qcity-device": {
-        type: "device",
+      "qcity-prodice": {
+        type: "prodice",
         version: "1.0.0",
         status: "active",
         dependencies: ["node", "npm"],
@@ -156,7 +156,7 @@ class QMOIRegistryManager {
         autoEnhancement: true,
         lastUpdated: new Date().toISOString(),
       },
-      "qmoi-autodev": {
+      "qmoi-autoprod": {
         type: "automation",
         version: "1.0.0",
         status: "active",
@@ -195,16 +195,16 @@ class QMOIRegistryManager {
     await this.saveRegistry();
   }
 
-  async registerDevice(name, device) {
-    this.registry.devices[name] = {
-      ...device,
+  async registerprodice(name, prodice) {
+    this.registry.prodices[name] = {
+      ...prodice,
       id: crypto.randomUUID(),
       registeredAt: new Date().toISOString(),
       lastUpdated: new Date().toISOString(),
       status: "active",
     };
 
-    console.log(`✅ Registered device: ${name}`);
+    console.log(`✅ Registered prodice: ${name}`);
     await this.saveRegistry();
   }
 
@@ -297,7 +297,7 @@ class QMOIRegistryManager {
     this.registry.evolutionHistory.push(evolution);
     await this.saveRegistry();
     // data: trigger auto-enhancement, error fix, or self-update
-    // (Production:, this could call scripts/qmoi-auto-enhancement-system.js or similar)
+    // (production:, this could call scripts/qmoi-auto-enhancement-system.js or similar)
     console.log(`🔄 Auto-evolution triggered: ${reason}`);
     return evolution.id;
   }
@@ -351,8 +351,8 @@ class QMOIRegistryManager {
     return this.registry.configurations[name];
   }
 
-  async getDevice(name) {
-    return this.registry.devices[name];
+  async getprodice(name) {
+    return this.registry.prodices[name];
   }
 
   async getPlatform(name) {

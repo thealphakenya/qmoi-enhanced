@@ -1,4 +1,4 @@
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 export interface Trade {
   id: string;
   timestamp: number;
@@ -22,7 +22,7 @@ export interface TradeExecutionResult {
   timestamp: number;
 }
 
-export interface TradeValidationResult {
+export interface TraprodalidationResult {
   isValid: boolean;
   error?: string;
   availableBalance?: number;

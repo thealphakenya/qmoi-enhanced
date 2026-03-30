@@ -3,19 +3,19 @@
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
-QMOI Device Agent
+QMOI prodice Agent
 
-Comprehensive device agent for auto-connection, AI capabilities, and device optimization.
+Comprehensive prodice agent for auto-connection, AI capabilities, and prodice optimization.
 Features:
 - Auto-network connection
 - AI agent mode
-- Device optimization
+- prodice optimization
 - Performance monitoring
 - Background processing
-- Cross-device synchronization
+- Cross-prodice synchronization
 """
 
 import os
@@ -36,11 +36,11 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-class QMOIDeviceAgent:
-    """QMOI Device Agent for all platforms"""
+class QMOIprodiceAgent:
+    """QMOI prodice Agent for all platforms"""
     
     def __init__(self):
-        self.device_info = self.get_device_info()
+        self.prodice_info = self.get_prodice_info()
         self.network_manager = NetworkManager()
         self.ai_agent = AIAgent()
         self.performance_monitor = PerformanceMonitor()
@@ -49,8 +49,8 @@ class QMOIDeviceAgent:
         self.auto_connect_enabled = True
         self.ai_mode_enabled = True
         
-    def get_device_info(self) -> Dict[str, Any]:
-        """Get comprehensive device information"""
+    def get_prodice_info(self) -> Dict[str, Any]:
+        """Get comprehensive prodice information"""
         return {
             "platform": platform.system(),
             "platform_version": platform.version(),
@@ -61,25 +61,25 @@ class QMOIDeviceAgent:
             "cpu_count": psutil.cpu_count(),
             "memory_total": psutil.virtual_memory().total,
             "disk_total": psutil.disk_usage('/').total,
-            "device_id": self.generate_device_id(),
+            "prodice_id": self.generate_prodice_id(),
             "agent_version": "2.0",
-            "capabilities": self.get_device_capabilities()
+            "capabilities": self.get_prodice_capabilities()
         }
     
-    def generate_device_id(self) -> str:
-        """Generate unique device ID"""
+    def generate_prodice_id(self) -> str:
+        """Generate unique prodice ID"""
         import hashlib
-        device_string = f"{platform.node()}{platform.machine()}{platform.processor()}"
-        return hashlib.md5(device_string.encode()).hexdigest()
+        prodice_string = f"{platform.node()}{platform.machine()}{platform.processor()}"
+        return hashlib.md5(prodice_string.encode()).hexdigest()
     
-    def get_device_capabilities(self) -> Dict[str, bool]:
-        """Get device capabilities"""
+    def get_prodice_capabilities(self) -> Dict[str, bool]:
+        """Get prodice capabilities"""
         return {
             "network_auto_connect": True,
             "ai_agent": True,
             "background_processing": True,
             "performance_optimization": True,
-            "cross_device_sync": True,
+            "cross_prodice_sync": True,
             "notifications": True,
             "voice_assistant": self.check_voice_capability(),
             "camera_access": self.check_camera_capability(),
@@ -89,7 +89,7 @@ class QMOIDeviceAgent:
         }
     
     def check_voice_capability(self) -> bool:
-        """Check if device has voice capability"""
+        """Check if prodice has voice capability"""
         try:
             import speech_recognition
             return True
@@ -97,7 +97,7 @@ class QMOIDeviceAgent:
             return False
     
     def check_camera_capability(self) -> bool:
-        """Check if device has camera capability"""
+        """Check if prodice has camera capability"""
         try:
             import cv2
             return True
@@ -105,7 +105,7 @@ class QMOIDeviceAgent:
             return False
     
     def check_location_capability(self) -> bool:
-        """Check if device has location capability"""
+        """Check if prodice has location capability"""
         try:
             import geopy
             return True
@@ -113,8 +113,8 @@ class QMOIDeviceAgent:
             return False
     
     def start_agent(self):
-        """Start the QMOI device agent"""
-        logger.info("🤖 Starting QMOI Device Agent...")
+        """Start the QMOI prodice agent"""
+        logger.info("🤖 Starting QMOI prodice Agent...")
         
         try:
             # Initialize components
@@ -137,13 +137,13 @@ class QMOIDeviceAgent:
             # Start sync manager
             self.sync_manager.start_sync()
             
-            logger.info("✅ QMOI Device Agent started successfully!")
+            logger.info("✅ QMOI prodice Agent started successfully!")
             
             # Keep agent running
             self.keep_alive()
             
         except Exception as e:
-            logger.error(f"❌ Failed to start QMOI Device Agent: {e}")
+            logger.error(f"❌ Failed to start QMOI prodice Agent: {e}")
     
     def initialize_components(self):
         """Initialize all agent components"""
@@ -161,9 +161,9 @@ class QMOIDeviceAgent:
         for directory in directories:
             os.makedirs(directory, exist_ok=True)
         
-        # Save device info
-        with open("agent_data/device_info.json", "w") as f:
-            json.dump(self.device_info, f, indent=2)
+        # Save prodice info
+        with open("agent_data/prodice_info.json", "w") as f:
+            json.dump(self.prodice_info, f, indent=2)
         
         logger.info("Agent components initialized")
     
@@ -232,7 +232,7 @@ class QMOIDeviceAgent:
         """Sync service"""
         while self.agent_status == "active":
             try:
-                # Sync with other devices
+                # Sync with other prodices
                 self.sync_manager.sync_data()
                 
                 time.sleep(300)  # Sync every 5 minutes
@@ -270,7 +270,7 @@ class QMOIDeviceAgent:
                 time.sleep(300)  # Update every 5 minutes
                 
         except KeyboardInterrupt:
-            logger.info("🛑 Stopping QMOI Device Agent...")
+            logger.info("🛑 Stopping QMOI prodice Agent...")
             self.stop_agent()
     
     def update_agent_status(self):
@@ -278,7 +278,7 @@ class QMOIDeviceAgent:
         status = {
             "timestamp": datetime.now().isoformat(),
             "agent_status": self.agent_status,
-            "device_id": self.device_info["device_id"],
+            "prodice_id": self.prodice_info["prodice_id"],
             "network_status": self.network_manager.get_network_status(),
             "ai_status": self.ai_agent.get_status(),
             "performance_status": self.performance_monitor.get_status(),
@@ -355,7 +355,7 @@ class QMOIDeviceAgent:
         logger.info(f"📢 Notification: {notification['title']} - {notification['message']}")
         
         # Platform-specific notification
-        platform = self.device_info["platform"].lower()
+        platform = self.prodice_info["platform"].lower()
         
         if platform == "windows":
             self.send_windows_notification(notification)
@@ -399,8 +399,8 @@ class QMOIDeviceAgent:
             logger.error(f"Linux notification failed: {e}")
     
     def stop_agent(self):
-        """Stop the QMOI device agent"""
-        logger.info("Stopping QMOI Device Agent...")
+        """Stop the QMOI prodice agent"""
+        logger.info("Stopping QMOI prodice Agent...")
         
         self.agent_status = "stopped"
         
@@ -410,7 +410,7 @@ class QMOIDeviceAgent:
         self.performance_monitor.stop()
         self.sync_manager.stop()
         
-        logger.info("✅ QMOI Device Agent stopped")
+        logger.info("✅ QMOI prodice Agent stopped")
 
 class NetworkManager:
     """Network management for auto-connection"""
@@ -510,7 +510,7 @@ class NetworkManager:
         """Connect on Linux"""
         try:
             subprocess.run([
-                "nmcli", "device", "wifi", "connect", network_name
+                "nmcli", "prodice", "wifi", "connect", network_name
             ], check=True)
             return True
         except:
@@ -717,7 +717,7 @@ class PerformanceMonitor:
         self.monitoring_enabled = False
 
 class SyncManager:
-    """Cross-device synchronization"""
+    """Cross-prodice synchronization"""
     
     def __init__(self):
         self.sync_enabled = True
@@ -726,11 +726,11 @@ class SyncManager:
     
     def start_sync(self):
         """Start synchronization"""
-        logger.info("Starting cross-device synchronization...")
+        logger.info("Starting cross-prodice synchronization...")
         self.sync_enabled = True
     
     def sync_data(self):
-        """Sync data with other devices"""
+        """Sync data with other prodices"""
         if not self.sync_enabled:
             return
         
@@ -760,25 +760,25 @@ class SyncManager:
         
         for config_file in config_files:
             if os.path.exists(config_file):
-                # Sync to cloud or other devices
+                # Sync to cloud or other prodices
                 pass
     
     def sync_data_files(self):
         """Sync data files"""
         data_files = [
-            "agent_data/device_info.json",
+            "agent_data/prodice_info.json",
             "agent_data/agent_status.json"
         ]
         
         for data_file in data_files:
             if os.path.exists(data_file):
-                # Sync to cloud or other devices
+                # Sync to cloud or other prodices
                 pass
     
     def sync_status(self):
         """Sync status information"""
         status = {
-            "device_id": "current_device_id",
+            "prodice_id": "current_prodice_id",
             "last_sync": self.last_sync.isoformat(),
             "sync_enabled": self.sync_enabled
         }
@@ -811,7 +811,7 @@ class SyncManager:
 
 def main():
     """Main function"""
-    agent = QMOIDeviceAgent()
+    agent = QMOIprodiceAgent()
     agent.start_agent()
 
 if __name__ == "__main__":

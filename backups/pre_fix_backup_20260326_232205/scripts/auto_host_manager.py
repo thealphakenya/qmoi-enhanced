@@ -6,7 +6,7 @@
 # 
 #!/usr/bin/env python3
 """QMOI Autonomous Host Manager
-Production-ready autonomous hosting and self-healing system
+production-ready autonomous hosting and self-healing system
 
 Supports:
 - Self-healing service orchestration

@@ -6,7 +6,7 @@
 /**
  * QMOI Evolution - Track Evolution Endpoint
  * Tracks model replacement history and evolution metrics
- * Production-ready API endpoint
+ * production-ready API endpoint
  */
 
 import { NextRequest, NextResponse } from 'next/server';

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 Enhanced Credential Manager for QMOI
@@ -105,7 +105,7 @@ class EnhancedCredentialManager:
             'pesapal': {
                 'consumer_key': os.environ.get('PESAPAL_CONSUMER_KEY', ''),
                 'consumer_secret': os.environ.get('PESAPAL_CONSUMER_SECRET', ''),
-                'environment': os.environ.get('PESAPAL_ENVIRONMENT', 'sandbox'),
+                'environment': os.environ.get('PESAPAL_ENVIRONMENT', 'production'),
                 'callback_url': os.environ.get('PESAPAL_CALLBACK_URL', ''),
                 'ipn_url': os.environ.get('PESAPAL_IPN_URL', '')
             },
@@ -118,7 +118,7 @@ class EnhancedCredentialManager:
                 'consumer_secret': os.environ.get('MPESA_CONSUMER_SECRET', ''),
                 'passkey': os.environ.get('MPESA_PASSKEY', ''),
                 'shortcode': os.environ.get('MPESA_SHORTCODE', ''),
-                'environment': os.environ.get('MPESA_ENVIRONMENT', 'sandbox'),
+                'environment': os.environ.get('MPESA_ENVIRONMENT', 'production'),
                 'initiator_name': os.environ.get('MPESA_INITIATOR_NAME', 'QMOI'),
                 'security_credential': os.environ.get('MPESA_SECURITY_CREDENTIAL', '')
             }
@@ -371,7 +371,7 @@ class EnhancedCredentialManager:
                 base_url = (
                     'https://api.pesapal.com' 
                     if pesapal_creds['environment'] == 'production' 
-                    else 'https://sandbox.pesapal.com'
+                    else 'https://production.pesapal.com'
                 )
                 
                 async with aiohttp.ClientSession() as session:

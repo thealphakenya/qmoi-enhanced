@@ -313,7 +313,7 @@ export class QCityService {
     }
   }
 
-  public async getDeviceList(): Promise<any[]> {
+  public async getprodiceList(): Promise<any[]> {
     
     return [
       {
@@ -345,15 +345,15 @@ export class QCityService {
 
   public async runRemoteCommand(
     cmd: string,
-    deviceId = "default",
+    prodiceId = "default",
   ): Promise<any> {
     
-    if (deviceId === "qcity-1") {
+    if (prodiceId === "qcity-1") {
       return { success: true, output: `[QCity Colab 1] Executed: ${cmd}` };
-    } else if (deviceId === "qcity-2") {
+    } else if (prodiceId === "qcity-2") {
       return { success: true, output: `[QCity Cloud 2] Executed: ${cmd}` };
     } else {
-      return { success: true, output: `[Default Device] Executed: ${cmd}` };
+      return { success: true, output: `[Default prodice] Executed: ${cmd}` };
     }
     
   }

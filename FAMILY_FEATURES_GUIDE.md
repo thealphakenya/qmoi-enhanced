@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Family Features Guide
 
 ## Overview
@@ -188,7 +188,7 @@ curl -X POST http://localhost:3001/api/qmoi/family/wallet/request-withdrawal \
   -d '{
     "amount": 500,
     "purpose": "Project expenses",
-    "notes": "Development tools"
+    "notes": "production tools"
   }'
 ```
 
@@ -553,7 +553,7 @@ curl -X PUT http://localhost:3001/api/qmoi/family/settings/personal \
 
 **Document Version**: 1.0.0  
 **Last Updated**: January 28, 2026  
-**Status**: Active & Production Ready  
+**Status**: Active & production Ready  
 **Audience**: Family Members (Victor & Leah)
 
 ## 🔄 Evolution Status

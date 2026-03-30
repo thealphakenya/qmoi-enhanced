@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOI Platform Analytics"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -16,7 +16,7 @@ title: "QMOI Platform Analytics"
 
 # QMOI Platform Analytics
 
-[PRODUCTION READY] describing analytics collection, dashboards, and KPI definitions for platform services.
+[production READY] describing analytics collection, dashboards, and KPI definitions for platform services.
 
 <!-- QMOI_VALIDATION_START -->
 

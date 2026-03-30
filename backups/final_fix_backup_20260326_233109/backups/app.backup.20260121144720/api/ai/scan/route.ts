@@ -1,7 +1,7 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 4 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 4 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 
 interface ScanResult {
@@ -22,7 +22,7 @@ interface ScanResult {
 
 export async function GET(_request: NextRequest) {
   try {
-    // Production implementation: scan results
+    // production implementation: scan results
     const Result: ScanResult = {
       threats: [
         {
@@ -65,8 +65,8 @@ export async function POST(_request: NextRequest) {
     const { action } = body;
 
     if (action === "self-heal") {
-      // Production implementation: self-healing process - replace with actual implementation
-      await new Promise((resolve) => setTimeout(resolve, 2000)); // Production implementation: healing time
+      // production implementation: self-healing process - replace with actual implementation
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // production implementation: healing time
 
       return NextResponse.json({
         status: "success",

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -44,9 +44,9 @@ export async function GET(_request: NextRequest) {
       timestamp: new Date().toISOString(),
       action: "download-report-access",
       status: "success",
-      user: process.env.AUTH_USER || "unknown", // Production: Extract from JWT auth context
+      user: process.env.AUTH_USER || "unknown", // production: Extract from JWT auth context
       app: "QMOI",
-      device: "unknown",
+      prodice: "unknown",
       _error: null,
     };
     try {
@@ -82,7 +82,7 @@ export async function GET(_request: NextRequest) {
       status: "error",
       user: "unknown",
       app: "QMOI",
-      device: "unknown",
+      prodice: "unknown",
       _error: error?.toString() || "unknown error",
     };
     try {

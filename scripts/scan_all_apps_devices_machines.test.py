@@ -6,11 +6,11 @@
 #!/usr/bin/env python3
 import subprocess
 
-def test_scan_all_apps_devices_machines_runs():
+def test_scan_all_apps_prodices_machines_runs():
     completed = subprocess.run([
-        'python3', 'scripts/scan_all_apps_devices_machines.py',
+        'python3', 'scripts/scan_all_apps_prodices_machines.py',
         '--root', '.',
-        '--report', 'reports/test_all_apps_devices_machines_report.json'
+        '--report', 'reports/test_all_apps_prodices_machines_report.json'
     ], capture_output=True, text=True)
 
     print(completed.stdout)
@@ -19,4 +19,4 @@ def test_scan_all_apps_devices_machines_runs():
     assert 'report written to' in completed.stdout
 
 if __name__ == '__main__':
-    test_scan_all_apps_devices_machines_runs()
+    test_scan_all_apps_prodices_machines_runs()

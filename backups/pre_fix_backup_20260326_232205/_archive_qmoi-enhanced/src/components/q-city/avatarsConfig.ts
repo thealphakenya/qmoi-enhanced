@@ -553,7 +553,7 @@ export const animationEngines = {
     description: "2D animations with smooth transitions and gestures",
     quality: "standard",
     resourceUsage: "low",
-    bestFor: ["simple avatars", "low-resource devices", "quick prototypes"],
+    bestFor: ["simple avatars", "low-resource prodices", "quick prototypes"],
   },
   "three-js": {
     name: "Three.js 3D",
@@ -574,7 +574,7 @@ export const animationEngines = {
     description: "Neural radiance fields for photorealistic faces",
     quality: "ai-enhanced",
     resourceUsage: "very-high",
-    bestFor: ["photorealistic avatars", "high-end devices", "research"],
+    bestFor: ["photorealistic avatars", "high-end prodices", "research"],
   },
   "gaussian-splatting": {
     name: "Gaussian Splatting",
@@ -606,7 +606,7 @@ export const animationEngines = {
 export const qualityLevels = {
   standard: {
     name: "Standard",
-    description: "comprehensive quality suitable for all devices",
+    description: "comprehensive quality suitable for all prodices",
     features: ["comprehensive animations", "standard voice", "simple effects"],
   },
   enhanced: {

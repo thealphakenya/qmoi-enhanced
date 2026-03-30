@@ -182,7 +182,7 @@ Layer 4: Meta-Memory (Knowledge about memory)
 #### Memory Intelligence Features
 - **Adaptive Learning**: Update understanding based on new data
 - **Pattern Recognition**: Identify recurring patterns
-- **Anomaly Detection**: Detect deviations from patterns
+- **Anomaly Detection**: Detect prodiations from patterns
 - **Predictive Capability**: Use history to predict future
 - **Context Injection**: Use relevant memory in decisions
 

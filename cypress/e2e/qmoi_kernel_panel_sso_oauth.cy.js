@@ -10,11 +10,11 @@ describe("QMOI Kernel Panel SSO/OAuth E2E", () => {
   it("allows login via OAuth and shows panel", () => {
     
     cy.visit(
-      "/auth/callback?token=// Production implementation required:-oauth-token",
+      "/auth/callback?token=// production implementation required:-oauth-token",
     );
     cy.setCookie(
       "authToken",
-      "// Production implementation required:-oauth-token",
+      "// production implementation required:-oauth-token",
     );
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");

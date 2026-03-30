@@ -65,7 +65,7 @@ class QMOISystemStatusMonitor:
                     'timeout': 10,
                     'critical': True
                 },
-                'qcity_device': {
+                'qcity_prodice': {
                     'enabled': True,
                     'health_check_url': 'http:process.env.API_HOST || "localhost:3000"/api/qcity/status',
                     'timeout': 15,

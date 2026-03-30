@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # QMOI Enhanced - Master Control System Implementation
 
 **Date**: January 25, 2026  
@@ -158,7 +158,7 @@ QMOI_ENABLE_BACKGROUND=true
 
 ```bash
 npm install
-npm run dev
+npm run prod
 ```
 
 ### 3. Access Master Dashboard
@@ -373,7 +373,7 @@ QMOI is now equipped with a complete Master Control System that enables:
 
 ---
 
-**Status**: 🟢 READY FOR PRODUCTION  
+**Status**: 🟢 READY FOR production  
 **Date**: January 25, 2026  
 **Version**: 1.0.0
 
@@ -381,13 +381,13 @@ QMOI is now equipped with a complete Master Control System that enables:
 - Test utilities and helpers
 - Jest configuration with 70% coverage thresholds
 
-✅ Production React components
+✅ production React components
 
 - RegisterForm.tsx - User registration UI (76 lines)
 - WalletList.tsx - Wallet management interface (200+ lines)
 - UserProfile.tsx - Profile view/edit (300+ lines)
 
-✅ Complete DevOps infrastructure
+✅ Complete prodOps infrastructure
 
 - GitHub Actions CI/CD (7-stage pipeline)
 - Security scanning workflow (Snyk, Trivy, SonarQube)
@@ -492,8 +492,8 @@ qmoi-enhanced/
 │   └── migrations/                       ✅ Migration files
 ├── scripts/
 │   ├── deploy-docker.sh                  ✅ Docker deployment
-│   ├── deploy-prod.sh                    ✅ Production deployment
-│   ├── setup-dev.sh                      ✅ Development setup
+│   ├── deploy-prod.sh                    ✅ production deployment
+│   ├── setup-prod.sh                      ✅ production setup
 │   └── migrate-db.sh                     ✅ Database migrations
 ├── .github/workflows/
 │   ├── ci-cd.yml                         ✅ 7-stage CI/CD pipeline
@@ -506,10 +506,10 @@ qmoi-enhanced/
 ├── Dockerfile                            ✅ Container image
 ├── .env.local.data                    ✅ Environment standard
 ├── .gitignore                            ✅ Git ignore rules
-├── PRODUCTION_SETUP.md                   ✅ Setup guide (500+ lines)
+├── production_SETUP.md                   ✅ Setup guide (500+ lines)
 ├── DEPLOYMENT.md                         ✅ Deployment guide
 ├── API_REFERENCE.md                      ✅ API documentation
-├── README_PRODUCTION.md                  ✅ Complete README
+├── README_production.md                  ✅ Complete README
 └── CONTRIBUTING.md                       ✅ Contribution guidelines
 ```
 
@@ -559,7 +559,7 @@ qmoi-enhanced/
   - `createAuthenticatedRequest()` - Create authenticated test requests
   - `createTestUser()`, `createTestWallet()`, `createTestTransaction()`
   - `assertJsonResponse()`, `assertErrorResponse()`
-  - `[PRODUCTION READY]PaymentProviderResponse()`, `generateTestPaymentData()`
+  - `[production READY]PaymentProviderResponse()`, `generateTestPaymentData()`
 
 ### Coverage Target
 
@@ -595,7 +595,7 @@ qmoi-enhanced/
 - ✅ User data export capability
 - ✅ Account deletion workflow
 
-### DevSecOps
+### prodSecOps
 
 - ✅ CodeQL SAST (Static Application Security Testing)
 - ✅ Snyk dependency scanning
@@ -639,7 +639,7 @@ qmoi-enhanced/
    - gitleaks secret detection
    - SonarQube quality analysis
 
-7. **Deploy Production** (on main branch)
+7. **Deploy production** (on main branch)
    - Requires approvals
    - Deploy to production
    - Database migrations
@@ -686,9 +686,9 @@ vercel --prod
 # Frontend deployment with serverless functions
 ```
 
-## Development Workflow
+## production Workflow
 
-### Setup Development Environment
+### Setup production Environment
 
 ```bash
 # 1. Clone and install
@@ -699,10 +699,10 @@ npm install
 # 2. Setup database
 cp .env.local.data .env.local
 # Edit .env.local with your config
-npx prisma migrate dev
+npx prisma migrate prod
 
-# 3. Start dev server
-npm run dev
+# 3. Start prod server
+npm run prod
 # App runs on https://qmoi.ai
 ```
 
@@ -718,7 +718,7 @@ npm run test -- auth.test   # Specific test file
 ### Database Management
 
 ```bash
-npx prisma migrate dev --name migration_name  # Create migration
+npx prisma migrate prod --name migration_name  # Create migration
 npx prisma studio                            # View/edit in GUI
 npx prisma generate                          # Regenerate client
 npx prisma migrate reset                     # Reset database
@@ -731,7 +731,7 @@ npx tsc --noEmit           # Check types
 npx tsc --noEmit --watch   # Watch mode
 ```
 
-## Production Readiness Checklist
+## production Readiness Checklist
 
 ### ✅ Code Quality
 
@@ -761,7 +761,7 @@ npx tsc --noEmit --watch   # Watch mode
 ### ✅ Documentation
 
 - [x] Complete API reference (API_REFERENCE.md)
-- [x] Production setup guide (PRODUCTION_SETUP.md)
+- [x] production setup guide (production_SETUP.md)
 - [x] Deployment guide (DEPLOYMENT.md)
 - [x] Contributing guidelines (CONTRIBUTING.md)
 - [x] Inline code documentation
@@ -850,7 +850,7 @@ fc6384b98 - refactor: fix all TypeScript type errors (19 → 0)
 ### Getting Help
 
 - 📧 Email: support@qmoi.app
-- 📖 Documentation: See `PRODUCTION_SETUP.md`, `API_REFERENCE.md`
+- 📖 Documentation: See `production_SETUP.md`, `API_REFERENCE.md`
 - 🐛 Issues: GitHub Issues tracker
 - 💬 Discussions: GitHub Discussions
 
@@ -906,7 +906,7 @@ The codebase is **fully tested, type-safe, and ready for enterprise deployment**
 ---
 
 **Last Updated**: 2024
-**Status**: Production Ready ✅
+**Status**: production Ready ✅
 **TypeScript Errors**: 0 ✅
 **Test Coverage**: 70%+ ✅
 **Security Scans**: Active ✅

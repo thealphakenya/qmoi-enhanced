@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # Component Usage Plan
 
 This document outlines where each UI component is intended to be used, along with role-based access levels and integration status. It serves as the canonical mapping between components and application surfaces, ensuring that no component remains orphaned.
@@ -19,7 +19,7 @@ This document outlines where each UI component is intended to be used, along wit
 | **QMOIDashboard**      | Main operational dashboard for Masters and Users | QMOIDashboard.tsx (wrapper), Chatbot, SystemHealthDashboard, FileExplorer, NotificationCenter, GlobalCall, QmoiMemoryPanel, ... | Master/User   | Core entrypoint; validates major components via ComponentGallery. |
 | **QVillage**           | Enhanced AI platform and workspace               | QVillage.tsx, QAvatar, QConverse, QmoiBrowser, QVillageDatasetsPanel, ...                                                       | User/Sister   | Search, filter, sort features implemented.                        |
 | **MasterPortal**       | Administrative controls                          | MasterPortal.tsx, SystemHealthMonitor, Dashboard panels, RoleContext, TeamRoleManager, ...                                      | Master only   | Contains audit, automation, user management.                      |
-| **QCityDashboard**     | Q‑City management interface                      | QCityDashboard.tsx, QCityDevicePanel, QCityErrorManager, ...                                                                    | Master/Sister | Infrastructure control.                                           |
+| **QCityDashboard**     | Q‑City management interface                      | QCityDashboard.tsx, QCityprodicePanel, QCityErrorManager, ...                                                                    | Master/Sister | Infrastructure control.                                           |
 | **Project Interfaces** | Project management                               | ProjectDashboard.tsx, ProjectList, ProjectForm, TaskList, TaskForm, SisterProjects.tsx                                          | User/Sister   | Collaboration features.                                           |
 
 _(Note: the above list is illustrative—ComponentGallery.tsx remains the source of truth for all components.)_

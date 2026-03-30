@@ -7,29 +7,29 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-## Production Readiness Snapshot
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
 ## Summary of matches
 
 - Line 174: do_sample=True,
-- Line 255: [PRODUCTION READY]_PROD="Ask QMOI anything...",
-- Line 327: [PRODUCTION READY]_PROD="Enter multiple prompts, one per line...",
-- Line 345: [PRODUCTION READY]_PROD="Test prompt for API...",
+- Line 255: [production READY]_prod="Ask QMOI anything...",
+- Line 327: [production READY]_prod="Enter multiple prompts, one per line...",
+- Line 345: [production READY]_prod="Test prompt for API...",
 - Line 482: "do_sample": True,
 - Line 615: # Implementation for model upload
 - Line 629: # Implementation for deployment verification
-- Line 684: from unittest.[PRODUCTION READY]_PROD import [PRODUCTION READY]_PROD, patch
-- Line 705: with patch.object(app.model, 'generate') as [PRODUCTION READY]_PROD_generate:
-- Line 706: [PRODUCTION READY]_PROD_generate.return_value = torch.tensor([[1, 2, 3, 4]])
+- Line 684: from unittest.[production READY]_prod import [production READY]_prod, patch
+- Line 705: with patch.object(app.model, 'generate') as [production READY]_prod_generate:
+- Line 706: [production READY]_prod_generate.return_value = torch.tensor([[1, 2, 3, 4]])
 
 ## required action
 
-Update documentation to remove production [PRODUCTION READY]s and provide real deployment instructions.
+Update documentation to remove production [production READY]s and provide real deployment instructions.
 
 ## Notes
 

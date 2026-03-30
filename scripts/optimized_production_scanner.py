@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-QMOI OPTIMIZED PRODUCTION SCANNER v5.0
+QMOI OPTIMIZED production SCANNER v5.0
 Fast comprehensive scan with intelligent directory skipping
 Scans ONLY relevant source code directories, skips massive backup/metadata dirs
 """
@@ -19,7 +19,7 @@ REPORT_DIR.mkdir(exist_ok=True)
 # Key directories to scan
 SCAN_DIRS = {
     'app', 'src', 'scripts', 'pages', 'components', 'hooks', 'libs',
-    'utils', 'services', 'api', 'config', 'public', 'devices',
+    'utils', 'services', 'api', 'config', 'public', 'prodices',
     '__tests__', 'test', 'tests', 'cypress', 'e2e', 'spec',
     '.github', 'qmoi'
 }
@@ -31,12 +31,12 @@ SKIP_DIRS = {
     'backup', 'archive', 'temp', 'tmp', '.bak', 'reports'
 }
 
-# Core non-production patterns (high confidence only)
+# Core production patterns (high confidence only)
 CRITICAL_PATTERNS = {
     # Highest priority patterns
-    r'\[PRODUCTION\s+IMPLEMENTATION\s+REQUIRED\]': 'High: Production implementation required marker',
-    r'//\s*PRODUCTION\s+IMPLEMENTATION\s+REQUIRED': 'High: Inline production implementation marker',
-    r'#\s*PRODUCTION\s+IMPLEMENTATION\s+REQUIRED': 'High: Python production marker',
+    r'\[production\s+IMPLEMENTATION\s+REQUIRED\]': 'High: production implementation required marker',
+    r'//\s*production\s+IMPLEMENTATION\s+REQUIRED': 'High: Inline production implementation marker',
+    r'#\s*production\s+IMPLEMENTATION\s+REQUIRED': 'High: Python production marker',
     
     # Error variable anti-patterns
     r'} catch \(_error\)': 'High: Underscore error variable in catch',
@@ -56,7 +56,7 @@ CRITICAL_PATTERNS = {
     r'\bfake_\w+\b': 'Medium: Fake variable',
 }
 
-class OptimizedProductionScanner:
+class OptimizedproductionScanner:
     def __init__(self):
         self.issues = defaultdict(list)
         self.files_scanned = 0
@@ -95,7 +95,7 @@ class OptimizedProductionScanner:
     
     def scan_repository(self):
         """Scan repository focusing on source code"""
-        print("\n🔍 OPTIMIZED PRODUCTION SCANNER v5.0")
+        print("\n🔍 OPTIMIZED production SCANNER v5.0")
         print("=" * 80)
         print(f"Scanning key directories: {', '.join(sorted(SCAN_DIRS))}")
         print(f"Skipping directories: {', '.join(sorted(SKIP_DIRS))}")
@@ -149,7 +149,7 @@ class OptimizedProductionScanner:
         """Generate summary report"""
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
-║       QMOI OPTIMIZED PRODUCTION SCANNER REPORT v5.0                        ║
+║       QMOI OPTIMIZED production SCANNER REPORT v5.0                        ║
 ║       {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
@@ -199,7 +199,7 @@ Your codebase appears to be production-ready!
         report += f"""
 ─────────────────────────────────────────────────────────────────────────────
 GENERATION TIME: {datetime.now().isoformat()}Z
-STATUS: {'✅ PRODUCTION READY' if self.issues_found == 0 else '⚠️  REVIEW NEEDED'}
+STATUS: {'✅ production READY' if self.issues_found == 0 else '⚠️  REVIEW NEEDED'}
 ─────────────────────────────────────────────────────────────────────────────
 """
         return report
@@ -207,7 +207,7 @@ STATUS: {'✅ PRODUCTION READY' if self.issues_found == 0 else '⚠️  REVIEW N
     def save_report(self):
         """Save report to disk"""
         report = self.generate_report()
-        report_file = REPORT_DIR / 'OPTIMIZED_PRODUCTION_SCAN.txt'
+        report_file = REPORT_DIR / 'OPTIMIZED_production_SCAN.txt'
         
         with open(report_file, 'w') as f:
             f.write(report)
@@ -230,7 +230,7 @@ STATUS: {'✅ PRODUCTION READY' if self.issues_found == 0 else '⚠️  REVIEW N
         print(f"💾 Data saved: {json_file}")
 
 def main():
-    scanner = OptimizedProductionScanner()
+    scanner = OptimizedproductionScanner()
     scanner.scan_repository()
     scanner.save_report()
 

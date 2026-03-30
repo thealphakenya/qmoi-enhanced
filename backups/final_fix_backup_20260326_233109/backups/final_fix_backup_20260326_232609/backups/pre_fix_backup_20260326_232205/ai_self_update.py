@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# // Production implementation:
+# // production implementation:
 # NOTE: 6 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import os
 import subprocess
@@ -93,7 +93,7 @@ class AISelfUpdater:
             print(f"Update check failed: {e}")
 
     def optimize_self(self):
-        # // Production implementation required: for self-optimization logic (meta-learning, RL, etc.)
+        # // production implementation required: for self-optimization logic (meta-learning, RL, etc.)
         # complete, safe optimization steps for production:
         print("Running self-optimization (safe mode)...")
         # 1) Ensure model artifacts exist before attempting backup
@@ -227,7 +227,7 @@ class AISelfUpdater:
             return f"Failed to read timetable: {e}"
 
     def get_ai_features(self):
-        return "Chat, Wallet, Project Automation, Device Management, Colab Integration, and more!"
+        return "Chat, Wallet, Project Automation, prodice Management, Colab Integration, and more!"
 
     def get_project_suggestions(self):
         return "- Personal Budget Tracker\n- Homework Helper\n- Gift Planner\n- Health & Fitness Buddy\n- Dream Journal"
@@ -250,14 +250,14 @@ class AISelfUpdater:
     def get_wallet_instructions(self):
         return "Go to LC Hub > Wallet to view, send, or receive money. Tap 'Add Funds' to top up."
 
-    def enhance_device_features(self, wallpaper_path=None, appearance_settings=None, apps_to_install=None):
+    def enhance_prodice_features(self, wallpaper_path=None, appearance_settings=None, apps_to_install=None):
         try:
             if wallpaper_path:
                 print(f"Setting wallpaper: {wallpaper_path}")
-                # Production: copy wallpaper to a known location for the deployment
+                # production: copy wallpaper to a known location for the deployment
                 try:
-                    os.makedirs('device_assets', exist_ok=True)
-                    dest = os.path.join('device_assets', os.path.basename(wallpaper_path))
+                    os.makedirs('prodice_assets', exist_ok=True)
+                    dest = os.path.join('prodice_assets', os.path.basename(wallpaper_path))
                     if os.path.exists(wallpaper_path):
                         import shutil
                         shutil.copyfile(wallpaper_path, dest)
@@ -269,9 +269,9 @@ class AISelfUpdater:
                 for app in apps_to_install:
                     print(f"Installing app: {app}")
                     # In production this could enqueue installs; here we log the intent
-            print("Device features managed/enhanced.")
+            print("prodice features managed/enhanced.")
         except Exception as e:
-            print(f"Device enhancement failed: {e}")
+            print(f"prodice enhancement failed: {e}")
 
     def send_app_download_links(self):
         # Use configured numbers; fallbacks exist in the instance
@@ -282,7 +282,7 @@ class AISelfUpdater:
             "Mac": "https://data.com/app-latest.dmg",
             "Linux": "https://data.com/app-latest.AppImage"
         }
-        msg = "Download the stable-Q AI App for your device:\n" + "\n".join([f"{k}: {v}" for k, v in app_links.items()])
+        msg = "Download the stable-Q AI App for your prodice:\n" + "\n".join([f"{k}: {v}" for k, v in app_links.items()])
         for number in [self.master_number, self.sister_number]:
             if not number:
                 continue
@@ -342,8 +342,8 @@ class AISelfUpdater:
         while self.running:
             self.check_for_updates()
             self.optimize_self()
-            # data: manage device features each cycle
-            self.enhance_device_features(
+            # data: manage prodice features each cycle
+            self.enhance_prodice_features(
                 wallpaper_path="/path/to/wallpaper.jpg",
                 appearance_settings={"theme": "light", "font": "rounded"},
                 apps_to_install=["com.data.wallet", "com.data.lchub"]

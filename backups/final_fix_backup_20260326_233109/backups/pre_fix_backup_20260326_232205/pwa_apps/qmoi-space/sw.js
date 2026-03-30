@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:29Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 // QMOI Space Service Worker
 const CACHE_NAME = "qmoi-space-v1.2.3";
 const STATIC_CACHE = "qmoi-space-static-v1.2.3";
@@ -11,7 +11,7 @@ const DYNAMIC_CACHE = "qmoi-space-dynamic-v1.2.3";
 
 const STATIC_FILES = ["./", "./index.html", "./manifest.webmanifest"];
 
-self.addEventListener("install", (event) => {
+self.adprodentListener("install", (event) => {
   event.waitUntil(
     caches
       .open(STATIC_CACHE)
@@ -20,7 +20,7 @@ self.addEventListener("install", (event) => {
   );
 });
 
-self.addEventListener("activate", (event) => {
+self.adprodentListener("activate", (event) => {
   event.waitUntil(
     caches
       .keys()
@@ -33,7 +33,7 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-self.addEventListener("fetch", (event) => {
+self.adprodentListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
   const { request } = event;

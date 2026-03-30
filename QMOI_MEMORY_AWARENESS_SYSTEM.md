@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ================================================================================
 QMOI MEMORY & AWARENESS SYSTEM - COMPREHENSIVE ENHANCEMENT DOCUMENTATION
 ================================================================================
@@ -43,7 +43,7 @@ LAYER 1: PERSISTENT STORAGE (LONG-TERM MEMORY)
 │ ├─ User profiles - All enrolled users
 │ ├─ Project history - Completed projects
 │ ├─ Trading state - All positions & history
-│ ├─ Device registry - All devices & status
+│ ├─ prodice registry - All prodices & status
 │ ├─ Financial ledger - All transactions
 │ ├─ Audit logs - All actions & events
 │ └─ Error history - All errors & solutions
@@ -80,11 +80,11 @@ LAYER 2: ACTIVE SESSION MEMORY (MEDIUM-TERM)
 ├─ User identity
 ├─ Active context
 ├─ Project continuity
-└─ Device sync state
+└─ prodice sync state
 
 LAYER 3: REAL-TIME AWARENESS MEMORY (SHORT-TERM)
 ├─ Live Monitoring
-│ ├─ Device status (real-time)
+│ ├─ prodice status (real-time)
 │ ├─ Trading positions (current)
 │ ├─ Wallet balances (live)
 │ ├─ System health (streaming)
@@ -174,7 +174,7 @@ CATEGORY 3: PAYMENT SERVICE CREDENTIALS
 ├─ Pesapal Integration
 │ ├─ Consumer Key: [ENCRYPTED]
 │ ├─ Consumer Secret: [ENCRYPTED]
-│ ├─ Endpoint: Production
+│ ├─ Endpoint: production
 │ ├─ Status: ACTIVE & VERIFIED
 │ ├─ Transactions: Fully functional
 │ └─ Master approval: REQUIRED
@@ -294,7 +294,7 @@ BUSINESS SYSTEMS:
 ✓ Wallet system (Multi-currency)
 ✓ Payment system (Pesapal, Mpesa, Airtel)
 ✓ User management (Enrollment, roles)
-✓ Device management (Registry, control)
+✓ prodice management (Registry, control)
 ✓ Project management (Lifecycle tracking)
 ✓ Financial ledger (All transactions)
 ✓ Audit logs (Complete history)
@@ -313,7 +313,7 @@ MASTER CONFIGURATION:
 ✓ Master notification channels: All
 ✓ Master preferences: Stored
 ✓ Master API keys: Managed
-✓ Master device list: Tracked
+✓ Master prodice list: Tracked
 ✓ Master wallet: Monitored
 ✓ Master activity: Logged
 
@@ -398,7 +398,7 @@ QMOI Agent Logic:
    - Tests run automatically
    - Deployment to production
    - Smoke tests run
-   - Production deployment (if approved)
+   - production deployment (if approved)
 6. Monitor:
    - Health checks every 30 seconds
    - Error detection active
@@ -507,7 +507,7 @@ VALIDATION CHECKLIST (Run Daily):
 ✓ Check: All databases connected
 ✓ Check: All secrets valid (not expired)
 ✓ Check: All users properly enrolled
-✓ Check: All devices registered
+✓ Check: All prodices registered
 ✓ Check: Master commands accessible
 ✓ Check: All audit logs present
 ✓ Check: No orphaned transactions
@@ -576,7 +576,7 @@ NOTIFICATION CHANNELS:
 
 APPROVAL WORKFLOW (for sensitive operations):
 
-1. QMOI detects sensitive operation (financial, security, device control)
+1. QMOI detects sensitive operation (financial, security, prodice control)
 2. Creates request in system
 3. Notifies master via all channels
 4. Waits for approval (timeout: 24 hours)

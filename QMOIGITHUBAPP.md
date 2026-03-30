@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOI GitHub App design"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -20,16 +20,16 @@ QMOI and the GitHub App require a few secrets for production operation. Below ar
 
 - `GITHUB_TOKEN` (Personal Access Token or fine-grained token)
   - Purpose: used by CI and QMOI automation to push commits, create releases, and manage repo-level resources.
-  - How to get: Sign in to GitHub as the account that will perform automation (the account that owns or has write access to `thealphakenya/qmoi-enhanced`) → Settings → Developer settings → Personal access tokens → Generate new token. Give it at least repo:contents and repo:status (or Code: read & write in fine-grained tokens). Copy the token value immediately. Store it in `GITHUB_TOKEN` repository secret or in your local `.env` for Codespaces.
+  - How to get: Sign in to GitHub as the account that will perform automation (the account that owns or has write access to `thealphakenya/qmoi-enhanced`) → Settings → prodeloper settings → Personal access tokens → Generate new token. Give it at least repo:contents and repo:status (or Code: read & write in fine-grained tokens). Copy the token value immediately. Store it in `GITHUB_TOKEN` repository secret or in your local `.env` for Codespaces.
 - `QMOI_TOKEN`
   - Purpose: an internal automation token used by QMOI workflows and orchestrator services to authenticate calls between QMOI components. It is used in place of the user's PAT for internal operations in some scripts.
-  - How to get: QMOI can generate this token for you locally; it's a long random secret. You can also create a dedicated machine/service token in your secrets manager and add it as `QMOI_TOKEN` in repository secrets. For local development, QMOI writes a generated `QMOI_TOKEN` into `.env` if not present.
+  - How to get: QMOI can generate this token for you locally; it's a long random secret. You can also create a dedicated machine/service token in your secrets manager and add it as `QMOI_TOKEN` in repository secrets. For local production, QMOI writes a generated `QMOI_TOKEN` into `.env` if not present.
 - `QMOI_WEBHOOK_SECRET`
   - Purpose: the secret used to validate GitHub webhook payloads (`X-Hub-Signature-256`).
   - How to get: generate a random 32+ character secret (openssl rand -hex 32) and add it as a repository secret named `QMOI_WEBHOOK_SECRET` and also put it in your App configuration when creating the GitHub App webhook URL.
-- GitHub App private key (`QMOI_APP_PRIVATE_KEY` or App PEM) - Purpose: required if you create a GitHub App (required for least-privilege automation). QMOI uses the private key to create a JWT and trade it for installation tokens. - How to get: when you create the GitHub App in Developer Settings, download the private key (PEM) and store the PEM contents as a repository or organization secret named `QMOI_APP_PRIVATE_KEY` (or store it in your KMS and provide access to QMOI runtime).
+- GitHub App private key (`QMOI_APP_PRIVATE_KEY` or App PEM) - Purpose: required if you create a GitHub App (required for least-privilege automation). QMOI uses the private key to create a JWT and trade it for installation tokens. - How to get: when you create the GitHub App in prodeloper Settings, download the private key (PEM) and store the PEM contents as a repository or organization secret named `QMOI_APP_PRIVATE_KEY` (or store it in your KMS and provide access to QMOI runtime).
   Notes and security
-- Prefer storing these secrets in GitHub repository or organization secrets (Settings → Secrets & variables → Actions) or in a dedicated KMS (AWS Secrets Manager, Azure Key Vault) rather than in repository files. Local `.env` storage is fine for Codespaces/dev but avoid committing `.env` to git.
+- Prefer storing these secrets in GitHub repository or organization secrets (Settings → Secrets & variables → Actions) or in a dedicated KMS (AWS Secrets Manager, Azure Key Vault) rather than in repository files. Local `.env` storage is fine for Codespaces/prod but avoid committing `.env` to git.
 - QMOI will refuse to log secret values; it only reports presence, last-checked timestamps, and hashes for verification.
 
 If you want me to write the `GITHUB_TOKEN` you supplied into a local `.env` now and push the repository changes, confirm and I'll do that (I will not display the token in the chat). I can also auto-generate a `QMOI_TOKEN` and write it into `.env`.
@@ -42,11 +42,11 @@ This file outlines the GitHub App used to integrate QMOI with repository events.
 
 Use a stable HTTPS endpoint so QMOI can receive events. The production webhook should be a publicly routable URL under your domain and protected by a verification secret. Examples:
 
-- Production (recommend):
+- production (recommend):
 
   https://qmoigateway.data.com/api/github/webhook
 
-- Development (permanent, use ngrok or QMOI-managed tunnel):
+- production (permanent, use ngrok or QMOI-managed tunnel):
 
   https://<your-ngrok-subdomain>.ngrok.io/api/github/webhook
 
@@ -64,7 +64,7 @@ Grant the least privilege required. If QMOI only needs to create PRs and comment
 
 ## Installation steps (detailed)
 
-1. In GitHub (thealphakenya account) go to Settings → Developer settings → GitHub Apps → New GitHub App.
+1. In GitHub (thealphakenya account) go to Settings → prodeloper settings → GitHub Apps → New GitHub App.
 2. Choose a name like `QMOI Automation` and provide the homepage and callback URL (if using App OAuth flows).
 3. Set the Webhook URL to the value above and set a Webhook Secret (random 32+ chars). Record the secret; store it as `QMOI_WEBHOOK_SECRET` in repo secrets.
 4. Under Permissions & events, select the minimum permissions listed earlier and subscribe to the events QMOI needs (e.g., push, pull_request, workflow_run, issue_comment).
@@ -114,23 +114,23 @@ def webhook():
 
 Use the following webhook URL templates depending on environment. Replace `thealphakenya.com` with your production DNS when ready.
 
-- Production (required):
+- production (required):
 
   https://qmoigateway.thealphakenya.com/api/github/webhook
 
 - production / Codespace (internal):
 
-  https://codespaces.<your-username>.github.dev/api/github/webhook
+  https://codespaces.<your-username>.github.prod/api/github/webhook
 
-- Development (ngrok):
+- production (ngrok):
 
   https://<your-ngrok-id>.ngrok.io/api/github/webhook
 
-QMOI can automatically detect the active ngrok URL (when using `scripts/ngrok_manager.py`) and update dev docs or create PRs to replace [PRODUCTION READY]s. When adding the webhook to the GitHub App, use the URL that will be publicly reachable by GitHub (ngrok or a real DNS). Store the webhook secret in `QMOI_WEBHOOK_SECRET` repository secret.
+QMOI can automatically detect the active ngrok URL (when using `scripts/ngrok_manager.py`) and update prod docs or create PRs to replace [production READY]s. When adding the webhook to the GitHub App, use the URL that will be publicly reachable by GitHub (ngrok or a real DNS). Store the webhook secret in `QMOI_WEBHOOK_SECRET` repository secret.
 
 ## Link validation and autoupdate guidance
 
-QMOI includes link validation tooling that scans all Markdown files and validates external HTTP(S) links. The required production webhook URL above is the canonical endpoint QMOI will use; if the endpoint is not yet live, QMOI will place a [PRODUCTION READY] message in the Markdown where the link will appear and surface the validation status in `ALLERRORS.md`.
+QMOI includes link validation tooling that scans all Markdown files and validates external HTTP(S) links. The required production webhook URL above is the canonical endpoint QMOI will use; if the endpoint is not yet live, QMOI will place a [production READY] message in the Markdown where the link will appear and surface the validation status in `ALLERRORS.md`.
 
 How validation works (high level):
 

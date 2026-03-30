@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Master System - Quick Setup Guide
 
 ## 🚀 Fast Track Setup
@@ -61,7 +61,7 @@ QMOI_BOOTSTRAP_LOG_RETENTION=30
 1. Start your app:
 
 ```bash
-npm run dev
+npm run prod
 ```
 
 2. Navigate to: `https://qmoi.ai/admin/master/login`
@@ -224,7 +224,7 @@ See [MASTER_CONTROL_SYSTEM.md](MASTER_CONTROL_SYSTEM.md) for:
 ## 🎯 Next Steps
 
 1. **Configure Environment** - Set `MASTER_PASSWORD` and `ADMIN_TOKEN`
-2. **Start Application** - Run `npm run dev`
+2. **Start Application** - Run `npm run prod`
 3. **Login** - Access `/admin/master/login`
 4. **Explore Dashboard** - View automation and financial data
 5. **Configure Settings** - Adjust automation parameters

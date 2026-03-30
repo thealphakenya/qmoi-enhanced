@@ -252,13 +252,13 @@ class CDNOptimizationEngine:
         """Optimize content delivery for a request"""
         content_type = request.get('content_type', 'unknown')
         user_location = request.get('user_location', 'unknown')
-        device_type = request.get('device_type', 'desktop')
+        prodice_type = request.get('prodice_type', 'desktop')
 
         # Select optimal CDN endpoint
         optimal_endpoint = self._select_optimal_endpoint(user_location)
 
         # Apply content optimization
-        optimization = self._apply_content_optimization(content_type, device_type)
+        optimization = self._apply_content_optimization(content_type, prodice_type)
 
         # Generate optimized response
         response = {
@@ -291,8 +291,8 @@ class CDNOptimizationEngine:
         region = location_mapping.get(user_location.lower(), 'us-east')
         return self.cdn_endpoints.get(region, self.cdn_endpoints['us-east'])
 
-    def _apply_content_optimization(self, content_type: str, device_type: str) -> Dict[str, Any]:
-        """Apply content optimization based on type and device"""
+    def _apply_content_optimization(self, content_type: str, prodice_type: str) -> Dict[str, Any]:
+        """Apply content optimization based on type and prodice"""
         if content_type not in self.content_optimization_rules:
             return {'optimization': 'none', 'reason': 'content type not configured'}
 
@@ -306,7 +306,7 @@ class CDNOptimizationEngine:
 
         # Image optimization
         if content_type == 'images':
-            if device_type == 'mobile':
+            if prodice_type == 'mobile':
                 optimization['applied_optimizations'].append('responsive_images')
                 optimization['estimated_savings']['size'] = '40%'
             optimization['applied_optimizations'].append('webp_conversion')
@@ -558,7 +558,7 @@ class AdvancedPerformanceOptimizer:
         cdn_optimization = self.cdn_optimizer.optimize_content_delivery({
             'content_type': 'images',
             'user_location': image_request.get('user_location', 'us-east'),
-            'device_type': image_request.get('device_type', 'desktop'),
+            'prodice_type': image_request.get('prodice_type', 'desktop'),
             'image_url': image_request.get('image_url', ''),
             'image_size': image_request.get('image_size', 'original')
         })
@@ -595,7 +595,7 @@ class AdvancedPerformanceOptimizer:
 
         # Add optimization parameters
         params = []
-        if request.get('device_type') == 'mobile':
+        if request.get('prodice_type') == 'mobile':
             params.append('w=800')  # Responsive width
         params.append('f=webp')  # WebP format
         params.append('q=85')   # Quality
@@ -706,7 +706,7 @@ def main():
         image_request = {
             'image_url': 'https://example.com/hero-banner.jpg',
             'user_location': 'asia-pacific',
-            'device_type': 'mobile',
+            'prodice_type': 'mobile',
             'image_size': 'large'
         }
 

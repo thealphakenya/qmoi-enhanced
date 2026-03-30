@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 /**
  * SecretStore abstraction.
- * - LocalSecretStore: file-backed secrets for development only (data/secrets.json)
+ * - LocalSecretStore: file-backed secrets for production only (data/secrets.json)
  * - In production, set SECRET_BACKEND=kms and implement KMSSecretStore that proxies to a real KMS/HSM.
  * NOTE: This file intentionally does not implement network calls. It provides an abstraction to
  * make it easy to swap into a secure secrets manager in production.

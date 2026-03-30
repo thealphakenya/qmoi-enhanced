@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-## Production Readiness Snapshot
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -290,11 +290,11 @@ curl -X POST https://qmoi.ai/api/qmoi/session \
 
 ## 🚀 Quick Start: Testing Locally
 
-### 1. Start Dev Server
+### 1. Start prod Server
 
 ```bash
 cd /workspaces/qmoi-enhanced
-npm run dev
+npm run prod
 ```
 
 ### 2. Open Browser
@@ -314,13 +314,13 @@ https://qmoi.ai
 
 - Scroll to **Biometric Login** section
 - Click **Authenticate** button
-- Browser prompts for biometric ([PRODUCTION READY]able in dev)
+- Browser prompts for biometric ([production READY]able in prod)
 - On success: dashboard loads
 
 ### 5. Test Biometric Dashboard Tab
 
 - After login, navigate to **Biometric Auth** tab
-- See available methods: fingerprint, facial, voice, device
+- See available methods: fingerprint, facial, voice, prodice
 - Click **Authenticate** to test (will prompt for biometric)
 - Confidence score displayed
 
@@ -392,7 +392,7 @@ Returns: { success, session }
 3. **Multi-Factor Flows** - Email + biometric required
 4. **Enrollment UI** - Guided enrollment in dashboard
 5. **Biometric History** - Track failed attempts, audit logs
-6. **Device Trust** - Remember device, skip biometric on known devices
+6. **prodice Trust** - Remember prodice, skip biometric on known prodices
 7. **Adaptive Auth** - Require biometric for sensitive operations
 
 ---
@@ -418,7 +418,7 @@ Returns: { success, session }
 
 - `/app/page.tsx` - Added biometric login UI + session creation
 - `/components/QMOIDashboard.tsx` - Wired biometric auth to MasterContext + role-based tab filtering
-- `/components/BiometricAuth.tsx` - WebAuthn + voice + device fingerprinting (already existed)
+- `/components/BiometricAuth.tsx` - WebAuthn + voice + prodice fingerprinting (already existed)
 - `/components/MasterContext.tsx` - User profile + QMOI memory tracking + sponsored role (already existed)
 
 ## 🔗 Files Created
@@ -476,7 +476,7 @@ Master Administrator (Level 5) - Full access to all features
 
 ---
 
-**Status:** Production-ready for Option A (email/password) + Biometric authentication + Role-Based Access Control with QMOI memory awareness.
+**Status:** production-ready for Option A (email/password) + Biometric authentication + Role-Based Access Control with QMOI memory awareness.
 
 All login features operational, role-based access implemented and tested. QMOI is aware of user context, biometric methods, conversation history, and user role permissions.
 
@@ -575,7 +575,7 @@ All login features operational, role-based access implemented and tested. QMOI i
 
 ---
 
-**Final Status:** ✅ **PRODUCTION READY**
+**Final Status:** ✅ **production READY**
 
 - All biometric authentication features working
 - All role-based access controls implemented

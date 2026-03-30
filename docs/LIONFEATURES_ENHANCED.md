@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "Enhanced LION Features"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -19,7 +19,7 @@ This document describes enhancements to LION to make it a smarter, wiser validat
 
 New capabilities
 
-- Orchestrated validation: LION can trigger the orchestrator to run validations in a sandboxed CI environment and will collect reports.
+- Orchestrated validation: LION can trigger the orchestrator to run validations in a productioned CI environment and will collect reports.
 - Auto-PR generation: when a safe replacement or fix is available (e.g., http→https upgrade or a included-asset note), LION can open a final PR with the proposed change and a summary of the risk.
 - Artifact gating: LION can block promotion of artifacts that fail checksum or signature validation and can re-trigger builds automatically.
 - Memory-aware validation: LION uses QMOI memory to prioritize validation tasks based on historical failure rates, recent commits touching relevant files, and urgency.

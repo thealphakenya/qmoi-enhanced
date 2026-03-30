@@ -88,7 +88,7 @@ class QMOIEnhancedAutoConfig:
         """Generate QMOI system credentials."""
         return {
             'QMOI_MASTER_TOKEN': self.master_token,
-            'QMOI_PROD_CREDENTIAL': secrets.token_urlsafe(64),
+            'QMOI_prod_CREDENTIAL': secrets.token_urlsafe(64),
             'QMOI_ENCRYPTION_KEY': secrets.token_hex(32),
             'QMOI_JWT_SECRET': secrets.token_hex(64)
         }
@@ -140,7 +140,7 @@ class QMOIEnhancedAutoConfig:
     def generate_env_file(self, credentials: Dict[str, str]):
         """Generate .env.production file with credentials."""
         env_content = [
-            "# QMOI Enhanced Production Environment",
+            "# QMOI Enhanced production Environment",
             f"# Generated: {datetime.datetime.now().isoformat()}",
             "# WARNING: Do not edit manually - managed by QMOI",
             ""
@@ -177,7 +177,7 @@ class QMOIEnhancedAutoConfig:
 
             required_vars = [
                 'BITGET_API_KEY', 'CASHON_MPESA_NUMBER', 'MEGAVAULT_API_KEY',
-                'QMOI_MASTER_TOKEN', 'QMOI_PROD_CREDENTIAL'
+                'QMOI_MASTER_TOKEN', 'QMOI_prod_CREDENTIAL'
             ]
 
             env_content = self.env_file.read_text()

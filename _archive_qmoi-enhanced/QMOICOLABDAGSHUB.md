@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOI Colab & Dagshub Optimization"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -18,19 +18,19 @@ title: "QMOI Colab & Dagshub Optimization"
 
 ## Overview
 
-QMOI and QCity are optimized to run best online in Colab and Dagshub, offloading heavy tasks and syncing only essential results to the user device.
+QMOI and QCity are optimized to run best online in Colab and Dagshub, offloading heavy tasks and syncing only essential results to the user prodice.
 
-## Device Creation & Usage
+## prodice Creation & Usage
 
-- Devices are created as robust clients, with all heavy computation in Colab/Dagshub.
+- prodices are created as robust clients, with all heavy computation in Colab/Dagshub.
 - QCity and auto-earning features are cloud-first.
-- Devices can be managed, monitored, and controlled from the main app or Qmoispace.
+- prodices can be managed, monitored, and controlled from the main app or Qmoispace.
 
 ## Optimization & Offloading
 
 - Heavy jobs (training, inference, data processing) run in Colab/Dagshub.
-- Only results, logs, and essential data are synced to the device.
-- Auto-detects when to offload based on device health and network.
+- Only results, logs, and essential data are synced to the prodice.
+- Auto-detects when to offload based on prodice health and network.
 - **All cloud-offloading, auto-retry, and auto-recover logic is now enforced and visualized in the QMOI dashboard.**
 - **Pre-autotest, error/fix, and notification status for Colab/Dagshub are now shown in real time in the dashboard.**
 - **All .md docs and logs are auto-synced to the dashboard and ALLMDFILESREFS.md.**
@@ -39,7 +39,7 @@ QMOI and QCity are optimized to run best online in Colab and Dagshub, offloading
 ## Reliability & Best Practices
 
 - Auto-retry and auto-recover from cloud job failures.
-- Modular features: enable/disable based on device/cloud status.
+- Modular features: enable/disable based on prodice/cloud status.
 - Logs and optimizations are synced to QMOI dashboard and AUTOOPTIMIZEALPHAQMOIENGINE.md.
 
 ---

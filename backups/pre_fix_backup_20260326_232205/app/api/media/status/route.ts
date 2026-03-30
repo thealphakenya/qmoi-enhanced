@@ -44,7 +44,7 @@ export async function GET() {
         averageProcessingTime,
       },
       dataSource: "prisma.mediaTask",
-      message: "Production media task status fetched",
+      message: "production media task status fetched",
     });
   } catch (error) {
     globalThis.console?.error?.("Error fetching media status:", error);

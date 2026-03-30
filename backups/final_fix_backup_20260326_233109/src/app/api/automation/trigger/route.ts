@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { safeConsoleError } from "@/utils/safeConsole";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Event type required" }, { status: 400 });
     }
 
-    // Production implementation: resolve // Production implementation: items
+    // production implementation: resolve // production implementation: items
     type TriggerResult = {
       success: boolean;
       message?: string;

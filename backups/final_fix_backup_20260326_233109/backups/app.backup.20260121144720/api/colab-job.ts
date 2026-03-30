@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
@@ -7,37 +7,37 @@ import fs from "fs";
 
 const JOBS_PATH = "/workspaces/stable-Q-ai/colab-jobs-log.jsonl";
 
-// Install package in Colab/cloud (// Production implementation:)
+// Install package in Colab/cloud (// production implementation:)
 async function installPackage(pkg: string, manager: "npm" | "pip" = "npm") {
-  // Production: Call Google Colab API or AWS SageMaker API to install package
+  // production: Call Google Colab API or AWS SageMaker API to install package
   // Use axios with authentication headers to deploy package installation
   return { status: "success", pkg, manager };
 }
 
-// Upload dataset to Colab/cloud (// Production implementation:)
+// Upload dataset to Colab/cloud (// production implementation:)
 interface Dataset {
   name: string;
   [key: string]: unknown;
 }
 async function uploadDataset(dataset: Dataset) {
-  // Production: Call Colab or cloud storage API to upload dataset to HuggingFace Datasets
+  // production: Call Colab or cloud storage API to upload dataset to HuggingFace Datasets
   // or AWS S3 bucket associated with cloud compute environment
   return { status: "success", dataset: dataset.name };
 }
 
-// Execute job in Colab/cloud (// Production implementation:)
+// Execute job in Colab/cloud (// production implementation:)
 interface JobSpec {
   [key: string]: unknown;
 }
 async function executeColabJob(jobSpec: JobSpec) {
-  // Production: Call Colab API or cloud job submission service to execute job
+  // production: Call Colab API or cloud job submission service to execute job
   // Wait for job acceptance and return jobId for status polling
   return { status: "running", jobId: Date.now(), jobSpec };
 }
 
-// Track job status (// Production implementation:)
+// Track job status (// production implementation:)
 async function getColabJobStatus(jobId: number) {
-  // Production: Query Colab or cloud job service for current job status and results
+  // production: Query Colab or cloud job service for current job status and results
   // Poll until job completion or return current progress
   return { jobId, status: "completed", result: "Job result data" };
 }
@@ -85,7 +85,7 @@ export default async function handler(
       return _res.json(result);
     }
     const { type, name } = _req.body;
-    // Production implementation: Colab job execution (replace with real Colab API integration)
+    // production implementation: Colab job execution (replace with real Colab API integration)
     const job = {
       id: Date.now(),
       type,
@@ -93,7 +93,7 @@ export default async function handler(
       status: "success",
       started: new Date().toISOString(),
       finished: new Date().toISOString(),
-      result: `// Production implementation:d Colab job for ${type}: ${name}`,
+      result: `// production implementation:d Colab job for ${type}: ${name}`,
     };
     persistJob(job);
     return _res.json(job);

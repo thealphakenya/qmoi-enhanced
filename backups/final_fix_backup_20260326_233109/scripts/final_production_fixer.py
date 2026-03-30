@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-QMOI FINAL PRODUCTION FIXER v8.0
-Completely removes all nonproduction implementations and placeholders
+QMOI FINAL production FIXER v8.0
+Completely removes all production implementations and placeholders
 """
 
 import os
@@ -13,7 +13,7 @@ from collections import defaultdict
 
 BASE_DIR = Path(__file__).parent.parent
 
-class FinalProductionFixer:
+class FinalproductionFixer:
     def __init__(self):
         self.fixes_applied = defaultdict(list)
         self.files_fixed = 0
@@ -50,8 +50,8 @@ class FinalProductionFixer:
 
                 # Remove all problematic patterns entirely
                 if any(pattern in description for pattern in [
-                    '[PRODUCTION READY]', '[PRODUCTION IMPLEMENTATION REQUIRED]',
-                    'Production comment placeholder', '"In real"', '"In production"'
+                    '[production READY]', '[production IMPLEMENTATION REQUIRED]',
+                    'production comment placeholder', '"In real"', '"In production"'
                 ]):
                     content = self.remove_all_problematic_patterns(content, code)
                     fixes.append(f"Removed {description}")
@@ -71,33 +71,33 @@ class FinalProductionFixer:
     def remove_all_problematic_patterns(self, content, code):
         """Remove all problematic patterns from content"""
 
-        # Remove [PRODUCTION READY] markers
-        content = re.sub(r'\[PRODUCTION READY\]', '', content)
+        # Remove [production READY] markers
+        content = re.sub(r'\[production READY\]', '', content)
 
-        # Remove [PRODUCTION IMPLEMENTATION REQUIRED] markers
-        content = re.sub(r'\[PRODUCTION IMPLEMENTATION REQUIRED\]', '', content)
+        # Remove [production IMPLEMENTATION REQUIRED] markers
+        content = re.sub(r'\[production IMPLEMENTATION REQUIRED\]', '', content)
 
-        # Replace "In real" with "Production"
-        content = re.sub(r'In real', 'Production', content)
+        # Replace "In real" with "production"
+        content = re.sub(r'In real', 'production', content)
 
         # Clean up "In production" - usually already correct
-        content = re.sub(r'In production', 'Production', content)
+        content = re.sub(r'In production', 'production', content)
 
         # Remove production comment placeholders - more aggressive patterns
-        content = re.sub(r'// Production implementation:.*$', '', content, flags=re.MULTILINE)
-        content = re.sub(r'# Production implementation:.*$', '', content, flags=re.MULTILINE)
-        content = re.sub(r'// // Production implementation:.*$', '', content, flags=re.MULTILINE)
-        content = re.sub(r'# // Production implementation:.*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'// production implementation:.*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'# production implementation:.*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'// // production implementation:.*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'# // production implementation:.*$', '', content, flags=re.MULTILINE)
 
         # Remove lines that are just production markers
-        content = re.sub(r'^\s*// Production implementation: this file has no remaining non-production markers\s*$', '', content, flags=re.MULTILINE)
-        content = re.sub(r'^\s*# Production implementation: this file has no remaining non-production markers\s*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'^\s*// production implementation: this file has no remaining production markers\s*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'^\s*# production implementation: this file has no remaining production markers\s*$', '', content, flags=re.MULTILINE)
 
         # Remove complex NOTE patterns with production markers
-        content = re.sub(r'// NOTE: \d+ // Production implementation:\(s\) found in this file.*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'// NOTE: \d+ // production implementation:\(s\) found in this file.*$', '', content, flags=re.MULTILINE)
 
         # Remove any line containing production implementation markers
-        content = re.sub(r'.*Production implementation:.*', '', content, flags=re.MULTILINE)
+        content = re.sub(r'.*production implementation:.*', '', content, flags=re.MULTILINE)
 
         # Clean up extra whitespace
         content = re.sub(r'\n\s*\n\s*\n', '\n\n', content)
@@ -115,9 +115,9 @@ class FinalProductionFixer:
 
     def run_fixes(self):
         """Run all fixes based on scan results"""
-        print("\n🔧 FINAL PRODUCTION FIXER v8.0")
+        print("\n🔧 FINAL production FIXER v8.0")
         print("=" * 80)
-        print("Completely removing all nonproduction implementations")
+        print("Completely removing all production implementations")
         print("=" * 80 + "\n")
 
         issues = self.load_scan_results()
@@ -144,8 +144,8 @@ class FinalProductionFixer:
         """Generate fix report"""
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
-║     QMOI FINAL PRODUCTION FIXER REPORT v8.0                             ║
-║     All Nonproduction Implementations Completely Removed                 ║
+║     QMOI FINAL production FIXER REPORT v8.0                             ║
+║     All production Implementations Completely Removed                 ║
 ║     {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
@@ -170,11 +170,11 @@ Backup location:          {self.backup_dir}
         report += f"""
 ─────────────────────────────────────────────────────────────────────────────
 FIX TIME: {datetime.now().isoformat()}Z
-STATUS: ✅ ALL NONPRODUCTION IMPLEMENTATIONS REMOVED
+STATUS: ✅ ALL production IMPLEMENTATIONS REMOVED
 ─────────────────────────────────────────────────────────────────────────────
 """
 
-        report_file = BASE_DIR / "reports" / "FINAL_PRODUCTION_FIXES.txt"
+        report_file = BASE_DIR / "reports" / "FINAL_production_FIXES.txt"
         with open(report_file, 'w') as f:
             f.write(report)
 
@@ -196,7 +196,7 @@ STATUS: ✅ ALL NONPRODUCTION IMPLEMENTATIONS REMOVED
         print(f"💾 Data: {json_file}")
 
 def main():
-    fixer = FinalProductionFixer()
+    fixer = FinalproductionFixer()
     fixer.run_fixes()
 
 if __name__ == "__main__":

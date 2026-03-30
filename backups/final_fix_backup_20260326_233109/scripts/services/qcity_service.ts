@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { logger } from "../utils/logger";
 import { NotificationService } from "./notification_service";
 import { QCityStatus, QCityConfig } from "../../types/qcity";
@@ -314,8 +314,8 @@ export class QCityService {
     }
   }
 
-  public async getDeviceList(): Promise<any[]> {
-    // Production implementation:: Return list of active devices
+  public async getprodiceList(): Promise<any[]> {
+    // production implementation:: Return list of active prodices
     return [
       {
         id: "qcity-1",
@@ -335,7 +335,7 @@ export class QCityService {
   }
 
   public async getResourceStats(): Promise<any> {
-    // Production implementation:: Return resource stats
+    // production implementation:: Return resource stats
     return {
       cpu: Math.round(Math.random() * 100),
       memory: Math.round(Math.random() * 8192),
@@ -346,16 +346,16 @@ export class QCityService {
 
   public async runRemoteCommand(
     cmd: string,
-    deviceId = "default",
+    prodiceId = "default",
   ): Promise<any> {
-    // Production implementation: routing to the correct device
-    if (deviceId === "qcity-1") {
+    // production implementation: routing to the correct prodice
+    if (prodiceId === "qcity-1") {
       return { success: true, output: `[QCity Colab 1] Executed: ${cmd}` };
-    } else if (deviceId === "qcity-2") {
+    } else if (prodiceId === "qcity-2") {
       return { success: true, output: `[QCity Cloud 2] Executed: ${cmd}` };
     } else {
-      return { success: true, output: `[Default Device] Executed: ${cmd}` };
+      return { success: true, output: `[Default prodice] Executed: ${cmd}` };
     }
-    // Production implementation:: Integrate with SSH/cloud APIs for real device execution
+    // production implementation:: Integrate with SSH/cloud APIs for real prodice execution
   }
 }

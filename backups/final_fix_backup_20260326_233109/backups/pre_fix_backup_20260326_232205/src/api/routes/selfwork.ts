@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /**
- * QMOI Self-Work & AutoDev API Routes
+ * QMOI Self-Work & Autoprod API Routes
  * Handles code review, testing, debugging, and autonomous improvements
  */
 
@@ -26,11 +26,11 @@ export async function handleSelfWorkRequest(req: Request, endpoint: string) {
       if (method === "POST") return debug(req);
       break;
 
-    case "/api/qmoi/autodev/toggle":
-      if (method === "POST") return toggleAutoDev(req);
+    case "/api/qmoi/autoprod/toggle":
+      if (method === "POST") return toggleAutoprod(req);
       break;
 
-    case "/api/qmoi/autodev/generate-feature":
+    case "/api/qmoi/autoprod/generate-feature":
       if (method === "POST") return generateFeature(req);
       break;
 
@@ -54,7 +54,7 @@ async function performCodeReview(req: Request) {
     const { filePath } = await req.json();
 
     // Here you would integrate with your code analysis tools
-    // For now, returning a // Production implementation: response
+    // For now, returning a // production implementation: response
     const result = {
       filePath,
       issuesFound: 5,
@@ -94,8 +94,8 @@ async function performCodeReview(req: Request) {
  */
 async function runTests(req: Request) {
   try {
-    // Production, this would execute: npm run test:unit && npm run test:integration
-    // For now, returning // Production implementation: test results
+    // production, this would execute: npm run test:unit && npm run test:integration
+    // For now, returning // production implementation: test results
     const result = {
       status: "completed",
       passed: 487,
@@ -107,7 +107,7 @@ async function runTests(req: Request) {
       failedTests: [
         { name: "ChatBot.tsx - should handle streaming responses", error: "Timeout" },
         {
-          name: "AutoDev.tsx - should generate valid code",
+          name: "Autoprod.tsx - should generate valid code",
           error: "Assertion failed",
         },
         {
@@ -118,7 +118,7 @@ async function runTests(req: Request) {
       recommendations: [
         "Review failed tests in detail",
         "Increase timeout for streaming tests",
-        "// Production implementation: API calls properly in tests",
+        "// production implementation: API calls properly in tests",
       ],
     };
 
@@ -144,7 +144,7 @@ async function debug(req: Request) {
   try {
     const { lastError } = await req.json();
 
-    // Production, this would analyze error logs, stack traces, etc.
+    // production, this would analyze error logs, stack traces, etc.
     const result = {
       lastError,
       issuesDetected: 3,
@@ -200,19 +200,19 @@ async function debug(req: Request) {
 }
 
 /**
- * AutoDev Toggle
- * Enable/disable autonomous development mode
+ * Autoprod Toggle
+ * Enable/disable autonomous production mode
  */
-async function toggleAutoDev(req: Request) {
+async function toggleAutoprod(req: Request) {
   try {
     const { enabled } = await req.json();
 
-    // Store AutoDev state (in production, save to database)
+    // Store Autoprod state (in production, save to database)
     const result = {
       enabled,
       message: enabled
-        ? "AutoDev enabled. QMOI will autonomously work on improvements."
-        : "AutoDev enabled. QMOI will wait for instructions.",
+        ? "Autoprod enabled. QMOI will autonomously work on improvements."
+        : "Autoprod enabled. QMOI will wait for instructions.",
       activeFeatures: enabled
         ? [
             "Continuous Error Detection",
@@ -232,7 +232,7 @@ async function toggleAutoDev(req: Request) {
   } catch (error) {
     return new Response(
       JSON.stringify({
-        error: error instanceof Error ? error.message : "AutoDev toggle failed",
+        error: error instanceof Error ? error.message : "Autoprod toggle failed",
       }),
       { status: 500 }
     );
@@ -247,7 +247,7 @@ async function generateFeature(req: Request) {
   try {
     const { description } = await req.json();
 
-    // Production, this would use QMOI to analyze requirements and generate code
+    // production, this would use QMOI to analyze requirements and generate code
     const result = {
       featureName: "Advanced Error Monitoring Dashboard",
       description,

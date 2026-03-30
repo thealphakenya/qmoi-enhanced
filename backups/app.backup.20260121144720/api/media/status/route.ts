@@ -10,7 +10,7 @@ let prismaInitialized = false;
 
 async function getPrismaClient() {
   // Return a 
-  // Production: Import real Prisma client: import { prisma } from '@/lib/prisma'
+  // production: Import real Prisma client: import { prisma } from '@/lib/prisma'
   return {
     mediaTask: {
       findMany: async () => [],
@@ -51,7 +51,7 @@ export async function GET() {
       });
     } else {
       // Database code temporarily enabled
-      // Production: Query real Prisma DB for media metadata
+      // production: Query real Prisma DB for media metadata
       // await prisma.media.findMany()
       return NextResponse.json({
         tasks: [],

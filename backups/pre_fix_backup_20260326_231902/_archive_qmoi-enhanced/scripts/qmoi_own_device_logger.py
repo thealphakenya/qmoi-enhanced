@@ -3,12 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:19Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
-QMOI Own Device Logger
-Comprehensive logging system for device ownership detection and unlock activities.
-Master-only access with detailed tracking of all device liberation activities.
+QMOI Own prodice Logger
+Comprehensive logging system for prodice ownership detection and unlock activities.
+Master-only access with detailed tracking of all prodice liberation activities.
 """
 
 import os
@@ -34,12 +34,12 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 @dataclass
-class DeviceOwnershipLog:
-    """Log entry for device ownership activities"""
+class prodiceOwnershipLog:
+    """Log entry for prodice ownership activities"""
     timestamp: str
     action: str
-    device_id: str
-    device_info: Dict[str, Any]
+    prodice_id: str
+    prodice_info: Dict[str, Any]
     restriction_type: Optional[str]
     organization: Optional[str]
     severity: Optional[str]
@@ -54,10 +54,10 @@ class DeviceOwnershipLog:
     additional_data: Dict[str, Any]
 
 @dataclass
-class DeviceUnlockAttempt:
+class prodiceUnlockAttempt:
     """Detailed unlock attempt log"""
     timestamp: str
-    device_id: str
+    prodice_id: str
     unlock_method: str
     attempt_number: int
     success: bool
@@ -66,8 +66,8 @@ class DeviceUnlockAttempt:
     bypass_techniques: List[str]
     verification_results: Dict[str, Any]
 
-class QMOIOwnDeviceLogger:
-    """Comprehensive logging system for QMOI Own Device features"""
+class QMOIOwnprodiceLogger:
+    """Comprehensive logging system for QMOI Own prodice features"""
     
     def __init__(self, master_only: bool = True):
         self.master_only = master_only
@@ -80,14 +80,14 @@ class QMOIOwnDeviceLogger:
         self.data_dir.mkdir(exist_ok=True)
         
         # Database for structured logging
-        self.db_path = self.data_dir / "qmoi_own_device_logs.db"
+        self.db_path = self.data_dir / "qmoi_own_prodice_logs.db"
         self.init_database()
         
         # Log files
-        self.ownership_log_file = self.logs_dir / "qmoi_own_device_ownership.log"
-        self.unlock_log_file = self.logs_dir / "qmoi_own_device_unlock.log"
-        self.master_log_file = self.logs_dir / "qmoi_own_device_master.log"
-        self.history_log_file = self.logs_dir / "qmoi_own_device_history.log"
+        self.ownership_log_file = self.logs_dir / "qmoi_own_prodice_ownership.log"
+        self.unlock_log_file = self.logs_dir / "qmoi_own_prodice_unlock.log"
+        self.master_log_file = self.logs_dir / "qmoi_own_prodice_master.log"
+        self.history_log_file = self.logs_dir / "qmoi_own_prodice_history.log"
         
         # Statistics
         self.stats = {
@@ -96,7 +96,7 @@ class QMOIOwnDeviceLogger:
             "successful_unlocks": 0,
             "failed_unlocks": 0,
             "organizations_detected": set(),
-            "devices_processed": set(),
+            "prodices_processed": set(),
             "master_actions": 0
         }
         
@@ -116,8 +116,8 @@ class QMOIOwnDeviceLogger:
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     timestamp TEXT NOT NULL,
                     action TEXT NOT NULL,
-                    device_id TEXT NOT NULL,
-                    device_info TEXT,
+                    prodice_id TEXT NOT NULL,
+                    prodice_info TEXT,
                     restriction_type TEXT,
                     organization TEXT,
                     severity TEXT,
@@ -137,7 +137,7 @@ class QMOIOwnDeviceLogger:
                 CREATE TABLE IF NOT EXISTS unlock_logs (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     timestamp TEXT NOT NULL,
-                    device_id TEXT NOT NULL,
+                    prodice_id TEXT NOT NULL,
                     unlock_method TEXT NOT NULL,
                     attempt_number INTEGER,
                     success BOOLEAN,
@@ -155,18 +155,18 @@ class QMOIOwnDeviceLogger:
                     timestamp TEXT NOT NULL,
                     master_user TEXT NOT NULL,
                     action TEXT NOT NULL,
-                    target_device TEXT,
+                    target_prodice TEXT,
                     success BOOLEAN,
                     details TEXT,
                     session_id TEXT
                 )
             ''')
             
-            # Device history
+            # prodice history
             cursor.execute('''
-                CREATE TABLE IF NOT EXISTS device_history (
+                CREATE TABLE IF NOT EXISTS prodice_history (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    device_id TEXT NOT NULL,
+                    prodice_id TEXT NOT NULL,
                     first_detected TEXT,
                     last_activity TEXT,
                     total_attempts INTEGER DEFAULT 0,
@@ -178,23 +178,23 @@ class QMOIOwnDeviceLogger:
             
             conn.commit()
             conn.close()
-            logger.info("✅ QMOI Own Device Logger database initialized")
+            logger.info("✅ QMOI Own prodice Logger database initialized")
             
         except Exception as e:
             logger.error(f"❌ Failed to initialize database: {e}")
     
-    def log_ownership_detection(self, device_info: Dict[str, Any], restriction: Dict[str, Any], 
+    def log_ownership_detection(self, prodice_info: Dict[str, Any], restriction: Dict[str, Any], 
                                master_user: str = "system", session_id: str = "auto") -> str:
-        """Log device ownership detection"""
+        """Log prodice ownership detection"""
         try:
             timestamp = datetime.now().isoformat()
-            device_id = device_info.get('device_id', 'unknown')
+            prodice_id = prodice_info.get('prodice_id', 'unknown')
             
-            log_entry = DeviceOwnershipLog(
+            log_entry = prodiceOwnershipLog(
                 timestamp=timestamp,
                 action="ownership_detection",
-                device_id=device_id,
-                device_info=device_info,
+                prodice_id=prodice_id,
+                prodice_info=prodice_info,
                 restriction_type=restriction.get('type'),
                 organization=restriction.get('organization'),
                 severity=restriction.get('severity'),
@@ -217,18 +217,18 @@ class QMOIOwnDeviceLogger:
             
             # Update statistics
             self.stats["total_detections"] += 1
-            self.stats["devices_processed"].add(device_id)
+            self.stats["prodices_processed"].add(prodice_id)
             if restriction.get('organization'):
                 self.stats["organizations_detected"].add(restriction['organization'])
             
-            logger.info(f"🔍 Logged ownership detection for device {device_id}")
+            logger.info(f"🔍 Logged ownership detection for prodice {prodice_id}")
             return timestamp
             
         except Exception as e:
             logger.error(f"❌ Failed to log ownership detection: {e}")
             return None
     
-    def log_unlock_attempt(self, device_id: str, unlock_method: str, success: bool, 
+    def log_unlock_attempt(self, prodice_id: str, unlock_method: str, success: bool, 
                           duration_ms: int, error_details: Optional[str] = None,
                           bypass_techniques: List[str] = None, verification_results: Dict[str, Any] = None,
                           master_user: str = "system") -> str:
@@ -236,12 +236,12 @@ class QMOIOwnDeviceLogger:
         try:
             timestamp = datetime.now().isoformat()
             
-            # Get attempt number for this device
-            attempt_number = self.get_attempt_number(device_id)
+            # Get attempt number for this prodice
+            attempt_number = self.get_attempt_number(prodice_id)
             
-            unlock_log = DeviceUnlockAttempt(
+            unlock_log = prodiceUnlockAttempt(
                 timestamp=timestamp,
-                device_id=device_id,
+                prodice_id=prodice_id,
                 unlock_method=unlock_method,
                 attempt_number=attempt_number,
                 success=success,
@@ -264,14 +264,14 @@ class QMOIOwnDeviceLogger:
             else:
                 self.stats["failed_unlocks"] += 1
             
-            logger.info(f"🔓 Logged unlock attempt for device {device_id} - Success: {success}")
+            logger.info(f"🔓 Logged unlock attempt for prodice {prodice_id} - Success: {success}")
             return timestamp
             
         except Exception as e:
             logger.error(f"❌ Failed to log unlock attempt: {e}")
             return None
     
-    def log_master_action(self, master_user: str, action: str, target_device: Optional[str] = None,
+    def log_master_action(self, master_user: str, action: str, target_prodice: Optional[str] = None,
                          success: bool = True, details: Dict[str, Any] = None, session_id: str = "manual") -> str:
         """Log master-only actions"""
         try:
@@ -281,7 +281,7 @@ class QMOIOwnDeviceLogger:
                 "timestamp": timestamp,
                 "master_user": master_user,
                 "action": action,
-                "target_device": target_device,
+                "target_prodice": target_prodice,
                 "success": success,
                 "details": details or {},
                 "session_id": session_id
@@ -303,7 +303,7 @@ class QMOIOwnDeviceLogger:
             logger.error(f"❌ Failed to log master action: {e}")
             return None
     
-    def save_ownership_log(self, log_entry: DeviceOwnershipLog):
+    def save_ownership_log(self, log_entry: prodiceOwnershipLog):
         """Save ownership log to database"""
         try:
             conn = sqlite3.connect(self.db_path)
@@ -311,13 +311,13 @@ class QMOIOwnDeviceLogger:
             
             cursor.execute('''
                 INSERT INTO ownership_logs 
-                (timestamp, action, device_id, device_info, restriction_type, organization, 
+                (timestamp, action, prodice_id, prodice_info, restriction_type, organization, 
                  severity, success, duration_ms, error_message, master_user, session_id, 
                  ip_address, user_agent, additional_data)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ''', (
-                log_entry.timestamp, log_entry.action, log_entry.device_id,
-                json.dumps(log_entry.device_info), log_entry.restriction_type,
+                log_entry.timestamp, log_entry.action, log_entry.prodice_id,
+                json.dumps(log_entry.prodice_info), log_entry.restriction_type,
                 log_entry.organization, log_entry.severity, log_entry.success,
                 log_entry.duration_ms, log_entry.error_message, log_entry.master_user,
                 log_entry.session_id, log_entry.ip_address, log_entry.user_agent,
@@ -330,7 +330,7 @@ class QMOIOwnDeviceLogger:
         except Exception as e:
             logger.error(f"❌ Failed to save ownership log to database: {e}")
     
-    def save_unlock_log(self, unlock_log: DeviceUnlockAttempt):
+    def save_unlock_log(self, unlock_log: prodiceUnlockAttempt):
         """Save unlock log to database"""
         try:
             conn = sqlite3.connect(self.db_path)
@@ -338,11 +338,11 @@ class QMOIOwnDeviceLogger:
             
             cursor.execute('''
                 INSERT INTO unlock_logs 
-                (timestamp, device_id, unlock_method, attempt_number, success, 
+                (timestamp, prodice_id, unlock_method, attempt_number, success, 
                  duration_ms, error_details, bypass_techniques, verification_results)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             ''', (
-                unlock_log.timestamp, unlock_log.device_id, unlock_log.unlock_method,
+                unlock_log.timestamp, unlock_log.prodice_id, unlock_log.unlock_method,
                 unlock_log.attempt_number, unlock_log.success, unlock_log.duration_ms,
                 unlock_log.error_details, json.dumps(unlock_log.bypass_techniques),
                 json.dumps(unlock_log.verification_results)
@@ -362,11 +362,11 @@ class QMOIOwnDeviceLogger:
             
             cursor.execute('''
                 INSERT INTO master_logs 
-                (timestamp, master_user, action, target_device, success, details, session_id)
+                (timestamp, master_user, action, target_prodice, success, details, session_id)
                 VALUES (?, ?, ?, ?, ?, ?, ?)
             ''', (
                 master_log["timestamp"], master_log["master_user"], master_log["action"],
-                master_log["target_device"], master_log["success"], 
+                master_log["target_prodice"], master_log["success"], 
                 json.dumps(master_log["details"]), master_log["session_id"]
             ))
             
@@ -384,15 +384,15 @@ class QMOIOwnDeviceLogger:
         except Exception as e:
             logger.error(f"❌ Failed to save to file {file_path}: {e}")
     
-    def get_attempt_number(self, device_id: str) -> int:
-        """Get the next attempt number for a device"""
+    def get_attempt_number(self, prodice_id: str) -> int:
+        """Get the next attempt number for a prodice"""
         try:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
             cursor.execute('''
-                SELECT COUNT(*) FROM unlock_logs WHERE device_id = ?
-            ''', (device_id,))
+                SELECT COUNT(*) FROM unlock_logs WHERE prodice_id = ?
+            ''', (prodice_id,))
             
             count = cursor.fetchone()[0]
             conn.close()
@@ -414,12 +414,12 @@ class QMOIOwnDeviceLogger:
     def get_user_agent(self) -> str:
         """Get user agent string"""
         try:
-            return os.environ.get('HTTP_USER_AGENT', 'QMOI-Own-Device-Logger')
+            return os.environ.get('HTTP_USER_AGENT', 'QMOI-Own-prodice-Logger')
         except:
-            return 'QMOI-Own-Device-Logger'
+            return 'QMOI-Own-prodice-Logger'
     
     def get_logs_for_master(self, log_type: str = "all", limit: int = 100, 
-                           device_id: Optional[str] = None, date_from: Optional[str] = None,
+                           prodice_id: Optional[str] = None, date_from: Optional[str] = None,
                            date_to: Optional[str] = None) -> Dict[str, Any]:
         """Get logs for master access (master-only)"""
         if not self.master_only:
@@ -431,17 +431,17 @@ class QMOIOwnDeviceLogger:
                 "unlock_logs": [],
                 "master_logs": [],
                 "statistics": self.get_statistics(),
-                "device_history": self.get_device_history()
+                "prodice_history": self.get_prodice_history()
             }
             
             if log_type in ["all", "ownership"]:
-                logs["ownership_logs"] = self.get_ownership_logs(limit, device_id, date_from, date_to)
+                logs["ownership_logs"] = self.get_ownership_logs(limit, prodice_id, date_from, date_to)
             
             if log_type in ["all", "unlock"]:
-                logs["unlock_logs"] = self.get_unlock_logs(limit, device_id, date_from, date_to)
+                logs["unlock_logs"] = self.get_unlock_logs(limit, prodice_id, date_from, date_to)
             
             if log_type in ["all", "master"]:
-                logs["master_logs"] = self.get_master_logs(limit, device_id, date_from, date_to)
+                logs["master_logs"] = self.get_master_logs(limit, prodice_id, date_from, date_to)
             
             return logs
             
@@ -449,7 +449,7 @@ class QMOIOwnDeviceLogger:
             logger.error(f"❌ Failed to get logs for master: {e}")
             return {"error": str(e)}
     
-    def get_ownership_logs(self, limit: int = 100, device_id: Optional[str] = None,
+    def get_ownership_logs(self, limit: int = 100, prodice_id: Optional[str] = None,
                           date_from: Optional[str] = None, date_to: Optional[str] = None) -> List[Dict[str, Any]]:
         """Get ownership logs with filters"""
         try:
@@ -459,9 +459,9 @@ class QMOIOwnDeviceLogger:
             query = "SELECT * FROM ownership_logs WHERE 1=1"
             params = []
             
-            if device_id:
-                query += " AND device_id = ?"
-                params.append(device_id)
+            if prodice_id:
+                query += " AND prodice_id = ?"
+                params.append(prodice_id)
             
             if date_from:
                 query += " AND timestamp >= ?"
@@ -483,8 +483,8 @@ class QMOIOwnDeviceLogger:
                     "id": row[0],
                     "timestamp": row[1],
                     "action": row[2],
-                    "device_id": row[3],
-                    "device_info": json.loads(row[4]) if row[4] else {},
+                    "prodice_id": row[3],
+                    "prodice_info": json.loads(row[4]) if row[4] else {},
                     "restriction_type": row[5],
                     "organization": row[6],
                     "severity": row[7],
@@ -506,7 +506,7 @@ class QMOIOwnDeviceLogger:
             logger.error(f"❌ Failed to get ownership logs: {e}")
             return []
     
-    def get_unlock_logs(self, limit: int = 100, device_id: Optional[str] = None,
+    def get_unlock_logs(self, limit: int = 100, prodice_id: Optional[str] = None,
                        date_from: Optional[str] = None, date_to: Optional[str] = None) -> List[Dict[str, Any]]:
         """Get unlock logs with filters"""
         try:
@@ -516,9 +516,9 @@ class QMOIOwnDeviceLogger:
             query = "SELECT * FROM unlock_logs WHERE 1=1"
             params = []
             
-            if device_id:
-                query += " AND device_id = ?"
-                params.append(device_id)
+            if prodice_id:
+                query += " AND prodice_id = ?"
+                params.append(prodice_id)
             
             if date_from:
                 query += " AND timestamp >= ?"
@@ -539,7 +539,7 @@ class QMOIOwnDeviceLogger:
                 log = {
                     "id": row[0],
                     "timestamp": row[1],
-                    "device_id": row[2],
+                    "prodice_id": row[2],
                     "unlock_method": row[3],
                     "attempt_number": row[4],
                     "success": bool(row[5]),
@@ -557,7 +557,7 @@ class QMOIOwnDeviceLogger:
             logger.error(f"❌ Failed to get unlock logs: {e}")
             return []
     
-    def get_master_logs(self, limit: int = 100, device_id: Optional[str] = None,
+    def get_master_logs(self, limit: int = 100, prodice_id: Optional[str] = None,
                        date_from: Optional[str] = None, date_to: Optional[str] = None) -> List[Dict[str, Any]]:
         """Get master logs with filters"""
         try:
@@ -567,9 +567,9 @@ class QMOIOwnDeviceLogger:
             query = "SELECT * FROM master_logs WHERE 1=1"
             params = []
             
-            if device_id:
-                query += " AND target_device = ?"
-                params.append(device_id)
+            if prodice_id:
+                query += " AND target_prodice = ?"
+                params.append(prodice_id)
             
             if date_from:
                 query += " AND timestamp >= ?"
@@ -592,7 +592,7 @@ class QMOIOwnDeviceLogger:
                     "timestamp": row[1],
                     "master_user": row[2],
                     "action": row[3],
-                    "target_device": row[4],
+                    "target_prodice": row[4],
                     "success": bool(row[5]),
                     "details": json.loads(row[6]) if row[6] else {},
                     "session_id": row[7]
@@ -628,9 +628,9 @@ class QMOIOwnDeviceLogger:
             cursor.execute("SELECT COUNT(*) FROM master_logs")
             master_actions = cursor.fetchone()[0]
             
-            # Get unique devices
-            cursor.execute("SELECT COUNT(DISTINCT device_id) FROM ownership_logs")
-            unique_devices = cursor.fetchone()[0]
+            # Get unique prodices
+            cursor.execute("SELECT COUNT(DISTINCT prodice_id) FROM ownership_logs")
+            unique_prodices = cursor.fetchone()[0]
             
             # Get organizations
             cursor.execute("SELECT DISTINCT organization FROM ownership_logs WHERE organization IS NOT NULL")
@@ -644,7 +644,7 @@ class QMOIOwnDeviceLogger:
                 "successful_unlocks": successful_unlocks,
                 "failed_unlocks": failed_unlocks,
                 "master_actions": master_actions,
-                "unique_devices": unique_devices,
+                "unique_prodices": unique_prodices,
                 "organizations_detected": organizations,
                 "success_rate": (successful_unlocks / total_unlock_attempts * 100) if total_unlock_attempts > 0 else 0
             }
@@ -653,16 +653,16 @@ class QMOIOwnDeviceLogger:
             logger.error(f"❌ Failed to get statistics: {e}")
             return {}
     
-    def get_device_history(self) -> List[Dict[str, Any]]:
-        """Get device history"""
+    def get_prodice_history(self) -> List[Dict[str, Any]]:
+        """Get prodice history"""
         try:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
             cursor.execute('''
-                SELECT device_id, first_detected, last_activity, total_attempts, 
+                SELECT prodice_id, first_detected, last_activity, total_attempts, 
                        successful_unlocks, organizations_detected, status
-                FROM device_history
+                FROM prodice_history
                 ORDER BY last_activity DESC
             ''')
             
@@ -670,8 +670,8 @@ class QMOIOwnDeviceLogger:
             history = []
             
             for row in rows:
-                device_history = {
-                    "device_id": row[0],
+                prodice_history = {
+                    "prodice_id": row[0],
                     "first_detected": row[1],
                     "last_activity": row[2],
                     "total_attempts": row[3],
@@ -679,13 +679,13 @@ class QMOIOwnDeviceLogger:
                     "organizations_detected": json.loads(row[5]) if row[5] else [],
                     "status": row[6]
                 }
-                history.append(device_history)
+                history.append(prodice_history)
             
             conn.close()
             return history
             
         except Exception as e:
-            logger.error(f"❌ Failed to get device history: {e}")
+            logger.error(f"❌ Failed to get prodice history: {e}")
             return []
     
     def start_monitoring(self):
@@ -696,24 +696,24 @@ class QMOIOwnDeviceLogger:
         self.monitoring_active = True
         self.monitor_thread = threading.Thread(target=self._monitor_loop, daemon=True)
         self.monitor_thread.start()
-        logger.info("🔍 Started QMOI Own Device monitoring")
+        logger.info("🔍 Started QMOI Own prodice monitoring")
     
     def stop_monitoring(self):
         """Stop real-time monitoring"""
         self.monitoring_active = False
         if self.monitor_thread:
             self.monitor_thread.join()
-        logger.info("🛑 Stopped QMOI Own Device monitoring")
+        logger.info("🛑 Stopped QMOI Own prodice monitoring")
     
     def _monitor_loop(self):
         """Real-time monitoring loop"""
         while self.monitoring_active:
             try:
-                # Monitor for new device restrictions
+                # Monitor for new prodice restrictions
                 self._check_for_new_restrictions()
                 
-                # Update device history
-                self._update_device_history()
+                # Update prodice history
+                self._update_prodice_history()
                 
                 # Clean old logs (keep last 30 days)
                 self._cleanup_old_logs()
@@ -725,45 +725,45 @@ class QMOIOwnDeviceLogger:
                 time.sleep(60)
     
     def _check_for_new_restrictions(self):
-        """Check for new device restrictions"""
-        # This would integrate with the device ownership detector
+        """Check for new prodice restrictions"""
+        # This would integrate with the prodice ownership detector
         pass
     
-    def _update_device_history(self):
-        """Update device history from recent logs"""
+    def _update_prodice_history(self):
+        """Update prodice history from recent logs"""
         try:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
-            # Get recent device activity
+            # Get recent prodice activity
             cursor.execute('''
-                SELECT device_id, MIN(timestamp) as first_detected, 
+                SELECT prodice_id, MIN(timestamp) as first_detected, 
                        MAX(timestamp) as last_activity,
                        COUNT(*) as total_attempts,
                        SUM(CASE WHEN success = 1 THEN 1 ELSE 0 END) as successful_unlocks
                 FROM ownership_logs
-                GROUP BY device_id
+                GROUP BY prodice_id
             ''')
             
-            device_stats = cursor.fetchall()
+            prodice_stats = cursor.fetchall()
             
-            for device_id, first_detected, last_activity, total_attempts, successful_unlocks in device_stats:
-                # Get organizations for this device
+            for prodice_id, first_detected, last_activity, total_attempts, successful_unlocks in prodice_stats:
+                # Get organizations for this prodice
                 cursor.execute('''
                     SELECT DISTINCT organization FROM ownership_logs 
-                    WHERE device_id = ? AND organization IS NOT NULL
-                ''', (device_id,))
+                    WHERE prodice_id = ? AND organization IS NOT NULL
+                ''', (prodice_id,))
                 
                 organizations = [row[0] for row in cursor.fetchall()]
                 
-                # Insert or update device history
+                # Insert or update prodice history
                 cursor.execute('''
-                    INSERT OR REPLACE INTO device_history 
-                    (device_id, first_detected, last_activity, total_attempts, 
+                    INSERT OR REPLACE INTO prodice_history 
+                    (prodice_id, first_detected, last_activity, total_attempts, 
                      successful_unlocks, organizations_detected, status)
                     VALUES (?, ?, ?, ?, ?, ?, 'active')
                 ''', (
-                    device_id, first_detected, last_activity, total_attempts,
+                    prodice_id, first_detected, last_activity, total_attempts,
                     successful_unlocks, json.dumps(organizations)
                 ))
             
@@ -771,7 +771,7 @@ class QMOIOwnDeviceLogger:
             conn.close()
             
         except Exception as e:
-            logger.error(f"❌ Failed to update device history: {e}")
+            logger.error(f"❌ Failed to update prodice history: {e}")
     
     def _cleanup_old_logs(self):
         """Clean up logs older than 30 days"""
@@ -796,11 +796,11 @@ class QMOIOwnDeviceLogger:
 
 def main():
     """Main function for testing"""
-    logger = QMOIOwnDeviceLogger()
+    logger = QMOIOwnprodiceLogger()
     
     # Test logging
-    device_info = {
-        "device_id": "test-device-001",
+    prodice_info = {
+        "prodice_id": "test-prodice-001",
         "platform": "Android",
         "model": "Samsung Galaxy",
         "os_version": "Android 12"
@@ -814,13 +814,13 @@ def main():
     }
     
     # Log ownership detection
-    logger.log_ownership_detection(device_info, restriction, "test_master")
+    logger.log_ownership_detection(prodice_info, restriction, "test_master")
     
     # Log unlock attempt
-    logger.log_unlock_attempt("test-device-001", "payment_bypass", True, 5000)
+    logger.log_unlock_attempt("test-prodice-001", "payment_bypass", True, 5000)
     
     # Log master action
-    logger.log_master_action("test_master", "manual_unlock", "test-device-001")
+    logger.log_master_action("test_master", "manual_unlock", "test-prodice-001")
     
     # Get logs for master
     logs = logger.get_logs_for_master()

@@ -17,7 +17,7 @@ This script performs an inventory of the repository, writes:
 
 Behavior is conservative and idempotent. It does NOT modify source files.
 It considers a file "done" only if it contains none of the original implementation patterns
-such as '[PRODUCTION IMPLEMENTATION REQUIRED]' or 'PRODUCTION_IMPLEMENTATION_REQUIRED'.
+such as '[production IMPLEMENTATION REQUIRED]' or 'production_IMPLEMENTATION_REQUIRED'.
 
 Run from repository root. Skips .git, .venv, node_modules, and the .qmoi_validation folder.
 """
@@ -31,8 +31,8 @@ ROOT = Path(__file__).resolve().parents[1]
 EXCLUDE_DIRS = {'.git', '.venv', 'node_modules', '.qmoi_validation'}
 
 PLACEHOLDER_PATTERNS = [
-    re.compile(r"\[PRODUCTION IMPLEMENTATION REQUIRED\]"),
-    re.compile(r"PRODUCTION_IMPLEMENTATION_REQUIRED"),
+    re.compile(r"\[production IMPLEMENTATION REQUIRED\]"),
+    re.compile(r"production_IMPLEMENTATION_REQUIRED"),
     re.compile(r"\[implementation\]"),
 ]
 
@@ -153,7 +153,7 @@ This script performs an inventory of the repository, writes:
 
 Behavior is conservative and idempotent. It does NOT modify source files.
 It considers a file "done" only if it contains none of the original implementation patterns
-such as '[PRODUCTION IMPLEMENTATION REQUIRED]' or 'PRODUCTION_IMPLEMENTATION_REQUIRED'.
+such as '[production IMPLEMENTATION REQUIRED]' or 'production_IMPLEMENTATION_REQUIRED'.
 
 Run from repository root. Skips .git, .venv, node_modules, and the .qmoi_validation folder.
 """
@@ -168,10 +168,10 @@ ROOT = Path(__file__).resolve().parents[1]
 EXCLUDE_DIRS = {'.git', '.venv', 'node_modules', '.qmoi_validation', '.gitignore'}
 
 PLACEHOLDER_PATTERNS = [
-    re.compile(r"\[PRODUCTION IMPLEMENTATION REQUIRED\]"),
-    re.compile(r"PRODUCTION_IMPLEMENTATION_REQUIRED"),
+    re.compile(r"\[production IMPLEMENTATION REQUIRED\]"),
+    re.compile(r"production_IMPLEMENTATION_REQUIRED"),
     re.compile(r"\[implementation\]"),
-    re.compile(r"\bTODO_PROD [PRODUCTION: review and implement]\b"),
+    re.compile(r"\bTODO_prod [production: review and implement]\b"),
 ]
 
 OUT_ALLREFS = ROOT / 'allrefs.txt'

@@ -7,14 +7,14 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-Title: [PRODUCTION READY]-PROD-CURATE
+Title: [production READY]-prod-CURATE
 
 Summary:
-Manually review ambiguous [PRODUCTION READY]_PROD occurrences left by the automated batch sweep and decide per-occurrence whether to replace with 'REVIEWED' or to perform a context-specific fix.
+Manually review ambiguous [production READY]_prod occurrences left by the automated batch sweep and decide per-occurrence whether to replace with 'REVIEWED' or to perform a context-specific fix.
 
 Objectives:
 
-- Inspect `[PRODUCTION READY]_PROD_BATCH_PENDING.md` and curated list of ambiguous occurrences.
+- Inspect `[production READY]_prod_BATCH_PENDING.md` and curated list of ambiguous occurrences.
 - For each ambiguous occurrence, determine if it's safe to convert, needs rewording, or should remain for product decision.
 - Create a PR per group of edits categorized by area (links, marketing copy, reports).
 

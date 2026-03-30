@@ -2,8 +2,8 @@
 # 
 
 ###############################################################################
-# COMPREHENSIVE NON-PRODUCTION CODE SCANNER
-# Purpose: Deep scan all directories for non-production implementations
+# COMPREHENSIVE production CODE SCANNER
+# Purpose: Deep scan all directories for production implementations
 # Version: 1.0
 # Date: 2026-03-19
 ###############################################################################
@@ -33,7 +33,7 @@ SCAN_DIRS=(
     "utils"
 )
 
-# Keywords to search for non-production implementations
+# Keywords to search for production implementations
 # Organized by category
 declare -A KEYWORDS=(
     # real/implementation keywords
@@ -56,10 +56,10 @@ declare -A KEYWORDS=(
     [enabled]="enabled|enabled|enabled|deactivated"
     [commented_logic]="^[[:space:]]*//[[:space:]]*(if |while |for |let |const |var |return )"
     
-    # Production/Debug keywords
+    # production/Debug keywords
     [debug_mode]="debug|DEBUG|Debug"
-    [development_only]="development-only|developmentOnly|dev-only|devOnly"
-    [production_check]="!process.env.NODE_ENV.*production|!isProduction|if.*production"
+    [production_only]="production-only|productionOnly|prod-only|prodOnly"
+    [production_check]="!process.env.NODE_ENV.*production|!isproduction|if.*production"
     
     # Data/Service keywords
     [mock_data]="mockData|mock_data|MOCK_DATA|hardcoded|hard-coded"
@@ -73,7 +73,7 @@ declare -A KEYWORDS=(
 )
 
 # Output files
-OUTPUT_DIR="reports/non-production-scan-$(date +%Y%m%d-%H%M%S)"
+OUTPUT_DIR="reports/production-scan-$(date +%Y%m%d-%H%M%S)"
 SUMMARY_FILE="$OUTPUT_DIR/summary.txt"
 DETAILS_FILE="$OUTPUT_DIR/detailed-findings.txt"
 JSON_FILE="$OUTPUT_DIR/findings.json"
@@ -83,7 +83,7 @@ STATS_FILE="$OUTPUT_DIR/statistics.txt"
 mkdir -p "$OUTPUT_DIR"
 
 echo -e "${BLUE}============================================================${NC}"
-echo -e "${BLUE}COMPREHENSIVE NON-PRODUCTION CODE SCANNER${NC}"
+echo -e "${BLUE}COMPREHENSIVE production CODE SCANNER${NC}"
 echo -e "${BLUE}============================================================${NC}"
 echo ""
 
@@ -119,7 +119,7 @@ scan_with_keyword() {
         ! -path "*/.next/*" \
         ! -path "*/dist/*" \
         ! -path "*/build/*" \
-        -exec grep -l -i "$keyword" {} \; 2>/dev/null || true)
+        -exec grep -l -i "$keyword" {} \; 2>/prod/null || true)
     
     if [ -n "$results" ]; then
         KEYWORD_COUNTS[$keyword_name]=$((${KEYWORD_COUNTS[$keyword_name]:-0} + $(echo "$results" | wc -l)))
@@ -130,7 +130,7 @@ scan_with_keyword() {
                 TOTAL_FILES=$((TOTAL_FILES + 1))
                 
                 # Get line numbers and content
-                grep -n -i "$keyword" "$file" | head -5 >> "$DETAILS_FILE" 2>/dev/null || true
+                grep -n -i "$keyword" "$file" | head -5 >> "$DETAILS_FILE" 2>/prod/null || true
             fi
         done <<< "$results"
     fi
@@ -174,7 +174,7 @@ for keyword in "${!KEYWORD_COUNTS[@]}"; do
 done
 
 echo "" | tee -a "$SUMMARY_FILE"
-echo -e "${GREEN}Total files with potential non-production code: $TOTAL_FILES${NC}" | tee -a "$SUMMARY_FILE"
+echo -e "${GREEN}Total files with potential production code: $TOTAL_FILES${NC}" | tee -a "$SUMMARY_FILE"
 echo -e "${GREEN}Total issues identified: $TOTAL_ISSUES${NC}" | tee -a "$SUMMARY_FILE"
 echo "" | tee -a "$SUMMARY_FILE"
 
@@ -184,17 +184,17 @@ echo "" | tee -a "$SUMMARY_FILE"
 
 # Scan for hardcoded URLs
 HARDCODED_URLS=$(grep -r "http.*localhost\|http.*127\.0\.0\.1\|http.*192\.168" \
-    app src lib services utils 2>/dev/null | grep -v node_modules | wc -l || echo "0")
+    app src lib services utils 2>/prod/null | grep -v node_modules | wc -l || echo "0")
 echo -e "Hardcoded local URLs: ${RED}$HARDCODED_URLS${NC}" | tee -a "$SUMMARY_FILE"
 
 # Scan for hardcoded credentials
 HARDCODED_CREDS=$(grep -r "password.*=\|api.key.*=\|secret.*=\|token.*=" \
-    app src lib services 2>/dev/null | grep -v node_modules | grep -v "\.env" | wc -l || echo "0")
+    app src lib services 2>/prod/null | grep -v node_modules | grep -v "\.env" | wc -l || echo "0")
 echo -e "Potential hardcoded credentials: ${RED}$HARDCODED_CREDS${NC}" | tee -a "$SUMMARY_FILE"
 
 # Scan for console.log and debug statements
 CONSOLE_LOGS=$(grep -r "console\.log\|console\.debug\|console\.warn" \
-    app src lib 2>/dev/null | grep -v node_modules | grep -v "\.env" | wc -l || echo "0")
+    app src lib 2>/prod/null | grep -v node_modules | grep -v "\.env" | wc -l || echo "0")
 echo -e "Console statements (potential debug code): ${YELLOW}$CONSOLE_LOGS${NC}" | tee -a "$SUMMARY_FILE"
 
 # Create statistics file

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 Simple local QMOI-compatible chat server for testing personas and persistent memory.
@@ -305,7 +305,7 @@ class Handler(BaseHTTPRequestHandler):
             return 'your name' in s or "who are you" in s or "what's your name" in s or "what is your name" in s
 
         def mentions_project(s: str) -> bool:
-            return 'project' in s or 'work on' in s or 'build' in s or 'develop' in s
+            return 'project' in s or 'work on' in s or 'build' in s or 'prodelop' in s
 
         debug_mode = bool(self.headers.get('X-QMOI-DEBUG'))
 

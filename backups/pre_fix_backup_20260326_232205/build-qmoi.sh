@@ -8,7 +8,7 @@ echo "📅 $(date)"
 echo "🏗️  Building for all platforms..."
 
 # Check if Python is available
-if ! command -v python3 &> /dev/null; then
+if ! command -v python3 &> /prod/null; then
     echo "❌ Python3 not found. Please install Python3."
     exit 1
 fi

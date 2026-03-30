@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOI Automated Systems - Complete Guide"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -18,14 +18,14 @@ title: "QMOI Automated Systems - Complete Guide"
 
 ## 🚀 Overview
 
-QMOI Automated Systems provide continuous background operation for device ownership detection, unlocking, and automated betting across multiple platforms. These systems run automatically without manual intervention and ensure maximum revenue generation.
+QMOI Automated Systems provide continuous background operation for prodice ownership detection, unlocking, and automated betting across multiple platforms. These systems run automatically without manual intervention and ensure maximum revenue generation.
 
 ## 📋 System Components
 
-### 1. QMOI Automated Device Controller
+### 1. QMOI Automated prodice Controller
 
-- **File:** `scripts/qmoi_automated_device_controller.py`
-- **Purpose:** Continuous device restriction detection and unlocking
+- **File:** `scripts/qmoi_automated_prodice_controller.py`
+- **Purpose:** Continuous prodice restriction detection and unlocking
 - **Features:**
   - Non-blocking operations
   - Automatic error recovery
@@ -72,8 +72,8 @@ python scripts/qmoi_auto_startup.py create-startup
 ### Option 2: Individual Systems
 
 ```bash
-# Start device controller only
-python scripts/qmoi_automated_device_controller.py
+# Start prodice controller only
+python scripts/qmoi_automated_prodice_controller.py
 
 # Start betting system only
 python scripts/qmoi_automated_betting_system.py
@@ -99,14 +99,14 @@ python scripts/qmoi_windows_service.py uninstall
 
 ### Log Files
 
-- **Device Controller:** `logs/qmoi_device_controller.log`
+- **prodice Controller:** `logs/qmoi_prodice_controller.log`
 - **Betting System:** `logs/qmoi_betting_system.log`
 - **Auto Startup:** `logs/qmoi_auto_startup.log`
 - **Windows Service:** `logs/qmoi_windows_service.log`
 
 ### Status Files
 
-- **Device Controller:** `logs/device_controller_status.json`
+- **prodice Controller:** `logs/prodice_controller_status.json`
 - **Betting System:** `logs/betting_system_status.json`
 - **Auto Startup:** `logs/qmoi_startup_status.json`
 - **Service Status:** `logs/qmoi_service_status.json`
@@ -114,8 +114,8 @@ python scripts/qmoi_windows_service.py uninstall
 ### Real-time Monitoring
 
 ```bash
-# Monitor device controller logs
-tail -f logs/qmoi_device_controller.log
+# Monitor prodice controller logs
+tail -f logs/qmoi_prodice_controller.log
 
 # Monitor betting system logs
 tail -f logs/qmoi_betting_system.log
@@ -153,7 +153,7 @@ cat logs/qmoi_startup_status.json
 - **Risk Management:** Automatic stop-loss and take-profit
 - **Profit Transfer:** Automatic M-Pesa transfers
 
-## 🔧 Device Controller Features
+## 🔧 prodice Controller Features
 
 ### Detection Capabilities
 
@@ -324,7 +324,7 @@ dir logs
 
 ### Documentation
 
-- **QMOIOWNDEVICE.md:** Device ownership documentation
+- **QMOIOWNprodICE.md:** prodice ownership documentation
 - **QMOIAUTOBET.md:** Betting system documentation
 - **QMOIAPPS.md:** QMOI applications documentation
 - **API.md:** API integration documentation

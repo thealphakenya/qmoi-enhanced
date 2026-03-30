@@ -151,7 +151,7 @@ class TestAppSigningAutomationKeyValidation(unittest.TestCase):
             elif platform == "windows":
                 key_file = platform_dir / "signing_certificate.pfx"
             elif platform == "macos":
-                key_file = platform_dir / "developer_id_certification.p12"
+                key_file = platform_dir / "prodeloper_id_certification.p12"
             else:  # linux
                 key_file = platform_dir / "gpg_key.asc"
                 

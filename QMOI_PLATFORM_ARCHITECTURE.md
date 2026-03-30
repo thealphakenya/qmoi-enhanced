@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ================================================================================
 QMOI ENHANCED - PLATFORM ARCHITECTURE & INFRASTRUCTURE
-Complete Runner, Engine, Device, Machine Specifications & Validation
+Complete Runner, Engine, prodice, Machine Specifications & Validation
 ================================================================================
 Date: 2025-11-11T00:00:00Z
 Master: stable Kenya (thealphakenya)
@@ -315,8 +315,8 @@ Mobile Validation Layer:
 │ • Data format validation
 │ • Size limits respected
 │ • Encoding validation
-├─ Device Validation
-│ • Device ID verification
+├─ prodice Validation
+│ • prodice ID verification
 │ • App signature verification
 │ • OS version check
 │ • Storage space check
@@ -918,7 +918,7 @@ QCity Platform:
 ✓ Analytics accuracy
 
 Mobile Platforms:
-✓ Device ID verification
+✓ prodice ID verification
 ✓ Offline data consistency
 ✓ Sync conflict resolution
 ✓ Network connectivity
@@ -942,7 +942,7 @@ Desktop Platform:
 ✓ Security policy enforcement
 
 SmartTV Platform:
-✓ Device authentication
+✓ prodice authentication
 ✓ Content resolution compatibility
 ✓ Codec support
 ✓ Network bandwidth

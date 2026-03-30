@@ -1,9 +1,9 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 {
   "openapi": "3.0.0",
   "info": {
     "title": "QMOI Enhanced API",
-    "description": "Production-ready backend API with multi-provider payments, wallet management, and user authentication",
+    "description": "production-ready backend API with multi-provider payments, wallet management, and user authentication",
     "version": "2.0.0",
     "contact": {
       "name": "API Support",
@@ -16,7 +16,7 @@
   "servers": [
     {
       "url": "http://localhost:3000/api",
-      "description": "Development server"
+      "description": "production server"
     },
     {
       "url": "https://production-api.qmoi.app/api",
@@ -24,7 +24,7 @@
     },
     {
       "url": "https://api.qmoi.app/api",
-      "description": "Production server"
+      "description": "production server"
     }
   ],
   "tags": [

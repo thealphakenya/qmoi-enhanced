@@ -3,17 +3,17 @@
 // Last evolution cycle: 2026-03-26T03:58:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 /// <reference types="cypress" />
 
 describe("QMOI Kernel Panel SSO/OAuth E2E - Edge Cases", () => {
   it("allows login via Microsoft OAuth", () => {
     cy.visit(
-      "/auth/callback?provider=microsoft&token=microsoft-[PRODUCTION IMPLEMENTATION REQUIRED]-token",
+      "/auth/callback?provider=microsoft&token=microsoft-[production IMPLEMENTATION REQUIRED]-token",
     );
     cy.setCookie(
       "authToken",
-      "microsoft-[PRODUCTION IMPLEMENTATION REQUIRED]-token",
+      "microsoft-[production IMPLEMENTATION REQUIRED]-token",
     );
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");

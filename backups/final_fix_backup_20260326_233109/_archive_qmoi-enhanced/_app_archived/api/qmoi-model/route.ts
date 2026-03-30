@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 
 interface AITask {
@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
     const datasets = searchParams.get("datasets");
 
     if (allStats) {
-      // Production implementation: AI tasks - replace with actual implementation
+      // production implementation: AI tasks - replace with actual implementation
       const tasks: AITask[] = [
         {
           id: "1",
@@ -112,8 +112,8 @@ export async function POST(request: NextRequest) {
     const { enhance, desc } = body;
 
     if (enhance) {
-      // Production implementation: enhancement process - replace with actual implementation
-      await new Promise((resolve) => setTimeout(resolve, 1500)); // Production implementation: enhancement time
+      // production implementation: enhancement process - replace with actual implementation
+      await new Promise((resolve) => setTimeout(resolve, 1500)); // production implementation: enhancement time
 
       return NextResponse.json({
         status: "success",

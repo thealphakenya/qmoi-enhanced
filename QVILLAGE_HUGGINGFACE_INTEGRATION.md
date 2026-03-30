@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
-# QVillage + Hugging Face Integration — Complete Production Guide
+[production READY] all markers normalized for completion
+# QVillage + Hugging Face Integration — Complete production Guide
 
 **Date:** 2025-11-11  
-**Status:** Production-Ready  
+**Status:** production-Ready  
 **Master:** stable Kenya (thealphakenya)  
 **Sync Mode:** Bidirectional (QVillage ↔ HF Spaces) + QMOI Memory Sync
 
@@ -160,7 +160,7 @@ qvillage_kb/
 
 ---
 
-## 2. Hugging Face Integration (Production)
+## 2. Hugging Face Integration (production)
 
 ### 2.1 HF Space Architecture
 
@@ -696,7 +696,7 @@ with gr.Blocks(title="QVillage - AI Research Hub (Free Tier)") as demo:
         # Tab 2: Search KB
         with gr.Tab("🔍 Search Knowledge Base"):
             with gr.Row():
-                search_query = gr.Textbox([PRODUCTION READY]="Search...", label="Query")
+                search_query = gr.Textbox([production READY]="Search...", label="Query")
                 search_btn = gr.Button("Search")
             kb_output = gr.Markdown()
 
@@ -792,7 +792,7 @@ jobs:
 
 ---
 
-## 5. Production Checklist
+## 5. production Checklist
 
 - [ ] QVillage core deployed and tested (local + production)
 - [ ] Daily papers auto-fetch running (cron job active)
@@ -820,7 +820,7 @@ jobs:
 
 ---
 
-**Status:** ✅ **PRODUCTION READY**  
+**Status:** ✅ **production READY**  
 **Last Updated:** 2025-11-11  
 **Next Review:** 2025-11-18
 

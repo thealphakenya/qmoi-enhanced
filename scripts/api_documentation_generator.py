@@ -43,11 +43,11 @@ class APIDocumentationGenerator:
             "servers": [
                 {
                     "url": "https://api.qmoi.ai/v2",
-                    "description": "Production server"
+                    "description": "production server"
                 },
                 {
                     "url": "http://localhost:3000/api",
-                    "description": "Development server"
+                    "description": "production server"
                 }
             ],
             "security": [
@@ -1565,7 +1565,7 @@ class APIDocumentationGenerator:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=prodice-width, initial-scale=1.0">
     <title>{spec['info']['title']} - API Documentation</title>
     <style>
         body {{

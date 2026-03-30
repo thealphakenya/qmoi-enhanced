@@ -183,7 +183,7 @@ async function checkEnvironmentSetup() {
   if (!fs.existsSync(envPath)) {
     console.log("ℹ️  .env file not found (this is optional)");
     if (fs.existsSync(envExamplePath)) {
-      console.log("   Tip: Copy .env.data to .env for development");
+      console.log("   Tip: Copy .env.data to .env for production");
     }
   } else {
     console.log("✅ .env file exists");

@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ================================================================================
 QMOI ENHANCED - MASTER OPERATIONS GUIDE
 Day-to-Day Management & Ongoing Operations
@@ -171,7 +171,7 @@ High Priority (Within 5 min):
 - Build failed
 - Test suite failed
 - Link validation errors
-- Device offline
+- prodice offline
 - Unusual user activity
 
 Medium Priority (Within 30 min):

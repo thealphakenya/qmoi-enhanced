@@ -12,13 +12,13 @@ import os
 MASTER_EMAIL = 'victor@kwemoi.com'
 MASTER_PHONE = '+254700000000'
 
-AIRTEL_API_KEY = os.getenv('AIRTEL_API_KEY', '// Production implementation required:-key')
-MPESA_API_KEY = os.getenv('MPESA_API_KEY', '// Production implementation required:-key')
+AIRTEL_API_KEY = os.getenv('AIRTEL_API_KEY', '// production implementation required:-key')
+MPESA_API_KEY = os.getenv('MPESA_API_KEY', '// production implementation required:-key')
 
 logging.basicConfig(filename='logs/financial_verification.log', level=logging.INFO)
 
 def verify_airtel_money(account, phone):
-    # Production: integrate with real Airtel Money API using AIRTEL_API_KEY environment variable
+    # production: integrate with real Airtel Money API using AIRTEL_API_KEY environment variable
     logging.info(f'Verifying Airtel Money for {account} ({phone}) [API_KEY={AIRTEL_API_KEY}]')
     # execute API call
     try:
@@ -29,7 +29,7 @@ def verify_airtel_money(account, phone):
         return False
 
 def verify_mpesa(account, phone):
-    # Production: integrate with real Mpesa API using MPESA_API_KEY environment variable
+    # production: integrate with real Mpesa API using MPESA_API_KEY environment variable
     logging.info(f'Verifying Mpesa for {account} ({phone}) [API_KEY={MPESA_API_KEY}]')
     # execute API call
     try:

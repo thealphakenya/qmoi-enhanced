@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -23,9 +23,9 @@
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-QMOIAUTODEV.md
-QMOI Auto-Dev: Always-On, Self-Healing, Auto-Deploying System
-QMOI Auto-Dev is the heartbeat of the stable-Q ecosystem. It continuously monitors, fixes, commits, deploys, and optimizes every part of the system in real time — with zero manual effort.
+QMOIAUTOprod.md
+QMOI Auto-prod: Always-On, Self-Healing, Auto-Deploying System
+QMOI Auto-prod is the heartbeat of the stable-Q ecosystem. It continuously monitors, fixes, commits, deploys, and optimizes every part of the system in real time — with zero manual effort.
 
 🧠 Key Highlights
 Feature Description
@@ -69,14 +69,14 @@ Stage Description
 
 📊 Dashboard & API
 Endpoint Description
-POST /api/qmoi/autodev with { action: 'full_status' } Get full automation/deployment state
-POST /api/qmoi/autodev with { action: 'continuous_autofix_start' } Start daemon
-POST /api/qmoi/autodev with { action: 'continuous_autofix_stop' } Stop daemon
-POST /api/qmoi/autodev with `{ action: 'lint_fix' 'dependency_fix'
+POST /api/qmoi/autoprod with { action: 'full_status' } Get full automation/deployment state
+POST /api/qmoi/autoprod with { action: 'continuous_autofix_start' } Start daemon
+POST /api/qmoi/autoprod with { action: 'continuous_autofix_stop' } Stop daemon
+POST /api/qmoi/autoprod with `{ action: 'lint_fix' 'dependency_fix'
 
 Dashboard Panels:
 
-Auto-Dev health and status
+Auto-prod health and status
 
 Last error, fix, deploy
 
@@ -101,15 +101,15 @@ Archive strategy for changelogs, result files, and summaries
 ☁️ Cloud Offload & Optimization
 Cloud & Colab Native: Heavy jobs offloaded to Colab/Dagshub automatically
 
-Data Saver Mode: Bandwidth-aware optimization for low-data devices
+Data Saver Mode: Bandwidth-aware optimization for low-data prodices
 
-Device-Aware Logic: Adapt automation depending on host platform specs
+prodice-Aware Logic: Adapt automation depending on host platform specs
 
 Live Job Migration: Jobs can move from local → cloud in real time
 
 🔧 Advanced Master Widgets (QCity Only)
 Widget Purpose
-📡 Auto-Dev Health Monitor Real-time metrics, fix rate, CPU/mem usage
+📡 Auto-prod Health Monitor Real-time metrics, fix rate, CPU/mem usage
 📚 Job History All past auto-fix cycles, errors, and logs
 🧠 ML Enhancement Panel Latest AI auto-improvements with logs and retrain triggers
 📤 Elastic Offload Panel Cloud/local job routing, manual offload
@@ -132,7 +132,7 @@ Can clone, scaffold, and deploy new repos based on templates (see QMOIAUTOMAKENE
 [QMOINGROK.md] — Updates download links to ngrok/fallback if needed
 
 📈 Money-Making Logic Enhancements
-Min Revenue Goals: Auto-Dev now enforces a minimum daily income target
+Min Revenue Goals: Auto-prod now enforces a minimum daily income target
 
 Money Panel in QCity: Master-only UI shows all income streams, targets, and projections
 
@@ -176,7 +176,7 @@ Offline + Colab Support ✅
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "qmoi-enhanced/QMOIAUTODEV.md",
+"file": "qmoi-enhanced/QMOIAUTOprod.md",
 "validated_at": "2025-10-26T20:51:24.728925Z",
 "validator": "QMOI Lion (automated)",
 "checks": [

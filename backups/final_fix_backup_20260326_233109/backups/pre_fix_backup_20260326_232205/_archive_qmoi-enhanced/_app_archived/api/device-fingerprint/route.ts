@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 import { NextRequest, NextResponse } from "next/server";
 import { headers } from "next/headers";
 import fs from "fs";
@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { fingerprint, user, deviceInfo, location } = body;
+    const { fingerprint, user, prodiceInfo, location } = body;
 
     const fingerprints = JSON.parse(
       fs.readFileSync(FINGERPRINTS_FILE, "utf-8"),
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
     fingerprints.push({
       fingerprint,
       user,
-      deviceInfo,
+      prodiceInfo,
       location,
       timestamp: new Date().toISOString(),
     });

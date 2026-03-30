@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOI Command Reference - Enhanced Universal Automation"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -31,16 +31,16 @@ python scripts/qmoi-master-automation.py
 ### Universal App Builder
 
 ```bash
-# Build, test, and organize all QMOI and QCity apps for all device types
+# Build, test, and organize all QMOI and QCity apps for all prodice types
 python scripts/qmoi-app-builder.py
 
-# Apps are placed in Qmoi_apps/<device>/
+# Apps are placed in Qmoi_apps/<prodice>/
 # Download links are updated and notifications sent to all channels
 ```
 
-### Device-Aware Download (QI/First Page)
+### prodice-Aware Download (QI/First Page)
 
-- Use the download button (see QI_download_component.html) to get the correct installer for your device.
+- Use the download button (see QI_download_component.html) to get the correct installer for your prodice.
 
 ### User-Triggered Build (API)
 
@@ -65,12 +65,12 @@ python scripts/qmoi-live-status.py
 ```
 
 - Streams and summarizes QMOI automation logs and reports in real time.
-- Always running in Colab, DagsHub, or cloud (auto-restarts if cancelled or device is offline).
+- Always running in Colab, DagsHub, or cloud (auto-restarts if cancelled or prodice is offline).
 
 ## Cloud Offloading & Cloned Platform Usage (2025 Enhancement)
 
-- All commands and scripts are now run in QCity, Colab, or cloud environments, never on the local device.
-- QMOI only uses its own cloned GitLab, Gitpod, and other platforms for all automation, CI/CD, and development, which are more advanced than the actual ones.
+- All commands and scripts are now run in QCity, Colab, or cloud environments, never on the local prodice.
+- QMOI only uses its own cloned GitLab, Gitpod, and other platforms for all automation, CI/CD, and production, which are more advanced than the actual ones.
 - All command examples and scripts should be run in cloud-offloaded environments, not locally.
 - See also: QMOIAVATAR.md, QMOIAICORE.md, QMOIAUTOEVOLVE.md, README.md, .gitlab-ci.yml, and all .md docs for cross-platform and cloud-offloading details.
 
@@ -94,7 +94,7 @@ a
 python3 ai_self_update.py --autofix-download-links --auto-test-links --log-errors
 ```
 
-- Runs auto-fix and auto-test for all download links, logs any errors to the appropriate error log files for each device.
+- Runs auto-fix and auto-test for all download links, logs any errors to the appropriate error log files for each prodice.
 
 ### Check All Error Logs (Manual Diagnostic)
 
@@ -102,7 +102,7 @@ python3 ai_self_update.py --autofix-download-links --auto-test-links --log-error
 python3 ai_self_update.py --check-error-logs
 ```
 
-- Scans all device error logs and reports any remaining errors. Use after automation cycles for manual verification.
+- Scans all prodice error logs and reports any remaining errors. Use after automation cycles for manual verification.
 
 ### Test All Download Links
 
@@ -141,30 +141,30 @@ python3 downloadqmoiaipod.py        # Apple iPod (uses iOS build)
 python3 downloadqmoiaapplelaptop.py # Apple Laptop (uses macOS build)
 ```
 
-## Device Mapping Notes
+## prodice Mapping Notes
 
-See QMOIBINARIES.md for the latest canonical binary mapping, build status, and QCity automation integration for all device types.
-All device types are mapped to their canonical universal builds for automation, with real-time status and troubleshooting auto-updated in QMOIBINARIES.md.
+See QMOIBINARIES.md for the latest canonical binary mapping, build status, and QCity automation integration for all prodice types.
+All prodice types are mapped to their canonical universal builds for automation, with real-time status and troubleshooting auto-updated in QMOIBINARIES.md.
 
 ## Automation & Autoset Features
 
 QMOI autoset features run all tests, autotest download links, fix errors, and update documentation automatically after every automation cycle.
 All binary statuses and troubleshooting info are auto-updated in QMOIBINARIES.md and referenced by QCity runners.
 No manual intervention is required for normal operation; all features are self-healing and cloud-offloaded.
-For troubleshooting, see QMOIBINARIES.md, DOWNLOADQMOIAIAPPALLDEVICES.md, and QMOIBROWSER.md.
+For troubleshooting, see QMOIBINARIES.md, DOWNLOADQMOIAIAPPALLprodICES.md, and QMOIBROWSER.md.
 
 ## Enhanced Automation Features (2025+)
 
 - All download links are auto-fixed and auto-tested after every build/install cycle.
-- Any errors found during link testing or install are logged to the appropriate error log file for each device.
+- Any errors found during link testing or install are logged to the appropriate error log file for each prodice.
 - Error logs are checked automatically and can be manually checked using the command above.
 - All enhancements are cloud-offloaded and self-healing.
 
 ## Future-Proof Universal Automation
 
-- All new device types will be mapped to canonical builds unless a unique binary is required.
-- Automation scripts and CI/CD will auto-detect and update device mappings as new platforms are added.
-- All device logs, error stats, and download links are auto-updated in real time (every 2 min or less).
+- All new prodice types will be mapped to canonical builds unless a unique binary is required.
+- Automation scripts and CI/CD will auto-detect and update prodice mappings as new platforms are added.
+- All prodice logs, error stats, and download links are auto-updated in real time (every 2 min or less).
 
 ---
 

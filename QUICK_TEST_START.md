@@ -7,19 +7,19 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
 ## One-Command Test (Simplest)
 
 ```bash
-# Terminal 1: Start dev server
-npm run dev
+# Terminal 1: Start prod server
+npm run prod
 
 # Terminal 2: Run master tests
 node test-qmoi-master.js
@@ -46,7 +46,7 @@ node test-qmoi-master.js
 5. Multi-Agent (collaborative AI)
 ```
 
-✅ **Self-Modification & Auto-Development**
+✅ **Self-Modification & Auto-production**
 
 - QMOI analyzes its own code
 - Identifies 3+ areas for self-improvement
@@ -226,10 +226,10 @@ Use the <QMOIChat /> component for full voice support
 ### Server Not Running
 
 ```
-Error: Cannot connect to dev server
+Error: Cannot connect to prod server
 
 ✅ Solution: Run in Terminal 1
-npm run dev
+npm run prod
 ```
 
 ### Timeout/Slow Response
@@ -266,7 +266,7 @@ After running tests, verify:
 - [ ] Friendship system works
 - [ ] Audit trail recording
 - [ ] Performance is good (< 3s per message)
-- [ ] No errors in dev server logs
+- [ ] No errors in prod server logs
 - [ ] Load test at 80%+ success
 
 ---
@@ -353,14 +353,14 @@ After running tests, verify:
    - Try voice input (microphone button)
    - Try voice output (speak button)
 
-3. **Deploy to Production**
+3. **Deploy to production**
 
    ```bash
    npm run build
    npm start
    ```
 
-4. **Monitor in Production**
+4. **Monitor in production**
    - Check audit logs
    - Monitor response times
    - Track user interactions
@@ -372,7 +372,7 @@ After running tests, verify:
 
 ```bash
 # Quick start (all-in-one)
-npm run dev & node test-qmoi-master.js
+npm run prod & node test-qmoi-master.js
 
 # Individual tests
 node test-qmoi-master.js              # Main test runner
@@ -383,7 +383,7 @@ npm test -- qmoi-comprehensive-test   # Full suite
 npm run build                         # Build verification
 npm run lint                          # Code quality
 
-# Production
+# production
 npm run build
 npm start
 ```

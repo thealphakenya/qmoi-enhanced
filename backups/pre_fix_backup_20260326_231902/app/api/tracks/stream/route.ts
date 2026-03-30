@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 import { NextRequest } from "next/server";
 
 // robust SSE endpoint streaming track create/update events from tracks-store
@@ -59,7 +59,7 @@ export async function GET(req: NextRequest) {
         new TextEncoder().encode(`event: ready\ndata: connected\n\n`),
       );
 
-      controller.addEventListener("close", () => {
+      controller.adprodentListener("close", () => {
         clearInterval(iv);
         store.off("created", onCreated);
         store.off("updated", onUpdated);

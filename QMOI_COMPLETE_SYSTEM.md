@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOI Complete System Overview"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -215,7 +215,7 @@ setup:
     - npm run qmoi-setup
   only:
     - main
-    - develop
+    - prodelop
 
 qmoi-error-recovery:
   stage: deploy
@@ -361,8 +361,8 @@ npm run qmoi-auto-push
 # Run setup
 npm run qmoi-setup
 
-# Start development mode
-npm run dev
+# Start production mode
+npm run prod
 ```
 
 ## 🔮 Advanced Capabilities

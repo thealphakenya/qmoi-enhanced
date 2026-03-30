@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/bin/bash
 
 # QMOI Background Automation - Quick Start Script
@@ -113,7 +113,7 @@ echo "📈 Memory Warning: 75% | Critical: 95%"
 echo "📈 Disk Warning: 80% | Critical: 95%"
 echo ""
 echo "🚀 Next Steps:"
-echo "1. Start the development server: npm run dev"
+echo "1. Start the production server: npm run prod"
 echo "2. Visit http://localhost:3000/admin to view the dashboard"
 echo "3. Check the automation status in the dashboard"
 echo "4. Review logs in .logs/ directory"

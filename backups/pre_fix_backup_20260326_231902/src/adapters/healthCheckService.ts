@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 // Health check API endpoint with diagnostic information
 // Provides comprehensive service health, cache statistics, and pending requests
 
@@ -120,7 +120,7 @@ export class HealthCheckService {
         status: overallStatus,
         system: {
           uptime: Date.now() - startTime,
-          environment: process.env.NEXT_PUBLIC_ENV || "development",
+          environment: process.env.NEXT_PUBLIC_ENV || "production",
           serviceStatus: this.getServiceStatus(),
         },
         adapters: {
@@ -156,7 +156,7 @@ export class HealthCheckService {
         status: "unhealthy",
         system: {
           uptime: Date.now() - startTime,
-          environment: process.env.NEXT_PUBLIC_ENV || "development",
+          environment: process.env.NEXT_PUBLIC_ENV || "production",
           serviceStatus: this.getServiceStatus(),
         },
         adapters: {

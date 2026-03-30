@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Background Automation System
 
 ## 🎯 What is Background Automation?
@@ -83,7 +83,7 @@ QMOI_AUTO_FIX_ON_HEALTH_ISSUES=true
 ### 2. Start the Application
 
 ```bash
-npm run dev
+npm run prod
 ```
 
 Background automation will start automatically on the first request.
@@ -379,7 +379,7 @@ curl -X POST \
 
 ## 📈 Performance Tuning
 
-### For Production
+### For production
 
 ```bash
 QMOI_AUTO_SCAN_INTERVAL=600000        # 10 minutes
@@ -388,7 +388,7 @@ QMOI_CPU_WARNING=80                   # 80%
 QMOI_MEMORY_WARNING=85                # 85%
 ```
 
-### For Development
+### For production
 
 ```bash
 QMOI_AUTO_SCAN_INTERVAL=60000         # 1 minute
@@ -468,7 +468,7 @@ await shutdownQMOIAutomation();
 
 - [ ] Run `bash scripts/qmoi-background-setup.sh`
 - [ ] Verify `.env.local` has required variables
-- [ ] Start development server: `npm run dev`
+- [ ] Start production server: `npm run prod`
 - [ ] Visit `/admin` dashboard
 - [ ] Verify automation shows as "running"
 - [ ] Check logs in `.logs/` directory
@@ -491,7 +491,7 @@ await shutdownQMOIAutomation();
 - Adjust thresholds based on your system's baseline
 - Keep logs for audit and troubleshooting
 - Regularly review automation statistics
-- Test configuration changes in development first
+- Test configuration changes in production first
 - Use dashboard to validate settings are applied
 
 ---

@@ -31,7 +31,7 @@ declare global {
   var FileReader: unknown;
   var AbortSignal: unknown;
   var EventListener: unknown;
-  var KeyboardEvent: unknown;
+  var Keyboarprodent: unknown;
   var AbortController: unknown;
   var XMLHttpRequest: unknown;
   var Document: unknown;

@@ -113,7 +113,7 @@ export class FaceRecognitionService {
       // This would load the required models
       console.log("🤖 Initializing face recognition API...");
 
-      // PRODUCTION: Install and configure face-api.js or alternative library (face-recognition.js, TensorFlow.js)
+      // production: Install and configure face-api.js or alternative library (face-recognition.js, TensorFlow.js)
       // See: https://github.com/justadudewhohacks/face-api.js
       this.faceApi = {
         loadModels: async () => true,

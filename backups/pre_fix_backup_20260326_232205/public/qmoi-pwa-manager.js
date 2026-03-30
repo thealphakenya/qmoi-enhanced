@@ -41,7 +41,7 @@ class QMOIPWAManager {
         console.log(`[${this.appName} PWA] Service Worker registered`);
 
         // Listen for updates
-        this.swRegistration.addEventListener("updatefound", () =>
+        this.swRegistration.adprodentListener("updatefound", () =>
           this.handleUpdateFound(),
         );
 
@@ -49,7 +49,7 @@ class QMOIPWAManager {
         setInterval(() => this.checkForUpdates(), 60000);
 
         // Listen for messages from SW
-        navigator.serviceWorker.addEventListener("message", (event) =>
+        navigator.serviceWorker.adprodentListener("message", (event) =>
           this.handleSWMessage(event),
         );
       } catch (error) {
@@ -61,12 +61,12 @@ class QMOIPWAManager {
     }
 
     // Handle beforeinstallprompt event
-    window.addEventListener("beforeinstallprompt", (e) =>
+    window.adprodentListener("beforeinstallprompt", (e) =>
       this.handleBeforeInstallPrompt(e),
     );
 
     // Handle app installed event
-    window.addEventListener("appinstalled", () => this.handleAppInstalled());
+    window.adprodentListener("appinstalled", () => this.handleAppInstalled());
 
     // Check if already installed
     if (this.isInstalled()) {
@@ -108,8 +108,8 @@ class QMOIPWAManager {
     const installBtn = prompt.querySelector(".qmoi-install-btn");
     const dismissBtn = prompt.querySelector(".qmoi-dismiss-btn");
 
-    installBtn.addEventListener("click", () => this.promptInstall(prompt));
-    dismissBtn.addEventListener("click", () => prompt.remove());
+    installBtn.adprodentListener("click", () => this.promptInstall(prompt));
+    dismissBtn.adprodentListener("click", () => prompt.remove());
   }
 
   /**
@@ -164,7 +164,7 @@ class QMOIPWAManager {
     const newSW = this.swRegistration.installing;
     console.log(`[${this.appName} PWA] New service worker found`);
 
-    newSW.addEventListener("statechange", () => {
+    newSW.adprodentListener("statechange", () => {
       if (newSW.state === "installed" && navigator.serviceWorker.controller) {
         console.log(`[${this.appName} PWA] Update available`);
         this.updateAvailable = true;
@@ -202,8 +202,8 @@ class QMOIPWAManager {
     const updateBtn = prompt.querySelector(".qmoi-update-btn");
     const skipBtn = prompt.querySelector(".qmoi-skip-update-btn");
 
-    updateBtn.addEventListener("click", () => this.applyUpdate(prompt));
-    skipBtn.addEventListener("click", () => prompt.remove());
+    updateBtn.adprodentListener("click", () => this.applyUpdate(prompt));
+    skipBtn.adprodentListener("click", () => prompt.remove());
   }
 
   /**
@@ -451,7 +451,7 @@ const appNameMeta = document.querySelector('meta[name="qmoi-app-name"]');
 const appName = appNameMeta ? appNameMeta.content : "QMOI";
 
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => {
+  document.adprodentListener("DOMContentLoaded", () => {
     window.qmoiPWAManager = new QMOIPWAManager(appName);
   });
 } else {

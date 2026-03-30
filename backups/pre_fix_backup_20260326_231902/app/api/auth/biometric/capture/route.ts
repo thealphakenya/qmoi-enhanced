@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 import { NextRequest, NextResponse } from "next/server";
 import { AuthService, BiometricCapture } from "@/lib/auth-service";
 
@@ -80,7 +80,7 @@ export async function GET() {
         biometricMethod: "fingerprint|facial|voice (required)",
         confidence: "Confidence score 0-1 (optional, default 0.9)",
         verified: "Whether capture was verified (optional, default true)",
-        metadata: "Additional metadata like device info (optional)",
+        metadata: "Additional metadata like prodice info (optional)",
       },
     },
     { status: 200 },

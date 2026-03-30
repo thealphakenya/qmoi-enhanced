@@ -44,7 +44,7 @@ def classify(entry):
         priority = 3
 
     # bump priority for known sensitive paths
-    if re.search(r"payments|stripe|wallet|secure|auth|biometric|device|integration|adapters|services", path, re.I):
+    if re.search(r"payments|stripe|wallet|secure|auth|biometric|prodice|integration|adapters|services", path, re.I):
         priority = max(1, priority-1)
 
     return {

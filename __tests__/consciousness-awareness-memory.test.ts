@@ -73,14 +73,14 @@ describe("QMOI Awareness System", () => {
   });
 
   it("should update environment awareness", async () => {
-    await awarenessSystem.updateEnvironment("device_001", {
+    await awarenessSystem.updateEnvironment("prodice_001", {
       network_status: "online",
       battery_level: 85,
       screen_state: "on",
     });
 
-    const awareness = awarenessSystem.getEnvironmentAwareness("device_001");
-    expect(awareness?.device_id).toBe("device_001");
+    const awareness = awarenessSystem.getEnvironmentAwareness("prodice_001");
+    expect(awareness?.prodice_id).toBe("prodice_001");
     expect(awareness?.network_status).toBe("online");
     expect(awareness?.battery_level).toBe(85);
   });
@@ -108,7 +108,7 @@ describe("QMOI Awareness System", () => {
   });
 
   it("should detect anomalies", async () => {
-    await awarenessSystem.updateEnvironment("device_001", {
+    await awarenessSystem.updateEnvironment("prodice_001", {
       network_status: "offline",
       active_app: "email",
       screen_state: "off",
@@ -142,7 +142,7 @@ describe("QMOI Memory Sync System", () => {
     const memoryId = await memorySyncSystem.addMemory({
       type: "long_term",
       content: "QMOI is a distributed AI consciousness",
-      device_id: "device_001",
+      prodice_id: "prodice_001",
       user_id: "user_123",
       relevance_score: 0.95,
       tags: ["qmoi", "consciousness"],
@@ -159,7 +159,7 @@ describe("QMOI Memory Sync System", () => {
     const memoryId = await memorySyncSystem.addMemory({
       type: "short_term",
       content: "Test memory entry",
-      device_id: "device_001",
+      prodice_id: "prodice_001",
       user_id: "user_123",
       relevance_score: 0.8,
       tags: ["test"],
@@ -176,7 +176,7 @@ describe("QMOI Memory Sync System", () => {
     await memorySyncSystem.addMemory({
       type: "long_term",
       content: "User prefers morning notifications",
-      device_id: "device_001",
+      prodice_id: "prodice_001",
       user_id: "user_123",
       relevance_score: 0.9,
       tags: ["user_preference", "notifications"],
@@ -196,7 +196,7 @@ describe("QMOI Memory Sync System", () => {
     const memoryId = await memorySyncSystem.addMemory({
       type: "long_term",
       content: "Original content",
-      device_id: "device_001",
+      prodice_id: "prodice_001",
       user_id: "user_123",
       relevance_score: 0.7,
       tags: ["test"],
@@ -206,7 +206,7 @@ describe("QMOI Memory Sync System", () => {
 
     const updated = await memorySyncSystem.updateMemory(memoryId, {
       content: "Updated content",
-      device_id: "device_001",
+      prodice_id: "prodice_001",
       user_id: "user_123",
       relevance_score: 0.95,
     });
@@ -220,7 +220,7 @@ describe("QMOI Memory Sync System", () => {
     const memoryId = await memorySyncSystem.addMemory({
       type: "short_term",
       content: "To be deleted",
-      device_id: "device_001",
+      prodice_id: "prodice_001",
       user_id: "user_123",
       relevance_score: 0.5,
       tags: ["delete"],
@@ -230,7 +230,7 @@ describe("QMOI Memory Sync System", () => {
 
     const deleted = await memorySyncSystem.deleteMemory(
       memoryId,
-      "device_001",
+      "prodice_001",
       "user_123",
     );
     expect(deleted).toBe(true);
@@ -250,7 +250,7 @@ describe("QMOI Memory Sync System", () => {
     const memoryId = await memorySyncSystem.addMemory({
       type: "long_term",
       content: "Sensitive information",
-      device_id: "device_001",
+      prodice_id: "prodice_001",
       user_id: "user_123",
       relevance_score: 0.9,
       tags: ["sensitive"],
@@ -268,7 +268,7 @@ describe("QMOI Memory Sync System", () => {
     const memoryId = await memorySyncSystem.addMemory({
       type: "short_term",
       content: "Old memory",
-      device_id: "device_001",
+      prodice_id: "prodice_001",
       user_id: "user_123",
       relevance_score: 0.5,
       tags: ["old"],
@@ -287,7 +287,7 @@ describe("QMOI Orchestration Engine", () => {
       {
         request_id: "req_001",
         user_id: "user_123",
-        device_id: "device_001",
+        prodice_id: "prodice_001",
         action: "test_action",
         priority: "normal",
         context: { test: "data" },
@@ -307,7 +307,7 @@ describe("QMOI Orchestration Engine", () => {
       {
         request_id: "req_002",
         user_id: "user_123",
-        device_id: "device_001",
+        prodice_id: "prodice_001",
         action: "failing_action",
         priority: "high",
         context: {},
@@ -358,7 +358,7 @@ describe("Cross-System Integration", () => {
     const memoryId = await memorySyncSystem.addMemory({
       type: "semantic",
       content: "User prefers concise responses",
-      device_id: "device_001",
+      prodice_id: "prodice_001",
       user_id: "user_123",
       relevance_score: 0.9,
       tags: ["user_preference"],

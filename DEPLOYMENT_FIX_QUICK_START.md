@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # ⚡ solution FOR 404 DEPLOYMENT_NOT_FOUND ERROR
 
 ## The Problem
@@ -27,7 +27,7 @@ The project is **NOT YET DEPLOYED to Vercel**. It's only configured but needs to
 **QMOI Auto-Configuration Active**
 
 - ✓ Environment variables automatically set
-- ✓ Production mode optimizations enabled
+- ✓ production mode optimizations enabled
 - ✓ No manual env setup required
 - ✓ Deployment-ready immediately
 
@@ -133,7 +133,7 @@ Once activated, ALL links will work perfectly!
 **Choose your method:**
 
 - **Web Dashboard** (Option A) - No terminal required, easy to use
-- **Vercel CLI** (Option B) - Command line, faster for developers
+- **Vercel CLI** (Option B) - Command line, faster for prodelopers
 
 ---
 

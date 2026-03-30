@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 #!/usr/bin/env node
 
 // QMOI Parallel Autotest Runner
@@ -15,13 +15,13 @@ function runAutotests() {
   console.log(
     "[AUTOTEST] Running all autotests in parallel across cloud environments...",
   );
-  // Production implementation:: Integrate with QMOI cloud autotest API
+  // production implementation:: Integrate with QMOI cloud autotest API
   setTimeout(() => {
     console.log("[AUTOTEST] All tests completed. Aggregating results...");
-    // Production implementation: auto-heal/rerun
+    // production implementation: auto-heal/rerun
     setTimeout(() => {
       console.log("[AUTOTEST] All failed tests auto-healed and rerun.");
-      // Production implementation: doc update
+      // production implementation: doc update
       setTimeout(() => {
         console.log(
           "[AUTOTEST] Documentation auto-updated with latest test results.",
@@ -33,7 +33,7 @@ function runAutotests() {
 
 function reportAutotests() {
   console.log("[AUTOTEST] Publishing test results to cloud dashboard...");
-  // Production implementation:: Integrate with QMOI cloud dashboard API
+  // production implementation:: Integrate with QMOI cloud dashboard API
   setTimeout(() => {
     console.log("[AUTOTEST] Test results published.");
   }, 1000);

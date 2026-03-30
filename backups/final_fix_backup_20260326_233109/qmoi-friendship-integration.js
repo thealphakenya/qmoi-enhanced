@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 // QMOI Friendship Integration System - GitLab & Vercel Integration
 // This module handles automated deployment, error fixing, and system optimization
 
@@ -177,20 +177,20 @@ class QMOIFriendshipIntegration {
   }
 
   async createVercelDeployment() {
-    // Safe-by-default: if no Vercel token or running in dry-run, return a // Production implementation:ed deployment object
+    // Safe-by-default: if no Vercel token or running in dry-run, return a // production implementation:ed deployment object
     const dryRun =
-      !process.env.PRODUCTION_CONFIRMED ||
+      !process.env.production_CONFIRMED ||
       process.argv.indexOf("--real") === -1;
 
     if (!this.vercelConfig.token) {
       console.warn(
         "⚠️ Vercel token not provided; returning dry-run deployment object",
       );
-      return { id: `// Production implementation:-${Date.now()}`, url: null, dryRun: true };
+      return { id: `// production implementation:-${Date.now()}`, url: null, dryRun: true };
     }
 
     if (dryRun) {
-      // Do not push files to Vercel in dry-run; return a // Production implementation:d response.
+      // Do not push files to Vercel in dry-run; return a // production implementation:d response.
       return { id: `dryrun-${Date.now()}`, url: null, dryRun: true };
     }
 
@@ -495,7 +495,7 @@ class QMOIFriendshipIntegration {
   async applySyntaxFix(fix) {
     console.log(`📝 Applying syntax fix to ${fix.file}`);
     const canApply =
-      process.env.PRODUCTION_CONFIRMED === "true" &&
+      process.env.production_CONFIRMED === "true" &&
       process.argv.indexOf("--real") !== -1;
     const proposal = {
       action: "syntax_fix",
@@ -533,7 +533,7 @@ class QMOIFriendshipIntegration {
   async applyDependencyFix(fix) {
     console.log(`📦 Installing dependency (proposal): ${fix.dependency}`);
     const canApply =
-      process.env.PRODUCTION_CONFIRMED === "true" &&
+      process.env.production_CONFIRMED === "true" &&
       process.argv.indexOf("--real") !== -1;
     const proposal = {
       action: "install_dependency",
@@ -572,7 +572,7 @@ class QMOIFriendshipIntegration {
       timestamp: new Date().toISOString(),
     };
     const canApply =
-      process.env.PRODUCTION_CONFIRMED === "true" &&
+      process.env.production_CONFIRMED === "true" &&
       process.argv.indexOf("--real") !== -1;
 
     if (!canApply) {
@@ -642,7 +642,7 @@ class QMOIFriendshipIntegration {
       console.log("🔄 Performing Git operations for QMOI Friendship System...");
 
       const canApply =
-        process.env.PRODUCTION_CONFIRMED === "true" &&
+        process.env.production_CONFIRMED === "true" &&
         process.argv.indexOf("--real") !== -1;
 
       const proposal = {

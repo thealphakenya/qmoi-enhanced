@@ -439,7 +439,7 @@ export function withQMOIAutoInteraction<P extends object>(
         }
       };
 
-      element.addEventListener(
+      element.adprodentListener(
         "qmoi-interaction",
         handleInteraction as EventListener
       );

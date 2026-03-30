@@ -7,13 +7,13 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # Component Consolidation Analysis
 
 ## Summary
 
 - **Total duplicate files:** 154 across `components/` and `qmoi-enhanced/components/`
-- **Status:** Most are NOT byte-identical (have diverged during development)
+- **Status:** Most are NOT byte-identical (have diverged during production)
 - **Recommendation:** Keep current structure but document as intentional for now; plan unification for future release
 
 ## Duplicate Files (154 total)
@@ -72,7 +72,7 @@ Then decide per-file whether to:
 
 - GlobalMail.tsx (byte-identical)
 - GlobalFileTransfer.tsx
-- PriceProductVerifier.tsx
+- PriceproductVerifier.tsx
 - (other utilities that don't have UI-specific logic)
 
 ### Tier 2: Medium-effort consolidation

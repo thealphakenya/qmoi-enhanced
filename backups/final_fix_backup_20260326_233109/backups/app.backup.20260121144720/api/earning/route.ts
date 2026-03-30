@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -35,8 +35,8 @@ export async function GET_ANALYTICS(_req: NextRequest) {
 }
 
 export async function POST_SELF_HEAL(_req: NextRequest) {
-  // Trigger self-healing (// Production implementation:)
-  // Production: Implement error detection, correction, and recovery logic
+  // Trigger self-healing (// production implementation:)
+  // production: Implement error detection, correction, and recovery logic
   // Validate transactions, reconcile balances, restore required data from backups
   analytics.errors = 0;
   return NextResponse.json({

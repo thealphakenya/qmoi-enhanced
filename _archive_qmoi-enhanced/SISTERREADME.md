@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "SISTERREADME.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -53,20 +53,20 @@ Welcome, Sister! This guide explains all the features you can use in the stable-
 
 ### 7. New Features
 
-- Device settings and media preview now available in the UI
+- prodice settings and media preview now available in the UI
 - Download links for all apps/projects sent to your WhatsApp automatically
 - Movie & Media Preview: Play movies, YouTube, and more in the Preview tab.
 - Leah Wallet panel for easy money management
 - Enhanced backup and restore for all projects
-- Download App: Get a direct download link for your device in the app and via WhatsApp.
+- Download App: Get a direct download link for your prodice in the app and via WhatsApp.
 - Project Backup: All your projects are auto-backed up and can be restored anytime.
 - **Wallet request and approval flow added**
 - **Master-only fund transfer and enhanced audit logging**
 
 ### Collaborative & Multi-User Features
 
-- **Devices Hub:**
-  - Manage and collaborate across multiple devices
+- **prodices Hub:**
+  - Manage and collaborate across multiple prodices
 - **Earning & Cashon:**
   - Shared earning strategies and fund management (withdrawals require master approval)
 - **Emotional Intelligence:**

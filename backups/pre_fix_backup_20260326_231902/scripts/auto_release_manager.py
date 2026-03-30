@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+# [production READY]
 """
 Auto-release manager (dry-run).
 
@@ -59,7 +59,7 @@ Responsibilities:
 - For each platform, attempt to detect the 'latest release' location via
   configured providers (GitHub/GitLab/other). Network calls are optional and
   gated by environment for safety.
-- Produce `.qmoi_validation/auto_releases.json` summarizing findings.
+- produce `.qmoi_validation/auto_releases.json` summarizing findings.
 
 This script is conservative: it will not perform network requests unless
 `QMOI_ALLOW_NETWORK=true` and will always operate in dry-run unless `--apply`

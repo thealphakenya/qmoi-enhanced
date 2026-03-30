@@ -272,7 +272,7 @@ class FraudDetectionEngine:
             'model_type': 'Isolation Forest + Autoencoder',
             'accuracy': 96.3,
             'false_positive_rate': 2.1,
-            'features': ['transaction_amount', 'frequency', 'geolocation', 'device_fingerprint', 'behavioral_patterns']
+            'features': ['transaction_amount', 'frequency', 'geolocation', 'prodice_fingerprint', 'behavioral_patterns']
         }
 
         self.risk_scoring_model = {
@@ -336,8 +336,8 @@ class FraudDetectionEngine:
         if transaction.get('unusual_location', False):
             flags.append('GEOGRAPHIC_ANOMALY')
 
-        if transaction.get('new_device', False):
-            flags.append('NEW_DEVICE')
+        if transaction.get('new_prodice', False):
+            flags.append('NEW_prodICE')
 
         return flags
 
@@ -474,7 +474,7 @@ class AIPoweredTradingSystem:
 
         # Sharpe ratio simulation
         returns = [trade['trade_result']['pnl_percent'] for trade in executed_trades]
-        sharpe_ratio = statistics.mean(returns) / (statistics.stdev(returns) + 0.0001)  # Avoid division by zero
+        sharpe_ratio = statistics.mean(returns) / (statistics.stprod(returns) + 0.0001)  # Avoid division by zero
 
         return {
             'total_return_percent': (self.portfolio_value - 100000) / 100000 * 100,
@@ -485,7 +485,7 @@ class AIPoweredTradingSystem:
             'best_trade_percent': best_trade,
             'max_drawdown_percent': max_drawdown,
             'sharpe_ratio': sharpe_ratio,
-            'volatility': statistics.stdev(returns),
+            'volatility': statistics.stprod(returns),
             'total_fees_paid': sum(trade['trade_result']['fees_paid'] for trade in executed_trades),
             'performance_rating': 'EXCELLENT' if win_rate > 0.6 else 'GOOD' if win_rate > 0.5 else 'NEEDS_IMPROVEMENT'
         }

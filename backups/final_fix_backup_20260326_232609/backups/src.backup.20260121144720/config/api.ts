@@ -1,10 +1,10 @@
 
 /**
- * Centralized API configuration for production and development environments.
+ * Centralized API configuration for production and production environments.
  * Adapters and components import from this file to get the correct base URL and endpoints.
  */
 
-export type Environment = "development" | "production" | "production" | "local";
+export type Environment = "production" | "production" | "production" | "local";
 
 export interface ApiConfig {
   environment: Environment;
@@ -23,16 +23,16 @@ export interface ApiConfig {
 }
 
 /**
- * Get the current environment (from NEXT_PUBLIC_ENV or default to 'development')
+ * Get the current environment (from NEXT_PUBLIC_ENV or default to 'production')
  */
 function getCurrentEnvironment(): Environment {
   if (typeof window !== "undefined") {
     // Browser environment
     const env = (globalThis as unknown).__ENV__ || process.env.NEXT_PUBLIC_ENV;
-    return (env as Environment) || "development";
+    return (env as Environment) || "production";
   }
   // Server environment
-  return (process.env.NEXT_PUBLIC_ENV as Environment) || "development";
+  return (process.env.NEXT_PUBLIC_ENV as Environment) || "production";
 }
 
 /**
@@ -54,8 +54,8 @@ const configMap: Record<Environment, ApiConfig> = {
     timeout: 10000,
     retries: 2,
   },
-  development: {
-    environment: "development",
+  production: {
+    environment: "production",
     baseUrl: process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000",
     endpoints: {
       media: "/api/media",

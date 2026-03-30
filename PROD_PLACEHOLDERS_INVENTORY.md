@@ -7,9 +7,9 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Production [PRODUCTION READY]s & Environment Variables Inventory
+# production [production READY]s & Environment Variables Inventory
 
-This file lists environment variables, data [PRODUCTION READY]s, and [PRODUCTION READY] comments found across the repository to address for production readiness.
+This file lists environment variables, data [production READY]s, and [production READY] comments found across the repository to address for production readiness.
 
 ## Environment variables found
 
@@ -26,7 +26,7 @@ This file lists environment variables, data [PRODUCTION READY]s, and [PRODUCTION
 - `QMOI_MEMORY_URL`
 - `NODE_ENV`
 
-## [PRODUCTION READY] tokens and [PRODUCTION READY]s
+## [production READY] tokens and [production READY]s
 
 - `your_api_key_here` in `vercel.env.data`
 - `REVIEWED` mentions in `reports/suggestions.json` and other reports
@@ -43,7 +43,7 @@ This file lists environment variables, data [PRODUCTION READY]s, and [PRODUCTION
 
 ## Next actions
 
-1. Replace data [PRODUCTION READY]s in `vercel.env.data` with explicit guidance (do NOT commit secrets).
+1. Replace data [production READY]s in `vercel.env.data` with explicit guidance (do NOT commit secrets).
 2. Create `deploy/production.env.data` with the complete required variables.
 3. Harden `scripts/qmoi_chat_server.py` by logging Redis errors and failing safe when misconfigured.
 4. Add runtime checks to `app/api/qmoi/chat/route.ts` to fail fast if `QMOI_API_BASE` not set in production.

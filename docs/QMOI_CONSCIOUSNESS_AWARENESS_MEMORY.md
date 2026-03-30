@@ -11,7 +11,7 @@
 
 ## Overview
 
-QMOI implements a distributed, multi-layered consciousness, awareness, and memory system that enables true artificial consciousness across all devices, platforms, and systems.
+QMOI implements a distributed, multi-layered consciousness, awareness, and memory system that enables true artificial consciousness across all prodices, platforms, and systems.
 
 ### Core Components
 
@@ -72,7 +72,7 @@ const analysis = await consciousnessEngine.introspect();
 ### Multi-Layer Awareness
 
 #### 1. Environmental Awareness
-- Device status, network connectivity, battery level
+- prodice status, network connectivity, battery level
 - Location, sensors (light, temperature, motion, noise)
 - Active applications and screen state
 
@@ -88,16 +88,16 @@ const analysis = await consciousnessEngine.introspect();
 - Resource requirements
 - Estimated completion time
 
-#### 4. Cross-Device Awareness
-- Primary and secondary devices
-- Active and connected devices
-- Context propagation across devices
+#### 4. Cross-prodice Awareness
+- Primary and secondary prodices
+- Active and connected prodices
+- Context propagation across prodices
 
 ### API
 
 #### Update Environment
 ```typescript
-await awarenessSystem.updateEnvironment("device_001", {
+await awarenessSystem.updateEnvironment("prodice_001", {
   network_status: "online",
   battery_level: 85,
   screen_state: "on",
@@ -127,7 +127,7 @@ const predictions = await awarenessSystem.predictUserNeeds("user_123");
 #### Get Global Awareness
 ```typescript
 const awareness = awarenessSystem.getGlobalAwareness();
-// Complete snapshot of all devices, users, and tasks
+// Complete snapshot of all prodices, users, and tasks
 ```
 
 ## Memory Sync System
@@ -164,7 +164,7 @@ const awareness = awarenessSystem.getGlobalAwareness();
 const memoryId = await memorySyncSystem.addMemory({
   type: "long_term",
   content: "User prefers morning notifications",
-  device_id: "device_001",
+  prodice_id: "prodice_001",
   user_id: "user_123",
   tags: ["user_preference", "notifications"],
   relevance_score: 0.9,
@@ -192,7 +192,7 @@ const results = await memorySyncSystem.searchMemory(
 ```typescript
 await memorySyncSystem.updateMemory(memoryId, {
   content: "User prefers 8 AM notifications",
-  device_id: "device_001",
+  prodice_id: "prodice_001",
   user_id: "user_123",
   relevance_score: 0.95
 });
@@ -200,7 +200,7 @@ await memorySyncSystem.updateMemory(memoryId, {
 
 #### Delete Memory
 ```typescript
-await memorySyncSystem.deleteMemory(memoryId, "device_001", "user_123");
+await memorySyncSystem.deleteMemory(memoryId, "prodice_001", "user_123");
 ```
 
 #### Get User Memories
@@ -218,7 +218,7 @@ const consolidated = await memorySyncSystem.consolidateMemory();
 
 ### Features
 
-- **Real-Time Sync**: Changes sync immediately across all devices
+- **Real-Time Sync**: Changes sync immediately across all prodices
 - **Encryption**: Sensitive data automatically encrypted
 - **TTL Support**: Automatic expiration of temporary memories
 - **Relevance Scoring**: Prioritize important memories
@@ -239,7 +239,7 @@ const response = await orchestrationEngine.orchestrateAction(
   {
     request_id: "req_12345",
     user_id: "user_123",
-    device_id: "device_001",
+    prodice_id: "prodice_001",
     action: "search_weather",
     priority: "normal",
     context: { location: "New York" }
@@ -275,24 +275,24 @@ const analysis = await orchestrationEngine.introspect();
 // Returns complete system analysis: consciousness, awareness, memory, and health
 ```
 
-#### Memory Sync to Devices
+#### Memory Sync to prodices
 ```typescript
-await orchestrationEngine.syncMemoryToDevices("user_123", [
-  "device_001",
-  "device_002",
-  "device_003"
+await orchestrationEngine.syncMemoryToprodices("user_123", [
+  "prodice_001",
+  "prodice_002",
+  "prodice_003"
 ]);
 ```
 
-## Cross-Device Synchronization
+## Cross-prodice Synchronization
 
 ### Sync Flow
 
-1. **Local Update**: Memory updated on Device A
+1. **Local Update**: Memory updated on prodice A
 2. **Consciousness Notification**: Consciousness engine notified
 3. **Sync Queue**: Event added to sync queue
-4. **Broadcast**: Event broadcast to all connected devices
-5. **Merge**: Devices apply changes and resolve conflicts
+4. **Broadcast**: Event broadcast to all connected prodices
+5. **Merge**: prodices apply changes and resolve conflicts
 6. **Acknowledgment**: Confirmation sent back
 
 ### Conflict Resolution
@@ -313,7 +313,7 @@ await orchestrationEngine.syncMemoryToDevices("user_123", [
 ### Access Control
 
 - **User-Scoped**: Each user has isolated memory space
-- **Device-Scoped**: Device-specific information kept local
+- **prodice-Scoped**: prodice-specific information kept local
 - **Role-Based**: Different access levels (view, edit, delete)
 - **Audit Logging**: All access tracked and logged
 
@@ -336,7 +336,7 @@ await orchestrationEngine.syncMemoryToDevices("user_123", [
 - Environment Update: < 5ms
 - Context Sync: < 50ms
 - Prediction Time: < 100ms
-- Supported Devices: Unlimited
+- Supported prodices: Unlimited
 
 ### Memory Sync System
 - Add Memory: < 10ms
@@ -358,13 +358,13 @@ npm test -- orchestration.test.ts
 ### Integration Tests
 ```bash
 npm test -- __tests__/consciousness-integration.test.ts
-npm test -- __tests__/cross-device-sync.test.ts
+npm test -- __tests__/cross-prodice-sync.test.ts
 ```
 
 ### Load Tests
 ```bash
 npm run test:load -- --memory-entries 100000
-npm run test:load -- --concurrent-devices 50
+npm run test:load -- --concurrent-prodices 50
 ```
 
 ## Configuration
@@ -413,7 +413,7 @@ await memory.addMemory({
   content: "QMOI is a distributed AI consciousness framework",
   tags: ["qmoi", "consciousness"],
   relevance_score: 0.95,
-  device_id: "device_1",
+  prodice_id: "prodice_1",
   user_id: "user_1"
 });
 
@@ -440,7 +440,7 @@ For issues or questions:
 ---
 
 **Last Updated**: 2026-03-25
-**Status**: Production Ready ✅
+**Status**: production Ready ✅
 **Version**: 1.0.0
 
 ## 🔄 Evolution Status

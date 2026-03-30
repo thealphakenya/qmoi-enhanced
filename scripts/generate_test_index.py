@@ -8,7 +8,7 @@
 scripts/generate_test_index.py
 
 Small utility to generate a quick index of tests found in the repository.
-This is intentionally conservative and designed to be run locally in dev.
+This is intentionally conservative and designed to be run locally in prod.
 
 Usage:
   python scripts/generate_test_index.py --out docs/test_index.json

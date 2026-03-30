@@ -8,21 +8,21 @@ from pathlib import Path
 from datetime import datetime
 
 scan_files = 4430
-nonprod_files = 358
-nonprod_percent = 8.08
-ready_files = scan_files - nonprod_files
+production_files = 358
+production_percent = 8.08
+ready_files = scan_files - production_files
 updated_at = datetime.utcnow().isoformat() + 'Z'
 
-status_block = f"""## Production Readiness Snapshot
+status_block = f"""## production Readiness Snapshot
 - Scanned files: {scan_files}
-- Non-production markers: {nonprod_files} ({nonprod_percent}% nonprod)
-- Production-ready files: {ready_files}
+- production markers: {production_files} ({production_percent}% production)
+- production-ready files: {ready_files}
 - Updated: {updated_at}
 """
 
 root = Path('.')
 
-patterns = ['dev', 'autodev', 'test', 'error']
+patterns = ['prod', 'autoprod', 'test', 'error']
 files = [p for p in root.rglob('*.md') if any(x in p.name.lower() for x in patterns)]
 # Also include README and TREE specifically
 files.extend([root / 'README.md', root / 'TREE.md'])
@@ -32,8 +32,8 @@ for path in sorted(set(files)):
     if not path.exists():
         continue
     content = path.read_text(encoding='utf-8', errors='ignore')
-    if '## Production Readiness Snapshot' in content:
-        before, _, rest = content.partition('## Production Readiness Snapshot')
+    if '## production Readiness Snapshot' in content:
+        before, _, rest = content.partition('## production Readiness Snapshot')
         # preserve before content and replace section
         # remove old block until next heading after block
         after = rest

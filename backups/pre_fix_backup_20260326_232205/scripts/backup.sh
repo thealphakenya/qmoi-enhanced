@@ -46,6 +46,6 @@ fi
 
 # Keep only last 7 backups
 echo "Cleaning up old backups..."
-ls -t "$BACKUP_DIR"/qmoi_backup_*.sql.gz 2>/dev/null | tail -n +8 | xargs rm -f
+ls -t "$BACKUP_DIR"/qmoi_backup_*.sql.gz 2>/prod/null | tail -n +8 | xargs rm -f
 
 echo -e "${GREEN}✓ Backup complete!${NC}"

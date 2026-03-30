@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -23,14 +23,14 @@
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI All Devices Settings & Features Reference
+# QMOI All prodices Settings & Features Reference
 
-This file documents the features, settings, and UI capabilities for each QMOI app/device type. It ensures every app is fully set up for its target device, with device-specific enhancements and access to all UI/app features.
+This file documents the features, settings, and UI capabilities for each QMOI app/prodice type. It ensures every app is fully set up for its target prodice, with prodice-specific enhancements and access to all UI/app features.
 
 ## Android
 
 - App: `Qmoi_apps/android/qmoi ai.apk`
-- Features: Touch UI, notifications, background tasks, device sensors, file access, Google Play integration, offline install, USB transfer.
+- Features: Touch UI, notifications, background tasks, prodice sensors, file access, Google Play integration, offline install, USB transfer.
 
 ## Windows
 
@@ -50,7 +50,7 @@ This file documents the features, settings, and UI capabilities for each QMOI ap
 ## iOS
 
 - App: `Qmoi_apps/ios/qmoi ai.ipa`
-- Features: Touch UI, notifications, device sensors, offline install, USB transfer, App Store integration.
+- Features: Touch UI, notifications, prodice sensors, offline install, USB transfer, App Store integration.
 
 ## Smart TV
 
@@ -70,9 +70,9 @@ This file documents the features, settings, and UI capabilities for each QMOI ap
 ## Universal Features
 
 - All apps support offline install and USB transfer.
-- All device-specific features are enabled and tested for each platform.
-- UI and app features are accessible and optimized for each device type.
-- Device settings and enhancements are documented and auto-updated after every release.
+- All prodice-specific features are enabled and tested for each platform.
+- UI and app features are accessible and optimized for each prodice type.
+- prodice settings and enhancements are documented and auto-updated after every release.
 
 ---
 
@@ -81,14 +81,14 @@ _Last updated: 2025-07-22_
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "qmoi-enhanced/ALLDEVICESSETTINGS.md",
+"file": "qmoi-enhanced/ALLprodICESSETTINGS.md",
 "validated_at": "2025-10-26T20:51:24.588301Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
 {
 "name": "title_present",
 "ok": true,
-"detail": "QMOI All Devices Settings & Features Reference"
+"detail": "QMOI All prodices Settings & Features Reference"
 },
 {
 "name": "links",

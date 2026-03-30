@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env bash
 # qmoi_validate_apk.sh
 # Validate APK by checking signature with apksigner and comprehensive sanity checks
@@ -19,7 +19,7 @@ APKSIGNER=${APKSIGNER:-$(command -v apksigner || true)}
 if [ -z "$APKSIGNER" ]; then
   # Try Android SDK build-tools default location
   if [ -d "$HOME/android_sdk/build-tools" ]; then
-    APKSIGNER=$(ls -1 $HOME/android_sdk/build-tools/*/apksigner 2>/dev/null | head -n1 || true)
+    APKSIGNER=$(ls -1 $HOME/android_sdk/build-tools/*/apksigner 2>/prod/null | head -n1 || true)
   fi
 fi
 if [ -z "$APKSIGNER" ]; then

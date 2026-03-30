@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # Phase 7: Load Testing & Caching - Implementation Summary
 
 ## Overview
@@ -170,7 +170,7 @@ export const GET = cacheRoute(handler, {
 **Contents**:
 
 - Redis setup and installation (1,200+ lines total)
-- Configuration for development and production
+- Configuration for production and production
 - Complete API reference with examples
 - Middleware usage patterns
 - Query optimization strategies
@@ -244,13 +244,13 @@ export const GET = cacheRoute(handler, {
 - Concurrent gets (10 parallel)
 - Mixed operations stress test
 
-**Middleware Testing** ([PRODUCTION READY]s for integration):
+**Middleware Testing** ([production READY]s for integration):
 
 - GET response caching
 - POST/PUT/DELETE non-caching
 - Cache control header validation
 
-**Query Optimization Testing** ([PRODUCTION READY]s):
+**Query Optimization Testing** ([production READY]s):
 
 - Selective field loading
 - N+1 query prevention
@@ -390,7 +390,7 @@ export REDIS_URL=redis://localhost:6379
 export REDIS_URL=redis://:password@hostname:6379
 
 # Start application (caching automatically enabled)
-npm run dev
+npm run prod
 ```
 
 ### Run Cache Tests
@@ -449,7 +449,7 @@ Phase 7 successfully implements enterprise-grade performance optimization throug
 - Query optimization patterns
 - Advanced middleware architecture
 - Complete test coverage
-- Production-ready monitoring
+- production-ready monitoring
 
 The system is now prepared to handle 5-10x more concurrent users while maintaining sub-100ms response times for cached endpoints.
 

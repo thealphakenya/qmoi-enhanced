@@ -1,24 +1,24 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/bin/bash
-# Automated GitHub Secrets Setup for QMOI Production Builds
+# Automated GitHub Secrets Setup for QMOI production Builds
 # This script uses GitHub CLI to add all production signing secrets
 
 set -euo pipefail
 
 echo "=========================================="
-echo "QMOI Production Secrets Setup - GitHub CLI"
+echo "QMOI production Secrets Setup - GitHub CLI"
 echo "=========================================="
 echo
 
 # Check if GitHub CLI is installed
-if ! command -v gh &> /dev/null; then
+if ! command -v gh &> /prod/null; then
     echo "❌ GitHub CLI (gh) is not installed."
     echo "Install it from: https://cli.github.com"
     exit 1
 fi
 
 # Check if user is authenticated
-if ! gh auth status &> /dev/null; then
+if ! gh auth status &> /prod/null; then
     echo "❌ Not authenticated with GitHub CLI."
     echo "Run: gh auth login"
     exit 1

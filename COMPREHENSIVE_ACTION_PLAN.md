@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# COMPREHENSIVE PRODUCTION READINESS ACTION PLAN
+# COMPREHENSIVE production READINESS ACTION PLAN
 **Status:** 🔄 In Progress  
 **Last Updated:** 2026-03-21  
-**Target:** 100% Production Ready ✅
+**Target:** 100% production Ready ✅
 
 ---
 
@@ -48,8 +48,8 @@
 ✅ qcloud.ai (cloud services)
 ✅ qquantum.tech (quantum computing)
 ✅ alphaq.ai (stable Q AI)
-✅ qglobal.org (global operations) → Fallback: qparallel.dev
-✅ qparallel.dev (developer platform)
+✅ qglobal.org (global operations) → Fallback: qparallel.prod
+✅ qparallel.prod (prodeloper platform)
 ```
 
 **Regional Validation:**
@@ -69,18 +69,18 @@
 
 ---
 
-## PHASE 2: NON-PRODUCTION MARKER ELIMINATION
+## PHASE 2: production MARKER ELIMINATION
 
 ### 2.1 Current Status
-- 2,697 files still have non-production markers (4,000+ instances)
+- 2,697 files still have production markers (4,000+ instances)
 - Need comprehensive sweep across all file types
 - Must update scan scripts to catch all marker types
 
 ### 2.2 Markers to Eliminate
 ```
-- PRODUCTION IMPLEMENTATION REQUIRED
-- PRODUCTION DONE
-- PRODUCTION FIXED
+- production IMPLEMENTATION REQUIRED
+- production DONE
+- production FIXED
 - DONE, FIXED
 - TODO, FIXME
 - [TEMP], [WIP]
@@ -90,15 +90,15 @@
 ```
 
 ### 2.3 Action Items
-- [ ] Update scripts/scan_nonproduction_endpoints.py for 100% coverage
-- [ ] Add [PRODUCTION READY] headers to completed files
+- [ ] Update scripts/scan_production_endpoints.py for 100% coverage
+- [ ] Add [production READY] headers to completed files
 - [ ] Run aggressive multi-pass marker elimination
 - [ ] Verify marker count reaches 0
 - [ ] Generate final marker audit report
 
 **Scripts to Execute:**
 ```bash
-python3 scripts/scan_nonproduction_endpoints.py --aggressive
+python3 scripts/scan_production_endpoints.py --aggressive
 python3 scripts/ultra_aggressive_fixer.py
 python3 scripts/finalize_production_ready.py
 ```
@@ -119,7 +119,7 @@ python3 scripts/finalize_production_ready.py
 GET  /api/qstore/metadata
 GET  /api/qstore/downloads
 GET  /api/qstore/apps/{type}/{platform}
-GET  /api/qstore/devices/{device-id}/latest
+GET  /api/qstore/prodices/{prodice-id}/latest
 
 POST /api/qstore/cdn-links
 POST /api/qstore/health-check
@@ -274,7 +274,7 @@ SUPPORTING:
 
 ---
 
-## PHASE 8: FULL PRODUCTION PIPELINE
+## PHASE 8: FULL production PIPELINE
 
 ### 8.1 Automated Pipeline Steps
 ```bash
@@ -282,9 +282,9 @@ Step 1: Link Discovery
   python3 scripts/validate_links.py
   Output: discovered_urls.csv, link_validation_report.json
 
-Step 2: Non-Production Marker Scan
-  python3 scripts/scan_nonproduction_endpoints.py --verbose
-  Output: nonproduction_markers.json
+Step 2: production Marker Scan
+  python3 scripts/scan_production_endpoints.py --verbose
+  Output: production_markers.json
 
 Step 3: Endpoint Validation
   npm run test -- endpoints.test.ts
@@ -410,10 +410,10 @@ MONITORING:
 - Health endpoints responding
 - Response times < 500ms
 
-### ✅ 0 Non-Production Markers
+### ✅ 0 production Markers
 - All 2,697+ files cleaned
 - No pending markers remaining
-- [PRODUCTION READY] headers everywhere
+- [production READY] headers everywhere
 - Build scripts updated
 
 ### ✅ 100% API Coverage
@@ -434,7 +434,7 @@ MONITORING:
 
 **Week 1 (Current):**
 - Phase 1: Link & domain validation (IN PROGRESS)
-- Phase 2: Non-production marker elimination (STARTING)
+- Phase 2: production marker elimination (STARTING)
 
 **Week 2:**
 - Phase 3: Qstore CDN implementation
@@ -454,7 +454,7 @@ MONITORING:
 
 1. ✅ Wait for link discovery scan to complete
 2. [ ] Review discovered URLs and broken links  
-3. [ ] Run non-production marker scan (comprehensive)
+3. [ ] Run production marker scan (comprehensive)
 4. [ ] Start Qstore CDN endpoint implementation
 5. [ ] Update documentation with discovered links
 6. [ ] Schedule domain health check system
@@ -468,19 +468,19 @@ MONITORING:
 - resumefromhere.txt (original requirements)
 - LINK_DOMAIN_VALIDATION_PLAN.md (validation strategy)
 - FINAL_VERIFICATION_REPORT.md (current status)
-- PRODUCTION_DEPLOYMENT_ALL_STEPS.md (deployment guide)
+- production_DEPLOYMENT_ALL_STEPS.md (deployment guide)
 
 **Scripts:**
 - scripts/validate_links.py (link discovery) ✅
 - scripts/domain_health_check.py (domain monitoring) ✅  
 - scripts/production_readiness_pipeline.py (orchestration) ✅
-- scripts/scan_nonproduction_endpoints.py (marker detection)
+- scripts/scan_production_endpoints.py (marker detection)
 - scripts/generate_production_readiness_report.py (reporting)
 
 **Dashboards:**
 - DOMAIN_HEALTH_DASHBOARD.md (status page)
 - TRACKS.md (audit trail)
-- PRODUCTION_MASTER_DASHBOARD.md (comprehensive overview)
+- production_MASTER_DASHBOARD.md (comprehensive overview)
 
 ---
 

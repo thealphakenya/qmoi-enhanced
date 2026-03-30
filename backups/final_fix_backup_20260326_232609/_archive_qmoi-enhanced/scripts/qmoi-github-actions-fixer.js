@@ -174,7 +174,7 @@ class QMOIGitHubActionsFixer {
       if (!workflow.env) {
         workflow.env = {
           NODE_VERSION: "18",
-          QMOI_AUTODEV_ENABLED: "true",
+          QMOI_AUTOprod_ENABLED: "true",
         };
         fixes.push("Added environment variables");
       }
@@ -378,7 +378,7 @@ class QMOIGitHubActionsFixer {
       },
       env: {
         NODE_VERSION: "18",
-        QMOI_AUTODEV_ENABLED: "true",
+        QMOI_AUTOprod_ENABLED: "true",
       },
       jobs: {
         build: {
@@ -538,7 +538,7 @@ Features:
 
 Examples:
   node qmoi-github-actions-fixer.js --fix-all
-  node qmoi-github-actions-fixer.js --validate .github/workflows/qmoi-autodev.yml
+  node qmoi-github-actions-fixer.js --validate .github/workflows/qmoi-autoprod.yml
   node qmoi-github-actions-fixer.js --create-standard "QMOI Build"
 `);
     }

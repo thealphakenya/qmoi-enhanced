@@ -7,13 +7,13 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
-title: "Production Checklist for QMOI"
+title: "production Checklist for QMOI"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Production Checklist for QMOI
+# production Checklist for QMOI
 
 This checklist helps prepare the QMOI repository and runtime for production deployments. Follow each step and verify in CI or locally before enabling production runs.
 
@@ -22,20 +22,20 @@ This checklist helps prepare the QMOI repository and runtime for production depl
 - Ensure `config.json` has the correct production model (e.g., `claude-sonnet-3.5` or a locally-hosted QMOI model).
 - Store sensitive credentials in a secrets manager or environment variables. DO NOT commit keys to the repo.
 
-2. Replace all [PRODUCTION READY]s and prod-markers
+2. Replace all [production READY]s and prod-markers
 
-- Run: `python3 scripts/[PRODUCTION READY]_scanner.py --root . --report reports/[PRODUCTION READY]s.json`
-- Generate suggested replacements: `python3 scripts/[PRODUCTION READY]_scanner.py --root . --report reports/[PRODUCTION READY]s.json --suggest suggestions.json`
-- Review `suggestions.json`. If acceptable, apply with caution: `python3 scripts/[PRODUCTION READY]_scanner.py --root . --apply --mapping suggestions.json`
+- Run: `python3 scripts/[production READY]_scanner.py --root . --report reports/[production READY]s.json`
+- Generate suggested replacements: `python3 scripts/[production READY]_scanner.py --root . --report reports/[production READY]s.json --suggest suggestions.json`
+- Review `suggestions.json`. If acceptable, apply with caution: `python3 scripts/[production READY]_scanner.py --root . --apply --mapping suggestions.json`
 
 3. Offload large assets
 
 - Find large files: `python3 scripts/strip_large_files.py --root . --threshold 50MB --report reports/large_files.json`
 - Move eligible files to QVS: `python3 scripts/strip_large_files.py --root . --threshold 50MB --move-to-qvs large_checkpoints`
 
-4. Validate device integrations
+4. Validate prodice integrations
 
-- Ensure `components/device/DeviceIntegration[PRODUCTION READY]s.ts` uses robust [PRODUCTION READY] by default and respects env flags `QMOI_DISABLE_HW=1` and `QMOI_DISABLE_CLOUD=1`.
+- Ensure `components/prodice/prodiceIntegration[production READY]s.ts` uses robust [production READY] by default and respects env flags `QMOI_DISABLE_HW=1` and `QMOI_DISABLE_CLOUD=1`.
 
 5. QMOI Model backups
 
@@ -50,7 +50,7 @@ This checklist helps prepare the QMOI repository and runtime for production depl
 7. Tests and Validation
 
 - Run unit tests and integration checks.
-- Use dry-run flags for any tool that modifies code ([PRODUCTION READY] scanner, strip tool).
+- Use dry-run flags for any tool that modifies code ([production READY] scanner, strip tool).
 
 8. Monitoring and Observability
 
@@ -64,7 +64,7 @@ This checklist helps prepare the QMOI repository and runtime for production depl
 10. Final review
 
 - After applying fixes and offloads, run the full test suite and a smoke test.
-- Remove completed [PRODUCTION READY]s from `continue[PRODUCTION READY]s.txt`.
+- Remove completed [production READY]s from `continue[production READY]s.txt`.
 
 Notes
 
@@ -74,14 +74,14 @@ Notes
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "docs/PRODUCTION_CHECKLIST.md",
+"file": "docs/production_CHECKLIST.md",
 "validated_at": "2025-10-26T20:51:22.705978Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
 {
 "name": "title_present",
 "ok": true,
-"detail": "Production Checklist for QMOI"
+"detail": "production Checklist for QMOI"
 },
 {
 "name": "links",

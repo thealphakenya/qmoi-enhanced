@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 import {
   userService,
   walletService,
@@ -49,7 +49,7 @@ describe("Admin Endpoints", () => {
 
   afterAll(async () => {
     // Cleanup is handled by in-memory storage reset between tests
-    // Production: with real DB, would use: await db.prisma.user.deleteMany();
+    // production: with real DB, would use: await db.prisma.user.deleteMany();
   });
 
   describe("Dashboard Endpoint", () => {
@@ -68,7 +68,7 @@ describe("Admin Endpoints", () => {
     });
 
     it("should return dashboard statistics", async () => {
-      // Create [PRODUCTION READY]
+      // Create [production READY]
       const hashedPassword = await authService.hashPassword("Test@123456");
       const wallet = await walletService.create({
         userId: regularUserId,

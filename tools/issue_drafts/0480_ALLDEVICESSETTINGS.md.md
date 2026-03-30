@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -23,13 +23,13 @@
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI All Devices Settings & Features Reference
+# QMOI All prodices Settings & Features Reference
 
-This file documents the features, settings, and UI capabilities for each QMOI app/device type. It ensures every app is fully set up for its target device, with device-specific enhancements and access to all UI/app features.
+This file documents the features, settings, and UI capabilities for each QMOI app/prodice type. It ensures every app is fully set up for its target prodice, with prodice-specific enhancements and access to all UI/app features.
 
 ## Android
 - App: `Qmoi_apps/android/qmoi ai.apk`
-- Features: Touch UI, notifications, background tasks, device sensors, file access, Google Play integration, offline install, USB transfer.
+- Features: Touch UI, notifications, background tasks, prodice sensors, file access, Google Play integration, offline install, USB transfer.
 
 ## Windows
 - App: `Qmoi_apps/windows/qmoi ai.exe`
@@ -45,7 +45,7 @@ This file documents the features, settings, and UI capabilities for each QMOI ap
 
 ## iOS
 - App: `Qmoi_apps/ios/qmoi ai.ipa`
-- Features: Touch UI, notifications, device sensors, offline install, USB transfer, App Store integration.
+- Features: Touch UI, notifications, prodice sensors, offline install, USB transfer, App Store integration.
 
 ## Smart TV
 - App: `Qmoi_apps/smarttv/qmoi ai.apk`

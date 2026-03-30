@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # 🔧 QMOI AutoFix - Quick Reference Card
 
 ## 🎯 Dashboard Access
@@ -86,10 +86,10 @@ All require: `Authorization: Bearer {ADMIN_TOKEN}`
 
 ## 💻 Command Line Usage
 
-### Start Dev Server
+### Start prod Server
 
 ```bash
-npm run dev
+npm run prod
 ```
 
 ### Run Health Check
@@ -180,7 +180,7 @@ Click filter buttons in dashboard:
 - Check ADMIN_TOKEN in .env.local
 - Verify token format
 - Clear browser cache
-- Restart dev server
+- Restart prod server
 
 ### Errors Not Scanning
 
@@ -284,7 +284,7 @@ Click filter buttons in dashboard:
 ---
 
 **Version**: 2.0.0  
-**Status**: Production Ready ✓  
+**Status**: production Ready ✓  
 **Master Access**: Required
 
 ## 🔄 Evolution Status

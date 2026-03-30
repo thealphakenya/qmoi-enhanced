@@ -273,14 +273,14 @@ class DomainRegistry:
                 status="active"
             ),
             
-            "qparallel.dev": DomainEntry(
-                domain="qparallel.dev",
+            "qparallel.prod": DomainEntry(
+                domain="qparallel.prod",
                 type="fallback",
                 tld_variants=[],
                 fallback_chain=[],
                 regional_endpoints={
-                    "us-east": "us-east.qparallel.dev",
-                    "eu-west": "eu.qparallel.dev"
+                    "us-east": "us-east.qparallel.prod",
+                    "eu-west": "eu.qparallel.prod"
                 },
                 api_endpoints=["/api/v1"],
                 health_check_endpoints=["/health"],

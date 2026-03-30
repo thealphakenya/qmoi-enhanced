@@ -7,7 +7,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { autoFixService } from "../../../scripts/services/auto_fix_service";
 import { QCityService } from "../../../scripts/services/qcity_service";
 import { logger } from "../../../scripts/utils/logger";
-import { QmoiAutodevDaemon } from "../../../scripts/services/qmoi_autodev_daemon";
+import { QmoiAutoprodDaemon } from "../../../scripts/services/qmoi_autoprod_daemon";
 import { unifiedCICDService } from "../../../scripts/services/unified_ci_cd_service";
 import { aiService } from "../../../lib/ai-service";
 import fsPromises from "fs/promises";
@@ -17,7 +17,7 @@ const qcityService = new QCityService();
 
 // --- Audit log helper ---
 function auditLog(action: string, params: unknown, result: unknown) {
-  logger.info(`[QMOI-AUTODEV][AUDIT] Action: ${action}`, { params, result });
+  logger.info(`[QMOI-AUTOprod][AUDIT] Action: ${action}`, { params, result });
 }
 
 async function rollbackToCommit(commitHash: string) {
@@ -96,9 +96,9 @@ async function applyBatchEdit(
 
 async function getProjectStatus() {
   const status = qcityService.getStatus();
-  const devices = await qcityService.getDeviceList();
+  const prodices = await qcityService.getprodiceList();
   const resources = await qcityService.getResourceStats();
-  return { success: true, status, devices, resources };
+  return { success: true, status, prodices, resources };
 }
 
 function withMessage(result: unknown, defaultMsg = "") {
@@ -132,7 +132,7 @@ export default async function handler(
       (body as Record<string, unknown>).platform ?? "vercel",
     );
     const params = { ...body } as Record<string, unknown>;
-    logger.info(`[QMOI-AUTODEV] Action: ${action}`, params);
+    logger.info(`[QMOI-AUTOprod] Action: ${action}`, params);
     if (!action) {
       return res
         .status(400)
@@ -314,15 +314,15 @@ export default async function handler(
         }
         break;
       }
-      case "optimize_device": {
+      case "optimize_prodice": {
         try {
-          const deviceId = String(params.deviceId ?? "default");
+          const prodiceId = String(params.prodiceId ?? "default");
           const cmd = String(params.command ?? "optimize --all");
-          const run = await qcityService.runRemoteCommand(cmd, deviceId);
+          const run = await qcityService.runRemoteCommand(cmd, prodiceId);
           result = {
             success: true,
-            message: "Device optimization executed.",
-            deviceId,
+            message: "prodice optimization executed.",
+            prodiceId,
             command: cmd,
             run,
           };
@@ -374,14 +374,14 @@ export default async function handler(
       }
       case "restructure": {
         try {
-          const hooks = await qcityService.getDeviceList();
+          const hooks = await qcityService.getprodiceList();
           result = {
             success: true,
             message: "System restructure executed.",
             logs: [
-              "Auto-restructure complete: verified platforms and device topology.",
+              "Auto-restructure complete: verified platforms and prodice topology.",
             ],
-            devices: hooks,
+            prodices: hooks,
           };
         } catch (e: unknown) {
           result = {
@@ -490,20 +490,20 @@ export default async function handler(
         break;
       }
       case "continuous_autofix_start": {
-        QmoiAutodevDaemon.start();
+        QmoiAutoprodDaemon.start();
         result = {
           success: true,
           message: "Continuous auto-fix daemon started.",
-          status: QmoiAutodevDaemon.status(),
+          status: QmoiAutoprodDaemon.status(),
         };
         break;
       }
       case "continuous_autofix_stop": {
-        QmoiAutodevDaemon.stop();
+        QmoiAutoprodDaemon.stop();
         result = {
           success: true,
           message: "Continuous auto-fix daemon stopped.",
-          status: QmoiAutodevDaemon.status(),
+          status: QmoiAutoprodDaemon.status(),
         };
         break;
       }
@@ -511,15 +511,15 @@ export default async function handler(
         result = {
           success: true,
           message: "Continuous auto-fix daemon status.",
-          status: QmoiAutodevDaemon.status(),
+          status: QmoiAutoprodDaemon.status(),
         };
         break;
       }
       case "full_status": {
-        const daemonStatus = QmoiAutodevDaemon.status();
+        const daemonStatus = QmoiAutoprodDaemon.status();
         result = {
           success: true,
-          message: "Full QMOI Auto-Dev status",
+          message: "Full QMOI Auto-prod status",
           daemon: daemonStatus,
           lastRun: daemonStatus.lastRun,
           lastResult: daemonStatus.lastResult,
@@ -550,7 +550,7 @@ export default async function handler(
         }
         break;
       }
-      case "ui_development": {
+      case "ui_production": {
         const uiSpec = params.spec || params.description;
         if (!uiSpec) {
           result = {
@@ -559,35 +559,35 @@ export default async function handler(
             logs: [],
           };
         } else {
-          // Execute UI development through AI service
+          // Execute UI production through AI service
           const aiResponse = await aiService.generateResponse(
             `create ui ${uiSpec}`,
           );
           result = {
             success: true,
-            message: "UI development initiated",
+            message: "UI production initiated",
             spec: uiSpec,
             response: aiResponse,
-            logs: [`UI development task: ${uiSpec}`],
+            logs: [`UI production task: ${uiSpec}`],
           };
         }
         break;
       }
-      case "autodev_task": {
+      case "autoprod_task": {
         const task = params.task || params.description;
         if (!task) {
           result = { success: false, message: "No task provided", logs: [] };
         } else {
-          // Execute autodev task through AI service
+          // Execute autoprod task through AI service
           const aiResponse = await aiService.generateResponse(
-            `autodev ${task}`,
+            `autoprod ${task}`,
           );
           result = {
             success: true,
-            message: "Autodev task initiated",
+            message: "Autoprod task initiated",
             task,
             response: aiResponse,
-            logs: [`Autodev task: ${task}`],
+            logs: [`Autoprod task: ${task}`],
           };
         }
         break;
@@ -664,7 +664,7 @@ export default async function handler(
       typeof error === "object" && error !== null && "message" in error
         ? String((error as { message?: string }).message)
         : String(error);
-    logger.error("[QMOI-AUTODEV] Error:", error);
+    logger.error("[QMOI-AUTOprod] Error:", error);
     auditLog("error", req.body, { error: errorMessage });
     return res.status(500).json({ success: false, error: errorMessage });
   }

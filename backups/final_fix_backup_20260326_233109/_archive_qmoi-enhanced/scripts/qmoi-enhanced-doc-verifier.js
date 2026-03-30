@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 #!/usr/bin/env node
 
 /**
@@ -88,7 +88,7 @@ function verifyDocs() {
   if (allPassed) {
     console.log('\nAll documentation files are complete and up-to-date.');
   } else {
-    console.log('\nSome files were auto-updated. Please review and complete any // Production implementation: sections.');
+    console.log('\nSome files were auto-updated. Please review and complete any // production implementation: sections.');
   }
 }
 

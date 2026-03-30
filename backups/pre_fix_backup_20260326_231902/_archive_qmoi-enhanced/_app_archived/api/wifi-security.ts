@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 import type { NextApiRequest, NextApiResponse } from "next";
 import { exec } from "child_process";
 import fs from "fs";
@@ -38,7 +38,7 @@ export default async function handler(
     switch (action) {
       case "security-test": {
         // Wi-Fi security test: scan for networks and show encryption
-        const output = await runCommand("iwlist scan 2>/dev/null");
+        const output = await runCommand("iwlist scan 2>/prod/null");
         // Parse SSIDs and encryption
         const networks = Array.from(
           output.matchAll(/ESSID:"([^"]+)"[\s\S]*?Encryption key:(on|off)/g),
@@ -99,7 +99,7 @@ export default async function handler(
       }
       case "signal-analysis": {
         // Wireless signal analysis: list signal strengths
-        const output = await runCommand("iwlist scan 2>/dev/null");
+        const output = await runCommand("iwlist scan 2>/prod/null");
         const signals = Array.from(
           output.matchAll(/ESSID:"([^"]+)"[\s\S]*?Signal level=([\-\d]+)/g),
         ).map((match) => ({
@@ -109,7 +109,7 @@ export default async function handler(
         return res.json({ result: "Signal analysis complete", signals });
       }
       case "iot-scan": {
-        // IoT scan: use nmap to find devices with open telnet/ftp (common IoT risks)
+        // IoT scan: use nmap to find prodices with open telnet/ftp (common IoT risks)
         const output = await runCommand("nmap -p 23,21 192.168.1.0/24");
         const risks = Array.from(
           output.matchAll(
@@ -122,10 +122,10 @@ export default async function handler(
         return res.json({ result: "IoT scan complete", risks });
       }
       case "ai-agents": {
-        [PRODUCTION READY] agent action
+        [production READY] agent action
         return res.json({
           result:
-            "AI agent [PRODUCTION READY]d action: would patch or isolate device if threat detected.",
+            "AI agent [production READY]d action: would patch or isolate prodice if threat detected.",
         });
       }
       default:

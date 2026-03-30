@@ -7,7 +7,7 @@
 
 /**
  * QMOI GitHub Integration System
- * Comprehensive GitHub integration with full developer permissions
+ * Comprehensive GitHub integration with full prodeloper permissions
  * Repository management, issues, PRs, workflows, and more
  */
 
@@ -454,7 +454,7 @@ class QMOIGitHubIntegration {
       },
       env: {
         NODE_VERSION: "18",
-        QMOI_AUTODEV_ENABLED: "true",
+        QMOI_AUTOprod_ENABLED: "true",
       },
       jobs: {
         build: {

@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/bin/bash
 #
 # GitHub Releases Publisher for QMOI Apps
@@ -25,7 +25,7 @@ echo "  final: $DRAFT_FLAG"
 echo ""
 
 # Check if gh CLI is installed
-if ! command -v gh &> /dev/null; then
+if ! command -v gh &> /prod/null; then
     echo "❌ GitHub CLI (gh) not found. Install from: https://cli.github.com"
     exit 1
 fi
@@ -101,7 +101,7 @@ sha256sum -c qmoi-ai.exe.sha256
 
 **Version:** v1.2.3  
 **Released:** 2025-11-12  
-**Status:** Production Ready
+**Status:** production Ready
 
 RELEASE_NOTES
 
@@ -134,7 +134,7 @@ find Qmoi_downloaded_apps -type f \( -name "*.exe" -o -name "*.dmg" -o -name "*.
         gh release upload "$VERSION" \
           --repo "$REPO" \
           "$asset" \
-          --clobber 2>/dev/null && {
+          --clobber 2>/prod/null && {
             echo "✅ Uploaded: $asset_name"
             UPLOAD_COUNT=$((UPLOAD_COUNT+1))
             break
@@ -159,7 +159,7 @@ if [ -d "pwa_apps" ]; then
                 gh release upload "$VERSION" \
                   --repo "$REPO" \
                   "${app_name}-pwa-${VERSION}.zip" \
-                  --clobber 2>/dev/null && {
+                  --clobber 2>/prod/null && {
                     echo "✅ Uploaded PWA: ${app_name}-pwa-${VERSION}.zip"
                     UPLOAD_COUNT=$((UPLOAD_COUNT+1))
                     break

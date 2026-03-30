@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QVillage Manual - Advanced Research & Knowledge Platform
 
 ## Introduction
@@ -178,7 +178,7 @@ const analysis = await qvillage.analyze({
 
 - **Paper Suggestions**: Based on reading history and research interests
 - **Collaboration Opportunities**: Match researchers with complementary expertise
-- **Learning Paths**: Curated content sequences for skill development
+- **Learning Paths**: Curated content sequences for skill production
 - **Research Gaps**: Identify areas needing further investigation
 
 ### Synchronization Features
@@ -423,7 +423,7 @@ client.add_knowledge({
 })
 ```
 
-## Future Developments
+## Future productions
 
 ### executed Features
 

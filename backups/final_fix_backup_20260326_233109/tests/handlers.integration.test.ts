@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { setupServer } from "msw/node";
-import { getHandlers } from "../src/// Production implementation:s/handlers";
+import { getHandlers } from "../src/// production implementation:s/handlers";
 
 describe("handlers integration", () => {
   let server: unknown;

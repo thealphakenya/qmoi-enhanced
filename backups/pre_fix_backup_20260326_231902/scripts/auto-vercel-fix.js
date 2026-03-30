@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env node
 
 /**
@@ -46,7 +46,7 @@ class VercelAutoFix {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=prodice-width, initial-scale=1.0">
     <title>QMOI stable AI</title>
 </head>
 <body>
@@ -70,7 +70,7 @@ class VercelAutoFix {
         version: "1.0.0",
         description: "QMOI stable AI - Comprehensive AI System",
         scripts: {
-          dev: "next dev",
+          prod: "next prod",
           build: "next build",
           start: "next start",
           export: "next export",

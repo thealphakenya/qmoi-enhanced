@@ -58,7 +58,7 @@ function logToDashboard(
   const sanitizedLog = removeControlChars(JSON.stringify(logEntry));
   (console as any).log(sanitizedLog);
 
-  // Production: Send generated media metadata to WebSocket dashboard
+  // production: Send generated media metadata to WebSocket dashboard
   // Requires: Socket.io or Next.js WebSocket integration
   return logEntry;
 }
@@ -245,7 +245,7 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
     }
 
-    // Production: Query task status from Prisma DB or cloud job service
+    // production: Query task status from Prisma DB or cloud job service
     // For cloud jobs: use Celery, Bull, or AWS SQS for async task tracking
     const cloudTask: CloudTask = {
       id: taskId,

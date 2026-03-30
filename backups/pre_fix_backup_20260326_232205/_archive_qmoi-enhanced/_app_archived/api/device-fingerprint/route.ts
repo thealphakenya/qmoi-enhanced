@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { fingerprint, user, deviceInfo, location } = body;
+    const { fingerprint, user, prodiceInfo, location } = body;
 
     const fingerprints = JSON.parse(
       fs.readFileSync(FINGERPRINTS_FILE, "utf-8"),
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
     fingerprints.push({
       fingerprint,
       user,
-      deviceInfo,
+      prodiceInfo,
       location,
       timestamp: new Date().toISOString(),
     });

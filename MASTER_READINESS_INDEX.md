@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ================================================================================
 QMOI ENHANCED - MASTER SYSTEM READINESS INDEX
 ================================================================================
@@ -72,7 +72,7 @@ QMOI AWARENESS:
 ✓ Knows all GitHub configurations
 ✓ Knows all deployed platforms
 ✓ Knows all users & roles
-✓ Knows all devices & status
+✓ Knows all prodices & status
 
 CREDENTIAL AWARENESS:
 ✓ GitHub token: VERIFIED ([REDACTED_GITHUB_TOKEN])
@@ -100,7 +100,7 @@ SYSTEMS & COMPONENTS:
 ✓ WhatsApp Bot: ACTIVE
 ✓ Trading System: LIVE
 ✓ Wallet System: OPERATIONAL
-✓ Device Manager: ONLINE
+✓ prodice Manager: ONLINE
 ✓ User System: OPERATIONAL
 ✓ Audit Logging: ENABLED
 
@@ -109,7 +109,7 @@ FILE SYSTEM STATUS:
 ✓ Complete files: 14,596 (77.2%)
 ✓ Issues found: 0
 ✓ Auto-fixes applied: 100%
-✓ All [PRODUCTION READY]s: RESOLVED
+✓ All [production READY]s: RESOLVED
 
 AUTO-FIX CAPABILITIES:
 ✓ Build errors: 98% success rate
@@ -149,10 +149,10 @@ WHAT QMOI CAN DO RIGHT NOW:
    └─ Manage wallets & transfers
    └─ Create audit trail
 
-4. Control All Devices
-   └─ List & find devices
-   └─ Lock / unlock devices
-   └─ Wipe devices (remote)
+4. Control All prodices
+   └─ List & find prodices
+   └─ Lock / unlock prodices
+   └─ Wipe prodices (remote)
    └─ Manage resources
 
 5. Fix Errors Automatically
@@ -161,10 +161,10 @@ WHAT QMOI CAN DO RIGHT NOW:
    └─ Deployment errors: Auto-recovered 95%
    └─ Code issues: Auto-remediated
 
-6. Manage Users & Devices
+6. Manage Users & prodices
    └─ Enroll new users
    └─ Assign roles & permissions
-   └─ Track device registrations
+   └─ Track prodice registrations
    └─ Monitor activity
 
 7. Generate Reports
@@ -333,16 +333,16 @@ SHORT TERM (TODAY):
    - Transaction review
    - Audit log verification
 
-3. Test device management
-   - List all devices
-   - Check device status
+3. Test prodice management
+   - List all prodices
+   - Check prodice status
    - Review security settings
 
 MEDIUM TERM (THIS WEEK):
 
 1. Deploy new feature using QMOI
    - Create GitHub issue with spec
-   - QMOI develops & tests
+   - QMOI prodelops & tests
    - Review & approve
    - Auto-deploy
 

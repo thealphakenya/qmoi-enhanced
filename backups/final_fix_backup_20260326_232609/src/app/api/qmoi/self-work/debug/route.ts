@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
-    // Production:, this would:
+    // production:, this would:
     // 1. Analyze error logs and stack traces
     // 2. Run static analysis tools
     // 3. Execute pattern matching for common bugs
@@ -145,7 +145,7 @@ export async function POST(request: NextRequest) {
       recommendations: [
         "Fix critical issues immediately",
         "Enable TypeScript strict mode if not already enabled",
-        "Add pre-commit hooks to catch these during development",
+        "Add pre-commit hooks to catch these during production",
         "Consider implementing ESLint rules for common patterns",
         "Run debug analysis regularly (e.g., daily)",
       ],

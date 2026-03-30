@@ -52,7 +52,7 @@
         "USEEMPLOYEESUSERS.md",
         "USEEMPLOYEESUSERS.md",
         "AUTO_RECOVERY_PROCEDURES.md",
-        "PRODUCTION_READINESS_EXECUTION_STATUS.md",
+        "production_READINESS_EXECUTION_STATUS.md",
         "IMPLEMENTATION_SUMMARY.md",
         "link_report.md",
         "link_report.md",
@@ -78,8 +78,8 @@
         "COMPLETION_REPORT_REAL_IMPLEMENTATIONS.md",
         "IMPLEMENTATION_ACTION_PLAN.md",
         "CASHONTRADINGREADME.md",
-        "PRODUCTION_DEPLOYMENT_PLAYBOOK.md",
-        "PRODUCTION_DEPLOYMENT_PLAYBOOK.md",
+        "production_DEPLOYMENT_PLAYBOOK.md",
+        "production_DEPLOYMENT_PLAYBOOK.md",
         "RELEASE_VERIFICATION_V1_2_3.md",
         "RELEASE_VERIFICATION_V1_2_3.md",
         "RELEASE_VERIFICATION_V1_2_3.md",
@@ -226,14 +226,14 @@
         "QMOI_PHASE_3_COMPLETION_SUMMARY.md",
         "QMOI_PHASE_3_COMPLETION_SUMMARY.md",
         "QMOI_PHASE_3_COMPLETION_SUMMARY.md",
-        "PRODUCTION_READINESS_REPORT.md",
+        "production_READINESS_REPORT.md",
         "QMOI_SYSTEMS_COMPLETE_INDEX.md",
         "FINAL_COMPLETION_REPORT.md",
         "DEPLOYMENT_READY_FINAL.md",
-        "PRODUCTION_DEPLOYMENT_README.md",
-        "PRODUCTION_DEPLOYMENT_README.md",
-        "PRODUCTION_DEPLOYMENT_README.md",
-        "PRODUCTION_DEPLOYMENT_README.md",
+        "production_DEPLOYMENT_README.md",
+        "production_DEPLOYMENT_README.md",
+        "production_DEPLOYMENT_README.md",
+        "production_DEPLOYMENT_README.md",
         "MASTER_ONLY_FEATURES.md",
         "MASTER_ONLY_FEATURES.md",
         "MASTER_ONLY_FEATURES.md",
@@ -2541,8 +2541,8 @@
         "QVILLAGESPACES.md",
         "QVILLAGESPACES.md",
         "QVILLAGESPACES.md",
-        "PRODUCTION_READY_SUMMARY.md",
-        "PRODUCTION_READY_SUMMARY.md",
+        "production_READY_SUMMARY.md",
+        "production_READY_SUMMARY.md",
         "COMPONENTS_enhanced.md",
         "COMPONENTS_enhanced.md",
         "COMPONENTS_enhanced.md",
@@ -2579,9 +2579,9 @@
         "ALL PERCENTAGES.md",
         "ALL PERCENTAGES.md",
         "ALL PERCENTAGES.md",
-        "PRODUCTION_READINESS_AUDIT.md",
-        "PRODUCTION_READINESS_AUDIT.md",
-        "PRODUCTION_READINESS_AUDIT.md",
+        "production_READINESS_AUDIT.md",
+        "production_READINESS_AUDIT.md",
+        "production_READINESS_AUDIT.md",
         "autotest_report.md",
         "autotest_report.md",
         "autotest_report.md",
@@ -2626,8 +2626,8 @@
         "FINAL_SESSION_SUMMARY.md",
         "FINAL_SESSION_SUMMARY.md",
         "QMOIENHANCEMENTSSUMMARY.md",
-        "PRODUCTION_DEPLOYMENT_SUCCESS.md",
-        "PRODUCTION_DEPLOYMENT_SUCCESS.md",
+        "production_DEPLOYMENT_SUCCESS.md",
+        "production_DEPLOYMENT_SUCCESS.md",
         "DELIVERABLES_FINAL_INVENTORY.md",
         "QMOI-ENHANCED-COMPLETE.md",
         "QMOI-ENHANCED-COMPLETE.md",
@@ -2646,20 +2646,20 @@
         "COMPREHENSIVE_ERROR_ANALYSIS.md",
         "COMPREHENSIVE_ERROR_ANALYSIS.md",
         "COMPREHENSIVE_ERROR_ANALYSIS.md",
-        "PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
-        "PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
-        "PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
-        "PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
-        "PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
-        "PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
-        "PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
-        "PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
-        "PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
-        "PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
-        "PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
-        "PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
-        "QVILLAGE_READY_FOR_PRODUCTION.md",
-        "QVILLAGE_READY_FOR_PRODUCTION.md",
+        "production_DEPLOYMENT_ALL_STEPS.md",
+        "production_DEPLOYMENT_ALL_STEPS.md",
+        "production_DEPLOYMENT_ALL_STEPS.md",
+        "production_DEPLOYMENT_ALL_STEPS.md",
+        "production_DEPLOYMENT_ALL_STEPS.md",
+        "production_DEPLOYMENT_ALL_STEPS.md",
+        "production_DEPLOYMENT_ALL_STEPS.md",
+        "production_DEPLOYMENT_ALL_STEPS.md",
+        "production_DEPLOYMENT_ALL_STEPS.md",
+        "production_DEPLOYMENT_ALL_STEPS.md",
+        "production_DEPLOYMENT_ALL_STEPS.md",
+        "production_DEPLOYMENT_ALL_STEPS.md",
+        "QVILLAGE_READY_FOR_production.md",
+        "QVILLAGE_READY_FOR_production.md",
         "QMOI-FEATURE-INDEX.md",
         "QMOI-FEATURE-INDEX.md",
         "QMOI-FEATURE-INDEX.md",
@@ -2707,12 +2707,12 @@
         "QMOISTATS.md",
         "QMOISTATS.md",
         "QCITYRESOURCES.md",
-        "PRODUCTION_RELEASE_DOCS_INDEX.md",
-        "PRODUCTION_RELEASE_DOCS_INDEX.md",
-        "PRODUCTION_RELEASE_DOCS_INDEX.md",
-        "PRODUCTION_RELEASE_DOCS_INDEX.md",
-        "PRODUCTION_RELEASE_DOCS_INDEX.md",
-        "PRODUCTION_RELEASE_DOCS_INDEX.md",
+        "production_RELEASE_DOCS_INDEX.md",
+        "production_RELEASE_DOCS_INDEX.md",
+        "production_RELEASE_DOCS_INDEX.md",
+        "production_RELEASE_DOCS_INDEX.md",
+        "production_RELEASE_DOCS_INDEX.md",
+        "production_RELEASE_DOCS_INDEX.md",
         "QMOI_AUTOFIX_MASTER_GUIDE.md",
         "QMOI_AUTOFIX_MASTER_GUIDE.md",
         "QMOI_AUTOFIX_MASTER_GUIDE.md",
@@ -2817,11 +2817,11 @@
         "UI_ENHANCEMENT_QUICK_REFERENCE.md",
         "UI_ENHANCEMENT_QUICK_REFERENCE.md",
         "UI_ENHANCEMENT_QUICK_REFERENCE.md",
-        "QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md",
-        "QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md",
-        "QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md",
-        "QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md",
-        "PRODUCTION_DEPLOYMENT_READY.md",
+        "QMOI_ADVANCED_VALIDATION_AUTOproduction.md",
+        "QMOI_ADVANCED_VALIDATION_AUTOproduction.md",
+        "QMOI_ADVANCED_VALIDATION_AUTOproduction.md",
+        "QMOI_ADVANCED_VALIDATION_AUTOproduction.md",
+        "production_DEPLOYMENT_READY.md",
         "QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md",
         "QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md",
         "QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md",
@@ -2861,12 +2861,12 @@
         "QMOI_V1_2_3_RELEASE_PLAN_SUMMARY.md",
         "QMOI_V1_2_3_RELEASE_PLAN_SUMMARY.md",
         "QMOI_V1_2_3_RELEASE_PLAN_SUMMARY.md",
-        "PRODUCTION_READINESS_ENHANCED_REPORT.md",
-        "PRODUCTION_READINESS_ENHANCED_REPORT.md",
-        "PRODUCTION_READINESS_ENHANCED_REPORT.md",
-        "PRODUCTION_READINESS_ENHANCED_REPORT.md",
-        "PRODUCTION_READINESS_ENHANCED_REPORT.md",
-        "PRODUCTION_READINESS_ENHANCED_REPORT.md",
+        "production_READINESS_ENHANCED_REPORT.md",
+        "production_READINESS_ENHANCED_REPORT.md",
+        "production_READINESS_ENHANCED_REPORT.md",
+        "production_READINESS_ENHANCED_REPORT.md",
+        "production_READINESS_ENHANCED_REPORT.md",
+        "production_READINESS_ENHANCED_REPORT.md",
         "WPA.md",
         "WPA.md",
         "WPA.md",
@@ -2951,7 +2951,7 @@
         "QMOI_v1.2.3_ALL_APPS_AND_DOWNLOADS.md",
         "API_ENDPOINTS_COMPLETE_AUDIT.md",
         "API_ENDPOINTS_COMPLETE_AUDIT.md",
-        "QMOIOWNDEVICE.md",
+        "QMOIOWNprodICE.md",
         "ADVANCED_USER_IDENTIFICATION_SYSTEM.md",
         "ADVANCED_USER_IDENTIFICATION_SYSTEM.md",
         "ADVANCED_USER_IDENTIFICATION_SYSTEM.md",
@@ -3048,11 +3048,11 @@
         "ITERATIVE_IMPROVEMENT_ANALYSIS.md",
         "ITERATIVE_IMPROVEMENT_ANALYSIS.md",
         "QMOI_PROFESSIONAL_DATASETS_PLAN.md",
-        "PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md",
-        "PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md",
-        "PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md",
-        "PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md",
-        "PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md",
+        "production_RELEASE_VALIDATION_CHECKLIST.md",
+        "production_RELEASE_VALIDATION_CHECKLIST.md",
+        "production_RELEASE_VALIDATION_CHECKLIST.md",
+        "production_RELEASE_VALIDATION_CHECKLIST.md",
+        "production_RELEASE_VALIDATION_CHECKLIST.md",
         "VERCEL_AUTO_DEPLOY_GUIDE.md",
         "TREE.md",
         "TREE.md",
@@ -3131,12 +3131,12 @@
         "DEPLOYMENT_GATEWAY.md",
         "DEPLOYMENT_GATEWAY.md",
         "DEPLOYMENT_GATEWAY.md",
-        "FINAL_PRODUCTION_SUMMARY.md",
-        "FINAL_PRODUCTION_SUMMARY.md",
-        "FINAL_PRODUCTION_SUMMARY.md",
-        "FINAL_PRODUCTION_SUMMARY.md",
-        "FINAL_PRODUCTION_SUMMARY.md",
-        "FINAL_PRODUCTION_SUMMARY.md",
+        "FINAL_production_SUMMARY.md",
+        "FINAL_production_SUMMARY.md",
+        "FINAL_production_SUMMARY.md",
+        "FINAL_production_SUMMARY.md",
+        "FINAL_production_SUMMARY.md",
+        "FINAL_production_SUMMARY.md",
         "QMOI_MARKDOWN_AUTO_UPDATE.md",
         "QMOI_MARKDOWN_AUTO_UPDATE.md",
         "QMOI_MARKDOWN_AUTO_UPDATE.md",
@@ -3212,11 +3212,11 @@
         "QCITY-DELIVERABLES-CHECKLIST.md",
         "QCITY-DELIVERABLES-CHECKLIST.md",
         "QCITY-DELIVERABLES-CHECKLIST.md",
-        "PRODUCTION_ALWAYS_ON_DEPLOYMENT.md",
-        "PRODUCTION_ALWAYS_ON_DEPLOYMENT.md",
-        "PRODUCTION_ALWAYS_ON_DEPLOYMENT.md",
-        "PRODUCTION_ALWAYS_ON_DEPLOYMENT.md",
-        "PRODUCTION_ALWAYS_ON_DEPLOYMENT.md",
+        "production_ALWAYS_ON_DEPLOYMENT.md",
+        "production_ALWAYS_ON_DEPLOYMENT.md",
+        "production_ALWAYS_ON_DEPLOYMENT.md",
+        "production_ALWAYS_ON_DEPLOYMENT.md",
+        "production_ALWAYS_ON_DEPLOYMENT.md",
         "MANIFEST_AND_DEPLOYMENT_GUIDE.md",
         "TRACKS.md",
         "QMOIDATASETS.md",
@@ -3371,7 +3371,7 @@
         "ALLUITESTS.md",
         "ALLUITESTS.md",
         "MONITORING_IMPLEMENTATION_GUIDE.md",
-        "PRODUCTION_READINESS_FINAL_AUDIT.md",
+        "production_READINESS_FINAL_AUDIT.md",
         "QMOI_COMPLETE_EVOLUTION_FRAMEWORK.md",
         "QMOI_COMPLETE_EVOLUTION_FRAMEWORK.md",
         "QCITY-README.md",
@@ -3383,8 +3383,8 @@
         "QUICK_START_MONITORING.md",
         "QUICK_START_MONITORING.md",
         "QUICK_START_MONITORING.md",
-        "PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md",
-        "PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md",
+        "production_DEPLOYMENT_AUTO_RECOVERY.md",
+        "production_DEPLOYMENT_AUTO_RECOVERY.md",
         "QMOI_COMPLETE_INTEGRATION_MASTER.md",
         "QMOI_COMPLETE_INTEGRATION_MASTER.md",
         "QMOI_COMPLETE_INTEGRATION_MASTER.md",
@@ -5776,7 +5776,7 @@
         "_archive_qmoi-enhanced/WPA.md",
         "_archive_qmoi-enhanced/WPA.md",
         "_archive_qmoi-enhanced/WPA.md",
-        "_archive_qmoi-enhanced/QMOIOWNDEVICE.md",
+        "_archive_qmoi-enhanced/QMOIOWNprodICE.md",
         "_archive_qmoi-enhanced/QMOIAUTOEVOLVE.md",
         "_archive_qmoi-enhanced/TRADINGREADME.md",
         "_archive_qmoi-enhanced/TRADINGREADME.md",
@@ -8388,9 +8388,9 @@
         "SESSION_4_COMPLETION_REPORT.md",
         "SESSION_4_COMPLETION_REPORT.md",
         "QUICK_TEST_START.md",
-        "QMOIOWNDEVICE.md",
-        "QMOIOWNDEVICE.md",
-        "QMOIOWNDEVICE.md",
+        "QMOIOWNprodICE.md",
+        "QMOIOWNprodICE.md",
+        "QMOIOWNprodICE.md",
         "TREE.md",
         "PHASE_4_SESSION_COMPLETION.md",
         "GITHUB_RELEASES_QUICKSTART.md",
@@ -8468,9 +8468,9 @@
         "_archive_qmoi-enhanced/QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md",
         "_archive_qmoi-enhanced/QMOI-ENHANCED-FINAL.md",
         "_archive_qmoi-enhanced/QMOI-FEATURE-INDEX.md",
-        "_archive_qmoi-enhanced/QMOIOWNDEVICE.md",
-        "_archive_qmoi-enhanced/QMOIOWNDEVICE.md",
-        "_archive_qmoi-enhanced/QMOIOWNDEVICE.md",
+        "_archive_qmoi-enhanced/QMOIOWNprodICE.md",
+        "_archive_qmoi-enhanced/QMOIOWNprodICE.md",
+        "_archive_qmoi-enhanced/QMOIOWNprodICE.md",
         "_archive_qmoi-enhanced/QMOI-AIRTEL-INTEGRATION.md",
         "_archive_qmoi-enhanced/QMOI-AIRTEL-INTEGRATION.md",
         "_archive_qmoi-enhanced/QMOI-AIRTEL-INTEGRATION.md",
@@ -8524,7 +8524,7 @@
       "value": 99.9,
       "source_files": [
         "EMAILSSYSTEM.md",
-        "PRODUCTION_READINESS_EXECUTION_STATUS.md",
+        "production_READINESS_EXECUTION_STATUS.md",
         "COMPLETION_REPORT_REAL_IMPLEMENTATIONS.md",
         "COMPLETION_REPORT_REAL_IMPLEMENTATIONS.md",
         "COMPLETION_REPORT_REAL_IMPLEMENTATIONS.md",
@@ -8544,17 +8544,17 @@
         "FINAL_SESSION_SUMMARY.md",
         "FINAL_SESSION_SUMMARY.md",
         "QMOI-FEATURE-INDEX.md",
-        "QMOIOWNDEVICE.md",
-        "QMOIOWNDEVICE.md",
-        "QMOIOWNDEVICE.md",
+        "QMOIOWNprodICE.md",
+        "QMOIOWNprodICE.md",
+        "QMOIOWNprodICE.md",
         "TREE.md",
         "COMPREHENSIVE_VALIDATION_SYSTEM.md",
         "docs/QVILLAGE_MANUAL.md",
         "_archive_qmoi-enhanced/QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md",
         "_archive_qmoi-enhanced/QMOI-FEATURE-INDEX.md",
-        "_archive_qmoi-enhanced/QMOIOWNDEVICE.md",
-        "_archive_qmoi-enhanced/QMOIOWNDEVICE.md",
-        "_archive_qmoi-enhanced/QMOIOWNDEVICE.md"
+        "_archive_qmoi-enhanced/QMOIOWNprodICE.md",
+        "_archive_qmoi-enhanced/QMOIOWNprodICE.md",
+        "_archive_qmoi-enhanced/QMOIOWNprodICE.md"
       ],
       "last_updated": "2026-03-24T19:33:56.511466",
       "category": "quality"
@@ -8663,7 +8663,7 @@
       "last_updated": "2026-03-24T19:33:56.513126",
       "category": "other"
     },
-    "faster_feature_development": {
+    "faster_feature_production": {
       "value": 50.0,
       "source_files": [
         "UI_ENHANCEMENT_COMPREHENSIVE_PLAN.md"
@@ -8687,13 +8687,13 @@
       "last_updated": "2026-03-24T19:33:56.515249",
       "category": "other"
     },
-    "nonprod": {
+    "production": {
       "value": 8.08,
       "source_files": [
-        "DEVELOPER_QUICK_START.md",
-        "QMOI_AUTO_TESTING_UI_DEVELOPMENT.md",
-        "QMOISPACEDEV.md",
-        "AUTODEV_SECRETS.md",
+        "prodELOPER_QUICK_START.md",
+        "QMOI_AUTO_TESTING_UI_production.md",
+        "QMOISPACEprod.md",
+        "AUTOprod_SECRETS.md",
         "ALLERRORTYPESANDHEALTHCHECKS.md",
         "QMOI_MASTER_TESTING_GUIDE.md",
         "ALLERRORSSTATSQMOI.md",
@@ -8703,160 +8703,160 @@
         "ERROR_TYPES_GUIDE.md",
         "COMPREHENSIVE_TESTING_QA_STRATEGY.md",
         "QMoi_Test_Report.md",
-        "QCITYDEVICEAUTOUPGRADE.md",
-        "QCITY_DEVICE_MANAGEMENT.md",
+        "QCITYprodICEAUTOUPGRADE.md",
+        "QCITY_prodICE_MANAGEMENT.md",
         "ERRORSREADME.md",
-        "DOWNLOADQMOIAIAPPALLDEVICES.md",
-        "QMOIALLDEVICESINSTALL.md",
+        "DOWNLOADQMOIAIAPPALLprodICES.md",
+        "QMOIALLprodICESINSTALL.md",
         "ALLERRORSTYPESFILES.md",
-        "QMOIALLDEVICESHANDSFREE.md",
+        "QMOIALLprodICESHANDSFREE.md",
         "ALLCOMPONENTSTESTS.md",
         "autotest_report.md",
         "error-fix-summary.md",
         "USER_RESPONSE_TESTING_INDEX.md",
-        "DEVICERESOURCEOPTIMIZATION.md",
+        "prodICERESOURCEOPTIMIZATION.md",
         "TESTREADME.md",
         "COMPREHENSIVE_ERROR_ANALYSIS.md",
-        "QMOIDEVICES.md",
-        "QMOIDEV.md",
-        "QMOIGITHUBDEV.md",
-        "QMOIVERCELDEV.md",
+        "QMOIprodICES.md",
+        "QMOIprod.md",
+        "QMOIGITHUBprod.md",
+        "QMOIVERCELprod.md",
         "QMOI_TEST_DASHBOARD.md",
         "TESTS.md",
         "BIOMETRIC_LOGIN_TEST_RESULTS.md",
-        "QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md",
-        "QCITYMAINDEVICE.md",
-        "QMOIAUTOAPPSDEV.md",
+        "QMOI_ADVANCED_VALIDATION_AUTOproduction.md",
+        "QCITYMAINprodICE.md",
+        "QMOIAUTOAPPSprod.md",
         "QUICK_TEST_START.md",
         "QUICK_START_TESTING.md",
-        "QMOIPREDEVDOCACTIONS.md",
-        "QMOI_AUTODEV.md",
+        "QMOIPREprodDOCACTIONS.md",
+        "QMOI_AUTOprod.md",
         "TEST_ANALYSIS_REPORT.md",
         "TESTING.md",
         "QVILLAGETESTS.md",
         "SERVINGERRORSISSUES.md",
-        "QMOIOWNDEVICE.md",
+        "QMOIOWNprodICE.md",
         "ALLERRORS.md",
         "QMOI_MASTER_TESTING_SUMMARY.md",
-        "QMOIGITLABDEV.md",
+        "QMOIGITLABprod.md",
         "TREE.md",
-        "DEVCOMMANDS.md",
-        "QMOIAUTODEV.md",
-        "ALLDEVICESSETTINGS.md",
+        "prodCOMMANDS.md",
+        "QMOIAUTOprod.md",
+        "ALLprodICESSETTINGS.md",
         "README.md",
         "QMOI_USER_TESTING_QUICK_REFERENCE.md",
-        "QMOIGITPODDEV.md",
+        "QMOIGITPODprod.md",
         "ALLUITESTS.md",
         "ERRORSTRACKS.md",
         "QMOIMODELTESTS.md",
         "QMOITESTENVIRONMENT.md",
         "docs/QMOI-ENHANCED-AUTOTESTS.md",
-        "docs/AUTODEV_INSTRUCTIONS.md",
+        "docs/AUTOprod_INSTRUCTIONS.md",
         "docs/ALLTESTSAUTOTESTS.md",
-        "docs/LOCAL_QMOI_DEVELOPMENT.md",
-        "docs/QMOIGITHUBDEV.md",
-        "docs/QMOIVERCELDEV.md",
-        "docs/QMOIGITLABDEV.md",
-        "_archive_qmoi-enhanced/QMOISPACEDEV.md",
+        "docs/LOCAL_QMOI_production.md",
+        "docs/QMOIGITHUBprod.md",
+        "docs/QMOIVERCELprod.md",
+        "docs/QMOIGITLABprod.md",
+        "_archive_qmoi-enhanced/QMOISPACEprod.md",
         "_archive_qmoi-enhanced/ALLERRORSSTATSQMOI.md",
         "_archive_qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md",
-        "_archive_qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md",
-        "_archive_qmoi-enhanced/QCITY_DEVICE_MANAGEMENT.md",
+        "_archive_qmoi-enhanced/QCITYprodICEAUTOUPGRADE.md",
+        "_archive_qmoi-enhanced/QCITY_prodICE_MANAGEMENT.md",
         "_archive_qmoi-enhanced/ERRORSREADME.md",
-        "_archive_qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md",
-        "_archive_qmoi-enhanced/QMOIALLDEVICESINSTALL.md",
-        "_archive_qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md",
+        "_archive_qmoi-enhanced/DOWNLOADQMOIAIAPPALLprodICES.md",
+        "_archive_qmoi-enhanced/QMOIALLprodICESINSTALL.md",
+        "_archive_qmoi-enhanced/QMOIALLprodICESHANDSFREE.md",
         "_archive_qmoi-enhanced/error-fix-summary.md",
-        "_archive_qmoi-enhanced/DEVICERESOURCEOPTIMIZATION.md",
+        "_archive_qmoi-enhanced/prodICERESOURCEOPTIMIZATION.md",
         "_archive_qmoi-enhanced/TESTREADME.md",
-        "_archive_qmoi-enhanced/QMOIDEVICES.md",
-        "_archive_qmoi-enhanced/QMOIDEV.md",
-        "_archive_qmoi-enhanced/QMOIGITHUBDEV.md",
-        "_archive_qmoi-enhanced/QMOIVERCELDEV.md",
-        "_archive_qmoi-enhanced/QCITYMAINDEVICE.md",
-        "_archive_qmoi-enhanced/QMOIAUTOAPPSDEV.md",
-        "_archive_qmoi-enhanced/QMOIPREDEVDOCACTIONS.md",
-        "_archive_qmoi-enhanced/QMOIOWNDEVICE.md",
-        "_archive_qmoi-enhanced/QMOIGITLABDEV.md",
-        "_archive_qmoi-enhanced/DEVCOMMANDS.md",
-        "_archive_qmoi-enhanced/QMOIAUTODEV.md",
-        "_archive_qmoi-enhanced/ALLDEVICESSETTINGS.md",
-        "_archive_qmoi-enhanced/QMOIGITPODDEV.md",
+        "_archive_qmoi-enhanced/QMOIprodICES.md",
+        "_archive_qmoi-enhanced/QMOIprod.md",
+        "_archive_qmoi-enhanced/QMOIGITHUBprod.md",
+        "_archive_qmoi-enhanced/QMOIVERCELprod.md",
+        "_archive_qmoi-enhanced/QCITYMAINprodICE.md",
+        "_archive_qmoi-enhanced/QMOIAUTOAPPSprod.md",
+        "_archive_qmoi-enhanced/QMOIPREprodDOCACTIONS.md",
+        "_archive_qmoi-enhanced/QMOIOWNprodICE.md",
+        "_archive_qmoi-enhanced/QMOIGITLABprod.md",
+        "_archive_qmoi-enhanced/prodCOMMANDS.md",
+        "_archive_qmoi-enhanced/QMOIAUTOprod.md",
+        "_archive_qmoi-enhanced/ALLprodICESSETTINGS.md",
+        "_archive_qmoi-enhanced/QMOIGITPODprod.md",
         "_archive_qmoi-enhanced/QMOITESTENVIRONMENT.md",
         "tools/autotest_report.md",
         "_archive_qmoi-enhanced/docs/QMOI-ENHANCED-AUTOTESTS.md",
-        "_archive_qmoi-enhanced/docs/QMOIGITHUBDEV.md",
-        "_archive_qmoi-enhanced/docs/QMOIVERCELDEV.md",
-        "_archive_qmoi-enhanced/docs/QMOIGITLABDEV.md",
+        "_archive_qmoi-enhanced/docs/QMOIGITHUBprod.md",
+        "_archive_qmoi-enhanced/docs/QMOIVERCELprod.md",
+        "_archive_qmoi-enhanced/docs/QMOIGITLABprod.md",
         "tools/issue_drafts/0965_qmoi-enhanced_scripts_test_runner.py.md",
-        "tools/issue_drafts/0540_QMOIVERCELDEV.md.md",
-        "tools/issue_drafts/0928_qmoi-enhanced_hooks_useDeviceOptimizer.ts.md",
-        "tools/issue_drafts/0535_QMOIGITPODDEV.md.linkfix.bak.md",
+        "tools/issue_drafts/0540_QMOIVERCELprod.md.md",
+        "tools/issue_drafts/0928_qmoi-enhanced_hooks_useprodiceOptimizer.ts.md",
+        "tools/issue_drafts/0535_QMOIGITPODprod.md.linkfix.bak.md",
         "tools/issue_drafts/1051_scripts_test_runner.py.md",
         "tools/issue_drafts/1038_scripts_qmoi-universal-error-fixer.py.md",
-        "tools/issue_drafts/0532_QMOIGITLABDEV.md.linkfix.bak.md",
+        "tools/issue_drafts/0532_QMOIGITLABprod.md.linkfix.bak.md",
         "tools/issue_drafts/0936_qmoi-enhanced_models_latest_README.md.md",
         "tools/issue_drafts/0591_error-fix-summary.md.md",
         "tools/issue_drafts/07_src_hooks_useQmoiKernel_test_ts.md",
         "tools/issue_drafts/1044_scripts_run_unit_tests.py.md",
-        "tools/issue_drafts/0894_qmoi-enhanced_QMOIVERCELDEV.md.md",
-        "tools/issue_drafts/0862_qmoi-enhanced_DOWNLOADQMOIAIAPPALLDEVICES.md.md",
+        "tools/issue_drafts/0894_qmoi-enhanced_QMOIVERCELprod.md.md",
+        "tools/issue_drafts/0862_qmoi-enhanced_DOWNLOADQMOIAIAPPALLprodICES.md.md",
         "tools/issue_drafts/0481_ALLERRORSSTATSQMOI.md.md",
-        "tools/issue_drafts/0493_DEVICERESOURCEOPTIMIZATION.md.md",
+        "tools/issue_drafts/0493_prodICERESOURCEOPTIMIZATION.md.md",
         "tools/issue_drafts/1072_tests_test_link_systems.py.md",
         "tools/issue_drafts/0494_ERRORSTRACKS.md.md",
-        "tools/issue_drafts/0517_QMOIALLDEVICESINSTALL.md.md",
-        "tools/issue_drafts/0542_QMOIVERCELDEV.md.linkfix.bak.md",
-        "tools/issue_drafts/0863_qmoi-enhanced_DOWNLOADQMOIAIAPPALLDEVICES.md.dotfix.bak.md",
+        "tools/issue_drafts/0517_QMOIALLprodICESINSTALL.md.md",
+        "tools/issue_drafts/0542_QMOIVERCELprod.md.linkfix.bak.md",
+        "tools/issue_drafts/0863_qmoi-enhanced_DOWNLOADQMOIAIAPPALLprodICES.md.dotfix.bak.md",
         "tools/issue_drafts/1012_qmoi_autogen_unused_api_tests.sh.md",
-        "tools/issue_drafts/0531_QMOIGITLABDEV.md.dotfix.bak.md",
+        "tools/issue_drafts/0531_QMOIGITLABprod.md.dotfix.bak.md",
         "tools/issue_drafts/1069_tests_integration_adapter-dryrun.test.ts.md",
-        "tools/issue_drafts/0594_hooks_useDeviceOptimizer.ts.md",
+        "tools/issue_drafts/0594_hooks_useprodiceOptimizer.ts.md",
         "tools/issue_drafts/0604_models_latest_README.md.md",
         "tools/issue_drafts/1043_scripts_run_tests.py.md",
-        "tools/issue_drafts/0569_components_DeviceSettingsPanel.tsx.md",
+        "tools/issue_drafts/0569_components_prodiceSettingsPanel.tsx.md",
         "tools/issue_drafts/0949_qmoi-enhanced_scripts_monitoring_error_tracking.py.md",
-        "tools/issue_drafts/0518_QMOIAUTODEV.md.md",
+        "tools/issue_drafts/0518_QMOIAUTOprod.md.md",
         "tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_placeholder.py.md",
-        "tools/issue_drafts/0874_qmoi-enhanced_QMOIALLDEVICESINSTALL.md.md",
-        "tools/issue_drafts/0851_qmoi-enhanced_ALLDEVICESSETTINGS.md.md",
+        "tools/issue_drafts/0874_qmoi-enhanced_QMOIALLprodICESINSTALL.md.md",
+        "tools/issue_drafts/0851_qmoi-enhanced_ALLprodICESSETTINGS.md.md",
         "tools/issue_drafts/1068_test_config.json.md",
-        "tools/issue_drafts/0860_qmoi-enhanced_DEVCOMMANDS.md.md",
-        "tools/issue_drafts/0541_QMOIVERCELDEV.md.dotfix.bak.md",
+        "tools/issue_drafts/0860_qmoi-enhanced_prodCOMMANDS.md.md",
+        "tools/issue_drafts/0541_QMOIVERCELprod.md.dotfix.bak.md",
         "tools/issue_drafts/1074_tools_autotest_runner.py.md",
-        "tools/issue_drafts/0885_qmoi-enhanced_QMOIGITLABDEV.md.md",
-        "tools/issue_drafts/0895_qmoi-enhanced_QMOIVERCELDEV.md.dotfix.bak.md",
+        "tools/issue_drafts/0885_qmoi-enhanced_QMOIGITLABprod.md.md",
+        "tools/issue_drafts/0895_qmoi-enhanced_QMOIVERCELprod.md.dotfix.bak.md",
         "tools/issue_drafts/0956_qmoi-enhanced_scripts_qmoi-universal-error-fixer.py.md",
-        "tools/issue_drafts/0480_ALLDEVICESSETTINGS.md.md",
-        "tools/issue_drafts/0887_qmoi-enhanced_QMOIGITLABDEV.md.linkfix.bak.md",
+        "tools/issue_drafts/0480_ALLprodICESSETTINGS.md.md",
+        "tools/issue_drafts/0887_qmoi-enhanced_QMOIGITLABprod.md.linkfix.bak.md",
         "tools/issue_drafts/0975_qmoi-enhanced_test_config.json.md",
         "tools/issue_drafts/1070_tests_security_test_security_placeholder.py.md",
-        "tools/issue_drafts/0530_QMOIGITLABDEV.md.md",
+        "tools/issue_drafts/0530_QMOIGITLABprod.md.md",
         "tools/issue_drafts/06_qmoi-enhanced_src_setupTests_ts.md",
-        "tools/issue_drafts/05_qmoi-enhanced_QMOISPACEDEV_md.md",
-        "tools/issue_drafts/0888_qmoi-enhanced_QMOIGITPODDEV.md.md",
-        "tools/issue_drafts/0890_qmoi-enhanced_QMOIGITPODDEV.md.linkfix.bak.md",
+        "tools/issue_drafts/05_qmoi-enhanced_QMOISPACEprod_md.md",
+        "tools/issue_drafts/0888_qmoi-enhanced_QMOIGITPODprod.md.md",
+        "tools/issue_drafts/0890_qmoi-enhanced_QMOIGITPODprod.md.linkfix.bak.md",
         "tools/issue_drafts/08_qmoi-enhanced_src_hooks_useQmoiKernel_test_ts.md",
-        "tools/issue_drafts/0534_QMOIGITPODDEV.md.dotfix.bak.md",
+        "tools/issue_drafts/0534_QMOIGITPODprod.md.dotfix.bak.md",
         "tools/issue_drafts/1071_tests_test_integration.py.md",
-        "tools/issue_drafts/0864_qmoi-enhanced_DOWNLOADQMOIAIAPPALLDEVICES.md.linkfix.bak.md",
-        "tools/issue_drafts/0886_qmoi-enhanced_QMOIGITLABDEV.md.dotfix.bak.md",
-        "tools/issue_drafts/0492_DEVCOMMANDS.md.md",
+        "tools/issue_drafts/0864_qmoi-enhanced_DOWNLOADQMOIAIAPPALLprodICES.md.linkfix.bak.md",
+        "tools/issue_drafts/0886_qmoi-enhanced_QMOIGITLABprod.md.dotfix.bak.md",
+        "tools/issue_drafts/0492_prodCOMMANDS.md.md",
         "tools/issue_drafts/0968_qmoi-enhanced_scripts_utils_error_fixer.py.md",
         "tools/issue_drafts/0600_logs_quick-test-report.json.md",
-        "tools/issue_drafts/0889_qmoi-enhanced_QMOIGITPODDEV.md.dotfix.bak.md",
+        "tools/issue_drafts/0889_qmoi-enhanced_QMOIGITPODprod.md.dotfix.bak.md",
         "tools/issue_drafts/0925_qmoi-enhanced_error-fix-summary.md.md",
         "tools/issue_drafts/0852_qmoi-enhanced_ALLERRORSSTATSQMOI.md.md",
-        "tools/issue_drafts/0896_qmoi-enhanced_QMOIVERCELDEV.md.linkfix.bak.md",
-        "tools/issue_drafts/0533_QMOIGITPODDEV.md.md",
+        "tools/issue_drafts/0896_qmoi-enhanced_QMOIVERCELprod.md.linkfix.bak.md",
+        "tools/issue_drafts/0533_QMOIGITPODprod.md.md",
         "tools/issue_drafts/0556_SERVINGERRORSISSUES.md.md",
-        "tools/issue_drafts/0911_qmoi-enhanced_components_DeviceSettingsPanel.tsx.md",
+        "tools/issue_drafts/0911_qmoi-enhanced_components_prodiceSettingsPanel.tsx.md",
         "tools/issue_drafts/1056_scripts_utils_error_fixer.py.md",
         "tools/issue_drafts/1029_scripts_monitoring_error_tracking.py.md",
-        "tools/issue_drafts/13_qmoi-enhanced_components_device_DeviceIntegrationStubs_ts.md",
-        "tools/issue_drafts/0876_qmoi-enhanced_QMOIAUTODEV.md.md",
+        "tools/issue_drafts/13_qmoi-enhanced_components_prodice_prodiceIntegrationStubs_ts.md",
+        "tools/issue_drafts/0876_qmoi-enhanced_QMOIAUTOprod.md.md",
         "tools/issue_drafts/1025_scripts_generate_test_index.py.md",
-        "tools/issue_drafts/0861_qmoi-enhanced_DEVICERESOURCEOPTIMIZATION.md.md"
+        "tools/issue_drafts/0861_qmoi-enhanced_prodICERESOURCEOPTIMIZATION.md.md"
       ],
       "last_updated": "2026-03-24T19:33:56.516197",
       "category": "other"
@@ -8925,12 +8925,12 @@
       "value": 70.0,
       "source_files": [
         "USER_RESPONSE_STAGES_F_G_H.md",
-        "PRODUCTION_READY_SUMMARY.md",
+        "production_READY_SUMMARY.md",
         "ALLCOMPONENTSTESTS.md",
-        "FINAL_PRODUCTION_SUMMARY.md",
-        "FINAL_PRODUCTION_SUMMARY.md",
-        "FINAL_PRODUCTION_SUMMARY.md",
-        "FINAL_PRODUCTION_SUMMARY.md"
+        "FINAL_production_SUMMARY.md",
+        "FINAL_production_SUMMARY.md",
+        "FINAL_production_SUMMARY.md",
+        "FINAL_production_SUMMARY.md"
       ],
       "last_updated": "2026-03-24T19:33:56.524047",
       "category": "other"
@@ -10293,7 +10293,7 @@
       "value": 30.0,
       "source_files": [
         "USEEMPLOYEESUSERS.md",
-        "QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md",
+        "QMOI_ADVANCED_VALIDATION_AUTOproduction.md",
         "docs/REVENUE_SPEC.md",
         "docs/REVENUE_SPEC.md",
         "docs/REVENUE_SPEC.md",
@@ -10399,7 +10399,7 @@
         "FAMILY_FEATURES_GUIDE.md",
         "README.md",
         "PHASE_4_SESSION_COMPLETION.md",
-        "PRODUCTION_DEPLOYMENT_COMPLETE.md",
+        "production_DEPLOYMENT_COMPLETE.md",
         "FINAL_HANDOFF.md",
         "COMPLETION_INDEX.md",
         "COMPLETION_INDEX.md",
@@ -10456,8 +10456,8 @@
     "production_readiness": {
       "value": 100.0,
       "source_files": [
-        "PRODUCTION_READINESS_EXECUTION_STATUS.md",
-        "PRODUCTION_READINESS_EXECUTION_STATUS.md",
+        "production_READINESS_EXECUTION_STATUS.md",
+        "production_READINESS_EXECUTION_STATUS.md",
         "ALLCOMPONENTSTESTS.md",
         "FINAL_EXECUTION_SUMMARY.md"
       ],
@@ -10467,7 +10467,7 @@
     "files_analyzed": {
       "value": 96.4,
       "source_files": [
-        "PRODUCTION_READINESS_EXECUTION_STATUS.md"
+        "production_READINESS_EXECUTION_STATUS.md"
       ],
       "last_updated": "2026-03-24T19:33:56.579133",
       "category": "other"
@@ -10475,7 +10475,7 @@
     "implemented": {
       "value": 99.0,
       "source_files": [
-        "PRODUCTION_READINESS_EXECUTION_STATUS.md",
+        "production_READINESS_EXECUTION_STATUS.md",
         "COMPLETION_INDEX.md"
       ],
       "last_updated": "2026-03-24T19:33:56.579204",
@@ -10484,7 +10484,7 @@
     "current": {
       "value": 95.0,
       "source_files": [
-        "PRODUCTION_READINESS_EXECUTION_STATUS.md",
+        "production_READINESS_EXECUTION_STATUS.md",
         "FINAL_EXECUTION_SUMMARY.md"
       ],
       "last_updated": "2026-03-24T19:33:56.579275",
@@ -10493,8 +10493,8 @@
     "required": {
       "value": 100.0,
       "source_files": [
-        "PRODUCTION_READINESS_EXECUTION_STATUS.md",
-        "PRODUCTION_READINESS_EXECUTION_STATUS.md",
+        "production_READINESS_EXECUTION_STATUS.md",
+        "production_READINESS_EXECUTION_STATUS.md",
         "QMOI_PROJECT_MANAGEMENT_SYSTEMS.md"
       ],
       "last_updated": "2026-03-24T19:33:56.579454",
@@ -10503,7 +10503,7 @@
     "passing": {
       "value": 100.0,
       "source_files": [
-        "PRODUCTION_READINESS_EXECUTION_STATUS.md",
+        "production_READINESS_EXECUTION_STATUS.md",
         "FINAL_EXECUTION_SUMMARY.md"
       ],
       "last_updated": "2026-03-24T19:33:56.579634",
@@ -11522,7 +11522,7 @@
     "type_safety": {
       "value": 100.0,
       "source_files": [
-        "PRODUCTION_COMPLETION_SUMMARY.md"
+        "production_COMPLETION_SUMMARY.md"
       ],
       "last_updated": "2026-03-24T19:33:57.549602",
       "category": "other"
@@ -11530,7 +11530,7 @@
     "workflows_function_without_internet": {
       "value": 95.0,
       "source_files": [
-        "PHASE4_PRODUCTION_STRATEGY.md"
+        "PHASE4_production_STRATEGY.md"
       ],
       "last_updated": "2026-03-24T19:33:57.553575",
       "category": "other"
@@ -11538,7 +11538,7 @@
     "e": {
       "value": 80.0,
       "source_files": [
-        "PHASE4_PRODUCTION_STRATEGY.md",
+        "PHASE4_production_STRATEGY.md",
         "docs/REVENUE_SPEC.md",
         "docs/REVENUE_SPEC.md",
         "mobile/node_modules/yocto-queue/readme.md",
@@ -11550,7 +11550,7 @@
     "approval_for_transfers": {
       "value": 100.0,
       "source_files": [
-        "PHASE4_PRODUCTION_STRATEGY.md"
+        "PHASE4_production_STRATEGY.md"
       ],
       "last_updated": "2026-03-24T19:33:57.553757",
       "category": "other"
@@ -11558,7 +11558,7 @@
     "broken_link_rate": {
       "value": 2.0,
       "source_files": [
-        "PHASE4_PRODUCTION_STRATEGY.md"
+        "PHASE4_production_STRATEGY.md"
       ],
       "last_updated": "2026-03-24T19:33:57.553825",
       "category": "other"
@@ -11710,7 +11710,7 @@
       "source_files": [
         "MASTER_VERIFICATION_COMPLETE.md",
         "MASTER_READINESS_INDEX.md",
-        "PRODUCTION_READINESS_FINAL_AUDIT.md"
+        "production_READINESS_FINAL_AUDIT.md"
       ],
       "last_updated": "2026-03-24T19:33:57.567927",
       "category": "other"
@@ -11887,12 +11887,12 @@
       "value": 0.08,
       "source_files": [
         "PHASE_4_COMPLETION_SUMMARY.md",
-        "QCITYDEVICEAUTOUPGRADE.md",
+        "QCITYprodICEAUTOUPGRADE.md",
         "QMOIGAMINGCLOUDUSERS.md",
         "QSERVERREADME.md",
         "QMOIAVATAR.md",
-        "FINAL_PRODUCTION_SUMMARY.md",
-        "_archive_qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md",
+        "FINAL_production_SUMMARY.md",
+        "_archive_qmoi-enhanced/QCITYprodICEAUTOUPGRADE.md",
         "_archive_qmoi-enhanced/QMOIGAMINGCLOUDUSERS.md",
         "_archive_qmoi-enhanced/QSERVERREADME.md",
         "_archive_qmoi-enhanced/QMOIAVATAR.md"
@@ -11963,7 +11963,7 @@
         "QALLPURPOSE.md",
         "QALLPURPOSE.md",
         "QALLPURPOSE.md",
-        "PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
+        "production_DEPLOYMENT_ALL_STEPS.md",
         "NEW_USER_SYSTEM_IMPLEMENTATION.md",
         "NEW_USER_SYSTEM_IMPLEMENTATION.md",
         "NEW_USER_SYSTEM_IMPLEMENTATION.md",
@@ -12242,10 +12242,10 @@
       "value": 99.9,
       "source_files": [
         "QMOI_PHASE_3_COMPLETION_SUMMARY.md",
-        "QCITYDEVICEAUTOUPGRADE.md",
+        "QCITYprodICEAUTOUPGRADE.md",
         "QSERVERREADME.md",
         "QMOIAVATAR.md",
-        "_archive_qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md",
+        "_archive_qmoi-enhanced/QCITYprodICEAUTOUPGRADE.md",
         "_archive_qmoi-enhanced/QSERVERREADME.md",
         "_archive_qmoi-enhanced/QMOIAVATAR.md"
       ],
@@ -12275,8 +12275,8 @@
     "during_normal_traffic": {
       "value": 30.0,
       "source_files": [
-        "START_PRODUCTION_DEPLOYMENT.md",
-        "PRODUCTION_DEPLOYMENT_COMPLETE.md"
+        "START_production_DEPLOYMENT.md",
+        "production_DEPLOYMENT_COMPLETE.md"
       ],
       "last_updated": "2026-03-24T19:33:57.614413",
       "category": "other"
@@ -12285,8 +12285,8 @@
       "value": 20.0,
       "source_files": [
         "QMOI_SYSTEMS_COMPLETE_INDEX.md",
-        "QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md",
-        "PRODUCTION_ALWAYS_ON_DEPLOYMENT.md",
+        "QMOI_ADVANCED_VALIDATION_AUTOproduction.md",
+        "production_ALWAYS_ON_DEPLOYMENT.md",
         "QMOI_ENHANCEMENT_SUMMARY.md",
         "QMOI_COMPLETE_EVOLUTION_FRAMEWORK.md"
       ],
@@ -12441,7 +12441,7 @@
     "domain_health_guarantee": {
       "value": 100.0,
       "source_files": [
-        "PRODUCTION_DEPLOYMENT_README.md"
+        "production_DEPLOYMENT_README.md"
       ],
       "last_updated": "2026-03-24T19:33:57.622657",
       "category": "operational"
@@ -12449,7 +12449,7 @@
     "domain_and_system_health": {
       "value": 100.0,
       "source_files": [
-        "PRODUCTION_DEPLOYMENT_README.md"
+        "production_DEPLOYMENT_README.md"
       ],
       "last_updated": "2026-03-24T19:33:57.622726",
       "category": "operational"
@@ -12457,7 +12457,7 @@
     "health_guarantee": {
       "value": 100.0,
       "source_files": [
-        "PRODUCTION_DEPLOYMENT_README.md"
+        "production_DEPLOYMENT_README.md"
       ],
       "last_updated": "2026-03-24T19:33:57.622775",
       "category": "operational"
@@ -12465,7 +12465,7 @@
     "health_guarantee_system": {
       "value": 100.0,
       "source_files": [
-        "PRODUCTION_DEPLOYMENT_README.md"
+        "production_DEPLOYMENT_README.md"
       ],
       "last_updated": "2026-03-24T19:33:57.622819",
       "category": "operational"
@@ -12473,7 +12473,7 @@
     "health_achievement": {
       "value": 100.0,
       "source_files": [
-        "PRODUCTION_DEPLOYMENT_README.md"
+        "production_DEPLOYMENT_README.md"
       ],
       "last_updated": "2026-03-24T19:33:57.622971",
       "category": "operational"
@@ -12481,7 +12481,7 @@
     "across_all_domains": {
       "value": 99.9,
       "source_files": [
-        "PRODUCTION_DEPLOYMENT_README.md"
+        "production_DEPLOYMENT_README.md"
       ],
       "last_updated": "2026-03-24T19:33:57.623016",
       "category": "other"
@@ -12489,7 +12489,7 @@
     "qmoi_domain_health": {
       "value": 100.0,
       "source_files": [
-        "PRODUCTION_DEPLOYMENT_README.md"
+        "production_DEPLOYMENT_README.md"
       ],
       "last_updated": "2026-03-24T19:33:57.623101",
       "category": "operational"
@@ -12497,7 +12497,7 @@
     "health\npython": {
       "value": 100.0,
       "source_files": [
-        "PRODUCTION_DEPLOYMENT_README.md"
+        "production_DEPLOYMENT_README.md"
       ],
       "last_updated": "2026-03-24T19:33:57.623146",
       "category": "operational"
@@ -12505,7 +12505,7 @@
     "domain_health": {
       "value": 100.0,
       "source_files": [
-        "PRODUCTION_DEPLOYMENT_README.md"
+        "production_DEPLOYMENT_README.md"
       ],
       "last_updated": "2026-03-24T19:33:57.623188",
       "category": "operational"
@@ -12521,12 +12521,12 @@
     "uptime_with_automatic_failover": {
       "value": 99.99,
       "source_files": [
-        "QCITYDEVICEAUTOUPGRADE.md",
-        "QCITYDEVICEAUTOUPGRADE.md",
+        "QCITYprodICEAUTOUPGRADE.md",
+        "QCITYprodICEAUTOUPGRADE.md",
         "QSERVERREADME.md",
         "QSERVERREADME.md",
-        "_archive_qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md",
-        "_archive_qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md",
+        "_archive_qmoi-enhanced/QCITYprodICEAUTOUPGRADE.md",
+        "_archive_qmoi-enhanced/QCITYprodICEAUTOUPGRADE.md",
         "_archive_qmoi-enhanced/QSERVERREADME.md",
         "_archive_qmoi-enhanced/QSERVERREADME.md"
       ],
@@ -12536,9 +12536,9 @@
     "data_accuracy": {
       "value": 100.0,
       "source_files": [
-        "QCITYDEVICEAUTOUPGRADE.md",
+        "QCITYprodICEAUTOUPGRADE.md",
         "QSERVERREADME.md",
-        "_archive_qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md",
+        "_archive_qmoi-enhanced/QCITYprodICEAUTOUPGRADE.md",
         "_archive_qmoi-enhanced/QSERVERREADME.md"
       ],
       "last_updated": "2026-03-24T19:33:57.625039",
@@ -12547,8 +12547,8 @@
     "uptime_and_reliability": {
       "value": 100.0,
       "source_files": [
-        "QCITYDEVICEAUTOUPGRADE.md",
-        "_archive_qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md"
+        "QCITYprodICEAUTOUPGRADE.md",
+        "_archive_qmoi-enhanced/QCITYprodICEAUTOUPGRADE.md"
       ],
       "last_updated": "2026-03-24T19:33:57.625084",
       "category": "reliability"
@@ -12557,11 +12557,11 @@
       "value": 100.0,
       "source_files": [
         "SESSION_COMPLETION_SUMMARY.md",
-        "PRODUCTION_READINESS_ENHANCED_REPORT.md",
-        "PRODUCTION_READINESS_ENHANCED_REPORT.md",
-        "PRODUCTION_READINESS_ENHANCED_REPORT.md",
+        "production_READINESS_ENHANCED_REPORT.md",
+        "production_READINESS_ENHANCED_REPORT.md",
+        "production_READINESS_ENHANCED_REPORT.md",
         "COMPREHENSIVE_ACTION_PLAN.md",
-        "FINAL_PRODUCTION_SUMMARY.md"
+        "FINAL_production_SUMMARY.md"
       ],
       "last_updated": "2026-03-24T19:33:57.625685",
       "category": "operational"
@@ -12615,7 +12615,7 @@
         "PHASE_3_TEST_COMPLETION_REPORT.md",
         "SECURITY_CHECKLIST.md",
         "COMPREHENSIVE_ERROR_ANALYSIS.md",
-        "PRODUCTION_RELEASE_DOCS_INDEX.md",
+        "production_RELEASE_DOCS_INDEX.md",
         "QMOI_V1_2_3_RELEASE_PLAN_SUMMARY.md",
         "COMPREHENSIVE_ACTION_PLAN.md",
         "ENHANCEDQVS.md",
@@ -12650,7 +12650,7 @@
     "code_coverage_targets": {
       "value": 70.0,
       "source_files": [
-        "README_PRODUCTION.md"
+        "README_production.md"
       ],
       "last_updated": "2026-03-24T19:33:57.714611",
       "category": "quality"
@@ -12729,7 +12729,7 @@
       "value": 100.0,
       "source_files": [
         "API_INTEGRATION_GUIDE.md",
-        "PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md"
+        "production_RELEASE_VALIDATION_CHECKLIST.md"
       ],
       "last_updated": "2026-03-24T19:33:57.737775",
       "category": "other"
@@ -12973,7 +12973,7 @@
     "match": {
       "value": 94.0,
       "source_files": [
-        "PRODUCTION_DEPLOYMENT_ALL_STEPS.md"
+        "production_DEPLOYMENT_ALL_STEPS.md"
       ],
       "last_updated": "2026-03-24T19:33:57.779312",
       "category": "other"
@@ -13173,7 +13173,7 @@
     "apple_commission": {
       "value": 30.0,
       "source_files": [
-        "QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md"
+        "QMOI_ADVANCED_VALIDATION_AUTOproduction.md"
       ],
       "last_updated": "2026-03-24T19:33:57.808612",
       "category": "other"
@@ -13181,7 +13181,7 @@
     "google_commission": {
       "value": 30.0,
       "source_files": [
-        "QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md"
+        "QMOI_ADVANCED_VALIDATION_AUTOproduction.md"
       ],
       "last_updated": "2026-03-24T19:33:57.808666",
       "category": "other"
@@ -13189,7 +13189,7 @@
     "revenue": {
       "value": 100.0,
       "source_files": [
-        "QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md"
+        "QMOI_ADVANCED_VALIDATION_AUTOproduction.md"
       ],
       "last_updated": "2026-03-24T19:33:57.808711",
       "category": "other"
@@ -13197,7 +13197,7 @@
     "idle": {
       "value": 2.0,
       "source_files": [
-        "PRODUCTION_DEPLOYMENT_READY.md",
+        "production_DEPLOYMENT_READY.md",
         "docs/MASTER_INDEX.md",
         "docs/IMPLEMENTATION_CHECKLIST.md"
       ],
@@ -13207,7 +13207,7 @@
     "during_operation": {
       "value": 20.0,
       "source_files": [
-        "PRODUCTION_DEPLOYMENT_READY.md",
+        "production_DEPLOYMENT_READY.md",
         "docs/MASTER_INDEX.md"
       ],
       "last_updated": "2026-03-24T19:33:57.810047",
@@ -13216,7 +13216,7 @@
     "qmoi_memory_warning": {
       "value": 80.0,
       "source_files": [
-        "PRODUCTION_DEPLOYMENT_READY.md",
+        "production_DEPLOYMENT_READY.md",
         "docs/QMOI_BACKGROUND_AUTOMATION_README.md",
         "docs/QMOI_BACKGROUND_AUTOMATION_README.md"
       ],
@@ -13226,7 +13226,7 @@
     "qmoi_disk_warning": {
       "value": 85.0,
       "source_files": [
-        "PRODUCTION_DEPLOYMENT_READY.md"
+        "production_DEPLOYMENT_READY.md"
       ],
       "last_updated": "2026-03-24T19:33:57.810139",
       "category": "performance"
@@ -13319,7 +13319,7 @@
     "production": {
       "value": 58.36,
       "source_files": [
-        "PRODUCTION_READINESS_ENHANCED_REPORT.md",
+        "production_READINESS_ENHANCED_REPORT.md",
         "FINAL_STATUS_TODOS_COMPLETE.md"
       ],
       "last_updated": "2026-03-24T19:33:57.816791",
@@ -13328,7 +13328,7 @@
     "through_systematic_marker_elimination": {
       "value": 100.0,
       "source_files": [
-        "PRODUCTION_READINESS_ENHANCED_REPORT.md"
+        "production_READINESS_ENHANCED_REPORT.md"
       ],
       "last_updated": "2026-03-24T19:33:57.817099",
       "category": "other"
@@ -13336,7 +13336,7 @@
     "readiness_level": {
       "value": 58.36,
       "source_files": [
-        "PRODUCTION_READINESS_ENHANCED_REPORT.md"
+        "production_READINESS_ENHANCED_REPORT.md"
       ],
       "last_updated": "2026-03-24T19:33:57.817150",
       "category": "operational"
@@ -13344,7 +13344,7 @@
     "are_documentation": {
       "value": 41.64,
       "source_files": [
-        "PRODUCTION_READINESS_ENHANCED_REPORT.md"
+        "production_READINESS_ENHANCED_REPORT.md"
       ],
       "last_updated": "2026-03-24T19:33:57.817215",
       "category": "other"
@@ -13805,8 +13805,8 @@
     "restored": {
       "value": 100.0,
       "source_files": [
-        "QMOIOWNDEVICE.md",
-        "_archive_qmoi-enhanced/QMOIOWNDEVICE.md"
+        "QMOIOWNprodICE.md",
+        "_archive_qmoi-enhanced/QMOIOWNprodICE.md"
       ],
       "last_updated": "2026-03-24T19:33:57.860924",
       "category": "other"
@@ -14087,7 +14087,7 @@
     "smaller_than_debug": {
       "value": 15.0,
       "source_files": [
-        "PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md"
+        "production_RELEASE_VALIDATION_CHECKLIST.md"
       ],
       "last_updated": "2026-03-24T19:33:57.879748",
       "category": "other"
@@ -14095,11 +14095,11 @@
     "rollout": {
       "value": 1.0,
       "source_files": [
-        "PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md",
-        "PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md",
-        "PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md",
-        "PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md",
-        "PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md"
+        "production_RELEASE_VALIDATION_CHECKLIST.md",
+        "production_RELEASE_VALIDATION_CHECKLIST.md",
+        "production_RELEASE_VALIDATION_CHECKLIST.md",
+        "production_RELEASE_VALIDATION_CHECKLIST.md",
+        "production_RELEASE_VALIDATION_CHECKLIST.md"
       ],
       "last_updated": "2026-03-24T19:33:57.879856",
       "category": "other"
@@ -14107,7 +14107,7 @@
     "with_no_major_issues": {
       "value": 100.0,
       "source_files": [
-        "PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md"
+        "production_RELEASE_VALIDATION_CHECKLIST.md"
       ],
       "last_updated": "2026-03-24T19:33:57.880188",
       "category": "other"
@@ -14168,7 +14168,7 @@
       "last_updated": "2026-03-24T19:33:57.937552",
       "category": "other"
     },
-    "connected_devices": {
+    "connected_prodices": {
       "value": 80.0,
       "source_files": [
         "QCITY-ENTERPRISE-COMPLETE.md"
@@ -14659,7 +14659,7 @@
       "last_updated": "2026-03-24T19:33:57.949547",
       "category": "other"
     },
-    "deviation\n______________frequency": {
+    "prodiation\n______________frequency": {
       "value": 10.0,
       "source_files": [
         "TRADINGREADME.md",
@@ -14692,7 +14692,7 @@
       "last_updated": "2026-03-24T19:33:57.949675",
       "category": "other"
     },
-    "deviation\n____________frequency": {
+    "prodiation\n____________frequency": {
       "value": 10.0,
       "source_files": [
         "TRADINGREADME.md",
@@ -14760,7 +14760,7 @@
     "code_quality": {
       "value": 100.0,
       "source_files": [
-        "FINAL_PRODUCTION_SUMMARY.md"
+        "FINAL_production_SUMMARY.md"
       ],
       "last_updated": "2026-03-24T19:33:57.953162",
       "category": "quality"
@@ -14768,7 +14768,7 @@
     "uptime_maintained": {
       "value": 99.9,
       "source_files": [
-        "FINAL_PRODUCTION_SUMMARY.md",
+        "FINAL_production_SUMMARY.md",
         "PHASE_4_SESSION_COMPLETION.md"
       ],
       "last_updated": "2026-03-24T19:33:57.953298",
@@ -14777,7 +14777,7 @@
     "transaction_failures": {
       "value": 1.0,
       "source_files": [
-        "FINAL_PRODUCTION_SUMMARY.md"
+        "FINAL_production_SUMMARY.md"
       ],
       "last_updated": "2026-03-24T19:33:57.953396",
       "category": "other"
@@ -14785,7 +14785,7 @@
     "feature_adoption": {
       "value": 95.0,
       "source_files": [
-        "FINAL_PRODUCTION_SUMMARY.md"
+        "FINAL_production_SUMMARY.md"
       ],
       "last_updated": "2026-03-24T19:33:57.953443",
       "category": "other"
@@ -14793,7 +14793,7 @@
     "of_code_quality_issues_resolved": {
       "value": 100.0,
       "source_files": [
-        "FINAL_PRODUCTION_SUMMARY.md"
+        "FINAL_production_SUMMARY.md"
       ],
       "last_updated": "2026-03-24T19:33:57.953748",
       "category": "quality"
@@ -14801,7 +14801,7 @@
     "uptime_capability": {
       "value": 99.9,
       "source_files": [
-        "FINAL_PRODUCTION_SUMMARY.md",
+        "FINAL_production_SUMMARY.md",
         "QCITY-README.md"
       ],
       "last_updated": "2026-03-24T19:33:57.953790",
@@ -15330,7 +15330,7 @@
     "of_critical": {
       "value": 100.0,
       "source_files": [
-        "PRODUCTION_READINESS_FINAL_AUDIT.md"
+        "production_READINESS_FINAL_AUDIT.md"
       ],
       "last_updated": "2026-03-24T19:33:58.033161",
       "category": "other"

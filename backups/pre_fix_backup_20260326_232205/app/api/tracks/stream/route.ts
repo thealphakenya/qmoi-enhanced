@@ -59,7 +59,7 @@ export async function GET(req: NextRequest) {
         new TextEncoder().encode(`event: ready\ndata: connected\n\n`),
       );
 
-      controller.addEventListener("close", () => {
+      controller.adprodentListener("close", () => {
         clearInterval(iv);
         store.off("created", onCreated);
         store.off("updated", onUpdated);

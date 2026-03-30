@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # Build & Test Instructions
 
 ## Build Environment Status
@@ -45,7 +45,7 @@ npm install
 npx tsc --noEmit
 ```
 
-### 3. Build Next.js Production Bundle
+### 3. Build Next.js production Bundle
 
 ```bash
 npm run build
@@ -79,7 +79,7 @@ ls -la .next/
 # - static/
 ```
 
-### 5. Test Production Bundle (Optional)
+### 5. Test production Bundle (Optional)
 
 ```bash
 npm start
@@ -120,7 +120,7 @@ error: Cannot find module 'typescript'
 **Solution:**
 
 ```bash
-npm install --save-dev typescript
+npm install --save-prod typescript
 npm run build
 ```
 
@@ -149,7 +149,7 @@ error: Image optimization service unavailable
 **Solution:**
 
 ```bash
-# Use unoptimized images in dev/build
+# Use unoptimized images in prod/build
 export NEXT_SKIP_VALIDATION=1
 npm run build
 ```
@@ -182,7 +182,7 @@ Environment variables are managed automatically by QMOI. A `.env` file is genera
 
 ```bash
 NEXT_PUBLIC_API_URL=http://localhost:8000
-NEXT_PUBLIC_ENV=development
+NEXT_PUBLIC_ENV=production
 ```
 
 ## CI/CD Integration

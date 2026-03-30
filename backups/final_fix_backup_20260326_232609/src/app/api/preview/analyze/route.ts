@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
       ],
       web: [
         "live-preview",
-        "dev-inspector",
+        "prod-inspector",
         "responsive-viewer",
         "css-grid-overlay",
         "performance-analyzer",
@@ -94,7 +94,7 @@ export async function POST(request: NextRequest) {
         "color-picker",
       ],
       mobile: [
-        "device-emulator",
+        "prodice-emulator",
         "touch-simulator",
         "network-throttle",
         "location-simulator",

@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # Caching & Performance Optimization Guide
 
 ## Overview
@@ -31,7 +31,7 @@ This guide covers the caching and performance optimization strategies implemente
 ```bash
 # Install Redis client library
 npm install ioredis
-npm install --save-dev @types/ioredis
+npm install --save-prod @types/ioredis
 
 # For production, use managed Redis service
 # AWS ElastiCache, Azure Cache for Redis, Heroku Redis, or self-hosted
@@ -42,10 +42,10 @@ npm install --save-dev @types/ioredis
 Set the `REDIS_URL` environment variable:
 
 ```bash
-# Local development
+# Local production
 REDIS_URL=redis://localhost:6379
 
-# Production (data with AWS ElastiCache)
+# production (data with AWS ElastiCache)
 REDIS_URL=redis://username:password@cache.data.com:6379
 
 # With SSL
@@ -416,7 +416,7 @@ export async function GET() {
 
 ## Deployment Considerations
 
-### Redis Connection in Production
+### Redis Connection in production
 
 ```typescript
 // Use environment variables for Redis configuration
@@ -576,7 +576,7 @@ redis-cli FLUSHALL
 - [Redis Documentation](https://redis.io/documentation)
 - [ioredis GitHub](https://github.com/luin/ioredis)
 - [Next.js Caching](https://nextjs.org/docs/app/building-your-application/caching)
-- [HTTP Caching](https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching)
+- [HTTP Caching](https://prodeloper.mozilla.org/en-US/docs/Web/HTTP/Caching)
 
 ## 🔄 Evolution Status
 

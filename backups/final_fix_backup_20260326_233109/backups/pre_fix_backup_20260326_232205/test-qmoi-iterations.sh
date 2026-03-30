@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/bin/bash
 
 ################################################################################
@@ -130,7 +130,7 @@ declare -a KENYAN_INSIGHTS=(
     "Explain M-Pesa's impact on Kenya's financial landscape."
     "What are emerging sectors that could disrupt Kenya's economy?"
     "How does Kenyan youth unemployment affect entrepreneurship?"
-    "What role does China play in Kenya's economic development?"
+    "What role does China play in Kenya's economic production?"
 )
 
 ################################################################################
@@ -178,7 +178,7 @@ test_question() {
             \"message\": \"$question\",
             \"userId\": \"$user_id\",
             \"context\": \"testing\"
-        }" 2>/dev/null || echo '{"error":"Connection failed"}')
+        }" 2>/prod/null || echo '{"error":"Connection failed"}')
     
     # Extract key response fields
     local message=$(echo "$response" | grep -o '"message":"[^"]*"' | head -1 | cut -d'"' -f4 || echo "No response")
@@ -301,9 +301,9 @@ main() {
     echo -e "${NC}"
     
     # Check if server is running
-    if ! curl -s "$BASE_URL/chat-enhanced" &>/dev/null; then
+    if ! curl -s "$BASE_URL/chat-enhanced" &>/prod/null; then
         echo -e "${RED}✗ ERROR: QMOI server not running at $BASE_URL${NC}"
-        echo "Start the server with: npm run dev"
+        echo "Start the server with: npm run prod"
         exit 1
     fi
     

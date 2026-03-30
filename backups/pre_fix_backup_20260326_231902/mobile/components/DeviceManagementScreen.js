@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 4 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 4 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 import React, { useState, useEffect } from 'react';
 import {
   View,
@@ -21,14 +21,14 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const DeviceManagementScreen = ({ userRole }) => {
-  const [devices, setDevices] = useState([]);
+const prodiceManagementScreen = ({ userRole }) => {
+  const [prodices, setprodices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
-  const [showAddDevice, setShowAddDevice] = useState(false);
-  const [showDeviceDetails, setShowDeviceDetails] = useState(false);
-  const [selectedDevice, setSelectedDevice] = useState(null);
-  const [newDevice, setNewDevice] = useState({
+  const [showAddprodice, setShowAddprodice] = useState(false);
+  const [showprodiceDetails, setShowprodiceDetails] = useState(false);
+  const [selectedprodice, setSelectedprodice] = useState(null);
+  const [newprodice, setNewprodice] = useState({
     name: '',
     type: 'computer',
     ip: '',
@@ -36,17 +36,17 @@ const DeviceManagementScreen = ({ userRole }) => {
     description: ''
   });
 
-  const deviceTypes = [
+  const prodiceTypes = [
     { key: 'computer', label: 'Computer', icon: 'computer' },
     { key: 'server', label: 'Server', icon: 'dns' },
-    { key: 'mobile', label: 'Mobile Device', icon: 'smartphone' },
+    { key: 'mobile', label: 'Mobile prodice', icon: 'smartphone' },
     { key: 'tablet', label: 'Tablet', icon: 'tablet' },
-    { key: 'iot', label: 'IoT Device', icon: 'sensors' },
+    { key: 'iot', label: 'IoT prodice', icon: 'sensors' },
     { key: 'camera', label: 'Camera', icon: 'videocam' },
     { key: 'sensor', label: 'Sensor', icon: 'sensors' }
   ];
 
-  const deviceStatuses = {
+  const prodiceStatuses = {
     online: { color: '#4CAF50', label: 'Online' },
     offline: { color: '#F44336', label: 'Offline' },
     warning: { color: '#FF9800', label: 'Warning' },
@@ -54,18 +54,18 @@ const DeviceManagementScreen = ({ userRole }) => {
   };
 
   useEffect(() => {
-    loadDevices();
+    loadprodices();
   }, []);
 
-  const loadDevices = async () => {
+  const loadprodices = async () => {
     try {
       setLoading(true);
-      const storedDevices = await AsyncStorage.getItem('qmoi_devices');
-      if (storedDevices) {
-        setDevices(JSON.parse(storedDevices));
+      const storedprodices = await AsyncStorage.getItem('qmoi_prodices');
+      if (storedprodices) {
+        setprodices(JSON.parse(storedprodices));
       } else {
-        // Initialize with default devices
-        const defaultDevices = [
+        // Initialize with default prodices
+        const defaultprodices = [
           {
             id: '1',
             name: 'QMOI Main Server',
@@ -87,12 +87,12 @@ const DeviceManagementScreen = ({ userRole }) => {
           },
           {
             id: '2',
-            name: 'Development Machine',
+            name: 'production Machine',
             type: 'computer',
             ip: '192.168.1.101',
             port: '3001',
             status: 'online',
-            description: 'Development environment',
+            description: 'production environment',
             lastSeen: new Date().toISOString(),
             permissions: ['read', 'write'],
             owner: 'sister',
@@ -124,12 +124,12 @@ const DeviceManagementScreen = ({ userRole }) => {
             }
           }
         ];
-        setDevices(defaultDevices);
-        await AsyncStorage.setItem('qmoi_devices', JSON.stringify(defaultDevices));
+        setprodices(defaultprodices);
+        await AsyncStorage.setItem('qmoi_prodices', JSON.stringify(defaultprodices));
       }
     } catch (error) {
-      console.error('Error loading devices:', error);
-      Alert.alert('Error', 'Failed to load devices');
+      console.error('Error loading prodices:', error);
+      Alert.alert('Error', 'Failed to load prodices');
     } finally {
       setLoading(false);
     }
@@ -137,20 +137,20 @@ const DeviceManagementScreen = ({ userRole }) => {
 
   const onRefresh = async () => {
     setRefreshing(true);
-    await loadDevices();
+    await loadprodices();
     setRefreshing(false);
   };
 
-  const addDevice = async () => {
-    if (!newDevice.name || !newDevice.ip) {
+  const addprodice = async () => {
+    if (!newprodice.name || !newprodice.ip) {
       Alert.alert('Error', 'Name and IP are required');
       return;
     }
 
     try {
-      const device = {
+      const prodice = {
         id: Date.now().toString(),
-        ...newDevice,
+        ...newprodice,
         status: 'offline',
         lastSeen: new Date().toISOString(),
         permissions: ['read'],
@@ -164,24 +164,24 @@ const DeviceManagementScreen = ({ userRole }) => {
         }
       };
 
-      const updatedDevices = [...devices, device];
-      setDevices(updatedDevices);
-      await AsyncStorage.setItem('qmoi_devices', JSON.stringify(updatedDevices));
+      const updatedprodices = [...prodices, prodice];
+      setprodices(updatedprodices);
+      await AsyncStorage.setItem('qmoi_prodices', JSON.stringify(updatedprodices));
       
-      setNewDevice({ name: '', type: 'computer', ip: '', port: '3000', description: '' });
-      setShowAddDevice(false);
+      setNewprodice({ name: '', type: 'computer', ip: '', port: '3000', description: '' });
+      setShowAddprodice(false);
       
-      Alert.alert('Success', 'Device added successfully');
+      Alert.alert('Success', 'prodice added successfully');
     } catch (error) {
-      console.error('Error adding device:', error);
-      Alert.alert('Error', 'Failed to add device');
+      console.error('Error adding prodice:', error);
+      Alert.alert('Error', 'Failed to add prodice');
     }
   };
 
-  const removeDevice = async (deviceId) => {
+  const removeprodice = async (prodiceId) => {
     Alert.alert(
-      'Remove Device',
-      'Are you sure you want to remove this device?',
+      'Remove prodice',
+      'Are you sure you want to remove this prodice?',
       [
         { text: 'Cancel', style: 'cancel' },
         {
@@ -189,13 +189,13 @@ const DeviceManagementScreen = ({ userRole }) => {
           style: 'destructive',
           onPress: async () => {
             try {
-              const updatedDevices = devices.filter(d => d.id !== deviceId);
-              setDevices(updatedDevices);
-              await AsyncStorage.setItem('qmoi_devices', JSON.stringify(updatedDevices));
-              Alert.alert('Success', 'Device removed successfully');
+              const updatedprodices = prodices.filter(d => d.id !== prodiceId);
+              setprodices(updatedprodices);
+              await AsyncStorage.setItem('qmoi_prodices', JSON.stringify(updatedprodices));
+              Alert.alert('Success', 'prodice removed successfully');
             } catch (error) {
-              console.error('Error removing device:', error);
-              Alert.alert('Error', 'Failed to remove device');
+              console.error('Error removing prodice:', error);
+              Alert.alert('Error', 'Failed to remove prodice');
             }
           }
         }
@@ -203,22 +203,22 @@ const DeviceManagementScreen = ({ userRole }) => {
     );
   };
 
-  const updateDeviceStatus = async (deviceId, status) => {
+  const updateprodiceStatus = async (prodiceId, status) => {
     try {
-      const updatedDevices = devices.map(d => 
-        d.id === deviceId ? { ...d, status, lastSeen: new Date().toISOString() } : d
+      const updatedprodices = prodices.map(d => 
+        d.id === prodiceId ? { ...d, status, lastSeen: new Date().toISOString() } : d
       );
-      setDevices(updatedDevices);
-      await AsyncStorage.setItem('qmoi_devices', JSON.stringify(updatedDevices));
+      setprodices(updatedprodices);
+      await AsyncStorage.setItem('qmoi_prodices', JSON.stringify(updatedprodices));
     } catch (error) {
-      console.error('Error updating device status:', error);
+      console.error('Error updating prodice status:', error);
     }
   };
 
-  const toggleDevicePermission = async (deviceId, permission) => {
+  const toggleprodicePermission = async (prodiceId, permission) => {
     try {
-      const updatedDevices = devices.map(d => {
-        if (d.id === deviceId) {
+      const updatedprodices = prodices.map(d => {
+        if (d.id === prodiceId) {
           const permissions = d.permissions.includes(permission)
             ? d.permissions.filter(p => p !== permission)
             : [...d.permissions, permission];
@@ -226,47 +226,47 @@ const DeviceManagementScreen = ({ userRole }) => {
         }
         return d;
       });
-      setDevices(updatedDevices);
-      await AsyncStorage.setItem('qmoi_devices', JSON.stringify(updatedDevices));
+      setprodices(updatedprodices);
+      await AsyncStorage.setItem('qmoi_prodices', JSON.stringify(updatedprodices));
     } catch (error) {
-      console.error('Error updating device permissions:', error);
+      console.error('Error updating prodice permissions:', error);
     }
   };
 
-  const renderDeviceCard = ({ item }) => {
-    const status = deviceStatuses[item.status];
-    const deviceType = deviceTypes.find(t => t.key === item.type);
+  const renderprodiceCard = ({ item }) => {
+    const status = prodiceStatuses[item.status];
+    const prodiceType = prodiceTypes.find(t => t.key === item.type);
 
     return (
       <TouchableOpacity
-        style={styles.deviceCard}
+        style={styles.prodiceCard}
         onPress={() => {
-          setSelectedDevice(item);
-          setShowDeviceDetails(true);
+          setSelectedprodice(item);
+          setShowprodiceDetails(true);
         }}
       >
-        <View style={styles.deviceHeader}>
-          <View style={styles.deviceInfo}>
-            <Icon name={deviceType?.icon || 'devices'} size={24} color="#2196F3" />
-            <View style={styles.deviceText}>
-              <Text style={styles.deviceName}>{item.name}</Text>
-              <Text style={styles.deviceType}>{deviceType?.label}</Text>
+        <View style={styles.prodiceHeader}>
+          <View style={styles.prodiceInfo}>
+            <Icon name={prodiceType?.icon || 'prodices'} size={24} color="#2196F3" />
+            <View style={styles.prodiceText}>
+              <Text style={styles.prodiceName}>{item.name}</Text>
+              <Text style={styles.prodiceType}>{prodiceType?.label}</Text>
             </View>
           </View>
-          <View style={styles.deviceStatus}>
+          <View style={styles.prodiceStatus}>
             <View style={[styles.statusDot, { backgroundColor: status.color }]} />
             <Text style={styles.statusText}>{status.label}</Text>
           </View>
         </View>
 
-        <View style={styles.deviceDetails}>
-          <Text style={styles.deviceIp}>{item.ip}:{item.port}</Text>
-          <Text style={styles.deviceDescription} numberOfLines={2}>
+        <View style={styles.prodiceDetails}>
+          <Text style={styles.prodiceIp}>{item.ip}:{item.port}</Text>
+          <Text style={styles.prodiceDescription} numberOfLines={2}>
             {item.description}
           </Text>
         </View>
 
-        <View style={styles.deviceMetrics}>
+        <View style={styles.prodiceMetrics}>
           <View style={styles.metric}>
             <Text style={styles.metricLabel}>CPU</Text>
             <Text style={styles.metricValue}>{item.metrics.cpu}%</Text>
@@ -282,10 +282,10 @@ const DeviceManagementScreen = ({ userRole }) => {
         </View>
 
         {userRole === 'master' && (
-          <View style={styles.deviceActions}>
+          <View style={styles.prodiceActions}>
             <TouchableOpacity
               style={[styles.actionButton, styles.statusButton]}
-              onPress={() => updateDeviceStatus(item.id, item.status === 'online' ? 'offline' : 'online')}
+              onPress={() => updateprodiceStatus(item.id, item.status === 'online' ? 'offline' : 'online')}
             >
               <Icon name={item.status === 'online' ? 'power-settings-new' : 'power'} size={16} color="#FFF" />
               <Text style={styles.actionText}>
@@ -295,7 +295,7 @@ const DeviceManagementScreen = ({ userRole }) => {
             
             <TouchableOpacity
               style={[styles.actionButton, styles.removeButton]}
-              onPress={() => removeDevice(item.id)}
+              onPress={() => removeprodice(item.id)}
             >
               <Icon name="delete" size={16} color="#FFF" />
               <Text style={styles.actionText}>Remove</Text>
@@ -306,46 +306,46 @@ const DeviceManagementScreen = ({ userRole }) => {
     );
   };
 
-  const renderAddDeviceModal = () => (
+  const renderAddprodiceModal = () => (
     <Modal
-      visible={showAddDevice}
+      visible={showAddprodice}
       animationType="slide"
       transparent={true}
-      onRequestClose={() => setShowAddDevice(false)}
+      onRequestClose={() => setShowAddprodice(false)}
     >
       <View style={styles.modalOverlay}>
         <View style={styles.modalContent}>
           <View style={styles.modalHeader}>
-            <Text style={styles.modalTitle}>Add New Device</Text>
-            <TouchableOpacity onPress={() => setShowAddDevice(false)}>
+            <Text style={styles.modalTitle}>Add New prodice</Text>
+            <TouchableOpacity onPress={() => setShowAddprodice(false)}>
               <Icon name="close" size={24} color="#666" />
             </TouchableOpacity>
           </View>
 
           <ScrollView style={styles.modalBody}>
-            <Text style={styles.inputLabel}>Device Name *</Text>
+            <Text style={styles.inputLabel}>prodice Name *</Text>
             <TextInput
               style={styles.input}
-              value={newDevice.name}
-              onChangeText={(text) => setNewDevice({ ...newDevice, name: text })}
-              [PRODUCTION IMPLEMENTATION REQUIRED]="Enter device name"
+              value={newprodice.name}
+              onChangeText={(text) => setNewprodice({ ...newprodice, name: text })}
+              [production IMPLEMENTATION REQUIRED]="Enter prodice name"
             />
 
-            <Text style={styles.inputLabel}>Device Type</Text>
+            <Text style={styles.inputLabel}>prodice Type</Text>
             <View style={styles.typeSelector}>
-              {deviceTypes.map(type => (
+              {prodiceTypes.map(type => (
                 <TouchableOpacity
                   key={type.key}
                   style={[
                     styles.typeOption,
-                    newDevice.type === type.key && styles.typeOptionSelected
+                    newprodice.type === type.key && styles.typeOptionSelected
                   ]}
-                  onPress={() => setNewDevice({ ...newDevice, type: type.key })}
+                  onPress={() => setNewprodice({ ...newprodice, type: type.key })}
                 >
-                  <Icon name={type.icon} size={20} color={newDevice.type === type.key ? "#FFF" : "#666"} />
+                  <Icon name={type.icon} size={20} color={newprodice.type === type.key ? "#FFF" : "#666"} />
                   <Text style={[
                     styles.typeOptionText,
-                    newDevice.type === type.key && styles.typeOptionTextSelected
+                    newprodice.type === type.key && styles.typeOptionTextSelected
                   ]}>
                     {type.label}
                   </Text>
@@ -356,27 +356,27 @@ const DeviceManagementScreen = ({ userRole }) => {
             <Text style={styles.inputLabel}>IP Address *</Text>
             <TextInput
               style={styles.input}
-              value={newDevice.ip}
-              onChangeText={(text) => setNewDevice({ ...newDevice, ip: text })}
-              [PRODUCTION IMPLEMENTATION REQUIRED]="192.168.1.100"
+              value={newprodice.ip}
+              onChangeText={(text) => setNewprodice({ ...newprodice, ip: text })}
+              [production IMPLEMENTATION REQUIRED]="192.168.1.100"
               keyboardType="numeric"
             />
 
             <Text style={styles.inputLabel}>Port</Text>
             <TextInput
               style={styles.input}
-              value={newDevice.port}
-              onChangeText={(text) => setNewDevice({ ...newDevice, port: text })}
-              [PRODUCTION IMPLEMENTATION REQUIRED]="3000"
+              value={newprodice.port}
+              onChangeText={(text) => setNewprodice({ ...newprodice, port: text })}
+              [production IMPLEMENTATION REQUIRED]="3000"
               keyboardType="numeric"
             />
 
             <Text style={styles.inputLabel}>Description</Text>
             <TextInput
               style={[styles.input, styles.textArea]}
-              value={newDevice.description}
-              onChangeText={(text) => setNewDevice({ ...newDevice, description: text })}
-              [PRODUCTION IMPLEMENTATION REQUIRED]="Device description"
+              value={newprodice.description}
+              onChangeText={(text) => setNewprodice({ ...newprodice, description: text })}
+              [production IMPLEMENTATION REQUIRED]="prodice description"
               multiline
               numberOfLines={3}
             />
@@ -385,15 +385,15 @@ const DeviceManagementScreen = ({ userRole }) => {
           <View style={styles.modalFooter}>
             <TouchableOpacity
               style={[styles.modalButton, styles.cancelButton]}
-              onPress={() => setShowAddDevice(false)}
+              onPress={() => setShowAddprodice(false)}
             >
               <Text style={styles.cancelButtonText}>Cancel</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[styles.modalButton, styles.addButton]}
-              onPress={addDevice}
+              onPress={addprodice}
             >
-              <Text style={styles.addButtonText}>Add Device</Text>
+              <Text style={styles.addButtonText}>Add prodice</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -401,58 +401,58 @@ const DeviceManagementScreen = ({ userRole }) => {
     </Modal>
   );
 
-  const renderDeviceDetailsModal = () => (
+  const renderprodiceDetailsModal = () => (
     <Modal
-      visible={showDeviceDetails}
+      visible={showprodiceDetails}
       animationType="slide"
       transparent={true}
-      onRequestClose={() => setShowDeviceDetails(false)}
+      onRequestClose={() => setShowprodiceDetails(false)}
     >
       <View style={styles.modalOverlay}>
         <View style={styles.modalContent}>
           <View style={styles.modalHeader}>
-            <Text style={styles.modalTitle}>Device Details</Text>
-            <TouchableOpacity onPress={() => setShowDeviceDetails(false)}>
+            <Text style={styles.modalTitle}>prodice Details</Text>
+            <TouchableOpacity onPress={() => setShowprodiceDetails(false)}>
               <Icon name="close" size={24} color="#666" />
             </TouchableOpacity>
           </View>
 
-          {selectedDevice && (
+          {selectedprodice && (
             <ScrollView style={styles.modalBody}>
               <View style={styles.detailSection}>
                 <Text style={styles.sectionTitle}>comprehensive Information</Text>
                 <View style={styles.detailRow}>
                   <Text style={styles.detailLabel}>Name:</Text>
-                  <Text style={styles.detailValue}>{selectedDevice.name}</Text>
+                  <Text style={styles.detailValue}>{selectedprodice.name}</Text>
                 </View>
                 <View style={styles.detailRow}>
                   <Text style={styles.detailLabel}>Type:</Text>
                   <Text style={styles.detailValue}>
-                    {deviceTypes.find(t => t.key === selectedDevice.type)?.label}
+                    {prodiceTypes.find(t => t.key === selectedprodice.type)?.label}
                   </Text>
                 </View>
                 <View style={styles.detailRow}>
                   <Text style={styles.detailLabel}>IP Address:</Text>
-                  <Text style={styles.detailValue}>{selectedDevice.ip}:{selectedDevice.port}</Text>
+                  <Text style={styles.detailValue}>{selectedprodice.ip}:{selectedprodice.port}</Text>
                 </View>
                 <View style={styles.detailRow}>
                   <Text style={styles.detailLabel}>Status:</Text>
                   <View style={styles.statusDisplay}>
                     <View style={[
                       styles.statusDot,
-                      { backgroundColor: deviceStatuses[selectedDevice.status].color }
+                      { backgroundColor: prodiceStatuses[selectedprodice.status].color }
                     ]} />
-                    <Text style={styles.detailValue}>{deviceStatuses[selectedDevice.status].label}</Text>
+                    <Text style={styles.detailValue}>{prodiceStatuses[selectedprodice.status].label}</Text>
                   </View>
                 </View>
                 <View style={styles.detailRow}>
                   <Text style={styles.detailLabel}>Owner:</Text>
-                  <Text style={styles.detailValue}>{selectedDevice.owner}</Text>
+                  <Text style={styles.detailValue}>{selectedprodice.owner}</Text>
                 </View>
                 <View style={styles.detailRow}>
                   <Text style={styles.detailLabel}>Last Seen:</Text>
                   <Text style={styles.detailValue}>
-                    {new Date(selectedDevice.lastSeen).toLocaleString()}
+                    {new Date(selectedprodice.lastSeen).toLocaleString()}
                   </Text>
                 </View>
               </View>
@@ -462,30 +462,30 @@ const DeviceManagementScreen = ({ userRole }) => {
                 <View style={styles.metricsGrid}>
                   <View style={styles.metricCard}>
                     <Text style={styles.metricTitle}>CPU Usage</Text>
-                    <Text style={styles.metricValue}>{selectedDevice.metrics.cpu}%</Text>
+                    <Text style={styles.metricValue}>{selectedprodice.metrics.cpu}%</Text>
                     <View style={styles.progressBar}>
-                      <View style={[styles.progressFill, { width: `${selectedDevice.metrics.cpu}%` }]} />
+                      <View style={[styles.progressFill, { width: `${selectedprodice.metrics.cpu}%` }]} />
                     </View>
                   </View>
                   <View style={styles.metricCard}>
                     <Text style={styles.metricTitle}>Memory Usage</Text>
-                    <Text style={styles.metricValue}>{selectedDevice.metrics.memory}%</Text>
+                    <Text style={styles.metricValue}>{selectedprodice.metrics.memory}%</Text>
                     <View style={styles.progressBar}>
-                      <View style={[styles.progressFill, { width: `${selectedDevice.metrics.memory}%` }]} />
+                      <View style={[styles.progressFill, { width: `${selectedprodice.metrics.memory}%` }]} />
                     </View>
                   </View>
                   <View style={styles.metricCard}>
                     <Text style={styles.metricTitle}>Disk Usage</Text>
-                    <Text style={styles.metricValue}>{selectedDevice.metrics.disk}%</Text>
+                    <Text style={styles.metricValue}>{selectedprodice.metrics.disk}%</Text>
                     <View style={styles.progressBar}>
-                      <View style={[styles.progressFill, { width: `${selectedDevice.metrics.disk}%` }]} />
+                      <View style={[styles.progressFill, { width: `${selectedprodice.metrics.disk}%` }]} />
                     </View>
                   </View>
                   <View style={styles.metricCard}>
                     <Text style={styles.metricTitle}>Network</Text>
-                    <Text style={styles.metricValue}>{selectedDevice.metrics.network}%</Text>
+                    <Text style={styles.metricValue}>{selectedprodice.metrics.network}%</Text>
                     <View style={styles.progressBar}>
-                      <View style={[styles.progressFill, { width: `${selectedDevice.metrics.network}%` }]} />
+                      <View style={[styles.progressFill, { width: `${selectedprodice.metrics.network}%` }]} />
                     </View>
                   </View>
                 </View>
@@ -498,10 +498,10 @@ const DeviceManagementScreen = ({ userRole }) => {
                     <View key={permission} style={styles.permissionRow}>
                       <Text style={styles.permissionLabel}>{permission.toUpperCase()}</Text>
                       <Switch
-                        value={selectedDevice.permissions.includes(permission)}
-                        onValueChange={() => toggleDevicePermission(selectedDevice.id, permission)}
+                        value={selectedprodice.permissions.includes(permission)}
+                        onValueChange={() => toggleprodicePermission(selectedprodice.id, permission)}
                         trackColor={{ false: '#767577', true: '#81b0ff' }}
-                        thumbColor={selectedDevice.permissions.includes(permission) ? '#2196F3' : '#f4f3f4'}
+                        thumbColor={selectedprodice.permissions.includes(permission) ? '#2196F3' : '#f4f3f4'}
                       />
                     </View>
                   ))}
@@ -510,7 +510,7 @@ const DeviceManagementScreen = ({ userRole }) => {
 
               <View style={styles.detailSection}>
                 <Text style={styles.sectionTitle}>Description</Text>
-                <Text style={styles.descriptionText}>{selectedDevice.description}</Text>
+                <Text style={styles.descriptionText}>{selectedprodice.description}</Text>
               </View>
             </ScrollView>
           )}
@@ -518,7 +518,7 @@ const DeviceManagementScreen = ({ userRole }) => {
           <View style={styles.modalFooter}>
             <TouchableOpacity
               style={[styles.modalButton, styles.closeButton]}
-              onPress={() => setShowDeviceDetails(false)}
+              onPress={() => setShowprodiceDetails(false)}
             >
               <Text style={styles.closeButtonText}>Close</Text>
             </TouchableOpacity>
@@ -531,7 +531,7 @@ const DeviceManagementScreen = ({ userRole }) => {
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <Text style={styles.loadingText}>Loading devices...</Text>
+        <Text style={styles.loadingText}>Loading prodices...</Text>
       </View>
     );
   }
@@ -539,11 +539,11 @@ const DeviceManagementScreen = ({ userRole }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Device Management</Text>
+        <Text style={styles.title}>prodice Management</Text>
         {userRole === 'master' && (
           <TouchableOpacity
             style={styles.addButton}
-            onPress={() => setShowAddDevice(true)}
+            onPress={() => setShowAddprodice(true)}
           >
             <Icon name="add" size={24} color="#FFF" />
           </TouchableOpacity>
@@ -552,36 +552,36 @@ const DeviceManagementScreen = ({ userRole }) => {
 
       <View style={styles.statsContainer}>
         <View style={styles.statCard}>
-          <Text style={styles.statNumber}>{devices.length}</Text>
-          <Text style={styles.statLabel}>Total Devices</Text>
+          <Text style={styles.statNumber}>{prodices.length}</Text>
+          <Text style={styles.statLabel}>Total prodices</Text>
         </View>
         <View style={styles.statCard}>
           <Text style={styles.statNumber}>
-            {devices.filter(d => d.status === 'online').length}
+            {prodices.filter(d => d.status === 'online').length}
           </Text>
           <Text style={styles.statLabel}>Online</Text>
         </View>
         <View style={styles.statCard}>
           <Text style={styles.statNumber}>
-            {devices.filter(d => d.status === 'warning').length}
+            {prodices.filter(d => d.status === 'warning').length}
           </Text>
           <Text style={styles.statLabel}>Warnings</Text>
         </View>
       </View>
 
       <FlatList
-        data={devices}
-        renderItem={renderDeviceCard}
+        data={prodices}
+        renderItem={renderprodiceCard}
         keyExtractor={(item) => item.id}
-        style={styles.deviceList}
+        style={styles.prodiceList}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
         showsVerticalScrollIndicator={false}
       />
 
-      {renderAddDeviceModal()}
-      {renderDeviceDetailsModal()}
+      {renderAddprodiceModal()}
+      {renderprodiceDetailsModal()}
     </View>
   );
 };
@@ -649,11 +649,11 @@ const styles = StyleSheet.create({
     color: '#666',
     marginTop: 5,
   },
-  deviceList: {
+  prodiceList: {
     flex: 1,
     padding: 20,
   },
-  deviceCard: {
+  prodiceCard: {
     backgroundColor: '#FFF',
     borderRadius: 10,
     padding: 15,
@@ -664,31 +664,31 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
-  deviceHeader: {
+  prodiceHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 10,
   },
-  deviceInfo: {
+  prodiceInfo: {
     flexDirection: 'row',
     alignItems: 'center',
     flex: 1,
   },
-  deviceText: {
+  prodiceText: {
     marginLeft: 10,
     flex: 1,
   },
-  deviceName: {
+  prodiceName: {
     fontSize: 16,
     fontWeight: 'bold',
     color: '#333',
   },
-  deviceType: {
+  prodiceType: {
     fontSize: 12,
     color: '#666',
   },
-  deviceStatus: {
+  prodiceStatus: {
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -702,20 +702,20 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#666',
   },
-  deviceDetails: {
+  prodiceDetails: {
     marginBottom: 10,
   },
-  deviceIp: {
+  prodiceIp: {
     fontSize: 14,
     color: '#666',
     fontFamily: 'monospace',
   },
-  deviceDescription: {
+  prodiceDescription: {
     fontSize: 12,
     color: '#999',
     marginTop: 5,
   },
-  deviceMetrics: {
+  prodiceMetrics: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginBottom: 10,
@@ -732,7 +732,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333',
   },
-  deviceActions: {
+  prodiceActions: {
     flexDirection: 'row',
     gap: 10,
   },
@@ -941,4 +941,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DeviceManagementScreen; 
+export default prodiceManagementScreen; 

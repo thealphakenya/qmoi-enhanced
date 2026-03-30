@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:53Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env python3
 """
 Google Colab Automation Script
@@ -81,7 +81,7 @@ class ColabAutomation:
                 # Set GPU memory growth
                 gpu_script = """
 import tensorflow as tf
-gpus = tf.config.production.list_physical_devices('GPU')
+gpus = tf.config.production.list_physical_prodices('GPU')
 if gpus:
     try:
         for gpu in gpus:

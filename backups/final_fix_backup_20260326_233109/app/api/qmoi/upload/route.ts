@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 
 /**
@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
     const fileId = `file-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
     const fileName = `${fileId}-${file.name}`;
 
-    // Production implementation: resolve // Production implementation: items
+    // production implementation: resolve // production implementation: items
     const fileData = {
       id: fileId,
       name: file.name,

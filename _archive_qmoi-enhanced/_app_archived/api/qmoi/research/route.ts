@@ -22,19 +22,19 @@ export default async function handler(
         case "research":
           
           return res.status(200).json({
-            result: "Research result (// Production implementation required:)",
+            result: "Research result (// production implementation required:)",
           });
         case "verify":
           
           return res.status(200).json({
             result:
-              "Verification result (// Production implementation required:)",
+              "Verification result (// production implementation required:)",
           });
         case "earning-opportunities":
           
           return res.status(200).json({
             result:
-              "Earning opportunities result (// Production implementation required:)",
+              "Earning opportunities result (// production implementation required:)",
           });
         default:
           return res.status(400).json({ error: "Unknown action" });

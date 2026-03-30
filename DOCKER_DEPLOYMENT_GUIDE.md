@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # 🐳 Docker Deployment Guide — Run Anywhere, Anytime
 
-**Status:** ✅ **CONTAINERIZED PRODUCTION READY**  
+**Status:** ✅ **CONTAINERIZED production READY**  
 **Date:** November 11, 2025  
 **Runs:** Docker, Kubernetes, AWS ECS, Railway, Render, etc.
 
@@ -440,7 +440,7 @@ restart_policy:
 
 ---
 
-## 🚀 PRODUCTION CHECKLIST
+## 🚀 production CHECKLIST
 
 - [ ] Dockerfile created and tested
 - [ ] Image built successfully

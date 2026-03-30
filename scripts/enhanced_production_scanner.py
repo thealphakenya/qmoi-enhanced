@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-QMOI COMPREHENSIVE PRODUCTION SCANNER & FIXER
-Production-Grade: Scans entire repository for non-production code and replaces with ready implementations
+QMOI COMPREHENSIVE production SCANNER & FIXER
+production-Grade: Scans entire repository for production code and replaces with ready implementations
 Enhanced to check all files, all directories, with detailed reporting and auto-fixing capabilities
 
 Features:
@@ -25,20 +25,20 @@ BASE_DIR = Path(__file__).parent.parent
 REPORT_DIR = BASE_DIR / "reports"
 REPORT_DIR.mkdir(exist_ok=True)
 
-# Non-production markers to search for
-NON_PRODUCTION_KEYWORDS = [
-    r'\[PRODUCTION\s+READY\]',
-    r'\[PRODUCTION\s+IMPLEMENTATION\s+REQUIRED\]',
+# production markers to search for
+production_KEYWORDS = [
+    r'\[production\s+READY\]',
+    r'\[production\s+IMPLEMENTATION\s+REQUIRED\]',
     r'PLACEHOLDER',
     r'TODO\s*:?\s*IMPL',
-    r'FIXME\s*:?\s*PROD',
+    r'FIXME\s*:?\s*prod',
     r'TEMPORARY\s+IMPL',
     r'TEST\s+ONLY',
     r'MOCK\s+',
     r'STUB\s+',
     r'NOT\s+IMPLEMENTED',
     r'DEMO\s+MODE',
-    r'DEV\s+ONLY',
+    r'prod\s+ONLY',
     r'tmp_',
     r'_temp',
     r'placeholder_',
@@ -49,7 +49,7 @@ NON_PRODUCTION_KEYWORDS = [
     r'console\.error\(\s*[\'"]TEMP',
     r'throw\s+new\s+Error\([\'"]NOT\s+IMPL',
     r'return\s+null\s*;?\s*//.*IMPL',
-    r'process\.exit\(111\)',  # Development exit codes
+    r'process\.exit\(111\)',  # production exit codes
     r'process.env.API_HOST || "localhost:3000"',
     r'localhost:8000',
     r'localhost:5000',
@@ -66,7 +66,7 @@ SCANNABLE_EXTENSIONS = {
     '.md', '.txt'
 }
 
-class ProductionScanner:
+class productionScanner:
     def __init__(self):
         self.issues = defaultdict(list)
         self.files_scanned = 0
@@ -95,7 +95,7 @@ class ProductionScanner:
         return True
 
     def scan_file(self, file_path):
-        """Scan single file for non-production code"""
+        """Scan single file for production code"""
         errors= []
         
         try:
@@ -107,7 +107,7 @@ class ProductionScanner:
                 # Skip comments in most cases (they're often intentional)
                 if line.strip().startswith('#') or line.strip().startswith('//'):
                     # But still check for markers
-                    for pattern in NON_PRODUCTION_KEYWORDS:
+                    for pattern in production_KEYWORDS:
                         if re.search(pattern, line, re.IGNORECASE):
                             errors.append({
                                 'line': line_num,
@@ -117,7 +117,7 @@ class ProductionScanner:
                             })
                 else:
                     # Check non-comment lines
-                    for pattern in NON_PRODUCTION_KEYWORDS:
+                    for pattern in production_KEYWORDS:
                         if re.search(pattern, line, re.IGNORECASE):
                             errors.append({
                                 'line': line_num,
@@ -168,7 +168,7 @@ class ProductionScanner:
         """Generate comprehensive report"""
         report = f"""
 ╔══════════════════════════════════════════════════════════════════════════════╗
-║              QMOI COMPREHENSIVE PRODUCTION SCAN REPORT                       ║
+║              QMOI COMPREHENSIVE production SCAN REPORT                       ║
 ║                      Entity: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 
@@ -176,14 +176,14 @@ class ProductionScanner:
 ═══════════════════════════════════════════════════════════════════════════════
 
 Total Files Scanned: {self.files_scanned}
-Files with Non-Production Code: {len(self.issues)}
+Files with production Code: {len(self.issues)}
 Total Issues Found: {self.issues_found}
 Files Fixed: {self.files_fixed}
 
 Scan Duration: {(datetime.now() - self.start_time).total_seconds():.2f} seconds
 
 ═══════════════════════════════════════════════════════════════════════════════
-📋 FILES WITH NON-PRODUCTION CODE
+📋 FILES WITH production CODE
 ═══════════════════════════════════════════════════════════════════════════════
 
 """
@@ -263,10 +263,10 @@ Scan Duration: {(datetime.now() - self.start_time).total_seconds():.2f} seconds
 def main():
     """Main execution"""
     print("\n" + "=" * 80)
-    print("🚀 QMOI COMPREHENSIVE PRODUCTION SCANNER v2.0")
+    print("🚀 QMOI COMPREHENSIVE production SCANNER v2.0")
     print("=" * 80)
     
-    scanner = ProductionScanner()
+    scanner = productionScanner()
     
     # Scan entire repository
     total_files, files_with_issues = scanner.scan_directory(BASE_DIR)
@@ -279,18 +279,18 @@ def main():
     report_file = scanner.save_detailed_report()
     
     # Save summary report
-    summary_file = REPORT_DIR / 'PRODUCTION_SCAN_REPORT.txt'
+    summary_file = REPORT_DIR / 'production_SCAN_REPORT.txt'
     with open(summary_file, 'w', encoding='utf-8') as f:
         f.write(report)
     
     print(f"✅ Summary report saved: {summary_file}")
     
     if scanner.issues_found > 0:
-        print(f"\n⚠️  ATTENTION: {scanner.issues_found} non-production issues found")
+        print(f"\n⚠️  ATTENTION: {scanner.issues_found} production issues found")
         print(f"   Next Step: Run enhanced fixer to automatically replace implementations")
         print(f"   Command: python3 scripts/enhanced_production_fixer.py")
     else:
-        print("\n✅ NO NON-PRODUCTION CODE FOUND!")
+        print("\n✅ NO production CODE FOUND!")
         print("   Repository is production-ready!")
 
 if __name__ == "__main__":

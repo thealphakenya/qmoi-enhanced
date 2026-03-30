@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:58:55Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/usr/bin/env node
 
 /**
- * QMOI Production Auto-Health & Recovery System
+ * QMOI production Auto-Health & Recovery System
  *
  * Features:
  * - Continuous health monitoring
@@ -38,7 +38,7 @@ if (!fs.existsSync(STATE_DIR)) {
   fs.mkdirSync(STATE_DIR, { recursive: true });
 }
 
-class QMOIProductionAutoHealth {
+class QMOIproductionAutoHealth {
   constructor() {
     this.isRunning = false;
     this.healthChecks = [];
@@ -96,7 +96,7 @@ class QMOIProductionAutoHealth {
    * Start health monitoring system
    */
   async start() {
-    console.log("🏥 Starting QMOI Production Auto-Health System...");
+    console.log("🏥 Starting QMOI production Auto-Health System...");
     this.isRunning = true;
 
     // Initial health check
@@ -527,10 +527,10 @@ class QMOIProductionAutoHealth {
       const { execSync } = await import("child_process");
       // Clear old logs
       execSync(
-        `find ${LOGS_DIR} -type f -mtime +${this.config.logRetention} -delete 2>/dev/null || true`,
+        `find ${LOGS_DIR} -type f -mtime +${this.config.logRetention} -delete 2>/prod/null || true`,
       );
       // Clear temp files
-      execSync(`rm -rf ${PROJECT_ROOT}/temp/* 2>/dev/null || true`);
+      execSync(`rm -rf ${PROJECT_ROOT}/temp/* 2>/prod/null || true`);
       console.log("✅ Disk space cleanup completed");
       return true;
     } catch (e) {
@@ -555,7 +555,7 @@ class QMOIProductionAutoHealth {
    */
   async alertAdmins(issue, attempts) {
     const message = `
-🚨 QMOI Production Alert
+🚨 QMOI production Alert
 Issue: ${issue.check}
 Error: ${issue.error}
 Failed Recovery Attempts: ${attempts}
@@ -636,7 +636,7 @@ Action Required: Please investigate and resolve this issue manually.
 }
 
 // Start the health system
-const health = new QMOIProductionAutoHealth();
+const health = new QMOIproductionAutoHealth();
 health.start().catch((e) => {
   console.error("Failed to start health system:", e);
   process.exit(1);

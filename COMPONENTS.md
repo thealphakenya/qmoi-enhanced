@@ -2,7 +2,7 @@
 
 **Last Updated**: 2026-03-29T01:23:12.137454
 **Total Files**: 200
-**Status**: ✅ Production Ready
+**Status**: ✅ production Ready
 
 ## 📋 Document Overview
 
@@ -15,7 +15,7 @@ This document provides a comprehensive inventory of all React components in the 
 | Total Files | 200 | All files indexed |
 | Subdirectories | 15 | Organized sections |
 | File Types | 7 | Multiple formats |
-| Production Status | ✅ | Ready |
+| production Status | ✅ | Ready |
 
 ### File Type Distribution
 
@@ -73,8 +73,8 @@ This document provides a comprehensive inventory of all React components in the 
 - [`DealsList.tsx`](components/DealsList.tsx) - `.tsx`
 - [`DealsPopup.tsx`](components/DealsPopup.tsx) - `.tsx`
 - [`DeploymentStatusDashboard.tsx`](components/DeploymentStatusDashboard.tsx) - `.tsx`
-- [`DeviceMap.tsx`](components/DeviceMap.tsx) - `.tsx`
-- [`DeviceSettingsPanel.tsx`](components/DeviceSettingsPanel.tsx) - `.tsx`
+- [`prodiceMap.tsx`](components/prodiceMap.tsx) - `.tsx`
+- [`prodiceSettingsPanel.tsx`](components/prodiceSettingsPanel.tsx) - `.tsx`
 - [`DownloadAppButton.tsx`](components/DownloadAppButton.tsx) - `.tsx`
 - [`DownloadManager.tsx`](components/DownloadManager.tsx) - `.tsx`
 - [`DownloadQApp.tsx`](components/DownloadQApp.tsx) - `.tsx`
@@ -110,7 +110,7 @@ This document provides a comprehensive inventory of all React components in the 
 - [`NotificationPanel.tsx`](components/NotificationPanel.tsx) - `.tsx`
 - [`ParallelProcessing.tsx`](components/ParallelProcessing.tsx) - `.tsx`
 - [`PreviewWindow.tsx`](components/PreviewWindow.tsx) - `.tsx`
-- [`PriceProductVerifier.tsx`](components/PriceProductVerifier.tsx) - `.tsx`
+- [`PriceproductVerifier.tsx`](components/PriceproductVerifier.tsx) - `.tsx`
 - [`QAvatar.accessibility.css`](components/QAvatar.accessibility.css) - `.css`
 - [`QAvatar.tsx`](components/QAvatar.tsx) - `.tsx`
 - [`QAvatar.tsx.bak.1768901506`](components/QAvatar.tsx.bak.1768901506) - `.1768901506`
@@ -122,7 +122,7 @@ This document provides a comprehensive inventory of all React components in the 
 - [`QIStateWindow.tsx`](components/QIStateWindow.tsx) - `.tsx`
 - [`QMOIAutoFixDashboard.tsx`](components/QMOIAutoFixDashboard.tsx) - `.tsx`
 - [`QMOIDashboard.tsx`](components/QMOIDashboard.tsx) - `.tsx`
-- [`QMOIOwnDevice.tsx`](components/QMOIOwnDevice.tsx) - `.tsx`
+- [`QMOIOwnprodice.tsx`](components/QMOIOwnprodice.tsx) - `.tsx`
 - [`QVillage.tsx`](components/QVillage.tsx) - `.tsx`
 - [`QVillageDatasetsPanel.tsx`](components/QVillageDatasetsPanel.tsx) - `.tsx`
 - [`QiSpaces.tsx`](components/QiSpaces.tsx) - `.tsx`
@@ -164,12 +164,12 @@ This document provides a comprehensive inventory of all React components in the 
 - [`release-notes.ts`](components/release-notes.ts) - `.ts`
 - [`theme-provider.tsx`](components/theme-provider.tsx) - `.tsx`
 
-### device (4 files)
+### prodice (4 files)
 
-- [`AWSCredentialsModal.tsx`](components/device/AWSCredentialsModal.tsx) - `.tsx`
-- [`AzureCredentialsModal.tsx`](components/device/AzureCredentialsModal.tsx) - `.tsx`
-- [`DeviceIntegrationStubs.ts`](components/device/DeviceIntegrationStubs.ts) - `.ts`
-- [`GCPCredentialsModal.tsx`](components/device/GCPCredentialsModal.tsx) - `.tsx`
+- [`AWSCredentialsModal.tsx`](components/prodice/AWSCredentialsModal.tsx) - `.tsx`
+- [`AzureCredentialsModal.tsx`](components/prodice/AzureCredentialsModal.tsx) - `.tsx`
+- [`prodiceIntegrationStubs.ts`](components/prodice/prodiceIntegrationStubs.ts) - `.ts`
+- [`GCPCredentialsModal.tsx`](components/prodice/GCPCredentialsModal.tsx) - `.tsx`
 
 ### global (1 files)
 
@@ -194,10 +194,10 @@ This document provides a comprehensive inventory of all React components in the 
 - [`GlobalLinksManager.tsx`](components/q-city/GlobalLinksManager.tsx) - `.tsx`
 - [`Onboarding.tsx`](components/q-city/Onboarding.tsx) - `.tsx`
 - [`QCityDashboard.tsx`](components/q-city/QCityDashboard.tsx) - `.tsx`
-- [`QCityDevicePanel.tsx`](components/q-city/QCityDevicePanel.tsx) - `.tsx`
+- [`QCityprodicePanel.tsx`](components/q-city/QCityprodicePanel.tsx) - `.tsx`
 - [`QMOIBiometricManager.tsx`](components/q-city/QMOIBiometricManager.tsx) - `.tsx`
 - [`QMOILinksManager.tsx`](components/q-city/QMOILinksManager.tsx) - `.tsx`
-- [`QMOIOwnDeviceLogs.tsx`](components/q-city/QMOIOwnDeviceLogs.tsx) - `.tsx`
+- [`QMOIOwnprodiceLogs.tsx`](components/q-city/QMOIOwnprodiceLogs.tsx) - `.tsx`
 - [`QMOIRevenueDashboard.tsx`](components/q-city/QMOIRevenueDashboard.tsx) - `.tsx`
 - [`QVillage.tsx`](components/q-city/QVillage.tsx) - `.tsx`
 - [`TracksPanel.tsx`](components/q-city/TracksPanel.tsx) - `.tsx`

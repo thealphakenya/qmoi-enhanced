@@ -118,7 +118,7 @@ export async function GET(_request: NextRequest) {
         engine: "execution",
         status: "operational",
         active_processes: executionEngine['active_processes']?.size || 0,
-        registered_devices: executionEngine['device_registry']?.size || 0,
+        registered_prodices: executionEngine['prodice_registry']?.size || 0,
         timestamp: new Date().toISOString(),
       });
     }
@@ -268,8 +268,8 @@ export async function POST(_request: NextRequest) {
           if (data) {
             if (data.user_id) {
               await awarenessSystem.updateUserContext(data.user_id, data.context);
-            } else if (data.device_id) {
-              await awarenessSystem.updateEnvironment(data.device_id, data.context);
+            } else if (data.prodice_id) {
+              await awarenessSystem.updateEnvironment(data.prodice_id, data.context);
             } else if (data.task_id) {
               await awarenessSystem.updateTaskContext(data.task_id, data.context);
             }
@@ -309,8 +309,8 @@ export async function POST(_request: NextRequest) {
 
         case "orchestration":
           if (data) {
-            if (data.user_id && data.device_ids) {
-              await orchestrationEngine.syncMemoryToDevices(data.user_id, data.device_ids);
+            if (data.user_id && data.prodice_ids) {
+              await orchestrationEngine.syncMemoryToprodices(data.user_id, data.prodice_ids);
             } else if (data.reset) {
               orchestrationEngine.reset();
             }
@@ -339,7 +339,7 @@ export async function POST(_request: NextRequest) {
             engine: "execution",
             status: "operational",
             active_processes: executionEngine['active_processes']?.size || 0,
-            registered_devices: executionEngine['device_registry']?.size || 0,
+            registered_prodices: executionEngine['prodice_registry']?.size || 0,
             timestamp: new Date().toISOString(),
           });
 

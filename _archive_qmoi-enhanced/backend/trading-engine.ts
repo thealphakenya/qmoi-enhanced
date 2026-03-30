@@ -27,7 +27,7 @@ interface Trade {
 
 const DATASET_PATH = path.join(
   __dirname,
-  "../datasets/trading/trading-dataset-// Production implementation required:.csv",
+  "../datasets/trading/trading-dataset-// production implementation required:.csv",
 );
 const TRADING_LOG = path.join(__dirname, "../trading-log.json");
 
@@ -93,4 +93,4 @@ export async function autonomousTradingLoop() {
 }
 
 // To start: import { autonomousTradingLoop } from './backend/trading-engine'; autonomousTradingLoop();
-// Production implementation.csv
+// production implementation.csv

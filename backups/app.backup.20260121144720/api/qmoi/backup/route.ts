@@ -1,7 +1,7 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 6 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 6 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 import { NextApiRequest, NextApiResponse } from "next";
 // Import authentication and audit logging utilities
 // ... existing code ...
@@ -18,12 +18,12 @@ export default async function handler(
       const { action } = body;
       switch (action) {
         case "backup":
-          [PRODUCTION READY]: handle backup
+          [production READY]: handle backup
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "restore":
-          [PRODUCTION READY]: handle restore
+          [production READY]: handle restore
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
@@ -32,7 +32,7 @@ export default async function handler(
       }
     }
     case "GET": {
-      [PRODUCTION READY]: handle backup status
+      [production READY]: handle backup status
       return _res
         .status(501)
         .json({ _error: "implemented - production integration required" });

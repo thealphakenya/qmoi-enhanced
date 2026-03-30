@@ -1,4 +1,4 @@
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/bin/bash
 
 # Enhanced QMOI Testing with Advanced Analysis
@@ -42,7 +42,7 @@ test_advanced() {
       -d "{\"query\":\"$query\",\"userId\":\"$USER_ID\",\"context\":{\"testNum\":$num,\"category\":\"$category\"},\"requireResearch\":true}")
     
     # Pretty print JSON response
-    echo "$RESPONSE" | jq . >> "$OUTPUT_FILE" 2>/dev/null || echo "$RESPONSE" >> "$OUTPUT_FILE"
+    echo "$RESPONSE" | jq . >> "$OUTPUT_FILE" 2>/prod/null || echo "$RESPONSE" >> "$OUTPUT_FILE"
     echo "" >> "$OUTPUT_FILE"
     
     sleep 1

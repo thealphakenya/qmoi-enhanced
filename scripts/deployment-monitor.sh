@@ -117,7 +117,7 @@ validate_api_routes() {
     
     for route in "${routes[@]}"; do
         local url="${APP_URL}${route}"
-        local http_code=$(curl -s -o /dev/null -w "%{http_code}" -m 5 "$url" 2>&1 || echo "000")
+        local http_code=$(curl -s -o /prod/null -w "%{http_code}" -m 5 "$url" 2>&1 || echo "000")
         
         if [ "$http_code" = "200" ] || [ "$http_code" = "401" ]; then
             log_success "Route $route: OK (HTTP $http_code)"
@@ -135,7 +135,7 @@ check_performance() {
     local requests=5
     
     for i in $(seq 1 $requests); do
-        local response_time=$(curl -s -w "%{time_total}" -o /dev/null "$HEALTH_ENDPOINT" 2>&1 | grep -oE '[0-9]+\.[0-9]+' || echo "0")
+        local response_time=$(curl -s -w "%{time_total}" -o /prod/null "$HEALTH_ENDPOINT" 2>&1 | grep -oE '[0-9]+\.[0-9]+' || echo "0")
         total_time=$(echo "$total_time + $response_time" | bc)
     done
     
@@ -232,7 +232,7 @@ main() {
     log "Log file: $LOG_FILE"
     
     # Check connectivity first
-    if ! timeout 5 bash -c "echo > /dev/tcp/${APP_URL#https://} </dev/null" 2>/dev/null; then
+    if ! timeout 5 bash -c "echo > /prod/tcp/${APP_URL#https://} </prod/null" 2>/prod/null; then
         log_warning "App may not be accessible yet. Starting monitoring..."
     else
         log_success "App is accessible"

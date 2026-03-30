@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "Lion Enhancement Plan for QMOI"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -21,7 +21,7 @@ title: "Lion Enhancement Plan for QMOI"
 - Integrate Lion into all webhooks, hooks, and transaction flows for reliability and precision.
 - Use Lion to automate package installation, environment fixes, and to-dos validation.
 - Ensure Lion keeps QMOI memory, tracks, and model state in sync across all platforms and apps.
-- Enable Lion to support autodev, auto-research, autotesting, and self-healing for all frontend and backend features.
+- Enable Lion to support autoprod, auto-research, autotesting, and self-healing for all frontend and backend features.
 
 ## Key Features to Add
 
@@ -34,7 +34,7 @@ title: "Lion Enhancement Plan for QMOI"
 7. **Lion Self-Healing**: Detects and fixes environment, language, and runtime errors automatically.
 8. **Lion Debugger**: Provides actionable error diagnostics and auto-fixes for code and config issues.
 9. **Lion Model/Den Enhancer**: Ensures QMOI model/qvillage runs optimally even if other systems fail.
-10. **Lion Autodev/Autotest**: Automates development and testing of all UI and backend features.
+10. **Lion Autoprod/Autotest**: Automates production and testing of all UI and backend features.
 11. **Lion Financial Validator**: Validates all wallet transactions, revenue generation, and financial records.
 12. **Lion Manual Intervention Helper**: Flags and guides human intervention when automation is insufficient.
 13. **Lion Audit Trail**: Keeps immutable logs of all Lion actions and system changes.
@@ -44,7 +44,7 @@ title: "Lion Enhancement Plan for QMOI"
 17. **Lion App/Link Validator**: Validates all app endpoints, links, and external integrations.
 18. **Lion Environment Fixer**: Detects and repairs broken environments, included tools, and config drift.
 19. **Lion Track Uptime Enforcer**: Ensures all tracks are online and updating; auto-restarts failed tracks.
-20. **Lion Den/Autodev Integrator**: Deep integration with Den and autodev for full-stack automation.
+20. **Lion Den/Autoprod Integrator**: Deep integration with Den and autoprod for full-stack automation.
 
 ## Implementation Steps
 
@@ -52,7 +52,7 @@ title: "Lion Enhancement Plan for QMOI"
 - Enhance Lion installer to support all environments and package managers.
 - Create Lion validation modules for .md files, to-dos, tracks, and financial records.
 - Update all relevant .md files and ensure they are referenced in ALLMDFILESREFS.md.
-- Integrate Lion with Den and autodev for seamless automation and manual intervention support.
+- Integrate Lion with Den and autoprod for seamless automation and manual intervention support.
 - Add health monitoring, audit trail, and memory sync features.
 
 ## Next Actions

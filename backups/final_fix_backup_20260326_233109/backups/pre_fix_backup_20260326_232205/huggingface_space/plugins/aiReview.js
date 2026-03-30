@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:29Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 const fs = require("fs");
-// Production implementation:: Production use, integrate with Hugging Face Inference API or local LLM
+// production implementation:: production use, integrate with Hugging Face Inference API or local LLM
 async function aiReview(codeOrDiff) {
   // data: return a suggestion for improvement
   const suggestion =

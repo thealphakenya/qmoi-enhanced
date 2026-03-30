@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 QMOI Email Automation System
-Production-ready email automation with AI-powered replies, health monitoring, and user email creation
+production-ready email automation with AI-powered replies, health monitoring, and user email creation
 
 Features:
 - Automated email replies for all QMOI system emails

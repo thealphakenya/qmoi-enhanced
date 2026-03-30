@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { useState, useEffect } from "react";
 
-interface DeviceHealth {
+interface prodiceHealth {
   status: "healthy" | "degraded" | "critical";
   lastCheck: number;
   metrics: {
@@ -58,7 +58,7 @@ class PerformanceMonitor {
         "navigation",
       )[0] as PerformanceNavigationTiming;
       return navigation
-        ? navigation.loadEventEnd - navigation.loadEventStart
+        ? navigation.loaprodentEnd - navigation.loaprodentStart
         : 0;
     }
     return 0;
@@ -117,8 +117,8 @@ function getBatteryInfo(): Promise<number | null> {
   });
 }
 
-export function useDeviceHealth(): DeviceHealth {
-  const [health, setHealth] = useState<DeviceHealth>({
+export function useprodiceHealth(): prodiceHealth {
+  const [health, setHealth] = useState<prodiceHealth>({
     status: "healthy",
     lastCheck: Date.now(),
     metrics: {
@@ -173,7 +173,7 @@ export function useDeviceHealth(): DeviceHealth {
           warnings.push("Low battery level detected");
         }
 
-        // Production implementation: CPU usage based on performance metrics
+        // production implementation: CPU usage based on performance metrics
         const fps = performanceMonitor.getFPS();
         const loadTime = performanceMonitor.getLoadTime();
         const responseTime = performanceMonitor.getResponseTime();
@@ -196,7 +196,7 @@ export function useDeviceHealth(): DeviceHealth {
           status = "degraded";
         }
 
-        // Production implementation: disk usage (not available in browser)
+        // production implementation: disk usage (not available in browser)
         const diskUsage = Math.random() * 100;
 
         setHealth({
@@ -218,7 +218,7 @@ export function useDeviceHealth(): DeviceHealth {
         });
       } catch (error) {
         (globalThis.console as any)?.error?.(
-          "Device health check failed:",
+          "prodice health check failed:",
           error,
         );
         setHealth({
@@ -236,7 +236,7 @@ export function useDeviceHealth(): DeviceHealth {
               responseTime: 0,
             },
           },
-          warnings: ["Device health check failed"],
+          warnings: ["prodice health check failed"],
         });
       }
     };
@@ -251,7 +251,7 @@ export function useDeviceHealth(): DeviceHealth {
       }
     };
 
-    document.addEventListener("visibilitychange", handleVisibilityChange);
+    document.adprodentListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       clearInterval(interval);

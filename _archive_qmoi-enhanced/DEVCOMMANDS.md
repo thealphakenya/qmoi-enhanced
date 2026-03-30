@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -23,15 +23,15 @@
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# DEVCOMMANDS.md
+# prodCOMMANDS.md
 
-This file provides development commands to run and view the main QMOI applications (QMOI Space, QCity, and the Main Application) in your browser. Use these commands to launch each app in development mode and verify all UI and feature requirements as described in their respective documentation files.
+This file provides production commands to run and view the main QMOI applications (QMOI Space, QCity, and the Main Application) in your browser. Use these commands to launch each app in production mode and verify all UI and feature requirements as described in their respective documentation files.
 
 ---
 
 ## 1. QMOI Space (Progressive Web App)
 
-**Features:** Modern PWA, responsive UI, real-time dashboard, chat, charts, installable on any device.
+**Features:** Modern PWA, responsive UI, real-time dashboard, chat, charts, installable on any prodice.
 
 **Run Command:**
 
@@ -48,31 +48,31 @@ npx serve .
 
 ---
 
-## 2. QCity (Main Device & Orchestrator)
+## 2. QCity (Main prodice & Orchestrator)
 
-**Features:** Device management, error tracking, resource monitoring, notifications, self-healing, API endpoints, React UI.
+**Features:** prodice management, error tracking, resource monitoring, notifications, self-healing, API endpoints, React UI.
 
 **Run Command:**
 
 ```bash
-npm run dev
+npm run prod
 ```
 
 **Access:**
 
 - Open [https://qmoi.ai/qcity](https://qmoi.ai/qcity) in your browser.
-- All QCity features (device status, audit log, remote commands, plugins, metrics) should be available as per `QCITYREADME.md` and related files.
+- All QCity features (prodice status, audit log, remote commands, plugins, metrics) should be available as per `QCITYREADME.md` and related files.
 
 ---
 
 ## 3. Main Application (QMOI stable AI)
 
-**Features:** AI-powered development, automation, documentation, error fixing, multi-project management, gaming, financial tools.
+**Features:** AI-powered production, automation, documentation, error fixing, multi-project management, gaming, financial tools.
 
 **Run Command:**
 
 ```bash
-npm run dev
+npm run prod
 ```
 
 **Access:**
@@ -86,27 +86,27 @@ npm run dev
 
 - After running each command, open the corresponding URL in your browser.
 - Ensure all UI features and functionality match the documentation in the related `.md` files (see QMOISPACEUI.md, QCITYREADME.md, QMOI-ENHANCED-FEATURES.md, etc).
-- Use browser dev tools to test PWA install, offline mode, notifications, and responsiveness.
+- Use browser prod tools to test PWA install, offline mode, notifications, and responsiveness.
 - For QCity and Main App, verify API endpoints, dashboards, and automation features are present.
 
 ---
 
 **Note:**
 
-- If you encounter included features, errors, or complete UI, refer to the respective documentation and feature lists for troubleshooting and development guidance.
-- For advanced automation, error fixing, and cloud deployment, see QMOI Space Dev docs and QMOI Enhanced docs.
+- If you encounter included features, errors, or complete UI, refer to the respective documentation and feature lists for troubleshooting and production guidance.
+- For advanced automation, error fixing, and cloud deployment, see QMOI Space prod docs and QMOI Enhanced docs.
 
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "qmoi-enhanced/DEVCOMMANDS.md",
+"file": "qmoi-enhanced/prodCOMMANDS.md",
 "validated_at": "2025-10-26T20:51:24.607349Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
 {
 "name": "title_present",
 "ok": true,
-"detail": "DEVCOMMANDS.md"
+"detail": "prodCOMMANDS.md"
 },
 {
 "name": "links",

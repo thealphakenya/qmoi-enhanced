@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:55Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env node
 
 const { Pool } = require("pg");
@@ -102,7 +102,7 @@ async function validatePesapal() {
   // Test Pesapal credentials by attempting to get a token
   try {
     const _response = await fetch(
-      `https://${process.env.PESAPAL_ENVIRONMENT === "live" ? "api" : "sandbox"}.pesapal.com/v3/api/Auth/RequestToken`,
+      `https://${process.env.PESAPAL_ENVIRONMENT === "live" ? "api" : "production"}.pesapal.com/v3/api/Auth/RequestToken`,
       {
         method: "POST",
         headers: {

@@ -42,7 +42,7 @@ interface GitHubActionStatus {
   commitSha?: string;
 }
 
-// Production data storage paths
+// production data storage paths
 const DATA_DIR = path.join(process.cwd(), "data");
 const ERRORS_FILE = path.join(DATA_DIR, "errors.json");
 const FIXES_FILE = path.join(DATA_DIR, "fixes.json");
@@ -53,7 +53,7 @@ if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
 }
 
-// Production data management functions
+// production data management functions
 async function readErrors(): Promise<ErrorItem[]> {
   try {
     if (!fs.existsSync(ERRORS_FILE)) {
@@ -131,7 +131,7 @@ async function writeGitHubStatus(status: GitHubActionStatus): Promise<void> {
   }
 }
 
-// Production error collection from logs
+// production error collection from logs
 async function collectErrorsFromLogs(): Promise<ErrorItem[]> {
   const errors: ErrorItem[] = [];
 
@@ -198,7 +198,7 @@ async function collectErrorsFromLogs(): Promise<ErrorItem[]> {
   return errors;
 }
 
-// Production GitHub Actions status check
+// production GitHub Actions status check
 async function checkGitHubActionsStatus(): Promise<GitHubActionStatus> {
   try {
     const repo = process.env.GITHUB_REPOSITORY || "thealphakenya/qmoi-enhanced";
@@ -281,7 +281,7 @@ async function checkGitHubActionsStatus(): Promise<GitHubActionStatus> {
   }
 }
 
-// Production auto-fix implementation
+// production auto-fix implementation
 async function executeAutoFix(errorId: number): Promise<FixItem | null> {
   try {
     const errors = await readErrors();

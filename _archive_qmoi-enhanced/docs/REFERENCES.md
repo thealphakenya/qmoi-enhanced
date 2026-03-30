@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "REFERENCES"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -16,9 +16,9 @@ title: "REFERENCES"
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-- [QMOI GitLab Self-Healing CI/CD Automation](QMOIGITLABDEV.md)
-- [QMOI Vercel Self-Healing CI/CD Automation](QMOIVERCELDEV.md)
-- [QMOI GitHub Actions Self-Healing CI/CD Automation](QMOIGITHUBDEV.md)
+- [QMOI GitLab Self-Healing CI/CD Automation](QMOIGITLABprod.md)
+- [QMOI Vercel Self-Healing CI/CD Automation](QMOIVERCELprod.md)
+- [QMOI GitHub Actions Self-Healing CI/CD Automation](QMOIGITHUBprod.md)
 
 ## QMOI Gmail Notification Integration
 
@@ -51,17 +51,17 @@ title: "REFERENCES"
 "detail": [
 {
 "label": "QMOI GitLab Self-Healing CI/CD Automation",
-"target": "./QMOIGITLABDEV.md",
+"target": "./QMOIGITLABprod.md",
 "ok": true
 },
 {
 "label": "QMOI Vercel Self-Healing CI/CD Automation",
-"target": "./QMOIVERCELDEV.md",
+"target": "./QMOIVERCELprod.md",
 "ok": true
 },
 {
 "label": "QMOI GitHub Actions Self-Healing CI/CD Automation",
-"target": "./QMOIGITHUBDEV.md",
+"target": "./QMOIGITHUBprod.md",
 "ok": true
 }
 ]

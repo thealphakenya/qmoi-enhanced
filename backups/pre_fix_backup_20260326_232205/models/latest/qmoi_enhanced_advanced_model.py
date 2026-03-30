@@ -69,7 +69,7 @@ class QMOIAdvancedModel(nn.Module):
     def __init__(self, config: QMOIConfig):
         super().__init__()
         self.config = config
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.prodice = torch.prodice("cuda" if torch.cuda.is_available() else "cpu")
         
         # Multi-modal architecture
         self.text_encoder = AutoModel.from_pretrained("microsoft/DialoGPT-medium")
@@ -99,7 +99,7 @@ class QMOIAdvancedModel(nn.Module):
             nn.Linear(256, 128)
         )
         
-        self.to(self.device)
+        self.to(self.prodice)
         
     def forward(self, input_data: Dict[str, torch.Tensor]) -> Dict[str, torch.Tensor]:
         """Forward pass with parallel processing"""
@@ -509,7 +509,7 @@ class QMOIAdvancedSystem:
         """Check model health"""
         return {
             "model_loaded": self.model is not None,
-            "device": str(self.model.device) if self.model else None,
+            "prodice": str(self.model.prodice) if self.model else None,
             "parameters": sum(p.numel() for p in self.model.parameters()) if self.model else 0,
             "memory_allocated": torch.cuda.memory_allocated() if torch.cuda.is_available() else 0
         }

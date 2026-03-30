@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:19Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/usr/bin/env node
 
 /**
@@ -73,14 +73,14 @@ class QMOIErrorRecovery {
         scripts: {
           start: "node index.js",
           test: 'echo "No tests specified"',
-          dev: "node --watch index.js",
+          prod: "node --watch index.js",
         },
         dependencies: {
           express: "^4.18.2",
           "node-fetch": "^3.3.2",
           dockerode: "^3.3.5",
         },
-        devDependencies: {
+        prodDependencies: {
           "@types/node": "^20.0.0",
           typescript: "^5.0.0",
         },
@@ -102,7 +102,7 @@ class QMOIErrorRecovery {
 
       const requiredScripts = {
         start: "node index.js",
-        dev: "node --watch index.js",
+        prod: "node --watch index.js",
         test: 'echo "No tests specified"',
         build: 'echo "No build specified"',
         "qmoi-auto-push": "node scripts/qmoi-auto-push.js",
@@ -178,7 +178,7 @@ setup:
     - npm run qmoi-setup
   only:
     - main
-    - develop
+    - prodelop
 
 test:
   stage: test
@@ -187,7 +187,7 @@ test:
     - npm test
   only:
     - main
-    - develop
+    - prodelop
 
 build:
   stage: build

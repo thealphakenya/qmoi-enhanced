@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# // Production implementation:
+# // production implementation:
 """
 🚀 QMOI Automated Multi-Channel Deployment System
 
@@ -104,7 +104,7 @@ class QMOIDeploymentOrchestrator:
             return True
 
         logger.warning("⚠️  Apple App Store deployment not yet configured")
-        logger.info("   Requires: Apple Developer account, certificates, TestFlight setup")
+        logger.info("   Requires: Apple prodeloper account, certificates, TestFlight setup")
         self.stats['appstore']['status'] = 'pending'
         return False
 
@@ -188,7 +188,7 @@ class QMOIDeploymentOrchestrator:
 
 **Version:** {self.version}
 **Date:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
-**Mode:** {'DRY RUN' if self.dry_run else 'PRODUCTION'}
+**Mode:** {'DRY RUN' if self.dry_run else 'production'}
 
 ---
 

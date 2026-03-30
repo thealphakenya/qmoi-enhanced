@@ -1,13 +1,13 @@
 # 
 #!/bin/bash
 
-# QMOI Enhanced - Simplified Production Deployment
+# QMOI Enhanced - Simplified production Deployment
 # This script deploys QMOI Enhanced to production without requiring a full Next.js build
 
 set -e
 
 echo "╔════════════════════════════════════════════════════════════╗"
-echo "║ QMOI Enhanced Production Deployment - Simplified"
+echo "║ QMOI Enhanced production Deployment - Simplified"
 echo "╚════════════════════════════════════════════════════════════╝"
 echo ""
 
@@ -21,7 +21,7 @@ NC='\033[0m'
 echo "Step 1: Verifying production environment..."
 if [ ! -f ".env.production" ]; then
     echo -e "${YELLOW}⚠ Creating .env.production from template...${NC}"
-    cp .env.example .env.production 2>/dev/null || true
+    cp .env.example .env.production 2>/prod/null || true
     sed -i 's|your-production-url|https://qmoi.app|g' .env.production
 fi
 
@@ -30,14 +30,14 @@ echo ""
 
 # Step 2: Install dependencies
 echo "Step 2: Installing dependencies..."
-npm ci --production 2>/dev/null || npm install --production
+npm ci --production 2>/prod/null || npm install --production
 echo -e "${GREEN}✓${NC} Dependencies installed"
 echo ""
 
 # Step 3: Setup production directories
 echo "Step 3: Setting up production directories..."
 mkdir -p logs .qmoi_state .data/uploads
-echo -e "${GREEN}✓${NC} Production directories created"
+echo -e "${GREEN}✓${NC} production directories created"
 echo ""
 
 # Step 4: Setup environment variables
@@ -76,10 +76,10 @@ module.exports = {
 EOF
 
 # Try to start with PM2
-if command -v pm2 &> /dev/null; then
+if command -v pm2 &> /prod/null; then
     echo "  Using PM2 for process management..."
     pm2 start /tmp/qmoi-simple-start.js --env production
-    pm2 save 2>/dev/null || true
+    pm2 save 2>/prod/null || true
     echo -e "${GREEN}✓${NC} Application started with PM2"
     echo ""
     echo "PM2 Status:"
@@ -90,7 +90,7 @@ fi
 
 echo ""
 echo "╔════════════════════════════════════════════════════════════╗"
-echo "║ Production Deployment Complete!"
+echo "║ production Deployment Complete!"
 echo "╚════════════════════════════════════════════════════════════╝"
 echo ""
 echo "Next steps:"

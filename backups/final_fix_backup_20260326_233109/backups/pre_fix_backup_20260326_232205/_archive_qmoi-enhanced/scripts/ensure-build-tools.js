@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 // scripts/ensure-build-tools.js
 const { execSync } = require("child_process");
 const os = require("os");
@@ -83,7 +83,7 @@ if (os.platform() === "win32") {
   } catch (e) {
     console.warn("⚠️ C++ Build Tools not found.");
     console.warn(
-      '👉 Please manually install "Desktop development with C++" from Visual Studio Installer:\nhttps://visualstudio.microsoft.com/downloads/',
+      '👉 Please manually install "Desktop production with C++" from Visual Studio Installer:\nhttps://visualstudio.microsoft.com/downloads/',
     );
   }
 }

@@ -14,7 +14,7 @@ MASTER_WHATSAPP = "+254786322855"
 def verify_service(service_name):
     print(f"Verifying {service_name} for master email {MASTER_EMAIL}...")
     # execute API call/verification
-    # Production:, integrate with real APIs
+    # production:, integrate with real APIs
     return True
 
 def send_whatsapp_notification(message):

@@ -87,7 +87,7 @@ export class ErrorFixingService {
     error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
-    // Production implementation with some comprehensive examples.
+    // production implementation with some comprehensive examples.
     .log("AI analyzing error:", error);
 
     // License compliance error handling

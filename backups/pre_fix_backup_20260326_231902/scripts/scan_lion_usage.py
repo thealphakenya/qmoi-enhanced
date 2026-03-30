@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """Scan the repository for LION usage and related artifacts.
 
-Produces `docs/lion_usage_report.json` with occurrences for quick triage.
+produces `docs/lion_usage_report.json` with occurrences for quick triage.
 
 This is conservative: read-only and safe to run in CI or locally.
 """

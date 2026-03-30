@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 <!-- LION_VALIDATION_START -->
 
 ## 🦁 L — Validated by QMOI Lion
@@ -13,8 +13,8 @@
 
 ## All-Purpose Adaptive AI
 
-- **Device Management:**
-  - Track, find, and secure all devices
+- **prodice Management:**
+  - Track, find, and secure all prodices
   - Master-only controls for sensitive actions
 - **Network Management:**
   - Auto-connects to best available network

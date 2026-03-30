@@ -323,9 +323,9 @@ class QMOIMasterAutomation:
         logger.info("Running enhancement check...")
         
         try:
-            # Run QMOI auto-development
+            # Run QMOI auto-production
             enhance_result = self.run_command([
-                'python', 'scripts/models/qmoi_autodev.py', '--enhance'
+                'python', 'scripts/models/qmoi_autoprod.py', '--enhance'
             ])
             
             if enhance_result['success']:
@@ -492,7 +492,7 @@ class QMOIMasterAutomation:
                 fix_actions = []
                 
                 # Try to restart services
-                restart_result = self.run_command(['npm', 'run', 'dev'])
+                restart_result = self.run_command(['npm', 'run', 'prod'])
                 if restart_result['success']:
                     fix_actions.append('restarted_services')
                 

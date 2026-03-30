@@ -4,15 +4,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { logEvent } from "../../../../lib/security_check";
 
-// Production helper functions (module-level to avoid inner-declaration lint errors)
+// production helper functions (module-level to avoid inner-declaration lint errors)
 async function updateMpesaTransaction(details: unknown) {
-  // Production: Connect to Prisma DB using prisma.transaction.update()
+  // production: Connect to Prisma DB using prisma.transaction.update()
   // with CheckoutRequestID as unique identifier
   return true;
 }
 
 async function triggerPostPaymentActions(details: unknown) {
-  // Production: Send notification via WhatsApp/Email and update user wallet via Prisma
+  // production: Send notification via WhatsApp/Email and update user wallet via Prisma
   // Integrate with notification service and user service for status updates
   return true;
 }
@@ -59,7 +59,7 @@ export async function POST(_req: NextRequest) {
         transactionDate,
       });
 
-      // Production: Update database with successful transaction
+      // production: Update database with successful transaction
       await updateMpesaTransaction({
         checkoutRequestId: CheckoutRequestID,
         amount,
@@ -67,7 +67,7 @@ export async function POST(_req: NextRequest) {
         phoneNumber,
         transactionDate,
       });
-      // Production: Trigger any post-payment actions
+      // production: Trigger any post-payment actions
       await triggerPostPaymentActions({
         checkoutRequestId: CheckoutRequestID,
         amount,

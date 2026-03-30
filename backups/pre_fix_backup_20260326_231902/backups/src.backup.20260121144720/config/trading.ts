@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 /// <reference types="node" />
 import { networkInterfaces } from "os";
 import crypto from "crypto";
@@ -9,7 +9,7 @@ import { WalletManager, WalletConfig } from "./wallet";
 import {
   Trade,
   TradeExecutionResult,
-  TradeValidationResult,
+  TraprodalidationResult,
   TradeHistory,
   TradeStatistics,
 } from "../types/trading";
@@ -431,7 +431,7 @@ export class TradingManager {
 
   public async validateTrade(
     trade: Omit<Trade, "id" | "timestamp" | "total" | "profit">,
-  ): Promise<TradeValidationResult> {
+  ): Promise<TraprodalidationResult> {
     const balances = await this.walletManager.getBalances();
     const sourceBalance = balances.find(
       (b) => b.currency === trade.sourceCurrency,

@@ -1,9 +1,9 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 {
   "services": {
     "backend": {
       "enabled": true,
-      "command": "npm run dev",
+      "command": "npm run prod",
       "restartOnFailure": true,
       "healthCheck": "/api/health",
       "maxRestarts": 5

@@ -133,9 +133,9 @@ class DatabaseMigrator:
             f.write("-- Migration: " + name + "\n")
             f.write("-- Version: " + version + "\n\n")
             f.write("-- Up Migration\n")
-            f.write("-- Production: Add your up migration SQL here\n\n")
+            f.write("-- production: Add your up migration SQL here\n\n")
             f.write("-- Down Migration\n")
-            f.write("-- Production: Add your down migration SQL here\n")
+            f.write("-- production: Add your down migration SQL here\n")
 
         self.logger.info(f"Created migration file: {filename}")
         return version

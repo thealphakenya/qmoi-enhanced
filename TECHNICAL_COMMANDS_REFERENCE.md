@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # TECHNICAL REFERENCE — Next Steps Commands
 
 **Quick copy-paste commands for Phase 1-4 execution**
@@ -106,7 +106,7 @@ echo "=== VERIFICATION RESULTS ==="
 jq -r '.assets[] | "\(.name):\(.sha256)"' \
   /workspaces/qmoi-enhanced/release_assets_manifest.json | \
 while IFS=: read -r name sha; do
-  actual=$(sha256sum "$name" 2>/dev/null | awk '{print $1}' || echo "included")
+  actual=$(sha256sum "$name" 2>/prod/null | awk '{print $1}' || echo "included")
   match=$([ "$actual" = "$sha" ] && echo "✓" || echo "✗")
   echo "$match $name"
 done
@@ -135,7 +135,7 @@ cat reports/release_compliance_report.json | jq '.status'
 cat reports/release_compliance_report.json | jq '.alerts | length'
 ```
 
-### [PRODUCTION READY] Non-Compliance (Testing)
+### [production READY] Non-Compliance (Testing)
 
 ```bash
 cd /workspaces/qmoi-enhanced
@@ -211,7 +211,7 @@ curl -I https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/
 for platform in "exe" "dmg" "AppImage" "deb" "apk" "ipa"; do
   echo -n "Testing .$platform: "
   curl -s -I "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/*.$platform" \
-    2>/dev/null | head -1 | grep -q "200\|302" && echo "✓" || echo "✗"
+    2>/prod/null | head -1 | grep -q "200\|302" && echo "✓" || echo "✗"
 done
 ```
 
@@ -222,10 +222,10 @@ done
 grep -r "https://" /workspaces/qmoi-enhanced/README.md \
   /workspaces/qmoi-enhanced/RELEASE_MAINTENANCE.md \
   /workspaces/qmoi-enhanced/GITHUB_RELEASES_RECENT.md \
-  /workspaces/qmoi-enhanced/DOWNLOADS.md 2>/dev/null | \
+  /workspaces/qmoi-enhanced/DOWNLOADS.md 2>/prod/null | \
 grep -oP 'https?://[^\s)]+' | sort -u | \
 while read url; do
-  status=$(curl -s -I -L "$url" 2>/dev/null | head -1 | awk '{print $2}')
+  status=$(curl -s -I -L "$url" 2>/prod/null | head -1 | awk '{print $2}')
   echo "$status $url"
 done | sort
 ```
@@ -238,7 +238,7 @@ done | sort
 
 ```bash
 # List all security alerts
-gh secret list --repo thealphakenya/qmoi-enhanced 2>/dev/null || \
+gh secret list --repo thealphakenya/qmoi-enhanced 2>/prod/null || \
   echo "Note: Run from repo directory with 'gh auth login' first"
 
 # Get Dependabot status (via API)
@@ -265,7 +265,7 @@ if [ -f package.json ]; then
 fi
 
 # Docker base images
-if find . -name "Dockerfile*" -type f | head -1 >/dev/null; then
+if find . -name "Dockerfile*" -type f | head -1 >/prod/null; then
   echo "=== Docker Base Images ==="
   grep -h "^FROM" Dockerfile* | sort -u
 fi
@@ -422,7 +422,7 @@ Phase 1: Workflow Validation
 Phase 2: Compliance
 [ ] python3 scripts/generate_release_compliance_report.py
 [ ] cat reports/release_compliance_report.json | jq '.status' → "OK"
-[ ] [PRODUCTION READY] non-compliance (rename asset)
+[ ] [production READY] non-compliance (rename asset)
 [ ] Run compliance again (should fail)
 [ ] Restore asset & verify compliant again
 

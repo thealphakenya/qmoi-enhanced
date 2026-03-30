@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
@@ -54,8 +54,8 @@ export async function POST(_request: NextRequest) {
       );
     }
 
-    [PRODUCTION READY] biometric matching
-    const confidence = Math.random() * 0.2 + 0.8; [PRODUCTION READY] confidence 0.8-1.0
+    [production READY] biometric matching
+    const confidence = Math.random() * 0.2 + 0.8; [production READY] confidence 0.8-1.0
 
     if (confidence < 0.75) {
       return NextResponse.json(

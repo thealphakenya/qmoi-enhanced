@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/bin/bash
 # QMOI System Startup Script
 
@@ -8,7 +8,7 @@ echo "🚀 Starting QMOI Enhanced System..."
 source .env
 
 # Check if Node.js is installed
-if ! command -v node &> /dev/null; then
+if ! command -v node &> /prod/null; then
     echo "❌ Node.js is not installed. Please install Node.js 18+ first."
     exit 1
 fi

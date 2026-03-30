@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/bin/bash
 
 # QMOI Enhanced - Post-Deployment Verification Suite
@@ -24,7 +24,7 @@ echo ""
 
 # 1. Check PM2
 info "Checking PM2 processes..."
-if command -v pm2 &> /dev/null; then
+if command -v pm2 &> /prod/null; then
     if pm2 list | grep -q "qmoi-app"; then
         pass "PM2 process 'qmoi-app' running"
     else
@@ -38,7 +38,7 @@ fi
 
 # 2. Check health endpoint
 info "Checking health endpoint..."
-if curl -s http://localhost:3000/api/health > /dev/null 2>&1; then
+if curl -s http://localhost:3000/api/health > /prod/null 2>&1; then
     pass "Health endpoint responding"
 else
     warn "Health endpoint not responding (may be normal during startup)"
@@ -56,8 +56,8 @@ fi
 
 # 4. Check SSL certificate
 info "Checking SSL certificate..."
-if command -v certbot &> /dev/null; then
-    CERTS=$(certbot certificates 2>/dev/null | grep -c "Certificate Name" || echo "0")
+if command -v certbot &> /prod/null; then
+    CERTS=$(certbot certificates 2>/prod/null | grep -c "Certificate Name" || echo "0")
     if [ "$CERTS" -gt 0 ]; then
         pass "SSL certificate installed ($CERTS found)"
     else
@@ -71,8 +71,8 @@ fi
 
 # 5. Check Nginx
 info "Checking Nginx..."
-if command -v nginx &> /dev/null; then
-    if systemctl is-active nginx > /dev/null; then
+if command -v nginx &> /prod/null; then
+    if systemctl is-active nginx > /prod/null; then
         pass "Nginx running"
     else
         warn "Nginx installed but not running"

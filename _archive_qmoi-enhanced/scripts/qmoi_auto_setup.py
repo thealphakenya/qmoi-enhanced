@@ -136,11 +136,11 @@ class QMOIAutoSetup:
                 "cache_build_files": True,
                 "cache_artifacts": True
             },
-            "multi_device": {
+            "multi_prodice": {
                 "enabled": True,
                 "failover": True,
                 "load_balancing": True,
-                "device_sync": True
+                "prodice_sync": True
             }
         }
         

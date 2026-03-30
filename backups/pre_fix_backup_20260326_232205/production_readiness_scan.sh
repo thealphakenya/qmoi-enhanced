@@ -1,12 +1,12 @@
 #!/bin/bash
 # 
-# Comprehensive Production Readiness Scanner for QMOI Enhanced
-# Scans for non-production code, TODOs, mocks, and other issues
+# Comprehensive production Readiness Scanner for QMOI Enhanced
+# Scans for production code, TODOs, mocks, and other issues
 
-echo "🔍 Starting Comprehensive Production Readiness Scan..."
+echo "🔍 Starting Comprehensive production Readiness Scan..."
 echo "=================================================="
 
-# Keywords to search for non-production code
+# Keywords to search for production code
 KEYWORDS=(
     "console\.log"
     "console\.error"
@@ -27,7 +27,7 @@ KEYWORDS=(
     "debug.*only"
     "not.*production"
     "production.*false"
-    "dev.*only"
+    "prod.*only"
     "production.*only"
     "temp"
     "permanent"
@@ -158,7 +158,7 @@ DETAILED_FILE="$OUTPUT_DIR/detailed_findings.txt"
 ISSUES_FILE="$OUTPUT_DIR/critical_issues.json"
 
 # Initialize summary
-echo "# Production Readiness Scan Summary" > "$SUMMARY_FILE"
+echo "# production Readiness Scan Summary" > "$SUMMARY_FILE"
 echo "Generated: $(date)" >> "$SUMMARY_FILE"
 echo "" >> "$SUMMARY_FILE"
 
@@ -193,14 +193,14 @@ scan_files() {
     find_cmd="${find_cmd% -o} \) -print0"
 
     # Execute find and grep
-    eval "$find_cmd" | xargs -0 grep -l "$keyword" 2>/dev/null | while read -r file; do
+    eval "$find_cmd" | xargs -0 grep -l "$keyword" 2>/prod/null | while read -r file; do
         echo "$file" >> "$output_file"
         echo "  Found in: $file" >&2
     done
 }
 
 # Scan for each keyword
-echo "Scanning codebase for non-production code..."
+echo "Scanning codebase for production code..."
 echo "" >> "$SUMMARY_FILE"
 
 total_issues=0

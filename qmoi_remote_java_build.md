@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Automated Java/Android Build & Validation
 
 This script (`qmoi_remote_java_build.sh`) automates the process of building and validating Android APKs and Java projects on a remote QMOI/QCity server with Java installed.

@@ -25,7 +25,7 @@ interface Trade {
   rationale: string;
 }
 
-// Production dataset filename should be provided via environment or config; defaulting to trading-dataset-latest.csv
+// production dataset filename should be provided via environment or config; defaulting to trading-dataset-latest.csv
 const DATASET_PATH = path.join(
   __dirname,
   "../datasets/trading/trading-dataset-latest.csv",
@@ -94,4 +94,4 @@ export async function autonomousTradingLoop() {
 }
 
 // To start: import { autonomousTradingLoop } from './backend/trading-engine'; autonomousTradingLoop();
-// Production implementation.csv
+// production implementation.csv

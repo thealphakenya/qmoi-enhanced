@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Issue final for README.md.linkfix.bak"
 generated: 2025-11-08T16:06:38.338671Z
@@ -10,9 +10,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [PRODUCTION READY] markers or [PRODUCTION READY]s.
-- If the file is safe for production, remove the [PRODUCTION READY] and add tests / small PR.
-- If the file is intentionally non-production (e.g. [PRODUCTION READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [production READY] markers or [production READY]s.
+- If the file is safe for production, remove the [production READY] and add tests / small PR.
+- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -37,7 +37,7 @@ title: "QMOI System"
 ![Build](https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square)
 ![Publish Q stable](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/publish-q-stable.yml/badge.svg)
 
-Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a unified build, automation, deployment, and update pipeline for **QMOI AI** and all **QCity-powered apps** across every platform and device.
+Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a unified build, automation, deployment, and update pipeline for **QMOI AI** and all **QCity-powered apps** across every platform and prodice.
 
 ---
 
@@ -47,12 +47,12 @@ Use the following tools to automate and build your apps:
 
 | Tool                                 | Description                                                      |
 | ------------------------------------ | ---------------------------------------------------------------- |
-| `python scripts/qmoi-app-builder.py` | Full cloud-based build and test for all devices                  |
+| `python scripts/qmoi-app-builder.py` | Full cloud-based build and test for all prodices                  |
 | `build_qmoi_ai.bat`                  | Quick-build for Windows `.exe` using PyInstaller + GitHub deploy |
 | `qmoiexe.py`                         | All-in-one launcher (backend + GUI + tray + updater + shortcuts) |
 | `auto_updater.py`                    | Auto-checks GitHub for new releases and updates locally          |
 
-> 🚗 All builds are **cloud-offloaded** to reduce load and ensure stability across devices.
+> 🚗 All builds are **cloud-offloaded** to reduce load and ensure stability across prodices.
 
 ---
 
@@ -69,7 +69,7 @@ Qmoi_apps/
 ├── qcity/qmoi_ai.zip
 ├── smarttv/qmoi_ai.apk
 ├── chromebook/qmoi_ai.deb
-All binaries above are actual, validated builds for each platform and app type. No [PRODUCTION READY]s are used in releases.
+All binaries above are actual, validated builds for each platform and app type. No [production READY]s are used in releases.
 📚 Documentation
 ALLMDFILESREFS.md → Full index of docs, features, build scripts
 

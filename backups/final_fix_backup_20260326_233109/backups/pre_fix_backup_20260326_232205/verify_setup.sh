@@ -1,8 +1,8 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/bin/bash
 
 # ============================================================================
-# verify_setup.sh - Verify Development Environment
+# verify_setup.sh - Verify production Environment
 # ============================================================================
 # Usage: bash verify_setup.sh
 # This script checks that everything is set up correctly
@@ -10,7 +10,7 @@
 
 set -e
 
-echo "🔍 QCity Development Environment Verification"
+echo "🔍 QCity production Environment Verification"
 echo "=============================================="
 echo ""
 
@@ -47,11 +47,11 @@ echo "📚 Documentation:"
 check "[ -f INTEGRATION_GUIDE.md ]" "INTEGRATION_GUIDE.md exists"
 check "[ -f BACKEND_API_TEMPLATES.md ]" "BACKEND_API_TEMPLATES.md exists"
 check "[ -f BUILD_INSTRUCTIONS.md ]" "BUILD_INSTRUCTIONS.md exists"
-check "[ -f PRODUCTION_READINESS_REPORT.md ]" "PRODUCTION_READINESS_REPORT.md exists"
+check "[ -f production_READINESS_REPORT.md ]" "production_READINESS_REPORT.md exists"
 
 echo ""
 echo "🌐 Server Status:"
-if curl -s http://localhost:8080 > /dev/null 2>&1; then
+if curl -s http://localhost:8080 > /prod/null 2>&1; then
     echo "✅ HTTP server running on port 8080"
     ((PASS++))
     
@@ -73,7 +73,7 @@ check "command -v curl" "curl installed"
 
 echo ""
 echo "📦 npm Project (if Node.js available):"
-if command -v node &> /dev/null; then
+if command -v node &> /prod/null; then
     check "[ -f package.json ]" "package.json exists"
     check "[ -d node_modules ] || echo 'Run: npm install'" "node_modules exists (or run: npm install)"
 fi
@@ -103,11 +103,11 @@ echo "=============================================="
 echo ""
 
 if [ $FAIL -eq 0 ]; then
-    echo "🎉 All checks passed! Ready for development."
+    echo "🎉 All checks passed! Ready for production."
     echo ""
     echo "Next steps:"
     echo "  1. Edit .env.local with your API backend URL"
-    echo "  2. npm run dev (start Next.js dev server)"
+    echo "  2. npm run prod (start Next.js prod server)"
     echo "  3. Open http://localhost:3000 in browser"
     echo ""
     exit 0

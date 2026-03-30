@@ -7,13 +7,13 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # QMOI Enhanced - Auto-Recovery Procedures
 
 **Document Type:** Technical Reference  
 **Version:** 1.0  
 **Last Updated:** January 17, 2026  
-**Status:** 🟢 Production Ready
+**Status:** 🟢 production Ready
 
 ---
 
@@ -450,7 +450,7 @@ All recovery events are automatically logged with:
 
 ## Prevention & Best Practices
 
-### Development Practices
+### production Practices
 
 1. **Error Handling:** All async operations wrapped in try-catch
 2. **Timeouts:** All external API calls have timeouts
@@ -481,8 +481,8 @@ All recovery events are automatically logged with:
 ### Weekly Recovery Drills
 
 ```bash
-# 1. [PRODUCTION READY]base failover
-# [PRODUCTION READY] connection loss for 30 seconds
+# 1. [production READY]base failover
+# [production READY] connection loss for 30 seconds
 # Verify automatic recovery
 
 # 2. Test function restart

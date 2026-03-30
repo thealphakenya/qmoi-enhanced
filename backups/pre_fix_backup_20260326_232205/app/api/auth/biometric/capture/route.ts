@@ -80,7 +80,7 @@ export async function GET() {
         biometricMethod: "fingerprint|facial|voice (required)",
         confidence: "Confidence score 0-1 (optional, default 0.9)",
         verified: "Whether capture was verified (optional, default true)",
-        metadata: "Additional metadata like device info (optional)",
+        metadata: "Additional metadata like prodice info (optional)",
       },
     },
     { status: 200 },

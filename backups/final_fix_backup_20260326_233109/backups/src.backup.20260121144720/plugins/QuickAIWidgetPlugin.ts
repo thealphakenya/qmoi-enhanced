@@ -1,4 +1,4 @@
-// NOTE: 2 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { QmoiPlugin } from "./PluginManager";
 
 export const QuickAIWidgetPlugin: QmoiPlugin = {
@@ -10,7 +10,7 @@ export const QuickAIWidgetPlugin: QmoiPlugin = {
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    // Non-UI // Production implementation: for builds
+    // Non-UI // production implementation: for builds
     return null;
   },
 };

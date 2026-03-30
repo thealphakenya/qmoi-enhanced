@@ -79,7 +79,7 @@ const testScenarios = [
     id: 10,
     category: "Research Synthesis",
     query:
-      "Summarize recent developments in quantum computing and their implications",
+      "Summarize recent productions in quantum computing and their implications",
     keywords: ["research", "quantum", "technology", "future"],
   },
 ];
@@ -387,7 +387,7 @@ Strong Consensus (92% agreement):
   • Fundamental mechanisms show consistent patterns across contexts
   • Predictive models demonstrate reliable performance
 
-Productive Disagreement (8%):
+productive Disagreement (8%):
   • Interpretive frameworks for ${scenario.keywords[1]} vary meaningfully
   • ${scenario.keywords[2]} represents emerging research frontier
   • Contextual applications require nuanced judgment
@@ -415,7 +415,7 @@ Confidence Assessment: 92-95% based on evidence convergence and theoretical cons
         "academic",
         "peer-reviewed",
       ],
-      findings: `Master-level analysis of ${scenario.category}: Sophisticated integration of evidence across 12+ authoritative sources revealing coherent patterns, well-established consensus on foundational principles, and productive disagreement on interpretations suggesting fruitful areas for continued research and development`,
+      findings: `Master-level analysis of ${scenario.category}: Sophisticated integration of evidence across 12+ authoritative sources revealing coherent patterns, well-established consensus on foundational principles, and productive disagreement on interpretations suggesting fruitful areas for continued research and production`,
       methodologyUsed: [
         "Literature synthesis",
         "Comparative analysis",
@@ -466,7 +466,7 @@ The ${scenario.category} domain reveals itself through three interlocking perspe
 1. HISTORICAL CONSCIOUSNESS
    The evolution of understanding shows:
    • Primitive formulations of ${scenario.keywords[0]}: Ancient roots and original insights
-   • Enlightenment refinements: ${scenario.keywords[1]} systematic development
+   • Enlightenment refinements: ${scenario.keywords[1]} systematic production
    • Modern synthesis: Contemporary integration with emerging ${scenario.keywords[2]}
    
    This historical arc illuminates why current understanding represents not mere 
@@ -492,7 +492,7 @@ SECTION II: MULTIDIMENSIONAL SYNTHESIS
 DIMENSION 1: TEMPORAL ANALYSIS
   ├─ Past: Historical context shaping current understanding
   ├─ Present: Contemporary applications and implications
-  └─ Future: Trajectories of development and transformation
+  └─ Future: Trajectories of production and transformation
 
 DIMENSION 2: SYSTEMIC ANALYSIS
   ├─ Components: Individual elements and their properties

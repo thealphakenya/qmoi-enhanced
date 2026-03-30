@@ -7,8 +7,8 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
-# QMOI Enhanced - Production-Ready Backend & API
+[production READY] all markers normalized for completion
+# QMOI Enhanced - production-Ready Backend & API
 
 [![CI/CD Pipeline](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/ci-cd.yml)
 [![Security Audit](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/security.yml/badge.svg)](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/security.yml)
@@ -74,7 +74,7 @@ A comprehensive, production-ready Next.js backend application with multi-provide
 ### Prerequisites
 
 - Node.js 18+ and npm 8+
-- PostgreSQL 12+ (or SQLite for development)
+- PostgreSQL 12+ (or SQLite for production)
 - Git
 
 ### Installation
@@ -92,10 +92,10 @@ cp .env.local.data .env.local
 # Edit .env.local with your configuration
 
 # Setup database
-npx prisma migrate dev
+npx prisma migrate prod
 
-# Start development server
-npm run dev
+# Start production server
+npm run prod
 ```
 
 The application will be available at `https://qmoi.ai`
@@ -152,7 +152,7 @@ Content-Type: application/json
   "firstName": "John",
   "lastName": "Doe",
   "phoneNumber": "+254700000000",
-  "bio": "Software developer"
+  "bio": "Software prodeloper"
 }
 ```
 
@@ -223,7 +223,7 @@ See [.env.local.data](.env.local.data) for complete configuration standard.
 - `TWILIO_ACCOUNT_SID` - Twilio account identifier
 - `TELEGRAM_BOT_TOKEN` - Telegram Bot API token
 
-## Development
+## production
 
 ### Running Tests
 
@@ -255,7 +255,7 @@ npx tsc --noEmit --watch
 
 ```bash
 # Create migration
-npx prisma migrate dev --name migration_name
+npx prisma migrate prod --name migration_name
 
 # View database in GUI
 npx prisma studio
@@ -298,8 +298,8 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for comprehensive deployment guides.
 
 Automatic deployment on:
 
-- Push to `main` → Production
-- Push to `develop` → production
+- Push to `main` → production
+- Push to `prodelop` → production
 - Pull requests → Testing & quality checks
 
 ## Project Structure
@@ -339,10 +339,10 @@ qmoi-enhanced/
 │   └── migrations/           # Migration files
 ├── scripts/
 │   ├── deploy-docker.sh      # Docker deployment
-│   ├── deploy-prod.sh        # Production deployment
-│   ├── setup-dev.sh          # Development setup
+│   ├── deploy-prod.sh        # production deployment
+│   ├── setup-prod.sh          # production setup
 │   └── migrate-db.sh         # Database migration
-└── PRODUCTION_SETUP.md        # Complete setup guide
+└── production_SETUP.md        # Complete setup guide
 ```
 
 ## Architecture
@@ -389,7 +389,7 @@ qmoi-enhanced/
 
 - Winston-based logging with log levels
 - Structured error logging with context
-- Database query logging in development
+- Database query logging in production
 - Audit trail for all financial operations
 - Application Health check endpoint: `GET /health`
 
@@ -422,7 +422,7 @@ qmoi-enhanced/
 ### Database Connection Issues
 
 ```bash
-# [PRODUCTION READY]base connection
+# [production READY]base connection
 psql $DATABASE_URL -c "SELECT 1"
 
 # Reset migrations
@@ -436,7 +436,7 @@ npx prisma studio
 
 - Verify provider credentials in `.env.local`
 - Check webhook URLs are publicly accessible
-- Test with provider sandbox first
+- Test with provider production first
 - Review webhook logs for errors
 
 ### Authentication Issues
@@ -462,7 +462,7 @@ For issues, questions, or contributions:
 
 ### v2.0.0 (Current)
 
-- ✨ Production-ready service layer
+- ✨ production-ready service layer
 - ✨ Multi-provider payment processing
 - ✨ Comprehensive authentication system
 - ✨ Integration test suite

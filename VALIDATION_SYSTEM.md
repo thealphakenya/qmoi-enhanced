@@ -25,7 +25,7 @@ The QMOI Global Validation System provides comprehensive, autonomous validation 
 - Windows (EXE, MSI)
 - Linux (AppImage, DEB, RPM)
 - Web (PWA, responsive design)
-- Tablets and low-end devices
+- Tablets and low-end prodices
 
 **Features**:
 - Automated installation testing

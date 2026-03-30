@@ -7,9 +7,9 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ================================================================================
-QMOI VALIDATION & AUTO-DEVELOPMENT - IMPLEMENTATION & EXECUTION GUIDE
+QMOI VALIDATION & AUTO-production - IMPLEMENTATION & EXECUTION GUIDE
 Complete Setup & Operation Instructions
 ================================================================================
 Date: 2025-11-11
@@ -84,7 +84,7 @@ STEP 1: Unit Testing Setup
 ├─ Failure creates GitHub issue
 
 STEP 2: Integration Testing
-├─ [PRODUCTION READY]base connectivity
+├─ [production READY]base connectivity
 ├─ Test API integrations
 ├─ Test third-party services
 ├─ Test payment gateways
@@ -96,14 +96,14 @@ STEP 3: End-to-End Testing
 ├─ Appium for mobile testing
 ├─ User journey validation
 ├─ Cross-browser testing
-├─ Multi-device testing
+├─ Multi-prodice testing
 ├─ Run daily at 2 AM
 
 STEP 4: Performance Testing
 
 ```
 Load Test Setup:
-- [PRODUCTION READY] 100, 500, 1000 concurrent users
+- [production READY] 100, 500, 1000 concurrent users
 - Measure response times
 - Identify bottlenecks
 - Monitor resource usage
@@ -186,15 +186,15 @@ STEP 2: Web App Validation
 ├─ Performance scores
 └─ Frequency: Every deployment
 
-==== PART 2: AUTO-DEVELOPMENT IMPLEMENTATION ====
+==== PART 2: AUTO-production IMPLEMENTATION ====
 
-SETTING UP AUTO-DEVELOPMENT ENGINE
+SETTING UP AUTO-production ENGINE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-DAILY AUTO-DEVELOPMENT WORKFLOW:
+DAILY AUTO-production WORKFLOW:
 
 ```
-# Daily Auto-Development Process (2 AM)
+# Daily Auto-production Process (2 AM)
 
 1. ANALYZE CURRENT STATE (30 min)
    ├─ Collect code metrics
@@ -319,7 +319,7 @@ STACK OVERFLOW & REDDIT INTEGRATION:
    ├─ Track community feature requests
    ├─ Analyze frequency
    ├─ Evaluate feasibility
-   ├─ Prioritize for development
+   ├─ Prioritize for production
    └─ Communicate plans
 
 3. BUG REPORTS
@@ -490,7 +490,7 @@ Monday 2 AM - Pricing Strategy Review
 
 Wednesday 2 AM - Upsell/Cross-sell Analysis
 ├─ Customer segmentation
-├─ Product recommendations
+├─ product recommendations
 ├─ Upsell opportunities
 ├─ Cross-sell recommendations
 ├─ Campaign creation

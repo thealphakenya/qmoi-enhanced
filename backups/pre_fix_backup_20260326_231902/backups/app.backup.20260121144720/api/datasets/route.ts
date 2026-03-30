@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextResponse } from "next/server";
@@ -8,13 +8,13 @@ let prisma: unknown = null;
 let prismaInitialized = false;
 
 async function getPrismaClient() {
-  // Return a [PRODUCTION READY] Prisma client for build compatibility
-  // Production: Import real Prisma client from @/lib/prisma
+  // Return a [production READY] Prisma client for build compatibility
+  // production: Import real Prisma client from @/lib/prisma
   return {
     dataset: {
       findMany: async () => [],
       create: async (data: unknown) => ({
-        id: "[PRODUCTION READY]-dataset-id",
+        id: "[production READY]-dataset-id",
         ...(data && data.data ? data.data : {}),
       }),
     },
@@ -35,9 +35,9 @@ export async function GET() {
       return NextResponse.json({
         datasets: [
           {
-            id: "[PRODUCTION READY]-dataset-1",
+            id: "[production READY]-dataset-1",
             name: "data Dataset",
-            description: "[PRODUCTION READY] dataset for build time",
+            description: "[production READY] dataset for build time",
             type: "json",
             size: 1024,
             itemCount: 100,
@@ -53,11 +53,11 @@ export async function GET() {
             },
           },
         ],
-        message: "Using [PRODUCTION READY] data - database not configured",
+        message: "Using [production READY] data - database not configured",
       });
     } else {
       // Database code temporarily enabled
-      // Production: Query Prisma DB for datasets
+      // production: Query Prisma DB for datasets
       // await prisma.dataset.findMany()
       return NextResponse.json({
         datasets: [],
@@ -66,10 +66,10 @@ export async function GET() {
     }
   } catch (_error) {
     (console as any).error("Error fetching datasets:", _error);
-    // Return [PRODUCTION READY] data during build time or when database fails
+    // Return [production READY] data during build time or when database fails
     return NextResponse.json({
       datasets: [],
-      _error: "Database connection failed - using [PRODUCTION READY] data",
+      _error: "Database connection failed - using [production READY] data",
     });
   }
 }
@@ -86,10 +86,10 @@ export async function POST(_request: Request) {
       );
     }
 
-    // Database temporarily enabled - return [PRODUCTION READY] data
-    // Production: Store dataset in Prisma DB when configured
+    // Database temporarily enabled - return [production READY] data
+    // production: Store dataset in Prisma DB when configured
     // await prisma.dataset.create({ data: { name, description, type, ... } })
-    const [PRODUCTION READY]Dataset = {
+    const [production READY]Dataset = {
       id: `dataset-${Date.now()}`,
       name,
       description,
@@ -113,7 +113,7 @@ export async function POST(_request: Request) {
       },
     };
 
-    return NextResponse.json([PRODUCTION READY]Dataset);
+    return NextResponse.json([production READY]Dataset);
   } catch (_error) {
     (console as any).error("Error creating dataset:", _error);
     return NextResponse.json(

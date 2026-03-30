@@ -262,7 +262,7 @@ try {
                         system: {
                           uptime: process.uptime(),
                           memory: process.memoryUsage(),
-                          nodeVersion: process.version,
+                          noprodersion: process.version,
                           platform: process.platform,
                         },
                         performance: {},
@@ -468,7 +468,7 @@ try {
 // unhandled-request errors in environments where handlers are registered.
 try {
   // Use require so Jest/CJS environments don't attempt ESM dynamic imports
-  // when msw isn't installed in some developer setups.
+  // when msw isn't installed in some prodeloper setups.
   // eslint-disable-next-line global-require, import/no-dynamic-require
   const mswNode = require("msw/node");
   const { rest } = require("msw");

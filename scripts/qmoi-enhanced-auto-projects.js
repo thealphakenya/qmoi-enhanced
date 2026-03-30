@@ -48,7 +48,7 @@ const REVENUE_TARGETS = {
     increaseRate: 0.08, // 8% daily increase
     categories: {
       aiGeneratedMusic: { daily: 20000, increaseRate: 0.08 },
-      podcastProduction: { daily: 15000, increaseRate: 0.08 },
+      podcastproduction: { daily: 15000, increaseRate: 0.08 },
       audioBooks: { daily: 10000, increaseRate: 0.08 },
       soundEffects: { daily: 5000, increaseRate: 0.08 },
     },
@@ -77,7 +77,7 @@ const REVENUE_TARGETS = {
     daily: 60000,
     increaseRate: 0.07, // 7% daily increase
     categories: {
-      digitalProducts: { daily: 25000, increaseRate: 0.07 },
+      digitalproducts: { daily: 25000, increaseRate: 0.07 },
       onlineCourses: { daily: 20000, increaseRate: 0.07 },
       softwareLicenses: { daily: 15000, increaseRate: 0.07 },
     },
@@ -86,7 +86,7 @@ const REVENUE_TARGETS = {
     daily: 80000,
     increaseRate: 0.11, // 11% daily increase
     categories: {
-      aiDevelopment: { daily: 30000, increaseRate: 0.11 },
+      aiproduction: { daily: 30000, increaseRate: 0.11 },
       dataAnalysis: { daily: 20000, increaseRate: 0.11 },
       contentWriting: { daily: 15000, increaseRate: 0.11 },
       consulting: { daily: 15000, increaseRate: 0.11 },
@@ -104,7 +104,7 @@ const REVENUE_TARGETS = {
     daily: 35000,
     increaseRate: 0.08, // 8% daily increase
     categories: {
-      gameDevelopment: { daily: 20000, increaseRate: 0.08 },
+      gameproduction: { daily: 20000, increaseRate: 0.08 },
       gamingContent: { daily: 15000, increaseRate: 0.08 },
     },
   },
@@ -329,7 +329,7 @@ class QMOIErrorHandler {
     });
 
     // Global error handler
-    window.addEventListener("error", (_event) => {
+    window.adprodentListener("error", (_event) => {
       this.handleError(_event.error, "GlobalError", {
         filename: _event.filename,
         lineno: _event.lineno,
@@ -545,7 +545,7 @@ class QMOIEnhancedAutoProjects {
       crowdfunding: ["kickstarter", "indiegogo", "patreon", "donations"],
       consulting: [
         "ai-consulting",
-        "development-services",
+        "production-services",
         "training-services",
         "support-services",
       ],
@@ -577,7 +577,7 @@ class QMOIEnhancedAutoProjects {
         "masterclass",
       ],
       marketplace: ["amazon", "etsy", "gumroad", "sellfy", "payhip"],
-      social: ["discord", "telegram", "reddit", "medium", "dev.to"],
+      social: ["discord", "telegram", "reddit", "medium", "prod.to"],
       crowdfunding: ["kickstarter", "indiegogo", "patreon", "buymeacoffee"],
     };
     this.activities = [];
@@ -959,7 +959,7 @@ class QMOIEnhancedAutoProjects {
         monetization: true,
       },
       timeline: {
-        development: "3-14 days",
+        production: "3-14 days",
         testing: "1-3 days",
         distribution: "immediate",
         monetization: "ongoing",
@@ -1088,7 +1088,7 @@ class QMOIEnhancedAutoProjects {
         monetization: true,
       },
       timeline: {
-        development: "1-5 days",
+        production: "1-5 days",
         deployment: "immediate",
         monetization: "ongoing",
       },
@@ -1249,7 +1249,7 @@ class QMOIEnhancedAutoProjects {
       "licensing",
       "consulting",
       "api-usage",
-      "custom-development",
+      "custom-production",
     ];
   }
 

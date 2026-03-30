@@ -31,7 +31,7 @@ def schedule_windows_task(task_name, script_path, interval_minutes=60):
 def schedule_cron_task(script_path, interval_minutes=60):
     """Schedule a task using cron (crontab)."""
     cron_cmd = f"*/{interval_minutes} * * * * {script_path}"
-    cmd = f'(crontab -l 2>/dev/null; echo "{cron_cmd}") | crontab -'
+    cmd = f'(crontab -l 2>/prod/null; echo "{cron_cmd}") | crontab -'
     subprocess.run(cmd, shell=True, check=True)
 
 def schedule_tasks():

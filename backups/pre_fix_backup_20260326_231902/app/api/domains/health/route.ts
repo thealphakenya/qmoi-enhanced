@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY]
+// [production READY]
 /**
  * QMOI Domain Health Endpoint
  * GET /api/domains/health - Get domain health status globally
@@ -27,7 +27,7 @@ const DOMAIN_REGISTRY = {
   "qvillage.net": { critical: false, fallbacks: ["qvillage.org"], type: "fallback" },
   "qvillage.org": { critical: false, fallbacks: [], type: "fallback" },
   "qglobal.org": { critical: false, fallbacks: [], type: "fallback" },
-  "qparallel.dev": { critical: false, fallbacks: [], type: "fallback" }
+  "qparallel.prod": { critical: false, fallbacks: [], type: "fallback" }
 };
 
 export async function GET(request: NextRequest) {

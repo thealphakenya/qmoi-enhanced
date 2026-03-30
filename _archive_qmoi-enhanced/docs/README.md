@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "Q-City Documentation"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -465,7 +465,7 @@ Q-City is a comprehensive system management and monitoring platform that provide
 
 ### Contributing
 
-1. **Development**
+1. **production**
    - Code contribution
    - Bug reporting
    - Feature requests
@@ -473,7 +473,7 @@ Q-City is a comprehensive system management and monitoring platform that provide
 
 2. **Community**
    - User forum
-   - Developer forum
+   - prodeloper forum
    - Bug tracker
    - Feature requests
 

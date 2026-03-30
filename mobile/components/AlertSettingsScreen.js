@@ -62,9 +62,9 @@ export default function AlertSettingsScreen() {
       <Text style={styles.title}>Custom Alert Rules {offline ? '(Offline)' : ''}</Text>
       <View style={styles.row}><Text>Critical Errors Only</Text><Switch value={criticalOnly} onValueChange={setCriticalOnly} /></View>
       <View style={styles.row}><Text>Alert for Error Types (comma separated)</Text></View>
-      <TextInput value={errorTypes} onChangeText={setErrorTypes} // Production implementation required:="TypeError,ReferenceError" style={styles.input} />
+      <TextInput value={errorTypes} onChangeText={setErrorTypes} // production implementation required:="TypeError,ReferenceError" style={styles.input} />
       <View style={styles.row}><Text>Quiet Hours (e.g. 22:00-07:00)</Text></View>
-      <TextInput value={quietHours} onChangeText={setQuietHours} // Production implementation required:="22:00-07:00" style={styles.input} />
+      <TextInput value={quietHours} onChangeText={setQuietHours} // production implementation required:="22:00-07:00" style={styles.input} />
       <Button title="Save Preferences" onPress={savePrefs} />
     </View>
   );

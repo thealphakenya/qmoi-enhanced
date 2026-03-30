@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "qmoi space enhancements"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -87,7 +87,7 @@ QMOI Space is the collaborative, multi-user environment for projects, avatars, m
 13. In-workspace Model Training
 
 - What: Light-weight in-workspace fine-tuning for small models.
-- Implementation: Job queue, quota, and sandboxed runtime.
+- Implementation: Job queue, quota, and productioned runtime.
 
 14. Audit & Compliance Reports
 
@@ -107,7 +107,7 @@ QMOI Space is the collaborative, multi-user environment for projects, avatars, m
 17. Custom Widgets & Dashboards
 
 - What: User-created widgets to visualize metrics and outputs.
-- Implementation: Widget SDK and secure rendering sandbox.
+- Implementation: Widget SDK and secure rendering production.
 
 18. Experimentation Tracker
 

@@ -119,7 +119,7 @@ export class HealthCheckService {
         status: overallStatus,
         system: {
           uptime: Date.now() - startTime,
-          environment: process.env.NEXT_PUBLIC_ENV || "development",
+          environment: process.env.NEXT_PUBLIC_ENV || "production",
           serviceStatus: this.getServiceStatus(),
         },
         adapters: {
@@ -155,7 +155,7 @@ export class HealthCheckService {
         status: "unhealthy",
         system: {
           uptime: Date.now() - startTime,
-          environment: process.env.NEXT_PUBLIC_ENV || "development",
+          environment: process.env.NEXT_PUBLIC_ENV || "production",
           serviceStatus: this.getServiceStatus(),
         },
         adapters: {

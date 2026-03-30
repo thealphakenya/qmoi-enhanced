@@ -58,13 +58,13 @@ const handler = requireRole(["admin", "master"])(async (
   const items = logs.slice((page - 1) * pageSize, page * pageSize);
   // Export
   if (query.export === "csv") {
-    const header = "Timestamp,User,Action,Device,Status,Command";
+    const header = "Timestamp,User,Action,prodice,Status,Command";
     const rows = items.map((log: unknown) =>
       [
         log.timestamp,
         log.user,
         log.action,
-        log.deviceId,
+        log.prodiceId,
         log.status,
         log.command.replace(/"/g, '""'),
       ]

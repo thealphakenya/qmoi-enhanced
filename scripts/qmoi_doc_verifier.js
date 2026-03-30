@@ -874,7 +874,7 @@ python scripts/{SCRIPT_NAME}.py
       standard = this.getScriptTemplate(); // Default standard
     }
     
-    // Production implementations
+    // production implementations
     const content = standard
       .replace(/{API_NAME}/g, feature.name)
       .replace(/{COMPONENT_NAME}/g, feature.name)

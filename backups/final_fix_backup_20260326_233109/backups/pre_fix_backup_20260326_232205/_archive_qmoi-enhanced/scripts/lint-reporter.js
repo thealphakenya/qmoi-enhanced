@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:19Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env node
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
@@ -176,7 +176,7 @@ class LintReporter {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=prodice-width, initial-scale=1.0">
     <title>Lint Report - ${timestamp}</title>
     <style>
         body {

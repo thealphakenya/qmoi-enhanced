@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest } from "next/server";
@@ -13,9 +13,9 @@ export async function GET(_req: NextRequest) {
   const qcityService = new QCityService();
   await qcityService.initialize();
   const status = qcityService.getStatus();
-  const devices = await qcityService.getDeviceList();
+  const prodices = await qcityService.getprodiceList();
   const resources = await qcityService.getResourceStats();
-  return new Response(JSON.stringify({ status, devices, resources }), {
+  return new Response(JSON.stringify({ status, prodices, resources }), {
     headers: { "Content-Type": "application/json" },
   });
 }

@@ -7,19 +7,19 @@ import subprocess
 import json
 import os
 
-# Basic tests for scan_nonproduction scripts
+# Basic tests for scan_production scripts
 
-def test_scan_nonproduction_endpoints_runs():
-    completed = subprocess.run(['python3', 'scripts/scan_nonproduction_endpoints.py', '--include-whitelist'], capture_output=True, text=True)
+def test_scan_production_endpoints_runs():
+    completed = subprocess.run(['python3', 'scripts/scan_production_endpoints.py', '--include-whitelist'], capture_output=True, text=True)
     assert completed.returncode in [0, 1]
-    assert 'Production readiness' in completed.stdout or 'Production readiness' in completed.stderr
+    assert 'production readiness' in completed.stdout or 'production readiness' in completed.stderr
 
-def test_enhanced_scan_nonproduction_runs():
-    completed = subprocess.run(['python3', 'scripts/enhanced_scan_nonproduction.py'], capture_output=True, text=True)
+def test_enhanced_scan_production_runs():
+    completed = subprocess.run(['python3', 'scripts/enhanced_scan_production.py'], capture_output=True, text=True)
     assert completed.returncode in [0, 1]
-    assert 'PRODUCTION READINESS SCAN RESULTS' in completed.stdout
+    assert 'production READINESS SCAN RESULTS' in completed.stdout
 
 if __name__ == '__main__':
-    test_scan_nonproduction_endpoints_runs()
-    test_enhanced_scan_nonproduction_runs()
+    test_scan_production_endpoints_runs()
+    test_enhanced_scan_production_runs()
     print('tests passed')

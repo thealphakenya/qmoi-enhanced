@@ -326,7 +326,7 @@ QMOI has switched to GitHub as the primary platform due to GitLab unavailability
 
 ### Next Steps:
 - Monitor GitHub for updates
-- Continue development on GitHub
+- Continue production on GitHub
 - Sync back to GitLab when available
 
 ---

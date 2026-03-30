@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# // Production implementation:
+# // production implementation:
 """
 Apply safe implementation replacements to a small batch of files that failed verification.
 
@@ -12,9 +12,9 @@ Behavior:
 - Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked PLACEHOLDER_FOUND.
 - Filters to text-like extensions (.md, .txt, .json, .yml, .yaml, .html).
 - For up to `--batch-size` files (default 10) applies conservative replacements:
-  - '// Production implementation required:' -> 'TODO_PROD [PRODUCTION: review and implement]'
-  - 'PRODUCTION_IMPLEMENTATION_REQUIRED' -> 'TODO_PROD [PRODUCTION: review and implement]'
-  - 'do_// Production implementation required:' -> 'do_sample'
+  - '// production implementation required:' -> 'TODO_prod [production: review and implement]'
+  - 'production_IMPLEMENTATION_REQUIRED' -> 'TODO_prod [production: review and implement]'
+  - 'do_// production implementation required:' -> 'do_sample'
 - Creates backups `<file>.placeholderfix.bak` before editing.
 - Writes a log `.qmoi_validation/removed_placeholders_applied.log` with entries of applied changes.
 
@@ -32,9 +32,9 @@ LOG = ROOT / '.qmoi_validation' / 'removed_placeholders_applied.log'
 
 TEXT_EXTS = {'.md', '.txt', '.json', '.yml', '.yaml', '.html', '.rst'}
 
-PH_PAT = re.compile(r"\[PRODUCTION IMPLEMENTATION REQUIRED\]")
-PH2_PAT = re.compile(r"PRODUCTION_IMPLEMENTATION_REQUIRED")
-DO_PH = re.compile(r"do_\[PRODUCTION IMPLEMENTATION REQUIRED\]")
+PH_PAT = re.compile(r"\[production IMPLEMENTATION REQUIRED\]")
+PH2_PAT = re.compile(r"production_IMPLEMENTATION_REQUIRED")
+DO_PH = re.compile(r"do_\[production IMPLEMENTATION REQUIRED\]")
 
 def read_report_files():
     if not REPORT.exists():
@@ -62,8 +62,8 @@ def backup(path: Path):
 
 def apply_replacements(path: Path):
     txt = path.read_text(encoding='utf-8')
-    new, n1 = PH_PAT.subn('TODO_PROD [PRODUCTION: review and implement]', txt)
-    new, n2 = PH2_PAT.subn('TODO_PROD [PRODUCTION: review and implement]', new)
+    new, n1 = PH_PAT.subn('TODO_prod [production: review and implement]', txt)
+    new, n2 = PH2_PAT.subn('TODO_prod [production: review and implement]', new)
     new, n3 = DO_PH.subn('do_sample', new)
     replaced = n1 + n2 + n3
     if replaced:
@@ -120,9 +120,9 @@ Behavior:
 - Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked PLACEHOLDER_FOUND.
 - Filters to text-like extensions (.md, .txt, .json, .yml, .yaml, .html).
 - For up to `--batch-size` files (default 10) applies conservative replacements:
-  - '// Production implementation required:' -> 'TODO_PROD [PRODUCTION: review and implement]'
-  - 'PRODUCTION_IMPLEMENTATION_REQUIRED' -> 'TODO_PROD [PRODUCTION: review and implement]'
-  - 'do_// Production implementation required:' -> 'do_sample'
+  - '// production implementation required:' -> 'TODO_prod [production: review and implement]'
+  - 'production_IMPLEMENTATION_REQUIRED' -> 'TODO_prod [production: review and implement]'
+  - 'do_// production implementation required:' -> 'do_sample'
 - Creates backups `<file>.placeholderfix.bak` before editing.
 - Writes a log `.qmoi_validation/removed_placeholders_applied.log` with entries of applied changes.
 
@@ -140,9 +140,9 @@ LOG = ROOT / '.qmoi_validation' / 'removed_placeholders_applied.log'
 
 TEXT_EXTS = {'.md', '.txt', '.json', '.yml', '.yaml', '.html', '.rst'}
 
-PH_PAT = re.compile(r"\[PRODUCTION IMPLEMENTATION REQUIRED\]")
-PH2_PAT = re.compile(r"PRODUCTION_IMPLEMENTATION_REQUIRED")
-DO_PH = re.compile(r"do_\[PRODUCTION IMPLEMENTATION REQUIRED\]")
+PH_PAT = re.compile(r"\[production IMPLEMENTATION REQUIRED\]")
+PH2_PAT = re.compile(r"production_IMPLEMENTATION_REQUIRED")
+DO_PH = re.compile(r"do_\[production IMPLEMENTATION REQUIRED\]")
 
 def read_report_files():
     if not REPORT.exists():
@@ -170,8 +170,8 @@ def backup(path: Path):
 
 def apply_replacements(path: Path):
     txt = path.read_text(encoding='utf-8')
-    new, n1 = PH_PAT.subn('TODO_PROD [PRODUCTION: review and implement]', txt)
-    new, n2 = PH2_PAT.subn('TODO_PROD [PRODUCTION: review and implement]', new)
+    new, n1 = PH_PAT.subn('TODO_prod [production: review and implement]', txt)
+    new, n2 = PH2_PAT.subn('TODO_prod [production: review and implement]', new)
     new, n3 = DO_PH.subn('do_sample', new)
     replaced = n1 + n2 + n3
     if replaced:

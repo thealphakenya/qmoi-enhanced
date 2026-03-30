@@ -5,7 +5,7 @@
 
 // 
 const CACHE = "q-stable-v1";
-self.addEventListener("install", (e) => {
+self.adprodentListener("install", (e) => {
   e.waitUntil(
     caches
       .open(CACHE)
@@ -17,6 +17,6 @@ self.addEventListener("install", (e) => {
       ),
   );
 });
-self.addEventListener("fetch", (e) => {
+self.adprodentListener("fetch", (e) => {
   e.respondWith(caches.match(e.request).then((r) => r || fetch(e.request)));
 });

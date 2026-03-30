@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # ✓ Vercel Deployment Status
 
-**Status:** 🚀 Ready for Production Deployment  
+**Status:** 🚀 Ready for production Deployment  
 **Last Check:** January 18, 2026 16:26 UTC  
 **QMOI Auto-Configuration:** ✓ Enabled
 
@@ -31,14 +31,14 @@
 
 The deployment is ready but requires one-time Vercel authentication.
 
-### Option 1: Device Code Authentication (required)
+### Option 1: prodice Code Authentication (required)
 
 ```bash
 cd /workspaces/qmoi-enhanced
 vercel login
 # 1. A code will appear (e.g., FJNV-PJTW)
-# 2. Visit: https://vercel.com/oauth/device?user_code=YOUR_CODE
-# 3. Approve the device
+# 2. Visit: https://vercel.com/oauth/prodice?user_code=YOUR_CODE
+# 3. Approve the prodice
 # 4. Return to terminal - deployment starts automatically
 ```
 
@@ -71,7 +71,7 @@ vercel --prod
 - ✓ Build the application (3-6 min)
 - ✓ Auto-configure environment variables
 - ✓ Deploy to production
-- ✓ Show: `✓ Production: https://qmoi-enhanced.vercel.app`
+- ✓ Show: `✓ production: https://qmoi-enhanced.vercel.app`
 
 ---
 
@@ -88,7 +88,7 @@ vercel --prod
 **Auto-Configuration:**
 
 - Environment variables: Auto-managed by QMOI
-- Production optimizations: Enabled
+- production optimizations: Enabled
 - Database connections: Auto-initialized
 - API endpoints: Auto-configured
 - Security settings: Auto-applied

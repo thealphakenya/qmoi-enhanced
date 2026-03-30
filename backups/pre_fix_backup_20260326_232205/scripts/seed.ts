@@ -32,7 +32,7 @@ async function main() {
   await prisma.discussion.create({
     data: {
       title: "Advanced AI Consciousness Discussion",
-      content: "Exploring the latest developments in AI consciousness...",
+      content: "Exploring the latest productions in AI consciousness...",
       authorId: user1.id,
       tags: ["AI", "Consciousness"],
       relevanceScore: 0.92,

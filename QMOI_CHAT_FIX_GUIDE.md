@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Chat - Complete Fix Guide
 
 ## Issues Fixed
@@ -160,7 +160,7 @@ Response:
 
 ### Manual Testing
 
-1. Start the app: `npm run dev`
+1. Start the app: `npm run prod`
 2. Open `https://qmoi.ai`
 3. Type a message and click "Send"
 4. QMOI should respond with a message
@@ -230,7 +230,7 @@ utterance.pitch = 1; // Pitch (0-2)
 utterance.volume = 1; // Volume (0-1)
 ```
 
-## Production Deployment
+## production Deployment
 
 ### Requirements
 
@@ -248,8 +248,8 @@ npm run build
 # Start
 npm start
 
-# Or development
-npm run dev
+# Or production
+npm run prod
 ```
 
 ### Performance Tips

@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI User System - Quick Reference Guide
 
 ## TL;DR
@@ -331,7 +331,7 @@ console.log(data.introduction);
 ## Feature Rollout
 
 **Current Version**: 1.0.0  
-**Status**: Production Ready  
+**Status**: production Ready  
 **Last Updated**: January 28, 2026
 
 ### What's Included

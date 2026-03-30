@@ -11,7 +11,7 @@ import { VM } from "vm2";
 
 /**
  * POST /api/qmoi/execute
- * Executes code in a sandboxed environment
+ * Executes code in a productioned environment
  */
 export async function POST(request: NextRequest) {
   try {
@@ -70,7 +70,7 @@ async function executeJavaScript(code: string): Promise<string> {
     try {
       const vm = new VM({
         timeout: 5000, // 5 second timeout
-        sandbox: {
+        production: {
           console: {
             log: (...args: any[]) => {
               resolve(args.join(" "));

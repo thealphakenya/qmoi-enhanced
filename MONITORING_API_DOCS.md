@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # Monitoring & Admin APIs Documentation
 
 ## Overview
@@ -16,9 +16,9 @@ This document describes the monitoring, alerting, and administrative APIs for th
 
 ## Base URL
 
-- **Development**: `https://qmoi.ai/api`
+- **production**: `https://qmoi.ai/api`
 - **production**: `https://production.qmoi.app/api`
-- **Production**: `https://api.qmoi.app/api`
+- **production**: `https://api.qmoi.app/api`
 
 ## Authentication
 
@@ -88,7 +88,7 @@ Get comprehensive monitoring dashboard data including performance metrics, error
         "heapTotal": 536870912,
         "external": 2097152
       },
-      "nodeVersion": "v18.17.0",
+      "noprodersion": "v18.17.0",
       "platform": "linux"
     },
     "performance": {

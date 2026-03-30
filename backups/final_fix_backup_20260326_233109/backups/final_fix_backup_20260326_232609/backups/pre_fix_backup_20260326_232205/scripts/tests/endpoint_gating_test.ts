@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 #!/usr/bin/env node
 import assert from "assert";
 import fs from "fs";
@@ -54,12 +54,12 @@ async function testAiHealthGating(aiHealthGET: unknown) {
   .log("ai-health gating tests passed");
 }
 
-async function testLanguage// Production implementation:s(languageHandler: unknown) {
-  .log("Testing qmoi/language // Production implementation: behavior and gating...");
+async function testLanguage// production implementation:s(languageHandler: unknown) {
+  .log("Testing qmoi/language // production implementation: behavior and gating...");
   process.env.NODE_ENV = "production";
   delete process.env.API_KEY;
 
-  // Production implementation: _req/_res for NextApi handler
+  // production implementation: _req/_res for NextApi handler
   const _res: unknown = {
     status(code: number) {
       this.statusCode = code;
@@ -85,7 +85,7 @@ async function testLanguage// Production implementation:s(languageHandler: unkno
     "language route should 401 without key",
   );
 
-  // With key -> 501 // Production implementation:
+  // With key -> 501 // production implementation:
   process.env.API_KEY = "test-api";
   const res2: unknown = {
     statusCode: 0,
@@ -112,9 +112,9 @@ async function testLanguage// Production implementation:s(languageHandler: unkno
       (res2.body &&
         res2.body.error &&
         res2.body.error.includes("implemented")),
-    "language route should return 501 despite key because // Production implementation:",
+    "language route should return 501 despite key because // production implementation:",
   );
-  .log("language // Production implementation: gating tests passed");
+  .log("language // production implementation: gating tests passed");
 }
 
 async function testQNewsGating(qnewsPOST: unknown) {
@@ -210,7 +210,7 @@ async function runAll() {
     }
 
     await testAiHealthGating(aiHealthGET);
-    await testLanguage// Production implementation:s(languageHandler);
+    await testLanguage// production implementation:s(languageHandler);
     await testQNewsGating(qnewsPOST);
     .log("All endpoint gating tests passed.");
     process.exit(0);

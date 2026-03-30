@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /**
  * Next.js API Route: /api/qmoi/self-work/run-tests
  * Executes test suite and returns results
@@ -15,14 +15,14 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
-    // Production:, this would:
+    // production:, this would:
     // 1. Queue test execution if already running
     // 2. Execute: npm run test:unit && npm run test:integration
     // 3. Collect coverage metrics
     // 4. Store results in database
     // 5. Generate reports
 
-    // Production implementation: resolve // Production implementation: items
+    // production implementation: resolve // production implementation: items
     const testResults = {
       status: "completed",
       timestamp: new Date().toISOString(),
@@ -101,13 +101,13 @@ export async function POST(request: NextRequest) {
           suite: "Components",
           error: "Timeout",
           stackTrace: "at ChatBot.test.tsx:125",
-          suggestion: "Increase test timeout or // Production implementation: API call",
+          suggestion: "Increase test timeout or // production implementation: API call",
         },
         {
-          test: "AutoDev.tsx - should generate valid code",
+          test: "Autoprod.tsx - should generate valid code",
           suite: "Components",
           error: "Assertion failed",
-          stackTrace: "at AutoDev.test.tsx:89",
+          stackTrace: "at Autoprod.test.tsx:89",
           suggestion: "Verify code generation logic",
         },
       ],
@@ -121,20 +121,20 @@ export async function POST(request: NextRequest) {
           {
             name: "Database Setup",
             duration: 8000,
-            suggestion: "Use // Production implementation:base fixtures",
+            suggestion: "Use // production implementation:base fixtures",
           },
         ],
       },
       recommendations: [
         "Fix timeout issues in streaming tests",
-        "Add required // Production implementation:s for external services",
+        "Add required // production implementation:s for external services",
         "Increase test coverage for error scenarios",
         "Optimize slow integration tests",
       ],
       nextSteps: [
         "Review failed tests and fix",
         "Run tests locally to debug issues",
-        "Update // Production implementation:s and fixtures",
+        "Update // production implementation:s and fixtures",
         "Re-run before merging PR",
       ],
     };

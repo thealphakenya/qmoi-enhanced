@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 import * as nodeCrypto from "crypto";
 import { v4 as uuidv4 } from "uuid";
 
@@ -40,10 +40,10 @@ export class AuthManager {
   private static MASTER_USERNAME = "Victor";
   private static SISTER_USERNAME = "Leah";
 
-  private rememberedDevices: Map<string, string> = new Map(); // userId -> deviceFingerprint
+  private rememberedprodices: Map<string, string> = new Map(); // userId -> prodiceFingerprint
 
-  private static getDeviceFingerprint(): string {
-    // Simple device fingerprinting (can be enhanced)
+  private static getprodiceFingerprint(): string {
+    // Simple prodice fingerprinting (can be enhanced)
     return `${process.platform}-${process.arch}-${
       process.env.USER || process.env.USERNAME || ""
     }`;
@@ -276,26 +276,26 @@ export class AuthManager {
     }
   }
 
-  public rememberDevice(userId: string): void {
-    const fingerprint = AuthManager.getDeviceFingerprint();
-    this.rememberedDevices.set(userId, fingerprint);
+  public rememberprodice(userId: string): void {
+    const fingerprint = AuthManager.getprodiceFingerprint();
+    this.rememberedprodices.set(userId, fingerprint);
   }
 
-  public isDeviceRemembered(userId: string): boolean {
-    const fingerprint = AuthManager.getDeviceFingerprint();
-    return this.rememberedDevices.get(userId) === fingerprint;
+  public isprodiceRemembered(userId: string): boolean {
+    const fingerprint = AuthManager.getprodiceFingerprint();
+    return this.rememberedprodices.get(userId) === fingerprint;
   }
 
   public async confirmIdentity(
     sessionId: string,
     _method: "whatsapp" | "face" | "voice",
   ): Promise<boolean> {
-    [PRODUCTION READY]: implement WhatsApp/face/voice confirmation
+    [production READY]: implement WhatsApp/face/voice confirmation
     // For now, always return true for master/sister
     const user = await this.getUser(sessionId);
     if (!user) return false;
     if (user.role === "master" || user.role === "sister") return true;
-    // Production: implement multi-factor confirmation via WhatsApp/biometrics
+    // production: implement multi-factor confirmation via WhatsApp/biometrics
     return false;
   }
 }

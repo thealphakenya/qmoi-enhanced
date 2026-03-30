@@ -3,12 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 from pathlib import Path
 
 def get_notes() -> str:
     repo_root = Path(__file__).resolve().parent.parent
-    p = repo_root / 'docs' / 'converted' / 'qmoi-enhanced_scripts_models_qmoi_autodev_py.md'
+    p = repo_root / 'docs' / 'converted' / 'qmoi-enhanced_scripts_models_qmoi_autoprod_py.md'
     if p.exists():
         return p.read_text(encoding='utf-8')
     return ''

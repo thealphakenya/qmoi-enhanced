@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOI Mobile App"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -20,7 +20,7 @@ title: "QMOI Mobile App"
 
 A cross-platform mobile app for QMOI monitoring, notifications, and control. Features include:
 
-- Secure login (master, sister, trusted device/biometric)
+- Secure login (master, sister, trusted prodice/biometric)
 - Live error/fix stats and AI predictions
 - Push notifications (Pushover, Firebase Cloud Messaging)
 - Notification actions (acknowledge, delete, respond)
@@ -59,7 +59,7 @@ A cross-platform mobile app for QMOI monitoring, notifications, and control. Fea
 
 ### 🔒 Authentication
 
-- Login as master, sister, or use biometric/trusted device auto-login.
+- Login as master, sister, or use biometric/trusted prodice auto-login.
 - Credentials stored securely with AsyncStorage.
 
 ### 📊 Dashboard
@@ -69,7 +69,7 @@ A cross-platform mobile app for QMOI monitoring, notifications, and control. Fea
 
 ### 🔔 Push Notifications
 
-- Register device for Pushover and/or FCM push notifications.
+- Register prodice for Pushover and/or FCM push notifications.
 - Receive and display notifications in-app.
 
 ### 📨 Notification Actions
@@ -108,7 +108,7 @@ A cross-platform mobile app for QMOI monitoring, notifications, and control. Fea
 
 ## Extending
 
-- Add more screens (analytics, device management, etc.)
+- Add more screens (analytics, prodice management, etc.)
 - Integrate with additional notification providers
 - Customize UI for more roles or features
 

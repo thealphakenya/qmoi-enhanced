@@ -16,7 +16,7 @@ def main():
     ensure_db_and_migrate()
     client = app.test_client()
     # create admin control token header
-    headers_control = {'X-API-KEY': os.environ.get('QMOI_CONTROL_TOKEN', 'dev-token')}
+    headers_control = {'X-API-KEY': os.environ.get('QMOI_CONTROL_TOKEN', 'prod-token')}
     # create a deal
     res = client.post('/deals/create', json={'title': 'Test Deal', 'price_cents': 500}, headers=headers_control)
     print('/deals/create', res.status_code, res.get_json())

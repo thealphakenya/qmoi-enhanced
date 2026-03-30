@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 import { useState, useEffect, useCallback } from "react";
 
 interface Timezone {

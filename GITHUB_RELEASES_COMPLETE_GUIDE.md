@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI - Complete GitHub Releases Guide
 
-**All QMOI Apps & All Device Platforms - Download, Install & Deploy**
+**All QMOI Apps & All prodice Platforms - Download, Install & Deploy**
 
 ---
 
@@ -40,7 +40,7 @@ QMOI provides **6 major applications** available across **12+ platforms** with d
 
 **Latest Stable Release:** v1.2.3  
 **Released:** 2025-11-12  
-**Status:** Production Ready
+**Status:** production Ready
 
 ---
 
@@ -372,7 +372,7 @@ wget https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmo
 sha256sum -c qmoi-ai.img.sha256
 
 # Flash to SD card (on Linux/Mac)
-dd if=qmoi-ai.img of=/dev/sdX bs=4M status=progress
+dd if=qmoi-ai.img of=/prod/sdX bs=4M status=progress
 sync
 
 # On Windows: Use Balena Etcher (https://www.balena.io/etcher/)
@@ -571,7 +571,7 @@ Get-FileHash qmoi-ai.exe -Algorithm SHA256
 
 **Mac:**
 
-- **"Cannot open because it is from an unidentified developer":**
+- **"Cannot open because it is from an unidentified prodeloper":**
   - Open System Preferences > Security & Privacy
   - Click "Open Anyway"
 - **"The file is too large":** Increase permanent storage space
@@ -593,7 +593,7 @@ Get-FileHash qmoi-ai.exe -Algorithm SHA256
 
 ### General Troubleshooting
 
-1. **Check system requirements** - Ensure your device meets minimum specs
+1. **Check system requirements** - Ensure your prodice meets minimum specs
 2. **Update your OS** - Install latest OS updates first
 3. **Clear cache** - Delete permanent files before installation
 4. **Disable security software** - Temporarily disable antivirus/firewall
@@ -616,7 +616,7 @@ Get-FileHash qmoi-ai.exe -Algorithm SHA256
 ### v1.2.3 (Latest Stable)
 
 - Released: 2025-11-12
-- Status: Stable, Production Ready
+- Status: Stable, production Ready
 - All platforms supported
 - All apps included
 
@@ -637,7 +637,7 @@ Get-FileHash qmoi-ai.exe -Algorithm SHA256
 **Total Platforms:** 12+  
 **Download Methods:** 4
 
-✅ **All QMOI apps available on GitHub with download options for every platform and device.**
+✅ **All QMOI apps available on GitHub with download options for every platform and prodice.**
 
 ## 🔄 Evolution Status
 

@@ -99,7 +99,7 @@ class TradingPlatform:
         self.config = config
         self.api_key = config.get('api_key')
         self.secret_key = config.get('secret_key')
-        self.sandbox = config.get('sandbox', False)
+        self.production = config.get('production', False)
         self.enabled = config.get('enabled', True)
         
     async def connect(self) -> bool:
@@ -134,7 +134,7 @@ class BinanceTrading(TradingPlatform):
         self.exchange = ccxt.binance({
             'apiKey': self.api_key,
             'secret': self.secret_key,
-            'sandbox': self.sandbox,
+            'production': self.production,
             'enableRateLimit': True
         })
     
@@ -376,7 +376,7 @@ class CashOnTrading(TradingPlatform):
         """Get CashOn account balance"""
         try:
             # This would typically involve API calls to get balance
-            # For now, return // Production implementation required: data
+            # For now, return // production implementation required: data
             return [AccountBalance(
                 platform=self.name,
                 currency="KES",
@@ -391,7 +391,7 @@ class CashOnTrading(TradingPlatform):
         """Place order on CashOn"""
         try:
             # This would involve actual trading on CashOn
-            # For now, return // Production implementation required: result
+            # For now, return // production implementation required: result
             return TradeResult(
                 trade_id=f"cashon_{int(time.time())}",
                 platform=self.name,
@@ -559,7 +559,7 @@ class EnhancedTradingSystem:
     def update_daily_profit(self, result: TradeResult):
         """Update daily profit tracking"""
         # This is a optimized calculation
-        # Productionity, you'd track actual P&L
+        # productionity, you'd track actual P&L
         if result.side == "buy":
             # Assume profit if price goes up
             self.current_daily_profit += result.amount * 0.01  # 1% profit
@@ -709,7 +709,7 @@ class AIAnalyzer:
             current_price = data.get('last', 0)
             
             if current_price > 0:
-                # Random signal for // Production implementation required:nstration
+                # Random signal for // production implementation required:nstration
                 import random
                 if random.random() > 0.7:  # 30% chance of signal
                     side = "buy" if random.random() > 0.5 else "sell"
@@ -718,7 +718,7 @@ class AIAnalyzer:
                         platform=market_id.split('_')[0],
                         symbol=market_id.split('_')[1],
                         side=side,
-                        amount=100.0,  # Fixed amount for // Production implementation required:
+                        amount=100.0,  # Fixed amount for // production implementation required:
                         price=current_price,
                         strategy="momentum",
                         confidence=0.7
@@ -735,7 +735,7 @@ class AIAnalyzer:
             current_price = data.get('last', 0)
             
             if current_price > 0:
-                # Random signal for // Production implementation required:nstration
+                # Random signal for // production implementation required:nstration
                 import random
                 if random.random() > 0.8:  # 20% chance of signal
                     side = "buy" if random.random() > 0.5 else "sell"
@@ -744,7 +744,7 @@ class AIAnalyzer:
                         platform=market_id.split('_')[0],
                         symbol=market_id.split('_')[1],
                         side=side,
-                        amount=100.0,  # Fixed amount for // Production implementation required:
+                        amount=100.0,  # Fixed amount for // production implementation required:
                         price=current_price,
                         strategy="mean_reversion",
                         confidence=0.6

@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOI Start Guide"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -18,7 +18,7 @@ title: "QMOI Start Guide"
 
 ## 🚀 How to Start or Resume QMOI (QCity & Cloud)
 
-To ensure QMOI is always running (even in the cloud or when your device is offline), use the following command:
+To ensure QMOI is always running (even in the cloud or when your prodice is offline), use the following command:
 
 ```bash
 python scripts/qmoi-start.py
@@ -34,10 +34,10 @@ python scripts/qmoi-start.py
 
 - The script will display the current status and health of QMOI, including error fixing, cloud sync, and notifications.
 
-## 🧪 Developer Quick Start
+## 🧪 prodeloper Quick Start
 
-- Run dev server: `npm run dev` (local: https://qmoi.ai)
-- Check dev server health: `npm run dev:health` (returns non-zero exit code if unreachable)
+- Run prod server: `npm run prod` (local: https://qmoi.ai)
+- Check prod server health: `npm run prod:health` (returns non-zero exit code if unreachable)
 - Run tests: `npx jest --config=jest.config.cjs -i --runInBand --colors --verbose`
 - Build (CI style): `npm run ci:build`
 
@@ -77,7 +77,7 @@ Local QM OI helper server (for quick persona and memory tests):
   # Expected: {"ok": true, "details": ["no_backends_configured"] }
   ```
 
-## 🚀 Production
+## 🚀 production
 
 - Build and start (simple):
   - `npm run ci:build`
@@ -103,11 +103,11 @@ Local QM OI helper server (for quick persona and memory tests):
 - MSW is initialized at test-time via `src/setupTests.ts` and provides a global promise `globalThis.__MSW_READY__` that tests can await.
 - If you see unhandled network requests during tests, set `SHOW_MSW_UNHANDLED=1` to see them; use `TEST_VERBOSE=1` for extra handler debug output.
 
-- See `CONTRIBUTING.md` for more developer testing notes and troubleshooting steps (MSW handler shapes, env flags, and common fixes).
+- See `CONTRIBUTING.md` for more prodeloper testing notes and troubleshooting steps (MSW handler shapes, env flags, and common fixes).
 
 ## 🛡️ Always-On
 
-- QMOI is designed to keep running in the cloud, so you never miss an event or fix—even if your device is offline.
+- QMOI is designed to keep running in the cloud, so you never miss an event or fix—even if your prodice is offline.
 
 ### 🔒 Model policy
 

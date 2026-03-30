@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:30Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# // Production implementation:
+# // production implementation:
 # NOTE: 1 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 from flask import Flask, request, jsonify
 from sklearn.ensemble import IsolationForest
@@ -47,7 +47,7 @@ def detect_anomaly():
     # Feature 1: login attempts per IP
     X1 = np.array([[c] for c in ip_counts.values()])
     # Feature 2: time clustering (number of events in last 10 minutes)
-    # For // Production implementation required:, just use total events as a second feature
+    # For // production implementation required:, just use total events as a second feature
     X2 = np.full((len(ip_counts), 1), len(events))
     X = np.hstack([X1, X2])
     scaler = StandardScaler()

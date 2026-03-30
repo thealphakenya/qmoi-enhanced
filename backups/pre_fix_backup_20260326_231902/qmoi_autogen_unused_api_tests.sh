@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/bin/bash
 # Script: qmoi_autogen_unused_api_tests.sh
 # Purpose: Automatically generate and run complete test calls for all unused API endpoints.

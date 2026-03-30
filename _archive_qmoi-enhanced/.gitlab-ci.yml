@@ -29,13 +29,13 @@ build_apps:
   "stage: build"
   image: "python:3.11"
   script:
-    - echo "🚀 Starting QMOI multi-device app builder"
+    - echo "🚀 Starting QMOI multi-prodice app builder"
     - apt-get update && apt-get install -y curl git nodejs npm default-jdk zip unzip
     - npm install -g npm@latest
     - npm install
     - python3 scripts/qmoi-app-builder.py --verbose
     - python3 scripts/qmoi-download-link-tester.py --autofix --report
-    - python3 scripts/qmoi-install-autotest.py --all-devices --autofix --report
+    - python3 scripts/qmoi-install-autotest.py --all-prodices --autofix --report
     - python3 scripts/verify_binaries.py
     - python3 scripts/qmoi-packager.py --formats zip deb apk dmg
   artifacts:
@@ -57,19 +57,19 @@ matrix_job:
   image: "python:3.11"
   parallel:
     "matrix:"
-      - DEVICE: [windows, mac, linux, android, ios, chromebook, raspberrypi, smarttv, qcity]
+      - prodICE: [windows, mac, linux, android, ios, chromebook, raspberrypi, smarttv, qcity]
   script:
-    - echo "🔧 Building $DEVICE variant via matrix job"
-    - python3 scripts/qmoi-app-builder.py --device $DEVICE --signed --package
+    - echo "🔧 Building $prodICE variant via matrix job"
+    - python3 scripts/qmoi-app-builder.py --prodice $prodICE --signed --package
     - python3 scripts/qmoi-version-bump.py
-    - python3 scripts/qmoi-github-release.py --device $DEVICE
-    - python3 scripts/qmoi-qr-generator.py --device $DEVICE
-    - python3 scripts/qmoi-notifier.py --device $DEVICE
+    - python3 scripts/qmoi-github-release.py --prodice $prodICE
+    - python3 scripts/qmoi-qr-generator.py --prodice $prodICE
+    - python3 scripts/qmoi-notifier.py --prodice $prodICE
   artifacts:
     "paths:"
       - dist/
       - build/
-      - QMOIBUILDLOG_$DEVICE.md
+      - QMOIBUILDLOG_$prodICE.md
   tags:
     "- cloud"
   only:

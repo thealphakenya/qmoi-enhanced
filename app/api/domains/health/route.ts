@@ -28,7 +28,7 @@ const DOMAIN_REGISTRY = {
   "qvillage.net": { critical: false, fallbacks: ["qvillage.org"], type: "fallback" },
   "qvillage.org": { critical: false, fallbacks: [], type: "fallback" },
   "qglobal.org": { critical: false, fallbacks: [], type: "fallback" },
-  "qparallel.dev": { critical: false, fallbacks: [], type: "fallback" }
+  "qparallel.prod": { critical: false, fallbacks: [], type: "fallback" }
 };
 
 const DOMAIN_CONFIG: Record<string, {
@@ -134,9 +134,9 @@ const DOMAIN_CONFIG: Record<string, {
     expectedFeatures: ["global_ai_services", "api_documentation", "ssl_certificate", "responsive_design"],
     uiComponents: ["service_cards", "api_docs", "navigation_menu", "footer"]
   },
-  "qparallel.dev": {
+  "qparallel.prod": {
     uiEndpoints: ["/", "/docs"],
-    expectedFeatures: ["developer_tools", "ci_cd_pipeline", "project_management", "collaboration_tools", "ssl_certificate", "responsive_design"],
+    expectedFeatures: ["prodeloper_tools", "ci_cd_pipeline", "project_management", "collaboration_tools", "ssl_certificate", "responsive_design"],
     uiComponents: ["editor_preview", "project_dashboard", "terminal_embed", "panel_tabs", "footer"]
   }
 };

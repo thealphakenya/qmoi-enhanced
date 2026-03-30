@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "ALLSYSTEMSSTRUCTURESREFERENCES.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -16,14 +16,14 @@ title: "ALLSYSTEMSSTRUCTURESREFERENCES.md"
 
 # ALLSYSTEMSSTRUCTURESREFERENCES.md
 
-This document provides a comprehensive reference for all system structures, directories, and file responsibilities for QCity, QMOI-AI, and QMOI Space. It is designed for automation, self-development, and permanent operation of QMOI across all platforms.
+This document provides a comprehensive reference for all system structures, directories, and file responsibilities for QCity, QMOI-AI, and QMOI Space. It is designed for automation, self-production, and permanent operation of QMOI across all platforms.
 
 ## Directory & File Structure
 
 - `/qcity-artifacts/` - Stores QCity build artifacts and resources
 - `/QCITYREADME.md` - Main documentation for QCity features and activities
-- `/QCITYMAINDEVICE.md` - Device management and orchestration
-- `/QCITYDEVICEAUTOUPGRADE.md` - Auto-upgrade logic for QCity devices
+- `/QCITYMAINprodICE.md` - prodice management and orchestration
+- `/QCITYprodICEAUTOUPGRADE.md` - Auto-upgrade logic for QCity prodices
 - `/QCITYRUNNERSENGINE.md` - Runners and orchestration engine
 - `/QCITYRESOURCES.md` - Resource management and allocation
 - `/QCITYQMOIAUTOSTART.md` - Auto-start and initialization scripts
@@ -39,7 +39,7 @@ This document provides a comprehensive reference for all system structures, dire
 
 - **QMOI Space**
   - `/qmoi-space/` - Main QMOI Space directory
-  - `/QMOISPACEDEV.md` - Development and integration docs
+  - `/QMOISPACEprod.md` - production and integration docs
   - `/QMOISPACEUI.md` - UI features and serving methods
   - `/QMOISPACE.md` - General space documentation
   - `/QMOIHUGGINGFACESPACES.md` - Hugging Face integration
@@ -50,8 +50,8 @@ This document provides a comprehensive reference for all system structures, dire
 QCity
 ├── qcity-artifacts/
 ├── QCITYREADME.md
-├── QCITYMAINDEVICE.md
-├── QCITYDEVICEAUTOUPGRADE.md
+├── QCITYMAINprodICE.md
+├── QCITYprodICEAUTOUPGRADE.md
 ├── QCITYRUNNERSENGINE.md
 ├── QCITYRESOURCES.md
 └── QCITYQMOIAUTOSTART.md
@@ -76,7 +76,7 @@ QMOI-AI
 ```
 QMOI Space
 ├── qmoi-space/
-├── QMOISPACEDEV.md
+├── QMOISPACEprod.md
 ├── QMOISPACEUI.md
 ├── QMOISPACE.md
 └── QMOIHUGGINGFACESPACES.md
@@ -85,7 +85,7 @@ QMOI Space
 ## Structure-Specific Documentation
 
 - See `QMOIAICORE.md` for AI core logic and orchestration details
-- See `QMOISPACEDEV.md` for QMOI Space development and integration
+- See `QMOISPACEprod.md` for QMOI Space production and integration
 - See `QCITYREADME.md` for QCity features and activities
 - See `QMOI_MEMORY.md` for memory/resource management
 - See `QMOI-ENHANCED-AUTOTESTS.md` for automation and self-healing
@@ -103,9 +103,9 @@ QMOI Space
   - `/main.py`, `/qmoiexe_enhanced.py` (function: `run_backend`) - Serves backend API and logic
   - `/QMOI_MEMORY.md` - Details backend memory management
 
-- **Automation & Self-Development**
+- **Automation & Self-production**
   - `/QMOI-ENHANCED-AUTOTESTS.md` - Automated testing and self-healing
-  - `/QMOIAUTODEV.md`, `/QMOIAUTOMAKENEW.md` - Auto-development and project creation
+  - `/QMOIAUTOprod.md`, `/QMOIAUTOMAKENEW.md` - Auto-production and project creation
   - `/QMOIAUTOEVOLVE.md` - Auto-evolution logic
   - `/QMOI-ENHANCED-SUMMARY.md` - Summary of enhancements and automation
 

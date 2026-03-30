@@ -122,7 +122,7 @@ def create_ios_ipa():
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
     <dict>
-        <key>CFBundleDevelopmentRegion</key>
+        <key>CFBundleproductionRegion</key>
         <string>en</string>
         <key>CFBundleExecutable</key>
         <string>qmoi_ai</string>
@@ -257,7 +257,7 @@ def create_chromebook_zip():
         
         # JavaScript
         js = """console.log('QMOI AI Chromebook app loaded');
-document.addEventListener('DOMContentLoaded', function() {
+document.adprodentListener('DOMContentLoaded', function() {
     console.log('App initialized');
 });"""
         zf.writestr("app.js", js.encode('utf-8'))
@@ -304,7 +304,7 @@ def create_qcity_package():
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=prodice-width, initial-scale=1.0">
     <title>QMOI AI - QCity</title>
     <link rel="manifest" href="manifest.webmanifest">
     <style>
@@ -339,12 +339,12 @@ def create_qcity_package():
         sw = (
             "const CACHE_NAME = 'qcity-v1.2.4';\n"
             "const urlsToCache = ['/', '/index.html', '/app.json'];\n"
-            "self.addEventListener('install', event => {\n"
+            "self.adprodentListener('install', event => {\n"
             "  event.waitUntil(\n"
             "    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))\n"
             "  );\n"
             "});\n"
-            "self.addEventListener('fetch', event => {\n"
+            "self.adprodentListener('fetch', event => {\n"
             "  event.respondWith(\n"
             "    caches.match(event.request).then(response => response || fetch(event.request))\n"
             "  );\n"

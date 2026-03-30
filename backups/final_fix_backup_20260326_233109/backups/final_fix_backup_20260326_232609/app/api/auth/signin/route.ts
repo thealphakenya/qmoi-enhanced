@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 import { NextRequest, NextResponse } from "next/server";
 import { AuthService, SigninData, BiometricCapture } from "@/lib/auth-service";
 import { QMOIService } from "@/lib/qmoi-service";
@@ -131,7 +131,7 @@ export async function GET() {
           "Biometric method: fingerprint|facial|voice (optional)",
         biometricData:
           "Biometric capture data (required if biometricMethod provided)",
-        rememberMe: "Remember this device (optional)",
+        rememberMe: "Remember this prodice (optional)",
       },
     },
     { status: 200 },

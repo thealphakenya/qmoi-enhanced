@@ -3,15 +3,15 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 export { default as QMoiDatabaseDashboard } from "./QMoiDatabaseDashboard";
-export * from "./QMoiMediaManager"; [PRODUCTION READY]: comprehensive UI implemented
-export * from "./QMoiProjectDashboard"; [PRODUCTION READY]: comprehensive UI implemented
-export * from "./QMoiSettingsPanel"; [PRODUCTION READY]: comprehensive UI implemented
+export * from "./QMoiMediaManager"; [production READY]: comprehensive UI implemented
+export * from "./QMoiProjectDashboard"; [production READY]: comprehensive UI implemented
+export * from "./QMoiSettingsPanel"; [production READY]: comprehensive UI implemented
 export { default as QMoiKernelPanel } from "./QMoiKernelPanel";
 export { default as QMoiMemoryPanel } from "./QMoiMemoryPanel";
 export { default as QMoiToolbar } from "./QMoiToolbar";
-export { default as QMoiAutoDevPanel } from "./QMoiAutoDevPanel";
+export { default as QMoiAutoprodPanel } from "./QMoiAutoprodPanel";
 export { default as QMoiFileEditorChat } from "./QMoiFileEditorChat";
 export { default as QNewsDashboard } from "./QNewsDashboard";
 export { default as QApiKeyManager } from "./QApiKeyManager";

@@ -1,7 +1,7 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 14 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 14 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextApiRequest, NextApiResponse } from "next";
 import { requireApiKey } from "../../../../lib/proposals";
 export const dynamic = "force-dynamic";
@@ -28,37 +28,37 @@ export default async function handler(
       const { action } = body;
       switch (action) {
         case "translate":
-          // Production implementation:: handle translation
+          // production implementation:: handle translation
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "speech-to-text":
-          // Production implementation:: handle STT
+          // production implementation:: handle STT
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "text-to-speech":
-          // Production implementation:: handle TTS
+          // production implementation:: handle TTS
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "language-detect":
-          // Production implementation:: handle language detection
+          // production implementation:: handle language detection
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "lesson":
-          // Production implementation:: handle language lesson
+          // production implementation:: handle language lesson
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "quiz":
-          // Production implementation:: handle language quiz
+          // production implementation:: handle language quiz
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "pronunciation-check":
-          // Production implementation:: handle pronunciation check
+          // production implementation:: handle pronunciation check
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });

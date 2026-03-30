@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 /**
  * auto-update.js: Auto-update logic for QMOI Space
  * Handles PWA auto-updates and desktop app updates via Electron IPC
@@ -26,7 +26,7 @@ class AutoUpdateManager {
 
     // Listen for SW updates (PWA)
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.addEventListener("controllerchange", () => {
+      navigator.serviceWorker.adprodentListener("controllerchange", () => {
         this.notifyUpdateAvailable();
       });
     }
@@ -142,7 +142,7 @@ class AutoUpdateManager {
 
 // Initialize on DOM ready
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => {
+  document.adprodentListener("DOMContentLoaded", () => {
     window.autoUpdateManager = new AutoUpdateManager();
   });
 } else {

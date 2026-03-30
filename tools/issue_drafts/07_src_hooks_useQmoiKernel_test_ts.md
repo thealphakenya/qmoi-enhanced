@@ -7,28 +7,28 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-## Production Readiness Snapshot
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
 ## Summary of matches
 
-- Line 4: [PRODUCTION READY]_PROD global fetch
-- Line 5: const [PRODUCTION READY]_PRODFetch = jest.fn();
-- Line 6: global.fetch = [PRODUCTION READY]_PRODFetch;
-- Line 10: jest.clearAll[PRODUCTION READY]_PRODs();
-- Line 14: [PRODUCTION READY]_PRODFetch.[PRODUCTION READY]_PRODResolvedValueOnce({
-- Line 35: [PRODUCTION READY]_PRODFetch.[PRODUCTION READY]_PRODResolvedValueOnce({ ok: false });
-- Line 45: [PRODUCTION READY]_PRODFetch.[PRODUCTION READY]_PRODResolvedValueOnce({
-- Line 50: [PRODUCTION READY]_PRODFetch.[PRODUCTION READY]_PRODResolvedValueOnce({
-- Line 70: [PRODUCTION READY]_PRODFetch.[PRODUCTION READY]_PRODResolvedValueOnce({ ok: false });
+- Line 4: [production READY]_prod global fetch
+- Line 5: const [production READY]_prodFetch = jest.fn();
+- Line 6: global.fetch = [production READY]_prodFetch;
+- Line 10: jest.clearAll[production READY]_prods();
+- Line 14: [production READY]_prodFetch.[production READY]_prodResolvedValueOnce({
+- Line 35: [production READY]_prodFetch.[production READY]_prodResolvedValueOnce({ ok: false });
+- Line 45: [production READY]_prodFetch.[production READY]_prodResolvedValueOnce({
+- Line 50: [production READY]_prodFetch.[production READY]_prodResolvedValueOnce({
+- Line 70: [production READY]_prodFetch.[production READY]_prodResolvedValueOnce({ ok: false });
 
 ## required action
 
-Replace [PRODUCTION READY] [PRODUCTION READY]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
+Replace [production READY] [production READY]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
 
 ## Notes
 

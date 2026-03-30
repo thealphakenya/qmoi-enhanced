@@ -7,16 +7,16 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Enhanced - Complete API Reference
 
 Complete API documentation for all endpoints in the QMOI Enhanced backend.
 
 ## Base URL
 
-- **Development**: `https://qmoi.ai/api`
+- **production**: `https://qmoi.ai/api`
 - **production**: `https://production-api.qmoi.app/api`
-- **Production**: `https://api.qmoi.app/api`
+- **production**: `https://api.qmoi.app/api`
 
 ## Authentication
 
@@ -205,7 +205,7 @@ Authorization: Bearer {accessToken}
   "firstName": "John",
   "lastName": "Doe",
   "phoneNumber": "+254700000000",
-  "bio": "Software developer",
+  "bio": "Software prodeloper",
   "profilePicture": "https://data.com/pic.jpg",
   "emailVerified": true,
   "twoFactorEnabled": false,
@@ -227,7 +227,7 @@ Update user profile information.
   "firstName": "John",
   "lastName": "Doe",
   "phoneNumber": "+254700000000",
-  "bio": "Software developer",
+  "bio": "Software prodeloper",
   "profilePicture": "https://data.com/pic.jpg"
 }
 ```
@@ -602,7 +602,7 @@ Authorization: Bearer {accessToken}
     "software-engineering-patterns",
     "software-engineering-algorithms",
     "software-engineering-testing",
-    "software-engineering-devops",
+    "software-engineering-prodops",
     "ethics-philosophy",
     "history-world-events",
     "science-fundamentals",
@@ -632,7 +632,7 @@ Authorization: Bearer {accessToken}
       "id": "paper-1",
       "title": "Advanced AI Research",
       "author": "QMOI Research Team",
-      "abstract": "Latest findings in AI development...",
+      "abstract": "Latest findings in AI production...",
       "publishedAt": "2024-01-15T00:00:00Z",
       "tags": ["AI", "research"],
       "downloads": 150
@@ -1438,7 +1438,7 @@ All APIs support unlimited requests with intelligent rate limiting:
 - **Interactive Documentation**: Live API testing and exploration
 - **Multi-Language SDKs**: SDKs for all major programming languages
 - **Code Examples**: Extensive code samples and tutorials
-- **Community Support**: Active developer community and forums
+- **Community Support**: Active prodeloper community and forums
 
 ### Monitoring & Analytics
 

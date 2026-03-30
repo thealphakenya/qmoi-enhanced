@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOI System"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -29,7 +29,7 @@ Use the following tools to automate and build your apps:
 
 | Tool                                 | Description                                                      |
 | ------------------------------------ | ---------------------------------------------------------------- |
-| `python scripts/qmoi-app-builder.py` | Full cloud-based build and test for all devices                  |
+| `python scripts/qmoi-app-builder.py` | Full cloud-based build and test for all prodices                  |
 | `build_qmoi_ai.bat`                  | Quick-build for Windows `.exe` using PyInstaller + GitHub deploy |
 | `qmoiexe.py`                         | All-in-one launcher (backend + GUI + tray + updater + shortcuts) |
 | `auto_updater.py`                    | Auto-checks GitHub for new releases and updates locally          |

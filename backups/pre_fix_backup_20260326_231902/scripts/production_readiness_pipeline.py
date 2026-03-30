@@ -5,7 +5,7 @@
 
 #!/usr/bin/env python3
 """
-[PRODUCTION READY] Comprehensive Production Readiness Pipeline
+[production READY] Comprehensive production Readiness Pipeline
 Executes all validation, analysis, and fix scripts in proper sequence
 Generates complete audit reports and deployment readiness verification
 """
@@ -29,9 +29,9 @@ PIPELINE_STAGES = [
         'critical': True
     },
     {
-        'name': 'Non-Production Marker Scan',
-        'script': 'scripts/scan_nonproduction_endpoints.py',
-        'description': 'Identify all remaining non-production markers in codebase',
+        'name': 'production Marker Scan',
+        'script': 'scripts/scan_production_endpoints.py',
+        'description': 'Identify all remaining production markers in codebase',
         'critical': True
     },
     {
@@ -55,7 +55,7 @@ PIPELINE_STAGES = [
 ]
 
 
-class ProductionReadinessPipeline:
+class productionReadinessPipeline:
     def __init__(self):
         self.results = {}
         self.failed_stages = []
@@ -121,7 +121,7 @@ class ProductionReadinessPipeline:
         """Execute all pipeline stages"""
         print("\n")
         print("╔════════════════════════════════════════════════════════════════════╗")
-        print("║   QMOI ENHANCED - PRODUCTION READINESS PIPELINE                    ║")
+        print("║   QMOI ENHANCED - production READINESS PIPELINE                    ║")
         print(f"║   Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}                              ║")
         print("╚════════════════════════════════════════════════════════════════════╝")
         
@@ -190,5 +190,5 @@ class ProductionReadinessPipeline:
 
 
 if __name__ == '__main__':
-    pipeline = ProductionReadinessPipeline()
+    pipeline = productionReadinessPipeline()
     sys.exit(pipeline.run())

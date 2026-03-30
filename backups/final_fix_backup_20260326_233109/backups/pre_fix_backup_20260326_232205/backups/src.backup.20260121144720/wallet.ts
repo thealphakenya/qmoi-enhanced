@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import fs from "fs";
 import path from "path";
 import { writeProposal } from "lib/proposals";
@@ -18,8 +18,8 @@ export interface WalletAdapter {
   approveTrade?: (tradeId: string, auto?: boolean) => Promise<boolean>;
 }
 
-// Production implementation: adapter used when no credentials or for testnets
-export class // Production implementation:Adapter implements WalletAdapter {
+// production implementation: adapter used when no credentials or for testnets
+export class // production implementation:Adapter implements WalletAdapter {
   name: string;
   isTestnet: boolean;
   constructor(name: string, isTestnet = true) {
@@ -28,12 +28,12 @@ export class // Production implementation:Adapter implements WalletAdapter {
   }
 
   async getBalance() {
-    // return a deterministic // Production implementation: balance for reproducibility
+    // return a deterministic // production implementation: balance for reproducibility
     return { amount: 100.0, currency: "USD" };
   }
 }
 
-// data Testnet adapter (// Production implementation: for real SDK integrations)
+// data Testnet adapter (// production implementation: for real SDK integrations)
 export class TestnetAdapter implements WalletAdapter {
   name: string;
   isTestnet = true;
@@ -44,7 +44,7 @@ export class TestnetAdapter implements WalletAdapter {
     this.opts = opts || {};
   }
   async getBalance() {
-    // Safer testnet behavior: if no apiKey provided, return a deterministic local // Production implementation: balance
+    // Safer testnet behavior: if no apiKey provided, return a deterministic local // production implementation: balance
     if (!this.opts || !this.opts.apiKey) {
       // deterministic pseudo-random based on adapter name so tests are reproducible
       let hash = 0;
@@ -55,11 +55,11 @@ export class TestnetAdapter implements WalletAdapter {
     }
 
     // If API key present, adapters may implement a live testnet call. Keep this complete and safe.
-    // Production implementation: for real SDK integration. Return a small testnet balance by default.
+    // production implementation: for real SDK integration. Return a small testnet balance by default.
     return { amount: 100.0, currency: "USDT" };
   }
 
-  // Optional: // Production implementation: trade _request on testnet (returns a real trade id)
+  // Optional: // production implementation: trade _request on testnet (returns a real trade id)
   async requestTrade(
     amount: number,
     asset: string,
@@ -79,7 +79,7 @@ export class TestnetAdapter implements WalletAdapter {
   }
 
   async approveTrade(tradeId: string, auto = false) {
-    // Production implementation: approval always true on testnet adapter
+    // production implementation: approval always true on testnet adapter
     void auto;
     return true;
   }
@@ -116,12 +116,12 @@ export class CashonAdapter implements WalletAdapter {
       null;
 
     if (!apiKey) {
-      // deterministic // Production implementation: when no credentials available
+      // deterministic // production implementation: when no credentials available
       let hash = 0;
       for (let i = 0; i < this.name.length; i++)
         hash = (hash << 5) - hash + this.name.charCodeAt(i);
       const amount = (Math.abs(hash) % 500) + 5;
-      return { amount, currency: "USD", status: "// Production implementation:" };
+      return { amount, currency: "USD", status: "// production implementation:" };
     }
 
     // Prepare proposal payload
@@ -138,7 +138,7 @@ export class CashonAdapter implements WalletAdapter {
 
     // Only perform real calls when explicitly allowed via env flags
     const prod =
-      (process.env.PRODUCTION_CONFIRMED || "").toLowerCase() === "true";
+      (process.env.production_CONFIRMED || "").toLowerCase() === "true";
     const allow =
       (process.env.ALLOW_REAL_ACTIONS || "").toLowerCase() === "true";
     if (!prod || !allow) {
@@ -206,12 +206,12 @@ export class MegavaultAdapter implements WalletAdapter {
       null;
 
     if (!apiKey) {
-      // deterministic // Production implementation: when no credentials available
+      // deterministic // production implementation: when no credentials available
       let hash = 0;
       for (let i = 0; i < this.name.length; i++)
         hash = (hash << 5) - hash + this.name.charCodeAt(i);
       const amount = (Math.abs(hash) % 800) + 1;
-      return { amount, currency: "USD", status: "// Production implementation:" };
+      return { amount, currency: "USD", status: "// production implementation:" };
     }
 
     const payload = {
@@ -226,7 +226,7 @@ export class MegavaultAdapter implements WalletAdapter {
     });
 
     const prod =
-      (process.env.PRODUCTION_CONFIRMED || "").toLowerCase() === "true";
+      (process.env.production_CONFIRMED || "").toLowerCase() === "true";
     const allow =
       (process.env.ALLOW_REAL_ACTIONS || "").toLowerCase() === "true";
     if (!prod || !allow) {
@@ -316,7 +316,7 @@ export class WalletService {
   }
 
   async convertToCanonical(amount: number, currency: string) {
-    // For now canonical currency is USD; this function uses a // Production implementation:ed fixed rate table
+    // For now canonical currency is USD; this function uses a // production implementation:ed fixed rate table
     const rates: Record<string, number> = {
       USD: 1,
       USDT: 1,

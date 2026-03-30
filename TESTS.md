@@ -2,7 +2,7 @@
 
 **Last Updated**: 2026-03-29T01:23:12.130873
 **Total Files**: 44
-**Status**: ✅ Production Ready
+**Status**: ✅ production Ready
 
 ## 📋 Document Overview
 
@@ -15,7 +15,7 @@ This document catalogues all test files in the `__tests__` directory, including 
 | Total Files | 44 | All files indexed |
 | Subdirectories | 6 | Organized sections |
 | File Types | 3 | Multiple formats |
-| Production Status | ✅ | Ready |
+| production Status | ✅ | Ready |
 
 ### File Type Distribution
 
@@ -67,8 +67,8 @@ This document catalogues all test files in the `__tests__` directory, including 
 - [`auth.test.ts`](__tests__/api/auth.test.ts) - `.ts`
 - [`monitoring.test.ts`](__tests__/api/monitoring.test.ts) - `.ts`
 - [`payments.test.ts`](__tests__/api/payments.test.ts) - `.ts`
-- [`qmoi-autodev-research.test.ts`](__tests__/api/qmoi-autodev-research.test.ts) - `.ts`
-- [`qmoi-autodev-toggle-generate-state.test.ts`](__tests__/api/qmoi-autodev-toggle-generate-state.test.ts) - `.ts`
+- [`qmoi-autoprod-research.test.ts`](__tests__/api/qmoi-autoprod-research.test.ts) - `.ts`
+- [`qmoi-autoprod-toggle-generate-state.test.ts`](__tests__/api/qmoi-autoprod-toggle-generate-state.test.ts) - `.ts`
 - [`wallets.test.ts`](__tests__/api/wallets.test.ts) - `.ts`
 
 ### cache (1 files)

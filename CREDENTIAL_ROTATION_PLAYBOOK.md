@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # QMOI Enhanced: Credential Rotation & Security Hardening Playbook
 
 ## Executive Summary
@@ -18,12 +18,12 @@ Three sensitive credentials have been identified and redacted from the repositor
 2. **Vercel API Token**: `[REDACTED_VERCEL_TOKEN]`
 3. **Ngrok Auth Token**: `[REDACTED_NGROK_TOKEN]`
 
-**CRITICAL**: These tokens have been **removed from the repository** and replaced with [PRODUCTION READY] text. However, the tokens may still exist in:
+**CRITICAL**: These tokens have been **removed from the repository** and replaced with [production READY] text. However, the tokens may still exist in:
 
 - Git history (commit logs)
 - GitHub Actions logs (if workflows were run)
 - CI/CD system caches
-- Developer local clones (containing historical data)
+- prodeloper local clones (containing historical data)
 
 This playbook provides step-by-step instructions for complete credential rotation and remediation.
 
@@ -37,7 +37,7 @@ This playbook provides step-by-step instructions for complete credential rotatio
 
 **Actions**:
 
-1. Go to GitHub Settings → Developer Settings → [Personal access tokens](https://github.com/settings/tokens?type=release)
+1. Go to GitHub Settings → prodeloper Settings → [Personal access tokens](https://github.com/settings/tokens?type=release)
 2. Find the token starting with `ghp_QH1F8NS3y0vkfyYEMG0XkL7kmNdtDn0k...`
 3. Click **Delete** or **Regenerate**
 4. **⚠️ If regenerating**, save the new token in a secure location (LastPass, 1Password, etc.)
@@ -247,7 +247,7 @@ git filter-repo --invert-regex --regex '([REDACTED_GITHUB_PAT]|[REDACTED_VERCEL_
 
 ### Step 3.3: Force Push Clean History
 
-⚠️ **THIS WILL REWRITE HISTORY FOR ALL DEVELOPERS**
+⚠️ **THIS WILL REWRITE HISTORY FOR ALL prodELOPERS**
 
 ```bash
 # After running BFG or git-filter-repo
@@ -302,9 +302,9 @@ pre-commit install
 name: Security Checks
 on:
   push:
-    branches: [main, develop]
+    branches: [main, prodelop]
   pull_request:
-    branches: [main, develop]
+    branches: [main, prodelop]
 
 jobs:
   detect-secrets:
@@ -368,17 +368,17 @@ Check that all services load credentials from environment variables, not configu
 
 ```bash
 # Should return 0 results (no configured tokens)
-grep -r "ghp_" *.py src/ tools/ 2>/dev/null | grep -v "REDACTED" | wc -l
+grep -r "ghp_" *.py src/ tools/ 2>/prod/null | grep -v "REDACTED" | wc -l
 
 # Verify env loading pattern
-grep -r "os.getenv\|os.environ" *.py src/ tools/ 2>/dev/null | grep -i "token\|secret\|password" | head -10
+grep -r "os.getenv\|os.environ" *.py src/ tools/ 2>/prod/null | grep -i "token\|secret\|password" | head -10
 ```
 
 **Node.js Services**:
 
 ```bash
 # Check for env loading
-grep -r "process.env\." *.js *.ts 2>/dev/null | grep -i "token\|secret\|password" | head -10
+grep -r "process.env\." *.js *.ts 2>/prod/null | grep -i "token\|secret\|password" | head -10
 ```
 
 ### Step 5.2: Create `.env.data` standard
@@ -443,14 +443,14 @@ PATTERNS=(
     "ghp_[a-zA-Z0-9]\{36,\}"           # GitHub PAT
     "vercel_[a-zA-Z0-9_]\{40,\}"        # Vercel token
     "ngrok.*auth.*token"                 # Ngrok auth
-    "REDACTED"                           # [PRODUCTION READY] check
+    "REDACTED"                           # [production READY] check
 )
 
 FOUND=0
 
 for pattern in "${PATTERNS[@]}"; do
     echo "  Checking for: $pattern"
-    if grep -ri "$pattern" . --exclude-dir=.git --exclude-dir=node_modules --exclude="*.lock" 2>/dev/null; then
+    if grep -ri "$pattern" . --exclude-dir=.git --exclude-dir=node_modules --exclude="*.lock" 2>/prod/null; then
         FOUND=$((FOUND + 1))
     fi
 done
@@ -549,7 +549,7 @@ See: CREDENTIAL_ROTATION_PLAYBOOK.md
 
 **Remediation**:
 
-- ✅ Credentials redacted from source (REDACTED\_\* [PRODUCTION READY]s)
+- ✅ Credentials redacted from source (REDACTED\_\* [production READY]s)
 - ✅ Credentials rotated (new tokens issued)
 - ✅ GitHub Secrets updated
 - ✅ Git history flagged for purge (Phase 3)

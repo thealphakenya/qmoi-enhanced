@@ -1,55 +1,55 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 {
   "windows": {
-    "device": "windows",
+    "prodice": "windows",
     "status": "success",
     "path": "Qmoi_apps/windows/qmoi_ai.exe",
     "error": null
   },
   "mac": {
-    "device": "mac",
+    "prodice": "mac",
     "status": "success",
     "path": "Qmoi_apps/mac/qmoi_ai.dmg",
     "error": null
   },
   "linux": {
-    "device": "linux",
+    "prodice": "linux",
     "status": "success",
     "path": "Qmoi_apps/linux/qmoi_ai.AppImage",
     "error": null
   },
   "android": {
-    "device": "android",
+    "prodice": "android",
     "status": "success",
     "path": "Qmoi_apps/android/qmoi_ai.apk",
     "error": null
   },
   "ios": {
-    "device": "ios",
+    "prodice": "ios",
     "status": "success",
     "path": "Qmoi_apps/ios/qmoi_ai.ipa",
     "error": null
   },
   "qcity": {
-    "device": "qcity",
+    "prodice": "qcity",
     "status": "success",
     "path": "Qmoi_apps/qcity/qmoi_ai.zip",
     "error": null
   },
   "chromebook": {
-    "device": "chromebook",
+    "prodice": "chromebook",
     "status": "success",
     "path": "Qmoi_apps/chromebook/qmoi_ai.deb",
     "error": "Rebuild failed"
   },
   "raspberrypi": {
-    "device": "raspberrypi",
+    "prodice": "raspberrypi",
     "status": "fail",
     "path": "Qmoi_apps\\raspberrypi\\qmoi ai.img",
     "error": "Rebuild failed"
   },
   "smarttv": {
-    "device": "smarttv",
+    "prodice": "smarttv",
     "status": "fail",
     "path": "Qmoi_apps\\smarttv\\qmoi ai.apk",
     "error": "Rebuild failed"

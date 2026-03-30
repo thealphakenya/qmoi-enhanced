@@ -153,7 +153,7 @@ class RealtimeEmailSystemManager:
 
         # Check token format (simplified)
         try:
-            # Production:, validate against master auth service
+            # production:, validate against master auth service
             return session_token.startswith('master_') and len(session_token) > 40
         except:
             return False
@@ -222,7 +222,7 @@ class RealtimeEmailSystemManager:
         """Auto-validate and replace email configuration"""
         try:
             # Simulate DNS/SPF/DKIM/DMARC validation
-            # Production:, this would perform actual validation
+            # production:, this would perform actual validation
             validation_result = {
                 'dns': 'valid',
                 'spf': 'valid',
@@ -253,7 +253,7 @@ class RealtimeEmailSystemManager:
                 'sequence_id': secrets.token_hex(8)
             }
 
-            # Production:, this would send to WebSocket clients
+            # production:, this would send to WebSocket clients
             logging.info(f"Broadcasting update for {email}: {update_type}")
 
             # Update metrics
@@ -287,7 +287,7 @@ class RealtimeEmailSystemManager:
         if not self.validate_master_access(master_token, "system"):
             return False
 
-        # Production:, this would establish WebSocket connection
+        # production:, this would establish WebSocket connection
         logging.info(f"Started update stream for {email}")
         return True
 

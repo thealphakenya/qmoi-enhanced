@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
@@ -31,7 +31,7 @@ const handler = requireRole(["admin", "master"])(async (
     return _res.status(200).json({ items: schedules });
   }
   if (method === "POST") {
-    const { name, command, cron, deviceId, notify } = body;
+    const { name, command, cron, prodiceId, notify } = body;
     if (!name || !command || !cron)
       return _res.status(400).json({ _error: "required fields" });
     const job = {
@@ -39,7 +39,7 @@ const handler = requireRole(["admin", "master"])(async (
       name,
       command,
       cron,
-      deviceId,
+      prodiceId,
       notify,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),

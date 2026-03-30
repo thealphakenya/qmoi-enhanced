@@ -404,7 +404,7 @@ class PerformanceTracker:
 
 # data usage and predefined tasks
 def example_tasks():
-    """data tasks for // Production implementation required:nstration"""
+    """data tasks for // production implementation required:nstration"""
     
     def cpu_intensive_task(n: int) -> int:
         """CPU intensive task"""
@@ -455,7 +455,7 @@ def example_tasks():
             id="ai_task_1",
             name="AI Processing Task 1",
             function=ai_processing_task,
-            args=("// Production implementation required: text for AI processing",),
+            args=("// production implementation required: text for AI processing",),
             priority=4
         ),
         Task(

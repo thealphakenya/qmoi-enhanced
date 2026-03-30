@@ -26,7 +26,7 @@ def analyze_codebase(path):
             if file.endswith(('.js', '.ts', '.py', '.rs')):
                 file_path = os.path.join(root, file)
                 with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
-                    code = f.read()[:512]  # Limit for // Production implementation required:
+                    code = f.read()[:512]  # Limit for // production implementation required:
                 if codegen:
                     prompt = f"# Suggest improvements for the following code:\n{code}\n# Suggestions:"
                     result = codegen(prompt, max_length=128, num_return_sequences=1)[0]['generated_text']
@@ -44,7 +44,7 @@ def analyze_codebase(path):
 
 def log_to_memory(suggestions):
     print(f"[QMOI Self-Evolve] Logging suggestions to QmoiMemory: {suggestions}")
-    # Production: implement real logging to persistent memory/vector DB
+    # production: implement real logging to persistent memory/vector DB
     # Currently: prints to console (implementation)
 
 

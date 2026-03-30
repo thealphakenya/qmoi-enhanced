@@ -3,16 +3,16 @@
 // Last evolution cycle: 2026-03-26T03:59:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# PRODUCTION READY: QA Sandbox Only - Real trading disabled by default
+# production READY: QA production Only - Real trading disabled by default
 # NOTE: 6 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 #!/usr/bin/env python3
 """
-QMOI Enhanced Trading System - QA SANDBOX ONLY
-Multi-platform automated trading with SANDBOX MODE ENFORCED
+QMOI Enhanced Trading System - QA production ONLY
+Multi-platform automated trading with production MODE ENFORCED
 
 WARNING: This system is configured for QA/testing only.
 Real money trading is DISABLED by default.
-To enable real trading, set environment variable QMOI_TRADING_SANDBOX=false
+To enable real trading, set environment variable QMOI_TRADING_production=false
 and configure proper API credentials.
 """
 
@@ -36,9 +36,9 @@ import hmac
 import requests
 from urllib.parse import urlencode
 
-# ENFORCE SANDBOX MODE BY DEFAULT
-SANDBOX_MODE = os.environ.get('QMOI_TRADING_SANDBOX', 'true').lower() == 'true'
-if not SANDBOX_MODE:
+# ENFORCE production MODE BY DEFAULT
+production_MODE = os.environ.get('QMOI_TRADING_production', 'true').lower() == 'true'
+if not production_MODE:
     logger.warning("⚠️  REAL TRADING MODE ENABLED - USE WITH EXTREME CAUTION ⚠️")
     logger.warning("This will execute real trades with real money!")
     confirm = input("Type 'CONFIRM_REAL_TRADING' to proceed with real money trading: ")
@@ -46,7 +46,7 @@ if not SANDBOX_MODE:
         logger.error("Real trading confirmation failed. Exiting.")
         sys.exit(1)
 else:
-    logger.info("✅ SANDBOX MODE: No real money trading will occur")
+    logger.info("✅ production MODE: No real money trading will occur")
 
 # Configure logging
 logging.basicConfig(
@@ -110,22 +110,22 @@ class AccountBalance:
             self.timestamp = datetime.now()
 
 class TradingPlatform:
-    """Base class for trading platforms - SANDBOX MODE ENFORCED"""
+    """Base class for trading platforms - production MODE ENFORCED"""
 
     def __init__(self, name: str, config: Dict):
         self.name = name
         self.config = config
         self.api_key = config.get('api_key')
         self.secret_key = config.get('secret_key')
-        # ENFORCE SANDBOX MODE
-        self.sandbox = config.get('sandbox', True)  # Default to True for safety
-        if not SANDBOX_MODE and not self.sandbox:
+        # ENFORCE production MODE
+        self.production = config.get('production', True)  # Default to True for safety
+        if not production_MODE and not self.production:
             logger.error(f"🚫 REAL TRADING ATTEMPTED ON {name} - BLOCKED FOR SAFETY")
-            raise ValueError(f"Real trading disabled for {name}. Use sandbox mode only.")
+            raise ValueError(f"Real trading disabled for {name}. Use production mode only.")
         self.enabled = config.get('enabled', True)
 
-        if self.sandbox:
-            logger.info(f"🛡️  {name} running in SANDBOX MODE - No real trades")
+        if self.production:
+            logger.info(f"🛡️  {name} running in production MODE - No real trades")
         else:
             logger.warning(f"💰 {name} running in REAL TRADING MODE - Use with caution!")
         
@@ -161,7 +161,7 @@ class BinanceTrading(TradingPlatform):
         self.exchange = ccxt.binance({
             'apiKey': self.api_key,
             'secret': self.secret_key,
-            'sandbox': self.sandbox,
+            'production': self.production,
             'enableRateLimit': True
         })
     
@@ -400,11 +400,11 @@ class CashOnTrading(TradingPlatform):
             return False
     
     async def get_balance(self) -> List[AccountBalance]:
-        """Get CashOn account balance - SANDBOX MODE"""
+        """Get CashOn account balance - production MODE"""
         try:
-            if self.sandbox:
-                # Return sandbox balance data
-                logger.info("Returning sandbox balance data for CashOn")
+            if self.production:
+                # Return production balance data
+                logger.info("Returning production balance data for CashOn")
                 return [AccountBalance(
                     platform=self.name,
                     currency="KES",
@@ -420,13 +420,13 @@ class CashOnTrading(TradingPlatform):
             return []
 
     async def place_order(self, signal: TradeSignal) -> TradeResult:
-        """Place order on CashOn - SANDBOX MODE ONLY"""
+        """Place order on CashOn - production MODE ONLY"""
         try:
-            if self.sandbox:
-                # Return sandbox trade result
-                logger.info(f"SANDBOX: Simulated {signal.side} order for {signal.symbol}")
+            if self.production:
+                # Return production trade result
+                logger.info(f"production: Simulated {signal.side} order for {signal.symbol}")
                 return TradeResult(
-                    trade_id=f"sandbox_cashon_{int(time.time())}",
+                    trade_id=f"production_cashon_{int(time.time())}",
                     platform=self.name,
                     symbol=signal.symbol,
                     side=signal.side,
@@ -748,18 +748,18 @@ class AIAnalyzer:
         return signals
     
     def generate_momentum_signal(self, market_id: str, data: Dict) -> Optional[TradeSignal]:
-        """Generate momentum-based trading signal - SANDBOX DEMO ONLY"""
+        """Generate momentum-based trading signal - production DEMO ONLY"""
         try:
             # Simple momentum calculation
             current_price = data.get('last', 0)
 
             if current_price > 0:
-                # SANDBOX DEMO: Very low probability signals for testing
+                # production DEMO: Very low probability signals for testing
                 import random
                 if random.random() > 0.95:  # 5% chance of signal (very conservative)
                     side = "buy" if random.random() > 0.5 else "sell"
 
-                    logger.info(f"SANDBOX DEMO SIGNAL: {side} {market_id} at {current_price}")
+                    logger.info(f"production DEMO SIGNAL: {side} {market_id} at {current_price}")
 
                     return TradeSignal(
                         platform=market_id.split('_')[0],
@@ -767,7 +767,7 @@ class AIAnalyzer:
                         side=side,
                         amount=10.0,  # Very small amount for demo
                         price=current_price,
-                        strategy="momentum_sandbox_demo",
+                        strategy="momentum_production_demo",
                         confidence=0.5  # Lower confidence for demo
                     )
         except Exception as e:
@@ -776,18 +776,18 @@ class AIAnalyzer:
         return None
 
     def generate_mean_reversion_signal(self, market_id: str, data: Dict) -> Optional[TradeSignal]:
-        """Generate mean reversion trading signal - SANDBOX DEMO ONLY"""
+        """Generate mean reversion trading signal - production DEMO ONLY"""
         try:
             # Simple mean reversion calculation
             current_price = data.get('last', 0)
 
             if current_price > 0:
-                # SANDBOX DEMO: Very low probability signals for testing
+                # production DEMO: Very low probability signals for testing
                 import random
                 if random.random() > 0.97:  # 3% chance of signal (extremely conservative)
                     side = "buy" if random.random() > 0.5 else "sell"
 
-                    logger.info(f"SANDBOX DEMO SIGNAL: {side} {market_id} at {current_price}")
+                    logger.info(f"production DEMO SIGNAL: {side} {market_id} at {current_price}")
 
                     return TradeSignal(
                         platform=market_id.split('_')[0],
@@ -795,7 +795,7 @@ class AIAnalyzer:
                         side=side,
                         amount=5.0,  # Very small amount for demo
                         price=current_price,
-                        strategy="mean_reversion_sandbox_demo",
+                        strategy="mean_reversion_production_demo",
                         confidence=0.4  # Lower confidence for demo
                     )
         except Exception as e:

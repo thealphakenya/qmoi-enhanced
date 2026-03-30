@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-"""QMOI Device Orchestration Manager
-Unified multi-platform device/machine app deployment and management
+"""QMOI prodice Orchestration Manager
+Unified multi-platform prodice/machine app deployment and management
 """
 
 import json
@@ -18,7 +18,7 @@ from typing import Dict, Optional, List
 
 LOG_DIR = Path('/workspaces/qmoi-enhanced/logs')
 DATA_DIR = Path('/workspaces/qmoi-enhanced/data')
-DEVICE_REGISTRY = DATA_DIR / 'device_registry.json'
+prodICE_REGISTRY = DATA_DIR / 'prodice_registry.json'
 DEPLOYMENT_LOG_DIR = LOG_DIR / 'deployments'
 
 LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -28,20 +28,20 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler(LOG_DIR / 'device_orchestration.log'),
+        logging.FileHandler(LOG_DIR / 'prodice_orchestration.log'),
         logging.StreamHandler()
     ]
 )
-logger = logging.getLogger('QMOIDeviceOrchestration')
+logger = logging.getLogger('QMOIprodiceOrchestration')
 
-class DeviceOrchestrationManager:
+class prodiceOrchestrationManager:
     def __init__(self):
         self.workspace_root = Path('/workspaces/qmoi-enhanced')
         self.timestamp = datetime.now()
-        self.devices = self.load_device_registry()
+        self.prodices = self.load_prodice_registry()
         self.deployments = []
         
-        self.device_types = {
+        self.prodice_types = {
             'android': {'discovery': 'adb', 'connectivity': 'usb'},
             'ios': {'discovery': 'ios-deploy', 'connectivity': 'usb'},
             'macos': {'discovery': 'system_profiler', 'connectivity': 'ssh'},
@@ -49,99 +49,99 @@ class DeviceOrchestrationManager:
             'linux': {'discovery': 'ssh', 'connectivity': 'ssh'}
         }
 
-    def load_device_registry(self) -> Dict:
-        """Load device registry from JSON"""
-        if DEVICE_REGISTRY.exists():
+    def load_prodice_registry(self) -> Dict:
+        """Load prodice registry from JSON"""
+        if prodICE_REGISTRY.exists():
             try:
-                with DEVICE_REGISTRY.open('r') as f:
+                with prodICE_REGISTRY.open('r') as f:
                     return json.load(f)
             except Exception as e:
-                logger.warning(f'Error loading device registry: {e}')
+                logger.warning(f'Error loading prodice registry: {e}')
         return {}
 
-    def save_device_registry(self):
-        """Save device registry to JSON"""
+    def save_prodice_registry(self):
+        """Save prodice registry to JSON"""
         try:
-            with DEVICE_REGISTRY.open('w') as f:
-                json.dump(self.devices, f, indent=2, default=str)
+            with prodICE_REGISTRY.open('w') as f:
+                json.dump(self.prodices, f, indent=2, default=str)
         except Exception as e:
-            logger.error(f'Error saving device registry: {e}')
+            logger.error(f'Error saving prodice registry: {e}')
 
-    def discover_devices(self, device_type: Optional[str] = None) -> Dict:
-        """Auto-detect devices connected to system"""
-        logger.info(f'Discovering devices (type: {device_type or "all"})')
+    def discover_prodices(self, prodice_type: Optional[str] = None) -> Dict:
+        """Auto-detect prodices connected to system"""
+        logger.info(f'Discovering prodices (type: {prodice_type or "all"})')
         
         discovered = {}
         
-        if device_type in [None, 'android'] or device_type == 'android':
+        if prodice_type in [None, 'android'] or prodice_type == 'android':
             discovered['android'] = self._discover_android()
         
-        if device_type in [None, 'ios'] or device_type == 'ios':
+        if prodice_type in [None, 'ios'] or prodice_type == 'ios':
             discovered['ios'] = self._discover_ios()
         
-        if device_type in [None, 'macos'] or device_type == 'macos':
+        if prodice_type in [None, 'macos'] or prodice_type == 'macos':
             discovered['macos'] = self._discover_macos()
         
-        if device_type in [None, 'windows'] or device_type == 'windows':
+        if prodice_type in [None, 'windows'] or prodice_type == 'windows':
             discovered['windows'] = self._discover_windows()
         
-        if device_type in [None, 'linux'] or device_type == 'linux':
+        if prodice_type in [None, 'linux'] or prodice_type == 'linux':
             discovered['linux'] = self._discover_linux()
         
         return discovered
 
     def _discover_android(self) -> List[Dict]:
-        """Discover Android devices via ADB"""
+        """Discover Android prodices via ADB"""
         try:
-            result = subprocess.run(['adb', 'devices'], capture_output=True, text=True, timeout=10)
-            devices = []
+            result = subprocess.run(['adb', 'prodices'], capture_output=True, text=True, timeout=10)
+            prodices = []
             for line in result.stdout.split('\n')[1:]:
-                if line.strip() and 'device' in line:
+                if line.strip() and 'prodice' in line:
                     parts = line.split()
                     if len(parts) >= 2:
-                        devices.append({
+                        prodices.append({
                             'id': parts[0],
                             'type': 'android',
-                            'status': 'connected' if 'device' in line else 'offline',
+                            'status': 'connected' if 'prodice' in line else 'offline',
                             'discovered_at': datetime.now().isoformat()
                         })
-            return devices
+            return prodices
         except Exception as e:
-            logger.warning(f'Error discovering Android devices: {e}')
+            logger.warning(f'Error discovering Android prodices: {e}')
             return []
 
     def _discover_ios(self) -> List[Dict]:
-        """Discover iOS devices"""
+        """Discover iOS prodices"""
         try:
             result = subprocess.run(['ios-deploy', '--detect'], capture_output=True, text=True, timeout=10)
-            devices = []
+            prodices = []
             for line in result.stdout.split('\n'):
                 if line.strip():
-                    devices.append({
+                    prodices.append({
                         'id': line.strip(),
                         'type': 'ios',
                         'status': 'connected',
                         'discovered_at': datetime.now().isoformat()
                     })
-            return devices
+            return prodices
         except Exception as e:
-            logger.debug(f'Error discovering iOS devices: {e}')
+            logger.debug(f'Error discovering iOS prodices: {e}')
             return []
 
     def _discover_macos(self) -> List[Dict]:
         """Discover macOS machines via SSH"""
         try:
             result = subprocess.run(['dns-sd', '-G', 'v4', '_ssh._tcp', 'local.'], capture_output=True, text=True, timeout=10)
-            devices = []
+            prodices = []
             for line in result.stdout.split('\n'):
                 if line.strip() and 'address' in line.lower():
-                    devices.append({
+                    prodices.append({
                         'id': line.strip(),
                         'type': 'macos',
                         'status': 'potential',
                         'discovered_at': datetime.now().isoformat()
                     })
-            return devices
+            return prodices
         except Exception as e:
             logger.debug(f'Error discovering macOS machines: {e}')
             return []
@@ -150,25 +150,25 @@ class DeviceOrchestrationManager:
         """Discover Windows machines"""
         try:
             result = subprocess.run(['net', 'view'], capture_output=True, text=True, timeout=10)
-            devices = []
+            prodices = []
             for line in result.stdout.split('\n'):
                 if '\\\\' in line:
-                    device_name = line.split()[0].replace('\\\\', '')
-                    devices.append({
-                        'id': device_name,
+                    prodice_name = line.split()[0].replace('\\\\', '')
+                    prodices.append({
+                        'id': prodice_name,
                         'type': 'windows',
                         'status': 'network',
                         'discovered_at': datetime.now().isoformat()
                     })
-            return devices
+            return prodices
         except Exception as e:
-            logger.debug(f'Error discovering Windows devices: {e}')
+            logger.debug(f'Error discovering Windows prodices: {e}')
             return []
 
     def _discover_linux(self) -> List[Dict]:
         """Discover Linux servers via SSH"""
         ssh_hosts_file = Path.home() / '.ssh' / 'config'
-        devices = []
+        prodices = []
         
         if ssh_hosts_file.exists():
             try:
@@ -179,7 +179,7 @@ class DeviceOrchestrationManager:
                             current_host = line.split('Host ')[1].strip()
                         elif 'HostName' in line and current_host:
                             hostname = line.split('HostName ')[1].strip()
-                            devices.append({
+                            prodices.append({
                                 'id': current_host,
                                 'hostname': hostname,
                                 'type': 'linux',
@@ -189,38 +189,38 @@ class DeviceOrchestrationManager:
             except Exception as e:
                 logger.debug(f'Error reading SSH config: {e}')
         
-        return devices
+        return prodices
 
-    def check_device_health(self, device_id: str, device_type: str) -> Dict:
-        """Check health status of a device"""
+    def check_prodice_health(self, prodice_id: str, prodice_type: str) -> Dict:
+        """Check health status of a prodice"""
         health = {
-            'device_id': device_id,
-            'device_type': device_type,
+            'prodice_id': prodice_id,
+            'prodice_type': prodice_type,
             'timestamp': datetime.now().isoformat(),
             'status': 'unknown',
             'metrics': {}
         }
         
         try:
-            if device_type == 'android':
-                result = subprocess.run(['adb', '-s', device_id, 'shell', 'getprop', 'ro.build.version.release'], 
+            if prodice_type == 'android':
+                result = subprocess.run(['adb', '-s', prodice_id, 'shell', 'getprop', 'ro.build.version.release'], 
                                       capture_output=True, text=True, timeout=10)
                 health['status'] = 'healthy' if result.returncode == 0 else 'unhealthy'
                 health['metrics']['os_version'] = result.stdout.strip()
             
-            elif device_type == 'ios':
-                result = subprocess.run(['ios-deploy', '-i', device_id, '-c', 'echo healthy'], 
+            elif prodice_type == 'ios':
+                result = subprocess.run(['ios-deploy', '-i', prodice_id, '-c', 'echo healthy'], 
                                       capture_output=True, text=True, timeout=10)
                 health['status'] = 'healthy' if result.returncode == 0 else 'unhealthy'
             
-            elif device_type in ['macos', 'linux']:
-                result = subprocess.run(['ssh', device_id, 'uptime'], 
+            elif prodice_type in ['macos', 'linux']:
+                result = subprocess.run(['ssh', prodice_id, 'uptime'], 
                                       capture_output=True, text=True, timeout=10)
                 health['status'] = 'healthy' if result.returncode == 0 else 'unhealthy'
                 health['metrics']['uptime'] = result.stdout.strip()
             
-            elif device_type == 'windows':
-                result = subprocess.run(['powershell', '-Command', f'Test-Connection {device_id} -Count 1'], 
+            elif prodice_type == 'windows':
+                result = subprocess.run(['powershell', '-Command', f'Test-Connection {prodice_id} -Count 1'], 
                                       capture_output=True, text=True, timeout=10)
                 health['status'] = 'healthy' if result.returncode == 0 else 'unhealthy'
         
@@ -230,33 +230,33 @@ class DeviceOrchestrationManager:
         
         return health
 
-    def deploy_app(self, device_id: str, device_type: str, app_file: Path) -> bool:
-        """Deploy app to device"""
-        logger.info(f'Deploying {app_file.name} to {device_type} device {device_id}')
+    def deploy_app(self, prodice_id: str, prodice_type: str, app_file: Path) -> bool:
+        """Deploy app to prodice"""
+        logger.info(f'Deploying {app_file.name} to {prodice_type} prodice {prodice_id}')
         
         deployment = {
             'timestamp': datetime.now().isoformat(),
-            'device_id': device_id,
-            'device_type': device_type,
+            'prodice_id': prodice_id,
+            'prodice_type': prodice_type,
             'app_file': str(app_file),
             'tracking_id': f'QMOI-DEPLOY-{datetime.now().strftime("%Y%m%d")}-{len(self.deployments):05d}',
             'status': 'pending'
         }
         
         try:
-            if device_type == 'android':
-                cmd = ['adb', '-s', device_id, 'install', '-r', str(app_file)]
-            elif device_type == 'ios':
-                cmd = ['ios-deploy', '-i', device_id, '-b', str(app_file)]
-            elif device_type == 'macos':
-                cmd = ['scp', str(app_file), f'{device_id}:~/Downloads/']
-            elif device_type == 'windows':
-                cmd = ['powershell', '-Command', f'Copy-Item -Path {app_file} -Destination \\\\{device_id}\\c$']
-            elif device_type == 'linux':
-                cmd = ['scp', str(app_file), f'{device_id}:~/']
+            if prodice_type == 'android':
+                cmd = ['adb', '-s', prodice_id, 'install', '-r', str(app_file)]
+            elif prodice_type == 'ios':
+                cmd = ['ios-deploy', '-i', prodice_id, '-b', str(app_file)]
+            elif prodice_type == 'macos':
+                cmd = ['scp', str(app_file), f'{prodice_id}:~/Downloads/']
+            elif prodice_type == 'windows':
+                cmd = ['powershell', '-Command', f'Copy-Item -Path {app_file} -Destination \\\\{prodice_id}\\c$']
+            elif prodice_type == 'linux':
+                cmd = ['scp', str(app_file), f'{prodice_id}:~/']
             else:
                 deployment['status'] = 'error'
-                deployment['error'] = 'Unknown device type'
+                deployment['error'] = 'Unknown prodice type'
                 self.deployments.append(deployment)
                 return False
             
@@ -276,14 +276,14 @@ class DeviceOrchestrationManager:
             self.log_deployment(deployment)
             return False
 
-    def parallel_deploy(self, device_ids: List[str], device_types: List[str], app_file: Path) -> Dict:
-        """Deploy to multiple devices in parallel"""
-        logger.info(f'Starting parallel deployment to {len(device_ids)} devices')
+    def parallel_deploy(self, prodice_ids: List[str], prodice_types: List[str], app_file: Path) -> Dict:
+        """Deploy to multiple prodices in parallel"""
+        logger.info(f'Starting parallel deployment to {len(prodice_ids)} prodices')
         
         results = {'success': 0, 'failed': 0, 'deployments': []}
         
-        for device_id, device_type in zip(device_ids, device_types):
-            if self.deploy_app(device_id, device_type, app_file):
+        for prodice_id, prodice_type in zip(prodice_ids, prodice_types):
+            if self.deploy_app(prodice_id, prodice_type, app_file):
                 results['success'] += 1
             else:
                 results['failed'] += 1
@@ -297,22 +297,22 @@ class DeviceOrchestrationManager:
         with log_file.open('a') as f:
             f.write(json.dumps(deployment) + '\n')
 
-    def list_devices(self, device_type: Optional[str] = None) -> List[Dict]:
-        """List all known devices"""
-        devices = []
-        for stored_devices in self.devices.values():
-            if isinstance(stored_devices, list):
-                for device in stored_devices:
-                    if device_type is None or device.get('type') == device_type:
-                        devices.append(device)
-        return devices
+    def list_prodices(self, prodice_type: Optional[str] = None) -> List[Dict]:
+        """List all known prodices"""
+        prodices = []
+        for stored_prodices in self.prodices.values():
+            if isinstance(stored_prodices, list):
+                for prodice in stored_prodices:
+                    if prodice_type is None or prodice.get('type') == prodice_type:
+                        prodices.append(prodice)
+        return prodices
 
     def export_status(self) -> Dict:
         """Export orchestration status"""
         return {
             'timestamp': self.timestamp.isoformat(),
-            'devices_known': len(self.devices),
-            'devices_list': self.list_devices(),
+            'prodices_known': len(self.prodices),
+            'prodices_list': self.list_prodices(),
             'deployments_count': len(self.deployments),
             'deployments': self.deployments
         }
@@ -320,30 +320,30 @@ class DeviceOrchestrationManager:
 def main():
     import argparse
     
-    parser = argparse.ArgumentParser(description='QMOI Device Orchestration Manager')
-    parser.add_argument('--discover', action='store_true', help='Discover connected devices')
-    parser.add_argument('--device-type', type=str, choices=['android', 'ios', 'windows', 'macos', 'linux'], help='Device type')
-    parser.add_argument('--list', action='store_true', help='List all known devices')
-    parser.add_argument('--health', type=str, metavar='DEVICE_ID', help='Check device health')
-    parser.add_argument('--deploy', type=str, metavar='APP_FILE', help='Deploy app to device')
-    parser.add_argument('--device-id', type=str, help='Target device ID')
+    parser = argparse.ArgumentParser(description='QMOI prodice Orchestration Manager')
+    parser.add_argument('--discover', action='store_true', help='Discover connected prodices')
+    parser.add_argument('--prodice-type', type=str, choices=['android', 'ios', 'windows', 'macos', 'linux'], help='prodice type')
+    parser.add_argument('--list', action='store_true', help='List all known prodices')
+    parser.add_argument('--health', type=str, metavar='prodICE_ID', help='Check prodice health')
+    parser.add_argument('--deploy', type=str, metavar='APP_FILE', help='Deploy app to prodice')
+    parser.add_argument('--prodice-id', type=str, help='Target prodice ID')
     parser.add_argument('--status', action='store_true', help='Show orchestration status')
     
     args = parser.parse_args()
     
-    orchestrator = DeviceOrchestrationManager()
+    orchestrator = prodiceOrchestrationManager()
     
     if args.discover:
-        devices = orchestrator.discover_devices(args.device_type)
-        print(json.dumps(devices, indent=2, default=str))
+        prodices = orchestrator.discover_prodices(args.prodice_type)
+        print(json.dumps(prodices, indent=2, default=str))
     elif args.list:
-        devices = orchestrator.list_devices(args.device_type)
-        print(json.dumps(devices, indent=2))
-    elif args.health and args.device_id:
-        health = orchestrator.check_device_health(args.device_id, args.device_type or 'android')
+        prodices = orchestrator.list_prodices(args.prodice_type)
+        print(json.dumps(prodices, indent=2))
+    elif args.health and args.prodice_id:
+        health = orchestrator.check_prodice_health(args.prodice_id, args.prodice_type or 'android')
         print(json.dumps(health, indent=2))
-    elif args.deploy and args.device_id:
-        success = orchestrator.deploy_app(args.device_id, args.device_type or 'android', Path(args.deploy))
+    elif args.deploy and args.prodice_id:
+        success = orchestrator.deploy_app(args.prodice_id, args.prodice_type or 'android', Path(args.deploy))
         print('Deployment successful' if success else 'Deployment failed')
     elif args.status:
         status = orchestrator.export_status()

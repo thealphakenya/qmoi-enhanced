@@ -306,7 +306,7 @@ class GitLabAutomation {
         `- required test dependencies\n` +
         `- Environment configuration issues\n` +
         `- Async test timing problems\n` +
-        `- // Production implementation required:/
+        `- // production implementation required:/
         ['qmoi', 'error', 'tests', 'needs-review']
       );
       
@@ -343,7 +343,7 @@ class GitLabAutomation {
         `- TypeScript compilation\n` +
         `- Bundle generation\n` +
         `- Asset optimization\n` +
-        `- Production build\n\n` +
+        `- production build\n\n` +
         `### Debugging Steps:\n` +
         `1. Check TypeScript errors: \`npx tsc --noEmit\`\n` +
         `2. Verify dependencies: \`npm ls\`\n` +
@@ -547,7 +547,7 @@ class GitLabAutomation {
         `### Support:\n` +
         `- Check the automation logs for detailed error information\n` +
         `- Review the created GitLab issues for specific fixes\n` +
-        `- Contact the development team if needed\n\n` +
+        `- Contact the production team if needed\n\n` +
         `🔗 **Pipeline**: ${this.gitlabUrl}/${this.projectId}/-/pipelines/${this.pipelineId}`
       );
       

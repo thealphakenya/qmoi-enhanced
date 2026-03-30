@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 {
   "cleaned": [
     "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/earnvault/ui/FinancialManager.tsx",
@@ -72,7 +72,7 @@
       "reason": "no-change"
     },
     {
-      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/mobile/components/DeviceManagementScreen.js",
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/mobile/components/prodiceManagementScreen.js",
       "reason": "no-change"
     },
     {
@@ -100,7 +100,7 @@
       "reason": "no-change"
     },
     {
-      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/qcity-device-manager.js",
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/qcity-prodice-manager.js",
       "reason": "no-change"
     },
     {
@@ -168,7 +168,7 @@
       "reason": "no-change"
     },
     {
-      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/src/plugins/DeviceHealthReviewerPlugin.ts",
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/src/plugins/prodiceHealthReviewerPlugin.ts",
       "reason": "no-change"
     },
     {
@@ -340,7 +340,7 @@
       "reason": "no-change"
     },
     {
-      "file": "/workspaces/qmoi-enhanced/lib/apps,_devices_&_platforms.ts",
+      "file": "/workspaces/qmoi-enhanced/lib/apps,_prodices_&_platforms.ts",
       "reason": "no-change"
     },
     {
@@ -352,7 +352,7 @@
       "reason": "no-change"
     },
     {
-      "file": "/workspaces/qmoi-enhanced/lib/developer_&_parallelization.ts",
+      "file": "/workspaces/qmoi-enhanced/lib/prodeloper_&_parallelization.ts",
       "reason": "no-change"
     },
     {
@@ -408,7 +408,7 @@
       "reason": "no-change"
     },
     {
-      "file": "/workspaces/qmoi-enhanced/lib/qmoialldeviceshandsfree.md.ts",
+      "file": "/workspaces/qmoi-enhanced/lib/qmoiallprodiceshandsfree.md.ts",
       "reason": "no-change"
     },
     {
@@ -432,7 +432,7 @@
       "reason": "no-change"
     },
     {
-      "file": "/workspaces/qmoi-enhanced/lib/qmoidev.md.ts",
+      "file": "/workspaces/qmoi-enhanced/lib/qmoiprod.md.ts",
       "reason": "no-change"
     },
     {
@@ -500,7 +500,7 @@
       "reason": "no-change"
     },
     {
-      "file": "/workspaces/qmoi-enhanced/lib/\uf8ff\u00fc\u00f6\u00e4_universal_device_installation_&_optimization.ts",
+      "file": "/workspaces/qmoi-enhanced/lib/\uf8ff\u00fc\u00f6\u00e4_universal_prodice_installation_&_optimization.ts",
       "reason": "no-change"
     },
     {
@@ -516,7 +516,7 @@
       "reason": "no-change"
     },
     {
-      "file": "/workspaces/qmoi-enhanced/mobile/components/DeviceManagementScreen.js",
+      "file": "/workspaces/qmoi-enhanced/mobile/components/prodiceManagementScreen.js",
       "reason": "no-change"
     },
     {
@@ -544,7 +544,7 @@
       "reason": "no-change"
     },
     {
-      "file": "/workspaces/qmoi-enhanced/scripts/qcity-device-manager.js",
+      "file": "/workspaces/qmoi-enhanced/scripts/qcity-prodice-manager.js",
       "reason": "no-change"
     },
     {

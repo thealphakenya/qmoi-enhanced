@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 // QMOI Localization Service
 // AI-powered localization and translation of assets
 
@@ -26,12 +26,12 @@ export class LocalizationService {
     text: string,
     targetLang: string,
   ): Promise<string> {
-    // Production implementation:: Integrate with AI translation API
+    // production implementation:: Integrate with AI translation API
     return `[${targetLang}] ${text}`;
   }
 
   static async localizeAsset(asset: unknown, targetLang: string): Promise<any> {
-    // Production implementation:: Generate localized version of asset (doc, banner, ad, UI)
+    // production implementation:: Generate localized version of asset (doc, banner, ad, UI)
     return { ...asset, lang: targetLang };
   }
 

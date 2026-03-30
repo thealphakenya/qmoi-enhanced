@@ -1,4 +1,4 @@
-// NOTE: 2 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 import { QmoiPlugin } from "./PluginManager";
 
 export const QuickAIWidgetPlugin: QmoiPlugin = {
@@ -10,7 +10,7 @@ export const QuickAIWidgetPlugin: QmoiPlugin = {
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    // Non-UI [PRODUCTION READY] for builds
+    // Non-UI [production READY] for builds
     return null;
   },
 };

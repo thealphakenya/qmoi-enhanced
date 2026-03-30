@@ -1,28 +1,28 @@
 {
   "files": [
     [
-      "mobile/components/DeviceManagementScreen.js",
+      "mobile/components/prodiceManagementScreen.js",
       {
         "score": 40,
         "matches": [
           {
             "line": 326,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]=\"Enter device name\"",
+            "snippet": "[production IMPLEMENTATION REQUIRED]=\"Enter prodice name\"",
             "score": 10
           },
           {
             "line": 356,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]=\"192.168.1.100\"",
+            "snippet": "[production IMPLEMENTATION REQUIRED]=\"192.168.1.100\"",
             "score": 10
           },
           {
             "line": 365,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]=\"3000\"",
+            "snippet": "[production IMPLEMENTATION REQUIRED]=\"3000\"",
             "score": 10
           },
           {
             "line": 374,
-            "snippet": "[PRODUCTION IMPLEMENTATION REQUIRED]=\"Device description\"",
+            "snippet": "[production IMPLEMENTATION REQUIRED]=\"prodice description\"",
             "score": 10
           }
         ]
@@ -45,7 +45,7 @@
           },
           {
             "line": 205,
-            "snippet": "// Store AutoDev state (in production, save to database)",
+            "snippet": "// Store Autoprod state (in production, save to database)",
             "score": 10
           },
           {
@@ -171,12 +171,12 @@
           },
           {
             "line": 499,
-            "snippet": "const balance = 1250.75; // [PRODUCTION IMPLEMENTATION REQUIRED] balance",
+            "snippet": "const balance = 1250.75; // [production IMPLEMENTATION REQUIRED] balance",
             "score": 10
           },
           {
             "line": 527,
-            "snippet": "const totalEarnings = 847.5; // [PRODUCTION IMPLEMENTATION REQUIRED] earnings",
+            "snippet": "const totalEarnings = 847.5; // [production IMPLEMENTATION REQUIRED] earnings",
             "score": 10
           },
           {
@@ -199,12 +199,12 @@
           },
           {
             "line": 60,
-            "snippet": "<TextInput value={errorTypes} onChangeText={setErrorTypes} [PRODUCTION IMPLEMENTATION REQUIRED]=\"TypeError,ReferenceError\" style={styles.input} />",
+            "snippet": "<TextInput value={errorTypes} onChangeText={setErrorTypes} [production IMPLEMENTATION REQUIRED]=\"TypeError,ReferenceError\" style={styles.input} />",
             "score": 10
           },
           {
             "line": 62,
-            "snippet": "<TextInput value={quietHours} onChangeText={setQuietHours} [PRODUCTION IMPLEMENTATION REQUIRED]=\"22:00-07:00\" style={styles.input} />",
+            "snippet": "<TextInput value={quietHours} onChangeText={setQuietHours} [production IMPLEMENTATION REQUIRED]=\"22:00-07:00\" style={styles.input} />",
             "score": 10
           }
         ]
@@ -217,12 +217,12 @@
         "matches": [
           {
             "line": 56,
-            "snippet": "<TextInput [PRODUCTION IMPLEMENTATION REQUIRED]=\"Username\" value={user} onChangeText={setUser} style={styles.input} />",
+            "snippet": "<TextInput [production IMPLEMENTATION REQUIRED]=\"Username\" value={user} onChangeText={setUser} style={styles.input} />",
             "score": 10
           },
           {
             "line": 57,
-            "snippet": "<TextInput [PRODUCTION IMPLEMENTATION REQUIRED]=\"Password\" value={pass} onChangeText={setPass} secureTextEntry style={styles.input} />",
+            "snippet": "<TextInput [production IMPLEMENTATION REQUIRED]=\"Password\" value={pass} onChangeText={setPass} secureTextEntry style={styles.input} />",
             "score": 10
           }
         ]
@@ -235,12 +235,12 @@
         "matches": [
           {
             "line": 60,
-            "snippet": "<TextInput value={errorTypes} onChangeText={setErrorTypes} [PRODUCTION IMPLEMENTATION REQUIRED]=\"TypeError,ReferenceError\" style={styles.input} />",
+            "snippet": "<TextInput value={errorTypes} onChangeText={setErrorTypes} [production IMPLEMENTATION REQUIRED]=\"TypeError,ReferenceError\" style={styles.input} />",
             "score": 10
           },
           {
             "line": 62,
-            "snippet": "<TextInput value={quietHours} onChangeText={setQuietHours} [PRODUCTION IMPLEMENTATION REQUIRED]=\"22:00-07:00\" style={styles.input} />",
+            "snippet": "<TextInput value={quietHours} onChangeText={setQuietHours} [production IMPLEMENTATION REQUIRED]=\"22:00-07:00\" style={styles.input} />",
             "score": 10
           }
         ]
@@ -253,7 +253,7 @@
         "matches": [
           {
             "line": 298,
-            "snippet": "size: 10 * 1024 * 1024, // 10MB ([PRODUCTION IMPLEMENTATION REQUIRED])",
+            "snippet": "size: 10 * 1024 * 1024, // 10MB ([production IMPLEMENTATION REQUIRED])",
             "score": 10
           },
           {
@@ -398,17 +398,17 @@
         "matches": [
           {
             "line": 24,
-            "snippet": ".[PRODUCTION READY]Implementation(async (input: unknown, _init: unknown) => {",
+            "snippet": ".[production READY]Implementation(async (input: unknown, _init: unknown) => {",
             "score": 4
           },
           {
             "line": 187,
-            "snippet": ".[PRODUCTION READY]Implementation(async (arg: unknown) => {",
+            "snippet": ".[production READY]Implementation(async (arg: unknown) => {",
             "score": 4
           },
           {
             "line": 199,
-            "snippet": ".[PRODUCTION READY]Implementation(async (arg: unknown) => {",
+            "snippet": ".[production READY]Implementation(async (arg: unknown) => {",
             "score": 4
           }
         ]
@@ -525,7 +525,7 @@
         "matches": [
           {
             "line": 54,
-            "snippet": "// Set default data for [PRODUCTION IMPLEMENTATION REQUIRED]",
+            "snippet": "// Set default data for [production IMPLEMENTATION REQUIRED]",
             "score": 10
           }
         ]
@@ -551,7 +551,7 @@
         "matches": [
           {
             "line": 38,
-            "snippet": "[PRODUCTION READY] download - in production, fetch from backend",
+            "snippet": "[production READY] download - in production, fetch from backend",
             "score": 10
           }
         ]
@@ -577,7 +577,7 @@
         "matches": [
           {
             "line": 24,
-            "snippet": "// Google OAuth [PRODUCTION READY] - in production, integrate with @react-oauth/google",
+            "snippet": "// Google OAuth [production READY] - in production, integrate with @react-oauth/google",
             "score": 10
           }
         ]
@@ -649,7 +649,7 @@
           },
           {
             "line": 73,
-            "snippet": "// Simulate device health",
+            "snippet": "// Simulate prodice health",
             "score": 1
           },
           {
@@ -669,7 +669,7 @@
           },
           {
             "line": 229,
-            "snippet": "// Simulate device optimization",
+            "snippet": "// Simulate prodice optimization",
             "score": 1
           }
         ]
@@ -783,7 +783,7 @@
       }
     ],
     [
-      "src/components/q-city/DevicePanel.tsx.bak2",
+      "src/components/q-city/prodicePanel.tsx.bak2",
       {
         "score": 6,
         "matches": [
@@ -1040,7 +1040,7 @@
           },
           {
             "line": 116,
-            "snippet": "placeholder=\"Device ID\"",
+            "snippet": "placeholder=\"prodice ID\"",
             "score": 1
           },
           {
@@ -1112,7 +1112,7 @@
           },
           {
             "line": 55,
-            "snippet": "placeholder=\"Device\"",
+            "snippet": "placeholder=\"prodice\"",
             "score": 1
           },
           {
@@ -1199,7 +1199,7 @@
         "matches": [
           {
             "line": 20,
-            "snippet": "* [PRODUCTION READY] implementation \u2014 integrate search/AI later.",
+            "snippet": "* [production READY] implementation \u2014 integrate search/AI later.",
             "score": 4
           }
         ]
@@ -1370,7 +1370,7 @@
       }
     ],
     [
-      "src/components/q-city/DevicesHub.tsx.bak2",
+      "src/components/q-city/prodicesHub.tsx.bak2",
       {
         "score": 3,
         "matches": [
@@ -1510,12 +1510,12 @@
         "matches": [
           {
             "line": 293,
-            "snippet": "[PRODUCTION READY]: implement WhatsApp/face/voice confirmation",
+            "snippet": "[production READY]: implement WhatsApp/face/voice confirmation",
             "score": 1
           },
           {
             "line": 298,
-            "snippet": "// Production: implement multi-factor confirmation via WhatsApp/biometrics",
+            "snippet": "// production: implement multi-factor confirmation via WhatsApp/biometrics",
             "score": 1
           }
         ]
@@ -1528,12 +1528,12 @@
         "matches": [
           {
             "line": 101,
-            "snippet": "// Production: implement file editing, preview, commit/rollback with VCS",
+            "snippet": "// production: implement file editing, preview, commit/rollback with VCS",
             "score": 1
           },
           {
             "line": 106,
-            "snippet": "// Production: implement project/task switching and continuation logic",
+            "snippet": "// production: implement project/task switching and continuation logic",
             "score": 1
           }
         ]
@@ -1598,7 +1598,7 @@
         "matches": [
           {
             "line": 5,
-            "snippet": "// Minimal analytics stub: log pageview for local dev/tests",
+            "snippet": "// Minimal analytics stub: log pageview for local prod/tests",
             "score": 1
           }
         ]
@@ -1624,7 +1624,7 @@
         "matches": [
           {
             "line": 206,
-            "snippet": "[PRODUCTION READY]=\"e.g., How do I implement a transformer model?\"",
+            "snippet": "[production READY]=\"e.g., How do I implement a transformer model?\"",
             "score": 1
           }
         ]
@@ -1676,7 +1676,7 @@
         "matches": [
           {
             "line": 134,
-            "snippet": "[PRODUCTION READY]: Implement endpoint creation",
+            "snippet": "[production READY]: Implement endpoint creation",
             "score": 1
           }
         ]

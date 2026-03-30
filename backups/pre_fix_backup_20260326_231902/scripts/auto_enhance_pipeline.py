@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+# [production READY]
 """
 Pipeline orchestrator for auto-enhance / auto-evolution tasks.
 
@@ -334,7 +334,7 @@ def main():
     # Check production readiness first
     readiness = check_production_readiness()
     if readiness['status'] == 'blocked':
-        print('Production readiness check failed:')
+        print('production readiness check failed:')
         for blocker in readiness['blockers']:
             print(f'  - {blocker}')
         if '--force' not in sys.argv:

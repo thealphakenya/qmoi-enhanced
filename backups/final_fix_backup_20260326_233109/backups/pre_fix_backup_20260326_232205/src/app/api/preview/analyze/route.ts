@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 import { safeConsoleError } from "@/utils/safeConsole";
 import { NextRequest, NextResponse } from "next/server";
 import * as path from "path";
@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
       ],
       web: [
         "live-preview",
-        "dev-inspector",
+        "prod-inspector",
         "responsive-viewer",
         "css-grid-overlay",
         "performance-analyzer",
@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
         "color-picker",
       ],
       mobile: [
-        "device-emulator",
+        "prodice-emulator",
         "touch-simulator",
         "network-throttle",
         "location-simulator",

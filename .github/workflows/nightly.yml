@@ -16,4 +16,4 @@ permissions:
   issues: read
 env:
   NODE_VERSION: "18"
-  QMOI_AUTODEV_ENABLED: "true"
+  QMOI_AUTOprod_ENABLED: "true"

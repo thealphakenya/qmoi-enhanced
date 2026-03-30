@@ -6,7 +6,7 @@
 URL="http://localhost:8080/qcity/index.html"
 
 # Try to detect if we are inside Codespaces/VS Code remote where Simple Browser exists.
-if command -v curl >/dev/null 2>&1 && [ -n "$TERM" ]; then
+if command -v curl >/prod/null 2>&1 && [ -n "$TERM" ]; then
   echo "Attempting to fetch $URL (safe fallback)..."
   if curl -sS --max-time 5 "$URL" -o /tmp/qcity_index.html; then
     echo "Fetched $URL -> /tmp/qcity_index.html"

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate comprehensive TREE.md with all developer structures
+Generate comprehensive TREE.md with all prodeloper structures
 """
 
 import os
@@ -23,7 +23,7 @@ def generate_tree_md():
 - note: Auto-updated by `scripts/update_tree_and_percentages.py`
 <!-- LION_VALIDATION_END -->
 
-# QMOI-Enhanced Developer Tree Structure
+# QMOI-Enhanced prodeloper Tree Structure
 
 **Last Updated**: {date_formatted}
 **Scan Date**: {timestamp}Z
@@ -159,15 +159,15 @@ qmoi-enhanced/
 │   │   │   │   │   └── route.ts     # Model comparison
 │   │   │   │   └── track-evolution/
 │   │   │   │       └── route.ts     # Evolution tracking
-│   │   │   ├── autodev/
+│   │   │   ├── autoprod/
 │   │   │   │   ├── research/
-│   │   │   │   │   └── route.ts     # AutoDev research
+│   │   │   │   │   └── route.ts     # Autoprod research
 │   │   │   │   ├── generate-feature/
 │   │   │   │   │   └── route.ts     # Feature generation
 │   │   │   │   ├── state/
-│   │   │   │   │   └── route.ts     # AutoDev state
+│   │   │   │   │   └── route.ts     # Autoprod state
 │   │   │   │   ├── toggle/
-│   │   │   │   │   └── route.ts     # AutoDev toggle
+│   │   │   │   │   └── route.ts     # Autoprod toggle
 │   │   │   │   └── suggestions/
 │   │   │   │       ├── improvements/
 │   │   │   │       ├── optimizations/
@@ -189,12 +189,12 @@ qmoi-enhanced/
 │   └── (other source files)
 │
 ├── components/                       # React components
-│   ├── device/
-│   │   ├── DeviceIntegrationStubs.ts
-│   │   └── (device components)
+│   ├── prodice/
+│   │   ├── prodiceIntegrationStubs.ts
+│   │   └── (prodice components)
 │   ├── q-city/
 │   │   ├── QCityDashboard.tsx
-│   │   ├── QMoiAutoDevPanel.tsx
+│   │   ├── QMoiAutoprodPanel.tsx
 │   │   └── (Q City components)
 │   ├── alpha-q-ai-system.tsx         # AI system component
 │   ├── (other UI components)
@@ -213,8 +213,8 @@ qmoi-enhanced/
 │   ├── useColabJob.ts                # Colab jobs
 │   ├── useDatasetManager.ts          # Dataset management
 │   ├── useDatasets.ts                # Datasets tracking
-│   ├── useDeviceHealth.ts            # Device health
-│   ├── useDeviceOptimizer.ts         # Device optimization
+│   ├── useprodiceHealth.ts            # prodice health
+│   ├── useprodiceOptimizer.ts         # prodice optimization
 │   ├── useErrorAutoFix.ts            # Error fixing
 │   ├── useExtensionManager.ts        # Extension management
 │   ├── useGithubRepoManager.ts       # GitHub integration
@@ -239,8 +239,8 @@ qmoi-enhanced/
 │   │   ├── auth.test.ts              # Authentication tests
 │   │   ├── monitoring.test.ts        # Monitoring tests
 │   │   ├── payments.test.ts          # Payment tests
-│   │   ├── qmoi-autodev-research.test.ts
-│   │   ├── qmoi-autodev-toggle-generate-state.test.ts
+│   │   ├── qmoi-autoprod-research.test.ts
+│   │   ├── qmoi-autoprod-toggle-generate-state.test.ts
 │   │   └── wallets.test.ts           # Wallet tests
 │   ├── api.test.ts                   # Main API tests
 │   ├── api.agent.test.ts             # Agent API tests
@@ -294,8 +294,8 @@ qmoi-enhanced/
 │   ├── api/
 │   │   ├── handlers.ts              # API handlers
 │   │   └── middleware.ts            # API middleware
-│   ├── devices/
-│   │   ├── manager.ts               # Device management
+│   ├── prodices/
+│   │   ├── manager.ts               # prodice management
 │   │   └── adapters/
 │   │       ├── android.ts
 │   │       ├── ios.ts
@@ -350,7 +350,7 @@ qmoi-enhanced/
 
 #### By Category:
 - Evolution System: 6 endpoints
-- AutoDev System: 11 endpoints  
+- Autoprod System: 11 endpoints  
 - Health & Monitoring: 8 endpoints
 - Master Operations: 12 endpoints
 - Global APIs: 2 endpoints
@@ -378,7 +378,7 @@ qmoi-enhanced/
 - Data Management: 4 hooks
 - Communication & Integration: 5 hooks
 - Task Management: 3 hooks
-- Development Tools: 3 hooks
+- production Tools: 3 hooks
 - Voice & Audio: 1 hook
 
 ## 🧪 Testing Structure
@@ -402,7 +402,7 @@ qmoi-enhanced/
 - Guides & Quick Starts
 - Deployment Procedures
 - Feature Documentation
-- Production Readiness Reports
+- production Readiness Reports
 
 ## 🔧 Scripts & Automation
 
@@ -443,11 +443,11 @@ qmoi-enhanced/
 
 ### Integration Layer
 - Third-party API integrations
-- Device adapters
+- prodice adapters
 - Deployment managers
 - External service connectors
 
-## 📈 Development Workflow
+## 📈 production Workflow
 
 1. **Code** - Write TypeScript/React code
 2. **Test** - Run Jest and Cypress tests
@@ -463,7 +463,7 @@ qmoi-enhanced/
 - **Test Coverage**: 37+ test files with comprehensive suites
 - **Hook Library**: 33 custom hooks for all platforms
 - **Documentation**: 719 markdown files with auto-sync
-- **Production Readiness**: Continuous validation and healing
+- **production Readiness**: Continuous validation and healing
 
 ---
 

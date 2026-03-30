@@ -17,7 +17,7 @@ interface AutoConfigResult {
 
 class QMOIAutoConfig {
   private configPath: string;
-  private sandboxSecurityCredential = 'gnwUmBFAGLT1O1iyhblSuNhwmnaiXuqtG/pXISIY/KlKCvD8mLM3TZTd8QxGxL6GfglVQ1hRdjrGbc+rub+d35KrI7+wV7BxRuX820Ku51o2lGtSd4xWEKqpyj+OUb+NYKFNG3iTo1hB4zyS9xG8MM2sg3TZsJ1+JfD3IvnabNnWfoOEeaNVi5ybP6t5CXXTuvoaG3m5aHnfw7wLJEwjjzVZkdKHIY5twrJrQym/zMeFsQp8DdzrMniNyETwzrS7XMDocBmszVOLbZFibOoBwZTJkm9WhyyqfKTJlMiYp8+fsrRiTQYB1izzIP6v7ZyLunVBq9EuQztVpHWn4UK+0g==';
+  private productionSecurityCredential = 'gnwUmBFAGLT1O1iyhblSuNhwmnaiXuqtG/pXISIY/KlKCvD8mLM3TZTd8QxGxL6GfglVQ1hRdjrGbc+rub+d35KrI7+wV7BxRuX820Ku51o2lGtSd4xWEKqpyj+OUb+NYKFNG3iTo1hB4zyS9xG8MM2sg3TZsJ1+JfD3IvnabNnWfoOEeaNVi5ybP6t5CXXTuvoaG3m5aHnfw7wLJEwjjzVZkdKHIY5twrJrQym/zMeFsQp8DdzrMniNyETwzrS7XMDocBmszVOLbZFibOoBwZTJkm9WhyyqfKTJlMiYp8+fsrRiTQYB1izzIP6v7ZyLunVBq9EuQztVpHWn4UK+0g==';
 
   constructor() {
     this.configPath = path.join(process.cwd(), '.env.production');
@@ -33,12 +33,12 @@ class QMOIAutoConfig {
       // Default M-Pesa configuration
       const mpesaConfig = {
         CASHON_MPESA_NUMBER: '0725382624',
-        QMOI_PROD_CREDENTIAL: 'fD7TClLnMyaovdy8FJXHkA4XQn+C8bYqi7P9+rD5S0kZAVMcEmU9OKhSoPSXDlQqH6WZMdyFI90LaykwJeMah02zPCMwwjPSRatTtLEvfWHmchgbW+nuHJAGYFF3PiRmDwr8KECNd/9ZlgSpYR0Wtkxl5Lts9GtAY6RH356ri4tp6MYoSUz0rp/WF9LVfRs5xuGtbh/uYMdXJCiLROWwko0ZzjX3qBa3ZTeqmI+7nOcsJRWA8LOeMwVWJItnuyoxIJct31oyr4T5UBh2myHIfJCRtC+ofi3G0VOjiFYHLnRd6FVoDDG8RxpHfSQmJxfr5+cZVXP47OOtpSUUCCklJw==',
+        QMOI_prod_CREDENTIAL: 'fD7TClLnMyaovdy8FJXHkA4XQn+C8bYqi7P9+rD5S0kZAVMcEmU9OKhSoPSXDlQqH6WZMdyFI90LaykwJeMah02zPCMwwjPSRatTtLEvfWHmchgbW+nuHJAGYFF3PiRmDwr8KECNd/9ZlgSpYR0Wtkxl5Lts9GtAY6RH356ri4tp6MYoSUz0rp/WF9LVfRs5xuGtbh/uYMdXJCiLROWwko0ZzjX3qBa3ZTeqmI+7nOcsJRWA8LOeMwVWJItnuyoxIJct31oyr4T5UBh2myHIfJCRtC+ofi3G0VOjiFYHLnRd6FVoDDG8RxpHfSQmJxfr5+cZVXP47OOtpSUUCCklJw==',
         MPESA_CONSUMER_KEY: process.env.MPESA_CONSUMER_KEY || 'your_consumer_key_here',
         MPESA_CONSUMER_SECRET: process.env.MPESA_CONSUMER_SECRET || 'your_consumer_secret_here',
         MPESA_PASSKEY: process.env.MPESA_PASSKEY || 'your_passkey_here',
         MPESA_SHORTCODE: process.env.MPESA_SHORTCODE || 'your_shortcode_here',
-        MPESA_ENVIRONMENT: 'sandbox', // Start with sandbox for safety
+        MPESA_ENVIRONMENT: 'production', // Start with production for safety
         MPESA_INITIATOR_NAME: 'QMOI',
         MPESA_SECURITY_CREDENTIAL: productionSecurityCredential,
         QMOI_MASTER_TOKEN: this.generateMasterToken(),
@@ -98,11 +98,11 @@ class QMOIAutoConfig {
   }
 
   private generateEnvContent(config: unknown): string {
-    return `# QMOI Production Environment Variables - Auto-Configured
+    return `# QMOI production Environment Variables - Auto-Configured
 
 # M-Pesa Configuration
 CASHON_MPESA_NUMBER=${config.CASHON_MPESA_NUMBER}
-QMOI_PROD_CREDENTIAL=${config.QMOI_PROD_CREDENTIAL}
+QMOI_prod_CREDENTIAL=${config.QMOI_prod_CREDENTIAL}
 
 # M-Pesa API Credentials
 MPESA_CONSUMER_KEY=${config.MPESA_CONSUMER_KEY}
@@ -174,7 +174,7 @@ NEXT_PUBLIC_APP_URL=${config.NEXT_PUBLIC_APP_URL}
       
       const requiredVars = [
         'CASHON_MPESA_NUMBER',
-        'QMOI_PROD_CREDENTIAL',
+        'QMOI_prod_CREDENTIAL',
         'MPESA_CONSUMER_KEY',
         'MPESA_CONSUMER_SECRET',
         'MPESA_PASSKEY',

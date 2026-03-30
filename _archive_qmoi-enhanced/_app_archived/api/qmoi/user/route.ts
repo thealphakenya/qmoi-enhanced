@@ -19,7 +19,7 @@ export default async function handler(
       
       return res.status(200).json({
         result:
-          "User profile and relationship insights (// Production implementation required:)",
+          "User profile and relationship insights (// production implementation required:)",
       });
     }
     case "POST": {
@@ -28,19 +28,19 @@ export default async function handler(
         case "set-profile":
           
           return res.status(200).json({
-            result: "Set profile result (// Production implementation required:)",
+            result: "Set profile result (// production implementation required:)",
           });
         case "set-preferences":
           
           return res.status(200).json({
             result:
-              "Set preferences result (// Production implementation required:)",
+              "Set preferences result (// production implementation required:)",
           });
         case "set-learning-goals":
           
           return res.status(200).json({
             result:
-              "Set learning goals result (// Production implementation required:)",
+              "Set learning goals result (// production implementation required:)",
           });
         default:
           return res.status(400).json({ error: "Unknown action" });

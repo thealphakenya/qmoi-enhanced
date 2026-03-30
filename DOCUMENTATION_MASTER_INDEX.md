@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # 📚 QMOI Enhanced - Complete Master Documentation Index
 
 **Central reference for all QMOI Enhanced documentation, APIs, and deployment guides**
@@ -20,9 +20,9 @@
 
 - [Vercel Deployment Guide](VERCEL_DEPLOYMENT_GUIDE.md) - How to deploy to Vercel
 - [Deployment Verification](DEPLOYMENT_VERIFICATION.md) - Pre-deployment checklist
-- [QMOI Auto-Features for Vercel](VERCEL_QMOI_AUTOFEATURES_MASTER.md) - Auto-clone, AutoDev, QVillage
+- [QMOI Auto-Features for Vercel](VERCEL_QMOI_AUTOFEATURES_MASTER.md) - Auto-clone, Autoprod, QVillage
 
-### For API Development
+### For API production
 
 - [API Reference](API_REFERENCE.md) - Complete API documentation
 - [Endpoints Inventory](ENDPOINTS.md) - All endpoint listings
@@ -32,13 +32,13 @@
 ### For AI/ML Integration
 
 - [QVillage & Models Integration](QVILLAGE_QMOI_MODELS_INTEGRATION.md) - AI/ML infrastructure guide
-- [QMOI AutoDev](QMOI_AUTODEV.md) - Self-evolving code system
+- [QMOI Autoprod](QMOI_AUTOprod.md) - Self-evolving code system
 - [Complete Integration Master](QMOI_COMPLETE_INTEGRATION_MASTER.md) - Full system architecture
 
 ### For Automation & Features
 
 - [Auto-Clone & Standalone](AUTOCLONE_STANDALONE.md) - GitHub auto-clone setup
-- [Advanced Validation & AutoDev](QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md) - Validation framework
+- [Advanced Validation & Autoprod](QMOI_ADVANCED_VALIDATION_AUTOproduction.md) - Validation framework
 
 ### For Roles & Permissions
 
@@ -134,8 +134,8 @@
 
 ```
 ✅ GET    /api/qcity                   - Status
-✅ POST   /api/qcity/devices           - Device mgmt
-✅ GET    /api/qcity/devices           - List devices
+✅ POST   /api/qcity/prodices           - prodice mgmt
+✅ GET    /api/qcity/prodices           - List prodices
 ✅ POST   /api/qcity/sync              - Sync data
 ```
 
@@ -181,12 +181,12 @@
 - **Rollback**: Automatic on failure
 - **Documentation**: [Auto-Clone Setup](VERCEL_QMOI_AUTOFEATURES_MASTER.md#qmoi-auto-clone-setup)
 
-### ✅ AutoDev (Self-Evolution)
+### ✅ Autoprod (Self-Evolution)
 
 - **Features**: UI enhancement, performance optimization, bug detection
 - **Safety**: Master approval gate, canary deployment, auto-rollback
 - **Schedule**: Hourly checks
-- **Documentation**: [QMOI AutoDev](QMOI_AUTODEV.md)
+- **Documentation**: [QMOI Autoprod](QMOI_AUTOprod.md)
 
 ### ✅ Auto-Research (QVillage)
 
@@ -216,7 +216,7 @@
 - **Branch**: autosync-backup-20250926-232440
 - **Build Status**: ✅ Passing
 
-### Production Metrics
+### production Metrics
 
 - **API Endpoints**: 54 (all live)
 - **Response Time**: <100ms average
@@ -228,7 +228,7 @@
 
 ```
 ✅ Jan 16 - API audit & QVillage integration
-✅ Jan 16 - Auto-clone & AutoDev setup
+✅ Jan 16 - Auto-clone & Autoprod setup
 ✅ Jan 16 - Deployment verification
 ✅ Jan 15 - vercel.json fix for Next.js 15
 ```
@@ -329,7 +329,7 @@ node scripts/auto-fix-deployment.js
 | [DEPLOYMENT_VERIFICATION.md](DEPLOYMENT_VERIFICATION.md)                   | Verification checklist | ✅     |
 | [VERCEL_QMOI_AUTOFEATURES_MASTER.md](VERCEL_QMOI_AUTOFEATURES_MASTER.md)   | Auto-features guide    | ✅     |
 | [QVILLAGE_QMOI_MODELS_INTEGRATION.md](QVILLAGE_QMOI_MODELS_INTEGRATION.md) | QVillage guide         | ✅     |
-| [QMOI_AUTODEV.md](QMOI_AUTODEV.md)                                         | AutoDev guide          | ✅     |
+| [QMOI_AUTOprod.md](QMOI_AUTOprod.md)                                         | Autoprod guide          | ✅     |
 | [AUTOCLONE_STANDALONE.md](AUTOCLONE_STANDALONE.md)                         | Auto-clone guide       | ✅     |
 | [QMOI_APIS_WEBHOOKS_ENDPOINTS.md](QMOI_APIS_WEBHOOKS_ENDPOINTS.md)         | Integration reference  | ✅     |
 | [QMOI_COMPLETE_INTEGRATION_MASTER.md](QMOI_COMPLETE_INTEGRATION_MASTER.md) | Full architecture      | ✅     |
@@ -382,7 +382,7 @@ node scripts/auto-fix-deployment.js
 - [x] Monitor error logs
 - [x] Track performance metrics
 - [x] Verify auto-clone working
-- [x] Test AutoDev features
+- [x] Test Autoprod features
 - [x] Validate QVillage integration
 - [x] Document any issues
 
@@ -390,11 +390,11 @@ node scripts/auto-fix-deployment.js
 
 ## 🎉 Summary
 
-✅ **ALL SYSTEMS READY FOR PRODUCTION**
+✅ **ALL SYSTEMS READY FOR production**
 
 - 54 API endpoints implemented & live
 - Auto-clone configured for continuous deployment
-- AutoDev enabled for self-evolution
+- Autoprod enabled for self-evolution
 - QVillage integrated with 5+ AI/ML models
 - Auto-research active for intelligence generation
 - Master tier control fully implemented
@@ -408,7 +408,7 @@ node scripts/auto-fix-deployment.js
 ---
 
 **Last Updated**: January 16, 2026  
-**Status**: 🟢 PRODUCTION READY  
+**Status**: 🟢 production READY  
 **Deployment**: LIVE on Vercel
 
 ## 🔄 Evolution Status

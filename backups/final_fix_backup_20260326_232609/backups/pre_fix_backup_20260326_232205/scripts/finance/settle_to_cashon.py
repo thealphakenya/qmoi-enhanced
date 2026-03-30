@@ -9,13 +9,13 @@
 Settle discovered wallet balances into the canonical Cashon ledger.
 
 Safe-by-default: dry-run and real. To enable real transfers you must set
-PRODUCTION_CONFIRMED=true in the environment and pass --real on the CLI.
+production_CONFIRMED=true in the environment and pass --real on the CLI.
 
 This script reads `.qmoi_validation/all_wallets_qvs.json` (a list of wallet
 reports produced by `scripts/wallets/check_wallets.py`) and writes a
 settlement/ledger entry to `.qmoi_validation/cashon_ledger.json` (appends).
 
-No real network calls are made unless --real + PRODUCTION_CONFIRMED=true.
+No real network calls are made unless --real + production_CONFIRMED=true.
 If you enable real mode you must edit the CASHON_API_URL and provide credentials
 via environment variables and follow the production runbook.
 """
@@ -69,7 +69,7 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument('--report', default=LEDGER_FILE, help='Path to write the cashon ledger JSON')
     p.add_argument('--wallets', default=WALLETS_REPORT, help='Wallets report to read')
-    p.add_argument('--real', action='store_true', help='Execute real transfers (requires PRODUCTION_CONFIRMED=true)')
+    p.add_argument('--real', action='store_true', help='Execute real transfers (requires production_CONFIRMED=true)')
     args = p.parse_args()
 
     wallets = load_wallets(args.wallets)
@@ -114,8 +114,8 @@ def main():
 
     # Real transfer gating
     if args.real:
-        if os.environ.get('PRODUCTION_CONFIRMED', '').lower() != 'true':
-            print('Refusing to perform real transfers: PRODUCTION_CONFIRMED!=true')
+        if os.environ.get('production_CONFIRMED', '').lower() != 'true':
+            print('Refusing to perform real transfers: production_CONFIRMED!=true')
             return 2
         # implementation: here we would call the Cashon API to transfer funds or record receipts.
         # data (implemented):

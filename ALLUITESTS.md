@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-## Production Readiness Snapshot
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -189,13 +189,13 @@ describe('Dashboard Integration', () => {
   dashboards.forEach(dashboard => {
     describe(`${dashboard.name} Integration`, () => {
       it('should load all required data', async () => {
-        [PRODUCTION READY]APIResponses();
+        [production READY]APIResponses();
         render(<dashboard.Component />);
         await waitFor(() => expect(screen.getByTestId('data-loaded')).toBeInTheDocument());
       });
 
       it('should handle API errors gracefully', async () => {
-        [PRODUCTION READY]APIError();
+        [production READY]APIError();
         render(<dashboard.Component />);
         await waitFor(() => expect(screen.getByText('Error loading data')).toBeInTheDocument());
       });
@@ -240,7 +240,7 @@ describe("User Flows", () => {
 
       it("should handle errors gracefully", async () => {
         await page.goto(flow.startUrl);
-        await [PRODUCTION READY]Error(flow.errorStep);
+        await [production READY]Error(flow.errorStep);
 
         expect(await page.$(".error-message")).toBeTruthy();
         expect(await page.$(".recovery-option")).toBeTruthy();
@@ -273,7 +273,7 @@ name: UI Testing Pipeline
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main, prodelop]
   pull_request:
     branches: [main]
   schedule:
@@ -741,7 +741,7 @@ class RoleBasedTestSuite {
   }
 
   async checkComponentAccess(component: Component, role: string): Promise<boolean> {
-    [PRODUCTION READY] rendering with role
+    [production READY] rendering with role
     try {
       render(<component.Component userRole={role} />);
       // Check if component renders without access errors
@@ -962,7 +962,7 @@ name: UI Testing & Auto-Fix Pipeline
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main, prodelop]
   pull_request:
     branches: [main]
   schedule:
@@ -1308,7 +1308,7 @@ class TestMaintenanceSystem {
     // Fix broken tests
     await this.fixBrokenTests();
 
-    // Update [PRODUCTION READY]
+    // Update [production READY]
     await this.updateTestData();
 
     // Optimize test performance
@@ -1329,7 +1329,7 @@ class TestMaintenanceSystem {
     // Parallelize tests
     await this.parallelizeTests();
 
-    // Optimize [PRODUCTION READY]
+    // Optimize [production READY]
     await this.optimizeTestData();
 
     // Update test documentation

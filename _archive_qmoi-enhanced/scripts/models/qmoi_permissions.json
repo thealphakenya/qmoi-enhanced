@@ -1,10 +1,10 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 {
   "superuser": true,
   "permissions": [
-    "discover_devices",
-    "register_devices",
-    "manage_devices",
+    "discover_prodices",
+    "register_prodices",
+    "manage_prodices",
     "discover_apps",
     "register_apps",
     "manage_apps",
@@ -32,9 +32,9 @@
     "run_commands",
     "install_packages",
     "update_system",
-    "device_admin",
-    "root_device",
-    "manage_device_settings",
+    "prodice_admin",
+    "root_prodice",
+    "manage_prodice_settings",
     "close_apps",
     "stop_apps",
     "install_updates",
@@ -49,7 +49,7 @@
     "change_themes",
     "customize_ui",
     "show_floating_toolbars",
-    "auto_develop",
+    "auto_prodelop",
     "auto_fix_errors",
     "auto_test",
     "auto_update_apps",

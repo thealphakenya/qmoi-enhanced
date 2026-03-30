@@ -7,12 +7,12 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-# QMOI Enhanced - Production API Reference
+# [production READY] this file has no remaining production markers
+# QMOI Enhanced - production API Reference
 
 **Version:** 2.0.0  
 **Last Updated:** January 16, 2026  
-**Environment:** Production  
+**Environment:** production  
 **Base URL:** `https://your-domain.vercel.app/api`
 
 ---
@@ -458,7 +458,7 @@ async function initiatePayment(token, amount) {
 
 **Last Updated:** January 16, 2026  
 **API Version:** 2.0.0  
-**Status:** Production Ready ✅
+**Status:** production Ready ✅
 
 ## 🔄 Evolution Status
 

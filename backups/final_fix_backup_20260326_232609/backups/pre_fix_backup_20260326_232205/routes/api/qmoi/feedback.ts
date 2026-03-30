@@ -14,9 +14,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   }
   const { feedback, correction } = req.body;
   // Call the Python kernel to process feedback (
-  // Production, use a proper IPC or service call
+  // production, use a proper IPC or service call
   // data: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(...)'
-  // Production implementation response
+  // production implementation response
   res
     .status(200)
     .json({ success: true, updated_personality: { feedback, correction } });

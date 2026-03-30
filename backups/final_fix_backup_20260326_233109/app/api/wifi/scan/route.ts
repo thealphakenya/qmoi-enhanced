@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -18,9 +18,9 @@ interface WiFiNetwork {
   quality: number;
 }
 
-// Production helper functions (replace with actual system API/service calls)
+// production helper functions (replace with actual system API/service calls)
 async function scanWiFiNetworks(): Promise<WiFiNetwork[]> {
-  // Production: Use system command (iwlist on Linux, Get-NetAdapter on Windows)
+  // production: Use system command (iwlist on Linux, Get-NetAdapter on Windows)
   // or Node WiFi package to scan available networks
   // Parse output and return formatted network list
   return [
@@ -70,12 +70,12 @@ async function connectToWiFi({
   _note?: string;
   _error?: string;
 }> {
-  // Production: Use system API/service to connect to WiFi
+  // production: Use system API/service to connect to WiFi
   // Requires: nmcli (Linux), netsh (Windows), or node-wifiscanner
   // Implementation: Use system commands or nmcli-node package
-  // Production implementation: resolve // Production implementation: items
-  // Production implementation: resolve // Production implementation: items
-  // Production: Do NOT use hardcoded passwords; implement real WiFi connection logic
+  // production implementation: resolve // production implementation: items
+  // production implementation: resolve // production implementation: items
+  // production: Do NOT use hardcoded passwords; implement real WiFi connection logic
   const testPassword =
     process.env.WIFI_TEST_PASSWORD || "test-passcode-change-in-production";
 
@@ -90,7 +90,7 @@ async function connectToWiFi({
         quality: 85,
       },
       _note:
-        "// Production implementation: Using // Production implementation: connection details - implement real WiFi API in production",
+        "// production implementation: Using // production implementation: connection details - implement real WiFi API in production",
     };
   } else {
     return {
@@ -103,7 +103,7 @@ async function connectToWiFi({
 
 export async function GET(_request: NextRequest) {
   try {
-    // Production: Scan WiFi networks using system API/service
+    // production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
   } catch (error) {
@@ -130,7 +130,7 @@ export async function POST(_request: NextRequest) {
       );
     }
 
-    // Production: Attempt WiFi connection using system API/service
+    // production: Attempt WiFi connection using system API/service
     const connectionResult = await connectToWiFi({ ssid, password, bssid });
     if (connectionResult.success) {
       return NextResponse.json({

@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 <!-- LION_VALIDATION_START -->
 
 ## 🦁 L — Validated by QMOI Lion
@@ -9,9 +9,9 @@
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOIAUTODEVDOCTESTS.MD
+# QMOIAUTOprodDOCTESTS.MD
 
-## QMOI Automated Developer & Fixing System: Test Plan & Documentation
+## QMOI Automated prodeloper & Fixing System: Test Plan & Documentation
 
 ### Overview
 
@@ -21,7 +21,7 @@ This document describes the automated and manual testing strategy for the QMOI s
 
 ## 1. Test Types
 
-- **Automated Error [PRODUCTION READY]:**
+- **Automated Error [production READY]:**
   - Syntax errors
   - Runtime errors
   - included/corrupted files
@@ -58,7 +58,7 @@ This document describes the automated and manual testing strategy for the QMOI s
 ## 6. Enhanced Resilience & Automation (2025-06-11)
 
 - **Fallback:** If the Node.js doc verifier fails, the Python verifier is run automatically.
-- **Error Resilience:** [PRODUCTION READY]s permission errors, corrupted files, and included directories to ensure the verifier never fails for doc issues.
+- **Error Resilience:** [production READY]s permission errors, corrupted files, and included directories to ensure the verifier never fails for doc issues.
 - **Persistent Logging:** All actions, errors, and auto-fixes are logged in JSON and synced to the cloud.
 - **Notification Triggers:** If verification or fixes fail, notifications are sent via email, Slack, or WhatsApp.
 - **.md File Update Automation:** All .md files are updated with verification/fix metadata and checked for up-to-date status after every run.
@@ -71,14 +71,14 @@ This document describes the automated and manual testing strategy for the QMOI s
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "QMOIAUTODEVDOCTESTS.MD",
+"file": "QMOIAUTOprodDOCTESTS.MD",
 "validated_at": "2025-10-26T20:51:22.443876Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
 {
 "name": "title_present",
 "ok": true,
-"detail": "QMOIAUTODEVDOCTESTS.MD"
+"detail": "QMOIAUTOprodDOCTESTS.MD"
 },
 {
 "name": "links",

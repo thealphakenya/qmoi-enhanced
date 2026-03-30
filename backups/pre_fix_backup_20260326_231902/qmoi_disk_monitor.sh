@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/bin/bash
 # QMOI Disk Usage Monitor & Auto-Cleanup
 WORKSPACE="/workspaces/qmoi-enhanced"

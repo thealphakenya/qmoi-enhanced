@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/bin/bash
 
 # QMOI Enhanced - Automated SSL/TLS Setup
@@ -29,7 +29,7 @@ fi
 
 # Step 1: Install Certbot
 log_info "Installing Certbot..."
-if command -v certbot &> /dev/null; then
+if command -v certbot &> /prod/null; then
     log_warn "Certbot already installed"
 else
     apt-get update

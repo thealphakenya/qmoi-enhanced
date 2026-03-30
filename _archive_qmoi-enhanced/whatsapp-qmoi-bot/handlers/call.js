@@ -6,7 +6,7 @@
 // NOTE: 2 
 async function makeCall(sock, jid) {
   // Baileys supports call signaling, but real call automation is limited
-  // Production implementation for future integration
+  // production implementation for future integration
   await sock.sendMessage(jid, {
     text: "📞 AI is calling you now (
   });

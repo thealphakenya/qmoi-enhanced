@@ -2,7 +2,7 @@
 
 **Last Updated**: 2026-03-29T01:23:12.141330
 **Total Files**: 78
-**Status**: ✅ Production Ready
+**Status**: ✅ production Ready
 
 ## 📋 Document Overview
 
@@ -15,7 +15,7 @@ This document catalogs all GitHub Actions workflows in `.github/workflows`, incl
 | Total Files | 78 | All files indexed |
 | Subdirectories | 1 | Organized sections |
 | File Types | 21 | Multiple formats |
-| Production Status | ✅ | Ready |
+| production Status | ✅ | Ready |
 
 ### File Type Distribution
 
@@ -95,7 +95,7 @@ This document catalogs all GitHub Actions workflows in `.github/workflows`, incl
 - [`q.yml.backup.1760308915800`](.github/workflows/q.yml.backup.1760308915800) - `.1760308915800`
 - [`qmoi-app-build.yml`](.github/workflows/qmoi-app-build.yml) - `.yml`
 - [`qmoi-app-build.yml.backup.1760308915804`](.github/workflows/qmoi-app-build.yml.backup.1760308915804) - `.1760308915804`
-- [`qmoi-autodev.yml`](.github/workflows/qmoi-autodev.yml) - `.yml`
+- [`qmoi-autoprod.yml`](.github/workflows/qmoi-autoprod.yml) - `.yml`
 - [`qmoi-ci.yml`](.github/workflows/qmoi-ci.yml) - `.yml`
 - [`qmoi-ci.yml.backup.1760307818149`](.github/workflows/qmoi-ci.yml.backup.1760307818149) - `.1760307818149`
 - [`qmoi-ci.yml.backup.1760308915808`](.github/workflows/qmoi-ci.yml.backup.1760308915808) - `.1760308915808`

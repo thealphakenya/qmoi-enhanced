@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env bash
 # Helper to dispatch a GitHub Actions workflow using a Personal Access Token (PAT)
 # Usage:
@@ -49,8 +49,8 @@ fi
 
 # Detect owner/repo from git remote if not set
 if [[ -z "${GITHUB_OWNER:-}" || -z "${GITHUB_REPO:-}" ]]; then
-  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    remote_url=$(git remote get-url origin 2>/dev/null || true)
+  if git rev-parse --is-inside-work-tree >/prod/null 2>&1; then
+    remote_url=$(git remote get-url origin 2>/prod/null || true)
     if [[ -n "$remote_url" ]]; then
       # support git@github.com:owner/repo.git and https forms
       if [[ "$remote_url" =~ ^git@ ]]; then
@@ -71,7 +71,7 @@ fi
 
 API_URL="https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/workflows/${WORKFLOW}/dispatches"
 
-payload=$(jq -n --arg ref "$REF" --argjson inputs "${INPUTS:-null}" '{ref: $ref, inputs: ($inputs == null ? {} : $inputs)}' 2>/dev/null || true)
+payload=$(jq -n --arg ref "$REF" --argjson inputs "${INPUTS:-null}" '{ref: $ref, inputs: ($inputs == null ? {} : $inputs)}' 2>/prod/null || true)
 if [[ -z "$payload" || "$payload" == "null" ]]; then
   # fallback if jq not available, construct complete payload
   if [[ -n "$INPUTS" ]]; then

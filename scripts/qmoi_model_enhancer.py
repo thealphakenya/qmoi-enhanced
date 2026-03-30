@@ -731,7 +731,7 @@ class ModelEvolutionEngine:
             )
 
 async def main():
-    """Main function to // Production implementation required:nstrate QMOI model enhancement"""
+    """Main function to // production implementation required:nstrate QMOI model enhancement"""
     enhancer = QmoiModelEnhancer()
     
     # Test different enhancement strategies

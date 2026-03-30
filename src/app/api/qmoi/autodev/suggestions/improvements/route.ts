@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /**
- * QMOI AutoDev - Suggestions for Improvements Endpoint
+ * QMOI Autoprod - Suggestions for Improvements Endpoint
  * Generates AI-powered suggestions for system improvements
- * Production-ready API endpoint
+ * production-ready API endpoint
  */
 
 import { NextRequest, NextResponse } from 'next/server';
@@ -59,7 +59,7 @@ export async function GET(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error('[AUTODEV] Suggestions endpoint error:', error);
+    console.error('[AUTOprod] Suggestions endpoint error:', error);
 
     return NextResponse.json(
       {
@@ -105,7 +105,7 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error('[AUTODEV] Suggestion processing error:', error);
+    console.error('[AUTOprod] Suggestion processing error:', error);
 
     return NextResponse.json(
       {
@@ -312,7 +312,7 @@ async function processSuggestionAction(
         status: 'implemented',
         message: `Suggestion ${suggestionId} marked for implementation`,
         priority: 'high',
-        assignedTo: 'autodev-system',
+        assignedTo: 'autoprod-system',
         estimatedCompletion: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
       };
 

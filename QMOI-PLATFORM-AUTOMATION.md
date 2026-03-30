@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOI Platform Automation"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -16,7 +16,7 @@ title: "QMOI Platform Automation"
 
 # QMOI Platform Automation
 
-[PRODUCTION READY] describing automation workflows for platform builds, releases, and deployment (CI/CD patterns, release gates).
+[production READY] describing automation workflows for platform builds, releases, and deployment (CI/CD patterns, release gates).
 
 <!-- QMOI_VALIDATION_START -->
 

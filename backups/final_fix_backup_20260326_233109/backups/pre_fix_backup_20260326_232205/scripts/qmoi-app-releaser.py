@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:04Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 import os
 import shutil
 import subprocess
@@ -17,7 +17,7 @@ import io
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 from qmoi_activity_logger import log_activity
-from qmoi_app_builder import build_app, test_install, EXTENSIONS, APP_NAMES, DEVICE_TYPES
+from qmoi_app_builder import build_app, test_install, EXTENSIONS, APP_NAMES, prodICE_TYPES
 
 RELEASE_DIR = "qcity-artifacts/releases"
 REPORT_PATH = "qcity-artifacts/qmoi_release_report.json"
@@ -32,47 +32,47 @@ def hash_file(path):
 
 def release_all():
     report = {}
-    for device in DEVICE_TYPES:
+    for prodice in prodICE_TYPES:
         for app_name in APP_NAMES:
-            ext = EXTENSIONS[device]
-            binary_path = os.path.join("Qmoi_apps", device, f"{app_name}{ext}")
-            platform_report = {"device": device, "status": "unknown", "path": binary_path}
+            ext = EXTENSIONS[prodice]
+            binary_path = os.path.join("Qmoi_apps", prodice, f"{app_name}{ext}")
+            platform_report = {"prodice": prodice, "status": "unknown", "path": binary_path}
 
             if not is_valid_binary(binary_path):
-                print(f"[⚠️] {device.upper()} binary required or invalid. Attempting rebuild...")
-                log_activity("Binary required or invalid", {"device": device, "path": binary_path})
-                print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] [🚰️] Attempting auto-fix for: {device}")
-                built = build_app(device, app_name)
+                print(f"[⚠️] {prodice.upper()} binary required or invalid. Attempting rebuild...")
+                log_activity("Binary required or invalid", {"prodice": prodice, "path": binary_path})
+                print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] [🚰️] Attempting auto-fix for: {prodice}")
+                built = build_app(prodice, app_name)
                 if not built or not is_valid_binary(binary_path):
                     platform_report["status"] = "fail"
                     platform_report["error"] = "Rebuild failed"
-                    print(f"[❌] Rebuild failed for {device}")
-                    report[device] = platform_report
+                    print(f"[❌] Rebuild failed for {prodice}")
+                    report[prodice] = platform_report
                     continue
 
             # ✅ Test binary
             if not test_install(binary_path):
                 platform_report["status"] = "fail"
                 platform_report["error"] = "Test install failed"
-                print(f"[❌] Install test failed for {device}")
-                report[device] = platform_report
+                print(f"[❌] Install test failed for {prodice}")
+                report[prodice] = platform_report
                 continue
 
             # ✅ Copy to release folder
             try:
-                dest_dir = os.path.join(RELEASE_DIR, device)
+                dest_dir = os.path.join(RELEASE_DIR, prodice)
                 os.makedirs(dest_dir, exist_ok=True)
                 shutil.copy2(binary_path, dest_dir)
                 platform_report["status"] = "success"
                 platform_report["size_bytes"] = os.path.getsize(binary_path)
                 platform_report["sha256"] = hash_file(binary_path)
-                print(f"[✅] Released for {device} → {dest_dir}")
+                print(f"[✅] Released for {prodice} → {dest_dir}")
             except Exception as e:
                 platform_report["status"] = "fail"
                 platform_report["error"] = str(e)
-                print(f"[❌] Error releasing {device}: {e}")
+                print(f"[❌] Error releasing {prodice}: {e}")
 
-            report[device] = platform_report
+            report[prodice] = platform_report
 
     # 📄 Save JSON report
     with open(REPORT_PATH, 'w', encoding='utf-8') as f:

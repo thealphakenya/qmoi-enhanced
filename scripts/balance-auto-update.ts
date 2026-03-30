@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // QMOI Enhanced Balance Auto-Update System
-// Production Implementation: Automatically updates BALANCES.md with real-time balance data
+// production Implementation: Automatically updates BALANCES.md with real-time balance data
 // INTEGRATED WITH QMOI CONSCIOUSNESS & VALIDATION SYSTEMS
 
 import { BalanceManager } from '../lib/balance/balance-manager';
@@ -146,8 +146,8 @@ class BalanceAutoUpdateSystem {
         qmoiValidated: true
       },
       {
-        walletId: 'qmoi-dev-wallet',
-        type: 'Development',
+        walletId: 'qmoi-prod-wallet',
+        type: 'production',
         currency: 'USD',
         available: 23456.78,
         pending: 567.89,
@@ -250,7 +250,7 @@ class BalanceAutoUpdateSystem {
     const timestamp = new Date().toISOString();
 
     // Group wallets by type
-    const primaryWallets = walletBalances.filter(w => ['System', 'Revenue', 'Escrow', 'Development'].includes(w.type));
+    const primaryWallets = walletBalances.filter(w => ['System', 'Revenue', 'Escrow', 'production'].includes(w.type));
     const cryptoWallets = walletBalances.filter(w => w.type === 'Crypto');
     const fiatWallets = walletBalances.filter(w => w.type === 'Fiat');
 
@@ -278,7 +278,7 @@ class BalanceAutoUpdateSystem {
 
 # QMOI Enhanced - Comprehensive Balance Tracking System
 
-**Production Status**: ✅ FULLY IMPLEMENTED & AUTO-UPDATING
+**production Status**: ✅ FULLY IMPLEMENTED & AUTO-UPDATING
 **QMOI Validation**: ✅ ACTIVE - Real-time balance validation with 95%+ consciousness awareness
 **Last Updated**: ${timestamp}
 **Auto-Update Frequency**: Real-time (sub-second)

@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -111,12 +111,12 @@ See the script for details and future updates.
 
 - [REFERENCES.md](REFERENCES.md)
 
-> **Note:** QMOI now supports GitHub Actions self-healing automation. See [QMOIGITHUBDEV.md](QMOIGITHUBDEV.md) for details.
+> **Note:** QMOI now supports GitHub Actions self-healing automation. See [QMOIGITHUBprod.md](QMOIGITHUBprod.md) for details.
 
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "qmoi-enhanced/docs/QMOIGITLABDEV.md",
+"file": "qmoi-enhanced/docs/QMOIGITLABprod.md",
 "validated_at": "2025-10-26T20:51:24.862903Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
@@ -135,8 +135,8 @@ See the script for details and future updates.
 "ok": true
 },
 {
-"label": "QMOIGITHUBDEV.md",
-"target": "./QMOIGITHUBDEV.md",
+"label": "QMOIGITHUBprod.md",
+"target": "./QMOIGITHUBprod.md",
 "ok": true
 }
 ]

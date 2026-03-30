@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "ALLLINKS.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -83,19 +83,19 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://qmoi.ai
 - https://production.qmoi.ai
 
-## DEVCOMMANDS.md
+## prodCOMMANDS.md
 
 - https://qmoi.ai
 - https://qmoi.ai/qcity
 - http://localhost:5000
 
-## DOWNLOADQMOIAIAPPALLDEVICES.md
+## DOWNLOADQMOIAIAPPALLprodICES.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
@@ -162,11 +162,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## QI_download_component.html
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
@@ -261,11 +261,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## QMOIAPPS.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
@@ -315,11 +315,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## QMOIDOWNLOADS.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
@@ -384,7 +384,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://api.mybank.com/balance?account=12345
 - https://api.mytrading.com/markets
 
-## QMOISPACEDEV.md
+## QMOISPACEprod.md
 
 - https://github.com/qmoi-ai/qmoi-space.git
 - https://gradio.app/docs/
@@ -402,11 +402,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## Qstore.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
@@ -475,11 +475,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/raspberrypi/qmoi_ai_arm.tar.gz
 - https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/smarttv/qmoi_ai.pkg
 - https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/windows/latest/qmoi_ai.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
@@ -785,11 +785,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://coveralls.io/repos/yargs/set-blocking/badge.svg?branch=
 - https://crbug.com/571003
 - https://david-dm.org/isaacs/rimraf
-- https://david-dm.org/isaacs/rimraf#info=devDependencies
+- https://david-dm.org/isaacs/rimraf#info=prodDependencies
 - https://david-dm.org/isaacs/rimraf.svg
-- https://david-dm.org/isaacs/rimraf/dev-status.svg
-- https://dev.azure.com/gulpjs/gulp/_apis/build/status/glob-parent?branchName=master
-- https://dev.azure.com/gulpjs/gulp/_build/latest?definitionId=2&branchName=master
+- https://david-dm.org/isaacs/rimraf/prod-status.svg
+- https://prod.azure.com/gulpjs/gulp/_apis/build/status/glob-parent?branchName=master
+- https://prod.azure.com/gulpjs/gulp/_build/latest?definitionId=2&branchName=master
 - https://docs.angularjs.org/api/ng/service/
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
@@ -955,7 +955,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/zamotany/ansi-fragments/blob/master/CODE_OF_CONDUCT.md
 - https://github.com/zamotany/logkitty/blob/master/CODE_OF_CONDUCT.md
 - https://goo.gl/8MmCMG
-- https://hapi.dev
+- https://hapi.prod
 - https://img.shields.io/appveyor/ci/davidtheclark/cosmiconfig/master.svg?label=windows%20build
 - https://img.shields.io/appveyor/ci/jprichardson/node-fs-extra/master.svg?label=windows%20build
 - https://img.shields.io/appveyor/ci/jprichardson/node-jsonfile/master.svg?label=windows%20build
@@ -1278,7 +1278,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://twicsy.com/buy-instagram-followers?utm_source&#x3D
 - https://visionmedia-community-slackin.now.sh/
 - https://visionmedia-community-slackin.now.sh/badge.svg
-- https://vite.dev
+- https://vite.prod
 - https://www.github.com/yargs/yargs/commit/7293ad50d20ea0fb7dd1ac9b925e90e1bd95dea8
 - https://www.github.com/yargs/yargs/commit/d0e437912917d6a66bb5128992fa2f566a5f830b
 - https://www.github.com/yargs/yargs/issues/1509
@@ -1317,15 +1317,15 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://circleci.com
 - http://cryto.net/~joepie91/blog/2016/05/11/what-is-promise-try-and-why-does-it-matter/
 - http://deno.land/x/escalade
-- http://devtoolscommunity.herokuapp.com
-- http://devtoolscommunity.herokuapp.com/badge.svg
+- http://prodtoolscommunity.herokuapp.com
+- http://prodtoolscommunity.herokuapp.com/badge.svg
 - https://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling
-- https://docs.python.org/dev/library/argparse.html
-- https://docs.python.org/dev/library/argparse.html#action
-- https://docs.python.org/dev/library/argparse.html#argumentparser-objects
-- https://docs.python.org/dev/library/argparse.html#mutual-exclusion
-- https://docs.python.org/dev/library/argparse.html#sub-commands
-- https://docs.python.org/dev/library/argparse.html#the-add-argument-method
+- https://docs.python.org/prod/library/argparse.html
+- https://docs.python.org/prod/library/argparse.html#action
+- https://docs.python.org/prod/library/argparse.html#argumentparser-objects
+- https://docs.python.org/prod/library/argparse.html#mutual-exclusion
+- https://docs.python.org/prod/library/argparse.html#sub-commands
+- https://docs.python.org/prod/library/argparse.html#the-add-argument-method
 - https://docs.taskcluster.net
 - https://editorconfig.org/
 - https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
@@ -1467,7 +1467,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://angularjs.org/
 - https://api.github.com/repos/axios/axios/pulls/6028
 - https://api.github.com/repos/axios/axios/pulls/6046
-- https://api.securityscorecards.dev/projects/github.com/JakeChampion/fetch/badge
+- https://api.securityscorecards.prod/projects/github.com/JakeChampion/fetch/badge
 - https://api.travis-ci.com/rvagg/bl.svg?branch=master
 - https://api.travis-ci.org/tj/commander.js.svg?branch=master
 - https://app.fossa.io/api/projects/git%2Bgithub.com%2FKilian%2Felectron-to-chromium.svg?type=large
@@ -1497,7 +1497,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://avatars3.githubusercontent.com/u/783335?s=100&v=4
 - https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/
 - https://aws.amazon.com/codebuild/
-- https://azure.microsoft.com/en-us/services/devops/pipelines/
+- https://azure.microsoft.com/en-us/services/prodops/pipelines/
 - https://babeljs.io/
 - https://babeljs.io/docs/babel-code-frame
 - https://babeljs.io/docs/babel-compat-data
@@ -1555,7 +1555,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://bestpractices.coreinfrastructure.org/projects/9058/badge
 - https://bitbucket.org/product/features/pipelines
 - https://blog.sindresorhus.com/small-focused-modules-9238d977a92a
-- https://blogs.windows.com/msedgedev/2016/05/11/top-down-analysis-wpt/
+- https://blogs.windows.com/msedgeprod/2016/05/11/top-down-analysis-wpt/
 - https://browsersl.ist/
 - https://buddy.works/
 - https://bugs.chromium.org/p/chromedriver/issues/detail?id=1015
@@ -1576,9 +1576,9 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://cdn.rawgit.com/feross/standard/master/badge.svg
 - https://cdnjs.com/libraries/fast-xml-parser
 - https://cgit.freedesktop.org/xdg/xdg-utils/commit/?id=c55122295c2a480fa721a9614f0e2d42b2949c18
-- https://chromedevtools.github.io/devtools-protocol/
-- https://chromedevtools.github.io/devtools-protocol/#endpoints
-- https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getBrowserCommandLine
+- https://chromeprodtools.github.io/prodtools-protocol/
+- https://chromeprodtools.github.io/prodtools-protocol/#endpoints
+- https://chromeprodtools.github.io/prodtools-protocol/tot/Browser/#method-getBrowserCommandLine
 - https://chromium-review.googlesource.com/#/c/816855/
 - https://chromium-review.googlesource.com/c/chromium/src/+/2404484
 - https://chromium.googlesource.com/chromium/src/+/HEAD/components/optimization_guide/
@@ -1654,7 +1654,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://datatracker.ietf.org/doc/html/final-davidben-http-client-hint-reliability-02#section-4.3
 - https://david-dm.org/alexreardon/memoize-one.svg
 - https://david-dm.org/isaacs/rimraf.svg
-- https://david-dm.org/isaacs/rimraf/dev-status.svg
+- https://david-dm.org/isaacs/rimraf/prod-status.svg
 - https://david-dm.org/mysticatea/abort-controller.svg
 - https://david-dm.org/mysticatea/event-target-shim.svg
 - https://day.js.org/
@@ -1662,51 +1662,51 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://day.js.org/docs/en/installation/installation
 - https://day.js.org/docs/en/parse/parse
 - https://day.js.org/docs/en/plugin/plugin
-- https://developer.android.com/studio/command-line/logcat#filteringOutput
-- https://developer.apple.com/documentation/foundation/jsondecoder/3766916-allowsjson5
-- https://developer.mozilla.org/en-US/docs/Glossary/Primitive
-- https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/JSON/stringify
-- https://developer.mozilla.org/en-US/docs/Web/API/AbortController
-- https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal
-- https://developer.mozilla.org/en-US/docs/Web/API/Performance/now
-- https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry
-- https://developer.mozilla.org/en-US/docs/Web/API/Performance_Timeline
-- https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
-- https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API
-- https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
-- https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/queueMicrotask
-- https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
-- https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding
-- https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/values
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#data.3A_Using_the_reviver_parameter
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#Using_the_reviver_parameter
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#quantifiers
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
-- https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content
-- https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find
-- https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent
-- https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
-- https://developer.mozilla.org/ru/docs/Web/HTTP/Guides/CORS
-- https://developers.google.com/web/updates/2017/09/abortable-fetch
+- https://prodeloper.android.com/studio/command-line/logcat#filteringOutput
+- https://prodeloper.apple.com/documentation/foundation/jsondecoder/3766916-allowsjson5
+- https://prodeloper.mozilla.org/en-US/docs/Glossary/Primitive
+- https://prodeloper.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/JSON/stringify
+- https://prodeloper.mozilla.org/en-US/docs/Web/API/AbortController
+- https://prodeloper.mozilla.org/en-US/docs/Web/API/AbortSignal
+- https://prodeloper.mozilla.org/en-US/docs/Web/API/Performance/now
+- https://prodeloper.mozilla.org/en-US/docs/Web/API/PerformanceEntry
+- https://prodeloper.mozilla.org/en-US/docs/Web/API/Performance_Timeline
+- https://prodeloper.mozilla.org/en-US/docs/Web/API/URLSearchParams
+- https://prodeloper.mozilla.org/en-US/docs/Web/API/User_Timing_API
+- https://prodeloper.mozilla.org/en-US/docs/Web/API/WebSocket
+- https://prodeloper.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/queueMicrotask
+- https://prodeloper.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+- https://prodeloper.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding
+- https://prodeloper.mozilla.org/en-US/docs/Web/HTTP/Methods/POST
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/values
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#data.3A_Using_the_reviver_parameter
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#Using_the_reviver_parameter
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#quantifiers
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports
+- https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+- https://prodeloper.mozilla.org/en-US/docs/Web/Security/Mixed_content
+- https://prodeloper.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+- https://prodeloper.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent
+- https://prodeloper.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
+- https://prodeloper.mozilla.org/ru/docs/Web/HTTP/Guides/CORS
+- https://prodelopers.google.com/web/updates/2017/09/abortable-fetch
 - https://docs.angularjs.org/api/ng/service/
 - https://docs.google.com/a/google.com/document/d/1JYj9K61UyxIYavR8_HATYIglR9T_rDwAtLLsD3fbDQg/preview
 - https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k
@@ -1726,11 +1726,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://dom.spec.whatwg.org/#interface-abortcontroller
 - https://dom.spec.whatwg.org/#interface-eventtarget
 - https://github.com/thealphakenya/qmoi-enhanced/releases
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
@@ -1826,8 +1826,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://eslint.org/docs/rules/no-buffer-constructor
 - https://exiftool.org/TagNames/EXIF.html#:~:text=0x0112
 - https://exploringjs.com/es6/ch_template-literals.html#_tagged-standard-literals
-- https://expo.dev
-- https://expo.dev/eas
+- https://expo.prod
+- https://expo.prod/eas
 - https://expressjs.com/
 - https://expressjs.com/en/guide/migrating-5
 - https://expressjs.com/en/starter/installing.html
@@ -2005,7 +2005,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/Semigradsky
 - https://github.com/Shivam-Batham
 - https://github.com/StefanBRas
-- https://github.com/SuperchupuDev/tinyglobby
+- https://github.com/Superchupuprod/tinyglobby
 - https://github.com/Sushmeet
 - https://github.com/TehShrike/deepmerge#custommerge
 - https://github.com/TehShrike/deepmerge/commit/0b34e6e95f989f2fc8091d25f0d291c08f3d2d24
@@ -3077,7 +3077,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/denoland/deno
 - https://github.com/derhuerst
 - https://github.com/despreston
-- https://github.com/devongovett
+- https://github.com/prodongovett
 - https://github.com/digitaIfabric
 - https://github.com/dimitry-lzs
 - https://github.com/dimka665/range-regex
@@ -3203,7 +3203,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/facebook/jsx
 - https://github.com/facebook/metro/issues/new
 - https://github.com/facebook/react-native
-- https://github.com/facebook/react-native-devtools-frontend
+- https://github.com/facebook/react-native-prodtools-frontend
 - https://github.com/facebook/react-native/blob/0.68-stable/standard/package.json#L12-L15
 - https://github.com/facebook/react-native/issues/12542
 - https://github.com/facebook/react-native/issues/13976
@@ -3213,7 +3213,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/facebook/react/blob/v0.13.3/src/vendor/core/invariant.js
 - https://github.com/facebook/react/issues/16604#issuecomment-528663101
 - https://github.com/facebook/react/issues/812
-- https://github.com/facebook/react/tree/main/packages/react-devtools
+- https://github.com/facebook/react/tree/main/packages/react-prodtools
 - https://github.com/facebook/regenerator
 - https://github.com/fastify/middie
 - https://github.com/fb-sean
@@ -5920,7 +5920,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/llamington
 - https://github.com/lodash/lodash
 - https://github.com/lodash/lodash/blob/4.1.1-npm-packages/lodash.throttle
-- https://github.com/lpizzinidev
+- https://github.com/lpizziniprod
 - https://github.com/lrlna
 - https://github.com/lucasraziel
 - https://github.com/lukastaegert
@@ -5936,7 +5936,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/mafintosh
 - https://github.com/manidlou
 - https://github.com/manidlou/node-klaw-sync
-- https://github.com/manishsahanidev
+- https://github.com/manishsahaniprod
 - https://github.com/mannoeu
 - https://github.com/mantoni/mochify.js
 - https://github.com/marsonya
@@ -6115,7 +6115,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/psmoros
 - https://github.com/pulumi/pulumi
 - https://github.com/puppeteer/puppeteer/blob/3f2c0590f154aefd2ad3449a3f943ee79d1e33a9/packages/puppeteer-core/src/node/ChromeLauncher.ts#L159
-- https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#setting-up-chrome-linux-sandbox
+- https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#setting-up-chrome-linux-production
 - https://github.com/puppeteer/puppeteer/blob/main/src/node/Launcher.ts
 - https://github.com/pushplay
 - https://github.com/puzrin
@@ -6366,7 +6366,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/wadey/node-thrift
 - https://github.com/wafuwafu13
 - https://github.com/wangcch
-- https://github.com/warpdev
+- https://github.com/warpprod
 - https://github.com/watson/ci-info
 - https://github.com/watson/ci-info/commit/24cc450
 - https://github.com/watson/ci-info/commit/357b454
@@ -6819,16 +6819,16 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://gradio.app/docs/
 - https://gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=70
 - https://hacks.mozilla.org/2013/05/compiling-to-javascript-and-debugging-with-source-maps/
-- https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-developer-tools-episode-31/
-- https://hapi.dev
-- https://hapi.dev/family/hoek/
-- https://hapi.dev/family/hoek/changelog/
-- https://hapi.dev/family/topo/
-- https://hapi.dev/family/topo/changelog/
-- https://hapi.dev/policies/
-- https://hapi.dev/resources/status/#hoek
-- https://hapi.dev/resources/status/#topo
-- https://hapi.dev/support/
+- https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/
+- https://hapi.prod
+- https://hapi.prod/family/hoek/
+- https://hapi.prod/family/hoek/changelog/
+- https://hapi.prod/family/topo/
+- https://hapi.prod/family/topo/changelog/
+- https://hapi.prod/policies/
+- https://hapi.prod/resources/status/#hoek
+- https://hapi.prod/resources/status/#topo
+- https://hapi.prod/support/
 - https://help.github.com/articles/cloning-a-repository/
 - https://help.github.com/articles/fork-a-repo/
 - https://hg.nginx.org/nginx/raw-file/default/conf/mime.types
@@ -6912,7 +6912,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://img.shields.io/github/license/stacktracejs/error-stack-parser.svg?style=flat-square
 - https://img.shields.io/github/license/stacktracejs/stackframe.svg?style=flat-square
 - https://img.shields.io/github/workflow/status/codingjerk/appdirsjs/ci
-- https://img.shields.io/github/workflow/status/micromatch/is-glob/dev
+- https://img.shields.io/github/workflow/status/micromatch/is-glob/prod
 - https://img.shields.io/github/workflow/status/stacktracejs/error-stack-parser/Continuous%20Integration/master?logo=github&style=flat-square
 - https://img.shields.io/github/workflow/status/stacktracejs/stackframe/Continuous%20Integration/master?logo=github&style=flat-square
 - https://img.shields.io/github/workflow/status/then/promise/Publish%20Canary/master?style=for-the-badge
@@ -7042,26 +7042,26 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://jestjs.io/docs/
 - https://jestjs.io/docs/api
 - https://jestjs.io/docs/configuration#transform-object-string-string
-- https://joi.dev
-- https://joi.dev/api/
-- https://joi.dev/module/address/
-- https://joi.dev/module/address/changelog/
-- https://joi.dev/module/formula/
-- https://joi.dev/module/formula/changelog/
-- https://joi.dev/module/pinpoint/
-- https://joi.dev/module/pinpoint/changelog/
-- https://joi.dev/policies/
-- https://joi.dev/resources/changelog/
-- https://joi.dev/resources/status/#address
-- https://joi.dev/resources/status/#formula
-- https://joi.dev/resources/status/#joi
-- https://joi.dev/resources/status/#pinpoint
+- https://joi.prod
+- https://joi.prod/api/
+- https://joi.prod/module/address/
+- https://joi.prod/module/address/changelog/
+- https://joi.prod/module/formula/
+- https://joi.prod/module/formula/changelog/
+- https://joi.prod/module/pinpoint/
+- https://joi.prod/module/pinpoint/changelog/
+- https://joi.prod/policies/
+- https://joi.prod/resources/changelog/
+- https://joi.prod/resources/status/#address
+- https://joi.prod/resources/status/#formula
+- https://joi.prod/resources/status/#joi
+- https://joi.prod/resources/status/#pinpoint
 - https://jsfiddle.net/sindresorhus/2eLtsbey/embedded/result/
 - https://json5.github.io/json5-spec/
 - https://keepachangelog.com/en/1.0.0/
 - https://layerci.com/
 - https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
-- https://licenses.dev/b/npm/escalade
+- https://licenses.prod/b/npm/escalade
 - https://linkedin.com/in/jonschlinkert
 - https://lodash.com/
 - https://lodash.com/docs#throttle
@@ -7076,7 +7076,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://mathiasbynens.be/notes/javascript-escapes#unicode-code-point
 - https://medium.com/
 - https://medium.com/the-node-js-collection/maintainers-should-consider-following-node-js-release-schedule-ab08ed4de71a
-- https://metrobundler.dev/
+- https://metrobundler.prod/
 - https://moltar.github.io/typescript-runtime-type-benchmarks/
 - https://mrale.ph/blog/2018/02/03/maybe-you-dont-need-rust-to-speed-up-your-js.html
 - https://msdn.microsoft.com/commandline/wsl/about
@@ -7237,11 +7237,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://raw.githubusercontent.com/numi-hq/open-design/main/assets/numi-lockup.png
 - https://react-native-async-storage.github.io/async-storage/docs/install
 - https://reactjs.org/docs/optimizing-performance.html#use-the-production-build
-- https://reactnative.dev/contributing/how-to-build-from-source#prerequisites
-- https://reactnative.dev/contributing/how-to-run-and-write-tests
-- https://reactnative.dev/contributing/overview#contributing-code
-- https://reactnative.dev/docs/debugging#accessing-the-dev-menu
-- https://reactnative.dev/docs/getting-started
+- https://reactnative.prod/contributing/how-to-build-from-source#prerequisites
+- https://reactnative.prod/contributing/how-to-run-and-write-tests
+- https://reactnative.prod/contributing/overview#contributing-code
+- https://reactnative.prod/docs/debugging#accessing-the-prod-menu
+- https://reactnative.prod/docs/getting-started
 - https://reactnavigation.org/docs/custom-routers/
 - https://reactnavigation.org/docs/elements/
 - https://reactnavigation.org/docs/getting-started/
@@ -7304,7 +7304,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://stackoverflow.com/questions/ask
 - https://strider-cd.github.io/
 - https://superposition.design
-- https://svelte.dev/docs/kit/web-standards#Fetch-APIs
+- https://svelte.prod/docs/kit/web-standards#Fetch-APIs
 - https://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
 - https://t.me/gorshochekvarit/76
 - https://tauri.app/plugin/http-client/
@@ -7445,16 +7445,16 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://user-images.githubusercontent.com/27283110/230441652-ac5cf6b0-5dc5-4ffc-9d8b-bd02875484f4.png
 - https://user-images.githubusercontent.com/39191/30349667-92a7a086-97c8-11e7-86b2-1365e3d407e3.png
 - https://useragents.io/
-- https://v8.dev/docs/stack-trace-api
+- https://v8.prod/docs/stack-trace-api
 - https://vercel.com/
 - https://visionmedia-community-slackin.now.sh/badge.svg
-- https://vite.dev
-- https://vite.dev/config/server-options.html#server-middlewaremode
-- https://vite.dev/guide/api-javascript.html
-- https://vite.dev/guide/api-plugin.html
-- https://vite.dev/guide/build.html
-- https://vite.dev/guide/features.html
-- https://vite.dev/guide/features.html#hot-module-replacement
+- https://vite.prod
+- https://vite.prod/config/server-options.html#server-middlewaremode
+- https://vite.prod/guide/api-javascript.html
+- https://vite.prod/guide/api-plugin.html
+- https://vite.prod/guide/build.html
+- https://vite.prod/guide/features.html
+- https://vite.prod/guide/features.html#hot-module-replacement
 - https://web-platform-dx.github.io/baseline-browser-mapping/all_versions.csv
 - https://web-platform-dx.github.io/baseline-browser-mapping/all_versions_array.json
 - https://web-platform-dx.github.io/baseline-browser-mapping/all_versions_array_with_supports.json
@@ -7480,7 +7480,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://www.codetriage.com/axios/axios/badges/users.svg
 - https://www.cve.org/CVERecord?id=CVE-2025-7339
 - https://www.electronjs.org/docs/api/shell#shellopenpathpath
-- https://www.gatsbyjs.com/docs/reference/local-development/fast-refresh/#how-it-works
+- https://www.gatsbyjs.com/docs/reference/local-production/fast-refresh/#how-it-works
 - https://www.gengjiawen.com
 - https://www.gerritcodereview.com
 - https://www.github.com/istanbuljs/babel-plugin-istanbul/commit/1e9ec62b50c9d2224e7bb0ccb071fd10b80e018f
@@ -7914,7 +7914,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://www.rfc-editor.org/rfc/rfc6901
 - https://www.rfc-editor.org/rfc/rfc9110.html#section-13.1.3-5
 - https://www.shippable.com/
-- https://www.skypack.dev
+- https://www.skypack.prod
 - https://www.solanolabs.com/
 - https://www.stacktracejs.com
 - https://www.teambition.com
@@ -7982,11 +7982,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/raspberrypi/qmoi_ai_arm.tar.gz
 - https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/smarttv/qmoi_ai.pkg
 - https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/windows/latest/qmoi_ai.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
@@ -8098,11 +8098,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://your-app.vercel.app
 - https://your-domain.com/api/airtel/callback
 
-## docs/[PRODUCTION READY]s_replacement_report.json
+## docs/[production READY]s_replacement_report.json
 
 - http://nodeca.github.com/js-yaml/
 - http://promises-aplus.github.com/promises-spec/
-- https://android-developers.googleblog.com/2015/10/new-in-android-
+- https://android-prodelopers.googleblog.com/2015/10/new-in-android-
 - https://api.pesapal.com
 - https://aws.data.co
 - https://codecov.
@@ -8148,10 +8148,10 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://mothereff.in/js-escapes
 - https://nodejs.org/docs/latest-v24.x/api/cli.html#--production-test-module
 - https://nodejs.org/docs/latest-v24.x/api/cli.html#--production-test-module-
-- https://registry.npmjs.org/semantic-release/-/semantic-release-0.0.0-[PRODUCTION READY].tgz
+- https://registry.npmjs.org/semantic-release/-/semantic-release-0.0.0-[production READY].tgz
 - https://rollupjs.org/introduction/
 - https://sinonjs.org/releases/latest/#supported-runtimes
-- https://snack.expo.dev/
+- https://snack.expo.prod/
 - https://vercel.app
 - https://vercel.app/
 - https://www.npmj
@@ -8159,7 +8159,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://www.npmjs.com/packa
 - https://www.npmjs.com/package/
 - https://www.npmjs.com/package/r
-- https://www.skypack.dev
+- https://www.skypack.prod
 - https://your-domain.com/api/mpesa/callback
 - https://your-file-host.com/download/
 
@@ -8241,7 +8241,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## mobile/components/AnalyticsScreen.js
 
-- http://localhost:4000/api/device-stats
+- http://localhost:4000/api/prodice-stats
 - http://localhost:4000/api/error-fix-log?range=
 - http://localhost:4100/api/predictions
 
@@ -8349,11 +8349,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/BUILDAPPSFORALLPLATFORMS.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
@@ -8404,13 +8404,13 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://qmoi.ai
 - https://production.qmoi.ai
 
-## qmoi-enhanced/DEVCOMMANDS.md
+## qmoi-enhanced/prodCOMMANDS.md
 
 - https://qmoi.ai
 - https://qmoi.ai/qcity
 - http://localhost:5000
 
-## qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md
+## qmoi-enhanced/DOWNLOADQMOIAIAPPALLprodICES.md
 
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa
@@ -8448,11 +8448,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/QI_download_component.html
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
@@ -8551,11 +8551,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/QMOIAPPS.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
@@ -8587,13 +8587,13 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
 
-## qmoi-enhanced/QMOIAUTOAPPSDEV.md
+## qmoi-enhanced/QMOIAUTOAPPSprod.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
@@ -8635,11 +8635,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/QMOIDOWNLOADS.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
@@ -8703,7 +8703,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 - https://space.qmoi.app/
 
-## qmoi-enhanced/QMOISPACEDEV.md
+## qmoi-enhanced/QMOISPACEprod.md
 
 - https://github.com/qmoi-ai/qmoi-space.git
 - https://gradio.app/docs/
@@ -8721,11 +8721,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/Qstore.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
 - https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
@@ -8926,7 +8926,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/mobile/components/AnalyticsScreen.js
 
-- http://localhost:4000/api/device-stats
+- http://localhost:4000/api/prodice-stats
 - http://localhost:4000/api/error-fix-log?range=
 - http://localhost:4100/api/predictions
 
@@ -9219,7 +9219,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/mpesa-setup-guide.js
 
-- https://developer.safaricom.co.ke/
+- https://prodeloper.safaricom.co.ke/
 - https://your-app.vercel.app
 
 ## qmoi-enhanced/scripts/network/network_connectivity_manager.py
@@ -9261,7 +9261,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/qmoi-ai/qcity/releases/latest/download/qcity-ui.zip
 - https://httpbin.org/bytes/1024
 
-## qmoi-enhanced/scripts/qcity_device_manager.py
+## qmoi-enhanced/scripts/qcity_prodice_manager.py
 
 - https://api.openai.com
 - https://github.com
@@ -9474,7 +9474,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/your-repo/qmoi-system.git
 - https://github.com/your-repo/qmoi-system/issues
 
-## qmoi-enhanced/scripts/qmoi_automated_device_controller.py
+## qmoi-enhanced/scripts/qmoi_automated_prodice_controller.py
 
 - https://www.cloudflare.com
 - https://www.github.com
@@ -9487,7 +9487,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - http://localhost:4200/api/notification-history
 - http://localhost:4200/api/notification-prefs
 
-## qmoi-enhanced/scripts/qmoi_device_agent.py
+## qmoi-enhanced/scripts/qmoi_prodice_agent.py
 
 - https://www.google.com
 
@@ -9552,7 +9552,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## qmoi-enhanced/scripts/qmoi_payment_fix.js
 
 - https://openapiuat.airtel.africa/auth/oauth2/token
-- https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials
+- https://production.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials
 - https://your-domain.com/api/airtel/callback
 - https://your-domain.com/api/mpesa/callback
 - https://your-domain.com/api/pesapal/callback
@@ -9755,11 +9755,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://quantum.qmoi.app
 - https://www.python.org/ftp/python/3.11.0/python-3.11.0-embed-amd64.zip
 
-## reports/[PRODUCTION READY]s.json
+## reports/[production READY]s.json
 
 - http://nodeca.github.com/js-yaml/
 - http://promises-aplus.github.com/promises-spec/
-- https://android-developers.googleblog.com/2015/10/new-in-android-
+- https://android-prodelopers.googleblog.com/2015/10/new-in-android-
 - https://api.pesapal.com
 - https://codecov.io/gh/sinonjs/
 - https://crbug.com/865247
@@ -9795,16 +9795,16 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://rollupjs.org/introduction/
 - https://rollupjs.org/javascript-api/
 - https://sinonjs.org/releases/latest/#supported-runtimes
-- https://snack.expo.dev/
+- https://snack.expo.prod/
 - https://www.npmjs.com/package/
 - https://www.npmjs.com/package/repeat-string
-- https://www.skypack.dev
+- https://www.skypack.prod
 
 ## reports/suggestions.json
 
 - http://nodeca.github.com/js-yaml/
 - http://promises-aplus.github.com/promises-spec/
-- https://android-developers.googleblog.com/2015/10/new-in-android-
+- https://android-prodelopers.googleblog.com/2015/10/new-in-android-
 - https://api.pesapal.com
 - https://codecov.io/gh/sinonjs/
 - https://crbug.com/865247
@@ -9840,10 +9840,10 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://rollupjs.org/introduction/
 - https://rollupjs.org/javascript-api/
 - https://sinonjs.org/releases/latest/#supported-runtimes
-- https://snack.expo.dev/
+- https://snack.expo.prod/
 - https://www.npmjs.com/package/
 - https://www.npmjs.com/package/repeat-string
-- https://www.skypack.dev
+- https://www.skypack.prod
 
 ## scripts/auto-vercel-fix.js
 
@@ -10046,7 +10046,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/mpesa-setup-guide.js
 
-- https://developer.safaricom.co.ke/
+- https://prodeloper.safaricom.co.ke/
 - https://your-app.vercel.app
 
 ## scripts/network/network_connectivity_manager.py
@@ -10092,7 +10092,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/qmoi-ai/qcity/releases/latest/download/qcity-ui.zip
 - https://httpbin.org/bytes/1024
 
-## scripts/qcity_device_manager.py
+## scripts/qcity_prodice_manager.py
 
 - https://api.openai.com
 - https://github.com
@@ -10310,13 +10310,13 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/your-repo/qmoi-system.git
 - https://github.com/your-repo/qmoi-system/issues
 
-## scripts/qmoi_automated_device_controller.py
+## scripts/qmoi_automated_prodice_controller.py
 
 - https://www.cloudflare.com
 - https://www.github.com
 - https://www.google.com
 
-## scripts/qmoi_device_agent.py
+## scripts/qmoi_prodice_agent.py
 
 - https://www.google.com
 
@@ -10383,7 +10383,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## scripts/qmoi_payment_fix.js
 
 - https://openapiuat.airtel.africa/auth/oauth2/token
-- https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials
+- https://production.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials
 - https://your-domain.com/api/airtel/callback
 - https://your-domain.com/api/mpesa/callback
 - https://your-domain.com/api/pesapal/callback

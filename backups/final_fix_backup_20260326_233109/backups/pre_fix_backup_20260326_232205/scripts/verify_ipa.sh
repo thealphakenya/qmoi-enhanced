@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env bash
 set -euo pipefail
 
@@ -17,7 +17,7 @@ fi
 
 echo
 echo "1) comprehensive file info"
-if command -v file >/dev/null 2>&1; then
+if command -v file >/prod/null 2>&1; then
   file "$IPA_PATH"
 else
   echo "  file command not available"
@@ -26,9 +26,9 @@ ls -lh "$IPA_PATH"
 
 echo
 echo "2) Verify ZIP structure (IPA is a ZIP archive)"
-if command -v unzip >/dev/null 2>&1; then
+if command -v unzip >/prod/null 2>&1; then
   echo "  Checking ZIP integrity..."
-  unzip -t "$IPA_PATH" > /dev/null && echo "  ✓ ZIP integrity OK" || echo "  ✗ ZIP integrity failed"
+  unzip -t "$IPA_PATH" > /prod/null && echo "  ✓ ZIP integrity OK" || echo "  ✗ ZIP integrity failed"
   
   echo
   echo "  Archive contents (first 30 entries):"
@@ -41,16 +41,16 @@ echo
 echo "3) Extract and verify Info.plist (requires unzip and plutil/plist)"
 TMPDIR="/tmp/ipa_extract_$$"
 mkdir -p "$TMPDIR"
-if command -v unzip >/dev/null 2>&1; then
-  unzip -q "$IPA_PATH" -d "$TMPDIR" 2>/dev/null || echo "  Failed to extract IPA"
+if command -v unzip >/prod/null 2>&1; then
+  unzip -q "$IPA_PATH" -d "$TMPDIR" 2>/prod/null || echo "  Failed to extract IPA"
   
-  PLIST_PATH=$(find "$TMPDIR" -name "Info.plist" 2>/dev/null | head -1)
+  PLIST_PATH=$(find "$TMPDIR" -name "Info.plist" 2>/prod/null | head -1)
   if [ -n "$PLIST_PATH" ]; then
     echo "  Found Info.plist at: $PLIST_PATH"
     
-    if command -v plutil >/dev/null 2>&1; then
+    if command -v plutil >/prod/null 2>&1; then
       echo "  Plist contents (using plutil):"
-      plutil -p "$PLIST_PATH" 2>/dev/null | head -40 || \
+      plutil -p "$PLIST_PATH" 2>/prod/null | head -40 || \
         echo "  (plutil parse failed; may need macOS)"
     else
       echo "  plutil not available (requires macOS); trying strings fallback..."
@@ -65,9 +65,9 @@ fi
 
 echo
 echo "4) Verify code signing certificate (requires Apple codesign tool)"
-if command -v codesign >/dev/null 2>&1; then
+if command -v codesign >/prod/null 2>&1; then
   echo "  Checking code signature..."
-  APP_BUNDLE=$(find "$TMPDIR" -name "*.app" -type d 2>/dev/null | head -1)
+  APP_BUNDLE=$(find "$TMPDIR" -name "*.app" -type d 2>/prod/null | head -1)
   if [ -n "$APP_BUNDLE" ]; then
     codesign -v "$APP_BUNDLE" && echo "  ✓ Code signature valid" || echo "  ✗ Code signature invalid"
     echo
@@ -84,19 +84,19 @@ echo
 echo "5) Search for feature strings in binary"
 if [ -d "$TMPDIR" ]; then
   echo "  Searching for typical app tokens/features..."
-  find "$TMPDIR" -name "*.app" -o -name "Mach-O" 2>/dev/null | while read -r file; do
-    strings "$file" 2>/dev/null | egrep -i "(api|https|qmoi|license|version|login|auth|bundle)" | head -5 || true
+  find "$TMPDIR" -name "*.app" -o -name "Mach-O" 2>/prod/null | while read -r file; do
+    strings "$file" 2>/prod/null | egrep -i "(api|https|qmoi|license|version|login|auth|bundle)" | head -5 || true
   done | head -20
 fi
 
 echo
 echo "6) Verify provisioning profile"
-EMBEDDED_PROV=$(find "$TMPDIR" -name "embedded.mobileprovision" 2>/dev/null | head -1)
+EMBEDDED_PROV=$(find "$TMPDIR" -name "embedded.mobileprovision" 2>/prod/null | head -1)
 if [ -n "$EMBEDDED_PROV" ]; then
   echo "  Found provisioning profile: $EMBEDDED_PROV"
-  if command -v openssl >/dev/null 2>&1; then
+  if command -v openssl >/prod/null 2>&1; then
     echo "  Profile details:"
-    openssl asn1parse -inform DER -in "$EMBEDDED_PROV" 2>/dev/null | head -20 || \
+    openssl asn1parse -inform DER -in "$EMBEDDED_PROV" 2>/prod/null | head -20 || \
       echo "  (Could not parse profile; valid format expected)"
   fi
 else
@@ -105,7 +105,7 @@ fi
 
 echo
 echo "7) Verify entitlements"
-ENTITLE=$(find "$TMPDIR" -name "CodeResources" -o -name "Entitlements.plist" 2>/dev/null | head -1)
+ENTITLE=$(find "$TMPDIR" -name "CodeResources" -o -name "Entitlements.plist" 2>/prod/null | head -1)
 if [ -n "$ENTITLE" ]; then
   echo "  Found entitlements: $ENTITLE"
   strings "$ENTITLE" | head -20
@@ -121,5 +121,5 @@ echo "=== iOS IPA Verification complete ==="
 echo "For full iOS signature and installation verification, run on macOS:"
 echo "  codesign -v qmoi-release.ipa"
 echo "  xcode-select --install  # Ensure Xcode CLI tools available"
-echo "Then install on device/simulator:"
+echo "Then install on prodice/simulator:"
 echo "  xcrun simctl install booted qmoi-release.ipa"

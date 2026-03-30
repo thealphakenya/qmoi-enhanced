@@ -587,7 +587,7 @@ class QMOISecurityMonitor:
     def block_ip_address(self, ip_address: str):
         """Block IP address"""
         try:
-            # This is a // Production implementation required: - in a real system, you would use firewall rules
+            # This is a // production implementation required: - in a real system, you would use firewall rules
             logging.info(f"Blocking IP address: {ip_address}")
             
             # Store blocked IP
@@ -614,7 +614,7 @@ class QMOISecurityMonitor:
     def terminate_process(self, pid: int):
         """Terminate suspicious process"""
         try:
-            # This is a // Production implementation required: - in a real system, you would use process management
+            # This is a // production implementation required: - in a real system, you would use process management
             logging.info(f"Terminating process: {pid}")
             
             # Store terminated process
@@ -930,7 +930,7 @@ class QMOISecurityMonitor:
                 with open(package_json, 'r') as f:
                     package_data = json.load(f)
                 
-                # This is a // Production implementation required: - in a real system, you would check against vulnerability databases
+                # This is a // production implementation required: - in a real system, you would check against vulnerability databases
                 # For now, we'll just check for some common vulnerable packages
                 vulnerable_packages = [
                     "lodash",  # data vulnerable package
@@ -938,9 +938,9 @@ class QMOISecurityMonitor:
                 ]
                 
                 dependencies = package_data.get("dependencies", {})
-                dev_dependencies = package_data.get("devDependencies", {})
+                prod_dependencies = package_data.get("prodDependencies", {})
                 
-                all_deps = {**dependencies, **dev_dependencies}
+                all_deps = {**dependencies, **prod_dependencies}
                 
                 for package, version in all_deps.items():
                     if package in vulnerable_packages:

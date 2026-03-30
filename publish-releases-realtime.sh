@@ -149,7 +149,7 @@ check_requirements() {
     local required=0
 
     # Check for gh CLI
-    if ! command -v gh &> /dev/null; then
+    if ! command -v gh &> /prod/null; then
         log_error "GitHub CLI (gh) not found"
         log_info "Install from: https://cli.github.com"
         required=1
@@ -158,7 +158,7 @@ check_requirements() {
     fi
 
     # Check for git
-    if ! command -v git &> /dev/null; then
+    if ! command -v git &> /prod/null; then
         log_error "Git not found"
         required=1
     else
@@ -166,7 +166,7 @@ check_requirements() {
     fi
 
     # Check for sha256sum
-    if ! command -v sha256sum &> /dev/null; then
+    if ! command -v sha256sum &> /prod/null; then
         log_error "sha256sum not found"
         required=1
     else
@@ -174,7 +174,7 @@ check_requirements() {
     fi
 
     # Check for zip (for PWA apps)
-    if ! command -v zip &> /dev/null; then
+    if ! command -v zip &> /prod/null; then
         log_warning "zip not found (PWA packaging will be skipped)"
     else
         log_success "zip available"
@@ -211,7 +211,7 @@ validate_version() {
 check_auth() {
     log_section "🔐 Checking GitHub Authentication"
 
-    if ! gh auth status &> /dev/null; then
+    if ! gh auth status &> /prod/null; then
         log_error "Not authenticated with GitHub"
         log_info "Run: gh auth login"
         exit 1
@@ -255,7 +255,7 @@ discover_assets() {
                 -o -name "*.ipa" \
                 -o -name "*.img" \
                 -o -name "*.zip" \
-            \) 2>/dev/null | while read asset; do
+            \) 2>/prod/null | while read asset; do
                 # Skip checksums and other artifacts
                 if [[ ! "$asset" =~ \.(sha256|md5|sig)$ ]]; then
                     echo "$asset"
@@ -332,7 +332,7 @@ generate_checksums() {
 
             log_info "Checksumming: $asset_name"
 
-            if sha256sum "$asset" > "$checksum_file" 2>/dev/null; then
+            if sha256sum "$asset" > "$checksum_file" 2>/prod/null; then
                 log_success "Generated: ${asset_name}.sha256"
                 CHECKSUM_COUNT=$((CHECKSUM_COUNT + 1))
             else
@@ -362,12 +362,12 @@ generate_release_notes() {
 
 | App | Version | Status |
 |-----|---------|--------|
-| QMOI AI | v1.2.3 | ✅ Production Ready |
-| QCity | v2.0.1 | ✅ Production Ready |
-| QShare | v1.0.0 | ✅ Production Ready |
-| Yap | v1.1.0 | ✅ Production Ready |
-| QStore | v1.0.0 | ✅ Production Ready |
-| QVillage | v1.0.0 | ✅ Production Ready |
+| QMOI AI | v1.2.3 | ✅ production Ready |
+| QCity | v2.0.1 | ✅ production Ready |
+| QShare | v1.0.0 | ✅ production Ready |
+| Yap | v1.1.0 | ✅ production Ready |
+| QStore | v1.0.0 | ✅ production Ready |
+| QVillage | v1.0.0 | ✅ production Ready |
 
 ## 🖥️ Supported Platforms
 
@@ -406,7 +406,7 @@ sha256sum -c qmoi-ai.exe.sha256
 
 ---
 
-**Status:** ✅ Production Ready | **Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')
+**Status:** ✅ production Ready | **Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')
 
 EOF
 
@@ -505,7 +505,7 @@ upload_assets() {
                 gh release upload "$VERSION" \
                     --repo "$REPO" \
                     "${asset}.sha256" \
-                    --clobber 2>/dev/null || true
+                    --clobber 2>/prod/null || true
             fi
         fi
     done < /tmp/qmoi-assets.txt

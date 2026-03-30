@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Issue final for docs/LION-USAGE-PLAN.md"
 generated: 2025-11-08T16:06:38.365694Z
@@ -19,9 +19,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [PRODUCTION READY] markers or [PRODUCTION READY]s.
-- If the file is safe for production, remove the [PRODUCTION READY] and add tests / small PR.
-- If the file is intentionally non-production (e.g. [PRODUCTION READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [production READY] markers or [production READY]s.
+- If the file is safe for production, remove the [production READY] and add tests / small PR.
+- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -38,7 +38,7 @@ This document outlines a safe, staged plan to enhance how LION is used across pr
 
 Goals
 - Make LION a first-class, auditable orchestrator across the repo.
-- Remove [PRODUCTION READY] content in docs and code paths relating to LION and replace with actionable commands or links to signed artifacts.
+- Remove [production READY] content in docs and code paths relating to LION and replace with actionable commands or links to signed artifacts.
 - Add validation and reporting so changes are discoverable by CI and the `scripts/run_validations.py` orchestrator.
 
 Phased approach
@@ -47,7 +47,7 @@ Phased approach
    - We already created `docs/md_index.json` and `docs/lion_usage_report.json` (scan script).
 
 2. Conservative remediation (low-risk)
-   - Replace LION [PRODUCTION READY]s in docs only (requires `--apply`).
+   - Replace LION [production READY]s in docs only (requires `--apply`).
    - Add LION verification metadata blocks to key `.md` files using existing autotagging scripts.
 
 3. Automation and CLI

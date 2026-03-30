@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/bin/bash
 set -e
 
@@ -10,7 +10,7 @@ find /workspaces/qmoi-enhanced/dist -type f \( -name "*.apk" -o -name "*.ipa" -o
 done
 
 echo "Checking APK signatures (if jarsigner available)..."
-if command -v jarsigner >/dev/null 2>&1; then
+if command -v jarsigner >/prod/null 2>&1; then
   find /workspaces/qmoi-enhanced/dist -type f -name "*.apk" | while read apk; do
     echo "Verifying: $apk"
     jarsigner -verify -verbose -certs "$apk" || echo "Warning: jarsigner verification failed for $apk"

@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOI Start Guide"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -18,7 +18,7 @@ title: "QMOI Start Guide"
 
 ## 🚀 How to Start or Resume QMOI (QCity & Cloud)
 
-To ensure QMOI is always running (even in the cloud or when your device is offline), use the following command:
+To ensure QMOI is always running (even in the cloud or when your prodice is offline), use the following command:
 
 ```bash
 python scripts/qmoi-start.py
@@ -36,7 +36,7 @@ python scripts/qmoi-start.py
 
 ## 🛡️ Always-On
 
-- QMOI is designed to keep running in the cloud, so you never miss an event or fix—even if your device is offline.
+- QMOI is designed to keep running in the cloud, so you never miss an event or fix—even if your prodice is offline.
 
 ---
 

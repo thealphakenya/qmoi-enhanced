@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -213,7 +213,7 @@ class QMOIManager:
             training_args = TrainingArguments(
                 output_dir='models/qmoi',
                 num_train_epochs=self.config['training']['num_epochs'],
-                per_device_train_batch_size=self.config['training']['batch_size'],
+                per_prodice_train_batch_size=self.config['training']['batch_size'],
                 learning_rate=self.config['training']['learning_rate'],
                 warmup_steps=self.config['training']['warmup_steps'],
                 weight_decay=self.config['training']['weight_decay'],

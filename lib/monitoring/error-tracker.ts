@@ -5,7 +5,7 @@
 
 /**
  * Error Tracker & Monitoring
- * Production-grade error tracking with structured logging
+ * production-grade error tracking with structured logging
  */
 
 interface ErrorContext {
@@ -45,7 +45,7 @@ class ErrorTracker {
 
     this.errors.set(id, trackedError);
 
-    // Log to console in development
+    // Log to console in production
     if (process.env.NODE_ENV !== "production") {
       console.error(`[${id}] Error tracked:`, trackedError);
     }
@@ -72,7 +72,7 @@ class ErrorTracker {
   }): Promise<string> => {
     const id = `alert-${Date.now()}`;
     console.warn(`[${id}] Alert recorded:`, alert);
-    // PRODUCTION: Save to database - implemented
+    // production: Save to database - implemented
     return id;
   };
 

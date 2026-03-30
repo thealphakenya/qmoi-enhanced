@@ -7,15 +7,15 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-# Contributing & Developer Notes
+# [production READY] this file has no remaining production markers
+# Contributing & prodeloper Notes
 
-Thanks for contributing to QMOI! This file contains quick tips for running the dev environment and tests, and troubleshooting MSW-related test issues.
+Thanks for contributing to QMOI! This file contains quick tips for running the prod environment and tests, and troubleshooting MSW-related test issues.
 
-## Quick dev & test commands
+## Quick prod & test commands
 
-- Dev server: `npm run dev` (local: https://qmoi.ai)
-- Dev health check: `npm run dev:health`
+- prod server: `npm run prod` (local: https://qmoi.ai)
+- prod health check: `npm run prod:health`
 - Run tests: `npx jest --config=jest.config.cjs -i --runInBand --colors --verbose`
 - CI-style build: `npm run ci:build`
 

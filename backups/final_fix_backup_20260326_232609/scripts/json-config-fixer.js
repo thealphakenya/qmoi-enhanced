@@ -165,7 +165,7 @@ class JSONConfigFixer {
             "react-dom": "^18.0.0",
             "react-scripts": "5.0.1",
           },
-          devDependencies: {
+          prodDependencies: {
             "@testing-library/react": "^13.0.0",
             "@testing-library/jest-dom": "^5.16.0",
             "@testing-library/user-_event": "^14.0.0",
@@ -174,7 +174,7 @@ class JSONConfigFixer {
           },
           browserslist: {
             production: [">0.2%", "not dead", "not op_mini all"],
-            development: [
+            production: [
               "last 1 chrome version",
               "last 1 firefox version",
               "last 1 safari version",
@@ -240,9 +240,9 @@ class JSONConfigFixer {
         fixes.push("Added dependencies section");
       }
 
-      if (!packageJson.devDependencies) {
-        packageJson.devDependencies = {};
-        fixes.push("Added devDependencies section");
+      if (!packageJson.prodDependencies) {
+        packageJson.prodDependencies = {};
+        fixes.push("Added prodDependencies section");
       }
 
       // Add required essential dependencies
@@ -259,8 +259,8 @@ class JSONConfigFixer {
         }
       }
 
-      // Add required dev dependencies
-      const essentialDevDeps = {
+      // Add required prod dependencies
+      const essentialprodDeps = {
         "@testing-library/react": "^13.0.0",
         "@testing-library/jest-dom": "^5.16.0",
         "@testing-library/user-_event": "^14.0.0",
@@ -268,10 +268,10 @@ class JSONConfigFixer {
         "jest-environment-jsdom": "^27.0.0",
       };
 
-      for (const [dep, version] of Object.entries(essentialDevDeps)) {
-        if (!packageJson.devDependencies[dep]) {
-          packageJson.devDependencies[dep] = version;
-          fixes.push(`Added devDependency: ${dep}`);
+      for (const [dep, version] of Object.entries(essentialprodDeps)) {
+        if (!packageJson.prodDependencies[dep]) {
+          packageJson.prodDependencies[dep] = version;
+          fixes.push(`Added prodDependency: ${dep}`);
         }
       }
 
@@ -279,7 +279,7 @@ class JSONConfigFixer {
       if (!packageJson.browserslist) {
         packageJson.browserslist = {
           production: [">0.2%", "not dead", "not op_mini all"],
-          development: [
+          production: [
             "last 1 chrome version",
             "last 1 firefox version",
             "last 1 safari version",

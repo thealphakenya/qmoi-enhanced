@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-## Production Readiness Snapshot
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -22,9 +22,9 @@
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Space Development - Hugging Face Integration v3.0
+# QMOI Space production - Hugging Face Integration v3.0
 
-> **See also:** [MASTEROWNS.md](MASTEROWNS.md) | [QMOIDEV.md](QMOIDEV.md) | [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md)
+> **See also:** [MASTEROWNS.md](MASTEROWNS.md) | [QMOIprod.md](QMOIprod.md) | [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md)
 
 ## 🚀 Parallel Error Fixing & Self-Healing
 
@@ -46,11 +46,11 @@
 
 - **Universal Env Management:** QMOI auto-detects, creates, and manages all required env variables for HuggingFace Spaces, GitLab, Vercel, Netlify, and more. If included, QMOI auto-generates or sets them via API, logs all actions, and notifies the master.
 - **Error Fix & Redeploy:** QMOI auto-detects and fixes all deployment errors in HuggingFace Spaces, then redeploys in a loop until successful. All fixes, attempts, and results are logged and notified.
-- **Cloud/Parallelization:** QMOI offloads all heavy jobs to cloud/Colab/Dagshub, using parallel jobs for builds, tests, and error-fixes. Local device resources are never used unless explicitly allowed.
-- **Developer/Notification Features:** QMOI always identifies as "QMOI (AI Developer)" in all notifications, logs, and UIs. All notifications are retried, logged, and use fallback channels if needed.
+- **Cloud/Parallelization:** QMOI offloads all heavy jobs to cloud/Colab/Dagshub, using parallel jobs for builds, tests, and error-fixes. Local prodice resources are never used unless explicitly allowed.
+- **prodeloper/Notification Features:** QMOI always identifies as "QMOI (AI prodeloper)" in all notifications, logs, and UIs. All notifications are retried, logged, and use fallback channels if needed.
 - **Asset/Project Tracking:** QMOI auto-tracks all assets, projects, and resources it creates or manages, updating [MASTEROWNS.md](MASTEROWNS.md) in real time.
 
-## Enhanced Hugging Face Space Developer & Automation Features
+## Enhanced Hugging Face Space prodeloper & Automation Features
 
 - **Parallel Error Fixing:** QMOI can fix errors in HuggingFace Space and the main app independently and in parallel. One can be fixed while the other continues to work.
 - **Self-Healing Pipelines & Workflows:** QMOI auto-detects and fixes all errors in its own files, pipelines, and workflows on HuggingFace, even if its own scripts are broken.
@@ -141,7 +141,7 @@ class QMOISpaceApp:
             # Load model with optimizations
             model_kwargs = {
                 "torch_dtype": torch.float16 if self.config["gpu_acceleration"] else torch.float32,
-                "device_map": "auto" if self.config["gpu_acceleration"] else None,
+                "prodice_map": "auto" if self.config["gpu_acceleration"] else None,
                 "trust_remote_code": True,
                 "low_cpu_mem_usage": self.config["memory_optimization"]
             }
@@ -220,7 +220,7 @@ class QMOISpaceApp:
                 "python_version": platform.python_version(),
                 "torch_version": torch.__version__,
                 "gpu_available": torch.cuda.is_available(),
-                "gpu_count": torch.cuda.device_count() if torch.cuda.is_available() else 0,
+                "gpu_count": torch.cuda.prodice_count() if torch.cuda.is_available() else 0,
                 "memory_usage": psutil.virtual_memory().percent
             }
         }
@@ -254,7 +254,7 @@ def create_interface():
         gr.HTML("""
         <div class="main-header">
             <h1>🚀 QMOI Space - Advanced AI Platform</h1>
-            <p>Powered by Hugging Face Spaces | Advanced AI Development & Deployment</p>
+            <p>Powered by Hugging Face Spaces | Advanced AI production & Deployment</p>
         </div>
         """)
 
@@ -272,7 +272,7 @@ def create_interface():
                 with gr.Row():
                     msg = gr.Textbox(
                         label="Your Message",
-                        [PRODUCTION READY]_PROD="Ask QMOI anything...",
+                        [production READY]_prod="Ask QMOI anything...",
                         lines=3
                     )
                     send_btn = gr.Button("🚀 Send", variant="primary")
@@ -344,7 +344,7 @@ def create_interface():
 
             batch_input = gr.Textbox(
                 label="Batch Prompts (one per line)",
-                [PRODUCTION READY]_PROD="Enter multiple prompts, one per line...",
+                [production READY]_prod="Enter multiple prompts, one per line...",
                 lines=10
             )
 
@@ -362,7 +362,7 @@ def create_interface():
 
             api_prompt = gr.Textbox(
                 label="API Test Prompt",
-                [PRODUCTION READY]_PROD="Test prompt for API...",
+                [production READY]_prod="Test prompt for API...",
                 lines=3
             )
 
@@ -510,7 +510,7 @@ MODEL_CONFIG = {
     "memory_optimization": True,
     "low_cpu_mem_usage": True,
     "torch_dtype": "float16",
-    "device_map": "auto",
+    "prodice_map": "auto",
 
     # Caching
     "cache_enabled": True,
@@ -706,7 +706,7 @@ jobs:
 # tests/test_qmoi_space.py
 import pytest
 import torch
-from unittest.[PRODUCTION READY]_PROD import [PRODUCTION READY]_PROD, patch
+from unittest.[production READY]_prod import [production READY]_prod, patch
 import tempfile
 import os
 
@@ -727,8 +727,8 @@ class TestQMOISpaceApp:
 
     def test_generation(self, app):
         """Test text generation"""
-        with patch.object(app.model, 'generate') as [PRODUCTION READY]_PROD_generate:
-            [PRODUCTION READY]_PROD_generate.return_value = torch.tensor([[1, 2, 3, 4]])
+        with patch.object(app.model, 'generate') as [production READY]_prod_generate:
+            [production READY]_prod_generate.return_value = torch.tensor([[1, 2, 3, 4]])
 
             response = app.generate_response("Test prompt")
             assert isinstance(response, str)
@@ -737,8 +737,8 @@ class TestQMOISpaceApp:
         """Test batch generation"""
         prompts = ["Prompt 1", "Prompt 2", "Prompt 3"]
 
-        with patch.object(app, 'generate_response') as [PRODUCTION READY]_PROD_gen:
-            [PRODUCTION READY]_PROD_gen.side_effect = ["Response 1", "Response 2", "Response 3"]
+        with patch.object(app, 'generate_response') as [production READY]_prod_gen:
+            [production READY]_prod_gen.side_effect = ["Response 1", "Response 2", "Response 3"]
 
             responses = app.batch_generate(prompts)
             assert len(responses) == 3
@@ -1278,7 +1278,7 @@ python app.py --debug
 
 ---
 
-**QMOI Space Development v3.0** - Advanced AI Platform for Hugging Face Spaces
+**QMOI Space production v3.0** - Advanced AI Platform for Hugging Face Spaces
 
 ## ⚙️ Full Automation: Setup, Installation, and Self-Healing
 
@@ -1307,14 +1307,14 @@ python app.py --debug
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "qmoi-enhanced/QMOISPACEDEV.md",
+"file": "qmoi-enhanced/QMOISPACEprod.md",
 "validated_at": "2025-10-26T20:51:24.797899Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
 {
 "name": "title_present",
 "ok": true,
-"detail": "QMOI Space Development - Hugging Face Integration v3.0"
+"detail": "QMOI Space production - Hugging Face Integration v3.0"
 },
 {
 "name": "links",
@@ -1326,8 +1326,8 @@ python app.py --debug
 "ok": true
 },
 {
-"label": "QMOIDEV.md",
-"target": "./QMOIDEV.md",
+"label": "QMOIprod.md",
+"target": "./QMOIprod.md",
 "ok": true
 },
 {

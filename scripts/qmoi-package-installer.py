@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:56Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# PRODUCTION READY: Multi-platform packaging with third-party tool integration
+# production READY: Multi-platform packaging with third-party tool integration
 # NOTE: 6 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import os
 import shutil
@@ -24,7 +24,7 @@ def make_zip():
         return None
 
 def make_windows_exe():
-    # PRODUCTION IMPLEMENTATION: Use PyInstaller for real .exe packaging
+    # production IMPLEMENTATION: Use PyInstaller for real .exe packaging
     exe_name = 'qmoi-ai.exe'
     log_activity('Packaging app as Windows .exe installer using PyInstaller.')
 
@@ -175,7 +175,7 @@ def upload_to_host(file_path):
     if link:
         return link
 
-    # PRODUCTION IMPLEMENTATION: Multiple fallback hosting options
+    # production IMPLEMENTATION: Multiple fallback hosting options
     log_activity(f'Google Drive upload failed, trying alternative hosting for {file_path}.')
 
     # Try GitHub Releases (if git repo available)
@@ -190,7 +190,7 @@ def upload_to_host(file_path):
     except Exception as e:
         log_activity('GitHub upload failed.', {'error': str(e)})
 
-    # Fallback to local file URL (for development/testing)
+    # Fallback to local file URL (for production/testing)
     log_activity(f'Using local file fallback for {file_path}. For production, configure cloud storage.')
     return f'file://{os.path.abspath(file_path)}'
 

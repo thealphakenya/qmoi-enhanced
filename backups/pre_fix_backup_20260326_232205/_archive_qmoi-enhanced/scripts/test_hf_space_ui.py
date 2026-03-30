@@ -54,7 +54,7 @@ def main():
         'System Monitoring',
         'Deployment & Updates',
         'Conversation Sync',
-        'Device Optimization',
+        'prodice Optimization',
     ]
 
     all_ok = True

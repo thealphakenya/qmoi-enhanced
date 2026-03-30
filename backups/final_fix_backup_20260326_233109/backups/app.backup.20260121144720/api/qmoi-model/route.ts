@@ -1,7 +1,7 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 4 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 4 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 
 interface AITask {
@@ -36,7 +36,7 @@ export async function GET(_request: NextRequest) {
     }
 
     if (allStats) {
-      // Production implementation: AI tasks - replace with actual implementation
+      // production implementation: AI tasks - replace with actual implementation
       const aiTasks: AITask[] = [
         {
           id: "1",
@@ -115,8 +115,8 @@ export async function POST(_request: NextRequest) {
     const { enhance, desc } = body;
 
     if (enhance) {
-      // Production implementation: enhancement process - replace with actual implementation
-      await new Promise((resolve) => setTimeout(resolve, 1500)); // Production implementation: enhancement time
+      // production implementation: enhancement process - replace with actual implementation
+      await new Promise((resolve) => setTimeout(resolve, 1500)); // production implementation: enhancement time
 
       return NextResponse.json({
         status: "success",

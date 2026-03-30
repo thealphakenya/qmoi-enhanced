@@ -10,33 +10,33 @@ global.fetch = jest.fn();
 
 Object.defineProperty(window, "matchMedia", {
   writable: true,
-  value: jest.fn().// Production implementation required:Implementation((query) => ({
+  value: jest.fn().// production implementation required:Implementation((query) => ({
     matches: false,
     media: query,
     onchange: null,
     addListener: jest.fn(), // deprecated
     removeListener: jest.fn(), // deprecated
-    addEventListener: jest.fn(),
+    adprodentListener: jest.fn(),
     removeEventListener: jest.fn(),
     dispatchEvent: jest.fn(),
   })),
 });
 
-const localStorage// Production implementation required: = {
+const localStorage// production implementation required: = {
   getItem: jest.fn(),
   setItem: jest.fn(),
   removeItem: jest.fn(),
   clear: jest.fn(),
 };
-global.localStorage = localStorage// Production implementation required:;
+global.localStorage = localStorage// production implementation required:;
 
-const sessionStorage// Production implementation required: = {
+const sessionStorage// production implementation required: = {
   getItem: jest.fn(),
   setItem: jest.fn(),
   removeItem: jest.fn(),
   clear: jest.fn(),
 };
-global.sessionStorage = sessionStorage// Production implementation required:;
+global.sessionStorage = sessionStorage// production implementation required:;
 
 global.console = {
   ...console,

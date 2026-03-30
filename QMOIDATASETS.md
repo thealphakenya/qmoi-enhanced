@@ -7,12 +7,12 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # QMOI Dataset Management System
 
 ## Overview
 
-The QMOI Dataset Management System provides intelligent, automatic dataset selection and analysis for all QMOI operations. It enables QMOI to leverage multiple specialized datasets for trading, development, research, language, and community interactions without human intervention.
+The QMOI Dataset Management System provides intelligent, automatic dataset selection and analysis for all QMOI operations. It enables QMOI to leverage multiple specialized datasets for trading, production, research, language, and community interactions without human intervention.
 
 **QVillage Platform**: All datasets listed here are stored and served from QVillage — an internet-hosted, always‑running platform with effectively unlimited storage. QMOI runs continuously on QVillage even when the local codespace is offline; the datasets never consume the workspace's storage or compute resources. Every dataset is automatically synced with QVillage on startup and updates, ensuring availability at all times.
 
@@ -65,7 +65,7 @@ Seamless dataset integration into chatbot flows with automatic context detection
 
 ## Comprehensive Professional Datasets (89+ Datasets)
 
-QMOI now includes 76+ professional datasets covering all domains, making it an expert in autodevelopment, trading, employment, betting, revenue generation, project management, multimodal processing, user management, music creation, invention, animation, movie production, social media mastery, biometric recognition, UI/UX design, validation systems, finance, intelligence, QAvatar systems, and global operations.
+QMOI now includes 76+ professional datasets covering all domains, making it an expert in autoproduction, trading, employment, betting, revenue generation, project management, multimodal processing, user management, music creation, invention, animation, movie production, social media mastery, biometric recognition, UI/UX design, validation systems, finance, intelligence, QAvatar systems, and global operations.
 
 ### DatasetSelector Enhancement
 
@@ -82,7 +82,7 @@ The DatasetSelector has been enhanced to handle 70+ datasets with intelligent ca
 
 ### Dataset Categories & Counts
 
-- **Development**: 5 datasets (Code, Frameworks, Templates, Testing, DevOps)
+- **production**: 5 datasets (Code, Frameworks, Templates, Testing, prodOps)
 - **Trading**: 5 datasets (Markets, Strategies, Risk, Crypto, Economics)
 - **Employment**: 5 datasets (Jobs, Skills, Salary, Career, Culture)
 - **Betting**: 5 datasets (Sports Stats, Odds, Players, Strategies, Live Data)
@@ -99,20 +99,20 @@ The DatasetSelector has been enhanced to handle 70+ datasets with intelligent ca
 - **Security & Hacking**: 1 dataset (Cybersecurity, vulnerabilities, defense, pen-testing)
 - **Research & Deep Search**: 1 dataset (Academic papers, deep web exploration, long-form analysis)
 - **Parallel & Performance**: 1 dataset (Concurrency, distributed, optimization, scheduling)
-- **Devices & Machines**: 1 dataset (Embedded systems, IoT, hardware, industrial machines)
+- **prodices & Machines**: 1 dataset (Embedded systems, IoT, hardware, industrial machines)
 - **QVS / QVillage**: 1 dataset (Community, sharing, platform governance, dataset sync)
 - **Zero-Rated & Offline**: 1 dataset (Low bandwidth, free access, offline operation)
 - **VPN & Privacy**: 1 dataset (Secure networking, tunneling, privacy)
-- **Autodevelopment & Autoclone**: 2 datasets (Auto-build automation, platform cloning, self-hosted ecosystems)
+- **Autoproduction & Autoclone**: 2 datasets (Auto-build automation, platform cloning, self-hosted ecosystems)
 - **Tracking & Maps**: 1 dataset (GPS, routing, navigation, situational awareness)
 - **Domain & Website Monitoring**: 2 datasets (DNS/domain uptime, website link health, web performance)
 - **Project Management**: 1 dataset (Project planning, tracking, and delivery)
 - **Friendship & Personality**: 1 dataset (Empathy, relationships, social interaction, personalization)
 - **Language & Autocorrect**: 2 datasets (English writing correction, code debugging and error correction)
 - **Jovial Conversation**: 1 dataset (Humor, jokes, banter, conversational engagement)
-- **Music**: 5 datasets (Theory, Production, Genres, Instruments, Business)
+- **Music**: 5 datasets (Theory, production, Genres, Instruments, Business)
 - **Invention**: 5 datasets (Patents, Innovation, Trends, R&D, Problem Solving)
-- **Animation & Movies**: 21 datasets (Production, 3D, VFX, Storyboarding, Character Design, etc.)
+- **Animation & Movies**: 21 datasets (production, 3D, VFX, Storyboarding, Character Design, etc.)
 - **QAvatar & Avatars**: 5 datasets (System Master, Animation, Customization, Interaction, Voice)
 - **Project Types**: 11 datasets (Software, Startup, Research, Creative, Construction, etc.)
 - **Accountability & Trust**: 1 dataset (Audit trails, compliance, accountability frameworks)
@@ -125,7 +125,7 @@ The DatasetSelector has been enhanced to handle 70+ datasets with intelligent ca
 
 **Total: 82+ Professional Datasets** - Complete domain coverage with creative production, reliability, and independent operations!
 
-### 1. Auto-Development & Masterclass Development Datasets
+### 1. Auto-production & Masterclass production Datasets
 
 #### 1.1 Code Patterns & Architecture Dataset
 
@@ -133,7 +133,7 @@ The DatasetSelector has been enhanced to handle 70+ datasets with intelligent ca
 ID: code-patterns-master
 Size: 2.5GB
 Records: 500,000+ code patterns
-Type: development
+Type: production
 Quality: 98% | Relevance: 99%
 Update Frequency: Daily
 Best For: Code generation, architecture design, best practices
@@ -141,13 +141,13 @@ Parallel Processing: Multi-language pattern analysis
 QVillage: Always available offline
 ```
 
-#### 1.2 Development Frameworks & Libraries Dataset
+#### 1.2 production Frameworks & Libraries Dataset
 
 ```
-ID: dev-frameworks-comprehensive
+ID: prod-frameworks-comprehensive
 Size: 1.8GB
 Records: 200,000+ frameworks
-Type: development
+Type: production
 Quality: 97% | Relevance: 98%
 Update Frequency: Weekly
 Best For: Framework selection, dependency management, migration
@@ -161,7 +161,7 @@ QVillage: Always available offline
 ID: project-templates-global
 Size: 3.2GB
 Records: 150,000+ templates
-Type: development
+Type: production
 Quality: 96% | Relevance: 97%
 Update Frequency: Bi-weekly
 Best For: Project scaffolding, rapid prototyping, standardization
@@ -175,7 +175,7 @@ QVillage: Always available offline
 ID: testing-qa-comprehensive
 Size: 1.5GB
 Records: 300,000+ test cases
-Type: development
+Type: production
 Quality: 99% | Relevance: 98%
 Update Frequency: Daily
 Best For: Automated testing, quality assurance, debugging
@@ -183,13 +183,13 @@ Parallel Processing: Multi-framework test execution
 QVillage: Always available offline
 ```
 
-#### 1.5 Deployment & DevOps Dataset
+#### 1.5 Deployment & prodOps Dataset
 
 ```
-ID: deployment-devops-master
+ID: deployment-prodops-master
 Size: 2.1GB
 Records: 180,000+ deployment configs
-Type: development
+Type: production
 Quality: 97% | Relevance: 96%
 Update Frequency: Weekly
 Best For: CI/CD, containerization, cloud deployment
@@ -208,7 +208,7 @@ Records: 1,000,000+ price points
 Type: trading
 Quality: 99% | Relevance: 99%
 Update Frequency: Real-time
-Best For: Market analysis, strategy development, risk management
+Best For: Market analysis, strategy production, risk management
 Parallel Processing: Multi-market correlation analysis
 QVillage: Always available offline
 ```
@@ -223,7 +223,7 @@ Type: trading
 Quality: 95% | Relevance: 97%
 Update Frequency: Daily
 Best For: Strategy optimization, backtesting, algorithmic trading
-Parallel Processing: Strategy [PRODUCTION READY] and validation
+Parallel Processing: Strategy [production READY] and validation
 QVillage: Always available offline
 ```
 
@@ -294,7 +294,7 @@ Records: 300,000+ skill assessments
 Type: employment
 Quality: 96% | Relevance: 97%
 Update Frequency: Weekly
-Best For: Skill development, career planning, competency assessment
+Best For: Skill production, career planning, competency assessment
 Parallel Processing: Personalized skill gap analysis
 QVillage: Always available offline
 ```
@@ -313,16 +313,16 @@ Parallel Processing: Real-time salary benchmarking
 QVillage: Always available offline
 ```
 
-#### 3.4 Career Development & Learning Dataset
+#### 3.4 Career production & Learning Dataset
 
 ```
-ID: career-development-paths
+ID: career-production-paths
 Size: 2.9GB
 Records: 400,000+ learning paths
 Type: employment
 Quality: 93% | Relevance: 94%
 Update Frequency: Bi-weekly
-Best For: Career advancement, skill acquisition, professional development
+Best For: Career advancement, skill acquisition, professional production
 Parallel Processing: Personalized career path generation
 QVillage: Always available offline
 ```
@@ -394,7 +394,7 @@ Records: 100,000+ betting strategies
 Type: betting
 Quality: 91% | Relevance: 94%
 Update Frequency: Weekly
-Best For: Strategy development, bankroll management, risk assessment
+Best For: Strategy production, bankroll management, risk assessment
 Parallel Processing: Strategy backtesting and optimization
 QVillage: Always available offline
 ```
@@ -701,7 +701,7 @@ Parallel Processing: Real-time security threat analysis
 QVillage: Always available offline
 ```
 
-### 9. Music Creation & Audio Production Datasets
+### 9. Music Creation & Audio production Datasets
 
 #### 9.1 Music Theory & Composition Dataset
 
@@ -717,7 +717,7 @@ Parallel Processing: Multi-genre music analysis and generation
 QVillage: Always available offline
 ```
 
-#### 9.2 Audio Production & Mixing Dataset
+#### 9.2 Audio production & Mixing Dataset
 
 ```
 ID: audio-production-mixing
@@ -817,10 +817,10 @@ Parallel Processing: Multi-domain trend correlation analysis
 QVillage: Always available offline
 ```
 
-#### 10.4 Research & Development Dataset
+#### 10.4 Research & production Dataset
 
 ```
-ID: research-development-projects
+ID: research-production-projects
 Size: 4.7GB
 Records: 300,000+ R&D projects
 Type: invention
@@ -861,13 +861,13 @@ Parallel Processing: Multi-market correlation analysis
 QVillage: Always available offline
 ```
 
-#### 2. Programming & Development Dataset
+#### 2. Programming & production Dataset
 
 ```
 ID: programming-reference
 Size: 500MB
 Records: 100,000+ code samples
-Type: development
+Type: production
 Quality: 92% | Relevance: 95%
 Update Frequency: Weekly
 Best For: Code generation, learning, troubleshooting, best practices
@@ -917,9 +917,9 @@ Parallel Processing: Social network analysis
 QVillage: Always available offline
 ```
 
-### 11. Animation & Movie Production Datasets
+### 11. Animation & Movie production Datasets
 
-#### 11.1 Animation Production Master Dataset
+#### 11.1 Animation production Master Dataset
 
 ```
 ID: animation-production-master
@@ -933,7 +933,7 @@ Parallel Processing: Multi-level animation pipeline processing
 QVillage: Always available offline
 ```
 
-#### 11.2 Movie Production Comprehensive Dataset
+#### 11.2 Movie production Comprehensive Dataset
 
 ```
 ID: movie-production-comprehensive
@@ -957,7 +957,7 @@ Type: creative
 Quality: 95% | Relevance: 96%
 Update Frequency: Monthly
 Best For: 3D modeling, character rigging, animation principles
-Parallel Processing: Parallel rendering and [PRODUCTION READY]
+Parallel Processing: Parallel rendering and [production READY]
 QVillage: Always available offline
 ```
 
@@ -985,7 +985,7 @@ Type: creative
 Quality: 94% | Relevance: 95%
 Update Frequency: Monthly
 Best For: Storyboarding, narrative design, visual storytelling
-Parallel Processing: Sequential story development and visualization
+Parallel Processing: Sequential story production and visualization
 QVillage: Always available offline
 ```
 
@@ -1017,7 +1017,7 @@ Parallel Processing: Real-time motion graphics rendering
 QVillage: Always available offline
 ```
 
-#### 11.8 Film Editing & Post-Production Dataset
+#### 11.8 Film Editing & Post-production Dataset
 
 ```
 ID: film-editing-post-production
@@ -1055,14 +1055,14 @@ Type: creative
 Quality: 96% | Relevance: 97%
 Update Frequency: Weekly
 Best For: Cinematography, lighting setup, camera work
-Parallel Processing: Multi-camera lighting [PRODUCTION READY]
+Parallel Processing: Multi-camera lighting [production READY]
 QVillage: Always available offline
 ```
 
-#### 11.11 Game Development & Animation Dataset
+#### 11.11 Game production & Animation Dataset
 
 ```
-ID: game-development-animation
+ID: game-production-animation
 Size: 3.0GB
 Records: 600,000+ game animation techniques
 Type: creative
@@ -1115,7 +1115,7 @@ Parallel Processing: Multi-market business analysis
 QVillage: Always available offline
 ```
 
-#### 11.15 Documentary Production Dataset
+#### 11.15 Documentary production Dataset
 
 ```
 ID: documentary-production
@@ -1129,7 +1129,7 @@ Parallel Processing: Multi-source research integration
 QVillage: Always available offline
 ```
 
-#### 11.16 Short Film Production Dataset
+#### 11.16 Short Film production Dataset
 
 ```
 ID: short-film-production
@@ -1225,7 +1225,7 @@ Type: cognitive
 Quality: 96% | Relevance: 98%
 Update Frequency: Quarterly
 Best For: Intelligence augmentation, reasoning exercises, problem solving
-Parallel Processing: Concurrent reasoning [PRODUCTION READY]s
+Parallel Processing: Concurrent reasoning [production READY]s
 QVillage: Always available offline
 ```
 
@@ -1327,12 +1327,12 @@ Parallel Processing: Parallel test execution
 QVillage: Always available offline
 ```
 
-#### 12.14 Software Engineering DevOps Dataset
+#### 12.14 Software Engineering prodOps Dataset
 
 ```
-ID: software-engineering-devops
+ID: software-engineering-prodops
 Size: 1.1GB
-Records: 140,000+ CI/CD pipelines and DevOps practices
+Records: 140,000+ CI/CD pipelines and prodOps practices
 Type: technical
 Quality: 95% | Relevance: 96%
 Update Frequency: Monthly
@@ -1350,8 +1350,8 @@ Records: 100,000+ ethical frameworks and philosophical principles
 Type: cognitive
 Quality: 94% | Relevance: 95%
 Update Frequency: Quarterly
-Best For: Ethical decision making, philosophical analysis, wisdom development
-Parallel Processing: Moral reasoning [PRODUCTION READY]s
+Best For: Ethical decision making, philosophical analysis, wisdom production
+Parallel Processing: Moral reasoning [production READY]s
 QVillage: Always available offline
 ```
 
@@ -1378,7 +1378,7 @@ Records: 500,000+ scientific research and production data
 Type: academic
 Quality: 97% | Relevance: 98%
 Update Frequency: Monthly
-Best For: Scientific reasoning, research analysis, innovation development
+Best For: Scientific reasoning, research analysis, innovation production
 Parallel Processing: production data analysis
 QVillage: Always available offline
 ```
@@ -1392,7 +1392,7 @@ Records: 250,000+ psychological research and behavioral studies
 Type: social
 Quality: 95% | Relevance: 96%
 Update Frequency: Quarterly
-Best For: Behavioral analysis, psychological insights, empathy development
+Best For: Behavioral analysis, psychological insights, empathy production
 Parallel Processing: Behavioral pattern recognition
 QVillage: Always available offline
 ```
@@ -1411,7 +1411,7 @@ Parallel Processing: Concurrent knowledge retrieval
 QVillage: Always available offline
 ```
 
-#### 11.17 TV Production & Series Dataset
+#### 11.17 TV production & Series Dataset
 
 ```
 ID: tv-production-series
@@ -1420,12 +1420,12 @@ Records: 500,000+ TV production techniques
 Type: creative
 Quality: 95% | Relevance: 96%
 Update Frequency: Weekly
-Best For: TV production, series development, broadcast standards
+Best For: TV production, series production, broadcast standards
 Parallel Processing: Multi-episode production coordination
 QVillage: Always available offline
 ```
 
-#### 11.18 Advertising & Commercial Production Dataset
+#### 11.18 Advertising & Commercial production Dataset
 
 ```
 ID: advertising-commercial
@@ -1439,7 +1439,7 @@ Parallel Processing: Multi-campaign creative processing
 QVillage: Always available offline
 ```
 
-#### 11.19 Virtual Reality & VR Production Dataset
+#### 11.19 Virtual Reality & VR production Dataset
 
 ```
 ID: virtual-reality-vr
@@ -1453,7 +1453,7 @@ Parallel Processing: 360° content processing
 QVillage: Always available offline
 ```
 
-#### 11.20 Augmented Reality & AR Production Dataset
+#### 11.20 Augmented Reality & AR production Dataset
 
 ```
 ID: augmented-reality-ar
@@ -1639,17 +1639,17 @@ Parallel Processing: Multi-channel campaign optimization
 QVillage: Always available offline
 ```
 
-#### 13.7 Product Development Lifecycle Dataset
+#### 13.7 product production Lifecycle Dataset
 
 ```
-ID: product-development-lifecycle
+ID: product-production-lifecycle
 Size: 2.5GB
-Records: 500,000+ product development cycles
+Records: 500,000+ product production cycles
 Type: technical
 Quality: 96% | Relevance: 97%
 Update Frequency: Bi-weekly
-Best For: Product development, MVP strategy, launch planning
-Parallel Processing: Multi-phase product development
+Best For: product production, MVP strategy, launch planning
+Parallel Processing: Multi-phase product production
 QVillage: Always available offline
 ```
 
@@ -1677,7 +1677,7 @@ Type: general
 Quality: 95% | Relevance: 96%
 Update Frequency: Bi-weekly
 Best For: Curriculum design, educational projects, learning outcomes
-Parallel Processing: Multi-subject curriculum development
+Parallel Processing: Multi-subject curriculum production
 QVillage: Always available offline
 ```
 
@@ -1747,7 +1747,7 @@ Type: voice
 Quality: 96% | Relevance: 97%
 Update Frequency: Weekly
 Best For: Natural spoken dialogue, voice tone, and auditory conversational flow
-Parallel Processing: Multi-speaker dialogue [PRODUCTION READY]
+Parallel Processing: Multi-speaker dialogue [production READY]
 QVillage: Always available offline
 ```
 
@@ -2146,7 +2146,7 @@ QMOI now features intelligent dataset selection that automatically identifies an
 #### How It Works
 
 1. **Query Analysis**: User message is analyzed for dataset indicators
-2. **Use Case Detection**: System identifies the primary use case (trading, development, research, language, community)
+2. **Use Case Detection**: System identifies the primary use case (trading, production, research, language, community)
 3. **Dataset Selection**: Based on use case and preferences, relevant datasets are selected
 4. **Quality Filtering**: Only datasets meeting quality thresholds are considered
 5. **Response Enhancement**: Response is enriched with dataset insights and source attribution
@@ -2165,12 +2165,12 @@ Selected Dataset: crypto-trading-data (500K+ price points, 95% quality)
 Response: "Based on Crypto Trading Dataset analysis..."
 ```
 
-**Development Query**:
+**production Query**:
 
 ```
 User: "Help me implement async/await in JavaScript"
 ↓
-Detected Use Case: development
+Detected Use Case: production
 ↓
 Selected Dataset: programming-reference (100K+ code samples, 92% quality)
 ↓
@@ -2245,12 +2245,12 @@ function RecommendationsComponent() {
   const { recommendations, getRecommendations } = useDatasetRecommendations();
 
   useEffect(() => {
-    getRecommendations('development');
+    getRecommendations('production');
   }, []);
 
   return (
     <div>
-      <h2>required Datasets for Development</h2>
+      <h2>required Datasets for production</h2>
       {recommendations.map(d => (
         <DatasetCard key={d.id} dataset={d} />
       ))}
@@ -2344,7 +2344,7 @@ POST /api/datasets
 {
   "action": "recommend",
   "context": {
-    "useCase": "development"
+    "useCase": "production"
   }
 }
 ```
@@ -2386,7 +2386,7 @@ Overall = 0.25 × Quality + 0.20 × Completeness +
 The system automatically detects use cases from user queries:
 
 **Trading Keywords**: trade, crypto, stock, price, chart, portfolio, profit, loss, investment
-**Development Keywords**: code, programming, debug, build, deploy, function, class, algorithm
+**production Keywords**: code, programming, debug, build, deploy, function, class, algorithm
 **Research Keywords**: research, paper, study, analysis, conclude, investigate, experiment
 **Language Keywords**: write, grammar, spelling, translation, language, expression, communication
 **Community Keywords**: suggest, discuss, community, opinion, feedback, share, collaborate

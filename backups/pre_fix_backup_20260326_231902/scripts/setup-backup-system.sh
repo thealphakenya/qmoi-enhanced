@@ -1,7 +1,7 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/bin/bash
 
-# QMOI Enhanced - Production Backup System
+# QMOI Enhanced - production Backup System
 # Automated daily backups of database and application files
 
 set -e
@@ -72,8 +72,8 @@ log_info "✓ Backup script installed"
 # Create cron job
 log_info "Setting up daily backup schedule..."
 CRON_LINE="0 2 * * * /usr/local/bin/qmoi-backup $BACKUP_DIR $RETENTION_DAYS"
-(crontab -l 2>/dev/null || echo "") | grep -v "qmoi-backup" | crontab -
-(crontab -l 2>/dev/null || echo ""; echo "$CRON_LINE") | crontab -
+(crontab -l 2>/prod/null || echo "") | grep -v "qmoi-backup" | crontab -
+(crontab -l 2>/prod/null || echo ""; echo "$CRON_LINE") | crontab -
 
 log_info "✓ Daily backup scheduled (2:00 AM)"
 log_info ""

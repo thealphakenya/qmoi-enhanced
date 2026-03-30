@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// Production-ready QMOI AI Trading API with real Bitget integration
+// production-ready QMOI AI Trading API with real Bitget integration
 import type { NextApiRequest, NextApiResponse } from "next";
 import * as crypto from "crypto";
 import * as fs from "fs";

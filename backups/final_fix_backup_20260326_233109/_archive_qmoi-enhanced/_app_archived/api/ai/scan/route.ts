@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 
 interface ScanResult {
@@ -24,7 +24,7 @@ interface ScanResult {
 
 export async function GET(request: NextRequest) {
   try {
-    // Production implementation:: Replace with actual scan results implementation
+    // production implementation:: Replace with actual scan results implementation
     const result: ScanResult = {
       threats: [
         {
@@ -67,8 +67,8 @@ export async function POST(request: NextRequest) {
     const { action } = body;
 
     if (action === "self-heal") {
-      // Production implementation: self-healing process - replace with actual implementation
-      await new Promise((resolve) => setTimeout(resolve, 2000)); // Production implementation: healing time
+      // production implementation: self-healing process - replace with actual implementation
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // production implementation: healing time
 
       return NextResponse.json({
         status: "success",

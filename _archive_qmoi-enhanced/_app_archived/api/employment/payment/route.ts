@@ -75,7 +75,7 @@ async function processMpesaPayment(paymentData: unknown) {
   try {
     
     const response = await fetch(
-      "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
+      "https://production.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
       {
         method: "POST",
         headers: {

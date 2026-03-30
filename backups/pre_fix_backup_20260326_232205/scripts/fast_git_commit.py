@@ -56,7 +56,7 @@ class FastGitCommit:
         self.log("🔧 Bypassing npm install issues...")
         
         # Skip husky pre-commit hooks
-        self.run_command("git config core.hooksPath /dev/null", "Disable git hooks", skip_on_error=True)
+        self.run_command("git config core.hooksPath /prod/null", "Disable git hooks", skip_on_error=True)
         
         # Alternative: Use --no-verify flag for commit
         return True

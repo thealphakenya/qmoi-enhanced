@@ -1,6 +1,6 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
-title: "PRODUCTION CHECKLIST"
+title: "production CHECKLIST"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
@@ -14,7 +14,7 @@ title: "PRODUCTION CHECKLIST"
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# PRODUCTION CHECKLIST
+# production CHECKLIST
 
 This checklist is a practical, ordered set of steps and validations to make QMOI production-ready. Treat it as a living doc and re-run checks after any change.
 
@@ -57,20 +57,20 @@ This checklist is a practical, ordered set of steps and validations to make QMOI
 
 Notes
 
-- Use `POSTPRODUCTIONCHECKLIST.md` for daily/weekly checks after production.
+- Use `POSTproductionCHECKLIST.md` for daily/weekly checks after production.
 - Use `ALLERRORSTYPESFILES.md` to map observed errors to fixes and tests.
 
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "PRODUCTIONCHECKLIST.md",
+"file": "productionCHECKLIST.md",
 "validated_at": "2025-10-26T20:51:22.334388Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
 {
 "name": "title_present",
 "ok": true,
-"detail": "PRODUCTION CHECKLIST"
+"detail": "production CHECKLIST"
 },
 {
 "name": "links",

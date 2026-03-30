@@ -117,7 +117,7 @@ class QMOIEncoder(nn.Module):
         
         # Get embeddings
         word_embeddings = self.word_embeddings(input_ids)
-        position_ids = torch.arange(seq_len, device=input_ids.device).unsqueeze(0)
+        position_ids = torch.arange(seq_len, prodice=input_ids.prodice).unsqueeze(0)
         position_embeddings = self.position_embeddings(position_ids)
         token_type_ids = torch.zeros_like(input_ids)
         token_type_embeddings = self.token_type_embeddings(token_type_ids)
@@ -165,7 +165,7 @@ class QMOIDecoder(nn.Module):
         
         # Get embeddings
         word_embeddings = self.word_embeddings(input_ids)
-        position_ids = torch.arange(seq_len, device=input_ids.device).unsqueeze(0)
+        position_ids = torch.arange(seq_len, prodice=input_ids.prodice).unsqueeze(0)
         position_embeddings = self.position_embeddings(position_ids)
         
         # Combine embeddings

@@ -35,7 +35,7 @@ export async function GET(_req: NextRequest) {
         { time: new Date(Date.now() - 7200_000).toISOString(), status },
       ],
       environment: {
-        node_env: process.env.NODE_ENV || "development",
+        node_env: process.env.NODE_ENV || "production",
         database_url_set: !!process.env.DATABASE_URL,
         has_api_key: !!(process.env.MASTER_TOKEN || process.env.API_KEY),
       },

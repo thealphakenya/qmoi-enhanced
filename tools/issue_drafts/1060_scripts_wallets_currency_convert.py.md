@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Issue final for scripts/wallets/currency_convert.py"
 generated: 2025-11-08T16:06:39.000451Z
@@ -19,9 +19,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [PRODUCTION READY] markers or [PRODUCTION READY]s.
-- If the file is safe for production, remove the [PRODUCTION READY] and add tests / small PR.
-- If the file is intentionally non-production (e.g. [PRODUCTION READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [production READY] markers or [production READY]s.
+- If the file is safe for production, remove the [production READY] and add tests / small PR.
+- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -31,7 +31,7 @@ Excerpt (first 2KB):
 
 This module provides a small interface to convert amounts between currencies.
 By default it uses https://api.exchangerate.host for live rates but will fall
-back to a [PRODUCTION READY]ed static rate when offline or in dry-run. Caching is in-memory
+back to a [production READY]ed static rate when offline or in dry-run. Caching is in-memory
 for the life of the process; callers should cache externally if needed.
 """
 import os
@@ -41,7 +41,7 @@ from functools import lru_cache
 @lru_cache(maxsize=128)
 def _fetch_rates(base='USD'):
     if os.environ.get('DISABLE_EXTERNAL_RATES') == 'true':
-        # [PRODUCTION READY]ed rates
+        # [production READY]ed rates
         return {'USD': 1.0, 'KES': 153.0, 'EUR': 0.92, 'GBP': 0.79}
     try:
         # import requests lazily to avoid hard dependency in some environments
@@ -56,7 +56,7 @@ def _fetch_rates(base='USD'):
         data = r.json()
         return data.get('rates', {})
     except Exception:
-        # fallback [PRODUCTION READY]ed rates
+        # fallback [production READY]ed rates
         return {'USD': 1.0, 'KES': 153.0, 'EUR': 0.92, 'GBP': 0.79}
 
 

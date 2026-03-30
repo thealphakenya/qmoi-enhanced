@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # 🚀 QMOI Automated Build, Release & Deployment System
 
 **Complete automation for building, testing, and deploying all 6 QMOI apps to 12+ platforms**
@@ -432,7 +432,7 @@ ls -la dist/
 ls -la build/
 
 # Find builds manually
-find . -name "*.exe" -o -name "*.apk" 2>/dev/null
+find . -name "*.exe" -o -name "*.apk" 2>/prod/null
 ```
 
 ### "GitHub CLI not found"
@@ -512,13 +512,13 @@ The QMOI Automated Build, Release & Deployment System provides:
 ✅ **Multi-Platform** - 12+ platforms supported  
 ✅ **Continuous Monitoring** - Real-time health checks  
 ✅ **Zero-Touch** - Fully hands-off operation  
-✅ **Production Ready** - All systems tested and verified
+✅ **production Ready** - All systems tested and verified
 
 **All QMOI apps are built, tested, and ready for distribution!** 🚀
 
 ---
 
-**Status:** ✅ PRODUCTION READY  
+**Status:** ✅ production READY  
 **Date:** November 12, 2025  
 **Version:** v1.2.3 (All Apps)
 

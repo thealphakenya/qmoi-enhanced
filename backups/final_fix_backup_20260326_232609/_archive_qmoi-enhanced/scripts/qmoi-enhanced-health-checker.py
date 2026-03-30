@@ -215,17 +215,17 @@ class QMOIHealthChecker:
             'github': {
                 'config_files': ['.github/workflows/', '.github/actions/'],
                 'scripts': ['scripts/qmoi-github', 'scripts/qmoi-clone-github'],
-                'docs': ['QMOICLONEGITHUB.md', 'GITHUBPAYED.md', 'QMOIGITHUBDEV.md']
+                'docs': ['QMOICLONEGITHUB.md', 'GITHUBPAYED.md', 'QMOIGITHUBprod.md']
             },
             'gitlab': {
                 'config_files': ['.gitlab-ci.yml'],
                 'scripts': ['scripts/qmoi-gitlab', 'scripts/qmoi-clone-gitlab'],
-                'docs': ['QMOICLONEGITLAB.md', 'PAYEDGITLAB.md', 'QMOIGITLABDEV.md']
+                'docs': ['QMOICLONEGITLAB.md', 'PAYEDGITLAB.md', 'QMOIGITLABprod.md']
             },
             'vercel': {
                 'config_files': ['vercel.json', '.vercel/'],
                 'scripts': ['scripts/qmoi-vercel', 'scripts/qmoi-clone-vercel'],
-                'docs': ['QMOIVERCELDEV.md', 'QMOICLONEVERCEL.md']
+                'docs': ['QMOIVERCELprod.md', 'QMOICLONEVERCEL.md']
             },
             'huggingface': {
                 'config_files': ['.huggingface/'],
@@ -483,7 +483,7 @@ Automation Systems:
 
 Detailed results saved to: qmoi-health-check-results.json
 """
-        # Send notification (// Production implementation required: - would integrate with actual notification system)
+        # Send notification (// production implementation required: - would integrate with actual notification system)
         logging.info(f"Master Notification - {subject}")
         logging.info(message)
         

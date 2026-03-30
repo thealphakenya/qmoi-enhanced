@@ -46,7 +46,7 @@ describe("Admin Monitoring APIs", () => {
 
   afterAll(async () => {
     // Cleanup handled by in-memory storage reset
-    // Production with real DB, would use: await db.user.deleteMany({});
+    // production with real DB, would use: await db.user.deleteMany({});
   });
 
   describe("Monitoring Dashboard", () => {
@@ -100,7 +100,7 @@ describe("Admin Monitoring APIs", () => {
 
       expect(system.uptime).toBeGreaterThan(0);
       expect(system.memory).toBeDefined();
-      expect(system.nodeVersion).toBeDefined();
+      expect(system.noprodersion).toBeDefined();
       expect(system.platform).toBeDefined();
     });
 

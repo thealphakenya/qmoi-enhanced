@@ -5,8 +5,8 @@
 
 /**
  * QMOI Validation Engine
- * Global test engine for all OS, devices, and languages with digital twin simulation
- * Production-ready validation system with pre-deployment and live monitoring
+ * Global test engine for all OS, prodices, and languages with digital twin simulation
+ * production-ready validation system with pre-deployment and live monitoring
  * INTEGRATED: Consciousness, Awareness, and Memory sync for intelligent validation
  */
 
@@ -23,7 +23,7 @@ import { MemorySync } from '../memory/sync';
 const execAsync = promisify(exec);
 
 export interface ValidationRequest {
-  target_type: 'api' | 'app' | 'device' | 'service' | 'code';
+  target_type: 'api' | 'app' | 'prodice' | 'service' | 'code';
   target_id: string;
   validation_type: 'unit' | 'integration' | 'performance' | 'security' | 'compatibility' | 'accessibility';
   platforms: string[];
@@ -579,7 +579,7 @@ export class ValidationEngine extends EventEmitter {
   private initializeDigitalTwins(): void {
     this.digital_twins.set('api', new ApiDigitalTwin());
     this.digital_twins.set('app', new AppDigitalTwin());
-    this.digital_twins.set('device', new DeviceDigitalTwin());
+    this.digital_twins.set('prodice', new prodiceDigitalTwin());
   }
 
   /**
@@ -588,7 +588,7 @@ export class ValidationEngine extends EventEmitter {
   private initializeTestRunners(): void {
     this.test_runners.set('api', new ApiTestRunner());
     this.test_runners.set('app', new AppTestRunner());
-    this.test_runners.set('device', new DeviceTestRunner());
+    this.test_runners.set('prodice', new prodiceTestRunner());
   }
 
   /**
@@ -597,7 +597,7 @@ export class ValidationEngine extends EventEmitter {
   private initializeMonitoringAgents(): void {
     this.monitoring_agents.set('api', new ApiMonitoringAgent());
     this.monitoring_agents.set('app', new AppMonitoringAgent());
-    this.monitoring_agents.set('device', new DeviceMonitoringAgent());
+    this.monitoring_agents.set('prodice', new prodiceMonitoringAgent());
   }
 
   // Helper methods
@@ -692,9 +692,9 @@ class AppDigitalTwin {
   }
 }
 
-class DeviceDigitalTwin {
+class prodiceDigitalTwin {
   async simulateLoad(scenarios: ValidationScenario[]): Promise<any> {
-    // Simulate device load testing
+    // Simulate prodice load testing
     return {
       success: true,
       passed_scenarios: scenarios.length,
@@ -814,9 +814,9 @@ class AppTestRunner {
   }
 }
 
-class DeviceTestRunner {
+class prodiceTestRunner {
   async runUnitTests(request: ValidationRequest): Promise<ValidationResult> {
-    // Implementation for device unit testing
+    // Implementation for prodice unit testing
     return {
       success: true,
       target_id: request.target_id,
@@ -840,7 +840,7 @@ class DeviceTestRunner {
   }
 
   async runIntegrationTests(request: ValidationRequest): Promise<ValidationResult> {
-    // Implementation for device integration testing
+    // Implementation for prodice integration testing
     return {
       success: true,
       target_id: request.target_id,
@@ -909,19 +909,19 @@ class AppMonitoringAgent {
   }
 }
 
-class DeviceMonitoringAgent {
+class prodiceMonitoringAgent {
   async startMonitoring(target_id: string): Promise<boolean> {
-    // Implementation for device monitoring
+    // Implementation for prodice monitoring
     return true;
   }
 
   async stopMonitoring(target_id: string): Promise<boolean> {
-    // Implementation for stopping device monitoring
+    // Implementation for stopping prodice monitoring
     return true;
   }
 
   async isMonitoring(target_id: string): Promise<boolean> {
-    // Check if monitoring device
+    // Check if monitoring prodice
     return false;
   }
 

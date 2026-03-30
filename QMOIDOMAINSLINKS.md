@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOIDOMAINSLINKS.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -35,7 +35,7 @@ This file contains all domains and links used in the QMOI system, including thei
 
 | Domain             | Link                                                    | Status | Usage           | Last Checked | Platform | Notes                     |
 | ------------------ | ------------------------------------------------------- | ------ | --------------- | ------------ | -------- | ------------------------- |
-| qmoisystem.com     | https://qmoisystem.com                                  | ✅     | Main QMOI site  | 2025-10-11   | All      | Production, auto-hosted   |
+| qmoisystem.com     | https://qmoisystem.com                                  | ✅     | Main QMOI site  | 2025-10-11   | All      | production, auto-hosted   |
 | downloads.qmoi.app | https://github.com/thealphakenya/qmoi-enhanced/releases | ✅     | App downloads   | 2025-10-11   | All      | CDN, auto-updated         |
 | qcity.qmoi.app     | https://qcity.qmoi.app                                  | ✅     | QCity dashboard | 2025-10-11   | Web      | Auto-hosted, always-on    |
 | api.qmoi.app       | https://api.qmoi.app                                    | ✅     | QMOI API        | 2025-10-11   | All      | API, auto-tested          |

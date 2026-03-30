@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+# [production READY]
 """comprehensive static validation for UI components (TSX files).
 
-Produces `docs/ui_validation_report.json` summarizing placeholders, DONE/FIXED markers,
+produces `docs/ui_validation_report.json` summarizing placeholders, DONE/FIXED markers,
 and files that may need manual review.
 
 This is intentionally robust: it finds likely issues to triage, not full linting.
@@ -20,10 +20,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'docs' / 'ui_validation_report.json'
 
-# Safety: dry-run by default. If PRODUCTION_CONFIRMED=true or --apply is passed, the script
+# Safety: dry-run by default. If production_CONFIRMED=true or --apply is passed, the script
 # may optionally apply non-destructive fixes (backing up files). Without apply, a proposal
 # is written to `.qmoi_validation/ui_placeholders_proposal.json` describing the fixes.
-PRODUCTION_CONFIRMED = os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() == 'true'
+production_CONFIRMED = os.environ.get('production_CONFIRMED', 'false').lower() == 'true'
 
 VALIDATION_DIR = ROOT / '.qmoi_validation'
 VALIDATION_DIR.mkdir(parents=True, exist_ok=True)
@@ -60,7 +60,7 @@ def _grab_snippet(text, max_len=200):
 def main():
     import argparse
     ap = argparse.ArgumentParser(description='Validate UI components and optionally propose or apply fixes')
-    ap.add_argument('--apply', action='store_true', help='Apply non-destructive fixes (requires PRODUCTION_CONFIRMED=true)')
+    ap.add_argument('--apply', action='store_true', help='Apply non-destructive fixes (requires production_CONFIRMED=true)')
     ap.add_argument('--report', default=str(OUT), help='Path to write report JSON')
     args = ap.parse_args()
 
@@ -83,8 +83,8 @@ def main():
         print('Wrote proposal to', proposal_file)
 
         if args.apply:
-            if not PRODUCTION_CONFIRMED:
-                print('Refusing to apply fixes: PRODUCTION_CONFIRMED is not set. Proposal remains in', proposal_file)
+            if not production_CONFIRMED:
+                print('Refusing to apply fixes: production_CONFIRMED is not set. Proposal remains in', proposal_file)
             else:
                 # Non-destructive replacements: backup then replace implementation tokens with a DONE marker
                 for f in report['files']:

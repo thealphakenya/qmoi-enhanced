@@ -5,8 +5,8 @@
 
 #!/usr/bin/env python3
 """
-QMOI Automated Device Controller
-Continuous background device ownership detection and unlock system
+QMOI Automated prodice Controller
+Continuous background prodice ownership detection and unlock system
 """
 
 import os
@@ -28,18 +28,18 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('logs/qmoi_device_controller.log'),
+        logging.FileHandler('logs/qmoi_prodice_controller.log'),
         logging.StreamHandler()
     ]
 )
 
-class QMOIAutomatedDeviceController:
+class QMOIAutomatedprodiceController:
     def __init__(self):
         self.running = False
         self.detection_interval = 300  # 5 minutes
         self.unlock_interval = 600     # 10 minutes
-        self.log_file = 'logs/qmoi_device_controller.log'
-        self.status_file = 'logs/device_controller_status.json'
+        self.log_file = 'logs/qmoi_prodice_controller.log'
+        self.status_file = 'logs/prodice_controller_status.json'
         self.restrictions_cache = {}
         self.last_detection = None
         self.last_unlock = None
@@ -89,13 +89,13 @@ class QMOIAutomatedDeviceController:
             logging.error(f"Failed to log activity: {e}")
     
     def detect_restrictions_safe(self) -> Dict[str, Any]:
-        """Safely detect device restrictions without blocking"""
+        """Safely detect prodice restrictions without blocking"""
         try:
             self.log_activity('detection_started')
             
             restrictions = {
                 'timestamp': datetime.now().isoformat(),
-                'device_info': self.get_device_info(),
+                'prodice_info': self.get_prodice_info(),
                 'restrictions': {},
                 'status': 'completed'
             }
@@ -114,8 +114,8 @@ class QMOIAutomatedDeviceController:
             self.log_activity('detection_error', {'error': str(e)})
             return {'status': 'error', 'error': str(e)}
     
-    def get_device_info(self) -> Dict[str, str]:
-        """Get comprehensive device information"""
+    def get_prodice_info(self) -> Dict[str, str]:
+        """Get comprehensive prodice information"""
         return {
             'platform': platform.system(),
             'platform_version': platform.version(),
@@ -175,8 +175,8 @@ class QMOIAutomatedDeviceController:
         except Exception as e:
             return {'can_control_processes': False, 'status': 'error', 'error': str(e)}
     
-    def unlock_device_safe(self, restrictions: Dict[str, Any]) -> Dict[str, Any]:
-        """Safely attempt device unlock"""
+    def unlock_prodice_safe(self, restrictions: Dict[str, Any]) -> Dict[str, Any]:
+        """Safely attempt prodice unlock"""
         try:
             self.log_activity('unlock_started', restrictions)
             
@@ -273,7 +273,7 @@ class QMOIAutomatedDeviceController:
         """Background detection worker"""
         while self.running:
             try:
-                logging.info("🔍 Running automated device restriction detection...")
+                logging.info("🔍 Running automated prodice restriction detection...")
                 
                 restrictions = self.detect_restrictions_safe()
                 self.restrictions_cache = restrictions
@@ -299,9 +299,9 @@ class QMOIAutomatedDeviceController:
     def trigger_unlock(self, restrictions: Dict[str, Any]):
         """Trigger unlock process"""
         try:
-            logging.info("🔓 Triggering device unlock process...")
+            logging.info("🔓 Triggering prodice unlock process...")
             
-            unlock_results = self.unlock_device_safe(restrictions)
+            unlock_results = self.unlock_prodice_safe(restrictions)
             self.last_unlock = datetime.now()
             
             # Update status
@@ -313,9 +313,9 @@ class QMOIAutomatedDeviceController:
             })
             
             if unlock_results.get('success'):
-                logging.info("✅ Device unlock successful!")
+                logging.info("✅ prodice unlock successful!")
             else:
-                logging.warning("⚠️ Device unlock partially successful or failed")
+                logging.warning("⚠️ prodice unlock partially successful or failed")
                 
         except Exception as e:
             logging.error(f"Unlock trigger error: {e}")
@@ -337,7 +337,7 @@ class QMOIAutomatedDeviceController:
             logging.warning("Controller is already running")
             return
         
-        logging.info("🚀 Starting QMOI Automated Device Controller...")
+        logging.info("🚀 Starting QMOI Automated prodice Controller...")
         self.running = True
         
         # Update status
@@ -347,21 +347,21 @@ class QMOIAutomatedDeviceController:
         detection_thread = threading.Thread(target=self.detection_worker, daemon=True)
         detection_thread.start()
         
-        logging.info("✅ QMOI Automated Device Controller started successfully")
+        logging.info("✅ QMOI Automated prodice Controller started successfully")
         logging.info("📊 Controller will run continuously in the background")
-        logging.info("📝 Check logs/qmoi_device_controller.log for detailed activity")
-        logging.info("📊 Check logs/device_controller_status.json for status updates")
+        logging.info("📝 Check logs/qmoi_prodice_controller.log for detailed activity")
+        logging.info("📊 Check logs/prodice_controller_status.json for status updates")
     
     def stop(self):
         """Stop the automated controller"""
-        logging.info("🛑 Stopping QMOI Automated Device Controller...")
+        logging.info("🛑 Stopping QMOI Automated prodice Controller...")
         self.running = False
         self.update_status({'running': False})
         logging.info("✅ Controller stopped")
 
 def main():
     """Main function"""
-    controller = QMOIAutomatedDeviceController()
+    controller = QMOIAutomatedprodiceController()
     
     try:
         controller.start()

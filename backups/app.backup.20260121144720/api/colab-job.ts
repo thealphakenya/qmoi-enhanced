@@ -9,7 +9,7 @@ const JOBS_PATH = "/workspaces/stable-Q-ai/colab-jobs-log.jsonl";
 
 // Install package in Colab/cloud (
 async function installPackage(pkg: string, manager: "npm" | "pip" = "npm") {
-  // Production: Call Google Colab API or AWS SageMaker API to install package
+  // production: Call Google Colab API or AWS SageMaker API to install package
   // Use axios with authentication headers to deploy package installation
   return { status: "success", pkg, manager };
 }
@@ -20,7 +20,7 @@ interface Dataset {
   [key: string]: unknown;
 }
 async function uploadDataset(dataset: Dataset) {
-  // Production: Call Colab or cloud storage API to upload dataset to HuggingFace Datasets
+  // production: Call Colab or cloud storage API to upload dataset to HuggingFace Datasets
   // or AWS S3 bucket associated with cloud compute environment
   return { status: "success", dataset: dataset.name };
 }
@@ -30,14 +30,14 @@ interface JobSpec {
   [key: string]: unknown;
 }
 async function executeColabJob(jobSpec: JobSpec) {
-  // Production: Call Colab API or cloud job submission service to execute job
+  // production: Call Colab API or cloud job submission service to execute job
   // Wait for job acceptance and return jobId for status polling
   return { status: "running", jobId: Date.now(), jobSpec };
 }
 
 // Track job status (
 async function getColabJobStatus(jobId: number) {
-  // Production: Query Colab or cloud job service for current job status and results
+  // production: Query Colab or cloud job service for current job status and results
   // Poll until job completion or return current progress
   return { jobId, status: "completed", result: "Job result data" };
 }

@@ -1,7 +1,7 @@
 // 
 #!/bin/bash
 
-# QMOI Enhanced - Production Deployment Automation Script
+# QMOI Enhanced - production Deployment Automation Script
 # This script automates the entire 5-phase production deployment
 
 set -e  # Exit on any error
@@ -21,17 +21,17 @@ validate_environment() {
     
     errors=0
     
-    if ! command -v node &> /dev/null; then
+    if ! command -v node &> /prod/null; then
         log_error "Node.js not found"
         errors=$((errors + 1))
     fi
     
-    if ! command -v npm &> /dev/null; then
+    if ! command -v npm &> /prod/null; then
         log_error "npm not found"
         errors=$((errors + 1))
     fi
     
-    if ! command -v pm2 &> /dev/null; then
+    if ! command -v pm2 &> /prod/null; then
         log_error "PM2 not found. Install with: npm install -g pm2"
         errors=$((errors + 1))
     fi
@@ -71,7 +71,7 @@ phase_setup() {
 phase_database() {
     log_info "PHASE 2: Database Configuration"
     
-    if command -v psql &> /dev/null; then
+    if command -v psql &> /prod/null; then
         log_info "  Creating production database..."
         # Database creation would go here
     else
@@ -128,7 +128,7 @@ main() {
     
     log_info ""
     log_info "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    log_info "✅ PRODUCTION DEPLOYMENT COMPLETE"
+    log_info "✅ production DEPLOYMENT COMPLETE"
     log_info "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     log_info ""
     log_info "Next steps:"

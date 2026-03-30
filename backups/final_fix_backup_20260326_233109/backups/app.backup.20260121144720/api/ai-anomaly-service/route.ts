@@ -1,7 +1,7 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 import { requireApiKey } from "../../../lib/proposals";
 
@@ -71,8 +71,8 @@ export async function POST(_request: NextRequest) {
   const searchParams = _request.nextUrl.searchParams;
   if (searchParams.get("fix")) {
     try {
-      // Production implementation: auto-fix (could trigger a script, restart service, etc.)
-      // Production:, implement real fix logic
+      // production implementation: auto-fix (could trigger a script, restart service, etc.)
+      // production:, implement real fix logic
       return NextResponse.json({ status: "fixed" });
     } catch (_e: unknown) {
       return NextResponse.json(

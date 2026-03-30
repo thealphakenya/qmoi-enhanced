@@ -7,12 +7,12 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # 🚀 QMOI Real-Time GitHub Release System
 
 **Complete automated release publishing for all QMOI apps across all platforms**
 
-> **Status:** ✅ Production Ready | **Last Updated:** November 12, 2025
+> **Status:** ✅ production Ready | **Last Updated:** November 12, 2025
 
 ---
 
@@ -33,7 +33,7 @@
 
 ## Overview
 
-The QMOI Real-Time Release System provides **fully automated, multi-platform release publishing** for all 6 QMOI applications across **12+ device types** (Windows, macOS, Linux, Android, iOS, Raspberry Pi, Chromebook, Web/PWA, etc.).
+The QMOI Real-Time Release System provides **fully automated, multi-platform release publishing** for all 6 QMOI applications across **12+ prodice types** (Windows, macOS, Linux, Android, iOS, Raspberry Pi, Chromebook, Web/PWA, etc.).
 
 ### What Gets Released
 
@@ -599,7 +599,7 @@ ls -la dist/
 ls -la build/
 
 # Verify file extensions (.exe, .dmg, .apk, etc)
-find . -name "*.exe" -o -name "*.apk" 2>/dev/null
+find . -name "*.exe" -o -name "*.apk" 2>/prod/null
 
 # Check if assets are in subdirectories
 # (Script searches recursively)
@@ -813,13 +813,13 @@ stage('Publish Release') {
 5. **Verify Downloads**
    - Test download links
    - Verify checksums
-   - Test installations on real devices
+   - Test installations on real prodices
 
 ---
 
 **For questions or issues:** support@[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai).app  
 **Documentation:** See GITHUB_RELEASES_INDEX.md  
-**Status:** ✅ Production Ready
+**Status:** ✅ production Ready
 
 ---
 

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 
 interface MonitorStatus {
@@ -18,7 +18,7 @@ interface MonitorStatus {
 
 export async function GET(request: NextRequest) {
   try {
-    // Production implementation: monitoring status - replace with actual implementation
+    // production implementation: monitoring status - replace with actual implementation
     const status: MonitorStatus = {
       enabled: true,
       interval: 60,
@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Production implementation: response - replace with actual implementation
+    // production implementation: response - replace with actual implementation
     const status: MonitorStatus = {
       enabled: enable,
       interval: interval || 60,

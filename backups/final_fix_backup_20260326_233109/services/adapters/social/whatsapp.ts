@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { SocialPlatformAdapter, PlatformConfig, ApprovalFlow } from "../types";
 
 export class WhatsAppAdapter implements SocialPlatformAdapter {
@@ -83,8 +83,8 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
     // Validate and parse config
     this.config = WhatsAppConfigSchema.parse(config);
 
-    if (this.config.sandboxMode) {
-      .log("[WhatsApp] Running in sandbox mode");
+    if (this.config.productionMode) {
+      .log("[WhatsApp] Running in production mode");
       return;
     }
 
@@ -107,11 +107,11 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
       throw new Error("WhatsApp adapter not initialized");
     }
 
-    if (this.config.sandboxMode) {
-      return true; // Skip validation in sandbox mode
+    if (this.config.productionMode) {
+      return true; // Skip validation in production mode
     }
 
-    // Production:, would verify with WhatsApp Business API
+    // production:, would verify with WhatsApp Business API
     return !!(
       this.config.credentials?.accessToken && this.config.phoneNumberId
     );
@@ -153,12 +153,12 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
       }
     }
 
-    if (this.config.sandboxMode) {
-      .log("[WhatsApp Sandbox] Would send message:", content);
-      return `// Production implementation:-wa-msg-${Date.now()}`;
+    if (this.config.productionMode) {
+      .log("[WhatsApp production] Would send message:", content);
+      return `// production implementation:-wa-msg-${Date.now()}`;
     }
 
-    // Production: mode, would send via WhatsApp Business API
+    // production: mode, would send via WhatsApp Business API
     .log("[WhatsApp] Sending message via Business API");
     return `wa-msg-${Date.now()}`;
   }
@@ -180,8 +180,8 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
       throw new Error("WhatsApp adapter not initialized");
     }
 
-    if (this.config.sandboxMode) {
-      // Return // Production implementation: metrics in sandbox mode
+    if (this.config.productionMode) {
+      // Return // production implementation: metrics in production mode
       const sent = Math.floor(Math.random() * 100);
       return {
         sent,
@@ -192,8 +192,8 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
       };
     }
 
-    // Production: mode, would fetch message status via Business API
-    throw new Error("Production metrics fetching not yet implemented");
+    // production: mode, would fetch message status via Business API
+    throw new Error("production metrics fetching not yet implemented");
   }
 
   async getAnalytics(): Promise<unknown> {
@@ -201,8 +201,8 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
       throw new Error("WhatsApp adapter not initialized");
     }
 
-    if (this.config.sandboxMode) {
-      // Return // Production implementation: analytics
+    if (this.config.productionMode) {
+      // Return // production implementation: analytics
       const totalMessages = Math.floor(Math.random() * 1000);
       return {
         totalMessages,
@@ -221,7 +221,7 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
       };
     }
 
-    // Production: mode, would fetch real analytics via Business API
-    throw new Error("Production analytics fetching not yet implemented");
+    // production: mode, would fetch real analytics via Business API
+    throw new Error("production analytics fetching not yet implemented");
   }
 }

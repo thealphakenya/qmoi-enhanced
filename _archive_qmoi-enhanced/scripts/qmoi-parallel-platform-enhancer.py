@@ -75,7 +75,7 @@ class QMOIParallelPlatformEnhancer:
             'gitpod': PlatformEnhancement(
                 name='Gitpod',
                 priority=2,
-                features=['workspaces', 'environments', 'collaboration', 'enterprise', 'dev_containers'],
+                features=['workspaces', 'environments', 'collaboration', 'enterprise', 'prod_containers'],
                 error_patterns=['workspace_error', 'container_error', 'resource_error', 'network_error', 'permission_error'],
                 optimization_targets=['performance', 'security', 'scalability', 'automation'],
                 parallel_workers=3
@@ -295,7 +295,7 @@ class QMOIParallelPlatformEnhancer:
                     'workspaces': {'status': 'activated', 'unlimited': True, 'enterprise': True},
                     'environments': {'status': 'activated', 'unlimited': True, 'enterprise': True},
                     'collaboration': {'status': 'activated', 'advanced': True, 'enterprise': True},
-                    'dev_containers': {'status': 'activated', 'unlimited': True, 'enterprise': True},
+                    'prod_containers': {'status': 'activated', 'unlimited': True, 'enterprise': True},
                     'sites': {'status': 'activated', 'unlimited': True, 'enterprise': True},
                     'forms': {'status': 'activated', 'unlimited': True, 'enterprise': True},
                     'computing': {'status': 'activated', 'unlimited': True, 'enterprise': True},

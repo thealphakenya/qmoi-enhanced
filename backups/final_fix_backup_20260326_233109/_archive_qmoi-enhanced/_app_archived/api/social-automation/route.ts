@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 
 // In-memory stores (replace with DB/integration in production)
@@ -18,7 +18,7 @@ export async function POST_POST(req: NextRequest) {
   // Post status/news to platform
   const body = (await req.json()) as any;
   const { content, platform } = body;
-  // Production implementation:: Integrate with WhatsApp, Telegram, etc.
+  // production implementation:: Integrate with WhatsApp, Telegram, etc.
   const post = {
     id: postId++,
     content,
@@ -46,8 +46,8 @@ export async function POST_TAG(req: NextRequest) {
 }
 
 export async function GET_INFO(req: NextRequest) {
-  // Gather info (// Production implementation:)
-  // Production implementation:: Implement info gathering from platforms
+  // Gather info (// production implementation:)
+  // production implementation:: Implement info gathering from platforms
   return NextResponse.json({ info: "Info gathering not yet implemented." });
 }
 

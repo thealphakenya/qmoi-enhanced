@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 import authService from "@/lib/auth/service";
 import { db } from "@/lib/db/prisma";
@@ -68,14 +68,14 @@ export async function GET(request: NextRequest) {
       (user: any) => user.lastActive && user.lastActive > oneDayAgo,
     ).length;
 
-    [PRODUCTION READY] resolve [PRODUCTION READY] items
+    [production READY] resolve [production READY] items
     const analytics = {
       totalUsers,
       activeUsers,
       totalUsage: {
-        apiRequests: totalUsers * 1500, [PRODUCTION READY] resolve [PRODUCTION READY] items
-        chatMessages: totalUsers * 200, [PRODUCTION READY] resolve [PRODUCTION READY] items
-        fileUploads: totalUsers * 25, [PRODUCTION READY] resolve [PRODUCTION READY] items
+        apiRequests: totalUsers * 1500, [production READY] resolve [production READY] items
+        chatMessages: totalUsers * 200, [production READY] resolve [production READY] items
+        fileUploads: totalUsers * 25, [production READY] resolve [production READY] items
       },
       rateLimitExemptions: totalUsers,
       averageUsage:

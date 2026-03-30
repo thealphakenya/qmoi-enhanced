@@ -7,17 +7,17 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
-title: "LION-Embedded (Tiny Runtime for Devices)"
+title: "LION-Embedded (Tiny Runtime for prodices)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# LION-Embedded (Tiny Runtime for Devices)
+# LION-Embedded (Tiny Runtime for prodices)
 
 Purpose
 
-- A complete C/Python hybrid runtime tailored for constrained IoT devices and embedded systems.
+- A complete C/Python hybrid runtime tailored for constrained IoT prodices and embedded systems.
 
 Key features
 
@@ -29,7 +29,7 @@ Target platforms
 
 Packaging
 
-- Cross-compiled runtime packages, SDK for integrating with device firmware.
+- Cross-compiled runtime packages, SDK for integrating with prodice firmware.
 
 Release artifacts
 
@@ -41,7 +41,7 @@ Auto-update strategy
 
 Monetization
 
-- Device OEM licensing, per-device support packages, long-term support.
+- prodice OEM licensing, per-prodice support packages, long-term support.
 
 Integration with QMOI
 

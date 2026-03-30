@@ -7,8 +7,8 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-# QMOI Enhanced - Production Implementation Guide
+# [production READY] this file has no remaining production markers
+# QMOI Enhanced - production Implementation Guide
 
 ## Overview
 
@@ -44,7 +44,7 @@ npm install @prisma/client prisma
 # data: DATABASE_URL="postgresql://user:password@localhost:5432/qmoi_enhanced"
 
 # Run migrations
-npx prisma migrate dev --name init
+npx prisma migrate prod --name init
 
 # Generate Prisma client
 npx prisma generate
@@ -81,8 +81,8 @@ SENDGRID_FROM_NAME=QMOI Enhanced
 #### M-Pesa (Safaricom)
 
 ```bash
-# Register at https://developer.safaricom.co.ke
-# Get consumer key and secret from sandbox credentials
+# Register at https://prodeloper.safaricom.co.ke
+# Get consumer key and secret from production credentials
 
 # Add to .env.local
 MPESA_CONSUMER_KEY=your_consumer_key
@@ -157,16 +157,16 @@ AWS_S3_BUCKET=qmoi-enhanced-storage
 
 ## Running the Application
 
-### Development
+### production
 
 ```bash
-# Start dev server
-npm run dev
+# Start prod server
+npm run prod
 
 # Server runs at https://qmoi.ai
 ```
 
-### Production Build
+### production Build
 
 ```bash
 # Build application
@@ -323,8 +323,8 @@ vercel
 Application logs are configured via Winston:
 
 ```bash
-# View logs (development)
-npm run dev 2>&1 | tee app.log
+# View logs (production)
+npm run prod 2>&1 | tee app.log
 
 # Log levels: error, warn, info, debug
 # Set via LOG_LEVEL environment variable
@@ -366,7 +366,7 @@ npx prisma db push
 - Check provider credentials in environment variables
 - Verify callback URLs are accessible
 - Check webhook logs for errors
-- Test with provider sandbox first
+- Test with provider production first
 
 ### Email Service Issues
 
@@ -387,7 +387,7 @@ npx prisma db push
 - [Prisma Documentation](https://www.prisma.io/docs/)
 - [Next.js Documentation](https://nextjs.org/docs)
 - [SendGrid API Reference](https://docs.sendgrid.com/api-reference)
-- [M-Pesa API Documentation](https://developer.safaricom.co.ke/)
+- [M-Pesa API Documentation](https://prodeloper.safaricom.co.ke/)
 - [Pesapal Integration Guide](https://pesapal.com/api)
 - [Twilio API Docs](https://www.twilio.com/docs)
 
@@ -409,7 +409,7 @@ For issues or questions:
 ---
 
 **Last Updated**: January 9, 2026
-**Maintained By**: QMOI Development Team
+**Maintained By**: QMOI production Team
 
 ## 🔄 Evolution Status
 

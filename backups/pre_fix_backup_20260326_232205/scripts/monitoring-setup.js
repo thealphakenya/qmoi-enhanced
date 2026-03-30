@@ -6,7 +6,7 @@
 // 
 #!/usr/bin/env node
 /**
- * Production Monitoring Setup & Baseline Collection
+ * production Monitoring Setup & Baseline Collection
  */
 const fs = require("fs");
 const path = require("path");

@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 {
   "generated": "2025-10-25T02:00:52.759180Z",
   "files": [
@@ -8,7 +8,7 @@
       "fixes": []
     },
     {
-      "path": "ALLDEVICESSETTINGS.md",
+      "path": "ALLprodICESSETTINGS.md",
       "urls": [],
       "fixes": []
     },
@@ -170,7 +170,7 @@
       "fixes": []
     },
     {
-      "path": "AU[PRODUCTION READY]WNLOAD.md",
+      "path": "AU[production READY]WNLOAD.md",
       "urls": [],
       "fixes": []
     },
@@ -332,7 +332,7 @@
       "fixes": []
     },
     {
-      "path": "DEVCOMMANDS.md",
+      "path": "prodCOMMANDS.md",
       "urls": [
         {
           "url": "http://localhost:3000/qcity](http://localhost:3000/qcity",
@@ -350,12 +350,12 @@
       "fixes": []
     },
     {
-      "path": "DEVICERESOURCEOPTIMIZATION.md",
+      "path": "prodICERESOURCEOPTIMIZATION.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "DOWNLOADQMOIAIAPPALLDEVICES.md",
+      "path": "DOWNLOADQMOIAIAPPALLprodICES.md",
       "urls": [
         {
           "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
@@ -390,7 +390,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
@@ -398,7 +398,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
@@ -442,7 +442,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
@@ -470,7 +470,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
@@ -546,7 +546,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
@@ -734,12 +734,12 @@
       "fixes": []
     },
     {
-      "path": "POSTPRODUCTIONCHECKLIST.md",
+      "path": "POSTproductionCHECKLIST.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "PRODUCTIONCHECKLIST.md",
+      "path": "productionCHECKLIST.md",
       "urls": [],
       "fixes": []
     },
@@ -764,12 +764,12 @@
       "fixes": []
     },
     {
-      "path": "QCITYDEVICEAUTOUPGRADE.md",
+      "path": "QCITYprodICEAUTOUPGRADE.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "QCITYMAINDEVICE.md",
+      "path": "QCITYMAINprodICE.md",
       "urls": [],
       "fixes": []
     },
@@ -794,7 +794,7 @@
       "fixes": []
     },
     {
-      "path": "QCITY_DEVICE_MANAGEMENT.md",
+      "path": "QCITY_prodICE_MANAGEMENT.md",
       "urls": [],
       "fixes": []
     },
@@ -1108,12 +1108,12 @@
       "fixes": []
     },
     {
-      "path": "QMOIALLDEVICESHANDSFREE.md",
+      "path": "QMOIALLprodICESHANDSFREE.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "QMOIALLDEVICESINSTALL.md",
+      "path": "QMOIALLprodICESINSTALL.md",
       "urls": [],
       "fixes": []
     },
@@ -1161,7 +1161,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
@@ -1169,7 +1169,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
@@ -1201,7 +1201,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
@@ -1221,7 +1221,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
@@ -1273,7 +1273,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
@@ -1294,7 +1294,7 @@
       "fixes": []
     },
     {
-      "path": "QMOIAUTOAPPSDEV.md",
+      "path": "QMOIAUTOAPPSprod.md",
       "urls": [],
       "fixes": []
     },
@@ -1304,12 +1304,12 @@
       "fixes": []
     },
     {
-      "path": "QMOIAUTODEV.md",
+      "path": "QMOIAUTOprod.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "QMOIAUTODEVDOCTESTS.MD",
+      "path": "QMOIAUTOprodDOCTESTS.MD",
       "urls": [],
       "fixes": []
     },
@@ -1444,12 +1444,12 @@
       "fixes": []
     },
     {
-      "path": "QMOIDEV.md",
+      "path": "QMOIprod.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "QMOIDEVICES.md",
+      "path": "QMOIprodICES.md",
       "urls": [],
       "fixes": []
     },
@@ -1509,7 +1509,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
@@ -1517,7 +1517,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
@@ -1537,7 +1537,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
@@ -1561,7 +1561,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
@@ -1605,7 +1605,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
@@ -1703,7 +1703,7 @@
           "https_available": null
         },
         {
-          "url": "https://codespaces.<your-username>.github.dev/api/github/webhook",
+          "url": "https://codespaces.<your-username>.github.prod/api/github/webhook",
           "https_available": null
         },
         {
@@ -1726,17 +1726,17 @@
       "fixes": []
     },
     {
-      "path": "QMOIGITHUBDEV.md",
+      "path": "QMOIGITHUBprod.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "QMOIGITLABDEV.md",
+      "path": "QMOIGITLABprod.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "QMOIGITPODDEV.md",
+      "path": "QMOIGITPODprod.md",
       "urls": [],
       "fixes": []
     },
@@ -1823,12 +1823,12 @@
       "fixes": []
     },
     {
-      "path": "QMOIOWNDEVICE.md",
+      "path": "QMOIOWNprodICE.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "QMOIPREDEVDOCACTIONS.md",
+      "path": "QMOIPREprodDOCACTIONS.md",
       "urls": [],
       "fixes": []
     },
@@ -1887,7 +1887,7 @@
       "fixes": []
     },
     {
-      "path": "QMOISPACEDEV.md",
+      "path": "QMOISPACEprod.md",
       "urls": [
         {
           "url": "https://gradio.app/docs/",
@@ -1933,7 +1933,7 @@
       "fixes": []
     },
     {
-      "path": "QMOIVERCELDEV.md",
+      "path": "QMOIVERCELprod.md",
       "urls": [],
       "fixes": []
     },
@@ -2071,7 +2071,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
@@ -2079,7 +2079,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
@@ -2111,7 +2111,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
@@ -2131,7 +2131,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
@@ -2183,7 +2183,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
@@ -2339,7 +2339,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
@@ -2347,7 +2347,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
@@ -2399,7 +2399,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
@@ -2411,7 +2411,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
@@ -2487,7 +2487,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
@@ -2780,17 +2780,17 @@
       "fixes": []
     },
     {
-      "path": "docs/QMOIGITHUBDEV.md",
+      "path": "docs/QMOIGITHUBprod.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "docs/QMOIGITLABDEV.md",
+      "path": "docs/QMOIGITLABprod.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "docs/QMOIVERCELDEV.md",
+      "path": "docs/QMOIVERCELprod.md",
       "urls": [],
       "fixes": []
     },
@@ -2879,7 +2879,7 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/ALLDEVICESSETTINGS.md",
+      "path": "qmoi-enhanced/ALLprodICESSETTINGS.md",
       "urls": [],
       "fixes": []
     },
@@ -3008,7 +3008,7 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/AU[PRODUCTION READY]WNLOAD.md",
+      "path": "qmoi-enhanced/AU[production READY]WNLOAD.md",
       "urls": [],
       "fixes": []
     },
@@ -3056,7 +3056,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
@@ -3064,7 +3064,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
@@ -3096,7 +3096,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
@@ -3124,7 +3124,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
@@ -3172,7 +3172,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
@@ -3262,7 +3262,7 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/DEVCOMMANDS.md",
+      "path": "qmoi-enhanced/prodCOMMANDS.md",
       "urls": [
         {
           "url": "http://localhost:3000/qcity](http://localhost:3000/qcity",
@@ -3280,12 +3280,12 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/DEVICERESOURCEOPTIMIZATION.md",
+      "path": "qmoi-enhanced/prodICERESOURCEOPTIMIZATION.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md",
+      "path": "qmoi-enhanced/DOWNLOADQMOIAIAPPALLprodICES.md",
       "urls": [
         {
           "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
@@ -3484,12 +3484,12 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md",
+      "path": "qmoi-enhanced/QCITYprodICEAUTOUPGRADE.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/QCITYMAINDEVICE.md",
+      "path": "qmoi-enhanced/QCITYMAINprodICE.md",
       "urls": [],
       "fixes": []
     },
@@ -3514,7 +3514,7 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/QCITY_DEVICE_MANAGEMENT.md",
+      "path": "qmoi-enhanced/QCITY_prodICE_MANAGEMENT.md",
       "urls": [],
       "fixes": []
     },
@@ -3798,12 +3798,12 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md",
+      "path": "qmoi-enhanced/QMOIALLprodICESHANDSFREE.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/QMOIALLDEVICESINSTALL.md",
+      "path": "qmoi-enhanced/QMOIALLprodICESINSTALL.md",
       "urls": [],
       "fixes": []
     },
@@ -3856,7 +3856,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
@@ -3864,7 +3864,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
@@ -3896,7 +3896,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
@@ -3916,7 +3916,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
@@ -3968,7 +3968,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
@@ -3989,7 +3989,7 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/QMOIAUTOAPPSDEV.md",
+      "path": "qmoi-enhanced/QMOIAUTOAPPSprod.md",
       "urls": [
         {
           "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
@@ -4012,7 +4012,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
@@ -4020,7 +4020,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
@@ -4052,7 +4052,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
@@ -4072,7 +4072,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
@@ -4124,7 +4124,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
@@ -4140,12 +4140,12 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/QMOIAUTODEV.md",
+      "path": "qmoi-enhanced/QMOIAUTOprod.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/QMOIAUTODEVDOCTESTS.MD",
+      "path": "qmoi-enhanced/QMOIAUTOprodDOCTESTS.MD",
       "urls": [],
       "fixes": []
     },
@@ -4265,12 +4265,12 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/QMOIDEV.md",
+      "path": "qmoi-enhanced/QMOIprod.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/QMOIDEVICES.md",
+      "path": "qmoi-enhanced/QMOIprodICES.md",
       "urls": [],
       "fixes": []
     },
@@ -4304,7 +4304,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
@@ -4312,7 +4312,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
@@ -4332,7 +4332,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
@@ -4356,7 +4356,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
@@ -4400,7 +4400,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
@@ -4487,17 +4487,17 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/QMOIGITHUBDEV.md",
+      "path": "qmoi-enhanced/QMOIGITHUBprod.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/QMOIGITLABDEV.md",
+      "path": "qmoi-enhanced/QMOIGITLABprod.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/QMOIGITPODDEV.md",
+      "path": "qmoi-enhanced/QMOIGITPODprod.md",
       "urls": [],
       "fixes": []
     },
@@ -4583,12 +4583,12 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/QMOIOWNDEVICE.md",
+      "path": "qmoi-enhanced/QMOIOWNprodICE.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/QMOIPREDEVDOCACTIONS.md",
+      "path": "qmoi-enhanced/QMOIPREprodDOCACTIONS.md",
       "urls": [],
       "fixes": []
     },
@@ -4647,7 +4647,7 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/QMOISPACEDEV.md",
+      "path": "qmoi-enhanced/QMOISPACEprod.md",
       "urls": [
         {
           "url": "https://gradio.app/docs/",
@@ -4693,7 +4693,7 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/QMOIVERCELDEV.md",
+      "path": "qmoi-enhanced/QMOIVERCELprod.md",
       "urls": [],
       "fixes": []
     },
@@ -4841,7 +4841,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
@@ -4849,7 +4849,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
@@ -4881,7 +4881,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
@@ -4901,7 +4901,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
@@ -4953,7 +4953,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
@@ -5278,17 +5278,17 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/docs/QMOIGITHUBDEV.md",
+      "path": "qmoi-enhanced/docs/QMOIGITHUBprod.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/docs/QMOIGITLABDEV.md",
+      "path": "qmoi-enhanced/docs/QMOIGITLABprod.md",
       "urls": [],
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/docs/QMOIVERCELDEV.md",
+      "path": "qmoi-enhanced/docs/QMOIVERCELprod.md",
       "urls": [],
       "fixes": []
     },

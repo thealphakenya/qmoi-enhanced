@@ -5,9 +5,9 @@
 
 #!/usr/bin/env python3
 """
-QMOI Production Link Audit & Offline Access Report
+QMOI production Link Audit & Offline Access Report
 Generates comprehensive link inventory from grep results and provides caching strategy.
-Production-ready offline documentation bundle.
+production-ready offline documentation bundle.
 """
 
 import json
@@ -16,7 +16,7 @@ from collections import defaultdict
 
 # Pre-scanned links from repository (from grep_search results)
 KNOWN_LINKS = [
-    # Production downloads
+    # production downloads
     'https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe',
     'https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg',
     'https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk',
@@ -48,11 +48,11 @@ KNOWN_LINKS = [
     'https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk',
     'https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa',
     'https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage',
+    'https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe',
+    'https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg',
+    'https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk',
+    'https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa',
+    'https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage',
     'https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe',
     'https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg',
     'https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk',
@@ -150,7 +150,7 @@ def generate_production_report():
             'timestamp': datetime.now().isoformat(),
             'environment': 'production',
             'version': '1.0.0',
-            'title': 'QMOI Production Link Audit & Offline Strategy'
+            'title': 'QMOI production Link Audit & Offline Strategy'
         },
         'summary': {
             'total_links': len(KNOWN_LINKS),
@@ -188,7 +188,7 @@ def generate_production_report():
             'local_service': {
                 'action': 'STUB_LOCALLY',
                 'rationale': 'Requires running local services for testing',
-                'method': 'Add real endpoints in development environment',
+                'method': 'Add real endpoints in production environment',
                 'location': 'tools/mock_servers/'
             },
             'ephemeral_tunnel': {
@@ -245,13 +245,13 @@ def main():
     report = generate_production_report()
     
     # Save as JSON
-    report_file = '/workspaces/qmoi-enhanced/docs_site/PRODUCTION_LINK_AUDIT.json'
+    report_file = '/workspaces/qmoi-enhanced/docs_site/production_LINK_AUDIT.json'
     with open(report_file, 'w') as f:
         json.dump(report, f, indent=2)
     
     # Print summary
     print("\n" + "="*70)
-    print("QMOI PRODUCTION LINK AUDIT & OFFLINE STRATEGY REPORT")
+    print("QMOI production LINK AUDIT & OFFLINE STRATEGY REPORT")
     print("="*70 + "\n")
     
     print(f"📊 SUMMARY:")
@@ -269,7 +269,7 @@ def main():
             print(f"    ... and {len(links) - 2} more")
         print()
     
-    print(f"✅ PRODUCTION CHECKLIST:\n")
+    print(f"✅ production CHECKLIST:\n")
     for i, item in enumerate(report['production_checklist'], 1):
         print(f"  {i}. {item}")
     

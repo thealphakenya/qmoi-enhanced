@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "1. Navigate to GitHub > Settings > Actions > Runners > New Self-Hosted Runner"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -16,7 +16,7 @@ title: "1. Navigate to GitHub > Settings > Actions > Runners > New Self-Hosted R
 
 QCITYRUNNERSENGINE.md
 QCity Runners Engine
-Self-Hosted · Self-Healing · Ever-Evolving · Self-Developer
+Self-Hosted · Self-Healing · Ever-Evolving · Self-prodeloper
 
 🧩 Overview
 QCity Runners Engine powers QMOI’s entire CI/CD and automation framework. Designed to auto-fix, evolve, and optimize itself, it ensures every build, download, and service stays error-free, secure, and always-on—across any platform or cloud.
@@ -26,9 +26,9 @@ Feature Description
 🔧 Self-Fixing Engine Auto-detects, auto-fixes, and restarts on failure
 🧠 Ever-Evolving Learns from past errors, improves CI workflows automatically
 💻 Universal Deployment Works on Colab, DagsHub, QCity, local, or cloud environments
-👨‍💻 Self-Developer Evolves its own automation, CI/CD scripts, and code base
+👨‍💻 Self-prodeloper Evolves its own automation, CI/CD scripts, and code base
 📡 Live Monitoring Dashboard shows runner health, history, and active jobs
-🔐 Secure Execution Sandboxed runners with token revocation & log auditing
+🔐 Secure Execution productioned runners with token revocation & log auditing
 🛠 Autotests + Health Checks All runners continuously tested & logged in QCity
 🌐 Ngrok Integration Starts and syncs tunnels, auto-updates links (see QMOINGROK.md)
 🌍 Platform Stats Visual status for GitHub, GitLab, Vercel, GCP, HuggingFace, etc.
@@ -75,7 +75,7 @@ QMOIDOMAINS.md – Domain management
 
 ZERORATEDQMOI.md – Zero-rated + fallback CDN links
 
-🧬 Self-Developer Logic
+🧬 Self-prodeloper Logic
 Runners analyze CI logs + error patterns
 
 Autogenerate PRs to fix broken workflows
@@ -96,7 +96,7 @@ Ensures all apps are only downloadable when all tests pass
 💡: Includes .md verifier — verifies .md documentation matches live automation
 
 🔐 Security
-Each runner sandboxed
+Each runner productioned
 
 All token use logged; suspicious use auto-blocked
 
@@ -233,7 +233,7 @@ Prioritizes profitable jobs & auto-scales compute offload accordingly
 Capability Status
 Continuous Runner Monitoring ✅
 DNS & Tunnel Auto-Repair ✅
-Self-Developer Enhancements ✅
+Self-prodeloper Enhancements ✅
 Ngrok Link Injection ✅
 Cloud & Local Compatibility ✅
 Real-Time .md File Verifier ✅

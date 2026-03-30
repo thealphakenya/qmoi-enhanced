@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "data systemd unit (place in /etc/systemd/system/qmoi-daemon.service):"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -19,7 +19,7 @@ This folder contains a robust daemon that orchestrates regular maintenance tasks
 
 Tasks performed (dry-run):
 
-- [PRODUCTION READY] scanner (`scripts/check_[PRODUCTION READY]s.py`)
+- [production READY] scanner (`scripts/check_[production READY]s.py`)
 - wallet quality verification (`scripts/wallets/check_wallets.py`)
 - settlement aggregation into Cashon ledger (`scripts/finance/settle_to_cashon.py`) — dry-run only
 - YAML/workflow validation (`scripts/validate_yml.py`)
@@ -52,7 +52,7 @@ WantedBy=multi-user.target
 
 ## Security & governance
 
-- This daemon never passes production flags or environment variables that enable live transfers. Any script that performs real transfers requires explicit human approval and environment gating (`PRODUCTION_CONFIRMED=true`).
+- This daemon never passes production flags or environment variables that enable live transfers. Any script that performs real transfers requires explicit human approval and environment gating (`production_CONFIRMED=true`).
 - For long-running, always-on operations you should deploy the daemon on a trusted VM or server (not a permanent codespace) and use a secret manager for credentials.
 
 ## 🔄 Evolution Status

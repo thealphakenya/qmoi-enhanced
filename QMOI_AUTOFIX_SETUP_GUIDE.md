@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # 🎯 QMOI AutoFix System - Setup & Configuration Guide
 
 ## Quick Start
@@ -382,7 +382,7 @@ setInterval(checkAndNotify, 60000);
 1. Check ADMIN_TOKEN is set in .env.local
 2. Verify token format is correct
 3. Clear browser cache
-4. Restart dev server
+4. Restart prod server
 
 ### Issue: Errors Not Scanning
 
@@ -489,7 +489,7 @@ async function sendMetrics(health) {
 
 **Version:** 2.0.0  
 **Last Updated:** January 25, 2026  
-**Status:** Production Ready ✓
+**Status:** production Ready ✓
 
 ## 🔄 Evolution Status
 

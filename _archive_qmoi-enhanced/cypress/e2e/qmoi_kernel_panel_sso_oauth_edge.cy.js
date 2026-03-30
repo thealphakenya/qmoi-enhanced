@@ -9,11 +9,11 @@
 describe("QMOI Kernel Panel SSO/OAuth E2E - Edge Cases", () => {
   it("allows login via Microsoft OAuth", () => {
     cy.visit(
-      "/auth/callback?provider=microsoft&token=microsoft-// Production implementation required:-token",
+      "/auth/callback?provider=microsoft&token=microsoft-// production implementation required:-token",
     );
     cy.setCookie(
       "authToken",
-      "microsoft-// Production implementation required:-token",
+      "microsoft-// production implementation required:-token",
     );
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");

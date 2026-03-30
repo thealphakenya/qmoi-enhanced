@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "S1B_INTEGRATION_GUIDE.md - Phase S1B Implementation Guide"
 description: "Quick-start guide for integrating enhanced Chatbot and Preview Window"
@@ -102,7 +102,7 @@ generated: "2026-03-13"
 - [ ] **5.1** Build optimization check
 - [ ] **5.2** Error monitoring setup
 - [ ] **5.3** production deployment test
-- [ ] **5.4** Production deployment
+- [ ] **5.4** production deployment
 
 ---
 
@@ -221,8 +221,8 @@ Content-Type: application/json
   "projectType": "web",
   "fileTypes": [".tsx", ".css", ".ts"],
   "confidence": 85,
-  "recommendedTools": ["live-preview", "dev-inspector", "responsive-viewer"],
-  "autoActivateTools": ["live-preview", "dev-inspector"]
+  "recommendedTools": ["live-preview", "prod-inspector", "responsive-viewer"],
+  "autoActivateTools": ["live-preview", "prod-inspector"]
 }
 ```
 
@@ -329,7 +329,7 @@ import React, { useState } from 'react';
 import { ChatbotEnhanced } from '@/components/ChatbotEnhanced';
 import { PreviewWindow } from '@/components/PreviewWindow';
 
-export default function DevelopmentPage() {
+export default function productionPage() {
   const [projectType, setProjectType] = useState('web');
   const [showPreview, setShowPreview] = useState(false);
 
@@ -351,7 +351,7 @@ export default function DevelopmentPage() {
 
         {/* Content */}
         <div style={{ flex: 1, display: 'flex', gap: '10px', padding: '10px' }}>
-          {/* Code Editor - [PRODUCTION READY] */}
+          {/* Code Editor - [production READY] */}
           <div style={{ flex: 1, background: '#f5f5f5', borderRadius: '4px' }}>
             {/* Editor content here */}
           </div>
@@ -444,13 +444,13 @@ const handleAutoDetectProject = async (files: string[]) => {
 describe('ChatbotEnhanced', () => {
   it('should render message input and send button', () => {
     render(<ChatbotEnhanced />);
-    expect(screen.getBy[PRODUCTION READY]Text(/Type your message/i)).toBeInTheDocument();
+    expect(screen.getBy[production READY]Text(/Type your message/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Send/i })).toBeInTheDocument();
   });
 
   it('should analyze context from message', async () => {
     const { container } = render(<ChatbotEnhanced />);
-    // Add [PRODUCTION READY]
+    // Add [production READY]
   });
 
   it('should create conversation branch', async () => {
@@ -556,7 +556,7 @@ console.timeEnd('Display 100 messages');
 
 // Test preview window responsiveness
 console.time('Preview drag operation');
-[PRODUCTION READY] drag event
+[production READY] drag event
 console.timeEnd('Preview drag operation');
 // Target: < 16ms (60 FPS)
 ```
@@ -632,7 +632,7 @@ console.timeEnd('Preview drag operation');
    - Execute Phase S1C enhancements
    - Add global hotkey support and predictive tool activation
    - Expand automation API endpoints
-   - Develop telemetry and analytics panels
+   - prodelop telemetry and analytics panels
 
 ---
 

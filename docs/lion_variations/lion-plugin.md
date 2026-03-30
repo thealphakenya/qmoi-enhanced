@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "lion-plugin"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -17,12 +17,12 @@ title: "lion-plugin"
 
 Description
 
-- A developer-focused distribution that provides plugin SDKs and scaffolding for writing LION handlers.
+- A prodeloper-focused distribution that provides plugin SDKs and scaffolding for writing LION handlers.
 
 Key features
 
 - Plugin templates, linters, and test harnesses
-- Local dev server for quick iteration
+- Local prod server for quick iteration
 
 Release & packaging
 
@@ -36,7 +36,7 @@ Purpose
 
 Key features
 
-- Stable plugin API, versioned SDK, examples, templates, secure sandboxing recommendations.
+- Stable plugin API, versioned SDK, examples, templates, secure productioning recommendations.
 
 Target platforms
 
@@ -44,7 +44,7 @@ Target platforms
 
 Packaging
 
-- Python package `lion-plugin-sdk` with typed [PRODUCTION READY]s and examples; templates to scaffold new handlers.
+- Python package `lion-plugin-sdk` with typed [production READY]s and examples; templates to scaffold new handlers.
 
 Release artifacts
 

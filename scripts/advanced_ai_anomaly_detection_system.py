@@ -298,17 +298,17 @@ class AdvancedAnomalyDetector:
                 old_ewma = model['ewma_value']
                 model['ewma_value'] = model['ewma_alpha'] * value + (1 - model['ewma_alpha']) * old_ewma
 
-                # Calculate deviation from EWMA
-                deviation = abs(value - model['ewma_value'])
-                ewma_values[key] = deviation
+                # Calculate prodiation from EWMA
+                prodiation = abs(value - model['ewma_value'])
+                ewma_values[key] = prodiation
 
                 # Normalize anomaly score
                 if model['ewma_value'] != 0:
-                    anomaly_score = max(anomaly_score, deviation / abs(model['ewma_value']))
+                    anomaly_score = max(anomaly_score, prodiation / abs(model['ewma_value']))
 
         return {
             'score': min(anomaly_score, 1.0),
-            'ewma_deviations': ewma_values,
+            'ewma_prodiations': ewma_values,
             'alpha': model['ewma_alpha']
         }
 

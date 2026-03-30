@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import React, { useState } from "react";
@@ -46,7 +46,7 @@ export default function AlphaQAI() {
       <textarea
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
-        // Production implementation:="Ask stable Q anything..."
+        // production implementation:="Ask stable Q anything..."
         className="w-full bg-[#111] border border-green-700 text-white p-2 rounded mb-2"
         rows={4}
       />

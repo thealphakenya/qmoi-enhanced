@@ -7,12 +7,12 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # CURL Examples: Talking to `qmoi` (Master / Sister / User)
 
 This document shows how to talk to a local `qmoi` chat endpoint using `curl`.
 
-Local dev server (provided in `scripts/qmoi_local_server.py`) listens on `https://qvillage.com`.
+Local prod server (provided in `scripts/qmoi_local_server.py`) listens on `https://qvillage.com`.
 
 1. Start the local QM OI server (run in background):
 
@@ -70,7 +70,7 @@ curl -s -X POST https://qvillage.com/v1/chat/completions \
 
 5. Streamed replies (note):
 
-- The local dev server does not implement streaming. If you need streaming, run a model server that supports chunked transfer and update the client accordingly.
+- The local prod server does not implement streaming. If you need streaming, run a model server that supports chunked transfer and update the client accordingly.
 
 6. Notes on memory and identity
 
@@ -128,7 +128,7 @@ If you want these curl endpoints to talk to a real LLM, replace the persona_resp
 
 This file documents how to talk to `qmoi` using curl. It includes role-specific examples (Master, Sister, ordinary User), local testing instructions, and tips to ensure QMOI uses its persistent memory during conversations.
 
-IMPORTANT: This repository includes a small local server for testing (`scripts/qmoi_chat_server.py`) that [PRODUCTION READY]s persona handling and persistent memory. For production you can adapt the same curl payloads to your real endpoint (OpenAI-compatible or your own REST API).
+IMPORTANT: This repository includes a small local server for testing (`scripts/qmoi_chat_server.py`) that [production READY]s persona handling and persistent memory. For production you can adapt the same curl payloads to your real endpoint (OpenAI-compatible or your own REST API).
 
 ---
 
@@ -209,7 +209,7 @@ curl -s -X POST https://qvillage.com/v1/chat/completions \
     - `logs/curl_sister.json`:
 
     ```json
-    {"id": "qmoi-local-20251113083800", "object": "chat.completion", "created": 1763023080, "model": "qmoi", "choices": [{"index": 0, "message": {"role": "assistant", "content": "[Sister Mode] Hey — got that: Give a friendly encouragement message to a new developer.\nI'll be warm, encouraging and supportive in my replies."}, "finish_reason": "stop"}]}
+    {"id": "qmoi-local-20251113083800", "object": "chat.completion", "created": 1763023080, "model": "qmoi", "choices": [{"index": 0, "message": {"role": "assistant", "content": "[Sister Mode] Hey — got that: Give a friendly encouragement message to a new prodeloper.\nI'll be warm, encouraging and supportive in my replies."}, "finish_reason": "stop"}]}
     ```
 
     - `logs/curl_user.json`:
@@ -218,7 +218,7 @@ curl -s -X POST https://qvillage.com/v1/chat/completions \
     {"id": "qmoi-local-20251113083800", "object": "chat.completion", "created": 1763023080, "model": "qmoi", "choices": [{"index": 0, "message": {"role": "assistant", "content": "[User Mode] I heard: Hello, how are you?\nI'll answer conversationally and helpfully."}, "finish_reason": "stop"}]}
     ```
 
-    These examples confirm the local dev server detected personas and used the `qmoi` model name in responses. The raw JSON files are stored under `logs/` for further archival or inclusion in release notes.
+    These examples confirm the local prod server detected personas and used the `qmoi` model name in responses. The raw JSON files are stored under `logs/` for further archival or inclusion in release notes.
 
 ## 5. Streaming (Guide)
 
@@ -284,7 +284,7 @@ curl -s -X POST https://qvillage.com/v1/chat/completions \
   }'
 ```
 
-Expected behavior (local dev server):
+Expected behavior (local prod server):
 
 - The server should accept the instruction, perform the action (create file), append the operation to persistent memory, and respond with a success message that includes the path and a preview of the content.
 - If using the provided `scripts/qmoi_chat_server.py` you may need to implement an action handler that maps an explicit creation instruction into a filesystem write — see `scripts/actions/` for data handlers if present.

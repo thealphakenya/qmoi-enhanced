@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:55Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 23 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 23 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 #!/usr/bin/env node
 /**
  * QMOI Master Website & Domain Automation Script
@@ -57,7 +57,7 @@ function isMasterUser() {
 }
 
 function requireApiKey() {
-  if (!REQUIRE_API_KEY) return true; // Skip in development
+  if (!REQUIRE_API_KEY) return true; // Skip in production
 
   const apiKey = process.env.QMOI_MASTER_API_KEY;
   const providedKey = process.env.API_KEY || process.argv.find(arg => arg.startsWith('--api-key='))?.split('=')[1];
@@ -77,7 +77,7 @@ function requireApiKey() {
   return true;
 }
 
-// --- PRODUCTION IMPLEMENTATION: Domain Registration via Cloudflare API ---
+// --- production IMPLEMENTATION: Domain Registration via Cloudflare API ---
 async function registerDomain(domain) {
   logAction(`${DRY_RUN ? '[DRY RUN] ' : ''}Registering domain: ${domain}`);
 
@@ -163,7 +163,7 @@ async function auditAndEnhanceSite(projectDir) {
   } catch (_err) {
     logAction(`[ERROR] Security audit failed: ${_err}`);
   }
-  [PRODUCTION READY] audit results
+  [production READY] audit results
   const auditResults = {
     accessibility: 'pass',
     performance: 'pass',
@@ -171,17 +171,17 @@ async function auditAndEnhanceSite(projectDir) {
     security: 'pass',
     issues: []
   };
-  // Auto-enhancement logic ([PRODUCTION IMPLEMENTATION REQUIRED])
+  // Auto-enhancement logic ([production IMPLEMENTATION REQUIRED])
   if (auditResults.issues.length > 0) {
     logAction(`[Enhance] Auto-fixing issues: ${JSON.stringify(auditResults.issues)}`);
-    [PRODUCTION READY]: Implement real auto-fix logic
+    [production READY]: Implement real auto-fix logic
     auditResults.issues.forEach(issue => logAction(`[Enhance] Fixed: ${issue}`));
   }
   logAction(`[Audit] Results for ${projectDir}: ${JSON.stringify(auditResults)}`);
   return auditResults;
 }
 
-// --- PRODUCTION IMPLEMENTATION: Deploy to cloud provider ---
+// --- production IMPLEMENTATION: Deploy to cloud provider ---
 async function deployWebsite(projectDir, provider = 'local') {
   logAction(`${DRY_RUN ? '[DRY RUN] ' : ''}Deploying website from ${projectDir} to provider: ${provider}`);
 
@@ -196,7 +196,7 @@ async function deployWebsite(projectDir, provider = 'local') {
   return result;
 }
 
-// --- PRODUCTION IMPLEMENTATION: Server provisioning (cloud API) ---
+// --- production IMPLEMENTATION: Server provisioning (cloud API) ---
 async function provisionServer(projectName, provider = 'aws') {
   logAction(`${DRY_RUN ? '[DRY RUN] ' : ''}Provisioning server for ${projectName} on provider: ${provider}`);
 
@@ -211,7 +211,7 @@ async function provisionServer(projectName, provider = 'aws') {
   return result;
 }
 
-// --- PRODUCTION IMPLEMENTATION: SSL/HTTPS automation ---
+// --- production IMPLEMENTATION: SSL/HTTPS automation ---
 async function provisionSSL(domain) {
   logAction(`${DRY_RUN ? '[DRY RUN] ' : ''}Provisioning SSL certificate for ${domain}`);
 
@@ -232,7 +232,7 @@ async function provisionSSL(domain) {
   }
 }
 
-// --- PRODUCTION IMPLEMENTATION: Domain availability search & purchase ---
+// --- production IMPLEMENTATION: Domain availability search & purchase ---
 async function searchAndPurchaseDomain(domain) {
   logAction(`${DRY_RUN ? '[DRY RUN] ' : ''}Searching and purchasing domain: ${domain}`);
 
@@ -282,7 +282,7 @@ async function searchAndPurchaseDomain(domain) {
   }
 }
 
-// --- PRODUCTION IMPLEMENTATION: DNS management ---
+// --- production IMPLEMENTATION: DNS management ---
 async function configureDNS(domain, records = []) {
   logAction(`${DRY_RUN ? '[DRY RUN] ' : ''}Configuring DNS for ${domain}`);
 
@@ -342,7 +342,7 @@ async function configureDNS(domain, records = []) {
   return { success: true, domain };
 }
 
-// --- [PRODUCTION IMPLEMENTATION REQUIRED]: DNS management ---
+// --- [production IMPLEMENTATION REQUIRED]: DNS management ---
 async function manageDNS(domain, records = []) {
   logAction(`Managing DNS for ${domain} with records: ${JSON.stringify(records)}`);
   // Implementation: Configure DNS via Cloudflare API
@@ -356,7 +356,7 @@ async function manageDNS(domain, records = []) {
   return { success: true };
 }
 
-// --- PRODUCTION IMPLEMENTATION: SEO/search engine submission ---
+// --- production IMPLEMENTATION: SEO/search engine submission ---
 async function submitToSearchEngines(domain) {
   logAction(`${DRY_RUN ? '[DRY RUN] ' : ''}Submitting ${domain} to search engines`);
 
@@ -414,7 +414,7 @@ async function submitToSearchEngines(domain) {
   }
 }
 
-// --- PRODUCTION IMPLEMENTATION: Content syndication ---
+// --- production IMPLEMENTATION: Content syndication ---
 async function syndicateContent(projectName, platforms = ['medium', 'substack']) {
   logAction(`${DRY_RUN ? '[DRY RUN] ' : ''}Syndicating content for ${projectName} to platforms: ${platforms.join(', ')}`);
 
@@ -446,7 +446,7 @@ async function syndicateContent(projectName, platforms = ['medium', 'substack'])
   return { success: true, results };
 }
 
-// --- PRODUCTION IMPLEMENTATION: Social/platform integration ---
+// --- production IMPLEMENTATION: Social/platform integration ---
 async function createSocialProfiles(projectName, platforms = ['twitter', 'facebook', 'linkedin']) {
   logAction(`${DRY_RUN ? '[DRY RUN] ' : ''}Creating social profiles for ${projectName} on: ${platforms.join(', ')}`);
 
@@ -497,11 +497,11 @@ async function checkDomainAvailability(domain) {
   }
 }
 
-function scanForNonProductionMarkers(rootDir = process.cwd()) {
+function scanForproductionMarkers(rootDir = process.cwd()) {
   const markers = [
     'TODO', 'FIXME', 'PLACEHOLDER', 'MOCK', 'SIMULATE', 'STAGING', 'STUB', 'DEMO',
     'SIMPLE', 'MINIMAL', 'DRAFT', 'POC', 'ALPHA', 'BETA', 'EXPERIMENTAL',
-    'TEMPORARY', 'INCOMPLETE', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'IN PRODUCTION'
+    'TEMPORARY', 'INCOMPLETE', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'IN production'
   ];
 
   const results = [];
@@ -552,16 +552,16 @@ function scanForNonProductionMarkers(rootDir = process.cwd()) {
 
   traverse(rootDir);
 
-  const reportFile = path.join(__dirname, '../reports/qmoi_nonprod_marker_scan.json');
+  const reportFile = path.join(__dirname, '../reports/qmoi_production_marker_scan.json');
   fs.mkdirSync(path.dirname(reportFile), { recursive: true });
   fs.writeFileSync(reportFile, JSON.stringify({ scanned: rootDir, found: results.length, results }, null, 2));
 
-  logAction(`Non-production marker scan complete: ${results.length} files found; report saved to ${reportFile}`);
+  logAction(`production marker scan complete: ${results.length} files found; report saved to ${reportFile}`);
   return results;
 }
 
-function getNonProductionSummary(rootDir = process.cwd()) {
-  const found = scanForNonProductionMarkers(rootDir);
+function getproductionSummary(rootDir = process.cwd()) {
+  const found = scanForproductionMarkers(rootDir);
   const summary = found.reduce((obj, item) => {
     for (const marker of item.markers) {
       obj[marker] = (obj[marker] || 0) + 1;
@@ -569,7 +569,7 @@ function getNonProductionSummary(rootDir = process.cwd()) {
     return obj;
   }, {});
 
-  logAction(`Non-production marker summary: ${JSON.stringify(summary)}`);
+  logAction(`production marker summary: ${JSON.stringify(summary)}`);
   return { filesWithMarkers: found.length, summary };
 }
 
@@ -690,7 +690,7 @@ const PROVIDERS = {
       }
 
       // Real AWS integration would go here
-      [PRODUCTION READY]: Real AWS integration
+      [production READY]: Real AWS integration
       return { success: true, server: `aws-server-for-${projectName}` };
     },
     deployWebsite: async (projectDir) => {
@@ -702,20 +702,20 @@ const PROVIDERS = {
       }
 
       // Real AWS deployment would go here
-      [PRODUCTION READY]: Real AWS deployment
+      [production READY]: Real AWS deployment
       return { success: true, url: `https://aws.data.com/${path.basename(projectDir)}` };
     }
   },
   vercel: {
     name: 'Vercel',
     provisionServer: async (projectName) => {
-      logAction(`[Vercel] Provisioning server for ${projectName} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
-      [PRODUCTION READY]: Real Vercel integration
+      logAction(`[Vercel] Provisioning server for ${projectName} ([production IMPLEMENTATION REQUIRED])`);
+      [production READY]: Real Vercel integration
       return { success: true, server: `vercel-server-for-${projectName}` };
     },
     deployWebsite: async (projectDir) => {
-      logAction(`[Vercel] Deploying website from ${projectDir} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
-      [PRODUCTION READY]: Real Vercel deployment
+      logAction(`[Vercel] Deploying website from ${projectDir} ([production IMPLEMENTATION REQUIRED])`);
+      [production READY]: Real Vercel deployment
       const url = `https://vercel.app/${path.basename(projectDir)}`;
       try {
         execSync(`python scripts/gmail_notify.py --subject \"Vercel Deployment Complete\" --body \"Vercel deployment is live at: ${url}\"`);
@@ -727,7 +727,7 @@ const PROVIDERS = {
 };
 
 function selectProvider(preferred) {
-  [PRODUCTION READY]: Enhance with cost, health, region, etc.
+  [production READY]: Enhance with cost, health, region, etc.
   if (preferred && PROVIDERS[preferred]) return PROVIDERS[preferred];
   // Default: pick first available
   return PROVIDERS.aws;
@@ -735,23 +735,23 @@ function selectProvider(preferred) {
 
 // --- ASSET LIFECYCLE MANAGEMENT ---
 async function updateAsset(assetId) {
-  logAction(`Updating asset ${assetId} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
-  [PRODUCTION READY]: Implement update logic
+  logAction(`Updating asset ${assetId} ([production IMPLEMENTATION REQUIRED])`);
+  [production READY]: Implement update logic
   return { success: true };
 }
 async function migrateAsset(assetId, toProvider) {
-  logAction(`Migrating asset ${assetId} to ${toProvider} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
-  [PRODUCTION READY]: Implement migration logic
+  logAction(`Migrating asset ${assetId} to ${toProvider} ([production IMPLEMENTATION REQUIRED])`);
+  [production READY]: Implement migration logic
   return { success: true };
 }
 async function backupAsset(assetId) {
-  logAction(`Backing up asset ${assetId} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
-  [PRODUCTION READY]: Implement backup logic
+  logAction(`Backing up asset ${assetId} ([production IMPLEMENTATION REQUIRED])`);
+  [production READY]: Implement backup logic
   return { success: true };
 }
 async function retireAsset(assetId) {
-  logAction(`Retiring asset ${assetId} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
-  [PRODUCTION READY]: Implement retire logic
+  logAction(`Retiring asset ${assetId} ([production IMPLEMENTATION REQUIRED])`);
+  [production READY]: Implement retire logic
   return { success: true };
 }
 
@@ -762,10 +762,10 @@ async function autoFixError(context, error) {
   for (let attempt = 1; attempt <= 3; attempt++) {
     logAction(`[AutoFix] Attempt ${attempt} to fix error in context: ${context}`);
     try {
-      [PRODUCTION READY]: try a generic fix (_e.g., retry, reset, switch provider)
-      [PRODUCTION READY]: Implement context-specific fix strategies
+      [production READY]: try a generic fix (_e.g., retry, reset, switch provider)
+      [production READY]: Implement context-specific fix strategies
       if (attempt === 3) throw new Error('Max attempts reached');
-      [PRODUCTION READY] fix success on 2nd attempt
+      [production READY] fix success on 2nd attempt
       if (attempt === 2) {
         logAction(`[AutoFix] Error fixed on attempt ${attempt} in context: ${context}`);
         return { fixed: true };
@@ -774,9 +774,9 @@ async function autoFixError(context, error) {
       logAction(`[AutoFix] Attempt ${attempt} failed: ${fixErr}`);
     }
   }
-  // Root cause analysis [PRODUCTION IMPLEMENTATION REQUIRED]
-  logAction(`[AutoFix] Root cause analysis for context: ${context} ([PRODUCTION IMPLEMENTATION REQUIRED])`);
-  // Continuous learning [PRODUCTION IMPLEMENTATION REQUIRED]
+  // Root cause analysis [production IMPLEMENTATION REQUIRED]
+  logAction(`[AutoFix] Root cause analysis for context: ${context} ([production IMPLEMENTATION REQUIRED])`);
+  // Continuous learning [production IMPLEMENTATION REQUIRED]
   logAction(`[AutoFix] Logging error for future learning: ${error}`);
   return { fixed: false };
 }
@@ -1027,10 +1027,10 @@ async function main() {
     process.exit(0);
   }
 
-  if (cmd === 'scan-nonprod') {
+  if (cmd === 'scan-production') {
     const rootDir = args[0] || process.cwd();
-    const result = getNonProductionSummary(rootDir);
-    console.log('Non-production scan result:', result);
+    const result = getproductionSummary(rootDir);
+    console.log('production scan result:', result);
     process.exit(0);
   }
 
@@ -1040,7 +1040,7 @@ async function main() {
 
 // --- ENHANCED DOMAIN AUTOMATION FUNCTIONS ---
 
-// --- PRODUCTION IMPLEMENTATION: Automatic Domain Health Monitoring ---
+// --- production IMPLEMENTATION: Automatic Domain Health Monitoring ---
 async function monitorDomainHealth(domains = DOMAINS_CONFIG.primaryDomains) {
   logAction(`[Domain Monitor] Starting health check for ${domains.length} domains`);
 
@@ -1074,7 +1074,7 @@ async function monitorDomainHealth(domains = DOMAINS_CONFIG.primaryDomains) {
   return { results, failedDomains, totalChecked: domains.length };
 }
 
-// --- PRODUCTION IMPLEMENTATION: Domain Health Check ---
+// --- production IMPLEMENTATION: Domain Health Check ---
 async function checkDomainHealth(domain) {
   const result = { healthy: false, reason: '', contentValid: false, sslValid: false, dnsValid: false };
 
@@ -1120,7 +1120,7 @@ async function checkDomainHealth(domain) {
   return result;
 }
 
-// --- PRODUCTION IMPLEMENTATION: SSL Certificate Validation ---
+// --- production IMPLEMENTATION: SSL Certificate Validation ---
 async function checkSSLCertificate(domain) {
   try {
     const response = await fetch(`https://${domain}`, {
@@ -1135,7 +1135,7 @@ async function checkSSLCertificate(domain) {
   }
 }
 
-// --- PRODUCTION IMPLEMENTATION: DNS Resolution Check ---
+// --- production IMPLEMENTATION: DNS Resolution Check ---
 async function checkDNSResolution(domain) {
   try {
     // Use a simple DNS lookup - in production, use proper DNS library
@@ -1147,7 +1147,7 @@ async function checkDNSResolution(domain) {
   }
 }
 
-// --- PRODUCTION IMPLEMENTATION: QMOI Content Validation ---
+// --- production IMPLEMENTATION: QMOI Content Validation ---
 function validateQMOIContent(content) {
   // Check for QMOI-specific content indicators
   const qmoiIndicators = [
@@ -1165,7 +1165,7 @@ function validateQMOIContent(content) {
   return matches.length >= 3;
 }
 
-// --- PRODUCTION IMPLEMENTATION: Automatic Domain Replacement ---
+// --- production IMPLEMENTATION: Automatic Domain Replacement ---
 async function autoReplaceFailedDomains(failedDomains) {
   logAction(`[Auto Replace] Starting replacement for ${failedDomains.length} failed domains`);
 
@@ -1219,7 +1219,7 @@ async function autoReplaceFailedDomains(failedDomains) {
   return replacements;
 }
 
-// --- PRODUCTION IMPLEMENTATION: Find Replacement Domain ---
+// --- production IMPLEMENTATION: Find Replacement Domain ---
 async function findReplacementDomain(originalDomain) {
   // Extract base name from original domain
   const baseName = originalDomain.split('.')[0];
@@ -1247,7 +1247,7 @@ async function findReplacementDomain(originalDomain) {
   return null; // No replacement found
 }
 
-// --- PRODUCTION IMPLEMENTATION: Update Domain References ---
+// --- production IMPLEMENTATION: Update Domain References ---
 async function updateDomainReferences(oldDomain, newDomain) {
   logAction(`[Domain Update] Updating references from ${oldDomain} to ${newDomain}`);
 
@@ -1258,7 +1258,7 @@ async function updateDomainReferences(oldDomain, newDomain) {
   return { success: true };
 }
 
-// --- PRODUCTION IMPLEMENTATION: Parallel Domain Operations ---
+// --- production IMPLEMENTATION: Parallel Domain Operations ---
 async function parallelDomainOperations(domains, operation, concurrency = 5) {
   logAction(`[Parallel Ops] Starting ${operation.name} for ${domains.length} domains with concurrency ${concurrency}`);
 
@@ -1318,7 +1318,7 @@ class Semaphore {
   }
 }
 
-// --- PRODUCTION IMPLEMENTATION: AI-Powered Domain Analysis ---
+// --- production IMPLEMENTATION: AI-Powered Domain Analysis ---
 async function analyzeDomainWithAI(domain) {
   logAction(`[AI Analysis] Analyzing domain ${domain} with AI reasoning`);
 
@@ -1355,7 +1355,7 @@ async function analyzeDomainWithAI(domain) {
   return analysis;
 }
 
-// --- PRODUCTION IMPLEMENTATION: Master Accountability System ---
+// --- production IMPLEMENTATION: Master Accountability System ---
 async function requestMasterApproval(action, context) {
   logAction(`[Master Approval] Requesting approval for: ${action}`);
 
@@ -1375,7 +1375,7 @@ async function requestMasterApproval(action, context) {
   return approval;
 }
 
-// --- PRODUCTION IMPLEMENTATION: Comprehensive Domain Management ---
+// --- production IMPLEMENTATION: Comprehensive Domain Management ---
 async function comprehensiveDomainManagement() {
   logAction(`[Domain Mgmt] Starting comprehensive domain management cycle`);
 

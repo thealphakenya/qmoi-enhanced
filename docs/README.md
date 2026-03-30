@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "Q-City Documentation"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -271,8 +271,8 @@ Q-City is a comprehensive system management and monitoring platform that provide
    **Open QMOI AI (Next.js):**
 
    ```bash
-   # If Node.js available, start dev server
-   npm install && npm run dev
+   # If Node.js available, start prod server
+   npm install && npm run prod
    # Then open in browser:
    "$BROWSER" https://qmoi.ai/ &
    ```
@@ -283,9 +283,9 @@ Q-City is a comprehensive system management and monitoring platform that provide
    - See `.env.data` for all available options
 
    Notes:
-   - The static dashboard files are served by a simple HTTP server on port `8080` during development.
+   - The static dashboard files are served by a simple HTTP server on port `8080` during production.
    - All adapters and components use `src/config/api.ts` which respects `NEXT_PUBLIC_API_URL` env var.
-   - Backend API endpoints are configurable and environment-aware (local/dev/production/prod).
+   - Backend API endpoints are configurable and environment-aware (local/prod/production/prod).
 
 2. **Debug Mode**
 
@@ -524,7 +524,7 @@ Q-City is a comprehensive system management and monitoring platform that provide
 
 ### Contributing
 
-1. **Development**
+1. **production**
    - Code contribution
    - Bug reporting
    - Feature requests
@@ -532,7 +532,7 @@ Q-City is a comprehensive system management and monitoring platform that provide
 
 2. **Community**
    - User forum
-   - Developer forum
+   - prodeloper forum
    - Bug tracker
    - Feature requests
 

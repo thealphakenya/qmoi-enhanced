@@ -42,7 +42,7 @@ print_info() {
 run_baseline_test() {
   print_header "Running Baseline Load Test"
   
-  if ! command -v k6 &> /dev/null; then
+  if ! command -v k6 &> /prod/null; then
     print_error "k6 is not installed. Please install k6: https://k6.io/docs/getting-started/installation/"
     return 1
   fi
@@ -61,7 +61,7 @@ run_baseline_test() {
 run_all_tests() {
   print_header "Running Complete Load Test Suite"
   
-  if ! command -v k6 &> /dev/null; then
+  if ! command -v k6 &> /prod/null; then
     print_error "k6 is not installed"
     return 1
   fi
@@ -79,12 +79,12 @@ run_all_tests() {
 check_redis_connection() {
   print_header "Checking Redis Connection"
   
-  if ! command -v redis-cli &> /dev/null; then
+  if ! command -v redis-cli &> /prod/null; then
     print_error "redis-cli is not installed"
     return 1
   fi
 
-  if redis-cli -u "$REDIS_URL" ping > /dev/null 2>&1; then
+  if redis-cli -u "$REDIS_URL" ping > /prod/null 2>&1; then
     print_success "Redis is connected"
   else
     print_error "Failed to connect to Redis at $REDIS_URL"

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-# QMOI Enhanced Production Balance Auto-Update System
-# Production Deployment: Runs the Q/BALANCES.md auto-update system in production
+# QMOI Enhanced production Balance Auto-Update System
+# production Deployment: Runs the Q/BALANCES.md auto-update system in production
 # INTEGRATED WITH QMOI CONSCIOUSNESS & VALIDATION SYSTEMS
 
 import os
@@ -16,7 +16,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from q_balances_auto_update import QBalancesAutoUpdateSystem
 
-class ProductionQBalancesManager:
+class productionQBalancesManager:
     def __init__(self):
         self.update_system = QBalancesAutoUpdateSystem()
         self.is_running = False
@@ -26,12 +26,12 @@ class ProductionQBalancesManager:
     def start(self) -> None:
         """Start the production Q/BALANCES.md auto-update system"""
         if self.is_running:
-            print('🦁 Production Q/BALANCES.md system already running')
+            print('🦁 production Q/BALANCES.md system already running')
             return
 
         self.is_running = True
         self.start_time = datetime.now()
-        print('🚀 Starting QMOI Production Q/BALANCES.md Auto-Update System...')
+        print('🚀 Starting QMOI production Q/BALANCES.md Auto-Update System...')
         print(f'📅 Started at: {self.start_time.strftime("%Y-%m-%d %H:%M:%S")}')
 
         try:
@@ -44,7 +44,7 @@ class ProductionQBalancesManager:
             # Set up signal handlers for graceful shutdown
             self._setup_signal_handlers()
 
-            print('✅ Production Q/BALANCES.md system started successfully')
+            print('✅ production Q/BALANCES.md system started successfully')
             print('📊 Monitoring active - Health checks every 60 seconds')
             print('🔄 Auto-updates active - BALANCES.md updates every 30 seconds')
 
@@ -61,13 +61,13 @@ class ProductionQBalancesManager:
         if not self.is_running:
             return
 
-        print('🛑 Stopping Production Q/BALANCES.md system...')
+        print('🛑 Stopping production Q/BALANCES.md system...')
         self.is_running = False
 
         # Stop the update system
         self.update_system.stop()
 
-        print('✅ Production Q/BALANCES.md system stopped')
+        print('✅ production Q/BALANCES.md system stopped')
 
     def _ensure_q_directory(self) -> None:
         """Ensure the q/ directory exists"""
@@ -123,7 +123,7 @@ System starting up. Please wait for first auto-update...
 
 def main():
     parser = argparse.ArgumentParser(
-        description='QMOI Production Q/BALANCES.md Auto-Update System',
+        description='QMOI production Q/BALANCES.md Auto-Update System',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog='''
 Examples:
@@ -153,10 +153,10 @@ Examples:
         sys.exit(0)
 
     # Start the system
-    print('🦁 QMOI Enhanced - Production Q/BALANCES.md Auto-Update System')
+    print('🦁 QMOI Enhanced - production Q/BALANCES.md Auto-Update System')
     print('====================================================')
 
-    manager = ProductionQBalancesManager()
+    manager = productionQBalancesManager()
 
     try:
         manager.start()

@@ -136,7 +136,7 @@ try:
     from sqlalchemy.orm import sessionmaker, Session
 except ModuleNotFoundError as e:
     missing = str(e).split("'")[1]
-    print(f"WARNING: module '{missing}' not found. Production API may not be fully functional.")
+    print(f"WARNING: module '{missing}' not found. production API may not be fully functional.")
 
     # Minimal shim for testing environment
     class FastAPI:
@@ -251,7 +251,7 @@ except ModuleNotFoundError as e:
     class DummyMetadata:
         @staticmethod
         def create_all(bind=None):
-            # Production:, this creates all tables
+            # production:, this creates all tables
             pass
 
     class DummyBaseClass:
@@ -1110,7 +1110,7 @@ async def qvillage_autosync(background_tasks: BackgroundTasks):
     """Trigger QVillage auto-sync to QMOI orchestration"""
 
     def perform_sync():
-        # Production flow: discovery, manifest sync, endpoint registration.
+        # production flow: discovery, manifest sync, endpoint registration.
         print("QVillage auto-sync started")
         time.sleep(2)
         print("QVillage auto-sync completed")
@@ -1142,7 +1142,7 @@ async def qvillage_execute_space(space_id: int, action: Optional[str] = None, pa
 @app.get("/api/qvillage/qvs/stats")
 async def qvs_stats_master_only():
     """Master-only QVS stats and tracks dashboard"""
-    # Production:, verify master authentication
+    # production:, verify master authentication
     qvs_tracks = get_qmoi_memory("qvs_tracks") or []
     total_qvs = sum(track.get("value", 0) for track in qvs_tracks)
     active_tracks = len([t for t in qvs_tracks if t.get("status") == "active"])
@@ -1239,7 +1239,7 @@ notification_queue = []
 def send_notification(user_id: int, message: str, type_: str):
     notification = {"user_id": user_id, "message": message, "type": type_, "timestamp": datetime.utcnow()}
     notification_queue.append(notification)
-    # Production:, integrate with email/SMS/WebSocket
+    # production:, integrate with email/SMS/WebSocket
 
 @app.on_event("startup")
 async def startup_event():
@@ -1262,7 +1262,7 @@ async def startup_event():
                             from email.mime.text import MIMEText
                             from email.mime.multipart import MIMEMultipart
 
-                            # Production:, get from environment/config
+                            # production:, get from environment/config
                             smtp_server = os.getenv("SMTP_SERVER", "smtp.gmail.com")
                             smtp_port = int(os.getenv("SMTP_PORT", "587"))
                             smtp_user = os.getenv("SMTP_USER", "")
@@ -1299,7 +1299,7 @@ async def startup_event():
 
                             if account_sid and auth_token:
                                 client = Client(account_sid, auth_token)
-                                # Production:, get user's phone from database
+                                # production:, get user's phone from database
                                 to_number = "+1234567890"  # Placeholder
 
                                 client.messages.create(
@@ -1318,7 +1318,7 @@ async def startup_event():
                     elif type_ == "websocket":
                         # WebSocket notification
                         try:
-                            # Production:, use WebSocket manager
+                            # production:, use WebSocket manager
                             print(f"WebSocket notification to user {user_id}: {message}")
                             # Here you would emit to user's WebSocket connection
                         except Exception as e:
@@ -1403,7 +1403,7 @@ def create_gradio_interface():
 
         # Also check for any pending notifications in external systems
         try:
-            # Production:, check email/SMS status, WebSocket connections, etc.
+            # production:, check email/SMS status, WebSocket connections, etc.
             notification_text += f"\n--- External Status ---\n"
             notification_text += f"Email notifications: {'Enabled' if os.getenv('SMTP_USER') else 'Not configured'}\n"
             notification_text += f"SMS notifications: {'Enabled' if os.getenv('TWILIO_SID') else 'Not configured'}\n"

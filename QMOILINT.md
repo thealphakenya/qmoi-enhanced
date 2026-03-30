@@ -7,25 +7,25 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
-title: "QMOI Linting & AutoDev Guidelines"
+title: "QMOI Linting & Autoprod Guidelines"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# QMOI Linting & AutoDev Guidelines
+# QMOI Linting & Autoprod Guidelines
 
 This document describes the linting and autofix strategy used by the QMOI project.
 
 Goals
 
 - Maintain a consistent code style across languages (Python, TypeScript/JavaScript).
-- Provide safe automatic fixes where possible (docs, trivial code [PRODUCTION READY]s) while requiring manual review for risky changes.
-- Integrate linting into the Autotest / Validation pipeline so lint checks and autofixes run automatically in CI and on developer machines.
+- Provide safe automatic fixes where possible (docs, trivial code [production READY]s) while requiring manual review for risky changes.
+- Integrate linting into the Autotest / Validation pipeline so lint checks and autofixes run automatically in CI and on prodeloper machines.
 
 Principles
 
-- Conservative: automatic fixes are applied only when the change is unambiguous (for data, formatting fixes, reorder imports, replacing 'pass' with explicit NotImplementedError when associated with a [PRODUCTION READY] comment).
+- Conservative: automatic fixes are applied only when the change is unambiguous (for data, formatting fixes, reorder imports, replacing 'pass' with explicit NotImplementedError when associated with a [production READY] comment).
 - Auditable: all automated fixes are emitted as final patches under `tools/patches/` and as commits on a review branch when approved.
 - Low-bandwidth aware: linters and autofix runners avoid downloading heavy dependencies locally. CI is used to run full JS/TS linters when Node is not available locally.
 

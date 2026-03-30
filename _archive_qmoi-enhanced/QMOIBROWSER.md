@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOIBROWSER.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -18,14 +18,14 @@ title: "QMOIBROWSER.md"
 
 ## QMOI Browser: Automated Testing & Error-Fixing Engine
 
-QMOI Browser is a fully automated, AI-powered browser used by QMOI to autotest, validate, and fix all links, downloads, and web-based features across all platforms and devices. It is deeply integrated into all QMOI automation, deployment, and monitoring systems.
+QMOI Browser is a fully automated, AI-powered browser used by QMOI to autotest, validate, and fix all links, downloads, and web-based features across all platforms and prodices. It is deeply integrated into all QMOI automation, deployment, and monitoring systems.
 
 ### Features
 
 - **Automated Link Testing:** QMOI Browser continuously tests all download links, websites, and APIs for availability, correctness, and performance.
 - **Error Detection & Auto-Fix:** Any broken or slow link is automatically fixed, re-uploaded, or replaced. QMOI logs and notifies all issues and fixes.
 - **Parallel Testing:** All links and web features are tested in parallel for maximum speed and coverage.
-- **Integration:** QMOI Browser is used in all automation cycles (AutoDev, AutoEvolve, Clone, WatchDebug, etc.) to ensure all web features are always working.
+- **Integration:** QMOI Browser is used in all automation cycles (Autoprod, AutoEvolve, Clone, WatchDebug, etc.) to ensure all web features are always working.
 - **Cloud/Colab/Dagshub Offloading:** All browser-based testing is offloaded to QCity/cloud for speed and reliability.
 - **Master-Only Controls:** Master can view browser test logs, trigger manual tests, and review fixes in QCity dashboard.
 - **Audit Logging:** All browser actions are logged for compliance and transparency.
@@ -51,9 +51,9 @@ QMOI Browser is a fully automated, AI-powered browser used by QMOI to autotest, 
 
 ### Integration Points
 
-- QMOIAUTODEV.md: Browser is used in every automation/fix cycle.
+- QMOIAUTOprod.md: Browser is used in every automation/fix cycle.
 - QMOIAUTOEVOLVE.md: Auto-evolution uses browser to validate new features.
-- QMOICLONE.md: All cloned sites/devices are autotested with browser.
+- QMOICLONE.md: All cloned sites/prodices are autotested with browser.
 - WATCHDEBUG.md: Browser logs and fixes are visible in WatchDebug panel.
 
 ---

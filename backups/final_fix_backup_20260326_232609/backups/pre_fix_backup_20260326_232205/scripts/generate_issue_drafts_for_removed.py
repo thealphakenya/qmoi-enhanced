@@ -51,7 +51,7 @@ Status: PLACEHOLDER_FOUND during automated verification.
 
 Suggested next steps:
 
-- Open the file and inspect any implementation markers (e.g. '// Production implementation required:').
+- Open the file and inspect any implementation markers (e.g. '// production implementation required:').
 - Replace implementation with production-ready implementation or confirm that the implementation is intended and add an explanatory comment.
 - If code changes are required, make small, reviewable commits and include tests where applicable.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file in `donerefs.txt`.

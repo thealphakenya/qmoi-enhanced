@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+# [production READY]
 """Scan repository files for common implementation tokens and write a JSON + MD report.
 """
 import json

@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # Non-Sponsored Users Management Guide
 
-**Status:** ✅ Production Ready
+**Status:** ✅ production Ready
 **Version:** 1.0
 **Last Updated:** 2026
 **Rate Limiting:** ✅ Active for All Users

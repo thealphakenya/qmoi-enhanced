@@ -221,7 +221,7 @@ class DeploymentHealthCheck {
         const envContent = [
           "NODE_ENV=production",
           "NEXT_PUBLIC_APP_ENV=production",
-          "QMOI_AUTODEV_ENABLED=true",
+          "QMOI_AUTOprod_ENABLED=true",
         ].join("\n");
         fs.writeFileSync(".env", envContent);
         fixes.push("environment");

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-QMOI SMART ENHANCED PRODUCTION FIXER v2.0
+QMOI SMART ENHANCED production FIXER v2.0
 Focuses on REAL source code, excludes backups/metadata
 Applies targeted fixes to actual production code only
 """
@@ -130,7 +130,7 @@ class SmartEnhancedFixer:
     def scan_and_fix(self):
         """Scan real source files and apply fixes"""
         print(f"\n{'='*80}")
-        print(f"🔧 SMART ENHANCED PRODUCTION FIXER v2.0")
+        print(f"🔧 SMART ENHANCED production FIXER v2.0")
         print(f"{'='*80}\n")
         print(f"📡 Processing REAL source code (excluding backups/metadata)...\n")
         
@@ -156,7 +156,7 @@ class SmartEnhancedFixer:
         """Generate fix report"""
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
-║       SMART ENHANCED PRODUCTION FIXER REPORT v2.0                          ║
+║       SMART ENHANCED production FIXER REPORT v2.0                          ║
 ║              Focus: REAL Source Code Only                                  ║
 ║              {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝

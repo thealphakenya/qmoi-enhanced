@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env bash
 # qmoi_trigger_ci.sh
 # Trigger the Android CI workflow_dispatch via gh CLI or GitHub API
@@ -16,7 +16,7 @@ if [ -z "$REPO" ]; then
 fi
 
 # Use gh workflow run if available
-if command -v gh >/dev/null 2>&1; then
+if command -v gh >/prod/null 2>&1; then
   echo "Triggering workflow $WORKFLOW_FILE on $REF for $REPO"
   gh workflow run "$WORKFLOW_FILE" --repo "$REPO" --ref "$REF"
   echo "Triggered. Check Actions tab for progress."

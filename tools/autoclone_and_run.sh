@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env bash
 # Autoclone + run entrypoint
 # - Clones repository if target dir is required
@@ -9,7 +9,7 @@ set -euo pipefail
 
 REPO_URL="${REPO_URL:-https://github.com/thealphakenya/qmoi-enhanced.git}"
 REPO_DIR="${REPO_DIR:-/opt/qvillage}"
-BRANCH="${REPO_BRANCH:-$(git ls-remote --heads "$REPO_URL" 2>/dev/null | awk '{print $2}' | head -n1 || echo main)}"
+BRANCH="${REPO_BRANCH:-$(git ls-remote --heads "$REPO_URL" 2>/prod/null | awk '{print $2}' | head -n1 || echo main)}"
 
 echo "[autoclone] REPO_URL=$REPO_URL"
 echo "[autoclone] REPO_DIR=$REPO_DIR"

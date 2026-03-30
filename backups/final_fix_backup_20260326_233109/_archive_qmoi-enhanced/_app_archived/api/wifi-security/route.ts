@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 5 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 5 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 
 interface Network {
@@ -50,7 +50,7 @@ export async function GET(request: NextRequest) {
     const threats = searchParams.get("threats");
 
     if (status) {
-      // Production implementation: security status - replace with actual implementation
+      // production implementation: security status - replace with actual implementation
       const statusData: SecurityStatus = {
         isMonitoring: true,
         lastScan: new Date(Date.now() - 300000).toISOString(), // 5 minutes ago
@@ -67,7 +67,7 @@ export async function GET(request: NextRequest) {
     }
 
     if (threats) {
-      // Production implementation: security threats - replace with actual implementation
+      // production implementation: security threats - replace with actual implementation
       const threatsData: SecurityThreat[] = [
         {
           id: "T001",
@@ -122,7 +122,7 @@ export async function POST(request: NextRequest) {
     const { action, settings } = body;
 
     if (action === "start-monitoring") {
-      // Production implementation: start monitoring - replace with actual implementation
+      // production implementation: start monitoring - replace with actual implementation
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       return NextResponse.json({
@@ -137,7 +137,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (action === "stop-monitoring") {
-      // Production implementation: stop monitoring - replace with actual implementation
+      // production implementation: stop monitoring - replace with actual implementation
       await new Promise((resolve) => setTimeout(resolve, 500));
 
       return NextResponse.json({
@@ -154,7 +154,7 @@ export async function POST(request: NextRequest) {
         );
       }
 
-      // Production implementation: settings update - replace with actual implementation
+      // production implementation: settings update - replace with actual implementation
       await new Promise((resolve) => setTimeout(resolve, 800));
 
       return NextResponse.json({

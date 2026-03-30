@@ -15,7 +15,7 @@ const authenticateMaster = (_request: NextRequest) => {
   }
 
   const token = authHeader.substring(7);
-  // Production, validate against secure token storage
+  // production, validate against secure token storage
   return (
     token === process.env.QMOI_MASTER_TOKEN || token === "master-access-token"
   );
@@ -77,13 +77,13 @@ export async function GET(_request: NextRequest) {
 
     // Return current master mode status
     return NextResponse.json({
-      masterMode: true, // Production, this would be fetched from database
+      masterMode: true, // production, this would be fetched from database
       timestamp: new Date().toISOString(),
       features: {
         revenueDashboard: true,
         autoProjects: true,
         avatarSystem: true,
-        musicProduction: true,
+        musicproduction: true,
         parallelProcessing: true,
         notificationSystem: true,
         autoFix: true,

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextRequest } from "next/server";
 import { QCityService } from "@/scripts/services/qcity_service";
 import * as fs from "fs";
@@ -19,7 +19,7 @@ function logAudit(entry: unknown) {
   fs.appendFileSync(AUDIT_LOG_PATH, line);
 }
 
-// SSE streaming for real-time logs (// Production implementation:bed for now)
+// SSE streaming for real-time logs (// production implementation:bed for now)
 const handler = requireRole(["admin", "master"])(async (req: NextRequest) => {
   // comprehensive API key authentication for master/admin users
   const apiKey = req.headers.get("x-qcity-admin-key");
@@ -33,17 +33,17 @@ const handler = requireRole(["admin", "master"])(async (req: NextRequest) => {
       status: 401,
     });
   }
-  const { cmd, stream, deviceId = "default" } = (await req.json()) as any;
+  const { cmd, stream, prodiceId = "default" } = (await req.json()) as any;
   if (!cmd)
     return new Response(JSON.stringify({ error: "No command provided" }), {
       status: 400,
     });
   const qcityService = new QCityService();
   await qcityService.initialize();
-  // Route command to the specified device (// Production implementation: logic)
-  logAudit({ action: "run", cmd, deviceId, user: "admin", status: "started" });
+  // Route command to the specified prodice (// production implementation: logic)
+  logAudit({ action: "run", cmd, prodiceId, user: "admin", status: "started" });
   if (stream) {
-    // Production implementation logs
+    // production implementation logs
     const encoder = new TextEncoder();
     const streamBody = new ReadableStream({
       start(controller) {
@@ -51,7 +51,7 @@ const handler = requireRole(["admin", "master"])(async (req: NextRequest) => {
         function push() {
           if (i < 5) {
             controller.enqueue(
-              encoder.encode(`data: [${deviceId}] Log line ${i + 1}\n\n`),
+              encoder.encode(`data: [${prodiceId}] Log line ${i + 1}\n\n`),
             );
             i++;
             setTimeout(push, 500);
@@ -61,7 +61,7 @@ const handler = requireRole(["admin", "master"])(async (req: NextRequest) => {
             logAudit({
               action: "run",
               cmd,
-              deviceId,
+              prodiceId,
               user: "admin",
               status: "done",
             });
@@ -78,9 +78,9 @@ const handler = requireRole(["admin", "master"])(async (req: NextRequest) => {
       },
     });
   } else {
-    // Pass deviceId for real device routing
-    const result = await qcityService.runRemoteCommand(cmd, deviceId);
-    logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
+    // Pass prodiceId for real prodice routing
+    const result = await qcityService.runRemoteCommand(cmd, prodiceId);
+    logAudit({ action: "run", cmd, prodiceId, user: "admin", status: "done" });
     return new Response(JSON.stringify(result), {
       headers: { "Content-Type": "application/json" },
     });

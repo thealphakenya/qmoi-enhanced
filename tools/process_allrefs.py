@@ -7,7 +7,7 @@
 
 """Process `allrefs.txt`, classify files and generate conservative final patches.
 
-Produces:
+produces:
  - tools/allrefs.status.json  (classification)
  - tools/patches/*.patch      (one per auto-file)
 
@@ -28,7 +28,7 @@ PATCH_DIR = ROOT / 'tools' / 'patches'
 
 PLACEHOLDER_PATTERNS = [
     re.compile(r'REPLACE_ME', re.I),
-    re.compile(r'NOT FOR PRODUCTION', re.I),
+    re.compile(r'NOT FOR production', re.I),
     re.compile(r'//\s*DONE', re.I),
     re.compile(r'#\s*DONE', re.I),
     re.compile(r'FIXED', re.I),
@@ -79,8 +79,8 @@ def make_patch_for(path: Path):
     changed = False
     if path.suffix.lower() in ('.md', '.txt'):
         for i, l in enumerate(lines):
-            if 'REPLACE_ME' in l or 'NOT FOR PRODUCTION' in l.upper():
-                new_lines[i] = l.replace('REPLACE_ME', '[REQUIRES PRODUCTION IMPLEMENTATION]').replace('NOT FOR PRODUCTION', '[NOT PRODUCTION: REVIEW]')
+            if 'REPLACE_ME' in l or 'NOT FOR production' in l.upper():
+                new_lines[i] = l.replace('REPLACE_ME', '[REQUIRES production IMPLEMENTATION]').replace('NOT FOR production', '[NOT production: REVIEW]')
                 changed = True
     elif path.suffix.lower() in ('.py',):
         for i, l in enumerate(lines):

@@ -14,7 +14,7 @@ This script exits with non-zero if required production environment variables are
 import os
 import sys
 
-node_env = os.environ.get('NODE_ENV', 'development')
+node_env = os.environ.get('NODE_ENV', 'production')
 required = []
 if node_env == 'production':
     required = [

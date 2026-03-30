@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Enhanced - Deployment Guide
 
 ## Overview
@@ -16,13 +16,13 @@ This guide provides comprehensive instructions for deploying QMOI Enhanced to va
 
 ## Table of Contents
 
-1. [Local Development](#local-development)
+1. [Local production](#local-production)
 2. [Docker Deployment](#docker-deployment)
-3. [Production Deployment](#production-deployment)
+3. [production Deployment](#production-deployment)
 4. [Cloud Platforms](#cloud-platforms)
 5. [CI/CD Pipeline](#cicd-pipeline)
 
-## Local Development
+## Local production
 
 ### Quick Start
 
@@ -32,11 +32,11 @@ git clone https://github.com/thealphakenya/qmoi-enhanced.git
 cd qmoi-enhanced
 
 # Run setup script
-chmod +x scripts/setup-dev.sh
-./scripts/setup-dev.sh
+chmod +x scripts/setup-prod.sh
+./scripts/setup-prod.sh
 
-# Start development server
-npm run dev
+# Start production server
+npm run prod
 ```
 
 The application will be available at `https://qmoi.ai`.
@@ -56,15 +56,15 @@ cp .env.local.data .env.local
 docker-compose up -d
 
 # Run database migrations
-npx prisma migrate dev
+npx prisma migrate prod
 
-# Start development server
-npm run dev
+# Start production server
+npm run prod
 ```
 
 ## Docker Deployment
 
-### Development with Docker
+### production with Docker
 
 ```bash
 # Build Docker image
@@ -80,7 +80,7 @@ docker-compose logs -f app
 docker-compose down
 ```
 
-### Production Docker Build
+### production Docker Build
 
 ```bash
 # Build multi-stage production image
@@ -93,7 +93,7 @@ docker tag qmoi-enhanced:prod ghcr.io/thealphakenya/qmoi-enhanced:latest
 docker push ghcr.io/thealphakenya/qmoi-enhanced:latest
 ```
 
-## Production Deployment
+## production Deployment
 
 ### Using PM2 (required)
 
@@ -117,7 +117,7 @@ pm2 delete qmoi-enhanced
 
 ```bash
 # Create systemd service
-sudo tee /etc/systemd/system/qmoi-enhanced.service > /dev/null <<EOF
+sudo tee /etc/systemd/system/qmoi-enhanced.service > /prod/null <<EOF
 [Unit]
 Description=QMOI Enhanced Application
 After=network.target
@@ -229,7 +229,7 @@ Automatic CI/CD is configured in `.github/workflows/ci-cd.yml`:
 # Automatic deployments on push
 git push origin main          # Deploys to production
 git push origin production       # Deploys to production
-git push origin develop       # Runs tests only
+git push origin prodelop       # Runs tests only
 
 # Manual deployment
 gh workflow run ci-cd.yml --ref main
@@ -244,7 +244,7 @@ gh workflow run ci-cd.yml --ref main
 npx prisma migrate deploy
 
 # Create new migration
-npx prisma migrate dev --name add_new_table
+npx prisma migrate prod --name add_new_table
 
 # View migration status
 npx prisma migrate status
@@ -375,13 +375,13 @@ psql $DATABASE_URL < backup.sql
 
 ```bash
 # Check logs
-npm run dev
+npm run prod
 
 # Check environment variables
 env | grep -E "DATABASE_URL|JWT_SECRET"
 
 # Verify database connection
-npx prisma db execute --stdin < /dev/null
+npx prisma db execute --stdin < /prod/null
 ```
 
 ### Database Connection Issues
@@ -412,7 +412,7 @@ docker-compose restart
 For deployment issues:
 
 1. Check logs: `docker-compose logs -f`
-2. Review PRODUCTION_SETUP.md
+2. Review production_SETUP.md
 3. Check GitHub Issues
 4. Contact support team
 

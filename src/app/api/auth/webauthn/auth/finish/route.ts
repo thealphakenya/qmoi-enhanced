@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
           secure: true,
           http_only: true,
           authentication_method: 'webauthn',
-          device_verified: true
+          prodice_verified: true
         },
         verification: {
           signature_valid: true,

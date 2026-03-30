@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 import { QmoiPlugin } from "./PluginManager";
 
 export const QuickAIWidgetPlugin: QmoiPlugin = {
@@ -15,7 +15,7 @@ export const QuickAIWidgetPlugin: QmoiPlugin = {
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    // Non-UI [PRODUCTION READY] for builds
+    // Non-UI [production READY] for builds
     return null;
   },
 };

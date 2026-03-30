@@ -154,7 +154,7 @@ def test_lion_production_readiness():
     """Test Lion enhancer production readiness checks."""
     prod_features = {
         'prod.md': {
-            'snippet': '''# Lion Production Guide
+            'snippet': '''# Lion production Guide
             - Load balancing: Enabled
             - Monitoring: Prometheus
             - Logging: EFK Stack

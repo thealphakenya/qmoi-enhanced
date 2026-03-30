@@ -15,7 +15,7 @@
   ],
   "description": "Comprehensive smart city management platform with IoT integration, urban analytics, and citizen services.",
   "features": [
-    "IoT Device Management",
+    "IoT prodice Management",
     "Urban Analytics",
     "Citizen Portal",
     "Traffic Management",
@@ -121,7 +121,7 @@
     "certificate_authority": "QMOI Root CA",
     "encryption": "AES-256",
     "secure_boot": true,
-    "sandboxing": true
+    "productioning": true
   },
   "generated_at": "2026-03-25T00:47:37.994797+00:00",
   "generator_version": "2.0.0",

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -155,7 +155,7 @@ class QMOILongformerAttention(nn.Module):
         
         # Expand to full sequence length
         full_scores = torch.zeros(batch_size, seq_len, num_heads, seq_len,
-                                device=scores.device)
+                                prodice=scores.prodice)
         full_scores[:, global_indices] = scores
         
         return full_scores
@@ -290,14 +290,14 @@ class QMOIReformerAttention(nn.Module):
     def compute_lsh_buckets(self, q: torch.Tensor, k: torch.Tensor) -> torch.Tensor:
         """Compute LSH buckets for queries and keys."""
         # Generate random projection vectors
-        proj = torch.randn(self.num_hashes, self.head_dim, device=q.device)
+        proj = torch.randn(self.num_hashes, self.head_dim, prodice=q.prodice)
         
         # Project queries and keys
         q_proj = torch.matmul(q, proj.transpose(-2, -1))
         k_proj = torch.matmul(k, proj.transpose(-2, -1))
         
         # Compute buckets
-        buckets = (q_proj > 0).long() * (2 ** torch.arange(self.num_hashes, device=q.device))
+        buckets = (q_proj > 0).long() * (2 ** torch.arange(self.num_hashes, prodice=q.prodice))
         buckets = buckets.sum(dim=-1)
         
         return buckets

@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI GitHub Releases - Master Index
 
 **Complete documentation for all QMOI apps available on GitHub Releases**
@@ -283,7 +283,7 @@ See detailed guide: `GITHUB_RELEASES_REALTIME_GUIDE.md`
 
 **All QMOI apps available on GitHub with downloads for every platform.**
 
-Status: ✅ Production Ready | Version: v1.2.3 | Date: 2025-11-12
+Status: ✅ production Ready | Version: v1.2.3 | Date: 2025-11-12
 
 ## 🔄 Evolution Status
 

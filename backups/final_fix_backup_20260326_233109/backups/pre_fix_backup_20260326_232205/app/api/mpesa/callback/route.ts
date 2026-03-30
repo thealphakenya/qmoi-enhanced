@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -11,11 +11,11 @@ import { logEvent } from "../../../../lib/security_check";
 import { verifyWebhook } from "@/lib/payments/service";
 import { notifyPaymentSuccess, notifyPaymentFailure } from "@/lib/notifier";
 
-// Production helper functions (module-level to avoid inner-declaration lint errors)
+// production helper functions (module-level to avoid inner-declaration lint errors)
 import { getPrismaClient } from "@/lib/prisma";
 
 async function updateMpesaTransaction(details: any) {
-  // Production: update the transaction record in the database
+  // production: update the transaction record in the database
   try {
     const prisma = await getPrismaClient();
     if (prisma && .transaction) {
@@ -127,7 +127,7 @@ export async function POST(_req: NextRequest) {
         transactionDate,
       });
 
-      // Production: Update database and trigger post-payment hooks
+      // production: Update database and trigger post-payment hooks
       await updateMpesaTransaction({
         checkoutRequestId: CheckoutRequestID,
         amount,

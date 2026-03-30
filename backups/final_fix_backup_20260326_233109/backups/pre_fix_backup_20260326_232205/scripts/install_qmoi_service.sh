@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env bash
 # Helper to install the data systemd unit for qmoi on a Linux host.
 # Requires sudo. Edit the USER/paths if necessary.

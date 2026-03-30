@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 {
   "generated_by": "generate_md_inventory.py",
   "generated_at": "2025-10-21T00:42:50.177271Z",
@@ -9,8 +9,8 @@
       "last_verified": null
     },
     {
-      "name": "ALLDEVICESSETTINGS.md",
-      "path": "/workspaces/qmoi-enhanced/ALLDEVICESSETTINGS.md",
+      "name": "ALLprodICESSETTINGS.md",
+      "path": "/workspaces/qmoi-enhanced/ALLprodICESSETTINGS.md",
       "last_verified": null
     },
     {
@@ -64,8 +64,8 @@
       "last_verified": null
     },
     {
-      "name": "AU[PRODUCTION READY]WNLOAD.md",
-      "path": "/workspaces/qmoi-enhanced/AU[PRODUCTION READY]WNLOAD.md",
+      "name": "AU[production READY]WNLOAD.md",
+      "path": "/workspaces/qmoi-enhanced/AU[production READY]WNLOAD.md",
       "last_verified": null
     },
     {
@@ -144,18 +144,18 @@
       "last_verified": null
     },
     {
-      "name": "DEVCOMMANDS.md",
-      "path": "/workspaces/qmoi-enhanced/DEVCOMMANDS.md",
+      "name": "prodCOMMANDS.md",
+      "path": "/workspaces/qmoi-enhanced/prodCOMMANDS.md",
       "last_verified": null
     },
     {
-      "name": "DEVICERESOURCEOPTIMIZATION.md",
-      "path": "/workspaces/qmoi-enhanced/DEVICERESOURCEOPTIMIZATION.md",
+      "name": "prodICERESOURCEOPTIMIZATION.md",
+      "path": "/workspaces/qmoi-enhanced/prodICERESOURCEOPTIMIZATION.md",
       "last_verified": null
     },
     {
-      "name": "DOWNLOADQMOIAIAPPALLDEVICES.md",
-      "path": "/workspaces/qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md",
+      "name": "DOWNLOADQMOIAIAPPALLprodICES.md",
+      "path": "/workspaces/qmoi-enhanced/DOWNLOADQMOIAIAPPALLprodICES.md",
       "last_verified": null
     },
     {
@@ -289,13 +289,13 @@
       "last_verified": null
     },
     {
-      "name": "POSTPRODUCTIONCHECKLIST.md",
-      "path": "/workspaces/qmoi-enhanced/POSTPRODUCTIONCHECKLIST.md",
+      "name": "POSTproductionCHECKLIST.md",
+      "path": "/workspaces/qmoi-enhanced/POSTproductionCHECKLIST.md",
       "last_verified": null
     },
     {
-      "name": "PRODUCTIONCHECKLIST.md",
-      "path": "/workspaces/qmoi-enhanced/PRODUCTIONCHECKLIST.md",
+      "name": "productionCHECKLIST.md",
+      "path": "/workspaces/qmoi-enhanced/productionCHECKLIST.md",
       "last_verified": null
     },
     {
@@ -319,13 +319,13 @@
       "last_verified": null
     },
     {
-      "name": "QCITYDEVICEAUTOUPGRADE.md",
-      "path": "/workspaces/qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md",
+      "name": "QCITYprodICEAUTOUPGRADE.md",
+      "path": "/workspaces/qmoi-enhanced/QCITYprodICEAUTOUPGRADE.md",
       "last_verified": null
     },
     {
-      "name": "QCITYMAINDEVICE.md",
-      "path": "/workspaces/qmoi-enhanced/QCITYMAINDEVICE.md",
+      "name": "QCITYMAINprodICE.md",
+      "path": "/workspaces/qmoi-enhanced/QCITYMAINprodICE.md",
       "last_verified": null
     },
     {
@@ -349,8 +349,8 @@
       "last_verified": null
     },
     {
-      "name": "QCITY_DEVICE_MANAGEMENT.md",
-      "path": "/workspaces/qmoi-enhanced/QCITY_DEVICE_MANAGEMENT.md",
+      "name": "QCITY_prodICE_MANAGEMENT.md",
+      "path": "/workspaces/qmoi-enhanced/QCITY_prodICE_MANAGEMENT.md",
       "last_verified": null
     },
     {
@@ -509,13 +509,13 @@
       "last_verified": null
     },
     {
-      "name": "QMOIALLDEVICESHANDSFREE.md",
-      "path": "/workspaces/qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md",
+      "name": "QMOIALLprodICESHANDSFREE.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIALLprodICESHANDSFREE.md",
       "last_verified": null
     },
     {
-      "name": "QMOIALLDEVICESINSTALL.md",
-      "path": "/workspaces/qmoi-enhanced/QMOIALLDEVICESINSTALL.md",
+      "name": "QMOIALLprodICESINSTALL.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIALLprodICESINSTALL.md",
       "last_verified": null
     },
     {
@@ -554,8 +554,8 @@
       "last_verified": null
     },
     {
-      "name": "QMOIAUTOAPPSDEV.md",
-      "path": "/workspaces/qmoi-enhanced/QMOIAUTOAPPSDEV.md",
+      "name": "QMOIAUTOAPPSprod.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAUTOAPPSprod.md",
       "last_verified": null
     },
     {
@@ -564,13 +564,13 @@
       "last_verified": null
     },
     {
-      "name": "QMOIAUTODEV.md",
-      "path": "/workspaces/qmoi-enhanced/QMOIAUTODEV.md",
+      "name": "QMOIAUTOprod.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAUTOprod.md",
       "last_verified": null
     },
     {
-      "name": "QMOIAUTODEVDOCTESTS.MD",
-      "path": "/workspaces/qmoi-enhanced/QMOIAUTODEVDOCTESTS.MD",
+      "name": "QMOIAUTOprodDOCTESTS.MD",
+      "path": "/workspaces/qmoi-enhanced/QMOIAUTOprodDOCTESTS.MD",
       "last_verified": null
     },
     {
@@ -679,13 +679,13 @@
       "last_verified": null
     },
     {
-      "name": "QMOIDEV.md",
-      "path": "/workspaces/qmoi-enhanced/QMOIDEV.md",
+      "name": "QMOIprod.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIprod.md",
       "last_verified": null
     },
     {
-      "name": "QMOIDEVICES.md",
-      "path": "/workspaces/qmoi-enhanced/QMOIDEVICES.md",
+      "name": "QMOIprodICES.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIprodICES.md",
       "last_verified": null
     },
     {
@@ -769,18 +769,18 @@
       "last_verified": null
     },
     {
-      "name": "QMOIGITHUBDEV.md",
-      "path": "/workspaces/qmoi-enhanced/QMOIGITHUBDEV.md",
+      "name": "QMOIGITHUBprod.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIGITHUBprod.md",
       "last_verified": null
     },
     {
-      "name": "QMOIGITLABDEV.md",
-      "path": "/workspaces/qmoi-enhanced/QMOIGITLABDEV.md",
+      "name": "QMOIGITLABprod.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIGITLABprod.md",
       "last_verified": null
     },
     {
-      "name": "QMOIGITPODDEV.md",
-      "path": "/workspaces/qmoi-enhanced/QMOIGITPODDEV.md",
+      "name": "QMOIGITPODprod.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIGITPODprod.md",
       "last_verified": null
     },
     {
@@ -829,13 +829,13 @@
       "last_verified": null
     },
     {
-      "name": "QMOIOWNDEVICE.md",
-      "path": "/workspaces/qmoi-enhanced/QMOIOWNDEVICE.md",
+      "name": "QMOIOWNprodICE.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIOWNprodICE.md",
       "last_verified": null
     },
     {
-      "name": "QMOIPREDEVDOCACTIONS.md",
-      "path": "/workspaces/qmoi-enhanced/QMOIPREDEVDOCACTIONS.md",
+      "name": "QMOIPREprodDOCACTIONS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIPREprodDOCACTIONS.md",
       "last_verified": null
     },
     {
@@ -874,8 +874,8 @@
       "last_verified": null
     },
     {
-      "name": "QMOISPACEDEV.md",
-      "path": "/workspaces/qmoi-enhanced/QMOISPACEDEV.md",
+      "name": "QMOISPACEprod.md",
+      "path": "/workspaces/qmoi-enhanced/QMOISPACEprod.md",
       "last_verified": null
     },
     {
@@ -899,8 +899,8 @@
       "last_verified": null
     },
     {
-      "name": "QMOIVERCELDEV.md",
-      "path": "/workspaces/qmoi-enhanced/QMOIVERCELDEV.md",
+      "name": "QMOIVERCELprod.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIVERCELprod.md",
       "last_verified": null
     },
     {
@@ -1224,18 +1224,18 @@
       "last_verified": null
     },
     {
-      "name": "docs/QMOIGITHUBDEV.md",
-      "path": "/workspaces/qmoi-enhanced/docs/QMOIGITHUBDEV.md",
+      "name": "docs/QMOIGITHUBprod.md",
+      "path": "/workspaces/qmoi-enhanced/docs/QMOIGITHUBprod.md",
       "last_verified": null
     },
     {
-      "name": "docs/QMOIGITLABDEV.md",
-      "path": "/workspaces/qmoi-enhanced/docs/QMOIGITLABDEV.md",
+      "name": "docs/QMOIGITLABprod.md",
+      "path": "/workspaces/qmoi-enhanced/docs/QMOIGITLABprod.md",
       "last_verified": null
     },
     {
-      "name": "docs/QMOIVERCELDEV.md",
-      "path": "/workspaces/qmoi-enhanced/docs/QMOIVERCELDEV.md",
+      "name": "docs/QMOIVERCELprod.md",
+      "path": "/workspaces/qmoi-enhanced/docs/QMOIVERCELprod.md",
       "last_verified": null
     },
     {
@@ -1284,8 +1284,8 @@
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/ALLDEVICESSETTINGS.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/ALLDEVICESSETTINGS.md",
+      "name": "qmoi-enhanced/ALLprodICESSETTINGS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/ALLprodICESSETTINGS.md",
       "last_verified": null
     },
     {
@@ -1319,8 +1319,8 @@
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/AU[PRODUCTION READY]WNLOAD.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/AU[PRODUCTION READY]WNLOAD.md",
+      "name": "qmoi-enhanced/AU[production READY]WNLOAD.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/AU[production READY]WNLOAD.md",
       "last_verified": null
     },
     {
@@ -1389,18 +1389,18 @@
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/DEVCOMMANDS.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/DEVCOMMANDS.md",
+      "name": "qmoi-enhanced/prodCOMMANDS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/prodCOMMANDS.md",
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/DEVICERESOURCEOPTIMIZATION.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/DEVICERESOURCEOPTIMIZATION.md",
+      "name": "qmoi-enhanced/prodICERESOURCEOPTIMIZATION.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/prodICERESOURCEOPTIMIZATION.md",
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md",
+      "name": "qmoi-enhanced/DOWNLOADQMOIAIAPPALLprodICES.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/DOWNLOADQMOIAIAPPALLprodICES.md",
       "last_verified": null
     },
     {
@@ -1514,13 +1514,13 @@
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md",
+      "name": "qmoi-enhanced/QCITYprodICEAUTOUPGRADE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QCITYprodICEAUTOUPGRADE.md",
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/QCITYMAINDEVICE.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QCITYMAINDEVICE.md",
+      "name": "qmoi-enhanced/QCITYMAINprodICE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QCITYMAINprodICE.md",
       "last_verified": null
     },
     {
@@ -1544,8 +1544,8 @@
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/QCITY_DEVICE_MANAGEMENT.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QCITY_DEVICE_MANAGEMENT.md",
+      "name": "qmoi-enhanced/QCITY_prodICE_MANAGEMENT.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QCITY_prodICE_MANAGEMENT.md",
       "last_verified": null
     },
     {
@@ -1699,13 +1699,13 @@
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md",
+      "name": "qmoi-enhanced/QMOIALLprodICESHANDSFREE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIALLprodICESHANDSFREE.md",
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/QMOIALLDEVICESINSTALL.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIALLDEVICESINSTALL.md",
+      "name": "qmoi-enhanced/QMOIALLprodICESINSTALL.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIALLprodICESINSTALL.md",
       "last_verified": null
     },
     {
@@ -1744,8 +1744,8 @@
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/QMOIAUTOAPPSDEV.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTOAPPSDEV.md",
+      "name": "qmoi-enhanced/QMOIAUTOAPPSprod.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTOAPPSprod.md",
       "last_verified": null
     },
     {
@@ -1754,13 +1754,13 @@
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/QMOIAUTODEV.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTODEV.md",
+      "name": "qmoi-enhanced/QMOIAUTOprod.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTOprod.md",
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/QMOIAUTODEVDOCTESTS.MD",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTODEVDOCTESTS.MD",
+      "name": "qmoi-enhanced/QMOIAUTOprodDOCTESTS.MD",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTOprodDOCTESTS.MD",
       "last_verified": null
     },
     {
@@ -1869,13 +1869,13 @@
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/QMOIDEV.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIDEV.md",
+      "name": "qmoi-enhanced/QMOIprod.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIprod.md",
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/QMOIDEVICES.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIDEVICES.md",
+      "name": "qmoi-enhanced/QMOIprodICES.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIprodICES.md",
       "last_verified": null
     },
     {
@@ -1949,18 +1949,18 @@
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/QMOIGITHUBDEV.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIGITHUBDEV.md",
+      "name": "qmoi-enhanced/QMOIGITHUBprod.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIGITHUBprod.md",
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/QMOIGITLABDEV.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIGITLABDEV.md",
+      "name": "qmoi-enhanced/QMOIGITLABprod.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIGITLABprod.md",
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/QMOIGITPODDEV.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIGITPODDEV.md",
+      "name": "qmoi-enhanced/QMOIGITPODprod.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIGITPODprod.md",
       "last_verified": null
     },
     {
@@ -2004,13 +2004,13 @@
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/QMOIOWNDEVICE.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIOWNDEVICE.md",
+      "name": "qmoi-enhanced/QMOIOWNprodICE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIOWNprodICE.md",
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/QMOIPREDEVDOCACTIONS.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIPREDEVDOCACTIONS.md",
+      "name": "qmoi-enhanced/QMOIPREprodDOCACTIONS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIPREprodDOCACTIONS.md",
       "last_verified": null
     },
     {
@@ -2049,8 +2049,8 @@
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/QMOISPACEDEV.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOISPACEDEV.md",
+      "name": "qmoi-enhanced/QMOISPACEprod.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOISPACEprod.md",
       "last_verified": null
     },
     {
@@ -2074,8 +2074,8 @@
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/QMOIVERCELDEV.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIVERCELDEV.md",
+      "name": "qmoi-enhanced/QMOIVERCELprod.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIVERCELprod.md",
       "last_verified": null
     },
     {
@@ -2349,18 +2349,18 @@
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/docs/QMOIGITHUBDEV.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/QMOIGITHUBDEV.md",
+      "name": "qmoi-enhanced/docs/QMOIGITHUBprod.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/QMOIGITHUBprod.md",
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/docs/QMOIGITLABDEV.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/QMOIGITLABDEV.md",
+      "name": "qmoi-enhanced/docs/QMOIGITLABprod.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/QMOIGITLABprod.md",
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/docs/QMOIVERCELDEV.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/QMOIVERCELDEV.md",
+      "name": "qmoi-enhanced/docs/QMOIVERCELprod.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/QMOIVERCELprod.md",
       "last_verified": null
     },
     {

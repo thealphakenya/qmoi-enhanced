@@ -246,7 +246,7 @@ console.log(usedVariable);
   "env": {
     "NODE_ENV": "production",
     "NEXT_PUBLIC_APP_ENV": "production",
-    "QMOI_AUTODEV_ENABLED": "true"
+    "QMOI_AUTOprod_ENABLED": "true"
   },
   "invalid": "property"
 }`;
@@ -319,7 +319,7 @@ console.log(usedVariable);
   async setupCloudUnavailable() {
     console.log('  ☁️ Setting up Cloud Resource Unavailable test...');
     
-    // Production implementationing a service or blocking a port
+    // production implementationing a service or blocking a port
     const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
     await this.backupFile(iptablesPath);
     const iptablesContent = `*filter

@@ -173,7 +173,7 @@ export class AutocloneEvolutionSystem extends EventEmitter {
 
     // Process all selected autoclones concurrently
     const promises = toProcess.map((cloneId) =>
-      this.analyzeAndEvolveAutoclone(cloneId).catch((error) =>
+      this.analyzeAnprodolveAutoclone(cloneId).catch((error) =>
         consoleLog('❌ Error analyzing autoclone', { cloneId, error })
       )
     );
@@ -306,7 +306,7 @@ export class AutocloneEvolutionSystem extends EventEmitter {
   /**
    * Analyze and evolve a single autoclone
    */
-  private async analyzeAndEvolveAutoclone(cloneId: string): Promise<void> {
+  private async analyzeAnprodolveAutoclone(cloneId: string): Promise<void> {
     if (this.activeAnalysis.has(cloneId)) return;
 
     const autoclone = this.autoclones.get(cloneId);

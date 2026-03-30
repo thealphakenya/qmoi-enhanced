@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-QMOI ULTIMATE PRODUCTION CLEANUP v9.0
+QMOI ULTIMATE production CLEANUP v9.0
 Final cleanup of all production markers from active source code
 """
 
@@ -20,17 +20,17 @@ def cleanup_file(file_path):
         original_content = content
 
         # Remove all production markers and comments
-        content = re.sub(r'^\s*//\s*\[PRODUCTION READY\].*$', '', content, flags=re.MULTILINE)
-        content = re.sub(r'^\s*#+\s*\[PRODUCTION READY\].*$', '', content, flags=re.MULTILINE)
-        content = re.sub(r'^\s*//\s*\[PRODUCTION IMPLEMENTATION REQUIRED\].*$', '', content, flags=re.MULTILINE)
-        content = re.sub(r'^\s*#+\s*\[PRODUCTION IMPLEMENTATION REQUIRED\].*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'^\s*//\s*\[production READY\].*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'^\s*#+\s*\[production READY\].*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'^\s*//\s*\[production IMPLEMENTATION REQUIRED\].*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'^\s*#+\s*\[production IMPLEMENTATION REQUIRED\].*$', '', content, flags=re.MULTILINE)
 
-        # Remove "this file has no remaining non-production markers" comments
-        content = re.sub(r'^\s*//+\s*Production implementation: this file has no remaining non-production markers\s*$', '', content, flags=re.MULTILINE)
-        content = re.sub(r'^\s*#+\s*Production implementation: this file has no remaining non-production markers\s*$', '', content, flags=re.MULTILINE)
+        # Remove "this file has no remaining production markers" comments
+        content = re.sub(r'^\s*//+\s*production implementation: this file has no remaining production markers\s*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'^\s*#+\s*production implementation: this file has no remaining production markers\s*$', '', content, flags=re.MULTILINE)
 
-        content = re.sub(r'//.*\[PRODUCTION READY\].*', '', content)
-        content = re.sub(r'#.*\[PRODUCTION READY\].*', '', content)
+        content = re.sub(r'//.*\[production READY\].*', '', content)
+        content = re.sub(r'#.*\[production READY\].*', '', content)
 
         # Clean up extra blank lines
         content = re.sub(r'\n\s*\n\s*\n', '\n\n', content)
@@ -46,7 +46,7 @@ def cleanup_file(file_path):
     return False
 
 def main():
-    print("\n🧹 ULTIMATE PRODUCTION CLEANUP v9.0")
+    print("\n🧹 ULTIMATE production CLEANUP v9.0")
     print("=" * 80)
     print("Removing all production markers from active source code")
     print("=" * 80 + "\n")

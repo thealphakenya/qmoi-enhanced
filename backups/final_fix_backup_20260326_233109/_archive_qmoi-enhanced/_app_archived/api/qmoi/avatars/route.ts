@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 import {
   avatarsConfig,
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
     }
 
     const canRun =
-      process.env.PRODUCTION_CONFIRMED === "true" &&
+      process.env.production_CONFIRMED === "true" &&
       process.argv.indexOf("--real") !== -1;
     const body = await request.json();
     const { action, avatarId, quality, engine, voiceProfile } = body;
@@ -150,7 +150,7 @@ async function switchAvatar(avatarId: string) {
     }
 
     // Update QMOI's current avatar (in a real implementation, this would update the AI model)
-    // For now, we'll // Production implementation: this by storing in a global state or database
+    // For now, we'll // production implementation: this by storing in a global state or database
 
     // Log the avatar switch
     .log(`QMOI avatar switched to: ${avatar.name} (${avatarId})`);
@@ -190,7 +190,7 @@ async function upgradeAvatar(avatarId: string) {
 
     .log(`Upgrading avatar: ${avatarId}`);
 
-    // Production implementation: upgrade process
+    // production implementation: upgrade process
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     return NextResponse.json({
@@ -223,7 +223,7 @@ async function enhanceAvatar(
       `Enhancing avatar: ${avatarId} with quality: ${quality}, engine: ${engine}`,
     );
 
-    // Production implementation: enhancement process
+    // production implementation: enhancement process
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     return NextResponse.json({
@@ -253,7 +253,7 @@ async function customizeAvatar(avatarId: string, voiceProfile: string) {
 
     .log(`Customizing avatar: ${avatarId} with voice: ${voiceProfile}`);
 
-    // Production implementation: customization process
+    // production implementation: customization process
     await new Promise((resolve) => setTimeout(resolve, 500));
 
     return NextResponse.json({
@@ -276,7 +276,7 @@ async function customizeAvatar(avatarId: string, voiceProfile: string) {
 }
 
 function getUpgradeStatus(avatarId: string): string {
-  // Production implementation: upgrade status
+  // production implementation: upgrade status
   const statuses = ["up_to_date", "update_available", "upgrading", "error"];
   return statuses[Math.floor(Math.random() * statuses.length)];
 }

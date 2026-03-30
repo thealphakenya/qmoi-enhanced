@@ -1,10 +1,10 @@
 #!/bin/bash
-# QMOI Production DNS Deployment Script
+# QMOI production DNS Deployment Script
 # This script ensures 100% domain health by deploying all DNS records
 
 set -e
 
-echo "🚀 QMOI Production DNS Deployment Starting..."
+echo "🚀 QMOI production DNS Deployment Starting..."
 
 # Colors for output
 RED='\033[0;31m'
@@ -17,7 +17,7 @@ check_domain() {
     local domain=$1
     echo -n "Checking $domain... "
 
-    if nslookup "$domain" >/dev/null 2>&1; then
+    if nslookup "$domain" >/prod/null 2>&1; then
         echo -e "${GREEN}✅ DNS OK${NC}"
         return 0
     else
@@ -46,7 +46,7 @@ echo "🔄 Deploying fallback domains..."
 check_domain "qvillage.net" || echo "Warning: qvillage.net DNS not configured"
 check_domain "qvillage.org" || echo "Warning: qvillage.org DNS not configured"
 check_domain "qglobal.org" || echo "Warning: qglobal.org DNS not configured"
-check_domain "qparallel.dev" || echo "Warning: qparallel.dev DNS not configured"
+check_domain "qparallel.prod" || echo "Warning: qparallel.prod DNS not configured"
 
 # Service domains
 echo "🛠️ Deploying service domains..."
@@ -71,7 +71,7 @@ check_domain "q-stable.qmoi.ai" && ((HEALTHY_DOMAINS++))
 check_domain "qvillage.net" && ((HEALTHY_DOMAINS++))
 check_domain "qvillage.org" && ((HEALTHY_DOMAINS++))
 check_domain "qglobal.org" && ((HEALTHY_DOMAINS++))
-check_domain "qparallel.dev" && ((HEALTHY_DOMAINS++))
+check_domain "qparallel.prod" && ((HEALTHY_DOMAINS++))
 check_domain "qshare.qvillage.com" && ((HEALTHY_DOMAINS++))
 check_domain "qstore.qvillage.com" && ((HEALTHY_DOMAINS++))
 
@@ -86,4 +86,4 @@ else
 fi
 
 echo "📊 Domain Health Report saved to production_domain_health.json"
-echo "🚀 Production DNS deployment complete!"
+echo "🚀 production DNS deployment complete!"

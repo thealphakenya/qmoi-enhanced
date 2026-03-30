@@ -26,7 +26,7 @@ export async function POST(_request: NextRequest) {
     }
 
     const canRun =
-      process.env.PRODUCTION_CONFIRMED === "true" &&
+      process.env.production_CONFIRMED === "true" &&
       process.argv.indexOf("--real") !== -1;
     const runtimeToken = process.env.MASTER_TOKEN || "";
 

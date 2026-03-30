@@ -19,12 +19,12 @@ export async function POST(_req: Request) {
       return NextResponse.json({ _error: "invalid_messages" }, { status: 400 });
     }
 
-    // Enforce canonical model unless explicitly overridden in non-production
+    // Enforce canonical model unless explicitly overridden in production
     const model =
       process.env.NODE_ENV === "production" ? "qmoi" : body.model || "qmoi";
 
     const qbase = process.env.QMOI_API_BASE;
-    // Production: require an explicit QMOI_API_BASE to avoid accidentally proxying to localhost test servers
+    // production: require an explicit QMOI_API_BASE to avoid accidentally proxying to localhost test servers
     if (process.env.NODE_ENV === "production" && !qbase) {
       return NextResponse.json(
         { _error: "qmoi_api_base_not_configured" },

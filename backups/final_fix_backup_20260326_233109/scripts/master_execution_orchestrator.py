@@ -5,7 +5,7 @@
 
 #!/usr/bin/env python3
 """
-// Production implementation: Master Execution Orchestrator
+// production implementation: Master Execution Orchestrator
 Coordinates all production readiness tasks in optimal sequence
 Monitors progress and generates comprehensive reports
 """
@@ -96,11 +96,11 @@ class MasterExecutionOrchestrator:
             timeout=300
         )
         
-        # Phase 2: Non-Production Marker Detection
+        # Phase 2: production Marker Detection
         self.add_task(
             name="Comprehensive Marker Scan",
-            command=['python3', 'scripts/scan_nonproduction_endpoints.py', '--aggressive', '--all-files'],
-            description="Find all remaining non-production markers across codebase",
+            command=['python3', 'scripts/scan_production_endpoints.py', '--aggressive', '--all-files'],
+            description="Find all remaining production markers across codebase",
             critical=True,
             timeout=300
         )
@@ -109,7 +109,7 @@ class MasterExecutionOrchestrator:
         self.add_task(
             name="Marker Elimination & Cleanup",
             command=['python3', 'scripts/finalize_production_ready.py', '--fix-all', '--verbose'],
-            description="Remove all detected non-production markers",
+            description="Remove all detected production markers",
             critical=False,
             timeout=600
         )
@@ -150,9 +150,9 @@ class MasterExecutionOrchestrator:
             timeout=120
         )
         
-        # Phase 8: Final Production Report
+        # Phase 8: Final production Report
         self.add_task(
-            name="Generate Production Readiness Report",
+            name="Generate production Readiness Report",
             command=['python3', 'scripts/ensure_production_readiness.py', '--final'],
             description="Compile all findings into final production report",
             critical=True,

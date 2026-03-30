@@ -3,17 +3,17 @@
 // Last evolution cycle: 2026-03-26T03:58:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 4 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 4 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 /// <reference types="cypress" />
 
 describe("QMOI Kernel Panel SSO/OAuth E2E - Multiple Providers", () => {
   it("allows login via Google OAuth", () => {
     cy.visit(
-      "/auth/callback?provider=google&token=google-[PRODUCTION IMPLEMENTATION REQUIRED]-token",
+      "/auth/callback?provider=google&token=google-[production IMPLEMENTATION REQUIRED]-token",
     );
     cy.setCookie(
       "authToken",
-      "google-[PRODUCTION IMPLEMENTATION REQUIRED]-token",
+      "google-[production IMPLEMENTATION REQUIRED]-token",
     );
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");
@@ -21,11 +21,11 @@ describe("QMOI Kernel Panel SSO/OAuth E2E - Multiple Providers", () => {
 
   it("allows login via GitHub OAuth", () => {
     cy.visit(
-      "/auth/callback?provider=github&token=github-[PRODUCTION IMPLEMENTATION REQUIRED]-token",
+      "/auth/callback?provider=github&token=github-[production IMPLEMENTATION REQUIRED]-token",
     );
     cy.setCookie(
       "authToken",
-      "github-[PRODUCTION IMPLEMENTATION REQUIRED]-token",
+      "github-[production IMPLEMENTATION REQUIRED]-token",
     );
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");

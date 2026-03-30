@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextResponse } from "next/server";
@@ -62,7 +62,7 @@ function logToDashboard(
   const sanitizedLog = removeControlChars(JSON.stringify(logEntry));
   .log(sanitizedLog);
 
-  // Production: Send generated media metadata to WebSocket dashboard
+  // production: Send generated media metadata to WebSocket dashboard
   // Requires: Socket.io or Next.js WebSocket integration
   return logEntry;
 }
@@ -108,7 +108,7 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
       provider: cloudProvider,
     });
 
-    // Production implementation: resolve // Production implementation: items
+    // production implementation: resolve // production implementation: items
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     task.status = "processing";
@@ -121,7 +121,7 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
       progress: task.progress,
     });
 
-    // Production implementation: resolve // Production implementation: items
+    // production implementation: resolve // production implementation: items
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     task.status = "completed";
@@ -251,7 +251,7 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
     }
 
-    // Production: Query task status from Prisma DB or cloud job service
+    // production: Query task status from Prisma DB or cloud job service
     // For cloud jobs: use Celery, Bull, or AWS SQS for async task tracking
     const cloudTask: CloudTask = {
       id: taskId,

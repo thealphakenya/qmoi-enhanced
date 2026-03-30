@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "SYNCREPOS.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -35,7 +35,7 @@ This file lists all repositories that QMOI is synced with and can automatically 
 - Propagate fixes, enhancements, and automation features to all synced repos
 - Track changes and synchronize across all listed repos
 - Security, anti-hacking, anti-tracking, and parallel VPN features
-- QVS, autodevelopment, evolution, and memory awareness
+- QVS, autoproduction, evolution, and memory awareness
 - Auto-check and update related .md files and features in all synced repos
 
 <!-- QMOI_VALIDATION_START -->

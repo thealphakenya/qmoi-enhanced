@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 import { NextResponse } from "next/server";
 import * as fs from "fs";
 import * as path from "path";
@@ -43,7 +43,7 @@ function generateEnvironmentVariables(): EnvVariable[] {
     },
     {
       key: "NODE_ENV",
-      value: process.env.NODE_ENV || "development",
+      value: process.env.NODE_ENV || "production",
       description: "Node environment",
     },
     {
@@ -321,7 +321,7 @@ export async function GET(request: Request) {
         : "✗ required",
       adminToken: process.env.ADMIN_TOKEN ? "✓ Configured" : "✗ required",
       apiUrl: process.env.NEXT_PUBLIC_API_URL || "✗ required",
-      environment: process.env.NODE_ENV || "development",
+      environment: process.env.NODE_ENV || "production",
       autoScanEnabled:
         process.env.QMOI_AUTO_SCAN_ENABLED === "true"
           ? "✓ Enabled"

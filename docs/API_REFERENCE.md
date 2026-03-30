@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # QMOI API Reference - Complete Documentation
 
 ## Overview
@@ -257,7 +257,7 @@ const auth = await qmoi.authenticate({
 
 ### POST /qmoi/chat
 
-Superior AI conversation processing with consciousness [PRODUCTION READY].
+Superior AI conversation processing with consciousness [production READY].
 
 **Request:**
 
@@ -744,7 +744,7 @@ async function apiCall() {
 
 ### v1.2.3 (December 2025)
 
-- ✅ Enhanced QMOI consciousness [PRODUCTION READY]
+- ✅ Enhanced QMOI consciousness [production READY]
 - ✅ Parallel processing optimization
 - ✅ QVillage real-time synchronization
 - ✅ Auto-healing system implementation

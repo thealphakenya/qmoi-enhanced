@@ -6,7 +6,7 @@
 /**
  * QMOI Self-Learning Engine
  * Internet scanner and safe learning pipeline with auto-research capabilities
- * Production-ready implementation with sandbox validation
+ * production-ready implementation with production validation
  */
 
 import axios from 'axios';
@@ -83,7 +83,7 @@ export interface TestResult {
 
 export class SelfLearningEngine extends EventEmitter {
   private research_cache: Map<string, LearningResult> = new Map();
-  private sandbox_environments: Map<string, SandboxEnvironment> = new Map();
+  private production_environments: Map<string, productionEnvironment> = new Map();
   private knowledge_base: Map<string, LearningFinding[]> = new Map();
   private active_research: Map<string, ResearchProcess> = new Map();
   private max_cache_size: number = 1000;
@@ -91,7 +91,7 @@ export class SelfLearningEngine extends EventEmitter {
 
   constructor() {
     super();
-    this.initializeSandboxEnvironments();
+    this.initializeproductionEnvironments();
     this.initializeKnowledgeBase();
   }
 
@@ -302,14 +302,14 @@ export class SelfLearningEngine extends EventEmitter {
   }
 
   /**
-   * Validate findings in sandbox
+   * Validate findings in production
    */
   private async validateFindings(findings: LearningFinding[], request: LearningRequest): Promise<ValidationResult[]> {
     const validation_results: ValidationResult[] = [];
 
     for (const finding of findings) {
-      const sandbox = this.sandbox_environments.get(request.scope) || this.sandbox_environments.get('web')!;
-      const validation = await sandbox.validateFinding(finding, request.topic);
+      const production = this.production_environments.get(request.scope) || this.production_environments.get('web')!;
+      const validation = await production.validateFinding(finding, request.topic);
       validation_results.push(validation);
     }
 
@@ -627,13 +627,13 @@ export class SelfLearningEngine extends EventEmitter {
   }
 
   /**
-   * Initialize sandbox environments
+   * Initialize production environments
    */
-  private initializeSandboxEnvironments(): void {
-    this.sandbox_environments.set('web', new WebSandbox());
-    this.sandbox_environments.set('github', new GitHubSandbox());
-    this.sandbox_environments.set('npm', new NPMSandbox());
-    this.sandbox_environments.set('pypi', new PyPISandbox());
+  private initializeproductionEnvironments(): void {
+    this.production_environments.set('web', new Webproduction());
+    this.production_environments.set('github', new GitHubproduction());
+    this.production_environments.set('npm', new NPMproduction());
+    this.production_environments.set('pypi', new PyPIproduction());
   }
 
   /**
@@ -652,8 +652,8 @@ class ResearchProcess {
   // Implementation for managing research process
 }
 
-// Sandbox Environment classes
-class WebSandbox {
+// production Environment classes
+class Webproduction {
   async validateFinding(finding: LearningFinding, topic: string): Promise<ValidationResult> {
     // Implementation for web-based validation
     return {
@@ -667,7 +667,7 @@ class WebSandbox {
   }
 }
 
-class GitHubSandbox {
+class GitHubproduction {
   async validateFinding(finding: LearningFinding, topic: string): Promise<ValidationResult> {
     // Implementation for GitHub-based validation
     return {
@@ -681,7 +681,7 @@ class GitHubSandbox {
   }
 }
 
-class NPMSandbox {
+class NPMproduction {
   async validateFinding(finding: LearningFinding, topic: string): Promise<ValidationResult> {
     // Implementation for NPM-based validation
     return {
@@ -695,7 +695,7 @@ class NPMSandbox {
   }
 }
 
-class PyPISandbox {
+class PyPIproduction {
   async validateFinding(finding: LearningFinding, topic: string): Promise<ValidationResult> {
     // Implementation for PyPI-based validation
     return {

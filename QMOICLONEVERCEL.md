@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOI Clone (Vercel)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -16,7 +16,7 @@ title: "QMOI Clone (Vercel)"
 
 # QMOI Clone (Vercel)
 
-This is a [PRODUCTION READY] [PRODUCTION READY] for the QMOI Vercel clone instructions. Replace with full migration/deployment steps for Vercel when ready.
+This is a [production READY] [production READY] for the QMOI Vercel clone instructions. Replace with full migration/deployment steps for Vercel when ready.
 
 Sections to add:
 

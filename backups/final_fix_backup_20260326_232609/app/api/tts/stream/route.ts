@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "audioId query param required" }, { status: 400 });
   }
 
-  // Production:, this should stream an actual audio file or signed URL.
+  // production:, this should stream an actual audio file or signed URL.
   return NextResponse.json({
     success: true,
     audioId,

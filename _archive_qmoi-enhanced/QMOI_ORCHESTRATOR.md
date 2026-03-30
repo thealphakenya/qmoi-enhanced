@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOI Orchestrator"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -26,10 +26,10 @@ Key features:
 
 Important safety notes:
 
-- This is a conservative scaffold: many repo files still contain [PRODUCTION READY]s and full scripts. Review build steps before enabling `--apply` or deploying to production.
+- This is a conservative scaffold: many repo files still contain [production READY]s and full scripts. Review build steps before enabling `--apply` or deploying to production.
 - Secrets must be provisioned securely to runners (use keyring, GitHub Secrets, or a cloud KMS). Do not store raw secrets in the repository.
 
-Quick start (development):
+Quick start (production):
 
 ```bash
 # dry-run orchestrator
@@ -44,7 +44,7 @@ python qmoi-enhanced/qmoi-enhanced/qmoi_orchestrator.py --dry-run
 
 Next steps to make this production-ready:
 
-- Replace [PRODUCTION READY] auto-fixer script references with concrete fixers.
+- Replace [production READY] auto-fixer script references with concrete fixers.
 - Integrate with managed secret stores and add transient token fetchers for CI/runners.
 - Replace the passive build driver with per-platform build pipelines and signing workflows.
 

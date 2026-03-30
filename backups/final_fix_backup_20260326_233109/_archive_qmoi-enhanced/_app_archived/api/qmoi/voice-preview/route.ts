@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
@@ -38,8 +38,8 @@ export async function POST(request: NextRequest) {
 }
 
 async function generateTTSAudio(voiceId: string, text: string, quality: string, volume: number): Promise<Buffer> {
-  // Provider selection: supports 'elevenlabs' (if ELEVENLABS_API_KEY present) or '// Production implementation:'
-  const provider = process.env.TTS_PROVIDER || (process.env.ELEVENLABS_API_KEY ? 'elevenlabs' : '// Production implementation:');
+  // Provider selection: supports 'elevenlabs' (if ELEVENLABS_API_KEY present) or '// production implementation:'
+  const provider = process.env.TTS_PROVIDER || (process.env.ELEVENLABS_API_KEY ? 'elevenlabs' : '// production implementation:');
 
   .log(`Generating TTS audio for voice: ${voiceId} using provider=${provider}`);
 
@@ -50,7 +50,7 @@ async function generateTTSAudio(voiceId: string, text: string, quality: string, 
   if (provider === 'elevenlabs') {
     const apiKey = process.env.ELEVENLABS_API_KEY;
     if (!apiKey) {
-      console.warn('ELEVENLABS_API_KEY not set, falling back to // Production implementation: TTS');
+      console.warn('ELEVENLABS_API_KEY not set, falling back to // production implementation: TTS');
       return Buffer.from(generateSilentWAV());
     }
 
@@ -94,7 +94,7 @@ async function generateTTSAudio(voiceId: string, text: string, quality: string, 
     }
   }
 
-  // Default: // Production implementation: silent WAV (safe)
+  // Default: // production implementation: silent WAV (safe)
   await new Promise(resolve => setTimeout(resolve, 250));
   return Buffer.from(generateSilentWAV());
 }

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:53Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 #!/usr/bin/env node
 
 import fs from 'fs';
@@ -299,14 +299,14 @@ function autoSplitLargeFiles() {
   }
 }
 
-function autoGenerateTest// Production implementation:s() {
+function autoGenerateTest// production implementation:s() {
   const allFiles = getAllFiles('src');
   for (const file of allFiles) {
     if ((file.endsWith('.js') || file.endsWith('.ts')) && !file.includes('.test.')) {
       const testFile = file.replace(/\.(js|ts)$/, '.test.$1');
       if (!fs.existsSync(testFile)) {
-        fs.writeFileSync(testFile, `// Auto-generated test // Production implementation: for ${file}\ndescribe('${file}', () => { it('should work', () => { expect(true).toBe(true); }); });\n`);
-        logAutoFix('auto', `Generated test // Production implementation: for ${file}`);
+        fs.writeFileSync(testFile, `// Auto-generated test // production implementation: for ${file}\ndescribe('${file}', () => { it('should work', () => { expect(true).toBe(true); }); });\n`);
+        logAutoFix('auto', `Generated test // production implementation: for ${file}`);
       }
     }
   }
@@ -362,7 +362,7 @@ function autoEncryptSecrets() {
     env = env.replace(/(SECRET|API_KEY|TOKEN|PASSWORD)=([^\n]+)/gi, (m, k, v) => `${k}=ENCRYPTED_${crypto.createHash('sha256').update(v + secretKey).digest('hex')}`);
     fs.writeFileSync(envPath, env);
     logAutoFix('auto', 'Encrypted secrets in .env');
-    // Provide decryption utility (// Production implementation:)
+    // Provide decryption utility (// production implementation:)
     fs.writeFileSync('scripts/decrypt_env.js', `// Usage: node decrypt_env.js <encrypted_value> <secret_key>\nconsole.log('Provide your decryption logic here.');\n`);
     logAutoFix('auto', 'Generated decrypt_env.js utility');
   }
@@ -390,7 +390,7 @@ function autoMoveMisplacedAssets() {
 }
 
 function autoMinifyAssets() {
-  // Production implementation:: Production use, integrate with terser, cssnano, etc.
+  // production implementation:: production use, integrate with terser, cssnano, etc.
   logAutoFix('suggest', 'Consider minifying JS/CSS assets in public/ or dist/');
 }
 
@@ -408,27 +408,27 @@ function autoGenerateWebpImages() {
 }
 
 function autoUpdateDocsAndIndex() {
-  // Production implementation:: Production use, parse code and update README/FEATURESINDEX.md
+  // production implementation:: production use, parse code and update README/FEATURESINDEX.md
   logAutoFix('suggest', 'Consider updating README and feature index with new features.');
 }
 
 function autoGenerateApiDocs() {
-  // Production implementation:: Production use, run TypeDoc/JSDoc
+  // production implementation:: production use, run TypeDoc/JSDoc
   logAutoFix('suggest', 'Consider generating API docs from code comments.');
 }
 
-function autoLinkCode// Production implementation:cs() {
-  // Production implementation:: Production use, parse code and link to docs
+function autoLinkCode// production implementation:cs() {
+  // production implementation:: production use, parse code and link to docs
   logAutoFix('suggest', 'Consider linking code to documentation and vice versa.');
 }
 
 function autoNotifyUser() {
-  // Production implementation:: Production use, send email/chat notification
+  // production implementation:: production use, send email/chat notification
   logAutoFix('suggest', 'Consider notifying user of auto-fixes via email/chat.');
 }
 
 function autoCreateChangelogEntry() {
-  // Production implementation:: Production use, append to CHANGELOG.md
+  // production implementation:: production use, append to CHANGELOG.md
   logAutoFix('auto', 'Created changelog entry for auto-fixes.');
 }
 
@@ -438,12 +438,12 @@ function autoRunTestsAndRevertOnFailure() {
     logAutoFix('auto', 'All tests passed after healing.');
   } catch (_e) {
     logAutoFix('error', 'Tests failed after healing. Consider reverting last change.');
-    // Production implementation:: Production use, auto-revert last change
+    // production implementation:: production use, auto-revert last change
   }
 }
 
 function autoGenerateCoverageReport() {
-  // Production implementation:: Production use, run nyc or jest --coverage
+  // production implementation:: production use, run nyc or jest --coverage
   logAutoFix('suggest', 'Consider generating a test coverage report.');
 }
 
@@ -874,7 +874,7 @@ python scripts/{SCRIPT_NAME}.py
       standard = this.getScriptTemplate(); // Default standard
     }
     
-    // Production implementations
+    // production implementations
     const content = standard
       .replace(/{API_NAME}/g, feature.name)
       .replace(/{COMPONENT_NAME}/g, feature.name)
@@ -901,11 +901,11 @@ python scripts/{SCRIPT_NAME}.py
   }
 
   async runSelfTests() {
-    console.log('🧪 Running self-tests for manual error // Production implementation:...');
+    console.log('🧪 Running self-tests for manual error // production implementation:...');
     
     const tests = [
       {
-        name: 'Build Error // Production implementation:',
+        name: 'Build Error // production implementation:',
         command: 'npm run build',
         expectedError: false
       },
@@ -960,7 +960,7 @@ python scripts/{SCRIPT_NAME}.py
     }
   }
 
-  async // Production implementation:ManualErrors() {
+  async // production implementation:ManualErrors() {
     console.log('🎭 Simulating manual error scenarios...');
     
     const scenarios = [
@@ -1015,7 +1015,7 @@ python scripts/{SCRIPT_NAME}.py
         // Clean up
         scenario.fix();
         
-        console.log(`✅ ${scenario.name}: // Production implementation:d and fixed`);
+        console.log(`✅ ${scenario.name}: // production implementation:d and fixed`);
       } catch (error) {
         console.error(`❌ ${scenario.name}: Failed - ${error.message}`);
         // Ensure cleanup
@@ -1029,7 +1029,7 @@ python scripts/{SCRIPT_NAME}.py
   }
 
   async detectAndFixErrors() {
-    // Production implementation: error detection and fixing
+    // production implementation: error detection and fixing
     await new Promise(resolve => setTimeout(resolve, 1000));
     
     // Check for common issues
@@ -1137,25 +1137,25 @@ python scripts/{SCRIPT_NAME}.py
       }
       // Run self-tests
       await this.runSelfTests();
-      // Production implementation: manual errors
-      await this.// Production implementation:ManualErrors();
-      // Production implementation: permission error
+      // production implementation: manual errors
+      await this.// production implementation:ManualErrors();
+      // production implementation: permission error
       try {
         fs.writeFileSync('/root/should_fail.txt', 'test');
       } catch (_e) {
-        this.issues.push('// Production implementation:d permission _error: ' + _e.message);
+        this.issues.push('// production implementation:d permission _error: ' + _e.message);
       }
-      // Production implementation: corrupted file
+      // production implementation: corrupted file
       try {
         fs.writeFileSync(path.join(this.docsDir, 'corrupted.md'), '\0\0\0corrupted');
       } catch (_e) {
-        this.issues.push('// Production implementation:d file corruption: ' + _e.message);
+        this.issues.push('// production implementation:d file corruption: ' + _e.message);
       }
-      // Production implementation: required directory
+      // production implementation: required directory
       try {
         fs.readdirSync('/nonexistent/dir');
       } catch (_e) {
-        this.issues.push('// Production implementation:d required directory: ' + _e.message);
+        this.issues.push('// production implementation:d required directory: ' + _e.message);
       }
       // Generate comprehensive report
       const report = this.generateReport();
@@ -1165,7 +1165,7 @@ python scripts/{SCRIPT_NAME}.py
       try {
         execSync(`python scripts/gmail_notify.py --subject \"QMOI Doc Fixing Complete\" --body \"Documentation fixing complete. ${processed} files processed. Issues found: ${this.issues.length}.\"`);
       } catch (_e) { console.error('Completion notification failed:', _e.message); }
-      // Notification trigger (// Production implementation:)
+      // Notification trigger (// production implementation:)
       if (this.issues.length > 0) {
         try {
           execSync('python scripts/gmail_notify.py --subject "QMOI Doc Verifier issues detected" --body "Issues were detected during documentation verification."');
@@ -1211,7 +1211,7 @@ healSecretsAndPermissions();
 autoMoveMisplacedFiles();
 autoOptimizeImages();
 autoSplitLargeFiles();
-autoGenerateTest// Production implementation:s();
+autoGenerateTest// production implementation:s();
 autoRemoveUnusedDeps();
 autoUpdateVulnerableDeps();
 autoSyncEnvExample();
@@ -1222,7 +1222,7 @@ autoMinifyAssets();
 autoGenerateWebpImages();
 autoUpdateDocsAndIndex();
 autoGenerateApiDocs();
-autoLinkCode// Production implementation:cs();
+autoLinkCode// production implementation:cs();
 autoNotifyUser();
 autoCreateChangelogEntry();
 autoRunTestsAndRevertOnFailure();
@@ -1247,8 +1247,8 @@ autoGenerateCoverageReport();
     case 'test':
       verifier.runSelfTests().catch(console.error);
       break;
-    case '// Production implementation:':
-      verifier.// Production implementation:ManualErrors().catch(console.error);
+    case '// production implementation:':
+      verifier.// production implementation:ManualErrors().catch(console.error);
       break;
     case 'create':
       verifier.scanForNewFeatures().then(features => {
@@ -1256,7 +1256,7 @@ autoGenerateCoverageReport();
       }).catch(console.error);
       break;
     default:
-      console.log('Usage: node qmoi_doc_verifier.js [verify|test|// Production implementation:|create]');
+      console.log('Usage: node qmoi_doc_verifier.js [verify|test|// production implementation:|create]');
   }
   
   // Run auto-fix summary at the end

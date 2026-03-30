@@ -15,7 +15,7 @@ import path from "path";
 import QMOIMasterSystem from "./qmoi-master-system.js";
 import QMOINotificationSystem from "./qmoi-notification-system.js";
 import QMOIEnhancedAvatarSystem from "./qmoi-enhanced-avatar-system.js";
-import QMOIMusicProductionSystem from "./qmoi-music-production-system.js";
+import QMOIMusicproductionSystem from "./qmoi-music-production-system.js";
 
 class QMOISystemTester {
   constructor() {
@@ -44,7 +44,7 @@ class QMOISystemTester {
       this.masterSystem = new QMOIMasterSystem();
       this.notificationSystem = new QMOINotificationSystem();
       this.avatarSystem = new QMOIEnhancedAvatarSystem();
-      this.musicSystem = new QMOIMusicProductionSystem();
+      this.musicSystem = new QMOIMusicproductionSystem();
 
       console.log("✅ QMOI System Tester initialized");
     } catch (error) {
@@ -395,7 +395,7 @@ class QMOISystemTester {
   async testMusicSystem() {
     console.log("🎵 Testing music production system...");
 
-    const testName = "Music Production System";
+    const testName = "Music production System";
     const startTime = Date.now();
 
     try {
@@ -409,7 +409,7 @@ class QMOISystemTester {
       }
 
       // Test production status
-      const productionStatus = await this.musicSystem.getProductionStatus();
+      const productionStatus = await this.musicSystem.getproductionStatus();
       if (!productionStatus.active) {
         throw new Error("Music production not active");
       }
@@ -792,7 +792,7 @@ jobs:
       },
       results: this.testResults,
       systemInfo: {
-        nodeVersion: process.version,
+        noprodersion: process.version,
         platform: process.platform,
         arch: process.arch,
         memoryUsage: process.memoryUsage(),

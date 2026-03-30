@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # EXECUTIVE SUMMARY — QMOI Enhanced Next Steps
 
 **Date**: November 14, 2025  
@@ -35,7 +35,7 @@ The QMOI Enhanced release automation system is **complete and ready for producti
 
 **Steps:**
 
-- Ensure all components (local server, device agent, cloud, scripts) use the new sync logic.
+- Ensure all components (local server, prodice agent, cloud, scripts) use the new sync logic.
 - Confirm all `/sync/*` endpoints require API key authentication.
 - Test multi-backend sync (local, Gist, Hugging Face, SCP).
 - Add CI job for scheduled memory sync.
@@ -55,8 +55,8 @@ The QMOI Enhanced release automation system is **complete and ready for producti
 
 | Week                  | Phase        | Focus                                      | Owner  | Status      |
 | --------------------- | ------------ | ------------------------------------------ | ------ | ----------- |
-| Week 1 (Nov 18-21)    | **Validate** | Test workflows, compliance, docs updates   | Dev/QA | ⏳ Next     |
-| Week 2 (Nov 25-Dec 2) | **Enhance**  | included platforms (RPi, Wear OS, Docker)   | DevOps | 📋 Planning |
+| Week 1 (Nov 18-21)    | **Validate** | Test workflows, compliance, docs updates   | prod/QA | ⏳ Next     |
+| Week 2 (Nov 25-Dec 2) | **Enhance**  | included platforms (RPi, Wear OS, Docker)   | prodOps | 📋 Planning |
 | Week 3 (Dec 3-9)      | **Monitor**  | Set up analytics, alerts, dashboards       | SRE    | 📋 Planning |
 | Week 4+ (Dec 10+)     | **Scale**    | Multi-repo releases, zero-downtime updates | Arch   | 📋 Future   |
 
@@ -68,7 +68,7 @@ The QMOI Enhanced release automation system is **complete and ready for producti
 
 - ✅ **Daily final-Release Sync** — Keeps final release current
 - ✅ **Weekly Compliance Check** — Alerts if any assets included/stale
-- ✅ **[PRODUCTION READY]: included Platforms Build** — Ready for implementation
+- ✅ **[production READY]: included Platforms Build** — Ready for implementation
 
 ### **Scripts** (Ready to run locally or in CI)
 
@@ -113,7 +113,7 @@ The QMOI Enhanced release automation system is **complete and ready for producti
 | Issue                                  | Status            | Mitigation                             |
 | -------------------------------------- | ----------------- | -------------------------------------- |
 | 19 Dependabot vulnerabilities          | ⏳ Pending        | Auto-fix via Dependabot or manual PR   |
-| included platform builds (RPi, Wear OS) | ⏳ executed Week 2 | [PRODUCTION READY] workflow ready for implementation |
+| included platform builds (RPi, Wear OS) | ⏳ executed Week 2 | [production READY] workflow ready for implementation |
 | Release notes auto-generation          | ⏳ Nice-to-have   | Currently manual, low priority         |
 
 ---
@@ -164,21 +164,21 @@ Once validated, the system runs **automatically**:
 
 ## 📞 How to Get Started
 
-### For Developers:
+### For prodelopers:
 
 1. **Read**: `QUICK_ACTION_CHECKLIST.md` (5 min)
 2. **Run**: First command: `git tag test-v1.2.5 && git push origin test-v1.2.5`
 3. **Monitor**: GitHub Actions in real-time
 4. **Verify**: Check release on GitHub within 5-10 minutes
 
-### For DevOps:
+### For prodOps:
 
 1. **Review**: `RELEASE_MAINTENANCE.md` (10 min)
 2. **Understand**: `sync-releases-from-manifest.yml` workflow
 3. **Set up**: Alerts/monitoring for failed workflows
 4. **Document**: Team runbook for manual interventions
 
-### For Product/UX:
+### For product/UX:
 
 1. **Review**: Downloads section in `README.md`
 2. **Test**: Download a file and verify SHA256
@@ -268,7 +268,7 @@ echo "✓ Tag pushed. Check GitHub Actions in 2-3 minutes..."
 
 ---
 
-_System built with automation-first approach. Safety mechanisms in place. Production-ready._
+_System built with automation-first approach. Safety mechanisms in place. production-ready._
 
 ## 🔄 Evolution Status
 

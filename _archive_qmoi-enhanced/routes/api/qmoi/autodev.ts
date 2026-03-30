@@ -7,14 +7,14 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { autoFixService } from "../../../scripts/services/auto_fix_service";
 import { QCityService } from "../../../scripts/services/qcity_service";
 import { logger } from "../../../scripts/utils/logger";
-import { QmoiAutodevDaemon } from "../../../scripts/services/qmoi_autodev_daemon";
+import { QmoiAutoprodDaemon } from "../../../scripts/services/qmoi_autoprod_daemon";
 import { unifiedCICDService } from "../../../scripts/services/unified_ci_cd_service";
 
 const qcityService = new QCityService();
 
 // --- Audit log helper ---
 function auditLog(action: string, params: unknown, result: unknown) {
-  logger.info(`[QMOI-AUTODEV][AUDIT] Action: ${action}`, { params, result });
+  logger.info(`[QMOI-AUTOprod][AUDIT] Action: ${action}`, { params, result });
 }
 
 function withMessage(result: unknown, defaultMsg = "") {
@@ -33,7 +33,7 @@ export default async function handler(
       return res.status(405).json({ error: "Method not allowed" });
     }
     const { action, platform = "vercel", ...params } = req.body;
-    logger.info(`[QMOI-AUTODEV] Action: ${action}`, params);
+    logger.info(`[QMOI-AUTOprod] Action: ${action}`, params);
     let result: unknown = {
       success: false,
       message: "implemented",
@@ -181,11 +181,11 @@ export default async function handler(
         };
         break;
       }
-      case "optimize_device": {
+      case "optimize_prodice": {
         result = {
           success: true,
-          message: "Device optimization executed (
-          logs: ["Device optimized: battery, CPU, memory, storage, network."],
+          message: "prodice optimization executed (
+          logs: ["prodice optimized: battery, CPU, memory, storage, network."],
         };
         break;
       }
@@ -263,20 +263,20 @@ export default async function handler(
         break;
       }
       case "continuous_autofix_start": {
-        QmoiAutodevDaemon.start();
+        QmoiAutoprodDaemon.start();
         result = {
           success: true,
           message: "Continuous auto-fix daemon started.",
-          status: QmoiAutodevDaemon.status(),
+          status: QmoiAutoprodDaemon.status(),
         };
         break;
       }
       case "continuous_autofix_stop": {
-        QmoiAutodevDaemon.stop();
+        QmoiAutoprodDaemon.stop();
         result = {
           success: true,
           message: "Continuous auto-fix daemon stopped.",
-          status: QmoiAutodevDaemon.status(),
+          status: QmoiAutoprodDaemon.status(),
         };
         break;
       }
@@ -284,15 +284,15 @@ export default async function handler(
         result = {
           success: true,
           message: "Continuous auto-fix daemon status.",
-          status: QmoiAutodevDaemon.status(),
+          status: QmoiAutoprodDaemon.status(),
         };
         break;
       }
       case "full_status": {
-        const daemonStatus = QmoiAutodevDaemon.status();
+        const daemonStatus = QmoiAutoprodDaemon.status();
         result = {
           success: true,
-          message: "Full QMOI Auto-Dev status",
+          message: "Full QMOI Auto-prod status",
           daemon: daemonStatus,
           lastRun: daemonStatus.lastRun,
           lastResult: daemonStatus.lastResult,
@@ -311,7 +311,7 @@ export default async function handler(
     auditLog(action, params, result);
     return res.status(200).json(result);
   } catch (error: unknown) {
-    logger.error("[QMOI-AUTODEV] Error:", error);
+    logger.error("[QMOI-AUTOprod] Error:", error);
     auditLog("error", req.body, { error: error.message });
     return res.status(500).json({ success: false, error: error.message });
   }

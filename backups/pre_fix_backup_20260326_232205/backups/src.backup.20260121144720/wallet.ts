@@ -137,7 +137,7 @@ export class CashonAdapter implements WalletAdapter {
 
     // Only perform real calls when explicitly allowed via env flags
     const prod =
-      (process.env.PRODUCTION_CONFIRMED || "").toLowerCase() === "true";
+      (process.env.production_CONFIRMED || "").toLowerCase() === "true";
     const allow =
       (process.env.ALLOW_REAL_ACTIONS || "").toLowerCase() === "true";
     if (!prod || !allow) {
@@ -225,7 +225,7 @@ export class MegavaultAdapter implements WalletAdapter {
     });
 
     const prod =
-      (process.env.PRODUCTION_CONFIRMED || "").toLowerCase() === "true";
+      (process.env.production_CONFIRMED || "").toLowerCase() === "true";
     const allow =
       (process.env.ALLOW_REAL_ACTIONS || "").toLowerCase() === "true";
     if (!prod || !allow) {

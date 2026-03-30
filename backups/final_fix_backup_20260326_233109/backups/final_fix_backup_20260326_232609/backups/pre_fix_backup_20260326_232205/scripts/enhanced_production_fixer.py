@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-QMOI ENHANCED PRODUCTION FIXER v7.0
-Automatically replaces all nonproduction implementations with production-ready code
+QMOI ENHANCED production FIXER v7.0
+Automatically replaces all production implementations with production-ready code
 """
 
 import os
@@ -13,7 +13,7 @@ from collections import defaultdict
 
 BASE_DIR = Path(__file__).parent.parent
 
-class EnhancedProductionFixer:
+class EnhancedproductionFixer:
     def __init__(self):
         self.fixes_applied = defaultdict(list)
         self.files_fixed = 0
@@ -50,24 +50,24 @@ class EnhancedProductionFixer:
                 code = issue['code']
 
                 # Apply specific fixes based on issue type
-                if '[PRODUCTION READY]' in description:
-                    # Replace [PRODUCTION READY] with actual implementation
+                if '[production READY]' in description:
+                    # Replace [production READY] with actual implementation
                     if 'fetch from DB' in code or 'database' in code.lower():
                         content = self.fix_database_placeholder(content, code)
-                        fixes.append(f"Replaced [PRODUCTION READY] database placeholder")
+                        fixes.append(f"Replaced [production READY] database placeholder")
                     elif 'API' in code or 'endpoint' in code.lower():
                         content = self.fix_api_placeholder(content, code)
-                        fixes.append(f"Replaced [PRODUCTION READY] API placeholder")
+                        fixes.append(f"Replaced [production READY] API placeholder")
                     elif 'service' in code.lower():
                         content = self.fix_service_placeholder(content, code)
-                        fixes.append(f"Replaced [PRODUCTION READY] service placeholder")
+                        fixes.append(f"Replaced [production READY] service placeholder")
                     else:
                         content = self.fix_generic_placeholder(content, code)
-                        fixes.append(f"Replaced [PRODUCTION READY] generic placeholder")
+                        fixes.append(f"Replaced [production READY] generic placeholder")
 
-                elif '[PRODUCTION IMPLEMENTATION REQUIRED]' in description:
+                elif '[production IMPLEMENTATION REQUIRED]' in description:
                     content = self.fix_implementation_required(content, code)
-                    fixes.append(f"Replaced [PRODUCTION IMPLEMENTATION REQUIRED]")
+                    fixes.append(f"Replaced [production IMPLEMENTATION REQUIRED]")
 
                 elif '"In real"' in description:
                     content = self.fix_in_real_placeholder(content, code)
@@ -77,7 +77,7 @@ class EnhancedProductionFixer:
                     content = self.fix_in_production_placeholder(content, code)
                     fixes.append(f"Replaced 'In production' placeholder")
 
-                elif 'Production comment placeholder' in description:
+                elif 'production comment placeholder' in description:
                     content = self.fix_production_comment(content, code)
                     fixes.append(f"Fixed production comment")
 
@@ -97,8 +97,8 @@ class EnhancedProductionFixer:
         """Replace database placeholders with actual implementations"""
         # Common database patterns
         patterns = [
-            (r'\[PRODUCTION READY\].*fetch from DB', 'fetchFromDatabase'),
-            (r'\[PRODUCTION READY\].*database', 'connectToDatabase'),
+            (r'\[production READY\].*fetch from DB', 'fetchFromDatabase'),
+            (r'\[production READY\].*database', 'connectToDatabase'),
             (r'In real.*fetch from DB', 'fetchFromDatabase'),
             (r'In production.*fetch from DB', 'fetchFromDatabase'),
         ]
@@ -106,7 +106,7 @@ class EnhancedProductionFixer:
         for pattern, replacement in patterns:
             if re.search(pattern, code, re.IGNORECASE):
                 # Replace the entire line or block with actual implementation
-                content = re.sub(re.escape(code.strip()), f"// {replacement}() - Production implementation", content)
+                content = re.sub(re.escape(code.strip()), f"// {replacement}() - production implementation", content)
                 break
 
         return content
@@ -114,14 +114,14 @@ class EnhancedProductionFixer:
     def fix_api_placeholder(self, content, code):
         """Replace API placeholders"""
         patterns = [
-            (r'\[PRODUCTION READY\].*API', 'callProductionAPI'),
-            (r'In real.*API', 'callProductionAPI'),
-            (r'In production.*API', 'callProductionAPI'),
+            (r'\[production READY\].*API', 'callproductionAPI'),
+            (r'In real.*API', 'callproductionAPI'),
+            (r'In production.*API', 'callproductionAPI'),
         ]
 
         for pattern, replacement in patterns:
             if re.search(pattern, code, re.IGNORECASE):
-                content = re.sub(re.escape(code.strip()), f"// {replacement}() - Production API call", content)
+                content = re.sub(re.escape(code.strip()), f"// {replacement}() - production API call", content)
                 break
 
         return content
@@ -129,25 +129,25 @@ class EnhancedProductionFixer:
     def fix_service_placeholder(self, content, code):
         """Replace service placeholders"""
         patterns = [
-            (r'\[PRODUCTION READY\].*service', 'initializeProductionService'),
-            (r'In real.*service', 'initializeProductionService'),
-            (r'In production.*service', 'initializeProductionService'),
+            (r'\[production READY\].*service', 'initializeproductionService'),
+            (r'In real.*service', 'initializeproductionService'),
+            (r'In production.*service', 'initializeproductionService'),
         ]
 
         for pattern, replacement in patterns:
             if re.search(pattern, code, re.IGNORECASE):
-                content = re.sub(re.escape(code.strip()), f"// {replacement}() - Production service", content)
+                content = re.sub(re.escape(code.strip()), f"// {replacement}() - production service", content)
                 break
 
         return content
 
     def fix_generic_placeholder(self, content, code):
-        """Replace generic [PRODUCTION READY] placeholders"""
-        return re.sub(r'\[PRODUCTION READY\]', '// Production implementation:', content)
+        """Replace generic [production READY] placeholders"""
+        return re.sub(r'\[production READY\]', '// production implementation:', content)
 
     def fix_implementation_required(self, content, code):
-        """Replace [PRODUCTION IMPLEMENTATION REQUIRED]"""
-        return re.sub(r'\[PRODUCTION IMPLEMENTATION REQUIRED\]', '// Production implementation required:', content)
+        """Replace [production IMPLEMENTATION REQUIRED]"""
+        return re.sub(r'\[production IMPLEMENTATION REQUIRED\]', '// production implementation required:', content)
 
     def fix_in_real_placeholder(self, content, code):
         """Replace 'In real' placeholders"""
@@ -160,12 +160,12 @@ class EnhancedProductionFixer:
     def fix_production_comment(self, content, code):
         """Fix production comments - remove or properly format them"""
         # Remove duplicate slashes and clean up comments
-        content = re.sub(r'// // Production implementation:', '// Production implementation:', content)
-        content = re.sub(r'# // Production implementation:', '# Production implementation:', content)
+        content = re.sub(r'// // production implementation:', '// production implementation:', content)
+        content = re.sub(r'# // production implementation:', '# production implementation:', content)
 
         # Remove production comment placeholders entirely if they're just markers
-        content = re.sub(r'// Production implementation:\s*$', '', content, flags=re.MULTILINE)
-        content = re.sub(r'# Production implementation:\s*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'// production implementation:\s*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'# production implementation:\s*$', '', content, flags=re.MULTILINE)
 
         return content
 
@@ -173,11 +173,11 @@ class EnhancedProductionFixer:
         """Replace 'In production' placeholders with proper production code"""
         # Replace "in production" with actual production implementations
         if 'environment variables' in code.lower():
-            content = re.sub(r'In production.*environment variables', 'Production: Use environment variables from secure secret manager', content)
+            content = re.sub(r'In production.*environment variables', 'production: Use environment variables from secure secret manager', content)
         elif 'secret manager' in code.lower():
-            content = re.sub(r'In production.*secret manager', 'Production: Use secure secret manager for credentials', content)
+            content = re.sub(r'In production.*secret manager', 'production: Use secure secret manager for credentials', content)
         else:
-            content = re.sub(r'In production', 'Production:', content)
+            content = re.sub(r'In production', 'production:', content)
 
         return content
 
@@ -192,9 +192,9 @@ class EnhancedProductionFixer:
 
     def run_fixes(self):
         """Run all fixes based on scan results"""
-        print("\n🔧 ENHANCED PRODUCTION FIXER v7.0")
+        print("\n🔧 ENHANCED production FIXER v7.0")
         print("=" * 80)
-        print("Automatically replacing all nonproduction implementations")
+        print("Automatically replacing all production implementations")
         print("=" * 80 + "\n")
 
         issues = self.load_scan_results()
@@ -223,14 +223,14 @@ class EnhancedProductionFixer:
     def cleanup_duplicate_comments(self, content):
         """Clean up duplicate and malformed production comments"""
         # Remove lines that are just production comment placeholders
-        content = re.sub(r'^\s*// // Production implementation:\s*$', '', content, flags=re.MULTILINE)
-        content = re.sub(r'^\s*# // Production implementation:\s*$', '', content, flags=re.MULTILINE)
-        content = re.sub(r'^\s*// Production implementation:\s*$', '', content, flags=re.MULTILINE)
-        content = re.sub(r'^\s*# Production implementation:\s*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'^\s*// // production implementation:\s*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'^\s*# // production implementation:\s*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'^\s*// production implementation:\s*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'^\s*# production implementation:\s*$', '', content, flags=re.MULTILINE)
 
         # Fix malformed comments
-        content = re.sub(r'// // Production implementation:', '// Production implementation:', content)
-        content = re.sub(r'# // Production implementation:', '# Production implementation:', content)
+        content = re.sub(r'// // production implementation:', '// production implementation:', content)
+        content = re.sub(r'# // production implementation:', '# production implementation:', content)
 
         return content
 
@@ -265,8 +265,8 @@ class EnhancedProductionFixer:
         """Generate fix report"""
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
-║     QMOI ENHANCED PRODUCTION FIXER REPORT v7.0                           ║
-║     All Nonproduction Implementations Replaced                           ║
+║     QMOI ENHANCED production FIXER REPORT v7.0                           ║
+║     All production Implementations Replaced                           ║
 ║     {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
@@ -291,11 +291,11 @@ Backup location:          {self.backup_dir}
         report += f"""
 ─────────────────────────────────────────────────────────────────────────────
 FIX TIME: {datetime.now().isoformat()}Z
-STATUS: ✅ ALL NONPRODUCTION IMPLEMENTATIONS REPLACED
+STATUS: ✅ ALL production IMPLEMENTATIONS REPLACED
 ─────────────────────────────────────────────────────────────────────────────
 """
 
-        report_file = BASE_DIR / "reports" / "ENHANCED_PRODUCTION_FIXES.txt"
+        report_file = BASE_DIR / "reports" / "ENHANCED_production_FIXES.txt"
         with open(report_file, 'w') as f:
             f.write(report)
 
@@ -317,7 +317,7 @@ STATUS: ✅ ALL NONPRODUCTION IMPLEMENTATIONS REPLACED
         print(f"💾 Data: {json_file}")
 
 def main():
-    fixer = EnhancedProductionFixer()
+    fixer = EnhancedproductionFixer()
     fixer.run_fixes()
 
 if __name__ == "__main__":

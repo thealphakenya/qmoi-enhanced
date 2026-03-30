@@ -8,7 +8,7 @@
 
 This file provides a scaffold for interacting with Binance testnet. It is
 real-first and will not perform real API calls unless explicitly allowed
-with `--real` and `PRODUCTION_CONFIRMED=true`.
+with `--real` and `production_CONFIRMED=true`.
 """
 from .adapter_base import TestnetAdapter
 import os
@@ -20,7 +20,7 @@ class BinanceTestnetAdapter(TestnetAdapter):
     def check_balance(self, config=None, real=False):
         cfg = config or {}
         if real:
-            if os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() != 'true':
+            if os.environ.get('production_CONFIRMED', 'false').lower() != 'true':
                 return {'status': 'blocked_no_production_confirm', 'last_checked': self.now_iso(), 'meta': {'adapter': self.name}}
             # implementation for real SDK call (binance.client or ccxt)
             return {'status': 'not_implemented', 'last_checked': self.now_iso(), 'meta': {'adapter': self.name}}

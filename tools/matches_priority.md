@@ -10,7 +10,7 @@
 # Prioritized implementation matches
 
 Top files:
-- mobile/components/DeviceManagementScreen.js — score: 40 — matches: 4
+- mobile/components/prodiceManagementScreen.js — score: 40 — matches: 4
 - src/api/routes/selfwork.ts — score: 40 — matches: 4
 - src/setupTests.ts.bak.1768901506 — score: 25 — matches: 19
 - src/services/WhatsAppService.ts.bak.1768901506 — score: 25 — matches: 4
@@ -39,7 +39,7 @@ Top files:
 - src/services/FaceRecognitionService.ts — score: 8 — matches: 2
 - src/components/q-city/QNewsDashboard.tsx.bak2 — score: 7 — matches: 7
 - src/components/q-city/QMoiState.tsx.bak2 — score: 6 — matches: 4
-- src/components/q-city/DevicePanel.tsx.bak2 — score: 6 — matches: 6
+- src/components/q-city/prodicePanel.tsx.bak2 — score: 6 — matches: 6
 - src/services/WhatsAppService.ts — score: 6 — matches: 3
 - src/config/bitget.ts.bak.1768901506 — score: 6 — matches: 6
 - src/config/bitget.ts — score: 6 — matches: 6
@@ -63,7 +63,7 @@ Top files:
 - src/components/q-city/QOxygen.tsx.bak2 — score: 3 — matches: 1
 - src/components/q-city/AvatarSelector.tsx.bak2 — score: 3 — matches: 3
 - src/components/q-city/QMoiKernelPanel.integration.test.tsx.bak.1768901506 — score: 3 — matches: 3
-- src/components/q-city/DevicesHub.tsx.bak2 — score: 3 — matches: 1
+- src/components/q-city/prodicesHub.tsx.bak2 — score: 3 — matches: 1
 - src/adapters/clientAdapters.ts — score: 3 — matches: 1
 - src/wallet.ts — score: 2 — matches: 2
 - src/components/q-city/QMoiMemoryPanel.tsx.bak2 — score: 2 — matches: 2

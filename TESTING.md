@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-## Production Readiness Snapshot
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -206,20 +206,20 @@ npm test -- __tests__/integration/user-registration.test.ts
 The test helpers library provides:
 
 ```typescript
-// Create [PRODUCTION READY] requests
-const [PRODUCTION READY]Request = create[PRODUCTION READY]Request({
+// Create [production READY] requests
+const [production READY]Request = create[production READY]Request({
   method: "POST",
   headers: { Authorization: "Bearer token" },
   body: { email: "test@data.com" },
 });
 
-// Generate [PRODUCTION READY]
+// Generate [production READY]
 const testUser = generateTestUser();
 const testWallet = generateTestWallet(testUser.id);
 
-// Create [PRODUCTION READY] services
-const [PRODUCTION READY]AuthService = create[PRODUCTION READY]AuthService();
-const [PRODUCTION READY]EmailService = create[PRODUCTION READY]EmailService();
+// Create [production READY] services
+const [production READY]AuthService = create[production READY]AuthService();
+const [production READY]EmailService = create[production READY]EmailService();
 
 // Assert responses
 expectSuccess(response, 200);
@@ -233,13 +233,13 @@ expectError(response, 400, "Invalid request");
 ```typescript
 import { describe, it, expect, beforeEach, afterEach } from "@jest/globals";
 import { POST } from "@/app/api/data/route";
-import { create[PRODUCTION READY]Request } from "@/__tests__/utils/test-helpers";
+import { create[production READY]Request } from "@/__tests__/utils/test-helpers";
 
 describe("data Endpoint", () => {
-  let [PRODUCTION READY]Request: any;
+  let [production READY]Request: any;
 
   beforeEach(() => {
-    [PRODUCTION READY]Request = create[PRODUCTION READY]Request({
+    [production READY]Request = create[production READY]Request({
       method: "POST",
       headers: {
         Authorization: "Bearer test-token",
@@ -253,7 +253,7 @@ describe("data Endpoint", () => {
   });
 
   it("should handle successful request", async () => {
-    const response = await POST([PRODUCTION READY]Request);
+    const response = await POST([production READY]Request);
     expect(response.status).toBe(200);
 
     const data = await response.json();
@@ -261,7 +261,7 @@ describe("data Endpoint", () => {
   });
 
   it("should reject unauthorized requests", async () => {
-    const unauthorizedRequest = create[PRODUCTION READY]Request({
+    const unauthorizedRequest = create[production READY]Request({
       method: "POST",
       headers: { "Content-Type": "application/json" },
     });
@@ -271,10 +271,10 @@ describe("data Endpoint", () => {
   });
 
   it("should validate input data", async () => {
-    [PRODUCTION READY]Request.body = {
+    [production READY]Request.body = {
       /* invalid data */
     };
-    const response = await POST([PRODUCTION READY]Request);
+    const response = await POST([production READY]Request);
     expect(response.status).toBe(400);
   });
 });
@@ -376,12 +376,12 @@ it("should create default wallet on registration", () => {});
 it("should send verification email on registration", () => {});
 ```
 
-### 4. [PRODUCTION READY] External Dependencies
+### 4. [production READY] External Dependencies
 
 ```typescript
-[PRODUCTION READY] payment provider
-jest.[PRODUCTION READY]("@/lib/payments/service", () => ({
-  initiatePayment: jest.fn().[PRODUCTION READY]ResolvedValue({
+[production READY] payment provider
+jest.[production READY]("@/lib/payments/service", () => ({
+  initiatePayment: jest.fn().[production READY]ResolvedValue({
     transactionId: "test-123",
     status: "pending",
   }),
@@ -484,7 +484,7 @@ npm test -- --detectOpenHandles
 Optimize slow tests by:
 
 1. Reducing database calls
-2. [PRODUCTION READY]ing external services
+2. [production READY]ing external services
 3. Using in-memory databases for tests
 
 ## Troubleshooting
@@ -498,7 +498,7 @@ Optimize slow tests by:
 ### Database Connection Errors
 
 ```bash
-# Use [PRODUCTION READY]base
+# Use [production READY]base
 export DATABASE_URL="file:./test.db"
 npx prisma migrate deploy
 npm test
@@ -514,12 +514,12 @@ it("slow test", async () => {
 }, 10000); // 10 second timeout
 ```
 
-### [PRODUCTION READY] Not Working
+### [production READY] Not Working
 
 ```typescript
-// Clear all [PRODUCTION READY]s before each test
+// Clear all [production READY]s before each test
 beforeEach(() => {
-  jest.clearAll[PRODUCTION READY]s();
+  jest.clearAll[production READY]s();
 });
 ```
 

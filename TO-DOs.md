@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "TO-DOs for making QMOI production-ready"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -18,9 +18,9 @@ title: "TO-DOs for making QMOI production-ready"
 
 This file lists prioritized tasks, each with a status tag and timestamp. The tasks are intended to be machine-readable for auto-updating by QMOI agents.
 
-- [ ] [2025-10-20T00:00:00Z] Validate linting across all languages #status:[PRODUCTION READY]
-- [ ] [2025-10-20T00:00:00Z] Run full unit/integration test suite #status:[PRODUCTION READY]
-- [ ] [2025-10-20T00:00:00Z] Validate orchestrator deployment scripts #status:[PRODUCTION READY]
+- [ ] [2025-10-20T00:00:00Z] Validate linting across all languages #status:[production READY]
+- [ ] [2025-10-20T00:00:00Z] Run full unit/integration test suite #status:[production READY]
+- [ ] [2025-10-20T00:00:00Z] Validate orchestrator deployment scripts #status:[production READY]
 
 (QMOI agent can update the status tags to #status:done or #status:failed with timestamps when checks run.)
 

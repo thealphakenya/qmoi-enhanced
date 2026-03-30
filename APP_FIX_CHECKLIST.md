@@ -7,12 +7,12 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # URGENT: App Fix Checklist
 
 **Status**: ✅ Fixed (full)  
 **Date**: November 15, 2025  
-**Update**: On 2025-11-15 the corrupted mobile/device artifacts were replaced with valid installable packages locally and verification completed. Changes committed (commit: `24830573330c01199b0a17a3c657a86565256ffd`). Manifest and reports updated.
+**Update**: On 2025-11-15 the corrupted mobile/prodice artifacts were replaced with valid installable packages locally and verification completed. Changes committed (commit: `24830573330c01199b0a17a3c657a86565256ffd`). Manifest and reports updated.
 **Timeline**: Final release tagging / remote release replacement remaining (see notes)
 
 ---
@@ -32,7 +32,7 @@ The automated restore attempt (downloaded from release tags v1.2.3/v1.2.4/v1.2.5
 - ✅ **Windows EXE** - Present and header looks valid
 - ✅ **Web Apps** (several) - Verified OK (unzip lists HTML/JS/CSS)
 
-**Result (current)**: Several assets restored successfully (web, exe, appimage), but critical mobile and device packages remain invalid/corrupted and require rebuilds or CI builds.
+**Result (current)**: Several assets restored successfully (web, exe, appimage), but critical mobile and prodice packages remain invalid/corrupted and require rebuilds or CI builds.
 
 ---
 
@@ -42,7 +42,7 @@ The automated restore attempt (downloaded from release tags v1.2.3/v1.2.4/v1.2.5
 
 ```bash
 # Check if real builds exist in workspace
-find /workspaces -type f \( -name "*.apk" -o -name "*.ipa" \) 2>/dev/null | grep -v Qmoi_downloaded_apps
+find /workspaces -type f \( -name "*.apk" -o -name "*.ipa" \) 2>/prod/null | grep -v Qmoi_downloaded_apps
 
 # Check CI/CD artifacts
 ls -la ~/.gradle/build/
@@ -50,8 +50,8 @@ ls -la ~/.xcode/build/
 ls -la node_modules/.bin/
 
 # Check alternative directories
-ls -la /tmp/builds 2>/dev/null
-ls -la ~/Downloads/*.apk 2>/dev/null
+ls -la /tmp/builds 2>/prod/null
+ls -la ~/Downloads/*.apk 2>/prod/null
 ```
 
 **Result**: Found? [ ] Yes [ ] No [ ] Maybe  
@@ -61,10 +61,10 @@ ls -la ~/Downloads/*.apk 2>/dev/null
 
 ```bash
 # Find buildable app sources
-find /workspaces -type f \( -name "build.gradle" -o -name "package.json" -o -name "*.xcodeproj" \) 2>/dev/null | head -20
+find /workspaces -type f \( -name "build.gradle" -o -name "package.json" -o -name "*.xcodeproj" \) 2>/prod/null | head -20
 
 # Check for app directories
-find /workspaces -type d -name "android" -o -name "ios" -o -name "app-src" 2>/dev/null
+find /workspaces -type d -name "android" -o -name "ios" -o -name "app-src" 2>/prod/null
 ```
 
 **Result**: Found? [ ] Yes [ ] No  
@@ -92,12 +92,12 @@ find /workspaces -type d -name "android" -o -name "ios" -o -name "app-src" 2>/de
    cp /path/to/real/qmoi_ai.apk ~/temp_builds/
    cp /path/to/real/qmoi_ai.ipa ~/temp_builds/
    ```
-2. [ ] Verify they're not [PRODUCTION READY] files:
+2. [ ] Verify they're not [production READY] files:
    ```bash
    unzip -l ~/temp_builds/qmoi_ai.apk | head -20
    unzip -l ~/temp_builds/qmoi_ai.ipa | head -20
    ```
-3. [ ] Replace [PRODUCTION READY]s:
+3. [ ] Replace [production READY]s:
    ```bash
    cp ~/temp_builds/qmoi_ai.apk Qmoi_downloaded_apps/android/latest/
    cp ~/temp_builds/qmoi_ai.ipa Qmoi_downloaded_apps/ios/latest/
@@ -169,7 +169,7 @@ GRADLE
 
 ## VERIFICATION BEFORE REPLACING
 
-For each real app obtained, verify it's NOT a [PRODUCTION READY]:
+For each real app obtained, verify it's NOT a [production READY]:
 
 ### Android APK
 
@@ -233,7 +233,7 @@ python3 scripts/generate_release_manifest.py
 
 # Step 4: Commit
 git add Qmoi_downloaded_apps/ release_assets_manifest.json
-git commit -m "fix: replace [PRODUCTION READY] apps with real functioning builds"
+git commit -m "fix: replace [production READY] apps with real functioning builds"
 ```
 
 **Checklist**:
@@ -251,7 +251,7 @@ git commit -m "fix: replace [PRODUCTION READY] apps with real functioning builds
 ### Android
 
 ```bash
-# [ ] Connect device or start emulator
+# [ ] Connect prodice or start emulator
 # [ ] adb install -r Qmoi_downloaded_apps/android/latest/qmoi_ai.apk
 # [ ] Verify: App appears in app drawer
 # [ ] Verify: App launches and shows UI
@@ -356,7 +356,7 @@ Release is complete when:
 
 - [ ] Android APK installs without errors
 - [ ] iOS IPA installs without errors
-- [ ] Smart TV APK works on device
+- [ ] Smart TV APK works on prodice
 - [ ] Chromebook app accessible
 - [ ] QCity package works
 - [ ] Windows EXE launches with UI
@@ -373,7 +373,7 @@ Release is complete when:
 ## IF STUCK
 
 **Q: Can't find real builds or source?**
-A: Escalate to team lead - might need to contact original developers or rebuild from scratch
+A: Escalate to team lead - might need to contact original prodelopers or rebuild from scratch
 
 **Q: Real builds are outdated?**
 A: Use "PATH B" (rebuild from source) instead
@@ -385,9 +385,9 @@ A: Use "PATH A" (find existing builds) or coordinate with team to provide MVP
 Run this search:
 
 ```bash
-find /workspaces -type f -name "package.json" 2>/dev/null | head -20
-find /workspaces -type f -name "build.gradle" 2>/dev/null | head -20
-find /workspaces -type f -name "*.xcodeproj" 2>/dev/null | head -5
+find /workspaces -type f -name "package.json" 2>/prod/null | head -20
+find /workspaces -type f -name "build.gradle" 2>/prod/null | head -20
+find /workspaces -type f -name "*.xcodeproj" 2>/prod/null | head -5
 ```
 
 **Q: Apps still don't install after replacement?**
@@ -395,7 +395,7 @@ find /workspaces -type f -name "*.xcodeproj" 2>/dev/null | head -5
 - Verify they're real (run verification checks above)
 - Check error messages from install attempt
 - Post error to GitHub issue
-- Escalate to mobile development team
+- Escalate to mobile production team
 
 ---
 
@@ -418,7 +418,7 @@ find /workspaces -type f -name "*.xcodeproj" 2>/dev/null | head -5
 ---
 
 **Status**: Ready to execute  
-**Owner**: DevOps/Build Team  
+**Owner**: prodOps/Build Team  
 **Deadline**: Friday Nov 18, 5 PM
 
 Mark items as complete as you progress!

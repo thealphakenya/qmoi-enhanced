@@ -189,11 +189,11 @@
     "deployed_at": "2026-03-21T23:23:57.038280",
     "status": "active"
   },
-  "qparallel.dev": {
-    "domain": "qparallel.dev",
+  "qparallel.prod": {
+    "domain": "qparallel.prod",
     "records": [
       {
-        "domain": "qparallel.dev",
+        "domain": "qparallel.prod",
         "record_type": "A",
         "value": "13.248.169.48",
         "ttl": 300,

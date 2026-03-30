@@ -9,11 +9,11 @@
 describe("QMOI Kernel Panel SSO/OAuth E2E - Multiple Providers", () => {
   it("allows login via Google OAuth", () => {
     cy.visit(
-      "/auth/callback?provider=google&token=google-// Production implementation required:-token",
+      "/auth/callback?provider=google&token=google-// production implementation required:-token",
     );
     cy.setCookie(
       "authToken",
-      "google-// Production implementation required:-token",
+      "google-// production implementation required:-token",
     );
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");
@@ -21,11 +21,11 @@ describe("QMOI Kernel Panel SSO/OAuth E2E - Multiple Providers", () => {
 
   it("allows login via GitHub OAuth", () => {
     cy.visit(
-      "/auth/callback?provider=github&token=github-// Production implementation required:-token",
+      "/auth/callback?provider=github&token=github-// production implementation required:-token",
     );
     cy.setCookie(
       "authToken",
-      "github-// Production implementation required:-token",
+      "github-// production implementation required:-token",
     );
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");

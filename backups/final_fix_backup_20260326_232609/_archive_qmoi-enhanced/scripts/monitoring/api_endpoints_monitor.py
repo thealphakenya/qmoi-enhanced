@@ -68,7 +68,7 @@ class APIEndpointsMonitor:
                 # QCity endpoints
                 {'path': '/api/qcity/status', 'method': 'GET', 'name': 'QCity Status'},
                 {'path': '/api/qcity/metrics', 'method': 'GET', 'name': 'QCity Metrics'},
-                {'path': '/api/qcity/devices', 'method': 'GET', 'name': 'QCity Devices'},
+                {'path': '/api/qcity/prodices', 'method': 'GET', 'name': 'QCity prodices'},
                 
                 # Trading endpoints
                 {'path': '/api/trading/status', 'method': 'GET', 'name': 'Trading Status'},

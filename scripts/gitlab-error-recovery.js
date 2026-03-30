@@ -195,7 +195,7 @@ class GitLabErrorRecovery {
         {
           name: "Install test dependencies",
           command:
-            "npm install --save-dev @testing-library/react @testing-library/jest-dom @testing-library/user-_event jest jest-environment-jsdom",
+            "npm install --save-prod @testing-library/react @testing-library/jest-dom @testing-library/user-_event jest jest-environment-jsdom",
           continueOnError: true,
         },
         {
@@ -205,7 +205,7 @@ class GitLabErrorRecovery {
         },
         {
           name: "Install Cypress",
-          command: "npm install --save-dev cypress",
+          command: "npm install --save-prod cypress",
           continueOnError: true,
         },
         {
@@ -427,14 +427,14 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Production builds
+# production builds
 build/
 dist/
 
 # Environment variables
 .env
 .env.local
-.env.development.local
+.env.production.local
 .env.test.local
 .env.production.local
 
@@ -560,8 +560,8 @@ qmoi_secret_flag
 
       // Check Node.js and NPM
       try {
-        const nodeVersion = await this.runCommand("node --version");
-        diagnostics.push(`✅ Node.js: ${nodeVersion.stdout.trim()}`);
+        const noprodersion = await this.runCommand("node --version");
+        diagnostics.push(`✅ Node.js: ${noprodersion.stdout.trim()}`);
       } catch (error) {
         diagnostics.push(`❌ Node.js: Not available`);
       }

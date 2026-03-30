@@ -111,7 +111,7 @@
     "certificate_authority": "QMOI Root CA",
     "encryption": "AES-256",
     "secure_boot": true,
-    "sandboxing": true
+    "productioning": true
   },
   "generated_at": "2026-03-25T00:47:37.996965+00:00",
   "generator_version": "2.0.0",

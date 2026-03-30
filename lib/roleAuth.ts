@@ -5,7 +5,7 @@
 
  /**
  * Role-Based Authorization Middleware
- * Production middleware for protecting API routes
+ * production middleware for protecting API routes
  */
 
 import { NextRequest, NextResponse } from "next/server";

@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOI Enhanced Cloud Features"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -18,7 +18,7 @@ title: "QMOI Enhanced Cloud Features"
 
 ## Overview
 
-QMOI Enhanced Cloud System now provides fully automated, self-healing, and ultra-robust operation for all environments—including mobile. All builds, tests, and error-fixing (including for mobile apps) can be offloaded to the cloud, with master-only access to error/fix logs and controls. The system continuously updates itself, auto-fixes errors, and ensures complete device resource usage.
+QMOI Enhanced Cloud System now provides fully automated, self-healing, and ultra-robust operation for all environments—including mobile. All builds, tests, and error-fixing (including for mobile apps) can be offloaded to the cloud, with master-only access to error/fix logs and controls. The system continuously updates itself, auto-fixes errors, and ensures complete prodice resource usage.
 
 _Last updated: 2024-06-09_
 
@@ -34,7 +34,7 @@ _Last updated: 2024-06-09_
 ### 2. Intelligent Resource Offloading
 
 - **Mobile Automation**: Use `node scripts/qmoi-mobile-auto-selfheal.js` to ensure mobile is always running, self-healing, and offloading to the cloud as needed.
-- **Ultra-robust Operation**: All heavy tasks are offloaded to the cloud, keeping local device usage complete.
+- **Ultra-robust Operation**: All heavy tasks are offloaded to the cloud, keeping local prodice usage complete.
 - **Self-Updating Agent**: QMOI continuously pulls from GitHub, applies PRs, and updates all environments.
 
 ### 3. Master-Only Error/Fix UI
@@ -116,7 +116,7 @@ npm run qmoi:automation:autotest
 
 ## How to Use
 
-- Configure cloud options in `config/qcity-device-config.json` and `config/qmoi_cloud_config.json`.
+- Configure cloud options in `config/qcity-prodice-config.json` and `config/qmoi_cloud_config.json`.
 - Use dashboard to monitor cloud status, trigger offloading/sync, and view master-only error/fix logs.
 - Use `node scripts/qmoi-mobile-auto-selfheal.js` for mobile automation and self-healing.
 

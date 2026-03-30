@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env bash
 # Generate a markdown release validation report for an APK
 set -euo pipefail
@@ -19,7 +19,7 @@ fi
 APKSIGNER=${APKSIGNER:-$(command -v apksigner || true)}
 if [ -z "$APKSIGNER" ]; then
   if [ -d "$HOME/android_sdk/build-tools" ]; then
-    APKSIGNER=$(ls -1 $HOME/android_sdk/build-tools/*/apksigner 2>/dev/null | head -n1 || true)
+    APKSIGNER=$(ls -1 $HOME/android_sdk/build-tools/*/apksigner 2>/prod/null | head -n1 || true)
   fi
 fi
 

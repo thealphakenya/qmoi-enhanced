@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /**
  * QCity Service - Runs continuously to manage all QCity operations
  * This service runs independently and updates all metrics, handles events, and manages state
@@ -18,7 +18,7 @@ class QCityService {
         lastSync: new Date(),
         version: "2.0.0",
       },
-      devices: {
+      prodices: {
         active: 1247,
         total: 1400,
         online: 1200,
@@ -103,7 +103,7 @@ class QCityService {
   initialize() {
     console.log("[QCity Service] Initializing...");
     this.startMetricsUpdate();
-    this.startDeviceMonitoring();
+    this.startprodiceMonitoring();
     this.startRevenueTracking();
     this.startHealthCheck();
     this.startBiometricVerification();
@@ -116,62 +116,62 @@ class QCityService {
   startMetricsUpdate() {
     this.intervals.push(
       setInterval(() => {
-        // Production implementation: CPU fluctuation (realistic)
-        this.state.devices.resources.cpu = Math.max(
+        // production implementation: CPU fluctuation (realistic)
+        this.state.prodices.resources.cpu = Math.max(
           20,
           Math.min(
             95,
-            this.state.devices.resources.cpu + (Math.random() - 0.5) * 15,
+            this.state.prodices.resources.cpu + (Math.random() - 0.5) * 15,
           ),
         );
 
-        // Production implementation: memory usage
-        this.state.devices.resources.memory = Math.max(
+        // production implementation: memory usage
+        this.state.prodices.resources.memory = Math.max(
           30,
           Math.min(
             85,
-            this.state.devices.resources.memory + (Math.random() - 0.5) * 8,
+            this.state.prodices.resources.memory + (Math.random() - 0.5) * 8,
           ),
         );
 
-        // Production implementation: bandwidth
-        this.state.devices.resources.bandwidth = Math.max(
+        // production implementation: bandwidth
+        this.state.prodices.resources.bandwidth = Math.max(
           10,
           Math.min(
             100,
-            this.state.devices.resources.bandwidth + (Math.random() - 0.5) * 12,
+            this.state.prodices.resources.bandwidth + (Math.random() - 0.5) * 12,
           ),
         );
 
         // Increment uptime
         this.state.system.uptime += 10;
 
-        this.emit("metrics-updated", this.state.devices.resources);
+        this.emit("metrics-updated", this.state.prodices.resources);
       }, 10000),
     ); // Update every 10 seconds
   }
 
   /**
-   * Monitor connected devices
+   * Monitor connected prodices
    */
-  startDeviceMonitoring() {
+  startprodiceMonitoring() {
     this.intervals.push(
       setInterval(() => {
-        // Production implementation: device connections/disconnections
+        // production implementation: prodice connections/disconnections
         const variation = Math.floor((Math.random() - 0.5) * 20);
-        this.state.devices.online = Math.max(
+        this.state.prodices.online = Math.max(
           1000,
-          Math.min(1247, this.state.devices.online + variation),
+          Math.min(1247, this.state.prodices.online + variation),
         );
 
-        // Production implementation: new active tasks
-        this.state.devices.connections = Math.floor(
-          this.state.devices.online * 0.28,
+        // production implementation: new active tasks
+        this.state.prodices.connections = Math.floor(
+          this.state.prodices.online * 0.28,
         );
 
-        this.emit("devices-updated", {
-          online: this.state.devices.online,
-          connections: this.state.devices.connections,
+        this.emit("prodices-updated", {
+          online: this.state.prodices.online,
+          connections: this.state.prodices.connections,
         });
       }, 15000),
     ); // Update every 15 seconds
@@ -183,12 +183,12 @@ class QCityService {
   startRevenueTracking() {
     this.intervals.push(
       setInterval(() => {
-        // Production implementation: microtask completions
+        // production implementation: microtask completions
         const newTasks = Math.floor(Math.random() * 5);
         this.state.revenue.microtasks.completed += newTasks;
         this.state.revenue.microtasks.revenue += newTasks * Math.random() * 5;
 
-        // Production implementation: affiliate commission
+        // production implementation: affiliate commission
         if (Math.random() > 0.7) {
           const newCommission = Math.floor(Math.random() * 500);
           this.state.revenue.affiliate.commissions += newCommission;
@@ -223,7 +223,7 @@ class QCityService {
           timestamp: new Date(),
         };
 
-        // Production implementation: occasional issues
+        // production implementation: occasional issues
         if (Math.random() > 0.95) {
           health.activeAlerts += 1;
           this.state.alerts.warning += 1;

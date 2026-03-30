@@ -438,7 +438,7 @@ class QMOIDataOptimizer:
                 bytes_sent,
                 bytes_received,
                 0.8,  # Estimated compression ratio
-                0, 0, 0, 0, 0.2  # // Production implementation required: values
+                0, 0, 0, 0, 0.2  # // production implementation required: values
             ))
             
             conn.commit()
@@ -621,7 +621,7 @@ class QMOIDataOptimizer:
             return None
     
     def optimize_for_mobile(self, data: Any) -> Any:
-        """Optimize data for mobile devices"""
+        """Optimize data for mobile prodices"""
         try:
             # Reduce data size for mobile
             if isinstance(data, dict):

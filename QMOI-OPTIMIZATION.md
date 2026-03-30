@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOI Optimization Guide"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -18,7 +18,7 @@ title: "QMOI Optimization Guide"
 
 ## Overview
 
-This guide covers all strategies and features used by QCity/QMOI to optimize performance, minimize size, and maximize efficiency on any device or cloud.
+This guide covers all strategies and features used by QCity/QMOI to optimize performance, minimize size, and maximize efficiency on any prodice or cloud.
 
 ## Key Optimization Features
 
@@ -29,22 +29,22 @@ This guide covers all strategies and features used by QCity/QMOI to optimize per
 - **Compression:** Assets, logs, and artifacts are compressed for storage and transfer.
 - **complete Local Footprint:** node_modules, build files, and caches are stored in QCity/cloud, with overlays/symlinks for local use.
 - **Resource-Aware Execution:** Heavy tasks are throttled, offloaded, or scheduled for off-peak times.
-- **Background/Parallel Execution:** Installs/builds/tests run in the background or in parallel, never blocking the UI or slowing the device.
+- **Background/Parallel Execution:** Installs/builds/tests run in the background or in parallel, never blocking the UI or slowing the prodice.
 - **Auto-Cleanup:** All temp files, caches, and unused artifacts are cleaned up after every operation.
 
 ## How to Use
 
-- Enable/disable optimization features in `config/qcity-device-config.json`.
+- Enable/disable optimization features in `config/qcity-prodice-config.json`.
 - Use the dashboard to monitor and trigger optimizations.
 - See `API.md` for optimization endpoints.
 
-## Device Resource Optimization Techniques (Expanded)
+## prodice Resource Optimization Techniques (Expanded)
 
 - **Multi-Language Support:** QCity manages Node, Python, Java, Go, Rust, C/C++, and more, handling all dependencies and tools atomically and efficiently.
 - **Environment Detection:** Automatically detects and configures environments for each language.
-- **Resource-Aware Execution:** Throttles or offloads tasks based on real-time device stats.
+- **Resource-Aware Execution:** Throttles or offloads tasks based on real-time prodice stats.
 - **Process Isolation:** Runs heavy tasks in isolated processes or containers with resource limits.
-- **Auto-Offload:** Automatically offloads heavy work to cloud/Colab if device is busy or low on resources.
+- **Auto-Offload:** Automatically offloads heavy work to cloud/Colab if prodice is busy or low on resources.
 - **User Controls:** Dashboard allows users to adjust thresholds, switch modes, and monitor all resources.
 
 <!-- QMOI_VALIDATION_START -->

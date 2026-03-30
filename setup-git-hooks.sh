@@ -10,7 +10,7 @@ cat > "${GIT_HOOKS_DIR}/post-push" << 'HOOK_EOF'
 #!/bin/bash
 echo "📦 Post-push: Checking Vercel deployment..."
 cd "$(git rev-parse --show-toplevel)"
-./update_vercel_links.sh 2>/dev/null || true
+./update_vercel_links.sh 2>/prod/null || true
 HOOK_EOF
 chmod +x "${GIT_HOOKS_DIR}/post-push"
 echo "✓ Created post-push hook"

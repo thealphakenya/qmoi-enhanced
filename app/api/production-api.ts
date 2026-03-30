@@ -1,4 +1,4 @@
-// QMOI Enhanced - Production API Routes
+// QMOI Enhanced - production API Routes
 // Comprehensive REST API implementation for all QMOI Enhanced functionality
 // Version: 2.0.0
 // Date: 2026-03-30
@@ -575,7 +575,7 @@ export async function GET_docs(request: NextRequest): Promise<NextResponse> {
   const docs = {
     title: 'QMOI Enhanced API',
     version: '2.0.0',
-    description: 'Production-ready API for QMOI Enhanced platform',
+    description: 'production-ready API for QMOI Enhanced platform',
     baseUrl: 'https://api.qmoi.ai',
     endpoints: {
       auth: [

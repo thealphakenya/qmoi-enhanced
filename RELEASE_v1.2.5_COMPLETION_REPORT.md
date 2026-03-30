@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # QMOI v1.2.5 Release: All Remaining Steps - COMPLETION REPORT
 
 **Date**: 2025-11-15  
@@ -59,7 +59,7 @@ All remaining verification and release preparation steps have been **successfull
 
 - All 10 artifacts: checksum verified ✅
 - PWA apps: production-ready ✅
-- Platform binaries: [PRODUCTION READY] files (need rebuild)
+- Platform binaries: [production READY] files (need rebuild)
 
 ### 6. ✅ Enhanced CI/CD Workflow
 
@@ -80,9 +80,9 @@ All remaining verification and release preparation steps have been **successfull
 | -------------------- | ------------------ | ----------------------- |
 | GitHub Release       | ✅ Created         | v1.2.5, ID: 262642597   |
 | PWA Apps (6)         | ✅ Real & Verified | All deployable          |
-| Android APK          | ⚠️ [PRODUCTION READY]     | Requires rebuild        |
-| Windows EXE          | ⚠️ [PRODUCTION READY]     | Requires rebuild        |
-| iOS IPA              | ⚠️ [PRODUCTION READY]     | Requires rebuild        |
+| Android APK          | ⚠️ [production READY]     | Requires rebuild        |
+| Windows EXE          | ⚠️ [production READY]     | Requires rebuild        |
+| iOS IPA              | ⚠️ [production READY]     | Requires rebuild        |
 | Checksums            | ✅ All Verified    | SHA256SUMS.txt valid    |
 | Verification Scripts | ✅ Complete        | APK, EXE, IPA           |
 | Documentation        | ✅ Complete        | Guides + status reports |
@@ -90,21 +90,21 @@ All remaining verification and release preparation steps have been **successfull
 
 ---
 
-## 🔄 Blocking Items (Required Before Production)
+## 🔄 Blocking Items (Required Before production)
 
 1. **Platform Binary Rebuilds** (CRITICAL)
    - Android: `./scripts/build-android-production.sh`
    - Windows: `./scripts/build-windows-production.sh`
    - iOS: `./scripts/build-apple-production.sh` (macOS only)
 
-2. **Replace [PRODUCTION READY] Files** in GitHub Release
+2. **Replace [production READY] Files** in GitHub Release
    - Copy rebuilt binaries to v1.2.5_release/
    - Regenerate SHA256SUMS.txt
    - Push tag to trigger release update
 
-3. **Verify Production Binaries**
+3. **Verify production Binaries**
    - Run verification scripts against new binaries
-   - Test on actual devices/emulators
+   - Test on actual prodices/emulators
    - Confirm all features present
 
 ---
@@ -149,13 +149,13 @@ All remaining verification and release preparation steps have been **successfull
 
 Execute platform builds on appropriate environments to generate real production binaries.
 
-### Phase 2: Replace [PRODUCTION READY]s
+### Phase 2: Replace [production READY]s
 
 Update GitHub Release v1.2.5 with real binaries and regenerated checksums.
 
 ### Phase 3: Test & Deploy
 
-Run verification scripts and test on actual devices before marking as production-ready.
+Run verification scripts and test on actual prodices before marking as production-ready.
 
 ---
 

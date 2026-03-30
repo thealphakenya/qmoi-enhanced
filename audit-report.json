@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 {
   "auditReportVersion": 2,
   "vulnerabilities": {
@@ -79,7 +79,7 @@
     },
     "dependencies": {
       "prod": 426,
-      "dev": 833,
+      "prod": 833,
       "optional": 19,
       "peer": 0,
       "peerOptional": 0,

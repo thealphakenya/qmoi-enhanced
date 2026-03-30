@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 {
   "metadata": {
     "version": "1.0.0",
@@ -40,12 +40,12 @@
     "3. Run: python3 tools/cache_links.py --production --verify",
     "4. Build offline documentation: cd docs_site && ./build_offline.sh",
     "5. Test offline access: npm run test:offline",
-    "6. Review PHASE4_PRODUCTION_STRATEGY.md for remaining tasks"
+    "6. Review PHASE4_production_STRATEGY.md for remaining tasks"
   ],
   "documents": [
     "docs/CREDENTIAL_ROTATION_PLAYBOOK.md",
     "docs/OFFLINE_GUIDE.md",
-    "PHASE4_PRODUCTION_STRATEGY.md",
-    "docs_site/PRODUCTION_LINK_AUDIT.json"
+    "PHASE4_production_STRATEGY.md",
+    "docs_site/production_LINK_AUDIT.json"
   ]
 }

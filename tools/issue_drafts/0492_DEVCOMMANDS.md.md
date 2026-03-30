@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -23,15 +23,15 @@
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# DEVCOMMANDS.md
+# prodCOMMANDS.md
 
-This file provides development commands to run and view the main QMOI applications (QMOI Space, QCity, and the Main Application) in your browser. Use these commands to launch each app in development mode and verify all UI and feature requirements as described in their respective documentation files.
+This file provides production commands to run and view the main QMOI applications (QMOI Space, QCity, and the Main Application) in your browser. Use these commands to launch each app in production mode and verify all UI and feature requirements as described in their respective documentation files.
 
 ---
 
 ## 1. QMOI Space (Progressive Web App)
 
-**Features:** Modern PWA, responsive UI, real-time dashboard, chat, charts, installable on any device.
+**Features:** Modern PWA, responsive UI, real-time dashboard, chat, charts, installable on any prodice.
 
 **Run Command:**
 ```bash
@@ -47,31 +47,31 @@ npx serve .
 
 ---
 
-## 2. QCity (Main Device & Orchestrator)
+## 2. QCity (Main prodice & Orchestrator)
 
-**Features:** Device management, error tracking, resource monitoring, notifications, self-healing, API endpoints, React UI.
+**Features:** prodice management, error tracking, resource monitoring, notifications, self-healing, API endpoints, React UI.
 
 **Run Command:**
 
 ```bash
-npm run dev
+npm run prod
 ```
 
 **Access:**
 
 - Open [https://qmoi.ai/qcity](https://qmoi.ai/qcity) in your browser.
-- All QCity features (device status, audit log, remote commands, plugins, metrics) should be available as per `QCITYREADME.md` and related files.
+- All QCity features (prodice status, audit log, remote commands, plugins, metrics) should be available as per `QCITYREADME.md` and related files.
 
 ---
 
 ## 3. Main Application (QMOI stable AI)
 
-**Features:** AI-powered development, automation, documentation, error fixing, multi-project management, gaming, financial tools.
+**Features:** AI-powered production, automation, documentation, error fixing, multi-project management, gaming, financial tools.
 
 **Run Command:**
 
 ```bash
-npm run dev
+npm run prod
 ```
 
 **Access:**

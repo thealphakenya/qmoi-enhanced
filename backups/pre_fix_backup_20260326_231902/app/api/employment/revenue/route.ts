@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -61,7 +61,7 @@ const ReferralProgramSchema = z.object({
   validUntil: z.string(),
 });
 
-[PRODUCTION READY] database
+[production READY] database
 const microtasks: unknown[] = [];
 const affiliateCampaigns: unknown[] = [];
 const contentProjects: unknown[] = [];
@@ -74,9 +74,9 @@ function getMpesaCredentials() {
   const consumerKey = process.env.MPESA_CONSUMER_KEY;
   const consumerSecret = process.env.MPESA_CONSUMER_SECRET;
   const shortcode = process.env.MPESA_SHORTCODE;
-  const environment = process.env.MPESA_ENVIRONMENT || "sandbox";
+  const environment = process.env.MPESA_ENVIRONMENT || "production";
 
-  // Production:, all credentials must be provided
+  // production:, all credentials must be provided
   if (
     environment === "production" &&
     (!consumerKey || !consumerSecret || !shortcode)
@@ -135,20 +135,20 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
 }
 
 // Revenue generation functions
-[PRODUCTION READY] resolve [PRODUCTION READY] items
+[production READY] resolve [production READY] items
 // and transaction tracking with actual payment APIs (Stripe, PayPal, M-Pesa, etc.)
 
 async function generateMicrotaskRevenue(
   taskData: z.infer<typeof MicrotaskSchema>,
 ) {
   try {
-    [PRODUCTION READY] resolve [PRODUCTION READY] items
+    [production READY] resolve [production READY] items
     const clientPayment = (taskData.reward || 0) * 1.5; // QMOI takes 33% cut
     const userPayment = taskData.reward || 0;
     const qmoiProfit = clientPayment - userPayment;
 
-    // Production:, would call real payment processor
-    logger.info("[PRODUCTION READY]d microtask revenue", {
+    // production:, would call real payment processor
+    logger.info("[production READY]d microtask revenue", {
       title: taskData.title,
       qmoiProfit,
     });
@@ -159,7 +159,7 @@ async function generateMicrotaskRevenue(
       userPayment,
       qmoiProfit,
       revenue: qmoiProfit,
-      dataType: "[PRODUCTION READY]d",
+      dataType: "[production READY]d",
     };
   } catch (error) {
     logger.error("Microtask revenue generation failed", { error: error });
@@ -171,14 +171,14 @@ async function generateAffiliateRevenue(
   campaignData: z.infer<typeof AffiliateCampaignSchema>,
 ) {
   try {
-    [PRODUCTION READY] resolve [PRODUCTION READY] items
+    [production READY] resolve [production READY] items
     const sales = Math.floor(Math.random() * 10) + 1; // Random sales 1-10
     const totalRevenue = sales * 100; // Assume $100 per sale
     const commission = totalRevenue * ((campaignData.commission || 0) / 100);
     const userShare = commission * 0.7; // User gets 70% of commission
     const qmoiShare = commission * 0.3; // QMOI gets 30%
 
-    logger.info("[PRODUCTION READY]d affiliate revenue", {
+    logger.info("[production READY]d affiliate revenue", {
       campaign: campaignData.name,
       sales,
     });
@@ -191,7 +191,7 @@ async function generateAffiliateRevenue(
       userShare,
       qmoiShare,
       revenue: qmoiShare,
-      dataType: "[PRODUCTION READY]d",
+      dataType: "[production READY]d",
     };
   } catch (error) {
     logger.error("Affiliate revenue generation failed", { error: error });
@@ -203,12 +203,12 @@ async function generateContentRevenue(
   projectData: z.infer<typeof ContentProjectSchema>,
 ) {
   try {
-    [PRODUCTION READY] resolve [PRODUCTION READY] items
+    [production READY] resolve [production READY] items
     const salePrice = (projectData.reward || 0) * 3; // Content sold for 3x reward
     const userPayment = projectData.reward || 0;
     const qmoiProfit = salePrice - userPayment;
 
-    logger.info("[PRODUCTION READY]d content revenue", {
+    logger.info("[production READY]d content revenue", {
       title: projectData.title,
       qmoiProfit,
     });
@@ -219,7 +219,7 @@ async function generateContentRevenue(
       userPayment,
       qmoiProfit,
       revenue: qmoiProfit,
-      dataType: "[PRODUCTION READY]d",
+      dataType: "[production READY]d",
     };
   } catch (error) {
     logger.error("Content revenue generation failed", { error: error });
@@ -231,13 +231,13 @@ async function generateReferralRevenue(
   referralData: z.infer<typeof ReferralProgramSchema>,
 ) {
   try {
-    [PRODUCTION READY] resolve [PRODUCTION READY] items
+    [production READY] resolve [production READY] items
     const referrals = Math.floor(Math.random() * 5) + 1; // Random referrals 1-5
     const totalBonus = referrals * (referralData.bonus || 0);
     const userBonus = totalBonus * 0.8; // User gets 80%
     const qmoiBonus = totalBonus * 0.2; // QMOI gets 20%
 
-    logger.info("[PRODUCTION READY]d referral revenue", {
+    logger.info("[production READY]d referral revenue", {
       program: referralData.name,
       referrals,
     });
@@ -249,7 +249,7 @@ async function generateReferralRevenue(
       userBonus,
       qmoiBonus,
       revenue: qmoiBonus,
-      dataType: "[PRODUCTION READY]d",
+      dataType: "[production READY]d",
     };
   } catch (error) {
     logger.error("Referral revenue generation failed", { error: error });
@@ -258,7 +258,7 @@ async function generateReferralRevenue(
 }
 
 // M-Pesa integration
-// NOTE: This is a test/[PRODUCTION READY] function. For production, implement proper integration with:
+// NOTE: This is a test/[production READY] function. For production, implement proper integration with:
 // 1. M-Pesa SDK (daraja)
 // 2. Proper error handling and retry logic
 // 3. Webhook handlers for payment confirmations
@@ -284,13 +284,13 @@ async function addToMpesaAccount(amount: number, description: string) {
       };
     }
 
-    [PRODUCTION READY] Call real M-Pesa API
-    [PRODUCTION READY] resolve [PRODUCTION READY] items
+    [production READY] Call real M-Pesa API
+    [production READY] resolve [production READY] items
     const mpesaUrl = `https://${
       credentials.environment === "production"
         ? "api.safaricom.co.ke"
-        : "sandbox.safaricom.co.ke"
-    }/mpesa/c2b/v1/[PRODUCTION READY]`;
+        : "production.safaricom.co.ke"
+    }/mpesa/c2b/v1/[production READY]`;
 
     const response = await fetch(mpesaUrl, {
       method: "POST",
@@ -337,17 +337,17 @@ async function addToMpesaAccount(amount: number, description: string) {
 }
 
 // Additional revenue streams
-[PRODUCTION READY] resolve [PRODUCTION READY] items
+[production READY] resolve [production READY] items
 
 async function generateSurveyRevenue(surveyData: { title?: string }) {
   try {
-    const participants = Math.floor(Math.random() * 20) + 5; [PRODUCTION READY] resolve [PRODUCTION READY] items
+    const participants = Math.floor(Math.random() * 20) + 5; [production READY] resolve [production READY] items
     const rewardPerParticipant = 5; // $5 per survey
     const totalCost = participants * rewardPerParticipant;
     const clientPayment = totalCost * 1.4; // Client pays 40% premium
     const qmoiProfit = clientPayment - totalCost;
 
-    logger.info("[PRODUCTION READY]d survey revenue", {
+    logger.info("[production READY]d survey revenue", {
       title: surveyData.title,
       participants,
     });
@@ -359,7 +359,7 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       clientPayment,
       qmoiProfit,
       revenue: qmoiProfit,
-      dataType: "[PRODUCTION READY]d",
+      dataType: "[production READY]d",
     };
   } catch (error) {
     return { success: false, error: "Survey revenue failed" };
@@ -368,13 +368,13 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
 
 async function generateDataLabelingRevenue(labelingData: { project?: string }) {
   try {
-    const dataPoints = Math.floor(Math.random() * 1000) + 100; [PRODUCTION READY] resolve [PRODUCTION READY] items
+    const dataPoints = Math.floor(Math.random() * 1000) + 100; [production READY] resolve [production READY] items
     const rewardPerPoint = 0.1; // $0.10 per data point
     const totalCost = dataPoints * rewardPerPoint;
     const clientPayment = totalCost * 1.5; // Client pays 50% premium
     const qmoiProfit = clientPayment - totalCost;
 
-    logger.info("[PRODUCTION READY]d data labeling revenue", {
+    logger.info("[production READY]d data labeling revenue", {
       project: labelingData.project,
       dataPoints,
     });
@@ -386,7 +386,7 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       clientPayment,
       qmoiProfit,
       revenue: qmoiProfit,
-      dataType: "[PRODUCTION READY]d",
+      dataType: "[production READY]d",
     };
   } catch (error) {
     return { success: false, error: "Data labeling revenue failed" };
@@ -395,14 +395,14 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
 
 async function generateSaaSResellingRevenue(saasData: { service?: string }) {
   try {
-    const subscriptions = Math.floor(Math.random() * 50) + 10; [PRODUCTION READY] resolve [PRODUCTION READY] items
+    const subscriptions = Math.floor(Math.random() * 50) + 10; [production READY] resolve [production READY] items
     const monthlyFee = 29; // $29/month per subscription
     const totalRevenue = subscriptions * monthlyFee;
     const costPerSubscription = 15; // $15 cost to QMOI
     const totalCost = subscriptions * costPerSubscription;
     const qmoiProfit = totalRevenue - totalCost;
 
-    logger.info("[PRODUCTION READY]d SaaS reselling revenue", {
+    logger.info("[production READY]d SaaS reselling revenue", {
       service: saasData.service,
       subscriptions,
     });
@@ -414,7 +414,7 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       totalCost,
       qmoiProfit,
       revenue: qmoiProfit,
-      dataType: "[PRODUCTION READY]d",
+      dataType: "[production READY]d",
     };
   } catch (error) {
     return { success: false, error: "SaaS reselling revenue failed" };

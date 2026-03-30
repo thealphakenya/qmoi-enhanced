@@ -9,7 +9,7 @@
     "qcity.io": "Needs domain registration and DNS setup",
     "qvillage.org": "Needs domain registration and DNS setup",
     "qglobal.ai": "Needs domain registration and DNS setup",
-    "qparallel.dev": "Needs domain registration and DNS setup"
+    "qparallel.prod": "Needs domain registration and DNS setup"
   },
   "working_domains": {
     "qvillage.com": "Already working",

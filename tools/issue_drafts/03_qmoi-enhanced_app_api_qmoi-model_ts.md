@@ -7,13 +7,13 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
-title: "Fix [PRODUCTION READY]s in qmoi-enhanced/app/api/qmoi-model.ts (133 priority)"
+title: "Fix [production READY]s in qmoi-enhanced/app/api/qmoi-model.ts (133 priority)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Fix [PRODUCTION READY]s in qmoi-enhanced/app/api/qmoi-model.ts (133 priority)
+# Fix [production READY]s in qmoi-enhanced/app/api/qmoi-model.ts (133 priority)
 
 **File**: `qmoi-enhanced/app/api/qmoi-model.ts`
 **Priority score**: 133
@@ -21,19 +21,19 @@ title: "Fix [PRODUCTION READY]s in qmoi-enhanced/app/api/qmoi-model.ts (133 prio
 ## Summary of matches
 
 - Line 44: // In-memory AI task log (replace with persistent DB in production)
-- Line 59: [PRODUCTION READY] Qmoi model enhancement
-- Line 67: [PRODUCTION READY] file upload handling
-- Line 84: [PRODUCTION READY] auto-discover/build/use extension for a project
-- Line 88: [PRODUCTION READY] Colab job
-- Line 104: [PRODUCTION READY] creative file generation
-- Line 146: [PRODUCTION READY]: Update master/projects list (e.g., save to a JSON file or DB)
-- Line 155: [PRODUCTION READY] packaging (e.g., zip/tar)
-- Line 156: [PRODUCTION READY]: Implement real packaging logic
-- Line 200: [PRODUCTION READY]_PROD for advanced AI/ML tasks (implemented)
+- Line 59: [production READY] Qmoi model enhancement
+- Line 67: [production READY] file upload handling
+- Line 84: [production READY] auto-discover/build/use extension for a project
+- Line 88: [production READY] Colab job
+- Line 104: [production READY] creative file generation
+- Line 146: [production READY]: Update master/projects list (e.g., save to a JSON file or DB)
+- Line 155: [production READY] packaging (e.g., zip/tar)
+- Line 156: [production READY]: Implement real packaging logic
+- Line 200: [production READY]_prod for advanced AI/ML tasks (implemented)
 
 ## required action
 
-Replace [PRODUCTION READY] [PRODUCTION READY]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
+Replace [production READY] [production READY]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
 
 ## Notes
 

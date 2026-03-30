@@ -128,7 +128,7 @@ class EnhancedLinkDomainValidator:
             
             # Try HTTP check
             result = subprocess.run(
-                ['curl', '-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '5', f'https://{domain}/'],
+                ['curl', '-s', '-o', '/prod/null', '-w', '%{http_code}', '--max-time', '5', f'https://{domain}/'],
                 capture_output=True,
                 text=True,
                 timeout=10

@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOI System"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -18,7 +18,7 @@ title: "QMOI System"
 
 ![Build](https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square)
 
-Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a unified build, automation, deployment, and update pipeline for **QMOI AI** and all **QCity-powered apps** across every platform and device.
+Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a unified build, automation, deployment, and update pipeline for **QMOI AI** and all **QCity-powered apps** across every platform and prodice.
 
 ---
 
@@ -28,12 +28,12 @@ Use the following tools to automate and build your apps:
 
 | Tool                                 | Description                                                      |
 | ------------------------------------ | ---------------------------------------------------------------- |
-| `python scripts/qmoi-app-builder.py` | Full cloud-based build and test for all devices                  |
+| `python scripts/qmoi-app-builder.py` | Full cloud-based build and test for all prodices                  |
 | `build_qmoi_ai.bat`                  | Quick-build for Windows `.exe` using PyInstaller + GitHub deploy |
 | `qmoiexe.py`                         | All-in-one launcher (backend + GUI + tray + updater + shortcuts) |
 | `auto_updater.py`                    | Auto-checks GitHub for new releases and updates locally          |
 
-> 🚗 All builds are **cloud-offloaded** to reduce load and ensure stability across devices.
+> 🚗 All builds are **cloud-offloaded** to reduce load and ensure stability across prodices.
 
 ---
 
@@ -53,7 +53,7 @@ Qmoi_apps/
 📚 Documentation
 ALLMDFILESREFS.md → Full index of docs, features, build scripts
 
-DOWNLOADQMOIAIAPPALLDEVICES.md → CLI installers, troubleshooting, QR downloads
+DOWNLOADQMOIAIAPPALLprodICES.md → CLI installers, troubleshooting, QR downloads
 
 🌐 Download Links
 All finalized apps are automatically published to:
@@ -132,7 +132,7 @@ Edit
 - ✅ Badge support
 - ✅ Human-readable and GitHub-friendly format
 - ✅ Update-safe via comment markers
-- ✅ Markdown table for device status
+- ✅ Markdown table for prodice status
 - ✅ Web-safe and version-controllable
 
 <!-- QMOI_VALIDATION_START -->

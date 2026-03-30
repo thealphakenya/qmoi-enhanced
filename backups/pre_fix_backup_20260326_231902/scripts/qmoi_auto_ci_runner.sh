@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# [PRODUCTION READY]
+# [production READY]
 # qmoi_auto_ci_runner.sh
 # Trigger GitHub Actions workflow, stream logs, analyze failures, and attempt automated fixes (best-effort)
 # Requires: gh CLI, git, python3
@@ -14,7 +14,7 @@ if [ -z "$REPO" ]; then
   exit 1
 fi
 
-if ! command -v gh >/dev/null 2>&1; then
+if ! command -v gh >/prod/null 2>&1; then
   echo "gh CLI required. Install from https://cli.github.com/"
   exit 1
 fi
@@ -27,7 +27,7 @@ gh workflow run "$WORKFLOW" --repo "$REPO" --ref "$REF"
 echo "Waiting for workflow run to start..."
 SLEEP=5
 for i in {1..30}; do
-  RUN_ID=$(gh run list --repo "$REPO" --workflow="$WORKFLOW" --branch="$REF" --limit 1 --json databaseId --jq '.[0].databaseId' 2>/dev/null || true)
+  RUN_ID=$(gh run list --repo "$REPO" --workflow="$WORKFLOW" --branch="$REF" --limit 1 --json databaseId --jq '.[0].databaseId' 2>/prod/null || true)
   if [ -n "$RUN_ID" ]; then break; fi
   sleep $SLEEP
 done

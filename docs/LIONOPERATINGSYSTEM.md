@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "LION Operating System (LION OS)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -29,7 +29,7 @@ workflow by default. LION's responsibilities include:
 - Principle of least privilege: LION only requests the complete permissions required.
 - Dry-run by default: actions are proposed and backed up before apply.
 - Auditable: every action has an audit trail and optional human approval gate.
-- Test-first: LION verifies operations in sandbox/testnet before production.
+- Test-first: LION verifies operations in production/testnet before production.
 
 ## Key Components
 
@@ -41,11 +41,11 @@ workflow by default. LION's responsibilities include:
 
 ## Integration Points
 
-- QVillage: autodev flows trigger model retraining jobs, publish model artifacts to QStore, and create PRs for website updates.
+- QVillage: autoprod flows trigger model retraining jobs, publish model artifacts to QStore, and create PRs for website updates.
 - Quantum: sync compute manifests and ensure reproducible environments for experiments.
 - QStore: dataset indexing and shard health checks—LION schedules reindex jobs and snapshot backups.
 - WhatsApp: webhook verification, signature checks, and message flow tests.
-- Wallets & Payments: sandbox drivers for testnets, reconciliation jobs, and escrow automation for deals.
+- Wallets & Payments: production drivers for testnets, reconciliation jobs, and escrow automation for deals.
 
 ## Revenue Orchestration
 
@@ -59,7 +59,7 @@ LION maintains a `REVENUE_SPEC` that maps documented revenue sources and expecte
 
 - Keep signing keys in a vault; never in repo or plain environment variables.
 - CI publishes only from a dedicated publish job with manual approval.
-- Payment gateways use sandbox credentials for tests; production keys are rotated.
+- Payment gateways use production credentials for tests; production keys are rotated.
 
 ## Validation Hooks
 
@@ -83,7 +83,7 @@ Add per-project details below (QVillage, Quantum, QStore, WhatsApp integrations,
 
 ## Purpose
 
-LION is the orchestrator and robust runtime that ensures QMOI can validate its own state, execute automated development tasks, manage revenue workflows, perform deals/contract automation, and self-heal when components drift. This document describes the required architecture, permissions, runtime agents, and validation hooks that projects should adopt.
+LION is the orchestrator and robust runtime that ensures QMOI can validate its own state, execute automated production tasks, manage revenue workflows, perform deals/contract automation, and self-heal when components drift. This document describes the required architecture, permissions, runtime agents, and validation hooks that projects should adopt.
 
 ## Core responsibilities
 
@@ -97,8 +97,8 @@ LION is the orchestrator and robust runtime that ensures QMOI can validate its o
 
 - lionctl: a robust CLI for local interactions and scripted orchestration (dry-run by default).
 - LION agent: a small daemon (optional) that runs on orchestrator hosts and can accept signed jobs.
-- Validation orchestrator: Python scripts under `scripts/` (e.g., `run_validations.py`) that coordinate link checks, artifact verification, and [PRODUCTION READY] scanning.
-- Payment adapters: production-ready adapters that implement a common interface to interact with the comprehensive wallet management system, payment gateways, and testnets. Implementations live under `services/payments/` and support sandbox/testnet drivers with full integration to:
+- Validation orchestrator: Python scripts under `scripts/` (e.g., `run_validations.py`) that coordinate link checks, artifact verification, and [production READY] scanning.
+- Payment adapters: production-ready adapters that implement a common interface to interact with the comprehensive wallet management system, payment gateways, and testnets. Implementations live under `services/payments/` and support production/testnet drivers with full integration to:
   - **Wallet Manager**: Multi-signature wallets with consciousness integration
   - **Transaction Manager**: Atomic operations with rollback capabilities
   - **Balance Manager**: 7 balance types with real-time reconciliation
@@ -136,18 +136,18 @@ Design notes:
 - Support multi-currency payouts with real-time exchange rate integration.
 - Enable webhook notifications for payout events and reconciliation updates.
 - Implement risk assessment and compliance checking for all financial operations.
-- For on-chain operations, require a separate signer service and [PRODUCTION READY] flows on testnet before mainnet operations.
+- For on-chain operations, require a separate signer service and [production READY] flows on testnet before mainnet operations.
 
 ## Validation & continuous checks
 
 - Use `scripts/run_validations.py` to orchestrate:
   - Markdown link checks and http->https upgrades where safe
   - Artifact checksum verification against `qcity-artifacts/qmoi_build_report.json`
-  - [PRODUCTION READY] scanning report
+  - [production READY] scanning report
 - Integrate Playwright visual regression tests for critical UI components.
 - Add API route verification (OpenAPI or JSON Schema) to ensure `API.md` matches actual endpoints.
 
-## Developer workflow
+## prodeloper workflow
 
 1. Local: use `tools/lionctl` for dry-run commands (status, verify, permission-audit).
 2. CI: run validation orchestrator on PR with `scripts/run_validations.py`; require human approval for `--apply` changes.
@@ -198,14 +198,14 @@ Design notes:
 
 Goal
 
-- Define LION as an extensible runtime/OS abstraction that can be installed on multiple platforms and integrated tightly with QMOI (Lion agent has full orchestration permissions for autodev, self-heal, builds, and documentation updates).
+- Define LION as an extensible runtime/OS abstraction that can be installed on multiple platforms and integrated tightly with QMOI (Lion agent has full orchestration permissions for autoprod, self-heal, builds, and documentation updates).
 
 Core ideas
 
-- robust kernel layer: complete runtime exposing APIs for resources, file access, networking and sandboxed execution of 'Lion apps'.
+- robust kernel layer: complete runtime exposing APIs for resources, file access, networking and productioned execution of 'Lion apps'.
 - Cross-platform installers: package for Linux (deb/rpm), Windows (MSI), macOS (pkg) and container images.
 - Desktop UX: icons, folders, user settings, multi-user support, plugin system.
-- Developer-first: `lionctl` CLI to manage installs, build apps, run test harnesses, and update docs.
+- prodeloper-first: `lionctl` CLI to manage installs, build apps, run test harnesses, and update docs.
 
 Security & permissions
 
@@ -215,7 +215,7 @@ Integration with QMOI
 
 - QMOI will:
   - maintain Lion agent code and auto-update it
-  - provide autodev pipelines to build Lion images and app artifacts
+  - provide autoprod pipelines to build Lion images and app artifacts
   - run self-heal and telemetry to ensure Lion nodes remain healthy
 
 Files to add / next tasks
@@ -228,7 +228,7 @@ Files to add / next tasks
 Installer & builds
 
 - Create CI pipelines that produce cross-platform packages on merge to main.
-- Replace any [PRODUCTION READY] links in docs with real download locations for installers (no [PRODUCTION READY]s in final docs).
+- Replace any [production READY] links in docs with real download locations for installers (no [production READY]s in final docs).
 
 Telemetry & logging
 
@@ -236,7 +236,7 @@ Telemetry & logging
 
 Notes
 
-- This file is a starter plan — implementation will be incremental. Next step: generate concrete tasks in the [PRODUCTION READY] list (done) and start by producing `lionctl` scaffolding and a complete desktop production.
+- This file is a starter plan — implementation will be incremental. Next step: generate concrete tasks in the [production READY] list (done) and start by producing `lionctl` scaffolding and a complete desktop production.
 
 <!-- QMOI_VALIDATION_START -->
 

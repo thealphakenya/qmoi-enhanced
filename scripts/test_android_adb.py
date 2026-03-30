@@ -12,8 +12,8 @@ def adb_install(apk):
     if not os.path.exists(apk):
         print("❌ APK not found.")
         return
-    print("📱 Checking device...")
-    subprocess.run(["adb", "devices"])
+    print("📱 Checking prodice...")
+    subprocess.run(["adb", "prodices"])
     print("📦 Installing...")
     subprocess.run(["adb", "install", "-r", apk])
 

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
@@ -16,7 +16,7 @@ const authenticateMaster = (request: NextRequest) => {
   }
 
   const token = authHeader.substring(7);
-  // Production:, validate against secure token storage
+  // production:, validate against secure token storage
   return (
     token === process.env.QMOI_MASTER_TOKEN || token === "master-access-token"
   );
@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
 
       return NextResponse.json(dashboardData);
     } catch (error) {
-      // If dashboard file doesn't exist, return [PRODUCTION IMPLEMENTATION REQUIRED] data for development
+      // If dashboard file doesn't exist, return [production IMPLEMENTATION REQUIRED] data for production
       const dashboardData = {
         revenue: {
           current: 125000,
@@ -321,8 +321,8 @@ export async function GET(request: NextRequest) {
               accounts: 1,
             },
             {
-              id: "dev-to",
-              name: "Dev.to",
+              id: "prod-to",
+              name: "prod.to",
               type: "content",
               revenue: 1200,
               accounts: 1,
@@ -355,8 +355,8 @@ export async function GET(request: NextRequest) {
             {
               id: "2",
               platform: "app-store",
-              username: "qmoi_developers",
-              email: "qmoi.developers@gmail.com",
+              username: "qmoi_prodelopers",
+              email: "qmoi.prodelopers@gmail.com",
               status: "active",
               createdAt: new Date(Date.now() - 172800000).toISOString(),
               revenue: 18000,

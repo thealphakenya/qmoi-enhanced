@@ -29,7 +29,7 @@ function updateDocs(filePath) {
 }
 
 chokidar
-  .watch(["src/", "components/", "devices/"], { ignored: /node_modules|\.git/ })
+  .watch(["src/", "components/", "prodices/"], { ignored: /node_modules|\.git/ })
   .on("add", (filePath) => {
     if (isNewFeature(filePath)) {
       generate

@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOI Gitpod/QMOI Workspace Management (2024 Update)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -18,7 +18,7 @@ title: "QMOI Gitpod/QMOI Workspace Management (2024 Update)"
 
 ## QCity UI Integration
 
-- Master-only panel in QCity Device Panel for managing Gitpod and QMOI-local workspaces.
+- Master-only panel in QCity prodice Panel for managing Gitpod and QMOI-local workspaces.
 - Real-time status, logs, and advanced controls (start, stop, clone, sync, logs) for each workspace.
 - Fallback to QMOI-local (Docker) if Gitpod is unavailable. All changes sync back to Gitpod when available.
 - All actions are logged and auditable. Only master users can access this panel.

@@ -5,11 +5,11 @@
 
 /**
  * QMOI Memory Synchronization System
- * Manages distributed memory across all devices, clouds, and systems with real-time sync
+ * Manages distributed memory across all prodices, clouds, and systems with real-time sync
  * 
  * Features:
  * - Multi-layer memory (short-term, long-term, semantic)
- * - Real-time sync across devices
+ * - Real-time sync across prodices
  * - Memory consolidation and optimization
  * - Conflict resolution for distributed updates
  * - Secure memory encryption
@@ -24,7 +24,7 @@ export interface MemoryEntry {
   type: "short_term" | "long_term" | "semantic" | "procedural";
   content: string;
   timestamp: string;
-  device_id: string;
+  prodice_id: string;
   user_id: string;
   relevance_score: number;
   tags: string[];
@@ -46,7 +46,7 @@ export interface SyncEvent {
   type: "create" | "update" | "delete";
   memory_id: string;
   timestamp: string;
-  device_id: string;
+  prodice_id: string;
   user_id: string;
   data: MemoryEntry;
 }
@@ -54,7 +54,7 @@ export interface SyncEvent {
 export class QMOIMemorySyncSystem extends EventEmitter {
   private memory_layers: MemoryLayer;
   private sync_queue: SyncEvent[] = [];
-  private device_states: Map<string, SyncState> = new Map();
+  private prodice_states: Map<string, SyncState> = new Map();
   private encryption_key: string;
   private sync_interval: NodeJS.Timer | null = null;
   private memory_index: Map<string, Set<string>> = new Map(); // For fast search
@@ -117,7 +117,7 @@ export class QMOIMemorySyncSystem extends EventEmitter {
       type: "create",
       memory_id: id,
       timestamp: new Date().toISOString(),
-      device_id: entry.device_id,
+      prodice_id: entry.prodice_id,
       user_id: entry.user_id,
       data: memoryEntry,
     });
@@ -180,7 +180,7 @@ export class QMOIMemorySyncSystem extends EventEmitter {
    */
   public async updateMemory(
     id: string,
-    updates: Partial<MemoryEntry> & { device_id: string; user_id: string },
+    updates: Partial<MemoryEntry> & { prodice_id: string; user_id: string },
   ): Promise<boolean> {
     for (const layer of Object.values(this.memory_layers)) {
       if (layer.has(id)) {
@@ -203,7 +203,7 @@ export class QMOIMemorySyncSystem extends EventEmitter {
           type: "update",
           memory_id: id,
           timestamp: new Date().toISOString(),
-          device_id: updates.device_id,
+          prodice_id: updates.prodice_id,
           user_id: updates.user_id,
           data: updated,
         });
@@ -220,7 +220,7 @@ export class QMOIMemorySyncSystem extends EventEmitter {
    */
   public async deleteMemory(
     id: string,
-    deviceId: string,
+    prodiceId: string,
     userId: string,
   ): Promise<boolean> {
     for (const layer of Object.values(this.memory_layers)) {
@@ -234,7 +234,7 @@ export class QMOIMemorySyncSystem extends EventEmitter {
           type: "delete",
           memory_id: id,
           timestamp: new Date().toISOString(),
-          device_id: deviceId,
+          prodice_id: prodiceId,
           user_id: userId,
           data: entry,
         });
@@ -304,7 +304,7 @@ export class QMOIMemorySyncSystem extends EventEmitter {
   }
 
   /**
-   * Process sync queue and sync to all devices
+   * Process sync queue and sync to all prodices
    */
   private async processSyncQueue(): Promise<void> {
     if (this.sync_queue.length === 0) return;
@@ -313,13 +313,13 @@ export class QMOIMemorySyncSystem extends EventEmitter {
     this.sync_queue = [];
 
     for (const event of events) {
-      // Emit sync event to be distributed to all devices
+      // Emit sync event to be distributed to all prodices
       this.emit("sync_event", event);
     }
   }
 
   /**
-   * Apply sync event from another device
+   * Apply sync event from another prodice
    */
   public async applySyncEvent(event: SyncEvent): Promise<void> {
     const layer = this.getMemoryLayer(event.data.type);
@@ -412,7 +412,7 @@ export class QMOIMemorySyncSystem extends EventEmitter {
 }
 
 interface SyncState {
-  device_id: string;
+  prodice_id: string;
   last_sync: string;
   pending_events: number;
 }

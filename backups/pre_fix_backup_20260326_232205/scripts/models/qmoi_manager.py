@@ -213,7 +213,7 @@ class QMOIManager:
             training_args = TrainingArguments(
                 output_dir='models/qmoi',
                 num_train_epochs=self.config['training']['num_epochs'],
-                per_device_train_batch_size=self.config['training']['batch_size'],
+                per_prodice_train_batch_size=self.config['training']['batch_size'],
                 learning_rate=self.config['training']['learning_rate'],
                 warmup_steps=self.config['training']['warmup_steps'],
                 weight_decay=self.config['training']['weight_decay'],

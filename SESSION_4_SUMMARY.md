@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # Session 4: Background Services, Health Checks & Startup Automation
 
 ## Overview
@@ -53,14 +53,14 @@ Session 4 successfully delivered a complete background service management system
 
 - **Purpose:** Unified entry point for starting all services
 - **Features:**
-  - Multi-mode support: `--dev`, `--prod`, `--no-verify`
+  - Multi-mode support: `--prod`, `--prod`, `--no-verify`
   - Parallel service startup
   - Environment detection and initialization
   - Cleanup on exit
 - **Execution Modes:**
   ```bash
-  ./startup.sh --dev          # Development mode with hot reload
-  ./startup.sh --prod         # Production mode optimized
+  ./startup.sh --prod          # production mode with hot reload
+  ./startup.sh --prod         # production mode optimized
   ./startup.sh --no-verify    # Skip health verification
   ```
 
@@ -77,7 +77,7 @@ Session 4 successfully delivered a complete background service management system
   - API configuration
 - **Output:** Color-coded pass/fail report
 
-### 6. **Bootstrap Helper** (`bootstrap-dev.sh`)
+### 6. **Bootstrap Helper** (`bootstrap-prod.sh`)
 
 - **Purpose:** OS-aware Node.js installation guidance
 - **Features:**
@@ -86,7 +86,7 @@ Session 4 successfully delivered a complete background service management system
   - Non-root friendly (supports nvm)
 - **Usage:**
   ```bash
-  ./bootstrap-dev.sh
+  ./bootstrap-prod.sh
   ```
 
 ### 7. **GitHub Actions CI Workflow** (`.github/workflows/run-startup.yml`)
@@ -108,7 +108,7 @@ Session 4 successfully delivered a complete background service management system
 
 ### 8. **Environment Configuration** (`.env.local`)
 
-- Development-specific environment variables
+- production-specific environment variables
 - TypeScript and Node settings
 - Service port configurations
 
@@ -125,13 +125,13 @@ Session 4 successfully delivered a complete background service management system
 ```
 ┌─────────────────────────────────────────┐
 │       Master Startup Script             │
-│         (./startup.sh --dev)            │
+│         (./startup.sh --prod)            │
 └──────────────┬──────────────────────────┘
                │
      ┌─────────┴─────────┐
      │                   │
 ┌────▼──────┐    ┌──────▼────┐
-│ HTTP      │    │  Dev      │
+│ HTTP      │    │  prod      │
 │ Server    │    │  Server   │
 │ (8080)    │    │  (3000)   │
 └────┬──────┘    └──────┬────┘
@@ -167,7 +167,7 @@ Session 4 successfully delivered a complete background service management system
 - ✅ package.json validation
 - ✅ Dependencies installed (1334 packages)
 - ✅ HTTP server started (PID: 2255, Port: 8080)
-- ✅ Dev server started (PID: 2257, Port: 3000)
+- ✅ prod server started (PID: 2257, Port: 3000)
 - ✅ Dashboard qcity-enterprise.html accessible
 - ✅ Dashboard qcity-complete.html accessible
 - ✅ Dashboard qcity-dashboard.html accessible
@@ -185,14 +185,14 @@ Session 4 successfully delivered a complete background service management system
 
 ### Prerequisites
 
-- Node.js v20+ (use `./bootstrap-dev.sh` for install instructions)
+- Node.js v20+ (use `./bootstrap-prod.sh` for install instructions)
 - npm 10+
 
 ### Installation & Setup
 
 ```bash
 # 1. Check OS and get Node install instructions
-./bootstrap-dev.sh
+./bootstrap-prod.sh
 
 # 2. Install Node.js (for Alpine Linux)
 apk add --no-cache nodejs npm
@@ -203,18 +203,18 @@ node -v && npm -v
 
 ### Starting Services
 
-**Development Mode:**
+**production Mode:**
 
 ```bash
-./startup.sh --dev
+./startup.sh --prod
 ```
 
 - Hot reload enabled
 - Verbose logging
 - Sources maps for debugging
-- Services: HTTP (8080) + Dev Server (3000)
+- Services: HTTP (8080) + prod Server (3000)
 
-**Production Mode:**
+**production Mode:**
 
 ```bash
 ./startup.sh --prod
@@ -222,7 +222,7 @@ node -v && npm -v
 
 - Optimized build
 - complete logging
-- Services: HTTP (8080) + Dev Server (3000)
+- Services: HTTP (8080) + prod Server (3000)
 
 **Skip Health Verification:**
 
@@ -230,7 +230,7 @@ node -v && npm -v
 ./startup.sh --no-verify
 ```
 
-- Same as `--dev` but skips health checks
+- Same as `--prod` but skips health checks
 
 ### Verification
 
@@ -244,7 +244,7 @@ node -v && npm -v
 ### Access Points
 
 - **HTTP Server:** https://qvillage.com
-- **Dev Server:** https://qmoi.ai
+- **prod Server:** https://qmoi.ai
 - **QCity Dashboard:** https://qvillage.com/qcity-dashboard.html
 - **QCity Enterprise:** https://qvillage.com/qcity-enterprise.html
 - **QCity Complete:** https://qvillage.com/qcity-complete.html
@@ -273,9 +273,9 @@ node -v && npm -v
 - Circuit breaker to prevent cascading failures
 - Detailed recovery logging
 
-### ✅ **Production Ready**
+### ✅ **production Ready**
 
-- Multi-mode support (dev/prod)
+- Multi-mode support (prod/prod)
 - Clean startup and shutdown
 - Comprehensive error handling
 - Detailed logging and diagnostics
@@ -306,7 +306,7 @@ qmoi-enhanced/
 │   └── qcity-dashboard.html
 ├── startup.sh              ← Master startup script
 ├── cli-verify.sh           ← System verification
-├── bootstrap-dev.sh        ← Node.js installation helper
+├── bootstrap-prod.sh        ← Node.js installation helper
 └── .env.local              ← Environment configuration
 ```
 

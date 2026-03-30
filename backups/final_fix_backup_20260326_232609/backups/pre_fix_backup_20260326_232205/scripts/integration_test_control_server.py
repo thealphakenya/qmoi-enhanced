@@ -34,7 +34,7 @@ if str(repo_root) not in sys.path:
 import qmoi_control_server as server
 
 DB_FILE = server.DB_FILE
-CONTROL_TOKEN = os.environ.get('QMOI_CONTROL_TOKEN', 'dev-token')
+CONTROL_TOKEN = os.environ.get('QMOI_CONTROL_TOKEN', 'prod-token')
 
 def remove_db_if_exists():
 	try:

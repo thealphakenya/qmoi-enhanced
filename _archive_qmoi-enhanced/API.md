@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "Q-city API Documentation"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -658,12 +658,12 @@ curl -N -H "Authorization: Bearer <token>" -H "Content-Type: application/json" \
   -X POST -d '{"forceClean":true}' https://qmoi.ai/api/qcity/selfheal-npm
 ```
 
-### QCity Device Management (Enhanced)
+### QCity prodice Management (Enhanced)
 
 #### Atomic/Temp Install
 
 ```http
-POST /qcity/device/atomic-install
+POST /qcity/prodice/atomic-install
 ```
 
 Atomically installs dependencies to a temp directory, then moves to node_modules.
@@ -671,7 +671,7 @@ Atomically installs dependencies to a temp directory, then moves to node_modules
 #### Background/Parallel Install
 
 ```http
-POST /qcity/device/background-install
+POST /qcity/prodice/background-install
 ```
 
 Runs install in the background or in parallel (optionally offloaded to cloud).
@@ -679,7 +679,7 @@ Runs install in the background or in parallel (optionally offloaded to cloud).
 #### Deduplication
 
 ```http
-POST /qcity/device/dedupe
+POST /qcity/prodice/dedupe
 ```
 
 Runs npm dedupe to remove duplicate dependencies.
@@ -687,7 +687,7 @@ Runs npm dedupe to remove duplicate dependencies.
 #### Artifact Sync
 
 ```http
-POST /qcity/device/sync-artifacts
+POST /qcity/prodice/sync-artifacts
 ```
 
 Syncs build artifacts and node_modules to cloud storage.
@@ -695,7 +695,7 @@ Syncs build artifacts and node_modules to cloud storage.
 #### Install/Build Status
 
 ```http
-GET /qcity/device/install-status
+GET /qcity/prodice/install-status
 ```
 
 Returns current install/build status.
@@ -703,17 +703,17 @@ Returns current install/build status.
 #### Health Monitor
 
 ```http
-GET /qcity/device/health
+GET /qcity/prodice/health
 ```
 
 Returns health info (unused, outdated, vulnerable packages).
 
-### Device & Resource Optimization (Enhanced)
+### prodice & Resource Optimization (Enhanced)
 
 #### Get Resource Stats
 
 ```http
-GET /qcity/device/resources
+GET /qcity/prodice/resources
 ```
 
 Returns real-time CPU, memory, disk, and network usage.
@@ -721,7 +721,7 @@ Returns real-time CPU, memory, disk, and network usage.
 #### Get Environments Status
 
 ```http
-GET /qcity/device/envs
+GET /qcity/prodice/envs
 ```
 
 Returns detected programming environments (Node, Python, Java, Go, Rust, C++, etc.).
@@ -729,7 +729,7 @@ Returns detected programming environments (Node, Python, Java, Go, Rust, C++, et
 #### Install Dependencies for All Envs
 
 ```http
-POST /qcity/device/install-all-envs
+POST /qcity/prodice/install-all-envs
 ```
 
 Installs dependencies for all detected environments in an atomic, isolated, and resource-aware way.
@@ -737,7 +737,7 @@ Installs dependencies for all detected environments in an atomic, isolated, and 
 #### Get Offload Status
 
 ```http
-GET /qcity/device/offload-status
+GET /qcity/prodice/offload-status
 ```
 
 Returns current offload/throttle status.

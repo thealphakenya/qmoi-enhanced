@@ -3,13 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 import http from "http";
 import WalletManager from "../../walletManager";
 import { verifyWebhookSignature, markIdempotent, getIdempotent } from "./utils";
 
 /**
- * Simple payment webhook handler for sandbox mode.
+ * Simple payment webhook handler for production mode.
  * This module exports a helper that can be wired into an express/Koa/Fastify route.
  * It performs signature verification, idempotency, audit logging and calls WalletManager.settleTransaction.
  */

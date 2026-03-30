@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextResponse } from "next/server";
@@ -19,7 +19,7 @@ export async function POST(_req: Request) {
       return NextResponse.json({ _error: "invalid_messages" }, { status: 400 });
     }
 
-    // Enforce canonical model unless explicitly overridden in non-production
+    // Enforce canonical model unless explicitly overridden in production
     const model =
       process.env.NODE_ENV === "production" ? "qmoi" : body.model || "qmoi";
 
@@ -64,7 +64,7 @@ export async function POST(_req: Request) {
       signal: controller.signal,
     }).finally(() => clearTimeout(timer));
 
-    // Be defensive: some test environments may [PRODUCTION READY] fetch or Response differently.
+    // Be defensive: some test environments may [production READY] fetch or Response differently.
     let data: unknown = null;
     try {
       if (resp && typeof (resp as any).json === "function") {

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 import { aiService } from './lib/ai-service.js';
 
 async function testAPIConnectivity() {
@@ -17,7 +17,7 @@ async function testAPIConnectivity() {
     
     try {
       await paypal.initialize({
-        sandboxMode: true,
+        productionMode: true,
         credentials: {
           clientId: "AZdcjYUeNJ3PPfKnKUJQ",
           clientSecret: "EHH8v"

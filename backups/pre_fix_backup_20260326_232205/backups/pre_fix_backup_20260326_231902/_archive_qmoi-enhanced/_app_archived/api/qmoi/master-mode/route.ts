@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 import { NextRequest, NextResponse } from "next/server";
 
 // Master authentication middleware
@@ -80,7 +80,7 @@ export async function GET(request: NextRequest) {
         revenueDashboard: true,
         autoProjects: true,
         avatarSystem: true,
-        musicProduction: true,
+        musicproduction: true,
         parallelProcessing: true,
         notificationSystem: true,
         autoFix: true,

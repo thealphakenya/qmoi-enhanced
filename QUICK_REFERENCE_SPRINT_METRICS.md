@@ -39,7 +39,7 @@ Failed Domains ❌ (ERR_NAME_NOT_RESOLVED):
   • yap.qmoi.ai
   • q-stable.qmoi.ai
   • qvillage.org
-  • qparallel.dev
+  • qparallel.prod
 ```
 
 ### Link Validity Status
@@ -55,7 +55,7 @@ Top 10 Broken Link Types (by frequency):
 4. qmoi (ambiguous)              251 refs → Clarify with full path
 5. qcity (missing domain)        119 refs → qcity.qmoi.ai
 6. qmoi-space (missing domain)    61 refs → qmoi-space.qmoi.ai
-7. qmoi.ai                 58 refs → Production domain
+7. qmoi.ai                 58 refs → production domain
 8. qvillage (ambiguous)           55 refs → qvillage.com
 9. qmoi_ai.exe                    42 refs → QStore URL
 10. qmoi_ai.apk                   38 refs → QStore URL
@@ -127,9 +127,9 @@ python3 scripts/validate_and_sync_links.py --action fix-domains
 # Fixes: ~80 links
 ```
 
-### Phase 4: Development URLs (30 mins)
+### Phase 4: production URLs (30 mins)
 ```bash
-# Replace qmoi.ai and similar dev URLs
+# Replace qmoi.ai and similar prod URLs
 # Fixes: ~58 links
 ```
 
@@ -274,7 +274,7 @@ curl https://qmoi.ai/api/domains/health
 
 # Check Next.js build
 npm run build  # Ensure no build errors
-npm run dev   # Start dev server
+npm run prod   # Start prod server
 ```
 
 ---
@@ -291,7 +291,7 @@ npm run dev   # Start dev server
 - [ ] Phase 1 (domains) - Run script and verify
 - [ ] Phase 2 (internals) - Map paths manually, then run script
 - [ ] Phase 3 (downloads) - Replace .exe/.apk refs
-- [ ] Phase 4 (localhost) - Remove dev URLs
+- [ ] Phase 4 (localhost) - Remove prod URLs
 - [ ] Phase 5 (dashboard) - Add tabs and wire up APIs
 - [ ] Parallel: DNS zone fix progressing
 

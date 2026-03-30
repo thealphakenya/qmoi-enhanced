@@ -46,7 +46,7 @@ class VercelAutoFix {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=prodice-width, initial-scale=1.0">
     <title>QMOI stable AI</title>
 </head>
 <body>
@@ -70,7 +70,7 @@ class VercelAutoFix {
         version: "1.0.0",
         description: "QMOI stable AI - Comprehensive AI System",
         scripts: {
-          dev: "next dev",
+          prod: "next prod",
           build: "next build",
           start: "next start",
           export: "next export",

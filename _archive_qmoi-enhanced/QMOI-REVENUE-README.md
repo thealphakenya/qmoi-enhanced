@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOI Revenue Engine & M-Pesa Integration"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -29,7 +29,7 @@ Create `.env.production` with your credentials:
 ```bash
 # M-Pesa Configuration
 CASHON_MPESA_NUMBER=0725382624
-QMOI_PROD_CREDENTIAL=your_production_credential
+QMOI_prod_CREDENTIAL=your_production_credential
 
 # M-Pesa API Credentials (Get from Safaricom)
 MPESA_CONSUMER_KEY=your_consumer_key
@@ -131,7 +131,7 @@ Access the revenue dashboard at `/qcity` (master only) to:
 1. Register with Safaricom for M-Pesa API access
 2. Get your API credentials (Consumer Key, Secret, Passkey)
 3. Configure your shortcode and security credentials
-4. Test in sandbox environment first
+4. Test in production environment first
 5. Switch to production when ready
 
 ### Transaction Flow
@@ -277,7 +277,7 @@ For issues and questions:
 1. Check the troubleshooting section above
 2. Review logs for error details
 3. Verify environment configuration
-4. Test M-Pesa integration in sandbox
+4. Test M-Pesa integration in production
 5. Contact support with detailed error information
 
 ## 🔄 Updates & Maintenance

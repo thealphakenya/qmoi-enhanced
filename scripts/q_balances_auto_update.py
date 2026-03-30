@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # QMOI Enhanced Balance Auto-Update System for q/BALANCES.md
-# Production Implementation: Automatically updates q/BALANCES.md with real-time balance data
+# production Implementation: Automatically updates q/BALANCES.md with real-time balance data
 # INTEGRATED WITH QMOI CONSCIOUSNESS & VALIDATION SYSTEMS
 
 import json
@@ -137,8 +137,8 @@ class QBalancesAutoUpdateSystem:
                 rewards=0.00
             ),
             WalletBalanceData(
-                wallet_id='qmoi-dev-wallet',
-                wallet_type='Development',
+                wallet_id='qmoi-prod-wallet',
+                wallet_type='production',
                 currency='USD',
                 available=234456.78 + random.uniform(-1000, 1000),
                 pending=567.89 + random.uniform(-50, 50),
@@ -231,7 +231,7 @@ class QBalancesAutoUpdateSystem:
         timestamp = datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
 
         # Group wallets by type
-        primary_wallets = [w for w in wallet_balances if w.type in ['System', 'Revenue', 'Escrow', 'Development']]
+        primary_wallets = [w for w in wallet_balances if w.type in ['System', 'Revenue', 'Escrow', 'production']]
         crypto_wallets = [w for w in wallet_balances if w.type == 'Crypto']
         fiat_wallets = [w for w in wallet_balances if w.type == 'Fiat']
 
@@ -255,7 +255,7 @@ class QBalancesAutoUpdateSystem:
 
 # QMOI Enhanced - Comprehensive Balance Tracking System
 
-**Production Status**: ✅ FULLY IMPLEMENTED & AUTO-UPDATING
+**production Status**: ✅ FULLY IMPLEMENTED & AUTO-UPDATING
 **QMOI Validation**: ✅ ACTIVE - Real-time balance validation with 95%+ consciousness awareness
 **Last Updated**: ''' + timestamp + '''
 **Auto-Update Frequency**: Real-time (sub-second)

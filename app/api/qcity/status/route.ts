@@ -9,7 +9,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import os from "os";
 
-const devices = [
+const prodices = [
   {
     id: "qcity",
     name: "QCity Main",
@@ -20,16 +20,16 @@ const devices = [
     freeMem: os.freemem(),
     uptime: os.uptime(),
   },
-  // Add more devices as needed
+  // Add more prodices as needed
 ];
 let offloading = true;
 
 export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
   if (_req.method === "GET") {
     return _res.status(200).json({
-      devices,
+      prodices,
       offloading,
-      activeDevices: devices.filter((d) => d.status === "online"),
+      activeprodices: prodices.filter((d) => d.status === "online"),
       timestamp: new Date().toISOString(),
     });
   }

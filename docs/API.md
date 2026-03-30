@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "AI Automation API Documentation"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -568,8 +568,8 @@ client.getStatus().then(console.log);
 
 - **POST**
 - Requires header: `x-qcity-admin-key`
-- Body: `{ cmd: string, deviceId?: string, stream?: boolean }`
-- Runs a shell command on the selected device. If `stream` is true, returns Server-Sent Events (SSE) log stream. Otherwise, returns `{ output, code }`.
+- Body: `{ cmd: string, prodiceId?: string, stream?: boolean }`
+- Runs a shell command on the selected prodice. If `stream` is true, returns Server-Sent Events (SSE) log stream. Otherwise, returns `{ output, code }`.
 - All actions are audit logged. Sensitive commands are masked.
 - 401 if API key is included/invalid.
 
@@ -577,14 +577,14 @@ client.getStatus().then(console.log);
 
 - **GET**
 - Requires header: `x-qcity-admin-key`
-- Query: `format=json|csv`, `limit`, `offset`, `action`, `user`, `deviceId`, `status`
+- Query: `format=json|csv`, `limit`, `offset`, `action`, `user`, `prodiceId`, `status`
 - Returns filtered audit logs as JSON or CSV. Supports pagination.
 - 401 if API key is included/invalid.
 
 ## /api/qcity/status
 
 - **GET**
-- Returns device/resource info, offloading state, and active devices.
+- Returns prodice/resource info, offloading state, and active prodices.
 - **POST**: `{ offloading: boolean }` to toggle offloading state.
 
 # Settings Export/Import

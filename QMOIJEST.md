@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOIJEST"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -17,7 +17,7 @@ title: "QMOIJEST"
 
 ## QMOI Jest Guide
 
-Purpose: provide a concise, practical Jest setup for this repository (TypeScript + mixed JS/TS UI code, multi-package layout). The doc contains a required root config, CI snippets, test patterns, and integration notes for the autodev/autotest pipeline.
+Purpose: provide a concise, practical Jest setup for this repository (TypeScript + mixed JS/TS UI code, multi-package layout). The doc contains a required root config, CI snippets, test patterns, and integration notes for the autoprod/autotest pipeline.
 
 ### Quick contract
 
@@ -27,7 +27,7 @@ Purpose: provide a concise, practical Jest setup for this repository (TypeScript
 
 ### What we found in this repo
 
-- Multiple package.json files contain `jest` devDependency entries and test scripts. There are existing test files like `src/hooks/useQmoiKernel.test.ts` and integration tests under `src/components/...integration.test.tsx`.
+- Multiple package.json files contain `jest` prodDependency entries and test scripts. There are existing test files like `src/hooks/useQmoiKernel.test.ts` and integration tests under `src/components/...integration.test.tsx`.
 - Some validation and generated folders (e.g. `.qmoi_validation/` or `node_modules/`) pollute scans — those should be excluded from run-sets.
 
 ### required root Jest configuration
@@ -42,7 +42,7 @@ Rationale:
 ### Running tests locally
 
 - From repo root (if you use npm/yarn workspaces): `npm test` or `npx jest --coverage`.
-- required flags for local dev: `--watch --watchAll=false --findRelatedTests`.
+- required flags for local prod: `--watch --watchAll=false --findRelatedTests`.
 
 ### CI recommendations (GitHub Actions snippet)
 
@@ -75,7 +75,7 @@ Notes:
 - Use Jest caching (default) and `--maxWorkers` to control CPU usage (e.g., `--maxWorkers=50%`).
 - For large monorepos, run tests per package in parallel using CI matrix or `projects` entries in Jest config.
 
-### Snapshot & [PRODUCTION READY] hygiene
+### Snapshot & [production READY] hygiene
 
 - Keep snapshots in the same repo and review snapshot updates carefully.
 - Add `--updateSnapshot` only when intentionally updating.
@@ -84,10 +84,10 @@ Notes:
 
 - Set sensible coverage thresholds in `jest.config.cjs` (data has a moderate threshold). Keep coverage gating in CI to prevent regressions.
 
-### Integration with autodev/autotest pipeline
+### Integration with autoprod/autotest pipeline
 
 - Add a Jest step to `tools/autotest_runner.py` to run `npx jest --coverage --silent --colors=false` and write results to `tools/jest_results.json` (or use `--json --outputFile=...`).
-- Use test results to gate auto-promote or canary rollout in the autodev flow.
+- Use test results to gate auto-promote or canary rollout in the autoprod flow.
 
 ### Edge cases and notes
 

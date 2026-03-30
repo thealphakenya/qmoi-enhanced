@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 # Initialize QMOI Configuration
 python3 scripts/qmoi_enhanced_auto_config.py
 

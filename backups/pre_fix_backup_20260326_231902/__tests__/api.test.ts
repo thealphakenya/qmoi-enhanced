@@ -3,18 +3,18 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 // QMOI Enhanced API Testing Suite
 // Run with: npm test or npx jest --config=jest.config.js
 // NOTE: These are integration tests requiring a running server or proper MSW setup
 // For now, skipping to focus on component/hook tests
 
-// NOTE: Using fetch instead of supertest for MSW [PRODUCTION READY] compatibility
+// NOTE: Using fetch instead of supertest for MSW [production READY] compatibility
 
-[PRODUCTION READY] authentication for testing
-const [PRODUCTION READY]AuthToken =
+[production READY] authentication for testing
+const [production READY]AuthToken =
   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ0ZXN0LXVzZXItMTIzIiwicm9sZSI6ImFkbWluIn0.signed";
-const [PRODUCTION READY]UserToken =
+const [production READY]UserToken =
   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ1c2VyLWFiYyIsInJvbGUiOiJ1c2VyIn0.signed";
 
 const apiRequest = async (
@@ -65,7 +65,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
         "POST",
         "/api/auth/logout",
         {},
-        [PRODUCTION READY]UserToken,
+        [production READY]UserToken,
       );
 
       // Accept 200 or 204 for logout
@@ -79,7 +79,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
         "GET",
         "/api/admin/users",
         undefined,
-        [PRODUCTION READY]AuthToken,
+        [production READY]AuthToken,
       );
 
       expect([200, 401]).toContain(response.status);
@@ -93,7 +93,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
         "GET",
         "/api/admin/dashboard",
         undefined,
-        [PRODUCTION READY]AuthToken,
+        [production READY]AuthToken,
       );
 
       expect([200, 401]).toContain(response.status);
@@ -107,7 +107,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
         "GET",
         "/api/admin/audit-logs",
         undefined,
-        [PRODUCTION READY]AuthToken,
+        [production READY]AuthToken,
       );
 
       expect([200, 401]).toContain(response.status);
@@ -118,7 +118,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
         "GET",
         "/api/admin/alerts",
         undefined,
-        [PRODUCTION READY]AuthToken,
+        [production READY]AuthToken,
       );
 
       expect([200, 401]).toContain(response.status);
@@ -131,7 +131,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
         "GET",
         "/api/users/profile",
         undefined,
-        [PRODUCTION READY]UserToken,
+        [production READY]UserToken,
       );
 
       expect([200, 401]).toContain(response.status);
@@ -145,7 +145,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
           name: "Updated Name",
           phone: "+1-234-567-8900",
         },
-        [PRODUCTION READY]UserToken,
+        [production READY]UserToken,
       );
 
       expect([200, 401]).toContain(response.status);
@@ -158,7 +158,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
         "GET",
         "/api/analytics/wallets",
         undefined,
-        [PRODUCTION READY]UserToken,
+        [production READY]UserToken,
       );
 
       expect([200, 401]).toContain(response.status);
@@ -169,7 +169,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
         "GET",
         "/api/analytics/transactions",
         undefined,
-        [PRODUCTION READY]UserToken,
+        [production READY]UserToken,
       );
 
       expect([200, 401]).toContain(response.status);
@@ -185,7 +185,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
           biometricType: "fingerprint",
           biometricData: "base64-encoded-fingerprint-data",
         },
-        [PRODUCTION READY]UserToken,
+        [production READY]UserToken,
       );
 
       expect([200, 201, 401]).toContain(response.status);
@@ -212,7 +212,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
           provider: "stripe",
           description: "Test payment",
         },
-        [PRODUCTION READY]UserToken,
+        [production READY]UserToken,
       );
 
       expect([200, 401]).toContain(response.status);
@@ -231,7 +231,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
         "GET",
         "/api/admin/users",
         undefined,
-        [PRODUCTION READY]UserToken,
+        [production READY]UserToken,
       );
 
       expect([200, 403, 401]).toContain(response.status);
@@ -251,7 +251,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
         "GET",
         "/api/users/profile",
         undefined,
-        [PRODUCTION READY]UserToken,
+        [production READY]UserToken,
       );
 
       expect([200, 401, 429]).toContain(response.status);

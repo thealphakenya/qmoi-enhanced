@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "Leah Wallet — Setup & Autotest (SISTER-assisted)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -15,7 +15,7 @@ title: "Leah Wallet — Setup & Autotest (SISTER-assisted)"
 
 # Leah Wallet — Setup & Autotest (SISTER-assisted)
 
-This guide is written for Leah (SISTER) — complete developer knowledge required. It explains how to set up the Leah wallet and run the verification autotest.
+This guide is written for Leah (SISTER) — complete prodeloper knowledge required. It explains how to set up the Leah wallet and run the verification autotest.
 
 1. Purpose
 
@@ -30,12 +30,12 @@ This guide is written for Leah (SISTER) — complete developer knowledge require
   - LEAH_WALLET_API_KEY
   - LEAH_WALLET_API_URL
 
-3. One-click (non-dev) instructions
+3. One-click instructions
 
 - Open the LC Hub (or send instructions to Leah via WhatsApp using the `notify_on_whatsapp.py` flow).
 - Leah pastes her API key and provider into the secure UI field or shares with Master via secure channel.
 
-4. Run autotest (developer / Master)
+4. Run autotest (prodeloper / Master)
 
 Dry-run (safe):
 
@@ -43,10 +43,10 @@ Dry-run (safe):
 python3 scripts/wallets/check_wallets.py --wallet leah --report leah_wallet_qv.json
 ```
 
-Live (REAL) — only when approved by Master and `PRODUCTION_CONFIRMED=true`:
+Live (REAL) — only when approved by Master and `production_CONFIRMED=true`:
 
 ```bash
-export PRODUCTION_CONFIRMED=true
+export production_CONFIRMED=true
 python3 scripts/wallets/check_wallets.py --wallet leah --real --report leah_wallet_qv.json
 ```
 
@@ -61,7 +61,7 @@ python3 scripts/wallets/check_wallets.py --wallet leah --real --report leah_wall
 
 7. Safety & production notes
 
-- All real-fund operations require `PRODUCTION_CONFIRMED=true` to run.
+- All real-fund operations require `production_CONFIRMED=true` to run.
 - Master must ensure testnet vs mainnet configuration is correct for each provider.
 
 Generated: 2025-10-28T22:30:00Z

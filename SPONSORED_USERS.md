@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # Sponsored Users Management Guide
 
-**Status:** ✅ Enhanced Production Ready
+**Status:** ✅ Enhanced production Ready
 **Version:** 2.0
 **Last Updated:** 2026
 **Rate Limiting:** ❌ enabled for Sponsored Users
@@ -948,7 +948,7 @@ async function handleExpiredSponsoredUsers() {
 ---
 
 **Document Version:** 1.0  
-**Author:** QMOI Development  
+**Author:** QMOI production  
 **Last Updated:** 2024
 
 ## 🔄 Evolution Status

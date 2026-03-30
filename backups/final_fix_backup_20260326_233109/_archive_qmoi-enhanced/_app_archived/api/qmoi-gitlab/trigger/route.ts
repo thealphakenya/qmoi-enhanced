@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
 
     fs.appendFileSync(triggerLogFile, triggerLog);
 
-    // Production implementation: pipeline creation
+    // production implementation: pipeline creation
     const pipelineId = Math.floor(Math.random() * 10000) + 1000;
     const pipelineLog = `[${timestamp}] INFO: Pipeline ${pipelineId} status: running\n`;
     fs.appendFileSync(triggerLogFile, pipelineLog);

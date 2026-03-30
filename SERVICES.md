@@ -2,7 +2,7 @@
 
 **Last Updated**: 2026-03-29T01:23:12.146541
 **Total Files**: 22
-**Status**: ✅ Production Ready
+**Status**: ✅ production Ready
 
 ## 📋 Document Overview
 
@@ -15,7 +15,7 @@ This document catalogs all service implementations, adapters, and business logic
 | Total Files | 22 | All files indexed |
 | Subdirectories | 9 | Organized sections |
 | File Types | 3 | Multiple formats |
-| Production Status | ✅ | Ready |
+| production Status | ✅ | Ready |
 
 ### File Type Distribution
 
@@ -62,7 +62,7 @@ This document catalogs all service implementations, adapters, and business logic
 ### payments (3 files)
 
 - [`__init__.py`](services/payments/__init__.py) - `.py`
-- [`sandbox_adapter.py`](services/payments/sandbox_adapter.py) - `.py`
+- [`production_adapter.py`](services/payments/production_adapter.py) - `.py`
 - [`stripe_adapter.py`](services/payments/stripe_adapter.py) - `.py`
 
 ### secrets (1 files)

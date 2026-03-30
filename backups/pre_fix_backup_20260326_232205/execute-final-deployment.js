@@ -21,7 +21,7 @@ try {
   console.log("🎉 Your stable-Q AI system is now live with:");
   console.log("   ✅ Chat Interface");
   console.log("   ✅ Preview Features");
-  console.log("   ✅ Game Development");
+  console.log("   ✅ Game production");
   console.log("   ✅ Animation Studio");
   console.log("   ✅ Movie Creation");
   console.log("   ✅ Music Generation");
@@ -29,7 +29,7 @@ try {
   console.log("");
   console.log("📋 Next steps:");
   console.log("   1. Visit your repository to verify files");
-  console.log("   2. Clone and run: npm install && npm run dev");
+  console.log("   2. Clone and run: npm install && npm run prod");
   console.log("   3. Start creating amazing content!");
 } catch (error) {
   console.error("❌ Deployment failed:", error.message);

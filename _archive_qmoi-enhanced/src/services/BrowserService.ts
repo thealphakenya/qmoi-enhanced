@@ -18,7 +18,7 @@ interface BrowserTab {
   history: string[];
   historyIndex: number;
   bookmarks: Bookmark[];
-  developerTools: DeveloperTools;
+  prodeloperTools: prodeloperTools;
 }
 
 interface Bookmark {
@@ -29,7 +29,7 @@ interface Bookmark {
   createdAt: Date;
 }
 
-interface DeveloperTools {
+interface prodeloperTools {
   isOpen: boolean;
   activePanel:
     | "elements"
@@ -113,8 +113,8 @@ interface BrowserSettings {
     clearCookiesOnExit: boolean;
     enableDoNotTrack: boolean;
   };
-  developer: {
-    enableDevTools: boolean;
+  prodeloper: {
+    enableprodTools: boolean;
     enableSourceMaps: boolean;
     enableLiveReload: boolean;
     enableHotReload: boolean;
@@ -191,8 +191,8 @@ export class BrowserService {
         clearCookiesOnExit: false,
         enableDoNotTrack: true,
       },
-      developer: {
-        enableDevTools: true,
+      prodeloper: {
+        enableprodTools: true,
         enableSourceMaps: true,
         enableLiveReload: false,
         enableHotReload: false,
@@ -300,7 +300,7 @@ export class BrowserService {
       history: [this.settings.homepage],
       historyIndex: 0,
       bookmarks: [],
-      developerTools: {
+      prodeloperTools: {
         isOpen: false,
         activePanel: "elements",
         console: [],
@@ -329,7 +329,7 @@ export class BrowserService {
       history: [url || this.settings.homepage],
       historyIndex: 0,
       bookmarks: [],
-      developerTools: {
+      prodeloperTools: {
         isOpen: false,
         activePanel: "elements",
         console: [],
@@ -581,23 +581,23 @@ export class BrowserService {
     this.eventEmitter.emit("tabActivated", { tabId });
   }
 
-  public toggleDeveloperTools(tabId: string): void {
+  public toggleprodeloperTools(tabId: string): void {
     const tab = this.tabs.get(tabId);
     if (!tab) return;
 
-    tab.developerTools.isOpen = !tab.developerTools.isOpen;
-    this.eventEmitter.emit("developerToolsToggled", {
+    tab.prodeloperTools.isOpen = !tab.prodeloperTools.isOpen;
+    this.eventEmitter.emit("prodeloperToolsToggled", {
       tabId,
-      isOpen: tab.developerTools.isOpen,
+      isOpen: tab.prodeloperTools.isOpen,
     });
   }
 
-  public setDeveloperPanel(tabId: string, panel: string): void {
+  public setprodeloperPanel(tabId: string, panel: string): void {
     const tab = this.tabs.get(tabId);
     if (!tab) return;
 
-    tab.developerTools.activePanel = panel as any;
-    this.eventEmitter.emit("developerPanelChanged", { tabId, panel });
+    tab.prodeloperTools.activePanel = panel as any;
+    this.eventEmitter.emit("prodeloperPanelChanged", { tabId, panel });
   }
 
   public addBookmark(
@@ -777,10 +777,10 @@ export class BrowserService {
     this.eventEmitter.on("navigationError", callback);
   }
 
-  public onDeveloperToolsToggled(
+  public onprodeloperToolsToggled(
     callback: (data: { tabId: string; isOpen: boolean }) => void,
   ): void {
-    this.eventEmitter.on("developerToolsToggled", callback);
+    this.eventEmitter.on("prodeloperToolsToggled", callback);
   }
 
   public onBookmarkAdded(callback: (bookmark: Bookmark) => void): void {

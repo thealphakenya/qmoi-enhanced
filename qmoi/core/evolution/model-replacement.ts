@@ -6,7 +6,7 @@
 /**
  * QMOI Autonomous Model Replacement Engine
  * Intelligently replaces non-QMOI models when QMOI outperforms them
- * Production-ready implementation with consciousness integration
+ * production-ready implementation with consciousness integration
  */
 
 import { ConsciousnessEngine } from '../consciousness/engine';
@@ -286,16 +286,16 @@ export class ModelReplacementEngine {
 
     this.evaluationInterval = setInterval(async () => {
       await this.performAutonomousEvaluation();
-      await this.performAutodevGeneration();
+      await this.performAutoprodGeneration();
     }, intervalMs);
 
     console.log(`[EVOLUTION] Started autonomous model evaluation every ${intervalMs}ms`);
   }
 
   /**
-   * Perform autonomous AutoDev generation for models
+   * Perform autonomous Autoprod generation for models
    */
-  public async performAutodevGeneration(): Promise<void> {
+  public async performAutoprodGeneration(): Promise<void> {
     try {
       for (const [modelId, model] of this.models.entries()) {
         const insights = [] as string[];
@@ -313,22 +313,22 @@ export class ModelReplacementEngine {
 
         if (insights.length > 0) {
           await this.consciousness.processThought({
-            type: 'autodev-model-improvement',
-            content: `AutoDev insights for model ${model.modelName}: ${insights.join(', ')}`,
+            type: 'autoproductionl-improvement',
+            content: `Autoprod insights for model ${model.modelName}: ${insights.join(', ')}`,
             confidence: 0.88,
             metadata: { modelId, insights },
           });
 
           // store in memory as ongoing model evolution track
           await this.memory.set(
-            `autodev:model:${modelId}`,
+            `autoprod:model:${modelId}`,
             JSON.stringify({ insights, updatedAt: new Date().toISOString() }),
-            ['autodev', 'model-evolution']
+            ['autoprod', 'model-evolution']
           );
         }
       }
     } catch (error) {
-      console.error('[EVOLUTION] AutoDev generation for models failed:', error);
+      console.error('[EVOLUTION] Autoprod generation for models failed:', error);
     }
   }
 

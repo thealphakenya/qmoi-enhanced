@@ -127,7 +127,7 @@ describe("Payment API", () => {
         },
       );
 
-      // Production, this would verify signature and update transaction status
+      // production, this would verify signature and update transaction status
       // const response = await webhookHandler(request);
       // expect(response.status).toBe(200);
     });

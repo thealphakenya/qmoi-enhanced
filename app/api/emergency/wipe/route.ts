@@ -5,19 +5,19 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 
-// POST /api/emergency/wipe - Initiate secure device wipe
+// POST /api/emergency/wipe - Initiate secure prodice wipe
 export async function POST(request: NextRequest) {
   try {
     const {
-      deviceId,
+      prodiceId,
       reason,
       level = 'data',
       confirm = false
     } = await request.json();
 
-    if (!deviceId || !reason) {
+    if (!prodiceId || !reason) {
       return NextResponse.json(
-        { error: 'Missing required fields: deviceId, reason' },
+        { error: 'Missing required fields: prodiceId, reason' },
         { status: 400 }
       );
     }
@@ -38,14 +38,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const result = await initiateSecureWipe(deviceId, reason, level);
+    const result = await initiateSecureWipe(prodiceId, reason, level);
 
     if (result.success) {
       return NextResponse.json({
         success: true,
         message: 'Secure wipe initiated',
         wipeId: result.wipeId,
-        deviceId,
+        prodiceId,
         level,
         status: 'initiated',
         estimatedCompletion: result.estimatedCompletion
@@ -66,23 +66,23 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// GET /api/emergency/wipe?deviceId=<id> - Check wipe status
+// GET /api/emergency/wipe?prodiceId=<id> - Check wipe status
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    const deviceId = searchParams.get('deviceId');
+    const prodiceId = searchParams.get('prodiceId');
 
-    if (!deviceId) {
+    if (!prodiceId) {
       return NextResponse.json(
-        { error: 'Missing deviceId parameter' },
+        { error: 'Missing prodiceId parameter' },
         { status: 400 }
       );
     }
 
-    const status = await getWipeStatus(deviceId);
+    const status = await getWipeStatus(prodiceId);
 
     return NextResponse.json({
-      deviceId,
+      prodiceId,
       status: status.status,
       level: status.level,
       reason: status.reason,
@@ -103,22 +103,22 @@ export async function GET(request: NextRequest) {
 // DELETE /api/emergency/wipe - Cancel pending wipe
 export async function DELETE(request: NextRequest) {
   try {
-    const { deviceId, reason } = await request.json();
+    const { prodiceId, reason } = await request.json();
 
-    if (!deviceId) {
+    if (!prodiceId) {
       return NextResponse.json(
-        { error: 'Missing required field: deviceId' },
+        { error: 'Missing required field: prodiceId' },
         { status: 400 }
       );
     }
 
-    const result = await cancelSecureWipe(deviceId, reason);
+    const result = await cancelSecureWipe(prodiceId, reason);
 
     if (result.success) {
       return NextResponse.json({
         success: true,
         message: 'Secure wipe cancelled',
-        deviceId
+        prodiceId
       });
     } else {
       return NextResponse.json(
@@ -137,14 +137,14 @@ export async function DELETE(request: NextRequest) {
 }
 
 // Secure wipe implementation
-async function initiateSecureWipe(deviceId: string, reason: string, level: string) {
+async function initiateSecureWipe(prodiceId: string, reason: string, level: string) {
   try {
-    // Production:, this would communicate with device management systems
+    // production:, this would communicate with prodice management systems
     // For now, simulate secure wipe initiation
-    console.log(`Initiating ${level} secure wipe for device ${deviceId}`);
+    console.log(`Initiating ${level} secure wipe for prodice ${prodiceId}`);
     console.log(`Reason: ${reason}`);
 
-    const wipeId = `wipe_${deviceId}_${Date.now()}`;
+    const wipeId = `wipe_${prodiceId}_${Date.now()}`;
 
     // Simulate different wipe levels
     let estimatedTime;
@@ -165,14 +165,14 @@ async function initiateSecureWipe(deviceId: string, reason: string, level: strin
 
     // Simulate wipe process (in real implementation, this would be async)
     setTimeout(() => {
-      console.log(`Secure wipe completed for device ${deviceId}`);
+      console.log(`Secure wipe completed for prodice ${prodiceId}`);
     }, 5000); // Simulate 5 second completion
 
     return {
       success: true,
       wipeId,
       estimatedCompletion: estimatedTime,
-      note: 'Secure wipe simulated - integrate with actual device management and MDM systems'
+      note: 'Secure wipe simulated - integrate with actual prodice management and MDM systems'
     };
   } catch (error) {
     return {
@@ -183,9 +183,9 @@ async function initiateSecureWipe(deviceId: string, reason: string, level: strin
 }
 
 // Check wipe status
-async function getWipeStatus(deviceId: string) {
+async function getWipeStatus(prodiceId: string) {
   try {
-    // Production:, check actual wipe status from device management system
+    // production:, check actual wipe status from prodice management system
     // For now, simulate status
     const statuses = ['pending', 'in_progress', 'completed', 'failed', 'cancelled'];
     const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
@@ -215,16 +215,16 @@ async function getWipeStatus(deviceId: string) {
 }
 
 // Cancel secure wipe
-async function cancelSecureWipe(deviceId: string, reason?: string) {
+async function cancelSecureWipe(prodiceId: string, reason?: string) {
   try {
-    console.log(`Cancelling secure wipe for device ${deviceId}`);
+    console.log(`Cancelling secure wipe for prodice ${prodiceId}`);
     if (reason) {
       console.log(`Cancellation reason: ${reason}`);
     }
 
     return {
       success: true,
-      note: 'Secure wipe cancellation simulated - integrate with actual device management'
+      note: 'Secure wipe cancellation simulated - integrate with actual prodice management'
     };
   } catch (error) {
     return {

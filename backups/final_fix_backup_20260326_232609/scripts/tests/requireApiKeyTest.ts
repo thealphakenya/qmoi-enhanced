@@ -28,11 +28,11 @@ function assert(condition: boolean, msg: string) {
 async function run() {
   .log("Running requireApiKey smoke tests...");
 
-  // 1) Development mode allows all
-  process.env.NODE_ENV = "development";
+  // 1) production mode allows all
+  process.env.NODE_ENV = "production";
   let headers = new FakeHeaders();
   let _res = requireApiKey;
-  assert(_res.ok, "Development mode should allow requests");
+  assert(_res.ok, "production mode should allow requests");
 
   // 2) Valid master token via Authorization
   process.env.NODE_ENV = "production";

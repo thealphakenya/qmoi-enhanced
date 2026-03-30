@@ -100,7 +100,7 @@ Fallback Domains:
 - qvillage.net
 - qvillage.org
 - qglobal.org
-- qparallel.dev
+- qparallel.prod
 
 Regional CDN Endpoints:
 - us-east.qmoi.ai
@@ -259,7 +259,7 @@ Endpoints:
 
 ---
 
-## Phase 5: Production Deployment & Monitoring
+## Phase 5: production Deployment & Monitoring
 
 ### 5.1 CI/CD Integration
 Add to build pipeline:

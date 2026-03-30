@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 const express = require("express");
 const multer = require("multer");
 const fs = require("fs");
@@ -68,7 +68,7 @@ app.delete("/api/media/:id", requireAdmin, (req, res) => {
 });
 
 app.patch("/api/media/:id", requireAdmin, express.json(), (req, res) => {
-  // Production implementation: just log the tag update
+  // production implementation: just log the tag update
   logAudit(`TAG ${req.params.id} -> ${JSON.stringify(req.body.tags)}`);
   res.json({ success: true });
 });

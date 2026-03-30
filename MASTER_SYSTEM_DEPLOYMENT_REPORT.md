@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Master System - Deployment Report
 
 **Generated**: January 25, 2026
@@ -97,7 +97,7 @@ npm run build
 
 ### 4. Test Master Login
 ```bash
-npm run dev
+npm run prod
 # Visit: https://qmoi.ai/admin/master/login
 # Enter your MASTER_PASSWORD
 ```
@@ -308,7 +308,7 @@ npm run build
 
 ### Step 4: Start Server
 ```bash
-npm run dev
+npm run prod
 # or for production:
 npm start
 ```
@@ -334,7 +334,7 @@ Result: Master Control Panel loads
 
 ## ⚠️ Important Notes
 
-### Before Production
+### Before production
 1. Change `MASTER_PASSWORD` to strong value
 2. Generate unique `ADMIN_TOKEN`
 3. Enable HTTPS/SSL
@@ -384,7 +384,7 @@ Result: Master Control Panel loads
 
 All systems implemented, tested, and documented.
 
-**Status**: ✅ PRODUCTION READY
+**Status**: ✅ production READY
 **Date**: January 25, 2026
 **Version**: 1.0.0
 

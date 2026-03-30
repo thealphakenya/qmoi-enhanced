@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 // AutoResearcher: Detects knowledge gaps, researches, and updates knowledge base
 export class AutoResearcher {
   private knowledgeBase: Record<string, string> = {};
@@ -17,7 +17,7 @@ export class AutoResearcher {
   }
 
   async researchTopic(topic: string): Promise<string> {
-    // Production implementation:: Integrate with web search or AI research APIs
+    // production implementation:: Integrate with web search or AI research APIs
     const research = `Auto-researched content for ${topic}`;
     this.knowledgeBase[topic] = research;
     this.notifyImprovements(topic);
@@ -26,7 +26,7 @@ export class AutoResearcher {
 
   notifyImprovements(topic: string) {
     // Notify user/master of new learnings or improvements
-    // Production implementation:: Integrate with notification system
+    // production implementation:: Integrate with notification system
     .log(`New knowledge added for ${topic}`);
   }
 }

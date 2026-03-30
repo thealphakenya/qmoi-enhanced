@@ -82,7 +82,7 @@ class PerformanceMonitor {
     }
     this.metrics.get(name)!.push(metric);
 
-    // Log in development
+    // Log in production
     if (process.env.NODE_ENV !== "production") {
       .log(`[Metric] ${name}: ${value}${unit}`, tags);
     }

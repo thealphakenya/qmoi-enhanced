@@ -7,15 +7,15 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QCity Enterprise - Complete System Documentation
 
 ## Executive Summary
 
-QCity Enterprise is a comprehensive device resource management and AI/ML infrastructure system built on the QMOI architecture. It provides Master-Slave device coordination with cloud resource offloading, employment management, revenue tracking, biometric authentication, and AI/ML operations through QVillage.
+QCity Enterprise is a comprehensive prodice resource management and AI/ML infrastructure system built on the QMOI architecture. It provides Master-Slave prodice coordination with cloud resource offloading, employment management, revenue tracking, biometric authentication, and AI/ML operations through QVillage.
 
 **Status**: ✅ **FULLY OPERATIONAL**
-**Environment**: Production-Ready
+**Environment**: production-Ready
 **Server**: Running on port 8080 (HTTP)
 **Backend Service**: 5 Active Monitoring Loops
 **Dashboard**: Enterprise Management Interface with 8+ Tabs
@@ -41,7 +41,7 @@ QCity Enterprise is a comprehensive device resource management and AI/ML infrast
 │  │              Monitoring Services (5)                │   │
 │  ├─────────────────────────────────────────────────────┤   │
 │  │ 1. Metrics Update      (10 sec interval)            │   │
-│  │ 2. Device Monitoring   (15 sec interval)            │   │
+│  │ 2. prodice Monitoring   (15 sec interval)            │   │
 │  │ 3. Revenue Tracking    (20 sec interval)            │   │
 │  │ 4. Health Check        (30 sec interval)            │   │
 │  │ 5. Biometric Verification (15 sec interval)         │   │
@@ -58,10 +58,10 @@ QCity Enterprise is a comprehensive device resource management and AI/ML infrast
 │   └── components/
 │       └── q-city/           # Primary QCity Components (Material-UI)
 │           ├── QCityDashboard.tsx
-│           ├── QCityDevicePanel.tsx
+│           ├── QCityprodicePanel.tsx
 │           ├── QVillage.tsx
 │           ├── EmploymentDashboard.tsx
-│           ├── QMOIOwnDeviceLogs.tsx
+│           ├── QMOIOwnprodiceLogs.tsx
 │           ├── QMOIRevenueDashboard.tsx
 │           ├── QMOIBiometricManager.tsx
 │           ├── Onboarding.tsx
@@ -122,14 +122,14 @@ QCity Enterprise is a comprehensive device resource management and AI/ML infrast
 
 ### Dashboard Features
 
-#### 1. **Device Management Tab**
+#### 1. **prodice Management Tab**
 
-- Real-time device status monitoring
-- Connected devices count
+- Real-time prodice status monitoring
+- Connected prodices count
 - CPU, Memory, Storage, Bandwidth metrics
-- Device type detection (CPU, GPU, Edge Device)
+- prodice type detection (CPU, GPU, Edge prodice)
 - Online/Offline status indicators
-- Device list with detailed specifications
+- prodice list with detailed specifications
 
 #### 2. **QVillage Tab (Master Only)**
 
@@ -193,15 +193,15 @@ QCity Enterprise is a comprehensive device resource management and AI/ML infrast
   - Success rate tracking
   - Failed login alerts
 
-#### 6. **Device Logs Tab**
+#### 6. **prodice Logs Tab**
 
 - Activity Tracking
-  - Device ownership logs
+  - prodice ownership logs
   - Access history
   - Timestamp recording
 - Filtering & Search
   - Filter by date range
-  - Search by device ID
+  - Search by prodice ID
   - Search by organization
 - Audit Trail
   - Lock/Unlock events
@@ -248,15 +248,15 @@ Updates:
 - Memory: Variable
 - Storage: Variable
 - Bandwidth: 0-100%
-- Connected Devices: Dynamic
+- Connected prodices: Dynamic
 ```
 
-#### 2. **Device Monitoring Service**
+#### 2. **prodice Monitoring Service**
 
 ```
 Interval: 15 seconds
 Tracks:
-- Device type (CPU/GPU/Edge)
+- prodice type (CPU/GPU/Edge)
 - Online status
 - Signal strength
 - Last seen timestamp
@@ -318,12 +318,12 @@ Verifies:
 #### QCity Core Components
 
 1. **QCityDashboard** - Main entry point with Master Mode toggle
-2. **QCityDevicePanel** - Device management interface
+2. **QCityprodicePanel** - prodice management interface
 3. **QVillage** - AI/ML infrastructure (Master only)
 4. **EmploymentDashboard** - Employee/user/payroll management
 5. **QMOIRevenueDashboard** - Multi-stream revenue tracking
 6. **QMOIBiometricManager** - Biometric authentication
-7. **QMOIOwnDeviceLogs** - Device activity logging
+7. **QMOIOwnprodiceLogs** - prodice activity logging
 8. **Onboarding** - System setup wizard
 
 #### Supporting Components (shadcn UI)
@@ -356,7 +356,7 @@ import {
 
 **Feature Flags**
 
-- DEVICE_MANAGEMENT: ✅ Enabled
+- prodICE_MANAGEMENT: ✅ Enabled
 - EMPLOYMENT: ✅ Enabled
 - REVENUE_TRACKING: ✅ Enabled
 - MEGAVAULT: ✅ Enabled
@@ -407,8 +407,8 @@ curl https://qvillage.com/qcity-enterprise.html
 # Install dependencies
 npm install
 
-# Start dev server
-npm run dev
+# Start prod server
+npm run prod
 
 # Or build and start
 npm run build
@@ -433,7 +433,7 @@ Open in your browser:
 | Service | Interval | Metric Count |
 |---------|----------|--------------|
 | Metrics Update | 10s | 4 metrics |
-| Device Monitoring | 15s | 5 metrics |
+| prodice Monitoring | 15s | 5 metrics |
 | Revenue Tracking | 20s | 5 metrics |
 | Health Check | 30s | 4 metrics |
 | Biometric Verification | 15s | 4 metrics |
@@ -449,7 +449,7 @@ CPU Usage:           45-75%
 Memory Utilization:  60-85%
 Storage Usage:       40-60%
 Network Bandwidth:   30-80%
-Connected Devices:   5-12 devices
+Connected prodices:   5-12 prodices
 System Uptime:       24/7 continuous
 Latency:             <100ms
 ```
@@ -465,7 +465,7 @@ Latency:             <100ms
 - Version: 2.0.0
 - Build: Enterprise
 - Release Date: 2025-12-02
-- Status: Production Ready
+- Status: production Ready
 
 **Resource Allocation**
 
@@ -478,7 +478,7 @@ Latency:             <100ms
 
 ```typescript
 {
-  DEVICE_MANAGEMENT: true,      // Full device tracking
+  prodICE_MANAGEMENT: true,      // Full prodice tracking
   EMPLOYMENT: true,              // HR management enabled
   REVENUE_TRACKING: true,         // Financial monitoring
   MEGAVAULT: true,                // Secure storage
@@ -503,7 +503,7 @@ Latency:             <100ms
 │  Metrics Service  →  Event Emitter  →  Dashboard       │
 │      (10s)           (broadcasts)      (visual update)   │
 │                          ↓                               │
-│  Device Monitor   →  PubSub System  →  Live Charts     │
+│  prodice Monitor   →  PubSub System  →  Live Charts     │
 │      (15s)           (subscribers)      (refresh)       │
 │                          ↓                               │
 │  Revenue Tracker  →  Data Store   →  Notifications    │
@@ -542,7 +542,7 @@ User Login → Biometric Scan → Verification → MFA Challenge → Access Gran
 **Role-Based Access Control (RBAC)**
 
 - **Master**: Full system access, QVillage management
-- **Admin**: Device management, user management
+- **Admin**: prodice management, user management
 - **User**: Personal data access, limited features
 - **Guest**: Read-only access
 
@@ -600,8 +600,8 @@ curl https://qvillage.com/qcity-service.js
 # Verify biometric service is active
 curl https://qvillage.com/api/biometric-status
 
-# Check device permissions
-# Settings → Device → Biometrics
+# Check prodice permissions
+# Settings → prodice → Biometrics
 
 # Enable biometric scanning
 # Dashboard → Settings → Enable Biometrics
@@ -614,7 +614,7 @@ curl https://qvillage.com/api/biometric-status
 
 ```bash
 # Clear browser cache
-# Clear localStorage: DevTools → Application → Clear Storage
+# Clear localStorage: prodTools → Application → Clear Storage
 
 # Reduce update frequency
 # Settings → Advanced → Update Interval (increase to 30s)
@@ -648,7 +648,7 @@ python3 -m http.server 8080
 - Inference endpoint configuration
 - System-wide settings
 - User management
-- Device provisioning
+- prodice provisioning
 
 ### QVillage (Master Only)
 
@@ -735,7 +735,7 @@ Active Endpoints: 8
 3. Disable unnecessary browser extensions
 4. Clear cache weekly
 5. Use dedicated browser window for QCity
-6. Monitor dev tools network tab
+6. Monitor prod tools network tab
 
 ### System Optimization
 
@@ -785,7 +785,7 @@ export default function Page() {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=prodice-width, initial-scale=1.0" />
     <title>Custom QCity Dashboard</title>
     <style>
       /* Your custom styles */
@@ -805,7 +805,7 @@ export default function Page() {
 ```
 Events:
 - metrics:update → Current system metrics
-- devices:update → Connected devices status
+- prodices:update → Connected prodices status
 - revenue:update → Revenue tracking data
 - health:update → System health status
 - biometric:update → Biometric verification data
@@ -815,8 +815,8 @@ service.on('metrics:update', (data) => {
   console.log('Metrics:', data);
 });
 
-service.on('devices:update', (data) => {
-  console.log('Devices:', data);
+service.on('prodices:update', (data) => {
+  console.log('prodices:', data);
 });
 ```
 
@@ -858,7 +858,7 @@ Q: Is Master Mode required?
 A: Only for QVillage and system administration
 
 Q: Can I export data?
-A: Yes, via Device Logs tab → Download button
+A: Yes, via prodice Logs tab → Download button
 
 ---
 
@@ -874,14 +874,14 @@ A: Yes, via Device Logs tab → Download button
 - ✅ Multi-factor authentication
 - ✅ Real-time metrics (10-30 sec updates)
 - ✅ Revenue analytics
-- ✅ Device management
+- ✅ prodice management
 - ✅ Component registry with 50+ components
 
 ---
 
 ## Deployment
 
-### Production Checklist
+### production Checklist
 
 - [x] HTTP server configured
 - [x] Dashboard files optimized
@@ -906,7 +906,7 @@ A: Yes, via Device Logs tab → Download button
    - Run `npm install`
    - Deploy backend service
 
-3. **SSL/HTTPS** (Production)
+3. **SSL/HTTPS** (production)
    - Generate certificates
    - Configure NGINX/Apache
    - Enable secure transport
@@ -922,7 +922,7 @@ A: Yes, via Device Logs tab → Download button
 
 QCity Enterprise is a **production-ready** system providing:
 
-- ✅ Real-time device management
+- ✅ Real-time prodice management
 - ✅ AI/ML infrastructure coordination
 - ✅ Multi-stream revenue tracking
 - ✅ Biometric security
@@ -936,7 +936,7 @@ For immediate access, open: **https://qvillage.com/[qcity](https://qcity.qmoi.ai
 ---
 
 **Last Updated**: December 2, 2024
-**Status**: Production Ready ✅
+**Status**: production Ready ✅
 **Support**: See troubleshooting section above
 
 ## 🔄 Evolution Status

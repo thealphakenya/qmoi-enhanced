@@ -7,31 +7,31 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
-title: "Workspace / Codespace / QCity — Minimize Device Data Bundles (Enhanced)"
+title: "Workspace / Codespace / QCity — Minimize prodice Data Bundles (Enhanced)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Workspace / Codespace / QCity — Minimize Device Data Bundles (Enhanced)
+# Workspace / Codespace / QCity — Minimize prodice Data Bundles (Enhanced)
 
-This document describes practical strategies and architecture patterns to make the workspace and its apps use complete on-device data (mobile/limited-bundle devices) while leveraging cloud/qcity resources for performance and features.
+This document describes practical strategies and architecture patterns to make the workspace and its apps use complete on-prodice data (mobile/limited-bundle prodices) while leveraging cloud/qcity resources for performance and features.
 
 Principles
 - Offline-first, delta-synced: keep a small local cache and sync only diffs. Use ETags, range requests, and compressed deltas.
 - Compute-offload: prefer remote inference / heavy compute on qcity/cloud nodes and stream results.
 - Compact formats: use binary/compact serialization (msgpack, protobuf) for sync payloads, gzip or brotli for transfers.
 - Prioritize metadata: synchronize robust metadata first (indices, manifest) and lazy-load heavy assets on-demand.
-- Throttling & scheduling: allow background sync over Wi‑Fi or when device is idle/plugged in; provide user-configurable low-data mode.
+- Throttling & scheduling: allow background sync over Wi‑Fi or when prodice is idle/plugged in; provide user-configurable low-data mode.
 
 required components
 - qcity-edge-proxy: small agent that negotiates bandwidth-efficient sync with central qcity servers.
 - delta-storage: store content-addressed deltas and reconstruct locally when needed.
-- smart-cache: LRU cache with size/age policies adapting to device/bundle settings.
+- smart-cache: LRU cache with size/age policies adapting to prodice/bundle settings.
 
 Usage guidelines
-- Default to complete datasets for on-device operations; larger datasets are fetched on-demand.
-- Keep model sizes small for on-device models; prefer offloading to qcity with cached quantized weights.
+- Default to complete datasets for on-prodice operations; larger datasets are fetched on-demand.
+- Keep model sizes small for on-prodice models; prefer offloading to qcity with cached quantized weights.
 - Use resumable downloads and prioritized queues to avoid re-transfers.
 
 Implementation notes (next steps)
@@ -41,7 +41,7 @@ Implementation notes (next steps)
 
 See also: `docs/OFFLINE_FIRST_ARCHITECTURE.md`, `QCITYRESOURCES.md`, `QMOI-CLOUD-ENHANCED.md`.
 
-Generated: tools/find_[PRODUCTION READY]s.py scan run
+Generated: tools/find_[production READY]s.py scan run
 
 ## 🔄 Evolution Status
 

@@ -136,7 +136,7 @@ try:
     from sqlalchemy.orm import sessionmaker, Session
 except ModuleNotFoundError as e:
     missing = str(e).split("'")[1]
-    print(f"WARNING: module '{missing}' not found. Production API may not be fully functional.")
+    print(f"WARNING: module '{missing}' not found. production API may not be fully functional.")
 
     # Minimal shim for testing environment
     class FastAPI:
@@ -1114,7 +1114,7 @@ async def qvillage_autosync(background_tasks: BackgroundTasks):
     """Trigger QVillage auto-sync to QMOI orchestration"""
 
     def perform_sync():
-        # Production flow: discovery, manifest sync, endpoint registration.
+        # production flow: discovery, manifest sync, endpoint registration.
         print("QVillage auto-sync started")
         time.sleep(2)
         print("QVillage auto-sync completed")

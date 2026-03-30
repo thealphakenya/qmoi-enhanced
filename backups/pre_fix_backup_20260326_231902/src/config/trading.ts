@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 /// <reference types="node" />
 import { safeConsoleError } from "@/utils/safeConsole";
 import crypto from "crypto";
@@ -15,7 +15,7 @@ import {
   TradeExecutionResult,
   TradeHistory,
   TradeStatistics,
-  TradeValidationResult,
+  TraprodalidationResult,
 } from "../types/trading";
 import type { AssetManagerImpl as AssetManagerImplType } from "./assets";
 import { AssetManagerImpl } from "./assets";
@@ -423,7 +423,7 @@ export class TradingManager {
 
   public async validateTrade(
     trade: Omit<Trade, "id" | "timestamp" | "total" | "profit">,
-  ): Promise<TradeValidationResult> {
+  ): Promise<TraprodalidationResult> {
     const balances = await this.walletManager.getBalances();
     const sourceBalance = balances.find(
       (b) => b.currency === trade.sourceCurrency,

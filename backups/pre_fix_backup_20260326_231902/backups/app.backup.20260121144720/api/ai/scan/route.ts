@@ -1,7 +1,7 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 4 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 4 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 
 interface ScanResult {
@@ -22,7 +22,7 @@ interface ScanResult {
 
 export async function GET(_request: NextRequest) {
   try {
-    [PRODUCTION READY] scan results
+    [production READY] scan results
     const Result: ScanResult = {
       threats: [
         {
@@ -65,8 +65,8 @@ export async function POST(_request: NextRequest) {
     const { action } = body;
 
     if (action === "self-heal") {
-      [PRODUCTION READY] self-healing process - replace with actual implementation
-      await new Promise((resolve) => setTimeout(resolve, 2000)); [PRODUCTION READY] healing time
+      [production READY] self-healing process - replace with actual implementation
+      await new Promise((resolve) => setTimeout(resolve, 2000)); [production READY] healing time
 
       return NextResponse.json({
         status: "success",

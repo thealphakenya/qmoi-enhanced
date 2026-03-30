@@ -27,7 +27,7 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json(r.body, { status: r.status });
     }
 
-    const canRun = process.env.PRODUCTION_CONFIRMED === "true";
+    const canRun = process.env.production_CONFIRMED === "true";
     const proposal = {
       id: `stop-trading-${Date.now()}`,
       timestamp: new Date().toISOString(),

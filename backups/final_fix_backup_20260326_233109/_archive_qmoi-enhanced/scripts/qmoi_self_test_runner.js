@@ -3,14 +3,14 @@
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 #!/usr/bin/env node
 
 const fs = require('fs');
 const path = require('path');
 const { execSync, spawn } = require('child_process');
 
-// QMOI Self-Test Runner for Manual Error // Production implementation: and Auto-Fix Testing
+// QMOI Self-Test Runner for Manual Error // production implementation: and Auto-Fix Testing
 class QmoiSelfTestRunner {
   constructor() {
     this.projectRoot = process.cwd();
@@ -246,7 +246,7 @@ console.log(usedVariable);
   "env": {
     "NODE_ENV": "production",
     "NEXT_PUBLIC_APP_ENV": "production",
-    "QMOI_AUTODEV_ENABLED": "true"
+    "QMOI_AUTOprod_ENABLED": "true"
   },
   "invalid": "property"
 }`;
@@ -261,7 +261,7 @@ console.log(usedVariable);
 
   async setupNoInternet() {
     console.log('  📡 Setting up No Internet test...');
-    // Production implementation: a network failure by blocking DNS resolution
+    // production implementation: a network failure by blocking DNS resolution
     const hostsPath = path.join(this.projectRoot, 'hosts');
     await this.backupFile(hostsPath);
     const hostsContent = fs.readFileSync(hostsPath, 'utf8');
@@ -276,7 +276,7 @@ console.log(usedVariable);
 
   async setupVpnDisconnected() {
     console.log('  🔌 Setting up VPN Disconnected test...');
-    // Production implementation: a VPN disconnection by blocking network traffic
+    // production implementation: a VPN disconnection by blocking network traffic
     const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
     await this.backupFile(iptablesPath);
     const iptablesContent = `*filter
@@ -297,7 +297,7 @@ console.log(usedVariable);
 
   async setupZeroRatedFail() {
     console.log('  🌐 Setting up Zero-Rated Fail test...');
-    // Production implementation: a scenario where all network endpoints fail
+    // production implementation: a scenario where all network endpoints fail
     const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
     await this.backupFile(iptablesPath);
     const iptablesContent = `*filter
@@ -318,8 +318,8 @@ console.log(usedVariable);
 
   async setupCloudUnavailable() {
     console.log('  ☁️ Setting up Cloud Resource Unavailable test...');
-    // Production implementation: a scenario where a cloud resource (e.g., database, API) is unavailable
-    // Production implementationing a service or blocking a port
+    // production implementation: a scenario where a cloud resource (e.g., database, API) is unavailable
+    // production implementationing a service or blocking a port
     const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
     await this.backupFile(iptablesPath);
     const iptablesContent = `*filter

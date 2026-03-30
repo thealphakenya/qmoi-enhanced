@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Background Automation - Master Index
 
 ## 📚 Complete Documentation Index
@@ -97,7 +97,7 @@
 → Read: [Quick Reference - Performance](./QUICK_REFERENCE.md#performance-tuning)
 → Read: [Complete Guide - Performance](./QMOI_BACKGROUND_AUTOMATION_GUIDE.md#performance-tuning)
 
-**Deploy to Production**
+**Deploy to production**
 → Read: [Implementation Checklist - Deployment](./IMPLEMENTATION_CHECKLIST.md#deployment-steps)
 
 **Understand Implementation**
@@ -190,7 +190,7 @@ bash scripts/qmoi-background-setup.sh
 ### Start
 
 ```bash
-npm run dev
+npm run prod
 ```
 
 ### Check Status
@@ -275,7 +275,7 @@ Before deploying, verify:
 
 - [ ] All documentation read and understood
 - [ ] Setup script run: `bash scripts/qmoi-background-setup.sh`
-- [ ] Application starts: `npm run dev`
+- [ ] Application starts: `npm run prod`
 - [ ] Dashboard accessible: `https://qmoi.ai/admin`
 - [ ] Services show "running" status
 - [ ] Logs being created in `.logs/` directory
@@ -288,7 +288,7 @@ Before deploying, verify:
 
 ## 🚀 Deployment Workflow
 
-### Development
+### production
 
 1. Read [Quick Start Guide](./QMOI_BACKGROUND_AUTOMATION_README.md)
 2. Run setup script
@@ -306,7 +306,7 @@ Before deploying, verify:
 5. Check resource usage
 6. Review logs for issues
 
-### Production
+### production
 
 1. Copy all configuration to production environment
 2. Use production-required settings
@@ -364,7 +364,7 @@ Before deploying, verify:
 3. Understand architecture
 4. Customize for your needs
 
-### Deployment (Production Ready)
+### Deployment (production Ready)
 
 1. Review [Implementation Checklist](./IMPLEMENTATION_CHECKLIST.md)
 2. Verify all requirements met
@@ -400,7 +400,7 @@ Before deploying, verify:
 ### Update
 
 - Apply configuration changes
-- Test in development first
+- Test in production first
 - Deploy to production
 - Monitor impact
 
@@ -417,7 +417,7 @@ Before deploying, verify:
 - Memory usage: 20-50MB idle, 50-100MB during operation
 - CPU usage: < 2% idle, 5-20% during operation
 
-### Production Tuning
+### production Tuning
 
 - Scan interval: 10 minutes
 - Health check: 1 minute
@@ -435,7 +435,7 @@ Before deploying, verify:
 ✅ **Secure** - Token-based authentication, no exposed data
 ✅ **Resilient** - Error recovery, retry mechanisms, graceful degradation
 ✅ **Documented** - Complete guides, API reference, troubleshooting
-✅ **Production-Ready** - Error handling, logging, security built-in
+✅ **production-Ready** - Error handling, logging, security built-in
 ✅ **Easy Setup** - One-command setup script, environment standard
 
 ---

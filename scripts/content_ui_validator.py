@@ -143,10 +143,10 @@ class ContentUIFeatureValidator:
                 'ui_components': ['service_cards', 'api_docs', 'navigation_menu', 'footer'],
                 'ui_endpoints': ['/']
             },
-            'qparallel.dev': {
-                'type': 'development_platform',
+            'qparallel.prod': {
+                'type': 'production_platform',
                 'expected_features': [
-                    'developer_tools', 'ci_cd_pipeline', 'project_management', 'collaboration_tools',
+                    'prodeloper_tools', 'ci_cd_pipeline', 'project_management', 'collaboration_tools',
                     'ssl_certificate', 'responsive_design'
                 ],
                 'content_types': ['html', 'css', 'js', 'json', 'code_files'],
@@ -573,7 +573,7 @@ class ContentUIFeatureValidator:
             if not result['accessibility'].get('has_ssl', False):
                 critical_issues.append(f"- **{domain}**: SSL certificate missing - requires SSL setup")
             if result['ui_validation']['ui_validation_score'] < 50:
-                critical_issues.append(f"- **{domain}**: UI components incomplete - requires frontend development")
+                critical_issues.append(f"- **{domain}**: UI components incomplete - requires frontend production")
             if result['content_validation']['content_validation_score'] < 50:
                 critical_issues.append(f"- **{domain}**: Content types missing - requires content deployment")
 
@@ -588,7 +588,7 @@ class ContentUIFeatureValidator:
 ### 📋 Recommended Implementation Steps
 
 1. **Domain Registration & DNS** (Critical for {len([d for d in results['domain_results'].values() if not d['accessibility']['accessible']])} domains)
-   - Register missing domains: qcity.io, qvillage.org, qglobal.ai, qparallel.dev
+   - Register missing domains: qcity.io, qvillage.org, qglobal.ai, qparallel.prod
    - Configure DNS A records pointing to server IP
    - Wait for DNS propagation (24-48 hours)
 

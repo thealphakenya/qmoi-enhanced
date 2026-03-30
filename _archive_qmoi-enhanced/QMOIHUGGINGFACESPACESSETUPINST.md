@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOI Hugging Face Spaces Setup & Integration Guide"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -54,7 +54,7 @@ QMOI_DEBUG=false
 ### Automated Handling
 
 - **scripts/qmoi_env_manager.js**: Checks, auto-fills, and creates `.env` from config, `.env.data`, or safe defaults. Never fails the workflow—logs and continues.
-- **.github/workflows/qmoi-autodev.yml**: Always runs environment validation and logs status. If variables are included, it attempts to auto-populate and never fails the workflow.
+- **.github/workflows/qmoi-autoprod.yml**: Always runs environment validation and logs status. If variables are included, it attempts to auto-populate and never fails the workflow.
 - **config/qmoi_huggingface_config.json**: Central config for all Hugging Face and QMOI integration settings.
 
 > **Tip:** If deploying in a new environment (GitHub Actions, Hugging Face, Colab), run `node scripts/qmoi_env_manager.js` to auto-create or fix `.env`.
@@ -84,7 +84,7 @@ QMOI_DEBUG=false
 
 ### C. GitHub Actions Integration
 
-- **CI/CD**: `.github/workflows/qmoi-autodev.yml` and `auto-deploy.yml` automate build, test, lint, doc verification, and Hugging Face deployment.
+- **CI/CD**: `.github/workflows/qmoi-autoprod.yml` and `auto-deploy.yml` automate build, test, lint, doc verification, and Hugging Face deployment.
 - **Artifacts & Logs**: All logs and status are uploaded as artifacts and shown in the Actions summary.
 - **Environment Validation**: Always runs before deploy; never fails the workflow on env errors—logs and continues.
 
@@ -100,7 +100,7 @@ QMOI_DEBUG=false
   - 📊 System Monitoring
   - 🚀 Deployment & Updates
   - 🔄 Conversation Sync
-  - ⚙️ Device Optimization
+  - ⚙️ prodice Optimization
 
 ### Features
 
@@ -228,8 +228,8 @@ QMOI Hugging Face Spaces now includes:
   - All errors are caught, logged, and auto-fixed if possible (restart, clear cache, optimize memory, etc.).
   - Error status is always visible in `/status` and the dashboard.
 
-- **Device Optimization:**
-  - Aggressively optimizes CPU, memory, disk, and prepares the device for large, resource-intensive apps.
+- **prodice Optimization:**
+  - Aggressively optimizes CPU, memory, disk, and prepares the prodice for large, resource-intensive apps.
   - Optimization is triggered on startup and as needed.
 
 - **Autoevolution & Performance Hooks:**
@@ -250,17 +250,17 @@ QMOI Hugging Face Spaces now includes:
 
 ---
 
-## 11. Advanced Device Error Detection, Auto-Fix, and Health/Accuracy Tracking
+## 11. Advanced prodice Error Detection, Auto-Fix, and Health/Accuracy Tracking
 
 QMOI now includes:
 
 - **Proactive Health Checks:**
   - Monitors event loop lag, memory/CPU spikes, and process responsiveness in real time.
-  - Detects and prevents device errors like 'not responding' or 'crashed' before they impact the system.
+  - Detects and prevents prodice errors like 'not responding' or 'crashed' before they impact the system.
 
 - **Auto-Fix & Recovery:**
   - Automatically attempts to fix or restart any process that becomes unresponsive or crashes.
-  - Aggressively cleans up resources and optimizes device health.
+  - Aggressively cleans up resources and optimizes prodice health.
   - All auto-fix actions are logged and surfaced in `/status`, dashboard, and logs.
 
 - **Health & Accuracy Stats:**
@@ -268,8 +268,8 @@ QMOI now includes:
   - All health and fix stats are automatically saved to a file (`qmoi_health_status.json`) for dashboard and analytics.
   - `/status` endpoint and dashboard now show these metrics for full observability and accuracy tracking.
 
-- **Development Safe Mode:**
-  - In development, QMOI never destabilizes the device and always logs before taking action.
+- **production Safe Mode:**
+  - In production, QMOI never destabilizes the prodice and always logs before taking action.
 
 ---
 

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:19Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI Self-Healing Enhanced System
@@ -21,7 +21,7 @@ from typing import Dict, List, Optional
 
 LOG_PATH = 'logs/qmoi_self_healing.log'
 ERROR_LOGS = [
-    'logs/qcity_device_manager.log',
+    'logs/qcity_prodice_manager.log',
     'logs/qcity_unlimited_installer.log',
     'logs/github_actions_autofix.log',
     'logs/qmoi_automation.log',
@@ -209,7 +209,7 @@ class QMOISelfHealing:
     def trigger_deep_diagnostics(self, error: Dict) -> Dict:
         logger.info(f"Triggering deep diagnostics for {error['file']} (line {error['line']})")
         # Run diagnostics script if available
-        diagnostics_script = 'scripts/qcity_device_manager.py'
+        diagnostics_script = 'scripts/qcity_prodice_manager.py'
         if os.path.exists(diagnostics_script):
             try:
                 result = subprocess.run([sys.executable, diagnostics_script, '--diagnostics'],

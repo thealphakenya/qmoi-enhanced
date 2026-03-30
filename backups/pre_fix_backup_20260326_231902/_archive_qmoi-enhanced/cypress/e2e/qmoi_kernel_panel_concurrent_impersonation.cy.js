@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 /// <reference types="cypress" />
 
 describe("QMOI Kernel Panel Concurrent Sessions & Impersonation E2E", () => {
@@ -32,7 +32,7 @@ describe("QMOI Kernel Panel Concurrent Sessions & Impersonation E2E", () => {
   it("allows admin to impersonate user", () => {
     cy.setCookie("userRole", "admin");
     cy.visit("/qcity/kernel");
-    [PRODUCTION READY] impersonation by changing cookie
+    [production READY] impersonation by changing cookie
     cy.setCookie("userRole", "user");
     cy.reload();
     cy.contains("QMOI Kernel Control Panel").should("exist");

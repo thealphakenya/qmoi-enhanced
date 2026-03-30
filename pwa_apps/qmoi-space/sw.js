@@ -10,7 +10,7 @@ const DYNAMIC_CACHE = "qmoi-space-dynamic-v1.2.3";
 
 const STATIC_FILES = ["./", "./index.html", "./manifest.webmanifest"];
 
-self.addEventListener("install", (event) => {
+self.adprodentListener("install", (event) => {
   event.waitUntil(
     caches
       .open(STATIC_CACHE)
@@ -19,7 +19,7 @@ self.addEventListener("install", (event) => {
   );
 });
 
-self.addEventListener("activate", (event) => {
+self.adprodentListener("activate", (event) => {
   event.waitUntil(
     caches
       .keys()
@@ -32,7 +32,7 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-self.addEventListener("fetch", (event) => {
+self.adprodentListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
   const { request } = event;

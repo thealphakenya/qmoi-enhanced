@@ -18,7 +18,7 @@ const Q = require("../qmoi-friendship-integration.js");
     const result = await inst.detectAndFixErrors();
     console.log("detectAndFixErrors result:", JSON.stringify(result, null, 2));
 
-    // 2. Produce system metrics
+    // 2. produce system metrics
     const metrics = await inst.monitorSystemPerformance();
     console.log("system metrics:", JSON.stringify(metrics, null, 2));
 

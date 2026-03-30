@@ -254,9 +254,9 @@ export_daily_logs() {
 
 # Open admin dashboard in default browser
 open_dashboard() {
-  if command -v xdg-open &> /dev/null; then
+  if command -v xdg-open &> /prod/null; then
     xdg-open http://localhost:3000/admin
-  elif command -v open &> /dev/null; then
+  elif command -v open &> /prod/null; then
     open http://localhost:3000/admin
   else
     echo "Open http://localhost:3000/admin in your browser"

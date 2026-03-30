@@ -3,17 +3,17 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 4 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 4 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 /// <reference types="cypress" />
 
 describe("QMOI Kernel Panel SSO/OAuth E2E - More Providers & Custom Logic", () => {
   it("allows login via Twitter OAuth", () => {
     cy.visit(
-      "/auth/callback?provider=twitter&token=twitter-// Production implementation required:-token",
+      "/auth/callback?provider=twitter&token=twitter-// production implementation required:-token",
     );
     cy.setCookie(
       "authToken",
-      "twitter-// Production implementation required:-token",
+      "twitter-// production implementation required:-token",
     );
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");
@@ -21,11 +21,11 @@ describe("QMOI Kernel Panel SSO/OAuth E2E - More Providers & Custom Logic", () =
 
   it("allows login via SAML SSO", () => {
     cy.visit(
-      "/auth/callback?provider=saml&token=saml-// Production implementation required:-token",
+      "/auth/callback?provider=saml&token=saml-// production implementation required:-token",
     );
     cy.setCookie(
       "authToken",
-      "saml-// Production implementation required:-token",
+      "saml-// production implementation required:-token",
     );
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");

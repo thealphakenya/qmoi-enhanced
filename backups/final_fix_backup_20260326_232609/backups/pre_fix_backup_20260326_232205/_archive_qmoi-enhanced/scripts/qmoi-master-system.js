@@ -17,13 +17,13 @@ import path from 'path';
 import crypto from 'crypto';
 import QMOINotificationSystem from './qmoi-notification-system.js';
 import QMOIEnhancedAvatarSystem from './qmoi-enhanced-avatar-system.js';
-import QMOIMusicProductionSystem from './qmoi-music-production-system.js';
+import QMOIMusicproductionSystem from './qmoi-music-production-system.js';
 
 class QMOIMasterSystem {
   constructor() {
     this.notificationSystem = new QMOINotificationSystem();
     this.avatarSystem = new QMOIEnhancedAvatarSystem();
-    this.musicSystem = new QMOIMusicProductionSystem();
+    this.musicSystem = new QMOIMusicproductionSystem();
     this.masterMode = false;
     this.parallelMode = false;
     this.systemStatus = {
@@ -491,7 +491,7 @@ class QMOIMasterSystem {
   }
 
   async getMusicStatus() {
-    return await this.musicSystem.getProductionStatus();
+    return await this.musicSystem.getproductionStatus();
   }
 
   async getRevenueReport() {
@@ -528,11 +528,11 @@ class QMOIMasterSystem {
     return await this.musicSystem.getArtistStats(artistId);
   }
 
-  async runDailyProduction() {
+  async runDailyproduction() {
     if (!this.masterMode) {
       throw new Error('Master mode required to run daily production');
     }
-    return await this.musicSystem.runDailyProduction();
+    return await this.musicSystem.runDailyproduction();
   }
 
   // Enhanced features

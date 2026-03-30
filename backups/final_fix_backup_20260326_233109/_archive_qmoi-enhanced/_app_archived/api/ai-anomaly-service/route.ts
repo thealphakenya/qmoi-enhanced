@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 
 interface AnomalyError {
@@ -61,8 +61,8 @@ export async function POST(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   if (searchParams.get("fix")) {
     try {
-      // Production implementation: auto-fix (could trigger a script, restart service, etc.)
-      // Production:, implement real fix logic
+      // production implementation: auto-fix (could trigger a script, restart service, etc.)
+      // production:, implement real fix logic
       return NextResponse.json({ status: "fixed" });
     } catch (e: unknown) {
       return NextResponse.json(

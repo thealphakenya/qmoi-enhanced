@@ -9,7 +9,7 @@ This script scans the codebase and updates:
 4. ALLMDFILESREFS.md - Index of all markdown files
 5. ALLTESTSAUTOTESTS.md - Test documentation
 6. HOOKS.md - Hooks directory documentation
-7. TREE.md - Developer structures
+7. TREE.md - prodeloper structures
 """
 
 import os
@@ -208,19 +208,19 @@ Content-Type: application/json
 - `GET /api/qmoi/evolution/track-evolution` - Get evolution tracking data
 - `POST /api/qmoi/evolution/track-evolution` - Manage evolution tracking
 
-### AutoDev - Core
-- `GET /api/qmoi/autodev/research` - Get research suggestions
-- `POST /api/qmoi/autodev/research` - Execute research recommendations
-- `GET /api/qmoi/autodev/generate-feature` - Get feature generation status
-- `POST /api/qmoi/autodev/generate-feature` - Generate new feature
-- `GET /api/qmoi/autodev/state` - Get AutoDev state
-- `POST /api/qmoi/autodev/toggle` - Toggle AutoDev functionality
+### Autoprod - Core
+- `GET /api/qmoi/autoprod/research` - Get research suggestions
+- `POST /api/qmoi/autoprod/research` - Execute research recommendations
+- `GET /api/qmoi/autoprod/generate-feature` - Get feature generation status
+- `POST /api/qmoi/autoprod/generate-feature` - Generate new feature
+- `GET /api/qmoi/autoprod/state` - Get Autoprod state
+- `POST /api/qmoi/autoprod/toggle` - Toggle Autoprod functionality
 
-### AutoDev - Suggestions
-- `GET /api/qmoi/autodev/suggestions/improvements` - Get improvement suggestions
-- `POST /api/qmoi/autodev/suggestions/improvements` - Process improvements
-- `GET /api/qmoi/autodev/suggestions/optimizations` - Get optimization suggestions
-- `GET /api/qmoi/autodev/suggestions/features` - Get feature suggestions
+### Autoprod - Suggestions
+- `GET /api/qmoi/autoprod/suggestions/improvements` - Get improvement suggestions
+- `POST /api/qmoi/autoprod/suggestions/improvements` - Process improvements
+- `GET /api/qmoi/autoprod/suggestions/optimizations` - Get optimization suggestions
+- `GET /api/qmoi/autoprod/suggestions/features` - Get feature suggestions
 
 ### Self-Work
 - `POST /api/qmoi/self-work/code-review` - Code review
@@ -375,8 +375,8 @@ This document catalogs all available endpoints in the QMOI system.
 #### Evolution System ({evolution_count})
 {evolution_endpoints}
 
-#### AutoDev System ({autodev_count})
-{autodev_endpoints}
+#### Autoprod System ({autoprod_count})
+{autoprod_endpoints}
 
 #### Health & Monitoring ({health_count})
 {health_endpoints}
@@ -394,7 +394,7 @@ This document catalogs all available endpoints in the QMOI system.
 
 - **Total Endpoints**: {endpoint_count}
 - **Evolution Endpoints**: {evolution_count}
-- **AutoDev Endpoints**: {autodev_count}
+- **Autoprod Endpoints**: {autoprod_count}
 - **Health Endpoints**: {health_count}
 - **Master Endpoints**: {master_count}
 - **Global Endpoints**: {global_count}
@@ -428,8 +428,8 @@ Auto-updated at {timestamp}Z
         ]),
         evolution_count=len([ep for ep in endpoints if 'evolution' in ep['path'].lower()]),
         evolution_endpoints="\n".join([f"- `{m}` `{ep['path']}`" for ep in endpoints if 'evolution' in ep['path'].lower() for m in ep['methods']]),
-        autodev_count=len([ep for ep in endpoints if 'autodev' in ep['path'].lower()]),
-        autodev_endpoints="\n".join([f"- `{m}` `{ep['path']}`" for ep in endpoints if 'autodev' in ep['path'].lower() for m in ep['methods']]),
+        autoprod_count=len([ep for ep in endpoints if 'autoprod' in ep['path'].lower()]),
+        autoprod_endpoints="\n".join([f"- `{m}` `{ep['path']}`" for ep in endpoints if 'autoprod' in ep['path'].lower() for m in ep['methods']]),
         health_count=len([ep for ep in endpoints if 'health' in ep['path'].lower()]),
         health_endpoints="\n".join([f"- `{m}` `{ep['path']}`" for ep in endpoints if 'health' in ep['path'].lower() for m in ep['methods']]),
         master_count=len([ep for ep in endpoints if 'master' in ep['path'].lower()]),
@@ -490,7 +490,7 @@ This is the master index of all markdown documentation files in the QMOI-Enhance
 
 ### Project Status & Reports
 - MASTER_README.md
-- PRODUCTION_READINESS_REPORT.md
+- production_READINESS_REPORT.md
 - COMPLETION_REPORT.md
 - SESSION_SUMMARY.md
 
@@ -498,7 +498,7 @@ This is the master index of all markdown documentation files in the QMOI-Enhance
 - QUICK_START.md
 - MASTER_OPERATIONS_GUIDE.md
 - DEPLOYMENT_GUIDE.md
-- DEVELOPER_QUICK_START.md
+- prodELOPER_QUICK_START.md
 
 ## Usage
 
@@ -589,7 +589,7 @@ This document catalogs all test files, test cases, and automation tests in the Q
 ### API Coverage
 - ✅ Authentication endpoints
 - ✅ Evolution system endpoints
-- ✅ AutoDev endpoints
+- ✅ Autoprod endpoints
 - ✅ Global APIs
 - ✅ Master operations
 - ✅ Health monitoring
@@ -599,7 +599,7 @@ This document catalogs all test files, test cases, and automation tests in the Q
 - ✅ Awareness system
 - ✅ Memory management
 - ✅ Orchestration
-- ✅ Device integration
+- ✅ prodice integration
 - ✅ Biometric authentication
 
 ### Platform Coverage
@@ -735,8 +735,8 @@ This file documents all custom React hooks in the `hooks/` directory, their usag
 ### System Monitoring
 - useAnalyticsDashboard.ts - Analytics tracking
 - useSystemMetrics.ts - System metrics
-- useDeviceHealth.ts - Device health
-- useDeviceOptimizer.ts - Device optimization
+- useprodiceHealth.ts - prodice health
+- useprodiceOptimizer.ts - prodice optimization
 
 ### Data Management
 - useDatasetManager.ts - Dataset management
@@ -756,7 +756,7 @@ This file documents all custom React hooks in the `hooks/` directory, their usag
 - useColabJob.ts - Colab job management
 - useMediaGenerationStatus.ts - Media generation
 
-### Development Tools
+### production Tools
 - useGithubRepoManager.ts - GitHub management
 - useVSCodeProblems.ts - VS Code integration
 - useErrorAutoFix.ts - Error auto-fix

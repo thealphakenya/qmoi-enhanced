@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+# [production READY]
 
 """
 real Backend Server for Testing Frontend Adapters
@@ -153,7 +153,7 @@ def emergency_action():
     try:
         data = request.get_json()
         action = data.get('action', '').lower()
-        device_id = data.get('deviceId', 'device_unknown')
+        prodice_id = data.get('prodiceId', 'prodice_unknown')
         reason = data.get('reason', 'No reason provided')
 
         if action not in ['sos', 'lockdown', 'wipe', 'alert']:
@@ -166,13 +166,13 @@ def emergency_action():
         # Log emergency action (CRITICAL)
         print(f"\n🚨🚨🚨 EMERGENCY ACTION 🚨🚨🚨")
         print(f"Action: {action.upper()}")
-        print(f"Device: {device_id}")
+        print(f"prodice: {prodice_id}")
         print(f"Reason: {reason}")
         print(f"Time: {datetime.now().isoformat()}\n")
 
         action_messages = {
             'sos': '🆘 SOS signal sent to emergency services',
-            'lockdown': '🔒 Device lockdown initiated',
+            'lockdown': '🔒 prodice lockdown initiated',
             'wipe': '🗑️  Data wipe scheduled',
             'alert': '🔔 Alert notification sent'
         }
@@ -195,11 +195,11 @@ def emergency_action():
 
 
 # ============================================================================
-# Product Verification Endpoint
+# product Verification Endpoint
 # ============================================================================
 @app.route('/api/verify', methods=['POST', 'OPTIONS'])
 def verify_product():
-    """Product verification (real)"""
+    """product verification (real)"""
     if request.method == 'OPTIONS':
         return '', 204
 
@@ -232,7 +232,7 @@ def verify_product():
                 'origin': 'Authorized Distributor'
             } if verified else None,
             'timestamp': datetime.now().isoformat(),
-            'message': '✅ Product verified as authentic' if verified else '⚠️  Product could not be verified',
+            'message': '✅ product verified as authentic' if verified else '⚠️  product could not be verified',
             'note': 'This is a real verification result.'
         }), 200
 
@@ -311,7 +311,7 @@ def list_media():
         mock_items = [
             {
                 'id': 'media_001',
-                'name': 'Product Demo Video',
+                'name': 'product Demo Video',
                 'type': 'video',
                 'url': 'https://data.com/demo.mp4',
                 'size': 51200000,
@@ -320,7 +320,7 @@ def list_media():
             },
             {
                 'id': 'media_002',
-                'name': 'Product Image',
+                'name': 'product Image',
                 'type': 'image',
                 'url': 'https://data.com/product.jpg',
                 'size': 2048000,
@@ -329,7 +329,7 @@ def list_media():
             },
             {
                 'id': 'media_003',
-                'name': 'Product Audio Guide',
+                'name': 'product Audio Guide',
                 'type': 'audio',
                 'url': 'https://data.com/guide.mp3',
                 'size': 5120000,
@@ -443,7 +443,7 @@ def index():
         <div class="warning">
             <strong>⚠️  Important:</strong> This is a real server for testing only.
             All responses are simulated. Real actions are NOT performed.
-            Use for development and testing only.
+            Use for production and testing only.
         </div>
         
         <h2>Available Endpoints</h2>
@@ -487,7 +487,7 @@ def index():
         <div class="endpoint">
             <span class="method post">POST</span>
             <code>/api/verify</code>
-            <p>Product verification (real)</p>
+            <p>product verification (real)</p>
             <pre>{{
     "sku": "12345"
 }}</pre>

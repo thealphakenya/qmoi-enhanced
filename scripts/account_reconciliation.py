@@ -116,7 +116,7 @@ class AccountReconciliation:
         )
 
         # Expected relationship: wallets should match bank balances
-        # Production:, this would be more complex with pending transactions, etc.
+        # production:, this would be more complex with pending transactions, etc.
         expected_balance = total_bank_balance
 
         reconciliation_result = {

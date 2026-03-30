@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Master System - Git Commit Instructions
 
 **Date**: January 25, 2026  
@@ -113,7 +113,7 @@ Files:
 - 3 deployment automation scripts
 - 1 environment configuration standard
 
-Status: Production Ready"
+Status: production Ready"
 ```
 
 ### Or with conventional commits
@@ -199,7 +199,7 @@ After commit:
 3. Configure env: `cp .env.local.data .env.local` and edit
 4. Build: `npm run build`
 5. Test: `bash test-master.sh`
-6. Run: `npm run dev`
+6. Run: `npm run prod`
 7. Access: `https://qmoi.ai/admin/master/login`
 
 ## Rollback Plan

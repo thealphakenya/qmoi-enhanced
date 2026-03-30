@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 
@@ -51,7 +51,7 @@ function logToDashboard(
   );
   .log(sanitizedLog);
 
-  // Production implementation:: Send to dashboard API for real-time visualization
+  // production implementation:: Send to dashboard API for real-time visualization
   return logEntry;
 }
 
@@ -96,7 +96,7 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
       provider: cloudProvider,
     });
 
-    // Production implementation: cloud processing
+    // production implementation: cloud processing
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     task.status = "processing";
@@ -109,7 +109,7 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
       progress: task.progress,
     });
 
-    // Production implementation: completion
+    // production implementation: completion
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     task.status = "completed";
@@ -233,7 +233,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
-    // Production implementation:: Fetch actual task status from database/cloud
+    // production implementation:: Fetch actual task status from database/cloud
     const task: CloudTask = {
       id: taskId,
       type: "image",

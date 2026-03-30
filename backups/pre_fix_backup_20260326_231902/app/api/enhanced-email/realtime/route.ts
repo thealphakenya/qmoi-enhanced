@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextRequest, NextResponse } from "next/server";
 import { qmoiEnhancedEmailService } from "@/lib/enhanced-email-service";
@@ -48,7 +48,7 @@ export async function GET(request: NextRequest) {
       qmoiEnhancedEmailService.addRealtimeListener(eventHandler);
 
       // Handle client disconnect
-      request.signal.addEventListener("abort", () => {
+      request.signal.adprodentListener("abort", () => {
         qmoiEnhancedEmailService.removeRealtimeListener(eventHandler);
         controller.close();
       });
@@ -65,7 +65,7 @@ export async function GET(request: NextRequest) {
       }, 30000);
 
       // Clean up heartbeat on disconnect
-      request.signal.addEventListener("abort", () => {
+      request.signal.adprodentListener("abort", () => {
         clearInterval(heartbeat);
       });
     },

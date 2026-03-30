@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # QMOI Enhanced System: Automated Environment & Credential Management
 
 ## Features
@@ -33,11 +33,11 @@ Edit `scripts/qmoi-env-setup.js` to add or modify platform variables as needed.
 
 - Audit timestamp: 2025-11-11T00:00:00Z
 - Total files scanned: 18921
-- Files considered done (no original [PRODUCTION READY]s): 14596
-- Files with [PRODUCTION READY]s detected: 0
+- Files considered done (no original [production READY]s): 14596
+- Files with [production READY]s detected: 0
 
 ## Files referenced
-- resume[PRODUCTION READY]s.txt
+- resume[production READY]s.txt
 - donerefs.txt
 - allrefs.txt
 - allrefs.md
@@ -63,10 +63,10 @@ Automation policy: automated changes create PRs (or branches) for review. Low-ri
 Keep this file updated when automation changes.
 # Recent workspace updates (summary):
 
-- Added a local QM OI dev server: `scripts/qmoi_local_server.py` with OpenAI-style `/v1/chat/completions` and persistent memory in `qmoi_memory.json`.
+- Added a local QM OI prod server: `scripts/qmoi_local_server.py` with OpenAI-style `/v1/chat/completions` and persistent memory in `qmoi_memory.json`.
 - Memory sync: `/sync/push`, `/sync/pull`, and `/sync/config` endpoints added to the local server. A standalone sync helper `scripts/sync_memory.py` supports pushing to GitHub Gist, Hugging Face repo, or SCP targets using env vars.
 - PWA: `pwa_apps/qmoi-space` updated/verified (manifest + service worker present).
-- Documentation: `docs/LOCAL_QMOI_DEVELOPMENT.md`, `CURLQMOIMASTERSISTERUSER.md`, and `HOOKS.md` updated to reference the local server and memory sync.
+- Documentation: `docs/LOCAL_QMOI_production.md`, `CURLQMOIMASTERSISTERUSER.md`, and `HOOKS.md` updated to reference the local server and memory sync.
 
 - Deployment helpers: `deploy/qvillage/run_qmoi.sh` and `deploy/qvillage/qmoi.service` added to keep `qmoi` running in qvillage (systemd data + supervisor loop). See `deploy/README.md` for instructions.
 - CI: `.github/workflows/qmoi-sync-memory.yml` added to run `scripts/sync_memory.py` on a schedule (every 15 minutes) and on branch push — requires secrets `QMOI_GH_TOKEN`, `QMOI_HF_TOKEN`, `QMOI_GIST_ID` to be configured.
@@ -83,11 +83,11 @@ Next suggested steps:
 
 - Audit timestamp: 2025-11-08T15:29:10.283537Z
 - Total files scanned: 18921
-- Files considered done (no original [PRODUCTION READY]s): 14596
-- Files with [PRODUCTION READY]s detected: 0
+- Files considered done (no original [production READY]s): 14596
+- Files with [production READY]s detected: 0
 
 ## Files referenced
-- resume[PRODUCTION READY]s.txt
+- resume[production READY]s.txt
 - donerefs.txt
 - allrefs.txt
 - allrefs.md

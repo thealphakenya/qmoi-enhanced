@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ================================================================================
 QMOI ENHANCED - COMPLETE SYSTEM INTEGRATION & VALIDATION MASTER
 Full System Architecture, Validation Framework, and Cross-Platform Integration
@@ -21,7 +21,7 @@ Status: ✅ ALL SYSTEMS FULLY INTEGRATED & OPERATIONAL
 ==== PART 1: UNIFIED SYSTEM ARCHITECTURE ====
 
 QMOI operates as a fully integrated system across 7 platforms with centralized
-validation, release management, and automated development.
+validation, release management, and automated production.
 
 Core System Components:
 
@@ -43,13 +43,13 @@ Core System Components:
    ├─ Post-deployment validation
    └─ Integrated with all systems
 
-3. AUTO-DEVELOPMENT SYSTEM
+3. AUTO-production SYSTEM
    ├─ Continuous code analysis
    ├─ Feature generation
    ├─ Self-testing
    ├─ Release integration
    ├─ Continuous monitoring
-   └─ See: QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md
+   └─ See: QMOI_ADVANCED_VALIDATION_AUTOproduction.md
 
 4. API & INTEGRATION LAYER
    ├─ 50+ documented endpoints
@@ -93,12 +93,12 @@ Core System Components:
 
 Complete Release Flow:
 
-DEVELOPMENT → production → PRE-RELEASE → BUILD → POST-BUILD → RELEASE →
+production → production → PRE-RELEASE → BUILD → POST-BUILD → RELEASE →
 CANARY DEPLOY → STAGED ROLLOUT → FULL DEPLOYMENT → POST-DEPLOYMENT MONITORING
 
 Each stage includes validation:
 
-Stage 1-2: Development + production
+Stage 1-2: production + production
 ├─ Validation: Layers 1-2 (Pre-commit + CI/CD)
 ├─ Continuous Integration: On every push
 ├─ Success Requirement: 100% tests passing
@@ -137,9 +137,9 @@ Validation Success Criteria:
 ✓ Canary error rate < 0.5%
 ✓ No customer-reported issues within 2 hours
 
-==== PART 3: AUTO-DEVELOPMENT & RELEASE INTEGRATION ====
+==== PART 3: AUTO-production & RELEASE INTEGRATION ====
 
-Auto-Development enhances releases through continuous improvement:
+Auto-production enhances releases through continuous improvement:
 
 Continuous Cycle:
 
@@ -259,7 +259,7 @@ QCity Community Platform:
 ✓ Analytics accuracy
 
 Mobile Platforms (iOS & Android):
-✓ Device ID verification
+✓ prodice ID verification
 ✓ App signature validation
 ✓ Offline data consistency
 ✓ Sync conflict resolution
@@ -280,7 +280,7 @@ Desktop Platform (Electron):
 ✓ Security policy enforcement
 
 SmartTV Platform:
-✓ Device authentication
+✓ prodice authentication
 ✓ Resolution compatibility
 ✓ Codec support verification
 ✓ Storage availability
@@ -302,7 +302,7 @@ CORE SYSTEM APIS (All platforms):
 ├─ Authentication endpoints
 ├─ User Management APIs
 ├─ Wallet & Payment APIs
-├─ Device Management APIs
+├─ prodice Management APIs
 
 PLATFORM-SPECIFIC APIS:
 
@@ -317,7 +317,7 @@ Recent validation & notes:
 - Updated local QM OI helper (scripts/qmoi_local_server.py) to produce concise, natural replies for UI testing (handles greetings, "how are you", and "create file" intents).
 - Added tests: `tests/test_qmoi_local_server.py` (pytest) and `tests/qmoi-chat-api.test.ts` (Jest) and a robust smoke script `scripts/quick_qmoi_checks.js` for local CI-free verification.
 - Note: Python pytest cannot be executed in this environment due to system Python pip restrictions; run `pytest tests/test_qmoi_local_server.py` in CI or an environment with pip available to fully validate the Python unit tests.
-- Documentation cleanup in progress: 37/367 [PRODUCTION READY]_PROD markers cleaned (331 remaining); systematic sweep ongoing to mark as "Reviewed" or implement where appropriate.
+- Documentation cleanup in progress: 37/367 [production READY]_prod markers cleaned (331 remaining); systematic sweep ongoing to mark as "Reviewed" or implement where appropriate.
 
 QCity Community APIs:
 ├─ Communities: CRUD operations
@@ -326,7 +326,7 @@ QCity Community APIs:
 ├─ Webhooks: Community events
 
 Mobile APIs:
-├─ Device Registration: POST
+├─ prodice Registration: POST
 ├─ Sync Queue: GET/POST
 ├─ Notifications: GET/POST
 ├─ Authentication: Token refresh
@@ -345,7 +345,7 @@ Desktop APIs:
 
 SmartTV APIs:
 ├─ Content: Streaming
-├─ Devices: Registration
+├─ prodices: Registration
 ├─ Remote Control: Input handling
 ├─ Settings: Preferences
 
@@ -370,7 +370,7 @@ PAYMENT APIs:
 WEBHOOK SYSTEM:
 ├─ User Events (10 types)
 ├─ Wallet Events (6 types)
-├─ Device Events (6 types)
+├─ prodice Events (6 types)
 ├─ Project Events (9 types)
 ├─ System Events (4 types)
 └─ Total Webhooks: 35+ types
@@ -380,7 +380,7 @@ INTERNAL HOOKS (QMOI Event System):
 ├─ Build Hooks (4 types)
 ├─ Deployment Hooks (5 types)
 ├─ Release Hooks (4 types)
-├─ Auto-Dev Hooks (5 types)
+├─ Auto-prod Hooks (5 types)
 └─ Total Hooks: 23+ types
 
 ==== PART 6: PLATFORM RUNNERS & ENGINES ====
@@ -412,13 +412,13 @@ MOBILE RUNNERS:
 │ ├─ Memory: 2GB required
 │ ├─ Capacity: 50 concurrent tasks
 │ ├─ Engine: Native + Sync
-│ └─ Validation: All 7 layers + device-specific
+│ └─ Validation: All 7 layers + prodice-specific
 ├─ Android Runner:
 │ ├─ Runtime: Kotlin 1.9+
 │ ├─ Memory: 2GB required
 │ ├─ Capacity: 50 concurrent tasks
 │ ├─ Engine: Native + Sync
-│ └─ Validation: All 7 layers + device-specific
+│ └─ Validation: All 7 layers + prodice-specific
 
 WEB RUNNER:
 ├─ Frontend: React 18+ / Vue 3+
@@ -443,7 +443,7 @@ SMARTTV RUNNER:
 ├─ CPU: ARM Cortex-A72+
 ├─ Engine: Streaming + Remote
 ├─ Performance: 30-60 FPS
-└─ Validation: All 7 layers + device-specific
+└─ Validation: All 7 layers + prodice-specific
 
 BOT RUNNERS:
 ├─ WhatsApp Bot Runner:
@@ -621,7 +621,7 @@ QMOI Enhanced is a fully integrated ecosystem where:
 
 ✅ Release System drives continuous deployment
 ✅ Validation Framework ensures quality at every step
-✅ Auto-Development enhances system continuously
+✅ Auto-production enhances system continuously
 ✅ APIs connect all platforms seamlessly
 ✅ Platforms provide comprehensive services
 ✅ Runners & Engines process requests efficiently
@@ -630,7 +630,7 @@ QMOI Enhanced is a fully integrated ecosystem where:
 
 All components work together synchronously:
 
-1. DEVELOPMENT
+1. production
    → Code written with validation hooks
    → Commit triggers CI/CD pipeline
    → Tests run automatically
@@ -647,7 +647,7 @@ All components work together synchronously:
    → All platforms built
    → Deployment staged
 
-4. AUTO-DEVELOPMENT
+4. AUTO-production
    → System analyzes performance
    → Improvements generated
    → Tests run on new code

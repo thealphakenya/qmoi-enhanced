@@ -15,7 +15,7 @@ Generated: 2026-03-24T21:55:07.764313
 ## API Version Information
 
 - **Version**: 1.0
-- **Status**: Production Ready
+- **Status**: production Ready
 - **Base URL**: https://api.qmoi.com/v1
 - **Authentication**: JWT Bearer Token
 
@@ -29,7 +29,7 @@ Generated: 2026-03-24T21:55:07.764313
 - GET /api/domains/health - Get domain health status
 - GET /api/domains/report - Generate domain health report
 - GET /api/health/domains - Domain health overview
-- GET /api/health/production - Production readiness status
+- GET /api/health/production - production readiness status
 - GET /api/health/system - System health check
 - GET /api/health/telemetry - System telemetry data
 - GET /api/monitor/alerts - Active alerts
@@ -38,7 +38,7 @@ Generated: 2026-03-24T21:55:07.764313
 - GET /api/reports/compliance - Compliance reports
 - GET /api/reports/health - Health reports
 - GET /api/reports/performance - Performance reports
-- GET /api/reports/production - Production reports
+- GET /api/reports/production - production reports
 - POST /api/auth/login - User login
 - POST /api/auth/logout - User logout
 - POST /api/auth/refresh - Refresh token
@@ -100,7 +100,7 @@ Generated: 2026-03-24T21:55:07.764313
 - **v1.0** (2026-03-24): Initial production release
   - Domain health monitoring
   - System automation
-  - Production readiness scanning
+  - production readiness scanning
   - Real-time telemetry
 
 ## Migration Guide
@@ -120,9 +120,13 @@ No endpoints are deprecated in v1.0.
 
 
 
+
+
+
 ## AUTO-GENERATED ENDPOINTS
 
 - /api/account-automation
+- /api/accountability
 - /api/admin/alerts
 - /api/admin/audit-logs
 - /api/admin/autofix/automation
@@ -131,8 +135,8 @@ No endpoints are deprecated in v1.0.
 - /api/admin/autofix/bootstrap
 - /api/admin/autofix/config
 - /api/admin/autofix/errors
-- /api/admin/autofix/fix/{errorId}
 - /api/admin/autofix/fix-all
+- /api/admin/autofix/fix/{errorId}
 - /api/admin/autofix/health
 - /api/admin/autofix/healthmonitor
 - /api/admin/autofix/scan
@@ -146,13 +150,14 @@ No endpoints are deprecated in v1.0.
 - /api/admin/rate-limits
 - /api/admin/users
 - /api/ai
-- /api/ai/scan
 - /api/ai-anomaly-service
 - /api/ai-health
 - /api/ai-self-diagnostics
+- /api/ai/scan
 - /api/analytics/transactions
 - /api/analytics/wallets
 - /api/auth/biometric/capture
+- /api/auth/login
 - /api/auth/login
 - /api/auth/profile
 - /api/auth/refresh
@@ -162,31 +167,38 @@ No endpoints are deprecated in v1.0.
 - /api/auth/signup
 - /api/auth/verify
 - /api/auth/verify-email
+- /api/auth/webauthn/auth/finish
+- /api/auth/webauthn/auth/options
 - /api/auth/webauthn/authenticate
 - /api/auth/webauthn/register
+- /api/auth/webauthn/register/finish
+- /api/auth/webauthn/register/options
 - /api/automation/status
+- /api/automation/trigger
+- /api/avatars/{userId}
 - /api/biometric/templates
 - /api/biometric/verify
+- /api/cashon
 - /api/cashon/balance
 - /api/cashon/deposit
-- /api/cashon
 - /api/cashon/signals
 - /api/cashon/start-trading
 - /api/cashon/stop-trading
 - /api/cashon/trading-status
 - /api/chat/enhanced
 - /api/consciousness
-- /api/datasets/{id}
+- /api/consciousness/health
 - /api/datasets
 - /api/datasets/settings
+- /api/datasets/{id}
 - /api/debug/users
-- /api/deploy/auto-redeploy
 - /api/deploy
+- /api/deploy/auto-redeploy
 - /api/deployment-status
 - /api/device-fingerprint
 - /api/document-backup
-- /api/domains/health
 - /api/domains
+- /api/domains/health
 - /api/earning
 - /api/emails
 - /api/emergency/config
@@ -195,16 +207,18 @@ No endpoints are deprecated in v1.0.
 - /api/emergency/lockdown
 - /api/emergency/sms
 - /api/emergency/wipe
+- /api/employment
 - /api/employment/megavault
 - /api/employment/payment
 - /api/employment/revenue
-- /api/employment
 - /api/enhanced-email/analytics
 - /api/enhanced-email/realtime
 - /api/enhanced-email/rules
 - /api/enhanced-email/send
 - /api/enhanced-email/templates
 - /api/enhanced-link-domain
+- /api/evolution/autoclone-evolution
+- /api/evolution/platform-evolution
 - /api/files
 - /api/financial/audit
 - /api/financial/balances
@@ -216,17 +230,19 @@ No endpoints are deprecated in v1.0.
 - /api/git/push
 - /api/git/remote
 - /api/git/status
+- /api/global
 - /api/global-links
-- /api/health/data
+- /api/global-news
 - /api/health
-- /api/links/{id}/zero-rated
+- /api/health/data
 - /api/links
 - /api/links/validate
+- /api/links/{id}/zero-rated
+- /api/master/domains
 - /api/master/domains/approve/{domain}
 - /api/master/domains/emergency-takeover
 - /api/master/domains/force-refresh
 - /api/master/domains/remove/{domain}
-- /api/master/domains
 - /api/master/domains/status
 - /api/master/links
 - /api/master/sponsored/add
@@ -243,55 +259,15 @@ No endpoints are deprecated in v1.0.
 - /api/notifications/test
 - /api/payments/initiate
 - /api/platforms
+- /api/preview/analyze
+- /api/preview/execute-tool
 - /api/qapikey
 - /api/qcity/audit-log
 - /api/qcity/remote-command
 - /api/qcity/selfheal-npm
 - /api/qcity/status
+- /api/qi-spaces
 - /api/qi-trading
-- /api/qmoi/advanced-analysis
-- /api/qmoi/audio
-- /api/qmoi/auto-fix/download-report
-- /api/qmoi/auto-fix/github-status
-- /api/qmoi/auto-fix/start
-- /api/qmoi/auto-fix/status
-- /api/qmoi/auto-fix/stop
-- /api/qmoi/auto-setup
-- /api/qmoi/autodev/generate-feature
-- /api/qmoi/autodev/research
-- /api/qmoi/autodev/toggle
-- /api/qmoi/avatars
-- /api/qmoi/backup
-- /api/qmoi/chat
-- /api/qmoi/chat-enhanced
-- /api/qmoi/files/{id}
-- /api/qmoi/friendship
-- /api/qmoi/language
-- /api/qmoi/master-mode
-- /api/qmoi/memory
-- /api/qmoi/own-device-logs/export
-- /api/qmoi/own-device-logs
-- /api/qmoi/profile-questions
-- /api/qmoi/projects
-- /api/qmoi/research
-- /api/qmoi/revenue/reset
-- /api/qmoi/revenue
-- /api/qmoi/revenue/start
-- /api/qmoi/revenue/status
-- /api/qmoi/revenue/stop
-- /api/qmoi/revenue/target
-- /api/qmoi/revenue/transactions
-- /api/qmoi/revenue/transfer
-- /api/qmoi/revenue-dashboard
-- /api/qmoi/session
-- /api/qmoi/transcribe
-- /api/qmoi/upload
-- /api/qmoi/user
-- /api/qmoi/visuals
-- /api/qmoi/voice
-- /api/qmoi/voice-enroll
-- /api/qmoi/voice-preview
-- /api/qmoi/voice-profiles
 - /api/qmoi-database
 - /api/qmoi-earning-enhanced
 - /api/qmoi-gitlab/deployments
@@ -301,21 +277,83 @@ No endpoints are deprecated in v1.0.
 - /api/qmoi-gitlab/trigger
 - /api/qmoi-model
 - /api/qmoi-tracks
+- /api/qmoi/advanced-analysis
+- /api/qmoi/audio
+- /api/qmoi/auto-fix/download-report
+- /api/qmoi/auto-fix/github-status
+- /api/qmoi/auto-fix/start
+- /api/qmoi/auto-fix/status
+- /api/qmoi/auto-fix/stop
+- /api/qmoi/auto-setup
+- /api/qmoi/autodev/generate-feature
+- /api/qmoi/autodev/generate-feature
+- /api/qmoi/autodev/research
+- /api/qmoi/autodev/research
+- /api/qmoi/autodev/state
+- /api/qmoi/autodev/suggestions/features
+- /api/qmoi/autodev/suggestions/improvements
+- /api/qmoi/autodev/suggestions/optimizations
+- /api/qmoi/autodev/toggle
+- /api/qmoi/autodev/toggle
+- /api/qmoi/avatars
+- /api/qmoi/backup
+- /api/qmoi/chat
+- /api/qmoi/chat-enhanced
+- /api/qmoi/evolution/compare-models
+- /api/qmoi/evolution/replace-model
+- /api/qmoi/evolution/track-evolution
+- /api/qmoi/execute
+- /api/qmoi/files/{id}
+- /api/qmoi/friendship
+- /api/qmoi/health
+- /api/qmoi/health/stream
+- /api/qmoi/language
+- /api/qmoi/master-mode
+- /api/qmoi/memory
+- /api/qmoi/own-device-logs
+- /api/qmoi/own-device-logs/export
+- /api/qmoi/profile-questions
+- /api/qmoi/projects
+- /api/qmoi/research
+- /api/qmoi/revenue
+- /api/qmoi/revenue-dashboard
+- /api/qmoi/revenue/reset
+- /api/qmoi/revenue/start
+- /api/qmoi/revenue/status
+- /api/qmoi/revenue/stop
+- /api/qmoi/revenue/target
+- /api/qmoi/revenue/transactions
+- /api/qmoi/revenue/transfer
+- /api/qmoi/self-work/code-review
+- /api/qmoi/self-work/debug
+- /api/qmoi/self-work/run-tests
+- /api/qmoi/session
+- /api/qmoi/suggestions
+- /api/qmoi/transcribe
+- /api/qmoi/upload
+- /api/qmoi/user
+- /api/qmoi/visuals
+- /api/qmoi/voice
+- /api/qmoi/voice-enroll
+- /api/qmoi/voice-preview
+- /api/qmoi/voice-profiles
 - /api/qnews
 - /api/qradio
 - /api/qstore
-- /api/qvillage/inference
-- /api/qvillage/models
 - /api/qvillage
+- /api/qvillage/inference
+- /api/qvillage/model-card
+- /api/qvillage/models
 - /api/qvillage/spaces
+- /api/qvs
 - /api/social-automation
 - /api/ssh/list
 - /api/ssh/read
 - /api/ssh/write
-- /api/tracks/{id}
 - /api/tracks
 - /api/tracks/settings
 - /api/tracks/stream
+- /api/tracks/{id}
 - /api/trading/status
 - /api/transactions
 - /api/tts/generate
@@ -324,21 +362,20 @@ No endpoints are deprecated in v1.0.
 - /api/version
 - /api/voice/enroll
 - /api/voice/verify
-- /api/wallets/{walletId}
 - /api/wallets
+- /api/wallets/{walletId}
 - /api/webauthn/authenticate
 - /api/webauthn/register
 - /api/webhooks/payments
 - /api/webhooks/qvillage
-- /api/whatsapp/audit
-- /api/whatsapp/verify
 - /api/whatsapp-bot
 - /api/whatsapp-business
+- /api/whatsapp/audit
+- /api/whatsapp/verify
 - /api/wifi
-- /api/wifi/scan
 - /api/wifi-security
+- /api/wifi/scan
 - /api/youtube/download
-
 ## 🔄 Evolution Status
 
 **QMOI Evolution Enhanced**: This document is continuously updated through QMOI's autonomous evolution system.
@@ -840,7 +877,7 @@ No endpoints are deprecated in v1.0.
 { "success": true }
 ```
 
-### GET /device-fingerprint
+### GET /prodice-fingerprint
 
 **Description:** API endpoint
 
@@ -1425,7 +1462,7 @@ No endpoints are deprecated in v1.0.
 { "success": true }
 ```
 
-### GET /qmoi/own-device-logs
+### GET /qmoi/own-prodice-logs
 
 **Description:** API endpoint
 
@@ -2181,7 +2218,7 @@ No endpoints are deprecated in v1.0.
 { "success": true }
 ```
 
-### POST /device-fingerprint
+### POST /prodice-fingerprint
 
 **Description:** API endpoint
 
@@ -2667,7 +2704,7 @@ No endpoints are deprecated in v1.0.
 { "success": true }
 ```
 
-### POST /qmoi/autodev/generate-feature
+### POST /qmoi/autoprod/generate-feature
 
 **Description:** API endpoint
 
@@ -2676,7 +2713,7 @@ No endpoints are deprecated in v1.0.
 { "success": true }
 ```
 
-### POST /qmoi/autodev/research
+### POST /qmoi/autoprod/research
 
 **Description:** API endpoint
 
@@ -2685,7 +2722,7 @@ No endpoints are deprecated in v1.0.
 { "success": true }
 ```
 
-### POST /qmoi/autodev/toggle
+### POST /qmoi/autoprod/toggle
 
 **Description:** API endpoint
 
@@ -2748,7 +2785,7 @@ No endpoints are deprecated in v1.0.
 { "success": true }
 ```
 
-### POST /qmoi/own-device-logs
+### POST /qmoi/own-prodice-logs
 
 **Description:** API endpoint
 
@@ -2757,7 +2794,7 @@ No endpoints are deprecated in v1.0.
 { "success": true }
 ```
 
-### POST /qmoi/own-device-logs/export
+### POST /qmoi/own-prodice-logs/export
 
 **Description:** API endpoint
 

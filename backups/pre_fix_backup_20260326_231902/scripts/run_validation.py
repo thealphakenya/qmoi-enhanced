@@ -3,13 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:05Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """Run a suite of validation tools and collect a combined report.
 
 By default this runs in dry-run mode: any suggested changes are written as proposals
 into `.qmoi_validation/`. To apply changes pass `--apply` and set
-`PRODUCTION_CONFIRMED=true` in the environment.
+`production_CONFIRMED=true` in the environment.
 """
 import subprocess
 import json
@@ -53,7 +53,7 @@ def run_tool(tool, apply: bool = False):
 def main():
     import argparse
     ap = argparse.ArgumentParser()
-    ap.add_argument('--apply', action='store_true', help='Apply suggested changes (requires PRODUCTION_CONFIRMED=true)')
+    ap.add_argument('--apply', action='store_true', help='Apply suggested changes (requires production_CONFIRMED=true)')
     args = ap.parse_args()
 
     results = []

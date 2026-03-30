@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOI v1.2.3 Complete Release - All Apps, All Platforms"
 description: "Comprehensive release with all QMOI applications built for 10+ platforms with validation and testing"
@@ -21,7 +21,7 @@ version: "v1.2.3"
 
 **Release Date:** November 12, 2025  
 **Version:** v1.2.3  
-**Status:** ✅ PRODUCTION READY  
+**Status:** ✅ production READY  
 **Quality:** ✅ 100% VALIDATED
 
 This is a comprehensive release of all QMOI applications built for 10+ platforms with full validation, testing, and integrity checks.
@@ -62,7 +62,7 @@ Each application is built for:
 
 - All 4 major QMOI apps included
 - Every app built for 10+ platforms
-- No [PRODUCTION READY]s - all actual binaries
+- No [production READY]s - all actual binaries
 - Total: 40+ downloadable artifacts
 
 ### ✅ 100% Validation & Testing
@@ -83,7 +83,7 @@ Each application is built for:
 - Offline support, caching, push notifications
 - Install prompts on all platforms
 
-### ✅ Production Quality
+### ✅ production Quality
 
 - All builds use realistic headers and structure
 - Proper file formats and magic bytes
@@ -206,7 +206,7 @@ sudo apt install ./qmoi-ai-v1.2.3-linux.deb
 
 ```bash
 # Download: qmoi-ai-v1.2.3-android.apk
-# Transfer to Android device
+# Transfer to Android prodice
 # Open file manager and tap to install
 # Or use adb
 adb install qmoi-ai-v1.2.3-android.apk
@@ -236,7 +236,7 @@ chmod +x qmoi-ai-v1.2.3-chromebook
 # Download: qmoi_ai.img
 # Use Balena Etcher or similar to flash to SD card
 # OR
-dd if=qmoi_ai.img of=/dev/sdX bs=4M status=progress
+dd if=qmoi_ai.img of=/prod/sdX bs=4M status=progress
 ```
 
 ---
@@ -279,7 +279,7 @@ Full detailed report: `app_validation_report_v1.2.3.json`
 - ✅ All 4 apps built for all platforms
 - ✅ Complete PWA implementations
 - ✅ 100% validation passed
-- ✅ Production ready
+- ✅ production ready
 
 ### Previous Versions
 
@@ -323,7 +323,7 @@ Full detailed report: `app_validation_report_v1.2.3.json`
 - **Total Artifacts:** 40+
 - **Total Size:** ~2.5 GB
 - **Validation Success:** 100%
-- **Status:** ✅ Production Ready
+- **Status:** ✅ production Ready
 
 ---
 
@@ -337,7 +337,7 @@ See LICENSE file for details.
 **Generated:** November 12, 2025  
 **Release:** v1.2.3  
 **Status:** ✅ LIVE  
-**Quality:** ⭐⭐⭐⭐⭐ (Production Ready)
+**Quality:** ⭐⭐⭐⭐⭐ (production Ready)
 
 🎉 **Ready to download and use!**
 

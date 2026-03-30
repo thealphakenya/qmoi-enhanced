@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# // Production implementation:
+# // production implementation:
 # NOTE: 2 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import os
 import time
@@ -55,13 +55,13 @@ def bitget_request(method, path, body_obj=None):
     resp.raise_for_status()
     return resp.json()
 
-# --- AI confidence calculation (// Production implementation required:, replace with real model) ---
+# --- AI confidence calculation (// production implementation required:, replace with real model) ---
 def calculate_confidence(market_data):
     # data: use volatility, trend, and recent profit
     import random
     return min(1.0, max(0.0, 0.6 + random.uniform(-0.1, 0.3)))
 
-# --- Dynamic trading pairs selection (// Production implementation required:) ---
+# --- Dynamic trading pairs selection (// production implementation required:) ---
 def select_trading_pair(market_data):
     # data: pick the pair with highest volume
     return 'BTCUSDT_UMCBL'

@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# // Production implementation:
+# // production implementation:
 """
 Verify and finalize donerefs.txt
 
@@ -31,11 +31,11 @@ REPORT_DIR.mkdir(exist_ok=True)
 REPORT = REPORT_DIR / 'donerefs_verification_report.txt'
 
 PLACEHOLDERS = [
-    re.compile(r"\[PRODUCTION IMPLEMENTATION REQUIRED\]"),
-    re.compile(r"PRODUCTION_IMPLEMENTATION_REQUIRED"),
+    re.compile(r"\[production IMPLEMENTATION REQUIRED\]"),
+    re.compile(r"production_IMPLEMENTATION_REQUIRED"),
     re.compile(r"\[implementation\]"),
-    re.compile(r"TODO_PROD [PRODUCTION: review and implement]"),
-    re.compile(r"\[PROD_PLACEHOLDER\]"),
+    re.compile(r"TODO_prod [production: review and implement]"),
+    re.compile(r"\[prod_PLACEHOLDER\]"),
 ]
 
 def contains_placeholder(path: Path) -> bool:

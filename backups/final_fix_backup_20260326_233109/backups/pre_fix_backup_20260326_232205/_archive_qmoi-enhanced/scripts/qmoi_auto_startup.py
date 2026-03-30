@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI Auto Startup System
@@ -64,22 +64,22 @@ class QMOIAutoStartup:
         except Exception as e:
             logging.error(f"Failed to update status: {e}")
     
-    def start_device_controller(self):
-        """Start device controller"""
+    def start_prodice_controller(self):
+        """Start prodice controller"""
         try:
-            script_path = os.path.join(os.getcwd(), 'scripts', 'qmoi_automated_device_controller.py')
+            script_path = os.path.join(os.getcwd(), 'scripts', 'qmoi_automated_prodice_controller.py')
             if os.path.exists(script_path):
                 process = subprocess.Popen([
                     sys.executable, script_path
                 ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                self.processes.append(('device_controller', process))
-                logging.info("✅ Device controller started")
+                self.processes.append(('prodice_controller', process))
+                logging.info("✅ prodice controller started")
                 return True
             else:
-                logging.error(f"Device controller script not found: {script_path}")
+                logging.error(f"prodice controller script not found: {script_path}")
                 return False
         except Exception as e:
-            logging.error(f"Failed to start device controller: {e}")
+            logging.error(f"Failed to start prodice controller: {e}")
             return False
     
     def start_betting_system(self):
@@ -132,8 +132,8 @@ class QMOIAutoStartup:
             self.processes = [(name, proc) for name, proc in self.processes if name != process_name]
             
             # Restart process
-            if process_name == 'device_controller':
-                self.start_device_controller()
+            if process_name == 'prodice_controller':
+                self.start_prodice_controller()
             elif process_name == 'betting_system':
                 self.start_betting_system()
                 
@@ -156,9 +156,9 @@ class QMOIAutoStartup:
         })
         
         try:
-            # Start device controller
-            if self.start_device_controller():
-                logging.info("✅ Device controller started successfully")
+            # Start prodice controller
+            if self.start_prodice_controller():
+                logging.info("✅ prodice controller started successfully")
             
             # Start betting system
             if self.start_betting_system():

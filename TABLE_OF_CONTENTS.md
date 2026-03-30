@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Background Automation - Complete Implementation
 
 ## 🎯 Quick Navigation
@@ -83,7 +83,7 @@ qmoi-enhanced/
 bash scripts/qmoi-background-setup.sh
 
 # 2. Start (immediate)
-npm run dev
+npm run prod
 
 # 3. Monitor (immediate)
 # Visit: https://qmoi.ai/admin
@@ -96,7 +96,7 @@ npm run dev
 ### "I just want to get it running"
 
 → Read: [Quick Start](./docs/QMOI_BACKGROUND_AUTOMATION_README.md)
-→ Run: `bash scripts/qmoi-background-setup.sh && npm run dev`
+→ Run: `bash scripts/qmoi-background-setup.sh && npm run prod`
 
 ### "I want to understand how it works"
 
@@ -210,7 +210,7 @@ npm run dev
 bash scripts/qmoi-background-setup.sh
 
 # Start
-npm run dev
+npm run prod
 
 # Environment Variables
 QMOI_AUTO_SCAN_INTERVAL=300000          # 5 min
@@ -285,7 +285,7 @@ Dashboard (real-time status)
 
 - [ ] Read Quick Start guide
 - [ ] Run setup script: `bash scripts/qmoi-background-setup.sh`
-- [ ] Start app: `npm run dev`
+- [ ] Start app: `npm run prod`
 - [ ] Visit dashboard: `https://qmoi.ai/admin`
 - [ ] Check logs: `tail -f .logs/qmoi-autoscan.log`
 - [ ] Test API: `curl ... /api/admin/autofix/background-automation`
@@ -391,13 +391,13 @@ Everything is ready:
 ```bash
 # 3-step setup:
 bash scripts/qmoi-background-setup.sh    # Setup (30 sec)
-npm run dev                               # Start (immediate)
+npm run prod                               # Start (immediate)
 # Visit https://qmoi.ai/admin      # Monitor (immediate)
 ```
 
 ---
 
-**QMOI Background Automation System - Complete & Ready for Production! 🎉**
+**QMOI Background Automation System - Complete & Ready for production! 🎉**
 
 _For detailed information, see the documentation files listed above._
 

@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -23,30 +23,30 @@
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QCity Device Management & Unlimited QCity Automation
+# QCity prodice Management & Unlimited QCity Automation
 
 ## Overview
 
-This document describes the advanced device management and unlimited QCity install automation features.
+This document describes the advanced prodice management and unlimited QCity install automation features.
 
 ## Features
 
-- **Device Detection**: Robust detection of OS, hardware, and network.
+- **prodice Detection**: Robust detection of OS, hardware, and network.
 - **Dependency Management**: Auto-installs and repairs all required dependencies.
-- **Compatibility Checks**: Ensures device meets minimum requirements for QCity.
+- **Compatibility Checks**: Ensures prodice meets minimum requirements for QCity.
 - **Automated Troubleshooting**: Diagnoses and fixes common install and runtime issues.
 - **Unlimited QCity Installer**: Specialized script for advanced, scalable QCity deployments.
 - **Comprehensive Reporting**: Generates detailed logs and reports for all actions.
 
 ## Usage
 
-### Device Management
+### prodice Management
 
 ```bash
-python scripts/qcity_device_manager.py
+python scripts/qcity_prodice_manager.py
 ```
 
-- Generates a full device report and attempts to auto-fix issues.
+- Generates a full prodice report and attempts to auto-fix issues.
 
 ### Unlimited QCity Install
 
@@ -58,7 +58,7 @@ python scripts/qcity_unlimited_installer.py
 
 ## Troubleshooting
 
-- See `logs/qcity_device_manager.log` and `qcity_reports/device_management_report.json` for diagnostics.
+- See `logs/qcity_prodice_manager.log` and `qcity_reports/prodice_management_report.json` for diagnostics.
 - For install issues, check `logs/qcity_unlimited_installer.log` and `qcity_reports/unlimited_installation_report.json`.
 - For persistent errors, run the self-healing script:
   ```bash
@@ -67,7 +67,7 @@ python scripts/qcity_unlimited_installer.py
 
 ## Best Practices
 
-- Run device management before every major upgrade.
+- Run prodice management before every major upgrade.
 - Use the unlimited installer for scalable, production-grade deployments.
 - Review reports and logs regularly.
 
@@ -79,14 +79,14 @@ python scripts/qcity_unlimited_installer.py
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "qmoi-enhanced/QCITY_DEVICE_MANAGEMENT.md",
+"file": "qmoi-enhanced/QCITY_prodICE_MANAGEMENT.md",
 "validated_at": "2025-10-26T20:51:24.660658Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
 {
 "name": "title_present",
 "ok": true,
-"detail": "QCity Device Management & Unlimited QCity Automation"
+"detail": "QCity prodice Management & Unlimited QCity Automation"
 },
 {
 "name": "links",

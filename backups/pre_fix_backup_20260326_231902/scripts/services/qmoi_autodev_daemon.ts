@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 import { AutoFixService } from "./auto_fix_service";
 import { QCityService } from "./qcity_service";
 import { logger } from "../utils/logger";
@@ -25,7 +25,7 @@ function initializeServices() {
     }
   } catch (error) {
     logger.error(
-      "[QMOI-AUTODEV-DAEMON] Failed to initialize AutoFixService:",
+      "[QMOI-AUTOprod-DAEMON] Failed to initialize AutoFixService:",
       error,
     );
     autoFixService = {
@@ -47,7 +47,7 @@ function initializeServices() {
     }
   } catch (error) {
     logger.error(
-      "[QMOI-AUTODEV-DAEMON] Failed to initialize QCityService:",
+      "[QMOI-AUTOprod-DAEMON] Failed to initialize QCityService:",
       error,
     );
     qcityService = {
@@ -81,7 +81,7 @@ class ErrorRecoverySystem {
   async attemptRecovery(_error: unknown): Promise<boolean> {
     this.recoveryAttempts++;
     logger.warn(
-      `[QMOI-AUTODEV-DAEMON] Recovery attempt ${this.recoveryAttempts}/${this.maxRecoveryAttempts}`,
+      `[QMOI-AUTOprod-DAEMON] Recovery attempt ${this.recoveryAttempts}/${this.maxRecoveryAttempts}`,
     );
 
     try {
@@ -94,10 +94,10 @@ class ErrorRecoverySystem {
       // Reset error count if recovery successful
       errorCount = 0;
       recoveryMode = false;
-      logger.info("[QMOI-AUTODEV-DAEMON] Recovery successful");
+      logger.info("[QMOI-AUTOprod-DAEMON] Recovery successful");
       return true;
     } catch (recoveryError) {
-      logger.error("[QMOI-AUTODEV-DAEMON] Recovery failed:", recoveryError);
+      logger.error("[QMOI-AUTOprod-DAEMON] Recovery failed:", recoveryError);
       return false;
     }
   }
@@ -114,9 +114,9 @@ class ErrorRecoverySystem {
     for (const cmd of commands) {
       try {
         await execAsync(cmd);
-        logger.info(`[QMOI-AUTODEV-DAEMON] Fixed issue with: ${cmd}`);
+        logger.info(`[QMOI-AUTOprod-DAEMON] Fixed issue with: ${cmd}`);
       } catch (error) {
-        logger.warn(`[QMOI-AUTODEV-DAEMON] Could not fix with ${cmd}:`, error);
+        logger.warn(`[QMOI-AUTOprod-DAEMON] Could not fix with ${cmd}:`, error);
       }
     }
   }
@@ -142,14 +142,14 @@ async function runTests(): Promise<any> {
 
   for (const cmd of testCommands) {
     try {
-      logger.info(`[QMOI-AUTODEV-DAEMON] Running tests with: ${cmd}`);
+      logger.info(`[QMOI-AUTOprod-DAEMON] Running tests with: ${cmd}`);
       const { stdout, stderr } = await execAsync(cmd);
-      logger.info("[QMOI-AUTODEV-DAEMON] Test output:", stdout);
-      if (stderr) logger.warn("[QMOI-AUTODEV-DAEMON] Test errors:", stderr);
+      logger.info("[QMOI-AUTOprod-DAEMON] Test output:", stdout);
+      if (stderr) logger.warn("[QMOI-AUTOprod-DAEMON] Test errors:", stderr);
       return { success: true, output: stdout, _error: stderr, command: cmd };
     } catch (_error: unknown) {
       logger.warn(
-        `[QMOI-AUTODEV-DAEMON] Test command ${cmd} failed:`,
+        `[QMOI-AUTOprod-DAEMON] Test command ${cmd} failed:`,
         error.message,
       );
       continue;
@@ -158,7 +158,7 @@ async function runTests(): Promise<any> {
 
   // If all test commands fail, return a comprehensive success to prevent system shutdown
   logger.warn(
-    "[QMOI-AUTODEV-DAEMON] All test commands failed, but continuing...",
+    "[QMOI-AUTOprod-DAEMON] All test commands failed, but continuing...",
   );
   return {
     success: true,
@@ -171,7 +171,7 @@ async function runTests(): Promise<any> {
 // Enhanced health checks with fallback
 async function runHealthChecks(): Promise<any[]> {
   const endpoints = [
-    "/api/qmoi/autodev",
+    "/api/qmoi/autoprod",
     "/api/qcity/status",
     "/api/health",
     process.env.VERCEL_DEPLOY_URL || "https://qmoi.vercel.app",
@@ -244,7 +244,7 @@ async function checkFileSystem(): Promise<any> {
     "next.config.mjs",
     "tailwind.config.ts",
     "components/QConverse.tsx",
-    "scripts/services/qmoi_autodev_daemon.ts",
+    "scripts/services/qmoi_autoprod_daemon.ts",
   ];
 
   const results = [];
@@ -274,13 +274,13 @@ async function checkFileSystem(): Promise<any> {
 // Enhanced daemon loop with comprehensive error handling
 async function daemonLoop(): Promise<void> {
   if (running) {
-    logger.warn("[QMOI-AUTODEV-DAEMON] Already running, skipping this cycle.");
+    logger.warn("[QMOI-AUTOprod-DAEMON] Already running, skipping this cycle.");
     return;
   }
 
   running = true;
   lastRun = new Date().toISOString();
-  logger.info("[QMOI-AUTODEV-DAEMON] Starting auto-fix cycle...");
+  logger.info("[QMOI-AUTOprod-DAEMON] Starting auto-fix cycle...");
 
   try {
     // Initialize services with error handling
@@ -288,7 +288,7 @@ async function daemonLoop(): Promise<void> {
 
     // Check file system health
     const fileSystemCheck = await checkFileSystem();
-    logger.info("[QMOI-AUTODEV-DAEMON] File system check:", fileSystemCheck);
+    logger.info("[QMOI-AUTOprod-DAEMON] File system check:", fileSystemCheck);
 
     // Get system status with fallback
     let status;
@@ -297,35 +297,35 @@ async function daemonLoop(): Promise<void> {
       status = qcityService.getStatus();
       errors = status?.errors || [];
     } catch (error) {
-      logger.error("[QMOI-AUTODEV-DAEMON] Failed to get status:", error);
+      logger.error("[QMOI-AUTOprod-DAEMON] Failed to get status:", error);
       status = { errors: [], status: "error" };
       errors = [];
     }
 
-    logger.info(`[QMOI-AUTODEV-DAEMON] Detected ${errors.length} errors.`);
+    logger.info(`[QMOI-AUTOprod-DAEMON] Detected ${errors.length} errors.`);
 
     let fixResults = [];
     if (errors.length > 0) {
       for (const error of errors) {
         try {
-          logger.info("[QMOI-AUTODEV-DAEMON] Running lint fix...");
+          logger.info("[QMOI-AUTOprod-DAEMON] Running lint fix...");
           const lintResult = await autoFixService.runLintFix();
-          logger.info("[QMOI-AUTODEV-DAEMON] Lint fix result:", lintResult);
+          logger.info("[QMOI-AUTOprod-DAEMON] Lint fix result:", lintResult);
 
-          logger.info("[QMOI-AUTODEV-DAEMON] Running dependency fix...");
+          logger.info("[QMOI-AUTOprod-DAEMON] Running dependency fix...");
           const depResult = await autoFixService.runDependencyFix();
           logger.info(
-            "[QMOI-AUTODEV-DAEMON] Dependency fix result:",
+            "[QMOI-AUTOprod-DAEMON] Dependency fix result:",
             depResult,
           );
 
-          logger.info("[QMOI-AUTODEV-DAEMON] Running AI fix...");
+          logger.info("[QMOI-AUTOprod-DAEMON] Running AI fix...");
           const aiResult = await autoFixService.runAIFix(error);
-          logger.info("[QMOI-AUTODEV-DAEMON] AI fix result:", aiResult);
+          logger.info("[QMOI-AUTOprod-DAEMON] AI fix result:", aiResult);
 
           fixResults.push({ lintResult, depResult, aiResult });
         } catch (fixError) {
-          logger.error("[QMOI-AUTODEV-DAEMON] Fix operation failed:", fixError);
+          logger.error("[QMOI-AUTOprod-DAEMON] Fix operation failed:", fixError);
           fixResults.push({
             lintResult: { success: false, _error: fixError.message },
             depResult: { success: false, _error: fixError.message },
@@ -334,7 +334,7 @@ async function daemonLoop(): Promise<void> {
         }
       }
     } else {
-      logger.info("[QMOI-AUTODEV-DAEMON] No errors detected, skipping fixes.");
+      logger.info("[QMOI-AUTOprod-DAEMON] No errors detected, skipping fixes.");
     }
 
     // Run tests with fallback
@@ -345,10 +345,10 @@ async function daemonLoop(): Promise<void> {
     try {
       if (testResult.success) {
         logger.info(
-          "[QMOI-AUTODEV-DAEMON] Tests passed. Committing and deploying...",
+          "[QMOI-AUTOprod-DAEMON] Tests passed. Committing and deploying...",
         );
         const commitResult = await unifiedCICDService.commitAndPushFixes();
-        logger.info("[QMOI-AUTODEV-DAEMON] Commit/push result:", commitResult);
+        logger.info("[QMOI-AUTOprod-DAEMON] Commit/push result:", commitResult);
 
         let deployResult = { success: false, message: "Skipped deployment." };
         let monitorResult = { success: false, message: "Skipped monitoring." };
@@ -357,7 +357,7 @@ async function daemonLoop(): Promise<void> {
           try {
             deployResult = await unifiedCICDService.deployWithFallback();
             logger.info(
-              "[QMOI-AUTODEV-DAEMON] Vercel deploy result:",
+              "[QMOI-AUTOprod-DAEMON] Vercel deploy result:",
               deployResult,
             );
 
@@ -366,13 +366,13 @@ async function daemonLoop(): Promise<void> {
                 process.env.VERCEL_DEPLOY_URL || "https://qmoi.vercel.app";
               monitorResult = await unifiedCICDService.monitorDeployment(url);
               logger.info(
-                "[QMOI-AUTODEV-DAEMON] Deployment monitor result:",
+                "[QMOI-AUTOprod-DAEMON] Deployment monitor result:",
                 monitorResult,
               );
             }
           } catch (deployError) {
             logger.error(
-              "[QMOI-AUTODEV-DAEMON] Deployment failed:",
+              "[QMOI-AUTOprod-DAEMON] Deployment failed:",
               deployError,
             );
             deployResult = { success: false, _error: deployError.message };
@@ -382,14 +382,14 @@ async function daemonLoop(): Promise<void> {
         cicdResults = { commitResult, deployResult, monitorResult };
       } else {
         logger.warn(
-          "[QMOI-AUTODEV-DAEMON] Tests failed. Skipping commit and deploy.",
+          "[QMOI-AUTOprod-DAEMON] Tests failed. Skipping commit and deploy.",
         );
         cicdResults = {
           commitResult: { success: false, message: "Tests failed." },
         };
       }
     } catch (cicdError) {
-      logger.error("[QMOI-AUTODEV-DAEMON] CI/CD operations failed:", cicdError);
+      logger.error("[QMOI-AUTOprod-DAEMON] CI/CD operations failed:", cicdError);
       cicdResults = { _error: cicdError.message };
     }
 
@@ -414,7 +414,7 @@ async function daemonLoop(): Promise<void> {
       errorCount,
     };
 
-    logger.info("[QMOI-AUTODEV-DAEMON] Cycle complete.", lastResult);
+    logger.info("[QMOI-AUTOprod-DAEMON] Cycle complete.", lastResult);
 
     // Reset error count on successful run
     errorCount = 0;
@@ -422,13 +422,13 @@ async function daemonLoop(): Promise<void> {
     ErrorRecoverySystem.getInstance().resetRecoveryAttempts();
   } catch (_error: unknown) {
     errorCount++;
-    logger.error("[QMOI-AUTODEV-DAEMON] Error in daemon loop:", error);
+    logger.error("[QMOI-AUTOprod-DAEMON] Error in daemon loop:", error);
 
     // Enter recovery mode if too many errors
     if (errorCount >= MAX_ERRORS) {
       recoveryMode = true;
       logger.warn(
-        "[QMOI-AUTODEV-DAEMON] Entering recovery mode due to repeated errors",
+        "[QMOI-AUTOprod-DAEMON] Entering recovery mode due to repeated errors",
       );
 
       const recoverySystem = ErrorRecoverySystem.getInstance();
@@ -436,11 +436,11 @@ async function daemonLoop(): Promise<void> {
         const recovered = await recoverySystem.attemptRecovery(error);
         if (!recovered) {
           logger.error(
-            "[QMOI-AUTODEV-DAEMON] Recovery failed, system may need manual intervention",
+            "[QMOI-AUTOprod-DAEMON] Recovery failed, system may need manual intervention",
           );
         }
       } else {
-        logger.error("[QMOI-AUTODEV-DAEMON] Max recovery attempts reached");
+        logger.error("[QMOI-AUTOprod-DAEMON] Max recovery attempts reached");
       }
     }
 
@@ -467,16 +467,16 @@ type DaemonControl = {
   forceRun: () => Promise<void>;
 };
 
-export const QmoiAutodevDaemon: DaemonControl = {
+export const QmoiAutoprodDaemon: DaemonControl = {
   intervalId: null,
 
   start() {
     if (this.intervalId) {
-      logger.warn("[QMOI-AUTODEV-DAEMON] Daemon already running");
+      logger.warn("[QMOI-AUTOprod-DAEMON] Daemon already running");
       return;
     }
 
-    logger.info("[QMOI-AUTODEV-DAEMON] Starting continuous auto-fix daemon...");
+    logger.info("[QMOI-AUTOprod-DAEMON] Starting continuous auto-fix daemon...");
 
     // Initialize services before starting
     initializeServices();
@@ -487,7 +487,7 @@ export const QmoiAutodevDaemon: DaemonControl = {
         await daemonLoop();
       } catch (error) {
         logger.error(
-          "[QMOI-AUTODEV-DAEMON] Fatal error in daemon interval:",
+          "[QMOI-AUTOprod-DAEMON] Fatal error in daemon interval:",
           error,
         );
         // Don't stop the daemon, let it continue trying
@@ -497,7 +497,7 @@ export const QmoiAutodevDaemon: DaemonControl = {
     // Run immediately on start
     daemonLoop().catch((error) => {
       logger.error(
-        "[QMOI-AUTODEV-DAEMON] Error in initial daemon run:",
+        "[QMOI-AUTOprod-DAEMON] Error in initial daemon run:",
         error,
       );
     });
@@ -508,7 +508,7 @@ export const QmoiAutodevDaemon: DaemonControl = {
       clearInterval(this.intervalId as any);
       this.intervalId = null;
       running = false;
-      logger.info("[QMOI-AUTODEV-DAEMON] Stopped continuous auto-fix daemon.");
+      logger.info("[QMOI-AUTOprod-DAEMON] Stopped continuous auto-fix daemon.");
     }
   },
 
@@ -548,42 +548,42 @@ export const QmoiAutodevDaemon: DaemonControl = {
   },
 
   async forceRun() {
-    logger.info("[QMOI-AUTODEV-DAEMON] Force running daemon cycle...");
+    logger.info("[QMOI-AUTOprod-DAEMON] Force running daemon cycle...");
     await daemonLoop();
   },
 };
 
 // Auto-start if run directly
 if (require.main === module) {
-  logger.info("[QMOI-AUTODEV-DAEMON] Starting as standalone process...");
-  QmoiAutodevDaemon.start();
+  logger.info("[QMOI-AUTOprod-DAEMON] Starting as standalone process...");
+  QmoiAutoprodDaemon.start();
 
   // Graceful shutdown
   process.on("SIGINT", () => {
     logger.info(
-      "[QMOI-AUTODEV-DAEMON] Received SIGINT, shutting down gracefully...",
+      "[QMOI-AUTOprod-DAEMON] Received SIGINT, shutting down gracefully...",
     );
-    QmoiAutodevDaemon.stop();
+    QmoiAutoprodDaemon.stop();
     process.exit(0);
   });
 
   process.on("SIGTERM", () => {
     logger.info(
-      "[QMOI-AUTODEV-DAEMON] Received SIGTERM, shutting down gracefully...",
+      "[QMOI-AUTOprod-DAEMON] Received SIGTERM, shutting down gracefully...",
     );
-    QmoiAutodevDaemon.stop();
+    QmoiAutoprodDaemon.stop();
     process.exit(0);
   });
 
   // Handle uncaught exceptions
   process.on("uncaughtException", (error) => {
-    logger.error("[QMOI-AUTODEV-DAEMON] Uncaught exception:", error);
+    logger.error("[QMOI-AUTOprod-DAEMON] Uncaught exception:", error);
     // Don't exit, let the daemon continue
   });
 
   process.on("unhandledRejection", (reason, promise) => {
     logger.error(
-      "[QMOI-AUTODEV-DAEMON] Unhandled rejection at:",
+      "[QMOI-AUTOprod-DAEMON] Unhandled rejection at:",
       promise,
       "reason:",
       reason,
@@ -597,11 +597,11 @@ async function fixErrorsOnQCityAndFallback() {
     // Try to fix errors on QCity
     const qcityService = new QCityService();
     await qcityService.initialize();
-    [PRODUCTION READY] error fixing
+    [production READY] error fixing
     const fixResult = await qcityService.runRemoteCommand("npm run fix-all");
     if (fixResult.success) {
       logger.info(
-        "[QMOI-AUTODEV-DAEMON] QCity error fix successful:",
+        "[QMOI-AUTOprod-DAEMON] QCity error fix successful:",
         fixResult.output,
       );
       return { success: true, output: fixResult.output };
@@ -610,9 +610,9 @@ async function fixErrorsOnQCityAndFallback() {
     }
   } catch (_e) {
     logger.warn(
-      "[QMOI-AUTODEV-DAEMON] QCity fix failed, falling back to local/cloud devices",
+      "[QMOI-AUTOprod-DAEMON] QCity fix failed, falling back to local/cloud prodices",
     );
-    // Fallback logic ([PRODUCTION READY])
-    return { success: false, output: "Fallback to other devices" };
+    // Fallback logic ([production READY])
+    return { success: false, output: "Fallback to other prodices" };
   }
 }

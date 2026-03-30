@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "Qstore - QMOI App Store (skv)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -18,7 +18,7 @@ title: "Qstore - QMOI App Store (skv)"
 
 ## Overview
 
-Qstore is the central hub for all QMOI (skv) apps, updates, and downloads. Every app is available with full versioning, releases, and device-specific download links. Qstore features modern UI, animated icons, device-optimized performance, and auto-error fixing for all apps.
+Qstore is the central hub for all QMOI (skv) apps, updates, and downloads. Every app is available with full versioning, releases, and prodice-specific download links. Qstore features modern UI, animated icons, prodice-optimized performance, and auto-error fixing for all apps.
 
 - Qmoi QVillage and all app UIs include a direct "Open Qstore" action button.
 - Qstore supports global domain reach: `https://Qstore.qmoi.ai`, `https://QQdownload.qmoi.ai`, and fallback mirror domains.
@@ -28,21 +28,21 @@ Qstore is the central hub for all QMOI (skv) apps, updates, and downloads. Every
 
 ## App Listing
 
-| Icon | Name (skv)         | Version | Device Downloads (global CDN)                                                                                                                                                                                                                                      | Releases | UI/UX                                | Customer Care             | Notes                 |
+| Icon | Name (skv)         | Version | prodice Downloads (global CDN)                                                                                                                                                                                                                                      | Releases | UI/UX                                | Customer Care             | Notes                 |
 | ---- | ------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | ------------------------------------ | ------------------------- | --------------------- |
 | 🌐   | Qbrowser (skv)     | 1.2.0   | [Win](https://Qstore.qmoi.ai/downloads/qbrowser/windows.exe) [Mac](https://Qstore.qmoi.ai/downloads/qbrowser/mac.dmg) [Android](https://Qstore.qmoi.ai/downloads/qbrowser/android.apk) [iOS](https://Qstore.qmoi.ai/downloads/qbrowser/ios.ipa) [Linux](https://Qstore.qmoi.ai/downloads/qbrowser/linux.appimage) | v1.2.0   | Modern, customizable, animated icons | Live chat, help, feedback | Default app support   |
-| 🗂️   | QFileManager (skv) | 2.0.1   | [Win](https://QQdownload.qmoi.ai/apps/qfilemanager/windows.exe) [Mac](https://QQdownload.qmoi.ai/apps/qfilemanager/mac.dmg) [Android](https://QQdownload.qmoi.ai/apps/qfilemanager/android.apk) [iOS](https://QQdownload.qmoi.ai/apps/qfilemanager/ios.ipa) [Linux](https://QQdownload.qmoi.ai/apps/qfilemanager/linux.appimage) | v2.0.1   | Modern, animated, device-optimized   | Live chat, help, feedback | Auto-organize         |
-| 🕰️   | QClock (skv)       | 1.1.0   | [Win](https://QQdownload.qmoi.ai/apps/qclock/windows.exe) [Mac](https://QQdownload.qmoi.ai/apps/qclock/mac.dmg) [Android](https://QQdownload.qmoi.ai/apps/qclock/android.apk) [iOS](https://QQdownload.qmoi.ai/apps/qclock/ios.ipa) [Linux](https://QQdownload.qmoi.ai/apps/qclock/linux.appimage)                               | v1.1.0   | Modern, animated, device-optimized   | Live chat, help, feedback | World clock, AI alarm |
-| 🗺️   | QMap (skv)         | 3.0.0   | [Win](https://QQdownload.qmoi.ai/apps/qmap/windows.exe) [Mac](https://QQdownload.qmoi.ai/apps/qmap/mac.dmg) [Android](https://QQdownload.qmoi.ai/apps/qmap/android.apk) [iOS](https://QQdownload.qmoi.ai/apps/qmap/ios.ipa) [Linux](https://QQdownload.qmoi.ai/apps/qmap/linux.appimage)                                         | v3.0.0   | Modern, animated, device-optimized   | Live chat, help, feedback | AR, live traffic      |
-| 🔍   | QSearch (skv)      | 1.0.5   | [Win](https://QQdownload.qmoi.ai/apps/qsearch/windows.exe) [Mac](https://QQdownload.qmoi.ai/apps/qsearch/mac.dmg) [Android](https://QQdownload.qmoi.ai/apps/qsearch/android.apk) [iOS](https://QQdownload.qmoi.ai/apps/qsearch/ios.ipa) [Linux](https://QQdownload.qmoi.ai/apps/qsearch/linux.appimage)                          | v1.0.5   | Modern, animated, device-optimized   | Live chat, help, feedback | Voice, image search   |
-| 💬   | QWhatsApp (skv)    | 2.2.0   | [Win](https://QQdownload.qmoi.ai/apps/qwhatsapp/windows.exe) [Mac](https://QQdownload.qmoi.ai/apps/qwhatsapp/mac.dmg) [Android](https://QQdownload.qmoi.ai/apps/qwhatsapp/android.apk) [iOS](https://QQdownload.qmoi.ai/apps/qwhatsapp/ios.ipa) [Linux](https://QQdownload.qmoi.ai/apps/qwhatsapp/linux.appimage)                | v2.2.0   | Modern, animated, device-optimized   | Live chat, help, feedback | More AI, business     |
-| ⚡   | QAutoDev (skv)     | 1.0.0   | [Win](https://QQdownload.qmoi.ai/apps/qautodev/windows.exe) [Mac](https://QQdownload.qmoi.ai/apps/qautodev/mac.dmg) [Android](https://QQdownload.qmoi.ai/apps/qautodev/android.apk) [iOS](https://QQdownload.qmoi.ai/apps/qautodev/ios.ipa) [Linux](https://QQdownload.qmoi.ai/apps/qautodev/linux.appimage)                     | v1.0.0   | Modern, animated, device-optimized   | Live chat, help, feedback | More automation       |
+| 🗂️   | QFileManager (skv) | 2.0.1   | [Win](https://QQdownload.qmoi.ai/apps/qfilemanager/windows.exe) [Mac](https://QQdownload.qmoi.ai/apps/qfilemanager/mac.dmg) [Android](https://QQdownload.qmoi.ai/apps/qfilemanager/android.apk) [iOS](https://QQdownload.qmoi.ai/apps/qfilemanager/ios.ipa) [Linux](https://QQdownload.qmoi.ai/apps/qfilemanager/linux.appimage) | v2.0.1   | Modern, animated, prodice-optimized   | Live chat, help, feedback | Auto-organize         |
+| 🕰️   | QClock (skv)       | 1.1.0   | [Win](https://QQdownload.qmoi.ai/apps/qclock/windows.exe) [Mac](https://QQdownload.qmoi.ai/apps/qclock/mac.dmg) [Android](https://QQdownload.qmoi.ai/apps/qclock/android.apk) [iOS](https://QQdownload.qmoi.ai/apps/qclock/ios.ipa) [Linux](https://QQdownload.qmoi.ai/apps/qclock/linux.appimage)                               | v1.1.0   | Modern, animated, prodice-optimized   | Live chat, help, feedback | World clock, AI alarm |
+| 🗺️   | QMap (skv)         | 3.0.0   | [Win](https://QQdownload.qmoi.ai/apps/qmap/windows.exe) [Mac](https://QQdownload.qmoi.ai/apps/qmap/mac.dmg) [Android](https://QQdownload.qmoi.ai/apps/qmap/android.apk) [iOS](https://QQdownload.qmoi.ai/apps/qmap/ios.ipa) [Linux](https://QQdownload.qmoi.ai/apps/qmap/linux.appimage)                                         | v3.0.0   | Modern, animated, prodice-optimized   | Live chat, help, feedback | AR, live traffic      |
+| 🔍   | QSearch (skv)      | 1.0.5   | [Win](https://QQdownload.qmoi.ai/apps/qsearch/windows.exe) [Mac](https://QQdownload.qmoi.ai/apps/qsearch/mac.dmg) [Android](https://QQdownload.qmoi.ai/apps/qsearch/android.apk) [iOS](https://QQdownload.qmoi.ai/apps/qsearch/ios.ipa) [Linux](https://QQdownload.qmoi.ai/apps/qsearch/linux.appimage)                          | v1.0.5   | Modern, animated, prodice-optimized   | Live chat, help, feedback | Voice, image search   |
+| 💬   | QWhatsApp (skv)    | 2.2.0   | [Win](https://QQdownload.qmoi.ai/apps/qwhatsapp/windows.exe) [Mac](https://QQdownload.qmoi.ai/apps/qwhatsapp/mac.dmg) [Android](https://QQdownload.qmoi.ai/apps/qwhatsapp/android.apk) [iOS](https://QQdownload.qmoi.ai/apps/qwhatsapp/ios.ipa) [Linux](https://QQdownload.qmoi.ai/apps/qwhatsapp/linux.appimage)                | v2.2.0   | Modern, animated, prodice-optimized   | Live chat, help, feedback | More AI, business     |
+| ⚡   | QAutoprod (skv)     | 1.0.0   | [Win](https://QQdownload.qmoi.ai/apps/qautoprod/windows.exe) [Mac](https://QQdownload.qmoi.ai/apps/qautoprod/mac.dmg) [Android](https://QQdownload.qmoi.ai/apps/qautoprod/android.apk) [iOS](https://QQdownload.qmoi.ai/apps/qautoprod/ios.ipa) [Linux](https://QQdownload.qmoi.ai/apps/qautoprod/linux.appimage)                     | v1.0.0   | Modern, animated, prodice-optimized   | Live chat, help, feedback | More automation       |
 
-## Modern UI & Device Optimization
+## Modern UI & prodice Optimization
 
-- Qstore features a modern, animated UI with customizable themes, light/dark mode, and device-optimized performance.
-- All apps are tested for speed, efficiency, and complete device impact.
-- Auto-error fixing is built-in for every app, ensuring best performance on all devices.
+- Qstore features a modern, animated UI with customizable themes, light/dark mode, and prodice-optimized performance.
+- All apps are tested for speed, efficiency, and complete prodice impact.
+- Auto-error fixing is built-in for every app, ensuring best performance on all prodices.
 
 ## Customer Care & Master Controls
 

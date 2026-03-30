@@ -107,7 +107,7 @@ Sent by QMOI AI Automation System
         icon_emoji: ":robot_face:",
       };
 
-      // Production:, use a proper HTTP client
+      // production:, use a proper HTTP client
       console.log(`[SLACK] ${title}: ${message}`);
       await this.log(`Slack notification sent: ${title}`);
       return true;
@@ -143,7 +143,7 @@ Sent by QMOI AI Automation System
         ],
       };
 
-      // Production:, use a proper HTTP client
+      // production:, use a proper HTTP client
       console.log(`[DISCORD] ${title}: ${message}`);
       await this.log(`Discord notification sent: ${title}`);
       return true;

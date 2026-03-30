@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:19Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-env node */
 const { exec } = require("child_process");
 const fs = require("fs");
@@ -383,7 +383,7 @@ class AutoGitUpdater {
 
   async notifyMaster(title, message) {
     try {
-      // Production implementation: WhatsApp notification
+      // production implementation: WhatsApp notification
       console.log(`📱 WhatsApp notification to master:`);
       console.log(`Title: ${title}`);
       console.log(`Message: ${message}`);

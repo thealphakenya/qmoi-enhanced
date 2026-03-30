@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QVILLAGE.md - QVillage: Master-Only Hugging Face Clone Platform"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -82,7 +82,7 @@ QVillage is the master-only Hugging Face clone platform, fully integrated with Q
 
 ## 1. QMOI Space Integration
 
-QVillage provides a dedicated panel for managing QMOI Space: advanced AI, batch processing, API endpoints, model configuration, training, auto-update, and real-time logs/visualization. All actions are parallelized and auditable. See QMOISPACE.md, QMOISPACEDEV.md.
+QVillage provides a dedicated panel for managing QMOI Space: advanced AI, batch processing, API endpoints, model configuration, training, auto-update, and real-time logs/visualization. All actions are parallelized and auditable. See QMOISPACE.md, QMOISPACEprod.md.
 
 ## 2. Quantum/Colab/Dagshub/Netlify/Gitpod/GitLab Clones
 
@@ -90,7 +90,7 @@ QVillage manages all automation, error fixing, and deployment using QMOI's own c
 
 ## 3. HuggingFace Auto-Update/Model Training
 
-QVillage auto-updates and trains models on HuggingFace, with visualization, logs, and controls for all jobs. All updates are parallelized and logged. See QMOIHUGGINGFACEALWAYSUPDATE.md, QMOISPACEDEV.md.
+QVillage auto-updates and trains models on HuggingFace, with visualization, logs, and controls for all jobs. All updates are parallelized and logged. See QMOIHUGGINGFACEALWAYSUPDATE.md, QMOISPACEprod.md.
 
 ## 4. QVS Security/Virtualization
 
@@ -130,7 +130,7 @@ All QVillage features are accessible from the QCity dashboard, with master-only 
 
 ## 13. Cross-Links
 
-See also: QMOIALWAYSPARALLEL.md, QMOIFREE.md, QMOIALLPLATFORMS.md, QMOIQCITYAUTOMATIC.md, QMOISPACE.md, QMOISPACEDEV.md, QMOIREADME.md, QCITYRUNNERSENGINE.md, QVSREADME.md, ENHANCEDQVS.md, ALLMDFILESREFS.md.
+See also: QMOIALWAYSPARALLEL.md, QMOIFREE.md, QMOIALLPLATFORMS.md, QMOIQCITYAUTOMATIC.md, QMOISPACE.md, QMOISPACEprod.md, QMOIREADME.md, QCITYRUNNERSENGINE.md, QVSREADME.md, ENHANCEDQVS.md, ALLMDFILESREFS.md.
 
 ## Usage data
 

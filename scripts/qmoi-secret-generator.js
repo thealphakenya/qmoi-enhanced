@@ -21,7 +21,7 @@ function isWeakSecret(value) {
     !value ||
     value.length < 16 ||
     value === "changeme" ||
-    value === "// Production implementation required:-key"
+    value === "// production implementation required:-key"
   );
 }
 

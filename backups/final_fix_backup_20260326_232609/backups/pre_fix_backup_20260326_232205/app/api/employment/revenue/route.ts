@@ -72,9 +72,9 @@ function getMpesaCredentials() {
   const consumerKey = process.env.MPESA_CONSUMER_KEY;
   const consumerSecret = process.env.MPESA_CONSUMER_SECRET;
   const shortcode = process.env.MPESA_SHORTCODE;
-  const environment = process.env.MPESA_ENVIRONMENT || "sandbox";
+  const environment = process.env.MPESA_ENVIRONMENT || "production";
 
-  // Production, all credentials must be provided
+  // production, all credentials must be provided
   if (
     environment === "production" &&
     (!consumerKey || !consumerSecret || !shortcode)
@@ -145,7 +145,7 @@ async function generateMicrotaskRevenue(
     const userPayment = taskData.reward || 0;
     const qmoiProfit = clientPayment - userPayment;
 
-    // Production, would call real payment processor
+    // production, would call real payment processor
     logger.info("
       title: taskData.title,
       qmoiProfit,
@@ -285,7 +285,7 @@ async function addToMpesaAccount(amount: number, description: string) {
     const mpesaUrl = `https://${
       credentials.environment === "production"
         ? "api.safaricom.co.ke"
-        : "sandbox.safaricom.co.ke"
+        : "production.safaricom.co.ke"
     }/mpesa/c2b/v1/
 
     const response = await fetch(mpesaUrl, {

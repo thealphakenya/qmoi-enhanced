@@ -23,7 +23,7 @@ export const runtime = "nodejs";
  * - Quiz: Language proficiency quizzes
  * - Pronunciation-Check: Verify pronunciation
  *
- * Production Implementation Checklist:
+ * production Implementation Checklist:
  * 1. Translation: Integrate Google Translate API or similar
  * 2. Speech Services: Use Google Cloud Speech-to-Text and Text-to-Speech
  * 3. Language Detection: Use textcat or similar library
@@ -69,7 +69,7 @@ export default async function handler(
           }
           return _res.status(501).json({
             _status: "NOT_IMPLEMENTED",
-            _message: "Translation API not yet implemented. Product design in progress.",
+            _message: "Translation API not yet implemented. product design in progress.",
             text,
             sourceLanguage: sourceLanguage || "auto",
             targetLanguage,
@@ -87,7 +87,7 @@ export default async function handler(
           }
           return _res.status(501).json({
             _status: "NOT_IMPLEMENTED",
-            _message: "Speech-to-text API not yet implemented. Product design in progress.",
+            _message: "Speech-to-text API not yet implemented. product design in progress.",
             audioUrl,
             language: language || "en",
             transcript: null,
@@ -105,7 +105,7 @@ export default async function handler(
           }
           return _res.status(501).json({
             _status: "NOT_IMPLEMENTED",
-            _message: "Text-to-speech API not yet implemented. Product design in progress.",
+            _message: "Text-to-speech API not yet implemented. product design in progress.",
             text,
             language: language || "en",
             voice: voice || "default",
@@ -123,7 +123,7 @@ export default async function handler(
           }
           return _res.status(501).json({
             _status: "NOT_IMPLEMENTED",
-            _message: "Language detection API not yet implemented. Product design in progress.",
+            _message: "Language detection API not yet implemented. product design in progress.",
             text: text.substring(0, 100),
             detectedLanguage: null,
             confidence: 0,
@@ -140,7 +140,7 @@ export default async function handler(
           }
           return _res.status(501).json({
             _status: "NOT_IMPLEMENTED",
-            _message: "Language lessons API not yet implemented. Product design in progress.",
+            _message: "Language lessons API not yet implemented. product design in progress.",
             language,
             level,
             lessonId: null,
@@ -159,7 +159,7 @@ export default async function handler(
           }
           return _res.status(501).json({
             _status: "NOT_IMPLEMENTED",
-            _message: "Language quizzes API not yet implemented. Product design in progress.",
+            _message: "Language quizzes API not yet implemented. product design in progress.",
             language,
             level,
             quizId: null,
@@ -178,7 +178,7 @@ export default async function handler(
           }
           return _res.status(501).json({
             _status: "NOT_IMPLEMENTED",
-            _message: "Pronunciation check API not yet implemented. Product design in progress.",
+            _message: "Pronunciation check API not yet implemented. product design in progress.",
             language: language || "en",
             targetText,
             pronunciationScore: 0,

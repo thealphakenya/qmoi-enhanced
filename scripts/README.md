@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 Codemod scripts
 
 - `convert-any-unused.js` — a small codemod that:
@@ -35,7 +35,7 @@ Commands (npm/yarn):
 - `yarn trading:genkey` — generate Bitget RSA keypair and write to `secrets/` with secure perms.
 - `yarn trading:publicip` — fetch and print your public IP using Node `fetch` or a Python fallback.
 - `yarn trading:check` — run both checks and auto-generate keys if included; exits non-zero on failure.
-- `yarn trading:start` — same as `trading:check` ([PRODUCTION READY] to start automation logic).
+- `yarn trading:start` — same as `trading:check` ([production READY] to start automation logic).
 
 Notes:
 

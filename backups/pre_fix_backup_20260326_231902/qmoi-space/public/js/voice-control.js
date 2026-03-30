@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 /**
  * voice-control.js: Voice control logic for QMOI Space
  * Integrates Web Speech API with backend voice/AI services
@@ -45,13 +45,13 @@ class VoiceControlManager {
     const voiceCancel = document.getElementById("voice-cancel");
 
     if (voiceToggle) {
-      voiceToggle.addEventListener("click", () => this.toggleListening());
+      voiceToggle.adprodentListener("click", () => this.toggleListening());
     }
     if (voiceStop) {
-      voiceStop.addEventListener("click", () => this.stopListening());
+      voiceStop.adprodentListener("click", () => this.stopListening());
     }
     if (voiceCancel) {
-      voiceCancel.addEventListener("click", () => this.cancelListening());
+      voiceCancel.adprodentListener("click", () => this.cancelListening());
     }
   }
 
@@ -185,7 +185,7 @@ class VoiceControlManager {
 
 // Initialize on DOM ready
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => {
+  document.adprodentListener("DOMContentLoaded", () => {
     window.voiceControlManager = new VoiceControlManager();
   });
 } else {

@@ -4,7 +4,7 @@ import crypto from 'crypto';
 /**
  * WebAuthn Registration Options Endpoint
  * Initiates biometric registration process by providing options to client
- * Client then uses this to create a credential with the device's biometric sensor
+ * Client then uses this to create a credential with the prodice's biometric sensor
  */
 export async function POST(request: NextRequest) {
   try {

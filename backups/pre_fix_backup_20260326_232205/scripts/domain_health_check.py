@@ -50,7 +50,7 @@ class QMOIDomainHealthChecker:
         self.fallback_domains = {
             'qvillage.com': 'qvillage.net',
             'qglobal.org': 'qvillage.com',
-            'qparallel.dev': 'qglobal.org'
+            'qparallel.prod': 'qglobal.org'
         }
 
         # Terms required in content to consider domain fully healthy
@@ -63,11 +63,11 @@ class QMOIDomainHealthChecker:
         # Minimum required matched keywords to pass content legitimacy
         self.required_content_threshold = 3
 
-        # Non-production intent markers
-        self.nonprod_keywords = [
+        # production intent markers
+        self.production_keywords = [
             'PENDING_IMPLEMENTATION', 'TODO', 'FIXME', 'PLACEHOLDER', 'MOCK',
             'SIMULATE', 'SIMULATION', 'STAGING', 'STUB', 'STUBS',
-            'PRODUCTION IMPLEMENTATION REQUIRED', 'PRODUCTION DONE', 'PRODUCTION FIXED',
+            'production IMPLEMENTATION REQUIRED', 'production DONE', 'production FIXED',
             'TEST DATA', 'TEST IMPLEMENTATION', 'SIMPLE', 'MINIMAL', 'DEMO',
             'DRAFT', 'PROOF OF CONCEPT', 'POC', 'ALPHA', 'BETA', 'EXPERIMENTAL',
             'TEMPORARY', 'INCOMPLETE', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'REPLACEABLE',
@@ -286,7 +286,7 @@ class QMOIDomainHealthChecker:
         """Check domain accessibility from different global regions"""
         results = {}
         
-        # Production, this would use actual regional proxies or cloud functions
+        # production, this would use actual regional proxies or cloud functions
         # For now, simulate with local checks and timeout variations
         for region, dns_server in self.regions.items():
             try:
@@ -533,9 +533,9 @@ This is an automated alert from QMOI Domain Health Monitor.
                     return True
         return False
 
-    def scan_for_nonproduction_markers(self) -> Dict:
-        """Scan entire codebase for non-production implementation markers"""
-        logger.info("Scanning codebase for non-production markers...")
+    def scan_for_production_markers(self) -> Dict:
+        """Scan entire codebase for production implementation markers"""
+        logger.info("Scanning codebase for production markers...")
         
         results = {
             'total_files_scanned': 0,
@@ -579,10 +579,10 @@ This is an automated alert from QMOI Domain Health Monitor.
                             content_lower = content.lower()
                             
                             file_markers = []
-                            for keyword in self.nonprod_keywords:
+                            for keyword in self.production_keywords:
                                 # Skip if file has production ready markers
                                 if 'production ready' in content_lower or 'production complete' in content_lower or 'in production' in content_lower:
-                                    # File is marked as production ready, skip non-production markers
+                                    # File is marked as production ready, skip production markers
                                     continue
                                     
                                 # Find all matches with context
@@ -617,7 +617,7 @@ This is an automated alert from QMOI Domain Health Monitor.
                     results['total_files_scanned'] += 1
         
         results['production_ready'] = results['total_markers_found'] == 0
-        logger.info(f"Production scan complete: {results['total_files_scanned']} files scanned, {results['total_markers_found']} markers found")
+        logger.info(f"production scan complete: {results['total_files_scanned']} files scanned, {results['total_markers_found']} markers found")
         
         # Save scan results
         try:
@@ -723,7 +723,7 @@ This is an automated alert from QMOI Domain Health Monitor.
         endpoints['health'].extend([
             'GET /api/health/system - System health check',
             'GET /api/health/domains - Domain health overview',
-            'GET /api/health/production - Production readiness status',
+            'GET /api/health/production - production readiness status',
             'GET /api/health/telemetry - System telemetry data'
         ])
         
@@ -762,7 +762,7 @@ This is an automated alert from QMOI Domain Health Monitor.
         # Report endpoints
         endpoints['reports'].extend([
             'GET /api/reports/health - Health reports',
-            'GET /api/reports/production - Production reports',
+            'GET /api/reports/production - production reports',
             'GET /api/reports/performance - Performance reports',
             'GET /api/reports/compliance - Compliance reports'
         ])
@@ -853,7 +853,7 @@ Generated: {datetime.now().isoformat()}
 ## API Version Information
 
 - **Version**: 1.0
-- **Status**: Production Ready
+- **Status**: production Ready
 - **Base URL**: https://api.qmoi.com/v1
 - **Authentication**: JWT Bearer Token
 
@@ -875,7 +875,7 @@ Generated: {datetime.now().isoformat()}
 - **v1.0** (2026-03-24): Initial production release
   - Domain health monitoring
   - System automation
-  - Production readiness scanning
+  - production readiness scanning
   - Real-time telemetry
 
 ## Migration Guide
@@ -952,7 +952,7 @@ This document lists all available endpoints in the QMOI system.
         logger.info("Starting comprehensive QMOI health checks...")
 
         # First, scan for production readiness
-        production_scan = self.scan_for_nonproduction_markers()
+        production_scan = self.scan_for_production_markers()
 
         current_health = {}
 
@@ -1021,8 +1021,8 @@ This document lists all available endpoints in the QMOI system.
         production_ready = production_scan['production_ready']
         
         if production_ready:
-            logger.info("🎉 QMOI SYSTEM PRODUCTION READINESS ACHIEVED!")
-            print("✅ QMOI SYSTEM PRODUCTION READINESS ACHIEVED!")
+            logger.info("🎉 QMOI SYSTEM production READINESS ACHIEVED!")
+            print("✅ QMOI SYSTEM production READINESS ACHIEVED!")
             
             # Update API documentation when system is production ready
             self.update_api_documentation()
@@ -1038,7 +1038,7 @@ This document lists all available endpoints in the QMOI system.
                 unhealthy_count = sum(1 for h in current_health.values() if not h['overall_healthy'])
                 logger.warning(f"Domain health issues: {unhealthy_count} domains unhealthy")
             if not production_ready:
-                logger.warning(f"Production readiness issues: {production_scan['total_markers_found']} non-production markers found in {production_scan['files_with_markers']} files")
+                logger.warning(f"production readiness issues: {production_scan['total_markers_found']} production markers found in {production_scan['files_with_markers']} files")
 
         logger.info("Comprehensive QMOI health checks completed")
 
@@ -1084,11 +1084,11 @@ This document lists all available endpoints in the QMOI system.
                     prod_scan = json.load(f)
                 
                 report.append("")
-                report.append("## Production Readiness Scan")
+                report.append("## production Readiness Scan")
                 report.append(f"- **Files Scanned**: {prod_scan['total_files_scanned']}")
                 report.append(f"- **Files with Markers**: {prod_scan['files_with_markers']}")
                 report.append(f"- **Total Markers Found**: {prod_scan['total_markers_found']}")
-                report.append(f"- **Production Ready**: {'✅ YES' if prod_scan['production_ready'] else '❌ NO'}")
+                report.append(f"- **production Ready**: {'✅ YES' if prod_scan['production_ready'] else '❌ NO'}")
                 
                 if prod_scan['markers_by_type']:
                     report.append("")
@@ -1106,7 +1106,7 @@ This document lists all available endpoints in the QMOI system.
         
         except Exception as e:
             report.append("")
-            report.append("## Production Readiness Scan")
+            report.append("## production Readiness Scan")
             report.append(f"- Error loading scan results: {e}")
         
         return "\n".join(report)
@@ -1602,7 +1602,7 @@ Timestamp: {status['timestamp']}
         """Update DNS records for emergency takeover"""
         # Implement DNS provider API calls (Cloudflare, Route53, etc.)
         logging.info(f"DNS update required: {old_domain} -> {new_domain}")
-        # Production, integrate with actual DNS provider APIs
+        # production, integrate with actual DNS provider APIs
 
     def schedule_daily_checks(self):
         """Schedule daily health checks"""

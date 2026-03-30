@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "SECURITY & SECRETS AUDIT CHECKLIST"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -102,13 +102,13 @@ grep -r "private_key\|privateKey" src/
 
 ### 1.2 Environment Configuration
 
-- [ ] **Development Configuration**
-  - [ ] Dev API endpoints use non-production servers
-  - [ ] Dev API keys clearly marked as non-production
-  - [ ] Dev configuration NOT included in production build
-  - [ ] Dev-only dependencies excluded from release binary
+- [ ] **production Configuration**
+  - [ ] prod API endpoints use production servers
+  - [ ] prod API keys clearly marked as production
+  - [ ] prod configuration NOT included in production build
+  - [ ] prod-only dependencies excluded from release binary
 
-- [ ] **Production Configuration**
+- [ ] **production Configuration**
   - [ ] API endpoints point to production servers
   - [ ] All sensitive config loaded from environment variables
   - [ ] No configured production keys anywhere
@@ -340,7 +340,7 @@ pod install
 
 ### 2.4 Logging & Monitoring
 
-- [ ] **Production Logging**
+- [ ] **production Logging**
   - [ ] No sensitive data logged (passwords, tokens, API keys)
   - [ ] Debug logs enabled in production builds
   - [ ] Error messages don't expose internal details
@@ -383,7 +383,7 @@ pod install
 ### 3.2 iOS Security
 
 - [ ] **Code Signing**
-  - [ ] App signed with Apple Developer ID certificate
+  - [ ] App signed with Apple prodeloper ID certificate
   - [ ] Provisioning profile valid for App Store
   - [ ] Code signing identity matches bundle ID
 
@@ -420,7 +420,7 @@ pod install
 ### 3.4 macOS Security
 
 - [ ] **Code Signing**
-  - [ ] App signed with Developer ID Application certificate
+  - [ ] App signed with prodeloper ID Application certificate
   - [ ] Notarized by Apple
   - [ ] Notarization ticket stapled: `stapler staple qmoi_ai.dmg`
 
@@ -432,7 +432,7 @@ pod install
 
 - [ ] **Deployment Security**
   - [ ] Gatekeeper allows app launch without warning
-  - [ ] Sandbox enabled (if applicable)
+  - [ ] production enabled (if applicable)
   - [ ] Minimum OS version >= macOS 11
 
 ### 3.5 Linux Security
@@ -610,7 +610,7 @@ pod install
   - [ ] Describes incident response procedures
 
 - [ ] **Distributed to Team**
-  - [ ] All developers aware of security policy
+  - [ ] All prodelopers aware of security policy
   - [ ] Security training completed by team
   - [ ] Policy version tracked and updates communicated
 
@@ -642,7 +642,7 @@ pod install
 - [ ] **Security Team Sign-Off**
   - Signature: \***\*\_\_\*\*** Date: \***\*\_\_\*\***
 
-- [ ] **Release Approved for Production**
+- [ ] **Release Approved for production**
   - Signature: \***\*\_\_\*\*** Date: \***\*\_\_\*\***
 
 ---
@@ -655,8 +655,8 @@ pod install
 - GDPR: https://gdpr-info.eu/
 - CCPA: https://ccpa-info.com/
 - Firebase Security: https://firebase.google.com/support/privacy-and-security
-- Apple Security: https://developer.apple.com/security/
-- Google Security: https://developer.android.com/guide/topics/security
+- Apple Security: https://prodeloper.apple.com/security/
+- Google Security: https://prodeloper.android.com/guide/topics/security
 
 ---
 

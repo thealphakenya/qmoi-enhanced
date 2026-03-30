@@ -51,7 +51,7 @@
       "status": "deployed"
     },
     {
-      "domain": "qparallel.dev",
+      "domain": "qparallel.prod",
       "records": 1,
       "status": "deployed"
     },

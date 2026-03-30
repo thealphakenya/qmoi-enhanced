@@ -5,13 +5,13 @@
   "private": true,
   "scripts": {
     "start": "next start",
-    "dev": "next dev",
-    "dev:vite": "cd dashboard && vite",
+    "prod": "next prod",
+    "prod:vite": "cd dashboard && vite",
     "build": "next build",
     "build:vite": "cd dashboard && vite build",
     "preview:vite": "cd dashboard && vite preview",
-    "dev:[PRODUCTION READY]": "node scripts/dev-[PRODUCTION READY].js",
-    "dev:health": "./scripts/dev-healthcheck.sh",
+    "prod:[production READY]": "node scripts/prod-[production READY].js",
+    "prod:health": "./scripts/prod-healthcheck.sh",
     "lint": "eslint \"**/*.{js,ts,tsx}\" --max-warnings 0",
     "lint:fix": "eslint \"**/*.{js,ts,tsx}\" --fix",
     "format": "prettier --write .",
@@ -32,7 +32,7 @@
     "ci:test": "npm run ci:build && npm run test:flags && npm run test:auth && npm run test:authpresence && npm run test:endpoint",
     "test:quick-qmoi": "node scripts/quick_qmoi_checks.js",
     "test:qmoi-jest": "node scripts/run_qmoi_test.cjs",
-    "check:[PRODUCTION READY]s": "node scripts/enforce-no-[PRODUCTION READY]s.cjs",
+    "check:[production READY]s": "node scripts/enforce-no-[production READY]s.cjs",
     "env-setup": "node scripts/qmoi-env-setup.js",
     "diagnose:trace": "node ./scripts/diagnostics/parse_next_trace.cjs .next/trace 20",
     "trading:genkey": "node scripts/auto_trading.js --genkey",
@@ -136,7 +136,7 @@
     "winston": "^3.18.3",
     "zod": "^3.23.0"
   },
-  "devDependencies": {
+  "prodDependencies": {
     "@babel/plugin-syntax-jsx": "^7.27.1",
     "@babel/preset-env": "^7.28.5",
     "@babel/preset-react": "^7.28.5",
@@ -180,6 +180,6 @@
     "node": ">=18.0.0",
     "npm": ">=8.0.0"
   },
-  "author": "QMOI Development Team",
+  "author": "QMOI production Team",
   "license": "MIT"
 }

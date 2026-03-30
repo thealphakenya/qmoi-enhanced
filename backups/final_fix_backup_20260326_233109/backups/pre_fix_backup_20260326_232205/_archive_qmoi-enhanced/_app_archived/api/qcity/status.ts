@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 import { NextRequest } from "next/server";
 import { QCityService } from "@/scripts/services/qcity_service";
 
@@ -11,9 +11,9 @@ export async function GET(req: NextRequest) {
   const qcityService = new QCityService();
   await qcityService.initialize();
   const status = qcityService.getStatus();
-  const devices = await qcityService.getDeviceList();
+  const prodices = await qcityService.getprodiceList();
   const resources = await qcityService.getResourceStats();
-  return new Response(JSON.stringify({ status, devices, resources }), {
+  return new Response(JSON.stringify({ status, prodices, resources }), {
     headers: { "Content-Type": "application/json" },
   });
 }

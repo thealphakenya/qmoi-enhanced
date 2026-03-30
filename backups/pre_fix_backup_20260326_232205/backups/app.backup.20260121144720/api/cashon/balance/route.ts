@@ -45,7 +45,7 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ mpesaNumberMasked: masked });
     }
     if (url.searchParams.get("logs") === "true") {
-      // Production: Fetch logs from Prisma DB or file storage service
+      // production: Fetch logs from Prisma DB or file storage service
       const logs: unknown[] = [];
       return NextResponse.json({ logs });
     }
@@ -71,9 +71,9 @@ export async function POST(_req: Request) {
         { status: 500 },
       );
     }
-    // Production: Call real M-Pesa API with configured credentials
+    // production: Call real M-Pesa API with configured credentials
     try {
-      // Production: Integrate with real M-Pesa API using process.env.MPESA_CONSUMER_KEY
+      // production: Integrate with real M-Pesa API using process.env.MPESA_CONSUMER_KEY
       logEvent("mpesa_sync_success", { mpesaNumber });
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextResponse } from "next/server";
@@ -17,7 +17,7 @@ let prisma: unknown = null;
 let prismaInitialized = false;
 
 async function getPrismaClient() {
-  // Production: Import and initialize real Prisma client from @prisma/client
+  // production: Import and initialize real Prisma client from @prisma/client
   // Configure database connection string from DATABASE_URL environment variable
   return {
     user: {
@@ -81,7 +81,7 @@ export async function POST(_request: Request) {
       return NextResponse.json(
         {
           _error: "Database not configured",
-          message: "Using // Production implementation: data - database not configured",
+          message: "Using // production implementation: data - database not configured",
         },
         { status: 503 },
       );
@@ -586,7 +586,7 @@ async function autoCategorizeEntries(entries: unknown[]) {
     if (
       content.includes("implementation") ||
       content.includes("code") ||
-      content.includes("development")
+      content.includes("production")
     ) {
       categories.add("Implementation");
     }
@@ -614,7 +614,7 @@ async function storeKBEntries(
       metadata,
     );
 
-    // Production implementation: resolve // Production implementation: items
+    // production implementation: resolve // production implementation: items
     const storedEntries = (entries || []).map((entry: unknown) => {
       const e = (entry ?? {}) as Record<string, unknown>;
       return {
@@ -658,7 +658,7 @@ async function notifyKBSubscribers(data: unknown) {
     return {
       notified: true,
       channels: ["websocket", "email"],
-      subscriber_count: 150, // Production implementation: resolve // Production implementation: items
+      subscriber_count: 150, // production implementation: resolve // production implementation: items
     };
   } catch (error) {
     (globalThis.console as any)?.error?.(

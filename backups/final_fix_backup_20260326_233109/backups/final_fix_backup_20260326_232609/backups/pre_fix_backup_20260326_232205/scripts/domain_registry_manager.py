@@ -275,14 +275,14 @@ class DomainRegistry:
                 status="active"
             ),
             
-            "qparallel.dev": DomainEntry(
-                domain="qparallel.dev",
+            "qparallel.prod": DomainEntry(
+                domain="qparallel.prod",
                 type="fallback",
                 tld_variants=[],
                 fallback_chain=[],
                 regional_endpoints={
-                    "us-east": "us-east.qparallel.dev",
-                    "eu-west": "eu.qparallel.dev"
+                    "us-east": "us-east.qparallel.prod",
+                    "eu-west": "eu.qparallel.prod"
                 },
                 api_endpoints=["/api/v1"],
                 health_check_endpoints=["/health"],
@@ -353,7 +353,7 @@ class DomainRegistry:
         output_path = self.workspace_root / 'lib/qmoi' / filename
         output_path.parent.mkdir(parents=True, exist_ok=True)
         
-        ts_content = """// // Production implementation:
+        ts_content = """// // production implementation:
 /**
  * QMOI Domain Registry - Auto-Generated
  * Master registry of all QMOI domains, fallbacks, and regional endpoints

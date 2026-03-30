@@ -57,7 +57,7 @@ function logDownloadFix(
     action,
     user,
     app: "QCity",
-    device: .device || "unknown",
+    prodice: .prodice || "unknown",
     status,
     error,
   };

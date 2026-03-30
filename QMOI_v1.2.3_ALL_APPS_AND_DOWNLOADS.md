@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI v1.2.3 - Complete App & Platform Index
 
 ## All Available Apps & Downloads
@@ -34,7 +34,7 @@
 - ✅ Real-time orchestration
 - ✅ Intelligent automation
 - ✅ Offline-capable
-- ✅ Production-ready binaries
+- ✅ production-ready binaries
 - ✅ 100% validated
 
 ---
@@ -89,7 +89,7 @@
 
 ### 🏙️ QCity (v2.0.1)
 
-**Description:** QCity - Device orchestration and management package
+**Description:** QCity - prodice orchestration and management package
 
 **Download:**
 
@@ -97,10 +97,10 @@
 
 **Includes:**
 
-- ✅ Device management
+- ✅ prodice management
 - ✅ Real-time monitoring
 - ✅ Orchestration engine
-- ✅ Multi-device support
+- ✅ Multi-prodice support
 - ✅ Auto-healing
 - ✅ Cloud integration
 
@@ -117,7 +117,7 @@
 | **Total Artifacts**    | 40+                 |
 | **Total Size**         | ~2.5 GB             |
 | **Validation Success** | 100%                |
-| **Build Status**       | ✅ Production Ready |
+| **Build Status**       | ✅ production Ready |
 
 ---
 
@@ -190,7 +190,7 @@ qmoi-ai
 ### Android
 
 ```bash
-# Download the .apk file to your device
+# Download the .apk file to your prodice
 # Open file manager and tap to install
 # OR use adb
 adb install qmoi-ai-v1.2.3-android.apk
@@ -245,7 +245,7 @@ All assets available for download:
 ---
 
 **Status:** ✅ LIVE & AVAILABLE FOR DOWNLOAD  
-**Quality:** ⭐⭐⭐⭐⭐ (Production Ready)  
+**Quality:** ⭐⭐⭐⭐⭐ (production Ready)  
 **Last Updated:** November 12, 2025
 
 ## 🔄 Evolution Status

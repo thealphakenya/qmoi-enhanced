@@ -1,5 +1,5 @@
 /**
- * QMOI Production Integration Examples
+ * QMOI production Integration Examples
  * 
  * Complete working examples showing how to use all QMOI production systems
  * in real-world scenarios.
@@ -472,7 +472,7 @@ export async function exampleMultiSessionMetrics() {
  */
 export async function runAllExamples() {
   console.log('\n████████████████████████████████████████████████');
-  console.log('    QMOI PRODUCTION INTEGRATION EXAMPLES v4.0');
+  console.log('    QMOI production INTEGRATION EXAMPLES v4.0');
   console.log('████████████████████████████████████████████████\n');
 
   await exampleCompleteUserSession();

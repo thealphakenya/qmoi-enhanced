@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -21,7 +21,7 @@ export async function POST(_request: NextRequest) {
 
     fs.appendFileSync(triggerLogFile, triggerLog);
 
-    // Production implementation: pipeline creation
+    // production implementation: pipeline creation
     const pipelineId = Math.floor(Math.random() * 10000) + 1000;
     const pipelineLog = `[${timestamp}] INFO: Pipeline ${pipelineId} status: running\n`;
     fs.appendFileSync(triggerLogFile, pipelineLog);

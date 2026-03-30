@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/bin/bash
 
 # QCity Enterprise System - Startup Script
@@ -22,7 +22,7 @@ echo "✓ Server PID: $SERVER_PID"
 sleep 3
 
 # Check if server is responding
-if curl -s http://localhost:8080/ > /dev/null; then
+if curl -s http://localhost:8080/ > /prod/null; then
     echo "✓ Server is responding"
 else
     echo "✗ Server failed to start"
@@ -39,7 +39,7 @@ echo "   • comprehensive: http://localhost:8080/qcity-dashboard.html"
 echo ""
 echo "🔄 Background Services:"
 echo "   • Metrics Update (10s)"
-echo "   • Device Monitoring (15s)"
+echo "   • prodice Monitoring (15s)"
 echo "   • Revenue Tracking (12s)"
 echo "   • Health Checks (20s)"
 echo "   • Biometric Verification (30s)"
@@ -51,4 +51,4 @@ echo "🎯 Open dashboard at: http://localhost:8080/qcity-enterprise.html"
 echo ""
 
 # Keep script running
-wait $SERVER_PID 2>/dev/null || true
+wait $SERVER_PID 2>/prod/null || true

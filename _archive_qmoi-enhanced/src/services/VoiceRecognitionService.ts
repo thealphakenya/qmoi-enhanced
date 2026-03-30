@@ -11,7 +11,7 @@ interface VoiceConfig {
   continuous: boolean;
   interimResults: boolean;
   maxAlternatives: number;
-  // Production implementation required:Rate: number;
+  // production implementation required:Rate: number;
   enableInterruption: boolean;
   autoStart: boolean;
 }
@@ -81,7 +81,7 @@ export class VoiceRecognitionService {
       continuous: true,
       interimResults: true,
       maxAlternatives: 3,
-      // Production implementation required:Rate: 16000,
+      // production implementation required:Rate: 16000,
       enableInterruption: true,
       autoStart: true,
     };

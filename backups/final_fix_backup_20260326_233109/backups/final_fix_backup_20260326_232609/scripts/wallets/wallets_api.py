@@ -3,12 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/usr/bin/env python3
 """Small Flask API to expose wallet reports and history for local dashboards.
 
 Security: if `QMOI_API_TOKEN` is set in env, clients must send header `X-QMOI-API-TOKEN`.
-This is intentionally simple and for local/dev use only. Do NOT expose to public internet
+This is intentionally simple and for local/prod use only. Do NOT expose to public internet
 without proper auth.
 """
 import os

@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/bin/bash
 # QMOI Cloud Deploy Script
 # Deploys and keeps QMOI automation, live status, and dashboard running in Colab, DagsHub, or any cloud
@@ -11,7 +11,7 @@ pip install flask
 
 # Enforce cloud-offloading and cloud_optimized mode
 export QMOI_CLOUD_OPTIMIZED=true
-export QMOI_DEVICE_INDEPENDENT=true
+export QMOI_prodICE_INDEPENDENT=true
 export QMOI_AUTO_RESTART=true
 export QMOI_DASHBOARD_CLOUD_MODE=true
 # Log cloud-offload status
@@ -25,8 +25,8 @@ while true; do
   wait $pid
   echo "[QMOI] Automation stopped. Restarting in 5 seconds..."
   sleep 5
-  # Optionally check for device offline and re-run in cloud
-  # (Add device check logic here)
+  # Optionally check for prodice offline and re-run in cloud
+  # (Add prodice check logic here)
 done
 
 # Start QMOI live status (auto-restart)

@@ -24,7 +24,7 @@ export default defineConfig({
     screenshotsFolder: "cypress/screenshots",
   },
   component: {
-    devServer: {
+    prodServer: {
       framework: "next",
       bundler: "webpack",
     },

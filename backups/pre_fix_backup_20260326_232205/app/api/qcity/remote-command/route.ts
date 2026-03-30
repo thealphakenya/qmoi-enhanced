@@ -41,12 +41,12 @@ export default async function handler(
     });
     return _res.status(401).json({ _error: "Unauthorized" });
   }
-  const { cmd, deviceId = "qcity", stream = false } = _req.body;
+  const { cmd, prodiceId = "qcity", stream = false } = _req.body;
   if (!cmd) return _res.status(400).json({ _error: "required command" });
   logAudit({
     action: "run",
     cmd: maskCommand(cmd),
-    deviceId,
+    prodiceId,
     user: _req.headers["x-user"] || "unknown",
     status: "start",
   });
@@ -65,7 +65,7 @@ export default async function handler(
       logAudit({
         action: "run",
         cmd: maskCommand(cmd),
-        deviceId,
+        prodiceId,
         user: _req.headers["x-user"] || "unknown",
         status: "done",
         code,
@@ -82,7 +82,7 @@ export default async function handler(
         logAudit({
           action: "run",
           cmd: maskCommand(cmd),
-          deviceId,
+          prodiceId,
           user: _req.headers["x-user"] || "unknown",
           status: "done",
           code,
@@ -94,7 +94,7 @@ export default async function handler(
       logAudit({
         action: "run",
         cmd: maskCommand(cmd),
-        deviceId,
+        prodiceId,
         user: _req.headers["x-user"] || "unknown",
         status: "error",
         _error: errorMessage,

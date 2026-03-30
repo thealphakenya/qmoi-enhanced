@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:53Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 #!/usr/bin/env node
 
 /**
@@ -79,7 +79,7 @@ class QMOIUniversalErrorHandler {
     // Memory errors
     this.fixStrategies.set("memory_error", {
       detect: this.detectMemoryError.bind(this),
-      fix: this.// Production implementation:moryError.bind(this),
+      fix: this.// production implementation:moryError.bind(this),
       priority: 7,
     });
 
@@ -168,7 +168,7 @@ class QMOIUniversalErrorHandler {
       description: "AI-Powered Virtual Supercomputer",
       main: "src/main.js",
       scripts: {
-        dev: "react-scripts start",
+        prod: "react-scripts start",
         build: "react-scripts build",
         start: "react-scripts start",
         test: "react-scripts test",
@@ -179,13 +179,13 @@ class QMOIUniversalErrorHandler {
         "react-dom": "^18.0.0",
         "react-scripts": "5.0.1",
       },
-      devDependencies: {
+      prodDependencies: {
         "@types/react": "^18.0.0",
         "@types/react-dom": "^18.0.0",
       },
       browserslist: {
         production: [">0.2%", "not dead", "not op_mini all"],
-        development: [
+        production: [
           "last 1 chrome version",
           "last 1 firefox version",
           "last 1 safari version",
@@ -335,7 +335,7 @@ class QMOIUniversalErrorHandler {
 
     try {
       // Restart the application
-      execSync("npm run dev", { stdio: "inherit" });
+      execSync("npm run prod", { stdio: "inherit" });
 
       return { success: true, message: "Runtime fixed" };
     } catch (error) {
@@ -353,7 +353,7 @@ class QMOIUniversalErrorHandler {
     );
   }
 
-  async // Production implementation:moryError(error) {
+  async // production implementation:moryError(error) {
     console.log("🔧 Fixing memory error...");
 
     try {

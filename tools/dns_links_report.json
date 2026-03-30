@@ -43,17 +43,17 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://qparallel.dev/)",
+      "url": "https://qparallel.prod/)",
       "file": "QVILLAGE.md",
-      "host": "qparallel.dev",
+      "host": "qparallel.prod",
       "resolved_ips": [],
       "status": null,
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://qparallel.dev/api/health)",
+      "url": "https://qparallel.prod/api/health)",
       "file": "QVILLAGE.md",
-      "host": "qparallel.dev",
+      "host": "qparallel.prod",
       "resolved_ips": [],
       "status": null,
       "error": "<urlopen error [Errno -2] Name does not resolve>"
@@ -610,7 +610,7 @@
     },
     {
       "url": "https://qmoi.ai/docs)",
-      "file": "QMOISPACEDEV.md",
+      "file": "QMOISPACEprod.md",
       "host": "qmoi.ai",
       "resolved_ips": [],
       "status": null,
@@ -625,9 +625,9 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://developers.qmoi.com/mail](https://developers.qmoi.com/mail)",
+      "url": "https://prodelopers.qmoi.com/mail](https://prodelopers.qmoi.com/mail)",
       "file": "EMAILSSYSTEM.md",
-      "host": "developers.qmoi.com",
+      "host": "prodelopers.qmoi.com",
       "resolved_ips": [
         "64.190.63.222"
       ],
@@ -698,7 +698,7 @@
     },
     {
       "url": "https://gradio.app/docs/)",
-      "file": "QMOISPACEDEV.md",
+      "file": "QMOISPACEprod.md",
       "host": "gradio.app",
       "resolved_ips": [
         "76.76.21.21"
@@ -708,7 +708,7 @@
     },
     {
       "url": "https://huggingface.co/docs/hub/spaces)",
-      "file": "QMOISPACEDEV.md",
+      "file": "QMOISPACEprod.md",
       "host": "huggingface.co",
       "resolved_ips": [
         "18.67.93.102",
@@ -815,7 +815,7 @@
     },
     {
       "url": "https://huggingface.co/docs/transformers)",
-      "file": "QMOISPACEDEV.md",
+      "file": "QMOISPACEprod.md",
       "host": "huggingface.co",
       "resolved_ips": [
         "18.67.93.102",
@@ -924,7 +924,7 @@
     },
     {
       "url": "https://github.com/qmoi-ai/qmoi-space.git",
-      "file": "QMOISPACEDEV.md",
+      "file": "QMOISPACEprod.md",
       "host": "github.com",
       "resolved_ips": [
         "4.237.22.38"
@@ -965,7 +965,7 @@
     },
     {
       "url": "https://hooks.slack.com/services/YOUR/WEBHOOK",
-      "file": "QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md",
+      "file": "QMOI_production_AUTO_RECOVERY_COMPLETE.md",
       "host": "hooks.slack.com",
       "resolved_ips": [
         "13.237.15.247",
@@ -1031,7 +1031,7 @@
     },
     {
       "url": "https://your-sentry-dsn",
-      "file": "QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md",
+      "file": "QMOI_production_AUTO_RECOVERY_COMPLETE.md",
       "host": "your-sentry-dsn",
       "resolved_ips": [],
       "status": null,
@@ -1039,7 +1039,7 @@
     },
     {
       "url": "https://nextjs.org/docs)",
-      "file": "PRODUCTION_NEXT_STEPS_COMPLETE.md",
+      "file": "production_NEXT_STEPS_COMPLETE.md",
       "host": "nextjs.org",
       "resolved_ips": [
         "216.230.86.129",
@@ -1050,7 +1050,7 @@
     },
     {
       "url": "https://pm2.keymetrics.io/docs)",
-      "file": "PRODUCTION_NEXT_STEPS_COMPLETE.md",
+      "file": "production_NEXT_STEPS_COMPLETE.md",
       "host": "pm2.keymetrics.io",
       "resolved_ips": [
         "185.199.108.153",
@@ -1067,7 +1067,7 @@
     },
     {
       "url": "https://letsencrypt.org/)",
-      "file": "PRODUCTION_NEXT_STEPS_COMPLETE.md",
+      "file": "production_NEXT_STEPS_COMPLETE.md",
       "host": "letsencrypt.org",
       "resolved_ips": [
         "2406:da1c:cc9:3500::258",
@@ -1078,7 +1078,7 @@
     },
     {
       "url": "https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-support**",
-      "file": "PRODUCTION_NEXT_STEPS_COMPLETE.md",
+      "file": "production_NEXT_STEPS_COMPLETE.md",
       "host": "qmoi.ai)(https",
       "resolved_ips": [],
       "status": null,
@@ -1086,7 +1086,7 @@
     },
     {
       "url": "https://qmoi.app",
-      "file": "PRODUCTION_NEXT_STEPS_COMPLETE.md",
+      "file": "production_NEXT_STEPS_COMPLETE.md",
       "host": "qmoi.app",
       "resolved_ips": [],
       "status": null,
@@ -1094,7 +1094,7 @@
     },
     {
       "url": "https://qmoi.app/api/health",
-      "file": "PRODUCTION_NEXT_STEPS_COMPLETE.md",
+      "file": "production_NEXT_STEPS_COMPLETE.md",
       "host": "qmoi.app",
       "resolved_ips": [],
       "status": null,
@@ -1102,7 +1102,7 @@
     },
     {
       "url": "https://qmoi.ai/api/admin/master/links",
-      "file": "PRODUCTION_READINESS_EXECUTION_STATUS.md",
+      "file": "production_READINESS_EXECUTION_STATUS.md",
       "host": "qmoi.ai",
       "resolved_ips": [],
       "status": null,
@@ -1223,7 +1223,7 @@
     },
     {
       "url": "https://your-domain.com",
-      "file": "QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md",
+      "file": "QMOI_production_AUTO_RECOVERY_COMPLETE.md",
       "host": "your-domain.com",
       "resolved_ips": [
         "103.224.212.202"
@@ -1364,7 +1364,7 @@
     },
     {
       "url": "https://nginx.org/en/docs/)",
-      "file": "PRODUCTION_NEXT_STEPS_COMPLETE.md",
+      "file": "production_NEXT_STEPS_COMPLETE.md",
       "host": "nginx.org",
       "resolved_ips": [
         "2a05:d014:5c0:2600::6",
@@ -1426,7 +1426,7 @@
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced.git",
-      "file": "QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md",
+      "file": "QMOI_production_AUTO_RECOVERY_COMPLETE.md",
       "host": "github.com",
       "resolved_ips": [
         "4.237.22.38"
@@ -1505,7 +1505,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1525,7 +1525,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1548,7 +1548,7 @@
       "error": null
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1558,7 +1558,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1568,7 +1568,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1802,7 +1802,7 @@
     },
     {
       "url": "https://www.postgresql.org/docs/)",
-      "file": "PRODUCTION_NEXT_STEPS_COMPLETE.md",
+      "file": "production_NEXT_STEPS_COMPLETE.md",
       "host": "www.postgresql.org",
       "resolved_ips": [
         "2001:4800:3e1:1::230",
@@ -1956,7 +1956,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1966,7 +1966,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1976,7 +1976,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1986,7 +1986,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -2006,7 +2006,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage)",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -2102,9 +2102,9 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://vite.dev)",
+      "url": "https://vite.prod)",
       "file": "link_report.md",
-      "host": "vite.dev)",
+      "host": "vite.prod)",
       "resolved_ips": [],
       "status": null,
       "error": "<urlopen error [Errno -2] Name does not resolve>"
@@ -2483,7 +2483,7 @@
       "error": "<urlopen error [Errno 111] Connection refused>"
     },
     {
-      "url": "https://david-dm.org/isaacs/rimraf/dev-status.svg)",
+      "url": "https://david-dm.org/isaacs/rimraf/prod-status.svg)",
       "file": "link_report.md",
       "host": "david-dm.org",
       "resolved_ips": [
@@ -6784,9 +6784,9 @@
       "error": "Not Found"
     },
     {
-      "url": "https://developer.apple.com/documentation/foundation/jsondecoder/3766916-allowsjson5)",
+      "url": "https://prodeloper.apple.com/documentation/foundation/jsondecoder/3766916-allowsjson5)",
       "file": "link_report.md",
-      "host": "developer.apple.com",
+      "host": "prodeloper.apple.com",
       "resolved_ips": [
         "17.253.67.138",
         "17.253.67.139",
@@ -7012,9 +7012,9 @@
       "error": "Not Found"
     },
     {
-      "url": "https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)",
+      "url": "https://prodeloper.mozilla.org/en-US/docs/Web/API/WebSocket)",
       "file": "link_report.md",
-      "host": "developer.mozilla.org",
+      "host": "prodeloper.mozilla.org",
       "resolved_ips": [
         "199.232.137.91",
         "2a04:4e42:7::347"
@@ -7408,7 +7408,7 @@
       "error": null
     },
     {
-      "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-developer-tools-episode-31/)",
+      "url": "https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/)",
       "file": "link_report.md",
       "host": "hacks.mozilla.org",
       "resolved_ips": [
@@ -7490,9 +7490,9 @@
       "error": null
     },
     {
-      "url": "https://metrobundler.dev/)",
+      "url": "https://metrobundler.prod/)",
       "file": "link_report.md",
-      "host": "metrobundler.dev",
+      "host": "metrobundler.prod",
       "resolved_ips": [
         "185.199.108.153",
         "185.199.109.153",
@@ -13931,9 +13931,9 @@
       "error": "Method Not Allowed"
     },
     {
-      "url": "https://licenses.dev/b/npm/escalade)",
+      "url": "https://licenses.prod/b/npm/escalade)",
       "file": "link_report.md",
-      "host": "licenses.dev",
+      "host": "licenses.prod",
       "resolved_ips": [
         "104.21.60.141",
         "172.67.197.130",
@@ -13955,9 +13955,9 @@
       "error": "Not Found"
     },
     {
-      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)",
+      "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)",
       "file": "link_report.md",
-      "host": "developer.mozilla.org",
+      "host": "prodeloper.mozilla.org",
       "resolved_ips": [
         "199.232.137.91",
         "2a04:4e42:7::347"
@@ -15518,9 +15518,9 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent)",
+      "url": "https://prodeloper.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent)",
       "file": "link_report.md",
-      "host": "developer.mozilla.org",
+      "host": "prodeloper.mozilla.org",
       "resolved_ips": [
         "199.232.137.91",
         "2a04:4e42:7::347"
@@ -15970,7 +15970,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "https://azure.microsoft.com/en-us/services/devops/pipelines/)",
+      "url": "https://azure.microsoft.com/en-us/services/prodops/pipelines/)",
       "file": "link_report.md",
       "host": "azure.microsoft.com",
       "resolved_ips": [
@@ -17360,9 +17360,9 @@
       "error": null
     },
     {
-      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)",
+      "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)",
       "file": "link_report.md",
-      "host": "developer.mozilla.org",
+      "host": "prodeloper.mozilla.org",
       "resolved_ips": [
         "199.232.137.91",
         "2a04:4e42:7::347"
@@ -17934,9 +17934,9 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)",
+      "url": "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)",
       "file": "link_report.md",
-      "host": "developer.mozilla.org",
+      "host": "prodeloper.mozilla.org",
       "resolved_ips": [
         "199.232.137.91",
         "2a04:4e42:7::347"

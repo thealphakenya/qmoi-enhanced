@@ -8,7 +8,7 @@
 /**
  * QMOI Cloud Offload Optimizer
  * Monitors system resources and automatically offloads heavy tasks to the cloud
- * for ultra-robust operation on all devices.
+ * for ultra-robust operation on all prodices.
  */
 
 const { exec } = require("child_process");

@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "⚡️ Fast Project Bootstrap & Debugging for stable-Q AI"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -25,9 +25,9 @@ title: "⚡️ Fast Project Bootstrap & Debugging for stable-Q AI"
 - QI Preview Window and local-first QMOI model are now included by default. Use the `useQIPreview` hook to show previews from any component.
 - All new features are modular and lazy-loaded for best performance.
 
-To avoid slow, repetitive pnpm install → pnpm dev → fix errors one-by-one, use these smarter, faster alternatives:
+To avoid slow, repetitive pnpm install → pnpm prod → fix errors one-by-one, use these smarter, faster alternatives:
 
-## 🚀 Fastest Alternatives to `pnpm install && pnpm dev`
+## 🚀 Fastest Alternatives to `pnpm install && pnpm prod`
 
 ### 1. Use Cached/Strict Installs
 
@@ -99,7 +99,7 @@ pnpm update --interactive
 
 ```bash
 pnpm add -D concurrently
-concurrently "pnpm install" "pnpm dev"
+concurrently "pnpm install" "pnpm prod"
 ```
 
 ## 🧠 Bonus: Automation Script
@@ -117,8 +117,8 @@ echo "🔍 Type checking and linting..."
 pnpm lint --fix
 pnpm tsc --noEmit
 
-echo "🚀 Starting dev server..."
-pnpm dev
+echo "🚀 Starting prod server..."
+pnpm prod
 ```
 
 Make it executable and run:
@@ -135,7 +135,7 @@ chmod +x quickstart.sh
 - Invention project support (master/sister only, auto/manual, encrypted)
 - AI learns and assists with master/sister life goals, ambitions, and protection
 - Local-First AI Protector Blueprint (see README.md for details)
-- Device settings and media preview now available in the UI
+- prodice settings and media preview now available in the UI
 - Download links for all apps/projects sent to your WhatsApp automatically
 - Enhanced backup and restore for all projects
 

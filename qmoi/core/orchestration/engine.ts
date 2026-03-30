@@ -23,7 +23,7 @@ import { EventEmitter } from "events";
 export interface OrchestrationContext {
   request_id: string;
   user_id: string;
-  device_id: string;
+  prodice_id: string;
   timestamp: string;
   action: string;
   priority: "low" | "normal" | "high" | "critical";
@@ -87,7 +87,7 @@ export class QMOIOrchestrationEngine extends EventEmitter {
       const actionMemoryId = await this.memory.addMemory({
         type: "procedural",
         content: `Action initiated: ${ctx.action}`,
-        device_id: ctx.device_id,
+        prodice_id: ctx.prodice_id,
         user_id: ctx.user_id,
         relevance_score: 0.9,
         tags: [ctx.action, "orchestration", ctx.priority],
@@ -108,7 +108,7 @@ export class QMOIOrchestrationEngine extends EventEmitter {
       // Store result in memory
       await this.memory.updateMemory(actionMemoryId, {
         content: `Action completed: ${ctx.action} - Result: ${JSON.stringify(result).slice(0, 200)}`,
-        device_id: ctx.device_id,
+        prodice_id: ctx.prodice_id,
         user_id: ctx.user_id,
         relevance_score: 0.95,
       });
@@ -139,7 +139,7 @@ export class QMOIOrchestrationEngine extends EventEmitter {
       await this.memory.addMemory({
         type: "short_term",
         content: `Action failed: ${ctx.action} - Error: ${errorMessage}`,
-        device_id: ctx.device_id,
+        prodice_id: ctx.prodice_id,
         user_id: ctx.user_id,
         relevance_score: 0.7,
         tags: [ctx.action, "error", "orchestration"],
@@ -197,14 +197,14 @@ export class QMOIOrchestrationEngine extends EventEmitter {
   }
 
   /**
-   * Sync memory across devices
+   * Sync memory across prodices
    */
-  public async syncMemoryToDevices(userId: string, deviceIds: string[]): Promise<void> {
+  public async syncMemoryToprodices(userId: string, prodiceIds: string[]): Promise<void> {
     const userMemories = await this.memory.getUserMemories(userId);
 
-    for (const deviceId of deviceIds) {
+    for (const prodiceId of prodiceIds) {
       this.emit("memory_sync_request", {
-        target_device: deviceId,
+        target_prodice: prodiceId,
         memories: userMemories,
         timestamp: new Date().toISOString(),
       });

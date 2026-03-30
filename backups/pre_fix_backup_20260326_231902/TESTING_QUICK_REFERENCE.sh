@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env bash
 
 # ╔══════════════════════════════════════════════════════════════════════════╗
@@ -17,7 +17,7 @@ echo "
 │ ✓ Text as master (with master permissions)                           │
 │ ✓ All project types it can do                                        │
 │ ✓ Accountable for everything                                         │
-│ ✓ Self-modify and auto-develop                                       │
+│ ✓ Self-modify and auto-prodelop                                       │
 │ ✓ Friendship features testing                                        │
 └───────────────────────────────────────────────────────────────────────┘
 
@@ -48,7 +48,7 @@ echo "
 │    • 11/12 tests pass (91.7%)                                       │
 │    • All features verified ✅                                       │
 │    • No critical errors                                             │
-│    • Production ready                                               │
+│    • production ready                                               │
 └───────────────────────────────────────────────────────────────────────┘
 
 ═══════════════════════════════════════════════════════════════════════════
@@ -59,7 +59,7 @@ QUICK START (Copy & Paste)
 Terminal 1:                  Terminal 2:
 ───────────                  ──────────
 cd /workspaces/qmoi-enhanced cd /workspaces/qmoi-enhanced
-npm run dev                  node test-qmoi-master.js
+npm run prod                  node test-qmoi-master.js
 
 [Then watch the magic! ✨]
 
@@ -241,8 +241,8 @@ SUCCESS INDICATORS
    → This is NORMAL! Voice works in the browser UI component.
 
 ❌ IF YOU SEE THIS - FIX IT:
-   Error: Cannot connect to dev server
-   → Solution: Run \"npm run dev\" in Terminal 1 first
+   Error: Cannot connect to prod server
+   → Solution: Run \"npm run prod\" in Terminal 1 first
 
    Error: No QueryClient set
    → Solution: Already fixed in app/layout.tsx
@@ -265,7 +265,7 @@ AFTER TESTS PASS ✅
    └─ Speak a message
    └─ Verify transcription
 
-3. Deploy to Production
+3. Deploy to production
    └─ npm run build
    └─ npm start
    └─ Monitor performance
@@ -340,7 +340,7 @@ You have everything you need!
 ✅ Troubleshooting guide
 
 JUST RUN:
-  npm run dev
+  npm run prod
   node test-qmoi-master.js
 
 Then sit back and watch QMOI demonstrate all its capabilities! 🚀

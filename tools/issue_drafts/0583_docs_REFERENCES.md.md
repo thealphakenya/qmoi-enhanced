@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Issue final for docs/REFERENCES.md"
 generated: 2025-11-08T16:06:38.372711Z
@@ -10,9 +10,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [PRODUCTION READY] markers or [PRODUCTION READY]s.
-- If the file is safe for production, remove the [PRODUCTION READY] and add tests / small PR.
-- If the file is intentionally non-production (e.g. [PRODUCTION READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [production READY] markers or [production READY]s.
+- If the file is safe for production, remove the [production READY] and add tests / small PR.
+- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -34,9 +34,9 @@ title: "REFERENCES"
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-- [QMOI GitLab Self-Healing CI/CD Automation](QMOIGITLABDEV.md)
-- [QMOI Vercel Self-Healing CI/CD Automation](QMOIVERCELDEV.md)
-- [QMOI GitHub Actions Self-Healing CI/CD Automation](QMOIGITHUBDEV.md)
+- [QMOI GitLab Self-Healing CI/CD Automation](QMOIGITLABprod.md)
+- [QMOI Vercel Self-Healing CI/CD Automation](QMOIVERCELprod.md)
+- [QMOI GitHub Actions Self-Healing CI/CD Automation](QMOIGITHUBprod.md)
 
 ## QMOI Gmail Notification Integration
 
@@ -67,12 +67,12 @@ title: "REFERENCES"
       "detail": [
         {
           "label": "QMOI GitLab Self-Healing CI/CD Automation",
-          "target": "./QMOIGITLABDEV.md",
+          "target": "./QMOIGITLABprod.md",
           "ok": true
         },
         {
           "label": "QMOI Vercel Self-Healing CI/CD Automation",
-          "target": "./QMOIVERCELDEV.md",
+          "target": "./QMOIVERCELprod.md",
           "ok": true
         },
         {

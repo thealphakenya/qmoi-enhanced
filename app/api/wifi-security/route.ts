@@ -51,20 +51,20 @@ export async function GET(_request: NextRequest) {
     const threats = searchParams.get("threats");
 
     if (status) {
-      // PRODUCTION READY: Return 501 until product contract exists
+      // production READY: Return 501 until product contract exists
       return NextResponse.json({
         _status: "NOT_IMPLEMENTED",
-        _message: "WiFi security monitoring not yet implemented. Product design in progress.",
+        _message: "WiFi security monitoring not yet implemented. product design in progress.",
         _available: false,
         _reason: "Awaiting product contract and security requirements specification"
       }, { status: 501 });
     }
 
     if (threats) {
-      // PRODUCTION READY: Return 501 until product contract exists
+      // production READY: Return 501 until product contract exists
       return NextResponse.json({
         _status: "NOT_IMPLEMENTED",
-        _message: "WiFi threat detection not yet implemented. Product design in progress.",
+        _message: "WiFi threat detection not yet implemented. product design in progress.",
         _available: false,
         _reason: "Awaiting product contract and security requirements specification"
       }, { status: 501 });
@@ -89,20 +89,20 @@ export async function POST(_request: NextRequest) {
     const { action, settings } = body;
 
     if (action === "start-monitoring") {
-      // PRODUCTION READY: Return 501 until product contract exists
+      // production READY: Return 501 until product contract exists
       return NextResponse.json({
         _status: "NOT_IMPLEMENTED",
-        _message: "WiFi security monitoring start not yet implemented. Product design in progress.",
+        _message: "WiFi security monitoring start not yet implemented. product design in progress.",
         _available: false,
         _reason: "Awaiting product contract and security requirements specification"
       }, { status: 501 });
     }
 
     if (action === "stop-monitoring") {
-      // PRODUCTION READY: Return 501 until product contract exists
+      // production READY: Return 501 until product contract exists
       return NextResponse.json({
         _status: "NOT_IMPLEMENTED",
-        _message: "WiFi security monitoring stop not yet implemented. Product design in progress.",
+        _message: "WiFi security monitoring stop not yet implemented. product design in progress.",
         _available: false,
         _reason: "Awaiting product contract and security requirements specification"
       }, { status: 501 });
@@ -116,10 +116,10 @@ export async function POST(_request: NextRequest) {
         );
       }
 
-      // PRODUCTION READY: Return 501 until product contract exists
+      // production READY: Return 501 until product contract exists
       return NextResponse.json({
         _status: "NOT_IMPLEMENTED",
-        _message: "WiFi security settings update not yet implemented. Product design in progress.",
+        _message: "WiFi security settings update not yet implemented. product design in progress.",
         _available: false,
         _reason: "Awaiting product contract and security requirements specification"
       }, { status: 501 });

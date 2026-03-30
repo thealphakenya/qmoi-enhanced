@@ -7,12 +7,12 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # Build Real Applications - Complete Guide
 
 ## Problem
 
-Current releases contain corrupted/[PRODUCTION READY] files filled with garbage data. This guide provides exact commands to build real functioning applications.
+Current releases contain corrupted/[production READY] files filled with garbage data. This guide provides exact commands to build real functioning applications.
 
 ## Environment Requirements
 
@@ -46,7 +46,7 @@ adb shell am start -n com.qmoi.ai/.MainActivity
 - macOS 14+
 - Xcode 15+
 - CocoaPods
-- Apple Developer Account (for signing)
+- Apple prodeloper Account (for signing)
 
 **Build Command:**
 
@@ -145,8 +145,8 @@ npx serve dist/
 # Visit: https://qmoi.ai
 # Check:
 # - App loads and displays UI
-# - Service worker registers (DevTools > Application > Service Workers)
-# - Manifest loads (DevTools > Application > Manifest)
+# - Service worker registers (prodTools > Application > Service Workers)
+# - Manifest loads (prodTools > Application > Manifest)
 # - Icons load correctly
 ```
 
@@ -341,7 +341,7 @@ npm run build
 | Component        | Time      | Dependencies                              |
 | ---------------- | --------- | ----------------------------------------- |
 | Android APK      | 10-15 min | Java, Android SDK, Gradle                 |
-| iOS IPA          | 15-20 min | Xcode, CocoaPods, Apple Developer Account |
+| iOS IPA          | 15-20 min | Xcode, CocoaPods, Apple prodeloper Account |
 | All PWAs         | 5-10 min  | Node.js, npm                              |
 | Smart TV APK     | 10-15 min | Android SDK                               |
 | Total (parallel) | ~20 min   | All tools installed                       |

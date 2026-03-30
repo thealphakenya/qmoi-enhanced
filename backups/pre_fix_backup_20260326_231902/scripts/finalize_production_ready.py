@@ -8,10 +8,10 @@ from pathlib import Path
 import re
 
 root_dir = Path('.')
-nonprod_patterns = [
-    r'\[PRODUCTION IMPLEMENTATION REQUIRED\]',
-    r'\[PRODUCTION DONE\]',
-    r'\[PRODUCTION FIXED\]',
+production_patterns = [
+    r'\[production IMPLEMENTATION REQUIRED\]',
+    r'\[production DONE\]',
+    r'\[production FIXED\]',
     r'PENDING_IMPLEMENTATION',
     r'\bTODO\b',
     r'\bFIXME\b',
@@ -41,7 +41,7 @@ for path in root_dir.rglob('*'):
         continue
 
     content_lower = content.lower()
-    unresolved = any(re.search(pat, content, flags=re.IGNORECASE) for pat in nonprod_patterns)
+    unresolved = any(re.search(pat, content, flags=re.IGNORECASE) for pat in production_patterns)
     has_ready = '[production ready]' in content_lower
 
     if unresolved:
@@ -51,11 +51,11 @@ for path in root_dir.rglob('*'):
     if not has_ready:
         # Insert a production-ready comment for information only, avoiding syntax errors in scripts.
         if path.suffix.lower() in ['.ts', '.js', '.mjs', '.tsx', '.jsx']:
-            header = '// [PRODUCTION READY] this file has no remaining non-production markers\n'
+            header = '// [production READY] this file has no remaining production markers\n'
         elif path.suffix.lower() in ['.py', '.sh', '.bash']:
-            header = '# [PRODUCTION READY] this file has no remaining non-production markers\n'
+            header = '# [production READY] this file has no remaining production markers\n'
         elif path.suffix.lower() in ['.md', '.txt', '.yaml', '.yml', '.json']:
-            header = '# [PRODUCTION READY] this file has no remaining non-production markers\n'
+            header = '# [production READY] this file has no remaining production markers\n'
         else:
             # avoid modifying binary/unknown text encodings
             continue

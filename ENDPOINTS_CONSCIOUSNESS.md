@@ -160,7 +160,7 @@ Authorization: Bearer YOUR_API_KEY
     "environments": { ... },
     "users": { ... },
     "tasks": { ... },
-    "cross_device_context": { ... },
+    "cross_prodice_context": { ... },
     "anomalies_detected": []
   }
 }
@@ -193,19 +193,19 @@ Authorization: Bearer YOUR_API_KEY
 ---
 
 ### GET - Environment Awareness
-**Endpoint**: `/api/consciousness?endpoint=awareness/environment&device_id=DEVICE_ID`
+**Endpoint**: `/api/consciousness?endpoint=awareness/environment&prodice_id=prodICE_ID`
 
 **Query Parameters**:
 - `endpoint` (required): "awareness/environment"
-- `device_id` (required): Device identifier
+- `prodice_id` (required): prodice identifier
 
 **Response**:
 ```json
 {
   "success": true,
   "environment": {
-    "device_id": "device_001",
-    "device_type": "smartphone",
+    "prodice_id": "prodice_001",
+    "prodice_type": "smartphone",
     "location": { "latitude": 0.0, "longitude": 0.0 },
     "network_status": "online",
     "battery_level": 85,
@@ -225,7 +225,7 @@ Authorization: Bearer YOUR_API_KEY
 {
   "endpoint": "awareness/environment/update",
   "data": {
-    "device_id": "device_001",
+    "prodice_id": "prodice_001",
     "context": {
       "network_status": "online",
       "battery_level": 80,
@@ -306,7 +306,7 @@ Authorization: Bearer YOUR_API_KEY
     "type": "long_term",
     "content": "User prefers morning notifications",
     "timestamp": "2026-03-25T12:00:00Z",
-    "device_id": "device_001",
+    "prodice_id": "prodice_001",
     "relevance_score": 0.95,
     "tags": ["user_preference"],
     "priority": 3
@@ -361,7 +361,7 @@ Authorization: Bearer YOUR_API_KEY
   "data": {
     "type": "long_term",
     "content": "User completed 50 tasks today",
-    "device_id": "device_001",
+    "prodice_id": "prodice_001",
     "user_id": "user_123",
     "tags": ["user_activity", "achievements"],
     "relevance_score": 0.9,
@@ -426,7 +426,7 @@ Authorization: Bearer YOUR_API_KEY
     "updates": {
       "content": "Updated content",
       "relevance_score": 0.98,
-      "device_id": "device_001",
+      "prodice_id": "prodice_001",
       "user_id": "user_123"
     }
   }
@@ -444,7 +444,7 @@ Authorization: Bearer YOUR_API_KEY
   "endpoint": "memory/delete",
   "data": {
     "memory_id": "mem_001",
-    "device_id": "device_001",
+    "prodice_id": "prodice_001",
     "user_id": "user_123"
   }
 }
@@ -515,7 +515,7 @@ Authorization: Bearer YOUR_API_KEY
 
 ---
 
-### POST - Sync Memory to Devices
+### POST - Sync Memory to prodices
 **Endpoint**: `/api/consciousness`
 
 **Request Body**:
@@ -524,7 +524,7 @@ Authorization: Bearer YOUR_API_KEY
   "endpoint": "orchestration/sync-memory",
   "data": {
     "user_id": "user_123",
-    "device_ids": ["device_001", "device_002", "device_003"]
+    "prodice_ids": ["prodice_001", "prodice_002", "prodice_003"]
   }
 }
 ```
@@ -626,7 +626,7 @@ async function getConsciousness() {
 ---
 
 **Last Updated**: 2026-03-25
-**Status**: Production Ready ✅
+**Status**: production Ready ✅
 **Version**: 1.0.0
 
 ## 🔄 Evolution Status

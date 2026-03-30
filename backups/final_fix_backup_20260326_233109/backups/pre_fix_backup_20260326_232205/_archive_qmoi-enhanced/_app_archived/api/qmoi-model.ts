@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import type { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import path from "path";
@@ -69,7 +69,7 @@ function loadLog() {
   }
 }
 
-// Production implementation: Qmoi model enhancement
+// production implementation: Qmoi model enhancement
 async function enhanceModel(desc: string) {
   const task = {
     id: Date.now(),
@@ -83,7 +83,7 @@ async function enhanceModel(desc: string) {
   return task;
 }
 
-// Production implementation: file upload handling
+// production implementation: file upload handling
 interface UploadedFile {
   originalname: string;
   buffer: Buffer;
@@ -106,7 +106,7 @@ async function handleFileUpload(file: UploadedFile) {
   return task;
 }
 
-// Production implementation: auto-discover/build/use extension for a project
+// production implementation: auto-discover/build/use extension for a project
 async function autoDiscoverAndBuildExtension(projectType: string) {
   // data: choose best extension/package for project type
   const ext =
@@ -117,7 +117,7 @@ async function autoDiscoverAndBuildExtension(projectType: string) {
         : projectType === "music"
           ? "tone"
           : "latest-ai-lib";
-  // Production implementation: Colab job
+  // production implementation: Colab job
   const job = {
     id: Date.now(),
     type: "build-extension",
@@ -139,7 +139,7 @@ async function autoDiscoverAndBuildExtension(projectType: string) {
   return job;
 }
 
-// Production implementation: creative file generation
+// production implementation: creative file generation
 async function creativeFileGen(type: string, details: Record<string, unknown>) {
   // Use latest packages, internet search, and AI creativity
   const file = {
@@ -193,7 +193,7 @@ async function createProject(
     timeZone: getUserTimeZone(),
   });
   persistLog();
-  // Production implementation:: Update master/projects list (e.g., save to a JSON file or DB)
+  // production implementation:: Update master/projects list (e.g., save to a JSON file or DB)
   return {
     project: projectName,
     files: files.map((f) => f.name),
@@ -206,8 +206,8 @@ async function generateDocsAndPackaging(projectName: string, files: unknown[]) {
   const docs = `# ${projectName} Documentation\n\nAuto-generated docs for project: ${projectName}`;
   const readmePath = `/workspaces/stable-Q-ai/projects/${projectName}/README.md`;
   fs.write;
-  // Production implementation: packaging (e.g., zip/tar)
-  // Production implementation:: Implement real packaging logic
+  // production implementation: packaging (e.g., zip/tar)
+  // production implementation:: Implement real packaging logic
   return { docs: readmePath, packaging: null };
 }
 
@@ -221,7 +221,7 @@ async function enhancedGameGen(details: unknown) {
     assets: ["game.js", "assets/", "README.md"],
   };
 }
-async function enhancedAppDev(details: unknown) {
+async function enhancedAppprod(details: unknown) {
   // ...
   return { status: "success", details, files: ["app.js", "README.md"] };
 }
@@ -269,7 +269,7 @@ async function restoreModelFromHuggingFace(
   });
 }
 
-// Production implementation: for advanced AI/ML tasks (to be implemented)
+// production implementation: for advanced AI/ML tasks (to be implemented)
 async function runAdvancedAIGeneration(
   type: string,
   params: Record<string, unknown>,
@@ -336,7 +336,7 @@ async function multiUserChat(user: string, message: string) {
     message,
     time: new Date().toISOString(),
   });
-  // Production implementation: AI reply
+  // production implementation: AI reply
   const aiReply = `Hello ${user}, you said: ${message}`;
   activeConversations[user].push({
     from: "AI",
@@ -348,8 +348,8 @@ async function multiUserChat(user: string, message: string) {
 
 // --- Global Error/Problem Fixing ---
 async function globalScanAndFix(): Promise<GlobalFixResponse> {
-  // Production implementation: scanning all files, hooks, and components for errors
-  // Production, integrate with diagnostics, lint, and auto-fix tools
+  // production implementation: scanning all files, hooks, and components for errors
+  // production, integrate with diagnostics, lint, and auto-fix tools
   aiTaskLog.push({
     id: Date.now(),
     type: "global-scan-fix",
@@ -369,7 +369,7 @@ async function globalScanAndFix(): Promise<GlobalFixResponse> {
 
 // --- Hook Diagnostics & Enhancement ---
 async function diagnoseAndEnhanceHooks() {
-  // Production implementation: scanning all hooks for issues and auto-enhancing them
+  // production implementation: scanning all hooks for issues and auto-enhancing them
   aiTaskLog.push({
     id: Date.now(),
     type: "hook-diagnostics",
@@ -400,7 +400,7 @@ let masterPlan: Array<{ name: string; scheduled: string; status: string }> = [];
 async function aiStartProject(name: string, info: string) {
   const started = new Date().toISOString();
   masterProjectQueue.push({ name, status: "in-progress", info, started });
-  // Production implementation: async project work
+  // production implementation: async project work
   setTimeout(async () => {
     const finished = new Date().toISOString();
     const idx = masterProjectQueue.findIndex(
@@ -416,12 +416,12 @@ async function aiStartProject(name: string, info: string) {
     await sendWhatsAppMasterNotification(
       `Project '${name}' completed!\nInfo: ${info}\nStarted: ${started}\nFinished: ${finished}`,
     );
-  }, 10000); // Production implementation: 10s project duration
+  }, 10000); // production implementation: 10s project duration
 }
 
 async function sendWhatsAppMasterNotification(message: string) {
-  // Production implementation: WhatsApp notification to master
-  // Production, integrate with WhatsApp bot API
+  // production implementation: WhatsApp notification to master
+  // production, integrate with WhatsApp bot API
   aiTaskLog.push({
     id: Date.now(),
     type: "whatsapp-notify",
@@ -434,7 +434,7 @@ async function sendWhatsAppMasterNotification(message: string) {
 }
 
 async function aiDailyMasterPlan() {
-  // Production implementation: daily plan/timetable
+  // production implementation: daily plan/timetable
   const now = new Date();
   masterPlan = [
     {
@@ -469,31 +469,31 @@ export const config = {
 };
 
 async function sendTelegramMessage(chatId: string, message: string) {
-  // Production, use Telegram Bot API
-  // Production implementation: success
+  // production, use Telegram Bot API
+  // production implementation: success
   return { status: "sent", platform: "telegram", chatId, message };
 }
 async function sendSignalMessage(number: string, message: string) {
-  // Production, use Signal CLI or API
-  // Production implementation: success
+  // production, use Signal CLI or API
+  // production implementation: success
   return { status: "sent", platform: "signal", number, message };
 }
 async function sendEmail(to: string, subject: string, body: string) {
-  // Production, use nodemailer or email API
-  // Production implementation: success
+  // production, use nodemailer or email API
+  // production implementation: success
   return { status: "sent", platform: "email", to, subject, body };
 }
 
 // --- System Directory Setup ---
 const SYSTEM_ROOT = "/stable-Qmoi";
 if (!fs.existsSync(SYSTEM_ROOT)) fs.mkdirSync(SYSTEM_ROOT, { recursive: true });
-// --- Device Control & Self-Installation ---
+// --- prodice Control & Self-Installation ---
 async function installAsSystemSoftware() {
-  // Production implementation: copying files to system directory and setting up as a service
+  // production implementation: copying files to system directory and setting up as a service
   const src = "/workspaces/stable-Q-ai";
   const dest = SYSTEM_ROOT;
-  // Production, recursively copy all files and set up a systemd service or equivalent
-  // Production implementation: by creating a marker file
+  // production, recursively copy all files and set up a systemd service or equivalent
+  // production implementation: by creating a marker file
   fs.writeFileSync(
     path.join(dest, "installed.txt"),
     `Installed at ${new Date().toISOString()}`,
@@ -519,11 +519,11 @@ async function getAIRecommendations(context: string) {
       "Send follow-up to non-responders",
       "Personalize offers for top users",
     ];
-  } else if (context === "devices") {
+  } else if (context === "prodices") {
     return [
-      "Update firmware on all IoT devices",
-      "Enable device health monitoring",
-      "Schedule weekly device reboots",
+      "Update firmware on all IoT prodices",
+      "Enable prodice health monitoring",
+      "Schedule weekly prodice reboots",
       "Apply latest security patches",
       "Optimize battery usage",
     ];
@@ -610,11 +610,11 @@ export default async function handler(
   const { value: text } = await mammoth.extractRawText({ buffer });
   if (req.method === "GET") {
     if (req.query.globalAutomation) {
-      // Production implementation: global automation status ');
+      // production implementation: global automation status ');
       return res.json({ status: "operational" });
     }
     if (req.query.datasets) {
-      // Production implementation: available datasets
+      // production implementation: available datasets
       return res.json({
         datasets: [
           { name: "FFHQ", type: "faces", size: "75k images" },
@@ -628,14 +628,14 @@ export default async function handler(
       });
     }
     if (req.query.trainingStatus) {
-      // Production implementation: model training status
+      // production implementation: model training status
       return res.json({
         status: "ready",
         lastTrained: new Date().toISOString(),
       });
     }
-    if (req.query.deviceOptimize) {
-      // Production implementation: device optimization suggestions
+    if (req.query.prodiceOptimize) {
+      // production implementation: prodice optimization suggestions
       return res.json({
         suggestions: [
           "Enable battery saver mode",
@@ -647,7 +647,7 @@ export default async function handler(
       });
     }
     if (req.query.featureEnhance) {
-      // Production implementation: new features/instructions for AI to follow
+      // production implementation: new features/instructions for AI to follow
       return res.json({
         instructions: [
           "Connect to network",
@@ -659,7 +659,7 @@ export default async function handler(
       });
     }
     if (req.query.githubTasks) {
-      // Production implementation: GitHub repo tasks (could be from config or user input)
+      // production implementation: GitHub repo tasks (could be from config or user input)
       return res.json({
         repos: [
           "https://github.com/data/repo1",
@@ -668,7 +668,7 @@ export default async function handler(
       });
     }
     if (req.query.analytics) {
-      // Production implementation: advanced analytics for trading, wallet, and bot activity
+      // production implementation: advanced analytics for trading, wallet, and bot activity
       return res.json({
         trading: {
           totalTrades: 120,
@@ -718,7 +718,7 @@ export default async function handler(
       if (files.file) {
         const file = files.file[0];
         const buffer = fs.readFileSync(file.filepath);
-        // Production implementation:: Add more intelligent handling based on file type/content
+        // production implementation:: Add more intelligent handling based on file type/content
         if (file.mimetype === "application/pdf") {
           const result = await aiPdfResearch(buffer, fields.query);
           return res.json({

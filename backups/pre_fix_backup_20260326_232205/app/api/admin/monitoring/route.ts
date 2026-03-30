@@ -65,7 +65,7 @@ export async function GET(_request: NextRequest) {
       system: {
         uptime: process.uptime(),
         memory: process.memoryUsage(),
-        nodeVersion: process.version,
+        noprodersion: process.version,
         platform: process.platform,
       },
       performance: monitor.getAllMetrics(),

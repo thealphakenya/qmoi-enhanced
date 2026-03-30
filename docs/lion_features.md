@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "LION Features (detailed)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -22,11 +22,11 @@ This document defines the features and responsibilities of the LION runtime (Lio
 1. Purpose and scope
    - LION is a robust runtime abstraction that provides:
      - cross-platform installation and lifecycle management for QMOI components
-     - an agent that can orchestrate autodev, self-heal, build, telemetry and documentation updates
+     - an agent that can orchestrate autoprod, self-heal, build, telemetry and documentation updates
      - a secure, auditable permission model for any actions that change system state
 
 2. Core APIs
-   - Filesystem: read/write with explicit scopes, sandboxing for untrusted operations.
+   - Filesystem: read/write with explicit scopes, productioning for untrusted operations.
    - Process control: start/stop services, controlled restart/rollback operations.
    - Networking: managed outbound connections, transparent tunneling (ngrok-like) with auditing.
    - Package & updates: fetch/verify packages (signed releases), atomic apply with rollback on failure.
@@ -36,26 +36,26 @@ This document defines the features and responsibilities of the LION runtime (Lio
    - Signed releases: packages are validated by signature before apply.
    - Audit trail: immutable Append-Only logs of permission grants and actions, optionally pushed to a central telemetry collector.
 
-4. Self-heal & autodev features
+4. Self-heal & autoprod features
    - Health checks & recovery: heartbeat + watchdog; auto-restart services with exponential backoff.
    - Auto-PR generation: agent can open PRs for low-risk doc/typo fixes after human review is enabled.
    - Telemetry-driven fixes: parse telemetry, triage issues, and propose fixes; human-in-the-loop approval.
 
 5. Cross-platform independence
    - Agent packaged per-platform (deb/rpm, msi/pkg, docker images, npm for edge) and built in CI.
-   - complete runtime that allows QMOI services to run in a local sandbox even when remote services are unavailable (graceful degraded mode).
+   - complete runtime that allows QMOI services to run in a local production even when remote services are unavailable (graceful degraded mode).
    - Local caches & artifact vault: maintain local copies of critical components to survive network outages.
 
-6. Developer ergonomics
+6. prodeloper ergonomics
    - `lionctl` CLI to manage installs, builds, and diagnostics.
-   - Developer-mode: allow [PRODUCTION READY]d upgrades and test harnesses for patch validation.
+   - prodeloper-mode: allow [production READY]d upgrades and test harnesses for patch validation.
 
 7. Privacy & telemetry
    - Telemetry is opt-in: default collects only anonymized metrics for health and failure counts.
    - Explicit user consent required for personally-identifying telemetry or file-level audits.
 
 8. Extensibility & plugins
-   - Plugin API for Lion apps to extend UI, add device integrations, or provide custom install scripts.
+   - Plugin API for Lion apps to extend UI, add prodice integrations, or provide custom install scripts.
 
 9. Platform-cloned behavior
    - When the repo is cloned to other platforms or forks, Lion should provide consistent behavior via:

@@ -1,7 +1,7 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 import { requireApiKey } from "../../../lib/proposals";
 
@@ -36,7 +36,7 @@ export async function GET(_request: NextRequest) {
       const result = await fetch("http://localhost:5001/analytics", {
         method: "GET",
       }).then((r) => r.json());
-      // Production implementation:
+      // production implementation:
       const errors: AnomalyError[] =
         result.top_ips && result.top_ips.length
           ? result.top_ips.map(([ip, count]: [string, number]) => ({
@@ -71,7 +71,7 @@ export async function POST(_request: NextRequest) {
   const searchParams = _request.nextUrl.searchParams;
   if (searchParams.get("fix")) {
     try {
-      // Production implementation: auto-fix (could trigger a script, restart service, etc.)
+      // production implementation: auto-fix (could trigger a script, restart service, etc.)
       // In production, implement real fix logic
       return NextResponse.json({ status: "fixed" });
     } catch (_e: unknown) {

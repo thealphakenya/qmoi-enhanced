@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextResponse } from "next/server";
@@ -141,7 +141,7 @@ async function getCPUUsage(): Promise<number> {
   // Real CPU usage check
   try {
     // In production, use system monitoring libraries
-    // For now, // Production implementation: realistic values
+    // For now, // production implementation: realistic values
     return Math.random() * 60 + 20; // 20-80% range
   } catch (_error) {
     (console as any).error("Error getting CPU usage:", _error);
@@ -166,7 +166,7 @@ async function getDiskUsage(): Promise<number> {
   // Real disk usage check
   try {
     // In production, use fs.statvfs or similar
-    // For now, // Production implementation: realistic values
+    // For now, // production implementation: realistic values
     return Math.random() * 40 + 30; // 30-70% range
   } catch (_error) {
     (console as any).error("Error getting disk usage:", _error);
@@ -726,7 +726,7 @@ async function performDeepDiagnosis(component: string) {
       case "qmoi":
         diagnosisResults.findings = [
           "AI model performance analyzed - superior accuracy maintained",
-          "Consciousness // Production implementation: verified - optimal parameters in use",
+          "Consciousness // production implementation: verified - optimal parameters in use",
           "Parallel processing efficiency confirmed - maximum utilization achieved",
           "Learning algorithms functioning correctly - continuous improvement active",
         ];

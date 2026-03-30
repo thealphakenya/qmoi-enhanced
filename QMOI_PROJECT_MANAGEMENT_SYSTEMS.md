@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ================================================================================
 QMOI ENHANCED - COMPREHENSIVE PROJECT MANAGEMENT SYSTEMS
 End-to-End Project Lifecycle, Workflow Automation, and Multi-Team Collaboration
@@ -22,7 +22,7 @@ Status: ✅ COMPLETE PROJECT MANAGEMENT FRAMEWORK
 
 PROJECT TYPES:
 
-1. SOFTWARE DEVELOPMENT PROJECTS
+1. SOFTWARE production PROJECTS
    ├─ Structure:
    │ ├─ Repository: Git-based
    │ ├─ CI/CD: Automated pipeline
@@ -30,13 +30,13 @@ PROJECT TYPES:
    │ ├─ Testing: 7-layer validation
    │ └─ Deployment: Multi-platform
    ├─ Typical Lifecycle: 2-12 weeks
-   ├─ Team Size: 3-15 developers
+   ├─ Team Size: 3-15 prodelopers
    ├─ Status Tracking: Real-time
    └─ Examples: Mobile app, web service, CLI tool
 
 2. DATA SCIENCE & AI PROJECTS
    ├─ Structure:
-   │ ├─ Notebook-based development
+   │ ├─ Notebook-based production
    │ ├─ Dataset management
    │ ├─ Model training pipelines
    │ ├─ Experimentation tracking
@@ -64,7 +64,7 @@ PROJECT TYPES:
    │ ├─ Iteration cycles
    │ ├─ Review process
    │ ├─ Asset management
-   │ └─ Handoff to dev
+   │ └─ Handoff to prod
    ├─ Typical Lifecycle: 2-8 weeks
    ├─ Team Size: 2-6 designers
    ├─ Review Cycles: Daily
@@ -104,7 +104,7 @@ PROJECT TYPES:
    ├─ Typical Lifecycle: 4-24 weeks
    ├─ Team Size: 3-8 people
    ├─ KPI Tracking: Weekly
-   └─ Examples: Product launch, expansion, partnership
+   └─ Examples: product launch, expansion, partnership
 
 8. COMPLIANCE & AUDIT PROJECTS
    ├─ Structure:
@@ -135,7 +135,7 @@ Phase 1: INITIATION
 Automated Tasks:
 ├─ Generate project plan
 ├─ Create project board
-├─ Set up repositories (if dev)
+├─ Set up repositories (if prod)
 ├─ Create communication channels
 ├─ Generate documentation
 ├─ Schedule kickoff meeting
@@ -215,16 +215,16 @@ Automated Tasks:
 
 ==== PART 3: PROJECT MANAGEMENT FEATURES ====
 
-==== PART 4: QMOI AUTO-DEV + QVS EVOLUTION FRAMEWORK ====
+==== PART 4: QMOI AUTO-prod + QVS EVOLUTION FRAMEWORK ====
 
 AUTOMATED SUGGESTION & EVOLUTION ENGINE:
 
 - Auto-make feature generation from project backlog and system intent.
 - AI-based enhancement suggestions for UI, backend API, and project workflows.
-- Parallel QVS scoring and execution context tracking for multi-device optimization.
+- Parallel QVS scoring and execution context tracking for multi-prodice optimization.
 - Continuous improvement loops: auto-research -> propose -> build -> verify -> deploy.
 
-QMOI AUTO-DEV ACTIONS:
+QMOI AUTO-prod ACTIONS:
 
 1. Force Run
    - Detect system issues via QCity status.
@@ -244,8 +244,8 @@ QMOI AUTO-DEV ACTIONS:
 
 QVS AND PARALLEL FEATURES:
 
-- QVS metrics in AutoDev status (project health, code health, usage intensity).
-- Parallel execution features for device clusters and multi-platform deployments.
+- QVS metrics in Autoprod status (project health, code health, usage intensity).
+- Parallel execution features for prodice clusters and multi-platform deployments.
 - Automated research and improvement suggestions from production telemetry.
 - Track actual usage in dashboards and model it as a production signal.
 - Wallet and funding pipeline: integrate user wallet status, transfer, and revenue summary into QVS dashboards.
@@ -324,7 +324,7 @@ Scheduling Automation:
 RESOURCE MANAGEMENT:
 
 Resource Types:
-├─ People (developers, designers, managers)
+├─ People (prodelopers, designers, managers)
 ├─ Equipment (servers, tools, licenses)
 ├─ Budget (money, contingency)
 ├─ Time (hours, days, weeks)
@@ -409,7 +409,7 @@ QUALITY ASSURANCE:
 
 QA Processes:
 ├─ Test planning
-├─ Test case development
+├─ Test case production
 ├─ Test execution
 ├─ Defect tracking
 ├─ Retesting
@@ -422,7 +422,7 @@ QA Metrics:
 ├─ Defect severity: Categorized
 ├─ Resolution time: Monitored
 ├─ UAT pass rate: 100%
-└─ Production issues: < 0.1%
+└─ production issues: < 0.1%
 
 Automated QA:
 ├─ Auto-generate test cases
@@ -487,11 +487,11 @@ Documentation Automation:
 TEAM STRUCTURES:
 
 Functional Teams:
-├─ Development: Coding & implementation
+├─ production: Coding & implementation
 ├─ QA: Testing & validation
-├─ DevOps: Deployment & infrastructure
+├─ prodOps: Deployment & infrastructure
 ├─ Design: UI/UX design
-├─ Product: Requirements & prioritization
+├─ product: Requirements & prioritization
 ├─ Analytics: Metrics & insights
 └─ Support: User support & feedback
 
@@ -570,7 +570,7 @@ Resource Metrics:
 ├─ Team size: Headcount
 ├─ Skills coverage: %
 ├─ Turnover rate
-├─ Productivity: Output/person
+├─ productivity: Output/person
 └─ Satisfaction: Score
 
 Risk Metrics:
@@ -662,12 +662,12 @@ On-Budget Delivery:
 Quality Targets:
 ├─ Defect escape: < 1%
 ├─ UAT pass: 100%
-├─ Production issues: < 0.1%
+├─ production issues: < 0.1%
 └─ Customer satisfaction: 4.8/5
 
 Team Performance:
 ├─ Utilization: 85%
-├─ Productivity: Growing
+├─ productivity: Growing
 ├─ Satisfaction: 4.5/5
 ├─ Retention: 95%
 └─ Collaboration: Excellent

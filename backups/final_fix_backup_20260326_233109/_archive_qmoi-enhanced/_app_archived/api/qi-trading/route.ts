@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 6 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 6 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 import libProposals from "../../../../lib/proposals";
 
@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
     const active = searchParams.get("active");
 
     if (stats) {
-      // Production implementation: trading statistics - replace with actual implementation
+      // production implementation: trading statistics - replace with actual implementation
       const statsData: TradingStats = {
         totalTrades: 150,
         successfulTrades: 98,
@@ -76,7 +76,7 @@ export async function GET(request: NextRequest) {
     }
 
     if (history) {
-      // Production implementation: trade history - replace with actual implementation
+      // production implementation: trade history - replace with actual implementation
       const historyData: Trade[] = [
         {
           id: "T123",
@@ -104,7 +104,7 @@ export async function GET(request: NextRequest) {
     }
 
     if (active) {
-      // Production implementation: active trades - replace with actual implementation
+      // production implementation: active trades - replace with actual implementation
       const activeData: Trade[] = [
         {
           id: "T125",
@@ -150,7 +150,7 @@ export async function POST(request: NextRequest) {
     if (action === "execute") {
       // Proposal-first: write a proposal unless explicitly allowed
       const canRun =
-        process.env.PRODUCTION_CONFIRMED === "true" &&
+        process.env.production_CONFIRMED === "true" &&
         process.argv.indexOf("--real") !== -1;
       const proposal = {
         title: "Execute trade",
@@ -167,8 +167,8 @@ export async function POST(request: NextRequest) {
         });
       }
 
-      // Production implementation: trade execution - replace with actual implementation
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // Production implementation: trade execution time
+      // production implementation: trade execution - replace with actual implementation
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // production implementation: trade execution time
 
       const tradeData: Trade = {
         id: `T${Math.floor(Math.random() * 1000)}`,
@@ -178,7 +178,7 @@ export async function POST(request: NextRequest) {
         price: trade.price,
         timestamp: new Date().toISOString(),
         status: "completed",
-        profit: trade.type === "buy" ? trade.amount * 100 : -trade.amount * 50, // Production implementation: profit calculation
+        profit: trade.type === "buy" ? trade.amount * 100 : -trade.amount * 50, // production implementation: profit calculation
       };
 
       return NextResponse.json({
@@ -190,7 +190,7 @@ export async function POST(request: NextRequest) {
 
     if (action === "cancel") {
       const canRun =
-        process.env.PRODUCTION_CONFIRMED === "true" &&
+        process.env.production_CONFIRMED === "true" &&
         process.argv.indexOf("--real") !== -1;
       const proposal = {
         title: "Cancel trade",
@@ -207,8 +207,8 @@ export async function POST(request: NextRequest) {
         });
       }
 
-      // Production implementation: trade cancellation - replace with actual implementation
-      await new Promise((resolve) => setTimeout(resolve, 500)); // Production implementation: cancellation time
+      // production implementation: trade cancellation - replace with actual implementation
+      await new Promise((resolve) => setTimeout(resolve, 500)); // production implementation: cancellation time
 
       return NextResponse.json({
         status: "success",

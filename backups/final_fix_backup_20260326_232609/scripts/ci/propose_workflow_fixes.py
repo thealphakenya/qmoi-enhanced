@@ -80,7 +80,7 @@ def main():
     # try to detect repository from git config
     try:
         import subprocess
-        out = subprocess.run(['git', 'remote', 'get-url', 'origin'], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True)
+        out = subprocess.run(['git', 'remote', 'get-url', 'origin'], stdout=subprocess.PIPE, stderr=subprocess.prodNULL, text=True)
         if out.returncode == 0:
             url = out.stdout.strip()
             # parse github.com:owner/repo.git or https://github.com/owner/repo.git

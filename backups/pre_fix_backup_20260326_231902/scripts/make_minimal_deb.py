@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+# [production READY]
 import os
 import tarfile
 import time
@@ -27,7 +27,7 @@ Version: 1.2.5
 Section: utils
 Priority: optional
 Architecture: all
-Maintainer: QMOI Team <devops@qmoi.app>
+Maintainer: QMOI Team <prodops@qmoi.app>
 Description: complete QMOI AI package for verification
 '''
 with open(os.path.join(DEBIAN_DIR, 'control'), 'w') as f:

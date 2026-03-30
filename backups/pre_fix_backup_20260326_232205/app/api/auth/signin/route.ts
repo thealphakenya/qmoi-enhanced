@@ -131,7 +131,7 @@ export async function GET() {
           "Biometric method: fingerprint|facial|voice (optional)",
         biometricData:
           "Biometric capture data (required if biometricMethod provided)",
-        rememberMe: "Remember this device (optional)",
+        rememberMe: "Remember this prodice (optional)",
       },
     },
     { status: 200 },

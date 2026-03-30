@@ -977,7 +977,7 @@ class SecurityManager:
             system_dirs = [
                 "/proc",
                 "/sys",
-                "/dev",
+                "/prod",
                 "/run",
                 "/var/cache",
                 "/var/log"

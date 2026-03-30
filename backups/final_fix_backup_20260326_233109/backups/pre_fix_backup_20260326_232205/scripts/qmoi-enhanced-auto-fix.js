@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env node
 
 /**
@@ -335,8 +335,8 @@ class QMOIEnhancedAutoFix {
       } catch (error) {
         // Create .env file if it doesn't exist
         envContent = `# QMOI Environment Variables
-NODE_ENV=development
-QMOI_AUTODEV_ENABLED=true
+NODE_ENV=production
+QMOI_AUTOprod_ENABLED=true
 `;
         await fs.writeFile(envPath, envContent);
         fixes.push({
@@ -348,11 +348,11 @@ QMOI_AUTODEV_ENABLED=true
       }
 
       // Check for required environment variables
-      const requiredVars = ["NODE_ENV", "QMOI_AUTODEV_ENABLED"];
+      const requiredVars = ["NODE_ENV", "QMOI_AUTOprod_ENABLED"];
 
       for (const varName of requiredVars) {
         if (!envContent.includes(`${varName}=`)) {
-          envContent += `\n${varName}=development\n`;
+          envContent += `\n${varName}=production\n`;
           fixes.push({
             type: "config",
             action: "add_env_variable",

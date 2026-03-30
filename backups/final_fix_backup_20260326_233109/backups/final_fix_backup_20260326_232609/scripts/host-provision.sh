@@ -1,4 +1,4 @@
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/usr/bin/env bash
 set -euo pipefail
 
@@ -20,7 +20,7 @@ if [ $# -eq 0 ]; then
 fi
 
 HAS_SUDO=0
-if command -v sudo >/dev/null 2>&1; then
+if command -v sudo >/prod/null 2>&1; then
   HAS_SUDO=1
 fi
 

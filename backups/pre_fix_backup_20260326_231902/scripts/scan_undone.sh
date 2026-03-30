@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# [PRODUCTION READY]
+# [production READY]
 set -euo pipefail
 
 KEYWORDS=(implementation real execute simulation production implement DONE FIXED "PENDING_IMPLEMENTATION")
@@ -12,7 +12,7 @@ echo "" >> "$OUTPUT"
 echo "Finding files with keywords: ${KEYWORDS[*]}" >> "$OUTPUT"
 echo "----" >> "$OUTPUT"
 
-if command -v rg >/dev/null 2>&1; then
+if command -v rg >/prod/null 2>&1; then
   for kw in "${KEYWORDS[@]}"; do
     echo "KEYWORD=$kw" >> "$OUTPUT"
     rg --ignore-case --files-with-matches --glob "!*node_modules*" --glob "!*dist*" --glob "!*.git*" --glob "!*__pycache__*" --glob "!*backup*" --glob "!*/*.bak" --glob "!*third_party*" "$kw" . >> "$OUTPUT" || true

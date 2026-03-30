@@ -166,7 +166,7 @@ class QMOIWatchDebug {
   async checkQMOISystems() {
     const systems = [
       "qmoi-core-ai",
-      "qmoi-device-controller",
+      "qmoi-prodice-controller",
       "qmoi-automated-betting",
       "qmoi-gitlab-automation",
       "qmoi-quantum-cloud",
@@ -364,7 +364,7 @@ class QMOIWatchDebug {
 
     const fixStrategies = {
       "qmoi-core-ai": () => this.fixCoreAIError(error),
-      "qmoi-device-controller": () => this.fixDeviceControllerError(error),
+      "qmoi-prodice-controller": () => this.fixprodiceControllerError(error),
       "qmoi-automated-betting": () => this.fixBettingSystemError(error),
       "qmoi-gitlab-automation": () => this.fixGitLabAutomationError(error),
       "qmoi-quantum-cloud": () => this.fixQuantumCloudError(error),
@@ -636,8 +636,8 @@ class QMOIWatchDebug {
     console.log("🔧 Fixing Core AI error...");
   }
 
-  async fixDeviceControllerError(error) {
-    console.log("🔧 Fixing Device Controller error...");
+  async fixprodiceControllerError(error) {
+    console.log("🔧 Fixing prodice Controller error...");
   }
 
   async fixBettingSystemError(error) {

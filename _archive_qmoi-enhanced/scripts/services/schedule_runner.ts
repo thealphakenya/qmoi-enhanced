@@ -30,7 +30,7 @@ function runJob(job: unknown) {
       action: "schedule_run",
       jobId: job.id,
       user: job.user || "system",
-      deviceId: job.deviceId,
+      prodiceId: job.prodiceId,
       command: job.command,
       status,
       durationMs: end - start,

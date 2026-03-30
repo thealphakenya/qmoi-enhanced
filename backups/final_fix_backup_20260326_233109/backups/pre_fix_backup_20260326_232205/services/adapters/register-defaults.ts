@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 import registry from "./index";
 import FacebookAdapter from "./social/facebook";
 import InstagramAdapter from "./social/instagram";
@@ -16,7 +16,7 @@ import AmazonAdapter from "./distribution/amazon";
 import StripeAdapter from "./payments/stripe";
 import PayPalAdapter from "./payments/paypal";
 
-// Register default adapter instances in dry-run/sandbox mode.
+// Register default adapter instances in dry-run/production mode.
 export function registerDefaults() {
   try {
     registry.registerAdapter("facebook", new ());

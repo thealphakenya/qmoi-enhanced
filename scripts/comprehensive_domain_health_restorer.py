@@ -58,7 +58,7 @@ class DomainHealthRestorer:
             'qcity.io',           # QCity domain
             'qvillage.org',       # QVillage domain
             'qglobal.ai',         # QGlobal domain
-            'qparallel.dev',      # QParallel domain
+            'qparallel.prod',      # QParallel domain
             'qvillage.com',       # Working fallback
             'alphaq.ai',          # Working domain
             'qglobal.org'         # Working domain
@@ -177,7 +177,7 @@ class DomainHealthRestorer:
                 return True
 
         # For other domains, suggest registration or DNS setup
-        if domain in ['qcity.io', 'qvillage.org', 'qglobal.ai', 'qparallel.dev']:
+        if domain in ['qcity.io', 'qvillage.org', 'qglobal.ai', 'qparallel.prod']:
             self.log(f"📋 {domain} needs domain registration and DNS configuration")
             issue.fix_applied = True
             issue.fix_details = "Domain registration and DNS configuration required"
@@ -261,7 +261,7 @@ class DomainHealthRestorer:
                 "qcity.io": "Needs domain registration and DNS setup",
                 "qvillage.org": "Needs domain registration and DNS setup",
                 "qglobal.ai": "Needs domain registration and DNS setup",
-                "qparallel.dev": "Needs domain registration and DNS setup"
+                "qparallel.prod": "Needs domain registration and DNS setup"
             },
             "working_domains": {
                 "qvillage.com": "Already working",
@@ -290,7 +290,7 @@ class DomainHealthRestorer:
                 "qcity.io": "Individual SSL certificate needed",
                 "qvillage.org": "Individual SSL certificate needed",
                 "qglobal.ai": "Individual SSL certificate needed",
-                "qparallel.dev": "Individual SSL certificate needed"
+                "qparallel.prod": "Individual SSL certificate needed"
             },
             "certificate_authority": "Let's Encrypt (recommended) or commercial CA",
             "auto_renewal": "Certbot or similar tool for automatic renewal"
@@ -416,7 +416,7 @@ Healthy Domains:          {len(self.domains) - len(self.issues_found)}
 
 📋 IMPLEMENTATION STEPS
 ──────────────────────────────────────────────────────────────────────────────
-1. Register missing domains (qcity.io, qvillage.org, qglobal.ai, qparallel.dev)
+1. Register missing domains (qcity.io, qvillage.org, qglobal.ai, qparallel.prod)
 2. Configure DNS records to point to correct IP addresses
 3. Install SSL certificates (wildcard for *.qmoi.com, individual for others)
 4. Configure web server (nginx) with proper routing

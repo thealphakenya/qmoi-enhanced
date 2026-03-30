@@ -131,7 +131,7 @@ jobs:
               else
                 zip -rq ../../pwa-artifacts/$app.zip . -x "node_modules/*" "*.git*"
               fi
-              cd - >/dev/null
+              cd - >/prod/null
               echo "✓ $app packaged"
             fi
           done
@@ -266,7 +266,7 @@ jobs:
         run: |
           $ANDROID_HOME/emulator/emulator -avd test -no-audio -no-window -gpu off -memory 2048 &
           sleep 30
-          adb devices
+          adb prodices
 
       - name: Install APK on emulator
         run: |
@@ -274,7 +274,7 @@ jobs:
             adb install -r android-artifacts/app-release.apk
             adb shell pm list packages | grep qmoi || echo "Package not found"
             # Optionally run app
-            adb shell am start -n com.qmoi.ai/com.qmoi.ai.MainActivity 2>/dev/null || echo "Could not start app"
+            adb shell am start -n com.qmoi.ai/com.qmoi.ai.MainActivity 2>/prod/null || echo "Could not start app"
           fi
 
   test-windows:

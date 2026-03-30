@@ -26,7 +26,7 @@ class AutoUpdateManager {
 
     // Listen for SW updates (PWA)
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.addEventListener("controllerchange", () => {
+      navigator.serviceWorker.adprodentListener("controllerchange", () => {
         this.notifyUpdateAvailable();
       });
     }
@@ -142,7 +142,7 @@ class AutoUpdateManager {
 
 // Initialize on DOM ready
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => {
+  document.adprodentListener("DOMContentLoaded", () => {
     window.autoUpdateManager = new AutoUpdateManager();
   });
 } else {

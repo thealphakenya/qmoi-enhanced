@@ -305,11 +305,11 @@ class QMOIPercentagesAutomation:
         report.append('## Health Indicators')
         readiness = self.percentages.get('production_readiness_overall', {}).get('value', 0)
         if readiness >= 90:
-            report.append('✅ **PRODUCTION READY**: System demonstrates >90% readiness')
+            report.append('✅ **production READY**: System demonstrates >90% readiness')
         elif readiness >= 70:
-            report.append('⚠️ **PRODUCTION READY WITH CAUTION**: System at 70-89% readiness')
+            report.append('⚠️ **production READY WITH CAUTION**: System at 70-89% readiness')
         else:
-            report.append('❌ **NOT PRODUCTION READY**: System below 70% readiness')
+            report.append('❌ **NOT production READY**: System below 70% readiness')
         
         report.append('')
 

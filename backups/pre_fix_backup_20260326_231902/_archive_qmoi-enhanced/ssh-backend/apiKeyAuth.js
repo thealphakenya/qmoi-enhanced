@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:16Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 // data: Express.js middleware for API key authentication
 module.exports = function apiKeyAuth(req, res, next) {
   const apiKey = req.headers["x-api-key"];

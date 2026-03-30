@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOI script continues to update download links with tunnel.public_url"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -161,7 +161,7 @@ QMOIDOMAINS.md — Freenom & custom fallback domains
 
 QMOIDNS.md — DNS sync, caching, refresh logic
 
-QMOIAUTODEV.md — Developer automation capabilities
+QMOIAUTOprod.md — prodeloper automation capabilities
 
 📦 Additional Notes
 CLI Mode Tip

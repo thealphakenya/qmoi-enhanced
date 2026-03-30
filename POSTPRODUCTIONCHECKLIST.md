@@ -1,6 +1,6 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
-title: "Post-Production Checklist"
+title: "Post-production Checklist"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
@@ -14,7 +14,7 @@ title: "Post-Production Checklist"
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Post-Production Checklist
+# Post-production Checklist
 
 This checklist contains items to run after initial production cutover.
 
@@ -25,14 +25,14 @@ This checklist contains items to run after initial production cutover.
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "POSTPRODUCTIONCHECKLIST.md",
+"file": "POSTproductionCHECKLIST.md",
 "validated_at": "2025-10-26T20:51:22.333175Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
 {
 "name": "title_present",
 "ok": true,
-"detail": "Post-Production Checklist"
+"detail": "Post-production Checklist"
 },
 {
 "name": "links",

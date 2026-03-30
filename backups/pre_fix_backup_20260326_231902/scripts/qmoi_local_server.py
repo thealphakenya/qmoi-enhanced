@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+# [production READY]
 """
-complete, robust helper server used by tests and local development.
+complete, robust helper server used by tests and local production.
 
 Endpoints:
  - GET  /            -> health

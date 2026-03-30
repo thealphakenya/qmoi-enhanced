@@ -17,7 +17,7 @@ export interface BiometricCapture {
   metadata?: {
     attempts: number;
     quality: number;
-    deviceId?: string;
+    prodiceId?: string;
     standard?: string;
   };
 }
@@ -158,7 +158,7 @@ export class AuthService {
         createdAt: now,
         updatedAt: now,
         isActive: true,
-        emailVerified: false, // Production:, send verification email
+        emailVerified: false, // production:, send verification email
         phoneVerified: false,
       };
 
@@ -596,12 +596,12 @@ export class AuthService {
   // Helper methods
 
   private static hashPassword(password: string): string {
-    // Production:, use bcrypt or Argon2
+    // production:, use bcrypt or Argon2
     return Buffer.from(password).toString("base64");
   }
 
   private static verifyPassword(password: string, hash: string): boolean {
-    // Production:, use bcrypt or Argon2 verification
+    // production:, use bcrypt or Argon2 verification
     return Buffer.from(password).toString("base64") === hash;
   }
 
@@ -615,7 +615,7 @@ export class AuthService {
       return { verified: false, confidence: 0 };
     }
 
-    // Production:, use actual biometric matching algorithm
+    // production:, use actual biometric matching algorithm
     // For now, 
     const confidence = Math.min(biometricData.confidence, 0.95);
 

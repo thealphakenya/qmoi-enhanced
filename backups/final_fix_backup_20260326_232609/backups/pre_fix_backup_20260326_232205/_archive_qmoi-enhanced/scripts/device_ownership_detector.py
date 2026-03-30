@@ -7,9 +7,9 @@
 # NOTE: 1 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 #!/usr/bin/env python3
 """
-QMOI Device Ownership Detector
-Automatically detects device restrictions from organizations like M-KOPA, Watu Credit, etc.
-Triggers QMOI Own Device feature when restrictions are detected.
+QMOI prodice Ownership Detector
+Automatically detects prodice restrictions from organizations like M-KOPA, Watu Credit, etc.
+Triggers QMOI Own prodice feature when restrictions are detected.
 """
 
 import os
@@ -33,15 +33,15 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 @dataclass
-class DeviceRestriction:
-    """Represents a detected device restriction"""
+class prodiceRestriction:
+    """Represents a detected prodice restriction"""
     type: str
     severity: str
     description: str
     detected_at: datetime
     organization: str
     restrictions: List[str]
-    device_info: Dict[str, Any]
+    prodice_info: Dict[str, Any]
     unlock_methods: List[str]
 
 @dataclass
@@ -53,23 +53,23 @@ class UnlockResult:
     duration_seconds: float
     errors: List[str]
 
-class DeviceOwnershipDetector:
-    """Advanced device ownership and restriction detection system"""
+class prodiceOwnershipDetector:
+    """Advanced prodice ownership and restriction detection system"""
     
     def __init__(self):
-        self.device_info = self._get_device_info()
+        self.prodice_info = self._get_prodice_info()
         self.known_organizations = {
             'mkopa': {
                 'name': 'M-KOPA',
                 'package_names': ['com.mkopa', 'com.mkopasolar', 'com.mkopasmart'],
                 'signatures': ['mkopa', 'm-kopa', 'mkopasmart'],
-                'restriction_types': ['payment_lock', 'device_admin', 'app_restriction', 'network_lock']
+                'restriction_types': ['payment_lock', 'prodice_admin', 'app_restriction', 'network_lock']
             },
             'watu': {
                 'name': 'Watu Credit',
                 'package_names': ['com.watu', 'com.watucredit', 'com.watucredit'],
                 'signatures': ['watu', 'watu credit', 'watucredit'],
-                'restriction_types': ['loan_lock', 'device_admin', 'usage_monitoring', 'payment_enforcement']
+                'restriction_types': ['loan_lock', 'prodice_admin', 'usage_monitoring', 'payment_enforcement']
             },
             'carrier': {
                 'name': 'Carrier Lock',
@@ -78,18 +78,18 @@ class DeviceOwnershipDetector:
                 'restriction_types': ['network_lock', 'sim_lock', 'carrier_restriction']
             },
             'mdm': {
-                'name': 'Mobile Device Management',
+                'name': 'Mobile prodice Management',
                 'package_names': [],
-                'signatures': ['mdm', 'device_management', 'enterprise'],
-                'restriction_types': ['device_admin', 'policy_enforcement', 'app_management']
+                'signatures': ['mdm', 'prodice_management', 'enterprise'],
+                'restriction_types': ['prodice_admin', 'policy_enforcement', 'app_management']
             }
         }
         self.detection_results = []
         
-    def _get_device_info(self) -> Dict[str, Any]:
-        """Get comprehensive device information"""
+    def _get_prodice_info(self) -> Dict[str, Any]:
+        """Get comprehensive prodice information"""
         try:
-            device_info = {
+            prodice_info = {
                 'platform': platform.system(),
                 'platform_version': platform.version(),
                 'architecture': platform.machine(),
@@ -104,11 +104,11 @@ class DeviceOwnershipDetector:
                 'network_interfaces': self._get_network_info(),
                 'installed_apps': self._get_installed_apps(),
                 'running_processes': self._get_running_processes(),
-                'device_id': self._generate_device_id()
+                'prodice_id': self._generate_prodice_id()
             }
-            return device_info
+            return prodice_info
         except Exception as e:
-            logger.error(f"Error getting device info: {e}")
+            logger.error(f"Error getting prodice info: {e}")
             return {}
     
     def _get_network_info(self) -> Dict[str, Any]:
@@ -229,26 +229,26 @@ class DeviceOwnershipDetector:
             logger.error(f"Error getting running processes: {e}")
             return []
     
-    def _generate_device_id(self) -> str:
-        """Generate unique device identifier"""
+    def _generate_prodice_id(self) -> str:
+        """Generate unique prodice identifier"""
         try:
-            # Combine multiple device characteristics
-            device_chars = [
+            # Combine multiple prodice characteristics
+            prodice_chars = [
                 platform.node(),
                 platform.machine(),
                 str(psutil.cpu_count()),
                 str(psutil.virtual_memory().total),
                 platform.processor()
             ]
-            device_string = ''.join(device_chars)
-            return hashlib.sha256(device_string.encode()).hexdigest()[:16]
+            prodice_string = ''.join(prodice_chars)
+            return hashlib.sha256(prodice_string.encode()).hexdigest()[:16]
         except Exception as e:
-            logger.error(f"Error generating device ID: {e}")
+            logger.error(f"Error generating prodice ID: {e}")
             return "unknown"
     
-    def detect_all_restrictions(self) -> List[DeviceRestriction]:
-        """Detect all types of device restrictions"""
-        logger.info("🔍 Starting comprehensive device restriction detection...")
+    def detect_all_restrictions(self) -> List[prodiceRestriction]:
+        """Detect all types of prodice restrictions"""
+        logger.info("🔍 Starting comprehensive prodice restriction detection...")
         
         all_restrictions = []
         
@@ -286,7 +286,7 @@ class DeviceOwnershipDetector:
         
         return all_restrictions
     
-    def _detect_organization_restrictions(self, org_key: str, org_info: Dict[str, Any]) -> List[DeviceRestriction]:
+    def _detect_organization_restrictions(self, org_key: str, org_info: Dict[str, Any]) -> List[prodiceRestriction]:
         """Detect restrictions from specific organizations"""
         restrictions = []
         
@@ -294,32 +294,32 @@ class DeviceOwnershipDetector:
             # Check for organization-specific apps
             for package_name in org_info['package_names']:
                 if self._check_app_installed(package_name):
-                    restrictions.append(DeviceRestriction(
+                    restrictions.append(prodiceRestriction(
                         type=org_key,
                         severity='high',
                         description=f"{org_info['name']} app detected: {package_name}",
                         detected_at=datetime.now(),
                         organization=org_info['name'],
-                        restrictions=['app_installed', 'device_admin'],
-                        device_info=self.device_info,
-                        unlock_methods=['remove_app', 'disable_device_admin', 'clear_policies']
+                        restrictions=['app_installed', 'prodice_admin'],
+                        prodice_info=self.prodice_info,
+                        unlock_methods=['remove_app', 'disable_prodice_admin', 'clear_policies']
                     ))
             
             # Check for organization signatures in running processes
-            for proc in self.device_info.get('running_processes', []):
+            for proc in self.prodice_info.get('running_processes', []):
                 proc_name = proc.get('name', '').lower()
                 proc_cmdline = proc.get('cmdline', '').lower()
                 
                 for signature in org_info['signatures']:
                     if signature.lower() in proc_name or signature.lower() in proc_cmdline:
-                        restrictions.append(DeviceRestriction(
+                        restrictions.append(prodiceRestriction(
                             type=org_key,
                             severity='medium',
                             description=f"{org_info['name']} process detected: {proc_name}",
                             detected_at=datetime.now(),
                             organization=org_info['name'],
                             restrictions=['process_running', 'background_service'],
-                            device_info=self.device_info,
+                            prodice_info=self.prodice_info,
                             unlock_methods=['terminate_process', 'disable_service', 'remove_app']
                         ))
                         break
@@ -327,14 +327,14 @@ class DeviceOwnershipDetector:
             # Check for organization-specific files and directories
             org_files = self._check_organization_files(org_key, org_info)
             if org_files:
-                restrictions.append(DeviceRestriction(
+                restrictions.append(prodiceRestriction(
                     type=org_key,
                     severity='medium',
-                    description=f"{org_info['name']} files detected on device",
+                    description=f"{org_info['name']} files detected on prodice",
                     detected_at=datetime.now(),
                     organization=org_info['name'],
                     restrictions=['files_present', 'configuration_stored'],
-                    device_info=self.device_info,
+                    prodice_info=self.prodice_info,
                     unlock_methods=['remove_files', 'clear_configuration', 'reset_settings']
                 ))
         
@@ -346,7 +346,7 @@ class DeviceOwnershipDetector:
     def _check_app_installed(self, package_name: str) -> bool:
         """Check if a specific app is installed"""
         try:
-            installed_apps = self.device_info.get('installed_apps', [])
+            installed_apps = self.prodice_info.get('installed_apps', [])
             return any(package_name.lower() in app.lower() for app in installed_apps)
         except Exception as e:
             logger.error(f"Error checking app installation: {e}")
@@ -379,8 +379,8 @@ class DeviceOwnershipDetector:
         
         return org_files
     
-    def _detect_mdm_restrictions(self) -> List[DeviceRestriction]:
-        """Detect Mobile Device Management restrictions"""
+    def _detect_mdm_restrictions(self) -> List[prodiceRestriction]:
+        """Detect Mobile prodice Management restrictions"""
         restrictions = []
         
         try:
@@ -389,30 +389,30 @@ class DeviceOwnershipDetector:
                 try:
                     result = subprocess.run(['profiles', 'list'], capture_output=True, text=True)
                     if result.returncode == 0 and 'MDM' in result.stdout:
-                        restrictions.append(DeviceRestriction(
+                        restrictions.append(prodiceRestriction(
                             type='mdm',
                             severity='high',
                             description='MDM profile detected on macOS',
                             detected_at=datetime.now(),
-                            organization='Mobile Device Management',
-                            restrictions=['mdm_profile', 'device_management'],
-                            device_info=self.device_info,
-                            unlock_methods=['remove_mdm_profile', 'disable_device_management']
+                            organization='Mobile prodice Management',
+                            restrictions=['mdm_profile', 'prodice_management'],
+                            prodice_info=self.prodice_info,
+                            unlock_methods=['remove_mdm_profile', 'disable_prodice_management']
                         ))
                 except:
                     pass
             
-            # Check for device admin policies (Android/Windows)
-            if self._check_device_admin_policies():
-                restrictions.append(DeviceRestriction(
+            # Check for prodice admin policies (Android/Windows)
+            if self._check_prodice_admin_policies():
+                restrictions.append(prodiceRestriction(
                     type='mdm',
                     severity='high',
-                    description='Device admin policies detected',
+                    description='prodice admin policies detected',
                     detected_at=datetime.now(),
-                    organization='Mobile Device Management',
-                    restrictions=['device_admin', 'policy_enforcement'],
-                    device_info=self.device_info,
-                    unlock_methods=['remove_device_admin', 'clear_policies', 'disable_management']
+                    organization='Mobile prodice Management',
+                    restrictions=['prodice_admin', 'policy_enforcement'],
+                    prodice_info=self.prodice_info,
+                    unlock_methods=['remove_prodice_admin', 'clear_policies', 'disable_management']
                 ))
         
         except Exception as e:
@@ -420,19 +420,19 @@ class DeviceOwnershipDetector:
         
         return restrictions
     
-    def _check_device_admin_policies(self) -> bool:
-        """Check for device admin policies"""
+    def _check_prodice_admin_policies(self) -> bool:
+        """Check for prodice admin policies"""
         try:
-            # Check for common MDM/device admin indicators
+            # Check for common MDM/prodice admin indicators
             indicators = [
-                'device_policy',
-                'device_admin',
+                'prodice_policy',
+                'prodice_admin',
                 'enterprise_policy',
                 'mdm_policy',
                 'management_policy'
             ]
             
-            for proc in self.device_info.get('running_processes', []):
+            for proc in self.prodice_info.get('running_processes', []):
                 proc_name = proc.get('name', '').lower()
                 proc_cmdline = proc.get('cmdline', '').lower()
                 
@@ -442,37 +442,37 @@ class DeviceOwnershipDetector:
             
             return False
         except Exception as e:
-            logger.error(f"Error checking device admin policies: {e}")
+            logger.error(f"Error checking prodice admin policies: {e}")
             return False
     
-    def _detect_carrier_restrictions(self) -> List[DeviceRestriction]:
+    def _detect_carrier_restrictions(self) -> List[prodiceRestriction]:
         """Detect carrier locks and network restrictions"""
         restrictions = []
         
         try:
             # Check for SIM lock indicators
             if self._check_sim_lock():
-                restrictions.append(DeviceRestriction(
+                restrictions.append(prodiceRestriction(
                     type='carrier',
                     severity='medium',
                     description='SIM lock detected',
                     detected_at=datetime.now(),
                     organization='Carrier',
                     restrictions=['sim_lock', 'network_restriction'],
-                    device_info=self.device_info,
+                    prodice_info=self.prodice_info,
                     unlock_methods=['unlock_sim', 'remove_carrier_lock', 'network_unlock']
                 ))
             
             # Check for network restrictions
             if self._check_network_restrictions():
-                restrictions.append(DeviceRestriction(
+                restrictions.append(prodiceRestriction(
                     type='carrier',
                     severity='low',
                     description='Network restrictions detected',
                     detected_at=datetime.now(),
                     organization='Carrier',
                     restrictions=['network_throttling', 'bandwidth_limit'],
-                    device_info=self.device_info,
+                    prodice_info=self.prodice_info,
                     unlock_methods=['bypass_network_restrictions', 'vpn_unlock', 'proxy_unlock']
                 ))
         
@@ -485,7 +485,7 @@ class DeviceOwnershipDetector:
         """Check for SIM lock"""
         try:
             # This would require platform-specific implementation
-            # For now, return False as // Production implementation required:
+            # For now, return False as // production implementation required:
             return False
         except Exception as e:
             logger.error(f"Error checking SIM lock: {e}")
@@ -501,7 +501,7 @@ class DeviceOwnershipDetector:
             logger.error(f"Error checking network restrictions: {e}")
             return False
     
-    def _detect_payment_restrictions(self) -> List[DeviceRestriction]:
+    def _detect_payment_restrictions(self) -> List[prodiceRestriction]:
         """Detect payment-based restrictions"""
         restrictions = []
         
@@ -512,20 +512,20 @@ class DeviceOwnershipDetector:
                 'credit', 'debit', 'financial', 'transaction'
             ]
             
-            for proc in self.device_info.get('running_processes', []):
+            for proc in self.prodice_info.get('running_processes', []):
                 proc_name = proc.get('name', '').lower()
                 proc_cmdline = proc.get('cmdline', '').lower()
                 
                 for indicator in payment_indicators:
                     if indicator in proc_name or indicator in proc_cmdline:
-                        restrictions.append(DeviceRestriction(
+                        restrictions.append(prodiceRestriction(
                             type='payment',
                             severity='high',
                             description=f'Payment-related process detected: {proc_name}',
                             detected_at=datetime.now(),
                             organization='Payment System',
                             restrictions=['payment_monitoring', 'billing_enforcement'],
-                            device_info=self.device_info,
+                            prodice_info=self.prodice_info,
                             unlock_methods=['disable_payment_monitoring', 'clear_billing_data', 'bypass_payment_lock']
                         ))
                         break
@@ -535,21 +535,21 @@ class DeviceOwnershipDetector:
         
         return restrictions
     
-    def _detect_app_restrictions(self) -> List[DeviceRestriction]:
+    def _detect_app_restrictions(self) -> List[prodiceRestriction]:
         """Detect app installation and usage restrictions"""
         restrictions = []
         
         try:
             # Check for app store restrictions
             if self._check_app_store_restrictions():
-                restrictions.append(DeviceRestriction(
+                restrictions.append(prodiceRestriction(
                     type='app',
                     severity='medium',
                     description='App store restrictions detected',
                     detected_at=datetime.now(),
                     organization='App Store',
-                    restrictions=['app_installation_block', 'developer_account_lock'],
-                    device_info=self.device_info,
+                    restrictions=['app_installation_block', 'prodeloper_account_lock'],
+                    prodice_info=self.prodice_info,
                     unlock_methods=['bypass_app_store', 'enable_side_loading', 'remove_restrictions']
                 ))
         
@@ -567,21 +567,21 @@ class DeviceOwnershipDetector:
             logger.error(f"Error checking app store restrictions: {e}")
             return False
     
-    def _detect_network_restrictions(self) -> List[DeviceRestriction]:
+    def _detect_network_restrictions(self) -> List[prodiceRestriction]:
         """Detect network access restrictions"""
         restrictions = []
         
         try:
             # Check for firewall or proxy restrictions
             if self._check_firewall_restrictions():
-                restrictions.append(DeviceRestriction(
+                restrictions.append(prodiceRestriction(
                     type='network',
                     severity='low',
                     description='Firewall or proxy restrictions detected',
                     detected_at=datetime.now(),
                     organization='Network Security',
                     restrictions=['firewall_block', 'proxy_restriction'],
-                    device_info=self.device_info,
+                    prodice_info=self.prodice_info,
                     unlock_methods=['bypass_firewall', 'disable_proxy', 'network_unlock']
                 ))
         
@@ -599,21 +599,21 @@ class DeviceOwnershipDetector:
             logger.error(f"Error checking firewall restrictions: {e}")
             return False
     
-    def _detect_location_restrictions(self) -> List[DeviceRestriction]:
+    def _detect_location_restrictions(self) -> List[prodiceRestriction]:
         """Detect location-based restrictions"""
         restrictions = []
         
         try:
             # Check for location tracking or restrictions
             if self._check_location_restrictions():
-                restrictions.append(DeviceRestriction(
+                restrictions.append(prodiceRestriction(
                     type='location',
                     severity='medium',
                     description='Location-based restrictions detected',
                     detected_at=datetime.now(),
                     organization='Location Services',
                     restrictions=['location_tracking', 'geo_restriction'],
-                    device_info=self.device_info,
+                    prodice_info=self.prodice_info,
                     unlock_methods=['disable_location_tracking', 'bypass_geo_restriction', 'location_unlock']
                 ))
         
@@ -636,7 +636,7 @@ class DeviceOwnershipDetector:
         try:
             report = {
                 'timestamp': datetime.now().isoformat(),
-                'device_info': self.device_info,
+                'prodice_info': self.prodice_info,
                 'detected_restrictions': [
                     {
                         'type': r.type,
@@ -662,15 +662,15 @@ class DeviceOwnershipDetector:
             return {}
 
 def main():
-    """Main function to run device ownership detection"""
+    """Main function to run prodice ownership detection"""
     try:
-        logger.info("🚀 Starting QMOI Device Ownership Detection...")
+        logger.info("🚀 Starting QMOI prodice Ownership Detection...")
         
-        detector = DeviceOwnershipDetector()
+        detector = prodiceOwnershipDetector()
         restrictions = detector.detect_all_restrictions()
         
         if restrictions:
-            logger.warning(f"🚨 Found {len(restrictions)} device restrictions!")
+            logger.warning(f"🚨 Found {len(restrictions)} prodice restrictions!")
             for restriction in restrictions:
                 logger.warning(f"  - {restriction.organization}: {restriction.description} ({restriction.severity})")
             
@@ -678,23 +678,23 @@ def main():
             report = detector.generate_detection_report()
             
             # Save report
-            with open('device_restrictions_report.json', 'w') as f:
+            with open('prodice_restrictions_report.json', 'w') as f:
                 json.dump(report, f, indent=2)
             
-            logger.info("📊 Detection report saved to device_restrictions_report.json")
+            logger.info("📊 Detection report saved to prodice_restrictions_report.json")
             
-            # Trigger QMOI Own Device if restrictions found
+            # Trigger QMOI Own prodice if restrictions found
             if restrictions:
-                logger.info("🔓 Triggering QMOI Own Device feature...")
-                # This would trigger the UI component to show the QMOI Own Device button
+                logger.info("🔓 Triggering QMOI Own prodice feature...")
+                # This would trigger the UI component to show the QMOI Own prodice button
                 
         else:
-            logger.info("✅ No device restrictions detected. Device is free!")
+            logger.info("✅ No prodice restrictions detected. prodice is free!")
         
         return restrictions
         
     except Exception as e:
-        logger.error(f"❌ Error in device ownership detection: {e}")
+        logger.error(f"❌ Error in prodice ownership detection: {e}")
         return []
 
 if __name__ == "__main__":

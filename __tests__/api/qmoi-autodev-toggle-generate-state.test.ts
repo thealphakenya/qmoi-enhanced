@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // @ts-expect-error - Required for API route mocking - Required for test mocking
-import { POST as togglePOST } from "@/src/app/api/qmoi/autodev/toggle/route";
-import { POST as generatePOST } from "@/src/app/api/qmoi/autodev/generate-feature/route";
-import { GET as stateGET } from "@/src/app/api/qmoi/autodev/state/route";
+import { POST as togglePOST } from "@/src/app/api/qmoi/autoprod/toggle/route";
+import { POST as generatePOST } from "@/src/app/api/qmoi/autoprod/generate-feature/route";
+import { GET as stateGET } from "@/src/app/api/qmoi/autoprod/state/route";
 
 const upsertMock = jest.fn();
 const findUniqueMock = jest.fn();
@@ -29,7 +29,7 @@ jest.mock("@/lib/taskQueue", () => ({
   },
 }));
 
-describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
+describe("/api/qmoi/autoprod/toggle + generate-feature + state", () => {
   let originalFetch: typeof globalThis.fetch;
 
   beforeAll(() => {
@@ -51,8 +51,8 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
     (globalThis.fetch as jest.Mock).mockClear();
   });
 
-  it("toggles AutoDev on and returns status", async () => {
-    const request = new Request("http://test/api/qmoi/autodev/toggle", {
+  it("toggles Autoprod on and returns status", async () => {
+    const request = new Request("http://test/api/qmoi/autoprod/toggle", {
       method: "POST",
       body: JSON.stringify({ enabled: true }),
       headers: { "Content-Type": "application/json" },
@@ -63,13 +63,13 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
     const body = await response.json();
 
     expect(response.status).toBe(200);
-    expect(body.autodevEnabled).toBe(true);
+    expect(body.autoprodEnabled).toBe(true);
     expect(body.status).toBe("activated");
     expect(upsertMock).toHaveBeenCalledTimes(2);
   });
 
-  it("toggles AutoDev off and returns status", async () => {
-    const request = new Request("http://test/api/qmoi/autodev/toggle", {
+  it("toggles Autoprod off and returns status", async () => {
+    const request = new Request("http://test/api/qmoi/autoprod/toggle", {
       method: "POST",
       body: JSON.stringify({ enabled: false }),
       headers: { "Content-Type": "application/json" },
@@ -80,13 +80,13 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
     const body = await response.json();
 
     expect(response.status).toBe(200);
-    expect(body.autodevEnabled).toBe(false);
+    expect(body.autoprodEnabled).toBe(false);
     expect(body.status).toBe("deactivated");
     expect(upsertMock).toHaveBeenCalledTimes(2);
   });
 
   it("returns 400 from generate-feature when description missing", async () => {
-    const request = new Request("http://test/api/qmoi/autodev/generate-feature", {
+    const request = new Request("http://test/api/qmoi/autoprod/generate-feature", {
       method: "POST",
       body: JSON.stringify({}),
       headers: { "Content-Type": "application/json" },
@@ -101,7 +101,7 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
   });
 
   it("queues feature generation and tracks request", async () => {
-    const request = new Request("http://test/api/qmoi/autodev/generate-feature", {
+    const request = new Request("http://test/api/qmoi/autoprod/generate-feature", {
       method: "POST",
       body: JSON.stringify({ description: "Add master-only mode" }),
       headers: { "Content-Type": "application/json" },
@@ -115,16 +115,16 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
     expect(body.queued).toBe(true);
     expect(body.jobId).toBe("job-123");
     expect(enqueueMock).toHaveBeenCalledWith({
-      name: "autodev:generate",
+      name: "autoprod:generate",
       payload: { description: "Add master-only mode" },
     });
     expect(global.fetch).toHaveBeenCalled();
   });
 
-  it("returns false state when no AutoDev state is found", async () => {
+  it("returns false state when no Autoprod state is found", async () => {
     findUniqueMock.mockResolvedValue(null);
 
-    const request = new Request("http://test/api/qmoi/autodev/state", {
+    const request = new Request("http://test/api/qmoi/autoprod/state", {
       method: "GET",
     });
 
@@ -133,16 +133,16 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
     const body = await response.json();
 
     expect(response.status).toBe(200);
-    expect(body.autodevEnabled).toBe(false);
+    expect(body.autoprodEnabled).toBe(false);
   });
 
-  it("returns saved AutoDev state when present", async () => {
+  it("returns saved Autoprod state when present", async () => {
     findUniqueMock.mockResolvedValue({
-      key: "autodev.state",
+      key: "autoprod.state",
       value: { enabled: true, timestamp: "2026-01-01T00:00:00Z" },
     });
 
-    const request = new Request("http://test/api/qmoi/autodev/state", {
+    const request = new Request("http://test/api/qmoi/autoprod/state", {
       method: "GET",
     });
 
@@ -151,7 +151,7 @@ describe("/api/qmoi/autodev/toggle + generate-feature + state", () => {
     const body = await response.json();
 
     expect(response.status).toBe(200);
-    expect(body.autodevEnabled).toBe(true);
+    expect(body.autoprodEnabled).toBe(true);
     expect(body.timestamp).toBe("2026-01-01T00:00:00Z");
   });
 });

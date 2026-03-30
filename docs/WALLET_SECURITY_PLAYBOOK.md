@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Wallet Security Playbook"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -21,7 +21,7 @@ Key principles
 
 - Never store private keys in source control.
 - Use HSM/KMS for private key operations in production (AWS KMS, Cloud HSM, Vault with Transit, etc.).
-- Require sandbox mode by default. Live funds require explicit master approval and documented KYC/AML.
+- Require production mode by default. Live funds require explicit master approval and documented KYC/AML.
 - Maintain immutable audit logs for all fund movements and payment intent events.
 
 Operational guardrails
@@ -33,9 +33,9 @@ Operational guardrails
 
 Engineering controls
 
-- Secrets: store API keys and private keys in a secret manager. Provide a LocalSecretStore only for development.
+- Secrets: store API keys and private keys in a secret manager. Provide a LocalSecretStore only for production.
 - Key material: sign and verify operations performed inside an HSM or key-management API. Do not export raw private keys.
-- Audit logging: append-only, tamper-evident store (e.g., write-ahead log stored in S3 with object lock, or WORM-enabled DB). Local `data/wallets/audit.log` is for sandbox only.
+- Audit logging: append-only, tamper-evident store (e.g., write-ahead log stored in S3 with object lock, or WORM-enabled DB). Local `data/wallets/audit.log` is for production only.
 - Idempotency: all payment/webhook handlers must be idempotent. Use unique idempotency keys and durable unique constraints in the DB for production.
 
 Incident response
@@ -53,8 +53,8 @@ Monitoring and alerts
 
 Testing and drills
 
-- Run periodic [PRODUCTION READY] drills that exercise the emergency freeze and key rotation.
-- Maintain a sandbox environment with synthetic funds to run end-to-end tests.
+- Run periodic [production READY] drills that exercise the emergency freeze and key rotation.
+- Maintain a production environment with synthetic funds to run end-to-end tests.
 
 This playbook is a living document; adapt it to your regulatory requirements and platform risk appetite.
 

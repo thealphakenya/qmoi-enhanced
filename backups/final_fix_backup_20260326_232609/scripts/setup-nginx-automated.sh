@@ -28,7 +28,7 @@ fi
 
 # Step 1: Install Nginx
 log_info "Checking Nginx installation..."
-if ! command -v nginx &> /dev/null; then
+if ! command -v nginx &> /prod/null; then
     log_info "Installing Nginx..."
     apt-get update
     apt-get install -y nginx

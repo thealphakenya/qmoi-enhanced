@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:15Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 async function makeCall(sock, jid) {
   // If a CALL_PROVIDER_URL is configured, POST a call request there (production)
   const providerUrl = process.env.CALL_PROVIDER_URL;
@@ -20,15 +20,15 @@ async function makeCall(sock, jid) {
         });
         return;
       }
-      // fall through to // Production implementation:d message on failure
+      // fall through to // production implementation:d message on failure
     } catch (e) {
-      // ignore and fall back to // Production implementation:d message
+      // ignore and fall back to // production implementation:d message
     }
   }
 
-  // Fallback: // Production implementation:d call message
+  // Fallback: // production implementation:d call message
   await sock.sendMessage(jid, {
-    text: "📞 AI is calling you now (// Production implementation:d).",
+    text: "📞 AI is calling you now (// production implementation:d).",
   });
 }
 
@@ -51,7 +51,7 @@ async function receiveCall(sock, jid) {
   }
 
   await sock.sendMessage(jid, {
-    text: "📞 AI received your call (// Production implementation:d).",
+    text: "📞 AI received your call (// production implementation:d).",
   });
 }
 

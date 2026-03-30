@@ -27,7 +27,7 @@ Version: 1.2.5
 Section: utils
 Priority: optional
 Architecture: all
-Maintainer: QMOI Team <devops@qmoi.app>
+Maintainer: QMOI Team <prodops@qmoi.app>
 Description: complete QMOI AI package for verification
 '''
 with open(os.path.join(DEBIAN_DIR, 'control'), 'w') as f:

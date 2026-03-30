@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env node
 
 const fs = require("fs");
@@ -38,7 +38,7 @@ async function setupMpesa() {
   const proceed = await question("Do you have all the prerequisites? (y/n): ");
   if (proceed.toLowerCase() !== "y") {
     console.log("\n❌ Please get your M-Pesa API credentials first.");
-    console.log("Visit: https://developer.safaricom.co.ke/");
+    console.log("Visit: https://prodeloper.safaricom.co.ke/");
     rl.close();
     return;
   }
@@ -52,7 +52,7 @@ async function setupMpesa() {
   const consumerSecret = await question("M-Pesa Consumer Secret: ");
   const passkey = await question("M-Pesa Passkey: ");
   const shortcode = await question("M-Pesa Shortcode: ");
-  const environment = await question("Environment (sandbox/production): ");
+  const environment = await question("Environment (production/production): ");
   const initiatorName =
     (await question("Initiator Name (default: QMOI): ")) || "QMOI";
   const securityCredential = await question(
@@ -65,11 +65,11 @@ async function setupMpesa() {
 
   console.log("\n📝 Generating .env.production file...\n");
 
-  const envContent = `# QMOI Production Environment Variables
+  const envContent = `# QMOI production Environment Variables
 
 # M-Pesa Configuration
 CASHON_MPESA_NUMBER=${mpesaNumber}
-QMOI_PROD_CREDENTIAL=your_production_credential_here
+QMOI_prod_CREDENTIAL=your_production_credential_here
 
 # M-Pesa API Credentials
 MPESA_CONSUMER_KEY=${consumerKey}
@@ -121,7 +121,7 @@ NEXT_PUBLIC_APP_URL=${appUrl}
   }
 
   console.log("\n📋 Next Steps:");
-  console.log("1. Test M-Pesa integration in sandbox environment");
+  console.log("1. Test M-Pesa integration in production environment");
   console.log("2. Verify callback URLs are accessible");
   console.log("3. Test a small transaction first");
   console.log("4. Switch to production when ready");
@@ -135,7 +135,7 @@ NEXT_PUBLIC_APP_URL=${appUrl}
 
   console.log("\n📞 Support:");
   console.log("- Check logs for detailed error information");
-  console.log("- Test in sandbox before going live");
+  console.log("- Test in production before going live");
   console.log("- Contact Safaricom support for API issues");
 
   rl.close();

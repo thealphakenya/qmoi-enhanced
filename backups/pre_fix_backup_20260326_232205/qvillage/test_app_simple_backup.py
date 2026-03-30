@@ -111,7 +111,7 @@ def fetch_daily_papers():
         {
             "title": "Advances in Large Language Models",
             "authors": ["Research Team A"],
-            "summary": "Latest developments in LLM technology",
+            "summary": "Latest productions in LLM technology",
             "date": "2024-01-15"
         },
         {

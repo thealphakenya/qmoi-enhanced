@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-## Production Readiness Snapshot
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -22,25 +22,25 @@
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Space Development - Hugging Face Integration v3.0
+# QMOI Space production - Hugging Face Integration v3.0
 
 ## Unified Session, Hooks, and Memory
 
-- QMOI uses a unified memory manager for all agents (device, cloud, CLI), ensuring consistent state, sync, and session data.
+- QMOI uses a unified memory manager for all agents (prodice, cloud, CLI), ensuring consistent state, sync, and session data.
 - All memory is synced across local, Gist, Hugging Face, SCP, and DB backends.
 - LRU cache and SQLite are used for fast access and persistence.
 - Session hooks ensure all agent state is loaded and updated on every session start/stop, across QVillage, cloud, and local.
 
 ## QVillage and Cloud
 
-- QVillage hooks enable device auto-evolution, network optimization, and self-healing.
+- QVillage hooks enable prodice auto-evolution, network optimization, and self-healing.
 - QMOI cloud supports multi-backend sync, failover, and production-grade reliability.
 
-## Production Readiness
+## production Readiness
 
 - All features are production-ready, tested, and support unified session hooks and QMOI memory.
 
-> **See also:** [MASTEROWNS.md](MASTEROWNS.md) | [QMOIDEV.md](QMOIDEV.md) | [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md)
+> **See also:** [MASTEROWNS.md](MASTEROWNS.md) | [QMOIprod.md](QMOIprod.md) | [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md)
 
 ## 🚀 Parallel Error Fixing & Self-Healing
 
@@ -61,14 +61,14 @@
 ## 🚀 QMOI Automation & Self-Healing Enhancements
 
 - **Universal Env Management:** QMOI auto-detects, creates, and manages all required env variables for HuggingFace Spaces, GitLab, Vercel, Netlify, and more. If included, QMOI auto-generates or sets them via API, logs all actions, and notifies the master.
-- **Unified Memory Sync:** All QMOI components (local server, device agent, cloud, scripts) use a unified, secure, and multi-backend memory sync system. Memory is synced via API endpoints (`/sync/push`, `/sync/pull`, `/sync/status`, `/memory/status`) with authentication required for all `/sync/*` endpoints.
+- **Unified Memory Sync:** All QMOI components (local server, prodice agent, cloud, scripts) use a unified, secure, and multi-backend memory sync system. Memory is synced via API endpoints (`/sync/push`, `/sync/pull`, `/sync/status`, `/memory/status`) with authentication required for all `/sync/*` endpoints.
 - **Multi-Backend Support:** Memory can be synced to local file, GitHub Gist, Hugging Face repo, SCP, and (optionally) Postgres/Redis. Backends are configured via environment variables and can be extended.
 - **Error Fix & Redeploy:** QMOI auto-detects and fixes all deployment errors in HuggingFace Spaces, then redeploys in a loop until successful. All fixes, attempts, and results are logged and notified.
-- **Cloud/Parallelization:** QMOI offloads all heavy jobs to cloud/Colab/Dagshub, using parallel jobs for builds, tests, and error-fixes. Local device resources are never used unless explicitly allowed.
-- **Developer/Notification Features:** QMOI always identifies as "QMOI (AI Developer)" in all notifications, logs, and UIs. All notifications are retried, logged, and use fallback channels if needed.
+- **Cloud/Parallelization:** QMOI offloads all heavy jobs to cloud/Colab/Dagshub, using parallel jobs for builds, tests, and error-fixes. Local prodice resources are never used unless explicitly allowed.
+- **prodeloper/Notification Features:** QMOI always identifies as "QMOI (AI prodeloper)" in all notifications, logs, and UIs. All notifications are retried, logged, and use fallback channels if needed.
 - **Asset/Project Tracking:** QMOI auto-tracks all assets, projects, and resources it creates or manages, updating [MASTEROWNS.md](MASTEROWNS.md) in real time.
 
-## Enhanced Hugging Face Space Developer & Automation Features
+## Enhanced Hugging Face Space prodeloper & Automation Features
 
 - **Parallel Error Fixing:** QMOI can fix errors in HuggingFace Space and the main app independently and in parallel. One can be fixed while the other continues to work.
 - **Self-Healing Pipelines & Workflows:** QMOI auto-detects and fixes all errors in its own files, pipelines, and workflows on HuggingFace, even if its own scripts are broken.
@@ -117,7 +117,7 @@ self.logger = logging.getLogger(**name**)
             # Load model with optimizations
             model_kwargs = {
                 "torch_dtype": torch.float16 if self.config["gpu_acceleration"] else torch.float32,
-                "device_map": "auto" if self.config["gpu_acceleration"] else None,
+                "prodice_map": "auto" if self.config["gpu_acceleration"] else None,
                 "trust_remote_code": True,
                 "low_cpu_mem_usage": self.config["memory_optimization"]
             }
@@ -196,7 +196,7 @@ self.logger = logging.getLogger(**name**)
                 "python_version": platform.python_version(),
                 "torch_version": torch.__version__,
                 "gpu_available": torch.cuda.is_available(),
-                "gpu_count": torch.cuda.device_count() if torch.cuda.is_available() else 0,
+                "gpu_count": torch.cuda.prodice_count() if torch.cuda.is_available() else 0,
                 "memory_usage": psutil.virtual_memory().percent
             }
         }
@@ -232,7 +232,7 @@ def create_interface():
         gr.HTML("""
         <div class="main-header">
             <h1>🚀 QMOI Space - Advanced AI Platform</h1>
-            <p>Powered by Hugging Face Spaces | Advanced AI Development & Deployment</p>
+            <p>Powered by Hugging Face Spaces | Advanced AI production & Deployment</p>
         </div>
         """)
 
@@ -250,7 +250,7 @@ def create_interface():
                 with gr.Row():
                     msg = gr.Textbox(
                         label="Your Message",
-                        [PRODUCTION READY]="Ask QMOI anything...",
+                        [production READY]="Ask QMOI anything...",
                         lines=3
                     )
                     send_btn = gr.Button("🚀 Send", variant="primary")
@@ -322,7 +322,7 @@ def create_interface():
 
             batch_input = gr.Textbox(
                 label="Batch Prompts (one per line)",
-                [PRODUCTION READY]="Enter multiple prompts, one per line...",
+                [production READY]="Enter multiple prompts, one per line...",
                 lines=10
             )
 
@@ -340,7 +340,7 @@ def create_interface():
 
             api_prompt = gr.Textbox(
                 label="API Test Prompt",
-                [PRODUCTION READY]="Test prompt for API...",
+                [production READY]="Test prompt for API...",
                 lines=3
             )
 
@@ -489,7 +489,7 @@ MODEL_CONFIG = {
     "memory_optimization": True,
     "low_cpu_mem_usage": True,
     "torch_dtype": "float16",
-    "device_map": "auto",
+    "prodice_map": "auto",
 
     # Caching
     "cache_enabled": True,
@@ -685,7 +685,7 @@ jobs:
 # tests/test_qmoi_space.py
 import pytest
 import torch
-from unittest.[PRODUCTION READY] import Magic[PRODUCTION READY], patch
+from unittest.[production READY] import Magic[production READY], patch
 import tempfile
 import os
 
@@ -706,8 +706,8 @@ class TestQMOISpaceApp:
 
     def test_generation(self, app):
         """Test text generation"""
-        with patch.object(app.model, 'generate') as [PRODUCTION READY]_generate:
-            [PRODUCTION READY]_generate.return_value = torch.tensor([[1, 2, 3, 4]])
+        with patch.object(app.model, 'generate') as [production READY]_generate:
+            [production READY]_generate.return_value = torch.tensor([[1, 2, 3, 4]])
 
             response = app.generate_response("Test prompt")
             assert isinstance(response, str)
@@ -716,8 +716,8 @@ class TestQMOISpaceApp:
         """Test batch generation"""
         prompts = ["Prompt 1", "Prompt 2", "Prompt 3"]
 
-        with patch.object(app, 'generate_response') as [PRODUCTION READY]_gen:
-            [PRODUCTION READY]_gen.side_effect = ["Response 1", "Response 2", "Response 3"]
+        with patch.object(app, 'generate_response') as [production READY]_gen:
+            [production READY]_gen.side_effect = ["Response 1", "Response 2", "Response 3"]
 
             responses = app.batch_generate(prompts)
             assert len(responses) == 3
@@ -1257,7 +1257,7 @@ python app.py --debug
 
 ---
 
-**QMOI Space Development v3.0** - Advanced AI Platform for Hugging Face Spaces
+**QMOI Space production v3.0** - Advanced AI Platform for Hugging Face Spaces
 
 ## ⚙️ Full Automation: Setup, Installation, and Self-Healing
 
@@ -1286,14 +1286,14 @@ python app.py --debug
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "QMOISPACEDEV.md",
+"file": "QMOISPACEprod.md",
 "validated_at": "2025-10-26T20:51:22.561213Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
 {
 "name": "title_present",
 "ok": true,
-"detail": "QMOI Space Development - Hugging Face Integration v3.0"
+"detail": "QMOI Space production - Hugging Face Integration v3.0"
 },
 {
 "name": "links",
@@ -1305,8 +1305,8 @@ python app.py --debug
 "ok": true
 },
 {
-"label": "QMOIDEV.md",
-"target": "./QMOIDEV.md",
+"label": "QMOIprod.md",
+"target": "./QMOIprod.md",
 "ok": true
 },
 {

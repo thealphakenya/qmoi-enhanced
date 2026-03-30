@@ -86,7 +86,7 @@ jobs:
             -name "*.ipa" -o \
             -name "*.img" -o \
             -iname "*qmoi*.zip" \
-          \) 2>/dev/null | grep -v node_modules | head -20 > discovered_assets.txt || true
+          \) 2>/prod/null | grep -v node_modules | head -20 > discovered_assets.txt || true
 
           if [ -s discovered_assets.txt ]; then
             asset_count=$(wc -l < discovered_assets.txt)
@@ -108,7 +108,7 @@ jobs:
           # 🚀 QMOI AI Suite Release ${{ steps.version.outputs.version }}
 
           **Released:** $DATE
-          **All Platforms Ready | Multi-App Support | 12+ Device Types**
+          **All Platforms Ready | Multi-App Support | 12+ prodice Types**
 
           ---
 
@@ -116,12 +116,12 @@ jobs:
 
           | App | Version | Status |
           |-----|---------|--------|
-          | QMOI AI | v1.2.3 | ✅ Production |
-          | QCity | v2.0.1 | ✅ Production |
-          | QShare | v1.0.0 | ✅ Production |
-          | Yap | v1.1.0 | ✅ Production |
-          | QStore | v1.0.0 | ✅ Production |
-          | QVillage | v1.0.0 | ✅ Production |
+          | QMOI AI | v1.2.3 | ✅ production |
+          | QCity | v2.0.1 | ✅ production |
+          | QShare | v1.0.0 | ✅ production |
+          | Yap | v1.1.0 | ✅ production |
+          | QStore | v1.0.0 | ✅ production |
+          | QVillage | v1.0.0 | ✅ production |
 
           ---
 
@@ -159,7 +159,7 @@ jobs:
 
           ---
 
-          ## 🤖 IoT & Specialized Devices
+          ## 🤖 IoT & Specialized prodices
 
           ### Raspberry Pi
           - **qmoi-ai-raspberrypi.img** - Bootable image
@@ -181,7 +181,7 @@ jobs:
           - **QCity:** https://qcity.qmoi.app
           - **QVillage:** https://qvillage.qmoi.app
           - **QShare:** https://qshare.qmoi.app
-          - PWA-ready (install as app on any device)
+          - PWA-ready (install as app on any prodice)
 
           ---
 
@@ -258,7 +258,7 @@ jobs:
           - **Repository:** ${{ github.repository }}
           - **Commit:** ${{ github.sha }}
           - **Branch:** ${{ github.ref_name }}
-          - **Status:** ✅ Production Ready
+          - **Status:** ✅ production Ready
 
           ---
 
@@ -359,7 +359,7 @@ jobs:
                 
                 echo "📦 Creating PWA ZIP: $zip_name"
                 cd "$app_dir"
-                zip -r "../../${zip_name}" . -q 2>/dev/null || true
+                zip -r "../../${zip_name}" . -q 2>/prod/null || true
                 cd ../../
                 
                 if [ -f "$zip_name" ]; then

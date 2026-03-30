@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-QMOI INTELLIGENT PRODUCTION SCANNER v3.0
+QMOI INTELLIGENT production SCANNER v3.0
 Smart scanning focused on actual source code implementations
 Excludes backups/metadata, focuses on real issues
 """
@@ -21,17 +21,17 @@ SKIP_PATTERNS = {
     'undone_backups', '.bak', 'backup', 'archive', 'temp',
     'node_modules', '.git', '.venv', 'venv', '__pycache__',
     'dist', 'build', '.next', '.pytest_cache',
-    'reports', 'tools/metadata', '[PRODUCTION'
+    'reports', 'tools/metadata', '[production'
 }
 
 # Source code extensions only
 SOURCE_EXTENSIONS = {'.js', '.ts', '.jsx', '.tsx', '.py', '.java', '.go', '.rs', '.cpp', '.c'}
 
-# CRITICAL: Actual non-production code patterns (high confidence)
+# CRITICAL: Actual production code patterns (high confidence)
 CRITICAL_PATTERNS = {
     # Comment-based markers
-    r'//\s*PRODUCTION\s+IMPLEMENTATION\s+REQUIRED': 'Production implementation placeholder',
-    r'#\s*PRODUCTION\s+IMPLEMENTATION\s+REQUIRED': 'Production implementation placeholder',
+    r'//\s*production\s+IMPLEMENTATION\s+REQUIRED': 'production implementation placeholder',
+    r'#\s*production\s+IMPLEMENTATION\s+REQUIRED': 'production implementation placeholder',
     r'console\.log\s*\(\s*[\'"]DEBUG': 'Debug logging should be removed in production',
     r'throw\s+new\s+Error\s*\(\s*[\'"]NOT.*IMPL': 'Unimplemented error thrown',
     
@@ -47,7 +47,7 @@ CRITICAL_PATTERNS = {
     r'\b=\s*null\s*;\s*//.*impl': 'Null placeholder instead of implementation',
 }
 
-class SmartProductionScanner:
+class SmartproductionScanner:
     def __init__(self):
         self.issues = defaultdict(list)
         self.files_scanned = 0
@@ -87,7 +87,7 @@ class SmartProductionScanner:
 
     def scan_repository(self):
         """Scan repository for implementation issues"""
-        print("\n🔍 SMART PRODUCTION CODE SCAN")
+        print("\n🔍 SMART production CODE SCAN")
         print("=" * 80)
         print(f"Scanning source code files for implementation issues...")
         print()
@@ -117,7 +117,7 @@ class SmartProductionScanner:
         """Generate focused report"""
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
-║           QMOI SMART PRODUCTION READINESS SCAN REPORT v3.0                 ║
+║           QMOI SMART production READINESS SCAN REPORT v3.0                 ║
 ║                   {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
@@ -132,7 +132,7 @@ Files requiring updates:     {len(self.issues)}
             report += """
 ✅ EXCELLENT NEWS!
 
-No critical non-production code patterns detected in source files.
+No critical production code patterns detected in source files.
 Your codebase appears to be production-ready!
 
 ──────────────────────────────────────────────────────────────────────────────
@@ -152,7 +152,7 @@ Your codebase appears to be production-ready!
         report += f"""
 
 ──────────────────────────────────────────────────────────────────────────────
-🎯 STATUS: {'✅ PRODUCTION READY' if self.issues_found == 0 else f'⚠️ REVIEW NEEDED - {self.issues_found} items'}
+🎯 STATUS: {'✅ production READY' if self.issues_found == 0 else f'⚠️ REVIEW NEEDED - {self.issues_found} items'}
 📝 Generated: {datetime.now().isoformat()}Z
 """
         return report
@@ -161,7 +161,7 @@ Your codebase appears to be production-ready!
         """Save reports"""
         report = self.generate_report()
         
-        report_file = REPORT_DIR / 'SMART_PRODUCTION_SCAN.txt'
+        report_file = REPORT_DIR / 'SMART_production_SCAN.txt'
         with open(report_file, 'w') as f:
             f.write(report)
         
@@ -183,7 +183,7 @@ Your codebase appears to be production-ready!
         print(f"💾 JSON data: {json_file}")
 
 def main():
-    scanner = SmartProductionScanner()
+    scanner = SmartproductionScanner()
     scanner.scan_repository()
     scanner.save_reports()
 

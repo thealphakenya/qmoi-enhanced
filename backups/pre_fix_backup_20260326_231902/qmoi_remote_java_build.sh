@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/bin/bash
 # qmoi_remote_java_build.sh
 # QMOI Automated Remote Java/Android Build & Validation Script

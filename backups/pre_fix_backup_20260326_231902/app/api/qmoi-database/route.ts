@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
@@ -36,7 +36,7 @@ interface MediaItem {
 
 // Master-only access check
 function isMaster(_request: NextRequest) {
-  // Production: implement real master auth via sessions/JWT/tokens
+  // production: implement real master auth via sessions/JWT/tokens
   return _request.headers.get("x-qmoi-master") === "true";
 }
 
@@ -109,8 +109,8 @@ async function downloadMedia(mediaId: string) {
       data: { status: "processing" },
     });
 
-    // Production: implement real download via external APIs or background jobs
-    [PRODUCTION READY] resolve [PRODUCTION READY] items
+    // production: implement real download via external APIs or background jobs
+    [production READY] resolve [production READY] items
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {

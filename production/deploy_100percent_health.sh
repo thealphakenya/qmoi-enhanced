@@ -1,10 +1,10 @@
 #!/bin/bash
-# QMOI PRODUCTION DEPLOYMENT FOR 100% DOMAIN HEALTH
+# QMOI production DEPLOYMENT FOR 100% DOMAIN HEALTH
 # This script deploys all necessary components for complete domain health
 
 set -e
 
-echo "🚀 QMOI 100% Domain Health Production Deployment"
+echo "🚀 QMOI 100% Domain Health production Deployment"
 echo "================================================"
 
 # Colors for output
@@ -62,9 +62,9 @@ if [ ! -f /etc/letsencrypt/live/qmoi.com/fullchain.pem ]; then
 fi
 
 # Individual certificates for other domains (if they resolve)
-DOMAINS="qcity.io qvillage.org qglobal.ai qparallel.dev"
+DOMAINS="qcity.io qvillage.org qglobal.ai qparallel.prod"
 for domain in $DOMAINS; do
-    if nslookup $domain >/dev/null 2>&1; then
+    if nslookup $domain >/prod/null 2>&1; then
         if [ ! -f /etc/letsencrypt/live/$domain/fullchain.pem ]; then
             log "Getting SSL certificate for $domain"
             certbot certonly --standalone -d $domain --non-interactive --agree-tos --email admin@qmoi.com || warning "SSL setup failed for $domain"
@@ -95,7 +95,7 @@ systemctl start nginx || error "Failed to start nginx"
 systemctl enable nginx || warning "Failed to enable nginx auto-start"
 
 # 6. Configure firewall (if ufw is available)
-if command -v ufw >/dev/null 2>&1; then
+if command -v ufw >/prod/null 2>&1; then
     log "Configuring firewall..."
     ufw allow 'Nginx Full' || warning "Failed to configure firewall"
 fi
@@ -108,7 +108,7 @@ log "Setting up SSL certificate auto-renewal..."
 log "Creating production health check script..."
 cat > /usr/local/bin/qmoi-health-check << 'EOF'
 #!/bin/bash
-# QMOI Production Health Check Script
+# QMOI production Health Check Script
 python3 /opt/qmoi/scripts/100percent_domain_health_checker.py
 EOF
 
@@ -118,12 +118,12 @@ chmod +x /usr/local/bin/qmoi-health-check
 log "Setting up health monitoring..."
 (crontab -l ; echo "*/5 * * * * /usr/local/bin/qmoi-health-check") | crontab - || warning "Failed to set up monitoring"
 
-success "Production deployment completed!"
+success "production deployment completed!"
 echo ""
 echo "🎉 QMOI domains are now configured for 100% health!"
 echo ""
 echo "Next steps:"
-echo "1. Register any missing domains (qcity.io, qvillage.org, qglobal.ai, qparallel.dev)"
+echo "1. Register any missing domains (qcity.io, qvillage.org, qglobal.ai, qparallel.prod)"
 echo "2. Configure DNS records to point to this server's IP"
 echo "3. Run: qmoi-health-check"
 echo "4. Verify all domains show 100% health"

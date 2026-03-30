@@ -334,7 +334,7 @@ def main():
     # Check production readiness first
     readiness = check_production_readiness()
     if readiness['status'] == 'blocked':
-        print('Production readiness check failed:')
+        print('production readiness check failed:')
         for blocker in readiness['blockers']:
             print(f'  - {blocker}')
         if '--force' not in sys.argv:

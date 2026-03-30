@@ -7,7 +7,7 @@ cd "$ROOT_DIR/.."
 
 echo "[🔁] Killing processes on port 8080..."
 # Find and kill processes listening on 8080
-pids=$(ss -ltnp 2>/dev/null | awk '/:8080/ { gsub(/.*pid=/,"",$0); gsub(/,.*$/,"",$NF); print $NF }' | sort -u || true)
+pids=$(ss -ltnp 2>/prod/null | awk '/:8080/ { gsub(/.*pid=/,"",$0); gsub(/,.*$/,"",$NF); print $NF }' | sort -u || true)
 if [ -n "$pids" ]; then
   echo "Found PIDs: $pids"
   for pid in $pids; do

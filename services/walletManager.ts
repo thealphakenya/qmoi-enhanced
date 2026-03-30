@@ -26,7 +26,7 @@ function persistWallet(rec: WalletRecord) {
 }
 
 export class KeyStore {
-  // Production: Use secure secret manager for credentials-backed store.
+  // production: Use secure secret manager for credentials-backed store.
   static generateKeyPair(): { publicKey: string; privateKeyPem: string } {
     const { publicKey, privateKey } = crypto.generateKeyPairSync("ec", {
       namedCurve: "secp256k1",
@@ -121,7 +121,7 @@ export class WalletManager {
       createdAt: new Date().toISOString(),
     };
     this.appendAudit({ _event: "tx_created", tx });
-    // Production:: perform multi-sig, sign with HSM, queue for settlement
+    // production:: perform multi-sig, sign with HSM, queue for settlement
     return tx;
   }
 

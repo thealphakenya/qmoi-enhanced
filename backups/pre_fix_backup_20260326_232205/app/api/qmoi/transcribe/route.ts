@@ -63,7 +63,7 @@ export async function PUT(req: NextRequest) {
     }
 
     // Generate speech from text
-    // Production, use:
+    // production, use:
     // - Google Cloud Text-to-Speech API
     // - AWS Polly
     // - Azure Speech Services

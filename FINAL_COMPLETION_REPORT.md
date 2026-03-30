@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Master Control System - Final Completion Report
 
 **Generated**: January 25, 2026  
-**Status**: ✅ COMPLETE & PRODUCTION READY  
+**Status**: ✅ COMPLETE & production READY  
 **Version**: 1.0.0
 
 ---
@@ -64,7 +64,7 @@ Successfully implemented a complete Master Control System for QMOI with comprehe
 
 ### Phase 5: Deployment & Testing (3 files)
 - [x] `deploy.sh` - Build & deploy script
-- [x] `deploy-prod.sh` - Production deployment
+- [x] `deploy-prod.sh` - production deployment
 - [x] `test-master.sh` - Integration test suite
 
 ---
@@ -267,14 +267,14 @@ cp .env.local.data .env.local
 # 4. Build application
 npm run build
 
-# 5. Start development server
-npm run dev
+# 5. Start production server
+npm run prod
 
 # 6. Access dashboard
 # https://qmoi.ai/admin/master/login
 ```
 
-### Production Deployment
+### production Deployment
 
 ```bash
 # Build
@@ -429,7 +429,7 @@ bash test-master.sh
 
 ### Scripts
 - **deploy.sh** - Build and verify
-- **deploy-prod.sh** - Production deployment
+- **deploy-prod.sh** - production deployment
 - **test-master.sh** - Run tests
 
 ### Support Contacts
@@ -487,7 +487,7 @@ The QMOI Master Control System has been successfully implemented with:
 
 ---
 
-**Status**: 🟢 **PRODUCTION READY**
+**Status**: 🟢 **production READY**
 
 **Date**: January 25, 2026  
 **Version**: 1.0.0  

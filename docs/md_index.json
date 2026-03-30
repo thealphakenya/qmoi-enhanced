@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 {
   "generated": "2025-10-25T00:33:34.105306Z",
   "root": "/workspaces/qmoi-enhanced",
@@ -10,7 +10,7 @@
       "mtime": 1761352352.2338338
     },
     {
-      "path": "ALLDEVICESSETTINGS.md",
+      "path": "ALLprodICESSETTINGS.md",
       "size": 2316,
       "mtime": 1761352352.234834
     },
@@ -65,7 +65,7 @@
       "mtime": 1761352352.2468338
     },
     {
-      "path": "AU[PRODUCTION READY]WNLOAD.md",
+      "path": "AU[production READY]WNLOAD.md",
       "size": 3474,
       "mtime": 1761352352.247834
     },
@@ -150,17 +150,17 @@
       "mtime": 1761352352.254834
     },
     {
-      "path": "DEVCOMMANDS.md",
+      "path": "prodCOMMANDS.md",
       "size": 2709,
       "mtime": 1761352352.2558339
     },
     {
-      "path": "DEVICERESOURCEOPTIMIZATION.md",
+      "path": "prodICERESOURCEOPTIMIZATION.md",
       "size": 2163,
       "mtime": 1761352352.2558339
     },
     {
-      "path": "DOWNLOADQMOIAIAPPALLDEVICES.md",
+      "path": "DOWNLOADQMOIAIAPPALLprodICES.md",
       "size": 11105,
       "mtime": 1761352352.2568338
     },
@@ -315,12 +315,12 @@
       "mtime": 1761352352.2758338
     },
     {
-      "path": "POSTPRODUCTIONCHECKLIST.md",
+      "path": "POSTproductionCHECKLIST.md",
       "size": 556,
       "mtime": 1761352352.276834
     },
     {
-      "path": "PRODUCTIONCHECKLIST.md",
+      "path": "productionCHECKLIST.md",
       "size": 2514,
       "mtime": 1761352352.276834
     },
@@ -345,12 +345,12 @@
       "mtime": 1761352352.2788339
     },
     {
-      "path": "QCITYDEVICEAUTOUPGRADE.md",
+      "path": "QCITYprodICEAUTOUPGRADE.md",
       "size": 8596,
       "mtime": 1761352352.2788339
     },
     {
-      "path": "QCITYMAINDEVICE.md",
+      "path": "QCITYMAINprodICE.md",
       "size": 13602,
       "mtime": 1761352352.2798338
     },
@@ -375,7 +375,7 @@
       "mtime": 1761352352.280834
     },
     {
-      "path": "QCITY_DEVICE_MANAGEMENT.md",
+      "path": "QCITY_prodICE_MANAGEMENT.md",
       "size": 1966,
       "mtime": 1761352352.281834
     },
@@ -560,12 +560,12 @@
       "mtime": 1761352352.303834
     },
     {
-      "path": "QMOIALLDEVICESHANDSFREE.md",
+      "path": "QMOIALLprodICESHANDSFREE.md",
       "size": 15003,
       "mtime": 1761352352.304834
     },
     {
-      "path": "QMOIALLDEVICESINSTALL.md",
+      "path": "QMOIALLprodICESINSTALL.md",
       "size": 8187,
       "mtime": 1761352352.304834
     },
@@ -605,7 +605,7 @@
       "mtime": 1761352352.3088338
     },
     {
-      "path": "QMOIAUTOAPPSDEV.md",
+      "path": "QMOIAUTOAPPSprod.md",
       "size": 2974,
       "mtime": 1761352352.3088338
     },
@@ -615,12 +615,12 @@
       "mtime": 1761352352.309834
     },
     {
-      "path": "QMOIAUTODEV.md",
+      "path": "QMOIAUTOprod.md",
       "size": 5371,
       "mtime": 1761352352.309834
     },
     {
-      "path": "QMOIAUTODEVDOCTESTS.MD",
+      "path": "QMOIAUTOprodDOCTESTS.MD",
       "size": 2732,
       "mtime": 1761352352.309834
     },
@@ -745,12 +745,12 @@
       "mtime": 1761352352.323834
     },
     {
-      "path": "QMOIDEV.md",
+      "path": "QMOIprod.md",
       "size": 5569,
       "mtime": 1761352352.3248339
     },
     {
-      "path": "QMOIDEVICES.md",
+      "path": "QMOIprodICES.md",
       "size": 15665,
       "mtime": 1761352352.3248339
     },
@@ -835,17 +835,17 @@
       "mtime": 1761352352.333834
     },
     {
-      "path": "QMOIGITHUBDEV.md",
+      "path": "QMOIGITHUBprod.md",
       "size": 16326,
       "mtime": 1761352352.335834
     },
     {
-      "path": "QMOIGITLABDEV.md",
+      "path": "QMOIGITLABprod.md",
       "size": 5489,
       "mtime": 1761352352.336834
     },
     {
-      "path": "QMOIGITPODDEV.md",
+      "path": "QMOIGITPODprod.md",
       "size": 2716,
       "mtime": 1761352352.336834
     },
@@ -895,12 +895,12 @@
       "mtime": 1761352352.340834
     },
     {
-      "path": "QMOIOWNDEVICE.md",
+      "path": "QMOIOWNprodICE.md",
       "size": 22399,
       "mtime": 1761352352.3418338
     },
     {
-      "path": "QMOIPREDEVDOCACTIONS.md",
+      "path": "QMOIPREprodDOCACTIONS.md",
       "size": 2144,
       "mtime": 1761352352.3418338
     },
@@ -945,7 +945,7 @@
       "mtime": 1761352352.3478339
     },
     {
-      "path": "QMOISPACEDEV.md",
+      "path": "QMOISPACEprod.md",
       "size": 42792,
       "mtime": 1761352352.3488338
     },
@@ -970,7 +970,7 @@
       "mtime": 1761352352.353834
     },
     {
-      "path": "QMOIVERCELDEV.md",
+      "path": "QMOIVERCELprod.md",
       "size": 2210,
       "mtime": 1761352352.3548338
     },
@@ -1315,17 +1315,17 @@
       "mtime": 1761352352.408834
     },
     {
-      "path": "docs/QMOIGITHUBDEV.md",
+      "path": "docs/QMOIGITHUBprod.md",
       "size": 1983,
       "mtime": 1761352352.408834
     },
     {
-      "path": "docs/QMOIGITLABDEV.md",
+      "path": "docs/QMOIGITLABprod.md",
       "size": 3541,
       "mtime": 1761352352.409834
     },
     {
-      "path": "docs/QMOIVERCELDEV.md",
+      "path": "docs/QMOIVERCELprod.md",
       "size": 1950,
       "mtime": 1761352352.409834
     },
@@ -1395,7 +1395,7 @@
       "mtime": 1761352352.4368339
     },
     {
-      "path": "qmoi-enhanced/ALLDEVICESSETTINGS.md",
+      "path": "qmoi-enhanced/ALLprodICESSETTINGS.md",
       "size": 2316,
       "mtime": 1761352352.437834
     },
@@ -1430,7 +1430,7 @@
       "mtime": 1761352352.4408338
     },
     {
-      "path": "qmoi-enhanced/AU[PRODUCTION READY]WNLOAD.md",
+      "path": "qmoi-enhanced/AU[production READY]WNLOAD.md",
       "size": 3474,
       "mtime": 1761352352.4408338
     },
@@ -1500,17 +1500,17 @@
       "mtime": 1761352352.447834
     },
     {
-      "path": "qmoi-enhanced/DEVCOMMANDS.md",
+      "path": "qmoi-enhanced/prodCOMMANDS.md",
       "size": 2709,
       "mtime": 1761352352.448834
     },
     {
-      "path": "qmoi-enhanced/DEVICERESOURCEOPTIMIZATION.md",
+      "path": "qmoi-enhanced/prodICERESOURCEOPTIMIZATION.md",
       "size": 2163,
       "mtime": 1761352352.448834
     },
     {
-      "path": "qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md",
+      "path": "qmoi-enhanced/DOWNLOADQMOIAIAPPALLprodICES.md",
       "size": 7548,
       "mtime": 1761352352.448834
     },
@@ -1625,12 +1625,12 @@
       "mtime": 1761352352.471834
     },
     {
-      "path": "qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md",
+      "path": "qmoi-enhanced/QCITYprodICEAUTOUPGRADE.md",
       "size": 8596,
       "mtime": 1761352352.4728339
     },
     {
-      "path": "qmoi-enhanced/QCITYMAINDEVICE.md",
+      "path": "qmoi-enhanced/QCITYMAINprodICE.md",
       "size": 13602,
       "mtime": 1761352352.4738338
     },
@@ -1655,7 +1655,7 @@
       "mtime": 1761352352.4768338
     },
     {
-      "path": "qmoi-enhanced/QCITY_DEVICE_MANAGEMENT.md",
+      "path": "qmoi-enhanced/QCITY_prodICE_MANAGEMENT.md",
       "size": 1966,
       "mtime": 1761352352.4768338
     },
@@ -1810,12 +1810,12 @@
       "mtime": 1761352352.4958339
     },
     {
-      "path": "qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md",
+      "path": "qmoi-enhanced/QMOIALLprodICESHANDSFREE.md",
       "size": 15003,
       "mtime": 1761352352.4958339
     },
     {
-      "path": "qmoi-enhanced/QMOIALLDEVICESINSTALL.md",
+      "path": "qmoi-enhanced/QMOIALLprodICESINSTALL.md",
       "size": 8187,
       "mtime": 1761352352.4968338
     },
@@ -1855,7 +1855,7 @@
       "mtime": 1761352352.4998338
     },
     {
-      "path": "qmoi-enhanced/QMOIAUTOAPPSDEV.md",
+      "path": "qmoi-enhanced/QMOIAUTOAPPSprod.md",
       "size": 6818,
       "mtime": 1761352352.4998338
     },
@@ -1865,12 +1865,12 @@
       "mtime": 1761352352.500834
     },
     {
-      "path": "qmoi-enhanced/QMOIAUTODEV.md",
+      "path": "qmoi-enhanced/QMOIAUTOprod.md",
       "size": 5371,
       "mtime": 1761352352.500834
     },
     {
-      "path": "qmoi-enhanced/QMOIAUTODEVDOCTESTS.MD",
+      "path": "qmoi-enhanced/QMOIAUTOprodDOCTESTS.MD",
       "size": 2732,
       "mtime": 1761352352.500834
     },
@@ -1980,12 +1980,12 @@
       "mtime": 1761352352.5098338
     },
     {
-      "path": "qmoi-enhanced/QMOIDEV.md",
+      "path": "qmoi-enhanced/QMOIprod.md",
       "size": 5569,
       "mtime": 1761352352.5098338
     },
     {
-      "path": "qmoi-enhanced/QMOIDEVICES.md",
+      "path": "qmoi-enhanced/QMOIprodICES.md",
       "size": 15665,
       "mtime": 1761352352.510834
     },
@@ -2060,17 +2060,17 @@
       "mtime": 1761352352.5198338
     },
     {
-      "path": "qmoi-enhanced/QMOIGITHUBDEV.md",
+      "path": "qmoi-enhanced/QMOIGITHUBprod.md",
       "size": 16326,
       "mtime": 1761352352.520834
     },
     {
-      "path": "qmoi-enhanced/QMOIGITLABDEV.md",
+      "path": "qmoi-enhanced/QMOIGITLABprod.md",
       "size": 5489,
       "mtime": 1761352352.520834
     },
     {
-      "path": "qmoi-enhanced/QMOIGITPODDEV.md",
+      "path": "qmoi-enhanced/QMOIGITPODprod.md",
       "size": 2716,
       "mtime": 1761352352.520834
     },
@@ -2115,12 +2115,12 @@
       "mtime": 1761352352.523834
     },
     {
-      "path": "qmoi-enhanced/QMOIOWNDEVICE.md",
+      "path": "qmoi-enhanced/QMOIOWNprodICE.md",
       "size": 22399,
       "mtime": 1761352352.524834
     },
     {
-      "path": "qmoi-enhanced/QMOIPREDEVDOCACTIONS.md",
+      "path": "qmoi-enhanced/QMOIPREprodDOCACTIONS.md",
       "size": 2144,
       "mtime": 1761352352.524834
     },
@@ -2160,7 +2160,7 @@
       "mtime": 1761352352.527834
     },
     {
-      "path": "qmoi-enhanced/QMOISPACEDEV.md",
+      "path": "qmoi-enhanced/QMOISPACEprod.md",
       "size": 42792,
       "mtime": 1761352352.5288339
     },
@@ -2185,7 +2185,7 @@
       "mtime": 1761352352.530834
     },
     {
-      "path": "qmoi-enhanced/QMOIVERCELDEV.md",
+      "path": "qmoi-enhanced/QMOIVERCELprod.md",
       "size": 2210,
       "mtime": 1761352352.530834
     },
@@ -2460,17 +2460,17 @@
       "mtime": 1761352352.557834
     },
     {
-      "path": "qmoi-enhanced/docs/QMOIGITHUBDEV.md",
+      "path": "qmoi-enhanced/docs/QMOIGITHUBprod.md",
       "size": 1983,
       "mtime": 1761352352.559834
     },
     {
-      "path": "qmoi-enhanced/docs/QMOIGITLABDEV.md",
+      "path": "qmoi-enhanced/docs/QMOIGITLABprod.md",
       "size": 3541,
       "mtime": 1761352352.559834
     },
     {
-      "path": "qmoi-enhanced/docs/QMOIVERCELDEV.md",
+      "path": "qmoi-enhanced/docs/QMOIVERCELprod.md",
       "size": 1950,
       "mtime": 1761352352.559834
     },

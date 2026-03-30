@@ -1,17 +1,17 @@
-// NOTE: 2 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { QmoiPlugin } from "./PluginManager";
 
 // complete non-JSX plugin to avoid TSX in .ts file.
-export const DeviceHealthReviewerPlugin: QmoiPlugin = {
-  id: "device-health-reviewer",
-  name: "Device Health Reviewer",
-  description: "Analyzes device stats and suggests optimizations.",
+export const prodiceHealthReviewerPlugin: QmoiPlugin = {
+  id: "prodice-health-reviewer",
+  name: "prodice Health Reviewer",
+  description: "Analyzes prodice stats and suggests optimizations.",
   init() {},
   activate() {},
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    // Non-UI // Production implementation: for server-side builds
+    // Non-UI // production implementation: for server-side builds
     return null;
   },
 };

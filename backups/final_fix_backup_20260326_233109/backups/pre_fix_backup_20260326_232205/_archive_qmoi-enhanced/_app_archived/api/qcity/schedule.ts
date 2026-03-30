@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 import { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import path from "path";
@@ -28,7 +28,7 @@ const handler = requireRole(["admin", "master"])(async (
     return res.status(200).json({ items: schedules });
   }
   if (method === "POST") {
-    const { name, command, cron, deviceId, notify } = body;
+    const { name, command, cron, prodiceId, notify } = body;
     if (!name || !command || !cron)
       return res.status(400).json({ error: "required fields" });
     const job = {
@@ -36,7 +36,7 @@ const handler = requireRole(["admin", "master"])(async (
       name,
       command,
       cron,
-      deviceId,
+      prodiceId,
       notify,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),

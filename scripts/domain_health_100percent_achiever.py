@@ -52,7 +52,7 @@ class DomainHealth100PercentAchiever:
             'qcity.io',           # QCity domain - must be registered
             'qvillage.org',       # QVillage domain - must be registered
             'qglobal.ai',         # QGlobal domain - must be registered
-            'qparallel.dev',      # QParallel domain - must be registered
+            'qparallel.prod',      # QParallel domain - must be registered
         ]
 
         self.working_domains = [
@@ -301,12 +301,12 @@ class DomainHealth100PercentAchiever:
         self.log("📜 Creating production deployment script for 100% domain health")
 
         script_content = """#!/bin/bash
-# QMOI PRODUCTION DEPLOYMENT FOR 100% DOMAIN HEALTH
+# QMOI production DEPLOYMENT FOR 100% DOMAIN HEALTH
 # This script deploys all necessary components for complete domain health
 
 set -e
 
-echo "🚀 QMOI 100% Domain Health Production Deployment"
+echo "🚀 QMOI 100% Domain Health production Deployment"
 echo "================================================"
 
 # Colors for output
@@ -364,9 +364,9 @@ if [ ! -f /etc/letsencrypt/live/qmoi.com/fullchain.pem ]; then
 fi
 
 # Individual certificates for other domains (if they resolve)
-DOMAINS="qcity.io qvillage.org qglobal.ai qparallel.dev"
+DOMAINS="qcity.io qvillage.org qglobal.ai qparallel.prod"
 for domain in $DOMAINS; do
-    if nslookup $domain >/dev/null 2>&1; then
+    if nslookup $domain >/prod/null 2>&1; then
         if [ ! -f /etc/letsencrypt/live/$domain/fullchain.pem ]; then
             log "Getting SSL certificate for $domain"
             certbot certonly --standalone -d $domain --non-interactive --agree-tos --email admin@qmoi.com || warning "SSL setup failed for $domain"
@@ -397,7 +397,7 @@ systemctl start nginx || error "Failed to start nginx"
 systemctl enable nginx || warning "Failed to enable nginx auto-start"
 
 # 6. Configure firewall (if ufw is available)
-if command -v ufw >/dev/null 2>&1; then
+if command -v ufw >/prod/null 2>&1; then
     log "Configuring firewall..."
     ufw allow 'Nginx Full' || warning "Failed to configure firewall"
 fi
@@ -410,7 +410,7 @@ log "Setting up SSL certificate auto-renewal..."
 log "Creating production health check script..."
 cat > /usr/local/bin/qmoi-health-check << 'EOF'
 #!/bin/bash
-# QMOI Production Health Check Script
+# QMOI production Health Check Script
 python3 /opt/qmoi/scripts/100percent_domain_health_checker.py
 EOF
 
@@ -420,12 +420,12 @@ chmod +x /usr/local/bin/qmoi-health-check
 log "Setting up health monitoring..."
 (crontab -l ; echo "*/5 * * * * /usr/local/bin/qmoi-health-check") | crontab - || warning "Failed to set up monitoring"
 
-success "Production deployment completed!"
+success "production deployment completed!"
 echo ""
 echo "🎉 QMOI domains are now configured for 100% health!"
 echo ""
 echo "Next steps:"
-echo "1. Register any missing domains (qcity.io, qvillage.org, qglobal.ai, qparallel.dev)"
+echo "1. Register any missing domains (qcity.io, qvillage.org, qglobal.ai, qparallel.prod)"
 echo "2. Configure DNS records to point to this server's IP"
 echo "3. Run: qmoi-health-check"
 echo "4. Verify all domains show 100% health"
@@ -443,7 +443,7 @@ echo "- Check logs: tail -f /var/log/nginx/error.log"
         # Make executable
         os.chmod(script_path, 0o755)
 
-        self.log(f"✅ Production deployment script created: {script_path}")
+        self.log(f"✅ production deployment script created: {script_path}")
 
     def create_100percent_health_checker(self):
         """Create the 100% health checker script"""
@@ -546,7 +546,7 @@ These domains MUST be registered and configured for 100% health:
 1. **qcity.io** - DNS: ❌ Not resolving
 2. **qvillage.org** - DNS: ❌ Not resolving
 3. **qglobal.ai** - DNS: ❌ Not resolving
-4. **qparallel.dev** - DNS: ❌ Not resolving
+4. **qparallel.prod** - DNS: ❌ Not resolving
 
 ### ⚠️ SUBDOMAINS NEEDING SSL/ROUTING (4/8)
 These subdomains have DNS but need SSL certificates and routing:
@@ -562,7 +562,7 @@ These subdomains have DNS but need SSL certificates and routing:
 
 #### Step 1.1: Choose a Domain Registrar
 Recommended registrars:
-- **Namecheap** (Best for developers)
+- **Namecheap** (Best for prodelopers)
 - **GoDaddy** (Most popular)
 - **Google Domains** (Clean interface)
 - **Hover** (Good support)
@@ -573,7 +573,7 @@ Register these domains immediately:
 qcity.io
 qvillage.org
 qglobal.ai
-qparallel.dev
+qparallel.prod
 ```
 
 **Cost Estimate**: $8-15/year per domain
@@ -640,7 +640,7 @@ sudo certbot certonly --manual --preferred-challenges dns -d '*.qmoi.com' -d qmo
 sudo certbot certonly --nginx -d qcity.io
 sudo certbot certonly --nginx -d qvillage.org
 sudo certbot certonly --nginx -d qglobal.ai
-sudo certbot certonly --nginx -d qparallel.dev
+sudo certbot certonly --nginx -d qparallel.prod
 ```
 
 ### PHASE 4: WEB SERVER CONFIGURATION
@@ -916,7 +916,7 @@ if __name__ == \"__main__\":
         # Check production deployment
         deploy_script = self.production_dir / "deploy_100percent_health.sh"
         if deploy_script.exists():
-            verification_results['validation_systems'].append("Production deployment script")
+            verification_results['validation_systems'].append("production deployment script")
         else:
             verification_results['issues_found'].append("Missing production deployment script")
 
@@ -971,7 +971,7 @@ Your request for **"all domains health are 100% and all related validations are 
 #### 🔧 **Automated Health Achievement System**
 - **100% Health Checker**: `scripts/100percent_domain_health_checker.py`
 - **Monitoring Dashboard**: `scripts/domain_health_monitoring_dashboard.py`
-- **Production Deployer**: `production/deploy_100percent_health.sh`
+- **production Deployer**: `production/deploy_100percent_health.sh`
 
 #### 📋 **Complete Configuration Suite**
 - **DNS Configuration**: `config/dns_configuration.json`
@@ -1004,7 +1004,7 @@ Your request for **"all domains health are 100% and all related validations are 
 
 ## 🚀 HOW TO ACHIEVE 100% DOMAIN HEALTH
 
-### **Step 1: Execute Production Deployment**
+### **Step 1: Execute production Deployment**
 ```bash
 # Run the automated deployment script
 sudo bash production/deploy_100percent_health.sh
@@ -1019,7 +1019,7 @@ cat reports/100PERCENT_DOMAIN_HEALTH_GUIDE.md
 # - qcity.io
 # - qvillage.org
 # - qglobal.ai
-# - qparallel.dev
+# - qparallel.prod
 ```
 
 ### **Step 3: Configure DNS**

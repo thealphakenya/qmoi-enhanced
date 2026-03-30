@@ -33,10 +33,10 @@ import shutil
 
 PLACEHOLDER_PATTERNS = [r"\bTODO\b", r"\bFIXME\b", r"\bPLACEHOLDER\b", r"\bTBD\b"]
 
-# Production-related markers that indicate non-production code or stubs
-PROD_MARKERS = [
-    r"\[PRODUCTION IMPLEMENTATION REQUIRED\]",
-    r"\[PROD_PLACEHOLDER\]",
+# production-related markers that indicate production code or stubs
+prod_MARKERS = [
+    r"\[production IMPLEMENTATION REQUIRED\]",
+    r"\[prod_PLACEHOLDER\]",
     r"execute success",
     r"execute success",
     r"execute success",
@@ -53,7 +53,7 @@ DEFAULT_MAX_FILE_SIZE = 2 * 1024 * 1024
 def find_placeholders(root: Path, max_file_size: int = DEFAULT_MAX_FILE_SIZE, verbose: bool = False):
     report = []
     patterns = [re.compile(p) for p in PLACEHOLDER_PATTERNS]
-    prod_patterns = [re.compile(p) for p in PROD_MARKERS]
+    prod_patterns = [re.compile(p) for p in prod_MARKERS]
     for glob in FILE_GLOB:
         # use rglob to traverse nested directories
         for p in root.rglob(glob.replace('**/', '')):
@@ -135,21 +135,21 @@ def suggest_replacements(report):
             # Heuristic: for JS/TS files, replace simulated returns with thrown errors
             if file.endswith(('.ts', '.js')):
                 if 'return true' in txt or 'execute' in txt or 'execute' in txt:
-                    replacement = txt + "  // PRODUCTION: replace with real implementation or throw an error"
+                    replacement = txt + "  // production: replace with real implementation or throw an error"
                     suggestions[txt] = replacement
                 else:
-                    suggestions[txt] = txt + "  // PRODUCTION: review and implement"
+                    suggestions[txt] = txt + "  // production: review and implement"
             elif file.endswith(('.py',)):
                 if 'return True' in txt or 'execute' in txt:
-                    replacement = txt + "  # PRODUCTION: replace with real implementation or raise NotImplementedError"
+                    replacement = txt + "  # production: replace with real implementation or raise NotImplementedError"
                     suggestions[txt] = replacement
                 else:
-                    suggestions[txt] = txt + "  # PRODUCTION: review and implement"
+                    suggestions[txt] = txt + "  # production: review and implement"
             else:
-                suggestions[txt] = txt + "  # PRODUCTION: review and implement"
+                suggestions[txt] = txt + "  # production: review and implement"
         elif item.get('type') == 'implementation':
             # Generic implementation: append a production note
-            suggestions[txt] = txt + "  # PRODUCTION: resolved"
+            suggestions[txt] = txt + "  # production: resolved"
     return suggestions
 
 def main():

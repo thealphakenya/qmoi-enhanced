@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # QMOI UI Enhancement - Implementation Guide
 
 ## Phase 1 Implementation Complete ✅
@@ -543,12 +543,12 @@ export function VoiceConfigPanel() {
   const handleVoiceSelect = (voice) => {
     setSelectedVoice(voice);
     // Trigger voice preview
-    [PRODUCTION READY]VoicePreview(voice);
+    [production READY]VoicePreview(voice);
   };
 
-  const [PRODUCTION READY]VoicePreview = (voice) => {
+  const [production READY]VoicePreview = (voice) => {
     setIsSpeaking(true);
-    [PRODUCTION READY] audio level changes
+    [production READY] audio level changes
     let level = 0;
     const interval = setInterval(() => {
       level = Math.sin(Date.now() / 500) * 50 + 50;

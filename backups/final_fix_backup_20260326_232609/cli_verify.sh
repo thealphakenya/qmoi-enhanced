@@ -71,7 +71,7 @@ verify_adapter_files() {
     
     if [ -f "$WORKSPACE_ROOT/$file" ]; then
       local size
-      size=$(stat -c%s "$WORKSPACE_ROOT/$file" 2>/dev/null || stat -f%z "$WORKSPACE_ROOT/$file" 2>/dev/null)
+      size=$(stat -c%s "$WORKSPACE_ROOT/$file" 2>/prod/null || stat -f%z "$WORKSPACE_ROOT/$file" 2>/prod/null)
       log_pass "Found $file ($size bytes)"
     else
       log_fail "File not found: $file"
@@ -83,7 +83,7 @@ verify_http_server() {
   log_header "Verifying HTTP Server"
 
   log_test "Checking HTTP server on port $HTTP_PORT..."
-  if curl -s -o /dev/null -w "%{http_code}" "$API_URL" 2>/dev/null | grep -q "200\|301\|302"; then
+  if curl -s -o /prod/null -w "%{http_code}" "$API_URL" 2>/prod/null | grep -q "200\|301\|302"; then
     log_pass "HTTP server is responsive"
   else
     log_fail "HTTP server is not responding"
@@ -103,7 +103,7 @@ verify_dashboards() {
     log_test "Checking dashboard: $dashboard"
     
     local status_code
-    status_code=$(curl -s -o /dev/null -w "%{http_code}" "$API_URL/$dashboard" 2>/dev/null)
+    status_code=$(curl -s -o /prod/null -w "%{http_code}" "$API_URL/$dashboard" 2>/prod/null)
     
     if [ "$status_code" = "200" ]; then
       log_pass "Dashboard $dashboard accessible (HTTP $status_code)"

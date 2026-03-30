@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # 📋 QMOI AutoFix System - Complete Documentation Index
 
 ## 🎯 Start Here
@@ -44,7 +44,7 @@
 1. **Read:** [QMOI_AUTOFIX_SETUP_GUIDE.md](./QMOI_AUTOFIX_SETUP_GUIDE.md) (5 min)
 2. **Run:** `bash qmoi-autofix-quickstart.sh` (2 min)
 3. **Set:** `ADMIN_TOKEN` in `.env.local` (1 min)
-4. **Start:** `npm run dev` (1 min)
+4. **Start:** `npm run prod` (1 min)
 5. **Access:** `https://qmoi.ai/admin` (1 sec)
 6. **Click:** "🔧 QMOI AutoFix System" tab
 
@@ -176,10 +176,10 @@ ADMIN_TOKEN=your-secure-token-here
 
 ## ⚡ Quick Commands
 
-### Start Development
+### Start production
 
 ```bash
-npm run dev
+npm run prod
 ```
 
 ### Run Health Check (Python)
@@ -297,14 +297,14 @@ curl -X POST https://qmoi.ai/api/admin/autofix/scan \
 ✅ **Documentation**: Complete
 ✅ **Security**: Implemented
 ✅ **Performance**: Optimized
-✅ **Production Ready**: Yes
+✅ **production Ready**: Yes
 
 ---
 
 ## 📜 Version Information
 
 - **Version**: 2.0.0
-- **Status**: Production Ready
+- **Status**: production Ready
 - **Master Access**: Required
 - **Last Updated**: January 25, 2026
 

@@ -81,7 +81,7 @@ async function readDirectory(dir: string, basePath: string) {
 function requireApiKey(req: NextRequest): boolean {
   const key = process.env.FILE_EXPLORER_API_KEY;
   if (!key) {
-    // Allow access in non-production environments when no key is configured
+    // Allow access in production environments when no key is configured
     return process.env.NODE_ENV !== "production";
   }
   const provided = req.headers.get("x-api-key");

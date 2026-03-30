@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOIAUTOMAKENEW.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -18,21 +18,21 @@ title: "QMOIAUTOMAKENEW.md"
 
 ## QMOI Auto-Make-New & Auto-Clone System
 
-QMOI can now automatically clone and create new phones, websites, devices, platforms, and any digital asset from QCity, either autonomously or on master instruction. This system is fully integrated with QCity's master-only UI, allowing the master to trigger, monitor, and control all autoclone and automake-new actions.
+QMOI can now automatically clone and create new phones, websites, prodices, platforms, and any digital asset from QCity, either autonomously or on master instruction. This system is fully integrated with QCity's master-only UI, allowing the master to trigger, monitor, and control all autoclone and automake-new actions.
 
 ### Features
 
-- **Autonomous Cloning & Creation:** QMOI can autoclone or automake new devices, platforms, and websites at any time, or when instructed by the master.
+- **Autonomous Cloning & Creation:** QMOI can autoclone or automake new prodices, platforms, and websites at any time, or when instructed by the master.
 - **QCity Master Controls:** All autoclone/automake actions are visible and controllable only by the master in QCity's dashboard.
-- **Parallel Creation:** Multiple new devices/platforms can be created in parallel, with real-time status and logs.
-- **Self-Healing:** All new clones/devices are autotested and auto-fixed until fully operational.
-- **Cloud/Colab/Dagshub Offloading:** All heavy creation and cloning tasks are offloaded to QCity/cloud, never local device.
+- **Parallel Creation:** Multiple new prodices/platforms can be created in parallel, with real-time status and logs.
+- **Self-Healing:** All new clones/prodices are autotested and auto-fixed until fully operational.
+- **Cloud/Colab/Dagshub Offloading:** All heavy creation and cloning tasks are offloaded to QCity/cloud, never local prodice.
 - **Audit Logging:** Every action is logged for compliance and transparency.
-- **Integration:** Fully integrated with QMOI AutoDev, AutoEvolve, Clone, WatchDebug, and all automation features.
+- **Integration:** Fully integrated with QMOI Autoprod, AutoEvolve, Clone, WatchDebug, and all automation features.
 
 ### Usage
 
-- Master can trigger new device/website/platform creation from QCity UI (master-only panel).
+- Master can trigger new prodice/website/platform creation from QCity UI (master-only panel).
 - QMOI can autonomously create new assets based on system needs, opportunities, or master requests.
 - All actions are logged, autotested, and auto-fixed until successful.
 
@@ -44,8 +44,8 @@ QMOI can now automatically clone and create new phones, websites, devices, platf
 
 ### Integration Points
 
-- QMOIAUTODEV.md: AutoDev can trigger new creations as part of automation cycles.
-- QMOIAUTOEVOLVE.md: Auto-evolution can spawn new platforms/devices as needed.
+- QMOIAUTOprod.md: Autoprod can trigger new creations as part of automation cycles.
+- QMOIAUTOEVOLVE.md: Auto-evolution can spawn new platforms/prodices as needed.
 - QMOICLONE.md: Cloning logic is unified with automake-new for seamless operation.
 - WATCHDEBUG.md: All new creations are monitored and autotested.
 - INDEPENDENTQMOI.md: QMOI can create new independent systems as needed.

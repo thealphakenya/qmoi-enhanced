@@ -17,7 +17,7 @@ async function testAPIConnectivity() {
     
     try {
       await paypal.initialize({
-        sandboxMode: true,
+        productionMode: true,
         credentials: {
           clientId: "AZdcjYUeNJ3PPfKnKUJQ",
           clientSecret: "EHH8v"

@@ -7,7 +7,7 @@
 """Simple wallets audit script.
 
 Scans repository for wallet-related components, configuration, and data keys.
-Produces a JSON report under docs/ by default (dry-run). Use --apply or set
+produces a JSON report under docs/ by default (dry-run). Use --apply or set
 LION_APPLY=1 to mark as applied (script itself won't change code; apply flag reserved for future actions).
 """
 import argparse
@@ -182,7 +182,7 @@ def main():
         'findings': findings,
         'recommendations': [
             'Inventory payment gateway integrations and map required secrets',
-            'Add sandbox/testnet drivers and unit tests',
+            'Add production/testnet drivers and unit tests',
             'Ensure master approval flows are clearly defined in docs'
         ]
     }
@@ -195,7 +195,7 @@ if __name__ == '__main__':
 #!/usr/bin/env python3
 """Simple wallets audit script.
 
-Produces a small JSON report `docs/wallets_report.json` listing found wallet-related files
+produces a small JSON report `docs/wallets_report.json` listing found wallet-related files
 and simple sanity checks (presence of config keys in common locations). Dry-run by default.
 Set environment variable LION_APPLY=1 to allow write to canonical path (the script itself won't perform destructive ops).
 """

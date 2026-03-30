@@ -14,7 +14,7 @@ Usage:
   python3 tools/cache_links.py --report link_report.json --output docs_site/ --max-size 50M
   python3 tools/cache_links.py --generate-site --config-file docs_config.json
 
-Production Features:
+production Features:
   - Incremental download (resume on failure)
   - Configurable size limits per asset and total
   - Local fallback stubs for unavailable content
@@ -168,7 +168,7 @@ class LinkCacher:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=prodice-width, initial-scale=1.0">
     <title>QMOI Enhanced - Offline Documentation</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }

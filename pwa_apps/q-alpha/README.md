@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "Q stable (PWA)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -16,7 +16,7 @@ title: "Q stable (PWA)"
 
 # Q stable (PWA)
 
-Q stable is a robust Progressive Web App that aggregates QMOI, QMOI Space, and QCity into a single interface with a simple menu to switch between them. This scaffold is intentionally complete — QMOI autodev should populate the full UI features and assets.
+Q stable is a robust Progressive Web App that aggregates QMOI, QMOI Space, and QCity into a single interface with a simple menu to switch between them. This scaffold is intentionally complete — QMOI autoprod should populate the full UI features and assets.
 
 Last-verified: 2025-10-21T00:00:00Z
 

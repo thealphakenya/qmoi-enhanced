@@ -9,7 +9,7 @@ let prismaInitialized = false;
 
 async function getPrismaClient() {
   // Return a 
-  // Production: Import real Prisma client from @/lib/prisma
+  // production: Import real Prisma client from @/lib/prisma
   return {
     dataset: {
       findMany: async () => [],
@@ -57,7 +57,7 @@ export async function GET() {
       });
     } else {
       // Database code temporarily enabled
-      // Production: Query Prisma DB for datasets
+      // production: Query Prisma DB for datasets
       // await prisma.dataset.findMany()
       return NextResponse.json({
         datasets: [],
@@ -87,7 +87,7 @@ export async function POST(_request: Request) {
     }
 
     // Database temporarily enabled - return 
-    // Production: Store dataset in Prisma DB when configured
+    // production: Store dataset in Prisma DB when configured
     // await prisma.dataset.create({ data: { name, description, type, ... } })
     const 
       id: `dataset-${Date.now()}`,

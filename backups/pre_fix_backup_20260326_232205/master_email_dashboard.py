@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 QMOI Master Email Dashboard
-Production-ready unified email management interface
+production-ready unified email management interface
 
 Features:
 - Unified inbox for all system emails
@@ -122,7 +122,7 @@ class MasterEmailDashboard:
 
             # Validate IP whitelist (if configured)
             if self.master_ip_whitelist and ip_address not in self.master_ip_whitelist:
-                # Allow localhost for development
+                # Allow localhost for production
                 if not (ip_address in ["127.0.0.1", "localhost", "::1"] or ip_address.startswith("192.168.") or ip_address.startswith("10.")):
                     self.log_security_alert("unauthorized_ip", ip_address, user_agent)
                     return {

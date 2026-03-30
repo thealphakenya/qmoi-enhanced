@@ -71,7 +71,7 @@ export async function GET(request: NextRequest) {
         const interval = setInterval(sendData, 2000); // Update every 2 seconds
 
         // Handle client disconnect
-        request.signal.addEventListener("abort", () => {
+        request.signal.adprodentListener("abort", () => {
           clearInterval(interval);
           qmoiHealthService.stopMonitoring();
           controller.close();

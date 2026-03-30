@@ -3,13 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 /**
  * COMPREHENSIVE QMOI TESTING SUITE
  * Tests all QMOI capabilities including:
  * - Messaging and responses
  * - Project management (all types)
- * - Self-modification and auto-development
+ * - Self-modification and auto-production
  * - Friendship features
  * - Master user accountability
  *
@@ -292,7 +292,7 @@ class QMOIComprehensiveTestSuite {
     }
   }
 
-  // ==================== 3. SELF-MODIFICATION & AUTO-DEVELOPMENT TESTS ====================
+  // ==================== 3. SELF-MODIFICATION & AUTO-production TESTS ====================
   async testSelfModification() {
     this.log("Testing Self-Modification Capabilities...", "INFO");
 
@@ -782,8 +782,8 @@ async function main() {
   const suite = new QMOIComprehensiveTestSuite();
 
   try {
-    .log("\nWaiting for dev server to be ready...");
-    .log("Make sure to run: npm run dev\n");
+    .log("\nWaiting for prod server to be ready...");
+    .log("Make sure to run: npm run prod\n");
 
     const report = await suite.runAllTests();
 

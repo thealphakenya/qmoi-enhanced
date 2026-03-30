@@ -58,13 +58,13 @@ def load_template():
 # 🧪 Build matrix renderer
 def generate_build_matrix(report):
     lines = []
-    for device, status in report.items():
-        label = EMOJIS.get(device, device.capitalize())
+    for prodice, status in report.items():
+        label = EMOJIS.get(prodice, prodice.capitalize())
         if status == "success":
             lines.append(f"| {label:<16} | ✅ SUCCESS   | ✅ PASS      |")
         elif status == "failed":
             lines.append(f"| {label:<16} | ❌ FAILED    | ❌ FAIL      |")
-        elif status == "// Production implementation required:_used":
+        elif status == "// production implementation required:_used":
             lines.append(f"| {label:<16} | ❌ ERROR     | ❌ FAIL      |")
         elif status == "error":
             lines.append(f"| {label:<16} | ❌ ERROR     | ❌ FAIL      |")

@@ -1,4 +1,4 @@
-// NOTE: 2 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { QmoiPlugin } from "./PluginManager";
 
 // complete non-JSX plugin implementation to avoid TSX in .ts file.

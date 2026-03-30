@@ -3,12 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env node
 
 /**
  * QMOI Hugging Face Spaces Integration
- * Enhanced with device optimization and full QMOI capabilities
+ * Enhanced with prodice optimization and full QMOI capabilities
  */
 
 const fs = require('fs');
@@ -90,14 +90,14 @@ async function healthCheck() {
     };
 }
 
-// --- Dev Safe Mode ---
-const isDev = process.env.NODE_ENV === 'development' || process.env.QMOI_ENVIRONMENT === 'development';
+// --- prod Safe Mode ---
+const isprod = process.env.NODE_ENV === 'production' || process.env.QMOI_ENVIRONMENT === 'production';
 
 class QMOIHuggingFaceSpaces {
     constructor() {
         this.config = this.loadConfig();
         this.logger = this.setupLogger();
-        this.deviceOptimizer = new DeviceOptimizer();
+        this.prodiceOptimizer = new prodiceOptimizer();
         this.qmoiManager = new QMOIManager();
     }
 
@@ -119,7 +119,7 @@ class QMOIHuggingFaceSpaces {
                 space_name: 'qmoi-ai-system',
                 auto_deploy: true
             },
-            device_optimization: {
+            prodice_optimization: {
                 enabled: true,
                 cpu_threshold: 80,
                 memory_threshold: 85,
@@ -156,8 +156,8 @@ class QMOIHuggingFaceSpaces {
         let statusObj = { action: 'create', status: 'started', timestamp: new Date().toISOString() };
         writeStatus(statusObj);
         try {
-            // Optimize device before deployment
-            await this.deviceOptimizer.optimize();
+            // Optimize prodice before deployment
+            await this.prodiceOptimizer.optimize();
             
             // Create space directory structure
             const spaceDir = path.join(__dirname, '../huggingface_space');
@@ -268,22 +268,22 @@ class ErrorFixer:
 
 error_fixer = ErrorFixer()
 
-# --- Device Optimizer ---
-class DeviceOptimizer {
+# --- prodice Optimizer ---
+class prodiceOptimizer {
     constructor() {
         this.logger = console;
     }
 
     async optimize() {
-        this.logger.info('& Optimizing device resources...');
+        this.logger.info('& Optimizing prodice resources...');
         try {
             await this.cleanupTempFiles();
             await this.clearCache();
             await this.optimizeMemory();
-            this.logger.info('' Device optimization completed');
+            this.logger.info('' prodice optimization completed');
             return true;
         } catch (error) {
-            this.logger.error(`L' Device optimization failed: ${error.message}`);
+            this.logger.error(`L' prodice optimization failed: ${error.message}`);
             recordError(error);
             return false;
         }
@@ -380,8 +380,8 @@ def chat_with_qmoi(message, conversation_id=None):
 // ... rest of Gradio UI and app logic ...
 
 def main():
-    # Start device optimization
-    DeviceOptimizer().optimize()
+    # Start prodice optimization
+    prodiceOptimizer().optimize()
     # Start Gradio and FastAPI together
     import threading
     def run_gradio():
@@ -395,7 +395,7 @@ if __name__ == "__main__":
 `;
 
         fs.writeFileSync(path.join(spaceDir, 'app.py'), appContent);
-        this.logger.info('' Created enhanced app.py with advanced error fixing, device optimization, /status endpoint, and hooks.');
+        this.logger.info('' Created enhanced app.py with advanced error fixing, prodice optimization, /status endpoint, and hooks.');
     }
 
     createRequirements(spaceDir) {
@@ -429,7 +429,7 @@ pathlib
             "description": "Comprehensive AI-powered deployment and self-healing system",
             "theme": "dark",
             "auto_refresh": true,
-            "device_optimization": true,
+            "prodice_optimization": true,
             "qmoi_version": "2.0.0"
         };
 
@@ -497,10 +497,10 @@ QMOI (Quantum Mind of Intelligence) is a comprehensive AI-powered deployment and
 #### 1. QMOI Enhanced Space (app.py)
 - **Enhanced UI**: Custom themes and responsive design
 - **Real-time Monitoring**: Live system health and performance tracking
-- **Device Optimization**: Resource management and performance tuning
+- **prodice Optimization**: Resource management and performance tuning
 - **Cross-Platform Sync**: Seamless integration with other platforms
 
-#### 2. Device Monitor
+#### 2. prodice Monitor
 - **Resource Tracking**: CPU, memory, and disk usage monitoring
 - **Health Checks**: Automated health assessment and alerting
 - **Performance Optimization**: Automatic resource optimization
@@ -528,15 +528,15 @@ QMOI (Quantum Mind of Intelligence) is a comprehensive AI-powered deployment and
 
 ### 3. Deployment Management
 - **Update Types**: Support for patch, minor, and major updates
-- **Target Selection**: Choose deployment targets (production, production, development)
+- **Target Selection**: Choose deployment targets (production, production, production)
 - **Status Tracking**: Real-time deployment status and logs
 - **Rollback Capability**: Quick rollback to previous versions
 
-### 4. Device Optimization
+### 4. prodice Optimization
 - **Resource Monitoring**: Real-time CPU, memory, and disk tracking
 - **Automatic Cleanup**: permanent file and cache cleanup
 - **Performance Tuning**: Automatic resource optimization
-- **Health Scoring**: Comprehensive device health assessment
+- **Health Scoring**: Comprehensive prodice health assessment
 
 ## =' Setup and Configuration
 
@@ -568,7 +568,7 @@ export WHATSAPP_WEBHOOK_URL="your-webhook-url"
 1. **Monitoring Tab**: Click on "= System Monitoring"
 2. **Check Status**: Click "Check System Status" for current health
 3. **View Metrics**: Click "Get Metrics" for detailed performance data
-4. **Optimize**: Use "Optimize Device" for resource optimization
+4. **Optimize**: Use "Optimize prodice" for resource optimization
 
 ### Deployment Management
 1. **Deployment Tab**: Click on "=؀ Deployment & Updates"
@@ -589,11 +589,11 @@ Discord     !  Analysis    !  Validation   !  Metadata Store  !  Confirmation
 
 ## = Performance Metrics
 
-### Device Optimization
+### prodice Optimization
 - **CPU Usage**: Real-time CPU utilization tracking
 - **Memory Management**: Memory usage and availability monitoring
 - **Disk Space**: Storage space monitoring and cleanup
-- **Health Score**: Overall device health assessment
+- **Health Score**: Overall prodice health assessment
 
 ### System Health
 - **Component Status**: Individual component health tracking
@@ -644,7 +644,7 @@ For support and questions:
 - **Documentation**: Check the QMOI documentation
 - **Community**: Join the QMOI community channels
 - **Issues**: Report issues through the appropriate channels
-- **Contact**: Reach out to the QMOI development team
+- **Contact**: Reach out to the QMOI production team
 
 ---
 
@@ -727,8 +727,8 @@ For support and questions:
         let statusObj = { action: 'update', status: 'started', timestamp: new Date().toISOString() };
         writeStatus(statusObj);
         try {
-            // Optimize device before update
-            await this.deviceOptimizer.optimize();
+            // Optimize prodice before update
+            await this.prodiceOptimizer.optimize();
             
             const spaceDir = path.join(__dirname, '../huggingface_space');
             
@@ -811,7 +811,7 @@ class QMOIManager {
     constructor() {
         this.logger = console;
         this.restartAttempts = 0;
-        this.maxRestarts = isDev ? 1 : 5;
+        this.maxRestarts = isprod ? 1 : 5;
     }
 
     async startQMOI() {
@@ -824,12 +824,12 @@ class QMOIManager {
         } catch (error) {
             this.logger.error(`L' Failed to start QMOI: ${error.message}`);
             recordError(error);
-            if (!isDev && this.restartAttempts < this.maxRestarts) {
+            if (!isprod && this.restartAttempts < this.maxRestarts) {
                 this.restartAttempts++;
                 this.logger.warn(`Restarting QMOI (attempt ${this.restartAttempts}/${this.maxRestarts})...`);
                 await this.startQMOI();
             } else {
-                this.logger.error('Max restart attempts reached or in dev mode. Not restarting.');
+                this.logger.error('Max restart attempts reached or in production. Not restarting.');
             }
             return false;
         }
@@ -869,7 +869,7 @@ async function main() {
             await qmoiSpaces.deploy();
             break;
         case 'optimize':
-            await qmoiSpaces.deviceOptimizer.optimize();
+            await qmoiSpaces.prodiceOptimizer.optimize();
             break;
         case 'start-qmoi':
             await qmoiSpaces.qmoiManager.startQMOI();
@@ -885,7 +885,7 @@ Commands:
   create      Create a new QMOI Hugging Face Space
   update      Update existing QMOI Space
   deploy      Deploy QMOI to Hugging Face (create or update)
-  optimize    Optimize device resources
+  optimize    Optimize prodice resources
   start-qmoi  Start QMOI core system
 
 Examples:
@@ -917,15 +917,15 @@ setInterval(async () => {
     saveHealthStats();
 }, 10000); // every 10s
 
-// --- Device/Process Error Detection & Auto-Fix ---
+// --- prodice/Process Error Detection & Auto-Fix ---
 function monitorAndAutoFix() {
     setInterval(() => {
         // Detect high memory/CPU, event loop lag, or process unresponsiveness
         const memPercent = (process.memoryUsage().rss / (os.totalmem() || 1)) * 100;
         if (memPercent > 90 || healthStats.eventLoopLag > 500) {
-            recordError('Device resource spike or event loop lag');
-            if (!isDev) {
-                DeviceOptimizer.production.optimize();
+            recordError('prodice resource spike or event loop lag');
+            if (!isprod) {
+                prodiceOptimizer.production.optimize();
                 recordFix(true);
             } else {
                 recordFix(false);

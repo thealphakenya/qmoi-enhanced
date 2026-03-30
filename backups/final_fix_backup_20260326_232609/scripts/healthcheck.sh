@@ -24,7 +24,7 @@ check_endpoint() {
   local name=$2
   
   echo -n "Checking ${name}... "
-  if curl -sf --connect-timeout $TIMEOUT "$url" > /dev/null 2>&1; then
+  if curl -sf --connect-timeout $TIMEOUT "$url" > /prod/null 2>&1; then
     echo -e "${GREEN}✓ OK${NC}"
     return 0
   else
@@ -36,7 +36,7 @@ check_endpoint() {
 # Function to check database
 check_database() {
   echo -n "Checking Database... "
-  if psql "$DATABASE_URL" -c "SELECT 1" > /dev/null 2>&1; then
+  if psql "$DATABASE_URL" -c "SELECT 1" > /prod/null 2>&1; then
     echo -e "${GREEN}✓ OK${NC}"
     return 0
   else
@@ -48,7 +48,7 @@ check_database() {
 # Function to check Redis
 check_redis() {
   echo -n "Checking Redis... "
-  if redis-cli ping > /dev/null 2>&1; then
+  if redis-cli ping > /prod/null 2>&1; then
     echo -e "${GREEN}✓ OK${NC}"
     return 0
   else
@@ -73,7 +73,7 @@ if [ "$DB_CHECK" = true ]; then
 fi
 
 # Check Redis if available
-if command -v redis-cli &> /dev/null; then
+if command -v redis-cli &> /prod/null; then
   if ! check_redis; then
     failed=$((failed + 1))
   fi

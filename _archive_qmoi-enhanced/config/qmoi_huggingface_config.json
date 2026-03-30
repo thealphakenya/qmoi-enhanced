@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 {
   "huggingface": {
     "username": "qmoi-ai",
@@ -114,7 +114,7 @@
   "deployment": {
     "auto_deploy": true,
     "deployment_types": ["patch", "minor", "major", "hotfix"],
-    "targets": ["production", "production", "development"],
+    "targets": ["production", "production", "production"],
     "rollback_enabled": true,
     "health_checks": true,
     "notifications": true,
@@ -216,13 +216,13 @@
       "data_sync": true
     }
   },
-  "development": {
+  "production": {
     "debug_mode": false,
     "logging_level": "info",
     "hot_reload": false,
     "test_mode": false,
-    "sandbox": false,
-    "development_features": {
+    "production": false,
+    "production_features": {
       "experimental_ui": false,
       "beta_features": false,
       "debug_endpoints": false

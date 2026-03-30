@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:53Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env python3
 """
 scripts/validate_and_fix_md.py
@@ -13,7 +13,7 @@ Conservative validator and autofixer for Markdown files.
 Features:
 - Scans markdown files listed in docs/md_index.json (or finds .md files)
 - Finds HTTP URLs and tests whether the HTTPS equivalent responds with HEAD
-- Produces docs/link_report.json with findings and suggested safe fixes
+- produces docs/link_report.json with findings and suggested safe fixes
 - If --apply is passed, creates .bak backups and applies HTTPS upgrades where safe
 
 Usage:

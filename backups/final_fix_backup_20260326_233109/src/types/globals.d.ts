@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-unused-vars, no-undef, @typescript-eslint/no-unsafe-function-type, @typescript-eslint/no-explicit-any */
 /// <reference types="node" />
 // Consolidated permissive global declarations to reduce `no-undef` noise
@@ -11,7 +11,7 @@
 // change runtime semantics — refine types per-module later.
 
 declare global {
-  // common runtime/test // Production implementation:s
+  // common runtime/test // production implementation:s
   var localServer: unknown;
   var _request: unknown;
   var _response: unknown;
@@ -36,7 +36,7 @@ declare global {
   var FileReader: unknown;
   var AbortSignal: unknown;
   var EventListener: unknown;
-  var KeyboardEvent: unknown;
+  var Keyboarprodent: unknown;
   var AbortController: unknown;
   var XMLHttpRequest: unknown;
   var Document: unknown;

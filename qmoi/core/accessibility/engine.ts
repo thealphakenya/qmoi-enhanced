@@ -6,7 +6,7 @@
 /**
  * QMOI Accessibility Engine
  * Advanced hands-free system with voice control, real-time environment description, and accessibility features
- * Production-ready implementation following WCAG guidelines and accessibility standards
+ * production-ready implementation following WCAG guidelines and accessibility standards
  */
 
 import { spawn, exec } from 'child_process';
@@ -31,7 +31,7 @@ export interface AccessibilityContext {
   current_screen?: string;
   user_location?: string;
   user_preferences: AccessibilityPreferences;
-  device_capabilities: DeviceCapabilities;
+  prodice_capabilities: prodiceCapabilities;
   environmental_factors: EnvironmentalFactors;
 }
 
@@ -49,7 +49,7 @@ export interface AccessibilityPreferences {
   gesture_navigation: boolean;
 }
 
-export interface DeviceCapabilities {
+export interface prodiceCapabilities {
   has_microphone: boolean;
   has_camera: boolean;
   has_speakers: boolean;
@@ -360,7 +360,7 @@ export class AccessibilityEngine extends EventEmitter {
           content: 'Gesture not recognized',
           actions_taken: [{
             action_type: 'vibrate',
-            target: 'device',
+            target: 'prodice',
             parameters: { pattern: 'error' },
             success: true,
             timestamp: Date.now()

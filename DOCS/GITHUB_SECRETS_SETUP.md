@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # GitHub Actions Secrets Setup
 
 To enable production-grade signed builds in CI, configure these secrets in your GitHub repository:
@@ -49,7 +49,7 @@ To enable production-grade signed builds in CI, configure these secrets in your 
 
 3. **IOS_PROVISIONING_PROFILE_BASE64** (Required for signed IPA)
    - Base64-encoded provisioning profile (.mobileprovision)
-   - Download from Apple Developer Portal
+   - Download from Apple prodeloper Portal
    - How to encode:
      ```bash
      base64 -w0 qmoi.mobileprovision > profile.b64
@@ -95,7 +95,7 @@ git push origin v1.2.5
 - Never commit keystore files, certificates, or provisioning profiles to the repo.
 - Secrets are masked in logs but visible to anyone with repo access.
 - Rotate signing keys regularly for production releases.
-- Consider using a dedicated signing identity separate from development keys.
+- Consider using a dedicated signing identity separate from production keys.
 - For sensitive projects, use self-hosted runners with additional isolation.
 
 ## 🔄 Evolution Status

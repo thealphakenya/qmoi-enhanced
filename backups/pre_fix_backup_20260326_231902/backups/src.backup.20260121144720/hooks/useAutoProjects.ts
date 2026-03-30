@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 import { useState, useEffect, useCallback } from "react";
 
 interface AutoProject {
@@ -280,7 +280,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
 
   const notifyMaster = useCallback(async (message: string) => {
     try {
-      [PRODUCTION READY] WhatsApp notification to master
+      [production READY] WhatsApp notification to master
       (console as any).log("📱 WhatsApp notification to master:", message);
 
       // In real implementation, this would call the WhatsApp API
@@ -296,7 +296,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
 
   const createWhatsAppGroup = useCallback(async () => {
     try {
-      [PRODUCTION READY] creating WhatsApp group
+      [production READY] creating WhatsApp group
       (console as any).log('📱 Creating "Qmoi Auto Projects" WhatsApp group');
 
       // In real implementation, this would call the WhatsApp API
@@ -318,7 +318,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
 
   const postToWhatsAppGroup = useCallback(async (message: string) => {
     try {
-      [PRODUCTION READY] posting to WhatsApp group
+      [production READY] posting to WhatsApp group
       (console as any).log("📱 Posting to WhatsApp group:", message);
 
       // In real implementation, this would call the WhatsApp API

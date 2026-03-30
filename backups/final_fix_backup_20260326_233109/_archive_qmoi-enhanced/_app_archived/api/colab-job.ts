@@ -3,44 +3,44 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import type { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 
 const JOBS_PATH = "/workspaces/stable-Q-ai/colab-jobs-log.jsonl";
 
-// Install package in Colab/cloud (// Production implementation:)
+// Install package in Colab/cloud (// production implementation:)
 async function installPackage(pkg: string, manager: "npm" | "pip" = "npm") {
   // const axios = await import('axios');
-  // Production implementation:: Real API call to Colab/cloud to install package
+  // production implementation:: Real API call to Colab/cloud to install package
   return { status: "success", pkg, manager };
 }
 
-// Upload dataset to Colab/cloud (// Production implementation:)
+// Upload dataset to Colab/cloud (// production implementation:)
 interface Dataset {
   name: string;
   [key: string]: unknown;
 }
 async function uploadDataset(dataset: Dataset) {
   // const axios = await import('axios');
-  // Production implementation:: Real API call to upload dataset
+  // production implementation:: Real API call to upload dataset
   return { status: "success", dataset: dataset.name };
 }
 
-// Execute job in Colab/cloud (// Production implementation:)
+// Execute job in Colab/cloud (// production implementation:)
 interface JobSpec {
   [key: string]: unknown;
 }
 async function executeColabJob(jobSpec: JobSpec) {
   // const axios = await import('axios');
-  // Production implementation:: Real API call to execute job
+  // production implementation:: Real API call to execute job
   return { status: "running", jobId: Date.now(), jobSpec };
 }
 
-// Track job status (// Production implementation:)
+// Track job status (// production implementation:)
 async function getColabJobStatus(jobId: number) {
   // const axios = await import('axios');
-  // Production implementation:: Real API call to get job status
+  // production implementation:: Real API call to get job status
   return { jobId, status: "completed", result: "Job result data" };
 }
 
@@ -87,7 +87,7 @@ export default async function handler(
       return res.json(result);
     }
     const { type, name } = req.body;
-    // Production implementation: Colab job execution (replace with real Colab API integration)
+    // production implementation: Colab job execution (replace with real Colab API integration)
     const job = {
       id: Date.now(),
       type,
@@ -95,7 +95,7 @@ export default async function handler(
       status: "success",
       started: new Date().toISOString(),
       finished: new Date().toISOString(),
-      result: `// Production implementation:d Colab job for ${type}: ${name}`,
+      result: `// production implementation:d Colab job for ${type}: ${name}`,
     };
     persistJob(job);
     return res.json(job);

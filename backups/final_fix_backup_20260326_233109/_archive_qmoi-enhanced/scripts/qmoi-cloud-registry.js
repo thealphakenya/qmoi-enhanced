@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 #!/usr/bin/env node
 
 // QMOI Cloud Registry Manager
@@ -13,7 +13,7 @@ const args = process.argv.slice(2);
 
 function setRegistry(url) {
   console.log(`[REGISTRY] Setting QMOI registry to: ${url}`);
-  // Production implementation:: Integrate with QMOI registry API
+  // production implementation:: Integrate with QMOI registry API
   setTimeout(() => {
     console.log("[REGISTRY] Registry set successfully.");
   }, 500);
@@ -21,7 +21,7 @@ function setRegistry(url) {
 
 function statusRegistry() {
   console.log("[REGISTRY] Checking QMOI registry status...");
-  // Production implementation:: Query QMOI registry API
+  // production implementation:: Query QMOI registry API
   setTimeout(() => {
     console.log("[REGISTRY] QMOI registry is online and available.");
   }, 500);

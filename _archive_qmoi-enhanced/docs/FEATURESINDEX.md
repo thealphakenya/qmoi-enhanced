@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOI Features Master Index"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -18,16 +18,16 @@ title: "QMOI Features Master Index"
 
 | Feature/Integration     | Description                                      | Documentation File         |
 | ----------------------- | ------------------------------------------------ | -------------------------- |
-| Handsfree All Devices   | Control any device handsfree, accessibility      | QMOIALLDEVICESHANDSFREE.md |
-| Enhanced QVS Security   | Device/network sandboxing, masking, VPN          | ENHANCEDQVS.md             |
+| Handsfree All prodices   | Control any prodice handsfree, accessibility      | QMOIALLprodICESHANDSFREE.md |
+| Enhanced QVS Security   | prodice/network productioning, masking, VPN          | ENHANCEDQVS.md             |
 | VPN                     | Always-on, privacy, Colab/Dagshub support        | QVPNREADME.md              |
-| Network Masking         | [PRODUCTION READY]_PROD/unreal IPs, privacy-first              | QMOIMASKS.md               |
+| Network Masking         | [production READY]_prod/unreal IPs, privacy-first              | QMOIMASKS.md               |
 | Network Optimization    | Secure, optimized, auto-connect                  | QMOINETWORK.md             |
 | stable QMOI Engine       | All integrations/platforms auto-handled          | ALPHAQMOIENGINE.md         |
 | Accounts & Platforms    | Auto-create/register accounts, track credentials | QMOIACCOUNTSPLATFORMS.md   |
-| Qcity Device            | robust, handsfree, log/data management      | QCITYREADME.md             |
+| Qcity prodice            | robust, handsfree, log/data management      | QCITYREADME.md             |
 | Accessibility Settings  | High-contrast, large text, voice/gesture, etc.   | (see UI panel)             |
-| Device Integrations     | TV, car, smart home, WhatsApp, Colab, Dagshub    | DeviceIntegration[PRODUCTION READY]s.ts  |
+| prodice Integrations     | TV, car, smart home, WhatsApp, Colab, Dagshub    | prodiceIntegration[production READY]s.ts  |
 | Auto-update/Auto-evolve | Self-updating, self-enhancing, auto-fixing       | (core system, see docs)    |
 
 ## See also
@@ -35,7 +35,7 @@ title: "QMOI Features Master Index"
 - [README.md](qmoi-enhanced/README.md)
 - [QMOI-ENHANCED-README.md](qmoi-enhanced/QMOI-ENHANCED-README.md)
 - [QMOI-FEATURE-INDEX.md](qmoi-enhanced/QMOI-FEATURE-INDEX.md)
-- [QMOIALLDEVICESHANDSFREE.md](qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md)
+- [QMOIALLprodICESHANDSFREE.md](qmoi-enhanced/QMOIALLprodICESHANDSFREE.md)
 - [ENHANCEDQVS.md](qmoi-enhanced/ENHANCEDQVS.md)
 - [QVPNREADME.md](qmoi-enhanced/QVPNREADME.md)
 - [QMOIMASKS.md](qmoi-enhanced/QMOIMASKS.md)
@@ -76,8 +76,8 @@ title: "QMOI Features Master Index"
 "ok": true
 },
 {
-"label": "QMOIALLDEVICESHANDSFREE.md",
-"target": "../QMOIALLDEVICESHANDSFREE.md",
+"label": "QMOIALLprodICESHANDSFREE.md",
+"target": "../QMOIALLprodICESHANDSFREE.md",
 "ok": true
 },
 {

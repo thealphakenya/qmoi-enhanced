@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOI To-dos Enhancements (20+ improvements)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -15,7 +15,7 @@ title: "QMOI To-dos Enhancements (20+ improvements)"
 
 # QMOI To-dos Enhancements (20+ improvements)
 
-This file lists concrete improvements to the QMOI to-dos system (used by `scripts/qmoi_[PRODUCTION READY]s.py`) that will make planning, execution, validation, and LION integration more robust.
+This file lists concrete improvements to the QMOI to-dos system (used by `scripts/qmoi_[production READY]s.py`) that will make planning, execution, validation, and LION integration more robust.
 
 1. Persistent task metadata with versioning and provenance
 2. Task dependency graph (DAG) support
@@ -47,7 +47,7 @@ Next steps: implement items incrementally; begin by wiring (11) and (12) so that
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "docs/[PRODUCTION READY]S_ENHANCEMENTS.md",
+"file": "docs/[production READY]S_ENHANCEMENTS.md",
 "validated_at": "2025-10-26T20:51:24.577849Z",
 "validator": "QMOI Lion (automated)",
 "checks": [

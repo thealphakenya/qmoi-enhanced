@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 14 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 14 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextApiRequest, NextApiResponse } from "next";
 // Import authentication and audit logging utilities
 // ... existing code ...
@@ -21,43 +21,43 @@ export default async function handler(
       const { action } = body;
       switch (action) {
         case "translate":
-          // Production implementation:: handle translation
+          // production implementation:: handle translation
           return res.status(200).json({
-            result: "Translation result (// Production implementation required:)",
+            result: "Translation result (// production implementation required:)",
           });
         case "speech-to-text":
-          // Production implementation:: handle STT
+          // production implementation:: handle STT
           return res.status(200).json({
             result:
-              "Speech-to-text result (// Production implementation required:)",
+              "Speech-to-text result (// production implementation required:)",
           });
         case "text-to-speech":
-          // Production implementation:: handle TTS
+          // production implementation:: handle TTS
           return res.status(200).json({
             result:
-              "Text-to-speech result (// Production implementation required:)",
+              "Text-to-speech result (// production implementation required:)",
           });
         case "language-detect":
-          // Production implementation:: handle language detection
+          // production implementation:: handle language detection
           return res.status(200).json({
             result:
-              "Language detection result (// Production implementation required:)",
+              "Language detection result (// production implementation required:)",
           });
         case "lesson":
-          // Production implementation:: handle language lesson
+          // production implementation:: handle language lesson
           return res.status(200).json({
-            result: "Lesson result (// Production implementation required:)",
+            result: "Lesson result (// production implementation required:)",
           });
         case "quiz":
-          // Production implementation:: handle language quiz
+          // production implementation:: handle language quiz
           return res.status(200).json({
-            result: "Quiz result (// Production implementation required:)",
+            result: "Quiz result (// production implementation required:)",
           });
         case "pronunciation-check":
-          // Production implementation:: handle pronunciation check
+          // production implementation:: handle pronunciation check
           return res.status(200).json({
             result:
-              "Pronunciation check result (// Production implementation required:)",
+              "Pronunciation check result (// production implementation required:)",
           });
         default:
           return res.status(400).json({ error: "Unknown action" });

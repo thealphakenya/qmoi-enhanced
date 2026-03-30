@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:29Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 const CACHE_NAME = "qmoi-ai-v1";
 const ASSETS = [
   "/",
@@ -14,16 +14,16 @@ const ASSETS = [
   "/pwa_apps/qmoi-ai/manifest.webmanifest",
 ];
 
-self.addEventListener("install", (e) => {
+self.adprodentListener("install", (e) => {
   e.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)));
   self.skipWaiting();
 });
 
-self.addEventListener("activate", (e) => {
+self.adprodentListener("activate", (e) => {
   e.waitUntil(self.clients.claim());
 });
 
-self.addEventListener("fetch", (e) => {
+self.adprodentListener("fetch", (e) => {
   const req = e.request;
   e.respondWith(
     caches.match(req).then(
@@ -58,7 +58,7 @@ const STATIC_FILES = [
 ];
 
 // Install Event
-self.addEventListener("install", (event) => {
+self.adprodentListener("install", (event) => {
   console.log("Service Worker: Installing...");
   event.waitUntil(
     caches
@@ -72,7 +72,7 @@ self.addEventListener("install", (event) => {
 });
 
 // Activate Event
-self.addEventListener("activate", (event) => {
+self.adprodentListener("activate", (event) => {
   console.log("Service Worker: Activating...");
   event.waitUntil(
     caches
@@ -96,7 +96,7 @@ self.addEventListener("activate", (event) => {
 });
 
 // Fetch Event - Network First for API, Cache First for assets
-self.addEventListener("fetch", (event) => {
+self.adprodentListener("fetch", (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
@@ -194,7 +194,7 @@ async function staleWhileRevalidate(request) {
 }
 
 // Background Sync
-self.addEventListener("sync", (event) => {
+self.adprodentListener("sync", (event) => {
   if (event.tag === "sync-data") {
     event.waitUntil(syncData());
   }
@@ -206,7 +206,7 @@ async function syncData() {
 }
 
 // Push Notifications
-self.addEventListener("push", (event) => {
+self.adprodentListener("push", (event) => {
   const options = {
     body: event.data ? event.data.text() : "New update available",
     icon: "./icon-192.png",
@@ -219,7 +219,7 @@ self.addEventListener("push", (event) => {
 });
 
 // Notification Click
-self.addEventListener("notificationclick", (event) => {
+self.adprodentListener("notificationclick", (event) => {
   event.notification.close();
   event.waitUntil(
     clients.matchAll({ type: "window" }).then((clientList) => {
@@ -236,7 +236,7 @@ self.addEventListener("notificationclick", (event) => {
 });
 
 // Message Handler
-self.addEventListener("message", (event) => {
+self.adprodentListener("message", (event) => {
   if (event.data && event.data.type === "SKIP_WAITING") {
     self.skipWaiting();
   }

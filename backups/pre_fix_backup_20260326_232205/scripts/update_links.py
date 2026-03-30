@@ -19,7 +19,7 @@ QMOI_DOMAINS = {
     'village': 'qvillage.com',
     'city': 'Qcity.qmoi.ai',
     'global': 'qglobal.org',
-    'parallel': 'qparallel.dev',
+    'parallel': 'qparallel.prod',
     'database': 'qdatabase.net',
     'server': 'qserver.io',
     'cloud': 'qcloud.ai',
@@ -27,7 +27,7 @@ QMOI_DOMAINS = {
     'ai': 'alphaq.ai'
 }
 
-OLD_DOMAINS = ['Qstore.qmoi.ai', 'Qdownload.qmoi.ai', 'Qapi.qmoi.ai', 'Qapp.qmoi.ai', 'qvillage.com', 'qglobal.org', 'qparallel.dev']
+OLD_DOMAINS = ['Qstore.qmoi.ai', 'Qdownload.qmoi.ai', 'Qapi.qmoi.ai', 'Qapp.qmoi.ai', 'qvillage.com', 'qglobal.org', 'qparallel.prod']
 NEW_DOMAINS = [QMOI_DOMAINS['store'], QMOI_DOMAINS['download'], QMOI_DOMAINS['api'], QMOI_DOMAINS['app'], QMOI_DOMAINS['village'], QMOI_DOMAINS['global'], QMOI_DOMAINS['parallel']]
 
 def update_links_in_file(file_path):

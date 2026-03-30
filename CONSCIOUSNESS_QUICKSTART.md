@@ -35,7 +35,7 @@ console.log(`Memory Coherence: ${state.memory_coherence}`);
 #### Awareness Context
 ```typescript
 const awareness = awarenessSystem.getGlobalAwareness();
-console.log(`Active Devices: ${awareness.cross_device_context.active_devices}`);
+console.log(`Active prodices: ${awareness.cross_prodice_context.active_prodices}`);
 console.log(`Anomalies: ${awareness.anomalies_detected}`);
 ```
 
@@ -44,7 +44,7 @@ console.log(`Anomalies: ${awareness.anomalies_detected}`);
 const memoryId = await memorySyncSystem.addMemory({
   type: "long_term",
   content: "Important fact",
-  device_id: "device_001",
+  prodice_id: "prodice_001",
   user_id: "user_123",
   tags: ["important"],
   relevance_score: 0.9,
@@ -74,7 +74,7 @@ await awarenessSystem.updateUserContext("user_123", {
 await memorySyncSystem.addMemory({
   type: "short_term",
   content: "User asked for help about AI",
-  device_id: "device_001",
+  prodice_id: "prodice_001",
   user_id: "user_123",
   tags: ["user_interaction", "help_request"],
   relevance_score: 0.9,
@@ -83,19 +83,19 @@ await memorySyncSystem.addMemory({
 });
 ```
 
-### Use Case 2: Cross-Device Sync
+### Use Case 2: Cross-prodice Sync
 ```typescript
-// User switches devices
-await awarenessSystem.updateDeviceContext(
-  "device_002",  // Primary device
-  ["device_001", "device_002"],  // Active devices
-  ["watch", "tablet"]  // Connected devices
+// User switches prodices
+await awarenessSystem.updateprodiceContext(
+  "prodice_002",  // Primary prodice
+  ["prodice_001", "prodice_002"],  // Active prodices
+  ["watch", "tablet"]  // Connected prodices
 );
 
-// Sync memories to all devices
-await orchestrationEngine.syncMemoryToDevices("user_123", [
-  "device_001",
-  "device_002" 
+// Sync memories to all prodices
+await orchestrationEngine.syncMemoryToprodices("user_123", [
+  "prodice_001",
+  "prodice_002" 
 ]);
 ```
 
@@ -105,7 +105,7 @@ const response = await orchestrationEngine.orchestrateAction(
   {
     request_id: "req_001",
     user_id: "user_123",
-    device_id: "device_001",
+    prodice_id: "prodice_001",
     action: "search_information",
     priority: "high",
     context: { query: "AI consciousness" }
@@ -186,7 +186,7 @@ curl -X POST "http://localhost:3000/api/consciousness" \
     "data": {
       "type": "long_term",
       "content": "User completed training module",
-      "device_id": "device_001",
+      "prodice_id": "prodice_001",
       "user_id": "user_123",
       "tags": ["training", "achievement"],
       "relevance_score": 0.95,
@@ -234,7 +234,7 @@ npm test -- consciousness-awareness-memory.test.ts --coverage
 await memorySyncSystem.addMemory({
   type: "long_term",
   content: "Sensitive information",
-  device_id: "device_001",
+  prodice_id: "prodice_001",
   user_id: "user_123",
   tags: ["sensitive"],
   encrypted: true,  // ← Enable encryption
@@ -256,7 +256,7 @@ const userMemories = await memorySyncSystem.getUserMemories("user_123");
 const tempMemory = await memorySyncSystem.addMemory({
   type: "short_term",
   content: "Temporary session data",
-  device_id: "device_001",
+  prodice_id: "prodice_001",
   user_id: "user_123",
   tags: ["session"],
   encrypted: false,
@@ -273,12 +273,12 @@ const consolidated = await memorySyncSystem.consolidateMemory();
 ### 1. Use Batch Operations When Possible
 ```typescript
 // Good - batch sync
-await orchestrationEngine.syncMemoryToDevices("user_123", [
-  "device_001", "device_002", "device_003"
+await orchestrationEngine.syncMemoryToprodices("user_123", [
+  "prodice_001", "prodice_002", "prodice_003"
 ]);
 
 // Fine for single operations
-await orchestrationEngine.syncMemoryToDevices("user_123", ["device_001"]);
+await orchestrationEngine.syncMemoryToprodices("user_123", ["prodice_001"]);
 ```
 
 ### 2. Use Parallel Orchestration
@@ -337,14 +337,14 @@ console.log(`Memory attention level: ${stats.consciousness_metrics.attention_lev
 ## 🎯 Next Steps
 
 1. **Integrate into qmoi-model.ts**: Use orchestration engine in main API
-2. **Add to Device Systems**: Connect consciousness to device management
+2. **Add to prodice Systems**: Connect consciousness to prodice management
 3. **Implement Persistence**: Replace in-memory with database
 4. **Enable Real-time Sync**: Add WebSocket support for live updates
 5. **Scale Testing**: Test with 1000+ concurrent connections
 
 ---
 
-**Status**: Production Ready ✅
+**Status**: production Ready ✅
 **Last Updated**: 2026-03-25
 **Version**: 1.0.0
 

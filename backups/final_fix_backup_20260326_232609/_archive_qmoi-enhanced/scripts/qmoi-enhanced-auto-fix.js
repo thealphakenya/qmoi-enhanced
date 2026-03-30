@@ -334,8 +334,8 @@ class QMOIEnhancedAutoFix {
       } catch (error) {
         // Create .env file if it doesn't exist
         envContent = `# QMOI Environment Variables
-NODE_ENV=development
-QMOI_AUTODEV_ENABLED=true
+NODE_ENV=production
+QMOI_AUTOprod_ENABLED=true
 `;
         await fs.writeFile(envPath, envContent);
         fixes.push({
@@ -347,11 +347,11 @@ QMOI_AUTODEV_ENABLED=true
       }
 
       // Check for required environment variables
-      const requiredVars = ["NODE_ENV", "QMOI_AUTODEV_ENABLED"];
+      const requiredVars = ["NODE_ENV", "QMOI_AUTOprod_ENABLED"];
 
       for (const varName of requiredVars) {
         if (!envContent.includes(`${varName}=`)) {
-          envContent += `\n${varName}=development\n`;
+          envContent += `\n${varName}=production\n`;
           fixes.push({
             type: "config",
             action: "add_env_variable",

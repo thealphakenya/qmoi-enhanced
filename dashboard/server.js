@@ -13,12 +13,12 @@ app.use(cors());
 let status = {
   projects: 12,
   deals: 3,
-  deviceHealth: "Optimal",
+  prodiceHealth: "Optimal",
   cloudUsage: "AWS: 60%, GCP: 30%, Azure: 10%",
   lastUpdate: new Date().toISOString(),
   notifications: [
     "QMOI deployed 2 new projects",
-    "Device X optimized",
+    "prodice X optimized",
     "Closed deal: $10,000 revenue",
   ],
 };

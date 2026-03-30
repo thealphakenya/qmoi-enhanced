@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "LION-AI (AI-First Extensions)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -21,11 +21,11 @@ Purpose
 
 Key features
 
-- Model registry, model versioning, model testing harness, inference sandboxing, GPU/accelerator support.
+- Model registry, model versioning, model testing harness, inference productioning, GPU/accelerator support.
 
 Target platforms
 
-- GPU-enabled cloud VMs, on-prem inference servers, and edge devices with accelerators.
+- GPU-enabled cloud VMs, on-prem inference servers, and edge prodices with accelerators.
 
 Packaging
 

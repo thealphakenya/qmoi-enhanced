@@ -241,7 +241,7 @@ async function generateRevenue() {
 
     // Generate revenue from various sources
     const revenueSources = [
-      "freelance_development",
+      "freelance_production",
       "consulting_services",
       "software_licensing",
       "cloud_services",
@@ -344,10 +344,10 @@ function generateRecommendations(data) {
   const insights = generateInsights(data);
 
   return [
-    `Focus on ${insights.mostPopularLanguage} development for maximum impact`,
+    `Focus on ${insights.mostPopularLanguage} production for maximum impact`,
     `Explore trending topics: ${insights.topTrendingTopics.join(", ")}`,
     `Target projects with high star counts for better visibility`,
-    `Consider cross-platform development for broader reach`,
+    `Consider cross-platform production for broader reach`,
   ];
 }
 

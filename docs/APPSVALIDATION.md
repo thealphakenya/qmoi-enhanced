@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "App Validation"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -84,7 +84,7 @@ Automated flow
 1. Orchestrator reads `qcity-artifacts/qmoi_build_report.json`.
 2. For each platform entry it verifies presence, recomputes checksum and size, and marks status: `available`, `included`, `mismatch`, or `needs-signature`.
 3. If the artifact is available and checksums match, run a light smoke check where feasible and report results.
-4. Produce `docs/apps_validation_report.json` summarizing per-platform results.
+4. produce `docs/apps_validation_report.json` summarizing per-platform results.
 
 Operational notes
 

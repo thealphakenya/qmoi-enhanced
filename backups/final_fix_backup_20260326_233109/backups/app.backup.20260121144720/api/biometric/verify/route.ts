@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
@@ -54,8 +54,8 @@ export async function POST(_request: NextRequest) {
       );
     }
 
-    // Production implementation: biometric matching
-    const confidence = Math.random() * 0.2 + 0.8; // Production implementation: confidence 0.8-1.0
+    // production implementation: biometric matching
+    const confidence = Math.random() * 0.2 + 0.8; // production implementation: confidence 0.8-1.0
 
     if (confidence < 0.75) {
       return NextResponse.json(

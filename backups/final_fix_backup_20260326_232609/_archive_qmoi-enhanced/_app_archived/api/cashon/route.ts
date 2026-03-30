@@ -24,7 +24,7 @@ function verifyMasterToken(request: NextRequest): string | null {
 // GET /api/cashon/balance
 export async function GET(request: NextRequest) {
   try {
-    // Gate with central API key helper (allows local dev when no key configured)
+    // Gate with central API key helper (allows local prod when no key configured)
     const auth = libProposals.requireApiKey(request.headers);
     if (!auth.ok) {
       const r = auth.response;
@@ -111,7 +111,7 @@ export async function POST(request: NextRequest) {
         }
 
         const canRun =
-          process.env.PRODUCTION_CONFIRMED === "true" &&
+          process.env.production_CONFIRMED === "true" &&
           process.argv.indexOf("--real") !== -1;
         const proposal = {
           title: "Cashon deposit",
@@ -145,7 +145,7 @@ export async function POST(request: NextRequest) {
         }
 
         const canRun =
-          process.env.PRODUCTION_CONFIRMED === "true" &&
+          process.env.production_CONFIRMED === "true" &&
           process.argv.indexOf("--real") !== -1;
         const proposal = {
           title: "Approve deposit",
@@ -179,7 +179,7 @@ export async function POST(request: NextRequest) {
         }
 
         const canRun =
-          process.env.PRODUCTION_CONFIRMED === "true" &&
+          process.env.production_CONFIRMED === "true" &&
           process.argv.indexOf("--real") !== -1;
         const proposal = {
           title: "Withdraw funds",
@@ -205,7 +205,7 @@ export async function POST(request: NextRequest) {
 
       case "start-trading": {
         const canRun =
-          process.env.PRODUCTION_CONFIRMED === "true" &&
+          process.env.production_CONFIRMED === "true" &&
           process.argv.indexOf("--real") !== -1;
         const proposal = {
           title: "Start trading",
@@ -231,7 +231,7 @@ export async function POST(request: NextRequest) {
 
       case "stop-trading": {
         const canRun =
-          process.env.PRODUCTION_CONFIRMED === "true" &&
+          process.env.production_CONFIRMED === "true" &&
           process.argv.indexOf("--real") !== -1;
         const proposal = {
           title: "Stop trading",
@@ -265,7 +265,7 @@ export async function POST(request: NextRequest) {
         }
 
         const canRun =
-          process.env.PRODUCTION_CONFIRMED === "true" &&
+          process.env.production_CONFIRMED === "true" &&
           process.argv.indexOf("--real") !== -1;
         const proposal = {
           title: "Execute trade",
@@ -301,7 +301,7 @@ export async function POST(request: NextRequest) {
         }
 
         const canRun =
-          process.env.PRODUCTION_CONFIRMED === "true" &&
+          process.env.production_CONFIRMED === "true" &&
           process.argv.indexOf("--real") !== -1;
         const proposal = {
           title: "Approve trade",

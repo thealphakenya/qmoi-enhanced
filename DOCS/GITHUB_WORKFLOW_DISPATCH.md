@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 **Overview**: This document explains how to dispatch GitHub Actions workflows from a local environment or CI using a Personal Access Token (PAT). It also describes the helper script `scripts/dispatch_workflow_with_pat.sh` included in this repo.
 
 - **Required scopes for PAT**: `repo` and `workflow` (for private repos). For public repos `public_repo` and `workflow` may suffice.

@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 h# 🎯 QMOI v1.2.3 Release - Quick Reference & Index
 
 **Release Date**: November 12, 2025  
@@ -23,7 +23,7 @@ h# 🎯 QMOI v1.2.3 Release - Quick Reference & Index
 2. 📥 Download the file for your platform
 3. ✅ Install and enjoy!
 
-### For Developers
+### For prodelopers
 ```bash
 # Verify builds
 ./verify-all-releases.sh all
@@ -210,7 +210,7 @@ sha256sum filename
 ```
 
 ### Step 5: Enjoy!
-All 6 QMOI apps now available on your device
+All 6 QMOI apps now available on your prodice
 
 ---
 

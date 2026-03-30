@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/bin/bash
 
 # QMOI Load Testing & Caching Utilities
@@ -43,7 +43,7 @@ print_info() {
 run_baseline_test() {
   print_header "Running Baseline Load Test"
   
-  if ! command -v k6 &> /dev/null; then
+  if ! command -v k6 &> /prod/null; then
     print_error "k6 is not installed. Please install k6: https://k6.io/docs/getting-started/installation/"
     return 1
   fi
@@ -63,7 +63,7 @@ run_baseline_test() {
 run_rampup_test() {
   print_header "Running Ramp-Up Load Test"
   
-  if ! command -v k6 &> /dev/null; then
+  if ! command -v k6 &> /prod/null; then
     print_error "k6 is not installed"
     return 1
   fi
@@ -83,7 +83,7 @@ run_rampup_test() {
 run_spike_test() {
   print_header "Running Spike Load Test"
   
-  if ! command -v k6 &> /dev/null; then
+  if ! command -v k6 &> /prod/null; then
     print_error "k6 is not installed"
     return 1
   fi
@@ -103,7 +103,7 @@ run_spike_test() {
 run_stress_test() {
   print_header "Running Stress Load Test"
   
-  if ! command -v k6 &> /dev/null; then
+  if ! command -v k6 &> /prod/null; then
     print_error "k6 is not installed"
     return 1
   fi
@@ -123,7 +123,7 @@ run_stress_test() {
 run_all_tests() {
   print_header "Running Complete Load Test Suite"
   
-  if ! command -v k6 &> /dev/null; then
+  if ! command -v k6 &> /prod/null; then
     print_error "k6 is not installed"
     return 1
   fi
@@ -142,12 +142,12 @@ run_all_tests() {
 check_redis_connection() {
   print_header "Checking Redis Connection"
   
-  if ! command -v redis-cli &> /dev/null; then
+  if ! command -v redis-cli &> /prod/null; then
     print_error "redis-cli is not installed"
     return 1
   fi
 
-  if redis-cli -u "$REDIS_URL" ping > /dev/null 2>&1; then
+  if redis-cli -u "$REDIS_URL" ping > /prod/null 2>&1; then
     print_success "Redis is connected"
     redis-cli -u "$REDIS_URL" info server | grep redis_version
   else
@@ -205,7 +205,7 @@ get_cache_stats() {
     -H "Authorization: Bearer $ADMIN_TOKEN" \
     -H "Content-Type: application/json")
   
-  echo "$response" | jq '.' 2>/dev/null || echo "$response"
+  echo "$response" | jq '.' 2>/prod/null || echo "$response"
 }
 
 # List all cache keys matching pattern
@@ -227,7 +227,7 @@ get_cache_key() {
 
   print_header "Cache Key: $key"
   
-  redis-cli -u "$REDIS_URL" get "$key" | jq '.' 2>/dev/null || redis-cli -u "$REDIS_URL" get "$key"
+  redis-cli -u "$REDIS_URL" get "$key" | jq '.' 2>/prod/null || redis-cli -u "$REDIS_URL" get "$key"
 }
 
 # Delete cache key
@@ -285,15 +285,15 @@ warm_cache() {
 
   # Cache system metrics
   curl -s -X GET "$BASE_URL/api/metrics" \
-    -H "Authorization: Bearer $ADMIN_TOKEN" > /dev/null
+    -H "Authorization: Bearer $ADMIN_TOKEN" > /prod/null
 
   # Cache monitoring data
   curl -s -X GET "$BASE_URL/api/admin/monitoring" \
-    -H "Authorization: Bearer $ADMIN_TOKEN" > /dev/null
+    -H "Authorization: Bearer $ADMIN_TOKEN" > /prod/null
 
   # Cache alerts
   curl -s -X GET "$BASE_URL/api/admin/alerts" \
-    -H "Authorization: Bearer $ADMIN_TOKEN" > /dev/null
+    -H "Authorization: Bearer $ADMIN_TOKEN" > /prod/null
 
   print_success "Cache warming completed"
 }
@@ -341,7 +341,7 @@ generate_performance_report() {
     echo ""
     
     echo "=== Redis Status ==="
-    if redis-cli -u "$REDIS_URL" ping > /dev/null 2>&1; then
+    if redis-cli -u "$REDIS_URL" ping > /prod/null 2>&1; then
       echo "Redis: Connected"
       echo "Version: $(redis-cli -u "$REDIS_URL" info server | grep redis_version | cut -d: -f2)"
     else
@@ -471,7 +471,7 @@ QMOI Load Testing & Caching - Setup Instructions
 
 5. ENSURE API IS RUNNING:
    
-   npm run dev
+   npm run prod
 
 6. RUN TESTS:
    
@@ -486,7 +486,7 @@ show_status() {
   print_header "System Status"
   
   echo "API Status:"
-  if curl -s "$BASE_URL/api/health" > /dev/null 2>&1; then
+  if curl -s "$BASE_URL/api/health" > /prod/null 2>&1; then
     print_success "API is running"
   else
     print_error "API is not responding"
@@ -494,7 +494,7 @@ show_status() {
   
   echo ""
   echo "Redis Status:"
-  if redis-cli -u "$REDIS_URL" ping > /dev/null 2>&1; then
+  if redis-cli -u "$REDIS_URL" ping > /prod/null 2>&1; then
     print_success "Redis is connected"
   else
     print_error "Redis is not connected"
@@ -502,7 +502,7 @@ show_status() {
   
   echo ""
   echo "k6 Status:"
-  if command -v k6 &> /dev/null; then
+  if command -v k6 &> /prod/null; then
     print_success "k6 is installed ($(k6 version))"
   else
     print_error "k6 is not installed"

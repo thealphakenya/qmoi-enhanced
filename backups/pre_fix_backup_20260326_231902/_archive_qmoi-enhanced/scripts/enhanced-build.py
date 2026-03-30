@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:19Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 Enhanced QMOI Build Script with Cloud Integration and Error Fixing
@@ -234,8 +234,8 @@ VSVersionInfo(
         StringStruct(u'InternalName', u'qmoiexe_enhanced'),
         StringStruct(u'LegalCopyright', u'Copyright (C) 2025 QMOI AI'),
         StringStruct(u'OriginalFilename', u'qmoiexe_enhanced.exe'),
-        StringStruct(u'ProductName', u'QMOI AI Enhanced'),
-        StringStruct(u'ProductVersion', u'2.0.0.0')])
+        StringStruct(u'productName', u'QMOI AI Enhanced'),
+        StringStruct(u'productVersion', u'2.0.0.0')])
       ]), 
     VarFileInfo([VarStruct(u'Translation', [1033, 1200])])
   ]

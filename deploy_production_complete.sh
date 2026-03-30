@@ -1,10 +1,10 @@
 #!/bin/bash
-# QMOI Production Deployment Script - 100% Domain Health Guarantee
+# QMOI production Deployment Script - 100% Domain Health Guarantee
 # This script deploys all QMOI systems with guaranteed domain health
 
 set -e
 
-echo "🚀 QMOI Production Deployment - 100% Domain Health Guarantee"
+echo "🚀 QMOI production Deployment - 100% Domain Health Guarantee"
 echo "=========================================================="
 
 # Colors
@@ -21,7 +21,7 @@ DNS_PROVIDER="${DNS_PROVIDER:-vercel}"
 
 # Function to check command availability
 check_command() {
-    if ! command -v "$1" &> /dev/null; then
+    if ! command -v "$1" &> /prod/null; then
         echo -e "${RED}❌ Error: $1 is required but not installed${NC}"
         exit 1
     fi
@@ -36,15 +36,15 @@ verify_domain_health() {
     echo -n "🔍 Verifying $domain... "
 
     # DNS resolution check
-    if ! nslookup "$domain" &>/dev/null; then
+    if ! nslookup "$domain" &>/prod/null; then
         echo -e "${RED}❌ DNS FAILED${NC}"
         return 1
     fi
 
     # HTTP connectivity check
-    if ! curl -s --max-time "$timeout" "https://$domain" &>/dev/null; then
+    if ! curl -s --max-time "$timeout" "https://$domain" &>/prod/null; then
         # Try HTTP fallback
-        if ! curl -s --max-time "$timeout" "http://$domain" &>/dev/null; then
+        if ! curl -s --max-time "$timeout" "http://$domain" &>/prod/null; then
             echo -e "${YELLOW}⚠️ HTTP FAILED${NC}"
             return 1
         fi
@@ -144,7 +144,7 @@ cat > dns_production_config.json << 'EOF'
     "qvillage.net": "13.248.169.48",
     "qvillage.org": "13.248.169.48",
     "qglobal.org": "13.248.169.48",
-    "qparallel.dev": "13.248.169.48"
+    "qparallel.prod": "13.248.169.48"
   }
 }
 EOF
@@ -181,7 +181,7 @@ else
     echo "  qvillage.net     A      13.248.169.48"
     echo "  qvillage.org     A      13.248.169.48"
     echo "  qglobal.org      A      13.248.169.48"
-    echo "  qparallel.dev    A      13.248.169.48"
+    echo "  qparallel.prod    A      13.248.169.48"
 fi
 
 # Step 6: Health verification with retries
@@ -247,18 +247,18 @@ python3 -m pytest tests/ -v --tb=short
 
 echo ""
 echo "=========================================================="
-echo -e "${GREEN}🎉 QMOI PRODUCTION DEPLOYMENT COMPLETE${NC}"
+echo -e "${GREEN}🎉 QMOI production DEPLOYMENT COMPLETE${NC}"
 echo "=========================================================="
 echo ""
 echo "📊 Deployment Summary:"
 echo "  ✅ Dependencies installed"
-echo "  ✅ Production build completed"
+echo "  ✅ production build completed"
 echo "  ✅ Vercel deployment attempted"
 echo "  ✅ DNS configuration generated"
 echo "  ✅ Health verification completed"
 echo "  ✅ Fallback systems activated"
 echo "  ✅ Link validation finished"
-echo "  ✅ Production tests run"
+echo "  ✅ production tests run"
 echo ""
 echo "📄 Important Files Generated:"
 echo "  - dns_production_config.json (DNS configuration)"

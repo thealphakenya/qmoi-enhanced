@@ -1,8 +1,8 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/bin/bash
 
 ##############################################################################
-# QMOI Production Deployment Quick-Start
+# QMOI production Deployment Quick-Start
 # 
 # This script handles end-to-end production deployment with:
 # - Automatic environment setup
@@ -60,7 +60,7 @@ print_header() {
 ##############################################################################
 
 main() {
-    print_header "QMOI Enhanced - Production Deployment"
+    print_header "QMOI Enhanced - production Deployment"
 
     # Step 1: Check prerequisites
     check_prerequisites
@@ -92,7 +92,7 @@ check_prerequisites() {
     print_header "Step 1: Checking Prerequisites"
 
     # Check Node.js
-    if ! command -v node &> /dev/null; then
+    if ! command -v node &> /prod/null; then
         log_error "Node.js is not installed"
         exit 1
     fi
@@ -100,7 +100,7 @@ check_prerequisites() {
     log_success "Node.js $NODE_VERSION found"
 
     # Check npm
-    if ! command -v npm &> /dev/null; then
+    if ! command -v npm &> /prod/null; then
         log_error "npm is not installed"
         exit 1
     fi
@@ -108,7 +108,7 @@ check_prerequisites() {
     log_success "npm $NPM_VERSION found"
 
     # Check PM2
-    if ! command -v pm2 &> /dev/null; then
+    if ! command -v pm2 &> /prod/null; then
         log_warning "PM2 not found, installing globally..."
         npm install -g pm2
         log_success "PM2 installed"
@@ -117,7 +117,7 @@ check_prerequisites() {
     log_success "PM2 $PM2_VERSION found"
 
     # Check git
-    if ! command -v git &> /dev/null; then
+    if ! command -v git &> /prod/null; then
         log_warning "Git not found (optional)"
     else
         log_success "Git found"
@@ -129,7 +129,7 @@ check_prerequisites() {
 ##############################################################################
 
 verify_build() {
-    print_header "Step 2: Verifying Production Build"
+    print_header "Step 2: Verifying production Build"
 
     cd "$PROJECT_ROOT"
 
@@ -223,17 +223,17 @@ run_auto_init() {
 }
 
 ##############################################################################
-# Step 5: Start Production
+# Step 5: Start production
 ##############################################################################
 
 start_production() {
-    print_header "Step 5: Starting Production Application"
+    print_header "Step 5: Starting production Application"
 
     cd "$PROJECT_ROOT"
 
     # Kill any existing pm2 processes for this app
     log_info "Stopping any existing processes..."
-    pm2 delete ecosystem.config.production.cjs 2>/dev/null || true
+    pm2 delete ecosystem.config.production.cjs 2>/prod/null || true
 
     # Start new processes
     log_info "Starting PM2 processes..."
@@ -276,7 +276,7 @@ verify_deployment() {
 
     # Test health endpoint
     log_info "Testing health endpoint..."
-    if curl -s http://localhost:3000/api/health > /dev/null; then
+    if curl -s http://localhost:3000/api/health > /prod/null; then
         log_success "Health endpoint responding"
     else
         log_warning "Health endpoint not yet responding (services still initializing)"

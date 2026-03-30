@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env bash
 set -euo pipefail
 # Linux equivalent of start_qmoi_server.bat
@@ -12,7 +12,7 @@ cd "$ROOT_DIR"
 
 echo "[🔁] Killing processes on port 8080..."
 # Find and kill processes listening on 8080
-pids=$(ss -ltnp 2>/dev/null | awk '/:8080/ { gsub(/.*pid=/,"",$0); gsub(/,.*$/,"",$NF); print $NF }' | sort -u || true)
+pids=$(ss -ltnp 2>/prod/null | awk '/:8080/ { gsub(/.*pid=/,"",$0); gsub(/,.*$/,"",$NF); print $NF }' | sort -u || true)
 if [ -n "$pids" ]; then
   echo "Found PIDs: $pids"
   for pid in $pids; do
@@ -44,7 +44,7 @@ exit 0
 
 echo "[🔁] Killing processes on port 8080..."
 # Find and kill processes listening on 8080
-pids=$(ss -ltnp 2>/dev/null | awk '/:8080/ { gsub(/.*pid=/,"",$0); gsub(/,.*$/,"",$NF); print $NF }' | sort -u || true)
+pids=$(ss -ltnp 2>/prod/null | awk '/:8080/ { gsub(/.*pid=/,"",$0); gsub(/,.*$/,"",$NF); print $NF }' | sort -u || true)
 if [ -n "$pids" ]; then
   echo "Found PIDs: $pids"
   for pid in $pids; do

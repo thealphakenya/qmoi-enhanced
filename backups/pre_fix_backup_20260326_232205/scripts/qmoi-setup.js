@@ -320,11 +320,11 @@ echo "Post-commit actions completed"
 
       await this.log("QMOI setup completed successfully!");
       await this.log(
-        "QMOI is now ready to automate your development workflow.",
+        "QMOI is now ready to automate your production workflow.",
       );
       await this.log("Available commands:");
       await this.log("  npm start          - Start QMOI server");
-      await this.log("  npm run dev        - Start QMOI in development mode");
+      await this.log("  npm run prod        - Start QMOI in production mode");
       await this.log("  npm run qmoi-auto-push - Run auto-push functionality");
       await this.log("  npm run qmoi-error-recovery - Run error recovery");
 

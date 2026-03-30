@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Enhanced: Comprehensive Link & Domain Validation Plan
 **Status:** 🔄 In Progress | **Last Updated:** 2026-03-21  
 **Objective:** Ensure 100% of links and domains are accessible, working, and production-ready
@@ -16,7 +16,7 @@
 
 ## 1. SYSTEM DOMAINS & ENDPOINTS INVENTORY
 
-### Primary Production Domains
+### Primary production Domains
 | Domain | TLD | Intended Use | Status | Validation Method |
 |--------|-----|--------------|--------|-------------------|
 | qvillage.com | .com | QMOI Main Hub | ⏳ Pending | HTTP HEAD, DNS, WHOIS |
@@ -26,13 +26,13 @@
 | qquantum.tech | .tech | Quantum Computing | ⏳ Pending | HTTP HEAD, DNS, WHOIS |
 | alphaq.ai | .ai | stable Q AI Engine | ⏳ Pending | HTTP HEAD, DNS, WHOIS |
 | qglobal.org | .org | Global Operations | ⏳ Pending | HTTP HEAD, DNS, WHOIS |
-| qparallel.dev | .dev | Developer Platform | ⏳ Pending | HTTP HEAD, DNS, WHOIS |
+| qparallel.prod | .prod | prodeloper Platform | ⏳ Pending | HTTP HEAD, DNS, WHOIS |
 
 ### Fallback Domain Chain (Emergency)
 ```
 Primary: qvillage.com
 Fallback 1: qglobal.org
-Fallback 2: qparallel.dev
+Fallback 2: qparallel.prod
 Emergency: qvillage.net (DNS CNAME auto-switch)
 ```
 
@@ -84,7 +84,7 @@ Priority 1 (Most Referenced):
 
 Priority 2 (Secondary):
 - QMOIDATASETS.md
-- PRODUCTION_DEPLOYMENT_ALL_STEPS.md
+- production_DEPLOYMENT_ALL_STEPS.md
 - API_ENDPOINTS_REFERENCE.md
 - QMOI_SELF_UPDATE_SYSTEM.md
 
@@ -218,7 +218,7 @@ npm run build && npm test -- --testPathPattern="api|links" --verbose
 
 ---
 
-## 5. PRODUCTION LINK AUDIT SYSTEM
+## 5. production LINK AUDIT SYSTEM
 
 ### Automated Daily Health Checks
 **File:** `scripts/domain_health_check.py`

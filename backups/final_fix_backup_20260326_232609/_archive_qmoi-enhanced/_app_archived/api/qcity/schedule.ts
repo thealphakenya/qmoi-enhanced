@@ -27,7 +27,7 @@ const handler = requireRole(["admin", "master"])(async (
     return res.status(200).json({ items: schedules });
   }
   if (method === "POST") {
-    const { name, command, cron, deviceId, notify } = body;
+    const { name, command, cron, prodiceId, notify } = body;
     if (!name || !command || !cron)
       return res.status(400).json({ error: "required fields" });
     const job = {
@@ -35,7 +35,7 @@ const handler = requireRole(["admin", "master"])(async (
       name,
       command,
       cron,
-      deviceId,
+      prodiceId,
       notify,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),

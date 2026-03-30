@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOI Servers Inventory and Deployment Guide"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -30,7 +30,7 @@ This document lists the servers (HTTP services) present in the repository, their
   - Key endpoints: `/detect-anomaly`, `/analytics`, `/export-analytics`
 
 - FastAPI services (various):
-  - `downloadqmoiaiexe.py` / `qmoiexe.py` / `qmoiaxe.py` — download / exe distribution endpoints, model serving [PRODUCTION READY]s, and workspace services.
+  - `downloadqmoiaiexe.py` / `qmoiexe.py` / `qmoiaxe.py` — download / exe distribution endpoints, model serving [production READY]s, and workspace services.
   - Various `scripts/*` contain FastAPI backends for automation, space backends, and APIs.
   - Deploy with Uvicorn (ASGI) behind a reverse proxy (Nginx) or in containers.
 
@@ -60,7 +60,7 @@ To ensure QMOI runs when offline (no GitHub, no external networks):
 
 ## Security
 
-- Production must set `QMOI_JWT_SECRET` and `QMOI_CONTROL_TOKEN` environment variables to non-default values.
+- production must set `QMOI_JWT_SECRET` and `QMOI_CONTROL_TOKEN` environment variables to non-default values.
 - Use HTTPS (TLS) with valid certificates; WebAuthn requires a valid RP ID (domain) and HTTPS.
 
 ## Next steps (recommendations)

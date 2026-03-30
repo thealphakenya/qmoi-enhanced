@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOICLONE"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -16,7 +16,7 @@ title: "QMOICLONE"
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-> **Note:** QMOI now includes a self-healing automation for GitLab CI/CD. See [QMOIGITLABDEV.md](QMOIGITLABDEV.md) for details.
+> **Note:** QMOI now includes a self-healing automation for GitLab CI/CD. See [QMOIGITLABprod.md](QMOIGITLABprod.md) for details.
 
 <!-- QMOI_VALIDATION_START -->
 
@@ -35,8 +35,8 @@ title: "QMOICLONE"
 "ok": true,
 "detail": [
 {
-"label": "QMOIGITLABDEV.md",
-"target": "./QMOIGITLABDEV.md",
+"label": "QMOIGITLABprod.md",
+"target": "./QMOIGITLABprod.md",
 "ok": true
 }
 ]

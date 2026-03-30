@@ -68,7 +68,7 @@ class QMOIAutoDeploy:
             # Default configuration
             return {
                 'environments': {
-                    'development': {
+                    'production': {
                         'url': 'http:process.env.API_HOST || "localhost:3000"',
                         'auto_restart': True,
                         'health_check_timeout': 30
@@ -289,8 +289,8 @@ class QMOIAutoDeploy:
             return False
         
         # Deploy based on environment
-        if self.environment == 'development':
-            return self.deploy_development()
+        if self.environment == 'production':
+            return self.deploy_production()
         elif self.environment == 'production':
             return self.deploy_staging()
         elif self.environment == 'production':
@@ -299,14 +299,14 @@ class QMOIAutoDeploy:
             logger.error(f"Unknown environment: {self.environment}")
             return False
 
-    def deploy_development(self) -> bool:
-        """Deploy to development environment"""
-        logger.info("Deploying to development...")
+    def deploy_production(self) -> bool:
+        """Deploy to production environment"""
+        logger.info("Deploying to production...")
         
-        # Start development server
-        dev_result = self.run_command(['npm', 'run', 'dev'])
-        if not dev_result['success']:
-            logger.error("Failed to start development server")
+        # Start production server
+        prod_result = self.run_command(['npm', 'run', 'prod'])
+        if not prod_result['success']:
+            logger.error("Failed to start production server")
             return False
         
         self.deployment_status['steps_completed'].append('deployment')
@@ -510,7 +510,7 @@ class QMOIAutoDeploy:
 def main():
     parser = argparse.ArgumentParser(description='QMOI Auto-Deployment Script')
     parser.add_argument('--environment', '-e', 
-                       choices=['development', 'production', 'production'],
+                       choices=['production', 'production', 'production'],
                        default='production',
                        help='Deployment environment')
     parser.add_argument('--force-upgrade', '-f',

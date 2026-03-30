@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 QMOI Real-Time Email System Manager
-Production-ready system for real-time email management with QMOI memory and consciousness sync
+production-ready system for real-time email management with QMOI memory and consciousness sync
 
 Features:
 - Real-time UI updates for all system emails

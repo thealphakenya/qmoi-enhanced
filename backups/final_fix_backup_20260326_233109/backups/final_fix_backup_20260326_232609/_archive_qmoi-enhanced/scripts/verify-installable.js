@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 // scripts/verify-installable.js
 const fs = require("fs");
 const path = require("path");
@@ -12,7 +12,7 @@ const execSync = require("child_process").execSync;
 const TEST_INSTALL_COMMANDS = {
   apk: (file) => `adb install -r "${file}"`,
   exe: (file) => `"${file}" /S`,
-  ipa: (file) => `ideviceinstaller -i "${file}"`,
+  ipa: (file) => `iprodiceinstaller -i "${file}"`,
   appimage: (file) => `chmod +x "${file}" && "${file}" --version`,
   crx: (file) => `echo "Manual test for CRX: ${file}"`,
   pkg: (file) => `sudo installer -pkg "${file}" -target /`,

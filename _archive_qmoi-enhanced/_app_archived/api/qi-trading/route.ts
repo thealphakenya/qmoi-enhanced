@@ -150,7 +150,7 @@ export async function POST(request: NextRequest) {
     if (action === "execute") {
       // Proposal-first: write a proposal unless explicitly allowed
       const canRun =
-        process.env.PRODUCTION_CONFIRMED === "true" &&
+        process.env.production_CONFIRMED === "true" &&
         process.argv.indexOf("--real") !== -1;
       const proposal = {
         title: "Execute trade",
@@ -189,7 +189,7 @@ export async function POST(request: NextRequest) {
 
     if (action === "cancel") {
       const canRun =
-        process.env.PRODUCTION_CONFIRMED === "true" &&
+        process.env.production_CONFIRMED === "true" &&
         process.argv.indexOf("--real") !== -1;
       const proposal = {
         title: "Cancel trade",

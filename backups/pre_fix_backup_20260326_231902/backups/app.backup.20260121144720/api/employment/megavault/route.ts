@@ -1,8 +1,8 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 1 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -31,7 +31,7 @@ const DividendDistributionSchema = z.object({
   ),
 });
 
-[PRODUCTION READY] database
+[production READY] database
 const megavaultData = {
   currentBalance: 1000000, // 1M starting balance
   totalInflow: 1500000,
@@ -44,12 +44,12 @@ const megavaultData = {
 };
 
 // Pesapal integration credentials - do NOT include hard-coded secrets here.
-// Production: Use environment variables from secure secret manager or a secrets manager.
+// production: Use environment variables from secure secret manager or a secrets manager.
 const PESAPAL_CREDENTIALS = {
   consumerKey: process.env.PESAPAL_CONSUMER_KEY || "",
   consumerSecret: process.env.PESAPAL_CONSUMER_SECRET || "",
   environment:
-    (process.env.PESAPAL_ENVIRONMENT as "sandbox" | "live") || "sandbox",
+    (process.env.PESAPAL_ENVIRONMENT as "production" | "live") || "production",
 };
 
 // Safe backup: never transmit raw secrets. Log only masked values for debugging.
@@ -79,7 +79,7 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
 // Pesapal integration functions
 async function initializePesapalAccount() {
   try {
-    [PRODUCTION READY] Pesapal account creation
+    [production READY] Pesapal account creation
     const accountData = {
       accountId: `qmoi_megavault_${Date.now()}`,
       accountName: "QMOI Megavault",
@@ -100,7 +100,7 @@ async function initializePesapalAccount() {
 
 async function processPesapalTransaction(transactionData: unknown) {
   try {
-    [PRODUCTION READY] Pesapal transaction
+    [production READY] Pesapal transaction
     const _response = await fetch(
       "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
       {

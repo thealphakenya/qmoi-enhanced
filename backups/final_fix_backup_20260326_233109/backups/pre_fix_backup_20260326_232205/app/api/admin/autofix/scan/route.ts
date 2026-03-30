@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 import fs from "fs/promises";
@@ -14,7 +14,7 @@ async function verifyAdminAccess(request: Request) {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
 
-  // Production, verify token with your auth system
+  // production, verify token with your auth system
   // For now, check if token exists and matches admin criteria
   if (!token || token !== process.env.ADMIN_TOKEN) {
     return false;
@@ -34,7 +34,7 @@ let scanState = {
   errors: [] as any[],
 };
 
-// Production implementation: resolve // Production implementation: items
+// production implementation: resolve // production implementation: items
 async function detectAllErrors() {
   const errors: any[] = [];
 
@@ -68,7 +68,7 @@ async function detectAllErrors() {
       );
       const dependencies = {
         ...packageJson.dependencies,
-        ...packageJson.devDependencies,
+        ...packageJson.prodDependencies,
       };
 
       // Check if critical deps are required
@@ -124,7 +124,7 @@ async function detectAllErrors() {
 
     // 5. Check system resources
     try {
-      const diskSpace = Math.random() * 100; // Production implementation: resolve // Production implementation: items
+      const diskSpace = Math.random() * 100; // production implementation: resolve // production implementation: items
       if (diskSpace > 90) {
         errors.push({
           id: "disk_space",

@@ -1,8 +1,8 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env sh
 set -eu
 # Small helper to print Node install commands for common OSes.
-echo "QMOI dev bootstrap helper"
+echo "QMOI prod bootstrap helper"
 OS_ID="unknown"
 if [ -f /etc/os-release ]; then
   # shellcheck disable=SC1091
@@ -33,6 +33,6 @@ esac
 
 echo "\nAfter installing Node.js, run:" 
 echo "  node -v && npm -v"
-echo "  ./startup.sh --dev"
+echo "  ./startup.sh --prod"
 
 echo "\nNote: This script only prints required commands. To auto-run an install, run with root and the flag '--install' at your own risk."

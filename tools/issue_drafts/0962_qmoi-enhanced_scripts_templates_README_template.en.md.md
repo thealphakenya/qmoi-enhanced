@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Issue final for qmoi-enhanced/scripts/templates/README_template.en.md"
 generated: 2025-11-08T16:06:38.827733Z
@@ -10,9 +10,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [PRODUCTION READY] markers or [PRODUCTION READY]s.
-- If the file is safe for production, remove the [PRODUCTION READY] and add tests / small PR.
-- If the file is intentionally non-production (e.g. [PRODUCTION READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [production READY] markers or [production READY]s.
+- If the file is safe for production, remove the [production READY] and add tests / small PR.
+- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -47,7 +47,7 @@ Use the following tools to automate and build your apps:
 
 | Tool                                 | Description                                                      |
 | ------------------------------------ | ---------------------------------------------------------------- |
-| `python scripts/qmoi-app-builder.py` | Full cloud-based build and test for all devices                  |
+| `python scripts/qmoi-app-builder.py` | Full cloud-based build and test for all prodices                  |
 | `build_qmoi_ai.bat`                  | Quick-build for Windows `.exe` using PyInstaller + GitHub deploy |
 | `qmoiexe.py`                         | All-in-one launcher (backend + GUI + tray + updater + shortcuts) |
 | `auto_updater.py`                    | Auto-checks GitHub for new releases and updates locally          |

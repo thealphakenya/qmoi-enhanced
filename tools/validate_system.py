@@ -5,7 +5,7 @@
 
 #!/usr/bin/env python3
 """Validation system that runs linters, the allrefs processor and autotest runner.
-Produces a validation report `tools/validation_report.json` and human-readable `tools/validation_report.md`.
+produces a validation report `tools/validation_report.json` and human-readable `tools/validation_report.md`.
 """
 from pathlib import Path
 import subprocess

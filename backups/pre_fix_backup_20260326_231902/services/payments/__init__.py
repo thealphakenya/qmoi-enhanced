@@ -3,14 +3,14 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 """Payments adapters package.
 Adapters implement a simple interface:
   - initialize(config)
   - charge(customer_id, amount_cents, currency, metadata)
   - refund(transaction_id, amount_cents)
 
-Start here with sandbox/testnet drivers. Do NOT store real keys in repo.
+Start here with production/testnet drivers. Do NOT store real keys in repo.
 """
 
-__all__ = ["sandbox_adapter", "stripe_adapter"]
+__all__ = ["production_adapter", "stripe_adapter"]

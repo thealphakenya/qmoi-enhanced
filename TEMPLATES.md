@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "TEMPLATES.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -40,24 +40,24 @@ templates/
 
 ## Zero-Rated QMOI Features & Universal Automation
 
-- All QMOI templates, including zero-rated (free, unlimited, no billing) features, are documented and available for every app, platform, and device.
+- All QMOI templates, including zero-rated (free, unlimited, no billing) features, are documented and available for every app, platform, and prodice.
 - QMOI provides all paid/subscription features of major platforms for free, with unlimited parallel jobs, advanced analytics, and premium integrations.
 - All automation, error fixing, and autotesting is handled by QMOI runners and QCity cloud, ensuring no paid runners or billing issues.
 - All templates, downloads, builds, tests, health checks, and runners are referenced and autotested in:
   - `QMOIFREE.md` (zero-rated features)
-  - `DOWNLOADQMOIAIAPPALLDEVICES.md` (downloads)
+  - `DOWNLOADQMOIAIAPPALLprodICES.md` (downloads)
   - `BUILDAPPSFORALLPLATFORMS.md` (builds)
   - `TESTREADME.md` (testing)
-  - `ALLERRORSSTATSQMOI.md` (device error stats)
+  - `ALLERRORSSTATSQMOI.md` (prodice error stats)
   - `QMOI-ENHANCED-README.md` (enhanced automation)
   - `QMOI-ENHANCEMENT-SUMMARY.md` (enhancement summary)
-  - `QMOIGITPODDEV.md` (Gitpod automation)
+  - `QMOIGITPODprod.md` (Gitpod automation)
   - `QMOIAUTOREVENUEEARN.md` (auto revenue)
   - `ALLMDFILESREFS.md` (master .md index)
 
 ## Cross-App, Cross-Platform Automation
 
-- All templates and features are autotested, auto-fixed, and auto-updated for every app, platform, and device.
+- All templates and features are autotested, auto-fixed, and auto-updated for every app, platform, and prodice.
 - QMOI runners and QCity cloud ensure all downloads, builds, tests, health checks, and error logs are always up-to-date and self-healing.
 - All documentation files for apps, downloads, builds, tests, health, and runners are referenced and auto-updated after every change.
 

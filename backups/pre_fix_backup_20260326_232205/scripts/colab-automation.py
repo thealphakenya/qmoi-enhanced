@@ -81,7 +81,7 @@ class ColabAutomation:
                 # Set GPU memory growth
                 gpu_script = """
 import tensorflow as tf
-gpus = tf.config.production.list_physical_devices('GPU')
+gpus = tf.config.production.list_physical_prodices('GPU')
 if gpus:
     try:
         for gpu in gpus:

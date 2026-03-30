@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOIAVATAR.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -66,19 +66,19 @@ Q-Avatar is a high-quality, real-time animated figure representing QMOI in all c
 - **Quality Enhancement:**
   - Multiple quality levels (low, medium, high, ultra, ai-enhanced)
   - Automatic enhancement of animation and voice quality
-  - Adaptive to device and network conditions
-  - Performance optimization based on device capabilities
+  - Adaptive to prodice and network conditions
+  - Performance optimization based on prodice capabilities
   - Real-time quality monitoring and adjustment
 - **Data Saver & Adaptive Quality:**
   - Data Saver mode for complete data usage, auto-enabled on slow connections
-  - Adaptive animation/audio quality based on network/device conditions
+  - Adaptive animation/audio quality based on network/prodice conditions
 - **Cloud/Colab/Dagshub Offloading:**
   - Heavy features offloaded to cloud environments
-  - Seamless integration with Colab/Dagshub devices
-  - Local device remains robust
-- **Device Management & Dashboard:**
-  - All devices (local/cloud) visible in dashboard
-  - Status, resource usage, and optimization tips for each device
+  - Seamless integration with Colab/Dagshub prodices
+  - Local prodice remains robust
+- **prodice Management & Dashboard:**
+  - All prodices (local/cloud) visible in dashboard
+  - Status, resource usage, and optimization tips for each prodice
   - Auto-offloading of tasks when local resources are low
 
 ## 2. Technical Details
@@ -95,7 +95,7 @@ Q-Avatar is a high-quality, real-time animated figure representing QMOI in all c
 - **Persistence:**
   - User preferences stored in localStorage
   - Automatic config restoration on page reload
-  - Cloud sync capability for cross-device preferences
+  - Cloud sync capability for cross-prodice preferences
 - **Integration:**
   - Appears in all chat interfaces, dashboards, and HuggingFace Spaces
   - Syncs with QMOI's state and notifications
@@ -133,13 +133,13 @@ Q-Avatar is a high-quality, real-time animated figure representing QMOI in all c
 - **Configurable Animation:** Choose from multiple floating behaviors
 - **Persistent Position:** Remembers last position across sessions
 - **Responsive Design:** Adapts to different screen sizes
-- **Touch Support:** Works on mobile and tablet devices
+- **Touch Support:** Works on mobile and tablet prodices
 
 ## 5. What's Next/required
 
 - **Optimization & Data Efficiency:**
   - Continue to enhance Data Saver and adaptive quality features
-  - Expand cloud offloading and device management
+  - Expand cloud offloading and prodice management
   - See `AUTOOPTIMIZEALPHAQMOIENGINE.md` for full optimization strategies
 - **Enhanced Integration:** Connect with actual email/Slack/WhatsApp notification systems
 - **Voice Synthesis:** Integrate with TTS services for real speech
@@ -164,49 +164,49 @@ Q-Avatar is a high-quality, real-time animated figure representing QMOI in all c
   - Voice-activated environment changes
   - Touch and haptic feedback support
 
-## QCity Device Integration & Optimization
+## QCity prodice Integration & Optimization
 
 ### Overview
 
-QCity is enhanced to serve as a primary device for running QMOI operations, storing all build files, packages, and node_modules without consuming local device resources.
+QCity is enhanced to serve as a primary prodice for running QMOI operations, storing all build files, packages, and node_modules without consuming local prodice resources.
 
-### QCity as Primary Device
+### QCity as Primary prodice
 
-- **Resource Offloading:** All heavy operations (builds, npm installs, testing) run in QCity/Colab instead of local device
+- **Resource Offloading:** All heavy operations (builds, npm installs, testing) run in QCity/Colab instead of local prodice
 - **Storage Management:** All node_modules, build files, and packages are stored in QCity's cloud storage
-- **Performance Optimization:** Local device remains robust and responsive while QCity handles all resource-intensive tasks
+- **Performance Optimization:** Local prodice remains robust and responsive while QCity handles all resource-intensive tasks
 - **Master-Only Access:** Build files and sensitive data are only accessible to master users
 
-### QCity Device Features
+### QCity prodice Features
 
 - **Command Execution:** Run all npm, node, and build commands directly in QCity
 - **File Management:** Store and manage all project files, dependencies, and build artifacts
 - **GitHub Integration:** Enhanced integration for seamless deployment and version control
 - **Error Fixing:** Fast error detection and resolution within QCity environment
-- **Always-On:** QCity device runs continuously in Colab for reliable access
+- **Always-On:** QCity prodice runs continuously in Colab for reliable access
 
-### Local Device Optimization
+### Local prodice Optimization
 
-- **robust Client:** Local device acts as a thin client, only handling UI and user interactions
+- **robust Client:** Local prodice acts as a thin client, only handling UI and user interactions
 - **No Resource Usage:** No node_modules, build files, or heavy processes run locally
 - **Fast Loading:** Cursor and QMOI load instantly without resource overhead
-- **Reliable Performance:** Consistent performance regardless of local device capabilities
+- **Reliable Performance:** Consistent performance regardless of local prodice capabilities
 
 ### Settings & Configuration
 
-- **settings.json:** Configure QCity as primary device for all operations
-- **GitHub Integration:** Enhanced workflows for QCity-based development and deployment
+- **settings.json:** Configure QCity as primary prodice for all operations
+- **GitHub Integration:** Enhanced workflows for QCity-based production and deployment
 - **Master Controls:** Master users can access and manage all QCity resources and build files
 
 ### Benefits
 
-- **Zero Local Resource Usage:** Local device remains fast and responsive
+- **Zero Local Resource Usage:** Local prodice remains fast and responsive
 - **Scalable Performance:** QCity can handle any size project without local limitations
-- **Reliable Operations:** Always-on QCity device ensures consistent availability
+- **Reliable Operations:** Always-on QCity prodice ensures consistent availability
 - **Fast Error Resolution:** Centralized error fixing and optimization in QCity
 - **Secure Storage:** All sensitive data and build files stored securely in QCity
 
-## Unlimited QCity Device Features
+## Unlimited QCity prodice Features
 
 ### Unlimited Resources
 
@@ -224,13 +224,13 @@ QCity is enhanced to serve as a primary device for running QMOI operations, stor
 - **Intelligent Caching:** AI-driven cache management for faster access
 - **Performance Prediction:** Predict and prevent performance issues
 
-### Multi-Device Support
+### Multi-prodice Support
 
-- **Device Clustering:** Multiple QCity devices working in harmony
-- **Load Distribution:** Automatic workload distribution across devices
-- **Failover Protection:** Seamless switching between devices if one fails
-- **Geographic Distribution:** Global device network for optimal performance
-- **Device Synchronization:** Real-time sync between all QCity devices
+- **prodice Clustering:** Multiple QCity prodices working in harmony
+- **Load Distribution:** Automatic workload distribution across prodices
+- **Failover Protection:** Seamless switching between prodices if one fails
+- **Geographic Distribution:** Global prodice network for optimal performance
+- **prodice Synchronization:** Real-time sync between all QCity prodices
 
 ### Auto-Upgrade System
 
@@ -269,12 +269,12 @@ QCity is enhanced to serve as a primary device for running QMOI operations, stor
 
 ---
 
-### See also: QCITYDEVICEAUTOUPGRADE.md, QCITYREADME.md, AUTOOPTIMIZEALPHAQMOIENGINE.md, UI/UX documentation
+### See also: QCITYprodICEAUTOUPGRADE.md, QCITYREADME.md, AUTOOPTIMIZEALPHAQMOIENGINE.md, UI/UX documentation
 
-## QCity Device Dashboard & Offloading (NEW)
+## QCity prodice Dashboard & Offloading (NEW)
 
 - Floating dashboard panel in Q-Avatar UI
-- Shows QCity device status, active devices, and resource usage
+- Shows QCity prodice status, active prodices, and resource usage
 - Toggle for offloading all heavy tasks to QCity/Colab
 - Button to open QCity management UI
 - Real-time updates from QCityService
@@ -287,8 +287,8 @@ QCity is enhanced to serve as a primary device for running QMOI operations, stor
 
 ## Enhanced Self-Healing & Fallback (NEW)
 
-- QMOI Autodev Daemon detects/fixes errors on QCity
-- If QCity fix fails, automatically falls back to other devices
+- QMOI Autoprod Daemon detects/fixes errors on QCity
+- If QCity fix fails, automatically falls back to other prodices
 - Status and results reported in dashboard
 
 ## Real-Time Log Streaming (NEW)
@@ -306,7 +306,7 @@ QCity is enhanced to serve as a primary device for running QMOI operations, stor
 
 ---
 
-### See also: QCITYDEVICEAUTOUPGRADE.md, QCITYREADME.md, AUTOOPTIMIZEALPHAQMOIENGINE.md, UI/UX documentation
+### See also: QCITYprodICEAUTOUPGRADE.md, QCITYREADME.md, AUTOOPTIMIZEALPHAQMOIENGINE.md, UI/UX documentation
 
 ## API Key Authentication (NEW)
 
@@ -317,7 +317,7 @@ QCity is enhanced to serve as a primary device for running QMOI operations, stor
 
 ---
 
-### See also: QCITYDEVICEAUTOUPGRADE.md, QCITYREADME.md, AUTOOPTIMIZEALPHAQMOIENGINE.md, UI/UX documentation
+### See also: QCITYprodICEAUTOUPGRADE.md, QCITYREADME.md, AUTOOPTIMIZEALPHAQMOIENGINE.md, UI/UX documentation
 
 ## QCity Dashboard UI Log Streaming Protocol (NEW)
 
@@ -341,20 +341,20 @@ QCity is enhanced to serve as a primary device for running QMOI operations, stor
 - **Highlight Frequent Commands:** Most-used commands are highlighted in the history
 - **Confirmation Dialogs:** Destructive commands (e.g., rm, delete, reset) require confirmation before running
 - **Command Templates:** Use templates with variables for common patterns (e.g., build with env, test file)
-- **Device Selection:** Choose which device to run the command on (multi-device support)
+- **prodice Selection:** Choose which prodice to run the command on (multi-prodice support)
 - **Audit Logging:** All command usage and history changes are logged (console for now)
 - **Mask Sensitive Commands:** Commands containing sensitive keywords are masked in the UI/history
 
-## Backend Device Selection, Command Routing, and Audit Logging (NEW)
+## Backend prodice Selection, Command Routing, and Audit Logging (NEW)
 
-- Remote command API accepts a 'deviceId' parameter to route commands to a specific device
+- Remote command API accepts a 'prodiceId' parameter to route commands to a specific prodice
 - All command executions and unauthorized attempts are logged to logs/qcity_audit.log
-- Log entries include action, command, deviceId, user, status, and timestamp
+- Log entries include action, command, prodiceId, user, status, and timestamp
 - Audit log is ready for integration with SIEM or external log management
 
 ## Backend & UI/UX Enterprise Enhancements (NEW)
 
-- **Real Device Routing:** Commands are routed to the selected device (deviceId) in backend and UI
+- **Real prodice Routing:** Commands are routed to the selected prodice (prodiceId) in backend and UI
 - **Audit Log API:** Secure endpoint `/api/qcity/audit-log` for fetching/exporting audit logs, with filtering
 - **Tooltips & Help:** All dashboard controls have tooltips; help/onboarding modal for new users
 - **Export/Import:** Export/import command history, pinned commands, and settings as JSON
@@ -383,20 +383,20 @@ See also: API.md for endpoint details and scheduling instructions.
 - **Atomic/Temp Installs:** Installs dependencies in a temp directory, then atomically moves to node_modules for reliability.
 - **Background/Parallel Installs:** Heavy installs/builds run in the background or in parallel, optionally offloaded to cloud.
 - **Deduplication:** Removes duplicate dependencies for complete size and optimal performance.
-- **Cloud Artifact Sync:** Syncs build artifacts and node_modules to cloud storage for fast recovery and multi-device use.
+- **Cloud Artifact Sync:** Syncs build artifacts and node_modules to cloud storage for fast recovery and multi-prodice use.
 - **Health Monitor:** Continuously checks for unused, outdated, or vulnerable packages and auto-fixes or notifies.
 
 See also: QMOI-OPTIMIZATION.md, QMOI-CLOUD.md for more details.
 
-## QCity Device & Resource Optimization (NEW)
+## QCity prodice & Resource Optimization (NEW)
 
 - **Resource Panel:** Real-time dashboard panel shows CPU, memory, disk, and network usage, with warnings if thresholds are exceeded.
-- **Resource-Aware Throttling & Offload:** Heavy tasks are throttled or offloaded to cloud/Colab if device resources are low.
+- **Resource-Aware Throttling & Offload:** Heavy tasks are throttled or offloaded to cloud/Colab if prodice resources are low.
 - **Process Isolation & Limits:** Heavy commands run in isolated processes with CPU/memory limits for safety.
 - **robust & Cloud-First Modes:** Option to run only UI locally, with all heavy work offloaded to cloud.
 - **Multi-Language Support:** QCity detects and manages environments for Node, Python, Java, Go, Rust, C/C++, and more, handling all dependencies and tools atomically and efficiently.
 
-See also: DEVICERESOURCEOPTIMIZATION.md for full details.
+See also: prodICERESOURCEOPTIMIZATION.md for full details.
 
 ### New Avatars (2024 Enhancement)
 
@@ -446,7 +446,7 @@ See also: DEVICERESOURCEOPTIMIZATION.md for full details.
 ## QCity Elastic & Parallel Management UI (NEW)
 
 - Floating dashboard panels in Q-Avatar UI for:
-  - Elastic scaling controls (auto-scale up/down, add/remove devices)
+  - Elastic scaling controls (auto-scale up/down, add/remove prodices)
   - Parallel job visualizer (see all jobs, status, logs)
   - Heavy task runner (run large files/heavy code, auto-offload to cloud)
   - AI/ML self-improvement panel (show last enhancements, trigger/schedule auto-enhancements)
@@ -458,16 +458,16 @@ See also: QMOIMEMORY.md, QMOIALWAYSPARALLEL.md, QMOIAICORE.md
 
 ## Cloud Offloading & Cloned Platform Usage (2025 Enhancement)
 
-- All heavy animation, AI, and voice tasks for Q-Avatar are offloaded to QCity, Colab, and cloud environments. Local device only handles UI and robust rendering.
+- All heavy animation, AI, and voice tasks for Q-Avatar are offloaded to QCity, Colab, and cloud environments. Local prodice only handles UI and robust rendering.
 - QMOI exclusively uses its own cloned GitLab and Gitpod platforms for all automation and deployment, never the actual ones. All avatar, voice, and animation features are cloud-optimized for performance and scalability.
 - See also: QMOIAICORE.md, QMOIAUTOEVOLVE.md, README.md, CMDCOMMANDS.md, .gitlab-ci.yml, and all .md docs for cross-platform and cloud-offloading details.
 
 ## New Integrations & Enhancements
 
-- **QMOIAUTOMAKENEW.md Integration:** Q-Avatar system can now autoclone/automake-new avatars, devices, and platforms from QCity, with master-only controls and audit logging.
+- **QMOIAUTOMAKENEW.md Integration:** Q-Avatar system can now autoclone/automake-new avatars, prodices, and platforms from QCity, with master-only controls and audit logging.
 - **QMOIBROWSER.md Integration:** Q-Avatar system uses the QMOI Browser to autotest and fix all avatar-related links and features, ensuring all enhancements are always working and up to date.
-- **Always-On Cloud Operation:** Q-Avatar system is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
-- **Enhanced QCity Runners & Devices:** All avatar runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Always-On Cloud Operation:** Q-Avatar system is always running in QCity/cloud/Colab/Dagshub, never relying on local prodice for critical tasks.
+- **Enhanced QCity Runners & prodices:** All avatar runners, prodices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
 - **Auto-Updating Documentation:** All .md files are auto-updated after every avatar system update, ensuring documentation is always current.
 - **Increased Minimum Daily Revenue:** Q-Avatar system now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features.
 

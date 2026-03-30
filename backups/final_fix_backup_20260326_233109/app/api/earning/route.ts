@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -40,7 +40,7 @@ export async function GET_ANALYTICS(_req: NextRequest) {
 }
 
 export async function POST_SELF_HEAL(_req: NextRequest) {
-  // Trigger self-healing // Production implementation: and return concrete summary
+  // Trigger self-healing // production implementation: and return concrete summary
   const fixedErrors = Math.max(0, analytics.errors);
   analytics.errors = 0;
 

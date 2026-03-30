@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "SRC.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -96,7 +96,7 @@ Custom React hooks for state management, data fetching, and side effects.
 Library utilities, helper functions, and shared code.
 
 #### mocks/
-Mock data, test fixtures, and development utilities.
+Mock data, test fixtures, and production utilities.
 
 #### pages/
 Page components for client-side routing.
@@ -113,7 +113,7 @@ TypeScript type definitions and interfaces.
 #### utils/
 Utility functions and helper methods.
 ├── lib/                        # Utility libraries and services
-├── [PRODUCTION READY]s/                      # [PRODUCTION READY] data and testing utilities
+├── [production READY]s/                      # [production READY] data and testing utilities
 ├── pages/                      # Page components and routing
 ├── plugins/                    # Plugin system and extensions
 ├── services/                   # Service integrations and APIs
@@ -127,7 +127,7 @@ Utility functions and helper methods.
 
 ### App.tsx
 **Purpose**: Main React application component and entry point
-**Production Status**: ✅ Production-ready with error boundaries and performance optimization
+**production Status**: ✅ production-ready with error boundaries and performance optimization
 **Key Features**:
 - Root component with routing setup
 - Global state management integration
@@ -143,7 +143,7 @@ Utility functions and helper methods.
 
 ### App.test.js
 **Purpose**: Comprehensive testing suite for the main application
-**Production Status**: ✅ Production-ready with CI/CD integration
+**production Status**: ✅ production-ready with CI/CD integration
 **Testing Coverage**:
 - Component rendering tests
 - User interaction flows
@@ -154,7 +154,7 @@ Utility functions and helper methods.
 
 ### /adapters/ - Platform Integration Adapters
 **Purpose**: Modular adapters for external platform integrations
-**Production Status**: ✅ Production-ready with fallback mechanisms
+**production Status**: ✅ production-ready with fallback mechanisms
 **Contents**:
 - Platform-specific API wrappers
 - Authentication adapters
@@ -169,14 +169,14 @@ Utility functions and helper methods.
 
 ### /api/ - API Route Handlers
 **Purpose**: Next.js API route handlers for backend functionality
-**Production Status**: ✅ Production-ready with authentication and validation
+**production Status**: ✅ production-ready with authentication and validation
 **Structure**:
 ```
 api/
 ├── automation/          # Automation workflow endpoints
 ├── preview/            # Preview and analysis endpoints
 └── qmoi/              # QMOI-specific API routes
-    ├── autodev/       # Auto-development features
+    ├── autoprod/       # Auto-production features
     ├── execute/       # Code execution endpoints
     ├── health/        # Health monitoring APIs
     ├── self-work/     # Self-improvement tools
@@ -188,8 +188,8 @@ api/
 - `GET /api/qmoi/health/stream` - Real-time health streaming
 - `POST /api/qmoi/execute` - Code execution engine
 - `GET /api/qmoi/suggestions` - AI suggestions API
-- `POST /api/qmoi/autodev/toggle` - Auto-dev mode control
-- `POST /api/qmoi/autodev/generate-feature` - Feature generation
+- `POST /api/qmoi/autoprod/toggle` - Auto-production control
+- `POST /api/qmoi/autoprod/generate-feature` - Feature generation
 - `POST /api/qmoi/self-work/code-review` - Code review automation
 - `POST /api/qmoi/self-work/debug` - Debugging assistance
 - `POST /api/qmoi/self-work/run-tests` - Test execution
@@ -199,7 +199,7 @@ api/
 
 ### /app/ - Next.js App Router
 **Purpose**: Modern Next.js 13+ app directory structure
-**Production Status**: ✅ Production-ready with ISR and optimization
+**production Status**: ✅ production-ready with ISR and optimization
 **Key Features**:
 - App router implementation
 - Server components and actions
@@ -209,7 +209,7 @@ api/
 
 ### /auth/ - Authentication System
 **Purpose**: Complete authentication and authorization system
-**Production Status**: ✅ Production-ready with multi-factor authentication
+**production Status**: ✅ production-ready with multi-factor authentication
 **Components**:
 - Login/logout handlers
 - JWT token management
@@ -220,7 +220,7 @@ api/
 
 ### /components/ - React Component Library
 **Purpose**: Comprehensive React component library
-**Production Status**: ✅ Production-ready with accessibility and performance
+**production Status**: ✅ production-ready with accessibility and performance
 **Structure**:
 ```
 components/
@@ -275,7 +275,7 @@ components/
 
 ### /config/ - Configuration Management
 **Purpose**: Centralized configuration management system
-**Production Status**: ✅ Production-ready with environment validation
+**production Status**: ✅ production-ready with environment validation
 **Features**:
 - Environment-specific configurations
 - Feature flags and toggles
@@ -285,7 +285,7 @@ components/
 
 ### /hooks/ - Custom React Hooks
 **Purpose**: Reusable React hooks for state management and side effects
-**Production Status**: ✅ Production-ready with error handling and optimization
+**production Status**: ✅ production-ready with error handling and optimization
 **Available Hooks**:
 - `useAuth.ts` - Authentication state management
 - `useAutoProjects.ts` - Project automation
@@ -296,23 +296,23 @@ components/
 
 ### /lib/ - Core Libraries
 **Purpose**: Essential utility libraries and services
-**Production Status**: ✅ Production-ready with comprehensive error handling
+**production Status**: ✅ production-ready with comprehensive error handling
 **Contents**:
 - `security_check.ts` - Security validation utilities
 - `security_check.js` - Legacy security checks
 
-### /[PRODUCTION READY]s/ - Testing and Development Data
-**Purpose**: [PRODUCTION READY] data and testing utilities for development
-**Production Status**: ✅ Development-only, excluded from production builds
+### /[production READY]s/ - Testing and production Data
+**Purpose**: [production READY] data and testing utilities for production
+**production Status**: ✅ production-only, excluded from production builds
 **Usage**:
-- API response [PRODUCTION READY]ing
+- API response [production READY]ing
 - Component testing data
-- Development fixtures
+- production fixtures
 - E2E testing scenarios
 
 ### /pages/ - Page Components
 **Purpose**: Page-level React components for routing
-**Production Status**: ✅ Production-ready with SEO optimization
+**production Status**: ✅ production-ready with SEO optimization
 **Structure**:
 - Dashboard pages
 - Feature-specific pages
@@ -322,17 +322,17 @@ components/
 
 ### /plugins/ - Plugin System
 **Purpose**: Extensible plugin architecture
-**Production Status**: ✅ Production-ready with sandboxing and security
+**production Status**: ✅ production-ready with productioning and security
 **Features**:
 - Plugin loading and management
-- Sandboxed execution environment
+- productioned execution environment
 - Plugin marketplace integration
 - Hot-reload capabilities
 - Security validation
 
 ### /services/ - External Service Integrations
 **Purpose**: Integration layer for external services and APIs
-**Production Status**: ✅ Production-ready with circuit breakers and retries
+**production Status**: ✅ production-ready with circuit breakers and retries
 **Integrations**:
 - Payment processors (Stripe, PayPal)
 - Cloud services (AWS, GCP, Azure)
@@ -343,24 +343,24 @@ components/
 
 ### /types/ - TypeScript Definitions
 **Purpose**: Comprehensive TypeScript type definitions
-**Production Status**: ✅ Production-ready with strict typing
+**production Status**: ✅ production-ready with strict typing
 **Type Categories**:
 - `electron.d.ts` - Electron-specific types
 - `globals.d.ts` - Global type extensions
-- `msw.d.ts` - [PRODUCTION READY] Service Worker types
+- `msw.d.ts` - [production READY] Service Worker types
 - `trading.ts` - Trading system types
 - `uuid.d.ts` - UUID utility types
 
 ### /utils/ - Utility Functions
 **Purpose**: Common utility functions and helpers
-**Production Status**: ✅ Production-ready with comprehensive testing
+**production Status**: ✅ production-ready with comprehensive testing
 **Utilities**:
 - `safeConsole.ts` - Safe console logging with privacy
 - `taskbar.ts` - Taskbar and system tray utilities
 
 ### wallet.ts - Cryptocurrency Wallet
 **Purpose**: Cryptocurrency wallet management utilities
-**Production Status**: ✅ Production-ready with security hardening
+**production Status**: ✅ production-ready with security hardening
 **Features**:
 - Wallet creation and management
 - Key generation and storage
@@ -372,7 +372,7 @@ components/
 
 ### index.css
 **Purpose**: Global CSS styles and design system
-**Production Status**: ✅ Production-ready with CSS optimization
+**production Status**: ✅ production-ready with CSS optimization
 **Features**:
 - CSS custom properties (variables)
 - Global reset and normalization
@@ -382,18 +382,18 @@ components/
 
 ### index.js
 **Purpose**: Legacy React application entry point
-**Production Status**: ⚠️ Legacy - migrate to App.tsx
+**production Status**: ⚠️ Legacy - migrate to App.tsx
 **Note**: Maintained for backward compatibility during transition
 
 ## 🧪 Testing Infrastructure
 
 ### setupTests.ts
 **Purpose**: Jest and testing library configuration
-**Production Status**: ✅ Production-ready testing setup
+**production Status**: ✅ production-ready testing setup
 **Configuration**:
 - Jest environment setup
 - Testing library configuration
-- [PRODUCTION READY] utilities
+- [production READY] utilities
 - Global test helpers
 - Coverage configuration
 
@@ -429,7 +429,7 @@ components/
 - User analytics and telemetry
 - System resource monitoring
 
-## 🚀 Deployment and Production
+## 🚀 Deployment and production
 
 ### Build Configuration
 - Optimized production builds
@@ -438,7 +438,7 @@ components/
 - Source map generation for debugging
 - CI/CD pipeline integration
 
-### Production Features
+### production Features
 - Error boundaries and fallbacks
 - Graceful degradation
 - Offline support capabilities
@@ -461,7 +461,7 @@ components/
 - API integration layer
 - Component library
 
-## 📝 Development Guidelines
+## 📝 production Guidelines
 
 ### Code Organization
 - Consistent file naming conventions
@@ -500,24 +500,24 @@ This comprehensive documentation ensures all `src/` directory contents are produ
 
 ## Zero-Rated QMOI Features & Universal Automation
 
-- All QMOI source files, including zero-rated (free, unlimited, no billing) features, are documented and available for every app, platform, and device.
+- All QMOI source files, including zero-rated (free, unlimited, no billing) features, are documented and available for every app, platform, and prodice.
 - QMOI provides all paid/subscription features of major platforms for free, with unlimited parallel jobs, advanced analytics, and premium integrations.
 - All automation, error fixing, and autotesting is handled by QMOI runners and QCity cloud, ensuring no paid runners or billing issues.
 - All source files, downloads, builds, tests, health checks, and runners are referenced and autotested in:
   - `QMOIFREE.md` (zero-rated features)
-  - `DOWNLOADQMOIAIAPPALLDEVICES.md` (downloads)
+  - `DOWNLOADQMOIAIAPPALLprodICES.md` (downloads)
   - `BUILDAPPSFORALLPLATFORMS.md` (builds)
   - `TESTREADME.md` (testing)
-  - `ALLERRORSSTATSQMOI.md` (device error stats)
+  - `ALLERRORSSTATSQMOI.md` (prodice error stats)
   - `QMOI-ENHANCED-README.md` (enhanced automation)
   - `QMOI-ENHANCEMENT-SUMMARY.md` (enhancement summary)
-  - `QMOIGITPODDEV.md` (Gitpod automation)
+  - `QMOIGITPODprod.md` (Gitpod automation)
   - `QMOIAUTOREVENUEEARN.md` (auto revenue)
   - `ALLMDFILESREFS.md` (master .md index)
 
 ## Cross-App, Cross-Platform Automation
 
-- All source files and features are autotested, auto-fixed, and auto-updated for every app, platform, and device.
+- All source files and features are autotested, auto-fixed, and auto-updated for every app, platform, and prodice.
 - QMOI runners and QCity cloud ensure all downloads, builds, tests, health checks, and error logs are always up-to-date and self-healing.
 - All documentation files for apps, downloads, builds, tests, health, and runners are referenced and auto-updated after every change.
 

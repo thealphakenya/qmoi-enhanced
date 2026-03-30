@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:53Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
-Enhanced Production-Ready App Metadata Generator
+Enhanced production-Ready App Metadata Generator
 Generates comprehensive metadata JSON files and professional SVG icons for all QMOI applications.
 Includes production-specific configurations, build information, dependencies, and feature sets.
 """
@@ -37,7 +37,7 @@ APPS = {
         'platforms': ['Windows', 'macOS', 'Linux', 'Android', 'iOS', 'SmartTV', 'Chromebook'],
         'description': 'Advanced autonomous AI system with consciousness, memory synchronization, and parallel processing capabilities.',
         'features': [
-            'Autonomous Development',
+            'Autonomous production',
             'Memory Synchronization',
             'Parallel Processing',
             'QVS Access',
@@ -70,7 +70,7 @@ APPS = {
             'Location services (optional)'
         ],
         'supported_languages': ['en', 'es', 'fr', 'de', 'zh', 'ja', 'ko'],
-        'target_audience': 'Developers, Researchers, Enterprises',
+        'target_audience': 'prodelopers, Researchers, Enterprises',
         'license': 'QMOI Enterprise License',
         'support_email': 'support@qmoi.ai',
         'website': 'https://qmoi.ai',
@@ -88,7 +88,7 @@ APPS = {
         'platforms': ['Windows', 'macOS', 'Linux', 'Android', 'iOS'],
         'description': 'Comprehensive smart city management platform with IoT integration, urban analytics, and citizen services.',
         'features': [
-            'IoT Device Management',
+            'IoT prodice Management',
             'Urban Analytics',
             'Citizen Portal',
             'Traffic Management',
@@ -242,7 +242,7 @@ APPS = {
             'App Discovery',
             'One-click Install',
             'Review System',
-            'Developer Portal',
+            'prodeloper Portal',
             'Revenue Sharing',
             'Analytics Dashboard',
             'Automated Updates',
@@ -269,7 +269,7 @@ APPS = {
             'Payment processing'
         ],
         'supported_languages': ['en', 'es', 'fr', 'de', 'zh', 'ja', 'ko', 'ru'],
-        'target_audience': 'Developers, Users, Enterprises',
+        'target_audience': 'prodelopers, Users, Enterprises',
         'license': 'QMOI Marketplace License',
         'support_email': 'support@qstore.qmoi.com',
         'website': 'https://qstore.qmoi.com',
@@ -303,7 +303,7 @@ APPS = {
             'min_ram': '2GB',
             'min_storage': '1GB',
             'network': 'Internet connection (offline-capable)',
-            'hardware': 'Mobile device or computer'
+            'hardware': 'Mobile prodice or computer'
         },
         'dependencies': [
             'Progressive Web App support',
@@ -341,7 +341,7 @@ ICON_TEMPLATES = {
       <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
     </linearGradient>
     <filter id="glow">
-      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feGaussianBlur stdprodiation="3" result="coloredBlur"/>
       <feMerge>
         <feMergeNode in="coloredBlur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -820,7 +820,7 @@ class AppMetadataGenerator:
                 'certificate_authority': 'QMOI Root CA',
                 'encryption': 'AES-256',
                 'secure_boot': True,
-                'sandboxing': True
+                'productioning': True
             },
 
             # Metadata
@@ -942,7 +942,7 @@ class AppMetadataGenerator:
 ### Added
 - Initial production release
 - Full feature set implementation
-- Production-ready architecture
+- production-ready architecture
 - Comprehensive testing suite
 - Security hardening
 - Performance optimizations

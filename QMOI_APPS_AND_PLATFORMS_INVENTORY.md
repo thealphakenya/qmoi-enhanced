@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # QMOI Apps & Platforms Inventory (All Versions, All Platforms)
 
 **Last Updated:** 2025-11-13
@@ -19,7 +19,7 @@ This is the master inventory of all QMOI applications, their versions, supported
 | App Name | Version | Description                      | Platforms                          | GitHub Link                                                                   | Status   |
 | -------- | ------- | -------------------------------- | ---------------------------------- | ----------------------------------------------------------------------------- | -------- |
 | QMOI AI  | v1.2.3  | Main AI engine and orchestrator  | Win, Mac, Linux, Android, iOS, Web | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
-| QCity    | v1.2.3  | Unified device and app manager   | All                                | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
+| QCity    | v1.2.3  | Unified prodice and app manager   | All                                | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
 | QVillage | v1.0.0  | Community collaboration platform | All                                | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
 | QStore   | v1.0.0  | Universal app store              | All                                | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
 | QSpace   | v1.0.0  | Cloud sync and backup            | All                                | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
@@ -30,7 +30,7 @@ This is the master inventory of all QMOI applications, their versions, supported
 
 - **qmoi_ai.exe** — Main Windows executable
   - Path: `downloads/windows/latest/qmoi_ai.exe`
-  - Status: ⚠️ **[PRODUCTION READY] [PRODUCTION READY]** (169 bytes) — See build instructions below
+  - Status: ⚠️ **[production READY] [production READY]** (169 bytes) — See build instructions below
   - Download: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe
 
 ### macOS
@@ -96,7 +96,7 @@ This is the master inventory of all QMOI applications, their versions, supported
 
 ### ⚠️ qmoi_ai.exe Status
 
-**The Windows executable (`qmoi_ai.exe`) in this repository is currently a 169-byte [PRODUCTION READY] [PRODUCTION READY].** This is used for documentation and link verification purposes only.
+**The Windows executable (`qmoi_ai.exe`) in this repository is currently a 169-byte [production READY] [production READY].** This is used for documentation and link verification purposes only.
 
 **To obtain a working Windows build:**
 
@@ -125,7 +125,7 @@ This is the master inventory of all QMOI applications, their versions, supported
 
 | Platform         | Status         | Latest Version | Build Type            |
 | ---------------- | -------------- | -------------- | --------------------- |
-| Windows          | ⚠️ [PRODUCTION READY] | v1.2.3         | EXE Installer         |
+| Windows          | ⚠️ [production READY] | v1.2.3         | EXE Installer         |
 | macOS            | ✅ Available   | v1.2.3         | DMG Installer         |
 | Linux (AppImage) | ✅ Available   | v1.2.3         | AppImage              |
 | Linux (Deb)      | ✅ Available   | v1.2.3         | DEB Package           |
@@ -148,10 +148,10 @@ This is the master inventory of all QMOI applications, their versions, supported
 
 **Problem:** "File is corrupted" or "Not a valid Win32 application"
 
-- **Cause:** [PRODUCTION READY] [PRODUCTION READY] file used instead of real executable
+- **Cause:** [production READY] [production READY] file used instead of real executable
 - **Solution:** Download the official release from GitHub (>45MB)
 
-**Problem:** "SmartScreen warning" or "Unrecognized developer"
+**Problem:** "SmartScreen warning" or "Unrecognized prodeloper"
 
 - **Cause:** Code signing certificate or first-time run
 - **Solution:** Click "More info" → "Run anyway" or contact support

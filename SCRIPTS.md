@@ -2,7 +2,7 @@
 
 **Last Updated**: 2026-03-29T01:23:32.070822
 **Total Files**: 858
-**Status**: ✅ Production Ready
+**Status**: ✅ production Ready
 
 ## 📋 Document Overview
 
@@ -15,7 +15,7 @@ This document catalogs all Python, shell, and JavaScript scripts in the `scripts
 | Total Files | 858 | All files indexed |
 | Categories | 31 | Organized sections |
 | File Types | 18 | Multiple formats |
-| Production Status | ✅ | Ready |
+| production Status | ✅ | Ready |
 
 ### File Type Distribution
 
@@ -118,7 +118,7 @@ This document catalogs all Python, shell, and JavaScript scripts in the `scripts
 
 - [`advanced_architectures.py`](scripts/models/advanced_architectures.py)
 - [`architectures.py`](scripts/models/architectures.py)
-- [`qmoi_autodev.py`](scripts/models/qmoi_autodev.py)
+- [`qmoi_autoprod.py`](scripts/models/qmoi_autoprod.py)
 - [`qmoi_kernel.py`](scripts/models/qmoi_kernel.py)
 - [`qmoi_manager.py`](scripts/models/qmoi_manager.py)
 - [`qmoi_permissions.json`](scripts/models/qmoi_permissions.json)
@@ -226,7 +226,7 @@ This document catalogs all Python, shell, and JavaScript scripts in the `scripts
 - [`plugin_loader.ts`](scripts/services/plugin_loader.ts)
 - [`project_service.ts`](scripts/services/project_service.ts)
 - [`qcity_service.ts`](scripts/services/qcity_service.ts)
-- [`qmoi_autodev_daemon.ts`](scripts/services/qmoi_autodev_daemon.ts)
+- [`qmoi_autoprod_daemon.ts`](scripts/services/qmoi_autoprod_daemon.ts)
 - [`qmoi_secrets_manager.js`](scripts/services/qmoi_secrets_manager.js)
 - [`role_management.ts`](scripts/services/role_management.ts)
 - [`schedule_runner.ts`](scripts/services/schedule_runner.ts)
@@ -275,7 +275,7 @@ This document catalogs all Python, shell, and JavaScript scripts in the `scripts
 
 ### wallets (14 files)
 
-- [`PRODUCTION_RUNBOOK.md`](scripts/wallets/PRODUCTION_RUNBOOK.md)
+- [`production_RUNBOOK.md`](scripts/wallets/production_RUNBOOK.md)
 - [`README.md`](scripts/wallets/README.md)
 - [`adapter_base.py`](scripts/wallets/adapter_base.py)
 - [`backup_state.py`](scripts/wallets/backup_state.py)

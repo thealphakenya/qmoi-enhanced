@@ -19,7 +19,7 @@ const execAsync = promisify(exec);
 
 interface ExportRequest {
   type: string;
-  device_id?: string;
+  prodice_id?: string;
   date_from?: string;
   date_to?: string;
 }
@@ -27,7 +27,7 @@ interface ExportRequest {
 export async function POST(_request: NextRequest) {
   try {
     const body: ExportRequest = await _request.json();
-    const { type, device_id, date_from, date_to } = body;
+    const { type, prodice_id, date_from, date_to } = body;
 
     // Prefer API keys / MASTER token when available
     const apiAuth = requireApiKey(_request.headers);
@@ -56,13 +56,13 @@ export async function POST(_request: NextRequest) {
     const loggerScript = path.join(
       projectRoot,
       "scripts",
-      "qmoi_own_device_logger.py",
+      "qmoi_own_prodice_logger.py",
     );
 
     // Check if logger script exists
     if (!fs.existsSync(loggerScript)) {
       return NextResponse.json(
-        { _error: "QMOI Own Device Logger not found" },
+        { _error: "QMOI Own prodice Logger not found" },
         { status: 404 },
       );
     }
@@ -70,8 +70,8 @@ export async function POST(_request: NextRequest) {
     // Build command arguments for export
     const args = ["--export", "--type", type];
 
-    if (device_id) {
-      args.push("--device-id", device_id);
+    if (prodice_id) {
+      args.push("--prodice-id", prodice_id);
     }
 
     if (date_from) {
@@ -106,7 +106,7 @@ export async function POST(_request: NextRequest) {
 
     // Create filename with timestamp
     const timestamp = new Date().toISOString().split("T")[0];
-    const filename = `qmoi-own-device-${type}-logs-${timestamp}.json`;
+    const filename = `qmoi-own-prodice-${type}-logs-${timestamp}.json`;
 
     // Return the export data as a downloadable file
     return new NextResponse(JSON.stringify(exportData, null, 2), {
@@ -116,7 +116,7 @@ export async function POST(_request: NextRequest) {
       },
     });
   } catch (error) {
-    console.error("QMOI Own Device Export API _error:", error);
+    console.error("QMOI Own prodice Export API _error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },

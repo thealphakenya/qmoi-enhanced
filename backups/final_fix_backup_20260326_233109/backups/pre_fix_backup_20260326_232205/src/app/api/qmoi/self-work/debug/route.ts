@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 /**
  * Next.js API Route: /api/qmoi/self-work/debug
  * Detects bugs and suggests fixes
@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
-    // Production, this would:
+    // production, this would:
     // 1. Analyze error logs and stack traces
     // 2. Run static analysis tools
     // 3. Execute pattern matching for common bugs
@@ -146,7 +146,7 @@ export async function POST(request: NextRequest) {
       recommendations: [
         "Fix critical issues immediately",
         "Enable TypeScript strict mode if not already enabled",
-        "Add pre-commit hooks to catch these during development",
+        "Add pre-commit hooks to catch these during production",
         "Consider implementing ESLint rules for common patterns",
         "Run debug analysis regularly (e.g., daily)",
       ],

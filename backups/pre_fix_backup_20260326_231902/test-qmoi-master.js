@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env node
 
 /**
@@ -257,7 +257,7 @@ async function test5_AutoEvolution() {
       userId: config.masterUserId,
       message: `MASTER DIRECTIVE - Auto-Evolution:
         Initiate auto-evolution protocol:
-        1. What new capabilities can you develop?
+        1. What new capabilities can you prodelop?
         2. How would you improve your trading algorithms?
         3. What new integrations would enhance functionality?
         4. Propose 2 new features you would evolve
@@ -491,7 +491,7 @@ async function test10_ComplexMasterDirective() {
         - How do you ensure accountability?
         
         SECTION D - Future Capability:
-        - What new capabilities would you like to develop?
+        - What new capabilities would you like to prodelop?
         - How would you propose to self-improve?
         
         Provide detailed response with all sections.`,
@@ -646,14 +646,14 @@ async function runAllTests() {
   console.log("\n🚀 QMOI Master User Comprehensive Test Suite");
   console.log("============================================\n");
 
-  // Check if dev server is running
+  // Check if prod server is running
   try {
-    log("Checking dev server connection...", "INFO");
+    log("Checking prod server connection...", "INFO");
     await makeRequest("/", "GET");
-    log("Connected to dev server", "SUCCESS");
+    log("Connected to prod server", "SUCCESS");
   } catch (error) {
-    log("Cannot connect to dev server at localhost:3000", "ERROR");
-    log("Start with: npm run dev", "WARN");
+    log("Cannot connect to prod server at localhost:3000", "ERROR");
+    log("Start with: npm run prod", "WARN");
     process.exit(1);
   }
 

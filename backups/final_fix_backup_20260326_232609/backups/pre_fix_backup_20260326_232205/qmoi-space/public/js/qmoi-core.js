@@ -52,19 +52,19 @@ async function updateAnalyticsSection() {
   // User Engagement
   const engagementChart = document.getElementById("engagement-chart");
   if (engagementChart && window.Chart) {
-    // Production implementation or status.analytics.engagement data
+    // production implementation or status.analytics.engagement data
     // (
   }
   // Revenue Sources
   const revenueSourcesChart = document.getElementById("revenue-sources-chart");
   if (revenueSourcesChart && window.Chart) {
-    // Production implementation or status.analytics.revenue_sources data
+    // production implementation or status.analytics.revenue_sources data
     // (
   }
 }
 document
   .getElementById("refresh-analytics")
-  ?.addEventListener("click", updateAnalyticsSection);
+  ?.adprodentListener("click", updateAnalyticsSection);
 updateAnalyticsSection();
 // --- Files Section Wiring ---
 async function updateFilesSection() {
@@ -97,19 +97,19 @@ async function updateFilesSection() {
 }
 document
   .getElementById("upload-files")
-  ?.addEventListener("click", updateFilesSection);
+  ?.adprodentListener("click", updateFilesSection);
 document
   .getElementById("create-folder")
-  ?.addEventListener("click", updateFilesSection);
+  ?.adprodentListener("click", updateFilesSection);
 document
   .getElementById("select-all")
-  ?.addEventListener("click", updateFilesSection);
+  ?.adprodentListener("click", updateFilesSection);
 document
   .getElementById("delete-selected")
-  ?.addEventListener("click", updateFilesSection);
+  ?.adprodentListener("click", updateFilesSection);
 document
   .getElementById("download-selected")
-  ?.addEventListener("click", updateFilesSection);
+  ?.adprodentListener("click", updateFilesSection);
 updateFilesSection();
 // --- Revenue Section Wiring ---
 async function updateRevenueSection() {
@@ -131,7 +131,7 @@ async function updateRevenueSection() {
 }
 document
   .getElementById("refresh-revenue")
-  ?.addEventListener("click", updateRevenueSection);
+  ?.adprodentListener("click", updateRevenueSection);
 updateRevenueSection();
 // qmoi-core.js: Core logic for QMOI Space UI widgets
 
@@ -202,11 +202,11 @@ async function updateDashboardWidgets() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.adprodentListener("DOMContentLoaded", () => {
   updateDashboardWidgets();
   document
     .getElementById("refresh-dashboard")
-    .addEventListener("click", updateDashboardWidgets);
+    .adprodentListener("click", updateDashboardWidgets);
 
   // --- Gaming Section Wiring ---
   async function updateGamingSection() {
@@ -248,6 +248,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   document
     .getElementById("refresh-games")
-    ?.addEventListener("click", updateGamingSection);
+    ?.adprodentListener("click", updateGamingSection);
   updateGamingSection();
 });

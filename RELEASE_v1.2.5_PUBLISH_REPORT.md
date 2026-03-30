@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # v1.2.5 Release Publish Report
 
 Status: PUBLISHED ✅
@@ -43,7 +43,7 @@ Next required actions:
    - `ANDROID_KEY_ALIAS`
    - `ANDROID_KEY_PASSWORD`
 2. (Optional) Add iOS signing credentials to enable automated iOS builds in CI (requires macOS runners).
-3. Manually test-install `app-release.apk` and `qmoi-release.ipa` on devices/emulators.
+3. Manually test-install `app-release.apk` and `qmoi-release.ipa` on prodices/emulators.
 4. Test PWAs by serving one of the created zips locally and checking install/offline behavior.
 
 Audit notes:

@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Enhanced - Complete Documentation Index
 
 **Last Updated:** 2025-11-11T00:00:00Z  
@@ -40,9 +40,9 @@
 9. **[QMOI_APIS_WEBHOOKS_ENDPOINTS.md](QMOI_APIS_WEBHOOKS_ENDPOINTS.md)** - All APIs, hooks, endpoints
 10. **[QMOI_PLATFORM_ARCHITECTURE.md](QMOI_PLATFORM_ARCHITECTURE.md)** - All platforms, runners, engines
 
-### 🚀 Auto-Development & Enhancement
+### 🚀 Auto-production & Enhancement
 
-11. **[QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md](QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md)** - Validation & auto-dev
+11. **[QMOI_ADVANCED_VALIDATION_AUTOproduction.md](QMOI_ADVANCED_VALIDATION_AUTOproduction.md)** - Validation & auto-prod
 12. **[QMOI_AUTO_RESEARCH_PLATFORM_DISCOVERY.md](QMOI_AUTO_RESEARCH_PLATFORM_DISCOVERY.md)** - Auto-research & discovery
 13. **[QMOI_REVENUE_GENERATION_SYSTEM.md](QMOI_REVENUE_GENERATION_SYSTEM.md)** - Money-making systems
 
@@ -54,7 +54,7 @@
 ### 🏘️ QVillage + Hugging Face Integration (NEW - Phase 5)
 
 16. **[SESSION_COMPLETION_SUMMARY.md](SESSION_COMPLETION_SUMMARY.md)** - This session's deliverables
-17. **[QVILLAGE_READY_FOR_PRODUCTION.md](QVILLAGE_READY_FOR_PRODUCTION.md)** - Quick start guide
+17. **[QVILLAGE_READY_FOR_production.md](QVILLAGE_READY_FOR_production.md)** - Quick start guide
 18. **[QVILLAGE_HUGGINGFACE_INTEGRATION.md](QVILLAGE_HUGGINGFACE_INTEGRATION.md)** - Complete technical spec (MAIN)
 19. **[QVILLAGE_IMPLEMENTATION_SUMMARY.md](QVILLAGE_IMPLEMENTATION_SUMMARY.md)** - Implementation guide
 20. **[PHASE_4_QVILLAGE_HF_COMPLETE.md](PHASE_4_QVILLAGE_HF_COMPLETE.md)** - Full project summary

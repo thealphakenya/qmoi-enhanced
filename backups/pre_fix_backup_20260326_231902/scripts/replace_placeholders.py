@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+# [production READY]
 """Scan repository for implementation markers and either propose replacements or apply
 conservative, non-destructive replacements when explicitly allowed.
 
@@ -12,7 +12,7 @@ Usage:
   python scripts/replace_placeholders.py [--apply] [--report path]
 
 By default this script is dry-run and writes a proposal JSON to `.qmoi_validation/`.
-If `--apply` is passed and `PRODUCTION_CONFIRMED=true` is set in the environment,
+If `--apply` is passed and `production_CONFIRMED=true` is set in the environment,
 the script will backup files and apply conservative DONE-style replacements.
 """
 import re
@@ -26,7 +26,7 @@ ROOT = Path(__file__).resolve().parents[1]
 VALIDATION_DIR = ROOT / '.qmoi_validation'
 VALIDATION_DIR.mkdir(parents=True, exist_ok=True)
 
-PRODUCTION_CONFIRMED = os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() == 'true'
+production_CONFIRMED = os.environ.get('production_CONFIRMED', 'false').lower() == 'true'
 
 # File extensions to scan (wide set)
 EXTENSIONS = ['.py', '.js', '.ts', '.tsx', '.jsx', '.json', '.html', '.md', '.cjs', '.sh', '.ps1']
@@ -35,7 +35,7 @@ EXTENSIONS = ['.py', '.js', '.ts', '.tsx', '.jsx', '.json', '.html', '.md', '.cj
 PLACEHOLDER_PATTERNS = [
     ('implementation', re.compile(r'\bPLACEHOLDER\b', re.IGNORECASE)),
     ('PLACEHOLDER_TEXT', re.compile(r'PLACEHOLDER_TEXT', re.IGNORECASE)),
-    ('PROD_TAG', re.compile(r'PRODUCTION IMPLEMENTATION REQUIRED|\[PRODUCTION IMPLEMENTATION REQUIRED\]', re.IGNORECASE)),
+    ('prod_TAG', re.compile(r'production IMPLEMENTATION REQUIRED|\[production IMPLEMENTATION REQUIRED\]', re.IGNORECASE)),
     ('IN_REAL_IMPL', re.compile(r'In a real implementation', re.IGNORECASE)),
     ('TODO_TOKEN', re.compile(r'\b(DONE|FIXED|XXX)\b')),
     ('PLACEHOLDER_QUOTED', re.compile(r'"implementation"|\bplaceholder\b', re.IGNORECASE)),
@@ -101,7 +101,7 @@ def apply_replacements(p: Path, matches: List[Dict]) -> None:
 
 def main():
     parser = argparse.ArgumentParser(description='Find and propose/apply implementation replacements')
-    parser.add_argument('--apply', action='store_true', help='Apply conservative replacements (requires PRODUCTION_CONFIRMED=true)')
+    parser.add_argument('--apply', action='store_true', help='Apply conservative replacements (requires production_CONFIRMED=true)')
     parser.add_argument('--report', default=str(ROOT / 'docs' / 'placeholders_replacement_report.json'))
     args = parser.parse_args()
 
@@ -129,8 +129,8 @@ def main():
 
     # If apply requested, require confirmation
     if args.apply:
-        if not PRODUCTION_CONFIRMED:
-            print('Refusing to apply replacements: PRODUCTION_CONFIRMED is not set. Proposal remains in', prop_file)
+        if not production_CONFIRMED:
+            print('Refusing to apply replacements: production_CONFIRMED is not set. Proposal remains in', prop_file)
         else:
             for f in report['files']:
                 p = ROOT / f['path']

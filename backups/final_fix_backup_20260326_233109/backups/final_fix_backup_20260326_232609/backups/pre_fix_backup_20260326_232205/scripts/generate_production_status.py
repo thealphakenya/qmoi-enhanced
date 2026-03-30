@@ -4,12 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# // Production implementation:
+# // production implementation:
 import os, re, json
 from pathlib import Path
 
 ROOT = Path(".").resolve()
-MARKERS = re.compile(r"\b(DONE|FIXED|implementation|TODO_PROD|PRODUCTION IMPLEMENTATION REQUIRED|execute|real)\b", re.IGNORECASE)
+MARKERS = re.compile(r"\b(DONE|FIXED|implementation|TODO_prod|production IMPLEMENTATION REQUIRED|execute|real)\b", re.IGNORECASE)
 
 
 def scan_dir(dir_path: Path):
@@ -46,29 +46,29 @@ def main():
             continue
         entries = scan_dir(d)
         if d == ROOT:
-            out = ROOT / "ROOT_PRODUCTION_STATUS.md"
-            title = "Root Production Implementation Status"
+            out = ROOT / "ROOT_production_STATUS.md"
+            title = "Root production Implementation Status"
         elif d.name == "q-city":
-            out = d / "PRODUCTION_STATUS.md"
-            title = "q-city Component Production Status"
+            out = d / "production_STATUS.md"
+            title = "q-city Component production Status"
         else:
-            out = d / "PRODUCTION_STATUS.md"
-            title = f"{d.name} Production Status"
+            out = d / "production_STATUS.md"
+            title = f"{d.name} production Status"
         write_status(out, entries, title)
 
     # update ALLMDFILESREFS.md with these docs
     refs_file = ROOT / "ALLMDFILESREFS.md"
     summary = [
-        "# Production Status Docs",
-        "- ROOT_PRODUCTION_STATUS.md",
-        "- app/api/PRODUCTION_STATUS.md",
-        "- src/components/q-city/PRODUCTION_STATUS.md",
-        "- lib/PRODUCTION_STATUS.md",
+        "# production Status Docs",
+        "- ROOT_production_STATUS.md",
+        "- app/api/production_STATUS.md",
+        "- src/components/q-city/production_STATUS.md",
+        "- lib/production_STATUS.md",
     ]
     if refs_file.exists():
         content = refs_file.read_text(encoding="utf-8")
-        marker_start = "<!-- PRODUCTION_STATUS_docs_START -->"
-        marker_end = "<!-- PRODUCTION_STATUS_docs_END -->"
+        marker_start = "<!-- production_STATUS_docs_START -->"
+        marker_end = "<!-- production_STATUS_docs_END -->"
         section = "\n".join(summary)
         if marker_start in content and marker_end in content:
             content = content.replace(content.split(marker_start)[1].split(marker_end)[0], f"\n{section}\n")
@@ -78,7 +78,7 @@ def main():
     else:
         ROOT.joinpath("ALLMDFILESREFS.md").write_text("\n".join(["# All MD Files Refs", "", *summary]), encoding="utf-8")
 
-    print("Production status docs generated.")
+    print("production status docs generated.")
 
 
 if __name__ == '__main__':

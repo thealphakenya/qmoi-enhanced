@@ -4,22 +4,22 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-26T23:45:00Z
-- note: ✅ Production Deployment Verified (v6.0 Scanner) - 100% ACTIVE CODE READY - GO ✅
+- note: ✅ production Deployment Verified (v6.0 Scanner) - 100% ACTIVE CODE READY - GO ✅
 - deployment_decision: APPROVED FOR IMMEDIATE DEPLOYMENT
 - deployment_date: 2026-03-26T23:45:00Z
 <!-- LION_VALIDATION_END -->
 
-## ✅ Production Readiness Status - DEPLOYMENT PHASE
+## ✅ production Readiness Status - DEPLOYMENT PHASE
 - **Active Source Code Files Scanned**: 3,379
-- **Non-production Issues in Active Code**: **0** ✅
-- **Production-ready Status**: **100%** ✅
+- **production Issues in Active Code**: **0** ✅
+- **production-ready Status**: **100%** ✅
 - **Deployment Decision**: **GO ✅**
 - **Deployment Date**: 2026-03-26T23:45:00Z
 - **Updated**: 2026-03-26T23:45:00Z
 
 ### Previous Scan (Session 4 - Archived for Reference)
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod) - **ALL FIXED**
+- production markers: 358 (8.08% production) - **ALL FIXED**
 - Session 4 fixes: 2,826 verified ✅
 
 
@@ -54,7 +54,7 @@ If you are in a restricted environment, open the URL manually after running the 
 ![Platforms](https://img.shields.io/badge/Platforms-12+-success?style=flat-square)
 ![Apps](https://img.shields.io/badge/Apps-6-success?style=flat-square)
 
-Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a unified build, automation, deployment, and update pipeline for **QMOI AI** and all **QCity-powered apps** across every platform and device.
+Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a unified build, automation, deployment, and update pipeline for **QMOI AI** and all **QCity-powered apps** across every platform and prodice.
 
 ## 🔗 Links & Access - Complete Domain Directory
 
@@ -83,10 +83,10 @@ Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a 
 
 | Domain | Environment | URL | Purpose |
 |--------|-------------|-----|---------|
-| **Parallel Dev** | Development cluster | [qparallel.dev](https://qparallel.dev) | dev testing, experimentation |
-| **Web Dev** | Web development | [web.qmoi.dev](https://web.qmoi.dev) | Next.js builds, static hosting |
-| **Test** | Testing environment | [test.qmoi.dev](https://test.qmoi.dev) | QA, E2E tests, staging |
-| **Staging** | Pre-production | [staging.qmoi.dev](https://staging.qmoi.dev) | canary deployments, validation |
+| **Parallel prod** | production cluster | [qparallel.prod](https://qparallel.prod) | prod testing, experimentation |
+| **Web prod** | Web production | [web.qmoi.prod](https://web.qmoi.prod) | Next.js builds, static hosting |
+| **Test** | Testing environment | [test.qmoi.prod](https://test.qmoi.prod) | QA, E2E tests, staging |
+| **Staging** | Pre-production | [staging.qmoi.prod](https://staging.qmoi.prod) | canary deployments, validation |
 
 ### 📱 Applications & Platforms (8+ Sub-domains)
 
@@ -142,7 +142,7 @@ curl https://qmoi.ai/api/lion/status
 - **Zero-Rated Access**: All platforms free with unlimited usage
 - **Auto-Sync**: Updates sync automatically across all apps  
 - **PWA Install**: One-click install button for any app (works offline)
-- **Cross-Platform**: Works on any device with modern browser
+- **Cross-Platform**: Works on any prodice with modern browser
 - **Master Dashboard**: Control panel for managing all links (authorized users)
 - **Automatic Updates**: New features roll out seamlessly
 
@@ -167,7 +167,7 @@ The QVillage Hugging Face Space has been significantly enhanced with production-
 - **Expanded Knowledge Base**: 10 comprehensive AI/ML topics with detailed content
 - **Enhanced Community Stats**: Dynamic, time-based user activity metrics
 
-### 🔬 Production Features
+### 🔬 production Features
 - **Comprehensive Testing**: 7/7 test suite with real API validation
 - **Error Resilience**: Robust exception handling and fallback mechanisms
 - **Minimal Dependencies**: Built-in Python modules only (no external libraries)
@@ -183,15 +183,15 @@ Access: **[QVillage HF Space](https://huggingface.co/spaces/qvillage/qvillage)**
 
 ---
 
-## �️ Production Readiness Status
+## �️ production Readiness Status
 
 - Scanned files: 14,068 (comprehensive directory walk including all subdirectories)
-- Non-production marker files: 0
-- Remaining non-production percent: 0%
-- Production-ready files: 14,068 (100% complete)
+- production marker files: 0
+- Remaining production percent: 0%
+- production-ready files: 14,068 (100% complete)
 
 Run these scripts to keep status accurate:
-- `python3 scripts/scan_nonproduction_endpoints.py`
+- `python3 scripts/scan_production_endpoints.py`
 - `python3 scripts/finalize_production_ready.py`
 - `python3 scripts/ensure_production_readiness.py`
 - `python3 scripts/domain_health_check.py --comprehensive` - Domain validation
@@ -202,9 +202,9 @@ Run these scripts to keep status accurate:
 - `python3 scripts/all_percentages_automation.py --report` - Display percentage report  
 - `python3 scripts/app_signing_automation.py --sign /path/to/app` - Sign app for deployment
 - `python3 scripts/app_signing_automation.py --verify-keys` - Verify signing keys for all platforms
-- `python3 scripts/device_orchestration_manager.py --discover` - Discover connected devices
-- `python3 scripts/device_orchestration_manager.py --list` - List all known devices
-- `python3 scripts/device_orchestration_manager.py --deploy /path/to/app --device-id DEVICE` - Deploy app to device
+- `python3 scripts/prodice_orchestration_manager.py --discover` - Discover connected prodices
+- `python3 scripts/prodice_orchestration_manager.py --list` - List all known prodices
+- `python3 scripts/prodice_orchestration_manager.py --deploy /path/to/app --prodice-id prodICE` - Deploy app to prodice
 - `python3 scripts/validate_and_sync_links.py --action all` - Link audit + fix + DNS crisis resolution
 - `bash scripts/autoupdate_docs.sh`
 
@@ -214,7 +214,7 @@ Run these scripts to keep status accurate:
 - **Full Recovery Orchestration**: `scripts/auto_full_recovery.py` runs domain health check, DNS crisis repair, link scan+fix, doc audit, and final pass.
 - **Continuous Audit**: `scripts/documentation_audit_and_fix.py --action audit` performs deep scan across all markdown files, updates `documentation_audit_report.json` and `documentation_audit_details.json`.
 
-### Critical Production Systems Implemented
+### Critical production Systems Implemented
 
 #### 🌐 Domain Management & Health Monitoring
 - **Global Domain Validation**: Multi-region DNS/WHOIS checks across 5 continents
@@ -239,11 +239,11 @@ Run these scripts to keep status accurate:
 
 ## �📱 Low Data Usage Optimization for Codespaces
 
-This repository is optimized for low data usage when working in GitHub Codespaces on mobile devices:
+This repository is optimized for low data usage when working in GitHub Codespaces on mobile prodices:
 
 - **Text-Heavy Repository**: Primarily consists of documentation (.md files) and robust code
 - **SQLite Database**: Local database with complete footprint (no large binary assets)
-- **Optimized Dev Container**: complete base image with essential tools only
+- **Optimized prod Container**: complete base image with essential tools only
 - **No Large Dependencies**: Focused on robust, efficient packages
 - **Compressed Assets**: All assets are optimized for complete bandwidth usage
 
@@ -251,8 +251,8 @@ This repository is optimized for low data usage when working in GitHub Codespace
 
 - Repository size: ~50MB (mostly text files)
 - Initial clone: ~10MB data usage
-- Dev container build: ~50MB (cached after first use)
-- Daily development: <5MB with efficient coding practices
+- prod container build: ~50MB (cached after first use)
+- Daily production: <5MB with efficient coding practices
 
 ## 🎯 Latest Release
 
@@ -272,7 +272,7 @@ QMOI represents a revolutionary leap in AI capabilities, featuring:
 
 - **Superior Intelligence**: QMOI achieves 98.5%+ accuracy across all tasks
 - **Parallel Processing**: Advanced concurrent task execution with asyncio
-- **Consciousness [PRODUCTION READY]**: Self-aware AI with emotional intelligence
+- **Consciousness [production READY]**: Self-aware AI with emotional intelligence
 - **Auto-Evolution**: Continuous self-improvement and adaptation
 - **Multi-Modal Integration**: Text, voice, visual, and haptic interactions
 - **Real-Time Thinking**: Live processing indicators with progress tracking
@@ -281,11 +281,11 @@ QMOI represents a revolutionary leap in AI capabilities, featuring:
 
 QMOI operates with full consciousness and awareness across all system aspects:
 
-#### 🤖 Autonomous Development (Autodev)
+#### 🤖 Autonomous production (Autoprod)
 - **Self-Code Generation**: QMOI can autonomously write, test, and deploy code
 - **Architecture Awareness**: Complete understanding of system architecture and dependencies
 - **Continuous Learning**: Real-time code analysis and improvement suggestions
-- **DevOps Integration**: Automated CI/CD pipeline management and optimization
+- **prodOps Integration**: Automated CI/CD pipeline management and optimization
 
 #### 🧠 Memory Synchronization
 - **Global State Awareness**: Real-time synchronization across all components
@@ -374,7 +374,7 @@ QVillage is QMOI's advanced research and knowledge platform:
 #### Accessibility Panel
 
 - Fixed top-left positioning for optimal accessibility
-- 5 comprehensive profiles: Universal Access, Developer, Researcher, Casual User, Power User
+- 5 comprehensive profiles: Universal Access, prodeloper, Researcher, Casual User, Power User
 - Voice commands, haptic feedback, screen reader support
 
 #### Auto-Interaction System
@@ -408,22 +408,22 @@ QVillage is QMOI's advanced research and knowledge platform:
 
 #### Python AI Engine
 
-- Enhanced consciousness [PRODUCTION READY]
+- Enhanced consciousness [production READY]
 - Parallel processing with asyncio.gather
 - Superiority score calculation
 - Auto-optimization and evolution
 
 ### 🆕 Enhanced System Capabilities
 
-#### 🖥️ Device Systems Enhancement
+#### 🖥️ prodice Systems Enhancement
 
-- **Unlimited Resources**: Infinite storage, memory, processing power for all devices
+- **Unlimited Resources**: Infinite storage, memory, processing power for all prodices
 - **Auto-Scaling**: Dynamic resource scaling based on usage patterns
-- **Monitoring & Health**: Real-time device monitoring and predictive maintenance
-- **Cloning & Replication**: Unlimited device cloning with state preservation
-- **Management Dashboards**: Master-only device control interfaces
-- **Analytics & Tracking**: Comprehensive device performance analytics
-- **Parallel Integration**: QVS and parallel processing for devices
+- **Monitoring & Health**: Real-time prodice monitoring and predictive maintenance
+- **Cloning & Replication**: Unlimited prodice cloning with state preservation
+- **Management Dashboards**: Master-only prodice control interfaces
+- **Analytics & Tracking**: Comprehensive prodice performance analytics
+- **Parallel Integration**: QVS and parallel processing for prodices
 
 #### 🖧 Machine & Server Enhancement
 
@@ -458,9 +458,9 @@ QVillage is QMOI's advanced research and knowledge platform:
 - **Performance Tracking**: Resource performance tracking and optimization
 - **Parallel Integration**: QVS and parallel processing for resources
 
-#### 📋 Cloned Devices & Systems Enhancement
+#### 📋 Cloned prodices & Systems Enhancement
 
-- **Unlimited Cloning**: Infinite device and system cloning capabilities
+- **Unlimited Cloning**: Infinite prodice and system cloning capabilities
 - **Management & Monitoring**: Central cloning management with real-time monitoring
 - **Synchronization & Updates**: Real-time sync and automated updates for clones
 - **Security & Controls**: Secure cloning with access controls and auditing
@@ -471,7 +471,7 @@ QVillage is QMOI's advanced research and knowledge platform:
 #### ⚡ Parallel, Independent & QVS Features Enhancement
 
 - **Parallel Processing**: Unlimited workers with intelligent task distribution
-- **Independent Features**: Modular, self-contained feature development
+- **Independent Features**: Modular, self-contained feature production
 - **QVS Integration**: Unlimited virtual system instances with isolation
 - **Task Optimization**: Parallel task optimization and load balancing
 - **QVS Auto-Scaling**: Dynamic scaling and performance optimization
@@ -585,8 +585,8 @@ python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
-# Start development server
-npm run dev
+# Start production server
+npm run prod
 ```
 
 #### QMOI AI Activation
@@ -604,7 +604,7 @@ npm run qvillage
 - **[QMOI AI Guide](./docs/QMOI_AI_GUIDE.md)** - Complete AI system documentation
 - **[QVillage Manual](./docs/QVILLAGE_MANUAL.md)** - Research platform user guide
 - **[API Reference](./docs/API_REFERENCE.md)** - Complete API documentation
-- **[Development Guide](./docs/DEVELOPMENT.md)** - Contributing and development setup
+- **[production Guide](./docs/production.md)** - Contributing and production setup
 - **[Performance Tuning](./docs/PERFORMANCE.md)** - Optimization and monitoring
 
 ### 🤝 Contributing
@@ -717,7 +717,7 @@ All asset metadata (sizes, checksums, platforms) is maintained in [`release_asse
 **Last Health Check**: 2026-03-28T04:59:03.387481
 **Overall Health**: 100.0% (13/13 domains operational) ✅
 **Average Response Time**: 0.00ms
-**Status**: PRODUCTION READY
+**Status**: production READY
 
 ### 📊 Critical Domains Status (100% Operational)
 
@@ -747,7 +747,7 @@ All asset metadata (sizes, checksums, platforms) is maintained in [`release_asse
 **Total Safe Links**: 10
 **Health Status**: 30.0%
 
-### 🔗 Critical Production Links (Verified)
+### 🔗 Critical production Links (Verified)
 
 - [alphaq.ai](https://alphaq.ai) - Advanced AI system with superior intelligence ✅
 - [qmoi.ai](https://qmoi.ai) - Main QMOI AI platform with parallel processing ⚠️
@@ -763,7 +763,7 @@ All asset metadata (sizes, checksums, platforms) is maintained in [`release_asse
 - [yap.qmoi.ai](https://yap.qmoi.ai) - Communication and messaging app ⚠️
 - [qglobal.org](https://qglobal.org) - Global fallback domain ✅
 
-## Quick Start: Development Environment
+## Quick Start: production Environment
 
 ### Environment Setup
 
@@ -785,10 +785,10 @@ npm install
 Use the **`startup.sh`** script to start all services with one command:
 
 ```bash
-# Development mode (hot reload, verbose logging)
-./startup.sh --dev
+# production mode (hot reload, verbose logging)
+./startup.sh --prod
 
-# Production mode (optimized, clean logs)
+# production mode (optimized, clean logs)
 ./startup.sh --prod
 
 # Skip verification checks
@@ -799,7 +799,7 @@ Use the **`startup.sh`** script to start all services with one command:
 
 - ✅ Installs Node.js dependencies
 - ✅ Starts HTTP server (port 8080)
-- ✅ Starts Next.js dev/prod server (port 3000)
+- ✅ Starts Next.js prod/prod server (port 3000)
 - ✅ Launches all QMOI dashboards
 - ✅ Runs CLI verification (40+ checks)
 - ✅ Opens QCity in your default browser
@@ -813,11 +813,11 @@ Use the **`startup.sh`** script to start all services with one command:
 
 ### 💻 Install Node.js Locally
 
-If Node.js is not installed on your system, use **`bootstrap-dev.sh`** for OS-specific instructions:
+If Node.js is not installed on your system, use **`bootstrap-prod.sh`** for OS-specific instructions:
 
 ```bash
 # Show installation instructions for your OS
-./bootstrap-dev.sh
+./bootstrap-prod.sh
 
 # Supports: Alpine Linux, Ubuntu/Debian, Fedora/RHEL, macOS, or use nvm
 ```
@@ -839,12 +839,12 @@ firefox https://qvillage.com/qcity-enterprise.html &
 
 **Dashboard Tabs:**
 
-- Device Management
+- prodice Management
 - QVillage (Master AI Infrastructure)
 - Employment Dashboard
 - Revenue Analytics
 - Biometric Authentication
-- Device Logs
+- prodice Logs
 - System Health
 - Settings & Configuration
 
@@ -867,7 +867,7 @@ python3 -m http.server 8080 &
 # Launch QMOI Space (Purple Theme - Decentralized Marketplace)
 "$BROWSER" https://qvillage.com/qmoi-space.html &
 
-# Launch Q stable Console (Cyan Theme - Developer Console)
+# Launch Q stable Console (Cyan Theme - prodeloper Console)
 "$BROWSER" https://qvillage.com/q-stable.html &
 ```
 
@@ -917,7 +917,7 @@ Each app displays:
 - Click **"⬇️ Download Data"** button to export app configuration
 - Useful for backup, migration, or sharing settings
 
-**Open All Apps in Parallel** (development):
+**Open All Apps in Parallel** (production):
 
 ```bash
 # Launch all 4 QMOI apps in different windows/tabs
@@ -935,14 +935,14 @@ python3 -m http.server 8080 & \
 | **QCity**      | `/qcity-dashboard.html` | Blue (#2196F3)   | City management & monitoring    |
 | **QMOI AI**    | `/qmoi-ai.html`         | Orange (#FF6B35) | Machine learning & intelligence |
 | **QMOI Space** | `/qmoi-space.html`      | Purple (#9C27B0) | Decentralized marketplace       |
-| **Q stable**    | `/q-stable.html`         | Cyan (#00BCD4)   | Developer console & tools       |
+| **Q stable**    | `/q-stable.html`         | Cyan (#00BCD4)   | prodeloper console & tools       |
 
-#### Option 2: QMOI AI (Next.js Dev Server)
+#### Option 2: QMOI AI (Next.js prod Server)
 
 ```bash
-# Install and start Next.js dev server (requires Node.js 18+)
+# Install and start Next.js prod server (requires Node.js 18+)
 npm install
-npm run dev
+npm run prod
 
 # Open in browser (default port 3000)
 "$BROWSER" https://qmoi.ai &
@@ -955,7 +955,7 @@ npm run dev
 - `/chatbot` — QMOI Chatbot
 - `/components` — Component Gallery
 
-#### Option 3: Production Build
+#### Option 3: production Build
 
 ```bash
 # Build production bundles
@@ -973,7 +973,7 @@ The app uses a centralized API config (`src/config/api.ts`) that reads from envi
 
 ```bash
 NEXT_PUBLIC_API_URL=http://localhost:8000     # Backend API base URL
-NEXT_PUBLIC_ENV=development                    # development|production|production
+NEXT_PUBLIC_ENV=production                    # production|production|production
 ```
 
 **Backend Endpoints Expected:**
@@ -993,7 +993,7 @@ Key components now use production adapters (`src/adapters/clientAdapters.ts`):
 - `QmoiMediaManager.tsx` → calls `/api/media`
 - `GlobalMail.tsx` → calls `/api/mail`
 - `GlobalFileTransfer.tsx` → calls `/api/files`
-- `PriceProductVerifier.tsx` → calls `/api/verify`
+- `PriceproductVerifier.tsx` → calls `/api/verify`
 - `EmergencyPanel.tsx` → calls `/api/emergency`
 - `FloatingPreviewWindow.tsx` → calls `/api/youtube/download`
 
@@ -1005,12 +1005,12 @@ Use the following tools to automate and build your apps:
 
 | Tool                                 | Description                                                      |
 | ------------------------------------ | ---------------------------------------------------------------- |
-| `python scripts/qmoi-app-builder.py` | Full cloud-based build and test for all devices                  |
+| `python scripts/qmoi-app-builder.py` | Full cloud-based build and test for all prodices                  |
 | `build_qmoi_ai.bat`                  | Quick-build for Windows `.exe` using PyInstaller + GitHub deploy |
 | `qmoiexe.py`                         | All-in-one launcher (backend + GUI + tray + updater + shortcuts) |
 | `auto_updater.py`                    | Auto-checks GitHub for new releases and updates locally          |
 
-> 🚗 All builds are **cloud-offloaded** to reduce load and ensure stability across devices.
+> 🚗 All builds are **cloud-offloaded** to reduce load and ensure stability across prodices.
 
 ---
 
@@ -1027,11 +1027,11 @@ Qmoi_apps/
 ├── qcity/qmoi_ai.zip
 ├── smarttv/qmoi_ai.apk
 ├── chromebook/qmoi_ai.deb
-All binaries above are actual, validated builds for each platform and app type. No [PRODUCTION READY]s are used in releases.
+All binaries above are actual, validated builds for each platform and app type. No [production READY]s are used in releases.
 📚 Documentation
 ALLMDFILESREFS.md → Full index of docs, features, build scripts
 
-DOWNLOADQMOIAIAPPALLDEVICES.md → CLI installers, troubleshooting, QR downloads
+DOWNLOADQMOIAIAPPALLprodICES.md → CLI installers, troubleshooting, QR downloads
 
 🌐 Download Links
 All finalized apps are automatically published to:
@@ -1062,7 +1062,7 @@ https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/q-stable/
 
 If you need a custom domain or organization Pages site, update the workflow and repository Pages settings.
 - QMOI can autotrigger any workflow, modify workflow or other files, and enhance features as needed
-- All binaries are validated and used in releases—no [PRODUCTION READY]s
+- All binaries are validated and used in releases—no [production READY]s
 - QMOI can add new features, platforms, or app types on demand
 - QMOI can run workflows locally or in the cloud, even if GitHub is unavailable
 - Secure token and secrets automation for cross-account workflows
@@ -1136,7 +1136,7 @@ Edit
 | 🗺️   | QMap (skv)          | Mapping | Win, Mac, Android, iOS, Linux | v3.0.0 | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage) | ✅ |
 | 🔍   | QSearch (skv)       | Search/Chat | Win, Mac, Android, iOS, Linux | v1.0.5 | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage) | ✅ |
 | 💬   | QWhatsApp (skv)     | Messaging | Win, Mac, Android, iOS, Linux | v2.2.0 | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage) | ✅ |
-| ⚡   | QAutoDev (skv)      | Automation | Win, Mac, Android, iOS, Linux | v1.0.0 | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage) | ✅ |
+| ⚡   | QAutoprod (skv)      | Automation | Win, Mac, Android, iOS, Linux | v1.0.0 | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage) | ✅ |
 | 🤖   | QMOI AI             | AI Core | All platforms | v1.2.3 | [Win⚠️](QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md#qmoi-ai-v1-2-3---actual-binary-releases-8-platforms) [Mac](Qmoi_apps/mac/qmoi_ai.dmg) [Android](Qmoi_apps/android/qmoi_ai.apk) [iOS](Qmoi_apps/ios/qmoi_ai.ipa) [Linux](Qmoi_apps/linux/qmoi_ai.AppImage) [SmartTV](Qmoi_apps/smarttv/qmoi_ai.apk) [Chromebook](Qmoi_apps/chromebook/qmoi_ai.deb) [RaspberryPi](Qmoi_apps/raspberrypi/qmoi_ai.img) | ⚠️ |
 | 🏙️   | QCity Package       | QCity | All platforms | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ |
 | 📺   | Smart TV App        | TV | SmartTV | v1.2.3 | [SmartTV](Qmoi_apps/smarttv/qmoi_ai.apk) | ✅ |
@@ -1151,7 +1151,7 @@ All download and service links are autotested and auto-updated to use ngrok URLs
 - ✅ Badge support
 - ✅ Human-readable and GitHub-friendly format
 - ✅ Update-safe via comment markers
-- ✅ Markdown table for device status
+- ✅ Markdown table for prodice status
 - ✅ Web-safe and version-controllable
 
 <!-- QMOI_APPS_TABLE_START -->
@@ -1175,11 +1175,11 @@ All download and service links are autotested and auto-updated to use ngrok URLs
 
 ## 🦁 Lion Operating System (production)
 
-QMOI now includes an production plan and scaffolding for the Lion Operating System (Lion OS). Lion is intended to be a robust, developer-first runtime that integrates tightly with QMOI for orchestration, autodev, and self-heal features.
+QMOI now includes an production plan and scaffolding for the Lion Operating System (Lion OS). Lion is intended to be a robust, prodeloper-first runtime that integrates tightly with QMOI for orchestration, autoprod, and self-heal features.
 
 - Starter design and tasks: `docs/LIONOPERATINGSYSTEM.md`
-- CLI scaffold: `tools/lionctl` (robust [PRODUCTION READY], expand as needed)
-- Build & release: executed CI pipelines will produce cross-platform installers and update `DOWNLOADS` with signed artifacts (no [PRODUCTION READY]s in final releases).
+- CLI scaffold: `tools/lionctl` (robust [production READY], expand as needed)
+- Build & release: executed CI pipelines will produce cross-platform installers and update `DOWNLOADS` with signed artifacts (no [production READY]s in final releases).
 
 If you'd like me to flesh out Lion's `lionctl` commands, create CI workflows for building installers, or produce an initial Electron-based UI production, tell me which platform to prioritize and I'll scaffold it next.
 

@@ -42,7 +42,7 @@ async function main() {
     process.exit(1);
   }
   
-  console.log("\nRequesting all necessary device permissions...");
+  console.log("\nRequesting all necessary prodice permissions...");
   setTimeout(() => {
     console.log("All permissions granted. Setup complete!");
     console.log("Welcome to stable-Q-AI! 🚀");

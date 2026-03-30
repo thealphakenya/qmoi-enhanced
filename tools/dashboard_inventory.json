@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 {
   "generated_at": "2025-11-09T00:00:00Z",
   "items": [
@@ -35,7 +35,7 @@
         "logs/master-automation-report.json"
       ],
       "runtime": ["Python 3.x, Flask, requests"],
-      "notes": "Contains [PRODUCTION READY]s: [PRODUCTION IMPLEMENTATION REQUIRED]. Reads logs under logs/ and serves JSON endpoints."
+      "notes": "Contains [production READY]s: [production IMPLEMENTATION REQUIRED]. Reads logs under logs/ and serves JSON endpoints."
     },
     {
       "path": "qmoi-enhanced/scripts/monitoring/monitoring_dashboard.py",
@@ -83,7 +83,7 @@
     "Create a complete Python virtualenv and install requirements-complete.txt plus flask and psutil to run monitoring/dashboard smoke tests.",
     "Start the monitoring scripts (system_status_monitor & performance_monitoring) to produce logs under logs/ before launching monitoring_dashboard.",
     "Run the Flask monitoring/dashboard servers and verify endpoints: /api/status, /api/performance, /api/health.",
-    "For frontend verification, either run the PWA dev server or serve templates via Flask and open the dashboard UI to confirm charts and socket events.",
+    "For frontend verification, either run the PWA prod server or serve templates via Flask and open the dashboard UI to confirm charts and socket events.",
     "In CI, use the robust requirements-complete environment for smoke tests; install heavy libs (torch/transformers) only in specialized GPU-enabled images.",
     "Add automated tasks to generate/backup logs used by dashboards so dashboards don't display empty states in fresh checkouts."
   ]

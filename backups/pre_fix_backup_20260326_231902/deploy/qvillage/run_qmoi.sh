@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env bash
 # Simple supervisor loop to keep the local QM OI server running for qvillage.
 # Usage: `nohup ./run_qmoi.sh &` or run under systemd using the provided unit file.

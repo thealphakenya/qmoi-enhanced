@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -40,7 +40,7 @@ QMOI now supports self-healing automation for GitHub Actions workflows. The syst
   - `GITHUB_TOKEN`: GitHub personal access token or Actions token
   - `GITHUB_REPOSITORY`: GitHub repository in the form `owner/repo`
   - `SLACK_WEBHOOK_URL`: (optional) for Slack notifications
-  - SMTP/email vars for email notifications (see QMOIGITLABDEV.md)
+  - SMTP/email vars for email notifications (see QMOIGITLABprod.md)
 
 ## How It Works
 
@@ -61,7 +61,7 @@ QMOI now supports self-healing automation for GitHub Actions workflows. The syst
 
 ## See Also
 
-- [QMOIGITLABDEV.md](QMOIGITLABDEV.md)
+- [QMOIGITLABprod.md](QMOIGITLABprod.md)
 - [REFERENCES.md](REFERENCES.md)
 
 ## Gmail Notification Integration
@@ -73,7 +73,7 @@ QMOI now supports self-healing automation for GitHub Actions workflows. The syst
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "qmoi-enhanced/docs/QMOIGITHUBDEV.md",
+"file": "qmoi-enhanced/docs/QMOIGITHUBprod.md",
 "validated_at": "2025-10-26T20:51:24.861853Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
@@ -87,8 +87,8 @@ QMOI now supports self-healing automation for GitHub Actions workflows. The syst
 "ok": true,
 "detail": [
 {
-"label": "QMOIGITLABDEV.md",
-"target": "./QMOIGITLABDEV.md",
+"label": "QMOIGITLABprod.md",
+"target": "./QMOIGITLABprod.md",
 "ok": true
 },
 {

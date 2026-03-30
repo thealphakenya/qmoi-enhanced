@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 import { NextRequest, NextResponse } from "next/server";
 import { headers } from "next/headers";
 
@@ -63,7 +63,7 @@ export async function GET(request: NextRequest) {
       const interval = setInterval(sendUpdate, 2000);
 
       // Cleanup on disconnect
-      request.signal.addEventListener("abort", () => {
+      request.signal.adprodentListener("abort", () => {
         clearInterval(interval);
         controller.close();
       });

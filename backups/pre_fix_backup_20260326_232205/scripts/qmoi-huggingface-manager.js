@@ -7,7 +7,7 @@
 
 // QMOI HuggingFace Manager CLI
 // Automates HuggingFace Space creation, deployment, monitoring, and self-healing
-// Integrates with QCity device and QMOI automation system
+// Integrates with QCity prodice and QMOI automation system
 
 const { Command } = require("commander");
 const program = new Command();
@@ -31,7 +31,7 @@ function logAction(msg) {
 function checkQCityConfig() {
   const configPath = path.join(__dirname, "../config/qcity-config.json");
   if (fs.existsSync(configPath)) {
-    logAction("QCity config found. Offloading heavy tasks to QCity device.");
+    logAction("QCity config found. Offloading heavy tasks to QCity prodice.");
     
   } else {
     logAction("QCity config not found. Running locally.");
@@ -162,7 +162,7 @@ process.on("unhandledRejection", (reason, promise) => {
 // - Add browser automation for no-API-key workflows (_e.g., Puppeteer)
 // - Integrate with QCity VPN and security modules
 // - Add advanced monitoring, alerting, and reporting
-// - Support for multi-device and distributed deployments
+// - Support for multi-prodice and distributed deployments
 // - Add CLI prompts for interactive setup
 // - Integrate with HuggingFace Spaces public APIs if available
 

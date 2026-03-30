@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Issue final for PUBLIC.md"
 generated: 2025-11-08T16:06:38.283921Z
@@ -10,9 +10,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [PRODUCTION READY] markers or [PRODUCTION READY]s.
-- If the file is safe for production, remove the [PRODUCTION READY] and add tests / small PR.
-- If the file is intentionally non-production (e.g. [PRODUCTION READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [production READY] markers or [production READY]s.
+- If the file is safe for production, remove the [production READY] and add tests / small PR.
+- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -48,21 +48,21 @@ public/
 ├── icon.svg
 ├── icon.webp
 ├── index.html
-├── [PRODUCTION READY]-logo.png
-├── [PRODUCTION READY]-logo.svg
-├── [PRODUCTION READY]-user.jpg
-├── [PRODUCTION READY].jpg
-├── [PRODUCTION READY].svg
+├── [production READY]-logo.png
+├── [production READY]-logo.svg
+├── [production READY]-user.jpg
+├── [production READY].jpg
+├── [production READY].svg
 ├── qcity/
 ├── qcity-icon.svg
 
 ```
 
 ## Usage & Integration
-- All icons and images are used for branding, UI, and device compatibility in QCity, QMOI AI, and QMOI Space.
+- All icons and images are used for branding, UI, and prodice compatibility in QCity, QMOI AI, and QMOI Space.
 - `index.html` is the main entry point for web apps and dashboards.
 - `qcity/` and `qcity-icon.svg` are used for QCity branding and UI features.
-- [PRODUCTION READY] assets are used for default avatars, logos, and error states.
+- [production READY] assets are used for default avatars, logos, and error states.
 - Unused/duplicate assets are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
 
 ## Automation & Health
@@ -73,7 +73,7 @@ public/
 
 ## Zero-Rated QMOI Features & Universal Automation
 
-- All QMOI public assets, including zero-rated (free, unlimited, no billing) features, are documented and available for every app, platform, and device.
+- All QMOI public assets, including zero-rated (free, unlimited, no billing) features, are documented and available for every app, platform, and prodice.
 - QMOI provides all paid/subscription features of major platforms for fr
 ```
 

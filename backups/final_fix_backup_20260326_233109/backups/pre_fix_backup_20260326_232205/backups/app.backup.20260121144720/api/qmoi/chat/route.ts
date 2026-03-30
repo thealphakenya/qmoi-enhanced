@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextResponse } from "next/server";
@@ -19,12 +19,12 @@ export async function POST(_req: Request) {
       return NextResponse.json({ _error: "invalid_messages" }, { status: 400 });
     }
 
-    // Enforce canonical model unless explicitly overridden in non-production
+    // Enforce canonical model unless explicitly overridden in production
     const model =
       process.env.NODE_ENV === "production" ? "qmoi" : body.model || "qmoi";
 
     const qbase = process.env.QMOI_API_BASE;
-    // Production require an explicit QMOI_API_BASE to avoid accidentally proxying to localhost test servers
+    // production require an explicit QMOI_API_BASE to avoid accidentally proxying to localhost test servers
     if (process.env.NODE_ENV === "production" && !qbase) {
       return NextResponse.json(
         { _error: "qmoi_api_base_not_configured" },
@@ -64,7 +64,7 @@ export async function POST(_req: Request) {
       signal: controller.signal,
     }).finally(() => clearTimeout(timer));
 
-    // Be defensive: some test environments may // Production implementation: fetch or Response differently.
+    // Be defensive: some test environments may // production implementation: fetch or Response differently.
     let data: unknown = null;
     try {
       if (resp && typeof (resp as any).json === "function") {

@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "ALLMDFILESREFS"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -27,7 +27,7 @@ This file is auto-generated and always up-to-date. It lists every `.md` file in 
 ## Auto-Sync, Memory, Tracks, and Automation
 
 - All .md files listed below are auto-synced across all QMOI-related repos (see SYNCREPOS.md).
-- QMOI memory, autodevelopment, evolution, parallel features, QVS, security, anti-hacking, anti-tracking, and VPN features are referenced and enhanced via these files.
+- QMOI memory, autoproduction, evolution, parallel features, QVS, security, anti-hacking, anti-tracking, and VPN features are referenced and enhanced via these files.
 - TRACKS.md is used by QMOI memory to log tracks, fixes, enhancements, research, and automation.
 - SYNCREPOS.md lists all repos for auto-sync and propagation of changes.
 - Always update related .md files when features are added, fixed, or enhanced.
@@ -49,7 +49,7 @@ This file is auto-generated and always up-to-date. It lists every `.md` file in 
 - TRACKS.md: Logs all tracks, fixes, enhancements, and automation for QMOI memory.
 - SYNCREPOS.md: Lists all synced repos and auto-sync instructions.
 - ENHANCEDQVS.md, ENHANCED_AUTOMATION_SUMMARY.md, QMOI-ENHANCED-AUTOMATION.md, QMOI-ENHANCED-FEATURES.md, QMOI-ENHANCED-COMPLETE.md, QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md, QMOI-ENHANCED-FINAL.md: QVS, automation, and enhancement features.
-- SELF_EVOLUTION.md: Evolution and autodevelopment.
+- SELF_EVOLUTION.md: Evolution and autoproduction.
 - MONITORING.md: Security, anti-hacking, anti-tracking, and VPN features.
 - FEATURESREADME.md: All features summary and references.
 
@@ -66,14 +66,14 @@ Below is a comprehensive, auto-updating list of all `.md` files in the workspace
 /workspaces/qmoi-enhanced/SYNCREPOS.md
 /workspaces/qmoi-enhanced/TRACKS.md
 /workspaces/qmoi-enhanced/@ALLMDFILESREFS.md
-/workspaces/qmoi-enhanced/ALLDEVICESSETTINGS.md
+/workspaces/qmoi-enhanced/ALLprodICESSETTINGS.md
 /workspaces/qmoi-enhanced/ALLERRORSSTATSQMOI.md
 /workspaces/qmoi-enhanced/ALLMDFILESREFS.md
 /workspaces/qmoi-enhanced/ALLQMOIAIAPPSREALEASESVERSIONS.md
 /workspaces/qmoi-enhanced/ALLQMOIAUTOEVOLVINGENVS.md
 /workspaces/qmoi-enhanced/ALPHAQMOIENGINE.md
 /workspaces/qmoi-enhanced/API.md
-/workspaces/qmoi-enhanced/AU[PRODUCTION READY]WNLOAD.md
+/workspaces/qmoi-enhanced/AU[production READY]WNLOAD.md
 /workspaces/qmoi-enhanced/AUTOGIT.md
 /workspaces/qmoi-enhanced/AUTOLINTREADME.md
 /workspaces/qmoi-enhanced/AUTOMATION-SUMMARY.md
@@ -87,8 +87,8 @@ Below is a comprehensive, auto-updating list of all `.md` files in the workspace
 /workspaces/qmoi-enhanced/COLAB_DAGSHUB_DEPLOY_CHECKLIST.md
 /workspaces/qmoi-enhanced/CONTINUOUS_IMPROVEMENT.md
 /workspaces/qmoi-enhanced/DEPLOYMENT-README.md
-/workspaces/qmoi-enhanced/DEVICERESOURCEOPTIMIZATION.md
-/workspaces/qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md
+/workspaces/qmoi-enhanced/prodICERESOURCEOPTIMIZATION.md
+/workspaces/qmoi-enhanced/DOWNLOADQMOIAIAPPALLprodICES.md
 /workspaces/qmoi-enhanced/EMPLOYEESUSERSENROLLED.md
 /workspaces/qmoi-enhanced/ENHANCEDQVS.md
 /workspaces/qmoi-enhanced/ENHANCED_AUTOMATION_SUMMARY.md
@@ -111,13 +111,13 @@ Below is a comprehensive, auto-updating list of all `.md` files in the workspace
 /workspaces/qmoi-enhanced/PAYEDGITLAB.md
 /workspaces/qmoi-enhanced/QAlLPURPOSE.MD
 /workspaces/qmoi-enhanced/QAvatar_User_Feedback_Kit.md
-/workspaces/qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md
-/workspaces/qmoi-enhanced/QCITYMAINDEVICE.md
+/workspaces/qmoi-enhanced/QCITYprodICEAUTOUPGRADE.md
+/workspaces/qmoi-enhanced/QCITYMAINprodICE.md
 /workspaces/qmoi-enhanced/QCITYQMOIAUTOSTART.md
 /workspaces/qmoi-enhanced/QCITYREADME.md
 /workspaces/qmoi-enhanced/QCITYRESOURCES.md
 /workspaces/qmoi-enhanced/QCITYRUNNERSENGINE.md
-/workspaces/qmoi-enhanced/QCITY_DEVICE_MANAGEMENT.md
+/workspaces/qmoi-enhanced/QCITY_prodICE_MANAGEMENT.md
 /workspaces/qmoi-enhanced/QGAMINGCLOUD.md
 /workspaces/qmoi-enhanced/QGLOBAL.md
 /workspaces/qmoi-enhanced/QMOI-AI-ENHANCEMENT.md
@@ -148,8 +148,8 @@ Below is a comprehensive, auto-updating list of all `.md` files in the workspace
 /workspaces/qmoi-enhanced/QMOIACCOUNTS.md
 /workspaces/qmoi-enhanced/QMOIACCOUNTSPLATFORMS.md
 /workspaces/qmoi-enhanced/QMOIAICORE.md
-/workspaces/qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md
-/workspaces/qmoi-enhanced/QMOIALLDEVICESINSTALL.md
+/workspaces/qmoi-enhanced/QMOIALLprodICESHANDSFREE.md
+/workspaces/qmoi-enhanced/QMOIALLprodICESINSTALL.md
 /workspaces/qmoi-enhanced/QMOIALLPLATFORMS.md
 /workspaces/qmoi-enhanced/QMOIALLPROJECTSADDSTRAILERSDOCS.md
 /workspaces/qmoi-enhanced/QMOIALWAYSPARALLEL.md
@@ -157,10 +157,10 @@ Below is a comprehensive, auto-updating list of all `.md` files in the workspace
 /workspaces/qmoi-enhanced/QMOIAPPS.md
 /workspaces/qmoi-enhanced/QMOIARTISTS.md
 /workspaces/qmoi-enhanced/QMOIAUTHBIOMETRICS.md
-/workspaces/qmoi-enhanced/QMOIAUTOAPPSDEV.md
+/workspaces/qmoi-enhanced/QMOIAUTOAPPSprod.md
 /workspaces/qmoi-enhanced/QMOIAUTOBET.md
-/workspaces/qmoi-enhanced/QMOIAUTODEV.md
-/workspaces/qmoi-enhanced/QMOIAUTODEVDOCTESTS.MD
+/workspaces/qmoi-enhanced/QMOIAUTOprod.md
+/workspaces/qmoi-enhanced/QMOIAUTOprodDOCTESTS.MD
 /workspaces/qmoi-enhanced/QMOIAUTODISTRIBUTEMARKET.md
 /workspaces/qmoi-enhanced/QMOIAUTOEVOLVE.md
 /workspaces/qmoi-enhanced/QMOIAUTOFIXREADME.md
@@ -182,8 +182,8 @@ Below is a comprehensive, auto-updating list of all `.md` files in the workspace
 /workspaces/qmoi-enhanced/QMOICLONEHUGGINGFACE.md
 /workspaces/qmoi-enhanced/QMOICOLABDAGSHUB.md
 /workspaces/qmoi-enhanced/QMOIDATABASE.md
-/workspaces/qmoi-enhanced/QMOIDEV.md
-/workspaces/qmoi-enhanced/QMOIDEVICES.md
+/workspaces/qmoi-enhanced/QMOIprod.md
+/workspaces/qmoi-enhanced/QMOIprodICES.md
 /workspaces/qmoi-enhanced/QMOIDNS.md
 /workspaces/qmoi-enhanced/QMOIDOMAINS.md
 /workspaces/qmoi-enhanced/QMOIDOWNLOADS.md
@@ -198,9 +198,9 @@ Below is a comprehensive, auto-updating list of all `.md` files in the workspace
 /workspaces/qmoi-enhanced/QMOIFREE.md
 /workspaces/qmoi-enhanced/QMOIGAMINGCLOUDUSERS.md
 /workspaces/qmoi-enhanced/QMOIGAMINGGENREV.md
-/workspaces/qmoi-enhanced/QMOIGITHUBDEV.md
-/workspaces/qmoi-enhanced/QMOIGITLABDEV.md
-/workspaces/qmoi-enhanced/QMOIGITPODDEV.md
+/workspaces/qmoi-enhanced/QMOIGITHUBprod.md
+/workspaces/qmoi-enhanced/QMOIGITLABprod.md
+/workspaces/qmoi-enhanced/QMOIGITPODprod.md
 /workspaces/qmoi-enhanced/QMOIHUGGINGFACEALWAYSUPDATE.md
 /workspaces/qmoi-enhanced/QMOIHUGGINGFACESPACES.md
 /workspaces/qmoi-enhanced/QMOIHUGGINGFACESPACESSETUPINST.md
@@ -208,8 +208,8 @@ Below is a comprehensive, auto-updating list of all `.md` files in the workspace
 /workspaces/qmoi-enhanced/QMOIMEMORY.md
 /workspaces/qmoi-enhanced/QMOINETWORK.md
 /workspaces/qmoi-enhanced/QMOINGROK.md
-/workspaces/qmoi-enhanced/QMOIOWNDEVICE.md
-/workspaces/qmoi-enhanced/QMOIPREDEVDOCACTIONS.md
+/workspaces/qmoi-enhanced/QMOIOWNprodICE.md
+/workspaces/qmoi-enhanced/QMOIPREprodDOCACTIONS.md
 /workspaces/qmoi-enhanced/QMOIQCITYAUTOMATIC.md
 /workspaces/qmoi-enhanced/QMOIQTEAMCUSTOMERCARE.md
 /workspaces/qmoi-enhanced/QMOIRADIOREADME.md
@@ -217,12 +217,12 @@ Below is a comprehensive, auto-updating list of all `.md` files in the workspace
 /workspaces/qmoi-enhanced/QMOIREGISTRY.md
 /workspaces/qmoi-enhanced/QMOIREVENUEGENERATION.md
 /workspaces/qmoi-enhanced/QMOISPACE.md
-/workspaces/qmoi-enhanced/QMOISPACEDEV.md
+/workspaces/qmoi-enhanced/QMOISPACEprod.md
 /workspaces/qmoi-enhanced/QMOISPACEUI.md
 /workspaces/qmoi-enhanced/QMOISYSTEMAUTO.md
 /workspaces/qmoi-enhanced/QMOITESTENVIRONMENT.md
 /workspaces/qmoi-enhanced/QMOITRADER.md
-/workspaces/qmoi-enhanced/QMOIVERCELDEV.md
+/workspaces/qmoi-enhanced/QMOIVERCELprod.md
 /workspaces/qmoi-enhanced/QMOIVIDEOPLATFORMS.md
 /workspaces/qmoi-enhanced/QMOIWHATSAPP.md
 /workspaces/qmoi-enhanced/QMOI_AUTOMATED_SYSTEMS_README.md

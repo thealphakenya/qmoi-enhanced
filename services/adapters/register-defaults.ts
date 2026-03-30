@@ -15,7 +15,7 @@ import AmazonAdapter from "./distribution/amazon";
 import StripeAdapter from "./payments/stripe";
 import PayPalAdapter from "./payments/paypal";
 
-// Register default adapter instances in dry-run/sandbox mode.
+// Register default adapter instances in dry-run/production mode.
 export function registerDefaults() {
   try {
     registry.registerAdapter("facebook", new ());

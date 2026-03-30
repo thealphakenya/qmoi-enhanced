@@ -7,16 +7,16 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-## Production Readiness Snapshot
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
 ## 1. Purpose
 - Track test coverage for all components, UI, scripts, API routes, and platform integrations.
-- Provide `autotestsvautodev` style command to run all tests in a single pass.
+- Provide `autotestsvautoprod` style command to run all tests in a single pass.
 - Auto-generate included tests to ensure 100% production readiness.
 
 ## 2. Test categories
@@ -30,7 +30,7 @@
 - smoke
 
 ## 3. Core checks (in scripts)
-- `scripts/scan_nonproduction_endpoints.py` (keyword scan for non-production markers)
+- `scripts/scan_production_endpoints.py` (keyword scan for production markers)
 - `scripts/validate_links.py` (URL health checks)
 - `scripts/generate_endpoint_docs.py` (API endpoint doc generation)
 - `scripts/update_readme_tree_docs.py` (docs sync)
@@ -45,7 +45,7 @@ bash scripts/production_readiness_pipeline.sh
 ```
 
 Pipeline steps:
-1. `python3 scripts/scan_nonproduction_endpoints.py`
+1. `python3 scripts/scan_production_endpoints.py`
 2. `python3 scripts/validate_links.py` (best-effort, may fail on network unreachable)
 3. `python3 scripts/generate_endpoint_docs.py`
 4. `python3 scripts/update_readme_tree_docs.py`
@@ -59,22 +59,22 @@ Pipeline steps:
 | QMOIMasterDashboard | app/components/QMOIMasterDashboard.test.tsx | pending | add PWA install flow coverage |
 | link manager | app/lib/qmoi/link_manager.test.ts | pending | validate domain formula *.qmoi.ai |
 | API docs generation | scripts/generate_endpoint_docs.test.py | exist | ensures API.md/APIs_v1.md/ENDPOINTS.md coverage |
-| nonprod scan | scripts/scan_nonproduction_endpoints.test.py | not existing | create it (required) |
+| production scan | scripts/scan_production_endpoints.test.py | not existing | create it (required) |
 | auto-readme sync | scripts/update_readme_tree_docs.test.py | not existing | create it (required) |
 
 ## 6. Metrics and readiness
-- Non-production marker files (if >0): not 100% ready. goal: 0.
-- Production-ready file count should equal total file count.
+- production marker files (if >0): not 100% ready. goal: 0.
+- production-ready file count should equal total file count.
 - `undone.txt` tracks unresolved markers.
-- Add `[PRODUCTION READY]` tag to files passing 100% automation checks.
+- Add `[production READY]` tag to files passing 100% automation checks.
 
 ## 7. Monitoring + Master Command references
 - Master dashboard should expose:
   - total files
-  - non-production count
+  - production count
   - readiness percentage
   - all actions taken
-- Add automated alert when nonprod > 0 after pipeline.
+- Add automated alert when production > 0 after pipeline.
 
 ## 8. Links to related docs
 - ALLUITESTS.md

@@ -6,7 +6,7 @@
 /**
  * QMOI Perception Engine
  * Handles multi-modal sensory input processing and environmental awareness
- * Production-ready implementation with real sensor integration
+ * production-ready implementation with real sensor integration
  */
 
 import axios from 'axios';
@@ -27,7 +27,7 @@ export interface EnvironmentContext {
   active_applications: string[];
   network_status: 'online' | 'offline' | 'limited';
   battery_percentage: number;
-  device_temperature: number;
+  prodice_temperature: number;
 }
 
 export interface UserContext {
@@ -118,7 +118,7 @@ export class PerceptionEngine extends EventEmitter {
   async processSystemLogs(log_lines: string[]): Promise<EnvironmentContext> {
     const context = this.getDefaultEnvironmentContext();
 
-    // Parse logs for device state
+    // Parse logs for prodice state
     for (const log of log_lines) {
       if (log.includes('battery')) {
         const match = log.match(/(\d+)%/);
@@ -126,7 +126,7 @@ export class PerceptionEngine extends EventEmitter {
       }
       if (log.includes('temperature')) {
         const match = log.match(/(\d+\.?\d*)°/);
-        if (match) context.device_temperature = parseFloat(match[1]);
+        if (match) context.prodice_temperature = parseFloat(match[1]);
       }
       if (log.includes('connected') || log.includes('offline')) {
         context.network_status = log.includes('connected') ? 'online' : 'offline';
@@ -179,7 +179,7 @@ export class PerceptionEngine extends EventEmitter {
           env_context = await this.processSystemLogs(input.data);
           break;
         case 'sensors':
-          env_context.device_temperature = input.data.temperature || env_context.device_temperature;
+          env_context.prodice_temperature = input.data.temperature || env_context.prodice_temperature;
           env_context.battery_percentage = input.data.battery || env_context.battery_percentage;
           break;
       }
@@ -212,7 +212,7 @@ export class PerceptionEngine extends EventEmitter {
       active_applications: [],
       network_status: 'online',
       battery_percentage: 100,
-      device_temperature: 37,
+      prodice_temperature: 37,
     };
   }
 }

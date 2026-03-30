@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 {
   "remediation": [
     {
@@ -16,7 +16,7 @@
       "platform": "android",
       "recommended_steps": [
         "Use scripts/build-android-production.sh (requires Android SDK/gradle).",
-        "Sign the APK, verify with apksigner and test on emulator/device"
+        "Sign the APK, verify with apksigner and test on emulator/prodice"
       ]
     },
     {

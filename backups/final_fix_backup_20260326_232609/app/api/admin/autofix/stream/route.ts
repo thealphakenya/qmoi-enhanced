@@ -62,7 +62,7 @@ export async function GET(request: NextRequest) {
       const interval = setInterval(sendUpdate, 2000);
 
       // Cleanup on disconnect
-      request.signal.addEventListener("abort", () => {
+      request.signal.adprodentListener("abort", () => {
         clearInterval(interval);
         controller.close();
       });

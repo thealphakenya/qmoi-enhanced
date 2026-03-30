@@ -1,6 +1,6 @@
 // QMOI Plugin Manager 
 import React from "react";
-import { DeviceHealthReviewerPlugin } from "./DeviceHealthReviewerPlugin";
+import { prodiceHealthReviewerPlugin } from "./prodiceHealthReviewerPlugin";
 import { OptimizationSuggestionPlugin } from "./OptimizationSuggestionPlugin";
 import { AIReviewPlugin } from "./AIReviewPlugin";
 import { QuickAIWidgetPlugin } from "./QuickAIWidgetPlugin";
@@ -46,7 +46,7 @@ export class PluginManager {
 
   autoDiscoverAndRegisterPlugins() {
     // In a real system, this could use dynamic import/glob
-    this.register(DeviceHealthReviewerPlugin);
+    this.register(prodiceHealthReviewerPlugin);
     this.register(OptimizationSuggestionPlugin);
     this.register(AIReviewPlugin);
     this.register(QuickAIWidgetPlugin);
@@ -130,13 +130,13 @@ export class PluginManager {
   }
 
   // Usage:
-  // pluginManager.on('deviceHealthChange', (payload) => { ... });
-  // pluginManager.emit({ type: 'deviceHealthChange', payload: { cpu: 90 } });
-  // pluginManager.schedule(DeviceHealthReviewerPlugin, 60000); // every 60s
+  // pluginManager.on('prodiceHealthChange', (payload) => { ... });
+  // pluginManager.emit({ type: 'prodiceHealthChange', payload: { cpu: 90 } });
+  // pluginManager.schedule(prodiceHealthReviewerPlugin, 60000); // every 60s
   // pluginManager.addAutomationRule({
   //   id: 'cpu-offload',
   //   description: 'Offload to cloud if CPU > 80%',
-  //   trigger: (_event) => _event.type === 'deviceHealthChange' && _event.payload.cpu > 80,
+  //   trigger: (_event) => _event.type === 'prodiceHealthChange' && _event.payload.cpu > 80,
   //   action: () => { /* offload logic */ },
   // });
 }

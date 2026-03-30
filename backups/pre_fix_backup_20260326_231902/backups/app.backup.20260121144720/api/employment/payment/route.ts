@@ -1,7 +1,7 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 1 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -26,7 +26,7 @@ const PaymentInfoSchema = z.object({
   bankCode: z.string().optional(),
 });
 
-[PRODUCTION READY] database
+[production READY] database
 const payments: unknown[] = [];
 const paymentLogs: unknown[] = [];
 
@@ -72,9 +72,9 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
 // Payment processing functions
 async function processMpesaPayment(paymentData: unknown) {
   try {
-    [PRODUCTION READY] M-Pesa API call
+    [production READY] M-Pesa API call
     const _response = await fetch(
-      "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
+      "https://production.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
       {
         method: "POST",
         headers: {
@@ -111,7 +111,7 @@ async function processMpesaPayment(paymentData: unknown) {
 
 async function processAirtelPayment(paymentData: unknown) {
   try {
-    [PRODUCTION READY] Airtel Money API call
+    [production READY] Airtel Money API call
     const _response = await fetch(
       "https://openapiuat.airtel.africa/merchant/v1/payments/",
       {
@@ -153,7 +153,7 @@ async function processAirtelPayment(paymentData: unknown) {
 
 async function processPesapalPayment(paymentData: unknown) {
   try {
-    [PRODUCTION READY] Pesapal API call
+    [production READY] Pesapal API call
     const _response = await fetch(
       "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
       {

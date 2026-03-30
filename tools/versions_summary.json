@@ -108,9 +108,9 @@
     "type": "doc"
   },
   {
-    "component": "PRODUCTION_DEPLOYMENT_README",
+    "component": "production_DEPLOYMENT_README",
     "version": "76.76.21",
-    "source": "PRODUCTION_DEPLOYMENT_README.md",
+    "source": "production_DEPLOYMENT_README.md",
     "type": "doc"
   },
   {
@@ -120,9 +120,9 @@
     "type": "doc"
   },
   {
-    "component": "README_PRODUCTION",
+    "component": "README_production",
     "version": "5.2.0-blue",
-    "source": "README_PRODUCTION.md",
+    "source": "README_production.md",
     "type": "doc"
   },
   {
@@ -132,9 +132,9 @@
     "type": "npm"
   },
   {
-    "component": "PRODUCTION_RELEASE_ACTION_PLAN",
+    "component": "production_RELEASE_ACTION_PLAN",
     "version": "v1.2.4",
-    "source": "PRODUCTION_RELEASE_ACTION_PLAN.md",
+    "source": "production_RELEASE_ACTION_PLAN.md",
     "type": "doc"
   },
   {
@@ -174,9 +174,9 @@
     "type": "doc"
   },
   {
-    "component": "PRODUCTION_RELEASE_DOCS_INDEX",
+    "component": "production_RELEASE_DOCS_INDEX",
     "version": "v1.2.3",
-    "source": "PRODUCTION_RELEASE_DOCS_INDEX.md",
+    "source": "production_RELEASE_DOCS_INDEX.md",
     "type": "doc"
   },
   {
@@ -264,9 +264,9 @@
     "type": "doc"
   },
   {
-    "component": "PRODUCTION_RELEASE_VALIDATION_CHECKLIST",
+    "component": "production_RELEASE_VALIDATION_CHECKLIST",
     "version": "v1.2.3",
-    "source": "PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md",
+    "source": "production_RELEASE_VALIDATION_CHECKLIST.md",
     "type": "doc"
   },
   {

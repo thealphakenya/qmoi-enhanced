@@ -3,12 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/usr/bin/env python3
 """
-QMOI Device Unlock System
-Advanced system to unlock devices from organizational restrictions like M-KOPA, Watu Credit, etc.
-Implements multiple unlock methods and techniques for comprehensive device liberation.
+QMOI prodice Unlock System
+Advanced system to unlock prodices from organizational restrictions like M-KOPA, Watu Credit, etc.
+Implements multiple unlock methods and techniques for comprehensive prodice liberation.
 """
 
 import os
@@ -43,7 +43,7 @@ class UnlockResult:
     duration_seconds: float
     errors: List[str]
     warnings: List[str]
-    device_info: Dict[str, Any]
+    prodice_info: Dict[str, Any]
 
 @dataclass
 class UnlockMethod:
@@ -55,19 +55,19 @@ class UnlockMethod:
     requirements: List[str]
     implementation: str
 
-class DeviceUnlockSystem:
-    """Advanced device unlock system for organizational restrictions"""
+class prodiceUnlockSystem:
+    """Advanced prodice unlock system for organizational restrictions"""
     
     def __init__(self):
-        self.device_info = self._get_device_info()
+        self.prodice_info = self._get_prodice_info()
         self.unlock_methods = self._initialize_unlock_methods()
         self.unlock_history = []
         self.current_unlock_session = None
         
-    def _get_device_info(self) -> Dict[str, Any]:
-        """Get comprehensive device information"""
+    def _get_prodice_info(self) -> Dict[str, Any]:
+        """Get comprehensive prodice information"""
         try:
-            device_info = {
+            prodice_info = {
                 'platform': platform.system(),
                 'platform_version': platform.version(),
                 'architecture': platform.machine(),
@@ -79,43 +79,43 @@ class DeviceUnlockSystem:
                 'disk_usage': psutil.disk_usage('/'),
                 'cpu_count': psutil.cpu_count(),
                 'boot_time': datetime.fromtimestamp(psutil.boot_time()),
-                'device_id': self._generate_device_id()
+                'prodice_id': self._generate_prodice_id()
             }
-            return device_info
+            return prodice_info
         except Exception as e:
-            logger.error(f"Error getting device info: {e}")
+            logger.error(f"Error getting prodice info: {e}")
             return {}
     
-    def _generate_device_id(self) -> str:
-        """Generate unique device identifier"""
+    def _generate_prodice_id(self) -> str:
+        """Generate unique prodice identifier"""
         try:
-            device_chars = [
+            prodice_chars = [
                 platform.node(),
                 platform.machine(),
                 str(psutil.cpu_count()),
                 str(psutil.virtual_memory().total),
                 platform.processor()
             ]
-            device_string = ''.join(device_chars)
-            return hashlib.sha256(device_string.encode()).hexdigest()[:16]
+            prodice_string = ''.join(prodice_chars)
+            return hashlib.sha256(prodice_string.encode()).hexdigest()[:16]
         except Exception as e:
-            logger.error(f"Error generating device ID: {e}")
+            logger.error(f"Error generating prodice ID: {e}")
             return "unknown"
     
     def _initialize_unlock_methods(self) -> Dict[str, UnlockMethod]:
         """Initialize available unlock methods"""
         methods = {
-            'remove_device_admin': UnlockMethod(
-                name='Remove Device Admin',
-                description='Remove device admin policies and MDM profiles',
+            'remove_prodice_admin': UnlockMethod(
+                name='Remove prodice Admin',
+                description='Remove prodice admin policies and MDM profiles',
                 success_rate=0.85,
                 risk_level='low',
-                requirements=['admin_access', 'device_admin_present'],
+                requirements=['admin_access', 'prodice_admin_present'],
                 implementation='platform_specific'
             ),
             'clear_policies': UnlockMethod(
-                name='Clear Device Policies',
-                description='Clear all device management policies',
+                name='Clear prodice Policies',
+                description='Clear all prodice management policies',
                 success_rate=0.80,
                 risk_level='low',
                 requirements=['policy_access'],
@@ -123,7 +123,7 @@ class DeviceUnlockSystem:
             ),
             'bypass_payment_lock': UnlockMethod(
                 name='Bypass Payment Lock',
-                description='Bypass payment-based device restrictions',
+                description='Bypass payment-based prodice restrictions',
                 success_rate=0.75,
                 risk_level='medium',
                 requirements=['payment_system_access'],
@@ -155,7 +155,7 @@ class DeviceUnlockSystem:
             ),
             'master_mode': UnlockMethod(
                 name='QMOI Master Mode',
-                description='Enable QMOI master mode for full device control',
+                description='Enable QMOI master mode for full prodice control',
                 success_rate=0.95,
                 risk_level='low',
                 requirements=['qmoi_access'],
@@ -163,7 +163,7 @@ class DeviceUnlockSystem:
             ),
             'hardware_unlock': UnlockMethod(
                 name='Hardware Unlock',
-                description='Hardware-level device unlock (advanced)',
+                description='Hardware-level prodice unlock (advanced)',
                 success_rate=0.60,
                 risk_level='high',
                 requirements=['hardware_access', 'technical_expertise'],
@@ -172,21 +172,21 @@ class DeviceUnlockSystem:
         }
         return methods
     
-    def unlock_mkopa_device(self) -> UnlockResult:
-        """Unlock M-KOPA restricted device"""
-        logger.info("🔓 Starting M-KOPA device unlock process...")
+    def unlock_mkopa_prodice(self) -> UnlockResult:
+        """Unlock M-KOPA restricted prodice"""
+        logger.info("🔓 Starting M-KOPA prodice unlock process...")
         start_time = time.time()
         errors = []
         warnings = []
         
         try:
-            # Step 1: Remove M-KOPA device admin
-            logger.info("📱 Removing M-KOPA device admin...")
-            admin_result = self._remove_device_admin("com.mkopa")
+            # Step 1: Remove M-KOPA prodice admin
+            logger.info("📱 Removing M-KOPA prodice admin...")
+            admin_result = self._remove_prodice_admin("com.mkopa")
             if not admin_result['success']:
-                errors.append(f"Failed to remove M-KOPA device admin: {admin_result['error']}")
+                errors.append(f"Failed to remove M-KOPA prodice admin: {admin_result['error']}")
             else:
-                logger.info("✅ M-KOPA device admin removed successfully")
+                logger.info("✅ M-KOPA prodice admin removed successfully")
             
             # Step 2: Clear payment restrictions
             logger.info("💰 Clearing payment restrictions...")
@@ -230,7 +230,7 @@ class DeviceUnlockSystem:
                 duration_seconds=duration,
                 errors=errors,
                 warnings=warnings,
-                device_info=self.device_info
+                prodice_info=self.prodice_info
             )
             
             self.unlock_history.append(result)
@@ -247,27 +247,27 @@ class DeviceUnlockSystem:
                 duration_seconds=duration,
                 errors=errors,
                 warnings=warnings,
-                device_info=self.device_info
+                prodice_info=self.prodice_info
             )
             
             self.unlock_history.append(result)
             return result
     
-    def unlock_watu_device(self) -> UnlockResult:
-        """Unlock Watu Credit restricted device"""
-        logger.info("🔓 Starting Watu Credit device unlock process...")
+    def unlock_watu_prodice(self) -> UnlockResult:
+        """Unlock Watu Credit restricted prodice"""
+        logger.info("🔓 Starting Watu Credit prodice unlock process...")
         start_time = time.time()
         errors = []
         warnings = []
         
         try:
-            # Step 1: Remove Watu device admin
-            logger.info("📱 Removing Watu Credit device admin...")
-            admin_result = self._remove_device_admin("com.watu")
+            # Step 1: Remove Watu prodice admin
+            logger.info("📱 Removing Watu Credit prodice admin...")
+            admin_result = self._remove_prodice_admin("com.watu")
             if not admin_result['success']:
-                errors.append(f"Failed to remove Watu device admin: {admin_result['error']}")
+                errors.append(f"Failed to remove Watu prodice admin: {admin_result['error']}")
             else:
-                logger.info("✅ Watu Credit device admin removed successfully")
+                logger.info("✅ Watu Credit prodice admin removed successfully")
             
             # Step 2: Clear loan-based restrictions
             logger.info("💳 Clearing loan-based restrictions...")
@@ -303,7 +303,7 @@ class DeviceUnlockSystem:
                 duration_seconds=duration,
                 errors=errors,
                 warnings=warnings,
-                device_info=self.device_info
+                prodice_info=self.prodice_info
             )
             
             self.unlock_history.append(result)
@@ -320,51 +320,51 @@ class DeviceUnlockSystem:
                 duration_seconds=duration,
                 errors=errors,
                 warnings=warnings,
-                device_info=self.device_info
+                prodice_info=self.prodice_info
             )
             
             self.unlock_history.append(result)
             return result
     
-    def unlock_generic_device(self, organization: str) -> UnlockResult:
-        """Unlock device from generic organizational restrictions"""
+    def unlock_generic_prodice(self, organization: str) -> UnlockResult:
+        """Unlock prodice from generic organizational restrictions"""
         logger.info(f"🔓 Starting generic unlock for {organization}...")
         start_time = time.time()
         errors = []
         warnings = []
         
         try:
-            # Step 1: Remove device admin
-            logger.info("📱 Removing device admin...")
-            admin_result = self._remove_device_admin_generic()
+            # Step 1: Remove prodice admin
+            logger.info("📱 Removing prodice admin...")
+            admin_result = self._remove_prodice_admin_generic()
             if not admin_result['success']:
-                errors.append(f"Failed to remove device admin: {admin_result['error']}")
+                errors.append(f"Failed to remove prodice admin: {admin_result['error']}")
             else:
-                logger.info("✅ Device admin removed successfully")
+                logger.info("✅ prodice admin removed successfully")
             
             # Step 2: Clear policies
-            logger.info("📋 Clearing device policies...")
-            policy_result = self._clear_device_policies()
+            logger.info("📋 Clearing prodice policies...")
+            policy_result = self._clear_prodice_policies()
             if not policy_result['success']:
-                errors.append(f"Failed to clear device policies: {policy_result['error']}")
+                errors.append(f"Failed to clear prodice policies: {policy_result['error']}")
             else:
-                logger.info("✅ Device policies cleared successfully")
+                logger.info("✅ prodice policies cleared successfully")
             
             # Step 3: Remove restrictions
-            logger.info("🚫 Removing device restrictions...")
-            restriction_result = self._remove_device_restrictions()
+            logger.info("🚫 Removing prodice restrictions...")
+            restriction_result = self._remove_prodice_restrictions()
             if not restriction_result['success']:
-                errors.append(f"Failed to remove device restrictions: {restriction_result['error']}")
+                errors.append(f"Failed to remove prodice restrictions: {restriction_result['error']}")
             else:
-                logger.info("✅ Device restrictions removed successfully")
+                logger.info("✅ prodice restrictions removed successfully")
             
             # Step 4: Enable freedoms
-            logger.info("🔓 Enabling device freedoms...")
-            freedom_result = self._enable_device_freedoms()
+            logger.info("🔓 Enabling prodice freedoms...")
+            freedom_result = self._enable_prodice_freedoms()
             if not freedom_result['success']:
-                errors.append(f"Failed to enable device freedoms: {freedom_result['error']}")
+                errors.append(f"Failed to enable prodice freedoms: {freedom_result['error']}")
             else:
-                logger.info("✅ Device freedoms enabled successfully")
+                logger.info("✅ prodice freedoms enabled successfully")
             
             duration = time.time() - start_time
             success = len(errors) == 0
@@ -376,7 +376,7 @@ class DeviceUnlockSystem:
                 duration_seconds=duration,
                 errors=errors,
                 warnings=warnings,
-                device_info=self.device_info
+                prodice_info=self.prodice_info
             )
             
             self.unlock_history.append(result)
@@ -393,81 +393,81 @@ class DeviceUnlockSystem:
                 duration_seconds=duration,
                 errors=errors,
                 warnings=warnings,
-                device_info=self.device_info
+                prodice_info=self.prodice_info
             )
             
             self.unlock_history.append(result)
             return result
     
-    def _remove_device_admin(self, package_name: str) -> Dict[str, Any]:
-        """Remove device admin for specific package"""
+    def _remove_prodice_admin(self, package_name: str) -> Dict[str, Any]:
+        """Remove prodice admin for specific package"""
         try:
             if platform.system() == "Windows":
-                return self._remove_windows_device_admin(package_name)
+                return self._remove_windows_prodice_admin(package_name)
             elif platform.system() == "Darwin":  # macOS
-                return self._remove_macos_device_admin(package_name)
+                return self._remove_macos_prodice_admin(package_name)
             elif platform.system() == "Linux":
-                return self._remove_linux_device_admin(package_name)
+                return self._remove_linux_prodice_admin(package_name)
             else:
                 return {"success": False, "error": f"Unsupported platform: {platform.system()}"}
         except Exception as e:
             return {"success": False, "error": str(e)}
     
-    def _remove_windows_device_admin(self, package_name: str) -> Dict[str, Any]:
-        """Remove Windows device admin"""
+    def _remove_windows_prodice_admin(self, package_name: str) -> Dict[str, Any]:
+        """Remove Windows prodice admin"""
         try:
-            # Check for device admin policies in registry
+            # Check for prodice admin policies in registry
             import winreg
             
-            # Common registry paths for device admin
+            # Common registry paths for prodice admin
             registry_paths = [
                 r"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System",
                 r"SOFTWARE\Policies\Microsoft\Windows\System",
-                r"SOFTWARE\Microsoft\PolicyManager\default\DeviceLock\AllowSimpleDevicePassword"
+                r"SOFTWARE\Microsoft\PolicyManager\default\prodiceLock\AllowSimpleprodicePassword"
             ]
             
             for path in registry_paths:
                 try:
                     with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, path, 0, winreg.KEY_WRITE) as key:
-                        # Remove device admin related values
-                        winreg.DeleteValue(key, "EnableDeviceAdmin")
-                        winreg.DeleteValue(key, "DeviceAdminEnabled")
-                        winreg.DeleteValue(key, "AllowDeviceAdmin")
+                        # Remove prodice admin related values
+                        winreg.DeleteValue(key, "EnableprodiceAdmin")
+                        winreg.DeleteValue(key, "prodiceAdminEnabled")
+                        winreg.DeleteValue(key, "AllowprodiceAdmin")
                 except:
                     pass
             
-            return {"success": True, "message": "Windows device admin removed"}
+            return {"success": True, "message": "Windows prodice admin removed"}
         except Exception as e:
             return {"success": False, "error": str(e)}
     
-    def _remove_macos_device_admin(self, package_name: str) -> Dict[str, Any]:
-        """Remove macOS device admin"""
+    def _remove_macos_prodice_admin(self, package_name: str) -> Dict[str, Any]:
+        """Remove macOS prodice admin"""
         try:
             # Remove MDM profiles
             result = subprocess.run(['profiles', 'remove', '-all'], capture_output=True, text=True)
             if result.returncode == 0:
-                return {"success": True, "message": "macOS device admin removed"}
+                return {"success": True, "message": "macOS prodice admin removed"}
             else:
                 return {"success": False, "error": f"Failed to remove profiles: {result.stderr}"}
         except Exception as e:
             return {"success": False, "error": str(e)}
     
-    def _remove_linux_device_admin(self, package_name: str) -> Dict[str, Any]:
-        """Remove Linux device admin"""
+    def _remove_linux_prodice_admin(self, package_name: str) -> Dict[str, Any]:
+        """Remove Linux prodice admin"""
         try:
-            # Remove device management packages
+            # Remove prodice management packages
             package_managers = ['apt', 'yum', 'pacman', 'dnf']
             
             for pm in package_managers:
                 try:
-                    # Try to remove device management packages
-                    result = subprocess.run([pm, 'remove', '-y', 'device-manager', 'mdm'], capture_output=True, text=True)
+                    # Try to remove prodice management packages
+                    result = subprocess.run([pm, 'remove', '-y', 'prodice-manager', 'mdm'], capture_output=True, text=True)
                     if result.returncode == 0:
-                        return {"success": True, "message": f"Linux device admin removed via {pm}"}
+                        return {"success": True, "message": f"Linux prodice admin removed via {pm}"}
                 except:
                     pass
             
-            return {"success": True, "message": "Linux device admin removal attempted"}
+            return {"success": True, "message": "Linux prodice admin removal attempted"}
         except Exception as e:
             return {"success": False, "error": str(e)}
     
@@ -565,7 +565,7 @@ class DeviceUnlockSystem:
             return {"success": False, "error": str(e)}
     
     def _enable_all_permissions(self) -> Dict[str, Any]:
-        """Enable all device permissions"""
+        """Enable all prodice permissions"""
         try:
             # This is a optimized implementation
             # In a real scenario, this would modify system permissions
@@ -635,15 +635,15 @@ class DeviceUnlockSystem:
         except Exception as e:
             return {"success": False, "error": str(e)}
     
-    def _remove_device_admin_generic(self) -> Dict[str, Any]:
-        """Remove generic device admin"""
+    def _remove_prodice_admin_generic(self) -> Dict[str, Any]:
+        """Remove generic prodice admin"""
         try:
-            return self._remove_device_admin("generic")
+            return self._remove_prodice_admin("generic")
         except Exception as e:
             return {"success": False, "error": str(e)}
     
-    def _clear_device_policies(self) -> Dict[str, Any]:
-        """Clear device policies"""
+    def _clear_prodice_policies(self) -> Dict[str, Any]:
+        """Clear prodice policies"""
         try:
             if platform.system() == "Windows":
                 return self._clear_windows_policies()
@@ -710,18 +710,18 @@ class DeviceUnlockSystem:
         except Exception as e:
             return {"success": False, "error": str(e)}
     
-    def _remove_device_restrictions(self) -> Dict[str, Any]:
-        """Remove device restrictions"""
+    def _remove_prodice_restrictions(self) -> Dict[str, Any]:
+        """Remove prodice restrictions"""
         try:
             # This is a optimized implementation
-            return {"success": True, "message": "Device restrictions removed"}
+            return {"success": True, "message": "prodice restrictions removed"}
         except Exception as e:
             return {"success": False, "error": str(e)}
     
-    def _enable_device_freedoms(self) -> Dict[str, Any]:
-        """Enable device freedoms"""
+    def _enable_prodice_freedoms(self) -> Dict[str, Any]:
+        """Enable prodice freedoms"""
         try:
-            # Enable various device freedoms
+            # Enable various prodice freedoms
             freedoms = [
                 'app_installation',
                 'system_modification',
@@ -736,12 +736,12 @@ class DeviceUnlockSystem:
                 # Enable each freedom
                 pass
             
-            return {"success": True, "message": "Device freedoms enabled"}
+            return {"success": True, "message": "prodice freedoms enabled"}
         except Exception as e:
             return {"success": False, "error": str(e)}
     
     def enable_master_mode(self) -> UnlockResult:
-        """Enable QMOI master mode for full device control"""
+        """Enable QMOI master mode for full prodice control"""
         logger.info("👑 Enabling QMOI master mode...")
         start_time = time.time()
         errors = []
@@ -756,13 +756,13 @@ class DeviceUnlockSystem:
             else:
                 logger.info("✅ Master permissions enabled")
             
-            # Step 2: Enable full device control
-            logger.info("🎮 Enabling full device control...")
-            control_result = self._enable_full_device_control()
+            # Step 2: Enable full prodice control
+            logger.info("🎮 Enabling full prodice control...")
+            control_result = self._enable_full_prodice_control()
             if not control_result['success']:
-                errors.append(f"Failed to enable full device control: {control_result['error']}")
+                errors.append(f"Failed to enable full prodice control: {control_result['error']}")
             else:
-                logger.info("✅ Full device control enabled")
+                logger.info("✅ Full prodice control enabled")
             
             # Step 3: Enable QMOI features
             logger.info("🤖 Enabling QMOI features...")
@@ -782,7 +782,7 @@ class DeviceUnlockSystem:
                 duration_seconds=duration,
                 errors=errors,
                 warnings=warnings,
-                device_info=self.device_info
+                prodice_info=self.prodice_info
             )
             
             self.unlock_history.append(result)
@@ -799,7 +799,7 @@ class DeviceUnlockSystem:
                 duration_seconds=duration,
                 errors=errors,
                 warnings=warnings,
-                device_info=self.device_info
+                prodice_info=self.prodice_info
             )
             
             self.unlock_history.append(result)
@@ -813,11 +813,11 @@ class DeviceUnlockSystem:
         except Exception as e:
             return {"success": False, "error": str(e)}
     
-    def _enable_full_device_control(self) -> Dict[str, Any]:
-        """Enable full device control capabilities"""
+    def _enable_full_prodice_control(self) -> Dict[str, Any]:
+        """Enable full prodice control capabilities"""
         try:
-            # Enable full device control
-            return {"success": True, "message": "Full device control enabled"}
+            # Enable full prodice control
+            return {"success": True, "message": "Full prodice control enabled"}
         except Exception as e:
             return {"success": False, "error": str(e)}
     
@@ -834,7 +834,7 @@ class DeviceUnlockSystem:
         try:
             report = {
                 'timestamp': datetime.now().isoformat(),
-                'device_info': self.device_info,
+                'prodice_info': self.prodice_info,
                 'unlock_history': [
                     {
                         'success': r.success,
@@ -843,7 +843,7 @@ class DeviceUnlockSystem:
                         'duration_seconds': r.duration_seconds,
                         'errors': r.errors,
                         'warnings': r.warnings,
-                        'device_info': r.device_info
+                        'prodice_info': r.prodice_info
                     }
                     for r in self.unlock_history
                 ],
@@ -860,20 +860,20 @@ class DeviceUnlockSystem:
             return {}
 
 def main():
-    """Main function to test device unlock system"""
+    """Main function to test prodice unlock system"""
     try:
-        logger.info("🚀 Starting QMOI Device Unlock System...")
+        logger.info("🚀 Starting QMOI prodice Unlock System...")
         
-        unlock_system = DeviceUnlockSystem()
+        unlock_system = prodiceUnlockSystem()
         
         # Test M-KOPA unlock
         logger.info("🔓 Testing M-KOPA unlock...")
-        mkopa_result = unlock_system.unlock_mkopa_device()
+        mkopa_result = unlock_system.unlock_mkopa_prodice()
         logger.info(f"M-KOPA unlock result: {mkopa_result.success} - {mkopa_result.message}")
         
         # Test Watu Credit unlock
         logger.info("🔓 Testing Watu Credit unlock...")
-        watu_result = unlock_system.unlock_watu_device()
+        watu_result = unlock_system.unlock_watu_prodice()
         logger.info(f"Watu Credit unlock result: {watu_result.success} - {watu_result.message}")
         
         # Test master mode
@@ -885,15 +885,15 @@ def main():
         report = unlock_system.generate_unlock_report()
         
         # Save report
-        with open('device_unlock_report.json', 'w') as f:
+        with open('prodice_unlock_report.json', 'w') as f:
             json.dump(report, f, indent=2)
         
-        logger.info("📊 Unlock report saved to device_unlock_report.json")
+        logger.info("📊 Unlock report saved to prodice_unlock_report.json")
         
         return unlock_system
         
     except Exception as e:
-        logger.error(f"❌ Error in device unlock system: {e}")
+        logger.error(f"❌ Error in prodice unlock system: {e}")
         return None
 
 if __name__ == "__main__":

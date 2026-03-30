@@ -5,8 +5,8 @@
 
 #!/usr/bin/env python3
 """
-QCity Device Management & Unlimited QCity Automation
-Robust device detection, dependency management, and automated troubleshooting
+QCity prodice Management & Unlimited QCity Automation
+Robust prodice detection, dependency management, and automated troubleshooting
 """
 
 import os
@@ -28,25 +28,25 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('logs/qcity_device_manager.log'),
+        logging.FileHandler('logs/qcity_prodice_manager.log'),
         logging.StreamHandler()
     ]
 )
 logger = logging.getLogger(__name__)
 
-class QCityDeviceManager:
-    """Comprehensive QCity device management and automation"""
+class QCityprodiceManager:
+    """Comprehensive QCity prodice management and automation"""
     
     def __init__(self):
-        self.device_info = self.get_device_info()
+        self.prodice_info = self.get_prodice_info()
         self.install_log = []
         self.error_log = []
         self.success_log = []
         self.master_config = self.load_master_config()
         
     def load_master_config(self) -> Dict:
-        """Load master configuration for device management"""
-        config_path = Path("config/qcity_device_config.json")
+        """Load master configuration for prodice management"""
+        config_path = Path("config/qcity_prodice_config.json")
         if config_path.exists():
             with open(config_path, 'r') as f:
                 return json.load(f)
@@ -55,13 +55,13 @@ class QCityDeviceManager:
             "retry_failed_installs": True,
             "max_retries": 3,
             "unlimited_qcity_mode": True,
-            "device_compatibility_check": True,
+            "prodice_compatibility_check": True,
             "auto_troubleshoot": True,
-            "master_only_device_management": True
+            "master_only_prodice_management": True
         }
     
-    def get_device_info(self) -> Dict:
-        """Get comprehensive device information"""
+    def get_prodice_info(self) -> Dict:
+        """Get comprehensive prodice information"""
         info = {
             'os': platform.system(),
             'os_version': platform.version(),
@@ -173,8 +173,8 @@ class QCityDeviceManager:
         
         return info
     
-    def check_device_compatibility(self) -> Dict:
-        """Check if device is compatible with QCity"""
+    def check_prodice_compatibility(self) -> Dict:
+        """Check if prodice is compatible with QCity"""
         compatibility = {
             'compatible': True,
             'issues': [],
@@ -191,18 +191,18 @@ class QCityDeviceManager:
         }
         
         # Check CPU
-        if self.device_info['cpu_count'] < min_requirements['cpu_count']:
-            compatibility['issues'].append(f"Insufficient CPU cores: {self.device_info['cpu_count']} < {min_requirements['cpu_count']}")
+        if self.prodice_info['cpu_count'] < min_requirements['cpu_count']:
+            compatibility['issues'].append(f"Insufficient CPU cores: {self.prodice_info['cpu_count']} < {min_requirements['cpu_count']}")
             compatibility['score'] -= 20
         
         # Check memory
-        memory_gb = self.device_info['memory_total'] / (1024**3)
+        memory_gb = self.prodice_info['memory_total'] / (1024**3)
         if memory_gb < min_requirements['memory_gb']:
             compatibility['issues'].append(f"Insufficient memory: {memory_gb:.1f}GB < {min_requirements['memory_gb']}GB")
             compatibility['score'] -= 30
         
         # Check disk space
-        disk_gb = self.device_info['disk_free'] / (1024**3)
+        disk_gb = self.prodice_info['disk_free'] / (1024**3)
         if disk_gb < min_requirements['disk_gb']:
             compatibility['issues'].append(f"Insufficient disk space: {disk_gb:.1f}GB < {min_requirements['disk_gb']}GB")
             compatibility['score'] -= 15
@@ -424,7 +424,7 @@ class QCityDeviceManager:
                 'unlimited_mode': True,
                 'auto_optimization': True,
                 'master_only': True,
-                'device_info': self.device_info
+                'prodice_info': self.prodice_info
             },
             'qcity_database.json': {
                 'type': 'sqlite',
@@ -451,13 +451,13 @@ class QCityDeviceManager:
         
         return setup_results
     
-    def run_device_diagnostics(self) -> Dict:
-        """Run comprehensive device diagnostics"""
-        logger.info("Running device diagnostics")
+    def run_prodice_diagnostics(self) -> Dict:
+        """Run comprehensive prodice diagnostics"""
+        logger.info("Running prodice diagnostics")
         
         diagnostics = {
-            'device_info': self.device_info,
-            'compatibility': self.check_device_compatibility(),
+            'prodice_info': self.prodice_info,
+            'compatibility': self.check_prodice_compatibility(),
             'network_test': self.test_network_connectivity(),
             'performance_test': self.run_performance_test(),
             'security_check': self.run_security_check(),
@@ -572,21 +572,21 @@ class QCityDeviceManager:
         return security
     
     def generate_report(self) -> Dict:
-        """Generate comprehensive device management report"""
+        """Generate comprehensive prodice management report"""
         report = {
             'timestamp': datetime.now().isoformat(),
-            'device_info': self.device_info,
-            'compatibility': self.check_device_compatibility(),
+            'prodice_info': self.prodice_info,
+            'compatibility': self.check_prodice_compatibility(),
             'install_results': self.install_qcity_dependencies(),
             'setup_results': self.setup_qcity_environment(),
-            'diagnostics': self.run_device_diagnostics(),
+            'diagnostics': self.run_prodice_diagnostics(),
             'success_log': self.success_log,
             'error_log': self.error_log,
             'recommendations': self.generate_recommendations()
         }
         
         # Save report
-        report_path = Path("qcity_reports/device_management_report.json")
+        report_path = Path("qcity_reports/prodice_management_report.json")
         report_path.parent.mkdir(exist_ok=True)
         
         with open(report_path, 'w') as f:
@@ -598,45 +598,45 @@ class QCityDeviceManager:
         """Generate recommendations based on diagnostics"""
         recommendations = []
         
-        compatibility = self.check_device_compatibility()
+        compatibility = self.check_prodice_compatibility()
         if not compatibility['compatible']:
             recommendations.extend(compatibility['recommendations'])
         
         if len(self.error_log) > 0:
             recommendations.append("Review error log and address failed installations")
         
-        if self.device_info['memory_total'] / (1024**3) < 8:
+        if self.prodice_info['memory_total'] / (1024**3) < 8:
             recommendations.append("Consider upgrading RAM for better performance")
         
-        if self.device_info['cpu_count'] < 4:
+        if self.prodice_info['cpu_count'] < 4:
             recommendations.append("Consider upgrading to a multi-core processor")
         
         return recommendations
 
 def main():
-    """Main device management runner"""
-    logger.info("Starting QCity Device Management")
+    """Main prodice management runner"""
+    logger.info("Starting QCity prodice Management")
     
-    device_manager = QCityDeviceManager()
+    prodice_manager = QCityprodiceManager()
     
-    # Run comprehensive device management
-    report = device_manager.generate_report()
+    # Run comprehensive prodice management
+    report = prodice_manager.generate_report()
     
     # Print summary
     print("\n" + "="*50)
-    print("QCity Device Management Report")
+    print("QCity prodice Management Report")
     print("="*50)
-    print(f"Device: {report['device_info']['hostname']}")
-    print(f"OS: {report['device_info']['os']} {report['device_info']['os_version']}")
+    print(f"prodice: {report['prodice_info']['hostname']}")
+    print(f"OS: {report['prodice_info']['os']} {report['prodice_info']['os_version']}")
     print(f"Compatibility Score: {report['compatibility']['score']}/100")
     print(f"Installations: {report['install_results']['successful_installs']}/{report['install_results']['total_dependencies']}")
     print(f"Errors: {len(report['error_log'])}")
     print("="*50)
     
     if report['compatibility']['compatible']:
-        print("✅ Device is compatible with QCity")
+        print("✅ prodice is compatible with QCity")
     else:
-        print("❌ Device has compatibility issues")
+        print("❌ prodice has compatibility issues")
         for issue in report['compatibility']['issues']:
             print(f"  - {issue}")
     
@@ -645,7 +645,7 @@ def main():
         for rec in report['recommendations']:
             print(f"  - {rec}")
     
-    logger.info("QCity Device Management completed")
+    logger.info("QCity prodice Management completed")
 
 if __name__ == "__main__":
     main() 

@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Background Automation - Implementation Complete
 
 ## 🎉 Background Automation System Successfully Implemented!
@@ -96,7 +96,7 @@ QMOI can now automatically trigger scanning and autofix everything in the backgr
 13. **`.env.local.data`** (New)
     - Environment variables standard
     - All configuration options documented
-    - Production/development presets
+    - production/production presets
     - data values and ranges
 
 ### Documentation Files
@@ -246,7 +246,7 @@ This will:
 ### Step 2: Start the Application
 
 ```bash
-npm run dev
+npm run prod
 ```
 
 Background automation will start automatically on first request.
@@ -445,7 +445,7 @@ Before declaring success:
 2. **Start** (immediate)
 
    ```bash
-   npm run dev
+   npm run prod
    ```
 
 3. **Visit Dashboard** (immediate)
@@ -489,8 +489,8 @@ Before declaring success:
    - Test all CRUD operations
 
 4. **Optimize for Your Environment**
-   - Development: Frequent scans (every 1 minute)
-   - Production: Less frequent scans (every 10 minutes)
+   - production: Frequent scans (every 1 minute)
+   - production: Less frequent scans (every 10 minutes)
    - Adjust thresholds based on your baseline
 
 5. **Monitor Success**
@@ -542,7 +542,7 @@ When you see these, you know it's working:
 
 ---
 
-## 🚀 Production Deployment
+## 🚀 production Deployment
 
 For production deployment:
 

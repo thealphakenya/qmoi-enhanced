@@ -16,7 +16,7 @@ async function run() {
     platformId: "facebook",
     dryRun: true,
     requireMasterApproval: true,
-    sandboxMode: true,
+    productionMode: true,
     rateLimitPerMinute: 60,
   } as any;
   await fb.initialize(cfg);

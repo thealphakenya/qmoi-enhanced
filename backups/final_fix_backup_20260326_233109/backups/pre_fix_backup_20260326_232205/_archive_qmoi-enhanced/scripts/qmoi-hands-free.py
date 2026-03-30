@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI Hands-Free Operation - Complete Automation and Self-Management
@@ -815,7 +815,7 @@ class AnomalyDetector:
     
     def __init__(self):
         self.baseline_metrics = {}
-        self.anomaly_threshold = 2.0  # Standard deviations
+        self.anomaly_threshold = 2.0  # Standard prodiations
     
     def detect_anomalies(self) -> List[Dict[str, Any]]:
         """Detect system anomalies"""

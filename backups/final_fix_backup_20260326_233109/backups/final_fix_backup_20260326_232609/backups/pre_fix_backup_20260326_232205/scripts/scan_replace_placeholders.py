@@ -4,12 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# // Production implementation:
+# // production implementation:
 """
 scan_replace_placeholders.py
 
 Scans the repository for common implementation tokens and optionally replaces them with safe defaults or inserts DONE markers.
-Produces a JSON report at docs/placeholders_report.json with locations and a summary.
+produces a JSON report at docs/placeholders_report.json with locations and a summary.
 
 Usage:
   python3 scripts/scan_replace_placeholders.py            # run scan (no replacements)

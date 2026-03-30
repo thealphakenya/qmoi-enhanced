@@ -14,7 +14,7 @@ ICON_PATH = os.path.join(ROOT_DIR, "icon.ico")
 README_PATH = os.path.join(ROOT_DIR, "README.md")
 WATCHDEBUG_PATH = os.path.join(ROOT_DIR, "package-watchdebug.json")
 
-DEVICES = {
+prodICES = {
     "windows": "qmoi_ai.exe",
     "android": "qmoi ai.apk",
     "linux": "qmoi_ai.AppImage",
@@ -27,8 +27,8 @@ DEVICES = {
 }
 
 def ensure_directories():
-    for device in DEVICES:
-        os.makedirs(os.path.join(OUTPUT_BASE, device), exist_ok=True)
+    for prodice in prodICES:
+        os.makedirs(os.path.join(OUTPUT_BASE, prodice), exist_ok=True)
     if not os.path.exists(ICON_PATH):
         from PIL import Image, ImageDraw
         icon = Image.new("RGBA", (256, 256), (0, 102, 204, 255))
@@ -46,7 +46,7 @@ def build_android():
     os.chdir(os.path.join(ROOT_DIR, "android"))
     subprocess.call("./gradlew assembleRelease", shell=True)
     apk_source = os.path.join(ROOT_DIR, "android", "app", "build", "outputs", "apk", "release", "app-release.apk")
-    apk_target = os.path.join(OUTPUT_BASE, "android", DEVICES["android"])
+    apk_target = os.path.join(OUTPUT_BASE, "android", prodICES["android"])
     if os.path.exists(apk_source):
         shutil.copy(apk_source, apk_target)
         print("✅ Android APK copied.")
@@ -54,11 +54,11 @@ def build_android():
         print("❌ Android APK build failed")
 
 def install_android():
-    apk_path = os.path.join(OUTPUT_BASE, "android", DEVICES["android"])
+    apk_path = os.path.join(OUTPUT_BASE, "android", prodICES["android"])
     if os.path.exists(apk_path):
         subprocess.call("adb kill-server && adb start-server", shell=True)
         time.sleep(2)
-        subprocess.call("adb wait-for-device", shell=True)
+        subprocess.call("adb wait-for-prodice", shell=True)
         subprocess.call(f"adb install -r \"{apk_path}\"", shell=True)
         subprocess.call("adb shell monkey -p com.qmoi.ai -v 1", shell=True)
         print("✅ Android App installed and launched.")
@@ -66,21 +66,21 @@ def install_android():
         print("❌ APK not found for installation")
 
 def build_fallbacks():
-    for device in DEVICES:
-        if device in ("windows", "android"):
+    for prodice in prodICES:
+        if prodice in ("windows", "android"):
             continue
-        path = os.path.join(OUTPUT_BASE, device, DEVICES[device])
+        path = os.path.join(OUTPUT_BASE, prodice, prodICES[prodice])
         with open(path, 'w') as f:
-            f.write(f"// Production implementation required: {device} build for QMOI AI")
-        print(f"📦 {device.capitalize()} // Production implementation required: created.")
+            f.write(f"// production implementation required: {prodice} build for QMOI AI")
+        print(f"📦 {prodice.capitalize()} // production implementation required: created.")
 
 def update_readme():
     status = f"## QMOI AI Build Status ({datetime.now().strftime('%Y-%m-%d %H:%M')})\n"
-    for device, filename in DEVICES.items():
-        path = os.path.join("Qmoi_apps", device, filename)
+    for prodice, filename in prodICES.items():
+        path = os.path.join("Qmoi_apps", prodice, filename)
         exists = os.path.exists(os.path.join(ROOT_DIR, path))
         icon = "✅" if exists else "❌"
-        status += f"- **{device.capitalize()}**: {icon} `{filename}` → `{path}`\n"
+        status += f"- **{prodice.capitalize()}**: {icon} `{filename}` → `{path}`\n"
     if os.path.exists(README_PATH):
         with open(README_PATH, "r+", encoding="utf-8") as f:
             lines = f.readlines()

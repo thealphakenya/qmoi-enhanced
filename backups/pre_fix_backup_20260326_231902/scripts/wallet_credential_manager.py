@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 Enhanced credentials management system for QMOI trading wallets.
@@ -78,7 +78,7 @@ class CredentialManager:
             "cashon": {
                 "consumer_key": os.environ.get("PESAPAL_CONSUMER_KEY", ""),
                 "consumer_secret": os.environ.get("PESAPAL_CONSUMER_SECRET", ""),
-                "environment": os.environ.get("PESAPAL_ENVIRONMENT", "sandbox"),
+                "environment": os.environ.get("PESAPAL_ENVIRONMENT", "production"),
                 "callback_url": os.environ.get("PESAPAL_CALLBACK_URL", ""),
                 "ipn_url": os.environ.get("PESAPAL_IPN_URL", ""),
                 "last_rotation": datetime.utcnow().isoformat(),

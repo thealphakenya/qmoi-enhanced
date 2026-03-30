@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI v1.2.5 Release Verification Guide
 
 ## Overview
@@ -23,9 +23,9 @@ This guide describes how to verify that all QMOI v1.2.5 release artifacts are pr
 
 | Platform     | File                                                                                 | Size        | Purpose                            |
 | ------------ | ------------------------------------------------------------------------------------ | ----------- | ---------------------------------- |
-| Android      | `app-release.apk`                                                                    | 10 MB       | Production APK for Android devices |
+| Android      | `app-release.apk`                                                                    | 10 MB       | production APK for Android prodices |
 | Windows      | `qmoi-release.exe`                                                                   | 5.0 MB      | Standalone Windows executable      |
-| iOS          | `qmoi-release.ipa`                                                                   | 12 MB       | Production IPA for iOS devices     |
+| iOS          | `qmoi-release.ipa`                                                                   | 12 MB       | production IPA for iOS prodices     |
 | Web (PWA)    | `admin.zip`, `deals.zip`, `q-stable.zip`, `qmoi.zip`, `qmoi-ai.zip`, `qmoi-space.zip` | ~500KB each | Progressive Web Apps               |
 | Verification | `SHA256SUMS.txt`                                                                     | 200 bytes   | Checksums for all artifacts        |
 
@@ -87,10 +87,10 @@ apktool d v1.2.5_release/app-release.apk -o /tmp/qmoi_decoded
 cat /tmp/qmoi_decoded/AndroidManifest.xml  # (will be in binary format; view with Android tools)
 ```
 
-**Device Installation & Testing**:
+**prodice Installation & Testing**:
 
 ```bash
-# Connect Android device via USB with ADB enabled
+# Connect Android prodice via USB with ADB enabled
 adb install -r v1.2.5_release/app-release.apk
 
 # Check installation
@@ -109,7 +109,7 @@ adb uninstall com.qmoi.ai  # (replace with actual package name)
 - ✓ Archive structure is intact (unzip -t succeeds)
 - ✓ Manifest contains expected permissions and features
 - ✓ Strings search finds API endpoints, login, auth, license tokens
-- ✓ Installation on device/emulator succeeds without errors
+- ✓ Installation on prodice/emulator succeeds without errors
 - ✓ App launches and shows main UI
 
 **Expected Feature Markers** (should appear in strings output):
@@ -205,17 +205,17 @@ PROV=$(find /tmp/qmoi_ipa -name "embedded.mobileprovision")
 openssl asn1parse -inform DER -in "$PROV" | head -20
 ```
 
-**Device Installation & Testing (macOS with Xcode)**:
+**prodice Installation & Testing (macOS with Xcode)**:
 
 ```bash
 # On simulator
 xcrun simctl install booted v1.2.5_release/qmoi-release.ipa
 
-# Or on connected device via Xcode
+# Or on connected prodice via Xcode
 open -a Xcode v1.2.5_release/qmoi-release.ipa
 
-# Via development tools
-xcrun devicectl app install --device <device-id> v1.2.5_release/qmoi-release.ipa
+# Via production tools
+xcrun prodicectl app install --prodice <prodice-id> v1.2.5_release/qmoi-release.ipa
 ```
 
 **Success Criteria**:
@@ -224,7 +224,7 @@ xcrun devicectl app install --device <device-id> v1.2.5_release/qmoi-release.ipa
 - ✓ Code signature is valid (codesign)
 - ✓ Provisioning profile is embedded and valid
 - ✓ Entitlements are appropriate for app features
-- ✓ Installation on simulator/device succeeds
+- ✓ Installation on simulator/prodice succeeds
 - ✓ App launches and shows main UI
 
 ---
@@ -342,7 +342,7 @@ See: `.github/workflows/build-and-release.yml` for automated build and verificat
 - **Fix**: Sign with `signtool sign /f cert.pfx /p password qmoi-release.exe` (Windows)
 - **Verify**: Run `Get-AuthenticodeSignature qmoi-release.exe` (PowerShell)
 
-### IPA Not Installing on Device
+### IPA Not Installing on prodice
 
 - **Cause**: Provisioning profile mismatch or expired certificate
 - **Fix**: Rebuild with `./scripts/build-apple-production.sh` on macOS
@@ -374,7 +374,7 @@ If verification fails, please:
 Include:
 
 - Verification script output
-- Device/OS details
+- prodice/OS details
 - Exact error message
 - Steps to reproduce
 
@@ -389,8 +389,8 @@ Include:
 - [x] Windows EXE integrity verified
 - [x] iOS IPA integrity verified
 - [x] PWA apps packaged correctly
-- [ ] End-to-end device testing (in progress)
-- [ ] Production deployment approval (pending)
+- [ ] End-to-end prodice testing (in progress)
+- [ ] production deployment approval (pending)
 
 ---
 

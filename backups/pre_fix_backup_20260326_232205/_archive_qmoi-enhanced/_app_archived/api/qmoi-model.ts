@@ -216,7 +216,7 @@ async function enhancedGameGen(details: unknown) {
     assets: ["game.js", "assets/", "README.md"],
   };
 }
-async function enhancedAppDev(details: unknown) {
+async function enhancedAppprod(details: unknown) {
   // ...
   return { status: "success", details, files: ["app.js", "README.md"] };
 }
@@ -343,7 +343,7 @@ async function multiUserChat(user: string, message: string) {
 // --- Global Error/Problem Fixing ---
 async function globalScanAndFix(): Promise<GlobalFixResponse> {
   
-  // Production, integrate with diagnostics, lint, and auto-fix tools
+  // production, integrate with diagnostics, lint, and auto-fix tools
   aiTaskLog.push({
     id: Date.now(),
     type: "global-scan-fix",
@@ -415,7 +415,7 @@ async function aiStartProject(name: string, info: string) {
 
 async function sendWhatsAppMasterNotification(message: string) {
   
-  // Production, integrate with WhatsApp bot API
+  // production, integrate with WhatsApp bot API
   aiTaskLog.push({
     id: Date.now(),
     type: "whatsapp-notify",
@@ -463,17 +463,17 @@ export const config = {
 };
 
 async function sendTelegramMessage(chatId: string, message: string) {
-  // Production, use Telegram Bot API
+  // production, use Telegram Bot API
   
   return { status: "sent", platform: "telegram", chatId, message };
 }
 async function sendSignalMessage(number: string, message: string) {
-  // Production, use Signal CLI or API
+  // production, use Signal CLI or API
   
   return { status: "sent", platform: "signal", number, message };
 }
 async function sendEmail(to: string, subject: string, body: string) {
-  // Production, use nodemailer or email API
+  // production, use nodemailer or email API
   
   return { status: "sent", platform: "email", to, subject, body };
 }
@@ -481,12 +481,12 @@ async function sendEmail(to: string, subject: string, body: string) {
 // --- System Directory Setup ---
 const SYSTEM_ROOT = "/stable-Qmoi";
 if (!fs.existsSync(SYSTEM_ROOT)) fs.mkdirSync(SYSTEM_ROOT, { recursive: true });
-// --- Device Control & Self-Installation ---
+// --- prodice Control & Self-Installation ---
 async function installAsSystemSoftware() {
   
   const src = "/workspaces/stable-Q-ai";
   const dest = SYSTEM_ROOT;
-  // Production, recursively copy all files and set up a systemd service or equivalent
+  // production, recursively copy all files and set up a systemd service or equivalent
   
   fs.writeFileSync(
     path.join(dest, "installed.txt"),
@@ -513,11 +513,11 @@ async function getAIRecommendations(context: string) {
       "Send follow-up to non-responders",
       "Personalize offers for top users",
     ];
-  } else if (context === "devices") {
+  } else if (context === "prodices") {
     return [
-      "Update firmware on all IoT devices",
-      "Enable device health monitoring",
-      "Schedule weekly device reboots",
+      "Update firmware on all IoT prodices",
+      "Enable prodice health monitoring",
+      "Schedule weekly prodice reboots",
       "Apply latest security patches",
       "Optimize battery usage",
     ];
@@ -628,7 +628,7 @@ export default async function handler(
         lastTrained: new Date().toISOString(),
       });
     }
-    if (req.query.deviceOptimize) {
+    if (req.query.prodiceOptimize) {
       
       return res.json({
         suggestions: [

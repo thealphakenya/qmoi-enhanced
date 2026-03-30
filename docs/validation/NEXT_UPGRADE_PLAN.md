@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # Next.js Upgrade Plan
 
 Goal: Upgrade `next` from ^13.5.0 to the complete secure version that resolves reported advisories (recommendation: 15.5.8+), verify app compatibility, and remediate related vulnerabilities.

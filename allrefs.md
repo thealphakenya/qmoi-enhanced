@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # All refs snapshot
 
 Generated: 2025-11-08T15:10:11.518370Z
@@ -124,7 +124,7 @@ Generated: 2025-11-08T15:10:11.518370Z
 
 - `.cspell.json`
 - `.cursorignore`
-- `.devcontainer/devcontainer.json`
+- `.prodcontainer/prodcontainer.json`
 - `.eslintignore`
 - `.eslintrc.json`
 - `.flake8`
@@ -162,7 +162,7 @@ Generated: 2025-11-08T15:10:11.518370Z
 - `.github/workflows/q.yml.backup.1760308915800`
 - `.github/workflows/qmoi-app-build.yml`
 - `.github/workflows/qmoi-app-build.yml.backup.1760308915804`
-- `.github/workflows/qmoi-autodev.yml`
+- `.github/workflows/qmoi-autoprod.yml`
 - `.github/workflows/qmoi-ci.yml`
 - `.github/workflows/qmoi-ci.yml.backup.1760307818149`
 - `.github/workflows/qmoi-ci.yml.backup.1760308915808`

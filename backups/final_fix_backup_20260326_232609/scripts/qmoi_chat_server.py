@@ -301,7 +301,7 @@ class Handler(BaseHTTPRequestHandler):
             return 'your name' in s or "who are you" in s or "what's your name" in s or "what is your name" in s
 
         def mentions_project(s: str) -> bool:
-            return 'project' in s or 'work on' in s or 'build' in s or 'develop' in s
+            return 'project' in s or 'work on' in s or 'build' in s or 'prodelop' in s
 
         debug_mode = bool(self.headers.get('X-QMOI-DEBUG'))
 

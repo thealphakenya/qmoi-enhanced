@@ -9,9 +9,9 @@
 
 - Dry-run mode: reports counts and data lines, does not modify files.
 - Apply mode: updates only text files, skips generated/report folders, and makes conservative changes:
-  * Replace `TODO_PROD` with `TODO_PROD [PRODUCTION: review and implement]` in text files.
-  * Replace quoted defaults like 'TODO_PROD-key' or "TODO_PROD-key" with '<SET_VIA_ENV>'.
-  * Replace 'TODO_PROD-key' occurrences in JSON-like values with '<SET_VIA_ENV>'.
+  * Replace `TODO_prod` with `TODO_prod [production: review and implement]` in text files.
+  * Replace quoted defaults like 'TODO_prod-key' or "TODO_prod-key" with '<SET_VIA_ENV>'.
+  * Replace 'TODO_prod-key' occurrences in JSON-like values with '<SET_VIA_ENV>'.
 
 It writes a report to `tools/placeholder_fix_report.json` and backs up each modified file to `.bak`.
 """
@@ -25,9 +25,9 @@ from pathlib import Path
 SKIP_DIRS = {".git", "node_modules", "tools/.qmoi_validation", "tools/placeholder_scan.json", "tools", "reports", "docs", ".qmoi_validation", "_archive_qmoi-enhanced", "pwa_apps"}
 TEXT_EXT = {".md", ".txt", ".json", ".py", ".js", ".ts", ".tsx", ".jsx", ".html", ".sh", ".yml", ".yaml", ".env", ""}
 
-TODO_PAT = re.compile(r"TODO_PROD")
-KEY_QUOTED_PAT = re.compile(r"(['\"])TODO_PROD-key\1")
-KEY_PLAIN_PAT = re.compile(r"TODO_PROD-key")
+TODO_PAT = re.compile(r"TODO_prod")
+KEY_QUOTED_PAT = re.compile(r"(['\"])TODO_prod-key\1")
+KEY_PLAIN_PAT = re.compile(r"TODO_prod-key")
 
 report = {"modified": [], "dry_run_matches": [], "errors": []}
 
@@ -50,21 +50,21 @@ def process_file(path: Path, apply: bool):
         text = path.read_text(encoding="utf-8")
         original = text
         matches = []
-        # Replace quoted TODO_PROD-key -> '<SET_VIA_ENV>' keeping quotes
+        # Replace quoted TODO_prod-key -> '<SET_VIA_ENV>' keeping quotes
         def repl_key_quoted(m):
             q = m.group(1)
-            matches.append((path.as_posix(), 'TODO_PROD-key (quoted)', m.group(0)))
+            matches.append((path.as_posix(), 'TODO_prod-key (quoted)', m.group(0)))
             return q + '<SET_VIA_ENV>' + q
         text, n1 = KEY_QUOTED_PAT.subn(repl_key_quoted, text)
-        # Replace unquoted TODO_PROD-key
+        # Replace unquoted TODO_prod-key
         if n1 == 0:
             text, n2 = KEY_PLAIN_PAT.subn('<SET_VIA_ENV>', text)
             if n2:
-                matches.append((path.as_posix(), 'TODO_PROD-key (plain)', f'{n2} replacements'))
-        # Annotate TODO_PROD
+                matches.append((path.as_posix(), 'TODO_prod-key (plain)', f'{n2} replacements'))
+        # Annotate TODO_prod
         def repl_todo(m):
-            matches.append((path.as_posix(), 'TODO_PROD', m.group(0)))
-            return m.group(0) + ' [PRODUCTION: review and implement]'
+            matches.append((path.as_posix(), 'TODO_prod', m.group(0)))
+            return m.group(0) + ' [production: review and implement]'
         text, n3 = TODO_PAT.subn(repl_todo, text)
         if matches:
             report['dry_run_matches'].append({"file": path.as_posix(), "matches": matches})

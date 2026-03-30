@@ -1,4 +1,4 @@
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/usr/bin/env bash
 # vercel_deploy.sh
 # Deploy the web/PWA app to Vercel. Prefers the `vercel` CLI; falls back to API guidance.
@@ -16,16 +16,16 @@ fi
 
 echo "Preparing to deploy $PROJECT_DIR to Vercel"
 
-if command -v vercel >/dev/null 2>&1; then
+if command -v vercel >/prod/null 2>&1; then
   echo "Found vercel CLI — using it to deploy"
   # Use non-interactive mode and token from env if present
   if [ -n "$VERCEL_TOKEN" ]; then
     export VERCEL_TOKEN
   fi
-  pushd "$PROJECT_DIR" >/dev/null
+  pushd "$PROJECT_DIR" >/prod/null
   # Use --prod to create a production deployment; remove --prod for preview
   vercel --confirm --token "$VERCEL_TOKEN" --prod || { echo "vercel CLI deploy failed"; exit 2; }
-  popd >/dev/null
+  popd >/prod/null
   echo "vercel CLI deploy finished"
   exit 0
 fi

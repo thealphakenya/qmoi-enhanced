@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# // Production implementation:
+# // production implementation:
 """
 Copy real binaries from `Qmoi_downloaded_apps/` into the `downloads/` tree
 (replacing implementation stubs). Preserves directory structure and permissions.

@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /**
- * QMOI AutoDev - Suggestions for Optimizations Endpoint
+ * QMOI Autoprod - Suggestions for Optimizations Endpoint
  * Generates system optimization recommendations
- * Production-ready API endpoint
+ * production-ready API endpoint
  */
 
 import { NextRequest, NextResponse } from 'next/server';
@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error('[AUTODEV] Optimizations endpoint error:', error);
+    console.error('[AUTOprod] Optimizations endpoint error:', error);
 
     return NextResponse.json(
       {

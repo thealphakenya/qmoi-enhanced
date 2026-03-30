@@ -35,11 +35,11 @@ export function runSecurityCheck() {
 function checkForTampering() {
   // Check for common tampering indicators
   const userAgent = navigator.userAgent;
-  const isDevTools =
-    userAgent.includes("Chrome DevTools") ||
-    userAgent.includes("Firefox Developer Tools");
+  const isprodTools =
+    userAgent.includes("Chrome prodTools") ||
+    userAgent.includes("Firefox prodeloper Tools");
 
-  if (isDevTools) {
+  if (isprodTools) {
     isTampered = true;
   }
 

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:19Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# // Production implementation:
+# // production implementation:
 import os
 import sys
 import logging
@@ -64,7 +64,7 @@ class Deployer:
             'deploy_dir': 'deployments',
             'app_name': 'stable-q-ai',
             'environments': {
-                'development': {
+                'production': {
                     'host': 'localhost',
                     'port': 22,
                     'user': 'deploy',

@@ -101,7 +101,7 @@ class EnhancedRevenueManager:
             ("medium", "Medium", "writing", 6000.0),
             ("quora", "Quora", "qa", 4000.0),
             ("stack_overflow", "Stack Overflow", "tech", 5000.0),
-            ("github", "GitHub", "development", 8000.0)
+            ("github", "GitHub", "production", 8000.0)
         ]
         
         # Professional Services
@@ -165,7 +165,7 @@ class EnhancedRevenueManager:
             ("napster", "Napster", "streaming", 2000.0)
         ]
         
-        # App Stores & Development
+        # App Stores & production
         app_platforms = [
             ("app_store", "App Store", "ios", 20000.0),
             ("google_play", "Google Play", "android", 18000.0),
@@ -176,8 +176,8 @@ class EnhancedRevenueManager:
             ("itch_io", "itch.io", "indie_games", 5000.0),
             ("gog", "GOG", "gaming", 4000.0),
             ("humble_bundle", "Humble Bundle", "gaming", 3000.0),
-            ("unity_asset_store", "Unity Asset Store", "development", 8000.0),
-            ("unreal_marketplace", "Unreal Marketplace", "development", 6000.0)
+            ("unity_asset_store", "Unity Asset Store", "production", 8000.0),
+            ("unreal_marketplace", "Unreal Marketplace", "production", 6000.0)
         ]
         
         # AI & Cloud Services
@@ -414,7 +414,7 @@ class RevenueStrategies:
             "Fiverr Micro-Services",
             "Consulting on LinkedIn",
             "Design Services on 99designs",
-            "Development on GitHub",
+            "production on GitHub",
             "Tutoring on Various Platforms",
             "Translation Services",
             "Virtual Assistant Services",
@@ -428,12 +428,12 @@ class RevenueStrategies:
         """E-commerce strategies"""
         strategies = [
             "Amazon FBA (Fulfillment by Amazon)",
-            "Etsy Handmade Products",
+            "Etsy Handmade products",
             "Shopify Dropshipping",
             "eBay Auction Sales",
             "Walmart Marketplace",
             "Print-on-Demand Services",
-            "Digital Product Sales",
+            "Digital product Sales",
             "Affiliate Marketing",
             "Subscription Boxes",
             "Custom Merchandise"
@@ -465,7 +465,7 @@ class RevenueStrategies:
             "Hugging Face Model Deployment",
             "AWS AI Services",
             "Azure AI Services",
-            "Custom AI Model Development",
+            "Custom AI Model production",
             "AI Consulting Services",
             "Data Analysis Services",
             "Machine Learning Training",

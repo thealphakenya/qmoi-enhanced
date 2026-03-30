@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -37,7 +37,7 @@ export async function GET(_request: NextRequest) {
 export async function POST(_request: NextRequest) {
   try {
     const body = await _request.json();
-    const { fingerprint, user, deviceInfo, location } = body;
+    const { fingerprint, user, prodiceInfo, location } = body;
 
     const fingerprints = JSON.parse(
       fs.readFileSync(FINGERPRINTS_FILE, "utf-8"),
@@ -45,7 +45,7 @@ export async function POST(_request: NextRequest) {
     fingerprints.push({
       fingerprint,
       user,
-      deviceInfo,
+      prodiceInfo,
       location,
       timestamp: new Date().toISOString(),
     });

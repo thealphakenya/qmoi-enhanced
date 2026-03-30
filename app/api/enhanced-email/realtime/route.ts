@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
       qmoiEnhancedEmailService.addRealtimeListener(eventHandler);
 
       // Handle client disconnect
-      request.signal.addEventListener("abort", () => {
+      request.signal.adprodentListener("abort", () => {
         qmoiEnhancedEmailService.removeRealtimeListener(eventHandler);
         controller.close();
       });
@@ -64,7 +64,7 @@ export async function GET(request: NextRequest) {
       }, 30000);
 
       // Clean up heartbeat on disconnect
-      request.signal.addEventListener("abort", () => {
+      request.signal.adprodentListener("abort", () => {
         clearInterval(heartbeat);
       });
     },

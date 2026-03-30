@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:55Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# // Production implementation: this file has no remaining non-production markers
+# // production implementation: this file has no remaining production markers
 #!/usr/bin/env python3
 """QMOI App Signing Automation System
 Multi-platform app signing with full CI/CD integration and zero-human-intervention support
@@ -188,7 +188,7 @@ class AppSigningAutomation:
                 '-s', str(cert_path),
                 '--force',
                 '--options=runtime',
-                '--entitlements=/dev/null',
+                '--entitlements=/prod/null',
                 '--timestamp',
                 str(app_file)
             ]

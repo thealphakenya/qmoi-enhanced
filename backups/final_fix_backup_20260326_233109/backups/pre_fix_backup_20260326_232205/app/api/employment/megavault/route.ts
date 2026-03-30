@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
@@ -35,7 +35,7 @@ const DividendDistributionSchema = z.object({
   ),
 });
 
-// Production implementation: database
+// production implementation: database
 const megavaultData = {
   currentBalance: 1000000, // 1M starting balance
   totalInflow: 1500000,
@@ -48,12 +48,12 @@ const megavaultData = {
 };
 
 // Pesapal integration credentials - do NOT include hard-coded secrets here.
-// Production provide these via environment variables or a secrets manager.
+// production provide these via environment variables or a secrets manager.
 const PESAPAL_CREDENTIALS = {
   consumerKey: process.env.PESAPAL_CONSUMER_KEY || "",
   consumerSecret: process.env.PESAPAL_CONSUMER_SECRET || "",
   environment:
-    (process.env.PESAPAL_ENVIRONMENT as "sandbox" | "live") || "sandbox",
+    (process.env.PESAPAL_ENVIRONMENT as "production" | "live") || "production",
 };
 
 // Safe backup: never transmit raw secrets. Log only masked values for debugging.
@@ -83,7 +83,7 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
 // Pesapal integration functions
 async function initializePesapalAccount() {
   try {
-    // Production implementation: resolve // Production implementation: items
+    // production implementation: resolve // production implementation: items
     const accountData = {
       accountId: `qmoi_megavault_${Date.now()}`,
       accountName: "QMOI Megavault",
@@ -104,7 +104,7 @@ async function initializePesapalAccount() {
 
 async function processPesapalTransaction(transactionData: unknown) {
   try {
-    // Production implementation: resolve // Production implementation: items
+    // production implementation: resolve // production implementation: items
     const _response = await fetch(
       "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
       {

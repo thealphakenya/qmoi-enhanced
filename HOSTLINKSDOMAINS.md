@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "HOSTLINKSDOMAINS"
 [[[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -44,7 +44,7 @@ Enhancements (>=20) — concise description, risk, required creds, and quick imp
    - Risk: medium. Creds: DNS provider. Implement: domain_assigner.py enhancement + lease DB (.qmoi_validation/domains_leases.json).
 
 3. Dry-run DNS change plans with atomic apply and rollback
-   - Produce signed DNS change plans (JSON patch) and apply only when QMOI_PROVISION_DNS=1 and billing guard passes.
+   - produce signed DNS change plans (JSON patch) and apply only when QMOI_PROVISION_DNS=1 and billing guard passes.
    - Risk: high if misused; gating required. Creds: Cloudflare/AWS API keys.
 
 4. Managed SSL/TLS automation (Let's Encrypt/ACME)

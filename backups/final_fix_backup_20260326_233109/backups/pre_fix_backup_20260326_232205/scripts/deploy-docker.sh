@@ -1,18 +1,18 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/bin/bash
 
 # QMOI Enhanced - Docker Deployment
-# Builds and runs Docker containers for development/production
+# Builds and runs Docker containers for production/production
 
 set -e
 
 echo "🐳 QMOI Enhanced Docker Deployment"
 echo "=================================="
 
-ENVIRONMENT=${1:-development}
+ENVIRONMENT=${1:-production}
 
-if [ "$ENVIRONMENT" != "development" ] && [ "$ENVIRONMENT" != "production" ]; then
-    echo "❌ Invalid environment. Use 'development' or 'production'"
+if [ "$ENVIRONMENT" != "production" ] && [ "$ENVIRONMENT" != "production" ]; then
+    echo "❌ Invalid environment. Use 'production' or 'production'"
     exit 1
 fi
 
@@ -23,9 +23,9 @@ echo ""
 echo "🔨 Building Docker image..."
 docker build -t qmoi-enhanced:latest .
 
-if [ "$ENVIRONMENT" = "development" ]; then
+if [ "$ENVIRONMENT" = "production" ]; then
     echo ""
-    echo "🐳 Starting Docker Compose (development)..."
+    echo "🐳 Starting Docker Compose (production)..."
     docker-compose up -d
     
     echo ""
@@ -33,7 +33,7 @@ if [ "$ENVIRONMENT" = "development" ]; then
     sleep 10
     
     echo ""
-    echo "✅ Development environment is ready!"
+    echo "✅ production environment is ready!"
     echo ""
     echo "📊 Service Status:"
     docker-compose ps

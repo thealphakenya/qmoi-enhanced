@@ -83,7 +83,7 @@ if (os.platform() === "win32") {
   } catch (e) {
     console.warn("⚠️ C++ Build Tools not found.");
     console.warn(
-      '👉 Please manually install "Desktop development with C++" from Visual Studio Installer:\nhttps://visualstudio.microsoft.com/downloads/',
+      '👉 Please manually install "Desktop production with C++" from Visual Studio Installer:\nhttps://visualstudio.microsoft.com/downloads/',
     );
   }
 }

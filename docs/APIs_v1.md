@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOI API snapshot (APIs_v1)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -16,7 +16,7 @@ title: "QMOI API snapshot (APIs_v1)"
 # QMOI API snapshot (APIs_v1)
 
 This file is an automated snapshot of commonly used API endpoints implemented under `app/api/**`.
-Mutating endpoints are _proposal-first_ by default and require explicit production confirmation (`PRODUCTION_CONFIRMED=true` + `--real`) to actually perform state-changing actions. All mutating endpoints write proposals to `.qmoi_validation/` when not run in confirmed production mode.
+Mutating endpoints are _proposal-first_ by default and require explicit production confirmation (`production_CONFIRMED=true` + `--real`) to actually perform state-changing actions. All mutating endpoints write proposals to `.qmoi_validation/` when not run in confirmed production mode.
 
 ## Auth model
 
@@ -84,39 +84,39 @@ Mutating endpoints are _proposal-first_ by default and require explicit producti
 - **Implementation**: [src/app/api/qmoi/suggestions/route.ts](src/app/api/qmoi/suggestions/route.ts)
 - **Auth**: Bearer token required
 
-### GET/POST /api/qmoi/autodev/state
-- **Purpose**: AutoDev automation state management
-- **Implementation**: [src/app/api/qmoi/autodev/state/route.ts](src/app/api/qmoi/autodev/state/route.ts)
+### GET/POST /api/qmoi/autoprod/state
+- **Purpose**: Autoprod automation state management
+- **Implementation**: [src/app/api/qmoi/autoprod/state/route.ts](src/app/api/qmoi/autoprod/state/route.ts)
 - **Auth**: Bearer token required
 
-### POST /api/qmoi/autodev/toggle
-- **Purpose**: Toggle AutoDev automation on/off
-- **Implementation**: [src/app/api/qmoi/autodev/toggle/route.ts](src/app/api/qmoi/autodev/toggle/route.ts)
+### POST /api/qmoi/autoprod/toggle
+- **Purpose**: Toggle Autoprod automation on/off
+- **Implementation**: [src/app/api/qmoi/autoprod/toggle/route.ts](src/app/api/qmoi/autoprod/toggle/route.ts)
 - **Auth**: Bearer token required
 
-### POST /api/qmoi/autodev/research
+### POST /api/qmoi/autoprod/research
 - **Purpose**: Codebase research and analysis
-- **Implementation**: [src/app/api/qmoi/autodev/research/route.ts](src/app/api/qmoi/autodev/research/route.ts)
+- **Implementation**: [src/app/api/qmoi/autoprod/research/route.ts](src/app/api/qmoi/autoprod/research/route.ts)
 - **Auth**: Bearer token required
 
-### GET /api/qmoi/autodev/suggestions/improvements
+### GET /api/qmoi/autoprod/suggestions/improvements
 - **Purpose**: Code improvement suggestions
-- **Implementation**: [src/app/api/qmoi/autodev/suggestions/improvements/route.ts](src/app/api/qmoi/autodev/suggestions/improvements/route.ts)
+- **Implementation**: [src/app/api/qmoi/autoprod/suggestions/improvements/route.ts](src/app/api/qmoi/autoprod/suggestions/improvements/route.ts)
 - **Auth**: Bearer token required
 
-### GET /api/qmoi/autodev/suggestions/optimizations
+### GET /api/qmoi/autoprod/suggestions/optimizations
 - **Purpose**: Performance optimization suggestions
-- **Implementation**: [src/app/api/qmoi/autodev/suggestions/optimizations/route.ts](src/app/api/qmoi/autodev/suggestions/optimizations/route.ts)
+- **Implementation**: [src/app/api/qmoi/autoprod/suggestions/optimizations/route.ts](src/app/api/qmoi/autoprod/suggestions/optimizations/route.ts)
 - **Auth**: Bearer token required
 
-### GET /api/qmoi/autodev/suggestions/features
-- **Purpose**: Feature development suggestions
-- **Implementation**: [src/app/api/qmoi/autodev/suggestions/features/route.ts](src/app/api/qmoi/autodev/suggestions/features/route.ts)
+### GET /api/qmoi/autoprod/suggestions/features
+- **Purpose**: Feature production suggestions
+- **Implementation**: [src/app/api/qmoi/autoprod/suggestions/features/route.ts](src/app/api/qmoi/autoprod/suggestions/features/route.ts)
 - **Auth**: Bearer token required
 
-### POST /api/qmoi/autodev/generate-feature
+### POST /api/qmoi/autoprod/generate-feature
 - **Purpose**: Automatic feature code generation
-- **Implementation**: [src/app/api/qmoi/autodev/generate-feature/route.ts](src/app/api/qmoi/autodev/generate-feature/route.ts)
+- **Implementation**: [src/app/api/qmoi/autoprod/generate-feature/route.ts](src/app/api/qmoi/autoprod/generate-feature/route.ts)
 - **Auth**: Bearer token required
 - **Timeout**: 60 seconds
 
@@ -189,7 +189,7 @@ Mutating endpoints are _proposal-first_ by default and require explicit producti
 - **Auth**: Bearer token optional
 
 ### POST /api/preview/execute-tool
-- **Purpose**: Execute development tools
+- **Purpose**: Execute production tools
 - **Implementation**: [src/app/api/preview/execute-tool/route.ts](src/app/api/preview/execute-tool/route.ts)
 - **Auth**: Bearer token optional
 
@@ -230,7 +230,7 @@ Mutating endpoints are _proposal-first_ by default and require explicit producti
 
 ---
 
-## 💰 Wallet & Financial APIs (PRODUCTION READY)
+## 💰 Wallet & Financial APIs (production READY)
 
 ### Wallet Management APIs (25 endpoints)
 
@@ -611,7 +611,7 @@ Mutating endpoints are _proposal-first_ by default and require explicit producti
 - **QMOI**: Machine learning, behavioral adaptation
 
 #### GET /api/consciousness/evolution
-- **Purpose**: Monitor consciousness evolution and development
+- **Purpose**: Monitor consciousness evolution and production
 - **Implementation**: [src/app/api/consciousness/evolution/route.ts](src/app/api/consciousness/evolution/route.ts)
 - **Auth**: Bearer token required
 - **QMOI**: Evolution tracking, capability assessment
@@ -731,7 +731,7 @@ Mutating endpoints are _proposal-first_ by default and require explicit producti
 - Purpose: Start the auto-fix process for repository (runs `scripts/qmoi_auto_fix_enhanced.py`).
 - Implementation: [app/api/qmoi/auto-fix/start/route.ts](app/api/qmoi/auto-fix/start/route.ts)
 - Auth: `x-qmoi-api-key` or `MASTER_TOKEN`.
-- Behavior: writes proposal unless `PRODUCTION_CONFIRMED=true` and `--real` present; when allowed, spawns the auto-fix process.
+- Behavior: writes proposal unless `production_CONFIRMED=true` and `--real` present; when allowed, spawns the auto-fix process.
 
 ## /api/qmoi/auto-fix/status (GET)
 
@@ -752,7 +752,7 @@ Mutating endpoints are _proposal-first_ by default and require explicit producti
 - Purpose: Start the auto-fix process for repository (runs `scripts/qmoi_auto_fix_enhanced.py`).
 - Implementation: [app/api/qmoi/auto-fix/start/route.ts](app/api/qmoi/auto-fix/start/route.ts)
 - Auth: `x-qmoi-api-key` or `MASTER_TOKEN`.
-- Behavior: writes proposal unless `PRODUCTION_CONFIRMED=true` and `--real` present; when allowed, spawns the auto-fix process.
+- Behavior: writes proposal unless `production_CONFIRMED=true` and `--real` present; when allowed, spawns the auto-fix process.
 
 ## /api/qmoi/auto-fix/status (GET)
 
@@ -833,8 +833,8 @@ For quick cross-reference, the following important API routes are implemented an
 - /api/qmoi/status -> [app/api/qmoi/status/route.ts](app/api/qmoi/status/route.ts)
 - /api/qmoi/self-work/code-review -> [app/api/qmoi/self-work/code-review/route.ts](app/api/qmoi/self-work/code-review/route.ts)
 - /api/qmoi/self-work/run-tests -> [app/api/qmoi/self-work/run-tests/route.ts](app/api/qmoi/self-work/run-tests/route.ts)
-- /api/qmoi/autodev/toggle -> [app/api/qmoi/autodev/toggle/route.ts](app/api/qmoi/autodev/toggle/route.ts)
-- /api/qmoi/autodev -> [routes/api/qmoi/autodev.ts](routes/api/qmoi/autodev.ts) (POST, actions: force_run, lint_fix, dependency_fix, ai_suggest, rollback, batch_edit, scan_logs, auto_fix_problems, optimize_device, enhance_apps, project_status, monitor_and_fix_projects, continuous_autofix_start, continuous_autofix_stop, full_status, master_instruction, ui_development, autodev_task, auto_make, research, evolution)
+- /api/qmoi/autoprod/toggle -> [app/api/qmoi/autoprod/toggle/route.ts](app/api/qmoi/autoprod/toggle/route.ts)
+- /api/qmoi/autoprod -> [routes/api/qmoi/autoprod.ts](routes/api/qmoi/autoprod.ts) (POST, actions: force_run, lint_fix, dependency_fix, ai_suggest, rollback, batch_edit, scan_logs, auto_fix_problems, optimize_prodice, enhance_apps, project_status, monitor_and_fix_projects, continuous_autofix_start, continuous_autofix_stop, full_status, master_instruction, ui_production, autoprod_task, auto_make, research, evolution)
 - /api/qmoi/execute -> [app/api/qmoi/execute/route.ts](app/api/qmoi/execute/route.ts)
 - /api/qradio/channels -> [app/api/qradio/channels/route.ts](app/api/qradio/channels/route.ts)
 - /api/qradio/status -> [app/api/qradio/status/route.ts](app/api/qradio/status/route.ts)
@@ -843,11 +843,11 @@ For quick cross-reference, the following important API routes are implemented an
 - /api/qradio/program -> [app/api/qradio/program/route.ts](app/api/qradio/program/route.ts)
 - /api/auth/_ -> `app/api/auth/_/route.ts`
 
-If you want any of the proposal-first endpoints to act immediately in production, set `PRODUCTION_CONFIRMED=true` and run the server with the `--real` flag (or the equivalent runner). This is intentional to prevent accidental destructive actions.
+If you want any of the proposal-first endpoints to act immediately in production, set `production_CONFIRMED=true` and run the server with the `--real` flag (or the equivalent runner). This is intentional to prevent accidental destructive actions.
 
 ---
 
-## /api/cashon/\* (LEGACY - Use Production Balance APIs)
+## /api/cashon/\* (LEGACY - Use production Balance APIs)
 
 **Note**: These legacy cashon APIs are maintained for backward compatibility. For new implementations, use the production-ready balance management APIs listed above.
 
@@ -884,8 +884,8 @@ If you want any of the proposal-first endpoints to act immediately in production
 
 ## Notes
 
-- Proposal files can be found in `.qmoi_validation/` (e.g., `proposal-*.json`, `[PRODUCTION READY]s_proposal_*.json`). Review them before applying.
-- To apply a proposal and run a mutating action, _set_ `PRODUCTION_CONFIRMED=true` in the environment and run the server with `--real` in the process arguments (or use a patched runner that forwards this flag). This gating is intentional to prevent accidental destructive actions.
+- Proposal files can be found in `.qmoi_validation/` (e.g., `proposal-*.json`, `[production READY]s_proposal_*.json`). Review them before applying.
+- To apply a proposal and run a mutating action, _set_ `production_CONFIRMED=true` in the environment and run the server with `--real` in the process arguments (or use a patched runner that forwards this flag). This gating is intentional to prevent accidental destructive actions.
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->
 

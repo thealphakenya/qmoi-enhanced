@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -15,7 +15,7 @@ const execAsync = promisify(exec);
 
 interface LogRequest {
   log_type?: string;
-  device_id?: string;
+  prodice_id?: string;
   date_from?: string;
   date_to?: string;
   limit?: number;
@@ -23,7 +23,7 @@ interface LogRequest {
 
 interface ExportRequest {
   type: string;
-  device_id?: string;
+  prodice_id?: string;
   date_from?: string;
   date_to?: string;
 }
@@ -33,7 +33,7 @@ export async function POST(_request: NextRequest) {
     const body: LogRequest = await _request.json();
     const {
       log_type = "all",
-      device_id,
+      prodice_id,
       date_from,
       date_to,
       limit = 100,
@@ -57,13 +57,13 @@ export async function POST(_request: NextRequest) {
     const loggerScript = path.join(
       projectRoot,
       "scripts",
-      "qmoi_own_device_logger.py",
+      "qmoi_own_prodice_logger.py",
     );
 
     // Check if logger script exists
     if (!fs.existsSync(loggerScript)) {
       return NextResponse.json(
-        { _error: "QMOI Own Device Logger not found" },
+        { _error: "QMOI Own prodice Logger not found" },
         { status: 404 },
       );
     }
@@ -71,8 +71,8 @@ export async function POST(_request: NextRequest) {
     // Build command arguments
     const args = ["--log-type", log_type, "--limit", limit.toString()];
 
-    if (device_id) {
-      args.push("--device-id", device_id);
+    if (prodice_id) {
+      args.push("--prodice-id", prodice_id);
     }
 
     if (date_from) {
@@ -107,7 +107,7 @@ export async function POST(_request: NextRequest) {
 
     return NextResponse.json(logs);
   } catch (_error) {
-    (console as any).error("QMOI Own Device Logs API _error:", _error);
+    (console as any).error("QMOI Own prodice Logs API _error:", _error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },
@@ -135,12 +135,12 @@ export async function GET(_request: NextRequest) {
     const loggerScript = path.join(
       projectRoot,
       "scripts",
-      "qmoi_own_device_logger.py",
+      "qmoi_own_prodice_logger.py",
     );
 
     if (!fs.existsSync(loggerScript)) {
       return NextResponse.json(
-        { _error: "QMOI Own Device Logger not found" },
+        { _error: "QMOI Own prodice Logger not found" },
         { status: 404 },
       );
     }
@@ -163,7 +163,7 @@ export async function GET(_request: NextRequest) {
 
     return NextResponse.json(stats);
   } catch (_error) {
-    (console as any).error("QMOI Own Device Statistics API _error:", _error);
+    (console as any).error("QMOI Own prodice Statistics API _error:", _error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },

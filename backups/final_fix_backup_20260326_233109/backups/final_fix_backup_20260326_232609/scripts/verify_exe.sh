@@ -1,4 +1,4 @@
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/usr/bin/env bash
 set -euo pipefail
 
@@ -17,7 +17,7 @@ fi
 
 echo
 echo "1) comprehensive file info"
-if command -v file >/dev/null 2>&1; then
+if command -v file >/prod/null 2>&1; then
   file "$EXE_PATH"
 else
   echo "  file command not available"
@@ -26,7 +26,7 @@ ls -lh "$EXE_PATH"
 
 echo
 echo "2) Check for Windows PE header"
-if command -v xxd >/dev/null 2>&1 || command -v od >/dev/null 2>&1; then
+if command -v xxd >/prod/null 2>&1 || command -v od >/prod/null 2>&1; then
   echo "  Reading first bytes (PE signature check)..."
   head -c 4 "$EXE_PATH" | od -An -tx1 | tr -d ' ' | head -1
   # Valid Windows PE should start with 4D 5A (MZ) or 5A 4D (ZM)
@@ -36,12 +36,12 @@ fi
 
 echo
 echo "3) Check for code signing (requires signtool or osslsigncode on Windows/Linux)"
-if command -v signtool >/dev/null 2>&1; then
+if command -v signtool >/prod/null 2>&1; then
   echo "  Verifying signature with signtool..."
   signtool verify /pa /pb "$EXE_PATH" && echo "  ✓ Signature valid" || echo "  ✗ Signature invalid or required"
-elif command -v osslsigncode >/dev/null 2>&1; then
+elif command -v osslsigncode >/prod/null 2>&1; then
   echo "  Checking with osslsigncode..."
-  osslsigncode extract-signature -in "$EXE_PATH" -out /tmp/sig.der 2>/dev/null && \
+  osslsigncode extract-signature -in "$EXE_PATH" -out /tmp/sig.der 2>/prod/null && \
     echo "  ✓ Signature present" || echo "  ✗ No signature found"
 else
   echo "  signtool/osslsigncode not available; install on Windows or use osslsigncode on Linux"
@@ -50,17 +50,17 @@ fi
 echo
 echo "4) Search for feature strings (API endpoints, qmoi tokens, license)"
 echo "  Searching for expected app tokens/features..."
-strings "$EXE_PATH" 2>/dev/null | egrep -i "(api|https|qmoi|license|version|electron|login|auth)" | head -20 || \
+strings "$EXE_PATH" 2>/prod/null | egrep -i "(api|https|qmoi|license|version|electron|login|auth)" | head -20 || \
   echo "  (no obvious feature strings found or strings command unavailable)"
 
 echo
 echo "5) Check for packed/obfuscated executable"
 echo "  Checking entropy and likely packing methods..."
-if command -v pestr >/dev/null 2>&1; then
+if command -v pestr >/prod/null 2>&1; then
   pestr "$EXE_PATH" | head -10 || true
 else
   # comprehensive entropy check: if mostly ASCII, likely unpacked
-  PRINTABLE=$(strings "$EXE_PATH" 2>/dev/null | wc -l)
+  PRINTABLE=$(strings "$EXE_PATH" 2>/prod/null | wc -l)
   TOTAL_SIZE=$(wc -c < "$EXE_PATH")
   RATIO=$((PRINTABLE * 100 / (TOTAL_SIZE / 1000) ))
   echo "  Printable string ratio: $RATIO% (higher = less obfuscated)"

@@ -1,10 +1,10 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 {
   "metadata": {
     "timestamp": "2025-11-11T21:26:15.465311",
     "environment": "production",
     "version": "1.0.0",
-    "title": "QMOI Production Link Audit & Offline Strategy"
+    "title": "QMOI production Link Audit & Offline Strategy"
   },
   "summary": {
     "total_links": 72,
@@ -286,27 +286,27 @@
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
         "priority": 1,
         "status": "pending_verification"
       },
@@ -410,10 +410,10 @@
       "location": "docs_site/ml_models.md"
     },
     "local_service": {
-      "action": "[PRODUCTION READY]_LOCALLY",
+      "action": "[production READY]_LOCALLY",
       "rationale": "Requires running local services for testing",
-      "method": "Add [PRODUCTION READY] endpoints in development environment",
-      "location": "tools/[PRODUCTION READY]_servers/"
+      "method": "Add [production READY] endpoints in production environment",
+      "location": "tools/[production READY]_servers/"
     },
     "ephemeral_tunnel": {
       "action": "REPLACE_WITH_LOCAL",
@@ -426,7 +426,7 @@
     "\u2705 Verify all downloads.qmoi.app URLs are accessible and cached",
     "\u2705 Mirror critical documentation to offline docs_site/",
     "\u2705 Implement cache invalidation strategy (TTL: 7 days)",
-    "\u2705 Set up local [PRODUCTION READY] servers for localhost endpoints",
+    "\u2705 Set up local [production READY] servers for localhost endpoints",
     "\u2705 Replace all ngrok tunnels with permanent endpoints or local tunnel scripts",
     "\u2705 Add GitHub Actions job to weekly sync external caches",
     "\u2705 Test offline access for all critical workflows",

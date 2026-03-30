@@ -5,7 +5,7 @@
 
 /**
  * Payments Service
- * Production payment processing with multiple providers
+ * production payment processing with multiple providers
  */
 
 import { db } from "@/lib/db/prisma";

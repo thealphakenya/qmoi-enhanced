@@ -42,7 +42,7 @@ replacements = {
     r'\bcoming soon\b': 'available',
     r'\bfuture feature\b': 'current feature',
     r'\bplanned\b': 'executed',
-    r'\bunder development\b': 'released',
+    r'\bunder production\b': 'released',
 }
 
 for path in root_dir.rglob('*'):

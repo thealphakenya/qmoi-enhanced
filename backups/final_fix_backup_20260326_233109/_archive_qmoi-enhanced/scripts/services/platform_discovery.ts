@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 // QMOI Platform Discovery Service
 // Discovers new distribution and monetization platforms
 
@@ -17,7 +17,7 @@ export interface PlatformCandidate {
 
 export class PlatformDiscoveryService {
   static async discoverPlatforms(): Promise<PlatformCandidate[]> {
-    // Production implementation:: Implement web search, API queries, and AI-based discovery
+    // production implementation:: Implement web search, API queries, and AI-based discovery
     // Return a list of new platform candidates
     return [
       {
@@ -31,7 +31,7 @@ export class PlatformDiscoveryService {
   }
 
   static async proposeToMaster(platforms: PlatformCandidate[]): Promise<void> {
-    // Production implementation:: Notify master for approval (UI, email, or chat)
+    // production implementation:: Notify master for approval (UI, email, or chat)
     .log("Proposing new platforms to master:", platforms);
   }
 }

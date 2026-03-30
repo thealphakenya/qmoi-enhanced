@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Issue final for scripts/run_validation.py"
 generated: 2025-11-08T16:06:38.987068Z
@@ -19,9 +19,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [PRODUCTION READY] markers or [PRODUCTION READY]s.
-- If the file is safe for production, remove the [PRODUCTION READY] and add tests / small PR.
-- If the file is intentionally non-production (e.g. [PRODUCTION READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [production READY] markers or [production READY]s.
+- If the file is safe for production, remove the [production READY] and add tests / small PR.
+- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -32,7 +32,7 @@ Excerpt (first 2KB):
 
 By default this runs in dry-run mode: any suggested changes are written as proposals
 into `.qmoi_validation/`. To apply changes pass `--apply` and set
-`PRODUCTION_CONFIRMED=true` in the environment.
+`production_CONFIRMED=true` in the environment.
 """
 import subprocess
 import json
@@ -76,7 +76,7 @@ def run_tool(tool, apply: bool = False):
 def main():
     import argparse
     ap = argparse.ArgumentParser()
-    ap.add_argument('--apply', action='store_true', help='Apply suggested changes (requires PRODUCTION_CONFIRMED=true)')
+    ap.add_argument('--apply', action='store_true', help='Apply suggested changes (requires production_CONFIRMED=true)')
     args = ap.parse_args()
 
     results = []

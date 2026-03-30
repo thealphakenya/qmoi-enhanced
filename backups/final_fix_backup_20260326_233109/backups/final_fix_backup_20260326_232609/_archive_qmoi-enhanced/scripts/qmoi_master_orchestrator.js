@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/usr/bin/env node
 
 const { spawn, execSync } = require("child_process");
@@ -51,7 +51,7 @@ class QMOIMasterOrchestrator {
       services: {
         backend: {
           enabled: true,
-          command: "npm run dev",
+          command: "npm run prod",
           restartOnFailure: true,
           healthCheck: "/api/health",
           maxRestarts: 5,
@@ -195,10 +195,10 @@ class QMOIMasterOrchestrator {
 
   setGitPermissions() {
     try {
-      execSync('git config --local user.email "qmoi-autodev@stable-q.ai"', {
+      execSync('git config --local user.email "qmoi-autoprod@stable-q.ai"', {
         stdio: "pipe",
       });
-      execSync('git config --local user.name "QMOI Auto-Dev Master"', {
+      execSync('git config --local user.name "QMOI Auto-prod Master"', {
         stdio: "pipe",
       });
 

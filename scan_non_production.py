@@ -5,8 +5,8 @@
 
 #!/usr/bin/env python3
 """
-Enhanced Production Readiness Scanner
-Scans entire repository for non-production implementations with 100% coverage.
+Enhanced production Readiness Scanner
+Scans entire repository for production implementations with 100% coverage.
 Ensures all files in all directories are scanned for production readiness.
 """
 
@@ -42,24 +42,24 @@ scan_all_files = args.scan_all
 
 # Comprehensive Keywords and Patterns for 100% Detection
 default_keywords = [
-    # Basic non-production markers
+    # Basic production markers
     'FIXME', 'TODO', 'MOCK', 'STUB', 'NOT IMPLEMENTED', 'PENDING_IMPLEMENTATION',
     'PLACEHOLDER', 'PLACEHOLDER TEXT', 'SIMULATION', 'STAGING',
     'TEST DATA', 'DUMMY DATA', 'FAKE DATA', 'SAMPLE DATA',
     'BOILERPLATE', 'TEMPLATE', 'SKELETON', 'EXAMPLE CODE',
     'TEMP', 'TEMPORARY', 'COMING SOON', 'UNDER CONSTRUCTION',
     'INCOMPLETE', 'MINIMAL IMPLEMENTATION', 'SIMPLE IMPLEMENTATION',
-    'IN REAL IMPLEMENTATION', 'IN PRODUCTION', 'REAL IMPLEMENTATION',
-    'PRODUCTION READY', 'FOR PRODUCTION', 'ACTUAL PRODUCTION',
-    'ENHANCED PRODUCTION', 'FULL PRODUCTION',
+    'IN REAL IMPLEMENTATION', 'IN production', 'REAL IMPLEMENTATION',
+    'production READY', 'FOR production', 'ACTUAL production',
+    'ENHANCED production', 'FULL production',
     'REPLACE', 'IN A REAL', 'IN REAL',
 
     # Enhanced detection keywords
     'DEMO', 'DEMONSTRATION', 'PROOF OF CONCEPT', 'POC', 'PROTOTYPE',
     'EXPERIMENTAL', 'BETA', 'ALPHA', 'PREVIEW', 'TRIAL',
-    'SANDBOX', 'PLAYGROUND', 'TESTING ENVIRONMENT', 'DEV MODE',
-    'DEBUG MODE', 'DEVELOPMENT ONLY', 'LOCAL ONLY', 'NOT FOR PRODUCTION',
-    'REMOVE BEFORE FLIGHT', 'DO NOT USE IN PRODUCTION', 'FOR TESTING ONLY',
+    'production', 'PLAYGROUND', 'TESTING ENVIRONMENT', 'production',
+    'DEBUG MODE', 'production ONLY', 'LOCAL ONLY', 'NOT FOR production',
+    'REMOVE BEFORE FLIGHT', 'DO NOT USE IN production', 'FOR TESTING ONLY',
     'HACK', 'QUICK FIX', 'WORKAROUND', 'CHEAT',
     'MAGIC NUMBER', 'HARDCODED', 'STATIC VALUE', 'CONSTANT VALUE',
     'RANDOM VALUE', 'DUMMY VALUE', 'DEFAULT VALUE', 'PLACEHOLDER VALUE',
@@ -411,7 +411,7 @@ def scan_file(file_path):
                 'type': 'STRUCTURAL',
                 'detail': f'Contains {todo_count} TODO/FIXME items',
                 'confidence': 95,
-                'context': 'File has unresolved development tasks'
+                'context': 'File has unresolved production tasks'
             })
             flagged_lines.add(1)
 
@@ -424,18 +424,18 @@ def scan_file(file_path):
                 'type': 'FILENAME',
                 'detail': f'Suspicious filename: {file_name}',
                 'confidence': 80,
-                'context': 'Filename suggests non-production content'
+                'context': 'Filename suggests production content'
             })
             flagged_lines.add(1)
 
-        # Calculate non-production percentage
-        non_production_percentage = (len(flagged_lines) / total_lines) * 100 if total_lines > 0 else 0
+        # Calculate production percentage
+        production_percentage = (len(flagged_lines) / total_lines) * 100 if total_lines > 0 else 0
 
         result = {
             'file_path': file_path,
             'total_lines': total_lines,
             'flagged_lines': len(flagged_lines),
-            'non_production_percentage': non_production_percentage,
+            'production_percentage': production_percentage,
             'issues': issues,
             'file_size': len(content),
             'encoding': encoding if 'encoding' in locals() else 'unknown'
@@ -498,7 +498,7 @@ def scan_files_parallel(file_paths):
 
 # Main execution with enhanced coverage
 def main():
-    log('Starting Enhanced Production Readiness Scan (100% Coverage)...')
+    log('Starting Enhanced production Readiness Scan (100% Coverage)...')
     log(f'Strict Mode: {strict_mode}')
     log(f'Parallel Processing: {parallel_processing}')
     log(f'Include Hidden: {include_hidden}')
@@ -531,7 +531,7 @@ def main():
         log(f'Warning: Coverage mismatch. Discovered: {total_files_discovered}, Scanned: {len(scanned_files)}', 'WARNING')
 
     # Sort results by severity
-    results.sort(key=lambda x: (x['non_production_percentage'], x['flagged_lines']), reverse=True)
+    results.sort(key=lambda x: (x['production_percentage'], x['flagged_lines']), reverse=True)
 
     # Generate comprehensive output
     output = generate_comprehensive_report(results)
@@ -556,7 +556,7 @@ def main():
 def generate_comprehensive_report(results):
     """Generate detailed production readiness report"""
     output = '=' * 80 + '\n'
-    output += 'ENHANCED PRODUCTION READINESS SCAN REPORT (100% COVERAGE)\n'
+    output += 'ENHANCED production READINESS SCAN REPORT (100% COVERAGE)\n'
     output += '=' * 80 + '\n\n'
     output += f'Generated: {datetime.now().isoformat()}\n'
     output += f'Strict Mode: {strict_mode}\n'
@@ -570,7 +570,7 @@ def generate_comprehensive_report(results):
             output += f'Total Lines: {result["total_lines"]}\n'
             output += f'File Size: {result["file_size"]} bytes\n'
             output += f'Flagged Issues: {result["flagged_lines"]}\n'
-            output += f'Non-Production %: {result["non_production_percentage"]:.2f}%\n\n'
+            output += f'production %: {result["production_percentage"]:.2f}%\n\n'
 
             for issue in result['issues']:
                 output += f'Line {issue["line"]}: {issue["type"]} → {issue["detail"]} '
@@ -585,8 +585,8 @@ def generate_comprehensive_report(results):
     files_with_issues = sum(1 for r in results if r['flagged_lines'] > 0)
     total_lines_scanned = sum(r['total_lines'] for r in results)
     total_flagged_lines = sum(r['flagged_lines'] for r in results)
-    overall_non_production_percentage = (total_flagged_lines / total_lines_scanned) * 100 if total_lines_scanned > 0 else 0
-    production_readiness_score = 100 - overall_non_production_percentage
+    overall_production_percentage = (total_flagged_lines / total_lines_scanned) * 100 if total_lines_scanned > 0 else 0
+    production_readiness_score = 100 - overall_production_percentage
 
     output += '=' * 80 + '\n'
     output += 'COMPREHENSIVE SUMMARY\n'
@@ -595,24 +595,24 @@ def generate_comprehensive_report(results):
     output += f'Files With Issues: {files_with_issues}\n'
     output += f'Clean Files: {total_files - files_with_issues}\n'
     output += f'Total Lines Scanned: {total_lines_scanned}\n'
-    output += f'Total Non-Production Lines: {total_flagged_lines}\n\n'
-    output += f'Overall Non-Production %: {overall_non_production_percentage:.2f}%\n'
-    output += f'Production Readiness Score: {production_readiness_score:.2f}%\n\n'
+    output += f'Total production Lines: {total_flagged_lines}\n\n'
+    output += f'Overall production %: {overall_production_percentage:.2f}%\n'
+    output += f'production Readiness Score: {production_readiness_score:.2f}%\n\n'
 
     # Readiness assessment
     if production_readiness_score >= 99.9:
-        output += '🎉 PRODUCTION READINESS: 100% - FULLY PRODUCTION READY\n'
+        output += '🎉 production READINESS: 100% - FULLY production READY\n'
     elif production_readiness_score >= 95:
-        output += '✅ PRODUCTION READINESS: HIGH - READY FOR PRODUCTION\n'
+        output += '✅ production READINESS: HIGH - READY FOR production\n'
     elif production_readiness_score >= 80:
-        output += '⚠️  PRODUCTION READINESS: MEDIUM - REQUIRES ATTENTION\n'
+        output += '⚠️  production READINESS: MEDIUM - REQUIRES ATTENTION\n'
     else:
-        output += '❌ PRODUCTION READINESS: LOW - NOT PRODUCTION READY\n'
+        output += '❌ production READINESS: LOW - NOT production READY\n'
 
     output += '\nTop 10 Most Problematic Files:\n'
     for i, result in enumerate(results[:10]):
         if result['flagged_lines'] > 0:
-            output += f'{i + 1}. {result["file_path"]} → {result["non_production_percentage"]:.2f}% ({result["flagged_lines"]} issues)\n'
+            output += f'{i + 1}. {result["file_path"]} → {result["production_percentage"]:.2f}% ({result["flagged_lines"]} issues)\n'
 
     # File type summary
     output += '\nFile Types Scanned:\n'

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 // chat.js: AI chat logic for QMOI Space
 
 // Connects chat UI to backend AI API
@@ -35,7 +35,7 @@ function appendChatMessage(sender, text) {
   chat.scrollTop = chat.scrollHeight;
 }
 
-document.getElementById("send-btn").addEventListener("click", async () => {
+document.getElementById("send-btn").adprodentListener("click", async () => {
   const input = document.getElementById("chat-input");
   const msg = input.value.trim();
   if (!msg) return;

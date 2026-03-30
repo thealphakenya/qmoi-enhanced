@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 # 
 """
-complete, robust helper server used by tests and local development.
+complete, robust helper server used by tests and local production.
 
 Endpoints:
  - GET  /            -> health

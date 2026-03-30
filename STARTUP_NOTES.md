@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 Startup and preflight notes
 
 - The `scripts/qmoi-start.py` script performs a robust preflight check for commonly required runtime
@@ -19,7 +19,7 @@ Startup and preflight notes
   or on the target host using platform-appropriate wheels.
 
 - For reproducible local checks, use the provided `requirements-complete.txt` which now includes the small runtime
-  packages required to run the start sequence in a dev container:
+  packages required to run the start sequence in a prod container:
 
   requests
   aiohttp

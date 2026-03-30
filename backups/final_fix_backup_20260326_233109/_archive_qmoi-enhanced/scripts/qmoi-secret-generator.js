@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 // scripts/qmoi-secret-generator.js
 const fs = require("fs");
 const path = require("path");
@@ -21,7 +21,7 @@ function isWeakSecret(value) {
     !value ||
     value.length < 16 ||
     value === "changeme" ||
-    value === "// Production implementation required:-key"
+    value === "// production implementation required:-key"
   );
 }
 

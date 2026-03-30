@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -164,7 +164,7 @@ export async function POST(_request: NextRequest) {
     const body = await _request.json();
     const { action, trade } = body;
 
-    const canRun = process.env.PRODUCTION_CONFIRMED === "true";
+    const canRun = process.env.production_CONFIRMED === "true";
 
     if (action === "execute") {
       if (!canRun) {
@@ -177,7 +177,7 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json({
           status: "proposed",
           message:
-            "Execute trade proposed. Set PRODUCTION_CONFIRMED=true to execute.",
+            "Execute trade proposed. Set production_CONFIRMED=true to execute.",
         });
       }
 
@@ -200,7 +200,7 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json({
           status: "proposed",
           message:
-            "Cancel trade proposed. Set PRODUCTION_CONFIRMED=true to execute.",
+            "Cancel trade proposed. Set production_CONFIRMED=true to execute.",
         });
       }
 

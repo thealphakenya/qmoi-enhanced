@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 import { useState } from "react";
 
-[PRODUCTION READY]/production
+[production READY]/production
 export function useBitgetTrader() {
   const [bitgetStatus, setBitgetStatus] = useState<
     "connected" | "disconnected" | "error"
@@ -15,7 +15,7 @@ export function useBitgetTrader() {
   const [lastTradeResult, setLastTradeResult] = useState<any>(null);
   const [tradingError, setTradingError] = useState<string | null>(null);
 
-  // Enable real trading ([PRODUCTION READY] API call)
+  // Enable real trading ([production READY] API call)
   const enableRealTrading = () => {
     setIsRealTradingEnabled(true);
     setBitgetStatus("connected");
@@ -26,14 +26,14 @@ export function useBitgetTrader() {
     setIsRealTradingEnabled(false);
     setTradingError(null);
   };
-  // Execute a trade ([PRODUCTION READY] API call)
+  // Execute a trade ([production READY] API call)
   const executeTrade = async (trade: {
     symbol: string;
     side: "buy" | "sell";
     amount: number;
   }) => {
     try {
-      [PRODUCTION READY] API call to backend/bitget-trader.py
+      [production READY] API call to backend/bitget-trader.py
       const res = await fetch("/api/bitget-trade", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

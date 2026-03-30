@@ -1,4 +1,4 @@
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/usr/bin/env bash
 # Create a self-contained offline bundle of PWAs and server code
 set -euo pipefail

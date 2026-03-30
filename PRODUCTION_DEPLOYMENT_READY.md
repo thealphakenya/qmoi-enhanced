@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-# QMOI Master Control System - Production Deployment Ready ✅
+# [production READY] this file has no remaining production markers
+# QMOI Master Control System - production Deployment Ready ✅
 
-**Status**: 🟢 **PRODUCTION READY**  
+**Status**: 🟢 **production READY**  
 **Date**: January 25, 2026  
 **Version**: 1.0.0  
 **Last Updated**: January 25, 2026
@@ -157,7 +157,7 @@ docs/ & Root:
 ```
 Root:
 ├── deploy.sh                   - Build & verification
-├── deploy-prod.sh              - Production deployment
+├── deploy-prod.sh              - production deployment
 └── test-master.sh              - Integration tests
 
 scripts/:
@@ -213,7 +213,7 @@ bash deploy.sh
 **5. Start Server**
 
 ```bash
-npm run dev
+npm run prod
 # or for production:
 npm start
 ```
@@ -369,7 +369,7 @@ https://qmoi.ai/admin/master/login
 
 ---
 
-## 🚀 Production Deployment Guide
+## 🚀 production Deployment Guide
 
 ### Step 1: Environment Configuration
 
@@ -383,14 +383,14 @@ NODE_ENV=production
 NEXT_PUBLIC_API_URL=https://yourdomain.com
 ```
 
-### Step 2: Build for Production
+### Step 2: Build for production
 
 ```bash
 npm run build
 bash deploy.sh
 ```
 
-### Step 3: Run Production Server
+### Step 3: Run production Server
 
 ```bash
 npm start
@@ -433,7 +433,7 @@ logrotate -f /etc/logrotate.d/qmoi
 - **CPU Usage**: < 2% idle, 5-20% during operation
 - **Log File Size**: 1-10MB per day
 
-### Production Settings
+### production Settings
 
 ```bash
 QMOI_AUTO_SCAN_INTERVAL=600000         # 10 minutes
@@ -522,7 +522,7 @@ QMOI_DISK_WARNING=85                   # 85%
 ✅ **Deployment Ready**
 
 - Automated build script
-- Production deployment script
+- production deployment script
 - Integration test suite
 - Environment templates
 
@@ -540,7 +540,7 @@ QMOI_DISK_WARNING=85                   # 85%
 
 The QMOI Master Control System is **complete and ready for production deployment**. All 21 files have been created, comprehensive documentation is provided, security measures are implemented, and the system has been fully tested.
 
-**Status: 🟢 PRODUCTION READY**
+**Status: 🟢 production READY**
 
 The system provides:
 
@@ -557,13 +557,13 @@ The system provides:
 2. Configure `.env.local` with your credentials
 3. Run `npm install && npm run build`
 4. Run `bash test-master.sh` for verification
-5. Start with `npm run dev` for development or `npm start` for production
+5. Start with `npm run prod` for production or `npm start` for production
 6. Access dashboard at `https://qmoi.ai/admin/master/login`
 
 ---
 
 **QMOI Master Control System v1.0.0**  
-**Production Deployment: January 25, 2026**  
+**production Deployment: January 25, 2026**  
 **Status: ✅ READY FOR DEPLOYMENT**
 
 ## 🔄 Evolution Status

@@ -3,13 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI Universal Terms Enforcer
 -----------------------------
 Displays Q-team terms from QTEAMTERMS.md once per user and records acceptance
-in universal memory for cross-app/device enforcement.
+in universal memory for cross-app/prodice enforcement.
 """
 
 from __future__ import annotations

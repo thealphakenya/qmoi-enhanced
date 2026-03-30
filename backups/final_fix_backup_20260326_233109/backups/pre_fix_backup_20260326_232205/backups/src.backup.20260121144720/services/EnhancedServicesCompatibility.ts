@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 // Enhanced QMOI Services Compatibility Layer
 
 // Ensure all enhanced services work with current setup

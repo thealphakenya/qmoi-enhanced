@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # QMOI API Endpoints Reference - Role-Based Access Control
 
 **Status:** ✅ Complete  
@@ -15,7 +15,7 @@
 **Last Updated:** 2024  
 **RBAC Implementation:** ✅ Active
 
-**Production Readiness Notes (automated fixes applied):**
+**production Readiness Notes (automated fixes applied):**
 
 - `MasterContext` state updater stabilized: `updateQMOIMemory` is now a stable `useCallback` and accepts functional updaters to avoid render loops.
 - Chat components now sync conversation counts to `/api/qmoi/memory` (best-effort POST) to keep server-side QMOI memory in sync.
@@ -378,10 +378,10 @@ curl -X POST https://qmoi.ai/api/webauthn/register \
     "userId": "1",
     "username": "admin",
     "displayName": "Admin User",
-    "challenge": "[PRODUCTION READY]_challenge_data",
+    "challenge": "[production READY]_challenge_data",
     "credentialData": {
-      "id": "[PRODUCTION READY]_cred_id",
-      "publicKey": "[PRODUCTION READY]_public_key",
+      "id": "[production READY]_cred_id",
+      "publicKey": "[production READY]_public_key",
       "counter": 0
     }
   }'
@@ -435,11 +435,11 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   -d '{
     "userId": "1",
-    "challenge": "[PRODUCTION READY]_challenge",
+    "challenge": "[production READY]_challenge",
     "credentialId": "cred_1234567890",
-    "authenticatorData": "[PRODUCTION READY]_auth_data",
-    "clientDataJSON": "[PRODUCTION READY]_client_data",
-    "signature": "[PRODUCTION READY]_signature"
+    "authenticatorData": "[production READY]_auth_data",
+    "clientDataJSON": "[production READY]_client_data",
+    "signature": "[production READY]_signature"
   }'
 ```
 
@@ -643,7 +643,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
   "username": "admin",
   "role": "Administrator",
   "biometricMethods": ["fingerprint", "voice"],
-  "deviceId": "device_abc123"
+  "prodiceId": "prodice_abc123"
 }
 ```
 
@@ -995,7 +995,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
     {
       "id": "deal_123",
       "type": "revenue_generation",
-      "title": "Music Production Deal",
+      "title": "Music production Deal",
       "value": 500.0,
       "status": "active"
     }
@@ -1312,13 +1312,13 @@ curl -X POST https://qmoi.ai/api/webauthn/register \
 ```bash
 curl -X POST https://qmoi.ai/api/qmoi/session \
   -H "Content-Type: application/json" \
-  -d '{"userId":"2","username":"admin","role":"Administrator","biometricMethods":["fingerprint"],"deviceId":"device123"}'
+  -d '{"userId":"2","username":"admin","role":"Administrator","biometricMethods":["fingerprint"],"prodiceId":"prodice123"}'
 ```
 
 ---
 
 **Document Version:** 1.2.3  
-**Author:** QMOI Development  
+**Author:** QMOI production  
 **Last Updated:** 2024
 
 ## 🔄 Evolution Status

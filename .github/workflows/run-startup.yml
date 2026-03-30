@@ -25,7 +25,7 @@ jobs:
 
       - name: Start services (background)
         run: |
-          nohup ./startup.sh --dev > startup.log 2>&1 &
+          nohup ./startup.sh --prod > startup.log 2>&1 &
           sleep 8
           echo "--- startup log (head) ---"
           head -n 200 startup.log || true
@@ -45,7 +45,7 @@ jobs:
           for url in $ENDPOINTS; do
             ok=0
             for attempt in 1 2 3 4 5 6 7 8 9 10; do
-              status=$(curl -s -o /dev/null -w "%{http_code}" --max-time 5 "$url" || echo 000)
+              status=$(curl -s -o /prod/null -w "%{http_code}" --max-time 5 "$url" || echo 000)
               echo "[$url] attempt $attempt -> $status"
               if [ "$status" = "200" ] || [ "$status" = "302" ]; then
                 ok=1
@@ -66,8 +66,8 @@ jobs:
       - name: Run integration tests
         run: |
           echo "Running integration tests..."
-          timeout 30 bash -c 'until curl -s http://localhost:3000/ > /dev/null; do sleep 1; done' || true
-          echo "Dev server is responsive"
+          timeout 30 bash -c 'until curl -s http://localhost:3000/ > /prod/null; do sleep 1; done' || true
+          echo "prod server is responsive"
 
       - name: Check service PIDs
         run: |

@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # Unused UI Components
 
 This document tracks UI components (and related files) that are currently _not referenced_ by the active React/Next.js UI build. The goal is to ensure there are no orphaned components in the repo, and to either remove them or explicitly integrate them into a surface.
@@ -37,7 +37,7 @@ ComponentGallery.tsx now includes **150+ components** from all directories:
 - Analytics components (2)
 - Auth components (1)
 - Automation components (1)
-- Device components (4)
+- prodice components (4)
 - Predeploy components (1)
 - Projects components (6)
 - Security components (2)

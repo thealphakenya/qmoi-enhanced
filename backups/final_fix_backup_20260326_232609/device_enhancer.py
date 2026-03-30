@@ -24,11 +24,11 @@ def install_app(app_name):
     except Exception as e:
         print(f"Failed to install {app_name}: {e}")
 
-def enhance_device():
+def enhance_prodice():
     # data: set wallpaper and install a list of apps
     set_wallpaper('/usr/share/backgrounds/default.jpg')
     for app in ['vlc', 'gimp']:
         install_app(app)
 
 if __name__ == "__main__":
-    enhance_device()
+    enhance_prodice()

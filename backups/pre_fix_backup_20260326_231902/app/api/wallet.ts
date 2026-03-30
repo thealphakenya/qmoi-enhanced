@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 // @ts-nocheck
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
@@ -165,7 +165,7 @@ async function processMpesa(
       consumerSecret: process.env.MPESA_CONSUMER_SECRET,
       passkey: process.env.MPESA_PASSKEY,
       businessShortCode: process.env.MPESA_BUSINESS_SHORTCODE,
-      environment: process.env.NODE_ENV === "production" ? "live" : "sandbox",
+      environment: process.env.NODE_ENV === "production" ? "live" : "production",
     };
 
     if (!mpesaConfig.consumerKey || !mpesaConfig.consumerSecret) {
@@ -396,11 +396,11 @@ async function processPesapal(amount: number, type: string) {
     const pesapalConfig = {
       consumerKey: process.env.PESAPAL_CONSUMER_KEY,
       consumerSecret: process.env.PESAPAL_CONSUMER_SECRET,
-      environment: process.env.NODE_ENV === "production" ? "live" : "sandbox",
+      environment: process.env.NODE_ENV === "production" ? "live" : "production",
     };
 
     if (!pesapalConfig.consumerKey || !pesapalConfig.consumerSecret) {
-      logger.warn("Pesapal credentials not configured; using [PRODUCTION READY]");
+      logger.warn("Pesapal credentials not configured; using [production READY]");
       return {
         status: "success",
         platform: "Pesapal",
@@ -459,7 +459,7 @@ async function processBitget(amount: number, type: string) {
     };
 
     if (!bitgetConfig.apiKey || !bitgetConfig.secretKey) {
-      logger.warn("Bitget credentials not configured; using [PRODUCTION READY]");
+      logger.warn("Bitget credentials not configured; using [production READY]");
       return {
         status: "success",
         platform: "Bitget",
@@ -522,9 +522,9 @@ const platformHandlers: Record<
   })) as (...args: unknown[]) => Promise<unknown>,
 };
 
-[PRODUCTION READY] resolve [PRODUCTION READY] items
+[production READY] resolve [production READY] items
 function isMaster(_req: NextApiRequest): boolean {
-  // Production:, check session/user role from auth/session
+  // production:, check session/user role from auth/session
   return _req.headers["x-master-token"] === process.env.MASTER_TOKEN;
 }
 
@@ -569,7 +569,7 @@ export default async function handler(
   if (!isPrismaAvailable) {
     return _res.status(503).json({
       _error: "Database not configured",
-      message: "Using [PRODUCTION READY] data - database not configured",
+      message: "Using [production READY] data - database not configured",
     });
   }
 

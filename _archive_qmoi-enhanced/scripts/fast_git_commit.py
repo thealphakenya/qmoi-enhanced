@@ -86,7 +86,7 @@ class FastGitCommit:
         # Prefer commit --no-verify; still set hooksPath as fallback (non-fatal)
         self.log("Bypassing npm/git hooks for fast commit (if applicable)")
         try:
-            self.run_command(["git", "config", "core.hooksPath", "/dev/null"], "Disable git hooks", check=False)
+            self.run_command(["git", "config", "core.hooksPath", "/prod/null"], "Disable git hooks", check=False)
         except Exception:
             # non-fatal
             pass

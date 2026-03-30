@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "COMPONENTS.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -43,7 +43,7 @@ Props and usage details are documented in each component's file.
 ## For More Details
 
 - See each component's `.tsx` file for implementation and usage examples.
-- Refer to DEVCOMMANDS.md for development commands.
+- Refer to prodCOMMANDS.md for production commands.
 - See TRACKS.md, SYNCREPOS.md, and ALLMDFILESREFS.md for automation, memory, and sync features.
 - FEATURESREADME.md and ENHANCED_AUTOMATION_SUMMARY.md provide details on advanced features and automation.
 - FarmBusinessManager.tsx: Farm business management
@@ -66,7 +66,7 @@ Props and usage details are documented in each component's file.
 - NotificationCenter.tsx: Notification center
 - NotificationPanel.tsx: Recent notifications panel
 - PreviewWindow.tsx: Main preview UI
-- PriceProductVerifier.tsx: Product verification
+- PriceproductVerifier.tsx: product verification
 - QAvatar.tsx: Avatar UI
 - QCityErrorManager.tsx: Error management for QCity
 - QCityThemeProvider.tsx: Theme provider for QCity
@@ -75,7 +75,7 @@ Props and usage details are documented in each component's file.
 - QI.tsx: QI main panel
 - QIStateWindow.tsx: QI state display
 - QMOIAutoFixDashboard.tsx: Auto-fix dashboard
-- QMOIOwnDevice.tsx: Own device management
+- QMOIOwnprodice.tsx: Own prodice management
 - QiSpaces.tsx: Qi spaces panel
 - QmoiAccessibility.tsx: Accessibility features
 - QmoiAutoDistribution.tsx: Auto distribution UI
@@ -148,7 +148,7 @@ Most components are used in the main application page (`app/page.tsx`) and are i
 ## For More Details
 
 - See each component's `.tsx` file for implementation and usage examples.
-- Refer to DEVCOMMANDS.md for development commands.
+- Refer to prodCOMMANDS.md for production commands.
 - See TRACKS.md, SYNCREPOS.md, and ALLMDFILESREFS.md for automation, memory, and sync features.
 
 <!-- QMOI_VALIDATION_START -->

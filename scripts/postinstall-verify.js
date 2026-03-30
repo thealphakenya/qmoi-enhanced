@@ -5,7 +5,7 @@
 
 // NOTE: 1 
 /**
- * // Production implementation required: postinstall verification for stable-Q-ai
+ * // production implementation required: postinstall verification for stable-Q-ai
  * Prevents npm install from failing when script is required.
  */
 

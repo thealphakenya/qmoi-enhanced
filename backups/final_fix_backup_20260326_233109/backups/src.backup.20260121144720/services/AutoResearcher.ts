@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 // AutoResearcher: Detects knowledge gaps, researches, and updates knowledge base
 export class AutoResearcher {
   private knowledgeBase: Record<string, string>;
@@ -16,7 +16,7 @@ export class AutoResearcher {
 
   /**
    * Research a topic and store result in the knowledge base.
-   * // Production implementation: implementation — integrate search/AI later.
+   * // production implementation: implementation — integrate search/AI later.
    */
   async researchTopic(topic: string): Promise<string> {
     const research = `Auto-researched content for ${topic}`;
@@ -29,8 +29,8 @@ export class AutoResearcher {
    * Notify about improvements. Make this a no-op for now but keep typing.
    */
   notifyImprovements(topic: string): void {
-    // Production: integrate with system notification service for real alerts
-    // Production implementation:: logs to console
+    // production: integrate with system notification service for real alerts
+    // production implementation:: logs to console
     console.info(`New knowledge added for ${topic}`);
   }
 

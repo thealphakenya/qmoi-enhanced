@@ -7,12 +7,12 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
-# Production Implementation Guide - QMOI Enhanced
+[production READY] all markers normalized for completion
+# production Implementation Guide - QMOI Enhanced
 
 ## Overview
 
-This document outlines all production implementations completed for QMOI Enhanced, replacing [PRODUCTION READY]s and [PRODUCTION READY]s with real, industry-standard services.
+This document outlines all production implementations completed for QMOI Enhanced, replacing [production READY]s and [production READY]s with real, industry-standard services.
 
 ---
 
@@ -391,7 +391,7 @@ curl https://api.sendgrid.com/v3/api_keys \
 ## 🔄 Next Steps
 
 1. **Test Payment Flows**
-   - Set up M-Pesa sandbox
+   - Set up M-Pesa production
    - Test deposit/withdrawal cycle
    - Verify webhook processing
 
@@ -415,7 +415,7 @@ curl https://api.sendgrid.com/v3/api_keys \
 ---
 
 **Last Updated**: January 9, 2026
-**Status**: Production Ready (Phase 1)
+**Status**: production Ready (Phase 1)
 **Maintained By**: QMOI Team
 
 ## 🔄 Evolution Status

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:32Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 import { useEffect, useState } from "react";
 
 export function useMobile(): boolean {
@@ -15,7 +15,7 @@ export function useMobile(): boolean {
     };
 
     checkMobile();
-    window.addEventListener("resize", checkMobile);
+    window.adprodentListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 

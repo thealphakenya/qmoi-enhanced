@@ -44,9 +44,9 @@ export async function GET(_request: NextRequest) {
       timestamp: new Date().toISOString(),
       action: "download-report-access",
       status: "success",
-      user: process.env.AUTH_USER || "unknown", // Production: Extract from JWT auth context
+      user: process.env.AUTH_USER || "unknown", // production: Extract from JWT auth context
       app: "QMOI",
-      device: "unknown",
+      prodice: "unknown",
       _error: null,
     };
     try {
@@ -82,7 +82,7 @@ export async function GET(_request: NextRequest) {
       status: "error",
       user: "unknown",
       app: "QMOI",
-      device: "unknown",
+      prodice: "unknown",
       _error: error?.toString() || "unknown error",
     };
     try {

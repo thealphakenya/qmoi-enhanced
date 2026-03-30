@@ -7,8 +7,8 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
-# Phase 4 Production Hardening & Feature Implementation
+[production READY] all markers normalized for completion
+# Phase 4 production Hardening & Feature Implementation
 
 **Status**: In Progress  
 **Last Updated**: 2025-11-11  
@@ -21,7 +21,7 @@ Phase 4 represents the final transition from documentation and tooling to **full
 
 - **Security hardening** (credential rotation, secret management, link integrity)
 - **Offline resilience** (72+ verified links, asset caching, fallback strategies)
-- **Production autotests** (multi-platform E2E, CI gate integration)
+- **production autotests** (multi-platform E2E, CI gate integration)
 - **Wallet hardening** (transaction approval, audit logging, secret protection)
 - **Project automation** (lifecycle templates, RBAC, resource tracking)
 - **Release verification** (link checks, artifact validation, dashboard updates)
@@ -33,7 +33,7 @@ Phase 4 represents the final transition from documentation and tooling to **full
 
 ### Completed ✅
 
-**Production Link Audit** (`tools/production_link_audit.py`):
+**production Link Audit** (`tools/production_link_audit.py`):
 
 - 72 verified links identified and categorized
 - 5 categories: production_downloads (41), local_services (8), version_control (9), external_production (10), ml_service (4)
@@ -44,7 +44,7 @@ Phase 4 represents the final transition from documentation and tooling to **full
 
 - Workflow patterns for disconnected operation
 - Cache initialization commands
-- Local service [PRODUCTION READY]ing examples
+- Local service [production READY]ing examples
 - Offline verification procedures
 
 **Security Infrastructure**:
@@ -134,7 +134,7 @@ git push --force-with-lease --all
 
 ---
 
-## 3. Production Autotests & E2E Testing
+## 3. production Autotests & E2E Testing
 
 ### Framework Selection
 
@@ -236,7 +236,7 @@ jobs:
 
 - Platform emulator/simulator setup in CI runners (iOS simulator not available on Ubuntu)
 - Appium driver configuration and maintenance
-- [PRODUCTION READY] and fixture setup for multi-platform scenarios
+- [production READY] and fixture setup for multi-platform scenarios
 
 ---
 
@@ -290,7 +290,7 @@ wallet/
 ### Project Lifecycle
 
 ```
-created → executed → dev → testing → release → live → archived
+created → executed → prod → testing → release → live → archived
   ↓        ↓        ↓      ↓         ↓       ↓       ↓
  notify  allocate  track  validate  verify  monitor retire
 ```
@@ -310,12 +310,12 @@ platforms:
 status: created
 resources:
   budget_usd: number
-  developers: number
+  prodelopers: number
   start_date: ISO8601
   end_date: ISO8601
 rbac:
   owner: admin
-  developers: write
+  prodelopers: write
   testers: read
 automation:
   - notify_team_on_creation
@@ -329,7 +329,7 @@ automation:
 ```
 admin       → full access (create, delete, modify, override gates)
 maintainer  → modify project, approve releases, manage team
-developer   → write to project, contribute code
+prodeloper   → write to project, contribute code
 tester      → read project, log issues, run tests
 viewer      → read-only access
 ```
@@ -449,7 +449,7 @@ jobs:
 
 ### Implementation
 
-**Local Usage** (for development):
+**Local Usage** (for production):
 
 ```bash
 # Set token locally (add to .env, not committed)
@@ -505,7 +505,7 @@ jobs:
 
 ---
 
-## 8. Production Deployment Checklist
+## 8. production Deployment Checklist
 
 - [ ] **Credentials Rotated & Revoked**
   - [ ] GitHub PAT rotated and added to GitHub Secrets
@@ -515,7 +515,7 @@ jobs:
   - [ ] Git history purged of token occurrences
 
 - [ ] **Offline Infrastructure Deployed**
-  - [ ] Production link audit completed (`PRODUCTION_LINK_AUDIT.json`)
+  - [ ] production link audit completed (`production_LINK_AUDIT.json`)
   - [ ] Asset caching script executed (`cache_links.py --production`)
   - [ ] Offline documentation site built and tested
   - [ ] Static site deployed to docs_site/ accessible via offline modes
@@ -560,7 +560,7 @@ jobs:
   - [ ] Bot approval rules configured
 
 - [ ] **Final QA & Monitoring**
-  - [ ] Production offline access tested (all critical workflows pass)
+  - [ ] production offline access tested (all critical workflows pass)
   - [ ] CI/CD pipeline fully operational
   - [ ] Monitoring dashboards live (link health, wallet transactions, project status)
   - [ ] Rollback procedures documented
@@ -573,10 +573,10 @@ jobs:
 | Blocker                        | Impact                               | Mitigation                                                  | Owner            |
 | ------------------------------ | ------------------------------------ | ----------------------------------------------------------- | ---------------- |
 | iOS simulator in CI            | E2E tests for iOS blocked            | Use BrowserStack or Sauce Labs for cloud runners            | QA Lead          |
-| Manual token rotation          | Blocking security hardening          | Create runbook; batch rotations quarterly                   | DevOps           |
+| Manual token rotation          | Blocking security hardening          | Create runbook; batch rotations quarterly                   | prodOps           |
 | Git history cleanup force-push | Requires branch protection override  | Coordinate with release manager; announce downtime          | Engineering Lead |
 | Link report tool (0 links)     | Offline strategy not fully validated | Debug scanner logic; run grep_search to confirm links exist | Tech Lead        |
-| Wallet transaction approval UX | Release delay                        | Design [PRODUCTION READY] approval flow for MVP; iterate post-launch      | Product          |
+| Wallet transaction approval UX | Release delay                        | Design [production READY] approval flow for MVP; iterate post-launch      | product          |
 | Project RBAC persistence       | Feature complete                   | Start with GitHub Teams; migrate to database post-MVP       | Backend          |
 
 ---
@@ -613,7 +613,7 @@ jobs:
 - Project templates deployed
 - RBAC model tested
 
-**Phase 4d (Week 4)**: Production validation & monitoring
+**Phase 4d (Week 4)**: production validation & monitoring
 
 - Full integration tests pass
 - Monitoring dashboards live
@@ -655,7 +655,7 @@ jobs:
 
 ## Appendix A: Reference Links
 
-- **Production Link Audit**: `docs_site/PRODUCTION_LINK_AUDIT.json`
+- **production Link Audit**: `docs_site/production_LINK_AUDIT.json`
 - **Credential Rotation Playbook**: `docs/CREDENTIAL_ROTATION_PLAYBOOK.md`
 - **Offline Access Guide**: `docs/OFFLINE_GUIDE.md`
 - **Security Checks Workflow**: `.github/workflows/security-checks.yml`

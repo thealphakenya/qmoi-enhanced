@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 /// <reference types="node" />
 import { EventEmitter } from "events";
@@ -114,7 +114,7 @@ export class FaceRecognitionService {
       // This would load the required models
       console.log("🤖 Initializing face recognition API...");
 
-      // PRODUCTION: Install and configure face-api.js or alternative library (face-recognition.js, TensorFlow.js)
+      // production: Install and configure face-api.js or alternative library (face-recognition.js, TensorFlow.js)
       // See: https://github.com/justadudewhohacks/face-api.js
       this.faceApi = {
         loadModels: async () => true,

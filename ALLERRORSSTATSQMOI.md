@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -109,8 +109,8 @@ See [COMPREHENSIVE_ERROR_ANALYSIS.md](COMPREHENSIVE_ERROR_ANALYSIS.md) for detai
 
 ## Error Summary
 
-- All device types: Last autotest run (2025-07-22) - No errors detected. All install/build/test cycles passed.
-- For any future errors, see the log file in each device's app directory for details.
+- All prodice types: Last autotest run (2025-07-22) - No errors detected. All install/build/test cycles passed.
+- For any future errors, see the log file in each prodice's app directory for details.
 
 <!-- QMOI_VALIDATION_START -->
 
@@ -122,7 +122,7 @@ See [COMPREHENSIVE_ERROR_ANALYSIS.md](COMPREHENSIVE_ERROR_ANALYSIS.md) for detai
 {
 "name": "title_present",
 "ok": true,
-"detail": "QMOI Device-Specific Error Stats"
+"detail": "QMOI prodice-Specific Error Stats"
 },
 {
 "name": "links",

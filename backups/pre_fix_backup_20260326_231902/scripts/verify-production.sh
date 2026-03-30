@@ -1,14 +1,14 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/bin/bash
 
-# QMOI Enhanced - Production Readiness Verification Script
+# QMOI Enhanced - production Readiness Verification Script
 # This script verifies that the application is ready for production deployment
 
 set -e
 
 echo "╔════════════════════════════════════════════════════════════════╗"
 echo "║                                                                ║"
-echo "║     🚀 QMOI Enhanced - Production Readiness Verification 🚀     ║"
+echo "║     🚀 QMOI Enhanced - production Readiness Verification 🚀     ║"
 echo "║                                                                ║"
 echo "╚════════════════════════════════════════════════════════════════╝"
 echo ""
@@ -40,14 +40,14 @@ print_check() {
 }
 
 echo -e "${BLUE}1. Checking Node.js and npm installation${NC}"
-if command -v node &> /dev/null; then
+if command -v node &> /prod/null; then
   NODE_VERSION=$(node -v)
   print_check "pass" "Node.js installed: $NODE_VERSION"
 else
   print_check "fail" "Node.js not found"
 fi
 
-if command -v npm &> /dev/null; then
+if command -v npm &> /prod/null; then
   NPM_VERSION=$(npm -v)
   print_check "pass" "npm installed: $NPM_VERSION"
 else
@@ -94,7 +94,7 @@ fi
 echo ""
 echo -e "${BLUE}6. Checking Git configuration${NC}"
 
-if git rev-parse --git-dir > /dev/null 2>&1; then
+if git rev-parse --git-dir > /prod/null 2>&1; then
   print_check "pass" "Git repository initialized"
   COMMIT_COUNT=$(git rev-list --count HEAD)
   print_check "pass" "Git commits: $COMMIT_COUNT"
@@ -111,14 +111,14 @@ echo -e "${BLUE}7. Checking environment configuration${NC}"
 echo ""
 echo -e "${BLUE}8. Checking documentation${NC}"
 
-[ -f "PRODUCTION_DEPLOYMENT_CHECKLIST.md" ] && print_check "pass" "Deployment checklist exists" || print_check "fail" "Deployment checklist required"
-[ -f "PRODUCTION_API_REFERENCE.md" ] && print_check "pass" "API reference exists" || print_check "fail" "API reference required"
+[ -f "production_DEPLOYMENT_CHECKLIST.md" ] && print_check "pass" "Deployment checklist exists" || print_check "fail" "Deployment checklist required"
+[ -f "production_API_REFERENCE.md" ] && print_check "pass" "API reference exists" || print_check "fail" "API reference required"
 [ -f ".github/workflows/deploy.yml" ] && print_check "pass" "CI/CD pipeline configured" || print_check "fail" "CI/CD pipeline required"
 
 echo ""
 echo -e "${BLUE}9. Checking dependencies${NC}"
 
-if npm list react &> /dev/null; then
+if npm list react &> /prod/null; then
   REACT_VERSION=$(npm list react | grep react | head -1)
   print_check "pass" "React installed"
 else

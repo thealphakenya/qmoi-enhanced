@@ -112,7 +112,7 @@ class QMOIMasterAutomation:
         # Enforce cloud-offloading and cloud_optimized mode
         if self.is_cloud_environment:
             os.environ["QMOI_CLOUD_OPTIMIZED"] = "true"
-            os.environ["QMOI_DEVICE_INDEPENDENT"] = "true"
+            os.environ["QMOI_prodICE_INDEPENDENT"] = "true"
             os.environ["QMOI_AUTO_RESTART"] = "true"
             self.logger.info("[QMOI] Cloud-offload mode enabled. All automation will auto-restart in cloud if stopped.")
         

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:32Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 import React, {
   useState,
   useEffect,
@@ -240,7 +240,7 @@ export function useQMOIAutoInteraction() {
 async function executeClick(interaction: AutoInteraction) {
   const element = document.querySelector(interaction.target) as HTMLElement;
   if (element) {
-    [PRODUCTION READY] human-like click with slight delay
+    [production READY] human-like click with slight delay
     await new Promise((resolve) =>
       setTimeout(resolve, Math.random() * 200 + 100)
     );
@@ -260,7 +260,7 @@ async function executeInput(interaction: AutoInteraction) {
     interaction.target
   ) as HTMLInputElement;
   if (element && interaction.parameters?.value) {
-    [PRODUCTION READY] human-like typing
+    [production READY] human-like typing
     for (const char of interaction.parameters.value) {
       element.value += char;
       element.dispatchEvent(new Event("input", { bubbles: true }));
@@ -317,7 +317,7 @@ async function executeDrag(interaction: AutoInteraction) {
     ) as HTMLElement;
 
     if (targetElement) {
-      [PRODUCTION READY] drag operation
+      [production READY] drag operation
       const rect = targetElement.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
@@ -440,7 +440,7 @@ export function withQMOIAutoInteraction<P extends object>(
         }
       };
 
-      element.addEventListener(
+      element.adprodentListener(
         "qmoi-interaction",
         handleInteraction as EventListener
       );

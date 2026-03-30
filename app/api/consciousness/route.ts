@@ -7,7 +7,7 @@
  * QMOI Consciousness & Awareness API Routes
  * Endpoints for consciousness state, awareness context, and memory operations
  * 
- * Production-ready with real integrations and proper error handling
+ * production-ready with real integrations and proper error handling
  */
 
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -25,7 +25,7 @@ export default async function handler(
   try {
     // GET endpoints - retrieve information
     if (method === "GET") {
-      const { endpoint, user_id, device_id, memory_id } = req.query;
+      const { endpoint, user_id, prodice_id, memory_id } = req.query;
 
       // Get consciousness state
       if (endpoint === "consciousness") {
@@ -64,8 +64,8 @@ export default async function handler(
       }
 
       // Get environment awareness
-      if (endpoint === "awareness/environment" && typeof device_id === "string") {
-        const envAwareness = awarenessSystem.getEnvironmentAwareness(device_id);
+      if (endpoint === "awareness/environment" && typeof prodice_id === "string") {
+        const envAwareness = awarenessSystem.getEnvironmentAwareness(prodice_id);
         return res.status(200).json({
           success: true,
           environment: envAwareness || null,
@@ -148,7 +148,7 @@ export default async function handler(
 
       // Update environment awareness
       if (endpoint === "awareness/environment/update") {
-        await awarenessSystem.updateEnvironment(data.device_id, data.context);
+        await awarenessSystem.updateEnvironment(data.prodice_id, data.context);
         return res.status(200).json({
           success: true,
           message: "Environment awareness updated",
@@ -209,7 +209,7 @@ export default async function handler(
       if (endpoint === "memory/delete") {
         const deleted = await memorySyncSystem.deleteMemory(
           data.memory_id,
-          data.device_id,
+          data.prodice_id,
           data.user_id,
         );
         return res.status(200).json({
@@ -240,11 +240,11 @@ export default async function handler(
         });
       }
 
-      // Sync memory to devices
+      // Sync memory to prodices
       if (endpoint === "orchestration/sync-memory") {
-        await orchestrationEngine.syncMemoryToDevices(
+        await orchestrationEngine.syncMemoryToprodices(
           data.user_id,
-          data.device_ids,
+          data.prodice_ids,
         );
         return res.status(200).json({
           success: true,

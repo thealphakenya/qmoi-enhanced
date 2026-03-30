@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Issue final for ALLWALLETSQVS.md"
 generated: 2025-11-08T16:06:38.260469Z
@@ -19,9 +19,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [PRODUCTION READY] markers or [PRODUCTION READY]s.
-- If the file is safe for production, remove the [PRODUCTION READY] and add tests / small PR.
-- If the file is intentionally non-production (e.g. [PRODUCTION READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [production READY] markers or [production READY]s.
+- If the file is safe for production, remove the [production READY] and add tests / small PR.
+- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -45,20 +45,20 @@ Discovered wallet docs (non-exhaustive)
 - `LEAHWALLET.md` — Leah/Sister wallet guide and UI notes.
 - `QMOI-REVENUE-README.md`, `QMOIREVENUEGENERATION.md`, `QMOIAUTOREVENUEEARN.md` — revenue/autorevenue docs referencing Cashon and wallet flows.
 - `CASHONTRADINGREADME.md`, `TRADINGREADME.md` — trading + wallet integration notes.
-- Various README files reference wallets and payment providers (Mpesa, Pesapal, Binance, Bitget, CashApp). Use the repository-wide [PRODUCTION READY] scanner to find more references.
+- Various README files reference wallets and payment providers (Mpesa, Pesapal, Binance, Bitget, CashApp). Use the repository-wide [production READY] scanner to find more references.
 
 Location of automated checks
 - Script: `scripts/wallets/check_wallets.py`
 - Validation output: `.qmoi_validation/all_wallets_qvs.json`
 
 How the checks work
-- Default mode: [PRODUCTION READY]/dry-run. No real network transfers or money movement are performed.
+- Default mode: [production READY]/dry-run. No real network transfers or money movement are performed.
 - To run live operations (NOT required without human review + secret manager), you must set:
-  - `PRODUCTION_CONFIRMED=true` in the environment, and
+  - `production_CONFIRMED=true` in the environment, and
   - pass the `--real` flag to the script.
 - Live transfer code paths are intentionally gated and require human approval and secret provisioning.
 
-Run (dry-run) — local dev
+Run (dry-run) — local prod
 ```bash
 python3 scripts/wallets/check_wallets.py
 ````
@@ -67,7 +67,7 @@ Run (explicit live, only after human review)
 
 ```bash
 # Only run after manual code review and secrets provisioned
-export PRODUCTION_CONFIRMED=true
+export production_CONFIRMED=true
 python3 scripts/wallets/check_wallets.py --real
 ```
 

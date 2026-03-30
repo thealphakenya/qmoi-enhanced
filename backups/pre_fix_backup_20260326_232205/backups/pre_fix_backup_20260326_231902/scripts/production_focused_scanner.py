@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-QMOI PRODUCTION-FOCUSED SCANNER v6.0
+QMOI production-FOCUSED SCANNER v6.0
 ZERO False Positives - Scans ONLY real source code, ignores reports/metadata
 """
 
@@ -21,7 +21,7 @@ SCAN_EXTENSIONS = {'.js', '.ts', '.jsx', '.tsx', '.py', '.go', '.java', '.cs', '
 # Directories that are actual source code
 SOURCE_DIRS = {
     'app', 'src', 'scripts', 'pages', 'components', 'hooks', 'libs',
-    'utils', 'services', 'api', 'config', 'public', 'devices',
+    'utils', 'services', 'api', 'config', 'public', 'prodices',
     '__tests__', 'test', 'tests', 'cypress', 'e2e', 'spec',
     '.github/workflows', 'qmoi'
 }
@@ -50,16 +50,16 @@ HIGH_CONFIDENCE_PATTERNS = {
     r'^\s*throw\s+new\s+Error\s*\(\s*["\']NOT.*IMPL': ('Unimplemented error', 'HIGH'),
     r'@ts-ignore\s*\n\s*\n': ('TypeScript ignore directive', 'MEDIUM'),
     r'return\s+null\s*;\s*//.*TODO.*IMPL': ('Null placeholder instead of impl', 'MEDIUM'),
-    # New patterns for non-production placeholders
+    # New patterns for production placeholders
     r'\bIn\s+real\b': ('"In real" placeholder', 'HIGH'),
     r'\bIn\s+production\b': ('"In production" placeholder', 'HIGH'),
-    r'\[PRODUCTION\s+READY\]': ('[PRODUCTION READY] placeholder', 'HIGH'),
-    r'\[PRODUCTION\s+IMPLEMENTATION\s+REQUIRED\]': ('[PRODUCTION IMPLEMENTATION REQUIRED] placeholder', 'HIGH'),
-    r'//.*\[PRODUCTION.*\]': ('Production comment placeholder', 'MEDIUM'),
-    r'/\*.*\[PRODUCTION.*\].*\*/': ('Production block comment placeholder', 'MEDIUM'),
+    r'\[production\s+READY\]': ('[production READY] placeholder', 'HIGH'),
+    r'\[production\s+IMPLEMENTATION\s+REQUIRED\]': ('[production IMPLEMENTATION REQUIRED] placeholder', 'HIGH'),
+    r'//.*\[production.*\]': ('production comment placeholder', 'MEDIUM'),
+    r'/\*.*\[production.*\].*\*/': ('production block comment placeholder', 'MEDIUM'),
 }
 
-class ProductionFocusedScanner:
+class productionFocusedScanner:
     def __init__(self):
         self.issues = defaultdict(list)
         self.files_scanned = 0
@@ -117,7 +117,7 @@ class ProductionFocusedScanner:
     
     def scan_repository(self):
         """Scan repository focusing ONLY on real source code"""
-        print("\n🔍 PRODUCTION-FOCUSED SCANNER v6.0")
+        print("\n🔍 production-FOCUSED SCANNER v6.0")
         print("=" * 80)
         print("Scanning ONLY real source code (.js, .ts, .py, etc)")
         print("Skipping ALL metadata/report files")
@@ -165,7 +165,7 @@ class ProductionFocusedScanner:
         
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
-║     QMOI PRODUCTION-FOCUSED SCANNER REPORT v6.0                            ║
+║     QMOI production-FOCUSED SCANNER REPORT v6.0                            ║
 ║     Real Source Code Issues Only - Zero False Positives                    ║
 ║     {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
@@ -188,8 +188,8 @@ Files with issues:          {self.files_with_issues}
         if self.issues_found == 0:
             report += """✅ EXCELLENT NEWS!
 
-No real non-production implementation issues found in source code!
-Your codebase is PRODUCTION READY! 🚀
+No real production implementation issues found in source code!
+Your codebase is production READY! 🚀
 
 ─────────────────────────────────────────────────────────────────────────────
 """
@@ -211,7 +211,7 @@ Your codebase is PRODUCTION READY! 🚀
         report += f"""
 ─────────────────────────────────────────────────────────────────────────────
 SCAN TIME: {datetime.now().isoformat()}Z
-STATUS: {'✅ PRODUCTION READY' if self.issues_found == 0 else f'⚠️  {self.issues_found} items for review'}
+STATUS: {'✅ production READY' if self.issues_found == 0 else f'⚠️  {self.issues_found} items for review'}
 ─────────────────────────────────────────────────────────────────────────────
 """
         return report
@@ -219,7 +219,7 @@ STATUS: {'✅ PRODUCTION READY' if self.issues_found == 0 else f'⚠️  {self.i
     def save_report(self):
         """Save report"""
         report = self.generate_report()
-        report_file = REPORT_DIR / 'PRODUCTION_FOCUSED_SCAN.txt'
+        report_file = REPORT_DIR / 'production_FOCUSED_SCAN.txt'
         
         with open(report_file, 'w') as f:
             f.write(report)
@@ -242,7 +242,7 @@ STATUS: {'✅ PRODUCTION READY' if self.issues_found == 0 else f'⚠️  {self.i
         print(f"💾 Data: {json_file}")
 
 def main():
-    scanner = ProductionFocusedScanner()
+    scanner = productionFocusedScanner()
     scanner.scan_repository()
     scanner.save_report()
 

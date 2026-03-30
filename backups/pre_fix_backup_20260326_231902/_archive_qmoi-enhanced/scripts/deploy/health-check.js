@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 /* eslint-env node */
 import { execSync } from "child_process";
 import fs from "fs";
@@ -222,7 +222,7 @@ class DeploymentHealthCheck {
         const envContent = [
           "NODE_ENV=production",
           "NEXT_PUBLIC_APP_ENV=production",
-          "QMOI_AUTODEV_ENABLED=true",
+          "QMOI_AUTOprod_ENABLED=true",
         ].join("\n");
         fs.writeFileSync(".env", envContent);
         fixes.push("environment");

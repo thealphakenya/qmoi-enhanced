@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 import subprocess
 import time
 import json
@@ -343,14 +343,14 @@ class NetworkManager:
                 if password:
                     subprocess.run(
                         [
-                            "nmcli", "device", "wifi", "connect",
+                            "nmcli", "prodice", "wifi", "connect",
                             ssid, "password", password
                         ],
                         check=True
                     )
                 else:
                     subprocess.run(
-                        ["nmcli", "device", "wifi", "connect", ssid],
+                        ["nmcli", "prodice", "wifi", "connect", ssid],
                         check=True
                     )
             
@@ -390,7 +390,7 @@ class NetworkManager:
             elif sys.platform == "linux":
                 # Linux
                 subprocess.run(
-                    ["nmcli", "device", "disconnect", "wlan0"],
+                    ["nmcli", "prodice", "disconnect", "wlan0"],
                     check=True
                 )
             
@@ -443,7 +443,7 @@ class NetworkManager:
             elif sys.platform == "linux":
                 # Linux
                 output = subprocess.check_output(
-                    ["nmcli", "-f", "SSID,SIGNAL,SECURITY", "device", "wifi", "list"]
+                    ["nmcli", "-f", "SSID,SIGNAL,SECURITY", "prodice", "wifi", "list"]
                 ).decode()
                 
                 for line in output.split("\n")[1:]:
@@ -632,7 +632,7 @@ class NetworkManager:
             elif sys.platform == "linux":
                 # Linux
                 subprocess.run(
-                    ["tc", "qdisc", "add", "dev", "wlan0", "root", "tbf"],
+                    ["tc", "qdisc", "add", "prod", "wlan0", "root", "tbf"],
                     check=True
                 )
         
@@ -656,7 +656,7 @@ class NetworkManager:
                 # Linux
                 subprocess.run(
                     [
-                        "tc", "qdisc", "add", "dev", "wlan0", "root",
+                        "tc", "qdisc", "add", "prod", "wlan0", "root",
                         "tbf", "rate", f"{limit}mbit"
                     ],
                     check=True
@@ -666,11 +666,11 @@ class NetworkManager:
             self.logger.error(f"Error setting bandwidth limit: {e}")
     
     def scan_network(self) -> Dict:
-        """Scan network for devices and vulnerabilities."""
+        """Scan network for prodices and vulnerabilities."""
         try:
             if self.config["security"]["enabled"]:
                 results = {
-                    "devices": [],
+                    "prodices": [],
                     "vulnerabilities": [],
                     "ports": []
                 }
@@ -678,18 +678,18 @@ class NetworkManager:
                 # Get local network
                 network = self.get_local_network()
                 
-                # Scan for devices
-                devices = self.scan_devices(network)
-                results["devices"] = devices
+                # Scan for prodices
+                prodices = self.scan_prodices(network)
+                results["prodices"] = prodices
                 
                 # Scan for vulnerabilities
                 if self.config["security"]["vulnerability_scanning"]:
-                    vulnerabilities = self.scan_vulnerabilities(devices)
+                    vulnerabilities = self.scan_vulnerabilities(prodices)
                     results["vulnerabilities"] = vulnerabilities
                 
                 # Scan ports
                 if self.config["security"]["port_scanning"]:
-                    ports = self.scan_ports(devices)
+                    ports = self.scan_ports(prodices)
                     results["ports"] = ports
                 
                 return results
@@ -733,10 +733,10 @@ class NetworkManager:
             self.logger.error(f"Error getting local network: {e}")
             return "192.168.1.1"  # Default
     
-    def scan_devices(self, network: str) -> List[Dict]:
-        """Scan network for devices."""
+    def scan_prodices(self, network: str) -> List[Dict]:
+        """Scan network for prodices."""
         try:
-            devices = []
+            prodices = []
             
             # Create ARP request
             arp = scapy.ARP(pdst=network)
@@ -747,16 +747,16 @@ class NetworkManager:
             result = scapy.srp(packet, timeout=3, verbose=0)[0]
             
             for sent, received in result:
-                devices.append({
+                prodices.append({
                     "ip": received.psrc,
                     "mac": received.hwsrc,
                     "vendor": self.get_vendor(received.hwsrc)
                 })
             
-            return devices
+            return prodices
         
         except Exception as e:
-            self.logger.error(f"Error scanning devices: {e}")
+            self.logger.error(f"Error scanning prodices: {e}")
             return []
     
     def get_vendor(self, mac: str) -> str:
@@ -775,14 +775,14 @@ class NetworkManager:
             self.logger.error(f"Error getting vendor: {e}")
             return "Unknown"
     
-    def scan_vulnerabilities(self, devices: List[Dict]) -> List[Dict]:
-        """Scan devices for vulnerabilities."""
+    def scan_vulnerabilities(self, prodices: List[Dict]) -> List[Dict]:
+        """Scan prodices for vulnerabilities."""
         try:
             vulnerabilities = []
             
-            for device in devices:
+            for prodice in prodices:
                 # Check for common vulnerabilities
-                vulns = self.check_device_vulnerabilities(device)
+                vulns = self.check_prodice_vulnerabilities(prodice)
                 vulnerabilities.extend(vulns)
             
             return vulnerabilities
@@ -791,18 +791,18 @@ class NetworkManager:
             self.logger.error(f"Error scanning vulnerabilities: {e}")
             return []
     
-    def check_device_vulnerabilities(self, device: Dict) -> List[Dict]:
-        """Check device for vulnerabilities."""
+    def check_prodice_vulnerabilities(self, prodice: Dict) -> List[Dict]:
+        """Check prodice for vulnerabilities."""
         try:
             vulnerabilities = []
             
             # Check for open ports
-            open_ports = self.scan_ports([device])
+            open_ports = self.scan_ports([prodice])
             
             for port in open_ports:
                 if port["port"] in [21, 22, 23, 3389]:
                     vulnerabilities.append({
-                        "device": device["ip"],
+                        "prodice": prodice["ip"],
                         "type": "open_port",
                         "port": port["port"],
                         "severity": "high",
@@ -810,9 +810,9 @@ class NetworkManager:
                     })
             
             # Check for weak protocols
-            if self.check_weak_protocols(device):
+            if self.check_weak_protocols(prodice):
                 vulnerabilities.append({
-                    "device": device["ip"],
+                    "prodice": prodice["ip"],
                     "type": "weak_protocol",
                     "severity": "medium",
                     "description": "Weak protocol detected"
@@ -824,12 +824,12 @@ class NetworkManager:
             self.logger.error(f"Error checking vulnerabilities: {e}")
             return []
     
-    def scan_ports(self, devices: List[Dict]) -> List[Dict]:
-        """Scan devices for open ports."""
+    def scan_ports(self, prodices: List[Dict]) -> List[Dict]:
+        """Scan prodices for open ports."""
         try:
             ports = []
             
-            for device in devices:
+            for prodice in prodices:
                 # Scan common ports
                 common_ports = [20, 21, 22, 23, 25, 53, 80, 110, 143, 443, 3389]
                 
@@ -837,12 +837,12 @@ class NetworkManager:
                     try:
                         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                         sock.settimeout(1)
-                        result = sock.connect_ex((device["ip"], port))
+                        result = sock.connect_ex((prodice["ip"], port))
                         
                         if result == 0:
                             service = self.get_service_name(port)
                             ports.append({
-                                "device": device["ip"],
+                                "prodice": prodice["ip"],
                                 "port": port,
                                 "service": service,
                                 "state": "open"
@@ -866,14 +866,14 @@ class NetworkManager:
         except:
             return "unknown"
     
-    def check_weak_protocols(self, device: Dict) -> bool:
+    def check_weak_protocols(self, prodice: Dict) -> bool:
         """Check for weak protocols."""
         try:
             # Check for Telnet
             try:
                 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 sock.settimeout(1)
-                result = sock.connect_ex((device["ip"], 23))
+                result = sock.connect_ex((prodice["ip"], 23))
                 sock.close()
                 
                 if result == 0:
@@ -885,7 +885,7 @@ class NetworkManager:
             try:
                 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 sock.settimeout(1)
-                result = sock.connect_ex((device["ip"], 21))
+                result = sock.connect_ex((prodice["ip"], 21))
                 sock.close()
                 
                 if result == 0:

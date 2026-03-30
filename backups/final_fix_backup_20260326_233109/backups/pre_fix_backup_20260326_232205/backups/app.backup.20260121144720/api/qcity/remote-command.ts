@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -40,7 +40,7 @@ export async function POST(_req: NextRequest) {
   const {
     cmd,
     stream,
-    deviceId = "default",
+    prodiceId = "default",
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
@@ -51,7 +51,7 @@ export async function POST(_req: NextRequest) {
   const qcityService = new QCityService();
   await qcityService.initialize();
 
-  logAudit({ action: "run", cmd, deviceId, user: "admin", status: "started" });
+  logAudit({ action: "run", cmd, prodiceId, user: "admin", status: "started" });
 
   if (stream) {
     // Stream small demo logs (best-effort)
@@ -62,7 +62,7 @@ export async function POST(_req: NextRequest) {
         function push() {
           if (i < 5) {
             controller.enqueue(
-              encoder.encode(`data: [${deviceId}] Log line ${i + 1}\n\n`),
+              encoder.encode(`data: [${prodiceId}] Log line ${i + 1}\n\n`),
             );
             i++;
             setTimeout(push, 300);
@@ -72,7 +72,7 @@ export async function POST(_req: NextRequest) {
             logAudit({
               action: "run",
               cmd,
-              deviceId,
+              prodiceId,
               user: "admin",
               status: "done",
             });
@@ -92,9 +92,9 @@ export async function POST(_req: NextRequest) {
   }
 
   const result = await qcityService
-    .runRemoteCommand(cmd, deviceId)
+    .runRemoteCommand(cmd, prodiceId)
     .catch((_e) => ({ _error: String(_e) }));
-  logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
+  logAudit({ action: "run", cmd, prodiceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
 

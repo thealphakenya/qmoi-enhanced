@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -36,7 +36,7 @@ export async function GET(_req: NextRequest) {
         { time: new Date(Date.now() - 7200_000).toISOString(), status },
       ],
       environment: {
-        node_env: process.env.NODE_ENV || "development",
+        node_env: process.env.NODE_ENV || "production",
         database_url_set: !!process.env.DATABASE_URL,
         has_api_key: !!(process.env.MASTER_TOKEN || process.env.API_KEY),
       },

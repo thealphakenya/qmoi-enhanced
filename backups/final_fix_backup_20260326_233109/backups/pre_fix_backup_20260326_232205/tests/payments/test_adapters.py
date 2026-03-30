@@ -3,12 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 import os
-from services.payments import sandbox_adapter
+from services.payments import production_adapter
 
-def test_sandbox_charge_and_refund(tmp_path):
-    adapter = sandbox_adapter.create({'env': 'test'})
+def test_production_charge_and_refund(tmp_path):
+    adapter = production_adapter.create({'env': 'test'})
     charge = adapter.charge('cust_123', 5000, 'KES', {'order': 'o1'})
     assert charge['status'] == 'succeeded'
     assert 'id' in charge

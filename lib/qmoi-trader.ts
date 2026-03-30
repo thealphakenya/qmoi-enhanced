@@ -333,7 +333,7 @@ export class QmoiTrader {
 
     try {
       const balance = 1000;
-      const activeTradeValue = Array.from(this.activeTrades.values()).reduce(
+      const activeTraprodalue = Array.from(this.activeTrades.values()).reduce(
         (sum, trade) => {
           return sum + trade.entryPrice * trade.quantity;
         },
@@ -341,7 +341,7 @@ export class QmoiTrader {
       );
 
       const rebalanceThreshold = 0.1;
-      if (Math.abs(activeTradeValue / balance - 0.5) > rebalanceThreshold) {
+      if (Math.abs(activeTraprodalue / balance - 0.5) > rebalanceThreshold) {
         .log("[QMOI Trader] Rebalancing portfolio...");
       }
     } catch (error) {

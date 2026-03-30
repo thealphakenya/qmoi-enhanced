@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # 🎉 QMOI Enhanced - Deployment Complete
 
-**Status:** ✅ **READY FOR PRODUCTION**  
+**Status:** ✅ **READY FOR production**  
 **Build Status:** ✅ **SUCCESSFUL**  
 **Date:** January 16, 2026  
 **Version:** 2.0.0
@@ -38,7 +38,7 @@ All build errors have been automatically fixed and the QMOI Enhanced application
 ### 1. **included Library Modules** ✅
 
 - Created `/lib/auth/service.ts` - Authentication service with JWT handling
-- Created `/lib/db/prisma.ts` - [PRODUCTION READY] Prisma client for database operations
+- Created `/lib/db/prisma.ts` - [production READY] Prisma client for database operations
 - Created `/lib/db/services.ts` - User, wallet, and transaction services
 - Created `/lib/email/service.ts` - Email service with transactional email support
 - Created `/lib/payments/service.ts` - Payment processing service
@@ -223,15 +223,15 @@ npm run build
 # ✓ Compiled successfully
 ```
 
-### Local Development
+### Local production
 
 ```bash
 npm install
-npm run dev
+npm run prod
 # Ready on https://qmoi.ai
 ```
 
-### Production Start
+### production Start
 
 ```bash
 npm run build
@@ -309,7 +309,7 @@ npm start
    - Add custom domain in Vercel dashboard
    - Update DNS records
 
-3. **Set Up Production Database**
+3. **Set Up production Database**
    - Connect PostgreSQL/MongoDB
    - Run migrations
    - Configure DATABASE_URL
@@ -358,7 +358,7 @@ npm start
 - Created included library modules
 - Fixed TypeScript errors
 - enabled type checking during build
-- Added [PRODUCTION READY] database implementations
+- Added [production READY] database implementations
 - Updated API documentation
 - Created deployment guides
 ```

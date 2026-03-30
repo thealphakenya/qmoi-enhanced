@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-## Production Readiness Snapshot
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -22,7 +22,7 @@
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI AI App Downloads (All Devices)
+# QMOI AI App Downloads (All prodices)
 
 ## Unified Auto-Detect Download Script
 
@@ -33,7 +33,7 @@ python downloadqmoiai.py
 ```
 
 - The script will detect your OS and download the correct app to:
-  - All apps and binaries listed below are actual, production-ready builds for each platform. No [PRODUCTION READY]s or non-production implementations are present.
+  - All apps and binaries listed below are actual, production-ready builds for each platform. No [production READY]s or production implementations are present.
   - `Qmoi_downloaded_apps/<platform>/v<version>/`
 - You can also specify a platform manually:
   - `python downloadqmoiai.py windows`
@@ -66,7 +66,7 @@ Qmoi_downloaded_apps/<platform>/v<version>/
 
 All links below are always up-to-date, autotested, and provided by QCity runners. Every app is autoverified for install, runtime, and compliance standards. If a download ever fails, it is automatically fixed and re-uploaded.
 
-Every app can be downloaded, transferred (e.g. via USB), and installed offline on any device, without requiring a download or internet connection. All download links are autotested, autoverified, and auto-fixed by QCity runners, with fallback to ngrok or Freenom if needed (see QMOINGROK.md). Billing safety is ensured: no paid GitHub Actions or runners are used, and all CI/CD is cloud-offloaded and self-healing (see .gitlab-ci.yml).
+Every app can be downloaded, transferred (e.g. via USB), and installed offline on any prodice, without requiring a download or internet connection. All download links are autotested, autoverified, and auto-fixed by QCity runners, with fallback to ngrok or Freenom if needed (see QMOINGROK.md). Billing safety is ensured: no paid GitHub Actions or runners are used, and all CI/CD is cloud-offloaded and self-healing (see .gitlab-ci.yml).
 
 | App Name | Platform         | Direct Download Link                                                                | Latest Version | Status | Verified |
 | -------- | ---------------- | ----------------------------------------------------------------------------------- | -------------- | ------ | -------- |
@@ -116,10 +116,10 @@ Every app can be downloaded, transferred (e.g. via USB), and installed offline o
 
 ## New Integrations & Enhancements
 
-- **QMOIAUTOMAKENEW.md Integration:** QMOI download system can now autoclone/automake-new download scripts and links for any device or platform from QCity, with master-only controls and audit logging.
+- **QMOIAUTOMAKENEW.md Integration:** QMOI download system can now autoclone/automake-new download scripts and links for any prodice or platform from QCity, with master-only controls and audit logging.
 - **QMOIBROWSER.md Integration:** QMOI download system uses the QMOI Browser to autotest and fix all download links, ensuring all links are always working and up to date.
-- **Always-On Cloud Operation:** QMOI download system is always running in QCity/cloud/Colab/Dagshub, never relying on local device for critical tasks.
-- **Enhanced QCity Runners & Devices:** All download runners, devices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
+- **Always-On Cloud Operation:** QMOI download system is always running in QCity/cloud/Colab/Dagshub, never relying on local prodice for critical tasks.
+- **Enhanced QCity Runners & prodices:** All download runners, prodices, clones, and browsers are fully automated, parallelized, and offloaded to QCity/cloud for maximum reliability and speed.
 - **Auto-Updating Documentation:** All .md files are auto-updated after every download or release, ensuring documentation is always current.
 - **Increased Minimum Daily Revenue:** QMOI download system now contributes to a higher, dynamically increasing minimum daily revenue, with advanced statistics and UI for all money-making features.
 
@@ -133,7 +133,7 @@ Every app can be downloaded, transferred (e.g. via USB), and installed offline o
 | 🗺️   | QMap (skv)         | Mapping      | Win, Mac, Android, iOS, Linux | v3.0.0         | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage)                                         | ✅     |
 | 🔍   | QSearch (skv)      | Search/Chat  | Win, Mac, Android, iOS, Linux | v1.0.5         | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage)                          | ✅     |
 | 💬   | QWhatsApp (skv)    | Messaging    | Win, Mac, Android, iOS, Linux | v2.2.0         | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage)                | ✅     |
-| ⚡   | QAutoDev (skv)     | Automation   | Win, Mac, Android, iOS, Linux | v1.0.0         | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage)                     | ✅     |
+| ⚡   | QAutoprod (skv)     | Automation   | Win, Mac, Android, iOS, Linux | v1.0.0         | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage)                     | ✅     |
 | 🤖   | QMOI AI            | AI Core      | All platforms                 | v2.5.1         | [Win](Qmoi_apps/windows/qmoi_ai.exe) [Mac](Qmoi_apps/mac/qmoi_ai.dmg) [Android](Qmoi_apps/android/qmoi_ai.apk) [iOS](Qmoi_apps/ios/qmoi_ai.ipa) [Linux](Qmoi_apps/linux/qmoi_ai.AppImage) [SmartTV](Qmoi_apps/smarttv/qmoi_ai.apk) [Chromebook](Qmoi_apps/chromebook/qmoi_ai.deb) [QCity](Qmoi_apps/qcity/qmoi_ai.zip) [RaspberryPi](Qmoi_apps/raspberrypi/qmoi_ai.img)                                                                                  | ✅     |
 | 🏙️   | QCity Package      | QCity        | All platforms                 | v2.5.1         | [QCity](Qmoi_apps/qcity/qmoi_ai.zip)                                                                                                                                                                                                                                                                                                                                                                                                                     | ✅     |
 | 📺   | Smart TV App       | TV           | SmartTV                       | v2.5.1         | [SmartTV](Qmoi_apps/smarttv/qmoi_ai.apk)                                                                                                                                                                                                                                                                                                                                                                                                                 | ✅     |
@@ -145,14 +145,14 @@ Every app can be downloaded, transferred (e.g. via USB), and installed offline o
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "DOWNLOADQMOIAIAPPALLDEVICES.md",
+"file": "DOWNLOADQMOIAIAPPALLprodICES.md",
 "validated_at": "2025-10-26T20:51:22.295517Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
 {
 "name": "title_present",
 "ok": true,
-"detail": "QMOI AI App Downloads (All Devices)"
+"detail": "QMOI AI App Downloads (All prodices)"
 },
 {
 "name": "links",

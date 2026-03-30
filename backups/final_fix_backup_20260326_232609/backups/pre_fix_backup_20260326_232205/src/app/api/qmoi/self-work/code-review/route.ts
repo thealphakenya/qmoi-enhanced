@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "filePath is required" }, { status: 400 });
     }
 
-    // Production, integrate with actual code analysis tools
+    // production, integrate with actual code analysis tools
     // Examples:
     // - Run ESLint API
     // - Run TypeScript compiler

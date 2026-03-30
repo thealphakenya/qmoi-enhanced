@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -23,30 +23,30 @@
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Auto Apps Development (QMOIAUTOAPPSDEV.md)
+# QMOI Auto Apps production (QMOIAUTOAPPSprod.md)
 
 ## Overview
 
-QMOI Auto Apps Development is the system by which QMOI plans, auto-develops, and auto-enhances all QMOI apps in parallel, referencing the internet, open-source projects, and related apps for best practices and new features.
+QMOI Auto Apps production is the system by which QMOI plans, auto-prodelops, and auto-enhances all QMOI apps in parallel, referencing the internet, open-source projects, and related apps for best practices and new features.
 
 ## Core Features
 
-- **Parallel Auto-Development:** QMOI develops and enhances all apps simultaneously, with each job running in parallel for maximum speed and efficiency.
+- **Parallel Auto-production:** QMOI prodelops and enhances all apps simultaneously, with each job running in parallel for maximum speed and efficiency.
 - **Internet & Platform Referencing:** QMOI continuously researches the internet, open-source projects, and related apps to plan and implement improvements.
-- **Always-On QCity Runner Integration:** QMOI is always running in QCity, ensuring all apps are auto-enhanced and auto-developed at all times.
+- **Always-On QCity Runner Integration:** QMOI is always running in QCity, ensuring all apps are auto-enhanced and auto-prodeloped at all times.
 - **Master-Only Visualization & Control:** All actions, plans, and enhancements are visualized in QCity, accessible only to master/admin for full control and audit.
-- **Versioning & Release Management:** QMOI manages all app versions and releases, ensuring every device and platform always has the latest, best-performing version.
+- **Versioning & Release Management:** QMOI manages all app versions and releases, ensuring every prodice and platform always has the latest, best-performing version.
 - **Continuous Improvement:** QMOI learns from all actions, user feedback, and Qteam customer care suggestions to continuously improve all apps.
 
 ## How QMOI Plans & Learns
 
-- **Automated Planning:** QMOI generates development and enhancement plans for each app based on user needs, master/admin suggestions, and internet research.
+- **Automated Planning:** QMOI generates production and enhancement plans for each app based on user needs, master/admin suggestions, and internet research.
 - **Learning from the Internet:** QMOI references documentation, forums, open-source code, and related apps to learn best practices and new features.
 - **Feedback Integration:** QMOI incorporates feedback from master, Qteam customer care, and users to prioritize and implement improvements.
 
 ## QCity UI Features (Master-Only)
 
-- **Visualization Dashboard:** Real-time visualization of all auto-development and enhancement jobs.
+- **Visualization Dashboard:** Real-time visualization of all auto-production and enhancement jobs.
 - **Control Panel:** Master/admin can approve, deny, or modify any executed enhancement or fix.
 - **Notification System:** All actions, plans, and notifications are logged and displayed with timestamps, read/unread status, and approval options for sensitive actions.
 
@@ -70,7 +70,7 @@ QMOI Auto Apps Development is the system by which QMOI plans, auto-develops, and
 | 🗺️   | QMap (skv)         | Mapping      | Win, Mac, Android, iOS, Linux | v3.0.0         | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage)                                         | ✅     |
 | 🔍   | QSearch (skv)      | Search/Chat  | Win, Mac, Android, iOS, Linux | v1.0.5         | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage)                          | ✅     |
 | 💬   | QWhatsApp (skv)    | Messaging    | Win, Mac, Android, iOS, Linux | v2.2.0         | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage)                | ✅     |
-| ⚡   | QAutoDev (skv)     | Automation   | Win, Mac, Android, iOS, Linux | v1.0.0         | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qautodev/linux.appimage)                     | ✅     |
+| ⚡   | QAutoprod (skv)     | Automation   | Win, Mac, Android, iOS, Linux | v1.0.0         | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage)                     | ✅     |
 | 🤖   | QMOI AI            | AI Core      | All platforms                 | v2.5.1         | [Win](Qmoi_apps/windows/qmoi_ai.exe) [Mac](Qmoi_apps/mac/qmoi_ai.dmg) [Android](Qmoi_apps/android/qmoi_ai.apk) [iOS](Qmoi_apps/ios/qmoi_ai.ipa) [Linux](Qmoi_apps/linux/qmoi_ai.AppImage) [SmartTV](Qmoi_apps/smarttv/qmoi_ai.apk) [Chromebook](Qmoi_apps/chromebook/qmoi_ai.deb) [QCity](Qmoi_apps/qcity/qmoi_ai.zip) [RaspberryPi](Qmoi_apps/raspberrypi/qmoi_ai.img)                                                                                  | ✅     |
 | 🏙️   | QCity Package      | QCity        | All platforms                 | v2.5.1         | [QCity](Qmoi_apps/qcity/qmoi_ai.zip)                                                                                                                                                                                                                                                                                                                                                                                                                     | ✅     |
 | 📺   | Smart TV App       | TV           | SmartTV                       | v2.5.1         | [SmartTV](Qmoi_apps/smarttv/qmoi_ai.apk)                                                                                                                                                                                                                                                                                                                                                                                                                 | ✅     |
@@ -81,19 +81,19 @@ QMOI Auto Apps Development is the system by which QMOI plans, auto-develops, and
 
 ---
 
-_QMOI Auto Apps Development - Ensuring all QMOI apps are always evolving, always improving, and always performing best on every device._
+_QMOI Auto Apps production - Ensuring all QMOI apps are always evolving, always improving, and always performing best on every prodice._
 
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "qmoi-enhanced/QMOIAUTOAPPSDEV.md",
+"file": "qmoi-enhanced/QMOIAUTOAPPSprod.md",
 "validated_at": "2025-10-26T20:51:24.724564Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
 {
 "name": "title_present",
 "ok": true,
-"detail": "QMOI Auto Apps Development (QMOIAUTOAPPSDEV.md)"
+"detail": "QMOI Auto Apps production (QMOIAUTOAPPSprod.md)"
 },
 {
 "name": "links",

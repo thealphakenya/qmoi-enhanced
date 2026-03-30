@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -14,7 +14,7 @@ import { NextRequest, NextResponse } from "next/server";
  * NOTE: SSH functionality design note:
  * SSH client library (node-ssh) is not compatible with Next.js server components.
  *
- * Production Implementation Options:
+ * production Implementation Options:
  * 1. Deploy SSH service as separate microservice
  * 2. Use SSH gateway with REST proxy
  * 3. Implement SFTP client instead
@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(
       {
-        _status: "[PRODUCTION READY]",
+        _status: "[production READY]",
         _message:
           "SSH file listing not available in this build. Use S3/GCS instead.",
         host,

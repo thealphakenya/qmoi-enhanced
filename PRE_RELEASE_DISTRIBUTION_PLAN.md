@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "PRE-RELEASE DISTRIBUTION & TESTING PLAN"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -64,7 +64,7 @@ This document provides a comprehensive guide for distributing QMOI applications 
 | Group              | Purpose                                  | Size  | Skills                 | Recruitment                 |
 | ------------------ | ---------------------------------------- | ----- | ---------------------- | --------------------------- |
 | **Internal QA**    | Regression, core features, compatibility | 3-5   | Technical              | HR/Team                     |
-| **Product Team**   | Feature validation, UX/UI feedback       | 2-3   | Medium                 | Direct invite               |
+| **product Team**   | Feature validation, UX/UI feedback       | 2-3   | Medium                 | Direct invite               |
 | **Early Adopters** | Real-world usage, edge cases             | 10-20 | Mixed                  | Community/release group        |
 | **Accessibility**  | WCAG compliance, assistive tech          | 2-3   | Technical + accessible | Community/Accessibility org |
 | **Performance**    | Performance baseline, optimization       | 2-3   | Technical              | Team specialists            |
@@ -91,7 +91,7 @@ How to join:
 
 What we need from you:
 - Test duration: 1-2 weeks
-- Devices: Test on your regular device(s)
+- prodices: Test on your regular prodice(s)
 - Feedback: Report issues within 24 hours
 - Survey: Complete brief feedback survey (5 min)
 
@@ -116,7 +116,7 @@ Phone (optional): _________________
 Platform(s) to test:
 ☐ Android   ☐ iOS   ☐ Windows   ☐ macOS   ☐ Linux   ☐ Web
 
-Device(s):
+prodice(s):
 ☐ Smartphone   ☐ Tablet   ☐ Desktop   ☐ Laptop
 
 Experience level:
@@ -269,7 +269,7 @@ Consent:
 1. **Upload Build to App Store Connect**
 
    ```
-   1. In Xcode: Product → Archive
+   1. In Xcode: product → Archive
    2. Click "Distribute App"
    3. Select "App Store Connect"
    4. Choose team and app
@@ -555,7 +555,7 @@ Thanks for helping us test QMOI v1.2.3!
 
 YOUR TESTING MISSION:
 - Use the app normally for the next 1-2 weeks
-- Test on your regular devices
+- Test on your regular prodices
 - Report any bugs, crashes, or unusual behavior
 
 DOWNLOAD LINK:
@@ -571,7 +571,7 @@ HOW TO REPORT ISSUES:
 1. If using TestFlight or Firebase: Tap "Send Feedback"
 2. Otherwise, email: qmoi-team@data.com
    Include:
-   - Device/OS/browser
+   - prodice/OS/browser
    - What you were doing when issue occurred
    - Screenshot or video if possible
    - Error message (if any)
@@ -611,14 +611,14 @@ Appendix A: COMMON ISSUES & TROUBLESHOOTING
 #### Channel 1: In-App Feedback (TestFlight/Firebase)
 
 - **How:** Tap "Send Feedback" button in app
-- **What's collected:** App screenshot, device info, feedback text
+- **What's collected:** App screenshot, prodice info, feedback text
 - **Destination:** Firebase Console / App Store Connect
 - **Best for:** Quick feedback with context
 
 #### Channel 2: Email Feedback
 
 - **Address:** qmoi-team@data.com
-- **What to include:** Device, OS, reproducible steps, screenshot
+- **What to include:** prodice, OS, reproducible steps, screenshot
 - **Response time:** < 24 hours
 - **Best for:** Complex issues or detailed feedback
 
@@ -629,7 +629,7 @@ QMOI v1.2.3 release Feedback Survey
 https://forms.gle/qmoi-release-feedback
 
 Sections:
-1. comprehensive Info (device, OS, usage duration)
+1. comprehensive Info (prodice, OS, usage duration)
 2. Feature Rating (5-star rating for each feature)
 3. Issues Encountered (open text)
 4. Suggestions (open text)
@@ -671,7 +671,7 @@ NEED HELP?
 - Slack: #qmoi-v1-2-3-release
 
 QUICK REMINDER:
-- Test on your regular device
+- Test on your regular prodice
 - Report issues ASAP
 - Due feedback survey: [date]
 
@@ -694,9 +694,9 @@ Categorize (Bug / Feature Request / Other)
     ↓
 Assess Severity (Critical / High / Medium / Low)
     ↓
-Reproduce (Can dev team reproduce?)
+Reproduce (Can prod team reproduce?)
     ↓
-Assign to Developer (if bug)
+Assign to prodeloper (if bug)
     ↓
 Fix / Defer / Close
     ↓
@@ -811,7 +811,7 @@ TESTER SIGN-OFF FORM
 
 Tester Name: _________________
 Testing Platform: ☐ Android ☐ iOS ☐ Windows ☐ macOS ☐ Linux ☐ Web
-Device/Browser: _________________
+prodice/Browser: _________________
 Testing Duration: _____ hours
 Testing End Date: _________________
 
@@ -848,18 +848,18 @@ Tester: _________________ Date: _________
 
 ### 5.3 Release Sign-Off Meeting
 
-**Before Publishing to Production:**
+**Before Publishing to production:**
 
 ```
 QMOI v1.2.3 Release Sign-Off Meeting
 Date: [Final day of release testing]
 Time: [Meeting time]
-Attendees: Product Manager, QA Lead, Release Manager, Dev Lead
+Attendees: product Manager, QA Lead, Release Manager, prod Lead
 
 AGENDA:
 1. Tester feedback summary (QA Lead - 5 min)
-2. Issue status review (Dev Lead - 5 min)
-3. Critical issue resolution confirmation (Dev - 5 min)
+2. Issue status review (prod Lead - 5 min)
+3. Critical issue resolution confirmation (prod - 5 min)
 4. Final approval vote (All - 5 min)
 
 DECISION MATRIX:
@@ -873,10 +873,10 @@ FINAL DECISION:
 ☐ BLOCKED (reason): ________________
 
 Approvals Required:
-- [ ] Product Manager: __________ Date: __________
+- [ ] product Manager: __________ Date: __________
 - [ ] QA Lead: __________ Date: __________
 - [ ] Release Manager: __________ Date: __________
-- [ ] Dev Lead: __________ Date: __________
+- [ ] prod Lead: __________ Date: __________
 ```
 
 ---
@@ -1021,7 +1021,7 @@ FINAL SIGN-OFF:
 - [ ] Feedback summary report prepared
 - [ ] Release sign-off meeting scheduled
 - [ ] All critical issues resolved
-- [ ] Product manager approved
+- [ ] product manager approved
 - [ ] QA lead approved
 - [ ] Release manager approved
 - [ ] Ready for production release

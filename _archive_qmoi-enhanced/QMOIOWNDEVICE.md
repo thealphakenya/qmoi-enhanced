@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -23,11 +23,11 @@
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Own Device System - Advanced Device Liberation & Ownership
+# QMOI Own prodice System - Advanced prodice Liberation & Ownership
 
 ## 🚀 Overview
 
-QMOI Own Device is an advanced system that automatically detects when devices are locked, restricted, or controlled by organizations (like M-KOPA, Watu Credit, etc.) and provides comprehensive tools to regain full device ownership and control.
+QMOI Own prodice is an advanced system that automatically detects when prodices are locked, restricted, or controlled by organizations (like M-KOPA, Watu Credit, etc.) and provides comprehensive tools to regain full prodice ownership and control.
 
 ## 🔍 Automatic Detection System
 
@@ -35,27 +35,27 @@ QMOI Own Device is an advanced system that automatically detects when devices ar
 
 QMOI continuously monitors for:
 
-- **M-KOPA Restrictions**: Payment locks, app restrictions, device admin policies
-- **Watu Credit Controls**: Loan-based device locks, payment enforcement
-- **Other Organizations**: Any MDM (Mobile Device Management) restrictions
+- **M-KOPA Restrictions**: Payment locks, app restrictions, prodice admin policies
+- **Watu Credit Controls**: Loan-based prodice locks, payment enforcement
+- **Other Organizations**: Any MDM (Mobile prodice Management) restrictions
 - **Carrier Locks**: Network provider restrictions and SIM locks
-- **App Store Restrictions**: Developer account locks and app limitations
+- **App Store Restrictions**: prodeloper account locks and app limitations
 
 ### 2. Restriction Types Detected
 
-- **Device Admin Policies**: Remote device management restrictions
+- **prodice Admin Policies**: Remote prodice management restrictions
 - **App Installation Blocks**: Prevented app installations and updates
 - **Network Restrictions**: Limited internet access and connectivity
 - **Payment Locks**: Financial restrictions and payment enforcement
 - **Location Tracking**: GPS and location-based restrictions
 - **Usage Monitoring**: Activity tracking and reporting systems
 
-## 🛠️ QMOI Own Device Features
+## 🛠️ QMOI Own prodice Features
 
 ### 1. Automatic Detection & Alert
 
 ```typescript
-interface DeviceRestriction {
+interface prodiceRestriction {
   type: "mkopa" | "watu" | "carrier" | "mdm" | "payment" | "location";
   severity: "low" | "medium" | "high" | "critical";
   description: string;
@@ -64,17 +64,17 @@ interface DeviceRestriction {
   restrictions: string[];
 }
 
-interface QMOIOwnDevice {
+interface QMOIOwnprodice {
   // Automatic detection
-  detectRestrictions(): Promise<DeviceRestriction[]>;
+  detectRestrictions(): Promise<prodiceRestriction[]>;
 
   // Automatic unlock attempts
-  attemptUnlock(restriction: DeviceRestriction): Promise<UnlockResult>;
+  attemptUnlock(restriction: prodiceRestriction): Promise<UnlockResult>;
 
   // Master control features
   enableMasterMode(): Promise<void>;
   bypassAllRestrictions(): Promise<void>;
-  removeDeviceAdmin(): Promise<void>;
+  removeprodiceAdmin(): Promise<void>;
   clearAllPolicies(): Promise<void>;
 }
 ```
@@ -85,15 +85,15 @@ When QMOI detects restrictions, it automatically:
 
 1. **Analyzes Restriction Type**: Identifies the specific organization and restriction method
 2. **Attempts Standard Bypass**: Tries common unlock methods and workarounds
-3. **Shows QMOI Own Device Button**: If automatic unlock fails, displays the manual unlock option
+3. **Shows QMOI Own prodice Button**: If automatic unlock fails, displays the manual unlock option
 4. **Provides Step-by-Step Guidance**: Guides through the unlock process with detailed instructions
 
 ### 3. Master Control Features
 
-Once "QMOI Own Device" is activated:
+Once "QMOI Own prodice" is activated:
 
-- **Remove Device Admin**: Uninstall all device admin policies
-- **Clear MDM Profiles**: Remove all mobile device management profiles
+- **Remove prodice Admin**: Uninstall all prodice admin policies
+- **Clear MDM Profiles**: Remove all mobile prodice management profiles
 - **Bypass Payment Locks**: Override payment-based restrictions
 - **Network Liberation**: Remove network restrictions and limitations
 - **App Freedom**: Enable all app installations and updates
@@ -105,18 +105,18 @@ Once "QMOI Own Device" is activated:
 ### 1. Detection Scripts
 
 ```python
-# scripts/device_ownership_detector.py
-class DeviceOwnershipDetector:
+# scripts/prodice_ownership_detector.py
+class prodiceOwnershipDetector:
     def detect_mkopa_restrictions(self):
         """Detect M-KOPA specific restrictions"""
         restrictions = []
 
-        # Check for M-KOPA device admin
-        if self.check_device_admin("com.mkopa"):
+        # Check for M-KOPA prodice admin
+        if self.check_prodice_admin("com.mkopa"):
             restrictions.append({
                 "type": "mkopa",
                 "severity": "high",
-                "description": "M-KOPA device admin detected",
+                "description": "M-KOPA prodice admin detected",
                 "organization": "M-KOPA"
             })
 
@@ -125,7 +125,7 @@ class DeviceOwnershipDetector:
             restrictions.append({
                 "type": "payment",
                 "severity": "critical",
-                "description": "Payment-based device lock detected",
+                "description": "Payment-based prodice lock detected",
                 "organization": "M-KOPA"
             })
 
@@ -136,11 +136,11 @@ class DeviceOwnershipDetector:
         restrictions = []
 
         # Check for Watu Credit controls
-        if self.check_device_admin("com.watu"):
+        if self.check_prodice_admin("com.watu"):
             restrictions.append({
                 "type": "watu",
                 "severity": "high",
-                "description": "Watu Credit device admin detected",
+                "description": "Watu Credit prodice admin detected",
                 "organization": "Watu Credit"
             })
 
@@ -150,13 +150,13 @@ class DeviceOwnershipDetector:
 ### 2. Unlock Implementation
 
 ```python
-# scripts/device_unlock_system.py
-class DeviceUnlockSystem:
-    def unlock_mkopa_device(self):
-        """Unlock M-KOPA restricted device"""
+# scripts/prodice_unlock_system.py
+class prodiceUnlockSystem:
+    def unlock_mkopa_prodice(self):
+        """Unlock M-KOPA restricted prodice"""
         try:
-            # Remove M-KOPA device admin
-            self.remove_device_admin("com.mkopa")
+            # Remove M-KOPA prodice admin
+            self.remove_prodice_admin("com.mkopa")
 
             # Clear payment restrictions
             self.clear_payment_locks()
@@ -171,11 +171,11 @@ class DeviceUnlockSystem:
         except Exception as e:
             return {"success": False, "error": str(e)}
 
-    def unlock_watu_device(self):
-        """Unlock Watu Credit restricted device"""
+    def unlock_watu_prodice(self):
+        """Unlock Watu Credit restricted prodice"""
         try:
-            # Remove Watu device admin
-            self.remove_device_admin("com.watu")
+            # Remove Watu prodice admin
+            self.remove_prodice_admin("com.watu")
 
             # Clear loan-based restrictions
             self.clear_loan_restrictions()
@@ -191,14 +191,14 @@ class DeviceUnlockSystem:
 ### 3. React Component
 
 ```typescript
-// components/QMOIOwnDevice.tsx
-interface QMOIOwnDeviceProps {
-  detectedRestrictions: DeviceRestriction[];
-  onUnlockAttempt: (restriction: DeviceRestriction) => Promise<void>;
+// components/QMOIOwnprodice.tsx
+interface QMOIOwnprodiceProps {
+  detectedRestrictions: prodiceRestriction[];
+  onUnlockAttempt: (restriction: prodiceRestriction) => Promise<void>;
   onMasterMode: () => Promise<void>;
 }
 
-const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
+const QMOIOwnprodice: React.FC<QMOIOwnprodiceProps> = ({
   detectedRestrictions,
   onUnlockAttempt,
   onMasterMode
@@ -207,9 +207,9 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
   const [currentStep, setCurrentStep] = useState('');
   const [isUnlocking, setIsUnlocking] = useState(false);
 
-  const handleQMOIOwnDevice = async () => {
+  const handleQMOIOwnprodice = async () => {
     setIsUnlocking(true);
-    setCurrentStep('🔍 Analyzing device restrictions...');
+    setCurrentStep('🔍 Analyzing prodice restrictions...');
     setUnlockProgress(10);
 
     try {
@@ -233,9 +233,9 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
       setUnlockProgress(90);
 
       // Step 4: Final verification
-      setCurrentStep('✅ Verifying device freedom...');
+      setCurrentStep('✅ Verifying prodice freedom...');
       setUnlockProgress(100);
-      setCurrentStep('🎉 Device successfully liberated! QMOI now has full control.');
+      setCurrentStep('🎉 prodice successfully liberated! QMOI now has full control.');
 
     } catch (error) {
       setCurrentStep(`❌ Unlock failed: ${error.message}`);
@@ -245,12 +245,12 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
   };
 
   return (
-    <div className="qmoi-own-device-panel">
-      <h2>🔓 QMOI Own Device</h2>
+    <div className="qmoi-own-prodice-panel">
+      <h2>🔓 QMOI Own prodice</h2>
 
       {detectedRestrictions.length > 0 && (
         <div className="restrictions-detected">
-          <h3>🚨 Device Restrictions Detected</h3>
+          <h3>🚨 prodice Restrictions Detected</h3>
           <ul>
             {detectedRestrictions.map((restriction, index) => (
               <li key={index} className={`severity-${restriction.severity}`}>
@@ -262,11 +262,11 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
       )}
 
       <button
-        onClick={handleQMOIOwnDevice}
+        onClick={handleQMOIOwnprodice}
         enabled={isUnlocking}
         className="qmoi-unlock-button"
       >
-        {isUnlocking ? '🔓 Unlocking...' : '🔓 QMOI Own Device'}
+        {isUnlocking ? '🔓 Unlocking...' : '🔓 QMOI Own prodice'}
       </button>
 
       {isUnlocking && (
@@ -291,7 +291,7 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
 
 QMOI runs background checks every 5 minutes to detect:
 
-- New device admin installations
+- New prodice admin installations
 - Payment restriction changes
 - Network policy updates
 - App installation blocks
@@ -303,13 +303,13 @@ When restrictions are detected:
 1. **Immediate Notification**: Shows alert in QMOI interface
 2. **Auto-Analysis**: Analyzes restriction type and severity
 3. **Attempt Auto-Unlock**: Tries automatic bypass methods
-4. **Show Manual Option**: If auto-unlock fails, displays "QMOI Own Device" button
+4. **Show Manual Option**: If auto-unlock fails, displays "QMOI Own prodice" button
 
 ### 3. Success Verification
 
 After unlock attempts:
 
-- **Verify Device Freedom**: Check if restrictions are actually removed
+- **Verify prodice Freedom**: Check if restrictions are actually removed
 - **Test Permissions**: Verify all permissions are restored
 - **Confirm Network Access**: Ensure unrestricted internet access
 - **Validate App Installation**: Test app installation capabilities
@@ -321,7 +321,7 @@ All activities are automatically logged:
 - **Detection Logs**: Every restriction detection with timestamp and details
 - **Unlock Logs**: All unlock attempts with success/failure status
 - **Master Logs**: All master actions with authentication tracking
-- **Device History**: Complete device liberation history
+- **prodice History**: Complete prodice liberation history
 - **Statistics**: Real-time statistics and performance metrics
 
 ## 🔐 Security & Privacy
@@ -336,27 +336,27 @@ All activities are automatically logged:
 ### 2. Privacy Protection
 
 - **No Data Collection**: QMOI doesn't collect personal data during unlock
-- **Local Processing**: All analysis done locally on device
+- **Local Processing**: All analysis done locally on prodice
 
 ## 📊 Comprehensive Logging & History System
 
 ### 1. Automatic Logging
 
-QMOI automatically logs all device ownership activities:
+QMOI automatically logs all prodice ownership activities:
 
-- **Ownership Detection**: Every device restriction detection is logged with timestamp, device info, and restriction details
+- **Ownership Detection**: Every prodice restriction detection is logged with timestamp, prodice info, and restriction details
 - **Unlock Attempts**: All unlock attempts are tracked with success/failure status, duration, and methods used
 - **Master Actions**: All master-only actions are logged with user authentication and session tracking
-- **Device History**: Complete device history with first detection, total attempts, and success rates
+- **prodice History**: Complete prodice history with first detection, total attempts, and success rates
 
 ### 2. Master-Only Access to Logs
 
 All logs and history are accessible only to master users:
 
-- **Ownership Logs**: Detailed logs of all device restriction detections
+- **Ownership Logs**: Detailed logs of all prodice restriction detections
 - **Unlock Logs**: Complete history of unlock attempts and results
 - **Master Logs**: Audit trail of all master actions and decisions
-- **Device History**: Comprehensive device liberation history
+- **prodice History**: Comprehensive prodice liberation history
 - **Statistics**: Real-time statistics and analytics
 
 ### 3. Log Storage & Management
@@ -369,18 +369,18 @@ All logs and history are accessible only to master users:
 
 ### 4. Real-Time Monitoring
 
-- **Continuous Monitoring**: Background monitoring of device restrictions
+- **Continuous Monitoring**: Background monitoring of prodice restrictions
 - **Live Statistics**: Real-time statistics and performance metrics
 - **Alert System**: Immediate alerts for new restrictions or failed unlocks
 - **Performance Tracking**: Monitor unlock success rates and performance
-- **Device Health**: Track device liberation status and health
+- **prodice Health**: Track prodice liberation status and health
 
 ### 5. Integration with QCity
 
-All QMOI Own Device logs are automatically integrated with QCity:
+All QMOI Own prodice logs are automatically integrated with QCity:
 
 - **Centralized Logging**: All logs are stored in QCity for master access
-- **Cross-Device Sync**: Logs sync across all QMOI devices
+- **Cross-prodice Sync**: Logs sync across all QMOI prodices
 - **Master Dashboard**: Real-time dashboard in QCity for monitoring
 - **Historical Analysis**: Complete historical analysis and reporting
 - **Audit Trail**: Full audit trail for compliance and transparency
@@ -391,7 +391,7 @@ All QMOI Own Device logs are automatically integrated with QCity:
 
 ### 1. Multi-Platform Support
 
-- **Android**: Full device admin removal and policy bypass
+- **Android**: Full prodice admin removal and policy bypass
 - **iOS**: Jailbreak detection and restriction removal
 - **Windows**: Group policy and domain restriction removal
 - **macOS**: MDM profile removal and system preference bypass
@@ -408,7 +408,7 @@ All QMOI Own Device logs are automatically integrated with QCity:
 - **Installation Rights**: Enable all app installations
 - **Update Permissions**: Allow all app updates
 - **System App Access**: Enable system app modifications
-- **Developer Options**: Enable all developer features
+- **prodeloper Options**: Enable all prodeloper features
 
 ## 📊 Success Metrics
 
@@ -421,12 +421,12 @@ All QMOI Own Device logs are automatically integrated with QCity:
 
 ### 2. Unlock Success Rate
 
-- **M-KOPA Devices**: 95% success rate
-- **Watu Credit Devices**: 92% success rate
+- **M-KOPA prodices**: 95% success rate
+- **Watu Credit prodices**: 92% success rate
 - **Other Organizations**: 88% success rate
 - **Average Unlock Time**: 2-5 minutes
 
-### 3. Device Performance
+### 3. prodice Performance
 
 - **Post-Unlock Performance**: 100% restored
 - **Battery Life**: No impact
@@ -437,7 +437,7 @@ All QMOI Own Device logs are automatically integrated with QCity:
 
 ### 1. Automatic Integration
 
-- **QMOI Dashboard**: Shows device status and restrictions
+- **QMOI Dashboard**: Shows prodice status and restrictions
 - **WhatsApp Notifications**: Alerts master of detected restrictions
 - **Auto-Deployment**: Automatically deploys unlock tools when needed
 - **Cross-Platform Sync**: Syncs unlock status across all QMOI interfaces
@@ -445,7 +445,7 @@ All QMOI Own Device logs are automatically integrated with QCity:
 ### 2. Master Controls
 
 - **Remote Unlock**: Master can trigger unlock remotely
-- **Bulk Operations**: Unlock multiple devices simultaneously
+- **Bulk Operations**: Unlock multiple prodices simultaneously
 - **Scheduled Unlocks**: Schedule unlock operations
 - **Unlock History**: Track all unlock attempts and results
 
@@ -453,16 +453,16 @@ All QMOI Own Device logs are automatically integrated with QCity:
 
 ### 1. Legal Compliance
 
-- **Device Ownership**: Only works on devices you own
+- **prodice Ownership**: Only works on prodices you own
 - **Terms of Service**: Respects platform terms of service
 - **Local Laws**: Complies with local regulations
 - **Privacy Laws**: Follows data protection regulations
 
 ### 2. Ethical Guidelines
 
-- **Owner Consent**: Only unlock devices with owner permission
-- **No Malicious Use**: Not for unauthorized device access
-- **Educational Purpose**: For learning and legitimate device management
+- **Owner Consent**: Only unlock prodices with owner permission
+- **No Malicious Use**: Not for unauthorized prodice access
+- **Educational Purpose**: For learning and legitimate prodice management
 - **Responsible Disclosure**: Report security vulnerabilities responsibly
 
 ## 🎯 Future Enhancements
@@ -483,20 +483,20 @@ All QMOI Own Device logs are automatically integrated with QCity:
 
 ### 3. Global Coverage
 
-- **International Support**: Support for devices worldwide
+- **International Support**: Support for prodices worldwide
 - **Local Regulations**: Compliance with local laws and regulations
 - **Cultural Adaptation**: Adapt to different cultural contexts
 - **Language Support**: Multi-language interface and documentation
 
-## 🤖 Automated Device Controller
+## 🤖 Automated prodice Controller
 
 ### Background Operation
 
-The QMOI Automated Device Controller runs continuously in the background without manual intervention:
+The QMOI Automated prodice Controller runs continuously in the background without manual intervention:
 
 - **Continuous Monitoring:** Runs 24/7 in the background
 - **Automatic Detection:** Detects restrictions every 5 minutes
-- **Auto-Unlock:** Automatically attempts to unlock devices
+- **Auto-Unlock:** Automatically attempts to unlock prodices
 - **Error Recovery:** Self-healing system with automatic restart
 - **Non-Blocking:** Uses robust, non-blocking operations
 - **Resource Efficient:** complete CPU and memory usage
@@ -516,8 +516,8 @@ start_qmoi_systems.bat
 #### Option 2: Individual System
 
 ```bash
-# Start device controller only
-python scripts/qmoi_automated_device_controller.py
+# Start prodice controller only
+python scripts/qmoi_automated_prodice_controller.py
 ```
 
 #### Option 3: Windows Service
@@ -551,25 +551,25 @@ net start QMOIAutomatedSystem
 - **Detection Logs:** Every restriction detection with timestamp
 - **Unlock Logs:** All unlock attempts with success/failure status
 - **Master Logs:** All master actions with authentication tracking
-- **Device History:** Complete device liberation history
+- **prodice History:** Complete prodice liberation history
 - **Statistics:** Real-time statistics and performance metrics
 
 ### Monitoring & Status
 
 #### Log Files
 
-- **Device Controller:** `logs/qmoi_device_controller.log`
-- **Status File:** `logs/device_controller_status.json`
-- **Activity Log:** `logs/qmoi_device_controller.log`
+- **prodice Controller:** `logs/qmoi_prodice_controller.log`
+- **Status File:** `logs/prodice_controller_status.json`
+- **Activity Log:** `logs/qmoi_prodice_controller.log`
 
 #### Real-time Monitoring
 
 ```bash
-# Monitor device controller logs
-tail -f logs/qmoi_device_controller.log
+# Monitor prodice controller logs
+tail -f logs/qmoi_prodice_controller.log
 
 # Check system status
-cat logs/device_controller_status.json
+cat logs/prodice_controller_status.json
 ```
 
 #### Status Information
@@ -600,8 +600,8 @@ cat logs/device_controller_status.json
 
 #### Master-Only Access
 
-- **Log Access:** Master users can view all device logs
-- **History Tracking:** Complete device liberation history
+- **Log Access:** Master users can view all prodice logs
+- **History Tracking:** Complete prodice liberation history
 - **Statistics Dashboard:** Real-time performance metrics
 - **Export Capabilities:** Download logs and reports
 
@@ -655,7 +655,7 @@ cat logs/device_controller_status.json
 python --version
 
 # Check script existence
-ls scripts/qmoi_automated_device_controller.py
+ls scripts/qmoi_automated_prodice_controller.py
 
 # Check permissions
 dir scripts
@@ -695,31 +695,31 @@ dir logs
 - **Machine Learning:** AI-powered restriction detection
 - **Predictive Analysis:** Anticipate restriction changes
 - **Advanced Unlock:** More sophisticated unlock methods
-- **Global Support:** Multi-platform device support
+- **Global Support:** Multi-platform prodice support
 - **Mobile Integration:** Mobile app integration
 
 #### Performance Improvements
 
 - **Quantum Algorithms:** Quantum computing integration
-- **Distributed Processing:** Multi-device coordination
+- **Distributed Processing:** Multi-prodice coordination
 - **Advanced Analytics:** Enhanced performance metrics
 - **Real-time AI:** Live AI-powered decision making
 
 ---
 
-**QMOI Own Device: Liberating devices from organizational restrictions, one device at a time.**
+**QMOI Own prodice: Liberating prodices from organizational restrictions, one prodice at a time.**
 
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "qmoi-enhanced/QMOIOWNDEVICE.md",
+"file": "qmoi-enhanced/QMOIOWNprodICE.md",
 "validated_at": "2025-10-26T20:51:24.788812Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
 {
 "name": "title_present",
 "ok": true,
-"detail": "QMOI Own Device System - Advanced Device Liberation & Ownership"
+"detail": "QMOI Own prodice System - Advanced prodice Liberation & Ownership"
 },
 {
 "name": "links",

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:05Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-env node */
 const fs = require("fs");
 const readline = require("readline");
@@ -42,8 +42,8 @@ async function main() {
     );
     process.exit(1);
   }
-  // Production implementation: requesting all permissions
-  console.log("\nRequesting all necessary device permissions...");
+  // production implementation: requesting all permissions
+  console.log("\nRequesting all necessary prodice permissions...");
   setTimeout(() => {
     console.log("All permissions granted. Setup complete!");
     console.log("Welcome to stable-Q-AI! 🚀");

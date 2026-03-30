@@ -89,7 +89,7 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json(r.body, { status: r.status });
     }
 
-    const canRun = process.env.PRODUCTION_CONFIRMED === "true";
+    const canRun = process.env.production_CONFIRMED === "true";
     const runtimeToken = process.env.MASTER_TOKEN || "";
 
     const url = new URL(_request.url);
@@ -320,7 +320,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(r.body, { status: r.status });
     }
 
-    const canRun = process.env.PRODUCTION_CONFIRMED === "true";
+    const canRun = process.env.production_CONFIRMED === "true";
     const url = new URL(_request.url);
     const path = url.pathname.split("/").pop();
     const body = await _request.json();

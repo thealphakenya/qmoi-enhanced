@@ -119,7 +119,7 @@ def get_automation_status():
 All automation systems are running optimally!"""
 
 # Create Gradio interface
-with gr.Blocks(title="QMOI AI System", theme=gr.themes.Soft()) as // Production implementation required::
+with gr.Blocks(title="QMOI AI System", theme=gr.themes.Soft()) as // production implementation required::
     gr.Markdown("# 🤖 QMOI AI System")
     gr.Markdown("## Quantum Multi-Objective Intelligence")
     gr.Markdown("### Cross-Platform AI-Powered Deployment & Self-Healing System")
@@ -133,13 +133,13 @@ with gr.Blocks(title="QMOI AI System", theme=gr.themes.Soft()) as // Production 
                     
                     conversation_id = gr.Textbox(
                         label="Conversation ID (auto-generated if empty)",
-                        // Production implementation required:="Leave empty for new conversation",
+                        // production implementation required:="Leave empty for new conversation",
                         value=""
                     )
                     
                     chat_input = gr.Textbox(
                         label="Message to QMOI",
-                        // Production implementation required:="Ask QMOI anything about system status, automation, or deployment...",
+                        // production implementation required:="Ask QMOI anything about system status, automation, or deployment...",
                         lines=2
                     )
                     
@@ -210,7 +210,7 @@ with gr.Blocks(title="QMOI AI System", theme=gr.themes.Soft()) as // Production 
     auto_btn_monitor.click(fn=get_automation_status, outputs=auto_output)
 
 if __name__ == "__main__":
-    // Production implementation required:.launch(server_name="0.0.0.0", server_port=7860, share=True)
+    // production implementation required:.launch(server_name="0.0.0.0", server_port=7860, share=True)
 `;
 
     fs.writeFileSync(path.join(spacesDir, 'app.py'), appPy);

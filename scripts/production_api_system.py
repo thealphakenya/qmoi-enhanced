@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-QMOI Enhanced - Production-Ready API System
+QMOI Enhanced - production-Ready API System
 Comprehensive REST API implementation for all QMOI Enhanced functionality
 Version: 2.0.0
 Date: 2026-03-30
-Description: Production-grade API system with authentication, rate limiting, monitoring, and comprehensive endpoints
+Description: production-grade API system with authentication, rate limiting, monitoring, and comprehensive endpoints
 """
 
 import asyncio
@@ -59,7 +59,7 @@ from qmoi_consciousness_system import QMOIConsciousnessSystem
 
 # Configuration
 class Config:
-    """Production configuration for QMOI Enhanced API"""
+    """production configuration for QMOI Enhanced API"""
 
     # Flask Configuration
     SECRET_KEY = os.getenv('SECRET_KEY', secrets.token_hex(32))
@@ -165,7 +165,7 @@ if Config.STRIPE_SECRET_KEY:
 
 if Config.PLAID_CLIENT_ID and Config.PLAID_SECRET:
     plaid_client = plaid_api.PlaidApi(plaid.ApiClient(plaid.Configuration(
-        host=plaid.Environment.Sandbox,
+        host=plaid.Environment.production,
         api_key={
             'clientId': Config.PLAID_CLIENT_ID,
             'secret': Config.PLAID_SECRET,
@@ -932,7 +932,7 @@ def api_docs():
     docs = {
         'title': 'QMOI Enhanced API',
         'version': '2.0.0',
-        'description': 'Production-ready API for QMOI Enhanced platform',
+        'description': 'production-ready API for QMOI Enhanced platform',
         'base_url': 'https://api.qmoi.ai',
         'endpoints': {
             'authentication': [

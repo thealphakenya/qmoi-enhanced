@@ -28,7 +28,7 @@ export async function POST(_request: NextRequest) {
 
     // Proposal-first: only actually kill processes when explicitly allowed
     const canRun =
-      process.env.PRODUCTION_CONFIRMED === "true" &&
+      process.env.production_CONFIRMED === "true" &&
       process.argv.indexOf("--real") !== -1;
     const proposal = {
       id: `auto-fix-stop-${Date.now()}`,

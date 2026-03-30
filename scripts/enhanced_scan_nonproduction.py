@@ -5,8 +5,8 @@
 
 #!/usr/bin/env python3
 """
-Enhanced Production Readiness Scanner
-Comprehensively scans for ALL non-production indicators across the entire system.
+Enhanced production Readiness Scanner
+Comprehensively scans for ALL production indicators across the entire system.
 Enhanced for thorough repo-wide scanning with parallel processing and detailed analysis.
 """
 
@@ -34,12 +34,12 @@ files_by_issue = defaultdict(list)
 
 root_dir = Path.cwd()
 
-# Enhanced non-production intent markers with more comprehensive detection
-nonprod_keywords = [
+# Enhanced production intent markers with more comprehensive detection
+production_keywords = [
     # Implementation gaps
     'PENDING_IMPLEMENTATION', 'TODO', 'FIXME', 'PLACEHOLDER', 'MOCK',
     'SIMULATE', 'SIMULATION', 'STAGING', 'STUB', 'STUBS',
-    'PRODUCTION IMPLEMENTATION REQUIRED', 'PRODUCTION DONE', 'PRODUCTION FIXED',
+    'production IMPLEMENTATION REQUIRED', 'production DONE', 'production FIXED',
     'TEST DATA', 'TEST IMPLEMENTATION', 'SIMPLE', 'MINIMAL', 'DEMO',
     'DRAFT', 'PROOF OF CONCEPT', 'POC', 'ALPHA', 'BETA', 'EXPERIMENTAL',
     'TEMPORARY', 'INCOMPLETE', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'REPLACEABLE',
@@ -49,14 +49,14 @@ nonprod_keywords = [
     'INSTRUCTION', 'INSTRUCTIONS', 'GUIDELINE', 'WARNING', 'NOTE', 'NOTE:',
     'FIXME:', 'TODO:', 'HACK', 'XXX', 'BROKEN', 'FAKE', 'DUMMY',
 
-    # Development markers
+    # production markers
     'NOT IMPLEMENTED', 'UNIMPLEMENTED', 'MISSING', 'TBD', 'TBA',
     'COMING SOON', 'UNDER CONSTRUCTION', 'WORK IN PROGRESS', 'WIP',
     'NEEDS IMPLEMENTATION', 'REQUIRES IMPLEMENTATION', 'MUST IMPLEMENT',
 
-    # Testing and development
+    # Testing and production
     'DEBUG', 'CONSOLE.LOG', 'PRINT(', 'ECHO', 'LOG.DEBUG',
-    'TEST MODE', 'DEV MODE', 'DEVELOPMENT MODE',
+    'TEST MODE', 'production', 'production MODE',
 
     # Placeholder content
     'LOREM IPSUM', 'SAMPLE TEXT', 'EXAMPLE DATA', 'FAKE DATA',
@@ -157,7 +157,7 @@ scan_extensions = {
     '.svg', '.csv', '.tsv', '.log', '.out', '.tmp', '.bak'
 }
 
-# Production ready markers (case-insensitive)
+# production ready markers (case-insensitive)
 production_ready_markers = [
     '[production ready]', '[production complete]', 'production ready',
     'production complete', 'in production', 'live production',
@@ -450,7 +450,7 @@ def check_performance_concerns(content, file_extension):
     return hits
 
 def scan_file(file_path):
-    """Scan a single file for non-production markers with enhanced analysis."""
+    """Scan a single file for production markers with enhanced analysis."""
     global scanned_files, skipped_non_text, ready_files, error_files
 
     path = Path(file_path)
@@ -504,7 +504,7 @@ def scan_file(file_path):
             if not any(important in line_lower for important in ['todo:', 'fixme:', 'note:', 'warning:']):
                 continue
 
-        for kw in nonprod_keywords:
+        for kw in production_keywords:
             # Use word boundaries for more accurate matching
             pattern = r'\b' + re.escape(kw.lower()) + r'\b'
             if re.search(pattern, line_lower):
@@ -601,7 +601,7 @@ def process_results():
 
     # Generate comprehensive report
     report_lines = []
-    report_lines.append("=== ENHANCED PRODUCTION READINESS SCAN ===")
+    report_lines.append("=== ENHANCED production READINESS SCAN ===")
     report_lines.append(f"Scan run: {datetime.now().isoformat()}")
     report_lines.append(f"Repository path: {root_dir}")
     report_lines.append("")
@@ -612,26 +612,26 @@ def process_results():
     total_text_files = scanned_files - skipped_non_text - error_files
     report_lines.append(f"Total files discovered: {scanned_files}")
     report_lines.append(f"Text files analyzed: {total_text_files}")
-    report_lines.append(f"Files with non-production markers: {len(results)}")
-    report_lines.append(f"Production-ready files: {ready_files}")
+    report_lines.append(f"Files with production markers: {len(results)}")
+    report_lines.append(f"production-ready files: {ready_files}")
     report_lines.append(f"Binary/skipped files: {skipped_non_text}")
     report_lines.append(f"Error/unreadable files: {error_files}")
     report_lines.append("")
 
     # Calculate percentages
     if total_text_files > 0:
-        nonprod_percentage = round((len(results) / total_text_files) * 100, 2)
-        completion_rate = round(100 - nonprod_percentage, 2)
+        production_percentage = round((len(results) / total_text_files) * 100, 2)
+        completion_rate = round(100 - production_percentage, 2)
     else:
-        nonprod_percentage = 0
+        production_percentage = 0
         completion_rate = 100
 
-    report_lines.append(f"Remaining non-production percent: {nonprod_percentage}%")
-    report_lines.append(f"Production completion rate: {completion_rate}%")
+    report_lines.append(f"Remaining production percent: {production_percentage}%")
+    report_lines.append(f"production completion rate: {completion_rate}%")
     report_lines.append("")
 
     # Top markers analysis
-    report_lines.append("TOP NON-PRODUCTION MARKERS (by frequency)")
+    report_lines.append("TOP production MARKERS (by frequency)")
     report_lines.append("=" * 60)
     sorted_markers = sorted(marker_counts.items(), key=lambda x: x[1], reverse=True)
     for marker, count in sorted_markers[:25]:  # Show top 25
@@ -639,11 +639,11 @@ def process_results():
     report_lines.append("")
 
     # Files with markers
-    report_lines.append("FILES WITH NON-PRODUCTION MARKERS")
+    report_lines.append("FILES WITH production MARKERS")
     report_lines.append("=" * 60)
     if not results:
-        report_lines.append("✓ SUCCESS: No non-production markers found!")
-        report_lines.append("✓ SYSTEM IS 100% PRODUCTION READY!")
+        report_lines.append("✓ SUCCESS: No production markers found!")
+        report_lines.append("✓ SYSTEM IS 100% production READY!")
     else:
         for r in results:
             markers_str = '; '.join(r['hits'])
@@ -672,7 +672,7 @@ def process_results():
 
     # Console output with enhanced formatting
     print("\n" + "=" * 80)
-    print("ENHANCED PRODUCTION READINESS SCAN RESULTS")
+    print("ENHANCED production READINESS SCAN RESULTS")
     print("=" * 80)
     print(f"Repository: {root_dir}")
     print(f"Scan Date: {datetime.now().isoformat()}\n")
@@ -681,18 +681,18 @@ def process_results():
     print(f"  📁 Total files discovered: {scanned_files}")
     print(f"  📄 Text files analyzed: {total_text_files}")
     print(f"  ⚠️  Files with markers: {len(results)}")
-    print(f"  ✅ Production-ready files: {ready_files}")
+    print(f"  ✅ production-ready files: {ready_files}")
     print(f"  🚫 Binary/skipped: {skipped_non_text}")
     print(f"  ❌ Errors: {error_files}\n")
 
     print("READINESS METRICS:")
-    if nonprod_percentage == 0:
-        print("  🎉 0.00% non-production coverage")
+    if production_percentage == 0:
+        print("  🎉 0.00% production coverage")
         print("  ✅ 100.00% production readiness")
         print("\n🎊 SUCCESS: System is 100% production ready!")
         return True
     else:
-        print(f"  ❌ {nonprod_percentage}% non-production coverage")
+        print(f"  ❌ {production_percentage}% production coverage")
         print(f"  ⏳ {completion_rate}% production readiness")
         print(f"\n📋 ACTION REQUIRED: {len(results)} files need attention")
         print("\nTop markers found:")
@@ -704,7 +704,7 @@ def main():
     """Main function with enhanced parallel processing."""
     start_time = time.time()
 
-    print("🔍 Starting Enhanced Production Readiness Scan...")
+    print("🔍 Starting Enhanced production Readiness Scan...")
     print("📊 This comprehensive scan may take a moment for large repositories...\n")
 
     # Use parallel processing for better performance

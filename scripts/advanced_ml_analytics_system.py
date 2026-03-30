@@ -59,7 +59,7 @@ class AdvancedMLPredictor:
                 'model_type': 'Autoencoder + Isolation Forest + Graph Neural Network',
                 'accuracy': 97.9,
                 'prediction_horizon': 'Real-time',
-                'features': ['transaction_graph', 'temporal_patterns', 'device_fingerprinting', 'behavioral_biometrics', 'network_analysis'],
+                'features': ['transaction_graph', 'temporal_patterns', 'prodice_fingerprinting', 'behavioral_biometrics', 'network_analysis'],
                 'target': 'fraud_probability'
             },
             'portfolio_optimization': {
@@ -81,7 +81,7 @@ class AdvancedMLPredictor:
         self.feature_engineering = {
             'temporal_features': ['hour_of_day', 'day_of_week', 'month', 'quarter', 'is_weekend', 'is_holiday'],
             'statistical_features': ['rolling_mean_7d', 'rolling_std_7d', 'rolling_mean_30d', 'rolling_std_30d', 'z_score', 'percentile_rank'],
-            'behavioral_features': ['transaction_frequency', 'average_amount', 'amount_volatility', 'geographic_diversity', 'device_consistency'],
+            'behavioral_features': ['transaction_frequency', 'average_amount', 'amount_volatility', 'geographic_diversity', 'prodice_consistency'],
             'market_features': ['volatility_index', 'fear_greed_index', 'bitcoin_dominance', 'altcoin_season_index', 'defi_tvl_change'],
             'technical_features': ['rsi', 'macd', 'bollinger_bands', 'moving_averages', 'volume_profile', 'order_book_imbalance']
         }
@@ -134,7 +134,7 @@ class AdvancedMLPredictor:
         return {
             'transaction_count': len(transactions),
             'avg_amount': statistics.mean(amounts) if amounts else 0,
-            'amount_volatility': statistics.stdev(amounts) if len(amounts) > 1 else 0,
+            'amount_volatility': statistics.stprod(amounts) if len(amounts) > 1 else 0,
             'max_amount': max(amounts) if amounts else 0,
             'min_amount': min(amounts) if amounts else 0,
             'balance_to_avg_ratio': balance / (statistics.mean(amounts) if amounts else 1),
@@ -220,13 +220,13 @@ class AdvancedMLPredictor:
         """Extract features for risk assessment"""
         amount = transaction.get('amount', 0)
         location = transaction.get('location', 'unknown')
-        device = transaction.get('device', 'unknown')
+        prodice = transaction.get('prodice', 'unknown')
 
         # Historical analysis
         if user_history:
             historical_amounts = [t.get('amount', 0) for t in user_history]
             avg_historical = statistics.mean(historical_amounts) if historical_amounts else 0
-            std_historical = statistics.stdev(historical_amounts) if len(historical_amounts) > 1 else 0
+            std_historical = statistics.stprod(historical_amounts) if len(historical_amounts) > 1 else 0
         else:
             avg_historical = 0
             std_historical = 0
@@ -236,7 +236,7 @@ class AdvancedMLPredictor:
             'amount_to_avg_ratio': amount / avg_historical if avg_historical > 0 else float('inf'),
             'amount_zscore': (amount - avg_historical) / std_historical if std_historical > 0 else 0,
             'location_anomaly': self._check_location_anomaly(location, user_history),
-            'device_anomaly': self._check_device_anomaly(device, user_history),
+            'prodice_anomaly': self._check_prodice_anomaly(prodice, user_history),
             'time_anomaly': self._check_time_anomaly(transaction.get('timestamp')),
             'velocity_check': self._check_transaction_velocity(user_history),
             'amount_pattern': self._check_amount_pattern(amount, user_history)
@@ -255,7 +255,7 @@ class AdvancedMLPredictor:
         # Anomaly-based risk
         if features['location_anomaly']:
             score += 0.2
-        if features['device_anomaly']:
+        if features['prodice_anomaly']:
             score += 0.15
         if features['time_anomaly']:
             score += 0.1
@@ -300,13 +300,13 @@ class AdvancedMLPredictor:
         historical_locations = [t.get('location', 'unknown') for t in history]
         return location not in historical_locations[-5:]  # Not in last 5 transactions
 
-    def _check_device_anomaly(self, device: str, history: List[Dict]) -> bool:
-        """Check if device is anomalous"""
+    def _check_prodice_anomaly(self, prodice: str, history: List[Dict]) -> bool:
+        """Check if prodice is anomalous"""
         if not history:
             return False
 
-        historical_devices = [t.get('device', 'unknown') for t in history]
-        return device not in historical_devices[-3:]  # Not in last 3 transactions
+        historical_prodices = [t.get('prodice', 'unknown') for t in history]
+        return prodice not in historical_prodices[-3:]  # Not in last 3 transactions
 
     def _check_time_anomaly(self, timestamp) -> bool:
         """Check if transaction time is unusual"""
@@ -360,8 +360,8 @@ class AdvancedMLPredictor:
         if features.get('location_anomaly', False):
             factors.append('Unusual geographic location')
 
-        if features.get('device_anomaly', False):
-            factors.append('Unusual device fingerprint')
+        if features.get('prodice_anomaly', False):
+            factors.append('Unusual prodice fingerprint')
 
         if features.get('time_anomaly', False):
             factors.append('Unusual transaction timing')
@@ -1049,11 +1049,11 @@ def main():
                 'DOT': 3100, 'USDC': 35000, 'USDT': 28500.50
             },
             'transactions': [
-                {'amount': 1500, 'timestamp': '2026-03-25T10:30:00Z', 'location': 'US', 'device': 'mobile'},
-                {'amount': 3200, 'timestamp': '2026-03-24T14:15:00Z', 'location': 'US', 'device': 'desktop'},
-                {'amount': 750, 'timestamp': '2026-03-23T09:45:00Z', 'location': 'US', 'device': 'mobile'},
-                {'amount': 2100, 'timestamp': '2026-03-22T16:20:00Z', 'location': 'US', 'device': 'desktop'},
-                {'amount': 950, 'timestamp': '2026-03-21T11:10:00Z', 'location': 'US', 'device': 'mobile'}
+                {'amount': 1500, 'timestamp': '2026-03-25T10:30:00Z', 'location': 'US', 'prodice': 'mobile'},
+                {'amount': 3200, 'timestamp': '2026-03-24T14:15:00Z', 'location': 'US', 'prodice': 'desktop'},
+                {'amount': 750, 'timestamp': '2026-03-23T09:45:00Z', 'location': 'US', 'prodice': 'mobile'},
+                {'amount': 2100, 'timestamp': '2026-03-22T16:20:00Z', 'location': 'US', 'prodice': 'desktop'},
+                {'amount': 950, 'timestamp': '2026-03-21T11:10:00Z', 'location': 'US', 'prodice': 'mobile'}
             ],
             'risk_tolerance': 'moderate',
             'investment_horizon': 'medium_term'
@@ -1111,7 +1111,7 @@ def main():
             'amount': 2500,
             'timestamp': '2026-03-29T12:00:00Z',
             'location': 'US',
-            'device': 'mobile',
+            'prodice': 'mobile',
             'merchant_category': 'retail'
         }
 

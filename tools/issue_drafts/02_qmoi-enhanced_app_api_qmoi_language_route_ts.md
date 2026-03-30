@@ -7,33 +7,33 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
-title: "Fix [PRODUCTION READY]s in qmoi-enhanced/app/api/qmoi/language/route.ts (140 priority)"
+title: "Fix [production READY]s in qmoi-enhanced/app/api/qmoi/language/route.ts (140 priority)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Fix [PRODUCTION READY]s in qmoi-enhanced/app/api/qmoi/language/route.ts (140 priority)
+# Fix [production READY]s in qmoi-enhanced/app/api/qmoi/language/route.ts (140 priority)
 
 **File**: `qmoi-enhanced/app/api/qmoi/language/route.ts`
 **Priority score**: 140
 
 ## Summary of matches
 
-- Line 15: [PRODUCTION READY]_PROD: handle translation
-- Line 16: return res.status(200).json({ result: 'Translation result ([PRODUCTION READY]_PROD)' });
-- Line 18: [PRODUCTION READY]_PROD: handle STT
-- Line 19: return res.status(200).json({ result: 'Speech-to-text result ([PRODUCTION READY]_PROD)' });
-- Line 21: [PRODUCTION READY]_PROD: handle TTS
-- Line 22: return res.status(200).json({ result: 'Text-to-speech result ([PRODUCTION READY]_PROD)' });
-- Line 24: [PRODUCTION READY]_PROD: handle language detection
-- Line 25: return res.status(200).json({ result: 'Language detection result ([PRODUCTION READY]_PROD)' });
-- Line 27: [PRODUCTION READY]_PROD: handle language lesson
-- Line 28: return res.status(200).json({ result: 'Lesson result ([PRODUCTION READY]_PROD)' });
+- Line 15: [production READY]_prod: handle translation
+- Line 16: return res.status(200).json({ result: 'Translation result ([production READY]_prod)' });
+- Line 18: [production READY]_prod: handle STT
+- Line 19: return res.status(200).json({ result: 'Speech-to-text result ([production READY]_prod)' });
+- Line 21: [production READY]_prod: handle TTS
+- Line 22: return res.status(200).json({ result: 'Text-to-speech result ([production READY]_prod)' });
+- Line 24: [production READY]_prod: handle language detection
+- Line 25: return res.status(200).json({ result: 'Language detection result ([production READY]_prod)' });
+- Line 27: [production READY]_prod: handle language lesson
+- Line 28: return res.status(200).json({ result: 'Lesson result ([production READY]_prod)' });
 
 ## required action
 
-Replace [PRODUCTION READY] [PRODUCTION READY]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
+Replace [production READY] [production READY]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
 
 ## Notes
 

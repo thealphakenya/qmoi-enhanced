@@ -18,7 +18,7 @@ from typing import Dict, Any
 
 from .provider_base import ProviderBase, ProviderError
 
-# Try to load automatic credentials shim for test/dev environments
+# Try to load automatic credentials shim for test/prod environments
 try:
     from scripts import auto_creds
 except Exception:

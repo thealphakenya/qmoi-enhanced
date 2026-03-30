@@ -35,8 +35,8 @@ jobs:
       - name: Run App Signing Automation Tests
         run: python scripts/app_signing_automation.test.py
       
-      - name: Run Device Orchestration Manager Tests
-        run: python scripts/device_orchestration_manager.test.py
+      - name: Run prodice Orchestration Manager Tests
+        run: python scripts/prodice_orchestration_manager.test.py
       
       - name: Run Autonomous Host Manager Tests
         run: python scripts/auto_host_manager.test.py

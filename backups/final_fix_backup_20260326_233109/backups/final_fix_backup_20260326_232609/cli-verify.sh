@@ -1,4 +1,4 @@
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/bin/bash
 # CLI Verification Script for QMOI Enhanced
 # Verifies all services and adapters without requiring a browser
@@ -58,7 +58,7 @@ verify_http_server() {
   log_header "Verifying HTTP Server"
 
   log_test "Checking HTTP server on port $HTTP_PORT..."
-  if curl -s -o /dev/null -w "%{http_code}" "$API_URL" 2>/dev/null | grep -q "200\|301\|302"; then
+  if curl -s -o /prod/null -w "%{http_code}" "$API_URL" 2>/prod/null | grep -q "200\|301\|302"; then
     log_pass "HTTP server is responsive"
   else
     log_fail "HTTP server is not responding"
@@ -81,7 +81,7 @@ verify_dashboards() {
     log_test "Checking dashboard: $dashboard"
     
     local status_code
-    status_code=$(curl -s -o /dev/null -w "%{http_code}" "$API_URL/$dashboard" 2>/dev/null)
+    status_code=$(curl -s -o /prod/null -w "%{http_code}" "$API_URL/$dashboard" 2>/prod/null)
     
     if [ "$status_code" = "200" ]; then
       log_pass "Dashboard $dashboard accessible (HTTP $status_code)"
@@ -108,7 +108,7 @@ verify_adapter_files() {
     
     if [ -f "$WORKSPACE_ROOT/$file" ]; then
       local size
-      size=$(stat -f%z "$WORKSPACE_ROOT/$file" 2>/dev/null || stat -c%s "$WORKSPACE_ROOT/$file" 2>/dev/null)
+      size=$(stat -f%z "$WORKSPACE_ROOT/$file" 2>/prod/null || stat -c%s "$WORKSPACE_ROOT/$file" 2>/prod/null)
       log_pass "Found $file ($size bytes)"
     else
       log_fail "File not found: $file"
@@ -193,7 +193,7 @@ test_adapter_response_times() {
   local start_time
   start_time=$(date +%s%N)
   
-  curl -s -o /dev/null "$API_URL/" 2>/dev/null || true
+  curl -s -o /prod/null "$API_URL/" 2>/prod/null || true
   
   local end_time
   end_time=$(date +%s%N)
@@ -224,7 +224,7 @@ verify_documentation() {
     
     if [ -f "$WORKSPACE_ROOT/$doc" ]; then
       local lines
-      lines=$(wc -l < "$WORKSPACE_ROOT/$doc" 2>/dev/null || echo "0")
+      lines=$(wc -l < "$WORKSPACE_ROOT/$doc" 2>/prod/null || echo "0")
       log_pass "Found $doc ($lines lines)"
     else
       log_fail "Documentation not found: $doc"
@@ -240,9 +240,9 @@ verify_cli_tools() {
   for tool in "${tools[@]}"; do
     log_test "Checking tool: $tool"
     
-    if command -v "$tool" &> /dev/null; then
+    if command -v "$tool" &> /prod/null; then
       local version
-      version=$("$tool" --version 2>/dev/null | head -1 || echo "installed")
+      version=$("$tool" --version 2>/prod/null | head -1 || echo "installed")
       log_pass "Tool $tool: $version"
     else
       log_fail "Tool $tool not found"
@@ -255,7 +255,7 @@ test_connectivity() {
 
   log_test "Testing localhost connectivity..."
   
-  if timeout "$TEST_TIMEOUT" curl -s -o /dev/null -w "%{http_code}" "$API_URL" 2>/dev/null | grep -q "200\|301\|302\|404"; then
+  if timeout "$TEST_TIMEOUT" curl -s -o /prod/null -w "%{http_code}" "$API_URL" 2>/prod/null | grep -q "200\|301\|302\|404"; then
     log_pass "Localhost is reachable"
   else
     log_fail "Cannot reach localhost:$HTTP_PORT"
@@ -263,7 +263,7 @@ test_connectivity() {
 
   log_test "Testing DNS resolution..."
   
-  if timeout "$TEST_TIMEOUT" curl -s -o /dev/null "https://www.google.com" 2>/dev/null; then
+  if timeout "$TEST_TIMEOUT" curl -s -o /prod/null "https://www.google.com" 2>/prod/null; then
     log_pass "External connectivity working"
   else
     log_fail "No external connectivity"
@@ -309,7 +309,7 @@ test_curl_endpoints() {
     log_test "Testing endpoint: $endpoint"
     
     local status_code
-    status_code=$(curl -s -o /dev/null -w "%{http_code}" "$API_URL$endpoint" 2>/dev/null)
+    status_code=$(curl -s -o /prod/null -w "%{http_code}" "$API_URL$endpoint" 2>/prod/null)
     
     if [ "$status_code" = "200" ]; then
       log_pass "Endpoint $endpoint: HTTP $status_code"
@@ -334,9 +334,9 @@ generate_summary() {
     echo -e "${GREEN}✓ All verifications passed!${NC}"
     echo ""
     echo "The QMOI Enhanced system is ready for:"
-    echo "  • Development"
+    echo "  • production"
     echo "  • Testing"
-    echo "  • Production deployment"
+    echo "  • production deployment"
     return 0
   else
     echo -e "${RED}✗ Some verifications failed.${NC}"

@@ -188,7 +188,7 @@ KNOWLEDGE_BASE = [
     {
         "id": "7",
         "title": "Federated Learning",
-        "excerpt": "Train machine learning models across decentralized devices while keeping data localized and private.",
+        "excerpt": "Train machine learning models across decentralized prodices while keeping data localized and private.",
         "content": "Federated averaging, differential privacy, secure aggregation, challenges in heterogeneous data and communication efficiency.",
         "score": 0.87,
         "tags": ["federated learning", "privacy", "distributed ML"]
@@ -213,7 +213,7 @@ KNOWLEDGE_BASE = [
         "id": "10",
         "title": "AutoML and Neural Architecture Search",
         "excerpt": "Automated machine learning techniques for hyperparameter optimization and neural architecture design.",
-        "content": "NAS algorithms, Bayesian optimization, AutoKeras, and practical applications in model development.",
+        "content": "NAS algorithms, Bayesian optimization, AutoKeras, and practical applications in model production.",
         "score": 0.83,
         "tags": ["AutoML", "NAS", "automation"]
     }

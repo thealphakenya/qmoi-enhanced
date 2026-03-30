@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Enhanced QMOI Features Documentation"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -300,9 +300,9 @@ All enhanced services support configuration options:
 
 ## Advanced E2E Testing & CI Integration
 
-### Error [PRODUCTION READY] & Accessibility
+### Error [production READY] & Accessibility
 
-- Cypress E2E tests [PRODUCTION READY] API errors and slow responses using `cy.intercept`.
+- Cypress E2E tests [production READY] API errors and slow responses using `cy.intercept`.
 - Accessibility is checked with `cypress-axe`.
 - See `cypress/e2e/qmoi_kernel_panel_advanced.cy.js` for examples.
 
@@ -321,7 +321,7 @@ All enhanced services support configuration options:
 
 ### Multi-User & Mobile E2E
 
-- Cypress tests [PRODUCTION READY] different user roles (admin, user) via cookies.
+- Cypress tests [production READY] different user roles (admin, user) via cookies.
 - Mobile/responsive layouts tested with `cy.viewport` (e.g., iPhone 6).
 - Accessibility checks run on mobile as well.
 - See `cypress/e2e/qmoi_kernel_panel_multiuser_mobile.cy.js` for examples.

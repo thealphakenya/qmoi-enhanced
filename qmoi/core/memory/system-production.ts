@@ -1,5 +1,5 @@
 /**
- * QMOI Memory System - Production Implementation
+ * QMOI Memory System - production Implementation
  * 
  * Full production-grade memory management system with:
  * - Long-term memory storage and retrieval
@@ -52,7 +52,7 @@ export interface ConsolidatedMemory {
 }
 
 /**
- * Production Memory System
+ * production Memory System
  * Manages all types of memory with retrieval optimization
  */
 export class MemorySystem {

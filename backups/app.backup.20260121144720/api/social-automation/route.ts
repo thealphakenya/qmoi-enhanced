@@ -16,7 +16,7 @@ export async function POST_POST(_req: NextRequest) {
   // Post status/news to platform
   const body = (await _req.json()) as any;
   const { content, platform } = body;
-  // POST: Production integration with WhatsApp API, Telegram Bot API, LinkedIn Graph API
+  // POST: production integration with WhatsApp API, Telegram Bot API, LinkedIn Graph API
   // Use respective SDKs and webhook validators for each platform
   const post = {
     id: postId++,
@@ -46,7 +46,7 @@ export async function POST_TAG(_req: NextRequest) {
 
 export async function GET_INFO(_req: NextRequest) {
   // Gather info (
-  // Production: Implement info gathering from platforms
+  // production: Implement info gathering from platforms
   // Requires: Platform APIs (WhatsApp, Telegram, LinkedIn) and authentication tokens
   // Use respective SDK methods to fetch platform data
   return NextResponse.json({ info: "Info gathering not yet implemented." });

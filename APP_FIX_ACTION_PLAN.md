@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # IMMEDIATE ACTION PLAN — Fix Non-Functional Apps
 
 **Status**: 🔴 **CRITICAL - URGENT**  
@@ -46,7 +46,7 @@
 
 ## What's Wrong
 
-The 5 broken apps contain **repeating garbage byte patterns**, not actual application binaries. They were likely created as [PRODUCTION READY]s and never replaced with real builds.
+The 5 broken apps contain **repeating garbage byte patterns**, not actual application binaries. They were likely created as [production READY]s and never replaced with real builds.
 
 **Evidence**:
 
@@ -67,13 +67,13 @@ The 5 broken apps contain **repeating garbage byte patterns**, not actual applic
 ```bash
 # Check if real builds exist elsewhere in repo
 find /workspaces -name "*.apk" -o -name "*.ipa" -o -name "*.exe" -o -name "*.dmg" \
-  2>/dev/null | grep -v Qmoi_downloaded_apps
+  2>/prod/null | grep -v Qmoi_downloaded_apps
 
 # Check for build artifacts
-find /workspaces -type d -name "dist" -o -name "build" -o -name "release" 2>/dev/null
+find /workspaces -type d -name "dist" -o -name "build" -o -name "release" 2>/prod/null
 
 # Search for source code to rebuild
-find /workspaces -name "package.json" -o -name "build.gradle" -o -name "*.xcodeproj" 2>/dev/null
+find /workspaces -name "package.json" -o -name "build.gradle" -o -name "*.xcodeproj" 2>/prod/null
 ```
 
 **If builds exist**: Copy real ones to `Qmoi_downloaded_apps/<platform>/latest/`
@@ -122,7 +122,7 @@ gradle createMinimalAndroidApp
 # iOS: Create complete IPA
 xcodebuild createMinimalIPA
 
-# Windows/macOS: Create [PRODUCTION READY] executable with comprehensive UI
+# Windows/macOS: Create [production READY] executable with comprehensive UI
 
 # etc.
 ```
@@ -160,7 +160,7 @@ cat release_assets_manifest.json | jq '.assets[] | {name, size, sha256}' | head 
 For each app, run installation test:
 
 ```bash
-# Android - use emulator or device
+# Android - use emulator or prodice
 adb install -r Qmoi_downloaded_apps/android/latest/qmoi_ai.apk
 # Verify: App launches and shows UI
 
@@ -193,7 +193,7 @@ chmod +x Qmoi_downloaded_apps/linux/latest/qmoi_ai.AppImage
 ```bash
 # Commit the real apps
 git add Qmoi_downloaded_apps/
-git commit -m "fix: replace [PRODUCTION READY] apps with real functioning builds
+git commit -m "fix: replace [production READY] apps with real functioning builds
 
 - Android APK: Real executable app with UI
 - iOS IPA: Real executable app with UI
@@ -218,7 +218,7 @@ git push origin v1.2.4
 1. **Search for real builds**:
 
    ```bash
-   find /workspaces -name "*.apk" -o -name "*.ipa" 2>/dev/null | head -20
+   find /workspaces -name "*.apk" -o -name "*.ipa" 2>/prod/null | head -20
    ls -la /workspaces/qmoi-enhanced/Qmoi_downloaded_apps/
    ```
 
@@ -226,7 +226,7 @@ git push origin v1.2.4
 
    ```bash
    find /workspaces -name "package.json" -o -name "build.gradle" -o -name "*.xcodeproj" \
-     2>/dev/null | grep -i qmoi | head -10
+     2>/prod/null | grep -i qmoi | head -10
    ```
 
 3. **Decide strategy**:
@@ -251,7 +251,7 @@ To proceed, need answers:
 2. **Do app source files exist in repo?**
 
    ```bash
-   find /workspaces -name "src/" -o -name "app.json" -o -name "ios/" 2>/dev/null
+   find /workspaces -name "src/" -o -name "app.json" -o -name "ios/" 2>/prod/null
    ```
 
    Found at: **\*\***\_\_\_\_**\*\***
@@ -336,7 +336,7 @@ TOMORROW (Nov 15)
   └─ [ ] Initial testing (1 hour)
 
 WEDNESDAY (Nov 16)
-  ├─ [ ] Replace [PRODUCTION READY] files (30 min)
+  ├─ [ ] Replace [production READY] files (30 min)
   ├─ [ ] Regenerate manifest (30 min)
   └─ [ ] Platform-by-platform verification (2 hours)
 
@@ -360,7 +360,7 @@ Once complete, ALL of these should pass:
 - [ ] Android APK launches and shows QMOI UI
 - [ ] iOS IPA installs without error
 - [ ] iOS IPA launches and shows QMOI UI
-- [ ] Smart TV APK works on Smart TV device/emulator
+- [ ] Smart TV APK works on Smart TV prodice/emulator
 - [ ] Chromebook app accessible on Chromebook
 - [ ] QCity package works
 - [ ] Linux deb installs: `dpkg -i qmoi_ai.deb`
@@ -380,13 +380,13 @@ Once complete, ALL of these should pass:
 **Internal**:
 
 - [ ] Post issue to GitHub with this action plan
-- [ ] Notify dev team of [PRODUCTION READY] files issue
+- [ ] Notify prod team of [production READY] files issue
 - [ ] Schedule sync meeting to discuss approach
 
 **External** (if needed):
 
 - [ ] Update GitHub release notes: "Apps being updated for full functionality"
-- [ ] Note in README: "Some platforms currently in development"
+- [ ] Note in README: "Some platforms currently in production"
 - [ ] Timeline: "Full platform support by Nov 18"
 
 ---
@@ -433,7 +433,7 @@ v1.2.4 → pushed to Nov 22 (after platforms ready)
 ---
 
 **Status**: Awaiting action on Step 1 (find real builds/source)  
-**Owner**: DevOps/Build Team  
+**Owner**: prodOps/Build Team  
 **Deadline**: Friday EOD (Nov 18)
 
 ## 🔄 Evolution Status

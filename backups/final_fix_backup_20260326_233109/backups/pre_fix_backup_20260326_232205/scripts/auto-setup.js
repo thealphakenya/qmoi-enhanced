@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env node
 
 const { execSync, spawn } = require("child_process");
@@ -111,7 +111,7 @@ function installDependencies() {
 
   log("Installing testing dependencies...");
   const testResult = runCommandWithRetry(
-    `npm install --save-dev --yes ${testDeps.join(" ")}`,
+    `npm install --save-prod --yes ${testDeps.join(" ")}`,
   );
   if (!testResult.success) {
     log("Failed to install testing dependencies", "error");
@@ -279,7 +279,7 @@ Write-Host "🚀 QMOI Auto-Setup Starting..." -ForegroundColor Green
 # Install dependencies
 Write-Host "📦 Installing dependencies..." -ForegroundColor Yellow
 npm install --yes --legacy-peer-deps
-npm install --save-dev --yes @testing-library/react @testing-library/react-hooks @testing-library/jest-dom @testing-library/user-_event jest jest-environment-jsdom playwright cypress @types/jest
+npm install --save-prod --yes @testing-library/react @testing-library/react-hooks @testing-library/jest-dom @testing-library/user-_event jest jest-environment-jsdom playwright cypress @types/jest
 
 # Install Playwright browsers
 Write-Host "Installing Playwright browsers..." -ForegroundColor Yellow
@@ -316,7 +316,7 @@ echo "🚀 QMOI Auto-Setup Starting..."
 # Install dependencies
 echo "📦 Installing dependencies..."
 npm install --yes --legacy-peer-deps
-npm install --save-dev --yes @testing-library/react @testing-library/react-hooks @testing-library/jest-dom @testing-library/user-_event jest jest-environment-jsdom playwright cypress @types/jest
+npm install --save-prod --yes @testing-library/react @testing-library/react-hooks @testing-library/jest-dom @testing-library/user-_event jest jest-environment-jsdom playwright cypress @types/jest
 
 # Install Playwright browsers
 echo "Installing Playwright browsers..."
@@ -374,7 +374,7 @@ async function main() {
 
     log("🎉 QMOI Auto-Setup completed successfully!");
     log("You can now run:");
-    log("  npm run dev          # Start development server");
+    log("  npm run prod          # Start production server");
     log("  npm run build        # Build for production");
     log("  npm run test:ui      # Run UI tests");
     log("  npm run qmoi:health:check  # Run health checks");

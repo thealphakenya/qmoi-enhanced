@@ -1,8 +1,8 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/bin/bash
 
 ################################################################################
-# QMOI Enhanced - Production Health Check Script
+# QMOI Enhanced - production Health Check Script
 #
 # Purpose: Comprehensive health check suite for production deployment
 # Usage:   ./scripts/health-check.sh [vercel_app_url]
@@ -120,7 +120,7 @@ api_validation() {
     for endpoint in "${endpoints[@]}"; do
         local url="${endpoint%%:*}"
         local expected_code="${endpoint##*:}"
-        local actual_code=$(curl -s -o /dev/null -w "%{http_code}" "$APP_URL$url" 2>&1 || echo "000")
+        local actual_code=$(curl -s -o /prod/null -w "%{http_code}" "$APP_URL$url" 2>&1 || echo "000")
         
         if [ "$actual_code" = "$expected_code" ]; then
             log_success "Endpoint $url: HTTP $actual_code"
@@ -174,15 +174,15 @@ performance_check() {
     local samples=3
     
     for i in $(seq 1 $samples); do
-        local time=$(curl -s -w "%{time_total}" -o /dev/null "$APP_URL/api/health" 2>&1 | grep -oE '[0-9]+\.[0-9]+' || echo "0")
-        total_time=$(echo "$total_time + $time" | bc 2>/dev/null || echo "0")
+        local time=$(curl -s -w "%{time_total}" -o /prod/null "$APP_URL/api/health" 2>&1 | grep -oE '[0-9]+\.[0-9]+' || echo "0")
+        total_time=$(echo "$total_time + $time" | bc 2>/prod/null || echo "0")
     done
     
-    local avg=$(echo "scale=3; $total_time / $samples" | bc 2>/dev/null || echo "0")
+    local avg=$(echo "scale=3; $total_time / $samples" | bc 2>/prod/null || echo "0")
     
-    if (( $(echo "$avg < 0.5" | bc -l 2>/dev/null || echo "0") )); then
+    if (( $(echo "$avg < 0.5" | bc -l 2>/prod/null || echo "0") )); then
         log_success "Average response time: ${avg}s (Excellent)"
-    elif (( $(echo "$avg < 1.0" | bc -l 2>/dev/null || echo "0") )); then
+    elif (( $(echo "$avg < 1.0" | bc -l 2>/prod/null || echo "0") )); then
         log_success "Average response time: ${avg}s (Good)"
     else
         log_warning "Average response time: ${avg}s (Acceptable)"
@@ -193,7 +193,7 @@ performance_check() {
 ssl_check() {
     log "Checking SSL certificate..."
     
-    if echo | openssl s_client -servername "${APP_URL#https://}" -connect "${APP_URL#https://}:443" 2>/dev/null | grep -q "Verify return code: 0"; then
+    if echo | openssl s_client -servername "${APP_URL#https://}" -connect "${APP_URL#https://}:443" 2>/prod/null | grep -q "Verify return code: 0"; then
         log_success "SSL certificate: Valid"
     else
         log_warning "SSL certificate: Check manually at $(echo $APP_URL | sed 's/https:\/\///')"

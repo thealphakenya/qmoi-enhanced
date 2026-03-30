@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # Security Checklist & Deployment Guide
 
 **Date:** December 2, 2025  
@@ -63,7 +63,7 @@
   - [ ] Never commit `.env` files (use `.env.data`)
   - [ ] All secrets stored in secure vault (AWS Secrets Manager, HashiCorp Vault)
   - [ ] Rotate secrets regularly
-  - [ ] Different credentials for dev/production/production
+  - [ ] Different credentials for prod/production/production
   - [ ] Validate required env vars on startup
   ```typescript
   const requiredEnvVars = ["DATABASE_URL", "API_KEY_SECRET", "MAIL_PASSWORD"];
@@ -304,7 +304,7 @@
 
 ## Deployment Checklist
 
-### Pre-Production
+### Pre-production
 
 - [ ] **Code Review**
   - [ ] Security-focused code review
@@ -334,7 +334,7 @@
 - [ ] Load test with realistic traffic
 - [ ] Security scan (OWASP ZAP, Burp Suite)
 
-### Production Deployment
+### production Deployment
 
 - [ ] **Infrastructure**
   - [ ] Load balancer configured
@@ -370,7 +370,7 @@
 4. **Keep It Simple:** Complex systems are harder to secure
 5. **Stay Updated:** Patch vulnerabilities promptly
 
-### Development
+### production
 
 1. **Secure by Default:** Security should be default, not opt-in
 2. **Code Review:** Every change reviewed by another person

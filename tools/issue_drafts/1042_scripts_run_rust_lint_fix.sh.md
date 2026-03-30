@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Issue final for scripts/run_rust_lint_fix.sh"
 generated: 2025-11-08T16:06:38.985193Z
@@ -19,9 +19,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [PRODUCTION READY] markers or [PRODUCTION READY]s.
-- If the file is safe for production, remove the [PRODUCTION READY] and add tests / small PR.
-- If the file is intentionally non-production (e.g. [PRODUCTION READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [production READY] markers or [production READY]s.
+- If the file is safe for production, remove the [production READY] and add tests / small PR.
+- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -34,18 +34,18 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="${SCRIPT_DIR}/.."
 
 echo "Running rust lint/fix scaffold (dry-run)..."
-if ! command -v cargo >/dev/null 2>&1; then
+if ! command -v cargo >/prod/null 2>&1; then
   echo "cargo not found in PATH. Install Rust toolchain to run the linter locally." >&2
   exit 0
 fi
 
-pushd "${PROJECT_ROOT}/tools/rust_lint_fix" >/dev/null
+pushd "${PROJECT_ROOT}/tools/rust_lint_fix" >/prod/null
 cargo run --quiet --release || {
   echo "Rust scaffold run failed (non-fatal)." >&2
-  popd >/dev/null
+  popd >/prod/null
   exit 0
 }
-popd >/dev/null
+popd >/prod/null
 
 echo "Rust lint/fix scaffold (dry-run) completed. Check .qmoi_validation for proposals."
 

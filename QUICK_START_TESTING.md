@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-## Production Readiness Snapshot
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -20,7 +20,7 @@
 
 1. **Open QAvatar Component**
    - Navigate to `/qmoi-enhanced/components/QAvatar.tsx`
-   - Should auto-load in your dev environment
+   - Should auto-load in your prod environment
 
 2. **Start Speaking (Normal Mode)**
    - Click 🎙️ button to start conversation
@@ -195,7 +195,7 @@ Round 3:
 Expected: Strategy selection matches your emotional state
 ```
 
-## 🔧 Developer Testing Commands
+## 🔧 prodeloper Testing Commands
 
 ### Testing Vision Service Directly:
 ```typescript
@@ -220,7 +220,7 @@ console.log("Lighting:", context.lighting);
 // In browser console:
 const voiceService = QMOIVoiceService.getInstance();
 
-[PRODUCTION READY] silence detection
+[production READY] silence detection
 const hasSilence = voiceService.detectSpeechEnd(frequencyData);
 console.log("Speech ended:", hasSilence);
 
@@ -258,7 +258,7 @@ console.log("Counter-argument:", response);
 
 ### Check Vision State:
 ```javascript
-// In React DevTools:
+// In React prodTools:
 // Find QAvatar component
 // Check state:
 {
@@ -273,7 +273,7 @@ console.log("Counter-argument:", response);
 
 ### Check Debate State:
 ```javascript
-// In React DevTools:
+// In React prodTools:
 {
   conversationMode: "debate" / "listen" / "speak" / "understand",
   isUserSpeaking: true/false,
@@ -286,8 +286,8 @@ console.log("Counter-argument:", response);
 
 ### Camera Not Working:
 ```
-1. Open DevTools Console (F12)
-2. Type: navigator.mediaDevices.getUserMedia({video: true})
+1. Open prodTools Console (F12)
+2. Type: navigator.mediaprodices.getUserMedia({video: true})
 3. Should show: Request permission dialog
 4. If error: Check browser permissions, camera in use elsewhere
 5. Try: Hard refresh (Ctrl+Shift+R)
@@ -295,7 +295,7 @@ console.log("Counter-argument:", response);
 
 ### Speech Recognition Not Working:
 ```
-1. Open DevTools Console
+1. Open prodTools Console
 2. Type: new (window.SpeechRecognition || window.webkitSpeechRecognition)()
 3. Should not throw error
 4. If error: Using unsupported browser (try Chrome/Edge)
@@ -366,12 +366,12 @@ async function testVision() {
     console.log("✅ Camera access granted");
     
     // Test person analysis
-    const [PRODUCTION READY]Frame = { width: 1280, height: 720 };
-    const person = await visionService.analyzePerson([PRODUCTION READY]Frame);
+    const [production READY]Frame = { width: 1280, height: 720 };
+    const person = await visionService.analyzePerson([production READY]Frame);
     console.log("✅ Person analysis:", person);
     
     // Test context
-    const context = await visionService.analyzeVisualContext([PRODUCTION READY]Frame);
+    const context = await visionService.analyzeVisualContext([production READY]Frame);
     console.log("✅ Visual context:", context);
     
     console.log("✅ Vision system operational!");

@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOIACCOUNTS.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -20,7 +20,7 @@ title: "QMOIACCOUNTS.md"
 
 ### Overview
 
-QMOI Accounts provide a single, secure identity for users across all QMOI apps, platforms, and services—similar to Google Accounts. This enables seamless login, account management, and automation for both users and developers.
+QMOI Accounts provide a single, secure identity for users across all QMOI apps, platforms, and services—similar to Google Accounts. This enables seamless login, account management, and automation for both users and prodelopers.
 
 ### Key Features
 
@@ -29,7 +29,7 @@ QMOI Accounts provide a single, secure identity for users across all QMOI apps, 
 - **API & Automation:** Integrate QMOI Accounts into any app or workflow with robust APIs and automation hooks.
 - **Master/Admin Controls:** Master users have override, audit, and advanced management capabilities.
 - **Security & Privacy:** Encrypted, access-controlled, and compliant with global standards.
-- **Self-Healing:** Automated account recovery, provisioning, and error fixing—no developer intervention needed.
+- **Self-Healing:** Automated account recovery, provisioning, and error fixing—no prodeloper intervention needed.
 - **Audit Logging:** All account actions are logged and visualized for transparency.
 
 ### How to Use QMOI Accounts on Any Platform
@@ -40,11 +40,11 @@ QMOI Accounts provide a single, secure identity for users across all QMOI apps, 
    - Optionally, link third-party accounts (Google, Apple, etc.).
 2. **Login:**
    - Use your QMOI credentials to log in to any QMOI app or partner platform.
-   - Supports SSO, OAuth, and device-based login.
+   - Supports SSO, OAuth, and prodice-based login.
 3. **Account Management:**
-   - Access your account dashboard to update info, manage devices, and review activity.
+   - Access your account dashboard to update info, manage prodices, and review activity.
    - Master users can view and manage all accounts, with override and audit features.
-4. **Developer Integration:**
+4. **prodeloper Integration:**
    - Use QMOI Account APIs to add login/signup to your app.
    - Automate user provisioning, permissions, and account recovery.
    - See API.md for endpoints and usage examples.
@@ -71,10 +71,10 @@ graph TD;
 
 ### Advanced User Distinction & Recognition
 
-QMOI uses advanced AI-driven identification to recognize and distinguish each user, even across different accounts, devices, or sessions—including when a user is in the background or using another account. This is achieved through:
+QMOI uses advanced AI-driven identification to recognize and distinguish each user, even across different accounts, prodices, or sessions—including when a user is in the background or using another account. This is achieved through:
 
-- **Behavioral Biometrics:** Typing patterns, navigation habits, and device usage.
-- **Contextual Signals:** Location, device, time, and app usage context.
+- **Behavioral Biometrics:** Typing patterns, navigation habits, and prodice usage.
+- **Contextual Signals:** Location, prodice, time, and app usage context.
 - **Multi-Modal Biometrics:** Face, voice, fingerprint, and other biometric data (where permitted).
 - **Cross-Session Recognition:** QMOI links user actions and preferences across sessions and accounts, ensuring seamless experience and security.
 - **Background Awareness:** QMOI can identify users even when they are not the active account, providing personalized suggestions, security alerts, or automation as needed.

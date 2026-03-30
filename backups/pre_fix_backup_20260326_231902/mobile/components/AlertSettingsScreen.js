@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 import React, { useEffect, useState } from 'react';
 import { View, Text, Switch, Button, StyleSheet, TextInput, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -62,9 +62,9 @@ export default function AlertSettingsScreen() {
       <Text style={styles.title}>Custom Alert Rules {offline ? '(Offline)' : ''}</Text>
       <View style={styles.row}><Text>Critical Errors Only</Text><Switch value={criticalOnly} onValueChange={setCriticalOnly} /></View>
       <View style={styles.row}><Text>Alert for Error Types (comma separated)</Text></View>
-      <TextInput value={errorTypes} onChangeText={setErrorTypes} [PRODUCTION IMPLEMENTATION REQUIRED]="TypeError,ReferenceError" style={styles.input} />
+      <TextInput value={errorTypes} onChangeText={setErrorTypes} [production IMPLEMENTATION REQUIRED]="TypeError,ReferenceError" style={styles.input} />
       <View style={styles.row}><Text>Quiet Hours (e.g. 22:00-07:00)</Text></View>
-      <TextInput value={quietHours} onChangeText={setQuietHours} [PRODUCTION IMPLEMENTATION REQUIRED]="22:00-07:00" style={styles.input} />
+      <TextInput value={quietHours} onChangeText={setQuietHours} [production IMPLEMENTATION REQUIRED]="22:00-07:00" style={styles.input} />
       <Button title="Save Preferences" onPress={savePrefs} />
     </View>
   );

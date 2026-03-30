@@ -1,8 +1,8 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 {
   "name": "QMOI Space - Advanced AI Platform",
   "short_name": "QMOI Space",
-  "description": "Advanced AI Platform for Development, Gaming, and Revenue Generation",
+  "description": "Advanced AI Platform for production, Gaming, and Revenue Generation",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -11,7 +11,7 @@
   "scope": "/",
   "lang": "en",
   "dir": "ltr",
-  "categories": ["productivity", "business", "games", "developer"],
+  "categories": ["productivity", "business", "games", "prodeloper"],
   "icons": [
     {
       "src": "icons/icon-72x72.png",
@@ -104,13 +104,13 @@
       ]
     },
     {
-      "name": "Development",
-      "short_name": "Dev",
-      "description": "Open development environment",
-      "url": "/?tab=development",
+      "name": "production",
+      "short_name": "prod",
+      "description": "Open production environment",
+      "url": "/?tab=production",
       "icons": [
         {
-          "src": "icons/shortcut-dev.png",
+          "src": "icons/shortcut-prod.png",
           "sizes": "96x96"
         }
       ]

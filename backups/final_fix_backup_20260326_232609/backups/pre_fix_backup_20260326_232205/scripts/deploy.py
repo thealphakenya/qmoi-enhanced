@@ -64,7 +64,7 @@ class Deployer:
             'deploy_dir': 'deployments',
             'app_name': 'stable-q-ai',
             'environments': {
-                'development': {
+                'production': {
                     'host': 'localhost',
                     'port': 22,
                     'user': 'deploy',

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:53Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 // QMOI Media Sync Script
 // Syncs media files from ./public/media to a remote backup (S3)
 // Usage: node scripts/media_sync.js

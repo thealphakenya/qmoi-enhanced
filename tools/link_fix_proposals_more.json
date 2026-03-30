@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 [
   {
     "http": "http://blog.izs.me/)",
@@ -114,18 +114,18 @@
     "https": "https://www.w3.org/TR/html5/syntax.html#newlines",
     "status": 200,
     "files": [
-      "./dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-server.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server.browser.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server.node.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js"
+      "./dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server.browser.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server.node.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.production.js"
     ]
   },
   {
@@ -138,8 +138,8 @@
     ]
   },
   {
-    "http": "http://docs.python.org/dev/library/argparse.html#sub-commands)",
-    "https": "https://docs.python.org/dev/library/argparse.html#sub-commands)",
+    "http": "http://docs.python.org/prod/library/argparse.html#sub-commands)",
+    "https": "https://docs.python.org/prod/library/argparse.html#sub-commands)",
     "status": 200,
     "files": [
       "./tools/dns_docs_inventory.json",
@@ -187,18 +187,18 @@
     "https": "https://www.w3.org/TR/html5/syntax.html#parsing-main-inbody",
     "status": 200,
     "files": [
-      "./dashboard/node_modules/react-dom/umd/react-dom-server.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server.browser.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server.browser.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server.node.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.development.js"
+      "./dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server.browser.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server.node.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.production.js"
     ]
   },
   {
@@ -250,10 +250,10 @@
     "https": "https://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary",
     "status": 200,
     "files": [
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.development.js"
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.production.js"
     ]
   },
   {
@@ -391,8 +391,8 @@
     ]
   },
   {
-    "http": "http://docs.python.org/dev/library/argparse.html#action)",
-    "https": "https://docs.python.org/dev/library/argparse.html#action)",
+    "http": "http://docs.python.org/prod/library/argparse.html#action)",
+    "https": "https://docs.python.org/prod/library/argparse.html#action)",
     "status": 200,
     "files": [
       "./tools/dns_docs_inventory.json",
@@ -415,18 +415,18 @@
     "https": "https://www.w3.org/TR/REC-xml/#NT-Name",
     "status": 200,
     "files": [
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server.node.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-server.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server.browser.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.development.js"
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server.node.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server.browser.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.production.js"
     ]
   },
   {
@@ -553,8 +553,8 @@
     ]
   },
   {
-    "http": "http://dev.w3.org/csswg/css-color/#hwb-to-rgb",
-    "https": "https://dev.w3.org/csswg/css-color/#hwb-to-rgb",
+    "http": "http://prod.w3.org/csswg/css-color/#hwb-to-rgb",
+    "https": "https://prod.w3.org/csswg/css-color/#hwb-to-rgb",
     "status": 200,
     "files": [
       "./qmoi-enhanced/mobile/node_modules/color-convert/conversions.js",
@@ -631,18 +631,18 @@
     "https": "https://www.w3.org/TR/html5/syntax.html#element-restrictions",
     "status": 200,
     "files": [
-      "./dashboard/node_modules/react-dom/umd/react-dom-server.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server.browser.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.node.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server.node.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js"
+      "./dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server.browser.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.node.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server.node.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.production.js"
     ]
   },
   {
@@ -759,22 +759,22 @@
     "https": "https://www.w3.org/XML/1998/namespace',",
     "status": 200,
     "files": [
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server.browser.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server.node.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-server.browser.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.development.js"
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server.node.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.production.js"
     ]
   },
   {
@@ -819,10 +819,10 @@
     "status": 200,
     "files": [
       "./qmoi-enhanced/mobile/node_modules/ws/README.md",
-      "./qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/README.md",
+      "./qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md",
       "./mobile/node_modules/ws/README.md",
       "./qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/README.md",
-      "./mobile/node_modules/react-devtools-core/node_modules/ws/README.md",
+      "./mobile/node_modules/react-prodtools-core/node_modules/ws/README.md",
       "./mobile/node_modules/metro/node_modules/ws/README.md"
     ]
   },
@@ -854,14 +854,14 @@
     "https": "https://www.w3.org/TR/DOM-Level-3-Events/#keys-Modifiers",
     "status": 200,
     "files": [
-      "./dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-test-utils.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-test-utils.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-test-utils.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.development.js"
+      "./dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.js"
     ]
   },
   {
@@ -945,8 +945,8 @@
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://docs.python.org/dev/library/argparse.html#mutual-exclusion)",
-    "https": "https://docs.python.org/dev/library/argparse.html#mutual-exclusion)",
+    "http": "http://docs.python.org/prod/library/argparse.html#mutual-exclusion)",
+    "https": "https://docs.python.org/prod/library/argparse.html#mutual-exclusion)",
     "status": 200,
     "files": [
       "./qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/argparse/CHANGELOG.md",
@@ -962,22 +962,22 @@
     "https": "https://www.thespanner.co.uk/2007/11/26/ultimate-xss-css-injection/",
     "status": 200,
     "files": [
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server.browser.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server.node.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-server.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server.browser.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.development.js"
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server.browser.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server.node.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.production.js"
     ]
   },
   {
@@ -1041,14 +1041,14 @@
     "https": "https://www.w3.org/TR/css3-animations/#AnimationEvent-interface",
     "status": 200,
     "files": [
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-test-utils.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-test-utils.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-test-utils.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom.development.js"
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom.production.js"
     ]
   },
   {
@@ -1061,8 +1061,8 @@
     ]
   },
   {
-    "http": "http://dev.w3.org/2006/webapi/XMLHttpRequest-2/Overview.html#the-formdata-interface",
-    "https": "https://dev.w3.org/2006/webapi/XMLHttpRequest-2/Overview.html#the-formdata-interface",
+    "http": "http://prod.w3.org/2006/webapi/XMLHttpRequest-2/Overview.html#the-formdata-interface",
+    "https": "https://prod.w3.org/2006/webapi/XMLHttpRequest-2/Overview.html#the-formdata-interface",
     "status": 200,
     "files": [
       "./mobile/node_modules/form-data/README.md",
@@ -1164,8 +1164,8 @@
     ]
   },
   {
-    "http": "http://developer.android.com/reference/android/R.attr.html#importantForAccessibility",
-    "https": "https://developer.android.com/reference/android/R.attr.html#importantForAccessibility",
+    "http": "http://prodeloper.android.com/reference/android/R.attr.html#importantForAccessibility",
+    "https": "https://prodeloper.android.com/reference/android/R.attr.html#importantForAccessibility",
     "status": 200,
     "files": [
       "./qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/View/ViewAccessibility.d.ts",
@@ -1173,8 +1173,8 @@
     ]
   },
   {
-    "http": "http://docs.python.org/dev/library/argparse.html#sub-commands",
-    "https": "https://docs.python.org/dev/library/argparse.html#sub-commands",
+    "http": "http://docs.python.org/prod/library/argparse.html#sub-commands",
+    "https": "https://docs.python.org/prod/library/argparse.html#sub-commands",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
@@ -1204,10 +1204,10 @@
     "https": "https://www.w3.org/TR/2013/WD-DOM-Level-3-Events-20131105/#events-inputevents.",
     "status": 200,
     "files": [
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.development.js"
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.production.js"
     ]
   },
   {
@@ -1224,14 +1224,14 @@
     "https": "https://www.w3.org/TR/clipboard-apis/",
     "status": 200,
     "files": [
-      "./dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-test-utils.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-test-utils.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-test-utils.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom.development.js"
+      "./dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom.production.js"
     ]
   },
   {
@@ -1274,10 +1274,10 @@
     "https": "https://www.w3.org/TR/2013/WD-DOM-Level-3-Events-20131105",
     "status": 200,
     "files": [
-      "./dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.development.js"
+      "./dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.production.js"
     ]
   },
   {
@@ -1359,14 +1359,14 @@
     "https": "https://www.w3.org/TR/pointerevents/",
     "status": 200,
     "files": [
-      "./dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-test-utils.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-test-utils.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-test-utils.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.development.js"
+      "./dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.js"
     ]
   },
   {
@@ -1532,8 +1532,8 @@
     ]
   },
   {
-    "http": "http://docs.python.org/dev/library/argparse.html#argumentparser-objects",
-    "https": "https://docs.python.org/dev/library/argparse.html#argumentparser-objects",
+    "http": "http://docs.python.org/prod/library/argparse.html#argumentparser-objects",
+    "https": "https://docs.python.org/prod/library/argparse.html#argumentparser-objects",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
@@ -1605,18 +1605,18 @@
     "https": "https://www.w3.org/TR/html-polyglot/#newlines-in-textarea-and-pre",
     "status": 200,
     "files": [
-      "./dashboard/node_modules/react-dom/umd/react-dom-server.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server.browser.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server.node.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.node.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.development.js"
+      "./dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server.browser.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server.node.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.node.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.production.js"
     ]
   },
   {
@@ -1669,8 +1669,8 @@
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://docs.python.org/dev/library/argparse.html#mutual-exclusion",
-    "https": "https://docs.python.org/dev/library/argparse.html#mutual-exclusion",
+    "http": "http://docs.python.org/prod/library/argparse.html#mutual-exclusion",
+    "https": "https://docs.python.org/prod/library/argparse.html#mutual-exclusion",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
@@ -1703,14 +1703,14 @@
     "https": "https://www.w3.org/TR/2009/WD-css3-transitions-20090320/#transition-events-",
     "status": 200,
     "files": [
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-test-utils.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-test-utils.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-test-utils.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom.development.js"
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom.production.js"
     ]
   },
   {
@@ -1752,9 +1752,9 @@
     "status": 200,
     "files": [
       "./qmoi-enhanced/mobile/node_modules/ws/README.md",
-      "./qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/README.md",
+      "./qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md",
       "./qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/README.md",
-      "./mobile/node_modules/react-devtools-core/node_modules/ws/README.md",
+      "./mobile/node_modules/react-prodtools-core/node_modules/ws/README.md",
       "./mobile/node_modules/ws/README.md",
       "./mobile/node_modules/metro/node_modules/ws/README.md"
     ]
@@ -1773,22 +1773,22 @@
     "https": "https://modernizr.com/docs/#prefixed),",
     "status": 200,
     "files": [
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server.browser.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server.node.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-server.browser.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom.development.js"
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server.node.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom.production.js"
     ]
   },
   {
@@ -1796,14 +1796,14 @@
     "https": "https://www.w3.org/TR/DOM-Level-3-Events/#events-compositionevents",
     "status": 200,
     "files": [
-      "./dashboard/node_modules/react-dom/cjs/react-dom-test-utils.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-test-utils.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-test-utils.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom.development.js"
+      "./dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom.production.js"
     ]
   },
   {
@@ -2044,8 +2044,8 @@
     ]
   },
   {
-    "http": "http://docs.python.org/dev/library/argparse.html#the-add-argument-method",
-    "https": "https://docs.python.org/dev/library/argparse.html#the-add-argument-method",
+    "http": "http://docs.python.org/prod/library/argparse.html#the-add-argument-method",
+    "https": "https://docs.python.org/prod/library/argparse.html#the-add-argument-method",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
@@ -2189,14 +2189,14 @@
     "https": "https://www.w3.org/TR/touch-events/",
     "status": 200,
     "files": [
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-test-utils.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-test-utils.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-test-utils.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom.development.js"
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom.production.js"
     ]
   },
   {
@@ -2234,8 +2234,8 @@
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://dev.w3.org/csswg/css-color/#named-colors.",
-    "https": "https://dev.w3.org/csswg/css-color/#named-colors.",
+    "http": "http://prod.w3.org/csswg/css-color/#named-colors.",
+    "https": "https://prod.w3.org/csswg/css-color/#named-colors.",
     "status": 200,
     "files": [
       "./qmoi-enhanced/mobile/node_modules/slice-ansi/node_modules/color-name/README.md",
@@ -2326,10 +2326,10 @@
     "https": "https://www.w3.org/TR/2012/WD-html5-20121025/the-input-element.html",
     "status": 200,
     "files": [
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom.development.js"
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom.production.js"
     ]
   },
   {
@@ -2465,8 +2465,8 @@
     "files": ["./qmoi-enhanced/dashboard/node_modules/vite/LICENSE.md"]
   },
   {
-    "http": "http://docs.python.org/dev/library/argparse.html#action",
-    "https": "https://docs.python.org/dev/library/argparse.html#action",
+    "http": "http://docs.python.org/prod/library/argparse.html#action",
+    "https": "https://docs.python.org/prod/library/argparse.html#action",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
@@ -2635,14 +2635,14 @@
     "https": "https://www.w3.org/TR/DOM-Level-3-Events/",
     "status": 200,
     "files": [
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom-test-utils.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom-test-utils.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-test-utils.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom.development.js"
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom.production.js"
     ]
   },
   {
@@ -2848,8 +2848,8 @@
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://docs.python.org/dev/library/argparse.html",
-    "https": "https://docs.python.org/dev/library/argparse.html",
+    "http": "http://docs.python.org/prod/library/argparse.html",
+    "https": "https://docs.python.org/prod/library/argparse.html",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
@@ -2959,10 +2959,10 @@
     "https": "https://www.quirksmode.org/js/events_properties.html",
     "status": 200,
     "files": [
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/cjs/react-dom.development.js",
-      "./dashboard/node_modules/react-dom/umd/react-dom.development.js"
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/cjs/react-dom.production.js",
+      "./dashboard/node_modules/react-dom/umd/react-dom.production.js"
     ]
   },
   {
@@ -3080,8 +3080,8 @@
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://docs.python.org/dev/library/argparse.html#argumentparser-objects)",
-    "https": "https://docs.python.org/dev/library/argparse.html#argumentparser-objects)",
+    "http": "http://docs.python.org/prod/library/argparse.html#argumentparser-objects)",
+    "https": "https://docs.python.org/prod/library/argparse.html#argumentparser-objects)",
     "status": 200,
     "files": [
       "./mobile/node_modules/argparse/README.md",
@@ -3127,8 +3127,8 @@
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://docs.python.org/dev/library/argparse.html#the-add-argument-method)",
-    "https": "https://docs.python.org/dev/library/argparse.html#the-add-argument-method)",
+    "http": "http://docs.python.org/prod/library/argparse.html#the-add-argument-method)",
+    "https": "https://docs.python.org/prod/library/argparse.html#the-add-argument-method)",
     "status": 200,
     "files": [
       "./link_report.md",
@@ -3314,8 +3314,8 @@
     ]
   },
   {
-    "http": "http://developer.android.com/training/app-indexing/deep-linking.html#handling-intents",
-    "https": "https://developer.android.com/training/app-indexing/deep-linking.html#handling-intents",
+    "http": "http://prodeloper.android.com/training/app-indexing/deep-linking.html#handling-intents",
+    "https": "https://prodeloper.android.com/training/app-indexing/deep-linking.html#handling-intents",
     "status": 200,
     "files": [
       "./qmoi-enhanced/mobile/node_modules/react-native/Libraries/Linking/Linking.d.ts",

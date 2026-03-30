@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOI Video Platforms & App Build Automation"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -22,9 +22,9 @@ title: "QMOI Video Platforms & App Build Automation"
   - **Windows**: Electron app
   - **Android**: React Native APK
   - **iOS**: React Native IPA (if on macOS)
-- All output files are named `qmoi ai` and placed in the correct Qmoi_apps/<device> directory.
+- All output files are named `qmoi ai` and placed in the correct Qmoi_apps/<prodice> directory.
 - Robust logging and error handling are implemented for all build steps.
-- [PRODUCTION READY]_PRODs remain for mac, linux, chromebook, raspberrypi, smarttv, qcity.
+- [production READY]_prods remain for mac, linux, chromebook, raspberrypi, smarttv, qcity.
 
 <!-- QMOI_VALIDATION_START -->
 

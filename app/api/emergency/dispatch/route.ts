@@ -88,7 +88,7 @@ export async function POST(request: NextRequest) {
 // Local emergency dispatch (911 equivalent)
 async function dispatchLocalEmergency(type: string, location: any, details: string, priority: string) {
   try {
-    // Production:, this would integrate with local emergency dispatch systems
+    // production:, this would integrate with local emergency dispatch systems
     // For now, simulate dispatch
     console.log(`Local Emergency Dispatch - Type: ${type}, Priority: ${priority}`);
     console.log(`Location: ${location.address} (${location.lat}, ${location.lng})`);

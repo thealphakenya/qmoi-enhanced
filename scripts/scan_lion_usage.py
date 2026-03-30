@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """Scan the repository for LION usage and related artifacts.
 
-Produces `docs/lion_usage_report.json` with occurrences for quick triage.
+produces `docs/lion_usage_report.json` with occurrences for quick triage.
 
 This is conservative: read-only and safe to run in CI or locally.
 """

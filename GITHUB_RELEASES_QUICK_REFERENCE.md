@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI GitHub Releases - Quick Reference
 
 ## 🚀 Quick Start
@@ -127,13 +127,13 @@ Get-FileHash file.exe          # Windows PowerShell
 - ✅ All download options
 - ✅ Cross-platform support
 - ✅ Security verified
-- ✅ Production ready
+- ✅ production ready
 
 ---
 
-**All QMOI apps and all device platforms available in GitHub Releases with download options.**
+**All QMOI apps and all prodice platforms available in GitHub Releases with download options.**
 
-Version: v1.2.3 | Released: 2025-11-12 | Status: Production Ready
+Version: v1.2.3 | Released: 2025-11-12 | Status: production Ready
 
 ## 🔄 Evolution Status
 

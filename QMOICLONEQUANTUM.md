@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOI Clone (Quantum)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -16,7 +16,7 @@ title: "QMOI Clone (Quantum)"
 
 # QMOI Clone (Quantum)
 
-[PRODUCTION READY] for deploying QMOI to Quantum/Quantum-like cloud providers. Add provider-specific steps here.
+[production READY] for deploying QMOI to Quantum/Quantum-like cloud providers. Add provider-specific steps here.
 
 <!-- QMOI_VALIDATION_START -->
 

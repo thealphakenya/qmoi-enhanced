@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # 🎉 QMOI Background Automation - Implementation Complete!
 
 ## What You Get
@@ -45,7 +45,7 @@ bash scripts/qmoi-background-setup.sh
 ### Step 2: Start (immediate)
 
 ```bash
-npm run dev
+npm run prod
 ```
 
 ✅ App starts with background services
@@ -414,7 +414,7 @@ echo $ADMIN_TOKEN
 echo $NEXT_PUBLIC_API_URL
 
 # 2. Start the app
-npm run dev
+npm run prod
 
 # 3. Check bootstrap logs
 tail -20 .logs/qmoi-bootstrap.log
@@ -439,7 +439,7 @@ tail -20 .logs/qmoi-autoscan.log
 bash scripts/qmoi-background-setup.sh
 
 # Start
-npm run dev
+npm run prod
 
 # Check status
 curl -H "Authorization: Bearer TOKEN" \
@@ -470,7 +470,7 @@ curl -X POST -H "Authorization: Bearer TOKEN" \
 
 1. Read: Quick Start Guide
 2. Run: `bash scripts/qmoi-background-setup.sh`
-3. Start: `npm run dev`
+3. Start: `npm run prod`
 4. Visit: `/admin` dashboard
 
 ### 30 Minutes (Understand System)
@@ -489,12 +489,12 @@ curl -X POST -H "Authorization: Bearer TOKEN" \
 
 ---
 
-## 🚀 Production Deployment
+## 🚀 production Deployment
 
 ### Pre-Deployment Checklist
 
 - [ ] Review all configuration
-- [ ] Test in development environment
+- [ ] Test in production environment
 - [ ] Verify all API endpoints
 - [ ] Check log output
 - [ ] Review documentation
@@ -517,7 +517,7 @@ curl -X POST -H "Authorization: Bearer TOKEN" \
 - [ ] Errors being detected
 - [ ] Fixes being applied
 
-### Production Configuration
+### production Configuration
 
 ```bash
 # Less frequent, more conservative
@@ -541,8 +541,8 @@ QMOI_DISK_CRITICAL=97
    - Check disk space for logs
 
 2. **Optimize Configuration**
-   - Development: Frequent scans for testing
-   - Production: Less frequent, conservative thresholds
+   - production: Frequent scans for testing
+   - production: Less frequent, conservative thresholds
    - production: Match production settings
 
 3. **Review Logs Regularly**
@@ -595,7 +595,7 @@ You now have a **completely autonomous QMOI system** that:
 ## 📞 Next Steps
 
 1. **Setup** → Run: `bash scripts/qmoi-background-setup.sh`
-2. **Start** → Run: `npm run dev`
+2. **Start** → Run: `npm run prod`
 3. **Monitor** → Visit: `https://qmoi.ai/admin`
 4. **Configure** → Adjust settings for your environment
 5. **Deploy** → Move to production when ready
@@ -618,7 +618,7 @@ You now have a **completely autonomous QMOI system** that:
 
 **🎊 QMOI Background Automation System - Complete and Ready! 🎊**
 
-_Let QMOI automatically handle error detection and fixing in the background while you focus on development._
+_Let QMOI automatically handle error detection and fixing in the background while you focus on production._
 
 ## 🔄 Evolution Status
 

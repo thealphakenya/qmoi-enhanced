@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Background Automation - Troubleshooting & FAQ
 
 ## 🆘 Common Issues & Solutions
@@ -29,7 +29,7 @@ echo $ADMIN_TOKEN
 echo $NEXT_PUBLIC_API_URL
 
 # 4. Restart the application
-npm run dev
+npm run prod
 
 # 5. Check for port conflicts
 lsof -i :3000
@@ -40,7 +40,7 @@ lsof -i :3000
 ```bash
 # Clear all logs and restart
 rm -f .logs/*.log
-npm run dev
+npm run prod
 # Wait 10 seconds
 tail -f .logs/qmoi-bootstrap.log
 ```
@@ -270,7 +270,7 @@ curl -H "Authorization: Bearer TOKEN" \
 # Check browser console for connection errors
 
 # 4. Check browser console for JavaScript errors
-# Open DevTools (F12) and check Console tab
+# Open prodTools (F12) and check Console tab
 
 # 5. Clear browser cache
 # Settings → Privacy → Clear browsing data

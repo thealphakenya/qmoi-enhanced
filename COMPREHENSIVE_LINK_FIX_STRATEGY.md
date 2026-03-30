@@ -80,7 +80,7 @@
 - qmoi_ai.ipa (iOS) - not in top 10
 - Action: Replace with QStore download URLs
 
-### Category 4: Localhost References (Development)
+### Category 4: Localhost References (production)
 - https://qmoi.ai (58 occurrences)
 - Action: Update to production domains
 
@@ -92,13 +92,13 @@
 
 1. **QVILLAGE.md** - QVillage resource hub (critical)
 2. **ALLMDGILES.md** - Reference index (critical)
-3. **PRODUCTION_NEXT_STEPS_COMPLETE.md** - Deployment guide
+3. **production_NEXT_STEPS_COMPLETE.md** - Deployment guide
 4. **VERCEL_AUTO_UPDATE_README.md** - Hosting guide
 5. **QMOI-ENHANCED-AUTOTESTS.md** - Testing docs
 6. **VERCELLINKS.md** - Platform links
 7. **README_ENHANCED.md** - Main documentation
 8. **GITHUB_RELEASES_REALTIME_GUIDE.md** - Release guide
-9. **START_PRODUCTION_DEPLOYMENT.md** - Deployment checklist
+9. **START_production_DEPLOYMENT.md** - Deployment checklist
 10. **DEPLOYMENT-README.md** - Deployment documentation
 
 ---
@@ -156,8 +156,8 @@
    - Add fallback download servers
    - Generate migration report
 
-### PHASE 4: Localhost to Production (1 hour)
-**Objective**: Replace development URLs with prod
+### PHASE 4: Localhost to production (1 hour)
+**Objective**: Replace production URLs with prod
 
 1. **Replacements**:
    - Replace all `https://qmoi.ai` with production domain

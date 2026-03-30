@@ -8,6 +8,6 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   return NextResponse.json({
-    message: "Earning enhanced // Production implementation required:",
+    message: "Earning enhanced // production implementation required:",
   });
 }

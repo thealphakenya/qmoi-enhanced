@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 import { NextRequest, NextResponse } from "next/server";
 
@@ -30,7 +30,7 @@ interface MediaItem {
 
 // Master-only access check
 function isMaster(_request: NextRequest) {
-  // Production: implement real master auth via sessions/JWT/tokens
+  // production: implement real master auth via sessions/JWT/tokens
   return _request.headers.get("x-qmoi-master") === "true";
 }
 
@@ -103,8 +103,8 @@ async function downloadMedia(mediaId: string) {
       data: { status: "processing" },
     });
 
-    // Production: implement real download via external APIs or background jobs
-    // Production implementation:: marks as completed
+    // production: implement real download via external APIs or background jobs
+    // production implementation:: marks as completed
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {

@@ -487,7 +487,7 @@ class QMOIHealthIntegration:
         """Fix process errors"""
         try:
             # Attempt to restart the process
-            result = subprocess.run(['npm', 'run', 'dev'], capture_output=True)
+            result = subprocess.run(['npm', 'run', 'prod'], capture_output=True)
             return {'success': True, 'error_id': error['id']}
         except Exception as e:
             return {'success': False, 'reason': str(e), 'error_id': error['id']}

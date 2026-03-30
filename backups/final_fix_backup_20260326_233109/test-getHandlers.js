@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 (async () => {
   try {
-    const handlersMod = await import("./src/// Production implementation:s/handlers");
+    const handlersMod = await import("./src/// production implementation:s/handlers");
     if (typeof handlersMod.getHandlers === "function") {
       const handlers = await handlersMod.getHandlers();
       console.log("handlers.length =", handlers.length);

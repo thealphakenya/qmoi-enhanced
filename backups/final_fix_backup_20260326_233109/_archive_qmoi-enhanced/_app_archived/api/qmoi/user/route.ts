@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 8 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 8 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextApiRequest, NextApiResponse } from "next";
 // Import authentication and audit logging utilities
 
@@ -16,31 +16,31 @@ export default async function handler(
   const { method, body } = req;
   switch (method) {
     case "GET": {
-      // Production implementation:: get user profile and relationship insights
+      // production implementation:: get user profile and relationship insights
       return res.status(200).json({
         result:
-          "User profile and relationship insights (// Production implementation required:)",
+          "User profile and relationship insights (// production implementation required:)",
       });
     }
     case "POST": {
       const { action } = body;
       switch (action) {
         case "set-profile":
-          // Production implementation:: set user profile
+          // production implementation:: set user profile
           return res.status(200).json({
-            result: "Set profile result (// Production implementation required:)",
+            result: "Set profile result (// production implementation required:)",
           });
         case "set-preferences":
-          // Production implementation:: set user preferences
+          // production implementation:: set user preferences
           return res.status(200).json({
             result:
-              "Set preferences result (// Production implementation required:)",
+              "Set preferences result (// production implementation required:)",
           });
         case "set-learning-goals":
-          // Production implementation:: set learning goals
+          // production implementation:: set learning goals
           return res.status(200).json({
             result:
-              "Set learning goals result (// Production implementation required:)",
+              "Set learning goals result (// production implementation required:)",
           });
         default:
           return res.status(400).json({ error: "Unknown action" });

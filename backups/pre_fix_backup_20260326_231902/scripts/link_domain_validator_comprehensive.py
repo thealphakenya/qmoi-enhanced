@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 scripts/link_domain_validator_comprehensive.py
@@ -88,7 +88,7 @@ class ComprehensiveLinkDomainValidator:
             'qcity.io': {'type': 'platform', 'critical': True},
             'qvillage.org': {'type': 'platform', 'critical': True},
             'qglobal.ai': {'type': 'platform', 'critical': True},
-            'qparallel.dev': {'type': 'platform', 'critical': False},
+            'qparallel.prod': {'type': 'platform', 'critical': False},
             'api.qmoi.com': {'type': 'api', 'critical': True},
             'auth.qmoi.com': {'type': 'auth', 'critical': True},
             'cdn.qmoi.com': {'type': 'cdn', 'critical': True},

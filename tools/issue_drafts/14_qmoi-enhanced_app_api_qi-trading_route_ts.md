@@ -7,31 +7,31 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
-title: "Fix [PRODUCTION READY]s in qmoi-enhanced/app/api/qi-trading/route.ts (64 priority)"
+title: "Fix [production READY]s in qmoi-enhanced/app/api/qi-trading/route.ts (64 priority)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Fix [PRODUCTION READY]s in qmoi-enhanced/app/api/qi-trading/route.ts (64 priority)
+# Fix [production READY]s in qmoi-enhanced/app/api/qi-trading/route.ts (64 priority)
 
 **File**: `qmoi-enhanced/app/api/qi-trading/route.ts`
 **Priority score**: 64
 
 ## Summary of matches
 
-- Line 39: [PRODUCTION READY]_PROD trading statistics - replace with actual implementation
-- Line 73: [PRODUCTION READY]_PROD trade history - replace with actual implementation
-- Line 101: [PRODUCTION READY]_PROD active trades - replace with actual implementation
-- Line 150: [PRODUCTION READY]_PROD trade execution - replace with actual implementation
-- Line 151: await new Promise((resolve) => setTimeout(resolve, 1000)); [PRODUCTION READY] trade execution time
-- Line 161: profit: trade.type === 'buy' ? trade.amount _ 100 : -trade.amount _ 50 [PRODUCTION READY]_PROD profit calculation
-- Line 175: [PRODUCTION READY]_PROD trade cancellation - replace with actual implementation
-- Line 176: await new Promise((resolve) => setTimeout(resolve, 500)); [PRODUCTION READY] cancellation time
+- Line 39: [production READY]_prod trading statistics - replace with actual implementation
+- Line 73: [production READY]_prod trade history - replace with actual implementation
+- Line 101: [production READY]_prod active trades - replace with actual implementation
+- Line 150: [production READY]_prod trade execution - replace with actual implementation
+- Line 151: await new Promise((resolve) => setTimeout(resolve, 1000)); [production READY] trade execution time
+- Line 161: profit: trade.type === 'buy' ? trade.amount _ 100 : -trade.amount _ 50 [production READY]_prod profit calculation
+- Line 175: [production READY]_prod trade cancellation - replace with actual implementation
+- Line 176: await new Promise((resolve) => setTimeout(resolve, 500)); [production READY] cancellation time
 
 ## required action
 
-Replace [PRODUCTION READY] [PRODUCTION READY]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
+Replace [production READY] [production READY]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
 
 ## Notes
 

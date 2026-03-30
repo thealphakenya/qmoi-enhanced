@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
@@ -306,7 +306,7 @@ export async function GET(req: NextRequest) {
       total_transactions: datasets * 10,
       ai_interactions: Math.floor(activeUsers * 4.2),
       description:
-        "Connected community platform for creators and developers with AI-powered features",
+        "Connected community platform for creators and prodelopers with AI-powered features",
       status: "ok",
       ai_powered: true,
       last_update: new Date().toISOString(),
@@ -470,7 +470,7 @@ export async function POST(req: NextRequest) {
         topics:
           Array.isArray(aiResponse.data?.trending_topics)
             ? (aiResponse.data.trending_topics as string[])
-            : ["AI Development", "Community Growth", "Sustainable Tech"],
+            : ["AI production", "Community Growth", "Sustainable Tech"],
         creators: Math.max(1, Math.floor(activeUsers / 10)),
         projects: Math.max(1, Math.floor(totalDatasets / 3)),
         ai_collaborations: Math.max(1, Math.floor(activeUsers / 25)),

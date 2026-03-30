@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # NEXT STEPS — QUICK INDEX
 
 **📅 Date**: November 14, 2025  
@@ -17,21 +17,21 @@
 
 ## 🚀 START HERE — Choose Your Role
 
-### **👤 For Developers** (5 min to get started)
+### **👤 For prodelopers** (5 min to get started)
 
 1. **Read**: `QUICK_ACTION_CHECKLIST.md` (today's tasks)
 2. **Run**: `git tag test-v1.2.5 && git push origin test-v1.2.5`
 3. **Monitor**: GitHub Actions for workflow execution
 4. **Result**: final release with 16 assets in 10 minutes
 
-### **👨‍💼 For DevOps/SRE** (10 min to understand)
+### **👨‍💼 For prodOps/SRE** (10 min to understand)
 
 1. **Read**: `RELEASE_MAINTENANCE.md` (operator guide)
 2. **Review**: `.github/workflows/sync-releases-from-manifest.yml` (daily automation)
 3. **Setup**: GitHub Actions alerts for failed workflows
 4. **Document**: Team runbook for manual interventions
 
-### **🎨 For Product/UX** (testing & feedback)
+### **🎨 For product/UX** (testing & feedback)
 
 1. **Review**: `README.md` downloads section
 2. **Test**: Download a file and verify SHA256 using provided instructions
@@ -42,7 +42,7 @@
 
 1. **Read**: `NEXT_STEPS_EXECUTIVE_SUMMARY.md` (status & roadmap)
 2. **Key Metric**: 75% complete, validation in progress (this week)
-3. **Timeline**: Production-ready after Phase 1 (by Nov 21)
+3. **Timeline**: production-ready after Phase 1 (by Nov 21)
 4. **Risk**: 19 Dependabot vulnerabilities (non-critical, fixable this week)
 
 ---
@@ -52,10 +52,10 @@
 | Document                          | Purpose                                 | Audience   | Read Time |
 | --------------------------------- | --------------------------------------- | ---------- | --------- |
 | `NEXT_STEPS_EXECUTIVE_SUMMARY.md` | Status overview, roadmap, metrics       | Leadership | 5 min     |
-| `QUICK_ACTION_CHECKLIST.md`       | Daily tasks, week of Nov 18-21          | Dev/DevOps | 10 min    |
-| `TECHNICAL_COMMANDS_REFERENCE.md` | Copy-paste commands for each phase      | Dev/DevOps | 15 min    |
+| `QUICK_ACTION_CHECKLIST.md`       | Daily tasks, week of Nov 18-21          | prod/prodOps | 10 min    |
+| `TECHNICAL_COMMANDS_REFERENCE.md` | Copy-paste commands for each phase      | prod/prodOps | 15 min    |
 | `NEXT_STEPS_ROADMAP.md`           | Detailed 4-week plan + long-term vision | Team       | 20 min    |
-| `RELEASE_MAINTENANCE.md`          | Operator guide, workflow details        | DevOps/SRE | 15 min    |
+| `RELEASE_MAINTENANCE.md`          | Operator guide, workflow details        | prodOps/SRE | 15 min    |
 | `README.md`                       | User-facing downloads & verification    | Users/QA   | 10 min    |
 
 ---
@@ -98,7 +98,7 @@
    └─ Auto-creates issue if non-compliant
 
 🏗️  build-included-platforms.yml
-   └─ [PRODUCTION READY] ready for implementation (Week 2)
+   └─ [production READY] ready for implementation (Week 2)
 ```
 
 ### **Release Assets** (16 total)
@@ -143,7 +143,7 @@
 
 4. **GitHub PAT Auto-Detection**: Token found automatically from environment or playbook
    - Reason: Secure, no hardcoding, no exposure in logs
-   - Benefit: Works across local dev, CI, scripts
+   - Benefit: Works across local prod, CI, scripts
 
 5. **Backups Before Replace**: Auto-backup assets before replacement
    - Reason: Easy recovery if needed, audit trail
@@ -218,14 +218,14 @@ System Readiness (75% Complete - 6/8 items)
 
 Item                    Status      Owner      ETA
 ────────────────────────────────────────────────────
-✅ Workflows deployed      Done        Devops     2025-09-26
-✅ Assets packaged        Done        Dev        2025-11-13
-✅ Scripts ready          Done        Dev        2025-11-13
-✅ Compliance monitoring  Done        DevOps     2025-11-14
+✅ Workflows deployed      Done        prodops     2025-09-26
+✅ Assets packaged        Done        prod        2025-11-13
+✅ Scripts ready          Done        prod        2025-11-13
+✅ Compliance monitoring  Done        prodOps     2025-11-14
 ✅ User documentation    Done        Tech Lead  2025-11-14
-⏳ Validate workflows     In Progress Dev        2025-11-18
+⏳ Validate workflows     In Progress prod        2025-11-18
 ⏳ Verify checksums       Pending     QA         2025-11-19
-⏳ Fix vulnerabilities    Pending     Dev        2025-11-20
+⏳ Fix vulnerabilities    Pending     prod        2025-11-20
 
 Target: 100% by Nov 21 (Friday EOD)
 Current Velocity: 1-2 items/day
@@ -239,9 +239,9 @@ Risk: Low (all tasks are straightforward)
 ### **Scenario 1: Regular Release**
 
 ```
-1. Developer commits code
-2. Developer tags: git tag v1.2.6
-3. Developer pushes: git push origin v1.2.6
+1. prodeloper commits code
+2. prodeloper tags: git tag v1.2.6
+3. prodeloper pushes: git push origin v1.2.6
 4. Workflow auto-runs (sync-releases-from-manifest.yml)
 5. final release created with all 16 assets
 6. Team reviews release notes
@@ -331,7 +331,7 @@ git push origin test-v1.2.5
 ---
 
 **System Status**: 🟢 OPERATIONAL  
-**Production Ready**: After Phase 1 validation (this week)  
+**production Ready**: After Phase 1 validation (this week)  
 **Last Updated**: November 14, 2025  
 **Questions?** Check the docs linked above or GitHub Actions logs
 

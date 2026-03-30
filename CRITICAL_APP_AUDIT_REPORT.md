@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # CRITICAL AUDIT REPORT — App Installation & Functionality
 
 **Date**: November 14, 2025  
@@ -17,7 +17,7 @@
 
 ## Executive Summary
 
-**Installation Failures Explained**: The APKs, IPAs, EXEs, and several other formats are **NOT actual functioning applications** - they are corrupted or [PRODUCTION READY] files filled with repeating garbage data.
+**Installation Failures Explained**: The APKs, IPAs, EXEs, and several other formats are **NOT actual functioning applications** - they are corrupted or [production READY] files filled with repeating garbage data.
 
 - ❌ **6 Platform Categories BROKEN** (cannot install or run)
 - ✅ **2 Platform Categories WORKING** (web apps with real UI)
@@ -28,7 +28,7 @@
 
 ## Detailed Findings by Platform
 
-### 🔴 BROKEN — Cannot Install or Run (Non-Functional [PRODUCTION READY]s)
+### 🔴 BROKEN — Cannot Install or Run (Non-Functional [production READY]s)
 
 | Platform       | File                   | Status          | Issue                                              | Size  |
 | -------------- | ---------------------- | --------------- | -------------------------------------------------- | ----- |
@@ -86,13 +86,13 @@ This is **NOT**:
 
 ## Root Cause Analysis
 
-### Where Did These [PRODUCTION READY] Files Come From?
+### Where Did These [production READY] Files Come From?
 
 Based on manifest and directory structure, these appear to be:
 
-1. **Test/[PRODUCTION READY] Files** - Created to [PRODUCTION READY] asset structure before real builds were available
+1. **Test/[production READY] Files** - Created to [production READY] asset structure before real builds were available
 2. **Filled with Repeating Pattern** - The repeating `50 1a bc 4e 11 34 c6 62...` pattern suggests:
-   - Random data generator or [PRODUCTION READY] script
+   - Random data generator or [production READY] script
    - Not from actual app build process
    - Never tested for actual installation
 
@@ -135,7 +135,7 @@ gh release delete v1.2.3 --yes
 
 ### Priority 2: FIX SOURCE FILES
 
-Replace [PRODUCTION READY] files with **actual real apps**:
+Replace [production READY] files with **actual real apps**:
 
 ```bash
 # For each platform, one of:
@@ -202,7 +202,7 @@ curl -o qmoi_ai.ipa https://builds.data.com/qmoi-ai/1.2.3/ios.ipa
 # etc
 ```
 
-**Option C - Create MVP (Minimum Viable Product)**:
+**Option C - Create MVP (Minimum Viable product)**:
 
 ```bash
 # If neither exists, create comprehensive working apps:
@@ -212,7 +212,7 @@ curl -o qmoi_ai.ipa https://builds.data.com/qmoi-ai/1.2.3/ios.ipa
 # - etc
 ```
 
-### Phase 3: Replace [PRODUCTION READY] Files (Days 5-6)
+### Phase 3: Replace [production READY] Files (Days 5-6)
 
 ```bash
 # Once real apps obtained, replace:
@@ -245,7 +245,7 @@ Before marking any app as "real" and ready for distribution:
 - [ ] `unzip -t app.apk` returns success (valid ZIP)
 - [ ] Contains `AndroidManifest.xml`
 - [ ] Contains native code or DEX bytecode (not just garbage)
-- [ ] Installs on real device without errors
+- [ ] Installs on real prodice without errors
 - [ ] Launches and shows UI
 - [ ] All features mentioned in README work
 
@@ -254,7 +254,7 @@ Before marking any app as "real" and ready for distribution:
 - [ ] `unzip -t app.ipa` returns success
 - [ ] Contains `.app` bundle
 - [ ] Contains executable binary
-- [ ] Installs on device or simulator
+- [ ] Installs on prodice or simulator
 - [ ] Launches and shows UI
 - [ ] All features work
 
@@ -289,7 +289,7 @@ Before marking any app as "real" and ready for distribution:
 - [ ] Contains CSS for styling
 - [ ] Contains JS for functionality
 - [ ] Works when extracted and opened in browser
-- [ ] Displays properly on mobile devices
+- [ ] Displays properly on mobile prodices
 
 ---
 
@@ -308,11 +308,11 @@ PLATFORM SUPPORT SUMMARY
    • QStore (QMOI)            - Working
 
 ❌ Native Apps (5 BROKEN):
-   • Android APK              - [PRODUCTION READY] (garbage data)
-   • iOS IPA                  - [PRODUCTION READY] (garbage data)
-   • Smart TV APK             - [PRODUCTION READY] (garbage data)
-   • Chromebook ZIP           - [PRODUCTION READY] (garbage data)
-   • QCity Package ZIP        - [PRODUCTION READY] (garbage data)
+   • Android APK              - [production READY] (garbage data)
+   • iOS IPA                  - [production READY] (garbage data)
+   • Smart TV APK             - [production READY] (garbage data)
+   • Chromebook ZIP           - [production READY] (garbage data)
+   • QCity Package ZIP        - [production READY] (garbage data)
 
 ⚠️ Needs Verification (3):
    • Linux deb                - Header OK, content unclear
@@ -320,7 +320,7 @@ PLATFORM SUPPORT SUMMARY
    • macOS DMG                - Header OK, content unclear
 
 ⚠️ Questionable (1):
-   • Windows EXE              - MZ header but likely [PRODUCTION READY]
+   • Windows EXE              - MZ header but likely [production READY]
 ```
 
 ---
@@ -351,7 +351,7 @@ PLATFORM SUPPORT SUMMARY
 
 ## Files Affected
 
-**Broken/[PRODUCTION READY] Files** (16 total):
+**Broken/[production READY] Files** (16 total):
 
 ```
 Qmoi_downloaded_apps/android/latest/qmoi_ai.apk (10 MB)
@@ -391,7 +391,7 @@ Users should currently **only use web apps** (QMOI AI web, Admin, Deals, Q-stabl
 ---
 
 **Status**: 🔴 **CRITICAL - IMMEDIATE ACTION REQUIRED**  
-**Owner**: DevOps/Release Team  
+**Owner**: prodOps/Release Team  
 **Timeline**: Fix by end of this week or delay v1.2.4 release
 
 ## 🔄 Evolution Status

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:53Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 """AWS Route53 provider integration.
 
 Implements the ProviderBase interface for AWS Route53 DNS management.
@@ -18,7 +18,7 @@ from typing import Dict, Any
 
 from .provider_base import ProviderBase, ProviderError
 
-# Try to load automatic credentials shim for test/dev environments
+# Try to load automatic credentials shim for test/prod environments
 try:
     from scripts import auto_creds
 except Exception:

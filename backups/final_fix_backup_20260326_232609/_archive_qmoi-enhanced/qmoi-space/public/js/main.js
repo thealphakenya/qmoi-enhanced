@@ -6,7 +6,7 @@
 // QMOI Space - PWA bootstrap
 (function initPWA() {
   if ("serviceWorker" in navigator) {
-    window.addEventListener("load", function () {
+    window.adprodentListener("load", function () {
       navigator.serviceWorker
         .register("/sw.js")
         .then(function (registration) {
@@ -20,7 +20,7 @@
 
   // Install prompt handling
   let deferredPrompt = null;
-  window.addEventListener("beforeinstallprompt", function (e) {
+  window.adprodentListener("beforeinstallprompt", function (e) {
     e.preventDefault();
     deferredPrompt = e;
     const notify = document.getElementById("notifications");
@@ -32,7 +32,7 @@
       notify.appendChild(n);
       const btn = document.getElementById("pwa-install-btn");
       if (btn) {
-        btn.addEventListener("click", async function () {
+        btn.adprodentListener("click", async function () {
           if (!deferredPrompt) return;
           deferredPrompt.prompt();
           const choice = await deferredPrompt.userChoice;
@@ -44,7 +44,7 @@
     }
   });
 
-  window.addEventListener("appinstalled", function () {
+  window.adprodentListener("appinstalled", function () {
     console.log("QMOI Space installed");
   });
 })();

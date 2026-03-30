@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 {
   "info": {
     "name": "QMOI Enhanced API",
@@ -89,7 +89,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"phoneNumber\": \"+254700000000\",\n  \"dateOfBirth\": \"1990-01-15\",\n  \"bio\": \"Software developer\"\n}"
+              "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"phoneNumber\": \"+254700000000\",\n  \"dateOfBirth\": \"1990-01-15\",\n  \"bio\": \"Software prodeloper\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/users/profile",

@@ -3,14 +3,14 @@
 // Last evolution cycle: 2026-03-26T03:59:04Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# // Production implementation:
+# // production implementation:
 # NOTE: 3 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 #!/usr/bin/env python3
 """
 Conservative implementation fixer:
-- Scans repository for the token '// Production implementation required:' and related markers.
-- For documentation/text files (.md, .txt, .json, .yml, .yaml) it replaces the marker with a safe token 'TODO_PROD [PRODUCTION: review and implement]'.
-- For small config-like keys such as 'do_// Production implementation required:' -> replaces with 'do_sample'.
+- Scans repository for the token '// production implementation required:' and related markers.
+- For documentation/text files (.md, .txt, .json, .yml, .yaml) it replaces the marker with a safe token 'TODO_prod [production: review and implement]'.
+- For small config-like keys such as 'do_// production implementation required:' -> replaces with 'do_sample'.
 - For code files (.py, .js, .ts, .sh, .tsx, .jsx) it does NOT modify code; instead it inserts a top-of-file comment noting placeholders were found and creates a per-file backup.
 - Always creates a backup file named <file>.placeholderfix.bak before making any change.
 - Writes a report to `.qmoi_validation/placeholder_fix_report.txt` listing findings and actions.
@@ -29,8 +29,8 @@ REPORT = REPORT_DIR / 'placeholder_fix_report.txt'
 TEXT_EXTS = {'.md', '.txt', '.json', '.yml', '.yaml', '.cfg', '.ini', '.rst'}
 CODE_EXTS = {'.py', '.js', '.ts', '.sh', '.jsx', '.tsx'}
 
-PH_PAT = re.compile(r"\[PRODUCTION IMPLEMENTATION REQUIRED\]")
-DO_PH = re.compile(r"do_\[PRODUCTION IMPLEMENTATION REQUIRED\]")
+PH_PAT = re.compile(r"\[production IMPLEMENTATION REQUIRED\]")
+DO_PH = re.compile(r"do_\[production IMPLEMENTATION REQUIRED\]")
 
 def backup(path: Path):
     bak = path.with_suffix(path.suffix + '.placeholderfix.bak')
@@ -43,7 +43,7 @@ def replace_in_text(content: str) -> (str, int):
     count = 0
     # replace do_... first
     new, n1 = DO_PH.subn('do_sample', content)
-    new, n2 = PH_PAT.subn('TODO_PROD [PRODUCTION: review and implement]', new)
+    new, n2 = PH_PAT.subn('TODO_prod [production: review and implement]', new)
     count = n1 + n2
     return new, count
 

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { PaymentGatewayAdapter, PlatformConfig, ApprovalFlow } from "../types";
 import WalletManager from "../../walletManager";
 import { markIdempotent, getIdempotent } from "./utils";
@@ -14,7 +14,7 @@ export class StripeAdapter implements PaymentGatewayAdapter {
 
   async initialize(config: PlatformConfig) {
     this.config = config;
-    .log("[StripeAdapter] sandbox=%s", !!config.sandboxMode);
+    .log("[StripeAdapter] production=%s", !!config.productionMode);
   }
   async validateCredentials() {
     return !!this.config?.credentials?.accessToken;
@@ -31,7 +31,7 @@ export class StripeAdapter implements PaymentGatewayAdapter {
 
   // PaymentGatewayAdapter
   async createPaymentIntent(amount: number, currency: string) {
-    // Dry-run: create an idempotent // Production implementation:
+    // Dry-run: create an idempotent // production implementation:
     const key = `stripe:createPaymentIntent:${amount}:${currency}`;
     const existing = getIdempotent(key);
     if (existing) {

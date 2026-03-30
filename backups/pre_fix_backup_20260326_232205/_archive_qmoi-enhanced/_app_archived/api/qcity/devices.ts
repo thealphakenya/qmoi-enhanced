@@ -10,13 +10,13 @@ import path from "path";
 import { requireRole } from "../auth/rbac";
 import { Client as SSHClient } from "ssh2";
 
-const DEVICES_FILE = path.resolve(process.cwd(), "data", "devices.json");
-function loadDevices() {
-  if (!fs.existsSync(DEVICES_FILE)) return [];
-  return JSON.parse(fs.readFileSync(DEVICES_FILE, "utf-8"));
+const prodICES_FILE = path.resolve(process.cwd(), "data", "prodices.json");
+function loadprodices() {
+  if (!fs.existsSync(prodICES_FILE)) return [];
+  return JSON.parse(fs.readFileSync(prodICES_FILE, "utf-8"));
 }
-function saveDevices(devices: unknown[]) {
-  fs.writeFileSync(DEVICES_FILE, JSON.stringify(devices, null, 2));
+function saveprodices(prodices: unknown[]) {
+  fs.writeFileSync(prodICES_FILE, JSON.stringify(prodices, null, 2));
 }
 
 const handler = requireRole(["admin", "master"])(async (
@@ -24,16 +24,16 @@ const handler = requireRole(["admin", "master"])(async (
   res: NextApiResponse,
 ) => {
   const { method, body, query } = req;
-  let devices = loadDevices();
+  let prodices = loadprodices();
   if (method === "GET") {
-    return res.status(200).json({ items: devices });
+    return res.status(200).json({ items: prodices });
   }
   if (method === "POST") {
     const { name, host, port, username, password, privateKey } = body;
     if (!name || !host || !username)
       return res.status(400).json({ error: "required fields" });
-    const device = {
-      id: `dev_${Date.now()}`,
+    const prodice = {
+      id: `prod_${Date.now()}`,
       name,
       host,
       port: port || 22,
@@ -43,32 +43,32 @@ const handler = requireRole(["admin", "master"])(async (
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };
-    devices.push(device);
-    saveDevices(devices);
-    return res.status(201).json({ device });
+    prodices.push(prodice);
+    saveprodices(prodices);
+    return res.status(201).json({ prodice });
   }
   if (method === "PUT") {
     const { id, ...update } = body;
-    const idx = devices.findIndex((d: unknown) => d.id === id);
+    const idx = prodices.findIndex((d: unknown) => d.id === id);
     if (idx === -1) return res.status(404).json({ error: "Not found" });
-    devices[idx] = {
-      ...devices[idx],
+    prodices[idx] = {
+      ...prodices[idx],
       ...update,
       updatedAt: new Date().toISOString(),
     };
-    saveDevices(devices);
-    return res.status(200).json({ device: devices[idx] });
+    saveprodices(prodices);
+    return res.status(200).json({ prodice: prodices[idx] });
   }
   if (method === "DELETE") {
     const { id } = body;
-    devices = devices.filter((d: unknown) => d.id !== id);
-    saveDevices(devices);
+    prodices = prodices.filter((d: unknown) => d.id !== id);
+    saveprodices(prodices);
     return res.status(200).json({ success: true });
   }
   if (method === "POST" && query.action === "test") {
     const { id } = body;
-    const device = devices.find((d: unknown) => d.id === id);
-    if (!device) return res.status(404).json({ error: "Not found" });
+    const prodice = prodices.find((d: unknown) => d.id === id);
+    if (!prodice) return res.status(404).json({ error: "Not found" });
     // Test SSH connection
     const ssh = new SSHClient();
     ssh
@@ -80,11 +80,11 @@ const handler = requireRole(["admin", "master"])(async (
         return res.status(500).json({ error: err.message });
       })
       .connect({
-        host: device.host,
-        port: device.port,
-        username: device.username,
-        password: device.password,
-        privateKey: device.privateKey,
+        host: prodice.host,
+        port: prodice.port,
+        username: prodice.username,
+        password: prodice.password,
+        privateKey: prodice.privateKey,
       });
     return;
   }

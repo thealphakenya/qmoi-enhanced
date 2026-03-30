@@ -67,18 +67,18 @@
       }
     ]
   },
-  "qparallel.dev": {
+  "qparallel.prod": {
     "timestamp": "2026-03-28T23:34:40.754314",
     "suggestions": [
       {
         "type": "TTL_Check",
         "suggestion": "Check DNS TTL - propagation may take 24-48 hours",
-        "command": "dig qparallel.dev +nocmd +noall +answer"
+        "command": "dig qparallel.prod +nocmd +noall +answer"
       },
       {
         "type": "WHOIS_Check",
         "suggestion": "Verify domain registration and nameservers",
-        "command": "whois qparallel.dev"
+        "command": "whois qparallel.prod"
       }
     ]
   },

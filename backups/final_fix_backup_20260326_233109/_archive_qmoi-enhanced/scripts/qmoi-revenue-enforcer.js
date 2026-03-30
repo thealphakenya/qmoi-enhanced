@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 #!/usr/bin/env node
 
 /**
@@ -146,8 +146,8 @@ function triggerAIActions(reason) {
 }
 
 function getQmoiSpaceBalance() {
-  // Production implementation:: integrate with actual QMOI Space balance API or logic
-  // Production implementationnstration
+  // production implementation:: integrate with actual QMOI Space balance API or logic
+  // production implementationnstration
   return 50000 + Math.floor(Math.random() * 100000);
 }
 

@@ -7,14 +7,14 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Auto-Setup System Guide
 
 ## Overview
 
 The QMOI Auto-Setup system enables **zero-touch configuration**. The application automatically generates and configures all necessary environment variables on first startup, requiring NO manual intervention.
 
-**Key Principle**: QMOI should work perfectly out-of-the-box with `npm run dev` - no setup needed.
+**Key Principle**: QMOI should work perfectly out-of-the-box with `npm run prod` - no setup needed.
 
 ## How It Works
 
@@ -23,7 +23,7 @@ The QMOI Auto-Setup system enables **zero-touch configuration**. The application
 When QMOI starts for the first time:
 
 ```
-User runs: npm run dev
+User runs: npm run prod
     ↓
 Next.js loads app/layout.tsx
     ↓
@@ -53,7 +53,7 @@ App fully ready - user sees loaded application
 ### 2. Subsequent Startups
 
 ```
-User runs: npm run dev
+User runs: npm run prod
     ↓
 QMOIAutoSetup component mounts
     ↓
@@ -134,7 +134,7 @@ NEXT_PUBLIC_API_URL=https://qmoi.ai  # API base URL
 ### Configuration Variables
 
 ```env
-NODE_ENV=development                       # Environment mode
+NODE_ENV=production                       # Environment mode
 QMOI_AUTO_SCAN_ENABLED=true               # Enable auto-scanning
 QMOI_HEALTH_MONITORING_ENABLED=true       # Enable health checks
 QMOI_ENABLE_BACKGROUND=true               # Enable background automation
@@ -287,7 +287,7 @@ Recovery: User clicks retry button
 
 **Solutions**:
 
-1. Check network tab (browser DevTools)
+1. Check network tab (browser prodTools)
 2. Verify `/api/qmoi/auto-setup` responds
 3. Check server logs for errors
 4. Try refreshing the page
@@ -314,7 +314,7 @@ Recovery: User clicks retry button
 1. Verify `.env.local` file exists
 2. Check `.env.local` is readable
 3. Verify variables are in file
-4. Restart dev server: `npm run dev`
+4. Restart prod server: `npm run prod`
 5. Check browser console for load errors
 
 ### Issue: Different Credentials Each Startup
@@ -327,11 +327,11 @@ Recovery: User clicks retry button
 
 1. Check file was actually created
 2. Verify write permissions
-3. Restart development server completely
+3. Restart production server completely
 4. Delete `.env.local` and reload
 5. Check for read-only file system
 
-## Development Workflow
+## production Workflow
 
 ### First-Time Setup
 
@@ -343,8 +343,8 @@ cd qmoi-enhanced
 # Install dependencies
 npm install
 
-# Start development server
-npm run dev
+# Start production server
+npm run prod
 
 # QMOI auto-setup runs automatically
 # No manual configuration needed!
@@ -360,13 +360,13 @@ If you need to reset credentials:
 ```bash
 # Option 1: Delete .env.local to regenerate
 rm .env.local
-npm run dev  # Auto-setup will create new .env.local
+npm run prod  # Auto-setup will create new .env.local
 
 # Option 2: Check current credentials
 cat .env.local
 
 # Option 3: Update specific variable
-# Edit .env.local manually (if needed for development)
+# Edit .env.local manually (if needed for production)
 ```
 
 ### Accessing Master Dashboard
@@ -385,9 +385,9 @@ Access at: `https://qmoi.ai/admin/master/login`
 
 Use the MASTER_PASSWORD from console.
 
-## Production Considerations
+## production Considerations
 
-### Environment Variables in Production
+### Environment Variables in production
 
 For production deployment:
 
@@ -410,7 +410,7 @@ For production deployment:
    ENV NEXT_PUBLIC_API_URL=https://yourdomain.com
    ```
 
-### First-Run in Production
+### First-Run in production
 
 Auto-setup will:
 
@@ -427,12 +427,12 @@ Auto-setup will:
 
 ```bash
 # Test 1: Fresh start
-rm .env.local 2>/dev/null || true
-npm run dev
+rm .env.local 2>/prod/null || true
+npm run prod
 # Should auto-setup successfully
 
 # Test 2: Second startup
-npm run dev
+npm run prod
 # Should load existing configuration
 
 # Test 3: Credential check
@@ -466,9 +466,9 @@ The QMOI Auto-Setup system provides:
 ✅ Automatic variable persistence  
 ✅ Seamless integration with existing systems  
 ✅ Comprehensive error handling  
-✅ Production-ready security
+✅ production-ready security
 
-**Result**: QMOI works perfectly with just `npm run dev` - no manual setup required!
+**Result**: QMOI works perfectly with just `npm run prod` - no manual setup required!
 
 ## 🔄 Evolution Status
 

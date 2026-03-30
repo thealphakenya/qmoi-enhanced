@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Master Control System
 
-**Status**: ✅ Production Ready  
+**Status**: ✅ production Ready  
 **Version**: 1.0.0  
 **Date**: January 25, 2026
 
@@ -69,8 +69,8 @@ npm run build
 5. **Start Server**
 
 ```bash
-npm run dev      # Development
-npm start        # Production
+npm run prod      # production
+npm start        # production
 ```
 
 6. **Access Master Dashboard**
@@ -130,7 +130,7 @@ PESAPAL_CLIENT_ID=your_pesapal_id
 PAYPAL_CLIENT_ID=your_paypal_id
 
 # Next.js
-NODE_ENV=development
+NODE_ENV=production
 NEXT_PUBLIC_APP_URL=https://qmoi.ai
 ```
 
@@ -330,7 +330,7 @@ Authorization: Bearer admin_token
 
 ## Deployment
 
-### Development
+### production
 
 ```bash
 # Install dependencies
@@ -340,13 +340,13 @@ npm install
 cp .env.local.data .env.local
 # Edit .env.local
 
-# Start development server
-npm run dev
+# Start production server
+npm run prod
 
 # Visit https://qmoi.ai/admin/master/login
 ```
 
-### Production
+### production
 
 ```bash
 # Set production environment
@@ -468,7 +468,7 @@ For issues or questions:
 
 ## Status
 
-✅ **PRODUCTION READY**
+✅ **production READY**
 
 All systems tested, documented, and ready for deployment.
 

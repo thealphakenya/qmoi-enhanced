@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOI Auto-Fix System"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -68,7 +68,7 @@ npm run fix:deploy
 
 The system automatically runs on:
 
-- Push to main/develop branches
+- Push to main/prodelop branches
 - Pull requests
 - Scheduled runs (every 6 hours)
 - Manual workflow dispatch
@@ -265,9 +265,9 @@ QMOI now includes an AI-powered error prediction system:
 - Mobile app monitoring
 - Advanced analytics dashboard
 
-## QMOI Vercel Developer Automation
+## QMOI Vercel prodeloper Automation
 
-For the latest and most advanced Vercel error fixing, redeployment, and environment/settings management, see [QMOIVERCELDEV.md](QMOIVERCELDEV.md).
+For the latest and most advanced Vercel error fixing, redeployment, and environment/settings management, see [QMOIVERCELprod.md](QMOIVERCELprod.md).
 
 - Handles all Vercel/Node/JS/TS/Next.js errors with advanced pattern matching and multi-step/fallback fixes
 - Auto-commits, pushes, and redeploys until success
@@ -300,8 +300,8 @@ For the latest and most advanced Vercel error fixing, redeployment, and environm
 "ok": true
 },
 {
-"label": "QMOIVERCELDEV.md",
-"target": "./QMOIVERCELDEV.md",
+"label": "QMOIVERCELprod.md",
+"target": "./QMOIVERCELprod.md",
 "ok": true
 }
 ]

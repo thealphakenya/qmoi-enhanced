@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import type { NextApiRequest, NextApiResponse } from "next";
 import crypto from "crypto";
 import fs from "fs";
@@ -57,7 +57,7 @@ async function bitgetRequest(
   return await res.json();
 }
 
-// Production implementation: confidence calculation (replace with real AI logic)
+// production implementation: confidence calculation (replace with real AI logic)
 const confidence = 0.82;
 
 // In-memory log for master
@@ -190,7 +190,7 @@ export default async function handler(
         return res.status(200).json([]);
       }
     } else if (req.method === "POST") {
-      // Production implementation:/testing)
+      // production implementation:/testing)
       const now = Date.now();
       const trade = {
         id: Math.random().toString(36).slice(2),
@@ -198,8 +198,8 @@ export default async function handler(
         type: Math.random() > 0.5 ? "BUY" : "SELL",
         amount: 1,
         price: 70000 + Math.floor(Math.random() * 1000),
-        result: "// Production implementation:D",
-        rationale: "Manual // Production implementation:",
+        result: "// production implementation:D",
+        rationale: "Manual // production implementation:",
       };
       let trades = [];
       if (fs.existsSync(TRADING_LOG)) {

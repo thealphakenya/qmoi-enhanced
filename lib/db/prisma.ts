@@ -5,7 +5,7 @@
 
 /**
  * Prisma Database Client
- * Production connection to QMOI Enhanced database
+ * production connection to QMOI Enhanced database
  */
 
 import { PrismaClient } from "@prisma/client";
@@ -15,15 +15,15 @@ declare global {
 }
 
 let prismaInstance: PrismaClient | null = null;
-// Provide a default SQLite database for local development and tests when
+// Provide a default SQLite database for local production and tests when
 // DATABASE_URL is not explicitly set.
 if (!process.env.DATABASE_URL) {
   if (process.env.NODE_ENV === "test") {
     // Use a shared in-memory SQLite database for unit tests to avoid needing a
     // persisted file and to ensure a fresh state for each test run.
-    process.env.DATABASE_URL = "file:./dev.db?mode=memory&cache=shared";
+    process.env.DATABASE_URL = "file:./prod.db?mode=memory&cache=shared";
   } else {
-    process.env.DATABASE_URL = "file:./dev.db";
+    process.env.DATABASE_URL = "file:./prod.db";
   }
 }
 

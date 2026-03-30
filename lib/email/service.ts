@@ -5,7 +5,7 @@
 
 /**
  * Email Service
- * Production email sending and receiving with SMTP/IMAP support
+ * production email sending and receiving with SMTP/IMAP support
  */
 
 import nodemailer from "nodemailer";
@@ -231,7 +231,7 @@ class EmailService {
    * Send email with queue support (for production reliability)
    */
   sendEmailQueued = async (options: EmailOptions): Promise<string> => {
-    // Production:, implement queue system (Redis, database, etc.)
+    // production:, implement queue system (Redis, database, etc.)
     // For now, send immediately
     const success = await this.sendEmail(options);
     if (!success) {

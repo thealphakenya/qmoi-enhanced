@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env bash
 # qmoi_set_github_secrets.sh
 # Usage: QM_GH_REPO=owner/repo GH_TOKEN=ghp_xxx ./qmoi_set_github_secrets.sh .env
@@ -17,9 +17,9 @@ fi
 gh_set_secret() {
   local name=$1
   local value=$2
-  if command -v gh >/dev/null 2>&1; then
+  if command -v gh >/prod/null 2>&1; then
     # If GH_TOKEN is set or gh auth status works, attempt to set
-    if gh auth status >/dev/null 2>&1; then
+    if gh auth status >/prod/null 2>&1; then
       echo "Setting secret: $name"
       echo -n "$value" | gh secret set "$name" -b -R "$REPO"
       return 0

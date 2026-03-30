@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-# 🚀 Production Deployment Guide — Always-Running Infrastructure
+# [production READY] this file has no remaining production markers
+# 🚀 production Deployment Guide — Always-Running Infrastructure
 
-**Status:** ✅ **PRODUCTION ARCHITECTURE - ALWAYS ON**  
+**Status:** ✅ **production ARCHITECTURE - ALWAYS ON**  
 **Date:** November 11, 2025  
 **Guarantee:** System runs 24/7 even when codespace closed
 
@@ -315,7 +315,7 @@ cat .github/workflows/qvillage-sync.yml | head -20
 
 ```bash
 git add -A
-git commit -m "QVillage: Production deployment - always-on"
+git commit -m "QVillage: production deployment - always-on"
 git push origin main
 ```
 
@@ -467,7 +467,7 @@ schedule:
 
 ## 🚀 YOUR SYSTEM IS NOW ALWAYS-ON
 
-**Status:** ✅ **PRODUCTION ACTIVE**
+**Status:** ✅ **production ACTIVE**
 
 The QVillage + HF integration is now:
 

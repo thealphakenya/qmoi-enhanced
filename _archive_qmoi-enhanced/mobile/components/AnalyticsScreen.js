@@ -23,7 +23,7 @@ const { width } = Dimensions.get("window");
 const AnalyticsScreen = ({ userRole }) => {
   const [analytics, setAnalytics] = useState(null);
   const [predictions, setPredictions] = useState([]);
-  const [deviceStats, setDeviceStats] = useState(null);
+  const [prodiceStats, setprodiceStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [timeRange, setTimeRange] = useState("7d");
@@ -49,14 +49,14 @@ const AnalyticsScreen = ({ userRole }) => {
       );
       setPredictions(predictionsRes.data.predictions || []);
 
-      // Load device statistics
-      const deviceStatsRes = await axios.get(
-        "process.env.API_URL || "http://localhost:\1"/api/device-stats",
+      // Load prodice statistics
+      const prodiceStatsRes = await axios.get(
+        "process.env.API_URL || "http://localhost:\1"/api/prodice-stats",
       );
-      setDeviceStats(deviceStatsRes.data);
+      setprodiceStats(prodiceStatsRes.data);
     } catch (error) {
       console.error("Error loading analytics:", error);
-      // Production implementation
+      // production implementation
       setAnalytics([
         {
           date: "2024-01-15",
@@ -93,11 +93,11 @@ const AnalyticsScreen = ({ userRole }) => {
           confidence: 0.92,
         },
       ]);
-      setDeviceStats({
-        totalDevices: 8,
-        onlineDevices: 6,
-        warningDevices: 1,
-        offlineDevices: 1,
+      setprodiceStats({
+        totalprodices: 8,
+        onlineprodices: 6,
+        warningprodices: 1,
+        offlineprodices: 1,
         avgCpu: 45,
         avgMemory: 67,
         avgDisk: 34,
@@ -150,7 +150,7 @@ const AnalyticsScreen = ({ userRole }) => {
       <View style={styles.header}>
         <Text style={styles.title}>Analytics Dashboard</Text>
         <View style={styles.viewSelector}>
-          {["overview", "trends", "predictions", "devices"].map((view) => (
+          {["overview", "trends", "predictions", "prodices"].map((view) => (
             <TouchableOpacity
               key={view}
               style={[
@@ -366,37 +366,37 @@ const AnalyticsScreen = ({ userRole }) => {
           </View>
         )}
 
-        {selectedView === "devices" && deviceStats && (
-          <View style={styles.devicesSection}>
-            <Text style={styles.sectionTitle}>Device Statistics</Text>
-            <View style={styles.deviceStatsGrid}>
-              <View style={styles.deviceStatCard}>
-                <Icon name="devices" size={24} color="#2196F3" />
-                <Text style={styles.deviceStatNumber}>
-                  {deviceStats.totalDevices}
+        {selectedView === "prodices" && prodiceStats && (
+          <View style={styles.prodicesSection}>
+            <Text style={styles.sectionTitle}>prodice Statistics</Text>
+            <View style={styles.prodiceStatsGrid}>
+              <View style={styles.prodiceStatCard}>
+                <Icon name="prodices" size={24} color="#2196F3" />
+                <Text style={styles.prodiceStatNumber}>
+                  {prodiceStats.totalprodices}
                 </Text>
-                <Text style={styles.deviceStatLabel}>Total Devices</Text>
+                <Text style={styles.prodiceStatLabel}>Total prodices</Text>
               </View>
-              <View style={styles.deviceStatCard}>
+              <View style={styles.prodiceStatCard}>
                 <Icon name="wifi" size={24} color="#4CAF50" />
-                <Text style={styles.deviceStatNumber}>
-                  {deviceStats.onlineDevices}
+                <Text style={styles.prodiceStatNumber}>
+                  {prodiceStats.onlineprodices}
                 </Text>
-                <Text style={styles.deviceStatLabel}>Online</Text>
+                <Text style={styles.prodiceStatLabel}>Online</Text>
               </View>
-              <View style={styles.deviceStatCard}>
+              <View style={styles.prodiceStatCard}>
                 <Icon name="warning" size={24} color="#FF9800" />
-                <Text style={styles.deviceStatNumber}>
-                  {deviceStats.warningDevices}
+                <Text style={styles.prodiceStatNumber}>
+                  {prodiceStats.warningprodices}
                 </Text>
-                <Text style={styles.deviceStatLabel}>Warnings</Text>
+                <Text style={styles.prodiceStatLabel}>Warnings</Text>
               </View>
-              <View style={styles.deviceStatCard}>
+              <View style={styles.prodiceStatCard}>
                 <Icon name="wifi-off" size={24} color="#F44336" />
-                <Text style={styles.deviceStatNumber}>
-                  {deviceStats.offlineDevices}
+                <Text style={styles.prodiceStatNumber}>
+                  {prodiceStats.offlineprodices}
                 </Text>
-                <Text style={styles.deviceStatLabel}>Offline</Text>
+                <Text style={styles.prodiceStatLabel}>Offline</Text>
               </View>
             </View>
 
@@ -405,12 +405,12 @@ const AnalyticsScreen = ({ userRole }) => {
               <View style={styles.metricsGrid}>
                 <View style={styles.metricCard}>
                   <Text style={styles.metricLabel}>Average CPU</Text>
-                  <Text style={styles.metricValue}>{deviceStats.avgCpu}%</Text>
+                  <Text style={styles.metricValue}>{prodiceStats.avgCpu}%</Text>
                   <View style={styles.metricBar}>
                     <View
                       style={[
                         styles.metricFill,
-                        { width: `${deviceStats.avgCpu}%` },
+                        { width: `${prodiceStats.avgCpu}%` },
                       ]}
                     />
                   </View>
@@ -418,25 +418,25 @@ const AnalyticsScreen = ({ userRole }) => {
                 <View style={styles.metricCard}>
                   <Text style={styles.metricLabel}>Average Memory</Text>
                   <Text style={styles.metricValue}>
-                    {deviceStats.avgMemory}%
+                    {prodiceStats.avgMemory}%
                   </Text>
                   <View style={styles.metricBar}>
                     <View
                       style={[
                         styles.metricFill,
-                        { width: `${deviceStats.avgMemory}%` },
+                        { width: `${prodiceStats.avgMemory}%` },
                       ]}
                     />
                   </View>
                 </View>
                 <View style={styles.metricCard}>
                   <Text style={styles.metricLabel}>Average Disk</Text>
-                  <Text style={styles.metricValue}>{deviceStats.avgDisk}%</Text>
+                  <Text style={styles.metricValue}>{prodiceStats.avgDisk}%</Text>
                   <View style={styles.metricBar}>
                     <View
                       style={[
                         styles.metricFill,
-                        { width: `${deviceStats.avgDisk}%` },
+                        { width: `${prodiceStats.avgDisk}%` },
                       ]}
                     />
                   </View>
@@ -697,16 +697,16 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#666",
   },
-  devicesSection: {
+  prodicesSection: {
     marginBottom: 20,
   },
-  deviceStatsGrid: {
+  prodiceStatsGrid: {
     flexDirection: "row",
     flexWrap: "wrap",
     gap: 10,
     marginBottom: 20,
   },
-  deviceStatCard: {
+  prodiceStatCard: {
     width: (width - 60) / 2,
     backgroundColor: "#FFF",
     padding: 15,
@@ -718,13 +718,13 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
-  deviceStatNumber: {
+  prodiceStatNumber: {
     fontSize: 24,
     fontWeight: "bold",
     color: "#333",
     marginTop: 5,
   },
-  deviceStatLabel: {
+  prodiceStatLabel: {
     fontSize: 12,
     color: "#666",
     marginTop: 5,

@@ -13,7 +13,7 @@ async function verifyAdminAccess(request: Request) {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
 
-  // Production:, verify token with your auth system
+  // production:, verify token with your auth system
   // For now, check if token exists and matches admin criteria
   if (!token || token !== process.env.ADMIN_TOKEN) {
     return false;
@@ -66,7 +66,7 @@ async function detectAllErrors() {
       );
       const dependencies = {
         ...packageJson.dependencies,
-        ...packageJson.devDependencies,
+        ...packageJson.prodDependencies,
       };
 
       // Check if critical deps are required

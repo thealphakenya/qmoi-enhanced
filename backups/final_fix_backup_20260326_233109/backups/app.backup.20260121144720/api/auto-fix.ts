@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 type AutoFixService = {
   startContinuousAutoFix?: (getStatus: () => Promise<any>) => void;
@@ -22,7 +22,7 @@ let autoFixService: AutoFixService | undefined;
 // Helper to get current QCity status
 async function getStatus() {
   // In a real app, replace with actual status fetch logic
-  // For now, // Production implementation: with a default status
+  // For now, // production implementation: with a default status
   return {
     running: true,
     platforms: {},

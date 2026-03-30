@@ -216,7 +216,7 @@ class EmploymentManager:
             payment_schedule=payment_schedule,
             base_salary=base_salary,
             performance_bonus=base_salary * 0.2,  # 20% bonus potential
-            opportunities=["content_creation", "trading", "app_development", "music_production"],
+            opportunities=["content_creation", "trading", "app_production", "music_production"],
             employment_date=now,
             last_payment=now,
             next_payment=next_payment,
@@ -342,9 +342,9 @@ class RevenueManager:
         """Setup all revenue streams"""
         streams = [
             ("animation_movies", "Animation Movies", "multiple", 20000.0),
-            ("app_development", "App Development", "app_stores", 15000.0),
+            ("app_production", "App production", "app_stores", 15000.0),
             ("trading_automation", "Trading Automation", "trading_platforms", 25000.0),
-            ("music_production", "Music Production", "music_platforms", 10000.0),
+            ("music_production", "Music production", "music_platforms", 10000.0),
             ("content_creation", "Content Creation", "social_media", 8000.0),
             ("ai_services", "AI Services", "ai_platforms", 12000.0),
             ("consulting", "Consulting Services", "professional", 10000.0),
@@ -600,7 +600,7 @@ class DealMaker:
     def create_auto_project_deal(self, deal: Deal):
         """Create auto-project deal"""
         deal.metadata.update({
-            "project_types": ["app_development", "content_creation", "platform_management"],
+            "project_types": ["app_production", "content_creation", "platform_management"],
             "automation_tools": ["github_actions", "docker", "kubernetes"],
             "deployment_targets": ["aws", "azure", "gcp"]
         })
@@ -624,7 +624,7 @@ class DealMaker:
     def create_service_deal(self, deal: Deal):
         """Create service deal"""
         deal.metadata.update({
-            "service_types": ["consulting", "development", "marketing"],
+            "service_types": ["consulting", "production", "marketing"],
             "delivery_method": "automated",
             "quality_guarantee": "99.9%"
         })
@@ -717,7 +717,7 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced AI system designed fo
 - **Employment System**: {len(self.get_active_employees())} active employees with automated payroll
 - **Deal Making**: {len(self.get_active_deals())} active deals with parallel processing
 - **Auto-Projects**: Zero-intervention project creation and execution
-- **Media Production**: AI-driven music, video, and movie production
+- **Media production**: AI-driven music, video, and movie production
 - **Investment Automation**: Crypto trading and portfolio management
 - **Avatar System**: {len(self.get_avatars())} active avatars with specialized skills
 
@@ -806,8 +806,8 @@ class QMOIEnhancedSystem:
              ["content_creation", "animation", "music_production"]),
             ("QMOI Trader", "Expert trading and financial analyst",
              ["trading", "financial_analysis", "risk_management"]),
-            ("QMOI Developer", "Technical and development specialist",
-             ["app_development", "ai_integration", "platform_management"])
+            ("QMOI prodeloper", "Technical and production specialist",
+             ["app_production", "ai_integration", "platform_management"])
         ]
 
         for name, personality, skills in avatars:

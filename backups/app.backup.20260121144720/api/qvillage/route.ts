@@ -11,7 +11,7 @@ let prismaInitialized = false;
 
 async function getPrismaClient() {
   // Return a 
-  // Production: Import real Prisma client from @/lib/prisma
+  // production: Import real Prisma client from @/lib/prisma
   return {
     discussion: {
       findMany: async () => [],
@@ -384,7 +384,7 @@ async function fetchLocalPapers(_params: URLSearchParams) {
     {
       id: "local-2",
       title: "Advanced Auto-Interaction Systems",
-      authors: ["QMOI Development Team"],
+      authors: ["QMOI production Team"],
       abstract:
         "Implementation of autonomous UI interaction systems with superior AI control and real-time adaptation.",
       arxivId: "qmoi-2025-002",
@@ -408,7 +408,7 @@ async function fetchTrendingDiscussions() {
     {
       id: "trend-1",
       title: "QMOI Consciousness Breakthrough",
-      content: "Latest developments in AI consciousness 
+      content: "Latest productions in AI consciousness 
       author: "AI Research Lead",
       replies: 156,
       views: 2500,
@@ -439,7 +439,7 @@ async function fetchRecentDiscussions() {
       id: "recent-1",
       title: "Auto-Interaction Systems Implementation",
       content: "Implementing autonomous UI interaction with QMOI AI...",
-      author: "UI Developer",
+      author: "UI prodeloper",
       replies: 23,
       views: 450,
       lastActivity: new Date(Date.now() - 1800000).toISOString(),
@@ -1137,7 +1137,7 @@ function parseArxivXML(xmlText: string) {
 async function performSemanticSearch(_query: string) {
   try {
     // Real semantic search using database with text matching
-    // Production: Implement semantic search using embeddings
+    // production: Implement semantic search using embeddings
     // Install: npm install @xenova/transformers or use OpenAI embeddings API
     // Requires: Vector DB like pgvector with PostgreSQL or Pinecone
     const results = await prisma.knowledgeBaseEntry.findMany({

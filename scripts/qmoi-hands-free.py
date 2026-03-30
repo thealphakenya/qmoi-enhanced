@@ -814,7 +814,7 @@ class AnomalyDetector:
     
     def __init__(self):
         self.baseline_metrics = {}
-        self.anomaly_threshold = 2.0  # Standard deviations
+        self.anomaly_threshold = 2.0  # Standard prodiations
     
     def detect_anomalies(self) -> List[Dict[str, Any]]:
         """Detect system anomalies"""

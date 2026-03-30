@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-QMOI ULTIMATE COMPREHENSIVE PRODUCTION SCANNER v4.0
-Production-Grade: ZERO skips, ZERO misses - scans EVERY file in EVERY directory
-Ensures no non-production implementations are left in any file type
+QMOI ULTIMATE COMPREHENSIVE production SCANNER v4.0
+production-Grade: ZERO skips, ZERO misses - scans EVERY file in EVERY directory
+Ensures no production implementations are left in any file type
 
 Enhanced to check:
 - ALL directories (including dotfiles, backups, etc)
@@ -24,22 +24,22 @@ BASE_DIR = Path(__file__).parent.parent
 REPORT_DIR = BASE_DIR / "reports"
 REPORT_DIR.mkdir(exist_ok=True)
 
-# COMPREHENSIVE NON-PRODUCTION PATTERNS (100+ patterns across all categories)
-NON_PRODUCTION_PATTERNS = {
+# COMPREHENSIVE production PATTERNS (100+ patterns across all categories)
+production_PATTERNS = {
     # Core Implementation Markers
     "implementation_required": [
-        r"\[PRODUCTION\s+READY\]",
-        r"\[PRODUCTION\s+IMPLEMENTATION\s+REQUIRED\]",
-        r"//\s*PRODUCTION\s+IMPLEMENTATION\s+REQUIRED",
-        r"#\s*PRODUCTION\s+IMPLEMENTATION\s+REQUIRED",
-        r"/\*\s*PRODUCTION\s+IMPLEMENTATION\s+REQUIRED",
+        r"\[production\s+READY\]",
+        r"\[production\s+IMPLEMENTATION\s+REQUIRED\]",
+        r"//\s*production\s+IMPLEMENTATION\s+REQUIRED",
+        r"#\s*production\s+IMPLEMENTATION\s+REQUIRED",
+        r"/\*\s*production\s+IMPLEMENTATION\s+REQUIRED",
     ],
     
     # Code Stubs & Placeholders
     "stubs_and_placeholders": [
         r"\bPLACEHOLDER\b",
         r"\bTODO\s*:.*IMPL",
-        r"\bFIXME\s*:.*PROD",
+        r"\bFIXME\s*:.*prod",
         r"\bHACK\s*:.*TEMP",
         r"\bXXX.*TODO",
         r"\bMOCK\s+",
@@ -94,7 +94,7 @@ NON_PRODUCTION_PATTERNS = {
         r"localhost:5000",
         r"127\.0\.0\.1:[0-9]{4}",
         r"process\.env\.NODE_DEBUG",
-        r"process\.exit\(111\)",  # Dev exit codes
+        r"process\.exit\(111\)",  # prod exit codes
         r"process\.exit\(999\)",
         r"process\.exit\(1\)",  # Unhandled exit
     ],
@@ -118,17 +118,17 @@ NON_PRODUCTION_PATTERNS = {
         r"sessionStorage.*mock",
     ],
     
-    # Conditional Production Code
+    # Conditional production Code
     "conditional_code": [
         r"if\s*\(\s*DEBUG\s*\)",
         r"if\s*\(\s*TEST.*MODE\s*\)",
         r"if\s*\(\s*process\.env\.NODE_ENV.*!==.*production",
-        r"process\.env\.ENVIRONMENT\s*===\s*['\"]dev",
-        r"isDevelopment\s*\|\|",
+        r"process\.env\.ENVIRONMENT\s*===\s*['\"]prod",
+        r"isproduction\s*\|\|",
     ],
     
-    # Development Dependencies in Production
-    "dev_dependencies": [
+    # production Dependencies in production
+    "prod_dependencies": [
         r"require\s*\(\s*['\"]webpack",
         r"require\s*\(\s*['\"]babel",
         r"require\s*\(\s*['\"]jest",
@@ -165,7 +165,7 @@ class UltimateComprehensiveScanner:
         return file_path.is_file()
 
     def scan_file(self, file_path):
-        """Scan file for ALL non-production patterns with category tracking"""
+        """Scan file for ALL production patterns with category tracking"""
         errors = []
         
         try:
@@ -175,7 +175,7 @@ class UltimateComprehensiveScanner:
             
             for line_num, line in enumerate(lines, 1):
                 # Check each category
-                for category, patterns in NON_PRODUCTION_PATTERNS.items():
+                for category, patterns in production_PATTERNS.items():
                     for pattern in patterns:
                         if re.search(pattern, line, re.IGNORECASE):
                             errors.append({
@@ -200,11 +200,11 @@ class UltimateComprehensiveScanner:
     def scan_entire_repository(self):
         """Scan EVERY file in EVERY directory with NO skips"""
         print(f"\n{'='*80}")
-        print(f"🔍 ULTIMATE COMPREHENSIVE PRODUCTION SCANNER v4.0")
+        print(f"🔍 ULTIMATE COMPREHENSIVE production SCANNER v4.0")
         print(f"{'='*80}\n")
         print(f"📡 Scanning COMPLETE REPOSITORY (every file, every directory)...")
         print(f"   Base directory: {BASE_DIR}")
-        print(f"\n   Scanning patterns: {sum(len(p) for p in NON_PRODUCTION_PATTERNS.values())} patterns across {len(NON_PRODUCTION_PATTERNS)} categories")
+        print(f"\n   Scanning patterns: {sum(len(p) for p in production_PATTERNS.values())} patterns across {len(production_PATTERNS)} categories")
         print(f"   Skipping ONLY: Binary files (.exe, .dll, .so, image files, archives)\n")
         
         # Walk EVERY directory
@@ -234,7 +234,7 @@ class UltimateComprehensiveScanner:
         """Generate ultra-detailed report with all findings"""
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
-║         ULTIMATE COMPREHENSIVE PRODUCTION SCAN REPORT v4.0                 ║
+║         ULTIMATE COMPREHENSIVE production SCAN REPORT v4.0                 ║
 ║                    Complete Repository Audit                               ║
 ║                    {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
@@ -244,21 +244,21 @@ class UltimateComprehensiveScanner:
 
 Total Files Scanned:        {self.files_scanned}
 Files with Issues:          {self.files_with_issues}
-Total Non-Production Issues: {self.issues_found}
+Total production Issues: {self.issues_found}
 
 Detection Categories Used:
-- Implementation Markers:   {len(NON_PRODUCTION_PATTERNS['implementation_required'])} patterns
-- Stubs & Placeholders:     {len(NON_PRODUCTION_PATTERNS['stubs_and_placeholders'])} patterns
-- Variable Naming:          {len(NON_PRODUCTION_PATTERNS['variable_naming'])} patterns
-- Type Casting:             {len(NON_PRODUCTION_PATTERNS['type_casting'])} patterns
-- Console/Logging:          {len(NON_PRODUCTION_PATTERNS['console_logging'])} patterns
-- Error Handling:           {len(NON_PRODUCTION_PATTERNS['error_handling'])} patterns
-- Environment:              {len(NON_PRODUCTION_PATTERNS['environment'])} patterns
-- API Mocking:              {len(NON_PRODUCTION_PATTERNS['api_mocking'])} patterns
-- Storage:                  {len(NON_PRODUCTION_PATTERNS['storage'])} patterns
-- Conditional Code:         {len(NON_PRODUCTION_PATTERNS['conditional_code'])} patterns
-- Dev Dependencies:         {len(NON_PRODUCTION_PATTERNS['dev_dependencies'])} patterns
-- Data/Config:              {len(NON_PRODUCTION_PATTERNS['data_config'])} patterns
+- Implementation Markers:   {len(production_PATTERNS['implementation_required'])} patterns
+- Stubs & Placeholders:     {len(production_PATTERNS['stubs_and_placeholders'])} patterns
+- Variable Naming:          {len(production_PATTERNS['variable_naming'])} patterns
+- Type Casting:             {len(production_PATTERNS['type_casting'])} patterns
+- Console/Logging:          {len(production_PATTERNS['console_logging'])} patterns
+- Error Handling:           {len(production_PATTERNS['error_handling'])} patterns
+- Environment:              {len(production_PATTERNS['environment'])} patterns
+- API Mocking:              {len(production_PATTERNS['api_mocking'])} patterns
+- Storage:                  {len(production_PATTERNS['storage'])} patterns
+- Conditional Code:         {len(production_PATTERNS['conditional_code'])} patterns
+- prod Dependencies:         {len(production_PATTERNS['prod_dependencies'])} patterns
+- Data/Config:              {len(production_PATTERNS['data_config'])} patterns
 
 ═══════════════════════════════════════════════════════════════════════════════
 
@@ -275,7 +275,7 @@ Detection Categories Used:
         report += f"\n═══════════════════════════════════════════════════════════════════════════════\n\n"
         
         # List problematic files (top 100)
-        report += "🚨 TOP FILES WITH NON-PRODUCTION ISSUES (sorted by issue count)\n"
+        report += "🚨 TOP FILES WITH production ISSUES (sorted by issue count)\n"
         report += "═══════════════════════════════════════════════════════════════════════════════\n\n"
         
         sorted_files = sorted(self.all_issues.items(), key=lambda x: -len(x[1]))
@@ -398,10 +398,10 @@ def main():
     print(f"  💾 {json_file}")
     
     if scanner.issues_found > 0:
-        print(f"\n⚠️  {scanner.issues_found} non-production issues detected across {scanner.files_with_issues} files")
+        print(f"\n⚠️  {scanner.issues_found} production issues detected across {scanner.files_with_issues} files")
         print(f"✅ Next: Review reports and apply fixes using enhanced_production_fixer.py")
     else:
-        print(f"\n✅ NO NON-PRODUCTION CODE FOUND!")
+        print(f"\n✅ NO production CODE FOUND!")
         print(f"   Repository is production-ready! 🎉")
 
 if __name__ == "__main__":

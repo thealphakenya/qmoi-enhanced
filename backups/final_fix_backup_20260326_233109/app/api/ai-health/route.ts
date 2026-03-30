@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -109,7 +109,7 @@ function buildSystemMetrics(): AIHealthMetrics {
   return {
     cpu: {
       usage: Number(cpuUsage.toFixed(2)),
-      temperature: 50 + Math.random() * 25, // Production implementation: resolve // Production implementation: items
+      temperature: 50 + Math.random() * 25, // production implementation: resolve // production implementation: items
       cores: cpuTotal,
     },
     memory: {

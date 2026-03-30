@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 import os
 import logging
 import json
@@ -134,9 +134,9 @@ class DatabaseMigrator:
             f.write("-- Migration: " + name + "\n")
             f.write("-- Version: " + version + "\n\n")
             f.write("-- Up Migration\n")
-            f.write("-- Production: Add your up migration SQL here\n\n")
+            f.write("-- production: Add your up migration SQL here\n\n")
             f.write("-- Down Migration\n")
-            f.write("-- Production: Add your down migration SQL here\n")
+            f.write("-- production: Add your down migration SQL here\n")
 
         self.logger.info(f"Created migration file: {filename}")
         return version

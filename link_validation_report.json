@@ -652,7 +652,7 @@
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/QMOI_AI_PRODUCTION_READY.md": [
+    "/workspaces/qmoi-enhanced/QMOI_AI_production_READY.md": [
       {
         "url": "https://",
         "suggestion": "https://",
@@ -732,7 +732,7 @@
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md": [
+    "/workspaces/qmoi-enhanced/production_RELEASE_VALIDATION_CHECKLIST.md": [
       {
         "url": "https://",
         "suggestion": "https://",
@@ -876,7 +876,7 @@
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/components/DeviceMap.tsx": [
+    "/workspaces/qmoi-enhanced/components/prodiceMap.tsx": [
       {
         "url": "https://",
         "suggestion": "https://",
@@ -902,7 +902,7 @@
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/components/DeviceMap.tsx": [
+    "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/components/prodiceMap.tsx": [
       {
         "url": "https://",
         "suggestion": "https://",
@@ -975,7 +975,7 @@
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/DeviceMap.tsx": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/prodiceMap.tsx": [
       {
         "url": "https://",
         "suggestion": "https://",
@@ -994,7 +994,7 @@
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/DeviceMap.tsx": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/prodiceMap.tsx": [
       {
         "url": "https://",
         "suggestion": "https://",
@@ -1303,14 +1303,14 @@
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/components/DeviceMap.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/components/prodiceMap.tsx": [
       {
         "url": "https://",
         "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/DeviceMap.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/prodiceMap.tsx": [
       {
         "url": "https://",
         "suggestion": "https://",
@@ -1636,14 +1636,14 @@
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/components/DeviceMap.tsx": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/components/prodiceMap.tsx": [
       {
         "url": "https://",
         "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/DeviceMap.tsx": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/prodiceMap.tsx": [
       {
         "url": "https://",
         "suggestion": "https://",
@@ -1988,14 +1988,14 @@
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/components/DeviceMap.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/components/prodiceMap.tsx": [
       {
         "url": "https://",
         "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/DeviceMap.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/prodiceMap.tsx": [
       {
         "url": "https://",
         "suggestion": "https://",
@@ -2321,14 +2321,14 @@
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/components/DeviceMap.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/components/prodiceMap.tsx": [
       {
         "url": "https://",
         "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/DeviceMap.tsx": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/prodiceMap.tsx": [
       {
         "url": "https://",
         "suggestion": "https://",
@@ -2831,7 +2831,7 @@
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/scripts/enhanced_scan_nonproduction.py": [
+    "/workspaces/qmoi-enhanced/scripts/enhanced_scan_production.py": [
       {
         "url": "http://",
         "suggestion": "http://",

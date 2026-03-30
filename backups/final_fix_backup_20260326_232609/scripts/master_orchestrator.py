@@ -90,8 +90,8 @@ class MasterExecutionOrchestrator:
         
         self.add_task(
             name="Marker Detection",
-            command=['python3', 'scripts/scan_nonproduction_endpoints.py', '--aggressive'],
-            description="Find all non-production markers",
+            command=['python3', 'scripts/scan_production_endpoints.py', '--aggressive'],
+            description="Find all production markers",
             critical=True,
             timeout=300
         )

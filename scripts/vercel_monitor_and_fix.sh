@@ -22,7 +22,7 @@ DEPLOYMENTS_JSON="$OUTDIR/vercel_deployments_$(date +%s).json"
 curl -s -H "Authorization: Bearer $VERCEL_TOKEN" "https://api.vercel.com/v9/projects/$VERCEL_PROJECT_ID/deployments" > "$DEPLOYMENTS_JSON"
 echo "Wrote deployments to $DEPLOYMENTS_JSON"
 
-LATEST_DEPLOY_ID=$(jq -r '.deployments[0].uid // .deployments[0].id' "$DEPLOYMENTS_JSON" 2>/dev/null || true)
+LATEST_DEPLOY_ID=$(jq -r '.deployments[0].uid // .deployments[0].id' "$DEPLOYMENTS_JSON" 2>/prod/null || true)
 if [ -z "$LATEST_DEPLOY_ID" ] || [ "$LATEST_DEPLOY_ID" == "null" ]; then
   echo "No deployments found for project $VERCEL_PROJECT_ID"
   exit 3
@@ -35,7 +35,7 @@ curl -s -H "Authorization: Bearer $VERCEL_TOKEN" "https://api.vercel.com/v2/now/
 echo "Wrote deployment events to $DEPLOY_LOG"
 
 echo "Analyzing logs for common failures..."
-if command -v python3 >/dev/null 2>&1 && [ -f tools/auto_fix_build.py ]; then
+if command -v python3 >/prod/null 2>&1 && [ -f tools/auto_fix_build.py ]; then
   echo "Found auto_fix_build tool — running analyzer (dry-run)"
   python3 tools/auto_fix_build.py --report "$DEPLOY_LOG" || true
 else

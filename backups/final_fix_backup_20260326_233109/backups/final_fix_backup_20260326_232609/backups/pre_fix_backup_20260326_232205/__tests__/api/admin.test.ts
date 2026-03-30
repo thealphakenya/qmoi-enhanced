@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import {
   userService,
   walletService,
@@ -68,7 +68,7 @@ describe("Admin Endpoints", () => {
     });
 
     it("should return dashboard statistics", async () => {
-      // Create // Production implementation:
+      // Create // production implementation:
       const hashedPassword = await authService.hashPassword("Test@123456");
       const wallet = await walletService.create({
         userId: regularUserId,

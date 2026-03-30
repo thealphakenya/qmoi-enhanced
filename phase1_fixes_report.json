@@ -118,7 +118,7 @@
       }
     },
     {
-      "file": "/workspaces/qmoi-enhanced/DEVELOPER_QUICK_START.md",
+      "file": "/workspaces/qmoi-enhanced/prodELOPER_QUICK_START.md",
       "fixes": {
         "domain_references": 0,
         "localhost_references": 0,
@@ -190,7 +190,7 @@
       }
     },
     {
-      "file": "/workspaces/qmoi-enhanced/QMOI_AUTO_TESTING_UI_DEVELOPMENT.md",
+      "file": "/workspaces/qmoi-enhanced/QMOI_AUTO_TESTING_UI_production.md",
       "fixes": {
         "domain_references": 0,
         "localhost_references": 0,
@@ -310,7 +310,7 @@
       }
     },
     {
-      "file": "/workspaces/qmoi-enhanced/QMOISPACEDEV.md",
+      "file": "/workspaces/qmoi-enhanced/QMOISPACEprod.md",
       "fixes": {
         "domain_references": 0,
         "localhost_references": 0,
@@ -514,7 +514,7 @@
       }
     },
     {
-      "file": "/workspaces/qmoi-enhanced/QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md",
+      "file": "/workspaces/qmoi-enhanced/QMOI_production_AUTO_RECOVERY_COMPLETE.md",
       "fixes": {
         "domain_references": 0,
         "localhost_references": 1,
@@ -574,7 +574,7 @@
       }
     },
     {
-      "file": "/workspaces/qmoi-enhanced/AUTODEV_SECRETS.md",
+      "file": "/workspaces/qmoi-enhanced/AUTOprod_SECRETS.md",
       "fixes": {
         "domain_references": 0,
         "localhost_references": 0,
@@ -682,7 +682,7 @@
       }
     },
     {
-      "file": "/workspaces/qmoi-enhanced/PRODUCTION_NEXT_STEPS_COMPLETE.md",
+      "file": "/workspaces/qmoi-enhanced/production_NEXT_STEPS_COMPLETE.md",
       "fixes": {
         "domain_references": 1,
         "localhost_references": 1,
@@ -730,7 +730,7 @@
       }
     },
     {
-      "file": "/workspaces/qmoi-enhanced/PRODUCTION_READINESS_EXECUTION_STATUS.md",
+      "file": "/workspaces/qmoi-enhanced/production_READINESS_EXECUTION_STATUS.md",
       "fixes": {
         "domain_references": 0,
         "localhost_references": 1,
@@ -898,7 +898,7 @@
       }
     },
     {
-      "file": "/workspaces/qmoi-enhanced/PRODUCTION_COMPLETION_SUMMARY.md",
+      "file": "/workspaces/qmoi-enhanced/production_COMPLETION_SUMMARY.md",
       "fixes": {
         "domain_references": 0,
         "localhost_references": 1,
@@ -958,7 +958,7 @@
       }
     },
     {
-      "file": "/workspaces/qmoi-enhanced/PHASE4_PRODUCTION_STRATEGY.md",
+      "file": "/workspaces/qmoi-enhanced/PHASE4_production_STRATEGY.md",
       "fixes": {
         "domain_references": 0,
         "localhost_references": 0,
@@ -970,7 +970,7 @@
       }
     },
     {
-      "file": "/workspaces/qmoi-enhanced/PRODUCTION_DEPLOYMENT_PLAYBOOK.md",
+      "file": "/workspaces/qmoi-enhanced/production_DEPLOYMENT_PLAYBOOK.md",
       "fixes": {
         "domain_references": 0,
         "localhost_references": 0,
@@ -1042,7 +1042,7 @@
       }
     },
     {
-      "file": "/workspaces/qmoi-enhanced/PRODUCTION_API_REFERENCE.md",
+      "file": "/workspaces/qmoi-enhanced/production_API_REFERENCE.md",
       "fixes": {
         "domain_references": 0,
         "localhost_references": 0,
@@ -1174,7 +1174,7 @@
       }
     },
     {
-      "file": "/workspaces/qmoi-enhanced/PRODUCTION_READINESS_CHECKLIST_FINAL.md",
+      "file": "/workspaces/qmoi-enhanced/production_READINESS_CHECKLIST_FINAL.md",
       "fixes": {
         "domain_references": 0,
         "localhost_references": 1,

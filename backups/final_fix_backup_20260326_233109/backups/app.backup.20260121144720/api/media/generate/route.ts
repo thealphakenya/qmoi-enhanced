@@ -1,7 +1,7 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 2 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 import { requireApiKey } from "../../../../lib/proposals";
@@ -58,7 +58,7 @@ function logToDashboard(
   const sanitizedLog = removeControlChars(JSON.stringify(logEntry));
   (console as any).log(sanitizedLog);
 
-  // Production: Send generated media metadata to WebSocket dashboard
+  // production: Send generated media metadata to WebSocket dashboard
   // Requires: Socket.io or Next.js WebSocket integration
   return logEntry;
 }
@@ -104,7 +104,7 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
       provider: cloudProvider,
     });
 
-    // Production implementation: cloud processing
+    // production implementation: cloud processing
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     task.status = "processing";
@@ -117,7 +117,7 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
       progress: task.progress,
     });
 
-    // Production implementation: completion
+    // production implementation: completion
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     task.status = "completed";
@@ -247,7 +247,7 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
     }
 
-    // Production: Query task status from Prisma DB or cloud job service
+    // production: Query task status from Prisma DB or cloud job service
     // For cloud jobs: use Celery, Bull, or AWS SQS for async task tracking
     const cloudTask: CloudTask = {
       id: taskId,

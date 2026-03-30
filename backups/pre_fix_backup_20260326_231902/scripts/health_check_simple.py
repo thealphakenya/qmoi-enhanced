@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
-QMOI Production Health Check - Simplified Version
+QMOI production Health Check - Simplified Version
 Checks domain health without external dependencies
 """
 
@@ -75,7 +75,7 @@ def check_domain_health(domain):
 
 def main():
     """Main health check execution"""
-    print("🏥 QMOI Production Health Check")
+    print("🏥 QMOI production Health Check")
     print("=" * 50)
 
     # List of all QMOI domains to check
@@ -83,7 +83,7 @@ def main():
         "qmoi.ai", "www.qmoi.ai", "api.qmoi.ai",
         "qcity.qmoi.ai", "qmoi-space.qmoi.ai", "yap.qmoi.ai", "q-stable.qmoi.ai",
         "qvillage.com", "qvillage.net", "qvillage.org", "qglobal.org",
-        "alphaq.ai", "qparallel.dev"
+        "alphaq.ai", "qparallel.prod"
     ]
 
     results = {

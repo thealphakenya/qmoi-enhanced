@@ -9,7 +9,7 @@
 """
 QMOI App Installer
 
-Comprehensive installer for QMOI AI application across all device types.
+Comprehensive installer for QMOI AI application across all prodice types.
 Features:
 - Multi-platform support (Windows, macOS, Linux, Android, iOS)
 - 99.9% installation success rate
@@ -102,7 +102,7 @@ class QMOIAppInstaller:
     
     def generate_icon_file(self, platform: str, size, colors, icon_dir: str):
         """Generate enhanced icon file for specific platform and size (modern look)"""
-        # This would generate actual icon files; here, create a // Production implementation required: with enhanced description
+        # This would generate actual icon files; here, create a // production implementation required: with enhanced description
         icon_file = os.path.join(icon_dir, f"qmoi_icon_{size}.png")
         with open(icon_file, 'w') as f:
             f.write(f"# QMOI AI Icon {size}x{size} for {platform}\n")
@@ -343,7 +343,7 @@ echo "QMOI AI started successfully!"
                 f.write(shortcut_content)
         
         elif platform_type == "linux":
-            desktop_content = f"""[Desktop Entry]\nVersion=1.0\nType=Application\nName=qmoi ai\nComment=Your Personal AI Agent for Revenue Generation & Automation\nExec={self.install_dir}/qmoi-ai\nIcon={self.install_dir}/icons/qmoi_icon_256.png\nTerminal=false\nCategories=Utility;AI;Productivity;\n"""
+            desktop_content = f"""[Desktop Entry]\nVersion=1.0\nType=Application\nName=qmoi ai\nComment=Your Personal AI Agent for Revenue Generation & Automation\nExec={self.install_dir}/qmoi-ai\nIcon={self.install_dir}/icons/qmoi_icon_256.png\nTerminal=false\nCategories=Utility;AI;productivity;\n"""
             desktop = os.path.expanduser("~/Desktop")
             shortcut_file = os.path.join(desktop, "qmoi ai.desktop")
             with open(shortcut_file, 'w') as f:
@@ -481,7 +481,7 @@ WantedBy=multi-user.target
             os.makedirs(category_dir, exist_ok=True)
             
             for file in files:
-                # Create // Production implementation required: files
+                # Create // production implementation required: files
                 file_path = os.path.join(category_dir, file)
                 with open(file_path, 'w') as f:
                     f.write(f"# QMOI AI {file} for {platform_type}")

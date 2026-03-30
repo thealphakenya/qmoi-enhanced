@@ -7,13 +7,13 @@
 """
 QMOI Universal Memory
 ---------------------
-robust cross-app, cross-device memory for user preferences and recent projects.
+robust cross-app, cross-prodice memory for user preferences and recent projects.
 
-Data lives in config/universal_memory.json and is safe to sync across devices.
+Data lives in config/universal_memory.json and is safe to sync across prodices.
 
 Capabilities:
 - Remember feature preferences (e.g., writing assistant enabled)
-- Track recent projects/sessions per user and device
+- Track recent projects/sessions per user and prodice
 - Simple CLI to get/set preferences and record sessions
 """
 
@@ -48,8 +48,8 @@ def save_mem(data: Dict[str, Any]) -> None:
 def get_current_user() -> str:
     return os.environ.get("QMOI_USER") or os.environ.get("USERNAME") or os.environ.get("USER") or "default"
 
-def get_current_device() -> str:
-    return os.environ.get("COMPUTERNAME") or os.environ.get("HOSTNAME") or "device"
+def get_current_prodice() -> str:
+    return os.environ.get("COMPUTERNAME") or os.environ.get("HOSTNAME") or "prodice"
 
 def ensure_user(mem: Dict[str, Any], user: str) -> Dict[str, Any]:
     users = mem.setdefault("users", {})
@@ -74,7 +74,7 @@ def record_session(app: str, project: str, extra: Dict[str, Any] | None = None) 
     entry = {
         "app": app,
         "project": project,
-        "device": get_current_device(),
+        "prodice": get_current_prodice(),
         "ts": datetime.utcnow().isoformat(),
     }
     if extra:

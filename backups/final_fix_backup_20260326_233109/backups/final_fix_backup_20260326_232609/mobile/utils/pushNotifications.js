@@ -3,14 +3,14 @@
 // Last evolution cycle: 2026-03-26T03:58:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 import { Platform } from "react-native";
 import messaging from "@react-native-firebase/messaging";
 import axios from "axios";
 
 // Pushover registration (requires userKey and apiToken)
 export async function registerPushover(userKey, apiToken) {
-  // Register device with your backend for Pushover notifications
+  // Register prodice with your backend for Pushover notifications
   await axios.post("process.env.API_URL || "http://localhost:\1"/api/register-pushover", {
     userKey,
     apiToken,
@@ -26,7 +26,7 @@ export async function registerFCM(onToken) {
   if (enabled) {
     const fcmToken = await messaging().getToken();
     if (onToken) onToken(fcmToken);
-    // Register device with your backend for FCM notifications
+    // Register prodice with your backend for FCM notifications
     await axios.post("process.env.API_URL || "http://localhost:\1"/api/register-fcm", {
       token: fcmToken,
       platform: Platform.OS,

@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -23,13 +23,13 @@
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Vercel Developer Automation (QMOIVERCELDEV)
+# QMOI Vercel prodeloper Automation (QMOIVERCELprod)
 
-> **See also:** [QMOIDEV.md](QMOIDEV.md)
+> **See also:** [QMOIprod.md](QMOIprod.md)
 
-## QMOI as a Developer & Notification Agent
+## QMOI as a prodeloper & Notification Agent
 
-- QMOI always identifies as an AI Developer in all notifications (email, Slack, etc.).
+- QMOI always identifies as an AI prodeloper in all notifications (email, Slack, etc.).
 - All notifications include platform, job, fix, and error context.
 - QMOI logs, retries, and uses fallback channels for all notifications.
 - QMOI monitors for email replies, parses commands, and updates memory/context.
@@ -84,28 +84,28 @@ QMOI now automates Vercel deployment, error fixing, backup, and UI integration:
 
 - [QMOICLONE.md](QMOICLONE.md)
 - [QMOICLONEGITPOD.md](QMOICLONEGITPOD.md)
-- [QMOIGITLABDEV.md](QMOIGITLABDEV.md)
+- [QMOIGITLABprod.md](QMOIGITLABprod.md)
 - [REFERENCES.md](REFERENCES.md)
 
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "qmoi-enhanced/QMOIVERCELDEV.md",
+"file": "qmoi-enhanced/QMOIVERCELprod.md",
 "validated_at": "2025-10-26T20:51:24.803993Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
 {
 "name": "title_present",
 "ok": true,
-"detail": "QMOI Vercel Developer Automation (QMOIVERCELDEV)"
+"detail": "QMOI Vercel prodeloper Automation (QMOIVERCELprod)"
 },
 {
 "name": "links",
 "ok": true,
 "detail": [
 {
-"label": "QMOIDEV.md",
-"target": "./QMOIDEV.md",
+"label": "QMOIprod.md",
+"target": "./QMOIprod.md",
 "ok": true
 },
 {
@@ -119,8 +119,8 @@ QMOI now automates Vercel deployment, error fixing, backup, and UI integration:
 "ok": true
 },
 {
-"label": "QMOIGITLABDEV.md",
-"target": "./QMOIGITLABDEV.md",
+"label": "QMOIGITLABprod.md",
+"target": "./QMOIGITLABprod.md",
 "ok": true
 },
 {

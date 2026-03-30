@@ -1,7 +1,7 @@
-# 🔧 DEV CONTAINER RECOVERY & ENHANCEMENT GUIDE
+# 🔧 prod CONTAINER RECOVERY & ENHANCEMENT GUIDE
 
 **Date**: 2026-03-29  
-**Status**: ✅ PRODUCTION READY  
+**Status**: ✅ production READY  
 **Issue**: Recovery Mode Detected  
 
 ---
@@ -17,11 +17,11 @@
 
 ### Immediate Fixes
 
-#### Fix 1: Enhance Devcontainer JSON
+#### Fix 1: Enhance prodcontainer JSON
 ```json
 {
-  "name": "QMOI Enhanced - Production Dev Container",
-  "image": "mcr.microsoft.com/devcontainers/base:bullseye",
+  "name": "QMOI Enhanced - production prod Container",
+  "image": "mcr.microsoft.com/prodcontainers/base:bullseye",
   "runArgs": [
     "--cap-add=SYS_ADMIN",
     "--security-opt=apparmor=unconfined",
@@ -29,18 +29,18 @@
     "--cpus=2"
   ],
   "features": {
-    "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/features/node:20": {},
-    "ghcr.io/devcontainers/features/python:3.11": {},
-    "ghcr.io/devcontainers/features/git:latest": {}
+    "ghcr.io/prodcontainers/features/github-cli:1": {},
+    "ghcr.io/prodcontainers/features/node:20": {},
+    "ghcr.io/prodcontainers/features/python:3.11": {},
+    "ghcr.io/prodcontainers/features/git:latest": {}
   },
   "initializeCommand": [
     "sh",
     "-c",
     "mkdir -p /workspace/logs /workspace/temp /workspace/.cache"
   ],
-  "postCreateCommand": "./scripts/devcontainer-init.sh",
-  "updateContentCommand": "./scripts/devcontainer-update.sh",
+  "postCreateCommand": "./scripts/prodcontainer-init.sh",
+  "updateContentCommand": "./scripts/prodcontainer-update.sh",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -74,13 +74,13 @@
 }
 ```
 
-#### Fix 2: Create Devcontainer Init Script
-File: `.devcontainer/devcontainer-init.sh`
+#### Fix 2: Create prodcontainer Init Script
+File: `.prodcontainer/prodcontainer-init.sh`
 ```bash
 #!/bin/bash
 set -e
 
-echo "🚀 QMOI Dev Container Initialization..."
+echo "🚀 QMOI prod Container Initialization..."
 
 # Create necessary directories
 mkdir -p /workspace/logs /workspace/temp /workspace/.cache
@@ -89,7 +89,7 @@ mkdir -p /workspace/logs /workspace/temp /workspace/.cache
 chmod 755 /workspace /workspace/logs /workspace/temp
 
 # Log initialization
-echo "Dev container initializing..." | tee /workspace/logs/init.log
+echo "prod container initializing..." | tee /workspace/logs/init.log
 
 # Install Node dependencies with fallback
 echo "📦 Installing Node dependencies..."
@@ -103,7 +103,7 @@ python3 --version || true
 if [ ! -f .env.local ]; then
   echo "📝 Creating .env.local..."
   cat > .env.local << 'ENVEND'
-NODE_ENV=development
+NODE_ENV=production
 DEBUG=qmoi:*
 DATABASE_URL=postgresql://qmoi:qmoi@localhost:5432/qmoi_enhanced
 REDIS_URL=redis://localhost:6379
@@ -111,16 +111,16 @@ PORT=3000
 ENVEND
 fi
 
-echo "✅ Dev container ready!"
+echo "✅ prod container ready!"
 ```
 
 #### Fix 3: Create Update Script
-File: `.devcontainer/devcontainer-update.sh`
+File: `.prodcontainer/prodcontainer-update.sh`
 ```bash
 #!/bin/bash
 set -e
 
-echo "🔄 QMOI Dev Container Update..."
+echo "🔄 QMOI prod Container Update..."
 
 # Update npm packages
 npm update || true
@@ -137,20 +137,20 @@ echo "✅ Update complete"
 
 ---
 
-## 📋 DEV CONTAINER STRUCTURE
+## 📋 prod CONTAINER STRUCTURE
 
 ```
-.devcontainer/
-├── devcontainer.json ................. Main config (ENHANCED)
-├── devcontainer-init.sh .............. Init script (NEW)
-├── devcontainer-update.sh ............ Update script (NEW)
+.prodcontainer/
+├── prodcontainer.json ................. Main config (ENHANCED)
+├── prodcontainer-init.sh .............. Init script (NEW)
+├── prodcontainer-update.sh ............ Update script (NEW)
 ├── README.md ......................... Usage guide
 └── docker-compose.yml (reference) ... For local Docker setup
 ```
 
 ---
 
-## 🎯 ENHANCED DEV CONTAINER FEATURES
+## 🎯 ENHANCED prod CONTAINER FEATURES
 
 ### Memory & CPU
 - ✅ 4GB RAM allocation
@@ -177,7 +177,7 @@ echo "✅ Update complete"
 - ✅ 3000 - Next.js App
 - ✅ 5432 - PostgreSQL
 - ✅ 6379 - Redis
-- ✅ 8080 - Debug/Development
+- ✅ 8080 - Debug/production
 
 ### Automatic Features
 - ✅ Dependencies auto-installed (if NODE_DEPS=true)
@@ -204,7 +204,7 @@ rm -rf node_modules
 npm ci
 
 # 4. Check logs
-tail -f .devcontainer/logs/init.log
+tail -f .prodcontainer/logs/init.log
 
 # 5. Verify setup
 npm run type-check
@@ -216,11 +216,11 @@ npm run test
 
 ## 📊 CONTAINER HEALTH CHECK
 
-File: `.devcontainer/health-check.sh`
+File: `.prodcontainer/health-check.sh`
 ```bash
 #!/bin/bash
 
-echo "🏥 Dev Container Health Check"
+echo "🏥 prod Container Health Check"
 echo "=============================="
 
 # Check Node
@@ -266,52 +266,52 @@ echo "✅ Health check complete"
 ### First Time Setup
 ```bash
 # 1. Create container
-Remote-Containers: Create Dev Container
+Remote-Containers: Create prod Container
 
 # 2. Wait for initialization
-# (Check logs in .devcontainer/logs/init.log)
+# (Check logs in .prodcontainer/logs/init.log)
 
 # 3. Verify setup
-./scripts/devcontainer/health-check.sh
+./scripts/prodcontainer/health-check.sh
 
 # 4. Install dependencies
 npm ci --prefer-offline
 
 # 5. Ready to code!
-npm run dev
+npm run prod
 ```
 
 ### When Recovery Mode Appears
 ```bash
 # 1. Check health
-./scripts/devcontainer/health-check.sh
+./scripts/prodcontainer/health-check.sh
 
 # 2. Check logs
-cat .devcontainer/logs/init.log
+cat .prodcontainer/logs/init.log
 
 # 3. Rebuild if needed
 Remote-Containers: Rebuild Container
 
 # 4. Reinitialize
-./scripts/devcontainer/devcontainer-init.sh
+./scripts/prodcontainer/prodcontainer-init.sh
 ```
 
 ---
 
 ## ✅ CHECKLIST
 
-- [ ] Dev container starts without recovery warning
+- [ ] prod container starts without recovery warning
 - [ ] npm dependencies install successfully
 - [ ] Node.js version is 20+
 - [ ] Python 3.11 available
 - [ ] Port 3000 forwarding works
 - [ ] Environment file created
 - [ ] Health check passes
-- [ ] Ready for development
+- [ ] Ready for production
 
 ---
 
-**Status**: ✅ PRODUCTION READY  
+**Status**: ✅ production READY  
 **Last Updated**: 2026-03-29  
 **Next**: Apply these fixes and rebuild container
 

@@ -107,7 +107,7 @@ discover_builds() {
                 -o -name "*.apk" \
                 -o -name "*.ipa" \
                 -o -name "*.img" \
-            \) 2>/dev/null | while read file; do
+            \) 2>/prod/null | while read file; do
                 filename=$(basename "$file")
                 size=$(du -h "$file" | cut -f1)
                 
@@ -164,7 +164,7 @@ classify_build() {
 check_github_releases() {
     header "📤 Checking GitHub Releases"
 
-    if ! command -v gh &> /dev/null; then
+    if ! command -v gh &> /prod/null; then
         error "GitHub CLI (gh) not installed"
         return 1
     fi
@@ -172,7 +172,7 @@ check_github_releases() {
     log "Fetching releases from: $REPO"
 
     # Get all releases
-    gh release list --repo "$REPO" --limit 100 2>/dev/null | while read line; do
+    gh release list --repo "$REPO" --limit 100 2>/prod/null | while read line; do
         if [ -n "$line" ]; then
             version=$(echo "$line" | awk '{print $1}')
             status=$(echo "$line" | awk '{print $NF}')
@@ -180,7 +180,7 @@ check_github_releases() {
             success "Release: $version ($status)"
             
             # List assets
-            gh release view "$version" --repo "$REPO" --json assets -q '.assets[].name' 2>/dev/null | while read asset; do
+            gh release view "$version" --repo "$REPO" --json assets -q '.assets[].name' 2>/prod/null | while read asset; do
                 echo "  📦 $asset"
             done
         fi
@@ -205,14 +205,14 @@ verify_builds() {
     while read file; do
         if [ -f "$file" ]; then
             total=$((total + 1))
-            size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null)
+            size=$(stat -f%z "$file" 2>/prod/null || stat -c%s "$file" 2>/prod/null)
             
             if [ "$size" -gt 0 ]; then
                 valid=$((valid + 1))
                 platform=$(classify_build "$file")
                 filename=$(basename "$file")
                 
-                success "✓ $filename ($(numfmt --to=iec-i --suffix=B $size 2>/dev/null || echo "$size bytes"))"
+                success "✓ $filename ($(numfmt --to=iec-i --suffix=B $size 2>/prod/null || echo "$size bytes"))"
             else
                 error "✗ $filename (empty file)"
             fi
@@ -258,7 +258,7 @@ test_installations() {
                 linux)
                     # Check if valid DEB
                     if [[ $filename =~ \.deb$ ]]; then
-                        if ar -t "$file" >/dev/null 2>&1; then
+                        if ar -t "$file" >/prod/null 2>&1; then
                             success "Linux DEB valid: $filename"
                         else
                             warning "Linux DEB may be invalid: $filename"
@@ -267,7 +267,7 @@ test_installations() {
                     ;;
                 android)
                     # Check if valid APK (ZIP file)
-                    if unzip -t "$file" >/dev/null 2>&1; then
+                    if unzip -t "$file" >/prod/null 2>&1; then
                         success "Android APK valid: $filename"
                     else
                         warning "Android APK may be invalid: $filename"
@@ -412,10 +412,10 @@ while true; do
     echo "$(date): Checking QMOI releases..."
     
     # Check GitHub
-    gh release list --repo thealphakenya/qmoi-enhanced --limit 5 2>/dev/null || echo "GitHub check failed"
+    gh release list --repo thealphakenya/qmoi-enhanced --limit 5 2>/prod/null || echo "GitHub check failed"
     
     # Check local builds
-    builds=$(find Qmoi_downloaded_apps -type f 2>/dev/null | wc -l)
+    builds=$(find Qmoi_downloaded_apps -type f 2>/prod/null | wc -l)
     echo "Local builds: $builds"
     
     # Wait and repeat

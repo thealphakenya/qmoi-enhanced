@@ -33,17 +33,17 @@ const handler = requireRole(["admin", "master"])(async (req: NextRequest) => {
       status: 401,
     });
   }
-  const { cmd, stream, deviceId = "default" } = (await req.json()) as any;
+  const { cmd, stream, prodiceId = "default" } = (await req.json()) as any;
   if (!cmd)
     return new Response(JSON.stringify({ error: "No command provided" }), {
       status: 400,
     });
   const qcityService = new QCityService();
   await qcityService.initialize();
-  // Route command to the specified device (
-  logAudit({ action: "run", cmd, deviceId, user: "admin", status: "started" });
+  // Route command to the specified prodice (
+  logAudit({ action: "run", cmd, prodiceId, user: "admin", status: "started" });
   if (stream) {
-    // Production implementation logs
+    // production implementation logs
     const encoder = new TextEncoder();
     const streamBody = new ReadableStream({
       start(controller) {
@@ -51,7 +51,7 @@ const handler = requireRole(["admin", "master"])(async (req: NextRequest) => {
         function push() {
           if (i < 5) {
             controller.enqueue(
-              encoder.encode(`data: [${deviceId}] Log line ${i + 1}\n\n`),
+              encoder.encode(`data: [${prodiceId}] Log line ${i + 1}\n\n`),
             );
             i++;
             setTimeout(push, 500);
@@ -61,7 +61,7 @@ const handler = requireRole(["admin", "master"])(async (req: NextRequest) => {
             logAudit({
               action: "run",
               cmd,
-              deviceId,
+              prodiceId,
               user: "admin",
               status: "done",
             });
@@ -78,9 +78,9 @@ const handler = requireRole(["admin", "master"])(async (req: NextRequest) => {
       },
     });
   } else {
-    // Pass deviceId for real device routing
-    const result = await qcityService.runRemoteCommand(cmd, deviceId);
-    logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
+    // Pass prodiceId for real prodice routing
+    const result = await qcityService.runRemoteCommand(cmd, prodiceId);
+    logAudit({ action: "run", cmd, prodiceId, user: "admin", status: "done" });
     return new Response(JSON.stringify(result), {
       headers: { "Content-Type": "application/json" },
     });

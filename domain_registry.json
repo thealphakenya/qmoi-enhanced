@@ -360,14 +360,14 @@
     "status": "active",
     "last_updated": "2026-03-21T22:34:57.065506"
   },
-  "qparallel.dev": {
-    "domain": "qparallel.dev",
+  "qparallel.prod": {
+    "domain": "qparallel.prod",
     "type": "fallback",
     "tld_variants": [],
     "fallback_chain": [],
     "regional_endpoints": {
-      "us-east": "us-east.qparallel.dev",
-      "eu-west": "eu.qparallel.dev"
+      "us-east": "us-east.qparallel.prod",
+      "eu-west": "eu.qparallel.prod"
     },
     "api_endpoints": [
       "/api/v1"

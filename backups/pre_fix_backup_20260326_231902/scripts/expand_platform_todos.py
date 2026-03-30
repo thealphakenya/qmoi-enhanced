@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [PRODUCTION READY]
+# [production READY]
 """
 Create per-platform todos from `platformspayed.txt` and write them to
 `.qmoi_validation/todos.json` for tracking and assignment.

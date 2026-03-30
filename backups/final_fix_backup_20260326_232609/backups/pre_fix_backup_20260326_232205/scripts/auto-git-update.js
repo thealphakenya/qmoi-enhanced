@@ -387,7 +387,7 @@ class AutoGitUpdater {
       console.log(`Title: ${title}`);
       console.log(`Message: ${message}`);
 
-      // Production implementation, this would call the WhatsApp API
+      // production implementation, this would call the WhatsApp API
       // await fetch('/api/whatsapp/notify-master', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },

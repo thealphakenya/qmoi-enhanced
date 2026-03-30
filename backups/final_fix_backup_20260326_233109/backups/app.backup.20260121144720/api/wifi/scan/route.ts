@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -13,9 +13,9 @@ interface WiFiNetwork {
   quality: number;
 }
 
-// Production helper functions (replace with actual system API/service calls)
+// production helper functions (replace with actual system API/service calls)
 async function scanWiFiNetworks(): Promise<WiFiNetwork[]> {
-  // Production: Use system command (iwlist on Linux, Get-NetAdapter on Windows)
+  // production: Use system command (iwlist on Linux, Get-NetAdapter on Windows)
   // or Node WiFi package to scan available networks
   // Parse output and return formatted network list
   return [
@@ -63,10 +63,10 @@ async function connectToWiFi({
   message?: string;
   error?: string;
 }> {
-  // Production: Use system API/service to connect to WiFi
+  // production: Use system API/service to connect to WiFi
   // Requires: nmcli (Linux), netsh (Windows), or node-wifiscanner
   // Implementation: Use system commands or nmcli-node package
-  // Production implementation: connection
+  // production implementation: connection
   if (password === "correct-password") {
     return {
       success: true,
@@ -89,7 +89,7 @@ async function connectToWiFi({
 
 export async function GET(_request: NextRequest) {
   try {
-    // Production: Scan WiFi networks using system API/service
+    // production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
   } catch (_error) {
@@ -113,7 +113,7 @@ export async function POST(_request: NextRequest) {
       );
     }
 
-    // Production: Attempt WiFi connection using system API/service
+    // production: Attempt WiFi connection using system API/service
     const connectionResult = await connectToWiFi({ ssid, password, bssid });
     if (connectionResult.success) {
       return NextResponse.json({

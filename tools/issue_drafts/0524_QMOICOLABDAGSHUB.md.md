@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Issue final for QMOICOLABDAGSHUB.md"
 generated: 2025-11-08T16:06:38.304798Z
@@ -10,9 +10,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [PRODUCTION READY] markers or [PRODUCTION READY]s.
-- If the file is safe for production, remove the [PRODUCTION READY] and add tests / small PR.
-- If the file is intentionally non-production (e.g. [PRODUCTION READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [production READY] markers or [production READY]s.
+- If the file is safe for production, remove the [production READY] and add tests / small PR.
+- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -35,17 +35,17 @@ title: "QMOI Colab & Dagshub Optimization"
 # QMOI Colab & Dagshub Optimization
 
 ## Overview
-QMOI and QCity are optimized to run best online in Colab and Dagshub, offloading heavy tasks and syncing only essential results to the user device.
+QMOI and QCity are optimized to run best online in Colab and Dagshub, offloading heavy tasks and syncing only essential results to the user prodice.
 
-## Device Creation & Usage
-- Devices are created as robust clients, with all heavy computation in Colab/Dagshub.
+## prodice Creation & Usage
+- prodices are created as robust clients, with all heavy computation in Colab/Dagshub.
 - QCity and auto-earning features are cloud-first.
-- Devices can be managed, monitored, and controlled from the main app or Qmoispace.
+- prodices can be managed, monitored, and controlled from the main app or Qmoispace.
 
 ## Optimization & Offloading
 - Heavy jobs (training, inference, data processing) run in Colab/Dagshub.
-- Only results, logs, and essential data are synced to the device.
-- Auto-detects when to offload based on device health and network.
+- Only results, logs, and essential data are synced to the prodice.
+- Auto-detects when to offload based on prodice health and network.
 - **All cloud-offloading, auto-retry, and auto-recover logic is now enforced and visualized in the QMOI dashboard.**
 - **Pre-autotest, error/fix, and notification status for Colab/Dagshub are now shown in real time in the dashboard.**
 - **All .md docs and logs are auto-synced to the dashboard and ALLMDFILESREFS.md.**
@@ -53,7 +53,7 @@ QMOI and QCity are optimized to run best online in Colab and Dagshub, offloading
 
 ## Reliability & Best Practices
 - Auto-retry and auto-recover from cloud job failures.
-- Modular features: enable/disable based on device/cloud status.
+- Modular features: enable/disable based on prodice/cloud status.
 - Logs and optimizations are synced to QMOI dashboard and AUTOOPTIMIZEALPHAQMOIENGINE.md.
 
 ---

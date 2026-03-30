@@ -124,7 +124,7 @@ class QMOIBalanceUpdater:
 
     def validate_master_access(self) -> bool:
         """Validate master access for balance operations"""
-        # Production:, this would validate JWT tokens, biometrics, etc.
+        # production:, this would validate JWT tokens, biometrics, etc.
         # For demo, we'll assume master access is granted
         logger.info("Master access validated")
         return True
@@ -161,7 +161,7 @@ class QMOIBalanceUpdater:
         """Fetch real balance from crypto exchange"""
         try:
             # Template for Bitget or other exchanges
-            # Production:: Use exchange APIs with proper authentication
+            # production:: Use exchange APIs with proper authentication
 
             balances = {
                 "BTC": {"amount": 2.456789, "usd_value": 145678.92},

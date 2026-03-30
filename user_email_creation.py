@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 QMOI User Email Creation Platform
-Production-ready platform for users to create custom email accounts
+production-ready platform for users to create custom email accounts
 
 Features:
 - Custom email creation (@qmoi.com, @qai.com, @qcity.com, @qvillage.com)

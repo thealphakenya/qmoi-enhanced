@@ -5,8 +5,8 @@
 
 /**
  * QMOI Execution Engine
- * Controls apps, devices, machines, and APIs with auto-code generation and auto-fix capabilities
- * Production-ready implementation with comprehensive device and API control
+ * Controls apps, prodices, machines, and APIs with auto-code generation and auto-fix capabilities
+ * production-ready implementation with comprehensive prodice and API control
  */
 
 import { spawn, exec, ChildProcess } from 'child_process';
@@ -23,7 +23,7 @@ export interface ExecutionRequest {
   timeout_ms: number;
   requires_confirmation: boolean;
   user_id: string;
-  device_id: string;
+  prodice_id: string;
 }
 
 export interface ExecutionResult {
@@ -35,9 +35,9 @@ export interface ExecutionResult {
   generated_code?: string;
 }
 
-export interface DeviceControl {
-  device_type: 'app' | 'device' | 'api' | 'service' | 'machine';
-  device_id: string;
+export interface prodiceControl {
+  prodice_type: 'app' | 'prodice' | 'api' | 'service' | 'machine';
+  prodice_id: string;
   platform: 'windows' | 'linux' | 'macos' | 'android' | 'ios' | 'embedded';
   connection_type: 'local' | 'bluetooth' | 'wifi' | 'usb' | 'serial' | 'cloud';
   capabilities: string[];
@@ -46,7 +46,7 @@ export interface DeviceControl {
 
 export class ExecutionEngine extends EventEmitter {
   private active_processes: Map<string, ChildProcess> = new Map();
-  private device_registry: Map<string, DeviceControl> = new Map();
+  private prodice_registry: Map<string, prodiceControl> = new Map();
   private api_endpoints: Map<string, string> = new Map();
   private code_templates: Map<string, string> = new Map();
   private auto_fix_enabled: boolean = true;
@@ -55,7 +55,7 @@ export class ExecutionEngine extends EventEmitter {
   constructor() {
     super();
     this.initializeCodeTemplates();
-    this.initializeDeviceRegistry();
+    this.initializeprodiceRegistry();
     this.initializeApiEndpoints();
   }
 
@@ -79,8 +79,8 @@ export class ExecutionEngine extends EventEmitter {
         case 'app':
           result = await this.executeAppAction(request);
           break;
-        case 'device':
-          result = await this.executeDeviceAction(request);
+        case 'prodice':
+          result = await this.executeprodiceAction(request);
           break;
         case 'api':
           result = await this.executeApiAction(request);
@@ -151,29 +151,29 @@ export class ExecutionEngine extends EventEmitter {
   }
 
   /**
-   * Execute device-related actions
+   * Execute prodice-related actions
    */
-  private async executeDeviceAction(request: ExecutionRequest): Promise<ExecutionResult> {
+  private async executeprodiceAction(request: ExecutionRequest): Promise<ExecutionResult> {
     const { action, parameters } = request;
-    const device = this.device_registry.get(parameters.device_id);
+    const prodice = this.prodice_registry.get(parameters.prodice_id);
 
-    if (!device) {
-      throw new Error(`Device not found: ${parameters.device_id}`);
+    if (!prodice) {
+      throw new Error(`prodice not found: ${parameters.prodice_id}`);
     }
 
     switch (action) {
       case 'connect':
-        return await this.connectToDevice(device);
+        return await this.connectToprodice(prodice);
       case 'disconnect':
-        return await this.disconnectFromDevice(device);
+        return await this.disconnectFromprodice(prodice);
       case 'send_command':
-        return await this.sendCommandToDevice(device, parameters.command);
+        return await this.sendCommandToprodice(prodice, parameters.command);
       case 'get_status':
-        return await this.getDeviceStatus(device);
+        return await this.getprodiceStatus(prodice);
       case 'update_firmware':
-        return await this.updateDeviceFirmware(device, parameters.firmware_url);
+        return await this.updateprodiceFirmware(prodice, parameters.firmware_url);
       default:
-        throw new Error(`Unknown device action: ${action}`);
+        throw new Error(`Unknown prodice action: ${action}`);
     }
   }
 
@@ -359,38 +359,38 @@ export class ExecutionEngine extends EventEmitter {
   }
 
   /**
-   * Connect to a device
+   * Connect to a prodice
    */
-  private async connectToDevice(device: DeviceControl): Promise<ExecutionResult> {
+  private async connectToprodice(prodice: prodiceControl): Promise<ExecutionResult> {
     try {
-      switch (device.connection_type) {
+      switch (prodice.connection_type) {
         case 'bluetooth':
-          return await this.connectBluetoothDevice(device);
+          return await this.connectBluetoothprodice(prodice);
         case 'wifi':
-          return await this.connectWifiDevice(device);
+          return await this.connectWifiprodice(prodice);
         case 'usb':
-          return await this.connectUsbDevice(device);
+          return await this.connectUsbprodice(prodice);
         case 'serial':
-          return await this.connectSerialDevice(device);
+          return await this.connectSerialprodice(prodice);
         default:
-          throw new Error(`Unsupported connection type: ${device.connection_type}`);
+          throw new Error(`Unsupported connection type: ${prodice.connection_type}`);
       }
     } catch (error) {
       return {
         success: false,
         output: null,
-        error: `Device connection failed: ${error.message}`
+        error: `prodice connection failed: ${error.message}`
       };
     }
   }
 
   /**
-   * Send command to device
+   * Send command to prodice
    */
-  private async sendCommandToDevice(device: DeviceControl, command: string): Promise<ExecutionResult> {
+  private async sendCommandToprodice(prodice: prodiceControl, command: string): Promise<ExecutionResult> {
     try {
-      // Implementation depends on device type and connection
-      const response = await this.sendDeviceCommand(device, command);
+      // Implementation depends on prodice type and connection
+      const response = await this.sendprodiceCommand(prodice, command);
       return {
         success: true,
         output: response
@@ -399,7 +399,7 @@ export class ExecutionEngine extends EventEmitter {
       return {
         success: false,
         output: null,
-        error: `Device command failed: ${error.message}`
+        error: `prodice command failed: ${error.message}`
       };
     }
   }
@@ -502,14 +502,14 @@ if __name__ == "__main__":
   }
 
   /**
-   * Initialize device registry
+   * Initialize prodice registry
    */
-  private initializeDeviceRegistry(): void {
-    // This would be populated from device discovery
-    // For now, add some example devices
-    this.device_registry.set('local_machine', {
-      device_type: 'device',
-      device_id: 'local_machine',
+  private initializeprodiceRegistry(): void {
+    // This would be populated from prodice discovery
+    // For now, add some example prodices
+    this.prodice_registry.set('local_machine', {
+      prodice_type: 'prodice',
+      prodice_id: 'local_machine',
       platform: 'linux',
       connection_type: 'local',
       capabilities: ['execute_commands', 'file_operations', 'network_access'],
@@ -526,29 +526,29 @@ if __name__ == "__main__":
     this.api_endpoints.set('github_api', 'https://api.github.com');
   }
 
-  // Helper methods for device connections and commands
-  private async connectBluetoothDevice(device: DeviceControl): Promise<ExecutionResult> {
+  // Helper methods for prodice connections and commands
+  private async connectBluetoothprodice(prodice: prodiceControl): Promise<ExecutionResult> {
     // Implementation for Bluetooth connection
     return { success: true, output: { connected: true } };
   }
 
-  private async connectWifiDevice(device: DeviceControl): Promise<ExecutionResult> {
+  private async connectWifiprodice(prodice: prodiceControl): Promise<ExecutionResult> {
     // Implementation for WiFi connection
     return { success: true, output: { connected: true } };
   }
 
-  private async connectUsbDevice(device: DeviceControl): Promise<ExecutionResult> {
+  private async connectUsbprodice(prodice: prodiceControl): Promise<ExecutionResult> {
     // Implementation for USB connection
     return { success: true, output: { connected: true } };
   }
 
-  private async connectSerialDevice(device: DeviceControl): Promise<ExecutionResult> {
+  private async connectSerialprodice(prodice: prodiceControl): Promise<ExecutionResult> {
     // Implementation for serial connection
     return { success: true, output: { connected: true } };
   }
 
-  private async sendDeviceCommand(device: DeviceControl, command: string): Promise<any> {
-    // Implementation for sending commands to devices
+  private async sendprodiceCommand(prodice: prodiceControl, command: string): Promise<any> {
+    // Implementation for sending commands to prodices
     return { response: 'command_sent' };
   }
 
@@ -577,15 +577,15 @@ if __name__ == "__main__":
     return Promise.resolve();
   }
 
-  private async disconnectFromDevice(device: DeviceControl): Promise<ExecutionResult> {
+  private async disconnectFromprodice(prodice: prodiceControl): Promise<ExecutionResult> {
     return { success: true, output: { disconnected: true } };
   }
 
-  private async getDeviceStatus(device: DeviceControl): Promise<ExecutionResult> {
-    return { success: true, output: { status: device.status } };
+  private async getprodiceStatus(prodice: prodiceControl): Promise<ExecutionResult> {
+    return { success: true, output: { status: prodice.status } };
   }
 
-  private async updateDeviceFirmware(device: DeviceControl, firmwareUrl: string): Promise<ExecutionResult> {
+  private async updateprodiceFirmware(prodice: prodiceControl, firmwareUrl: string): Promise<ExecutionResult> {
     return { success: true, output: { updated: true } };
   }
 

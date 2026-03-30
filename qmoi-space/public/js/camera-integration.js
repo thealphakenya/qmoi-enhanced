@@ -23,13 +23,13 @@ class CameraIntegrationManager {
     const cameraCapture = document.getElementById("camera-capture");
 
     if (cameraToggle) {
-      cameraToggle.addEventListener("click", () => this.toggleCamera());
+      cameraToggle.adprodentListener("click", () => this.toggleCamera());
     }
     if (cameraStop) {
-      cameraStop.addEventListener("click", () => this.stopCamera());
+      cameraStop.adprodentListener("click", () => this.stopCamera());
     }
     if (cameraCapture) {
-      cameraCapture.addEventListener("click", () => this.captureImage());
+      cameraCapture.adprodentListener("click", () => this.captureImage());
     }
   }
 
@@ -44,7 +44,7 @@ class CameraIntegrationManager {
   async startCamera() {
     try {
       // Request camera permission
-      this.stream = await navigator.mediaDevices.getUserMedia({
+      this.stream = await navigator.mediaprodices.getUserMedia({
         video: {
           width: { ideal: 1280 },
           height: { ideal: 720 },
@@ -213,7 +213,7 @@ class CameraIntegrationManager {
       message =
         "Camera permission denied. Please allow camera access in your browser settings.";
     } else if (error.name === "NotFoundError") {
-      message = "No camera device found on this device.";
+      message = "No camera prodice found on this prodice.";
     } else if (error.name === "NotReadableError") {
       message = "Camera is already in use by another application.";
     }
@@ -225,7 +225,7 @@ class CameraIntegrationManager {
 
 // Initialize on DOM ready
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => {
+  document.adprodentListener("DOMContentLoaded", () => {
     window.cameraIntegrationManager = new CameraIntegrationManager();
   });
 } else {

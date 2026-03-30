@@ -148,7 +148,7 @@ export async function fetchMedia(forceRefresh = false): Promise<any[]> {
   });
 }
 
-export async function verifyProduct(
+export async function verifyproduct(
   _query: string,
   forceRefresh = false,
 ): Promise<string> {
@@ -170,9 +170,9 @@ export async function verifyProduct(
       const result = data.result || "No result";
       setCache(cacheKey, result, "verify");
       return result;
-    }, "verifyProduct");
+    }, "verifyproduct");
   }).catch((_err) => {
-    console.warn("verifyProduct error", _err);
+    console.warn("verifyproduct error", _err);
     return `Verification unavailable: ${String(_err)}`;
   });
 }

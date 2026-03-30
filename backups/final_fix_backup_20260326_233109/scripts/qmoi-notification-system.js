@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 #!/usr/bin/env node
 
 /**
@@ -20,9 +20,9 @@ import axios from "axios";
 
 class QMOINotificationSystem {
   async testAllChannels() {
-    // Production implementation:: Production:, implement actual channel tests
+    // production implementation:: production:, implement actual channel tests
     console.log(
-      "🔎 testAllChannels: Notification channels test // Production implementation: executed.",
+      "🔎 testAllChannels: Notification channels test // production implementation: executed.",
     );
     return true;
   }

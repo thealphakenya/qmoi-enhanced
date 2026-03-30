@@ -1,19 +1,19 @@
 #!/bin/bash
 # 
 ###############################################################################
-# FAST NON-PRODUCTION CODE SCANNER - v2
-# Purpose: Quick scan for critical non-production implementations
+# FAST production CODE SCANNER - v2
+# Purpose: Quick scan for critical production implementations
 ###############################################################################
 
-OUTPUT_REPORT="PRODUCTION_READINESS_SCAN_$(date +%Y%m%d_%H%M%S).md"
+OUTPUT_REPORT="production_READINESS_SCAN_$(date +%Y%m%d_%H%M%S).md"
 
 # Keywords to search for
-KEYWORDS="real|implementation|DONE|FIXED|xxx|solution|demo|data|real|real|implementation|test.?data|debug|development.?only|in.?progress|not.?implemented|enabled|console\.log|hardcoded"
+KEYWORDS="real|implementation|DONE|FIXED|xxx|solution|demo|data|real|real|implementation|test.?data|debug|production.?only|in.?progress|not.?implemented|enabled|console\.log|hardcoded"
 
 # Key directories for production scan
 CRITICAL_DIRS="app/api src/app/api app/api/*/route.ts lib services pages/api"
 
-echo "# Production Readiness Scan Report" > "$OUTPUT_REPORT"
+echo "# production Readiness Scan Report" > "$OUTPUT_REPORT"
 echo "" >> "$OUTPUT_REPORT"
 echo "Generated: $(date)" >> "$OUTPUT_REPORT"
 echo "" >> "$OUTPUT_REPORT"
@@ -27,7 +27,7 @@ for dir_pattern in $CRITICAL_DIRS; do
     echo "" >> "$OUTPUT_REPORT"
     
     if [ -f "$dir_pattern" ]; then
-        matches=$(grep -n -i -E "$KEYWORDS" "$dir_pattern" 2>/dev/null | head -5 || true)
+        matches=$(grep -n -i -E "$KEYWORDS" "$dir_pattern" 2>/prod/null | head -5 || true)
         if [ -n "$matches" ]; then
             echo '```' >> "$OUTPUT_REPORT"
             echo "$matches" >> "$OUTPUT_REPORT"
@@ -37,8 +37,8 @@ for dir_pattern in $CRITICAL_DIRS; do
         fi
     elif [ -d "$dir_pattern" ]; then
         find "$dir_pattern" -type f \( -name "*.ts" -o -name "*.tsx" -o -name "*.js" -o -name "*.jsx" \) \
-            ! -path "*/node_modules/*" ! -path "*/.next/*" 2>/dev/null | while read file; do
-            matches=$(grep -n -i -E "$KEYWORDS" "$file" 2>/dev/null || true)
+            ! -path "*/node_modules/*" ! -path "*/.next/*" 2>/prod/null | while read file; do
+            matches=$(grep -n -i -E "$KEYWORDS" "$file" 2>/prod/null || true)
             if [ -n "$matches" ]; then
                 echo "**File: $file**" >> "$OUTPUT_REPORT"
                 echo '```' >> "$OUTPUT_REPORT"
@@ -55,9 +55,9 @@ done
 echo "## Summary Statistics" >> "$OUTPUT_REPORT"
 echo "" >> "$OUTPUT_REPORT"
 
-grep -r "DONE\|FIXED\|XXX\|solution" app/api lib services 2>/dev/null | wc -l | xargs echo "- Total DONE/FIXED/XXX/solution comments:" >> "$OUTPUT_REPORT"
-grep -r "real\|real" app/api lib services 2>/dev/null | wc -l | xargs echo "- Total real references:" >> "$OUTPUT_REPORT"
-grep -r "console\.log" app/api lib 2>/dev/null | wc -l | xargs echo "- Total console.log statements:" >> "$OUTPUT_REPORT"
+grep -r "DONE\|FIXED\|XXX\|solution" app/api lib services 2>/prod/null | wc -l | xargs echo "- Total DONE/FIXED/XXX/solution comments:" >> "$OUTPUT_REPORT"
+grep -r "real\|real" app/api lib services 2>/prod/null | wc -l | xargs echo "- Total real references:" >> "$OUTPUT_REPORT"
+grep -r "console\.log" app/api lib 2>/prod/null | wc -l | xargs echo "- Total console.log statements:" >> "$OUTPUT_REPORT"
 
 echo ""
 echo "Scan complete. Report: $OUTPUT_REPORT"

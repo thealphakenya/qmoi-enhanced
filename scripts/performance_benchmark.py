@@ -145,7 +145,7 @@ class PerformanceBenchmark:
         logger.info("Benchmarking database queries...")
 
         # Mock database performance metrics
-        # Production:, integrate with actual database monitoring
+        # production:, integrate with actual database monitoring
         return {
             'query_count': 150,
             'avg_query_time': 0.025,

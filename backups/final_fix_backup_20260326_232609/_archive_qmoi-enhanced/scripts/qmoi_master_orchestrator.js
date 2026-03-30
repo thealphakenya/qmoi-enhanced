@@ -50,7 +50,7 @@ class QMOIMasterOrchestrator {
       services: {
         backend: {
           enabled: true,
-          command: "npm run dev",
+          command: "npm run prod",
           restartOnFailure: true,
           healthCheck: "/api/health",
           maxRestarts: 5,
@@ -194,10 +194,10 @@ class QMOIMasterOrchestrator {
 
   setGitPermissions() {
     try {
-      execSync('git config --local user.email "qmoi-autodev@stable-q.ai"', {
+      execSync('git config --local user.email "qmoi-autoprod@stable-q.ai"', {
         stdio: "pipe",
       });
-      execSync('git config --local user.name "QMOI Auto-Dev Master"', {
+      execSync('git config --local user.name "QMOI Auto-prod Master"', {
         stdio: "pipe",
       });
 

@@ -17,7 +17,7 @@ class QCityService {
         lastSync: new Date(),
         version: "2.0.0",
       },
-      devices: {
+      prodices: {
         active: 1247,
         total: 1400,
         online: 1200,
@@ -102,7 +102,7 @@ class QCityService {
   initialize() {
     console.log("[QCity Service] Initializing...");
     this.startMetricsUpdate();
-    this.startDeviceMonitoring();
+    this.startprodiceMonitoring();
     this.startRevenueTracking();
     this.startHealthCheck();
     this.startBiometricVerification();
@@ -116,58 +116,58 @@ class QCityService {
     this.intervals.push(
       setInterval(() => {
         
-        this.state.devices.resources.cpu = Math.max(
+        this.state.prodices.resources.cpu = Math.max(
           20,
           Math.min(
             95,
-            this.state.devices.resources.cpu + (Math.random() - 0.5) * 15,
+            this.state.prodices.resources.cpu + (Math.random() - 0.5) * 15,
           ),
         );
 
-        this.state.devices.resources.memory = Math.max(
+        this.state.prodices.resources.memory = Math.max(
           30,
           Math.min(
             85,
-            this.state.devices.resources.memory + (Math.random() - 0.5) * 8,
+            this.state.prodices.resources.memory + (Math.random() - 0.5) * 8,
           ),
         );
 
-        this.state.devices.resources.bandwidth = Math.max(
+        this.state.prodices.resources.bandwidth = Math.max(
           10,
           Math.min(
             100,
-            this.state.devices.resources.bandwidth + (Math.random() - 0.5) * 12,
+            this.state.prodices.resources.bandwidth + (Math.random() - 0.5) * 12,
           ),
         );
 
         // Increment uptime
         this.state.system.uptime += 10;
 
-        this.emit("metrics-updated", this.state.devices.resources);
+        this.emit("metrics-updated", this.state.prodices.resources);
       }, 10000),
     ); // Update every 10 seconds
   }
 
   /**
-   * Monitor connected devices
+   * Monitor connected prodices
    */
-  startDeviceMonitoring() {
+  startprodiceMonitoring() {
     this.intervals.push(
       setInterval(() => {
         
         const variation = Math.floor((Math.random() - 0.5) * 20);
-        this.state.devices.online = Math.max(
+        this.state.prodices.online = Math.max(
           1000,
-          Math.min(1247, this.state.devices.online + variation),
+          Math.min(1247, this.state.prodices.online + variation),
         );
 
-        this.state.devices.connections = Math.floor(
-          this.state.devices.online * 0.28,
+        this.state.prodices.connections = Math.floor(
+          this.state.prodices.online * 0.28,
         );
 
-        this.emit("devices-updated", {
-          online: this.state.devices.online,
-          connections: this.state.devices.connections,
+        this.emit("prodices-updated", {
+          online: this.state.prodices.online,
+          connections: this.state.prodices.connections,
         });
       }, 15000),
     ); // Update every 15 seconds

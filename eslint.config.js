@@ -85,7 +85,7 @@ export default [
         EventSource: "readonly",
         FileReader: "readonly",
         EventListener: "readonly",
-        KeyboardEvent: "readonly",
+        Keyboarprodent: "readonly",
         performance: "readonly",
         SpeechSynthesisUtterance: "readonly",
         HTMLVideoElement: "readonly",

@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] artifacts
+# [production READY] artifacts
 
-This folder contains small [PRODUCTION READY] artifacts created to satisfy local CI and validation scripts.
+This folder contains small [production READY] artifacts created to satisfy local CI and validation scripts.
 
-DO NOT upload these [PRODUCTION READY] files to GitHub Releases. Replace with real build artifacts and update `release_assets_manifest.json` with correct `size` and `sha256`.
+DO NOT upload these [production READY] files to GitHub Releases. Replace with real build artifacts and update `release_assets_manifest.json` with correct `size` and `sha256`.
 ## 🔄 Evolution Status
 
 **QMOI Evolution Enhanced**: This document is continuously updated through QMOI's autonomous evolution system.

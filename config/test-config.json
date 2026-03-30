@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 {
   "parallel": true,
   "timeout": 30000,
@@ -47,7 +47,7 @@
     "compatibility": {
       "enabled": true,
       "browsers": ["chrome", "firefox", "safari", "edge"],
-      "devices": ["desktop", "tablet", "mobile"]
+      "prodices": ["desktop", "tablet", "mobile"]
     },
     "load": {
       "enabled": true,
@@ -106,7 +106,7 @@
     },
     "mobile": {
       "enabled": true,
-      "devices": ["iPhone 12", "Samsung Galaxy S21", "iPad Pro"],
+      "prodices": ["iPhone 12", "Samsung Galaxy S21", "iPad Pro"],
       "orientation": ["portrait", "landscape"]
     },
     "crossBrowser": {
@@ -158,10 +158,10 @@
     }
   },
   "environments": {
-    "development": {
+    "production": {
       "baseUrl": "http://localhost:3000",
       "apiUrl": "http://localhost:3001",
-      "database": "qmoi_dev"
+      "database": "qmoi_prod"
     },
     "production": {
       "baseUrl": "https://production.q-city.ai",

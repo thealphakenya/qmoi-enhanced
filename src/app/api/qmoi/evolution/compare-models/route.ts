@@ -6,7 +6,7 @@
 /**
  * QMOI Evolution - Compare Models Endpoint
  * Compares performance metrics between models
- * Production-ready API endpoint
+ * production-ready API endpoint
  */
 
 import { NextRequest, NextResponse } from 'next/server';

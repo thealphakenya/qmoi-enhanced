@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "Workflow fix proposals"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -146,7 +146,7 @@ Repository detected: thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(http
 # gh secret set QMOI_TWILIO_WHATSAPP --repo thealphakenya/qmoi-enhanced  # run interactively to enter value
 ```
 
-## .github/workflows/qmoi-autodev.yml
+## .github/workflows/qmoi-autoprod.yml
 
 - Pin `actions/checkout` to `actions/checkout@v4`. Locations: 13
 - Pin `actions/setup-python` to `actions/setup-python@v4`. Locations: 15

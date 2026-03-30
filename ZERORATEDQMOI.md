@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "ZERORATEDQMOI.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -18,7 +18,7 @@ title: "ZERORATEDQMOI.md"
 ## QMOI Zero-Rated Internet System
 
 ### Overview
-QMOI Zero-Rated is a global, always-on internet fallback system that leverages zero-rated (free data) sites and services to ensure QMOI and QCity devices are always connected, regardless of location or network restrictions.
+QMOI Zero-Rated is a global, always-on internet fallback system that leverages zero-rated (free data) sites and services to ensure QMOI and QCity prodices are always connected, regardless of location or network restrictions.
 
 ---
 

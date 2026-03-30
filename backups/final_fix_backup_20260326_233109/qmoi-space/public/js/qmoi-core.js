@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 // --- Autobackup Logic ---
 async function triggerBackup() {
-  // Production implementation:: call backend endpoint for backup (to be implemented)
+  // production implementation:: call backend endpoint for backup (to be implemented)
   // Example: await fetch('/api/qcity/backup', { method: 'POST' });
   return { status: "success", time: new Date().toLocaleString() };
 }
@@ -48,23 +48,23 @@ async function updateAnalyticsSection() {
     status?.metrics?.uptime || "100%";
   document.getElementById("error-rate").textContent =
     status?.metrics?.error_rate || "0%";
-  // Optionally update charts (// Production implementation:bed)
+  // Optionally update charts (// production implementation:bed)
   // User Engagement
   const engagementChart = document.getElementById("engagement-chart");
   if (engagementChart && window.Chart) {
-    // Production implementation or status.analytics.engagement data
-    // (// Production implementation:: chart rendering logic goes here)
+    // production implementation or status.analytics.engagement data
+    // (// production implementation:: chart rendering logic goes here)
   }
   // Revenue Sources
   const revenueSourcesChart = document.getElementById("revenue-sources-chart");
   if (revenueSourcesChart && window.Chart) {
-    // Production implementation or status.analytics.revenue_sources data
-    // (// Production implementation:: chart rendering logic goes here)
+    // production implementation or status.analytics.revenue_sources data
+    // (// production implementation:: chart rendering logic goes here)
   }
 }
 document
   .getElementById("refresh-analytics")
-  ?.addEventListener("click", updateAnalyticsSection);
+  ?.adprodentListener("click", updateAnalyticsSection);
 updateAnalyticsSection();
 // --- Files Section Wiring ---
 async function updateFilesSection() {
@@ -97,19 +97,19 @@ async function updateFilesSection() {
 }
 document
   .getElementById("upload-files")
-  ?.addEventListener("click", updateFilesSection);
+  ?.adprodentListener("click", updateFilesSection);
 document
   .getElementById("create-folder")
-  ?.addEventListener("click", updateFilesSection);
+  ?.adprodentListener("click", updateFilesSection);
 document
   .getElementById("select-all")
-  ?.addEventListener("click", updateFilesSection);
+  ?.adprodentListener("click", updateFilesSection);
 document
   .getElementById("delete-selected")
-  ?.addEventListener("click", updateFilesSection);
+  ?.adprodentListener("click", updateFilesSection);
 document
   .getElementById("download-selected")
-  ?.addEventListener("click", updateFilesSection);
+  ?.adprodentListener("click", updateFilesSection);
 updateFilesSection();
 // --- Revenue Section Wiring ---
 async function updateRevenueSection() {
@@ -127,11 +127,11 @@ async function updateRevenueSection() {
   document.getElementById("total-change").textContent =
     status?.revenue_total_change || "+0.00%";
   // Optionally update chart if data available
-  // (// Production implementation:: chart update logic can be added here)
+  // (// production implementation:: chart update logic can be added here)
 }
 document
   .getElementById("refresh-revenue")
-  ?.addEventListener("click", updateRevenueSection);
+  ?.adprodentListener("click", updateRevenueSection);
 updateRevenueSection();
 // qmoi-core.js: Core logic for QMOI Space UI widgets
 
@@ -202,11 +202,11 @@ async function updateDashboardWidgets() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.adprodentListener("DOMContentLoaded", () => {
   updateDashboardWidgets();
   document
     .getElementById("refresh-dashboard")
-    .addEventListener("click", updateDashboardWidgets);
+    .adprodentListener("click", updateDashboardWidgets);
 
   // --- Gaming Section Wiring ---
   async function updateGamingSection() {
@@ -248,6 +248,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   document
     .getElementById("refresh-games")
-    ?.addEventListener("click", updateGamingSection);
+    ?.adprodentListener("click", updateGamingSection);
   updateGamingSection();
 });

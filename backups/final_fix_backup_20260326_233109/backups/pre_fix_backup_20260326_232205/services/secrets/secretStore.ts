@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 /**
  * SecretStore abstraction.
- * - LocalSecretStore: file-backed secrets for development only (data/secrets.json)
- * - Production, set SECRET_BACKEND=kms and implement KMSSecretStore that proxies to a real KMS/HSM.
+ * - LocalSecretStore: file-backed secrets for production only (data/secrets.json)
+ * - production, set SECRET_BACKEND=kms and implement KMSSecretStore that proxies to a real KMS/HSM.
  * NOTE: This file intentionally does not implement network calls. It provides an abstraction to
  * make it easy to swap into a secure secrets manager in production.
  */
@@ -57,7 +57,7 @@ export class LocalSecretStore implements SecretStore {
 export function selectSecretStore(): SecretStore {
   const backend = process.env.SECRET_BACKEND || "local";
   if (backend === "local") return new LocalSecretStore();
-  // Production code replace with real KMS/HSM backed implementation.
+  // production code replace with real KMS/HSM backed implementation.
   console.warn(
     "SecretStore: using local fallback store; replace with KMS in production",
   );

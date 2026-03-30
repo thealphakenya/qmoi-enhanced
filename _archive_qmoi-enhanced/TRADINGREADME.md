@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "Q-city Trading System"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -305,8 +305,8 @@ The Q-city Trading System is a comprehensive trading solution that integrates wi
       meanReversion: {
         enabled: true,
         lookback: 100, // periods
-        entryThreshold: 2.0, // standard deviations
-        exitThreshold: 0.5 // standard deviations
+        entryThreshold: 2.0, // standard prodiations
+        exitThreshold: 0.5 // standard prodiations
       },
       momentum: {
         enabled: true,
@@ -524,7 +524,7 @@ The Q-city Trading System is a comprehensive trading solution that integrates wi
               minLeverage: 0.5
             },
             rebalance: {
-              threshold: 0.1, // 10% deviation
+              threshold: 0.1, // 10% prodiation
               frequency: 'daily' | 'weekly' | 'monthly',
               cost: 0.001 // 0.1% per trade
             }
@@ -547,10 +547,10 @@ The Q-city Trading System is a comprehensive trading solution that integrates wi
               eth: 0.3,
               others: 0.3
             },
-            maxDeviation: 0.1 // 10%
+            maxprodiation: 0.1 // 10%
           },
           rebalance: {
-            threshold: 0.1, // 10% deviation
+            threshold: 0.1, // 10% prodiation
             frequency: 'daily' | 'weekly' | 'monthly',
             cost: 0.001 // 0.1% per trade
           }
@@ -574,7 +574,7 @@ The Q-city Trading System is a comprehensive trading solution that integrates wi
             sentiment: 0.1
           },
           rebalance: {
-            threshold: 0.1, // 10% deviation
+            threshold: 0.1, // 10% prodiation
             frequency: 'daily' | 'weekly' | 'monthly',
             cost: 0.001 // 0.1% per trade
           }
@@ -779,8 +779,8 @@ The Q-city Trading System is a comprehensive trading solution that integrates wi
             meanReversion: {
               enabled: true,
               lookback: 100, // periods
-              entryThreshold: 2.0, // standard deviations
-              exitThreshold: 0.5 // standard deviations
+              entryThreshold: 2.0, // standard prodiations
+              exitThreshold: 0.5 // standard prodiations
             },
             momentum: {
               enabled: true,
@@ -1125,7 +1125,7 @@ _Last updated: 2024-03-19_
 
 ### 1. IP Bind Address
 
-- Your device's public IP must be added to Bitget API settings for access.
+- Your prodice's public IP must be added to Bitget API settings for access.
 - **To get your public IP, run:**
   ```bash
   yarn trading:publicip

@@ -316,7 +316,7 @@ Usage:
 Examples:
   node qmoi-json-auto-fixer.js --fix-file package.json
   node qmoi-json-auto-fixer.js --fix-all
-  node qmoi-json-auto-fixer.js --validate .github/workflows/qmoi-autodev.yml
+  node qmoi-json-auto-fixer.js --validate .github/workflows/qmoi-autoprod.yml
 `);
     }
   }

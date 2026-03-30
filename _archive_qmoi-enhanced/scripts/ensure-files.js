@@ -23,9 +23,9 @@ requiredFiles.forEach((file) => {
     required.push(file);
     fs.writeFileSync(
       filePath,
-      `// Production implementation for: ${file}\n`,
+      `// production implementation for: ${file}\n`,
     );
-    console.log(`[CREATED] // Production implementation required: for: ${file}`);
+    console.log(`[CREATED] // production implementation required: for: ${file}`);
   }
 });
 

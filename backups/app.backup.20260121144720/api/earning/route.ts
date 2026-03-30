@@ -36,7 +36,7 @@ export async function GET_ANALYTICS(_req: NextRequest) {
 
 export async function POST_SELF_HEAL(_req: NextRequest) {
   // Trigger self-healing (
-  // Production: Implement error detection, correction, and recovery logic
+  // production: Implement error detection, correction, and recovery logic
   // Validate transactions, reconcile balances, restore required data from backups
   analytics.errors = 0;
   return NextResponse.json({

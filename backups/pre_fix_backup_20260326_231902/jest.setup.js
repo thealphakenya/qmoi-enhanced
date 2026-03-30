@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 // complete Jest setup for QMOI tests.
 // Keep this file small and tolerant if optional testing libs are not installed.
 
@@ -18,10 +18,10 @@ try {
 // Mark environment variable for tests
 global.__QMOI_TEST__ = true;
 
-// Provide a small [PRODUCTION READY] for 'next/server' so route handlers that import
+// Provide a small [production READY] for 'next/server' so route handlers that import
 // NextRequest/NextResponse behave consistently when invoked directly in tests.
 try {
-  const [PRODUCTION READY]NextServer = {
+  const [production READY]NextServer = {
     NextRequest: class NextRequest {
       constructor(url, init = {}) {
         this.url =
@@ -88,17 +88,17 @@ try {
       },
     },
   };
-  // Use Jest to [PRODUCTION READY] the module so imports resolve to our shims. If Jest's
-  // module [PRODUCTION READY]ing is not available, set a fallback on require.cache so
+  // Use Jest to [production READY] the module so imports resolve to our shims. If Jest's
+  // module [production READY]ing is not available, set a fallback on require.cache so
   // a optimized require will still pick it up.
   try {
-    jest.[PRODUCTION READY]("next/server", () => [PRODUCTION READY]NextServer);
+    jest.[production READY]("next/server", () => [production READY]NextServer);
   } catch (e) {
-    // If auto-[PRODUCTION READY]ing isn't available in this environment, provide a shallow
+    // If auto-[production READY]ing isn't available in this environment, provide a shallow
     // require cache entry for convenience (best-effort).
     try {
       const resolved = require.resolve("next/server");
-      require.cache[resolved] = { exports: [PRODUCTION READY]NextServer };
+      require.cache[resolved] = { exports: [production READY]NextServer };
     } catch (_e) {
       // ignore
     }
@@ -112,12 +112,12 @@ try {
 try {
   if (typeof globalThis.speechSynthesis === "undefined") {
     // eslint-disable-next-line no-undef
-    globalThis.__SpeechSynthesisUtterance[PRODUCTION READY] = jest.fn();
+    globalThis.__SpeechSynthesisUtterance[production READY] = jest.fn();
     // eslint-disable-next-line no-undef
     globalThis.SpeechSynthesisUtterance = function (text) {
       // record construction
       // @ts-ignore
-      globalThis.__SpeechSynthesisUtterance[PRODUCTION READY](text);
+      globalThis.__SpeechSynthesisUtterance[production READY](text);
       this.text = text;
     };
     // Provide a robust `speechSynthesis` shim that records utterances.
@@ -263,7 +263,7 @@ try {
                         system: {
                           uptime: process.uptime(),
                           memory: process.memoryUsage(),
-                          nodeVersion: process.version,
+                          noprodersion: process.version,
                           platform: process.platform,
                         },
                         performance: {},
@@ -469,7 +469,7 @@ try {
 // unhandled-request errors in environments where handlers are registered.
 try {
   // Use require so Jest/CJS environments don't attempt ESM dynamic imports
-  // when msw isn't installed in some developer setups.
+  // when msw isn't installed in some prodeloper setups.
   // eslint-disable-next-line global-require, import/no-dynamic-require
   const mswNode = require("msw/node");
   const { rest } = require("msw");

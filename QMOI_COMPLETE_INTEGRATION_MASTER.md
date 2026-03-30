@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ================================================================================
 QMOI ENHANCED - COMPLETE SYSTEM INTEGRATION & VALIDATION MASTER
 Full System Architecture, Validation Framework, and Cross-Platform Integration
@@ -31,7 +31,7 @@ QMOI Complete Ecosystem:
 │ │ │
 ▼ ▼ ▼
 ┌──────────────────┐ ┌──────────────────┐ ┌──────────────────┐
-│ RELEASE SYSTEM │ │ VALIDATION │ │ AUTO-DEVELOPMENT│
+│ RELEASE SYSTEM │ │ VALIDATION │ │ AUTO-production│
 │ │ │ FRAMEWORK │ │ SYSTEM │
 │ • 10-stage │ │ │ │ │
 │ pipeline │ │ • 7-layer │ │ • Auto-testing │
@@ -82,7 +82,7 @@ QMOI Complete Ecosystem:
 │ • Payment Engine │ │ • CDN │
 │ • Deployment Engine │ │ • Monitoring │
 │ • Health Check Engine │ │ • Logging │
-│ • Auto-Dev Engine │ │ • Backup & Recovery │
+│ • Auto-prod Engine │ │ • Backup & Recovery │
 └──────────────────────────┘ └──────────────────────────┘
 │ │
 └─────────────────┬───────────────────────┘
@@ -94,7 +94,7 @@ QMOI Complete Ecosystem:
 │ • Users │
 │ • Projects │
 │ • Wallets │
-│ • Devices │
+│ • prodices │
 │ • Settings │
 │ • Audit │
 │ • Analytics│
@@ -229,7 +229,7 @@ LAYER 7: POST-DEPLOYMENT VALIDATION
 
 Release Pipeline (10 Stages):
 
-STAGE 1: DEVELOPMENT (Feature Branch)
+STAGE 1: production (Feature Branch)
 ├─ Validation: Layers 1-2 (Pre-commit + CI/CD)
 ├─ Continuous Integration: Every push
 ├─ Feedback Loop: < 30 minutes
@@ -238,7 +238,7 @@ STAGE 1: DEVELOPMENT (Feature Branch)
 STAGE 2: production (Integration Branch)
 ├─ Validation: Layer 2 (Comprehensive CI/CD)
 ├─ Integration Testing: Full suite
-├─ Performance Testing: Load [PRODUCTION READY]
+├─ Performance Testing: Load [production READY]
 ├─ Security Testing: Penetration test
 └─ Success Criteria: 100% pass rate
 
@@ -315,9 +315,9 @@ STAGE 10: POST-DEPLOYMENT MONITORING
 ├─ Automatic Rollback: If thresholds exceeded
 └─ Success Report: Generated
 
-==== PART 4: AUTODEV INTEGRATION WITH RELEASE SYSTEM ====
+==== PART 4: AUTOprod INTEGRATION WITH RELEASE SYSTEM ====
 
-Auto-Development Workflow:
+Auto-production Workflow:
 
 1. CONTINUOUS CODE ANALYSIS
    ├─ Trigger: After each deployment
@@ -415,10 +415,10 @@ QCity Platform APIs:
 └─ Validation: All 7 layers applied
 
 Mobile Platform APIs:
-├─ Device Registration: POST /devices/register
+├─ prodice Registration: POST /prodices/register
 ├─ Sync: GET/POST /sync/queue
 ├─ Notifications: GET/POST /notifications
-├─ Webhooks: Device events
+├─ Webhooks: prodice events
 ├─ Integration: Sync engines (iOS/Android)
 └─ Validation: All 7 layers + offline validation
 
@@ -438,10 +438,10 @@ Desktop Platform APIs:
 
 SmartTV Platform APIs:
 ├─ Content: Streaming endpoints
-├─ Devices: TV registration
+├─ prodices: TV registration
 ├─ Remote Control: Input handling
 ├─ Integration: WebOS/Android TV
-└─ Validation: All 7 layers + device verification
+└─ Validation: All 7 layers + prodice verification
 
 Bot Ecosystem APIs:
 ├─ WhatsApp: Message send/receive
@@ -517,11 +517,11 @@ Internal Hooks (QMOI Event System):
    qmoi.on('release:created')
    qmoi.on('release:published')
 
-5. AUTO-DEV HOOKS
-   qmoi.on('autodev:analysis_complete')
-   qmoi.on('autodev:feature_generated')
-   qmoi.on('autodev:testing_complete')
-   qmoi.on('autodev:pr_created')
+5. AUTO-prod HOOKS
+   qmoi.on('autoprod:analysis_complete')
+   qmoi.on('autoprod:feature_generated')
+   qmoi.on('autoprod:testing_complete')
+   qmoi.on('autoprod:pr_created')
 
 ==== PART 7: CROSS-PLATFORM VALIDATION MASTER FRAMEWORK ====
 
@@ -568,7 +568,7 @@ STAGE 2: AUTHENTICATION & AUTHORIZATION (Tier 2)
 │ └─ Rate limits not exceeded
 └─ Context Verification
 ├─ Request IP whitelisted (if applicable)
-├─ Device recognized
+├─ prodice recognized
 └─ Geographic location reasonable
 
 STAGE 3: BUSINESS LOGIC VALIDATION (Tier 3)
@@ -699,7 +699,7 @@ QCity Community:
 ✓ Content meets policies
 
 Mobile Apps:
-✓ Device ID verified
+✓ prodice ID verified
 ✓ App signature valid
 ✓ Offline data consistent
 ✓ Sync conflict resolved
@@ -717,7 +717,7 @@ Desktop App:
 ✓ File system valid
 
 SmartTV:
-✓ Device authenticated
+✓ prodice authenticated
 ✓ Resolution supported
 ✓ Codec available
 ✓ Storage available

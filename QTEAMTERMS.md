@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QTEAM TERMS AND REGULATIONS"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -21,17 +21,17 @@ Welcome to Qcity and the QMOI Application Suite ("the Application"). Please read
 ## 1. User Agreement
 
 - By installing or using the Application, you agree to abide by these terms and all applicable laws and regulations.
-- You consent to the collection and use of device permissions necessary for the Application’s operation.
+- You consent to the collection and use of prodice permissions necessary for the Application’s operation.
 
 ## 2. Permissions
 
-- The Application requires access to various device features (network, storage, notifications, etc.) to function optimally.
+- The Application requires access to various prodice features (network, storage, notifications, etc.) to function optimally.
 - You agree to grant all requested permissions during installation and use.
 
 ## 3. Security & Privacy
 
 - Your data is handled securely and is never shared without your consent.
-- API keys and sensitive information are stored securely on your device.
+- API keys and sensitive information are stored securely on your prodice.
 
 ## 4. Financial Integrations
 

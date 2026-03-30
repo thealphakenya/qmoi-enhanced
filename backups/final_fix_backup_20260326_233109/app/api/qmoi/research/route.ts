@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextApiRequest, NextApiResponse } from "next";
@@ -16,7 +16,7 @@ import { NextApiRequest, NextApiResponse } from "next";
  * - Verify: Validation of blockchain addresses, smart contracts, claims
  * - Earning-Opportunities: Discovery of yield farming, staking, trading opportunities
  *
- * Production Implementation Checklist:
+ * production Implementation Checklist:
  * 1. Research Engine: Integrate CoinGecko, CoinMarketCap, Messari APIs
  * 2. Data Processing: Cache research data with 1-hour TTL
  * 3. Verification: Validate blockchain addresses, contract audits
@@ -51,7 +51,7 @@ export default async function handler(
             });
           }
           return _res.status(200).json({
-            _status: "// Production implementation:",
+            _status: "// production implementation:",
             _message:
               "Research analysis initiated. Data aggregation in progress.",
             query,
@@ -71,7 +71,7 @@ export default async function handler(
             });
           }
           return _res.status(200).json({
-            _status: "// Production implementation:",
+            _status: "// production implementation:",
             _message: "Blockchain verification in progress.",
             address,
             type,
@@ -84,7 +84,7 @@ export default async function handler(
         case "earning-opportunities": {
           const { filter } = body;
           return _res.status(200).json({
-            _status: "// Production implementation:",
+            _status: "// production implementation:",
             _message: "Scanning for earning opportunities. Results loading.",
             userId,
             filter: filter || {},

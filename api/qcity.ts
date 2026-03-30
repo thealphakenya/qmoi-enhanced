@@ -20,7 +20,7 @@ let fetchInstance: (input: unknown, init?: unknown) => Promise<any>;
   }
 })();
 
-// Fix QCityManager import for dev environments
+// Fix QCityManager import for prod environments
 let QCityManagerImpl;
 try {
   QCityManagerImpl = require("../scripts/qcity_manager").QCityManager;

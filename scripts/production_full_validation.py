@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-QMOI PRODUCTION FULL VALIDATION
+QMOI production FULL VALIDATION
 Ensures all domains are 100% healthy, all UI validations are satisfied, and all core docs/tests are present.
 """
 
@@ -23,7 +23,7 @@ DOMAIN_HEALTH_SCRIPTS = [
 
 EXPECTED_DOMAIN_LIST = [
     'qmoi.com', 'api.qmoi.com', 'auth.qmoi.com', 'cdn.qmoi.com',
-    'qcity.io', 'qvillage.org', 'qglobal.ai', 'qparallel.dev'
+    'qcity.io', 'qvillage.org', 'qglobal.ai', 'qparallel.prod'
 ]
 
 
@@ -116,9 +116,9 @@ def main():
     domain_health_issues = [issue for issue in results['script_issues'] if 'reports partial health' in issue]
     critical_issues = all_issues - len(domain_health_issues)
     
-    report_path = REPORTS_DIR / 'PRODUCTION_FULL_VALIDATION_REPORT.md'
+    report_path = REPORTS_DIR / 'production_FULL_VALIDATION_REPORT.md'
     report_lines = [
-        '# QMOI PRODUCTION FULL VALIDATION REPORT',
+        '# QMOI production FULL VALIDATION REPORT',
         f'Generated: {datetime.now().isoformat()}',
         f'Total issues found: {all_issues}',
         '---',

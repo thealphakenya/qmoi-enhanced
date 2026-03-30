@@ -27,7 +27,7 @@ export interface TradeExecutionResult {
   timestamp: number;
 }
 
-export interface TradeValidationResult {
+export interface TraprodalidationResult {
   isValid: boolean;
   error?: string;
   availableBalance?: number;

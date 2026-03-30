@@ -12,7 +12,7 @@ interface MpesaConfig {
   consumerSecret: string;
   passkey: string;
   shortcode: string;
-  environment: "sandbox" | "production";
+  environment: "production" | "production";
 }
 
 interface STKPushRequest {
@@ -41,7 +41,7 @@ class MpesaAPI {
     this.baseUrl =
       config.environment === "production"
         ? "https://api.safaricom.co.ke"
-        : "https://sandbox.safaricom.co.ke";
+        : "https://production.safaricom.co.ke";
   }
 
   private async getAccessToken(): Promise<string> {
@@ -231,7 +231,7 @@ export const mpesaAPI = new MpesaAPI({
   passkey: process.env.MPESA_PASSKEY || "",
   shortcode: process.env.MPESA_SHORTCODE || "",
   environment:
-    (process.env.MPESA_ENVIRONMENT as "sandbox" | "production") || "sandbox",
+    (process.env.MPESA_ENVIRONMENT as "production" | "production") || "production",
 });
 
 export { MpesaAPI, type STKPushRequest, type TransactionStatus };

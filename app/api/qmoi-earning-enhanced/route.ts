@@ -11,7 +11,7 @@ import type { NextRequest } from "next/server";
 /**
  * Earning Enhanced API
  *
- * Production Implementation Note:
+ * production Implementation Note:
  * This endpoint aggregates earning data from multiple sources including:
  * - Trading profits/losses (from Bitget, Kraken, Coinbase)
  * - Transaction fees and rebates

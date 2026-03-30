@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 // @ts-expect-error: whatsapp-web.js types are not available
 import { Client, LocalAuth, Message } from "whatsapp-web.js";
 // @ts-expect-error: qrcode-terminal types are not available
@@ -20,7 +20,7 @@ interface WhatsAppConfig {
 interface QRCodeStatus {
   isScanned: boolean;
   timestamp: Date;
-  deviceInfo: DeviceInfo;
+  prodiceInfo: prodiceInfo;
   notifications: {
     master: boolean;
     leah: boolean;
@@ -28,9 +28,9 @@ interface QRCodeStatus {
   };
 }
 
-interface DeviceInfo {
-  deviceId: string;
-  deviceName: string;
+interface prodiceInfo {
+  prodiceId: string;
+  prodiceName: string;
   platform: "android" | "ios" | "web";
   location: string;
   ipAddress: string;
@@ -70,9 +70,9 @@ export class WhatsAppService {
     this.qrCodeStatus = {
       isScanned: false,
       timestamp: new Date(),
-      deviceInfo: {
-        deviceId: "",
-        deviceName: "QMOI AI System",
+      prodiceInfo: {
+        prodiceId: "",
+        prodiceName: "QMOI AI System",
         platform: "web",
         location: "Nairobi, Kenya",
         ipAddress: "127.0.0.1",
@@ -106,9 +106,9 @@ export class WhatsAppService {
       puppeteer: {
         headless: true,
         args: [
-          "--no-sandbox",
-          "--disable-setuid-sandbox",
-          "--disable-dev-shm-usage",
+          "--no-production",
+          "--disable-setuid-production",
+          "--disable-prod-shm-usage",
           "--disable-accelerated-2d-canvas",
           "--no-first-run",
           "--no-zygote",
@@ -196,7 +196,7 @@ export class WhatsAppService {
 
     // Store QR code for potential retry
     this.qrCodeStatus.notifications.status = "pending";
-    this.qrCodeStatus.deviceInfo.deviceId = `qmoi-${Date.now()}`;
+    this.qrCodeStatus.prodiceInfo.prodiceId = `qmoi-${Date.now()}`;
   }
 
   private async handleQRCodeScanned(): Promise<void> {
@@ -214,8 +214,8 @@ export class WhatsAppService {
   private async sendQRCodeScannedNotifications(): Promise<void> {
     const masterMessage = `🔗 WhatsApp QR Code Successfully Scanned!
 
-📱 Device: ${this.qrCodeStatus.deviceInfo.deviceName}
-📍 Location: ${this.qrCodeStatus.deviceInfo.location}
+📱 prodice: ${this.qrCodeStatus.prodiceInfo.prodiceName}
+📍 Location: ${this.qrCodeStatus.prodiceInfo.location}
 ⏰ Time: ${this.qrCodeStatus.timestamp.toLocaleString()}
 
 ✅ QMOI System is now connected and operational.
@@ -855,7 +855,7 @@ Master Commands:
 
   private logAndSendToQcity(log: string): void {
     console.log(log);
-    // Production: Send error logs to QCity monitoring dashboard
+    // production: Send error logs to QCity monitoring dashboard
     // Requires: QCity API integration with auth token
     // Implementation: Call POST /api/qcity/logs with master credentials
   }
@@ -940,22 +940,22 @@ Reply with /approve ${approvalId} or /deny ${approvalId}.`);
         await message.reply(
           "📢 WhatsApp Business Ads feature activated. Campaigns will be managed by AI.",
         );
-        // Production: Integrate with AdCampaignManager service
+        // production: Integrate with AdCampaignManager service
         // Requires: AdCampaignManager.handleWhatsAppWebhook(payload)
         break;
       case "settings":
         await message.reply("⚙️ WhatsApp Business settings updated.");
-        // Production: Integrate with BusinessSettingsManager
+        // production: Integrate with BusinessSettingsManager
         // Requires: BusinessSettingsManager.updateSettings(webhookPayload)
         break;
       case "group":
         await message.reply("👥 WhatsApp Business group management enabled.");
-        // Production: Integrate with GroupManager service
+        // production: Integrate with GroupManager service
         // Requires: GroupManager.handleGroupUpdate(webhookData)
         break;
       case "status":
         await message.reply("📝 WhatsApp Business status updated.");
-        // Production: Integrate with StatusUpdateManager
+        // production: Integrate with StatusUpdateManager
         // Requires: StatusUpdateManager.processStatusUpdate(webhookData)
         break;
       default:

@@ -111,7 +111,7 @@ def fetch_daily_papers():
         {
             "title": "Advances in Large Language Models",
             "authors": ["Research Team A"],
-            "summary": "Latest developments in LLM technology",
+            "summary": "Latest productions in LLM technology",
             "date": "2024-01-15"
         },
         {
@@ -167,7 +167,7 @@ def test_paid_features_simulation():
     # Test unlimited model creation simulation
     models_created = 0
     for i in range(10):  # Test creating multiple models
-        # Production: implementation, this would create actual models
+        # production: implementation, this would create actual models
         models_created += 1
     assert models_created == 10
 

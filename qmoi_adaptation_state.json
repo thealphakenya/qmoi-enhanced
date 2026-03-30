@@ -1,0 +1,37 @@
+[
+  {
+    "timestamp": "2026-03-30T22:33:35.818606",
+    "domain": "api.qmoi.com",
+    "issue": "Connection check failed: 35",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-30T22:33:35.820363",
+    "domain": "qcity.io",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-30T22:33:35.821533",
+    "domain": "qvillage.org",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-30T22:33:35.822700",
+    "domain": "qglobal.ai",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-30T22:33:35.825889",
+    "domain": "qparallel.prod",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
+  }
+]

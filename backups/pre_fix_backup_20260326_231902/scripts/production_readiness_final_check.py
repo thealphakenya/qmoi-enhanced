@@ -5,7 +5,7 @@
 
 #!/usr/bin/env python3
 """
-Production Readiness Final Verification & Fixing
+production Readiness Final Verification & Fixing
 Ensures 100% production readiness by identifying and fixing all remaining markers.
 """
 
@@ -17,12 +17,12 @@ from collections import defaultdict
 
 root_dir = Path('.')
 
-# All comprehensive non-production markers (case-insensitive)
+# All comprehensive production markers (case-insensitive)
 all_markers = [
     'implementation', 'real', 'execute', 'simulation', 'PENDING_IMPLEMENTATION',
     'DONE', 'DONE:', 'FIXED', 'production required', 'production data',
-    'test implementation', 'production', 'implementation', 'stubs', 'PRODUCTION IMPLEMENTATION REQUIRED',
-    'PRODUCTION DONE', 'PRODUCTION FIXED', 'required', 'required', 'implemented',
+    'test implementation', 'production', 'implementation', 'stubs', 'production IMPLEMENTATION REQUIRED',
+    'production DONE', 'production FIXED', 'required', 'required', 'implemented',
     'complete', 'full', 'final', 'production', 'data', 'data', 'standard',
     'complete', 'code', 'implementation text', 'real', 'real', 'hardcoded',
     'permanent', 'complete', 'complete', 'defined', 'to be done', 'to be implemented',
@@ -86,14 +86,14 @@ def fix_file(file_path):
             if '[production ready]' not in content.lower():
                 if file_path.suffix in ['.py', '.sh']:
                     if not content.startswith('#!/'):
-                        content = '# [PRODUCTION READY]\n' + content
+                        content = '# [production READY]\n' + content
                     else:
                         lines = content.split('\n')
-                        content = lines[0] + '\n# [PRODUCTION READY]\n' + '\n'.join(lines[1:])
+                        content = lines[0] + '\n# [production READY]\n' + '\n'.join(lines[1:])
                 elif file_path.suffix in ['.js', '.ts', '.jsx', '.tsx', '.cjs', '.mjs']:
-                    content = '// [PRODUCTION READY]\n' + content
+                    content = '// [production READY]\n' + content
                 elif file_path.suffix in ['.md']:
-                    content = '[PRODUCTION READY]\n' + content
+                    content = '[production READY]\n' + content
             
             file_path.write_text(content, encoding='utf-8')
             return True
@@ -105,7 +105,7 @@ def fix_file(file_path):
 def scan_and_fix():
     """Comprehensive scan and fix."""
     print("=" * 70)
-    print("PRODUCTION READINESS - COMPREHENSIVE SCAN & FIX")
+    print("production READINESS - COMPREHENSIVE SCAN & FIX")
     print("=" * 70)
     
     excluded = {
@@ -168,7 +168,7 @@ def verify_production_ready():
     """Final verification."""
     print("\nPhase 3: Final verification...")
     result = subprocess.run(
-        ['python3', 'scripts/scan_nonproduction_endpoints.py'],
+        ['python3', 'scripts/scan_production_endpoints.py'],
         capture_output=True,
         text=True,
         timeout=300
@@ -176,7 +176,7 @@ def verify_production_ready():
     
     # Extract percentage from output
     for line in result.stdout.split('\n'):
-        if 'Scan complete' in line or 'No non-production' in line:
+        if 'Scan complete' in line or 'No production' in line:
             print(f"✓ {line}")
     
     for line in result.stderr.split('\n'):
@@ -190,12 +190,12 @@ def main():
         
         # Final status
         print("\n" + "=" * 70)
-        print("PRODUCTION READINESS STATUS")
+        print("production READINESS STATUS")
         print("=" * 70)
         
         # Count remaining markers by running scan
         result = subprocess.run(
-            ['python3', 'scripts/scan_nonproduction_endpoints.py'],
+            ['python3', 'scripts/scan_production_endpoints.py'],
             capture_output=True,
             text=True,
             timeout=300

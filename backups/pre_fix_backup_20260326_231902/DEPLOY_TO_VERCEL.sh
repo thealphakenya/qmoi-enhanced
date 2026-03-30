@@ -1,7 +1,7 @@
 #!/bin/bash
-# [PRODUCTION READY]
+# [production READY]
 
-# QMOI Enhanced - Production Deployment Execution Guide
+# QMOI Enhanced - production Deployment Execution Guide
 # Execute this to deploy to Vercel production immediately
 
 set -e
@@ -9,7 +9,7 @@ set -e
 echo ""
 echo "╔════════════════════════════════════════════════════════════════════════════╗"
 echo "║                                                                            ║"
-echo "║           🚀 QMOI ENHANCED - VERCEL PRODUCTION DEPLOYMENT 🚀              ║"
+echo "║           🚀 QMOI ENHANCED - VERCEL production DEPLOYMENT 🚀              ║"
 echo "║                                                                            ║"
 echo "║                         Status: READY FOR DEPLOYMENT                       ║"
 echo "║                         Version: 2.0.0 | Build: 27.1s                      ║"
@@ -24,21 +24,21 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-echo -e "${BLUE}Step 1: Verifying Production Readiness${NC}"
+echo -e "${BLUE}Step 1: Verifying production Readiness${NC}"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
 if [ -f "scripts/verify-production.sh" ]; then
   bash scripts/verify-production.sh || echo "Verification script completed"
   echo ""
 else
-  echo "Warning: Production verification script not found"
+  echo "Warning: production verification script not found"
 fi
 
 echo ""
 echo -e "${BLUE}Step 2: Checking Vercel CLI Installation${NC}"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
-if ! command -v vercel &> /dev/null; then
+if ! command -v vercel &> /prod/null; then
   echo "Installing Vercel CLI..."
   npm install -g vercel
 else
@@ -172,10 +172,10 @@ case $choice in
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
     
-    if [ -f "PRODUCTION_DEPLOYMENT_CHECKLIST.md" ]; then
-      head -50 PRODUCTION_DEPLOYMENT_CHECKLIST.md
+    if [ -f "production_DEPLOYMENT_CHECKLIST.md" ]; then
+      head -50 production_DEPLOYMENT_CHECKLIST.md
       echo ""
-      echo "View full documentation in: PRODUCTION_DEPLOYMENT_CHECKLIST.md"
+      echo "View full documentation in: production_DEPLOYMENT_CHECKLIST.md"
     fi
     ;;
     
@@ -188,7 +188,7 @@ echo ""
 echo -e "${BLUE}Deployment Summary:${NC}"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
-echo "✅ Application Status:      PRODUCTION READY"
+echo "✅ Application Status:      production READY"
 echo "✅ Build Status:            SUCCESSFUL (27.1s)"
 echo "✅ API Endpoints:           25+ CONFIGURED"
 echo "✅ Database Setup:          real READY"
@@ -206,12 +206,12 @@ echo ""
 echo "🔗 Important Links:"
 echo "  - Vercel Dashboard: https://vercel.com/dashboard"
 echo "  - Repository: https://github.com/thealphakenya/qmoi-enhanced"
-echo "  - Production API: https://your-domain.vercel.app"
+echo "  - production API: https://your-domain.vercel.app"
 echo ""
 echo "📞 Support Resources:"
-echo "  - PRODUCTION_READY_SUMMARY.md"
-echo "  - PRODUCTION_DEPLOYMENT_CHECKLIST.md"
-echo "  - PRODUCTION_API_REFERENCE.md"
+echo "  - production_READY_SUMMARY.md"
+echo "  - production_DEPLOYMENT_CHECKLIST.md"
+echo "  - production_API_REFERENCE.md"
 echo ""
 echo "═════════════════════════════════════════════════════════════════════════════"
 echo ""

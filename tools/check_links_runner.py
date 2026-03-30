@@ -7,7 +7,7 @@
 """
 A clean runner for link checking (stdlib only).
 This file is a safe alternative to `tools/check_links.py` if that file is corrupted.
-Produces the same outputs under `tools/`.
+produces the same outputs under `tools/`.
 """
 import os
 import re

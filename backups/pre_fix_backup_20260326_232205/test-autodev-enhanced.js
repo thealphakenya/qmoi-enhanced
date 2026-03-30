@@ -7,8 +7,8 @@
 #!/usr/bin/env node
 
 /**
- * QMOI Enhanced Autodev Capabilities Test
- * Tests the new master instruction handling, UI development, and autodev features
+ * QMOI Enhanced Autoprod Capabilities Test
+ * Tests the new master instruction handling, UI production, and autoprod features
  */
 
 import https from "https";
@@ -55,13 +55,13 @@ async function makeRequest(endpoint, data) {
   });
 }
 
-async function testAutodevCapabilities() {
-  console.log("🧪 Testing QMOI Enhanced Autodev Capabilities\n");
+async function testAutoprodCapabilities() {
+  console.log("🧪 Testing QMOI Enhanced Autoprod Capabilities\n");
 
   const tests = [
     {
       name: "Master Instruction Handling",
-      endpoint: "/api/qmoi/autodev",
+      endpoint: "/api/qmoi/autoprod",
       data: {
         action: "master_instruction",
         instruction:
@@ -69,32 +69,32 @@ async function testAutodevCapabilities() {
       },
     },
     {
-      name: "UI Development",
-      endpoint: "/api/qmoi/autodev",
+      name: "UI production",
+      endpoint: "/api/qmoi/autoprod",
       data: {
-        action: "ui_development",
+        action: "ui_production",
         spec: "modern login form with biometric authentication",
       },
     },
     {
-      name: "Autodev Task",
-      endpoint: "/api/qmoi/autodev",
+      name: "Autoprod Task",
+      endpoint: "/api/qmoi/autoprod",
       data: {
-        action: "autodev_task",
+        action: "autoprod_task",
         task: "implement real-time notification system",
       },
     },
     {
       name: "Research",
-      endpoint: "/api/qmoi/autodev",
+      endpoint: "/api/qmoi/autoprod",
       data: {
         action: "research",
-        topic: "latest trends in AI-powered UI development",
+        topic: "latest trends in AI-powered UI production",
       },
     },
     {
       name: "Evolution",
-      endpoint: "/api/qmoi/autodev",
+      endpoint: "/api/qmoi/autoprod",
       data: {
         action: "evolution",
         aspect: "natural language processing capabilities",
@@ -125,7 +125,7 @@ async function testAutodevCapabilities() {
     }
   }
 
-  console.log("\n🎉 Autodev capabilities test completed!");
+  console.log("\n🎉 Autoprod capabilities test completed!");
 }
 
 async function testAIServiceDirectly() {
@@ -134,7 +134,7 @@ async function testAIServiceDirectly() {
   const aiTests = [
     "master instruction create a trading dashboard component",
     "create ui modern navigation bar with user profile",
-    "autodev implement user authentication system",
+    "autoprod implement user authentication system",
     "research quantum computing applications",
     "evolve my conversation abilities",
   ];
@@ -158,19 +158,19 @@ async function testAIServiceDirectly() {
 // Run tests
 async function runTests() {
   try {
-    console.log("🚀 Starting QMOI Enhanced Autodev Test Suite\n");
+    console.log("🚀 Starting QMOI Enhanced Autoprod Test Suite\n");
 
-    // Test autodev API endpoints
-    await testAutodevCapabilities();
+    // Test autoprod API endpoints
+    await testAutoprodCapabilities();
 
     // Test AI service commands
     await testAIServiceDirectly();
 
     console.log("\n✨ All tests completed successfully!");
-    console.log("QMOI now has comprehensive autodev capabilities including:");
-    console.log("• Master instruction handling for development tasks");
-    console.log("• UI development and component generation");
-    console.log("• Autonomous development task execution");
+    console.log("QMOI now has comprehensive autoprod capabilities including:");
+    console.log("• Master instruction handling for production tasks");
+    console.log("• UI production and component generation");
+    console.log("• Autonomous production task execution");
     console.log("• Intelligent research capabilities");
     console.log("• Self-evolution and improvement features");
   } catch (error) {

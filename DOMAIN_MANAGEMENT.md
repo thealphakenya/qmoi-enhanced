@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI Domain Management Service
 
 ## Overview
@@ -265,7 +265,7 @@ process.env.DOMAIN_DEBUG = "true";
 - **AI Domain Valuation**: Machine learning domain worth assessment
 - **Predictive Renewal**: ML-based renewal prediction
 - **Blockchain Domains**: Decentralized domain registration
-- **IoT Domain Management**: Device-specific domain handling
+- **IoT Domain Management**: prodice-specific domain handling
 - **Multi-Registry Support**: Support for multiple domain registrars
 - **Automated Auctions**: Domain auction participation
 ## 🔄 Evolution Status

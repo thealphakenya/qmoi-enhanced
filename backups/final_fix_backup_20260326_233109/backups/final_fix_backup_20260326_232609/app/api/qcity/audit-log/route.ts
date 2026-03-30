@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextApiRequest, NextApiResponse } from "next";
@@ -31,7 +31,7 @@ export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
     offset = 0,
     action,
     user,
-    deviceId,
+    prodiceId,
     status,
   } = _req.query;
   if (!fs.existsSync(AUDIT_LOG)) return _res.status(200).json({ logs: [] });
@@ -39,7 +39,7 @@ export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
   let logs = lines.map(parseLogLine).filter(Boolean);
   if (action) logs = logs.filter((l) => l.action === action);
   if (user) logs = logs.filter((l) => l.user === user);
-  if (deviceId) logs = logs.filter((l) => l.deviceId === deviceId);
+  if (prodiceId) logs = logs.filter((l) => l.prodiceId === prodiceId);
   if (status) logs = logs.filter((l) => l.status === status);
   const paged = logs.slice(Number(offset), Number(offset) + Number(limit));
   if (format === "csv") {

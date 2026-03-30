@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { POST } from "@/src/app/api/qmoi/autodev/research/route";
+import { POST } from "@/src/app/api/qmoi/autoprod/research/route";
 
 // Mock roleAuth verifyToken to simulate master user checking
 jest.mock("@/app/api/middleware/roleAuth", () => ({
@@ -15,7 +15,7 @@ jest.mock("@/app/api/middleware/roleAuth", () => ({
   }),
 }));
 
-describe("/api/qmoi/autodev/research", () => {
+describe("/api/qmoi/autoprod/research", () => {
   let originalFetch: typeof fetch;
 
   beforeAll(() => {
@@ -31,7 +31,7 @@ describe("/api/qmoi/autodev/research", () => {
   });
 
   it("returns 401 when Authorization missing", async () => {
-    const request = new Request("http://test/api/qmoi/autodev/research", {
+    const request = new Request("http://test/api/qmoi/autoprod/research", {
       method: "POST",
       body: JSON.stringify({ scope: "system" }),
     });
@@ -45,7 +45,7 @@ describe("/api/qmoi/autodev/research", () => {
   });
 
   it("returns 403 for non-master tokens", async () => {
-    const request = new Request("http://test/api/qmoi/autodev/research", {
+    const request = new Request("http://test/api/qmoi/autoprod/research", {
       method: "POST",
       headers: {
         Authorization: "Bearer user-token",
@@ -62,7 +62,7 @@ describe("/api/qmoi/autodev/research", () => {
   });
 
   it("returns success for master token and stores a track", async () => {
-    const request = new Request("http://test/api/qmoi/autodev/research", {
+    const request = new Request("http://test/api/qmoi/autoprod/research", {
       method: "POST",
       headers: {
         Authorization: "Bearer master-token",

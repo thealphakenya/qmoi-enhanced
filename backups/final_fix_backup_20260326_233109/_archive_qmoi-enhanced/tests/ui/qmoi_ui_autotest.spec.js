@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:16Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { test, expect } from "@playwright/test";
 
 test("QMOI dashboard loads and shows health", async ({ page }) => {
@@ -15,7 +15,7 @@ test("QMOI dashboard loads and shows health", async ({ page }) => {
     page.locator('a[href*="downloads.qmoi.app"]'),
   ).toHaveCountGreaterThan(0);
 
-  // Check download button exists and works (// Production implementation: click)
+  // Check download button exists and works (// production implementation: click)
   const downloadBtn = page.locator('button:has-text("Download")');
   if ((await downloadBtn.count()) > 0) {
     await downloadBtn.first().click();
@@ -32,8 +32,8 @@ test("QMOI dashboard loads and shows health", async ({ page }) => {
     await expect(page.locator("text=Settings")).toBeVisible();
   }
 
-  // Test error message display (// Production implementation: error if possible)
-  // Production implementation; adapt to your UI's error triggers
+  // Test error message display (// production implementation: error if possible)
+  // production implementation; adapt to your UI's error triggers
   // await page.click('button:has-text("Trigger Error")');
   // await expect(page.locator('text=Error')).toBeVisible();
 });

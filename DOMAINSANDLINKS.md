@@ -7,19 +7,19 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] QMOI Domains and Links Directory
+# [production READY] QMOI Domains and Links Directory
 
 **Last Updated:** March 21, 2026
 **Auto-Update Status:** ✅ Enabled
-**Total Domains & Links:** 8 Production Domains
+**Total Domains & Links:** 8 production Domains
 **Health Monitoring:** ✅ Active
-**Fallback Chain:** qvillage.com → qglobal.org → qparallel.dev
+**Fallback Chain:** qvillage.com → qglobal.org → qparallel.prod
 
 This file is automatically maintained by QMOI's intelligent domain management system. QMOI continuously monitors, updates, and expands this directory as new domains and links are discovered or created.
 
 ---
 
-## 🌐 QMOI Production Domains & Core Services
+## 🌐 QMOI production Domains & Core Services
 
 ### Primary Domain (No Fallback)
 
@@ -59,7 +59,7 @@ This file is automatically maintained by QMOI's intelligent domain management sy
 
 - **AlphaQ AI**: `alphaq.ai` → https://alphaq.ai
   - **Status**: ✅ Active | **Health**: https://alphaq.ai/api/health
-  - **Purpose**: Advanced AI research and development
+  - **Purpose**: Advanced AI research and production
   - **Fallback**: qvillage.com
 
 - **QGlobal**: `qglobal.org` → https://qglobal.org
@@ -67,9 +67,9 @@ This file is automatically maintained by QMOI's intelligent domain management sy
   - **Purpose**: Global operations and international services
   - **Fallback**: qvillage.com
 
-- **QParallel**: `qparallel.dev` → https://qparallel.dev
-  - **Status**: ✅ Active | **Health**: https://qparallel.dev/api/health
-  - **Purpose**: Developer platform and parallel processing
+- **QParallel**: `qparallel.prod` → https://qparallel.prod
+  - **Status**: ✅ Active | **Health**: https://qparallel.prod/api/health
+  - **Purpose**: prodeloper platform and parallel processing
   - **Fallback**: qglobal.org
 
 ---
@@ -85,7 +85,7 @@ This file is automatically maintained by QMOI's intelligent domain management sy
   - Domains Management: `https://qvillage.com/api/master/domains`
 
 - **YouTube Download API**: `https://qvillage.com/api/youtube/download`
-  - Status: ✅ Production Ready
+  - Status: ✅ production Ready
   - Features: Queue management, progress tracking, secure file serving
 
 ### Service-Specific APIs
@@ -110,12 +110,12 @@ qvillage.com (Primary - No Fallback)
 ├── qquantum.tech → qvillage.com
 ├── alphaq.ai → qvillage.com
 ├── qglobal.org → qvillage.com
-└── qparallel.dev → qglobal.org
+└── qparallel.prod → qglobal.org
 ```
 
 ### Regional Distribution
 
-- **US East/West**: qvillage.com, qdatabase.net, qserver.io, qcloud.ai, qquantum.tech, alphaq.ai, qparallel.dev
+- **US East/West**: qvillage.com, qdatabase.net, qserver.io, qcloud.ai, qquantum.tech, alphaq.ai, qparallel.prod
 - **EU West**: qvillage.com, qdatabase.net, qcloud.ai, qquantum.tech, qglobal.org
 - **Asia East**: qvillage.com, qserver.io, qcloud.ai, alphaq.ai, qglobal.org
 - **Australia**: qvillage.com, qglobal.org
@@ -142,7 +142,7 @@ qvillage.com (Primary - No Fallback)
 | qquantum.tech | ✅ Active | https://qquantum.tech/api/health | Auto | qvillage.com |
 | alphaq.ai | ✅ Active | https://alphaq.ai/api/health | Auto | qvillage.com |
 | qglobal.org | ✅ Active | https://qglobal.org/api/health | Auto | qvillage.com |
-| qparallel.dev | ✅ Active | https://qparallel.dev/api/health | Auto | qglobal.org |
+| qparallel.prod | ✅ Active | https://qparallel.prod/api/health | Auto | qglobal.org |
 
 ---
 
@@ -180,7 +180,7 @@ qvillage.com (Primary - No Fallback)
 
 ---
 
-## 🐙 Development & Version Control
+## 🐙 production & Version Control
 
 ### GitHub Repositories
 
@@ -257,9 +257,9 @@ QVillage provides master-only command endpoints for domain and link management:
 
 ---
 
-## 🔧 Development & Testing
+## 🔧 production & Testing
 
-### Local Development
+### Local production
 
 - **QCity Enterprise**: `https://qvillage.com/qcity-enterprise.html`
 - **QCity Complete**: `https://qvillage.com/qcity-complete.html`

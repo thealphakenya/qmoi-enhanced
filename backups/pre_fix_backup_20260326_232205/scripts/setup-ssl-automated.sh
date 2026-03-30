@@ -29,7 +29,7 @@ fi
 
 # Step 1: Install Certbot
 log_info "Installing Certbot..."
-if command -v certbot &> /dev/null; then
+if command -v certbot &> /prod/null; then
     log_warn "Certbot already installed"
 else
     apt-get update

@@ -1,5 +1,5 @@
 /**
- * QMOI Emotional Intelligence System - Production Implementation
+ * QMOI Emotional Intelligence System - production Implementation
  * 
  * Full production-grade emotional intelligence system with:
  * - Real-time emotion detection and analysis
@@ -52,7 +52,7 @@ export interface EmotionalProfile {
 }
 
 /**
- * Production Emotional Intelligence System
+ * production Emotional Intelligence System
  */
 export class EmotionalIntelligenceSystem {
   private logger: Logger;

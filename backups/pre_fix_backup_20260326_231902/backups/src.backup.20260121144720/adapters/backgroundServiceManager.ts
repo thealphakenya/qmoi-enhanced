@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 // Background service manager for parallel operations and health monitoring
 // Runs independently of UI, manages data sync, periodic health checks, and service recovery
 

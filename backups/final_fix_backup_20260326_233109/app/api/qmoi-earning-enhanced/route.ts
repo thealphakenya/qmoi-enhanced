@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextResponse } from "next/server";
@@ -12,7 +12,7 @@ import type { NextRequest } from "next/server";
 /**
  * Earning Enhanced API
  *
- * Production Implementation Note:
+ * production Implementation Note:
  * This endpoint aggregates earning data from multiple sources including:
  * - Trading profits/losses (from Bitget, Kraken, Coinbase)
  * - Transaction fees and rebates
@@ -44,8 +44,8 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Production implementation: aggregate earnings from multiple sources
-    // Production implementation: resolve // Production implementation: items
+    // production implementation: aggregate earnings from multiple sources
+    // production implementation: resolve // production implementation: items
     return NextResponse.json(
       {
         userId,
@@ -61,7 +61,7 @@ export async function GET(request: NextRequest) {
           endDate: new Date().toISOString(),
         },
         lastUpdated: new Date().toISOString(),
-        _status: "// Production implementation:",
+        _status: "// production implementation:",
         _message:
           "Feature enabled in production. Data aggregation in progress.",
       },

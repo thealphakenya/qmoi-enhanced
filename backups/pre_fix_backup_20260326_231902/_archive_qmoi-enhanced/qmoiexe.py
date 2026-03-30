@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY]
+# [production READY]
 # NOTE: 2 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import os, subprocess, threading, webbrowser, sys, time, winshell
 from win32com.client import Dispatch
@@ -40,8 +40,8 @@ def run_backend():
     main_file = os.path.join(backend_path, "main.py")
     if not os.path.exists(main_file):
         with open(main_file, "w") as f:
-            f.write("# Auto-generated [PRODUCTION IMPLEMENTATION REQUIRED]\nfrom fastapi import FastAPI\napp = FastAPI()\n@app.get('/')\ndef root(): return {'status': 'ready'}")
-        print("⚠️ Created complete FastAPI backend as [PRODUCTION IMPLEMENTATION REQUIRED].")
+            f.write("# Auto-generated [production IMPLEMENTATION REQUIRED]\nfrom fastapi import FastAPI\napp = FastAPI()\n@app.get('/')\ndef root(): return {'status': 'ready'}")
+        print("⚠️ Created complete FastAPI backend as [production IMPLEMENTATION REQUIRED].")
     
     subprocess.Popen(["uvicorn", "main:app", "--host", "127.0.0.1", "--port", "8000"])
 

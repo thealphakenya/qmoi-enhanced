@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /**
- * Next.js API Route: /api/qmoi/autodev/research
+ * Next.js API Route: /api/qmoi/autoprod/research
  * AutoResearch endpoint for QMOI to inspect and propose improvements across the system.
  */
 
@@ -12,7 +12,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "@/app/api/middleware/roleAuth";
 import { getLogger } from "@/lib/logger";
 
-const logger = getLogger("api/qmoi/autodev/research");
+const logger = getLogger("api/qmoi/autoprod/research");
 
 export async function POST(request: NextRequest) {
   try {
@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
       ? [
           `Scope: ${scope}`,
           `Focus: ${String(details).slice(0, 180)}`,
-          "Applying auto-development and auto-heal rules",
+          "Applying auto-production and auto-heal rules",
         ]
       : [];
 
@@ -55,13 +55,13 @@ export async function POST(request: NextRequest) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          type: "autodev-research",
+          type: "autoprod-research",
           title: "QMOI AutoResearch Task",
           summary,
           details: JSON.stringify({ scope, insights, user: user.username || user.id }),
           status: "completed",
           priority: "high",
-          source: "qmoi-autodev",
+          source: "qmoi-autoprod",
         }),
       });
     } catch (trackErr) {

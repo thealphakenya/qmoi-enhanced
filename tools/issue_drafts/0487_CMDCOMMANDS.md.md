@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Issue final for CMDCOMMANDS.md"
 generated: 2025-11-08T16:06:38.270757Z
@@ -10,9 +10,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [PRODUCTION READY] markers or [PRODUCTION READY]s.
-- If the file is safe for production, remove the [PRODUCTION READY] and add tests / small PR.
-- If the file is intentionally non-production (e.g. [PRODUCTION READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [production READY] markers or [production READY]s.
+- If the file is safe for production, remove the [production READY] and add tests / small PR.
+- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -47,16 +47,16 @@ python scripts/qmoi-master-automation.py
 ### Universal App Builder
 
 ```bash
-# Build, test, and organize all QMOI and QCity apps for all device types
+# Build, test, and organize all QMOI and QCity apps for all prodice types
 python scripts/qmoi-app-builder.py
 
-# Apps are placed in Qmoi_apps/<device>/
+# Apps are placed in Qmoi_apps/<prodice>/
 # Download links are updated and notifications sent to all channels
 ```
 
-### Device-Aware Download (QI/First Page)
+### prodice-Aware Download (QI/First Page)
 
-- Use the download button (see QI_download_component.html) to get the correct installer for your device.
+- Use the download button (see QI_download_component.html) to get the correct installer for your prodice.
 
 ### User-Triggered Build (API)
 
@@ -81,12 +81,12 @@ python scripts/qmoi-live-status.py
 ```
 
 - Streams and summarizes QMOI automation logs and reports in real time.
-- Always running in Colab, DagsHub, or cloud (auto-restarts if cancelled or device is offline).
+- Always running in Colab, DagsHub, or cloud (auto-restarts if cancelled or prodice is offline).
 
 ## Cloud Offloading & Cloned Platform Usage (2025 Enhancement)
 
-- All commands and scripts are now run in QCity, Colab, or cloud environments, never on the local device.
-- QMOI only uses its own cloned GitLab, Gitpod, and other platforms for all automation, CI/CD, and development, which are more advanced than t
+- All commands and scripts are now run in QCity, Colab, or cloud environments, never on the local prodice.
+- QMOI only uses its own cloned GitLab, Gitpod, and other platforms for all automation, CI/CD, and production, which are more advanced than t
 
 ```
 

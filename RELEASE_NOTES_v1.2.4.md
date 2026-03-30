@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # Release v1.2.4
 
 - Replaced 5 corrupted packages with valid packages (Android, iOS, SmartTV, Chromebook, QCity)

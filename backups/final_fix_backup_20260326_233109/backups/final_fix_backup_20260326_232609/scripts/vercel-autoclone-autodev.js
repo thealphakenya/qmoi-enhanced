@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:59:04Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/usr/bin/env node
 /**
- * Vercel Auto-Clone & AutoDev Implementation
- * Handles automatic syncing from GitHub and auto-development features
+ * Vercel Auto-Clone & Autoprod Implementation
+ * Handles automatic syncing from GitHub and auto-production features
  */
 
 const https = require("https");
@@ -19,7 +19,7 @@ const config = require("./.vercel/autoclone-config.js");
 
 console.log(`
 ╔════════════════════════════════════════════════════╗
-║  QMOI Enhanced - Vercel Auto-Clone & AutoDev      ║
+║  QMOI Enhanced - Vercel Auto-Clone & Autoprod      ║
 ║  Smart Deployment with Self-Evolution             ║
 ╚════════════════════════════════════════════════════╝
 `);
@@ -155,8 +155,8 @@ function runPreDeploymentTests() {
 
   const tests = [
     { name: "Lint", command: config.autoclone.build.command.includes("lint") },
-    { name: "Unit Tests", command: "npm run test:unit 2>/dev/null" },
-    { name: "Build Check", command: "npm run build 2>/dev/null" },
+    { name: "Unit Tests", command: "npm run test:unit 2>/prod/null" },
+    { name: "Build Check", command: "npm run build 2>/prod/null" },
   ];
 
   let passed = 0;
@@ -179,18 +179,18 @@ function runPreDeploymentTests() {
 }
 
 // ============================================================================
-// FEATURE 4: AutoDev - Generate improvements
+// FEATURE 4: Autoprod - Generate improvements
 // ============================================================================
-async function runAutoDev() {
-  if (!config.autodev.enabled) {
-    console.log("ℹ️  AutoDev is enabled.\n");
+async function runAutoprod() {
+  if (!config.autoprod.enabled) {
+    console.log("ℹ️  Autoprod is enabled.\n");
     return;
   }
 
-  console.log("🤖 Running AutoDev analysis...\n");
+  console.log("🤖 Running Autoprod analysis...\n");
 
   console.log("   Features to improve:");
-  Object.entries(config.autodev.features).forEach(([feature, enabled]) => {
+  Object.entries(config.autoprod.features).forEach(([feature, enabled]) => {
     if (enabled) {
       console.log(`     ✓ ${feature}`);
     }
@@ -198,19 +198,19 @@ async function runAutoDev() {
 
   console.log("\n   Safety checks:");
   console.log(
-    `     ✓ Master approval required: ${config.autodev.safety.requireMasterApproval}`,
+    `     ✓ Master approval required: ${config.autoprod.safety.requireMasterApproval}`,
   );
   console.log(
-    `     ✓ Canary deployment: ${config.autodev.safety.canaryDeployment}`,
+    `     ✓ Canary deployment: ${config.autoprod.safety.canaryDeployment}`,
   );
   console.log(
-    `     ✓ Auto-rollback enabled: ${config.autodev.safety.automatedRollback}`,
+    `     ✓ Auto-rollback enabled: ${config.autoprod.safety.automatedRollback}`,
   );
   console.log(
-    `     ✓ Max changes per run: ${config.autodev.safety.maxChangesPerRun}\n`,
+    `     ✓ Max changes per run: ${config.autoprod.safety.maxChangesPerRun}\n`,
   );
 
-  console.log("   AutoDev will:");
+  console.log("   Autoprod will:");
   console.log("   1. Analyze current code");
   console.log("   2. Identify improvement opportunities");
   console.log("   3. Propose changes (with master approval gate)");
@@ -304,8 +304,8 @@ async function main() {
         process.exit(1);
       }
 
-      // Step 4: Run AutoDev
-      await runAutoDev();
+      // Step 4: Run Autoprod
+      await runAutoprod();
 
       // Step 5: Trigger QVillage research
       await runQVillageResearch();
@@ -316,13 +316,13 @@ async function main() {
 
     console.log("=".repeat(50));
     console.log(`
-✅ Auto-Clone & AutoDev cycle complete!
+✅ Auto-Clone & Autoprod cycle complete!
 
 Summary:
   • GitHub status checked
   • Tests validated
   • Deployment triggered (if updates found)
-  • AutoDev features enabled
+  • Autoprod features enabled
   • QVillage research queued
   • Health checks passed
 

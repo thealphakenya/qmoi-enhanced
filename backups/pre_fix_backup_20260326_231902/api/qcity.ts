@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 import { Router } from "express";
 import type { Request, Response } from "express";
 import Docker from "dockerode";
@@ -21,7 +21,7 @@ let fetchInstance: (input: unknown, init?: unknown) => Promise<any>;
   }
 })();
 
-// Fix QCityManager import for dev environments
+// Fix QCityManager import for prod environments
 let QCityManagerImpl;
 try {
   QCityManagerImpl = require("../scripts/qcity_manager").QCityManager;
@@ -210,7 +210,7 @@ router.get("/workspace-logs", async (req, res) => {
   res.setHeader("Connection", "keep-alive");
   res.flushHeaders();
 
-  [PRODUCTION READY] log streaming (replace with real log source in future)
+  [production READY] log streaming (replace with real log source in future)
   let count = 0;
   const maxLines = 10;
   const interval = setInterval(() => {
@@ -243,7 +243,7 @@ router.get("/workspace-logs", async (req, res) => {
   });
 });
 
-// --- Gitpod/QMOI Workspace Management API [PRODUCTION READY]s ---
+// --- Gitpod/QMOI Workspace Management API [production READY]s ---
 
 // List workspaces
 export async function listWorkspaces(req: Request, res: Response) {

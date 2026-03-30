@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-# QMOI Enhanced - Complete Production Deployment System
+# [production READY] this file has no remaining production markers
+# QMOI Enhanced - Complete production Deployment System
 
-**Status:** ✅ **READY FOR PRODUCTION DEPLOYMENT**  
+**Status:** ✅ **READY FOR production DEPLOYMENT**  
 **Build Date:** January 21, 2026  
 **Build Status:** Successful (150+ endpoints compiled)  
 **Auto-Recovery:** Enabled  
@@ -63,7 +63,7 @@ pm2 save && sudo pm2 startup systemd -u $USER --hp $HOME
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│           Production Process Manager (PM2)              │
+│           production Process Manager (PM2)              │
 ├─────────────────────────────────────────────────────────┤
 │                                                         │
 │  ┌──────────────────┐    ┌──────────────────┐          │
@@ -516,8 +516,8 @@ Your QMOI production deployment is successful when:
 | `scripts/qmoi-production-init.js`        | Auto-initialization (env setup → build → start)     |
 | `scripts/qmoi-production-autohealth.js`  | Health monitoring & auto-recovery system            |
 | `lib/qmoi-memory-manager.js`             | Persistent memory for intelligent recovery          |
-| `PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md` | Detailed deployment guide                           |
-| `.env.production`                        | Production environment standard                     |
+| `production_DEPLOYMENT_AUTO_RECOVERY.md` | Detailed deployment guide                           |
+| `.env.production`                        | production environment standard                     |
 | `logs/`                                  | Application logs (auto-managed)                     |
 | `.qmoi_state/`                           | QMOI memory persistence (health, recovery, metrics) |
 
@@ -563,8 +563,8 @@ Your QMOI production deployment is successful when:
 
 ## Support Resources
 
-- **Deployment Guide:** [PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md](PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md)
-- **Setup Complete:** [PRODUCTION_SETUP_COMPLETE.md](PRODUCTION_SETUP_COMPLETE.md)
+- **Deployment Guide:** [production_DEPLOYMENT_AUTO_RECOVERY.md](production_DEPLOYMENT_AUTO_RECOVERY.md)
+- **Setup Complete:** [production_SETUP_COMPLETE.md](production_SETUP_COMPLETE.md)
 - **API Reference:** [API_REFERENCE.md](API_REFERENCE.md)
 - **PM2 Documentation:** `pm2 help`
 

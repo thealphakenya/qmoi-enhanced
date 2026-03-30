@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOI API Key Manager"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -49,8 +49,8 @@ The QMOI API Key Manager provides secure API key generation, management, and usa
 
 ## Advanced
 
-- [PRODUCTION READY]: Add persistent storage (e.g., file or database)
-- [PRODUCTION READY]: Add detailed usage logs and alerts
+- [production READY]: Add persistent storage (e.g., file or database)
+- [production READY]: Add detailed usage logs and alerts
 
 ---
 

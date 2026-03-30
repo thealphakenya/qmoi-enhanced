@@ -87,7 +87,7 @@ class ComprehensiveLinkDomainValidator:
             'qcity.io': {'type': 'platform', 'critical': True},
             'qvillage.org': {'type': 'platform', 'critical': True},
             'qglobal.ai': {'type': 'platform', 'critical': True},
-            'qparallel.dev': {'type': 'platform', 'critical': False},
+            'qparallel.prod': {'type': 'platform', 'critical': False},
             'api.qmoi.com': {'type': 'api', 'critical': True},
             'auth.qmoi.com': {'type': 'auth', 'critical': True},
             'cdn.qmoi.com': {'type': 'cdn', 'critical': True},

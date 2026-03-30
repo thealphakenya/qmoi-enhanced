@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
@@ -41,7 +41,7 @@ export async function POST(_request: NextRequest) {
       profileId: `voice-${userId}-${Date.now()}`,
       audioHash: crypto.createHash("sha256").update(audioData).digest("hex"),
       duration: duration || 3,
-      quality: Math.random() * 0.2 + 0.8, [PRODUCTION READY] quality 0.8-1.0
+      quality: Math.random() * 0.2 + 0.8, [production READY] quality 0.8-1.0
       type: "voice",
       enrolledAt: new Date().toISOString(),
       lastVerified: null,

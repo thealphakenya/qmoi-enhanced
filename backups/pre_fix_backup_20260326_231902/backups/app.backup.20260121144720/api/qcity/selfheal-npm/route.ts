@@ -1,8 +1,8 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 1 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 import { NextRequest } from "next/server";
 import { requireApiKey } from "../../../../lib/proposals";
 import { spawn } from "child_process";
@@ -12,7 +12,7 @@ import fs from "fs";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-[PRODUCTION READY] for JWT verification (replace with your actual logic)
+[production READY] for JWT verification (replace with your actual logic)
 function verifyJWT(token: string): { valid: boolean; role?: string } {
   try {
     const payload = JSON.parse(
@@ -55,7 +55,7 @@ function logDownloadFix(
     action,
     user,
     app: "QCity",
-    device: (_options as any).device || "unknown",
+    prodice: (_options as any).prodice || "unknown",
     status,
     _error,
   };

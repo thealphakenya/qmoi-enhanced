@@ -74,7 +74,7 @@ def load_state():
             state.update(json.load(f))
 
 def qfix():
-    """Run QFix payload: clear temp folders (// Production implementation required: implementation)."""
+    """Run QFix payload: clear temp folders (// production implementation required: implementation)."""
     log("Running QFix payload...")
     if platform.system() == 'Linux':
         subprocess.run(['rm', '-rf', '/tmp/*'])
@@ -83,20 +83,20 @@ def qfix():
     log("QFix completed.")
 
 def qoptimize():
-    """Run QOptimize payload: // Production implementation required: optimization."""
+    """Run QOptimize payload: // production implementation required: optimization."""
     log("Running QOptimize payload...")
     # Add optimization logic here
     log("QOptimize completed.")
 
 def qsecure():
-    """Run QSecure payload: // Production implementation required: security check."""
+    """Run QSecure payload: // production implementation required: security check."""
     log("Running QSecure payload...")
     # Add security logic here
     log("QSecure completed.")
 
 def check_triggers():
     """Check trigger conditions and run payloads if needed."""
-    # // Production implementation required:: always run qfix if error_log_detected is True
+    # // production implementation required:: always run qfix if error_log_detected is True
     if CONFIG['trigger_conditions']['error_log_detected']:
         qfix()
     # Add more trigger checks as needed

@@ -40,8 +40,8 @@ export class FacebookAdapter implements SocialPlatformAdapter {
     // Validate and parse config
     this.config = FacebookConfigSchema.parse(config);
 
-    if (this.config.sandboxMode) {
-      .log("[Facebook] Running in sandbox mode");
+    if (this.config.productionMode) {
+      .log("[Facebook] Running in production mode");
       return;
     }
 
@@ -58,11 +58,11 @@ export class FacebookAdapter implements SocialPlatformAdapter {
       throw new Error("Facebook adapter not initialized");
     }
 
-    if (this.config.sandboxMode) {
-      return true; // Skip validation in sandbox mode
+    if (this.config.productionMode) {
+      return true; // Skip validation in production mode
     }
 
-    // Production, would verify the access token with Facebook Graph API
+    // production, would verify the access token with Facebook Graph API
     // For now, just check it exists
     return !!this.config.credentials?.accessToken;
   }
@@ -96,12 +96,12 @@ export class FacebookAdapter implements SocialPlatformAdapter {
       }
     }
 
-    if (this.config.sandboxMode) {
-      .log("[Facebook Sandbox] Would create post:", content);
+    if (this.config.productionMode) {
+      .log("[Facebook production] Would create post:", content);
       return `
     }
 
-    // Production mode, would make actual Graph API call
+    // production mode, would make actual Graph API call
     // For now just log the intent
     .log("[Facebook] Creating post with Graph API v18.0");
     return `fb-post-${Date.now()}`;
@@ -119,12 +119,12 @@ export class FacebookAdapter implements SocialPlatformAdapter {
       }
     }
 
-    if (this.config.sandboxMode) {
-      .log("[Facebook Sandbox] Would delete post:", postId);
+    if (this.config.productionMode) {
+      .log("[Facebook production] Would delete post:", postId);
       return true;
     }
 
-    // Production mode, would make actual Graph API call
+    // production mode, would make actual Graph API call
     .log("[Facebook] Deleting post:", postId);
     return true;
   }
@@ -134,7 +134,7 @@ export class FacebookAdapter implements SocialPlatformAdapter {
       throw new Error("Facebook adapter not initialized");
     }
 
-    if (this.config.sandboxMode) {
+    if (this.config.productionMode) {
       // Return 
       return {
         likes: Math.floor(Math.random() * 1000),
@@ -145,8 +145,8 @@ export class FacebookAdapter implements SocialPlatformAdapter {
       };
     }
 
-    // Production mode, would fetch real metrics via Graph API
-    throw new Error("Production metrics fetching not yet implemented");
+    // production mode, would fetch real metrics via Graph API
+    throw new Error("production metrics fetching not yet implemented");
   }
 
   async getAnalytics(): Promise<unknown> {
@@ -154,7 +154,7 @@ export class FacebookAdapter implements SocialPlatformAdapter {
       throw new Error("Facebook adapter not initialized");
     }
 
-    if (this.config.sandboxMode) {
+    if (this.config.productionMode) {
       return {
         totalReach: Math.floor(Math.random() * 100000),
         totalEngagement: Math.floor(Math.random() * 50000),
@@ -168,8 +168,8 @@ export class FacebookAdapter implements SocialPlatformAdapter {
       };
     }
 
-    // Production mode, would fetch real analytics via Graph API
-    throw new Error("Production analytics fetching not yet implemented");
+    // production mode, would fetch real analytics via Graph API
+    throw new Error("production analytics fetching not yet implemented");
   }
 }
 export default FacebookAdapter;

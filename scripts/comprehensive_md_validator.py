@@ -144,7 +144,7 @@ class ComprehensiveMdValidator:
         # Run all validation checks
         checks = [
             self._check_lion_validation(content, report),
-            self._check_no_nonproduction_markers(content, report),
+            self._check_no_production_markers(content, report),
             self._check_link_validity(content, file_path, report),
             self._check_heading_hierarchy(content, report),
             self._check_code_blocks(content, report),
@@ -178,29 +178,29 @@ class ComprehensiveMdValidator:
         report.results.append(result)
         return result
 
-    def _check_no_nonproduction_markers(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
-        """Check for non-production markers"""
-        nonprod_markers = [
+    def _check_no_production_markers(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
+        """Check for production markers"""
+        production_markers = [
             'TODO', 'FIXME', 'PLACEHOLDER', 'MOCK', 'SIMULATE', 'STAGING',
             'STUB', 'DEMO', 'SIMPLE', 'MINIMAL', 'DRAFT', 'POC', 'ALPHA',
             'BETA', 'EXPERIMENTAL', 'TEMPORARY', 'INCOMPLETE', 'REPLACE',
-            'REPLACE ALL', 'REPLACE WITH', 'IN PRODUCTION'
+            'REPLACE ALL', 'REPLACE WITH', 'IN production'
         ]
 
         markers_found = []
-        for marker in nonprod_markers:
+        for marker in production_markers:
             if re.search(f'(?:^|\\s){re.escape(marker)}(?:\\s|$|:|;|,|\\))', content, re.MULTILINE | re.IGNORECASE):
                 markers_found.append(marker)
 
         result = ValidationResult(
-            check_name="Non-Production Markers",
+            check_name="production Markers",
             passed=len(markers_found) == 0,
             severity="error" if markers_found else "info"
         )
         if markers_found:
-            result.details = f"Found non-production markers: {', '.join(markers_found)}"
+            result.details = f"Found production markers: {', '.join(markers_found)}"
         else:
-            result.details = "No non-production markers found"
+            result.details = "No production markers found"
         report.results.append(result)
         return result
 

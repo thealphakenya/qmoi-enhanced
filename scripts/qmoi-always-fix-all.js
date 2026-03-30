@@ -7,7 +7,7 @@
 
 /**
  * QMOI Enhanced Always Fix All Script
- * Comprehensive error detection, fixing, and automation with developer-level problem solving
+ * Comprehensive error detection, fixing, and automation with prodeloper-level problem solving
  * Includes all automation autotests, CI/CD integration, and intelligent error resolution
  */
 

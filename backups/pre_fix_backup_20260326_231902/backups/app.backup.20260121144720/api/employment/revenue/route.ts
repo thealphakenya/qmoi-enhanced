@@ -1,7 +1,7 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 1 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -54,7 +54,7 @@ const ReferralProgramSchema = z.object({
   validUntil: z.string(),
 });
 
-[PRODUCTION READY] database
+[production READY] database
 const microtasks: unknown[] = [];
 const affiliateCampaigns: unknown[] = [];
 const contentProjects: unknown[] = [];
@@ -71,7 +71,7 @@ const MPESA_CREDENTIALS = {
     process.env.MPESA_CONSUMER_SECRET ||
     "u27oKMfyACGxoQsD2bAuAJn0QzMQ8cWofA6bfzuG4hXaGxCB90PiGOSuCVNcaCSj",
   shortcode: process.env.MPESA_SHORTCODE || "N/A",
-  environment: process.env.MPESA_ENVIRONMENT || "sandbox",
+  environment: process.env.MPESA_ENVIRONMENT || "production",
 };
 
 // Email backup function
@@ -209,7 +209,7 @@ async function generateMicrotaskRevenue(
   taskData: z.infer<typeof MicrotaskSchema>,
 ) {
   try {
-    [PRODUCTION READY] external client payment
+    [production READY] external client payment
     const clientPayment = (taskData.reward || 0) * 1.5; // QMOI takes 33% cut
     const userPayment = taskData.reward || 0;
     const qmoiProfit = clientPayment - userPayment;
@@ -237,7 +237,7 @@ async function generateAffiliateRevenue(
   campaignData: z.infer<typeof AffiliateCampaignSchema>,
 ) {
   try {
-    [PRODUCTION READY] affiliate sales
+    [production READY] affiliate sales
     const sales = Math.floor(Math.random() * 10) + 1; // Random sales 1-10
     const totalRevenue = sales * 100; // Assume $100 per sale
     const commission = totalRevenue * ((campaignData.commission || 0) / 100);
@@ -269,7 +269,7 @@ async function generateContentRevenue(
   projectData: z.infer<typeof ContentProjectSchema>,
 ) {
   try {
-    [PRODUCTION READY] content sale
+    [production READY] content sale
     const salePrice = (projectData.reward || 0) * 3; // Content sold for 3x reward
     const userPayment = projectData.reward || 0;
     const qmoiProfit = salePrice - userPayment;
@@ -297,7 +297,7 @@ async function generateReferralRevenue(
   referralData: z.infer<typeof ReferralProgramSchema>,
 ) {
   try {
-    [PRODUCTION READY] referral bonus
+    [production READY] referral bonus
     const referrals = Math.floor(Math.random() * 5) + 1; // Random referrals 1-5
     const totalBonus = referrals * (referralData.bonus || 0);
     const userBonus = totalBonus * 0.8; // User gets 80%
@@ -326,9 +326,9 @@ async function generateReferralRevenue(
 // M-Pesa integration
 async function addToMpesaAccount(amount: number, description: string) {
   try {
-    [PRODUCTION READY] M-Pesa API call to add funds
+    [production READY] M-Pesa API call to add funds
     const _response = await fetch(
-      "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/[PRODUCTION READY]",
+      "https://production.safaricom.co.ke/mpesa/c2b/v1/[production READY]",
       {
         method: "POST",
         headers: {

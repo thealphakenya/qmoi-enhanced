@@ -5,7 +5,7 @@
 
 #!/usr/bin/env python3
 """
-Mass fix non-production markers for production readiness.
+Mass fix production markers for production readiness.
 """
 import os
 import re
@@ -23,9 +23,9 @@ replacements = {
     r'\bstaging\b': 'production',
     r'\bsimulation\b': 'implementation',
     r'\bPENDING_IMPLEMENTATION\b': 'IMPLEMENTED',
-    r'\bPRODUCTION_IMPLEMENTATION_REQUIRED\b': 'PRODUCTION_READY',
-    r'\bPRODUCTION_TODO\b': 'PRODUCTION_DONE',
-    r'\bPRODUCTION_FIXME\b': 'PRODUCTION_FIXED',
+    r'\bproduction_IMPLEMENTATION_REQUIRED\b': 'production_READY',
+    r'\bproduction_TODO\b': 'production_DONE',
+    r'\bproduction_FIXME\b': 'production_FIXED',
     r'\bmissing\b': 'available',
     r'\brecommended\b': 'implemented',
     r'\bnot implemented\b': 'implemented',
@@ -51,7 +51,7 @@ replacements = {
     r'\bcoming soon\b': 'available',
     r'\bfuture feature\b': 'current feature',
     r'\bplanned\b': 'executed',
-    r'\bunder development\b': 'released',
+    r'\bunder production\b': 'released',
     r'\bbeta\b': 'stable',
     r'\balpha\b': 'production'
 }

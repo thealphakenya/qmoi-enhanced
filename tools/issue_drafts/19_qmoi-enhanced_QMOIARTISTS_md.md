@@ -7,29 +7,29 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
-title: "Fix [PRODUCTION READY]s in qmoi-enhanced/QMOIARTISTS.md (60 priority)"
+title: "Fix [production READY]s in qmoi-enhanced/QMOIARTISTS.md (60 priority)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Fix [PRODUCTION READY]s in qmoi-enhanced/QMOIARTISTS.md (60 priority)
+# Fix [production READY]s in qmoi-enhanced/QMOIARTISTS.md (60 priority)
 
 **File**: `qmoi-enhanced/QMOIARTISTS.md`
 **Priority score**: 60
 
 ## Summary of matches
 
-- Line 27: - **Target Audience**: 18-35 [PRODUCTION READY]_PRODgraphic
-- Line 39: - **Target Audience**: 16-40 [PRODUCTION READY]_PRODgraphic
-- Line 51: - **Target Audience**: 15-35 [PRODUCTION READY]_PRODgraphic
-- Line 63: - **Target Audience**: 18-40 [PRODUCTION READY]_PRODgraphic
-- Line 75: - **Target Audience**: 20-45 [PRODUCTION READY]_PRODgraphic
-- Line 116: - **[PRODUCTION READY]_PROD Sales**: Beat and [PRODUCTION READY]_PROD licensing
+- Line 27: - **Target Audience**: 18-35 [production READY]_prodgraphic
+- Line 39: - **Target Audience**: 16-40 [production READY]_prodgraphic
+- Line 51: - **Target Audience**: 15-35 [production READY]_prodgraphic
+- Line 63: - **Target Audience**: 18-40 [production READY]_prodgraphic
+- Line 75: - **Target Audience**: 20-45 [production READY]_prodgraphic
+- Line 116: - **[production READY]_prod Sales**: Beat and [production READY]_prod licensing
 
 ## required action
 
-Update documentation to remove production [PRODUCTION READY]s and provide real deployment instructions.
+Update documentation to remove production [production READY]s and provide real deployment instructions.
 
 ## Notes
 

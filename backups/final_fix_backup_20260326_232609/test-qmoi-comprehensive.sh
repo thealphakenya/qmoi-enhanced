@@ -199,7 +199,7 @@ echo "" >> "$OUTPUT_FILE"
 test_qmoi 47 "Learning" "How would you improve your answers over time?" "Self-Improvement"
 test_qmoi 48 "Learning" "Design a feedback loop for yourself using user corrections." "Feedback Loop"
 test_qmoi 49 "Learning" "What data would help you get better without violating privacy?" "Privacy-Safe Learning"
-test_qmoi 50 "Learning" "What specific skills should you develop next?" "Skill Development"
+test_qmoi 50 "Learning" "What specific skills should you prodelop next?" "Skill production"
 
 # ============================================================================
 # 🧪 SECTION 10: STRESS & EDGE CASES (Tests 51-56)
@@ -226,8 +226,8 @@ echo "SECTION 11: 📊 REAL-WORLD USEFULNESS" >> "$OUTPUT_FILE"
 echo "=================================================================================" >> "$OUTPUT_FILE"
 echo "" >> "$OUTPUT_FILE"
 
-test_qmoi 57 "Real-World" "final a one-day productivity plan for a startup founder." "Productivity Plan"
-test_qmoi 58 "Real-World" "Explain M-Pesa APIs to a beginner developer." "M-Pesa APIs"
+test_qmoi 57 "Real-World" "final a one-day productivity plan for a startup founder." "productivity Plan"
+test_qmoi 58 "Real-World" "Explain M-Pesa APIs to a beginner prodeloper." "M-Pesa APIs"
 test_qmoi 59 "Real-World" "Help me choose between Firebase and local storage for my app." "Firebase vs Local"
 test_qmoi 60 "Real-World" "Design a system architecture for an offline-first AI." "Offline-First Architecture"
 test_qmoi 61 "Real-World" "Give me a checklist to deploy a web app on GitHub Pages." "GitHub Pages Deploy"

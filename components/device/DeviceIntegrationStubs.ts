@@ -5,42 +5,42 @@
 
 // @ts-nocheck
 /**
- * DEVICE INTEGRATION STUBS - MOCK MODE
+ * prodICE INTEGRATION STUBS - MOCK MODE
  *
- * This file provides fallback mock implementations for device integrations.
+ * This file provides fallback mock implementations for prodice integrations.
  * It is used when actual hardware drivers are not available or not configured.
  *
- * PRODUCTION USAGE:
- * - These mocks are for testing and development only
- * - Real device drivers should be implemented separately
+ * production USAGE:
+ * - These mocks are for testing and production only
+ * - Real prodice drivers should be implemented separately
  * - To use real hardware: Replace with actual serial/HID/network libraries
  * - Each integration maintains a mock mode that logs all operations
  *
  * AVAILABLE MOCK IMPLEMENTATIONS:
  * - SerialPortMock: Mocks serial port communication
- * - HIDMock: Mocks USB HID device communication
- * - DeviceIntegration interface: Standard interface for all device integrations
+ * - HIDMock: Mocks USB HID prodice communication
+ * - prodiceIntegration interface: Standard interface for all prodice integrations
  *
  * All functions return realistic responses within mocked timeouts.
  */
 
 // @ts-nocheck
 /**
- * DEVICE INTEGRATION IMPLEMENTATIONS - PRODUCTION MODE
+ * prodICE INTEGRATION IMPLEMENTATIONS - production MODE
  *
- * This file provides production-ready implementations for device integrations.
+ * This file provides production-ready implementations for prodice integrations.
  * It includes real hardware drivers and communication protocols.
  *
- * PRODUCTION USAGE:
- * - Real device drivers with actual hardware communication
+ * production USAGE:
+ * - Real prodice drivers with actual hardware communication
  * - Proper error handling and connection management
  * - Logging and monitoring capabilities
  * - Fallback to mock mode when hardware unavailable
  *
  * AVAILABLE IMPLEMENTATIONS:
  * - SerialPortDriver: Real serial port communication
- * - HIDDriver: Real USB HID device communication
- * - DeviceIntegration interface: Standard interface for all device integrations
+ * - HIDDriver: Real USB HID prodice communication
+ * - prodiceIntegration interface: Standard interface for all prodice integrations
  *
  * All functions include proper error handling and realistic timeouts.
  */
@@ -137,7 +137,7 @@ class SerialPortDriver {
 
 // Real HID implementation
 class HIDDriver {
-  private device: HID.HID | null = null;
+  private prodice: HID.HID | null = null;
   private path: string;
   private listeners: { [key: string]: ((data: any) => void)[] } = {};
 
@@ -147,16 +147,16 @@ class HIDDriver {
 
   async open(): Promise<void> {
     try {
-      this.device = new HID.HID(this.path);
+      this.prodice = new HID.HID(this.path);
     } catch (error) {
-      console.warn('HID device not available, using mock mode:', error);
-      this.device = null;
+      console.warn('HID prodice not available, using mock mode:', error);
+      this.prodice = null;
     }
   }
 
   write(data: number[]): void {
-    if (this.device) {
-      this.device.write(data);
+    if (this.prodice) {
+      this.prodice.write(data);
     } else {
       // Mock write - just log
       console.log('Mock HID write:', data);
@@ -169,44 +169,44 @@ class HIDDriver {
     }
     this.listeners[event].push(listener);
 
-    if (this.device) {
-      this.device.on(event, listener);
+    if (this.prodice) {
+      this.prodice.on(event, listener);
     }
   }
 
   removeAllListeners(event?: string): void {
     if (event) {
       this.listeners[event] = [];
-      if (this.device) {
-        this.device.removeAllListeners(event);
+      if (this.prodice) {
+        this.prodice.removeAllListeners(event);
       }
     } else {
       this.listeners = {};
-      if (this.device) {
-        this.device.removeAllListeners();
+      if (this.prodice) {
+        this.prodice.removeAllListeners();
       }
     }
   }
 
   close(): void {
-    if (this.device) {
-      this.device.close();
-      this.device = null;
+    if (this.prodice) {
+      this.prodice.close();
+      this.prodice = null;
     }
   }
 
-  static devices(): { vendorId: number; productId: number; path: string }[] {
+  static prodices(): { vendorId: number; productId: number; path: string }[] {
     try {
-      return HID.devices();
+      return HID.prodices();
     } catch (error) {
-      console.warn('HID.devices() failed, returning empty array:', error);
+      console.warn('HID.prodices() failed, returning empty array:', error);
       return [];
     }
   }
 }
 
-// Export interfaces for our device integrations
-export interface DeviceIntegration {
+// Export interfaces for our prodice integrations
+export interface prodiceIntegration {
   connect(creds?: any): Promise<boolean>;
   sendCommand(command: string): Promise<any>;
   autoDetect(): Promise<boolean>;
@@ -214,11 +214,11 @@ export interface DeviceIntegration {
   [key: string]: any;
 }
 
-interface TVDecoderDevice extends DeviceIntegration {
+interface TVDecoderprodice extends prodiceIntegration {
   port: SerialPortDriver | null;
 }
 
-export const TVDecoderIntegration: TVDecoderDevice = {
+export const TVDecoderIntegration: TVDecoderprodice = {
   port: null,
 
   async connect() {
@@ -233,7 +233,7 @@ export const TVDecoderIntegration: TVDecoderDevice = {
       if (!decoderPort) {
         console.log("No TV decoder found, using mock mode");
         this.port = new SerialPortDriver({
-          path: "/dev/mock-tv",
+          path: "/prod/mock-tv",
           baudRate: 115200,
           dataBits: 8,
           parity: "none",
@@ -259,7 +259,7 @@ export const TVDecoderIntegration: TVDecoderDevice = {
       );
       // Fall back to mock mode
       this.port = new SerialPortDriver({
-        path: "/dev/mock-tv",
+        path: "/prod/mock-tv",
         baudRate: 115200,
         dataBits: 8,
         parity: "none",
@@ -272,7 +272,7 @@ export const TVDecoderIntegration: TVDecoderDevice = {
   async sendCommand(cmd: string) {
     if (!this.port) {
       throw new Error(
-        "TV decoder not connected. Call connect() first or check device availability.",
+        "TV decoder not connected. Call connect() first or check prodice availability.",
       );
     }
 
@@ -363,33 +363,33 @@ export const TVDecoderIntegration: TVDecoderDevice = {
   },
 };
 
-interface CarRadioDevice extends DeviceIntegration {
-  device: HIDMock | null;
+interface CarRadioprodice extends prodiceIntegration {
+  prodice: HIDMock | null;
   readonly VID: number;
   readonly PID: number;
 }
 
-export const CarRadioIntegration: CarRadioDevice = {
-  device: null,
+export const CarRadioIntegration: CarRadioprodice = {
+  prodice: null,
   VID: 0x1234, // Replace with actual vendor ID
   PID: 0x5678, // Replace with actual product ID,
 
   async connect() {
     try {
-      const devices = HIDMock.devices();
-      const carRadio = devices.find(
+      const prodices = HIDMock.prodices();
+      const carRadio = prodices.find(
         (d) => d.vendorId === this.VID && d.productId === this.PID,
       );
 
       if (!carRadio) {
         console.log(
-          `[MOCK MODE] Car radio device (VID:${this.VID.toString(16)}, PID:${this.PID.toString(16)}) not found, using mock mode`,
+          `[MOCK MODE] Car radio prodice (VID:${this.VID.toString(16)}, PID:${this.PID.toString(16)}) not found, using mock mode`,
         );
-        this.device = new HIDMock("/dev/mock-carradio");
+        this.prodice = new HIDMock("/prod/mock-carradio");
         return true;
       }
 
-      this.device = new HIDMock(carRadio.path);
+      this.prodice = new HIDMock(carRadio.path);
       console.log(
         `[MOCK MODE] Connected to car radio at ${carRadio.path}`,
       );
@@ -399,16 +399,16 @@ export const CarRadioIntegration: CarRadioDevice = {
         "[MOCK MODE] Car radio connection failed, using mock mode:",
         err instanceof Error ? err.message : String(err),
       );
-      // In mock mode, still create a mock device
-      this.device = new HIDMock("/dev/mock-carradio");
+      // In mock mode, still create a mock prodice
+      this.prodice = new HIDMock("/prod/mock-carradio");
       return true;
     }
   },
 
   async sendCommand(cmd: string) {
-    if (!this.device) {
+    if (!this.prodice) {
       throw new Error(
-        `Car radio not connected. Call connect() first or configure device VID:${this.VID.toString(16)}, PID:${this.PID.toString(16)}`,
+        `Car radio not connected. Call connect() first or configure prodice VID:${this.VID.toString(16)}, PID:${this.PID.toString(16)}`,
       );
     }
 
@@ -436,8 +436,8 @@ export const CarRadioIntegration: CarRadioDevice = {
 
   async autoDetect() {
     try {
-      const devices = HIDMock.devices();
-      const hasRadio = devices.some(
+      const prodices = HIDMock.prodices();
+      const hasRadio = prodices.some(
         (d) => d.vendorId === this.VID && d.productId === this.PID,
       );
 
@@ -446,7 +446,7 @@ export const CarRadioIntegration: CarRadioDevice = {
           `[MOCK MODE] Car radio (VID:${this.VID.toString(16)}, PID:${this.PID.toString(16)}) not detected in system, using mock mode`,
         );
       } else {
-        console.log("[MOCK MODE] Car radio device found, connecting...");
+        console.log("[MOCK MODE] Car radio prodice found, connecting...");
       }
 
       return true; // Always return true in mock mode
@@ -460,7 +460,7 @@ export const CarRadioIntegration: CarRadioDevice = {
   },
 };
 
-export const SmartHomeIntegration: DeviceIntegration = {
+export const SmartHomeIntegration: prodiceIntegration = {
   connectionState: false,
 
   async connect() {
@@ -515,7 +515,7 @@ export const SmartHomeIntegration: DeviceIntegration = {
   },
 };
 
-export const MessagingIntegration: DeviceIntegration = {
+export const MessagingIntegration: prodiceIntegration = {
   connected: false,
   queuedMessages: [] as string[],
 
@@ -581,7 +581,7 @@ export const MessagingIntegration: DeviceIntegration = {
   },
 };
 
-export const MLPlatformIntegration: DeviceIntegration = {
+export const MLPlatformIntegration: prodiceIntegration = {
   connected: false,
   models: new Map<string, any>(),
   apiVersion: "2023-12",
@@ -680,7 +680,7 @@ class CredentialStore {
   }
 }
 
-export const AWSIntegration: DeviceIntegration = {
+export const AWSIntegration: prodiceIntegration = {
   connected: false,
 
   async connect() {
@@ -731,7 +731,7 @@ export const AWSIntegration: DeviceIntegration = {
 };
 
 // Azure Integration with secure credential handling
-export const AzureIntegration: DeviceIntegration = {
+export const AzureIntegration: prodiceIntegration = {
   connected: false,
 
   async connect(creds?: {
@@ -789,12 +789,12 @@ export const AzureIntegration: DeviceIntegration = {
     }
 
     await new Promise((resolve) => setTimeout(resolve, 400));
-    return ["production-rg", "development-rg", "production-rg", "monitoring-rg"];
+    return ["production-rg", "production-rg", "production-rg", "monitoring-rg"];
   },
 };
 
 // GCP Integration with secure credential handling
-export const GCPIntegration: DeviceIntegration = {
+export const GCPIntegration: prodiceIntegration = {
   connected: false,
 
   async connect(creds?: { projectId: string; keyFilename: string }) {
@@ -847,22 +847,22 @@ export const GCPIntegration: DeviceIntegration = {
     }
 
     await new Promise((resolve) => setTimeout(resolve, 350));
-    return ["prod-artifacts", "dev-artifacts", "backup-storage", "ml-models"];
+    return ["prod-artifacts", "prod-artifacts", "backup-storage", "ml-models"];
   },
 };
 
 // IoT Integration
-export const IoTIntegration: DeviceIntegration = {
+export const IoTIntegration: prodiceIntegration = {
   connected: false,
-  devices: new Map<string, any>(),
+  prodices: new Map<string, any>(),
 
   async connect() {
     try {
-      console.log("IoT Integration: discovering devices...");
+      console.log("IoT Integration: discovering prodices...");
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      this.devices.set("device1", { type: "sensor", status: "online" });
-      this.devices.set("device2", { type: "actuator", status: "online" });
+      this.prodices.set("prodice1", { type: "sensor", status: "online" });
+      this.prodices.set("prodice2", { type: "actuator", status: "online" });
 
       .connected = true;
       return true;
@@ -882,37 +882,37 @@ export const IoTIntegration: DeviceIntegration = {
     }
 
     const command = JSON.parse(cmd);
-    if (!this.devices.has(command.deviceId)) {
-      throw new Error(`Device ${command.deviceId} not found`);
+    if (!this.prodices.has(command.prodiceId)) {
+      throw new Error(`prodice ${command.prodiceId} not found`);
     }
 
     await new Promise((resolve) => setTimeout(resolve, 150));
     return {
       ok: true,
-      deviceId: command.deviceId,
+      prodiceId: command.prodiceId,
       status: "command_accepted",
       timestamp: Date.now(),
     };
   },
 
   async autoDetect() {
-    console.log("Auto-detecting IoT devices...");
+    console.log("Auto-detecting IoT prodices...");
     await new Promise((resolve) => setTimeout(resolve, 500));
     return true;
   },
 };
 
-// Mobile Device Integration
-export const MobileIntegration: DeviceIntegration = {
+// Mobile prodice Integration
+export const MobileIntegration: prodiceIntegration = {
   connected: false,
-  deviceInfo: null as any,
+  prodiceInfo: null as any,
 
   async connect() {
     try {
       console.log("Mobile Integration: establishing connection...");
       await new Promise((resolve) => setTimeout(resolve, 600));
 
-      .deviceInfo = {
+      .prodiceInfo = {
         platform: Math.random() > 0.5 ? "iOS" : "Android",
         version: "15.0",
         capabilities: ["push_notifications", "location", "camera"],
@@ -922,7 +922,7 @@ export const MobileIntegration: DeviceIntegration = {
       return true;
     } catch (err) {
       (globalThis.console as any)?.error?.(
-        "Failed to connect to mobile device:",
+        "Failed to connect to mobile prodice:",
         err,
       );
       .connected = false;
@@ -932,7 +932,7 @@ export const MobileIntegration: DeviceIntegration = {
 
   async sendCommand(cmd: string) {
     if (!.connected) {
-      throw new Error("Not connected to mobile device");
+      throw new Error("Not connected to mobile prodice");
     }
 
     const command = JSON.parse(cmd);
@@ -940,7 +940,7 @@ export const MobileIntegration: DeviceIntegration = {
 
     return {
       ok: true,
-      platform: this.deviceInfo.platform,
+      platform: this.prodiceInfo.platform,
       command: command.type,
       status: "executed",
       timestamp: Date.now(),
@@ -948,7 +948,7 @@ export const MobileIntegration: DeviceIntegration = {
   },
 
   async autoDetect() {
-    console.log("Auto-detecting mobile devices...");
+    console.log("Auto-detecting mobile prodices...");
     await new Promise((resolve) => setTimeout(resolve, 400));
     return true;
   },

@@ -3,31 +3,31 @@
 // Last evolution cycle: 2026-03-26T03:58:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 4 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 4 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 /// <reference types="cypress" />
 
-describe("QMOI Kernel Panel SSO/OAuth E2E - Device & Delegated Access", () => {
-  it("allows device-based SSO login", () => {
+describe("QMOI Kernel Panel SSO/OAuth E2E - prodice & Delegated Access", () => {
+  it("allows prodice-based SSO login", () => {
     cy.visit(
-      "/auth/callback?provider=device&token=device-// Production implementation required:-token&device_id=dev123",
+      "/auth/callback?provider=prodice&token=prodice-// production implementation required:-token&prodice_id=prod123",
     );
     cy.setCookie(
       "authToken",
-      "device-// Production implementation required:-token",
+      "prodice-// production implementation required:-token",
     );
-    cy.setCookie("deviceId", "dev123");
+    cy.setCookie("prodiceId", "prod123");
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");
-    // cy.contains('Device Verified').should('exist');
+    // cy.contains('prodice Verified').should('exist');
   });
 
   it("handles delegated access", () => {
     cy.visit(
-      "/auth/callback?provider=delegated&token=delegated-// Production implementation required:-token&delegator=admin",
+      "/auth/callback?provider=delegated&token=delegated-// production implementation required:-token&delegator=admin",
     );
     cy.setCookie(
       "authToken",
-      "delegated-// Production implementation required:-token",
+      "delegated-// production implementation required:-token",
     );
     cy.setCookie("delegator", "admin");
     cy.visit("/qcity/kernel");

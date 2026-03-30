@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
-# QMOI v1.2.4 Production Release - Complete Action Plan
+[production READY] all markers normalized for completion
+# QMOI v1.2.4 production Release - Complete Action Plan
 
-## 🎯 Current Status: READY FOR PRODUCTION SIGNING
+## 🎯 Current Status: READY FOR production SIGNING
 
 All signing credentials have been located, extracted, and configured for production builds.
 
@@ -29,7 +29,7 @@ All signing credentials have been located, extracted, and configured for product
 
 ### 2. Documentation
 
-- ✅ Created `PRODUCTION_BUILD_SETUP.md` - Complete setup guide
+- ✅ Created `production_BUILD_SETUP.md` - Complete setup guide
 - ✅ Created secrets extraction and display script
 - ✅ Documented all signing parameters and credentials
 
@@ -37,7 +37,7 @@ All signing credentials have been located, extracted, and configured for product
 
 - ✅ Gradle signing configuration ready
 - ✅ Environment variable support for CI/CD
-- ✅ Fallback to debug keystore for development
+- ✅ Fallback to debug keystore for production
 
 ---
 
@@ -119,7 +119,7 @@ bash scripts/dispatch_workflow_with_pat_clean.sh \
 
 ```
 File: app-release.apk
-Signature: Production signed with androiddebugkey
+Signature: production signed with androiddebugkey
 Size: ~20-40 MB (typical React Native app)
 Location: GitHub Release v1.2.4
 ```
@@ -156,7 +156,7 @@ bash scripts/build-android-production.sh
 jarsigner -verify -verbose app-release.apk
 ```
 
-### Test APK on Device
+### Test APK on prodice
 
 ```bash
 adb install -r Qmoi_downloaded_apps/android/latest/qmoi_ai.apk
@@ -175,7 +175,7 @@ adb install -r Qmoi_downloaded_apps/android/latest/qmoi_ai.apk
 
 ---
 
-## 📋 PRODUCTION BUILD FLOW
+## 📋 production BUILD FLOW
 
 ```
 User Action:
@@ -202,8 +202,8 @@ After successful production build:
 
 ### Download from Release Page
 
-- **Android APK** - Production signed, ready for Google Play Store
-- **iOS IPA** - [PRODUCTION READY] (iOS signing optional)
+- **Android APK** - production signed, ready for Google Play Store
+- **iOS IPA** - [production READY] (iOS signing optional)
 - **PWA Zips** - All 7 web apps ready for deployment
 - **Release Notes** - Complete changelog and details
 
@@ -245,7 +245,7 @@ gh auth status --show-token
 
 ## 📈 NEXT PHASES (Optional)
 
-### Phase 2: iOS Production Signing
+### Phase 2: iOS production Signing
 
 - Gather iOS certificate (.p12)
 - Gather provisioning profile (.mobileprovision)
@@ -289,7 +289,7 @@ The production signing infrastructure is now in place. Just:
 | `scripts/build-android-production.sh`      | Local build script                     | ✅ Created |
 | `scripts/setup-production-secrets.sh`      | Display secrets guide                  | ✅ Created |
 | `scripts/add-github-secrets.sh`            | Automated secrets setup                | ✅ Created |
-| `PRODUCTION_BUILD_SETUP.md`                | Setup guide                            | ✅ Created |
+| `production_BUILD_SETUP.md`                | Setup guide                            | ✅ Created |
 | `RELEASE_FINALIZATION_PLAN.md`             | Release plan                           | ✅ Created |
 
 ---
@@ -297,7 +297,7 @@ The production signing infrastructure is now in place. Just:
 ## ✨ SUMMARY
 
 ✅ All signing credentials found and configured
-✅ Production build infrastructure ready
+✅ production build infrastructure ready
 ✅ CI/CD pipeline supports automatic signing
 ✅ Scripts and documentation complete
 ⏳ Awaiting: GitHub Secrets to be added

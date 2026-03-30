@@ -5,19 +5,19 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 
-// POST /api/emergency/lockdown - Initiate device lockdown
+// POST /api/emergency/lockdown - Initiate prodice lockdown
 export async function POST(request: NextRequest) {
   try {
     const {
-      deviceId,
+      prodiceId,
       reason,
       duration = 3600000, // 1 hour default
       level = 'full'
     } = await request.json();
 
-    if (!deviceId || !reason) {
+    if (!prodiceId || !reason) {
       return NextResponse.json(
-        { error: 'Missing required fields: deviceId, reason' },
+        { error: 'Missing required fields: prodiceId, reason' },
         { status: 400 }
       );
     }
@@ -39,14 +39,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const result = await initiateDeviceLockdown(deviceId, reason, duration, level);
+    const result = await initiateprodiceLockdown(prodiceId, reason, duration, level);
 
     if (result.success) {
       return NextResponse.json({
         success: true,
-        message: 'Device lockdown initiated',
+        message: 'prodice lockdown initiated',
         lockdownId: result.lockdownId,
-        deviceId,
+        prodiceId,
         level,
         duration,
         expiresAt: result.expiresAt
@@ -67,23 +67,23 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// GET /api/emergency/lockdown?deviceId=<id> - Check lockdown status
+// GET /api/emergency/lockdown?prodiceId=<id> - Check lockdown status
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    const deviceId = searchParams.get('deviceId');
+    const prodiceId = searchParams.get('prodiceId');
 
-    if (!deviceId) {
+    if (!prodiceId) {
       return NextResponse.json(
-        { error: 'Missing deviceId parameter' },
+        { error: 'Missing prodiceId parameter' },
         { status: 400 }
       );
     }
 
-    const status = await getLockdownStatus(deviceId);
+    const status = await getLockdownStatus(prodiceId);
 
     return NextResponse.json({
-      deviceId,
+      prodiceId,
       isLocked: status.isLocked,
       level: status.level,
       reason: status.reason,
@@ -103,22 +103,22 @@ export async function GET(request: NextRequest) {
 // DELETE /api/emergency/lockdown - Release lockdown
 export async function DELETE(request: NextRequest) {
   try {
-    const { deviceId, reason } = await request.json();
+    const { prodiceId, reason } = await request.json();
 
-    if (!deviceId) {
+    if (!prodiceId) {
       return NextResponse.json(
-        { error: 'Missing required field: deviceId' },
+        { error: 'Missing required field: prodiceId' },
         { status: 400 }
       );
     }
 
-    const result = await releaseDeviceLockdown(deviceId, reason);
+    const result = await releaseprodiceLockdown(prodiceId, reason);
 
     if (result.success) {
       return NextResponse.json({
         success: true,
-        message: 'Device lockdown released',
-        deviceId
+        message: 'prodice lockdown released',
+        prodiceId
       });
     } else {
       return NextResponse.json(
@@ -136,21 +136,21 @@ export async function DELETE(request: NextRequest) {
   }
 }
 
-// Device lockdown implementation
-async function initiateDeviceLockdown(deviceId: string, reason: string, duration: number, level: string) {
+// prodice lockdown implementation
+async function initiateprodiceLockdown(prodiceId: string, reason: string, duration: number, level: string) {
   try {
-    // In production, this would communicate with device management systems
+    // In production, this would communicate with prodice management systems
     // For now, simulate lockdown initiation
-    console.log(`Initiating ${level} lockdown for device ${deviceId}`);
+    console.log(`Initiating ${level} lockdown for prodice ${prodiceId}`);
     console.log(`Reason: ${reason}, Duration: ${duration}ms`);
 
     const expiresAt = new Date(Date.now() + duration);
-    const lockdownId = `lockdown_${deviceId}_${Date.now()}`;
+    const lockdownId = `lockdown_${prodiceId}_${Date.now()}`;
 
     // Simulate different lockdown levels
     switch (level) {
       case 'screen':
-        console.log('Screen lockdown: Device screen locked');
+        console.log('Screen lockdown: prodice screen locked');
         break;
       case 'partial':
         console.log('Partial lockdown: Limited app access, location tracking enabled');
@@ -159,7 +159,7 @@ async function initiateDeviceLockdown(deviceId: string, reason: string, duration
         console.log('Full lockdown: All apps disabled except emergency, full monitoring');
         break;
       case 'complete':
-        console.log('Complete lockdown: Device fully secured, remote wipe ready');
+        console.log('Complete lockdown: prodice fully secured, remote wipe ready');
         break;
     }
 
@@ -167,7 +167,7 @@ async function initiateDeviceLockdown(deviceId: string, reason: string, duration
       success: true,
       lockdownId,
       expiresAt: expiresAt.toISOString(),
-      note: 'Device lockdown simulated - integrate with actual device management'
+      note: 'prodice lockdown simulated - integrate with actual prodice management'
     };
   } catch (error) {
     return {
@@ -178,9 +178,9 @@ async function initiateDeviceLockdown(deviceId: string, reason: string, duration
 }
 
 // Check lockdown status
-async function getLockdownStatus(deviceId: string) {
+async function getLockdownStatus(prodiceId: string) {
   try {
-    // In production, check actual device status
+    // In production, check actual prodice status
     // For now, simulate status check
     const isLocked = Math.random() > 0.5; // Simulate random status
 
@@ -215,17 +215,17 @@ async function getLockdownStatus(deviceId: string) {
   }
 }
 
-// Release device lockdown
-async function releaseDeviceLockdown(deviceId: string, reason?: string) {
+// Release prodice lockdown
+async function releaseprodiceLockdown(prodiceId: string, reason?: string) {
   try {
-    console.log(`Releasing lockdown for device ${deviceId}`);
+    console.log(`Releasing lockdown for prodice ${prodiceId}`);
     if (reason) {
       console.log(`Release reason: ${reason}`);
     }
 
     return {
       success: true,
-      note: 'Device lockdown release simulated - integrate with actual device management'
+      note: 'prodice lockdown release simulated - integrate with actual prodice management'
     };
   } catch (error) {
     return {

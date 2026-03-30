@@ -7,7 +7,7 @@
 #!/usr/bin/env node
 
 /**
- * QMOI Enhanced - Production Environment Validator
+ * QMOI Enhanced - production Environment Validator
  * Validates all production configuration before deployment
  */
 
@@ -39,7 +39,7 @@ class EnvironmentValidator {
   validate() {
     log.info("Validating production environment...\n");
 
-    this.validateNodeVersion();
+    this.validateNoprodersion();
     this.validateEnvFile();
     this.validateDatabaseConfig();
     this.validateJWTSecrets();
@@ -51,7 +51,7 @@ class EnvironmentValidator {
     return this.errors.length === 0;
   }
 
-  validateNodeVersion() {
+  validateNoprodersion() {
     log.info("Checking Node.js version...");
     const version = process.version;
     const major = parseInt(version.split(".")[0].substring(1));

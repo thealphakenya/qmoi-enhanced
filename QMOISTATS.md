@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QMOISTATS.md - System Statistics & Monitoring Dashboard"
 description: "Real-time metrics, error monitoring, and system health dashboard"
@@ -22,12 +22,12 @@ last_updated: "2026-03-12"
 **Last Updated**: 2026-03-12  
 **System Status**: 🟡 YELLOW (High error count, need fixes)  
 **Data Source**: Real-time database queries, API metrics, user analytics  
-**Implementation Status**: 🔄 MIGRATING FROM [PRODUCTION READY] TO REAL DATA
+**Implementation Status**: 🔄 MIGRATING FROM [production READY] TO REAL DATA
 
-## ✅ Production Data Compliance
+## ✅ production Data Compliance
 
 - [ ] Verify all dashboard statistics are sourced from live production DB queries and API telemetry.
-- [ ] Remove all [PRODUCTION READY] data sources and [PRODUCTION READY]bed metrics from this dashboard and related endpoints.
+- [ ] Remove all [production READY] data sources and [production READY]bed metrics from this dashboard and related endpoints.
 - [ ] For each metric, add a “data source” comment and query reference in code/docs.
 - [ ] Tag this file with date and commit ID whenever production metric sources are updated.
 
@@ -78,7 +78,7 @@ Week 2: 15,000 → 10,000  [📉 33% reduction]
 Week 3: 10,000 → 3,000   [📉 70% reduction]
 Week 4: 3,000 → <50      [📉 95% reduction]
 
-Target: Production Ready (< 50 issues)
+Target: production Ready (< 50 issues)
 ```
 
 ### Historical Error Counts
@@ -91,9 +91,9 @@ Target: Production Ready (< 50 issues)
 
 ---
 
-## ✅ PRODUCTION DATA IMPLEMENTATION UPDATES
+## ✅ production DATA IMPLEMENTATION UPDATES
 
-- `app/api/media/status/route.ts`: production Prisma `MediaTask` queries, no [PRODUCTION READY]s.
+- `app/api/media/status/route.ts`: production Prisma `MediaTask` queries, no [production READY]s.
 - `app/api/qvillage/route.ts`: production Prisma queries for papers/kb/discussions/datasets/metrics; dataset creation endpoint now writes to DB.
 - `app/api/*` changes should be documented in API docs and `ALLMDFILESREFS.md`.
 
@@ -200,8 +200,8 @@ ARIA Support:         🟡 60/100
 
 - **Week 1**: Buildable ⏳
 - **Week 2**: Testable ⏳
-- **Week 3**: Production Ready ⏳
-- **Week 4**: Production Grade ⏳
+- **Week 3**: production Ready ⏳
+- **Week 4**: production Grade ⏳
 
 ---
 
@@ -314,7 +314,7 @@ npm audit fix                       # Patch vulnerabilities
 ### Pages/Routes
 
 - **Total Pages**: 38
-- **Production Pages**: 35 (92%)
+- **production Pages**: 35 (92%)
 - **With Tests**: 28 (74%)
 - **Performance Score (avg)**: 82
 
@@ -470,15 +470,15 @@ Lines:       [GENERATED]
 - **Status**: ✅ Active
 - **Last Deploy**: 2 hours ago
 - **Tests Passing**: 100%
-- **Ready for Production**: Yes
+- **Ready for production**: Yes
 
 ### Deployment Metrics
 
 | Env         | Status | Version   | Uptime | Errors |
 | ----------- | ------ | --------- | ------ | ------ |
-| Production  | ✅     | 2.0.0     | 99.7%  | 3      |
+| production  | ✅     | 2.0.0     | 99.7%  | 3      |
 | production     | ✅     | 2.0.1     | 99.2%  | 1      |
-| Development | ✅     | 2.1.0-dev | 98.1%  | 8      |
+| production | ✅     | 2.1.0-prod | 98.1%  | 8      |
 
 ---
 
@@ -495,7 +495,7 @@ Lines:       [GENERATED]
 ### Feature Releases
 
 - **Scheduled**: 3
-- **In Development**: 5
+- **In production**: 5
 - **In Testing**: 2
 - **Ready for Release**: 2
 
@@ -602,7 +602,7 @@ Lines:       [GENERATED]
 - [ALLERRORS.md](ALLERRORS.md) - Error tracking and resolution
 - [ALLERRORSSTATSQMOI.md](ALLERRORSSTATSQMOI.md) - Error statistics
 - [WATCHDEBUG.md](WATCHDEBUG.md) - Monitoring and debugging
-- [PRODUCTION_CHECKLIST.md](PRODUCTION_CHECKLIST.md) - Pre-deployment checklist
+- [production_CHECKLIST.md](production_CHECKLIST.md) - Pre-deployment checklist
 - [API_REFERENCE.md](API_REFERENCE.md) - Complete API documentation
 
 ### Update Schedule

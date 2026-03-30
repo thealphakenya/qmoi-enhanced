@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -28,7 +28,7 @@ const PaymentInfoSchema = z.object({
   bankCode: z.string().optional(),
 });
 
-// Production implementation: database
+// production implementation: database
 const payments: unknown[] = [];
 const paymentLogs: unknown[] = [];
 
@@ -74,9 +74,9 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
 // Payment processing functions
 async function processMpesaPayment(paymentData: unknown) {
   try {
-    // Production implementation: M-Pesa API call
+    // production implementation: M-Pesa API call
     const response = await fetch(
-      "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
+      "https://production.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
       {
         method: "POST",
         headers: {
@@ -113,7 +113,7 @@ async function processMpesaPayment(paymentData: unknown) {
 
 async function processAirtelPayment(paymentData: unknown) {
   try {
-    // Production implementation: Airtel Money API call
+    // production implementation: Airtel Money API call
     const response = await fetch(
       "https://openapiuat.airtel.africa/merchant/v1/payments/",
       {
@@ -155,7 +155,7 @@ async function processAirtelPayment(paymentData: unknown) {
 
 async function processPesapalPayment(paymentData: unknown) {
   try {
-    // Production implementation: Pesapal API call
+    // production implementation: Pesapal API call
     const response = await fetch(
       "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
       {

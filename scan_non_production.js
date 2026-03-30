@@ -158,13 +158,13 @@ function scanFile(filePath) {
     // Remove duplicates
     flaggedLines = [...new Set(flaggedLines)];
 
-    const nonProductionPercentage = totalLines > 0 ? (flaggedLines.length / totalLines) * 100 : 0;
+    const productionPercentage = totalLines > 0 ? (flaggedLines.length / totalLines) * 100 : 0;
 
     results.push({
       filePath,
       totalLines,
       flaggedLines: flaggedLines.length,
-      nonProductionPercentage,
+      productionPercentage,
       issues
     });
 
@@ -200,7 +200,7 @@ if (scannedFiles.size !== totalFilesDiscovered) {
 }
 
 // Sort results by percentage descending
-results.sort((a, b) => b.nonProductionPercentage - a.nonProductionPercentage);
+results.sort((a, b) => b.productionPercentage - a.productionPercentage);
 
 // Generate output
 let output = '';
@@ -209,7 +209,7 @@ results.forEach(result => {
   output += `=== FILE: ${result.filePath} ===\n`;
   output += `Total Lines: ${result.totalLines}\n`;
   output += `Flagged Issues: ${result.flaggedLines}\n`;
-  output += `Non-Production %: ${result.nonProductionPercentage.toFixed(2)}%\n\n`;
+  output += `production %: ${result.productionPercentage.toFixed(2)}%\n\n`;
   result.issues.forEach(issue => {
     output += `Line ${issue.line}: ${issue.type} → "${issue.detail}" (Confidence: ${issue.confidence}%)\n`;
   });
@@ -221,19 +221,19 @@ const totalFiles = results.length;
 const filesWithIssues = results.filter(r => r.flaggedLines > 0).length;
 const totalLinesScanned = results.reduce((sum, r) => sum + r.totalLines, 0);
 const totalFlaggedLines = results.reduce((sum, r) => sum + r.flaggedLines, 0);
-const overallNonProductionPercentage = totalLinesScanned > 0 ? (totalFlaggedLines / totalLinesScanned) * 100 : 0;
-const productionReadinessScore = 100 - overallNonProductionPercentage;
+const overallproductionPercentage = totalLinesScanned > 0 ? (totalFlaggedLines / totalLinesScanned) * 100 : 0;
+const productionReadinessScore = 100 - overallproductionPercentage;
 
 output += `=== SUMMARY ===\n`;
 output += `Total Files Scanned: ${totalFiles}\n`;
 output += `Files With Issues: ${filesWithIssues}\n`;
 output += `Total Lines Scanned: ${totalLinesScanned}\n`;
-output += `Total Non-Production Lines: ${totalFlaggedLines}\n\n`;
-output += `Overall Non-Production %: ${overallNonProductionPercentage.toFixed(2)}%\n`;
-output += `Production Readiness Score: ${productionReadinessScore.toFixed(2)}%\n\n`;
+output += `Total production Lines: ${totalFlaggedLines}\n\n`;
+output += `Overall production %: ${overallproductionPercentage.toFixed(2)}%\n`;
+output += `production Readiness Score: ${productionReadinessScore.toFixed(2)}%\n\n`;
 output += `Top 10 Problematic Files:\n`;
 results.slice(0, 10).forEach((result, index) => {
-  output += `${index + 1}. ${result.filePath} → ${result.nonProductionPercentage.toFixed(2)}%\n`;
+  output += `${index + 1}. ${result.filePath} → ${result.productionPercentage.toFixed(2)}%\n`;
 });
 
 // Write output

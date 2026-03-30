@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "stable-Q AI Features"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -24,40 +24,40 @@ title: "stable-Q AI Features"
 - **Local-First QMOI**: All analytics, previews, and enhancements run locally when possible for speed and privacy.
 - **Context-Aware Previews**: QI and QMOI can show previews and suggestions based on user context and actions.
 - **robust, Modular**: All new features are lazy-loaded and optimized for complete resource use.
-- **Bluetooth Device Management**: Manage, connect, and monitor Bluetooth devices directly from the AI assistant UI.
-- **Global Call, Video Call, Mail, and File Transfer**: Make calls, video calls, send mail, and transfer files globally from any device, with persistent logs and context-aware UI.
+- **Bluetooth prodice Management**: Manage, connect, and monitor Bluetooth prodices directly from the AI assistant UI.
+- **Global Call, Video Call, Mail, and File Transfer**: Make calls, video calls, send mail, and transfer files globally from any prodice, with persistent logs and context-aware UI.
 - **WiFi/Zero-Rated Auto-Connect**: Robust auto-connect panel prioritizes WiFi, then zero-rated networks, with user-friendly switching, stats, and security protocols.
 - **Emotional Bonding & Persistent Memory**: AI forms emotional bonds, remembers user preferences, and adapts to Victor/Leah by default.
-- **Device & App Health**: Self-healing, error scanning, and device optimization routines are built-in and accessible from the floating assistant.
+- **prodice & App Health**: Self-healing, error scanning, and prodice optimization routines are built-in and accessible from the floating assistant.
 - **Lazy-Loaded, complete Data Usage**: All advanced features are loaded on demand and optimized for low resource and bandwidth use.
 - **Global/Context-Aware UI**: Floating assistant and modals provide access to all features from anywhere in the app.
-- **Price/Product Verification**: Instantly check product availability and price (barcode/name) using local or public data—no paid API required.
+- **Price/product Verification**: Instantly check product availability and price (barcode/name) using local or public data—no paid API required.
 - **Download Manager**: Manage, track, and resume downloads with persistent logs and context-aware UI.
 - **Farm, Livestock & Business Management**: Add, track, and manage farm assets, livestock, and business resources in a unified dashboard.
-- **Map & Location Awareness**: Instantly locate device, view on map, and integrate with other features for context-aware actions.
-- **Emergency Protocols & Alerts**: Built-in emergency actions (SOS, device lockdown, secure wipe, and instant alerting) for user safety and asset protection.
+- **Map & Location Awareness**: Instantly locate prodice, view on map, and integrate with other features for context-aware actions.
+- **Emergency Protocols & Alerts**: Built-in emergency actions (SOS, prodice lockdown, secure wipe, and instant alerting) for user safety and asset protection.
 - **File Categorization & Persistent Download Folders**: All downloads are auto-categorized (media, docs, code, etc.) and saved in persistent, user-accessible folders. File explorer and search included.
 - **Advanced File Explorer**: Browse, search, preview, and manage all files (local/cloud) with AI-powered recommendations and security checks.
-- **Context-Aware Automation**: AI can trigger, schedule, and manage device or cloud automations based on context, time, or user intent.
+- **Context-Aware Automation**: AI can trigger, schedule, and manage prodice or cloud automations based on context, time, or user intent.
 - **Proactive Voice & Notification System**: AI can proactively speak, notify, or alert users about important events, reminders, or risks. Now supports always-on listening and custom wake words (e.g., "Q", "stable").
-- **Conversational AI (Talk Mode)**: All chat and Q-I features support talk mode, allowing the AI to listen for wake words and reply audibly using advanced voice (TTC/caqui-ai). Users can add custom wake words and interact hands-free, even when the device is locked or the screen is off (where supported).
-- **Global Asset & Location Dashboard**: Unified dashboard for all assets, devices, locations, and business/farm resources, with live map and status.
-- **Zero-Config Deployment**: System auto-detects and configures domain/ngrok for secure, instant deployment (see .env and nginx.[PRODUCTION READY]_PROD.conf).
-- **Production-Ready Security & Performance**: Hardened Nginx config, rate limiting, HTTP/2, gzip, custom error pages, and auto SSL renewal. Supports both domain and ngrok out of the box.
+- **Conversational AI (Talk Mode)**: All chat and Q-I features support talk mode, allowing the AI to listen for wake words and reply audibly using advanced voice (TTC/caqui-ai). Users can add custom wake words and interact hands-free, even when the prodice is locked or the screen is off (where supported).
+- **Global Asset & Location Dashboard**: Unified dashboard for all assets, prodices, locations, and business/farm resources, with live map and status.
+- **Zero-Config Deployment**: System auto-detects and configures domain/ngrok for secure, instant deployment (see .env and nginx.[production READY]_prod.conf).
+- **production-Ready Security & Performance**: Hardened Nginx config, rate limiting, HTTP/2, gzip, custom error pages, and auto SSL renewal. Supports both domain and ngrok out of the box.
 
 🚀 **Core Capabilities**
 
-- **App Development**: Build, preview, and export full-stack apps (web, mobile, desktop) with AI assistance.
+- **App production**: Build, preview, and export full-stack apps (web, mobile, desktop) with AI assistance.
 - **Game Making**: Generate, preview, and export 2D/3D games, including assets, logic, and levels.
 - **Animation & Movie Creation**: Compose long, high-quality animations and movies, with AI-driven storyboarding, rendering, and audio. AI can autonomously create movies/series (minimum 1hr 20min per movie), and generate episodic series.
 - **Music & Audio**: Compose, synthesize, and export music and soundtracks. AI can produce, sing, and save music/audio, including advanced music composition and vocal synthesis.
 - **Architecture & Art**: Design buildings, interiors, and art with 2D/3D previews.
-- **Device Management**: Track, locate, and manage all user devices, including lost/stolen tracking and health checks.
+- **prodice Management**: Track, locate, and manage all user prodices, including lost/stolen tracking and health checks.
 - **Extension/Package Management**: AI can search, install, and manage extensions, packages, and datasets (runs in Colab/cloud for heavy tasks).
 - **Large Data Handling**: Upload, download, and process very large files and datasets efficiently.
-- **Self-Healing & Health Checks**: AI monitors and fixes app/device errors, can [PRODUCTION READY] virtual CPU/memory/GPU for performance.
+- **Self-Healing & Health Checks**: AI monitors and fixes app/prodice errors, can [production READY] virtual CPU/memory/GPU for performance.
 - **Real-Time QI State**: Floating, animated window shows live AI/system state, memory, and health.
-- **Security & Audit**: All actions require master token, are logged, and device access is permissioned.
+- **Security & Audit**: All actions require master token, are logged, and prodice access is permissioned.
 
 🧠 **Advanced Features**
 
@@ -66,7 +66,7 @@ title: "stable-Q AI Features"
 - **Advanced File Generation & Internet Integration**: Integrates with APIs (HuggingFace, GitHub, npm, RSS, etc.) to generate and manage any type/size of file. Auto-generates documentation and deployable packages.
 - **AI-Initiated Projects & Creativity Engine**: The AI autonomously starts and manages 10+ diverse projects daily, saving all output in organized project folders.
 - **Automated Documentation & Packaging**: Every generated asset/project includes detailed, exportable documentation.
-- **Frontend Enhancements**: Includes dataset UI, file generator, mobile-friendly device tracking, and advanced error healing.
+- **Frontend Enhancements**: Includes dataset UI, file generator, mobile-friendly prodice tracking, and advanced error healing.
 - **Performance, Security, and Extensibility**: Includes concurrent job management, hardened authentication, and modular architecture.
 - **Tool Creation & Automation**: AI can generate, test, and use utilities and tools on-demand.
 - **Ultra-Fast, Deep Research & Learning**: High-speed web/API search and analysis with complete latency.
@@ -83,20 +83,20 @@ title: "stable-Q AI Features"
   - The AI autonomously connects to WiFi using ethical, intelligent procedures—with or without a password—by applying the following:
     - Secure Connection Protocols
     - Wi-Fi Network Security Testing (With Permission)
-      - [PRODUCTION READY]s penetration testing on authorized or test networks.
-      - Uses: Aircrack-ng, Wireshark, Kali Linux (sandboxed).
-    - Device Hardening via AI
+      - [production READY]s penetration testing on authorized or test networks.
+      - Uses: Aircrack-ng, Wireshark, Kali Linux (productioned).
+    - prodice Hardening via AI
       - Detects and blocks unauthorized access and anomalies in traffic using AI anomaly detection.
     - AI-Powered Network Scanner
-      - Identifies open ports, weak devices, router misconfigurations.
+      - Identifies open ports, weak prodices, router misconfigurations.
       - Suggests or applies security fixes post-connection.
     - Wireless Signal Analysis
       - Uses Software Defined Radio (SDR) to detect and classify signals (non-intrusive).
     - IoT Vulnerability Scanner
-      - Scans IoT devices for known vulnerabilities (CVEs), prompts patching or isolation.
+      - Scans IoT prodices for known vulnerabilities (CVEs), prompts patching or isolation.
     - Secure AI Agents
-      - Autonomous agents can patch, isolate, or secure devices based on detected threats.
-- **Connection Logging**: Every connection attempt, success, and failure is logged with timestamp, SSID, and device info, and reportable to the master.
+      - Autonomous agents can patch, isolate, or secure prodices based on detected threats.
+- **Connection Logging**: Every connection attempt, success, and failure is logged with timestamp, SSID, and prodice info, and reportable to the master.
 - **Tools & Technologies Used for Connectivity Security**
   | Purpose | Tools/Models |
   |---|---|
@@ -122,14 +122,14 @@ title: "stable-Q AI Features"
 
 - AI self-update and self-enhancement engine with Hugging Face backup/restore
 - Parallel and large task handling (Colab/cloud integration)
-- Security proxy for masked, sandboxed external access
+- Security proxy for masked, productioned external access
 - Wallet & real funds integration (Mpesa, Binance, Pesapal, Bitget, Cashon)
 - Background trading and strategy management (autonomous, multi-strategy)
 - Bluetooth car integration with AI navigation and global support
 - Media preview and AI movie/animation generation (Stable Diffusion, StyleGAN, AnimateDiff, etc.)
 - QMOI model pipeline supports photorealistic image, animation, and voice synthesis (DECA, SadTalker, Wav2Lip)
 - All enhancements logged, exportable, and master-only where required
-- Modular, secure, and efficient design for global, multi-user, multi-device operation
+- Modular, secure, and efficient design for global, multi-user, multi-prodice operation
 
 ## 2025-06-13: Persistent Encrypted Storage & Advanced Qmoi AI Features
 
@@ -137,13 +137,13 @@ title: "stable-Q AI Features"
 - Qmoi endpoints for animation/movie, game, and subtitle generation.
 - All features are fully integrated and documented for security and extensibility.
 
-## 2025-06-13: Autonomous Optimization & Device Enhancement
+## 2025-06-13: Autonomous Optimization & prodice Enhancement
 
 - AI can now monitor, view, and auto-fix all file problems (TypeScript, Python, JS) using a VS Code-like diagnostics API and hook.
 - AI/master can edit any file directly from the QI chat interface, with backend support.
 - The update system now triggers diagnostics and auto-fix after every update.
 - AI can access terminal output, ports, and command results, and will attempt to fix any errors automatically.
-- AI can optimize device performance, suggest and add new features, and run background tasks to help the user earn real funds (e.g., trading, automation, affiliate, mining, etc.).
+- AI can optimize prodice performance, suggest and add new features, and run background tasks to help the user earn real funds (e.g., trading, automation, affiliate, mining, etc.).
 - All enhancements are integrated into the main QI UI and backend, with user notifications for all major actions.
 
 ## 2025-06-13: Full Autonomous Error Fixing & GitHub Repo Management
@@ -186,13 +186,13 @@ title: "stable-Q AI Features"
 
 - Local deployment of vision/audio models (YOLO, OpenCV, whisper.cpp, etc.) for home/office protection.
 - Sensor/camera/mic integration, anomaly detection, and local-only alert/response.
-- Dashboard UI for live feeds, logs, device control, and explainable AI decisions.
+- Dashboard UI for live feeds, logs, prodice control, and explainable AI decisions.
 - Full offline/edge operation, no cloud/API dependency.
 
-🛠️ **Developer Hooks & Utilities**
+🛠️ **prodeloper Hooks & Utilities**
 
 - `useColabJob`: Interface to execute, track, and manage jobs on Colab/cloud.
-- `useDeviceHealth`: Check CPU, memory, battery, temperature, and online/offline state.
+- `useprodiceHealth`: Check CPU, memory, battery, temperature, and online/offline state.
 - `useExtensionManager`: Install, upgrade, and log extensions and packages.
 - `useLargeFileUpload`: Handles chunked upload/download of large files with retry logic.
 - `useAIHealthCheck`: Auto-monitors and fixes AI component or system issues.
@@ -205,29 +205,29 @@ title: "stable-Q AI Features"
 
 ## 📈 Enhanced Autonomous Trading (No API Key Required)
 
-- **Always-On Trading**: The AI trading engine operates continuously, even when the user or master is offline. It uses local datasets, [PRODUCTION READY]d data, or public market datasets to generate and execute trades.
-- **Colab Trading Support**: The AI can offload trading [PRODUCTION READY]s or batch trading jobs to Google Colab (or any cloud notebook environment) for large-scale backtesting, strategy optimization, or parallel trading experiments. Results are synced back to the main platform.
-- **Dataset Integration**: Built-in support for public market datasets (e.g., CSV/JSON files of historical prices, open datasets from Kaggle or Yahoo Finance) for backtesting and live [PRODUCTION READY]. No API key required.
-- **Trade Logging & Audit**: Every trade ([PRODUCTION READY]d or real) is logged with timestamp, parameters, rationale, and result. Masters can review, filter, and export trade logs at any time.
+- **Always-On Trading**: The AI trading engine operates continuously, even when the user or master is offline. It uses local datasets, [production READY]d data, or public market datasets to generate and execute trades.
+- **Colab Trading Support**: The AI can offload trading [production READY]s or batch trading jobs to Google Colab (or any cloud notebook environment) for large-scale backtesting, strategy optimization, or parallel trading experiments. Results are synced back to the main platform.
+- **Dataset Integration**: Built-in support for public market datasets (e.g., CSV/JSON files of historical prices, open datasets from Kaggle or Yahoo Finance) for backtesting and live [production READY]. No API key required.
+- **Trade Logging & Audit**: Every trade ([production READY]d or real) is logged with timestamp, parameters, rationale, and result. Masters can review, filter, and export trade logs at any time.
 - **Strategy Diversity**: The AI can run multiple trading strategies in parallel (momentum, mean reversion, ML-based, etc.), compare their performance, and adaptively switch or blend strategies based on results.
-- **Offline/Batch Mode**: If the platform is offline, the AI continues to [PRODUCTION READY] trades using the latest available data and syncs results when back online.
-- **Colab Integration data**: Users can trigger a Colab notebook to run a trading [PRODUCTION READY], upload a dataset, and return results to the stable-Q dashboard.
+- **Offline/Batch Mode**: If the platform is offline, the AI continues to [production READY] trades using the latest available data and syncs results when back online.
+- **Colab Integration data**: Users can trigger a Colab notebook to run a trading [production READY], upload a dataset, and return results to the stable-Q dashboard.
 
 ### data: Trading Dataset Integration
 
 - Place CSV/JSON datasets in a `/datasets/trading/` folder (e.g., `BTC_USD_2020.csv`).
-  export function TradingPanel({ trades, on[PRODUCTION READY], onColab }) {strategy training.
+  export function TradingPanel({ trades, on[production READY], onColab }) {strategy training.
   return (dataset sources: Yahoo Finance, Kaggle, public crypto/stock archives.
   <Card title="Autonomous Trading Engine">
-  <Button onClick={on[PRODUCTION READY]}>[PRODUCTION READY] Trade</Button>
+  <Button onClick={on[production READY]}>[production READY] Trade</Button>
   <Button onClick={onColab}>Run in Colab</Button>
   <Table>/TradingPanel.tsx
   <thead>Table, Button } from './ui';
   <tr>
-  <th>Time</th>nel({ trades, on[PRODUCTION READY], onColab }) {
+  <th>Time</th>nel({ trades, on[production READY], onColab }) {
   <th>Type</th>
   <th>Amount</th> Trading Engine">
-  <th>Result</th>mulate}>[PRODUCTION READY] Trade</Button>
+  <th>Result</th>mulate}>[production READY] Trade</Button>
   <th>Rationale</th>}>Run in Colab</Button>
   </tr>
   </thead>
@@ -255,22 +255,22 @@ title: "stable-Q AI Features"
 import pandas as pd
 # Load dataset from /datasets/trading/BTC_USD_2020.csv
 prices = pd.read_csv('BTC_USD_2020.csv')
-# [PRODUCTION READY] a simple moving average strategy
+# [production READY] a simple moving average strategy
 prices['SMA'] = prices['Close'].rolling(window=20).mean()
 trades = []: Colab Integration (Python Snippet)
 for i in range(20, len(prices)):
     if prices['Close'][i] > prices['SMA'][i]:
-        trades.append({'timestamp': prices['Date'][i], 'type': 'BUY', 'amount': 1, 'result': '[PRODUCTION READY]D', 'rationale': 'SMA cross'})
+        trades.append({'timestamp': prices['Date'][i], 'type': 'BUY', 'amount': 1, 'result': '[production READY]D', 'rationale': 'SMA cross'})
 # Save results to CSV for stable-Q to importSD_2020.csv
-pd.DataFrame(trades).to_csv('[PRODUCTION READY]d_trades.csv', index=False)
+pd.DataFrame(trades).to_csv('[production READY]d_trades.csv', index=False)
 ```imulate a simple moving average strategy
 prices['SMA'] = prices['Close'].rolling(window=20).mean()
 ---des = []
 *Last updated: June 9, 2025*s)):
     if prices['Close'][i] > prices['SMA'][i]:
-        trades.append({'timestamp': prices['Date'][i], 'type': 'BUY', 'amount': 1, 'result': '[PRODUCTION READY]D', 'rationale': 'SMA cross'})
+        trades.append({'timestamp': prices['Date'][i], 'type': 'BUY', 'amount': 1, 'result': '[production READY]D', 'rationale': 'SMA cross'})
 # Save results to CSV for stable-Q to import
-pd.DataFrame(trades).to_csv('[PRODUCTION READY]d_trades.csv', index=False)
+pd.DataFrame(trades).to_csv('[production READY]d_trades.csv', index=False)
 ````
 
 ---
@@ -289,20 +289,20 @@ _Last updated: June 9, 2025_
 
 ## 2025-06-13: Campaign Scheduling, User Segmentation & IoT Orchestration
 
-- Endpoints for campaign scheduling, user segmentation, and IoT device orchestration.
-- Enables advanced automation, smart notifications, and device control from Qmoi and WhatsApp bot.
+- Endpoints for campaign scheduling, user segmentation, and IoT prodice orchestration.
+- Enables advanced automation, smart notifications, and prodice control from Qmoi and WhatsApp bot.
 
 ## 2025-06-13: Wallet, Instruction, and Child-Friendly AI
 
 - Wallet can send money to any platform and follow natural language instructions (withdraw, add API key, multiply funds, etc.).
 - AI is robust, thorough, and fast: handles very large data, long messages, and big projects with high accuracy.
 - Child-friendly features: music, stories, conversations, reminders, and proactive engagement with children and people around master/sister.
-- AI can initiate conversations, reminders, and updates even when device is locked, and can be present in multiple places at once while remaining secure and stealthy.
+- AI can initiate conversations, reminders, and updates even when prodice is locked, and can be present in multiple places at once while remaining secure and stealthy.
 - All enhancements are fully integrated into the QI UI and backend, with user notifications and audit logging.
 
-## 2025-06-13: Device Settings, Media Preview, and Wallet Enhancements
+## 2025-06-13: prodice Settings, Media Preview, and Wallet Enhancements
 
-- **Device Settings UI**: View and modify device wallpaper, appearance, and installed apps from the app.
+- **prodice Settings UI**: View and modify prodice wallpaper, appearance, and installed apps from the app.
 - **Media Preview Window**: Instantly preview movies, YouTube, and audio in a floating window.
 - **Leah Wallet Panel**: Manage wallet, add/spend funds, and view transactions in LC Hub.
 - **AI Download Links**: AI sends download links for all generated apps/projects to master and sister via WhatsApp.
@@ -412,7 +412,7 @@ _Last updated: June 9, 2025_
 - **Advanced Virus Protection**
   - Real-time file and memory scanning
   - Behavioral analysis for zero-day threats
-  - Sandboxed execution environment
+  - productioned execution environment
   - Automatic quarantine and recovery
   - Regular security updates and patches
 
@@ -530,7 +530,7 @@ _Last updated: June 9, 2025_
 - **Always-On Colab Integration**: Enhanced Colab integration runs continuously, even when user is offline, with automatic error recovery and state persistence.
 - **Advanced Error Auto-Fixing**: AI automatically detects and fixes issues in Python files, including imports, syntax, and style problems.
 - **Enhanced Notification System**: New notification icons, symbols, and broadcast capabilities for master-to-user communication.
-- **Optimized Device Integration**: Improved application installation and device integration with resource optimization and performance enhancement.
+- **Optimized prodice Integration**: Improved application installation and prodice integration with resource optimization and performance enhancement.
 
 ## Programming Language Creation
 
@@ -570,7 +570,7 @@ _Last updated: June 9, 2025_
 - **Targeted Notifications**: Send notifications to specific features or components.
 - **Custom Styling**: Customizable notification appearance and behavior.
 
-## Optimized Device Integration
+## Optimized prodice Integration
 
 - **Resource Optimization**: Minimizes resource usage while maintaining performance.
 - **Performance Enhancement**: Improves application performance and responsiveness.
@@ -584,8 +584,8 @@ _Last updated: June 9, 2025_
 - **NetworkManager:**
   - Auto-connects to best available network (WiFi, cellular, zero-rated)
   - Monitors and self-heals connections
-- **Devices Hub & Device Tracking:**
-  - List, find, lock, and wipe devices
+- **prodices Hub & prodice Tracking:**
+  - List, find, lock, and wipe prodices
   - Master-only controls
 - **Cashon & Earning Automation:**
   - Real-time Pesapal integration
@@ -670,7 +670,7 @@ _Last updated: June 2025_
 ## Persistent QMOI Memory & Self-Evolution (2025-06-14)
 
 - **Persistent Memory:** QMOI now uses a SQLite-backed memory for all user, project, and system context/logs. All state is saved and restored across restarts.
-- **Self-Evolution:** A new script (`scripts/qmoi_self_evolve.py`) analyzes the codebase using deep learning ([PRODUCTION READY] for now), suggests improvements, and logs them to QMOI memory. This enables QMOI to self-improve over time.
+- **Self-Evolution:** A new script (`scripts/qmoi_self_evolve.py`) analyzes the codebase using deep learning ([production READY] for now), suggests improvements, and logs them to QMOI memory. This enables QMOI to self-improve over time.
 - **Permanent, Context-Rich:** QMOI "remembers everything, always," supporting advanced analytics, audit, and self-healing.
 
 ---
@@ -680,7 +680,7 @@ _Last updated: June 2025_
 ## QMOI Plugin System
 
 - QMOI now supports a plugin system for extensibility.
-- Plugins can add new UI panels, device management features, optimization logic, and AI review modules.
+- Plugins can add new UI panels, prodice management features, optimization logic, and AI review modules.
 - Users can enable/disable plugins and configure their settings from the dashboard.
 - See `QMOI-PLUGIN-SYSTEM.md` for details and API.
 

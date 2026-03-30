@@ -7,8 +7,8 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-# QMOI Enhanced - Production-Ready Fintech Platform
+# [production READY] this file has no remaining production markers
+# QMOI Enhanced - production-Ready Fintech Platform
 
 [![CI/CD](https://github.com/thealphakenya/qmoi-enhanced/workflows/CI%2FCD/badge.svg)](https://github.com/thealphakenya/qmoi-enhanced/actions)
 [![Code Quality](https://img.shields.io/badge/code%20quality-A-brightgreen)](./CODE_QUALITY.md)
@@ -24,7 +24,7 @@ QMOI Enhanced is a production-ready financial platform built with modern web tec
 
 - Node.js 20+
 - npm or yarn
-- PostgreSQL 12+ (or SQLite for development)
+- PostgreSQL 12+ (or SQLite for production)
 - Redis (optional, for caching)
 
 ### Installation
@@ -41,10 +41,10 @@ npm install
 cp .env.local.data .env.local
 
 # Run database migrations
-npx prisma migrate dev
+npx prisma migrate prod
 
-# Start development server
-npm run dev
+# Start production server
+npm run prod
 ```
 
 Visit `https://qmoi.ai` - application is ready!
@@ -54,7 +54,7 @@ Visit `https://qmoi.ai` - application is ready!
 ### Getting Started
 
 - [Quick Start Guide](./QUICK_START.md) - 5-minute setup
-- [Production Setup](./PRODUCTION_SETUP.md) - Production deployment guide
+- [production Setup](./production_SETUP.md) - production deployment guide
 - [Environment Configuration](./ENVIRONMENT_CONFIG.md) - Environment variables guide
 
 ### API & Integration
@@ -62,10 +62,10 @@ Visit `https://qmoi.ai` - application is ready!
 - [API Documentation](./API.md) - Complete API reference
 - [Postman Collection](./postman-collection.json) - Importable API collection
 
-### Development
+### production
 
 - [Testing Guide](./TESTING.md) - Writing and running tests
-- [Development Setup](./DEVELOPMENT.md) - Detailed dev environment setup
+- [production Setup](./production.md) - Detailed prod environment setup
 
 ### Operations
 
@@ -135,9 +135,9 @@ qmoi-enhanced/
 │   ├── healthcheck.sh         # Health verification
 │   ├── backup.sh              # Database backup
 │   └── migrate.sh             # Safe migrations
-├── docker-compose.yml         # Local development stack
-├── Dockerfile                 # Production image
-├── PRODUCTION_SETUP.md        # Production guide
+├── docker-compose.yml         # Local production stack
+├── Dockerfile                 # production image
+├── production_SETUP.md        # production guide
 ├── DEPLOYMENT.md              # Deployment guide
 ├── API.md                     # API reference
 └── package.json               # Dependencies
@@ -270,15 +270,15 @@ See [SECURITY.md](./SECURITY.md) for details
 
 See [PERFORMANCE_GUIDE.md](./PERFORMANCE_GUIDE.md) for details
 
-## 🛠️ Development
+## 🛠️ production
 
-### Setup Development Environment
+### Setup production Environment
 
 ```bash
 npm install
 cp .env.local.data .env.local
-npx prisma migrate dev
-npm run dev
+npx prisma migrate prod
+npm run prod
 ```
 
 ### Code Quality
@@ -298,7 +298,7 @@ npm run format
 
 ```bash
 # Create migration
-npx prisma migrate dev --name add_feature
+npx prisma migrate prod --name add_feature
 
 # Reset database
 npx prisma migrate reset

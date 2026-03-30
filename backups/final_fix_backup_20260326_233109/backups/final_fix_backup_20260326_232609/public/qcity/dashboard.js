@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:31Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 async function fetchQCityConfig() {
   try {
     const res = await fetch("/api/qcity/config");
@@ -92,7 +92,7 @@ function setText(id, value) {
 async function updateQCityDashboard() {
   const status = await fetchQCityStatus();
   if (status) {
-    setText("device-status", status.running ? "Online" : "Offline");
+    setText("prodice-status", status.running ? "Online" : "Offline");
     setText(
       "controls-status",
       status.platforms.local ? "Ready" : "Unavailable",
@@ -155,7 +155,7 @@ async function updateQCityDashboard() {
   setText("logs-status", logsSummary);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.adprodentListener("DOMContentLoaded", () => {
   updateQCityDashboard();
   setInterval(updateQCityDashboard, 10000);
 

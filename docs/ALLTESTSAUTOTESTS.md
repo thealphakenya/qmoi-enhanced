@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-## Production Readiness Snapshot
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -26,7 +26,7 @@
 
 Purpose
 
-- A single reference file listing all tests and autotests, their purposes, how to run them locally and in CI, and how they integrate with self-heal and autodev.
+- A single reference file listing all tests and autotests, their purposes, how to run them locally and in CI, and how they integrate with self-heal and autoprod.
 
 Structure
 
@@ -41,10 +41,10 @@ Structure
   - tools: Playwright / Cypress / puppeteer or custom harness
   - purpose: full-user flows, eg: extension start, chat UI open, to-do automation flow
 - Self-heal tests
-  - purpose: [PRODUCTION READY] failures and assert self-heal reactions (restart, fallback)
+  - purpose: [production READY] failures and assert self-heal reactions (restart, fallback)
   - data: bring down a service and assert auto-restart via orchestration scripts
-- Autodev tests
-  - purpose: validate autodev pipelines (builds, cross-platform artifacts)
+- Autoprod tests
+  - purpose: validate autoprod pipelines (builds, cross-platform artifacts)
   - data: run build scripts for linux/mac/win in isolated containers
 
 How to run
@@ -52,10 +52,10 @@ How to run
 - Local quick-run (unit): `npm test` (or `pnpm test`) in service/package
 - CI: GitHub Actions workflows will run the matrix across OS/Node versions
 
-Integration with self-heal & autodev
+Integration with self-heal & autoprod
 
-- Tests should be labeled with metadata tags so the autotest runner can pick them (eg: `[self-heal]`, `[autodev]`).
-- The autotest runner collects results and decides remediation: re-run, add to [PRODUCTION READY], create incident.
+- Tests should be labeled with metadata tags so the autotest runner can pick them (eg: `[self-heal]`, `[autoprod]`).
+- The autotest runner collects results and decides remediation: re-run, add to [production READY], create incident.
 
 ## QVillage HF Space App Tests
 
@@ -98,7 +98,7 @@ python test_app.py
 
 **Location**: `email_system_tests.py`, `realtime_email_tests.py`  
 **Type**: Unit + Integration Tests  
-**Status**: ✅ Production Ready (25+/25+ tests)  
+**Status**: ✅ production Ready (25+/25+ tests)  
 **Last Run**: 2026-03-24  
 **Coverage**: Email automation, user creation, master dashboard, auth system, real-time sync
 
@@ -210,7 +210,7 @@ jobs:
 - Automatic restart procedures tested with service simulation
 - Fallback mechanisms verified for all critical operations
 
-### Autodev Integration
+### Autoprod Integration
 - Email system builds tested across platforms
 - Deployment artifacts validated
 - Integration with CI/CD pipelines verified
@@ -221,7 +221,7 @@ Files & CI refs
 
 Next steps
 
-- Generate test list automatically using `scripts/generate_test_index.py` ([PRODUCTION READY])
+- Generate test list automatically using `scripts/generate_test_index.py` ([production READY])
 - Add descriptions for tests listed in `teststoadd.txt` and map them to CI jobs
 
 <!-- QMOI_VALIDATION_START -->

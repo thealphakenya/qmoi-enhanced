@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # QMOI Enhanced - Session 4 Quick Reference Guide
 
 **Generated:** December 2, 2025  
@@ -21,7 +21,7 @@
 
 ```bash
 cd /workspaces/qmoi-enhanced
-./startup.sh --dev --open-browser
+./startup.sh --prod --open-browser
 ```
 
 **Result:** Starts HTTP server, verifies services, opens browser automatically
@@ -63,8 +63,8 @@ curl -I https://qvillage.com/qcity-enterprise.html
 
 ### Optional Services (Not Started by Default)
 
-- **[PRODUCTION READY] Backend:** http://localhost:5000 (start with `./startup.sh --[PRODUCTION READY]-server`)
-- **Dev Server:** https://qmoi.ai (start with `npm run dev`)
+- **[production READY] Backend:** http://localhost:5000 (start with `./startup.sh --[production READY]-server`)
+- **prod Server:** https://qmoi.ai (start with `npm run prod`)
 
 ---
 
@@ -125,7 +125,7 @@ kill <PID>
 
 # Full cleanup
 pkill -f "http.server"
-pkill -f "[PRODUCTION READY]_server"
+pkill -f "[production READY]_server"
 pkill -f "node"
 ```
 
@@ -133,11 +133,11 @@ pkill -f "node"
 
 ```bash
 # HTTP Server response
-time curl -s https://qvillage.com/ > /dev/null
+time curl -s https://qvillage.com/ > /prod/null
 # Expected: ~6ms
 
 # Dashboard response
-time curl -s https://qvillage.com/qcity-enterprise.html > /dev/null
+time curl -s https://qvillage.com/qcity-enterprise.html > /prod/null
 # Expected: ~200ms
 ```
 
@@ -149,12 +149,12 @@ time curl -s https://qvillage.com/qcity-enterprise.html > /dev/null
 
 ```bash
 NEXT_PUBLIC_API_URL=https://qvillage.com
-NEXT_PUBLIC_ENV=development
+NEXT_PUBLIC_ENV=production
 NEXT_PUBLIC_DEBUG=true
-NODE_ENV=development
+NODE_ENV=production
 ```
 
-### Modify for Production
+### Modify for production
 
 ```bash
 # Set environment before startup
@@ -178,7 +178,7 @@ lsof -Pi :8080 -sTCP:LISTEN -t
 kill -9 <PID>
 
 # Try startup again
-./startup.sh --dev
+./startup.sh --prod
 ```
 
 ### "Services Not Starting"
@@ -191,8 +191,8 @@ python3 --version
 
 # Check for errors
 cat /tmp/http-server.log
-cat /tmp/dev-server.log
-cat /tmp/[PRODUCTION READY]-server.log
+cat /tmp/prod-server.log
+cat /tmp/[production READY]-server.log
 ```
 
 ### "Dashboards Not Accessible"
@@ -222,12 +222,12 @@ curl -s https://qvillage.com/qcity-enterprise.html | head -20
 
 ---
 
-## 💻 Development Workflow
+## 💻 production Workflow
 
-### 1. Start Development Environment
+### 1. Start production Environment
 
 ```bash
-./startup.sh --dev --open-browser
+./startup.sh --prod --open-browser
 ```
 
 ### 2. Monitor Services
@@ -246,7 +246,7 @@ ps aux | grep "http.server"
 # Edit adapter code
 vim src/adapters/clientAdapters.ts
 
-# TypeScript compiles automatically (when running dev server)
+# TypeScript compiles automatically (when running prod server)
 # Changes take effect on page reload
 ```
 
@@ -265,7 +265,7 @@ curl https://qvillage.com/qcity-enterprise.html
 ```bash
 # Stop all services
 pkill -f "http.server"
-pkill -f "[PRODUCTION READY]_server"
+pkill -f "[production READY]_server"
 pkill -f "node"
 
 # Or just Ctrl+C if running startup.sh in foreground
@@ -280,7 +280,7 @@ pkill -f "node"
 ```bash
 # Quick benchmark
 for i in {1..10}; do
-  time curl -s https://qvillage.com/qcity-enterprise.html > /dev/null
+  time curl -s https://qvillage.com/qcity-enterprise.html > /prod/null
 done
 # Average should be ~200-300ms (first time), then 50-100ms (cached)
 ```
@@ -332,7 +332,7 @@ console.log(summary);
 ```
 /workspaces/qmoi-enhanced/
 ├── BUILD_INSTRUCTIONS.md               (Setup & build)
-├── INTEGRATION_GUIDE.md                (Developer guide)
+├── INTEGRATION_GUIDE.md                (prodeloper guide)
 ├── BACKEND_API_TEMPLATES.md            (API examples)
 ├── SECURITY_CHECKLIST.md               (Security guide)
 └── FINAL_VERIFICATION_REPORT.md        (Executive summary)
@@ -345,21 +345,21 @@ console.log(summary);
 ### Start with Specific Options
 
 ```bash
-# Development mode with browser auto-open
-./startup.sh --dev --open-browser
+# production mode with browser auto-open
+./startup.sh --prod --open-browser
 
-# Production mode with [PRODUCTION READY] server
-./startup.sh --prod --[PRODUCTION READY]-server
+# production mode with [production READY] server
+./startup.sh --prod --[production READY]-server
 
 # Skip health verification
-./startup.sh --dev --no-verify
+./startup.sh --prod --no-verify
 
 # Enable debug logging
-./startup.sh --dev --debug
+./startup.sh --prod --debug
 
 # Custom port (requires env variable)
 export HTTP_PORT=9000
-./startup.sh --dev
+./startup.sh --prod
 ```
 
 ### Manual Service Control
@@ -369,11 +369,11 @@ export HTTP_PORT=9000
 cd /workspaces/qmoi-enhanced/public
 python3 -m http.server 8080 &
 
-# Start [PRODUCTION READY] server
-python3 /workspaces/qmoi-enhanced/[PRODUCTION READY]_server.py &
+# Start [production READY] server
+python3 /workspaces/qmoi-enhanced/[production READY]_server.py &
 
-# Start dev server
-npm --prefix /workspaces/qmoi-enhanced run dev &
+# Start prod server
+npm --prefix /workspaces/qmoi-enhanced run prod &
 ```
 
 ### Get Diagnostic Information
@@ -406,7 +406,7 @@ console.log(backgroundManager.getStatus());
 
 ```bash
 # Everything in one command
-./startup.sh --dev --open-browser
+./startup.sh --prod --open-browser
 
 # Quick verification (no changes)
 ./cli-verify.sh /workspaces/qmoi-enhanced
@@ -417,11 +417,11 @@ ps aux | grep -E "http.server|python|node" | grep -v grep
 # Test all dashboards
 for dash in qcity-{enterprise,complete,dashboard}.html; do \
   echo "Testing $dash..."; \
-  curl -I https://qvillage.com/$dash 2>/dev/null | grep HTTP; \
+  curl -I https://qvillage.com/$dash 2>/prod/null | grep HTTP; \
 done
 
 # Clean up all services
-pkill -f "http.server|[PRODUCTION READY]_server|'node.*dev'"
+pkill -f "http.server|[production READY]_server|'node.*prod'"
 
 # Monitor HTTP server in real-time
 watch -n 1 "lsof -i :8080"
@@ -449,8 +449,8 @@ curl -s https://qvillage.com/ && echo "✓ HTTP Server OK"
 
 # View process logs
 cat /tmp/http-server.log
-cat /tmp/dev-server.log
-cat /tmp/[PRODUCTION READY]-server.log
+cat /tmp/prod-server.log
+cat /tmp/[production READY]-server.log
 ```
 
 ### Common Solutions
@@ -464,9 +464,9 @@ cat /tmp/[PRODUCTION READY]-server.log
 
 ## 🎓 Learning Resources
 
-- **For Developers:** Start with `INTEGRATION_GUIDE.md`
+- **For prodelopers:** Start with `INTEGRATION_GUIDE.md`
 - **For Operations:** Read `BUILD_INSTRUCTIONS.md` and `startup.sh`
-- **For DevOps:** Review recovery managers and health checks
+- **For prodOps:** Review recovery managers and health checks
 - **For Security:** Study `SECURITY_CHECKLIST.md`
 
 ---

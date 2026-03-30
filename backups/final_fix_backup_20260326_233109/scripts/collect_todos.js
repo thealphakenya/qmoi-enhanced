@@ -3,13 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:05Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 const fs = require("fs");
 const path = require("path");
 
 const root = process.cwd();
 const pattern =
-  /// Production implementation:|// Production implementation:|\[PRODUCTION IMPLEMENTATION REQUIRED\]|// Production implementation:/gi;
+  /// production implementation:|// production implementation:|\[production IMPLEMENTATION REQUIRED\]|// production implementation:/gi;
 
 function walk(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -42,11 +42,11 @@ for (const file of files) {
         file: path.relative(root, file),
         line: i + 1,
         snippet: line.trim(),
-        type: line.match(/\[PRODUCTION IMPLEMENTATION REQUIRED\]/i)
+        type: line.match(/\[production IMPLEMENTATION REQUIRED\]/i)
           ? "manual"
-          : line.match(/// Production implementation:|// Production implementation:/i)
-            ? "// Production implementation:"
-            : "// Production implementation:",
+          : line.match(/// production implementation:|// production implementation:/i)
+            ? "// production implementation:"
+            : "// production implementation:",
       });
       // reset regex lastIndex
       pattern.lastIndex = 0;
@@ -55,11 +55,11 @@ for (const file of files) {
 }
 
 fs.writeFileSync(
-  path.join(root, ".qmoi_validation/// Production implementation:s.json"),
+  path.join(root, ".qmoi_validation/// production implementation:s.json"),
   JSON.stringify(
     { generatedAt: new Date().toISOString(), count: items.length, items },
     null,
     2,
   ),
 );
-console.log("Wrote .qmoi_validation/// Production implementation:s.json with", items.length, "items");
+console.log("Wrote .qmoi_validation/// production implementation:s.json with", items.length, "items");

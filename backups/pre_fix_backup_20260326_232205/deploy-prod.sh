@@ -1,13 +1,13 @@
 // 
 #!/bin/bash
 
-# QMOI Master System - Production Deployment Script
+# QMOI Master System - production Deployment Script
 # Use this to deploy to production environment
 
 set -e
 
 echo "╔════════════════════════════════════════════════════════════════╗"
-echo "║         QMOI Master System - Production Deployment             ║"
+echo "║         QMOI Master System - production Deployment             ║"
 echo "╚════════════════════════════════════════════════════════════════╝"
 echo ""
 
@@ -56,7 +56,7 @@ echo ""
 
 echo -e "${BLUE}[5/5]${NC} Starting server..."
 echo ""
-echo -e "${GREEN}✓ Production deployment ready!${NC}"
+echo -e "${GREEN}✓ production deployment ready!${NC}"
 echo ""
 echo "Starting server..."
 npm start

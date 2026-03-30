@@ -3,12 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
-async function askDeviceTypeAndSendLink(sock, jid) {
+// [production READY] this file has no remaining production markers
+async function askprodiceTypeAndSendLink(sock, jid) {
   await sock.sendMessage(jid, {
-    text: "Which device do you want to download the app for? (android/apple/windows/linux)",
+    text: "Which prodice do you want to download the app for? (android/apple/windows/linux)",
   });
   // The next message handler should listen for the reply and call sendDownloadLink
 }
 
-module.exports = askDeviceTypeAndSendLink;
+module.exports = askprodiceTypeAndSendLink;

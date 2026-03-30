@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextApiRequest, NextApiResponse } from "next";
@@ -41,12 +41,12 @@ export default async function handler(
     });
     return _res.status(401).json({ _error: "Unauthorized" });
   }
-  const { cmd, deviceId = "qcity", stream = false } = _req.body;
+  const { cmd, prodiceId = "qcity", stream = false } = _req.body;
   if (!cmd) return _res.status(400).json({ _error: "required command" });
   logAudit({
     action: "run",
     cmd: maskCommand(cmd),
-    deviceId,
+    prodiceId,
     user: _req.headers["x-user"] || "unknown",
     status: "start",
   });
@@ -65,7 +65,7 @@ export default async function handler(
       logAudit({
         action: "run",
         cmd: maskCommand(cmd),
-        deviceId,
+        prodiceId,
         user: _req.headers["x-user"] || "unknown",
         status: "done",
         code,
@@ -82,7 +82,7 @@ export default async function handler(
         logAudit({
           action: "run",
           cmd: maskCommand(cmd),
-          deviceId,
+          prodiceId,
           user: _req.headers["x-user"] || "unknown",
           status: "done",
           code,
@@ -94,7 +94,7 @@ export default async function handler(
       logAudit({
         action: "run",
         cmd: maskCommand(cmd),
-        deviceId,
+        prodiceId,
         user: _req.headers["x-user"] || "unknown",
         status: "error",
         _error: errorMessage,

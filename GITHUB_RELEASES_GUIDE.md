@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # QMOI GitHub Releases - All Apps & Platforms
 
 ## Quick Links
@@ -85,7 +85,7 @@
 
 ### iOS
 
-`Download from App Store or via device management`
+`Download from App Store or via prodice management`
 
 ## Release Information
 

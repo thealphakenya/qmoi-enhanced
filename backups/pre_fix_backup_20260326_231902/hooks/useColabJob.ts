@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:32Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 import { useState, useEffect, useCallback } from "react";
 
 export function useColabJob() {
@@ -20,7 +20,7 @@ export function useColabJob() {
     setError(null);
     setResult(null);
     try {
-      [PRODUCTION READY] Colab job creation
+      [production READY] Colab job creation
       const res = await fetch("/api/qmoi-model?colabJob=1", {
         method: "POST",
         headers: {

@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 // robust client TTS helper. Uses the Web Speech API where available.
 // Provides a best-effort SSML consumer by extracting text and prosody rate.
 export function supportsSpeechSynthesis() {

@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "PREVIEW_ENHANCEMENTS.md - Roadmap for Window & Automation Enhancements"
 description: "Detailed plan of 25 enhancements to the Preview Window system and overall UI automation for QMOI"
@@ -33,7 +33,7 @@ last_updated: "2026-03-13"
 2. **Auto-Popup Engine** – windows appear when QMOI detects intent (errors, commands, insights)
 3. **Predictive Tool Activation** – pre‑load tools based on usage patterns
 4. **High‑Speed IPC Bus** – low‑latency communication between windows
-5. **Session Sync across Devices** – windows state stored/synced globally
+5. **Session Sync across prodices** – windows state stored/synced globally
 6. **Global Hotkey Registry** – user and QMOI shortcuts to open windows instantly
 7. **Smart Layout Algorithms** – windows auto‑organize to avoid overlap and optimize space
 8. **AI Focus Prioritizer** – selects which window should be foregrounded based on context
@@ -67,7 +67,7 @@ last_updated: "2026-03-13"
 1. final `UniversalWindowManager.tsx` and context provider
 2. Build `AutomationEngine` with rule/condition evaluation
 3. Add background service for telemetry and session sync
-4. Develop hotkey service & UI bindings
+4. prodelop hotkey service & UI bindings
 5. production ML recommendation using simple heuristics then upgrade to model
 6. Create `PluginAPI` allowing dynamic window registration
 7. Implement offline cache with IndexedDB or localStorage
@@ -78,7 +78,7 @@ last_updated: "2026-03-13"
 ## 🧠 Learning & Self-Improvement
 
 - Use `QMOI_MEMORY` service to record every window interaction
-- Train robust models on-device to predict next window/tool
+- Train robust models on-prodice to predict next window/tool
 - Periodically upload anonymized summaries for federated improvement
 
 ## 🧪 Testing & Validation

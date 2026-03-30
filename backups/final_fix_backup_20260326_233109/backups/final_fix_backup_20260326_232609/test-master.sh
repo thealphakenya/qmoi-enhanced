@@ -1,4 +1,4 @@
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/bin/bash
 
 # QMOI Master System - Integration Test Suite
@@ -119,7 +119,7 @@ else
 fi
 
 # Check if TypeScript is available
-if command -v npx &> /dev/null; then
+if command -v npx &> /prod/null; then
     echo -e "${GREEN}✓${NC} Build tools available"
     ((TESTS_PASSED++))
 else
@@ -166,7 +166,7 @@ if [ $TESTS_FAILED -eq 0 ]; then
     echo "Next steps:"
     echo "1. npm install (if not already done)"
     echo "2. Configure .env.local with your credentials"
-    echo "3. npm run dev"
+    echo "3. npm run prod"
     echo "4. Visit http://localhost:3000/admin/master/login"
     echo ""
     exit 0

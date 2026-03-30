@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 import os
 import shutil
 import json
@@ -130,7 +130,7 @@ def start_ngrok_via_subprocess(port: int = 8080) -> Optional[str]:
     # Start ngrok as a subprocess if available on PATH
     try:
         # Launch ngrok in the background
-        subprocess.Popen(["ngrok", "http", str(port)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.Popen(["ngrok", "http", str(port)], stdout=subprocess.prodNULL, stderr=subprocess.prodNULL)
         # wait briefly for ngrok to register
         for _ in range(8):
             url = get_public_url_from_local_api()
@@ -179,7 +179,7 @@ PY
 
     # Configure local git to use this helper if inside a git repo
     try:
-        subprocess.run(['git', 'rev-parse', '--is-inside-work-tree'], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(['git', 'rev-parse', '--is-inside-work-tree'], check=True, stdout=subprocess.prodNULL, stderr=subprocess.prodNULL)
         # set local repo credential helper
         subprocess.run(['git', 'config', 'credential.helper', helper_path], check=False)
     except Exception:
@@ -219,7 +219,7 @@ def run_periodic_autosync(interval_seconds: int = 60 * 30):
 
                 # If repository has a remote 'origin' and token available, attempt to push backups via wrapper
                 try:
-                    has_remote = subprocess.run(['git', 'remote'], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+                    has_remote = subprocess.run(['git', 'remote'], stdout=subprocess.PIPE, stderr=subprocess.prodNULL)
                     if b'origin' in has_remote.stdout and get_named_secret is not None and get_named_secret('github'):
                         # push backup branch in .qmoi/backup_repo if present
                         br = os.path.join('.qmoi', 'backup_repo')

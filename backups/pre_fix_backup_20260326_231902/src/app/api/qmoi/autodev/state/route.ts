@@ -3,27 +3,27 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] AutoDev state endpoint
+// [production READY] Autoprod state endpoint
 import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
   try {
     const record = await prisma.setting.findUnique({
-      where: { key: "autodev.state" },
+      where: { key: "autoprod.state" },
     });
 
     const state = record?.value ?? { enabled: false, timestamp: null };
 
     return NextResponse.json({
-      autodevEnabled: !!state.enabled,
+      autoprodEnabled: !!state.enabled,
       timestamp: state.timestamp || null,
       state,
     });
   } catch (error) {
     return NextResponse.json(
       {
-        error: error instanceof Error ? error.message : "Failed to get AutoDev state",
+        error: error instanceof Error ? error.message : "Failed to get Autoprod state",
       },
       { status: 500 },
     );

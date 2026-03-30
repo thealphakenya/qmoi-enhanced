@@ -13,11 +13,11 @@ Behavior:
   - Skip required files, binary files, or very large files (>2MB) to avoid hangs.
   - Stream the file contents up to a limit (e.g., first 20000 bytes) and search
     for a set of case-insensitive patterns: DONE, FIXED, solution, SIMULAT (simulated),
-    NOT FOR PRODUCTION, not-for-production, PRODUCTION (contextual), IMPLEMENT,
+    NOT FOR production, not-for-production, production (contextual), IMPLEMENT,
     VALIDATE SENDER, WEBHOOK, TELEPHONY, CALL (in handlers), and other heuristics.
-- Produce a structured report at .qmoi_validation/nonprod_scan_report.txt and a
-  JSON at .qmoi_validation/nonprod_scan_report.json.
-- Backup donerefs.txt as donerefs.txt.nonprod_scan.bak before making edits.
+- produce a structured report at .qmoi_validation/production_scan_report.txt and a
+  JSON at .qmoi_validation/production_scan_report.json.
+- Backup donerefs.txt as donerefs.txt.production_scan.bak before making edits.
 - Remove flagged files from donerefs.txt (conservative) and exit with summary.
 
 This script is safety-first: it will not modify other files and writes detailed logs.
@@ -34,9 +34,9 @@ ROOT = Path(__file__).resolve().parents[1]
 DONEREFS = ROOT / "donerefs.txt"
 REPORT_DIR = ROOT / ".qmoi_validation"
 REPORT_DIR.mkdir(exist_ok=True)
-REPORT_TXT = REPORT_DIR / "nonprod_scan_report.txt"
-REPORT_JSON = REPORT_DIR / "nonprod_scan_report.json"
-BACKUP = ROOT / "donerefs.txt.nonprod_scan.bak"
+REPORT_TXT = REPORT_DIR / "production_scan_report.txt"
+REPORT_JSON = REPORT_DIR / "production_scan_report.json"
+BACKUP = ROOT / "donerefs.txt.production_scan.bak"
 
 # Patterns to look for (case-insensitive). Keep them conservative and explicit.
 PATTERNS = [
@@ -45,7 +45,7 @@ PATTERNS = [
     r"\bHACK\b",
     r"\bTEMPORARY\b",
     r"not[ -]?for[ -]?production",
-    r"\bPRODUCTION\b",
+    r"\bproduction\b",
     r"\bsimulat(e|ed|ing)\b",
     r"\bsample\b",
     r"\bIMPLEMENT\b",
@@ -54,7 +54,7 @@ PATTERNS = [
     r"\bTELEPHON|CALLING|CALL\b",
     r"\bSECURIT|AUTHENTICAT|AUTH\b",
     r"\bDO_NOT_DEPLOY\b",
-    r"\bDO_NOT_USE_IN_PRODUCTION\b",
+    r"\bDO_NOT_USE_IN_production\b",
     r"\bXXX\b",
 ]
 PATTERN_RE = re.compile("(?:" + ")|(?:".join(PATTERNS) + ")", re.IGNORECASE)
@@ -123,7 +123,7 @@ def main() -> int:
 
     # Write detailed report
     summary_lines = []
-    summary_lines.append(f"nonprod scan run: {os.environ.get('USER','unknown')}\n")
+    summary_lines.append(f"production scan run: {os.environ.get('USER','unknown')}\n")
     summary_lines.append(f"total_donerefs={len(paths)} flagged={len(flagged)}\n")
     for p in flagged:
         summary_lines.append(f"---\nFILE: {p}\n")

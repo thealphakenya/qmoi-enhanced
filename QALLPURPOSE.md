@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "QALLPURPOSE.md - Universal Multi-Purpose QMOI System"
 description: "Comprehensive guide to all-purpose use cases across QMOI platform"
@@ -36,7 +36,7 @@ last_updated: "2026-03-13"
 
 ## 🌟 PLATFORM OVERVIEW
 
-QMOI v2.0 is a **universal platform** capable of handling ANY type of development or creative project through intelligent context awareness and adaptive tooling.
+QMOI v2.0 is a **universal platform** capable of handling ANY type of production or creative project through intelligent context awareness and adaptive tooling.
 
 ### Core Capabilities
 
@@ -161,7 +161,7 @@ Lesson Plan:
 2️⃣  State & Props
     - Managing component state
     - Passing data with props
-    - data: [PRODUCTION READY] list
+    - data: [production READY] list
 
 3️⃣  Hooks
     - useState, useEffect, useContext
@@ -207,12 +207,12 @@ Brainstorm Session:
 
 ## 🖼️ PREVIEW WINDOW USE CASES
 
-### 1. **Web Development**
+### 1. **Web production**
 
 #### Scenario: Live Website Preview
 ```
 Project Type: Web (HTML + React + CSS)
-Active Tools: Live-Preview, Dev-Inspector, Responsive-Viewer
+Active Tools: Live-Preview, prod-Inspector, Responsive-Viewer
 
 Workflow:
 1. Edit component in IDE
@@ -239,9 +239,9 @@ Output:
 
 ---
 
-### 2. **Code Development**
+### 2. **Code production**
 
-#### Scenario: TypeScript Code Development with Linting
+#### Scenario: TypeScript Code production with Linting
 ```
 Project Type: Coding (TypeScript)
 Active Tools: Syntax-Highlighter, Code-Linter, Test-Runner
@@ -274,7 +274,7 @@ const greet = (name: string) => {
 
 ---
 
-### 3. **Music Production**
+### 3. **Music production**
 
 #### Scenario: Audio Track Editing
 ```
@@ -304,7 +304,7 @@ Output:
 
 ---
 
-### 4. **Game Development**
+### 4. **Game production**
 
 #### Scenario: Game Testing & Debugging
 ```
@@ -313,7 +313,7 @@ Active Tools: Game-Canvas, Input-Simulator, Physics-Debugger, Console-Logger
 
 Workflow:
 1. Play game in preview
-2. [PRODUCTION READY] gamepad input
+2. [production READY] gamepad input
 3. Visualize collision boxes
 4. Monitor debug logs
 5. Check performance metrics
@@ -421,7 +421,7 @@ Data Table:
 └─────┴────────┴──────┴────────┘
 
 Statistics:
-Mean Age: 31.67 | Std Dev: 3.51
+Mean Age: 31.67 | Std prod: 3.51
 Mean Salary: $84K | Min: $72K | Max: $95K
 
 Charts Available:
@@ -433,7 +433,7 @@ Charts Available:
 ## 🚀 PROJECT-TYPE SPECIFIC WORKFLOWS
 
 ### Coding Projects
-1. **Development** → Write code with real-time linting
+1. **production** → Write code with real-time linting
 2. **Testing** → Run tests automatically on save
 3. **Debugging** → Use debugger with break points
 4. **Review** → Code review suggestions
@@ -441,16 +441,16 @@ Charts Available:
 
 ### Web Projects
 1. **Design** → Live preview responsive layouts
-2. **Develop** → See changes in real-time (HMR)
+2. **prodelop** → See changes in real-time (HMR)
 3. **Debug** → Inspect elements and styles
 4. **Test** → Check responsiveness and accessibility
 5. **Optimize** → Run performance analysis
 
 ### Mobile Projects
-1. **Emulate** → Preview on device simulator
-2. **Test** → [PRODUCTION READY] touch gestures
-3. **Network** → Test on [PRODUCTION READY]d network speeds
-4. **Sensor** → [PRODUCTION READY] GPS, accelerometer, etc.
+1. **Emulate** → Preview on prodice simulator
+2. **Test** → [production READY] touch gestures
+3. **Network** → Test on [production READY]d network speeds
+4. **Sensor** → [production READY] GPS, accelerometer, etc.
 5. **AppStore** → Build and package for App Store
 
 ### Music Projects
@@ -462,7 +462,7 @@ Charts Available:
 
 ### Game Projects
 1. **Build** → Compile game code
-2. **Play** → Test game with input [PRODUCTION READY]
+2. **Play** → Test game with input [production READY]
 3. **Debug** → Visualize physics and collision
 4. **Profile** → Check FPS and memory usage
 5. **Deploy** → Package for distribution
@@ -594,7 +594,7 @@ QMOI suggests fix
 User applies or edits suggestion
 ```
 
-### Pattern 3: Autonomous Development
+### Pattern 3: Autonomous production
 ```
 QMOI monitors changes
          ↓
@@ -628,7 +628,7 @@ Reports results
 
 ## 🎯 required WORKFLOWS BY PROJECT TYPE
 
-### For Developers
+### For prodelopers
 1. Open Preview with code tools
 2. Use chat for detailed help
 3. Enable autonomous mode for suggestions

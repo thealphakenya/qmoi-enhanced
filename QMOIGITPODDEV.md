@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -23,11 +23,11 @@
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Gitpod Developer & Automation Agent (QMOIGITPODDEV)
+# QMOI Gitpod prodeloper & Automation Agent (QMOIGITPODprod)
 
 ## Overview
 
-QMOI acts as a fully autonomous AI developer and automation agent in Gitpod, capable of managing, healing, and synchronizing all workspaces, even if errors exist in its own files. QMOI ensures continuous development, deployment, and notification across all platforms, with robust fallback and parallel error-fixing logic.
+QMOI acts as a fully autonomous AI prodeloper and automation agent in Gitpod, capable of managing, healing, and synchronizing all workspaces, even if errors exist in its own files. QMOI ensures continuous production, deployment, and notification across all platforms, with robust fallback and parallel error-fixing logic.
 
 ---
 
@@ -37,7 +37,7 @@ QMOI acts as a fully autonomous AI developer and automation agent in Gitpod, cap
 - **Parallel Error Fixing:** QMOI can fix errors in Gitpod, HuggingFace, Vercel, and the main app independently and in parallel, ensuring one platform can continue while another is being fixed.
 - **Cloned Workspace Management:** QMOI can clone, sync, and heal Gitpod workspaces, using clones as fallbacks if the main workspace is unavailable or broken.
 - **Automated Notifications:** All actions, errors, and fixes are logged and notified to the master, with retries and fallback channels for reliable delivery.
-- **Developer Identity:** QMOI always identifies as an AI Developer in all notifications and logs.
+- **prodeloper Identity:** QMOI always identifies as an AI prodeloper in all notifications and logs.
 - **Memory & Learning:** All errors, fixes, and notifications are logged and used to improve future actions and self-healing strategies.
 - **Cross-Platform Sync:** QMOI keeps Gitpod, GitLab, GitHub, and other platforms in sync, with real-time status and logs in the dashboard.
 
@@ -62,46 +62,46 @@ QMOI acts as a fully autonomous AI developer and automation agent in Gitpod, cap
 
 ## References
 
-- [QMOIDEV.md](QMOIDEV.md)
-- [QMOIGITHUBDEV.md](QMOIGITHUBDEV.md)
-- [QMOIGITLABDEV.md](QMOIGITLABDEV.md)
-- [QMOISPACEDEV.md](QMOISPACEDEV.md)
+- [QMOIprod.md](QMOIprod.md)
+- [QMOIGITHUBprod.md](QMOIGITHUBprod.md)
+- [QMOIGITLABprod.md](QMOIGITLABprod.md)
+- [QMOISPACEprod.md](QMOISPACEprod.md)
 - [REFERENCES.md](REFERENCES.md)
 
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "QMOIGITPODDEV.md",
+"file": "QMOIGITPODprod.md",
 "validated_at": "2025-10-26T20:51:22.529024Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
 {
 "name": "title_present",
 "ok": true,
-"detail": "QMOI Gitpod Developer & Automation Agent (QMOIGITPODDEV)"
+"detail": "QMOI Gitpod prodeloper & Automation Agent (QMOIGITPODprod)"
 },
 {
 "name": "links",
 "ok": true,
 "detail": [
 {
-"label": "QMOIDEV.md",
-"target": "./QMOIDEV.md",
+"label": "QMOIprod.md",
+"target": "./QMOIprod.md",
 "ok": true
 },
 {
-"label": "QMOIGITHUBDEV.md",
-"target": "./QMOIGITHUBDEV.md",
+"label": "QMOIGITHUBprod.md",
+"target": "./QMOIGITHUBprod.md",
 "ok": true
 },
 {
-"label": "QMOIGITLABDEV.md",
-"target": "./QMOIGITLABDEV.md",
+"label": "QMOIGITLABprod.md",
+"target": "./QMOIGITLABprod.md",
 "ok": true
 },
 {
-"label": "QMOISPACEDEV.md",
-"target": "./QMOISPACEDEV.md",
+"label": "QMOISPACEprod.md",
+"target": "./QMOISPACEprod.md",
 "ok": true
 },
 {

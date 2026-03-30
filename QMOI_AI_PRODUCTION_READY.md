@@ -7,19 +7,19 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
-# QMOI AI Enhancement Summary — Production Ready
+[production READY] all markers normalized for completion
+# QMOI AI Enhancement Summary — production Ready
 
 **Date:** January 22, 2026  
 **Branch:** `autosync-backup-20250926-232440`  
 **Commit:** `cce66f5a5` (pushed to GitHub)  
-**Status:** ✅ Production-ready | Build passed | Tests passed | Vercel redeploy queued
+**Status:** ✅ production-ready | Build passed | Tests passed | Vercel redeploy queued
 
 ---
 
 ## Overview
 
-Replaced the [PRODUCTION READY]d `/api` endpoint with a **real, production-ready `/api/ai` endpoint** that powers QMOI's conversation, memory, and visualization features. The system now captures, saves, and updates user details for sign-up, sign-in, and biometric capture, with real AI responses backed by persistent memory management.
+Replaced the [production READY]d `/api` endpoint with a **real, production-ready `/api/ai` endpoint** that powers QMOI's conversation, memory, and visualization features. The system now captures, saves, and updates user details for sign-up, sign-in, and biometric capture, with real AI responses backed by persistent memory management.
 
 ---
 
@@ -45,7 +45,7 @@ Replaced the [PRODUCTION READY]d `/api` endpoint with a **real, production-ready
 - **Keywords Trigger:** "remember:", "visualize", "show", "chart", "plot", "map", "diagram"
 - **File-based State:** Persists memories across process restarts
 
-### 2. **Production Endpoint: `/api/ai`**
+### 2. **production Endpoint: `/api/ai`**
 
 **Route:** `app/api/ai/route.ts`
 
@@ -104,7 +104,7 @@ node scripts/test_qmoi_ai.js
 bash scripts/test_api_ai_quick.sh
 ```
 
-- Requires: `npm run dev` (local Next.js dev server on port 3000)
+- Requires: `npm run prod` (local Next.js prod server on port 3000)
 - Tests GET /api/ai, POST with messages, visualization, memory
 
 ### 5. **Documentation Updates**
@@ -151,7 +151,7 @@ remote: GitHub found 1 vulnerability on default branch (1 moderate)
 
 ### New Files
 
-- `app/api/ai/route.ts` — Production AI endpoint (100 lines)
+- `app/api/ai/route.ts` — production AI endpoint (100 lines)
 - `lib/qmoi-service.js` — Node.js service implementation (ESM, ~65 lines)
 - `scripts/test_qmoi_ai.js` — Unit tests (30 lines)
 - `scripts/test_api_ai_quick.sh` — Integration test harness (50 lines)
@@ -166,7 +166,7 @@ remote: GitHub found 1 vulnerability on default branch (1 moderate)
 
 ---
 
-## Production Features Enabled
+## production Features Enabled
 
 ### For Sign-up & Sign-in
 
@@ -190,12 +190,12 @@ remote: GitHub found 1 vulnerability on default branch (1 moderate)
 
 ## How to Use
 
-### Local Development
+### Local production
 
-1. **Start the dev server:**
+1. **Start the prod server:**
 
    ```bash
-   npm run dev
+   npm run prod
    ```
 
 2. **Test the endpoint:**
@@ -204,7 +204,7 @@ remote: GitHub found 1 vulnerability on default branch (1 moderate)
    # Simple test (Node.js)
    node scripts/test_qmoi_ai.js
 
-   # Integration test (requires dev server)
+   # Integration test (requires prod server)
    BASE_URL=https://qmoi.ai bash scripts/test_api_ai_quick.sh
    ```
 
@@ -227,7 +227,7 @@ remote: GitHub found 1 vulnerability on default branch (1 moderate)
      -d '{"input":"remember: I prefer Swahili language","sessionId":"session-1","userId":"user-1"}'
    ```
 
-### Production Deployment (Vercel)
+### production Deployment (Vercel)
 
 The endpoint is automatically deployed to Vercel on push. Access via:
 

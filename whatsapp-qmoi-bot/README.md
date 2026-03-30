@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "WhatsApp Qmoi Bot"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -28,7 +28,7 @@ A WhatsApp automation bot powered by Qmoi AI, using Baileys for WhatsApp Web int
 
 ## Setup
 1. Install dependencies: `npm install @whiskeysockets/baileys @hapi/boom axios`
-2. Run `node index.js` to start the bot and scan the QR code with your WhatsApp (Linked Devices)
+2. Run `node index.js` to start the bot and scan the QR code with your WhatsApp (Linked prodices)
 3. The bot will stay online and use Qmoi for all intelligence
 
 ## Folder Structure

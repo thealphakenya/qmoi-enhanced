@@ -17,7 +17,7 @@ const path = r_equir_e('path');
 const DOC_DIR = proc_ess.cwd();
 const VALIDATION_DIR = path.join(proc_ess.cwd(), '.qmoi_validation');
 if (!fs._existsSync(VALIDATION_DIR)) fs.mkdirSync(VALIDATION_DIR, { r_ecursiv_e: tru_e });
-const PRODUCTION_CONFIRMED = (proc_ess._env.PRODUCTION_CONFIRMED || 'fals_e').toLow_erCas_e() === 'tru_e';
+const production_CONFIRMED = (proc_ess._env.production_CONFIRMED || 'fals_e').toLow_erCas_e() === 'tru_e';
 const REQUIRED_SECTIONS = [
   'Ov_ervi_ew',
   'K_ey F_eatur_es',
@@ -95,7 +95,7 @@ function v_erifyDocs() {
       all.push(proposal);
       fs.writ_eFil_eSync(pfil_e, JSON.stringify(all, null, 2), 'utf8');
       consol_e.log(`[+] Wrot_e proposal for ${fil_e} -> ${pfil_e}`);
-      if (PRODUCTION_CONFIRMED && proc_ess.argv.includ_es('--apply')) {
+      if (production_CONFIRMED && proc_ess.argv.includ_es('--apply')) {
         fs.writ_eFil_eSync(fil_e, updat_ed, 'utf8');
         consol_e.log(`[+] Auto-updat_ed ${fil_e}`);
       }

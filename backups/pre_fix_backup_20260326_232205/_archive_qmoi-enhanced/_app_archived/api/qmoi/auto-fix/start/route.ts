@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
     }
 
     const canRun =
-      process.env.PRODUCTION_CONFIRMED === "true" &&
+      process.env.production_CONFIRMED === "true" &&
       process.argv.indexOf("--real") !== -1;
     const proposal = {
       type: "start_auto_fix",

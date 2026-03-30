@@ -16,7 +16,7 @@ can be reviewed and applied manually (or by this script with --apply).
 
 Safe edits performed (configurable):
 - Replace function bodies that only contain `pass` and have implementation markers
-  with `raise NotImplementedError('Production implementation required: <reason>')`.
+  with `raise NotImplementedError('production implementation required: <reason>')`.
 
 This script is conservative and intended to reduce accidental destructive edits.
 """
@@ -57,13 +57,13 @@ def produce_edits(matches):
             window_start = max(0, ln-5)
             window_end = min(len(lines), ln+5)
             window = ''.join(lines[window_start:window_end])
-            if re.search(r"\bpass\b", window) and re.search(r"DONE|FIXED|implementation|REPLACE_ME|production|dev only|not for production|real", window, re.I):
+            if re.search(r"\bpass\b", window) and re.search(r"DONE|FIXED|implementation|REPLACE_ME|production|prod only|not for production|real", window, re.I):
                 # find the 'pass' line index and replace that line
                 for i in range(window_start, window_end):
                     if re.search(r"^\s*pass\s*(#.*)?$", lines[i]):
                         indent = re.match(r"^(\s*)", lines[i]).group(1)
                         reason = e.get('snippet', '').strip()[:120]
-                        replacement = indent + "raise NotImplementedError('Production implementation required: " + reason.replace("'","\\'") + "')\n"
+                        replacement = indent + "raise NotImplementedError('production implementation required: " + reason.replace("'","\\'") + "')\n"
                         lines[i] = replacement
                         changed = True
                         break

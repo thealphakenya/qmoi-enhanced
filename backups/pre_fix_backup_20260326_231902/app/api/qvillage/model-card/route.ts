@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] QVillage Model Card management API
+// [production READY] QVillage Model Card management API
 import { NextRequest, NextResponse } from 'next/server';
 import { QMOIService } from '@/lib/qmoi-service';
 import { withAuthentication } from '@/lib/auth';

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI Master Automation System
@@ -113,7 +113,7 @@ class QMOIMasterAutomation:
         # Enforce cloud-offloading and cloud_optimized mode
         if self.is_cloud_environment:
             os.environ["QMOI_CLOUD_OPTIMIZED"] = "true"
-            os.environ["QMOI_DEVICE_INDEPENDENT"] = "true"
+            os.environ["QMOI_prodICE_INDEPENDENT"] = "true"
             os.environ["QMOI_AUTO_RESTART"] = "true"
             self.logger.info("[QMOI] Cloud-offload mode enabled. All automation will auto-restart in cloud if stopped.")
         

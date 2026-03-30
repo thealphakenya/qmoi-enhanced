@@ -543,8 +543,8 @@ class QmoiPush:
             except Exception:
                 pass
         append_stamp(PROJECT_ROOT / "ALLMDFILESREFS.md")
-        append_stamp(PROJECT_ROOT / "QMOIAUTODEV.md")
-        append_stamp(PROJECT_ROOT / "QMOISPACEDEV.md")
+        append_stamp(PROJECT_ROOT / "QMOIAUTOprod.md")
+        append_stamp(PROJECT_ROOT / "QMOISPACEprod.md")
 
     def update_readme(self):
         logger.info("ðŸ“� Updating README usage section")

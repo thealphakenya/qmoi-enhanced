@@ -1,24 +1,24 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/bin/bash
 
-# QMOI Enhanced - Development Environment Setup Script
-# This script sets up the complete development environment locally
+# QMOI Enhanced - production Environment Setup Script
+# This script sets up the complete production environment locally
 
 set -e
 
-echo "🚀 QMOI Enhanced Development Setup"
+echo "🚀 QMOI Enhanced production Setup"
 echo "===================================="
 
 # Check Node.js installation
 echo "📦 Checking Node.js installation..."
-if ! command -v node &> /dev/null; then
+if ! command -v node &> /prod/null; then
     echo "❌ Node.js is not installed. Please install Node.js 18+ and try again."
     exit 1
 fi
 echo "✅ Node.js $(node -v) found"
 
 # Check npm installation
-if ! command -v npm &> /dev/null; then
+if ! command -v npm &> /prod/null; then
     echo "❌ npm is not installed. Please install npm and try again."
     exit 1
 fi
@@ -40,14 +40,14 @@ fi
 # Check PostgreSQL
 echo ""
 echo "🗄️  Checking PostgreSQL..."
-if command -v psql &> /dev/null; then
+if command -v psql &> /prod/null; then
     echo "✅ PostgreSQL found"
 else
     echo "ℹ️  PostgreSQL not found. You can use docker-compose instead."
 fi
 
 # Check Docker
-if command -v docker &> /dev/null; then
+if command -v docker &> /prod/null; then
     echo "✅ Docker $(docker --version | cut -d' ' -f3) found"
     echo ""
     echo "🐳 Starting Docker containers..."
@@ -67,7 +67,7 @@ npx tsc --noEmit
 # Run database migrations
 echo ""
 echo "🗄️  Running database migrations..."
-npx prisma migrate dev --name init 2>/dev/null || echo "ℹ️  Skipping migration (already up to date)"
+npx prisma migrate prod --name init 2>/prod/null || echo "ℹ️  Skipping migration (already up to date)"
 
 # Generate Prisma client
 echo ""
@@ -86,12 +86,12 @@ echo "   - Payment gateway credentials (M-Pesa, Pesapal, Stripe)"
 echo "   - Email service (SendGrid)"
 echo "   - Communication services (Twilio, Telegram)"
 echo ""
-echo "2. Start development server:"
-echo "   npm run dev"
+echo "2. Start production server:"
+echo "   npm run prod"
 echo ""
 echo "3. Open http://localhost:3000 in your browser"
 echo ""
 echo "📚 Documentation:"
-echo "   - See PRODUCTION_SETUP.md for complete configuration guide"
+echo "   - See production_SETUP.md for complete configuration guide"
 echo "   - See README.md for project overview"
 echo ""

@@ -357,7 +357,7 @@ export const useResponsiveDesign = () => {
             else setScreenSize('desktop');
         };
         
-        window.addEventListener('resize', handleResize);
+        window.adprodentListener('resize', handleResize);
         handleResize();
         
         return () => window.removeEventListener('resize', handleResize);
@@ -378,7 +378,7 @@ export const accessibilityEnhancements = {
     
     addKeyboardNavigation: (element: HTMLElement) => {
         element.setAttribute('tabindex', '0');
-        element.addEventListener('keydown', (e) => {
+        element.adprodentListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 element.click();

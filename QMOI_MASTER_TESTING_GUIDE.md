@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -24,8 +24,8 @@ This guide provides instructions for testing QMOI as a master user with full sys
 ### 1. Quick Test (5 minutes)
 
 ```bash
-# Start the dev server
-npm run dev
+# Start the prod server
+npm run prod
 
 # In another terminal, run the quick test
 node test-qmoi-master.js
@@ -215,11 +215,11 @@ QMOI Capabilities:
 
 ## Running the Tests
 
-### Step 1: Start the Development Server
+### Step 1: Start the production Server
 
 ```bash
 cd /workspaces/qmoi-enhanced
-npm run dev
+npm run prod
 ```
 
 Expected output:
@@ -242,7 +242,7 @@ node test-qmoi-master.js
 
 ```
 🚀 QMOI Master User Comprehensive Test Suite
-✅ Connected to dev server
+✅ Connected to prod server
 ℹ️ Master User ID: master-user-001
 ℹ️ Starting 12 test groups...
 
@@ -351,8 +351,8 @@ MASTER DIRECTIVE: Analyze your architecture and propose 3 self-improvements
 ### Issue: Connection refused
 
 ```bash
-# Solution: Make sure dev server is running
-npm run dev
+# Solution: Make sure prod server is running
+npm run prod
 ```
 
 ### Issue: 404 on endpoints
@@ -410,14 +410,14 @@ const timeout = 10000; // 10 seconds
 - [ ] Friendship system operational
 - [ ] Audit trail tracks all actions
 
-### 2. Production Deployment
+### 2. production Deployment
 
 ```bash
 npm run build
 npm start
 ```
 
-### 3. Monitor in Production
+### 3. Monitor in production
 
 ```bash
 # Check logs

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env node
 
 /**
@@ -54,13 +54,13 @@ class QMOIMasterAutoStart {
     }
   }
 
-  async startQCityDevice() {
-    this.log("🚀 Starting QCity Device with Unlimited Resources...");
+  async startQCityprodice() {
+    this.log("🚀 Starting QCity prodice with Unlimited Resources...");
 
     const commands = [
       { cmd: "npm run qcity:status", desc: "Check QCity status" },
       { cmd: "npm run qcity:optimize", desc: "Run QCity AI optimization" },
-      { cmd: "npm run qcity:cluster", desc: "Initialize QCity device cluster" },
+      { cmd: "npm run qcity:cluster", desc: "Initialize QCity prodice cluster" },
       { cmd: "npm run qcity:security-audit", desc: "Run QCity security audit" },
     ];
 
@@ -121,7 +121,7 @@ class QMOIMasterAutoStart {
 
     const commands = [
       { cmd: "npm run qmoi:master:health", desc: "QMOI master health check" },
-      { cmd: "npm run qcity:monitor", desc: "QCity device monitoring" },
+      { cmd: "npm run qcity:monitor", desc: "QCity prodice monitoring" },
       { cmd: "npm run qserver:health-check", desc: "QServer health check" },
       { cmd: "npm run qmoi:verify:all", desc: "System verification" },
     ];
@@ -192,7 +192,7 @@ jobs:
           node-version: '18'
       - run: npm install
       - run: npm run qmoi:test:all
-      - run: npm run qmoi:autodev:full
+      - run: npm run qmoi:autoprod:full
       - run: npm run qmoi:deploy:full
       - run: npm run qmoi:health:all
 
@@ -277,8 +277,8 @@ jobs:
       - run: npm run qmoi:backup:validate`;
   }
 
-  async deployToProduction() {
-    this.log("🚀 Deploying to Production with Monitoring...");
+  async deployToproduction() {
+    this.log("🚀 Deploying to production with Monitoring...");
 
     const commands = [
       { cmd: "npm run deploy:monitor", desc: "Deploy with monitoring" },
@@ -339,7 +339,7 @@ jobs:
 
     try {
       // Start all system components
-      await this.startQCityDevice();
+      await this.startQCityprodice();
       await this.startQServer();
       await this.startQMOICore();
 
@@ -351,7 +351,7 @@ jobs:
       await this.setupGitHubActions();
 
       // Deploy to production
-      await this.deployToProduction();
+      await this.deployToproduction();
 
       // Generate final report
       const report = await this.generateSystemReport();

@@ -87,7 +87,7 @@ class PlatformManager:
                     'type': 'colab',
                     'connected': True,
                     'gpu_available': torch.cuda.is_available(),
-                    'gpu_count': torch.cuda.device_count() if torch.cuda.is_available() else 0,
+                    'gpu_count': torch.cuda.prodice_count() if torch.cuda.is_available() else 0,
                     'drive_mounted': False
                 }
                 self._mount_colab_drive()
@@ -186,7 +186,7 @@ class PlatformManager:
             if 'google.colab' in sys.modules:
                 platform['connected'] = True
                 platform['gpu_available'] = torch.cuda.is_available()
-                platform['gpu_count'] = torch.cuda.device_count() if torch.cuda.is_available() else 0
+                platform['gpu_count'] = torch.cuda.prodice_count() if torch.cuda.is_available() else 0
                 platform['drive_mounted'] = os.path.exists('/content/drive')
             else:
                 platform['connected'] = False

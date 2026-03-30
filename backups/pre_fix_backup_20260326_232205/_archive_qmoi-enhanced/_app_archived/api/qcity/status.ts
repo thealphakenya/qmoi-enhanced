@@ -11,9 +11,9 @@ export async function GET(req: NextRequest) {
   const qcityService = new QCityService();
   await qcityService.initialize();
   const status = qcityService.getStatus();
-  const devices = await qcityService.getDeviceList();
+  const prodices = await qcityService.getprodiceList();
   const resources = await qcityService.getResourceStats();
-  return new Response(JSON.stringify({ status, devices, resources }), {
+  return new Response(JSON.stringify({ status, prodices, resources }), {
     headers: { "Content-Type": "application/json" },
   });
 }

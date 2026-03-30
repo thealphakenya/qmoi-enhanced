@@ -7,13 +7,13 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Wallet Module Runbook"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Wallet Module Runbook - PRODUCTION READY
+# Wallet Module Runbook - production READY
 
 This document describes the production-ready wallet management system and how to operate it.
 
@@ -22,10 +22,10 @@ This document describes the production-ready wallet management system and how to
 The QMOI Enhanced wallet management system provides enterprise-grade wallet operations with full QMOI consciousness integration.
 
 **Core Components:**
-- `lib/wallet/wallet-manager.ts` - Production wallet management with advanced features
+- `lib/wallet/wallet-manager.ts` - production wallet management with advanced features
 - `lib/wallet/types.ts` - Complete type definitions for enterprise operations
 - `lib/wallet/validation.ts` - Advanced validation with consciousness awareness
-- `lib/wallet/persistence.ts` - Production database persistence layer
+- `lib/wallet/persistence.ts` - production database persistence layer
 - `lib/wallet/encryption.ts` - Military-grade encryption utilities
 
 **Key Features:**
@@ -193,7 +193,7 @@ npm run test:security lib/wallet/
 
 ## Deployment
 
-### Production Setup
+### production Setup
 
 1. **Database Configuration**
    ```typescript
@@ -297,13 +297,13 @@ For issues or questions:
 - Check the audit logs: `walletManager.getWalletAuditLog()`
 - Run diagnostics: `walletManager.getWalletHealthReport()`
 - Review documentation: `API.md`, `ALLWALLETSQVS.md`
-- Contact the development team for advanced issues
+- Contact the production team for advanced issues
 
 Security and production notes
 
 - The TestnetAdapter will not use real funds unless properly implemented and credentials are provided.
 - Do not store secrets in plaintext in the state file; use Vault or GitHub Secrets for production secrets.
-- Add more adapters under `src/` for exchanges or custodians. Keep the [PRODUCTION READY]-first behavior for safety.
+- Add more adapters under `src/` for exchanges or custodians. Keep the [production READY]-first behavior for safety.
 
 ## 🔄 Evolution Status
 

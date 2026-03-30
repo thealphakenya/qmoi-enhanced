@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # Performance Optimization Guide
 
 ## Overview
@@ -458,7 +458,7 @@ app.use((req, res, next) => {
 
 ## Tools
 
-- **Lighthouse:** https://developers.google.com/web/tools/lighthouse
+- **Lighthouse:** https://prodelopers.google.com/web/tools/lighthouse
 - **WebPageTest:** https://www.webpagetest.org
 - **New Relic:** https://newrelic.com
 - **Datadog:** https://www.datadoghq.com

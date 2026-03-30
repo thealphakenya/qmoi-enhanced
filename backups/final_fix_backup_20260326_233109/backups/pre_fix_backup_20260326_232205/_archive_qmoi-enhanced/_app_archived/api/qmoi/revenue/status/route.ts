@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 import { NextRequest, NextResponse } from "next/server";
 import qmoiRevenueEngine from "../../../../../lib/qmoi-revenue-engine";
 
@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
     }
 
     const masterKey = authHeader.substring(7);
-    // Production, verify against stored master key
+    // production, verify against stored master key
     if (masterKey !== process.env.QMOI_MASTER_API_KEY) {
       return NextResponse.json(
         { error: "Invalid master key" },

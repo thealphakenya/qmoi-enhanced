@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI Auto Setup & Continuous Running System
@@ -137,11 +137,11 @@ class QMOIAutoSetup:
                 "cache_build_files": True,
                 "cache_artifacts": True
             },
-            "multi_device": {
+            "multi_prodice": {
                 "enabled": True,
                 "failover": True,
                 "load_balancing": True,
-                "device_sync": True
+                "prodice_sync": True
             }
         }
         

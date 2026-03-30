@@ -7,8 +7,8 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-# Production Build & Deployment
+# [production READY] this file has no remaining production markers
+# production Build & Deployment
 
 This document explains how to build and validate a production-ready artifact for the QMOI Enhanced app.
 

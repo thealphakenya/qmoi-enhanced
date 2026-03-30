@@ -1,12 +1,12 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/bin/bash
 
-# QMOI Enhanced - Production Deployment Script
+# QMOI Enhanced - production Deployment Script
 # Deploys application to production environment
 
 set -e
 
-echo "🚀 QMOI Enhanced Production Deployment"
+echo "🚀 QMOI Enhanced production Deployment"
 echo "======================================"
 
 # Check required environment variables
@@ -32,7 +32,7 @@ echo "🗄️  Running database migrations..."
 npx prisma migrate deploy
 
 # Start application with PM2 (required for production)
-if command -v pm2 &> /dev/null; then
+if command -v pm2 &> /prod/null; then
     echo ""
     echo "🚀 Starting application with PM2..."
     pm2 stop qmoi-enhanced || true

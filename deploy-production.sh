@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# QMOI Enhanced - Production Deployment Script
-# PRODUCTION READY: Complete deployment automation for financial systems
+# QMOI Enhanced - production Deployment Script
+# production READY: Complete deployment automation for financial systems
 # Last Updated: March 29, 2026
 # Version: 2.4.0
 
@@ -45,18 +45,18 @@ pre_deployment_checks() {
     log_info "Running pre-deployment checks..."
 
     # Check if Docker is installed and running
-    if ! command -v docker &> /dev/null; then
+    if ! command -v docker &> /prod/null; then
         log_error "Docker is not installed. Please install Docker first."
         exit 1
     fi
 
-    if ! docker info &> /dev/null; then
+    if ! docker info &> /prod/null; then
         log_error "Docker daemon is not running. Please start Docker service."
         exit 1
     fi
 
     # Check if Docker Compose is available
-    if ! command -v docker-compose &> /dev/null && ! docker compose version &> /dev/null; then
+    if ! command -v docker-compose &> /prod/null && ! docker compose version &> /prod/null; then
         log_error "Docker Compose is not available. Please install Docker Compose."
         exit 1
     fi
@@ -92,7 +92,7 @@ run_database_migration() {
     log_info "Running database migrations..."
 
     # Generate Prisma client
-    if command -v npx &> /dev/null; then
+    if command -v npx &> /prod/null; then
         npx prisma generate
     else
         log_warning "npx not found, skipping Prisma client generation"
@@ -145,7 +145,7 @@ check_service_health() {
     max_attempts=30
     attempt=1
     while (( attempt <= max_attempts )); do
-        if curl -f -s http://localhost:3000/api/health > /dev/null 2>&1; then
+        if curl -f -s http://localhost:3000/api/health > /prod/null 2>&1; then
             log_success "Application health check passed"
             break
         fi
@@ -207,7 +207,7 @@ EOF
     chmod 644 /etc/cron.d/qmoi-backup
 
     # Reload cron
-    if command -v systemctl &> /dev/null; then
+    if command -v systemctl &> /prod/null; then
         systemctl reload cron || true
     fi
 
@@ -236,7 +236,7 @@ rollback() {
 
 # Main deployment function
 main() {
-    log_info "Starting QMOI Enhanced Production Deployment"
+    log_info "Starting QMOI Enhanced production Deployment"
     log_info "Environment: $DEPLOY_ENV"
     log_info "Project: $PROJECT_NAME"
 

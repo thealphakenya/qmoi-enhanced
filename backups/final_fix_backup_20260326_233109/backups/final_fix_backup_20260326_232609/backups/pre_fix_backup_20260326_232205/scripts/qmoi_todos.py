@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# // Production implementation:
+# // production implementation:
 """
 Consolidated QMOI to-dos manager.
 
@@ -25,7 +25,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 # Config
-PRODUCTION_CONFIRMED = os.environ.get('PRODUCTION_CONFIRMED', 'false').lower() == 'true'
+production_CONFIRMED = os.environ.get('production_CONFIRMED', 'false').lower() == 'true'
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = REPO_ROOT / '.qmoi_validation'
 DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -162,7 +162,7 @@ def run_todo(todo_id):
         if t['id'] == todo_id:
             t['status'] = 'running'
             t.setdefault('runs', []).append({'started': _now_iso()})
-            if not PRODUCTION_CONFIRMED:
+            if not production_CONFIRMED:
                 write_proposal_for_todo(t)
                 t['status'] = 'proposed'
                 t['runs'][-1]['ended'] = _now_iso()

@@ -101,7 +101,7 @@ async function validatePesapal() {
   // Test Pesapal credentials by attempting to get a token
   try {
     const _response = await fetch(
-      `https://${process.env.PESAPAL_ENVIRONMENT === "live" ? "api" : "sandbox"}.pesapal.com/v3/api/Auth/RequestToken`,
+      `https://${process.env.PESAPAL_ENVIRONMENT === "live" ? "api" : "production"}.pesapal.com/v3/api/Auth/RequestToken`,
       {
         method: "POST",
         headers: {

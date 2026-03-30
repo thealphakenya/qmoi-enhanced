@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Issue final for docs/LIONVARIATIONS.md"
 generated: 2025-11-08T16:06:38.368731Z
@@ -19,9 +19,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [PRODUCTION READY] markers or [PRODUCTION READY]s.
-- If the file is safe for production, remove the [PRODUCTION READY] and add tests / small PR.
-- If the file is intentionally non-production (e.g. [PRODUCTION READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [production READY] markers or [production READY]s.
+- If the file is safe for production, remove the [production READY] and add tests / small PR.
+- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -40,16 +40,16 @@ Core goals for variations
 - Consistent naming and metadata
 - Automated builds, releases and platform packaging
 - robust per-variation docs describing features, platforms and revenue models
-- Auto-updates and continuous development (CI-driven)
+- Auto-updates and continuous production (CI-driven)
 
 Variations included in this repository (each has a dedicated spec under `docs/lion_variations/`):
 
-1. lion-core — The canonical orchestrator and core libraries (Python). Suitable for servers and development.
-2. lion-agent — robust agent runtime for edge devices (Python/Node builds).
+1. lion-core — The canonical orchestrator and core libraries (Python). Suitable for servers and production.
+2. lion-agent — robust agent runtime for edge prodices (Python/Node builds).
 3. lion-os — A complete operating-system-style appliance image (Docker/OCI) for deployment as a VM/container.
 4. lion-plugin — Plugin SDK and curated plugin distribution (node/npm and python packages).
-5. lion-extension — Browser/IDE extensions that integrate LION proposals and insights into developer tools.
-6. lio (mobile) — Mobile-focused variant (Android/iOS packaging guidance, AAB/IPA artifacts) for on-device agents.
+5. lion-extension — Browser/IDE extensions that integrate LION proposals and insights into prodeloper tools.
+6. lio (mobile) — Mobile-focused variant (Android/iOS packaging guidance, AAB/IPA artifacts) for on-prodice agents.
 7. lion-cloud — Cloud-native orchestrator distribution with Kubernetes manifests, autoscaling and monitoring presets.
 
 New variations can be added by creating a spec file in `docs/lion_variations/` and declaring the variation name in `scripts/release_helper.py`.

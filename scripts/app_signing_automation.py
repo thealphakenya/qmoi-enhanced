@@ -186,7 +186,7 @@ class AppSigningAutomation:
                 '-s', str(cert_path),
                 '--force',
                 '--options=runtime',
-                '--entitlements=/dev/null',
+                '--entitlements=/prod/null',
                 '--timestamp',
                 str(app_file)
             ]

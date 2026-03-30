@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Issue final for QMOI_MEMORY.md"
 generated: 2025-11-08T16:06:38.328623Z
@@ -10,9 +10,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [PRODUCTION READY] markers or [PRODUCTION READY]s.
-- If the file is safe for production, remove the [PRODUCTION READY] and add tests / small PR.
-- If the file is intentionally non-production (e.g. [PRODUCTION READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [production READY] markers or [production READY]s.
+- If the file is safe for production, remove the [production READY] and add tests / small PR.
+- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -47,7 +47,7 @@ title: "QMOI Memory Log"
 - [Automated] All .md files and download links updated after every cycle.
 - [Automated] All errors auto-fixed and logged for future reference.
 - [Automated] QMOI memory updated with every successful fix and feature.
-- [Automated] Latest install autotest results: All device types PASS, no errors detected. Error stats and persistent memory updated in QMOIAPPS.md and install_autotest_report.json.
+- [Automated] Latest install autotest results: All prodice types PASS, no errors detected. Error stats and persistent memory updated in QMOIAPPS.md and install_autotest_report.json.
 
 ## Persistent Features
 

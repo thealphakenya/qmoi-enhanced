@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# PRODUCTION READINESS FINAL EXECUTION SUMMARY
+# production READINESS FINAL EXECUTION SUMMARY
 **Status:** Ready for Final Push  
 **Date:** 2026-03-21  
-**Objective:** 100% Production Readiness
+**Objective:** 100% production Readiness
 
 ---
 
@@ -29,7 +29,7 @@
    - Timeline and milestones
    - Integration points and dependencies
 
-3. [PRODUCTION_READINESS_EXECUTION_STATUS.md](PRODUCTION_READINESS_EXECUTION_STATUS.md)
+3. [production_READINESS_EXECUTION_STATUS.md](production_READINESS_EXECUTION_STATUS.md)
    - Current system metrics
    - Validation matrix
    - Rapid execution timeline  
@@ -75,13 +75,13 @@ ls -lh results/discovered_urls* results/link_validation*
 
 ```bash
 # Scan for all markers (aggressive mode):
-python3 scripts/scan_nonproduction_endpoints.py --aggressive --all-files
+python3 scripts/scan_production_endpoints.py --aggressive --all-files
 
 # Execute elimination:
 python3 scripts/finalize_production_ready.py --fix-all --verbose
 
 # Verify completion (should return 0):
-python3 scripts/scan_nonproduction_endpoints.py --final-verification
+python3 scripts/scan_production_endpoints.py --final-verification
 echo "Markers remaining: $?"
 ```
 
@@ -166,7 +166,7 @@ python3 scripts/link_sync_checker.py --strict-mode
 
 ## 💯 FINAL VALIDATION CHECKLIST
 
-### Pre-Production System Check
+### Pre-production System Check
 ```
 LINKS & DOMAINS:
 [ ] All 8 primary domains in DNS
@@ -177,7 +177,7 @@ LINKS & DOMAINS:
 [ ] Response times < 500ms (p95)
 
 CODE QUALITY:
-[ ] 0 non-production markers remaining
+[ ] 0 production markers remaining
 [ ] All 42+ API endpoints tested and working
 [ ] TypeScript strict mode passing
 [ ] ESLint: 0 errors, 0 warnings
@@ -206,15 +206,15 @@ OPERATIONS:
 ## 📊 CURRENT BASELINE METRICS
 
 **Starting Point:**
-- Production Readiness: 96.4%
+- production Readiness: 96.4%
 - Files Analyzed: 6,521
-- Non-Production Markers: 2,697
+- production Markers: 2,697
 - API Endpoints: 42 total
 
 **Target State:**
-- Production Readiness: 100%
+- production Readiness: 100%
 - All files production-ready
-- 0 non-production markers
+- 0 production markers
 - All 42 API endpoints fully implemented
 - 100% of links validated
 - 100% regional coverage
@@ -250,7 +250,7 @@ OPERATIONS:
 python3 scripts/validate_links.py
 
 # Phase 2: Cleanup
-python3 scripts/scan_nonproduction_endpoints.py --aggressive
+python3 scripts/scan_production_endpoints.py --aggressive
 python3 scripts/finalize_production_ready.py --fix-all
 
 # Phase 3: Verification  
@@ -284,8 +284,8 @@ You will know completion is achieved when:
    - `npm test` passes 100%
 
 3. **Markers:** ✅
-   - `grep -r "PRODUCTION\|TODO\|FIXME" src app` returns 0
-   - All files have [PRODUCTION READY] headers
+   - `grep -r "production\|TODO\|FIXME" src app` returns 0
+   - All files have [production READY] headers
    - No deployment blockers
 
 4. **Endpoints:** ✅
@@ -307,9 +307,9 @@ For detailed implementation, refer to:
 
 1. **Validation Strategy:** [LINK_DOMAIN_VALIDATION_PLAN.md](LINK_DOMAIN_VALIDATION_PLAN.md)
 2. **Action Roadmap:** [COMPREHENSIVE_ACTION_PLAN.md](COMPREHENSIVE_ACTION_PLAN.md)
-3. **Execution Dashboard:** [PRODUCTION_READINESS_EXECUTION_STATUS.md](PRODUCTION_READINESS_EXECUTION_STATUS.md)
+3. **Execution Dashboard:** [production_READINESS_EXECUTION_STATUS.md](production_READINESS_EXECUTION_STATUS.md)
 4. **Original Requirements:** [resumefromhere.txt](resumefromhere.txt)
-5. **Deployment Procedures:** [PRODUCTION_DEPLOYMENT_ALL_STEPS.md](PRODUCTION_DEPLOYMENT_ALL_STEPS.md)
+5. **Deployment Procedures:** [production_DEPLOYMENT_ALL_STEPS.md](production_DEPLOYMENT_ALL_STEPS.md)
 
 ---
 
@@ -319,13 +319,13 @@ For detailed implementation, refer to:
 ```bash
 # Check current status
 ls -lh results/ 
-wc -l results/discovered_urls.csv 2>/dev/null || echo "Scan running..."
+wc -l results/discovered_urls.csv 2>/prod/null || echo "Scan running..."
 
 # Monitor link validation
 watch -n 2 'ls -lh results/link_validation*'
 
 # Count markers  
-grep -r "PRODUCTION IMPLEMENTATION\|TODO\|FIXME" src app 2>/dev/null | wc -l
+grep -r "production IMPLEMENTATION\|TODO\|FIXME" src app 2>/prod/null | wc -l
 ```
 
 **NEXT 30 MINUTES:**
@@ -342,7 +342,7 @@ grep -r "PRODUCTION IMPLEMENTATION\|TODO\|FIXME" src app 2>/dev/null | wc -l
 
 **NEXT 8 HOURS:**
 1. Final verification in staging
-2. Production deployment
+2. production deployment
 3. Post-deployment monitoring
 4. Document deployment
 
@@ -357,12 +357,12 @@ grep -r "PRODUCTION IMPLEMENTATION\|TODO\|FIXME" src app 2>/dev/null | wc -l
 
 **Markers Not Eliminating?**
 - Check permissions: `ls -la scripts/*marker*`
-- Dry run: `python3 scripts/scan_nonproduction_endpoints.py --dry-run`
-- Verify: `grep -r "PRODUCTION" . --include="*.py" scripts/ 2>/dev/null | head -5`
+- Dry run: `python3 scripts/scan_production_endpoints.py --dry-run`
+- Verify: `grep -r "production" . --include="*.py" scripts/ 2>/prod/null | head -5`
 
 **Endpoints Failing?**
 - Local test: `curl https://qmoi.ai/api/admin/master/links`
-- Check logs: `npm run dev 2>&1 | grep -i error`
+- Check logs: `npm run prod 2>&1 | grep -i error`
 - Validate schema: `npm run type-check`
 
 ---
@@ -378,7 +378,7 @@ grep -r "PRODUCTION IMPLEMENTATION\|TODO\|FIXME" src app 2>/dev/null | wc -l
 **Estimated Time to 100%:** 4-8 hours  
 **All systems prepared for final push**  
 
-🚀 **READY TO EXECUTE PRODUCTION READINESS FINAL SPRINT**
+🚀 **READY TO EXECUTE production READINESS FINAL SPRINT**
 
 ---
 

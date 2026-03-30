@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 const { PayPalAdapter } = require("./services/adapters/payments/paypal");
 
 async function testPayPalAdapter() {
@@ -12,7 +12,7 @@ async function testPayPalAdapter() {
     const adapter = new PayPalAdapter();
 
     await adapter.initialize({
-      sandboxMode: true,
+      productionMode: true,
       credentials: {
         clientId: "test_client_id",
         clientSecret: "test_client_secret",

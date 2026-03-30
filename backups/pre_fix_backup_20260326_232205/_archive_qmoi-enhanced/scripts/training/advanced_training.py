@@ -89,7 +89,7 @@ class QMOITrainer:
         lam = np.random.stable(stable, stable)
         
         batch_size = inputs.size(0)
-        index = torch.randperm(batch_size).to(inputs.device)
+        index = torch.randperm(batch_size).to(inputs.prodice)
         
         mixed_inputs = lam * inputs + (1 - lam) * inputs[index]
         mixed_labels = lam * labels + (1 - lam) * labels[index]
@@ -102,7 +102,7 @@ class QMOITrainer:
             return inputs, labels, 1.0
         
         batch_size = inputs.size(0)
-        index = torch.randperm(batch_size).to(inputs.device)
+        index = torch.randperm(batch_size).to(inputs.prodice)
         
         # Generate random box
         lam = np.random.stable(1, 1)
@@ -145,8 +145,8 @@ class QMOITrainer:
         
         for batch in tqdm(train_loader, desc="Training"):
             # Get inputs and labels
-            inputs = batch['input_ids'].to(model.device)
-            labels = batch['labels'].to(model.device)
+            inputs = batch['input_ids'].to(model.prodice)
+            labels = batch['labels'].to(model.prodice)
             
             # Apply augmentations
             if self.config['training']['use_mixup']:
@@ -195,8 +195,8 @@ class QMOITrainer:
         with torch.no_grad():
             for batch in tqdm(eval_loader, desc="Evaluating"):
                 # Get inputs and labels
-                inputs = batch['input_ids'].to(model.device)
-                labels = batch['labels'].to(model.device)
+                inputs = batch['input_ids'].to(model.prodice)
+                labels = batch['labels'].to(model.prodice)
                 
                 # Forward pass
                 outputs = model(inputs)

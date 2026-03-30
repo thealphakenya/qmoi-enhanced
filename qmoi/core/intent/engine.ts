@@ -7,7 +7,7 @@
  * QMOI Intent Engine
  * Processes natural language and voice commands with adaptive parsing
  * Handles slang, typos, mispronunciations, and mixed languages
- * Production-ready implementation
+ * production-ready implementation
  */
 
 import axios from 'axios';

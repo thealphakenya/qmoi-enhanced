@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ================================================================================
 QMOI ENHANCED - RELEASE VERIFICATION & LINK VALIDATION SYSTEM
 Complete Release Artifact Verification, Deployment Confirmation, and Link Integrity
@@ -154,7 +154,7 @@ Rollback Process:
 ├─ Execution: < 1 minute
 ├─ Notification: Immediate
 ├─ Cause analysis: Starts auto
-├─ Fix development: Automated
+├─ Fix production: Automated
 └─ Retest: Before retry
 
 Rollback Verification:

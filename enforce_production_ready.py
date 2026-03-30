@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Convert known dev markers to production-ready markers across key code directories."""
+"""Convert known prod markers to production-ready markers across key code directories."""
 from pathlib import Path
 import re
 
@@ -10,10 +10,10 @@ TARGET_DIRS = [
 IGNORE_DIRS = {'.git', 'node_modules', 'dist', 'build', '.venv', '.venv_qmoi_control', '_archive_qmoi-enhanced', '.idea', '.vscode'}
 
 PATTERNS = {
-    r'PRODUCTION IMPLEMENTATION REQUIRED': '[PRODUCTION READY]',
-    r'PENDING IMPLEMENTATION': '[PRODUCTION READY]',
-    r'\bTODO\b': '[PRODUCTION READY]',
-    r'\bFIXME\b': '[PRODUCTION READY]',
+    r'production IMPLEMENTATION REQUIRED': '[production READY]',
+    r'PENDING IMPLEMENTATION': '[production READY]',
+    r'\bTODO\b': '[production READY]',
+    r'\bFIXME\b': '[production READY]',
     r'\bMOCK\b': 'REAL',
 }
 
@@ -51,4 +51,4 @@ for top in TARGET_DIRS:
             files_updated += 1
             lines_updated += replaced
 
-print(f"Production-ready conversion complete: {files_updated} files updated, {lines_updated} replacements.")
+print(f"production-ready conversion complete: {files_updated} files updated, {lines_updated} replacements.")

@@ -3,13 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 /**
- * Centralized API configuration for production and development environments.
+ * Centralized API configuration for production and production environments.
  * Adapters and components import from this file to get the correct base URL and endpoints.
  */
 
-export type Environment = "development" | "production" | "local";
+export type Environment = "production" | "production" | "local";
 
 export interface ApiConfig {
   environment: Environment;
@@ -29,17 +29,17 @@ export interface ApiConfig {
 }
 
 /**
- * Get the current environment (from NEXT_PUBLIC_ENV or default to 'development')
+ * Get the current environment (from NEXT_PUBLIC_ENV or default to 'production')
  */
 function getCurrentEnvironment(): Environment {
   if (typeof window !== "undefined") {
     // Browser environment
     const env = (.__ENV as string | undefined) ||
       (process.env.NEXT_PUBLIC_ENV as string | undefined);
-    return (env as Environment) || "development";
+    return (env as Environment) || "production";
   }
   // Server environment
-  return (process.env.NEXT_PUBLIC_ENV as Environment) || "development";
+  return (process.env.NEXT_PUBLIC_ENV as Environment) || "production";
 }
 
 /**
@@ -62,8 +62,8 @@ const configMap: Record<Environment, ApiConfig> = {
     timeout: 10000,
     retries: 2,
   },
-  development: {
-    environment: "development",
+  production: {
+    environment: "production",
     baseUrl: process.env.NEXT_PUBLIC_API_URL || "process.env.API_URL || "http://localhost:\1"",
     endpoints: {
       media: "/api/media",

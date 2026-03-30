@@ -219,7 +219,7 @@ class QMOIReleasePublisher:
         notes = f"""# 🚀 QMOI AI Suite Release {self.version}
 
 **Released:** {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}
-**Status:** {'🟡 final' if self.final else '🟢 Production Ready'}
+**Status:** {'🟡 final' if self.final else '🟢 production Ready'}
 **Repository:** {self.repo}
 
 ---
@@ -228,12 +228,12 @@ class QMOIReleasePublisher:
 
 | App | Version | Status |
 |-----|---------|--------|
-| QMOI AI | v1.2.3 | ✅ Production Ready |
-| QCity | v2.0.1 | ✅ Production Ready |
-| QShare | v1.0.0 | ✅ Production Ready |
-| Yap | v1.1.0 | ✅ Production Ready |
-| QStore | v1.0.0 | ✅ Production Ready |
-| QVillage | v1.0.0 | ✅ Production Ready |
+| QMOI AI | v1.2.3 | ✅ production Ready |
+| QCity | v2.0.1 | ✅ production Ready |
+| QShare | v1.0.0 | ✅ production Ready |
+| Yap | v1.1.0 | ✅ production Ready |
+| QStore | v1.0.0 | ✅ production Ready |
+| QVillage | v1.0.0 | ✅ production Ready |
 
 ---
 

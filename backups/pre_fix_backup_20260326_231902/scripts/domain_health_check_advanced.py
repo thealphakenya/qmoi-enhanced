@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:55Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI Domain Health Checker - Advanced Multi-Region Validation
@@ -146,7 +146,7 @@ class DomainHealthChecker:
             "fallbacks": [],
             "check_endpoints": ["/"]
         },
-        "qparallel.dev": {
+        "qparallel.prod": {
             "type": "fallback",
             "critical": False,
             "fallbacks": [],
@@ -373,7 +373,7 @@ class DomainHealthChecker:
             # Try HTTPS first
             start_time = time.time()
             result = subprocess.run(
-                ['curl', '-s', '-o', '/dev/null', '-w', '%{http_code}', f'https://{domain}/', '--max-time', '5'],
+                ['curl', '-s', '-o', '/prod/null', '-w', '%{http_code}', f'https://{domain}/', '--max-time', '5'],
                 capture_output=True,
                 text=True,
                 timeout=10
@@ -389,7 +389,7 @@ class DomainHealthChecker:
             # Try HTTP fallback
             start_time = time.time()
             result = subprocess.run(
-                ['curl', '-s', '-o', '/dev/null', '-w', '%{http_code}', f'http://{domain}/', '--max-time', '5'],
+                ['curl', '-s', '-o', '/prod/null', '-w', '%{http_code}', f'http://{domain}/', '--max-time', '5'],
                 capture_output=True,
                 text=True,
                 timeout=10

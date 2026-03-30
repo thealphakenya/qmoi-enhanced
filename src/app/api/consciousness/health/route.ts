@@ -36,10 +36,10 @@ export async function GET(request: NextRequest) {
         'qcity.io',
         'qvillage.org',
         'qglobal.ai',
-        'qparallel.dev',
-        'web.qmoi.dev',
-        'test.qmoi.dev',
-        'staging.qmoi.dev'
+        'qparallel.prod',
+        'web.qmoi.prod',
+        'test.qmoi.prod',
+        'staging.qmoi.prod'
       ]
     }, { status: 200 });
   } catch (error) {

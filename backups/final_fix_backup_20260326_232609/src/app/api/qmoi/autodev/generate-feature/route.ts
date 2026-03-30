@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /**
- * Next.js API Route: /api/qmoi/autodev/generate-feature
+ * Next.js API Route: /api/qmoi/autoprod/generate-feature
  * Generate new features autonomously
  */
 
@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
     // Enqueue a real background job to generate the feature.
     const q = TaskQueue.getInstance();
     const job = q.enqueue({
-      name: "autodev:generate",
+      name: "autoprod:generate",
       payload: { description },
     });
 
@@ -36,29 +36,29 @@ export async function POST(request: NextRequest) {
       queued: true,
       jobId: job.id,
       message:
-        "Feature generation queued; check autodev.generated or autodev.audit for results",
+        "Feature generation queued; check autoprod.generated or autoprod.audit for results",
       description,
       timestamp: new Date().toISOString(),
     };
 
-    // Create a track entry for auditing and tracking auto-dev actions
+    // Create a track entry for auditing and tracking auto-prod actions
     try {
       await fetch(new URL("/api/tracks", request.url).toString(), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          type: "autodev-feature",
-          title: "AutoDev Feature Generation",
+          type: "autoprod-feature",
+          title: "Autoprod Feature Generation",
           summary: `Feature generation requested: ${description}`,
           details: `Job ID: ${job.id}`,
           status: "pending",
           priority: "high",
-          source: "qmoi-autodev",
+          source: "qmoi-autoprod",
         }),
       });
     } catch (trackErr) {
       // fail silently, but log in server context if available
-      console.warn("Failed to track autodev feature request", trackErr);
+      console.warn("Failed to track autoprod feature request", trackErr);
     }
 
     return NextResponse.json(resp, { status: 202 });

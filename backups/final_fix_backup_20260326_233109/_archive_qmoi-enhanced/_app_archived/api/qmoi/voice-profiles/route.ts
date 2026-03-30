@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
@@ -16,7 +16,7 @@ import {
 function requireApiKey(request: NextRequest) {
   const key = request.headers.get("x-qmoi-api-key") || "";
   const expected = process.env.QMOI_API_KEY || "";
-  if (!expected) return true; // allow when no key configured (dev)
+  if (!expected) return true; // allow when no key configured (prod)
   return key === expected;
 }
 
@@ -103,7 +103,7 @@ export async function POST(request: NextRequest) {
         return await enhanceVoice(voiceId);
 
       case "upgrade":
-        return await upgradeVoice(voiceId);
+        return await upgraprodoice(voiceId);
 
       default:
         return NextResponse.json({ error: "Invalid action" }, { status: 400 });
@@ -126,7 +126,7 @@ async function switchVoice(voiceId: string) {
     }
     // Proposal-first: record the requested voice switch for review unless explicitly allowed
     const canApply =
-      process.env.PRODUCTION_CONFIRMED === "true" &&
+      process.env.production_CONFIRMED === "true" &&
       process.argv.indexOf("--real") !== -1;
     const proposal = {
       type: "voice_switch",
@@ -226,7 +226,7 @@ async function previewVoice(
         );
       }
 
-      // We expect binary audio — return a URL to the caller or inline base64 in dev
+      // We expect binary audio — return a URL to the caller or inline base64 in prod
       const arrayBuffer = await resp.arrayBuffer();
       const buf = Buffer.from(arrayBuffer);
 
@@ -262,7 +262,7 @@ async function enhanceVoice(voiceId: string) {
       timestamp: new Date().toISOString(),
     };
     const canApply =
-      process.env.PRODUCTION_CONFIRMED === "true" &&
+      process.env.production_CONFIRMED === "true" &&
       process.argv.indexOf("--real") !== -1;
     if (!canApply) {
       await writeProposal(proposal);
@@ -273,9 +273,9 @@ async function enhanceVoice(voiceId: string) {
       });
     }
 
-    // Real enhancement path — // Production implementation: that should enqueue a job or call an offline pipeline
+    // Real enhancement path — // production implementation: that should enqueue a job or call an offline pipeline
     .log(`Applying enhancement to voice ${voiceId}`);
-    // Production implementation:: enqueue enhancement job in real implementation
+    // production implementation:: enqueue enhancement job in real implementation
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return NextResponse.json({
       success: true,
@@ -290,7 +290,7 @@ async function enhanceVoice(voiceId: string) {
   }
 }
 
-async function upgradeVoice(voiceId: string) {
+async function upgraprodoice(voiceId: string) {
   try {
     // Proposal-first for upgrades
     const proposal = {
@@ -299,7 +299,7 @@ async function upgradeVoice(voiceId: string) {
       timestamp: new Date().toISOString(),
     };
     const canApply =
-      process.env.PRODUCTION_CONFIRMED === "true" &&
+      process.env.production_CONFIRMED === "true" &&
       process.argv.indexOf("--real") !== -1;
     if (!canApply) {
       await writeProposal(proposal);
@@ -310,7 +310,7 @@ async function upgradeVoice(voiceId: string) {
       });
     }
 
-    // Real upgrade path (// Production implementation:)
+    // Real upgrade path (// production implementation:)
     .log(`Applying upgrade to voice ${voiceId}`);
     await new Promise((resolve) => setTimeout(resolve, 2000));
     return NextResponse.json({
@@ -396,6 +396,6 @@ async function generateTTSAudio(
   // - EVA3D (for 3D avatar animation)
   // - Commercial APIs (ElevenLabs, Azure, etc.)
 
-  // Production implementation URL
+  // production implementation URL
   return `/api/tts/generate?voice=${voiceId}&text=${encodeURIComponent(text)}&quality=${quality}&volume=${volume}`;
 }

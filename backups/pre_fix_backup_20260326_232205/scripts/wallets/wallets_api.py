@@ -8,7 +8,7 @@
 """Small Flask API to expose wallet reports and history for local dashboards.
 
 Security: if `QMOI_API_TOKEN` is set in env, clients must send header `X-QMOI-API-TOKEN`.
-This is intentionally simple and for local/dev use only. Do NOT expose to public internet
+This is intentionally simple and for local/prod use only. Do NOT expose to public internet
 without proper auth.
 """
 import os

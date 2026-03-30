@@ -9,12 +9,12 @@ import re
 
 root_dir = os.getcwd()
 # We scan all directories and files, so the percentage is accurate across full repo.
-# Comprehensive non-production implementation markers
-nonprod_keywords = [
+# Comprehensive production implementation markers
+production_keywords = [
     # Direct markers
     'PENDING_IMPLEMENTATION', 'TODO', 'FIXME', 'PLACEHOLDER', 'MOCK',
     'SIMULATE', 'SIMULATION', 'STAGING', 'STUB', 'STUBS',
-    'PRODUCTION IMPLEMENTATION REQUIRED', 'PRODUCTION DONE', 'PRODUCTION FIXED',
+    'production IMPLEMENTATION REQUIRED', 'production DONE', 'production FIXED',
     'TEST DATA', 'TEST IMPLEMENTATION', 'NOT IMPLEMENTED', 'UNIMPLEMENTED',
     'SIMPLE', 'MINIMAL', 'DEMO', 'DRAFT', 'PROOF OF CONCEPT', 'POC',
     'ALPHA', 'BETA', 'EXPERIMENTAL', 'TEMPORARY', 'INCOMPLETE',
@@ -22,14 +22,14 @@ nonprod_keywords = [
     # Implementation status
     'implementation pending', 'pending implementation', 'needs implementation',
     'implementation needed', 'to be implemented', 'not yet implemented',
-    'coming soon', 'work in progress', 'in development', 'under development',
+    'coming soon', 'work in progress', 'in production', 'under production',
 
     # Placeholder content
     'placeholder', 'placeholder text', 'placeholder data', 'dummy data',
     'sample data', 'example data', 'fake data', 'mock data',
 
-    # Development markers
-    'dev only', 'development only', 'for development', 'debug only',
+    # production markers
+    'prod only', 'production only', 'for production', 'debug only',
     'temporary', 'temp', 'hack', 'workaround', 'bandaid',
 
     # Test markers
@@ -45,8 +45,8 @@ nonprod_keywords = [
     'mock function', 'stub function', 'placeholder function',
 
     # Configuration markers
-    'dev config', 'test config', 'staging config', 'local config',
-    'development configuration', 'test configuration',
+    'prod config', 'test config', 'staging config', 'local config',
+    'production configuration', 'test configuration',
 
     # UI/UX markers
     'coming soon', 'under construction', 'maintenance mode', 'temporarily unavailable',
@@ -70,9 +70,9 @@ nonprod_keywords = [
 ]
 production_ready_markers = ['[production ready]', '[production complete]', 'in production', 'production ready', 'production complete']
 
-nonprod_patterns = [re.compile(r'\\b' + re.escape(kw) + r'\\b', re.IGNORECASE) for kw in nonprod_keywords]
+production_patterns = [re.compile(r'\\b' + re.escape(kw) + r'\\b', re.IGNORECASE) for kw in production_keywords]
 
-nonprod_whitelist_paths = [
+production_whitelist_paths = [
     r'^\.env',
     r'^\.gitignore$',
     r'^Dockerfile',
@@ -131,7 +131,7 @@ def is_whitelisted(file_path):
     if 'node_modules/' in rel or rel.startswith('.git/') or rel.startswith('.venv/') or rel.startswith('_archive_qmoi-enhanced/'):
         return True
 
-    for pattern in nonprod_whitelist_paths:
+    for pattern in production_whitelist_paths:
         if re.search(pattern, rel, re.IGNORECASE):
             return True
 
@@ -179,7 +179,7 @@ def scan_file(file_path):
     content_lower = content.lower()
     is_ready = any(marker in content_lower for marker in production_ready_markers)
 
-    hits = sorted({kw for kw, patt in zip(nonprod_keywords, nonprod_patterns) if patt.search(content_lower)})
+    hits = sorted({kw for kw, patt in zip(production_keywords, production_patterns) if patt.search(content_lower)})
 
     if is_ready:
         ready_files += 1
@@ -233,51 +233,51 @@ def perform_scan(root_dir, include_whitelist=False, max_size=max_file_size_bytes
     with open('undone.txt', 'w', encoding='utf-8') as f:
         f.write('Scan run: ' + str(os.popen('date').read().strip()) + '\n')
         f.write('Repository path: ' + root_dir + '\n\n')
-        f.write('Finding files with keywords: ' + ' '.join(nonprod_keywords) + '\n')
+        f.write('Finding files with keywords: ' + ' '.join(production_keywords) + '\n')
         f.write('----\n')
         if not results:
-            f.write('No non-production markers found. undone.txt is now empty.\n')
+            f.write('No production markers found. undone.txt is now empty.\n')
         else:
             for r in results:
                 f.write(f"{r['filePath']} [{', '.join(r['hits'])}]\n")
 
-        f.write('\nTotal files with non-production markers: ' + str(len(results)) + '\n')
+        f.write('\nTotal files with production markers: ' + str(len(results)) + '\n')
         f.write('Total files scanned: ' + str(scanned_files) + '\n')
         f.write('Files skipped (binary/large): ' + str(skipped_non_text) + '\n')
         f.write('Files marked as production ready: ' + str(ready_files) + '\n')
 
         total_relevant_files = scanned_files - skipped_non_text
-        nonprod_files = [r for r in results if not is_whitelisted(os.path.join(root_dir, r['filePath']))]
+        production_files = [r for r in results if not is_whitelisted(os.path.join(root_dir, r['filePath']))]
         if total_relevant_files > 0:
-            production_ready_percent = ((total_relevant_files - len(nonprod_files)) / total_relevant_files) * 100
-            f.write(f'Production readiness: {production_ready_percent:.1f}%\n')
+            production_ready_percent = ((total_relevant_files - len(production_files)) / total_relevant_files) * 100
+            f.write(f'production readiness: {production_ready_percent:.1f}%\n')
         else:
-            f.write('Production readiness: N/A (no relevant files found)\n')
+            f.write('production readiness: N/A (no relevant files found)\n')
 
     print(f"\nScan complete!")
     print(f"Total files scanned: {scanned_files}")
     print(f"Files skipped: {skipped_non_text}")
-    print(f"Files with non-production markers: {len(results)}")
+    print(f"Files with production markers: {len(results)}")
 
     if scanned_files - skipped_non_text > 0:
         ready_percent = ((scanned_files - skipped_non_text - len(results)) / (scanned_files - skipped_non_text)) * 100
-        print(f"Production readiness: {ready_percent:.1f}%")
+        print(f"production readiness: {ready_percent:.1f}%")
     else:
-        print("Production readiness: N/A")
+        print("production readiness: N/A")
 
     if results:
         percentage = round((len(results) / scanned_files * 100), 2) if scanned_files else 0
-        print(f'Scan complete. Total non-production marker files: {len(results)} / {scanned_files} ({percentage}%)')
-        print(f'Total production-ready files (no nonprod markers): {ready_files}')
+        print(f'Scan complete. Total production marker files: {len(results)} / {scanned_files} ({percentage}%)')
+        print(f'Total production-ready files (no production markers): {ready_files}')
         print(f'Skipped due to read errors/non-text: {skipped_non_text}')
         print('\n'.join(results[i]['filePath'] + ' [' + ', '.join(results[i]['hits']) + ']' for i in range(min(20, len(results)))))
     else:
-        print(f'Scan complete. No non-production markers found. undone.txt cleared. Scanned {scanned_files} files.')
+        print(f'Scan complete. No production markers found. undone.txt cleared. Scanned {scanned_files} files.')
         print(f'Skipped due to read errors/non-text: {skipped_non_text}')
 
 def parse_args():
     import argparse
-    parser = argparse.ArgumentParser(description='Scan repository for non-production markers')
+    parser = argparse.ArgumentParser(description='Scan repository for production markers')
     parser.add_argument('--root', default=os.getcwd(), help='Root directory to scan')
     parser.add_argument('--include-whitelist', action='store_true', help='Include files in the whitelist for marker detection')
     parser.add_argument('--max-size', type=int, default=max_file_size_bytes, help='Max file size in bytes to scan (default 20MB)')

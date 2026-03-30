@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOIQCITYAUTOMATIC"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -76,7 +76,7 @@ Icons + status shown in real-time
 🧠 Performance Optimization powered by analytics
 
 📦 App Download Logic + QI Integration
-✅ Device-Aware Installer auto-selects correct version
+✅ prodice-Aware Installer auto-selects correct version
 
 🚨 Auto-Updates Only: No downloads allowed if tests fail
 
@@ -170,7 +170,7 @@ Real-time log sync to dashboard
 
 🤝 Integrations & Self-Replication
 Integration Description
-QMOIAUTOMAKENEW.md Autoclone new projects/devices
+QMOIAUTOMAKENEW.md Autoclone new projects/prodices
 QMOIBROWSER.md Tests all web features automatically
 QCITYRUNNERSENGINE.md Uses runners to execute all pipelines
 QMOINGROK.md Automates link fallback using ngrok

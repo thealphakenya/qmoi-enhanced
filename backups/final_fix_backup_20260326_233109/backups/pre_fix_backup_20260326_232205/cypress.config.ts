@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:32Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 import { defineConfig } from "cypress";
 
 export default defineConfig({
@@ -25,7 +25,7 @@ export default defineConfig({
     screenshotsFolder: "cypress/screenshots",
   },
   component: {
-    devServer: {
+    prodServer: {
       framework: "next",
       bundler: "webpack",
     },

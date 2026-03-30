@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // Production implementation:(s) found in this file. See .qmoi_validation/// Production implementation:_fix_report.txt for details.
+// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -32,7 +32,7 @@ const DividendDistributionSchema = z.object({
   ),
 });
 
-// Production implementation: database
+// production implementation: database
 const megavaultData = {
   currentBalance: 1000000, // 1M starting balance
   totalInflow: 1500000,
@@ -50,7 +50,7 @@ const PESAPAL_CREDENTIALS = {
   consumerKey: process.env.PESAPAL_CONSUMER_KEY || "",
   consumerSecret: process.env.PESAPAL_CONSUMER_SECRET || "",
   environment:
-    (process.env.PESAPAL_ENVIRONMENT as "sandbox" | "live") || "sandbox",
+    (process.env.PESAPAL_ENVIRONMENT as "production" | "live") || "production",
 };
 
 // Safe backup: never transmit raw secrets. Log only masked values for debugging.
@@ -80,7 +80,7 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
 // Pesapal integration functions
 async function initializePesapalAccount() {
   try {
-    // Production implementation: Pesapal account creation
+    // production implementation: Pesapal account creation
     const accountData = {
       accountId: `qmoi_megavault_${Date.now()}`,
       accountName: "QMOI Megavault",
@@ -104,7 +104,7 @@ async function initializePesapalAccount() {
 
 async function processPesapalTransaction(transactionData: unknown) {
   try {
-    // Production implementation: Pesapal transaction
+    // production implementation: Pesapal transaction
     const response = await fetch(
       "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
       {

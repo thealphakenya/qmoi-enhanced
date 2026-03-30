@@ -45,13 +45,13 @@ class VoiceControlManager {
     const voiceCancel = document.getElementById("voice-cancel");
 
     if (voiceToggle) {
-      voiceToggle.addEventListener("click", () => this.toggleListening());
+      voiceToggle.adprodentListener("click", () => this.toggleListening());
     }
     if (voiceStop) {
-      voiceStop.addEventListener("click", () => this.stopListening());
+      voiceStop.adprodentListener("click", () => this.stopListening());
     }
     if (voiceCancel) {
-      voiceCancel.addEventListener("click", () => this.cancelListening());
+      voiceCancel.adprodentListener("click", () => this.cancelListening());
     }
   }
 
@@ -185,7 +185,7 @@ class VoiceControlManager {
 
 // Initialize on DOM ready
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => {
+  document.adprodentListener("DOMContentLoaded", () => {
     window.voiceControlManager = new VoiceControlManager();
   });
 } else {

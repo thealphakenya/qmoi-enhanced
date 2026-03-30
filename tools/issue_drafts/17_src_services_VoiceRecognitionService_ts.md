@@ -7,30 +7,30 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
-title: "Fix [PRODUCTION READY]s in src/services/VoiceRecognitionService.ts (61 priority)"
+title: "Fix [production READY]s in src/services/VoiceRecognitionService.ts (61 priority)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Fix [PRODUCTION READY]s in src/services/VoiceRecognitionService.ts (61 priority)
+# Fix [production READY]s in src/services/VoiceRecognitionService.ts (61 priority)
 
 **File**: `src/services/VoiceRecognitionService.ts`
 **Priority score**: 61
 
 ## Summary of matches
 
-- Line 8: [PRODUCTION READY]_PRODRate: number;
-- Line 78: [PRODUCTION READY]_PRODRate: 16000,
+- Line 8: [production READY]_prodRate: number;
+- Line 78: [production READY]_prodRate: 16000,
 - Line 770: // Implementation depends on platform
-- Line 785: [PRODUCTION READY]_PROD implementation - would integrate with actual Bitget API
-- Line 790: [PRODUCTION READY]_PROD implementation - would integrate with QAllpurposeService
-- Line 798: [PRODUCTION READY]_PROD implementation - would integrate with WhatsAppService
-- Line 806: [PRODUCTION READY]_PROD implementation - would integrate with WhatsAppService
+- Line 785: [production READY]_prod implementation - would integrate with actual Bitget API
+- Line 790: [production READY]_prod implementation - would integrate with QAllpurposeService
+- Line 798: [production READY]_prod implementation - would integrate with WhatsAppService
+- Line 806: [production READY]_prod implementation - would integrate with WhatsAppService
 
 ## required action
 
-Replace [PRODUCTION READY] [PRODUCTION READY]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
+Replace [production READY] [production READY]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
 
 ## Notes
 

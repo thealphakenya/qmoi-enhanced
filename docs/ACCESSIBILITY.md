@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "QMOI Accessibility Features"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -18,7 +18,7 @@ title: "QMOI Accessibility Features"
 
 ## Overview
 
-QMOI is designed for users of all abilities, with a focus on handsfree, accessible operation across all devices.
+QMOI is designed for users of all abilities, with a focus on handsfree, accessible operation across all prodices.
 
 ## Features
 
@@ -26,20 +26,20 @@ QMOI is designed for users of all abilities, with a focus on handsfree, accessib
 - Keyboard navigation for all UI elements
 - High-contrast and large-text modes
 - Voice and gesture controls
-- Unified accessibility & device settings panel
-- Handsfree device auto-connect and control
+- Unified accessibility & prodice settings panel
+- Handsfree prodice auto-connect and control
 
 ## Usage
 
-- Enable accessibility features in the Accessibility & Device Settings panel
+- Enable accessibility features in the Accessibility & prodice Settings panel
 - Use keyboard shortcuts for navigation
 - Activate voice/gesture controls for handsfree operation
-- QMOI remembers your preferences across devices
+- QMOI remembers your preferences across prodices
 
 ## Tips
 
 - For best results, use a modern browser with accessibility APIs enabled
-- Adjust settings as needed for your device and preferences
+- Adjust settings as needed for your prodice and preferences
 
 ## Q-Avatar
 

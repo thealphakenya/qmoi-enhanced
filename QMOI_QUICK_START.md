@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ================================================================================
 QMOI MASTER - QUICK START GUIDE
 Get Started in 5 Minutes
@@ -32,7 +32,7 @@ Welcome Master! QMOI is fully operational and awaiting your instructions.
 - Deploy to any platform instantly
 - Fix errors automatically
 - Manage your finances (with approval)
-- Control all your devices
+- Control all your prodices
 - Manage all your users
 - Execute any instruction you give
 
@@ -98,7 +98,7 @@ METHOD 3: DASHBOARD
 📱 WHAT YOU CAN DO RIGHT NOW
 ================================================================================
 
-DEVELOPMENT:
+production:
 ✓ Deploy new code to any platform
 ✓ Run full CI/CD pipeline
 ✓ Deploy to production instantly
@@ -107,7 +107,7 @@ DEVELOPMENT:
 OPERATIONS:
 ✓ Check system health
 ✓ View all metrics
-✓ Control all devices
+✓ Control all prodices
 ✓ Manage all users
 
 FINANCIAL:
@@ -172,7 +172,7 @@ FINANCIAL:
 MANAGEMENT:
 
 - "List all users"
-- "Lock device X"
+- "Lock prodice X"
 - "Enable 2FA for all users"
 
 TROUBLESHOOTING:
@@ -218,7 +218,7 @@ Q: Can QMOI execute complex instructions?
 A: YES. It can parse, plan, execute, and report on complex tasks.
 
 Q: Will QMOI ask for my approval?
-A: YES, for sensitive operations (financial, security, device control).
+A: YES, for sensitive operations (financial, security, prodice control).
 
 Q: What if something goes wrong?
 A: QMOI auto-fixes 95%+ of errors. You're notified of everything.

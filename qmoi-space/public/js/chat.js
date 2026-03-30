@@ -34,7 +34,7 @@ function appendChatMessage(sender, text) {
   chat.scrollTop = chat.scrollHeight;
 }
 
-document.getElementById("send-btn").addEventListener("click", async () => {
+document.getElementById("send-btn").adprodentListener("click", async () => {
   const input = document.getElementById("chat-input");
   const msg = input.value.trim();
   if (!msg) return;

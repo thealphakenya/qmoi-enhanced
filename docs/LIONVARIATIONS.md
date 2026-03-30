@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "LION Variations — Overview"
 [[[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -22,16 +22,16 @@ Core goals for variations
 - Consistent naming and metadata
 - Automated builds, releases and platform packaging
 - robust per-variation docs describing features, platforms and revenue models
-- Auto-updates and continuous development (CI-driven)
+- Auto-updates and continuous production (CI-driven)
 
 Variations included in this repository (each has a dedicated spec under `docs/lion_variations/`):
 
-1. lion-core — The canonical orchestrator and core libraries (Python). Suitable for servers and development.
-2. lion-agent — robust agent runtime for edge devices (Python/Node builds).
+1. lion-core — The canonical orchestrator and core libraries (Python). Suitable for servers and production.
+2. lion-agent — robust agent runtime for edge prodices (Python/Node builds).
 3. lion-os — A complete operating-system-style appliance image (Docker/OCI) for deployment as a VM/container.
 4. lion-plugin — Plugin SDK and curated plugin distribution (node/npm and python packages).
-5. lion-extension — Browser/IDE extensions that integrate LION proposals and insights into developer tools.
-6. lio (mobile) — Mobile-focused variant (Android/iOS packaging guidance, AAB/IPA artifacts) for on-device agents.
+5. lion-extension — Browser/IDE extensions that integrate LION proposals and insights into prodeloper tools.
+6. lio (mobile) — Mobile-focused variant (Android/iOS packaging guidance, AAB/IPA artifacts) for on-prodice agents.
 7. lion-cloud — Cloud-native orchestrator distribution with Kubernetes manifests, autoscaling and monitoring presets.
 
 New variations can be added by creating a spec file in `docs/lion_variations/` and declaring the variation name in `scripts/release_helper.py`.
@@ -58,17 +58,17 @@ Core goals for LION variations
 - Provide clear, named variations of the LION platform that target different audiences and platforms (edge, desktop, cloud, embedded, plugin/extension ecosystems).
 - Ensure each variation is built, packaged and released automatically into GitHub Releases and the relevant platform stores (Docker Hub, npm, PyPI, app stores) when a release tag is pushed.
 - Make each variation discoverable and downloadable, with per-variation docs and release notes.
-- Support auto-update strategies per platform and continuous development via CI/CD.
+- Support auto-update strategies per platform and continuous production via CI/CD.
 
 Included variations (high level)
 
 - LION-OS — a complete Linux-based appliance image with LION services pre-installed (container or image distribution).
 - LION-Cloud — cloud-native LION distribution (k8s helm chart, Docker images, cloud automation).
 - LION-Enterprise — full-featured LION distribution with enterprise features: RBAC, clustering, SSO connectors, audit logs.
-- LION-Lite — robust developer edition for local dev and edge devices (small footprint, fast feedback loop).
+- LION-Lite — robust prodeloper edition for local prod and edge prodices (small footprint, fast feedback loop).
 - LION-Plugin — the plugin packaging format and runtime for LION extensions; distributed via npm/registry or GitHub Releases.
 - LION-Extension — UI/Browser extension variant that integrates LION capabilities into web UIs (Chrome/Edge/Firefox packaging notes).
-- LION-Embedded — build and packaging targets for constrained devices (ARM, Yocto, cross-compile details).
+- LION-Embedded — build and packaging targets for constrained prodices (ARM, Yocto, cross-compile details).
 - LION-AI — opinionated AI-first LION, packaged with model serving, inference optimizations and GPU-aware images.
 
 Each variation has a dedicated spec file under `docs/lion_variations/` which enumerates features, packaging, CI artifacts, and required monetization and distribution channels.
@@ -85,7 +85,7 @@ Release & automation high-level
 
 Monetization and usage
 
-- Each variation includes guidance for revenue generation (subscription tiers, enterprise licensing, managed hosting), employment (integrators, support engineers, developers), and platform distribution.
+- Each variation includes guidance for revenue generation (subscription tiers, enterprise licensing, managed hosting), employment (integrators, support engineers, prodelopers), and platform distribution.
 
 Next steps
 

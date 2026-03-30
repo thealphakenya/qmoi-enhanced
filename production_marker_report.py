@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Production marker report generator
-Scans for TODO/FIXME/MOCK/PENDING IMPLEMENTATION/PRODUCTION markers and writes report.
+"""production marker report generator
+Scans for TODO/FIXME/MOCK/PENDING IMPLEMENTATION/production markers and writes report.
 """
 import os
 import re
@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 IGNORE_DIRS = {'.git', 'node_modules', 'dist', 'build', '.venv', '.venv_qmoi_control', '_archive_qmoi-enhanced', '.idea', '.vscode'}
-MARKER_RE = re.compile(r'\b(TODO|FIXME|MOCK|PENDING IMPLEMENTATION|PRODUCTION IMPLEMENTATION REQUIRED|PRODUCTION READY)\b', re.IGNORECASE)
+MARKER_RE = re.compile(r'\b(TODO|FIXME|MOCK|PENDING IMPLEMENTATION|production IMPLEMENTATION REQUIRED|production READY)\b', re.IGNORECASE)
 
 report_lines = []
 count = 0

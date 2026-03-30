@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:04Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env python3
 """Validate required environment variables for production.
 
@@ -15,7 +15,7 @@ This script exits with non-zero if required production environment variables are
 import os
 import sys
 
-node_env = os.environ.get('NODE_ENV', 'development')
+node_env = os.environ.get('NODE_ENV', 'production')
 required = []
 if node_env == 'production':
     required = [

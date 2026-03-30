@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:53Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI QCity Automatic System
@@ -354,7 +354,7 @@ class QMOIQCityAutomatic:
         try:
             logger.info("📊 Starting QMOI dashboard")
             subprocess.Popen(['python', 'scripts/qmoi-dashboard-enhance.py'], 
-                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                           stdout=subprocess.prodNULL, stderr=subprocess.prodNULL)
             time.sleep(5)  # Wait for dashboard to start
             logger.info("✅ Dashboard started successfully")
         except Exception as e:
@@ -365,7 +365,7 @@ class QMOIQCityAutomatic:
         try:
             logger.info("🚀 Starting GitLab CI automation")
             subprocess.Popen(['python', 'scripts/qmoi-gitlab-ci-automation.py'], 
-                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                           stdout=subprocess.prodNULL, stderr=subprocess.prodNULL)
             time.sleep(3)  # Wait for automation to start
             logger.info("✅ GitLab CI automation started successfully")
         except Exception as e:

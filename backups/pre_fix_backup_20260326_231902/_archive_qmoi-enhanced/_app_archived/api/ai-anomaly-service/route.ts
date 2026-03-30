@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 
 interface AnomalyError {
@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
       const result = await fetch("process.env.API_URL || "http://localhost:\1"/analytics", {
         method: "GET",
       }).then((r) => r.json());
-      [PRODUCTION READY]
+      [production READY]
       const errors: AnomalyError[] =
         result.top_ips && result.top_ips.length
           ? result.top_ips.map(([ip, count]: [string, number]) => ({
@@ -61,8 +61,8 @@ export async function POST(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   if (searchParams.get("fix")) {
     try {
-      [PRODUCTION READY] auto-fix (could trigger a script, restart service, etc.)
-      // Production:, implement real fix logic
+      [production READY] auto-fix (could trigger a script, restart service, etc.)
+      // production:, implement real fix logic
       return NextResponse.json({ status: "fixed" });
     } catch (e: unknown) {
       return NextResponse.json(

@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/bin/bash
 # QMOI AutoFix System - Quick Start Script
 # Usage: ./qmoi-autofix-quickstart.sh
@@ -16,7 +16,7 @@ NC='\033[0m' # No Color
 
 # 1. Check if Node.js is installed
 echo -e "${BLUE}1. Checking Node.js installation...${NC}"
-if command -v node &> /dev/null; then
+if command -v node &> /prod/null; then
     echo -e "${GREEN}✓ Node.js $(node -v) found${NC}"
 else
     echo -e "${YELLOW}✗ Node.js not found. Please install Node.js first.${NC}"
@@ -25,7 +25,7 @@ fi
 
 # 2. Check if npm is installed
 echo -e "${BLUE}2. Checking npm installation...${NC}"
-if command -v npm &> /dev/null; then
+if command -v npm &> /prod/null; then
     echo -e "${GREEN}✓ npm $(npm -v) found${NC}"
 else
     echo -e "${YELLOW}✗ npm not found. Please install npm first.${NC}"
@@ -73,7 +73,7 @@ fi
 
 # 6. Check Python installation (for health integration)
 echo -e "${BLUE}6. Checking Python installation...${NC}"
-if command -v python3 &> /dev/null; then
+if command -v python3 &> /prod/null; then
     echo -e "${GREEN}✓ Python $(python3 --version) found${NC}"
 else
     echo -e "${YELLOW}⚠ Python not found (optional for autofix integration)${NC}"
@@ -115,7 +115,7 @@ echo "=====================================${NC}"
 echo ""
 echo -e "${BLUE}Next Steps:${NC}"
 echo "1. Ensure ADMIN_TOKEN is set in .env.local"
-echo "2. Start the dev server: ${YELLOW}npm run dev${NC}"
+echo "2. Start the prod server: ${YELLOW}npm run prod${NC}"
 echo "3. Navigate to: ${YELLOW}http://localhost:3000/admin${NC}"
 echo "4. Click '🔧 QMOI AutoFix System' tab"
 echo "5. Use Master Control buttons to:"

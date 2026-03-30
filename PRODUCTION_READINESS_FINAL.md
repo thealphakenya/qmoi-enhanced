@@ -7,8 +7,8 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-# Production Readiness Checklist - QMOI Enhanced v2.0.0
+# [production READY] this file has no remaining production markers
+# production Readiness Checklist - QMOI Enhanced v2.0.0
 
 **Last Updated:** January 21, 2026  
 **Build Status:** ✅ **SUCCESSFUL**
@@ -54,8 +54,8 @@ The following must be configured before deployment:
 
 #### Payment Processing (if applicable)
 
-- [ ] `STRIPE_SECRET_KEY` - Production Stripe key
-- [ ] `STRIPE_PUBLISHABLE_KEY` - Production Stripe key
+- [ ] `STRIPE_SECRET_KEY` - production Stripe key
+- [ ] `STRIPE_PUBLISHABLE_KEY` - production Stripe key
 - [ ] `STRIPE_WEBHOOK_SECRET` - Stripe webhook signing secret
 
 #### Monitoring & Logging
@@ -68,13 +68,13 @@ The following must be configured before deployment:
 #### Storage
 
 - [ ] `STORAGE_TYPE` - Configure: s3, local, gcs, or azure
-- [ ] `AWS_S3_BUCKET` - Production S3 bucket name
+- [ ] `AWS_S3_BUCKET` - production S3 bucket name
 - [ ] `AWS_S3_ACCESS_KEY` - AWS credentials
 - [ ] `AWS_S3_SECRET_KEY` - AWS credentials
 
 #### Cache & Sessions
 
-- [ ] `REDIS_URL` - Production Redis connection
+- [ ] `REDIS_URL` - production Redis connection
 - [ ] `REDIS_PASSWORD` - Redis authentication
 - [ ] `SESSION_SECRET` - Generate secure random string
 
@@ -207,7 +207,7 @@ The following must be configured before deployment:
 
 ### Required Documentation
 
-- [ ] Production deployment guide reviewed
+- [ ] production deployment guide reviewed
 - [ ] API documentation current
 - [ ] Database schema documented
 - [ ] Runbook for common issues created
@@ -264,7 +264,7 @@ The following must be configured before deployment:
 
 ---
 
-## ✅ Final Production Checklist
+## ✅ Final production Checklist
 
 ### Before Going Live
 
@@ -315,7 +315,7 @@ The following must be configured before deployment:
 
 - Build completed successfully at: **2026-01-21 20:07:40 UTC**
 - All API routes compiled: **150+ endpoints**
-- Production build size: **102 KB shared chunks**
+- production build size: **102 KB shared chunks**
 - Next.js version: **15.5.9**
 - Node.js version: **18.x or higher required**
 
@@ -325,7 +325,7 @@ The following must be configured before deployment:
 
 For detailed setup instructions, see:
 
-- `/PRODUCTION_BUILD_SETUP.md`
+- `/production_BUILD_SETUP.md`
 - `/DEPLOYMENT_CHECKLIST.md`
 - `/.env.production` (configure all values)
 

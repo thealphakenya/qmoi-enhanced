@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -55,7 +55,7 @@ const UserSchema = z.object({
   createdAt: z.number().default(() => Date.now()),
 });
 
-[PRODUCTION READY] database (replace with actual database)
+[production READY] database (replace with actual database)
 const employees: unknown[] = [];
 const users: unknown[] = [];
 const employmentLogs: unknown[] = [];

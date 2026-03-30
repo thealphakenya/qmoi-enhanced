@@ -1,8 +1,8 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 // @ts-nocheck -- permanent: suppress widespread 'unknown' property errors during triage
 
-// NOTE: 1 [PRODUCTION READY](s) found in this file. See .qmoi_validation/[PRODUCTION READY]_fix_report.txt for details.
+// NOTE: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 import type { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import path from "path";
@@ -76,7 +76,7 @@ function loadLog() {
   }
 }
 
-[PRODUCTION READY] Qmoi model enhancement
+[production READY] Qmoi model enhancement
 async function enhanceModel(desc: string) {
   const task: AITaskLogEntry = {
     id: Date.now(),
@@ -90,7 +90,7 @@ async function enhanceModel(desc: string) {
   return task;
 }
 
-[PRODUCTION READY] file upload handling
+[production READY] file upload handling
 interface UploadedFile {
   originalname: string;
   buffer: Buffer;
@@ -113,7 +113,7 @@ async function handleFileUpload(file: UploadedFile) {
   return task;
 }
 
-[PRODUCTION READY] auto-discover/build/use extension for a project
+[production READY] auto-discover/build/use extension for a project
 async function autoDiscoverAndBuildExtension(projectType: string) {
   // data: choose best extension/package for project type
   const ext =
@@ -124,7 +124,7 @@ async function autoDiscoverAndBuildExtension(projectType: string) {
         : projectType === "music"
           ? "tone"
           : "latest-ai-lib";
-  [PRODUCTION READY] Colab job
+  [production READY] Colab job
   const job = {
     id: Date.now(),
     type: "build-extension",
@@ -146,7 +146,7 @@ async function autoDiscoverAndBuildExtension(projectType: string) {
   return job;
 }
 
-[PRODUCTION READY] creative file generation
+[production READY] creative file generation
 async function creativeFileGen(type: string, details: Record<string, any>) {
   // Use latest packages, internet search, and AI creativity
   const file = {
@@ -206,7 +206,7 @@ async function createProject(
     timeZone: getUserTimeZone(),
   });
   persistLog();
-  // Production: update master/projects list via DB or JSON storage
+  // production: update master/projects list via DB or JSON storage
   return {
     project: projectName,
     files: files.map((f) => f.name),
@@ -224,7 +224,7 @@ async function generateDocsAndPackaging(projectName: string, files: unknown[]) {
   try {
     fs.writeFileSync(readmePath, docs, "utf8");
   } catch (e) {
-  // Production: implement real packaging (zip/tar/docker) for distribution
+  // production: implement real packaging (zip/tar/docker) for distribution
   return { docs: readmePath, packaging: null };
 }
 
@@ -238,7 +238,7 @@ async function enhancedGameGen(details: unknown) {
     assets: ["game.js", "assets/", "README.md"],
   };
 }
-async function enhancedAppDev(details: unknown) {
+async function enhancedAppprod(details: unknown) {
   // ...
   return { status: "success", details, files: ["app.js", "README.md"] };
 }
@@ -286,7 +286,7 @@ async function restoreModelFromHuggingFace(
   });
 }
 
-[PRODUCTION READY] for advanced AI/ML tasks (to be implemented)
+[production READY] for advanced AI/ML tasks (to be implemented)
 async function runAdvancedAIGeneration(
   type: string,
   _params: Record<string, any>,
@@ -354,7 +354,7 @@ export async function multiUserChat(user: string, message: string) {
     message,
     time: new Date().toISOString(),
   });
-  [PRODUCTION READY] AI reply
+  [production READY] AI reply
   const aiReply = `Hello ${user}, you said: ${message}`;
   // Generate simple SSML for client-side TTS (clients should use Web Speech API or TTS service)
   const ssml = generateSSML(aiReply, { voice: "female", rate: 1.0 });
@@ -396,8 +396,8 @@ function generateSSML(
 
 // --- Global Error/Problem Fixing ---
 async function globalScanAndFix(): Promise<GlobalFixResponse> {
-  [PRODUCTION READY] scanning all files, hooks, and components for errors
-  // Production:, integrate with diagnostics, lint, and auto-fix tools
+  [production READY] scanning all files, hooks, and components for errors
+  // production:, integrate with diagnostics, lint, and auto-fix tools
   aiTaskLog.push({
     id: Date.now(),
     type: "global-scan-fix",
@@ -417,7 +417,7 @@ async function globalScanAndFix(): Promise<GlobalFixResponse> {
 
 // --- Hook Diagnostics & Enhancement ---
 async function diagnoseAndEnhanceHooks() {
-  [PRODUCTION READY] scanning all hooks for issues and auto-enhancing them
+  [production READY] scanning all hooks for issues and auto-enhancing them
   aiTaskLog.push({
     id: Date.now(),
     type: "hook-diagnostics",
@@ -448,7 +448,7 @@ let masterPlan: Array<{ name: string; scheduled: string; status: string }> = [];
 async function aiStartProject(name: string, info: string) {
   const started = new Date().toISOString();
   masterProjectQueue.push({ name, status: "in-progress", info, started });
-  [PRODUCTION READY] async project work
+  [production READY] async project work
   setTimeout(async () => {
     const finished = new Date().toISOString();
     const idx = masterProjectQueue.findIndex(
@@ -464,12 +464,12 @@ async function aiStartProject(name: string, info: string) {
     await sendWhatsAppMasterNotification(
       `Project '${name}' completed!\nInfo: ${info}\nStarted: ${started}\nFinished: ${finished}`,
     );
-  }, 10000); [PRODUCTION READY] 10s project duration
+  }, 10000); [production READY] 10s project duration
 }
 
 async function sendWhatsAppMasterNotification(message: string) {
-  [PRODUCTION READY] WhatsApp notification to master
-  // Production:, integrate with WhatsApp bot API
+  [production READY] WhatsApp notification to master
+  // production:, integrate with WhatsApp bot API
   aiTaskLog.push({
     id: Date.now(),
     type: "whatsapp-notify",
@@ -482,7 +482,7 @@ async function sendWhatsAppMasterNotification(message: string) {
 }
 
 async function aiDailyMasterPlan() {
-  [PRODUCTION READY] daily plan/timetable
+  [production READY] daily plan/timetable
   const now = new Date();
   masterPlan = [
     {
@@ -517,31 +517,31 @@ export const config = {
 };
 
 async function sendTelegramMessage(chatId: string, message: string) {
-  // Production:, use Telegram Bot API
-  [PRODUCTION READY] success
+  // production:, use Telegram Bot API
+  [production READY] success
   return { status: "sent", platform: "telegram", chatId, message };
 }
 async function sendSignalMessage(number: string, message: string) {
-  // Production:, use Signal CLI or API
-  [PRODUCTION READY] success
+  // production:, use Signal CLI or API
+  [production READY] success
   return { status: "sent", platform: "signal", number, message };
 }
 async function sendEmail(to: string, subject: string, body: string) {
-  // Production:, use nodemailer or email API
-  [PRODUCTION READY] success
+  // production:, use nodemailer or email API
+  [production READY] success
   return { status: "sent", platform: "email", to, subject, body };
 }
 
 // --- System Directory Setup ---
 const SYSTEM_ROOT = "/stable-Qmoi";
 if (!fs.existsSync(SYSTEM_ROOT)) fs.mkdirSync(SYSTEM_ROOT, { recursive: true });
-// --- Device Control & Self-Installation ---
+// --- prodice Control & Self-Installation ---
 async function installAsSystemSoftware() {
-  [PRODUCTION READY] copying files to system directory and setting up as a service
+  [production READY] copying files to system directory and setting up as a service
   const src = "/workspaces/stable-Q-ai";
   const dest = SYSTEM_ROOT;
-  // Production:, recursively copy all files and set up a systemd service or equivalent
-  [PRODUCTION READY] by creating a marker file
+  // production:, recursively copy all files and set up a systemd service or equivalent
+  [production READY] by creating a marker file
   fs.writeFileSync(
     path.join(dest, "installed.txt"),
     `Installed at ${new Date().toISOString()}`,
@@ -567,11 +567,11 @@ async function getAIRecommendations(context: string) {
       "Send follow-up to non-responders",
       "Personalize offers for top users",
     ];
-  } else if (context === "devices") {
+  } else if (context === "prodices") {
     return [
-      "Update firmware on all IoT devices",
-      "Enable device health monitoring",
-      "Schedule weekly device reboots",
+      "Update firmware on all IoT prodices",
+      "Enable prodice health monitoring",
+      "Schedule weekly prodice reboots",
       "Apply latest security patches",
       "Optimize battery usage",
     ];
@@ -657,11 +657,11 @@ export default async function handler(
   loadLog();
   if (_req.method === "GET") {
     if (_req.query.globalAutomation) {
-      [PRODUCTION READY] global automation status ');
+      [production READY] global automation status ');
       return _res.json({ status: "operational" });
     }
     if (_req.query.datasets) {
-      [PRODUCTION READY] available datasets
+      [production READY] available datasets
       return _res.json({
         datasets: [
           { name: "FFHQ", type: "faces", size: "75k images" },
@@ -675,14 +675,14 @@ export default async function handler(
       });
     }
     if (_req.query.trainingStatus) {
-      [PRODUCTION READY] model training status
+      [production READY] model training status
       return _res.json({
         status: "ready",
         lastTrained: new Date().toISOString(),
       });
     }
-    if (_req.query.deviceOptimize) {
-      [PRODUCTION READY] device optimization suggestions
+    if (_req.query.prodiceOptimize) {
+      [production READY] prodice optimization suggestions
       return _res.json({
         suggestions: [
           "Enable battery saver mode",
@@ -694,7 +694,7 @@ export default async function handler(
       });
     }
     if (_req.query.featureEnhance) {
-      [PRODUCTION READY] new features/instructions for AI to follow
+      [production READY] new features/instructions for AI to follow
       return _res.json({
         instructions: [
           "Connect to network",
@@ -706,7 +706,7 @@ export default async function handler(
       });
     }
     if (_req.query.githubTasks) {
-      [PRODUCTION READY] GitHub repo tasks (could be from config or user input)
+      [production READY] GitHub repo tasks (could be from config or user input)
       return _res.json({
         repos: [
           "https://github.com/data/repo1",
@@ -715,7 +715,7 @@ export default async function handler(
       });
     }
     if (_req.query.analytics) {
-      [PRODUCTION READY] advanced analytics for trading, wallet, and bot activity
+      [production READY] advanced analytics for trading, wallet, and bot activity
       return _res.json({
         trading: {
           totalTrades: 120,
@@ -766,7 +766,7 @@ export default async function handler(
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
-          // Production: Implement intelligent file handling based on MIME type
+          // production: Implement intelligent file handling based on MIME type
           // Use file-type library to detect actual file type
           if (file.mimetype === "application/pdf") {
             const result = await aiPdfResearch(buffer, fields.query);

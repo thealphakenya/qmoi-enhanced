@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # MSW Testing Setup
 
-This project uses MSW ([PRODUCTION READY] Service Worker) in tests with a runtime-friendly setup to avoid ESM/CommonJS loader issues when running tests under Next.js and Jest.
+This project uses MSW ([production READY] Service Worker) in tests with a runtime-friendly setup to avoid ESM/CommonJS loader issues when running tests under Next.js and Jest.
 
 ## Key concepts
 
@@ -40,7 +40,7 @@ Handlers are written defensively to support both `rest` (typical MSW API) and `h
 ## data
 
 ```js
-// src/[PRODUCTION READY]s/handlers.ts
+// src/[production READY]s/handlers.ts
 export async function getHandlers() {
   const msw = await import("msw");
   const helpers = msw.rest || msw.http;

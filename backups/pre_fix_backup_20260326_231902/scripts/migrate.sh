@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/bin/bash
 # Migration script for QMOI Enhanced
 # Runs Prisma migrations safely
@@ -15,7 +15,7 @@ echo -e "${YELLOW}QMOI Enhanced Database Migrations${NC}\n"
 
 # Check if database is accessible
 echo "Checking database connection..."
-if ! npx prisma db execute --stdin < <(echo "SELECT 1") 2>/dev/null; then
+if ! npx prisma db execute --stdin < <(echo "SELECT 1") 2>/prod/null; then
   echo -e "${RED}Error: Cannot connect to database${NC}"
   exit 1
 fi

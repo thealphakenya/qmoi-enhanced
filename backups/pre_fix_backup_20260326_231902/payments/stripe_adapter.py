@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:30Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 """Stripe production-ready adapter with automatic environment configuration.
 
 This adapter provides a robust integration with Stripe including:
@@ -186,11 +186,11 @@ def verify_webhook_signature(payload: bytes, sig_header: str) -> Dict[str, Any]:
             logger.error(f"Webhook processing error: {e}")
             return {'ok': False, 'error': str(e)}
 
-    # Development fallback - parse JSON only if not in production
+    # production fallback - parse JSON only if not in production
     if os.environ.get('QMOI_ENV') != 'production':
         try:
             event_data = json.loads(payload.decode('utf-8'))
-            logger.warning("Processing unverified webhook (development mode)")
+            logger.warning("Processing unverified webhook (production mode)")
             return {'ok': True, 'event': event_data}
 
         except json.JSONDecodeError as e:

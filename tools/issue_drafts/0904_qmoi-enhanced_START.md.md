@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Issue final for qmoi-enhanced/START.md"
 generated: 2025-11-08T16:06:38.779884Z
@@ -10,9 +10,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [PRODUCTION READY] markers or [PRODUCTION READY]s.
-- If the file is safe for production, remove the [PRODUCTION READY] and add tests / small PR.
-- If the file is intentionally non-production (e.g. [PRODUCTION READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [production READY] markers or [production READY]s.
+- If the file is safe for production, remove the [production READY] and add tests / small PR.
+- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -36,7 +36,7 @@ title: "QMOI Start Guide"
 
 ## 🚀 How to Start or Resume QMOI (QCity & Cloud)
 
-To ensure QMOI is always running (even in the cloud or when your device is offline), use the following command:
+To ensure QMOI is always running (even in the cloud or when your prodice is offline), use the following command:
 
 ```bash
 python scripts/qmoi-start.py
@@ -54,7 +54,7 @@ python scripts/qmoi-start.py
 
 ## 🛡️ Always-On
 
-- QMOI is designed to keep running in the cloud, so you never miss an event or fix—even if your device is offline.
+- QMOI is designed to keep running in the cloud, so you never miss an event or fix—even if your prodice is offline.
 
 ---
 

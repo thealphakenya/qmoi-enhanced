@@ -11,7 +11,7 @@ QMOI Enhanced Cloud Setup Script
 This script sets up comprehensive cloud integration for QMOI including:
 - Multi-cloud provider setup (AWS, GCP, Azure, Cloudflare, DigitalOcean)
 - Resource offloading configuration
-- Multi-device synchronization
+- Multi-prodice synchronization
 - Performance optimization
 - Cost management
 """
@@ -49,8 +49,8 @@ class QMOICloudSetup:
         # Configure resource offloading
         self.configure_resource_offloading()
         
-        # Setup multi-device sync
-        self.setup_multi_device_sync()
+        # Setup multi-prodice sync
+        self.setup_multi_prodice_sync()
         
         # Configure performance optimization
         self.configure_performance_optimization()
@@ -351,9 +351,9 @@ class QMOICloudSetup:
         self.cloud_config["offloading"] = offloading_config
         logger.info("Resource offloading configured")
     
-    def setup_multi_device_sync(self):
-        """Setup multi-device synchronization"""
-        logger.info("Setting up multi-device synchronization...")
+    def setup_multi_prodice_sync(self):
+        """Setup multi-prodice synchronization"""
+        logger.info("Setting up multi-prodice synchronization...")
         
         sync_config = {
             "real_time_sync": {
@@ -383,8 +383,8 @@ class QMOICloudSetup:
             }
         }
         
-        self.cloud_config["multi_device"] = sync_config
-        logger.info("Multi-device synchronization configured")
+        self.cloud_config["multi_prodice"] = sync_config
+        logger.info("Multi-prodice synchronization configured")
     
     def configure_performance_optimization(self):
         """Configure performance optimization"""

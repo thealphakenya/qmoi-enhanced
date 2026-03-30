@@ -5,11 +5,11 @@
 
 /**
  * QMOI Awareness System
- * Manages environmental, user, task, and contextual awareness across all devices and systems
+ * Manages environmental, user, task, and contextual awareness across all prodices and systems
  * 
  * Features:
  * - Real-time environmental sensing
- * - Multi-device context awareness
+ * - Multi-prodice context awareness
  * - User behavior pattern recognition
  * - Predictive awareness (anticipating user needs)
  * - Cross-platform awareness sync
@@ -18,8 +18,8 @@
 import { EventEmitter } from "events";
 
 export interface EnvironmentalContext {
-  device_id: string;
-  device_type: string;
+  prodice_id: string;
+  prodice_type: string;
   location: {
     latitude?: number;
     longitude?: number;
@@ -70,10 +70,10 @@ export interface GlobalAwareness {
   environments: Map<string, EnvironmentalContext>;
   users: Map<string, UserContext>;
   tasks: Map<string, TaskContext>;
-  cross_device_context: {
-    primary_device: string;
-    active_devices: string[];
-    connected_devices: string[];
+  cross_prodice_context: {
+    primary_prodice: string;
+    active_prodices: string[];
+    connected_prodices: string[];
   };
   anomalies_detected: string[];
 }
@@ -96,34 +96,34 @@ export class QMOIAwarenessSystem extends EventEmitter {
       environments: new Map(),
       users: new Map(),
       tasks: new Map(),
-      cross_device_context: {
-        primary_device: "",
-        active_devices: [],
-        connected_devices: [],
+      cross_prodice_context: {
+        primary_prodice: "",
+        active_prodices: [],
+        connected_prodices: [],
       },
       anomalies_detected: [],
     };
   }
 
   /**
-   * Update environmental awareness for a device
+   * Update environmental awareness for a prodice
    */
   public async updateEnvironment(
-    deviceId: string,
+    prodiceId: string,
     context: Partial<EnvironmentalContext>,
   ) {
     const updated = {
-      device_id: deviceId,
+      prodice_id: prodiceId,
       ...context,
     } as EnvironmentalContext;
 
-    this.global_awareness.environments.set(deviceId, updated);
+    this.global_awareness.environments.set(prodiceId, updated);
     this.detectAnomalies(updated);
-    this.emit("environment_updated", { deviceId, context: updated });
+    this.emit("environment_updated", { prodiceId, context: updated });
   }
 
   /**
-   * Update user context across all devices
+   * Update user context across all prodices
    */
   public async updateUserContext(
     userId: string,
@@ -139,8 +139,8 @@ export class QMOIAwarenessSystem extends EventEmitter {
     this.global_awareness.users.set(userId, updated);
     this.emit("user_context_updated", { userId, context: updated });
 
-    // Sync to all devices
-    await this.syncAwarenessToAllDevices(userId);
+    // Sync to all prodices
+    await this.syncAwarenessToAllprodices(userId);
   }
 
   /**
@@ -178,7 +178,7 @@ export class QMOIAwarenessSystem extends EventEmitter {
     const anomalies: string[] = [];
 
     if (context.network_status === "offline" && context.active_app) {
-      anomalies.push(`Device offline but app active: ${context.active_app}`);
+      anomalies.push(`prodice offline but app active: ${context.active_app}`);
     }
 
     if (context.battery_level !== undefined && context.battery_level < 5) {
@@ -196,15 +196,15 @@ export class QMOIAwarenessSystem extends EventEmitter {
   }
 
   /**
-   * Sync awareness to all connected devices
+   * Sync awareness to all connected prodices
    */
-  private async syncAwarenessToAllDevices(userId: string): Promise<void> {
-    const devices = this.global_awareness.cross_device_context.active_devices;
+  private async syncAwarenessToAllprodices(userId: string): Promise<void> {
+    const prodices = this.global_awareness.cross_prodice_context.active_prodices;
     const user = this.global_awareness.users.get(userId);
 
-    for (const deviceId of devices) {
+    for (const prodiceId of prodices) {
       this.emit("sync_awareness", {
-        deviceId,
+        prodiceId,
         userId,
         awareness: user,
       });
@@ -226,27 +226,27 @@ export class QMOIAwarenessSystem extends EventEmitter {
   }
 
   /**
-   * Get environment awareness for device
+   * Get environment awareness for prodice
    */
-  public getEnvironmentAwareness(deviceId: string): EnvironmentalContext | undefined {
-    return this.global_awareness.environments.get(deviceId);
+  public getEnvironmentAwareness(prodiceId: string): EnvironmentalContext | undefined {
+    return this.global_awareness.environments.get(prodiceId);
   }
 
   /**
-   * Update cross-device context
+   * Update cross-prodice context
    */
-  public async updateDeviceContext(
-    primaryDevice: string,
-    activeDevices: string[],
-    connectedDevices: string[],
+  public async updateprodiceContext(
+    primaryprodice: string,
+    activeprodices: string[],
+    connectedprodices: string[],
   ) {
-    this.global_awareness.cross_device_context = {
-      primary_device: primaryDevice,
-      active_devices: activeDevices,
-      connected_devices: connectedDevices,
+    this.global_awareness.cross_prodice_context = {
+      primary_prodice: primaryprodice,
+      active_prodices: activeprodices,
+      connected_prodices: connectedprodices,
     };
 
-    this.emit("device_context_updated", this.global_awareness.cross_device_context);
+    this.emit("prodice_context_updated", this.global_awareness.cross_prodice_context);
   }
 }
 

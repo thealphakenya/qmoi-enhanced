@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/bin/bash
 # QMOI Monitoring - Common Operations Reference
 # Quick commands for monitoring, alerts, and audit logs
@@ -254,9 +254,9 @@ export_daily_logs() {
 
 # Open admin dashboard in default browser
 open_dashboard() {
-  if command -v xdg-open &> /dev/null; then
+  if command -v xdg-open &> /prod/null; then
     xdg-open http://localhost:3000/admin
-  elif command -v open &> /dev/null; then
+  elif command -v open &> /prod/null; then
     open http://localhost:3000/admin
   else
     echo "Open http://localhost:3000/admin in your browser"

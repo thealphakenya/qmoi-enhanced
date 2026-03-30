@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 {
   "timestamp": "2025-06-21T09:22:49.363Z",
   "summary": {
@@ -25182,7 +25182,7 @@
       "line": 166,
       "column": 16,
       "severity": "warning",
-      "rule": "'enhancedAppDev'",
+      "rule": "'enhancedAppprod'",
       "message": "is defined but never used                               @typescript-eslint/no-unused-vars",
       "timestamp": "2025-06-21T09:22:49.349Z"
     },
@@ -27387,7 +27387,7 @@
       "line": 278,
       "column": 25,
       "severity": "error",
-      "rule": "'KeyboardEvent'",
+      "rule": "'Keyboarprodent'",
       "message": "is not defined                                       no-undef",
       "timestamp": "2025-06-21T09:22:49.353Z"
     },
@@ -27783,7 +27783,7 @@
       "line": 11,
       "column": 10,
       "severity": "warning",
-      "rule": "'DeviceMap'",
+      "rule": "'prodiceMap'",
       "message": "is defined but never used                              @typescript-eslint/no-unused-vars",
       "timestamp": "2025-06-21T09:22:49.354Z"
     },
@@ -27873,7 +27873,7 @@
       "line": 25,
       "column": 10,
       "severity": "warning",
-      "rule": "'useDeviceOptimizer'",
+      "rule": "'useprodiceOptimizer'",
       "message": "is defined but never used                     @typescript-eslint/no-unused-vars",
       "timestamp": "2025-06-21T09:22:49.354Z"
     },
@@ -28242,7 +28242,7 @@
       "line": 722,
       "column": 10,
       "severity": "warning",
-      "rule": "'deviceEnhancements'",
+      "rule": "'prodiceEnhancements'",
       "message": "is assigned a value but never used            @typescript-eslint/no-unused-vars",
       "timestamp": "2025-06-21T09:22:49.355Z"
     },
@@ -28944,7 +28944,7 @@
       "line": 94,
       "column": 15,
       "severity": "warning",
-      "rule": "'deviceHealth'",
+      "rule": "'prodiceHealth'",
       "message": "is assigned a value but never used         @typescript-eslint/no-unused-vars",
       "timestamp": "2025-06-21T09:22:49.355Z"
     },
@@ -28953,7 +28953,7 @@
       "line": 95,
       "column": 5,
       "severity": "warning",
-      "rule": "'optimizeDevice'",
+      "rule": "'optimizeprodice'",
       "message": "is assigned a value but never used       @typescript-eslint/no-unused-vars",
       "timestamp": "2025-06-21T09:22:49.355Z"
     },
@@ -29466,7 +29466,7 @@
       "line": 549,
       "column": 9,
       "severity": "warning",
-      "rule": "'vibrateDevice'",
+      "rule": "'vibrateprodice'",
       "message": "is assigned a value but never used        @typescript-eslint/no-unused-vars",
       "timestamp": "2025-06-21T09:22:49.355Z"
     },
@@ -57885,7 +57885,7 @@
         "line": 166,
         "column": 16,
         "severity": "warning",
-        "rule": "'enhancedAppDev'",
+        "rule": "'enhancedAppprod'",
         "message": "is defined but never used                               @typescript-eslint/no-unused-vars",
         "timestamp": "2025-06-21T09:22:49.349Z"
       },
@@ -60081,7 +60081,7 @@
         "line": 278,
         "column": 25,
         "severity": "error",
-        "rule": "'KeyboardEvent'",
+        "rule": "'Keyboarprodent'",
         "message": "is not defined                                       no-undef",
         "timestamp": "2025-06-21T09:22:49.353Z"
       },
@@ -60477,7 +60477,7 @@
         "line": 11,
         "column": 10,
         "severity": "warning",
-        "rule": "'DeviceMap'",
+        "rule": "'prodiceMap'",
         "message": "is defined but never used                              @typescript-eslint/no-unused-vars",
         "timestamp": "2025-06-21T09:22:49.354Z"
       },
@@ -60567,7 +60567,7 @@
         "line": 25,
         "column": 10,
         "severity": "warning",
-        "rule": "'useDeviceOptimizer'",
+        "rule": "'useprodiceOptimizer'",
         "message": "is defined but never used                     @typescript-eslint/no-unused-vars",
         "timestamp": "2025-06-21T09:22:49.354Z"
       },
@@ -60936,7 +60936,7 @@
         "line": 722,
         "column": 10,
         "severity": "warning",
-        "rule": "'deviceEnhancements'",
+        "rule": "'prodiceEnhancements'",
         "message": "is assigned a value but never used            @typescript-eslint/no-unused-vars",
         "timestamp": "2025-06-21T09:22:49.355Z"
       },
@@ -61638,7 +61638,7 @@
         "line": 94,
         "column": 15,
         "severity": "warning",
-        "rule": "'deviceHealth'",
+        "rule": "'prodiceHealth'",
         "message": "is assigned a value but never used         @typescript-eslint/no-unused-vars",
         "timestamp": "2025-06-21T09:22:49.355Z"
       },
@@ -61647,7 +61647,7 @@
         "line": 95,
         "column": 5,
         "severity": "warning",
-        "rule": "'optimizeDevice'",
+        "rule": "'optimizeprodice'",
         "message": "is assigned a value but never used       @typescript-eslint/no-unused-vars",
         "timestamp": "2025-06-21T09:22:49.355Z"
       },
@@ -62160,7 +62160,7 @@
         "line": 549,
         "column": 9,
         "severity": "warning",
-        "rule": "'vibrateDevice'",
+        "rule": "'vibrateprodice'",
         "message": "is assigned a value but never used        @typescript-eslint/no-unused-vars",
         "timestamp": "2025-06-21T09:22:49.355Z"
       },

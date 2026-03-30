@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:04Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env node
 /**
  * Common Vercel Deployment Error Fixes
@@ -122,13 +122,13 @@ Or fix ESLint errors:
   // Error: Port already in use
   "port.*already.*in.*use|eaddrinuse": {
     title: "🔌 Port Already in Use",
-    description: "The development server port is already in use",
+    description: "The production server port is already in use",
     solution: `Kill existing process:
-    pkill -f "next dev"
+    pkill -f "next prod"
     
 Or use different port:
-    npm run dev -- -p 3001`,
-    file: "None - local dev issue",
+    npm run prod -- -p 3001`,
+    file: "None - local prod issue",
   },
 
   // Error: NextAuth or auth issue

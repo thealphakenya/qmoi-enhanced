@@ -79,8 +79,8 @@ class QMOIAttention(nn.Module):
     
     def _get_relative_pos_bias(self, seq_len: int) -> torch.Tensor:
         """Compute relative position bias."""
-        context_position = torch.arange(seq_len, device=self.rel_pos_emb.device)[:, None]
-        memory_position = torch.arange(seq_len, device=self.rel_pos_emb.device)[None, :]
+        context_position = torch.arange(seq_len, prodice=self.rel_pos_emb.prodice)[:, None]
+        memory_position = torch.arange(seq_len, prodice=self.rel_pos_emb.prodice)[None, :]
         relative_position = memory_position - context_position
         relative_position_bucket = relative_position + seq_len - 1
         values = self.rel_pos_emb[relative_position_bucket]
@@ -143,7 +143,7 @@ class StochasticDepth(nn.Module):
             return x
         
         batch_size = x.shape[0]
-        random_tensor = torch.rand(batch_size, 1, 1, device=x.device)
+        random_tensor = torch.rand(batch_size, 1, 1, prodice=x.prodice)
         keep_prob = 1 - self.prob
         binary_tensor = torch.floor(random_tensor + keep_prob)
         

@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env bash
 # Safe helper: set GitHub repository secrets from a local .env file using gh CLI
 # This script does NOT run automatically — it only prints commands in dry-run mode.
@@ -55,7 +55,7 @@ while IFS= read -r line; do
   if $DRY_RUN; then
     echo "gh secret set --repo $REPO $name --body '***REDACTED***'  # from $ENV_FILE"
   else
-    if ! command -v gh >/dev/null 2>&1; then
+    if ! command -v gh >/prod/null 2>&1; then
       echo "gh CLI not found. Install from https://cli.github.com/"
       exit 2
     fi

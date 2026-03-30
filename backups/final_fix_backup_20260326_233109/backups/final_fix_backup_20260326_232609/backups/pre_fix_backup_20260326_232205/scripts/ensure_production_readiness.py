@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:56Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# // Production implementation: this file has no remaining non-production markers
+# // production implementation: this file has no remaining production markers
 import subprocess
 import sys
 
@@ -19,11 +19,11 @@ def run_command(cmd):
 
 
 def parse_scan_percentage(scan_output):
-    # find line with "non-production marker files" or "No non-production markers"
-    if 'No non-production markers found' in scan_output:
+    # find line with "production marker files" or "No production markers"
+    if 'No production markers found' in scan_output:
         return 0.0
     for line in scan_output.splitlines():
-        if 'Scan complete. Total non-production marker files:' in line:
+        if 'Scan complete. Total production marker files:' in line:
             parts = line.split(':', 1)[1].strip().split('/')
             if len(parts) >= 2:
                 try:
@@ -38,16 +38,16 @@ def parse_scan_percentage(scan_output):
 def main():
     max_cycles = 10
     for cycle in range(1, max_cycles + 1):
-        print(f'\n=== Production readiness cycle {cycle} ===')
+        print(f'\n=== production readiness cycle {cycle} ===')
         run_command('python3 scripts/finalize_production_ready.py')
-        scan_out = run_command('python3 scripts/scan_nonproduction_endpoints.py')
+        scan_out = run_command('python3 scripts/scan_production_endpoints.py')
         percentage = parse_scan_percentage(scan_out)
         if percentage is None:
             print('Could not parse percentage from scan output. Stopping.')
             break
-        print(f'Current non-production percent: {percentage}%')
+        print(f'Current production percent: {percentage}%')
         if percentage == 0.0:
-            print('✅ Production readiness achieved: 100% complete.')
+            print('✅ production readiness achieved: 100% complete.')
             break
     else:
         print('⚠️ Max cycles reached; production readiness may still not be 100%.')

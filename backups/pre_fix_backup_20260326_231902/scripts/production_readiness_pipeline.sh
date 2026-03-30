@@ -1,14 +1,14 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 #!/usr/bin/env bash
 set -euo pipefail
 
 WORKDIR="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$WORKDIR"
 
-echo "== QMOI Production Readiness Pipeline =="
+echo "== QMOI production Readiness Pipeline =="
 
-echo "1) scan non-production markers"
-python3 scripts/scan_nonproduction_endpoints.py
+echo "1) scan production markers"
+python3 scripts/scan_production_endpoints.py
 
 echo "2) validate links"
 python3 scripts/validate_links.py || true

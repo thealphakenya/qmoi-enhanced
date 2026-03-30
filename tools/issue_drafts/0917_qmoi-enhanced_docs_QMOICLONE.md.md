@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Issue final for qmoi-enhanced/docs/QMOICLONE.md"
 generated: 2025-11-08T16:06:38.791827Z
@@ -10,9 +10,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [PRODUCTION READY] markers or [PRODUCTION READY]s.
-- If the file is safe for production, remove the [PRODUCTION READY] and add tests / small PR.
-- If the file is intentionally non-production (e.g. [PRODUCTION READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [production READY] markers or [production READY]s.
+- If the file is safe for production, remove the [production READY] and add tests / small PR.
+- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -35,7 +35,7 @@ title: "QMOICLONE"
 <!-- LION_VALIDATION_END -->
 
 
-> **Note:** QMOI now includes a self-healing automation for GitLab CI/CD. See [QMOIGITLABDEV.md](QMOIGITLABDEV.md) for details.
+> **Note:** QMOI now includes a self-healing automation for GitLab CI/CD. See [QMOIGITLABprod.md](QMOIGITLABprod.md) for details.
 
 <!-- QMOI_VALIDATION_START -->
 {
@@ -53,8 +53,8 @@ title: "QMOICLONE"
       "ok": true,
       "detail": [
         {
-          "label": "QMOIGITLABDEV.md",
-          "target": "./QMOIGITLABDEV.md",
+          "label": "QMOIGITLABprod.md",
+          "target": "./QMOIGITLABprod.md",
           "ok": true
         }
       ]

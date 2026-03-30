@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 QMOI Domain Registry Script
-Production-ready domain management and health monitoring system
+production-ready domain management and health monitoring system
 """
 
 import json
@@ -129,11 +129,11 @@ class QMOIDomainRegistry:
                 'health_url': 'https://qglobal.org/api/health',
                 'expected_ips': []
             },
-            'qparallel.dev': {
+            'qparallel.prod': {
                 'primary': False,
                 'fallback': 'qglobal.org',
                 'regions': ['us-east-1', 'us-west-2', 'eu-west-1'],
-                'health_url': 'https://qparallel.dev/api/health',
+                'health_url': 'https://qparallel.prod/api/health',
                 'expected_ips': []
             }
         }
@@ -175,8 +175,8 @@ class QMOIDomainRegistry:
                 'type': 'app',
                 'health_check': True
             },
-            'qparallel-dev': {
-                'url': 'https://qparallel.dev',
+            'qparallel-prod': {
+                'url': 'https://qparallel.prod',
                 'type': 'resource',
                 'health_check': True
             }

@@ -9,7 +9,7 @@
 
 # CLONE SYSTEMS & EVOLUTION
 
-> Status: 🟢 **PRODUCTION READY** | Version: 2.0 | Last Updated: 2026-03-26
+> Status: 🟢 **production READY** | Version: 2.0 | Last Updated: 2026-03-26
 
 ## Overview
 
@@ -24,7 +24,7 @@ The QMOI Clone Systems manage the creation, distribution, and evolution of platf
 
 ### 1. Manual Clones
 Manually initiated copies of repositories or systems, typically used for:
-- Development and testing
+- production and testing
 - Feature branches
 - Backup and redundancy
 - Regional deployment
@@ -370,7 +370,7 @@ monitor.monitorClones();
 ### Clone Not Evolving
 1. Check clone is registered: `GET /api/evolution/autoclone-evolution`
 2. Verify metrics are below threshold (80%)
-3. Check AutoDev research status
+3. Check Autoprod research status
 4. Review master notifications for issues
 
 ### Evolution Stuck
@@ -427,7 +427,7 @@ monitor.monitorClones();
 
 **Last Updated**: 2026-03-26  
 **Version**: 2.0 - Evolution Integration  
-**Status**: 🟢 Production Ready  
+**Status**: 🟢 production Ready  
 **Autonomy**: Fully Autonomous
 
 ## 🔄 Evolution Status

@@ -5,11 +5,11 @@
 
 #!/usr/bin/env python3
 """
-All apps/devices/machines coverage scanner
+All apps/prodices/machines coverage scanner
 
 This script scans the repository for directories and components matching
-app/devices/machines patterns, validates the presence of key manifest/docs,
-and ensures there are no remaining non-production markers inside those areas.
+app/prodices/machines patterns, validates the presence of key manifest/docs,
+and ensures there are no remaining production markers inside those areas.
 """
 
 import argparse
@@ -22,11 +22,11 @@ from pathlib import Path
 
 ROOT = Path.cwd()
 
-component_dir_tokens = ['app', 'apps', 'device', 'devices', 'machine', 'machines', 'service', 'services']
+component_dir_tokens = ['app', 'apps', 'prodice', 'prodices', 'machine', 'machines', 'service', 'services']
 
 required_doc_names = ['README.md', 'README.markdown', 'README', 'COMPULSORIES.md', 'metadata.json', 'manifest.json']
 
-nonprod_keywords = [
+production_keywords = [
     'PENDING_IMPLEMENTATION', 'TODO', 'FIXME', 'PLACEHOLDER', 'MOCK',
     'SIMULATE', 'SIMULATION', 'STAGING', 'STUB', 'STUBS',
     'TEST DATA', 'TEST IMPLEMENTATION', 'SIMPLE', 'MINIMAL', 'DEMO',
@@ -67,7 +67,7 @@ def scan_component_dir(component_dir: Path):
         'path': str(component_dir),
         'has_required_docs': False,
         'missing_docs': [],
-        'nonprod_markers': defaultdict(int),
+        'production_markers': defaultdict(int),
         'production_ready_markers': defaultdict(int),
         'files_scanned': 0,
     }
@@ -94,9 +94,9 @@ def scan_component_dir(component_dir: Path):
             info['files_scanned'] += 1
             text_lower = text.lower()
 
-            for marker in nonprod_keywords:
+            for marker in production_keywords:
                 if marker.lower() in text_lower:
-                    info['nonprod_markers'][marker] += 1
+                    info['production_markers'][marker] += 1
 
             for marker in production_ready_markers:
                 if marker.lower() in text_lower:
@@ -117,9 +117,9 @@ def build_report(results, output_path: Path):
     return report
 
 def main():
-    parser = argparse.ArgumentParser(description='Scan apps/devices/machines components for production readiness')
+    parser = argparse.ArgumentParser(description='Scan apps/prodices/machines components for production readiness')
     parser.add_argument('--root', default=str(ROOT), help='Root directory to scan')
-    parser.add_argument('--report', default='reports/all_apps_devices_machines_report.json', help='Report output path')
+    parser.add_argument('--report', default='reports/all_apps_prodices_machines_report.json', help='Report output path')
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
@@ -128,7 +128,7 @@ def main():
     print(f"Found {len(component_dirs)} candidate component directories")
 
     results = []
-    global_nonprod_summary = defaultdict(int)
+    global_production_summary = defaultdict(int)
     global_production_ready_summary = defaultdict(int)
     missing_docs_components = []
 
@@ -139,8 +139,8 @@ def main():
         if not info['has_required_docs']:
             missing_docs_components.append(str(comp_dir))
 
-        for marker, count in info['nonprod_markers'].items():
-            global_nonprod_summary[marker] += count
+        for marker, count in info['production_markers'].items():
+            global_production_summary[marker] += count
         for marker, count in info['production_ready_markers'].items():
             global_production_ready_summary[marker] += count
 
@@ -149,7 +149,7 @@ def main():
     print('SCAN SUMMARY:')
     print(f'  component dirs: {len(component_dirs)}')
     print(f'  components missing documentation: {len(missing_docs_components)}')
-    print(f'  nonprod_marker_hits: {sum(global_nonprod_summary.values())}')
+    print(f'  production_marker_hits: {sum(global_production_summary.values())}')
     print(f'  production_ready_markers: {sum(global_production_ready_summary.values())}')
     print(f'  report written to {args.report}')
 
@@ -158,11 +158,11 @@ def main():
         for entry in missing_docs_components[:20]:
             print('  -', entry)
 
-    if sum(global_nonprod_summary.values()) > 0:
-        print('ERROR: Non-production markers found in component directories')
+    if sum(global_production_summary.values()) > 0:
+        print('ERROR: production markers found in component directories')
         exit(1)
 
-    print('OK: no non-production markers found in scanned component directories')
+    print('OK: no production markers found in scanned component directories')
     exit(0)
 
 if __name__ == '__main__':

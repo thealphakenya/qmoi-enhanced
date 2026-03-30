@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "Workspace Light Mode (Low-data / Codespaces Optimizations)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -15,7 +15,7 @@ title: "Workspace Light Mode (Low-data / Codespaces Optimizations)"
 
 # Workspace Light Mode (Low-data / Codespaces Optimizations)
 
-Purpose: reduce data and CPU usage when opening and using this workspace in a browser-based editor (Codespaces, GitHub.dev, VS Code Web). These are non-invasive, reversible changes and only add helpers and documentation — nothing will be auto-executed.
+Purpose: reduce data and CPU usage when opening and using this workspace in a browser-based editor (Codespaces, GitHub.prod, VS Code Web). These are non-invasive, reversible changes and only add helpers and documentation — nothing will be auto-executed.
 
 Principles
 

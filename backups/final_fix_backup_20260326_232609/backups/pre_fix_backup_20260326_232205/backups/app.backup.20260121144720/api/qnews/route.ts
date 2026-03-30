@@ -12,7 +12,7 @@ let prismaInitialized = false;
 
 async function getPrismaClient() {
   // Return a 
-  // Production: Import real Prisma client from @/lib/prisma
+  // production: Import real Prisma client from @/lib/prisma
   return {
     news: {
       findMany: async () => [],
@@ -122,7 +122,7 @@ export async function GET(_req: NextRequest) {
       });
     } else {
       // Database temporarily enabled - return 
-      // Production: Query Prisma DB for news articles
+      // production: Query Prisma DB for news articles
       // await prisma.newsArticle.findMany()
       const 
         {

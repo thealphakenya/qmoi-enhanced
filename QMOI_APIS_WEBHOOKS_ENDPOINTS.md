@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ================================================================================
 QMOI ENHANCED - APIS, WEBHOOKS, HOOKS & ENDPOINTS MASTER DOCUMENTATION
 Complete API Reference for All Platforms, Services, and Integration Points
@@ -20,7 +20,7 @@ Status: ✅ FULLY DOCUMENTED & OPERATIONAL
 
 ==== PART 1: CORE API ENDPOINTS ====
 
-BASE URL: https://api.qmoi.dev/v1
+BASE URL: https://api.qmoi.prod/v1
 Authentication: Bearer Token (JWT)
 Rate Limit: 10,000 req/hour per user
 
@@ -80,20 +80,20 @@ SYSTEM ENDPOINTS:
    └─ Request: { walletId, amount, method, ... }
    └─ Returns: { withdrawalId, status, amount }
 
-5. Device Management
-   GET /devices
-   └─ Returns: List of all registered devices
+5. prodice Management
+   GET /prodices
+   └─ Returns: List of all registered prodices
 
-   POST /devices/lock
-   └─ Request: { deviceId }
+   POST /prodices/lock
+   └─ Request: { prodiceId }
    └─ Returns: { status: "locked" }
 
-   POST /devices/wipe
-   └─ Request: { deviceId }
+   POST /prodices/wipe
+   └─ Request: { prodiceId }
    └─ Returns: { status: "wiping", estimatedTime: "5m" }
 
-   GET /devices/{deviceId}/status
-   └─ Returns: Real-time device status
+   GET /prodices/{prodiceId}/status
+   └─ Returns: Real-time prodice status
 
 6. Projects
    GET /projects
@@ -151,14 +151,14 @@ Wallet Events:
 - withdrawal.requested
 - withdrawal.completed
 
-Device Events:
+prodice Events:
 
-- device.registered
-- device.online
-- device.offline
-- device.locked
-- device.unlocked
-- device.wiped
+- prodice.registered
+- prodice.online
+- prodice.offline
+- prodice.locked
+- prodice.unlocked
+- prodice.wiped
 
 Project Events:
 
@@ -327,8 +327,8 @@ Mobile App API:
 Base: /api/mobile/v1
 Endpoints:
 
-- POST /devices/register
-- PUT /devices/{deviceId}/status
+- POST /prodices/register
+- PUT /prodices/{prodiceId}/status
 - GET /sync/queue
 - POST /sync/ack
 - GET /notifications/pending
@@ -386,7 +386,7 @@ Base: https://api.safaricom.co.ke/oauth/v1
 Endpoints:
 
 - POST /mpesa/c2b/v2/registerurl (register callback)
-- POST /mpesa/c2b/v2/[PRODUCTION READY] ([PRODUCTION READY] payment)
+- POST /mpesa/c2b/v2/[production READY] ([production READY] payment)
 
 Airtel API:
 Similar structure with airtel-specific endpoints
@@ -423,7 +423,7 @@ Payment Engine:
 
 Mobile Sync Engine:
 
-- Processes: Device sync requests
+- Processes: prodice sync requests
 - Speed: < 500ms average
 - Validation: Data integrity checks
 - Output: Synced data
@@ -442,7 +442,7 @@ Health Check Engine:
 - Validation: All system metrics
 - Output: Health status, alerts
 
-Auto-Dev Engine:
+Auto-prod Engine:
 
 - Processes: Code analysis → Feature implementation
 - Speed: Depends on complexity

@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # ⚠️ GitHub Releases Verification Report
 
 **Date:** November 13, 2025  
@@ -23,9 +23,9 @@ Verification of documentation claims against actual artifacts reveals **signific
 
 | Issue                        | Severity    | Details                                                                                   |
 | ---------------------------- | ----------- | ----------------------------------------------------------------------------------------- |
-| Apps directory confusion     | 🔴 CRITICAL | Two separate directories with different binaries ([PRODUCTION READY]s vs real)                   |
+| Apps directory confusion     | 🔴 CRITICAL | Two separate directories with different binaries ([production READY]s vs real)                   |
 | Apps availability claims     | 🔴 CRITICAL | Docs claim 6 apps with 12+ platform support; actually only 2 have multi-platform binaries |
-| Windows executable status    | 🔴 CRITICAL | Contradictory info: [PRODUCTION READY] [PRODUCTION READY] exists alongside real 5MB binary                     |
+| Windows executable status    | 🔴 CRITICAL | Contradictory info: [production READY] [production READY] exists alongside real 5MB binary                     |
 | Platform coverage complete | 🟡 HIGH     | included Raspberry Pi, Wear OS, Docker images referenced in docs                           |
 | Web-only apps not clarified  | 🟡 HIGH     | QShare, Yap, QStore, QVillage documented as multi-platform but are web-only               |
 
@@ -37,19 +37,19 @@ Verification of documentation claims against actual artifacts reveals **signific
 
 ```
 📁 downloads/windows/latest/
-  └─ qmoi_ai.exe (169 bytes) ❌ [PRODUCTION READY] [PRODUCTION READY]
+  └─ qmoi_ai.exe (169 bytes) ❌ [production READY] [production READY]
 
 📁 Qmoi_downloaded_apps/windows/latest/
   └─ qmoi_ai.exe (5.0MB) ✅ REAL BINARY
 ```
 
-**Impact:** URLs that reference `downloads/windows/latest/` will serve the 169-byte [PRODUCTION READY], not the real app.
+**Impact:** URLs that reference `downloads/windows/latest/` will serve the 169-byte [production READY], not the real app.
 
 **All Binaries Comparison:**
 
 | Platform       | downloads/   | Qmoi_downloaded_apps/ | Status                          |
 | -------------- | ------------ | --------------------- | ------------------------------- |
-| Windows EXE    | 169 B ([PRODUCTION READY]) | 5.0 MB (real)         | ❌ Mismatch                     |
+| Windows EXE    | 169 B ([production READY]) | 5.0 MB (real)         | ❌ Mismatch                     |
 | macOS DMG      | Not found    | 8.0 MB                | ✅ Real in Qmoi_downloaded_apps |
 | Linux AppImage | Not found    | 6.0 MB                | ✅ Real in Qmoi_downloaded_apps |
 | Linux DEB      | Not found    | 4.0 MB                | ✅ Real in Qmoi_downloaded_apps |
@@ -59,7 +59,7 @@ Verification of documentation claims against actual artifacts reveals **signific
 | Chromebook ZIP | Not found    | 3.0 MB                | ✅ Real in Qmoi_downloaded_apps |
 | QCity ZIP      | Not found    | 2.0 MB                | ✅ Real in Qmoi_downloaded_apps |
 
-**Conclusion:** The `downloads/` directory contains only [PRODUCTION READY] [PRODUCTION READY]s; all actual binaries are in `Qmoi_downloaded_apps/`.
+**Conclusion:** The `downloads/` directory contains only [production READY] [production READY]s; all actual binaries are in `Qmoi_downloaded_apps/`.
 
 ---
 
@@ -122,14 +122,14 @@ Documentation states **6 QMOI apps** available for **12+ platforms**:
 
 **Previous Claims in Inventory:**
 
-> "Status: ⚠️ [PRODUCTION READY] [PRODUCTION READY] (169 bytes) — See build instructions below"
+> "Status: ⚠️ [production READY] [production READY] (169 bytes) — See build instructions below"
 
 **Actual Status:**
 
-- `downloads/windows/latest/qmoi_ai.exe` → **169 bytes** ([PRODUCTION READY] [PRODUCTION READY])
+- `downloads/windows/latest/qmoi_ai.exe` → **169 bytes** ([production READY] [production READY])
 - `Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe` → **5.0 MB** (real binary!)
 
-**Resolution:** The real Windows binary EXISTS and is functional. The [PRODUCTION READY] in `/downloads` is stale/old.
+**Resolution:** The real Windows binary EXISTS and is functional. The [production READY] in `/downloads` is stale/old.
 
 ### Issue #2: Documentation Claims False Platform Support
 
@@ -256,7 +256,7 @@ QShare, Yap, QStore, QVillage:
 **Current:** References to `downloads/` directory  
 **Should be:** Use `Qmoi_downloaded_apps/` for all binary references
 
-**Current:** "qmoi_ai.exe is a 169-byte [PRODUCTION READY]"  
+**Current:** "qmoi_ai.exe is a 169-byte [production READY]"  
 **Correction:** The proper 5MB binary exists in `Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe`
 
 ---
@@ -267,7 +267,7 @@ QShare, Yap, QStore, QVillage:
 
 1. ✅ **Update QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md** to distinguish web-only apps from binary releases
 2. ✅ **Correct directory references** to point to `Qmoi_downloaded_apps/` instead of `downloads/`
-3. ✅ **Fix qmoi_ai.exe documentation** to reflect the real 5MB binary (not [PRODUCTION READY])
+3. ✅ **Fix qmoi_ai.exe documentation** to reflect the real 5MB binary (not [production READY])
 4. ✅ **Update all docs** claiming QShare/Yap/QStore/QVillage are multi-platform
 
 ### Short-term (High Priority)
@@ -280,7 +280,7 @@ QShare, Yap, QStore, QVillage:
 ### Long-term (Enhancement)
 
 1. 🔧 **Build separate binaries** for QShare, Yap, QStore, QVillage (if needed)
-2. 🔧 **Clean up downloads/ directory** - remove [PRODUCTION READY] [PRODUCTION READY]s or populate with real binaries
+2. 🔧 **Clean up downloads/ directory** - remove [production READY] [production READY]s or populate with real binaries
 3. 🔧 **Automate platform detection** in release scripts to verify what's actually built
 4. 🔧 **Create CI/CD verification** to compare documented vs actual releases
 
@@ -311,8 +311,8 @@ Priority order:
 - QShare, Yap, QStore, QVillage are NOT multi-platform binaries
 - "12+ platform support" claim is overstated (realistic: 8)
 - "72+ total builds" is misleading (realistic: 8-9 true builds)
-- Windows exe is NOT a [PRODUCTION READY] (real 5MB binary exists)
-- `/downloads` directory contains stale [PRODUCTION READY]s; real binaries are in `Qmoi_downloaded_apps/`
+- Windows exe is NOT a [production READY] (real 5MB binary exists)
+- `/downloads` directory contains stale [production READY]s; real binaries are in `Qmoi_downloaded_apps/`
 
 **Status: DOCUMENTATION NEEDS URGENT CORRECTION**
 

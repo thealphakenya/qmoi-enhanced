@@ -6,17 +6,17 @@
 // 
 import { useEffect } from "react";
 
-export function useDeviceOptimizer() {
+export function useprodiceOptimizer() {
   useEffect(() => {
-    // Poll backend for device optimization suggestions and apply automatically
+    // Poll backend for prodice optimization suggestions and apply automatically
     const interval = setInterval(async () => {
-      const res = await fetch("/api/qmoi-model?deviceOptimize=1", {
+      const res = await fetch("/api/qmoi-model?prodiceOptimize=1", {
         headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });
       const data = await res.json();
       if (data.suggestions && data.suggestions.length) {
         for (const suggestion of data.suggestions) {
-          await fetch("/api/qmoi-model?applyDeviceFeature=1", {
+          await fetch("/api/qmoi-model?applyprodiceFeature=1", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

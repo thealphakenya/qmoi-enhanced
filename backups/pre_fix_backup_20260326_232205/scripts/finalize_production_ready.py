@@ -8,10 +8,10 @@ from pathlib import Path
 import re
 
 root_dir = Path('.')
-nonprod_patterns = [
-    r'\[PRODUCTION IMPLEMENTATION REQUIRED\]',
-    r'\[PRODUCTION DONE\]',
-    r'\[PRODUCTION FIXED\]',
+production_patterns = [
+    r'\[production IMPLEMENTATION REQUIRED\]',
+    r'\[production DONE\]',
+    r'\[production FIXED\]',
     r'PENDING_IMPLEMENTATION',
     r'\bTODO\b',
     r'\bFIXME\b',
@@ -41,7 +41,7 @@ for path in root_dir.rglob('*'):
         continue
 
     content_lower = content.lower()
-    unresolved = any(re.search(pat, content, flags=re.IGNORECASE) for pat in nonprod_patterns)
+    unresolved = any(re.search(pat, content, flags=re.IGNORECASE) for pat in production_patterns)
     has_ready = '[production ready]' in content_lower
 
     if unresolved:

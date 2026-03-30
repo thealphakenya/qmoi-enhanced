@@ -5,9 +5,9 @@
 
 #!/usr/bin/env python3
 """
-QMOI Phase 4 Production Deployment Orchestrator
+QMOI Phase 4 production Deployment Orchestrator
 Automated execution of all Phase 4 hardening steps with verification at each stage.
-Production-ready, idempotent, with comprehensive logging and rollback support.
+production-ready, idempotent, with comprehensive logging and rollback support.
 """
 
 import os
@@ -183,7 +183,7 @@ class QMOIPhase4Deployer:
                 all_exist = False
         
         # Try to install pre-commit hooks
-        hooks_cmd = f"cd {self.workspace_root} && pre-commit install 2>/dev/null || true"
+        hooks_cmd = f"cd {self.workspace_root} && pre-commit install 2>/prod/null || true"
         self.run_command(hooks_cmd, "Pre-commit hooks configured")
         
         self.stages_completed.append(DeploymentStage.SECURITY)
@@ -198,7 +198,7 @@ class QMOIPhase4Deployer:
             ("tools/production_link_audit.py", "Link audit tool"),
             ("tools/cache_links.py", "Link cache tool"),
             ("docs/OFFLINE_GUIDE.md", "Offline guide"),
-            ("docs_site/PRODUCTION_LINK_AUDIT.json", "Production link audit report"),
+            ("docs_site/production_LINK_AUDIT.json", "production link audit report"),
         ]
         
         all_exist = True
@@ -211,13 +211,13 @@ class QMOIPhase4Deployer:
                 all_exist = False
         
         # Try to load and verify production link audit
-        audit_file = self.workspace_root / "docs_site/PRODUCTION_LINK_AUDIT.json"
+        audit_file = self.workspace_root / "docs_site/production_LINK_AUDIT.json"
         if audit_file.exists():
             try:
                 with open(audit_file) as f:
                     audit = json.load(f)
                     total_links = audit.get('summary', {}).get('total_links', 0)
-                    logger.info(f"✅ Production audit has {total_links} verified links")
+                    logger.info(f"✅ production audit has {total_links} verified links")
             except Exception as e:
                 logger.warning(f"Could not parse audit: {e}")
         
@@ -369,13 +369,13 @@ class QMOIPhase4Deployer:
                 "3. Run: python3 tools/cache_links.py --production --verify",
                 "4. Build offline documentation: cd docs_site && ./build_offline.sh",
                 "5. Test offline access: npm run test:offline",
-                "6. Review PHASE4_PRODUCTION_STRATEGY.md for remaining tasks",
+                "6. Review PHASE4_production_STRATEGY.md for remaining tasks",
             ],
             "documents": [
                 "docs/CREDENTIAL_ROTATION_PLAYBOOK.md",
                 "docs/OFFLINE_GUIDE.md",
-                "PHASE4_PRODUCTION_STRATEGY.md",
-                "docs_site/PRODUCTION_LINK_AUDIT.json",
+                "PHASE4_production_STRATEGY.md",
+                "docs_site/production_LINK_AUDIT.json",
             ]
         }
         
@@ -384,7 +384,7 @@ class QMOIPhase4Deployer:
     def run_deployment(self) -> bool:
         """Execute full deployment orchestration."""
         logger.info("="*70)
-        logger.info("QMOI PHASE 4 PRODUCTION DEPLOYMENT ORCHESTRATOR")
+        logger.info("QMOI PHASE 4 production DEPLOYMENT ORCHESTRATOR")
         logger.info("="*70)
         logger.info(f"Workspace: {self.workspace_root}")
         logger.info(f"Started: {self.deployment_start.isoformat()}")

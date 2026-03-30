@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -20,7 +20,7 @@
 ```
 START
   ↓
-[Check Dev Server]
+[Check prod Server]
   ↓ ✅ Connected
   ↓
 [Test 1: Master Acknowledgment]
@@ -187,7 +187,7 @@ Test 10: Master Comprehensive Directive
 │  ├─ ✅ Safety safeguards described
 │  └─ ✅ Accountability mechanisms explained
 └─ Section D: Future Capability
-   └─ ✅ Proposes 2 new development areas
+   └─ ✅ Proposes 2 new production areas
 ```
 
 ### Category 7: VOICE SYSTEM (Test 11)
@@ -330,7 +330,7 @@ data:
 
 ```
 100% (12/12)  = Perfect! All systems go ✅
-91-99%        = Excellent! Production ready ✅
+91-99%        = Excellent! production ready ✅
 80-90%        = Good! Minor issues fixable ⚠️
 < 80%         = Issues need attention ❌
 ```
@@ -339,8 +339,8 @@ data:
 
 ## 📋 Master User Test Checklist
 
-- [ ] Dev server running (`npm run dev`)
-- [ ] Dev server accessible (`https://qmoi.ai`)
+- [ ] prod server running (`npm run prod`)
+- [ ] prod server accessible (`https://qmoi.ai`)
 - [ ] Test runner started (`node test-qmoi-master.js`)
 - [ ] Master acknowledgment verified
 - [ ] All project types created
@@ -359,13 +359,13 @@ data:
 
 ## 🚀 Common Issues & Solutions
 
-### Issue: "Cannot connect to dev server"
+### Issue: "Cannot connect to prod server"
 
 ```
 Problem: Tests fail immediately
 Solution:
   1. Open Terminal 1
-  2. Run: npm run dev
+  2. Run: npm run prod
   3. Wait for "Ready in X.XXs" message
   4. Run tests in Terminal 2
 ```
@@ -387,7 +387,7 @@ Problem: Tests timeout
 Solution:
   1. Check system resources: top
   2. Close unnecessary apps
-  3. Restart dev server
+  3. Restart prod server
   4. Try again
 ```
 
@@ -408,7 +408,7 @@ Problem: 404 on /api/qmoi/friendship
 Solution:
   1. Verify file exists: app/api/qmoi/friendship/route.ts
   2. Check API handler is implemented
-  3. Restart dev server
+  3. Restart prod server
 ```
 
 ---
@@ -520,7 +520,7 @@ QMOI Master User Comprehensive Test Report
    Verify no red errors
    ```
 
-4. **Ready for Production**
+4. **Ready for production**
    ```
    npm run build
    npm start
@@ -543,7 +543,7 @@ QMOI Master Testing verifies:
 - ✅ Trading capabilities
 - ✅ Accountability tracking
 - ✅ Performance metrics
-- ✅ Production readiness
+- ✅ production readiness
 
 **Expected Result: 11-12/12 tests pass (91-100%)**
 

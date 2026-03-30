@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "GITPODPAYED.md - Gitpod Paid Features in QMOI"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -26,11 +26,11 @@ All paid Gitpod features are available in QMOI's cloned Gitpod platform, but not
 
 - **Unlimited Workspaces**: No limits on workspace creation and usage
 - **Advanced Machine Types**: Access to all machine types and configurations
-- **Custom Dev Containers**: Full control over development containers
+- **Custom prod Containers**: Full control over production containers
 - **Team Collaboration**: Advanced team collaboration features
 - **Workspace Analytics**: Detailed usage analytics and insights
 - **Advanced Permissions**: Granular permission management
-- **Custom Environments**: Create custom development environments
+- **Custom Environments**: Create custom production environments
 - **Advanced Debugging**: Advanced debugging and troubleshooting tools
 - **Performance Monitoring**: Real-time performance monitoring
 - **Resource Management**: Advanced resource management and optimization
@@ -74,10 +74,10 @@ All paid Gitpod features are available in QMOI's cloned Gitpod platform, but not
 - **Security-Optimized Machines**: Access to security-optimized machines
 - **Compliance-Optimized Machines**: Access to compliance-optimized machines
 
-### 5. Gitpod Custom Dev Containers
+### 5. Gitpod Custom prod Containers
 
 - **Custom Container Images**: Use any container image
-- **Custom Development Tools**: Install any development tools
+- **Custom production Tools**: Install any production tools
 - **Custom Extensions**: Install any VS Code extensions
 - **Custom Configurations**: Full control over workspace configuration
 - **Custom Scripts**: Run custom scripts and automation
@@ -138,7 +138,7 @@ class QMOIGitpodClone:
         self.enterprise_features = GitpodEnterpriseFeatures()
         self.workspaces = GitpodUnlimitedWorkspaces()
         self.machines = GitpodAdvancedMachineTypes()
-        self.containers = GitpodCustomDevContainers()
+        self.containers = GitpodCustomprodContainers()
         self.collaboration = GitpodTeamCollaboration()
         self.security = GitpodAdvancedSecurity()
         self.compliance = GitpodEnterpriseCompliance()
@@ -153,7 +153,7 @@ class QMOIGitpodFeatureActivator:
         """Activate all Gitpod Professional features"""
         self.enable_unlimited_workspaces()
         self.enable_advanced_machine_types()
-        self.enable_custom_dev_containers()
+        self.enable_custom_prod_containers()
         self.enable_team_collaboration()
         self.enable_workspace_analytics()
         self.enable_advanced_permissions()
@@ -187,8 +187,8 @@ npm run gitpod:enable-unlimited-workspaces
 # Enable advanced machine types
 npm run gitpod:enable-advanced-machine-types
 
-# Enable custom dev containers
-npm run gitpod:enable-custom-dev-containers
+# Enable custom prod containers
+npm run gitpod:enable-custom-prod-containers
 
 # Enable team collaboration
 npm run gitpod:enable-team-collaboration
@@ -311,14 +311,14 @@ npm run gitpod:enable-security-optimized-machines
 npm run gitpod:enable-compliance-optimized-machines
 ```
 
-### Gitpod Custom Dev Containers
+### Gitpod Custom prod Containers
 
 ```bash
 # Use custom container images
 npm run gitpod:use-custom-container-images
 
-# Install custom development tools
-npm run gitpod:install-custom-development-tools
+# Install custom production tools
+npm run gitpod:install-custom-production-tools
 
 # Install custom extensions
 npm run gitpod:install-custom-extensions

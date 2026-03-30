@@ -14,7 +14,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
-    // Production:, this would:
+    // production:, this would:
     // 1. Queue test execution if already running
     // 2. Execute: npm run test:unit && npm run test:integration
     // 3. Collect coverage metrics
@@ -102,10 +102,10 @@ export async function POST(request: NextRequest) {
           suggestion: "Increase test timeout or improve streaming reliability",
         },
         {
-          test: "AutoDev.tsx - should generate valid code",
+          test: "Autoprod.tsx - should generate valid code",
           suite: "Components",
           error: "Assertion failed",
-          stackTrace: "at AutoDev.test.tsx:89",
+          stackTrace: "at Autoprod.test.tsx:89",
           suggestion: "Verify code generation logic",
         },
       ],

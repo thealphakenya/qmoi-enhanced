@@ -55,7 +55,7 @@ function QmoispaceApp() {
             ))}
           </Select>
         </Box>
-        {/* Device and healing controls would go here */}
+        {/* prodice and healing controls would go here */}
         <Box mt={8} maxW="500px">
           <Heading as="h2" size="md" mb={2}>
             Send Feedback

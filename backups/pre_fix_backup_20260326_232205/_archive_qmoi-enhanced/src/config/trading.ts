@@ -14,7 +14,7 @@ import { WalletManager, WalletConfig } from "./wallet";
 import {
   Trade,
   TradeExecutionResult,
-  TradeValidationResult,
+  TraprodalidationResult,
   TradeHistory,
   TradeStatistics,
 } from "../types/trading";
@@ -430,7 +430,7 @@ export class TradingManager {
 
   public async validateTrade(
     trade: Omit<Trade, "id" | "timestamp" | "total" | "profit">,
-  ): Promise<TradeValidationResult> {
+  ): Promise<TraprodalidationResult> {
     const balances = await this.walletManager.getBalances();
     const sourceBalance = balances.find(
       (b) => b.currency === trade.sourceCurrency,

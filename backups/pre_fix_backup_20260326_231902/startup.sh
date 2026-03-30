@@ -1,12 +1,12 @@
 #!/bin/bash
-# [PRODUCTION READY]
+# [production READY]
 # QMOI Enhanced Master Startup Script
 # Launches all services, verifies health, displays status dashboard
 # Usage: ./startup.sh [options]
 #
 # Options:
 #   --help              Show this help message
-#   --dev               Start in development mode
+#   --prod               Start in production mode
 #   --prod              Start in production mode
 #   --no-verify         Skip health verification
 #   --real-server       Also start real backend server
@@ -23,7 +23,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WORKSPACE_ROOT="$SCRIPT_DIR"
 
 # Environment
-ENV_MODE="${ENV_MODE:-development}"
+ENV_MODE="${ENV_MODE:-production}"
 OPEN_BROWSER=false
 VERIFY_HEALTH=true
 START_MOCK_SERVER=false
@@ -32,7 +32,7 @@ DEBUG_MODE=false
 # Ports
 HTTP_PORT=8080
 MOCK_SERVER_PORT=5000
-DEV_SERVER_PORT=3000
+prod_SERVER_PORT=3000
 
 # Colors for output
 RED='\033[0;31m'
@@ -92,8 +92,8 @@ parse_arguments() {
         show_help
         exit 0
         ;;
-      --dev)
-        ENV_MODE="development"
+      --prod)
+        ENV_MODE="production"
         shift
         ;;
       --prod)
@@ -133,7 +133,7 @@ Usage: ./startup.sh [options]
 
 Options:
   --help              Show this help message
-  --dev               Start in development mode (default)
+  --prod               Start in production mode (default)
   --prod              Start in production mode
   --no-verify         Skip health verification
   --real-server       Also start real backend server
@@ -141,16 +141,16 @@ Options:
   --debug             Enable debug logging
 
 Examples:
-  ./startup.sh                                    # Start in dev mode
-  ./startup.sh --prod --open-browser             # Start in prod mode with browser
+  ./startup.sh                                    # Start in production
+  ./startup.sh --prod --open-browser             # Start in production with browser
   ./startup.sh --real-server --debug             # Start with real server and debug
-  ./startup.sh --dev --no-verify                 # Start without health verification
+  ./startup.sh --prod --no-verify                 # Start without health verification
 
 Environment Variables:
-  ENV_MODE            Set mode (development/production) [default: development]
+  ENV_MODE            Set mode (production/production) [default: production]
   HTTP_PORT           HTTP server port [default: 8080]
   MOCK_SERVER_PORT    real server port [default: 5000]
-  DEV_SERVER_PORT     Dev server port [default: 3000]
+  prod_SERVER_PORT     prod server port [default: 3000]
 
 EOF
 }
@@ -163,7 +163,7 @@ check_prerequisites() {
   print_section "Checking Prerequisites"
 
   # Check Node.js
-  if ! command -v node &> /dev/null; then
+  if ! command -v node &> /prod/null; then
     log_error "Node.js is not installed"
     exit 1
   fi
@@ -171,7 +171,7 @@ check_prerequisites() {
   log_success "Node.js: $NODE_VERSION"
 
   # Check npm
-  if ! command -v npm &> /dev/null; then
+  if ! command -v npm &> /prod/null; then
     log_error "npm is not installed"
     exit 1
   fi
@@ -180,7 +180,7 @@ check_prerequisites() {
 
   # Check Python (for real server if needed)
   if [ "$START_MOCK_SERVER" = true ]; then
-    if ! command -v python3 &> /dev/null; then
+    if ! command -v python3 &> /prod/null; then
       log_warning "Python3 is not installed; real server will not start"
       START_MOCK_SERVER=false
     else
@@ -220,9 +220,9 @@ EOF
     else
       cat > "$WORKSPACE_ROOT/.env.local" << 'EOF'
 NEXT_PUBLIC_API_URL=http://localhost:8080
-NEXT_PUBLIC_ENV=development
+NEXT_PUBLIC_ENV=production
 NEXT_PUBLIC_DEBUG=true
-NODE_ENV=development
+NODE_ENV=production
 EOF
     fi
 
@@ -268,20 +268,20 @@ start_http_server() {
   print_section "Starting HTTP Server"
 
   # Kill existing server on the port if any
-  if lsof -Pi :$HTTP_PORT -sTCP:LISTEN -t >/dev/null 2>&1; then
+  if lsof -Pi :$HTTP_PORT -sTCP:LISTEN -t >/prod/null 2>&1; then
     log_warning "Service already running on port $HTTP_PORT"
     PID=$(lsof -Pi :$HTTP_PORT -sTCP:LISTEN -t)
     log_info "Existing process PID: $PID"
   else
     log_info "Starting HTTP server on port $HTTP_PORT..."
 
-    if command -v python3 &> /dev/null; then
+    if command -v python3 &> /prod/null; then
       cd "$WORKSPACE_ROOT/public"
       python3 -m http.server $HTTP_PORT > /tmp/http-server.log 2>&1 &
       HTTP_SERVER_PID=$!
       sleep 1
 
-      if kill -0 $HTTP_SERVER_PID 2>/dev/null; then
+      if kill -0 $HTTP_SERVER_PID 2>/prod/null; then
         log_success "HTTP server started (PID: $HTTP_SERVER_PID)"
       else
         log_error "Failed to start HTTP server"
@@ -315,7 +315,7 @@ start_mock_server() {
   MOCK_SERVER_PID=$!
   sleep 2
 
-  if kill -0 $MOCK_SERVER_PID 2>/dev/null; then
+  if kill -0 $MOCK_SERVER_PID 2>/prod/null; then
     log_success "real server started (PID: $MOCK_SERVER_PID)"
   else
     log_error "Failed to start real server"
@@ -324,23 +324,23 @@ start_mock_server() {
   fi
 }
 
-start_dev_server() {
-  print_section "Starting Development Server"
+start_prod_server() {
+  print_section "Starting production Server"
 
-  log_info "Starting Next.js dev server on port $DEV_SERVER_PORT..."
+  log_info "Starting Next.js prod server on port $prod_SERVER_PORT..."
 
   cd "$WORKSPACE_ROOT"
-  npm run dev > /tmp/dev-server.log 2>&1 &
-  DEV_SERVER_PID=$!
+  npm run prod > /tmp/prod-server.log 2>&1 &
+  prod_SERVER_PID=$!
   sleep 3
 
-  if kill -0 $DEV_SERVER_PID 2>/dev/null; then
-    log_success "Dev server started (PID: $DEV_SERVER_PID)"
+  if kill -0 $prod_SERVER_PID 2>/prod/null; then
+    log_success "prod server started (PID: $prod_SERVER_PID)"
     log_info "Waiting for server to be ready..."
     sleep 2
   else
-    log_error "Failed to start dev server"
-    cat /tmp/dev-server.log
+    log_error "Failed to start prod server"
+    cat /tmp/prod-server.log
     exit 1
   fi
 }
@@ -355,7 +355,7 @@ verify_services() {
 
   # Verify HTTP server
   log_info "Checking HTTP server on port $HTTP_PORT..."
-  if curl -s -o /dev/null -w "%{http_code}" http://localhost:$HTTP_PORT/ 2>/dev/null | grep -q "200"; then
+  if curl -s -o /prod/null -w "%{http_code}" http://localhost:$HTTP_PORT/ 2>/prod/null | grep -q "200"; then
     log_success "HTTP server responding"
   else
     log_warning "HTTP server not responding"
@@ -364,7 +364,7 @@ verify_services() {
   # Verify dashboards
   DASHBOARDS=("qcity-enterprise.html" "qcity-complete.html" "qcity-dashboard.html")
   for dash in "${DASHBOARDS[@]}"; do
-    if curl -s -o /dev/null -w "%{http_code}" http://localhost:$HTTP_PORT/$dash 2>/dev/null | grep -q "200"; then
+    if curl -s -o /prod/null -w "%{http_code}" http://localhost:$HTTP_PORT/$dash 2>/prod/null | grep -q "200"; then
       log_success "Dashboard $dash accessible"
     else
       log_warning "Dashboard $dash not accessible"
@@ -397,7 +397,7 @@ display_status_dashboard() {
 
   echo -e "${GREEN}═ SERVICES ═══════════════════════════════════════════════${NC}"
   if [ -n "$HTTP_SERVER_PID" ]; then
-    if kill -0 $HTTP_SERVER_PID 2>/dev/null; then
+    if kill -0 $HTTP_SERVER_PID 2>/prod/null; then
       echo -e "  ${GREEN}✓${NC} HTTP Server      (PID: $HTTP_SERVER_PID, Port: $HTTP_PORT)"
     else
       echo -e "  ${RED}✗${NC} HTTP Server      (STOPPED)"
@@ -407,7 +407,7 @@ display_status_dashboard() {
   fi
 
   if [ -n "$MOCK_SERVER_PID" ]; then
-    if kill -0 $MOCK_SERVER_PID 2>/dev/null; then
+    if kill -0 $MOCK_SERVER_PID 2>/prod/null; then
       echo -e "  ${GREEN}✓${NC} real Server      (PID: $MOCK_SERVER_PID, Port: $MOCK_SERVER_PORT)"
     else
       echo -e "  ${RED}✗${NC} real Server      (STOPPED)"
@@ -416,20 +416,20 @@ display_status_dashboard() {
     echo -e "  ${YELLOW}~${NC} real Server      (Not started)"
   fi
 
-  if [ -n "$DEV_SERVER_PID" ]; then
-    if kill -0 $DEV_SERVER_PID 2>/dev/null; then
-      echo -e "  ${GREEN}✓${NC} Dev Server       (PID: $DEV_SERVER_PID, Port: $DEV_SERVER_PORT)"
+  if [ -n "$prod_SERVER_PID" ]; then
+    if kill -0 $prod_SERVER_PID 2>/prod/null; then
+      echo -e "  ${GREEN}✓${NC} prod Server       (PID: $prod_SERVER_PID, Port: $prod_SERVER_PORT)"
     else
-      echo -e "  ${RED}✗${NC} Dev Server       (STOPPED)"
+      echo -e "  ${RED}✗${NC} prod Server       (STOPPED)"
     fi
   else
-    echo -e "  ${YELLOW}~${NC} Dev Server       (Not started)"
+    echo -e "  ${YELLOW}~${NC} prod Server       (Not started)"
   fi
   echo ""
 
   echo -e "${GREEN}═ ACCESS POINTS ═══════════════════════════════════════════${NC}"
   echo "  HTTP Server:      http://localhost:$HTTP_PORT"
-  echo "  Dev Server:       http://localhost:$DEV_SERVER_PORT"
+  echo "  prod Server:       http://localhost:$prod_SERVER_PORT"
   if [ "$START_MOCK_SERVER" = true ]; then
     echo "  real API:         http://localhost:$MOCK_SERVER_PORT"
   fi
@@ -455,14 +455,14 @@ open_browser() {
   log_info "Launching QMOI AI in browser..."
 
   # Try different browsers
-  if command -v xdg-open &> /dev/null; then
-    xdg-open "http://localhost:$DEV_SERVER_PORT" > /dev/null 2>&1 &
-  elif command -v open &> /dev/null; then
-    open "http://localhost:$DEV_SERVER_PORT" > /dev/null 2>&1 &
-  elif command -v start &> /dev/null; then
-    start "http://localhost:$DEV_SERVER_PORT" > /dev/null 2>&1 &
+  if command -v xdg-open &> /prod/null; then
+    xdg-open "http://localhost:$prod_SERVER_PORT" > /prod/null 2>&1 &
+  elif command -v open &> /prod/null; then
+    open "http://localhost:$prod_SERVER_PORT" > /prod/null 2>&1 &
+  elif command -v start &> /prod/null; then
+    start "http://localhost:$prod_SERVER_PORT" > /prod/null 2>&1 &
   else
-    log_warning "Could not detect browser; open http://localhost:$DEV_SERVER_PORT manually"
+    log_warning "Could not detect browser; open http://localhost:$prod_SERVER_PORT manually"
   fi
 
   sleep 1
@@ -475,15 +475,15 @@ cleanup() {
 
   # Kill processes
   if [ -n "$HTTP_SERVER_PID" ]; then
-    kill $HTTP_SERVER_PID 2>/dev/null || true
+    kill $HTTP_SERVER_PID 2>/prod/null || true
   fi
 
   if [ -n "$MOCK_SERVER_PID" ]; then
-    kill $MOCK_SERVER_PID 2>/dev/null || true
+    kill $MOCK_SERVER_PID 2>/prod/null || true
   fi
 
-  if [ -n "$DEV_SERVER_PID" ]; then
-    kill $DEV_SERVER_PID 2>/dev/null || true
+  if [ -n "$prod_SERVER_PID" ]; then
+    kill $prod_SERVER_PID 2>/prod/null || true
   fi
 
   log_success "Cleanup complete"
@@ -508,7 +508,7 @@ main() {
   install_dependencies
   start_http_server
   start_mock_server
-  start_dev_server
+  start_prod_server
   verify_services
   display_status_dashboard
   open_browser

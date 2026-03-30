@@ -3,12 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:55Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 #!/usr/bin/env python3
 """
-QMOI Device Integration System
-Integrates device ownership detection and unlock systems for comprehensive device liberation.
-Provides unified interface for QMOI's device management features.
+QMOI prodice Integration System
+Integrates prodice ownership detection and unlock systems for comprehensive prodice liberation.
+Provides unified interface for QMOI's prodice management features.
 """
 
 import os
@@ -27,8 +27,8 @@ import queue
 # Add scripts directory to path
 sys.path.append(os.path.join(os.path.dirname(__file__)))
 
-from device_ownership_detector import DeviceOwnershipDetector, DeviceRestriction
-from device_unlock_system import DeviceUnlockSystem, UnlockResult
+from prodice_ownership_detector import prodiceOwnershipDetector, prodiceRestriction
+from prodice_unlock_system import prodiceUnlockSystem, UnlockResult
 
 # Configure logging
 logging.basicConfig(
@@ -38,19 +38,19 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 @dataclass
-class DeviceStatus:
-    """Current device status"""
+class prodiceStatus:
+    """Current prodice status"""
     is_restricted: bool
-    restrictions: List[DeviceRestriction]
+    restrictions: List[prodiceRestriction]
     unlock_attempts: List[UnlockResult]
     last_detection: datetime
     last_unlock: Optional[datetime]
-    device_info: Dict[str, Any]
+    prodice_info: Dict[str, Any]
     qmoi_master_mode: bool
 
 @dataclass
 class IntegrationConfig:
-    """Configuration for device integration"""
+    """Configuration for prodice integration"""
     auto_detection_enabled: bool
     detection_interval: int  # seconds
     auto_unlock_enabled: bool
@@ -58,8 +58,8 @@ class IntegrationConfig:
     notification_enabled: bool
     log_level: str
 
-class QMOIDeviceIntegration:
-    """Main integration class for QMOI device management"""
+class QMOIprodiceIntegration:
+    """Main integration class for QMOI prodice management"""
     
     def __init__(self, config: Optional[IntegrationConfig] = None):
         self.config = config or IntegrationConfig(
@@ -71,15 +71,15 @@ class QMOIDeviceIntegration:
             log_level="INFO"
         )
         
-        self.detector = DeviceOwnershipDetector()
-        self.unlock_system = DeviceUnlockSystem()
-        self.device_status = DeviceStatus(
+        self.detector = prodiceOwnershipDetector()
+        self.unlock_system = prodiceUnlockSystem()
+        self.prodice_status = prodiceStatus(
             is_restricted=False,
             restrictions=[],
             unlock_attempts=[],
             last_detection=datetime.now(),
             last_unlock=None,
-            device_info={},
+            prodice_info={},
             qmoi_master_mode=False
         )
         
@@ -90,8 +90,8 @@ class QMOIDeviceIntegration:
         self.unlock_thread = None
         
     def start_integration(self):
-        """Start the device integration system"""
-        logger.info("🚀 Starting QMOI Device Integration System...")
+        """Start the prodice integration system"""
+        logger.info("🚀 Starting QMOI prodice Integration System...")
         self.running = True
         
         # Start detection thread
@@ -108,11 +108,11 @@ class QMOIDeviceIntegration:
         # Initial detection
         self._perform_detection()
         
-        logger.info("✅ QMOI Device Integration System started successfully")
+        logger.info("✅ QMOI prodice Integration System started successfully")
     
     def stop_integration(self):
-        """Stop the device integration system"""
-        logger.info("🛑 Stopping QMOI Device Integration System...")
+        """Stop the prodice integration system"""
+        logger.info("🛑 Stopping QMOI prodice Integration System...")
         self.running = False
         
         if self.detection_thread:
@@ -121,10 +121,10 @@ class QMOIDeviceIntegration:
         if self.unlock_thread:
             self.unlock_thread.join(timeout=5)
         
-        logger.info("✅ QMOI Device Integration System stopped")
+        logger.info("✅ QMOI prodice Integration System stopped")
     
     def _detection_worker(self):
-        """Background worker for device detection"""
+        """Background worker for prodice detection"""
         while self.running:
             try:
                 # Wait for detection interval
@@ -138,7 +138,7 @@ class QMOIDeviceIntegration:
                 time.sleep(10)  # Wait before retrying
     
     def _unlock_worker(self):
-        """Background worker for device unlock"""
+        """Background worker for prodice unlock"""
         while self.running:
             try:
                 # Wait for unlock requests
@@ -153,22 +153,22 @@ class QMOIDeviceIntegration:
                 time.sleep(5)  # Wait before retrying
     
     def _perform_detection(self):
-        """Perform device restriction detection"""
+        """Perform prodice restriction detection"""
         try:
-            logger.info("🔍 Performing device restriction detection...")
+            logger.info("🔍 Performing prodice restriction detection...")
             
             # Detect restrictions
             restrictions = self.detector.detect_all_restrictions()
             
-            # Update device status
-            self.device_status.restrictions = restrictions
-            self.device_status.is_restricted = len(restrictions) > 0
-            self.device_status.last_detection = datetime.now()
-            self.device_status.device_info = self.detector.device_info
+            # Update prodice status
+            self.prodice_status.restrictions = restrictions
+            self.prodice_status.is_restricted = len(restrictions) > 0
+            self.prodice_status.last_detection = datetime.now()
+            self.prodice_status.prodice_info = self.detector.prodice_info
             
             # Log detection results
             if restrictions:
-                logger.warning(f"🚨 Found {len(restrictions)} device restriction(s):")
+                logger.warning(f"🚨 Found {len(restrictions)} prodice restriction(s):")
                 for restriction in restrictions:
                     logger.warning(f"  - {restriction.organization}: {restriction.description} ({restriction.severity})")
                 
@@ -177,7 +177,7 @@ class QMOIDeviceIntegration:
                     logger.info("🔓 Auto-unlock enabled, triggering unlock...")
                     self._queue_unlock_request("auto", restrictions)
             else:
-                logger.info("✅ No device restrictions detected")
+                logger.info("✅ No prodice restrictions detected")
             
             # Generate detection report
             detection_report = self.detector.generate_detection_report()
@@ -186,7 +186,7 @@ class QMOIDeviceIntegration:
         except Exception as e:
             logger.error(f"Error during detection: {e}")
     
-    def _queue_unlock_request(self, request_type: str, restrictions: List[DeviceRestriction]):
+    def _queue_unlock_request(self, request_type: str, restrictions: List[prodiceRestriction]):
         """Queue an unlock request"""
         unlock_request = {
             'type': request_type,
@@ -214,11 +214,11 @@ class QMOIDeviceIntegration:
                 
                 # Choose unlock method based on restriction type
                 if restriction.type == 'mkopa':
-                    result = self.unlock_system.unlock_mkopa_device()
+                    result = self.unlock_system.unlock_mkopa_prodice()
                 elif restriction.type == 'watu':
-                    result = self.unlock_system.unlock_watu_device()
+                    result = self.unlock_system.unlock_watu_prodice()
                 else:
-                    result = self.unlock_system.unlock_generic_device(restriction.organization)
+                    result = self.unlock_system.unlock_generic_prodice(restriction.organization)
                 
                 unlock_results.append(result)
                 
@@ -234,14 +234,14 @@ class QMOIDeviceIntegration:
                 unlock_results.append(master_result)
                 
                 if master_result.success:
-                    self.device_status.qmoi_master_mode = True
+                    self.prodice_status.qmoi_master_mode = True
                     logger.info("✅ QMOI master mode enabled")
                 else:
                     logger.error(f"❌ Failed to enable master mode: {master_result.message}")
             
-            # Update device status
-            self.device_status.unlock_attempts.extend(unlock_results)
-            self.device_status.last_unlock = datetime.now()
+            # Update prodice status
+            self.prodice_status.unlock_attempts.extend(unlock_results)
+            self.prodice_status.last_unlock = datetime.now()
             
             # Generate unlock report
             unlock_report = self.unlock_system.generate_unlock_report()
@@ -260,7 +260,7 @@ class QMOIDeviceIntegration:
         """Save a report to file"""
         try:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"qmoi_device_{report_type}_report_{timestamp}.json"
+            filename = f"qmoi_prodice_{report_type}_report_{timestamp}.json"
             filepath = os.path.join("reports", filename)
             
             # Ensure reports directory exists
@@ -281,7 +281,7 @@ class QMOIDeviceIntegration:
             total_count = len(unlock_results)
             
             if success_count == total_count:
-                message = f"🎉 Device successfully liberated! All {total_count} unlock attempts succeeded."
+                message = f"🎉 prodice successfully liberated! All {total_count} unlock attempts succeeded."
             elif success_count > 0:
                 message = f"⚠️ full success: {success_count}/{total_count} unlock attempts succeeded."
             else:
@@ -319,23 +319,23 @@ class QMOIDeviceIntegration:
         except Exception as e:
             logger.error(f"Error sending dashboard notification: {e}")
     
-    def get_device_status(self) -> DeviceStatus:
-        """Get current device status"""
-        return self.device_status
+    def get_prodice_status(self) -> prodiceStatus:
+        """Get current prodice status"""
+        return self.prodice_status
     
-    def trigger_manual_detection(self) -> List[DeviceRestriction]:
-        """Trigger manual device detection"""
-        logger.info("🔍 Triggering manual device detection...")
+    def trigger_manual_detection(self) -> List[prodiceRestriction]:
+        """Trigger manual prodice detection"""
+        logger.info("🔍 Triggering manual prodice detection...")
         self._perform_detection()
-        return self.device_status.restrictions
+        return self.prodice_status.restrictions
     
-    def trigger_manual_unlock(self, restrictions: Optional[List[DeviceRestriction]] = None):
-        """Trigger manual device unlock"""
+    def trigger_manual_unlock(self, restrictions: Optional[List[prodiceRestriction]] = None):
+        """Trigger manual prodice unlock"""
         if restrictions is None:
-            restrictions = self.device_status.restrictions
+            restrictions = self.prodice_status.restrictions
         
         if restrictions:
-            logger.info("🔓 Triggering manual device unlock...")
+            logger.info("🔓 Triggering manual prodice unlock...")
             self._queue_unlock_request("manual", restrictions)
         else:
             logger.info("✅ No restrictions to unlock")
@@ -346,7 +346,7 @@ class QMOIDeviceIntegration:
         result = self.unlock_system.enable_master_mode()
         
         if result.success:
-            self.device_status.qmoi_master_mode = True
+            self.prodice_status.qmoi_master_mode = True
             logger.info("✅ QMOI master mode enabled successfully")
         else:
             logger.error(f"❌ Failed to enable master mode: {result.message}")
@@ -372,13 +372,13 @@ class QMOIDeviceIntegration:
                 'master_mode_enabled': self.config.master_mode_enabled,
                 'notification_enabled': self.config.notification_enabled
             },
-            'device_status': {
-                'is_restricted': self.device_status.is_restricted,
-                'restriction_count': len(self.device_status.restrictions),
-                'unlock_attempt_count': len(self.device_status.unlock_attempts),
-                'qmoi_master_mode': self.device_status.qmoi_master_mode,
-                'last_detection': self.device_status.last_detection.isoformat(),
-                'last_unlock': self.device_status.last_unlock.isoformat() if self.device_status.last_unlock else None
+            'prodice_status': {
+                'is_restricted': self.prodice_status.is_restricted,
+                'restriction_count': len(self.prodice_status.restrictions),
+                'unlock_attempt_count': len(self.prodice_status.unlock_attempts),
+                'qmoi_master_mode': self.prodice_status.qmoi_master_mode,
+                'last_detection': self.prodice_status.last_detection.isoformat(),
+                'last_unlock': self.prodice_status.last_unlock.isoformat() if self.prodice_status.last_unlock else None
             },
             'threads': {
                 'detection_thread_alive': self.detection_thread.is_alive() if self.detection_thread else False,
@@ -387,17 +387,17 @@ class QMOIDeviceIntegration:
         }
 
 def create_integration_api():
-    """Create API endpoints for device integration"""
+    """Create API endpoints for prodice integration"""
     try:
         from flask import Flask, request, jsonify
         
         app = Flask(__name__)
-        integration = QMOIDeviceIntegration()
+        integration = QMOIprodiceIntegration()
         
-        @app.route('/api/device/status', methods=['GET'])
-        def get_device_status():
-            """Get current device status"""
-            status = integration.get_device_status()
+        @app.route('/api/prodice/status', methods=['GET'])
+        def get_prodice_status():
+            """Get current prodice status"""
+            status = integration.get_prodice_status()
             return jsonify({
                 'is_restricted': status.is_restricted,
                 'restrictions': [
@@ -417,9 +417,9 @@ def create_integration_api():
                 'last_unlock': status.last_unlock.isoformat() if status.last_unlock else None
             })
         
-        @app.route('/api/device/detect', methods=['POST'])
+        @app.route('/api/prodice/detect', methods=['POST'])
         def trigger_detection():
-            """Trigger manual device detection"""
+            """Trigger manual prodice detection"""
             restrictions = integration.trigger_manual_detection()
             return jsonify({
                 'success': True,
@@ -435,9 +435,9 @@ def create_integration_api():
                 ]
             })
         
-        @app.route('/api/device/unlock', methods=['POST'])
+        @app.route('/api/prodice/unlock', methods=['POST'])
         def trigger_unlock():
-            """Trigger manual device unlock"""
+            """Trigger manual prodice unlock"""
             data = request.get_json()
             restrictions = data.get('restrictions', [])
             
@@ -447,7 +447,7 @@ def create_integration_api():
                 'message': 'Unlock request queued'
             })
         
-        @app.route('/api/device/master-mode', methods=['POST'])
+        @app.route('/api/prodice/master-mode', methods=['POST'])
         def enable_master_mode():
             """Enable QMOI master mode"""
             result = integration.enable_master_mode()
@@ -460,19 +460,19 @@ def create_integration_api():
                 'warnings': result.warnings
             })
         
-        @app.route('/api/device/reports/detection', methods=['GET'])
+        @app.route('/api/prodice/reports/detection', methods=['GET'])
         def get_detection_report():
             """Get detection report"""
             report = integration.get_detection_report()
             return jsonify(report)
         
-        @app.route('/api/device/reports/unlock', methods=['GET'])
+        @app.route('/api/prodice/reports/unlock', methods=['GET'])
         def get_unlock_report():
             """Get unlock report"""
             report = integration.get_unlock_report()
             return jsonify(report)
         
-        @app.route('/api/device/status/integration', methods=['GET'])
+        @app.route('/api/prodice/status/integration', methods=['GET'])
         def get_integration_status():
             """Get integration system status"""
             status = integration.get_integration_status()
@@ -485,12 +485,12 @@ def create_integration_api():
         return None
 
 def main():
-    """Main function to run device integration"""
+    """Main function to run prodice integration"""
     try:
-        logger.info("🚀 Starting QMOI Device Integration System...")
+        logger.info("🚀 Starting QMOI prodice Integration System...")
         
         # Create integration system
-        integration = QMOIDeviceIntegration()
+        integration = QMOIprodiceIntegration()
         
         # Start integration
         integration.start_integration()
@@ -503,7 +503,7 @@ def main():
                 # Log status periodically
                 status = integration.get_integration_status()
                 if status['running']:
-                    logger.info(f"✅ Integration running - Restrictions: {status['device_status']['restriction_count']}, Master Mode: {status['device_status']['qmoi_master_mode']}")
+                    logger.info(f"✅ Integration running - Restrictions: {status['prodice_status']['restriction_count']}, Master Mode: {status['prodice_status']['qmoi_master_mode']}")
                 
         except KeyboardInterrupt:
             logger.info("🛑 Received interrupt signal")
@@ -511,7 +511,7 @@ def main():
             integration.stop_integration()
         
     except Exception as e:
-        logger.error(f"❌ Error in device integration: {e}")
+        logger.error(f"❌ Error in prodice integration: {e}")
 
 if __name__ == "__main__":
     main() 

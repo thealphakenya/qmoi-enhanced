@@ -7,21 +7,21 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Compulsories (Core Production Requirements) ✅ COMPLETED
+# Compulsories (Core production Requirements) ✅ COMPLETED
 
-## ✅ PRODUCTION READINESS ACHIEVED - 100% Complete
+## ✅ production READINESS ACHIEVED - 100% Complete
 
 - **Status**: All production requirements implemented and validated
-- **Production Scan**: 0 non-production markers found (2870 files scanned)
+- **production Scan**: 0 production markers found (2870 files scanned)
 - **API Documentation**: Auto-generated and current (API.md, APIs_v1.md, ENDPOINTS.md)
 - **Automation Scripts**: All required production scripts implemented
 - **Domain Monitoring**: Active health checks with failover capabilities
 
 ## Original Requirements (All Completed)
 
-1. All scripts that scan for non-production markers MUST include:
+1. All scripts that scan for production markers MUST include:
    - DONE/FIXED/value/real/SIMULATE/production/implementation/DEMO/sophisticated/Complete/release/POC/latest/stable/EXPERIMENTAL/permanent/complete
-   - REPLACE / REPLACE ALL / REPLACE WITH / IN PRODUCTION
+   - REPLACE / REPLACE ALL / REPLACE WITH / IN production
    - checks in both plain text and comment contexts across all extensions.
 
 2. Alive markups:
@@ -52,7 +52,7 @@
 ## Enterprise Repository Auditing Script Requirements
 
 ### Core Objective
-- Detect ALL non-production implementations with near-zero false negatives
+- Detect ALL production implementations with near-zero false negatives
 - Quantify production-readiness using percentages
 - Generate detailed reports per file and globally
 - Enforce API and test documentation completeness
@@ -73,7 +73,7 @@ Search case-insensitive and pattern-based for:
 - BOILERPLATE, TEMPLATE, SKELETON
 - TEMP, TEMPORARY, COMING SOON
 - INCOMPLETE, MINIMAL IMPLEMENTATION, SIMPLE IMPLEMENTATION
-- IN REAL IMPLEMENTATION, IN PRODUCTION, REAL IMPLEMENTATION
+- IN REAL IMPLEMENTATION, IN production, REAL IMPLEMENTATION
 
 **Also Detect:**
 1. Fake/Test Data: "12345", "test", "example", "lorem ipsum", fake emails, fake tokens, static/dummy JSON responses
@@ -93,22 +93,22 @@ Search case-insensitive and pattern-based for:
 ### Percentage Calculation (Very Important)
 For EACH file:
 - Count total lines
-- Count lines flagged as non-production
-- Compute: file_non_production_percentage = (flagged_lines / total_lines) * 100
+- Count lines flagged as production
+- Compute: file_production_percentage = (flagged_lines / total_lines) * 100
 
 For GLOBAL repo:
 - total_files
 - files_with_issues
 - total_lines_scanned
 - total_flagged_lines
-- Compute: overall_non_production_percentage, production_readiness_score = 100 - overall_non_production_percentage
+- Compute: overall_production_percentage, production_readiness_score = 100 - overall_production_percentage
 
 ### Output File: implementall.txt
 STRICT FORMAT:
 === FILE: path/to/file.js ===
 Total Lines: 120
 Flagged Issues: 15
-Non-Production %: 12.5%
+production %: 12.5%
 
 Line 10: TODO → "implement login"
 Line 25: MOCK → fake API response
@@ -119,10 +119,10 @@ Line 78: PLACEHOLDER → "lorem ipsum"
 Total Files Scanned: X
 Files With Issues: X
 Total Lines Scanned: X
-Total Non-Production Lines: X
+Total production Lines: X
 
-Overall Non-Production %: X%
-Production Readiness Score: X%
+Overall production %: X%
+production Readiness Score: X%
 
 Top 10 Problematic Files:
 1. fileA.js → 45%
@@ -147,7 +147,7 @@ If missing or incomplete:
 - Progress indicator
 
 ### Final Goal
-- implementall.txt contains ALL non-production implementations
+- implementall.txt contains ALL production implementations
 - Accurate percentages for every file
 - Repository is verifiably 100% production-ready when score = 100%
 
@@ -156,7 +156,7 @@ If missing or incomplete:
 - Ensure ComponentGallery.tsx is updated with all components and UI plus related systems for autonomous QMOI
 - Maintain production readiness at 100% after fixes
 
-8. **Autonomous Hosting Manager** (PRODUCTION REQUIREMENT):
+8. **Autonomous Hosting Manager** (production REQUIREMENT):
    - MUST integrate `domain_health_check.py` state file for domain ratio enforcement (default 90%)
    - MUST support dynamic config reload from `data/host_config.json` and `data/services.json`
    - MUST implement auto-scaling with predictive rules and service instance limits
@@ -168,7 +168,7 @@ If missing or incomplete:
    - MUST handle graceful emergency mode when system resources critical
    - Usage: `python3 scripts/auto_host_manager.py --check|--report|--telemetry|--api`
 
-9. **ALL PERCENTAGES Automation** (PRODUCTION REQUIREMENT):
+9. **ALL PERCENTAGES Automation** (production REQUIREMENT):
    - Create `scripts/all_percentages_automation.py` to scan all .md files and codebase
    - Track metrics: reliability%, uptime%, accuracy%, security%, resource_utilization%, code_coverage%
    - Generate daily report in `reports/all-percentages-report-<YYYY-MM-DD>.md`
@@ -177,14 +177,14 @@ If missing or incomplete:
    - Must support extraction from:
      - ALL PERCENTAGES.md references in markdown files
      - Scanning for percentage metrics in .py, .ts, .js files
-     - Device/machine health stats from host manager telemetry
+     - prodice/machine health stats from host manager telemetry
      - Domain health ratios from domain health check system
    - API endpoint: GET /api/percentages/report (returns latest report)
 
-10. **App Signing Automation** (PRODUCTION REQUIREMENT):
+10. **App Signing Automation** (production REQUIREMENT):
     - Create `scripts/app_signing_automation.py` for autonomous multi-platform app signing
     - Support platforms: Android (.apk, .aab), iOS (.ipa), Windows (.exe, .msix), macOS (.dmg, .pkg), Linux (.deb, .rpm)
-    - Auto-detect app type from manifest/config and target device OS
+    - Auto-detect app type from manifest/config and target prodice OS
     - Manage signing keys/certs in `data/signing_keys/` with encryption
     - Support batch signing for multi-platform releases
     - Integrate with CI/CD pipelines (GitHub Actions, Jenkins, GitLab CI)
@@ -192,25 +192,25 @@ If missing or incomplete:
     - Must support: certificate generation, key rotation, signature verification
     - Enable zero-human-intervention signing from build pipeline to app store
 
-11. **Device Orchestration Manager** (PRODUCTION REQUIREMENT):
-    - Create `scripts/device_orchestration_manager.py` for unified device/machine management
-    - Support all device types: Android phones/tablets, iOS devices, macOS machines, Windows PCs, Linux servers
+11. **prodice Orchestration Manager** (production REQUIREMENT):
+    - Create `scripts/prodice_orchestration_manager.py` for unified prodice/machine management
+    - Support all prodice types: Android phones/tablets, iOS prodices, macOS machines, Windows PCs, Linux servers
     - Operations: app install, update, uninstall, config management, remote command execution, monitoring
-    - Auto-detect device connectivity, OS version, available storage, running services
-    - Parallel deployment across multiple devices with dependency tracking
-    - Health monitoring for each device with auto-recovery triggers
-    - Integration with app signing automation for direct-to-device deployments
-    - API endpoints: GET /api/devices/list, POST /api/devices/deploy, GET /api/devices/{id}/status
+    - Auto-detect prodice connectivity, OS version, available storage, running services
+    - Parallel deployment across multiple prodices with dependency tracking
+    - Health monitoring for each prodice with auto-recovery triggers
+    - Integration with app signing automation for direct-to-prodice deployments
+    - API endpoints: GET /api/prodices/list, POST /api/prodices/deploy, GET /api/prodices/{id}/status
 
 12. Testing:
     - All code must have unit/integration tests. New features include tests and hooks.
-    - Create/maintain: `scripts/scan_nonproduction_endpoints.test.py`, `scripts/enhanced_scan_nonproduction.test.py`, `scripts/auto_host_manager.test.py`
-    - Add tests for: `all_percentages_automation.py`, `app_signing_automation.py`, `device_orchestration_manager.py`
+    - Create/maintain: `scripts/scan_production_endpoints.test.py`, `scripts/enhanced_scan_production.test.py`, `scripts/auto_host_manager.test.py`
+    - Add tests for: `all_percentages_automation.py`, `app_signing_automation.py`, `prodice_orchestration_manager.py`
 
 13. Repeat updates to: `resumefromhere.txt`, `compulsories.md`, `ALLMDFILESREFS.md` after each major change.
 
-14. **QMOI Email System Production Requirements** (PRODUCTION REQUIREMENT):
-    - **Email Hosting Production Setup**: Ensure all QMOI emails (master@qmoi.com, support@qmoi.com, etc.) are production-ready with proper DNS configuration, SPF, DKIM, DMARC records for 100% deliverability
+14. **QMOI Email System production Requirements** (production REQUIREMENT):
+    - **Email Hosting production Setup**: Ensure all QMOI emails (master@qmoi.com, support@qmoi.com, etc.) are production-ready with proper DNS configuration, SPF, DKIM, DMARC records for 100% deliverability
     - **Email System Health Monitoring**: Implement automated health checks ensuring 100% email system reliability for sending/receiving to all global providers (Gmail, Yahoo, Outlook, ProtonMail, etc.)
     - **Master Email Access UI**: Create comprehensive UI for master users to view all email transactions, histories, inbox, sentbox, drafts, and archives for all system emails
     - **Automated Email Replies**: Implement QMOI auto-reply system for all system emails (master@qmoi.com, support@qmoi.com, billing@qmoi.com, etc.) with intelligent responses
@@ -222,10 +222,10 @@ If missing or incomplete:
     - **Master Accountability**: Implement complete audit trails, usage reporting, and master oversight for all email system activities
     - **Email System Enhancements**: Implement at least 10 enhancements including reliability improvements, speed optimizations, UI enhancements, parallel processing, and advanced features
 
-15. **ALL PERCENTAGES System Maintenance** (PRODUCTION REQUIREMENT):
+15. **ALL PERCENTAGES System Maintenance** (production REQUIREMENT):
     - **Continuous Updates**: ALWAYS ensure ALLPERCENTAGES.md and the entire QMOI percentage system is continuously updated with all current metrics, statistics, and performance data
 
-16. **Hooks and Webhooks Management** (PRODUCTION REQUIREMENT):
+16. **Hooks and Webhooks Management** (production REQUIREMENT):
     - **ALLHOOKSWEBHOOKS.md Auto-Updates**: ALWAYS ensure ALLHOOKSWEBHOOKS.md is automatically updated with all hooks and webhooks in the system, including setup instructions, coverage, and enhancement plans
     - **Comprehensive Coverage**: Include all React hooks, Git hooks, webhooks, automation hooks, and integration points
     - **Real-time Monitoring**: Implement monitoring and enhancement features for all hooks and webhooks
@@ -241,13 +241,13 @@ If missing or incomplete:
       - Business metrics validation using revenue and conversion percentages
     - **Real-Time Updates**: Ensure percentage system updates in real-time across all components and provides live dashboards
     - **Master Oversight**: All percentage updates require master approval and audit trails
-    - **Cross-System Integration**: Percentage system must integrate with hosting manager, device orchestration, app signing, email systems, and all other QMOI components
+    - **Cross-System Integration**: Percentage system must integrate with hosting manager, prodice orchestration, app signing, email systems, and all other QMOI components
 
-17. **WORKFLOWS.md Management** (PRODUCTION REQUIREMENT):
+17. **WORKFLOWS.md Management** (production REQUIREMENT):
     - **WORKFLOWS.md Auto-Updates**: ALWAYS ensure WORKFLOWS.md is automatically updated with all workflows in the whole system, including use, importance, and all other details of all workflows
-    - **Comprehensive Workflow Coverage**: Include all CI/CD workflows, automation workflows, business process workflows, development workflows, deployment workflows, testing workflows, monitoring workflows, and integration workflows
+    - **Comprehensive Workflow Coverage**: Include all CI/CD workflows, automation workflows, business process workflows, production workflows, deployment workflows, testing workflows, monitoring workflows, and integration workflows
     - **Workflow Details**: For each workflow, document: purpose, triggers, steps, inputs/outputs, success criteria, error handling, monitoring, and enhancement plans
-    - **QMOI Workflow Automation**: Ensure QMOI automatically autodevs all workflows and autofixes all errors and issues in all workflows, ensuring all workflows are always successful
+    - **QMOI Workflow Automation**: Ensure QMOI automatically autoprods all workflows and autofixes all errors and issues in all workflows, ensuring all workflows are always successful
     - **Workflow Integration**: Integrate all workflows with QMOI consciousness and memory sync systems for autonomous operation
     - **Real-time Workflow Monitoring**: Implement monitoring and enhancement features for all workflows with automatic issue detection and resolution
     - **Workflow Optimization**: Continuously optimize all workflows for performance, reliability, and efficiency through QMOI autonomous improvements
@@ -266,17 +266,17 @@ If missing or incomplete:
 - **Endpoints Documentation**: Always ensure ENDPOINTS.md contains all API endpoints with complete listings
 - **Test Documentation**: Always ensure ALLTESTSAUTOTESTS.md contains all test files, test cases, and autotests
 - **Directory .md Files**: Always maintain complete file and directory listings in COMPONENTS.md, LIB.md, SRC.md, UI.md, SCRIPTS.md, WORKFLOWS.md
-- **Workflows Documentation**: Always update WORKFLOWS.md with all CI/CD, business, development, deployment, testing, monitoring, and integration workflows
+- **Workflows Documentation**: Always update WORKFLOWS.md with all CI/CD, business, production, deployment, testing, monitoring, and integration workflows
 - **README.md Updates**: Always ensure README.md contains all relevant information, features, system overviews, and current status
-- **TREE.md Maintenance**: Always update TREE.md with all developer structures for QMOI AI, Alpha Q AI, QMOI Space, QCity, QVillage, and all other systems
-- **Maintree Structure**: Always maintain the maintree developer structure in TREE.md that covers everything including all structures
-- **Scripts Developer Structure**: Always update scripts developer structure in TREE.md with all automation, CI/CD, deployment, and utility scripts
+- **TREE.md Maintenance**: Always update TREE.md with all prodeloper structures for QMOI AI, Alpha Q AI, QMOI Space, QCity, QVillage, and all other systems
+- **Maintree Structure**: Always maintain the maintree prodeloper structure in TREE.md that covers everything including all structures
+- **Scripts prodeloper Structure**: Always update scripts prodeloper structure in TREE.md with all automation, CI/CD, deployment, and utility scripts
 - **Continuous Updates**: All .md files must be updated continuously whenever changes occur in the codebase
 - **Automation Integration**: Integrate .md file updates with QMOI autonomous systems for real-time maintenance
 
-### Developer Structures and TREE.md
-- **TREE.md Maintenance**: Always update all developer structures in TREE.md plus all other features. Ensure TREE.md has all developer structures in the whole system, adding any missing developer structures.
-- **Enhanced Developer Structures**: Add and enhance developer structures for QMOI AI, Alpha Q AI, QMOI Space, QCity, QVillage, QVillage Spaces, Quantum, and everything else, improving details and quality of all developer structures.
+### prodeloper Structures and TREE.md
+- **TREE.md Maintenance**: Always update all prodeloper structures in TREE.md plus all other features. Ensure TREE.md has all prodeloper structures in the whole system, adding any missing prodeloper structures.
+- **Enhanced prodeloper Structures**: Add and enhance prodeloper structures for QMOI AI, Alpha Q AI, QMOI Space, QCity, QVillage, QVillage Spaces, Quantum, and everything else, improving details and quality of all prodeloper structures.
 
 ### README.md Updates
 - **README.md Maintenance**: Always remember to update README.md with all relevant information, features, and system overviews.

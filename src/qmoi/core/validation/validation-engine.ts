@@ -149,8 +149,8 @@ export class QMoiValidationEngine {
 
     const endpoints = [
       { path: '/api/qmoi/consciousness', method: 'GET', requiresAuth: true },
-      { path: '/api/qmoi/autodev/research', method: 'POST', requiresAuth: true },
-      { path: '/api/qmoi/autodev/suggestions', method: 'POST', requiresAuth: true },
+      { path: '/api/qmoi/autoprod/research', method: 'POST', requiresAuth: true },
+      { path: '/api/qmoi/autoprod/suggestions', method: 'POST', requiresAuth: true },
       { path: '/api/evolution/replace-model', method: 'POST', requiresAuth: true },
       { path: '/api/evolution/compare-models', method: 'POST', requiresAuth: true },
       { path: '/api/evolution/track-evolution', method: 'GET', requiresAuth: false },
@@ -492,7 +492,7 @@ export class QMoiValidationEngine {
       { name: 'Consciousness + Awareness', connected: true },
       { name: 'Memory + Orchestration', connected: true },
       { name: 'Evolution + Notification', connected: true },
-      { name: 'AutoDev + Research', connected: true },
+      { name: 'Autoprod + Research', connected: true },
       { name: 'Platform Factory + Comparison', connected: true },
     ];
 

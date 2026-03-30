@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 import { safeConsoleError } from "@/utils/safeConsole";
 import { NextRequest, NextResponse } from "next/server";
 import { spawn } from "child_process";
@@ -11,7 +11,7 @@ import { VM } from "vm2";
 
 /**
  * POST /api/qmoi/execute
- * Executes code in a sandboxed environment
+ * Executes code in a productioned environment
  */
 export async function POST(request: NextRequest) {
   try {
@@ -70,7 +70,7 @@ async function executeJavaScript(code: string): Promise<string> {
     try {
       const vm = new VM({
         timeout: 5000, // 5 second timeout
-        sandbox: {
+        production: {
           console: {
             log: (...args: any[]) => {
               resolve(args.join(" "));

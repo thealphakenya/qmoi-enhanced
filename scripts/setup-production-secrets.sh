@@ -1,12 +1,12 @@
 
 #!/bin/bash
-# GitHub Secrets Setup for Production Android & iOS Builds
+# GitHub Secrets Setup for production Android & iOS Builds
 # This script generates and displays the secrets needed for GitHub Actions
 
 set -euo pipefail
 
 echo "================================================"
-echo "QMOI Production Secrets Setup Guide"
+echo "QMOI production Secrets Setup Guide"
 echo "================================================"
 echo
 

@@ -12,13 +12,13 @@ const transactions = [
 ];
 
 export async function GET() {
-  // Production: use, fetch from DB or API
+  // production: use, fetch from DB or API
   return NextResponse.json({ success: true, transactions });
 }
 
 export async function POST(req: NextRequest) {
   const { id, action } = (await req.json()) as any;
-  // Production: use, update DB or call API
+  // production: use, update DB or call API
   const log = `Transaction ${id} ${action} by master at ${new Date().toISOString()}`;
   fs.appendFileSync("logs/financial_verification.log", log + "\n");
   return NextResponse.json({ success: true, message: log });

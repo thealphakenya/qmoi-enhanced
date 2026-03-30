@@ -43,7 +43,7 @@ jobs:
       - name: QMOI GitHub Actions Availability Check
         run: |
           echo "Checking GitHub Actions availability..."
-          if curl -s --head https://api.github.com | grep '200 OK' > /dev/null; then
+          if curl -s --head https://api.github.com | grep '200 OK' > /prod/null; then
             echo "✅ GitHub Actions available. Proceeding with workflow."
           else
             echo "⚠️ GitHub Actions unavailable. Switching to QMOI local runner."
@@ -101,4 +101,4 @@ permissions:
   issues: read
 env:
   NODE_VERSION: "18"
-  QMOI_AUTODEV_ENABLED: "true"
+  QMOI_AUTOprod_ENABLED: "true"

@@ -92,7 +92,7 @@ function setText(id, value) {
 async function updateQCityDashboard() {
   const status = await fetchQCityStatus();
   if (status) {
-    setText("device-status", status.running ? "Online" : "Offline");
+    setText("prodice-status", status.running ? "Online" : "Offline");
     setText(
       "controls-status",
       status.platforms.local ? "Ready" : "Unavailable",
@@ -155,7 +155,7 @@ async function updateQCityDashboard() {
   setText("logs-status", logsSummary);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.adprodentListener("DOMContentLoaded", () => {
   updateQCityDashboard();
   setInterval(updateQCityDashboard, 10000);
 

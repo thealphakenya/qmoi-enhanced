@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-## Production Readiness Snapshot
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -22,45 +22,45 @@
 - note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Pre-Development Documentation & Actions
+# QMOI Pre-production Documentation & Actions
 
 ## Overview
 
-This document outlines best practices and actionable steps for preparing QMOI for advanced automation, device integration, plugin/UI enhancements, analytics, reporting, and security.
+This document outlines best practices and actionable steps for preparing QMOI for advanced automation, prodice integration, plugin/UI enhancements, analytics, reporting, and security.
 
 ---
 
 ## 1. Advanced Automation Rules & User-Defined Triggers
 
 - Allow users to define custom automation rules (e.g., "If CPU > 80%, offload to cloud").
-- Support event-based triggers for plugins and device actions.
+- Support event-based triggers for plugins and prodice actions.
 - UI for creating, editing, and managing automation rules.
-- data triggers: device health, file changes, scheduled times, user actions.
+- data triggers: prodice health, file changes, scheduled times, user actions.
 
-## 2. Real Device API Integration
+## 2. Real prodice API Integration
 
-- Integrate real APIs for AWS, Azure, GCP, IoT, and Mobile device [PRODUCTION READY]s.
+- Integrate real APIs for AWS, Azure, GCP, IoT, and Mobile prodice [production READY]s.
 - Use official SDKs and secure authentication.
-- Provide UI for device connection, status, and management.
-- Log all device actions for audit and troubleshooting.
+- Provide UI for prodice connection, status, and management.
+- Log all prodice actions for audit and troubleshooting.
 
-## 3. Plugin & Device UI Enhancements
+## 3. Plugin & prodice UI Enhancements
 
-- Enable/disable toggles, status indicators, and notifications for all plugins/devices.
+- Enable/disable toggles, status indicators, and notifications for all plugins/prodices.
 - Add settings panels, help modals, and onboarding for new features.
-- Support for plugin/device grouping, filtering, and search.
+- Support for plugin/prodice grouping, filtering, and search.
 
 ## 4. Analytics, Reporting, & Security
 
-- Add analytics dashboards for plugin/device usage, automation events, and system health.
+- Add analytics dashboards for plugin/prodice usage, automation events, and system health.
 - Generate and export reports (CSV, PDF) for audits and reviews.
 - Implement security best practices: authentication, authorization, audit logging, and data protection.
 
 ## 5. Best Practices & Next Steps
 
 - Keep documentation up to date with all new features and integrations.
-- Regularly review automation rules and device integrations for performance and security.
-- Expand plugin and device ecosystem with community contributions.
+- Regularly review automation rules and prodice integrations for performance and security.
+- Expand plugin and prodice ecosystem with community contributions.
 - Prioritize user experience, reliability, and transparency in all enhancements.
 
 ---
@@ -70,14 +70,14 @@ This document outlines best practices and actionable steps for preparing QMOI fo
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "qmoi-enhanced/QMOIPREDEVDOCACTIONS.md",
+"file": "qmoi-enhanced/QMOIPREprodDOCACTIONS.md",
 "validated_at": "2025-10-26T20:51:24.790046Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
 {
 "name": "title_present",
 "ok": true,
-"detail": "QMOI Pre-Development Documentation & Actions"
+"detail": "QMOI Pre-production Documentation & Actions"
 },
 {
 "name": "links",

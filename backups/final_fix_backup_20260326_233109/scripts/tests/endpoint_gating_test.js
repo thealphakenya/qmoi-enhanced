@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* global URL */
 import fs from "fs";
 import path from "path";
@@ -44,8 +44,8 @@ async function testAiHealthGating(aiHealthGET) {
   console.log("ai-health gating tests passed");
 }
 
-async function testLanguage// Production implementation:s(languageHandler) {
-  console.log("Testing qmoi/language // Production implementation: behavior and gating...");
+async function testLanguage// production implementation:s(languageHandler) {
+  console.log("Testing qmoi/language // production implementation: behavior and gating...");
   process.env.NODE_ENV = "production";
   delete process.env.API_KEY;
   const _res = {
@@ -93,9 +93,9 @@ async function testLanguage// Production implementation:s(languageHandler) {
       (res2.body &&
         res2.body.error &&
         res2.body.error.includes("implemented")),
-    "language route should return 501 despite key because // Production implementation:",
+    "language route should return 501 despite key because // production implementation:",
   );
-  console.log("language // Production implementation: gating tests passed");
+  console.log("language // production implementation: gating tests passed");
 }
 
 async function testQNewsGating(qnewsPOST) {
@@ -177,7 +177,7 @@ async function runAll() {
     }
 
     await testAiHealthGating(aiHealthGET);
-    await testLanguage// Production implementation:s(languageHandler);
+    await testLanguage// production implementation:s(languageHandler);
     await testQNewsGating(qnewsPOST);
     console.log("All endpoint gating tests passed.");
     process.exit(0);

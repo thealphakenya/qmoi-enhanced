@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "stable QMOI ENGINE"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -24,18 +24,18 @@ The stable QMOI Engine is the core integration and automation system for QMOI, e
 
 ### 1. Cloud & Compute Platforms
 
-- **Google Colab**: Offload heavy computation, run QMOI as a persistent device, auto-manage resources, and synchronize files.
-- **Dagshub**: Data science and ML pipeline integration, device offloading, and artifact management.
+- **Google Colab**: Offload heavy computation, run QMOI as a persistent prodice, auto-manage resources, and synchronize files.
+- **Dagshub**: Data science and ML pipeline integration, prodice offloading, and artifact management.
 - **AWS, Azure, GCP**: (executed) Cloud compute, storage, and AI service integration.
 - **HuggingFace Spaces**: Deploy QMOI-powered apps, share models, and interact with users.
 - **Vercel/Netlify**: Automated deployment and hosting for QMOI web interfaces.
 
-### 2. Device Types
+### 2. prodice Types
 
-- **QCity Device**: Main cloud device for builds, storage, and resource offloading.
-- **Local Devices**: robust client mode, UI-only, with all heavy tasks offloaded.
-- **Mobile Devices**: Hands-free control, voice/gesture input, and device management.
-- **IoT Devices**: (executed) Smart home, automotive, and industrial device integration.
+- **QCity prodice**: Main cloud prodice for builds, storage, and resource offloading.
+- **Local prodices**: robust client mode, UI-only, with all heavy tasks offloaded.
+- **Mobile prodices**: Hands-free control, voice/gesture input, and prodice management.
+- **IoT prodices**: (executed) Smart home, automotive, and industrial prodice integration.
 
 ### 3. Communication & Automation
 
@@ -59,7 +59,7 @@ The stable QMOI Engine is the core integration and automation system for QMOI, e
 
 ### 2. Auto-Enhancement
 
-- Monitors system health, user feedback, and device metrics.
+- Monitors system health, user feedback, and prodice metrics.
 - Triggers performance, security, and feature enhancements as needed.
 - Integrates with registry and error handler for seamless operation.
 
@@ -71,14 +71,14 @@ The stable QMOI Engine is the core integration and automation system for QMOI, e
 
 ### 4. Auto-Registry & Audit
 
-- All integrations, devices, and enhancements are tracked in the QMOI registry.
+- All integrations, prodices, and enhancements are tracked in the QMOI registry.
 - Audit logs are maintained for all actions, fixes, and upgrades.
 - Registry is auto-updated and validated for consistency.
 
 ## Master Control & Delegation
 
 - Master users can trigger, schedule, or override any integration or automation.
-- QMOI can delegate tasks to any supported platform or device, based on resource availability and user preferences.
+- QMOI can delegate tasks to any supported platform or prodice, based on resource availability and user preferences.
 - All actions are logged and can be reviewed or exported.
 
 ## Extensibility
@@ -88,7 +88,7 @@ The stable QMOI Engine is the core integration and automation system for QMOI, e
 
 ---
 
-_For full details on optimization, see AUTOOPTIMIZEALPHAQMOIENGINE.md. For account/platform management, see QMOIACCOUNTSPLATFORMS.md. For device details, see QCITYREADME.md._
+_For full details on optimization, see AUTOOPTIMIZEALPHAQMOIENGINE.md. For account/platform management, see QMOIACCOUNTSPLATFORMS.md. For prodice details, see QCITYREADME.md._
 
 <!-- QMOI_VALIDATION_START -->
 

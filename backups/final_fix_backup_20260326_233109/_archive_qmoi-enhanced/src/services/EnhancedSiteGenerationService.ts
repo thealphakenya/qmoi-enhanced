@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { EventEmitter } from "events";
 
 interface SiteGenerationRequest {
@@ -107,7 +107,7 @@ export class EnhancedSiteGenerationService extends EventEmitter {
     // 2. Optionally use AI for content/design
     // 3. Run automated audits
     // 4. Auto-enhance based on audit results
-    // (// Production implementation:d logic below)
+    // (// production implementation:d logic below)
     const audit: SiteAuditResult = {
       accessibilityScore: 95,
       performanceScore: 92,
@@ -150,7 +150,7 @@ export class EnhancedSiteGenerationService extends EventEmitter {
       });
     }
     logs.push("Enhancements applied:", JSON.stringify(enhancements));
-    // Production implementation: site deployment
+    // production implementation: site deployment
     const url = `https://qcity-sites.com/${request.id}`;
     logs.push(`Site deployed at ${url}`);
     return {

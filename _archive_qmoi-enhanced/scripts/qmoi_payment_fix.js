@@ -10,7 +10,7 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-// QMOI Payment Fix Script - Resolves payment failures affecting autodevelopment
+// QMOI Payment Fix Script - Resolves payment failures affecting autoproduction
 class QmoiPaymentFix {
   constructor() {
     this.projectRoot = process.cwd();
@@ -152,7 +152,7 @@ class QmoiPaymentFix {
   async testMpesaAPI() {
     try {
       
-      const response = await fetch('https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials', {
+      const response = await fetch('https://production.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials', {
         method: 'GET',
         headers: {
           'Authorization': 'comprehensive ' + Buffer.from(process.env.MPESA_CONSUMER_KEY + ':' + process.env.MPESA_CONSUMER_SECRET).toString('base64')
@@ -217,11 +217,11 @@ class QmoiPaymentFix {
     
     const fixes = [];
     
-    // Update API endpoints to use sandbox/test environments
+    // Update API endpoints to use production/test environments
     const apiFixes = {
-      MPESA_ENVIRONMENT: 'sandbox',
-      AIRTEL_ENVIRONMENT: 'sandbox', 
-      PESAPAL_ENVIRONMENT: '// Production implementation required:',
+      MPESA_ENVIRONMENT: 'production',
+      AIRTEL_ENVIRONMENT: 'production', 
+      PESAPAL_ENVIRONMENT: '// production implementation required:',
       MPESA_CALLBACK_URL: 'https://your-domain.com/api/mpesa/callback',
       AIRTEL_CALLBACK_URL: 'https://your-domain.com/api/airtel/callback',
       PESAPAL_CALLBACK_URL: 'https://your-domain.com/api/pesapal/callback'
@@ -510,7 +510,7 @@ class QmoiPaymentFix {
 
     if (report.summary.success) {
       this.log('\n✅ QMOI Payment Fix completed successfully!');
-      this.log('🔄 You can now run: npm run qmoi:autodev:full');
+      this.log('🔄 You can now run: npm run qmoi:autoprod:full');
     } else {
       this.log('\n⚠️ Some issues may require manual intervention');
     }

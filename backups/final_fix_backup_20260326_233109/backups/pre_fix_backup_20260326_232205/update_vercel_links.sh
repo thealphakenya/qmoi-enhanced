@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/bin/bash
 
 # QMOI Enhanced - Vercel Links Auto-Update Script
@@ -32,7 +32,7 @@ log() {
   shift
   local message="$@"
   local timestamp=$(date '+%Y-%m-%d %H:%M:%S')
-  echo "[$timestamp] [$level] $message" >> "$LOG_FILE" 2>/dev/null || true
+  echo "[$timestamp] [$level] $message" >> "$LOG_FILE" 2>/prod/null || true
 }
 
 log_verbose() {
@@ -63,7 +63,7 @@ for i in "${!LINK_NAMES[@]}"; do
   name="${LINK_NAMES[$i]}"
   url="${LINK_URLS[$i]}"
   
-  status=$(curl -s -o /dev/null -w "%{http_code}" --connect-timeout "$TIMEOUT" "$url" 2>/dev/null || echo "000")
+  status=$(curl -s -o /prod/null -w "%{http_code}" --connect-timeout "$TIMEOUT" "$url" 2>/prod/null || echo "000")
   RESULTS[$i]=$status
   
   if [[ "$status" == "200" ]]; then

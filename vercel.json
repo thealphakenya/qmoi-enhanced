@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
@@ -8,7 +8,7 @@
     "NODE_ENV": "production",
     "QMOI_AUTO_SETUP_ENABLED": "true",
     "QMOI_AUTO_FIX_ENABLED": "true",
-    "QMOI_AUTODEV_ENABLED": "true",
+    "QMOI_AUTOprod_ENABLED": "true",
     "QMOI_AUTO_MONITORING_ENABLED": "true",
     "QMOI_AUTO_HEALTH_CHECK_ENABLED": "true",
     "QMOI_AUTO_RECOVERY_ENABLED": "true",

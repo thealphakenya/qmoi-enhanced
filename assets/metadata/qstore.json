@@ -14,7 +14,7 @@
     "App Discovery",
     "One-click Install",
     "Review System",
-    "Developer Portal",
+    "prodeloper Portal",
     "Revenue Sharing",
     "Analytics Dashboard",
     "Automated Updates",
@@ -55,7 +55,7 @@
     "ko",
     "ru"
   ],
-  "target_audience": "Developers, Users, Enterprises",
+  "target_audience": "prodelopers, Users, Enterprises",
   "icon": "assets/icons/qstore.svg",
   "icon_sizes": [
     16,
@@ -113,7 +113,7 @@
     "certificate_authority": "QMOI Root CA",
     "encryption": "AES-256",
     "secure_boot": true,
-    "sandboxing": true
+    "productioning": true
   },
   "generated_at": "2026-03-25T00:47:38.001334+00:00",
   "generator_version": "2.0.0",

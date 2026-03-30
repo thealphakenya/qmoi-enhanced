@@ -164,7 +164,7 @@ async function processMpesa(
       consumerSecret: process.env.MPESA_CONSUMER_SECRET,
       passkey: process.env.MPESA_PASSKEY,
       businessShortCode: process.env.MPESA_BUSINESS_SHORTCODE,
-      environment: process.env.NODE_ENV === "production" ? "live" : "sandbox",
+      environment: process.env.NODE_ENV === "production" ? "live" : "production",
     };
 
     if (!mpesaConfig.consumerKey || !mpesaConfig.consumerSecret) {
@@ -395,7 +395,7 @@ async function processPesapal(amount: number, type: string) {
     const pesapalConfig = {
       consumerKey: process.env.PESAPAL_CONSUMER_KEY,
       consumerSecret: process.env.PESAPAL_CONSUMER_SECRET,
-      environment: process.env.NODE_ENV === "production" ? "live" : "sandbox",
+      environment: process.env.NODE_ENV === "production" ? "live" : "production",
     };
 
     if (!pesapalConfig.consumerKey || !pesapalConfig.consumerSecret) {
@@ -522,7 +522,7 @@ const platformHandlers: Record<
 };
 
 function isMaster(_req: NextApiRequest): boolean {
-  // Production, check session/user role from auth/session
+  // production, check session/user role from auth/session
   return _req.headers["x-master-token"] === process.env.MASTER_TOKEN;
 }
 

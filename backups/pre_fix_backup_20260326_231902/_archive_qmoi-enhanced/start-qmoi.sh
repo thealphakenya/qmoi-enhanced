@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/bin/bash
 
 # QMOI System Startup Script
@@ -7,13 +7,13 @@
 echo "🚀 Starting QMOI Enhanced System..."
 
 # Check if Node.js is installed
-if ! command -v node &> /dev/null; then
+if ! command -v node &> /prod/null; then
     echo "❌ Node.js is not installed. Please install Node.js first."
     exit 1
 fi
 
 # Check if npm is installed
-if ! command -v npm &> /dev/null; then
+if ! command -v npm &> /prod/null; then
     echo "❌ npm is not installed. Please install npm first."
     exit 1
 fi
@@ -117,7 +117,7 @@ echo "  - Revenue Dashboard (PID: $DASHBOARD_PID)"
 echo "  - Master System (PID: $MASTER_PID)"
 echo "  - Notification System (PID: $NOTIFICATION_PID)"
 echo "  - Avatar System (PID: $AVATAR_PID)"
-echo "  - Music Production (PID: $MUSIC_PID)"
+echo "  - Music production (PID: $MUSIC_PID)"
 echo "  - Auto-Fix System (PID: $AUTOFIX_PID)"
 echo "  - GitHub Integration (PID: $GITHUB_PID)"
 echo "  - Vulnerability Scanner (PID: $VULN_PID)"

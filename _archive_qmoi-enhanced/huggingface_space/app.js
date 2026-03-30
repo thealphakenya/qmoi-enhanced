@@ -36,10 +36,10 @@ function QmoispaceApp() {
             {providers.map(p => <option key={p.value} value={p.value}>{p.label}</option>)}
           </Select>
         </Box>
-        {/* Device and healing controls would go here */}
+        {/* prodice and healing controls would go here */}
         <Box mt={8} maxW="500px">
           <Heading as="h2" size="md" mb={2}>Send Feedback</Heading>
-          <Textarea value={feedback} onChange={e => setFeedback(e.target.value)} // Production implementation required:="Your feedback or bug report..." mb={2} />
+          <Textarea value={feedback} onChange={e => setFeedback(e.target.value)} // production implementation required:="Your feedback or bug report..." mb={2} />
           <Button colorScheme="teal" onClick={handleFeedback}>Send</Button>
         </Box>
       </Box>

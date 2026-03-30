@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # 🏘️ QVillage & QMOI Model Integration Guide
 
 **Complete Guide to integrating QVillage AI/ML infrastructure and QMOI models with Vercel deployment**
@@ -23,7 +23,7 @@
 5. [Inference Operations](#inference-operations)
 6. [Auto-Research System](#auto-research-system)
 7. [HuggingFace Integration](#huggingface-integration)
-8. [Production Setup](#production-setup)
+8. [production Setup](#production-setup)
 
 ---
 
@@ -159,7 +159,7 @@ curl -X POST https://qmoi-enhanced.vercel.app/api/qvillage/inference \
       "user_id": "user_123",
       "transactions_today": 5,
       "avg_transaction_value": 450,
-      "device_changes": 2,
+      "prodice_changes": 2,
       "location_changes": 3
     },
     "task": "behavior-analysis"
@@ -171,7 +171,7 @@ curl -X POST https://qmoi-enhanced.vercel.app/api/qvillage/inference \
   "anomaly_detected": true,
   "risk_factors": [
     "multiple_locations",
-    "device_changes",
+    "prodice_changes",
     "high_transaction_frequency"
   ],
   "recommendation": "require_2fa"
@@ -275,7 +275,7 @@ curl -X POST https://qmoi-enhanced.vercel.app/api/qvillage/inference \
 │     QVillage Service (Can run on:                       │
 │     • Vercel Functions (for light inferencing)         │
 │     • Cloud Run / Lambda (heavy inferencing)           │
-│     • Local server (development)                       │
+│     • Local server (production)                       │
 │                                                         │
 │  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐   │
 │  │ Model Cache  │ │ Inference    │ │ Research     │   │
@@ -540,7 +540,7 @@ curl -X POST https://qmoi-enhanced.vercel.app/api/qvillage/models/sync-hf \
 
 ---
 
-## 🏭 Production Setup
+## 🏭 production Setup
 
 ### Environment Variables
 
@@ -577,7 +577,7 @@ FROM python:3.11-slim
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     gcc \
-    libssl-dev \
+    libssl-prod \
     curl
 
 # Install Python packages
@@ -639,7 +639,7 @@ curl -X GET https://qmoi-enhanced.vercel.app/api/qvillage/models/metrics \
 
 ---
 
-**Status**: 🟢 PRODUCTION READY  
+**Status**: 🟢 production READY  
 **Last Updated**: January 16, 2026  
 **QVillage Integration**: ✅ COMPLETE
 

@@ -23,6 +23,6 @@ class OneCommandAutomationService:
 
     def execute(self) -> Dict[str, Any]:
         """Execute One Command Automation functionality"""
-        # Production: implement unified automation across all subsystems
+        # production: implement unified automation across all subsystems
         # Currently: returns success implementation
         return {"status": "success", "message": "One Command Automation executed"}

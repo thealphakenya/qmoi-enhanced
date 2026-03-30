@@ -32,7 +32,7 @@ function isMasterUser() {
 }
 
 async function registerDomain(domain) {
-  logAction(`Registering domain: ${domain} (// Production implementation required:)`);
+  logAction(`Registering domain: ${domain} (// production implementation required:)`);
   
   return { success: true, domain };
 }
@@ -60,9 +60,9 @@ function createWebsite(projectName, standard = 'nextjs') {
 
 async function auditAndEnhanceSite(projectDir) {
   logAction(`[Audit] Running accessibility, performance, SEO, and security audits for ${projectDir}`);
-  // Production implementation)
-  // Production implementation)
-  // Production implementation)
+  // production implementation)
+  // production implementation)
+  // production implementation)
 
   const auditResults = {
     accessibility: 'pass',
@@ -71,7 +71,7 @@ async function auditAndEnhanceSite(projectDir) {
     security: 'pass',
     issues: []
   };
-  // Production implementation)
+  // production implementation)
   if (auditResults.issues.length > 0) {
     logAction(`[Enhance] Auto-fixing issues: ${JSON.stringify(auditResults.issues)}`);
     
@@ -88,49 +88,49 @@ async function deployWebsite(projectDir, provider = 'local') {
 }
 
 async function provisionServer(projectName, provider = 'aws') {
-  logAction(`Provisioning server for ${projectName} on provider: ${provider} (// Production implementation required:)`);
+  logAction(`Provisioning server for ${projectName} on provider: ${provider} (// production implementation required:)`);
   
   return { success: true, server: `${provider}-server-for-${projectName}` };
 }
 
 async function provisionSSL(domain) {
-  logAction(`Provisioning SSL certificate for ${domain} (// Production implementation required:)`);
+  logAction(`Provisioning SSL certificate for ${domain} (// production implementation required:)`);
   
   return { success: true, ssl: `SSL-for-${domain}` };
 }
 
 async function searchAndPurchaseDomain(domain) {
-  logAction(`Searching and purchasing domain: ${domain} (// Production implementation required:)`);
+  logAction(`Searching and purchasing domain: ${domain} (// production implementation required:)`);
   
   return { success: true, domain };
 }
 
 async function manageDNS(domain, records = []) {
-  logAction(`Managing DNS for ${domain} with records: ${JSON.stringify(records)} (// Production implementation required:)`);
+  logAction(`Managing DNS for ${domain} with records: ${JSON.stringify(records)} (// production implementation required:)`);
   
   return { success: true };
 }
 
 async function submitToSearchEngines(domain) {
-  logAction(`Submitting ${domain} to search engines (// Production implementation required:)`);
+  logAction(`Submitting ${domain} to search engines (// production implementation required:)`);
   
   return { success: true };
 }
 
 async function syndicateContent(projectName, platforms = ['medium', 'substack']) {
-  logAction(`Syndicating content for ${projectName} to platforms: ${platforms.join(', ')} (// Production implementation required:)`);
+  logAction(`Syndicating content for ${projectName} to platforms: ${platforms.join(', ')} (// production implementation required:)`);
   
   return { success: true };
 }
 
 async function createSocialProfiles(projectName, platforms = ['twitter', 'facebook', 'linkedin']) {
-  logAction(`Creating social profiles for ${projectName} on: ${platforms.join(', ')} (// Production implementation required:)`);
+  logAction(`Creating social profiles for ${projectName} on: ${platforms.join(', ')} (// production implementation required:)`);
   
   return { success: true };
 }
 
 async function integrateAnalytics(projectDir, tools = ['google-analytics']) {
-  logAction(`Integrating analytics (${tools.join(', ')}) for ${projectDir} (// Production implementation required:)`);
+  logAction(`Integrating analytics (${tools.join(', ')}) for ${projectDir} (// production implementation required:)`);
   
   return { success: true };
 }
@@ -140,12 +140,12 @@ const PROVIDERS = {
   aws: {
     name: 'AWS',
     provisionServer: async (projectName) => {
-      logAction(`[AWS] Provisioning server for ${projectName} (// Production implementation required:)`);
+      logAction(`[AWS] Provisioning server for ${projectName} (// production implementation required:)`);
       
       return { success: true, server: `aws-server-for-${projectName}` };
     },
     deployWebsite: async (projectDir) => {
-      logAction(`[AWS] Deploying website from ${projectDir} (// Production implementation required:)`);
+      logAction(`[AWS] Deploying website from ${projectDir} (// production implementation required:)`);
       
       return { success: true, url: `https://aws.data.com/${path.basename(projectDir)}` };
     }
@@ -153,12 +153,12 @@ const PROVIDERS = {
   vercel: {
     name: 'Vercel',
     provisionServer: async (projectName) => {
-      logAction(`[Vercel] Provisioning server for ${projectName} (// Production implementation required:)`);
+      logAction(`[Vercel] Provisioning server for ${projectName} (// production implementation required:)`);
       
       return { success: true, server: `vercel-server-for-${projectName}` };
     },
     deployWebsite: async (projectDir) => {
-      logAction(`[Vercel] Deploying website from ${projectDir} (// Production implementation required:)`);
+      logAction(`[Vercel] Deploying website from ${projectDir} (// production implementation required:)`);
       
       const url = `https://vercel.app/${path.basename(projectDir)}`;
       try {
@@ -179,22 +179,22 @@ function selectProvider(preferred) {
 
 // --- ASSET LIFECYCLE MANAGEMENT ---
 async function updateAsset(assetId) {
-  logAction(`Updating asset ${assetId} (// Production implementation required:)`);
+  logAction(`Updating asset ${assetId} (// production implementation required:)`);
   
   return { success: true };
 }
 async function migrateAsset(assetId, toProvider) {
-  logAction(`Migrating asset ${assetId} to ${toProvider} (// Production implementation required:)`);
+  logAction(`Migrating asset ${assetId} to ${toProvider} (// production implementation required:)`);
   
   return { success: true };
 }
 async function backupAsset(assetId) {
-  logAction(`Backing up asset ${assetId} (// Production implementation required:)`);
+  logAction(`Backing up asset ${assetId} (// production implementation required:)`);
   
   return { success: true };
 }
 async function retireAsset(assetId) {
-  logAction(`Retiring asset ${assetId} (// Production implementation required:)`);
+  logAction(`Retiring asset ${assetId} (// production implementation required:)`);
   
   return { success: true };
 }
@@ -217,9 +217,9 @@ async function autoFixError(context, error) {
       logAction(`[AutoFix] Attempt ${attempt} failed: ${fixErr}`);
     }
   }
-  // Production implementation
-  logAction(`[AutoFix] Root cause analysis for context: ${context} (// Production implementation required:)`);
-  // Production implementation
+  // production implementation
+  logAction(`[AutoFix] Root cause analysis for context: ${context} (// production implementation required:)`);
+  // production implementation
   logAction(`[AutoFix] Logging error for future learning: ${error}`);
   return { fixed: false };
 }
@@ -238,9 +238,9 @@ async function safeRun(context, fn, ...args) {
 
 // --- ERROR-FIX SWEEP ACROSS ALL ASSETS/PROJECTS ---
 async function fixAllErrorsSweep() {
-  logAction('[AutoFix] Starting full error-fix sweep across all assets/projects (// Production implementation required:)');
+  logAction('[AutoFix] Starting full error-fix sweep across all assets/projects (// production implementation required:)');
   
-  logAction('[AutoFix] Sweep complete (// Production implementation required:)');
+  logAction('[AutoFix] Sweep complete (// production implementation required:)');
   return { success: true };
 }
 

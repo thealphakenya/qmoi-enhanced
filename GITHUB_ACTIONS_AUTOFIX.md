@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 ---
 title: "GitHub Actions AutoFix System"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -50,7 +50,7 @@ python scripts/github_actions_autofix.py
 
 ## Related
 
-- See `QCITY_DEVICE_MANAGEMENT.md` for device and install automation.
+- See `QCITY_prodICE_MANAGEMENT.md` for prodice and install automation.
 - See `SELF_EVOLUTION.md` for self-healing and continuous improvement.
 
 ## Enhanced Dependency Error Handling

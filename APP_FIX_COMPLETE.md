@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # ✅ APP FIX COMPLETION REPORT
 
 **Date**: November 14, 2025  
@@ -144,7 +144,7 @@ ios-deploy -b Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa
 # Extract and load in Chrome
 unzip Qmoi_downloaded_apps/chromebook/latest/qmoi_ai_chromebook.zip
 
-# Load extension via chrome://extensions (Developer mode)
+# Load extension via chrome://extensions (prodeloper mode)
 ```
 
 ### QCity

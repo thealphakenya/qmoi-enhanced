@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
         return await enhanceVoice(voiceId);
 
       case "upgrade":
-        return await upgradeVoice(voiceId);
+        return await upgraprodoice(voiceId);
 
       default:
         return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
@@ -206,7 +206,7 @@ async function enhanceVoice(voiceId: string) {
   }
 }
 
-async function upgradeVoice(voiceId: string) {
+async function upgraprodoice(voiceId: string) {
   try {
     // In a real implementation, this would:
     // 1. Check for newer voice models/versions

@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env bash
 # qmoi_provision_java.sh
 # Idempotent provision script to install OpenJDK 17 and Android build tools
@@ -16,7 +16,7 @@ if [ -f "/etc/debian_version" ]; then
 elif [ -f "/etc/alpine-release" ]; then
   PKG=apk
 elif [ -f "/etc/redhat-release" ]; then
-  if command -v dnf >/dev/null 2>&1; then
+  if command -v dnf >/prod/null 2>&1; then
     PKG=dnf
   else
     PKG=yum
@@ -38,7 +38,7 @@ install_openjdk_apk() {
 }
 
 install_openjdk_yum() {
-  $PKG install -y java-17-openjdk-devel unzip curl
+  $PKG install -y java-17-openjdk-prodel unzip curl
 }
 
 case "$PKG" in

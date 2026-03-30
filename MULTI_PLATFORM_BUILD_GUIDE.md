@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [production READY] this file has no remaining production markers
 # 🚀 COMPREHENSIVE MULTI-PLATFORM BUILD & SIGNING GUIDE
 
 ## Overview
@@ -63,7 +63,7 @@ qmoi-enhanced/
 
 ---
 
-## 1. WINDOWS PRODUCTION BUILD (.exe)
+## 1. WINDOWS production BUILD (.exe)
 
 ### Prerequisites
 
@@ -115,7 +115,7 @@ objdump -p qmoi_ai.exe | grep -A 100 "DLL"
 clamscan qmoi_ai.exe
 ```
 
-### Code Signing (Optional - Production Only)
+### Code Signing (Optional - production Only)
 
 ```bash
 # For Windows code signing (requires SignTool on Windows)
@@ -129,7 +129,7 @@ bash scripts/build-windows-production.sh
 
 ---
 
-## 2. ANDROID PRODUCTION BUILD (.apk)
+## 2. ANDROID production BUILD (.apk)
 
 ### Prerequisites
 
@@ -217,7 +217,7 @@ jarsigner -verify -verbose -certs app-release.apk
 
 # Expected output: "jar verified."
 
-# Install on device
+# Install on prodice
 adb install app-release.apk
 
 # Test app functionality
@@ -226,13 +226,13 @@ adb shell am start -n com.tempinit/.MainActivity
 
 ---
 
-## 3. iOS/macOS PRODUCTION BUILD (.ipa, .dmg)
+## 3. iOS/macOS production BUILD (.ipa, .dmg)
 
 ### Prerequisites
 
 - **macOS** (required for iOS/macOS builds)
 - Xcode 14+: `xcode-select --install`
-- Apple Developer Account
+- Apple prodeloper Account
 - Code Signing Certificate (.p12 file)
 - Provisioning Profile (.mobileprovision file)
 
@@ -250,7 +250,7 @@ export APPLE_PROVISIONING_PROFILE=/path/to/prof    # Provisioning profile
 
 **Obtain Credentials:**
 
-1. Visit https://developer.apple.com/account
+1. Visit https://prodeloper.apple.com/account
 2. Download code signing certificate (.p12)
 3. Download provisioning profile (.mobileprovision)
 4. Set environment variables above
@@ -286,9 +286,9 @@ codesign -v -v qmoi-ios-*.ipa
 # Verify macOS app signature
 codesign -v -v qmoi-macos-*.dmg
 
-# Install iOS app on device
+# Install iOS app on prodice
 xcode-select -p  # Verify Xcode location
-# Then use Xcode GUI: Window → Devices & Simulators
+# Then use Xcode GUI: Window → prodices & Simulators
 ```
 
 ---
@@ -497,7 +497,7 @@ Click "New repository secret" for each:
 
 ## 7. RELEASE VERIFICATION CHECKLIST
 
-### Before Production Release
+### Before production Release
 
 ```bash
 # 1. Verify all builds completed
@@ -510,7 +510,7 @@ sha256sum dist/*/release/* > CHECKSUMS.txt
 jarsigner -verify -verbose -certs dist/android/release/app-release.apk
 codesign -v -v dist/apple/release/*.ipa
 
-# 4. Test on devices
+# 4. Test on prodices
 adb install dist/android/release/app-release.apk
 # Test iOS via Xcode
 
@@ -608,7 +608,7 @@ Problem: Code signing fails
 Solution: Verify certificate and provisioning profile
 
 Problem: .ipa creation fails
-Solution: Check derived_data/Build/Products/Release/
+Solution: Check derived_data/Build/products/Release/
 
 Problem: Can't notarize for macOS
 Solution: Use Apple notarization service for signed .dmg
@@ -671,7 +671,7 @@ admin.pwa.zip:      ~3MB (minified, gzipped)
 ### Deployment Pipeline
 
 ```
-Local Dev Build
+Local prod Build
       ↓
 Push to git tag (v1.2.4)
       ↓
@@ -686,7 +686,7 @@ Upload all to Release
       ↓
 Manual QA testing
       ↓
-Production release
+production release
 ```
 
 ### Signing Certificate Management
@@ -714,8 +714,8 @@ iOS/macOS:
 
 Generated build guides:
 
-- `PRODUCTION_BUILD_SETUP.md` - Android setup
-- `PRODUCTION_RELEASE_ACTION_PLAN.md` - Step-by-step workflow
+- `production_BUILD_SETUP.md` - Android setup
+- `production_RELEASE_ACTION_PLAN.md` - Step-by-step workflow
 - This file: Comprehensive multi-platform guide
 
 ---
@@ -729,14 +729,14 @@ Generated build guides:
 - [ ] GitHub Secrets configured (4 Android secrets minimum)
 - [ ] CI/CD workflow passes on test tag push
 - [ ] All artifacts uploadable to GitHub Release
-- [ ] Installation verification on target devices
+- [ ] Installation verification on target prodices
 - [ ] Signed/notarized for production distribution
 
 ---
 
 **Last Updated:** 2025-11-14
 **Version:** 1.2.4
-**Status:** Production Ready ✨
+**Status:** production Ready ✨
 
 ## 🔄 Evolution Status
 

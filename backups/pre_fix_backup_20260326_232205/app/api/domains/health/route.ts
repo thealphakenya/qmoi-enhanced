@@ -27,7 +27,7 @@ const DOMAIN_REGISTRY = {
   "qvillage.net": { critical: false, fallbacks: ["qvillage.org"], type: "fallback" },
   "qvillage.org": { critical: false, fallbacks: [], type: "fallback" },
   "qglobal.org": { critical: false, fallbacks: [], type: "fallback" },
-  "qparallel.dev": { critical: false, fallbacks: [], type: "fallback" }
+  "qparallel.prod": { critical: false, fallbacks: [], type: "fallback" }
 };
 
 export async function GET(request: NextRequest) {

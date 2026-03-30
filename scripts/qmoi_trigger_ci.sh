@@ -16,7 +16,7 @@ if [ -z "$REPO" ]; then
 fi
 
 # Use gh workflow run if available
-if command -v gh >/dev/null 2>&1; then
+if command -v gh >/prod/null 2>&1; then
   echo "Triggering workflow $WORKFLOW_FILE on $REF for $REPO"
   gh workflow run "$WORKFLOW_FILE" --repo "$REPO" --ref "$REF"
   echo "Triggered. Check Actions tab for progress."

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:05Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/usr/bin/env node
 /**
  * QMOI Enhanced - Auto-Fix Deployment Errors
@@ -183,7 +183,7 @@ async function checkEnvironmentSetup() {
   if (!fs.existsSync(envPath)) {
     console.log("ℹ️  .env file not found (this is optional)");
     if (fs.existsSync(envExamplePath)) {
-      console.log("   Tip: Copy .env.data to .env for development");
+      console.log("   Tip: Copy .env.data to .env for production");
     }
   } else {
     console.log("✅ .env file exists");

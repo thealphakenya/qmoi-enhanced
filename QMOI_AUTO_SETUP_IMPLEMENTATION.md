@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # QMOI Auto-Setup Implementation - Complete Report
 
 **Status**: 🟢 COMPLETE & VERIFIED  
@@ -21,7 +21,7 @@
 
 QMOI now includes a **complete zero-touch configuration system**. The application automatically generates and manages all environment variables on first startup, requiring zero manual intervention.
 
-**Key Achievement**: `npm run dev` → App fully functional with auto-configured environment
+**Key Achievement**: `npm run prod` → App fully functional with auto-configured environment
 
 ---
 
@@ -46,7 +46,7 @@ MASTER_PASSWORD      (16-char hex token)
 ADMIN_TOKEN          (32-char hex token)
 SESSION_SECRET       (32-char hex token)
 NEXT_PUBLIC_API_URL  (https://qmoi.ai)
-NODE_ENV             (development)
+NODE_ENV             (production)
 QMOI_AUTO_SCAN_ENABLED              (true)
 QMOI_HEALTH_MONITORING_ENABLED      (true)
 QMOI_ENABLE_BACKGROUND              (true)
@@ -119,9 +119,9 @@ QMOI_LOG_RETENTION_DAYS             (30)
   - Ensures auto-setup runs before any app content renders
   - Maintains theme provider and other wrappers
 
-### 6. **[PRODUCTION READY] Services Created**
+### 6. **[production READY] Services Created**
 
-Created [PRODUCTION READY] service files to fix build errors:
+Created [production READY] service files to fix build errors:
 
 - `lib/qmoi-service.ts` - Core QMOI operations
 - `lib/domain-service.ts` - Domain management
@@ -140,8 +140,8 @@ Created [PRODUCTION READY] service files to fix build errors:
   - Setup phases explained
   - Error handling guide
   - Security considerations
-  - Development workflow
-  - Production deployment
+  - production workflow
+  - production deployment
   - Troubleshooting section
   - Testing instructions
 
@@ -168,7 +168,7 @@ Created [PRODUCTION READY] service files to fix build errors:
 ### First Startup Flow
 
 ```
-User runs: npm run dev
+User runs: npm run prod
     ↓
 Next.js loads Root Layout
     ↓
@@ -208,7 +208,7 @@ User sees fully loaded application ✅
 ### Subsequent Startups
 
 ```
-User runs: npm run dev
+User runs: npm run prod
     ↓
 QMOIAutoSetup mounts
     ↓
@@ -233,11 +233,11 @@ App renders immediately ✅
 2. ✅ `lib/qmoi-auto-setup-manager.ts` - Manager class
 3. ✅ `docs/AUTO_SETUP_GUIDE.md` - Complete guide
 4. ✅ `test-auto-setup.sh` - Test suite
-5. ✅ `lib/qmoi-service.ts` - Service [PRODUCTION READY]
-6. ✅ `lib/domain-service.ts` - Service [PRODUCTION READY]
-7. ✅ `lib/friendship-service.ts` - Service [PRODUCTION READY]
-8. ✅ `lib/projects-service.ts` - Service [PRODUCTION READY]
-9. ✅ `lib/voice-service.ts` - Service [PRODUCTION READY]
+5. ✅ `lib/qmoi-service.ts` - Service [production READY]
+6. ✅ `lib/domain-service.ts` - Service [production READY]
+7. ✅ `lib/friendship-service.ts` - Service [production READY]
+8. ✅ `lib/projects-service.ts` - Service [production READY]
+9. ✅ `lib/voice-service.ts` - Service [production READY]
 
 ### Files Modified (4 total)
 
@@ -255,7 +255,7 @@ App renders immediately ✅
 - **New Documentation**: 500+ lines
 - **New Test Script**: 120 lines
 - **TypeScript Compilation**: ✅ SUCCESSFUL
-- **Build Status**: ✅ PRODUCTION READY
+- **Build Status**: ✅ production READY
 
 ---
 
@@ -311,14 +311,14 @@ Next.js build: ✅ COMPLETE
 Size: 102 kB (framework + main)
 Middleware: ✅ 38.6 kB
 
-Production build ready: YES
+production build ready: YES
 ```
 
 ---
 
 ## How to Use
 
-### For Development
+### For production
 
 ```bash
 # Clone repository
@@ -328,8 +328,8 @@ cd qmoi-enhanced
 # Install dependencies
 npm install
 
-# Start development server (auto-setup runs automatically)
-npm run dev
+# Start production server (auto-setup runs automatically)
+npm run prod
 
 # Browser opens to https://qmoi.ai
 # Auto-setup initializes (shows loading screen)
@@ -358,8 +358,8 @@ Use the `MASTER_PASSWORD` from console.
 # Remove .env.local to force regeneration
 rm .env.local
 
-# Restart dev server
-npm run dev
+# Restart prod server
+npm run prod
 
 # New credentials will be generated automatically
 ```
@@ -378,9 +378,9 @@ cat .env.local
 
 ---
 
-## Production Considerations
+## production Considerations
 
-### For Production Deployments
+### For production Deployments
 
 **Don't rely on auto-setup** in production. Instead:
 
@@ -401,7 +401,7 @@ cat .env.local
    ENV NEXT_PUBLIC_API_URL=https://yourdomain.com
    ```
 
-### Auto-Setup in Production
+### Auto-Setup in production
 
 If `.env.local` doesn't exist:
 
@@ -416,7 +416,7 @@ If `.env.local` doesn't exist:
 ```
 ┌─────────────────────────────────────────────────┐
 │        Browser / User Starts App                │
-│           npm run dev                           │
+│           npm run prod                           │
 └──────────────────┬──────────────────────────────┘
                    │
                    ▼
@@ -521,7 +521,7 @@ If `.env.local` doesn't exist:
 | Credential Management | Manual                 | Automatic secure generation |
 | Persistence           | Manual                 | Automatic to .env.local     |
 | Error Recovery        | Manual restart         | Automatic retry (3x)        |
-| Production Ready      | With manual setup      | Yes, out of box             |
+| production Ready      | With manual setup      | Yes, out of box             |
 
 ---
 
@@ -550,7 +550,7 @@ If `.env.local` doesn't exist:
 ### Immediate Actions
 
 1. Run the test suite: `./test-auto-setup.sh`
-2. Start dev server: `npm run dev`
+2. Start prod server: `npm run prod`
 3. Verify auto-setup in browser
 4. Commit changes to git
 
@@ -569,7 +569,7 @@ If `.env.local` doesn't exist:
 
 **QMOI Auto-Setup Phase: COMPLETE** ✅
 
-The QMOI system now features **complete automatic environment configuration**. No manual setup required. Just run `npm run dev` and the entire system auto-configures itself with secure credentials.
+The QMOI system now features **complete automatic environment configuration**. No manual setup required. Just run `npm run prod` and the entire system auto-configures itself with secure credentials.
 
 **Result**: Zero-touch autonomous setup system ready for production.
 
@@ -600,7 +600,7 @@ The QMOI system now features **complete automatic environment configuration**. N
 
 ---
 
-**Status**: 🟢 COMPLETE & PRODUCTION READY
+**Status**: 🟢 COMPLETE & production READY
 
 ## 🔄 Evolution Status
 

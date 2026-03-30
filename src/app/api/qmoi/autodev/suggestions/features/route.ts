@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /**
- * QMOI AutoDev - Suggestions for Features Endpoint
+ * QMOI Autoprod - Suggestions for Features Endpoint
  * Generates AI-powered feature recommendations
- * Production-ready API endpoint
+ * production-ready API endpoint
  */
 
 import { NextRequest, NextResponse } from 'next/server';
@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error('[AUTODEV] Features endpoint error:', error);
+    console.error('[AUTOprod] Features endpoint error:', error);
 
     return NextResponse.json(
       {
@@ -92,7 +92,7 @@ function generateFeatureSuggestions(category: string, limit: number): any[] {
     {
       id: 'feat-003',
       category: 'memory',
-      title: 'Cross-Device Memory Prioritization',
+      title: 'Cross-prodice Memory Prioritization',
       description: 'Intelligent prioritization of memories based on relevance and frequency',
       impact: 'Faster memory retrieval and better user experience',
       complexity: 'medium',
@@ -123,10 +123,10 @@ function generateFeatureSuggestions(category: string, limit: number): any[] {
     },
     {
       id: 'feat-005',
-      category: 'autodev',
+      category: 'autoprod',
       title: 'AI-Powered Code Generation',
       description: 'Automatic generation of production-ready code from specifications',
-      impact: '80% faster feature development',
+      impact: '80% faster feature production',
       complexity: 'very-high',
       estimatedImplementation: '100 hours',
       priority: 'critical',

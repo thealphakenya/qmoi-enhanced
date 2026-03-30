@@ -1,5 +1,5 @@
 #!/bin/bash
-# QMOI Dev Container Update Script
+# QMOI prod Container Update Script
 # Ensures dependencies are current and system is healthy
 
 set -e
@@ -10,10 +10,10 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-echo -e "${BLUE}🔄 QMOI Dev Container Update${NC}"
+echo -e "${BLUE}🔄 QMOI prod Container Update${NC}"
 echo "================================"
 
-LOG_FILE="/workspace/logs/devcontainer-update.log"
+LOG_FILE="/workspace/logs/prodcontainer-update.log"
 echo "Update started: $(date)" >> "$LOG_FILE"
 
 # Update npm packages

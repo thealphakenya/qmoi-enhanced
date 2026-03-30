@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 ---
 title: "Issue final for WATCHDEBUG.md"
 generated: 2025-11-08T16:06:38.353863Z
@@ -10,9 +10,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [PRODUCTION READY] markers or [PRODUCTION READY]s.
-- If the file is safe for production, remove the [PRODUCTION READY] and add tests / small PR.
-- If the file is intentionally non-production (e.g. [PRODUCTION READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [production READY] markers or [production READY]s.
+- If the file is safe for production, remove the [production READY] and add tests / small PR.
+- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -40,7 +40,7 @@ WATCHDEBUG.md provides a comprehensive monitoring and debugging system that watc
 ## Key Features (2025+)
 - **Automated Health Checks & Autotests:** All health checks and autotests run continuously, are logged to QCity, and are visible in real time on the dashboard (master-only access to logs and controls).
 - **Self-Healing & Error-Free Downloads:** App downloads are only enabled if all health checks and autotests pass. Apps are always up to date, error-free, and auto-updating after install.
-- **Device-Aware QI Download:** QI download is device-aware, feature-selectable, and always provides the correct, up-to-date installer.
+- **prodice-Aware QI Download:** QI download is prodice-aware, feature-selectable, and always provides the correct, up-to-date installer.
 - **Expanded Platform Stats:** Dashboard now shows status for GitLab, GitHub, Vercel, Gitpod, Netlify, HuggingFace, Quantum, Village, Azure, AWS, GCP, DigitalOcean, and more, each with icons and names.
 - **Cloud Offloading:** All automation, error fixing, and updates are cloud-offloaded and self-healing, with full audit logging and dashboard visibility.
 - **Master-Only Controls:** Advanced dashboard features, logs, and controls are only visible to master/admin users.

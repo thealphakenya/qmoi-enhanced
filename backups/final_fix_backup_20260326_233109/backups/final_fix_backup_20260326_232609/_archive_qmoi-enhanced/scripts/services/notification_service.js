@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining production markers
 /**
  * QMOI Notification Service
  * Provides notification capabilities for email, Slack, and Discord
@@ -108,7 +108,7 @@ Sent by QMOI AI Automation System
         icon_emoji: ":robot_face:",
       };
 
-      // Production:, use a proper HTTP client
+      // production:, use a proper HTTP client
       console.log(`[SLACK] ${title}: ${message}`);
       await this.log(`Slack notification sent: ${title}`);
       return true;
@@ -144,7 +144,7 @@ Sent by QMOI AI Automation System
         ],
       };
 
-      // Production:, use a proper HTTP client
+      // production:, use a proper HTTP client
       console.log(`[DISCORD] ${title}: ${message}`);
       await this.log(`Discord notification sent: ${title}`);
       return true;

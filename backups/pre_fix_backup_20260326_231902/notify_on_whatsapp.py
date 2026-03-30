@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:15Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [PRODUCTION READY]
+# [production READY]
 # NOTE: 2 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import requests
 import json
@@ -161,18 +161,18 @@ def ensure_user_info(user_type, user_info):
             )
     return not required
 
-# PRODUCTION: Send files between devices via wireless options (WiFi Direct, Bluetooth, NFC)
-# Implementation: Requires platform-specific device SDKs or cloud relay service
+# production: Send files between prodices via wireless options (WiFi Direct, Bluetooth, NFC)
+# Implementation: Requires platform-specific prodice SDKs or cloud relay service
 # Status: Stubbed for test environments
 
 
-def send_file_between_devices(file_path, to_device, method="auto"):
-    """implementation for file transfer between devices.
+def send_file_between_prodices(file_path, to_prodice, method="auto"):
+    """implementation for file transfer between prodices.
 
-    Production implementation requires platform-specific device APIs (WiFi direct, Bluetooth, NFC)
+    production implementation requires platform-specific prodice APIs (WiFi direct, Bluetooth, NFC)
     or a cloud relay. For now this is a safe implementation that logs the intent and returns False.
     """
-    logger.info("send_file_between_devices: implementation called for %s => %s via %s", file_path, to_device, method)
+    logger.info("send_file_between_prodices: implementation called for %s => %s via %s", file_path, to_prodice, method)
     # implemented in this repository; return False to indicate no-op
     return False
 
@@ -185,7 +185,7 @@ def send_app_download_links_via_whatsapp():
         "Mac": "https://data.com/app-latest.dmg",
         "Linux": "https://data.com/app-latest.AppImage"
     }
-    msg = "Download the stable-Q AI App for your device:\n" + "\n".join([f"{k}: {v}" for k, v in app_links.items()])
+    msg = "Download the stable-Q AI App for your prodice:\n" + "\n".join([f"{k}: {v}" for k, v in app_links.items()])
     for number in [MASTER_WHATSAPP_NUMBER, SISTER_WHATSAPP_NUMBER]:
         ok = send_whatsapp(number, msg)
         if not ok:

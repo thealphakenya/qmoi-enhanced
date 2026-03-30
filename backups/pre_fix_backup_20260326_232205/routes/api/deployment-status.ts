@@ -32,7 +32,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         version: "v1.2.2",
         duration: 180,
         filesChanged: 8,
-        user: "devops",
+        user: "prodops",
       },
       {
         timestamp: "2024-05-28T15:10:05Z",

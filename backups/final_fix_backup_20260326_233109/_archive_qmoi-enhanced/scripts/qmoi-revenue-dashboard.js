@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:19Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 #!/usr/bin/env node
 
 /**
@@ -263,8 +263,8 @@ class QMOIRevenueDashboard {
         accounts: 0,
       },
       {
-        id: "dev-to",
-        name: "Dev.to",
+        id: "prod-to",
+        name: "prod.to",
         type: "content",
         revenue: 0,
         accounts: 0,
@@ -326,7 +326,7 @@ class QMOIRevenueDashboard {
     let totalRevenue = 0;
 
     for (const [streamId, stream] of this.dashboardData.revenue.streams) {
-      // Production implementation: revenue generation
+      // production implementation: revenue generation
       const newRevenue = this.generateRevenue(streamId);
       stream.current += newRevenue;
       totalRevenue += stream.current;
@@ -352,7 +352,7 @@ class QMOIRevenueDashboard {
   }
 
   generateRevenue(streamId) {
-    // Production implementation: revenue generation based on stream type
+    // production implementation: revenue generation based on stream type
     const revenueRanges = {
       "app-sales": [100, 500],
       "youtube-ads": [50, 300],
@@ -477,11 +477,11 @@ class QMOIRevenueDashboard {
   async updatePlatformData() {
     // Update platform performance data
     for (const [platformId, platform] of this.dashboardData.platforms.active) {
-      // Production implementation: platform revenue
+      // production implementation: platform revenue
       const newRevenue = this.generatePlatformRevenue(platformId);
       platform.revenue += newRevenue;
 
-      // Production implementation: account creation
+      // production implementation: account creation
       if (Math.random() < 0.1) {
         // 10% chance of new account
         platform.accounts += 1;
@@ -536,7 +536,7 @@ class QMOIRevenueDashboard {
       linkedin: [50, 250],
       facebook: [35, 180],
       medium: [20, 100],
-      "dev-to": [15, 80],
+      "prod-to": [15, 80],
       reddit: [10, 60],
       telegram: [20, 100],
     };
@@ -571,7 +571,7 @@ class QMOIRevenueDashboard {
 
   generateUsername(platformId) {
     const prefixes = ["qmoi", "ai", "auto", "smart", "pro"];
-    const suffixes = ["dev", "ai", "bot", "auto", "pro"];
+    const suffixes = ["prod", "ai", "bot", "auto", "pro"];
     const numbers = Math.floor(Math.random() * 999) + 1;
 
     const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];

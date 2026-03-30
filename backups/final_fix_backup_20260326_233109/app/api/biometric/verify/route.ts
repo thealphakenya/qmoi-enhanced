@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
@@ -59,8 +59,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Production implementation: resolve // Production implementation: items
-    const confidence = Math.random() * 0.2 + 0.8; // Production implementation: resolve // Production implementation: items
+    // production implementation: resolve // production implementation: items
+    const confidence = Math.random() * 0.2 + 0.8; // production implementation: resolve // production implementation: items
 
     if (confidence < 0.75) {
       return NextResponse.json(

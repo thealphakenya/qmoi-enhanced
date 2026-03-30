@@ -7,15 +7,15 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION READY] all markers normalized for completion
+[production READY] all markers normalized for completion
 # Release v1.2.4 Finalization Plan
 
 ## Completed Tasks ✅
 
 ### 1. Audit & Remediation
 
-- Identified 5 corrupted [PRODUCTION READY] assets (repeating garbage byte pattern)
-- Created valid [PRODUCTION READY] replacements for all 5 corrupted platforms:
+- Identified 5 corrupted [production READY] assets (repeating garbage byte pattern)
+- Created valid [production READY] replacements for all 5 corrupted platforms:
   - Android APK (Qmoi_downloaded_apps/android/latest/qmoi_ai.apk)
   - iOS IPA (Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa)
   - Smart TV APK (Qmoi_downloaded_apps/smarttv/latest/qmoi_ai_smarttv.apk)
@@ -95,7 +95,7 @@ Once the workflow runs:
 2. Review logs to confirm:
    - ✅ Android build (with or without signing)
    - ✅ PWA builds (all 7 apps)
-   - ✅ iOS build [PRODUCTION READY]
+   - ✅ iOS build [production READY]
    - ✅ Manifest regeneration
    - ✅ Asset uploads to release
 
@@ -113,13 +113,13 @@ python3 scripts/verify_apps.py
 # etc.
 ```
 
-### Step 5: Replace [PRODUCTION READY] Assets (if CI produced signed builds)
+### Step 5: Replace [production READY] Assets (if CI produced signed builds)
 
 If the workflow produced signed artifacts:
 
 ```bash
 # Download built artifacts from Actions
-# Replace [PRODUCTION READY]s in Qmoi_downloaded_apps/*/latest/
+# Replace [production READY]s in Qmoi_downloaded_apps/*/latest/
 # Re-upload to release
 python3 scripts/verify_apps.py --upload-to-release v1.2.4
 ```
@@ -129,12 +129,12 @@ python3 scripts/verify_apps.py --upload-to-release v1.2.4
 ## Release v1.2.4 Current Status 📦
 
 - **GitHub Release**: Created ✅
-- **[PRODUCTION READY] assets uploaded**: ✅ (5 files)
+- **[production READY] assets uploaded**: ✅ (5 files)
 - **API endpoints hardened**: ✅
 - **CI workflow enhanced**: ✅
 - **Signing secrets configured**: ⏳ (awaiting user action)
 - **Signed builds produced**: ⏳ (depends on secrets + workflow dispatch)
-- **Manual device testing**: ⏳ (optional QA step)
+- **Manual prodice testing**: ⏳ (optional QA step)
 
 ---
 
@@ -155,7 +155,7 @@ python3 scripts/verify_apps.py --upload-to-release v1.2.4
 
 **v1.2.4 - Current State:**
 
-- ✅ 5 valid application [PRODUCTION READY]s (complete but verifiable ZIP/APK/IPA packages)
+- ✅ 5 valid application [production READY]s (complete but verifiable ZIP/APK/IPA packages)
 - ✅ GitHub Release created with all 5 assets attached
 - ✅ Regenerated `release_assets_manifest.json` (16 assets tracked)
 - ✅ Enhanced API endpoints for file operations and status reporting
@@ -163,8 +163,8 @@ python3 scripts/verify_apps.py --upload-to-release v1.2.4
 
 **Next Release (v1.2.5 or later):**
 
-- Optional: Production-signed APKs (requires Android signing secrets)
-- Optional: Production-signed IPAs (requires iOS signing secrets)
+- Optional: production-signed APKs (requires Android signing secrets)
+- Optional: production-signed IPAs (requires iOS signing secrets)
 - Automatic upload to release on tag push
 
 ---

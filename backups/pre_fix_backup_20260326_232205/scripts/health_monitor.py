@@ -6,7 +6,7 @@
 # 
 #!/usr/bin/env python3
 """
-QMOI Production Health Monitor
+QMOI production Health Monitor
 Continuous monitoring system for 100% domain and system health
 """
 
@@ -23,7 +23,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 class HealthMonitor:
-    """Production health monitoring system"""
+    """production health monitoring system"""
 
     def __init__(self, config_file: str = 'health_monitor_config.json'):
         self.config_file = config_file
@@ -40,7 +40,7 @@ class HealthMonitor:
                 "qmoi.ai", "www.qmoi.ai", "api.qmoi.ai",
                 "qcity.qmoi.ai", "qmoi-space.qmoi.ai", "yap.qmoi.ai", "q-stable.qmoi.ai",
                 "qvillage.com", "qvillage.net", "qvillage.org", "qglobal.org",
-                "alphaq.ai", "qparallel.dev"
+                "alphaq.ai", "qparallel.prod"
             ],
             "endpoints": [
                 "https://qvillage.com/api/health",
@@ -258,7 +258,7 @@ class HealthMonitor:
             msg['Subject'] = f"QMOI Health Alert - {severity.upper()}"
 
             body = f"""
-QMOI Production Health Alert
+QMOI production Health Alert
 
 Severity: {severity.upper()}
 Time: {datetime.now()}
@@ -435,7 +435,7 @@ def main():
         healthy_domains = results['summary']['healthy_domains']
         total_domains = results['summary']['total_domains']
 
-        print("🏥 QMOI Production Health Report")
+        print("🏥 QMOI production Health Report")
         print("=" * 50)
         print(f"📊 Overall Health: {health_pct:.1f}%")
         print(f"🌐 Domains: {healthy_domains}/{total_domains} healthy")

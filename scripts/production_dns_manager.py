@@ -5,11 +5,11 @@
 
 #!/usr/bin/env python3
 """
-QMOI Production DNS Management System
+QMOI production DNS Management System
 Automatically manages DNS records for all QMOI domains to ensure 100% health.
 Supports multiple DNS providers and automatic record creation/updates.
 
-Author: QMOI Production System
+Author: QMOI production System
 Date: 2026-03-21
 """
 
@@ -55,11 +55,11 @@ class DomainConfig:
     ssl_config: Dict
     monitoring: Dict
 
-class ProductionDNSManager:
-    """Production DNS management system for 100% domain health"""
+class productionDNSManager:
+    """production DNS management system for 100% domain health"""
 
-    # Production DNS Records for all QMOI domains
-    PRODUCTION_DNS_RECORDS = {
+    # production DNS Records for all QMOI domains
+    production_DNS_RECORDS = {
         # Main QMOI domains
         "qmoi.ai": [
             DNSRecord("qmoi.ai", "A", "76.76.21.21", 300),  # Vercel hosting
@@ -100,8 +100,8 @@ class ProductionDNSManager:
         "qglobal.org": [
             DNSRecord("qglobal.org", "A", "13.248.169.48", 300),
         ],
-        "qparallel.dev": [
-            DNSRecord("qparallel.dev", "A", "13.248.169.48", 300),
+        "qparallel.prod": [
+            DNSRecord("qparallel.prod", "A", "13.248.169.48", 300),
         ],
 
         # Service domains
@@ -129,11 +129,11 @@ class ProductionDNSManager:
             "timestamp": datetime.now().isoformat()
         }
 
-        for domain, records in self.PRODUCTION_DNS_RECORDS.items():
+        for domain, records in self.production_DNS_RECORDS.items():
             try:
                 logger.info(f"📡 Deploying DNS records for {domain}...")
 
-                # Production:, this would integrate with actual DNS providers
+                # production:, this would integrate with actual DNS providers
                 # For now, we'll simulate and verify
                 deploy_result = self._deploy_domain_records(domain, records)
 
@@ -167,7 +167,7 @@ class ProductionDNSManager:
         verification_results = self.verify_all_domain_health()
         results["verification"] = verification_results
 
-        logger.info("🎯 Production DNS deployment complete")
+        logger.info("🎯 production DNS deployment complete")
         return results
 
     def _deploy_domain_records(self, domain: str, records: List[DNSRecord]) -> Dict:
@@ -210,14 +210,14 @@ class ProductionDNSManager:
         logger.info("🔍 Verifying domain health after DNS deployment...")
 
         verification_results = {
-            "total_domains": len(self.PRODUCTION_DNS_RECORDS),
+            "total_domains": len(self.production_DNS_RECORDS),
             "healthy_domains": 0,
             "unhealthy_domains": 0,
             "details": {},
             "timestamp": datetime.now().isoformat()
         }
 
-        for domain in self.PRODUCTION_DNS_RECORDS.keys():
+        for domain in self.production_DNS_RECORDS.keys():
             health_status = self._verify_domain_health(domain)
             verification_results["details"][domain] = health_status
 
@@ -323,12 +323,12 @@ class ProductionDNSManager:
     def create_production_deployment_script(self) -> str:
         """Create a production deployment script for DNS management"""
         script_content = '''#!/bin/bash
-# QMOI Production DNS Deployment Script
+# QMOI production DNS Deployment Script
 # This script ensures 100% domain health by deploying all DNS records
 
 set -e
 
-echo "🚀 QMOI Production DNS Deployment Starting..."
+echo "🚀 QMOI production DNS Deployment Starting..."
 
 # Colors for output
 RED='\\033[0;31m'
@@ -341,7 +341,7 @@ check_domain() {
     local domain=$1
     echo -n "Checking $domain... "
 
-    if nslookup "$domain" >/dev/null 2>&1; then
+    if nslookup "$domain" >/prod/null 2>&1; then
         echo -e "${GREEN}✅ DNS OK${NC}"
         return 0
     else
@@ -370,7 +370,7 @@ echo "🔄 Deploying fallback domains..."
 check_domain "qvillage.net" || echo "Warning: qvillage.net DNS not configured"
 check_domain "qvillage.org" || echo "Warning: qvillage.org DNS not configured"
 check_domain "qglobal.org" || echo "Warning: qglobal.org DNS not configured"
-check_domain "qparallel.dev" || echo "Warning: qparallel.dev DNS not configured"
+check_domain "qparallel.prod" || echo "Warning: qparallel.prod DNS not configured"
 
 # Service domains
 echo "🛠️ Deploying service domains..."
@@ -395,7 +395,7 @@ check_domain "q-stable.qmoi.ai" && ((HEALTHY_DOMAINS++))
 check_domain "qvillage.net" && ((HEALTHY_DOMAINS++))
 check_domain "qvillage.org" && ((HEALTHY_DOMAINS++))
 check_domain "qglobal.org" && ((HEALTHY_DOMAINS++))
-check_domain "qparallel.dev" && ((HEALTHY_DOMAINS++))
+check_domain "qparallel.prod" && ((HEALTHY_DOMAINS++))
 check_domain "qshare.qvillage.com" && ((HEALTHY_DOMAINS++))
 check_domain "qstore.qvillage.com" && ((HEALTHY_DOMAINS++))
 
@@ -410,7 +410,7 @@ else
 fi
 
 echo "📊 Domain Health Report saved to production_domain_health.json"
-echo "🚀 Production DNS deployment complete!"
+echo "🚀 production DNS deployment complete!"
 '''
 
         script_path = self.workspace_root / 'deploy_production_dns.sh'
@@ -420,14 +420,14 @@ echo "🚀 Production DNS deployment complete!"
         # Make executable
         script_path.chmod(0o755)
 
-        logger.info(f"📝 Production deployment script created: {script_path}")
+        logger.info(f"📝 production deployment script created: {script_path}")
         return str(script_path)
 
 def main():
     """Main entry point for production DNS management"""
-    logger.info("🎯 QMOI Production DNS Manager Starting...")
+    logger.info("🎯 QMOI production DNS Manager Starting...")
 
-    manager = ProductionDNSManager()
+    manager = productionDNSManager()
 
     # Deploy all production DNS records
     deployment_results = manager.deploy_production_dns_records()
@@ -441,7 +441,7 @@ def main():
     success_rate = (final_health["healthy_domains"] / final_health["total_domains"]) * 100
 
     print("\n" + "="*80)
-    print("🎯 QMOI PRODUCTION DNS DEPLOYMENT COMPLETE")
+    print("🎯 QMOI production DNS DEPLOYMENT COMPLETE")
     print("="*80)
     print(f"📊 Final Results: {final_health['healthy_domains']}/{final_health['total_domains']} domains healthy ({success_rate:.1f}%)")
 

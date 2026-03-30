@@ -68,8 +68,8 @@ export interface BitgetConfig {
         enabled: boolean;
         methods: string[];
         backupCodes: boolean;
-        rememberDevice: boolean;
-        deviceExpiry: number;
+        rememberprodice: boolean;
+        prodiceExpiry: number;
         requireMfaFor: string[];
       };
       encryption: {
@@ -416,8 +416,8 @@ export class BitgetManager extends EventEmitter {
             enabled: true,
             methods: ["authenticator", "sms", "email"],
             backupCodes: true,
-            rememberDevice: true,
-            deviceExpiry: 30, // days
+            rememberprodice: true,
+            prodiceExpiry: 30, // days
             requireMfaFor: ["withdrawals", "api_changes", "security_settings"],
           },
           encryption: {
@@ -496,7 +496,7 @@ export class BitgetManager extends EventEmitter {
                 "user_behavior",
                 "trading_patterns",
                 "network_patterns",
-                "device_fingerprint",
+                "prodice_fingerprint",
               ],
               confidence: 0.9,
               updateInterval: 86400, // 24 hours
@@ -515,7 +515,7 @@ export class BitgetManager extends EventEmitter {
               enabled: true,
               factors: [
                 "ip_reputation",
-                "device_reputation",
+                "prodice_reputation",
                 "user_behavior",
                 "transaction_history",
               ],

@@ -1,5 +1,5 @@
 #!/bin/bash
-# // Production implementation:
+# // production implementation:
 # QMOI Enhanced Link, Download, and Offload Automation Script
 # Auto-offloads workspace, autotests and fixes all links, and updates documentation
 

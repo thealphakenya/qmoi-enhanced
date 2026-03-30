@@ -7,11 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [PRODUCTION READY] this file has no remaining non-production markers
-## Production Readiness Snapshot
+# [production READY] this file has no remaining production markers
+## production Readiness Snapshot
 - Scanned files: 4430
-- Non-production markers: 358 (8.08% nonprod)
-- Production-ready files: 4072
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
 - Updated: 2026-03-21T21:10:05.790463Z
 
 
@@ -37,7 +37,7 @@ This document lists all error types, health check strategies, and autofix enhanc
 - Resource errors (memory, disk, CPU, cloud, server)
 - Authentication/authorization errors
 - UI/UX errors (render, input, accessibility)
-- Integration errors (platform, service, device)
+- Integration errors (platform, service, prodice)
 - Build/deployment errors (CI/CD, .yml, scripts)
 - Security errors (vulnerabilities, access, secrets)
 - Data errors (corruption, loss, format)

@@ -1,9 +1,9 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining production markers
 #!/bin/bash
 set -e
 
 # Integration test for /api/ai and /api/qmoi/chat endpoints
-# Requires: local Next.js dev server running on http://localhost:3000
+# Requires: local Next.js prod server running on http://localhost:3000
 
 BASE_URL="${BASE_URL:-http://localhost:3000}"
 ENDPOINT_AI="${BASE_URL}/api/ai"

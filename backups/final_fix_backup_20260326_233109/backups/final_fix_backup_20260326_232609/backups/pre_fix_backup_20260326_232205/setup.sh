@@ -1,16 +1,16 @@
 #!/bin/bash
-# // Production implementation:
+# // production implementation:
 
 # ============================================================================
-# setup.sh - Quick Start Script for Local Development
+# setup.sh - Quick Start Script for Local production
 # ============================================================================
 # Usage: bash setup.sh
-# This script sets up the local development environment
+# This script sets up the local production environment
 # ============================================================================
 
 set -e
 
-echo "🚀 QCity & QMOI AI - Development Setup"
+echo "🚀 QCity & QMOI AI - production Setup"
 echo "========================================"
 echo ""
 
@@ -32,17 +32,17 @@ fi
 # Step 2: Check if Node.js is available
 echo ""
 echo "🔍 Step 2: Checking dependencies..."
-if command -v node &> /dev/null; then
+if command -v node &> /prod/null; then
     NODE_VERSION=$(node -v)
     echo "✅ Node.js found: $NODE_VERSION"
     HAS_NODE=true
 else
-    echo "⚠️  Node.js not found (needed for npm build & Next.js dev)"
+    echo "⚠️  Node.js not found (needed for npm build & Next.js prod)"
     echo "   Install from: https://nodejs.org/"
     HAS_NODE=false
 fi
 
-if command -v python3 &> /dev/null; then
+if command -v python3 &> /prod/null; then
     PYTHON_VERSION=$(python3 --version)
     echo "✅ Python found: $PYTHON_VERSION"
 else
@@ -53,7 +53,7 @@ fi
 # Step 3: Start HTTP server for dashboards
 echo ""
 echo "🌐 Step 3: Starting HTTP server..."
-if lsof -Pi :8080 -sTCP:LISTEN -t >/dev/null 2>&1 ; then
+if lsof -Pi :8080 -sTCP:LISTEN -t >/prod/null 2>&1 ; then
     echo "⚠️  Port 8080 already in use. Stopping existing process..."
     pkill -f "python.*http.server.*8080" || true
     sleep 1
@@ -65,7 +65,7 @@ HTTP_PID=$!
 sleep 2
 
 # Verify server is running
-if curl -s http://localhost:8080 > /dev/null; then
+if curl -s http://localhost:8080 > /prod/null; then
     echo "✅ HTTP server started (PID: $HTTP_PID)"
 else
     echo "❌ HTTP server failed to start. Check /tmp/http-server.log"
@@ -99,11 +99,11 @@ echo ""
 if [ "$HAS_NODE" = true ]; then
     echo "🚀 Next Steps (with Node.js):"
     echo "  1. Edit .env.local with your backend API URL"
-    echo "  2. npm run dev          (for Next.js dev server)"
+    echo "  2. npm run prod          (for Next.js prod server)"
     echo "  3. http://localhost:3000 (access QMOI AI pages)"
 else
     echo "⚠️  Node.js Required for:"
-    echo "  • npm run dev (Next.js dev server)"
+    echo "  • npm run prod (Next.js prod server)"
     echo "  • npm run build (production build)"
     echo "  • npm test (run tests)"
     echo ""

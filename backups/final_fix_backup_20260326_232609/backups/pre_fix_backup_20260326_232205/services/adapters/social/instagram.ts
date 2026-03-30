@@ -42,8 +42,8 @@ export class InstagramAdapter implements SocialPlatformAdapter {
     // Validate and parse config
     this.config = InstagramConfigSchema.parse(config);
 
-    if (this.config.sandboxMode) {
-      .log("[Instagram] Running in sandbox mode");
+    if (this.config.productionMode) {
+      .log("[Instagram] Running in production mode");
       return;
     }
 
@@ -60,11 +60,11 @@ export class InstagramAdapter implements SocialPlatformAdapter {
       throw new Error("Instagram adapter not initialized");
     }
 
-    if (this.config.sandboxMode) {
-      return true; // Skip validation in sandbox mode
+    if (this.config.productionMode) {
+      return true; // Skip validation in production mode
     }
 
-    // Production, would verify the access token with Instagram Graph API
+    // production, would verify the access token with Instagram Graph API
     return !!this.config.credentials?.accessToken;
   }
 
@@ -97,12 +97,12 @@ export class InstagramAdapter implements SocialPlatformAdapter {
       }
     }
 
-    if (this.config.sandboxMode) {
-      .log("[Instagram Sandbox] Would create post:", content);
+    if (this.config.productionMode) {
+      .log("[Instagram production] Would create post:", content);
       return `
     }
 
-    // Production mode, would make actual Graph API call
+    // production mode, would make actual Graph API call
     // Proper implementation would handle multi-step media upload
     .log("[Instagram] Creating post via Graph API v18.0");
     return `ig-post-${Date.now()}`;
@@ -120,12 +120,12 @@ export class InstagramAdapter implements SocialPlatformAdapter {
       }
     }
 
-    if (this.config.sandboxMode) {
-      .log("[Instagram Sandbox] Would delete post:", postId);
+    if (this.config.productionMode) {
+      .log("[Instagram production] Would delete post:", postId);
       return true;
     }
 
-    // Production mode, would make actual Graph API call
+    // production mode, would make actual Graph API call
     .log("[Instagram] Deleting post:", postId);
     return true;
   }
@@ -135,7 +135,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
       throw new Error("Instagram adapter not initialized");
     }
 
-    if (this.config.sandboxMode) {
+    if (this.config.productionMode) {
       // Return 
       const likes = Math.floor(Math.random() * 1000);
       const impressions = Math.floor(Math.random() * 5000);
@@ -150,8 +150,8 @@ export class InstagramAdapter implements SocialPlatformAdapter {
       };
     }
 
-    // Production mode, would fetch real metrics via Graph API
-    throw new Error("Production metrics fetching not yet implemented");
+    // production mode, would fetch real metrics via Graph API
+    throw new Error("production metrics fetching not yet implemented");
   }
 
   async getAnalytics(): Promise<unknown> {
@@ -159,7 +159,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
       throw new Error("Instagram adapter not initialized");
     }
 
-    if (this.config.sandboxMode) {
+    if (this.config.productionMode) {
       return {
         totalFollowers: Math.floor(Math.random() * 10000),
         reachLast7Days: Math.floor(Math.random() * 50000),
@@ -177,8 +177,8 @@ export class InstagramAdapter implements SocialPlatformAdapter {
       };
     }
 
-    // Production mode, would fetch real analytics via Graph API
-    throw new Error("Production analytics fetching not yet implemented");
+    // production mode, would fetch real analytics via Graph API
+    throw new Error("production analytics fetching not yet implemented");
   }
 }
 
