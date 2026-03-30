@@ -21,13 +21,13 @@ title: "QMOI Features Master Index"
 | Handsfree All Devices   | Control any device handsfree, accessibility      | QMOIALLDEVICESHANDSFREE.md |
 | Enhanced QVS Security   | Device/network sandboxing, masking, VPN          | ENHANCEDQVS.md             |
 | VPN                     | Always-on, privacy, Colab/Dagshub support        | QVPNREADME.md              |
-| Network Masking         | [PRODUCTION READY]_PROD/unreal IPs, privacy-first              | QMOIMASKS.md               |
+| Network Masking         | REVIEWED/unreal IPs, privacy-first              | QMOIMASKS.md               |
 | Network Optimization    | Secure, optimized, auto-connect                  | QMOINETWORK.md             |
 | stable QMOI Engine       | All integrations/platforms auto-handled          | ALPHAQMOIENGINE.md         |
 | Accounts & Platforms    | Auto-create/register accounts, track credentials | QMOIACCOUNTSPLATFORMS.md   |
 | Qcity Device            | robust, handsfree, log/data management      | QCITYREADME.md             |
 | Accessibility Settings  | High-contrast, large text, voice/gesture, etc.   | (see UI panel)             |
-| Device Integrations     | TV, car, smart home, WhatsApp, Colab, Dagshub    | DeviceIntegration[PRODUCTION READY]s.ts  |
+| Device Integrations     | TV, car, smart home, WhatsApp, Colab, Dagshub    | DeviceIntegrations.ts  |
 | Auto-update/Auto-evolve | Self-updating, self-enhancing, auto-fixing       | (core system, see docs)    |
 
 ## See also
