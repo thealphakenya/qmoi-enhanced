@@ -96,7 +96,7 @@ class QMOIPrivacyShield {
   }
 
   async spoofLocation() {
-    // Generate realistic [PRODUCTION READY]_PROD [PRODUCTION: review and implement] locations
+    // Generate realistic fake locations
     // Maintain geographic consistency
     // Avoid suspicious patterns
   }
