@@ -1,6 +1,6 @@
 {
   "qcity.qmoi.ai": {
-    "timestamp": "2026-03-31T22:49:29.127487",
+    "timestamp": "2026-03-31T23:11:31.864946",
     "suggestions": [
       {
         "type": "DNS_Record",
@@ -23,7 +23,7 @@
     ]
   },
   "qmoi-space.qmoi.ai": {
-    "timestamp": "2026-03-31T22:49:29.147045",
+    "timestamp": "2026-03-31T23:11:31.646642",
     "suggestions": [
       {
         "type": "DNS_Record",
@@ -46,7 +46,7 @@
     ]
   },
   "yap.qmoi.ai": {
-    "timestamp": "2026-03-31T22:49:29.150618",
+    "timestamp": "2026-03-31T23:11:31.620806",
     "suggestions": [
       {
         "type": "DNS_Record",
@@ -69,7 +69,7 @@
     ]
   },
   "space.qmoi.ai": {
-    "timestamp": "2026-03-31T22:49:29.250596",
+    "timestamp": "2026-03-31T23:11:31.754649",
     "suggestions": [
       {
         "type": "DNS_Record",
@@ -92,7 +92,7 @@
     ]
   },
   "qvillage.org": {
-    "timestamp": "2026-03-31T22:49:29.377452",
+    "timestamp": "2026-03-31T23:11:31.900139",
     "suggestions": [
       {
         "type": "TTL_Check",
@@ -107,7 +107,7 @@
     ]
   },
   "q-stable.qmoi.ai": {
-    "timestamp": "2026-03-31T22:49:29.391372",
+    "timestamp": "2026-03-31T23:11:31.818822",
     "suggestions": [
       {
         "type": "DNS_Record",
@@ -130,7 +130,7 @@
     ]
   },
   "qparallel.prod": {
-    "timestamp": "2026-03-31T22:49:29.458870",
+    "timestamp": "2026-03-31T23:11:32.061043",
     "suggestions": [
       {
         "type": "TTL_Check",
@@ -145,7 +145,7 @@
     ]
   },
   "stable.stableq.ai": {
-    "timestamp": "2026-03-31T22:49:29.483582",
+    "timestamp": "2026-03-31T23:11:32.127251",
     "suggestions": [
       {
         "type": "TTL_Check",
@@ -156,6 +156,36 @@
         "type": "WHOIS_Check",
         "suggestion": "Verify domain registration and nameservers",
         "command": "whois stable.stableq.ai"
+      }
+    ]
+  },
+  "stableq.ai": {
+    "timestamp": "2026-03-31T23:11:31.601625",
+    "suggestions": [
+      {
+        "type": "TTL_Check",
+        "suggestion": "Check DNS TTL - propagation may take 24-48 hours",
+        "command": "dig stableq.ai +nocmd +noall +answer"
+      },
+      {
+        "type": "WHOIS_Check",
+        "suggestion": "Verify domain registration and nameservers",
+        "command": "whois stableq.ai"
+      }
+    ]
+  },
+  "qmoi.ai": {
+    "timestamp": "2026-03-31T23:11:31.627845",
+    "suggestions": [
+      {
+        "type": "TTL_Check",
+        "suggestion": "Check DNS TTL - propagation may take 24-48 hours",
+        "command": "dig qmoi.ai +nocmd +noall +answer"
+      },
+      {
+        "type": "WHOIS_Check",
+        "suggestion": "Verify domain registration and nameservers",
+        "command": "whois qmoi.ai"
       }
     ]
   }
