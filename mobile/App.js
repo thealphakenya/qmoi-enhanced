@@ -14,7 +14,7 @@ import ReactNativeBiometrics from 'react-native-biometrics';
 import NotificationScreen from './components/NotificationScreen';
 import AlertSettingsScreen from './components/AlertSettingsScreen';
 import AnalyticsScreen from './components/AnalyticsScreen';
-import prodiceManagementScreen from './components/prodiceManagementScreen';
+import DeviceManagementScreen from './components/DeviceManagementScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -58,8 +58,8 @@ function LoginScreen({ navigation, route }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>QMOI Login</Text>
-      <TextInput // production implementation required:="Username" value={user} onChangeText={setUser} style={styles.input} />
-      <TextInput // production implementation required:="Password" value={pass} onChangeText={setPass} secureTextEntry style={styles.input} />
+      <TextInput placeholder="Username" value={user} onChangeText={setUser} style={styles.input} />
+      <TextInput placeholder="Password" value={pass} onChangeText={setPass} secureTextEntry style={styles.input} />
       <Button title="Login" onPress={handleLogin} />
       <Button title="Biometric/Trusted Login" onPress={handleBiometric} />
       {error ? <Text style={styles.error}>{error}</Text> : null}
@@ -116,7 +116,7 @@ function DashboardScreen({ route, navigation }) {
             <Text key={i}>{p.kind === 'errorType' ? 'Error Type' : 'File'}: {p.type || p.file} ({p.count})</Text>
           ))}
           <Button title="Analytics" onPress={() => navigation.navigate('Analytics', { role })} />
-          <Button title="prodice Management" onPress={() => navigation.navigate('prodiceManagement', { role })} />
+          <Button title="Device Management" onPress={() => navigation.navigate('DeviceManagement', { role })} />
         </>
       ) : (
         <Text style={{ color: 'red', marginVertical: 10 }}>Access denied: Master only</Text>
@@ -153,7 +153,7 @@ export default function App() {
         <Stack.Screen name="Notifications" component={NotificationScreen} />
         <Stack.Screen name="AlertSettings" component={AlertSettingsScreen} />
         <Stack.Screen name="Analytics" component={AnalyticsScreen} />
-        <Stack.Screen name="prodiceManagement" component={prodiceManagementScreen} />
+        <Stack.Screen name="DeviceManagement" component={DeviceManagementScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

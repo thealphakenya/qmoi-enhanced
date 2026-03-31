@@ -21,14 +21,14 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const prodiceManagementScreen = ({ userRole }) => {
-  const [prodices, setprodices] = useState([]);
+const DeviceManagementScreen = ({ userRole }) => {
+  const [devices, setdevices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
-  const [showAddprodice, setShowAddprodice] = useState(false);
-  const [showprodiceDetails, setShowprodiceDetails] = useState(false);
-  const [selectedprodice, setSelectedprodice] = useState(null);
-  const [newprodice, setNewprodice] = useState({
+  const [showAdddevice, setShowAdddevice] = useState(false);
+  const [showdeviceDetails, setShowdeviceDetails] = useState(false);
+  const [selecteddevice, setSelecteddevice] = useState(null);
+  const [newdevice, setNewdevice] = useState({
     name: '',
     type: 'computer',
     ip: '',
@@ -36,17 +36,17 @@ const prodiceManagementScreen = ({ userRole }) => {
     description: ''
   });
 
-  const prodiceTypes = [
+  const deviceTypes = [
     { key: 'computer', label: 'Computer', icon: 'computer' },
     { key: 'server', label: 'Server', icon: 'dns' },
-    { key: 'mobile', label: 'Mobile prodice', icon: 'smartphone' },
+    { key: 'mobile', label: 'Mobile device', icon: 'smartphone' },
     { key: 'tablet', label: 'Tablet', icon: 'tablet' },
-    { key: 'iot', label: 'IoT prodice', icon: 'sensors' },
+    { key: 'iot', label: 'IoT device', icon: 'sensors' },
     { key: 'camera', label: 'Camera', icon: 'videocam' },
     { key: 'sensor', label: 'Sensor', icon: 'sensors' }
   ];
 
-  const prodiceStatuses = {
+  const deviceStatuses = {
     online: { color: '#4CAF50', label: 'Online' },
     offline: { color: '#F44336', label: 'Offline' },
     warning: { color: '#FF9800', label: 'Warning' },
@@ -54,18 +54,18 @@ const prodiceManagementScreen = ({ userRole }) => {
   };
 
   useEffect(() => {
-    loadprodices();
+    loaddevices();
   }, []);
 
-  const loadprodices = async () => {
+  const loaddevices = async () => {
     try {
       setLoading(true);
-      const storedprodices = await AsyncStorage.getItem('qmoi_prodices');
-      if (storedprodices) {
-        setprodices(JSON.parse(storedprodices));
+      const storeddevices = await AsyncStorage.getItem('qmoi_devices');
+      if (storeddevices) {
+        setdevices(JSON.parse(storeddevices));
       } else {
-        // Initialize with default prodices
-        const defaultprodices = [
+        // Initialize with default devices
+        const defaultdevices = [
           {
             id: '1',
             name: 'QMOI Main Server',
@@ -124,12 +124,12 @@ const prodiceManagementScreen = ({ userRole }) => {
             }
           }
         ];
-        setprodices(defaultprodices);
-        await AsyncStorage.setItem('qmoi_prodices', JSON.stringify(defaultprodices));
+        setdevices(defaultdevices);
+        await AsyncStorage.setItem('qmoi_devices', JSON.stringify(defaultdevices));
       }
     } catch (error) {
-      console.error('Error loading prodices:', error);
-      Alert.alert('Error', 'Failed to load prodices');
+      console.error('Error loading devices:', error);
+      Alert.alert('Error', 'Failed to load devices');
     } finally {
       setLoading(false);
     }
@@ -137,20 +137,20 @@ const prodiceManagementScreen = ({ userRole }) => {
 
   const onRefresh = async () => {
     setRefreshing(true);
-    await loadprodices();
+    await loaddevices();
     setRefreshing(false);
   };
 
-  const addprodice = async () => {
-    if (!newprodice.name || !newprodice.ip) {
+  const adddevice = async () => {
+    if (!newdevice.name || !newdevice.ip) {
       Alert.alert('Error', 'Name and IP are required');
       return;
     }
 
     try {
-      const prodice = {
+      const device = {
         id: Date.now().toString(),
-        ...newprodice,
+        ...newdevice,
         status: 'offline',
         lastSeen: new Date().toISOString(),
         permissions: ['read'],
@@ -164,24 +164,24 @@ const prodiceManagementScreen = ({ userRole }) => {
         }
       };
 
-      const updatedprodices = [...prodices, prodice];
-      setprodices(updatedprodices);
-      await AsyncStorage.setItem('qmoi_prodices', JSON.stringify(updatedprodices));
+      const updateddevices = [...devices, device];
+      setdevices(updateddevices);
+      await AsyncStorage.setItem('qmoi_devices', JSON.stringify(updateddevices));
       
-      setNewprodice({ name: '', type: 'computer', ip: '', port: '3000', description: '' });
-      setShowAddprodice(false);
+      setNewdevice({ name: '', type: 'computer', ip: '', port: '3000', description: '' });
+      setShowAdddevice(false);
       
-      Alert.alert('Success', 'prodice added successfully');
+      Alert.alert('Success', 'Device added successfully');
     } catch (error) {
       console.error('Error adding prodice:', error);
       Alert.alert('Error', 'Failed to add prodice');
     }
   };
 
-  const removeprodice = async (prodiceId) => {
+  const removeDevice = async (deviceId) => {
     Alert.alert(
-      'Remove prodice',
-      'Are you sure you want to remove this prodice?',
+      'Remove Device',
+      'Are you sure you want to remove this device?',
       [
         { text: 'Cancel', style: 'cancel' },
         {
@@ -189,10 +189,10 @@ const prodiceManagementScreen = ({ userRole }) => {
           style: 'destructive',
           onPress: async () => {
             try {
-              const updatedprodices = prodices.filter(d => d.id !== prodiceId);
-              setprodices(updatedprodices);
-              await AsyncStorage.setItem('qmoi_prodices', JSON.stringify(updatedprodices));
-              Alert.alert('Success', 'prodice removed successfully');
+              const updateddevices = devices.filter(d => d.id !== deviceId);
+              setdevices(updateddevices);
+              await AsyncStorage.setItem('qmoi_devices', JSON.stringify(updateddevices));
+              Alert.alert('Success', 'Device removed successfully');
             } catch (error) {
               console.error('Error removing prodice:', error);
               Alert.alert('Error', 'Failed to remove prodice');
@@ -203,22 +203,22 @@ const prodiceManagementScreen = ({ userRole }) => {
     );
   };
 
-  const updateprodiceStatus = async (prodiceId, status) => {
+  const updateDeviceStatus = async (deviceId, status) => {
     try {
-      const updatedprodices = prodices.map(d => 
-        d.id === prodiceId ? { ...d, status, lastSeen: new Date().toISOString() } : d
+      const updateddevices = devices.map(d => 
+        d.id === deviceId ? { ...d, status, lastSeen: new Date().toISOString() } : d
       );
-      setprodices(updatedprodices);
-      await AsyncStorage.setItem('qmoi_prodices', JSON.stringify(updatedprodices));
+      setdevices(updateddevices);
+      await AsyncStorage.setItem('qmoi_devices', JSON.stringify(updateddevices));
     } catch (error) {
-      console.error('Error updating prodice status:', error);
+      console.error('Error updating device status:', error);
     }
   };
 
-  const toggleprodicePermission = async (prodiceId, permission) => {
+  const toggleDevicePermission = async (deviceId, permission) => {
     try {
-      const updatedprodices = prodices.map(d => {
-        if (d.id === prodiceId) {
+      const updateddevices = devices.map(d => {
+        if (d.id === deviceId) {
           const permissions = d.permissions.includes(permission)
             ? d.permissions.filter(p => p !== permission)
             : [...d.permissions, permission];
@@ -226,10 +226,10 @@ const prodiceManagementScreen = ({ userRole }) => {
         }
         return d;
       });
-      setprodices(updatedprodices);
-      await AsyncStorage.setItem('qmoi_prodices', JSON.stringify(updatedprodices));
+      setdevices(updateddevices);
+      await AsyncStorage.setItem('qmoi_devices', JSON.stringify(updateddevices));
     } catch (error) {
-      console.error('Error updating prodice permissions:', error);
+      console.error('Error updating device permissions:', error);
     }
   };
 
@@ -247,7 +247,7 @@ const prodiceManagementScreen = ({ userRole }) => {
       >
         <View style={styles.prodiceHeader}>
           <View style={styles.prodiceInfo}>
-            <Icon name={prodiceType?.icon || 'prodices'} size={24} color="#2196F3" />
+            <Icon name={prodiceType?.icon || 'devices'} size={24} color="#2196F3" />
             <View style={styles.prodiceText}>
               <Text style={styles.prodiceName}>{item.name}</Text>
               <Text style={styles.prodiceType}>{prodiceType?.label}</Text>
@@ -285,7 +285,7 @@ const prodiceManagementScreen = ({ userRole }) => {
           <View style={styles.prodiceActions}>
             <TouchableOpacity
               style={[styles.actionButton, styles.statusButton]}
-              onPress={() => updateprodiceStatus(item.id, item.status === 'online' ? 'offline' : 'online')}
+              onPress={() => updateDeviceStatus(item.id, item.status === 'online' ? 'offline' : 'online')}
             >
               <Icon name={item.status === 'online' ? 'power-settings-new' : 'power'} size={16} color="#FFF" />
               <Text style={styles.actionText}>
@@ -295,7 +295,7 @@ const prodiceManagementScreen = ({ userRole }) => {
             
             <TouchableOpacity
               style={[styles.actionButton, styles.removeButton]}
-              onPress={() => removeprodice(item.id)}
+              onPress={() => removeDevice(item.id)}
             >
               <Icon name="delete" size={16} color="#FFF" />
               <Text style={styles.actionText}>Remove</Text>
@@ -308,7 +308,7 @@ const prodiceManagementScreen = ({ userRole }) => {
 
   const renderAddprodiceModal = () => (
     <Modal
-      visible={showAddprodice}
+      visible={showAdddevice}
       animationType="slide"
       transparent={true}
       onRequestClose={() => setShowAddprodice(false)}
@@ -323,12 +323,12 @@ const prodiceManagementScreen = ({ userRole }) => {
           </View>
 
           <ScrollView style={styles.modalBody}>
-            <Text style={styles.inputLabel}>prodice Name *</Text>
+            <Text style={styles.inputLabel}>Device Name *</Text>
             <TextInput
               style={styles.input}
-              value={newprodice.name}
-              onChangeText={(text) => setNewprodice({ ...newprodice, name: text })}
-              // production implementation required:="Enter prodice name"
+              value={newdevice.name}
+              onChangeText={(text) => setNewdevice({ ...newdevice, name: text })}
+              placeholder="Enter device name"
             />
 
             <Text style={styles.inputLabel}>prodice Type</Text>
@@ -356,27 +356,27 @@ const prodiceManagementScreen = ({ userRole }) => {
             <Text style={styles.inputLabel}>IP Address *</Text>
             <TextInput
               style={styles.input}
-              value={newprodice.ip}
-              onChangeText={(text) => setNewprodice({ ...newprodice, ip: text })}
-              // production implementation required:="192.168.1.100"
+              value={newdevice.ip}
+              onChangeText={(text) => setNewdevice({ ...newdevice, ip: text })}
+              placeholder="192.168.1.100"
               keyboardType="numeric"
             />
 
             <Text style={styles.inputLabel}>Port</Text>
             <TextInput
               style={styles.input}
-              value={newprodice.port}
-              onChangeText={(text) => setNewprodice({ ...newprodice, port: text })}
-              // production implementation required:="3000"
+              value={newdevice.port}
+              onChangeText={(text) => setNewdevice({ ...newdevice, port: text })}
+              placeholder="3000"
               keyboardType="numeric"
             />
 
             <Text style={styles.inputLabel}>Description</Text>
             <TextInput
               style={[styles.input, styles.textArea]}
-              value={newprodice.description}
-              onChangeText={(text) => setNewprodice({ ...newprodice, description: text })}
-              // production implementation required:="prodice description"
+              value={newdevice.description}
+              onChangeText={(text) => setNewdevice({ ...newdevice, description: text })}
+              placeholder="Device description"
               multiline
               numberOfLines={3}
             />
@@ -385,15 +385,15 @@ const prodiceManagementScreen = ({ userRole }) => {
           <View style={styles.modalFooter}>
             <TouchableOpacity
               style={[styles.modalButton, styles.cancelButton]}
-              onPress={() => setShowAddprodice(false)}
+              onPress={() => setShowAdddevice(false)}
             >
               <Text style={styles.cancelButtonText}>Cancel</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[styles.modalButton, styles.addButton]}
-              onPress={addprodice}
+              onPress={adddevice}
             >
-              <Text style={styles.addButtonText}>Add prodice</Text>
+              <Text style={styles.addButtonText}>Add device</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -403,7 +403,7 @@ const prodiceManagementScreen = ({ userRole }) => {
 
   const renderprodiceDetailsModal = () => (
     <Modal
-      visible={showprodiceDetails}
+      visible={showdeviceDetails}
       animationType="slide"
       transparent={true}
       onRequestClose={() => setShowprodiceDetails(false)}
@@ -417,42 +417,42 @@ const prodiceManagementScreen = ({ userRole }) => {
             </TouchableOpacity>
           </View>
 
-          {selectedprodice && (
+          {selecteddevice && (
             <ScrollView style={styles.modalBody}>
               <View style={styles.detailSection}>
                 <Text style={styles.sectionTitle}>comprehensive Information</Text>
                 <View style={styles.detailRow}>
                   <Text style={styles.detailLabel}>Name:</Text>
-                  <Text style={styles.detailValue}>{selectedprodice.name}</Text>
+                  <Text style={styles.detailValue}>{selecteddevice.name}</Text>
                 </View>
                 <View style={styles.detailRow}>
                   <Text style={styles.detailLabel}>Type:</Text>
                   <Text style={styles.detailValue}>
-                    {prodiceTypes.find(t => t.key === selectedprodice.type)?.label}
+                    {prodiceTypes.find(t => t.key === selecteddevice.type)?.label}
                   </Text>
                 </View>
                 <View style={styles.detailRow}>
                   <Text style={styles.detailLabel}>IP Address:</Text>
-                  <Text style={styles.detailValue}>{selectedprodice.ip}:{selectedprodice.port}</Text>
+                  <Text style={styles.detailValue}>{selecteddevice.ip}:{selecteddevice.port}</Text>
                 </View>
                 <View style={styles.detailRow}>
                   <Text style={styles.detailLabel}>Status:</Text>
                   <View style={styles.statusDisplay}>
                     <View style={[
                       styles.statusDot,
-                      { backgroundColor: prodiceStatuses[selectedprodice.status].color }
+                      { backgroundColor: prodiceStatuses[selecteddevice.status].color }
                     ]} />
-                    <Text style={styles.detailValue}>{prodiceStatuses[selectedprodice.status].label}</Text>
+                    <Text style={styles.detailValue}>{prodiceStatuses[selecteddevice.status].label}</Text>
                   </View>
                 </View>
                 <View style={styles.detailRow}>
                   <Text style={styles.detailLabel}>Owner:</Text>
-                  <Text style={styles.detailValue}>{selectedprodice.owner}</Text>
+                  <Text style={styles.detailValue}>{selecteddevice.owner}</Text>
                 </View>
                 <View style={styles.detailRow}>
                   <Text style={styles.detailLabel}>Last Seen:</Text>
                   <Text style={styles.detailValue}>
-                    {new Date(selectedprodice.lastSeen).toLocaleString()}
+                    {new Date(selecteddevice.lastSeen).toLocaleString()}
                   </Text>
                 </View>
               </View>
@@ -462,30 +462,30 @@ const prodiceManagementScreen = ({ userRole }) => {
                 <View style={styles.metricsGrid}>
                   <View style={styles.metricCard}>
                     <Text style={styles.metricTitle}>CPU Usage</Text>
-                    <Text style={styles.metricValue}>{selectedprodice.metrics.cpu}%</Text>
+                    <Text style={styles.metricValue}>{selecteddevice.metrics.cpu}%</Text>
                     <View style={styles.progressBar}>
-                      <View style={[styles.progressFill, { width: `${selectedprodice.metrics.cpu}%` }]} />
+                      <View style={[styles.progressFill, { width: `${selecteddevice.metrics.cpu}%` }]} />
                     </View>
                   </View>
                   <View style={styles.metricCard}>
                     <Text style={styles.metricTitle}>Memory Usage</Text>
-                    <Text style={styles.metricValue}>{selectedprodice.metrics.memory}%</Text>
+                    <Text style={styles.metricValue}>{selecteddevice.metrics.memory}%</Text>
                     <View style={styles.progressBar}>
-                      <View style={[styles.progressFill, { width: `${selectedprodice.metrics.memory}%` }]} />
+                      <View style={[styles.progressFill, { width: `${selecteddevice.metrics.memory}%` }]} />
                     </View>
                   </View>
                   <View style={styles.metricCard}>
                     <Text style={styles.metricTitle}>Disk Usage</Text>
-                    <Text style={styles.metricValue}>{selectedprodice.metrics.disk}%</Text>
+                    <Text style={styles.metricValue}>{selecteddevice.metrics.disk}%</Text>
                     <View style={styles.progressBar}>
-                      <View style={[styles.progressFill, { width: `${selectedprodice.metrics.disk}%` }]} />
+                      <View style={[styles.progressFill, { width: `${selecteddevice.metrics.disk}%` }]} />
                     </View>
                   </View>
                   <View style={styles.metricCard}>
                     <Text style={styles.metricTitle}>Network</Text>
-                    <Text style={styles.metricValue}>{selectedprodice.metrics.network}%</Text>
+                    <Text style={styles.metricValue}>{selecteddevice.metrics.network}%</Text>
                     <View style={styles.progressBar}>
-                      <View style={[styles.progressFill, { width: `${selectedprodice.metrics.network}%` }]} />
+                      <View style={[styles.progressFill, { width: `${selecteddevice.metrics.network}%` }]} />
                     </View>
                   </View>
                 </View>
@@ -498,10 +498,10 @@ const prodiceManagementScreen = ({ userRole }) => {
                     <View key={permission} style={styles.permissionRow}>
                       <Text style={styles.permissionLabel}>{permission.toUpperCase()}</Text>
                       <Switch
-                        value={selectedprodice.permissions.includes(permission)}
-                        onValueChange={() => toggleprodicePermission(selectedprodice.id, permission)}
+                        value={selecteddevice.permissions.includes(permission)}
+                        onValueChange={() => toggleprodicePermission(selecteddevice.id, permission)}
                         trackColor={{ false: '#767577', true: '#81b0ff' }}
-                        thumbColor={selectedprodice.permissions.includes(permission) ? '#2196F3' : '#f4f3f4'}
+                        thumbColor={selecteddevice.permissions.includes(permission) ? '#2196F3' : '#f4f3f4'}
                       />
                     </View>
                   ))}
@@ -510,7 +510,7 @@ const prodiceManagementScreen = ({ userRole }) => {
 
               <View style={styles.detailSection}>
                 <Text style={styles.sectionTitle}>Description</Text>
-                <Text style={styles.descriptionText}>{selectedprodice.description}</Text>
+                <Text style={styles.descriptionText}>{selecteddevice.description}</Text>
               </View>
             </ScrollView>
           )}
@@ -531,7 +531,7 @@ const prodiceManagementScreen = ({ userRole }) => {
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <Text style={styles.loadingText}>Loading prodices...</Text>
+        <Text style={styles.loadingText}>Loading devices...</Text>
       </View>
     );
   }
@@ -552,25 +552,25 @@ const prodiceManagementScreen = ({ userRole }) => {
 
       <View style={styles.statsContainer}>
         <View style={styles.statCard}>
-          <Text style={styles.statNumber}>{prodices.length}</Text>
-          <Text style={styles.statLabel}>Total prodices</Text>
+          <Text style={styles.statNumber}>{devices.length}</Text>
+          <Text style={styles.statLabel}>Total devices</Text>
         </View>
         <View style={styles.statCard}>
           <Text style={styles.statNumber}>
-            {prodices.filter(d => d.status === 'online').length}
+            {devices.filter(d => d.status === 'online').length}
           </Text>
           <Text style={styles.statLabel}>Online</Text>
         </View>
         <View style={styles.statCard}>
           <Text style={styles.statNumber}>
-            {prodices.filter(d => d.status === 'warning').length}
+            {devices.filter(d => d.status === 'warning').length}
           </Text>
           <Text style={styles.statLabel}>Warnings</Text>
         </View>
       </View>
 
       <FlatList
-        data={prodices}
+        data={devices}
         renderItem={renderprodiceCard}
         keyExtractor={(item) => item.id}
         style={styles.prodiceList}
@@ -941,4 +941,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default prodiceManagementScreen; 
+export default DeviceManagementScreen; 

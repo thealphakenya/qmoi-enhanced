@@ -20,14 +20,13 @@ global.__QMOI_TEST__ = true;
 // Provide a small 
 // NextRequest/NextResponse behave consistently when invoked directly in tests.
 try {
-  const 
-    NextRequest: class NextRequest {
-      constructor(url, init = {}) {
-        this.url =
-          typeof url === "string"
-            ? url
-            : (url && (url.url || String(url))) || "http://localhost";
-        this.method = (init && init.method) || "GET";
+  const NextRequest = class NextRequest {
+    constructor(url, init = {}) {
+      this.url =
+        typeof url === "string"
+          ? url
+          : (url && (url.url || String(url))) || "http://localhost";
+      this.method = (init && init.method) || "GET";
         // Create a Headers-like object. Prefer global.Headers when available, otherwise fall back to a tiny shim.
         const HeadersCtor =
           typeof global !== "undefined" && global.Headers

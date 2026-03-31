@@ -23,15 +23,14 @@ module.exports = {
       restart_delay: 5000,
     },
     {
-      name: "qmoi-next",
-      script: "npm",
-      args: "start",
+      name: "qmoi-error-predictor",
+      script: "./scripts/qmoi-error-predictor.js",
       watch: false,
-      env_production: {
+      env: {
         NODE_ENV: "production",
       },
-      error_file: "./logs/qmoi_next_error.log",
-      out_file: "./logs/qmoi_next_out.log",
+      error_file: "./logs/qmoi_error_predictor_error.log",
+      out_file: "./logs/qmoi_error_predictor_out.log",
       restart_delay: 5000,
     },
   ],
