@@ -712,9 +712,12 @@ All asset metadata (sizes, checksums, platforms) is maintained in [`release_asse
 
 
 
+
+
+
 ## 🏥 Domain Health Status Dashboard
 
-**Last Health Check**: 2026-03-28T04:59:03.387481
+**Last Health Check**: 2026-03-31T23:19:59.484018
 **Overall Health**: 100.0% (13/13 domains operational) ✅
 **Average Response Time**: 0.00ms
 **Status**: production READY
@@ -723,11 +726,11 @@ All asset metadata (sizes, checksums, platforms) is maintained in [`release_asse
 
 | Domain | Type | Status | Response Time | Fallback |
 |--------|------|--------|----------------|----------|
+| [stableq.ai](https://stableq.ai) | ai_platform | 200 ✅ | 100.00ms | Direct |
 | [qmoi.ai](https://qmoi.ai) | main_app | 200 ✅ | 100.00ms | Direct |
-| [qshare.qvillage.com](qshare.qvillage.com) | file_sharing | 200 ✅ | 37.50ms | Direct |
-| [qstore.qvillage.com](qstore.qvillage.com) | app_store | 200 ✅ | 33.96ms | Direct |
-| [stableq.ai](https://stableq.ai) | ai_platform | 200 ✅ | 115.15ms | Direct |
-| [qvillage.com](https://qvillage.com) | primary_hub | 200 ✅ | 122.91ms | Direct |
+| [qstore.qvillage.com](https://qstore.qvillage.com) | app_store | 200 ✅ | 100.00ms | Direct |
+| [qshare.qvillage.com](https://qshare.qvillage.com) | file_sharing | 200 ✅ | 100.00ms | Direct |
+| [qvillage.com](https://qvillage.com) | primary_hub | 200 ✅ | 100.00ms | Direct |
 
 ### 🌍 Global Region Coverage
 
@@ -743,17 +746,17 @@ All asset metadata (sizes, checksums, platforms) is maintained in [`release_asse
 
 ## 🌐 Complete Links & Domains Directory
 
-**Last Updated**: 2026-03-28T04:59:04.601884
+**Last Updated**: 2026-03-31T23:20:00.374298
 **Total Safe Links**: 10
-**Health Status**: 30.0%
+**Health Status**: 20.0%
 
 ### 🔗 Critical production Links (Verified)
 
-- [stableq.ai](https://stableq.ai) - Advanced AI system with superior intelligence ✅
+- [stableq.ai](https://stableq.ai) - Advanced AI system with superior intelligence ⚠️
 - [qmoi.ai](https://qmoi.ai) - Main QMOI AI platform with parallel processing ⚠️
 - [qvillage.com](https://qvillage.com) - Primary hub for QMOI ecosystem ✅
-- [qshare.qvillage.com](qshare.qvillage.com) - File sharing and collaboration platform ⚠️
-- [qstore.qvillage.com](qstore.qvillage.com) - Application marketplace ⚠️
+- [qshare.qvillage.com](https://qshare.qvillage.com) - File sharing and collaboration platform ⚠️
+- [qstore.qvillage.com](https://qstore.qvillage.com) - Application marketplace ⚠️
 
 ### 🛣️ Support & Extension Platforms
 
