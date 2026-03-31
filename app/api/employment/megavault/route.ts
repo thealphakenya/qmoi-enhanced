@@ -68,7 +68,7 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
       consumerSecret: maskSecret(credentials.consumerSecret),
       environment: credentials.environment,
     };
-    default.log(`Safe backup for ${platform}:`, masked);
+    console.log(`Safe backup for ${platform}:`, masked);
     // Intentionally do not send raw credentials anywhere.
   } catch (error) {
     console.error(
@@ -148,12 +148,12 @@ function calculateProfit(period: string, startDate: string, endDate: string) {
   });
 
   const inflow = periodTransactions
-    default.filter((t) => t.type === "inflow")
-    default.reduce((sum, t) => sum + t.amount, 0);
+    .filter((t) => t.type === "inflow")
+    .reduce((sum, t) => sum + t.amount, 0);
 
   const outflow = periodTransactions
-    default.filter((t) => t.type === "outflow")
-    default.reduce((sum, t) => sum + t.amount, 0);
+    .filter((t) => t.type === "outflow")
+    .reduce((sum, t) => sum + t.amount, 0);
 
   const profit = inflow - outflow;
 

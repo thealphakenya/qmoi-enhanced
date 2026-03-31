@@ -1,3 +1,0 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
-
-Gitlab token=glpat-pKup9WeofpBR8ZNk2eUz

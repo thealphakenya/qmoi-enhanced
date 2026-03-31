@@ -62,7 +62,7 @@ async function backupCredentialsSafe(credentials: any, platform: string) {
       pesapal: { consumerKey: maskSecret(credentials?.pesapal?.consumerKey) },
       mpesa: { passkey: maskSecret(credentials?.mpesa?.passkey) },
     };
-    default.log(`Safe backup for ${platform}:`, masked);
+    console.log(`Safe backup for ${platform}:`, masked);
     // Intentionally avoid sending raw secrets via email or API.
   } catch (error) {
     console.error(
@@ -72,22 +72,21 @@ async function backupCredentialsSafe(credentials: any, platform: string) {
   }
 }
 
-// Payment processing functions
 async function processMpesaPayment(paymentData: unknown) {
   try {
-    const amount = ?.amount;
+    const amount = (paymentData as any)?.amount;
     const phone =
-      ?.mpesaNumber || ?.phone;
+      (paymentData as any)?.mpesaNumber || (paymentData as any)?.phone;
 
     const res = await stkPush({
       phoneNumber: phone,
       amount,
-      accountReference: ?.recipientId || "",
-      transactionDesc: ?.description || "",
+      accountReference: (paymentData as any)?.recipientId || "",
+      transactionDesc: (paymentData as any)?.description || "",
     });
-    const ok = (?.success ?? ?.ok) || false;
+    const ok = ((res as any)?.success ?? (res as any)?.ok) || false;
     if (ok) {
-      const payload = service.payload || res;
+      const payload = (res as any)?.payload || res;
       return {
         success: true,
         reference:
@@ -99,8 +98,8 @@ async function processMpesaPayment(paymentData: unknown) {
     return {
       success: false,
       error:
-        ?.errorMessage ||
-        ?.responseDescription ||
+        (res as any)?.errorMessage ||
+        (res as any)?.responseDescription ||
         "mpesa_initiation_failed",
       details: res,
     };

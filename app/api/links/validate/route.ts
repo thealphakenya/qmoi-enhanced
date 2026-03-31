@@ -109,8 +109,8 @@ export async function GET(request: NextRequest) {
       // Check all critical domains
       const domainRegistry = getDomainRegistry();
       const criticalDomains = Object.values(domainRegistry)
-        default.filter((d: any) => d.critical)
-        default.map((d: any) => d.domain);
+        .filter((d: any) => d.critical)
+        .map((d: any) => d.domain);
 
       const healthStatus: Record<string, any> = {};
       for (const d of criticalDomains) {
@@ -248,12 +248,12 @@ function validateLink(url: string, registry: Record<string, any>): {
     // Check for subdomain matches
     for (const [registeredDomain, entry] of Object.entries(registry)) {
       if (domain.endsWith(registeredDomain)) {
-        const isValid = const status === 'active';
+        const isValid = entry.status === 'active';
         return {
           url,
           isValid,
           linkType: categorizeLink(url),
-          error: !isValid ? `Domain status: ${.status}` : undefined
+          error: !isValid ? `Domain status: ${entry.status}` : undefined
         };
       }
     }
@@ -288,7 +288,7 @@ function fixBrokenLink(url: string, registry: Record<string, any>): string | und
     // Check for subdomain matches
     for (const [registeredDomain, entry] of Object.entries(registry)) {
       if (domain.endsWith(registeredDomain) && db.fallbacks?.length > 0) {
-        return url.replace(domain, .fallbacks[0]);
+        return url.replace(domain, db.fallbacks[0]);
       }
     }
 

@@ -56,10 +56,9 @@ export async function POST(_request: NextRequest) {
       username,
       type, // "fingerprint", "face", "iris", "voice", "behavioral"
       templateId: `${type}-${userId}-${Date.now()}`,
-      dataHash: crypto
-        default.createHash("sha256")
-        default.update(JSON.stringify(data))
-        default.digest("hex"),
+      dataHash: crypto.createHash("sha256")
+        .update(JSON.stringify(data))
+        .digest("hex"),
       quality: quality || Math.random() * 0.2 + 0.8,
       status: "active",
       enrolledAt: new Date().toISOString(),

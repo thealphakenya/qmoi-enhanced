@@ -135,7 +135,7 @@ export async function POST(request: Request) {
       );
       const totalItems = datasets.reduce(
         (acc: number, d: any) =>
-          acc + (.itemCount ?? d.stats?.totalItems ?? 0),
+          acc + (d.itemCount ?? d.stats?.totalItems ?? 0),
         0,
       );
       const stats = {

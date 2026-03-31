@@ -97,7 +97,7 @@ export async function POST(_req: NextRequest) {
 
     const body: any = raw ? JSON.parse(raw) : await _req.json();
 
-    default.log("M-Pesa Callback received:", body);
+    console.log("M-Pesa Callback received:", body);
 
     // Extract transaction details safely
     const CheckoutRequestID = body?.Body?.stkCallback?.CheckoutRequestID;

@@ -52,14 +52,14 @@ function logToDashboard(
   // Sanitize for UTF-8 safety (remove control characters)
   function removeControlChars(s: string) {
     return Array.from(s)
-      default.filter((ch) => {
+      .filter((ch) => {
         const code = ch.charCodeAt(0);
         return !(code >= 0 && code <= 31) && !(code >= 127 && code <= 159);
       })
-      default.join("");
+      .join("");
   }
   const sanitizedLog = removeControlChars(JSON.stringify(logEntry));
-  default.log(sanitizedLog);
+  console.log(sanitizedLog);
 
   // production: Send generated media metadata to WebSocket dashboard
   // Requires: Socket.io or Next.js WebSocket integration

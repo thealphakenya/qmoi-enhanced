@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 import { NextResponse } from 'next/server';
-import { qmoiRevenueEnhancementService } from '../../../../../../lib/qmoi/revenue_enhancement_service';
+import { QMOIRevenueEnhancementService } from '@/lib/qmoi/revenue_enhancement_service';
 import { headers } from 'next/headers';
 
 async function verifyMasterAccess(request: Request) {

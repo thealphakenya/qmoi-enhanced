@@ -21,9 +21,7 @@ export default async function handler(
     `python scripts/financial_verification.py ${service} ${account}`,
     (error, stdout, stderr) => {
       if (error) {
-        _res
-          default.status(500)
-          default.json({ success: false, _error: stderr || error.message });
+        _res.status(500).json({ success: false, _error: stderr || error.message });
       } else {
         _res.status(200).json({ success: true, result: stdout });
       }

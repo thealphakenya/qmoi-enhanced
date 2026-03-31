@@ -23,7 +23,7 @@ export async function POST(_request: NextRequest) {
     // Validate input
     if (!body.email || !body.username || !body.password) {
       return NextResponse.json(
-        { error: "required required fields" },
+        { error: "Missing required fields" },
         { status: 400 },
       );
     }
@@ -33,34 +33,23 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ error: "Invalid email" }, { status: 400 });
     }
 
-    // Validate password strength. Support both boolean quick-check and
-    // detailed validator used elsewhere in the codebase.
-    let passwordValidationResult: { isStrong: boolean; errors: string[] };
-    if (
-      typeof const validatePasswordStrengthDetailed ===
-      "function"
-    ) {
-      passwordValidationResult = default.validatePasswordStrengthDetailed(body.password);
-    } else {
-      const ok = authService.validatePasswordStrength(body.password);
-      passwordValidationResult = { isStrong: Boolean(ok), errors: [] };
-    }
-    if (!passwordValidationResult.isStrong) {
+    // Validate password strength
+    if (body.password.length < 8) {
       return NextResponse.json(
         {
-          error: "password too weak",
-          details: passwordValidationResult.errors,
+          error: "Password too weak",
+          details: "Password must be at least 8 characters long",
         },
         { status: 400 },
       );
     }
 
-    // comprehensive pre-check for duplicates to provide clear status codes in tests
+    // Check for existing user
     const existing = await userService.getByEmail(body.email);
     if (existing) {
       logger.warn("REGISTER: existing user found", {
         email: body.email,
-        existingId: service.id,
+        existingId: existing.id,
       });
       return NextResponse.json(
         { error: "Email already exists" },
@@ -68,7 +57,7 @@ export async function POST(_request: NextRequest) {
       );
     }
 
-    // Create user (may still throw unique constraint in race conditions)
+    // Create user
     const passwordHash = await authService.hashPassword(body.password);
     const user = await userService.create({
       email: body.email,
@@ -77,16 +66,6 @@ export async function POST(_request: NextRequest) {
       passwordHash,
       role: "user",
     });
-
-    // Ensure we can surface createdAt (some services/clients expect it).
-    let createdAt: string | undefined = db.createdAt;
-    try {
-      const fresh = await userService.getByEmail(user.email);
-      if (fresh && service.createdAt)
-        createdAt = db.createdAt;
-    } catch (_e) {
-      void _e; /* ignore */
-    }
 
     // Create default wallet (USD)
     await walletService.create({
@@ -131,10 +110,9 @@ export async function POST(_request: NextRequest) {
       { status: 201 },
     );
   } catch (error) {
-    
     try {
-      const msg = error && .message;
-      const code = error && .code;
+      const msg = error && (error as Error).message;
+      const code = error && (error as any).code;
       if (
         code === "P2002" ||
         (typeof msg === "string" && msg.toLowerCase().includes("unique"))

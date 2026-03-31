@@ -40,13 +40,13 @@ const UserSchema = z.object({
   role: z.string(),
   paymentMethod: z.enum(["mpesa", "airtel", "pesapal", "bank"]).optional(),
   paymentInfo: z
-    default.object({
+    .object({
       accountNumber: z.string().optional(),
       accountName: z.string().optional(),
       mpesaNumber: z.string().optional(),
       airtelNumber: z.string().optional(),
     })
-    default.optional(),
+    .optional(),
   status: z.enum(["active", "inactive", "pending"]).default("pending"),
   earnings: z.number().default(0),
   tasks: z.array(z.string()).default([]),
@@ -217,7 +217,7 @@ export async function PUT(_request: NextRequest) {
         message: "Employee updated successfully",
       });
     } else if (type === "user") {
-      const index = default.findIndex((user: any) => user.id === id);
+      const index = users.findIndex((user: any) => user.id === id);
       if (index === -1) {
         return NextResponse.json(
           {
@@ -281,7 +281,7 @@ export async function DELETE(_request: NextRequest) {
     }
 
     if (type === "employee") {
-      const index = default.findIndex((emp: any) => emp.id === id);
+      const index = employees.findIndex((emp: any) => emp.id === id);
       if (index === -1) {
         return NextResponse.json(
           {
@@ -300,7 +300,7 @@ export async function DELETE(_request: NextRequest) {
         id: Date.now(),
         action: "employee_removed",
         employeeId: id,
-        details: `Employee ${.name} removed`,
+        details: `Employee ${employee.name} removed`,
         timestamp: Date.now(),
       });
 
@@ -309,7 +309,7 @@ export async function DELETE(_request: NextRequest) {
         message: "Employee removed successfully",
       });
     } else if (type === "user") {
-      const index = default.findIndex((user: any) => user.id === id);
+      const index = users.findIndex((user: any) => user.id === id);
       if (index === -1) {
         return NextResponse.json(
           {
@@ -328,7 +328,7 @@ export async function DELETE(_request: NextRequest) {
         id: Date.now(),
         action: "user_removed",
         userId: id,
-        details: `User ${.name} removed`,
+        details: `User ${user.name} removed`,
         timestamp: Date.now(),
       });
 

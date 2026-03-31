@@ -58,8 +58,8 @@ export async function GET(request: NextRequest) {
           endDate: new Date().toISOString(),
         },
         lastUpdated: new Date().toISOString(),
-        _status: "
-        _message:
+        status: "active",
+        message:
           "Feature enabled in production. Data aggregation in progress.",
       },
       { status: 200 },

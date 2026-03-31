@@ -39,14 +39,13 @@ export async function GET(_req: NextRequest) {
         date,
       },
       hasChanges,
-      changesCount: statusOutput.split("\n").filter((line) => line.trim())
-        service.length,
+      changesCount: statusOutput.split("\n").filter((line) => line.trim()).length,
     });
   } catch (_error: unknown) {
     return NextResponse.json(
       {
         _error: "Failed to get Git status",
-        details: _error instanceof Error ? error.message : String(error),
+        details: _error instanceof Error ? _error.message : String(_error),
       },
       { status: 500 },
     );

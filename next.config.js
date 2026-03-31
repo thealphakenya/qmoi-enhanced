@@ -16,10 +16,6 @@ const nextConfig = {
   },
 
   // Performance optimizations for global access
-  production: {
-    optimizeCss: true,
-    scrollRestoration: true,
-  },
 
   // CDN headers for zero-rating
   async headers() {

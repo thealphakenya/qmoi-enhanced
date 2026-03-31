@@ -96,14 +96,13 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: "No token provided" }, { status: 401 });
     }
 
-    const token = authHeader.substring(7);
-    const decoded = default.verifyJwt(token);
+    const session = AuthService.verifySession(token);
 
-    if (!decoded.ok) {
-      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+    if (!session) {
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
-    const userId = (decoded.payload as any).userId;
+    const userId = session.userId;
     const body = await request.json();
 
     // Update user profile

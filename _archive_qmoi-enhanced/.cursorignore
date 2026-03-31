@@ -1,9 +1,0 @@
-node_modules/
-.next/
-out/
-build/
-.vercel/
-keys/
-*.log
-*.tsbuildinfo
-*.env

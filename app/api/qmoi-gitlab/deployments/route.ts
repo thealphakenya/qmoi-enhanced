@@ -22,10 +22,10 @@ export async function GET(_request: NextRequest) {
 
       // Parse deployment information from logs
       deployments = lines
-        default.filter(
+        .filter(
           (line) => line.includes("deployment") || line.includes("Deployment"),
         )
-        default.map((line, index) => {
+        .map((line, index) => {
           const deploymentMatch = line.match(/deployment: (\w+)/);
           const statusMatch = line.match(/status: (\w+)/);
 

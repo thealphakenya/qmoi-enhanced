@@ -146,7 +146,7 @@ async function generateMicrotaskRevenue(
     const qmoiProfit = clientPayment - userPayment;
 
     // production:, would call real payment processor
-    logger.info("
+    logger.info("Processing revenue", {
       title: taskData.title,
       qmoiProfit,
     });
@@ -157,7 +157,7 @@ async function generateMicrotaskRevenue(
       userPayment,
       qmoiProfit,
       revenue: qmoiProfit,
-      dataType: "
+      dataType: "microtask",
     };
   } catch (error) {
     logger.error("Microtask revenue generation failed", { error: error });
@@ -176,7 +176,7 @@ async function generateAffiliateRevenue(
     const userShare = commission * 0.7; // User gets 70% of commission
     const qmoiShare = commission * 0.3; // QMOI gets 30%
 
-    logger.info("
+    logger.info("Campaign revenue processed", {
       campaign: campaignData.name,
       sales,
     });
@@ -189,7 +189,7 @@ async function generateAffiliateRevenue(
       userShare,
       qmoiShare,
       revenue: qmoiShare,
-      dataType: "
+      dataType: "affiliate",
     };
   } catch (error) {
     logger.error("Affiliate revenue generation failed", { error: error });
@@ -206,7 +206,7 @@ async function generateContentRevenue(
     const userPayment = projectData.reward || 0;
     const qmoiProfit = salePrice - userPayment;
 
-    logger.info("
+    logger.info("Content revenue generated", {
       title: projectData.title,
       qmoiProfit,
     });
@@ -217,7 +217,7 @@ async function generateContentRevenue(
       userPayment,
       qmoiProfit,
       revenue: qmoiProfit,
-      dataType: "
+      dataType: "content",
     };
   } catch (error) {
     logger.error("Content revenue generation failed", { error: error });
@@ -235,7 +235,7 @@ async function generateReferralRevenue(
     const userBonus = totalBonus * 0.8; // User gets 80%
     const qmoiBonus = totalBonus * 0.2; // QMOI gets 20%
 
-    logger.info("
+    logger.info("Referral bonus processed", {
       program: referralData.name,
       referrals,
     });
@@ -247,7 +247,7 @@ async function generateReferralRevenue(
       userBonus,
       qmoiBonus,
       revenue: qmoiBonus,
-      dataType: "
+      dataType: "referral_bonus"
     };
   } catch (error) {
     logger.error("Referral revenue generation failed", { error: error });
@@ -282,11 +282,11 @@ async function addToMpesaAccount(amount: number, description: string) {
       };
     }
 
-    const mpesaUrl = `https://${
+    const mpesaUrl = `${
       credentials.environment === "production"
-        ? "api.safaricom.co.ke"
-        : "production.safaricom.co.ke"
-    }/mpesa/c2b/v1/
+        ? "https://api.safaricom.co.ke"
+        : "https://sandbox.safaricom.co.ke"
+    }/mpesa/c2b/v1/simulate`;
 
     const response = await fetch(mpesaUrl, {
       method: "POST",
@@ -313,7 +313,7 @@ async function addToMpesaAccount(amount: number, description: string) {
       description,
       status: response.ok ? "success" : "failed",
       timestamp: Date.now(),
-      reference: service.CheckoutRequestID || `QMOI_${Date.now()}`,
+      reference: result.CheckoutRequestID || `QMOI_${Date.now()}`,
     });
 
     if (!response.ok) {
@@ -342,7 +342,7 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
     const clientPayment = totalCost * 1.4; // Client pays 40% premium
     const qmoiProfit = clientPayment - totalCost;
 
-    logger.info("
+    logger.info("Survey revenue calculated", {
       title: surveyData.title,
       participants,
     });
@@ -354,7 +354,7 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       clientPayment,
       qmoiProfit,
       revenue: qmoiProfit,
-      dataType: "
+      dataType: "survey",
     };
   } catch (error) {
     return { success: false, error: "Survey revenue failed" };
@@ -369,7 +369,7 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
     const clientPayment = totalCost * 1.5; // Client pays 50% premium
     const qmoiProfit = clientPayment - totalCost;
 
-    logger.info("
+    logger.info("Data labeling revenue calculated", {
       project: labelingData.project,
       dataPoints,
     });
@@ -381,7 +381,7 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       clientPayment,
       qmoiProfit,
       revenue: qmoiProfit,
-      dataType: "
+      dataType: "data-labeling",
     };
   } catch (error) {
     return { success: false, error: "Data labeling revenue failed" };
@@ -397,7 +397,7 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
     const totalCost = subscriptions * costPerSubscription;
     const qmoiProfit = totalRevenue - totalCost;
 
-    logger.info("
+    logger.info("SaaS revenue calculated", {
       service: saasData.service,
       subscriptions,
     });
@@ -409,7 +409,7 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       totalCost,
       qmoiProfit,
       revenue: qmoiProfit,
-      dataType: "
+      dataType: "saas",
     };
   } catch (error) {
     return { success: false, error: "SaaS reselling revenue failed" };

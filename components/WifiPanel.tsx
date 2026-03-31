@@ -230,8 +230,9 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
       try {
         const monitorUrl =
           (typeof window !== "undefined" &&
-            .process?.env?.NEXT_PUBLIC_MONITOR_URL) ||
-          "process.env.API_URL || "http://localhost:\1"";
+            process.env.NEXT_PUBLIC_MONITOR_URL) ||
+          process.env.API_URL ||
+          "http://localhost:3000";
         const res = await fetch(`${monitorUrl}/monitor/status`);
         if (!res.ok) throw new Error("Failed to fetch monitor status");
         const data = await res.json();
@@ -296,7 +297,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
     setLoading(true);
     setError(null);
     try {
-      await fetch("process.env.API_URL || "http://localhost:\1"/monitor", {
+      await fetch(process.env.API_URL || "http://localhost:3000/monitor", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ enable: false }),
@@ -330,7 +331,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
   // Fetch analytics
   const fetchAnalytics = async () => {
     try {
-      const res = await fetch("process.env.API_URL || "http://localhost:\1"/analytics");
+      const res = await fetch(process.env.API_URL || "http://localhost:3000/analytics");
       const data = await res.json();
       setAnalytics(data);
     } catch (error) {
@@ -343,10 +344,9 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
     }
   };
 
-  // Fetch hourly analytics
   const fetchHourlyAnalytics = async () => {
     try {
-      const res = await fetch("process.env.API_URL || "http://localhost:\1"/analytics/hourly");
+      const res = await fetch(process.env.API_URL || "http://localhost:3000/analytics/hourly");
       const data = await res.json();
       setHourlyAnalytics(data);
     } catch (error) {
@@ -362,16 +362,15 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
     }
   };
 
-  // Export analytics as CSV
   const exportAnalytics = () => {
-    window.open("process.env.API_URL || "http://localhost:\1"/export-analytics", "_blank");
+    window.open(process.env.API_URL || "http://localhost:3000/export-analytics", "_blank");
   };
 
   // Send alert to external system
   const sendAlert = async (msg: string) => {
     if (!webhookUrl) return;
     try {
-      await fetch("process.env.API_URL || "http://localhost:\1"/alert", {
+      await fetch(process.env.API_URL || "http://localhost:3000/alert", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: msg, webhook: webhookUrl }),

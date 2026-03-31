@@ -11,10 +11,10 @@
  */
 
 import type { NextApiRequest, NextApiResponse } from "next";
-import { consciousnessEngine } from "../../../../qmoi/core/consciousness/engine";
-import { awarenessSystem } from "../../../../qmoi/core/awareness/system";
-import { memorySyncSystem } from "../../../../qmoi/core/memory/sync";
-import { orchestrationEngine } from "../../../../qmoi/core/orchestration/engine";
+import { consciousnessEngine } from "@/qmoi/core/consciousness/engine";
+import { awarenessSystem } from "@/qmoi/core/awareness/system";
+import { memorySync } from "@/qmoi/core/memory/sync";
+import { orchestrationEngine } from "@/qmoi/core/orchestration/engine";
 
 export default async function handler(
   req: NextApiRequest,

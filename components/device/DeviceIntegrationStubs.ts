@@ -342,8 +342,11 @@ export const TVDecoderIntegration: TVDecoderprodice = {
       this.port.close();
       this.port = null;
     }
+    this.connected = false;
   }
 
+  async connect() {
+    try {
       if (!hasDecoder) {
         console.log(
           "[MOCK MODE] TV decoder not detected in system, using mock mode",
@@ -520,19 +523,19 @@ export const MessagingIntegration: prodiceIntegration = {
   queuedMessages: [] as string[],
 
   async connect() {
-    if (.connected) return true;
+    if (this.connected) return true;
 
     console.log(
-      "[
+      "Connecting to WebSocket..."
     );
     await new Promise((resolve) => setTimeout(resolve, 500));
-    .connected = true;
+    this.connected = true;
     console.log(
-      "[
+      "Connected to WebSocket successfully"
     );
 
     // Process any queued messages
-    while (.queuedMessages.length > 0) {
+    while (this.queuedMessages.length > 0) {
       const msg = .queuedMessages.shift();
       if (msg) {
         await .sendCommand(msg);
@@ -543,8 +546,8 @@ export const MessagingIntegration: prodiceIntegration = {
   },
 
   async sendCommand(msg: string) {
-    if (!.connected) {
-      .queuedMessages.push(msg);
+    if (!this.connected) {
+      this.queuedMessages.push(msg);
       console.log(
         "[MOCK MODE] Messaging service: not connected, queuing message",
       );
@@ -588,33 +591,33 @@ export const MLPlatformIntegration: prodiceIntegration = {
 
   async connect() {
     console.log(
-      "[
+      "Connecting to ML Platform..."
     );
     await new Promise((resolve) => setTimeout(resolve, 800));
-    .connected = true;
+    this.connected = true;
     console.log(
-      "[
+      "Connected to ML Platform successfully"
     );
     return true;
   },
 
   async sendCommand(cmd: string) {
-    if (!.connected) {
+    if (!this.connected) {
       throw new Error(
-        "[
+        "Device not connected"
       );
     }
 
     const command = JSON.parse(cmd);
-    console.log("[
+    console.log("Processing command:", command.type);
     switch (command.type) {
       case "LOAD_MODEL":
         console.log(
-          "[
+          "Loading model:",
           command.modelId,
         );
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        .models.set(command.modelId, { state: "loaded" });
+        this.models.set(command.modelId, { state: "loaded" });
         return {
           ok: true,
           modelId: command.modelId,
@@ -626,11 +629,11 @@ export const MLPlatformIntegration: prodiceIntegration = {
       case "PREDICT":
         if (!this.models.has(command.modelId)) {
           throw new Error(
-            "[
+            "Model not loaded"
           );
         }
         console.log(
-          "[
+          "Running prediction for model:",
           command.modelId,
         );
         await new Promise((resolve) => setTimeout(resolve, 300));
@@ -646,7 +649,7 @@ export const MLPlatformIntegration: prodiceIntegration = {
 
       default:
         throw new Error(
-          `[
+          `Unknown command type: ${command.type}`
         );
     }
   },
@@ -698,17 +701,17 @@ export const AWSIntegration: prodiceIntegration = {
       }
 
       await new Promise((resolve) => setTimeout(resolve, 600));
-      .connected = true;
+      this.connected = true;
       return true;
     } catch (err) {
       (globalThis.console as any)?.error?.("Failed to connect to AWS:", err);
-      .connected = false;
+      this.connected = false;
       return false;
     }
   },
 
   async sendCommand(cmd: string) {
-    if (!.connected) {
+    if (!this.connected) {
       throw new Error("Not connected to AWS");
     }
 
@@ -753,17 +756,17 @@ export const AzureIntegration: prodiceIntegration = {
       }
 
       await new Promise((resolve) => setTimeout(resolve, 700));
-      .connected = true;
+      this.connected = true;
       return true;
     } catch (err) {
       (globalThis.console as any)?.error?.("Failed to connect to Azure:", err);
-      .connected = false;
+      this.connected = false;
       return false;
     }
   },
 
   async sendCommand(cmd: string) {
-    if (!.connected) {
+    if (!this.connected) {
       throw new Error("Not connected to Azure");
     }
 
@@ -811,17 +814,17 @@ export const GCPIntegration: prodiceIntegration = {
       }
 
       await new Promise((resolve) => setTimeout(resolve, 800));
-      .connected = true;
+      this.connected = true;
       return true;
     } catch (err) {
       (globalThis.console as any)?.error?.("Failed to connect to GCP:", err);
-      .connected = false;
+      this.connected = false;
       return false;
     }
   },
 
   async sendCommand(cmd: string) {
-    if (!.connected) {
+    if (!this.connected) {
       throw new Error("Not connected to GCP");
     }
 
@@ -864,20 +867,20 @@ export const IoTIntegration: prodiceIntegration = {
       this.prodices.set("prodice1", { type: "sensor", status: "online" });
       this.prodices.set("prodice2", { type: "actuator", status: "online" });
 
-      .connected = true;
+      this.connected = true;
       return true;
     } catch (err) {
       (globalThis.console as any)?.error?.(
         "Failed to connect to IoT network:",
         err,
       );
-      .connected = false;
+      this.connected = false;
       return false;
     }
   },
 
   async sendCommand(cmd: string) {
-    if (!.connected) {
+    if (!this.connected) {
       throw new Error("Not connected to IoT network");
     }
 
@@ -912,26 +915,26 @@ export const MobileIntegration: prodiceIntegration = {
       console.log("Mobile Integration: establishing connection...");
       await new Promise((resolve) => setTimeout(resolve, 600));
 
-      .prodiceInfo = {
+      this.prodiceInfo = {
         platform: Math.random() > 0.5 ? "iOS" : "Android",
         version: "15.0",
         capabilities: ["push_notifications", "location", "camera"],
       };
 
-      .connected = true;
+      this.connected = true;
       return true;
     } catch (err) {
       (globalThis.console as any)?.error?.(
         "Failed to connect to mobile prodice:",
         err,
       );
-      .connected = false;
+      this.connected = false;
       return false;
     }
   },
 
   async sendCommand(cmd: string) {
-    if (!.connected) {
+    if (!this.connected) {
       throw new Error("Not connected to mobile prodice");
     }
 
