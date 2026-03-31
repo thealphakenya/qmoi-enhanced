@@ -218,6 +218,8 @@ _Last updated: 2025-07-22_
 - status: 6 domains identified as unhealthy (parking/critical) by script at last run
 - production readiness markers: 17797 markers found in 3616 files (needs cleanup to reach 100% production code state)
 - external domain pings (qvillage.com, qcloud.ai, qmoi.com): no packet return (100% loss) in this environment
-- Node.js/NPM not present in this container (`node`, `npm` command not found); service launch from Next.js cannot be validated locally here
-- recommended actions: provision Node.js environment, fix external domain host records, re-run domain_health_check.py, run API health at /api/health after app starts
+- Node.js/NPM initially not present; `apk add nodejs npm` failed due container permissions (`Unable to open log: Permission denied`)
+- `scripts/prod-healthcheck.sh` attempted and failed with `npx: command not found`
+- `/api/health` and port 3000/4000 unreachable (connection refused)
+- recommended actions: run in a fully provisioned Node environment, start app with `npm run prod`, then re-check endpoints (`curl http://localhost:4000/api/health`), and update domain DNS records as needed
 
