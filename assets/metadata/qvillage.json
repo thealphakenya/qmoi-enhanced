@@ -76,8 +76,8 @@
   "privacy_policy": "https://qvillage.qmoi.com/privacy",
   "terms_of_service": "https://qvillage.qmoi.com/terms",
   "build_info": {
-    "build_date": "2026-03-25T00:47:38.003560+00:00",
-    "build_timestamp": 1774399658,
+    "build_date": "2026-03-31T23:19:21.402342+00:00",
+    "build_timestamp": 1774999161,
     "build_machine": "production-build-server",
     "build_environment": "production",
     "compiler_version": "latest",
@@ -118,8 +118,8 @@
     "secure_boot": true,
     "productioning": true
   },
-  "generated_at": "2026-03-25T00:47:38.003560+00:00",
+  "generated_at": "2026-03-31T23:19:21.402342+00:00",
   "generator_version": "2.0.0",
   "schema_version": "1.0",
-  "checksum": "6bb301506993769ece96bbe146f72e07ebc01598fd23b3b5ed258f7c51e782ef"
+  "checksum": "44d3dae0296559717e2cfcb550284e7a74e5819ff8f5ec9336173a4e1073e7ee"
 }

@@ -73,8 +73,8 @@
   "privacy_policy": "https://qstore.qmoi.com/privacy",
   "terms_of_service": "https://qstore.qmoi.com/terms",
   "build_info": {
-    "build_date": "2026-03-25T00:47:38.001334+00:00",
-    "build_timestamp": 1774399658,
+    "build_date": "2026-03-31T23:19:21.399852+00:00",
+    "build_timestamp": 1774999161,
     "build_machine": "production-build-server",
     "build_environment": "production",
     "compiler_version": "latest",
@@ -115,8 +115,8 @@
     "secure_boot": true,
     "productioning": true
   },
-  "generated_at": "2026-03-25T00:47:38.001334+00:00",
+  "generated_at": "2026-03-31T23:19:21.399852+00:00",
   "generator_version": "2.0.0",
   "schema_version": "1.0",
-  "checksum": "b76c155c471a9e24ecf2ed983523c84a8b5d400d0dd6f8b1be828242770460c9"
+  "checksum": "8b1caeac404af3bf1f7818c20653687696083d7e52a53c64928e5b22f69e1aad"
 }

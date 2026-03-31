@@ -81,8 +81,8 @@
   "privacy_policy": "https://qcity.qmoi.com/privacy",
   "terms_of_service": "https://qcity.qmoi.com/terms",
   "build_info": {
-    "build_date": "2026-03-25T00:47:37.994797+00:00",
-    "build_timestamp": 1774399657,
+    "build_date": "2026-03-31T23:19:21.391519+00:00",
+    "build_timestamp": 1774999161,
     "build_machine": "production-build-server",
     "build_environment": "production",
     "compiler_version": "latest",
@@ -123,8 +123,8 @@
     "secure_boot": true,
     "productioning": true
   },
-  "generated_at": "2026-03-25T00:47:37.994797+00:00",
+  "generated_at": "2026-03-31T23:19:21.391519+00:00",
   "generator_version": "2.0.0",
   "schema_version": "1.0",
-  "checksum": "17b92c47619bd24cbe41ddae2dde91b2a3093940f8bc6c714fb5b0c13e9bdcb3"
+  "checksum": "05ecffa1b6f951b093653d0ab30171371712f61b87349355cd34326c0b5d1f6c"
 }

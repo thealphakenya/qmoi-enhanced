@@ -82,8 +82,8 @@
   "privacy_policy": "https://qmoi.ai/privacy",
   "terms_of_service": "https://qmoi.ai/terms",
   "build_info": {
-    "build_date": "2026-03-25T00:47:37.992449+00:00",
-    "build_timestamp": 1774399657,
+    "build_date": "2026-03-31T23:19:21.388519+00:00",
+    "build_timestamp": 1774999161,
     "build_machine": "production-build-server",
     "build_environment": "production",
     "compiler_version": "latest",
@@ -124,8 +124,8 @@
     "secure_boot": true,
     "productioning": true
   },
-  "generated_at": "2026-03-25T00:47:37.992449+00:00",
+  "generated_at": "2026-03-31T23:19:21.388519+00:00",
   "generator_version": "2.0.0",
   "schema_version": "1.0",
-  "checksum": "b0a19f7e14b3312ed5178635ee53ebb975279f67db22eedd971b269e152a86db"
+  "checksum": "b0be58f9e1ce46633ffcb50711285da1a7868c3209c25fc129110475a2c54f77"
 }

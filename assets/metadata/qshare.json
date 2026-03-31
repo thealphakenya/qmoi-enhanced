@@ -71,8 +71,8 @@
   "privacy_policy": "https://qshare.qmoi.com/privacy",
   "terms_of_service": "https://qshare.qmoi.com/terms",
   "build_info": {
-    "build_date": "2026-03-25T00:47:37.996965+00:00",
-    "build_timestamp": 1774399657,
+    "build_date": "2026-03-31T23:19:21.394283+00:00",
+    "build_timestamp": 1774999161,
     "build_machine": "production-build-server",
     "build_environment": "production",
     "compiler_version": "latest",
@@ -113,8 +113,8 @@
     "secure_boot": true,
     "productioning": true
   },
-  "generated_at": "2026-03-25T00:47:37.996965+00:00",
+  "generated_at": "2026-03-31T23:19:21.394283+00:00",
   "generator_version": "2.0.0",
   "schema_version": "1.0",
-  "checksum": "740cad27f5cdecde93db7ebf4b8b2e57cefed536cad9bc80e5c3d077c34efad2"
+  "checksum": "90d2e4661229ff389021f810ddfc2334f11c855de242e52308e0eb770ec25788"
 }

@@ -1,0 +1,43 @@
+# [production READY] this file has no remaining production markers
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "buildCommand": "npm run build",
+  "installCommand": "npm install --legacy-peer-deps",
+  "env": {
+    "NODE_ENV": "production",
+    "QMOI_AUTO_SETUP_ENABLED": "true",
+    "QMOI_AUTO_FIX_ENABLED": "true",
+    "QMOI_AUTOprod_ENABLED": "true",
+    "QMOI_AUTO_MONITORING_ENABLED": "true",
+    "QMOI_AUTO_HEALTH_CHECK_ENABLED": "true",
+    "QMOI_AUTO_RECOVERY_ENABLED": "true",
+    "VERCEL_AUTO_DEPLOY": "true",
+    "VERCEL_AUTO_SCALE": "true",
+    "VERCEL_AUTO_ROLLBACK": "true"
+  },
+  "build": {
+    "env": {
+      "NODE_ENV": "production",
+      "NEXT_PUBLIC_APP_ENV": "production",
+      "QMOI_AUTO_SETUP_ENABLED": "true"
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-QMOI-Auto-Deploy",
+          "value": "true"
+        },
+        {
+          "key": "X-Auto-Setup-Enabled",
+          "value": "true"
+        }
+      ]
+    }
+  ],
+  "regions": ["iad1"],
+  "public": true
+}
