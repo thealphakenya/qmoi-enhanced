@@ -10,6 +10,14 @@
 [production READY] all markers normalized for completion
 # TECHNICAL REFERENCE — Next Steps Commands
 
+## 🩺 Latest Automated Health Check (2026-03-31)
+
+- domain_health_check.py is active and writing logs under `logs/domain_health_check.log`.
+- 6 domains flagged as unhealthy (parking/critical) in latest run: qvillage.com, qcloud.ai, stableq.ai, qglobal.org, quantum.qmoi.com, qmoi.com.
+- production readiness marker count: 17797 in 3616 files; ensure code-level marker reduction before final deployment.
+- Node.js/NPM not installed here; run Node environment for API startup and /api/health checks.
+- follow-up: run `npm run prod` and then curl `http://localhost:4000/api/health` in a standard environment.
+
 **Quick copy-paste commands for Phase 1-4 execution**
 
 ---

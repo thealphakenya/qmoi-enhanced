@@ -264,6 +264,15 @@ See also: [qmoi_test.sh](qmoi_test.sh) for a script to run all tests and log res
 
 <!-- QMOI_VALIDATION_END -->
 
+## 🩺 Latest Automated Health Check (2026-03-31)
+
+- domain_health_check.py indicates 6 domains with non-healthy status (parking/critical).
+- /api/health may be unreachable in this container due missing Node runtime; confirm by starting the app in a node-enabled environment.
+- `ping qvillage.com`, `ping qcloud.ai`, `ping qmoi.com` currently show packet loss, indicating endpoint-level connectivity issues.
+- `scripts/generate_production_status.py` reports 17797 markers in 3616 files; run manual marker cleanup and re-scan.
+
+---
+
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->
 
 ## 🔄 Evolution Status

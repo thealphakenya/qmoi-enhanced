@@ -160,3 +160,11 @@ python3 scripts/auto_host_manager.py --api
 
 ---
 *This document is maintained by QMOI's autonomous evolution system*
+
+## 🩺 Latest Automated Health Check (2026-03-31)
+
+- domain_health_check.py produced repeated warnings for 6 domains unhealthy (qvillage.com, qcloud.ai, stableq.ai, qglobal.org, quantum.qmoi.com, qmoi.com)
+- production markers in repo remain high: 17797 in 3616 files; full health requires clearing these markers and confirming updated docs
+- local Node/Next.js not runnable in this container; run `npm install` and `npm run prod` in a standard dev env to validate endpoints
+- add `scripts/auto_host_manager.py --check` to verify host manager health once service endpoints are available
+
